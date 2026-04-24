@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-run/quick-actions/screenshot-endpoint.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # /screenshot - Capture screenshot
 
@@ -45,8 +54,8 @@ You must provide either `url` or `html`:
 
 ### Take a screenshot from custom HTML
 
-* [ curl ](#tab-panel-5419)
-* [ TypeScript SDK ](#tab-panel-5420)
+* [ curl ](#tab-panel-5591)
+* [ TypeScript SDK ](#tab-panel-5592)
 
 Sets the HTML content of the page to `Hello World!` and then takes a screenshot. The option `omitBackground` hides the default white background and allows capturing screenshots with transparency.
 

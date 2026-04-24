@@ -1,18 +1,27 @@
 ---
 title: Account Creation
-description: Get started by creating a Cloudflare account and initializing the Zero Trust and Area 1 dashboards.
+description: Set up DNS filtering and email security.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/cybersafe/account-creation/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Account Creation
 

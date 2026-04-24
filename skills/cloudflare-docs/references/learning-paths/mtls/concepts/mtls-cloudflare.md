@@ -1,18 +1,27 @@
 ---
 title: Use mTLS with Cloudflare protected resources
-description: In this implementation guide we will be focusing on the L7 / Application Layer security for HTTP/S requests targeting proxied hostnames, including the first connection between client and Cloudflare.
+description: Learn about use mtls with cloudflare protected resources in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/mtls/concepts/mtls-cloudflare.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Use mTLS with Cloudflare protected resources
 

@@ -1,16 +1,15 @@
 ---
 title: Build the app frontend and UI
+description: Set up the video call frontend interface.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Build the app frontend and UI
 
-* [ Watch this episode ](#tab-panel-5092)
-* [ Series overview ](#tab-panel-5093)
+* [ Watch this episode ](#tab-panel-7539)
+* [ Series overview ](#tab-panel-7540)
 
 In this video, we set up the frontend starter code (the starter code is located in the Veet GitHub repository), connect to Durable Objects using a call room ID, and display a local video preview.
 

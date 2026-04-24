@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/api/how-to/make-api-calls.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Make API calls
 
@@ -314,9 +323,9 @@ The procedure for setting and referencing environment variables depends on your 
 
 ### Define an environment variable
 
-* [ Linux and macOS ](#tab-panel-4637)
-* [ PowerShell ](#tab-panel-4638)
-* [ Windows Command Prompt ](#tab-panel-4639)
+* [ Linux and macOS ](#tab-panel-7101)
+* [ PowerShell ](#tab-panel-7102)
+* [ Windows Command Prompt ](#tab-panel-7103)
 
 To define a `ZONE_ID` environment variable for the current shell session, run the following command:
 
@@ -383,9 +392,9 @@ Running this command will not affect the current window. You will need to either
 
 ### Reference an environment variable
 
-* [ Linux and macOS ](#tab-panel-4640)
-* [ PowerShell ](#tab-panel-4641)
-* [ Windows Command Prompt ](#tab-panel-4642)
+* [ Linux and macOS ](#tab-panel-7104)
+* [ PowerShell ](#tab-panel-7105)
+* [ Windows Command Prompt ](#tab-panel-7106)
 
 When referencing an environment variable in a command, add a `$` prefix to the variable name (for example, `$ZONE_ID`). Make sure that the full string referencing the variable is either unquoted (if it does not contain spaces) or enclosed in double quotes (`""`).
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/tools/scrape-shield/email-address-obfuscation.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Email Address Obfuscation
 
@@ -34,9 +43,9 @@ Cloudflare injects a small decode script (`email-decode.min.js`) into the page u
 
 Cloudflare enables email address obfuscation automatically when you sign up.
 
-* [  New dashboard ](#tab-panel-9127)
-* [ Old dashboard ](#tab-panel-9128)
-* [ API ](#tab-panel-9129)
+* [  New dashboard ](#tab-panel-9408)
+* [ Old dashboard ](#tab-panel-9409)
+* [ API ](#tab-panel-9410)
 
 To disable **Email Address Obfuscation** in the dashboard:
 

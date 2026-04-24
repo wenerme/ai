@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/access-controls/applications/linked-app-token.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Linked App Token
 
@@ -41,8 +50,8 @@ accTitle: Self-hosted to self-hosted linked app token flow
 
 Create a policy on Application B (the downstream application that will receive forwarded requests):
 
-* [ Dashboard ](#tab-panel-5601)
-* [ API ](#tab-panel-5602)
+* [ Dashboard ](#tab-panel-5773)
+* [ API ](#tab-panel-5774)
 
 1. In the [Cloudflare dashboard ↗](https://one.dash.cloudflare.com), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select Application B and select **Edit**.
@@ -142,8 +151,8 @@ accTitle: SaaS to self-hosted linked app token flow
 
 Create a policy on the self-hosted application (Application B):
 
-* [ Dashboard ](#tab-panel-5603)
-* [ API ](#tab-panel-5604)
+* [ Dashboard ](#tab-panel-5775)
+* [ API ](#tab-panel-5776)
 
 1. In the [Cloudflare dashboard ↗](https://one.dash.cloudflare.com), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the self-hosted app (Application B) and select **Edit**.

@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ IPsec ](https://developers.cloudflare.com/search/?tags=IPsec) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/tunnel-health.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Troubleshoot tunnel health
 

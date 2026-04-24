@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication)[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/access-controls/applications/http-apps/managed-oauth.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Managed OAuth
 
@@ -35,8 +44,8 @@ If you run your own OAuth server behind an Access application and rely on your o
 
 ## Enable managed OAuth on a self-hosted application
 
-* [ Dashboard ](#tab-panel-3756)
-* [ API ](#tab-panel-3757)
+* [ Dashboard ](#tab-panel-5763)
+* [ API ](#tab-panel-5764)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the application you want to configure, then select the three dots on the right > **Edit**.
@@ -77,8 +86,8 @@ To test, open an RFC 8707-compliant OAuth client and make a request to your appl
 
 Managed OAuth is available on [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) and is the mechanism that allows MCP clients to authenticate users through the portal without a browser cookie flow.
 
-* [ Dashboard ](#tab-panel-3758)
-* [ API ](#tab-panel-3759)
+* [ Dashboard ](#tab-panel-5765)
+* [ API ](#tab-panel-5766)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots on the right > **Edit**.
@@ -117,8 +126,8 @@ To test, open an MCP client and [connect to the MCP portal](https://developers.c
 
 ## Managed OAuth settings
 
-* [ Dashboard ](#tab-panel-3760)
-* [ API ](#tab-panel-3761)
+* [ Dashboard ](#tab-panel-5767)
+* [ API ](#tab-panel-5768)
 
 Configure these settings in the **Advanced settings** tab of your [self-hosted app](#enable-managed-oauth-on-a-self-hosted-application) or [MCP server portal](#enable-managed-oauth-on-an-mcp-server-portal).
 

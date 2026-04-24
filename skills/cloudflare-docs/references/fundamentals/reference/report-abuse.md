@@ -1,18 +1,27 @@
 ---
 title: Abuse
-description: Learn how to report DMCA issues, phishing, trademark infringement, malware sites, child exploitation material, and more to Cloudflare’s Trust and Safety team.
+description: Learn how to report DMCA issues, phishing, trademark infringement, malware sites, child exploitation material, and more to Cloudflare's Trust and Safety team.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/reference/report-abuse/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Abuse
 

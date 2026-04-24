@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ mTLS ](https://developers.cloudflare.com/search/?tags=mTLS)[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # TLS Management
 
@@ -181,8 +190,8 @@ Refer to [Minimum TLS version - SSL/TLS](https://developers.cloudflare.com/ssl/e
 
 Minimum TLS version for custom hostname
 
-* [ Dashboard ](#tab-panel-5476)
-* [ API ](#tab-panel-5477)
+* [ Dashboard ](#tab-panel-5689)
+* [ API ](#tab-panel-5690)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

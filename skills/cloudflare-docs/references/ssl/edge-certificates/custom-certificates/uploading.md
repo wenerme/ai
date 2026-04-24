@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/edge-certificates/custom-certificates/uploading.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Manage custom certificates
 
@@ -46,8 +55,8 @@ Warning
 
 When using `compatible` or `modern` [bundling](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies), make sure to upload only the leaf certificate. This will allow Cloudflare to properly handle [the expiration of intermediate and root certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/#intermediate-and-root-certificates).
 
-* [ Dashboard ](#tab-panel-8769)
-* [ API ](#tab-panel-8770)
+* [ Dashboard ](#tab-panel-9032)
+* [ API ](#tab-panel-9033)
 
 To upload a custom SSL certificate in the dashboard:
 
@@ -240,8 +249,8 @@ If you are on an Enterprise plan and want to update a custom (modern) certificat
 
 Replacing a custom certificate following these steps does not lead to any downtime. No connections will be terminated and new connections will use the new certificate. The old certificate will only actually be deleted when the new certificate is uploaded and active.
 
-* [ Dashboard ](#tab-panel-8767)
-* [ API ](#tab-panel-8768)
+* [ Dashboard ](#tab-panel-9030)
+* [ API ](#tab-panel-9031)
 
 To update a certificate in the dashboard:
 

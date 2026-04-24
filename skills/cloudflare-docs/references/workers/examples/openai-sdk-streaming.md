@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/openai-sdk-streaming.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Stream OpenAI API Responses
 
@@ -36,8 +45,8 @@ Note
 
 For analytics, caching, rate limiting, and more, you can also send requests like this through Cloudflare's [AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/).
 
-* [  TypeScript ](#tab-panel-7377)
-* [  Hono ](#tab-panel-7378)
+* [  TypeScript ](#tab-panel-9836)
+* [  Hono ](#tab-panel-9837)
 
 TypeScript
 

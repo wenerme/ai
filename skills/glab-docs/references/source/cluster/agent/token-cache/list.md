@@ -5,7 +5,7 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-List cached GitLab Agent tokens
+List cached GitLab Agent tokens.
 
 ## Synopsis
 
@@ -21,10 +21,10 @@ glab cluster agent token-cache list [flags]
 ## Options
 
 ```plaintext
-      --agent int64Slice   Filter by specific agent IDs (default [])
-      --filesystem         Include tokens from filesystem cache (default true)
-      --keyring            Include tokens from keyring cache (default true)
-  -R, --repo string        Select another repository using the OWNER/REPO format
+      --agent int64Slice   Filter by specific agent IDs. (default [])
+      --filesystem         Include tokens from filesystem cache. (default true)
+      --keyring            Include tokens from keyring cache. (default true)
+  -R, --repo string        Select another repository using the OWNER/REPO format.
 ```
 
 ## Options inherited from parent commands

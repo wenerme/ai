@@ -10,17 +10,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Python ](https://developers.cloudflare.com/search/?tags=Python)[ Node.js ](https://developers.cloudflare.com/search/?tags=Node.js)[ Docker ](https://developers.cloudflare.com/search/?tags=Docker) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/bridge/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Sandbox bridge
 
-**Last reviewed:**  10 days ago 
+**Last reviewed:**  11 days ago 
 
 The sandbox bridge is a reference-implementation Cloudflare Worker that exposes the [Sandbox SDK](https://developers.cloudflare.com/sandbox/api/) as an HTTP API. Any HTTP client — Python script, Node.js service, CI pipeline — can create and control sandboxes without writing a Worker.
 

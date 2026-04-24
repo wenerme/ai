@@ -1,18 +1,27 @@
 ---
 title: Tunnel capacity for cloudflared
-description: Now that you have a Cloudflare Tunnel up and running, evaluate whether cloudflared has enough system resources to handle the expected volume of requests from end users.
+description: Size and scale cloudflared tunnel capacity.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/replace-vpn/connect-private-network/tunnel-capacity.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Tunnel capacity for cloudflared
 

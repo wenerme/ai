@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build Agents on Cloudflare
 
@@ -63,8 +72,8 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 
 An agent is a TypeScript class. Methods marked with `@callable()` become typed RPC that clients can call directly over WebSocket.
 
-* [  JavaScript ](#tab-panel-3868)
-* [  TypeScript ](#tab-panel-3869)
+* [  JavaScript ](#tab-panel-4044)
+* [  TypeScript ](#tab-panel-4045)
 
 JavaScript
 
@@ -153,8 +162,8 @@ Explain Code
 
 For AI chat, extend `AIChatAgent` instead. Messages are persisted automatically, streams resume on disconnect, and the React hook handles the UI.
 
-* [  JavaScript ](#tab-panel-3870)
-* [  TypeScript ](#tab-panel-3871)
+* [  JavaScript ](#tab-panel-4046)
+* [  TypeScript ](#tab-panel-4047)
 
 JavaScript
 

@@ -1,16 +1,25 @@
 ---
 title: Cloudflare 1xxx errors
-description: The errors covered in this document may occur when accessing a website proxied by Cloudflare. For issues related to the Cloudflare API or dashboard, refer to our Cloudflare API documentation.
+description: Troubleshoot Cloudflare 1xxx error codes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Cloudflare 1xxx errors
 

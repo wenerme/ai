@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/edge-certificates/caa-records.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Add CAA records
 
@@ -100,8 +109,8 @@ This list is not exhaustive, and other CAs might be added or removed for operati
 
 Create a CAA record for each Certificate Authority (CA) that you plan to use for your domain.
 
-* [ Dashboard ](#tab-panel-8852)
-* [ API ](#tab-panel-8853)
+* [ Dashboard ](#tab-panel-9024)
+* [ API ](#tab-panel-9025)
 
 To add a CAA record in the dashboard,
 

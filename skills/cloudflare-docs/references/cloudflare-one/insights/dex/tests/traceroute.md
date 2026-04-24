@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Windows ](https://developers.cloudflare.com/search/?tags=Windows)[ MacOS ](https://developers.cloudflare.com/search/?tags=MacOS)[ Android ](https://developers.cloudflare.com/search/?tags=Android) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/insights/dex/tests/traceroute.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Traceroute test
 

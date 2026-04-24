@@ -1,18 +1,27 @@
 ---
 title: Routes
-description: Routes allow users to map a URL pattern to a Worker. When a request comes in to the Cloudflare network that matches the specified URL pattern, your Worker will execute on that route.
+description: Map URL patterns to Cloudflare Workers to run your code on matching requests.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/routing/routes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Routes
 
@@ -65,8 +74,8 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 
 To configure a route using your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), refer to the following example.
 
-* [  wrangler.jsonc ](#tab-panel-7159)
-* [  wrangler.toml ](#tab-panel-7160)
+* [  wrangler.jsonc ](#tab-panel-9618)
+* [  wrangler.toml ](#tab-panel-9619)
 
 JSONC
 
@@ -131,8 +140,8 @@ Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `z
 
 To add multiple routes:
 
-* [  wrangler.jsonc ](#tab-panel-7161)
-* [  wrangler.toml ](#tab-panel-7162)
+* [  wrangler.jsonc ](#tab-panel-9620)
+* [  wrangler.toml ](#tab-panel-9621)
 
 JSONC
 

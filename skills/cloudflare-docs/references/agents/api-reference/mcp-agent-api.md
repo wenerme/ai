@@ -10,20 +10,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/mcp-agent-api.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # McpAgent
 
 When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp.ts), from the Agents SDK:
 
-* [  JavaScript ](#tab-panel-4222)
-* [  TypeScript ](#tab-panel-4223)
+* [  JavaScript ](#tab-panel-4398)
+* [  TypeScript ](#tab-panel-4399)
 
 JavaScript
 
@@ -138,8 +147,8 @@ You can use the APIs below in order to do so.
 
 The `McpAgent.serve()` static method creates a Worker handler that routes requests to your MCP server:
 
-* [  JavaScript ](#tab-panel-4224)
-* [  TypeScript ](#tab-panel-4225)
+* [  JavaScript ](#tab-panel-4400)
+* [  TypeScript ](#tab-panel-4401)
 
 JavaScript
 
@@ -223,8 +232,8 @@ This is the simplest way to deploy an MCP server — about 15 lines of code. The
 
 When using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
 
-* [  JavaScript ](#tab-panel-4218)
-* [  TypeScript ](#tab-panel-4219)
+* [  JavaScript ](#tab-panel-4394)
+* [  TypeScript ](#tab-panel-4395)
 
 JavaScript
 
@@ -278,8 +287,8 @@ export default new OAuthProvider({
 
 For GDPR and data residency compliance, specify a jurisdiction to ensure your MCP server instances run in specific regions:
 
-* [  JavaScript ](#tab-panel-4216)
-* [  TypeScript ](#tab-panel-4217)
+* [  JavaScript ](#tab-panel-4392)
+* [  TypeScript ](#tab-panel-4393)
 
 JavaScript
 
@@ -305,8 +314,8 @@ export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 
 With OAuth:
 
-* [  JavaScript ](#tab-panel-4220)
-* [  TypeScript ](#tab-panel-4221)
+* [  JavaScript ](#tab-panel-4396)
+* [  TypeScript ](#tab-panel-4397)
 
 JavaScript
 
@@ -387,8 +396,8 @@ Currently, each client session is backed by an instance of the `McpAgent` class.
 
 For example, the following code implements an MCP server that remembers a counter value, and updates the counter when the `add` tool is called:
 
-* [  JavaScript ](#tab-panel-4228)
-* [  TypeScript ](#tab-panel-4229)
+* [  JavaScript ](#tab-panel-4404)
+* [  TypeScript ](#tab-panel-4405)
 
 JavaScript
 
@@ -599,8 +608,8 @@ Request structured input from the user during tool execution.
 
 **Returns:** `Promise<{ action: "accept" | "decline", content?: object }>`
 
-* [  JavaScript ](#tab-panel-4230)
-* [  TypeScript ](#tab-panel-4231)
+* [  JavaScript ](#tab-panel-4406)
+* [  TypeScript ](#tab-panel-4407)
 
 JavaScript
 
@@ -944,8 +953,8 @@ Explain Code
 
 ### Handling responses
 
-* [  JavaScript ](#tab-panel-4226)
-* [  TypeScript ](#tab-panel-4227)
+* [  JavaScript ](#tab-panel-4402)
+* [  TypeScript ](#tab-panel-4403)
 
 JavaScript
 

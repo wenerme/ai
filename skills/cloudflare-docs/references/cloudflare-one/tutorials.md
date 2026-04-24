@@ -6,13 +6,11 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Tutorials
 
 | Name                                                                                                                                                                             | Last Updated       | Difficulty   |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------ |
-| [Detect MCP traffic in Gateway logs](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/)                                                | 12 days ago        | Advanced     |
+| [Detect MCP traffic in Gateway logs](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/)                                                | 14 days ago        | Advanced     |
 | [Implement regional private DNS servers with Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/)      | 5 months ago       | Advanced     |
 | [Deploy the Cloudflare One Client on headless Linux machines](https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/)                          | 7 months ago       | Beginner     |
 | [Create and secure an AI agent wrapper using AI Gateway and Zero Trust](https://developers.cloudflare.com/cloudflare-one/tutorials/ai-wrapper-tenant-control/)                   | 12 months ago      | Advanced     |

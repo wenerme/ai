@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/load-balancing/get-started/quickstart.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Quickstart
 
@@ -37,8 +46,8 @@ A monitor issues health monitor requests at regular intervals to evaluate the he
 
 When a pool [becomes unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/), your load balancer takes that pool out of the endpoint rotation.
 
-* [ Dashboard ](#tab-panel-7530)
-* [ API ](#tab-panel-7531)
+* [ Dashboard ](#tab-panel-7793)
+* [ API ](#tab-panel-7794)
 
 **Set up the monitor**
 
@@ -270,8 +279,8 @@ Within Cloudflare, pools represent your endpoints and how they are organized. As
 
 If you are familiar with DNS terminology, think of a pool as a “record set,” except Cloudflare only returns addresses that are considered healthy. You can attach health monitors to individual pools for customized monitoring. A pool can have either a single monitor or a monitor group attached — but not both.
 
-* [ Dashboard ](#tab-panel-7534)
-* [ API ](#tab-panel-7535)
+* [ Dashboard ](#tab-panel-7797)
+* [ API ](#tab-panel-7798)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 
@@ -547,8 +556,8 @@ After creating the pool, you would also want to [create a new notification](http
 
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
 
-* [ Dashboard ](#tab-panel-7528)
-* [ API ](#tab-panel-7529)
+* [ Dashboard ](#tab-panel-7791)
+* [ API ](#tab-panel-7792)
 
 To confirm pool health using the dashboard:
 
@@ -575,8 +584,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-7532)
-* [ API ](#tab-panel-7533)
+* [ Dashboard ](#tab-panel-7795)
+* [ API ](#tab-panel-7796)
 
 To create a Public or a Private load balancer in the dashboard:
 

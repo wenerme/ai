@@ -1,20 +1,27 @@
 ---
 title: Compatibility Dates
-description: Miniflare uses compatibility dates to opt-into backwards-incompatible changes
-from a specific date. If one isn't set, it will default to some time far in the
-past.
+description: Configure compatibility dates and flags in Miniflare to match Cloudflare Workers runtime behavior.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/testing/miniflare/core/compatibility.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Compatibility Dates
 

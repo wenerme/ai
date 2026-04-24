@@ -1,18 +1,27 @@
 ---
 title: Phish submissions
-description: While Email security offers industry leading detection efficacy due to Cloudflare's Threat Intelligence, Preemptive Threat Hunting (actor and campaign infrastructure hunting with 8B, plus campaign threat signals assessed every day) and ML-Based Detection Models (Trust Graphs Computer Vision, Sentiment/Thread/Structural Analysis, Industry/Natural Language Understanding Modeling) false negatives and false positive can occur.
+description: Review user and admin phish submissions.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-your-email/monitor-your-inbox/phish-submissions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Phish submissions
 

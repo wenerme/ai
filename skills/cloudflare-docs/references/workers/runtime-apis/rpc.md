@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ RPC ](https://developers.cloudflare.com/search/?tags=RPC) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/rpc/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Remote-procedure call (RPC)
 
@@ -35,8 +44,8 @@ The RPC system is designed to feel as similar as possible to calling a JavaScrip
 
 For example, if Worker B implements the public method `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-10131)
-* [  wrangler.toml ](#tab-panel-10132)
+* [  wrangler.jsonc ](#tab-panel-10147)
+* [  wrangler.toml ](#tab-panel-10148)
 
 JSONC
 
@@ -68,9 +77,9 @@ main = "./src/workerB.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-10148)
-* [  TypeScript ](#tab-panel-10149)
-* [  Python ](#tab-panel-10150)
+* [  JavaScript ](#tab-panel-10164)
+* [  TypeScript ](#tab-panel-10165)
+* [  Python ](#tab-panel-10166)
 
 JavaScript
 
@@ -153,8 +162,8 @@ class Default(WorkerEntrypoint):
 
 Worker A can declare a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to Worker B:
 
-* [  wrangler.jsonc ](#tab-panel-10135)
-* [  wrangler.toml ](#tab-panel-10136)
+* [  wrangler.jsonc ](#tab-panel-10151)
+* [  wrangler.toml ](#tab-panel-10152)
 
 JSONC
 
@@ -209,9 +218,9 @@ service = "worker_b"
 
 Making it possible for Worker A to call the `add()` method from Worker B:
 
-* [  JavaScript ](#tab-panel-10143)
-* [  TypeScript ](#tab-panel-10144)
-* [  Python ](#tab-panel-10145)
+* [  JavaScript ](#tab-panel-10159)
+* [  TypeScript ](#tab-panel-10160)
+* [  Python ](#tab-panel-10161)
 
 JavaScript
 
@@ -301,8 +310,8 @@ You can send a function over RPC. When you do so, the function is replaced by a 
 
 Consider the following two Workers, connected via a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc). The counter service provides the RPC method `newCounter()`, which returns a function:
 
-* [  wrangler.jsonc ](#tab-panel-10137)
-* [  wrangler.toml ](#tab-panel-10138)
+* [  wrangler.jsonc ](#tab-panel-10153)
+* [  wrangler.toml ](#tab-panel-10154)
 
 JSONC
 
@@ -334,8 +343,8 @@ main = "./src/counterService.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-10146)
-* [  TypeScript ](#tab-panel-10147)
+* [  JavaScript ](#tab-panel-10162)
+* [  TypeScript ](#tab-panel-10163)
 
 JavaScript
 
@@ -413,8 +422,8 @@ Explain Code
 
 This function can then be called by the client Worker:
 
-* [  wrangler.jsonc ](#tab-panel-10139)
-* [  wrangler.toml ](#tab-panel-10140)
+* [  wrangler.jsonc ](#tab-panel-10155)
+* [  wrangler.toml ](#tab-panel-10156)
 
 JSONC
 
@@ -467,8 +476,8 @@ service = "counter-service"
 
 ```
 
-* [  JavaScript ](#tab-panel-10141)
-* [  TypeScript ](#tab-panel-10142)
+* [  JavaScript ](#tab-panel-10157)
+* [  TypeScript ](#tab-panel-10158)
 
 JavaScript
 
@@ -546,8 +555,8 @@ To use an instance of a class that you define as a parameter or return value of 
 
 Consider the following example:
 
-* [  wrangler.jsonc ](#tab-panel-10113)
-* [  wrangler.toml ](#tab-panel-10114)
+* [  wrangler.jsonc ](#tab-panel-10129)
+* [  wrangler.toml ](#tab-panel-10130)
 
 JSONC
 
@@ -579,8 +588,8 @@ main = "./src/counter.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-10129)
-* [  TypeScript ](#tab-panel-10130)
+* [  JavaScript ](#tab-panel-10145)
+* [  TypeScript ](#tab-panel-10146)
 
 JavaScript
 
@@ -696,8 +705,8 @@ Explain Code
 
 The method `increment` can be called directly by the client, as can the public property `value`:
 
-* [  wrangler.jsonc ](#tab-panel-10115)
-* [  wrangler.toml ](#tab-panel-10116)
+* [  wrangler.jsonc ](#tab-panel-10131)
+* [  wrangler.toml ](#tab-panel-10132)
 
 JSONC
 
@@ -754,8 +763,8 @@ entrypoint = "CounterService"
 
 ```
 
-* [  JavaScript ](#tab-panel-10121)
-* [  TypeScript ](#tab-panel-10122)
+* [  JavaScript ](#tab-panel-10137)
+* [  TypeScript ](#tab-panel-10138)
 
 JavaScript
 
@@ -841,8 +850,8 @@ Classes which do not inherit `RpcTarget` cannot be sent over RPC at all. This di
 
 When you call an RPC method and get back an object, it's common to immediately call a method on the object:
 
-* [  JavaScript ](#tab-panel-10117)
-* [  TypeScript ](#tab-panel-10118)
+* [  JavaScript ](#tab-panel-10133)
+* [  TypeScript ](#tab-panel-10134)
 
 JavaScript
 
@@ -876,8 +885,8 @@ With most RPC systems, the only way to avoid the problem would be to combine the
 
 Workers RPC allows a different approach: You can simply omit the first `await`:
 
-* [  JavaScript ](#tab-panel-10119)
-* [  TypeScript ](#tab-panel-10120)
+* [  JavaScript ](#tab-panel-10135)
+* [  TypeScript ](#tab-panel-10136)
 
 JavaScript
 
@@ -911,8 +920,8 @@ How does this work? The promise returned by an RPC is not a real JavaScript `Pro
 
 This works when calling properties of objects returned by RPC methods as well. For example:
 
-* [  JavaScript ](#tab-panel-10123)
-* [  TypeScript ](#tab-panel-10124)
+* [  JavaScript ](#tab-panel-10139)
+* [  TypeScript ](#tab-panel-10140)
 
 JavaScript
 
@@ -974,8 +983,8 @@ export class MyService extends WorkerEntrypoint {
 
 Explain Code
 
-* [  JavaScript ](#tab-panel-10127)
-* [  TypeScript ](#tab-panel-10128)
+* [  JavaScript ](#tab-panel-10143)
+* [  TypeScript ](#tab-panel-10144)
 
 JavaScript
 
@@ -1033,8 +1042,8 @@ In all cases, ownership of the stream is transferred to the recipient. The sende
 
 A stub received over RPC from one Worker can be forwarded over RPC to another Worker.
 
-* [  JavaScript ](#tab-panel-10125)
-* [  TypeScript ](#tab-panel-10126)
+* [  JavaScript ](#tab-panel-10141)
+* [  TypeScript ](#tab-panel-10142)
 
 JavaScript
 
@@ -1086,8 +1095,8 @@ In this video, we explore how Cloudflare Workers support Remote Procedure Calls 
 
 * [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) is currently ignored when making RPC calls. If Smart Placement is enabled for Worker A, and Worker B declares a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to it, when Worker B calls Worker A via RPC, Worker A will run locally, on the same machine.
 * The maximum serialized RPC limit is 32 MiB. Consider using [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) when returning more data.  
-   * [  JavaScript ](#tab-panel-10133)  
-   * [  TypeScript ](#tab-panel-10134)  
+   * [  JavaScript ](#tab-panel-10149)  
+   * [  TypeScript ](#tab-panel-10150)  
 JavaScript  
 ```  
 export class MyService extends WorkerEntrypoint {  

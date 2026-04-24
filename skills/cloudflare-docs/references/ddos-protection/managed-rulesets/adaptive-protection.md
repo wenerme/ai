@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ddos-protection/managed-rulesets/adaptive-protection.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Adaptive DDoS Protection
 
@@ -62,8 +71,8 @@ HTTP Adaptive DDoS Protection rules calculate the traffic profile at the zone-le
 
 To view traffic flagged by HTTP Adaptive DDoS Protection rules:
 
-* [  New dashboard ](#tab-panel-4220)
-* [ Old dashboard ](#tab-panel-4221)
+* [  New dashboard ](#tab-panel-6639)
+* [ Old dashboard ](#tab-panel-6640)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -76,8 +85,8 @@ To view traffic flagged by HTTP Adaptive DDoS Protection rules:
 
 To view traffic flagged by L3/4 Adaptive DDoS Protection rules:
 
-* [  New dashboard ](#tab-panel-4222)
-* [ Old dashboard ](#tab-panel-4223)
+* [  New dashboard ](#tab-panel-6641)
+* [ Old dashboard ](#tab-panel-6642)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)

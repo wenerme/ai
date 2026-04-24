@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/commands/vectorize.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Vectorize
 
@@ -22,9 +31,9 @@ Interact with a [Vectorize](https://developers.cloudflare.com/vectorize/) vector
 
 Create a Vectorize index
 
-* [  npm ](#tab-panel-10444)
-* [  pnpm ](#tab-panel-10445)
-* [  yarn ](#tab-panel-10446)
+* [  npm ](#tab-panel-10758)
+* [  pnpm ](#tab-panel-10759)
+* [  yarn ](#tab-panel-10760)
 
 Terminal window
 
@@ -95,9 +104,9 @@ Automatically provision draft bindings with new resources
 
 Delete a Vectorize index
 
-* [  npm ](#tab-panel-10447)
-* [  pnpm ](#tab-panel-10448)
-* [  yarn ](#tab-panel-10449)
+* [  npm ](#tab-panel-10761)
+* [  pnpm ](#tab-panel-10762)
+* [  yarn ](#tab-panel-10763)
 
 Terminal window
 
@@ -154,9 +163,9 @@ Automatically provision draft bindings with new resources
 
 Get a Vectorize index by name
 
-* [  npm ](#tab-panel-10450)
-* [  pnpm ](#tab-panel-10451)
-* [  yarn ](#tab-panel-10452)
+* [  npm ](#tab-panel-10764)
+* [  pnpm ](#tab-panel-10765)
+* [  yarn ](#tab-panel-10766)
 
 Terminal window
 
@@ -213,9 +222,9 @@ Automatically provision draft bindings with new resources
 
 List your Vectorize indexes
 
-* [  npm ](#tab-panel-10453)
-* [  pnpm ](#tab-panel-10454)
-* [  yarn ](#tab-panel-10455)
+* [  npm ](#tab-panel-10767)
+* [  pnpm ](#tab-panel-10768)
+* [  yarn ](#tab-panel-10769)
 
 Terminal window
 
@@ -270,9 +279,9 @@ Automatically provision draft bindings with new resources
 
 List vector identifiers in a Vectorize index
 
-* [  npm ](#tab-panel-10456)
-* [  pnpm ](#tab-panel-10457)
-* [  yarn ](#tab-panel-10458)
+* [  npm ](#tab-panel-10770)
+* [  pnpm ](#tab-panel-10771)
+* [  yarn ](#tab-panel-10772)
 
 Terminal window
 
@@ -331,9 +340,9 @@ Automatically provision draft bindings with new resources
 
 Query a Vectorize index
 
-* [  npm ](#tab-panel-10459)
-* [  pnpm ](#tab-panel-10460)
-* [  yarn ](#tab-panel-10461)
+* [  npm ](#tab-panel-10773)
+* [  pnpm ](#tab-panel-10774)
+* [  yarn ](#tab-panel-10775)
 
 Terminal window
 
@@ -400,9 +409,9 @@ Automatically provision draft bindings with new resources
 
 Insert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-10462)
-* [  pnpm ](#tab-panel-10463)
-* [  yarn ](#tab-panel-10464)
+* [  npm ](#tab-panel-10776)
+* [  pnpm ](#tab-panel-10777)
+* [  yarn ](#tab-panel-10778)
 
 Terminal window
 
@@ -463,9 +472,9 @@ Automatically provision draft bindings with new resources
 
 Upsert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-10465)
-* [  pnpm ](#tab-panel-10466)
-* [  yarn ](#tab-panel-10467)
+* [  npm ](#tab-panel-10779)
+* [  pnpm ](#tab-panel-10780)
+* [  yarn ](#tab-panel-10781)
 
 Terminal window
 
@@ -524,9 +533,9 @@ Automatically provision draft bindings with new resources
 
 Get vectors from a Vectorize index
 
-* [  npm ](#tab-panel-10468)
-* [  pnpm ](#tab-panel-10469)
-* [  yarn ](#tab-panel-10470)
+* [  npm ](#tab-panel-10782)
+* [  pnpm ](#tab-panel-10783)
+* [  yarn ](#tab-panel-10784)
 
 Terminal window
 
@@ -581,9 +590,9 @@ Automatically provision draft bindings with new resources
 
 Delete vectors in a Vectorize index
 
-* [  npm ](#tab-panel-10471)
-* [  pnpm ](#tab-panel-10472)
-* [  yarn ](#tab-panel-10473)
+* [  npm ](#tab-panel-10785)
+* [  pnpm ](#tab-panel-10786)
+* [  yarn ](#tab-panel-10787)
 
 Terminal window
 
@@ -638,9 +647,9 @@ Automatically provision draft bindings with new resources
 
 Get additional details about the index
 
-* [  npm ](#tab-panel-10474)
-* [  pnpm ](#tab-panel-10475)
-* [  yarn ](#tab-panel-10476)
+* [  npm ](#tab-panel-10788)
+* [  pnpm ](#tab-panel-10789)
+* [  yarn ](#tab-panel-10790)
 
 Terminal window
 
@@ -695,9 +704,9 @@ Automatically provision draft bindings with new resources
 
 Enable metadata filtering on the specified property
 
-* [  npm ](#tab-panel-10477)
-* [  pnpm ](#tab-panel-10478)
-* [  yarn ](#tab-panel-10479)
+* [  npm ](#tab-panel-10791)
+* [  pnpm ](#tab-panel-10792)
+* [  yarn ](#tab-panel-10793)
 
 Terminal window
 
@@ -754,9 +763,9 @@ Automatically provision draft bindings with new resources
 
 List metadata properties on which metadata filtering is enabled
 
-* [  npm ](#tab-panel-10480)
-* [  pnpm ](#tab-panel-10481)
-* [  yarn ](#tab-panel-10482)
+* [  npm ](#tab-panel-10794)
+* [  pnpm ](#tab-panel-10795)
+* [  yarn ](#tab-panel-10796)
 
 Terminal window
 
@@ -811,9 +820,9 @@ Automatically provision draft bindings with new resources
 
 Delete metadata indexes
 
-* [  npm ](#tab-panel-10483)
-* [  pnpm ](#tab-panel-10484)
-* [  yarn ](#tab-panel-10485)
+* [  npm ](#tab-panel-10797)
+* [  pnpm ](#tab-panel-10798)
+* [  yarn ](#tab-panel-10799)
 
 Terminal window
 

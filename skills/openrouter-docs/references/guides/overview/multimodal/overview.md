@@ -1,10 +1,10 @@
+# Multimodal Capabilities
+
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
 
-# Multimodal Capabilities
-
-OpenRouter supports multiple input modalities beyond text, allowing you to send images, PDFs, audio, and video files to compatible models through our unified API. This enables rich multimodal interactions for a wide variety of use cases.
+OpenRouter supports multiple input and output modalities beyond text, allowing you to send images, PDFs, audio, and video files to compatible models, or generate speech from text through our unified API. This enables rich multimodal interactions for a wide variety of use cases.
 
 ## Supported Modalities
 
@@ -44,9 +44,15 @@ Generate videos from text prompts using AI models with video output capabilities
 
 [Learn more about video generation →](/docs/features/multimodal/video-generation)
 
+### Text-to-Speech
+
+Generate speech audio from text using a dedicated OpenAI-compatible endpoint. OpenRouter supports multiple TTS providers and voices with output in MP3 or PCM format.
+
+[Learn more about text-to-speech →](/docs/features/multimodal/tts)
+
 ## Getting Started
 
-All multimodal inputs use the same `/api/v1/chat/completions` endpoint with the `messages` parameter. Different content types are specified in the message content array:
+Most multimodal inputs use the same `/api/v1/chat/completions` endpoint with the `messages` parameter. Different content types are specified in the message content array:
 
 * **Images**: Use `image_url` content type
 * **PDFs**: Use `file` content type with PDF data
@@ -54,6 +60,8 @@ All multimodal inputs use the same `/api/v1/chat/completions` endpoint with the 
 * **Video**: Use `video_url` content type
 
 You can combine multiple modalities in a single request, and the number of files you can send varies by provider and model.
+
+**Text-to-Speech** uses a separate dedicated endpoint at `/api/v1/audio/speech`. See the [TTS documentation](/docs/features/multimodal/tts) for details.
 
 ## Model Compatibility
 
@@ -111,5 +119,9 @@ OpenRouter supports both **direct URLs** and **base64-encoded data** for multimo
 
   <Accordion title="How does video generation work?">
     Video generation uses an asynchronous API at `/api/v1/videos`. You submit a prompt, receive a job ID, then poll until the video is ready to download. See the [video generation documentation](/docs/features/multimodal/video-generation) for details.
+  </Accordion>
+
+  <Accordion title="How does text-to-speech work?">
+    Text-to-speech uses a dedicated endpoint at `/api/v1/audio/speech`. Send text and receive a raw audio byte stream. The endpoint is compatible with the OpenAI Audio Speech API, so you can use OpenAI client libraries. See the [TTS documentation](/docs/features/multimodal/tts) for details.
   </Accordion>
 </AccordionGroup>

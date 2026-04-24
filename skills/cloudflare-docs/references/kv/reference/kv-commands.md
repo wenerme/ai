@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/kv/reference/kv-commands.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Wrangler KV commands
 
@@ -32,9 +41,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Create a new namespace
 
-* [  npm ](#tab-panel-7300)
-* [  pnpm ](#tab-panel-7301)
-* [  yarn ](#tab-panel-7302)
+* [  npm ](#tab-panel-7472)
+* [  pnpm ](#tab-panel-7473)
+* [  yarn ](#tab-panel-7474)
 
 Terminal window
 
@@ -95,9 +104,9 @@ Automatically provision draft bindings with new resources
 
 Output a list of all KV namespaces associated with your account id
 
-* [  npm ](#tab-panel-7303)
-* [  pnpm ](#tab-panel-7304)
-* [  yarn ](#tab-panel-7305)
+* [  npm ](#tab-panel-7475)
+* [  pnpm ](#tab-panel-7476)
+* [  yarn ](#tab-panel-7477)
 
 Terminal window
 
@@ -147,9 +156,9 @@ Automatically provision draft bindings with new resources
 
 Delete a given namespace.
 
-* [  npm ](#tab-panel-7306)
-* [  pnpm ](#tab-panel-7307)
-* [  yarn ](#tab-panel-7308)
+* [  npm ](#tab-panel-7478)
+* [  pnpm ](#tab-panel-7479)
+* [  yarn ](#tab-panel-7480)
 
 Terminal window
 
@@ -210,9 +219,9 @@ Automatically provision draft bindings with new resources
 
 Rename a KV namespace
 
-* [  npm ](#tab-panel-7309)
-* [  pnpm ](#tab-panel-7310)
-* [  yarn ](#tab-panel-7311)
+* [  npm ](#tab-panel-7481)
+* [  pnpm ](#tab-panel-7482)
+* [  yarn ](#tab-panel-7483)
 
 Terminal window
 
@@ -281,9 +290,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Write a single key/value pair to the given namespace
 
-* [  npm ](#tab-panel-7312)
-* [  pnpm ](#tab-panel-7313)
-* [  yarn ](#tab-panel-7314)
+* [  npm ](#tab-panel-7484)
+* [  pnpm ](#tab-panel-7485)
+* [  yarn ](#tab-panel-7486)
 
 Terminal window
 
@@ -358,9 +367,9 @@ Automatically provision draft bindings with new resources
 
 Output a list of all keys in a given namespace
 
-* [  npm ](#tab-panel-7315)
-* [  pnpm ](#tab-panel-7316)
-* [  yarn ](#tab-panel-7317)
+* [  npm ](#tab-panel-7487)
+* [  pnpm ](#tab-panel-7488)
+* [  yarn ](#tab-panel-7489)
 
 Terminal window
 
@@ -425,9 +434,9 @@ Automatically provision draft bindings with new resources
 
 Read a single value by key from the given namespace
 
-* [  npm ](#tab-panel-7318)
-* [  pnpm ](#tab-panel-7319)
-* [  yarn ](#tab-panel-7320)
+* [  npm ](#tab-panel-7490)
+* [  pnpm ](#tab-panel-7491)
+* [  yarn ](#tab-panel-7492)
 
 Terminal window
 
@@ -494,9 +503,9 @@ Automatically provision draft bindings with new resources
 
 Remove a single key value pair from the given namespace
 
-* [  npm ](#tab-panel-7321)
-* [  pnpm ](#tab-panel-7322)
-* [  yarn ](#tab-panel-7323)
+* [  npm ](#tab-panel-7493)
+* [  pnpm ](#tab-panel-7494)
+* [  yarn ](#tab-panel-7495)
 
 Terminal window
 
@@ -573,9 +582,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Gets multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-7324)
-* [  pnpm ](#tab-panel-7325)
-* [  yarn ](#tab-panel-7326)
+* [  npm ](#tab-panel-7496)
+* [  pnpm ](#tab-panel-7497)
+* [  yarn ](#tab-panel-7498)
 
 Terminal window
 
@@ -640,9 +649,9 @@ Automatically provision draft bindings with new resources
 
 Upload multiple key-value pairs to a namespace
 
-* [  npm ](#tab-panel-7327)
-* [  pnpm ](#tab-panel-7328)
-* [  yarn ](#tab-panel-7329)
+* [  npm ](#tab-panel-7499)
+* [  pnpm ](#tab-panel-7500)
+* [  yarn ](#tab-panel-7501)
 
 Terminal window
 
@@ -713,9 +722,9 @@ Automatically provision draft bindings with new resources
 
 Delete multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-7330)
-* [  pnpm ](#tab-panel-7331)
-* [  yarn ](#tab-panel-7332)
+* [  npm ](#tab-panel-7502)
+* [  pnpm ](#tab-panel-7503)
+* [  yarn ](#tab-panel-7504)
 
 Terminal window
 

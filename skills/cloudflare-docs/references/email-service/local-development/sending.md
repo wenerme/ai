@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/local-development/sending.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Email sending
 
@@ -37,8 +46,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-6885)
-* [  wrangler.toml ](#tab-panel-6886)
+* [  wrangler.jsonc ](#tab-panel-7057)
+* [  wrangler.toml ](#tab-panel-7058)
 
 JSONC
 
@@ -91,8 +100,8 @@ Using [remote bindings](https://developers.cloudflare.com/workers/development-te
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6887)
-* [  wrangler.toml ](#tab-panel-6888)
+* [  wrangler.jsonc ](#tab-panel-7059)
+* [  wrangler.toml ](#tab-panel-7060)
 
 JSONC
 
@@ -106,7 +115,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-21",
+  "compatibility_date": "2026-04-24",
 
   "send_email": [
 
@@ -135,7 +144,7 @@ name = "email-sending-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-21"
+compatibility_date = "2026-04-24"
 
 
 [[send_email]]

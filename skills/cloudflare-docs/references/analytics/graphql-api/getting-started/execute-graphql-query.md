@@ -1,20 +1,27 @@
 ---
 title: Execute a GraphQL query with curl
-description: Using a plain curl to send a query provides the ability to slice-n-dice with the
-results and apply post-processing if needed. For example, converting
-results received from GraphQL API into a CSV format.
+description: Learn about execute a graphql query with curl in Cloudflare analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/graphql-api/getting-started/execute-graphql-query.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Execute a GraphQL query with curl
 

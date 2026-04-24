@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![Pipecat logo](https://developers.cloudflare.com/_astro/pipecat.B-PNBdef.svg) 
 
@@ -32,8 +41,8 @@ An open source, community-driven, native audio turn detection model in 2nd versi
 
 ## Parameters
 
-* [ Input ](#tab-panel-3723)
-* [ Output ](#tab-panel-3724)
+* [ Input ](#tab-panel-3935)
+* [ Output ](#tab-panel-3936)
 
 ▶Option 1{}
 
@@ -53,8 +62,8 @@ probability
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3721)
-* [ Output ](#tab-panel-3722)
+* [ Input ](#tab-panel-3933)
+* [ Output ](#tab-panel-3934)
 
 ```
 

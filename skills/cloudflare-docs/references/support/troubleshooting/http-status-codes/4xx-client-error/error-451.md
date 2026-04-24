@@ -1,16 +1,25 @@
 ---
 title: Error 451
-description: The 451 status code indicates that the server cannot deliver the requested resource due to legal actions or restrictions.
+description: Troubleshoot HTTP 451 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 451
 

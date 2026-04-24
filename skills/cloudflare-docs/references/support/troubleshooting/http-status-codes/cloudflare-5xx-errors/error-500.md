@@ -1,16 +1,25 @@
 ---
 title: Error 500
-description: This error indicates a problem with your origin web server, preventing it from fulfilling the request.
+description: Troubleshoot HTTP 500 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 500
 

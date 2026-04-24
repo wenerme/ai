@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/traffic-policies/troubleshoot-gateway.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Troubleshoot Gateway
 

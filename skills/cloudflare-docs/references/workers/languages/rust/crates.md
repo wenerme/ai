@@ -1,19 +1,27 @@
 ---
 title: Supported crates
-description: Learn about popular Rust crates which have been confirmed to work on Workers when using workers-rs (or in some cases just wasm-bindgen), to write Workers in WebAssembly.
-Each Rust crate example includes any custom configuration that is required.
+description: Popular Rust crates confirmed to compile to WebAssembly and run on Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/languages/rust/crates.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Supported crates
 

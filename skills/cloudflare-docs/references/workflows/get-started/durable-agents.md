@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workflows/get-started/durable-agents.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build a Durable AI Agent
 
@@ -560,8 +569,8 @@ Explain Code
 ## 5\. Configure your project
 
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:  
-   * [  wrangler.jsonc ](#tab-panel-11119)  
-   * [  wrangler.toml ](#tab-panel-11120)  
+   * [  wrangler.jsonc ](#tab-panel-11135)  
+   * [  wrangler.toml ](#tab-panel-11136)  
 JSONC  
 ```  
 {  
@@ -569,7 +578,7 @@ JSONC
   "name": "durable-ai-agent",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-22",  
+  "compatibility_date": "2026-04-24",  
   "observability": {  
     "enabled": true  
   },  
@@ -603,7 +612,7 @@ TOML
 name = "durable-ai-agent"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-22"  
+compatibility_date = "2026-04-24"  
 [observability]  
 enabled = true  
 [[durable_objects.bindings]]  

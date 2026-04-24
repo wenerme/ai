@@ -6,8 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Historical (2024)
 
 * [Managed ruleset updates](#managed-ruleset-updates)

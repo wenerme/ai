@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workflows/python/bindings.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Interact with a Workflow
 
@@ -26,8 +35,8 @@ The Python Workers platform leverages [FFI ↗](https://en.wikipedia.org/wiki/Fo
 
 From the configuration perspective, enabling Python Workflows requires adding the `python_workflows` compatibility flag to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-11125)
-* [  wrangler.toml ](#tab-panel-11126)
+* [  wrangler.jsonc ](#tab-panel-11141)
+* [  wrangler.toml ](#tab-panel-11142)
 
 JSONC
 
@@ -43,7 +52,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-22",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["python_workflows", "python_workers"],
 
@@ -86,7 +95,7 @@ main = "src/index.py"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-22"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "python_workflows", "python_workers" ]
 

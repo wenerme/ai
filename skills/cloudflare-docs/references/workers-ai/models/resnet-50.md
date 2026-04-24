@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![Microsoft logo](https://developers.cloudflare.com/_astro/microsoft.LujcDJ--.svg) 
 
@@ -31,8 +40,8 @@ Image Classification • Microsoft • Hosted
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3717)
-* [  curl ](#tab-panel-3718)
+* [  TypeScript ](#tab-panel-3929)
+* [  curl ](#tab-panel-3930)
 
 ```
 
@@ -96,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3719)
-* [ Output ](#tab-panel-3720)
+* [ Input ](#tab-panel-3931)
+* [ Output ](#tab-panel-3932)
 
 Option 1
 
@@ -123,8 +132,8 @@ items
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3715)
-* [ Output ](#tab-panel-3716)
+* [ Input ](#tab-panel-3927)
+* [ Output ](#tab-panel-3928)
 
 ```
 

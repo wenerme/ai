@@ -1,18 +1,27 @@
 ---
 title: StringDecoder
-description: The node:string_decoder is a legacy utility module that predates the WHATWG standard TextEncoder and TextDecoder API. In most cases, you should use TextEncoder and TextDecoder instead. StringDecoder is available in the Workers runtime primarily for compatibility with existing npm packages that rely on it. StringDecoder can be accessed using:
+description: Use the Node.js string_decoder module in Cloudflare Workers for decoding buffer objects into strings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/nodejs/string-decoder.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # StringDecoder
 

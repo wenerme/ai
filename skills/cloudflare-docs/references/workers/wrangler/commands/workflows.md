@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/commands/workflows.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workflows
 
@@ -34,9 +43,9 @@ For more information, refer to [Workflows local development](https://developers.
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-10564)
-* [  pnpm ](#tab-panel-10565)
-* [  yarn ](#tab-panel-10566)
+* [  npm ](#tab-panel-10878)
+* [  pnpm ](#tab-panel-10879)
+* [  yarn ](#tab-panel-10880)
 
 Terminal window
 
@@ -95,9 +104,9 @@ Automatically provision draft bindings with new resources
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-10567)
-* [  pnpm ](#tab-panel-10568)
-* [  yarn ](#tab-panel-10569)
+* [  npm ](#tab-panel-10881)
+* [  pnpm ](#tab-panel-10882)
+* [  yarn ](#tab-panel-10883)
 
 Terminal window
 
@@ -154,9 +163,9 @@ Automatically provision draft bindings with new resources
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-10570)
-* [  pnpm ](#tab-panel-10571)
-* [  yarn ](#tab-panel-10572)
+* [  npm ](#tab-panel-10884)
+* [  pnpm ](#tab-panel-10885)
+* [  yarn ](#tab-panel-10886)
 
 Terminal window
 
@@ -213,9 +222,9 @@ Automatically provision draft bindings with new resources
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-10573)
-* [  pnpm ](#tab-panel-10574)
-* [  yarn ](#tab-panel-10575)
+* [  npm ](#tab-panel-10887)
+* [  pnpm ](#tab-panel-10888)
+* [  yarn ](#tab-panel-10889)
 
 Terminal window
 
@@ -276,9 +285,9 @@ Automatically provision draft bindings with new resources
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-10576)
-* [  pnpm ](#tab-panel-10577)
-* [  yarn ](#tab-panel-10578)
+* [  npm ](#tab-panel-10890)
+* [  pnpm ](#tab-panel-10891)
+* [  yarn ](#tab-panel-10892)
 
 Terminal window
 
@@ -343,9 +352,9 @@ Automatically provision draft bindings with new resources
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-10579)
-* [  pnpm ](#tab-panel-10580)
-* [  yarn ](#tab-panel-10581)
+* [  npm ](#tab-panel-10893)
+* [  pnpm ](#tab-panel-10894)
+* [  yarn ](#tab-panel-10895)
 
 Terminal window
 
@@ -408,9 +417,9 @@ Automatically provision draft bindings with new resources
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-10582)
-* [  pnpm ](#tab-panel-10583)
-* [  yarn ](#tab-panel-10584)
+* [  npm ](#tab-panel-10896)
+* [  pnpm ](#tab-panel-10897)
+* [  yarn ](#tab-panel-10898)
 
 Terminal window
 
@@ -473,9 +482,9 @@ Automatically provision draft bindings with new resources
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-10585)
-* [  pnpm ](#tab-panel-10586)
-* [  yarn ](#tab-panel-10587)
+* [  npm ](#tab-panel-10899)
+* [  pnpm ](#tab-panel-10900)
+* [  yarn ](#tab-panel-10901)
 
 Terminal window
 
@@ -534,9 +543,9 @@ Automatically provision draft bindings with new resources
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-10588)
-* [  pnpm ](#tab-panel-10589)
-* [  yarn ](#tab-panel-10590)
+* [  npm ](#tab-panel-10902)
+* [  pnpm ](#tab-panel-10903)
+* [  yarn ](#tab-panel-10904)
 
 Terminal window
 
@@ -595,9 +604,9 @@ Automatically provision draft bindings with new resources
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-10591)
-* [  pnpm ](#tab-panel-10592)
-* [  yarn ](#tab-panel-10593)
+* [  npm ](#tab-panel-10905)
+* [  pnpm ](#tab-panel-10906)
+* [  yarn ](#tab-panel-10907)
 
 Terminal window
 
@@ -656,9 +665,9 @@ Automatically provision draft bindings with new resources
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-10594)
-* [  pnpm ](#tab-panel-10595)
-* [  yarn ](#tab-panel-10596)
+* [  npm ](#tab-panel-10908)
+* [  pnpm ](#tab-panel-10909)
+* [  yarn ](#tab-panel-10910)
 
 Terminal window
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/examples/email-routing/hard-bounce-handling.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Handle hard bounce emails
 
@@ -33,8 +42,8 @@ Hard bounces occur when an email cannot be delivered due to permanent reasons:
 
 Configure your worker to handle bounce notifications:
 
-* [  wrangler.jsonc ](#tab-panel-6875)
-* [  wrangler.toml ](#tab-panel-6876)
+* [  wrangler.jsonc ](#tab-panel-7047)
+* [  wrangler.toml ](#tab-panel-7048)
 
 JSONC
 
@@ -48,7 +57,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-21",
+  "compatibility_date": "2026-04-24",
 
   "send_email": [
 
@@ -87,7 +96,7 @@ name = "bounce-handler"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-21"
+compatibility_date = "2026-04-24"
 
 
 [[send_email]]

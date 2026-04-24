@@ -1,8 +1,8 @@
+# Submit a rerank request
+
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/rerank/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/api/api-reference/rerank/llms-full.txt.
-
-# Submit a rerank request
 
 POST https://openrouter.ai/api/v1/rerank
 Content-Type: application/json
@@ -196,6 +196,7 @@ components:
         - OpenAI
         - OpenInference
         - Parasail
+        - Poolside
         - Perplexity
         - Phala
         - Recraft

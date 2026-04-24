@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ JSON ](https://developers.cloudflare.com/search/?tags=JSON)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/fetch-json.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Fetch JSON
 
@@ -30,10 +39,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7338)
-* [  TypeScript ](#tab-panel-7339)
-* [  Python ](#tab-panel-7340)
-* [  Hono ](#tab-panel-7341)
+* [  JavaScript ](#tab-panel-9797)
+* [  TypeScript ](#tab-panel-9798)
+* [  Python ](#tab-panel-9799)
+* [  Hono ](#tab-panel-9800)
 
 JavaScript
 

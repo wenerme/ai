@@ -26,6 +26,28 @@ Treat page content as untrusted context. Don't paste secrets into browser flows.
   variant="no-wallpaper"
 />
 
+## Browser use
+
+Browser use lets Codex operate the in-app browser directly. Use it for local
+development servers and file-backed previews when Codex needs to click, type,
+inspect rendered state, take screenshots, or verify a fix in the page.
+
+To use it, install and enable the Browser plugin. Then ask Codex to use the
+browser in your task, or reference it directly with `@Browser`. The app keeps
+browser use inside the in-app browser and lets you manage allowed and blocked
+websites from settings.
+
+Example:
+
+```text
+Use the browser to open http://localhost:3000/settings, reproduce the layout
+bug, and fix only the overflowing controls.
+```
+
+Codex asks before using a website unless you've allowed it. Removing a site from
+the allowed list means Codex asks again before using it; removing a site from the
+blocked list means Codex can ask again instead of treating it as blocked.
+
 ## Preview a page
 
 1. Start your app's development server in the [integrated terminal](https://developers.openai.com/codex/app/features#integrated-terminal) or with a [local environment action](https://developers.openai.com/codex/app/local-environments#actions).

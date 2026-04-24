@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-run/playwright/playwright-mcp.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Playwright MCP
 
@@ -72,8 +81,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-3576)
-* [  wrangler.toml ](#tab-panel-3577)
+* [  wrangler.jsonc ](#tab-panel-5575)
+* [  wrangler.toml ](#tab-panel-5576)
 
 JSONC
 
@@ -89,7 +98,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-15",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -146,7 +155,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-15"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 

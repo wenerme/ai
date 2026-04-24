@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dynamic-workers/usage/durable-object-facets.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Durable Object Facets
 
@@ -36,8 +45,8 @@ The supervisor's database and the facet's database are stored together as part o
 
 Your Worker needs two things: a Durable Object class with a SQLite storage backend, and a Worker Loader binding.
 
-* [  wrangler.jsonc ](#tab-panel-4689)
-* [  wrangler.toml ](#tab-panel-4690)
+* [  wrangler.jsonc ](#tab-panel-7002)
+* [  wrangler.toml ](#tab-panel-7003)
 
 JSONC
 
@@ -49,7 +58,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-12",
+  "compatibility_date": "2026-04-24",
 
   "main": "src/index.ts",
 
@@ -92,7 +101,7 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-04-12"
+compatibility_date = "2026-04-24"
 
 main = "src/index.ts"
 
@@ -119,8 +128,8 @@ The following example shows a supervisor Durable Object (`AppRunner`) that loads
 
 The dynamic code is a simple counter app that tracks how many requests it has received, using its own SQLite-backed storage. In a real application, this code would come from an AI agent or user upload rather than a static string.
 
-* [  JavaScript ](#tab-panel-4691)
-* [  TypeScript ](#tab-panel-4692)
+* [  JavaScript ](#tab-panel-7004)
+* [  TypeScript ](#tab-panel-7005)
 
 JavaScript
 

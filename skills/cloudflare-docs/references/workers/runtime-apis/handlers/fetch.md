@@ -1,18 +1,27 @@
 ---
 title: Fetch Handler
-description: Incoming HTTP requests to a Worker are passed to the fetch() handler as a Request object. To respond to the request with a response, return a Response object:
+description: Handle incoming HTTP requests in Cloudflare Workers using the fetch() handler and return responses.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/handlers/fetch.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Fetch Handler
 

@@ -5,8 +5,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Fields reference
 
 Categories Body Bots Geolocation Headers JWT validation Raw fields Request Response SSL/TLS URI mTLS

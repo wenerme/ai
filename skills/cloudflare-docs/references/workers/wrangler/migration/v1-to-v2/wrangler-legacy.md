@@ -1,18 +1,27 @@
 ---
 title: Wrangler v1 (legacy)
-description: The following documentation applied to Wrangler v1 usage.
+description: Legacy documentation for Wrangler v1, the deprecated Workers CLI. Migrate to the latest version of Wrangler.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/migration/v1-to-v2/wrangler-legacy/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Wrangler v1 (legacy)
 

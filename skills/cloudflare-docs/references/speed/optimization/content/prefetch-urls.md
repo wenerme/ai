@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Caching ](https://developers.cloudflare.com/search/?tags=Caching) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/speed/optimization/content/prefetch-urls.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Prefetch URLs
 
@@ -38,8 +47,8 @@ For Cloudflare to start prefetching URLs, you will need to [enable the feature](
 
 ### Enable Prefetch URLs
 
-* [ Dashboard ](#tab-panel-8759)
-* [ API ](#tab-panel-8760)
+* [ Dashboard ](#tab-panel-8977)
+* [ API ](#tab-panel-8978)
 
 To enable **Prefetch URLs** in the dashboard:
 

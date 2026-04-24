@@ -1,18 +1,27 @@
 ---
 title: Test your first application
-description: You have now set up your Zero Trust organization, configured the Cloudflare One Client, installed it on devices, and created your Access and Gateway policies. The next step is to test those policies.
+description: Test Zero Trust policies on an application.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/replace-vpn/build-policies/test-your-first-application.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Test your first application
 

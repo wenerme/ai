@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/radar/investigate/bgp-anomalies.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # BGP anomalies
 
@@ -333,8 +342,8 @@ cd hijack-alerts
 
 In your Wrangler file, change the default checking frequency (once per hour) to what you like. Here is an example of configuring the workers to run the script five minutes.
 
-* [  wrangler.jsonc ](#tab-panel-8230)
-* [  wrangler.toml ](#tab-panel-8231)
+* [  wrangler.jsonc ](#tab-panel-8404)
+* [  wrangler.toml ](#tab-panel-8405)
 
 JSONC
 
@@ -350,7 +359,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-20",
+  "compatibility_date": "2026-04-24",
 
   "triggers": {
 
@@ -381,7 +390,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-20"
+compatibility_date = "2026-04-24"
 
 
 [triggers]
@@ -393,8 +402,8 @@ crons = [ "*/5 * * * *" ]
 
 In this example, we will also need to use Cloudflare KV to save the latest checked event IDs which allows us to know what events are new. Once you have created a KV, you can head back to the `wrangler.jsonc` file and add the following sections:
 
-* [  wrangler.jsonc ](#tab-panel-8228)
-* [  wrangler.toml ](#tab-panel-8229)
+* [  wrangler.jsonc ](#tab-panel-8402)
+* [  wrangler.toml ](#tab-panel-8403)
 
 JSONC
 
@@ -679,8 +688,8 @@ If you have [Email Routing](https://developers.cloudflare.com/email-routing/) en
 
 For this alert to work, you will need to configure the proper email bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#email-bindings).
 
-* [  wrangler.jsonc ](#tab-panel-8232)
-* [  wrangler.toml ](#tab-panel-8233)
+* [  wrangler.jsonc ](#tab-panel-8406)
+* [  wrangler.toml ](#tab-panel-8407)
 
 JSONC
 

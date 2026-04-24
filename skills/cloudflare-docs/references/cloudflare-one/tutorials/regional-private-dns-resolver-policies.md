@@ -10,17 +10,26 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation)[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/tutorials/regional-private-dns-resolver-policies.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Implement regional private DNS servers with Gateway resolver policies
 
-**Last reviewed:**  4 months ago 
+**Last reviewed:**  5 months ago 
 
 Gateway resolver policies allow you to route DNS queries to custom DNS resolvers based on various criteria. This tutorial demonstrates how to configure region-specific private DNS servers to ensure your users are directed to the closest internal resources based on their geographic location.
 

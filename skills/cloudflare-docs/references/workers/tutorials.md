@@ -1,18 +1,27 @@
 ---
 title: Tutorials
-description: View tutorials to help you get started with Workers.
+description: Step-by-step Workers tutorials and video guides to help you build projects on Cloudflare.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/tutorials/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Tutorials
 
@@ -23,8 +32,8 @@ View tutorials to help you get started with Workers.
 | Name                                                                                                                                                                                   | Last Updated       | Difficulty   |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------ |
 | [Build a voice agent](https://developers.cloudflare.com/agents/guides/build-a-voice-agent/)                                                                                            | Intermediate       |              |
-| [Deploy a Browser Rendering Worker with Durable Objects](https://developers.cloudflare.com/browser-rendering/how-to/browser-rendering-with-do/)                                        | over 2 years ago   | Beginner     |
-| [Generate OG images for Astro sites](https://developers.cloudflare.com/browser-rendering/how-to/og-images-astro/)                                                                      | Intermediate       |              |
+| [Deploy a Browser Run Worker with Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)                                                          | over 2 years ago   | Beginner     |
+| [Generate OG images for Astro sites](https://developers.cloudflare.com/browser-run/how-to/og-images-astro/)                                                                            | Intermediate       |              |
 | [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/)                                                                                           | about 1 month ago  | Intermediate |
 | [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/)                                                   | 6 months ago       | Beginner     |
 | [Connect to a PostgreSQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/postgres/)                                                              | 10 months ago      | Beginner     |
@@ -44,7 +53,7 @@ View tutorials to help you get started with Workers.
 | [Handle rate limits of external APIs](https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/)                                                                          | over 1 year ago    | Beginner     |
 | [Build an API to access D1 using a proxy Worker](https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/)                                                            | over 1 year ago    | Intermediate |
 | [Deploy a Worker](https://developers.cloudflare.com/pulumi/tutorial/hello-world/)                                                                                                      | over 1 year ago    | Beginner     |
-| [Build a web crawler with Queues and Browser Rendering](https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-rendering/)                                        | over 1 year ago    | Intermediate |
+| [Build a web crawler with Queues and Browser Run](https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/)                                                    | over 1 year ago    | Intermediate |
 | [Create a fine-tuned OpenAI model with R2](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/)                                            | almost 2 years ago | Intermediate |
 | [Build a Slackbot](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/)                                                                                              | almost 2 years ago | Beginner     |
 | [Use Workers KV directly from Rust](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/)                                                                         | almost 2 years ago | Intermediate |

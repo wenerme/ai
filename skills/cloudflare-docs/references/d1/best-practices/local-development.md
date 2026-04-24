@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/d1/best-practices/local-development.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Local development
 
@@ -60,8 +69,8 @@ Explain Code
 
 In this example, the Worker has access to local-only D1 database. The corresponding D1 binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-6282)
-* [  wrangler.toml ](#tab-panel-6283)
+* [  wrangler.jsonc ](#tab-panel-6454)
+* [  wrangler.toml ](#tab-panel-6455)
 
 JSONC
 
@@ -117,8 +126,8 @@ It is currently not possible to develop against a _remote_ D1 database when usin
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) should resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-6284)
-* [  wrangler.toml ](#tab-panel-6285)
+* [  wrangler.jsonc ](#tab-panel-6456)
+* [  wrangler.toml ](#tab-panel-6457)
 
 JSONC
 
@@ -201,8 +210,8 @@ Users of wrangler `2.x` must use the `--persist` flag: previous versions of wran
 
 You can use Miniflare's [support for D1 ↗](https://miniflare.dev/storage/d1) to create D1 databases you can use for testing:
 
-* [  wrangler.jsonc ](#tab-panel-6286)
-* [  wrangler.toml ](#tab-panel-6287)
+* [  wrangler.jsonc ](#tab-panel-6458)
+* [  wrangler.toml ](#tab-panel-6459)
 
 JSONC
 
@@ -286,8 +295,8 @@ Wrangler exposes an [unstable\_dev()](https://developers.cloudflare.com/workers/
 
 Given the below Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6288)
-* [  wrangler.toml ](#tab-panel-6289)
+* [  wrangler.jsonc ](#tab-panel-6460)
+* [  wrangler.toml ](#tab-panel-6461)
 
 JSONC
 

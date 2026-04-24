@@ -1,18 +1,27 @@
 ---
 title: Export to Honeycomb
-description: Honeycomb is an observability platform built for high-cardinality data that helps you understand and debug your applications. By exporting your Cloudflare Workers application telemetry to Honeycomb, you can:
+description: Send OpenTelemetry traces and logs from Cloudflare Workers to Honeycomb.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/observability/exporting-opentelemetry-data/honeycomb.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Export to Honeycomb
 
@@ -90,8 +99,8 @@ Repeat the process for logs:
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-7516)
-* [  wrangler.toml ](#tab-panel-7517)
+* [  wrangler.jsonc ](#tab-panel-9975)
+* [  wrangler.toml ](#tab-panel-9976)
 
 JSONC
 

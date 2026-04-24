@@ -1,6 +1,6 @@
 ---
 title: Single sign-on front door controls
-description: Access for SaaS functions as an identity proxy to add an additional authentication layer to your SaaS apps.
+description: Protect SaaS apps with Access for SaaS.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/secure-saas-applications/sso-front-door.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Single sign-on front door controls
 

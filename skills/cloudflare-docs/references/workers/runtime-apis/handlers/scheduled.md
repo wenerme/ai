@@ -1,18 +1,27 @@
 ---
 title: Scheduled Handler
-description: When a Worker is invoked via a Cron Trigger, the scheduled() handler handles the invocation.
+description: Run Workers on a recurring schedule using the scheduled() handler and Cron Triggers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/handlers/scheduled.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Scheduled Handler
 
@@ -45,9 +54,9 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*" # Python W
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-10088)
-* [  TypeScript ](#tab-panel-10089)
-* [  Python ](#tab-panel-10090)
+* [  JavaScript ](#tab-panel-10104)
+* [  TypeScript ](#tab-panel-10105)
+* [  Python ](#tab-panel-10106)
 
 JavaScript
 
@@ -128,8 +137,8 @@ class Default(WorkerEntrypoint):
 
 When you configure multiple [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for a single Worker, each trigger invokes the same `scheduled()` handler. Use `controller.cron` to distinguish which schedule fired and run different logic for each.
 
-* [  wrangler.jsonc ](#tab-panel-10093)
-* [  wrangler.toml ](#tab-panel-10094)
+* [  wrangler.jsonc ](#tab-panel-10109)
+* [  wrangler.toml ](#tab-panel-10110)
 
 JSONC
 
@@ -159,8 +168,8 @@ crons = [ "*/5 * * * *", "0 0 * * *" ]
 
 ```
 
-* [  JavaScript ](#tab-panel-10091)
-* [  TypeScript ](#tab-panel-10092)
+* [  JavaScript ](#tab-panel-10107)
+* [  TypeScript ](#tab-panel-10108)
 
 JavaScript
 

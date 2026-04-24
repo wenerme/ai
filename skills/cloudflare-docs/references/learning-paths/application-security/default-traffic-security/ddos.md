@@ -1,18 +1,27 @@
 ---
 title: DDoS Protection
-description: Cloudflare automatically detects and mitigates DDoS attacks using its Autonomous Edge, which is always-on. Advanced protections are reserved for Magic Transit customers.
+description: Understand automatic DDoS attack mitigation.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/application-security/default-traffic-security/ddos.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # DDoS Protection
 

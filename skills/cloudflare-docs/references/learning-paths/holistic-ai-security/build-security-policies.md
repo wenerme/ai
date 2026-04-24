@@ -1,18 +1,27 @@
 ---
 title: Build security policies for general AI use
-description: Once your monitoring tools have given you a clear picture of AI usage in your organization, you can begin building security policies to meet your objectives. The Gateway policy builder offers extensive options for both application categorization and function granularity to help you create policies that achieve your goals.
+description: Monitor and secure generative AI usage.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/holistic-ai-security/build-security-policies/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build security policies for general AI use
 

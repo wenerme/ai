@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/configuration/custom-providers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Custom Providers
 
@@ -50,8 +59,8 @@ To create an API token:
 
 ## Create a custom provider
 
-* [ API ](#tab-panel-3042)
-* [ Dashboard ](#tab-panel-3043)
+* [ API ](#tab-panel-5267)
+* [ Dashboard ](#tab-panel-5268)
 
 To create a new custom provider using the API:
 
@@ -168,8 +177,8 @@ To create a new custom provider using the dashboard:
 
 ## List custom providers
 
-* [ API ](#tab-panel-3044)
-* [ Dashboard ](#tab-panel-3045)
+* [ API ](#tab-panel-5269)
+* [ Dashboard ](#tab-panel-5270)
 
 Retrieve all custom providers with optional filtering and pagination:
 
@@ -278,7 +287,7 @@ To view all your custom providers:
 
 ## Get a specific custom provider
 
-* [ API ](#tab-panel-3041)
+* [ API ](#tab-panel-5266)
 
 Retrieve details for a specific custom provider by its ID:
 
@@ -344,8 +353,8 @@ Explain Code
 
 ## Update a custom provider
 
-* [ API ](#tab-panel-3046)
-* [ Dashboard ](#tab-panel-3047)
+* [ API ](#tab-panel-5271)
+* [ Dashboard ](#tab-panel-5272)
 
 Update an existing custom provider. All fields are optional - only include the fields you want to change:
 
@@ -434,8 +443,8 @@ To update an existing custom provider:
 
 ## Delete a custom provider
 
-* [ API ](#tab-panel-3048)
-* [ Dashboard ](#tab-panel-3049)
+* [ API ](#tab-panel-5273)
+* [ Dashboard ](#tab-panel-5274)
 
 Delete a custom provider:
 

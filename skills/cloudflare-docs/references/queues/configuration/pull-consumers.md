@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/configuration/pull-consumers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Pull consumers
 
@@ -120,9 +129,9 @@ You will need to note the token down: it will only be displayed once.
 
 To pull a message, make a HTTP POST request to the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) with a JSON-encoded body that optionally specifies a `visibility_timeout` and a `batch_size`, or an empty JSON object (`{}`):
 
-* [  JavaScript ](#tab-panel-7917)
-* [  TypeScript ](#tab-panel-7918)
-* [  Python ](#tab-panel-7919)
+* [  JavaScript ](#tab-panel-8089)
+* [  TypeScript ](#tab-panel-8090)
+* [  Python ](#tab-panel-8091)
 
 index.js
 
@@ -339,9 +348,9 @@ Messages pulled by a consumer need to be either acknowledged or marked for retry
 
 To acknowledge and/or mark messages to be retried, make a HTTP `POST` request to `/ack` endpoint of your queue per the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) by providing an array of `lease_id` objects to acknowledge and/or retry:
 
-* [  JavaScript ](#tab-panel-7920)
-* [  TypeScript ](#tab-panel-7921)
-* [  Python ](#tab-panel-7922)
+* [  JavaScript ](#tab-panel-8092)
+* [  TypeScript ](#tab-panel-8093)
+* [  Python ](#tab-panel-8094)
 
 index.js
 

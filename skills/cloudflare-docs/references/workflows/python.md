@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workflows/python/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Python Workflows SDK
 
@@ -94,8 +103,8 @@ Explain Code
 
 You must add both `python_workflows` and `python_workers` compatibility flags to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-11123)
-* [  wrangler.toml ](#tab-panel-11124)
+* [  wrangler.jsonc ](#tab-panel-11139)
+* [  wrangler.toml ](#tab-panel-11140)
 
 JSONC
 
@@ -119,7 +128,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-22",
+  "compatibility_date": "2026-04-24",
 
   "workflows": [
 
@@ -156,7 +165,7 @@ compatibility_flags = [ "python_workers", "python_workflows" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-22"
+compatibility_date = "2026-04-24"
 
 
 [[workflows]]

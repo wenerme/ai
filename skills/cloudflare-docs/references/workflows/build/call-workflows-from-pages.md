@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workflows/build/call-workflows-from-pages.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Call Workflows from Pages
 
@@ -42,8 +51,8 @@ To do this, you will need to:
 
 For example, if you have a Worker called `workflows-starter`, you would create a new Service Binding in your Pages project as follows, ensuring that the `service` name matches the name of the Worker your Workflow is defined in:
 
-* [  wrangler.jsonc ](#tab-panel-11045)
-* [  wrangler.toml ](#tab-panel-11046)
+* [  wrangler.jsonc ](#tab-panel-11061)
+* [  wrangler.toml ](#tab-panel-11062)
 
 JSONC
 
@@ -85,8 +94,8 @@ Your Worker can expose a specific method (or methods) that only other Workers or
 
 In the following example, we expose a specific `createInstance` method that accepts our `Payload` and returns the [InstanceStatus](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus) from the Workflows API:
 
-* [  JavaScript ](#tab-panel-11053)
-* [  TypeScript ](#tab-panel-11054)
+* [  JavaScript ](#tab-panel-11069)
+* [  TypeScript ](#tab-panel-11070)
 
 index.js
 
@@ -192,8 +201,8 @@ Explain Code
 
 Your Pages Function would resemble the following:
 
-* [  JavaScript ](#tab-panel-11047)
-* [  TypeScript ](#tab-panel-11048)
+* [  JavaScript ](#tab-panel-11063)
+* [  TypeScript ](#tab-panel-11064)
 
 functions/request.js
 
@@ -248,8 +257,8 @@ Service Bindings don't require you to expose a public endpoint from your Worker,
 
 An alternative to setting up a Service Binding is to call the Worker over HTTP by using the Workflows [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow) to `create` a new Workflow instance for each incoming HTTP call to the Worker:
 
-* [  JavaScript ](#tab-panel-11049)
-* [  TypeScript ](#tab-panel-11050)
+* [  JavaScript ](#tab-panel-11065)
+* [  TypeScript ](#tab-panel-11066)
 
 index.js
 
@@ -319,8 +328,8 @@ Explain Code
 
 Your [Pages Function](https://developers.cloudflare.com/pages/functions/get-started/) can then make a regular `fetch` call to the Worker:
 
-* [  JavaScript ](#tab-panel-11051)
-* [  TypeScript ](#tab-panel-11052)
+* [  JavaScript ](#tab-panel-11067)
+* [  TypeScript ](#tab-panel-11068)
 
 functions/request.js
 

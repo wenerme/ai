@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/artifacts/examples/sandbox-sdk-artifacts.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Sandbox SDK + Artifacts
 
@@ -53,8 +62,8 @@ cd repo-per-sandbox
 
 The template keeps one Artifacts repo per sandbox ID:
 
-* [  JavaScript ](#tab-panel-5283)
-* [  TypeScript ](#tab-panel-5284)
+* [  JavaScript ](#tab-panel-5491)
+* [  TypeScript ](#tab-panel-5492)
 
 src/index.js
 
@@ -144,8 +153,8 @@ Explain Code
 
 Use the same ID for the sandbox:
 
-* [  JavaScript ](#tab-panel-5279)
-* [  TypeScript ](#tab-panel-5280)
+* [  JavaScript ](#tab-panel-5487)
+* [  TypeScript ](#tab-panel-5488)
 
 src/index.js
 
@@ -177,8 +186,8 @@ Convert the write token into an authenticated Git remote, then store it as an en
 
 Use a short-lived token and pass it into the sandbox only after the sandbox session is authorized to push changes.
 
-* [  JavaScript ](#tab-panel-5281)
-* [  TypeScript ](#tab-panel-5282)
+* [  JavaScript ](#tab-panel-5489)
+* [  TypeScript ](#tab-panel-5490)
 
 src/index.js
 

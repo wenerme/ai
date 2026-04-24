@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/byoip/get-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Get started
 
@@ -135,8 +144,8 @@ The process described on this page leverages automated [LOA](https://developers.
 ### Validate prefix ownership
 
 1. Validate prefix ownership using one of the following methods:  
-   * [ IRR record ](#tab-panel-5404)  
-   * [ Reverse DNS zone and TXT record ](#tab-panel-5405)  
+   * [ IRR record ](#tab-panel-5617)  
+   * [ Reverse DNS zone and TXT record ](#tab-panel-5618)  
    1. Copy the `ownership_validation_token` returned by the API call.  
    2. On the IRR record of the prefix you are onboarding, add the following string in either a `description` or `remarks` field. Replace `<OWNERSHIP_VALIDATION_TOKEN>` by the actual token you copied in the previous step.  
 ```  

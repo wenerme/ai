@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/manage-files.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Manage files
 
@@ -26,8 +35,8 @@ File operations support both absolute and relative paths:
 * `/tmp` \- Temporary files (may be cleared)
 * `/home` \- User home directory
 
-* [  JavaScript ](#tab-panel-6445)
-* [  TypeScript ](#tab-panel-6446)
+* [  JavaScript ](#tab-panel-8856)
+* [  TypeScript ](#tab-panel-8857)
 
 JavaScript
 
@@ -75,8 +84,8 @@ await session.writeFile('src/index.js', code);  // Writes to /workspace/my-proje
 
 ## Write files
 
-* [  JavaScript ](#tab-panel-6453)
-* [  TypeScript ](#tab-panel-6454)
+* [  JavaScript ](#tab-panel-8864)
+* [  TypeScript ](#tab-panel-8865)
 
 JavaScript
 
@@ -162,8 +171,8 @@ Explain Code
 
 ## Read files
 
-* [  JavaScript ](#tab-panel-6459)
-* [  TypeScript ](#tab-panel-6460)
+* [  JavaScript ](#tab-panel-8870)
+* [  TypeScript ](#tab-panel-8871)
 
 JavaScript
 
@@ -255,8 +264,8 @@ Explain Code
 
 ## Organize files
 
-* [  JavaScript ](#tab-panel-6449)
-* [  TypeScript ](#tab-panel-6450)
+* [  JavaScript ](#tab-panel-8860)
+* [  TypeScript ](#tab-panel-8861)
 
 JavaScript
 
@@ -322,8 +331,8 @@ Explain Code
 
 Write multiple files in parallel:
 
-* [  JavaScript ](#tab-panel-6451)
-* [  TypeScript ](#tab-panel-6452)
+* [  JavaScript ](#tab-panel-8862)
+* [  TypeScript ](#tab-panel-8863)
 
 JavaScript
 
@@ -387,8 +396,8 @@ Explain Code
 
 ## Check if file exists
 
-* [  JavaScript ](#tab-panel-6457)
-* [  TypeScript ](#tab-panel-6458)
+* [  JavaScript ](#tab-panel-8868)
+* [  TypeScript ](#tab-panel-8869)
 
 JavaScript
 
@@ -474,8 +483,8 @@ Explain Code
 
 Create parent directories first:
 
-* [  JavaScript ](#tab-panel-6447)
-* [  TypeScript ](#tab-panel-6448)
+* [  JavaScript ](#tab-panel-8858)
+* [  TypeScript ](#tab-panel-8859)
 
 JavaScript
 
@@ -507,8 +516,8 @@ await sandbox.writeFile('/workspace/data/file.txt', content);
 
 Use base64 for binary files:
 
-* [  JavaScript ](#tab-panel-6455)
-* [  TypeScript ](#tab-panel-6456)
+* [  JavaScript ](#tab-panel-8866)
+* [  TypeScript ](#tab-panel-8867)
 
 JavaScript
 
@@ -562,8 +571,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 When writing with `encoding: 'base64'`, content must contain only valid base64 characters:
 
-* [  JavaScript ](#tab-panel-6461)
-* [  TypeScript ](#tab-panel-6462)
+* [  JavaScript ](#tab-panel-8872)
+* [  TypeScript ](#tab-panel-8873)
 
 JavaScript
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/reference/migrate-to-module-workers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Migrate from Service Workers to ES Modules
 
@@ -111,8 +120,8 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 2. Create a Worker.
 3. Find your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add a KV namespace binding:
 
-* [  wrangler.jsonc ](#tab-panel-10009)
-* [  wrangler.toml ](#tab-panel-10010)
+* [  wrangler.jsonc ](#tab-panel-10025)
+* [  wrangler.toml ](#tab-panel-10026)
 
 JSONC
 
@@ -251,8 +260,8 @@ export { getTodos }
 
 Review the following example environment variable configuration in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10011)
-* [  wrangler.toml ](#tab-panel-10012)
+* [  wrangler.jsonc ](#tab-panel-10027)
+* [  wrangler.toml ](#tab-panel-10028)
 
 JSONC
 
@@ -339,8 +348,8 @@ export default {
 
 You can also import `env` from `cloudflare:workers` to access environment variables from anywhere in your code, including the top-level scope:
 
-* [  JavaScript ](#tab-panel-10013)
-* [  TypeScript ](#tab-panel-10014)
+* [  JavaScript ](#tab-panel-10029)
+* [  TypeScript ](#tab-panel-10030)
 
 JavaScript
 

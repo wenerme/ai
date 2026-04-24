@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/containers/container-class.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Container Interface
 
@@ -42,8 +51,8 @@ bun add @cloudflare/containers
 
 Then, define a class that extends `Container` and set the shared properties on the class:
 
-* [  JavaScript ](#tab-panel-4023)
-* [  TypeScript ](#tab-panel-4024)
+* [  JavaScript ](#tab-panel-6392)
+* [  TypeScript ](#tab-panel-6393)
 
 JavaScript
 
@@ -174,8 +183,8 @@ onStart(): void | Promise<void>
 
 Use this to log startup, seed data, or schedule recurring tasks with [schedule()](#schedule).
 
-* [  JavaScript ](#tab-panel-4019)
-* [  TypeScript ](#tab-panel-4020)
+* [  JavaScript ](#tab-panel-6388)
+* [  TypeScript ](#tab-panel-6389)
 
 JavaScript
 
@@ -258,8 +267,8 @@ onStop(params: StopParams): void | Promise<void>
 
 Use this to log, alert, or restart the container.
 
-* [  JavaScript ](#tab-panel-4017)
-* [  TypeScript ](#tab-panel-4018)
+* [  JavaScript ](#tab-panel-6386)
+* [  TypeScript ](#tab-panel-6387)
 
 JavaScript
 
@@ -322,8 +331,8 @@ onError(error: unknown): any
 
 Override this to suppress errors, notify an external service, or attempt a restart.
 
-* [  JavaScript ](#tab-panel-4021)
-* [  TypeScript ](#tab-panel-4022)
+* [  JavaScript ](#tab-panel-6390)
+* [  TypeScript ](#tab-panel-6391)
 
 JavaScript
 
@@ -392,8 +401,8 @@ If you override `onActivityExpired()`, call [await this.stop()](#stop) or [await
 
 If you override this method without stopping the container, the timer renews and the hook fires again on the next expiry.
 
-* [  JavaScript ](#tab-panel-4025)
-* [  TypeScript ](#tab-panel-4026)
+* [  JavaScript ](#tab-panel-6394)
+* [  TypeScript ](#tab-panel-6395)
 
 JavaScript
 
@@ -481,8 +490,8 @@ By default, `fetch` forwards the request to the container process at [defaultPor
 
 Override `fetch` when you need routing logic, authentication, or other middleware before forwarding to the container. Inside the override, call [this.containerFetch()](#containerfetch) rather than `this.fetch()` to avoid infinite recursion:
 
-* [  JavaScript ](#tab-panel-4027)
-* [  TypeScript ](#tab-panel-4028)
+* [  JavaScript ](#tab-panel-6396)
+* [  TypeScript ](#tab-panel-6397)
 
 JavaScript
 
@@ -559,7 +568,7 @@ Explain Code
 
 ### `containerFetch`
 
-Send an HTTP request directly to the container process. Generally, users should prefer to use [fetch](#fetch) unless it has been overrriden.
+Send an HTTP request directly to the container process. Generally, users should prefer to use [fetch](#fetch) unless it has been overridden.
 
 TypeScript
 
@@ -585,8 +594,8 @@ This is what the default [fetch()](#fetch) implementation calls internally, and 
 
 Does not support WebSockets. Use [fetch()](#fetch) with [switchPort()](#switchport) for those.
 
-* [  JavaScript ](#tab-panel-4037)
-* [  TypeScript ](#tab-panel-4038)
+* [  JavaScript ](#tab-panel-6406)
+* [  TypeScript ](#tab-panel-6407)
 
 JavaScript
 
@@ -736,8 +745,8 @@ This is the safest way to explicitly start a container when you need to be certa
 
 This method also supports positional `ports`, `cancellationOptions`, and `startOptions` arguments, but the object form is easier to read.
 
-* [  JavaScript ](#tab-panel-4033)
-* [  TypeScript ](#tab-panel-4034)
+* [  JavaScript ](#tab-panel-6402)
+* [  TypeScript ](#tab-panel-6403)
 
 JavaScript
 
@@ -864,8 +873,8 @@ start(startOptions?: ContainerStartConfigOptions, waitOptions?: WaitOptions): Pr
 
 Use this when the container does not expose ports, such as a batch job or a cron task, or when you want to manage readiness yourself with [waitForPort()](#waitforport). If you need to wait for all ports to be ready, use [startAndWaitForPorts()](#startandwaitforports) instead.
 
-* [  JavaScript ](#tab-panel-4029)
-* [  TypeScript ](#tab-panel-4030)
+* [  JavaScript ](#tab-panel-6398)
+* [  TypeScript ](#tab-panel-6399)
 
 JavaScript
 
@@ -968,8 +977,8 @@ waitForPort(waitOptions: WaitOptions): Promise<number>
 
 Throws if the port does not become available within the retry limit. Use this after [start()](#start) when you need to check multiple ports independently or in a specific sequence.
 
-* [  JavaScript ](#tab-panel-4031)
-* [  TypeScript ](#tab-panel-4032)
+* [  JavaScript ](#tab-panel-6400)
+* [  TypeScript ](#tab-panel-6401)
 
 JavaScript
 
@@ -1065,8 +1074,8 @@ stop(signal?: 'SIGTERM' | 'SIGINT' | 'SIGKILL' | number): Promise<void>
 
 Defaults to `SIGTERM`, which gives the process a chance to shut down gracefully. Triggers [onStop()](#onstop).
 
-* [  JavaScript ](#tab-panel-4035)
-* [  TypeScript ](#tab-panel-4036)
+* [  JavaScript ](#tab-panel-6404)
+* [  TypeScript ](#tab-panel-6405)
 
 JavaScript
 
@@ -1154,8 +1163,8 @@ destroy(): Promise<void>
 
 This sends `SIGKILL`. Use it when you need the container gone immediately and cannot wait for a graceful shutdown. Triggers [onStop()](#onstop).
 
-* [  JavaScript ](#tab-panel-4039)
-* [  TypeScript ](#tab-panel-4040)
+* [  JavaScript ](#tab-panel-6408)
+* [  TypeScript ](#tab-panel-6409)
 
 JavaScript
 
@@ -1249,8 +1258,8 @@ getState(): Promise<State>
 
 `running` means the container is starting and has not yet passed its health check. `healthy` means it is up and accepting requests.
 
-* [  JavaScript ](#tab-panel-4041)
-* [  TypeScript ](#tab-panel-4042)
+* [  JavaScript ](#tab-panel-6410)
+* [  TypeScript ](#tab-panel-6411)
 
 JavaScript
 
@@ -1338,8 +1347,8 @@ renewActivityTimeout(): void
 
 Incoming requests reset the timer automatically. Call this manually from background work, such as a scheduled task or a long-running operation, that should count as activity and prevent the container from sleeping.
 
-* [  JavaScript ](#tab-panel-4045)
-* [  TypeScript ](#tab-panel-4046)
+* [  JavaScript ](#tab-panel-6414)
+* [  TypeScript ](#tab-panel-6415)
 
 JavaScript
 
@@ -1448,8 +1457,8 @@ Do not override [alarm() ↗](https://developers.cloudflare.com/durable-objects/
 
 The following example schedules a recurring health report starting at container startup:
 
-* [  JavaScript ](#tab-panel-4049)
-* [  TypeScript ](#tab-panel-4050)
+* [  JavaScript ](#tab-panel-6418)
+* [  TypeScript ](#tab-panel-6419)
 
 JavaScript
 
@@ -1528,8 +1537,8 @@ Explain Code
 
 Outbound interception lets you intercept, mock, or block HTTP requests that the container makes to external hosts. This is useful for sandboxing, testing, or proxying outbound traffic through Worker code.
 
-* [  JavaScript ](#tab-panel-4053)
-* [  TypeScript ](#tab-panel-4054)
+* [  JavaScript ](#tab-panel-6422)
+* [  TypeScript ](#tab-panel-6423)
 
 JavaScript
 
@@ -1684,8 +1693,8 @@ getContainer<T>(binding: DurableObjectNamespace<T>, name?: string): DurableObjec
 
 Use this when you want one container per logical entity, such as a user session, a document, or a game room, identified by a stable name.
 
-* [  JavaScript ](#tab-panel-4043)
-* [  TypeScript ](#tab-panel-4044)
+* [  JavaScript ](#tab-panel-6412)
+* [  TypeScript ](#tab-panel-6413)
 
 JavaScript
 
@@ -1753,8 +1762,8 @@ getRandom<T>(binding: DurableObjectNamespace<T>, instances?: number): Promise<Du
 
 Use this for stateless workloads where any container can handle any request and you want to spread load across multiple instances.
 
-* [  JavaScript ](#tab-panel-4047)
-* [  TypeScript ](#tab-panel-4048)
+* [  JavaScript ](#tab-panel-6416)
+* [  TypeScript ](#tab-panel-6417)
 
 JavaScript
 
@@ -1824,8 +1833,8 @@ switchPort(request: Request, port: number): Request
 
 Use this when you need to target a specific port and also need WebSocket support. If you do not need WebSockets, pass the port directly to [containerFetch()](#containerfetch) instead.
 
-* [  JavaScript ](#tab-panel-4051)
-* [  TypeScript ](#tab-panel-4052)
+* [  JavaScript ](#tab-panel-6420)
+* [  TypeScript ](#tab-panel-6421)
 
 JavaScript
 

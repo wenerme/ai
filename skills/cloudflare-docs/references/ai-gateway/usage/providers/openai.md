@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/usage/providers/openai.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # OpenAI
 
@@ -45,8 +54,8 @@ When making requests to OpenAI, replace `https://api.openai.com/v1` in the URL y
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5141)
-* [ Unauthenticated Gateway ](#tab-panel-5142)
+* [ With Authenticated Gateway ](#tab-panel-5317)
+* [ Unauthenticated Gateway ](#tab-panel-5318)
 
 ```
 
@@ -151,8 +160,8 @@ Explain Code
 
 Responses API with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5143)
-* [ Unauthenticated Gateway ](#tab-panel-5144)
+* [ With Authenticated Gateway ](#tab-panel-5319)
+* [ Unauthenticated Gateway ](#tab-panel-5320)
 
 Terminal window
 
@@ -224,8 +233,8 @@ Explain Code
 
 Chat Completions with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5145)
-* [ Unauthenticated Gateway ](#tab-panel-5146)
+* [ With Authenticated Gateway ](#tab-panel-5321)
+* [ Unauthenticated Gateway ](#tab-panel-5322)
 
 Terminal window
 

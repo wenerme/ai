@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/api/sqlite-storage-api.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # SQLite-backed Durable Object Storage
 
@@ -60,9 +69,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-6620)
-* [  TypeScript ](#tab-panel-6621)
-* [  Python ](#tab-panel-6622)
+* [  JavaScript ](#tab-panel-6792)
+* [  TypeScript ](#tab-panel-6793)
+* [  Python ](#tab-panel-6794)
 
 JavaScript
 
@@ -166,8 +175,8 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-6612)
-* [  Python ](#tab-panel-6613)
+* [  TypeScript ](#tab-panel-6784)
+* [  Python ](#tab-panel-6785)
 
 TypeScript
 
@@ -297,8 +306,8 @@ A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `Sql
    * Returned Iterator supports `next()` and `toArray()` methods above.  
    * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-6614)
-* [  Python ](#tab-panel-6615)
+* [  TypeScript ](#tab-panel-6786)
+* [  Python ](#tab-panel-6787)
 
 TypeScript
 
@@ -592,8 +601,8 @@ TypeScript
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-6616)
-* [  Python ](#tab-panel-6617)
+* [  TypeScript ](#tab-panel-6788)
+* [  Python ](#tab-panel-6789)
 
 TypeScript
 
@@ -639,8 +648,8 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-6618)
-* [  Python ](#tab-panel-6619)
+* [  TypeScript ](#tab-panel-6790)
+* [  Python ](#tab-panel-6791)
 
 TypeScript
 

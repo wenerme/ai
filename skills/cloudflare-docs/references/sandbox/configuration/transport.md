@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/configuration/transport.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Transport modes
 
@@ -90,8 +99,8 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable WebSocket transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-8512)
-* [  wrangler.toml ](#tab-panel-8513)
+* [  wrangler.jsonc ](#tab-panel-8684)
+* [  wrangler.toml ](#tab-panel-8685)
 
 JSONC
 
@@ -105,7 +114,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-21",
+  "compatibility_date": "2026-04-24",
 
   "vars": {
 
@@ -158,7 +167,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-21"
+compatibility_date = "2026-04-24"
 
 
 [vars]
@@ -244,8 +253,8 @@ Switching between transports requires no code changes.
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-8508)
-* [  wrangler.toml ](#tab-panel-8509)
+* [  wrangler.jsonc ](#tab-panel-8680)
+* [  wrangler.toml ](#tab-panel-8681)
 
 JSONC
 
@@ -290,8 +299,8 @@ npx wrangler deploy
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-8510)
-* [  wrangler.toml ](#tab-panel-8511)
+* [  wrangler.jsonc ](#tab-panel-8682)
+* [  wrangler.toml ](#tab-panel-8683)
 
 JSONC
 

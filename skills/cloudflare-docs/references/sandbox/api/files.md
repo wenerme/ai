@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/api/files.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Files
 
@@ -40,8 +49,8 @@ await sandbox.writeFile(path: string, content: string, options?: WriteFileOption
 * `options` (optional):  
    * `encoding` \- File encoding (`"utf-8"` or `"base64"`, default: `"utf-8"`)
 
-* [  JavaScript ](#tab-panel-8410)
-* [  TypeScript ](#tab-panel-8411)
+* [  JavaScript ](#tab-panel-8582)
+* [  TypeScript ](#tab-panel-8583)
 
 JavaScript
 
@@ -96,8 +105,8 @@ const file = await sandbox.readFile(path: string, options?: ReadFileOptions): Pr
 
 **Returns**: `Promise<FileInfo>` with `content` and `encoding`
 
-* [  JavaScript ](#tab-panel-8418)
-* [  TypeScript ](#tab-panel-8419)
+* [  JavaScript ](#tab-panel-8590)
+* [  TypeScript ](#tab-panel-8591)
 
 JavaScript
 
@@ -170,8 +179,8 @@ const result = await sandbox.exists(path: string): Promise<FileExistsResult>
 
 **Returns**: `Promise<FileExistsResult>` with `exists` boolean
 
-* [  JavaScript ](#tab-panel-8422)
-* [  TypeScript ](#tab-panel-8423)
+* [  JavaScript ](#tab-panel-8594)
+* [  TypeScript ](#tab-panel-8595)
 
 JavaScript
 
@@ -256,8 +265,8 @@ await sandbox.mkdir(path: string, options?: MkdirOptions): Promise<void>
 * `options` (optional):  
    * `recursive` \- Create parent directories if needed (default: `false`)
 
-* [  JavaScript ](#tab-panel-8414)
-* [  TypeScript ](#tab-panel-8415)
+* [  JavaScript ](#tab-panel-8586)
+* [  TypeScript ](#tab-panel-8587)
 
 JavaScript
 
@@ -304,8 +313,8 @@ await sandbox.deleteFile(path: string): Promise<void>
 
 * `path` \- Absolute path to the file
 
-* [  JavaScript ](#tab-panel-8412)
-* [  TypeScript ](#tab-panel-8413)
+* [  JavaScript ](#tab-panel-8584)
+* [  TypeScript ](#tab-panel-8585)
 
 JavaScript
 
@@ -343,8 +352,8 @@ await sandbox.renameFile(oldPath: string, newPath: string): Promise<void>
 * `oldPath` \- Current file path
 * `newPath` \- New file path
 
-* [  JavaScript ](#tab-panel-8416)
-* [  TypeScript ](#tab-panel-8417)
+* [  JavaScript ](#tab-panel-8588)
+* [  TypeScript ](#tab-panel-8589)
 
 JavaScript
 
@@ -382,8 +391,8 @@ await sandbox.moveFile(sourcePath: string, destinationPath: string): Promise<voi
 * `sourcePath` \- Current file path
 * `destinationPath` \- Destination path
 
-* [  JavaScript ](#tab-panel-8420)
-* [  TypeScript ](#tab-panel-8421)
+* [  JavaScript ](#tab-panel-8592)
+* [  TypeScript ](#tab-panel-8593)
 
 JavaScript
 
@@ -424,8 +433,8 @@ await sandbox.gitCheckout(repoUrl: string, options?: GitCheckoutOptions): Promis
    * `targetDir` \- Directory to clone into (default: `/workspace/{repoName}`)  
    * `depth` \- Clone depth for shallow clones (e.g., `1` for latest commit only)
 
-* [  JavaScript ](#tab-panel-8424)
-* [  TypeScript ](#tab-panel-8425)
+* [  JavaScript ](#tab-panel-8596)
+* [  TypeScript ](#tab-panel-8597)
 
 JavaScript
 

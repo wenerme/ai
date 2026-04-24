@@ -8,7 +8,7 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 Merge or accept a merge request.
 
 ```plaintext
-glab mr merge {<id> | <branch>} [flags]
+glab mr merge [<id | branch>] [flags]
 ```
 
 ## Aliases

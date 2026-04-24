@@ -1,16 +1,25 @@
 ---
 title: Improving web security for content management systems like WordPress
-description: Content Management Systems make it easy to create, update, and manage content. However, they can also introduce vulnerabilities that may lead to server compromise and data theft.
+description: Improve WordPress security with Cloudflare features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Improving web security for content management systems like WordPress
 
@@ -108,7 +117,7 @@ Do the following:
 2. Import the certificate to your computer’s key storage. With macOS Keychain, you can use the steps listed in [Test in the browser](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-in-the-browser).
 3. [Enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) by adding the correct host.
 4. In **SSL/TLS** \> **Client Certificates**, select **Create mTLS Rule**.
-5. Under **When incoming requests match**, enter a value for thr **URI Path** field to narrow the rule scope to the admin section, otherwise you will block your visitors from accessing the public content.
+5. Under **When incoming requests match**, enter a value for the **URI Path** field to narrow the rule scope to the admin section, otherwise you will block your visitors from accessing the public content.
 6. Set the rule to _Block_ any requests made to your admin panel if the client certificate is not verified.
 7. Select **Deploy**. This creates a WAF custom rule that checks all requests to the admin section for a valid client certificate.
 

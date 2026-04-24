@@ -1,16 +1,15 @@
 ---
 title: What are Durable Objects?
+description: Learn how Durable Objects provide stateful serverless.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # What are Durable Objects?
 
-* [ Watch this episode ](#tab-panel-5104)
-* [ Series overview ](#tab-panel-5105)
+* [ Watch this episode ](#tab-panel-7551)
+* [ Series overview ](#tab-panel-7552)
 
 In this video, we show how Durable Objects work and start building a video call app together.
 

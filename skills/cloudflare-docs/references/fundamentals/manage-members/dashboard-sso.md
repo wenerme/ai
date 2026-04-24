@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/manage-members/dashboard-sso.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Set up dashboard SSO
 
@@ -50,8 +59,8 @@ Warning
 
 You must create an [Account API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the role `SSO Connector Edit` and store it securely. This acts as a backup plan, allowing you to disable SSO via the API if you are accidentally locked out, such as due to changes in your IdP configuration later.
 
-* [ Dashboard ](#tab-panel-6943)
-* [ API ](#tab-panel-6944)
+* [ Dashboard ](#tab-panel-7117)
+* [ API ](#tab-panel-7118)
 
 1. Once you have configured an IdP in Cloudflare One, go to the **Members** page to manage SSO connectors.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -121,8 +130,8 @@ Explain Code
 
 ## 3\. Verify domain ownership
 
-* [ Dashboard ](#tab-panel-6945)
-* [ API ](#tab-panel-6946)
+* [ Dashboard ](#tab-panel-7119)
+* [ API ](#tab-panel-7120)
 
 If you are unable to change your DNS records right away, the option to verify later is available. The verification process can be manually triggered from the actions menu for that connector in the list.
 
@@ -181,8 +190,8 @@ Once the verification process has completed and successfully verified domain own
 
 Domains that are associated with an already enabled connector belonging to a different account may not be enabled on a new account until disabled on the old account.
 
-* [ Dashboard ](#tab-panel-6947)
-* [ API ](#tab-panel-6948)
+* [ Dashboard ](#tab-panel-7121)
+* [ API ](#tab-panel-7122)
 
 Enable the connector by selecting **Enable** in the Actions menu for that connector in the list.
 
@@ -250,7 +259,7 @@ Configure an identity provider (IdP)-initiated single sign-on (SSO) session usin
 #### Configure Okta as the IdP
 
 1. Log in to your [Okta Admin Dashboard ↗](https://login.okta.com/) and go to **Applications** \> **Applications**.
-2. Select **Create App Integration** to start a new SAML integration to handle the IdP-initiated SSO flow.
+2. Select **Create App Integration** to start a new SAML integration to handle the IdP-initiated SSO flow. Note that this is a second, distinct Cloudflare-Okta integration, created separately from the [IdP integration with Zero Trust](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 3. In the pop-up, select **SAML 2.0** and select **Next**.
 4. Enter a name for the app and select **Next**.
 5. In the **Single Sign-On URL** field, paste the **SSO Endpoint URL** [you copied earlier](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#prerequisites-1).
@@ -345,8 +354,8 @@ Warning
 
 Before disabling SSO, make sure you have access to your Cloudflare user email. This will allow you to reset your password in case you get logged out of the Cloudflare dashboard.
 
-* [ Dashboard ](#tab-panel-6939)
-* [ API ](#tab-panel-6940)
+* [ Dashboard ](#tab-panel-7113)
+* [ API ](#tab-panel-7114)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -447,8 +456,8 @@ Users can now log in using their Cloudflare account email and password. If a use
 
 Cloudflare does not allow you to change your team name while a SSO connector is created. To change your team name, you must disable and delete your SSO connector(s).
 
-* [ Dashboard ](#tab-panel-6941)
-* [ API ](#tab-panel-6942)
+* [ Dashboard ](#tab-panel-7115)
+* [ API ](#tab-panel-7116)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)

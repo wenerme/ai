@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/reference/markdown-for-agents.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Markdown for Agents
 
@@ -43,8 +52,8 @@ curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agent
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-6964)
-* [  TypeScript ](#tab-panel-6965)
+* [  JavaScript ](#tab-panel-7138)
+* [  TypeScript ](#tab-panel-7139)
 
 JavaScript
 
@@ -158,9 +167,9 @@ By default Markdown for Agents converted responses include the `Content-Signal: 
 
 ## How to enable
 
-* [ Dashboard ](#tab-panel-6961)
-* [ API ](#tab-panel-6962)
-* [ Custom Hostnames ](#tab-panel-6963)
+* [ Dashboard ](#tab-panel-7135)
+* [ API ](#tab-panel-7136)
+* [ Custom Hostnames ](#tab-panel-7137)
 
 To enable Markdown for Agents for your zone in the dashboard:
 

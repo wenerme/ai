@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/manage-dns-records/how-to/create-dns-records.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Manage DNS records
 
@@ -30,8 +39,8 @@ If your domain is added to Cloudflare by a hosting partner, manage your DNS reco
 
 ### Create DNS records
 
-* [ Dashboard ](#tab-panel-6458)
-* [ API ](#tab-panel-6459)
+* [ Dashboard ](#tab-panel-6685)
+* [ API ](#tab-panel-6686)
 
 To create a DNS record in the dashboard:
 
@@ -51,8 +60,8 @@ For specific API examples, refer to [DNS record types](https://developers.cloudf
 
 ### Edit DNS records
 
-* [ Dashboard ](#tab-panel-6454)
-* [ API ](#tab-panel-6455)
+* [ Dashboard ](#tab-panel-6681)
+* [ API ](#tab-panel-6682)
 
 To edit DNS records in the dashboard:
 
@@ -66,8 +75,8 @@ To update part of a record with the API, use a [PATCH request](https://developer
 
 ### Delete DNS records
 
-* [ Dashboard ](#tab-panel-6456)
-* [ API ](#tab-panel-6457)
+* [ Dashboard ](#tab-panel-6683)
+* [ API ](#tab-panel-6684)
 
 To delete DNS records in the dashboard:
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/artifacts/api/workers-binding.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workers binding
 
@@ -22,8 +31,8 @@ Use the Artifacts Workers binding to create, import, inspect, fork, and delete r
 
 Add the Artifacts binding to your Wrangler config file:
 
-* [  wrangler.jsonc ](#tab-panel-5245)
-* [  wrangler.toml ](#tab-panel-5246)
+* [  wrangler.jsonc ](#tab-panel-5453)
+* [  wrangler.toml ](#tab-panel-5454)
 
 JSONC
 
@@ -94,8 +103,8 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or de
 * `opts.setDefaultBranch` ` string ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-5253)
-* [  TypeScript ](#tab-panel-5254)
+* [  JavaScript ](#tab-panel-5461)
+* [  TypeScript ](#tab-panel-5462)
 
 JavaScript
 
@@ -175,8 +184,8 @@ Explain Code
 * Returns ` Promise<ArtifactsRepo> `
 * Throws if the repo does not exist.
 
-* [  JavaScript ](#tab-panel-5247)
-* [  TypeScript ](#tab-panel-5248)
+* [  JavaScript ](#tab-panel-5455)
+* [  TypeScript ](#tab-panel-5456)
 
 JavaScript
 
@@ -214,8 +223,8 @@ async function getRepoHandle(artifacts: Artifacts) {
 * `opts.cursor` ` Cursor ` optional
 * Returns ` Promise<ArtifactsRepoListResult> `
 
-* [  JavaScript ](#tab-panel-5251)
-* [  TypeScript ](#tab-panel-5252)
+* [  JavaScript ](#tab-panel-5459)
+* [  TypeScript ](#tab-panel-5460)
 
 JavaScript
 
@@ -273,8 +282,8 @@ Import a repository from an external git remote.
 * `params.target.opts.readOnly` ` boolean ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-5263)
-* [  TypeScript ](#tab-panel-5264)
+* [  JavaScript ](#tab-panel-5471)
+* [  TypeScript ](#tab-panel-5472)
 
 JavaScript
 
@@ -365,8 +374,8 @@ Explain Code
 * `name` ` RepoName ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-5249)
-* [  TypeScript ](#tab-panel-5250)
+* [  JavaScript ](#tab-panel-5457)
+* [  TypeScript ](#tab-panel-5458)
 
 JavaScript
 
@@ -398,8 +407,8 @@ async function deleteRepo(artifacts: Artifacts) {
 
 Call `await artifacts.get(name)` to get a repo handle. The handle extends `ArtifactsRepoInfo`, so repo metadata (`id`, `name`, `remote`, `defaultBranch`, etc.) is available directly as properties.
 
-* [  JavaScript ](#tab-panel-5255)
-* [  TypeScript ](#tab-panel-5256)
+* [  JavaScript ](#tab-panel-5463)
+* [  TypeScript ](#tab-panel-5464)
 
 JavaScript
 
@@ -437,8 +446,8 @@ async function getRemoteUrl(artifacts: Artifacts) {
 * `ttl` ` number ` optional (seconds)
 * Returns ` Promise<ArtifactsCreateTokenResult> `
 
-* [  JavaScript ](#tab-panel-5257)
-* [  TypeScript ](#tab-panel-5258)
+* [  JavaScript ](#tab-panel-5465)
+* [  TypeScript ](#tab-panel-5466)
 
 JavaScript
 
@@ -474,8 +483,8 @@ async function mintReadToken(artifacts: Artifacts) {
 
 * Returns ` Promise<ArtifactsTokenListResult> `
 
-* [  JavaScript ](#tab-panel-5261)
-* [  TypeScript ](#tab-panel-5262)
+* [  JavaScript ](#tab-panel-5469)
+* [  TypeScript ](#tab-panel-5470)
 
 JavaScript
 
@@ -528,8 +537,8 @@ async function listRepoTokens(artifacts: Artifacts) {
 * `tokenOrId` ` string ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-5259)
-* [  TypeScript ](#tab-panel-5260)
+* [  JavaScript ](#tab-panel-5467)
+* [  TypeScript ](#tab-panel-5468)
 
 JavaScript
 
@@ -569,8 +578,8 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 * `opts.defaultBranchOnly` ` boolean ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-5265)
-* [  TypeScript ](#tab-panel-5266)
+* [  JavaScript ](#tab-panel-5473)
+* [  TypeScript ](#tab-panel-5474)
 
 JavaScript
 
@@ -632,8 +641,8 @@ Explain Code
 
 This example combines the binding methods in one Worker route.
 
-* [  JavaScript ](#tab-panel-5267)
-* [  TypeScript ](#tab-panel-5268)
+* [  JavaScript ](#tab-panel-5475)
+* [  TypeScript ](#tab-panel-5476)
 
 src/index.js
 

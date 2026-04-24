@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/observability/logging/logpush.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workers Logpush
 
@@ -48,8 +57,8 @@ To configure Workers Logpush for AI Gateway, follow these steps:
 
 You need to generate a key pair to encrypt and decrypt the logs. This script will output your RSA privateKey and publicKey. Keep the private key secure, as it will be used to decrypt the logs. Below is a sample script to generate the keys using Node.js and OpenSSL.
 
-* [ JavaScript ](#tab-panel-5125)
-* [ OpenSSL ](#tab-panel-5126)
+* [ JavaScript ](#tab-panel-5301)
+* [ OpenSSL ](#tab-panel-5302)
 
 JavaScript
 
@@ -128,8 +137,8 @@ After configuring Workers Logpush, logs will be sent encrypted using the public 
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, you can use the following Node.js script or OpenSSL:
 
-* [ JavaScript ](#tab-panel-5127)
-* [ OpenSSL ](#tab-panel-5128)
+* [ JavaScript ](#tab-panel-5303)
+* [ OpenSSL ](#tab-panel-5304)
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, download the logs to a folder, in this case its named `my_log.log.gz`.
 

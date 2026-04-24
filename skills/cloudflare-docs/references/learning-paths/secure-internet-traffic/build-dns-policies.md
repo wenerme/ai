@@ -1,18 +1,27 @@
 ---
 title: Build DNS security policies
-description: DNS security is an important, wide-reaching, and early action in the lifecycle of a request. Cloudflare operates one of the world's largest and fastest public DNS resolvers. Your users' public DNS requests will be resolved by that same resolution engine -- whether they are connecting from a network pointing its resolvers to Cloudflare or an endpoint running the Cloudflare One Client.
+description: Secure Internet traffic and SaaS apps.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/build-dns-policies/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build DNS security policies
 

@@ -1,18 +1,27 @@
 ---
 title: Download and install the Cloudflare One Client
-description: Most admins test by manually downloading the Cloudflare One Client and enrolling in your organization's Cloudflare Zero Trust instance.
+description: Install the Cloudflare One device client.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/replace-vpn/connect-devices/install-agent.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Download and install the Cloudflare One Client
 
@@ -29,8 +38,8 @@ For more information, refer to [WARP with firewall](https://developers.cloudflar
 3. Manually install the Cloudflare One Client on the device.  
 Window, macOS, and Linux  
 To enroll your device using the client GUI:  
-   * [ Version 2026.2+ ](#tab-panel-5169)  
-   * [ Version 2026.1 and earlier ](#tab-panel-5170)  
+   * [ Version 2026.2+ ](#tab-panel-7616)  
+   * [ Version 2026.1 and earlier ](#tab-panel-7617)  
    1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.  
    2. Launch the Cloudflare One Client.  
    3. On the **What would you like to use the Cloudflare One Client for?** screen, select **Zero Trust security**.  

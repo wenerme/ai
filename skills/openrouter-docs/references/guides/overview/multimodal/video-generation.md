@@ -1,8 +1,8 @@
+# Video Generation
+
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
-
-# Video Generation
 
 OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/models?output_modalities=video).
 
@@ -206,19 +206,20 @@ Unlike text or image generation, video generation is **asynchronous** because ge
 
 ### Request Parameters
 
-| Parameter          | Type    | Required | Description                                                                                                            |
-| ------------------ | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `model`            | string  | Yes      | The model to use for video generation (e.g., `google/veo-3.1`)                                                         |
-| `prompt`           | string  | Yes      | Text description of the video to generate                                                                              |
-| `duration`         | integer | No       | Duration of the generated video in seconds                                                                             |
-| `resolution`       | string  | No       | Resolution of the output video (e.g., `720p`, `1080p`)                                                                 |
-| `aspect_ratio`     | string  | No       | Aspect ratio of the output video (e.g., `16:9`, `9:16`)                                                                |
-| `size`             | string  | No       | Exact pixel dimensions in `WIDTHxHEIGHT` format (e.g., `1280x720`). Interchangeable with `resolution` + `aspect_ratio` |
-| `frame_images`     | array   | No       | Images for first/last frames (image-to-video)                                                                          |
-| `input_references` | array   | No       | Reference images for style guidance (reference-to-video)                                                               |
-| `generate_audio`   | boolean | No       | Whether to generate audio alongside the video. Defaults to `true` for models that support audio output                 |
-| `seed`             | integer | No       | Seed for deterministic generation (not guaranteed by all providers)                                                    |
-| `provider`         | object  | No       | Provider-specific passthrough configuration                                                                            |
+| Parameter          | Type    | Required | Description                                                                                                                            |
+| ------------------ | ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `model`            | string  | Yes      | The model to use for video generation (e.g., `google/veo-3.1`)                                                                         |
+| `prompt`           | string  | Yes      | Text description of the video to generate                                                                                              |
+| `duration`         | integer | No       | Duration of the generated video in seconds                                                                                             |
+| `resolution`       | string  | No       | Resolution of the output video (e.g., `720p`, `1080p`)                                                                                 |
+| `aspect_ratio`     | string  | No       | Aspect ratio of the output video (e.g., `16:9`, `9:16`)                                                                                |
+| `size`             | string  | No       | Exact pixel dimensions in `WIDTHxHEIGHT` format (e.g., `1280x720`). Interchangeable with `resolution` + `aspect_ratio`                 |
+| `frame_images`     | array   | No       | Images for first/last frames (image-to-video)                                                                                          |
+| `input_references` | array   | No       | Reference images for style guidance (reference-to-video)                                                                               |
+| `generate_audio`   | boolean | No       | Whether to generate audio alongside the video. Defaults to `true` for models that support audio output                                 |
+| `seed`             | integer | No       | Seed for deterministic generation (not guaranteed by all providers)                                                                    |
+| `callback_url`     | string  | No       | URL to receive a webhook notification when the job completes. Overrides the workspace-level default callback URL if set. Must be HTTPS |
+| `provider`         | object  | No       | Provider-specific passthrough configuration                                                                                            |
 
 ### Supported Resolutions
 
@@ -371,6 +372,97 @@ curl "https://openrouter.ai/api/v1/videos/{jobId}/content?index=0" \
 ```
 
 The `index` query parameter defaults to `0` and can be used if the model generates multiple video outputs.
+
+## Webhooks
+
+Instead of polling for job status, you can receive a webhook notification when a video generation job completes. There are two ways to configure a callback URL:
+
+1. **Per-request**: Pass `callback_url` in the request body. This takes priority over the workspace default.
+2. **Workspace default**: Set a default callback URL in your [workspace settings](/workspaces). This applies to all video generation requests that don't specify their own `callback_url`.
+
+### Webhook Payload
+
+When the job completes (or fails), a POST request is sent to the callback URL with the job result:
+
+```json
+{
+  "id": "abc123",
+  "status": "completed",
+  "generation_id": "gen-xyz789",
+  "model": "google/veo-3.1",
+  "unsigned_urls": [
+    "https://openrouter.ai/api/v1/videos/abc123/content?index=0"
+  ],
+  "usage": {
+    "cost": 0.5,
+    "is_byok": false
+  }
+}
+```
+
+### Signing Secret
+
+You can configure a signing secret in your [workspace settings](/workspaces) to verify that webhook payloads are authentically from OpenRouter. When a signing secret is configured, each webhook delivery includes an `X-OpenRouter-Signature` header.
+
+The signature includes a timestamp and an HMAC hash:
+
+```
+X-OpenRouter-Signature: t=1234567890,v1=a1b2c3d4...
+```
+
+### Verifying Signatures
+
+To verify the signature on your webhook receiver:
+
+1. Extract the timestamp (`t`) and signature hash (`v1`) from the header
+2. Construct the signed payload: `{timestamp},{raw_request_body}` (joined with a comma)
+3. Compute the HMAC-SHA256 of the signed payload using your signing secret as the key
+4. Compare the hex-encoded result with the `v1` value
+
+```typescript
+import crypto from 'crypto';
+
+const FIVE_MINUTES_IN_SECONDS = 300;
+
+function verifyWebhookSignature(
+  rawBody: string,
+  signatureHeader: string,
+  secret: string,
+): boolean {
+  const parts = signatureHeader.split(',');
+  const timestamp = parts.find((p) => p.startsWith('t='))?.slice(2);
+  const hash = parts.find((p) => p.startsWith('v1='))?.slice(3);
+
+  if (!timestamp || !hash) {
+    return false;
+  }
+
+  // Reject timestamps older than 5 minutes to prevent replay attacks
+  const age = Math.floor(Date.now() / 1000) - Number(timestamp);
+  if (Number.isNaN(age) || age > FIVE_MINUTES_IN_SECONDS) {
+    return false;
+  }
+
+  const signedPayload = `${timestamp},${rawBody}`;
+  const expected = crypto
+    .createHmac('sha256', secret)
+    .update(signedPayload)
+    .digest('hex');
+
+  if (expected.length !== hash.length) {
+    return false;
+  }
+
+  return crypto.timingSafeEqual(
+    Buffer.from(expected),
+    Buffer.from(hash),
+  );
+}
+```
+
+<Warning>
+  Use the **raw request body** (the exact bytes received) for verification. Parsing and re-serializing JSON may change key ordering or number formatting, which will cause verification to fail.
+</Warning>
 
 ## Best Practices
 

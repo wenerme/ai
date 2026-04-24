@@ -35,7 +35,7 @@ glab snippet create --personal --title "Personal snippet" script.py
   -f, --filename string      Filename of the snippet in GitLab.
   -p, --personal             Create a personal snippet.
   -t, --title string         (required) Title of the snippet.
-  -v, --visibility string    Limit by visibility: 'public', 'internal', or 'private' (default "private")
+  -v, --visibility string    Limit by visibility: 'public', 'internal', or 'private'. (default "private")
 ```
 
 ## Options inherited from parent commands

@@ -1,10 +1,21 @@
 ---
 title: Proxy traffic through Gateway
-description: With Cloudflare Gateway, you can log and filter DNS, network, and HTTP traffic from devices running the Cloudflare One Client. This includes traffic to the public Internet and traffic directed to your private network. DNS filtering is enabled by default since the Cloudflare One Client sends DNS queries to Cloudflare's public DNS resolver, 1.1.1.1. To enable network and HTTP filtering, you will need to allow Cloudflare Gateway to proxy that traffic.
+description: Route device traffic through Cloudflare Gateway.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
@@ -12,16 +23,14 @@ YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/replace-vpn/configure-device-agent/enable-proxy.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Proxy traffic through Gateway
 
 With Cloudflare Gateway, you can log and filter DNS, network, and HTTP traffic from devices running the Cloudflare One Client. This includes traffic to the public Internet and traffic directed to your private network. DNS filtering is enabled by default since the Cloudflare One Client sends DNS queries to Cloudflare's public DNS resolver, [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/). To enable network and HTTP filtering, you will need to allow Cloudflare Gateway to proxy that traffic.
 
 ## Enable the proxy
 
-* [ Dashboard ](#tab-panel-5153)
-* [ Terraform (v5) ](#tab-panel-5154)
+* [ Dashboard ](#tab-panel-7600)
+* [ Terraform (v5) ](#tab-panel-7601)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.

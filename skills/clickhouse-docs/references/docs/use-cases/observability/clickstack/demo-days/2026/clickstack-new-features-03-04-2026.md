@@ -1,6 +1,6 @@
 ---
-title: 'Demo days - 03/04/2026'
-description: 'ClickStack demo days for 03/04/2026'
+title: 'Demo days - 2026-04-03'
+description: 'ClickStack demo days for 2026-04-03'
 doc_type: 'guide'
 keywords: ['ClickStack', 'Demo days']
 ---

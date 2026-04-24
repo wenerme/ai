@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/bindings/service-bindings/http.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # HTTP
 
@@ -20,8 +29,8 @@ Worker A that declares a Service binding to Worker B can forward a [Request](htt
 
 For example, consider the following Worker that implements a [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/):
 
-* [  wrangler.jsonc ](#tab-panel-10049)
-* [  wrangler.toml ](#tab-panel-10050)
+* [  wrangler.jsonc ](#tab-panel-10065)
+* [  wrangler.toml ](#tab-panel-10066)
 
 JSONC
 
@@ -72,8 +81,8 @@ export default {
 
 The following Worker declares a binding to the Worker above:
 
-* [  wrangler.jsonc ](#tab-panel-10051)
-* [  wrangler.toml ](#tab-panel-10052)
+* [  wrangler.jsonc ](#tab-panel-10067)
+* [  wrangler.toml ](#tab-panel-10068)
 
 JSONC
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/product-compatibility.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Product compatibility
 
@@ -35,7 +44,7 @@ This is not an exhaustive list of Cloudflare products and features.
 | [China Network](https://developers.cloudflare.com/china-network/)                                                     | No            | No                 |                                                                                                                                                                                                                                                                                                                                               |
 | [DNS](https://developers.cloudflare.com/dns/)                                                                         | Yes\*         | Yes                | As a SaaS customer, do not remove the records related to your Cloudflare for SaaS setup.Otherwise, your traffic will begin routing away from your SaaS provider.                                                                                                                                                                              |
 | [HTTP/2 prioritization ↗](https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/)                 | Yes           | Yes\*              | This feature must be enabled on the customer zone to function.                                                                                                                                                                                                                                                                                |
-| [Image resizing](https://developers.cloudflare.com/images/transform-images/)                                          | Yes           | Yes                |                                                                                                                                                                                                                                                                                                                                               |
+| [Image resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/)                     | Yes           | Yes                |                                                                                                                                                                                                                                                                                                                                               |
 | IPv6                                                                                                                  | Yes           | Yes                |                                                                                                                                                                                                                                                                                                                                               |
 | [IPv6 Compatibility](https://developers.cloudflare.com/network/ipv6-compatibility/)                                   | Yes           | Yes\*              | If the customer zone has **IPv6 Compatibility** enabled, generally the SaaS zone should as well.If not, make sure the SaaS zone enables [Pseudo IPv4](https://developers.cloudflare.com/network/pseudo-ipv4/).                                                                                                                                |
 | [Load Balancing](https://developers.cloudflare.com/load-balancing/)                                                   | No            | Yes                | Customer zones can still use Load Balancing for non-O2O traffic.                                                                                                                                                                                                                                                                              |

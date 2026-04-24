@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ RDP ](https://developers.cloudflare.com/search/?tags=RDP) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Connect to RDP in a browser
 
@@ -47,9 +56,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-5693)
-* [ API ](#tab-panel-5694)
-* [ Terraform ](#tab-panel-5695)
+* [ Dashboard ](#tab-panel-5909)
+* [ API ](#tab-panel-5910)
+* [ Terraform ](#tab-panel-5911)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -282,9 +291,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-5690)
-* [ API ](#tab-panel-5691)
-* [ Terraform ](#tab-panel-5692)
+* [ Dashboard ](#tab-panel-5906)
+* [ API ](#tab-panel-5907)
+* [ Terraform ](#tab-panel-5908)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.

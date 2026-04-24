@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/tunnel/advanced/local-management/create-local-tunnel.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Create a locally-managed tunnel
 
@@ -27,10 +36,10 @@ Before you start, make sure you:
 
 ## 1\. Download and install `cloudflared`
 
-* [ Windows ](#tab-panel-8886)
-* [ macOS ](#tab-panel-8887)
-* [ Linux ](#tab-panel-8888)
-* [ Build from source ](#tab-panel-8889)
+* [ Windows ](#tab-panel-9149)
+* [ macOS ](#tab-panel-9150)
+* [ Linux ](#tab-panel-9151)
+* [ Build from source ](#tab-panel-9152)
 
 1. Download `cloudflared` on your machine. Visit the [downloads](https://developers.cloudflare.com/tunnel/downloads/) page to find the right package for your OS.
 2. Rename the executable to `cloudflared.exe`

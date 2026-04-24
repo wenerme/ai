@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/d1/wrangler-commands.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Wrangler commands
 
@@ -24,9 +33,9 @@ Creates a new D1 database, and provides the binding and UUID that you will put i
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-6423)
-* [  pnpm ](#tab-panel-6424)
-* [  yarn ](#tab-panel-6425)
+* [  npm ](#tab-panel-6595)
+* [  pnpm ](#tab-panel-6596)
+* [  yarn ](#tab-panel-6597)
 
 Terminal window
 
@@ -91,9 +100,9 @@ Get information about a D1 database, including the current database size and sta
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-6426)
-* [  pnpm ](#tab-panel-6427)
-* [  yarn ](#tab-panel-6428)
+* [  npm ](#tab-panel-6598)
+* [  pnpm ](#tab-panel-6599)
+* [  yarn ](#tab-panel-6600)
 
 Terminal window
 
@@ -150,9 +159,9 @@ List all D1 databases in your account
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-6429)
-* [  pnpm ](#tab-panel-6430)
-* [  yarn ](#tab-panel-6431)
+* [  npm ](#tab-panel-6601)
+* [  pnpm ](#tab-panel-6602)
+* [  yarn ](#tab-panel-6603)
 
 Terminal window
 
@@ -207,9 +216,9 @@ Delete a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-6432)
-* [  pnpm ](#tab-panel-6433)
-* [  yarn ](#tab-panel-6434)
+* [  npm ](#tab-panel-6604)
+* [  pnpm ](#tab-panel-6605)
+* [  yarn ](#tab-panel-6606)
 
 Terminal window
 
@@ -266,9 +275,9 @@ Execute a command or SQL file
 
 You must provide either --command or --file for this command to run successfully.
 
-* [  npm ](#tab-panel-6435)
-* [  pnpm ](#tab-panel-6436)
-* [  yarn ](#tab-panel-6437)
+* [  npm ](#tab-panel-6607)
+* [  pnpm ](#tab-panel-6608)
+* [  yarn ](#tab-panel-6609)
 
 Terminal window
 
@@ -337,9 +346,9 @@ Automatically provision draft bindings with new resources
 
 Export the contents or schema of your database as a .sql file
 
-* [  npm ](#tab-panel-6438)
-* [  pnpm ](#tab-panel-6439)
-* [  yarn ](#tab-panel-6440)
+* [  npm ](#tab-panel-6610)
+* [  pnpm ](#tab-panel-6611)
+* [  yarn ](#tab-panel-6612)
 
 Terminal window
 
@@ -408,9 +417,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-6441)
-* [  pnpm ](#tab-panel-6442)
-* [  yarn ](#tab-panel-6443)
+* [  npm ](#tab-panel-6613)
+* [  pnpm ](#tab-panel-6614)
+* [  yarn ](#tab-panel-6615)
 
 Terminal window
 
@@ -471,9 +480,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-6444)
-* [  pnpm ](#tab-panel-6445)
-* [  yarn ](#tab-panel-6446)
+* [  npm ](#tab-panel-6616)
+* [  pnpm ](#tab-panel-6617)
+* [  yarn ](#tab-panel-6618)
 
 Terminal window
 
@@ -541,9 +550,9 @@ This will generate a new versioned file inside the 'migrations' folder. Name you
 
 The filename will include a version number and the migration name you specify.
 
-* [  npm ](#tab-panel-6447)
-* [  pnpm ](#tab-panel-6448)
-* [  yarn ](#tab-panel-6449)
+* [  npm ](#tab-panel-6619)
+* [  pnpm ](#tab-panel-6620)
+* [  yarn ](#tab-panel-6621)
 
 Terminal window
 
@@ -598,9 +607,9 @@ Automatically provision draft bindings with new resources
 
 View a list of unapplied migration files
 
-* [  npm ](#tab-panel-6450)
-* [  pnpm ](#tab-panel-6451)
-* [  yarn ](#tab-panel-6452)
+* [  npm ](#tab-panel-6622)
+* [  pnpm ](#tab-panel-6623)
+* [  yarn ](#tab-panel-6624)
 
 Terminal window
 
@@ -669,9 +678,9 @@ When running the apply command in a CI/CD environment or another non-interactive
 
 If applying a migration results in an error, this migration will be rolled back, and the previous successful migration will remain applied.
 
-* [  npm ](#tab-panel-6453)
-* [  pnpm ](#tab-panel-6454)
-* [  yarn ](#tab-panel-6455)
+* [  npm ](#tab-panel-6625)
+* [  pnpm ](#tab-panel-6626)
+* [  yarn ](#tab-panel-6627)
 
 Terminal window
 
@@ -737,9 +746,9 @@ Get information about the queries run on a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-6456)
-* [  pnpm ](#tab-panel-6457)
-* [  yarn ](#tab-panel-6458)
+* [  npm ](#tab-panel-6628)
+* [  pnpm ](#tab-panel-6629)
+* [  yarn ](#tab-panel-6630)
 
 Terminal window
 

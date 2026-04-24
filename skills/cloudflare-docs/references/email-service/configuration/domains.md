@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/configuration/domains.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Domain configuration
 
@@ -42,10 +51,10 @@ Cloudflare automatically configures required DNS records for both email sending 
 
 These records authenticate your outbound emails. Email Sending creates DNS records on a `cf-bounce.` subdomain of your domain to handle bounce processing. These are separate from the records used by Email Routing.
 
-* [ MX Records ](#tab-panel-6866)
-* [ SPF Record ](#tab-panel-6867)
-* [ DKIM Record ](#tab-panel-6868)
-* [ DMARC Record ](#tab-panel-6869)
+* [ MX Records ](#tab-panel-7038)
+* [ SPF Record ](#tab-panel-7039)
+* [ DKIM Record ](#tab-panel-7040)
+* [ DMARC Record ](#tab-panel-7041)
 
 **Purpose**: Route bounce emails back to Cloudflare for processing.
 
@@ -125,9 +134,9 @@ TXT _dmarc.yourdomain.com "v=DMARC1; p=reject;"
 
 These records route incoming emails to Cloudflare and authenticate forwarded emails. Email Routing DNS records are configured on the root domain.
 
-* [ MX Records ](#tab-panel-6870)
-* [ SPF Record ](#tab-panel-6871)
-* [ DKIM Record ](#tab-panel-6872)
+* [ MX Records ](#tab-panel-7042)
+* [ SPF Record ](#tab-panel-7043)
+* [ DKIM Record ](#tab-panel-7044)
 
 **Purpose**: Route incoming emails to Cloudflare's mail servers.
 
@@ -217,8 +226,8 @@ Email Sending and Email Routing have separate DNS records and separate settings 
 
 ### Verification troubleshooting
 
-* [ DNS Propagation ](#tab-panel-6873)
-* [ Record Conflicts ](#tab-panel-6874)
+* [ DNS Propagation ](#tab-panel-7045)
+* [ Record Conflicts ](#tab-panel-7046)
 
 **Issue**: Records show as "Not Found" immediately after adding.
 

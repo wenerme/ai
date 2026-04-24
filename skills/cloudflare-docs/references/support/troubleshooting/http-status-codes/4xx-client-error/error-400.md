@@ -1,16 +1,25 @@
 ---
 title: Error 400
-description: This error indicates that the client sent a request to the server that could not be understood or processed due to issues with the request itself.
+description: Troubleshoot HTTP 400 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 400
 

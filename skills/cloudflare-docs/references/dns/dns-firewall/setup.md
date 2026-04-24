@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/dns-firewall/setup.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Setup
 
@@ -28,8 +37,8 @@ Prior to setting up DNS Firewall, you need:
 
 ### Create a DNS Firewall cluster
 
-* [ Dashboard ](#tab-panel-4238)
-* [ API ](#tab-panel-4239)
+* [ Dashboard ](#tab-panel-6657)
+* [ API ](#tab-panel-6658)
 
 1. In the Cloudflare dashboard, go to the **DNS Firewall Clusters** page.  
 [ Go to **Clusters** ](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)

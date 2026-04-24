@@ -1,18 +1,27 @@
 ---
 title: Spans and attributes
-description: Cloudflare Workers provides automatic tracing instrumentation out of the box - no code changes or SDK are required.
+description: Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/observability/traces/spans-and-attributes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Spans and attributes
 

@@ -1,16 +1,25 @@
 ---
 title: Error 1034
-description: This error indicates that the IP address used for the domain is restricted by Cloudflare's edge validation.
+description: Troubleshoot Cloudflare 1034 error code.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 1034
 

@@ -1,10 +1,21 @@
 ---
-title: WebSocket Connections
+title: WebSocket connections
 description: Connect to WebSocket servers running in sandboxes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
@@ -12,9 +23,7 @@ YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/websocket-connections.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
-# WebSocket Connections
+# WebSocket connections
 
 This guide shows you how to work with WebSocket servers running in your sandboxes.
 
@@ -126,8 +135,8 @@ exec bun dist/index.js
 
 **Connect from your Worker:**
 
-* [  JavaScript ](#tab-panel-6529)
-* [  TypeScript ](#tab-panel-6530)
+* [  JavaScript ](#tab-panel-8946)
+* [  TypeScript ](#tab-panel-8947)
 
 JavaScript
 
@@ -217,8 +226,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Get a public URL for your WebSocket server:
 
-* [  JavaScript ](#tab-panel-6531)
-* [  TypeScript ](#tab-panel-6532)
+* [  JavaScript ](#tab-panel-8948)
+* [  TypeScript ](#tab-panel-8949)
 
 JavaScript
 
@@ -355,8 +364,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Your Worker can connect to a WebSocket service to get real-time data, even when the incoming request isn't a WebSocket:
 
-* [  JavaScript ](#tab-panel-6533)
-* [  TypeScript ](#tab-panel-6534)
+* [  JavaScript ](#tab-panel-8950)
+* [  TypeScript ](#tab-panel-8951)
 
 JavaScript
 
@@ -542,8 +551,8 @@ This pattern is useful when you need streaming data from sandbox services but wa
 
 Verify request has WebSocket headers:
 
-* [  JavaScript ](#tab-panel-6527)
-* [  TypeScript ](#tab-panel-6528)
+* [  JavaScript ](#tab-panel-8944)
+* [  TypeScript ](#tab-panel-8945)
 
 JavaScript
 
@@ -603,5 +612,5 @@ Port exposure in Dockerfile is only required for local development. In productio
 * [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Managing long-running services
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/websocket-connections/","name":"WebSocket Connections"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/websocket-connections/","name":"WebSocket connections"}}]}
 ```

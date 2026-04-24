@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Sandbox SDK
 
@@ -26,12 +35,12 @@ Sandboxes are ideal for building AI agents that need to execute code, interactiv
 
 With Sandbox, you can execute Python scripts, run Node.js applications, analyze data, compile code, and perform complex computations — all with a simple TypeScript API and no infrastructure to manage.
 
-* [ Execute Commands ](#tab-panel-8360)
-* [ Code interpreter ](#tab-panel-8361)
-* [ File Operations ](#tab-panel-8362)
-* [ File watching ](#tab-panel-8363)
-* [ Terminal Access ](#tab-panel-8364)
-* [ WebSocket connections ](#tab-panel-8365)
+* [ Execute Commands ](#tab-panel-8532)
+* [ Code interpreter ](#tab-panel-8533)
+* [ File Operations ](#tab-panel-8534)
+* [ File watching ](#tab-panel-8535)
+* [ Terminal Access ](#tab-panel-8536)
+* [ WebSocket connections ](#tab-panel-8537)
 
 TypeScript
 

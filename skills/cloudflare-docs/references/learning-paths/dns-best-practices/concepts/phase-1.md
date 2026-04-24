@@ -1,18 +1,27 @@
 ---
 title: Phase 1: Planning &#38; Inventory
-description: Detailed planning is the cornerstone of a successful DNS migration.
+description: Plan and inventory your DNS migration.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/dns-best-practices/concepts/phase-1.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Phase 1: Planning & Inventory
 

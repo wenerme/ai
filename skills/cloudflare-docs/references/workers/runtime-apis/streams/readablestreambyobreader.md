@@ -1,18 +1,27 @@
 ---
 title: ReadableStream BYOBReader
-description: BYOB is an abbreviation of bring your own buffer. A ReadableStreamBYOBReader allows reading into a developer-supplied buffer, thus minimizing copies.
+description: Use ReadableStreamBYOBReader in Workers to read streamed data into your own buffer.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/streams/readablestreambyobreader.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # ReadableStream BYOBReader
 

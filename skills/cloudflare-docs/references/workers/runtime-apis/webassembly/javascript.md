@@ -1,19 +1,27 @@
 ---
 title: Wasm in JavaScript
-description: Wasm can be used from within a Worker written in JavaScript or TypeScript by importing a Wasm module,
-and instantiating an instance of this module using WebAssembly.instantiate(). This can be used to accelerate computationally intensive operations which do not involve significant I/O.
+description: Import and instantiate WebAssembly modules in Cloudflare Workers using JavaScript.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/webassembly/javascript.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Wasm in JavaScript
 

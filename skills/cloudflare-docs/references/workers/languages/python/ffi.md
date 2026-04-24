@@ -1,18 +1,27 @@
 ---
 title: Foreign Function Interface (FFI)
-description: Via Pyodide, Python Workers provide a Foreign Function Interface (FFI) to JavaScript. This allows you to:
+description: Call JavaScript APIs, bindings, and globals from Python Workers using the Pyodide FFI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/languages/python/ffi.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Foreign Function Interface (FFI)
 
@@ -30,8 +39,8 @@ Bindings allow your Worker to interact with resources on the Cloudflare Develope
 
 For example, to access a [KV](https://developers.cloudflare.com/kv) namespace from a Python Worker, you would declare the following in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7438)
-* [  wrangler.toml ](#tab-panel-7439)
+* [  wrangler.jsonc ](#tab-panel-9955)
+* [  wrangler.toml ](#tab-panel-9956)
 
 JSONC
 

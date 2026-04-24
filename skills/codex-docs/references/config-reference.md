@@ -13,7 +13,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     {
       key: "model",
       type: "string",
-      description: "Model to use (e.g., `gpt-5.4`).",
+      description: "Model to use (e.g., `gpt-5.5`).",
     },
     {
       key: "review_model",
@@ -93,9 +93,15 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     },
     {
       key: "approvals_reviewer",
-      type: "user | guardian_subagent",
+      type: "user | auto_review",
       description:
-        "Select who reviews eligible approval prompts. Defaults to `user`; `guardian_subagent` routes supported reviews through the Guardian reviewer subagent.",
+        "Who reviews eligible approval prompts under `on-request` or granular approval policies. Defaults to `user`; `auto_review` uses the reviewer subagent. This setting doesn't change sandboxing or review actions already allowed inside the sandbox.",
+    },
+    {
+      key: "auto_review.policy",
+      type: "string",
+      description:
+        "Local Markdown policy instructions for automatic review. Managed `guardian_policy_config` takes precedence. Blank values are ignored.",
     },
     {
       key: "allow_login_shell",
@@ -580,12 +586,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "boolean",
       description:
         "Compress streaming request bodies with zstd when supported (stable; on by default).",
-    },
-    {
-      key: "features.guardian_approval",
-      type: "boolean",
-      description:
-        'Route eligible approval requests through the guardian reviewer subagent (experimental; off by default). Use with `approvals_reviewer = "guardian_subagent"`.',
     },
     {
       key: "features.skill_mcp_dependency_install",
@@ -1321,7 +1321,13 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
       key: "allowed_approvals_reviewers",
       type: "array<string>",
       description:
-        "Allowed values for `approvals_reviewer` (for example `user` and `guardian_subagent`).",
+        "Allowed values for `approvals_reviewer`, such as `user` and `auto_review`.",
+    },
+    {
+      key: "guardian_policy_config",
+      type: "string",
+      description:
+        "Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored.",
     },
     {
       key: "allowed_sandbox_modes",

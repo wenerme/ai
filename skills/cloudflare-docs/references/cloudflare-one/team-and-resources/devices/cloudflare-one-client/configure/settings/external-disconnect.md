@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ JSON ](https://developers.cloudflare.com/search/?tags=JSON) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/external-disconnect.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # External Emergency Disconnect
 
@@ -148,8 +157,8 @@ curl --insecure https://<server-ip>:3333/status/disconnect
 
 ### 2\. Extract the SHA-256 fingerprint
 
-* [ Local certificate ](#tab-panel-5854)
-* [ Remote server ](#tab-panel-5855)
+* [ Local certificate ](#tab-panel-6070)
+* [ Remote server ](#tab-panel-6071)
 
 To obtain the SHA-256 fingerprint of a local certificate:
 
@@ -193,9 +202,9 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 
 ### 3\. Turn on External Emergency Disconnect
 
-* [ Dashboard ](#tab-panel-5848)
-* [ API ](#tab-panel-5849)
-* [ MDM ](#tab-panel-5850)
+* [ Dashboard ](#tab-panel-6064)
+* [ API ](#tab-panel-6065)
+* [ MDM ](#tab-panel-6066)
 
 To configure External Emergency Disconnect using the dashboard:
 
@@ -312,9 +321,9 @@ The current status is also available in [client diagnostic logs](https://develop
 
 If the external endpoint becomes unavailable or serves an invalid configuration, Cloudflare One Clients can get stuck in the emergency disconnect state. You can recover clients by removing their External Emergency Disconnect configuration:
 
-* [ Dashboard ](#tab-panel-5851)
-* [ API ](#tab-panel-5852)
-* [ MDM ](#tab-panel-5853)
+* [ Dashboard ](#tab-panel-6067)
+* [ API ](#tab-panel-6068)
+* [ MDM ](#tab-panel-6069)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Management**.
 2. Select **Global disconnection settings**.

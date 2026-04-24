@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Whisper-large-v3-turbo with Cloudflare Workers AI
 
@@ -87,8 +96,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7011)
-* [  wrangler.toml ](#tab-panel-7012)
+* [  wrangler.jsonc ](#tab-panel-9464)
+* [  wrangler.toml ](#tab-panel-9465)
 
 JSONC
 
@@ -124,8 +133,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 In your wrangler file, add or update the following settings to enable Node.js APIs and polyfills (with a compatibility date of 2024‑09‑23 or later):
 
-* [  wrangler.jsonc ](#tab-panel-7013)
-* [  wrangler.toml ](#tab-panel-7014)
+* [  wrangler.jsonc ](#tab-panel-9466)
+* [  wrangler.toml ](#tab-panel-9467)
 
 JSONC
 
@@ -141,7 +150,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10"
+  "compatibility_date": "2026-04-24"
 
 }
 
@@ -156,7 +165,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-24"
 
 
 ```

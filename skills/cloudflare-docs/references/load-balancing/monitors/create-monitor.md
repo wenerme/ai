@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/load-balancing/monitors/create-monitor.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Manage monitors
 
@@ -26,8 +35,8 @@ For more details about monitors, refer to [Monitors](https://developers.cloudfla
 
 ## Create a monitor
 
-* [ Dashboard ](#tab-panel-5406)
-* [ API ](#tab-panel-5407)
+* [ Dashboard ](#tab-panel-7809)
+* [ API ](#tab-panel-7810)
 
 **Set up the monitor**
 
@@ -261,8 +270,8 @@ Once your monitor is created, save its `id` property. Include this value in the 
 
 ## Edit a monitor
 
-* [ Dashboard ](#tab-panel-5402)
-* [ API ](#tab-panel-5403)
+* [ Dashboard ](#tab-panel-7805)
+* [ API ](#tab-panel-7806)
 
 To edit a monitor in the dashboard:
 
@@ -280,8 +289,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 ## Delete a monitor
 
-* [ Dashboard ](#tab-panel-5404)
-* [ API ](#tab-panel-5405)
+* [ Dashboard ](#tab-panel-7807)
+* [ API ](#tab-panel-7808)
 
 To delete a monitor in the dashboard:
 

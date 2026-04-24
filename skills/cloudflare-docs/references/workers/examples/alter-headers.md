@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/alter-headers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Alter headers
 
@@ -30,10 +39,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7251)
-* [  TypeScript ](#tab-panel-7252)
-* [  Python ](#tab-panel-7253)
-* [  Hono ](#tab-panel-7254)
+* [  JavaScript ](#tab-panel-9710)
+* [  TypeScript ](#tab-panel-9711)
+* [  Python ](#tab-panel-9712)
+* [  Hono ](#tab-panel-9713)
 
 JavaScript
 

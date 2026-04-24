@@ -1,18 +1,27 @@
 ---
 title: Add and manage other members
-description: Learn how to add new account members, edit or revoke their permissions and access, and resend verifications emails.
+description: Add, edit, and manage Cloudflare account members.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/application-security/account-security/add-other-members.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Add and manage other members
 
@@ -26,8 +35,8 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-5102)
-* [ API ](#tab-panel-5103)
+* [ Dashboard ](#tab-panel-7505)
+* [ API ](#tab-panel-7506)
 
 To view members using the dashboard:
 
@@ -41,8 +50,8 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-5104)
-* [ API ](#tab-panel-5105)
+* [ Dashboard ](#tab-panel-7507)
+* [ API ](#tab-panel-7508)
 
 To add a member to your account:
 
@@ -66,8 +75,8 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-5106)
-* [ API ](#tab-panel-5107)
+* [ Dashboard ](#tab-panel-7509)
+* [ API ](#tab-panel-7510)
 
 To edit member permissions using the dashboard:
 
@@ -137,8 +146,8 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-5108)
-* [ API ](#tab-panel-5109)
+* [ Dashboard ](#tab-panel-7511)
+* [ API ](#tab-panel-7512)
 
 To revoke a member's access to your account:
 

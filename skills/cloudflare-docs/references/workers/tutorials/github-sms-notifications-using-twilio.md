@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/tutorials/github-sms-notifications-using-twilio.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # GitHub SMS notifications using Twilio
 
@@ -237,8 +246,8 @@ npx wrangler secret put GITHUB_SECRET_TOKEN
 
 Add the nodejs\_compat flag to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10014)
-* [  wrangler.toml ](#tab-panel-10015)
+* [  wrangler.jsonc ](#tab-panel-10295)
+* [  wrangler.toml ](#tab-panel-10296)
 
 JSONC
 

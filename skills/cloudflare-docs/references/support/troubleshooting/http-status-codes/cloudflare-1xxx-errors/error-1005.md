@@ -1,16 +1,25 @@
 ---
 title: Error 1005
-description: This error indicates that access to the website is denied due to the banning of the Autonomous System Number (ASN).
+description: Troubleshoot Cloudflare 1005 error code.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 1005
 

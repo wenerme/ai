@@ -11,13 +11,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ CLI ](https://developers.cloudflare.com/search/?tags=CLI)[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Tunnel permissions
 
@@ -27,9 +36,9 @@ A remotely-managed tunnel only requires the tunnel token to run. Anyone with acc
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-5629)
-* [ API ](#tab-panel-5630)
-* [ Terraform (v5) ](#tab-panel-5631)
+* [ Dashboard ](#tab-panel-5854)
+* [ API ](#tab-panel-5855)
+* [ Terraform (v5) ](#tab-panel-5856)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select a `cloudflared` tunnel and select **Edit**.
@@ -143,8 +152,8 @@ Cloudflare recommends rotating the tunnel token at a regular cadence to reduce t
 To rotate a tunnel token:
 
 1. Refresh the token on Cloudflare:  
-   * [ Dashboard ](#tab-panel-5632)  
-   * [ API ](#tab-panel-5633)  
+   * [ Dashboard ](#tab-panel-5857)  
+   * [ API ](#tab-panel-5858)  
    1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.  
    2. Select a `cloudflared` tunnel and select **Edit**.  
    3. Select **Refresh token**.  

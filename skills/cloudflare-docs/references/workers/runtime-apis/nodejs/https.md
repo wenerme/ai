@@ -1,18 +1,27 @@
 ---
 title: https
-description: To use the HTTPS client-side methods (https.get, https.request, etc.), you must enable the enable_nodejs_http_modules compatibility flag in addition to the nodejs_compat flag.
+description: Use the Node.js https module in Cloudflare Workers for TLS-encrypted HTTP client and server functionality.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/nodejs/https.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # https
 

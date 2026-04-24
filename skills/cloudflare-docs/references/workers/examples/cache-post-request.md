@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ Caching ](https://developers.cloudflare.com/search/?tags=Caching)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/cache-post-request.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Cache POST requests
 
@@ -30,10 +39,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7283)
-* [  TypeScript ](#tab-panel-7284)
-* [  Python ](#tab-panel-7285)
-* [  Hono ](#tab-panel-7286)
+* [  JavaScript ](#tab-panel-9742)
+* [  TypeScript ](#tab-panel-9743)
+* [  Python ](#tab-panel-9744)
+* [  Hono ](#tab-panel-9745)
 
 JavaScript
 

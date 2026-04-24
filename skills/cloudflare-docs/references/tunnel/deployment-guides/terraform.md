@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/tunnel/deployment-guides/terraform.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Terraform
 
@@ -152,8 +161,8 @@ Terminal window
 touch providers.tf  
 ```
 2. Add the following providers to `providers.tf`. The `random` provider is used to generate a tunnel secret.  
-   * [ Terraform (v5) ](#tab-panel-6744)  
-   * [ Terraform (v4) ](#tab-panel-6745)  
+   * [ Terraform (v5) ](#tab-panel-9165)  
+   * [ Terraform (v4) ](#tab-panel-9166)  
 ```  
 terraform {  
   required_providers {  
@@ -216,8 +225,8 @@ Terminal window
 touch Cloudflare-config.tf  
 ```
 2. Add the following resources to `Cloudflare-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-6740)  
-   * [ Terraform (v4) ](#tab-panel-6741)  
+   * [ Terraform (v5) ](#tab-panel-9161)  
+   * [ Terraform (v4) ](#tab-panel-9162)  
 ```  
 # Creates a new remotely-managed tunnel for the GCP VM.  
 resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {  
@@ -367,8 +376,8 @@ Terminal window
 touch GCP-config.tf  
 ```
 2. Add the following content to `GCP-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-6742)  
-   * [ Terraform (v4) ](#tab-panel-6743)  
+   * [ Terraform (v5) ](#tab-panel-9163)  
+   * [ Terraform (v4) ](#tab-panel-9164)  
 ```  
 # OS the server will use  
 data "google_compute_image" "image" {  

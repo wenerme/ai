@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Wireguard ](https://developers.cloudflare.com/search/?tags=Wireguard)[ MASQUE ](https://developers.cloudflare.com/search/?tags=MASQUE) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Device client settings
 
@@ -76,8 +85,8 @@ The user will have an unlimited amount of time to activate their code.
 
 To activate the override code on a user device:
 
-* [ Version 2026.2+ ](#tab-panel-5841)
-* [ Version 2026.1 and earlier ](#tab-panel-5842)
+* [ Version 2026.2+ ](#tab-panel-6057)
+* [ Version 2026.1 and earlier ](#tab-panel-6058)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
@@ -389,9 +398,9 @@ Enabling this setting comes with two major consequences:
 
 To turn on local network access in the Cloudflare One Client:
 
-* [ Windows and macOS ](#tab-panel-5843)
-* [ Linux ](#tab-panel-5844)
-* [ Android and ChromeOS ](#tab-panel-5845)
+* [ Windows and macOS ](#tab-panel-6059)
+* [ Linux ](#tab-panel-6060)
+* [ Android and ChromeOS ](#tab-panel-6061)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily access local network resources**, select **Access resources**.

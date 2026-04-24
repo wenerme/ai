@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg) 
 
@@ -38,9 +47,9 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3425)
-* [  Python ](#tab-panel-3426)
-* [  curl ](#tab-panel-3427)
+* [  TypeScript ](#tab-panel-3637)
+* [  Python ](#tab-panel-3638)
+* [  curl ](#tab-panel-3639)
 
 ```
 
@@ -147,8 +156,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3430)
-* [ Output ](#tab-panel-3431)
+* [ Input ](#tab-panel-3642)
+* [ Output ](#tab-panel-3643)
 
 ▶messages\[\]
 
@@ -176,8 +185,8 @@ temperature
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3428)
-* [ Output ](#tab-panel-3429)
+* [ Input ](#tab-panel-3640)
+* [ Output ](#tab-panel-3641)
 
 ```
 

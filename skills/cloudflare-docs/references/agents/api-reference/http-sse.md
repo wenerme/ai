@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/http-sse.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # HTTP and Server-Sent Events
 
@@ -22,8 +31,8 @@ Agents can handle HTTP requests and stream responses using Server-Sent Events (S
 
 Define the `onRequest` method to handle HTTP requests to your agent:
 
-* [  JavaScript ](#tab-panel-4210)
-* [  TypeScript ](#tab-panel-4211)
+* [  JavaScript ](#tab-panel-4386)
+* [  TypeScript ](#tab-panel-4387)
 
 JavaScript
 
@@ -149,8 +158,8 @@ SSE allows you to stream data to clients over a long-running HTTP connection. Th
 
 Create an SSE stream manually using `ReadableStream`:
 
-* [  JavaScript ](#tab-panel-4214)
-* [  TypeScript ](#tab-panel-4215)
+* [  JavaScript ](#tab-panel-4390)
+* [  TypeScript ](#tab-panel-4391)
 
 JavaScript
 
@@ -302,8 +311,8 @@ data: {"count": 42}\n\n
 
 The [AI SDK ↗](https://sdk.vercel.ai/) provides built-in SSE streaming:
 
-* [  JavaScript ](#tab-panel-4208)
-* [  TypeScript ](#tab-panel-4209)
+* [  JavaScript ](#tab-panel-4384)
+* [  TypeScript ](#tab-panel-4385)
 
 JavaScript
 
@@ -402,8 +411,8 @@ SSE connections can be long-lived. Handle client disconnects gracefully:
 * **Use agent routing** — Clients can [reconnect to the same agent instance](https://developers.cloudflare.com/agents/api-reference/routing/) without session stores
 * **No timeout limits** — Cloudflare Workers have no effective limit on SSE response duration
 
-* [  JavaScript ](#tab-panel-4212)
-* [  TypeScript ](#tab-panel-4213)
+* [  JavaScript ](#tab-panel-4388)
+* [  TypeScript ](#tab-panel-4389)
 
 JavaScript
 

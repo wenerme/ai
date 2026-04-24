@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/testing/vitest-integration/write-your-first-test.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Write your first test
 
@@ -180,8 +189,8 @@ If your test bindings differ from the bindings in your Wrangler config, you shou
 
 We will use this simple Worker as an example. It returns a 404 response for the `/404` path and `"Hello World!"` for all other paths.
 
-* [  JavaScript ](#tab-panel-10035)
-* [  TypeScript ](#tab-panel-10036)
+* [  JavaScript ](#tab-panel-10269)
+* [  TypeScript ](#tab-panel-10270)
 
 src/index.js
 
@@ -233,8 +242,8 @@ export default {
 
 By importing the Worker we can write a unit test for its `fetch` handler.
 
-* [  JavaScript ](#tab-panel-10039)
-* [  TypeScript ](#tab-panel-10040)
+* [  JavaScript ](#tab-panel-10273)
+* [  TypeScript ](#tab-panel-10274)
 
 test/unit.spec.js
 
@@ -354,8 +363,8 @@ Explain Code
 
 You can use the `exports` object provided by `cloudflare:workers` to write an integration test. `exports.default.fetch()` calls the default export handler defined in the main Worker.
 
-* [  JavaScript ](#tab-panel-10037)
-* [  TypeScript ](#tab-panel-10038)
+* [  JavaScript ](#tab-panel-10271)
+* [  TypeScript ](#tab-panel-10272)
 
 test/integration.spec.js
 

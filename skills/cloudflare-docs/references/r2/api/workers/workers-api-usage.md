@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2/api/workers/workers-api-usage.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Use R2 from Workers
 
@@ -93,8 +102,8 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the `<YOUR_BUCKET_NAME>` you used to create your bucket in [step 2](#2-create-your-bucket):
 
-* [  wrangler.jsonc ](#tab-panel-8035)
-* [  wrangler.toml ](#tab-panel-8036)
+* [  wrangler.jsonc ](#tab-panel-8207)
+* [  wrangler.toml ](#tab-panel-8208)
 
 JSONC
 
@@ -146,9 +155,9 @@ If you want the R2 operations that are performed during development to be perfor
 
 An R2 bucket is able to READ, LIST, WRITE, and DELETE objects. You can see an example of all operations below using the Module Worker syntax. Add the following snippet into your project's `index.js` file:
 
-* [  TypeScript ](#tab-panel-8030)
-* [  JavaScript ](#tab-panel-8031)
-* [  Python ](#tab-panel-8032)
+* [  TypeScript ](#tab-panel-8202)
+* [  JavaScript ](#tab-panel-8203)
+* [  Python ](#tab-panel-8204)
 
 TypeScript
 
@@ -458,8 +467,8 @@ For `PUT` and `DELETE` requests, you will make use of a new `AUTH_KEY_SECRET` en
 
 For `GET` requests, you will ensure that only a specific file can be requested. All of this custom logic occurs inside of an `authorizeRequest` function, with the `hasValidHeader` function handling the custom header logic. If all validation passes, then the operation is allowed.
 
-* [  JavaScript ](#tab-panel-8033)
-* [  Python ](#tab-panel-8034)
+* [  JavaScript ](#tab-panel-8205)
+* [  Python ](#tab-panel-8206)
 
 JavaScript
 

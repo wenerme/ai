@@ -1,16 +1,25 @@
 ---
 title: Cannot locate dashboard account
-description: We are making some improvements to our support experience. This could be causing a temporary issue linking your dashboard account and your Cloudflare Help Center My Activities sign-on information.
+description: Resolve issues linking dashboard and support accounts.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Cannot locate dashboard account
 

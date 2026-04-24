@@ -1,18 +1,27 @@
 ---
 title: Monitor prompts and responses
-description: When you enable TLS decryption, you can review the prompts and responses for supported AI applications. This allows you to understand three key things about AI application usage:
+description: Inspect AI prompts using TLS decryption.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/holistic-ai-security/monitor-ai-use/monitor-prompts-responses.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Monitor prompts and responses
 

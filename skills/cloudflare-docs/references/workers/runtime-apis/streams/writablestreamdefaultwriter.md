@@ -1,18 +1,27 @@
 ---
 title: WritableStream DefaultWriter
-description: A writer is used when you want to write directly to a WritableStream, rather than piping data to it from a ReadableStream. For example:
+description: Use WritableStreamDefaultWriter in Workers to write data directly to a WritableStream.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/streams/writablestreamdefaultwriter.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # WritableStream DefaultWriter
 

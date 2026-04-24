@@ -1,18 +1,27 @@
 ---
 title: Account analytics (beta)
-description: Cloudflare account analytics lets you access a wide range of aggregated metrics from all the sites under a specific Cloudflare account.
+description: View aggregated metrics across all account domains.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/account-and-zone-analytics/account-analytics.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Account analytics (beta)
 

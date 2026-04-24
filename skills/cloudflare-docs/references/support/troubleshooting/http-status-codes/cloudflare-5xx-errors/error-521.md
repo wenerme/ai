@@ -1,16 +1,25 @@
 ---
 title: Error 521
-description: Error 521 occurs when the origin web server refuses connections from Cloudflare. Security solutions at your origin may block legitimate connections from certain Cloudflare IP addresses.
+description: Troubleshoot HTTP 521 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 521
 

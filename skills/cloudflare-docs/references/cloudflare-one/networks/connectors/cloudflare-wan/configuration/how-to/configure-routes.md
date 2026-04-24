@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Configure routes
 
@@ -37,8 +46,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-5804)
-* [ API ](#tab-panel-5805)
+* [ Dashboard ](#tab-panel-5976)
+* [ API ](#tab-panel-5977)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Routes** \> **WAN Routes**, and select **Create** to add a new route.
@@ -194,8 +203,8 @@ Explain Code
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-5806)
-* [ API ](#tab-panel-5807)
+* [ Dashboard ](#tab-panel-5978)
+* [ API ](#tab-panel-5979)
 
 1. In **Routes** \> **WAN Routes**, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -341,8 +350,8 @@ Explain Code
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-5800)
-* [ API ](#tab-panel-5801)
+* [ Dashboard ](#tab-panel-5972)
+* [ API ](#tab-panel-5973)
 
 1. In **Routes** \> **WAN Routes**, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -456,8 +465,8 @@ Explain Code
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-5802)
-* [ API ](#tab-panel-5803)
+* [ Dashboard ](#tab-panel-5974)
+* [ API ](#tab-panel-5975)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.

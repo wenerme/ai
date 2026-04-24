@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/bulk-origin-proxy.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Bulk origin override
 
@@ -24,10 +33,10 @@ Copy page
 
 Resolve requests to your domain to a set of proxy third-party origin URLs.
 
-* [  JavaScript ](#tab-panel-7271)
-* [  TypeScript ](#tab-panel-7272)
-* [  Hono ](#tab-panel-7273)
-* [  Python ](#tab-panel-7274)
+* [  JavaScript ](#tab-panel-9730)
+* [  TypeScript ](#tab-panel-9731)
+* [  Hono ](#tab-panel-9732)
+* [  Python ](#tab-panel-9733)
 
 JavaScript
 

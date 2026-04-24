@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/streaming-output.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Stream output
 
@@ -38,8 +47,8 @@ Use non-streaming (`exec()`) for:
 
 Use `execStream()` to get real-time output:
 
-* [  JavaScript ](#tab-panel-6523)
-* [  TypeScript ](#tab-panel-6524)
+* [  JavaScript ](#tab-panel-8940)
+* [  TypeScript ](#tab-panel-8941)
 
 JavaScript
 
@@ -151,8 +160,8 @@ Explain Code
 
 Return streaming output to users via Server-Sent Events:
 
-* [  JavaScript ](#tab-panel-6519)
-* [  TypeScript ](#tab-panel-6520)
+* [  JavaScript ](#tab-panel-8936)
+* [  TypeScript ](#tab-panel-8937)
 
 JavaScript
 
@@ -238,8 +247,8 @@ Explain Code
 
 Client-side consumption:
 
-* [  JavaScript ](#tab-panel-6517)
-* [  TypeScript ](#tab-panel-6518)
+* [  JavaScript ](#tab-panel-8934)
+* [  TypeScript ](#tab-panel-8935)
 
 JavaScript
 
@@ -311,8 +320,8 @@ Explain Code
 
 Monitor background process output:
 
-* [  JavaScript ](#tab-panel-6521)
-* [  TypeScript ](#tab-panel-6522)
+* [  JavaScript ](#tab-panel-8938)
+* [  TypeScript ](#tab-panel-8939)
 
 JavaScript
 
@@ -384,8 +393,8 @@ Explain Code
 
 Check exit codes and handle stream errors:
 
-* [  JavaScript ](#tab-panel-6525)
-* [  TypeScript ](#tab-panel-6526)
+* [  JavaScript ](#tab-panel-8942)
+* [  TypeScript ](#tab-panel-8943)
 
 JavaScript
 

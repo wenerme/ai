@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/containers/platform-details/architecture.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Lifecycle of a Container
 
@@ -66,11 +75,22 @@ Each container instance runs inside its own VM, which provides strong isolation 
 
 ### Container shutdown
 
-If you do not set [sleepAfter ↗](https://github.com/cloudflare/containers/blob/main/README.md#properties)on your Container class, or stop the instance manually, the container will shut down soon after the container stops receiving requests. By setting `sleepAfter`, the container will stay alive for approximately the specified duration.
+If you do not set [sleepAfter](https://developers.cloudflare.com/containers/container-class/#sleepafter)on your Container class, or stop the instance manually, the container will shut down soon after the container stops receiving requests. By setting `sleepAfter`, the container will stay alive for approximately the specified duration.
 
-You can manually shut down a container instance by calling `stop()` or `destroy()` on it. Refer to the [Container package docs ↗](https://github.com/cloudflare/containers/blob/main/README.md#container-methods) for more details.
+You can manually shut down a container instance by calling [stop()](https://developers.cloudflare.com/containers/container-class/#stop) or [destroy()](https://developers.cloudflare.com/containers/container-class/#destroy) on it.
 
 When a container instance is going to be shut down, it is sent a `SIGTERM` signal, and then a `SIGKILL` signal after 15 minutes. You should perform any necessary cleanup to ensure a graceful shutdown in this time.
+
+### Lifecycle hooks
+
+The [Container class](https://developers.cloudflare.com/containers/container-class/) provides hooks that run Worker code when the container changes state:
+
+* [onStart()](https://developers.cloudflare.com/containers/container-class/#onstart) — Runs after the container has started.
+* [onStop()](https://developers.cloudflare.com/containers/container-class/#onstop) — Runs after the container process exits. Receives the exit code and reason for the stop.
+* [onActivityExpired()](https://developers.cloudflare.com/containers/container-class/#onactivityexpired) — Runs when the [sleepAfter](https://developers.cloudflare.com/containers/container-class/#sleepafter) timer expires with no incoming requests. The default implementation calls `stop()` to shut down the container. You can use this to only stop the container on certain conditions.
+* [onError()](https://developers.cloudflare.com/containers/container-class/#onerror) — Runs when the container exits with an error.
+
+Refer to the [status hooks example](https://developers.cloudflare.com/containers/examples/status-hooks/) for a full implementation.
 
 #### Persistent disk
 

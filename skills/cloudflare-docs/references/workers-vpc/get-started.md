@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-vpc/get-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Get started
 
@@ -104,8 +113,8 @@ For comprehensive tunnel configuration, monitoring, and management, refer to the
 
 Now that your tunnel is running, create a VPC Service that Workers can use to access your internal resources:
 
-* [ Dashboard ](#tab-panel-9474)
-* [ Wrangler CLI ](#tab-panel-9475)
+* [ Dashboard ](#tab-panel-9490)
+* [ Wrangler CLI ](#tab-panel-9491)
 
 1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc) and select the **VPC Services** tab.
 2. Select **Create** to create a new VPC Service.
@@ -155,8 +164,8 @@ If you encounter permission errors, refer to [Required roles](https://developers
 
 Add the VPC Service binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9476)
-* [  wrangler.toml ](#tab-panel-9477)
+* [  wrangler.jsonc ](#tab-panel-9492)
+* [  wrangler.toml ](#tab-panel-9493)
 
 JSONC
 
@@ -172,7 +181,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-22",
+  "compatibility_date": "2026-04-24",
 
   "vpc_services": [
 
@@ -205,7 +214,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-22"
+compatibility_date = "2026-04-24"
 
 
 [[vpc_services]]

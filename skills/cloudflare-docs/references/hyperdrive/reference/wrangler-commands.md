@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/hyperdrive/reference/wrangler-commands.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Wrangler commands
 
@@ -22,9 +31,9 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-7159)
-* [  pnpm ](#tab-panel-7160)
-* [  yarn ](#tab-panel-7161)
+* [  npm ](#tab-panel-7331)
+* [  pnpm ](#tab-panel-7332)
+* [  yarn ](#tab-panel-7333)
 
 Terminal window
 
@@ -115,9 +124,9 @@ Automatically provision draft bindings with new resources
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-7162)
-* [  pnpm ](#tab-panel-7163)
-* [  yarn ](#tab-panel-7164)
+* [  npm ](#tab-panel-7334)
+* [  pnpm ](#tab-panel-7335)
+* [  yarn ](#tab-panel-7336)
 
 Terminal window
 
@@ -170,9 +179,9 @@ Automatically provision draft bindings with new resources
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-7165)
-* [  pnpm ](#tab-panel-7166)
-* [  yarn ](#tab-panel-7167)
+* [  npm ](#tab-panel-7337)
+* [  pnpm ](#tab-panel-7338)
+* [  yarn ](#tab-panel-7339)
 
 Terminal window
 
@@ -225,9 +234,9 @@ Automatically provision draft bindings with new resources
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-7168)
-* [  pnpm ](#tab-panel-7169)
-* [  yarn ](#tab-panel-7170)
+* [  npm ](#tab-panel-7340)
+* [  pnpm ](#tab-panel-7341)
+* [  yarn ](#tab-panel-7342)
 
 Terminal window
 
@@ -277,9 +286,9 @@ Automatically provision draft bindings with new resources
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-7171)
-* [  pnpm ](#tab-panel-7172)
-* [  yarn ](#tab-panel-7173)
+* [  npm ](#tab-panel-7343)
+* [  pnpm ](#tab-panel-7344)
+* [  yarn ](#tab-panel-7345)
 
 Terminal window
 

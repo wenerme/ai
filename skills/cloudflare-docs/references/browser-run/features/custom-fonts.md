@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-run/features/custom-fonts.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Custom fonts
 
@@ -33,8 +42,8 @@ The examples below use [Puppeteer](https://developers.cloudflare.com/browser-run
 
 ### From a CDN URL
 
-* [  JavaScript ](#tab-panel-3542)
-* [  TypeScript ](#tab-panel-3543)
+* [  JavaScript ](#tab-panel-5545)
+* [  TypeScript ](#tab-panel-5546)
 
 Example with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and a CDN source:
 
@@ -124,8 +133,8 @@ Explain Code
 
 The following examples use [Playwright](https://developers.cloudflare.com/browser-run/playwright/), but this method works the same way with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/).
 
-* [  JavaScript ](#tab-panel-3544)
-* [  TypeScript ](#tab-panel-3545)
+* [  JavaScript ](#tab-panel-5547)
+* [  TypeScript ](#tab-panel-5548)
 
 Example with a Base64-encoded data source:
 

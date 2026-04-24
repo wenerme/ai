@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/getting-started/add-to-existing-project.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Add to existing project
 
@@ -69,8 +78,8 @@ bun add agents hono-agents
 
 Create a new file for your agent (for example, `src/agents/counter.ts`):
 
-* [  JavaScript ](#tab-panel-4896)
-* [  TypeScript ](#tab-panel-4897)
+* [  JavaScript ](#tab-panel-5072)
+* [  TypeScript ](#tab-panel-5073)
 
 JavaScript
 
@@ -163,8 +172,8 @@ Explain Code
 
 Add the Durable Object binding and migration:
 
-* [  wrangler.jsonc ](#tab-panel-4886)
-* [  wrangler.toml ](#tab-panel-4887)
+* [  wrangler.jsonc ](#tab-panel-5062)
+* [  wrangler.toml ](#tab-panel-5063)
 
 JSONC
 
@@ -178,7 +187,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-20",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -229,7 +238,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-20"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -297,8 +306,8 @@ If you have an existing `tsconfig.json` with custom settings, you can extend and
 
 **vite.config.ts** — add the `agents()` plugin (handles TC39 decorator transforms for Vite 8):
 
-* [  JavaScript ](#tab-panel-4890)
-* [  TypeScript ](#tab-panel-4891)
+* [  JavaScript ](#tab-panel-5066)
+* [  TypeScript ](#tab-panel-5067)
 
 JavaScript
 
@@ -352,8 +361,8 @@ For more details, refer to the [TypeScript configuration](https://developers.clo
 
 Your agent class must be exported from your main entry point. Update your `src/index.ts`:
 
-* [  JavaScript ](#tab-panel-4894)
-* [  TypeScript ](#tab-panel-4895)
+* [  JavaScript ](#tab-panel-5070)
+* [  TypeScript ](#tab-panel-5071)
 
 JavaScript
 
@@ -401,8 +410,8 @@ Choose the approach that matches your project structure:
 
 ### Plain Workers (fetch handler)
 
-* [  JavaScript ](#tab-panel-4902)
-* [  TypeScript ](#tab-panel-4903)
+* [  JavaScript ](#tab-panel-5078)
+* [  TypeScript ](#tab-panel-5079)
 
 JavaScript
 
@@ -490,8 +499,8 @@ Explain Code
 
 ### Hono
 
-* [  JavaScript ](#tab-panel-4898)
-* [  TypeScript ](#tab-panel-4899)
+* [  JavaScript ](#tab-panel-5074)
+* [  TypeScript ](#tab-panel-5075)
 
 JavaScript
 
@@ -559,8 +568,8 @@ Explain Code
 
 If you are serving static assets alongside agents, static assets are served first by default. Your Worker code only runs for paths that do not match a static asset:
 
-* [  JavaScript ](#tab-panel-4904)
-* [  TypeScript ](#tab-panel-4905)
+* [  JavaScript ](#tab-panel-5080)
+* [  TypeScript ](#tab-panel-5081)
 
 JavaScript
 
@@ -636,8 +645,8 @@ Explain Code
 
 Configure assets in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4884)
-* [  wrangler.toml ](#tab-panel-4885)
+* [  wrangler.jsonc ](#tab-panel-5060)
+* [  wrangler.toml ](#tab-panel-5061)
 
 JSONC
 
@@ -690,8 +699,8 @@ Refer to [Configuration](https://developers.cloudflare.com/agents/api-reference/
 
 ### React
 
-* [  JavaScript ](#tab-panel-4912)
-* [  TypeScript ](#tab-panel-4913)
+* [  JavaScript ](#tab-panel-5088)
+* [  TypeScript ](#tab-panel-5089)
 
 JavaScript
 
@@ -784,8 +793,8 @@ Explain Code
 
 ### Vanilla JavaScript
 
-* [  JavaScript ](#tab-panel-4908)
-* [  TypeScript ](#tab-panel-4909)
+* [  JavaScript ](#tab-panel-5084)
+* [  TypeScript ](#tab-panel-5085)
 
 JavaScript
 
@@ -853,8 +862,8 @@ Explain Code
 
 Add more agents by extending the configuration:
 
-* [  JavaScript ](#tab-panel-4906)
-* [  TypeScript ](#tab-panel-4907)
+* [  JavaScript ](#tab-panel-5082)
+* [  TypeScript ](#tab-panel-5083)
 
 JavaScript
 
@@ -906,8 +915,8 @@ export class Scheduler extends Agent {
 
 Update the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4892)
-* [  wrangler.toml ](#tab-panel-4893)
+* [  wrangler.jsonc ](#tab-panel-5068)
+* [  wrangler.toml ](#tab-panel-5069)
 
 JSONC
 
@@ -986,8 +995,8 @@ Explain Code
 
 Export all agents from your entry point:
 
-* [  JavaScript ](#tab-panel-4900)
-* [  TypeScript ](#tab-panel-4901)
+* [  JavaScript ](#tab-panel-5076)
+* [  TypeScript ](#tab-panel-5077)
 
 JavaScript
 
@@ -1021,8 +1030,8 @@ export { Scheduler } from "./agents/scheduler";
 
 Check auth before routing to agents:
 
-* [  JavaScript ](#tab-panel-4916)
-* [  TypeScript ](#tab-panel-4917)
+* [  JavaScript ](#tab-panel-5092)
+* [  TypeScript ](#tab-panel-5093)
 
 JavaScript
 
@@ -1106,8 +1115,8 @@ Explain Code
 
 By default, agents are routed at `/agents/{agent-name}/{instance-name}`. You can customize this:
 
-* [  JavaScript ](#tab-panel-4910)
-* [  TypeScript ](#tab-panel-4911)
+* [  JavaScript ](#tab-panel-5086)
+* [  TypeScript ](#tab-panel-5087)
 
 JavaScript
 
@@ -1147,8 +1156,8 @@ Refer to [Routing](https://developers.cloudflare.com/agents/api-reference/routin
 
 You can interact with agents directly from your Worker code:
 
-* [  JavaScript ](#tab-panel-4918)
-* [  TypeScript ](#tab-panel-4919)
+* [  JavaScript ](#tab-panel-5094)
+* [  TypeScript ](#tab-panel-5095)
 
 JavaScript
 
@@ -1230,8 +1239,8 @@ Explain Code
 
 Add the migration to the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4888)
-* [  wrangler.toml ](#tab-panel-4889)
+* [  wrangler.jsonc ](#tab-panel-5064)
+* [  wrangler.toml ](#tab-panel-5065)
 
 JSONC
 
@@ -1273,8 +1282,8 @@ new_sqlite_classes = [ "YourAgentClass" ]
 
 Ensure your routing passes the response unchanged:
 
-* [  JavaScript ](#tab-panel-4914)
-* [  TypeScript ](#tab-panel-4915)
+* [  JavaScript ](#tab-panel-5090)
+* [  TypeScript ](#tab-panel-5091)
 
 JavaScript
 

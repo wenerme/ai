@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-search/how-to/per-tenant-search.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build per-tenant search
 
@@ -22,8 +31,8 @@ AI Search supports per-tenant search isolation. You can either create a separate
 
 Create isolated AI Search instances for each tenant at runtime using the [namespace binding](https://developers.cloudflare.com/ai-search/concepts/namespaces/). Each tenant gets their own instance with separate storage and search index.
 
-* [  wrangler.jsonc ](#tab-panel-5180)
-* [  wrangler.toml ](#tab-panel-5181)
+* [  wrangler.jsonc ](#tab-panel-5356)
+* [  wrangler.toml ](#tab-panel-5357)
 
 JSONC
 
@@ -63,8 +72,8 @@ namespace = "default"
 
 ```
 
-* [  JavaScript ](#tab-panel-5184)
-* [  TypeScript ](#tab-panel-5185)
+* [  JavaScript ](#tab-panel-5360)
+* [  TypeScript ](#tab-panel-5361)
 
 JavaScript
 
@@ -285,8 +294,8 @@ Explain Code
 
 Use a single AI Search instance and organize content by tenant using folder paths. This approach works with both [R2 buckets](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) and [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/). Apply [metadata filters](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) at query time to ensure each tenant only retrieves their own documents.
 
-* [  wrangler.jsonc ](#tab-panel-5182)
-* [  wrangler.toml ](#tab-panel-5183)
+* [  wrangler.jsonc ](#tab-panel-5358)
+* [  wrangler.toml ](#tab-panel-5359)
 
 JSONC
 

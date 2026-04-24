@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/turnstile/get-started/server-side-validation.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Validate the token
 
@@ -75,11 +84,11 @@ To ensure a successful validation, the visitor must initiate the request and sub
 
 ## Basic validation examples
 
-* [  JavaScript ](#tab-panel-8940)
-* [  PHP ](#tab-panel-8941)
-* [  Python ](#tab-panel-8942)
-* [  Java ](#tab-panel-8943)
-* [  C# ](#tab-panel-8944)
+* [  JavaScript ](#tab-panel-9203)
+* [  PHP ](#tab-panel-9204)
+* [  Python ](#tab-panel-9205)
+* [  Java ](#tab-panel-9206)
+* [  C# ](#tab-panel-9207)
 
 #### JSON
 
@@ -922,8 +931,8 @@ Explain Code
 
 ## API response format
 
-* [ Successful response ](#tab-panel-8945)
-* [ Failed response ](#tab-panel-8946)
+* [ Successful response ](#tab-panel-9208)
+* [ Failed response ](#tab-panel-9209)
 
 Example
 

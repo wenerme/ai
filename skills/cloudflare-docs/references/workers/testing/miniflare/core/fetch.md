@@ -1,21 +1,27 @@
 ---
 title: Fetch Events
-description: Whenever an HTTP request is made, a Request object is dispatched to your worker, then the generated Response is returned. The
-Request object will include a
-cf object.
-Miniflare will log the method, path, status, and the time it took to respond.
+description: Dispatch and test HTTP fetch events in Miniflare for Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/testing/miniflare/core/fetch.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Fetch Events
 

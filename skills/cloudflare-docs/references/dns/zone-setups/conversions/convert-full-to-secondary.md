@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/zone-setups/conversions/convert-full-to-secondary.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Convert full setup to secondary setup
 
@@ -44,8 +53,8 @@ A Transaction Signature (TSIG) authenticates communication between a primary and
 Note  
 The TSIG names configured at your primary and secondary DNS providers have to be exactly the same. Any differences in TSIG names will cause zone transfers to fail.  
 While optional, this step is highly recommended.  
-   * [ Dashboard ](#tab-panel-4296)  
-   * [ API ](#tab-panel-4297)  
+   * [ Dashboard ](#tab-panel-6715)  
+   * [ API ](#tab-panel-6716)  
 To create a TSIG using the dashboard:  
    1. In the Cloudflare dashboard, go to the account **Settings** page.  
    [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)  
@@ -58,8 +67,8 @@ To create a TSIG using the dashboard:
    5. Select **Create**.  
 To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/tsigs/methods/create/) request.
 3. Create a peer server.  
-   * [ Dashboard ](#tab-panel-4294)  
-   * [ API ](#tab-panel-4295)  
+   * [ Dashboard ](#tab-panel-6713)  
+   * [ API ](#tab-panel-6714)  
 To create a peer server using the dashboard:  
    1. In the Cloudflare dashboard, go to the account **Settings** page.  
    [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)  

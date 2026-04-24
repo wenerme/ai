@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/tools/user-agent-blocking.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # User Agent Blocking
 
@@ -42,9 +51,9 @@ The number of available user agent rules depends on your Cloudflare plan.
 
 ## Create a User Agent Blocking rule
 
-* [  New dashboard ](#tab-panel-9133)
-* [ Old dashboard ](#tab-panel-9134)
-* [ API ](#tab-panel-9135)
+* [  New dashboard ](#tab-panel-9414)
+* [ Old dashboard ](#tab-panel-9415)
+* [ API ](#tab-panel-9416)
 
 Note
 

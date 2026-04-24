@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/code-execution.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Use code interpreter
 
@@ -38,8 +47,8 @@ Use `exec()` for **advanced or custom workflows**:
 
 Code contexts maintain state between executions:
 
-* [  JavaScript ](#tab-panel-6343)
-* [  TypeScript ](#tab-panel-6344)
+* [  JavaScript ](#tab-panel-8754)
+* [  TypeScript ](#tab-panel-8755)
 
 JavaScript
 
@@ -119,8 +128,8 @@ Explain Code
 
 ### Simple execution
 
-* [  JavaScript ](#tab-panel-6345)
-* [  TypeScript ](#tab-panel-6346)
+* [  JavaScript ](#tab-panel-8756)
+* [  TypeScript ](#tab-panel-8757)
 
 JavaScript
 
@@ -202,8 +211,8 @@ Explain Code
 
 Variables and imports remain available between executions in the same context, as long as the container stays active:
 
-* [  JavaScript ](#tab-panel-6351)
-* [  TypeScript ](#tab-panel-6352)
+* [  JavaScript ](#tab-panel-8762)
+* [  TypeScript ](#tab-panel-8763)
 
 JavaScript
 
@@ -315,8 +324,8 @@ Context state is lost if the container restarts due to inactivity. For critical 
 
 The code interpreter returns multiple output formats:
 
-* [  JavaScript ](#tab-panel-6355)
-* [  TypeScript ](#tab-panel-6356)
+* [  JavaScript ](#tab-panel-8766)
+* [  TypeScript ](#tab-panel-8767)
 
 JavaScript
 
@@ -456,8 +465,8 @@ Explain Code
 
 For long-running code, stream output in real-time:
 
-* [  JavaScript ](#tab-panel-6353)
-* [  TypeScript ](#tab-panel-6354)
+* [  JavaScript ](#tab-panel-8764)
+* [  TypeScript ](#tab-panel-8765)
 
 JavaScript
 
@@ -587,8 +596,8 @@ Explain Code
 
 Run LLM-generated code safely in a sandbox:
 
-* [  JavaScript ](#tab-panel-6357)
-* [  TypeScript ](#tab-panel-6358)
+* [  JavaScript ](#tab-panel-8768)
+* [  TypeScript ](#tab-panel-8769)
 
 JavaScript
 
@@ -722,8 +731,8 @@ Explain Code
 
 ### List all contexts
 
-* [  JavaScript ](#tab-panel-6347)
-* [  TypeScript ](#tab-panel-6348)
+* [  JavaScript ](#tab-panel-8758)
+* [  TypeScript ](#tab-panel-8759)
 
 JavaScript
 
@@ -765,8 +774,8 @@ for (const ctx of contexts) {
 
 ### Delete contexts
 
-* [  JavaScript ](#tab-panel-6349)
-* [  TypeScript ](#tab-panel-6350)
+* [  JavaScript ](#tab-panel-8760)
+* [  TypeScript ](#tab-panel-8761)
 
 JavaScript
 

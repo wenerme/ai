@@ -1,16 +1,25 @@
 ---
 title: Configure Cloudflare and Heroku over HTTPS
-description: Heroku is a cloud PaaS that supports several pre-configured programming languages. Heroku deals with all your infrastructure so you can focus on your application without having to work at the command line.
+description: Set up Cloudflare with Heroku for HTTPS traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Configure Cloudflare and Heroku over HTTPS
 

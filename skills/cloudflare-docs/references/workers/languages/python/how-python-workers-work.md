@@ -1,18 +1,27 @@
 ---
 title: How Python Workers Work
-description: Workers written in Python are executed by Pyodide. Pyodide is a port of CPython (the reference implementation of Python — commonly referred to as just &#34;Python&#34;) to WebAssembly.
+description: Learn how Python Workers run via Pyodide in V8 isolates and how local development works.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/languages/python/how-python-workers-work.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # How Python Workers Work
 
@@ -42,8 +51,8 @@ class Default(WorkerEntrypoint):
 
 ...and a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) that points to this `.py` file:
 
-* [  wrangler.jsonc ](#tab-panel-7440)
-* [  wrangler.toml ](#tab-panel-7441)
+* [  wrangler.jsonc ](#tab-panel-9957)
+* [  wrangler.toml ](#tab-panel-9958)
 
 JSONC
 
@@ -59,7 +68,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03"
+  "compatibility_date": "2026-04-24"
 
 }
 
@@ -78,7 +87,7 @@ main = "src/entry.py"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-24"
 
 
 ```

@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Profile settings
 
@@ -41,11 +50,21 @@ Match count sets a minimum threshold for detections. DLP does not trigger an act
 
 ### Optical Character Recognition (OCR)
 
+Deprecation notice
+
+Profile-level OCR settings will be deprecated in a future release. We recommend configuring OCR in [DLP settings](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/#optical-character-recognition-ocr) instead.
+
 Optical Character Recognition (OCR) analyzes and interprets text within image files. When used with DLP profiles, OCR can detect sensitive data within images your users upload.
 
 OCR supports scanning `.jpg`/`.jpeg` and `.png` files between 4 KB and 1 MB in size. Text is encoded in UTF-8 format, including support for non-Latin characters.
 
+For more information, refer to [DLP settings](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/#optical-character-recognition-ocr).
+
 ### AI context analysis
+
+Deprecation notice
+
+Profile-level AI context analysis settings will be deprecated in a future release. We recommend configuring AI context analysis in [DLP settings](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/#ai-context-analysis) instead.
 
 Note
 
@@ -53,15 +72,7 @@ AI context analysis only supports Gateway HTTP and HTTPS traffic.
 
 AI context analysis uses a pretrained model to analyze surrounding context and adjust the confidence level of a detection. For example, a number that matches a credit card pattern may receive a lower confidence score if it appears in a context where credit card numbers are unlikely. DLP will log any matches that are above your confidence threshold.
 
-DLP redacts any matched text, then converts the surrounding context into a vector embedding and submits it to [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/). Vector embeddings (not raw text) are stored in user-specific private namespaces for up to six months, along with hit count and the [false positive/negative report](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#report-false-and-true-positives-to-ai-context-analysis).
-
-To use AI context analysis:
-
-1. Choose the **Confidence threshold** in a DLP profile.
-2. [Add the profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy) to a DLP policy.
-3. When configuring the DLP policy, turn on [payload logging](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules).
-
-AI context analysis results will appear in the payload section of your [DLP logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#4-view-dlp-logs). To improve future detections of sensitive data, you need to [report false and true positives](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#report-false-and-true-positives-to-ai-context-analysis).
+For full documentation on AI context analysis, refer to [DLP settings](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/#ai-context-analysis).
 
 ### Confidence thresholds
 

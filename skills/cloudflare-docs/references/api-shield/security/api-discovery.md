@@ -6,28 +6,37 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/api-shield/security/api-discovery.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # API Discovery
 
-Most development teams struggle to keep track of their APIs. Cloudflare API Discovery helps you map out and understand your attack surface area.
+Most development teams struggle to keep track of their APIs. Cloudflare API Discovery helps you map out and understand your API attack surface — the full set of endpoints that could be targeted by attackers.
 
 ## Process
 
-Cloudflare produces a simple, trustworthy map of API endpoints through a process of path normalization.
+Cloudflare produces a map of API endpoints by grouping similar request paths together (path normalization).
 
 For example, you might have thousands of APIs, but a lot of the calls look similar, such as:
 
 * `api.example.com/profile/238`
 * `api.example.com/profile/392`
 
-Both paths serve a similar purpose — allowing users to log in to their accounts — but they are not identical. To simplify your endpoints, these examples might both map to `api.example.com/profile/*`.
+Both paths serve a similar purpose — retrieving user profiles — but they are not identical. To simplify your endpoints, these examples might both map to `api.example.com/profile/*`.
 
 API Discovery runs this process across all your traffic, generating a simple map of endpoints that might look like:
 
@@ -46,7 +55,7 @@ API Discovery runs this process across all your traffic, generating a simple map
 
 ```
 
-Similarly, if you have multiple subdomains that share the same set of endpoints, Cloudflare will consolidate subdomains:
+Similarly, if you have multiple subdomains that share the same set of endpoints, Cloudflare consolidates subdomains:
 
 ```
 
@@ -61,45 +70,49 @@ jp-api.example.com/api/v1/users/{var1}
 
 ```
 
-We will consolidate to `{hostVar1}.example.com/api/v1/users/{var1}`.
+Cloudflare consolidates these to `{hostVar1}.example.com/api/v1/users/{var1}`.
 
-For more technical details, see our [blog post ↗](https://blog.cloudflare.com/ml-api-discovery-and-schema-learning/).
+For more technical details, refer to the [blog post ↗](https://blog.cloudflare.com/ml-api-discovery-and-schema-learning/).
 
 ### Inbox view
 
-API Shield first catalogs your discovered API endpoints in an email inbox-style view. From API Discovery, you can save endpoints to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) or ignore endpoints to remove them from view.
+API Shield first catalogs your discovered API endpoints in an inbox-style view. From API Discovery, you can save endpoints to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) or ignore endpoints to remove them from view.
 
-You should save all discovered API endpoints to Endpoint Management while ignoring any potential false positives in the API Discovery results by selecting **Save** or **Ignore** on each line. Alternatively, you can bulk-select endpoints to save or ignore. You can get started with saving endpoints by saving all endpoints with a variable. Search for `var1` in the search box and add all the resulting endpoints. You can examine endpoints without path variables for accuracy later on.
+Save all discovered API endpoints to Endpoint Management. Ignore any false positives by selecting **Save** or **Ignore** on each line, or use bulk selection.
 
-By adding endpoints to Endpoint Management, you will unlock further [security](https://developers.cloudflare.com/api-shield/security/), [visibility](https://developers.cloudflare.com/api-shield/management-and-monitoring/#endpoint-analysis), and [management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) features of the platform. Endpoint Management monitors the health of your API endpoints by saving, updating, and monitoring performance metrics.
+To get started, search for `var1` in the search box to find all endpoints with path variables and save them first. You can examine endpoints without path variables later.
+
+Adding endpoints to Endpoint Management unlocks additional [security](https://developers.cloudflare.com/api-shield/security/), [visibility](https://developers.cloudflare.com/api-shield/management-and-monitoring/#endpoint-analysis), and [management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) features.
 
 To restore any errantly ignored endpoints, you can filter by **Ignored** and select **Restore**.
 
-API Discovery is an ongoing process. Check back regularly for new API Discovery results. A badge with the number of endpoints needing review will show in the API Shield dashboard. You may see the quantities in the **Needs Review** and **Ignored** metrics change over time. As your actual API or traffic patterns to your APIs change, API Discovery results that are not saved can disappear.
+API Discovery is an ongoing process. Check back regularly for new results — a badge in the dashboard shows how many endpoints need review.
+
+The **Needs Review** and **Ignored** counts may change over time as your API or traffic patterns change. Discovery results that are not saved can disappear.
 
 Note
 
-Cloudflare will use your feedback on the ignored endpoints to better train the API Discovery Machine Learning model in a future release.
+Cloudflare will use your feedback on ignored endpoints to improve the API Discovery machine learning model in a future release.
 
-### Machine Learning-based Discovery
+### Machine learning-based discovery
 
-Your API endpoints are discovered with both the Session Identifier-based Discovery and the Machine Learning-based Discovery.
+Your API endpoints are discovered with both session identifier-based discovery and machine learning-based discovery.
 
-To access Machine Learning-based Discovery:
+To access machine learning-based discovery:
 
-* [  New dashboard ](#tab-panel-3466)
-* [ Old dashboard ](#tab-panel-3467)
+* [  New dashboard ](#tab-panel-5419)
+* [ Old dashboard ](#tab-panel-5420)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Discovery** tab.
-3. Filter the source results by `Session Identifier` or `Machine Learning` to view results from each Discovery method.
+3. Filter the source results by `Session Identifier` or `Machine Learning` to view results from each discovery method.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **API Shield** \> **Discovery**.
-3. Filter the source results by `Session Identifier` or `Machine Learning` to view results from each Discovery method.
+3. Filter the source results by `Session Identifier` or `Machine Learning` to view results from each discovery method.
 
-If all of your zone’s API traffic contains the session identifier that you have configured, both sources may deliver the same results due to similarities between their underlying methodology. We expect Machine Learning-based Discovery to excel in discovering API traffic regardless of whether your API uses a session identifier.
+If all of your zone's API traffic contains the session identifier that you have configured, both sources may deliver the same results due to similarities between their underlying methodology. Machine learning-based discovery can identify API traffic regardless of whether your API uses a session identifier.
 
 You can direct any feedback about your API Discovery results to your account team.
 
@@ -113,7 +126,7 @@ If an endpoint does not appear in the Discovery inbox, it is typically because t
 * The request must not come directly from Cloudflare Workers.
 * The endpoint must receive at least 500 requests within a 10-day period.
 
-Endpoints discovered using session identifiers will be labeled as such in the Cloudflare dashboard. If the endpoints are not discovered through session identifiers, they will be discovered using our machine learning-based [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/).
+Endpoints discovered using session identifiers will be labeled as such in the Cloudflare dashboard. If the endpoints are not discovered through session identifiers, they will be discovered using machine learning-based [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/).
 
 ## Availability
 

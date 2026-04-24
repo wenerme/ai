@@ -1,16 +1,15 @@
 ---
 title: Deploy your video call app
+description: Deploy the completed video call application.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Deploy your video call app
 
-* [ Watch this episode ](#tab-panel-5094)
-* [ Series overview ](#tab-panel-5095)
+* [ Watch this episode ](#tab-panel-7541)
+* [ Series overview ](#tab-panel-7542)
 
 We are almost done with the project, and in this final episode, we add the finishing touches, such as learning how to handle call disconnections, wiring up essential media controls like muting/unmuting and video toggling, and integrating a TURN server to ensure reliable connections even behind firewalls. By the end of this video, your app will be fully functional and ready for deployment.
 

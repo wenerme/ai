@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cache/how-to/cache-response-rules/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Cache Response Rules
 
@@ -44,10 +53,6 @@ The following table describes Cache Response Rules availability per plan.
 ## Troubleshooting
 
 When troubleshooting Cache Response Rules, use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
-
-Warning
-
-Cache Response Rules requires the latest version of our CDN engine. The migration is still ongoing and a small percentage of Enterprise zone have not been upgraded. If your Cache Response Rules are not working on your Enterprise zone, contact your account team to be be manually upgraded.
 
 ## Relationship with Cache Rules
 

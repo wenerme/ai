@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/page-rules/manage.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Manage Page Rules
 
@@ -26,8 +35,8 @@ For more flexibility and customization, consider using [Snippets](https://develo
 
 ## Create a page rule
 
-* [ Dashboard ](#tab-panel-8197)
-* [ API ](#tab-panel-8198)
+* [ Dashboard ](#tab-panel-8460)
+* [ API ](#tab-panel-8461)
 
 To create a page rule in the dashboard:
 
@@ -53,8 +62,8 @@ Notes
 
 ## Edit a page rule
 
-* [ Dashboard ](#tab-panel-8193)
-* [ API ](#tab-panel-8194)
+* [ Dashboard ](#tab-panel-8456)
+* [ API ](#tab-panel-8457)
 
 To edit a page rule in the dashboard:
 
@@ -70,8 +79,8 @@ To entirely replace the configuration of a page rule, send a [PUT request](https
 
 ## Delete a page rule
 
-* [ Dashboard ](#tab-panel-8195)
-* [ API ](#tab-panel-8196)
+* [ Dashboard ](#tab-panel-8458)
+* [ API ](#tab-panel-8459)
 
 To delete a page rule in the dashboard:
 

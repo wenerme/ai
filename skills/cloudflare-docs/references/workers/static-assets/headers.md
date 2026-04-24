@@ -1,18 +1,27 @@
 ---
 title: Headers
-description: When serving static assets, Workers will attach some headers to the response by default. These are:
+description: Learn about default and custom headers for Workers static assets, including Cache-Control, ETag, and Content-Type behavior.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/static-assets/headers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Headers
 

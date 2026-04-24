@@ -1,18 +1,27 @@
 ---
 title: Threat types
-description: Cloudflare classifies the threats that it blocks or challenges. To help you understand more about your site’s traffic, the 'Type of Threats Mitigated' metric on the analytics page measures threats blocked or challenged by the following categories:
+description: Review threat categories blocked by Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/account-and-zone-analytics/threat-types.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Threat types
 

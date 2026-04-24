@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
@@ -31,8 +40,8 @@ Whisper is a general-purpose speech recognition model. It is trained on a large 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3805)
-* [  curl ](#tab-panel-3806)
+* [  TypeScript ](#tab-panel-4013)
+* [  curl ](#tab-panel-4014)
 
 ```
 
@@ -100,8 +109,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3809)
-* [ Output ](#tab-panel-3810)
+* [ Input ](#tab-panel-4017)
+* [ Output ](#tab-panel-4018)
 
 Option 1
 
@@ -129,8 +138,8 @@ vtt
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3807)
-* [ Output ](#tab-panel-3808)
+* [ Input ](#tab-panel-4015)
+* [ Output ](#tab-panel-4016)
 
 ```
 

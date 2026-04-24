@@ -1,8 +1,8 @@
+# Create speech
+
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/tts/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/api/api-reference/tts/llms-full.txt.
-
-# Create speech
 
 POST https://openrouter.ai/api/v1/audio/speech
 Content-Type: application/json
@@ -426,6 +426,10 @@ components:
           additionalProperties:
             description: Any type
         phala:
+          type: object
+          additionalProperties:
+            description: Any type
+        poolside:
           type: object
           additionalProperties:
             description: Any type

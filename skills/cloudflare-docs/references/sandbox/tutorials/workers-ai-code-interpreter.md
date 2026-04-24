@@ -6,17 +6,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/tutorials/workers-ai-code-interpreter.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Code interpreter with Workers AI
 
-**Last reviewed:**  2 months ago 
+**Last reviewed:**  3 months ago 
 
 Build a powerful code interpreter that gives the [gpt-oss model](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) on Workers AI the ability to execute Python code using the Cloudflare Sandbox SDK.
 
@@ -146,8 +155,8 @@ Explain Code
 
 The template includes the proper Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6539)
-* [  wrangler.toml ](#tab-panel-6540)
+* [  wrangler.jsonc ](#tab-panel-8960)
+* [  wrangler.toml ](#tab-panel-8961)
 
 JSONC
 
@@ -161,7 +170,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-24",
 
   "ai": {
 
@@ -220,7 +229,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-24"
 
 
 [ai]

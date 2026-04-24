@@ -1,18 +1,27 @@
 ---
 title: Concepts
-description: Migrating your DNS from an on-premises BIND solution to a cloud-based provider like Cloudflare can offer significant benefits in terms of performance, security, and manageability. However, a successful migration requires careful planning and execution. This guide outlines best practices to ensure a smooth transition.
+description: Migrate and manage DNS on Cloudflare.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/dns-best-practices/concepts/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Concepts
 

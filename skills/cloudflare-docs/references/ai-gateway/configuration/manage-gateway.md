@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/configuration/manage-gateway.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Manage gateways
 
@@ -43,8 +52,8 @@ Auto-creation only applies to the gateway ID `default`. Using any other gateway 
 
 ### Create a gateway manually
 
-* [ Dashboard ](#tab-panel-5103)
-* [ API ](#tab-panel-5104)
+* [ Dashboard ](#tab-panel-5279)
+* [ API ](#tab-panel-5280)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -63,8 +72,8 @@ To set up an AI Gateway using the API:
 
 ## Edit gateway
 
-* [ Dashboard ](#tab-panel-5099)
-* [ API ](#tab-panel-5100)
+* [ Dashboard ](#tab-panel-5275)
+* [ API ](#tab-panel-5276)
 
 To edit an AI Gateway in the dashboard:
 
@@ -104,8 +113,8 @@ For more complex failover scenarios where you need to fail across different prov
 
 Deleting your gateway is permanent and can not be undone.
 
-* [ Dashboard ](#tab-panel-5101)
-* [ API ](#tab-panel-5102)
+* [ Dashboard ](#tab-panel-5277)
+* [ API ](#tab-panel-5278)
 
 To delete an AI Gateway in the dashboard:
 

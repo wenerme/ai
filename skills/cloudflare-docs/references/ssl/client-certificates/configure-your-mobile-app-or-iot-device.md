@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ mTLS ](https://developers.cloudflare.com/search/?tags=mTLS)[ iOS ](https://developers.cloudflare.com/search/?tags=iOS)[ Android ](https://developers.cloudflare.com/search/?tags=Android) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/client-certificates/configure-your-mobile-app-or-iot-device.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Configure your mobile app or IoT device
 

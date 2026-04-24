@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI)[ Hono ](https://developers.cloudflare.com/search/?tags=Hono)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build a Retrieval Augmented Generation (RAG) AI
 
@@ -117,8 +126,8 @@ If you have issues with this step or you do not have access to a browser interfa
 
 This example features the [@cf/meta/llama-3-8b-instruct model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
 
-* [  wrangler.jsonc ](#tab-panel-7003)
-* [  wrangler.toml ](#tab-panel-7004)
+* [  wrangler.jsonc ](#tab-panel-9456)
+* [  wrangler.toml ](#tab-panel-9457)
 
 JSONC
 
@@ -226,8 +235,8 @@ npx wrangler vectorize create vector-index --dimensions=768 --metric=cosine
 
 Then, add the configuration details for your new Vectorize index to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7005)
-* [  wrangler.toml ](#tab-panel-7006)
+* [  wrangler.jsonc ](#tab-panel-9458)
+* [  wrangler.toml ](#tab-panel-9459)
 
 JSONC
 
@@ -284,8 +293,8 @@ npx wrangler d1 create database
 
 Then, paste the configuration details output from the previous command into the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7007)
-* [  wrangler.toml ](#tab-panel-7008)
+* [  wrangler.jsonc ](#tab-panel-9460)
+* [  wrangler.toml ](#tab-panel-9461)
 
 JSONC
 
@@ -359,8 +368,8 @@ Before we begin creating notes, we will introduce a [Cloudflare Workflow](https:
 
 To begin, add a new `[[workflows]]` block to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7009)
-* [  wrangler.toml ](#tab-panel-7010)
+* [  wrangler.jsonc ](#tab-panel-9462)
+* [  wrangler.toml ](#tab-panel-9463)
 
 JSONC
 

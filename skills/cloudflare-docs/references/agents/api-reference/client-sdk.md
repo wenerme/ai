@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/client-sdk.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Client SDK
 
@@ -39,8 +48,8 @@ All clients provide:
 
 ### React
 
-* [  JavaScript ](#tab-panel-4040)
-* [  TypeScript ](#tab-panel-4041)
+* [  JavaScript ](#tab-panel-4216)
+* [  TypeScript ](#tab-panel-4217)
 
 JavaScript
 
@@ -128,8 +137,8 @@ Explain Code
 
 ### Vanilla JavaScript
 
-* [  JavaScript ](#tab-panel-4036)
-* [  TypeScript ](#tab-panel-4037)
+* [  JavaScript ](#tab-panel-4212)
+* [  TypeScript ](#tab-panel-4213)
 
 JavaScript
 
@@ -203,8 +212,8 @@ Explain Code
 
 The `agent` parameter is your agent class name. It is automatically converted from camelCase to kebab-case for the URL:
 
-* [  JavaScript ](#tab-panel-4032)
-* [  TypeScript ](#tab-panel-4033)
+* [  JavaScript ](#tab-panel-4208)
+* [  TypeScript ](#tab-panel-4209)
 
 JavaScript
 
@@ -240,8 +249,8 @@ useAgent({ agent: "LOUD_AGENT" }); // → /agents/loud-agent/...
 
 The `name` parameter identifies a specific agent instance. If omitted, defaults to `"default"`:
 
-* [  JavaScript ](#tab-panel-4034)
-* [  TypeScript ](#tab-panel-4035)
+* [  JavaScript ](#tab-panel-4210)
+* [  TypeScript ](#tab-panel-4211)
 
 JavaScript
 
@@ -289,8 +298,8 @@ useAgent({ agent: "ChatAgent" });
 
 Both `useAgent` and `AgentClient` accept connection options:
 
-* [  JavaScript ](#tab-panel-4050)
-* [  TypeScript ](#tab-panel-4051)
+* [  JavaScript ](#tab-panel-4226)
+* [  TypeScript ](#tab-panel-4227)
 
 JavaScript
 
@@ -384,8 +393,8 @@ Explain Code
 
 For authentication tokens or other async data, pass a function that returns a Promise:
 
-* [  JavaScript ](#tab-panel-4046)
-* [  TypeScript ](#tab-panel-4047)
+* [  JavaScript ](#tab-panel-4222)
+* [  TypeScript ](#tab-panel-4223)
 
 JavaScript
 
@@ -482,8 +491,8 @@ Agents can maintain state that syncs bidirectionally with all connected clients.
 
 Both `useAgent` and `AgentClient` expose a `state` property that reflects the current agent state. It starts as `undefined` until the first state message is received from the server.
 
-* [  JavaScript ](#tab-panel-4038)
-* [  TypeScript ](#tab-panel-4039)
+* [  JavaScript ](#tab-panel-4214)
+* [  TypeScript ](#tab-panel-4215)
 
 JavaScript
 
@@ -517,8 +526,8 @@ With `useAgent`, state updates trigger a React re-render, so `agent.state` alway
 
 ### Receiving state updates
 
-* [  JavaScript ](#tab-panel-4044)
-* [  TypeScript ](#tab-panel-4045)
+* [  JavaScript ](#tab-panel-4220)
+* [  TypeScript ](#tab-panel-4221)
 
 JavaScript
 
@@ -580,8 +589,8 @@ Explain Code
 
 ### Pushing state updates
 
-* [  JavaScript ](#tab-panel-4042)
-* [  TypeScript ](#tab-panel-4043)
+* [  JavaScript ](#tab-panel-4218)
+* [  TypeScript ](#tab-panel-4219)
 
 JavaScript
 
@@ -630,8 +639,8 @@ The `@callable()` decorator is only required for methods called from external ru
 
 ### Using call()
 
-* [  JavaScript ](#tab-panel-4048)
-* [  TypeScript ](#tab-panel-4049)
+* [  JavaScript ](#tab-panel-4224)
+* [  TypeScript ](#tab-panel-4225)
 
 JavaScript
 
@@ -679,8 +688,8 @@ const result = await agent.call("getStats");
 
 The `stub` property provides a cleaner syntax for method calls:
 
-* [  JavaScript ](#tab-panel-4052)
-* [  TypeScript ](#tab-panel-4053)
+* [  JavaScript ](#tab-panel-4228)
+* [  TypeScript ](#tab-panel-4229)
 
 JavaScript
 
@@ -728,8 +737,8 @@ const post = await agent.stub.createPost(title, content, tags);
 
 For full type safety, pass your Agent class as a type parameter:
 
-* [  JavaScript ](#tab-panel-4054)
-* [  TypeScript ](#tab-panel-4055)
+* [  JavaScript ](#tab-panel-4230)
+* [  TypeScript ](#tab-panel-4231)
 
 JavaScript
 
@@ -778,8 +787,8 @@ const result = await agent.stub.processData({ input: "test" });
 
 For methods that return `StreamingResponse`, handle chunks as they arrive:
 
-* [  JavaScript ](#tab-panel-4072)
-* [  TypeScript ](#tab-panel-4073)
+* [  JavaScript ](#tab-panel-4248)
+* [  TypeScript ](#tab-panel-4249)
 
 JavaScript
 
@@ -901,8 +910,8 @@ Explain Code
 
 For one-off requests without maintaining a WebSocket connection:
 
-* [  JavaScript ](#tab-panel-4074)
-* [  TypeScript ](#tab-panel-4075)
+* [  JavaScript ](#tab-panel-4250)
+* [  TypeScript ](#tab-panel-4251)
 
 JavaScript
 
@@ -1025,8 +1034,8 @@ Explain Code
 
 If your agent uses MCP (Model Context Protocol) servers, you can receive updates about their state:
 
-* [  JavaScript ](#tab-panel-4058)
-* [  TypeScript ](#tab-panel-4059)
+* [  JavaScript ](#tab-panel-4234)
+* [  TypeScript ](#tab-panel-4235)
 
 JavaScript
 
@@ -1094,8 +1103,8 @@ Explain Code
 
 ### Connection errors
 
-* [  JavaScript ](#tab-panel-4060)
-* [  TypeScript ](#tab-panel-4061)
+* [  JavaScript ](#tab-panel-4236)
+* [  TypeScript ](#tab-panel-4237)
 
 JavaScript
 
@@ -1149,8 +1158,8 @@ const agent = useAgent({
 
 ### RPC errors
 
-* [  JavaScript ](#tab-panel-4056)
-* [  TypeScript ](#tab-panel-4057)
+* [  JavaScript ](#tab-panel-4232)
+* [  TypeScript ](#tab-panel-4233)
 
 JavaScript
 
@@ -1192,8 +1201,8 @@ try {
 
 ### Streaming errors
 
-* [  JavaScript ](#tab-panel-4062)
-* [  TypeScript ](#tab-panel-4063)
+* [  JavaScript ](#tab-panel-4238)
+* [  TypeScript ](#tab-panel-4239)
 
 JavaScript
 
@@ -1241,8 +1250,8 @@ await agent.call("streamingMethod", [data], {
 
 ### 1\. Use typed stubs
 
-* [  JavaScript ](#tab-panel-4064)
-* [  TypeScript ](#tab-panel-4065)
+* [  JavaScript ](#tab-panel-4240)
+* [  TypeScript ](#tab-panel-4241)
 
 JavaScript
 
@@ -1282,8 +1291,8 @@ The client auto-reconnects and the agent automatically sends the current state o
 
 ### 3\. Optimize query caching
 
-* [  JavaScript ](#tab-panel-4066)
-* [  TypeScript ](#tab-panel-4067)
+* [  JavaScript ](#tab-panel-4242)
+* [  TypeScript ](#tab-panel-4243)
 
 JavaScript
 
@@ -1327,8 +1336,8 @@ useAgent({
 
 In vanilla JS, close connections when done:
 
-* [  JavaScript ](#tab-panel-4068)
-* [  TypeScript ](#tab-panel-4069)
+* [  JavaScript ](#tab-panel-4244)
+* [  TypeScript ](#tab-panel-4245)
 
 JavaScript
 
@@ -1480,8 +1489,8 @@ Explain Code
 
 The client also supports WebSocket event listeners:
 
-* [  JavaScript ](#tab-panel-4070)
-* [  TypeScript ](#tab-panel-4071)
+* [  JavaScript ](#tab-panel-4246)
+* [  TypeScript ](#tab-panel-4247)
 
 JavaScript
 

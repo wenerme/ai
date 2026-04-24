@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/zone-setups/full-setup/setup.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Set up a primary zone (Full setup)
 
@@ -27,8 +36,8 @@ Make sure that you:
 
 ## 1\. Add your domain to Cloudflare
 
-* [ Dashboard ](#tab-panel-4518)
-* [ API ](#tab-panel-4519)
+* [ Dashboard ](#tab-panel-6723)
+* [ API ](#tab-panel-6724)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).  
 [ Go to **Domains** ](https://dash.cloudflare.com/?to=/:account/domains/overview)
@@ -132,8 +141,8 @@ If your domain is particularly sensitive to downtime, review our suggestions to 
 
 ### 3.1\. Get nameserver names
 
-* [ Dashboard ](#tab-panel-4516)
-* [ API ](#tab-panel-4517)
+* [ Dashboard ](#tab-panel-6721)
+* [ API ](#tab-panel-6722)
 
 Your assigned nameservers are displayed as part of the onboarding flow. If you need to find them once again, go the zone **Overview** page.
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/getting-started/build-a-chat-agent.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build a chat agent
 
@@ -55,8 +64,8 @@ npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
 
 Replace your `wrangler.jsonc` with:
 
-* [  wrangler.jsonc ](#tab-panel-2898)
-* [  wrangler.toml ](#tab-panel-2899)
+* [  wrangler.jsonc ](#tab-panel-5096)
+* [  wrangler.toml ](#tab-panel-5097)
 
 JSONC
 
@@ -70,7 +79,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -101,7 +110,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -139,8 +148,8 @@ Key settings:
 
 Create `src/server.ts`. This is where your agent lives:
 
-* [  JavaScript ](#tab-panel-2900)
-* [  TypeScript ](#tab-panel-2901)
+* [  JavaScript ](#tab-panel-5098)
+* [  TypeScript ](#tab-panel-5099)
 
 JavaScript
 
@@ -552,8 +561,8 @@ Explain Code
 
 Create `src/client.tsx`:
 
-* [  JavaScript ](#tab-panel-2902)
-* [  TypeScript ](#tab-panel-2903)
+* [  JavaScript ](#tab-panel-5100)
+* [  TypeScript ](#tab-panel-5101)
 
 JavaScript
 

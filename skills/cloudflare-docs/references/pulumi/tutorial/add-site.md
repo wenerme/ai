@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python)[ Go ](https://developers.cloudflare.com/search/?tags=Go)[ Java ](https://developers.cloudflare.com/search/?tags=Java)[ .NET ](https://developers.cloudflare.com/search/?tags=.NET)[ YAML ](https://developers.cloudflare.com/search/?tags=YAML) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/pulumi/tutorial/add-site.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Add a site
 
@@ -81,13 +90,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-5750)
-* [  TypeScript ](#tab-panel-5751)
-* [  Python ](#tab-panel-5752)
-* [ go ](#tab-panel-5753)
-* [ Java ](#tab-panel-5754)
-* [ .NET ](#tab-panel-5755)
-* [ YAML ](#tab-panel-5756)
+* [  JavaScript ](#tab-panel-7979)
+* [  TypeScript ](#tab-panel-7980)
+* [  Python ](#tab-panel-7981)
+* [ go ](#tab-panel-7982)
+* [ Java ](#tab-panel-7983)
+* [ .NET ](#tab-panel-7984)
+* [ YAML ](#tab-panel-7985)
 
 Terminal window
 
@@ -241,13 +250,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-5757)
-* [  TypeScript ](#tab-panel-5758)
-* [  Python ](#tab-panel-5759)
-* [ go ](#tab-panel-5760)
-* [ Java ](#tab-panel-5761)
-* [ .NET ](#tab-panel-5762)
-* [ YAML ](#tab-panel-5763)
+* [  JavaScript ](#tab-panel-7986)
+* [  TypeScript ](#tab-panel-7987)
+* [  Python ](#tab-panel-7988)
+* [ go ](#tab-panel-7989)
+* [ Java ](#tab-panel-7990)
+* [ .NET ](#tab-panel-7991)
+* [ YAML ](#tab-panel-7992)
 
 Terminal window
 
@@ -387,13 +396,13 @@ A domain, or site, is known as a Zone in Cloudflare. In Pulumi, the [Zone resour
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-5764)
-* [  TypeScript ](#tab-panel-5765)
-* [  Python ](#tab-panel-5766)
-* [ go ](#tab-panel-5767)
-* [ Java ](#tab-panel-5768)
-* [ .NET ](#tab-panel-5769)
-* [ YAML ](#tab-panel-5770)
+* [  JavaScript ](#tab-panel-7993)
+* [  TypeScript ](#tab-panel-7994)
+* [  Python ](#tab-panel-7995)
+* [ go ](#tab-panel-7996)
+* [ Java ](#tab-panel-7997)
+* [ .NET ](#tab-panel-7998)
+* [ YAML ](#tab-panel-7999)
 
 **Filename: `index.js`**
 
@@ -768,13 +777,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Zone resource definition:
 
-* [  JavaScript ](#tab-panel-5771)
-* [  TypeScript ](#tab-panel-5772)
-* [  Python ](#tab-panel-5773)
-* [ go ](#tab-panel-5774)
-* [ Java ](#tab-panel-5775)
-* [ .NET ](#tab-panel-5776)
-* [ YAML ](#tab-panel-5777)
+* [  JavaScript ](#tab-panel-8000)
+* [  TypeScript ](#tab-panel-8001)
+* [  Python ](#tab-panel-8002)
+* [ go ](#tab-panel-8003)
+* [ Java ](#tab-panel-8004)
+* [ .NET ](#tab-panel-8005)
+* [ YAML ](#tab-panel-8006)
 
 **Filename: `index.js`**
 

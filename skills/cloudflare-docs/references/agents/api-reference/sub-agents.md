@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/sub-agents.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Sub-agents
 
@@ -24,8 +33,8 @@ Spawn child agents as co-located Durable Objects with their own isolated SQLite 
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-2920)
-* [  TypeScript ](#tab-panel-2921)
+* [  JavaScript ](#tab-panel-4844)
+* [  TypeScript ](#tab-panel-4845)
 
 JavaScript
 
@@ -107,8 +116,8 @@ Explain Code
 
 Both classes must be exported from the worker entry point. No separate Durable Object bindings are needed — child classes are discovered automatically via `ctx.exports`.
 
-* [  wrangler.jsonc ](#tab-panel-2910)
-* [  wrangler.toml ](#tab-panel-2911)
+* [  wrangler.jsonc ](#tab-panel-4834)
+* [  wrangler.toml ](#tab-panel-4835)
 
 JSONC
 
@@ -120,7 +129,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-15",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": [
 
@@ -175,7 +184,7 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-04-15"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = ["nodejs_compat", "experimental"]
 
@@ -204,8 +213,8 @@ Only the parent agent needs a Durable Object binding and migration. Child agents
 
 Get or create a named sub-agent. The first call for a given name triggers the child's `onStart()`. Subsequent calls return the existing instance.
 
-* [  JavaScript ](#tab-panel-2912)
-* [  TypeScript ](#tab-panel-2913)
+* [  JavaScript ](#tab-panel-4836)
+* [  TypeScript ](#tab-panel-4837)
 
 JavaScript
 
@@ -248,8 +257,8 @@ The stub exposes all public instance methods you define on the child class. Meth
 
 Return types are automatically wrapped in `Promise` if they are not already:
 
-* [  JavaScript ](#tab-panel-2922)
-* [  TypeScript ](#tab-panel-2923)
+* [  JavaScript ](#tab-panel-4846)
+* [  TypeScript ](#tab-panel-4847)
 
 JavaScript
 
@@ -325,8 +334,8 @@ Explain Code
 
 Forcefully stop a running sub-agent. The child stops executing immediately and restarts on the next `subAgent()` call. Storage is preserved — only the running instance is killed.
 
-* [  JavaScript ](#tab-panel-2914)
-* [  TypeScript ](#tab-panel-2915)
+* [  JavaScript ](#tab-panel-4838)
+* [  TypeScript ](#tab-panel-4839)
 
 JavaScript
 
@@ -362,8 +371,8 @@ Abort is transitive — if the child has its own sub-agents, they are also abort
 
 Abort the child (if running) and permanently wipe its storage. The next `subAgent()` call creates a fresh instance with empty SQLite.
 
-* [  JavaScript ](#tab-panel-2916)
-* [  TypeScript ](#tab-panel-2917)
+* [  JavaScript ](#tab-panel-4840)
+* [  TypeScript ](#tab-panel-4841)
 
 JavaScript
 
@@ -398,8 +407,8 @@ Deletion is transitive — the child's own sub-agents are also deleted.
 
 Each sub-agent has its own SQLite database, completely isolated from the parent and from other sub-agents. A parent writing to `this.sql` and a child writing to `this.sql` operate on different databases:
 
-* [  JavaScript ](#tab-panel-2928)
-* [  TypeScript ](#tab-panel-2929)
+* [  JavaScript ](#tab-panel-4852)
+* [  TypeScript ](#tab-panel-4853)
 
 JavaScript
 
@@ -505,8 +514,8 @@ Explain Code
 
 Two different classes can share the same user-facing name — they are resolved independently. The internal key is a composite of class name and facet name:
 
-* [  JavaScript ](#tab-panel-2918)
-* [  TypeScript ](#tab-panel-2919)
+* [  JavaScript ](#tab-panel-4842)
+* [  TypeScript ](#tab-panel-4843)
 
 JavaScript
 
@@ -536,8 +545,8 @@ const logger = await this.subAgent(Logger, "shared-name");
 
 The child's `this.name` property returns the facet name (not the parent's name):
 
-* [  JavaScript ](#tab-panel-2924)
-* [  TypeScript ](#tab-panel-2925)
+* [  JavaScript ](#tab-panel-4848)
+* [  TypeScript ](#tab-panel-4849)
 
 JavaScript
 
@@ -579,8 +588,8 @@ export class Child extends Agent {
 
 Run multiple sub-agents concurrently:
 
-* [  JavaScript ](#tab-panel-2926)
-* [  TypeScript ](#tab-panel-2927)
+* [  JavaScript ](#tab-panel-4850)
+* [  TypeScript ](#tab-panel-4851)
 
 JavaScript
 
@@ -648,8 +657,8 @@ Explain Code
 
 Sub-agents can spawn their own sub-agents, forming a tree:
 
-* [  JavaScript ](#tab-panel-2930)
-* [  TypeScript ](#tab-panel-2931)
+* [  JavaScript ](#tab-panel-4854)
+* [  TypeScript ](#tab-panel-4855)
 
 JavaScript
 
@@ -745,8 +754,8 @@ Explain Code
 
 Pass an `RpcTarget` callback to stream results from a sub-agent back to the parent:
 
-* [  JavaScript ](#tab-panel-2932)
-* [  TypeScript ](#tab-panel-2933)
+* [  JavaScript ](#tab-panel-4856)
+* [  TypeScript ](#tab-panel-4857)
 
 JavaScript
 

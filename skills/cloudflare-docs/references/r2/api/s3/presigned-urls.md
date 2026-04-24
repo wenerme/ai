@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2/api/s3/presigned-urls.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Presigned URLs
 
@@ -38,9 +47,9 @@ Presigned URLs are generated client-side with no communication with R2, requirin
 
 ### SDK examples
 
-* [ JavaScript ](#tab-panel-8023)
-* [ Python ](#tab-panel-8024)
-* [ CLI ](#tab-panel-8025)
+* [ JavaScript ](#tab-panel-8195)
+* [ Python ](#tab-panel-8196)
+* [ CLI ](#tab-panel-8197)
 
 TypeScript
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/configuration/javascript-apis.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # JavaScript APIs
 
@@ -28,9 +37,9 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-7911)
-* [  TypeScript ](#tab-panel-7912)
-* [  Python ](#tab-panel-7913)
+* [  JavaScript ](#tab-panel-8083)
+* [  TypeScript ](#tab-panel-8084)
+* [  Python ](#tab-panel-8085)
 
 index.js
 
@@ -129,9 +138,9 @@ Explain Code
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-7908)
-* [  TypeScript ](#tab-panel-7909)
-* [  Python ](#tab-panel-7910)
+* [  JavaScript ](#tab-panel-8080)
+* [  TypeScript ](#tab-panel-8081)
+* [  Python ](#tab-panel-8082)
 
 index.js
 
@@ -315,9 +324,9 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-7914)
-* [  TypeScript ](#tab-panel-7915)
-* [  Python ](#tab-panel-7916)
+* [  JavaScript ](#tab-panel-8086)
+* [  TypeScript ](#tab-panel-8087)
+* [  Python ](#tab-panel-8088)
 
 index.js
 

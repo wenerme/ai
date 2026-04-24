@@ -1,16 +1,25 @@
 ---
 title: Error 1037
-description: This error indicates that the rewrite rule expression could not be evaluated.
+description: Troubleshoot Cloudflare 1037 error code.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 1037
 

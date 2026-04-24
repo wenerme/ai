@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/api/backups.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Backups
 
@@ -46,8 +55,8 @@ await sandbox.createBackup(options: BackupOptions): Promise<DirectoryBackup>
 * `id` \- Unique backup identifier (UUID)
 * `dir` \- Directory that was backed up
 
-* [  JavaScript ](#tab-panel-6135)
-* [  TypeScript ](#tab-panel-6136)
+* [  JavaScript ](#tab-panel-8538)
+* [  TypeScript ](#tab-panel-8539)
 
 JavaScript
 
@@ -142,8 +151,8 @@ await sandbox.restoreBackup(backup: DirectoryBackup): Promise<RestoreBackupResul
 * `dir` \- Directory that was restored
 * `id` \- Backup ID that was restored
 
-* [  JavaScript ](#tab-panel-6137)
-* [  TypeScript ](#tab-panel-6138)
+* [  JavaScript ](#tab-panel-8540)
+* [  TypeScript ](#tab-panel-8541)
 
 JavaScript
 
@@ -220,8 +229,8 @@ The FUSE mount is lost when the sandbox sleeps or restarts. Re-restore from the 
 
 Use `useGitignore` to exclude files matching `.gitignore` rules (such as `node_modules/` or `dist/`) from the backup. This reduces backup size for git repositories.
 
-* [  JavaScript ](#tab-panel-6139)
-* [  TypeScript ](#tab-panel-6140)
+* [  JavaScript ](#tab-panel-8542)
+* [  TypeScript ](#tab-panel-8543)
 
 JavaScript
 
@@ -291,8 +300,8 @@ If the directory is not inside a git repository, `useGitignore` has no effect an
 
 Use backups as checkpoints before risky operations.
 
-* [  JavaScript ](#tab-panel-6141)
-* [  TypeScript ](#tab-panel-6142)
+* [  JavaScript ](#tab-panel-8544)
+* [  TypeScript ](#tab-panel-8545)
 
 JavaScript
 
@@ -352,8 +361,8 @@ Explain Code
 
 ### Error handling
 
-* [  JavaScript ](#tab-panel-6143)
-* [  TypeScript ](#tab-panel-6144)
+* [  JavaScript ](#tab-panel-8546)
+* [  TypeScript ](#tab-panel-8547)
 
 JavaScript
 
@@ -521,5 +530,5 @@ interface RestoreBackupResult {
 * [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) \- Configure bindings
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/backups/","name":"Backups"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/backups/","name":"Backups"}}]}
 ```

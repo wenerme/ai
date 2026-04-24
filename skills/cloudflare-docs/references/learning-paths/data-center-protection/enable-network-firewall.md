@@ -1,18 +1,27 @@
 ---
 title: Enable Cloudflare Network Firewall
-description: Magic Transit customers are automatically provided with the standard features of Cloudflare Network Firewall, Cloudflare's firewall-as-a-service product.
+description: Learn about enable cloudflare network firewall in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/data-center-protection/enable-network-firewall.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Enable Cloudflare Network Firewall
 

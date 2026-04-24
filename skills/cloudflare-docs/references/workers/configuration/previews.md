@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/previews.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Preview URLs
 
@@ -144,8 +153,8 @@ Older Wrangler versions will default to Preview URLs being enabled.
 
 To toggle Preview URLs for a Worker, include any of the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7091)
-* [  wrangler.toml ](#tab-panel-7092)
+* [  wrangler.jsonc ](#tab-panel-9608)
+* [  wrangler.toml ](#tab-panel-9609)
 
 JSONC
 
@@ -169,8 +178,8 @@ preview_urls = true
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-7093)
-* [  wrangler.toml ](#tab-panel-7094)
+* [  wrangler.jsonc ](#tab-panel-9610)
+* [  wrangler.toml ](#tab-panel-9611)
 
 JSONC
 

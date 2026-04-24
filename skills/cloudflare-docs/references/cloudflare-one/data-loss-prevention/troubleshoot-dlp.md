@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/data-loss-prevention/troubleshoot-dlp.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Troubleshoot DLP
 
@@ -85,7 +94,7 @@ You can also create policies that match trusted applications using the [**Do Not
 
 If DLP detects sensitive data in plain text but not within images or certain applications, check for the following issues:
 
-* **OCR is turned on**: For DLP to scan text within images (such as a picture of a credit card), you must turn on [Optical Character Recognition (OCR)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/#optical-character-recognition-ocr) in the corresponding DLP profile.
+* **OCR is turned on**: For DLP to scan text within images (such as a picture of a credit card), you must turn on [Optical Character Recognition (OCR)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/#optical-character-recognition-ocr) in DLP settings.
 * **Application-specific behavior**: Some applications, such as WhatsApp Web, use protocols or encryption methods (such as WebSocket connections) that Gateway may not be able to fully inspect with HTTP policies.
 * **Supported file types**: Content must be in a [supported file type](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#supported-file-types) for DLP inspection.
 

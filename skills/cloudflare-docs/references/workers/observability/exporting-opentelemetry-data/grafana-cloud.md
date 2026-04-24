@@ -1,18 +1,27 @@
 ---
 title: Export to Grafana Cloud
-description: Grafana Cloud is a fully managed observability platform that provides visualization, alerting, and analytics for your telemetry data. By exporting your Cloudflare Workers telemetry to Grafana Cloud, you can:
+description: Send OpenTelemetry traces and logs from Cloudflare Workers to Grafana Cloud.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/observability/exporting-opentelemetry-data/grafana-cloud.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Export to Grafana Cloud
 
@@ -57,8 +66,8 @@ Before you begin, ensure you have:
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-7514)
-* [  wrangler.toml ](#tab-panel-7515)
+* [  wrangler.jsonc ](#tab-panel-9973)
+* [  wrangler.toml ](#tab-panel-9974)
 
 JSONC
 

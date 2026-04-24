@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/tutorials/deploy-an-express-app.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Deploy an Express.js application on Cloudflare Workers
 
@@ -97,8 +106,8 @@ bun add express @types/express
 
 Express.js on Cloudflare Workers requires the `nodejs_compat` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/). This flag enables Node.js APIs and allows Express to run on the Workers runtime. Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10006)
-* [  wrangler.toml ](#tab-panel-10007)
+* [  wrangler.jsonc ](#tab-panel-10287)
+* [  wrangler.toml ](#tab-panel-10288)
 
 JSONC
 
@@ -187,8 +196,8 @@ Explain Code
 
 The binding will be added to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-10008)
-* [  wrangler.toml ](#tab-panel-10009)
+* [  wrangler.jsonc ](#tab-panel-10289)
+* [  wrangler.toml ](#tab-panel-10290)
 
 JSONC
 

@@ -1,19 +1,27 @@
 ---
 title: net
-description: You can use node:net to create a direct connection to servers via a TCP sockets
-with net.Socket.
+description: Use the Node.js net module in Cloudflare Workers to create TCP socket connections to external servers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/nodejs/net.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # net
 
@@ -25,8 +33,8 @@ You can use [node:net ↗](https://nodejs.org/api/net.html) to create a direct c
 
 These functions use [connect](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#connect) functionality from the built-in `cloudflare:sockets` module.
 
-* [  JavaScript ](#tab-panel-10107)
-* [  TypeScript ](#tab-panel-10108)
+* [  JavaScript ](#tab-panel-10123)
+* [  TypeScript ](#tab-panel-10124)
 
 index.js
 

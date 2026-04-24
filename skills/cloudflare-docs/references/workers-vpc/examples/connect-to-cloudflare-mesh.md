@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-vpc/examples/connect-to-cloudflare-mesh.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Connect Workers to Cloudflare Mesh
 
@@ -29,8 +38,8 @@ When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-
 
 Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9466)
-* [  wrangler.toml ](#tab-panel-9467)
+* [  wrangler.jsonc ](#tab-panel-9482)
+* [  wrangler.toml ](#tab-panel-9483)
 
 JSONC
 
@@ -46,7 +55,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-22",
+  "compatibility_date": "2026-04-24",
 
   "vpc_networks": [
 
@@ -81,7 +90,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-22"
+compatibility_date = "2026-04-24"
 
 
 [[vpc_networks]]

@@ -1,18 +1,27 @@
 ---
 title: Multipart upload metadata
-description: If you're using the Workers Script Upload API or Version Upload API directly, multipart/form-data uploads require you to specify a metadata part. This metadata defines the Worker's configuration in JSON format, analogue to the wrangler.toml file.
+description: Define Workers configuration in JSON metadata for multipart form-data script uploads.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/multipart-upload-metadata.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Multipart upload metadata
 

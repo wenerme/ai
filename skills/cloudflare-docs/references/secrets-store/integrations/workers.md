@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/secrets-store/integrations/workers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workers integration
 
@@ -42,9 +51,9 @@ Note
 
 You may also add account secrets directly from the Workers settings on the dashboard. You can skip to [step 2](#via-dashboard) to do that.
 
-* [ Wrangler ](#tab-panel-6543)
-* [ Dashboard ](#tab-panel-6544)
-* [ API ](#tab-panel-6545)
+* [ Wrangler ](#tab-panel-8964)
+* [ Dashboard ](#tab-panel-8965)
+* [ API ](#tab-panel-8966)
 
 Use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-secret) `secrets-store secret create`.
 
@@ -162,8 +171,8 @@ To bind an account secret to your Worker, you must have one of the following [ro
    * `store_id`: the corresponding Secrets Store ID where your account secret was created.  
    * `secret_name`: the unique secret name, defined when your account secret was created.
 
-* [  wrangler.jsonc ](#tab-panel-6541)
-* [  wrangler.toml ](#tab-panel-6542)
+* [  wrangler.jsonc ](#tab-panel-8962)
+* [  wrangler.toml ](#tab-panel-8963)
 
 JSONC
 

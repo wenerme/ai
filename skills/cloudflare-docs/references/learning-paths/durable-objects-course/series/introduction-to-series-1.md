@@ -1,16 +1,15 @@
 ---
 title: Introduction to the series
+description: Overview of the Durable Objects video series.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Introduction to the series
 
-* [ Watch this episode ](#tab-panel-5096)
-* [ Series overview ](#tab-panel-5097)
+* [ Watch this episode ](#tab-panel-7543)
+* [ Series overview ](#tab-panel-7544)
 
 In this episode, we present an overview of the series, discuss its underlying architecture, and access resources to set up the project locally.
 

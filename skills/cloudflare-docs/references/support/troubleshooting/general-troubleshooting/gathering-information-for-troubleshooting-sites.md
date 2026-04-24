@@ -1,16 +1,25 @@
 ---
 title: Gathering information for troubleshooting sites
-description: It is important to capture as much information as possible to diagnose an issue and to provide adequate details to Cloudflare support. This article explains how to gather troubleshooting information commonly requested by Cloudflare Support.
+description: Collect diagnostic data for Cloudflare support tickets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Gathering information for troubleshooting sites
 

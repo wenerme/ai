@@ -6,17 +6,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/analytics-engine.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Write to Analytics Engine
 
-**Last reviewed:**  3 months ago 
+**Last reviewed:**  4 months ago 
 
 Write custom analytics events to Workers Analytics Engine.
 
@@ -28,8 +37,8 @@ Unlike logs, Analytics Engine is designed for aggregated queries over high-cardi
 
 Add an Analytics Engine dataset binding to your Wrangler configuration file. The dataset is created automatically when you first write to it.
 
-* [  wrangler.jsonc ](#tab-panel-7255)
-* [  wrangler.toml ](#tab-panel-7256)
+* [  wrangler.jsonc ](#tab-panel-9714)
+* [  wrangler.toml ](#tab-panel-9715)
 
 JSONC
 
@@ -69,8 +78,8 @@ dataset = "my_dataset"
 
 ## Write data points
 
-* [  JavaScript ](#tab-panel-7257)
-* [  TypeScript ](#tab-panel-7258)
+* [  JavaScript ](#tab-panel-9716)
+* [  TypeScript ](#tab-panel-9717)
 
 JavaScript
 

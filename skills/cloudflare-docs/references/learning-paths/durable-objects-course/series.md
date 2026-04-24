@@ -1,11 +1,10 @@
 ---
 title: Overview
+description: Build real-time apps with Durable Objects.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-Copy page
 
 # Overview
 

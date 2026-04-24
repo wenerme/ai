@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/reference/environments.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Environments
 
@@ -26,8 +35,8 @@ If you are using Wrangler environments, you must specify any [Durable Object bin
 
 Durable Object bindings are not inherited. For example, you can define an environment named `staging` as below:
 
-* [  wrangler.jsonc ](#tab-panel-6812)
-* [  wrangler.toml ](#tab-panel-6813)
+* [  wrangler.jsonc ](#tab-panel-6984)
+* [  wrangler.toml ](#tab-panel-6985)
 
 JSONC
 
@@ -81,8 +90,8 @@ class_name = "DurableObjectExample"
 
 Because Wrangler appends the [environment name](https://developers.cloudflare.com/workers/wrangler/environments/) to the top-level name when publishing, for a Worker named `worker-name` the above example is equivalent to:
 
-* [  wrangler.jsonc ](#tab-panel-6814)
-* [  wrangler.toml ](#tab-panel-6815)
+* [  wrangler.jsonc ](#tab-panel-6986)
+* [  wrangler.toml ](#tab-panel-6987)
 
 JSONC
 
@@ -142,8 +151,8 @@ script_name = "worker-name-staging"
 
 If you want an environment-specific binding that accesses the same Objects as the top-level binding, specify the top-level Worker code name explicitly using `script_name`:
 
-* [  wrangler.jsonc ](#tab-panel-6816)
-* [  wrangler.toml ](#tab-panel-6817)
+* [  wrangler.jsonc ](#tab-panel-6988)
+* [  wrangler.toml ](#tab-panel-6989)
 
 JSONC
 

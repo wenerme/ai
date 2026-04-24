@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/warp-client/privacy.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Privacy
 

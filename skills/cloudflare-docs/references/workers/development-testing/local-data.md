@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/development-testing/local-data.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Adding local data
 
@@ -132,7 +141,7 @@ You can delete the `.wrangler/state` folder at any time to reset your local envi
 
 ### Changing the local data directory
 
-If you prefer to specify a different directory for local storage, you can do so through the Wranlger CLI or in the Vite plugin's configuration.
+If you prefer to specify a different directory for local storage, you can do so through the Wrangler CLI or in the Vite plugin's configuration.
 
 #### Using Wrangler
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg) 
 
@@ -32,8 +41,8 @@ FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced qualit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3052)
-* [  curl ](#tab-panel-3053)
+* [  TypeScript ](#tab-panel-3248)
+* [  curl ](#tab-panel-3249)
 
 ```
 
@@ -119,8 +128,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-3054)
-* [ Output ](#tab-panel-3055)
+* [ Input ](#tab-panel-3250)
+* [ Output ](#tab-panel-3251)
 
 ▶multipart{}
 
@@ -132,8 +141,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3050)
-* [ Output ](#tab-panel-3051)
+* [ Input ](#tab-panel-3246)
+* [ Output ](#tab-panel-3247)
 
 ```
 

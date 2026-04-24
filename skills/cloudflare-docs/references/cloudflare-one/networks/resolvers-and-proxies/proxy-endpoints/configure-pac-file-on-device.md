@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Configure a PAC file on your device
 
@@ -36,12 +45,12 @@ Before you configure a PAC file on your device, make sure you have:
 
 Configure your operating system to use the PAC file. This applies the proxy to all browsers that use system proxy settings (Chrome, Edge, Brave, Safari).
 
-* [ Windows ](#tab-panel-5763)
-* [ macOS ](#tab-panel-5764)
-* [ Linux ](#tab-panel-5765)
-* [ iOS / iPadOS ](#tab-panel-5766)
-* [ Android ](#tab-panel-5767)
-* [ ChromeOS ](#tab-panel-5768)
+* [ Windows ](#tab-panel-5988)
+* [ macOS ](#tab-panel-5989)
+* [ Linux ](#tab-panel-5990)
+* [ iOS / iPadOS ](#tab-panel-5991)
+* [ Android ](#tab-panel-5992)
+* [ ChromeOS ](#tab-panel-5993)
 
 For more information, refer to [Use a proxy server in Windows ↗](https://support.microsoft.com/windows/use-a-proxy-server-in-windows-03096c53-0554-4ffe-b6ab-8b1deee8dae1).
 

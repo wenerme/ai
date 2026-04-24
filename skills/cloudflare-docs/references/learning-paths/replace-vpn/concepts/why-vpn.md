@@ -1,18 +1,27 @@
 ---
 title: Why should you replace your VPN?
-description: Many organizations rely on VPNs to protect their data, but for many reasons, VPNs are often not ideal for defending against today's risks.
+description: Learn benefits of Zero Trust over VPNs.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/replace-vpn/concepts/why-vpn.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Why should you replace your VPN?
 

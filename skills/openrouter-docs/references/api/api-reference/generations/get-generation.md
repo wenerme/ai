@@ -1,8 +1,8 @@
+# Get request & usage metadata for a generation
+
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/generations/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/api/api-reference/generations/llms-full.txt.
-
-# Get request & usage metadata for a generation
 
 GET https://openrouter.ai/api/v1/generation
 
@@ -182,6 +182,7 @@ components:
         - OpenAI
         - OpenInference
         - Parasail
+        - Poolside
         - Perplexity
         - Phala
         - Recraft
@@ -383,6 +384,13 @@ components:
             - string
             - 'null'
           description: Unique identifier grouping all generations from a single API request
+        response_cache_source_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            If this generation was served from response cache, contains the
+            original generation ID. Null otherwise.
         router:
           type:
             - string

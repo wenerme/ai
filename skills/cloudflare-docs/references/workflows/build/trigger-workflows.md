@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Bindings ](https://developers.cloudflare.com/search/?tags=Bindings) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workflows/build/trigger-workflows.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Trigger Workflows
 
@@ -43,8 +52,8 @@ New to Workflows? Start with the [Workflows tutorial](https://developers.cloudfl
 
 To bind to a Workflow from your Workers code, you need to define a [binding](https://developers.cloudflare.com/workers/wrangler/configuration/) to a specific Workflow. For example, to bind to the Workflow defined in the [get started guide](https://developers.cloudflare.com/workflows/get-started/guide/), you would configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the below:
 
-* [  wrangler.jsonc ](#tab-panel-11095)
-* [  wrangler.toml ](#tab-panel-11096)
+* [  wrangler.jsonc ](#tab-panel-11111)
+* [  wrangler.toml ](#tab-panel-11112)
 
 JSONC
 
@@ -60,7 +69,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-22",
+  "compatibility_date": "2026-04-24",
 
   "workflows": [
 
@@ -105,7 +114,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-22"
+compatibility_date = "2026-04-24"
 
 
 [[workflows]]
@@ -319,8 +328,8 @@ Restarting an instance will immediately cancel any in-progress steps, erase any 
 
 You can create a new Workflow instance from within a step of another Workflow. The parent Workflow will not block waiting for the child Workflow to complete — it continues execution immediately after the child instance is successfully created.
 
-* [  JavaScript ](#tab-panel-11097)
-* [  TypeScript ](#tab-panel-11098)
+* [  JavaScript ](#tab-panel-11113)
+* [  TypeScript ](#tab-panel-11114)
 
 JavaScript
 

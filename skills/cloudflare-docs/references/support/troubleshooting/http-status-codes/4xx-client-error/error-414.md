@@ -1,16 +1,25 @@
 ---
 title: Error 414
-description: The 414 URI Too Long status code indicates that the server refuses to process the request because the URI provided by the client is excessively long.
+description: Troubleshoot HTTP 414 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 414
 

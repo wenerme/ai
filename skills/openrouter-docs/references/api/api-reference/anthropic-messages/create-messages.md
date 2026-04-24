@@ -1,8 +1,8 @@
+# Create a message
+
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/anthropic-messages/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/api/api-reference/anthropic-messages/llms-full.txt.
-
-# Create a message
 
 POST https://openrouter.ai/api/v1/messages
 Content-Type: application/json
@@ -1454,6 +1454,7 @@ components:
         - OpenAI
         - OpenInference
         - Parasail
+        - Poolside
         - Perplexity
         - Phala
         - Recraft

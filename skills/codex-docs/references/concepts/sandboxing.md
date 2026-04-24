@@ -192,6 +192,12 @@ of approvals and sandbox behavior in the app, see
 [Codex app features](https://developers.openai.com/codex/app/features#approvals-and-sandboxing), and for the
 IDE-specific settings entry points, see [Codex IDE extension settings](https://developers.openai.com/codex/ide/settings).
 
+Automatic review, when available, doesn't change the sandbox boundary. It
+reviews approval requests, such as sandbox escalations or network access, while
+actions already allowed inside the sandbox run without extra review. See
+[Automatic approval reviews](https://developers.openai.com/codex/agent-approvals-security#automatic-approval-reviews)
+for the policy behavior.
+
 Platform details live in the platform-specific docs. For native Windows setup,
 behavior, and troubleshooting, see [Windows](https://developers.openai.com/codex/windows). For admin
 requirements and organization-level constraints on sandboxing and approvals, see

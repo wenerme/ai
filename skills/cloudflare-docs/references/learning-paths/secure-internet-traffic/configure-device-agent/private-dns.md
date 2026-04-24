@@ -1,18 +1,27 @@
 ---
 title: Resolve private DNS
-description: By default, all DNS requests on the user device are resolved by Cloudflare's public DNS resolver except for common top level domains used for local resolution (such as localhost). To allow users to connect to internal server names or domains that do not resolve on the public Internet, you have two options:
+description: Set up private DNS resolution.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/configure-device-agent/private-dns.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Resolve private DNS
 

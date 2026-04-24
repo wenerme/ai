@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-search/concepts/namespaces.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Namespaces
 
@@ -31,8 +40,8 @@ The namespace binding requires the following minimum package versions for TypeSc
 
 When you add an `ai_search_namespaces` binding to your Wrangler configuration, you specify which namespace the binding has access to. The binding grants full access to all instances within that namespace. You can get, list, create, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-5167)
-* [  wrangler.toml ](#tab-panel-5168)
+* [  wrangler.jsonc ](#tab-panel-5343)
+* [  wrangler.toml ](#tab-panel-5344)
 
 JSONC
 
@@ -97,8 +106,8 @@ A `default` namespace is automatically created for every account. If you do not 
 
 You can also bind directly to specific instances in the default namespace using the `ai_search` binding. This binds each entry to a single pre-existing instance without needing to call `get()`.
 
-* [  wrangler.jsonc ](#tab-panel-5169)
-* [  wrangler.toml ](#tab-panel-5170)
+* [  wrangler.jsonc ](#tab-panel-5345)
+* [  wrangler.toml ](#tab-panel-5346)
 
 JSONC
 
@@ -161,8 +170,8 @@ The `ai_search` binding provides the same instance methods (`search()`, `chatCom
 
 You can declare multiple namespace bindings in the same Worker. Each binding maps to a different namespace and provides isolated access to its instances.
 
-* [  wrangler.jsonc ](#tab-panel-5171)
-* [  wrangler.toml ](#tab-panel-5172)
+* [  wrangler.jsonc ](#tab-panel-5347)
+* [  wrangler.toml ](#tab-panel-5348)
 
 JSONC
 

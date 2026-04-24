@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-run/features/webmcp.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # WebMCP
 
@@ -25,6 +34,8 @@ Copy page
 #### 1\. Start a Lab session and open DevTools
 
 WebMCP is currently available in Chrome beta, so it requires a lab session. Browser Run has an experimental pool with browser instances running Chrome beta so you can test emerging browser features before they reach stable Chrome. Your production workloads on the [standard pool](https://developers.cloudflare.com/browser-run/#key-features) remain on a stable version of Chrome.
+
+Lab sessions are experimental and should not be used for production workloads.
 
 Use the new `wrangler browser` command to acquire a lab browser session:
 
@@ -344,14 +355,13 @@ You can now view the live browser session and interact with it.
 
 * Lab sessions use Chrome 146 beta, which may have stability issues.
 * WebMCP APIs (`navigator.modelContext`, `navigator.modelContextTesting`) only work in lab sessions.
-* Lab sessions count against your regular rate limits.
+* Lab sessions count against your regular [rate limits](https://developers.cloudflare.com/browser-run/limits/) and [pricing](https://developers.cloudflare.com/browser-run/pricing/).
 * The `lab` parameter is not yet supported in `@cloudflare/puppeteer` or `@cloudflare/playwright`. Acquire the session manually and connect with `sessionId`.
 
 ## More resources
 
 * [Chrome WebMCP blog post ↗](https://developer.chrome.com/blog/webmcp-epp)
 * [WebMCP specification ↗](https://github.com/webmachinelearning/webmcp)
-* [Browser Run documentation](https://developers.cloudflare.com/browser-run/)
 
 ## Troubleshooting
 

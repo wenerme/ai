@@ -1,18 +1,27 @@
 ---
 title: Directives
-description: The Directives tab in AI Crawl Control provides insights into how AI crawlers interact with your robots.txt files across your hostnames. You can monitor request patterns, verify file availability, identify crawlers that violate your directives, and assess your site's readiness for AI agents.
+description: Monitor AI crawler interactions with your robots.txt files.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-crawl-control/features/track-robots-txt.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Directives
 
@@ -91,7 +100,7 @@ The **Agent Readiness** card helps you assess how well your site is configured f
 * **Markdown for Agents**: Whether your site supports content negotiation for AI-optimized content delivery
 * **Content Signals Policy**: Whether your site signals content usage preferences to AI crawlers
 
-The scan is powered by [isitagentready.org ↗](https://isitagentready.org). Results include recommendations for improving your site's compatibility with AI agents and crawlers.
+The scan is powered by [isitagentready.com ↗](https://isitagentready.com). Results include recommendations for improving your site's compatibility with AI agents and crawlers.
 
 ## Related resources
 

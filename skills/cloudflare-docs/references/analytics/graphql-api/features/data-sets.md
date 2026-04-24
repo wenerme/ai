@@ -1,20 +1,27 @@
 ---
 title: Datasets (tables)
-description: Cloudflare Analytics offers a range of datasets, including both general and
-product-specific ones. Datasets use a consistent naming scheme that explicitly
-identifies the type of data they return:
+description: Explore available GraphQL Analytics API datasets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/graphql-api/features/data-sets.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Datasets (tables)
 

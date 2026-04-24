@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/configuration/wrangler.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Wrangler configuration
 
@@ -20,8 +29,8 @@ Copy page
 
 The minimum required configuration for using Sandbox SDK:
 
-* [  wrangler.jsonc ](#tab-panel-8520)
-* [  wrangler.toml ](#tab-panel-8521)
+* [  wrangler.jsonc ](#tab-panel-8692)
+* [  wrangler.toml ](#tab-panel-8693)
 
 JSONC
 
@@ -35,7 +44,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-21",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -96,7 +105,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-21"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -153,8 +162,8 @@ npx wrangler r2 bucket create my-backup-bucket
 
 ### 2\. Add the binding and environment variables
 
-* [  wrangler.jsonc ](#tab-panel-8514)
-* [  wrangler.toml ](#tab-panel-8515)
+* [  wrangler.jsonc ](#tab-panel-8686)
+* [  wrangler.toml ](#tab-panel-8687)
 
 JSONC
 
@@ -234,8 +243,8 @@ The SDK uses these credentials to generate presigned URLs that allow the contain
 
 **Solution**: Ensure your `wrangler.jsonc` includes the Durable Objects binding:
 
-* [  wrangler.jsonc ](#tab-panel-8516)
-* [  wrangler.toml ](#tab-panel-8517)
+* [  wrangler.jsonc ](#tab-panel-8688)
+* [  wrangler.toml ](#tab-panel-8689)
 
 JSONC
 
@@ -285,8 +294,8 @@ name = "Sandbox"
 
 **Solution**: Add migrations for the Sandbox class:
 
-* [  wrangler.jsonc ](#tab-panel-8518)
-* [  wrangler.toml ](#tab-panel-8519)
+* [  wrangler.jsonc ](#tab-panel-8690)
+* [  wrangler.toml ](#tab-panel-8691)
 
 JSONC
 

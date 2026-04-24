@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/magic-transit/how-to/configure-routes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Configure routes
 
@@ -32,8 +41,8 @@ Cloudflare uses anycast to route traffic. Anycast is a network addressing and ro
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-5617)
-* [ API ](#tab-panel-5618)
+* [ Dashboard ](#tab-panel-7846)
+* [ API ](#tab-panel-7847)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -190,8 +199,8 @@ Explain Code
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-5619)
-* [ API ](#tab-panel-5620)
+* [ Dashboard ](#tab-panel-7848)
+* [ API ](#tab-panel-7849)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -337,8 +346,8 @@ Explain Code
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-5615)
-* [ API ](#tab-panel-5616)
+* [ Dashboard ](#tab-panel-7844)
+* [ API ](#tab-panel-7845)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.

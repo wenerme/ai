@@ -1,18 +1,27 @@
 ---
 title: Buffer
-description: The Buffer API in Node.js is one of the most commonly used Node.js APIs for manipulating binary data. Every Buffer instance extends from the standard Uint8Array class, but adds a range of unique capabilities such as built-in base64 and hex encoding/decoding, byte-order manipulation, and encoding-aware substring searching.
+description: Use the Node.js Buffer API in Cloudflare Workers to manipulate binary data with encoding and decoding support.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/nodejs/buffer.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Buffer
 

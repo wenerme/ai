@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/observability.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Observability
 
@@ -66,8 +75,8 @@ Events are routed to eight named channels based on their type:
 
 The `subscribe()` function from `agents/observability` provides type-safe access to events on a specific channel:
 
-* [  JavaScript ](#tab-panel-4308)
-* [  TypeScript ](#tab-panel-4309)
+* [  JavaScript ](#tab-panel-4484)
+* [  TypeScript ](#tab-panel-4485)
 
 JavaScript
 
@@ -149,8 +158,8 @@ The callback is fully typed — `event` is narrowed to only the event types that
 
 You can also subscribe directly using the Node.js API:
 
-* [  JavaScript ](#tab-panel-4304)
-* [  TypeScript ](#tab-panel-4305)
+* [  JavaScript ](#tab-panel-4480)
+* [  TypeScript ](#tab-panel-4481)
 
 JavaScript
 
@@ -188,8 +197,8 @@ subscribe("agents:schedule", (event) => {
 
 In production, all diagnostics channel messages are automatically forwarded to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/). No subscription code is needed in the agent itself — attach a Tail Worker and access events via `event.diagnosticsChannelEvents`:
 
-* [  JavaScript ](#tab-panel-4310)
-* [  TypeScript ](#tab-panel-4311)
+* [  JavaScript ](#tab-panel-4486)
+* [  TypeScript ](#tab-panel-4487)
 
 JavaScript
 
@@ -259,8 +268,8 @@ This gives you structured, filterable observability in production with zero over
 
 You can override the default implementation by providing your own `Observability` interface:
 
-* [  JavaScript ](#tab-panel-4312)
-* [  TypeScript ](#tab-panel-4313)
+* [  JavaScript ](#tab-panel-4488)
+* [  TypeScript ](#tab-panel-4489)
 
 JavaScript
 
@@ -335,8 +344,8 @@ Explain Code
 
 Set `observability` to `undefined` to disable all event emission:
 
-* [  JavaScript ](#tab-panel-4306)
-* [  TypeScript ](#tab-panel-4307)
+* [  JavaScript ](#tab-panel-4482)
+* [  TypeScript ](#tab-panel-4483)
 
 JavaScript
 

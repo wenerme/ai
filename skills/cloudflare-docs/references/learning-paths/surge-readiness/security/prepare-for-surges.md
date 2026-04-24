@@ -1,18 +1,27 @@
 ---
 title: Prepare for surges and mitigate DDoS attacks
-description: Utilize Cloudflare's caching to enhance load times and reduce server strain. Also, features like the Waiting Room and Rate Limiting can be used to effectively manage excess demand and ensure a stable user experience.
+description: Reduce server strain during traffic surges.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/surge-readiness/security/prepare-for-surges.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Prepare for surges and mitigate DDoS attacks
 

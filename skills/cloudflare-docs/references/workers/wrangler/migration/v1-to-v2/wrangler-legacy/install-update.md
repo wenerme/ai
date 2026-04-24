@@ -1,18 +1,27 @@
 ---
 title: Install / Update
-description: Assuming you have Rust’s package manager, Cargo, installed, run:
+description: Install or update Wrangler v1 using npm or Cargo. Now deprecated in favor of the latest Wrangler release.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/migration/v1-to-v2/wrangler-legacy/install-update.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Install / Update
 

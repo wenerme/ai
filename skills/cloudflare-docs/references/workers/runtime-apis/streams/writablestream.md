@@ -1,18 +1,27 @@
 ---
 title: WritableStream
-description: A WritableStream is the writable property of a TransformStream. On the Workers platform, WritableStream cannot be directly created using the WritableStream constructor.
+description: Use the WritableStream API in Workers to write data to a stream destination.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/streams/writablestream.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # WritableStream
 

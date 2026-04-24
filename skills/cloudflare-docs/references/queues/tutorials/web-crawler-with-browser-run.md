@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/tutorials/web-crawler-with-browser-run/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build a web crawler with Queues and Browser Run
 
@@ -144,8 +153,8 @@ Explain Code
 
 Then, in your Wrangler file, add the following with the values generated in the terminal:
 
-* [  wrangler.jsonc ](#tab-panel-6129)
-* [  wrangler.toml ](#tab-panel-6130)
+* [  wrangler.jsonc ](#tab-panel-8172)
+* [  wrangler.toml ](#tab-panel-8173)
 
 JSONC
 
@@ -244,8 +253,8 @@ bun add robots-parser
 
 Then, add a Browser Run binding. Adding a Browser Run binding gives the Worker access to a headless Chromium instance you will control with Puppeteer.
 
-* [  wrangler.jsonc ](#tab-panel-6127)
-* [  wrangler.toml ](#tab-panel-6128)
+* [  wrangler.jsonc ](#tab-panel-8170)
+* [  wrangler.toml ](#tab-panel-8171)
 
 JSONC
 
@@ -308,8 +317,8 @@ Created queue queues-web-crawler.
 
 Then, in your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-6131)
-* [  wrangler.toml ](#tab-panel-6132)
+* [  wrangler.jsonc ](#tab-panel-8174)
+* [  wrangler.toml ](#tab-panel-8175)
 
 JSONC
 
@@ -376,8 +385,8 @@ Adding the `max_batch_timeout` of 60 seconds to the consumer queue is important 
 
 Your final Wrangler file should look similar to the one below.
 
-* [  wrangler.jsonc ](#tab-panel-6133)
-* [  wrangler.toml ](#tab-panel-6134)
+* [  wrangler.jsonc ](#tab-panel-8176)
+* [  wrangler.toml ](#tab-panel-8177)
 
 JSONC
 
@@ -393,7 +402,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-15",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -470,7 +479,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-15"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 

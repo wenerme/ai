@@ -10,17 +10,26 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ MCP ](https://developers.cloudflare.com/search/?tags=MCP)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Detect MCP traffic in Gateway logs
 
-**Last reviewed:**  10 days ago 
+**Last reviewed:**  14 days ago 
 
 Organizations may lack visibility into Model Context Protocol (MCP) traffic, which can allow employees to connect to remote MCP servers outside of IT oversight. These connections risk the exfiltration of sensitive internal data and credentials, tool injection attacks or software supply chain risks.
 
@@ -57,8 +66,8 @@ MCP traffic can be identified by three signals:
 
 The following GraphQL query scans Gateway logs for the first two signals:
 
-* [  JavaScript ](#tab-panel-6106)
-* [  TypeScript ](#tab-panel-6107)
+* [  JavaScript ](#tab-panel-6322)
+* [  TypeScript ](#tab-panel-6323)
 
 JavaScript
 
@@ -262,8 +271,8 @@ Replace `<YOUR_ACCOUNT_ID>` with your Cloudflare account ID. Replace `<START_DAT
 
 Each group in the response represents aggregated traffic for a specific `httpHost` and `action` combination. Parse the results to identify unblocked MCP connections:
 
-* [  JavaScript ](#tab-panel-6100)
-* [  TypeScript ](#tab-panel-6101)
+* [  JavaScript ](#tab-panel-6316)
+* [  TypeScript ](#tab-panel-6317)
 
 JavaScript
 
@@ -402,8 +411,8 @@ Before building detection patterns, note the following DLP limitations:
 
 MCP indicators can be found in JSON-RPC method fields. The following regex patterns cover the core MCP protocol methods:
 
-* [  JavaScript ](#tab-panel-6108)
-* [  TypeScript ](#tab-panel-6109)
+* [  JavaScript ](#tab-panel-6324)
+* [  TypeScript ](#tab-panel-6325)
 
 JavaScript
 
@@ -602,8 +611,8 @@ Pattern explanation:
 
 Send a `POST` request to create a custom DLP profile containing all detection patterns:
 
-* [  JavaScript ](#tab-panel-6104)
-* [  TypeScript ](#tab-panel-6105)
+* [  JavaScript ](#tab-panel-6320)
+* [  TypeScript ](#tab-panel-6321)
 
 JavaScript
 
@@ -745,8 +754,8 @@ Replace `${accountId}` with your Cloudflare account ID and `${apiToken}` with yo
 
 After the DLP profile exists, create a Gateway HTTP policy that blocks requests matching the profile:
 
-* [  JavaScript ](#tab-panel-6098)
-* [  TypeScript ](#tab-panel-6099)
+* [  JavaScript ](#tab-panel-6314)
+* [  TypeScript ](#tab-panel-6315)
 
 JavaScript
 
@@ -826,8 +835,8 @@ When analyzing Gateway logs, it is helpful to differentiate between two types of
 
 Extend the query processing from [Process the query results](#3-process-the-query-results) to classify traffic by comparing hostnames against your list of approved portal domains:
 
-* [  JavaScript ](#tab-panel-6102)
-* [  TypeScript ](#tab-panel-6103)
+* [  JavaScript ](#tab-panel-6318)
+* [  TypeScript ](#tab-panel-6319)
 
 JavaScript
 

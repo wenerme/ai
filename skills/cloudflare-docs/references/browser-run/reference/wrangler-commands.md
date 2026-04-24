@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-run/reference/wrangler-commands.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Wrangler commands
 
@@ -22,9 +31,9 @@ Use `wrangler browser` commands to manage Browser Run sessions from the command 
 
 Create a new browser rendering session
 
-* [  npm ](#tab-panel-3598)
-* [  pnpm ](#tab-panel-3599)
-* [  yarn ](#tab-panel-3600)
+* [  npm ](#tab-panel-5597)
+* [  pnpm ](#tab-panel-5598)
+* [  yarn ](#tab-panel-5599)
 
 Terminal window
 
@@ -83,9 +92,9 @@ Automatically provision draft bindings with new resources
 
 Close a browser rendering session
 
-* [  npm ](#tab-panel-3601)
-* [  pnpm ](#tab-panel-3602)
-* [  yarn ](#tab-panel-3603)
+* [  npm ](#tab-panel-5600)
+* [  pnpm ](#tab-panel-5601)
+* [  yarn ](#tab-panel-5602)
 
 Terminal window
 
@@ -140,9 +149,9 @@ Automatically provision draft bindings with new resources
 
 List active browser rendering sessions
 
-* [  npm ](#tab-panel-3604)
-* [  pnpm ](#tab-panel-3605)
-* [  yarn ](#tab-panel-3606)
+* [  npm ](#tab-panel-5603)
+* [  pnpm ](#tab-panel-5604)
+* [  yarn ](#tab-panel-5605)
 
 Terminal window
 
@@ -195,9 +204,9 @@ Automatically provision draft bindings with new resources
 
 View a live browser session
 
-* [  npm ](#tab-panel-3607)
-* [  pnpm ](#tab-panel-3608)
-* [  yarn ](#tab-panel-3609)
+* [  npm ](#tab-panel-5606)
+* [  pnpm ](#tab-panel-5607)
+* [  yarn ](#tab-panel-5608)
 
 Terminal window
 

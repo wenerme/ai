@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Web Crypto ](https://developers.cloudflare.com/search/?tags=Web%20Crypto)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/protect-against-timing-attacks.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Using timingSafeEqual
 
@@ -42,9 +51,9 @@ Do not return early when the input and secret have different lengths. An early r
 
 In order to compare two strings, you must use the [TextEncoder](https://developers.cloudflare.com/workers/runtime-apis/encoding/#textencoder) API.
 
-* [  TypeScript ](#tab-panel-7383)
-* [  Python ](#tab-panel-7384)
-* [  Hono ](#tab-panel-7385)
+* [  TypeScript ](#tab-panel-9842)
+* [  Python ](#tab-panel-9843)
+* [  Hono ](#tab-panel-9844)
 
 TypeScript
 

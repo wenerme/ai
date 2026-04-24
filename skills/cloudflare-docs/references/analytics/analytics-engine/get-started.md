@@ -1,18 +1,27 @@
 ---
 title: Get started
-description: Add the following to your Wrangler configuration file to create a binding to a Workers Analytics Engine dataset. A dataset is like a table in SQL: the rows and columns should have consistent meaning.
+description: Set up and access Network Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/analytics-engine/get-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Get started
 
@@ -24,8 +33,8 @@ Note
 
 You do not need to manually create a dataset in the Cloudflare dashboard. Workers Analytics Engine datasets are created automatically the first time you write to them after defining the binding in your Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-3128)
-* [  wrangler.toml ](#tab-panel-3129)
+* [  wrangler.jsonc ](#tab-panel-5385)
+* [  wrangler.toml ](#tab-panel-5386)
 
 JSONC
 

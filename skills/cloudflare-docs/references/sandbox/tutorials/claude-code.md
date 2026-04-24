@@ -6,17 +6,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/tutorials/claude-code.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Run Claude Code on a Sandbox
 
-**Last reviewed:**  5 months ago 
+**Last reviewed:**  6 months ago 
 
 Build a Worker that takes a repository URL and a task description and uses Sandbox SDK to run Claude Code to implement your task.
 

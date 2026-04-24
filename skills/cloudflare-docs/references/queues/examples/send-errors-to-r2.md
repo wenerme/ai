@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/examples/send-errors-to-r2.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Use Queues to store data in R2
 
@@ -22,8 +31,8 @@ Example of how to use Queues to batch data and store it in an R2 bucket.
 
 The following Worker will catch JavaScript errors and send them to a queue. The same Worker will receive those errors in batches and store them to a log file in an R2 bucket.
 
-* [  wrangler.jsonc ](#tab-panel-5694)
-* [  wrangler.toml ](#tab-panel-5695)
+* [  wrangler.jsonc ](#tab-panel-8097)
+* [  wrangler.toml ](#tab-panel-8098)
 
 JSONC
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
@@ -33,9 +42,9 @@ OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3183)
-* [  Python ](#tab-panel-3184)
-* [  curl ](#tab-panel-3185)
+* [  TypeScript ](#tab-panel-3359)
+* [  Python ](#tab-panel-3360)
+* [  curl ](#tab-panel-3361)
 
 ```
 
@@ -128,8 +137,8 @@ This model supports three different API formats:
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3192)
-* [ Output ](#tab-panel-3193)
+* [ Input ](#tab-panel-3368)
+* [ Output ](#tab-panel-3369)
 
 Input format
 
@@ -207,8 +216,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3194)
-* [ Output ](#tab-panel-3195)
+* [ Input ](#tab-panel-3370)
+* [ Output ](#tab-panel-3371)
 
 Input format
 
@@ -294,8 +303,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-3196)
-* [ Output ](#tab-panel-3197)
+* [ Input ](#tab-panel-3372)
+* [ Output ](#tab-panel-3373)
 
 ▶requests\[\]
 
@@ -317,8 +326,8 @@ response
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3188)
-* [ Output ](#tab-panel-3189)
+* [ Input ](#tab-panel-3364)
+* [ Output ](#tab-panel-3365)
 
 ```
 
@@ -1190,8 +1199,8 @@ Explain Code
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3190)
-* [ Output ](#tab-panel-3191)
+* [ Input ](#tab-panel-3366)
+* [ Output ](#tab-panel-3367)
 
 ```
 
@@ -1971,8 +1980,8 @@ Explain Code
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-3186)
-* [ Output ](#tab-panel-3187)
+* [ Input ](#tab-panel-3362)
+* [ Output ](#tab-panel-3363)
 
 ```
 

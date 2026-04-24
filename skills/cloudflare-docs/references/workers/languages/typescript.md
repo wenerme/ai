@@ -1,18 +1,27 @@
 ---
 title: TypeScript
-description: TypeScript is a first-class language on Cloudflare Workers. All APIs provided in Workers are fully typed, and type definitions are generated directly from workerd, the open-source Workers runtime.
+description: Use TypeScript with fully typed APIs to build Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/languages/typescript/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # TypeScript
 
@@ -208,9 +217,9 @@ Most projects will have existing build and development scripts, as well as some 
 
 We recommend you commit your generated types file for use in CI. You can run `wrangler types` before other CI commands, as it should not take more than a few seconds. For example:
 
-* [ npm ](#tab-panel-7442)
-* [ yarn ](#tab-panel-7443)
-* [ pnpm ](#tab-panel-7444)
+* [ npm ](#tab-panel-9959)
+* [ yarn ](#tab-panel-9960)
+* [ pnpm ](#tab-panel-9961)
 
 YAML
 
@@ -253,9 +262,9 @@ YAML
 
 Alternatively, if you commit your generated types file and want to verify it stays up-to-date in CI, you can use the `--check` flag:
 
-* [ npm ](#tab-panel-7445)
-* [ yarn ](#tab-panel-7446)
-* [ pnpm ](#tab-panel-7447)
+* [ npm ](#tab-panel-9962)
+* [ yarn ](#tab-panel-9963)
+* [ pnpm ](#tab-panel-9964)
 
 YAML
 

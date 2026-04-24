@@ -1,18 +1,27 @@
 ---
 title: Define your company's AI risk tolerance and strategy
-description: Before you can secure AI, you need to understand your organization's goals and concerns for your users and data. This first step is crucial for anyone new to AI security because it helps you align on your overall risk tolerance for generative AI.
+description: Learn about define your companys ai risk tolerance and strategy in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Define your company's AI risk tolerance and strategy
 

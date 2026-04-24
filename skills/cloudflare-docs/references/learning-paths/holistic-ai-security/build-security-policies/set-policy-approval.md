@@ -1,18 +1,27 @@
 ---
 title: Set policy based on approval status
-description: If you use specific AI tools within your organization, you may want to create policies to explicitly allow the usage of those tools while continuing to evaluate additional usage within your organization.
+description: Create Gateway policies for AI tool governance.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Set policy based on approval status
 

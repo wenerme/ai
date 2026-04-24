@@ -1,16 +1,25 @@
 ---
 title: Third-party load balancers
-description: This guide explains how to troubleshoot common issues when using Cloudflare in front of third-party load balancers.
+description: Troubleshoot Cloudflare with third-party load balancers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Third-party load balancers
 

@@ -6,20 +6,29 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/vite-plugin/reference/cloudflare-environments.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Cloudflare Environments
 
 A Worker config file may contain configuration for multiple [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/). With the Cloudflare Vite plugin, you select a Cloudflare environment at dev or build time by providing the `CLOUDFLARE_ENV` environment variable. Consider the following example Worker config file:
 
-* [  wrangler.jsonc ](#tab-panel-10003)
-* [  wrangler.toml ](#tab-panel-10004)
+* [  wrangler.jsonc ](#tab-panel-10317)
+* [  wrangler.toml ](#tab-panel-10318)
 
 JSONC
 
@@ -33,7 +42,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-16",
+  "compatibility_date": "2026-04-24",
 
   "main": "./src/index.ts",
 
@@ -84,7 +93,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-16"
+compatibility_date = "2026-04-24"
 
 main = "./src/index.ts"
 
@@ -194,8 +203,8 @@ It is possible to control how `.env` files are loaded in local development by se
 
 You may wish to combine the concepts of [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/) and [Vite modes ↗](https://vite.dev/guide/env-and-mode.html#modes). With this approach, the Vite mode can be used to select the Cloudflare environment and a single method can be used to determine environment specific configuration and code. Consider again the previous example:
 
-* [  wrangler.jsonc ](#tab-panel-10005)
-* [  wrangler.toml ](#tab-panel-10006)
+* [  wrangler.jsonc ](#tab-panel-10319)
+* [  wrangler.toml ](#tab-panel-10320)
 
 JSONC
 
@@ -209,7 +218,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-16",
+  "compatibility_date": "2026-04-24",
 
   "main": "./src/index.ts",
 
@@ -260,7 +269,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-16"
+compatibility_date = "2026-04-24"
 
 main = "./src/index.ts"
 

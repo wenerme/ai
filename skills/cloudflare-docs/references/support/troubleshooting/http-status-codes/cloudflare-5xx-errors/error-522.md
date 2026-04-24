@@ -1,16 +1,25 @@
 ---
 title: Error 522
-description: Error 522 occurs when Cloudflare times out contacting the origin web server.
+description: Troubleshoot HTTP 522 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 522
 

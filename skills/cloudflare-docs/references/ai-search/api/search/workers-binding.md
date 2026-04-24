@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-search/api/search/workers-binding.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workers binding
 
@@ -33,8 +42,8 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-5163)
-* [  wrangler.toml ](#tab-panel-5164)
+* [  wrangler.jsonc ](#tab-panel-5339)
+* [  wrangler.toml ](#tab-panel-5340)
 
 JSONC
 
@@ -91,8 +100,8 @@ namespace = "my-namespace"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-5165)
-* [  wrangler.toml ](#tab-panel-5166)
+* [  wrangler.jsonc ](#tab-panel-5341)
+* [  wrangler.toml ](#tab-panel-5342)
 
 JSONC
 

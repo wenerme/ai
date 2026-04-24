@@ -1,18 +1,27 @@
 ---
 title: Workers API
-description: This guide details the Workflows API within Cloudflare Workers, including methods, types, and usage examples.
+description: Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workflows/build/workers-api.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workers API
 
@@ -133,8 +142,8 @@ After a `ReadableStream<Uint8Array>` object has been persisted within a step, it
 
 :::
 
-* [  JavaScript ](#tab-panel-10935)
-* [  TypeScript ](#tab-panel-10936)
+* [  JavaScript ](#tab-panel-11123)
+* [  TypeScript ](#tab-panel-11124)
 
 JavaScript
 
@@ -235,8 +244,8 @@ More information about the limits imposed on Workflow can be found in the [Workf
 
 * `step.waitForEvent(name: string, options: ): Promise<void>`\-`name` \- the name of the step. - `options` \- an object with properties for`type` (up to 100 characters [1](#user-content-fn-1)), which determines which event type this`waitForEvent` call will match on when calling `instance.sendEvent`, and an optional `timeout` property, which defines how long the `waitForEvent` call will block for before throwing a timeout exception. The default timeout is 24 hours.
 
-* [  JavaScript ](#tab-panel-10931)
-* [  TypeScript ](#tab-panel-10932)
+* [  JavaScript ](#tab-panel-11119)
+* [  TypeScript ](#tab-panel-11120)
 
 JavaScript
 
@@ -364,8 +373,8 @@ Refer to the [step context documentation](https://developers.cloudflare.com/work
 
 Each workflow on Workers Paid supports 10,000 steps by default. You can increase this up to 25,000 steps by configuring `steps` within the `limits` property of your Workflow definition in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10927)
-* [  wrangler.toml ](#tab-panel-10928)
+* [  wrangler.jsonc ](#tab-panel-11115)
+* [  wrangler.toml ](#tab-panel-11116)
 
 JSONC
 
@@ -440,8 +449,8 @@ You can bind to a Workflow by defining a `[[workflows]]` binding within your Wra
 
 For example, to bind to a Workflow called `workflows-starter` and to make it available on the `MY_WORKFLOW` variable to your Worker script, you would configure the following fields within the `[[workflows]]` binding definition:
 
-* [  wrangler.jsonc ](#tab-panel-10929)
-* [  wrangler.toml ](#tab-panel-10930)
+* [  wrangler.jsonc ](#tab-panel-11117)
+* [  wrangler.toml ](#tab-panel-11118)
 
 JSONC
 
@@ -457,7 +466,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-21",
+  "compatibility_date": "2026-04-24",
 
   "workflows": [
 
@@ -498,7 +507,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-21"
+compatibility_date = "2026-04-24"
 
 
 [[workflows]]
@@ -526,8 +535,8 @@ You can also bind to a Workflow that is defined in a different Worker script fro
 
 For example, if your Workflow is defined in a Worker script named `billing-worker`, but you are calling it from your `web-api-worker` script, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-10933)
-* [  wrangler.toml ](#tab-panel-10934)
+* [  wrangler.jsonc ](#tab-panel-11121)
+* [  wrangler.toml ](#tab-panel-11122)
 
 JSONC
 
@@ -543,7 +552,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-21",
+  "compatibility_date": "2026-04-24",
 
   "workflows": [
 
@@ -590,7 +599,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-21"
+compatibility_date = "2026-04-24"
 
 
 [[workflows]]
@@ -961,8 +970,8 @@ Terminate a Workflow instance.
 
 Return `void` on success; throws an exception if the Workflow is not running or is an errored state.
 
-* [  JavaScript ](#tab-panel-10937)
-* [  TypeScript ](#tab-panel-10938)
+* [  JavaScript ](#tab-panel-11125)
+* [  TypeScript ](#tab-panel-11126)
 
 JavaScript
 

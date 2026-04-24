@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/hyperdrive/configuration/local-development.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Local development
 
@@ -72,8 +81,8 @@ npx wrangler dev
 
 Alternatively, you can set `localConnectionString` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6996)
-* [  wrangler.toml ](#tab-panel-6997)
+* [  wrangler.jsonc ](#tab-panel-7168)
+* [  wrangler.toml ](#tab-panel-7169)
 
 JSONC
 
@@ -130,8 +139,8 @@ This mode is useful for testing how your Worker behaves with Hyperdrive's featur
 
 Configure your Hyperdrive binding in `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-6998)
-* [  wrangler.toml ](#tab-panel-6999)
+* [  wrangler.jsonc ](#tab-panel-7170)
+* [  wrangler.toml ](#tab-panel-7171)
 
 JSONC
 

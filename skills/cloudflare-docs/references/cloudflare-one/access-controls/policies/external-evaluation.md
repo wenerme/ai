@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ JSON web token (JWT) ](https://developers.cloudflare.com/search/?tags=JSON%20web%20token%20%28JWT%29) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/access-controls/policies/external-evaluation.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # External Evaluation rules
 
@@ -65,8 +74,8 @@ The command will output the binding name and KV namespace ID, for example
    * `[[kv_namespaces]]`: Add the output generated in the previous step.  
    * `<TEAM_NAME>`: your Cloudflare One team name.
 
-* [  wrangler.jsonc ](#tab-panel-5569)
-* [  wrangler.toml ](#tab-panel-5570)
+* [  wrangler.jsonc ](#tab-panel-5785)
+* [  wrangler.toml ](#tab-panel-5786)
 
 JSONC
 
@@ -82,7 +91,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-17",
+  "compatibility_date": "2026-04-24",
 
   "main": "index.js",
 
@@ -125,7 +134,7 @@ workers_dev = true
 
 # Set this to today's date
 
-compatibility_date = "2026-04-17"
+compatibility_date = "2026-04-24"
 
 main = "index.js"
 

@@ -1,18 +1,27 @@
 ---
 title: Build HTTP security policies
-description: After securing your organization's DNS queries and network level traffic, you can begin implementing advanced security controls for web traffic by inspecting HTTPS and taking actions based on the full URL or the body of HTTP requests.
+description: Secure Internet traffic and SaaS apps.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/build-http-policies/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build HTTP security policies
 

@@ -5,7 +5,7 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Update issue
+Update issue.
 
 ```plaintext
 glab issue update <id> [flags]
@@ -22,7 +22,7 @@ glab issue update 42 --unlabel working
 
 ```plaintext
   -a, --assignee strings     Assign users by username. Prefix with '!' or '-' to remove from existing assignees, or '+' to add new. Otherwise, replace existing assignees with these users. Multiple usernames can be comma-separated or specified by repeating the flag.
-  -c, --confidential         Make issue confidential
+  -c, --confidential         Make issue confidential.
   -d, --description string   Issue description. Set to "-" to open an editor.
       --due-date string      A date in 'YYYY-MM-DD' format.
   -l, --label strings        Add labels.

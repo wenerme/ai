@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/testing/vitest-integration/isolation-and-concurrency.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Isolation and concurrency
 
@@ -51,8 +60,8 @@ However, if you use Node.js globals that are not supported by the runtime, your 
 
 The Wrangler configuration file does not specify either `nodejs_compat` or `nodejs_compat_v2`:
 
-* [  wrangler.jsonc ](#tab-panel-10033)
-* [  wrangler.toml ](#tab-panel-10034)
+* [  wrangler.jsonc ](#tab-panel-10267)
+* [  wrangler.toml ](#tab-panel-10268)
 
 JSONC
 
@@ -64,7 +73,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-17"
+  "compatibility_date": "2026-04-24"
 
   # no nodejs_compat flags here
 
@@ -83,7 +92,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-17"
+compatibility_date = "2026-04-24"
 
 
 ```

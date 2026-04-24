@@ -1,18 +1,27 @@
 ---
 title: Querying Firewall Events with GraphQL
-description: In this example, we are going to use the GraphQL Analytics API to query for Firewall Events over a specified time period.
+description: Query WAF firewall events via GraphQL.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/graphql-api/tutorials/querying-firewall-events.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Querying Firewall Events with GraphQL
 

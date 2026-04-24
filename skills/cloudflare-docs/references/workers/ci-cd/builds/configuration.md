@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/ci-cd/builds/configuration.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Configuration
 
@@ -134,8 +143,8 @@ It is recommended to consistently use the same API token across all uploads and 
 
 You can provide custom environment variables to your build.
 
-* [ Dashboard ](#tab-panel-7100)
-* [ Wrangler ](#tab-panel-7101)
+* [ Dashboard ](#tab-panel-9559)
+* [ Wrangler ](#tab-panel-9560)
 
 To add environment variables via the dashboard:
 
@@ -146,8 +155,8 @@ To add environment variables via the dashboard:
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-7098)
-* [  wrangler.toml ](#tab-panel-7099)
+* [  wrangler.jsonc ](#tab-panel-9557)
+* [  wrangler.toml ](#tab-panel-9558)
 
 JSONC
 

@@ -1,8 +1,8 @@
+# Submit a video generation request
+
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/video-generation/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/api/api-reference/video-generation/llms-full.txt.
-
-# Submit a video generation request
 
 POST https://openrouter.ai/api/v1/videos
 Content-Type: application/json
@@ -476,6 +476,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        poolside:
+          type: object
+          additionalProperties:
+            description: Any type
         recraft:
           type: object
           additionalProperties:
@@ -611,6 +615,13 @@ components:
         aspect_ratio:
           $ref: '#/components/schemas/VideoGenerationRequestAspectRatio'
           description: Aspect ratio of the generated video
+        callback_url:
+          type: string
+          format: uri
+          description: >-
+            URL to receive a webhook notification when the video generation job
+            completes. Overrides the workspace-level default callback URL if
+            set. Must be HTTPS.
         duration:
           type: integer
           description: Duration of the generated video in seconds

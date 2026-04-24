@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/api-shield/security/sequence-analytics.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Sequence Analytics
 
@@ -33,7 +42,7 @@ For example, a portion of a sequence made during a bank funds transfer could loo
 | 3     | GET    | /api/v1/accounts/{account\_id}/balance | account\_id is a different account belonging to the user.                                                                                      |
 | 4     | POST   | /api/v1/transferFunds                  | This contains a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer. |
 
-API Shield uses your configured session identifier and your saved endpoints to build a set of ordered API operations (HTTP host, method, and path) requested per session. We may surface sequences in various lengths depending how API Shield scores the sequences.
+API Shield uses your configured session identifier and your saved endpoints to build a set of ordered API operations (HTTP host, method, and path) requested per session. API Shield may surface sequences in various lengths depending on how it scores the sequences.
 
 ### Sequence scoring
 
@@ -45,15 +54,15 @@ Using the example above, a high score means that the last operation in the seque
 
 To proactively secure your API, you should inspect your highest-scoring sequences. For each high-scoring sequence, you should confirm with your development team if the final operation in the sequence must legitimately always be preceded by the other operations in the sequence.
 
-Using the above example, if `POST /api/v1/transferFunds` must legitimately always be preceded by `GET /api/v1/users/{user_id}/accounts` and `GET /api/v1/accounts/{account_id}/balance?`, you should create an **Allow** rule in sequence mitigation on the final operation of the sequence.
+Using the above example, if `POST /api/v1/transferFunds` must legitimately always be preceded by `GET /api/v1/users/{user_id}/accounts` and `GET /api/v1/accounts/{account_id}/balance`, you should create an **Allow** rule in sequence mitigation on the final operation of the sequence.
 
 You should also consider applying other API Shield protections to these endpoints ([rate limiting suggestions](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/), [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/), and [mTLS](https://developers.cloudflare.com/api-shield/security/mtls/)).
 
-For more information, refer to our [blog post ↗](https://blog.cloudflare.com/api-sequence-analytics).
+For more information, refer to the [blog post ↗](https://blog.cloudflare.com/api-sequence-analytics).
 
 ### Repeated sequences
 
-True API usage shows many successively repeated operations. To facilitate exploration, Sequence Analytics collapses successively repeated operations into one.
+Real-world API usage shows many successively repeated operations. To facilitate exploration, Sequence Analytics collapses successively repeated operations into one.
 
 ## Availability
 

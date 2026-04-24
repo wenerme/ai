@@ -1,18 +1,27 @@
 ---
 title: Use egress policies to deliver consistent egress IPs
-description: Egress policies allow you to determine whether your organization's traffic egresses via the default Cloudflare IP or via a dedicated egress IP assigned to your account.
+description: Create egress policies for IP consistency.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/build-egress-policies/egress-policies.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Use egress policies to deliver consistent egress IPs
 
@@ -27,7 +36,7 @@ To create a new egress policy:
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Egress policies**.
 2. Select **Add a policy**.
 3. Name the policy.
-4. Build a logical expression that defines the traffic you want to control egress for. For example, you can add a policy to configure all traffic destined for a thrid-party network to use a static source IP:  
+4. Build a logical expression that defines the traffic you want to control egress for. For example, you can add a policy to configure all traffic destined for a third-party network to use a static source IP:  
 | Policy name                 | Selector       | Operator | Value          | Egress method                   |  
 | --------------------------- | -------------- | -------- | -------------- | ------------------------------- |  
 | Access third-party provider | Destination IP | is       | 198.51.100.158 | Dedicated Cloudflare egress IPs |  

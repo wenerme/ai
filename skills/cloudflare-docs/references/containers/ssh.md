@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/containers/ssh.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # SSH
 
@@ -28,8 +37,8 @@ The `wrangler_ssh.enabled` property only controls whether you can SSH into a Con
 
 To SSH into a Container with Wrangler, you must first enable Wrangler SSH. The following example shows a basic configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4077)
-* [  wrangler.toml ](#tab-panel-4078)
+* [  wrangler.jsonc ](#tab-panel-6452)
+* [  wrangler.toml ](#tab-panel-6453)
 
 JSONC
 

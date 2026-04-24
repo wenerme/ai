@@ -1,18 +1,27 @@
 ---
 title: ReadableStream DefaultReader
-description: A reader is used when you want to read from a ReadableStream, rather than piping its output to a WritableStream.
+description: Use ReadableStreamDefaultReader in Workers to read chunks from a ReadableStream.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/streams/readablestreamdefaultreader.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # ReadableStream DefaultReader
 

@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/edge-certificates/additional-options/http-strict-transport-security.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # HTTP Strict Transport Security (HSTS)
 
@@ -60,8 +69,8 @@ If you remove HTTPS before disabling HSTS or before waiting for the duration of 
 
 ## Enable HSTS
 
-* [ Dashboard ](#tab-panel-8792)
-* [ API ](#tab-panel-8793)
+* [ Dashboard ](#tab-panel-9010)
+* [ API ](#tab-panel-9011)
 
 To enable HSTS using the dashboard:
 

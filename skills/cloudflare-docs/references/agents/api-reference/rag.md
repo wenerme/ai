@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/rag.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Retrieval Augmented Generation
 
@@ -30,8 +39,8 @@ You can query a vector index (or indexes) from any method on your Agent: any Vec
 
 Here's an example of how to give an Agent retrieval capabilities:
 
-* [  JavaScript ](#tab-panel-4344)
-* [  TypeScript ](#tab-panel-4345)
+* [  JavaScript ](#tab-panel-4520)
+* [  TypeScript ](#tab-panel-4521)
 
 JavaScript
 
@@ -184,8 +193,8 @@ Explain Code
 
 You'll also need to connect your Agent to your vector indexes:
 
-* [  wrangler.jsonc ](#tab-panel-4342)
-* [  wrangler.toml ](#tab-panel-4343)
+* [  wrangler.jsonc ](#tab-panel-4518)
+* [  wrangler.toml ](#tab-panel-4519)
 
 JSONC
 

@@ -6,8 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Historical (2023)
 
 | Ruleset             | Rule ID      | Legacy Rule ID | Description                                                                                                                                                       | Change Date           | Old Action | New Action |

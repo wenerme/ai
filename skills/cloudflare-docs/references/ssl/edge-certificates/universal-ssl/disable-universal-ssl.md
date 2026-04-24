@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/edge-certificates/universal-ssl/disable-universal-ssl.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Disable Universal SSL certificates
 
@@ -42,8 +51,8 @@ If you disable Universal SSL, you may experience errors with the following scena
 
 Before you disable Universal SSL/TLS, make sure you have [uploaded a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) or purchased [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) to protect your domain.
 
-* [ Dashboard ](#tab-panel-8773)
-* [ API ](#tab-panel-8774)
+* [ Dashboard ](#tab-panel-9036)
+* [ API ](#tab-panel-9037)
 
 To disable Universal SSL in the dashboard:
 
@@ -57,8 +66,8 @@ To disable Universal SSL with the Cloudflare API, send a [PATCH](https://develop
 
 ## Re-enable Universal SSL
 
-* [ Dashboard ](#tab-panel-8775)
-* [ API ](#tab-panel-8776)
+* [ Dashboard ](#tab-panel-9038)
+* [ API ](#tab-panel-9039)
 
 To re-enable Universal SSL in the dashboard:
 

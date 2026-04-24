@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/manage-members/manage.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Manage
 
@@ -34,8 +43,8 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6949)
-* [ API ](#tab-panel-6950)
+* [ Dashboard ](#tab-panel-7123)
+* [ API ](#tab-panel-7124)
 
 To view members using the dashboard:
 
@@ -49,8 +58,8 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6951)
-* [ API ](#tab-panel-6952)
+* [ Dashboard ](#tab-panel-7125)
+* [ API ](#tab-panel-7126)
 
 To add a member to your account:
 
@@ -74,8 +83,8 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6953)
-* [ API ](#tab-panel-6954)
+* [ Dashboard ](#tab-panel-7127)
+* [ API ](#tab-panel-7128)
 
 To edit member permissions using the dashboard:
 
@@ -145,8 +154,8 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6955)
-* [ API ](#tab-panel-6956)
+* [ Dashboard ](#tab-panel-7129)
+* [ API ](#tab-panel-7130)
 
 To revoke a member's access to your account:
 

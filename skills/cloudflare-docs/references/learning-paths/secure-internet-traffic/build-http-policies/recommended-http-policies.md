@@ -1,18 +1,27 @@
 ---
 title: Recommended HTTP policies
-description: We recommend you add the following HTTP policies to build an Internet and SaaS app security strategy for your organization.
+description: Deploy recommended HTTP security policies.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Recommended HTTP policies
 
@@ -24,9 +33,9 @@ For additional commonly used HTTP policy examples, refer to [Common HTTP policie
 
 Bypass HTTP inspection for applications that use embedded certificates. This will help avoid any certificate pinning errors that may arise from an initial rollout.
 
-* [ Dashboard ](#tab-panel-5285)
-* [ API ](#tab-panel-5286)
-* [ Terraform ](#tab-panel-5287)
+* [ Dashboard ](#tab-panel-7688)
+* [ API ](#tab-panel-7689)
+* [ Terraform ](#tab-panel-7690)
 
 | Selector    | Operator | Value            | Action         |
 | ----------- | -------- | ---------------- | -------------- |
@@ -100,9 +109,9 @@ Explain Code
 
 Bypass HTTPS inspection for Android applications (such as Google Drive) that use certificate pinning, which is incompatible with Gateway inspection.
 
-* [ Dashboard ](#tab-panel-5288)
-* [ API ](#tab-panel-5289)
-* [ Terraform ](#tab-panel-5290)
+* [ Dashboard ](#tab-panel-7691)
+* [ API ](#tab-panel-7692)
+* [ Terraform ](#tab-panel-7693)
 
 | Selector                     | Operator | Value                             | Logic | Action         |
 | ---------------------------- | -------- | --------------------------------- | ----- | -------------- |
@@ -181,9 +190,9 @@ Explain Code
 
 Bypass HTTP inspection for a custom list of domains identified as incompatible with TLS inspection.
 
-* [ Dashboard ](#tab-panel-5291)
-* [ API ](#tab-panel-5292)
-* [ Terraform ](#tab-panel-5293)
+* [ Dashboard ](#tab-panel-7694)
+* [ API ](#tab-panel-7695)
+* [ Terraform ](#tab-panel-7696)
 
 | Selector | Operator | Value                    | Logic | Action         |
 | -------- | -------- | ------------------------ | ----- | -------------- |
@@ -258,9 +267,9 @@ Explain Code
 
 Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories), such as **Command and Control & Botnet** and **Malware**, based on Cloudflare's threat intelligence.
 
-* [ Dashboard ](#tab-panel-5294)
-* [ API ](#tab-panel-5295)
-* [ Terraform ](#tab-panel-5296)
+* [ Dashboard ](#tab-panel-7697)
+* [ API ](#tab-panel-7698)
+* [ Terraform ](#tab-panel-7699)
 
 | Selector            | Operator | Value                | Action |
 | ------------------- | -------- | -------------------- | ------ |
@@ -336,9 +345,9 @@ Entries in the [security risk content subcategory](https://developers.cloudflare
 
 After your test is complete, we recommend you change the action to Block to minimize risk to your organization.
 
-* [ Dashboard ](#tab-panel-5309)
-* [ API ](#tab-panel-5310)
-* [ Terraform ](#tab-panel-5311)
+* [ Dashboard ](#tab-panel-7712)
+* [ API ](#tab-panel-7713)
+* [ Terraform ](#tab-panel-7714)
 
 | Selector           | Operator | Value                                                                                 | Action |
 | ------------------ | -------- | ------------------------------------------------------------------------------------- | ------ |
@@ -420,9 +429,9 @@ Explain Code
 
 Block specific domains or hosts that are malicious or pose a threat to your organization. Like **All-HTTP-ResolvedIP-Blocklist**, this blocklist can be updated manually or via API automation.
 
-* [ Dashboard ](#tab-panel-5297)
-* [ API ](#tab-panel-5298)
-* [ Terraform ](#tab-panel-5299)
+* [ Dashboard ](#tab-panel-7700)
+* [ API ](#tab-panel-7701)
+* [ Terraform ](#tab-panel-7702)
 
 | Selector | Operator      | Value              | Logic | Action |
 | -------- | ------------- | ------------------ | ----- | ------ |
@@ -498,9 +507,9 @@ Explain Code
 
 Block unauthorized applications to limit your users' access to certain web-based tools and minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/). For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-5312)
-* [ API ](#tab-panel-5313)
-* [ Terraform ](#tab-panel-5314)
+* [ Dashboard ](#tab-panel-7715)
+* [ API ](#tab-panel-7716)
+* [ Terraform ](#tab-panel-7717)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -584,9 +593,9 @@ Isolate traffic for privileged users who regularly access critical systems or ex
 
 Security teams often need to perform threat analysis or malware testing that could trigger malware detection. Likewise, privileged users could be the target of attackers trying to gain access to critical systems.
 
-* [ Dashboard ](#tab-panel-5300)
-* [ API ](#tab-panel-5301)
-* [ Terraform ](#tab-panel-5302)
+* [ Dashboard ](#tab-panel-7703)
+* [ API ](#tab-panel-7704)
+* [ Terraform ](#tab-panel-7705)
 
 | Selector         | Operator | Value              | Action  |
 | ---------------- | -------- | ------------------ | ------- |
@@ -660,9 +669,9 @@ Explain Code
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-5303)
-* [ API ](#tab-panel-5304)
-* [ Terraform ](#tab-panel-5305)
+* [ Dashboard ](#tab-panel-7706)
+* [ API ](#tab-panel-7707)
+* [ Terraform ](#tab-panel-7708)
 
 | Selector         | Operator    | Value                           | Logic | Action |
 | ---------------- | ----------- | ------------------------------- | ----- | ------ |
@@ -741,9 +750,9 @@ Explain Code
 
 Isolate high risk domains or create a custom list of known risky domains to avoid data exfiltration or malware infection. Ideally, your incident response teams can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-* [ Dashboard ](#tab-panel-5306)
-* [ API ](#tab-panel-5307)
-* [ Terraform ](#tab-panel-5308)
+* [ Dashboard ](#tab-panel-7709)
+* [ API ](#tab-panel-7710)
+* [ Terraform ](#tab-panel-7711)
 
 | Selector           | Operator | Value                               | Logic | Action  |
 | ------------------ | -------- | ----------------------------------- | ----- | ------- |

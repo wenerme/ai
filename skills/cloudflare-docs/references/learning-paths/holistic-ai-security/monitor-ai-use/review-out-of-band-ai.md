@@ -1,18 +1,27 @@
 ---
 title: Review out-of-band AI use
-description: If your organization does not use the Cloudflare device client, or does not proxy HTTP traffic, you can still get valuable data about shadow AI usage if you use the Google Workspace, Microsoft 365, or GitHub integrations for the Cloudflare Cloud Access Security Broker (CASB).
+description: Detect AI usage with CASB integrations.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/holistic-ai-security/monitor-ai-use/review-out-of-band-ai.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Review out-of-band AI use
 

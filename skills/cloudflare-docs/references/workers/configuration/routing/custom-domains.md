@@ -1,18 +1,27 @@
 ---
 title: Custom Domains
-description: Custom Domains allow you to connect your Worker to a domain or subdomain, without having to make changes to your DNS settings or perform any certificate management. After you set up a Custom Domain for your Worker, Cloudflare will create DNS records and issue necessary certificates on your behalf. The created DNS records will point directly to your Worker. Unlike Routes, Custom Domains point all paths of a domain or subdomain to your Worker.
+description: Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/routing/custom-domains.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Custom Domains
 
@@ -60,8 +69,8 @@ After you have added the domain or subdomain, Cloudflare will create a new DNS r
 
 To configure a Custom Domain in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), add the `custom_domain=true` option on each pattern under `routes`. For example, to configure a Custom Domain:
 
-* [  wrangler.jsonc ](#tab-panel-7153)
-* [  wrangler.toml ](#tab-panel-7154)
+* [  wrangler.jsonc ](#tab-panel-9612)
+* [  wrangler.toml ](#tab-panel-9613)
 
 JSONC
 
@@ -101,8 +110,8 @@ custom_domain = true
 
 To configure multiple Custom Domains:
 
-* [  wrangler.jsonc ](#tab-panel-7157)
-* [  wrangler.toml ](#tab-panel-7158)
+* [  wrangler.jsonc ](#tab-panel-9616)
+* [  wrangler.toml ](#tab-panel-9617)
 
 JSONC
 
@@ -269,8 +278,8 @@ To migrate the route `example.com/*` in your [Wrangler configuration file](https
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Delete the CNAME record for `example.com`.
 3. Add the following to your Wrangler file:  
-   * [  wrangler.jsonc ](#tab-panel-7155)  
-   * [  wrangler.toml ](#tab-panel-7156)  
+   * [  wrangler.jsonc ](#tab-panel-9614)  
+   * [  wrangler.toml ](#tab-panel-9615)  
 JSONC  
 ```  
 {  

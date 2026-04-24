@@ -1,16 +1,25 @@
 ---
 title: Error 1006, 1007, 1008 or 1106
-description: This error indicates that access is denied because your IP address has been banned.
+description: Troubleshoot Cloudflare 1006 error code.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 1006, 1007, 1008 or 1106
 

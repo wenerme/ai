@@ -1,18 +1,27 @@
 ---
 title: SCIM v1 to v2 Migration
-description: Migrate from SCIM v1 Virtual Groups to Cloudflare’s GA SCIM User Groups
+description: Migrate from SCIM v1 Virtual Groups to Cloudflare's GA SCIM User Groups
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/reference/migration-guides/scim-virtual-groups-migration.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # SCIM v1 to v2 Migration
 

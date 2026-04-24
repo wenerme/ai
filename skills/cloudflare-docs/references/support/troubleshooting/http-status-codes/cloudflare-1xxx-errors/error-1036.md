@@ -1,16 +1,25 @@
 ---
 title: Error 1036
-description: This error indicates that the rewritten URI path or query string exceeds the maximum allowed length.
+description: Troubleshoot Cloudflare 1036 error code.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 1036
 

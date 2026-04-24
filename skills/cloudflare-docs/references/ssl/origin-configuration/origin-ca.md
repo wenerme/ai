@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/origin-configuration/origin-ca/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Cloudflare origin CA
 
@@ -73,12 +82,12 @@ To add an Origin CA certificate to your origin web server
 2. Update your web server configuration:
 * [Apache httpd ↗](https://www.digicert.com/kb/csr-ssl-installation/apache-openssl.htm)
 * [GoDaddy Hosting ↗](https://www.digitalcandy.agency/website-tips/cloudflare-origin-ca-free-ssl-installation-on-godaddy/)
-* [Microsoft IIS 7 ↗](https://www.digicert.com/csr-ssl-installation/iis-7.htm#ssl%5Fcertificate%5Finstall)
-* [Microsoft IIS 8 and 8.5 ↗](https://www.digicert.com/csr-ssl-installation/iis-8-and-8.5.htm#ssl%5Fcertificate%5Finstall)
+* [Microsoft IIS 7 ↗](https://knowledge.digicert.com/tutorials/iis7-create-csr-install-ssl-certificate)
+* [Microsoft IIS 8 and 8.5 ↗](https://knowledge.digicert.com/tutorials/iis-8-create-csr-install-ssl-certificate)
 * [Microsoft IIS 10 ↗](https://www.digicert.com/kb/csr-creation-ssl-installation-iis-10.htm)
 * [NGINX ↗](https://www.digicert.com/kb/csr-ssl-installation/nginx-openssl.htm)
-* [Apache Tomcat ↗](https://www.digicert.com/csr-ssl-installation/tomcat-keytool.htm#ssl%5Fcertificate%5Finstall)
-* [Amazon Web Services ↗](https://www.digicert.com/ssl-certficate-installation-amazon-web-services.htm)
+* [Apache Tomcat ↗](https://knowledge.digicert.com/tutorials/tomcat-install-your-ssl-certificate-on-a-tomcat-server)
+* [Amazon Web Services ↗](https://knowledge.digicert.com/tutorials/amazon-aws-create-csr-install-ssl-certificate)
 * [Apache cPanel ↗](https://www.digicert.com/kb/ssl-certificate-installation-apache-cpanel.htm)
 * [Ubuntu Server with Apache2 ↗](https://www.digicert.com/kb/csr-ssl-installation/ubuntu-server-with-apache2-openssl.htm#ssl%5Fcertificate%5Finstall)
 

@@ -7,13 +7,11 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Introduction to Workflows
 
-* [ Watch this episode ](#tab-panel-5335)
-* [ Step-by-step tutorial ](#tab-panel-5336)
-* [ Series overview ](#tab-panel-5337)
+* [ Watch this episode ](#tab-panel-7782)
+* [ Step-by-step tutorial ](#tab-panel-7783)
+* [ Series overview ](#tab-panel-7784)
 
 Cloudflare Workflows provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background. Workflows are designed to resume execution even if the underlying compute fails, ensuring that tasks complete eventually. They are built on top of Cloudflare Workers and handle scaling and provisioning automatically.
 

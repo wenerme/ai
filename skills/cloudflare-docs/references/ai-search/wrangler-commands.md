@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-search/wrangler-commands.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Wrangler commands
 
@@ -20,9 +29,9 @@ Copy page
 
 List all AI Search instances
 
-* [  npm ](#tab-panel-3101)
-* [  pnpm ](#tab-panel-3102)
-* [  yarn ](#tab-panel-3103)
+* [  npm ](#tab-panel-5364)
+* [  pnpm ](#tab-panel-5365)
+* [  yarn ](#tab-panel-5366)
 
 Terminal window
 
@@ -79,9 +88,9 @@ Automatically provision draft bindings with new resources
 
 Create a new AI Search instance
 
-* [  npm ](#tab-panel-3104)
-* [  pnpm ](#tab-panel-3105)
-* [  yarn ](#tab-panel-3106)
+* [  npm ](#tab-panel-5367)
+* [  pnpm ](#tab-panel-5368)
+* [  yarn ](#tab-panel-5369)
 
 Terminal window
 
@@ -166,9 +175,9 @@ Automatically provision draft bindings with new resources
 
 Get details of an AI Search instance
 
-* [  npm ](#tab-panel-3107)
-* [  pnpm ](#tab-panel-3108)
-* [  yarn ](#tab-panel-3109)
+* [  npm ](#tab-panel-5370)
+* [  pnpm ](#tab-panel-5371)
+* [  yarn ](#tab-panel-5372)
 
 Terminal window
 
@@ -223,9 +232,9 @@ Automatically provision draft bindings with new resources
 
 Update an AI Search instance configuration
 
-* [  npm ](#tab-panel-3110)
-* [  pnpm ](#tab-panel-3111)
-* [  yarn ](#tab-panel-3112)
+* [  npm ](#tab-panel-5373)
+* [  pnpm ](#tab-panel-5374)
+* [  yarn ](#tab-panel-5375)
 
 Terminal window
 
@@ -302,9 +311,9 @@ Automatically provision draft bindings with new resources
 
 Delete an AI Search instance
 
-* [  npm ](#tab-panel-3113)
-* [  pnpm ](#tab-panel-3114)
-* [  yarn ](#tab-panel-3115)
+* [  npm ](#tab-panel-5376)
+* [  pnpm ](#tab-panel-5377)
+* [  yarn ](#tab-panel-5378)
 
 Terminal window
 
@@ -359,9 +368,9 @@ Automatically provision draft bindings with new resources
 
 Get usage statistics for an AI Search instance
 
-* [  npm ](#tab-panel-3116)
-* [  pnpm ](#tab-panel-3117)
-* [  yarn ](#tab-panel-3118)
+* [  npm ](#tab-panel-5379)
+* [  pnpm ](#tab-panel-5380)
+* [  yarn ](#tab-panel-5381)
 
 Terminal window
 
@@ -416,9 +425,9 @@ Automatically provision draft bindings with new resources
 
 Execute a semantic search query against an AI Search instance
 
-* [  npm ](#tab-panel-3119)
-* [  pnpm ](#tab-panel-3120)
-* [  yarn ](#tab-panel-3121)
+* [  npm ](#tab-panel-5382)
+* [  pnpm ](#tab-panel-5383)
+* [  yarn ](#tab-panel-5384)
 
 Terminal window
 

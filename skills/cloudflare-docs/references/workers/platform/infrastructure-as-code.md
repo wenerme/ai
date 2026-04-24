@@ -1,18 +1,27 @@
 ---
 title: Infrastructure as Code (IaC)
-description: While Wrangler makes it easy to upload and manage Workers, there are times when you need a more programmatic approach. This could involve using Infrastructure as Code (IaC) tools or interacting directly with the Workers API. Examples include build and deploy scripts, CI/CD pipelines, custom developer tools, and automated testing.
+description: Deploy and manage Cloudflare Workers using Terraform, Pulumi, and the Cloudflare API SDKs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/platform/infrastructure-as-code.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Infrastructure as Code (IaC)
 
@@ -572,8 +581,8 @@ Explain Code
 
 This example uses the [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript) SDK which provides convenient access to the Cloudflare REST API from server-side JavaScript or TypeScript.
 
-* [  JavaScript ](#tab-panel-10001)
-* [  TypeScript ](#tab-panel-10002)
+* [  JavaScript ](#tab-panel-10017)
+* [  TypeScript ](#tab-panel-10018)
 
 JavaScript
 
@@ -1186,8 +1195,8 @@ Warning
 
 This API is in beta. See the multipart/form-data API below for the stable API.
 
-* [ ES Module ](#tab-panel-9997)
-* [ Python ](#tab-panel-9998)
+* [ ES Module ](#tab-panel-10013)
+* [ Python ](#tab-panel-10014)
 
 Terminal window
 
@@ -1506,8 +1515,8 @@ Explain Code
 
 This API uses [multipart/form-data ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) to upload a Worker and will implicitly create a version and deployment. The above API is recommended for direct management of versions and deployments.
 
-* [ Workers ](#tab-panel-9999)
-* [ Workers for Platforms ](#tab-panel-10000)
+* [ Workers ](#tab-panel-10015)
+* [ Workers for Platforms ](#tab-panel-10016)
 
 Terminal window
 

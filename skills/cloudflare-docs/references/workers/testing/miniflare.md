@@ -1,20 +1,27 @@
 ---
 title: Miniflare
-description: Miniflare is a simulator for developing and testing
-Cloudflare Workers. It's written in
-TypeScript, and runs your code in a sandbox implementing Workers' runtime APIs.
+description: Simulate and test Cloudflare Workers locally with Miniflare, a fully-local development simulator.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/testing/miniflare/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Miniflare
 
@@ -35,12 +42,12 @@ These docs primarily cover Miniflare specific things. For more information on ru
 
 If you find something that doesn't behave as it does in the production Workers environment (and this difference isn't documented), or something's wrong in these docs, please[open a GitHub issue ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 
-* [ Get Started ](https://developers.cloudflare.com/workers/testing/miniflare/get-started/)
+* [ Get Started ](https://developers.cloudflare.com/workers/testing/miniflare/get-started/) :  Install and configure the Miniflare API to dispatch events and test Cloudflare Workers locally.
 * [ Writing tests ](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/) :  Write integration tests against Workers using Miniflare.
-* [ Core ](https://developers.cloudflare.com/workers/testing/miniflare/core/)
-* [ Developing ](https://developers.cloudflare.com/workers/testing/miniflare/developing/)
+* [ Core ](https://developers.cloudflare.com/workers/testing/miniflare/core/) :  Core Miniflare features for testing Cloudflare Workers, including fetch events and compatibility settings.
+* [ Developing ](https://developers.cloudflare.com/workers/testing/miniflare/developing/) :  Development tools for Miniflare, including debugger support and live reload for Cloudflare Workers.
 * [ Migrations ](https://developers.cloudflare.com/workers/testing/miniflare/migrations/) :  Review migration guides for specific versions of Miniflare.
-* [ Storage ](https://developers.cloudflare.com/workers/testing/miniflare/storage/)
+* [ Storage ](https://developers.cloudflare.com/workers/testing/miniflare/storage/) :  Configure and manage local storage simulators in Miniflare for Workers bindings like KV, R2, and D1\.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}}]}

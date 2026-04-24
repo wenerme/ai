@@ -1,16 +1,25 @@
 ---
 title: Error 415
-description: The 415 Unsupported Media Type status code indicates that the server refuses to process the request because the format of the payload is not supported. One way to identify and fix this issue would be to look at the Content-Type or Content-Encoding headers sent in the client's request.
+description: Troubleshoot HTTP 415 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 415
 

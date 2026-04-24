@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/manage-dns-records/how-to/import-and-export.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Import and export records
 
@@ -33,8 +42,8 @@ If you are using certain record types — for example, `CNAME`, `DNAME`, `MX`, `
 
 ### Import zone file to Cloudflare
 
-* [ Dashboard ](#tab-panel-6464)
-* [ API ](#tab-panel-6465)
+* [ Dashboard ](#tab-panel-6691)
+* [ API ](#tab-panel-6692)
 
 To import a zone file using the dashboard:
 
@@ -72,8 +81,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/import" \
 
 You can also bulk export records from Cloudflare.
 
-* [ Dashboard ](#tab-panel-6466)
-* [ API ](#tab-panel-6467)
+* [ Dashboard ](#tab-panel-6693)
+* [ API ](#tab-panel-6694)
 
 To export records using the dashboard:
 

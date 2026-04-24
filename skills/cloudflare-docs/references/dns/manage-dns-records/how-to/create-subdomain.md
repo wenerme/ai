@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/manage-dns-records/how-to/create-subdomain.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Create subdomain records
 
@@ -30,8 +39,8 @@ Then, you would create a corresponding [IP address resolution record](https://de
 | ---- | ---- | ------------ | ------------ |
 | A    | blog | 192.0.2.1    | Proxied      |
 
-* [ Dashboard ](#tab-panel-6460)
-* [ API ](#tab-panel-6461)
+* [ Dashboard ](#tab-panel-6687)
+* [ API ](#tab-panel-6688)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

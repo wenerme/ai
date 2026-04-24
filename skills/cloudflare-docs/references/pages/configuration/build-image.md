@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/pages/configuration/build-image.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build image
 
@@ -26,9 +35,9 @@ In the following tables, review the preinstalled versions for languages and tool
 
 ### Languages and runtime
 
-* [ v3 ](#tab-panel-7694)
-* [ v2 ](#tab-panel-7695)
-* [ v1 ](#tab-panel-7696)
+* [ v3 ](#tab-panel-7866)
+* [ v2 ](#tab-panel-7867)
+* [ v1 ](#tab-panel-7868)
 
 | Tool        | Default version | Supported versions | Environment variable | File                         |
 | ----------- | --------------- | ------------------ | -------------------- | ---------------------------- |
@@ -66,9 +75,9 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Tools
 
-* [ v3 ](#tab-panel-7697)
-* [ v2 ](#tab-panel-7698)
-* [ v1 ](#tab-panel-7699)
+* [ v3 ](#tab-panel-7869)
+* [ v2 ](#tab-panel-7870)
+* [ v1 ](#tab-panel-7871)
 
 | Tool                   | Default version | Supported versions               | Environment variable          |
 | ---------------------- | --------------- | -------------------------------- | ----------------------------- |
@@ -196,9 +205,9 @@ The following features are not currently supported when using the v3 build syste
 
 Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) container.
 
-* [ v3 ](#tab-panel-7700)
-* [ v2 ](#tab-panel-7701)
-* [ v1 ](#tab-panel-7702)
+* [ v3 ](#tab-panel-7872)
+* [ v2 ](#tab-panel-7873)
+* [ v1 ](#tab-panel-7874)
 
 | **Build environment** | Ubuntu 22.04.2 |
 | --------------------- | -------------- |

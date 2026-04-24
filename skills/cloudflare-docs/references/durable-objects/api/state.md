@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/api/state.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Durable Object State
 
@@ -22,9 +31,9 @@ The `DurableObjectState` interface is accessible as an instance property on the 
 
 The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [DurableObjectStorage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [DurableObjectState::storage](https://developers.cloudflare.com/durable-objects/api/state/#storage).
 
-* [  JavaScript ](#tab-panel-6623)
-* [  TypeScript ](#tab-panel-6624)
-* [  Python ](#tab-panel-6625)
+* [  JavaScript ](#tab-panel-6795)
+* [  TypeScript ](#tab-panel-6796)
+* [  Python ](#tab-panel-6797)
 
 JavaScript
 
@@ -154,8 +163,8 @@ For regular request handling, you rarely need `blockConcurrencyWhile`. SQLite st
 
 Reserve `blockConcurrencyWhile` outside the constructor for cases where you make external async calls (such as `fetch()`) and cannot tolerate state changes while the event loop yields.
 
-* [  JavaScript ](#tab-panel-6626)
-* [  Python ](#tab-panel-6627)
+* [  JavaScript ](#tab-panel-6798)
+* [  Python ](#tab-panel-6799)
 
 JavaScript
 
@@ -363,8 +372,8 @@ If no parameter or a parameter of `0` is provided and a timeout has been previou
 
 `abort` is used to forcibly reset a Durable Object. A JavaScript `Error` with the message passed as a parameter will be logged. This error is not able to be caught within the application code.
 
-* [  TypeScript ](#tab-panel-6628)
-* [  Python ](#tab-panel-6629)
+* [  TypeScript ](#tab-panel-6800)
+* [  Python ](#tab-panel-6801)
 
 JavaScript
 

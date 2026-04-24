@@ -1,11 +1,10 @@
 ---
 title: Overview
+description: Learn Cloudflare WARP client basics and diagnostics.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-Copy page
 
 # Overview
 

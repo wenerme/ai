@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg) 
 
@@ -31,8 +40,8 @@ DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detect
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2977)
-* [  curl ](#tab-panel-2978)
+* [  TypeScript ](#tab-panel-3173)
+* [  curl ](#tab-panel-3174)
 
 ```
 
@@ -96,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2981)
-* [ Output ](#tab-panel-2982)
+* [ Input ](#tab-panel-3177)
+* [ Output ](#tab-panel-3178)
 
 Option 1
 
@@ -127,8 +136,8 @@ items
 
 ## API Schemas
 
-* [ Input ](#tab-panel-2979)
-* [ Output ](#tab-panel-2980)
+* [ Input ](#tab-panel-3175)
+* [ Output ](#tab-panel-3176)
 
 ```
 

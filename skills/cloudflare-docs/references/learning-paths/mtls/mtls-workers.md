@@ -1,18 +1,27 @@
 ---
 title: mTLS with Workers
-description: mTLS for Workers can be used for requests made to services that are not proxied on Cloudflare, or alternatively used to gain visibility into certificate details and optionally add your own programmatic logic for further checks or actions.
+description: Implement mutual TLS authentication with Cloudflare.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/mtls/mtls-workers/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # mTLS with Workers
 
@@ -28,8 +37,8 @@ All Client Certificate details can be found in the [tlsClientAuth](https://devel
 
 Example Cloudflare Workers code to return all headers and gain visibility, including [Client Certificate headers](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#cloudflare-workers):
 
-* [  Module Worker ](#tab-panel-5158)
-* [  Service Worker ](#tab-panel-5159)
+* [  Module Worker ](#tab-panel-7561)
+* [  Service Worker ](#tab-panel-7562)
 
 JavaScript
 

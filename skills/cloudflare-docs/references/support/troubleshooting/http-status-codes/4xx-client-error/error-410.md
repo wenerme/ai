@@ -1,17 +1,25 @@
 ---
 title: Error 410
-description: When a resource is intentionally and permanently removed, servers use the 410 Gone status code to inform clients that the resource is no longer available.
-In this case:
+description: Troubleshoot HTTP 410 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 410
 

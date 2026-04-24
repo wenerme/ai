@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Client errors
 
@@ -280,8 +289,8 @@ The device is not authenticated to an [organization](https://developers.cloudfla
 
 ### Resolution
 
-* [ Version 2026.2+ ](#tab-panel-5875)
-* [ Version 2026.1 and earlier ](#tab-panel-5876)
+* [ Version 2026.2+ ](#tab-panel-6091)
+* [ Version 2026.1 and earlier ](#tab-panel-6092)
 
 1. Launch the Cloudflare One Client.
 2. Go to **Profile** \> **Account information**.

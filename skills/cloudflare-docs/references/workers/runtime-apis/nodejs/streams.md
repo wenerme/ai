@@ -1,18 +1,27 @@
 ---
 title: Streams
-description: The Node.js streams API is the original API for working with streaming data in JavaScript, predating the WHATWG ReadableStream standard. A stream is an abstract interface for working with streaming data in Node.js. Streams can be readable, writable, or both. All streams are instances of EventEmitter.
+description: Use the Node.js streams API in Cloudflare Workers for readable, writable, and transform stream operations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/nodejs/streams.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Streams
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/configuration/batching-retries.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Batching, Retries and Delays
 
@@ -63,9 +72,9 @@ You can acknowledge individual messages within a batch by explicitly acknowledgi
 
 To explicitly acknowledge a message as delivered, call the `ack()` method on the message.
 
-* [  JavaScript ](#tab-panel-7879)
-* [  TypeScript ](#tab-panel-7880)
-* [  Python ](#tab-panel-7881)
+* [  JavaScript ](#tab-panel-8051)
+* [  TypeScript ](#tab-panel-8052)
+* [  Python ](#tab-panel-8053)
 
 index.js
 
@@ -141,9 +150,9 @@ class Default(WorkerEntrypoint):
 
 You can also call `retry()` to explicitly force a message to be redelivered in a subsequent batch. This is referred to as "negative acknowledgement". This can be particularly useful when you want to process the rest of the messages in that batch without throwing an error that would force the entire batch to be redelivered.
 
-* [  JavaScript ](#tab-panel-7882)
-* [  TypeScript ](#tab-panel-7883)
-* [  Python ](#tab-panel-7884)
+* [  JavaScript ](#tab-panel-8054)
+* [  TypeScript ](#tab-panel-8055)
+* [  Python ](#tab-panel-8056)
 
 index.js
 
@@ -251,9 +260,9 @@ Configuring delivery and retry delays via the `wrangler` CLI or when [developing
 
 To delay a message or batch of messages when sending to a queue, you can provide a `delaySeconds` parameter when sending a message.
 
-* [  JavaScript ](#tab-panel-7885)
-* [  TypeScript ](#tab-panel-7886)
-* [  Python ](#tab-panel-7887)
+* [  JavaScript ](#tab-panel-8057)
+* [  TypeScript ](#tab-panel-8058)
+* [  Python ](#tab-panel-8059)
 
 index.js
 
@@ -343,9 +352,9 @@ When [consuming messages from a queue](https://developers.cloudflare.com/queues/
 
 To delay an individual message within a batch:
 
-* [  JavaScript ](#tab-panel-7888)
-* [  TypeScript ](#tab-panel-7889)
-* [  Python ](#tab-panel-7890)
+* [  JavaScript ](#tab-panel-8060)
+* [  TypeScript ](#tab-panel-8061)
+* [  Python ](#tab-panel-8062)
 
 index.js
 
@@ -421,9 +430,9 @@ class Default(WorkerEntrypoint):
 
 To delay a batch of messages:
 
-* [  JavaScript ](#tab-panel-7891)
-* [  TypeScript ](#tab-panel-7892)
-* [  Python ](#tab-panel-7893)
+* [  JavaScript ](#tab-panel-8063)
+* [  TypeScript ](#tab-panel-8064)
+* [  Python ](#tab-panel-8065)
 
 index.js
 
@@ -513,8 +522,8 @@ npx wrangler@latest queues consumer http add $QUEUE-NAME --retry-delay-secs=60
 
 Delays can also be configured in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) with the `delivery_delay` setting for producers (when sending) and/or the `retry_delay` (when retrying) per-consumer:
 
-* [  wrangler.jsonc ](#tab-panel-7877)
-* [  wrangler.toml ](#tab-panel-7878)
+* [  wrangler.jsonc ](#tab-panel-8049)
+* [  wrangler.toml ](#tab-panel-8050)
 
 JSONC
 
@@ -601,9 +610,9 @@ Each message delivered to a consumer includes an `attempts` property that tracks
 
 For example, to generate an [exponential backoff ↗](https://en.wikipedia.org/wiki/Exponential%5Fbackoff) for a message, you can create a helper function that calculates this for you:
 
-* [  JavaScript ](#tab-panel-7894)
-* [  TypeScript ](#tab-panel-7895)
-* [  Python ](#tab-panel-7896)
+* [  JavaScript ](#tab-panel-8066)
+* [  TypeScript ](#tab-panel-8067)
+* [  Python ](#tab-panel-8068)
 
 index.js
 
@@ -650,9 +659,9 @@ def calculate_exponential_backoff(attempts, base_delay_seconds):
 
 In your consumer, you then pass the value of `msg.attempts` and your desired delay factor as the argument to `delaySeconds` when calling `retry()` on an individual message:
 
-* [  JavaScript ](#tab-panel-7897)
-* [  TypeScript ](#tab-panel-7898)
-* [  Python ](#tab-panel-7899)
+* [  JavaScript ](#tab-panel-8069)
+* [  TypeScript ](#tab-panel-8070)
+* [  Python ](#tab-panel-8071)
 
 index.js
 

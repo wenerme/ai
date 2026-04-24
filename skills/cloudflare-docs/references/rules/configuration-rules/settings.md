@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/configuration-rules/settings.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Configuration Rules settings
 
@@ -316,8 +325,6 @@ Use the Request Body Buffering setting to configure the request body buffering m
 * **Full**: Buffers the entire request body before sending the request to your origin server.
 * **None**: Strictly no buffering. The request body is streamed directly to the origin server without inspection.
 
-This setting only takes effect on zones running Cloudflare's [latest CDN proxy ↗](https://blog.cloudflare.com/20-percent-internet-upgrade/). Enterprise customers can contact their account team to enable the latest proxy on their zones.
-
 Warning
 
 Setting request body buffering to **None** may break functionality that requires body inspection. In particular, this can impact the effectiveness of the Web Application Firewall (WAF) and other security features that rely on analyzing request bodies to detect and block threats.
@@ -349,8 +356,6 @@ Use the Response Body Buffering setting to configure the response body buffering
 
 * **Standard** (default): Allows Cloudflare products to inspect a prefix of the response body when necessary for enabled functionality on your zone.
 * **None**: Strictly no buffering. The response body is streamed directly to the client without inspection.
-
-This setting only takes effect on zones running Cloudflare's [latest CDN proxy ↗](https://blog.cloudflare.com/20-percent-internet-upgrade/). Enterprise customers can contact their account team to enable the latest proxy on their zones.
 
 Warning
 

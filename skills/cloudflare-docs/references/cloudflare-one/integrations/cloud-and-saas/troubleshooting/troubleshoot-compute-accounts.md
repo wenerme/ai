@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ AWS ](https://developers.cloudflare.com/search/?tags=AWS)[ GCP ](https://developers.cloudflare.com/search/?tags=GCP)[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Troubleshoot compute accounts
 

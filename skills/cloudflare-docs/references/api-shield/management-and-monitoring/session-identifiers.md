@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/api-shield/management-and-monitoring/session-identifiers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Session identifiers
 
@@ -30,8 +39,8 @@ You must have specific entitlements to configure session identifiers or cookies 
 
 ## To set up session identifiers
 
-* [  New dashboard ](#tab-panel-3464)
-* [ Old dashboard ](#tab-panel-3465)
+* [  New dashboard ](#tab-panel-5417)
+* [ Old dashboard ](#tab-panel-5418)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

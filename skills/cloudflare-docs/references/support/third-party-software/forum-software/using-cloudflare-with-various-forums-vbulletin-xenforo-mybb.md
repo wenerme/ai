@@ -1,16 +1,25 @@
 ---
 title: Using Cloudflare with various forums
-description: Many widely used forum platforms are compatible with Cloudflare.
+description: Use Cloudflare with vBulletin, Xenforo, and other forums.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Using Cloudflare with various forums
 

@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/tutorials/handle-rate-limits/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Handle rate limits of external APIs
 
@@ -111,8 +120,8 @@ Created queue rate-limit-queue.
 
 In your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-5763)
-* [  wrangler.toml ](#tab-panel-5764)
+* [  wrangler.jsonc ](#tab-panel-8166)
+* [  wrangler.toml ](#tab-panel-8167)
 
 JSONC
 
@@ -187,8 +196,8 @@ It is important to include the `max_batch_size` of two to the consumer queue is 
 
 Your final Wrangler file should look similar to the example below.
 
-* [  wrangler.jsonc ](#tab-panel-5765)
-* [  wrangler.toml ](#tab-panel-5766)
+* [  wrangler.jsonc ](#tab-panel-8168)
+* [  wrangler.toml ](#tab-panel-8169)
 
 JSONC
 
@@ -204,7 +213,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": [
 
@@ -263,7 +272,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 

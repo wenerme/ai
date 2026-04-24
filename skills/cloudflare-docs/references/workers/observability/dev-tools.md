@@ -1,18 +1,27 @@
 ---
 title: DevTools
-description: When running your Worker locally using the Wrangler CLI (wrangler dev) or using Vite with the Cloudflare Vite plugin, you automatically have access to Cloudflare's implementation of Chrome DevTools.
+description: Use Chrome DevTools to debug, profile, and inspect Cloudflare Workers locally.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/observability/dev-tools/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # DevTools
 

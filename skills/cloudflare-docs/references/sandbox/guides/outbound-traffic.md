@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/outbound-traffic.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Handle outbound traffic
 
@@ -30,8 +39,8 @@ Use them to:
 
 Use `enableInternet = false` to block public internet access by default:
 
-* [  JavaScript ](#tab-panel-6497)
-* [  TypeScript ](#tab-panel-6498)
+* [  JavaScript ](#tab-panel-8904)
+* [  TypeScript ](#tab-panel-8905)
 
 JavaScript
 
@@ -85,8 +94,8 @@ When `allowedHosts` is set, it becomes a deny-by-default allowlist. Any host or 
 
 By default, a Sandbox allows internet access, and you can set `deniedHosts` to disallow specific hosts or IPs:
 
-* [  JavaScript ](#tab-panel-6499)
-* [  TypeScript ](#tab-panel-6500)
+* [  JavaScript ](#tab-panel-8906)
+* [  TypeScript ](#tab-panel-8907)
 
 JavaScript
 
@@ -126,8 +135,8 @@ export class MySandbox extends Sandbox {
 
 You can also disable internet access by default, but allow specific hosts and IPs:
 
-* [  JavaScript ](#tab-panel-6501)
-* [  TypeScript ](#tab-panel-6502)
+* [  JavaScript ](#tab-panel-8908)
+* [  TypeScript ](#tab-panel-8909)
 
 JavaScript
 
@@ -189,8 +198,8 @@ Outbound handlers are programmable egress proxies that run on the same machine a
 
 Use `outbound` to intercept all outbound HTTP and HTTPS traffic:
 
-* [  JavaScript ](#tab-panel-6505)
-* [  TypeScript ](#tab-panel-6506)
+* [  JavaScript ](#tab-panel-8912)
+* [  TypeScript ](#tab-panel-8913)
 
 JavaScript
 
@@ -268,8 +277,8 @@ HTTP requests to the outbound handler remain secure because they run on the same
 
 Use `outboundByHost` to map specific domain names or IP addresses to handler functions:
 
-* [  JavaScript ](#tab-panel-6507)
-* [  TypeScript ](#tab-panel-6508)
+* [  JavaScript ](#tab-panel-8914)
+* [  TypeScript ](#tab-panel-8915)
 
 JavaScript
 
@@ -345,8 +354,8 @@ Calls to `http://my.worker` from the sandbox invoke the handler, which runs insi
 
 Because outbound handlers run in the Workers runtime — outside the sandbox — they can hold secrets that the sandbox itself never sees. The sandbox makes a plain HTTP request, and the handler attaches the credential before forwarding it to the upstream service.
 
-* [  JavaScript ](#tab-panel-6503)
-* [  TypeScript ](#tab-panel-6504)
+* [  JavaScript ](#tab-panel-8910)
+* [  TypeScript ](#tab-panel-8911)
 
 JavaScript
 
@@ -404,8 +413,8 @@ This is especially useful for agentic workloads where you cannot fully trust the
 
 Here, `ctx.containerId` looks up a per-instance key from KV:
 
-* [  JavaScript ](#tab-panel-6509)
-* [  TypeScript ](#tab-panel-6510)
+* [  JavaScript ](#tab-panel-8916)
+* [  TypeScript ](#tab-panel-8917)
 
 JavaScript
 
@@ -499,8 +508,8 @@ You can also manage runtime policy with `setOutboundByHosts()`, `setAllowedHosts
 
 This lets a trusted Worker hold credentials without exposing them to an untrusted sandbox:
 
-* [  JavaScript ](#tab-panel-6511)
-* [  TypeScript ](#tab-panel-6512)
+* [  JavaScript ](#tab-panel-8918)
+* [  TypeScript ](#tab-panel-8919)
 
 JavaScript
 
@@ -570,8 +579,8 @@ Explain Code
 
 Apply handlers to hosts programmatically from your Worker:
 
-* [  JavaScript ](#tab-panel-6513)
-* [  TypeScript ](#tab-panel-6514)
+* [  JavaScript ](#tab-panel-8920)
+* [  TypeScript ](#tab-panel-8921)
 
 JavaScript
 

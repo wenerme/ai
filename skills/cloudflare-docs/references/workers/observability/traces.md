@@ -1,18 +1,27 @@
 ---
 title: Traces
-description: Tracing gives you end-to-end visibility into the life of a request as it travels through your Workers application and connected services. This helps you identify performance bottlenecks, debug issues, and understand complex request flows. With tracing you can answer questions such as:
+description: Gain end-to-end visibility into request flows across your Workers application with automatic tracing instrumentation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/observability/traces/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Traces
 
@@ -39,8 +48,8 @@ For a full list of instrumented operations , see the [spans and attributes docum
 
 You can configure tracing by setting `observability.traces.enabled = true` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#observability).
 
-* [  wrangler.jsonc ](#tab-panel-7540)
-* [  wrangler.toml ](#tab-panel-7541)
+* [  wrangler.jsonc ](#tab-panel-9999)
+* [  wrangler.toml ](#tab-panel-10000)
 
 JSONC
 
@@ -106,8 +115,8 @@ The valid sampling range is from `0` to `1`, where `0` indicates zero out of one
 
 If you have not specified a sampling rate, it defaults to `1`, meaning 100% of requests will be traced.
 
-* [  wrangler.jsonc ](#tab-panel-7542)
-* [  wrangler.toml ](#tab-panel-7543)
+* [  wrangler.jsonc ](#tab-panel-10001)
+* [  wrangler.toml ](#tab-panel-10002)
 
 JSONC
 

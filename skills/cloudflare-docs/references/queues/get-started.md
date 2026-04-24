@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/get-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Getting started
 
@@ -97,8 +106,8 @@ To expose your queue to the code inside your Worker, you need to connect your qu
 
 To create a binding, open your newly generated `wrangler.jsonc` file and add the following:
 
-* [  wrangler.jsonc ](#tab-panel-7929)
-* [  wrangler.toml ](#tab-panel-7930)
+* [  wrangler.jsonc ](#tab-panel-8101)
+* [  wrangler.toml ](#tab-panel-8102)
 
 JSONC
 
@@ -305,8 +314,8 @@ Each queue can only have one consumer Worker connected to it. If you try to conn
 
 To connect your queue to your consumer Worker, open your Wrangler file and add this to the bottom:
 
-* [  wrangler.jsonc ](#tab-panel-7931)
-* [  wrangler.toml ](#tab-panel-7932)
+* [  wrangler.jsonc ](#tab-panel-8103)
+* [  wrangler.toml ](#tab-panel-8104)
 
 JSONC
 

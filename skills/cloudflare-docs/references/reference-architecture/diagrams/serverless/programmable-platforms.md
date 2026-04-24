@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/reference-architecture/diagrams/serverless/programmable-platforms.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Programmable Platforms
 
@@ -33,7 +42,7 @@ The Workers for Platforms architecture consists of several key components that w
 1. **Main Request Flow**: An overview over the a request flow in a programmable platform.
 2. **Invocation & Metadata Flow**: commonly, incoming requests and enriched with metadata to provide the function invocation with relevant context or perform routing logic.
 3. **Egress Control**: controlling outbound connections to ensure compliant behaviour.
-4. **Utilizing Storage & Data Resources**: leveraging databases & storage to build even richer end-user expierences at scale.
+4. **Utilizing Storage & Data Resources**: leveraging databases & storage to build even richer end-user experiences at scale.
 5. **Observability Tools**: Logging and metrics collection services to monitor platform performance and troubleshoot issues.
 
 ## Main Request Flow

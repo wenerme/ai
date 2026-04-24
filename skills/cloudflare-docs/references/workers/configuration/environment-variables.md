@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/environment-variables.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Environment variables
 
@@ -26,8 +35,8 @@ Text strings and JSON values are not encrypted and are useful for storing applic
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file. In the following example, `API_HOST` and `API_ACCOUNT_ID` are text values and `SERVICE_X_DATA` is a JSON value.
 
-* [  wrangler.jsonc ](#tab-panel-7131)
-* [  wrangler.toml ](#tab-panel-7132)
+* [  wrangler.jsonc ](#tab-panel-9590)
+* [  wrangler.toml ](#tab-panel-9591)
 
 JSONC
 
@@ -91,8 +100,8 @@ Explain Code
 
 Refer to the following example on how to access the `API_HOST` environment variable in your Worker code:
 
-* [  JavaScript ](#tab-panel-7125)
-* [  TypeScript ](#tab-panel-7126)
+* [  JavaScript ](#tab-panel-9584)
+* [  TypeScript ](#tab-panel-9585)
 
 JavaScript
 
@@ -139,8 +148,8 @@ export default {
 
 You can also import `env` from [cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-7129)
-* [  TypeScript ](#tab-panel-7130)
+* [  JavaScript ](#tab-panel-9588)
+* [  TypeScript ](#tab-panel-9589)
 
 JavaScript
 
@@ -209,8 +218,8 @@ For more details, refer to [Importing env as a global](https://developers.cloudf
 
 The example below sets up two environments, `staging` and `production`, with different values for `API_HOST`.
 
-* [  wrangler.jsonc ](#tab-panel-7127)
-* [  wrangler.toml ](#tab-panel-7128)
+* [  wrangler.jsonc ](#tab-panel-9586)
+* [  wrangler.toml ](#tab-panel-9587)
 
 JSONC
 

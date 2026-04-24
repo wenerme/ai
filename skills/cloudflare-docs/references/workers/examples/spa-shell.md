@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ SPA ](https://developers.cloudflare.com/search/?tags=SPA) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/spa-shell.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Single Page App (SPA) shell with bootstrap data
 
@@ -45,8 +54,8 @@ Use this variant when your SPA build output is deployed as part of your Worker u
 
 Set `not_found_handling` to `"single-page-application"` so that every route returns `index.html`. Use `run_worker_first` to route all requests through your Worker except hashed assets under `/assets/*`, which are served directly.
 
-* [  wrangler.jsonc ](#tab-panel-9652)
-* [  wrangler.toml ](#tab-panel-9653)
+* [  wrangler.jsonc ](#tab-panel-9886)
+* [  wrangler.toml ](#tab-panel-9887)
 
 JSONC
 
@@ -60,7 +69,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-20",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -93,7 +102,7 @@ main = "src/worker.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-20"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -121,8 +130,8 @@ The Worker starts fetching API data immediately, then fetches the SPA shell from
 
 If the API call fails, the shell still loads and the SPA falls back to client-side data fetching.
 
-* [  JavaScript ](#tab-panel-9656)
-* [  TypeScript ](#tab-panel-9657)
+* [  JavaScript ](#tab-panel-9890)
+* [  TypeScript ](#tab-panel-9891)
 
 JavaScript
 
@@ -364,8 +373,8 @@ Use this variant when your HTML, CSS, and JavaScript are deployed outside Cloudf
 
 Because the SPA is not in Workers Static Assets, you do not need an `assets` block. Instead, store the external origin URL as an environment variable. Attach the Worker to your domain with a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or a [Route](https://developers.cloudflare.com/workers/configuration/routing/routes/).
 
-* [  wrangler.jsonc ](#tab-panel-9654)
-* [  wrangler.toml ](#tab-panel-9655)
+* [  wrangler.jsonc ](#tab-panel-9888)
+* [  wrangler.toml ](#tab-panel-9889)
 
 JSONC
 
@@ -379,7 +388,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-20",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -408,7 +417,7 @@ main = "src/worker.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-20"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -426,8 +435,8 @@ API_BASE_URL = "https://api.example.com"
 
 The Worker fetches both the SPA shell and API data in parallel. When the SPA origin responds, HTMLRewriter streams the HTML while injecting bootstrap data into `<body>`. Static assets (CSS, JS, images) are passed through to the external origin without modification.
 
-* [  JavaScript ](#tab-panel-9658)
-* [  TypeScript ](#tab-panel-9659)
+* [  JavaScript ](#tab-panel-9892)
+* [  TypeScript ](#tab-panel-9893)
 
 JavaScript
 

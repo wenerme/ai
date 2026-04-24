@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ WebSockets ](https://developers.cloudflare.com/search/?tags=WebSockets) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/examples/websocket-server.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build a WebSocket server
 
@@ -30,9 +39,9 @@ Warning
 
 WebSocket connections pin your Durable Object to memory, and so duration charges will be incurred so long as the WebSocket is connected (regardless of activity). To avoid duration charges during periods of inactivity, use the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/), which only charges for duration when JavaScript is actively executing.
 
-* [  JavaScript ](#tab-panel-4568)
-* [  TypeScript ](#tab-panel-4569)
-* [  Python ](#tab-panel-4570)
+* [  JavaScript ](#tab-panel-6943)
+* [  TypeScript ](#tab-panel-6944)
+* [  Python ](#tab-panel-6945)
 
 JavaScript
 
@@ -658,8 +667,8 @@ Explain Code
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-4566)
-* [  wrangler.toml ](#tab-panel-4567)
+* [  wrangler.jsonc ](#tab-panel-6941)
+* [  wrangler.toml ](#tab-panel-6942)
 
 JSONC
 

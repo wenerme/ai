@@ -1,16 +1,25 @@
 ---
 title: Error 412
-description: The 412 Precondition Failed status code indicates that the server denies the request because the resource does not meet the conditions specified by the client.
+description: Troubleshoot HTTP 412 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 412
 

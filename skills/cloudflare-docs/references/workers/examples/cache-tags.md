@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Caching ](https://developers.cloudflare.com/search/?tags=Caching)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/cache-tags.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Cache Tags using Workers
 
@@ -30,10 +39,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7287)
-* [  TypeScript ](#tab-panel-7288)
-* [  Hono ](#tab-panel-7289)
-* [  Python ](#tab-panel-7290)
+* [  JavaScript ](#tab-panel-9746)
+* [  TypeScript ](#tab-panel-9747)
+* [  Hono ](#tab-panel-9748)
+* [  Python ](#tab-panel-9749)
 
 JavaScript
 

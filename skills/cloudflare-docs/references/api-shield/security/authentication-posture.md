@@ -6,25 +6,34 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/api-shield/security/authentication-posture.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Authentication Posture
 
-Authentication Posture helps users identify authentication misconfigurations for APIs and alerts of their presence.
+Authentication Posture detects API endpoints with missing or inconsistent authentication and alerts you to potential misconfigurations.
 
-For example, a security team member may believe that their API hosted at `/api/v1/users` and `/api/v1/orders` are guarded by the fact that only authenticated users can interact with the endpoints. However, bugs in origin API authentication policies may lead to broken authentication vulnerabilities. Authentication Posture with API Shield details the authentication status of successful requests to your API endpoints, alerting to potential misconfigurations.
+For example, a security team member may expect that their API endpoints `/api/v1/users` and `/api/v1/orders` require authentication. However, bugs in origin API authentication policies can create broken authentication vulnerabilities — allowing unauthenticated access to protected resources. Authentication Posture details the authentication status of successful requests to your API endpoints, alerting to potential misconfigurations.
 
-Consider a typical e-commerce application. Users can browse items and prices without being logged in. However, to retrieve order details with the `GET /api/v1/orders/{order_id}` endpoint, this example application requires users to log in to their account and pass the subsequent Authorization HTTP header in all requests. Cloudflare will alert via [Security Center Insights](https://developers.cloudflare.com/security-center/security-insights/) and [Endpoint labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) if successful requests are sent to the `GET /api/v1/orders/{order_id}` endpoint or any other endpoint without authentication when session identifiers are configured.
+Consider a typical e-commerce application. Users can browse items and prices without logging in. However, to retrieve order details via `GET /api/v1/orders/{order_id}`, users must log in and pass an Authorization HTTP header with all requests. Cloudflare alerts you via [Security Center Insights](https://developers.cloudflare.com/security-center/security-insights/) and [Endpoint labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) if successful requests reach this endpoint or any other endpoint without authentication when session identifiers are configured.
 
 ## Process
 
-After configuring [session identifiers](https://developers.cloudflare.com/api-shield/get-started/#session-identifiers), API Shield continuously scans your traffic for successful requests without authentication and labels your endpoints on a daily basis. Refer to the table below for our labeling methodology.
+After configuring [session identifiers](https://developers.cloudflare.com/api-shield/get-started/#session-identifiers), API Shield continuously scans your traffic for successful requests without authentication and labels your endpoints on a daily basis. Refer to the table below for the labeling methodology.
 
 | Description                                                                        | 2xx response codes | 4xx, 5xx response codes                               |
 | ---------------------------------------------------------------------------------- | ------------------ | ----------------------------------------------------- |
@@ -33,8 +42,8 @@ After configuring [session identifiers](https://developers.cloudflare.com/api-sh
 
 ### Examine an endpoint's authentication details
 
-* [  New dashboard ](#tab-panel-3468)
-* [ Old dashboard ](#tab-panel-3469)
+* [  New dashboard ](#tab-panel-5421)
+* [ Old dashboard ](#tab-panel-5422)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -57,11 +66,11 @@ Work with your development team to understand which authentication policies may 
 
 ### Stop unauthenticated traffic with Cloudflare
 
-You can use the `cf.api_gateway.auth_id_present` field in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) to trigger when the API Shield configured session identifiers are present or absent on a request. Since this rule would cover your entire zone, Cloudflare recommends adding a host and path match in the rule to pinpoint the protection to exactly what is needed.
+To block unauthenticated requests, create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) using the `cf.api_gateway.auth_id_present` field. This field evaluates to `true` when the configured API Shield session identifiers are present on a request. You can also match on absence to detect unauthenticated traffic. Add a host and path match to scope the rule to specific endpoints.
 
 ## Limitations
 
-Authentication Posture can only apply when customers accurately set up session identifiers in API Shield. As a reminder, session identifiers are meant to uniquely identify authenticated users of your API. If you are unsure of your API's session identifier, consult with your development team.
+Authentication Posture can only apply when customers accurately set up session identifiers in API Shield. Session identifiers must uniquely identify authenticated users of your API. If you are unsure of your API's session identifier, consult with your development team.
 
 ## Availability
 

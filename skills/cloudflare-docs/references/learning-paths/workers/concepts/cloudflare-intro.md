@@ -1,18 +1,27 @@
 ---
 title: Introduction to Cloudflare
-description: Cloudflare is a global network of servers. It is one of the largest networks on the Internet.
+description: Learn about Cloudflare's network and products.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/workers/concepts/cloudflare-intro.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Introduction to Cloudflare
 

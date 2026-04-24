@@ -1,18 +1,27 @@
 ---
 title: Secure approved AI models and tools
-description: As you decide which AI tools to sanction within your organization, you can develop security controls with the expectation of consistent use.
+description: Monitor and secure generative AI usage.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Secure approved AI models and tools
 

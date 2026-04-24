@@ -1,16 +1,25 @@
 ---
 title: Others
-description: Below you will find links to the relevant sections for Others support-focused material.
+description: Troubleshoot Cloudflare with other third-party services.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Others
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/client-side-security/best-practices/handle-an-alert.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Handle a client-side resource alert
 
@@ -23,8 +32,8 @@ If you receive a [client-side resource alert](https://developers.cloudflare.com/
 Start by identifying the [detection system](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/) that triggered the alert. A link is provided in the alert that will send you directly to the Cloudflare dashboard to the relevant resource that needs reviewing. Alternatively, do the following:
 
 1. Navigate to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-3312)  
-   * [ Old dashboard ](#tab-panel-3313)  
+   * [  New dashboard ](#tab-panel-5635)  
+   * [ Old dashboard ](#tab-panel-5636)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  

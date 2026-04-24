@@ -1,18 +1,27 @@
 ---
 title: What is clientless access?
-description: Clientless access is a deployment option of a Zero Trust Network Access (ZTNA) service that provides secure access to internal applications without requiring end users to install any software. Users access corporate resources like intranet web apps, SSH terminals, and Windows servers through RDP from their web browser. Clientless access is commonly used to provide internal, least-privilege access to users on unmanaged devices. Users may include third-party contractors, suppliers, and partners, or employees using personal mobile phones as part of an organization's bring-your-own-device (BYOD) policy.
+description: Understand secure browser-based access without software.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/clientless-access/concepts/what-is-clientless-access.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # What is clientless access?
 

@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/remote-browser-isolation/isolation-policies.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Isolation policies
 
@@ -146,8 +155,8 @@ Custom block dialogs are still in beta. Contact your account team to start using
 
 Isolate security threats such as malware and phishing.
 
-* [ Dashboard ](#tab-panel-5778)
-* [ API ](#tab-panel-5779)
+* [ Dashboard ](#tab-panel-5994)
+* [ API ](#tab-panel-5995)
 
 | Selector            | Operator | Value                | Action  |
 | ------------------- | -------- | -------------------- | ------- |
@@ -196,8 +205,8 @@ Explain Code
 
 Isolate high risk content categories such as newly registered domains.
 
-* [ Dashboard ](#tab-panel-5780)
-* [ API ](#tab-panel-5781)
+* [ Dashboard ](#tab-panel-5996)
+* [ API ](#tab-panel-5997)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -246,8 +255,8 @@ Explain Code
 
 Isolate news and media sites, which are targets for malvertising attacks.
 
-* [ Dashboard ](#tab-panel-5782)
-* [ API ](#tab-panel-5783)
+* [ Dashboard ](#tab-panel-5998)
+* [ API ](#tab-panel-5999)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -296,8 +305,8 @@ Explain Code
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
 
-* [ Dashboard ](#tab-panel-5784)
-* [ API ](#tab-panel-5785)
+* [ Dashboard ](#tab-panel-6000)
+* [ API ](#tab-panel-6001)
 
 | Selector           | Operator | Value                    | Action  |
 | ------------------ | -------- | ------------------------ | ------- |
@@ -346,8 +355,8 @@ Explain Code
 
 Isolate the use of ChatGPT.
 
-* [ Dashboard ](#tab-panel-5786)
-* [ API ](#tab-panel-5787)
+* [ Dashboard ](#tab-panel-6002)
+* [ API ](#tab-panel-6003)
 
 | Selector    | Operator | Value     | Action  |
 | ----------- | -------- | --------- | ------- |

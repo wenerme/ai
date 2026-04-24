@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/nodejs/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Node.js compatibility
 
@@ -27,8 +36,8 @@ Cloudflare Workers provides a subset of Node.js APIs in two forms:
 
 To enable built-in Node.js APIs and add polyfills, add the `nodejs_compat` compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and ensure that your Worker's [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-10095)
-* [  wrangler.toml ](#tab-panel-10096)
+* [  wrangler.jsonc ](#tab-panel-10111)
+* [  wrangler.toml ](#tab-panel-10112)
 
 JSONC
 
@@ -44,7 +53,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-22"
+  "compatibility_date": "2026-04-24"
 
 }
 
@@ -59,7 +68,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-22"
+compatibility_date = "2026-04-24"
 
 
 ```
@@ -139,8 +148,8 @@ This allows you to import packages that use these Node.js modules, even if certa
 
 If you need to enable only the Node.js `AsyncLocalStorage` API, you can enable the `nodejs_als` compatibility flag:
 
-* [  wrangler.jsonc ](#tab-panel-10097)
-* [  wrangler.toml ](#tab-panel-10098)
+* [  wrangler.jsonc ](#tab-panel-10113)
+* [  wrangler.toml ](#tab-panel-10114)
 
 JSONC
 

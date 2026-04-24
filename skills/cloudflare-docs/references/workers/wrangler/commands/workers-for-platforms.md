@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/commands/workers-for-platforms.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workers for Platforms
 
@@ -22,9 +31,9 @@ Wrangler commands for managing Workers for Platforms [dispatch namespace](https:
 
 List all dispatch namespaces
 
-* [  npm ](#tab-panel-10549)
-* [  pnpm ](#tab-panel-10550)
-* [  yarn ](#tab-panel-10551)
+* [  npm ](#tab-panel-10863)
+* [  pnpm ](#tab-panel-10864)
+* [  yarn ](#tab-panel-10865)
 
 Terminal window
 
@@ -74,9 +83,9 @@ Automatically provision draft bindings with new resources
 
 Get information about a dispatch namespace
 
-* [  npm ](#tab-panel-10552)
-* [  pnpm ](#tab-panel-10553)
-* [  yarn ](#tab-panel-10554)
+* [  npm ](#tab-panel-10866)
+* [  pnpm ](#tab-panel-10867)
+* [  yarn ](#tab-panel-10868)
 
 Terminal window
 
@@ -129,9 +138,9 @@ Automatically provision draft bindings with new resources
 
 Create a dispatch namespace
 
-* [  npm ](#tab-panel-10555)
-* [  pnpm ](#tab-panel-10556)
-* [  yarn ](#tab-panel-10557)
+* [  npm ](#tab-panel-10869)
+* [  pnpm ](#tab-panel-10870)
+* [  yarn ](#tab-panel-10871)
 
 Terminal window
 
@@ -184,9 +193,9 @@ Automatically provision draft bindings with new resources
 
 Delete a dispatch namespace
 
-* [  npm ](#tab-panel-10558)
-* [  pnpm ](#tab-panel-10559)
-* [  yarn ](#tab-panel-10560)
+* [  npm ](#tab-panel-10872)
+* [  pnpm ](#tab-panel-10873)
+* [  yarn ](#tab-panel-10874)
 
 Terminal window
 
@@ -243,9 +252,9 @@ You must delete all user Workers in the dispatch namespace before it can be dele
 
 Rename a dispatch namespace
 
-* [  npm ](#tab-panel-10561)
-* [  pnpm ](#tab-panel-10562)
-* [  yarn ](#tab-panel-10563)
+* [  npm ](#tab-panel-10875)
+* [  pnpm ](#tab-panel-10876)
+* [  yarn ](#tab-panel-10877)
 
 Terminal window
 

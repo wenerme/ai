@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/background-processes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Run background processes
 
@@ -34,8 +43,8 @@ For **one-time commands, builds, or scripts that complete and exit**, use `exec(
 
 ## Start a background process
 
-* [  JavaScript ](#tab-panel-6287)
-* [  TypeScript ](#tab-panel-6288)
+* [  JavaScript ](#tab-panel-8698)
+* [  TypeScript ](#tab-panel-8699)
 
 JavaScript
 
@@ -103,8 +112,8 @@ Explain Code
 
 Set working directory and environment variables:
 
-* [  JavaScript ](#tab-panel-6289)
-* [  TypeScript ](#tab-panel-6290)
+* [  JavaScript ](#tab-panel-8700)
+* [  TypeScript ](#tab-panel-8701)
 
 JavaScript
 
@@ -170,8 +179,8 @@ Explain Code
 
 List and check running processes:
 
-* [  JavaScript ](#tab-panel-6295)
-* [  TypeScript ](#tab-panel-6296)
+* [  JavaScript ](#tab-panel-8706)
+* [  TypeScript ](#tab-panel-8707)
 
 JavaScript
 
@@ -233,8 +242,8 @@ Explain Code
 
 Wait for a process to be ready before proceeding:
 
-* [  JavaScript ](#tab-panel-6285)
-* [  TypeScript ](#tab-panel-6286)
+* [  JavaScript ](#tab-panel-8696)
+* [  TypeScript ](#tab-panel-8697)
 
 JavaScript
 
@@ -272,8 +281,8 @@ console.log('Server is ready');
 
 Or wait for specific log patterns:
 
-* [  JavaScript ](#tab-panel-6291)
-* [  TypeScript ](#tab-panel-6292)
+* [  JavaScript ](#tab-panel-8702)
+* [  TypeScript ](#tab-panel-8703)
 
 JavaScript
 
@@ -311,8 +320,8 @@ console.log('Server is ready:', result.line);
 
 Stream logs in real-time:
 
-* [  JavaScript ](#tab-panel-6297)
-* [  TypeScript ](#tab-panel-6298)
+* [  JavaScript ](#tab-panel-8708)
+* [  TypeScript ](#tab-panel-8709)
 
 JavaScript
 
@@ -368,8 +377,8 @@ Explain Code
 
 Or get accumulated logs:
 
-* [  JavaScript ](#tab-panel-6293)
-* [  TypeScript ](#tab-panel-6294)
+* [  JavaScript ](#tab-panel-8704)
+* [  TypeScript ](#tab-panel-8705)
 
 JavaScript
 
@@ -397,8 +406,8 @@ console.log('Logs:', logs);
 
 Stop background processes and their children:
 
-* [  JavaScript ](#tab-panel-6299)
-* [  TypeScript ](#tab-panel-6300)
+* [  JavaScript ](#tab-panel-8710)
+* [  TypeScript ](#tab-panel-8711)
 
 JavaScript
 
@@ -446,8 +455,8 @@ await sandbox.killAllProcesses();
 
 For example, if your process spawns multiple worker processes or background tasks, `killProcess()` will clean up the entire process tree:
 
-* [  JavaScript ](#tab-panel-6301)
-* [  TypeScript ](#tab-panel-6302)
+* [  JavaScript ](#tab-panel-8712)
+* [  TypeScript ](#tab-panel-8713)
 
 JavaScript
 
@@ -493,8 +502,8 @@ await sandbox.killProcess(batch.id);
 
 Start services in sequence, waiting for dependencies:
 
-* [  JavaScript ](#tab-panel-6307)
-* [  TypeScript ](#tab-panel-6308)
+* [  JavaScript ](#tab-panel-8718)
+* [  TypeScript ](#tab-panel-8719)
 
 JavaScript
 
@@ -570,8 +579,8 @@ Explain Code
 
 By default, containers automatically shut down after 10 minutes of inactivity. For long-running processes that may have idle periods (like CI/CD pipelines, batch jobs, or monitoring tasks), use the [keepAlive option](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive):
 
-* [  JavaScript ](#tab-panel-6309)
-* [  TypeScript ](#tab-panel-6310)
+* [  JavaScript ](#tab-panel-8720)
+* [  TypeScript ](#tab-panel-8721)
 
 JavaScript
 
@@ -729,8 +738,8 @@ When using `keepAlive: true`, containers will not automatically timeout. You **m
 
 Check logs to see why:
 
-* [  JavaScript ](#tab-panel-6305)
-* [  TypeScript ](#tab-panel-6306)
+* [  JavaScript ](#tab-panel-8716)
+* [  TypeScript ](#tab-panel-8717)
 
 JavaScript
 
@@ -780,8 +789,8 @@ if (!processes.find(p => p.id === process.id)) {
 
 Kill existing processes before starting:
 
-* [  JavaScript ](#tab-panel-6303)
-* [  TypeScript ](#tab-panel-6304)
+* [  JavaScript ](#tab-panel-8714)
+* [  TypeScript ](#tab-panel-8715)
 
 JavaScript
 

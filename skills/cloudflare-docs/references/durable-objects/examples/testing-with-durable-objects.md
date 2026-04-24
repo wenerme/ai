@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/examples/testing-with-durable-objects.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Testing Durable Objects
 
@@ -26,9 +35,9 @@ Use the [@cloudflare/vitest-pool-workers ↗](https://www.npmjs.com/package/@clo
 
 Install Vitest and the Workers Vitest integration as dev dependencies:
 
-* [ npm ](#tab-panel-4536)
-* [ pnpm ](#tab-panel-4537)
-* [ yarn ](#tab-panel-4538)
+* [ npm ](#tab-panel-6911)
+* [ pnpm ](#tab-panel-6912)
+* [ yarn ](#tab-panel-6913)
 
 Terminal window
 
@@ -61,8 +70,8 @@ yarn add -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
 
 This example tests a simple counter Durable Object with SQLite storage:
 
-* [  JavaScript ](#tab-panel-4551)
-* [  TypeScript ](#tab-panel-4552)
+* [  JavaScript ](#tab-panel-6926)
+* [  TypeScript ](#tab-panel-6927)
 
 src/index.js
 
@@ -333,8 +342,8 @@ Explain Code
 
 Make sure your Wrangler configuration includes the Durable Object binding and SQLite migration:
 
-* [  wrangler.jsonc ](#tab-panel-4539)
-* [  wrangler.toml ](#tab-panel-4540)
+* [  wrangler.jsonc ](#tab-panel-6914)
+* [  wrangler.toml ](#tab-panel-6915)
 
 JSONC
 
@@ -348,7 +357,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-24",
 
   "durable_objects": {
 
@@ -383,7 +392,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-24"
 
 
 [[durable_objects.bindings]]
@@ -452,8 +461,8 @@ declare module "cloudflare:workers" {
 
 You can get a stub to a Durable Object directly from the `env` object provided by `cloudflare:workers`:
 
-* [  JavaScript ](#tab-panel-4553)
-* [  TypeScript ](#tab-panel-4554)
+* [  JavaScript ](#tab-panel-6928)
+* [  TypeScript ](#tab-panel-6929)
 
 test/counter.test.js
 
@@ -693,8 +702,8 @@ Explain Code
 
 Use `exports.default.fetch()` to test your Worker's HTTP handler, which routes requests to Durable Objects:
 
-* [  JavaScript ](#tab-panel-4555)
-* [  TypeScript ](#tab-panel-4556)
+* [  JavaScript ](#tab-panel-6930)
+* [  TypeScript ](#tab-panel-6931)
 
 test/integration.test.js
 
@@ -900,8 +909,8 @@ Explain Code
 
 Use `runInDurableObject()` to access instance properties and storage directly. This is useful for verifying internal state or testing private methods:
 
-* [  JavaScript ](#tab-panel-4549)
-* [  TypeScript ](#tab-panel-4550)
+* [  JavaScript ](#tab-panel-6924)
+* [  TypeScript ](#tab-panel-6925)
 
 test/direct-access.test.js
 
@@ -1091,8 +1100,8 @@ Explain Code
 
 Each test automatically gets isolated storage. Durable Objects created in one test do not affect other tests:
 
-* [  JavaScript ](#tab-panel-4543)
-* [  TypeScript ](#tab-panel-4544)
+* [  JavaScript ](#tab-panel-6918)
+* [  TypeScript ](#tab-panel-6919)
 
 test/isolation.test.js
 
@@ -1208,8 +1217,8 @@ Explain Code
 
 SQLite-backed Durable Objects work seamlessly in tests. The SQL API is available when your Durable Object class is configured with `new_sqlite_classes` in your Wrangler configuration:
 
-* [  JavaScript ](#tab-panel-4545)
-* [  TypeScript ](#tab-panel-4546)
+* [  JavaScript ](#tab-panel-6920)
+* [  TypeScript ](#tab-panel-6921)
 
 test/sqlite.test.js
 
@@ -1347,8 +1356,8 @@ Explain Code
 
 Use `runDurableObjectAlarm()` to immediately trigger a scheduled alarm without waiting for the timer. This allows you to test alarm handlers synchronously:
 
-* [  JavaScript ](#tab-panel-4547)
-* [  TypeScript ](#tab-panel-4548)
+* [  JavaScript ](#tab-panel-6922)
+* [  TypeScript ](#tab-panel-6923)
 
 test/alarm.test.js
 
@@ -1496,8 +1505,8 @@ Explain Code
 
 To test alarms, add an `alarm()` method to your Durable Object:
 
-* [  JavaScript ](#tab-panel-4541)
-* [  TypeScript ](#tab-panel-4542)
+* [  JavaScript ](#tab-panel-6916)
+* [  TypeScript ](#tab-panel-6917)
 
 src/index.js
 

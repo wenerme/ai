@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg) 
 
@@ -33,8 +42,8 @@ Stable Diffusion is a latent text-to-image diffusion model capable of generating
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3737)
-* [  curl ](#tab-panel-3738)
+* [  TypeScript ](#tab-panel-3949)
+* [  curl ](#tab-panel-3950)
 
 ```
 
@@ -113,8 +122,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3741)
-* [ Output ](#tab-panel-3742)
+* [ Input ](#tab-panel-3953)
+* [ Output ](#tab-panel-3954)
 
 prompt
 
@@ -164,8 +173,8 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3739)
-* [ Output ](#tab-panel-3740)
+* [ Input ](#tab-panel-3951)
+* [ Output ](#tab-panel-3952)
 
 ```
 

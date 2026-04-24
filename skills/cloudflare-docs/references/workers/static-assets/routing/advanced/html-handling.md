@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/static-assets/routing/advanced/html-handling.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # HTML handling
 
@@ -31,8 +40,8 @@ Take the following directory structure:
 
 This will usually give you the desired behavior automatically: individual files (e.g. `foo.html`) will be served _without_ a trailing slash and folder index files (e.g. `foo/index.html`) will be served _with_ a trailing slash.
 
-* [  wrangler.jsonc ](#tab-panel-10003)
-* [  wrangler.toml ](#tab-panel-10004)
+* [  wrangler.jsonc ](#tab-panel-10237)
+* [  wrangler.toml ](#tab-panel-10238)
 
 JSONC
 
@@ -44,7 +53,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-17",
+  "compatibility_date": "2026-04-24",
 
   "assets": {
 
@@ -67,7 +76,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-17"
+compatibility_date = "2026-04-24"
 
 
 [assets]
@@ -98,8 +107,8 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, you can force trailing slashes (`force-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-10005)
-* [  wrangler.toml ](#tab-panel-10006)
+* [  wrangler.jsonc ](#tab-panel-10239)
+* [  wrangler.toml ](#tab-panel-10240)
 
 JSONC
 
@@ -111,7 +120,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-17",
+  "compatibility_date": "2026-04-24",
 
   "assets": {
 
@@ -134,7 +143,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-17"
+compatibility_date = "2026-04-24"
 
 
 [assets]
@@ -165,8 +174,8 @@ Based on the incoming requests, the following assets would be served:
 
 Or you can drop trailing slashes (`drop-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-10007)
-* [  wrangler.toml ](#tab-panel-10008)
+* [  wrangler.jsonc ](#tab-panel-10241)
+* [  wrangler.toml ](#tab-panel-10242)
 
 JSONC
 
@@ -178,7 +187,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-17",
+  "compatibility_date": "2026-04-24",
 
   "assets": {
 
@@ -201,7 +210,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-17"
+compatibility_date = "2026-04-24"
 
 
 [assets]
@@ -232,8 +241,8 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, if you have bespoke needs, you can disable the built-in HTML handling entirely (`none`).
 
-* [  wrangler.jsonc ](#tab-panel-10009)
-* [  wrangler.toml ](#tab-panel-10010)
+* [  wrangler.jsonc ](#tab-panel-10243)
+* [  wrangler.toml ](#tab-panel-10244)
 
 JSONC
 
@@ -245,7 +254,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-17",
+  "compatibility_date": "2026-04-24",
 
   "assets": {
 
@@ -268,7 +277,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-17"
+compatibility_date = "2026-04-24"
 
 
 [assets]

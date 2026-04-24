@@ -1,18 +1,27 @@
 ---
 title: NAv2 node reference
-description: Main nodes provide deep packet-level information about traffic and attacks for Spectrum customers and Magic Transit customers.
+description: Reference for Network Analytics v2 GraphQL nodes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/graphql-api/migration-guides/network-analytics-v2/node-reference.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # NAv2 node reference
 

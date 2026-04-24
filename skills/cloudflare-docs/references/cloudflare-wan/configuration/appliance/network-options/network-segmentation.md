@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-wan/configuration/appliance/network-options/network-segmentation.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Network segmentation
 
@@ -49,8 +58,8 @@ The following guide assumes you have already created a site and configured your 
 
 ## Create a policy
 
-* [ Dashboard ](#tab-panel-3993)
-* [ API ](#tab-panel-3994)
+* [ Dashboard ](#tab-panel-6362)
+* [ API ](#tab-panel-6363)
 
 Follow these steps to create a new LAN policy to segment your network. Only the fields marked **required** are mandatory.
 
@@ -274,8 +283,8 @@ The new policy will ensure that traffic between the specified LANs flows locally
 
 ## Edit a policy
 
-* [ Dashboard ](#tab-panel-3995)
-* [ API ](#tab-panel-3996)
+* [ Dashboard ](#tab-panel-6364)
+* [ API ](#tab-panel-6365)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -434,8 +443,8 @@ Explain Code
 
 ## Delete a policy
 
-* [ Dashboard ](#tab-panel-3991)
-* [ API ](#tab-panel-3992)
+* [ Dashboard ](#tab-panel-6360)
+* [ API ](#tab-panel-6361)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

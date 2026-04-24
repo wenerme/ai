@@ -1,18 +1,27 @@
 ---
 title: Gateway connection methods
-description: There are various methods to onboard your traffic and your method will be determined based on your individual or organizational requirements. In this learning path, we will focus on an Agentless (DNS only) deployment method.
+description: Choose a Gateway DNS connection method.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/cybersafe/gateway-onboarding/gateway-connection-methods.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Gateway connection methods
 

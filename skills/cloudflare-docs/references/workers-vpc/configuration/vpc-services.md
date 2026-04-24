@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-vpc/configuration/vpc-services/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # VPC Services
 
@@ -155,8 +164,8 @@ Explain Code
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-9462)
-* [  wrangler.toml ](#tab-panel-9463)
+* [  wrangler.jsonc ](#tab-panel-9478)
+* [  wrangler.toml ](#tab-panel-9479)
 
 JSONC
 
@@ -215,8 +224,8 @@ remote = true
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-9464)
-* [  wrangler.toml ](#tab-panel-9465)
+* [  wrangler.jsonc ](#tab-panel-9480)
+* [  wrangler.toml ](#tab-panel-9481)
 
 JSONC
 

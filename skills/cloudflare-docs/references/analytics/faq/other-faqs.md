@@ -1,18 +1,27 @@
 ---
 title: Other FAQs
-description: There is a number of different types of traffic which may originate from CLOUDFLARENET ASN 13335; just because there is a lot of traffic from this AS, it likely does not indicate a DDoS attack.
+description: Additional frequently asked questions about analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/faq/other-faqs.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Other FAQs
 

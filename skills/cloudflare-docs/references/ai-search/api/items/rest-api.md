@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-search/api/items/rest-api.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # REST API
 
@@ -59,15 +68,15 @@ The available operations are the same for both paths. For the namespace-scoped A
 
 ## Items
 
-Upload, list, get, delete, and download items within an instance. For the full specification, refer to the [Items API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/subresources/items/).
+Upload, list, get, delete, and download items within an instance. For the full specification, refer to the [Items API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/).
 
-| Operation                                                                                                                           | Method | Description                    |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------------------------ |
-| [Upload](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/subresources/items/methods/upload/)     | POST   | Upload a document for indexing |
-| [List](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/subresources/items/methods/list/)         | GET    | List all items in an instance  |
-| [Get](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/subresources/items/methods/get/)           | GET    | Get item info by ID            |
-| [Delete](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/subresources/items/methods/delete/)     | DELETE | Delete an item                 |
-| [Download](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/subresources/items/methods/download/) | GET    | Download the original file     |
+| Operation                                                                                                                                                   | Method | Description                    |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------------------------ |
+| [Upload](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/upload/)     | POST   | Upload a document for indexing |
+| [List](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/list/)         | GET    | List all items in an instance  |
+| [Get](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/get/)           | GET    | Get item info by ID            |
+| [Delete](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/delete/)     | DELETE | Delete an item                 |
+| [Download](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/download/) | GET    | Download the original file     |
 
 ### Example: Upload a document
 

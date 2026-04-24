@@ -1,16 +1,25 @@
 ---
 title: Error 530
-description: This error indicates that Cloudflare is unable to resolve the origin hostname, preventing it from establishing a connection to the origin server.
+description: Troubleshoot HTTP 530 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 530
 

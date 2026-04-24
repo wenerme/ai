@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/queue-tasks.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Queue tasks
 
@@ -79,8 +88,8 @@ async queue<T>(
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4332)
-* [  TypeScript ](#tab-panel-4333)
+* [  JavaScript ](#tab-panel-4508)
+* [  TypeScript ](#tab-panel-4509)
 
 JavaScript
 
@@ -179,8 +188,8 @@ dequeue(id: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4322)
-* [  TypeScript ](#tab-panel-4323)
+* [  JavaScript ](#tab-panel-4498)
+* [  TypeScript ](#tab-panel-4499)
 
 JavaScript
 
@@ -219,8 +228,8 @@ dequeueAll(): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4324)
-* [  TypeScript ](#tab-panel-4325)
+* [  JavaScript ](#tab-panel-4500)
+* [  TypeScript ](#tab-panel-4501)
 
 JavaScript
 
@@ -263,8 +272,8 @@ dequeueAllByCallback(callback: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4326)
-* [  TypeScript ](#tab-panel-4327)
+* [  JavaScript ](#tab-panel-4502)
+* [  TypeScript ](#tab-panel-4503)
 
 JavaScript
 
@@ -311,8 +320,8 @@ The payload is automatically parsed from JSON before being returned.
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4330)
-* [  TypeScript ](#tab-panel-4331)
+* [  JavaScript ](#tab-panel-4506)
+* [  TypeScript ](#tab-panel-4507)
 
 JavaScript
 
@@ -372,8 +381,8 @@ This method fetches all queue items and filters them in memory by parsing each p
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4328)
-* [  TypeScript ](#tab-panel-4329)
+* [  JavaScript ](#tab-panel-4504)
+* [  TypeScript ](#tab-panel-4505)
 
 JavaScript
 
@@ -422,8 +431,8 @@ async callbackMethod(payload: unknown, queueItem: QueueItem): Promise<void>
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4336)
-* [  TypeScript ](#tab-panel-4337)
+* [  JavaScript ](#tab-panel-4512)
+* [  TypeScript ](#tab-panel-4513)
 
 JavaScript
 
@@ -525,8 +534,8 @@ Explain Code
 
 ### Background processing
 
-* [  JavaScript ](#tab-panel-4334)
-* [  TypeScript ](#tab-panel-4335)
+* [  JavaScript ](#tab-panel-4510)
+* [  TypeScript ](#tab-panel-4511)
 
 JavaScript
 
@@ -608,8 +617,8 @@ Explain Code
 
 ### Batch operations
 
-* [  JavaScript ](#tab-panel-4338)
-* [  TypeScript ](#tab-panel-4339)
+* [  JavaScript ](#tab-panel-4514)
+* [  TypeScript ](#tab-panel-4515)
 
 JavaScript
 
@@ -711,8 +720,8 @@ Explain Code
 
 Use the built-in `retry` option instead of manual re-queue logic. When a callback throws, the task is automatically retried with exponential backoff:
 
-* [  JavaScript ](#tab-panel-4340)
-* [  TypeScript ](#tab-panel-4341)
+* [  JavaScript ](#tab-panel-4516)
+* [  TypeScript ](#tab-panel-4517)
 
 JavaScript
 

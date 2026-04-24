@@ -1,18 +1,27 @@
 ---
 title: workers.dev
-description: Cloudflare Workers accounts come with a workers.dev subdomain that is configurable in the Cloudflare dashboard. Your workers.dev subdomain allows you getting started quickly by deploying Workers without first onboarding your custom domain to Cloudflare.
+description: Deploy Cloudflare Workers on a workers.dev subdomain for quick testing and personal projects.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/routing/workers-dev.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # workers.dev
 
@@ -61,8 +70,8 @@ To disable the `workers.dev` route for a Worker:
 
 To disable the `workers.dev` route for a Worker, include the following in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7105)
-* [  wrangler.toml ](#tab-panel-7106)
+* [  wrangler.jsonc ](#tab-panel-9622)
+* [  wrangler.toml ](#tab-panel-9623)
 
 JSONC
 

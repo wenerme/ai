@@ -1,10 +1,21 @@
 ---
 title: Changelog
-description: Cloudflare Log Explorer now allows you to customize exactly which data fields are ingested and stored when enabling or managing log datasets.
+description: View recent changes to Cloudflare Logs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
@@ -12,11 +23,31 @@ YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/log-explorer/changelog.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/log-explorer.xml) 
+
+## 2026-04-22
+
+  
+**Custom dashboards available to all customers**   
+
+Custom Dashboards are now available to all Cloudflare customers. Build personalized views that highlight the metrics most critical to your infrastructure and security posture, moving beyond standard product dashboards.
+
+This update significantly expands the data available for visualization. Build charts based on any of the **100+ datasets** available via the Cloudflare GraphQL API, covering everything from WAF events and Workers metrics to Load Balancing and Zero Trust logs.
+
+#### Log Explorer integration
+
+For Log Explorer customers, you can now turn raw log queries directly into dashboard charts. When you identify a specific pattern or spike while investigating logs, save that query as a visualization to monitor those signals in real-time without leaving the dashboard.
+
+#### Key benefits
+
+* **Unified visibility**: Consolidate signals from different Cloudflare products (for example, HTTP Traffic and R2 Storage) into a single view.
+* **Flexible monitoring**: Create charts that focus on specific status codes, ASN regions, or security actions that matter to your business.
+* **Expanded limits**: Log Explorer customers can create up to **100 dashboards** (up from 25 for standard customers).
+![Custom Dashboards home page showing dashboard list and chart previews](https://developers.cloudflare.com/_astro/customdashboardshome.BIpSvImM_T5dlH.webp) 
+
+To get started, refer to the [Custom Dashboards documentation](https://developers.cloudflare.com/analytics/custom-dashboards/).
 
 ## 2026-03-11
 

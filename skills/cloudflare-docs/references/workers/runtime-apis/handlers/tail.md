@@ -1,18 +1,27 @@
 ---
 title: Tail Handler
-description: The tail() handler is the handler you implement when writing a Tail Worker. Tail Workers can be used to process logs in real-time and send them to a logging or analytics service.
+description: Process real-time logs from producer Workers using the tail() handler in Tail Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/handlers/tail.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Tail Handler
 

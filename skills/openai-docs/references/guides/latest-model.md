@@ -128,6 +128,9 @@ curl https://api.openai.com/v1/responses \\
 
 [GPT-5.4](https://developers.openai.com/api/docs/models/gpt-5.4) is our most capable frontier model yet, delivering higher-quality outputs with fewer iterations across ChatGPT, the API, and Codex. It helps people and teams analyze complex information, build production software, and automate multi-step workflows.
 
+GPT-5.5 is currently available in ChatGPT and Codex, with API availability
+  coming soon.
+
 In practice, `gpt-5.4` is the default model for both broad general-purpose work and most coding tasks. Start there when you want one model that can move between software engineering, reasoning, writing, and tool use in the same workflow.
 
 This guide covers key features of the GPT-5 model family and how to get the most out of GPT-5.4.

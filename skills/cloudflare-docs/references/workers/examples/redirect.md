@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python)[ Rust ](https://developers.cloudflare.com/search/?tags=Rust) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/redirect.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Redirect
 
@@ -32,11 +41,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 ## Redirect all requests to one URL
 
-* [  JavaScript ](#tab-panel-9839)
-* [  TypeScript ](#tab-panel-9840)
-* [  Python ](#tab-panel-9841)
-* [  Rust ](#tab-panel-9842)
-* [  Hono ](#tab-panel-9843)
+* [  JavaScript ](#tab-panel-9855)
+* [  TypeScript ](#tab-panel-9856)
+* [  Python ](#tab-panel-9857)
+* [  Rust ](#tab-panel-9858)
+* [  Hono ](#tab-panel-9859)
 
 JavaScript
 
@@ -59,7 +68,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmUQFYAjAA4xwgEwSxALhYs2wDnC40+AkeOmyFYgLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2SXmsb2evoEO8qAFUAJQAMiQGCQIocIBAYC4lMhkHFQg1bPEXsBUo8Ni8qG8bgQQC4rHNgSRhIIJER0SQzhAQAgqCQ-td3FikWceGdeBBjnMbtFmtZ-gCADQkHHU-EjWy3ckbAC+grMMqI5lUzHUmm0PH4QlEwkkMnkiiK1jsDmcbg8XhaVF8-k0pBCYUiYUImlSfgyWUdETIYHQZEKlmNpQqVRqm3qjV4fKobRc1gmZhWEWAcGiAH1hqNMhElLk5vkUjLlSq1YENbptQZ9cZmOYgA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGABwBmAEyjJAdgCsI8QC4WLNsA5wuNPgJETpcxcPEBYAFABhdFQgBTO9gAiUAM4x0bqNFvKSGngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ387fQYb5UAKoAJQAMiQGCQoscIBAYG5lMhkAlwk17Ik3sB0s8tm8qB87gQQG4bAtQSRxCIiJiSBcICAEFQSADbp4cSiLjwLrwIKcFndYq1bICgQAaEh4mmEsb2e4UrYAXyFFllREsamYGi0Oh4-CEYikMgUShKtgcTlcHi8PjaVH8gS0pDCEWiEUIWnSASyOUdUTIYHQZGK1mN5SqNTq20azV4-KoHTctimFjWUWAcFiAH1RuNslFlPkFoU0rKVar1cFNXodYZ9SZxMxLEA)
 
 TypeScript
 
@@ -152,11 +161,11 @@ Explain Code
 
 ## Redirect requests from one domain to another
 
-* [  JavaScript ](#tab-panel-9834)
-* [  TypeScript ](#tab-panel-9835)
-* [  Python ](#tab-panel-9836)
-* [  Rust ](#tab-panel-9837)
-* [  Hono ](#tab-panel-9838)
+* [  JavaScript ](#tab-panel-9850)
+* [  TypeScript ](#tab-panel-9851)
+* [  Python ](#tab-panel-9852)
+* [  Rust ](#tab-panel-9853)
+* [  Hono ](#tab-panel-9854)
 
 JavaScript
 

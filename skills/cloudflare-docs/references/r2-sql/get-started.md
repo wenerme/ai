@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2-sql/get-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Getting started
 
@@ -35,8 +44,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket
 
-* [ Wrangler CLI ](#tab-panel-5775)
-* [ Dashboard ](#tab-panel-5776)
+* [ Wrangler CLI ](#tab-panel-8178)
+* [ Dashboard ](#tab-panel-8179)
 
 1. If not already logged in, run:  
 ```  
@@ -55,8 +64,8 @@ npx wrangler r2 bucket create pipelines-tutorial
 
 ## 2\. Enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-5777)
-* [ Dashboard ](#tab-panel-5778)
+* [ Wrangler CLI ](#tab-panel-8180)
+* [ Dashboard ](#tab-panel-8181)
 
 Enable the catalog on your R2 bucket:
 
@@ -94,8 +103,8 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 4\. Create a pipeline
 
-* [ Wrangler CLI ](#tab-panel-5779)
-* [ Dashboard ](#tab-panel-5780)
+* [ Wrangler CLI ](#tab-panel-8182)
+* [ Dashboard ](#tab-panel-8183)
 
 First, create a schema file that defines your ecommerce data structure:
 

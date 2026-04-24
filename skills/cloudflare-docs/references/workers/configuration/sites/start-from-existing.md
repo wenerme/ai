@@ -1,18 +1,27 @@
 ---
 title: Start from existing
-description: Workers Sites require Wrangler — make sure to use the latest version.
+description: Deploy an existing static site project to Cloudflare using Workers Sites.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/sites/start-from-existing.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Start from existing
 
@@ -43,8 +52,8 @@ This command adds/update the following files:
    * `tsconfig.json`: Added if not already there to support writing the Worker in TypeScript.  
    * `src/index.ts`: A basic Cloudflare Worker, written in TypeScript.
 2. Add your site's build/output directory to the Wrangler file:  
-   * [  wrangler.jsonc ](#tab-panel-7175)  
-   * [  wrangler.toml ](#tab-panel-7176)  
+   * [  wrangler.jsonc ](#tab-panel-9634)  
+   * [  wrangler.toml ](#tab-panel-9635)  
 JSONC  
 ```  
 {  
@@ -70,8 +79,8 @@ npm i -D @cloudflare/kv-asset-handler
 ```
 4. Replace the contents of `src/index.ts` with the following code snippet:
 
-* [  Module Worker ](#tab-panel-7173)
-* [  Service Worker ](#tab-panel-7174)
+* [  Module Worker ](#tab-panel-9632)
+* [  Service Worker ](#tab-panel-9633)
 
 JavaScript
 
@@ -188,8 +197,8 @@ Terminal window
 npx wrangler deploy  
 ```
 2. Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone. Add a `route` property to the Wrangler file.  
-   * [  wrangler.jsonc ](#tab-panel-7177)  
-   * [  wrangler.toml ](#tab-panel-7178)  
+   * [  wrangler.jsonc ](#tab-panel-9636)  
+   * [  wrangler.toml ](#tab-panel-9637)  
 JSONC  
 ```  
 {  

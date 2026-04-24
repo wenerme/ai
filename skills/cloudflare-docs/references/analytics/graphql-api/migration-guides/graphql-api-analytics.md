@@ -1,18 +1,27 @@
 ---
 title: HTTP Requests by Colo Groups to HTTP Requests by Adaptive Groups
-description: This guide shares considerations when migrating from the deprecated httpRequests1mByColoGroups and httpRequests1dByColoGroups GraphQL API nodes to the httpRequestsAdaptiveGroups GraphQL API node.
+description: Migrate colo groups queries to adaptive groups.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/graphql-api/migration-guides/graphql-api-analytics.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # HTTP Requests by Colo Groups to HTTP Requests by Adaptive Groups
 
@@ -255,7 +264,7 @@ query MigrationSample($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgSwOYQIYBcEHsB2BlVAWwAcAbMACgBIAvXMAFVSQC4YBndCBHJAGhhVOqCOjYMEhMAKpgcAE3GSwAShgBvAFAwYANwRgA7pA3adMOjjDsKAMwSl0kNuov0mrQZcbMYAXzUtc3N2SAN2NgALdHRiACUwUGt0dgBBeVRiTF0wAHEILBBiGzNgnVJJBDEYAFZSsqwIeUgAISg2AG0AY0KcdAB9ABEAUTwAYQBdeuD7R2dTMrKMp0wpfqREtiF0EXRppYwwVbB+xy25eX3giETwTjxCiC6wNgAiMCgwACNUUlJXq7+faBQE9EB9QGoXRIBaLEJEMhgACSfUgul+gL8gPYIEIsLhegQ7Cq7EBOjA8g2CXYxFwoTaTlJBKxBPkyhwxLp+LhPVIWDGWGamP2LPMoqxfiAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbixZwAjJ1QBWEZIAcGCiBhQAJs3ZdeAoXCGTpEuSAC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgSwOYQIYBcEHsB2BlVAWwAcAbMACgBIAvXMAFVSQC4YBndCBHJAGhhVOqCOjYMEhMAKpgcAE3GSwAShgBvAFAwYANwRgA7pA3adMOjjDsKAMwSl0kNuov0mrQZcbMYAXzUtc3N2SAN2NgALdHRiACUwUGt0dgBBeVRiTF0wAHEILBBiGzNgnVJJBDEYAFZSsqwIeUgAISg2AG0AY0KcdAB9ABEAUTwAYQBdeuD7R2dTMrKMp0wpfqREtiF0EXRppYwwVbB+xy25eX3giETwTjxCiC6wNgAiMCgwACNUUlJXq7+faBQE9EB9QGoXRIBaLEJEMhgACSfUgul+gL8gPYIEIsLhegQ7Cq7EBOjA8g2CXYxFwoTaTlJBKxBPkyhwxLp+LhPVIWDGWGamP2LPMoqxfiAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwDMcAIwAOVGzao+QjBRAwoAE2bsuvASz5xpUmXIUBfIA)
 
 Response
 

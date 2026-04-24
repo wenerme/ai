@@ -1,18 +1,27 @@
 ---
 title: JavaScript
-description: The Workers platform is designed to be JavaScript standards compliant and web-interoperable, and supports JavaScript standards, as defined by TC39 (ECMAScript). Wherever possible, it uses web platform APIs, so that code can be reused across client and server, as well as across WinterCG JavaScript runtimes.
+description: Write Cloudflare Workers using JavaScript standards and web platform APIs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/languages/javascript/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # JavaScript
 

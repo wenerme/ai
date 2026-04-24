@@ -1,8 +1,8 @@
+# Workspaces - Python SDK
+
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/sdks/python/api-reference/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/sdks/python/api-reference/llms-full.txt.
-
-# Workspaces - Python SDK
 
 {/* banner:start */}
 
@@ -117,6 +117,8 @@ with OpenRouter(
 | `default_provider_sort`               | *OptionalNullable\[str]*                                           | :heavy\_minus\_sign: | Default provider sort preference (price, throughput, latency, exacto)                                                                                       | price                            |
 | `default_text_model`                  | *OptionalNullable\[str]*                                           | :heavy\_minus\_sign: | Default text model for this workspace                                                                                                                       | openai/gpt-4o                    |
 | `description`                         | *OptionalNullable\[str]*                                           | :heavy\_minus\_sign: | Description of the workspace                                                                                                                                | Production environment workspace |
+| `io_logging_api_key_ids`              | List\[*int*]                                                       | :heavy\_minus\_sign: | Optional array of API key IDs to filter I/O logging                                                                                                         | `<nil>`                          |
+| `io_logging_sampling_rate`            | *Optional\[float]*                                                 | :heavy\_minus\_sign: | Sampling rate for I/O logging (0.0001-1)                                                                                                                    | 1                                |
 | `is_data_discount_logging_enabled`    | *Optional\[bool]*                                                  | :heavy\_minus\_sign: | Whether data discount logging is enabled                                                                                                                    | true                             |
 | `is_observability_broadcast_enabled`  | *Optional\[bool]*                                                  | :heavy\_minus\_sign: | Whether broadcast is enabled                                                                                                                                | false                            |
 | `is_observability_io_logging_enabled` | *Optional\[bool]*                                                  | :heavy\_minus\_sign: | Whether private logging is enabled                                                                                                                          | false                            |
@@ -274,6 +276,8 @@ with OpenRouter(
 | `default_provider_sort`               | *OptionalNullable\[str]*                                           | :heavy\_minus\_sign: | Default provider sort preference (price, throughput, latency, exacto)                                                                                       | price               |
 | `default_text_model`                  | *OptionalNullable\[str]*                                           | :heavy\_minus\_sign: | Default text model for this workspace                                                                                                                       | openai/gpt-4o       |
 | `description`                         | *OptionalNullable\[str]*                                           | :heavy\_minus\_sign: | New description for the workspace                                                                                                                           | Updated description |
+| `io_logging_api_key_ids`              | List\[*int*]                                                       | :heavy\_minus\_sign: | Optional array of API key IDs to filter I/O logging                                                                                                         | `<nil>`             |
+| `io_logging_sampling_rate`            | *Optional\[float]*                                                 | :heavy\_minus\_sign: | Sampling rate for I/O logging (0.0001-1)                                                                                                                    | 1                   |
 | `is_data_discount_logging_enabled`    | *Optional\[bool]*                                                  | :heavy\_minus\_sign: | Whether data discount logging is enabled                                                                                                                    | true                |
 | `is_observability_broadcast_enabled`  | *Optional\[bool]*                                                  | :heavy\_minus\_sign: | Whether broadcast is enabled                                                                                                                                | false               |
 | `is_observability_io_logging_enabled` | *Optional\[bool]*                                                  | :heavy\_minus\_sign: | Whether private logging is enabled                                                                                                                          | false               |

@@ -1,18 +1,27 @@
 ---
 title: Additional setup for AI security solutions in Zero Trust
-description: To use the recommended AI security solutions in this learning path, you will need to complete some additional setup for your Zero Trust deployment, such as turning on Shadow IT Discovery.
+description: Complete additional Zero Trust setup for AI security.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/holistic-ai-security/get-started/additional-setup.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Additional setup for AI security solutions in Zero Trust
 

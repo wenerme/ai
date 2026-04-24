@@ -1,11 +1,10 @@
 ---
 title: Overview
+description: Store and manage data with Cloudflare R2.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-Copy page
 
 # Overview
 

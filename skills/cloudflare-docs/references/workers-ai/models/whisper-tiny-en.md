@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
@@ -30,8 +39,8 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3818)
-* [  curl ](#tab-panel-3819)
+* [  TypeScript ](#tab-panel-4026)
+* [  curl ](#tab-panel-4027)
 
 ```
 
@@ -99,8 +108,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3822)
-* [ Output ](#tab-panel-3823)
+* [ Input ](#tab-panel-4030)
+* [ Output ](#tab-panel-4031)
 
 Option 1
 
@@ -128,8 +137,8 @@ vtt
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3820)
-* [ Output ](#tab-panel-3821)
+* [ Input ](#tab-panel-4028)
+* [ Output ](#tab-panel-4029)
 
 ```
 

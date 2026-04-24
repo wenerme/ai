@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/d1/configuration/environments.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Environments
 
@@ -20,8 +29,8 @@ Copy page
 
 To specify different D1 databases for different environments, use the following syntax in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6300)
-* [  wrangler.toml ](#tab-panel-6301)
+* [  wrangler.jsonc ](#tab-panel-6472)
+* [  wrangler.toml ](#tab-panel-6473)
 
 JSONC
 
@@ -110,8 +119,8 @@ In the code above, the `staging` environment is using a different database (`DAT
 
 If you need to specify different D1 databases for different environments, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) may contain bindings that resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-6298)
-* [  wrangler.toml ](#tab-panel-6299)
+* [  wrangler.jsonc ](#tab-panel-6470)
+* [  wrangler.toml ](#tab-panel-6471)
 
 JSONC
 
@@ -197,8 +206,8 @@ Explain Code
 
 ### Example
 
-* [  wrangler.jsonc ](#tab-panel-6302)
-* [  wrangler.toml ](#tab-panel-6303)
+* [  wrangler.jsonc ](#tab-panel-6474)
+* [  wrangler.toml ](#tab-panel-6475)
 
 JSONC
 

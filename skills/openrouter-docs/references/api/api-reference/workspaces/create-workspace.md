@@ -1,8 +1,8 @@
+# Create a workspace
+
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/workspaces/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/api/api-reference/workspaces/llms-full.txt.
-
-# Create a workspace
 
 POST https://openrouter.ai/api/v1/workspaces
 Content-Type: application/json
@@ -100,6 +100,17 @@ components:
             - string
             - 'null'
           description: Description of the workspace
+        io_logging_api_key_ids:
+          type:
+            - array
+            - 'null'
+          items:
+            type: integer
+          description: Optional array of API key IDs to filter I/O logging
+        io_logging_sampling_rate:
+          type: number
+          format: double
+          description: Sampling rate for I/O logging (0.0001-1)
         is_data_discount_logging_enabled:
           type: boolean
           description: Whether data discount logging is enabled
@@ -156,6 +167,21 @@ components:
           type: string
           format: uuid
           description: Unique identifier for the workspace
+        io_logging_api_key_ids:
+          type:
+            - array
+            - 'null'
+          items:
+            type: integer
+          description: >-
+            Optional array of API key IDs to filter I/O logging. Null means all
+            keys are logged.
+        io_logging_sampling_rate:
+          type: number
+          format: double
+          description: >-
+            Sampling rate for I/O logging (0.0001-1). 1 means 100% of requests
+            are logged.
         is_data_discount_logging_enabled:
           type: boolean
           description: Whether data discount logging is enabled for this workspace
@@ -184,6 +210,8 @@ components:
         - default_text_model
         - description
         - id
+        - io_logging_api_key_ids
+        - io_logging_sampling_rate
         - is_data_discount_logging_enabled
         - is_observability_broadcast_enabled
         - is_observability_io_logging_enabled

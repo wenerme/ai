@@ -43,16 +43,16 @@ glab repo create <host>/path/to/repository
 ## Options
 
 ```plaintext
-      --defaultBranch master   Default branch of the project. Defaults to master if not provided.
+      --defaultBranch string   Branch name for the new project, overriding both the GitLab instance default and your local git configuration.
   -d, --description string     Description of the new project. Set to "-" to open an editor.
   -g, --group string           Namespace or group for the new project. Defaults to the current user's namespace.
       --internal               Make project internal: visible to any authenticated user. Default.
   -n, --name string            Name of the new project.
   -p, --private                Make project private: visible only to project members.
   -P, --public                 Make project public: visible without any authentication.
-      --readme README.md       Initialize project with README.md.
+      --readme README.md       Initialize project with README.md. The repository is cloned locally after creation to ensure the local branch matches the remote.
       --remoteName origin      Remote name for the Git repository you're in. Defaults to origin if not provided. (default "origin")
-  -s, --skipGitInit            Skip run 'git init'.
+  -s, --skipGitInit            Skip local repository setup (skips both 'git init' and cloning).
   -t, --tag stringArray        The list of tags for the project.
 ```
 

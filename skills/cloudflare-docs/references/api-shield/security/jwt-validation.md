@@ -6,17 +6,26 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/api-shield/security/jwt-validation/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # JSON Web Tokens validation
 
-JSON web tokens (JWT) are often used as part of an authentication component on many web applications today. Since JWTs are crucial to identifying users and their access, ensuring the token’s integrity is important.
+JSON web tokens (JWT) are often used as part of an authentication component on many web applications. Since JWTs are crucial to identifying users and their access, ensuring the token’s integrity is important.
 
 API Shield’s JWT validation stops JWT replay attacks and JWT tampering by cryptographically verifying incoming JWTs before they are passed to your API origin. JWT validation will also stop requests with expired tokens or tokens that are not yet valid.
 
@@ -24,12 +33,12 @@ API Shield’s JWT validation stops JWT replay attacks and JWT tampering by cryp
 
 Endpoints must be added to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) for JWT validation to protect them.
 
-A JWT validation configuration consists of creating a token validation configuration by adding your JWT signer's public JSON Web Key Set (JWKS) and a JWT validation rule by specifying which hostnames and endpoints should be included for validation.
+A JWT validation configuration has two parts: a token validation configuration that contains your JWT signer's public JSON Web Key Set (JWKS), and a JWT validation rule that specifies which hostnames and endpoints to validate.
 
 ### Add a token validation configuration
 
-* [  New dashboard ](#tab-panel-3470)
-* [ Old dashboard ](#tab-panel-3471)
+* [  New dashboard ](#tab-panel-5423)
+* [ Old dashboard ](#tab-panel-5424)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -52,8 +61,8 @@ To automatically keep your JWKS up to date when your identity provider refreshes
 
 ### Add a JWT validation rule
 
-* [  New dashboard ](#tab-panel-3472)
-* [ Old dashboard ](#tab-panel-3473)
+* [  New dashboard ](#tab-panel-5425)
+* [ Old dashboard ](#tab-panel-5426)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -98,7 +107,7 @@ If you expect to migrate between two different identity providers, you must crea
 
 ### JSON Web Tokens with the `Bearer` prefix
 
-API Shield will verify JSON Web Tokens regardless of whether or not they have the `Bearer` prefix.
+API Shield will verify JSON Web Tokens regardless of whether they have the `Bearer` prefix.
 
 ### Rate limit by user (JWT claim)
 
@@ -137,7 +146,7 @@ lookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "
 
 ### Ignore `OPTIONS` pre-flight CORS requests
 
-Due to cross-origin resource sharing (CORS) security, web browsers will send "pre-flight" requests using the `OPTIONS` verb to API endpoints before sending a `GET` (or other verb) request. By definition, `OPTIONS` requests do not include headers or cookies and are anonymous.
+Due to cross-origin resource sharing (CORS) security, web browsers will send "pre-flight" requests using the `OPTIONS` verb to API endpoints before sending a `GET` (or other verb) request. By definition, `OPTIONS` preflight requests do not include credentials (authentication headers or cookies) and are anonymous.
 
 If you expect web browsers to be valid clients of your API, and to prevent blocking `OPTIONS` requests from those browsers, Cloudflare recommends adding `or http.request.method eq "OPTIONS"` to your JWT validation rules.
 

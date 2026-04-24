@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/kv/concepts/kv-namespaces.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # KV namespaces
 
@@ -37,8 +46,8 @@ To bind KV namespaces to your Worker, assign an array of the below object to the
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-7261)
-* [  wrangler.toml ](#tab-panel-7262)
+* [  wrangler.jsonc ](#tab-panel-7433)
+* [  wrangler.toml ](#tab-panel-7434)
 
 JSONC
 

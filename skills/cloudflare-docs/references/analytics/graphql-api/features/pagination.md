@@ -1,18 +1,27 @@
 ---
 title: Pagination
-description: Pagination – breaking up your query results into smaller parts – can be done using limit, orderBy, and filtering parameters. The GraphQL Analytics API does not support cursors for pagination.
+description: Paginate through GraphQL Analytics API results.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/graphql-api/features/pagination.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Pagination
 

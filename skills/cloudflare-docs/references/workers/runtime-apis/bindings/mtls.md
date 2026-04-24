@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/bindings/mTLS.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # mTLS
 
@@ -43,8 +52,8 @@ npx wrangler mtls-certificate upload --cert cert.pem --key key.pem --name my-cli
 
 Then, update your Worker project's Wrangler file to create an mTLS certificate binding:
 
-* [  wrangler.jsonc ](#tab-panel-10033)
-* [  wrangler.toml ](#tab-panel-10034)
+* [  wrangler.jsonc ](#tab-panel-10049)
+* [  wrangler.toml ](#tab-panel-10050)
 
 JSONC
 
@@ -94,8 +103,8 @@ mTLS certificate bindings present an API similar to [service bindings](https://d
 
 ### Interface
 
-* [  JavaScript ](#tab-panel-10031)
-* [  TypeScript ](#tab-panel-10032)
+* [  JavaScript ](#tab-panel-10047)
+* [  TypeScript ](#tab-panel-10048)
 
 JavaScript
 

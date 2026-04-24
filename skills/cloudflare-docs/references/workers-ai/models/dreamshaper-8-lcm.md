@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
  l 
 
@@ -30,8 +39,8 @@ Stable Diffusion model that has been fine-tuned to be better at photorealism wit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3002)
-* [  curl ](#tab-panel-3003)
+* [  TypeScript ](#tab-panel-3198)
+* [  curl ](#tab-panel-3199)
 
 ```
 
@@ -99,8 +108,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3006)
-* [ Output ](#tab-panel-3007)
+* [ Input ](#tab-panel-3202)
+* [ Output ](#tab-panel-3203)
 
 prompt
 
@@ -150,8 +159,8 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3004)
-* [ Output ](#tab-panel-3005)
+* [ Input ](#tab-panel-3200)
+* [ Output ](#tab-panel-3201)
 
 ```
 

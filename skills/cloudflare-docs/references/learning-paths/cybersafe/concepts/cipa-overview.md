@@ -1,18 +1,27 @@
 ---
 title: Project Cybersafe Schools and CIPA
-description: Project Cybersafe Schools (PCS) grants eligible schools free access to Cloudflare’s Email security and Gateway products.
+description: Learn about project cybersafe schools and cipa in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/cybersafe/concepts/cipa-overview.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Project Cybersafe Schools and CIPA
 

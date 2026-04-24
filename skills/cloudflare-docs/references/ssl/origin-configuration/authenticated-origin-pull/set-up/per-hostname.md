@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Per-hostname
 
@@ -85,8 +94,8 @@ basicConstraints=CA:FALSE
 
 ## 1\. Upload custom certificate
 
-* [ Dashboard ](#tab-panel-8783)
-* [ API ](#tab-panel-8784)
+* [ Dashboard ](#tab-panel-9046)
+* [ API ](#tab-panel-9047)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -187,8 +196,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable Authenticated Origin Pulls for the hostname
 
-* [ Dashboard ](#tab-panel-8781)
-* [ API ](#tab-panel-8782)
+* [ Dashboard ](#tab-panel-9044)
+* [ API ](#tab-panel-9045)
 
 Note
 

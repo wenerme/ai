@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/guides/autonomous-responses.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Autonomous responses
 
@@ -55,8 +64,8 @@ Always call `waitUntilStable()` before reading `this.messages` or calling `saveM
 
 It returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves. If nothing is pending, it returns immediately.
 
-* [  JavaScript ](#tab-panel-4936)
-* [  TypeScript ](#tab-panel-4937)
+* [  JavaScript ](#tab-panel-5112)
+* [  TypeScript ](#tab-panel-5113)
 
 JavaScript
 
@@ -112,8 +121,8 @@ Without this guard, you risk reading stale messages or overlapping with an in-fl
 
 A daily digest agent that summarizes activity every morning. Cron schedules are idempotent by default, so calling `schedule()` in `onStart` is safe — it does not create duplicates across Durable Object restarts.
 
-* [  JavaScript ](#tab-panel-4940)
-* [  TypeScript ](#tab-panel-4941)
+* [  JavaScript ](#tab-panel-5116)
+* [  TypeScript ](#tab-panel-5117)
 
 JavaScript
 
@@ -506,8 +515,8 @@ Explain Code
 
 ### Broadcasting state
 
-* [  JavaScript ](#tab-panel-4938)
-* [  TypeScript ](#tab-panel-4939)
+* [  JavaScript ](#tab-panel-5114)
+* [  TypeScript ](#tab-panel-5115)
 
 JavaScript
 

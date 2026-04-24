@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/guides/build-a-voice-agent.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build a voice agent
 
@@ -53,8 +62,8 @@ The starter gives you a working Vite + React + Cloudflare Workers setup. You wil
 
 Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for your voice agent:
 
-* [  wrangler.jsonc ](#tab-panel-4942)
-* [  wrangler.toml ](#tab-panel-4943)
+* [  wrangler.jsonc ](#tab-panel-5118)
+* [  wrangler.toml ](#tab-panel-5119)
 
 JSONC
 
@@ -66,7 +75,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-20",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -121,7 +130,7 @@ name = "voice-agent"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-20"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -155,8 +164,8 @@ Explain Code
 
 Replace `src/server.ts` with the following. The `withVoice` mixin adds the full voice pipeline — STT, sentence chunking, TTS, and conversation persistence — to a standard `Agent` class.
 
-* [  JavaScript ](#tab-panel-4948)
-* [  TypeScript ](#tab-panel-4949)
+* [  JavaScript ](#tab-panel-5124)
+* [  TypeScript ](#tab-panel-5125)
 
 JavaScript
 
@@ -541,8 +550,8 @@ Open the app in your browser, select **Start Call**, and speak. You will see the
 
 You can intercept and transform data at each stage of the pipeline. For example, filter out short transcripts (noise) and adjust pronunciation before TTS:
 
-* [  JavaScript ](#tab-panel-4944)
-* [  TypeScript ](#tab-panel-4945)
+* [  JavaScript ](#tab-panel-5120)
+* [  TypeScript ](#tab-panel-5121)
 
 JavaScript
 
@@ -630,8 +639,8 @@ Returning `null` from `afterTranscribe` drops the utterance entirely — useful 
 
 Swap in third-party STT or TTS providers without changing your agent logic:
 
-* [  JavaScript ](#tab-panel-4946)
-* [  TypeScript ](#tab-panel-4947)
+* [  JavaScript ](#tab-panel-5122)
+* [  TypeScript ](#tab-panel-5123)
 
 JavaScript
 

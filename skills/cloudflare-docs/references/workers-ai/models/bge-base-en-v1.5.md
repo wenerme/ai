@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![BAAI logo](https://developers.cloudflare.com/_astro/baai.mOtdbKlV.svg) 
 
@@ -35,9 +44,9 @@ BAAI general embedding (Base) model that transforms any given text into a 768-di
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2878)
-* [  Python ](#tab-panel-2879)
-* [  curl ](#tab-panel-2880)
+* [  TypeScript ](#tab-panel-3074)
+* [  Python ](#tab-panel-3075)
+* [  curl ](#tab-panel-3076)
 
 ```
 
@@ -154,8 +163,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2885)
-* [ Output ](#tab-panel-2886)
+* [ Input ](#tab-panel-3081)
+* [ Output ](#tab-panel-3082)
 
 ▶text
 
@@ -179,8 +188,8 @@ pooling
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2887)
-* [ Output ](#tab-panel-2888)
+* [ Input ](#tab-panel-3083)
+* [ Output ](#tab-panel-3084)
 
 ▶requests\[\]
 
@@ -202,8 +211,8 @@ pooling
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2881)
-* [ Output ](#tab-panel-2882)
+* [ Input ](#tab-panel-3077)
+* [ Output ](#tab-panel-3078)
 
 ```
 
@@ -353,8 +362,8 @@ Explain Code
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2883)
-* [ Output ](#tab-panel-2884)
+* [ Input ](#tab-panel-3079)
+* [ Output ](#tab-panel-3080)
 
 ```
 

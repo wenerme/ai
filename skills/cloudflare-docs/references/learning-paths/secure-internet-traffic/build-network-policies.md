@@ -1,18 +1,27 @@
 ---
 title: Build network security policies
-description: After creating policies for security based on DNS resolution, we can layer in additional security controls with the Gateway network firewall, which operates at Layer 4 of the OSI model. The Gateway network firewall allows you to build specific policies to block users or services' ability to connect to endpoints at specific IPs or on specific ports. You can also use Protocol Detection to block proxying specific protocols.
+description: Secure Internet traffic and SaaS apps.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/build-network-policies/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build network security policies
 

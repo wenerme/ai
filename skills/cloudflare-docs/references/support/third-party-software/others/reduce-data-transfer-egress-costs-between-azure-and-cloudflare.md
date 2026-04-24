@@ -1,16 +1,25 @@
 ---
 title: Reduce data transfer (egress costs) between Azure and Cloudflare
-description: Cloudflare launched Bandwidth Alliance in 2018 – a group of forward-looking cloud and storage providers who have agreed to waive or steeply discount egress costs for mutual customers.
+description: Lower Azure egress costs using Microsoft Routing Preference.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Reduce data transfer (egress costs) between Azure and Cloudflare
 

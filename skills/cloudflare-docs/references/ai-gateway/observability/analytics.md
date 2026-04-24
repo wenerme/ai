@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/observability/analytics.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Analytics
 
@@ -26,8 +35,8 @@ Your AI Gateway dashboard shows metrics on requests, tokens, caching, errors, an
 
 ## View analytics
 
-* [ Dashboard ](#tab-panel-5123)
-* [ graphql ](#tab-panel-5124)
+* [ Dashboard ](#tab-panel-5299)
+* [ graphql ](#tab-panel-5300)
 
 To view analytics in the dashboard:
 

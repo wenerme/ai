@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/api/lifecycle.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Lifecycle
 
@@ -57,8 +66,8 @@ Note
 
 The container starts lazily on first operation. Calling `getSandbox()` returns immediately—the container only spins up when you execute a command, write a file, or perform other operations. See [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) for details.
 
-* [  JavaScript ](#tab-panel-8446)
-* [  TypeScript ](#tab-panel-8447)
+* [  JavaScript ](#tab-panel-8618)
+* [  TypeScript ](#tab-panel-8619)
 
 JavaScript
 
@@ -133,8 +142,8 @@ await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
 
 When enabled, the sandbox automatically sends heartbeat pings every 30 seconds to prevent container eviction. When disabled, the sandbox returns to normal sleep behavior based on the `sleepAfter` configuration.
 
-* [  JavaScript ](#tab-panel-8448)
-* [  TypeScript ](#tab-panel-8449)
+* [  JavaScript ](#tab-panel-8620)
+* [  TypeScript ](#tab-panel-8621)
 
 JavaScript
 
@@ -208,8 +217,8 @@ Immediately terminates the container and permanently deletes all state:
 * All sessions (including the default session)
 * Network connections and exposed ports
 
-* [  JavaScript ](#tab-panel-8450)
-* [  TypeScript ](#tab-panel-8451)
+* [  JavaScript ](#tab-panel-8622)
+* [  TypeScript ](#tab-panel-8623)
 
 JavaScript
 

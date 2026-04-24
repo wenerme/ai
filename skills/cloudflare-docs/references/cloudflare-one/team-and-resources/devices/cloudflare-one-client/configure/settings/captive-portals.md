@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/captive-portals.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Captive portal detection
 
@@ -79,8 +88,8 @@ Captive portal logs are used by Cloudflare Support to troubleshoot Cloudflare On
 
 To get captive portal logs:
 
-* [ Version 2026.2+ ](#tab-panel-5846)
-* [ Version 2026.1 and earlier ](#tab-panel-5847)
+* [ Version 2026.2+ ](#tab-panel-6062)
+* [ Version 2026.1 and earlier ](#tab-panel-6063)
 
 1. Open a terminal window.
 2. Run the following command:  

@@ -1,17 +1,25 @@
 ---
 title: Error 407
-description: The 407 Proxy Authentication Required status code indicates that the client did not provide the necessary authentication credentials to access the requested resource through a proxy server.
-For more details, refer to RFC 7235.
+description: Troubleshoot HTTP 407 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 407
 

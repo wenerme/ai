@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/origin-configuration/ssl-modes/off.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Off (no encryption)
 
@@ -29,8 +38,8 @@ Cloudflare does not recommend setting your encryption mode to **Off**.
 
 ## Required setup
 
-* [ Dashboard ](#tab-panel-6581)
-* [ API ](#tab-panel-6582)
+* [ Dashboard ](#tab-panel-9060)
+* [ API ](#tab-panel-9061)
 
 To change your encryption mode in the dashboard:
 

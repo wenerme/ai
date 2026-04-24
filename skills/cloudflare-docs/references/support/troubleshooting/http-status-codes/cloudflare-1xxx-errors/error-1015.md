@@ -1,16 +1,25 @@
 ---
 title: Error 1015
-description: The website you are trying to visit has received too many requests and has temporarily blocked you from accessing it.
+description: Troubleshoot Cloudflare 1015 error code.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 1015
 

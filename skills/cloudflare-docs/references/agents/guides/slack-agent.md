@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/guides/slack-agent.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Build a Slack Agent
 
@@ -158,8 +167,8 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 
 1. Update your `wrangler.jsonc` to configure your Agent:
 
-* [  wrangler.jsonc ](#tab-panel-5022)
-* [  wrangler.toml ](#tab-panel-5023)
+* [  wrangler.jsonc ](#tab-panel-5198)
+* [  wrangler.toml ](#tab-panel-5199)
 
 JSONC
 
@@ -175,7 +184,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-20",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": [
 
@@ -236,7 +245,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-20"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 

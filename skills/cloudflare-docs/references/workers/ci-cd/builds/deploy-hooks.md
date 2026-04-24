@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/ci-cd/builds/deploy-hooks.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Deploy Hooks
 
@@ -150,8 +159,8 @@ Once the earlier build moves past `initializing`, a later POST creates a new bui
 
 A Worker that receives a `/deploy` command from Slack and triggers a build:
 
-* [  JavaScript ](#tab-panel-7104)
-* [  TypeScript ](#tab-panel-7105)
+* [  JavaScript ](#tab-panel-9563)
+* [  TypeScript ](#tab-panel-9564)
 
 JavaScript
 
@@ -245,8 +254,8 @@ Explain Code
 
 A Worker with a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) that rebuilds every hour:
 
-* [  JavaScript ](#tab-panel-7102)
-* [  TypeScript ](#tab-panel-7103)
+* [  JavaScript ](#tab-panel-9561)
+* [  TypeScript ](#tab-panel-9562)
 
 JavaScript
 

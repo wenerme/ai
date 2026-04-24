@@ -1,16 +1,25 @@
 ---
 title: 4xx Client Error
-description: 4xx codes are error responses that indicate an issue on the client's end, potentially due to a network problem.
+description: Troubleshoot 4xx client error HTTP status codes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # 4xx Client Error
 

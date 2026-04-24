@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/artifacts/concepts/best-practices.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Best practices for Artifacts
 
@@ -44,8 +53,8 @@ Include stable identifiers in the repo name, such as the agent name, session ID,
 
 This example creates a unique repo name before creating the repo.
 
-* [  JavaScript ](#tab-panel-5269)
-* [  TypeScript ](#tab-panel-5270)
+* [  JavaScript ](#tab-panel-5477)
+* [  TypeScript ](#tab-panel-5478)
 
 src/index.js
 
@@ -106,8 +115,8 @@ This keeps your starting point consistent and makes downstream diffs easier to r
 
 This example forks a reviewed baseline repo into a session-specific repo.
 
-* [  JavaScript ](#tab-panel-5271)
-* [  TypeScript ](#tab-panel-5272)
+* [  JavaScript ](#tab-panel-5479)
+* [  TypeScript ](#tab-panel-5480)
 
 src/index.js
 
@@ -196,8 +205,8 @@ This example uses the [Workers binding](https://developers.cloudflare.com/artifa
 
 Assume the caller is already authenticated and authorized before this route returns a token.
 
-* [  JavaScript ](#tab-panel-5273)
-* [  TypeScript ](#tab-panel-5274)
+* [  JavaScript ](#tab-panel-5481)
+* [  TypeScript ](#tab-panel-5482)
 
 src/index.js
 

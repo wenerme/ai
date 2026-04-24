@@ -1,16 +1,25 @@
 ---
 title: Disruptive Maintenance
-description: Planned maintenances will be published on the status page using a calendar that is updated on a daily basis.
+description: Understand Cloudflare scheduled maintenance windows.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Disruptive Maintenance
 

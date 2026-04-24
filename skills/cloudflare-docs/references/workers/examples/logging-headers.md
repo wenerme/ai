@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ Rust ](https://developers.cloudflare.com/search/?tags=Rust)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/logging-headers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Logging headers to console
 
@@ -30,11 +39,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7361)
-* [  TypeScript ](#tab-panel-7362)
-* [  Python ](#tab-panel-7363)
-* [  Rust ](#tab-panel-7364)
-* [  Hono ](#tab-panel-7365)
+* [  JavaScript ](#tab-panel-9820)
+* [  TypeScript ](#tab-panel-9821)
+* [  Python ](#tab-panel-9822)
+* [  Rust ](#tab-panel-9823)
+* [  Hono ](#tab-panel-9824)
 
 JavaScript
 

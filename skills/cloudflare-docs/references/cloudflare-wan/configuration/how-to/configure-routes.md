@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-wan/configuration/how-to/configure-routes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Configure routes
 
@@ -37,8 +46,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-6204)
-* [ API ](#tab-panel-6205)
+* [ Dashboard ](#tab-panel-6376)
+* [ API ](#tab-panel-6377)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -195,8 +204,8 @@ Explain Code
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-6206)
-* [ API ](#tab-panel-6207)
+* [ Dashboard ](#tab-panel-6378)
+* [ API ](#tab-panel-6379)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -342,8 +351,8 @@ Explain Code
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-6200)
-* [ API ](#tab-panel-6201)
+* [ Dashboard ](#tab-panel-6372)
+* [ API ](#tab-panel-6373)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -457,8 +466,8 @@ Explain Code
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-6202)
-* [ API ](#tab-panel-6203)
+* [ Dashboard ](#tab-panel-6374)
+* [ API ](#tab-panel-6375)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.

@@ -1,18 +1,27 @@
 ---
 title: Connect with Cloudflare Tunnel
-description: Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any host machine and proxies local traffic once validated from the Cloudflare network. User traffic initiated from the Cloudflare One Client onramps to Cloudflare, passes down your Cloudflare Tunnel connections, and terminates automatically in your local network. Traffic reaching your internal applications or services will carry the local source IP address of the host machine running the cloudflared daemon.
+description: Create a tunnel to your private network.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/replace-vpn/connect-private-network/cloudflared.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Connect with Cloudflare Tunnel
 
@@ -22,8 +31,8 @@ Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any 
 
 To connect your private network:
 
-* [ Dashboard ](#tab-panel-5393)
-* [ Terraform (v5) ](#tab-panel-5394)
+* [ Dashboard ](#tab-panel-7622)
+* [ Terraform (v5) ](#tab-panel-7623)
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com) and go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select **Create a tunnel**.
@@ -96,10 +105,10 @@ resource "vault_generic_secret" "tunnel_token" {
 }  
 ```
 5. Install `cloudflared` on a host machine in your private network and run the tunnel:  
-   * [ Linux ](#tab-panel-5389)  
-   * [ Windows ](#tab-panel-5390)  
-   * [ macOS ](#tab-panel-5391)  
-   * [ Docker ](#tab-panel-5392)  
+   * [ Linux ](#tab-panel-7618)  
+   * [ Windows ](#tab-panel-7619)  
+   * [ macOS ](#tab-panel-7620)  
+   * [ Docker ](#tab-panel-7621)  
    1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.  
    2. Run the following command:  
    Terminal window  

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-run/playwright/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Playwright
 
@@ -58,8 +67,8 @@ Note
 
 To use the latest version of `@cloudflare/playwright`, your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later. This change is necessary because the library's functionality requires the native `node.fs` API.
 
-* [  wrangler.jsonc ](#tab-panel-3572)
-* [  wrangler.toml ](#tab-panel-3573)
+* [  wrangler.jsonc ](#tab-panel-5571)
+* [  wrangler.toml ](#tab-panel-5572)
 
 JSONC
 
@@ -79,7 +88,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-15",
+  "compatibility_date": "2026-04-24",
 
   "upload_source_maps": true,
 
@@ -112,7 +121,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-15"
+compatibility_date = "2026-04-24"
 
 upload_source_maps = true
 
@@ -387,8 +396,8 @@ npx wrangler kv namespace create KV
 
 Then, add the KV namespace to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-3574)
-* [  wrangler.toml ](#tab-panel-3575)
+* [  wrangler.jsonc ](#tab-panel-5573)
+* [  wrangler.toml ](#tab-panel-5574)
 
 JSONC
 
@@ -404,7 +413,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-15",
+  "compatibility_date": "2026-04-24",
 
   "browser": {
 
@@ -443,7 +452,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-15"
+compatibility_date = "2026-04-24"
 
 
 [browser]

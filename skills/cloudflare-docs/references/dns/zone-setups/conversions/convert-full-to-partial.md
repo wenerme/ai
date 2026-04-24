@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/zone-setups/conversions/convert-full-to-partial.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Convert full setup to partial setup
 
@@ -31,8 +40,8 @@ Make sure you consider the following:
 ## 1\. Prepare DNS records
 
 1. Export a zone file  
-   * [ Dashboard ](#tab-panel-6484)  
-   * [ API ](#tab-panel-6485)  
+   * [ Dashboard ](#tab-panel-6711)  
+   * [ API ](#tab-panel-6712)  
 To export records using the dashboard:  
    1. In the Cloudflare dashboard, go to the **DNS Records** page.  
    [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)  
@@ -61,8 +70,8 @@ www.example.com CNAME www.example.com.cdn.cloudflare.net
 
 ## 2\. Convert the zone
 
-* [ Dashboard ](#tab-panel-6482)
-* [ API ](#tab-panel-6483)
+* [ Dashboard ](#tab-panel-6709)
+* [ API ](#tab-panel-6710)
 
 1. On the Cloudflare dashboard, go to the zone's **Overview** page.
 2. Select **Convert to CNAME DNS Setup** and then **Convert** to confirm.

@@ -1,16 +1,25 @@
 ---
 title: Cloudflare 5xx errors
-description: When troubleshooting most 5XX errors, the correct course of action is to first contact your hosting provider or site administrator to troubleshoot and gather data. The following sections outline:
+description: Troubleshoot Cloudflare 5xx server error codes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Cloudflare 5xx errors
 

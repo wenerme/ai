@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/tunnel/downloads/update-cloudflared.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Update cloudflared
 
@@ -22,12 +31,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-8906)
-* [ macOS ](#tab-panel-8907)
-* [ Debian ](#tab-panel-8908)
-* [ Red Hat ](#tab-panel-8909)
-* [ Docker ](#tab-panel-8910)
-* [ Other ](#tab-panel-8911)
+* [ Windows ](#tab-panel-9169)
+* [ macOS ](#tab-panel-9170)
+* [ Debian ](#tab-panel-9171)
+* [ Red Hat ](#tab-panel-9172)
+* [ Docker ](#tab-panel-9173)
+* [ Other ](#tab-panel-9174)
 
 Run the following command:
 

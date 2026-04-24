@@ -6,8 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Build an AI Image Generator Playground (Part 1)
 
 **Last reviewed:**  over 1 year ago 

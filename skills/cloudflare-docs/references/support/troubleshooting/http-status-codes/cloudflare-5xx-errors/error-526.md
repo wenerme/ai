@@ -1,16 +1,25 @@
 ---
 title: Error 526
-description: This error indicates that Cloudflare is unable to verify the SSL certificate on your origin server, preventing a secure connection from being established.
+description: Troubleshoot HTTP 526 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 526
 

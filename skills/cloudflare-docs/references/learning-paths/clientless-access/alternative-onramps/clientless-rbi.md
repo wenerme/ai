@@ -1,18 +1,27 @@
 ---
 title: Clientless Web Isolation
-description: Clientless Web Isolation allows you to on-ramp user traffic to your private network without needing to install the Cloudflare One Client. Users access private applications by going to a prefixed URL:
+description: Learn about clientless web isolation in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/clientless-access/alternative-onramps/clientless-rbi.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Clientless Web Isolation
 

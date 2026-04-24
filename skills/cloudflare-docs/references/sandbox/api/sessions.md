@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/api/sessions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Sessions
 
@@ -47,8 +56,8 @@ const session = await sandbox.createSession(options?: SessionOptions): Promise<E
 
 **Returns**: `Promise<ExecutionSession>` with all sandbox methods bound to this session
 
-* [  JavaScript ](#tab-panel-8472)
-* [  TypeScript ](#tab-panel-8473)
+* [  JavaScript ](#tab-panel-8644)
+* [  TypeScript ](#tab-panel-8645)
 
 JavaScript
 
@@ -205,8 +214,8 @@ const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSe
 
 **Returns**: `Promise<ExecutionSession>` bound to the specified session
 
-* [  JavaScript ](#tab-panel-8466)
-* [  TypeScript ](#tab-panel-8467)
+* [  JavaScript ](#tab-panel-8638)
+* [  TypeScript ](#tab-panel-8639)
 
 JavaScript
 
@@ -277,8 +286,8 @@ const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDe
 * `sessionId` \- ID of the deleted session
 * `timestamp` \- Deletion timestamp
 
-* [  JavaScript ](#tab-panel-8468)
-* [  TypeScript ](#tab-panel-8469)
+* [  JavaScript ](#tab-panel-8640)
+* [  TypeScript ](#tab-panel-8641)
 
 JavaScript
 
@@ -357,8 +366,8 @@ Warning
 
 Call `setEnvVars()` **before** any other sandbox operations to ensure environment variables are available from the start.
 
-* [  JavaScript ](#tab-panel-8470)
-* [  TypeScript ](#tab-panel-8471)
+* [  JavaScript ](#tab-panel-8642)
+* [  TypeScript ](#tab-panel-8643)
 
 JavaScript
 

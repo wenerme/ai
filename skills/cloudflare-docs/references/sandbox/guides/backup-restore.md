@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/backup-restore.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Backup and restore
 
@@ -30,15 +39,15 @@ Terminal window
 npx wrangler r2 bucket create my-backup-bucket  
 ```
 2. Add the `BACKUP_BUCKET` R2 binding and presigned URL credentials to your Wrangler configuration:  
-   * [  wrangler.jsonc ](#tab-panel-6311)  
-   * [  wrangler.toml ](#tab-panel-6312)  
+   * [  wrangler.jsonc ](#tab-panel-8722)  
+   * [  wrangler.toml ](#tab-panel-8723)  
 JSONC  
 ```  
 {  
   "name": "my-sandbox-worker",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-10",  
+  "compatibility_date": "2026-04-24",  
   "compatibility_flags": ["nodejs_compat"],  
   "containers": [  
     {  
@@ -78,7 +87,7 @@ TOML
 name = "my-sandbox-worker"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-10"  
+compatibility_date = "2026-04-24"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[containers]]  
 class_name = "Sandbox"  
@@ -109,8 +118,8 @@ You can create R2 API tokens in the [Cloudflare dashboard ↗](https://dash.clou
 
 Use `createBackup()` to snapshot a directory and upload it to R2:
 
-* [  JavaScript ](#tab-panel-6313)
-* [  TypeScript ](#tab-panel-6314)
+* [  JavaScript ](#tab-panel-8724)
+* [  TypeScript ](#tab-panel-8725)
 
 JavaScript
 
@@ -156,8 +165,8 @@ The SDK creates a compressed squashfs archive of the directory and uploads it di
 
 Use `restoreBackup()` to restore a directory from a backup:
 
-* [  JavaScript ](#tab-panel-6315)
-* [  TypeScript ](#tab-panel-6316)
+* [  JavaScript ](#tab-panel-8726)
+* [  TypeScript ](#tab-panel-8727)
 
 JavaScript
 
@@ -219,8 +228,8 @@ The FUSE mount is lost when the sandbox sleeps or the container restarts. Re-res
 
 When backing up a directory inside a git repository, set `useGitignore: true` to exclude files matching `.gitignore` rules. This is useful for skipping large generated directories like `node_modules/`, `dist/`, or `build/` that can be recreated.
 
-* [  JavaScript ](#tab-panel-6317)
-* [  TypeScript ](#tab-panel-6318)
+* [  JavaScript ](#tab-panel-8728)
+* [  TypeScript ](#tab-panel-8729)
 
 JavaScript
 
@@ -280,8 +289,8 @@ Requirements
 
 Save state before risky operations and restore if something fails:
 
-* [  JavaScript ](#tab-panel-6321)
-* [  TypeScript ](#tab-panel-6322)
+* [  JavaScript ](#tab-panel-8732)
+* [  TypeScript ](#tab-panel-8733)
 
 JavaScript
 
@@ -353,8 +362,8 @@ Explain Code
 
 The `DirectoryBackup` handle is serializable. Persist it to KV, D1, or Durable Object storage for later use:
 
-* [  JavaScript ](#tab-panel-6325)
-* [  TypeScript ](#tab-panel-6326)
+* [  JavaScript ](#tab-panel-8736)
+* [  TypeScript ](#tab-panel-8737)
 
 JavaScript
 
@@ -440,8 +449,8 @@ Explain Code
 
 Add a `name` option to identify backups. Names can be up to 256 characters:
 
-* [  JavaScript ](#tab-panel-6319)
-* [  TypeScript ](#tab-panel-6320)
+* [  JavaScript ](#tab-panel-8730)
+* [  TypeScript ](#tab-panel-8731)
 
 JavaScript
 
@@ -489,8 +498,8 @@ console.log(`Backup ID: ${backup.id}`);
 
 Set a custom time-to-live for backups. The default TTL is 3 days (259200 seconds). The `ttl` value must be a positive number of seconds:
 
-* [  JavaScript ](#tab-panel-6327)
-* [  TypeScript ](#tab-panel-6328)
+* [  JavaScript ](#tab-panel-8738)
+* [  TypeScript ](#tab-panel-8739)
 
 JavaScript
 
@@ -582,8 +591,8 @@ Backup archives are stored in your R2 bucket under the `backups/` prefix with th
 
 If you only need the most recent backup, delete the previous one before creating a new one:
 
-* [  JavaScript ](#tab-panel-6329)
-* [  TypeScript ](#tab-panel-6330)
+* [  JavaScript ](#tab-panel-8740)
+* [  TypeScript ](#tab-panel-8741)
 
 JavaScript
 
@@ -671,8 +680,8 @@ Explain Code
 
 To clean up multiple old backups, list objects under the `backups/` prefix and delete them by key:
 
-* [  JavaScript ](#tab-panel-6331)
-* [  TypeScript ](#tab-panel-6332)
+* [  JavaScript ](#tab-panel-8742)
+* [  TypeScript ](#tab-panel-8743)
 
 JavaScript
 
@@ -756,8 +765,8 @@ Explain Code
 
 If you have the backup ID, delete both its archive and metadata directly:
 
-* [  JavaScript ](#tab-panel-6323)
-* [  TypeScript ](#tab-panel-6324)
+* [  JavaScript ](#tab-panel-8734)
+* [  TypeScript ](#tab-panel-8735)
 
 JavaScript
 
@@ -791,8 +800,8 @@ await env.BACKUP_BUCKET.delete(`backups/${backupId}/meta.json`);
 
 Restore uses FUSE overlayfs to mount the backup as a read-only lower layer. New writes go to a writable upper layer and do not affect the original backup:
 
-* [  JavaScript ](#tab-panel-6333)
-* [  TypeScript ](#tab-panel-6334)
+* [  JavaScript ](#tab-panel-8744)
+* [  TypeScript ](#tab-panel-8745)
 
 JavaScript
 
@@ -872,8 +881,8 @@ Explain Code
 
 Backup and restore operations can throw specific errors. Wrap calls in [try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) blocks:
 
-* [  JavaScript ](#tab-panel-6335)
-* [  TypeScript ](#tab-panel-6336)
+* [  JavaScript ](#tab-panel-8746)
+* [  TypeScript ](#tab-panel-8747)
 
 JavaScript
 

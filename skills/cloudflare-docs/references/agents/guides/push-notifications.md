@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/guides/push-notifications.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Push notifications
 
@@ -102,8 +111,8 @@ wrangler secret put VAPID_SUBJECT
 
 The agent has three responsibilities: store push subscriptions, schedule reminders, and send notifications when alarms fire.
 
-* [  JavaScript ](#tab-panel-5008)
-* [  TypeScript ](#tab-panel-5009)
+* [  JavaScript ](#tab-panel-5184)
+* [  TypeScript ](#tab-panel-5185)
 
 JavaScript
 
@@ -695,8 +704,8 @@ The client needs to: register the service worker, request notification permissio
 
 ### Register the service worker
 
-* [  JavaScript ](#tab-panel-5002)
-* [  TypeScript ](#tab-panel-5003)
+* [  JavaScript ](#tab-panel-5178)
+* [  TypeScript ](#tab-panel-5179)
 
 JavaScript
 
@@ -740,8 +749,8 @@ useEffect(() => {
 
 Fetch the VAPID public key from the agent, then subscribe through the Push API:
 
-* [  JavaScript ](#tab-panel-5006)
-* [  TypeScript ](#tab-panel-5007)
+* [  JavaScript ](#tab-panel-5182)
+* [  TypeScript ](#tab-panel-5183)
 
 JavaScript
 
@@ -875,8 +884,8 @@ Explain Code
 
 With the subscription stored, creating a reminder is a single RPC call. The agent handles scheduling and delivery:
 
-* [  JavaScript ](#tab-panel-5000)
-* [  TypeScript ](#tab-panel-5001)
+* [  JavaScript ](#tab-panel-5176)
+* [  TypeScript ](#tab-panel-5177)
 
 JavaScript
 
@@ -976,8 +985,8 @@ A single user may subscribe from multiple browsers or devices. The agent stores 
 
 If the push service returns a 5xx error (temporary failure), you can retry using `this.schedule()` with a short delay:
 
-* [  JavaScript ](#tab-panel-5004)
-* [  TypeScript ](#tab-panel-5005)
+* [  JavaScript ](#tab-panel-5180)
+* [  TypeScript ](#tab-panel-5181)
 
 JavaScript
 

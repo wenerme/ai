@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/commands/general.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # General commands
 
@@ -22,9 +31,9 @@ General Wrangler commands for authentication, telemetry, and shell completions.
 
 Open the Cloudflare developer documentation in your default browser.
 
-* [  npm ](#tab-panel-10102)
-* [  pnpm ](#tab-panel-10103)
-* [  yarn ](#tab-panel-10104)
+* [  npm ](#tab-panel-10416)
+* [  pnpm ](#tab-panel-10417)
+* [  yarn ](#tab-panel-10418)
 
 Terminal window
 
@@ -294,9 +303,9 @@ The following global flags work on every command:
 
 🕵️ Retrieve your user information
 
-* [  npm ](#tab-panel-10105)
-* [  pnpm ](#tab-panel-10106)
-* [  yarn ](#tab-panel-10107)
+* [  npm ](#tab-panel-10419)
+* [  pnpm ](#tab-panel-10420)
+* [  yarn ](#tab-panel-10421)
 
 Terminal window
 
@@ -419,10 +428,10 @@ wrangler complete <SHELL>
 
 Generate and add the completion script to your shell configuration file:
 
-* [ Bash ](#tab-panel-10098)
-* [ Zsh ](#tab-panel-10099)
-* [ Fish ](#tab-panel-10100)
-* [ PowerShell ](#tab-panel-10101)
+* [ Bash ](#tab-panel-10412)
+* [ Zsh ](#tab-panel-10413)
+* [ Fish ](#tab-panel-10414)
+* [ PowerShell ](#tab-panel-10415)
 
 Terminal window
 

@@ -1,16 +1,25 @@
 ---
 title: 2xx Success
-description: 2xx status codes indicate success, meaning that the client's request was received, understood, and accepted by the server.
+description: Understand 2xx success HTTP status codes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # 2xx Success
 

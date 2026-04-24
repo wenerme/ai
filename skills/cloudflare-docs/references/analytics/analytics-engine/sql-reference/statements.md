@@ -1,18 +1,27 @@
 ---
 title: Statements
-description: SHOW TABLES can be used to list the tables on your account. The table name is the name you specified as dataset when configuring the workers binding (refer to Get started with Workers Analytics Engine, for more information). The table is automatically created when you write event data in your worker.
+description: SQL statements supported by Analytics Engine.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/analytics-engine/sql-reference/statements.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Statements
 

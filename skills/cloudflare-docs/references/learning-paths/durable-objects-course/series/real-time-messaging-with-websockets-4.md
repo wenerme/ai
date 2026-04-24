@@ -1,16 +1,15 @@
 ---
 title: Real-time messaging with WebSockets
+description: Broadcast real-time messages via WebSockets.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Real-time messaging with WebSockets
 
-* [ Watch this episode ](#tab-panel-5100)
-* [ Series overview ](#tab-panel-5101)
+* [ Watch this episode ](#tab-panel-7547)
+* [ Series overview ](#tab-panel-7548)
 
 Now, we'll take it a step further by enabling our server to receive and broadcast messages. In this video, you'll learn how to route and broadcast incoming messages from WebSocket connections and implement error handling such as closed WebSocket connections. By the end, you will have completed the backend for our video call app.
 

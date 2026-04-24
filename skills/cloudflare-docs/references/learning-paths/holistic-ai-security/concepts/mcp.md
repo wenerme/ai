@@ -1,6 +1,6 @@
 ---
 title: What is Model Context Protocol (MCP)?
-description: Model Context Protocol (MCP) is a standardized way for AI agents to get the information and tools they need to operate. Similar to how an API works, it is a protocol that allows AI programs to connect to external sources of information and take actions in the real world, going beyond the limits of their original training data.
+description: Learn how MCP connects AI agents to data.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/holistic-ai-security/concepts/mcp.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # What is Model Context Protocol (MCP)?
 

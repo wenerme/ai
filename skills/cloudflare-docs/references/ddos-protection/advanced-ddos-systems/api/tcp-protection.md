@@ -1,18 +1,27 @@
 ---
 title: Advanced TCP Protection
-description: You can configure Advanced TCP Protection using the Advanced TCP Protection API.
+description: Configure Advanced TCP Protection prefixes, allowlists, and rules using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ddos-protection/advanced-ddos-systems/api/tcp-protection/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Advanced TCP Protection
 

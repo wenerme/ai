@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/tools/scrape-shield/hotlink-protection.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Hotlink Protection
 
@@ -30,9 +39,9 @@ Hotlink protection has no impact on crawling, but it will prevent the images fro
 
 ## Enable Hotlink Protection
 
-* [  New dashboard ](#tab-panel-9130)
-* [ Old dashboard ](#tab-panel-9131)
-* [ API ](#tab-panel-9132)
+* [  New dashboard ](#tab-panel-9411)
+* [ Old dashboard ](#tab-panel-9412)
+* [ API ](#tab-panel-9413)
 
 To enable **Hotlink Protection** in the dashboard:
 

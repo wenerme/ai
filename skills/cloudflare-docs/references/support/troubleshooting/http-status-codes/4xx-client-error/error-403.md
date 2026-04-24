@@ -1,17 +1,25 @@
 ---
 title: Error 403
-description: The 403 Forbidden status code indicates that the client's request was understood by the server but cannot be fulfilled due to insufficient permissions to access the requested resource.
-For more details, refer to RFC 7231.
+description: Troubleshoot HTTP 403 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 403
 

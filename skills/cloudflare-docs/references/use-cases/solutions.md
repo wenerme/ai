@@ -6,18 +6,28 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/solutions/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Solutions
 
 Each guide starts from your goal, identifies which Cloudflare products you need, and walks through setting them up. For more information about solution guides, refer to [Solution guide](https://developers.cloudflare.com/style-guide/documentation-content-strategy/content-types/solution-guide/).
 
+* [ Discover and secure your API endpoints (Free, Pro, and Business) ](https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/)
 * [ Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business) ](https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/)
 
 ```json

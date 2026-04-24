@@ -1,18 +1,27 @@
 ---
 title: Adjust the displayed data
-description: To perform a broad analysis of layer 3/4 traffic and DDoS attacks, use the All traffic tab.
+description: Filter and configure Network Analytics dashboard data.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/network-analytics/configure/displayed-data.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Adjust the displayed data
 

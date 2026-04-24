@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ SSG ](https://developers.cloudflare.com/search/?tags=SSG) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/framework-guides/web-apps/more-web-frameworks/docusaurus.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Docusaurus
 
@@ -95,15 +104,15 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
 
 1. **Add a Wrangler configuration file.**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-7406)  
-   * [  wrangler.toml ](#tab-panel-7407)  
+   * [  wrangler.jsonc ](#tab-panel-9923)  
+   * [  wrangler.toml ](#tab-panel-9924)  
 JSONC  
 ```  
   {  
     "name": "my-docusaurus-app",  
     // Update to today's date  
     // Set this to today's date  
-    "compatibility_date": "2026-04-03",  
+    "compatibility_date": "2026-04-24",  
     "assets": {  
       "directory": "./build"  
     }  
@@ -113,7 +122,7 @@ TOML
 ```  
 name = "my-docusaurus-app"  
 # Set this to today's date  
-compatibility_date = "2026-04-03"  
+compatibility_date = "2026-04-24"  
 [assets]  
 directory = "./build"  
 ```  

@@ -5,7 +5,7 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Clear cached GitLab Agent tokens
+Clear cached GitLab Agent tokens.
 
 ## Synopsis
 
@@ -21,11 +21,11 @@ glab cluster agent token-cache clear [flags]
 ## Options
 
 ```plaintext
-      --agent int64Slice   Clear tokens for specific agent IDs only (default [])
-      --filesystem         Clear tokens from filesystem cache (default true)
-      --keyring            Clear tokens from keyring cache (default true)
-  -R, --repo string        Select another repository using the OWNER/REPO format
-      --revoke             Revoke tokens on GitLab server before clearing cache (default true)
+      --agent int64Slice   Clear tokens for specific agent IDs only. (default [])
+      --filesystem         Clear tokens from filesystem cache. (default true)
+      --keyring            Clear tokens from keyring cache. (default true)
+  -R, --repo string        Select another repository using the OWNER/REPO format.
+      --revoke             Revoke tokens on GitLab server before clearing cache. (default true)
 ```
 
 ## Options inherited from parent commands

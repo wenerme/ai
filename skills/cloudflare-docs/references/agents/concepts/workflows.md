@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/concepts/workflows.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workflows
 
@@ -71,8 +80,8 @@ Workflows can communicate with Agents through several mechanisms:
 * **State updates**: Modify Agent state via `step.updateAgentState()` or `step.mergeAgentState()`, which broadcasts to connected clients
 * **Client broadcasts**: Send messages to all WebSocket clients via `this.broadcastToClients()`
 
-* [  JavaScript ](#tab-panel-4878)
-* [  TypeScript ](#tab-panel-4879)
+* [  JavaScript ](#tab-panel-5054)
+* [  TypeScript ](#tab-panel-5055)
 
 JavaScript
 
@@ -166,8 +175,8 @@ When an Agent starts a workflow using `runWorkflow()`, the workflow is automatic
 
 An Agent receives a request, starts a Workflow for heavy processing, and broadcasts progress updates to connected clients as the Workflow executes each step.
 
-* [  JavaScript ](#tab-panel-4880)
-* [  TypeScript ](#tab-panel-4881)
+* [  JavaScript ](#tab-panel-5056)
+* [  TypeScript ](#tab-panel-5057)
 
 JavaScript
 
@@ -227,8 +236,8 @@ A Workflow prepares a request, pauses to wait for approval using `waitForApprova
 
 A Workflow wraps external API calls in durable steps with retry logic. If the API fails or the workflow restarts, completed calls are not repeated and failed calls retry automatically.
 
-* [  JavaScript ](#tab-panel-4882)
-* [  TypeScript ](#tab-panel-4883)
+* [  JavaScript ](#tab-panel-5058)
+* [  TypeScript ](#tab-panel-5059)
 
 JavaScript
 

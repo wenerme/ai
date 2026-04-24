@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/guides/cross-domain-authentication.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Cross-domain authentication
 
@@ -48,8 +57,8 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-4958)
-* [  TypeScript ](#tab-panel-4959)
+* [  JavaScript ](#tab-panel-5134)
+* [  TypeScript ](#tab-panel-5135)
 
 JavaScript
 
@@ -121,8 +130,8 @@ Explain Code
 
 Build query values right before connect. Use Suspense for async setup.
 
-* [  JavaScript ](#tab-panel-4964)
-* [  TypeScript ](#tab-panel-4965)
+* [  JavaScript ](#tab-panel-5140)
+* [  TypeScript ](#tab-panel-5141)
 
 JavaScript
 
@@ -250,8 +259,8 @@ Explain Code
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-4966)
-* [  TypeScript ](#tab-panel-4967)
+* [  JavaScript ](#tab-panel-5142)
+* [  TypeScript ](#tab-panel-5143)
 
 JavaScript
 
@@ -441,8 +450,8 @@ Pass credentials in the URL when connecting to another host, then verify on the 
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-4960)
-* [  TypeScript ](#tab-panel-4961)
+* [  JavaScript ](#tab-panel-5136)
+* [  TypeScript ](#tab-panel-5137)
 
 JavaScript
 
@@ -516,8 +525,8 @@ Explain Code
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-4962)
-* [  TypeScript ](#tab-panel-4963)
+* [  JavaScript ](#tab-panel-5138)
+* [  TypeScript ](#tab-panel-5139)
 
 JavaScript
 
@@ -619,8 +628,8 @@ Explain Code
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-4968)
-* [  TypeScript ](#tab-panel-4969)
+* [  JavaScript ](#tab-panel-5144)
+* [  TypeScript ](#tab-panel-5145)
 
 JavaScript
 

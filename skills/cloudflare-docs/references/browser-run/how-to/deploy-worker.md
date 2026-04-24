@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-run/how-to/deploy-worker.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Deploy a Browser Run Worker
 
@@ -102,8 +111,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-5393)
-* [  wrangler.toml ](#tab-panel-5394)
+* [  wrangler.jsonc ](#tab-panel-5565)
+* [  wrangler.toml ](#tab-panel-5566)
 
 JSONC
 
@@ -119,7 +128,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-21",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -162,7 +171,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-21"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -187,8 +196,8 @@ Explain Code
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-5391)
-* [  TypeScript ](#tab-panel-5392)
+* [  JavaScript ](#tab-panel-5563)
+* [  TypeScript ](#tab-panel-5564)
 
 Update `src/index.js` with your Worker code:
 

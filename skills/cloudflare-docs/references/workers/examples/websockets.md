@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ WebSockets ](https://developers.cloudflare.com/search/?tags=WebSockets)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ Rust ](https://developers.cloudflare.com/search/?tags=Rust) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/websockets.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Using the WebSockets API
 
@@ -63,8 +72,8 @@ For more details about creating and working with WebSockets in the client, refer
 
 When an incoming WebSocket request reaches the Workers function, it will contain an `Upgrade` header, set to the string value `websocket`. Check for this header before continuing to instantiate a WebSocket:
 
-* [  JavaScript ](#tab-panel-7533)
-* [  Rust ](#tab-panel-7534)
+* [  JavaScript ](#tab-panel-9902)
+* [  Rust ](#tab-panel-9903)
 
 JavaScript
 
@@ -117,8 +126,8 @@ Explain Code
 
 After you have appropriately checked for the `Upgrade` header, you can create a new instance of `WebSocketPair`, which contains server and client WebSockets. One of these WebSockets should be handled by the Workers function and the other should be returned as part of a `Response` with the [101 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/101), indicating the request is switching protocols:
 
-* [  JavaScript ](#tab-panel-7535)
-* [  Rust ](#tab-panel-7536)
+* [  JavaScript ](#tab-panel-9904)
+* [  Rust ](#tab-panel-9905)
 
 JavaScript
 
@@ -204,8 +213,8 @@ The `WebSocketPair` constructor returns an Object, with the `0` and `1` keys eac
 
 In order to begin communicating with the `client` WebSocket in your Worker, call `accept` on the `server` WebSocket. This will tell the Workers runtime that it should listen for WebSocket data and keep the connection open with your `client` WebSocket:
 
-* [  JavaScript ](#tab-panel-7537)
-* [  Rust ](#tab-panel-7538)
+* [  JavaScript ](#tab-panel-9906)
+* [  Rust ](#tab-panel-9907)
 
 JavaScript
 
@@ -290,9 +299,9 @@ Explain Code
 
 WebSockets emit a number of [Events](https://developers.cloudflare.com/workers/runtime-apis/websockets/#events) that can be connected to using `addEventListener`. The below example hooks into the `message` event and emits a `console.log` with the data from it:
 
-* [  JavaScript ](#tab-panel-7539)
-* [  Rust ](#tab-panel-7540)
-* [  Hono ](#tab-panel-7541)
+* [  JavaScript ](#tab-panel-9908)
+* [  Rust ](#tab-panel-9909)
+* [  Hono ](#tab-panel-9910)
 
 JavaScript
 

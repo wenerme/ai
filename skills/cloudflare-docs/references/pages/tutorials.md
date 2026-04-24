@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/pages/tutorials/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Tutorials
 
@@ -25,7 +34,7 @@ View tutorials to help you get started with Pages.
 | [Point to Pages with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/)              | about 1 year ago   | Beginner     |
 | [Migrating from Vercel to Pages](https://developers.cloudflare.com/pages/migrations/migrating-from-vercel/)                                           | about 1 year ago   | Beginner     |
 | [Build an API for your front end using Pages Functions](https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/)         | over 1 year ago    | Intermediate |
-| [Use R2 as static asset storage with Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/use-r2-as-static-asset-storage-for-pages/)   | over 1 year ago    | Intermediate |
+| [Use R2 as static asset storage with Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/use-r2-as-static-asset-storage-for-pages/)   | almost 2 years ago | Intermediate |
 | [Use Pages as an origin for Load Balancing](https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/)                          | almost 2 years ago | Beginner     |
 | [Localize a website with HTMLRewriter](https://developers.cloudflare.com/pages/tutorials/localize-a-website/)                                         | almost 2 years ago | Intermediate |
 | [Build a Staff Directory Application](https://developers.cloudflare.com/d1/tutorials/build-a-staff-directory-app/)                                    | about 2 years ago  | Intermediate |

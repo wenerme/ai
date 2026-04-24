@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/bots/get-started/bot-fight-mode.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Bot Fight Mode
 
@@ -41,8 +50,8 @@ If you are using several app security features like custom rules, Managed Rules,
 
 To start using Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-3526)
-* [ Old dashboard ](#tab-panel-3527)
+* [  New dashboard ](#tab-panel-5529)
+* [ Old dashboard ](#tab-panel-5530)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -58,9 +67,8 @@ Note
 
 If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disable Bot Fight Mode in your Bot settings.
 
-Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
-
-New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot Fight Mode** off.
+* Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
+* New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
 ---
 
@@ -70,8 +78,8 @@ If you find that **Bot Fight Mode** is causing problems with your application tr
 
 To disable Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-3524)
-* [ Old dashboard ](#tab-panel-3525)
+* [  New dashboard ](#tab-panel-5527)
+* [ Old dashboard ](#tab-panel-5528)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI)[ Bindings ](https://developers.cloudflare.com/search/?tags=Bindings) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/integrations/worker-binding-methods.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workers Bindings
 
@@ -28,8 +37,8 @@ For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](htt
 
 Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-5085)
-* [  wrangler.toml ](#tab-panel-5086)
+* [  wrangler.jsonc ](#tab-panel-5293)
+* [  wrangler.toml ](#tab-panel-5294)
 
 JSONC
 
@@ -69,8 +78,8 @@ Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` 
 
 **Workers AI model:**
 
-* [  JavaScript ](#tab-panel-5087)
-* [  TypeScript ](#tab-panel-5088)
+* [  JavaScript ](#tab-panel-5295)
+* [  TypeScript ](#tab-panel-5296)
 
 JavaScript
 
@@ -136,8 +145,8 @@ Explain Code
 
 **Third-party model:**
 
-* [  JavaScript ](#tab-panel-5089)
-* [  TypeScript ](#tab-panel-5090)
+* [  JavaScript ](#tab-panel-5297)
+* [  TypeScript ](#tab-panel-5298)
 
 JavaScript
 

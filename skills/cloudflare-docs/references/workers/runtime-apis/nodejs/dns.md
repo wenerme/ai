@@ -1,19 +1,27 @@
 ---
 title: dns
-description: You can use node:dns for name resolution via DNS over HTTPS using
-Cloudflare DNS at 1.1.1.1.
+description: Use the Node.js dns module in Cloudflare Workers for DNS name resolution via DNS over HTTPS.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/nodejs/dns.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # dns
 
@@ -23,8 +31,8 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 You can use [node:dns ↗](https://nodejs.org/api/dns.html) for name resolution via [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/) using[Cloudflare DNS ↗](https://www.cloudflare.com/application-services/products/dns/) at 1.1.1.1.
 
-* [  JavaScript ](#tab-panel-10099)
-* [  TypeScript ](#tab-panel-10100)
+* [  JavaScript ](#tab-panel-10115)
+* [  TypeScript ](#tab-panel-10116)
 
 index.js
 

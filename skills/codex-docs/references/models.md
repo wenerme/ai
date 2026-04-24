@@ -5,10 +5,10 @@
 <div class="not-prose grid gap-6 md:grid-cols-2 xl:grid-cols-3">
   <ModelDetails
     client:load
-    name="gpt-5.4"
-    slug="gpt-5.4"
-    wallpaperUrl="/images/api/models/gpt-5.4.jpg"
-    description="Flagship frontier model for professional work that brings the industry-leading coding capabilities of GPT-5.3-Codex together with stronger reasoning, tool use, and agentic workflows."
+    name="gpt-5.5"
+    slug="gpt-5.5"
+    wallpaperUrl="/images/api/models/gpt-5.5.jpg"
+    description="OpenAI's newest frontier model for complex coding, computer use, knowledge work, and research workflows in Codex."
     data={{
       features: [
         {
@@ -37,10 +37,49 @@
           value: false,
         },
         { title: "ChatGPT Credits", value: true },
-        { title: "API Access", value: true },
+        { title: "API Access", value: false },
       ],
     }}
   />
+
+<ModelDetails
+  client:load
+  name="gpt-5.4"
+  slug="gpt-5.4"
+  wallpaperUrl="/images/api/models/gpt-5.4.jpg"
+  description="Flagship frontier model for professional work that brings the industry-leading coding capabilities of GPT-5.3-Codex together with stronger reasoning, tool use, and agentic workflows."
+  data={{
+    features: [
+      {
+        title: "Capability",
+        value: "",
+        icons: [
+          "openai.SparklesFilled",
+          "openai.SparklesFilled",
+          "openai.SparklesFilled",
+          "openai.SparklesFilled",
+          "openai.SparklesFilled",
+        ],
+      },
+      {
+        title: "Speed",
+        value: "",
+        icons: ["openai.Flash", "openai.Flash", "openai.Flash"],
+      },
+      {
+        title: "Codex CLI & SDK",
+        value: true,
+      },
+      { title: "Codex app & IDE extension", value: true },
+      {
+        title: "Codex Cloud",
+        value: false,
+      },
+      { title: "ChatGPT Credits", value: true },
+      { title: "API Access", value: true },
+    ],
+  }}
+/>
 
 <ModelDetails
   client:load
@@ -163,12 +202,15 @@
 
 </div>
 
-For most tasks in Codex, start with `gpt-5.4`. It combines strong coding,
-  reasoning, native computer use, and broader professional workflows in one
-  model. Use `gpt-5.4-mini` when you want a faster, lower-cost option for
-  lighter coding tasks or subagents. The `gpt-5.3-codex-spark` model is
-  available in research preview for ChatGPT Pro subscribers and is optimized for
-  near-instant, real-time coding iteration.
+For most tasks in Codex, start with `gpt-5.5` when it appears in your model
+  picker. It is strongest for complex coding, computer use, knowledge work, and
+  research workflows. GPT-5.5 is currently available in Codex when you sign in
+  with ChatGPT; it isn't available with API-key authentication. During the
+  rollout, continue using `gpt-5.4` if `gpt-5.5` is not yet available. Use
+  `gpt-5.4-mini` when you want a faster, lower-cost option for lighter coding
+  tasks or subagents. The `gpt-5.3-codex-spark` model is available in research
+  preview for ChatGPT Pro subscribers and is optimized for near-instant,
+  real-time coding iteration.
 
 ## Alternative models
 
@@ -229,8 +271,10 @@ Support for the Chat Completions API is deprecated and will be removed in
 The Codex CLI and IDE extension use the same `config.toml` [configuration file](https://developers.openai.com/codex/config-basic). To specify a model, add a `model` entry to your configuration file. If you don't specify a model, the Codex app, CLI, or IDE Extension defaults to a recommended model.
 
 ```toml
-model = "gpt-5.4"
+model = "gpt-5.5"
 ```
+
+If `gpt-5.5` isn't available in your account yet, use `gpt-5.4`.
 
 ### Choosing a different local model temporarily
 
@@ -239,7 +283,7 @@ In the Codex CLI, you can use the `/model` command during an active thread to ch
 To start a new Codex CLI thread with a specific model or to specify the model for `codex exec` you can use the `--model`/`-m` flag:
 
 ```bash
-codex -m gpt-5.4
+codex -m gpt-5.5
 ```
 
 ### Choosing your model for cloud tasks

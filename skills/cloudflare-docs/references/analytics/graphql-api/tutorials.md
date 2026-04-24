@@ -1,18 +1,27 @@
 ---
 title: Tutorials
-description: The following resources will help you start exploring your data and creating analytics dashboards:
+description: Example GraphQL Analytics API queries and tutorials.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/graphql-api/tutorials/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Tutorials
 
@@ -22,6 +31,7 @@ The following resources will help you start exploring your data and creating ana
 * [ Querying Access login events with GraphQL ](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-access-login-events/)
 * [ Querying Cloudflare Network Firewall Intrusion Detection System (IDS) samples with GraphQL ](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-network-firewall-ids-samples/)
 * [ Querying Cloudflare Network Firewall Samples with GraphQL ](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-network-firewall-samples/)
+* [ Querying Containers metrics with GraphQL ](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/)
 * [ Querying Email Routing events with GraphQL ](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-email-routing/)
 * [ Querying Firewall Events with GraphQL ](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-firewall-events/)
 * [ Querying HTTP events by hostname with GraphQL ](https://developers.cloudflare.com/analytics/graphql-api/tutorials/end-customer-analytics/)

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Strict (SSL-Only Origin Pull)
 
@@ -38,8 +47,8 @@ In addition to **Strict (SSL-Only Origin Pull)** encryption, you can also set up
 
 ### Process
 
-* [ Dashboard ](#tab-panel-6583)
-* [ API ](#tab-panel-6584)
+* [ Dashboard ](#tab-panel-9062)
+* [ API ](#tab-panel-9063)
 
 To change your encryption mode in the dashboard:
 

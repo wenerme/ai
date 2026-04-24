@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/expose-services.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Expose services
 
@@ -36,8 +45,8 @@ Expose ports when you need to:
 
 The typical workflow is: start service → wait for ready → expose port → handle requests with `proxyToSandbox`.
 
-* [  JavaScript ](#tab-panel-6399)
-* [  TypeScript ](#tab-panel-6400)
+* [  JavaScript ](#tab-panel-8810)
+* [  TypeScript ](#tab-panel-8811)
 
 JavaScript
 
@@ -198,8 +207,8 @@ See [Sandbox options](https://developers.cloudflare.com/sandbox/configuration/sa
 
 For production deployments or when sharing URLs with users, use custom tokens to maintain consistent preview URLs across container restarts:
 
-* [  JavaScript ](#tab-panel-6381)
-* [  TypeScript ](#tab-panel-6382)
+* [  JavaScript ](#tab-panel-8792)
+* [  TypeScript ](#tab-panel-8793)
 
 JavaScript
 
@@ -306,8 +315,8 @@ Explain Code
 
 When exposing multiple ports, use names to stay organized:
 
-* [  JavaScript ](#tab-panel-6397)
-* [  TypeScript ](#tab-panel-6398)
+* [  JavaScript ](#tab-panel-8808)
+* [  TypeScript ](#tab-panel-8809)
 
 JavaScript
 
@@ -421,8 +430,8 @@ Explain Code
 
 Always verify a service is ready before exposing. Use a simple delay for most cases:
 
-* [  JavaScript ](#tab-panel-6379)
-* [  TypeScript ](#tab-panel-6380)
+* [  JavaScript ](#tab-panel-8790)
+* [  TypeScript ](#tab-panel-8791)
 
 JavaScript
 
@@ -482,8 +491,8 @@ Explain Code
 
 For critical services, poll the health endpoint:
 
-* [  JavaScript ](#tab-panel-6393)
-* [  TypeScript ](#tab-panel-6394)
+* [  JavaScript ](#tab-panel-8804)
+* [  TypeScript ](#tab-panel-8805)
 
 JavaScript
 
@@ -567,8 +576,8 @@ Explain Code
 
 Expose multiple ports for full-stack applications:
 
-* [  JavaScript ](#tab-panel-6401)
-* [  TypeScript ](#tab-panel-6402)
+* [  JavaScript ](#tab-panel-8812)
+* [  TypeScript ](#tab-panel-8813)
 
 JavaScript
 
@@ -680,8 +689,8 @@ Explain Code
 
 ### List currently exposed ports
 
-* [  JavaScript ](#tab-panel-6385)
-* [  TypeScript ](#tab-panel-6386)
+* [  JavaScript ](#tab-panel-8796)
+* [  TypeScript ](#tab-panel-8797)
 
 JavaScript
 
@@ -739,8 +748,8 @@ Explain Code
 
 ### Unexpose ports
 
-* [  JavaScript ](#tab-panel-6383)
-* [  TypeScript ](#tab-panel-6384)
+* [  JavaScript ](#tab-panel-8794)
+* [  TypeScript ](#tab-panel-8795)
 
 JavaScript
 
@@ -844,8 +853,8 @@ In production, all ports are available and controlled programmatically via `expo
 
 Port 3000 is used by the internal Bun server and cannot be exposed:
 
-* [  JavaScript ](#tab-panel-6389)
-* [  TypeScript ](#tab-panel-6390)
+* [  JavaScript ](#tab-panel-8800)
+* [  TypeScript ](#tab-panel-8801)
 
 JavaScript
 
@@ -897,8 +906,8 @@ await sandbox.exposePort(8080, { hostname });
 
 Wait for the service to start before exposing:
 
-* [  JavaScript ](#tab-panel-6387)
-* [  TypeScript ](#tab-panel-6388)
+* [  JavaScript ](#tab-panel-8798)
+* [  TypeScript ](#tab-panel-8799)
 
 JavaScript
 
@@ -940,8 +949,8 @@ await sandbox.exposePort(8080, { hostname });
 
 Check before exposing to avoid errors:
 
-* [  JavaScript ](#tab-panel-6395)
-* [  TypeScript ](#tab-panel-6396)
+* [  JavaScript ](#tab-panel-8806)
+* [  TypeScript ](#tab-panel-8807)
 
 JavaScript
 
@@ -991,8 +1000,8 @@ if (!ports.some(p => p.port === 8080)) {
 
 **Solution**:
 
-* [  JavaScript ](#tab-panel-6391)
-* [  TypeScript ](#tab-panel-6392)
+* [  JavaScript ](#tab-panel-8802)
+* [  TypeScript ](#tab-panel-8803)
 
 JavaScript
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/pages/functions/source-maps.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Source maps and stack traces
 
@@ -30,8 +39,8 @@ Support for uploading source maps for Pages is available now in open beta. Minim
 
 To enable source maps, provide the `--upload-source-maps` flag to [wrangler pages deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or add the following to your Pages application's [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) if you are using the Pages build environment:
 
-* [  wrangler.jsonc ](#tab-panel-5459)
-* [  wrangler.toml ](#tab-panel-5460)
+* [  wrangler.jsonc ](#tab-panel-7906)
+* [  wrangler.toml ](#tab-panel-7907)
 
 JSONC
 

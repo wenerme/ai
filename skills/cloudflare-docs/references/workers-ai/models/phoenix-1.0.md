@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![Leonardo logo](https://developers.cloudflare.com/_astro/leonardo.Ch-T5rST.svg) 
 
@@ -32,8 +41,8 @@ Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional pro
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3607)
-* [  curl ](#tab-panel-3608)
+* [  TypeScript ](#tab-panel-3819)
+* [  curl ](#tab-panel-3820)
 
 ```
 
@@ -101,8 +110,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3611)
-* [ Output ](#tab-panel-3612)
+* [ Input ](#tab-panel-3823)
+* [ Output ](#tab-panel-3824)
 
 prompt
 
@@ -136,8 +145,8 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3609)
-* [ Output ](#tab-panel-3610)
+* [ Input ](#tab-panel-3821)
+* [ Output ](#tab-panel-3822)
 
 ```
 

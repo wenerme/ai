@@ -6,8 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # Supported URL components in Bulk Redirects
 
 The source and target URLs of a URL redirect support different URL components.

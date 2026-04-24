@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/getting-started/quick-start.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Quick start
 
@@ -106,8 +115,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-3192)
-* [  TypeScript ](#tab-panel-3193)
+* [  JavaScript ](#tab-panel-5110)
+* [  TypeScript ](#tab-panel-5111)
 
 JavaScript
 
@@ -270,8 +279,8 @@ Explain Code
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-3184)
-* [  wrangler.toml ](#tab-panel-3185)
+* [  wrangler.jsonc ](#tab-panel-5102)
+* [  wrangler.toml ](#tab-panel-5103)
 
 JSONC
 
@@ -285,7 +294,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-15",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -334,7 +343,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-15"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -459,8 +468,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-3188)
-* [  TypeScript ](#tab-panel-3189)
+* [  JavaScript ](#tab-panel-5106)
+* [  TypeScript ](#tab-panel-5107)
 
 JavaScript
 
@@ -563,8 +572,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-3186)
-* [  TypeScript ](#tab-panel-3187)
+* [  JavaScript ](#tab-panel-5104)
+* [  TypeScript ](#tab-panel-5105)
 
 JavaScript
 
@@ -614,8 +623,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-3190)
-* [  TypeScript ](#tab-panel-3191)
+* [  JavaScript ](#tab-panel-5108)
+* [  TypeScript ](#tab-panel-5109)
 
 JavaScript
 

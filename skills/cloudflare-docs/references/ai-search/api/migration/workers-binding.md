@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-search/api/migration/workers-binding.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workers binding migration
 
@@ -104,8 +113,8 @@ Existing instances are in the default namespace. For a simple upgrade path, use 
 
 **Before:**
 
-* [  wrangler.jsonc ](#tab-panel-5159)
-* [  wrangler.toml ](#tab-panel-5160)
+* [  wrangler.jsonc ](#tab-panel-5335)
+* [  wrangler.toml ](#tab-panel-5336)
 
 JSONC
 
@@ -139,8 +148,8 @@ binding = "AI"
 
 **After:**
 
-* [  wrangler.jsonc ](#tab-panel-5161)
-* [  wrangler.toml ](#tab-panel-5162)
+* [  wrangler.jsonc ](#tab-panel-5337)
+* [  wrangler.toml ](#tab-panel-5338)
 
 JSONC
 

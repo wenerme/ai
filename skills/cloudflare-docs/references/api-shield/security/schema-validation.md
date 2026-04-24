@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/api-shield/security/schema-validation/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Schema validation
 
@@ -22,7 +31,7 @@ The API schema defines which API requests are valid based on several request pro
 
 Schema validation allows you to check if incoming traffic complies with a previously supplied API schema. When you provide an API schema or select from a list of learned schema, API Shield creates rules for incoming traffic from the schema definitions. These rules define which traffic is allowed and which traffic gets logged or blocked.
 
-Cloudflare has launched Schema validation 2.0\. For help configuring the previous version of Schema validation for one or more hosts using the dashboard, refer to [Configure Classic Schema validation](https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/). You can make changes to your Classic Schema validation settings but you cannot add any new schemas.
+Schema validation 2.0 is the current version. For help configuring the previous version for one or more hosts using the dashboard, refer to [Configure Classic Schema validation](https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/). You can make changes to your Classic Schema validation settings but you cannot add any new schemas.
 
 You can migrate to Schema validation 2.0 manually by uploading your schemas to the new system.
 
@@ -44,8 +53,8 @@ To view the contents in your learned schema, refer to [Export a schema](https://
 
 ### Add validation by uploading a schema
 
-* [  New dashboard ](#tab-panel-3474)
-* [ Old dashboard ](#tab-panel-3475)
+* [  New dashboard ](#tab-panel-5427)
+* [ Old dashboard ](#tab-panel-5428)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -68,8 +77,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 ### Add validation by applying a learned schema to a single endpoint
 
-* [  New dashboard ](#tab-panel-3476)
-* [ Old dashboard ](#tab-panel-3477)
+* [  New dashboard ](#tab-panel-5429)
+* [ Old dashboard ](#tab-panel-5430)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -88,8 +97,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 At this time, learned schemas will not overwrite customer-uploaded schemas. If an endpoint is covered by a customer-uploaded schema and also appears in a learned schema, the **Changes** field is set to `Unaffected`.
 
-* [  New dashboard ](#tab-panel-3478)
-* [ Old dashboard ](#tab-panel-3479)
+* [  New dashboard ](#tab-panel-5431)
+* [ Old dashboard ](#tab-panel-5432)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -120,8 +129,8 @@ By ensuring that all your endpoints in a schema are added to Endpoint Management
 
 To set up a fallthrough action:
 
-* [  New dashboard ](#tab-panel-3492)
-* [ Old dashboard ](#tab-panel-3493)
+* [  New dashboard ](#tab-panel-5445)
+* [ Old dashboard ](#tab-panel-5446)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -150,8 +159,8 @@ You can use the `cf.api_gateway.fallthrough_detected` field in your own custom r
 
 ### Change the action of an entire schema
 
-* [  New dashboard ](#tab-panel-3480)
-* [ Old dashboard ](#tab-panel-3481)
+* [  New dashboard ](#tab-panel-5433)
+* [ Old dashboard ](#tab-panel-5434)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -180,8 +189,8 @@ Schema validation’s default action is visible on the main Schema validation pa
 
 To change the default action:
 
-* [  New dashboard ](#tab-panel-3482)
-* [ Old dashboard ](#tab-panel-3483)
+* [  New dashboard ](#tab-panel-5435)
+* [ Old dashboard ](#tab-panel-5436)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -207,8 +216,8 @@ This allows you to be stricter on blocking non-compliant requests on certain end
 
 To change the action on an individual endpoint:
 
-* [  New dashboard ](#tab-panel-3484)
-* [ Old dashboard ](#tab-panel-3485)
+* [  New dashboard ](#tab-panel-5437)
+* [ Old dashboard ](#tab-panel-5438)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -230,8 +239,8 @@ You can disable Schema validation entirely for temporary troubleshooting. You ca
 
 To disable Schema validation without changing actions:
 
-* [  New dashboard ](#tab-panel-3486)
-* [ Old dashboard ](#tab-panel-3487)
+* [  New dashboard ](#tab-panel-5439)
+* [ Old dashboard ](#tab-panel-5440)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -249,8 +258,8 @@ Your per-endpoint configurations will be saved when modifying the setting, so th
 
 ### View active schemas
 
-* [  New dashboard ](#tab-panel-3488)
-* [ Old dashboard ](#tab-panel-3489)
+* [  New dashboard ](#tab-panel-5441)
+* [ Old dashboard ](#tab-panel-5442)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -275,8 +284,8 @@ Deleting the schema will remove validation from the currently associated endpoin
 
 To delete currently uploaded or learned schemas:
 
-* [  New dashboard ](#tab-panel-3490)
-* [ Old dashboard ](#tab-panel-3491)
+* [  New dashboard ](#tab-panel-5443)
+* [ Old dashboard ](#tab-panel-5444)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -298,7 +307,7 @@ To delete currently uploaded or learned schemas:
 
 Cloudflare currently only accepts [OpenAPI v3 schemas ↗](https://spec.openapis.org/oas/v3.0.3.html). The accepted file formats are YAML (`.yml` or `.yaml` file extension) and JSON (`.json` file extension).
 
-OpenAPI schemas generated by different tooling may not be specific enough to import to Schema validation. We recommend using a third-party tool such as [Swagger Editor ↗](https://swagger.io/tools/swagger-editor/) to ensure that schemas are compliant to the OpenAPI specification.
+OpenAPI schemas generated by different tooling may not be specific enough to import to Schema validation. Use a third-party tool such as [Swagger Editor ↗](https://swagger.io/tools/swagger-editor/) to ensure that schemas are compliant to the OpenAPI specification.
 
 ---
 
@@ -306,7 +315,7 @@ OpenAPI schemas generated by different tooling may not be specific enough to imp
 
 Cloudflare API Shield's Schema validation (importing) and [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/) (exporting) capabilities rely on the [OpenAPI Specification (OAS) v3.0 ↗](https://spec.openapis.org/oas/v3.0.3).
 
-This support includes all patch versions, such as OAS v3.0.x. We do not currently support OAS v3.1 and do not plan to expand support for OpenAPI 2.0.
+This support includes all patch versions, such as OAS v3.0.x. OAS v3.1 is not supported, and there are no plans to expand support for OpenAPI 2.0.
 
 Note
 
@@ -346,7 +355,7 @@ Although not strictly required by the OpenAPI specification, Schema validation s
 #### `schema`
 
 * [type ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)  
-   * All schemas require a type to be set. If the specific type is not supported by Schema validation, it is usually best to simply set the type to `string` instead.
+   * All schemas require a type to be set. If the specific type is not supported by Schema validation, set the type to `string` instead.
 
 #### `parameter`
 
@@ -434,7 +443,7 @@ When Cloudflare validates incoming requests, Cloudflare checks that the request'
 
 For example, when the OpenAPI file specifies `application/*` as part of the request body content map, Cloudflare will accept requests with the content-types `application/xml` and `application/json`. However, only `application/json` bodies will be validated with the supplied schema.
 
-Cloudflare generally recommends keeping the media-ranges as tight as possible. We suggest setting them to an individual media-type. If you need to support multiple content-types on an API endpoint, you can utilize wildcard media-ranges.
+Cloudflare recommends keeping the media-ranges as tight as possible by setting them to an individual media-type. If you need to support multiple content-types on an API endpoint, you can utilize wildcard media-ranges.
 
 Care should also be taken if the origin is configured to perform [MIME sniffing ↗](https://mimesniff.spec.whatwg.org/). For example, when a request carrying a JSON body is deliberately carrying an `application/malicous` content-type and Cloudflare was configured to allow `application/*` media-ranges, the request would be passed along to the origin without validating the JSON body contents. However, an origin that ignores the content-type and either trial deserializes or sniffs the MIME type may deserialize the JSON body with a wrong assumption of having passed schema body validation.
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/get-started/send-emails.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Send emails
 
@@ -135,8 +144,8 @@ pnpm create cloudflare@latest email-service-tutorial
 ```  
 When prompted, select **"Hello World" Worker** as the template.
 2. Add the email binding to your Wrangler configuration file:  
-   * [  wrangler.jsonc ](#tab-panel-6881)  
-   * [  wrangler.toml ](#tab-panel-6882)  
+   * [  wrangler.jsonc ](#tab-panel-7053)  
+   * [  wrangler.toml ](#tab-panel-7054)  
 JSONC  
 ```  
 {  

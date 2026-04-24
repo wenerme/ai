@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/containers/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Containers
 
@@ -32,8 +41,8 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-6212)
-* [ Worker Config ](#tab-panel-6213)
+* [ Worker Code ](#tab-panel-6384)
+* [ Worker Config ](#tab-panel-6385)
 
 JavaScript
 
@@ -74,8 +83,8 @@ export default {
 
 Explain Code
 
-* [  wrangler.jsonc ](#tab-panel-6210)
-* [  wrangler.toml ](#tab-panel-6211)
+* [  wrangler.jsonc ](#tab-panel-6382)
+* [  wrangler.toml ](#tab-panel-6383)
 
 JSONC
 
@@ -89,7 +98,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-21",
+  "compatibility_date": "2026-04-24",
 
   "containers": [
 
@@ -150,7 +159,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-21"
+compatibility_date = "2026-04-24"
 
 
 [[containers]]

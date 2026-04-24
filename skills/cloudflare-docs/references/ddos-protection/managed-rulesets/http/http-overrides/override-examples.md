@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ddos-protection/managed-rulesets/http/http-overrides/override-examples.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Override examples
 
@@ -40,11 +49,11 @@ In these cases, Cloudflare's DDoS Protection systems may flag that traffic as ma
 
 To remedy a false positive:
 
-* [  New dashboard ](#tab-panel-4628)
-* [ Old dashboard ](#tab-panel-4629)
+* [  New dashboard ](#tab-panel-6647)
+* [ Old dashboard ](#tab-panel-6648)
 
 1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
-1. Apply filters to the displayed data.  
+2. Apply filters to the displayed data.  
 For WAF/CDN customers  
    1. Select the zone that is experiencing DDoS attack false positives.  
    2. Go to **Security** \> **Analytics** \> **Events** tab.  
@@ -52,15 +61,15 @@ For WAF/CDN customers
 For Magic Transit and Spectrum customers  
    1. Go to Account Home > **Analytics & Logs** \> **Network Analytics**.  
    2. Identify the legitimate traffic that is causing the false positives. Use the Attack ID number included in the DDoS alert (if you received one), or apply dashboard filters such as destination IP address and port.
-1. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
-2. Copy the rule name.
-3. Go to your zone > **Security** \> **Security rules** \> **DDoS protection** tab and select **Create override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
-4. Select **Browse rules** and paste the rule name in the search field.
-5. Decrease the rule's **Sensitivity Level** to _Essentially Off_ or change the rule action to _Log_ (if supported by your current plan and subscriptions).
-6. Select **Next** and then select **Save**.
+3. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
+4. Copy the rule name.
+5. Go to your zone > **Security** \> **Security rules** \> **DDoS protection** tab and select **Create override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
+6. Select **Browse rules** and paste the rule name in the search field.
+7. Decrease the rule's **Sensitivity Level** to _Essentially Off_ or change the rule action to _Log_ (if supported by your current plan and subscriptions).
+8. Select **Next** and then select **Save**.
 
 1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
-1. Apply filters to the displayed data.  
+2. Apply filters to the displayed data.  
 For WAF/CDN customers  
    1. Select the zone that is experiencing DDoS attack false positives.  
    2. Go to **Security** \> **Events**.  
@@ -68,12 +77,12 @@ For WAF/CDN customers
 For Magic Transit and Spectrum customers  
    1. Go to Account Home > **Analytics & Logs** \> **Network Analytics**.  
    2. Identify the legitimate traffic that is causing the false positives. Use the Attack ID number included in the DDoS alert (if you received one), or apply dashboard filters such as destination IP address and port.
-1. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
-2. Copy the rule name.
-3. Go to your zone > **Security** \> **DDoS** and select **Deploy a DDoS override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
-4. Select **Browse rules** and paste the rule name in the search field.
-5. Decrease the rule's **Sensitivity Level** to _Essentially Off_ or change the rule action to _Log_ (if supported by your current plan and subscriptions).
-6. Select **Next** and then select **Save**.
+3. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
+4. Copy the rule name.
+5. Go to your zone > **Security** \> **DDoS** and select **Deploy a DDoS override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
+6. Select **Browse rules** and paste the rule name in the search field.
+7. Decrease the rule's **Sensitivity Level** to _Essentially Off_ or change the rule action to _Log_ (if supported by your current plan and subscriptions).
+8. Select **Next** and then select **Save**.
 
 Once saved, the rule takes effect within one or two minutes. The rule adjustment should provide immediate remedy, which you can view in the [analytics dashboard](https://developers.cloudflare.com/ddos-protection/reference/analytics/).
 
@@ -113,11 +122,11 @@ The system chooses the mitigation action based on the logic and the DDoS protect
 
 If you are experiencing a DDoS attack detected by Cloudflare and the applied mitigation action is not sufficiently strict, change the rule action to _Block_:
 
-* [  New dashboard ](#tab-panel-4630)
-* [ Old dashboard ](#tab-panel-4631)
+* [  New dashboard ](#tab-panel-6649)
+* [ Old dashboard ](#tab-panel-6650)
 
 1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
-1. Apply filters to the displayed data.  
+2. Apply filters to the displayed data.  
 For WAF/CDN customers  
    1. Select the zone that is experiencing an incomplete mitigation of a DDoS attack.  
    2. Go to **Security** \> **Analytics** \> **Events** tab.  
@@ -125,15 +134,15 @@ For WAF/CDN customers
 For Magic Transit and Spectrum customers  
    1. Go to Account Home > **Analytics & Logs** \> **Network Analytics**.  
    2. Identify the DDoS attack that is having incomplete mitigations. Use the Attack ID number included in the DDoS alert (if you received one), or apply dashboard filters such as destination IP address and port.
-1. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
-2. Copy the rule name.
-3. Go to your zone > **Security** \> **Security rules** \> **DDoS protection** tab and select **Create override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
-4. Select **Browse rules** and paste the rule name in the search field.
-5. Change the rule's **Action** to _Block_.
-6. Select **Next** and then select **Save**.
+3. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
+4. Copy the rule name.
+5. Go to your zone > **Security** \> **Security rules** \> **DDoS protection** tab and select **Create override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
+6. Select **Browse rules** and paste the rule name in the search field.
+7. Change the rule's **Action** to _Block_.
+8. Select **Next** and then select **Save**.
 
 1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
-1. Apply filters to the displayed data.  
+2. Apply filters to the displayed data.  
 For WAF/CDN customers  
    1. Select the zone that is experiencing an incomplete mitigation of a DDoS attack.  
    2. Go to **Security** \> **Events**.  
@@ -141,12 +150,12 @@ For WAF/CDN customers
 For Magic Transit and Spectrum customers  
    1. Go to Account Home > **Analytics & Logs** \> **Network Analytics**.  
    2. Identify the DDoS attack that is having incomplete mitigations. Use the Attack ID number included in the DDoS alert (if you received one), or apply dashboard filters such as destination IP address and port.
-1. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
-2. Copy the rule name.
-3. Go to your zone > **Security** \> **DDoS** and select **Deploy a DDoS override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
-4. Select **Browse rules** and paste the rule name in the search field.
-5. Change the rule's **Action** to _Block_.
-6. Select **Next** and then select **Save**.
+3. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
+4. Copy the rule name.
+5. Go to your zone > **Security** \> **DDoS** and select **Deploy a DDoS override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
+6. Select **Browse rules** and paste the rule name in the search field.
+7. Change the rule's **Action** to _Block_.
+8. Select **Next** and then select **Save**.
 
 Once saved, the rule takes effect within one or two minutes. The rule adjustment should provide immediate remedy, which you can view in the [analytics dashboard](https://developers.cloudflare.com/ddos-protection/reference/analytics/).
 

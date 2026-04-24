@@ -1,10 +1,21 @@
 ---
 title: Check pool health
-description: Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be unknown until the results of the first check are available.
+description: Verify pool and server health status.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
@@ -12,14 +23,12 @@ YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/load-balancing/setup/check-pool-health.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
-Copy page
-
 # Check pool health
 
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
 
-* [ Dashboard ](#tab-panel-5106)
-* [ API ](#tab-panel-5107)
+* [ Dashboard ](#tab-panel-7553)
+* [ API ](#tab-panel-7554)
 
 To confirm pool health using the dashboard:
 

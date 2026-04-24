@@ -1,6 +1,6 @@
 ---
 title: Applications with integrated SSO
-description: Many organizations in the past few years have recognized the importance of source-of-truth identity and have directly integrated their SSO provider with their internal applications. The SSO provider is only aware of the internal domain on which the application exists (via the configured ACS URL), which means the user must be connected to the local network in order to access the application. This security architecture makes sense for a traditional network perimeter, but it presents challenges for Zero Trust adoption. In the clientless access model, the user's device has no concept of an internal corporate network, only the specific, scoped applications to which they have access. The problem is summarized in the following diagram:
+description: Manage applications with existing SSO integrations.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/clientless-access/migrate-applications/integrated-sso.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Applications with integrated SSO
 

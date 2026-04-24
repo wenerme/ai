@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ SSH ](https://developers.cloudflare.com/search/?tags=SSH) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/access-controls/applications/non-http/short-lived-certificates-legacy.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Short-lived certificates (legacy)
 
@@ -207,8 +216,8 @@ If there are any include statements below these lines, the configurations in tho
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-5567)
-* [ CentOS/RHEL ](#tab-panel-5568)
+* [ Debian/Ubuntu ](#tab-panel-5783)
+* [ CentOS/RHEL ](#tab-panel-5784)
 
 For Debian/Ubuntu:
 

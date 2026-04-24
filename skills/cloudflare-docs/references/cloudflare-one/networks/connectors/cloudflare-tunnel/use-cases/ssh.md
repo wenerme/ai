@@ -6,8 +6,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-Copy page
-
 # SSH
 
 The Secure Shell Protocol (SSH) enables users to remotely access devices through the command line. With Cloudflare One, you can make your SSH server available over the Internet without the risk of opening inbound ports on the server.

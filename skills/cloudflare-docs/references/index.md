@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 ![](https://developers.cloudflare.com/_astro/Dev-Docs-Header-Illustration-Dark-Mode-cropped.DDWqKYx5_1cIhMB.svg) ![](https://developers.cloudflare.com/_astro/Dev-Docs-Header-Illustration-Light-Mode-cropped.COpWJJAy_ZaWBfS.svg) 
 
-[Directory](https://developers.cloudflare.com/directory/) [Resources](https://developers.cloudflare.com/resources/) [API](https://developers.cloudflare.com/api/) [Use cases](https://developers.cloudflare.com/use-cases/) [Changelog](https://developers.cloudflare.com/changelog/) 
+[Directory](https://developers.cloudflare.com/directory/) [Resources](https://developers.cloudflare.com/resources/) [API](https://developers.cloudflare.com/api/) [Agent setup](https://developers.cloudflare.com/agent-setup/) [Use cases](https://developers.cloudflare.com/use-cases/) [Changelog](https://developers.cloudflare.com/changelog/) 
 
 # Welcome to Cloudflare
 
@@ -56,6 +56,50 @@ Zero Trust
 
 ---
 
+![AI agents illustration](https://developers.cloudflare.com/_astro/agents.P_8QDHqc_Z1P1F3A.svg) 
+
+## Build with your favorite AI agent
+
+Install an agent of your choice, connect skills and MCP servers, and start deploying to Cloudflare — all from your editor or terminal.
+
+[ ![Claude Code](https://developers.cloudflare.com/icons/agents/claude/light.svg) ![Claude Code](https://developers.cloudflare.com/icons/agents/claude/dark.svg) ](https://developers.cloudflare.com/agent-setup/claude-code/ "Claude Code") [ ![Codex](https://developers.cloudflare.com/icons/agents/codex/light.svg) ![Codex](https://developers.cloudflare.com/icons/agents/codex/dark.svg) ](https://developers.cloudflare.com/agent-setup/codex/ "Codex") [ ![Cursor](https://developers.cloudflare.com/icons/agents/cursor/light.svg) ![Cursor](https://developers.cloudflare.com/icons/agents/cursor/dark.svg) ](https://developers.cloudflare.com/agent-setup/cursor/ "Cursor") [ ![OpenCode](https://developers.cloudflare.com/icons/agents/opencode/light.svg) ![OpenCode](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) ](https://developers.cloudflare.com/agent-setup/opencode/ "OpenCode") [ ![GitHub Copilot](https://developers.cloudflare.com/icons/agents/copilot/light.svg) ![GitHub Copilot](https://developers.cloudflare.com/icons/agents/copilot/dark.svg) ](https://developers.cloudflare.com/agent-setup/github-copilot/ "GitHub Copilot") [ ![Windsurf](https://developers.cloudflare.com/icons/agents/windsurf/light.svg) ![Windsurf](https://developers.cloudflare.com/icons/agents/windsurf/dark.svg) ](https://developers.cloudflare.com/agent-setup/windsurf/ "Windsurf") 
+
+[Explore agent setup → ](https://developers.cloudflare.com/agent-setup/) 
+
+---
+
+![Developer Platform section image](https://developers.cloudflare.com/_astro/developer-platform-light.CZoHB6oh_eLF9R.svg) ![Developer Platform section image](https://developers.cloudflare.com/_astro/developer-platform-dark.ChPufHpV_Z1n8xct.svg) 
+
+## Developer Platform
+
+The Cloudflare Developer Platform provides a serverless execution environment that allows you to create entirely new applications or augment existing ones without configuring or maintaining infrastructure.
+
+[ Explore our Developer Platform ](https://developers.cloudflare.com/directory/?product-group=Developer+platform) 
+
+---
+
+Install the WARP Client 
+
+The Cloudflare WARP client allows individuals and organizations to have a faster, more secure, and more private experience online.
+
+  
+[ Get started ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/) 
+
+Set up a tunnel 
+
+Cloudflare Tunnel provides you with a secure way to connect your resources to Cloudflare without a publicly routable IP address.
+
+  
+[ Set up a tunnel ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) 
+
+![Zero Trust section image](https://developers.cloudflare.com/_astro/zero-trust-light.BvZ3bzoV_5tUAY.svg) ![Zero Trust section image](https://developers.cloudflare.com/_astro/zero-trust-dark.Dary5ape_5tUAY.svg) 
+
+## Zero Trust
+
+Cloudflare Zero Trust replaces legacy security perimeters with our global network, making the Internet faster and safer for teams around the world.
+
+---
+
 ## Build with Cloudflare
 
 **Return HTML** **Return JSON** **Fetch HTML** **Redirect** **Respond with another site** 
@@ -96,7 +140,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGACwBOEQA5RggGwyAXCxZtgHOFxp8BIidNkLRAWABQAYXRUIAU2vYAIlADOMdM6jQrikmrwFiEio4YBsGACIoGhsADwA6ACtncNJUKDA7ELDI6Pik8LNLazsIbAAVOhgbHzgYGDA+AigrZAS4ADc4Z14EWAgAamB0XHAbMzNYtyQSXBtUOHAIEgBvUxISLroqXl8bCF4ACwAKBBsARxAbZwgAShW19ZJeK2uSA4hgMBIGEgADAB4AIQOADy5jKAE0AAoAUTeHzAAD4Hut-hRcHRkY9Hv8DsJEQAJGxgMDoEgAdUwYFw-2QeKx2JI-xgiLKBxcJGAiAA1iAYCQAO5dEgAczsNgQBBsuHIdA2JHMpJAuFQYEQNgpmG5EritJZKKZyHRmN+RFMBtOEBACCoQRsApIACUrm4qM4bEd3p8ADT3RlvGxwWYIZw+Vb+9bhZ7FewQSo2cI+cK2GIoL1gIiHRDuiAMACqZQAYtgpOFvQb1gBfcvYys3M1V8uVohmFTMNQaLQ8fhCMSSYQyeQyQpWWz2JyudyeZpUHx+DSkYKhCKhQgaFK+dKZZfhMiksgFCyjkrleM1OoNXhNFpJKzjUzLcJcqIAfSGIwyiZyszyyUrrbbDsAi7HRe30AdDBkZgzCAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWQQDYAzABYpATlkyJALhYs2wDnC40+AkeOlyFUiQFgAUAGF0VCAFNb2ACJQAzjHSuo0G0pLq8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3Nkl4bW5IjiGAwEgYSAAMADwAQicAHlLBUAJoABQAoh8vmAAHxPTaAii4Oio57PQFHACMyIAEnYwGB0CQAOqYMC4QHIQk43EkQEwZEVI5uEjARAAaxAMBIAHceiQAOYOOwIAh2XDkOhbEiWCkgXCoMCIOzUzB86UJBnstGs5CY7H-IjmY3nCAgBBUEJ2YUkABKNw8VFcdhOn2+ABpHiyPnY4PMEK4-Osg5tIq9So4INU7JE-JF7HEUL6wERjogvRAGABVCoAMWwAA5In7jZsAL7V3G1u6WuvV2tECyqZjqTTaHj8ISiSQyeSKYo2eyOFzuTzeVpUPwBTSkULhKLhQiaNL+TLZNeRMgUshFKwTsqVJN1BpNXgtNopGyTcyrSK8mIAfRGYyyKby8wKqS1p2XY9kEfa6IOBgjsYEjMBYQA)
 
 JavaScript
 
@@ -122,7 +166,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAWAMziAnBIBsogOwBWBQC4WLNsA5wuNPgJHjRU2YoUBYAFABhdFQgBTO9gAiUAM4x0bqNFvKSGngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ388EkDE8vL8f2MBgdD+KIAd0wYFwUQANM8tgBfIgWeEkC4QEAIKgkABKt08VDc9hSblspy092RiLhSMsamYGi0Oh4-CEYkkMnkShKtgcTlcHi8PjaVH8gS0pDCEWiEUIWnSASyOWlUTIwLIxWsvPKVRqdW2jWavFa7VStimFjWUWAcFiAH1RuNslFlPkFoU0gi6fTGcFmXo2YZjFyFMxLEA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWYQE4AHBICMAZgBMghQC4WLNsA5wuNPgJHipcxQoCwAKADC6KhACmt7ABEoAZxjpXUaDeUkNeATEJFRwwHYMAERQNHYAHgB0AFaukaSoUGAOYRHRsYkpkRbWtg4Q2AAqdDB2fnAwMGB8BFA2yElwAG5wrrwIsBAA1MDouOB2FhbxHkgkuHaocOAQJADe5iQkPXRUvP52ELwAFgAUCHYAjiB2rhAAlGsbmyS8NrdzQSQMj8-PR3ZgMDoPyRADumDAuEiABonpsAL5EcxwkjnCAgBBUEgAJRuHiorjsyVcNhOWjuSIRsMRFjUzA0Wh0PH4QlEkhkCiU8mKNnsjhc7k83laVD8AS0pFC4Si4UIWjS-ky2WlkTIQLIRSsvLKlWqtS2DSavBabRSNkm5lWkWAcBiAH0RmMspFlHl5gVUvDaXSGUEmXpWYYOSZ5MwLEA)
 
 JavaScript
 
@@ -150,7 +194,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWAIwAWQQE4p4gOxSATOIBcLFm2Ac4XGnwEiJ02QuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skyABUb88vbyQASvZNOC8ewkAAGF1GDlBJAA7j5jiQIMcQccvKs6JRYe4ERB0CQ3I5cCQLtdbhA3Ij0F8tm9kNTeLY7sT7JCQQwSFFjhAIDA3CpkMgEuEmvZEgzgOkLNSLhAQAgqNsYXAfAcjmcIegHAAaZmku73IjPAC+WosRqIlnUzE02l0PH4QjEkhk8iU4hKtgcTlcHi8PjaVH8gW0pDCEWiEUI2nSASyOXDUTIYHQZGK1k95SqNTq20azV4rXaqVsUwsayiwGVVAA+qNxtkoip8gtCmkjZarTbgnb9I6jC7TOJmJYgA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWACwBGQQE4A7DIBsAZgAcUgFwsWbYBzhcafASInS5S1QFgAUAGF0VCAFMH2ACJQAzjHQeo0e2ok2ngExCRUcMCODABEUDSOAB4AdABWHjGkqFBgzpHRcQkp6THWdg7OENgAKnQwjoFwMDBgfARQ9sipcABucB68CLAQANTA6LjgjtbWSd5IJLiOqHDgECQA3lYkJP10VLxBjhC8ABYAFAiOAI4gjh4QAJSb2zskyABUH69vHyQASo4WnBeI4SAADK7jJzgkgAdz8pxIEFOYNOPnWdEo8M8SIg6BIHmcuBIV1u9wgHmR6B+Ow+yFpvHsD1JjmhYIYJBipwgEBgHjUyGQSUiLUcySZwEyVlpVwgIAQVF2cLgfiOJwuUPQTgANKzyQ9HkRXgBfHVWE1EayaZjaXT6Hj8IRiSSyBQqKRlexOFzuLw+PwdKiBYK6UgRKKxKKEXSZII5PKRmJkMDoMilWzeyo1OoNXbNVq8dqddL2GZWDYxYCqqgAfXGk1yMTUhSWxQyJutNrtoQdhmdJjd5ikzGsQA)
 
 JavaScript
 
@@ -173,7 +217,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmUQFYAjAA4xwgEwSxALhYs2wDnC40+AkeOmyFYgLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2SXmsb2evoEO8qAFUAJQAMiQGCQIocIBAYC4lMhkHFQg1bPEXsBUo8Ni8qG8bgQQC4rHNgSRhIIJER0SQzhAQAgqCQ-td3FikWceGdeBBjnMbtFmtZ-gCADQkHHU-EjWy3ckbAC+grMMqI5lUzHUmm0PH4QlEwkkMnkiiK1jsDmcbg8XhaVF8-k0pBCYUiYUImlSfgyWUdETIYHQZEKlmNpQqVRqm3qjV4fKobRc1gmZhWEWAcGiAH1hqNMhElLk5vkUjLlSq1YENbptQZ9cZmOYgA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGABwBmAEyjJAdgCsI8QC4WLNsA5wuNPgJETpcxcPEBYAFABhdFQgBTO9gAiUAM4x0bqNFvKSGngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ387fQYb5UAKoAJQAMiQGCQoscIBAYG5lMhkAlwk17Ik3sB0s8tm8qB87gQQG4bAtQSRxCIiJiSBcICAEFQSADbp4cSiLjwLrwIKcFndYq1bICgQAaEh4mmEsb2e4UrYAXyFFllREsamYGi0Oh4-CEYikMgUShKtgcTlcHi8PjaVH8gS0pDCEWiEUIWnSASyOUdUTIYHQZGK1mN5SqNTq20azV4-KoHTctimFjWUWAcFiAH1RuNslFlPkFoU0rKVar1cFNXodYZ9SZxMxLEA)
 
 JavaScript
 
@@ -212,41 +256,9 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAmAIwBmUaICsAdmHSAnOIBcLFm2Ac4XGnwEiJUuQuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1sB1Ly+VCQAsofHYwBy6AgAEEwGB0AB3ey4c5XG53R4bF4vC4QEAIT5UewQkgAJVuniobnspwABj8IH9cCQACRrC7XW4QRIRSljAC+oSB2zBkOhiVJABonsjkXcCCA3P4ACyCaSC56ikjHexwBYIKUipUvUHgiH+KIAcQAopUogrtSR2RbRez7kRFVbHchkCQAPJUMB0EgmyokBnwiBuEgQzAAaxDPmOJEp7hIMAQ6HidESjqgqBIsMZdxZvzGJAAhAwGCQjaaoo9UejPhSqYCQbyoTCA0z7Y6qxiDkczqTjhAIDApS6EuEmvZErx0MBSW2ttaLOyiJZ1MxNNpdDx+EIxJIZPIlOISrYHE5XB4vD42lR-IFtKQwhFoqy1cF0gEsjlH1EyOCyMVrMe5RVDUdTbI0zS8K07SpLYUwWGsUTAHAsQAPqjOM2RRCo+QLIUaTssuK5rsEG76NuRh7qY4jMJYQA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2QQDYxAZgBMwgIxiALAFYAXCxZtgHOFxp8BI8VNkKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3twOpePyoSAFkjk-GAHLoCAAQTAYHQAHcHLgLtdbvcnptXq9LhAQAgvlQHJCSAAlO5eKjuBxnAAGvwg-1wJAAJOtLjc7hAkpEqeMAL5hYE7cFQmFJMkAGmeKJR9wIIHcAUUgmUQpeYpIJwccEWCGloqVrzBEMhAWiAHEAKJVaIK7UkDkWsUch5ERVWx3IZAkADyVDAdBIJqqJEZCIg7hIkMwAGsQ74TiQqR4SDAEOgEnQko6oKgSHCmfdWX9xiQAIQMBgkI2m6JPNEYr6U6lA0F86GwgPM+2OquYw7Hc5kk4QCAwaUuxIRZoOJK8dDAMlt7bWywcohWDTMLQ6PQ8fhCUQSGTyJTKUp2RzONyeby+dpUAJBHSkcKRGJstUhDKBbK5R-RMgQsglGzHhU1S1PUOxNC0vBtB0aR2NMljrNEwBwHEAD6YwTDk0SqAUixFOkHLLiua4hBuBjbsYe5mMozBWEAA)
 
 [ Learn more about Workers ](https://developers.cloudflare.com/workers/) 
-
----
-
-![Developer Platform section image](https://developers.cloudflare.com/_astro/developer-platform-light.CZoHB6oh_eLF9R.svg) ![Developer Platform section image](https://developers.cloudflare.com/_astro/developer-platform-dark.ChPufHpV_Z1n8xct.svg) 
-
-## Developer Platform
-
-The Cloudflare Developer Platform provides a serverless execution environment that allows you to create entirely new applications or augment existing ones without configuring or maintaining infrastructure.
-
-[ Explore our Developer Platform ](https://developers.cloudflare.com/directory/?product-group=Developer+platform) 
-
----
-
-Install the WARP Client 
-
-The Cloudflare WARP client allows individuals and organizations to have a faster, more secure, and more private experience online.
-
-  
-[ Get started ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/) 
-
-Set up a tunnel 
-
-Cloudflare Tunnel provides you with a secure way to connect your resources to Cloudflare without a publicly routable IP address.
-
-  
-[ Set up a tunnel ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) 
-
-![Zero Trust section image](https://developers.cloudflare.com/_astro/zero-trust-light.BvZ3bzoV_5tUAY.svg) ![Zero Trust section image](https://developers.cloudflare.com/_astro/zero-trust-dark.Dary5ape_5tUAY.svg) 
-
-## Zero Trust
-
-Cloudflare Zero Trust replaces legacy security perimeters with our global network, making the Internet faster and safer for teams around the world.
 
 ---
 

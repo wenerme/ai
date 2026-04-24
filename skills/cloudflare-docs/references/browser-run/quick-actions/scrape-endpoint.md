@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-run/quick-actions/scrape-endpoint.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # /scrape - Scrape HTML elements
 
@@ -45,8 +54,8 @@ You must provide either `url` or `elements`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-5417)
-* [ TypeScript SDK ](#tab-panel-5418)
+* [ curl ](#tab-panel-5589)
+* [ TypeScript SDK ](#tab-panel-5590)
 
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 

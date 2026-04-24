@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/bots/get-started/super-bot-fight-mode.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Super Bot Fight Mode
 
@@ -48,20 +57,19 @@ Note
 
 If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disable Bot Fight Mode in your Bot settings.
 
-Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
-
-New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot Fight Mode** off.
+* Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
+* New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
 To start using Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-3532)
-* [ Old dashboard ](#tab-panel-3533)
+* [  New dashboard ](#tab-panel-5537)
+* [ Old dashboard ](#tab-panel-5538)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
-3. Go to **Super Bot Fight Mode**.
-4. Turn **Super Bot Fight Mode** on.
+3. Go to **Super Bot fight mode**.
+4. Turn **Super Bot fight mode** on.
 5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:  
    * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).  
    * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).  
@@ -74,7 +82,8 @@ To start using Super Bot Fight Mode:
 4. Choose how your domain should respond to various types of traffic:  
    * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).  
    * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).  
-   * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+   * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).  
+   * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 Warning
 
@@ -92,8 +101,8 @@ If you find that **Super Bot Fight Mode** is causing problems with your applicat
 
 To disable Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-3534)
-* [ Old dashboard ](#tab-panel-3535)
+* [  New dashboard ](#tab-panel-5535)
+* [ Old dashboard ](#tab-panel-5536)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

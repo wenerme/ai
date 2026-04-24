@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/edge-certificates/advanced-certificate-manager/manage-certificates.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Manage advanced certificates
 
@@ -22,8 +31,8 @@ If you are using an existing [Universal SSL certificate](https://developers.clou
 
 Once you order a certificate, you can review the [certificate's status](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or via the API with a [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/list/).
 
-* [ Dashboard ](#tab-panel-6549)
-* [ API ](#tab-panel-6550)
+* [ Dashboard ](#tab-panel-9020)
+* [ API ](#tab-panel-9021)
 
 To create a new advanced certificate in the dashboard:
 
@@ -51,8 +60,8 @@ The available options for **Validation method** and **Certificate Validity Perio
 
 ## Delete a certificate
 
-* [ Dashboard ](#tab-panel-6551)
-* [ API ](#tab-panel-6552)
+* [ Dashboard ](#tab-panel-9022)
+* [ API ](#tab-panel-9023)
 
 To delete an advanced certificate in the dashboard:
 

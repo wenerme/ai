@@ -25,6 +25,8 @@ glab mr create -a username -t "fix annoying bug"
 glab mr create -f --draft --label RFC
 glab mr create --fill --web
 glab mr create --fill --fill-commit-body --yes
+glab mr create -t "Fix login bug" --template bug_fix
+glab mr create -t "Security patch" --template security_fix.md --yes
 ```
 
 ## Options
@@ -52,6 +54,7 @@ glab mr create --fill --fill-commit-body --yes
   -s, --source-branch string   Create a merge request from this branch. Default is the current branch.
       --squash-before-merge    Squash commits into a single commit when merging. Set to true/false to override project defaults, or omit to use project settings.
   -b, --target-branch string   The target or base branch into which you want your code merged into.
+      --template string        Name of a template in '.gitlab/merge_request_templates/' to pre-populate the description. The '.md' extension is optional. Templates are loaded from the local repository only.
   -t, --title string           Supply a title for the merge request.
   -w, --web                    Continue merge request creation in a browser.
       --wip                    Mark merge request as a draft. Alternative to --draft.

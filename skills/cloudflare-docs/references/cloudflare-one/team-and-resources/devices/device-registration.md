@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/device-registration.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Device registration
 
@@ -38,8 +47,8 @@ A single physical device can have [multiple device registrations](https://develo
 
 ## Review device registration status
 
-* [ Dashboard ](#tab-panel-5891)
-* [ API ](#tab-panel-5892)
+* [ Dashboard ](#tab-panel-6107)
+* [ API ](#tab-panel-6108)
 
 To review how many device registrations are associated with a device:
 
@@ -149,8 +158,8 @@ The following table summarizes the actions available for managing device registr
 
 Devices can have multiple device registrations. Deleting one registration does not affect other registrations on the same device.
 
-* [ Dashboard ](#tab-panel-5893)
-* [ API ](#tab-panel-5894)
+* [ Dashboard ](#tab-panel-6109)
+* [ API ](#tab-panel-6110)
 
 To delete a device registration:
 

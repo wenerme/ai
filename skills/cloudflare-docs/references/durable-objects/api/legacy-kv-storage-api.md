@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/api/legacy-kv-storage-api.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # KV-backed Durable Object Storage (Legacy)
 
@@ -56,9 +65,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-6606)
-* [  TypeScript ](#tab-panel-6607)
-* [  Python ](#tab-panel-6608)
+* [  JavaScript ](#tab-panel-6778)
+* [  TypeScript ](#tab-panel-6779)
+* [  Python ](#tab-panel-6780)
 
 JavaScript
 

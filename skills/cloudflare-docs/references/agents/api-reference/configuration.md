@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/configuration.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Configuration
 
@@ -38,8 +47,8 @@ The typical file structure for an Agent project created from `npm create cloudfl
 
 The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. Here is a complete example for an agents project:
 
-* [  wrangler.jsonc ](#tab-panel-4118)
-* [  wrangler.toml ](#tab-panel-4119)
+* [  wrangler.jsonc ](#tab-panel-4294)
+* [  wrangler.toml ](#tab-panel-4295)
 
 JSONC
 
@@ -55,7 +64,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-20",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -149,7 +158,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-20"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -202,8 +211,8 @@ Explain Code
 
 The `nodejs_compat` flag is required for agents:
 
-* [  wrangler.jsonc ](#tab-panel-4100)
-* [  wrangler.toml ](#tab-panel-4101)
+* [  wrangler.jsonc ](#tab-panel-4276)
+* [  wrangler.toml ](#tab-panel-4277)
 
 JSONC
 
@@ -233,8 +242,8 @@ This enables Node.js compatibility mode, which agents depend on for crypto, stre
 
 Each agent class needs a binding:
 
-* [  wrangler.jsonc ](#tab-panel-4102)
-* [  wrangler.toml ](#tab-panel-4103)
+* [  wrangler.jsonc ](#tab-panel-4278)
+* [  wrangler.toml ](#tab-panel-4279)
 
 JSONC
 
@@ -287,8 +296,8 @@ When `name` and `class_name` differ
 
 When `name` and `class_name` differ, follow the pattern shown below:
 
-* [  wrangler.jsonc ](#tab-panel-4104)
-* [  wrangler.toml ](#tab-panel-4105)
+* [  wrangler.jsonc ](#tab-panel-4280)
+* [  wrangler.toml ](#tab-panel-4281)
 
 JSONC
 
@@ -338,8 +347,8 @@ This is useful when you want environment variable-style naming (`COUNTER_DO`) bu
 
 Migrations tell Cloudflare how to set up storage for your Durable Objects:
 
-* [  wrangler.jsonc ](#tab-panel-4106)
-* [  wrangler.toml ](#tab-panel-4107)
+* [  wrangler.jsonc ](#tab-panel-4282)
+* [  wrangler.toml ](#tab-panel-4283)
 
 JSONC
 
@@ -388,8 +397,8 @@ new_sqlite_classes = [ "MyAgent" ]
 
 For serving static files (HTML, CSS, JS):
 
-* [  wrangler.jsonc ](#tab-panel-4108)
-* [  wrangler.toml ](#tab-panel-4109)
+* [  wrangler.jsonc ](#tab-panel-4284)
+* [  wrangler.toml ](#tab-panel-4285)
 
 JSONC
 
@@ -425,8 +434,8 @@ binding = "ASSETS"
 
 With a binding, you can serve assets programmatically:
 
-* [  JavaScript ](#tab-panel-4138)
-* [  TypeScript ](#tab-panel-4139)
+* [  JavaScript ](#tab-panel-4314)
+* [  TypeScript ](#tab-panel-4315)
 
 JavaScript
 
@@ -494,8 +503,8 @@ Explain Code
 
 For Workers AI integration:
 
-* [  wrangler.jsonc ](#tab-panel-4110)
-* [  wrangler.toml ](#tab-panel-4111)
+* [  wrangler.jsonc ](#tab-panel-4286)
+* [  wrangler.toml ](#tab-panel-4287)
 
 JSONC
 
@@ -527,8 +536,8 @@ binding = "AI"
 
 Access in your agent:
 
-* [  JavaScript ](#tab-panel-4134)
-* [  TypeScript ](#tab-panel-4135)
+* [  JavaScript ](#tab-panel-4310)
+* [  TypeScript ](#tab-panel-4311)
 
 JavaScript
 
@@ -647,8 +656,8 @@ The Agents SDK provides a Vite plugin that handles TC39 decorator transforms. Vi
 
 Add the plugin to your `vite.config.ts`:
 
-* [  JavaScript ](#tab-panel-4140)
-* [  TypeScript ](#tab-panel-4141)
+* [  JavaScript ](#tab-panel-4316)
+* [  TypeScript ](#tab-panel-4317)
 
 JavaScript
 
@@ -776,8 +785,8 @@ interface Env extends Cloudflare.Env {}
 
 You can also define types manually:
 
-* [  JavaScript ](#tab-panel-4148)
-* [  TypeScript ](#tab-panel-4149)
+* [  JavaScript ](#tab-panel-4324)
+* [  TypeScript ](#tab-panel-4325)
 
 JavaScript
 
@@ -872,8 +881,8 @@ DATABASE_URL=postgres://...
 
 Access in your agent:
 
-* [  JavaScript ](#tab-panel-4146)
-* [  TypeScript ](#tab-panel-4147)
+* [  JavaScript ](#tab-panel-4322)
+* [  TypeScript ](#tab-panel-4323)
 
 JavaScript
 
@@ -940,8 +949,8 @@ npx wrangler secret delete OPENAI_API_KEY
 
 For non-sensitive configuration, use `vars` in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4112)
-* [  wrangler.toml ](#tab-panel-4113)
+* [  wrangler.jsonc ](#tab-panel-4288)
+* [  wrangler.toml ](#tab-panel-4289)
 
 JSONC
 
@@ -981,8 +990,8 @@ DEBUG_MODE = "false"
 
 All values must be strings. Parse numbers and booleans in code:
 
-* [  JavaScript ](#tab-panel-4142)
-* [  TypeScript ](#tab-panel-4143)
+* [  JavaScript ](#tab-panel-4318)
+* [  TypeScript ](#tab-panel-4319)
 
 JavaScript
 
@@ -1010,8 +1019,8 @@ const debugMode = this.env.DEBUG_MODE === "true";
 
 Use `env` sections for different environments (for example, staging, production):
 
-* [  wrangler.jsonc ](#tab-panel-4120)
-* [  wrangler.toml ](#tab-panel-4121)
+* [  wrangler.jsonc ](#tab-panel-4296)
+* [  wrangler.toml ](#tab-panel-4297)
 
 JSONC
 
@@ -1251,8 +1260,8 @@ This:
 
 Add a route in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4114)
-* [  wrangler.toml ](#tab-panel-4115)
+* [  wrangler.jsonc ](#tab-panel-4290)
+* [  wrangler.toml ](#tab-panel-4291)
 
 JSONC
 
@@ -1292,8 +1301,8 @@ zone_name = "example.com"
 
 Or use a custom domain (simpler):
 
-* [  wrangler.jsonc ](#tab-panel-4116)
-* [  wrangler.toml ](#tab-panel-4117)
+* [  wrangler.jsonc ](#tab-panel-4292)
+* [  wrangler.toml ](#tab-panel-4293)
 
 JSONC
 
@@ -1367,8 +1376,8 @@ npx wrangler rollback
 
 Define environments in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4144)
-* [  wrangler.toml ](#tab-panel-4145)
+* [  wrangler.jsonc ](#tab-panel-4320)
+* [  wrangler.toml ](#tab-panel-4321)
 
 JSONC
 
@@ -1385,7 +1394,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-20",
+  "compatibility_date": "2026-04-24",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -1445,7 +1454,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-20"
+compatibility_date = "2026-04-24"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -1519,8 +1528,8 @@ Each environment gets its own Durable Objects. Staging agents do not share state
 
 To explicitly separate:
 
-* [  wrangler.jsonc ](#tab-panel-4124)
-* [  wrangler.toml ](#tab-panel-4125)
+* [  wrangler.jsonc ](#tab-panel-4300)
+* [  wrangler.toml ](#tab-panel-4301)
 
 JSONC
 
@@ -1584,8 +1593,8 @@ Migrations manage Durable Object storage schema changes.
 
 Add to `new_sqlite_classes` in a new migration:
 
-* [  wrangler.jsonc ](#tab-panel-4122)
-* [  wrangler.toml ](#tab-panel-4123)
+* [  wrangler.jsonc ](#tab-panel-4298)
+* [  wrangler.toml ](#tab-panel-4299)
 
 JSONC
 
@@ -1644,8 +1653,8 @@ new_sqlite_classes = [ "NewAgent" ]
 
 Use `renamed_classes`:
 
-* [  wrangler.jsonc ](#tab-panel-4136)
-* [  wrangler.toml ](#tab-panel-4137)
+* [  wrangler.jsonc ](#tab-panel-4312)
+* [  wrangler.toml ](#tab-panel-4313)
 
 JSONC
 
@@ -1727,8 +1736,8 @@ Also update:
 
 Use `deleted_classes`:
 
-* [  wrangler.jsonc ](#tab-panel-4130)
-* [  wrangler.toml ](#tab-panel-4131)
+* [  wrangler.jsonc ](#tab-panel-4306)
+* [  wrangler.toml ](#tab-panel-4307)
 
 JSONC
 
@@ -1800,8 +1809,8 @@ This permanently deletes all data for that class.
 
 The class is not in migrations:
 
-* [  wrangler.jsonc ](#tab-panel-4126)
-* [  wrangler.toml ](#tab-panel-4127)
+* [  wrangler.jsonc ](#tab-panel-4302)
+* [  wrangler.toml ](#tab-panel-4303)
 
 JSONC
 
@@ -1871,8 +1880,8 @@ cat .env
 
 Migration tags must be unique. If you see conflicts:
 
-* [  wrangler.jsonc ](#tab-panel-4128)
-* [  wrangler.toml ](#tab-panel-4129)
+* [  wrangler.jsonc ](#tab-panel-4304)
+* [  wrangler.toml ](#tab-panel-4305)
 
 JSONC
 
@@ -1915,8 +1924,8 @@ new_sqlite_classes = [ "B" ]
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-4132)
-* [  wrangler.toml ](#tab-panel-4133)
+* [  wrangler.jsonc ](#tab-panel-4308)
+* [  wrangler.toml ](#tab-panel-4309)
 
 JSONC
 

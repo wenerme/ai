@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ Video ](https://developers.cloudflare.com/search/?tags=Video) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Diagnostic logs
 
@@ -47,9 +56,9 @@ Chapters
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-5879)
-* [ Windows ](#tab-panel-5880)
-* [ Linux ](#tab-panel-5881)
+* [ macOS ](#tab-panel-6095)
+* [ Windows ](#tab-panel-6096)
+* [ Linux ](#tab-panel-6097)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -261,8 +270,8 @@ The Cloudflare One Client does not provide an official method to configure loggi
 
 To view client logs on mobile devices:
 
-* [ iOS ](#tab-panel-5877)
-* [ Android/ChromeOS ](#tab-panel-5878)
+* [ iOS ](#tab-panel-6093)
+* [ Android/ChromeOS ](#tab-panel-6094)
 
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.

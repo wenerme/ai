@@ -49,12 +49,6 @@ Hence, they may confuse a reader.
 
 <pre class="language-text"><code class="language-text">code-block.js:1:3 <a href="https://biomejs.dev/linter/rules/no-useless-escape-in-regex">lint/complexity/noUselessEscapeInRegex</a> <span style="color: #000; background-color: #ddd;"> FIXABLE </span> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">The character doesn't need to be escaped.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>/[&#92;-]/;   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">The character should only be escaped if it appears in the middle of the character class or under the &#96;v&#96; flag.</span>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Safe fix</span><span style="color: lightgreen;">: </span><span style="color: lightgreen;">Unescape the character.</span>    <strong>  1 │ </strong>/[<span style="color: Tomato;">&#92;</span>-]/;  <strong>    │ </strong>  <span style="color: Tomato;">-</span>    </code></pre>
 
-```js
-/[\&]/v;
-```
-
-<pre class="language-text"><code class="language-text">code-block.js:1:3 <a href="https://biomejs.dev/linter/rules/no-useless-escape-in-regex">lint/complexity/noUselessEscapeInRegex</a> <span style="color: #000; background-color: #ddd;"> FIXABLE </span> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">The character doesn't need to be escaped.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>/[&#92;&amp;]/v;   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Safe fix</span><span style="color: lightgreen;">: </span><span style="color: lightgreen;">Unescape the character.</span>    <strong>  1 │ </strong>/[<span style="color: Tomato;">&#92;</span>&amp;]/v;  <strong>    │ </strong>  <span style="color: Tomato;">-</span>     </code></pre>
-
 ### Valid
 
 ```js
@@ -63,6 +57,10 @@ Hence, they may confuse a reader.
 
 ```js
 /[\b]/
+```
+
+```js
+/[\&]/v
 ```
 
 ## Related links

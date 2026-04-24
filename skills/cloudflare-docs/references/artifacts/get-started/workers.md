@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/artifacts/get-started/workers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workers
 
@@ -66,8 +75,8 @@ cd artifacts-worker
 
 Open your Wrangler config file and add the Artifacts binding:
 
-* [  wrangler.jsonc ](#tab-panel-5289)
-* [  wrangler.toml ](#tab-panel-5290)
+* [  wrangler.jsonc ](#tab-panel-5497)
+* [  wrangler.toml ](#tab-panel-5498)
 
 JSONC
 
@@ -83,7 +92,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-17",
+  "compatibility_date": "2026-04-24",
 
   "artifacts": [
 
@@ -114,7 +123,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-17"
+compatibility_date = "2026-04-24"
 
 
 [[artifacts]]
@@ -152,8 +161,8 @@ Wrangler adds an `Artifacts` type to your generated `worker-configuration.d.ts` 
 
 Replace `src/index.ts` with the following code:
 
-* [  JavaScript ](#tab-panel-5291)
-* [  TypeScript ](#tab-panel-5292)
+* [  JavaScript ](#tab-panel-5499)
+* [  TypeScript ](#tab-panel-5500)
 
 src/index.js
 
@@ -307,8 +316,8 @@ In a second terminal, choose one of the following ways to create a repo through 
 
 If you rerun this guide, use a different repo name in the request body.
 
-* [ Manual ](#tab-panel-5287)
-* [ jq ](#tab-panel-5288)
+* [ Manual ](#tab-panel-5495)
+* [ jq ](#tab-panel-5496)
 
 Terminal window
 

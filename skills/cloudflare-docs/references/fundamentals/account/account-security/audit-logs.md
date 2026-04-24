@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/account/account-security/audit-logs.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Audit Logs - version 2
 
@@ -199,6 +208,25 @@ Contain events scoped to a single Cloudflare account. These logs are filterable 
 Reflect actions associated with a user's login (email) across multiple accounts. These logs enable cross-account tracking and can be filtered by `user ID` or `email`. They are visible on any account the user had access to at the time of the activity. User Profile Activity Logs can be filtered using `resource_scope ="user"`.
 
 The `GET /memberships` endpoint supports cross-account access. To query memberships, use the parameter `resource_scope=memberships`.
+
+#### Organization Activity Logs
+
+Contain events scoped to specific Cloudflare organizations. These logs capture user-initiated actions performed by Org Admins through organization-level APIs and are retrievable via the Audit Logs v2 API.
+
+Terminal window
+
+```
+
+GET https://api.cloudflare.com/client/v4/organizations/{organization_id}/logs/audit
+
+
+```
+
+Note
+
+Organization-level audit logs are separate from account-level audit logs. Actions performed within a specific account continue to be available via the account-level Audit Logs UI, Audit Logs v2 API, and Logpush.
+
+This initial release covers user-initiated actions only. Support for system-initiated actions, a dashboard UI, and Logpush for organizations will be added in future releases.
 
 ## Example how to query Audit Logs
 

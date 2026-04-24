@@ -1,18 +1,27 @@
 ---
 title: Manage AI crawlers
-description: AI Crawl Control enables you to take specific action for each AI crawler.
+description: Allow, block, or configure actions for AI crawlers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-crawl-control/features/manage-ai-crawlers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Manage AI crawlers
 
@@ -55,8 +64,8 @@ The values of the table will update according to your filter.
 
 ## Take action for each AI crawler
 
-* [ Without pay per crawl ](#tab-panel-3030)
-* [ With pay per crawl ](#tab-panel-3031)
+* [ Without pay per crawl ](#tab-panel-5258)
+* [ With pay per crawl ](#tab-panel-5259)
 
 For each AI crawler, you can choose to allow or block access.
 

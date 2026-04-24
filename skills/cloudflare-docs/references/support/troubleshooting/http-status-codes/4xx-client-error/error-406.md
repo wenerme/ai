@@ -1,16 +1,25 @@
 ---
 title: Error 406
-description: The 406 Not Acceptable status code indicates that the requested resource is not available in a format that adheres to the content negotiation headers specified by the client (for example, Accept-Charset or Accept-Language).
+description: Troubleshoot HTTP 406 error responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Error 406
 

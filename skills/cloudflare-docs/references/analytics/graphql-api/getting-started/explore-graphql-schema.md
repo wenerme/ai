@@ -1,19 +1,27 @@
 ---
 title: Explore the GraphQL schema
-description: Many GraphQL clients support browsing the GraphQL schema by taking care of
-introspection. In this page, we will cover GraphiQL and Altair clients.
+description: Browse available datasets and fields via introspection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/graphql-api/getting-started/explore-graphql-schema.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Explore the GraphQL schema
 

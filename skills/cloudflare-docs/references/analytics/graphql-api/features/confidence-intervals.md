@@ -1,18 +1,27 @@
 ---
 title: Confidence Intervals
-description: Confidence intervals help assess accuracy and quantify uncertainty in results from sampled datasets. When querying sum or count fields on adaptive datasets, you can request a confidence interval to understand the possible range around an estimate. For example, specifying a confidence level of 0.95 returns the estimate, along with the range of values that likely contains the true value 95% of the time.
+description: Request confidence intervals for sampled data.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/graphql-api/features/confidence-intervals.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Confidence Intervals
 
@@ -86,7 +95,7 @@ query SingleDatasetWithConfidence($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygSwHYHMA2YAiBDALtgZzFwHUFcALAYQHskAzBAEzCQGMwAKAEgC86wAFWwoAXDAK4IyFABoY3Sdgi5xghAFsw87qyZrNYAJQwA3gCgYMAG4IwAd0hnLVmPyRgCnRmlyRxpu5CIuJ8AsIoAL4mFq6ujBAO2GhoAKLWrLgEAIJM2AAOuAgZAOIQNCD5Xi5xVj5+EAF5fkVaAPooqgpKKvLNxIZtvqF6kTW1aJrk4gCMAAwL41YxS65sFUi4q1bY1ijOtbUE2Br5GACSm5DWydswY4dW6wzMrBycGBlo4nMAdACcAFYVo81htcAdQa5PK08GA7nE0DRHBAEa5KvlIGirMdThhELx4VD7ncHrUyVYyWNIkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbixZwAjJ1QBWEZIAcGCiBhQAJs3ZdeAoXCGTpEuSAC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygSwHYHMA2YAiBDALtgZzFwHUFcALAYQHskAzBAEzCQGMwAKAEgC86wAFWwoAXDAK4IyFABoY3Sdgi5xghAFsw87qyZrNYAJQwA3gCgYMAG4IwAd0hnLVmPyRgCnRmlyRxpu5CIuJ8AsIoAL4mFq6ujBAO2GhoAKLWrLgEAIJM2AAOuAgZAOIQNCD5Xi5xVj5+EAF5fkVaAPooqgpKKvLNxIZtvqF6kTW1aJrk4gCMAAwL41YxS65sFUi4q1bY1ijOtbUE2Br5GACSm5DWydswY4dW6wzMrBycGBlo4nMAdACcAFYVo81htcAdQa5PK08GA7nE0DRHBAEa5KvlIGirMdThhELx4VD7ncHrUyVYyWNIkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwDMcAIwAOVGzao+QjBRAwoAE2bsuvASz5xpUmXIUBfIA)
 
 ### Response
 

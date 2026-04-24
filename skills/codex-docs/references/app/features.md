@@ -4,7 +4,7 @@ The Codex app is a focused desktop experience for working on Codex threads in pa
 with built-in worktree support, automations, and Git functionality.
 
 Most Codex app features are available on both macOS and Windows.
-Platform-specific exceptions are noted below.
+The sections below note platform-specific exceptions.
 
 <YouTubeEmbed
   title="Introducing the Codex app"
@@ -286,6 +286,11 @@ regular browser profile, cookies, extensions, or existing tabs.
 Use browser comments to mark specific elements or areas on a page, then ask
 Codex to address that feedback.
 
+When you want Codex to operate the page directly, use
+[browser use](https://developers.openai.com/codex/app/browser#browser-use) for local development servers and
+file-backed pages. You can manage the Browser plugin, allowed websites, and
+blocked websites from settings.
+
 </div>
 
 <CodexScreenshot
@@ -406,6 +411,11 @@ right constraint.
 If your task requires work across more than one repository or directory, prefer
 opening separate projects or using worktrees rather than asking Codex to roam
 outside the project root.
+
+If [automatic review](https://developers.openai.com/codex/agent-approvals-security#automatic-approval-reviews)
+is available in your workspace, you can choose it from the permissions selector.
+It keeps the same sandbox boundary but routes eligible approval requests through
+the configured review policy instead of waiting for you.
 
 For a high-level overview, see [sandboxing](https://developers.openai.com/codex/concepts/sandboxing). For
 configuration details, see the

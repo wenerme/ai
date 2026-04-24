@@ -5,13 +5,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/realtime/realtimekit/core/api-reference/RTKStage.md) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # RTKStage
 
@@ -89,7 +98,7 @@ Method to deny access to RTKStage. This should be called in response to a RTKSta
 
 #### module.exports.join()
 
-Method to join the stage Users either need to have the permission in the preset or must be accepted by a priveleged user to call this method
+Method to join the stage Users either need to have the permission in the preset or must be accepted by a privileged user to call this method
 
 **Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStage--module.exports)  
 

@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/api/send-emails/workers-api.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Workers API
 
@@ -22,8 +31,8 @@ The Workers API provides native email sending capabilities directly from your Cl
 
 Configure email bindings in your Wrangler configuration file to enable email sending:
 
-* [  wrangler.jsonc ](#tab-panel-6864)
-* [  wrangler.toml ](#tab-panel-6865)
+* [  wrangler.jsonc ](#tab-panel-7036)
+* [  wrangler.toml ](#tab-panel-7037)
 
 JSONC
 
@@ -161,9 +170,9 @@ Explain Code
 
 ### Basic usage
 
-* [ Simple email ](#tab-panel-6859)
-* [ Multiple recipients ](#tab-panel-6860)
-* [ With CC and BCC ](#tab-panel-6861)
+* [ Simple email ](#tab-panel-7031)
+* [ Multiple recipients ](#tab-panel-7032)
+* [ With CC and BCC ](#tab-panel-7033)
 
 TypeScript
 
@@ -232,8 +241,8 @@ Explain Code
 
 ### Attachments
 
-* [ PDF attachment ](#tab-panel-6862)
-* [ Inline image ](#tab-panel-6863)
+* [ PDF attachment ](#tab-panel-7034)
+* [ Inline image ](#tab-panel-7035)
 
 TypeScript
 
@@ -323,7 +332,7 @@ Explain Code
 
 Handle email sending errors gracefully:
 
-* [ Single send errors ](#tab-panel-6858)
+* [ Single send errors ](#tab-panel-7030)
 
 TypeScript
 

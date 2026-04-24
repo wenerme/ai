@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/edge-certificates/additional-options/automatic-https-rewrites.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Automatic HTTPS Rewrites
 
@@ -36,8 +45,8 @@ For security reasons, this feature will run on URLs pointing to `localhost` if t
 
 ## Enable Automatic HTTPS Rewrites
 
-* [ Dashboard ](#tab-panel-8739)
-* [ API ](#tab-panel-8740)
+* [ Dashboard ](#tab-panel-9002)
+* [ API ](#tab-panel-9003)
 
 To enable **Automatic HTTPS Rewrites** in the dashboard:
 

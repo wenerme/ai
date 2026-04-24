@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg) 
 
@@ -32,8 +41,8 @@ FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate h
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3040)
-* [  curl ](#tab-panel-3041)
+* [  TypeScript ](#tab-panel-3236)
+* [  curl ](#tab-panel-3237)
 
 ```
 
@@ -119,8 +128,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-3042)
-* [ Output ](#tab-panel-3043)
+* [ Input ](#tab-panel-3238)
+* [ Output ](#tab-panel-3239)
 
 ▶multipart{}
 
@@ -132,8 +141,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3038)
-* [ Output ](#tab-panel-3039)
+* [ Input ](#tab-panel-3234)
+* [ Output ](#tab-panel-3235)
 
 ```
 

@@ -1,18 +1,27 @@
 ---
 title: AI Crawl Control with Cloudflare Bots
-description: AI Crawl Control works alongside other Cloudflare products, such as Cloudflare bot solutions. Bot solutions identifies traffic matching patterns of known bots, and can challenge or block the bots as you wish.
+description: Use AI Crawl Control alongside bot management.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-crawl-control/configuration/ai-crawl-control-with-bots.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # AI Crawl Control with Cloudflare Bots
 

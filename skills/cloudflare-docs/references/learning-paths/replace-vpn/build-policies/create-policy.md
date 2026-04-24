@@ -1,18 +1,27 @@
 ---
 title: Secure your first application
-description: To ensure holistic security precautions, we recommend securing each distinct private application with at least two policies:
+description: Create policies for your first application.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/replace-vpn/build-policies/create-policy.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Secure your first application
 
@@ -27,9 +36,9 @@ To create a new policy, open [Cloudflare One ↗](https://one.dash.cloudflare.co
 
 ## Example DNS policy
 
-* [ Dashboard ](#tab-panel-5179)
-* [ API ](#tab-panel-5180)
-* [ Terraform (v5) ](#tab-panel-5181)
+* [ Dashboard ](#tab-panel-7582)
+* [ API ](#tab-panel-7583)
+* [ Terraform (v5) ](#tab-panel-7584)
 
 | Traffic Selector | Operator | Value                |
 | ---------------- | -------- | -------------------- |
@@ -157,9 +166,9 @@ Explain Code
 
 ## Example network policy
 
-* [ Dashboard ](#tab-panel-5182)
-* [ API ](#tab-panel-5183)
-* [ Terraform (v5) ](#tab-panel-5184)
+* [ Dashboard ](#tab-panel-7585)
+* [ API ](#tab-panel-7586)
+* [ Terraform (v5) ](#tab-panel-7587)
 
 | Traffic Selector | Operator | Value            |
 | ---------------- | -------- | ---------------- |
@@ -281,9 +290,9 @@ Explain Code
 
 We recommend adding a catch-all policy to the bottom of your network policy list. An effective Zero Trust model should prioritize default-deny actions to avoid any overly permissive policy building. For example,
 
-* [ Dashboard ](#tab-panel-5185)
-* [ API ](#tab-panel-5186)
-* [ Terraform (v5) ](#tab-panel-5187)
+* [ Dashboard ](#tab-panel-7588)
+* [ API ](#tab-panel-7589)
+* [ Terraform (v5) ](#tab-panel-7590)
 
 | Traffic Selector | Operator | Value                      | Logic |
 | ---------------- | -------- | -------------------------- | ----- |

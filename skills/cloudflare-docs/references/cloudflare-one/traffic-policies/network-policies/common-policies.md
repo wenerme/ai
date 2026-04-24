@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API)[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks)[ Posture ](https://developers.cloudflare.com/search/?tags=Posture) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/traffic-policies/network-policies/common-policies.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Common policies
 
@@ -34,8 +43,8 @@ After seven days, view your [Shadow IT SaaS Analytics](https://developers.cloudf
 
 To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-6039)
-* [ API ](#tab-panel-6040)
+* [ Dashboard ](#tab-panel-6255)
+* [ API ](#tab-panel-6256)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -86,8 +95,8 @@ Explain Code
 
 Configure access on a per user or group basis by adding [identity-based conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to your policies.
 
-* [ Dashboard ](#tab-panel-6037)
-* [ API ](#tab-panel-6038)
+* [ Dashboard ](#tab-panel-6253)
+* [ API ](#tab-panel-6254)
 
 | Selector         | Operator | Value         | Logic | Action |
 | ---------------- | -------- | ------------- | ----- | ------ |
@@ -139,9 +148,9 @@ Require devices to have certain software installed or other configuration attrib
 
 In the following example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
 
-* [ Dashboard ](#tab-panel-6061)
-* [ API ](#tab-panel-6062)
-* [ Terraform ](#tab-panel-6063)
+* [ Dashboard ](#tab-panel-6277)
+* [ API ](#tab-panel-6278)
+* [ Terraform ](#tab-panel-6279)
 
 | Selector                     | Operator | Value                   | Logic | Action |
 | ---------------------------- | -------- | ----------------------- | ----- | ------ |
@@ -228,8 +237,8 @@ Restrict user access to only the specific sites or applications configured in yo
 
 ### 1\. Allow HTTP and HTTPS traffic
 
-* [ Dashboard ](#tab-panel-6041)
-* [ API ](#tab-panel-6042)
+* [ Dashboard ](#tab-panel-6257)
+* [ API ](#tab-panel-6258)
 
 | Selector          | Operator | Value   | Logic | Action |
 | ----------------- | -------- | ------- | ----- | ------ |
@@ -277,8 +286,8 @@ Explain Code
 
 ### 2\. Block all other traffic
 
-* [ Dashboard ](#tab-panel-6043)
-* [ API ](#tab-panel-6044)
+* [ Dashboard ](#tab-panel-6259)
+* [ API ](#tab-panel-6260)
 
 | Selector | Operator | Value        | Action |
 | -------- | -------- | ------------ | ------ |
@@ -327,8 +336,8 @@ Explain Code
 
 If your organization blocks traffic by default with a Network policy and you want to [inspect HTTP traffic on all ports](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/#inspect-on-all-ports), you need to explicitly allow HTTP and TLS traffic to filter it.
 
-* [ Dashboard ](#tab-panel-6045)
-* [ API ](#tab-panel-6046)
+* [ Dashboard ](#tab-panel-6261)
+* [ API ](#tab-panel-6262)
 
 | Selector          | Operator | Value  | Logic | Action |
 | ----------------- | -------- | ------ | ----- | ------ |
@@ -384,8 +393,8 @@ When using [source IP proxy endpoints](https://developers.cloudflare.com/cloudfl
 
 #### 1\. Allow proxy endpoint traffic from specific source IPs
 
-* [ Dashboard ](#tab-panel-6047)
-* [ API ](#tab-panel-6048)
+* [ Dashboard ](#tab-panel-6263)
+* [ API ](#tab-panel-6264)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -436,8 +445,8 @@ Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
 #### 2\. Block all other proxy endpoint traffic to private network
 
-* [ Dashboard ](#tab-panel-6049)
-* [ API ](#tab-panel-6050)
+* [ Dashboard ](#tab-panel-6265)
+* [ API ](#tab-panel-6266)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -491,8 +500,8 @@ When using [authorization proxy endpoints](https://developers.cloudflare.com/clo
 
 #### 1\. Allow proxy endpoint traffic from specific source IPs
 
-* [ Dashboard ](#tab-panel-6051)
-* [ API ](#tab-panel-6052)
+* [ Dashboard ](#tab-panel-6267)
+* [ API ](#tab-panel-6268)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -543,8 +552,8 @@ Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
 #### 2\. Block all other proxy endpoint traffic to private network
 
-* [ Dashboard ](#tab-panel-6055)
-* [ API ](#tab-panel-6056)
+* [ Dashboard ](#tab-panel-6271)
+* [ API ](#tab-panel-6272)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -600,8 +609,8 @@ The following example consists of two policies: the first allows specific users 
 
 ### 1\. Allow company employees
 
-* [ Dashboard ](#tab-panel-6053)
-* [ API ](#tab-panel-6054)
+* [ Dashboard ](#tab-panel-6269)
+* [ API ](#tab-panel-6270)
 
 | Selector       | Operator      | Value           | Logic | Action |
 | -------------- | ------------- | --------------- | ----- | ------ |
@@ -649,8 +658,8 @@ Explain Code
 
 ### 2\. Block everyone else
 
-* [ Dashboard ](#tab-panel-6057)
-* [ API ](#tab-panel-6058)
+* [ Dashboard ](#tab-panel-6273)
+* [ API ](#tab-panel-6274)
 
 | Selector       | Operator | Value      | Action |
 | -------------- | -------- | ---------- | ------ |
@@ -699,8 +708,8 @@ Explain Code
 
 Override traffic directed toward a specific IP address with a different IP address.
 
-* [ Dashboard ](#tab-panel-6059)
-* [ API ](#tab-panel-6060)
+* [ Dashboard ](#tab-panel-6275)
+* [ API ](#tab-panel-6276)
 
 | Selector         | Operator | Value        | Logic | Action           |
 | ---------------- | -------- | ------------ | ----- | ---------------- |

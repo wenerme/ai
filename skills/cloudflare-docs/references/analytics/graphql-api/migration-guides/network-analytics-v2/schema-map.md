@@ -1,12 +1,10 @@
 ---
 title: NAv1 to NAv2 schema map
-description: The following table lists direct mappings between NAv1 and NAv2 fields, when available, and provides related fields when there is no direct mapping available.
+description: Map Network Analytics v1 fields to v2 fields.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-Copy page
 
 # NAv1 to NAv2 schema map
 

@@ -10,13 +10,22 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API)[ WebSockets ](https://developers.cloudflare.com/search/?tags=WebSockets)[ Google ](https://developers.cloudflare.com/search/?tags=Google) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/traffic-policies/http-policies/common-policies.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Common policies
 
@@ -34,8 +43,8 @@ Block attempts to reach sites by hostname or URL paths. Different approaches may
 
 Block all subdomains that use a host.
 
-* [ Dashboard ](#tab-panel-5994)
-* [ API ](#tab-panel-5995)
+* [ Dashboard ](#tab-panel-6210)
+* [ API ](#tab-panel-6211)
 
 | Selector | Operator      | Value            | Action |
 | -------- | ------------- | ---------------- | ------ |
@@ -86,8 +95,8 @@ Explain Code
 
 Block a section of a site without blocking the entire site. For example, you can block a specific subreddit, such as `reddit.com/r/gaming`, without blocking `reddit.com`.
 
-* [ Dashboard ](#tab-panel-5992)
-* [ API ](#tab-panel-5993)
+* [ Dashboard ](#tab-panel-6208)
+* [ API ](#tab-panel-6209)
 
 | Selector | Operator      | Value     | Action |
 | -------- | ------------- | --------- | ------ |
@@ -136,9 +145,9 @@ Explain Code
 
 Block content categories which go against your organization's acceptable use policy.
 
-* [ Dashboard ](#tab-panel-6022)
-* [ API ](#tab-panel-6023)
-* [ Terraform ](#tab-panel-6024)
+* [ Dashboard ](#tab-panel-6238)
+* [ API ](#tab-panel-6239)
+* [ Terraform ](#tab-panel-6240)
 
 | Selector           | Operator | Value                                                                                 | Action |
 | ------------------ | -------- | ------------------------------------------------------------------------------------- | ------ |
@@ -224,9 +233,9 @@ After seven days, view your [Shadow IT SaaS Analytics](https://developers.cloudf
 
 To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-6025)
-* [ API ](#tab-panel-6026)
-* [ Terraform ](#tab-panel-6027)
+* [ Dashboard ](#tab-panel-6241)
+* [ API ](#tab-panel-6242)
+* [ Terraform ](#tab-panel-6243)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -308,8 +317,8 @@ Explain Code
 
 Configure access on a per user or group basis by adding [identity-based conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to your policies.
 
-* [ Dashboard ](#tab-panel-5996)
-* [ API ](#tab-panel-5997)
+* [ Dashboard ](#tab-panel-6212)
+* [ API ](#tab-panel-6213)
 
 | Selector         | Operator | Value         | Logic | Action |
 | ---------------- | -------- | ------------- | ----- | ------ |
@@ -361,8 +370,8 @@ Certain client applications, such as Zoom or Apple services, rely on certificate
 
 Gateway [evaluates Do Not Inspect policies first](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#http-policies), regardless of their position in the policy list. Cloudflare recommends moving your Do Not Inspect policies to the top of the list to reduce confusion.
 
-* [ Dashboard ](#tab-panel-5998)
-* [ API ](#tab-panel-5999)
+* [ Dashboard ](#tab-panel-6214)
+* [ API ](#tab-panel-6215)
 
 | Selector    | Operator | Value            | Action         |
 | ----------- | -------- | ---------------- | -------------- |
@@ -419,8 +428,8 @@ Require devices to have certain software installed or other configuration attrib
 
 Perform an [OS version check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/) to ensure users are running at least a minimum version.
 
-* [ Dashboard ](#tab-panel-6000)
-* [ API ](#tab-panel-6001)
+* [ Dashboard ](#tab-panel-6216)
+* [ API ](#tab-panel-6217)
 
 | Selector                     | Operator | Value                | Action |
 | ---------------------------- | -------- | -------------------- | ------ |
@@ -473,8 +482,8 @@ Perform a [file check](https://developers.cloudflare.com/cloudflare-one/reusable
 
 Since the file path will be different for each operating system, you can configure a file check for each system and use the **Or** logical operator to only require one of the checks to pass.
 
-* [ Dashboard ](#tab-panel-6004)
-* [ API ](#tab-panel-6005)
+* [ Dashboard ](#tab-panel-6220)
+* [ API ](#tab-panel-6221)
 
 | Selector                     | Operator | Value              | Logic | Action |
 | ---------------------------- | -------- | ------------------ | ----- | ------ |
@@ -534,8 +543,8 @@ If you are using the [Browser Isolation add-on](https://developers.cloudflare.co
 
 When accessing origin servers with certificates not signed by a public certificate authority, you must bypass TLS decryption.
 
-* [ Dashboard ](#tab-panel-6002)
-* [ API ](#tab-panel-6003)
+* [ Dashboard ](#tab-panel-6218)
+* [ API ](#tab-panel-6219)
 
 | Selector | Operator | Value                | Action         |
 | -------- | -------- | -------------------- | -------------- |
@@ -584,8 +593,8 @@ Explain Code
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-6020)
-* [ API ](#tab-panel-6021)
+* [ Dashboard ](#tab-panel-6236)
+* [ API ](#tab-panel-6237)
 
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |
@@ -643,8 +652,8 @@ For more information on reviewing shadow IT applications, refer to [Review appli
 
 Isolate applications if their approval status is _Unreviewed_ or _In review_.
 
-* [ Dashboard ](#tab-panel-6006)
-* [ API ](#tab-panel-6007)
+* [ Dashboard ](#tab-panel-6222)
+* [ API ](#tab-panel-6223)
 
 | Selector           | Operator | Value        | Logic | Action  |
 | ------------------ | -------- | ------------ | ----- | ------- |
@@ -694,8 +703,8 @@ Explain Code
 
 Block applications if their approval status is _Unapproved_.
 
-* [ Dashboard ](#tab-panel-6008)
-* [ API ](#tab-panel-6009)
+* [ Dashboard ](#tab-panel-6224)
+* [ API ](#tab-panel-6225)
 
 | Selector           | Operator | Value        | Action |
 | ------------------ | -------- | ------------ | ------ |
@@ -748,8 +757,8 @@ To enable Gateway inspection for Google Drive traffic, you must [add a Cloudflar
 
 Block file downloads from Google Drive.
 
-* [ Dashboard ](#tab-panel-6010)
-* [ API ](#tab-panel-6011)
+* [ Dashboard ](#tab-panel-6226)
+* [ API ](#tab-panel-6227)
 
 | Selector         | Operator      | Value                      | Logic | Action |
 | ---------------- | ------------- | -------------------------- | ----- | ------ |
@@ -799,8 +808,8 @@ Explain Code
 
 Block file uploads from Google Drive.
 
-* [ Dashboard ](#tab-panel-6012)
-* [ API ](#tab-panel-6013)
+* [ Dashboard ](#tab-panel-6228)
+* [ API ](#tab-panel-6229)
 
 | Selector         | Operator      | Value                                | Logic | Action |
 | ---------------- | ------------- | ------------------------------------ | ----- | ------ |
@@ -851,8 +860,8 @@ Explain Code
 
 Block file downloads from Gmail.
 
-* [ Dashboard ](#tab-panel-6014)
-* [ API ](#tab-panel-6015)
+* [ Dashboard ](#tab-panel-6230)
+* [ API ](#tab-panel-6231)
 
 | Selector         | Operator | Value                                 | Logic | Action |
 | ---------------- | -------- | ------------------------------------- | ----- | ------ |
@@ -904,8 +913,8 @@ Block use of Google Translate to translate entire webpages.
 
 When translating a website, Google Translate proxies webpages with the `translate.goog` domain. Your users may be able to use this service to bypass other Gateway policies. If you block `translate.goog`, users will still be able to access other Google Translate features.
 
-* [ Dashboard ](#tab-panel-6016)
-* [ API ](#tab-panel-6017)
+* [ Dashboard ](#tab-panel-6232)
+* [ API ](#tab-panel-6233)
 
 | Selector | Operator      | Value                      | Action |
 | -------- | ------------- | -------------------------- | ------ |
@@ -954,8 +963,8 @@ Explain Code
 
 Gateway does not inspect or log [WebSocket ↗](https://datatracker.ietf.org/doc/html/rfc6455) traffic. Instead, Gateway will only log the HTTP details used to make the WebSocket connection, as well as [network session information](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/). To filter your WebSocket traffic, create a policy with the `101` HTTP response code.
 
-* [ Dashboard ](#tab-panel-6018)
-* [ API ](#tab-panel-6019)
+* [ Dashboard ](#tab-panel-6234)
+* [ API ](#tab-panel-6235)
 
 | Selector      | Operator | Value                      | Action |
 | ------------- | -------- | -------------------------- | ------ |

@@ -1,16 +1,25 @@
 ---
 title: Potential disruption of services for Russian users
-description: Cloudflare has observed that Internet Service Providers (ISPs) within Russia are systematically throttling traffic to websites and services, including those protected by Cloudflare.
+description: Understand ISP throttling affecting Russian users.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # Potential disruption of services for Russian users
 

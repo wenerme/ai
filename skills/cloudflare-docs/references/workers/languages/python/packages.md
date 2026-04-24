@@ -1,20 +1,27 @@
 ---
 title: Packages
-description: Pywrangler is a CLI tool for managing packages and Python Workers.
-It is meant as a wrapper for wrangler that sets up a full environment for you, including bundling your packages into
-your worker bundle on deployment.
+description: Manage and use Python packages in Cloudflare Workers with Pywrangler.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/languages/python/packages/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Packages
 

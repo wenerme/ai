@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 ![Qwen logo](https://developers.cloudflare.com/_astro/qwen.CVqFFn5h.svg) 
 
@@ -31,9 +40,9 @@ The Qwen3 Embedding model series is the latest proprietary model of the Qwen fam
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3696)
-* [  Python ](#tab-panel-3697)
-* [  curl ](#tab-panel-3698)
+* [  TypeScript ](#tab-panel-3908)
+* [  Python ](#tab-panel-3909)
+* [  curl ](#tab-panel-3910)
 
 ```
 
@@ -148,8 +157,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-3701)
-* [ Output ](#tab-panel-3702)
+* [ Input ](#tab-panel-3913)
+* [ Output ](#tab-panel-3914)
 
 ▶queries
 
@@ -177,8 +186,8 @@ instruction
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3699)
-* [ Output ](#tab-panel-3700)
+* [ Input ](#tab-panel-3911)
+* [ Output ](#tab-panel-3912)
 
 ```
 

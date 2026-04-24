@@ -165,7 +165,7 @@ Run commands in each thread and launch repeatable project actions.
 
 ### In-app browser
 
-Open unauthenticated local or public pages and comment on rendered output.
+Open rendered pages, leave comments, or let Codex operate local browser flows.
 
   </BentoContent>
   <BentoContent href="/codex/app/features#image-generation">

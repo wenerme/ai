@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/configuration/configure-queues.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Configure Queues
 
@@ -54,8 +63,8 @@ A producer is a [Cloudflare Worker](https://developers.cloudflare.com/workers/) 
 
 To produce to a queue, set up a binding in your Wrangler file. These options should be used when a Worker wants to send messages to a queue.
 
-* [  wrangler.jsonc ](#tab-panel-7900)
-* [  wrangler.toml ](#tab-panel-7901)
+* [  wrangler.jsonc ](#tab-panel-8072)
+* [  wrangler.toml ](#tab-panel-8073)
 
 JSONC
 
@@ -108,8 +117,8 @@ binding = "MY_QUEUE"
 
 To consume messages from one or more queues, set up a binding in your Wrangler file. These options should be used when a Worker wants to receive messages from a queue.
 
-* [  wrangler.jsonc ](#tab-panel-7902)
-* [  wrangler.toml ](#tab-panel-7903)
+* [  wrangler.jsonc ](#tab-panel-8074)
+* [  wrangler.toml ](#tab-panel-8075)
 
 JSONC
 

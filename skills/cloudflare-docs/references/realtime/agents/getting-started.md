@@ -6,13 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/realtime/agents/getting-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Getting started
 
@@ -92,8 +101,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6005)
-* [  wrangler.toml ](#tab-panel-6006)
+* [  wrangler.jsonc ](#tab-panel-8408)
+* [  wrangler.toml ](#tab-panel-8409)
 
 JSONC
 
@@ -129,8 +138,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 Update the `index.ts` file in your `hello-agent` application directory with the following code:
 
-* [  JavaScript ](#tab-panel-6007)
-* [  TypeScript ](#tab-panel-6008)
+* [  JavaScript ](#tab-panel-8410)
+* [  TypeScript ](#tab-panel-8411)
 
 index.js
 

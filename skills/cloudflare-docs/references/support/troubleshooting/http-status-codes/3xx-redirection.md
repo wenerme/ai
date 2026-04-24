@@ -1,16 +1,25 @@
 ---
 title: 3xx Redirection
-description: 3xx codes are a class of responses which indicate that the HTTP client must take another course of action to obtain the complete requested resource.
+description: Understand 3xx redirection HTTP status codes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
+
 Was this helpful?
 
 YesNo
-
-Copy page
 
 # 3xx Redirection
 

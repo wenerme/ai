@@ -1,18 +1,27 @@
 ---
 title: mTLS related features
-description: To make it easier to differentiate between Client Certificates, you can generate your own private key and CSR, and enter information that will be incorporated into your certificate request, essentially labeling your Client Certificates.
+description: Learn about mtls related features in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/mtls/mtls-app-security/related-features.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # mTLS related features
 

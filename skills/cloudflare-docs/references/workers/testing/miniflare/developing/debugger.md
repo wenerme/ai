@@ -1,20 +1,27 @@
 ---
 title: Attaching a Debugger
-description: You can use regular Node.js tools to debug your Workers. Setting breakpoints,
-watching values and inspecting the call stack are all examples of things you can
-do with a debugger.
+description: Attach a Node.js debugger to Miniflare for setting breakpoints and inspecting Cloudflare Workers code.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/testing/miniflare/developing/debugger.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Attaching a Debugger
 
