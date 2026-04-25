@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/realtime/realtimekit/ui-kit/api-reference/react-native/RtkParticipantTile.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # RtkParticipantTile
 
 A video tile for a single participant showing their video feed, name tag with audio indicator, avatar (when video is off), and pin indicator.

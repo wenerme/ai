@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/client-certificates/revoke-client-certificate.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Revoke a client certificate
 
 You can revoke a client certificate you previously generated with the default [Cloudflare-managed CA](https://developers.cloudflare.com/ssl/client-certificates/).

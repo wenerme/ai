@@ -1,28 +1,10 @@
 ---
 title: Use Roughtime
-description: There are various ways you can use Roughtime to keep your clock in sync. These recipes use Cloudflare's Go package, which is based on Google's Go
-client.
+description: Use Roughtime clients in Go, C++, Rust, and Java.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/time-services/roughtime/recipes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Use Roughtime
 

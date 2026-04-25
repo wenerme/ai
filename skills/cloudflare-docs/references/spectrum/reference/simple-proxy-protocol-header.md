@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ UDP ](https://developers.cloudflare.com/search/?tags=UDP) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/spectrum/reference/simple-proxy-protocol-header.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Simple Proxy Protocol Header
 
 The client source IP and port is encoded in a fixed-length, 38-octet long header and prepended to the payload of each proxied UDP datagram in the format described below.

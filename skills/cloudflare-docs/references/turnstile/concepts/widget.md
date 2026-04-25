@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/turnstile/concepts/widget.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Turnstile widgets
 
 A Turnstile widget defines how Turnstile behaves on your webpage. Each widget has a mode, a label, a sitekey, and a secret key. You can create multiple widgets with different configurations.

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/tools/privacy-pass.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Privacy Pass
 
 [Privacy Pass ↗](https://datatracker.ietf.org/wg/privacypass/about/) specifies an extensible protocol for creating and redeeming anonymous and transferable tokens. Its specification is maintained by the IETF. Cloudflare provides "Silk - Privacy Pass Client". This is a Chrome and Firefox browser extension used for research, which provides a better visitor experience for Cloudflare-protected websites. Privacy Pass is especially helpful for visitors from shared networks, VPNs, and Tor that tend to have poorer IP reputations.

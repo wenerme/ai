@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-run/cdp/mcp-clients.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Using with MCP clients (CDP)
 
 You can use the CDP endpoints with AI coding agents through the [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io/). The [chrome-devtools-mcp ↗](https://github.com/ChromeDevTools/chrome-devtools-mcp) package provides an MCP server that allows AI assistants to control and inspect browser sessions.

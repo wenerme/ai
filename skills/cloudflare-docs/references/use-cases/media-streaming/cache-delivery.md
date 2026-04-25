@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/media-streaming/cache-delivery.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cache and accelerate media delivery
 
 Streaming video and serving images to a global audience requires low-latency delivery from locations close to each viewer. Cloudflare Cache serves media globally, and Argo Smart Routing ensures cache misses take the fastest path back to your origin.

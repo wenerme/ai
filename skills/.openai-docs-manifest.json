@@ -9562,10 +9562,10 @@
   "codex-docs/skills.md": {
     "url": "https://developers.openai.com/codex/skills.md",
     "skill": "codex-docs",
-    "etag": "W/\"03f32de534bf1377f3679e1543b5794e\"",
-    "lastModified": "Sat, 28 Mar 2026 00:20:25 GMT",
-    "size": 8690,
-    "updatedAt": "2026-03-28T00:20:25.892Z"
+    "etag": "W/\"8f2b17196541f261e81a4035086ce5ad\"",
+    "lastModified": "Sat, 25 Apr 2026 07:23:04 GMT",
+    "size": 9348,
+    "updatedAt": "2026-04-25T10:26:53.320Z"
   },
   "codex-docs/speed.md": {
     "url": "https://developers.openai.com/codex/speed.md",
