@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ SAML ](https://developers.cloudflare.com/search/?tags=SAML) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/access-controls/applications/http-apps/saas-apps/miro-saas.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Miro
 
 **Last reviewed:**  over 1 year ago 
@@ -56,8 +39,8 @@ This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/
 
 ## 2\. Add a SAML SSO provider to Miro
 
-* [ business plan ](#tab-panel-5769)
-* [ enterprise plan ](#tab-panel-5770)
+* [ business plan ](#tab-panel-5779)
+* [ enterprise plan ](#tab-panel-5780)
 
 1. In Miro, select your profile picture > **Settings** \> **\*\*Security\*\***.
 2. Turn on **SSO/SAML**.

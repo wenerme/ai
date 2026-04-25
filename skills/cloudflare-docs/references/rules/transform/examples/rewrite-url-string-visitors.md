@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ URL rewrite ](https://developers.cloudflare.com/search/?tags=URL%20rewrite) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/transform/examples/rewrite-url-string-visitors.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Rewrite URL query string
 
 Create a transform rule to rewrite the request path from `/blog` to `/blog?sort-by=date`.

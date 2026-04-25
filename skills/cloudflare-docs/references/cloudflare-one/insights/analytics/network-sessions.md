@@ -6,32 +6,15 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/insights/analytics/network-sessions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Network session analytics
 
-The Network session analytics dashboard provides visibility into your Cloudflare One traffic patterns. This dashboard helps you understand how traffic flows through your network, including on-ramps (entry points like WARP or Magic Tunnel) and off-ramps (destinations like Internet or Cloudflare Tunnel).
+The Network session analytics dashboard provides visibility into your Cloudflare One traffic patterns. This dashboard helps you understand how traffic flows through your network, including on-ramps (how traffic enters Cloudflare, such as the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), [proxy endpoints (PAC files)](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/), [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), or Cloudflare Tunnel) and off-ramps (how traffic exits Cloudflare, such as the public Internet or a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)).
 
 The dashboard is based on the [Zero Trust network sessions Logpush dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/). For definitions on any field, refer to the dataset schema documentation.
 
 To review Network session analytics:
 
-1. In [Cloudflare One ↗](https://dash.cloudflare.com), go to **Insights** \> **Dashboards**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Dashboards**.
 2. Select **Network session analytics**.
 
 Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/insights/) to learn how to use Analytics dashboards together with [Analytics Overview](https://developers.cloudflare.com/cloudflare-one/insights/analytics-overview/) and [Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) for complete visibility and troubleshooting.
@@ -49,20 +32,20 @@ The Network session analytics dashboard helps you:
 
 ### Summary metrics
 
-* **Session count**: Total number of network sessions
+* **Session count**: Total number of network sessions. Each session represents an individual TCP, UDP, ICMP, or ICMPv6 flow that passes through Gateway.
 * **Bytes total**: Total bytes transferred (upload + download)
 * **Unique users**: Number of distinct users
 
 ### Traffic by location
 
-* **World map**: Geographic visualization of network traffic by the Cloudflare data center (or colocation) of the ingress and egress
-* **Location list**: Top Cloudflare data center (or colocation) locations of the ingress and egress by session count with accompanying graph
+* **World map**: Geographic visualization of network traffic by the Cloudflare data center where traffic entered the network (ingress) and where it exited (egress)
+* **Location list**: Top Cloudflare data center locations by ingress and egress session count with accompanying graph
 * **Change**: Shows the total change across ingress and egress for each location
 
 ### Top analytics
 
 * **Top protocols**: Most used network protocols (TCP, UDP, ICMP, ICMPv6)
-* **Top connection close reasons**: Common reasons for session termination  
+* **Top connection close reasons**: Common reasons for session termination:  
    * Client closed  
    * Origin closed  
    * Client idle timeout  
@@ -73,6 +56,8 @@ The Network session analytics dashboard helps you:
    * Too many new sessions for user  
    * Origin TLS error  
    * Origin unroutable
+
+For the full list of reasons for session termination, refer to [ConnectionCloseReason](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/#connectionclosereason).
 
 ## Related resources
 

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/tutorials/extend-sso-with-workers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Send SSO attributes to Access-protected origins with Workers
 
 **Last reviewed:**  over 1 year ago 
@@ -276,8 +259,8 @@ Explain Code
 
 In the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), [set up a route](https://developers.cloudflare.com/workers/configuration/routing/routes/) that maps the Worker to your Access application domain:
 
-* [  wrangler.jsonc ](#tab-panel-6328)
-* [  wrangler.toml ](#tab-panel-6329)
+* [  wrangler.jsonc ](#tab-panel-6380)
+* [  wrangler.toml ](#tab-panel-6381)
 
 JSONC
 

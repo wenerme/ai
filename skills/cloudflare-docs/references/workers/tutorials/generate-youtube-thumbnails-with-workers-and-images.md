@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ Rust ](https://developers.cloudflare.com/search/?tags=Rust) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
 
 **Last reviewed:**  about 3 years ago 
@@ -572,8 +555,8 @@ Adding a query parameter with custom text, you should receive:
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-10291)
-* [  wrangler.toml ](#tab-panel-10292)
+* [  wrangler.jsonc ](#tab-panel-10352)
+* [  wrangler.toml ](#tab-panel-10353)
 
 JSONC
 
@@ -863,8 +846,8 @@ Image transformations can only be tested when you deploy your Worker.
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-10293)
-* [  wrangler.toml ](#tab-panel-10294)
+* [  wrangler.jsonc ](#tab-panel-10354)
+* [  wrangler.toml ](#tab-panel-10355)
 
 JSONC
 

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Postgres ](https://developers.cloudflare.com/search/?tags=Postgres)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ SQL ](https://developers.cloudflare.com/search/?tags=SQL) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/hyperdrive/tutorials/serverless-timeseries-api-with-timescale.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Create a serverless, globally distributed time-series API with Timescale
 
 **Last reviewed:**  over 2 years ago 
@@ -191,8 +174,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs your Hyperdrive ID. You can now bind your Hyperdrive configuration to your Worker in your Wrangler configuration by replacing the content with the following:
 
-* [  wrangler.jsonc ](#tab-panel-7346)
-* [  wrangler.toml ](#tab-panel-7347)
+* [  wrangler.jsonc ](#tab-panel-7400)
+* [  wrangler.toml ](#tab-panel-7401)
 
 JSONC
 

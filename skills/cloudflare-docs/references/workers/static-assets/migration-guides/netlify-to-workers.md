@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/static-assets/migration-guides/netlify-to-workers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Migrate from Netlify to Workers
 
 **Last reviewed:**  11 months ago 
@@ -51,8 +34,8 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-10229)
-* [  wrangler.toml ](#tab-panel-10230)
+* [  wrangler.jsonc ](#tab-panel-10290)
+* [  wrangler.toml ](#tab-panel-10291)
 
 JSONC
 
@@ -97,8 +80,8 @@ directory = "<your-build-directory>"
 
 For a **Single Page Application**, you will need to add the following to your Wrangler configuration file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-10231)
-* [  wrangler.toml ](#tab-panel-10232)
+* [  wrangler.jsonc ](#tab-panel-10292)
+* [  wrangler.toml ](#tab-panel-10293)
 
 JSONC
 

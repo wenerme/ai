@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2/data-catalog/get-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Getting started
 
 This guide will instruct you through:
@@ -43,8 +26,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket
 
-* [ Wrangler CLI ](#tab-panel-8213)
-* [ Dashboard ](#tab-panel-8214)
+* [ Wrangler CLI ](#tab-panel-8270)
+* [ Dashboard ](#tab-panel-8271)
 
 1. If not already logged in, run:  
 ```  
@@ -63,8 +46,8 @@ npx wrangler r2 bucket create r2-data-catalog-tutorial
 
 ## 2\. Enable the data catalog for your bucket
 
-* [ Wrangler CLI ](#tab-panel-8215)
-* [ Dashboard ](#tab-panel-8216)
+* [ Wrangler CLI ](#tab-panel-8272)
+* [ Dashboard ](#tab-panel-8273)
 
 Then, enable the catalog on your chosen R2 bucket:
 

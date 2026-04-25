@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/d1/worker-api/return-object.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Return objects
 
 Some D1 Worker Binding APIs return a typed object.
@@ -91,8 +74,8 @@ Explain Code
 
 ### Example
 
-* [  JavaScript ](#tab-panel-6591)
-* [  Python ](#tab-panel-6592)
+* [  JavaScript ](#tab-panel-6643)
+* [  Python ](#tab-panel-6644)
 
 JavaScript
 
@@ -218,8 +201,8 @@ JavaScript
 
 ### Example
 
-* [  JavaScript ](#tab-panel-6593)
-* [  Python ](#tab-panel-6594)
+* [  JavaScript ](#tab-panel-6645)
+* [  Python ](#tab-panel-6646)
 
 JavaScript
 

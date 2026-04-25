@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Post-quantum ](https://developers.cloudflare.com/search/?tags=Post-quantum) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/post-quantum-cryptography/pqc-support.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # PQC support
 
 Cloudflare's deployment of post-quantum [hybrid key agreements](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#hybrid-key-agreement) is supported by different software as listed below. [Contributions](https://developers.cloudflare.com/style-guide/contributions/) to keep the listing up-to-date are welcome.

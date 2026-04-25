@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-wan/configuration/how-to/configure-routes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Configure routes
 
 Cloudflare Virtual Network uses a routing table to steer your traffic from Cloudflare's global network to your connected networks via next-hop. You can add entries to the Cloudflare Virtual Network routing table through static route configuration or routes learned from BGP peering (beta) (available over CNI with Dataplane v2, as well as IPsec and GRE tunnels).
@@ -46,8 +29,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-6376)
-* [ API ](#tab-panel-6377)
+* [ Dashboard ](#tab-panel-6428)
+* [ API ](#tab-panel-6429)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -204,8 +187,8 @@ Explain Code
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-6378)
-* [ API ](#tab-panel-6379)
+* [ Dashboard ](#tab-panel-6430)
+* [ API ](#tab-panel-6431)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -351,8 +334,8 @@ Explain Code
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-6372)
-* [ API ](#tab-panel-6373)
+* [ Dashboard ](#tab-panel-6424)
+* [ API ](#tab-panel-6425)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -466,8 +449,8 @@ Explain Code
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-6374)
-* [ API ](#tab-panel-6375)
+* [ Dashboard ](#tab-panel-6426)
+* [ API ](#tab-panel-6427)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.

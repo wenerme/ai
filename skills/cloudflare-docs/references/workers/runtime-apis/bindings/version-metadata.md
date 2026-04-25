@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/bindings/version-metadata.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Version metadata
 
 The version metadata binding can be used to access metadata associated with a [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) from inside the Workers runtime.
@@ -31,8 +14,8 @@ Worker version ID, version tag and timestamp of when the version was created are
 
 To use the version metadata binding, update your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10091)
-* [  wrangler.toml ](#tab-panel-10092)
+* [  wrangler.jsonc ](#tab-panel-10152)
+* [  wrangler.toml ](#tab-panel-10153)
 
 JSONC
 
@@ -66,8 +49,8 @@ binding = "CF_VERSION_METADATA"
 
 An example of how to access the version ID and version tag from within a Worker to send events to [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/):
 
-* [  JavaScript ](#tab-panel-10089)
-* [  TypeScript ](#tab-panel-10090)
+* [  JavaScript ](#tab-panel-10150)
+* [  TypeScript ](#tab-panel-10151)
 
 JavaScript
 

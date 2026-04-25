@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/saas/custom-domains.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Customer domains with SSL for SaaS
 
 SaaS customers expect to use their own domains (for example, `app.theirdomain.com`) instead of a subdomain on your platform. Cloudflare SSL for SaaS provisions and renews SSL certificates automatically for every custom hostname, with no manual steps or customer action required.

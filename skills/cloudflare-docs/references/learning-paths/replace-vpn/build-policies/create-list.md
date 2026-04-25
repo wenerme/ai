@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/replace-vpn/build-policies/create-list.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Create a list of IPs or domains
 
 Gateway supports creating [lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of IPs, hostnames, or other entries to reference in your policies.
@@ -59,8 +42,8 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-7577)
-* [ Terraform (v5) ](#tab-panel-7578)
+* [ Dashboard ](#tab-panel-7631)
+* [ Terraform (v5) ](#tab-panel-7632)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -91,9 +74,9 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-7579)
-* [ API ](#tab-panel-7580)
-* [ Terraform (v5) ](#tab-panel-7581)
+* [ Dashboard ](#tab-panel-7633)
+* [ API ](#tab-panel-7634)
+* [ Terraform (v5) ](#tab-panel-7635)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.

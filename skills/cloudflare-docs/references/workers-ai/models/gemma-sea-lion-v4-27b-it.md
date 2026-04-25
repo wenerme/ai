@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
  a 
 
 #  gemma-sea-lion-v4-27b-it 
@@ -46,10 +29,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-3316)
-* [  TypeScript ](#tab-panel-3317)
-* [  Python ](#tab-panel-3318)
-* [  curl ](#tab-panel-3319)
+* [  Worker (Streaming) ](#tab-panel-3326)
+* [  TypeScript ](#tab-panel-3327)
+* [  Python ](#tab-panel-3328)
+* [  curl ](#tab-panel-3329)
 
 TypeScript
 
@@ -214,8 +197,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3326)
-* [ Output ](#tab-panel-3327)
+* [ Input ](#tab-panel-3336)
+* [ Output ](#tab-panel-3337)
 
 prompt
 
@@ -299,8 +282,8 @@ prompt\_logprobs{}
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3328)
-* [ Output ](#tab-panel-3329)
+* [ Input ](#tab-panel-3338)
+* [ Output ](#tab-panel-3339)
 
 prompt
 
@@ -368,8 +351,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-3330)
-* [ Output ](#tab-panel-3331)
+* [ Input ](#tab-panel-3340)
+* [ Output ](#tab-panel-3341)
 
 ▶requests\[\]
 
@@ -407,8 +390,8 @@ prompt\_logprobs{}
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3322)
-* [ Output ](#tab-panel-3323)
+* [ Input ](#tab-panel-3332)
+* [ Output ](#tab-panel-3333)
 
 ```
 
@@ -902,8 +885,8 @@ Explain Code
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3320)
-* [ Output ](#tab-panel-3321)
+* [ Input ](#tab-panel-3330)
+* [ Output ](#tab-panel-3331)
 
 ```
 
@@ -1107,8 +1090,8 @@ Explain Code
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-3324)
-* [ Output ](#tab-panel-3325)
+* [ Input ](#tab-panel-3334)
+* [ Output ](#tab-panel-3335)
 
 ```
 

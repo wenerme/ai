@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/observability/exporting-opentelemetry-data/posthog.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Export to PostHog
 
 PostHog is a product analytics platform that helps you understand user behavior and debug issues. By exporting your Cloudflare Workers application telemetry to PostHog, you can:
@@ -86,8 +69,8 @@ Now you'll create a destination in the Cloudflare dashboard that points to PostH
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable logs export.
 
-* [  wrangler.jsonc ](#tab-panel-9977)
-* [  wrangler.toml ](#tab-panel-9978)
+* [  wrangler.jsonc ](#tab-panel-10038)
+* [  wrangler.toml ](#tab-panel-10039)
 
 JSONC
 

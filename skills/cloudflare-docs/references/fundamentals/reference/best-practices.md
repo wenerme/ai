@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/reference/best-practices.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Account and domain management best practices
 
 More and more of our lives revolve around our online presence and maintaining access to our various online accounts, such as social media, banking, personal, and business accounts. These accounts are critical to remaining connected with our loved ones and business. As such, ensuring a level of continuity with these services is critical. Below is a list of important items to help ensure you are able to maintain access or delegate access to your Cloudflare account in the event that you are unable to manage your account.

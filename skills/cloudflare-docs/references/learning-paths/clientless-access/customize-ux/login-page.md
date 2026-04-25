@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/clientless-access/customize-ux/login-page.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Login page
 
 The Access login page is where users select their identity provider (IdP) or One-Time PIN prior to accessing the application. Customers who only use one IdP usually enable **Instant Auth** for their applications, which redirects end users directly to the SSO login page. If you are using multiple IdPs, we recommend customizing the Access login page to match your branding and minimize user confusion.

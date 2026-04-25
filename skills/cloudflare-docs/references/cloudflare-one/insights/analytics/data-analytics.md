@@ -10,26 +10,9 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/insights/analytics/data-analytics.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Data security analytics
 
-The Data security analytics dashboard reports security issues and sensitive data found within your SaaS applications, cloud environments, and HTTP traffic. It visualizes event data collected from your DLP and CASB policies. If neither DLP nor CASB is enabled in your account, the dashboard appears empty.
+The Data security analytics dashboard reports security issues and sensitive data found within your SaaS applications, cloud environments, and HTTP traffic. It visualizes security findings and sensitive data detections collected from your Data Loss Prevention (DLP) and Cloud Access Security Broker (CASB) policies. If neither DLP nor CASB is configured in your account, the dashboard appears empty.
 
 To view the Data security analytics dashboard:
 
@@ -41,10 +24,12 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 
 ## Prerequisites
 
-To populate this dashboard, you must have:
+To populate this dashboard with partial data, you need at least one of the following:
 
-* [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) configured to generate event data from scanned web traffic or SaaS applications.
-* At least one [Cloud Access Security Broker (CASB)](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) integration connected to capture findings from your SaaS applications or cloud environments.
+* At least one HTTP policy that references a [DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/).
+* At least one SaaS integration enrolled in [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
+* At least one Cloud integration enrolled in [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
+* At least one SaaS or Cloud integration enrolled in [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) and a DLP profile applied to it.
 
 ## Available insights
 
@@ -60,7 +45,7 @@ The dashboard includes the following panels and metrics:
 
 ### SaaS and Cloud findings by count
 
-The SaaS and Cloud findings by count chart shows a time series view of Posture and Content findings. [Posture](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#posture-findings) denotes posture findings which include misconfigurations, unauthorized user activity, and other data security issues. [Content](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#content-findings) denotes content findings which include instances of potential data exposure as identified by [DLP](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/).
+The SaaS and Cloud findings by count chart shows a time series view of Posture and Content findings. [Posture findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#posture-findings) are configuration and access issues detected by CASB, such as misconfigurations, unauthorized user activity, and other data security issues. [Content findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#content-findings) are instances of potential data exposure as identified by [DLP](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/).
 
 Each bar represents the total number of findings detected within a given time interval. You can use this view to observe patterns or spikes in findings over time. Hover over any bar to view the exact count of Posture and Content findings for that period.
 
@@ -76,7 +61,7 @@ To review findings in detail, log in to the [Cloudflare dashboard ↗](https://d
 
 The DLP matches in HTTP requests over time chart displays when [DLP policies](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/) were triggered by users over a specified period of time.
 
-Unlike the SaaS and Cloud findings by count chart above, which relies on CASB findings from data at rest, the DLP matches in HTTP requests over time chart reflects DLP detections in HTTP traffic — helping you monitor sensitive data movement in real time.
+Unlike the SaaS and Cloud findings by count chart, which shows CASB findings from data at rest (files already stored in your connected SaaS applications), the DLP matches in HTTP requests over time chart shows DLP detections in HTTP traffic — data actively moving through your network.
 
 To review DLP detections in detail, log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Insights** \> **Logs** \> **HTTP request logs**. Use the **DLP profiles** or **DLP match data** filters to view HTTP requests that triggered a DLP policy.
 

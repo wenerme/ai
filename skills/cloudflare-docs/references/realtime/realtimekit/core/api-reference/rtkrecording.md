@@ -5,23 +5,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/realtime/realtimekit/core/api-reference/RTKRecording.md) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # RTKRecording
 
 The RTKRecording module represents the state of the current recording, and allows to start/stop recordings and check if there's a recording in progress.

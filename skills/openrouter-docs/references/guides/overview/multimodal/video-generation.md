@@ -1,8 +1,8 @@
-# Video Generation
-
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+
+# Video Generation
 
 OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/models?output_modalities=video).
 
@@ -382,23 +382,83 @@ Instead of polling for job status, you can receive a webhook notification when a
 
 ### Webhook Payload
 
-When the job completes (or fails), a POST request is sent to the callback URL with the job result:
+When a job reaches a terminal state, a POST request is sent to the callback
+URL with an event envelope. Each delivery also carries an
+`X-OpenRouter-Idempotency-Key` header of the form `<job_id>-<status>` for
+safe retry deduplication.
+
+`video.generation.completed`:
 
 ```json
 {
-  "id": "abc123",
-  "status": "completed",
-  "generation_id": "gen-xyz789",
-  "model": "google/veo-3.1",
-  "unsigned_urls": [
-    "https://openrouter.ai/api/v1/videos/abc123/content?index=0"
-  ],
-  "usage": {
-    "cost": 0.5,
-    "is_byok": false
+  "type": "video.generation.completed",
+  "created_at": "2026-04-24T12:00:00.000Z",
+  "data": {
+    "id": "abc123",
+    "status": "completed",
+    "generation_id": "gen-xyz789",
+    "model": "google/veo-3.1",
+    "unsigned_urls": [
+      "https://openrouter.ai/api/v1/videos/abc123/content?index=0"
+    ],
+    "usage": {
+      "cost": 0.5,
+      "is_byok": false
+    }
   }
 }
 ```
+
+`video.generation.failed`:
+
+```json
+{
+  "type": "video.generation.failed",
+  "created_at": "2026-04-24T12:00:00.000Z",
+  "data": {
+    "id": "abc123",
+    "status": "failed",
+    "generation_id": "gen-xyz789",
+    "model": "google/veo-3.1",
+    "error": "Content policy violation"
+  }
+}
+```
+
+`video.generation.cancelled`:
+
+```json
+{
+  "type": "video.generation.cancelled",
+  "created_at": "2026-04-24T12:00:00.000Z",
+  "data": {
+    "id": "abc123",
+    "status": "cancelled",
+    "generation_id": "gen-xyz789",
+    "model": "google/veo-3.1",
+    "error": "Job was cancelled"
+  }
+}
+```
+
+`video.generation.expired`:
+
+```json
+{
+  "type": "video.generation.expired",
+  "created_at": "2026-04-24T12:00:00.000Z",
+  "data": {
+    "id": "abc123",
+    "status": "expired",
+    "generation_id": "gen-xyz789",
+    "model": "google/veo-3.1",
+    "error": "Job exceeded maximum time to live"
+  }
+}
+```
+
+`generation_id` and `model` in `data` may be `null` when a job fails before
+those values are assigned (e.g. an early validation failure).
 
 ### Signing Secret
 

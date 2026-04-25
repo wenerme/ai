@@ -6,26 +6,9 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/insights/analytics/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Dashboards
 
-[Cloudflare One ↗](https://one.dash.cloudflare.com/) provides a catalog of saved analytics views for reporting and investigation. Analytics Dashboards provide visualizations of your log data.
+The [Cloudflare dashboard ↗](https://dash.cloudflare.com/) provides a catalog of saved analytics views under **Zero Trust** \> **Insights** for reporting and investigation. Analytics Dashboards provide visualizations of your log data.
 
 Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/insights/) to learn how to use Analytics dashboards together with [Analytics Overview](https://developers.cloudflare.com/cloudflare-one/insights/analytics-overview/) and [Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) for complete visibility and troubleshooting.
 

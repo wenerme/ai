@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/web3/ethereum-gateway/reference/kill-switches.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Kill Switches
 
 When writing contracts, be especially careful to write secure code and include a kill switch to ensure that if any bugs do reside in the code, they can be squashed. If you do not include a kill switch and there are vulnerabilities in the smart contract that can be exploited, this can lead to the theft of resources from the smart contract or from other individuals.

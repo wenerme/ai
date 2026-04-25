@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/framework-guides/web-apps/microfrontends.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Microfrontends
 
 Microfrontends let you split a single application into smaller, independently deployable units that render as one cohesive application. Different teams using different technologies can develop, test, and deploy each microfrontend.
@@ -354,8 +337,8 @@ To add a new microfrontend to your application after initial setup:
 1. **Create and deploy the new microfrontend worker**  
 Deploy your new microfrontend as a separate Worker. This can be a [framework application](https://developers.cloudflare.com/workers/framework-guides/) (Next.js, Astro, etc.) or a static site with [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 2. **Add a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) in your router's Wrangler configuration file**  
-   * [  wrangler.jsonc ](#tab-panel-9919)  
-   * [  wrangler.toml ](#tab-panel-9920)  
+   * [  wrangler.jsonc ](#tab-panel-9980)  
+   * [  wrangler.toml ](#tab-panel-9981)  
 JSONC  
 ```  
 {  
@@ -402,8 +385,8 @@ If you only need to work on one of the microfrontends, you can run the others re
 
 For each microfrontend you want to run remotely while in local dev, configure its service binding with the remote flag:
 
-* [  wrangler.jsonc ](#tab-panel-9921)
-* [  wrangler.toml ](#tab-panel-9922)
+* [  wrangler.jsonc ](#tab-panel-9982)
+* [  wrangler.toml ](#tab-panel-9983)
 
 JSONC
 

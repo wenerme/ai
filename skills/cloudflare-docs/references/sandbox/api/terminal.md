@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/api/terminal.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Terminal
 
 Connect browser-based terminal UIs to sandbox shells via WebSocket. The server-side `terminal()` method proxies WebSocket connections to the container, and the client-side `SandboxAddon` integrates with xterm.js for terminal rendering.
@@ -51,8 +34,8 @@ const response = await sandbox.terminal(request: Request, options?: PtyOptions):
 
 **Returns**: `Promise<Response>` — WebSocket upgrade response
 
-* [  JavaScript ](#tab-panel-8650)
-* [  TypeScript ](#tab-panel-8651)
+* [  JavaScript ](#tab-panel-8707)
+* [  TypeScript ](#tab-panel-8708)
 
 JavaScript
 
@@ -78,8 +61,8 @@ return await sandbox.terminal(request, { cols: 120, rows: 30 });
 
 Works with both [default and explicitly created sessions](https://developers.cloudflare.com/sandbox/concepts/sessions/):
 
-* [  JavaScript ](#tab-panel-8652)
-* [  TypeScript ](#tab-panel-8653)
+* [  JavaScript ](#tab-panel-8709)
+* [  TypeScript ](#tab-panel-8710)
 
 JavaScript
 
@@ -144,8 +127,8 @@ const addon = new SandboxAddon(options: SandboxAddonOptions);
 * `reconnect` \- Enable automatic reconnection with exponential backoff (default: `true`)
 * `onStateChange(state, error?)` \- Callback for connection state changes
 
-* [  JavaScript ](#tab-panel-8654)
-* [  TypeScript ](#tab-panel-8655)
+* [  JavaScript ](#tab-panel-8711)
+* [  TypeScript ](#tab-panel-8712)
 
 JavaScript
 

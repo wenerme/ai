@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/guides/connect-mcp-client.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Connect to an MCP server
 
 **Last reviewed:**  6 months ago 
@@ -64,8 +47,8 @@ Terminal window
 cd my-mcp-client  
 ```  
 Your Agent is ready! The template includes a minimal Agent in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-5128)  
-   * [  TypeScript ](#tab-panel-5129)  
+   * [  JavaScript ](#tab-panel-5138)  
+   * [  TypeScript ](#tab-panel-5139)  
 JavaScript  
 ```  
 import { Agent, routeAgentRequest } from "agents";  
@@ -109,8 +92,8 @@ Explain Code
 ## 2\. Add MCP connection endpoint
 
 1. Add an endpoint to connect to MCP servers. Update your Agent class in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-5132)  
-   * [  TypeScript ](#tab-panel-5133)  
+   * [  JavaScript ](#tab-panel-5142)  
+   * [  TypeScript ](#tab-panel-5143)  
 JavaScript  
 ```  
 export class HelloAgent extends Agent {  
@@ -196,8 +179,8 @@ You should see a response with the server ID:
 ## 4\. List available tools
 
 1. Add an endpoint to see which tools are available from connected servers:  
-   * [  JavaScript ](#tab-panel-5130)  
-   * [  TypeScript ](#tab-panel-5131)  
+   * [  JavaScript ](#tab-panel-5140)  
+   * [  TypeScript ](#tab-panel-5141)  
 JavaScript  
 ```  
 export class HelloAgent extends Agent {  

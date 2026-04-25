@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ SSH ](https://developers.cloudflare.com/search/?tags=SSH)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/access-controls/applications/non-http/infrastructure-apps.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Add an infrastructure application
 
 Feature availability
@@ -61,9 +44,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-5777)
-* [ API ](#tab-panel-5778)
-* [ Terraform ](#tab-panel-5779)
+* [ Dashboard ](#tab-panel-5787)
+* [ API ](#tab-panel-5788)
+* [ Terraform ](#tab-panel-5789)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -154,9 +137,9 @@ Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-5780)
-* [ API ](#tab-panel-5781)
-* [ Terraform (v4) ](#tab-panel-5782)
+* [ Dashboard ](#tab-panel-5790)
+* [ API ](#tab-panel-5791)
+* [ Terraform (v4) ](#tab-panel-5792)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Select **Add an application**.

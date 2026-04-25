@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![Vidu logo](https://developers.cloudflare.com/_astro/vidu._WEx0U8r.svg) 
 
 #  Vidu Q3 Pro 
@@ -203,8 +186,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-422)
-* [ Output ](#tab-panel-423)
+* [ Input ](#tab-panel-432)
+* [ Output ](#tab-panel-433)
 
 prompt
 
@@ -240,8 +223,8 @@ video
 
 ## API Schemas
 
-* [ Input ](#tab-panel-420)
-* [ Output ](#tab-panel-421)
+* [ Input ](#tab-panel-430)
+* [ Output ](#tab-panel-431)
 
 ```
 

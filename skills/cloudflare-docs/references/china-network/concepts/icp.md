@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/china-network/concepts/icp.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Internet Content Provider (ICP)
 
 Internet Content Provider (ICP) is a licensing regime instated by the Telecommunications Regulations of the People's Republic of China (中华人民共和国电信条例), promulgated in September 2000.

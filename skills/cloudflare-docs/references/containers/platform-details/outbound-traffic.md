@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/containers/platform-details/outbound-traffic.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Handle outbound traffic
 
 Outbound handlers let you intercept and modify HTTP traffic from a container with trusted code.
@@ -332,10 +315,10 @@ For HTTPS interception to work, you must trust the CA file. The CA is ephemeral 
 
 If your base image does not already include the trust-store tooling, install the distro's `ca-certificates` package in your image first.
 
-* [ Debian/Ubuntu ](#tab-panel-6444)
-* [ Alpine ](#tab-panel-6445)
-* [ Fedora/RHEL ](#tab-panel-6446)
-* [ Arch ](#tab-panel-6447)
+* [ Debian/Ubuntu ](#tab-panel-6496)
+* [ Alpine ](#tab-panel-6497)
+* [ Fedora/RHEL ](#tab-panel-6498)
+* [ Arch ](#tab-panel-6499)
 
 JavaScript
 

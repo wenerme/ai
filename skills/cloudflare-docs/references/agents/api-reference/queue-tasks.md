@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/queue-tasks.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Queue tasks
 
 The Agents SDK provides a built-in queue system that allows you to schedule tasks for asynchronous execution. This is useful for background processing, delayed operations, and managing workloads that do not need immediate execution.
@@ -88,8 +71,8 @@ async queue<T>(
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4508)
-* [  TypeScript ](#tab-panel-4509)
+* [  JavaScript ](#tab-panel-4518)
+* [  TypeScript ](#tab-panel-4519)
 
 JavaScript
 
@@ -188,8 +171,8 @@ dequeue(id: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4498)
-* [  TypeScript ](#tab-panel-4499)
+* [  JavaScript ](#tab-panel-4508)
+* [  TypeScript ](#tab-panel-4509)
 
 JavaScript
 
@@ -228,8 +211,8 @@ dequeueAll(): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4500)
-* [  TypeScript ](#tab-panel-4501)
+* [  JavaScript ](#tab-panel-4510)
+* [  TypeScript ](#tab-panel-4511)
 
 JavaScript
 
@@ -272,8 +255,8 @@ dequeueAllByCallback(callback: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4502)
-* [  TypeScript ](#tab-panel-4503)
+* [  JavaScript ](#tab-panel-4512)
+* [  TypeScript ](#tab-panel-4513)
 
 JavaScript
 
@@ -320,8 +303,8 @@ The payload is automatically parsed from JSON before being returned.
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4506)
-* [  TypeScript ](#tab-panel-4507)
+* [  JavaScript ](#tab-panel-4516)
+* [  TypeScript ](#tab-panel-4517)
 
 JavaScript
 
@@ -381,8 +364,8 @@ This method fetches all queue items and filters them in memory by parsing each p
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4504)
-* [  TypeScript ](#tab-panel-4505)
+* [  JavaScript ](#tab-panel-4514)
+* [  TypeScript ](#tab-panel-4515)
 
 JavaScript
 
@@ -431,8 +414,8 @@ async callbackMethod(payload: unknown, queueItem: QueueItem): Promise<void>
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4512)
-* [  TypeScript ](#tab-panel-4513)
+* [  JavaScript ](#tab-panel-4522)
+* [  TypeScript ](#tab-panel-4523)
 
 JavaScript
 
@@ -534,8 +517,8 @@ Explain Code
 
 ### Background processing
 
-* [  JavaScript ](#tab-panel-4510)
-* [  TypeScript ](#tab-panel-4511)
+* [  JavaScript ](#tab-panel-4520)
+* [  TypeScript ](#tab-panel-4521)
 
 JavaScript
 
@@ -617,8 +600,8 @@ Explain Code
 
 ### Batch operations
 
-* [  JavaScript ](#tab-panel-4514)
-* [  TypeScript ](#tab-panel-4515)
+* [  JavaScript ](#tab-panel-4524)
+* [  TypeScript ](#tab-panel-4525)
 
 JavaScript
 
@@ -720,8 +703,8 @@ Explain Code
 
 Use the built-in `retry` option instead of manual re-queue logic. When a callback throws, the task is automatically retried with exponential backoff:
 
-* [  JavaScript ](#tab-panel-4516)
-* [  TypeScript ](#tab-panel-4517)
+* [  JavaScript ](#tab-panel-4526)
+* [  TypeScript ](#tab-panel-4527)
 
 JavaScript
 

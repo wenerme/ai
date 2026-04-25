@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
 #  GPT Image 1.5 
@@ -224,8 +207,8 @@ Response200 ![Auto Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/
 
 ## Parameters
 
-* [ Input ](#tab-panel-368)
-* [ Output ](#tab-panel-369)
+* [ Input ](#tab-panel-374)
+* [ Output ](#tab-panel-375)
 
 prompt
 
@@ -253,8 +236,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-366)
-* [ Output ](#tab-panel-367)
+* [ Input ](#tab-panel-372)
+* [ Output ](#tab-panel-373)
 
 ```
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/workers/concepts/cloudflare-intro.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Introduction to Cloudflare
 
 [Cloudflare ↗](https://www.cloudflare.com/learning/what-is-cloudflare/) is a global network of [servers ↗](https://www.cloudflare.com/learning/cdn/glossary/edge-server/). It is one of the largest [networks ↗](https://www.cloudflare.com/network/) on the Internet.

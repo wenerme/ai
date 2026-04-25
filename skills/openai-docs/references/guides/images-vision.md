@@ -442,7 +442,7 @@ Input images must meet the following requirements to be used in the API.
 
 ### Choose an image detail level
 
-The `detail` parameter tells the model what level of detail to use when processing and understanding the image (`low`, `high`, `original`, or `auto` to let the model decide). If you skip the parameter, the model will use `auto`. This behavior is the same in both the Responses API and the Chat Completions API.
+The `detail` parameter tells the model what level of detail to use when processing and understanding the image (`low`, `high`, `original`, or `auto`). If you skip the parameter, the model will use `auto`. This behavior is the same in both the Responses API and the Chat Completions API. On `gpt-5.5`, `auto` and the default omitted behavior are equivalent to `original`.
 
 
 
@@ -451,10 +451,10 @@ The `detail` parameter tells the model what level of detail to use when processi
 
 | Detail level | Best for                                                                                                                                       |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `"low"`      | Fast, low-cost understanding when fine visual detail is not important. The model receives a low-resolution 512px x 512px version of the image. |
-| `"high"`     | Standard high-fidelity image understanding.                                                                                                    |
-| `"original"` | Large, dense, spatially sensitive, or computer-use images. Available on `gpt-5.4` and future models.                                           |
-| `"auto"`     | Let the model choose the detail level.                                                                                                         |
+| `low`        | Fast, low-cost understanding when fine visual detail is not important. The model receives a low-resolution 512px x 512px version of the image. |
+| `high`       | Standard high-fidelity image understanding.                                                                                                    |
+| `original`   | Large, dense, spatially sensitive, or computer-use images. Available on `gpt-5.4` and future models.                                           |
+| `auto`       | Automatic detail selection. On `gpt-5.5`, `auto` and the omitted/default behavior are equivalent to `original`.                                |
 
 For computer use, localization, and click-accuracy use cases on `gpt-5.4` and future models, we recommend `"detail": "original"`. See the [Computer use guide](https://developers.openai.com/api/docs/guides/tools-computer-use) for more detail.
 
@@ -474,7 +474,7 @@ Different models use different resizing rules before image tokenization:
   </tr>
   <tr>
     <td>
-      <code>gpt-5.4</code> and future models
+      <code>gpt-5.5</code>
     </td>
     <td>
       <code>low</code>, <code>high</code>, <code>original</code>,
@@ -485,7 +485,28 @@ Different models use different resizing rules before image tokenization:
       dimension. <code>original</code> allows up to 10,000 patches or a
       6000-pixel maximum dimension. If either limit is exceeded, we resize the
       image while preserving aspect ratio to fit within the lesser of those two
-      constraints for the selected detail level. [Full resizing details
+      constraints for the selected detail level. <code>auto</code> and omitted
+      <code>detail</code> use the same sizing behavior as
+      <code>original</code>. [Full resizing details
+      below.](#patch-based-image-tokenization)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>gpt-5.4</code>
+    </td>
+    <td>
+      <code>low</code>, <code>high</code>, <code>original</code>,
+      <code>auto</code>
+    </td>
+    <td>
+      <code>high</code> allows up to 2,500 patches or a 2048-pixel maximum
+      dimension. <code>original</code> allows up to 10,000 patches or a
+      6000-pixel maximum dimension. If either limit is exceeded, we resize the
+      image while preserving aspect ratio to fit within the lesser of those two
+      constraints for the selected detail level. <code>auto</code> and omitted
+      <code>detail</code> use the same sizing behavior as
+      <code>high</code>.[Full resizing details
       below.](#patch-based-image-tokenization)
     </td>
   </tr>

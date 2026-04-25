@@ -1,27 +1,10 @@
 ---
 title: Implementation Guides
-description: Implementation guides provide step-by-step instructions and practical guidance for how to effectively deploy and configure specific solutions or services. Implementation guides are focused on a specific implementation goal.
+description: Step-by-step guides for deploying Cloudflare solutions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/reference-architecture/implementation-guides/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Implementation Guides
 

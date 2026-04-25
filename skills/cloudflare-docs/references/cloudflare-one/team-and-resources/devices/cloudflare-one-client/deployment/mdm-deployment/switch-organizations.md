@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ XML ](https://developers.cloudflare.com/search/?tags=XML) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Switch between Zero Trust organizations
 
 Feature availability
@@ -137,8 +120,8 @@ Explain Code
 
 To switch to a different organization as a user:
 
-* [ Windows, macOS, and Linux ](#tab-panel-6082)
-* [ iOS and Android ](#tab-panel-6083)
+* [ Windows, macOS, and Linux ](#tab-panel-6134)
+* [ iOS and Android ](#tab-panel-6135)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Home**. The **Configuration** dropdown will show the organizations that the admin has configured for your device.

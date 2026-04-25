@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/d1/best-practices/read-replication.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Global read replication
 
 D1 read replication can lower latency for read queries and scale read throughput by adding read-only database copies, called read replicas, across regions globally closer to clients.
@@ -39,8 +22,8 @@ Tip: Place your database further away for the read replication demo
 
 To simulate how read replication can improve a worst case latency scenario, set your D1 database location hint to be in a farther away region. For example, if you are in Europe create your database in Western North America (WNAM).
 
-* [  JavaScript ](#tab-panel-6468)
-* [  TypeScript ](#tab-panel-6469)
+* [  JavaScript ](#tab-panel-6520)
+* [  TypeScript ](#tab-panel-6521)
 
 JavaScript
 
@@ -359,8 +342,8 @@ With the REST API, set `read_replication.mode: auto` to enable read replication 
 
 For this REST endpoint, you need to have an API token with `D1:Edit` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-6462)
-* [ TypeScript ](#tab-panel-6463)
+* [ cURL ](#tab-panel-6514)
+* [ TypeScript ](#tab-panel-6515)
 
 Terminal window
 
@@ -419,8 +402,8 @@ Note
 
 Disabling read replication takes up to 24 hours for replicas to stop processing requests. Sessions API works with databases that do not have read replication enabled, so it is safe to run code with Sessions API even after disabling read replication.
 
-* [ cURL ](#tab-panel-6464)
-* [ TypeScript ](#tab-panel-6465)
+* [ cURL ](#tab-panel-6516)
+* [ TypeScript ](#tab-panel-6517)
 
 Terminal window
 
@@ -477,8 +460,8 @@ Alternatively, `GET` D1 database REST endpoint returns if read replication is en
 
 For this REST endpoint, you need to have an API token with `D1:Read` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-6466)
-* [ TypeScript ](#tab-panel-6467)
+* [ cURL ](#tab-panel-6518)
+* [ TypeScript ](#tab-panel-6519)
 
 Terminal window
 

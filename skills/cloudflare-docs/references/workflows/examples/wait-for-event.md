@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workflows/examples/wait-for-event.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Human-in-the-Loop Image Tagging with waitForEvent
 
 **Last reviewed:**  about 1 year ago 
@@ -62,8 +45,8 @@ The `index.ts` file defines the core logic of the Cloudflare Workflow responsibl
 
 For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
 
-* [  JavaScript ](#tab-panel-11133)
-* [  TypeScript ](#tab-panel-11134)
+* [  JavaScript ](#tab-panel-11194)
+* [  TypeScript ](#tab-panel-11195)
 
 JavaScript
 
@@ -241,8 +224,8 @@ Explain Code
 
 The Workflow configuration is defined in the `wrangler.jsonc` file. This file includes bindings for the R2 bucket, D1 database, Workers AI, and the Workflow itself. Ensure that all necessary bindings and environment variables are correctly set up to match your Cloudflare account and services.
 
-* [  wrangler.jsonc ](#tab-panel-11131)
-* [  wrangler.toml ](#tab-panel-11132)
+* [  wrangler.jsonc ](#tab-panel-11192)
+* [  wrangler.toml ](#tab-panel-11193)
 
 JSONC
 

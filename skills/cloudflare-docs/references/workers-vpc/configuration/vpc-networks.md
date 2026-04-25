@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-vpc/configuration/vpc-networks/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # VPC Networks
 
 VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to reach any Mesh node, client device, or IP route in your account.
@@ -41,8 +24,8 @@ Binding directly to a tunnel through a VPC Network binding requires the **Connec
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-9474)
-* [  wrangler.toml ](#tab-panel-9475)
+* [  wrangler.jsonc ](#tab-panel-9535)
+* [  wrangler.toml ](#tab-panel-9536)
 
 JSONC
 
@@ -102,8 +85,8 @@ Your account must have at least one active [Cloudflare Tunnel](https://developer
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-9476)
-* [  wrangler.toml ](#tab-panel-9477)
+* [  wrangler.jsonc ](#tab-panel-9537)
+* [  wrangler.toml ](#tab-panel-9538)
 
 JSONC
 

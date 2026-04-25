@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
  n 
 
 #  hermes-2-pro-mistral-7b Beta 
@@ -48,10 +31,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-3386)
-* [  TypeScript ](#tab-panel-3387)
-* [  Python ](#tab-panel-3388)
-* [  curl ](#tab-panel-3389)
+* [  Worker (Streaming) ](#tab-panel-3396)
+* [  TypeScript ](#tab-panel-3397)
+* [  Python ](#tab-panel-3398)
+* [  curl ](#tab-panel-3399)
 
 TypeScript
 
@@ -216,8 +199,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3394)
-* [ Output ](#tab-panel-3395)
+* [ Input ](#tab-panel-3404)
+* [ Output ](#tab-panel-3405)
 
 prompt
 
@@ -285,8 +268,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3396)
-* [ Output ](#tab-panel-3397)
+* [ Input ](#tab-panel-3406)
+* [ Output ](#tab-panel-3407)
 
 prompt
 
@@ -352,8 +335,8 @@ format
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3390)
-* [ Output ](#tab-panel-3391)
+* [ Input ](#tab-panel-3400)
+* [ Output ](#tab-panel-3401)
 
 ```
 
@@ -649,8 +632,8 @@ Explain Code
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3392)
-* [ Output ](#tab-panel-3393)
+* [ Input ](#tab-panel-3402)
+* [ Output ](#tab-panel-3403)
 
 ```
 

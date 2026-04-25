@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/flagship/get-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Get started
 
 In this guide, you will create a feature flag in Flagship and evaluate it inside a Cloudflare Worker.
@@ -42,8 +25,8 @@ In this example, you will create a boolean flag called `new-checkout` that contr
 
 Add the Flagship binding in your Wrangler configuration file so your Worker can evaluate flags through a binding.
 
-* [  wrangler.jsonc ](#tab-panel-7073)
-* [  wrangler.toml ](#tab-panel-7074)
+* [  wrangler.jsonc ](#tab-panel-7127)
+* [  wrangler.toml ](#tab-panel-7128)
 
 JSONC
 
@@ -85,8 +68,8 @@ After updating the Wrangler configuration, run `npx wrangler types` to generate 
 
 Use the `env.FLAGS` binding to evaluate the flag. The binding provides type-safe methods that return the flag value and fall back to the default you provide if evaluation fails.
 
-* [  JavaScript ](#tab-panel-7075)
-* [  TypeScript ](#tab-panel-7076)
+* [  JavaScript ](#tab-panel-7129)
+* [  TypeScript ](#tab-panel-7130)
 
 JavaScript
 
@@ -226,13 +209,13 @@ bun add @cloudflare/flagship @openfeature/server-sdk
 
 Evaluate flags using the OpenFeature client:
 
-* [ With binding ](#tab-panel-7081)
-* [ With app ID ](#tab-panel-7082)
+* [ With binding ](#tab-panel-7135)
+* [ With app ID ](#tab-panel-7136)
 
 Pass the Flagship binding directly to the provider. This avoids additional HTTP requests and is the recommended approach inside a Worker. Authentication is handled automatically through the binding.
 
-* [  JavaScript ](#tab-panel-7079)
-* [  TypeScript ](#tab-panel-7080)
+* [  JavaScript ](#tab-panel-7133)
+* [  TypeScript ](#tab-panel-7134)
 
 JavaScript
 
@@ -334,8 +317,8 @@ Explain Code
 
 Use an app ID, account ID, and an API token when running outside of a Worker (for example, in Node.js). The provider makes HTTP requests to the Flagship evaluation endpoint. Generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) from your Cloudflare account with Flagship Evaluate permission.
 
-* [  JavaScript ](#tab-panel-7077)
-* [  TypeScript ](#tab-panel-7078)
+* [  JavaScript ](#tab-panel-7131)
+* [  TypeScript ](#tab-panel-7132)
 
 JavaScript
 

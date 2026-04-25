@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/analytics-integrations/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Analytics integrations
 
 Cloudflare Enterprise customers can use Cloudflare integrations with their preferred analytics provider and configure ready-to-use Cloudflare Dashboards. Most analytics integrations are built on Cloudflare Logs by using Logpush with either Amazon S3 bucket or GCP Storage bucket.

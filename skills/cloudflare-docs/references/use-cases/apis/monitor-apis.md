@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/apis/monitor-apis.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Monitor your APIs
 
 Understanding how your APIs are used — request volume, latency, error rates, and undocumented endpoints — is essential for reliability and security. Cloudflare API Shield Analytics discovers endpoints from observed traffic, Logpush streams logs to your analytics platform, and Workers Analytics Engine tracks custom business metrics.

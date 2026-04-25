@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/client-side-security/reference/roles-and-permissions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Roles and permissions
 
 Cloudflare users with the following [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/) have access to client-side security in the Cloudflare dashboard:
@@ -40,8 +23,8 @@ The availability of specific features depends on your client-side security bundl
 
 To interact with the [client-side security API](https://developers.cloudflare.com/client-side-security/reference/api/) you need an API token with one of the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* [ Dashboard ](#tab-panel-5659)
-* [ API ](#tab-panel-5660)
+* [ Dashboard ](#tab-panel-5669)
+* [ API ](#tab-panel-5670)
 
 * Client-side security > Edit
 * Client-side security > Read _(read-only access)_

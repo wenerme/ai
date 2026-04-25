@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Proxy endpoints
 
 Note
@@ -48,6 +31,10 @@ Proxy endpoints are designed for environments where deploying the Cloudflare One
 * **Virtual desktops (VDI)**: Users log into a virtual machine and use a browser to reach the Internet.
 * **Compliance-restricted endpoints**: Environments where you are legally or technically prohibited from installing software on the endpoint.
 * **Legacy SWG migration**: Organizations transitioning from legacy Secure Web Gateways that use PAC files.
+
+### Logging
+
+Traffic sent through proxy endpoints generates [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/), which are available via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/) and [Log Explorer](https://developers.cloudflare.com/log-explorer/).
 
 ### What is a PAC file
 
@@ -99,8 +86,8 @@ Warning
 
 All devices you add to the proxy endpoint can access your Cloudflare Tunnel applications and services. If you only want to proxy web traffic, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/common-policies/#restrict-private-network-access-to-proxy-endpoint-users) that restricts proxy endpoint traffic from connecting to your internal resources.
 
-* [ Dashboard ](#tab-panel-5986)
-* [ API ](#tab-panel-5987)
+* [ Dashboard ](#tab-panel-6038)
+* [ API ](#tab-panel-6039)
 
 Authorization endpoint
 
@@ -339,8 +326,8 @@ You may need to configure your organization's firewall to allow your users to co
 
 To get the domain of a proxy endpoint:
 
-* [ Dashboard ](#tab-panel-5984)
-* [ API ](#tab-panel-5985)
+* [ Dashboard ](#tab-panel-6036)
+* [ API ](#tab-panel-6037)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Resolvers & Proxies** \> **Proxy endpoints**.
 2. Choose the proxy endpoint. Select **Edit**.
@@ -372,8 +359,8 @@ Explain Code
 
 Using your proxy endpoint's domain, you can get the IP addresses assigned to the proxy endpoint:
 
-* [ macOS and Linux ](#tab-panel-5982)
-* [ Windows ](#tab-panel-5983)
+* [ macOS and Linux ](#tab-panel-6034)
+* [ Windows ](#tab-panel-6035)
 
 1. Open a terminal.
 2. Run `dig` on your proxy endpoint's A records to get its IPv4 addresses. For example:  

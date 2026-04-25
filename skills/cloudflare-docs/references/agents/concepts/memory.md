@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/concepts/memory.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Memory
 
 Agents need memory to be useful over time. Without it, every conversation starts from zero. The agent forgets who the user is, what it learned, and what it was doing. Memory is what turns a stateless LLM call into a persistent, context-aware agent.
@@ -37,8 +20,8 @@ The [Session API](https://developers.cloudflare.com/agents/api-reference/session
 
 The most fundamental type of memory is the conversation itself: the messages between the user and the agent, the tool calls the agent made, and the results it received. The Session stores all of this in a tree-structured message history backed by a Session Provider, defaulting to SQLite.
 
-* [  JavaScript ](#tab-panel-5028)
-* [  TypeScript ](#tab-panel-5029)
+* [  JavaScript ](#tab-panel-5038)
+* [  TypeScript ](#tab-panel-5039)
 
 JavaScript
 
@@ -104,8 +87,8 @@ Messages are stored in a tree structure via `parent_id`, which enables branching
 
 The Session also provides full-text search across the conversation history:
 
-* [  JavaScript ](#tab-panel-5026)
-* [  TypeScript ](#tab-panel-5027)
+* [  JavaScript ](#tab-panel-5036)
+* [  TypeScript ](#tab-panel-5037)
 
 JavaScript
 
@@ -139,8 +122,8 @@ This is your traditional system prompt: the agent's identity, personality, and i
 
 A coding assistant might have a soul that defines its personality and constraints:
 
-* [  JavaScript ](#tab-panel-5030)
-* [  TypeScript ](#tab-panel-5031)
+* [  JavaScript ](#tab-panel-5040)
+* [  TypeScript ](#tab-panel-5041)
 
 JavaScript
 
@@ -202,8 +185,8 @@ Explain Code
 
 Or load it from R2 so you can update the agent's personality without redeploying:
 
-* [  JavaScript ](#tab-panel-5032)
-* [  TypeScript ](#tab-panel-5033)
+* [  JavaScript ](#tab-panel-5042)
+* [  TypeScript ](#tab-panel-5043)
 
 JavaScript
 
@@ -259,8 +242,8 @@ Read-only blocks are defined by providing an object with only a `get()` method. 
 
 Think of this as a scratchpad the agent maintains for itself, a place to jot down things it needs to remember. Like how Claude Code keeps a todo list of tasks to work through, or how a customer support agent might track what it has learned about the user during the conversation.
 
-* [  JavaScript ](#tab-panel-5034)
-* [  TypeScript ](#tab-panel-5035)
+* [  JavaScript ](#tab-panel-5044)
+* [  TypeScript ](#tab-panel-5045)
 
 JavaScript
 
@@ -358,8 +341,8 @@ You provide a provider with a `search()` method. How that search works is entire
 
 The built-in `AgentSearchProvider` uses Durable Object SQLite with FTS5 as default:
 
-* [  JavaScript ](#tab-panel-5036)
-* [  TypeScript ](#tab-panel-5037)
+* [  JavaScript ](#tab-panel-5046)
+* [  TypeScript ](#tab-panel-5047)
 
 JavaScript
 
@@ -403,8 +386,8 @@ const session = Session.create(this)
 
 But you can implement your own provider backed by any search mechanism:
 
-* [  JavaScript ](#tab-panel-5040)
-* [  TypeScript ](#tab-panel-5041)
+* [  JavaScript ](#tab-panel-5050)
+* [  TypeScript ](#tab-panel-5051)
 
 JavaScript
 
@@ -546,8 +529,8 @@ Agent calls: load_context({ block: "skills", key: "deploy-checklist" })
 
 The built-in `R2SkillProvider` stores skills in a Cloudflare R2 bucket. Each skill is an R2 object with optional custom metadata for descriptions.
 
-* [  JavaScript ](#tab-panel-5046)
-* [  TypeScript ](#tab-panel-5047)
+* [  JavaScript ](#tab-panel-5056)
+* [  TypeScript ](#tab-panel-5057)
 
 JavaScript
 
@@ -651,8 +634,8 @@ The `prefix` option scopes the provider to a subdirectory in the bucket. Skill k
 
 Add an R2 bucket binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5024)
-* [  wrangler.toml ](#tab-panel-5025)
+* [  wrangler.jsonc ](#tab-panel-5034)
+* [  wrangler.toml ](#tab-panel-5035)
 
 JSONC
 
@@ -705,8 +688,8 @@ wrangler r2 object put my-agent-skills/skills/style-guide --file ./docs/style-gu
 
 To add descriptions (shown in the metadata listing), set custom metadata on the R2 object:
 
-* [  JavaScript ](#tab-panel-5038)
-* [  TypeScript ](#tab-panel-5039)
+* [  JavaScript ](#tab-panel-5048)
+* [  TypeScript ](#tab-panel-5049)
 
 JavaScript
 
@@ -738,8 +721,8 @@ await env.SKILLS_BUCKET.put("skills/api-ref", content, {
 
 You can back skills with any storage by implementing the `SkillProvider` interface:
 
-* [  JavaScript ](#tab-panel-5052)
-* [  TypeScript ](#tab-panel-5053)
+* [  JavaScript ](#tab-panel-5062)
+* [  TypeScript ](#tab-panel-5063)
 
 JavaScript
 
@@ -912,8 +895,8 @@ The key distinction: skills are **lazy**. They cost nearly nothing in the system
 
 The Session automatically generates tools based on the provider types of your context blocks. You pass these tools to your LLM alongside your own application-specific tools:
 
-* [  JavaScript ](#tab-panel-5042)
-* [  TypeScript ](#tab-panel-5043)
+* [  JavaScript ](#tab-panel-5052)
+* [  TypeScript ](#tab-panel-5053)
 
 JavaScript
 
@@ -1046,8 +1029,8 @@ When the agent uses `set_context` to update a writable block, the underlying pro
 
 This means the system prompt stays stable throughout a multi-step tool-use turn, preserving the provider's prefix cache across every step.
 
-* [  JavaScript ](#tab-panel-5048)
-* [  TypeScript ](#tab-panel-5049)
+* [  JavaScript ](#tab-panel-5058)
+* [  TypeScript ](#tab-panel-5059)
 
 JavaScript
 
@@ -1155,8 +1138,8 @@ The key points:
 * **Boundary-aware**, compaction boundaries are shifted to avoid splitting tool call / tool result pairs.
 * **Configurable**, `protectHead` preserves the first N messages (usually the system context), and `tailTokenBudget` keeps the most recent messages intact.
 
-* [  JavaScript ](#tab-panel-5050)
-* [  TypeScript ](#tab-panel-5051)
+* [  JavaScript ](#tab-panel-5060)
+* [  TypeScript ](#tab-panel-5061)
 
 JavaScript
 
@@ -1234,8 +1217,8 @@ Micro-compaction works at the individual message level rather than across ranges
 
 **Read-time truncation**: `truncateOlderMessages()` shortens tool outputs and long text in older messages before sending them to the LLM. Recent messages (last 4 by default) are kept intact. This operates on a copy, stored messages are not mutated.
 
-* [  JavaScript ](#tab-panel-5044)
-* [  TypeScript ](#tab-panel-5045)
+* [  JavaScript ](#tab-panel-5054)
+* [  TypeScript ](#tab-panel-5055)
 
 JavaScript
 

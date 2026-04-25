@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/get-started/route-emails.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Route emails
 
 Set up email routing to forward incoming emails to existing mailboxes or process them with Workers.
@@ -66,8 +49,8 @@ Once your domain is onboarded, you can start routing emails.
 
 You can route your first email by setting up forwarding rules in the dashboard, or by processing emails with Workers.
 
-* [ Route to email ](#tab-panel-7051)
-* [ Route to Workers ](#tab-panel-7052)
+* [ Route to email ](#tab-panel-7105)
+* [ Route to Workers ](#tab-panel-7106)
 
 The simplest way to route emails is forwarding them to existing email addresses.
 
@@ -112,8 +95,8 @@ Terminal window
 npm install mimetext  
 ```
 3. Add the `nodejs_compat` compatibility flag to your Wrangler configuration file. This is required for the `mimetext` package:  
-   * [  wrangler.jsonc ](#tab-panel-7049)  
-   * [  wrangler.toml ](#tab-panel-7050)  
+   * [  wrangler.jsonc ](#tab-panel-7103)  
+   * [  wrangler.toml ](#tab-panel-7104)  
 JSONC  
 ```  
 {  

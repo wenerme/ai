@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack)[ Angular ](https://developers.cloudflare.com/search/?tags=Angular) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/framework-guides/web-apps/more-web-frameworks/analog.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Analog
 
 In this guide, you will create a new [Analog ↗](https://analogjs.org/) application and deploy to Cloudflare Workers.

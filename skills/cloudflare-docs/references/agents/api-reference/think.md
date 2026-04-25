@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/think.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Think
 
 `@cloudflare/think` is an opinionated chat agent base class for Cloudflare Workers. It handles the full chat lifecycle — agentic loop, message persistence, streaming, tool execution, client tools, stream resumption, and extensions — all backed by Durable Object SQLite.
@@ -48,8 +31,8 @@ npm install @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zo
 
 ### Server
 
-* [  JavaScript ](#tab-panel-4870)
-* [  TypeScript ](#tab-panel-4871)
+* [  JavaScript ](#tab-panel-4880)
+* [  TypeScript ](#tab-panel-4881)
 
 JavaScript
 
@@ -149,8 +132,8 @@ That is it. Think handles the WebSocket chat protocol, message persistence, the 
 
 ### Client
 
-* [  JavaScript ](#tab-panel-4886)
-* [  TypeScript ](#tab-panel-4887)
+* [  JavaScript ](#tab-panel-4896)
+* [  TypeScript ](#tab-panel-4897)
 
 JavaScript
 
@@ -298,8 +281,8 @@ Explain Code
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-4860)
-* [  wrangler.toml ](#tab-panel-4861)
+* [  wrangler.jsonc ](#tab-panel-4870)
+* [  wrangler.toml ](#tab-panel-4871)
 
 JSONC
 
@@ -451,8 +434,8 @@ Both Think and [AIChatAgent](https://developers.cloudflare.com/agents/api-refere
 
 Think accepts a `Config` type parameter for per-instance typed configuration. Configuration is persisted in SQLite and survives hibernation and restarts.
 
-* [  JavaScript ](#tab-panel-4866)
-* [  TypeScript ](#tab-panel-4867)
+* [  JavaScript ](#tab-panel-4876)
+* [  TypeScript ](#tab-panel-4877)
 
 JavaScript
 
@@ -522,8 +505,8 @@ Explain Code
 
 Expose configuration to the client via `@callable`:
 
-* [  JavaScript ](#tab-panel-4868)
-* [  TypeScript ](#tab-panel-4869)
+* [  JavaScript ](#tab-panel-4878)
+* [  TypeScript ](#tab-panel-4879)
 
 JavaScript
 
@@ -591,8 +574,8 @@ Explain Code
 
 Think uses [Session](https://developers.cloudflare.com/agents/api-reference/sessions/) for conversation storage. Override `configureSession` to add persistent memory, compaction, search, and skills:
 
-* [  JavaScript ](#tab-panel-4876)
-* [  TypeScript ](#tab-panel-4877)
+* [  JavaScript ](#tab-panel-4886)
+* [  TypeScript ](#tab-panel-4887)
 
 JavaScript
 
@@ -722,8 +705,8 @@ Every Think agent gets `this.workspace` — a virtual filesystem backed by Durab
 
 By default, the workspace stores everything in SQLite. For large files, override `workspace` to add R2 spillover:
 
-* [  JavaScript ](#tab-panel-4874)
-* [  TypeScript ](#tab-panel-4875)
+* [  JavaScript ](#tab-panel-4884)
+* [  TypeScript ](#tab-panel-4885)
 
 JavaScript
 
@@ -797,8 +780,8 @@ Explain Code
 
 This requires an R2 bucket binding:
 
-* [  wrangler.jsonc ](#tab-panel-4858)
-* [  wrangler.toml ](#tab-panel-4859)
+* [  wrangler.jsonc ](#tab-panel-4868)
+* [  wrangler.toml ](#tab-panel-4869)
 
 JSONC
 
@@ -842,8 +825,8 @@ bucket_name = "agent-files"
 
 Override `getTools()` to add your own tools. These are standard AI SDK `tool()` definitions with Zod schemas:
 
-* [  JavaScript ](#tab-panel-4890)
-* [  TypeScript ](#tab-panel-4891)
+* [  JavaScript ](#tab-panel-4900)
+* [  TypeScript ](#tab-panel-4901)
 
 JavaScript
 
@@ -1039,8 +1022,8 @@ Think inherits MCP client support from the `Agent` base class. MCP tools from co
 
 Set `waitForMcpConnections` to ensure MCP servers are connected before inference runs:
 
-* [  JavaScript ](#tab-panel-4872)
-* [  TypeScript ](#tab-panel-4873)
+* [  JavaScript ](#tab-panel-4882)
+* [  TypeScript ](#tab-panel-4883)
 
 JavaScript
 
@@ -1088,8 +1071,8 @@ export class MyAgent extends Think<Env> {
 
 Add MCP servers programmatically or via `@callable` methods:
 
-* [  JavaScript ](#tab-panel-4882)
-* [  TypeScript ](#tab-panel-4883)
+* [  JavaScript ](#tab-panel-4892)
+* [  TypeScript ](#tab-panel-4893)
 
 JavaScript
 
@@ -1184,8 +1167,8 @@ npm install @cloudflare/codemode
 
 ```
 
-* [  JavaScript ](#tab-panel-4888)
-* [  TypeScript ](#tab-panel-4889)
+* [  JavaScript ](#tab-panel-4898)
+* [  TypeScript ](#tab-panel-4899)
 
 JavaScript
 
@@ -1273,8 +1256,8 @@ export class MyAgent extends Think<Env> {
 
 Explain Code
 
-* [  wrangler.jsonc ](#tab-panel-4862)
-* [  wrangler.toml ](#tab-panel-4863)
+* [  wrangler.jsonc ](#tab-panel-4872)
+* [  wrangler.toml ](#tab-panel-4873)
 
 JSONC
 
@@ -1312,8 +1295,8 @@ binding = "LOADER"
 
 For richer filesystem access, pass a `state` backend:
 
-* [  JavaScript ](#tab-panel-4878)
-* [  TypeScript ](#tab-panel-4879)
+* [  JavaScript ](#tab-panel-4888)
+* [  TypeScript ](#tab-panel-4889)
 
 JavaScript
 
@@ -1359,8 +1342,8 @@ createExecuteTool({
 
 Give your agent access to the Chrome DevTools Protocol (CDP) for web page inspection, scraping, screenshots, and debugging. Requires `@cloudflare/codemode` and a Browser Run binding.
 
-* [  JavaScript ](#tab-panel-4892)
-* [  TypeScript ](#tab-panel-4893)
+* [  JavaScript ](#tab-panel-4902)
+* [  TypeScript ](#tab-panel-4903)
 
 JavaScript
 
@@ -1444,8 +1427,8 @@ export class MyAgent extends Think<Env> {
 
 Explain Code
 
-* [  wrangler.jsonc ](#tab-panel-4864)
-* [  wrangler.toml ](#tab-panel-4865)
+* [  wrangler.jsonc ](#tab-panel-4874)
+* [  wrangler.toml ](#tab-panel-4875)
 
 JSONC
 
@@ -1503,8 +1486,8 @@ This adds two tools:
 
 For a custom Chrome endpoint, pass `cdpUrl` instead of `browser`:
 
-* [  JavaScript ](#tab-panel-4880)
-* [  TypeScript ](#tab-panel-4881)
+* [  JavaScript ](#tab-panel-4890)
+* [  TypeScript ](#tab-panel-4891)
 
 JavaScript
 
@@ -1544,8 +1527,8 @@ Extensions are dynamically loaded sandboxed Workers that add tools at runtime. T
 
 Extensions require a `worker_loaders` binding:
 
-* [  JavaScript ](#tab-panel-4884)
-* [  TypeScript ](#tab-panel-4885)
+* [  JavaScript ](#tab-panel-4894)
+* [  TypeScript ](#tab-panel-4895)
 
 JavaScript
 
@@ -1597,8 +1580,8 @@ export class MyAgent extends Think<Env> {
 
 Define extensions that load at startup:
 
-* [  JavaScript ](#tab-panel-4910)
-* [  TypeScript ](#tab-panel-4911)
+* [  JavaScript ](#tab-panel-4920)
+* [  TypeScript ](#tab-panel-4921)
 
 JavaScript
 
@@ -1732,8 +1715,8 @@ Extension tools are namespaced — a `math` extension with an `add` tool becomes
 
 Give the model `createExtensionTools` so it can load extensions dynamically:
 
-* [  JavaScript ](#tab-panel-4898)
-* [  TypeScript ](#tab-panel-4899)
+* [  JavaScript ](#tab-panel-4908)
+* [  TypeScript ](#tab-panel-4909)
 
 JavaScript
 
@@ -1861,8 +1844,8 @@ The context block is registered as `notes_scratchpad` (namespaced by extension n
 
 The individual tool factories are exported for use with custom storage backends:
 
-* [  JavaScript ](#tab-panel-4894)
-* [  TypeScript ](#tab-panel-4895)
+* [  JavaScript ](#tab-panel-4904)
+* [  TypeScript ](#tab-panel-4905)
 
 JavaScript
 
@@ -1924,8 +1907,8 @@ Explain Code
 
 Implement the operations interface for your storage backend:
 
-* [  JavaScript ](#tab-panel-4896)
-* [  TypeScript ](#tab-panel-4897)
+* [  JavaScript ](#tab-panel-4906)
+* [  TypeScript ](#tab-panel-4907)
 
 JavaScript
 
@@ -2281,8 +2264,8 @@ Think supports tools that execute in the browser. The client sends tool schemas 
 
 On the client, pass `clientTools` to `useAgentChat`:
 
-* [  JavaScript ](#tab-panel-4906)
-* [  TypeScript ](#tab-panel-4907)
+* [  JavaScript ](#tab-panel-4916)
+* [  TypeScript ](#tab-panel-4917)
 
 JavaScript
 
@@ -2384,8 +2367,8 @@ Client tools are tools without an `execute` function on the server — they only
 
 Handle approvals on the client with `onToolCall`:
 
-* [  JavaScript ](#tab-panel-4900)
-* [  TypeScript ](#tab-panel-4901)
+* [  JavaScript ](#tab-panel-4910)
+* [  TypeScript ](#tab-panel-4911)
 
 JavaScript
 
@@ -2453,8 +2436,8 @@ The `messageConcurrency` property controls how overlapping user submits behave w
 | "drop"                                        | Ignore overlapping submits entirely. Messages are not persisted.                      |
 | { strategy: "debounce", debounceMs?: number } | Trailing-edge latest with a quiet window (default 750ms).                             |
 
-* [  JavaScript ](#tab-panel-4902)
-* [  TypeScript ](#tab-panel-4903)
+* [  JavaScript ](#tab-panel-4912)
+* [  TypeScript ](#tab-panel-4913)
 
 JavaScript
 
@@ -2545,8 +2528,8 @@ async chat(
 
 #### Example: parent calling a child
 
-* [  JavaScript ](#tab-panel-4924)
-* [  TypeScript ](#tab-panel-4925)
+* [  JavaScript ](#tab-panel-4934)
+* [  TypeScript ](#tab-panel-4935)
 
 JavaScript
 
@@ -2702,8 +2685,8 @@ Explain Code
 
 The `tools` option adds tools for this turn only, with the highest merge priority:
 
-* [  JavaScript ](#tab-panel-4912)
-* [  TypeScript ](#tab-panel-4913)
+* [  JavaScript ](#tab-panel-4922)
+* [  TypeScript ](#tab-panel-4923)
 
 JavaScript
 
@@ -2773,8 +2756,8 @@ Explain Code
 
 Pass an `AbortSignal` to cancel mid-stream. When aborted, the partial assistant message is still persisted.
 
-* [  JavaScript ](#tab-panel-4904)
-* [  TypeScript ](#tab-panel-4905)
+* [  JavaScript ](#tab-panel-4914)
+* [  TypeScript ](#tab-panel-4915)
 
 JavaScript
 
@@ -2837,8 +2820,8 @@ Returns `{ requestId, status }` where `status` is `"completed"` or `"skipped"`.
 
 #### Static messages
 
-* [  JavaScript ](#tab-panel-4908)
-* [  TypeScript ](#tab-panel-4909)
+* [  JavaScript ](#tab-panel-4918)
+* [  TypeScript ](#tab-panel-4919)
 
 JavaScript
 
@@ -2886,8 +2869,8 @@ await this.saveMessages([
 
 When multiple `saveMessages` calls queue up, the function form runs with the latest messages when the turn actually starts:
 
-* [  JavaScript ](#tab-panel-4914)
-* [  TypeScript ](#tab-panel-4915)
+* [  JavaScript ](#tab-panel-4924)
+* [  TypeScript ](#tab-panel-4925)
 
 JavaScript
 
@@ -2939,8 +2922,8 @@ await this.saveMessages((current) => [
 
 Trigger a turn from a cron schedule:
 
-* [  JavaScript ](#tab-panel-4918)
-* [  TypeScript ](#tab-panel-4919)
+* [  JavaScript ](#tab-panel-4928)
+* [  TypeScript ](#tab-panel-4929)
 
 JavaScript
 
@@ -3070,8 +3053,8 @@ Returns `{ requestId, status: "skipped" }` if the last message is not an assista
 
 Think can wrap chat turns in Durable Object fibers for durable execution. When a DO is evicted mid-turn, the turn can be recovered on restart.
 
-* [  JavaScript ](#tab-panel-4916)
-* [  TypeScript ](#tab-panel-4917)
+* [  JavaScript ](#tab-panel-4926)
+* [  TypeScript ](#tab-panel-4927)
 
 JavaScript
 
@@ -3119,8 +3102,8 @@ When `chatRecovery` is `true`, all four turn paths (WebSocket, auto-continuation
 
 When an interrupted chat fiber is detected after DO restart, Think calls `onChatRecovery`:
 
-* [  JavaScript ](#tab-panel-4922)
-* [  TypeScript ](#tab-panel-4923)
+* [  JavaScript ](#tab-panel-4932)
+* [  TypeScript ](#tab-panel-4933)
 
 JavaScript
 
@@ -3247,8 +3230,8 @@ protected hasPendingInteraction(): boolean
 
 Returns a promise that resolves to `true` when the agent reaches a stable state, or `false` if the timeout is exceeded.
 
-* [  JavaScript ](#tab-panel-4920)
-* [  TypeScript ](#tab-panel-4921)
+* [  JavaScript ](#tab-panel-4930)
+* [  TypeScript ](#tab-panel-4931)
 
 JavaScript
 

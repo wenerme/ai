@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/usage/providers/anthropic.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Anthropic
 
 [Anthropic ↗](https://www.anthropic.com/) helps build reliable, interpretable, and steerable AI systems.
@@ -44,8 +27,8 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5309)
-* [ Unauthenticated Gateway ](#tab-panel-5310)
+* [ With Authenticated Gateway ](#tab-panel-5319)
+* [ Unauthenticated Gateway ](#tab-panel-5320)
 
 Terminal window
 
@@ -148,8 +131,8 @@ Explain Code
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5311)
-* [ Unauthenticated Gateway ](#tab-panel-5312)
+* [ With Authenticated Gateway ](#tab-panel-5321)
+* [ Unauthenticated Gateway ](#tab-panel-5322)
 
 ```
 

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ CLI ](https://developers.cloudflare.com/search/?tags=CLI) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/update-cloudflared.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Update cloudflared
 
 Updates will cause `cloudflared` to restart which will impact traffic currently being served. You can perform zero-downtime upgrades by using Cloudflare's [Load Balancer product](#update-with-cloudflare-load-balancer) or by using [multiple cloudflared instances](#update-with-multiple-cloudflared-instances).
@@ -35,12 +18,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-5874)
-* [ macOS ](#tab-panel-5875)
-* [ Debian ](#tab-panel-5876)
-* [ Red Hat ](#tab-panel-5877)
-* [ Docker ](#tab-panel-5878)
-* [ Other ](#tab-panel-5879)
+* [ Windows ](#tab-panel-5926)
+* [ macOS ](#tab-panel-5927)
+* [ Debian ](#tab-panel-5928)
+* [ Red Hat ](#tab-panel-5929)
+* [ Docker ](#tab-panel-5930)
+* [ Other ](#tab-panel-5931)
 
 Run the following command:
 

@@ -6,21 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
 # Potential disruption of services for Russian users
 
 Cloudflare has observed that Internet Service Providers (ISPs) within Russia are systematically throttling traffic to websites and services, including those protected by Cloudflare.

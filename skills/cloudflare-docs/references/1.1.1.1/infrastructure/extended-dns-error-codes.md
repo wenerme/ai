@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/1.1.1.1/infrastructure/extended-dns-error-codes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Extended DNS error codes
 
 [Extended DNS Error Codes ↗](https://www.rfc-editor.org/rfc/rfc8914.html) is a method to return additional information about the cause of DNS errors. As there are many reasons why a DNS query might fail, it became necessary to provide additional information on the exact cause of an error.
@@ -47,5 +30,5 @@ YesNo
 | 30          | Invalid Query Type           | EDE: 30 (Invalid Query Type): Invalid Query Type                                                                                                           | The record type in the request cannot give a valid answer. If this is returned for standard query types, such as A or AAAA records, please reach out to the [community forum](https://community.cloudflare.com/c/reliability/dns-1111/47).                                                                                                                                                                                                                                                                                                                                            |
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/infrastructure/","name":"Infrastructure"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/infrastructure/extended-dns-error-codes/","name":"Extended DNS error codes"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/infrastructure/","name":"Infrastructure"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/infrastructure/extended-dns-error-codes/","name":"Extended DNS error codes"}}]}
 ```

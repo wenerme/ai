@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/dnssec/multi-signer-dnssec/setup.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Set up multi-signer DNSSEC
 
 This page explains how you can enable [multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/) with Cloudflare, using the [model 2](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/#model-2) as described in [RFC 8901 ↗](https://www.rfc-editor.org/rfc/rfc8901.html).
@@ -41,8 +24,8 @@ Note that:
 
 If you use Cloudflare as a primary DNS provider, meaning that you manage your DNS records in Cloudflare, do the following:
 
-* [ Dashboard ](#tab-panel-6661)
-* [ API ](#tab-panel-6662)
+* [ Dashboard ](#tab-panel-6713)
+* [ API ](#tab-panel-6714)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -196,8 +179,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
 
 If you use Cloudflare as a secondary DNS provider, do the following:
 
-* [ Dashboard ](#tab-panel-6659)
-* [ API ](#tab-panel-6660)
+* [ Dashboard ](#tab-panel-6711)
+* [ API ](#tab-panel-6712)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

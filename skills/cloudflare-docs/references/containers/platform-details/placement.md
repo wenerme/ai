@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/containers/platform-details/placement.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Placement
 
 By default, containers run in the location nearest to the incoming request with a pre-fetched image. Use placement constraints to restrict where your containers run for data residency, compliance, or latency requirements.
@@ -60,8 +43,8 @@ When you specify both `jurisdiction` and `regions`, the regions must be valid fo
 
 Set placement constraints in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6448)
-* [  wrangler.toml ](#tab-panel-6449)
+* [  wrangler.jsonc ](#tab-panel-6500)
+* [  wrangler.toml ](#tab-panel-6501)
 
 JSONC
 

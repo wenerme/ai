@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/turnstile/get-started/client-side-rendering/widget-configurations.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Widget configurations
 
 Configure your Turnstile widget's appearance, behavior, and functionality using data attributes or JavaScript render parameters.
@@ -31,8 +14,8 @@ Configure your Turnstile widget's appearance, behavior, and functionality using 
 
 Turnstile widgets can be implemented using implicit or explicit rendering.
 
-* [ Implicit rendering ](#tab-panel-9201)
-* [ Explicit rendering ](#tab-panel-9202)
+* [ Implicit rendering ](#tab-panel-9262)
+* [ Explicit rendering ](#tab-panel-9263)
 
 Implicit rendering automatically scans your HTML for elements with the `cf-turnstile` class and renders the widget when the page loads. It is best used for simple implementations, static websites, or when you want widgets to appear immediately on page load.
 
@@ -119,8 +102,8 @@ Note
 
 Widget size only applies to Managed and Non-Interactive modes. Invisible widgets have no visual footprint regardless of size configuration.
 
-* [ Implicit rendering ](#tab-panel-9189)
-* [ Explicit rendering ](#tab-panel-9190)
+* [ Implicit rendering ](#tab-panel-9250)
+* [ Explicit rendering ](#tab-panel-9251)
 
 Normal size (default)
 
@@ -202,8 +185,8 @@ Customize the widget's visual appearance to match your website's design.
 * `light`: Light theme with bright colors and clear contrast. Light theme works best on bright backgrounds and provides high contrast for readability.
 * `dark`: Dark theme optimized for dark interfaces. Dark theme is ideal for dark interfaces, gaming sites, or applications with dark color schemes.
 
-* [ Implicit rendering ](#tab-panel-9191)
-* [ Explicit rendering ](#tab-panel-9192)
+* [ Implicit rendering ](#tab-panel-9252)
+* [ Explicit rendering ](#tab-panel-9253)
 
 Auto theme (default)
 
@@ -289,8 +272,8 @@ Note
 
 Appearance modes only affect visible widget types (Managed and Non-Interactive). Invisible widgets are never shown regardless of the appearance setting.
 
-* [ Implicit rendering ](#tab-panel-9193)
-* [ Explicit rendering ](#tab-panel-9194)
+* [ Implicit rendering ](#tab-panel-9254)
+* [ Explicit rendering ](#tab-panel-9255)
 
 Always visible (default)
 
@@ -376,8 +359,8 @@ Control when the challenge runs and a token is generated.
    * Performance optimization: Defer verification to reduce initial page load time.  
    * User-triggered verification: Let visitors manually start the verification process.
 
-* [ Implicit rendering ](#tab-panel-9195)
-* [ Explicit rendering ](#tab-panel-9196)
+* [ Implicit rendering ](#tab-panel-9256)
+* [ Explicit rendering ](#tab-panel-9257)
 
 Auto execution (default)
 
@@ -451,8 +434,8 @@ Notes
 * Language affects all visitor-facing text including loading messages, error states, and accessibility labels.
 * Setting specific languages can improve visitor experience for international audiences.
 
-* [ Implicit rendering ](#tab-panel-9197)
-* [ Explicit rendering ](#tab-panel-9198)
+* [ Implicit rendering ](#tab-panel-9258)
+* [ Explicit rendering ](#tab-panel-9259)
 
 Auto language (default)
 
@@ -522,8 +505,8 @@ Handle widget events with callbacks.
 
 The success callback receives a token that must be validated on your server using the Siteverify API. Tokens are single-use and expire after 300 seconds (five minutes).
 
-* [ Implicit rendering ](#tab-panel-9199)
-* [ Explicit rendering ](#tab-panel-9200)
+* [ Implicit rendering ](#tab-panel-9260)
+* [ Explicit rendering ](#tab-panel-9261)
 
 ```
 

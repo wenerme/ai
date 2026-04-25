@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/build-dns-policies/recommended-dns-policies.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Recommended DNS policies
 
 We recommend you add the following DNS policies to build an Internet and SaaS app security strategy for your organization.
@@ -33,9 +16,9 @@ For additional commonly used DNS policy examples, refer to [Common DNS policies]
 
 Allowlist any known domains and hostnames. With this policy, you ensure that your users can access your organization's domains even if the domains fall under a blocked category, such as **Newly Seen Domains** or **Login Screens**.
 
-* [ Dashboard ](#tab-panel-7646)
-* [ API ](#tab-panel-7647)
-* [ Terraform ](#tab-panel-7648)
+* [ Dashboard ](#tab-panel-7698)
+* [ API ](#tab-panel-7699)
+* [ Terraform ](#tab-panel-7700)
 
 | Selector | Operator | Value           | Logic | Action |
 | -------- | -------- | --------------- | ----- | ------ |
@@ -110,9 +93,9 @@ Explain Code
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-7649)
-* [ API ](#tab-panel-7650)
-* [ Terraform ](#tab-panel-7651)
+* [ Dashboard ](#tab-panel-7701)
+* [ API ](#tab-panel-7702)
+* [ Terraform ](#tab-panel-7703)
 
 | Selector         | Operator    | Value                         | Logic | Action |
 | ---------------- | ----------- | ----------------------------- | ----- | ------ |
@@ -192,9 +175,9 @@ Explain Code
 
 Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories), such as **Command and Control & Botnet** and **Malware**, based on Cloudflare's threat intelligence.
 
-* [ Dashboard ](#tab-panel-7667)
-* [ API ](#tab-panel-7668)
-* [ Terraform ](#tab-panel-7669)
+* [ Dashboard ](#tab-panel-7719)
+* [ API ](#tab-panel-7720)
+* [ Terraform ](#tab-panel-7721)
 
 | Selector            | Operator | Value                | Action |
 | ------------------- | -------- | -------------------- | ------ |
@@ -272,9 +255,9 @@ Entries in the [security risk content subcategory](https://developers.cloudflare
 
 After your test is complete, we recommend you change the action to Block to minimize risk to your organization.
 
-* [ Dashboard ](#tab-panel-7670)
-* [ API ](#tab-panel-7671)
-* [ Terraform ](#tab-panel-7672)
+* [ Dashboard ](#tab-panel-7722)
+* [ API ](#tab-panel-7723)
+* [ Terraform ](#tab-panel-7724)
 
 | Selector           | Operator | Value                                                     | Action |
 | ------------------ | -------- | --------------------------------------------------------- | ------ |
@@ -350,9 +333,9 @@ Explain Code
 
 Block unauthorized applications to limit your users' access to certain web-based tools and minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/). For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-7673)
-* [ API ](#tab-panel-7674)
-* [ Terraform ](#tab-panel-7675)
+* [ Dashboard ](#tab-panel-7725)
+* [ API ](#tab-panel-7726)
+* [ Terraform ](#tab-panel-7727)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -428,9 +411,9 @@ Explain Code
 
 Block websites hosted in countries categorized as high risk. The designation of such countries may result from your organization's users or through the implementation of regulations including [EAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries), and [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries).
 
-* [ Dashboard ](#tab-panel-7652)
-* [ API ](#tab-panel-7653)
-* [ Terraform ](#tab-panel-7654)
+* [ Dashboard ](#tab-panel-7704)
+* [ API ](#tab-panel-7705)
+* [ Terraform ](#tab-panel-7706)
 
 | Selector                        | Operator | Value                                                                                                                                                           | Action |
 | ------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
@@ -504,9 +487,9 @@ Explain Code
 
 Block frequently misused top-level domains (TLDs) to reduce security risks, especially when there is no discernible advantage to be gained from allowing access. Similarly, restricting access to specific country-level TLDs may be necessary to comply with regulations such as [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries) and [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries).
 
-* [ Dashboard ](#tab-panel-7655)
-* [ API ](#tab-panel-7656)
-* [ Terraform ](#tab-panel-7657)
+* [ Dashboard ](#tab-panel-7707)
+* [ API ](#tab-panel-7708)
+* [ Terraform ](#tab-panel-7709)
 
 | Selector | Operator      | Value                                                                                              | Action |
 | -------- | ------------- | -------------------------------------------------------------------------------------------------- | ------ |
@@ -580,9 +563,9 @@ Explain Code
 
 Block misused domains to protect your users against sophisticated phishing attacks, such as domains that specifically target your organization. For example, the following policy blocks specific keywords associated with an organization or its authentication services (such as `okta`, `2fa`, `cloudflare` and `sso`) while still allowing access to known domains.
 
-* [ Dashboard ](#tab-panel-7658)
-* [ API ](#tab-panel-7659)
-* [ Terraform ](#tab-panel-7660)
+* [ Dashboard ](#tab-panel-7710)
+* [ API ](#tab-panel-7711)
+* [ Terraform ](#tab-panel-7712)
 
 | Selector | Operator      | Value                                          | Logic | Action |
 | -------- | ------------- | ---------------------------------------------- | ----- | ------ |
@@ -659,9 +642,9 @@ Block specific IP addresses that are malicious or pose a threat to your organiza
 
 You can implement this policy by either creating custom blocklists or by using blocklists provided by threat intelligence partners or regional Computer Emergency and Response Teams (CERTs). Ideally, your CERTs can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-* [ Dashboard ](#tab-panel-7661)
-* [ API ](#tab-panel-7662)
-* [ Terraform ](#tab-panel-7663)
+* [ Dashboard ](#tab-panel-7713)
+* [ API ](#tab-panel-7714)
+* [ Terraform ](#tab-panel-7715)
 
 | Selector    | Operator | Value          | Action |
 | ----------- | -------- | -------------- | ------ |
@@ -735,9 +718,9 @@ Explain Code
 
 Block specific domains or hosts that are malicious or pose a threat to your organization. Like **All-DNS-ResolvedIP-Blocklist**, this blocklist can be updated manually or via API automation.
 
-* [ Dashboard ](#tab-panel-7664)
-* [ API ](#tab-panel-7665)
-* [ Terraform ](#tab-panel-7666)
+* [ Dashboard ](#tab-panel-7716)
+* [ API ](#tab-panel-7717)
+* [ Terraform ](#tab-panel-7718)
 
 | Selector | Operator      | Value              | Logic | Action |
 | -------- | ------------- | ------------------ | ----- | ------ |

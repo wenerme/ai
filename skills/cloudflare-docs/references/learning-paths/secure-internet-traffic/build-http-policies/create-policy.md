@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/build-http-policies/create-policy.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Create your first HTTP policy
 
 Now that you have considered which devices and applications TLS inspection should and should not apply to, it is time to create your first HTTP policy.
@@ -33,8 +16,8 @@ Use a standard naming convention when building all policies. Policy names should
 
 To create a new HTTP policy:
 
-* [ Dashboard ](#tab-panel-7680)
-* [ API ](#tab-panel-7681)
+* [ Dashboard ](#tab-panel-7734)
+* [ API ](#tab-panel-7735)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.

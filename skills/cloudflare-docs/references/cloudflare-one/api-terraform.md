@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform)[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/api-terraform.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # API and Terraform
 
 You can manage your Cloudflare Zero Trust configuration using the API or Terraform. For more information, refer to the following links:

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/api/commands.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Commands
 
 Execute commands and manage background processes in the sandbox's isolated container environment.
@@ -55,8 +38,8 @@ const result = await sandbox.exec(command: string, options?: ExecOptions): Promi
 
 **Returns**: `Promise<ExecuteResponse>` with `success`, `stdout`, `stderr`, `exitCode`
 
-* [  JavaScript ](#tab-panel-8572)
-* [  TypeScript ](#tab-panel-8573)
+* [  JavaScript ](#tab-panel-8629)
+* [  TypeScript ](#tab-panel-8630)
 
 JavaScript
 
@@ -228,8 +211,8 @@ const stream = await sandbox.execStream(command: string, options?: ExecOptions):
 
 **Returns**: `Promise<ReadableStream>` emitting `ExecEvent` objects (`start`, `stdout`, `stderr`, `complete`, `error`)
 
-* [  JavaScript ](#tab-panel-8568)
-* [  TypeScript ](#tab-panel-8569)
+* [  JavaScript ](#tab-panel-8625)
+* [  TypeScript ](#tab-panel-8626)
 
 JavaScript
 
@@ -397,8 +380,8 @@ const process = await sandbox.startProcess(command: string, options?: ProcessOpt
 * `waitForLog()` \- Wait for pattern in process output
 * `waitForExit()` \- Wait for process to terminate and return exit code
 
-* [  JavaScript ](#tab-panel-8552)
-* [  TypeScript ](#tab-panel-8553)
+* [  JavaScript ](#tab-panel-8609)
+* [  TypeScript ](#tab-panel-8610)
 
 JavaScript
 
@@ -479,8 +462,8 @@ const processes = await sandbox.listProcesses(): Promise<ProcessInfo[]>
 
 ```
 
-* [  JavaScript ](#tab-panel-8548)
-* [  TypeScript ](#tab-panel-8549)
+* [  JavaScript ](#tab-panel-8605)
+* [  TypeScript ](#tab-panel-8606)
 
 JavaScript
 
@@ -534,8 +517,8 @@ await sandbox.killProcess(processId: string, signal?: string): Promise<void>
 
 Sends the signal to the entire process group, ensuring that both the main process and any child processes it spawned are terminated. This prevents orphaned processes from continuing to run after the parent is killed.
 
-* [  JavaScript ](#tab-panel-8554)
-* [  TypeScript ](#tab-panel-8555)
+* [  JavaScript ](#tab-panel-8611)
+* [  TypeScript ](#tab-panel-8612)
 
 JavaScript
 
@@ -594,8 +577,8 @@ await sandbox.killAllProcesses(): Promise<void>
 
 ```
 
-* [  JavaScript ](#tab-panel-8550)
-* [  TypeScript ](#tab-panel-8551)
+* [  JavaScript ](#tab-panel-8607)
+* [  TypeScript ](#tab-panel-8608)
 
 JavaScript
 
@@ -634,8 +617,8 @@ const stream = await sandbox.streamProcessLogs(processId: string): Promise<Reada
 
 **Returns**: `Promise<ReadableStream>` emitting `LogEvent` objects
 
-* [  JavaScript ](#tab-panel-8558)
-* [  TypeScript ](#tab-panel-8559)
+* [  JavaScript ](#tab-panel-8615)
+* [  TypeScript ](#tab-panel-8616)
 
 JavaScript
 
@@ -708,8 +691,8 @@ const logs = await sandbox.getProcessLogs(processId: string): Promise<string>
 
 **Returns**: `Promise<string>` with all accumulated output
 
-* [  JavaScript ](#tab-panel-8556)
-* [  TypeScript ](#tab-panel-8557)
+* [  JavaScript ](#tab-panel-8613)
+* [  TypeScript ](#tab-panel-8614)
 
 JavaScript
 
@@ -757,8 +740,8 @@ When you provide the `stdin` option:
 
 This approach prevents shell injection attacks that could occur when embedding user data directly in commands.
 
-* [  JavaScript ](#tab-panel-8560)
-* [  TypeScript ](#tab-panel-8561)
+* [  JavaScript ](#tab-panel-8617)
+* [  TypeScript ](#tab-panel-8618)
 
 JavaScript
 
@@ -808,8 +791,8 @@ const result = await sandbox.exec('python validate_email.py', {
 
 **Processing form data:**
 
-* [  JavaScript ](#tab-panel-8564)
-* [  TypeScript ](#tab-panel-8565)
+* [  JavaScript ](#tab-panel-8621)
+* [  TypeScript ](#tab-panel-8622)
 
 JavaScript
 
@@ -857,8 +840,8 @@ const result = await sandbox.exec('python process_form.py', {
 
 **Interactive command-line tools:**
 
-* [  JavaScript ](#tab-panel-8562)
-* [  TypeScript ](#tab-panel-8563)
+* [  JavaScript ](#tab-panel-8619)
+* [  TypeScript ](#tab-panel-8620)
 
 JavaScript
 
@@ -896,8 +879,8 @@ const result = await sandbox.exec('npm init', {
 
 **Data transformation:**
 
-* [  JavaScript ](#tab-panel-8566)
-* [  TypeScript ](#tab-panel-8567)
+* [  JavaScript ](#tab-panel-8623)
+* [  TypeScript ](#tab-panel-8624)
 
 JavaScript
 
@@ -964,8 +947,8 @@ await process.waitForPort(port: number, options?: WaitForPortOptions): Promise<v
 
 **HTTP mode** (default) makes an HTTP GET request and checks the response status:
 
-* [  JavaScript ](#tab-panel-8574)
-* [  TypeScript ](#tab-panel-8575)
+* [  JavaScript ](#tab-panel-8631)
+* [  TypeScript ](#tab-panel-8632)
 
 JavaScript
 
@@ -1027,8 +1010,8 @@ Explain Code
 
 **TCP mode** checks if the port accepts connections:
 
-* [  JavaScript ](#tab-panel-8570)
-* [  TypeScript ](#tab-panel-8571)
+* [  JavaScript ](#tab-panel-8627)
+* [  TypeScript ](#tab-panel-8628)
 
 JavaScript
 
@@ -1098,8 +1081,8 @@ const result = await process.waitForLog(pattern: string | RegExp, timeout?: numb
 * `line` \- The matching line of output
 * `matches` \- Array of capture groups (for RegExp patterns)
 
-* [  JavaScript ](#tab-panel-8578)
-* [  TypeScript ](#tab-panel-8579)
+* [  JavaScript ](#tab-panel-8635)
+* [  TypeScript ](#tab-panel-8636)
 
 JavaScript
 
@@ -1187,8 +1170,8 @@ const result = await process.waitForExit(timeout?: number): Promise<WaitForExitR
 
 * `exitCode` \- The process exit code
 
-* [  JavaScript ](#tab-panel-8576)
-* [  TypeScript ](#tab-panel-8577)
+* [  JavaScript ](#tab-panel-8633)
+* [  TypeScript ](#tab-panel-8634)
 
 JavaScript
 

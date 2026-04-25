@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/api/reference/permissions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # API token permissions
 
 Permissions are segmented into three categories based on resource:
@@ -39,8 +22,8 @@ To obtain an updated list of token permissions, including the permission ID and 
 
 The applicable scope of user permissions is `com.cloudflare.api.user`.
 
-* [ Dashboard ](#tab-panel-7107)
-* [ API ](#tab-panel-7108)
+* [ Dashboard ](#tab-panel-7161)
+* [ API ](#tab-panel-7162)
 
 | Name              | Description                                                                                                                   |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -64,8 +47,8 @@ The applicable scope of user permissions is `com.cloudflare.api.user`.
 
 The applicable scope of account permissions is `com.cloudflare.api.account`.
 
-* [ Dashboard ](#tab-panel-7109)
-* [ API ](#tab-panel-7110)
+* [ Dashboard ](#tab-panel-7163)
+* [ API ](#tab-panel-7164)
 
 | Name                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -423,8 +406,8 @@ The applicable scope of account permissions is `com.cloudflare.api.account`.
 
 The applicable scope of zone permissions is `com.cloudflare.api.account.zone`.
 
-* [ Dashboard ](#tab-panel-7111)
-* [ API ](#tab-panel-7112)
+* [ Dashboard ](#tab-panel-7165)
+* [ API ](#tab-panel-7166)
 
 | Name                               | Description                                                                                                                                                  |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |

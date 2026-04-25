@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dynamic-workers/getting-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Getting started
 
 You can create a Worker that spins up other Workers, called Dynamic Workers, at runtime to execute code on-demand in a secure, sandboxed environment. You provide the code, choose which bindings the Dynamic Worker can access, and control whether the Dynamic Worker can reach the network.
@@ -54,8 +37,8 @@ In order for a Worker to be able to create Dynamic Workers, it needs a Worker Lo
 
 Configure it like so, in your Worker's `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-6996)
-* [  wrangler.toml ](#tab-panel-6997)
+* [  wrangler.jsonc ](#tab-panel-7050)
+* [  wrangler.toml ](#tab-panel-7051)
 
 JSONC
 
@@ -95,8 +78,8 @@ Your Worker will then have access to the Worker Loader API via `env.LOADER`.
 
 Use `env.LOADER.load()` to create a Dynamic Worker and run it:
 
-* [  JavaScript ](#tab-panel-7000)
-* [  TypeScript ](#tab-panel-7001)
+* [  JavaScript ](#tab-panel-7054)
+* [  TypeScript ](#tab-panel-7055)
 
 JavaScript
 
@@ -234,8 +217,8 @@ If you expect to load the exact same Worker more than once, use [get(id, callbac
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
-* [  JavaScript ](#tab-panel-6998)
-* [  TypeScript ](#tab-panel-6999)
+* [  JavaScript ](#tab-panel-7052)
+* [  TypeScript ](#tab-panel-7053)
 
 JavaScript
 

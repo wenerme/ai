@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/data-loss-prevention/dlp-profiles/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # DLP profiles
 
 A DLP profile defines what sensitive data looks like so that DLP can detect it in your traffic. Each profile contains one or more [detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/) — patterns such as uploaded datasets, document fingerprints, and AI prompt topic classifiers that match specific types of data.

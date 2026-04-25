@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/magic-transit/ddos.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # DDoS protection
 
 Cloudflare [DDoS protection](https://developers.cloudflare.com/ddos-protection/) automatically detects and mitigates Distributed Denial of Service (DDoS) attacks using its [Autonomous Edge](https://developers.cloudflare.com/ddos-protection/about/components/#autonomous-edge). With Magic Transit, you have access to additional [Advanced DDoS mitigation systems](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/), such as:

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/hyperdrive/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Hyperdrive
 
 Turn your existing regional database into a globally distributed database.
@@ -35,11 +18,11 @@ Hyperdrive supports any Postgres or MySQL database, including those hosted on AW
 
 Use Hyperdrive's connection string from your Cloudflare Workers application with your existing Postgres drivers and object-relational mapping (ORM) libraries:
 
-* [ PostgreSQL ](#tab-panel-7144)
-* [ MySQL ](#tab-panel-7145)
+* [ PostgreSQL ](#tab-panel-7198)
+* [ MySQL ](#tab-panel-7199)
 
-* [ index.ts ](#tab-panel-7140)
-* [ wrangler.jsonc ](#tab-panel-7141)
+* [ index.ts ](#tab-panel-7194)
+* [ wrangler.jsonc ](#tab-panel-7195)
 
 TypeScript
 
@@ -136,8 +119,8 @@ Explain Code
 
 Explain Code
 
-* [ index.ts ](#tab-panel-7142)
-* [ wrangler.jsonc ](#tab-panel-7143)
+* [ index.ts ](#tab-panel-7196)
+* [ wrangler.jsonc ](#tab-panel-7197)
 
 TypeScript
 

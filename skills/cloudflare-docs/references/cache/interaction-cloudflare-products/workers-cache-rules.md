@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cache/interaction-cloudflare-products/workers-cache-rules.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # How Workers interact with Cache Rules
 
 Your Workers script can override [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) behavior, whether it is applied to a zone using Cloudflare or a zone that is not proxied through Cloudflare.

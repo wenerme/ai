@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/clientless-access/advanced-workflows/isolate-application.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Isolate Access applications
 
 Note
@@ -77,8 +60,8 @@ with HTTP policies applied"]
 
 **Policy 1: Allow employees who pass device posture checks**
 
-* [ Dashboard ](#tab-panel-7517)
-* [ API ](#tab-panel-7518)
+* [ Dashboard ](#tab-panel-7571)
+* [ API ](#tab-panel-7572)
 
 | Action  | Rule type                                                                                                                                             | Selector                 | Value     |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | --------- |
@@ -148,8 +131,8 @@ To create a list of serial numbers, refer to [Create Zero Trust list](https://de
 
 **Policy 2: Allow and isolate contractors**
 
-* [ Dashboard ](#tab-panel-7519)
-* [ API ](#tab-panel-7520)
+* [ Dashboard ](#tab-panel-7573)
+* [ API ](#tab-panel-7574)
 
 | Action | Rule type | Selector         | Value                       |
 | ------ | --------- | ---------------- | --------------------------- |
@@ -220,8 +203,8 @@ Explain Code
 
 Prevents users on unmanaged devices from downloading any files from your private application.
 
-* [ Dashboard ](#tab-panel-7521)
-* [ API ](#tab-panel-7522)
+* [ Dashboard ](#tab-panel-7575)
+* [ API ](#tab-panel-7576)
 
 | Selector                     | Operator | Value                    | Logic | Action  |
 | ---------------------------- | -------- | ------------------------ | ----- | ------- |
@@ -360,8 +343,8 @@ Block users on unmanaged devices from downloading files that contain credit card
 * **Policy 1: [Disable file downloads in isolated browser](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#disable-file-downloads-in-isolated-browser)**
 * **Policy 2: Block credit card numbers**
 
-* [ Dashboard ](#tab-panel-7523)
-* [ API ](#tab-panel-7524)
+* [ Dashboard ](#tab-panel-7577)
+* [ API ](#tab-panel-7578)
 
 | Selector                                                                                           | Operator | Value                      | Logic | Action |
 | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ----- | ------ |

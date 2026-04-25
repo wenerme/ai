@@ -1,0 +1,75 @@
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/client-sdks/python/api-reference/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/client-sdks/python/api-reference/llms-full.txt.
+
+# Analytics - Python SDK
+
+{/* banner:start */}
+
+<Warning>
+  The Python SDK and docs are currently in beta.
+  Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
+</Warning>
+
+{/* banner:end */}
+
+## Overview
+
+Analytics and usage endpoints
+
+### Available Operations
+
+* [get\_user\_activity](#get_user_activity) - Get user activity grouped by endpoint
+
+## get\_user\_activity
+
+Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="getUserActivity" method="get" path="/activity" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.analytics.get_user_activity()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example         |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                 |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                 |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                 |
+| `date_`                    | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Filter by a single UTC date in the last 30 days (YYYY-MM-DD format).                                                                                        | 2025-08-24      |
+| `api_key_hash`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Filter by API key hash (SHA-256 hex string, as returned by the keys API).                                                                                   | abc123def456... |
+| `user_id`                  | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Filter by org member user ID. Only applicable for organization accounts.                                                                                    | user\_abc123    |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                 |
+
+### Response
+
+**[components.ActivityResponse](/docs/sdks/python/api-reference/components/activityresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.ForbiddenResponseError      | 403         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |

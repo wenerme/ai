@@ -6,28 +6,11 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/transform/managed-transforms/configure.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Configure Managed Transforms
 
-* [ Dashboard ](#tab-panel-8525)
-* [ API ](#tab-panel-8526)
-* [ Terraform ](#tab-panel-8527)
+* [ Dashboard ](#tab-panel-8582)
+* [ API ](#tab-panel-8583)
+* [ Terraform ](#tab-panel-8584)
 
 1. In the Cloudflare dashboard, go to the Rules **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/settings)

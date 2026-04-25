@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/flagship/configuration.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Configuration
 
 To use Flagship in a Cloudflare Worker, add a Flagship binding to your Wrangler configuration file. The binding gives your Worker access to `env.FLAGS`, which provides methods to evaluate feature flags.
@@ -31,8 +14,8 @@ To use Flagship in a Cloudflare Worker, add a Flagship binding to your Wrangler 
 
 Add the `flagship` block to your Wrangler configuration file with a binding name and your app ID.
 
-* [  wrangler.jsonc ](#tab-panel-7067)
-* [  wrangler.toml ](#tab-panel-7068)
+* [  wrangler.jsonc ](#tab-panel-7121)
+* [  wrangler.toml ](#tab-panel-7122)
 
 JSONC
 
@@ -72,8 +55,8 @@ Replace `<APP_ID>` with the app ID from your Flagship app. If you have not creat
 
 A single Worker can bind to multiple Flagship apps. Use the array form to define more than one binding:
 
-* [  wrangler.jsonc ](#tab-panel-7069)
-* [  wrangler.toml ](#tab-panel-7070)
+* [  wrangler.jsonc ](#tab-panel-7123)
+* [  wrangler.toml ](#tab-panel-7124)
 
 JSONC
 
@@ -153,8 +136,8 @@ interface Env {
 
 Call evaluation methods on `env.FLAGS` to resolve flag values at runtime. Each method accepts a flag key, a default value, and an optional evaluation context.
 
-* [  JavaScript ](#tab-panel-7071)
-* [  TypeScript ](#tab-panel-7072)
+* [  JavaScript ](#tab-panel-7125)
+* [  TypeScript ](#tab-panel-7126)
 
 JavaScript
 

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/framework-guides/web-apps/react-router.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # React Router (formerly Remix)
 
 **Start from CLI**: Scaffold a full-stack app with [React Router v7 ↗](https://reactrouter.com/) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for lightning-fast development.
@@ -276,8 +259,8 @@ Explain Code
 
 Configure it in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9927)
-* [  wrangler.toml ](#tab-panel-9928)
+* [  wrangler.jsonc ](#tab-panel-9988)
+* [  wrangler.toml ](#tab-panel-9989)
 
 JSONC
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/examples/email-routing/hard-bounce-handling.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Handle hard bounce emails
 
 Detect and handle hard bounce emails to maintain sender reputation and manage undeliverable addresses
@@ -42,8 +25,8 @@ Hard bounces occur when an email cannot be delivered due to permanent reasons:
 
 Configure your worker to handle bounce notifications:
 
-* [  wrangler.jsonc ](#tab-panel-7047)
-* [  wrangler.toml ](#tab-panel-7048)
+* [  wrangler.jsonc ](#tab-panel-7101)
+* [  wrangler.toml ](#tab-panel-7102)
 
 JSONC
 

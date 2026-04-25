@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Posture ](https://developers.cloudflare.com/search/?tags=Posture)[ SentinelOne ](https://developers.cloudflare.com/search/?tags=SentinelOne) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/reusable-components/posture-checks/client-checks/sentinel-one.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # SentinelOne
 
 Cloudflare One can check if [SentinelOne ↗](https://www.sentinelone.com/) is running on a device to determine if a request should be allowed to reach a protected resource.

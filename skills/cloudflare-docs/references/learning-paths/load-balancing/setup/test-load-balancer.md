@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/load-balancing/setup/test-load-balancer.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Create load balancer on test domain
 
 Instead of starting on your production domain, you likely should create a load balancer on a test or staging domain. This may involve temporary changes to your monitors and pools, depending on your infrastructure setup.
@@ -31,8 +14,8 @@ Starting with a test domain allows you to verify everything is working correctly
 
 ## Create a load balancer
 
-* [ Dashboard ](#tab-panel-7559)
-* [ API ](#tab-panel-7560)
+* [ Dashboard ](#tab-panel-7613)
+* [ API ](#tab-panel-7614)
 
 To create a Public or a Private load balancer in the dashboard:
 

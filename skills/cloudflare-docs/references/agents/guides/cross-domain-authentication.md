@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/guides/cross-domain-authentication.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cross-domain authentication
 
 When your Agents are deployed, to keep things secure, send a token from the client, then verify it on the server. This guide covers authentication patterns for WebSocket connections to agents.
@@ -57,8 +40,8 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-5134)
-* [  TypeScript ](#tab-panel-5135)
+* [  JavaScript ](#tab-panel-5144)
+* [  TypeScript ](#tab-panel-5145)
 
 JavaScript
 
@@ -130,8 +113,8 @@ Explain Code
 
 Build query values right before connect. Use Suspense for async setup.
 
-* [  JavaScript ](#tab-panel-5140)
-* [  TypeScript ](#tab-panel-5141)
+* [  JavaScript ](#tab-panel-5150)
+* [  TypeScript ](#tab-panel-5151)
 
 JavaScript
 
@@ -259,8 +242,8 @@ Explain Code
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-5142)
-* [  TypeScript ](#tab-panel-5143)
+* [  JavaScript ](#tab-panel-5152)
+* [  TypeScript ](#tab-panel-5153)
 
 JavaScript
 
@@ -450,8 +433,8 @@ Pass credentials in the URL when connecting to another host, then verify on the 
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-5136)
-* [  TypeScript ](#tab-panel-5137)
+* [  JavaScript ](#tab-panel-5146)
+* [  TypeScript ](#tab-panel-5147)
 
 JavaScript
 
@@ -525,8 +508,8 @@ Explain Code
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-5138)
-* [  TypeScript ](#tab-panel-5139)
+* [  JavaScript ](#tab-panel-5148)
+* [  TypeScript ](#tab-panel-5149)
 
 JavaScript
 
@@ -628,8 +611,8 @@ Explain Code
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-5144)
-* [  TypeScript ](#tab-panel-5145)
+* [  JavaScript ](#tab-panel-5154)
+* [  TypeScript ](#tab-panel-5155)
 
 JavaScript
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/media-streaming/secure-content.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Secure your content
 
 Media assets are vulnerable to hotlinking, unauthorized downloads, and piracy. Cloudflare Hotlink Protection blocks other sites from embedding your media, Stream signed URLs provide time-limited access tokens, and Access gates premium content behind identity policies.

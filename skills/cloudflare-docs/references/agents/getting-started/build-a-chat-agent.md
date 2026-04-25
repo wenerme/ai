@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/getting-started/build-a-chat-agent.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Build a chat agent
 
 Build a chat agent that streams AI responses, calls server-side tools, executes client-side tools in the browser, and asks for user approval before sensitive actions.
@@ -64,8 +47,8 @@ npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
 
 Replace your `wrangler.jsonc` with:
 
-* [  wrangler.jsonc ](#tab-panel-5096)
-* [  wrangler.toml ](#tab-panel-5097)
+* [  wrangler.jsonc ](#tab-panel-5106)
+* [  wrangler.toml ](#tab-panel-5107)
 
 JSONC
 
@@ -148,8 +131,8 @@ Key settings:
 
 Create `src/server.ts`. This is where your agent lives:
 
-* [  JavaScript ](#tab-panel-5098)
-* [  TypeScript ](#tab-panel-5099)
+* [  JavaScript ](#tab-panel-5108)
+* [  TypeScript ](#tab-panel-5109)
 
 JavaScript
 
@@ -561,8 +544,8 @@ Explain Code
 
 Create `src/client.tsx`:
 
-* [  JavaScript ](#tab-panel-5100)
-* [  TypeScript ](#tab-panel-5101)
+* [  JavaScript ](#tab-panel-5110)
+* [  TypeScript ](#tab-panel-5111)
 
 JavaScript
 

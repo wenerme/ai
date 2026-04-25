@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/china-network/concepts/china-dns.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # China Authoritative DNS
 
 Cloudflare China Network provides a nearest-to-client nameservice by default. The DNS request is resolved on the data center nearest to the client out of China, and the HTTP request is served on the data center nearest to the client. The closest Cloudflare data center outside of China is adopted for clients outside of China, and the JD Cloud data center in China is adopted for clients in China.

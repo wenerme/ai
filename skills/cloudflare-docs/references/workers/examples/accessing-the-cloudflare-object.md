@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/accessing-the-cloudflare-object.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Accessing the Cloudflare Object
 
 **Last reviewed:**  about 4 years ago 
@@ -39,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9702)
-* [  TypeScript ](#tab-panel-9703)
-* [  Hono ](#tab-panel-9704)
-* [  Python ](#tab-panel-9705)
+* [  JavaScript ](#tab-panel-9763)
+* [  TypeScript ](#tab-panel-9764)
+* [  Hono ](#tab-panel-9765)
+* [  Python ](#tab-panel-9766)
 
 JavaScript
 

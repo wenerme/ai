@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-crawl-control/get-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Get started
 
 This guide instructs you on how to:
@@ -45,8 +28,8 @@ This guide instructs you on how to:
 
 ## 2\. Block specific AI crawlers
 
-* [ All plans ](#tab-panel-5261)
-* [ Paid plans ](#tab-panel-5262)
+* [ All plans ](#tab-panel-5271)
+* [ Paid plans ](#tab-panel-5272)
 
 To block specific AI crawlers:
 
@@ -74,7 +57,7 @@ You can also create more complex rules when taking action on AI crawlers, using 
 
 ## 3\. Explore detailed metrics
 
-* [ All plans ](#tab-panel-5260)
+* [ All plans ](#tab-panel-5270)
 
 For more detailed analytics, use the **Metrics** tab.
 

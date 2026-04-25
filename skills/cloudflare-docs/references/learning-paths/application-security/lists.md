@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/application-security/lists/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Lists
 
 Cloudflare Lists is a WAF feature that enables administrators to groups identifiers together, such as IPs, hostnames or ASNs, and reference the list by other Cloudflare products such as [Custom rules](https://developers.cloudflare.com/waf/custom-rules/). Cloudflare currently supports the following types of lists:

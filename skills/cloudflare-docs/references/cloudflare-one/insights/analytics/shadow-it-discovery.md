@@ -10,30 +10,13 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/insights/analytics/shadow-it-discovery.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Shadow IT SaaS analytics
 
-Shadow IT SaaS analytics provides visibility into the SaaS applications your users are visiting. This information allows you to create identity and device-driven Cloudflare One policies to secure your users and data.
+Shadow IT SaaS analytics provides visibility into the SaaS applications your users are visiting. The dashboard aggregates data from Gateway HTTP traffic to track application usage across your organization. This information allows you to create identity and device-driven Cloudflare One policies to secure your users and data.
 
 To access Shadow IT SaaS analytics:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
 2. Go to **Dashboards**.
 3. Select **Shadow IT: SaaS analytics**.
 
@@ -74,13 +57,13 @@ Approval status does not impact a user's ability to access an application. Users
 
 Review the Shadow IT SaaS analytics dashboard for application usage. Filter the view based on:
 
-| Field            | Description                                                                                                                                                   |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Application      | SaaS application's name and logo.                                                                                                                             |
-| Application type | [Application type](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/#app-types) assigned by Cloudflare Cloudflare One. |
-| Status           | Application's approval status.                                                                                                                                |
-| Secured          | Whether the application is currently secured behind Cloudflare Access.                                                                                        |
-| Users            | Number of users who connected to the application over the period of time specified on the Shadow IT Discovery overview page.                                  |
+| Field            | Description                                                                                                                                        |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Application      | SaaS application's name and logo.                                                                                                                  |
+| Application type | [Application type](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/#app-types) assigned by Cloudflare One. |
+| Status           | Application's approval status.                                                                                                                     |
+| Secured          | Whether the application is currently secured behind Cloudflare Access.                                                                             |
+| Users            | Number of users who connected to the application over the period of time specified on the Shadow IT Discovery overview page.                       |
 
 To manage application statuses in bulk, select **Set Application Statuses** to review applications your users commonly visit and update their approval statuses.
 
@@ -94,7 +77,7 @@ After marking applications, you can create [HTTP policies](https://developers.cl
 
 To create an HTTP status policy directly from Shadow IT Discovery:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
 2. Select **Dashboards** \> **Shadow IT: SaaS analytics**.
 3. Select **Set application statuses**.
 4. Select **Manage HTTP status policies**, then choose an application status and select **Create policy**.
@@ -104,10 +87,19 @@ To create an HTTP status policy directly from Shadow IT Discovery:
 The Shadow IT SaaS analytics dashboard includes several insights to help you monitor and manage SaaS application usage.
 
 * **Number of applications by status**: A breakdown of how many applications have been categorized into each [approval status](#1-review-applications). The list of applications is available in the [App Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/).
-* **Data uploaded per application status**: A time-series graph showing the amount of data (in gigabytes) uploaded to an application in the given status.
-* **Data downloaded per application status**: A time-series graph showing the amount of data (in gigabytes) downloaded from an application in the given status.
-* **User count per application status**: A time-series graph showing the number of users who have interacted with at least one application in a given status. For example, a user can use an **Approved** application shortly followed by an **In review** application, contributing to counts for both of those statuses.
+* **Data uploaded per application status**: A time-series graph showing the amount of data uploaded to applications in the given status.
+* **Data downloaded per application status**: A time-series graph showing the amount of data downloaded from applications in the given status.
+* **User count per application status**: A time-series graph showing the number of unique users who have interacted with at least one application in a given status. A single user can appear in multiple status categories if they access applications with different statuses. For example, a user who accesses both an **Approved** application and an **Unapproved** application will be counted in both status categories.
 * **Top-N metrics**: A collection of metrics providing insights into top applications, users, devices, and countries.
+
+### Understanding user counts
+
+The user count chart displays unique users in two ways:
+
+* **Time-series bars**: Show unique users per time interval (for example, per hour or per day). The same user can appear in multiple time intervals if they were active during those periods.
+* **Legend totals**: Show unique users across the entire selected time range, deduplicated. Each user is counted only once per status, regardless of how many time intervals they appeared in.
+
+For example, if User A accesses an Approved application every hour for three hours, they will appear in each hourly bar but will only be counted once in the legend total.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/analytics/","name":"Dashboards"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/analytics/shadow-it-discovery/","name":"Shadow IT SaaS analytics"}}]}

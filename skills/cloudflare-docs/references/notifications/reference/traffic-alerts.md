@@ -1,27 +1,10 @@
 ---
 title: HTTP Traffic Alerts
-description: Origin Error Rate alerts allow you to monitor your zones at the origin and be alerted when Cloudflare detects elevated levels of 5xx error responses. You can select which zones to be alerted on and the sensitivity of the alerts. Edge status codes of 521, 522, and 523 also count as origin errors as they indicate issues reaching your origin.
+description: Monitor origin and edge HTTP error rates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/notifications/reference/traffic-alerts.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # HTTP Traffic Alerts
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-your-email/monitor-your-inbox/phishguard.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # PhishGuard
 
 [PhishGuard](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/) serves as an extension of your Security Operations team with dedicated Email security technical resources providing real-time monitoring of your email environment. The Active Defense Service provides:

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-ai/features/fine-tunes/loras.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Using LoRA adapters
 
 Workers AI supports fine-tuned inference with adapters trained with [Low-Rank Adaptation ↗](https://blog.cloudflare.com/fine-tuned-inference-with-loras). This feature is in open beta and free during this period.
@@ -258,8 +241,8 @@ Explain Code
 
 To make inference requests and apply the LoRA adapter, you will need your model and finetune `name` or `id`. You should use the chat template that your LoRA was trained on, but you can try running it with `raw: true` and the messages template like below.
 
-* [ workers ai sdk ](#tab-panel-9434)
-* [ rest api ](#tab-panel-9435)
+* [ workers ai sdk ](#tab-panel-9495)
+* [ rest api ](#tab-panel-9496)
 
 JavaScript
 

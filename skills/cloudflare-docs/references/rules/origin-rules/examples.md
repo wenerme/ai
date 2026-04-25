@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/origin-rules/examples/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Origin Rules examples
 
 [Change the HTTP Host header and DNS recordCreate an origin rule to change the HTTP Host header and the resolved DNS record.](https://developers.cloudflare.com/rules/origin-rules/examples/change-http-host-header/)[Change the destination portCreate an origin rule to change the destination port.](https://developers.cloudflare.com/rules/origin-rules/examples/change-port/)[Define a single origin rule using TerraformCreate an origin rule using Terraform to override the Host header, the resolved hostname, and the destination port of API requests.](https://developers.cloudflare.com/rules/origin-rules/examples/define-single-origin-terraform/)

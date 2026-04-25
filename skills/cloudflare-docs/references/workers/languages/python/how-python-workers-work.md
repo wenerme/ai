@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/languages/python/how-python-workers-work.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # How Python Workers Work
 
 Workers written in Python are executed by [Pyodide ↗](https://pyodide.org/en/stable/index.html). Pyodide is a port of [CPython ↗](https://github.com/python) (the reference implementation of Python — commonly referred to as just "Python") to WebAssembly.
@@ -51,8 +34,8 @@ class Default(WorkerEntrypoint):
 
 ...and a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) that points to this `.py` file:
 
-* [  wrangler.jsonc ](#tab-panel-9957)
-* [  wrangler.toml ](#tab-panel-9958)
+* [  wrangler.jsonc ](#tab-panel-10018)
+* [  wrangler.toml ](#tab-panel-10019)
 
 JSONC
 

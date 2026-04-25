@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/migration/v1-to-v2/wrangler-legacy/webpack.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Webpack
 
 Warning
@@ -83,8 +66,8 @@ module.exports = {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-11057)
-* [  wrangler.toml ](#tab-panel-11058)
+* [  wrangler.jsonc ](#tab-panel-11118)
+* [  wrangler.toml ](#tab-panel-11119)
 
 JSONC
 
@@ -132,8 +115,8 @@ webpack_config = "webpack.config.js"
 
 It is possible to use different webpack configuration files within different [Wrangler environments](https://developers.cloudflare.com/workers/wrangler/environments/). For example, the `"webpack.development.js"` configuration file is used during `wrangler dev` for development, but other, more production-ready configurations are used when building for the staging or production environments:
 
-* [  wrangler.jsonc ](#tab-panel-11059)
-* [  wrangler.toml ](#tab-panel-11060)
+* [  wrangler.jsonc ](#tab-panel-11120)
+* [  wrangler.toml ](#tab-panel-11121)
 
 JSONC
 

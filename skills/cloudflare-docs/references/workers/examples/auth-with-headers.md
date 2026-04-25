@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication)[ Web Crypto ](https://developers.cloudflare.com/search/?tags=Web%20Crypto)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/auth-with-headers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Auth with headers
 
 **Last reviewed:**  over 5 years ago 
@@ -37,10 +20,10 @@ Caution when using in production
 
 The example code contains a generic header key and value of `X-Custom-PSK` and `mypresharedkey`. To best protect your resources, change the header key and value in the Workers editor before saving your code.
 
-* [  JavaScript ](#tab-panel-9718)
-* [  TypeScript ](#tab-panel-9719)
-* [  Python ](#tab-panel-9720)
-* [  Hono ](#tab-panel-9721)
+* [  JavaScript ](#tab-panel-9779)
+* [  TypeScript ](#tab-panel-9780)
+* [  Python ](#tab-panel-9781)
+* [  Hono ](#tab-panel-9782)
 
 JavaScript
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg) 
 
 #  aura-2-en 
@@ -43,8 +26,8 @@ Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing
 
 ## Parameters
 
-* [ Input ](#tab-panel-3062)
-* [ Output ](#tab-panel-3063)
+* [ Input ](#tab-panel-3072)
+* [ Output ](#tab-panel-3073)
 
 speaker
 
@@ -74,8 +57,8 @@ The binding returns a `ReadableStream` with the audio in MPEG format (check the 
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3060)
-* [ Output ](#tab-panel-3061)
+* [ Input ](#tab-panel-3070)
+* [ Output ](#tab-panel-3071)
 
 ```
 

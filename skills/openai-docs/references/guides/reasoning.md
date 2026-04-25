@@ -12,9 +12,9 @@ import {
 
 
 
-**Reasoning models** like [GPT-5.4](https://developers.openai.com/api/docs/models/gpt-5.4) allocate internal reasoning tokens before producing a response. They work especially well for complex problem solving, coding, scientific reasoning, and multi-step agentic workflows. They're also the best models for [Codex CLI](https://github.com/openai/codex), our lightweight coding agent.
+**Reasoning models** like [GPT-5.5](https://developers.openai.com/api/docs/models/gpt-5.5) use internal reasoning tokens before producing a response. This helps the model plan, use tools effectively, inspect alternatives, recover from ambiguity, and solve harder multi-step tasks. Reasoning models work especially well for complex problem solving, coding, scientific reasoning, and multi-step agentic workflows. They're also the best models for [Codex CLI](https://github.com/openai/codex), our lightweight coding agent.
 
-Start with `gpt-5.4` for most reasoning workloads. If you need the highest-intelligence API option for tougher problems that can tolerate more latency, use [`gpt-5.4-pro`](https://developers.openai.com/api/docs/models/gpt-5.4-pro). For lower cost and latency, consider `gpt-5-mini` or `gpt-5-nano`.
+Start with `gpt-5.5` for most reasoning workloads. If you need the highest-intelligence API option for more challenging problems that can tolerate more latency, use [`gpt-5.5-pro`](https://developers.openai.com/api/docs/models/gpt-5.5-pro). For lower cost, consider `gpt-5.4` and for lower cost and latency, consider `gpt-5.4-mini`.
 
 **Reasoning models work better with the [Responses
   API](https://developers.openai.com/api/docs/guides/migrate-to-responses)**. While the Chat Completions API
@@ -38,7 +38,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 \`;
 
 const response = await openai.responses.create({
-    model: "gpt-5.4",
+    model: "gpt-5.5",
     reasoning: { effort: "low" },
     input: [
         {
@@ -62,7 +62,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 """
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     reasoning={"effort": "low"},
     input=[
         {
@@ -80,7 +80,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-    "model": "gpt-5.4",
+    "model": "gpt-5.5",
     "reasoning": {"effort": "low"},
     "input": [
       {
@@ -92,22 +92,29 @@ curl https://api.openai.com/v1/responses \\
 ```
 
 
-In the example above, the `reasoning.effort` parameter guides the model on how many reasoning tokens to generate before creating a response to the prompt.
+## Reasoning effort
 
-Supported values are model-dependent and can include `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Lower effort favors speed and lower token usage, while higher effort favors more complete reasoning. Defaults are also model-dependent rather than universal. For example, `gpt-5.4` defaults to `none`, while older GPT-5 models default to `medium`.
+The `reasoning.effort` parameter guides the model on how much to think when performing a task.
 
-| Effort             | Start here when...                                                                                      |
-| ------------------ | ------------------------------------------------------------------------------------------------------- |
-| `none`             | You want the lowest latency for execution-heavy tasks such as extraction, routing, or simple transforms |
-| `low`              | A small amount of extra thinking can improve reliability without adding much latency                    |
-| `medium` or `high` | The task involves planning, coding, synthesis, or harder reasoning                                      |
-| `xhigh`            | Only when your evals show a clear benefit that justifies the extra latency and cost                     |
+Supported values are model-dependent and can include `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Lower effort favors speed and lower token usage, while at higher effort the model thinks more completely to provide higher quality responses. The models also reason adaptively across reasoning efforts, using fewer tokens for simpler tasks and thinking harder for complex tasks.
+
+Defaults are also model-dependent rather than universal. `gpt-5.5` defaults to `medium` reasoning effort. This is the best starting point for `gpt-5.5`’s full balance of quality, reliability and performance.
+
+| Effort   | Best for...                                                                                                                                                                                                                                                                                                                                                          |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `none`   | Latency-critical tasks that do not benefit from any reasoning or multi-chained tool calls. For latency-sensitive use cases with `gpt-5.5`, we recommend trying `low` to begin with and then moving to `none` if required.<br /><br />Common use cases include voice, fast information retrieval, and classification.                                                 |
+| `low`    | Efficient reasoning with a modest latency increase. Ideal for use cases requiring tool-use, planning, search, or multi-step decision making, while optimizing for speed and cost.<br /><br />Common use cases include data analysis, drafting, execution-oriented coding, and customer support / chat assistant workflows.                                           |
+| `medium` | When quality and reliability matter, and the task involves planning, complex reasoning, and judgement. Default configuration for most workloads, and a well-balanced point on the pareto curve of latency, performance and cost.<br /><br />Common use cases include agentic coding, research, working with spreadsheets & slides, and delegating long-horizon work. |
+| `high`   | Hard reasoning, complex debugging, deep planning, and high-value tasks where quality and intelligence matters more than latency. Recommended for complex workflows and agentic tasks.<br /><br />Common use cases include agentic coding, long-horizon research, and knowledge work. Depending on the complexity of the task, evaluate both `medium` and `high`.     |
+| `xhigh`  | Deep research, asynchronous workflows and agentic tasks that require very long rollouts. Only use when your evals show a clear benefit that justifies the extra latency and cost.<br /><br />Common use cases include security and code review, enterprise productivity, deeper research tasks, and challenging coding workflows.                                    |
+
+For faster time to first visible token in latency-sensitive applications, ask the model to generate a short preamble before continuing with deeper reasoning.
 
 Some models support only a subset of these values, so check the relevant [model page](https://developers.openai.com/api/docs/models) before choosing a setting.
 
 ## How reasoning works
 
-Reasoning models introduce **reasoning tokens** in addition to input and output tokens. The models use these reasoning tokens to "think," breaking down the prompt and considering multiple approaches to generating a response. After generating reasoning tokens, the model produces an answer as visible completion tokens and discards the reasoning tokens from its context.
+Reasoning models introduce **reasoning tokens** in addition to input and output tokens. The models use these reasoning tokens to "think," breaking down the prompt and considering multiple approaches to generating a response. Our reasoning models like gpt-5.5 and gpt-5.4 support interleaved thinking, where the model is able to generate visible output tokens before and in between thinking, and is able to think in between tool calls.
 
 Here is an example of a multi-step conversation between a user and an assistant. Input and output tokens from each step are carried over, while reasoning tokens are discarded.
 
@@ -165,7 +172,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 \`;
 
 const response = await openai.responses.create({
-    model: "gpt-5.4",
+    model: "gpt-5.5",
     reasoning: { effort: "medium" },
     input: [
         {
@@ -200,7 +207,7 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 """
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     reasoning={"effort": "medium"},
     input=[
         {
@@ -239,7 +246,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "o4-mini",
+    "model": "gpt-5.5",
     "reasoning": {"effort": "medium"},
     "input": "What is the weather like today?",
     "tools": [ ... function config here ... ],
@@ -266,7 +273,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input: "What is the capital of France?",
   reasoning: {
     effort: "low",
@@ -282,7 +289,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input="What is the capital of France?",
     reasoning={
         "effort": "low",
@@ -298,7 +305,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-    "model": "gpt-5.4",
+    "model": "gpt-5.5",
     "input": "What is the capital of France?",
     "reasoning": {
         "effort": "low",
@@ -344,6 +351,15 @@ Before using summarizers with our latest reasoning models, you may need to
   verification](https://help.openai.com/en/articles/10910291-api-organization-verification)
   to ensure safe deployment. Get started with verification on the [platform
   settings page](https://platform.openai.com/settings/organization/general).
+
+## `phase` parameter
+
+For long-running or tool-heavy flows with GPT-5.5 and GPT-5.4 in the Responses API, use the assistant message `phase` field to avoid early stopping and other misbehavior.
+`phase` is optional at the API level, but OpenAI recommends using it. Use `phase: "commentary"` for intermediate assistant updates, such as preambles before tool calls, and `phase: "final_answer"` for the completed answer. Don't add `phase` to user messages.
+Using `previous_response_id` is usually the simplest path because prior assistant state is preserved. If you replay assistant history manually, preserve each original `phase` value.
+Missing or dropped `phase` can cause preambles to be treated as final answers in those workflows. For model-specific prompt guidance, see [Prompting GPT-5.5](https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5#phase-parameter).
+
+### Round-trip assistant phase values
 
 ## Advice on prompting
 

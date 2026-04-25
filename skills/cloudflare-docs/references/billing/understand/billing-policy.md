@@ -1,27 +1,10 @@
 ---
 title: Billing policy
-description: Cloudflare plans are billed per domain on your account. Monthly plans are billed every 30 days and annual plans are billed yearly. Add-on services (also referred to as subscriptions) are billed monthly only.
+description: Review refund policy, payment methods, and billing terms.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/billing/understand/billing-policy.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Billing policy
 

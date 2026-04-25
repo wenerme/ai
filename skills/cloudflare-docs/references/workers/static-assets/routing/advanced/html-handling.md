@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/static-assets/routing/advanced/html-handling.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # HTML handling
 
 Forcing or dropping trailing slashes on request paths (for example, `example.com/page/` vs. `example.com/page`) is often something that developers wish to control for cosmetic reasons. Additionally, it can impact SEO because search engines often treat URLs with and without trailing slashes as different, separate pages. This distinction can lead to duplicate content issues, indexing problems, and overall confusion about the correct canonical version of a page.
@@ -40,8 +23,8 @@ Take the following directory structure:
 
 This will usually give you the desired behavior automatically: individual files (e.g. `foo.html`) will be served _without_ a trailing slash and folder index files (e.g. `foo/index.html`) will be served _with_ a trailing slash.
 
-* [  wrangler.jsonc ](#tab-panel-10237)
-* [  wrangler.toml ](#tab-panel-10238)
+* [  wrangler.jsonc ](#tab-panel-10298)
+* [  wrangler.toml ](#tab-panel-10299)
 
 JSONC
 
@@ -107,8 +90,8 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, you can force trailing slashes (`force-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-10239)
-* [  wrangler.toml ](#tab-panel-10240)
+* [  wrangler.jsonc ](#tab-panel-10300)
+* [  wrangler.toml ](#tab-panel-10301)
 
 JSONC
 
@@ -174,8 +157,8 @@ Based on the incoming requests, the following assets would be served:
 
 Or you can drop trailing slashes (`drop-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-10241)
-* [  wrangler.toml ](#tab-panel-10242)
+* [  wrangler.jsonc ](#tab-panel-10302)
+* [  wrangler.toml ](#tab-panel-10303)
 
 JSONC
 
@@ -241,8 +224,8 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, if you have bespoke needs, you can disable the built-in HTML handling entirely (`none`).
 
-* [  wrangler.jsonc ](#tab-panel-10243)
-* [  wrangler.toml ](#tab-panel-10244)
+* [  wrangler.jsonc ](#tab-panel-10304)
+* [  wrangler.toml ](#tab-panel-10305)
 
 JSONC
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/configuration/javascript-apis.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # JavaScript APIs
 
 Cloudflare Queues is integrated with [Cloudflare Workers](https://developers.cloudflare.com/workers). To send and receive messages, you must use a Worker.
@@ -37,9 +20,9 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-8083)
-* [  TypeScript ](#tab-panel-8084)
-* [  Python ](#tab-panel-8085)
+* [  JavaScript ](#tab-panel-8137)
+* [  TypeScript ](#tab-panel-8138)
+* [  Python ](#tab-panel-8139)
 
 index.js
 
@@ -138,9 +121,9 @@ Explain Code
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-8080)
-* [  TypeScript ](#tab-panel-8081)
-* [  Python ](#tab-panel-8082)
+* [  JavaScript ](#tab-panel-8134)
+* [  TypeScript ](#tab-panel-8135)
+* [  Python ](#tab-panel-8136)
 
 index.js
 
@@ -324,9 +307,9 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-8086)
-* [  TypeScript ](#tab-panel-8087)
-* [  Python ](#tab-panel-8088)
+* [  JavaScript ](#tab-panel-8140)
+* [  TypeScript ](#tab-panel-8141)
+* [  Python ](#tab-panel-8142)
 
 index.js
 

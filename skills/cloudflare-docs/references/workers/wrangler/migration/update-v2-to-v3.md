@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/migration/update-v2-to-v3.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Migrate from Wrangler v2 to v3
 
 There are no special instructions for migrating from Wrangler v2 to v3\. You should be able to update Wrangler by following the instructions in [Install/Update Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/#update-wrangler). You should experience no disruption to your workflow.

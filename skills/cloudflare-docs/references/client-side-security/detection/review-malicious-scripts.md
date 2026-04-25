@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/client-side-security/detection/review-malicious-scripts.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Review resources considered malicious
 
 Note
@@ -36,8 +19,8 @@ Cloudflare displays scripts and connections considered malicious at the top of t
 To review the scripts considered malicious:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-5647)  
-   * [ Old dashboard ](#tab-panel-5648)  
+   * [  New dashboard ](#tab-panel-5657)  
+   * [ Old dashboard ](#tab-panel-5658)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -60,8 +43,8 @@ You can configure alerts for detected malicious scripts. Refer to [Alerts](https
 To review the connections considered malicious:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-5649)  
-   * [ Old dashboard ](#tab-panel-5650)  
+   * [  New dashboard ](#tab-panel-5659)  
+   * [ Old dashboard ](#tab-panel-5660)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  

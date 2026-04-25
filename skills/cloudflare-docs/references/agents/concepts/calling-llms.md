@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/concepts/calling-llms.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Calling LLMs
 
 Agents change how you work with LLMs. In a stateless Worker, every request starts from scratch — you reconstruct context, call a model, return the response, and forget everything. An Agent keeps state between calls, stays connected to clients over WebSocket, and can call models on its own schedule without a user present.
@@ -37,8 +20,8 @@ This page covers the patterns that become possible when your LLM calls happen in
 
 Every Agent has a built-in [SQL database](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) and key-value state. Instead of passing an entire conversation history from the client on every request, the Agent stores it and builds prompts from its own storage.
 
-* [  JavaScript ](#tab-panel-5000)
-* [  TypeScript ](#tab-panel-5001)
+* [  JavaScript ](#tab-panel-5010)
+* [  TypeScript ](#tab-panel-5011)
 
 JavaScript
 
@@ -132,8 +115,8 @@ Reasoning models like DeepSeek R1 or GLM-4 can take 30 seconds to several minute
 
 An Agent keeps running after the client disconnects. When the response arrives, the Agent can persist it to state and deliver it when the client reconnects — even hours or days later.
 
-* [  JavaScript ](#tab-panel-5002)
-* [  TypeScript ](#tab-panel-5003)
+* [  JavaScript ](#tab-panel-5012)
+* [  TypeScript ](#tab-panel-5013)
 
 JavaScript
 
@@ -239,8 +222,8 @@ With [AIChatAgent](https://developers.cloudflare.com/agents/api-reference/chat-a
 
 Agents do not need a user request to call a model. You can schedule model calls to run in the background — for nightly summarization, periodic classification, monitoring, or any task that should happen without human interaction.
 
-* [  JavaScript ](#tab-panel-5004)
-* [  TypeScript ](#tab-panel-5005)
+* [  JavaScript ](#tab-panel-5014)
+* [  TypeScript ](#tab-panel-5015)
 
 JavaScript
 
@@ -350,8 +333,8 @@ Explain Code
 
 Because an Agent maintains state across calls, you can chain multiple models in a single method — using a fast model for classification, a reasoning model for planning, and an embedding model for retrieval — without losing context between steps.
 
-* [  JavaScript ](#tab-panel-5008)
-* [  TypeScript ](#tab-panel-5009)
+* [  JavaScript ](#tab-panel-5018)
+* [  TypeScript ](#tab-panel-5019)
 
 JavaScript
 
@@ -485,8 +468,8 @@ Each intermediate result stays in the Agent's memory for the duration of the met
 
 Persistent storage means you can cache model responses and avoid redundant calls. This is especially useful for expensive operations like embeddings or long reasoning chains.
 
-* [  JavaScript ](#tab-panel-5006)
-* [  TypeScript ](#tab-panel-5007)
+* [  JavaScript ](#tab-panel-5016)
+* [  TypeScript ](#tab-panel-5017)
 
 JavaScript
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/reusable-components/lists.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Lists
 
 With Cloudflare One, you can create lists of URLs, hostnames, or other entries to reference when creating [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) or [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). This allows you to quickly create rules that match and take actions against several items at once.
@@ -72,8 +55,8 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-6008)
-* [ Terraform (v5) ](#tab-panel-6009)
+* [ Dashboard ](#tab-panel-6060)
+* [ Terraform (v5) ](#tab-panel-6061)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -104,9 +87,9 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-6010)
-* [ API ](#tab-panel-6011)
-* [ Terraform (v5) ](#tab-panel-6012)
+* [ Dashboard ](#tab-panel-6062)
+* [ API ](#tab-panel-6063)
+* [ Terraform (v5) ](#tab-panel-6064)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.

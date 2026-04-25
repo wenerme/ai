@@ -1,27 +1,10 @@
 ---
 title: Registrant contact updates
-description: It is important that you keep your contact details accurate and up-to-date. ICANN rules state that if you do not have updated contact information, your domain name registration may be suspended or even cancelled.
+description: Update domain registrant contact information.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/registrar/account-options/domain-contact-updates.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Registrant contact updates
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/application-security/firewall/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Web Application Firewall
 
 Cloudflare's Web Application Firewall (WAF) is used to protect websites from a wide variety of attack vectors. It analyzes characteristics from each request and takes action based on your domain configuration. In the next module, we will review Rate Limiting which is another product used to protect against potentially more sophisticated volumetric attacks.

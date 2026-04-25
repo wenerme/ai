@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Security ](https://developers.cloudflare.com/search/?tags=Security)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/data-loss-prevention.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Data loss prevention
 
 **Last reviewed:**  over 5 years ago 
@@ -39,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9781)
-* [  TypeScript ](#tab-panel-9782)
-* [  Python ](#tab-panel-9783)
-* [  Hono ](#tab-panel-9784)
+* [  JavaScript ](#tab-panel-9842)
+* [  TypeScript ](#tab-panel-9843)
+* [  Python ](#tab-panel-9844)
+* [  Hono ](#tab-panel-9845)
 
 JavaScript
 

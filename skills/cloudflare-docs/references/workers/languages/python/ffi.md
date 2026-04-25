@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/languages/python/ffi.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Foreign Function Interface (FFI)
 
 Via [Pyodide ↗](https://pyodide.org/en/stable/), Python Workers provide a [Foreign Function Interface (FFI) ↗](https://en.wikipedia.org/wiki/Foreign%5Ffunction%5Finterface) to JavaScript. This allows you to:
@@ -39,8 +22,8 @@ Bindings allow your Worker to interact with resources on the Cloudflare Develope
 
 For example, to access a [KV](https://developers.cloudflare.com/kv) namespace from a Python Worker, you would declare the following in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-9955)
-* [  wrangler.toml ](#tab-panel-9956)
+* [  wrangler.jsonc ](#tab-panel-10016)
+* [  wrangler.toml ](#tab-panel-10017)
 
 JSONC
 

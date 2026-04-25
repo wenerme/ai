@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![Unum logo](https://developers.cloudflare.com/_astro/unum.Cjjoj0_o.svg) 
 
 #  uform-gen2-qwen-500m Beta 
@@ -90,8 +73,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-3999)
-* [ Output ](#tab-panel-4000)
+* [ Input ](#tab-panel-4009)
+* [ Output ](#tab-panel-4010)
 
 Option 1
 
@@ -109,8 +92,8 @@ description
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3997)
-* [ Output ](#tab-panel-3998)
+* [ Input ](#tab-panel-4007)
+* [ Output ](#tab-panel-4008)
 
 ```
 

@@ -84,19 +84,24 @@ openai_base_url = "https://us.api.openai.com/v1"
 
 In addition to your user config, Codex reads project-scoped overrides from `.codex/config.toml` files inside your repo. Codex walks from the project root to your current working directory and loads every `.codex/config.toml` it finds. If multiple files define the same key, the closest file to your working directory wins.
 
-For security, Codex loads project-scoped config files only when the project is trusted. If the project is untrusted, Codex ignores `.codex/config.toml` files in the project.
+For security, Codex loads project-scoped config files only when the project is trusted. If the project is untrusted, Codex ignores project `.codex/` layers, including `.codex/config.toml`, project-local hooks, and project-local rules. User and system layers remain separate and still load.
 
 Relative paths inside a project config (for example, `model_instructions_file`) are resolved relative to the `.codex/` folder that contains the `config.toml`.
 
 ## Hooks (experimental)
 
-Codex can also load lifecycle hooks from `hooks.json` files that sit next to
-active config layers.
+Codex can also load lifecycle hooks from either `hooks.json` files or inline
+`[hooks]` tables in `config.toml` files that sit next to active config layers.
 
 In practice, the two most useful locations are:
 
 - `~/.codex/hooks.json`
+- `~/.codex/config.toml`
 - `<repo>/.codex/hooks.json`
+- `<repo>/.codex/config.toml`
+
+Project-local hooks load only when the project `.codex/` layer is trusted.
+User-level hooks remain independent of project trust.
 
 Turn hooks on with:
 
@@ -104,6 +109,22 @@ Turn hooks on with:
 [features]
 codex_hooks = true
 ```
+
+Inline TOML hooks use the same event structure as `hooks.json`:
+
+```toml
+[[hooks.PreToolUse]]
+matcher = "^Bash$"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = '/usr/bin/python3 "$(git rev-parse --show-toplevel)/.codex/hooks/pre_tool_use_policy.py"'
+timeout = 30
+statusMessage = "Checking Bash command"
+```
+
+If a single layer contains both `hooks.json` and inline `[hooks]`, Codex loads
+both and warns. Prefer one representation per layer.
 
 For the current event list, input fields, output behavior, and limitations, see
 [Hooks](https://developers.openai.com/codex/hooks).

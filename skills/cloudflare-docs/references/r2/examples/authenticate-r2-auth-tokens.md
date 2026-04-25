@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2/examples/authenticate-r2-auth-tokens.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Authenticate against R2 API using auth tokens
 
 **Last reviewed:**  over 1 year ago 
@@ -52,9 +35,9 @@ export AWS_SECRET_ACCESS_KEY=your_secret_access_key
 
 ```
 
-* [  JavaScript ](#tab-panel-8225)
-* [  Python ](#tab-panel-8226)
-* [  Go ](#tab-panel-8227)
+* [  JavaScript ](#tab-panel-8282)
+* [  Python ](#tab-panel-8283)
+* [  Go ](#tab-panel-8284)
 
 Install the `@aws-sdk/client-s3` package for the S3 API:
 

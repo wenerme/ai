@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/static-assets/migration-guides/migrate-from-pages.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Migrate from Pages to Workers
 
 You can deploy full-stack applications, including front-end static assets and back-end APIs, as well as server-side rendered pages (SSR), with [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/).
@@ -54,8 +37,8 @@ Where you previously would configure a "build output directory" for Pages (in ei
 
 Before, with **Cloudflare Pages**:
 
-* [  wrangler.jsonc ](#tab-panel-10203)
-* [  wrangler.toml ](#tab-panel-10204)
+* [  wrangler.jsonc ](#tab-panel-10264)
+* [  wrangler.toml ](#tab-panel-10265)
 
 JSONC
 
@@ -85,8 +68,8 @@ pages_build_output_dir = "./dist/client/"
 
 Now, with **Cloudflare Workers**:
 
-* [  wrangler.jsonc ](#tab-panel-10205)
-* [  wrangler.toml ](#tab-panel-10206)
+* [  wrangler.jsonc ](#tab-panel-10266)
+* [  wrangler.toml ](#tab-panel-10267)
 
 JSONC
 
@@ -141,8 +124,8 @@ In Workers, to prevent accidental misconfiguration, this behavior is explicit an
 
 For a Single Page Application (SPA):
 
-* [  wrangler.jsonc ](#tab-panel-10207)
-* [  wrangler.toml ](#tab-panel-10208)
+* [  wrangler.jsonc ](#tab-panel-10268)
+* [  wrangler.toml ](#tab-panel-10269)
 
 JSONC
 
@@ -191,8 +174,8 @@ not_found_handling = "single-page-application"
 
 For custom 404 pages:
 
-* [  wrangler.jsonc ](#tab-panel-10209)
-* [  wrangler.toml ](#tab-panel-10210)
+* [  wrangler.jsonc ](#tab-panel-10270)
+* [  wrangler.toml ](#tab-panel-10271)
 
 JSONC
 
@@ -277,8 +260,8 @@ _worker.js
 
 Then, update your configuration file's `main` field to point to the location of this Worker script:
 
-* [  wrangler.jsonc ](#tab-panel-10211)
-* [  wrangler.toml ](#tab-panel-10212)
+* [  wrangler.jsonc ](#tab-panel-10272)
+* [  wrangler.toml ](#tab-panel-10273)
 
 JSONC
 
@@ -347,8 +330,8 @@ Although this command will remain available to you to run at any time, we do rec
 
 Once the Worker script has been compiled, you can update your configuration file's `main` field to point to the location it was built to:
 
-* [  wrangler.jsonc ](#tab-panel-10213)
-* [  wrangler.toml ](#tab-panel-10214)
+* [  wrangler.jsonc ](#tab-panel-10274)
+* [  wrangler.toml ](#tab-panel-10275)
 
 JSONC
 
@@ -401,8 +384,8 @@ If you authored [a \_routes.json file](https://developers.cloudflare.com/pages/f
 
 Workers, on the other hand, will default to serving static assets ahead of your Worker script, unless you have configured [assets.run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#run-your-worker-script-first). This option is required if you are, for example, performing any authentication checks or logging requests before serving static assets.
 
-* [  wrangler.jsonc ](#tab-panel-10215)
-* [  wrangler.toml ](#tab-panel-10216)
+* [  wrangler.jsonc ](#tab-panel-10276)
+* [  wrangler.toml ](#tab-panel-10277)
 
 JSONC
 
@@ -459,8 +442,8 @@ run_worker_first = true
 
 If you wish to, you can start a new Worker script from scratch and take advantage of all of Wrangler's and the latest runtime features (e.g. [WorkerEntrypoints](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/), [TypeScript support](https://developers.cloudflare.com/workers/languages/typescript/), [bundling](https://developers.cloudflare.com/workers/wrangler/bundling), etc.):
 
-* [  JavaScript ](#tab-panel-10225)
-* [  TypeScript ](#tab-panel-10226)
+* [  JavaScript ](#tab-panel-10286)
+* [  TypeScript ](#tab-panel-10287)
 
 ./worker/index.js
 
@@ -502,8 +485,8 @@ export default class extends WorkerEntrypoint {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-10217)
-* [  wrangler.toml ](#tab-panel-10218)
+* [  wrangler.jsonc ](#tab-panel-10278)
+* [  wrangler.toml ](#tab-panel-10279)
 
 JSONC
 
@@ -554,8 +537,8 @@ directory = "./dist/client/"
 
 Pages automatically provided [an ASSETS binding](https://developers.cloudflare.com/pages/functions/api-reference/#envassetsfetch) to access static assets from Pages Functions. In Workers, the name of this binding is customizable and it must be manually configured:
 
-* [  wrangler.jsonc ](#tab-panel-10219)
-* [  wrangler.toml ](#tab-panel-10220)
+* [  wrangler.jsonc ](#tab-panel-10280)
+* [  wrangler.toml ](#tab-panel-10281)
 
 JSONC
 
@@ -612,8 +595,8 @@ binding = "ASSETS"
 
 If you had customized [placement](https://developers.cloudflare.com/workers/configuration/placement/), or set a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) or any [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/) in your Pages project, you can define the same in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10227)
-* [  wrangler.toml ](#tab-panel-10228)
+* [  wrangler.jsonc ](#tab-panel-10288)
+* [  wrangler.toml ](#tab-panel-10289)
 
 JSONC
 
@@ -710,8 +693,8 @@ Pages automatically creates a preview environment for each project, and can be i
 To get a similar experience in Workers, you must:
 
 1. Ensure [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled (they are on by default).  
-   * [  wrangler.jsonc ](#tab-panel-10223)  
-   * [  wrangler.toml ](#tab-panel-10224)  
+   * [  wrangler.jsonc ](#tab-panel-10284)  
+   * [  wrangler.toml ](#tab-panel-10285)  
 JSONC  
 ```  
 {  
@@ -752,8 +735,8 @@ Unlike Pages, Workers does not natively support defining different bindings in p
 
 Where previously you were offered a `pages.dev` subdomain for your Pages project, you can now configure a personalized `workers.dev` subdomain for all of your Worker projects. You can [configure this subdomain in the Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#configure-workersdev), and opt-in to using it with the [workers\_dev option](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#disabling-workersdev-in-the-wrangler-configuration-file) in your configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-10221)
-* [  wrangler.toml ](#tab-panel-10222)
+* [  wrangler.jsonc ](#tab-panel-10282)
+* [  wrangler.toml ](#tab-panel-10283)
 
 JSONC
 

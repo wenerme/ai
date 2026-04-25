@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/file-watching.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Watch filesystem changes
 
 This guide shows you how to monitor filesystem changes in real-time using the Sandbox SDK's file watching API. File watching is useful for building development tools, automated workflows, and applications that react to file changes as they happen.
@@ -33,8 +16,8 @@ The `watch()` method returns an SSE (Server-Sent Events) stream that you consume
 
 Start by watching a directory for any changes:
 
-* [  JavaScript ](#tab-panel-8814)
-* [  TypeScript ](#tab-panel-8815)
+* [  JavaScript ](#tab-panel-8875)
+* [  TypeScript ](#tab-panel-8876)
 
 JavaScript
 
@@ -108,8 +91,8 @@ Filesystem change events (`event.eventType`) include:
 
 Use `include` patterns to watch only specific file types:
 
-* [  JavaScript ](#tab-panel-8816)
-* [  TypeScript ](#tab-panel-8817)
+* [  JavaScript ](#tab-panel-8877)
+* [  TypeScript ](#tab-panel-8878)
 
 JavaScript
 
@@ -186,8 +169,8 @@ Common include patterns:
 
 Use `exclude` patterns to skip certain directories or files:
 
-* [  JavaScript ](#tab-panel-8818)
-* [  TypeScript ](#tab-panel-8819)
+* [  JavaScript ](#tab-panel-8879)
+* [  TypeScript ](#tab-panel-8880)
 
 JavaScript
 
@@ -258,8 +241,8 @@ The following patterns are excluded by default: `.git`, `node_modules`, `.DS_Sto
 
 Trigger builds automatically when source files are modified:
 
-* [  JavaScript ](#tab-panel-8830)
-* [  TypeScript ](#tab-panel-8831)
+* [  JavaScript ](#tab-panel-8891)
+* [  TypeScript ](#tab-panel-8892)
 
 JavaScript
 
@@ -400,8 +383,8 @@ Explain Code
 
 Re-run tests when test files are modified:
 
-* [  JavaScript ](#tab-panel-8820)
-* [  TypeScript ](#tab-panel-8821)
+* [  JavaScript ](#tab-panel-8881)
+* [  TypeScript ](#tab-panel-8882)
 
 JavaScript
 
@@ -474,8 +457,8 @@ Explain Code
 
 Re-index only changed files instead of rescanning an entire directory tree:
 
-* [  JavaScript ](#tab-panel-8824)
-* [  TypeScript ](#tab-panel-8825)
+* [  JavaScript ](#tab-panel-8885)
+* [  TypeScript ](#tab-panel-8886)
 
 JavaScript
 
@@ -582,8 +565,8 @@ Explain Code
 
 Extract event processing into a reusable function that handles stream lifecycle:
 
-* [  JavaScript ](#tab-panel-8840)
-* [  TypeScript ](#tab-panel-8841)
+* [  JavaScript ](#tab-panel-8901)
+* [  TypeScript ](#tab-panel-8902)
 
 JavaScript
 
@@ -748,8 +731,8 @@ Explain Code
 
 Avoid excessive operations by collecting changes before processing:
 
-* [  JavaScript ](#tab-panel-8834)
-* [  TypeScript ](#tab-panel-8835)
+* [  JavaScript ](#tab-panel-8895)
+* [  TypeScript ](#tab-panel-8896)
 
 JavaScript
 
@@ -862,8 +845,8 @@ Explain Code
 
 Watch only the top level of a directory, without descending into subdirectories:
 
-* [  JavaScript ](#tab-panel-8822)
-* [  TypeScript ](#tab-panel-8823)
+* [  JavaScript ](#tab-panel-8883)
+* [  TypeScript ](#tab-panel-8884)
 
 JavaScript
 
@@ -944,8 +927,8 @@ The stream ends naturally when the container sleeps or shuts down. There are two
 
 Pass an `AbortSignal` to `parseSSEStream`. Aborting the signal cancels the stream reader, which propagates cleanup to the server. This is the recommended approach when you need to cancel the watch from outside the consuming loop:
 
-* [  JavaScript ](#tab-panel-8828)
-* [  TypeScript ](#tab-panel-8829)
+* [  JavaScript ](#tab-panel-8889)
+* [  TypeScript ](#tab-panel-8890)
 
 JavaScript
 
@@ -1028,8 +1011,8 @@ Explain Code
 
 Breaking out of the `for await` loop also cancels the stream:
 
-* [  JavaScript ](#tab-panel-8836)
-* [  TypeScript ](#tab-panel-8837)
+* [  JavaScript ](#tab-panel-8897)
+* [  TypeScript ](#tab-panel-8898)
 
 JavaScript
 
@@ -1124,8 +1107,8 @@ Note
 
 `include` and `exclude` are mutually exclusive. Use one or the other, not both. If you need to watch specific file types while ignoring certain directories, use `include` patterns that match the files you want.
 
-* [  JavaScript ](#tab-panel-8832)
-* [  TypeScript ](#tab-panel-8833)
+* [  JavaScript ](#tab-panel-8893)
+* [  TypeScript ](#tab-panel-8894)
 
 JavaScript
 
@@ -1206,8 +1189,8 @@ Explain Code
 
 Errors in your event handler do not stop the watch stream. Wrap handler logic in `try...catch` to prevent unhandled exceptions:
 
-* [  JavaScript ](#tab-panel-8838)
-* [  TypeScript ](#tab-panel-8839)
+* [  JavaScript ](#tab-panel-8899)
+* [  TypeScript ](#tab-panel-8900)
 
 JavaScript
 
@@ -1310,8 +1293,8 @@ Explain Code
 
 Watching a non-existent path returns an error. Verify the path exists before starting a watch:
 
-* [  JavaScript ](#tab-panel-8826)
-* [  TypeScript ](#tab-panel-8827)
+* [  JavaScript ](#tab-panel-8887)
+* [  TypeScript ](#tab-panel-8888)
 
 JavaScript
 

@@ -6,30 +6,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/api/base.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Durable Object Base Class
 
 The `DurableObject` base class is an abstract class which all Durable Objects inherit from. This base class provides a set of optional methods, frequently referred to as handler methods, which can respond to events, for example a `webSocketMessage` when using the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api). To provide a concrete example, here is a Durable Object `MyDurableObject` which extends `DurableObject` and implements the fetch handler to return "Hello, World!" to the calling Worker.
 
-* [  JavaScript ](#tab-panel-6769)
-* [  TypeScript ](#tab-panel-6770)
-* [  Python ](#tab-panel-6771)
+* [  JavaScript ](#tab-panel-6823)
+* [  TypeScript ](#tab-panel-6824)
+* [  Python ](#tab-panel-6825)
 
 JavaScript
 
@@ -120,8 +103,8 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-6759)
-* [  TypeScript ](#tab-panel-6760)
+* [  JavaScript ](#tab-panel-6813)
+* [  TypeScript ](#tab-panel-6814)
 
 JavaScript
 
@@ -193,8 +176,8 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-6761)
-* [  TypeScript ](#tab-panel-6762)
+* [  JavaScript ](#tab-panel-6815)
+* [  TypeScript ](#tab-panel-6816)
 
 JavaScript
 
@@ -258,8 +241,8 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-6763)
-* [  TypeScript ](#tab-panel-6764)
+* [  JavaScript ](#tab-panel-6817)
+* [  TypeScript ](#tab-panel-6818)
 
 JavaScript
 
@@ -331,8 +314,8 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-6767)
-* [  TypeScript ](#tab-panel-6768)
+* [  JavaScript ](#tab-panel-6821)
+* [  TypeScript ](#tab-panel-6822)
 
 JavaScript
 
@@ -399,8 +382,8 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-6765)
-* [  TypeScript ](#tab-panel-6766)
+* [  JavaScript ](#tab-panel-6819)
+* [  TypeScript ](#tab-panel-6820)
 
 JavaScript
 

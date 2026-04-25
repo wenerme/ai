@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/bots/reference/bot-verification/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Bot verification methods
 
 Refer to the following pages for more information on Cloudflare's validation methods for [Verified](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) and [Signed](https://developers.cloudflare.com/bots/concepts/bot/signed-agents/) bots.

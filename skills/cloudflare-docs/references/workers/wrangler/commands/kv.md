@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/commands/kv.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # KV
 
 Manage [Workers KV](https://developers.cloudflare.com/kv/) using Wrangler.
@@ -43,9 +26,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Create a new namespace
 
-* [  npm ](#tab-panel-10437)
-* [  pnpm ](#tab-panel-10438)
-* [  yarn ](#tab-panel-10439)
+* [  npm ](#tab-panel-10498)
+* [  pnpm ](#tab-panel-10499)
+* [  yarn ](#tab-panel-10500)
 
 Terminal window
 
@@ -106,9 +89,9 @@ Automatically provision draft bindings with new resources
 
 Output a list of all KV namespaces associated with your account id
 
-* [  npm ](#tab-panel-10440)
-* [  pnpm ](#tab-panel-10441)
-* [  yarn ](#tab-panel-10442)
+* [  npm ](#tab-panel-10501)
+* [  pnpm ](#tab-panel-10502)
+* [  yarn ](#tab-panel-10503)
 
 Terminal window
 
@@ -158,9 +141,9 @@ Automatically provision draft bindings with new resources
 
 Delete a given namespace.
 
-* [  npm ](#tab-panel-10443)
-* [  pnpm ](#tab-panel-10444)
-* [  yarn ](#tab-panel-10445)
+* [  npm ](#tab-panel-10504)
+* [  pnpm ](#tab-panel-10505)
+* [  yarn ](#tab-panel-10506)
 
 Terminal window
 
@@ -221,9 +204,9 @@ Automatically provision draft bindings with new resources
 
 Rename a KV namespace
 
-* [  npm ](#tab-panel-10446)
-* [  pnpm ](#tab-panel-10447)
-* [  yarn ](#tab-panel-10448)
+* [  npm ](#tab-panel-10507)
+* [  pnpm ](#tab-panel-10508)
+* [  yarn ](#tab-panel-10509)
 
 Terminal window
 
@@ -292,9 +275,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Write a single key/value pair to the given namespace
 
-* [  npm ](#tab-panel-10449)
-* [  pnpm ](#tab-panel-10450)
-* [  yarn ](#tab-panel-10451)
+* [  npm ](#tab-panel-10510)
+* [  pnpm ](#tab-panel-10511)
+* [  yarn ](#tab-panel-10512)
 
 Terminal window
 
@@ -369,9 +352,9 @@ Automatically provision draft bindings with new resources
 
 Output a list of all keys in a given namespace
 
-* [  npm ](#tab-panel-10452)
-* [  pnpm ](#tab-panel-10453)
-* [  yarn ](#tab-panel-10454)
+* [  npm ](#tab-panel-10513)
+* [  pnpm ](#tab-panel-10514)
+* [  yarn ](#tab-panel-10515)
 
 Terminal window
 
@@ -436,9 +419,9 @@ Automatically provision draft bindings with new resources
 
 Read a single value by key from the given namespace
 
-* [  npm ](#tab-panel-10455)
-* [  pnpm ](#tab-panel-10456)
-* [  yarn ](#tab-panel-10457)
+* [  npm ](#tab-panel-10516)
+* [  pnpm ](#tab-panel-10517)
+* [  yarn ](#tab-panel-10518)
 
 Terminal window
 
@@ -505,9 +488,9 @@ Automatically provision draft bindings with new resources
 
 Remove a single key value pair from the given namespace
 
-* [  npm ](#tab-panel-10458)
-* [  pnpm ](#tab-panel-10459)
-* [  yarn ](#tab-panel-10460)
+* [  npm ](#tab-panel-10519)
+* [  pnpm ](#tab-panel-10520)
+* [  yarn ](#tab-panel-10521)
 
 Terminal window
 
@@ -584,9 +567,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Gets multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-10461)
-* [  pnpm ](#tab-panel-10462)
-* [  yarn ](#tab-panel-10463)
+* [  npm ](#tab-panel-10522)
+* [  pnpm ](#tab-panel-10523)
+* [  yarn ](#tab-panel-10524)
 
 Terminal window
 
@@ -651,9 +634,9 @@ Automatically provision draft bindings with new resources
 
 Upload multiple key-value pairs to a namespace
 
-* [  npm ](#tab-panel-10464)
-* [  pnpm ](#tab-panel-10465)
-* [  yarn ](#tab-panel-10466)
+* [  npm ](#tab-panel-10525)
+* [  pnpm ](#tab-panel-10526)
+* [  yarn ](#tab-panel-10527)
 
 Terminal window
 
@@ -724,9 +707,9 @@ Automatically provision draft bindings with new resources
 
 Delete multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-10467)
-* [  pnpm ](#tab-panel-10468)
-* [  yarn ](#tab-panel-10469)
+* [  npm ](#tab-panel-10528)
+* [  pnpm ](#tab-panel-10529)
+* [  yarn ](#tab-panel-10530)
 
 Terminal window
 

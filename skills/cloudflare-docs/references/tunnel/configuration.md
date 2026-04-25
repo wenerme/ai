@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/tunnel/configuration.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Configuration
 
 This page covers the most common configuration options for `cloudflared` tunnels, including high availability, firewall rules, and runtime parameters.
@@ -53,8 +36,8 @@ graph LR
 
 ### Deploy a replica
 
-* [ Dashboard ](#tab-panel-9159)
-* [ CLI ](#tab-panel-9160)
+* [ Dashboard ](#tab-panel-9220)
+* [ CLI ](#tab-panel-9221)
 
 To deploy a replica for a remotely-managed tunnel:
 

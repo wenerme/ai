@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/guides/build-a-voice-agent.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Build a voice agent
 
 Build a voice agent that listens to users, thinks with an LLM, and speaks back — all in real-time over WebSocket. Beta
@@ -62,8 +45,8 @@ The starter gives you a working Vite + React + Cloudflare Workers setup. You wil
 
 Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for your voice agent:
 
-* [  wrangler.jsonc ](#tab-panel-5118)
-* [  wrangler.toml ](#tab-panel-5119)
+* [  wrangler.jsonc ](#tab-panel-5128)
+* [  wrangler.toml ](#tab-panel-5129)
 
 JSONC
 
@@ -164,8 +147,8 @@ Explain Code
 
 Replace `src/server.ts` with the following. The `withVoice` mixin adds the full voice pipeline — STT, sentence chunking, TTS, and conversation persistence — to a standard `Agent` class.
 
-* [  JavaScript ](#tab-panel-5124)
-* [  TypeScript ](#tab-panel-5125)
+* [  JavaScript ](#tab-panel-5134)
+* [  TypeScript ](#tab-panel-5135)
 
 JavaScript
 
@@ -550,8 +533,8 @@ Open the app in your browser, select **Start Call**, and speak. You will see the
 
 You can intercept and transform data at each stage of the pipeline. For example, filter out short transcripts (noise) and adjust pronunciation before TTS:
 
-* [  JavaScript ](#tab-panel-5120)
-* [  TypeScript ](#tab-panel-5121)
+* [  JavaScript ](#tab-panel-5130)
+* [  TypeScript ](#tab-panel-5131)
 
 JavaScript
 
@@ -639,8 +622,8 @@ Returning `null` from `afterTranscribe` drops the utterance entirely — useful 
 
 Swap in third-party STT or TTS providers without changing your agent logic:
 
-* [  JavaScript ](#tab-panel-5122)
-* [  TypeScript ](#tab-panel-5123)
+* [  JavaScript ](#tab-panel-5132)
+* [  TypeScript ](#tab-panel-5133)
 
 JavaScript
 

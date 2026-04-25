@@ -1,27 +1,10 @@
 ---
 title: Configure Cloudflare Notifications
-description: The list of notifications available depends on the type of account you have. Refer to Available Notifications to learn more about what each notification does and what do to when receiving one.
+description: Set up notifications via email, webhooks, or PagerDuty.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/notifications/get-started/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Configure Cloudflare Notifications
 

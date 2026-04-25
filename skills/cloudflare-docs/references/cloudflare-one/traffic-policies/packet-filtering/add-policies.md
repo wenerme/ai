@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/traffic-policies/packet-filtering/add-policies.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Add policies
 
 A root ruleset is the top-level container that holds all your firewall policies. You can check for an existing root ruleset from the dashboard or via the [Account rulesets API](https://developers.cloudflare.com/api/resources/rulesets/methods/list/). If you are a new Magic Transit customer, you may not have a root ruleset created for your account. To view examples for root rulesets, review the [Cloudflare Network Firewall Terraform documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/magic%5Ffirewall%5Fruleset).

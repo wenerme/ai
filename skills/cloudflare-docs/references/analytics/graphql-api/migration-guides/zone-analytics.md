@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/analytics/graphql-api/migration-guides/zone-analytics.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Zone Analytics to GraphQL Analytics
 
 The Zone Analytics API allows you to get request data by zone. It offers optional `since` and `until` parameters to specify the request time period and a `continuous` parameter to indicate whether the time period should be moved backward to find a period with completely aggregated data.
@@ -638,7 +621,7 @@ query ZoneAnalyticsMigrationSample($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgewHZgIJIIYBsoBcCWAxgM4Cy+A5hBgcgMoYC2ADlmABQAkAXsmACoYKALhjFcEfEgoAaGJ3EYIuUf3yMwczmCQATVerABKGAG8AUDBgA3fGADukM5asxeKYuwBm+LLkiipm58giLy7gJCMAC+JhaurgAWuLjMAEpgoGDixACMjADiEAggzJ4uCVYIELqQAEJQogDaujRgBBoAYvjWYORIIP7EAPqodADCALoVlVjq+CowuQAMyzMJPn4BZjCt-h1gwxSZogq4Srhye+2Gw36nOrox6zBxL1a6hkjE+MjEzpVKtcDt1ev1Btl3s9AVZiCBGACYVYAEbFezESCkDDMRFIqzMIRgABqdnRUISIAwdTRGIgnSYvig5OheOReEheJghAwhESYF0DSGzO5vP5GSyOWFyH8SFw-CgzD62NxrPZxGZVggmXAks5Vn5xwyxGYfzA42lOjlCrAADkmGBmdFhXNLXQ6AAZLE4+J6rUS3DqvVcl2yt3ugAKxVwCEICCwjqlIFl0C9KqRbKFQb9OoDGpguESWpogb1hBDuHNSYkUDtGgTnJ0hGgzH8ArVzMbzdb4pzJaR+GY4ywGGIZGVPs52eyuaDA-livreIJxxJDj7MKnurxWuNpro51wIDH3rzm5neoNYCNJu+YH3NCPi6RBaL5+fhbANHDNESUgoqYnbdtWndd31fb8Cz-WsHU5J0kTgmEk3wYA00qJCJShBCEiwlknWiIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiz5x+qAIwB2VHwAcGCiBhQAJs3ZdeAoXDFtxU2fIC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgewHZgIJIIYBsoBcCWAxgM4Cy+A5hBgcgMoYC2ADlmABQAkAXsmACoYKALhjFcEfEgoAaGJ3EYIuUf3yMwczmCQATVerABKGAG8AUDBgA3fGADukM5asxeKYuwBm+LLkiipm58giLy7gJCMAC+JhaurgAWuLjMAEpgoGDixACMjADiEAggzJ4uCVYIELqQAEJQogDaujRgBBoAYvjWYORIIP7EAPqodADCALoVlVjq+CowuQAMyzMJPn4BZjCt-h1gwxSZogq4Srhye+2Gw36nOrox6zBxL1a6hkjE+MjEzpVKtcDt1ev1Btl3s9AVZiCBGACYVYAEbFezESCkDDMRFIqzMIRgABqdnRUISIAwdTRGIgnSYvig5OheOReEheJghAwhESYF0DSGzO5vP5GSyOWFyH8SFw-CgzD62NxrPZxGZVggmXAks5Vn5xwyxGYfzA42lOjlCrAADkmGBmdFhXNLXQ6AAZLE4+J6rUS3DqvVcl2yt3ugAKxVwCEICCwjqlIFl0C9KqRbKFQb9OoDGpguESWpogb1hBDuHNSYkUDtGgTnJ0hGgzH8ArVzMbzdb4pzJaR+GY4ywGGIZGVPs52eyuaDA-livreIJxxJDj7MKnurxWuNpro51wIDH3rzm5neoNYCNJu+YH3NCPi6RBaL5+fhbANHDNESUgoqYnbdtWndd31fb8Cz-WsHU5J0kTgmEk3wYA00qJCJShBCEiwlknWiIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiz5wAjAHZU-VAGYxGCiBhQAJs3ZdeAoXBbTJfGXJABfIA)
 
 Response
 

@@ -1,27 +1,10 @@
 ---
 title: Resolve &#34;cannot remove payment method&#34;
-description: When attempting to remove a payment method, you may see one of the following error messages:
+description: Fix errors when removing a payment method.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/billing/troubleshoot/resolve-cannot-remove-payment-method.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Resolve "cannot remove payment method"
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.nPIT6fwR.svg) 
 
 #  deepseek-math-7b-instruct Beta 
@@ -49,10 +32,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-3149)
-* [  TypeScript ](#tab-panel-3150)
-* [  Python ](#tab-panel-3151)
-* [  curl ](#tab-panel-3152)
+* [  Worker (Streaming) ](#tab-panel-3159)
+* [  TypeScript ](#tab-panel-3160)
+* [  Python ](#tab-panel-3161)
+* [  curl ](#tab-panel-3162)
 
 TypeScript
 
@@ -217,8 +200,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3157)
-* [ Output ](#tab-panel-3158)
+* [ Input ](#tab-panel-3167)
+* [ Output ](#tab-panel-3168)
 
 prompt
 
@@ -286,8 +269,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3159)
-* [ Output ](#tab-panel-3160)
+* [ Input ](#tab-panel-3169)
+* [ Output ](#tab-panel-3170)
 
 prompt
 
@@ -353,8 +336,8 @@ format
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3153)
-* [ Output ](#tab-panel-3154)
+* [ Input ](#tab-panel-3163)
+* [ Output ](#tab-panel-3164)
 
 ```
 
@@ -650,8 +633,8 @@ Explain Code
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3155)
-* [ Output ](#tab-panel-3156)
+* [ Input ](#tab-panel-3165)
+* [ Output ](#tab-panel-3166)
 
 ```
 

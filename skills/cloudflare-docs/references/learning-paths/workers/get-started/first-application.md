@@ -1,6 +1,6 @@
 ---
 title: First application
-description: If you have already created your first Worker and want to learn what more you can do with your project, review the following Learn Cloudflare Workers course for beginners.
+description: Build an AI application with Hono.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
@@ -9,14 +9,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 ### Tags
 
 [ Hono ](https://developers.cloudflare.com/search/?tags=Hono) 
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/workers/get-started/first-application.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # First application
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg) 
 
 #  bart-large-cnn Beta 
@@ -40,8 +23,8 @@ BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3068)
-* [  curl ](#tab-panel-3069)
+* [  TypeScript ](#tab-panel-3078)
+* [  curl ](#tab-panel-3079)
 
 ```
 
@@ -96,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/fa
 
 ## Parameters
 
-* [ Input ](#tab-panel-3072)
-* [ Output ](#tab-panel-3073)
+* [ Input ](#tab-panel-3082)
+* [ Output ](#tab-panel-3083)
 
 input\_text
 
@@ -113,8 +96,8 @@ summary
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3070)
-* [ Output ](#tab-panel-3071)
+* [ Input ](#tab-panel-3080)
+* [ Output ](#tab-panel-3081)
 
 ```
 

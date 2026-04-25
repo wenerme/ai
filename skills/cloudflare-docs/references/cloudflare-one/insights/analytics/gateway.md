@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics)[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/insights/analytics/gateway.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Gateway analytics (DNS, HTTP, network sessions)
 
 Gateway analytics include three separate dashboards:
@@ -37,7 +20,7 @@ Gateway analytics include three separate dashboards:
 
 To review Gateway analytics:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
 2. Go to **Dashboards**.
 3. Select your desired dashboard.
 
@@ -47,11 +30,11 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 
 Your [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) power the HTTP request analytics dashboard. If you are not using Gateway HTTP policies, the dashboard will appear empty.
 
-The HTTP request analytics dashboard helps you identify trends in how your HTTP policies apply over time. By visualizing allowed, isolated, and do not inspect requests, the dashboard provides insights into traffic behavior and policy trends, making it easier to spot anomalies or shifts in usage patterns.
+The HTTP request analytics dashboard helps you identify trends in how your HTTP policies apply over time. By visualizing allowed, [isolated](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) (rendered in a remote browser), and [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) (bypassing TLS decryption) requests, the dashboard provides insights into traffic behavior and policy trends, making it easier to spot anomalies or shifts in usage patterns.
 
 To review a detailed description of an HTTP request and its associated policy:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
 2. Select **Logs**.
 3. Select **HTTP request logs**.
 4. Use the **Policy** filter to view HTTP requests that triggered a policy or other filters to narrow down your results.
@@ -71,11 +54,11 @@ To review a detailed description of an HTTP request and its associated policy:
 
 Your [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) power the DNS query analytics dashboard. If you are not using Gateway DNS policies, the dashboard will appear empty.
 
-The DNS query analytics dashboard helps you identify trends in how your DNS policies apply over time. By visualizing allowed, blocked, and overridden queries, the dashboard provides insights into traffic behavior and policy trends, making it easier to spot anomalies or shifts in usage patterns.
+The DNS query analytics dashboard helps you identify trends in how your DNS policies apply over time. By visualizing allowed, blocked, and overridden (DNS response replaced by a policy-defined address) queries, the dashboard provides insights into traffic behavior and policy trends, making it easier to spot anomalies or shifts in usage patterns.
 
 To review a detailed description of a DNS query and its associated policy:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
 2. Select **Logs**.
 3. Select **DNS query logs**.
 4. Use the **Policy** filter to view DNS queries that triggered a policy or other filters to narrow down your results.
@@ -94,11 +77,11 @@ To review a detailed description of a DNS query and its associated policy:
 
 Your [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) power the Network policy analytics dashboard. If you are not using Gateway network policies, the dashboard will appear empty.
 
-The Network policy analytics dashboard helps you identify trends in how your Gateway network policies apply over time. By visualizing allowed, blocked, and overridden sessions, the dashboard provides insights into traffic behavior and policy trends, making it easier to spot anomalies or shifts in usage patterns.
+The Network policy analytics dashboard helps you identify trends in how your Gateway network policies apply over time. By visualizing allowed, blocked, and overridden (traffic rerouted by a policy-defined rule) sessions, the dashboard provides insights into traffic behavior and policy trends, making it easier to spot anomalies or shifts in usage patterns.
 
 To review a detailed description of a network session and its associated policy:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
 2. Select **Logs**.
 3. Select **Network logs**.
 4. Use the **Policy** filter to view network sessions that triggered a policy or other filters to narrow down your results.
@@ -155,7 +138,7 @@ query GatewaySampleQuery($accountTag: string!, $start: Time) {
   }  
 }  
 ```  
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4gQwC5gO4KgZQQWwA4A2YAiuNABQAkCAxjQPYgB2SAKggOYBcMAzkhACWTDgEIANDEr8EEJD1aCcYAJQwA3gCgYMAG6C0kDdp0xaDZkl7kAZoIIoIPdWbqMW7blPPu2nGAC+alqmphzIaBgASmC89AS6kKSQBrwAggAmCHhIgolwEIx41iahOnYOkM4wWSi5ygD6HPJSMnKBpWUESoItAIwADJ06wcOmFixjOhlKYEy8gvTzxmVloJBQAHK4YDGJELxgGVOmELHx+wAiYDSCC0snAWNPoS8dAUA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgBYh3UcjGYAjAHZMAVgAcALRABfIA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4gQwC5gO4KgZQQWwA4A2YAiuNABQAkCAxjQPYgB2SAKggOYBcMAzkhACWTDgEIANDEr8EEJD1aCcYAJQwA3gCgYMAG6C0kDdp0xaDZkl7kAZoIIoIPdWbqMW7blPPu2nGAC+alqmphzIaBgASmC89AS6kKSQBrwAggAmCHhIgolwEIx41iahOnYOkM4wWSi5ygD6HPJSMnKBpWUESoItAIwADJ06wcOmFixjOhlKYEy8gvTzxmVloJBQAHK4YDGJELxgGVOmELHx+wAiYDSCC0snAWNPoS8dAUA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgBYh3UcgCMAdkxjMo2QC0QAXyA)
 
 For more information, refer to [Compose a query in GraphiQL](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/).
 

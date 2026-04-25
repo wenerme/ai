@@ -6,31 +6,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/managed-rules/waf-exceptions/define-dashboard.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Add an exception in the dashboard
 
 ## 1\. Go to the zone or account dashboard page
 
 To add an exception at the zone level:
 
-* [  New dashboard ](#tab-panel-9393)
-* [ Old dashboard ](#tab-panel-9394)
+* [  New dashboard ](#tab-panel-9454)
+* [ Old dashboard ](#tab-panel-9455)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -79,8 +62,8 @@ To add an exception at the account level (Enterprise plans only):
 
 To edit an exception at the zone level:
 
-* [  New dashboard ](#tab-panel-9395)
-* [ Old dashboard ](#tab-panel-9396)
+* [  New dashboard ](#tab-panel-9456)
+* [ Old dashboard ](#tab-panel-9457)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/examples/use-kv-from-durable-objects.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Use Workers KV from Durable Objects
 
 **Last reviewed:**  over 2 years ago 
@@ -39,8 +22,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-6934)
-* [  wrangler.toml ](#tab-panel-6935)
+* [  wrangler.jsonc ](#tab-panel-6988)
+* [  wrangler.toml ](#tab-panel-6989)
 
 JSONC
 
@@ -118,8 +101,8 @@ class_name = "YourDurableObject"
 
 Explain Code
 
-* [  TypeScript ](#tab-panel-6932)
-* [  Python ](#tab-panel-6933)
+* [  TypeScript ](#tab-panel-6986)
+* [  Python ](#tab-panel-6987)
 
 TypeScript
 

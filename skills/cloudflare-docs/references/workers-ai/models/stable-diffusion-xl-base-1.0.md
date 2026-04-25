@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![Stability.ai logo](https://developers.cloudflare.com/_astro/stabilityai.CmlmNdqR.svg) 
 
 #  stable-diffusion-xl-base-1.0 Beta 
@@ -42,8 +25,8 @@ Diffusion-based text-to-image generative model by Stability AI. Generates and mo
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3961)
-* [  curl ](#tab-panel-3962)
+* [  TypeScript ](#tab-panel-3971)
+* [  curl ](#tab-panel-3972)
 
 ```
 
@@ -111,8 +94,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3965)
-* [ Output ](#tab-panel-3966)
+* [ Input ](#tab-panel-3975)
+* [ Output ](#tab-panel-3976)
 
 prompt
 
@@ -162,8 +145,8 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3963)
-* [ Output ](#tab-panel-3964)
+* [ Input ](#tab-panel-3973)
+* [ Output ](#tab-panel-3974)
 
 ```
 

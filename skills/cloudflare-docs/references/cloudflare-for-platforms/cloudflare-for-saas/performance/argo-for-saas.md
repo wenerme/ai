@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-for-platforms/cloudflare-for-saas/performance/argo-for-saas.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Argo Smart Routing for SaaS
 
 Argo Smart Routing uses real-time global network information to route traffic on the fastest possible path across the Internet. Regardless of geographic location, this allows Cloudflare to optimize routing to make it faster, more reliable, and more secure. As a SaaS provider, you may want to emphasize the quickest traffic delivery for your end customers. To do so, [enable Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/get-started/).

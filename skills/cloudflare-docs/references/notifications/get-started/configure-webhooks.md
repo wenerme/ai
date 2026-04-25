@@ -1,27 +1,10 @@
 ---
 title: Configure webhooks
-description: There are a variety of services you can connect to Cloudflare using webhooks to receive notifications from your Cloudflare account. Refer to the table below to learn how to connect your Cloudflare account to popular webhook services.
+description: Send notifications to webhook endpoints.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/notifications/get-started/configure-webhooks.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Configure webhooks
 

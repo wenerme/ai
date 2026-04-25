@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/platform/limits.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Limits
 
 ## Account plan limits
@@ -102,8 +85,8 @@ To resolve a CPU time limit error:
 
 On the Workers Paid plan, you can increase the maximum CPU time from the default 30 seconds to 5 minutes (300,000 ms).
 
-* [  wrangler.jsonc ](#tab-panel-10019)
-* [  wrangler.toml ](#tab-panel-10020)
+* [  wrangler.jsonc ](#tab-panel-10080)
+* [  wrangler.toml ](#tab-panel-10081)
 
 JSONC
 
@@ -250,8 +233,8 @@ Once response headers arrive for a connection, it no longer counts toward the si
 
 If you use `fetch()` but do not need the response body, calling `response.body.cancel()` is still good practice to free memory:
 
-* [  JavaScript ](#tab-panel-10021)
-* [  TypeScript ](#tab-panel-10022)
+* [  JavaScript ](#tab-panel-10082)
+* [  TypeScript ](#tab-panel-10083)
 
 src/index.js
 

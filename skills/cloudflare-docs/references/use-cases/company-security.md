@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/company-security/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Company security
 
 Protect employees, devices, and data with Zero Trust access, secure web gateway, and email security. Cloudflare Access and Tunnel replace VPNs with identity-verified, per-request access to internal applications. Gateway filters DNS and HTTP traffic to block threats. DLP prevents sensitive data from leaving your network. Email Security stops phishing, BEC, and malware. DMARC management prevents domain spoofing.

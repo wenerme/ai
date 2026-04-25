@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Forms ](https://developers.cloudflare.com/search/?tags=Forms)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/tutorials/handle-form-submissions-with-airtable.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Handle form submissions with Airtable
 
 **Last reviewed:**  almost 3 years ago 
@@ -402,8 +385,8 @@ To make an authenticated request to Airtable, you need to provide four constants
 
 Add a `vars` table at the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10297)
-* [  wrangler.toml ](#tab-panel-10298)
+* [  wrangler.jsonc ](#tab-panel-10358)
+* [  wrangler.toml ](#tab-panel-10359)
 
 JSONC
 

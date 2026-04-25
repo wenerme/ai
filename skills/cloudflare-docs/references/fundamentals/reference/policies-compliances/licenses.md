@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/reference/policies-compliances/licenses.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Licenses
 
 All documentation in the Cloudflare Workers documentation website, including reference documentation and tutorials, are licensed under the [CC-BY-SA 4.0 ↗](https://creativecommons.org/licenses/by-sa/4.0/) license. Any contributions to the [GitHub repository ↗](https://github.com/cloudflare/cloudflare-docs) for this project will be licensed under CC-BY-SA 4.0: thanks for your contributions!

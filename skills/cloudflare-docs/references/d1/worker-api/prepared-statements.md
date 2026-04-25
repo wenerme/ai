@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/d1/worker-api/prepared-statements.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Prepared statement methods
 
 This chapter documents the various ways you can run and retrieve the results of a query after you have [prepared your statement](https://developers.cloudflare.com/d1/worker-api/d1-database/#prepare).
@@ -33,8 +16,8 @@ This chapter documents the various ways you can run and retrieve the results of 
 
 Binds a parameter to the prepared statement.
 
-* [  JavaScript ](#tab-panel-6561)
-* [  Python ](#tab-panel-6562)
+* [  JavaScript ](#tab-panel-6613)
+* [  Python ](#tab-panel-6614)
 
 JavaScript
 
@@ -81,8 +64,8 @@ stmt = self.env.DB.prepare(
 | ?      | Anonymous | A question mark that is not followed by a number creates a parameter with a number one greater than the largest parameter number already assigned. If this means the parameter number is greater than SQLITE\_MAX\_VARIABLE\_NUMBER, it is an error. This parameter format is provided for compatibility with other database engines. But because it is easy to miscount the question marks, the use of this parameter format is discouraged. Programmers are encouraged to use one of the symbolic formats below or the ?NNN format above instead. |  
 To bind a parameter, use the `.bind` method.  
 Order and anonymous examples:  
-   * [  JavaScript ](#tab-panel-6563)  
-   * [  Python ](#tab-panel-6564)  
+   * [  JavaScript ](#tab-panel-6615)  
+   * [  Python ](#tab-panel-6616)  
 JavaScript  
 ```  
 const stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind("");  
@@ -91,8 +74,8 @@ Python
 ```  
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind("")  
 ```  
-   * [  JavaScript ](#tab-panel-6565)  
-   * [  Python ](#tab-panel-6566)  
+   * [  JavaScript ](#tab-panel-6617)  
+   * [  Python ](#tab-panel-6618)  
 JavaScript  
 ```  
 const stmt = db  
@@ -105,8 +88,8 @@ stmt = db.prepare(
 "SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?"  
 ).bind("Alfreds Futterkiste", 1)  
 ```  
-   * [  JavaScript ](#tab-panel-6567)  
-   * [  Python ](#tab-panel-6568)  
+   * [  JavaScript ](#tab-panel-6619)  
+   * [  Python ](#tab-panel-6620)  
 JavaScript  
 ```  
 const stmt = db  
@@ -129,8 +112,8 @@ The recommended approach is to use [prepared statements](https://developers.clou
 
 Example of a prepared statement with dynamically bound value:
 
-* [  JavaScript ](#tab-panel-6569)
-* [  Python ](#tab-panel-6570)
+* [  JavaScript ](#tab-panel-6621)
+* [  Python ](#tab-panel-6622)
 
 JavaScript
 
@@ -164,8 +147,8 @@ stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind
 
 Example of a static statement:
 
-* [  JavaScript ](#tab-panel-6571)
-* [  Python ](#tab-panel-6572)
+* [  JavaScript ](#tab-panel-6623)
+* [  Python ](#tab-panel-6624)
 
 JavaScript
 
@@ -197,8 +180,8 @@ stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = 'Bs Beve
 
 Runs the prepared query (or queries) and returns results. The returned results includes metadata.
 
-* [  JavaScript ](#tab-panel-6573)
-* [  Python ](#tab-panel-6574)
+* [  JavaScript ](#tab-panel-6625)
+* [  Python ](#tab-panel-6626)
 
 JavaScript
 
@@ -230,8 +213,8 @@ return_value = await stmt.run()
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-6575)
-* [  Python ](#tab-panel-6576)
+* [  JavaScript ](#tab-panel-6627)
+* [  Python ](#tab-panel-6628)
 
 JavaScript
 
@@ -332,8 +315,8 @@ Explain Code
 
 Example of returning only the `results`
 
-* [  JavaScript ](#tab-panel-6577)
-* [  Python ](#tab-panel-6578)
+* [  JavaScript ](#tab-panel-6629)
+* [  Python ](#tab-panel-6630)
 
 JavaScript
 
@@ -393,8 +376,8 @@ Runs the prepared query (or queries), and returns the results as an array of arr
 
 Column names are not included in the result set by default. To include column names as the first row of the result array, set `.raw({columnNames: true})`.
 
-* [  JavaScript ](#tab-panel-6579)
-* [  Python ](#tab-panel-6580)
+* [  JavaScript ](#tab-panel-6631)
+* [  Python ](#tab-panel-6632)
 
 JavaScript
 
@@ -426,8 +409,8 @@ return_value = await stmt.raw()
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-6581)
-* [  Python ](#tab-panel-6582)
+* [  JavaScript ](#tab-panel-6633)
+* [  Python ](#tab-panel-6634)
 
 JavaScript
 
@@ -485,8 +468,8 @@ return Response.json(return_value)
 
 With parameter `columnNames: true`:
 
-* [  JavaScript ](#tab-panel-6583)
-* [  Python ](#tab-panel-6584)
+* [  JavaScript ](#tab-panel-6635)
+* [  Python ](#tab-panel-6636)
 
 JavaScript
 
@@ -564,8 +547,8 @@ Explain Code
 
 Runs the prepared query (or queries), and returns the first row of the query result as an object. This does not return any metadata. Instead, it directly returns the object.
 
-* [  JavaScript ](#tab-panel-6585)
-* [  Python ](#tab-panel-6586)
+* [  JavaScript ](#tab-panel-6637)
+* [  Python ](#tab-panel-6638)
 
 JavaScript
 
@@ -604,8 +587,8 @@ Example of return values
 
 Get all the columns from the first row:
 
-* [  JavaScript ](#tab-panel-6587)
-* [  Python ](#tab-panel-6588)
+* [  JavaScript ](#tab-panel-6639)
+* [  Python ](#tab-panel-6640)
 
 JavaScript
 
@@ -657,8 +640,8 @@ return Response.json(return_value)
 
 Get a specific column from the first row:
 
-* [  JavaScript ](#tab-panel-6589)
-* [  Python ](#tab-panel-6590)
+* [  JavaScript ](#tab-panel-6641)
+* [  Python ](#tab-panel-6642)
 
 JavaScript
 

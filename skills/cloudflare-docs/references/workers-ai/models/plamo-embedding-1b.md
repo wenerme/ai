@@ -8,23 +8,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
  p 
 
 #  plamo-embedding-1b 
@@ -41,9 +24,9 @@ PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Net
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3827)
-* [  Python ](#tab-panel-3828)
-* [  curl ](#tab-panel-3829)
+* [  TypeScript ](#tab-panel-3837)
+* [  Python ](#tab-panel-3838)
+* [  curl ](#tab-panel-3839)
 
 ```
 
@@ -158,8 +141,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-3830)
-* [ Output ](#tab-panel-3831)
+* [ Input ](#tab-panel-3840)
+* [ Output ](#tab-panel-3841)
 
 ▶text
 
@@ -175,8 +158,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3825)
-* [ Output ](#tab-panel-3826)
+* [ Input ](#tab-panel-3835)
+* [ Output ](#tab-panel-3836)
 
 ```
 

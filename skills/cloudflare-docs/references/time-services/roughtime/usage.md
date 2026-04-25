@@ -1,27 +1,10 @@
 ---
 title: Get the Roughtime
-description: The &#34;Hello, world!&#34; of Roughtime is very simple: the client sends a request over UDP to the server and the server responds with a signed timestamp.
+description: Connect to Cloudflare's Roughtime server.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/time-services/roughtime/usage.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Get the Roughtime
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg) 
 
 #  flux 
@@ -173,8 +156,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-3225)
-* [ Output ](#tab-panel-3226)
+* [ Input ](#tab-panel-3235)
+* [ Output ](#tab-panel-3236)
 
 encoding
 
@@ -246,8 +229,8 @@ end\_of\_turn\_confidence
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3223)
-* [ Output ](#tab-panel-3224)
+* [ Input ](#tab-panel-3233)
+* [ Output ](#tab-panel-3234)
 
 ```
 

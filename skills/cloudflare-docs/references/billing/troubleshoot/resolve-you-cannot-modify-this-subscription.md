@@ -1,27 +1,10 @@
 ---
 title: Resolve &#34;you cannot modify this subscription&#34;
-description: When attempting to cancel or modify a subscription, you may see the following error message:
+description: Fix errors when modifying a cancelled subscription.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/billing/troubleshoot/resolve-you-cannot-modify-this-subscription.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Resolve "you cannot modify this subscription"
 

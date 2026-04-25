@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/api/backups.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Backups
 
 Create point-in-time snapshots of sandbox directories and restore them with copy-on-write overlays.
@@ -56,8 +39,8 @@ await sandbox.createBackup(options: BackupOptions): Promise<DirectoryBackup>
 * `id` \- Unique backup identifier (UUID)
 * `dir` \- Directory that was backed up
 
-* [  JavaScript ](#tab-panel-8540)
-* [  TypeScript ](#tab-panel-8541)
+* [  JavaScript ](#tab-panel-8595)
+* [  TypeScript ](#tab-panel-8596)
 
 JavaScript
 
@@ -161,8 +144,8 @@ await sandbox.restoreBackup(backup: DirectoryBackup): Promise<RestoreBackupResul
 * `dir` \- Directory that was restored
 * `id` \- Backup ID that was restored
 
-* [  JavaScript ](#tab-panel-8542)
-* [  TypeScript ](#tab-panel-8543)
+* [  JavaScript ](#tab-panel-8597)
+* [  TypeScript ](#tab-panel-8598)
 
 JavaScript
 
@@ -247,8 +230,8 @@ In production, the FUSE mount is lost when the sandbox sleeps or restarts. Re-re
 
 Use `useGitignore` to exclude files matching `.gitignore` rules (such as `node_modules/` or `dist/`) from the backup. This reduces backup size for git repositories.
 
-* [  JavaScript ](#tab-panel-8544)
-* [  TypeScript ](#tab-panel-8545)
+* [  JavaScript ](#tab-panel-8599)
+* [  TypeScript ](#tab-panel-8600)
 
 JavaScript
 
@@ -318,8 +301,8 @@ If the directory is not inside a git repository, `useGitignore` has no effect an
 
 Use backups as checkpoints before risky operations.
 
-* [  JavaScript ](#tab-panel-8546)
-* [  TypeScript ](#tab-panel-8547)
+* [  JavaScript ](#tab-panel-8601)
+* [  TypeScript ](#tab-panel-8602)
 
 JavaScript
 
@@ -379,8 +362,8 @@ Explain Code
 
 ### Error handling
 
-* [  JavaScript ](#tab-panel-8548)
-* [  TypeScript ](#tab-panel-8549)
+* [  JavaScript ](#tab-panel-8603)
+* [  TypeScript ](#tab-panel-8604)
 
 JavaScript
 

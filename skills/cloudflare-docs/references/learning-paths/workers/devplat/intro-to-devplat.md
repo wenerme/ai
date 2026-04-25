@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/workers/devplat/intro-to-devplat.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cloudflare Developer Platform
 
 The [Cloudflare Developer Platform ↗](https://www.cloudflare.com/developer-platform/products/) offers various services to empower developers to build full-stack applications, including: [compute ↗](https://www.cloudflare.com/developer-platform/products/#compute), [storage ↗](https://www.cloudflare.com/developer-platform/products/#storage), [web development, image optimization, video streaming ↗](https://www.cloudflare.com/developer-platform/products/#webdev) and [AI ↗](https://ai.cloudflare.com/).

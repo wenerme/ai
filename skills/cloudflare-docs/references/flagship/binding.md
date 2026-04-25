@@ -6,29 +6,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/flagship/binding/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Binding API
 
 Workers access Flagship through a binding that you add to your Wrangler configuration file. The `binding` field sets the variable name you use in your Worker code.
 
-* [  wrangler.jsonc ](#tab-panel-7063)
-* [  wrangler.toml ](#tab-panel-7064)
+* [  wrangler.jsonc ](#tab-panel-7117)
+* [  wrangler.toml ](#tab-panel-7118)
 
 JSONC
 
@@ -66,8 +49,8 @@ Replace `<APP_ID>` with the app ID from your Flagship app. If you have not creat
 
 The binding provides type-safe methods for evaluating feature flags. If an evaluation fails or a flag is not found, the method returns the default value you provide.
 
-* [  JavaScript ](#tab-panel-7065)
-* [  TypeScript ](#tab-panel-7066)
+* [  JavaScript ](#tab-panel-7119)
+* [  TypeScript ](#tab-panel-7120)
 
 JavaScript
 

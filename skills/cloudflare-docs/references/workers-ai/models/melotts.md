@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![MyShell logo](https://developers.cloudflare.com/_astro/myshell.BpTDMxd2.svg) 
 
 #  melotts 
@@ -77,8 +60,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-3679)
-* [ Output ](#tab-panel-3680)
+* [ Input ](#tab-panel-3689)
+* [ Output ](#tab-panel-3690)
 
 prompt
 
@@ -100,8 +83,8 @@ The generated audio in MP3 format
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3677)
-* [ Output ](#tab-panel-3678)
+* [ Input ](#tab-panel-3687)
+* [ Output ](#tab-panel-3688)
 
 ```
 

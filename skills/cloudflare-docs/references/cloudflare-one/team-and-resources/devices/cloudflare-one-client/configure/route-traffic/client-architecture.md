@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Wireguard ](https://developers.cloudflare.com/search/?tags=Wireguard) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Client architecture
 
 This guide explains how the Cloudflare One Client (formerly WARP) interacts with a device's operating system to route traffic in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default) mode.
@@ -101,9 +84,9 @@ R -- No --> G[Cloudflare Gateway]
 
 You can verify that the operating system is using the Cloudflare One Client's local DNS proxy:
 
-* [ macOS ](#tab-panel-6040)
-* [ Windows ](#tab-panel-6041)
-* [ Linux ](#tab-panel-6042)
+* [ macOS ](#tab-panel-6092)
+* [ Windows ](#tab-panel-6093)
+* [ Linux ](#tab-panel-6094)
 
 On macOS, open a terminal window and run `scutil --dns`. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
@@ -256,9 +239,9 @@ Virtual interfaces allow the operating system to logically subdivide a physical 
 
 To view a list of all network interfaces on the operating system:
 
-* [ Windows ](#tab-panel-6046)
-* [ macOS ](#tab-panel-6047)
-* [ Linux ](#tab-panel-6048)
+* [ Windows ](#tab-panel-6098)
+* [ macOS ](#tab-panel-6099)
+* [ Linux ](#tab-panel-6100)
 
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
 
@@ -380,9 +363,9 @@ The Cloudflare One Client edits the system routing table to control what IP traf
 
 You can verify that the routing table matches your Split Tunnel rules:
 
-* [ macOS ](#tab-panel-6043)
-* [ Windows ](#tab-panel-6044)
-* [ Linux ](#tab-panel-6045)
+* [ macOS ](#tab-panel-6095)
+* [ Windows ](#tab-panel-6096)
+* [ Linux ](#tab-panel-6097)
 
 To view the entire routing table on macOS, run `netstat -r`.
 

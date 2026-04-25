@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-routing/get-started/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Get started
 
 To enable Email Routing, start by creating a custom email address linked to a destination address or Email Worker. This forms an **email rule**. You can enable or disable rules from the Cloudflare dashboard. Refer to [Enable Email Routing](https://developers.cloudflare.com/email-routing/get-started/enable-email-routing) for more details.

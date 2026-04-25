@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/new-features/available-rss-feeds.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Available RSS Feeds
 
 Cloudflare offers various RSS feeds as part of our [changelog](https://developers.cloudflare.com/changelog/), which helps you stay up to date on new features and functionality.
@@ -142,6 +125,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/audit-logs.xml)
 * [Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/fundamentals.xml)
+* [Go SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/)  
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/go-sdk.xml)
 * [Log Explorer](https://developers.cloudflare.com/log-explorer/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/log-explorer.xml)
 * [Logs](https://developers.cloudflare.com/logs/)  

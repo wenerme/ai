@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/containers/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Containers
 
 Enhance your Workers with serverless containers
@@ -41,8 +24,8 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-6384)
-* [ Worker Config ](#tab-panel-6385)
+* [ Worker Code ](#tab-panel-6436)
+* [ Worker Config ](#tab-panel-6437)
 
 JavaScript
 
@@ -83,8 +66,8 @@ export default {
 
 Explain Code
 
-* [  wrangler.jsonc ](#tab-panel-6382)
-* [  wrangler.toml ](#tab-panel-6383)
+* [  wrangler.jsonc ](#tab-panel-6434)
+* [  wrangler.toml ](#tab-panel-6435)
 
 JSONC
 

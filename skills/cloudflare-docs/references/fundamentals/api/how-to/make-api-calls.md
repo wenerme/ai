@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/api/how-to/make-api-calls.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Make API calls
 
 Once you [create your API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/), all API requests are authorized in the same way. Cloudflare uses the [RFC standard ↗](https://tools.ietf.org/html/rfc6750#section-2.1) `Authorization: Bearer <API_TOKEN>` interface. An example request is shown below.
@@ -323,9 +306,9 @@ The procedure for setting and referencing environment variables depends on your 
 
 ### Define an environment variable
 
-* [ Linux and macOS ](#tab-panel-7101)
-* [ PowerShell ](#tab-panel-7102)
-* [ Windows Command Prompt ](#tab-panel-7103)
+* [ Linux and macOS ](#tab-panel-7155)
+* [ PowerShell ](#tab-panel-7156)
+* [ Windows Command Prompt ](#tab-panel-7157)
 
 To define a `ZONE_ID` environment variable for the current shell session, run the following command:
 
@@ -392,9 +375,9 @@ Running this command will not affect the current window. You will need to either
 
 ### Reference an environment variable
 
-* [ Linux and macOS ](#tab-panel-7104)
-* [ PowerShell ](#tab-panel-7105)
-* [ Windows Command Prompt ](#tab-panel-7106)
+* [ Linux and macOS ](#tab-panel-7158)
+* [ PowerShell ](#tab-panel-7159)
+* [ Windows Command Prompt ](#tab-panel-7160)
 
 When referencing an environment variable in a command, add a `$` prefix to the variable name (for example, `$ZONE_ID`). Make sure that the full string referencing the variable is either unquoted (if it does not contain spaces) or enclosed in double quotes (`""`).
 

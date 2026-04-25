@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/hyperdrive/examples/connect-to-mysql/mysql-database-providers/aws-rds-aurora.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # AWS RDS and Aurora
 
 **Last reviewed:**  over 2 years ago 
@@ -173,8 +156,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7189)
-* [  wrangler.toml ](#tab-panel-7190)
+* [  wrangler.jsonc ](#tab-panel-7243)
+* [  wrangler.toml ](#tab-panel-7244)
 
 JSONC
 
@@ -275,8 +258,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-7191)
-* [  wrangler.toml ](#tab-panel-7192)
+* [  wrangler.jsonc ](#tab-panel-7245)
+* [  wrangler.toml ](#tab-panel-7246)
 
 JSONC
 

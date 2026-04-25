@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/getting-started/quick-start.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Quick start
 
 Build AI agents that persist, think, and act. Agents run on Cloudflare's global network, maintain state across requests, and connect to clients in real-time via WebSockets.
@@ -115,8 +98,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-5110)
-* [  TypeScript ](#tab-panel-5111)
+* [  JavaScript ](#tab-panel-5120)
+* [  TypeScript ](#tab-panel-5121)
 
 JavaScript
 
@@ -279,8 +262,8 @@ Explain Code
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-5102)
-* [  wrangler.toml ](#tab-panel-5103)
+* [  wrangler.jsonc ](#tab-panel-5112)
+* [  wrangler.toml ](#tab-panel-5113)
 
 JSONC
 
@@ -468,8 +451,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-5106)
-* [  TypeScript ](#tab-panel-5107)
+* [  JavaScript ](#tab-panel-5116)
+* [  TypeScript ](#tab-panel-5117)
 
 JavaScript
 
@@ -572,8 +555,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-5104)
-* [  TypeScript ](#tab-panel-5105)
+* [  JavaScript ](#tab-panel-5114)
+* [  TypeScript ](#tab-panel-5115)
 
 JavaScript
 
@@ -623,8 +606,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-5108)
-* [  TypeScript ](#tab-panel-5109)
+* [  JavaScript ](#tab-panel-5118)
+* [  TypeScript ](#tab-panel-5119)
 
 JavaScript
 

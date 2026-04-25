@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg) 
 
 #  flux-1-schnell 
@@ -40,9 +23,9 @@ FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable 
 
 ## Usage
 
-* [  Worker (Data URI) ](#tab-panel-3229)
-* [  Worker (Image) ](#tab-panel-3230)
-* [  curl ](#tab-panel-3231)
+* [  Worker (Data URI) ](#tab-panel-3239)
+* [  Worker (Image) ](#tab-panel-3240)
+* [  curl ](#tab-panel-3241)
 
 TypeScript
 
@@ -149,8 +132,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3232)
-* [ Output ](#tab-panel-3233)
+* [ Input ](#tab-panel-3242)
+* [ Output ](#tab-panel-3243)
 
 prompt
 
@@ -166,8 +149,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3227)
-* [ Output ](#tab-panel-3228)
+* [ Input ](#tab-panel-3237)
+* [ Output ](#tab-panel-3238)
 
 ```
 

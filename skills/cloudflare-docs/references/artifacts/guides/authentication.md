@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/artifacts/guides/authentication.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Authentication
 
 Artifacts uses a different authentication path for each interface. Choose auth based on how your code reaches the repo.
@@ -43,8 +26,8 @@ The Workers binding uses your Wrangler authentication. Your Worker code does not
 
 Add the binding in your Wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-5501)
-* [  wrangler.toml ](#tab-panel-5502)
+* [  wrangler.jsonc ](#tab-panel-5511)
+* [  wrangler.toml ](#tab-panel-5512)
 
 JSONC
 

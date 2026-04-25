@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ddos-protection/managed-rulesets/http/http-overrides/override-examples.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Override examples
 
 ## Use cases
@@ -49,8 +32,8 @@ In these cases, Cloudflare's DDoS Protection systems may flag that traffic as ma
 
 To remedy a false positive:
 
-* [  New dashboard ](#tab-panel-6647)
-* [ Old dashboard ](#tab-panel-6648)
+* [  New dashboard ](#tab-panel-6699)
+* [ Old dashboard ](#tab-panel-6700)
 
 1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
 2. Apply filters to the displayed data.  
@@ -122,8 +105,8 @@ The system chooses the mitigation action based on the logic and the DDoS protect
 
 If you are experiencing a DDoS attack detected by Cloudflare and the applied mitigation action is not sufficiently strict, change the rule action to _Block_:
 
-* [  New dashboard ](#tab-panel-6649)
-* [ Old dashboard ](#tab-panel-6650)
+* [  New dashboard ](#tab-panel-6701)
+* [ Old dashboard ](#tab-panel-6702)
 
 1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
 2. Apply filters to the displayed data.  

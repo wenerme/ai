@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dmarc-management/dns-lookup-limits.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # DNS lookup limit
 
 An [SPF record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/) lists which servers are authorized to send email for your domain. SPF records can reference other domains and services (for example, using `include:` or `mx` mechanisms), and each such reference requires a separate DNS lookup to verify. The [SPF specification (RFC 7208) ↗](https://www.rfc-editor.org/rfc/rfc7208.html) limits the total number of these lookups to 10 per SPF check. If your SPF record exceeds this limit, receiving mail servers may treat the SPF check as a permanent error and reject or flag your emails.

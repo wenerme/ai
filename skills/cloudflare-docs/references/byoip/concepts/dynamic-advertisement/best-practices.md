@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/byoip/concepts/dynamic-advertisement/best-practices.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Best practices
 
 ## Prerequisites
@@ -76,8 +59,8 @@ Most dynamic advertisement operations require that you supply the Cloudflare ID 
 
 ## Obtain prefix IDs
 
-* [ Dashboard ](#tab-panel-5615)
-* [ API ](#tab-panel-5616)
+* [ Dashboard ](#tab-panel-5625)
+* [ API ](#tab-panel-5626)
 
 1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **IP Addresses** \> **BYOIP Prefixes**.

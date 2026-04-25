@@ -608,7 +608,8 @@ And the following unique queues:
 - `REVERSE_PROXY_LIMIT`: **1**: Interpret X-Forwarded-For header or the X-Real-IP header and set this as the remote IP for the request.
    Number of trusted proxy count. Set to zero to not use these headers.
 - `REVERSE_PROXY_TRUSTED_PROXIES`: **127.0.0.0/8,::1/128**: List of IP addresses and networks separated by comma of trusted proxy servers. Use `*` to trust all.
-- `X_FRAME_OPTIONS`: **SAMEORIGIN**: Set the `X-Frame-Options` header value for web responses. Set to `unset` to not send the header. Previously located in `[cors]`.
+- `X_FRAME_OPTIONS`: **SAMEORIGIN**: Set the `X-Frame-Options` header value for all HTTP responses. Set to `unset` to not send the header. Previously located in `[cors]`.
+- `X_CONTENT_TYPE_OPTIONS`: **nosniff**: Set the `X-Content-Type-Options` header value for all HTTP responses. Set to `unset` to not send the header.
 - `DISABLE_GIT_HOOKS`: **true**: Set to `false` to enable users with Git Hook privilege to create custom Git Hooks.
 
   :::warning

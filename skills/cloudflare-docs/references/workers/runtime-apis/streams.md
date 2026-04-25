@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/streams/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Streams
 
 The [Streams API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams%5FAPI) is a web standard API that allows JavaScript to programmatically access and process streams of data.
@@ -46,8 +29,8 @@ If your Worker only forwards subrequest responses to the client verbatim without
 
 The worker can create a `Response` object using a `ReadableStream` as the body. Any data provided through the`ReadableStream` will be streamed to the client as it becomes available.
 
-* [  Module Worker ](#tab-panel-10173)
-* [  Service Worker ](#tab-panel-10174)
+* [  Module Worker ](#tab-panel-10234)
+* [  Service Worker ](#tab-panel-10235)
 
 JavaScript
 
@@ -108,8 +91,8 @@ Explain Code
 
 A [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) and the [ReadableStream.pipeTo()](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/#methods) method can be used to modify the response body as it is being streamed:
 
-* [  Module Worker ](#tab-panel-10175)
-* [  Service Worker ](#tab-panel-10176)
+* [  Module Worker ](#tab-panel-10236)
+* [  Service Worker ](#tab-panel-10237)
 
 JavaScript
 

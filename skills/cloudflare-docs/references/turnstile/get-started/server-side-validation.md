@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/turnstile/get-started/server-side-validation.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Validate the token
 
 Learn how to securely validate Turnstile tokens on your server using the Siteverify API.
@@ -84,11 +67,11 @@ To ensure a successful validation, the visitor must initiate the request and sub
 
 ## Basic validation examples
 
-* [  JavaScript ](#tab-panel-9203)
-* [  PHP ](#tab-panel-9204)
-* [  Python ](#tab-panel-9205)
-* [  Java ](#tab-panel-9206)
-* [  C# ](#tab-panel-9207)
+* [  JavaScript ](#tab-panel-9264)
+* [  PHP ](#tab-panel-9265)
+* [  Python ](#tab-panel-9266)
+* [  Java ](#tab-panel-9267)
+* [  C# ](#tab-panel-9268)
 
 #### JSON
 
@@ -931,8 +914,8 @@ Explain Code
 
 ## API response format
 
-* [ Successful response ](#tab-panel-9208)
-* [ Failed response ](#tab-panel-9209)
+* [ Successful response ](#tab-panel-9269)
+* [ Failed response ](#tab-panel-9270)
 
 Example
 

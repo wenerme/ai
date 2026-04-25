@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
 #  o4-mini 
@@ -83,8 +66,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-370)
-* [ Output ](#tab-panel-371)
+* [ Input ](#tab-panel-380)
+* [ Output ](#tab-panel-381)
 
 ```
 
@@ -171,8 +154,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-372)
-* [ Output ](#tab-panel-373)
+* [ Input ](#tab-panel-382)
+* [ Output ](#tab-panel-383)
 
 ```
 
@@ -281,8 +264,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-376)
-* [ Output ](#tab-panel-377)
+* [ Input ](#tab-panel-386)
+* [ Output ](#tab-panel-387)
 
 ```
 
@@ -383,8 +366,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-374)
-* [ Output ](#tab-panel-375)
+* [ Input ](#tab-panel-384)
+* [ Output ](#tab-panel-385)
 
 ```
 
@@ -471,8 +454,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-380)
-* [ Output ](#tab-panel-381)
+* [ Input ](#tab-panel-390)
+* [ Output ](#tab-panel-391)
 
 ```
 
@@ -1462,8 +1445,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-382)
-* [ Output ](#tab-panel-383)
+* [ Input ](#tab-panel-392)
+* [ Output ](#tab-panel-393)
 
 ▶messages\[\]
 
@@ -1539,8 +1522,8 @@ model
 
 ## API Schemas
 
-* [ Input ](#tab-panel-378)
-* [ Output ](#tab-panel-379)
+* [ Input ](#tab-panel-388)
+* [ Output ](#tab-panel-389)
 
 ```
 

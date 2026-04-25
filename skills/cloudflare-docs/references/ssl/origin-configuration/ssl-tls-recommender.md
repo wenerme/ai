@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ssl/origin-configuration/ssl-tls-recommender.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # SSL/TLS Recommender
 
 The SSL/TLS Recommender helps you choose which [Encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) is best for your application.
@@ -49,8 +32,8 @@ To make sure you do not inadvertently block the **SSL/TLS Recommender**, review 
 
 Then, you can enable the SSL/TLS recommender.
 
-* [ Dashboard ](#tab-panel-9064)
-* [ API ](#tab-panel-9065)
+* [ Dashboard ](#tab-panel-9125)
+* [ API ](#tab-panel-9126)
 
 To enable SSL/TLS recommendations in the dashboard:
 

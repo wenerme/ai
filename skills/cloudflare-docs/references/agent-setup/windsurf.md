@@ -1,27 +1,10 @@
 ---
 title: Windsurf + Cloudflare
-description: Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Codeium.
+description: Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agent-setup/windsurf.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 [ All agents](https://developers.cloudflare.com/agent-setup/) 
 
@@ -29,9 +12,9 @@ YesNo
 
 #  Windsurf + Cloudflare
 
- Codeium 
+ Cognition 
 
- Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Codeium. 
+ Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition. 
 
 IDEStandalone
 
@@ -59,7 +42,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Add a D1 database to my Worker and create a users table with CRUD endpoints.  
+Show me how to use Hyperdrive to connect my Worker to an existing Postgres database.  
 ```
 
 ## Cloudflare platform access

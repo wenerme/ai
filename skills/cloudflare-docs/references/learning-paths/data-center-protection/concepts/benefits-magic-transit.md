@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/data-center-protection/concepts/benefits-magic-transit.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Benefits of using Magic Transit
 
 Magic Transit leverages Cloudflare's global anycast network. As of writing this guide, Cloudflare's global network spans over 330 cities, and has over 405 Tbps network capacity. This bandwidth allows it to absorb all manners of attack that otherwise would overwhelm a typical data center or on-premise hardware Distributed Denial-of-Service (DDoS) appliances.

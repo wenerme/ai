@@ -6,31 +6,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-routing/email-workers/send-email-workers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Send emails from Workers
 
 You can send an email about your Worker's activity from your Worker to an email address verified on [Email Routing](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses). This is useful for when you want to know about certain types of events being triggered, for example.
 
 Before you can bind an email address to your Worker, you need to [enable Email Routing](https://developers.cloudflare.com/email-routing/get-started/) and have at least one [verified email address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses). Then, create a new binding in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7010)
-* [  wrangler.toml ](#tab-panel-7011)
+* [  wrangler.jsonc ](#tab-panel-7064)
+* [  wrangler.toml ](#tab-panel-7065)
 
 JSONC
 
@@ -80,8 +63,8 @@ There are several types of restrictions you can configure in the bindings:
 
 You can add one or more types of bindings to your Wrangler file. However, each attribute must be on its own line:
 
-* [  wrangler.jsonc ](#tab-panel-7012)
-* [  wrangler.toml ](#tab-panel-7013)
+* [  wrangler.jsonc ](#tab-panel-7066)
+* [  wrangler.toml ](#tab-panel-7067)
 
 JSONC
 

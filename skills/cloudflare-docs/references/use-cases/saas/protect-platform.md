@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/saas/protect-platform.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Protect your platform
 
 SaaS platforms are high-value targets because a single breach can expose data across all tenants. Cloudflare's managed rulesets protect your platform and customer endpoints, rate limiting prevents any single tenant from degrading service for others, and Cloudflare One gates admin tools behind Zero Trust policies.

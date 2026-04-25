@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2/objects/upload-objects.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Upload objects
 
 There are several ways to upload objects to R2\. Which approach you choose depends on the size of your objects and your performance requirements.
@@ -62,8 +45,8 @@ Use R2 [bindings](https://developers.cloudflare.com/workers/runtime-apis/binding
 
 Use `put()` to upload an object in a single request. This is the simplest approach for small to medium objects.
 
-* [  JavaScript ](#tab-panel-8265)
-* [  TypeScript ](#tab-panel-8266)
+* [  JavaScript ](#tab-panel-8322)
+* [  TypeScript ](#tab-panel-8323)
 
 JavaScript
 
@@ -179,8 +162,8 @@ Explain Code
 
 Use `createMultipartUpload()` and `resumeMultipartUpload()` for large files or when you need to upload parts in parallel. Each part must be at least 5 MiB (except the last part).
 
-* [  JavaScript ](#tab-panel-8267)
-* [  TypeScript ](#tab-panel-8268)
+* [  JavaScript ](#tab-panel-8324)
+* [  TypeScript ](#tab-panel-8325)
 
 JavaScript
 
@@ -312,8 +295,8 @@ Explain Code
 
 In most cases, the multipart state (the `uploadId` and uploaded part ETags) is tracked by the client sending requests to your Worker. The following example exposes an HTTP API that a client application can call to create, upload parts for, and complete a multipart upload:
 
-* [  JavaScript ](#tab-panel-8271)
-* [  TypeScript ](#tab-panel-8272)
+* [  JavaScript ](#tab-panel-8328)
+* [  TypeScript ](#tab-panel-8329)
 
 JavaScript
 
@@ -615,8 +598,8 @@ For the complete Workers API reference, refer to [Workers API reference](https:/
 
 When you need clients (browsers, mobile apps) to upload directly to R2 without proxying through your Worker, generate a presigned URL server-side and hand it to the client:
 
-* [  JavaScript ](#tab-panel-8269)
-* [  TypeScript ](#tab-panel-8270)
+* [  JavaScript ](#tab-panel-8326)
+* [  TypeScript ](#tab-panel-8327)
 
 JavaScript
 
@@ -739,9 +722,9 @@ Use S3-compatible SDKs to upload objects. You will need your [account ID](https:
 
 ### Single upload
 
-* [  TypeScript ](#tab-panel-8253)
-* [  JavaScript ](#tab-panel-8254)
-* [  Python ](#tab-panel-8255)
+* [  TypeScript ](#tab-panel-8310)
+* [  JavaScript ](#tab-panel-8311)
+* [  Python ](#tab-panel-8312)
 
 TypeScript
 
@@ -898,9 +881,9 @@ Most S3 SDKs handle multipart uploads automatically when the file exceeds a conf
 
 The SDK splits the file and uploads parts in parallel.
 
-* [  TypeScript ](#tab-panel-8256)
-* [  JavaScript ](#tab-panel-8257)
-* [  Python ](#tab-panel-8258)
+* [  TypeScript ](#tab-panel-8313)
+* [  JavaScript ](#tab-panel-8314)
+* [  Python ](#tab-panel-8315)
 
 TypeScript
 
@@ -1073,9 +1056,9 @@ Explain Code
 
 Use the low-level API when you need full control over part sizes or upload order.
 
-* [  TypeScript ](#tab-panel-8259)
-* [  JavaScript ](#tab-panel-8260)
-* [  Python ](#tab-panel-8261)
+* [  TypeScript ](#tab-panel-8316)
+* [  JavaScript ](#tab-panel-8317)
+* [  Python ](#tab-panel-8318)
 
 TypeScript
 
@@ -1480,9 +1463,9 @@ Explain Code
 
 For client-side uploads where users upload directly to R2 without going through your server, generate a presigned PUT URL. Your server creates the URL and the client uploads to it — no API credentials are exposed to the client.
 
-* [  TypeScript ](#tab-panel-8262)
-* [  JavaScript ](#tab-panel-8263)
-* [  Python ](#tab-panel-8264)
+* [  TypeScript ](#tab-panel-8319)
+* [  JavaScript ](#tab-panel-8320)
+* [  Python ](#tab-panel-8321)
 
 TypeScript
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/observability.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Observability
 
 Agents emit structured events for every significant operation — RPC calls, state changes, schedule execution, workflow transitions, MCP connections, and more. These events are published to [diagnostics channels](https://developers.cloudflare.com/workers/runtime-apis/nodejs/diagnostics-channel/) and are silent by default (zero overhead when nobody is listening).
@@ -75,8 +58,8 @@ Events are routed to eight named channels based on their type:
 
 The `subscribe()` function from `agents/observability` provides type-safe access to events on a specific channel:
 
-* [  JavaScript ](#tab-panel-4484)
-* [  TypeScript ](#tab-panel-4485)
+* [  JavaScript ](#tab-panel-4494)
+* [  TypeScript ](#tab-panel-4495)
 
 JavaScript
 
@@ -158,8 +141,8 @@ The callback is fully typed — `event` is narrowed to only the event types that
 
 You can also subscribe directly using the Node.js API:
 
-* [  JavaScript ](#tab-panel-4480)
-* [  TypeScript ](#tab-panel-4481)
+* [  JavaScript ](#tab-panel-4490)
+* [  TypeScript ](#tab-panel-4491)
 
 JavaScript
 
@@ -197,8 +180,8 @@ subscribe("agents:schedule", (event) => {
 
 In production, all diagnostics channel messages are automatically forwarded to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/). No subscription code is needed in the agent itself — attach a Tail Worker and access events via `event.diagnosticsChannelEvents`:
 
-* [  JavaScript ](#tab-panel-4486)
-* [  TypeScript ](#tab-panel-4487)
+* [  JavaScript ](#tab-panel-4496)
+* [  TypeScript ](#tab-panel-4497)
 
 JavaScript
 
@@ -268,8 +251,8 @@ This gives you structured, filterable observability in production with zero over
 
 You can override the default implementation by providing your own `Observability` interface:
 
-* [  JavaScript ](#tab-panel-4488)
-* [  TypeScript ](#tab-panel-4489)
+* [  JavaScript ](#tab-panel-4498)
+* [  TypeScript ](#tab-panel-4499)
 
 JavaScript
 
@@ -344,8 +327,8 @@ Explain Code
 
 Set `observability` to `undefined` to disable all event emission:
 
-* [  JavaScript ](#tab-panel-4482)
-* [  TypeScript ](#tab-panel-4483)
+* [  JavaScript ](#tab-panel-4492)
+* [  TypeScript ](#tab-panel-4493)
 
 JavaScript
 

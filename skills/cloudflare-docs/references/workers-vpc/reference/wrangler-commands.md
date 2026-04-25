@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-vpc/reference/wrangler-commands.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Wrangler commands
 
 The following [Wrangler commands](https://developers.cloudflare.com/workers/wrangler/) allow you to manage Workers VPC services.
@@ -31,9 +14,9 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-9494)
-* [  pnpm ](#tab-panel-9495)
-* [  yarn ](#tab-panel-9496)
+* [  npm ](#tab-panel-9555)
+* [  pnpm ](#tab-panel-9556)
+* [  yarn ](#tab-panel-9557)
 
 Terminal window
 
@@ -108,9 +91,9 @@ Automatically provision draft bindings with new resources
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-9497)
-* [  pnpm ](#tab-panel-9498)
-* [  yarn ](#tab-panel-9499)
+* [  npm ](#tab-panel-9558)
+* [  pnpm ](#tab-panel-9559)
+* [  yarn ](#tab-panel-9560)
 
 Terminal window
 
@@ -163,9 +146,9 @@ Automatically provision draft bindings with new resources
 
 Get a VPC service
 
-* [  npm ](#tab-panel-9500)
-* [  pnpm ](#tab-panel-9501)
-* [  yarn ](#tab-panel-9502)
+* [  npm ](#tab-panel-9561)
+* [  pnpm ](#tab-panel-9562)
+* [  yarn ](#tab-panel-9563)
 
 Terminal window
 
@@ -218,9 +201,9 @@ Automatically provision draft bindings with new resources
 
 List VPC services
 
-* [  npm ](#tab-panel-9503)
-* [  pnpm ](#tab-panel-9504)
-* [  yarn ](#tab-panel-9505)
+* [  npm ](#tab-panel-9564)
+* [  pnpm ](#tab-panel-9565)
+* [  yarn ](#tab-panel-9566)
 
 Terminal window
 
@@ -270,9 +253,9 @@ Automatically provision draft bindings with new resources
 
 Update a VPC service
 
-* [  npm ](#tab-panel-9506)
-* [  pnpm ](#tab-panel-9507)
-* [  yarn ](#tab-panel-9508)
+* [  npm ](#tab-panel-9567)
+* [  pnpm ](#tab-panel-9568)
+* [  yarn ](#tab-panel-9569)
 
 Terminal window
 

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/country-code-redirect.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Country code redirect
 
 **Last reviewed:**  over 5 years ago 
@@ -39,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9769)
-* [  TypeScript ](#tab-panel-9770)
-* [  Python ](#tab-panel-9771)
-* [  Hono ](#tab-panel-9772)
+* [  JavaScript ](#tab-panel-9830)
+* [  TypeScript ](#tab-panel-9831)
+* [  Python ](#tab-panel-9832)
+* [  Hono ](#tab-panel-9833)
 
 JavaScript
 

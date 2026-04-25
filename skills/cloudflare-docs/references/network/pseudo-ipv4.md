@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/network/pseudo-ipv4.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Pseudo IPv4
 
 Cloudflare customers can use **Pseudo IPv4** if their origin web server only understands IPv4 formatted IP addresses (meaning it would not support Cloudflare's default [IPv6 compatibility](https://developers.cloudflare.com/network/ipv6-compatibility/)).
@@ -65,8 +48,8 @@ When using _Overwrite Headers_, no software changes are necessary in your origin
 
 To configure **Pseudo IPv4**:
 
-* [ Dashboard ](#tab-panel-7862)
-* [ API ](#tab-panel-7863)
+* [ Dashboard ](#tab-panel-7916)
+* [ API ](#tab-panel-7917)
 
 To change the **Pseudo IPv4** setting in the dashboard:
 

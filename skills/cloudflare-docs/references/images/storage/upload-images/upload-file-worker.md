@@ -6,31 +6,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/images/storage/upload-images/upload-file-worker.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Upload via a Worker
 
 You can use a Worker to upload your image to Cloudflare Images.
 
 Refer to the example below or refer to the [Workers documentation](https://developers.cloudflare.com/workers/) for more information.
 
-* [  JavaScript ](#tab-panel-7407)
-* [  TypeScript ](#tab-panel-7408)
+* [  JavaScript ](#tab-panel-7461)
+* [  TypeScript ](#tab-panel-7462)
 
 JavaScript
 
@@ -116,8 +99,8 @@ Explain Code
 
 You can use an AI Worker to generate an image and then upload that image to store it in Cloudflare Images. For more information about using Workers AI to generate an image, refer to the [SDXL-Lightning Model](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning).
 
-* [  JavaScript ](#tab-panel-7409)
-* [  TypeScript ](#tab-panel-7410)
+* [  JavaScript ](#tab-panel-7463)
+* [  TypeScript ](#tab-panel-7464)
 
 JavaScript
 

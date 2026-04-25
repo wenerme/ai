@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Okta ](https://developers.cloudflare.com/search/?tags=Okta)[ SentinelOne ](https://developers.cloudflare.com/search/?tags=SentinelOne) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/users/risk-score.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Risk score
 
 Note
@@ -131,7 +114,7 @@ You can use risk scores to control access to applications protected by [Cloudfla
 
 To add a risk score requirement to an Access policy:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> \*_Policies_.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Policies**.
 2. Create a new policy or select an existing policy to edit.
 3. Add a rule with the _User Risk Score_ selector.
 4. For **Value**, select the risk level threshold (Low, Medium, or High).
@@ -143,8 +126,8 @@ To prevent users with elevated risk scores from accessing sensitive applications
 
 | Action  | Rule type       | Selector         | Value        |
 | ------- | --------------- | ---------------- | ------------ |
-| Allow   | Include         | Emails Ending In | @example.com |
-| Exclude | User Risk Score | _High_           |              |
+| Allow   | Include         | Emails ending in | @example.com |
+| Exclude | User risk score | _High_           |              |
 
 Users with a High risk score will be blocked, while users with Low or Medium scores can access the application.
 

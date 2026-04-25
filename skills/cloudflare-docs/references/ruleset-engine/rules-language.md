@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ruleset-engine/rules-language/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Rules language
 
 The Cloudflare Rules language is a flexible and intuitive specification for building rule expressions. Based on the widely known [Wireshark display filters ↗](https://www.wireshark.org/docs/wsug%5Fhtml%5Fchunked/ChWorkBuildDisplayFilterSection.html), the Rules language allows you to precisely target HTTP requests with a syntax and semantics familiar to security engineers.

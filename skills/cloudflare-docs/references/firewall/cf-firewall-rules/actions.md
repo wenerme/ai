@@ -1,27 +1,10 @@
 ---
 title: Firewall rules actions
-description: The action of a firewall rule tells Cloudflare how to handle HTTP requests that have matched the rule expression.
+description: Review available actions for firewall rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/firewall/cf-firewall-rules/actions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Firewall rules actions
 

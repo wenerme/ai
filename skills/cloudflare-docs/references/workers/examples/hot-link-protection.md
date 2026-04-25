@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/hot-link-protection.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Hot-link protection
 
 **Last reviewed:**  over 5 years ago 
@@ -39,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9812)
-* [  TypeScript ](#tab-panel-9813)
-* [  Python ](#tab-panel-9814)
-* [  Hono ](#tab-panel-9815)
+* [  JavaScript ](#tab-panel-9873)
+* [  TypeScript ](#tab-panel-9874)
+* [  Python ](#tab-panel-9875)
+* [  Hono ](#tab-panel-9876)
 
 JavaScript
 

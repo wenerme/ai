@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/replace-vpn/build-policies/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Build secure access policies
 
 With Cloudflare Zero Trust, you can apply granular security policies to all traffic proxied from the user device to your private network. Policies can key off of domain name, user identity, device posture, SNI, IP address, port, protocol, and other attributes. Building simple, well-structured policies is an important factor in having a secure organization with a manageable workflow.

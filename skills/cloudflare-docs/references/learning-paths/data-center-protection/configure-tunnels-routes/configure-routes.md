@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Configure routes
 
 Magic Transit Virtual Network uses a routing table to steer your traffic from Cloudflare's global network to your connected networks via next-hop. You can add entries to the Magic Transit Virtual Network routing table through static route configuration or routes learned from BGP peering (beta) (available over CNI with Dataplane v2, as well as IPsec and GRE tunnels).
@@ -41,8 +24,8 @@ Cloudflare uses anycast to route traffic. Anycast is a network addressing and ro
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-7531)
-* [ API ](#tab-panel-7532)
+* [ Dashboard ](#tab-panel-7585)
+* [ API ](#tab-panel-7586)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -199,8 +182,8 @@ Explain Code
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-7533)
-* [ API ](#tab-panel-7534)
+* [ Dashboard ](#tab-panel-7587)
+* [ API ](#tab-panel-7588)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -346,8 +329,8 @@ Explain Code
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-7529)
-* [ API ](#tab-panel-7530)
+* [ Dashboard ](#tab-panel-7583)
+* [ API ](#tab-panel-7584)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.

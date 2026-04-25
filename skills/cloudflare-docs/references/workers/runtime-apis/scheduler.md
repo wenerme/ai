@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/scheduler.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Scheduler
 
 ## Background
@@ -65,8 +48,8 @@ A `Promise<void>` that resolves after `delay` milliseconds. If an `AbortSignal` 
 
 Use `scheduler.wait()` to pause execution for a specified duration.
 
-* [  JavaScript ](#tab-panel-10173)
-* [  TypeScript ](#tab-panel-10174)
+* [  JavaScript ](#tab-panel-10228)
+* [  TypeScript ](#tab-panel-10229)
 
 JavaScript
 
@@ -114,8 +97,8 @@ export default {
 
 Use `scheduler.wait()` to implement a delay between retry attempts. This example uses exponential backoff with jitter.
 
-* [  JavaScript ](#tab-panel-10177)
-* [  TypeScript ](#tab-panel-10178)
+* [  JavaScript ](#tab-panel-10232)
+* [  TypeScript ](#tab-panel-10233)
 
 JavaScript
 
@@ -243,8 +226,8 @@ Explain Code
 
 Use an [AbortController](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) to cancel a pending wait.
 
-* [  JavaScript ](#tab-panel-10175)
-* [  TypeScript ](#tab-panel-10176)
+* [  JavaScript ](#tab-panel-10230)
+* [  TypeScript ](#tab-panel-10231)
 
 JavaScript
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/cron-triggers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cron Triggers
 
 ## Background
@@ -43,9 +26,9 @@ Cron Triggers execute on UTC time.
 
 To respond to a Cron Trigger, you must add a ["scheduled" handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to your Worker.
 
-* [  JavaScript ](#tab-panel-9575)
-* [  TypeScript ](#tab-panel-9576)
-* [  Python ](#tab-panel-9577)
+* [  JavaScript ](#tab-panel-9636)
+* [  TypeScript ](#tab-panel-9637)
+* [  Python ](#tab-panel-9638)
 
 JavaScript
 
@@ -128,8 +111,8 @@ If a Worker is managed with Wrangler, Cron Triggers should be exclusively manage
 
 Refer to the example below for a Cron Triggers configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9580)
-* [  wrangler.toml ](#tab-panel-9581)
+* [  wrangler.jsonc ](#tab-panel-9641)
+* [  wrangler.toml ](#tab-panel-9642)
 
 JSONC
 
@@ -179,8 +162,8 @@ crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `triggers` array under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-9582)
-* [  wrangler.toml ](#tab-panel-9583)
+* [  wrangler.jsonc ](#tab-panel-9643)
+* [  wrangler.toml ](#tab-panel-9644)
 
 JSONC
 
@@ -342,8 +325,8 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 * If the `crons` property is an empty array then all the Cron Triggers are removed.
 * If the `triggers` or `crons` property are `undefined` then the currently deploy Cron Triggers are left in-place.
 
-* [  wrangler.jsonc ](#tab-panel-9578)
-* [  wrangler.toml ](#tab-panel-9579)
+* [  wrangler.jsonc ](#tab-panel-9639)
+* [  wrangler.toml ](#tab-panel-9640)
 
 JSONC
 

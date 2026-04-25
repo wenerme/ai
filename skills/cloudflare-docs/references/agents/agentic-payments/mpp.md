@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/agentic-payments/mpp/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # MPP (Machine Payments Protocol)
 
 [Machine Payments Protocol (MPP) ↗](https://mpp.dev) is a protocol for machine-to-machine payments, co-authored by [Tempo Labs ↗](https://tempo.xyz) and [Stripe ↗](https://stripe.com). It standardizes the HTTP `402 Payment Required` status code with a formal authentication scheme proposed to the [IETF ↗](https://paymentauth.org). MPP gives agents, apps, and humans a single interface to pay for any service in the same HTTP request.

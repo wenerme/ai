@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg) 
 
 #  stable-diffusion-xl-lightning Beta 
@@ -41,8 +24,8 @@ SDXL-Lightning is a lightning-fast text-to-image generation model. It can genera
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3967)
-* [  curl ](#tab-panel-3968)
+* [  TypeScript ](#tab-panel-3977)
+* [  curl ](#tab-panel-3978)
 
 ```
 
@@ -110,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3971)
-* [ Output ](#tab-panel-3972)
+* [ Input ](#tab-panel-3981)
+* [ Output ](#tab-panel-3982)
 
 prompt
 
@@ -161,8 +144,8 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3969)
-* [ Output ](#tab-panel-3970)
+* [ Input ](#tab-panel-3979)
+* [ Output ](#tab-panel-3980)
 
 ```
 

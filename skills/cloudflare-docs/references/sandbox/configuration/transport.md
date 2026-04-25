@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/configuration/transport.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Transport modes
 
 Configure how the Sandbox SDK communicates with containers using transport modes.
@@ -99,8 +82,8 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable WebSocket transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-8684)
-* [  wrangler.toml ](#tab-panel-8685)
+* [  wrangler.jsonc ](#tab-panel-8741)
+* [  wrangler.toml ](#tab-panel-8742)
 
 JSONC
 
@@ -253,8 +236,8 @@ Switching between transports requires no code changes.
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-8680)
-* [  wrangler.toml ](#tab-panel-8681)
+* [  wrangler.jsonc ](#tab-panel-8737)
+* [  wrangler.toml ](#tab-panel-8738)
 
 JSONC
 
@@ -299,8 +282,8 @@ npx wrangler deploy
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-8682)
-* [  wrangler.toml ](#tab-panel-8683)
+* [  wrangler.jsonc ](#tab-panel-8739)
+* [  wrangler.toml ](#tab-panel-8740)
 
 JSONC
 

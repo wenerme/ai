@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/get-started/send-emails.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Send emails
 
 Send your first email using the REST API or Workers binding.
@@ -144,8 +127,8 @@ pnpm create cloudflare@latest email-service-tutorial
 ```  
 When prompted, select **"Hello World" Worker** as the template.
 2. Add the email binding to your Wrangler configuration file:  
-   * [  wrangler.jsonc ](#tab-panel-7053)  
-   * [  wrangler.toml ](#tab-panel-7054)  
+   * [  wrangler.jsonc ](#tab-panel-7107)  
+   * [  wrangler.toml ](#tab-panel-7108)  
 JSONC  
 ```  
 {  

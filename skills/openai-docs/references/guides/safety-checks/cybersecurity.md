@@ -1,12 +1,12 @@
 # Cybersecurity checks
 
-GPT-5.3-Codex is the first model we are classifying as having High Cybersecurity Capability under our [Preparedness Framework](https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf). As a result, additional automated safeguards apply when this model, and any models released after it, are used via the API. Please note that the safeguards applied in the API differ from those used in Codex. You can learn more about the Codex safeguards [here](https://developers.openai.com/codex/concepts/cyber-safety/).
+GPT-5.3-Codex and newer models, including GPT-5.4 and GPT-5.5, are classified as having High Cybersecurity Capability under our [Preparedness Framework](https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf). As a result, additional automated safeguards apply when these models are used via the API. Please note that the safeguards applied in the API differ from those used in Codex. You can learn more about the Codex safeguards [here](https://developers.openai.com/codex/concepts/cyber-safety/).
 
 These safeguards monitor for signals of potentially suspicious cybersecurity activity. If certain thresholds are met, access to the model may be temporarily limited while activity is reviewed. Because these systems are still being calibrated, legitimate security research or defensive work may occasionally be flagged. We expect only a small portion of traffic to be impacted, and we’re continuing to refine the overall API experience.
 
 ## Safeguard actions for non-ZDR Organizations
 
-If our systems detect potentially suspicious cybersecurity activity within your traffic that exceeds defined thresholds, access to the model may be temporarily revoked. In this case, API requests will return an error with the error code `cyber_policy`.
+If our systems detect potentially suspicious cybersecurity activity within your traffic that exceeds defined thresholds, access to these models may be temporarily revoked. In this case, API requests will return an error with the error code `cyber_policy`.
 
 If your organization has not implemented a per-user [safety_identifier](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers), access may be temporarily revoked for the **entire organization**. If your organization provides a unique [safety_identifier](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) per end user, access may be temporarily revoked for the **specific affected user** rather than the entire organization (after human review and warnings). Providing safety identifiers helps minimize disruption to other users on your platform.
 

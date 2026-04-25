@@ -11,8 +11,8 @@ See Anthropic's [Migrating to Claude Opus 4.7](https://platform.claude.com/docs/
 Claude 4.7 Opus introduces three major changes:
 
 1. **Sampling parameters removed** — `temperature`, `top_p`, and `top_k` are no longer supported and will be ignored
-2. **Adaptive-only thinking** — `thinking.budget_tokens` is no longer supported; `reasoning.effort` and `reasoning.max_tokens` are ignored (adaptive thinking is used instead)
-3. **New `'xhigh'` effort level** — A new effort level between `'high'` and `'max'` via `verbosity` / `output_config.effort`
+2. **Adaptive-only thinking** — when reasoning is enabled the only supported mode is adaptive; `thinking.budget_tokens` is no longer supported and `reasoning.effort` / `reasoning.max_tokens` are ignored (adaptive is used instead)
+3. **New `'xhigh'` effort level** — a new effort level between `'high'` and `'max'` via `verbosity` / `output_config.effort`
 
 ## Sampling Parameters Removed
 
@@ -31,18 +31,20 @@ Claude 4.7 Opus no longer accepts `temperature`, `top_p`, or `top_k`. If you pas
 
 ## Adaptive-Only Thinking
 
-Claude 4.7 Opus uses adaptive thinking exclusively. The model determines how much to think based on task complexity — you cannot set a fixed token budget.
+Claude 4.7 Opus supports only adaptive thinking. On 4.6, reasoning could be controlled via a token budget (`reasoning.max_tokens` / `thinking.budget_tokens`) or left adaptive; on 4.7, budget-based thinking is removed and adaptive is the only remaining mode when reasoning is on.
 
-This means:
+Reasoning itself remains opt-in on all Anthropic models via [`reasoning.enabled=true`](/docs/guides/best-practices/reasoning-tokens) — 4.7 does not change that.
 
-* `reasoning.max_tokens` is ignored (adaptive used) — budget-based thinking is not available
-* `reasoning.effort` is ignored (adaptive used) — the model decides its own reasoning depth
-* The raw Anthropic `thinking.budget_tokens` parameter is not supported
+Concretely on 4.7:
 
-To control overall response effort, use `verbosity` instead (see below).
+* `reasoning.max_tokens` is accepted but ignored
+* `reasoning.effort` is accepted but ignored
+* `thinking.budget_tokens` is no longer supported upstream
+
+To influence overall response effort (not reasoning-specific), use [`verbosity`](#new-xhigh-effort-level). It maps to Anthropic's `output_config.effort` and applies whether or not reasoning is enabled.
 
 ```json
-// Reasoning is always adaptive on 4.7 Opus
+// Opt in to adaptive thinking — the only thinking mode on 4.7 Opus
 {
   "model": "anthropic/claude-4.7-opus",
   "reasoning": { "enabled": true },
@@ -81,15 +83,15 @@ A new `'xhigh'` effort level is available between `'high'` and `'max'` via the `
 }
 ```
 
-The full effort scale is now: `low` → `medium` → `high` → `xhigh` → `max`
+The full effort scale is now: `low` → `medium` → `high` → `xhigh` → `max`.
 
 <Note>
   `'xhigh'` is only supported on Claude 4.7 Opus. `'max'` is supported on Claude 4.6+. For older models, both automatically fall back to `'high'`.
 </Note>
 
-## Verbosity Is Now the Primary Control
+## Parameter Summary
 
-Since sampling parameters and reasoning budgets are removed, `verbosity` (which maps to `output_config.effort`) is the main way to influence Claude 4.7 Opus behavior:
+With sampling parameters and reasoning budgets removed on 4.7, `verbosity` (→ `output_config.effort`) is the remaining lever for influencing overall response effort. It is not reasoning-specific and applies whether or not reasoning is enabled.
 
 | Parameter                       | Claude 4.7 Opus Behavior                                  |
 | ------------------------------- | --------------------------------------------------------- |
@@ -99,17 +101,16 @@ Since sampling parameters and reasoning budgets are removed, `verbosity` (which 
 | `verbosity`                     | Controls overall response effort (`output_config.effort`) |
 
 ```json
-// Use verbosity to control response detail and effort
 { "model": "anthropic/claude-4.7-opus", "verbosity": "xhigh" }
 ```
 
 ## Breaking Changes
 
-| Feature                           | Opus 4.6                | Opus 4.7                |
-| --------------------------------- | ----------------------- | ----------------------- |
-| `temperature` / `top_p` / `top_k` | Supported               | Ignored                 |
-| Default Thinking Mode             | Adaptive                | Adaptive                |
-| `reasoning.max_tokens`            | Budget-based            | Ignored (adaptive used) |
-| `reasoning.effort`                | Ignored (adaptive used) | Ignored (adaptive used) |
-| `verbosity: 'xhigh'`              | Falls back to `high`    | Supported               |
-| `verbosity: 'max'`                | Supported               | Supported               |
+| Feature                                        | Opus 4.6                 | Opus 4.7                |
+| ---------------------------------------------- | ------------------------ | ----------------------- |
+| `temperature` / `top_p` / `top_k`              | Supported                | Ignored                 |
+| Thinking modes (when `reasoning.enabled=true`) | Adaptive or budget-based | Adaptive only           |
+| `reasoning.max_tokens`                         | Budget-based             | Ignored (adaptive used) |
+| `reasoning.effort`                             | Ignored (adaptive used)  | Ignored (adaptive used) |
+| `verbosity: 'xhigh'`                           | Falls back to `high`     | Supported               |
+| `verbosity: 'max'`                             | Supported                | Supported               |

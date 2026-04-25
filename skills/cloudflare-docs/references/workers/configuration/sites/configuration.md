@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/sites/configuration.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Workers Sites configuration
 
 Use Workers Static Assets Instead
@@ -50,8 +33,8 @@ If your project uses [environments](https://developers.cloudflare.com/workers/wr
 
 Example of a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-9630)
-* [  wrangler.toml ](#tab-panel-9631)
+* [  wrangler.jsonc ](#tab-panel-9691)
+* [  wrangler.toml ](#tab-panel-9692)
 
 JSONC
 
@@ -144,8 +127,8 @@ This means that you should use gitignore semantics when declaring which director
 
 If you want to include only a certain set of files or directories in your `bucket`, you can add an `include` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9626)
-* [  wrangler.toml ](#tab-panel-9627)
+* [  wrangler.jsonc ](#tab-panel-9687)
+* [  wrangler.toml ](#tab-panel-9688)
 
 JSONC
 
@@ -189,8 +172,8 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, you can add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9628)
-* [  wrangler.toml ](#tab-panel-9629)
+* [  wrangler.jsonc ](#tab-panel-9689)
+* [  wrangler.toml ](#tab-panel-9690)
 
 JSONC
 

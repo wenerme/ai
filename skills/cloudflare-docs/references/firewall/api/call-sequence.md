@@ -1,27 +1,10 @@
 ---
 title: Call sequence
-description: The API call examples in this site illustrate the recommended sequence of calling the two APIs (the Cloudflare Filters API and the Firewall Rules API).
+description: Recommended API call sequence for firewall rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/firewall/api/call-sequence.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Call sequence
 

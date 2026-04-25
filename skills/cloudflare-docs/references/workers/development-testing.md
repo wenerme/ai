@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/development-testing/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Development & testing
 
 You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code using the same runtime used in production, [workerd ↗](https://github.com/cloudflare/workerd).
@@ -102,8 +85,8 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-9678)
-* [  wrangler.toml ](#tab-panel-9679)
+* [  wrangler.jsonc ](#tab-panel-9739)
+* [  wrangler.toml ](#tab-panel-9740)
 
 JSONC
 
@@ -169,8 +152,8 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-9690)
-* [  wrangler.toml ](#tab-panel-9691)
+* [  wrangler.jsonc ](#tab-panel-9751)
+* [  wrangler.toml ](#tab-panel-9752)
 
 JSONC
 
@@ -276,8 +259,8 @@ The following bindings are recommended to have `remote: true` in your Wrangler c
 
 To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-9676)
-* [  wrangler.toml ](#tab-panel-9677)
+* [  wrangler.jsonc ](#tab-panel-9737)
+* [  wrangler.toml ](#tab-panel-9738)
 
 JSONC
 
@@ -315,8 +298,8 @@ remote = true
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-9680)
-* [  wrangler.toml ](#tab-panel-9681)
+* [  wrangler.jsonc ](#tab-panel-9741)
+* [  wrangler.toml ](#tab-panel-9742)
 
 JSONC
 
@@ -354,8 +337,8 @@ remote = true
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-9682)
-* [  wrangler.toml ](#tab-panel-9683)
+* [  wrangler.jsonc ](#tab-panel-9743)
+* [  wrangler.toml ](#tab-panel-9744)
 
 JSONC
 
@@ -401,8 +384,8 @@ remote = true
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-9686)
-* [  wrangler.toml ](#tab-panel-9687)
+* [  wrangler.jsonc ](#tab-panel-9747)
+* [  wrangler.toml ](#tab-panel-9748)
 
 JSONC
 
@@ -448,8 +431,8 @@ remote = true
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/optimization/transformations/bindings/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-9684)
-* [  wrangler.toml ](#tab-panel-9685)
+* [  wrangler.jsonc ](#tab-panel-9745)
+* [  wrangler.toml ](#tab-panel-9746)
 
 JSONC
 
@@ -493,8 +476,8 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-9688)
-* [  wrangler.toml ](#tab-panel-9689)
+* [  wrangler.jsonc ](#tab-panel-9749)
+* [  wrangler.toml ](#tab-panel-9750)
 
 JSONC
 
@@ -629,8 +612,8 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-9692)
-* [  TypeScript ](#tab-panel-9693)
+* [  JavaScript ](#tab-panel-9753)
+* [  TypeScript ](#tab-panel-9754)
 
 JavaScript
 

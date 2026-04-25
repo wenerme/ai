@@ -1,27 +1,10 @@
 ---
 title: .UK domains
-description: Cloudflare currently supports the transfer of .uk, co.uk, org.uk, and me.uk domains. To transfer a .uk domain to Cloudflare from another registrar follow these steps:
+description: Manage .UK domains with Cloudflare Registrar.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/registrar/top-level-domains/uk-domains.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # .UK domains
 

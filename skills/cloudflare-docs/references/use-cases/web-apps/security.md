@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/web-apps/security.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Secure your application
 
 Web applications face threats at every layer: unencrypted traffic, injection attacks, DDoS floods, credential stuffing bots, and malicious third-party scripts. Cloudflare provides defense in depth from automatic SSL/TLS encryption through application security, DDoS protection, bot scoring, and client-side script monitoring.

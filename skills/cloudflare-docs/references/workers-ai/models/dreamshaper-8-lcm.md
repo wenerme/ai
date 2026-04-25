@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
  l 
 
 #  dreamshaper-8-lcm 
@@ -39,8 +22,8 @@ Stable Diffusion model that has been fine-tuned to be better at photorealism wit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3198)
-* [  curl ](#tab-panel-3199)
+* [  TypeScript ](#tab-panel-3208)
+* [  curl ](#tab-panel-3209)
 
 ```
 
@@ -108,8 +91,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3202)
-* [ Output ](#tab-panel-3203)
+* [ Input ](#tab-panel-3212)
+* [ Output ](#tab-panel-3213)
 
 prompt
 
@@ -159,8 +142,8 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3200)
-* [ Output ](#tab-panel-3201)
+* [ Input ](#tab-panel-3210)
+* [ Output ](#tab-panel-3211)
 
 ```
 

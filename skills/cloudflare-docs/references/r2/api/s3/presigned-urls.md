@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2/api/s3/presigned-urls.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Presigned URLs
 
 Presigned URLs are an [S3 concept ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for granting temporary access to objects without exposing your API credentials. A presigned URL includes signature parameters in the URL itself, authorizing anyone with the URL to perform a specific operation (like `GetObject` or `PutObject`) on a specific object until the URL expires.
@@ -37,6 +20,15 @@ To generate a presigned URL, you specify:
 
 Presigned URLs are generated client-side with no communication with R2, requiring only your R2 API credentials and an implementation of the AWS Signature Version 4 signing algorithm.
 
+## Choosing an approach
+
+R2 supports two patterns for time-limited access. They overlap but have different trade-offs:
+
+| Pattern                                                                                     | Grants                                                                                                         | Good for                                                                                                                   |
+| ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Presigned URLs (this page)                                                                  | A single S3 operation on a single object                                                                       | Granting direct HTTP access to a single object without an S3 client, such as a browser upload or a shareable download link |
+| [Temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/) | Multiple S3 operations, scoped to a bucket and a set of permitted operations, and optionally to specific paths | Callers that use a standard S3 client or SDK to perform multiple operations in a scoped session                            |
+
 ## Generate a presigned URL
 
 ### Prerequisites
@@ -47,9 +39,9 @@ Presigned URLs are generated client-side with no communication with R2, requirin
 
 ### SDK examples
 
-* [ JavaScript ](#tab-panel-8195)
-* [ Python ](#tab-panel-8196)
-* [ CLI ](#tab-panel-8197)
+* [ JavaScript ](#tab-panel-8249)
+* [ Python ](#tab-panel-8250)
+* [ CLI ](#tab-panel-8251)
 
 TypeScript
 

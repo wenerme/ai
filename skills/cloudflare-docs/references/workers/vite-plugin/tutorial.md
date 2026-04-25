@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/vite-plugin/tutorial.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Tutorial - React SPA with an API
 
 **Last reviewed:**  about 1 year ago 
@@ -107,8 +90,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ### Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-10325)
-* [  wrangler.toml ](#tab-panel-10326)
+* [  wrangler.jsonc ](#tab-panel-10386)
+* [  wrangler.toml ](#tab-panel-10387)
 
 JSONC
 
@@ -254,8 +237,8 @@ tsconfig.json
 
 ### Add to your Worker configuration
 
-* [  wrangler.jsonc ](#tab-panel-10327)
-* [  wrangler.toml ](#tab-panel-10328)
+* [  wrangler.jsonc ](#tab-panel-10388)
+* [  wrangler.toml ](#tab-panel-10389)
 
 JSONC
 
@@ -353,8 +336,8 @@ For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` he
 
 If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
-* [  wrangler.jsonc ](#tab-panel-10329)
-* [  wrangler.toml ](#tab-panel-10330)
+* [  wrangler.jsonc ](#tab-panel-10390)
+* [  wrangler.toml ](#tab-panel-10391)
 
 JSONC
 

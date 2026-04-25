@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/tools/user-agent-blocking.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # User Agent Blocking
 
 User Agent Blocking allows you to block specific browser or web application [User-Agent request headers ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent). User agent rules apply to the entire domain instead of individual subdomains.
@@ -51,9 +34,9 @@ The number of available user agent rules depends on your Cloudflare plan.
 
 ## Create a User Agent Blocking rule
 
-* [  New dashboard ](#tab-panel-9414)
-* [ Old dashboard ](#tab-panel-9415)
-* [ API ](#tab-panel-9416)
+* [  New dashboard ](#tab-panel-9475)
+* [ Old dashboard ](#tab-panel-9476)
+* [ API ](#tab-panel-9477)
 
 Note
 

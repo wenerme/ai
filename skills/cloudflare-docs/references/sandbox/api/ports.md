@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/api/ports.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Ports
 
 Production requires custom domain
@@ -55,8 +38,8 @@ proxyToSandbox(request: Request, env: Env): Promise<Response | null>
 
 The function inspects the request hostname to determine whether it matches the subdomain pattern of an exposed port (for example, `8080-sandbox-id-token.yourdomain.com`). If it matches, `proxyToSandbox()` proxies the request to the correct Durable Object, and the sandbox service handles it. Both HTTP and WebSocket upgrade requests are supported.
 
-* [  JavaScript ](#tab-panel-8628)
-* [  TypeScript ](#tab-panel-8629)
+* [  JavaScript ](#tab-panel-8685)
+* [  TypeScript ](#tab-panel-8686)
 
 JavaScript
 
@@ -163,8 +146,8 @@ const response = await sandbox.exposePort(port: number, options: ExposePortOptio
 
 **Returns**: `Promise<ExposePortResponse>` with `port`, `url` (preview URL), `name`
 
-* [  JavaScript ](#tab-panel-8636)
-* [  TypeScript ](#tab-panel-8637)
+* [  JavaScript ](#tab-panel-8693)
+* [  TypeScript ](#tab-panel-8694)
 
 JavaScript
 
@@ -334,8 +317,8 @@ Custom tokens enable consistent preview URLs across container restarts and deplo
 * Only lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_)
 * Must be unique per sandbox (cannot reuse tokens across different ports)
 
-* [  JavaScript ](#tab-panel-8630)
-* [  TypeScript ](#tab-panel-8631)
+* [  JavaScript ](#tab-panel-8687)
+* [  TypeScript ](#tab-panel-8688)
 
 JavaScript
 
@@ -423,8 +406,8 @@ const isValid = await sandbox.validatePortToken(port: number, token: string): Pr
 
 **Returns**: `Promise<boolean>` \- `true` if token is valid for the port, `false` otherwise
 
-* [  JavaScript ](#tab-panel-8634)
-* [  TypeScript ](#tab-panel-8635)
+* [  JavaScript ](#tab-panel-8691)
+* [  TypeScript ](#tab-panel-8692)
 
 JavaScript
 
@@ -551,8 +534,8 @@ await sandbox.unexposePort(port: number): Promise<void>
 
 * `port` \- Port number to unexpose
 
-* [  JavaScript ](#tab-panel-8624)
-* [  TypeScript ](#tab-panel-8625)
+* [  JavaScript ](#tab-panel-8681)
+* [  TypeScript ](#tab-panel-8682)
 
 JavaScript
 
@@ -587,8 +570,8 @@ const response = await sandbox.getExposedPorts(): Promise<GetExposedPortsRespons
 
 **Returns**: `Promise<GetExposedPortsResponse>` with `ports` array (containing `port`, `url`, `name`)
 
-* [  JavaScript ](#tab-panel-8626)
-* [  TypeScript ](#tab-panel-8627)
+* [  JavaScript ](#tab-panel-8683)
+* [  TypeScript ](#tab-panel-8684)
 
 JavaScript
 
@@ -649,8 +632,8 @@ const response = await sandbox.wsConnect(request: Request, port: number): Promis
 
 **Returns**: `Promise<Response>` \- WebSocket response establishing the connection
 
-* [  JavaScript ](#tab-panel-8632)
-* [  TypeScript ](#tab-panel-8633)
+* [  JavaScript ](#tab-panel-8689)
+* [  TypeScript ](#tab-panel-8690)
 
 JavaScript
 

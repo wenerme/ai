@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/realtime/sfu/media-transport-adapters/websocket-adapter.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # WebSocket adapter
 
 Note
@@ -42,8 +25,8 @@ Stream audio and video between WebRTC tracks and WebSocket endpoints. Supports i
 
 ## How it works
 
-* [ Ingest (WebSocket → WebRTC) ](#tab-panel-8424)
-* [ Stream (WebRTC → WebSocket) ](#tab-panel-8425)
+* [ Ingest (WebSocket → WebRTC) ](#tab-panel-8481)
+* [ Stream (WebRTC → WebSocket) ](#tab-panel-8482)
 
 ### Create WebRTC tracks from external audio
 
@@ -101,8 +84,8 @@ POST /v1/apps/{appId}/adapters/websocket/new
 
 ```
 
-* [ Ingest ](#tab-panel-8426)
-* [ Stream ](#tab-panel-8427)
+* [ Ingest ](#tab-panel-8483)
+* [ Stream ](#tab-panel-8484)
 
 #### Request body
 

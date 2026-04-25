@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/reference/how-workers-works.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # How Workers works
 
 Though Cloudflare Workers behave similarly to [JavaScript ↗](https://www.cloudflare.com/learning/serverless/serverless-javascript/) in the browser or in Node.js, there are a few differences in how you have to think about your code. Under the hood, the Workers runtime uses the [V8 engine ↗](https://www.cloudflare.com/learning/serverless/glossary/what-is-chrome-v8/) — the same engine used by Chromium and Node.js. The Workers runtime also implements many of the standard [APIs](https://developers.cloudflare.com/workers/runtime-apis/) available in most modern browsers.
@@ -65,8 +48,8 @@ If you are interested in how Cloudflare handles security with the Workers runtim
 
 Most Workers are a variation on the default Workers flow:
 
-* [  JavaScript ](#tab-panel-10023)
-* [  TypeScript ](#tab-panel-10024)
+* [  JavaScript ](#tab-panel-10084)
+* [  TypeScript ](#tab-panel-10085)
 
 JavaScript
 

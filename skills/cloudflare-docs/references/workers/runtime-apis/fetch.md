@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/fetch.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Fetch
 
 The [Fetch API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch%5FAPI) provides an interface for asynchronously fetching resources via HTTP requests inside of a Worker.
@@ -37,9 +20,9 @@ Worker-to-Worker `fetch` requests are possible with [Service bindings](https://d
 
 ## Syntax
 
-* [  Module Worker ](#tab-panel-10101)
-* [  Service Worker ](#tab-panel-10102)
-* [  Python Worker ](#tab-panel-10103)
+* [  Module Worker ](#tab-panel-10162)
+* [  Service Worker ](#tab-panel-10163)
+* [  Python Worker ](#tab-panel-10164)
 
 JavaScript
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2/get-started/workers-api.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Workers API
 
 [Workers](https://developers.cloudflare.com/workers/) let you run code at the edge. When you bind an R2 bucket to a Worker, you can read and write objects directly using the [Workers API](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/).
@@ -31,8 +14,8 @@ YesNo
 
 A bucket stores your objects in R2\. To create a new R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-8245)
-* [ Dashboard ](#tab-panel-8246)
+* [ Wrangler CLI ](#tab-panel-8302)
+* [ Dashboard ](#tab-panel-8303)
 
 1. Log in to your Cloudflare account:  
 Terminal window  
@@ -78,8 +61,8 @@ Terminal window
 cd r2-worker  
 ```
 3. Add an R2 binding to your Wrangler configuration file. Replace `my-bucket` with your bucket name:  
-   * [  wrangler.jsonc ](#tab-panel-8247)  
-   * [  wrangler.toml ](#tab-panel-8248)  
+   * [  wrangler.jsonc ](#tab-panel-8304)  
+   * [  wrangler.toml ](#tab-panel-8305)  
 JSONC  
 ```  
 {  
@@ -107,8 +90,8 @@ npx wrangler types
 
 Use the binding to interact with your bucket. This example stores and retrieves objects based on the URL path:
 
-* [ JavaScript ](#tab-panel-8243)
-* [ TypeScript ](#tab-panel-8244)
+* [ JavaScript ](#tab-panel-8300)
+* [ TypeScript ](#tab-panel-8301)
 
 src/index.js
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/routing/routes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Routes
 
 ## Background
@@ -74,8 +57,8 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 
 To configure a route using your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), refer to the following example.
 
-* [  wrangler.jsonc ](#tab-panel-9618)
-* [  wrangler.toml ](#tab-panel-9619)
+* [  wrangler.jsonc ](#tab-panel-9679)
+* [  wrangler.toml ](#tab-panel-9680)
 
 JSONC
 
@@ -140,8 +123,8 @@ Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `z
 
 To add multiple routes:
 
-* [  wrangler.jsonc ](#tab-panel-9620)
-* [  wrangler.toml ](#tab-panel-9621)
+* [  wrangler.jsonc ](#tab-panel-9681)
+* [  wrangler.toml ](#tab-panel-9682)
 
 JSONC
 

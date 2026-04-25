@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/commands/vpc.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # VPC
 
 Manage [Workers VPC](https://developers.cloudflare.com/workers-vpc/) services using Wrangler. VPC services allow your Workers to connect to private services on your network through Cloudflare Tunnels.
@@ -31,9 +14,9 @@ Manage [Workers VPC](https://developers.cloudflare.com/workers-vpc/) services us
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-10800)
-* [  pnpm ](#tab-panel-10801)
-* [  yarn ](#tab-panel-10802)
+* [  npm ](#tab-panel-10861)
+* [  pnpm ](#tab-panel-10862)
+* [  yarn ](#tab-panel-10863)
 
 Terminal window
 
@@ -108,9 +91,9 @@ Automatically provision draft bindings with new resources
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-10803)
-* [  pnpm ](#tab-panel-10804)
-* [  yarn ](#tab-panel-10805)
+* [  npm ](#tab-panel-10864)
+* [  pnpm ](#tab-panel-10865)
+* [  yarn ](#tab-panel-10866)
 
 Terminal window
 
@@ -163,9 +146,9 @@ Automatically provision draft bindings with new resources
 
 Get a VPC service
 
-* [  npm ](#tab-panel-10806)
-* [  pnpm ](#tab-panel-10807)
-* [  yarn ](#tab-panel-10808)
+* [  npm ](#tab-panel-10867)
+* [  pnpm ](#tab-panel-10868)
+* [  yarn ](#tab-panel-10869)
 
 Terminal window
 
@@ -218,9 +201,9 @@ Automatically provision draft bindings with new resources
 
 List VPC services
 
-* [  npm ](#tab-panel-10809)
-* [  pnpm ](#tab-panel-10810)
-* [  yarn ](#tab-panel-10811)
+* [  npm ](#tab-panel-10870)
+* [  pnpm ](#tab-panel-10871)
+* [  yarn ](#tab-panel-10872)
 
 Terminal window
 
@@ -270,9 +253,9 @@ Automatically provision draft bindings with new resources
 
 Update a VPC service
 
-* [  npm ](#tab-panel-10812)
-* [  pnpm ](#tab-panel-10813)
-* [  yarn ](#tab-panel-10814)
+* [  npm ](#tab-panel-10873)
+* [  pnpm ](#tab-panel-10874)
+* [  yarn ](#tab-panel-10875)
 
 Terminal window
 

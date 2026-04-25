@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg) 
 
 #  Recraft V4 Vector 
@@ -211,8 +194,8 @@ Response200 ![With Brand Colors](https://pub-04a6d208d361438ea01b797e6973bd19.r2
 
 ## Parameters
 
-* [ Input ](#tab-panel-414)
-* [ Output ](#tab-panel-415)
+* [ Input ](#tab-panel-424)
+* [ Output ](#tab-panel-425)
 
 prompt
 
@@ -240,8 +223,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-412)
-* [ Output ](#tab-panel-413)
+* [ Input ](#tab-panel-422)
+* [ Output ](#tab-panel-423)
 
 ```
 

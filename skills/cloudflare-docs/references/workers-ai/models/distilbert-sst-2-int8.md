@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![HuggingFace logo](https://developers.cloudflare.com/_astro/huggingface.ngjt5u2J.svg) 
 
 #  distilbert-sst-2-int8 
@@ -40,9 +23,9 @@ Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3193)
-* [  Python ](#tab-panel-3194)
-* [  curl ](#tab-panel-3195)
+* [  TypeScript ](#tab-panel-3203)
+* [  Python ](#tab-panel-3204)
+* [  curl ](#tab-panel-3205)
 
 ```
 
@@ -120,8 +103,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3196)
-* [ Output ](#tab-panel-3197)
+* [ Input ](#tab-panel-3206)
+* [ Output ](#tab-panel-3207)
 
 text
 
@@ -145,8 +128,8 @@ items
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3191)
-* [ Output ](#tab-panel-3192)
+* [ Input ](#tab-panel-3201)
+* [ Output ](#tab-panel-3202)
 
 ```
 

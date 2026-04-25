@@ -6,31 +6,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-routing/email-workers/local-development.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Local Development
 
 You can test the behavior of an Email Worker script in local development using Wrangler with [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), or using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/).
 
 This is the minimal wrangler configuration required to run an Email Worker locally:
 
-* [  wrangler.jsonc ](#tab-panel-7008)
-* [  wrangler.toml ](#tab-panel-7009)
+* [  wrangler.jsonc ](#tab-panel-7062)
+* [  wrangler.toml ](#tab-panel-7063)
 
 JSONC
 

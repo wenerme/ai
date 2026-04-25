@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-challenges/reference/supported-browsers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Supported browsers
 
 Cloudflare can challenge your visitors in various ways. They can be challenged by [Challenge Pages](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/), [Turnstile](https://developers.cloudflare.com/turnstile/), or by [JavaScript Detections (JSD) in Bot Management](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/). This document lays out the supported browsers across all of these challenge methods. When your website or application presents a challenge, your visitors receive either a Non-interactive or an Interactive Challenge.

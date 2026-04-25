@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/databases/third-party-integrations/planetscale.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # PlanetScale
 
 [PlanetScale ↗](https://planetscale.com/) is a database platform that provides MySQL-compatible and PostgreSQL databases, making them more scalable, easier and safer to manage.
@@ -33,8 +16,8 @@ You can connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.
 
 Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Hyperdrive (recommended) ](#tab-panel-9660)
-* [ PlanetScale serverless driver ](#tab-panel-9661)
+* [ Hyperdrive (recommended) ](#tab-panel-9721)
+* [ PlanetScale serverless driver ](#tab-panel-9722)
 
 To connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
@@ -113,8 +96,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-9656)
-* [  wrangler.toml ](#tab-panel-9657)
+* [  wrangler.jsonc ](#tab-panel-9717)
+* [  wrangler.toml ](#tab-panel-9718)
 
 JSONC
 
@@ -215,8 +198,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9658)
-* [  wrangler.toml ](#tab-panel-9659)
+* [  wrangler.jsonc ](#tab-panel-9719)
+* [  wrangler.toml ](#tab-panel-9720)
 
 JSONC
 

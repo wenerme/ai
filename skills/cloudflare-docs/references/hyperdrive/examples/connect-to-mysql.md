@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/hyperdrive/examples/connect-to-mysql/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Connect to MySQL
 
 **Last reviewed:**  12 months ago 
@@ -52,8 +35,8 @@ npx wrangler hyperdrive create my-first-hyperdrive --connection-string="mysql://
 
 The command above will output the ID of your Hyperdrive, which you will need to set in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-7181)
-* [  wrangler.toml ](#tab-panel-7182)
+* [  wrangler.jsonc ](#tab-panel-7235)
+* [  wrangler.toml ](#tab-panel-7236)
 
 JSONC
 
@@ -137,8 +120,8 @@ Other drivers and ORMs not listed may also be supported: this list is not exhaus
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-7183)
-* [  wrangler.toml ](#tab-panel-7184)
+* [  wrangler.jsonc ](#tab-panel-7237)
+* [  wrangler.toml ](#tab-panel-7238)
 
 JSONC
 
@@ -226,8 +209,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-7185)
-* [  wrangler.toml ](#tab-panel-7186)
+* [  wrangler.jsonc ](#tab-panel-7239)
+* [  wrangler.toml ](#tab-panel-7240)
 
 JSONC
 
@@ -389,8 +372,8 @@ bun add mysql
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-7187)
-* [  wrangler.toml ](#tab-panel-7188)
+* [  wrangler.jsonc ](#tab-panel-7241)
+* [  wrangler.toml ](#tab-panel-7242)
 
 JSONC
 

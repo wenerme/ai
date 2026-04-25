@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/sites/start-from-scratch.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Start from scratch
 
 Use Workers Static Assets Instead
@@ -63,8 +46,8 @@ The template project contains the following files and directories:
 ## Customize the `wrangler.jsonc` file:
 
 * Change the `name` property to the name of your project:  
-   * [  wrangler.jsonc ](#tab-panel-9638)  
-   * [  wrangler.toml ](#tab-panel-9639)  
+   * [  wrangler.jsonc ](#tab-panel-9699)  
+   * [  wrangler.toml ](#tab-panel-9700)  
 JSONC  
 ```  
 {  
@@ -78,8 +61,8 @@ TOML
 name = "my-site"  
 ```
 * Consider updating`compatibility_date` to today's date to get access to the most recent Workers features:  
-   * [  wrangler.jsonc ](#tab-panel-9640)  
-   * [  wrangler.toml ](#tab-panel-9641)  
+   * [  wrangler.jsonc ](#tab-panel-9701)  
+   * [  wrangler.toml ](#tab-panel-9702)  
 JSONC  
 ```  
 {  
@@ -91,8 +74,8 @@ TOML
 compatibility_date = "yyyy-mm-dd"  
 ```
 * Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:  
-   * [  wrangler.jsonc ](#tab-panel-9642)  
-   * [  wrangler.toml ](#tab-panel-9643)  
+   * [  wrangler.jsonc ](#tab-panel-9703)  
+   * [  wrangler.toml ](#tab-panel-9704)  
 JSONC  
 ```  
 {  

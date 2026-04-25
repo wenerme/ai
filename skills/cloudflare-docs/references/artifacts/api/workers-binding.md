@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/artifacts/api/workers-binding.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Workers binding
 
 Use the Artifacts Workers binding to create, import, inspect, fork, and delete repos directly from your Worker. The Artifacts binding returns repo handles that allow repo-scoped operations such as token management and forking.
@@ -31,8 +14,8 @@ Use the Artifacts Workers binding to create, import, inspect, fork, and delete r
 
 Add the Artifacts binding to your Wrangler config file:
 
-* [  wrangler.jsonc ](#tab-panel-5453)
-* [  wrangler.toml ](#tab-panel-5454)
+* [  wrangler.jsonc ](#tab-panel-5463)
+* [  wrangler.toml ](#tab-panel-5464)
 
 JSONC
 
@@ -103,8 +86,8 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or de
 * `opts.setDefaultBranch` ` string ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-5461)
-* [  TypeScript ](#tab-panel-5462)
+* [  JavaScript ](#tab-panel-5471)
+* [  TypeScript ](#tab-panel-5472)
 
 JavaScript
 
@@ -184,8 +167,8 @@ Explain Code
 * Returns ` Promise<ArtifactsRepo> `
 * Throws if the repo does not exist.
 
-* [  JavaScript ](#tab-panel-5455)
-* [  TypeScript ](#tab-panel-5456)
+* [  JavaScript ](#tab-panel-5465)
+* [  TypeScript ](#tab-panel-5466)
 
 JavaScript
 
@@ -223,8 +206,8 @@ async function getRepoHandle(artifacts: Artifacts) {
 * `opts.cursor` ` Cursor ` optional
 * Returns ` Promise<ArtifactsRepoListResult> `
 
-* [  JavaScript ](#tab-panel-5459)
-* [  TypeScript ](#tab-panel-5460)
+* [  JavaScript ](#tab-panel-5469)
+* [  TypeScript ](#tab-panel-5470)
 
 JavaScript
 
@@ -282,8 +265,8 @@ Import a repository from an external git remote.
 * `params.target.opts.readOnly` ` boolean ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-5471)
-* [  TypeScript ](#tab-panel-5472)
+* [  JavaScript ](#tab-panel-5481)
+* [  TypeScript ](#tab-panel-5482)
 
 JavaScript
 
@@ -374,8 +357,8 @@ Explain Code
 * `name` ` RepoName ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-5457)
-* [  TypeScript ](#tab-panel-5458)
+* [  JavaScript ](#tab-panel-5467)
+* [  TypeScript ](#tab-panel-5468)
 
 JavaScript
 
@@ -407,8 +390,8 @@ async function deleteRepo(artifacts: Artifacts) {
 
 Call `await artifacts.get(name)` to get a repo handle. The handle extends `ArtifactsRepoInfo`, so repo metadata (`id`, `name`, `remote`, `defaultBranch`, etc.) is available directly as properties.
 
-* [  JavaScript ](#tab-panel-5463)
-* [  TypeScript ](#tab-panel-5464)
+* [  JavaScript ](#tab-panel-5473)
+* [  TypeScript ](#tab-panel-5474)
 
 JavaScript
 
@@ -446,8 +429,8 @@ async function getRemoteUrl(artifacts: Artifacts) {
 * `ttl` ` number ` optional (seconds)
 * Returns ` Promise<ArtifactsCreateTokenResult> `
 
-* [  JavaScript ](#tab-panel-5465)
-* [  TypeScript ](#tab-panel-5466)
+* [  JavaScript ](#tab-panel-5475)
+* [  TypeScript ](#tab-panel-5476)
 
 JavaScript
 
@@ -483,8 +466,8 @@ async function mintReadToken(artifacts: Artifacts) {
 
 * Returns ` Promise<ArtifactsTokenListResult> `
 
-* [  JavaScript ](#tab-panel-5469)
-* [  TypeScript ](#tab-panel-5470)
+* [  JavaScript ](#tab-panel-5479)
+* [  TypeScript ](#tab-panel-5480)
 
 JavaScript
 
@@ -537,8 +520,8 @@ async function listRepoTokens(artifacts: Artifacts) {
 * `tokenOrId` ` string ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-5467)
-* [  TypeScript ](#tab-panel-5468)
+* [  JavaScript ](#tab-panel-5477)
+* [  TypeScript ](#tab-panel-5478)
 
 JavaScript
 
@@ -578,8 +561,8 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 * `opts.defaultBranchOnly` ` boolean ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-5473)
-* [  TypeScript ](#tab-panel-5474)
+* [  JavaScript ](#tab-panel-5483)
+* [  TypeScript ](#tab-panel-5484)
 
 JavaScript
 
@@ -641,8 +624,8 @@ Explain Code
 
 This example combines the binding methods in one Worker route.
 
-* [  JavaScript ](#tab-panel-5475)
-* [  TypeScript ](#tab-panel-5476)
+* [  JavaScript ](#tab-panel-5485)
+* [  TypeScript ](#tab-panel-5486)
 
 src/index.js
 

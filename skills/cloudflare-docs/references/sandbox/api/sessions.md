@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/api/sessions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Sessions
 
 Create isolated execution contexts within a sandbox. Each session maintains its own shell state, environment variables, and working directory. See [Session management concept](https://developers.cloudflare.com/sandbox/concepts/sessions/) for details.
@@ -56,8 +39,8 @@ const session = await sandbox.createSession(options?: SessionOptions): Promise<E
 
 **Returns**: `Promise<ExecutionSession>` with all sandbox methods bound to this session
 
-* [  JavaScript ](#tab-panel-8644)
-* [  TypeScript ](#tab-panel-8645)
+* [  JavaScript ](#tab-panel-8701)
+* [  TypeScript ](#tab-panel-8702)
 
 JavaScript
 
@@ -214,8 +197,8 @@ const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSe
 
 **Returns**: `Promise<ExecutionSession>` bound to the specified session
 
-* [  JavaScript ](#tab-panel-8638)
-* [  TypeScript ](#tab-panel-8639)
+* [  JavaScript ](#tab-panel-8695)
+* [  TypeScript ](#tab-panel-8696)
 
 JavaScript
 
@@ -286,8 +269,8 @@ const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDe
 * `sessionId` \- ID of the deleted session
 * `timestamp` \- Deletion timestamp
 
-* [  JavaScript ](#tab-panel-8640)
-* [  TypeScript ](#tab-panel-8641)
+* [  JavaScript ](#tab-panel-8697)
+* [  TypeScript ](#tab-panel-8698)
 
 JavaScript
 
@@ -366,8 +349,8 @@ Warning
 
 Call `setEnvVars()` **before** any other sandbox operations to ensure environment variables are available from the start.
 
-* [  JavaScript ](#tab-panel-8642)
-* [  TypeScript ](#tab-panel-8643)
+* [  JavaScript ](#tab-panel-8699)
+* [  TypeScript ](#tab-panel-8700)
 
 JavaScript
 

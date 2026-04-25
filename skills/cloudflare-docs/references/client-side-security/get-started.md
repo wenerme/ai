@@ -6,31 +6,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/client-side-security/get-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Get started with client-side security
 
 ## 1\. Activate client-side resource monitoring
 
 To enable client-side resource monitoring:
 
-* [  New dashboard ](#tab-panel-5653)
-* [ Old dashboard ](#tab-panel-5654)
+* [  New dashboard ](#tab-panel-5663)
+* [ Old dashboard ](#tab-panel-5664)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -51,8 +34,8 @@ When you enable client-side resource monitoring, it may take a while to get the 
 To review the scripts detected by Cloudflare:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-5651)  
-   * [ Old dashboard ](#tab-panel-5652)  
+   * [  New dashboard ](#tab-panel-5661)  
+   * [ Old dashboard ](#tab-panel-5662)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -97,8 +80,8 @@ Note
 
 Only available to customers with Client-Side Security Advanced.
 
-* [  New dashboard ](#tab-panel-5657)
-* [ Old dashboard ](#tab-panel-5658)
+* [  New dashboard ](#tab-panel-5667)
+* [ Old dashboard ](#tab-panel-5668)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -132,8 +115,8 @@ Resources not covered by the content security rule you created will be reported 
 
 To view rule violation information:
 
-* [  New dashboard ](#tab-panel-5655)
-* [ Old dashboard ](#tab-panel-5656)
+* [  New dashboard ](#tab-panel-5665)
+* [ Old dashboard ](#tab-panel-5666)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Choose an on-ramp
 
 Similar to the network onboarding practices in the [Replace your VPN](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/) implementation guide, there are a number of ways to on-ramp your network traffic to the Cloudflare global network. This guide will quickly explore all of the options to on-ramp traffic to Cloudflare Gateway to inspect, apply policies, and filter.
@@ -47,12 +30,13 @@ Cloudflare supports filtering HTTP/S traffic sent via a PAC file on a user devic
 
 Cloudflare Browser Isolation runs a headless, Chromium-based browser for your users to accomplish their secure browsing needs. It can be activated via an Access application, a Gateway policy, or by using link-based isolation (reverse proxy). In this model, your users can connect from any device to a proxy website to browse the Internet while applying all your Gateway HTTP policies and inspection requirements.
 
-| Cloudflare One Client             | PAC Files                            | Clientless Browser Isolation |                                       |
-| --------------------------------- | ------------------------------------ | ---------------------------- | ------------------------------------- |
-| Supported OS                      | macOS, Windows, Linux, iOS, Android  | All desktop OS               | All OS (with HTML5 compliant browser) |
-| Configurable via MDM              | Yes                                  | Yes                          | N/A                                   |
-| Gateway policy types supported    | DNS, Network, HTTP, Resolver, Egress | HTTP                         | DNS, Network, HTTP, Resolver, Egress  |
-| Identity-based policies supported | Yes                                  | No                           | Yes                                   |
+| Cloudflare One Client                                                                                                                  | PAC Files                            | Clientless Browser Isolation |                                       |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ---------------------------- | ------------------------------------- |
+| Supported OS                                                                                                                           | macOS, Windows, Linux, iOS, Android  | All desktop OS               | All OS (with HTML5 compliant browser) |
+| Configurable via MDM                                                                                                                   | Yes                                  | Yes                          | N/A                                   |
+| Gateway policy types supported                                                                                                         | DNS, Network, HTTP, Resolver, Egress | HTTP                         | DNS, Network, HTTP, Resolver, Egress  |
+| Identity-based policies supported                                                                                                      | Yes                                  | No                           | Yes                                   |
+| [Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/) | Yes                                  | Yes                          | Yes                                   |
 
 ## Network on-ramps
 

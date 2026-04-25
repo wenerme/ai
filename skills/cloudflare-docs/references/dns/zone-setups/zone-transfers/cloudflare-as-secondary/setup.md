@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Setup
 
 With [incoming zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/), you can keep your primary DNS provider and use Cloudflare as a secondary DNS provider.
@@ -76,8 +59,8 @@ The TSIG names configured at your primary and secondary DNS providers have to be
 
 While optional, this step is highly recommended.
 
-* [ Dashboard ](#tab-panel-6753)
-* [ API ](#tab-panel-6754)
+* [ Dashboard ](#tab-panel-6807)
+* [ API ](#tab-panel-6808)
 
 To create a TSIG using the dashboard:
 
@@ -95,8 +78,8 @@ To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/
 
 ## 2\. Create Peer Server
 
-* [ Dashboard ](#tab-panel-6749)
-* [ API ](#tab-panel-6750)
+* [ Dashboard ](#tab-panel-6803)
+* [ API ](#tab-panel-6804)
 
 To create a peer server using the dashboard:
 
@@ -115,8 +98,8 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 ## 3\. Create the Secondary Zone
 
-* [ Dashboard ](#tab-panel-6751)
-* [ API ](#tab-panel-6752)
+* [ Dashboard ](#tab-panel-6805)
+* [ API ](#tab-panel-6806)
 
 To create a secondary zone using the dashboard:
 

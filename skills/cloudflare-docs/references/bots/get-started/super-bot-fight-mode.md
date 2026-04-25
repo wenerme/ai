@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/bots/get-started/super-bot-fight-mode.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Super Bot Fight Mode
 
 Super Bot Fight Mode is included in your Pro, Business, or Enterprise subscription. When enabled, the product:
@@ -62,8 +45,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 
 To start using Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-5537)
-* [ Old dashboard ](#tab-panel-5538)
+* [  New dashboard ](#tab-panel-5547)
+* [ Old dashboard ](#tab-panel-5548)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -101,8 +84,8 @@ If you find that **Super Bot Fight Mode** is causing problems with your applicat
 
 To disable Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-5535)
-* [ Old dashboard ](#tab-panel-5536)
+* [  New dashboard ](#tab-panel-5545)
+* [ Old dashboard ](#tab-panel-5546)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

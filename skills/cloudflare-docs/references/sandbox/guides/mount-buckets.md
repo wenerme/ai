@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/mount-buckets.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Mount buckets
 
 Mount S3-compatible object storage buckets as local filesystem paths. Access object storage using standard file operations.
@@ -42,8 +25,8 @@ Mount S3-compatible buckets when you need:
 
 ## Mount an R2 bucket
 
-* [  JavaScript ](#tab-panel-8890)
-* [  TypeScript ](#tab-panel-8891)
+* [  JavaScript ](#tab-panel-8951)
+* [  TypeScript ](#tab-panel-8952)
 
 JavaScript
 
@@ -166,8 +149,8 @@ R2 credentials
 
 We also automatically detect `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for compatibility with other S3-compatible providers.
 
-* [  JavaScript ](#tab-panel-8876)
-* [  TypeScript ](#tab-panel-8877)
+* [  JavaScript ](#tab-panel-8937)
+* [  TypeScript ](#tab-panel-8938)
 
 JavaScript
 
@@ -203,8 +186,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Pass credentials directly when needed:
 
-* [  JavaScript ](#tab-panel-8878)
-* [  TypeScript ](#tab-panel-8879)
+* [  JavaScript ](#tab-panel-8939)
+* [  TypeScript ](#tab-panel-8940)
 
 JavaScript
 
@@ -252,8 +235,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Mount a specific subdirectory within a bucket using the `prefix` option. Only contents under the prefix are visible at the mount point:
 
-* [  JavaScript ](#tab-panel-8900)
-* [  TypeScript ](#tab-panel-8901)
+* [  JavaScript ](#tab-panel-8961)
+* [  TypeScript ](#tab-panel-8962)
 
 JavaScript
 
@@ -373,8 +356,8 @@ The `prefix` must start and end with `/` (e.g., `/data/`, `/logs/2024/`). This i
 
 Protect data by mounting buckets in read-only mode:
 
-* [  JavaScript ](#tab-panel-8882)
-* [  TypeScript ](#tab-panel-8883)
+* [  JavaScript ](#tab-panel-8943)
+* [  TypeScript ](#tab-panel-8944)
 
 JavaScript
 
@@ -438,8 +421,8 @@ You can mount R2 buckets during local development with `wrangler dev` by passing
 
 Add an R2 bucket binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8874)
-* [  wrangler.toml ](#tab-panel-8875)
+* [  wrangler.jsonc ](#tab-panel-8935)
+* [  wrangler.toml ](#tab-panel-8936)
 
 JSONC
 
@@ -481,8 +464,8 @@ bucket_name = "my-test-bucket"
 
 Pass `localBucket: true` in the options to mount the bucket locally:
 
-* [  JavaScript ](#tab-panel-8880)
-* [  TypeScript ](#tab-panel-8881)
+* [  JavaScript ](#tab-panel-8941)
+* [  TypeScript ](#tab-panel-8942)
 
 JavaScript
 
@@ -547,8 +530,8 @@ When `localBucket` is `true`, the `endpoint` is ignored and the SDK uses the R2 
 
 The `readOnly` and `prefix` options work the same way in local mode:
 
-* [  JavaScript ](#tab-panel-8886)
-* [  TypeScript ](#tab-panel-8887)
+* [  JavaScript ](#tab-panel-8947)
+* [  TypeScript ](#tab-panel-8948)
 
 JavaScript
 
@@ -624,8 +607,8 @@ These considerations apply to local development with `wrangler dev` only. In pro
 
 ## Unmount buckets
 
-* [  JavaScript ](#tab-panel-8884)
-* [  TypeScript ](#tab-panel-8885)
+* [  JavaScript ](#tab-panel-8945)
+* [  TypeScript ](#tab-panel-8946)
 
 JavaScript
 
@@ -679,8 +662,8 @@ The SDK supports any S3-compatible object storage. Here are examples for common 
 
 ### Amazon S3
 
-* [  JavaScript ](#tab-panel-8888)
-* [  TypeScript ](#tab-panel-8889)
+* [  JavaScript ](#tab-panel-8949)
+* [  TypeScript ](#tab-panel-8950)
 
 JavaScript
 
@@ -726,8 +709,8 @@ await sandbox.mountBucket('my-s3-bucket', '/data', {
 
 ### Google Cloud Storage
 
-* [  JavaScript ](#tab-panel-8892)
-* [  TypeScript ](#tab-panel-8893)
+* [  JavaScript ](#tab-panel-8953)
+* [  TypeScript ](#tab-panel-8954)
 
 JavaScript
 
@@ -779,8 +762,8 @@ Generate HMAC keys in GCS console under Settings → Interoperability.
 
 For providers like Backblaze B2, MinIO, Wasabi, or others, use the standard mount pattern:
 
-* [  JavaScript ](#tab-panel-8894)
-* [  TypeScript ](#tab-panel-8895)
+* [  JavaScript ](#tab-panel-8955)
+* [  TypeScript ](#tab-panel-8956)
 
 JavaScript
 
@@ -871,8 +854,8 @@ npx wrangler secret put AWS_SECRET_ACCESS_KEY
 
 Verify your endpoint format and credentials:
 
-* [  JavaScript ](#tab-panel-8898)
-* [  TypeScript ](#tab-panel-8899)
+* [  JavaScript ](#tab-panel-8959)
+* [  TypeScript ](#tab-panel-8960)
 
 JavaScript
 
@@ -926,8 +909,8 @@ try {
 
 **Solution**: Unmount first or use a different path:
 
-* [  JavaScript ](#tab-panel-8896)
-* [  TypeScript ](#tab-panel-8897)
+* [  JavaScript ](#tab-panel-8957)
+* [  TypeScript ](#tab-panel-8958)
 
 JavaScript
 
@@ -967,8 +950,8 @@ File operations on mounted buckets are slower than local filesystem due to netwo
 
 **Solution**: Copy frequently accessed files locally:
 
-* [  JavaScript ](#tab-panel-8902)
-* [  TypeScript ](#tab-panel-8903)
+* [  JavaScript ](#tab-panel-8963)
+* [  TypeScript ](#tab-panel-8964)
 
 JavaScript
 

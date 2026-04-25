@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ IPv6 ](https://developers.cloudflare.com/search/?tags=IPv6) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/network/ipv6-compatibility.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # IPv6 compatibility
 
 Cloudflare enables IPv6 on all domains without requiring additional configuration or hardware (as long as your host provides IPv6 support).
@@ -60,8 +43,8 @@ Note
 
 To allow IPv6-only clients to connect to IPv4-only origin web servers, keep IPv6 compatibility enabled and configure [Pseudo IPv4](https://developers.cloudflare.com/network/pseudo-ipv4/).
 
-* [ Dashboard ](#tab-panel-7858)
-* [ API ](#tab-panel-7859)
+* [ Dashboard ](#tab-panel-7912)
+* [ API ](#tab-panel-7913)
 
 To turn off IPv6 compatibility in the dashboard:
 

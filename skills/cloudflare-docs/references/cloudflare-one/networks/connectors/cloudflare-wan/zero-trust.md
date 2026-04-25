@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cloudflare One integration
 
 Cloudflare WAN (formerly Magic WAN) provides site-to-site connectivity and packet-level security through [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/). The Cloudflare One integrations below extend that foundation with identity-aware security — user-level access policies through [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/), secure Internet egress through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), and device-level routing through the [Cloudflare One Client (formerly WARP)](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ MongoDB ](https://developers.cloudflare.com/search/?tags=MongoDB)[ SSH ](https://developers.cloudflare.com/search/?tags=SSH)[ Kubernetes ](https://developers.cloudflare.com/search/?tags=Kubernetes) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/tutorials/mongodb-tunnel.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # MongoDB SSH
 
 **Last reviewed:**  over 5 years ago 

@@ -6,26 +6,15 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/radar/release-notes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Release notes
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/radar/release-notes/index.xml)
+
+## 2026-04-24
+
+**Add signature agent URL to bot details**
+* Added `signatureAgentUrl` field to the [bot details](https://developers.cloudflare.com/api/resources/radar/subresources/bots/methods/get/) API endpoint. For agents verified via [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/), this field contains the URL to the agent's HTTP Message Signatures key directory. It is `null` for bots not verified via request signature.
+* Added signature agent URL to the [bot detail page](https://radar.cloudflare.com/bots/directory) on Radar, with a modal to inspect the key directory JSON content.
 
 ## 2026-04-01
 

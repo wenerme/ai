@@ -1,27 +1,10 @@
 ---
 title: Reference Architectures
-description: No matter if you know Cloudflare well, or if you are just starting out. These documents help you understand how our connectivity cloud is architectured and how the services can be integrated with your own infrastructure. Read How to use to understand how the documentation is structured, and either navigate by type from the menu or find by solution area.
+description: Understand how Cloudflare products integrate with your infrastructure.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/reference-architecture/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Reference Architectures
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/images/optimization/transformations/bindings.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Bind to Workers API
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Images](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV Namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
@@ -49,8 +32,8 @@ You can define variables in the Wrangler configuration file of your Worker proje
 
 To bind Images to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7401)
-* [  wrangler.toml ](#tab-panel-7402)
+* [  wrangler.jsonc ](#tab-panel-7455)
+* [  wrangler.toml ](#tab-panel-7456)
 
 JSONC
 
@@ -96,8 +79,8 @@ Within your Worker code, you can interact with this binding by using `env.IMAGES
 
 For example, to draw a resized watermark on an image:
 
-* [  JavaScript ](#tab-panel-7403)
-* [  TypeScript ](#tab-panel-7404)
+* [  JavaScript ](#tab-panel-7457)
+* [  TypeScript ](#tab-panel-7458)
 
 JavaScript
 
@@ -184,8 +167,8 @@ Explain Code
 
 For example, to rotate, resize, and blur an image, then output the image as AVIF:
 
-* [  JavaScript ](#tab-panel-7405)
-* [  TypeScript ](#tab-panel-7406)
+* [  JavaScript ](#tab-panel-7459)
+* [  TypeScript ](#tab-panel-7460)
 
 JavaScript
 

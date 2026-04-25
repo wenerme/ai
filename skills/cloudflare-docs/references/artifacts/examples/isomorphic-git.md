@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/artifacts/examples/isomorphic-git.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # isomorphic-git
 
 Use [isomorphic-git ↗](https://isomorphic-git.org/) in a Cloudflare Worker when you need Git operations without a Git binary.
@@ -61,8 +44,8 @@ Protect write-capable routes
 
 This example omits authentication so it can focus on the Git flow. In production, authorize the caller before creating repos or granting write capability.
 
-* [  JavaScript ](#tab-panel-5483)
-* [  TypeScript ](#tab-panel-5484)
+* [  JavaScript ](#tab-panel-5493)
+* [  TypeScript ](#tab-panel-5494)
 
 src/index.js
 
@@ -313,8 +296,8 @@ In-memory filesystem helper
 
 Use this helper with `isomorphic-git` in Workers when you need a short-lived working tree in memory.
 
-* [  JavaScript ](#tab-panel-5485)
-* [  TypeScript ](#tab-panel-5486)
+* [  JavaScript ](#tab-panel-5495)
+* [  TypeScript ](#tab-panel-5496)
 
 src/memory-fs.js
 

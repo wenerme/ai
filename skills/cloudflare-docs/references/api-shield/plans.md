@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/api-shield/plans.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Plans
 
 Free, Pro, Business, and Enterprise customers without an API Shield subscription can access [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) and [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), but no other [API Shield](https://developers.cloudflare.com/api-shield/) features.

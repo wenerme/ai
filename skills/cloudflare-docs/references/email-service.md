@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cloudflare Email Service
 
 Send transactional emails and route incoming emails to Workers or email addresses
@@ -48,9 +31,9 @@ Together, these two features make it possible for you to send and receive emails
 
 Access Email Service using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) from any platform, or directly from Cloudflare Workers using [bindings](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/):
 
-* [ REST API (curl) ](#tab-panel-7014)
-* [ index.ts (Workers) ](#tab-panel-7015)
-* [ wrangler.jsonc ](#tab-panel-7016)
+* [ REST API (curl) ](#tab-panel-7068)
+* [ index.ts (Workers) ](#tab-panel-7069)
+* [ wrangler.jsonc ](#tab-panel-7070)
 
 Terminal window
 

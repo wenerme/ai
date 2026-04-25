@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workflows/build/rules-of-workflows.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Rules of Workflows
 
 A Workflow contains one or more steps. Each step is a self-contained, individually retryable component of a Workflow. Steps may emit (optional) state that allows a Workflow to persist and continue from that step, even if a Workflow fails due to a network or infrastructure issue.
@@ -35,8 +18,8 @@ Because a step might be retried multiple times, your steps should (ideally) be i
 
 As an example, let us assume you have a Workflow that charges your customers, and you really do not want to charge them twice by accident. Before charging them, you should check if they were already charged:
 
-* [  JavaScript ](#tab-panel-11085)
-* [  TypeScript ](#tab-panel-11086)
+* [  JavaScript ](#tab-panel-11146)
+* [  TypeScript ](#tab-panel-11147)
 
 index.js
 
@@ -196,8 +179,8 @@ You can also think of it as a transaction, or a unit of work.
 
 * ✅ Minimize the number of API/binding calls per step (unless you need multiple calls to prove idempotency).
 
-* [  JavaScript ](#tab-panel-11083)
-* [  TypeScript ](#tab-panel-11084)
+* [  JavaScript ](#tab-panel-11144)
+* [  TypeScript ](#tab-panel-11145)
 
 index.js
 
@@ -282,8 +265,8 @@ Otherwise, your entire Workflow might not be as durable as you might think, and 
 * 🔴 Do not make too many service calls in the same step (unless you need it to prove idempotency).
 * 🔴 Do not do too much CPU-intensive work inside a single step - sometimes the engine may have to restart, and it will start over from the beginning of that step.
 
-* [  JavaScript ](#tab-panel-11081)
-* [  TypeScript ](#tab-panel-11082)
+* [  JavaScript ](#tab-panel-11142)
+* [  TypeScript ](#tab-panel-11143)
 
 index.js
 
@@ -353,8 +336,8 @@ Workflows may hibernate and lose all in-memory state. This will happen when engi
 
 This means that you should not store state outside of a step:
 
-* [  JavaScript ](#tab-panel-11095)
-* [  TypeScript ](#tab-panel-11096)
+* [  JavaScript ](#tab-panel-11156)
+* [  TypeScript ](#tab-panel-11157)
 
 index.js
 
@@ -514,8 +497,8 @@ Explain Code
 
 Instead, you should build top-level state exclusively comprised of `step.do` returns:
 
-* [  JavaScript ](#tab-panel-11093)
-* [  TypeScript ](#tab-panel-11094)
+* [  JavaScript ](#tab-panel-11154)
+* [  TypeScript ](#tab-panel-11155)
 
 index.js
 
@@ -675,8 +658,8 @@ For example, a `console.log()` outside of workflow steps may cause the logs to p
 
 However, logic involving non-serializable resources, like a database connection, should be executed outside of steps. Operations outside of a `step.do` might be repeated more than once, due to the nature of the Workflows' instance lifecycle.
 
-* [  JavaScript ](#tab-panel-11107)
-* [  TypeScript ](#tab-panel-11108)
+* [  JavaScript ](#tab-panel-11168)
+* [  TypeScript ](#tab-panel-11169)
 
 index.js
 
@@ -866,8 +849,8 @@ Explain Code
 
 The `event` passed to your Workflow's `run` method is immutable: changes you make to the event are not persisted across steps and/or Workflow restarts.
 
-* [  JavaScript ](#tab-panel-11091)
-* [  TypeScript ](#tab-panel-11092)
+* [  JavaScript ](#tab-panel-11152)
+* [  TypeScript ](#tab-panel-11153)
 
 index.js
 
@@ -996,8 +979,8 @@ Explain Code
 
 Steps should be named deterministically (that is, not using the current date/time, randomness, etc). This ensures that their state is cached, and prevents the step from being rerun unnecessarily. Step names act as the "cache key" in your Workflow.
 
-* [  JavaScript ](#tab-panel-11099)
-* [  TypeScript ](#tab-panel-11100)
+* [  JavaScript ](#tab-panel-11160)
+* [  TypeScript ](#tab-panel-11161)
 
 index.js
 
@@ -1149,8 +1132,8 @@ Workflows allows the usage steps within the `Promise.race()` or `Promise.any()` 
 
 Due to the nature of Workflows' instance lifecycle, and given that a step inside a Promise will run until it finishes, the step that is returned during the first passage may not be the actual cached step, as [steps are cached by their names](#name-steps-deterministically).
 
-* [  JavaScript ](#tab-panel-11087)
-* [  TypeScript ](#tab-panel-11088)
+* [  JavaScript ](#tab-panel-11148)
+* [  TypeScript ](#tab-panel-11149)
 
 index.js
 
@@ -1262,8 +1245,8 @@ Explain Code
 
 To ensure consistency, we suggest to surround the `Promise.race()` or `Promise.any()` within a `step.do()`, as this will ensure caching consistency across multiple passages.
 
-* [  JavaScript ](#tab-panel-11097)
-* [  TypeScript ](#tab-panel-11098)
+* [  JavaScript ](#tab-panel-11158)
+* [  TypeScript ](#tab-panel-11159)
 
 index.js
 
@@ -1389,8 +1372,8 @@ It would also present a problem if you wanted to run multiple different Workflow
 
 If you need to associate multiple instances with a specific user, merchant or other "customer" ID in your system, consider using a composite ID or using randomly generated IDs and storing the mapping in a database like [D1](https://developers.cloudflare.com/d1/).
 
-* [  JavaScript ](#tab-panel-11101)
-* [  TypeScript ](#tab-panel-11102)
+* [  JavaScript ](#tab-panel-11162)
+* [  TypeScript ](#tab-panel-11163)
 
 index.js
 
@@ -1526,8 +1509,8 @@ If you don't call `await step.do` or `await step.sleep`, you create a dangling P
 
 This happens when you do not use the `await` keyword or fail to chain `.then()` methods to handle the result of a Promise. For example, calling `fetch(GITHUB_URL)` without awaiting its response will cause subsequent code to execute immediately, regardless of whether the fetch completed. This can cause issues like premature logging, exceptions being swallowed (and not terminating the Workflow), and lost return values (state).
 
-* [  JavaScript ](#tab-panel-11089)
-* [  TypeScript ](#tab-panel-11090)
+* [  JavaScript ](#tab-panel-11150)
+* [  TypeScript ](#tab-panel-11151)
 
 index.js
 
@@ -1619,8 +1602,8 @@ Explain Code
 
 You can use `if` statements, loops, and other control flow outside of steps. However, conditions must be based on **deterministic values** — either values from `event.payload` or return values from previous steps. Non-deterministic conditions (such as `Math.random()` or `Date.now()`) outside of steps can cause unexpected behavior if the Workflow restarts.
 
-* [  JavaScript ](#tab-panel-11109)
-* [  TypeScript ](#tab-panel-11110)
+* [  JavaScript ](#tab-panel-11170)
+* [  TypeScript ](#tab-panel-11171)
 
 index.js
 
@@ -1776,8 +1759,8 @@ Explain Code
 
 When creating multiple Workflow instances, use the [createBatch](https://developers.cloudflare.com/workflows/build/workers-api/#createBatch) method to batch the invocations together. This allows you to create multiple Workflow instances in a single request, which will reduce the number of requests made to the Workflows API. However, each individual instance in the batch will still count towards the [creation rate limit](https://developers.cloudflare.com/workflows/reference/limits/). Unlike `create`, `createBatch` is idempotent: if an existing instance with the same ID is still within its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/), it will be skipped and excluded from the returned array.
 
-* [  JavaScript ](#tab-panel-11103)
-* [  TypeScript ](#tab-panel-11104)
+* [  JavaScript ](#tab-panel-11164)
+* [  TypeScript ](#tab-panel-11165)
 
 index.js
 
@@ -1910,8 +1893,8 @@ Note that streamed outputs are still considered part of the Workflow instance st
 
 If these storage limits still do not work for you, consider storing your step outputs externally (for example, in [R2](https://developers.cloudflare.com/r2)) and saving a reference to it.
 
-* [  JavaScript ](#tab-panel-11105)
-* [  TypeScript ](#tab-panel-11106)
+* [  JavaScript ](#tab-panel-11166)
+* [  TypeScript ](#tab-panel-11167)
 
 index.js
 

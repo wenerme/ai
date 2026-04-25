@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/usage/providers/openai.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # OpenAI
 
 [OpenAI ↗](https://openai.com/about/) helps you build with GPT models.
@@ -54,8 +37,8 @@ When making requests to OpenAI, replace `https://api.openai.com/v1` in the URL y
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5317)
-* [ Unauthenticated Gateway ](#tab-panel-5318)
+* [ With Authenticated Gateway ](#tab-panel-5327)
+* [ Unauthenticated Gateway ](#tab-panel-5328)
 
 ```
 
@@ -160,8 +143,8 @@ Explain Code
 
 Responses API with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5319)
-* [ Unauthenticated Gateway ](#tab-panel-5320)
+* [ With Authenticated Gateway ](#tab-panel-5329)
+* [ Unauthenticated Gateway ](#tab-panel-5330)
 
 Terminal window
 
@@ -233,8 +216,8 @@ Explain Code
 
 Chat Completions with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5321)
-* [ Unauthenticated Gateway ](#tab-panel-5322)
+* [ With Authenticated Gateway ](#tab-panel-5331)
+* [ Unauthenticated Gateway ](#tab-panel-5332)
 
 Terminal window
 

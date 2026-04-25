@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/protocol-messages.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Protocol messages
 
 When a WebSocket client connects to an Agent, the framework automatically sends several JSON text frames — identity, state, and MCP server lists. You can suppress these per-connection protocol messages for clients that cannot handle them.
@@ -51,8 +34,8 @@ For these connections, you can suppress protocol messages while keeping everythi
 
 Override `shouldSendProtocolMessages` to control which connections receive protocol messages. Return `false` to suppress them.
 
-* [  JavaScript ](#tab-panel-4490)
-* [  TypeScript ](#tab-panel-4491)
+* [  JavaScript ](#tab-panel-4500)
+* [  TypeScript ](#tab-panel-4501)
 
 JavaScript
 
@@ -116,8 +99,8 @@ This hook runs during `onConnect`, before any messages are sent. When it returns
 
 You can also check the WebSocket subprotocol header, which is the standard way to negotiate protocols over WebSocket:
 
-* [  JavaScript ](#tab-panel-4492)
-* [  TypeScript ](#tab-panel-4493)
+* [  JavaScript ](#tab-panel-4502)
+* [  TypeScript ](#tab-panel-4503)
 
 JavaScript
 
@@ -173,8 +156,8 @@ Explain Code
 
 Use `isConnectionProtocolEnabled` to check whether a connection has protocol messages enabled:
 
-* [  JavaScript ](#tab-panel-4494)
-* [  TypeScript ](#tab-panel-4495)
+* [  JavaScript ](#tab-panel-4504)
+* [  TypeScript ](#tab-panel-4505)
 
 JavaScript
 
@@ -259,8 +242,8 @@ The following table shows what still works when protocol messages are suppressed
 
 A connection can be both readonly and protocol-suppressed. This is useful for binary devices that should observe but not modify state:
 
-* [  JavaScript ](#tab-panel-4496)
-* [  TypeScript ](#tab-panel-4497)
+* [  JavaScript ](#tab-panel-4506)
+* [  TypeScript ](#tab-panel-4507)
 
 JavaScript
 

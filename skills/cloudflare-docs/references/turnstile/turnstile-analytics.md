@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/turnstile/turnstile-analytics/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Turnstile Analytics
 
 Turnstile Analytics provides you with a view of the top widget statistics across different metadata dimensions to understand where your traffic is coming from, which environments have the highest challenge activity, and whether certain sources are disproportionately failing or bypassing challenges, allowing you to fine-tune your security settings, apply more granular mitigations, and proactively respond to evolving threats.

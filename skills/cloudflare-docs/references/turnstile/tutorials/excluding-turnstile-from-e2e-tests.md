@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Node.js ](https://developers.cloudflare.com/search/?tags=Node.js)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/turnstile/tutorials/excluding-turnstile-from-e2e-tests.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Exclude Turnstile from E2E tests
 
 **Last reviewed:**  over 1 year ago 

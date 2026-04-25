@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/tutorials/handle-rate-limits/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Handle rate limits of external APIs
 
 **Last reviewed:**  over 1 year ago 
@@ -120,8 +103,8 @@ Created queue rate-limit-queue.
 
 In your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-8166)
-* [  wrangler.toml ](#tab-panel-8167)
+* [  wrangler.jsonc ](#tab-panel-8220)
+* [  wrangler.toml ](#tab-panel-8221)
 
 JSONC
 
@@ -196,8 +179,8 @@ It is important to include the `max_batch_size` of two to the consumer queue is 
 
 Your final Wrangler file should look similar to the example below.
 
-* [  wrangler.jsonc ](#tab-panel-8168)
-* [  wrangler.toml ](#tab-panel-8169)
+* [  wrangler.jsonc ](#tab-panel-8222)
+* [  wrangler.toml ](#tab-panel-8223)
 
 JSONC
 

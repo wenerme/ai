@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/guides/push-notifications.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Push notifications
 
 Send browser push notifications from your agent — even when the user has closed the tab. By combining the agent's persistent state (for storing push subscriptions), scheduling (for timed delivery), and the [Web Push API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Push%5FAPI), you can reach users who are completely offline.
@@ -111,8 +94,8 @@ wrangler secret put VAPID_SUBJECT
 
 The agent has three responsibilities: store push subscriptions, schedule reminders, and send notifications when alarms fire.
 
-* [  JavaScript ](#tab-panel-5184)
-* [  TypeScript ](#tab-panel-5185)
+* [  JavaScript ](#tab-panel-5194)
+* [  TypeScript ](#tab-panel-5195)
 
 JavaScript
 
@@ -704,8 +687,8 @@ The client needs to: register the service worker, request notification permissio
 
 ### Register the service worker
 
-* [  JavaScript ](#tab-panel-5178)
-* [  TypeScript ](#tab-panel-5179)
+* [  JavaScript ](#tab-panel-5188)
+* [  TypeScript ](#tab-panel-5189)
 
 JavaScript
 
@@ -749,8 +732,8 @@ useEffect(() => {
 
 Fetch the VAPID public key from the agent, then subscribe through the Push API:
 
-* [  JavaScript ](#tab-panel-5182)
-* [  TypeScript ](#tab-panel-5183)
+* [  JavaScript ](#tab-panel-5192)
+* [  TypeScript ](#tab-panel-5193)
 
 JavaScript
 
@@ -884,8 +867,8 @@ Explain Code
 
 With the subscription stored, creating a reminder is a single RPC call. The agent handles scheduling and delivery:
 
-* [  JavaScript ](#tab-panel-5176)
-* [  TypeScript ](#tab-panel-5177)
+* [  JavaScript ](#tab-panel-5186)
+* [  TypeScript ](#tab-panel-5187)
 
 JavaScript
 
@@ -985,8 +968,8 @@ A single user may subscribe from multiple browsers or devices. The agent stores 
 
 If the push service returns a 5xx error (temporary failure), you can retry using `this.schedule()` with a short delay:
 
-* [  JavaScript ](#tab-panel-5180)
-* [  TypeScript ](#tab-panel-5181)
+* [  JavaScript ](#tab-panel-5190)
+* [  TypeScript ](#tab-panel-5191)
 
 JavaScript
 

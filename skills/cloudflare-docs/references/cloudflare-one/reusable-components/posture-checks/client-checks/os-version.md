@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Posture ](https://developers.cloudflare.com/search/?tags=Posture) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/reusable-components/posture-checks/client-checks/os-version.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # OS version
 
 The OS Version device posture attribute checks whether the version of a device's operating system matches, is greater than or lesser than the configured value.
@@ -44,10 +27,10 @@ The OS Version device posture attribute checks whether the version of a device's
 Note  
 The OS version must be specified as a valid [Semver ↗](https://semver.org/). For example, if your device is running OS version `1.2`, you must enter `1.2.0`.
 5. (Optional) Configure additional OS-specific fields:  
-   * [ Windows ](#tab-panel-6016)  
-   * [ macOS ](#tab-panel-6017)  
-   * [ Linux ](#tab-panel-6018)  
-   * [ iOS ](#tab-panel-6019)  
+   * [ Windows ](#tab-panel-6068)  
+   * [ macOS ](#tab-panel-6069)  
+   * [ Linux ](#tab-panel-6070)  
+   * [ iOS ](#tab-panel-6071)  
 To check that Windows devices have required security patches and features installed, include an Update Build Revision (UBR) number in the OS version check.  
    * **Update Build Revision**: Enter the Windows UBR you want devices to match (for example, `3803`). The UBR is the fourth part of the full Windows version number (for example, in `10.0.19045.3803`, the UBR is `3803`).  
    * **Rapid Security Response Version**: Enter the macOS [Rapid Security Response (RSR) ↗](https://support.apple.com/guide/deployment/rapid-security-responses-dep93ff7ea78/web) version you want devices to match (for example, `(a)`). Be sure to include the parenthesis around the letter.  

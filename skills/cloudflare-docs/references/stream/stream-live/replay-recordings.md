@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/stream/stream-live/replay-recordings.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Record and replay live streams
 
 Live streams are automatically recorded, and available instantly once a live stream ends. To get a list of recordings for a given input ID, make a [GET request to /live\_inputs/<UID>/videos](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/get/) and filter for videos where `state` is set to `ready`:

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/examples/alarms-api.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Use the Alarms API
 
 **Last reviewed:**  over 2 years ago 
@@ -35,8 +18,8 @@ When a request is received and no alarm is set, it sets an alarm for 10 seconds 
 
 If no new requests are received, no further alarms will be set until the next request arrives.
 
-* [  JavaScript ](#tab-panel-6891)
-* [  Python ](#tab-panel-6892)
+* [  JavaScript ](#tab-panel-6945)
+* [  Python ](#tab-panel-6946)
 
 JavaScript
 
@@ -237,8 +220,8 @@ The `alarm()` handler will be called once every 10 seconds. If an unexpected err
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-6893)
-* [  wrangler.toml ](#tab-panel-6894)
+* [  wrangler.jsonc ](#tab-panel-6947)
+* [  wrangler.toml ](#tab-panel-6948)
 
 JSONC
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
  l 
 
 #  llava-1.5-7b-hf Beta 
@@ -89,8 +72,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-3658)
-* [ Output ](#tab-panel-3659)
+* [ Input ](#tab-panel-3668)
+* [ Output ](#tab-panel-3669)
 
 Option 1
 
@@ -108,8 +91,8 @@ description
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3656)
-* [ Output ](#tab-panel-3657)
+* [ Input ](#tab-panel-3666)
+* [ Output ](#tab-panel-3667)
 
 ```
 

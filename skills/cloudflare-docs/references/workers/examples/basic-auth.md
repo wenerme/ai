@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Rust ](https://developers.cloudflare.com/search/?tags=Rust) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/basic-auth.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # HTTP Basic Authentication
 
 **Last reviewed:**  over 2 years ago 
@@ -41,10 +24,10 @@ Caution when using in production
 
 This code is provided as a sample, and is not suitable for production use. Basic Authentication sends credentials unencrypted, and must be used with an HTTPS connection to be considered secure. For a production-ready authentication system, consider using [Cloudflare Access ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 
-* [  JavaScript ](#tab-panel-9722)
-* [  TypeScript ](#tab-panel-9723)
-* [  Rust ](#tab-panel-9724)
-* [  Hono ](#tab-panel-9725)
+* [  JavaScript ](#tab-panel-9783)
+* [  TypeScript ](#tab-panel-9784)
+* [  Rust ](#tab-panel-9785)
+* [  Hono ](#tab-panel-9786)
 
 JavaScript
 

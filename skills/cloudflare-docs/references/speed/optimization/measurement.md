@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/speed/optimization/measurement.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Measurement
 
 Enable measurement to track your traffic in a privacy-first manner, optimizing your site's speed tools. To access this feature, you need to enable [Web Analytics](https://developers.cloudflare.com/web-analytics/) on your website. This analytics tool leverages [Real User Measurement](https://developers.cloudflare.com/speed/observatory/run-speed-test/#enable-real-user-monitoring-rum) (RUM) data, providing insights based on actual user interactions to enhance site performance effectively.

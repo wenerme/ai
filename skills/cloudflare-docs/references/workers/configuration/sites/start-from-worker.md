@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/sites/start-from-worker.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Start from Worker
 
 Use Workers Static Assets Instead
@@ -37,8 +20,8 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
 
 1. Create a directory that will contain the assets in the root of your project (for example, `./public`)
 2. Add configuration to your Wrangler file to point to it.  
-   * [  wrangler.jsonc ](#tab-panel-9646)  
-   * [  wrangler.toml ](#tab-panel-9647)  
+   * [  wrangler.jsonc ](#tab-panel-9707)  
+   * [  wrangler.toml ](#tab-panel-9708)  
 JSONC  
 ```  
 {  
@@ -59,8 +42,8 @@ npm i -D @cloudflare/kv-asset-handler
 ```
 4. Import the `getAssetFromKV()` function into your Worker entry point and use it to respond with static assets.
 
-* [  Module Worker ](#tab-panel-9644)
-* [  Service Worker ](#tab-panel-9645)
+* [  Module Worker ](#tab-panel-9705)
+* [  Service Worker ](#tab-panel-9706)
 
 JavaScript
 

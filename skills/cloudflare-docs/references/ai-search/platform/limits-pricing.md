@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-search/platform/limits-pricing.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Limits & pricing
 
 Instances created after **April 16, 2026** include [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/), a [built-in vector index](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/#built-in-vector-index), and web crawling. You can see if your instance was created after the new release by checking if it has built-in storage and vector index. You can check by going on the dashboard under **AI** \> **AI Search**. Select your instance and check the **Overview** tab to see if it includes built-in storage and built-in vector database.

@@ -322,7 +322,13 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "features.codex_hooks",
       type: "boolean",
       description:
-        "Enable lifecycle hooks loaded from `hooks.json` (under development; off by default).",
+        "Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config.",
+    },
+    {
+      key: "hooks",
+      type: "table",
+      description:
+        "Lifecycle hooks configured inline in `config.toml`. Uses the same event schema as `hooks.json`; see the Hooks guide for examples and supported events.",
     },
     {
       key: "features.memories",
@@ -1241,7 +1247,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "projects.<path>.trust_level",
       type: "string",
       description:
-        'Mark a project or worktree as trusted or untrusted (`"trusted"` | `"untrusted"`). Untrusted projects skip project-scoped `.codex/` layers.',
+        'Mark a project or worktree as trusted or untrusted (`"trusted"` | `"untrusted"`). Untrusted projects skip project-scoped `.codex/` layers, including project-local config, hooks, and rules.',
     },
     {
       key: "notice.hide_full_access_warning",
@@ -1335,6 +1341,24 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
       description: "Allowed values for `sandbox_mode`.",
     },
     {
+      key: "remote_sandbox_config",
+      type: "array<table>",
+      description:
+        "Host-specific sandbox requirements. The first entry whose `hostname_patterns` match the resolved host name overrides top-level `allowed_sandbox_modes` for that requirements source. Host-specific entries currently override sandbox modes only.",
+    },
+    {
+      key: "remote_sandbox_config[].hostname_patterns",
+      type: "array<string>",
+      description:
+        "Case-insensitive host name patterns. Supports `*` for any sequence of characters and `?` for one character.",
+    },
+    {
+      key: "remote_sandbox_config[].allowed_sandbox_modes",
+      type: "array<string>",
+      description:
+        "Allowed sandbox modes to apply when this host-specific entry matches.",
+    },
+    {
       key: "allowed_web_search_modes",
       type: "array<string>",
       description:
@@ -1347,10 +1371,64 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
         "Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table.",
     },
     {
+      key: "feature_requirements",
+      type: "table",
+      description:
+        "Alias for `features` in `requirements.toml`. Use it to pin feature values by canonical feature key.",
+    },
+    {
       key: "features.<name>",
       type: "boolean",
       description:
         "Require a specific canonical feature key to stay enabled or disabled.",
+    },
+    {
+      key: "feature_requirements.in_app_browser",
+      type: "boolean",
+      description:
+        "Set to `false` in `requirements.toml` to disable the in-app browser pane. You can also set `features.in_app_browser`.",
+    },
+    {
+      key: "feature_requirements.browser_use",
+      type: "boolean",
+      description:
+        "Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. You can also set `features.browser_use`.",
+    },
+    {
+      key: "feature_requirements.computer_use",
+      type: "boolean",
+      description:
+        "Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows. You can also set `features.computer_use`.",
+    },
+    {
+      key: "hooks",
+      type: "table",
+      description:
+        "Admin-enforced managed lifecycle hooks. Requires a managed hook directory and uses the same event schema as inline `[hooks]` in `config.toml`.",
+    },
+    {
+      key: "hooks.managed_dir",
+      type: "string (absolute path)",
+      description:
+        "Directory containing managed hook scripts on macOS and Linux. Codex validates that it is absolute and exists before loading managed hooks.",
+    },
+    {
+      key: "hooks.windows_managed_dir",
+      type: "string (absolute path)",
+      description:
+        "Directory containing managed hook scripts on Windows. Codex validates that it is absolute and exists before loading managed hooks.",
+    },
+    {
+      key: "hooks.<Event>",
+      type: "array<table>",
+      description:
+        "Matcher groups for a hook event such as `PreToolUse`, `PostToolUse`, `PermissionRequest`, `SessionStart`, `UserPromptSubmit`, or `Stop`.",
+    },
+    {
+      key: "hooks.<Event>[].hooks",
+      type: "array<table>",
+      description:
+        "Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped.",
     },
     {
       key: "permissions.filesystem.deny_read",

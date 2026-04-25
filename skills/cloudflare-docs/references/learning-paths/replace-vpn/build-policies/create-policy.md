@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/replace-vpn/build-policies/create-policy.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Secure your first application
 
 To ensure holistic security precautions, we recommend securing each distinct private application with at least two policies:
@@ -36,9 +19,9 @@ To create a new policy, open [Cloudflare One ↗](https://one.dash.cloudflare.co
 
 ## Example DNS policy
 
-* [ Dashboard ](#tab-panel-7582)
-* [ API ](#tab-panel-7583)
-* [ Terraform (v5) ](#tab-panel-7584)
+* [ Dashboard ](#tab-panel-7636)
+* [ API ](#tab-panel-7637)
+* [ Terraform (v5) ](#tab-panel-7638)
 
 | Traffic Selector | Operator | Value                |
 | ---------------- | -------- | -------------------- |
@@ -166,9 +149,9 @@ Explain Code
 
 ## Example network policy
 
-* [ Dashboard ](#tab-panel-7585)
-* [ API ](#tab-panel-7586)
-* [ Terraform (v5) ](#tab-panel-7587)
+* [ Dashboard ](#tab-panel-7639)
+* [ API ](#tab-panel-7640)
+* [ Terraform (v5) ](#tab-panel-7641)
 
 | Traffic Selector | Operator | Value            |
 | ---------------- | -------- | ---------------- |
@@ -290,9 +273,9 @@ Explain Code
 
 We recommend adding a catch-all policy to the bottom of your network policy list. An effective Zero Trust model should prioritize default-deny actions to avoid any overly permissive policy building. For example,
 
-* [ Dashboard ](#tab-panel-7588)
-* [ API ](#tab-panel-7589)
-* [ Terraform (v5) ](#tab-panel-7590)
+* [ Dashboard ](#tab-panel-7642)
+* [ API ](#tab-panel-7643)
+* [ Terraform (v5) ](#tab-panel-7644)
 
 | Traffic Selector | Operator | Value                      | Logic |
 | ---------------- | -------- | -------------------------- | ----- |

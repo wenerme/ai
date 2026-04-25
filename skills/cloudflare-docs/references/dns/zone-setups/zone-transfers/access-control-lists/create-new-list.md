@@ -6,31 +6,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/zone-setups/zone-transfers/access-control-lists/create-new-list.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Create ACL
 
 You need to create an Access Control List (ACL) if Cloudflare is your [secondary DNS provider](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/). The ACL will specify additional NOTIFY IPs that Cloudflare should listen to.
 
 An ACL is configured at the account level, which means that it will apply to every primary and secondary zone in your account.
 
-* [ Dashboard ](#tab-panel-6731)
-* [ API ](#tab-panel-6732)
+* [ Dashboard ](#tab-panel-6785)
+* [ API ](#tab-panel-6786)
 
 To create a new ACL using the dashboard:
 

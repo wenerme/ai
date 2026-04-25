@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Nuxt ](https://developers.cloudflare.com/search/?tags=Nuxt)[ Vue.js ](https://developers.cloudflare.com/search/?tags=Vue.js)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/pages/tutorials/build-a-blog-using-nuxt-and-sanity.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages
 
 **Last reviewed:**  over 3 years ago 

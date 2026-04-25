@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/routing/custom-domains.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Custom Domains
 
 ## Background
@@ -69,8 +52,8 @@ After you have added the domain or subdomain, Cloudflare will create a new DNS r
 
 To configure a Custom Domain in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), add the `custom_domain=true` option on each pattern under `routes`. For example, to configure a Custom Domain:
 
-* [  wrangler.jsonc ](#tab-panel-9612)
-* [  wrangler.toml ](#tab-panel-9613)
+* [  wrangler.jsonc ](#tab-panel-9673)
+* [  wrangler.toml ](#tab-panel-9674)
 
 JSONC
 
@@ -110,8 +93,8 @@ custom_domain = true
 
 To configure multiple Custom Domains:
 
-* [  wrangler.jsonc ](#tab-panel-9616)
-* [  wrangler.toml ](#tab-panel-9617)
+* [  wrangler.jsonc ](#tab-panel-9677)
+* [  wrangler.toml ](#tab-panel-9678)
 
 JSONC
 
@@ -254,6 +237,22 @@ Creating a Custom Domain will also generate an [Advanced Certificate](https://de
 
 These certificates are generated with default settings. To override these settings, delete the generated certificate and create your own certificate in the Cloudflare dashboard. Refer to [Manage advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/) for instructions.
 
+## Redirect between www and root domain
+
+Because Custom Domains require an exact hostname match, a Worker attached to `example.com` will not receive requests sent to `www.example.com`, and vice versa. To make both versions of your domain work, set up a redirect rule:
+
+* [Redirect from www to root](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-www-to-root/)
+* [Redirect from root to www](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-root-to-www/)
+
+You also need a [proxied DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for the hostname you are redirecting _from_, so that Cloudflare can apply the redirect rule.
+
+* For www to root: Add a proxied DNS `A` record for `www` pointing to `192.0.2.0`, or a proxied `AAAA` record pointing to `100::`
+* For root to www: Add a proxied DNS `A` record for your root domain pointing to `192.0.2.0`, or a proxied `AAAA` record pointing to `100::`
+
+Note
+
+`192.0.2.0` (A record) and `100::` (AAAA record) are [reserved placeholder addresses](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#originless-setups) for originless setups. Because the DNS record is proxied, requests never reach this address — Cloudflare intercepts them and applies your redirect rule.
+
 ## Migrate from Routes
 
 If you are currently invoking a Worker using a [route](https://developers.cloudflare.com/workers/configuration/routing/routes/) with `/*`, and you have a CNAME record pointing to `100::` or similar, a Custom Domain is a recommended replacement.
@@ -278,8 +277,8 @@ To migrate the route `example.com/*` in your [Wrangler configuration file](https
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Delete the CNAME record for `example.com`.
 3. Add the following to your Wrangler file:  
-   * [  wrangler.jsonc ](#tab-panel-9614)  
-   * [  wrangler.toml ](#tab-panel-9615)  
+   * [  wrangler.jsonc ](#tab-panel-9675)  
+   * [  wrangler.toml ](#tab-panel-9676)  
 JSONC  
 ```  
 {  

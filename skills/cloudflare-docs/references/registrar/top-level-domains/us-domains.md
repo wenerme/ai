@@ -1,27 +1,10 @@
 ---
 title: .US domains
-description: If you want to register a .us domain, you must have a genuine connection to the United States as described in the usTLD Nexus Policy. When registering a domain name, registrants must identify the category under which they qualify for the usTLD Nexus Requirement:
+description: Register and manage .US domains with Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/registrar/top-level-domains/us-domains.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # .US domains
 

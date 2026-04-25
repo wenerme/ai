@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/http-sse.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # HTTP and Server-Sent Events
 
 Agents can handle HTTP requests and stream responses using Server-Sent Events (SSE). This page covers the `onRequest` method and SSE patterns.
@@ -31,8 +14,8 @@ Agents can handle HTTP requests and stream responses using Server-Sent Events (S
 
 Define the `onRequest` method to handle HTTP requests to your agent:
 
-* [  JavaScript ](#tab-panel-4386)
-* [  TypeScript ](#tab-panel-4387)
+* [  JavaScript ](#tab-panel-4396)
+* [  TypeScript ](#tab-panel-4397)
 
 JavaScript
 
@@ -158,8 +141,8 @@ SSE allows you to stream data to clients over a long-running HTTP connection. Th
 
 Create an SSE stream manually using `ReadableStream`:
 
-* [  JavaScript ](#tab-panel-4390)
-* [  TypeScript ](#tab-panel-4391)
+* [  JavaScript ](#tab-panel-4400)
+* [  TypeScript ](#tab-panel-4401)
 
 JavaScript
 
@@ -311,8 +294,8 @@ data: {"count": 42}\n\n
 
 The [AI SDK ↗](https://sdk.vercel.ai/) provides built-in SSE streaming:
 
-* [  JavaScript ](#tab-panel-4384)
-* [  TypeScript ](#tab-panel-4385)
+* [  JavaScript ](#tab-panel-4394)
+* [  TypeScript ](#tab-panel-4395)
 
 JavaScript
 
@@ -411,8 +394,8 @@ SSE connections can be long-lived. Handle client disconnects gracefully:
 * **Use agent routing** — Clients can [reconnect to the same agent instance](https://developers.cloudflare.com/agents/api-reference/routing/) without session stores
 * **No timeout limits** — Cloudflare Workers have no effective limit on SSE response duration
 
-* [  JavaScript ](#tab-panel-4388)
-* [  TypeScript ](#tab-panel-4389)
+* [  JavaScript ](#tab-panel-4398)
+* [  TypeScript ](#tab-panel-4399)
 
 JavaScript
 

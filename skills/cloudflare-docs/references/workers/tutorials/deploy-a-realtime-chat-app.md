@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/tutorials/deploy-a-realtime-chat-app.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Deploy a real-time chat application
 
 **Last reviewed:**  over 2 years ago 
@@ -86,8 +69,8 @@ To deploy your application to a custom domain using Wrangler, open your project'
 
 To configure a route in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-10281)
-* [  wrangler.toml ](#tab-panel-10282)
+* [  wrangler.jsonc ](#tab-panel-10342)
+* [  wrangler.toml ](#tab-panel-10343)
 
 JSONC
 
@@ -129,8 +112,8 @@ If you have specified your zone ID in the environment of your Wrangler configura
 
 To configure a subdomain in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-10283)
-* [  wrangler.toml ](#tab-panel-10284)
+* [  wrangler.jsonc ](#tab-panel-10344)
+* [  wrangler.toml ](#tab-panel-10345)
 
 JSONC
 
@@ -181,8 +164,8 @@ To test your live application:
 
 To uninstall your chat application, modify your Wrangler file to remove the `durable_objects` bindings and add a `deleted_classes` migration:
 
-* [  wrangler.jsonc ](#tab-panel-10285)
-* [  wrangler.toml ](#tab-panel-10286)
+* [  wrangler.jsonc ](#tab-panel-10346)
+* [  wrangler.toml ](#tab-panel-10347)
 
 JSONC
 

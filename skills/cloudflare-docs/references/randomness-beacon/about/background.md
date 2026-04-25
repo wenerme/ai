@@ -1,27 +1,10 @@
 ---
 title: Background
-description: Over the years, a generation of public randomness (often referred to as common coins) has attracted interest from the cryptography research community. Many distributed systems, including various consensus mechanisms, anonymity networks such as Tor, or blockchain systems, assume access to such public randomness. However, it remained a major unsolved issue to generate public randomness in a distributed, scalable, and robust way. Currently, there is no service deployed to produce this type of randomness. The only choice is a centralized, prototype-only randomness beacon run by NIST.
+description: History and development of the drand project.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/randomness-beacon/about/background.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Background
 

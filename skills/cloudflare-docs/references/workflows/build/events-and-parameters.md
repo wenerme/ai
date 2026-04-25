@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workflows/build/events-and-parameters.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Events and parameters
 
 When a Workflow is triggered, it can receive an optional event. This event can include data that your Workflow can act on, including request details, user data fetched from your database (such as D1 or KV) or from a webhook, or messages from a Queue consumer.
@@ -45,8 +28,8 @@ A `WorkflowEvent` and its associated `payload` property are effectively _immutab
 
 Store state durably by returning it from your `step.do` callbacks.
 
-* [  JavaScript ](#tab-panel-11077)
-* [  TypeScript ](#tab-panel-11078)
+* [  JavaScript ](#tab-panel-11138)
+* [  TypeScript ](#tab-panel-11139)
 
 JavaScript
 
@@ -167,8 +150,8 @@ The `waitForEvent` type parameter only supports letters, digits, `-`, and `_`. C
 
 For example, to wait for billing webhook:
 
-* [  JavaScript ](#tab-panel-11073)
-* [  TypeScript ](#tab-panel-11074)
+* [  JavaScript ](#tab-panel-11134)
+* [  TypeScript ](#tab-panel-11135)
 
 JavaScript
 
@@ -236,8 +219,8 @@ The above example:
 
 The default timeout for a `waitForEvent` call is 24 hours, which can be changed by passing `{ timeout: WorkflowTimeoutDuration }` as the second argument to your `waitForEvent` call.
 
-* [  JavaScript ](#tab-panel-11071)
-* [  TypeScript ](#tab-panel-11072)
+* [  JavaScript ](#tab-panel-11132)
+* [  TypeScript ](#tab-panel-11133)
 
 JavaScript
 
@@ -275,8 +258,8 @@ Timeout behavior
 
 When `waitForEvent` times out, the Workflow will throw an error and the instance will fail. If you want your Workflow to continue even if the event is not received, wrap the `waitForEvent` call in a `try...catch` block:
 
-* [  JavaScript ](#tab-panel-11075)
-* [  TypeScript ](#tab-panel-11076)
+* [  JavaScript ](#tab-panel-11136)
+* [  TypeScript ](#tab-panel-11137)
 
 JavaScript
 
@@ -340,8 +323,8 @@ Explain Code
 
 Workflow instances that are waiting on events using the `waitForEvent` API can be sent events using the `instance.sendEvent` API:
 
-* [  JavaScript ](#tab-panel-11079)
-* [  TypeScript ](#tab-panel-11080)
+* [  JavaScript ](#tab-panel-11140)
+* [  TypeScript ](#tab-panel-11141)
 
 JavaScript
 

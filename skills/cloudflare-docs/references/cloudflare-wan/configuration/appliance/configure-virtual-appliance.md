@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-wan/configuration/appliance/configure-virtual-appliance.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Configure Virtual Appliance
 
 Cloudflare One Virtual Appliance is a virtual device alternative to the hardware based Cloudflare One Appliance. These two versions of Cloudflare One Appliance are identical otherwise.
@@ -84,8 +67,8 @@ Cloudflare One Virtual Appliance uses a DHCP connection at first boot to downloa
 
 Select the appropriate tab to configure Cloudflare One Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment.
 
-* [ VMWare ESXi ](#tab-panel-6344)
-* [ Proxmox Virtual Environment (beta) ](#tab-panel-6345)
+* [ VMWare ESXi ](#tab-panel-6396)
+* [ Proxmox Virtual Environment (beta) ](#tab-panel-6397)
 
 **1\. Obtain the VMWare image**
 
@@ -223,8 +206,8 @@ For details, refer to [Configure a virtual machine](#configure-a-virtual-machine
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-6340)
-* [ API ](#tab-panel-6341)
+* [ Dashboard ](#tab-panel-6392)
+* [ API ](#tab-panel-6393)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -282,8 +265,8 @@ Explain Code
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-6342)
-* [ API ](#tab-panel-6343)
+* [ Dashboard ](#tab-panel-6394)
+* [ API ](#tab-panel-6395)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.

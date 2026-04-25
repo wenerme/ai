@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2/examples/ssec.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Use SSE-C
 
 **Last reviewed:**  over 1 year ago 
@@ -36,8 +19,8 @@ The following tutorial shows some snippets for how to use Server-Side Encryption
 
 ## Workers
 
-* [  TypeScript ](#tab-panel-8229)
-* [  JavaScript ](#tab-panel-8230)
+* [  TypeScript ](#tab-panel-8286)
+* [  JavaScript ](#tab-panel-8287)
 
 TypeScript
 
@@ -327,7 +310,7 @@ Explain Code
 
 ## S3-API
 
-* [  @aws-sdk/client-s3 ](#tab-panel-8228)
+* [  @aws-sdk/client-s3 ](#tab-panel-8285)
 
 TypeScript
 

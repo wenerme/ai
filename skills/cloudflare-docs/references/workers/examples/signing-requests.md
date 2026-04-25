@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Web Crypto ](https://developers.cloudflare.com/search/?tags=Web%20Crypto)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/signing-requests.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Sign requests
 
 **Last reviewed:**  over 2 years ago 
@@ -50,10 +33,10 @@ The following Worker will:
 * For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.
 * For all other request URLs, verify the signed URL and allow the request through.
 
-* [  JavaScript ](#tab-panel-9882)
-* [  TypeScript ](#tab-panel-9883)
-* [  Hono ](#tab-panel-9884)
-* [  Python ](#tab-panel-9885)
+* [  JavaScript ](#tab-panel-9943)
+* [  TypeScript ](#tab-panel-9944)
+* [  Hono ](#tab-panel-9945)
+* [  Python ](#tab-panel-9946)
 
 JavaScript
 

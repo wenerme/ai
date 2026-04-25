@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg) 
 
 #  stable-diffusion-v1-5-inpainting Beta 
@@ -42,8 +25,8 @@ Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3955)
-* [  curl ](#tab-panel-3956)
+* [  TypeScript ](#tab-panel-3965)
+* [  curl ](#tab-panel-3966)
 
 ```
 
@@ -135,8 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3959)
-* [ Output ](#tab-panel-3960)
+* [ Input ](#tab-panel-3969)
+* [ Output ](#tab-panel-3970)
 
 prompt
 
@@ -186,8 +169,8 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3957)
-* [ Output ](#tab-panel-3958)
+* [ Input ](#tab-panel-3967)
+* [ Output ](#tab-panel-3968)
 
 ```
 

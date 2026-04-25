@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Bindings ](https://developers.cloudflare.com/search/?tags=Bindings) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/static-assets/binding.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Configuration and Bindings
 
 Configuring a Worker with assets requires specifying a [directory](https://developers.cloudflare.com/workers/static-assets/binding/#directory) and, optionally, an [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/), in your Worker's Wrangler file. The [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/) allows you to dynamically fetch assets from within your Worker script (e.g. `env.ASSETS.fetch()`), similarly to how you might with a make a `fetch()` call with a [Service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/http/).
@@ -37,8 +20,8 @@ Only one collection of static assets can be configured in each Worker.
 
 The folder of static assets to be served. For many frameworks, this is the `./public/`, `./dist/`, or `./build/` folder.
 
-* [  wrangler.jsonc ](#tab-panel-10189)
-* [  wrangler.toml ](#tab-panel-10190)
+* [  wrangler.jsonc ](#tab-panel-10250)
+* [  wrangler.toml ](#tab-panel-10251)
 
 JSONC
 
@@ -114,8 +97,8 @@ Now Wrangler will not upload these files as client-side assets when deploying th
 
 Controls whether to invoke the Worker script regardless of a request which would have otherwise matched an asset. `run_worker_first = false` (default) will serve any static asset matching a request, while `run_worker_first = true` will unconditionally [invoke your Worker script](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#run-your-worker-script-first).
 
-* [  wrangler.jsonc ](#tab-panel-10191)
-* [  wrangler.toml ](#tab-panel-10192)
+* [  wrangler.jsonc ](#tab-panel-10252)
+* [  wrangler.toml ](#tab-panel-10253)
 
 JSONC
 
@@ -192,8 +175,8 @@ The order in which the patterns are listed is not significant.
 
 `run_worker_first` is often paired with the [not\_found\_handling = "single-page-application" setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control):
 
-* [  wrangler.jsonc ](#tab-panel-10193)
-* [  wrangler.toml ](#tab-panel-10194)
+* [  wrangler.jsonc ](#tab-panel-10254)
+* [  wrangler.toml ](#tab-panel-10255)
 
 JSONC
 
@@ -264,8 +247,8 @@ Common uses for `run_worker_first` include authentication checks, A/B testing, a
 
 Configuring the optional [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) gives you access to the collection of assets from within your Worker script.
 
-* [  wrangler.jsonc ](#tab-panel-10195)
-* [  wrangler.toml ](#tab-panel-10196)
+* [  wrangler.jsonc ](#tab-panel-10256)
+* [  wrangler.toml ](#tab-panel-10257)
 
 JSONC
 
@@ -346,8 +329,8 @@ If you need to fetch assets from within an [RPC method](https://developers.cloud
 
 Take the following example that configures a Worker script to return a response under all requests headed for `/api/`. Otherwise, the Worker script will pass the incoming request through to the asset binding. In this case, because a Worker script is only invoked when the requested route has not matched any static assets, this will always evaluate [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/#routing-behavior) behavior.
 
-* [  JavaScript ](#tab-panel-10187)
-* [  TypeScript ](#tab-panel-10188)
+* [  JavaScript ](#tab-panel-10248)
+* [  TypeScript ](#tab-panel-10249)
 
 JavaScript
 

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ RPC ](https://developers.cloudflare.com/search/?tags=RPC) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/bindings/service-bindings/rpc.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # RPC (WorkerEntrypoint)
 
 [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) allow one Worker to call into another, without going through a publicly-accessible URL.
@@ -45,8 +28,8 @@ For example, the following Worker implements the public method `add(a, b)`:
 
 For example, if Worker B implements the public method `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-10079)
-* [  wrangler.toml ](#tab-panel-10080)
+* [  wrangler.jsonc ](#tab-panel-10140)
+* [  wrangler.toml ](#tab-panel-10141)
 
 JSONC
 
@@ -78,9 +61,9 @@ main = "./src/workerB.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-10086)
-* [  TypeScript ](#tab-panel-10087)
-* [  Python ](#tab-panel-10088)
+* [  JavaScript ](#tab-panel-10147)
+* [  TypeScript ](#tab-panel-10148)
+* [  Python ](#tab-panel-10149)
 
 JavaScript
 
@@ -163,8 +146,8 @@ class Default(WorkerEntrypoint):
 
 Worker A can declare a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to Worker B:
 
-* [  wrangler.jsonc ](#tab-panel-10081)
-* [  wrangler.toml ](#tab-panel-10082)
+* [  wrangler.jsonc ](#tab-panel-10142)
+* [  wrangler.toml ](#tab-panel-10143)
 
 JSONC
 
@@ -219,9 +202,9 @@ service = "worker_b"
 
 Making it possible for Worker A to call the `add()` method from Worker B:
 
-* [  JavaScript ](#tab-panel-10083)
-* [  TypeScript ](#tab-panel-10084)
-* [  Python ](#tab-panel-10085)
+* [  JavaScript ](#tab-panel-10144)
+* [  TypeScript ](#tab-panel-10145)
+* [  Python ](#tab-panel-10146)
 
 JavaScript
 
@@ -309,8 +292,8 @@ The [env](https://developers.cloudflare.com/workers/runtime-apis/bindings) objec
 
 For example, a Worker that declares a binding to the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) `GREETING`:
 
-* [  wrangler.jsonc ](#tab-panel-10069)
-* [  wrangler.toml ](#tab-panel-10070)
+* [  wrangler.jsonc ](#tab-panel-10130)
+* [  wrangler.toml ](#tab-panel-10131)
 
 JSONC
 
@@ -424,8 +407,8 @@ Explain Code
 
 If your Worker has a [static assets binding](https://developers.cloudflare.com/workers/static-assets/binding/), you can call `this.env.ASSETS.fetch()` from within an RPC method. Since RPC methods do not receive a `request` parameter, construct a `Request` or URL with any hostname — the hostname is ignored by the assets binding, only the pathname matters:
 
-* [  JavaScript ](#tab-panel-10077)
-* [  TypeScript ](#tab-panel-10078)
+* [  JavaScript ](#tab-panel-10138)
+* [  TypeScript ](#tab-panel-10139)
 
 JavaScript
 
@@ -473,8 +456,8 @@ export class ImageWorker extends WorkerEntrypoint {
 
 The caller can then invoke this method via RPC:
 
-* [  JavaScript ](#tab-panel-10073)
-* [  TypeScript ](#tab-panel-10074)
+* [  JavaScript ](#tab-panel-10134)
+* [  TypeScript ](#tab-panel-10135)
 
 JavaScript
 
@@ -504,8 +487,8 @@ You can also export any number of named `WorkerEntrypoint` classes from within a
 
 You can use this to group multiple pieces of compute together. For example, you might create a distinct `WorkerEntrypoint` for each permission role in your application, and use these to provide role-specific RPC methods:
 
-* [  wrangler.jsonc ](#tab-panel-10071)
-* [  wrangler.toml ](#tab-panel-10072)
+* [  wrangler.jsonc ](#tab-panel-10132)
+* [  wrangler.toml ](#tab-panel-10133)
 
 JSONC
 
@@ -642,8 +625,8 @@ Explain Code
 
 You can then declare a Service binding directly to `AdminEntrypoint` in another Worker:
 
-* [  wrangler.jsonc ](#tab-panel-10075)
-* [  wrangler.toml ](#tab-panel-10076)
+* [  wrangler.jsonc ](#tab-panel-10136)
+* [  wrangler.toml ](#tab-panel-10137)
 
 JSONC
 

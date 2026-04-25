@@ -6,7 +6,7 @@ OpenAI provides a few ways to manage conversation state, which is important for 
   When troubleshooting cases where GPT-5.4 treats an intermediate update as
     the final answer, verify your integration preserves the assistant message
     `phase` field correctly. See [Phase
-    parameter](https://developers.openai.com/api/docs/guides/prompt-guidance#phase-parameter) for details.
+    parameter](https://developers.openai.com/api/docs/guides/reasoning#phase-parameter) for details.
 
 
 ## Manually manage conversation state

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/tools/ip-access-rules/create.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Create an IP access rule
 
 Recommendation: Use custom rules instead
@@ -33,9 +16,9 @@ Warning
 
 For [Spectrum](https://developers.cloudflare.com/spectrum/) applications configured with the non-HTTP/HTTPS application type, IP Access rules are the only supported mechanism for filtering traffic by IP address, IP range, country, or ASN. To use them, enable IP Access rules in your [Spectrum app configuration](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules).
 
-* [  New dashboard ](#tab-panel-9403)
-* [ Old dashboard ](#tab-panel-9404)
-* [ API ](#tab-panel-9405)
+* [  New dashboard ](#tab-panel-9464)
+* [ Old dashboard ](#tab-panel-9465)
+* [ API ](#tab-panel-9466)
 
 Note
 

@@ -1,8 +1,8 @@
-# Claude Desktop
-
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/guides/coding-agents/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/guides/coding-agents/llms-full.txt.
+
+# Claude Desktop
 
 <Warning>
   Claude Desktop with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/guides/routing/provider-selection) when using Claude Desktop.
@@ -82,4 +82,5 @@ Claude Code is Anthropic's separate CLI-based coding agent that also works with 
 * **Connection Errors:** Double-check that your Gateway base URL is exactly `https://openrouter.ai/api` and your API key is valid. Make sure the auth scheme is set to `bearer`.
 * **No Models Appearing:** Ensure you have credits in your OpenRouter account. Visit [openrouter.ai/credits](https://openrouter.ai/credits) to check your balance.
 * **"Continue with Gateway" Not Showing:** Make sure you applied the settings locally and fully restarted Claude Desktop (quit and reopen, not just close the window).
+* **"Access to this website is blocked by your network egress settings" using WebFetch:** Cowork sandboxes tool traffic by default, which can block the WebFetch tool from reaching sites you haven't allowlisted. This restriction is specific to Cowork — the rest of Claude Desktop is unaffected. Open **Developer > Configure Third-Party Inference…**, switch to the **Sandbox & workspace** tab, and add the required hosts to **Allowed egress hosts**.
 * **Privacy:** OpenRouter does not log your prompts unless you explicitly opt-in to prompt logging in your account settings. See our [Privacy Policy](/privacy) for details.

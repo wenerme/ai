@@ -10,33 +10,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/block-on-tls.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Block on TLS
 
 **Last reviewed:**  about 4 years ago 
 
 Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 
-* [  JavaScript ](#tab-panel-9726)
-* [  TypeScript ](#tab-panel-9727)
-* [  Hono ](#tab-panel-9728)
-* [  Python ](#tab-panel-9729)
+* [  JavaScript ](#tab-panel-9787)
+* [  TypeScript ](#tab-panel-9788)
+* [  Hono ](#tab-panel-9789)
+* [  Python ](#tab-panel-9790)
 
 JavaScript
 

@@ -32,7 +32,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-4.1",
+    model="gpt-5.5",
     input="What is deep research by OpenAI?",
     tools=[{
         "type": "file_search",
@@ -47,7 +47,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-4.1",
+    model: "gpt-5.5",
     input: "What is deep research by OpenAI?",
     tools: [
         {
@@ -63,7 +63,7 @@ console.log(response);
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateFileSearchTool(["<vector_store_id>"]));
@@ -93,7 +93,7 @@ curl https://api.openai.com/v1/responses \\
 -H "Content-Type: application/json" \\ 
 -H "Authorization: Bearer $OPENAI_API_KEY" \\ 
 -d '{
-  "model": "gpt-5",
+  "model": "gpt-5.5",
     "tools": [
       {
         "type": "mcp",
@@ -112,7 +112,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.5",
   tools: [
     {
       type: "mcp",
@@ -134,7 +134,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     tools=[
         {
             "type": "mcp",
@@ -154,7 +154,7 @@ print(resp.output_text)
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
 
 ResponseCreationOptions options = new();
 options.Tools.Add(ResponseTool.CreateMcpTool(

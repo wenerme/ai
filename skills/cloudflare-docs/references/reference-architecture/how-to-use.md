@@ -1,27 +1,10 @@
 ---
 title: How to use
-description: Below are the different types of architecture content and information is organized from high level reference architectures, to design guides with best practices and guidelines to implementation guides which provide detailed steps to deploy a specific solution.
+description: Navigate reference architectures, design guides, and implementation guides.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/reference-architecture/how-to-use.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # How to use
 

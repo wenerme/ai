@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/custom-rules/use-cases/configure-token-authentication.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Configure token authentication
 
 Token authentication allows you to restrict access to documents, files, and media to select users without requiring them to register. This helps protect paid/restricted content from leeching and unauthorized sharing.
@@ -117,10 +100,10 @@ Then the token is valid and the `is_timed_hmac_valid_v0()` function returns `tru
 
 The following examples show how you could generate tokens at your origin server for the path validated using the custom rule described in the previous section:
 
-* [  Python 3.8 ](#tab-panel-9303)
-* [  Python 2.7 ](#tab-panel-9304)
-* [  PHP ](#tab-panel-9305)
-* [ Workers ](#tab-panel-9306)
+* [  Python 3.8 ](#tab-panel-9364)
+* [  Python 2.7 ](#tab-panel-9365)
+* [  PHP ](#tab-panel-9366)
+* [ Workers ](#tab-panel-9367)
 
 Python
 

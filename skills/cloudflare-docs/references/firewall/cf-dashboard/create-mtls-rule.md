@@ -1,27 +1,10 @@
 ---
 title: Create a mTLS rule
-description: Use the Mutual TLS Rule interface in the Cloudflare dashboard to create an mTLS rule that requires requests to your API or web application to present a valid client certificate.
+description: Create a mutual TLS rule in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/firewall/cf-dashboard/create-mtls-rule.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Create a mTLS rule
 

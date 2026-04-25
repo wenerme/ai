@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/argo-smart-routing/get-started.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Get started
 
 Smart Shield
@@ -31,8 +14,8 @@ This functionality is now offered as part of Cloudflare's origin server safeguar
 
 Argo Smart Routing is a one-click solution to speed up your global traffic.
 
-* [ Dashboard ](#tab-panel-5451)
-* [ API ](#tab-panel-5452)
+* [ Dashboard ](#tab-panel-5461)
+* [ API ](#tab-panel-5462)
 
 To enable [Argo Smart Routing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic) in the dashboard:
 

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ WebSockets ](https://developers.cloudflare.com/search/?tags=WebSockets) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/examples/websocket-hibernation-server.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Build a WebSocket server with WebSocket Hibernation
 
 **Last reviewed:**  about 2 years ago 
@@ -39,9 +22,9 @@ Note
 
 WebSocket Hibernation is unavailable for outgoing WebSocket use cases. Hibernation is only supported when the Durable Object acts as a server. For use cases where outgoing WebSockets are required, refer to [Write a WebSocket client](https://developers.cloudflare.com/workers/examples/websockets/#write-a-websocket-client).
 
-* [  JavaScript ](#tab-panel-6938)
-* [  TypeScript ](#tab-panel-6939)
-* [  Python ](#tab-panel-6940)
+* [  JavaScript ](#tab-panel-6992)
+* [  TypeScript ](#tab-panel-6993)
+* [  Python ](#tab-panel-6994)
 
 JavaScript
 
@@ -767,8 +750,8 @@ Explain Code
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-6936)
-* [  wrangler.toml ](#tab-panel-6937)
+* [  wrangler.jsonc ](#tab-panel-6990)
+* [  wrangler.toml ](#tab-panel-6991)
 
 JSONC
 

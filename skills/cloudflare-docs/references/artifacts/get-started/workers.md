@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/artifacts/get-started/workers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Workers
 
 Create an Artifacts repo from a Worker and use a standard Git client to push and pull content.
@@ -75,8 +58,8 @@ cd artifacts-worker
 
 Open your Wrangler config file and add the Artifacts binding:
 
-* [  wrangler.jsonc ](#tab-panel-5497)
-* [  wrangler.toml ](#tab-panel-5498)
+* [  wrangler.jsonc ](#tab-panel-5507)
+* [  wrangler.toml ](#tab-panel-5508)
 
 JSONC
 
@@ -161,8 +144,8 @@ Wrangler adds an `Artifacts` type to your generated `worker-configuration.d.ts` 
 
 Replace `src/index.ts` with the following code:
 
-* [  JavaScript ](#tab-panel-5499)
-* [  TypeScript ](#tab-panel-5500)
+* [  JavaScript ](#tab-panel-5509)
+* [  TypeScript ](#tab-panel-5510)
 
 src/index.js
 
@@ -316,8 +299,8 @@ In a second terminal, choose one of the following ways to create a repo through 
 
 If you rerun this guide, use a different repo name in the request body.
 
-* [ Manual ](#tab-panel-5495)
-* [ jq ](#tab-panel-5496)
+* [ Manual ](#tab-panel-5505)
+* [ jq ](#tab-panel-5506)
 
 Terminal window
 

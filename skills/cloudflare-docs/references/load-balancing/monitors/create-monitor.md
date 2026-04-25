@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/load-balancing/monitors/create-monitor.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Manage monitors
 
 A monitor issues health monitor requests at regular intervals to evaluate the health of each endpoint within a [pool](https://developers.cloudflare.com/load-balancing/pools/).
@@ -35,8 +18,8 @@ For more details about monitors, refer to [Monitors](https://developers.cloudfla
 
 ## Create a monitor
 
-* [ Dashboard ](#tab-panel-7809)
-* [ API ](#tab-panel-7810)
+* [ Dashboard ](#tab-panel-7863)
+* [ API ](#tab-panel-7864)
 
 **Set up the monitor**
 
@@ -270,8 +253,8 @@ Once your monitor is created, save its `id` property. Include this value in the 
 
 ## Edit a monitor
 
-* [ Dashboard ](#tab-panel-7805)
-* [ API ](#tab-panel-7806)
+* [ Dashboard ](#tab-panel-7859)
+* [ API ](#tab-panel-7860)
 
 To edit a monitor in the dashboard:
 
@@ -289,8 +272,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 ## Delete a monitor
 
-* [ Dashboard ](#tab-panel-7807)
-* [ API ](#tab-panel-7808)
+* [ Dashboard ](#tab-panel-7861)
+* [ API ](#tab-panel-7862)
 
 To delete a monitor in the dashboard:
 

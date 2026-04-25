@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/configuration.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Configuration
 
 This guide covers everything you need to configure agents for local development and production deployment, including Wrangler configuration file setup, type generation, environment variables, and the Cloudflare dashboard.
@@ -47,8 +30,8 @@ The typical file structure for an Agent project created from `npm create cloudfl
 
 The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. Here is a complete example for an agents project:
 
-* [  wrangler.jsonc ](#tab-panel-4294)
-* [  wrangler.toml ](#tab-panel-4295)
+* [  wrangler.jsonc ](#tab-panel-4304)
+* [  wrangler.toml ](#tab-panel-4305)
 
 JSONC
 
@@ -211,8 +194,8 @@ Explain Code
 
 The `nodejs_compat` flag is required for agents:
 
-* [  wrangler.jsonc ](#tab-panel-4276)
-* [  wrangler.toml ](#tab-panel-4277)
+* [  wrangler.jsonc ](#tab-panel-4286)
+* [  wrangler.toml ](#tab-panel-4287)
 
 JSONC
 
@@ -242,8 +225,8 @@ This enables Node.js compatibility mode, which agents depend on for crypto, stre
 
 Each agent class needs a binding:
 
-* [  wrangler.jsonc ](#tab-panel-4278)
-* [  wrangler.toml ](#tab-panel-4279)
+* [  wrangler.jsonc ](#tab-panel-4288)
+* [  wrangler.toml ](#tab-panel-4289)
 
 JSONC
 
@@ -296,8 +279,8 @@ When `name` and `class_name` differ
 
 When `name` and `class_name` differ, follow the pattern shown below:
 
-* [  wrangler.jsonc ](#tab-panel-4280)
-* [  wrangler.toml ](#tab-panel-4281)
+* [  wrangler.jsonc ](#tab-panel-4290)
+* [  wrangler.toml ](#tab-panel-4291)
 
 JSONC
 
@@ -347,8 +330,8 @@ This is useful when you want environment variable-style naming (`COUNTER_DO`) bu
 
 Migrations tell Cloudflare how to set up storage for your Durable Objects:
 
-* [  wrangler.jsonc ](#tab-panel-4282)
-* [  wrangler.toml ](#tab-panel-4283)
+* [  wrangler.jsonc ](#tab-panel-4292)
+* [  wrangler.toml ](#tab-panel-4293)
 
 JSONC
 
@@ -397,8 +380,8 @@ new_sqlite_classes = [ "MyAgent" ]
 
 For serving static files (HTML, CSS, JS):
 
-* [  wrangler.jsonc ](#tab-panel-4284)
-* [  wrangler.toml ](#tab-panel-4285)
+* [  wrangler.jsonc ](#tab-panel-4294)
+* [  wrangler.toml ](#tab-panel-4295)
 
 JSONC
 
@@ -434,8 +417,8 @@ binding = "ASSETS"
 
 With a binding, you can serve assets programmatically:
 
-* [  JavaScript ](#tab-panel-4314)
-* [  TypeScript ](#tab-panel-4315)
+* [  JavaScript ](#tab-panel-4324)
+* [  TypeScript ](#tab-panel-4325)
 
 JavaScript
 
@@ -503,8 +486,8 @@ Explain Code
 
 For Workers AI integration:
 
-* [  wrangler.jsonc ](#tab-panel-4286)
-* [  wrangler.toml ](#tab-panel-4287)
+* [  wrangler.jsonc ](#tab-panel-4296)
+* [  wrangler.toml ](#tab-panel-4297)
 
 JSONC
 
@@ -536,8 +519,8 @@ binding = "AI"
 
 Access in your agent:
 
-* [  JavaScript ](#tab-panel-4310)
-* [  TypeScript ](#tab-panel-4311)
+* [  JavaScript ](#tab-panel-4320)
+* [  TypeScript ](#tab-panel-4321)
 
 JavaScript
 
@@ -656,8 +639,8 @@ The Agents SDK provides a Vite plugin that handles TC39 decorator transforms. Vi
 
 Add the plugin to your `vite.config.ts`:
 
-* [  JavaScript ](#tab-panel-4316)
-* [  TypeScript ](#tab-panel-4317)
+* [  JavaScript ](#tab-panel-4326)
+* [  TypeScript ](#tab-panel-4327)
 
 JavaScript
 
@@ -785,8 +768,8 @@ interface Env extends Cloudflare.Env {}
 
 You can also define types manually:
 
-* [  JavaScript ](#tab-panel-4324)
-* [  TypeScript ](#tab-panel-4325)
+* [  JavaScript ](#tab-panel-4334)
+* [  TypeScript ](#tab-panel-4335)
 
 JavaScript
 
@@ -881,8 +864,8 @@ DATABASE_URL=postgres://...
 
 Access in your agent:
 
-* [  JavaScript ](#tab-panel-4322)
-* [  TypeScript ](#tab-panel-4323)
+* [  JavaScript ](#tab-panel-4332)
+* [  TypeScript ](#tab-panel-4333)
 
 JavaScript
 
@@ -949,8 +932,8 @@ npx wrangler secret delete OPENAI_API_KEY
 
 For non-sensitive configuration, use `vars` in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4288)
-* [  wrangler.toml ](#tab-panel-4289)
+* [  wrangler.jsonc ](#tab-panel-4298)
+* [  wrangler.toml ](#tab-panel-4299)
 
 JSONC
 
@@ -990,8 +973,8 @@ DEBUG_MODE = "false"
 
 All values must be strings. Parse numbers and booleans in code:
 
-* [  JavaScript ](#tab-panel-4318)
-* [  TypeScript ](#tab-panel-4319)
+* [  JavaScript ](#tab-panel-4328)
+* [  TypeScript ](#tab-panel-4329)
 
 JavaScript
 
@@ -1019,8 +1002,8 @@ const debugMode = this.env.DEBUG_MODE === "true";
 
 Use `env` sections for different environments (for example, staging, production):
 
-* [  wrangler.jsonc ](#tab-panel-4296)
-* [  wrangler.toml ](#tab-panel-4297)
+* [  wrangler.jsonc ](#tab-panel-4306)
+* [  wrangler.toml ](#tab-panel-4307)
 
 JSONC
 
@@ -1260,8 +1243,8 @@ This:
 
 Add a route in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4290)
-* [  wrangler.toml ](#tab-panel-4291)
+* [  wrangler.jsonc ](#tab-panel-4300)
+* [  wrangler.toml ](#tab-panel-4301)
 
 JSONC
 
@@ -1301,8 +1284,8 @@ zone_name = "example.com"
 
 Or use a custom domain (simpler):
 
-* [  wrangler.jsonc ](#tab-panel-4292)
-* [  wrangler.toml ](#tab-panel-4293)
+* [  wrangler.jsonc ](#tab-panel-4302)
+* [  wrangler.toml ](#tab-panel-4303)
 
 JSONC
 
@@ -1376,8 +1359,8 @@ npx wrangler rollback
 
 Define environments in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4320)
-* [  wrangler.toml ](#tab-panel-4321)
+* [  wrangler.jsonc ](#tab-panel-4330)
+* [  wrangler.toml ](#tab-panel-4331)
 
 JSONC
 
@@ -1528,8 +1511,8 @@ Each environment gets its own Durable Objects. Staging agents do not share state
 
 To explicitly separate:
 
-* [  wrangler.jsonc ](#tab-panel-4300)
-* [  wrangler.toml ](#tab-panel-4301)
+* [  wrangler.jsonc ](#tab-panel-4310)
+* [  wrangler.toml ](#tab-panel-4311)
 
 JSONC
 
@@ -1593,8 +1576,8 @@ Migrations manage Durable Object storage schema changes.
 
 Add to `new_sqlite_classes` in a new migration:
 
-* [  wrangler.jsonc ](#tab-panel-4298)
-* [  wrangler.toml ](#tab-panel-4299)
+* [  wrangler.jsonc ](#tab-panel-4308)
+* [  wrangler.toml ](#tab-panel-4309)
 
 JSONC
 
@@ -1653,8 +1636,8 @@ new_sqlite_classes = [ "NewAgent" ]
 
 Use `renamed_classes`:
 
-* [  wrangler.jsonc ](#tab-panel-4312)
-* [  wrangler.toml ](#tab-panel-4313)
+* [  wrangler.jsonc ](#tab-panel-4322)
+* [  wrangler.toml ](#tab-panel-4323)
 
 JSONC
 
@@ -1736,8 +1719,8 @@ Also update:
 
 Use `deleted_classes`:
 
-* [  wrangler.jsonc ](#tab-panel-4306)
-* [  wrangler.toml ](#tab-panel-4307)
+* [  wrangler.jsonc ](#tab-panel-4316)
+* [  wrangler.toml ](#tab-panel-4317)
 
 JSONC
 
@@ -1809,8 +1792,8 @@ This permanently deletes all data for that class.
 
 The class is not in migrations:
 
-* [  wrangler.jsonc ](#tab-panel-4302)
-* [  wrangler.toml ](#tab-panel-4303)
+* [  wrangler.jsonc ](#tab-panel-4312)
+* [  wrangler.toml ](#tab-panel-4313)
 
 JSONC
 
@@ -1880,8 +1863,8 @@ cat .env
 
 Migration tags must be unique. If you see conflicts:
 
-* [  wrangler.jsonc ](#tab-panel-4304)
-* [  wrangler.toml ](#tab-panel-4305)
+* [  wrangler.jsonc ](#tab-panel-4314)
+* [  wrangler.toml ](#tab-panel-4315)
 
 JSONC
 
@@ -1924,8 +1907,8 @@ new_sqlite_classes = [ "B" ]
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-4308)
-* [  wrangler.toml ](#tab-panel-4309)
+* [  wrangler.jsonc ](#tab-panel-4318)
+* [  wrangler.toml ](#tab-panel-4319)
 
 JSONC
 

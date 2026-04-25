@@ -1,27 +1,10 @@
 ---
 title: Setup Phase
-description: In the drand setup phase, you create a collective private and public key pair shared among 𝑛 participants. This is done through a 𝑡-of-𝑛 Distributed Key Generation (DKG) process and results in each participant receiving a copy of the collective public key plus a private key share of the collective private key — no individual node knows the collective private key. Each private key share can then be used to perform cryptographic threshold computations, such as generating threshold signatures, where at least 𝑡 contributions produced using the individual private key shares are required to successfully finish the collective operation.
+description: Learn about the distributed key generation phase.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/randomness-beacon/cryptographic-background/setup-phase.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Setup Phase
 

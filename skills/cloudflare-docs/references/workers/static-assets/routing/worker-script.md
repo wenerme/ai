@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/static-assets/routing/worker-script.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Worker script
 
 If you have both static assets and a Worker script configured, Cloudflare will first attempt to serve static assets if one matches the incoming request. You can read more about how we match assets in the [HTML handling docs](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/).
@@ -43,8 +26,8 @@ If you are using [Smart Placement](https://developers.cloudflare.com/workers/con
 
 If you need to always run your Worker script before serving static assets (for example, you wish to log requests, perform some authentication checks, use [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/), or otherwise transform assets before serving), set `run_worker_first` to `true`:
 
-* [  wrangler.jsonc ](#tab-panel-10259)
-* [  wrangler.toml ](#tab-panel-10260)
+* [  wrangler.jsonc ](#tab-panel-10320)
+* [  wrangler.toml ](#tab-panel-10321)
 
 JSONC
 
@@ -101,8 +84,8 @@ run_worker_first = true
 
 ```
 
-* [  JavaScript ](#tab-panel-10263)
-* [  TypeScript ](#tab-panel-10264)
+* [  JavaScript ](#tab-panel-10324)
+* [  TypeScript ](#tab-panel-10325)
 
 ./worker/index.js
 
@@ -214,8 +197,8 @@ Explain Code
 
 You can also configure selective Worker-first routing using an array of route patterns, often paired with the [single-page-application setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control). This allows you to run the Worker first only for specific routes while letting other requests follow the default asset-first behavior:
 
-* [  wrangler.jsonc ](#tab-panel-10261)
-* [  wrangler.toml ](#tab-panel-10262)
+* [  wrangler.jsonc ](#tab-panel-10322)
+* [  wrangler.toml ](#tab-panel-10323)
 
 JSONC
 
@@ -278,8 +261,8 @@ run_worker_first = [ "/oauth/callback" ]
 
 Explain Code
 
-* [  JavaScript ](#tab-panel-10265)
-* [  TypeScript ](#tab-panel-10266)
+* [  JavaScript ](#tab-panel-10326)
+* [  TypeScript ](#tab-panel-10327)
 
 ./worker/index.js
 

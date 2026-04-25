@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/bindings/rate-limit.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Rate Limiting
 
 The Rate Limiting API lets you define rate limits and write code around them in your Worker.
@@ -44,8 +27,8 @@ You must use version 4.36.0 or later of the [Wrangler CLI](https://developers.cl
 
 First, add a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to your Worker that gives it access to the Rate Limiting API:
 
-* [  wrangler.jsonc ](#tab-panel-10055)
-* [  wrangler.toml ](#tab-panel-10056)
+* [  wrangler.jsonc ](#tab-panel-10116)
+* [  wrangler.toml ](#tab-panel-10117)
 
 JSONC
 
@@ -117,8 +100,8 @@ namespace_id = "1001"
 
 This binding makes the `MY_RATE_LIMITER` binding available, which provides a `limit()` method:
 
-* [  JavaScript ](#tab-panel-10051)
-* [  TypeScript ](#tab-panel-10052)
+* [  JavaScript ](#tab-panel-10112)
+* [  TypeScript ](#tab-panel-10113)
 
 JavaScript
 
@@ -198,8 +181,8 @@ You can define and configure multiple rate limiting configurations per Worker, w
 
 For example, here is how you can define two rate limiting configurations for free and paid tier users:
 
-* [  wrangler.jsonc ](#tab-panel-10057)
-* [  wrangler.toml ](#tab-panel-10058)
+* [  wrangler.jsonc ](#tab-panel-10118)
+* [  wrangler.toml ](#tab-panel-10119)
 
 JSONC
 
@@ -314,8 +297,8 @@ If you do not want to share rate limit state between bindings, use a unique `nam
 
 For example, to apply a rate limit of 1500 requests per minute, you would define a rate limiting configuration as follows:
 
-* [  wrangler.jsonc ](#tab-panel-10053)
-* [  wrangler.toml ](#tab-panel-10054)
+* [  wrangler.jsonc ](#tab-panel-10114)
+* [  wrangler.toml ](#tab-panel-10115)
 
 JSONC
 

@@ -1,27 +1,10 @@
 ---
 title: Cloudflare Registrar
-description: Buy and manage your domain with Cloudflare Registrar, and add an additional layer of security to your DNS records for free. Cloudflare Registrar also offers redacted WHOIS information by default and will only charge you what is paid to the registry for your domain. No markup. No surprise fees.
+description: Register and manage domains at cost with Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/registrar/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Cloudflare Registrar
 

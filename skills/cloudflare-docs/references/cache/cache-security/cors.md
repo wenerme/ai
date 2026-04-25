@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ CORS ](https://developers.cloudflare.com/search/?tags=CORS) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cache/cache-security/cors.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cross-Origin Resource Sharing (CORS)
 
 A cross-origin request is a request for website resources external to the origin. For example, `a.example.com` attempts to serve resources from `b.secondexample.com`. CORS instructs the browser to determine if a cross-origin request, such as an image or JavaScript from `b.secondexample.com`, is allowed by `a.example.com`. The browser does not load resources that are disallowed by CORS.

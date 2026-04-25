@@ -6,21 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
 # Cloudflare 10xxx errors
 
 When working with Cloudflare Lists or Bulk Redirects, you may encounter 10xxx error codes. These errors typically point to misconfigurations or unsupported values in your request, such as duplicate list entries, malformed URLs, or incompatible redirect settings. This guide provides detailed explanations and resolutions for each error to help you troubleshoot and resolve issues.

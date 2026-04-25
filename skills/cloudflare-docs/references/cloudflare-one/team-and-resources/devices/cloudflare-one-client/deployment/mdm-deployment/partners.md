@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Partners
 
 Cloudflare Zero Trust integrates with [Cloudflare Technology Partner ↗](https://www.cloudflare.com/partners/technology-partners/) tools to help you deploy the Cloudflare One Client (formerly WARP) to bigger fleets of devices. Thanks to these collaborations, you can distribute the Cloudflare One Client application to end-user devices and remotely set up advanced configurations in real time.

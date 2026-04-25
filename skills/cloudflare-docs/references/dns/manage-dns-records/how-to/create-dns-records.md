@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/manage-dns-records/how-to/create-dns-records.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Manage DNS records
 
 Consider the sections below for step-by-step instructions on managing DNS records at Cloudflare.
@@ -39,8 +22,8 @@ If your domain is added to Cloudflare by a hosting partner, manage your DNS reco
 
 ### Create DNS records
 
-* [ Dashboard ](#tab-panel-6685)
-* [ API ](#tab-panel-6686)
+* [ Dashboard ](#tab-panel-6737)
+* [ API ](#tab-panel-6738)
 
 To create a DNS record in the dashboard:
 
@@ -61,8 +44,8 @@ For specific API examples, refer to [DNS record types](https://developers.cloudf
 
 ### Edit DNS records
 
-* [ Dashboard ](#tab-panel-6681)
-* [ API ](#tab-panel-6682)
+* [ Dashboard ](#tab-panel-6733)
+* [ API ](#tab-panel-6734)
 
 To edit DNS records in the dashboard:
 
@@ -76,8 +59,8 @@ To update part of a record with the API, use a [PATCH request](https://developer
 
 ### Delete DNS records
 
-* [ Dashboard ](#tab-panel-6683)
-* [ API ](#tab-panel-6684)
+* [ Dashboard ](#tab-panel-6735)
+* [ API ](#tab-panel-6736)
 
 To delete DNS records in the dashboard:
 
@@ -104,6 +87,10 @@ If you are not sure which IP address to use, refer to your hosting provider's do
 If you need a placeholder address for an originless setup (also referred to as parked domain or redirect-only), you can use the reserved IPv6 address `100::` or the reserved IPv4 address `192.0.2.0` in a [proxied](https://developers.cloudflare.com/dns/proxy-status/) DNS record.
 
 This allows you to route requests using products such as [Redirect Rules](https://developers.cloudflare.com/rules/url-forwarding/), [Page Rules](https://developers.cloudflare.com/rules/page-rules/), or [Workers](https://developers.cloudflare.com/workers/).
+
+Note
+
+The address `192.0.2.0` comes from an IPv4 range reserved for documentation ([RFC 5737 ↗](https://www.rfc-editor.org/rfc/rfc5737)), and `100::` comes from the IPv6 discard prefix `0100::/64` ([RFC 6666 ↗](https://www.rfc-editor.org/rfc/rfc6666)). Neither address is expected to route to a real server on properly configured networks, which makes them safe to use as placeholder values. Because the DNS record is proxied, Cloudflare intercepts the request before it reaches the origin address.
 
 ---
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-search/api/migration/rest-api.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # REST API migration
 
 The [AutoRAG API endpoints](https://developers.cloudflare.com/api/resources/autorag/) are the legacy REST API for AI Search. They will continue to work, but all new features and improvements are only available through the new [AI Search API endpoints](https://developers.cloudflare.com/ai-search/api/search/rest-api/).

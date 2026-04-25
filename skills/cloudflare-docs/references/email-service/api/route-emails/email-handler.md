@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/api/route-emails/email-handler.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Workers API
 
 Process incoming emails with the email() handler in Cloudflare Workers. Forward, reply, reject, or process emails programmatically.
@@ -109,9 +92,9 @@ Explain Code
 
 ### Properties
 
-* [ Basic properties ](#tab-panel-7017)
-* [ Reading content ](#tab-panel-7018)
-* [ Parse email content ](#tab-panel-7019)
+* [ Basic properties ](#tab-panel-7071)
+* [ Reading content ](#tab-panel-7072)
+* [ Parse email content ](#tab-panel-7073)
 
 TypeScript
 
@@ -313,9 +296,9 @@ Explain Code
 
 Forward incoming emails to verified destination addresses:
 
-* [ Simple forwarding ](#tab-panel-7020)
-* [ Conditional forwarding ](#tab-panel-7021)
-* [ Multiple forwarding ](#tab-panel-7022)
+* [ Simple forwarding ](#tab-panel-7074)
+* [ Conditional forwarding ](#tab-panel-7075)
+* [ Multiple forwarding ](#tab-panel-7076)
 
 TypeScript
 
@@ -462,8 +445,8 @@ Explain Code
 
 Send automatic replies using the Email Service binding:
 
-* [ Simple auto-reply ](#tab-panel-7023)
-* [ Smart auto-reply ](#tab-panel-7024)
+* [ Simple auto-reply ](#tab-panel-7077)
+* [ Smart auto-reply ](#tab-panel-7078)
 
 TypeScript
 
@@ -631,8 +614,8 @@ Explain Code
 
 Reject emails with a permanent SMTP error:
 
-* [ Simple rejection ](#tab-panel-7025)
-* [ Content-based rejection ](#tab-panel-7026)
+* [ Simple rejection ](#tab-panel-7079)
+* [ Content-based rejection ](#tab-panel-7080)
 
 TypeScript
 

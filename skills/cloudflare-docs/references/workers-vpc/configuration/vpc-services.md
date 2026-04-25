@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-vpc/configuration/vpc-services/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # VPC Services
 
 VPC Services are the core building block of Workers VPC. They represent specific resources in your private network that Workers can access through Cloudflare Tunnel.
@@ -164,8 +147,8 @@ Explain Code
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-9478)
-* [  wrangler.toml ](#tab-panel-9479)
+* [  wrangler.jsonc ](#tab-panel-9539)
+* [  wrangler.toml ](#tab-panel-9540)
 
 JSONC
 
@@ -224,8 +207,8 @@ remote = true
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-9480)
-* [  wrangler.toml ](#tab-panel-9481)
+* [  wrangler.jsonc ](#tab-panel-9541)
+* [  wrangler.toml ](#tab-panel-9542)
 
 JSONC
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/static-assets/migration-guides/vercel-to-workers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Migrate from Vercel to Workers
 
 **Last reviewed:**  12 months ago 
@@ -51,8 +34,8 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-10233)
-* [  wrangler.toml ](#tab-panel-10234)
+* [  wrangler.jsonc ](#tab-panel-10294)
+* [  wrangler.toml ](#tab-panel-10295)
 
 JSONC
 
@@ -97,8 +80,8 @@ directory = "<your-build-directory>"
 
 For a **single page application**, you will need to add the following to your wrangler file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-10235)
-* [  wrangler.toml ](#tab-panel-10236)
+* [  wrangler.jsonc ](#tab-panel-10296)
+* [  wrangler.toml ](#tab-panel-10297)
 
 JSONC
 

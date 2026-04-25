@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/clientless-access/initial-setup/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Initial setup
 
 In this guide, you will learn how to deliver clientless access using the Cloudflare Zero Trust suite of products. This guide will focus on browser-based applications that do not require users to install a device client of any kind. It will discuss both common and complex scenarios, and should give you the tools to provide secure user access to internal web applications following a [Zero Trust model ↗](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/).

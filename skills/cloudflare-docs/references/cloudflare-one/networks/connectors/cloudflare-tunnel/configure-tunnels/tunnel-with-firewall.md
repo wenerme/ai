@@ -11,23 +11,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ QUIC ](https://developers.cloudflare.com/search/?tags=QUIC)[ PowerShell ](https://developers.cloudflare.com/search/?tags=PowerShell)[ Linux ](https://developers.cloudflare.com/search/?tags=Linux) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Tunnel with firewall
 
 You can implement a positive security model with Cloudflare Tunnel by blocking all ingress traffic and allowing only egress traffic from `cloudflared`. Only the services specified in your tunnel configuration will be exposed to the outside world.

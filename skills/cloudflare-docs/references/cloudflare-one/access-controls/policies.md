@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/access-controls/policies/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Policies
 
 Cloudflare Access determines who can reach your application by applying the Access policies you configure.
@@ -44,9 +27,9 @@ The Allow action in Cloudflare Access allows users that meet certain criteria to
 
 The following table shows an example Cloudflare Access Allow policy that lets any user with an `@example.com` email address, as validated against an IdP, reach the application:
 
-| Action | Rule type | Selector          | Value        |
-| ------ | --------- | ----------------- | ------------ |
-| Allow  | Include   | Emails Ending In: | @example.com |
+| Action | Rule type | Selector         | Value        |
+| ------ | --------- | ---------------- | ------------ |
+| Allow  | Include   | Emails ending in | @example.com |
 
 You can add a Require rule in the same policy action to enforce additional checks. Finally, if the policy contains an Exclude rule, users meeting that definition are prevented from reaching the application.
 

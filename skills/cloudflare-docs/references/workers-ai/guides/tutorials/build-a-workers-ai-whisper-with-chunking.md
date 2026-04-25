@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Whisper-large-v3-turbo with Cloudflare Workers AI
 
 **Last reviewed:**  about 1 year ago 
@@ -96,8 +79,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9464)
-* [  wrangler.toml ](#tab-panel-9465)
+* [  wrangler.jsonc ](#tab-panel-9525)
+* [  wrangler.toml ](#tab-panel-9526)
 
 JSONC
 
@@ -133,8 +116,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 In your wrangler file, add or update the following settings to enable Node.js APIs and polyfills (with a compatibility date of 2024‑09‑23 or later):
 
-* [  wrangler.jsonc ](#tab-panel-9466)
-* [  wrangler.toml ](#tab-panel-9467)
+* [  wrangler.jsonc ](#tab-panel-9527)
+* [  wrangler.toml ](#tab-panel-9528)
 
 JSONC
 

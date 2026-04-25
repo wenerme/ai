@@ -10,33 +10,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/bulk-redirects.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Bulk redirects
 
 **Last reviewed:**  about 4 years ago 
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.
 
-* [  JavaScript ](#tab-panel-9734)
-* [  TypeScript ](#tab-panel-9735)
-* [  Python ](#tab-panel-9736)
-* [  Hono ](#tab-panel-9737)
+* [  JavaScript ](#tab-panel-9795)
+* [  TypeScript ](#tab-panel-9796)
+* [  Python ](#tab-panel-9797)
+* [  Hono ](#tab-panel-9798)
 
 JavaScript
 

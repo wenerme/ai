@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-search/api/migration/workers-binding.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Workers binding migration
 
 The [env.AI.autorag() binding](https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/) is the legacy API for AI Search. It will continue to work, but all new features and improvements are only available through the new AI Search bindings.
@@ -113,8 +96,8 @@ Existing instances are in the default namespace. For a simple upgrade path, use 
 
 **Before:**
 
-* [  wrangler.jsonc ](#tab-panel-5335)
-* [  wrangler.toml ](#tab-panel-5336)
+* [  wrangler.jsonc ](#tab-panel-5345)
+* [  wrangler.toml ](#tab-panel-5346)
 
 JSONC
 
@@ -148,8 +131,8 @@ binding = "AI"
 
 **After:**
 
-* [  wrangler.jsonc ](#tab-panel-5337)
-* [  wrangler.toml ](#tab-panel-5338)
+* [  wrangler.jsonc ](#tab-panel-5347)
+* [  wrangler.toml ](#tab-panel-5348)
 
 JSONC
 

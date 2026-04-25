@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ SSO ](https://developers.cloudflare.com/search/?tags=SSO)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/insights/analytics/application-access.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Application Access Report
 
 The Application Access Report provides a high-level summary of [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) usage across your organization. This dashboard helps administrators monitor authentication patterns, identity provider usage, and Access configuration metrics. If Access is not configured in your account, the dashboard appears empty.
@@ -35,7 +18,7 @@ The Application Access Report is powered by [Access authentication logs](https:/
 
 To view the Application Access Report dashboard:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
 2. Go to **Dashboards**.
 3. Select **Application Access Report**.
 
@@ -100,8 +83,8 @@ These insights help administrators identify usage patterns and trends.
 
 Provides a summary of Access configurations made by admin in your organization, including:
 
-* Applications configured — Total number of Access-protected applications, broken down by type (for example, Self-hosted, SaaS, RDP, SSH, Private network, and Dash SSO.)
-* Policies configured — Total number of Access policies, grouped by policy type (for example, Allow, Block, Bypass, or Service Auth.)
+* Applications configured — Total number of Access-protected applications, broken down by type (for example, Self-hosted, SaaS, RDP, SSH, Private network, and [Cloudflare Dashboard SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/)).
+* Policies configured — Total number of Access policies, grouped by [policy action](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#actions) (for example, Allow, Block, Bypass, or Service Auth).
 
 This section helps administrators audit their Access setup and verify that expected resources and policies are in place.
 

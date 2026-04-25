@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/video-tutorials.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Videos
 
 [ Build and secure your SASE corporate network ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/evolution-corporate-networks-1/) Dive into Cloudflare's Secure Access Service Edge (SASE) platform and learn how it's been designed to revolutionize the idea of the corporate network. 

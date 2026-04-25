@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ SSG ](https://developers.cloudflare.com/search/?tags=SSG)[ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack)[ Astro ](https://developers.cloudflare.com/search/?tags=Astro) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/framework-guides/web-apps/astro.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Astro
 
 **Start from CLI**: Scaffold an Astro project on Workers, and pick your template.
@@ -159,8 +142,8 @@ If your Astro project is entirely pre-rendered, follow these steps:
 
 1. **Add a Wrangler configuration file**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-9913)  
-   * [  wrangler.toml ](#tab-panel-9914)  
+   * [  wrangler.jsonc ](#tab-panel-9974)  
+   * [  wrangler.toml ](#tab-panel-9975)  
 JSONC  
 ```  
 {  
@@ -231,8 +214,8 @@ _routes.json
 ```
 3. **Add a Wrangler configuration file**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-9917)  
-   * [  wrangler.toml ](#tab-panel-9918)  
+   * [  wrangler.jsonc ](#tab-panel-9978)  
+   * [  wrangler.toml ](#tab-panel-9979)  
 JSONC  
 ```  
 {  
@@ -332,8 +315,8 @@ You can customize the KV binding name with the [sessionKVBindingName ↗](https:
 
 To serve a custom 404 page for your Astro site, add `not_found_handling` to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9915)
-* [  wrangler.toml ](#tab-panel-9916)
+* [  wrangler.jsonc ](#tab-panel-9976)
+* [  wrangler.toml ](#tab-panel-9977)
 
 JSONC
 

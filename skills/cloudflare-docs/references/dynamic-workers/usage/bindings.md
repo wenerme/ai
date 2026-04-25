@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dynamic-workers/usage/bindings.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Bindings
 
 Bindings are a way to grant Dynamic Workers access to specific APIs and resources. They are similar to [regular Workers bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/). However, Dynamic Worker bindings don't typically point at regular Workers platform resources like KV namespaces or R2 buckets. Instead, they point to **anything you want**.

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/radar/investigate/bgp-anomalies.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # BGP anomalies
 
 To access Cloudflare Radar BGP Anomaly Detection results, you will first need to create an API token that includes a `Account:Radar` permission. All the following examples should work with a free-tier Cloudflare account.
@@ -342,8 +325,8 @@ cd hijack-alerts
 
 In your Wrangler file, change the default checking frequency (once per hour) to what you like. Here is an example of configuring the workers to run the script five minutes.
 
-* [  wrangler.jsonc ](#tab-panel-8404)
-* [  wrangler.toml ](#tab-panel-8405)
+* [  wrangler.jsonc ](#tab-panel-8461)
+* [  wrangler.toml ](#tab-panel-8462)
 
 JSONC
 
@@ -402,8 +385,8 @@ crons = [ "*/5 * * * *" ]
 
 In this example, we will also need to use Cloudflare KV to save the latest checked event IDs which allows us to know what events are new. Once you have created a KV, you can head back to the `wrangler.jsonc` file and add the following sections:
 
-* [  wrangler.jsonc ](#tab-panel-8402)
-* [  wrangler.toml ](#tab-panel-8403)
+* [  wrangler.jsonc ](#tab-panel-8459)
+* [  wrangler.toml ](#tab-panel-8460)
 
 JSONC
 
@@ -688,8 +671,8 @@ If you have [Email Routing](https://developers.cloudflare.com/email-routing/) en
 
 For this alert to work, you will need to configure the proper email bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#email-bindings).
 
-* [  wrangler.jsonc ](#tab-panel-8406)
-* [  wrangler.toml ](#tab-panel-8407)
+* [  wrangler.jsonc ](#tab-panel-8463)
+* [  wrangler.toml ](#tab-panel-8464)
 
 JSONC
 

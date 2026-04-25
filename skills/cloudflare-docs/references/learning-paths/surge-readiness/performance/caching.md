@@ -1,18 +1,10 @@
 ---
 title: Caching
-description: By default, Cloudflare caches static content such as images, CSS, and JavaScript. However, you can extend Cloudflare caching to work with HTML by creating custom Cache Rules.
+description: Optimize caching for surge readiness.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/surge-readiness/performance/caching.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Caching
 

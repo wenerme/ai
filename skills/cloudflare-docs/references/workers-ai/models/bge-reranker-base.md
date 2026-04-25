@@ -8,23 +8,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![BAAI logo](https://developers.cloudflare.com/_astro/baai.mOtdbKlV.svg) 
 
 #  bge-reranker-base 
@@ -41,9 +24,9 @@ Different from embedding model, reranker uses question and document as input and
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3107)
-* [  Python ](#tab-panel-3108)
-* [  curl ](#tab-panel-3109)
+* [  TypeScript ](#tab-panel-3117)
+* [  Python ](#tab-panel-3118)
+* [  curl ](#tab-panel-3119)
 
 ```
 
@@ -151,8 +134,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3112)
-* [ Output ](#tab-panel-3113)
+* [ Input ](#tab-panel-3122)
+* [ Output ](#tab-panel-3123)
 
 query
 
@@ -172,8 +155,8 @@ top\_k
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3110)
-* [ Output ](#tab-panel-3111)
+* [ Input ](#tab-panel-3120)
+* [ Output ](#tab-panel-3121)
 
 ```
 

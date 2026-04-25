@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ RPC ](https://developers.cloudflare.com/search/?tags=RPC) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/durable-objects/best-practices/create-durable-object-stubs-and-send-requests.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Invoke methods
 
 ## Invoking methods on a Durable Object
@@ -41,8 +24,8 @@ By writing a Durable Object class which inherits from the built-in type `Durable
 
 All RPC calls are [asynchronous](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/), accept and return [serializable types](https://developers.cloudflare.com/workers/runtime-apis/rpc/), and [propagate exceptions](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) to the caller without a stack trace. Refer to [Workers RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/) for complete details.
 
-* [  JavaScript ](#tab-panel-6814)
-* [  TypeScript ](#tab-panel-6815)
+* [  JavaScript ](#tab-panel-6868)
+* [  TypeScript ](#tab-panel-6869)
 
 JavaScript
 
@@ -169,8 +152,8 @@ Refer to [Build a Counter](https://developers.cloudflare.com/durable-objects/exa
 
 If your project is stuck on a compatibility date before [2024-04-03](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-stubs-and-service-bindings-support-rpc), or has the need to send a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object and return a `Response` object, then you should send requests to a Durable Object via the fetch handler.
 
-* [  JavaScript ](#tab-panel-6810)
-* [  TypeScript ](#tab-panel-6811)
+* [  JavaScript ](#tab-panel-6864)
+* [  TypeScript ](#tab-panel-6865)
 
 JavaScript
 
@@ -291,8 +274,8 @@ The `URL` associated with the [Request](https://developers.cloudflare.com/worker
 
 Without RPC, customers frequently construct requests which corresponded to private methods on the Durable Object and dispatch requests from the `fetch` handler. RPC is obviously more ergonomic in this example.
 
-* [  JavaScript ](#tab-panel-6812)
-* [  TypeScript ](#tab-panel-6813)
+* [  JavaScript ](#tab-panel-6866)
+* [  TypeScript ](#tab-panel-6867)
 
 JavaScript
 

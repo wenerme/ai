@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/run-workflows.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Run Workflows
 
 Integrate [Cloudflare Workflows](https://developers.cloudflare.com/workflows/) with Agents for durable, multi-step background processing while Agents handle real-time communication.
@@ -39,8 +22,8 @@ Use Agents alone for chat, messaging, and quick API calls. Use Agent + Workflow 
 
 Extend `AgentWorkflow` for typed access to the originating Agent:
 
-* [  JavaScript ](#tab-panel-4672)
-* [  TypeScript ](#tab-panel-4673)
+* [  JavaScript ](#tab-panel-4682)
+* [  TypeScript ](#tab-panel-4683)
 
 JavaScript
 
@@ -178,8 +161,8 @@ Explain Code
 
 Use `runWorkflow()` to start and track workflows:
 
-* [  JavaScript ](#tab-panel-4674)
-* [  TypeScript ](#tab-panel-4675)
+* [  JavaScript ](#tab-panel-4684)
+* [  TypeScript ](#tab-panel-4685)
 
 JavaScript
 
@@ -305,8 +288,8 @@ Explain Code
 
 ### 3\. Configure Wrangler
 
-* [  wrangler.jsonc ](#tab-panel-4644)
-* [  wrangler.toml ](#tab-panel-4645)
+* [  wrangler.jsonc ](#tab-panel-4654)
+* [  wrangler.toml ](#tab-panel-4655)
 
 JSONC
 
@@ -421,8 +404,8 @@ These methods may repeat on retry. Use for lightweight, frequent updates.
 
 Report progress to the Agent. Triggers `onWorkflowProgress` callback.
 
-* [  JavaScript ](#tab-panel-4648)
-* [  TypeScript ](#tab-panel-4649)
+* [  JavaScript ](#tab-panel-4658)
+* [  TypeScript ](#tab-panel-4659)
 
 JavaScript
 
@@ -462,8 +445,8 @@ await this.reportProgress({
 
 Broadcast a message to all WebSocket clients connected to the Agent.
 
-* [  JavaScript ](#tab-panel-4646)
-* [  TypeScript ](#tab-panel-4647)
+* [  JavaScript ](#tab-panel-4656)
+* [  TypeScript ](#tab-panel-4657)
 
 JavaScript
 
@@ -487,8 +470,8 @@ this.broadcastToClients({ type: "update", data: result });
 
 Wait for an approval event. Throws `WorkflowRejectedError` if rejected.
 
-* [  JavaScript ](#tab-panel-4650)
-* [  TypeScript ](#tab-panel-4651)
+* [  JavaScript ](#tab-panel-4660)
+* [  TypeScript ](#tab-panel-4661)
 
 JavaScript
 
@@ -572,8 +555,8 @@ Start a workflow instance and track it in the Agent database.
 
 **Returns:** `Promise<string>` \- Workflow instance ID
 
-* [  JavaScript ](#tab-panel-4656)
-* [  TypeScript ](#tab-panel-4657)
+* [  JavaScript ](#tab-panel-4666)
+* [  TypeScript ](#tab-panel-4667)
 
 JavaScript
 
@@ -621,8 +604,8 @@ const instanceId = await this.runWorkflow(
 
 Send an event to a running workflow.
 
-* [  JavaScript ](#tab-panel-4652)
-* [  TypeScript ](#tab-panel-4653)
+* [  JavaScript ](#tab-panel-4662)
+* [  TypeScript ](#tab-panel-4663)
 
 JavaScript
 
@@ -658,8 +641,8 @@ await this.sendWorkflowEvent("MY_WORKFLOW", instanceId, {
 
 Get the status of a workflow and update the tracking record.
 
-* [  JavaScript ](#tab-panel-4654)
-* [  TypeScript ](#tab-panel-4655)
+* [  JavaScript ](#tab-panel-4664)
+* [  TypeScript ](#tab-panel-4665)
 
 JavaScript
 
@@ -687,8 +670,8 @@ const status = await this.getWorkflowStatus("MY_WORKFLOW", instanceId);
 
 Get a tracked workflow by ID.
 
-* [  JavaScript ](#tab-panel-4658)
-* [  TypeScript ](#tab-panel-4659)
+* [  JavaScript ](#tab-panel-4668)
+* [  TypeScript ](#tab-panel-4669)
 
 JavaScript
 
@@ -716,8 +699,8 @@ const workflow = this.getWorkflow(instanceId);
 
 Query tracked workflows with cursor-based pagination. Returns a `WorkflowPage` with workflows, total count, and cursor for the next page.
 
-* [  JavaScript ](#tab-panel-4680)
-* [  TypeScript ](#tab-panel-4681)
+* [  JavaScript ](#tab-panel-4690)
+* [  TypeScript ](#tab-panel-4691)
 
 JavaScript
 
@@ -860,8 +843,8 @@ Delete a single workflow instance tracking record. Returns `true` if deleted, `f
 
 Delete workflow instance tracking records matching criteria.
 
-* [  JavaScript ](#tab-panel-4666)
-* [  TypeScript ](#tab-panel-4667)
+* [  JavaScript ](#tab-panel-4676)
+* [  TypeScript ](#tab-panel-4677)
 
 JavaScript
 
@@ -923,8 +906,8 @@ Explain Code
 
 Terminate a running workflow immediately. Sets status to `"terminated"`.
 
-* [  JavaScript ](#tab-panel-4660)
-* [  TypeScript ](#tab-panel-4661)
+* [  JavaScript ](#tab-panel-4670)
+* [  TypeScript ](#tab-panel-4671)
 
 JavaScript
 
@@ -952,8 +935,8 @@ Note
 
 Pause a running workflow. The workflow can be resumed later with `resumeWorkflow()`.
 
-* [  JavaScript ](#tab-panel-4662)
-* [  TypeScript ](#tab-panel-4663)
+* [  JavaScript ](#tab-panel-4672)
+* [  TypeScript ](#tab-panel-4673)
 
 JavaScript
 
@@ -981,8 +964,8 @@ Note
 
 Resume a paused workflow.
 
-* [  JavaScript ](#tab-panel-4664)
-* [  TypeScript ](#tab-panel-4665)
+* [  JavaScript ](#tab-panel-4674)
+* [  TypeScript ](#tab-panel-4675)
 
 JavaScript
 
@@ -1010,8 +993,8 @@ Note
 
 Restart a workflow instance from the beginning with the same ID.
 
-* [  JavaScript ](#tab-panel-4668)
-* [  TypeScript ](#tab-panel-4669)
+* [  JavaScript ](#tab-panel-4678)
+* [  TypeScript ](#tab-panel-4679)
 
 JavaScript
 
@@ -1053,8 +1036,8 @@ Note
 
 Approve a waiting workflow. Use with `waitForApproval()` in the workflow.
 
-* [  JavaScript ](#tab-panel-4676)
-* [  TypeScript ](#tab-panel-4677)
+* [  JavaScript ](#tab-panel-4686)
+* [  TypeScript ](#tab-panel-4687)
 
 JavaScript
 
@@ -1090,8 +1073,8 @@ await this.approveWorkflow(instanceId, {
 
 Reject a waiting workflow. Causes `waitForApproval()` to throw `WorkflowRejectedError`.
 
-* [  JavaScript ](#tab-panel-4670)
-* [  TypeScript ](#tab-panel-4671)
+* [  JavaScript ](#tab-panel-4680)
+* [  TypeScript ](#tab-panel-4681)
 
 JavaScript
 
@@ -1115,8 +1098,8 @@ await this.rejectWorkflow(instanceId, { reason: "Request denied" });
 
 Migrate tracked workflows after renaming a workflow binding.
 
-* [  JavaScript ](#tab-panel-4678)
-* [  TypeScript ](#tab-panel-4679)
+* [  JavaScript ](#tab-panel-4688)
+* [  TypeScript ](#tab-panel-4689)
 
 JavaScript
 
@@ -1164,8 +1147,8 @@ Override these methods in your Agent to handle workflow events:
 | onWorkflowEvent    | workflowName, instanceId, event    | Called when workflow sends an event   |
 | onWorkflowCallback | callback: WorkflowCallback         | Called for all callback types         |
 
-* [  JavaScript ](#tab-panel-4682)
-* [  TypeScript ](#tab-panel-4683)
+* [  JavaScript ](#tab-panel-4692)
+* [  TypeScript ](#tab-panel-4693)
 
 JavaScript
 
@@ -1287,8 +1270,8 @@ Use the `metadata` option in `runWorkflow()` to store queryable information (lik
 
 ### Human-in-the-loop approval
 
-* [  JavaScript ](#tab-panel-4694)
-* [  TypeScript ](#tab-panel-4695)
+* [  JavaScript ](#tab-panel-4704)
+* [  TypeScript ](#tab-panel-4705)
 
 JavaScript
 
@@ -1463,8 +1446,8 @@ Explain Code
 
 ### Retry with backoff
 
-* [  JavaScript ](#tab-panel-4688)
-* [  TypeScript ](#tab-panel-4689)
+* [  JavaScript ](#tab-panel-4698)
+* [  TypeScript ](#tab-panel-4699)
 
 JavaScript
 
@@ -1581,8 +1564,8 @@ Explain Code
 
 Workflows can update Agent state durably via `step`, which automatically broadcasts to all connected clients:
 
-* [  JavaScript ](#tab-panel-4692)
-* [  TypeScript ](#tab-panel-4693)
+* [  JavaScript ](#tab-panel-4702)
+* [  TypeScript ](#tab-panel-4703)
 
 JavaScript
 
@@ -1703,8 +1686,8 @@ Explain Code
 
 Define custom progress types for domain-specific reporting:
 
-* [  JavaScript ](#tab-panel-4696)
-* [  TypeScript ](#tab-panel-4697)
+* [  JavaScript ](#tab-panel-4706)
+* [  TypeScript ](#tab-panel-4707)
 
 JavaScript
 
@@ -1848,8 +1831,8 @@ Explain Code
 
 The internal `cf_agents_workflows` table can grow unbounded, so implement a retention policy:
 
-* [  JavaScript ](#tab-panel-4690)
-* [  TypeScript ](#tab-panel-4691)
+* [  JavaScript ](#tab-panel-4700)
+* [  TypeScript ](#tab-panel-4701)
 
 JavaScript
 
@@ -1949,8 +1932,8 @@ Explain Code
 
 ### Workflow to Agent
 
-* [  JavaScript ](#tab-panel-4686)
-* [  TypeScript ](#tab-panel-4687)
+* [  JavaScript ](#tab-panel-4696)
+* [  TypeScript ](#tab-panel-4697)
 
 JavaScript
 
@@ -2030,8 +2013,8 @@ Explain Code
 
 ### Agent to Workflow
 
-* [  JavaScript ](#tab-panel-4684)
-* [  TypeScript ](#tab-panel-4685)
+* [  JavaScript ](#tab-panel-4694)
+* [  TypeScript ](#tab-panel-4695)
 
 JavaScript
 

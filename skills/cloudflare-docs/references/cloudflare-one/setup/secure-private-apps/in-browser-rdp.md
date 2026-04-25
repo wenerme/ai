@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks)[ Windows ](https://developers.cloudflare.com/search/?tags=Windows) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/setup/secure-private-apps/in-browser-rdp.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # In-browser remote desktop
 
 Provide secure, in-browser remote desktop access to Windows hosts without Remote Desktop Protocol (RDP) client software on the user's device. This is useful when you need to give IT staff or support teams remote access to Windows machines for administration or troubleshooting from any browser.

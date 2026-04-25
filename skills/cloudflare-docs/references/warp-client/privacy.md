@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/warp-client/privacy.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Privacy
 
 The WARP Client application uses a VPN profile and/or service that enables us to intercept and secure your DNS queries and to transmit data from your device through the Cloudflare network, depending on the services you have enabled. We only collect limited DNS query and traffic data (excluding payload) that is sent to our network when you have the app enabled on your device. All information is handled in accordance with our [Privacy Policy ↗](https://www.cloudflare.com/application/privacypolicy/).

@@ -1,27 +1,10 @@
 ---
 title: Design Guides
-description: Design guides take your knowledge from a reference architecture and walk through the conceptual decisions and directions you should take to implement a specific solution. They do not replace our product documentation, but instead provide guidance on the decisions you should make given a certain solution you are trying to deploy.
+description: Browse Cloudflare design guides with best practices.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/reference-architecture/design-guides/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Design Guides
 

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ SSH ](https://developers.cloudflare.com/search/?tags=SSH) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # SSH with Access for Infrastructure
 
 [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) provides granular control over how users can connect to your SSH servers. Like the [self-managed SSH keys](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/) method, it uses the Cloudflare One Client on user devices and Cloudflare Tunnel on the server to create a secure, private connection through Cloudflare's network. Access for Infrastructure adds application-level policies with per-target and per-username controls, as well as SSH command logging.
@@ -53,8 +36,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:  
-   * [ Exclude IPs and domains ](#tab-panel-5934)  
-   * [ Include IPs and domains ](#tab-panel-5935)  
+   * [ Exclude IPs and domains ](#tab-panel-5986)  
+   * [ Include IPs and domains ](#tab-panel-5987)  
 If you are using **Exclude** mode:  
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your SSH server's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.  
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your SSH server. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.  
@@ -76,9 +59,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-5926)
-* [ API ](#tab-panel-5927)
-* [ Terraform ](#tab-panel-5928)
+* [ Dashboard ](#tab-panel-5978)
+* [ API ](#tab-panel-5979)
+* [ Terraform ](#tab-panel-5980)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -169,9 +152,9 @@ Next, create an Access application to secure the target.
 
 ## 5\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-5931)
-* [ API ](#tab-panel-5932)
-* [ Terraform (v4) ](#tab-panel-5933)
+* [ Dashboard ](#tab-panel-5983)
+* [ API ](#tab-panel-5984)
+* [ Terraform (v4) ](#tab-panel-5985)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Select **Add an application**.
@@ -368,8 +351,8 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Cloudflare SSH CA and get its public key:
 
-* [ Dashboard ](#tab-panel-5929)
-* [ API ](#tab-panel-5930)
+* [ Dashboard ](#tab-panel-5981)
+* [ API ](#tab-panel-5982)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
@@ -484,8 +467,8 @@ chmod 600 /etc/ssh/ca.pub
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-5920)
-* [ CentOS/RHEL ](#tab-panel-5921)
+* [ Debian/Ubuntu ](#tab-panel-5972)
+* [ CentOS/RHEL ](#tab-panel-5973)
 
 For Debian/Ubuntu:
 
@@ -558,8 +541,8 @@ All proxied SSH commands are immediately encrypted using this public key. The ma
 
 To turn off SSH command logging, delete your uploaded public key:
 
-* [ Dashboard ](#tab-panel-5924)
-* [ API ](#tab-panel-5925)
+* [ Dashboard ](#tab-panel-5976)
+* [ API ](#tab-panel-5977)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Traffic settings** \> **SSH log encryption public key**.
 2. Select **Remove**.
@@ -1026,8 +1009,8 @@ vi /etc/ssh/sshd_config
 Do not restart  
 Restarting your `sshd` service will result in the termination of your current SSH connection. Make sure to reload instead of restarting to avoid terminating all currently open SSH sessions.  
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.  
-   * [ Debian/Ubuntu ](#tab-panel-5922)  
-   * [ CentOS/RHEL ](#tab-panel-5923)  
+   * [ Debian/Ubuntu ](#tab-panel-5974)  
+   * [ CentOS/RHEL ](#tab-panel-5975)  
 For Debian/Ubuntu:  
 Terminal window  
 ```  

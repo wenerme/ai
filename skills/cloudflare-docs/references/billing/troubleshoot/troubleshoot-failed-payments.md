@@ -1,27 +1,10 @@
 ---
 title: Resolve a payment failure
-description: If a payment fails when purchasing a product, changing a subscription, or paying an invoice, you may see one of the following error messages:
+description: Fix failed payment and declined card errors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/billing/troubleshoot/troubleshoot-failed-payments.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Resolve a payment failure
 

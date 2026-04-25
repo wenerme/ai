@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
  a 
 
 #  indictrans2-en-indic-1B 
@@ -39,9 +22,9 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3398)
-* [  Python ](#tab-panel-3399)
-* [  curl ](#tab-panel-3400)
+* [  TypeScript ](#tab-panel-3408)
+* [  Python ](#tab-panel-3409)
+* [  curl ](#tab-panel-3410)
 
 ```
 
@@ -137,8 +120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3403)
-* [ Output ](#tab-panel-3404)
+* [ Input ](#tab-panel-3413)
+* [ Output ](#tab-panel-3414)
 
 ▶text
 
@@ -154,8 +137,8 @@ target\_language
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3401)
-* [ Output ](#tab-panel-3402)
+* [ Input ](#tab-panel-3411)
+* [ Output ](#tab-panel-3412)
 
 ```
 

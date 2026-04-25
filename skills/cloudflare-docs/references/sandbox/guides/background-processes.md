@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/background-processes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Run background processes
 
 This guide shows you how to start, monitor, and manage long-running background processes in the sandbox.
@@ -43,8 +26,8 @@ For **one-time commands, builds, or scripts that complete and exit**, use `exec(
 
 ## Start a background process
 
-* [  JavaScript ](#tab-panel-8698)
-* [  TypeScript ](#tab-panel-8699)
+* [  JavaScript ](#tab-panel-8755)
+* [  TypeScript ](#tab-panel-8756)
 
 JavaScript
 
@@ -112,8 +95,8 @@ Explain Code
 
 Set working directory and environment variables:
 
-* [  JavaScript ](#tab-panel-8700)
-* [  TypeScript ](#tab-panel-8701)
+* [  JavaScript ](#tab-panel-8757)
+* [  TypeScript ](#tab-panel-8758)
 
 JavaScript
 
@@ -179,8 +162,8 @@ Explain Code
 
 List and check running processes:
 
-* [  JavaScript ](#tab-panel-8706)
-* [  TypeScript ](#tab-panel-8707)
+* [  JavaScript ](#tab-panel-8763)
+* [  TypeScript ](#tab-panel-8764)
 
 JavaScript
 
@@ -242,8 +225,8 @@ Explain Code
 
 Wait for a process to be ready before proceeding:
 
-* [  JavaScript ](#tab-panel-8696)
-* [  TypeScript ](#tab-panel-8697)
+* [  JavaScript ](#tab-panel-8753)
+* [  TypeScript ](#tab-panel-8754)
 
 JavaScript
 
@@ -281,8 +264,8 @@ console.log('Server is ready');
 
 Or wait for specific log patterns:
 
-* [  JavaScript ](#tab-panel-8702)
-* [  TypeScript ](#tab-panel-8703)
+* [  JavaScript ](#tab-panel-8759)
+* [  TypeScript ](#tab-panel-8760)
 
 JavaScript
 
@@ -320,8 +303,8 @@ console.log('Server is ready:', result.line);
 
 Stream logs in real-time:
 
-* [  JavaScript ](#tab-panel-8708)
-* [  TypeScript ](#tab-panel-8709)
+* [  JavaScript ](#tab-panel-8765)
+* [  TypeScript ](#tab-panel-8766)
 
 JavaScript
 
@@ -377,8 +360,8 @@ Explain Code
 
 Or get accumulated logs:
 
-* [  JavaScript ](#tab-panel-8704)
-* [  TypeScript ](#tab-panel-8705)
+* [  JavaScript ](#tab-panel-8761)
+* [  TypeScript ](#tab-panel-8762)
 
 JavaScript
 
@@ -406,8 +389,8 @@ console.log('Logs:', logs);
 
 Stop background processes and their children:
 
-* [  JavaScript ](#tab-panel-8710)
-* [  TypeScript ](#tab-panel-8711)
+* [  JavaScript ](#tab-panel-8767)
+* [  TypeScript ](#tab-panel-8768)
 
 JavaScript
 
@@ -455,8 +438,8 @@ await sandbox.killAllProcesses();
 
 For example, if your process spawns multiple worker processes or background tasks, `killProcess()` will clean up the entire process tree:
 
-* [  JavaScript ](#tab-panel-8712)
-* [  TypeScript ](#tab-panel-8713)
+* [  JavaScript ](#tab-panel-8769)
+* [  TypeScript ](#tab-panel-8770)
 
 JavaScript
 
@@ -502,8 +485,8 @@ await sandbox.killProcess(batch.id);
 
 Start services in sequence, waiting for dependencies:
 
-* [  JavaScript ](#tab-panel-8718)
-* [  TypeScript ](#tab-panel-8719)
+* [  JavaScript ](#tab-panel-8775)
+* [  TypeScript ](#tab-panel-8776)
 
 JavaScript
 
@@ -579,8 +562,8 @@ Explain Code
 
 By default, containers automatically shut down after 10 minutes of inactivity. For long-running processes that may have idle periods (like CI/CD pipelines, batch jobs, or monitoring tasks), use the [keepAlive option](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive):
 
-* [  JavaScript ](#tab-panel-8720)
-* [  TypeScript ](#tab-panel-8721)
+* [  JavaScript ](#tab-panel-8777)
+* [  TypeScript ](#tab-panel-8778)
 
 JavaScript
 
@@ -738,8 +721,8 @@ When using `keepAlive: true`, containers will not automatically timeout. You **m
 
 Check logs to see why:
 
-* [  JavaScript ](#tab-panel-8716)
-* [  TypeScript ](#tab-panel-8717)
+* [  JavaScript ](#tab-panel-8773)
+* [  TypeScript ](#tab-panel-8774)
 
 JavaScript
 
@@ -789,8 +772,8 @@ if (!processes.find(p => p.id === process.id)) {
 
 Kill existing processes before starting:
 
-* [  JavaScript ](#tab-panel-8714)
-* [  TypeScript ](#tab-panel-8715)
+* [  JavaScript ](#tab-panel-8771)
+* [  TypeScript ](#tab-panel-8772)
 
 JavaScript
 

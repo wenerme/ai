@@ -6,31 +6,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-ai/features/markdown-conversion/usage/binding.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Workers Binding
 
 Cloudflare’s serverless platform allows you to run code at the edge to build full-stack applications with [Workers](https://developers.cloudflare.com/workers/). A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) enables your Worker or Pages Function to interact with resources on the Cloudflare Developer Platform.
 
 To use our Markdown Conversion service directly from your Workers, create an AI binding either in the Cloudflare dashboard (refer to [AI bindings](https://developers.cloudflare.com/pages/functions/bindings/#workers-ai) for instructions), or you can update your [Wrangler file](https://developers.cloudflare.com/workers/wrangler/configuration/). Add the following to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9440)
-* [  wrangler.toml ](#tab-panel-9441)
+* [  wrangler.jsonc ](#tab-panel-9501)
+* [  wrangler.toml ](#tab-panel-9502)
 
 JSONC
 
@@ -68,8 +51,8 @@ binding = "AI" # i.e. available in your Worker on env.AI
 
 In this example, we fetch a PDF document and an image from R2 and feed them both to `env.AI.toMarkdown`. The result is a list of converted documents. Workers AI models are used automatically to detect and summarize the image.
 
-* [  JavaScript ](#tab-panel-9450)
-* [  TypeScript ](#tab-panel-9451)
+* [  JavaScript ](#tab-panel-9511)
+* [  TypeScript ](#tab-panel-9512)
 
 JavaScript
 
@@ -197,8 +180,8 @@ Explain Code
 
 ### Getting supported file formats
 
-* [  JavaScript ](#tab-panel-9444)
-* [  TypeScript ](#tab-panel-9445)
+* [  JavaScript ](#tab-panel-9505)
+* [  TypeScript ](#tab-panel-9506)
 
 JavaScript
 
@@ -246,8 +229,8 @@ export default {
 
 Takes a document or list of documents in different formats and converts them to Markdown.
 
-* [  JavaScript ](#tab-panel-9442)
-* [  TypeScript ](#tab-panel-9443)
+* [  JavaScript ](#tab-panel-9503)
+* [  TypeScript ](#tab-panel-9504)
 
 JavaScript
 
@@ -316,8 +299,8 @@ const result = await env.AI.toMarkdown({
 
 This method is similar to `env.AI.toMarkdown` except that it is exposed through a new handle. It takes the same arguments and returns the same values.
 
-* [  JavaScript ](#tab-panel-9448)
-* [  TypeScript ](#tab-panel-9449)
+* [  JavaScript ](#tab-panel-9509)
+* [  TypeScript ](#tab-panel-9510)
 
 JavaScript
 
@@ -353,8 +336,8 @@ const result = await env.AI.toMarkdown().transform({
 
 Returns a list of file formats that are currently supported for markdown conversion. See [Supported formats](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/supported-formats/) for the full list of file formats that can be converted into Markdown.
 
-* [  JavaScript ](#tab-panel-9446)
-* [  TypeScript ](#tab-panel-9447)
+* [  JavaScript ](#tab-panel-9507)
+* [  TypeScript ](#tab-panel-9508)
 
 JavaScript
 

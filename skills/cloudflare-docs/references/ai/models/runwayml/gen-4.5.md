@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg) 
 
 #  RunwayML Gen-4.5 
@@ -322,8 +305,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-418)
-* [ Output ](#tab-panel-419)
+* [ Input ](#tab-panel-428)
+* [ Output ](#tab-panel-429)
 
 prompt
 
@@ -355,8 +338,8 @@ video
 
 ## API Schemas
 
-* [ Input ](#tab-panel-416)
-* [ Output ](#tab-panel-417)
+* [ Input ](#tab-panel-426)
+* [ Output ](#tab-panel-427)
 
 ```
 

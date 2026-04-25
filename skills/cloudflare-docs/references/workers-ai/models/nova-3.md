@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg) 
 
 #  nova-3 
@@ -71,8 +54,8 @@ If no language is specified, the model defaults to `en-US`. For best accuracy, e
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3777)
-* [  curl ](#tab-panel-3778)
+* [  TypeScript ](#tab-panel-3787)
+* [  curl ](#tab-panel-3788)
 
 ```
 
@@ -125,8 +108,8 @@ curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCO
 
 ## Parameters
 
-* [ Input ](#tab-panel-3781)
-* [ Output ](#tab-panel-3782)
+* [ Input ](#tab-panel-3791)
+* [ Output ](#tab-panel-3792)
 
 ▶audio{}
 
@@ -278,8 +261,8 @@ utterance\_end\_ms
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3779)
-* [ Output ](#tab-panel-3780)
+* [ Input ](#tab-panel-3789)
+* [ Output ](#tab-panel-3790)
 
 ```
 

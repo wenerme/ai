@@ -10,26 +10,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Python ](https://developers.cloudflare.com/search/?tags=Python)[ Node.js ](https://developers.cloudflare.com/search/?tags=Node.js)[ Docker ](https://developers.cloudflare.com/search/?tags=Docker) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/bridge/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Sandbox bridge
 
-**Last reviewed:**  11 days ago 
+**Last reviewed:**  12 days ago 
 
 The sandbox bridge is a reference-implementation Cloudflare Worker that exposes the [Sandbox SDK](https://developers.cloudflare.com/sandbox/api/) as an HTTP API. Any HTTP client — Python script, Node.js service, CI pipeline — can create and control sandboxes without writing a Worker.
 
@@ -116,9 +99,9 @@ export SANDBOX_API_KEY=<your-token>
 
 ### Create a sandbox and run a command
 
-* [ curl ](#tab-panel-8658)
-* [ Node.js ](#tab-panel-8659)
-* [ Python ](#tab-panel-8660)
+* [ curl ](#tab-panel-8713)
+* [ Node.js ](#tab-panel-8714)
+* [ Python ](#tab-panel-8715)
 
 Terminal window
 
@@ -309,9 +292,9 @@ Explain Code
 
 ### Write and read files
 
-* [ curl ](#tab-panel-8661)
-* [ Node.js ](#tab-panel-8662)
-* [ Python ](#tab-panel-8663)
+* [ curl ](#tab-panel-8716)
+* [ Node.js ](#tab-panel-8717)
+* [ Python ](#tab-panel-8718)
 
 Terminal window
 

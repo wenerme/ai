@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/usage/providers/google-ai-studio.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Google AI Studio
 
 [Google AI Studio ↗](https://ai.google.dev/aistudio) helps you build quickly with Google Gemini models.
@@ -48,8 +31,8 @@ So your final URL will come together as: `https://gateway.ai.cloudflare.com/v1/{
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5313)
-* [ Unauthenticated Gateway ](#tab-panel-5314)
+* [ With Authenticated Gateway ](#tab-panel-5323)
+* [ Unauthenticated Gateway ](#tab-panel-5324)
 
 Terminal window
 
@@ -166,8 +149,8 @@ If you are using the `@google/genai` package, you can set your endpoint like thi
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5315)
-* [ Unauthenticated Gateway ](#tab-panel-5316)
+* [ With Authenticated Gateway ](#tab-panel-5325)
+* [ Unauthenticated Gateway ](#tab-panel-5326)
 
 ```
 

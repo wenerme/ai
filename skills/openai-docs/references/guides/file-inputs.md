@@ -58,7 +58,7 @@ curl "https://api.openai.com/v1/responses" \\
     -H "Content-Type: application/json" \\
     -H "Authorization: Bearer $OPENAI_API_KEY" \\
     -d '{
-        "model": "gpt-5",
+        "model": "gpt-5.5",
         "input": [
             {
                 "role": "user",
@@ -82,7 +82,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     input: [
         {
             role: "user",
@@ -108,7 +108,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     input=[
         {
             "role": "user",
@@ -134,7 +134,7 @@ using OpenAI.Files;
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
 
 using HttpClient http = new();
 using Stream stream = await http.GetStreamAsync("https://www.berkshirehathaway.com/letters/2024ltr.pdf");
@@ -174,7 +174,7 @@ curl "https://api.openai.com/v1/responses" \\
     -H "Content-Type: application/json" \\
     -H "Authorization: Bearer $OPENAI_API_KEY" \\
     -d '{
-        "model": "gpt-5",
+        "model": "gpt-5.5",
         "input": [
             {
                 "role": "user",
@@ -204,7 +204,7 @@ const file = await client.files.create({
 });
 
 const response = await client.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.5",
     input: [
         {
             role: "user",
@@ -235,7 +235,7 @@ file = client.files.create(
 )
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.5",
     input=[
         {
             "role": "user",
@@ -261,7 +261,7 @@ using OpenAI.Files;
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5", apiKey: key);
+OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
 
 OpenAIFileClient files = new(key);
 OpenAIFile file = files.UploadFile("draconomicon.pdf", FileUploadPurpose.UserData);

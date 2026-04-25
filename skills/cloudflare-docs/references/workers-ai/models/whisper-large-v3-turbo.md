@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
 #  whisper-large-v3-turbo 
@@ -40,9 +23,9 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4019)
-* [  Python ](#tab-panel-4020)
-* [  curl ](#tab-panel-4021)
+* [  TypeScript ](#tab-panel-4029)
+* [  Python ](#tab-panel-4030)
+* [  curl ](#tab-panel-4031)
 
 ```
 
@@ -188,8 +171,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-4024)
-* [ Output ](#tab-panel-4025)
+* [ Input ](#tab-panel-4034)
+* [ Output ](#tab-panel-4035)
 
 ▶audio
 
@@ -261,8 +244,8 @@ vtt
 
 ## API Schemas
 
-* [ Input ](#tab-panel-4022)
-* [ Output ](#tab-panel-4023)
+* [ Input ](#tab-panel-4032)
+* [ Output ](#tab-panel-4033)
 
 ```
 

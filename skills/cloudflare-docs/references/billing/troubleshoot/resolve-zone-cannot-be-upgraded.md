@@ -1,27 +1,10 @@
 ---
 title: Resolve the zone cannot be upgraded error
-description: When trying to upgrade a domain or purchase a subscription, you may see an error that contains one of the following phrases:
+description: Fix errors when upgrading a zone or subscription.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/billing/troubleshoot/resolve-zone-cannot-be-upgraded.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Resolve the zone cannot be upgraded error
 

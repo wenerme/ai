@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/kv/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cloudflare Workers KV
 
 Create a global, low-latency, key-value data storage.
@@ -39,11 +22,11 @@ For example, you can use Workers KV for:
 
 Access your Workers KV namespace from Cloudflare Workers using [Workers Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or from your external application using the REST API:
 
-* [ Workers Binding API ](#tab-panel-7427)
-* [ REST API ](#tab-panel-7428)
+* [ Workers Binding API ](#tab-panel-7481)
+* [ REST API ](#tab-panel-7482)
 
-* [ index.ts ](#tab-panel-7423)
-* [ wrangler.jsonc ](#tab-panel-7424)
+* [ index.ts ](#tab-panel-7477)
+* [ wrangler.jsonc ](#tab-panel-7478)
 
 TypeScript
 
@@ -137,8 +120,8 @@ Explain Code
 
 See the full [Workers KV binding API reference](https://developers.cloudflare.com/kv/api/read-key-value-pairs/).
 
-* [ cURL ](#tab-panel-7425)
-* [ TypeScript ](#tab-panel-7426)
+* [ cURL ](#tab-panel-7479)
+* [ TypeScript ](#tab-panel-7480)
 
 ```
 

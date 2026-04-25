@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cloudflare One Client troubleshooting guide
 
 This guide helps you diagnose and resolve common issues with the Cloudflare One Client (formerly WARP). It covers how to troubleshoot the Cloudflare One Client on desktop operating systems, including Windows, macOS, and Linux.
@@ -61,8 +44,8 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 
 #### Via the device
 
-* [ Version 2026.2+ ](#tab-panel-6098)
-* [ Version 2026.1 and earlier ](#tab-panel-6099)
+* [ Version 2026.2+ ](#tab-panel-6150)
+* [ Version 2026.1 and earlier ](#tab-panel-6151)
 
 1. Open the Cloudflare One Client on your desktop.
 2. Select **About**.
@@ -225,9 +208,9 @@ Collect client diagnostic logs on your desktop using the `warp-diag` CLI.
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-6102)
-* [ Windows ](#tab-panel-6103)
-* [ Linux ](#tab-panel-6104)
+* [ macOS ](#tab-panel-6154)
+* [ Windows ](#tab-panel-6155)
+* [ Linux ](#tab-panel-6156)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -652,8 +635,8 @@ Both methods update the client with the latest configuration.
 
 **Option A: Disconnect and reconnect the client**
 
-* [ Version 2026.2+ ](#tab-panel-6100)
-* [ Version 2026.1 and earlier ](#tab-panel-6101)
+* [ Version 2026.2+ ](#tab-panel-6152)
+* [ Version 2026.1 and earlier ](#tab-panel-6153)
 
 1. On the end user device, open the Cloudflare One Client and select **Disconnect**.
 
@@ -681,8 +664,8 @@ The client will fetch new settings when it reconnects.
 
 To reset the encryption keys on an end user's desktop:
 
-* [ Version 2026.2+ ](#tab-panel-6105)
-* [ Version 2026.1 and earlier ](#tab-panel-6106)
+* [ Version 2026.2+ ](#tab-panel-6157)
+* [ Version 2026.1 and earlier ](#tab-panel-6158)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Connectivity** \> **Encryption keys**

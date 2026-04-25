@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/testing/vitest-integration/isolation-and-concurrency.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Isolation and concurrency
 
 Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.
@@ -60,8 +43,8 @@ However, if you use Node.js globals that are not supported by the runtime, your 
 
 The Wrangler configuration file does not specify either `nodejs_compat` or `nodejs_compat_v2`:
 
-* [  wrangler.jsonc ](#tab-panel-10267)
-* [  wrangler.toml ](#tab-panel-10268)
+* [  wrangler.jsonc ](#tab-panel-10328)
+* [  wrangler.toml ](#tab-panel-10329)
 
 JSONC
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/hyperdrive/examples/connect-to-postgres/postgres-database-providers/timescale.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Timescale
 
 **Last reviewed:**  over 2 years ago 
@@ -82,8 +65,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-7301)
-* [ Wrangler CLI ](#tab-panel-7302)
+* [ Dashboard ](#tab-panel-7355)
+* [ Wrangler CLI ](#tab-panel-7356)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -101,8 +84,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-7299)  
-   * [  wrangler.toml ](#tab-panel-7300)  
+   * [  wrangler.jsonc ](#tab-panel-7353)  
+   * [  wrangler.toml ](#tab-panel-7354)  
 JSONC  
 ```  
 {  
@@ -190,8 +173,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-7303)
-* [  wrangler.toml ](#tab-panel-7304)
+* [  wrangler.jsonc ](#tab-panel-7357)
+* [  wrangler.toml ](#tab-panel-7358)
 
 JSONC
 

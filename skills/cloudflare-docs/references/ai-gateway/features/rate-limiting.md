@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/features/rate-limiting.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Rate limiting
 
 Rate limiting controls the traffic that reaches your application, which prevents expensive bills and suspicious activity.
@@ -41,8 +24,8 @@ When your requests exceed the allowed rate, you will encounter rate limiting. Th
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-5283)
-* [ API ](#tab-panel-5284)
+* [ Dashboard ](#tab-panel-5293)
+* [ API ](#tab-panel-5294)
 
 To set the default rate limiting configuration in the dashboard:
 

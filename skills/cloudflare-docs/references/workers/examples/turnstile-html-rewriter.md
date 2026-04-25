@@ -10,33 +10,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/turnstile-html-rewriter.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Turnstile with Workers
 
 **Last reviewed:**  about 3 years ago 
 
 Inject [Turnstile](https://developers.cloudflare.com/turnstile/) implicitly into HTML elements using the HTMLRewriter runtime API.
 
-* [  JavaScript ](#tab-panel-9898)
-* [  TypeScript ](#tab-panel-9899)
-* [  Hono ](#tab-panel-9900)
-* [  Python ](#tab-panel-9901)
+* [  JavaScript ](#tab-panel-9959)
+* [  TypeScript ](#tab-panel-9960)
+* [  Hono ](#tab-panel-9961)
+* [  Python ](#tab-panel-9962)
 
 JavaScript
 

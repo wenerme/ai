@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/speed/optimization/content/speed-brain.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Speed Brain
 
 Speed Brain is a tool for improving web page performance by prefetching the most likely next navigation.
@@ -107,9 +90,9 @@ While you can use Speed Brain without RUM enabled, you will not have visibility 
 
 Speed Brain is available in Cloudflare's **Speed** tab of the dashboard and also in the API.
 
-* [ Dashboard ](#tab-panel-8981)
-* [ API ](#tab-panel-8982)
-* [ Terraform ](#tab-panel-8983)
+* [ Dashboard ](#tab-panel-9042)
+* [ API ](#tab-panel-9043)
+* [ Terraform ](#tab-panel-9044)
 
 To enable or disable **Speed Brain** in the dashboard:
 

@@ -6,29 +6,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/configuration/placement.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Placement
 
 By default, [Workers](https://developers.cloudflare.com/workers/) and [Pages Functions](https://developers.cloudflare.com/pages/functions/) run in a data center closest to where the request was received. If your Worker makes requests to back-end infrastructure such as databases or APIs, it may be more performant to run that Worker closer to your back-end than the end user.
 
-* [  wrangler.jsonc ](#tab-panel-9594)
-* [  wrangler.toml ](#tab-panel-9595)
+* [  wrangler.jsonc ](#tab-panel-9655)
+* [  wrangler.toml ](#tab-panel-9656)
 
 JSONC
 
@@ -118,8 +101,8 @@ Smart Placement is available on all Workers plans.
 
 Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9592)
-* [  wrangler.toml ](#tab-panel-9593)
+* [  wrangler.jsonc ](#tab-panel-9653)
+* [  wrangler.toml ](#tab-panel-9654)
 
 JSONC
 
@@ -224,8 +207,8 @@ Workers run on [Cloudflare's global network ↗](https://www.cloudflare.com/netw
 
 If your infrastructure runs in AWS, GCP, or Azure, set the `placement.region` property using the format `{provider}:{region}`:
 
-* [  wrangler.jsonc ](#tab-panel-9596)
-* [  wrangler.toml ](#tab-panel-9597)
+* [  wrangler.jsonc ](#tab-panel-9657)
+* [  wrangler.toml ](#tab-panel-9658)
 
 JSONC
 
@@ -267,8 +250,8 @@ Host-based placement is experimental.
 
 Set `placement.host` to identify a layer 4 service. Cloudflare uses TCP CONNECT checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-9598)
-* [  wrangler.toml ](#tab-panel-9599)
+* [  wrangler.jsonc ](#tab-panel-9659)
+* [  wrangler.toml ](#tab-panel-9660)
 
 JSONC
 
@@ -300,8 +283,8 @@ host = "my_database_host.com:5432"
 
 Set `placement.hostname` to identify a layer 7 service. Cloudflare uses HTTP HEAD checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-9600)
-* [  wrangler.toml ](#tab-panel-9601)
+* [  wrangler.jsonc ](#tab-panel-9661)
+* [  wrangler.toml ](#tab-panel-9662)
 
 JSONC
 
@@ -385,11 +368,11 @@ This example shows two Workers:
 * `auth-worker` — runs at the edge (no placement), handles authentication
 * `app-worker` — placed near your database, handles data queries
 
-* [ auth-worker ](#tab-panel-9606)
-* [ app-worker ](#tab-panel-9607)
+* [ auth-worker ](#tab-panel-9667)
+* [ app-worker ](#tab-panel-9668)
 
-* [  wrangler.jsonc ](#tab-panel-9602)
-* [  wrangler.toml ](#tab-panel-9603)
+* [  wrangler.jsonc ](#tab-panel-9663)
+* [  wrangler.toml ](#tab-panel-9664)
 
 JSONC
 
@@ -484,8 +467,8 @@ async function validateToken(token: string): Promise<string | null> {
 
 Explain Code
 
-* [  wrangler.jsonc ](#tab-panel-9604)
-* [  wrangler.toml ](#tab-panel-9605)
+* [  wrangler.jsonc ](#tab-panel-9665)
+* [  wrangler.toml ](#tab-panel-9666)
 
 JSONC
 

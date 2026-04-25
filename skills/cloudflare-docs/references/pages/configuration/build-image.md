@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/pages/configuration/build-image.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Build image
 
 Cloudflare Pages' build environment has broad support for a variety of languages, such as Ruby, Node.js, Python, PHP, and Go.
@@ -35,9 +18,9 @@ In the following tables, review the preinstalled versions for languages and tool
 
 ### Languages and runtime
 
-* [ v3 ](#tab-panel-7866)
-* [ v2 ](#tab-panel-7867)
-* [ v1 ](#tab-panel-7868)
+* [ v3 ](#tab-panel-7920)
+* [ v2 ](#tab-panel-7921)
+* [ v1 ](#tab-panel-7922)
 
 | Tool        | Default version | Supported versions | Environment variable | File                         |
 | ----------- | --------------- | ------------------ | -------------------- | ---------------------------- |
@@ -75,9 +58,9 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Tools
 
-* [ v3 ](#tab-panel-7869)
-* [ v2 ](#tab-panel-7870)
-* [ v1 ](#tab-panel-7871)
+* [ v3 ](#tab-panel-7923)
+* [ v2 ](#tab-panel-7924)
+* [ v1 ](#tab-panel-7925)
 
 | Tool                   | Default version | Supported versions               | Environment variable          |
 | ---------------------- | --------------- | -------------------------------- | ----------------------------- |
@@ -205,9 +188,9 @@ The following features are not currently supported when using the v3 build syste
 
 Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) container.
 
-* [ v3 ](#tab-panel-7872)
-* [ v2 ](#tab-panel-7873)
-* [ v1 ](#tab-panel-7874)
+* [ v3 ](#tab-panel-7926)
+* [ v2 ](#tab-panel-7927)
+* [ v1 ](#tab-panel-7928)
 
 | **Build environment** | Ubuntu 22.04.2 |
 | --------------------- | -------------- |

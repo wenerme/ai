@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Linux ](https://developers.cloudflare.com/search/?tags=Linux) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/tutorials/deploy-client-headless-linux.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Deploy the Cloudflare One Client on headless Linux machines
 
 **Last reviewed:**  7 months ago 
@@ -47,9 +30,9 @@ Fully automated deployments rely on a service token to enroll the Cloudflare One
 
 To create a service token:
 
-* [ Dashboard ](#tab-panel-6311)
-* [ API ](#tab-panel-6312)
-* [ Terraform (v5) ](#tab-panel-6313)
+* [ Dashboard ](#tab-panel-6363)
+* [ API ](#tab-panel-6364)
+* [ Terraform (v5) ](#tab-panel-6365)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.

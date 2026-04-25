@@ -1,27 +1,10 @@
 ---
 title: Top Level Domains supported
-description: Cloudflare supports over 400 top-level domains (TLDs) and is always evaluating adding new TLDs. We have no specific timeframes for TLDs not yet listed. You can find the full list of supported and coming soon TLDs on the TLD policies page.
+description: View supported top-level domains for registration.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/registrar/top-level-domains/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Top Level Domains supported
 

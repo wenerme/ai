@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-ai/platform/data-usage.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Data usage
 
 Cloudflare processes certain customer data in order to provide the Workers AI service, subject to our [Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/) and [Self-Serve Subscription Agreement ↗](https://www.cloudflare.com/terms/) or [Enterprise Subscription Agreement ↗](https://www.cloudflare.com/enterpriseterms/) (as applicable).

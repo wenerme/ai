@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ AI ](https://developers.cloudflare.com/search/?tags=AI) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-ai/guides/tutorials/llama-vision-tutorial.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI
 
 **Last reviewed:**  about 1 year ago 
@@ -156,8 +139,8 @@ Explain Code
 
 1. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add the following configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9468)
-* [  wrangler.toml ](#tab-panel-9469)
+* [  wrangler.jsonc ](#tab-panel-9529)
+* [  wrangler.toml ](#tab-panel-9530)
 
 JSONC
 

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/tunnel/advanced/local-management/as-a-service/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Run as a service
 
 You can install `cloudflared` as a system service on Linux and Windows, and as a launch agent on macOS. In most cases, we recommend running `cloudflared` as a service. Running as a service helps ensure the availability of `cloudflared` to your origin by allowing the program to start at boot and continue running while your origin is online.

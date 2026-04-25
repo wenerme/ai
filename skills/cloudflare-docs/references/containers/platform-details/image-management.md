@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/containers/platform-details/image-management.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Image Management
 
 ## Push images during `wrangler deploy`
@@ -31,8 +14,8 @@ When running `wrangler deploy`, if you set the `image` attribute in your [Wrangl
 
 Just provide the path to your Dockerfile:
 
-* [  wrangler.jsonc ](#tab-panel-6436)
-* [  wrangler.toml ](#tab-panel-6437)
+* [  wrangler.jsonc ](#tab-panel-6488)
+* [  wrangler.toml ](#tab-panel-6489)
 
 JSONC
 
@@ -90,8 +73,8 @@ To use a public Docker Hub image, set `image` to a fully qualified Docker Hub im
 
 For example:
 
-* [  wrangler.jsonc ](#tab-panel-6438)
-* [  wrangler.toml ](#tab-panel-6439)
+* [  wrangler.jsonc ](#tab-panel-6490)
+* [  wrangler.toml ](#tab-panel-6491)
 
 JSONC
 
@@ -281,8 +264,8 @@ printf '%s' "$AWS_SECRET_ACCESS_KEY" | npx wrangler containers registries config
 
 After you configure the registry, use the fully qualified Amazon ECR image reference in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6440)
-* [  wrangler.toml ](#tab-panel-6441)
+* [  wrangler.jsonc ](#tab-panel-6492)
+* [  wrangler.toml ](#tab-panel-6493)
 
 JSONC
 
@@ -365,8 +348,8 @@ pnpm wrangler containers build -p -t <TAG> .
 
 This will output an image registry URI that you can then use in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6442)
-* [  wrangler.toml ](#tab-panel-6443)
+* [  wrangler.jsonc ](#tab-panel-6494)
+* [  wrangler.toml ](#tab-panel-6495)
 
 JSONC
 

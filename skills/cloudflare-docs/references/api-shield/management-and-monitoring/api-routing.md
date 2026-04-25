@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/api-shield/management-and-monitoring/api-routing.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # API Routing
 
 API Shield Routing enables customers to create a unified external-facing API that routes requests to different back-end services that may have different paths and hosts than the existing zone and DNS configuration.
@@ -37,8 +20,8 @@ You must add Source Endpoints to Endpoint Management through established methods
 
 To create a route, you will need the operation ID of the Source Endpoint. To find the operation ID in the dashboard:
 
-* [  New dashboard ](#tab-panel-5391)
-* [ Old dashboard ](#tab-panel-5392)
+* [  New dashboard ](#tab-panel-5401)
+* [ Old dashboard ](#tab-panel-5402)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -56,8 +39,8 @@ Once your Source Endpoints are added to Endpoint Management, use the following s
 
 ### Create a route
 
-* [  New dashboard ](#tab-panel-5393)
-* [ Old dashboard ](#tab-panel-5394)
+* [  New dashboard ](#tab-panel-5403)
+* [ Old dashboard ](#tab-panel-5404)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

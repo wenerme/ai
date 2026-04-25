@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/web-apps/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Web sites and web apps
 
 Build and deploy full-stack web applications globally with serverless compute, storage, and instant deployments. Cloudflare Workers runs your frontend and backend logic at the edge. D1 provides a serverless SQL database. KV stores key-value data globally. R2 provides S3-compatible object storage with zero egress fees. Durable Objects coordinates real-time state. Queues handles background processing.

@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Hono ](https://developers.cloudflare.com/search/?tags=Hono)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ SQL ](https://developers.cloudflare.com/search/?tags=SQL) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/d1/tutorials/build-an-api-to-access-d1.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Build an API to access D1 using a proxy Worker
 
 **Last reviewed:**  over 1 year ago 
@@ -213,8 +196,8 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
 
 1. From your `d1-http` folder, open the Wrangler file, Wrangler's configuration file.
 2. Add the following binding in the file. Make sure that the `database_name` and the `database_id` are correct.  
-   * [  wrangler.jsonc ](#tab-panel-6525)  
-   * [  wrangler.toml ](#tab-panel-6526)  
+   * [  wrangler.jsonc ](#tab-panel-6577)  
+   * [  wrangler.toml ](#tab-panel-6578)  
 JSONC  
 ```  
 {  

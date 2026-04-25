@@ -10,33 +10,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/examples/ab-testing.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # A/B testing with same-URL direct access
 
 **Last reviewed:**  over 5 years ago 
 
 Set up an A/B test by controlling what response is served based on cookies. This version supports passing the request through to test and control on the origin, bypassing random assignment.
 
-* [  JavaScript ](#tab-panel-9698)
-* [  TypeScript ](#tab-panel-9699)
-* [  Python ](#tab-panel-9700)
-* [  Hono ](#tab-panel-9701)
+* [  JavaScript ](#tab-panel-9759)
+* [  TypeScript ](#tab-panel-9760)
+* [  Python ](#tab-panel-9761)
+* [  Hono ](#tab-panel-9762)
 
 JavaScript
 

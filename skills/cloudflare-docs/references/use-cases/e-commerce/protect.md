@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/e-commerce/protect.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Protect your store
 
 Online stores are targets for DDoS attacks, credential stuffing, payment fraud, and supply chain script injections. Cloudflare provides layered security — from SSL/TLS encryption and application security managed rulesets to bot detection and client-side script monitoring — that protects your store without adding friction for shoppers.

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/1.1.1.1/privacy/cloudflare-resolver-firefox.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cloudflare Resolver for Firefox
 
 ## Frequently asked questions about the Cloudflare resolver for Firefox
@@ -92,5 +75,5 @@ Cloudflare understands how important your data is to you, which is why we promis
 Cloudflare does not block or filter content through the Cloudflare Resolver for Firefox. As part of its agreement with Mozilla, Cloudflare is providing only direct DNS resolution. If Cloudflare were to receive written requests from law enforcement and government agencies to block access to domains or content through the Cloudflare resolver for Firefox, Cloudflare would, in consultation with Mozilla, exhaust our legal remedies before complying with such a request. We also commit to documenting any government request to block access in our semi-annual transparency report, unless legally prohibited from doing so.
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/privacy/","name":"Privacy"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/privacy/cloudflare-resolver-firefox/","name":"Cloudflare Resolver for Firefox"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/privacy/","name":"Privacy"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/privacy/cloudflare-resolver-firefox/","name":"Cloudflare Resolver for Firefox"}}]}
 ```

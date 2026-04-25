@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/artifacts/concepts/best-practices.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Best practices for Artifacts
 
 Artifacts works best when you isolate work, scope access narrowly, keep metadata separate, and partition storage deliberately.
@@ -53,8 +36,8 @@ Include stable identifiers in the repo name, such as the agent name, session ID,
 
 This example creates a unique repo name before creating the repo.
 
-* [  JavaScript ](#tab-panel-5477)
-* [  TypeScript ](#tab-panel-5478)
+* [  JavaScript ](#tab-panel-5487)
+* [  TypeScript ](#tab-panel-5488)
 
 src/index.js
 
@@ -115,8 +98,8 @@ This keeps your starting point consistent and makes downstream diffs easier to r
 
 This example forks a reviewed baseline repo into a session-specific repo.
 
-* [  JavaScript ](#tab-panel-5479)
-* [  TypeScript ](#tab-panel-5480)
+* [  JavaScript ](#tab-panel-5489)
+* [  TypeScript ](#tab-panel-5490)
 
 src/index.js
 
@@ -205,8 +188,8 @@ This example uses the [Workers binding](https://developers.cloudflare.com/artifa
 
 Assume the caller is already authenticated and authorized before this route returns a token.
 
-* [  JavaScript ](#tab-panel-5481)
-* [  TypeScript ](#tab-panel-5482)
+* [  JavaScript ](#tab-panel-5491)
+* [  TypeScript ](#tab-panel-5492)
 
 src/index.js
 

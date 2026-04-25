@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/reference/legacy/old-rate-limiting/upgrade.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Rate limiting (previous version) upgrade
 
 Cloudflare has upgraded all rate limiting rules created in the [previous version](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/) to the [new version of rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/).

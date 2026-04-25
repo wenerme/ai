@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ A/B testing ](https://developers.cloudflare.com/search/?tags=A/B%20testing)[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies)[ URL rewrite ](https://developers.cloudflare.com/search/?tags=URL%20rewrite) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/snippets/examples/ab-testing-same-url.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # A/B testing with same-URL direct access
 
 Set up an A/B test by controlling what response is served based on cookies.

@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/hyperdrive/concepts/query-caching.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Query caching
 
 Hyperdrive automatically caches all cacheable queries executed against your database when query caching is turned on, reducing the need to go back to your database (incurring latency and database load) for every query which can be especially useful for popular queries. Query caching is enabled by default.
@@ -35,8 +18,8 @@ Besides determining the difference between a `SELECT` and an `INSERT`, Hyperdriv
 
 For example, a read query that populates the front page of a news site would be cached:
 
-* [ PostgreSQL ](#tab-panel-7148)
-* [ MySQL ](#tab-panel-7149)
+* [ PostgreSQL ](#tab-panel-7202)
+* [ MySQL ](#tab-panel-7203)
 
 ```
 
@@ -62,8 +45,8 @@ ORDER BY published_time DESC LIMIT 50
 
 Mutating queries (including `INSERT`, `UPSERT`, or `CREATE TABLE`) and queries that use functions designated as [volatile ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) or [stable ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) by PostgreSQL are not cached:
 
-* [ PostgreSQL ](#tab-panel-7150)
-* [ MySQL ](#tab-panel-7151)
+* [ PostgreSQL ](#tab-panel-7204)
+* [ MySQL ](#tab-panel-7205)
 
 ```
 
@@ -171,8 +154,8 @@ You can also configure multiple Hyperdrive connections from a single application
 
 For example, using database drivers:
 
-* [ PostgreSQL ](#tab-panel-7152)
-* [ MySQL ](#tab-panel-7153)
+* [ PostgreSQL ](#tab-panel-7206)
+* [ MySQL ](#tab-panel-7207)
 
 index.ts
 
@@ -252,8 +235,8 @@ Explain Code
 
 The Wrangler configuration remains the same both for PostgreSQL and MySQL.
 
-* [  wrangler.jsonc ](#tab-panel-7154)
-* [  wrangler.toml ](#tab-panel-7155)
+* [  wrangler.jsonc ](#tab-panel-7208)
+* [  wrangler.toml ](#tab-panel-7209)
 
 JSONC
 

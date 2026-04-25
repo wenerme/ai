@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/clientless-access/alternative-onramps/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Alternative on-ramps
 
 As discussed in the previous modules, almost everything you do with the Cloudflare reverse proxy requires [adding a site](https://developers.cloudflare.com/learning-paths/clientless-access/initial-setup/add-site/) to Cloudflare. That public DNS record (or its subdomains) becomes the domain on which your users access your private applications. This method is exceptionally secure and transparent; each domain and subdomain has access to the Cloudflare web security portfolio, are inherently DDoS protected, and receive an obfuscated origin IP. For these reasons, using a [public hostname on Cloudflare](https://developers.cloudflare.com/learning-paths/clientless-access/connect-private-applications/) is the recommended method to onboard applications for clientless user access. However, there may be times in which a public DNS record cannot be created, or other situations that prevent administrators from using this method.

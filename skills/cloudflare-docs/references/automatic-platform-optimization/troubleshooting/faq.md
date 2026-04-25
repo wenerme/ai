@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Security ](https://developers.cloudflare.com/search/?tags=Security) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/automatic-platform-optimization/troubleshooting/faq.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # FAQs
 
 ## Do I still need to create "Edge Cache TTL" page rules with "Cache Level: Cache Everything"?

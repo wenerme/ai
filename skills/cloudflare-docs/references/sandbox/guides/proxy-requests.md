@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/guides/proxy-requests.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Proxy requests to external APIs
 
 When a sandbox needs to call an external API, you might pass credentials directly into the sandbox process. That approach works, but it means the sandbox holds a live credential that any code running inside it can read, copy, or misuse.
@@ -124,8 +107,8 @@ The framework exports:
 
 Create a `ServiceConfig` for each external API you want to proxy. This example proxies a generic HTTP API that expects a Bearer token:
 
-* [  JavaScript ](#tab-panel-8930)
-* [  TypeScript ](#tab-panel-8931)
+* [  JavaScript ](#tab-panel-8991)
+* [  TypeScript ](#tab-panel-8992)
 
 JavaScript
 
@@ -215,8 +198,8 @@ The `transform` function receives the outgoing request and a context object cont
 
 Register your services with `createProxyHandler` and issue tokens to sandboxes using `createProxyToken`:
 
-* [  JavaScript ](#tab-panel-8932)
-* [  TypeScript ](#tab-panel-8933)
+* [  JavaScript ](#tab-panel-8993)
+* [  TypeScript ](#tab-panel-8994)
 
 JavaScript
 
@@ -465,8 +448,8 @@ The SDK then sends all requests to your Worker proxy, which validates the token 
 
 To proxy additional APIs, define another `ServiceConfig` and add it to `createProxyHandler`:
 
-* [  JavaScript ](#tab-panel-8928)
-* [  TypeScript ](#tab-panel-8929)
+* [  JavaScript ](#tab-panel-8989)
+* [  TypeScript ](#tab-panel-8990)
 
 JavaScript
 
@@ -560,8 +543,8 @@ The JWT is missing, expired, or signed with the wrong secret. Verify that:
 
 To issue a fresh token and pass it to the sandbox:
 
-* [  JavaScript ](#tab-panel-8924)
-* [  TypeScript ](#tab-panel-8925)
+* [  JavaScript ](#tab-panel-8985)
+* [  TypeScript ](#tab-panel-8986)
 
 JavaScript
 
@@ -609,8 +592,8 @@ The service name in the URL must match the key in the `services` object. A reque
 
 Log the request URL in `transform` to confirm the path is being rewritten correctly:
 
-* [  JavaScript ](#tab-panel-8926)
-* [  TypeScript ](#tab-panel-8927)
+* [  JavaScript ](#tab-panel-8987)
+* [  TypeScript ](#tab-panel-8988)
 
 JavaScript
 

@@ -1,27 +1,10 @@
 ---
 title: Change domain plan
-description: Occasionally, you may want to upgrade or downgrade the plan associated with a specific Cloudflare domain.
+description: Upgrade or downgrade a domain's Cloudflare plan.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/billing/manage/change-plan.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Change domain plan
 
@@ -43,8 +26,8 @@ For additional help, refer to [this Community thread ↗](https://community.clou
 
 ## Change plan type
 
-* [ Dashboard ](#tab-panel-5503)
-* [ API ](#tab-panel-5504)
+* [ Dashboard ](#tab-panel-5513)
+* [ API ](#tab-panel-5514)
 
 To change the Cloudflare plan for a domain in the dashboard:
 
@@ -65,8 +48,8 @@ If you are an Enterprise customer and cannot change your plan type, contact your
 
 ## Change plan duration
 
-* [ Dashboard ](#tab-panel-5505)
-* [ API ](#tab-panel-5506)
+* [ Dashboard ](#tab-panel-5515)
+* [ API ](#tab-panel-5516)
 
 To change the duration of your Cloudflare plan in the dashboard:
 

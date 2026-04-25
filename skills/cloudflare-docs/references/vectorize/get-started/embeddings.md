@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/vectorize/get-started/embeddings.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Vectorize and Workers AI
 
 Vectorize is now Generally Available
@@ -157,8 +140,8 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9244)
-* [  wrangler.toml ](#tab-panel-9245)
+* [  wrangler.jsonc ](#tab-panel-9305)
+* [  wrangler.toml ](#tab-panel-9306)
 
 JSONC
 
@@ -208,8 +191,8 @@ Before you deploy your embedding example, ensure your Worker uses your model cat
 
 From within the `embeddings-tutorial` directory, open your Wrangler file in your editor and add the new `[[ai]]` binding to make Workers AI's models available in your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-9246)
-* [  wrangler.toml ](#tab-panel-9247)
+* [  wrangler.jsonc ](#tab-panel-9307)
+* [  wrangler.toml ](#tab-panel-9308)
 
 JSONC
 

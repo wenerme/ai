@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/load-balancing/load-balancers/create-load-balancer.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Manage load balancers
 
 A load balancer distributes traffic among pools according to [pool health](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/) and [traffic steering policies](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/). Each load balancer is identified by its DNS hostname (`lb.example.com`, `dev.example.com`, etc.) or IP address.
@@ -32,8 +15,8 @@ For more details about load balancers, refer to [Load balancers](https://develop
 
 ## Create a load balancer
 
-* [ Dashboard ](#tab-panel-7803)
-* [ API ](#tab-panel-7804)
+* [ Dashboard ](#tab-panel-7857)
+* [ API ](#tab-panel-7858)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -285,8 +268,8 @@ Sharing load balancers across sites is only supported if the target zone is on a
 
 ## Edit a load balancer
 
-* [ Dashboard ](#tab-panel-7799)
-* [ API ](#tab-panel-7800)
+* [ Dashboard ](#tab-panel-7853)
+* [ API ](#tab-panel-7854)
 
 To edit a load balancer in the dashboard:
 
@@ -305,8 +288,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 If you delete or disable a load balancer, your endpoint's response to requests will depend on your [existing DNS records](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#disabling-a-load-balancer).
 
-* [ Dashboard ](#tab-panel-7801)
-* [ API ](#tab-panel-7802)
+* [ Dashboard ](#tab-panel-7855)
+* [ API ](#tab-panel-7856)
 
 To delete a load balancer in the dashboard:
 

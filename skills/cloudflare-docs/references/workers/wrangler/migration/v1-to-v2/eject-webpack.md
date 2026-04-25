@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/migration/v1-to-v2/eject-webpack.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # 1\. Migrate webpack projects
 
 This guide describes the steps to migrate a webpack project from Wrangler v1 to Wrangler v2\. After completing this guide, [update your Wrangler version](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/update-v1-to-v2/).
@@ -168,8 +151,8 @@ module.exports = {
 
 Remove the `type` and `webpack_config` keys from your Wrangler file, as they are not supported anymore.
 
-* [  wrangler.jsonc ](#tab-panel-11019)
-* [  wrangler.toml ](#tab-panel-11020)
+* [  wrangler.jsonc ](#tab-panel-11080)
+* [  wrangler.toml ](#tab-panel-11081)
 
 JSONC
 
@@ -203,8 +186,8 @@ webpack_config = "webpack.config.js"
 
 Wrangler no longer has any knowledge of how to build your Worker. You will need to tell it how to call webpack and where to look for webpack's output. This translates into two fields:
 
-* [  wrangler.jsonc ](#tab-panel-11021)
-* [  wrangler.toml ](#tab-panel-11022)
+* [  wrangler.jsonc ](#tab-panel-11082)
+* [  wrangler.toml ](#tab-panel-11083)
 
 JSONC
 

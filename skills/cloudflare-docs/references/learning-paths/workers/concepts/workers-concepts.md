@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/workers/concepts/workers-concepts.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Cloudflare Workers
 
 Cloudflare Workers gives developers the power to deploy serverless code instantly to Cloudflare's global network.
@@ -155,8 +138,8 @@ Scheduling and routing
 
 Most Workers are a variation on the default Workers flow:
 
-* [  JavaScript ](#tab-panel-7780)
-* [  TypeScript ](#tab-panel-7781)
+* [  JavaScript ](#tab-panel-7834)
+* [  TypeScript ](#tab-panel-7835)
 
 JavaScript
 

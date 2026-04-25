@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/voice.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Voice agents
 
 Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence. Audio streams over WebSocket — no SFU or meeting infrastructure required. Beta
@@ -63,8 +46,8 @@ npm install @cloudflare/voice agents
 
 ### Server
 
-* [  JavaScript ](#tab-panel-4952)
-* [  TypeScript ](#tab-panel-4953)
+* [  JavaScript ](#tab-panel-4962)
+* [  TypeScript ](#tab-panel-4963)
 
 JavaScript
 
@@ -221,8 +204,8 @@ Explain Code
 
 ### Wrangler configuration
 
-* [  wrangler.jsonc ](#tab-panel-4942)
-* [  wrangler.toml ](#tab-panel-4943)
+* [  wrangler.jsonc ](#tab-panel-4952)
+* [  wrangler.toml ](#tab-panel-4953)
 
 JSONC
 
@@ -349,8 +332,8 @@ Set providers as class properties. Class field initializers run after `super()`,
 | transcriber | Transcriber | Yes      | Continuous per-call STT provider |
 | tts         | TTSProvider | Yes      | Text-to-speech                   |
 
-* [  JavaScript ](#tab-panel-4944)
-* [  TypeScript ](#tab-panel-4945)
+* [  JavaScript ](#tab-panel-4954)
+* [  TypeScript ](#tab-panel-4955)
 
 JavaScript
 
@@ -396,8 +379,8 @@ export class MyAgent extends VoiceAgent<Env> {
 
 For runtime model switching (for example, a Flux vs Nova 3 dropdown), override `createTranscriber`:
 
-* [  JavaScript ](#tab-panel-4946)
-* [  TypeScript ](#tab-panel-4947)
+* [  JavaScript ](#tab-panel-4956)
+* [  TypeScript ](#tab-panel-4957)
 
 JavaScript
 
@@ -447,8 +430,8 @@ Return a `string`, `AsyncIterable<string>`, or `ReadableStream` for streaming re
 
 **Simple response:**
 
-* [  JavaScript ](#tab-panel-4948)
-* [  TypeScript ](#tab-panel-4949)
+* [  JavaScript ](#tab-panel-4958)
+* [  TypeScript ](#tab-panel-4959)
 
 JavaScript
 
@@ -496,8 +479,8 @@ export class MyAgent extends VoiceAgent<Env> {
 
 **Streaming response (recommended for LLM):**
 
-* [  JavaScript ](#tab-panel-4966)
-* [  TypeScript ](#tab-panel-4967)
+* [  JavaScript ](#tab-panel-4976)
+* [  TypeScript ](#tab-panel-4977)
 
 JavaScript
 
@@ -640,8 +623,8 @@ Intercept and transform data at each pipeline stage. Return `null` to skip the c
 | beforeSynthesize(text, connection)       | Text before TTS | Yes       |
 | afterSynthesize(audio, text, connection) | Audio after TTS | Yes       |
 
-* [  JavaScript ](#tab-panel-4956)
-* [  TypeScript ](#tab-panel-4957)
+* [  JavaScript ](#tab-panel-4966)
+* [  TypeScript ](#tab-panel-4967)
 
 JavaScript
 
@@ -743,8 +726,8 @@ Explain Code
 
 Pass options to `withVoice()` as the second argument:
 
-* [  JavaScript ](#tab-panel-4950)
-* [  TypeScript ](#tab-panel-4951)
+* [  JavaScript ](#tab-panel-4960)
+* [  TypeScript ](#tab-panel-4961)
 
 JavaScript
 
@@ -790,8 +773,8 @@ const VoiceAgent = withVoice(Agent, {
 
 `withVoiceInput(Agent)` adds STT-only voice input — no TTS, no LLM, no response generation. Use this for dictation, search-by-voice, or any UI where you need speech-to-text without a conversational agent.
 
-* [  JavaScript ](#tab-panel-4954)
-* [  TypeScript ](#tab-panel-4955)
+* [  JavaScript ](#tab-panel-4964)
+* [  TypeScript ](#tab-panel-4965)
 
 JavaScript
 
@@ -1008,8 +991,8 @@ Explain Code
 
 Framework-agnostic client for environments without React.
 
-* [  JavaScript ](#tab-panel-4968)
-* [  TypeScript ](#tab-panel-4969)
+* [  JavaScript ](#tab-panel-4978)
+* [  TypeScript ](#tab-panel-4979)
 
 JavaScript
 
@@ -1139,8 +1122,8 @@ No API keys required — use your Workers AI binding:
 | WorkersAINova3STT | Continuous STT | @cf/deepgram/nova-3 | withVoiceInput  |
 | WorkersAITTS      | TTS            | @cf/deepgram/aura-1 | Both            |
 
-* [  JavaScript ](#tab-panel-4970)
-* [  TypeScript ](#tab-panel-4971)
+* [  JavaScript ](#tab-panel-4980)
+* [  TypeScript ](#tab-panel-4981)
 
 JavaScript
 
@@ -1272,8 +1255,8 @@ Explain Code
 
 **ElevenLabs TTS:**
 
-* [  JavaScript ](#tab-panel-4958)
-* [  TypeScript ](#tab-panel-4959)
+* [  JavaScript ](#tab-panel-4968)
+* [  TypeScript ](#tab-panel-4969)
 
 JavaScript
 
@@ -1325,8 +1308,8 @@ export class MyAgent extends VoiceAgent<Env> {
 
 **Deepgram STT:**
 
-* [  JavaScript ](#tab-panel-4960)
-* [  TypeScript ](#tab-panel-4961)
+* [  JavaScript ](#tab-panel-4970)
+* [  TypeScript ](#tab-panel-4971)
 
 JavaScript
 
@@ -1420,8 +1403,8 @@ Send and receive application-level JSON messages alongside voice protocol messag
 
 **Server:**
 
-* [  JavaScript ](#tab-panel-4964)
-* [  TypeScript ](#tab-panel-4965)
+* [  JavaScript ](#tab-panel-4974)
+* [  TypeScript ](#tab-panel-4975)
 
 JavaScript
 
@@ -1496,8 +1479,8 @@ useEffect(() => {
 
 Use `beforeCallStart` to restrict who can start a call. This example enforces single-speaker — only one connection can be the active speaker at a time:
 
-* [  JavaScript ](#tab-panel-4972)
-* [  TypeScript ](#tab-panel-4973)
+* [  JavaScript ](#tab-panel-4982)
+* [  TypeScript ](#tab-panel-4983)
 
 JavaScript
 
@@ -1615,8 +1598,8 @@ const { metrics } = useVoiceAgent({ agent: "MyAgent" });
 
 `withVoice` automatically persists conversation messages to SQLite. Access history in your `onTurn` via `context.messages`, or directly:
 
-* [  JavaScript ](#tab-panel-4962)
-* [  TypeScript ](#tab-panel-4963)
+* [  JavaScript ](#tab-panel-4972)
+* [  TypeScript ](#tab-panel-4973)
 
 JavaScript
 

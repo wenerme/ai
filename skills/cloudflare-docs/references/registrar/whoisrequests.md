@@ -1,27 +1,10 @@
 ---
 title: WHOIS requests
-description: This page describes the mechanism and process for submitting a disclosure request to Cloudflare for WHOIS data under Section 10 of the Internet Corporation for Assigned Names and Number's (&#34;ICANN&#34;) Registration Data Policy.
+description: Submit WHOIS disclosure requests to Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/registrar/whoisrequests.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # WHOIS requests
 

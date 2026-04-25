@@ -6,31 +6,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/origin-rules/examples/change-port.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Change the destination port
 
 Create an origin rule to change the destination port.
 
 The following origin rule overrides the destination port to `8081` for all requests where the URI path starts with `/team/calendar/`.
 
-* [ Dashboard ](#tab-panel-8454)
-* [ API ](#tab-panel-8455)
+* [ Dashboard ](#tab-panel-8511)
+* [ API ](#tab-panel-8512)
 
 Text in Expression Editor:
 

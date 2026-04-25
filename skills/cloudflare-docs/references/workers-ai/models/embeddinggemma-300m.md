@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg) 
 
 #  embeddinggemma-300m 
@@ -35,9 +18,9 @@ EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embeddin
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3206)
-* [  Python ](#tab-panel-3207)
-* [  curl ](#tab-panel-3208)
+* [  TypeScript ](#tab-panel-3216)
+* [  Python ](#tab-panel-3217)
+* [  curl ](#tab-panel-3218)
 
 ```
 
@@ -152,8 +135,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-3209)
-* [ Output ](#tab-panel-3210)
+* [ Input ](#tab-panel-3219)
+* [ Output ](#tab-panel-3220)
 
 ▶text
 
@@ -169,8 +152,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3204)
-* [ Output ](#tab-panel-3205)
+* [ Input ](#tab-panel-3214)
+* [ Output ](#tab-panel-3215)
 
 ```
 

@@ -1,27 +1,10 @@
 ---
 title: Required firewall rule changes to enable URL normalization
-description: On 2021-04-08, Cloudflare announced URL normalization, a feature that protects zones by normalizing HTTP request URI paths.
+description: Update firewall rules for URL normalization.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
-
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/firewall/troubleshooting/required-changes-to-enable-url-normalization.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 # Required firewall rule changes to enable URL normalization
 

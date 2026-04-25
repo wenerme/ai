@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-search/concepts/namespaces.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Namespaces
 
 Every AI Search instance belongs to a **namespace**. A namespace is a logical grouping of instances within your account.
@@ -40,8 +23,8 @@ The namespace binding requires the following minimum package versions for TypeSc
 
 When you add an `ai_search_namespaces` binding to your Wrangler configuration, you specify which namespace the binding has access to. The binding grants full access to all instances within that namespace. You can get, list, create, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-5343)
-* [  wrangler.toml ](#tab-panel-5344)
+* [  wrangler.jsonc ](#tab-panel-5353)
+* [  wrangler.toml ](#tab-panel-5354)
 
 JSONC
 
@@ -106,8 +89,8 @@ A `default` namespace is automatically created for every account. If you do not 
 
 You can also bind directly to specific instances in the default namespace using the `ai_search` binding. This binds each entry to a single pre-existing instance without needing to call `get()`.
 
-* [  wrangler.jsonc ](#tab-panel-5345)
-* [  wrangler.toml ](#tab-panel-5346)
+* [  wrangler.jsonc ](#tab-panel-5355)
+* [  wrangler.toml ](#tab-panel-5356)
 
 JSONC
 
@@ -170,8 +153,8 @@ The `ai_search` binding provides the same instance methods (`search()`, `chatCom
 
 You can declare multiple namespace bindings in the same Worker. Each binding maps to a different namespace and provides isolated access to its instances.
 
-* [  wrangler.jsonc ](#tab-panel-5347)
-* [  wrangler.toml ](#tab-panel-5348)
+* [  wrangler.jsonc ](#tab-panel-5357)
+* [  wrangler.toml ](#tab-panel-5358)
 
 JSONC
 

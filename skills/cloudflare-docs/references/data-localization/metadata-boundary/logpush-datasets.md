@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/data-localization/metadata-boundary/logpush-datasets.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Logpush datasets
 
 The table below lists the [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) that support zones or accounts with Customer Metadata Boundary (CMB) enabled. The column **Respects CMB** indicates whether enabling CMB impacts the dataset (yes/no). The last two columns inform you if CMB is available with US and EU.

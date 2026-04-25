@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/wrangler/commands/secrets-store.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Secrets Store
 
 Interact with [Secret Store](https://developers.cloudflare.com/secrets-store/) using Wrangler.
@@ -39,9 +22,9 @@ In order to interact with Secrets Store in production, you should append `--remo
 
 Create a secret within a store
 
-* [  npm ](#tab-panel-10731)
-* [  pnpm ](#tab-panel-10732)
-* [  yarn ](#tab-panel-10733)
+* [  npm ](#tab-panel-10792)
+* [  pnpm ](#tab-panel-10793)
+* [  yarn ](#tab-panel-10794)
 
 Terminal window
 
@@ -131,9 +114,9 @@ npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name
 
 Update a secret within a store
 
-* [  npm ](#tab-panel-10734)
-* [  pnpm ](#tab-panel-10735)
-* [  yarn ](#tab-panel-10736)
+* [  npm ](#tab-panel-10795)
+* [  pnpm ](#tab-panel-10796)
+* [  yarn ](#tab-panel-10797)
 
 Terminal window
 
@@ -198,9 +181,9 @@ Automatically provision draft bindings with new resources
 
 Duplicate a secret within a store
 
-* [  npm ](#tab-panel-10737)
-* [  pnpm ](#tab-panel-10738)
-* [  yarn ](#tab-panel-10739)
+* [  npm ](#tab-panel-10798)
+* [  pnpm ](#tab-panel-10799)
+* [  yarn ](#tab-panel-10800)
 
 Terminal window
 
@@ -265,9 +248,9 @@ Automatically provision draft bindings with new resources
 
 Get a secret within a store
 
-* [  npm ](#tab-panel-10740)
-* [  pnpm ](#tab-panel-10741)
-* [  yarn ](#tab-panel-10742)
+* [  npm ](#tab-panel-10801)
+* [  pnpm ](#tab-panel-10802)
+* [  yarn ](#tab-panel-10803)
 
 Terminal window
 
@@ -352,9 +335,9 @@ npx wrangler secrets-store secret get 8f7a1cdced6342c18d223ece462fd88d --secret-
 
 Delete a secret within a store
 
-* [  npm ](#tab-panel-10743)
-* [  pnpm ](#tab-panel-10744)
-* [  yarn ](#tab-panel-10745)
+* [  npm ](#tab-panel-10804)
+* [  pnpm ](#tab-panel-10805)
+* [  yarn ](#tab-panel-10806)
 
 Terminal window
 
@@ -413,9 +396,9 @@ Automatically provision draft bindings with new resources
 
 List secrets within a store
 
-* [  npm ](#tab-panel-10746)
-* [  pnpm ](#tab-panel-10747)
-* [  yarn ](#tab-panel-10748)
+* [  npm ](#tab-panel-10807)
+* [  pnpm ](#tab-panel-10808)
+* [  yarn ](#tab-panel-10809)
 
 Terminal window
 
@@ -484,9 +467,9 @@ Store limitation
 
 Create a store within an account
 
-* [  npm ](#tab-panel-10749)
-* [  pnpm ](#tab-panel-10750)
-* [  yarn ](#tab-panel-10751)
+* [  npm ](#tab-panel-10810)
+* [  pnpm ](#tab-panel-10811)
+* [  yarn ](#tab-panel-10812)
 
 Terminal window
 
@@ -561,9 +544,9 @@ npx wrangler secrets-store store create default --remote
 
 Delete a store within an account
 
-* [  npm ](#tab-panel-10752)
-* [  pnpm ](#tab-panel-10753)
-* [  yarn ](#tab-panel-10754)
+* [  npm ](#tab-panel-10813)
+* [  pnpm ](#tab-panel-10814)
+* [  yarn ](#tab-panel-10815)
 
 Terminal window
 
@@ -638,9 +621,9 @@ npx wrangler secrets-store store delete d2dafaeac9434de2b6d08b292ce08211 --remot
 
 List stores within an account
 
-* [  npm ](#tab-panel-10755)
-* [  pnpm ](#tab-panel-10756)
-* [  yarn ](#tab-panel-10757)
+* [  npm ](#tab-panel-10816)
+* [  pnpm ](#tab-panel-10817)
+* [  yarn ](#tab-panel-10818)
 
 Terminal window
 

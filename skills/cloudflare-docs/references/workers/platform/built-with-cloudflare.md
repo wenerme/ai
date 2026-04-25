@@ -6,23 +6,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/platform/built-with-cloudflare.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Built with Cloudflare button
 
 If you're building an application or website on Cloudflare, you can embed a Built with Cloudflare button in your README, blog post, or documentation.
@@ -37,9 +20,9 @@ The "Built with Cloudflare" button can be used to share that you're using Cloudf
 
 The Built with Cloudflare button is an SVG and can be embedded anywhere. Use the following snippet to paste the button into your README, blog post, or documentation.
 
-* [ Markdown ](#tab-panel-10003)
-* [ HTML ](#tab-panel-10004)
-* [ URL ](#tab-panel-10005)
+* [ Markdown ](#tab-panel-10064)
+* [ HTML ](#tab-panel-10065)
+* [ URL ](#tab-panel-10066)
 
 ```
 

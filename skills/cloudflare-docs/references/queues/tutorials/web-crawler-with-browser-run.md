@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/queues/tutorials/web-crawler-with-browser-run/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Build a web crawler with Queues and Browser Run
 
 **Last reviewed:**  over 1 year ago 
@@ -153,8 +136,8 @@ Explain Code
 
 Then, in your Wrangler file, add the following with the values generated in the terminal:
 
-* [  wrangler.jsonc ](#tab-panel-8172)
-* [  wrangler.toml ](#tab-panel-8173)
+* [  wrangler.jsonc ](#tab-panel-8226)
+* [  wrangler.toml ](#tab-panel-8227)
 
 JSONC
 
@@ -253,8 +236,8 @@ bun add robots-parser
 
 Then, add a Browser Run binding. Adding a Browser Run binding gives the Worker access to a headless Chromium instance you will control with Puppeteer.
 
-* [  wrangler.jsonc ](#tab-panel-8170)
-* [  wrangler.toml ](#tab-panel-8171)
+* [  wrangler.jsonc ](#tab-panel-8224)
+* [  wrangler.toml ](#tab-panel-8225)
 
 JSONC
 
@@ -317,8 +300,8 @@ Created queue queues-web-crawler.
 
 Then, in your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-8174)
-* [  wrangler.toml ](#tab-panel-8175)
+* [  wrangler.jsonc ](#tab-panel-8228)
+* [  wrangler.toml ](#tab-panel-8229)
 
 JSONC
 
@@ -385,8 +368,8 @@ Adding the `max_batch_timeout` of 60 seconds to the consumer queue is important 
 
 Your final Wrangler file should look similar to the one below.
 
-* [  wrangler.jsonc ](#tab-panel-8176)
-* [  wrangler.toml ](#tab-panel-8177)
+* [  wrangler.jsonc ](#tab-panel-8230)
+* [  wrangler.toml ](#tab-panel-8231)
 
 JSONC
 

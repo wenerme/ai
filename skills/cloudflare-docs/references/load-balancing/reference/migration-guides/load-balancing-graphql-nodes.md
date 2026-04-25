@@ -10,23 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ Migration ](https://developers.cloudflare.com/search/?tags=Migration) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/load-balancing/reference/migration-guides/load-balancing-graphql-nodes.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Migrate to new GraphQL nodes
 
 After 30 September 2021, Cloudflare will make the following changes to the Load Balancing GraphQL schema:

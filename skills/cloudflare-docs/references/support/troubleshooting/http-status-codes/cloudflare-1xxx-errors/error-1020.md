@@ -6,21 +6,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
 # Error 1020
 
 ## Error 1020: Access denied
@@ -37,8 +22,8 @@ If you are not the website owner, provide the website owner with a screenshot of
 
 If you are the website owner:
 
-* [  New dashboard ](#tab-panel-9139)
-* [ Old dashboard ](#tab-panel-9140)
+* [  New dashboard ](#tab-panel-9200)
+* [ Old dashboard ](#tab-panel-9201)
 
 1. Retrieve a screenshot of the 1020 error from your customer.
 2. Search the [Security Events log](https://developers.cloudflare.com/waf/analytics/security-events/) (available at **Security** \> **Analytics**, in the **Events** tab) for the [Ray ID](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) or client IP address from the visitor's 1020 error message.  

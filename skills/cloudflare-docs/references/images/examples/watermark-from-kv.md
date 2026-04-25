@@ -6,31 +6,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/images/examples/watermark-from-kv.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # Watermarks
 
 **Last reviewed:**  about 1 year ago 
 
 Draw a watermark from KV on an image from R2
 
-* [  JavaScript ](#tab-panel-7348)
-* [  TypeScript ](#tab-panel-7349)
+* [  JavaScript ](#tab-panel-7402)
+* [  TypeScript ](#tab-panel-7403)
 
 JavaScript
 

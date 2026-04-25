@@ -10,30 +10,13 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
 
-### Agents toolkit
-
-* Agent setup
-* Copy as Markdown
-
-Open the Markdown file in a new tab
-
-Ask Claude about this page
-
-Ask ChatGPT about this page
-
-Was this helpful?
-
-YesNo
-
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/insights/analytics/ai-security.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
 # AI security
 
 The AI security report dashboard summarizes your organization's AI usage and potential security risks.
 
 To view the AI security report dashboard:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
 2. Go to **Dashboards**.
 3. Select **AI security report**.
 
@@ -45,7 +28,7 @@ To populate the AI security report dashboard, you must have:
 
 * [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) enabled to inspect outbound HTTP and DNS traffic.
 * User traffic to SaaS AI applications (for example, ChatGPT or Gemini) sent through Cloudflare Gateway.
-* MCP servers behind Cloudflare Access policies.
+* [Model Context Protocol (MCP) servers](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/) behind [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/) policies.
 
 ## Available insights
 
@@ -81,13 +64,11 @@ Use this report to understand whether sensitive data is being sent to unapproved
 
 ### MCP servers behind Access over time
 
-Displays the number of Managed Control Plane (MCP) servers that are protected behind Access policies over time.  
-Use this panel to monitor the number of MCP servers protected behind Access policies.
+Displays the number of Model Context Protocol (MCP) servers protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/) policies over time. Use this panel to verify that newly deployed MCP servers are protected.
 
 ### Access login events to MCP servers
 
-Reports the number of login events to MCP servers protected behind Access policies.  
-Use this panel to monitor the number of login events to MCP servers protected behind Access policies.
+Reports the number of login events to MCP servers protected by Access policies. Use this panel to identify unusual login patterns, such as spikes in access from unexpected users.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/analytics/","name":"Dashboards"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/analytics/ai-security/","name":"AI security"}}]}
