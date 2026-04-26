@@ -23,6 +23,12 @@ $ just bar
 /subdir
 ```
 
+Use `set no-cd`<sup>master</sup> to make all recipes in the current module
+default to the same behavior.
+
+`set no-cd` and `set working-directory` can be overridden on a per-recipe basis
+with the `[no-cd]` and `[working-directory]` attributes.
+
 You can override the working directory for all recipes with
 `set working-directory := '…'`:
 

@@ -738,10 +738,10 @@
   "anthropic-docs/managed-agents/memory.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/memory",
     "skill": "anthropic-docs",
-    "etag": "W/\"95da-19dc1df8ad0\"",
-    "lastModified": "Fri, 24 Apr 2026 23:42:26 GMT",
-    "size": 38362,
-    "updatedAt": "2026-04-25T00:18:08.534Z"
+    "etag": "W/\"9480-19dc737ef68\"",
+    "lastModified": "Sun, 26 Apr 2026 00:37:05 GMT",
+    "size": 38016,
+    "updatedAt": "2026-04-26T10:16:36.635Z"
   },
   "anthropic-docs/managed-agents/multi-agent.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/multi-agent",
