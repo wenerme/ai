@@ -43,10 +43,10 @@ cd repo-per-sandbox
 
 ## 1\. Create or reuse the repo
 
-The template keeps one Artifacts repo per sandbox ID:
+The template keeps one Artifacts repo per sandbox ID. Use your own source of truth to decide whether this request should create a new repo or load an existing one.
 
-* [  JavaScript ](#tab-panel-5501)
-* [  TypeScript ](#tab-panel-5502)
+* [  JavaScript ](#tab-panel-5503)
+* [  TypeScript ](#tab-panel-5504)
 
 src/index.js
 
@@ -58,21 +58,10 @@ let remote;
 
 let token;
 
-
-try {
-
-  const repo = await env.ARTIFACTS.get(sandboxId);
+const sandboxWasJustCreated = true; // for example, set this when you create a new sandbox record
 
 
-  defaultBranch = repo.defaultBranch;
-
-  remote = repo.remote;
-
-  token = (await repo.createToken("write", 3600)).plaintext;
-
-} catch {
-
-  // Repo doesn't exist yet — create it.
+if (sandboxWasJustCreated) {
 
   const created = await env.ARTIFACTS.create(sandboxId);
 
@@ -82,6 +71,17 @@ try {
   remote = created.remote;
 
   token = created.token;
+
+} else {
+
+  const repo = await env.ARTIFACTS.get(sandboxId);
+
+
+  defaultBranch = repo.defaultBranch;
+
+  remote = repo.remote;
+
+  token = (await repo.createToken("write", 3600)).plaintext;
 
 }
 
@@ -100,21 +100,10 @@ let remote: string;
 
 let token: string;
 
-
-try {
-
-  const repo = await env.ARTIFACTS.get(sandboxId);
+const sandboxWasJustCreated = true; // for example, set this when you create a new sandbox record
 
 
-  defaultBranch = repo.defaultBranch;
-
-  remote = repo.remote;
-
-  token = (await repo.createToken("write", 3600)).plaintext;
-
-} catch {
-
-  // Repo doesn't exist yet — create it.
+if (sandboxWasJustCreated) {
 
   const created = await env.ARTIFACTS.create(sandboxId);
 
@@ -125,6 +114,17 @@ try {
 
   token = created.token;
 
+} else {
+
+  const repo = await env.ARTIFACTS.get(sandboxId);
+
+
+  defaultBranch = repo.defaultBranch;
+
+  remote = repo.remote;
+
+  token = (await repo.createToken("write", 3600)).plaintext;
+
 }
 
 
@@ -132,12 +132,16 @@ try {
 
 Explain Code
 
+The template already knows the repo name, so start with direct lookup instead of scanning `list()` pages. Avoid broad `catch` blocks here. They can hide missing-repo, auth, and validation failures behind the same retry message.
+
+If your flow can race with repo creation, handle that retry at the application level after you inspect the thrown error.
+
 ## 2\. Create or reuse the sandbox
 
 Use the same ID for the sandbox:
 
-* [  JavaScript ](#tab-panel-5497)
-* [  TypeScript ](#tab-panel-5498)
+* [  JavaScript ](#tab-panel-5499)
+* [  TypeScript ](#tab-panel-5500)
 
 src/index.js
 
@@ -169,8 +173,8 @@ Convert the write token into an authenticated Git remote, then store it as an en
 
 Use a short-lived token and pass it into the sandbox only after the sandbox session is authorized to push changes.
 
-* [  JavaScript ](#tab-panel-5499)
-* [  TypeScript ](#tab-panel-5500)
+* [  JavaScript ](#tab-panel-5501)
+* [  TypeScript ](#tab-panel-5502)
 
 src/index.js
 

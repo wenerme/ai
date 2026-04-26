@@ -10,6 +10,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Use the Artifacts Workers binding to create, import, inspect, fork, and delete repos directly from your Worker. The Artifacts binding returns repo handles that allow repo-scoped operations such as token management and forking.
 
+Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/) first, then choose the namespace name you will bind here.
+
 ## Configure the binding
 
 Add the Artifacts binding to your Wrangler config file:
@@ -50,7 +52,9 @@ TOML
 
 binding = "ARTIFACTS"
 
-namespace = "default" # any name works — use namespaces to organise repos
+namespace = "default" # replace with your Artifacts namespace
+
+# remote = true # optional: use the remote Artifacts service in local dev
 
 
 ```
@@ -72,7 +76,9 @@ export interface Env {
 
 Wrangler generates the `Artifacts` type for consumers and binds it directly in your environment.
 
-If you authenticate with `wrangler login`, Wrangler requests `artifacts:write` by default.
+In named Wrangler environments, `artifacts` is non-inheritable. Repeat the binding in each environment where you need it.
+
+At runtime, deployed Workers use the configured binding directly. For local Wrangler commands such as `wrangler dev`, `wrangler deploy`, or `wrangler types`, authenticate Wrangler first. For local OAuth authentication, refer to [wrangler login](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). For CI or headless environments, refer to [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
 
 ## Namespace methods
 
@@ -86,8 +92,8 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or de
 * `opts.setDefaultBranch` ` string ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-5471)
-* [  TypeScript ](#tab-panel-5472)
+* [  JavaScript ](#tab-panel-5469)
+* [  TypeScript ](#tab-panel-5470)
 
 JavaScript
 
@@ -161,11 +167,13 @@ async function createRepo(artifacts: Artifacts) {
 
 Explain Code
 
+The returned token encodes its expiry directly in the `?expires=` suffix.
+
 ### `get(name)`
 
 * `name` ` RepoName ` required
 * Returns ` Promise<ArtifactsRepo> `
-* Throws if the repo does not exist.
+* Throws if the repo does not exist or is not ready yet.
 
 * [  JavaScript ](#tab-panel-5465)
 * [  TypeScript ](#tab-panel-5466)
@@ -206,8 +214,8 @@ async function getRepoHandle(artifacts: Artifacts) {
 * `opts.cursor` ` Cursor ` optional
 * Returns ` Promise<ArtifactsRepoListResult> `
 
-* [  JavaScript ](#tab-panel-5469)
-* [  TypeScript ](#tab-panel-5470)
+* [  JavaScript ](#tab-panel-5473)
+* [  TypeScript ](#tab-panel-5474)
 
 JavaScript
 
@@ -220,7 +228,13 @@ async function listRepos(artifacts) {
 
   return {
 
-    names: page.repos.map((repo) => repo.name),
+    repos: page.repos.map((repo) => ({
+
+      name: repo.name,
+
+      status: repo.status,
+
+    })),
 
     nextCursor: page.cursor ?? null,
 
@@ -230,6 +244,8 @@ async function listRepos(artifacts) {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -242,7 +258,13 @@ async function listRepos(artifacts: Artifacts) {
 
   return {
 
-    names: page.repos.map((repo) => repo.name),
+    repos: page.repos.map((repo) => ({
+
+      name: repo.name,
+
+      status: repo.status,
+
+    })),
 
     nextCursor: page.cursor ?? null,
 
@@ -252,6 +274,10 @@ async function listRepos(artifacts: Artifacts) {
 
 
 ```
+
+Explain Code
+
+Each listed repo includes a `status` value of `ready`, `importing`, or `forking`.
 
 ### `import(params)`
 
@@ -352,6 +378,8 @@ async function importFromGitHub(artifacts: Artifacts) {
 
 Explain Code
 
+Imported repos return the same create-style token format. The token encodes its expiry directly in the `?expires=` suffix.
+
 ### `delete(name)`
 
 * `name` ` RepoName ` required
@@ -390,8 +418,8 @@ async function deleteRepo(artifacts: Artifacts) {
 
 Call `await artifacts.get(name)` to get a repo handle. The handle extends `ArtifactsRepoInfo`, so repo metadata (`id`, `name`, `remote`, `defaultBranch`, etc.) is available directly as properties.
 
-* [  JavaScript ](#tab-panel-5473)
-* [  TypeScript ](#tab-panel-5474)
+* [  JavaScript ](#tab-panel-5471)
+* [  TypeScript ](#tab-panel-5472)
 
 JavaScript
 
@@ -461,6 +489,8 @@ async function mintReadToken(artifacts: Artifacts) {
 
 
 ```
+
+Unlike `create()` and `import()`, `repo.createToken()` returns a structured result with `plaintext` and `expiresAt`. The `plaintext` value is the Git token string.
 
 ### `listTokens()`
 

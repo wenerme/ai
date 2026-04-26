@@ -8,9 +8,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Concepts
 
-Use these concepts to understand the data model, versioning behavior, and operating model for Artifacts.
+Use these concepts to understand namespaces, repositories, versioning behavior, and the operating model for Artifacts.
 
 * [ How Artifacts works ](https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/)
+* [ Namespaces ](https://developers.cloudflare.com/artifacts/concepts/namespaces/)
+* [ Repositories ](https://developers.cloudflare.com/artifacts/concepts/repositories/)
 * [ Best practices for Artifacts ](https://developers.cloudflare.com/artifacts/concepts/best-practices/)
 
 ```json

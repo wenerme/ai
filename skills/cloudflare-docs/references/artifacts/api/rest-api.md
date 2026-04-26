@@ -10,6 +10,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Use the Artifacts REST API to manage repos, remotes, forks, imports, and tokens from external systems.
 
+Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/) first, then choose the namespace name you will use in these API paths.
+
 ## Base URL and authentication
 
 Artifacts REST routes use this base path:
@@ -21,11 +23,11 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$
 
 ```
 
-Requests to `/v1/api/...` use Bearer authentication:
+Requests use Bearer authentication:
 
 ```
 
-Authorization: Bearer <CLOUDFLARE_API_TOKEN>
+Authorization: Bearer $CLOUDFLARE_API_TOKEN
 
 
 ```
@@ -174,7 +176,7 @@ export interface RepoInfo {
 }
 
 
-export interface RemoteRepoInfo extends RepoInfo {
+export interface RepoWithRemote extends RepoInfo {
 
   remote: string;
 
@@ -314,6 +316,8 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos" \
 
 Explain Code
 
+Create, fork, and import responses return the token string only. The token encodes its expiry directly in the `?expires=` suffix. The separate `POST /tokens` route also returns `expires_at` alongside the plaintext token.
+
 ### List repos
 
 Route: `GET /repos?limit=&cursor=&search=&sort=&direction=`
@@ -347,7 +351,7 @@ export interface ListReposQuery {
 }
 
 
-export type ListReposResponse = ApiEnvelope<RepoInfo[]>;
+export type ListReposResponse = ApiEnvelope<RepoWithRemote[]>;
 
 
 ```
@@ -387,7 +391,9 @@ curl "$ARTIFACTS_BASE_URL/repos?limit=20&sort=updated_at&direction=desc" \
 
       "source": null,
 
-      "read_only": false
+      "read_only": false,
+
+      "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git"
 
     }
 
@@ -426,7 +432,7 @@ TypeScript
 
 ```
 
-export type GetRepoResponse = ApiEnvelope<RemoteRepoInfo>;
+export type GetRepoResponse = ApiEnvelope<RepoWithRemote>;
 
 
 ```
@@ -736,6 +742,8 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos/react-mirror/import" \
 
 Explain Code
 
+If a repo exists but is still importing or forking, this route can return `409 Conflict` with a retriable error message.
+
 ## Tokens
 
 These tokens are for Git routes. They do not authenticate REST API requests.
@@ -941,14 +949,14 @@ TypeScript
 
 ```
 
-export interface RevokeTokenResult {
+export interface DeleteTokenResult {
 
   id: string;
 
 }
 
 
-export type RevokeTokenResponse = ApiEnvelope<RevokeTokenResult>;
+export type DeleteTokenResponse = ApiEnvelope<DeleteTokenResult>;
 
 
 ```

@@ -1,11 +1,11 @@
 ---
 title: "Xiaomi Token Plan (Singapore) | Models"
-description: "Use Xiaomi Token Plan (Singapore) models with Mastra. 3 models available."
+description: "Use Xiaomi Token Plan (Singapore) models with Mastra. 5 models available."
 ---
 
 # [Xiaomi Token Plan (Singapore) logo]Xiaomi Token Plan (Singapore)
 
-Access 3 Xiaomi Token Plan (Singapore) models through Mastra's model router. Authentication is handled automatically using the `XIAOMI_API_KEY` environment variable.
+Access 5 Xiaomi Token Plan (Singapore) models through Mastra's model router. Authentication is handled automatically using the `XIAOMI_API_KEY` environment variable.
 
 Learn more in the [Xiaomi Token Plan (Singapore) documentation](https://platform.xiaomimimo.com/#/docs).
 
@@ -74,6 +74,30 @@ for await (const chunk of stream) {
     "maxOutput": 16000,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "xiaomi-token-plan-sgp/mimo-v2.5",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "xiaomi-token-plan-sgp/mimo-v2.5-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -106,7 +130,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "xiaomi-token-plan-sgp/mimo-v2-tts"
+      ? "xiaomi-token-plan-sgp/mimo-v2.5-pro"
       : "xiaomi-token-plan-sgp/mimo-v2-omni";
   }
 });

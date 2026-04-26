@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Miro
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/360017571414-Single-sign-on-SSO) as a SAML application in Cloudflare One.
 
@@ -39,8 +39,8 @@ This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/
 
 ## 2\. Add a SAML SSO provider to Miro
 
-* [ business plan ](#tab-panel-5779)
-* [ enterprise plan ](#tab-panel-5780)
+* [ business plan ](#tab-panel-5781)
+* [ enterprise plan ](#tab-panel-5782)
 
 1. In Miro, select your profile picture > **Settings** \> **\*\*Security\*\***.
 2. Turn on **SSO/SAML**.

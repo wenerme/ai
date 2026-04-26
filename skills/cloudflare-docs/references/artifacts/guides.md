@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Guides
 
-Use these guides to authenticate, import existing repositories, and mount large repos with ArtifactFS.
+In-depth guides for using Artifacts in production, including how Artifacts authenticates clients, how to import existing Git repositories, and how to mount large repositories within sandboxes.
 
 * [ Authentication ](https://developers.cloudflare.com/artifacts/guides/authentication/)
 * [ Import repositories ](https://developers.cloudflare.com/artifacts/guides/import-repositories/)

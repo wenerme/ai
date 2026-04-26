@@ -32,7 +32,7 @@ In Cursor, install the Cloudflare Plugin which includes Cloudflare Skills and re
 3. **Try a prompt**  
 For example:  
 ```  
-Build a Workers AI chatbot with streaming responses.  
+Show me how to use Hyperdrive to connect my Worker to an existing Postgres database.  
 ```
 
 ## Cloudflare platform access

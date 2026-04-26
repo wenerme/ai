@@ -16,6 +16,8 @@ Artifacts is in beta. Refer to [How Artifacts works](https://developers.cloudfla
 
 Artifacts stores versioned file trees behind a Git-compatible interface. Create repositories programmatically, import existing repositories, and hand off a URL to any standard Git client.
 
+Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/) before you start, then choose the namespace name you will use for these repos.
+
 Use Artifacts when you need to:
 
 * Store versioned file trees instead of raw blobs
@@ -23,7 +25,7 @@ Use Artifacts when you need to:
 * Isolate work in separate repos or branches for safer parallel execution
 * Fork from a shared baseline and diff or merge the results later
 
-The same repository can be addressed from [Workers](https://developers.cloudflare.com/workers/), the REST API, and Git clients. You can create one repo per agent, user, branch, or task, keep each unit of work separate, and compare or merge the results later.
+The same repository can be addressed from [Workers](https://developers.cloudflare.com/artifacts/get-started/workers/), the REST API, and Git clients. You can create one repo per agent, user, branch, or task, keep each unit of work separate, and compare or merge the results later.
 
 [Get started](https://developers.cloudflare.com/artifacts/get-started/) 
 

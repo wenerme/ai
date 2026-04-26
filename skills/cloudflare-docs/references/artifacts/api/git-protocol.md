@@ -10,7 +10,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Artifacts exposes Git access for every Artifacts repository.
 
-Each repo has a standard Git smart HTTP remote at `https://{accountId}.artifacts.cloudflare.net/git/{namespace}/{repo}.git`.
+Each repo has a standard Git smart HTTP remote at `https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/<namespace>/<repo>.git`.
+
+Replace the `<ACCOUNT_ID>` placeholder with your Cloudflare account ID. Use the exact hostname from the repo `remote` returned by the Workers binding or REST API.
 
 Use the returned repo `remote` with a regular Git client for `clone`, `fetch`, `pull`, and `push`.
 
@@ -21,7 +23,7 @@ Git routes accept repo access tokens in two forms:
 | Format                            | Details                                                                                                                              | Example                                                                                                      |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
 | Bearer token in http.extraHeader  | Recommended for local workflows. Use the full token string returned by the control plane and keep credentials out of the remote URL. | git -c http.extraHeader="Authorization: Bearer $ARTIFACTS\_TOKEN" clone "$ARTIFACTS\_REMOTE" artifacts-clone |
-| HTTP Basic auth in the remote URL | Use for short-lived, one-off commands when you need a self-contained remote. Put the token secret in the password slot.              | https://x:<token-secret>@<accountId>.artifacts.cloudflare.net/git/<namespace>/<repo>.git                     |
+| HTTP Basic auth in the remote URL | Use for short-lived, one-off commands when you need a self-contained remote. Put the token secret in the password slot.              | https://x:<token-secret>@<ACCOUNT\_ID>.artifacts.cloudflare.net/git/<namespace>/<repo>.git                   |
 
 ### Token format
 

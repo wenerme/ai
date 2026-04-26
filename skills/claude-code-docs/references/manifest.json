@@ -139,21 +139,21 @@
   },
   "desktop.md": {
     "url": "https://code.claude.com/docs/en/desktop",
-    "lastModified": "Tue, 21 Apr 2026 09:30:07 GMT",
-    "size": 64614,
-    "updatedAt": "2026-04-21T10:29:20.595Z"
+    "lastModified": "Sat, 25 Apr 2026 18:47:22 GMT",
+    "size": 64058,
+    "updatedAt": "2026-04-26T00:17:19.800Z"
   },
   "desktop-quickstart.md": {
     "url": "https://code.claude.com/docs/en/desktop-quickstart",
-    "lastModified": "Thu, 16 Apr 2026 21:19:42 GMT",
-    "size": 10216,
-    "updatedAt": "2026-04-17T00:17:44.879Z"
+    "lastModified": "Sat, 25 Apr 2026 18:47:43 GMT",
+    "size": 10263,
+    "updatedAt": "2026-04-26T00:17:20.146Z"
   },
   "desktop-scheduled-tasks.md": {
     "url": "https://code.claude.com/docs/en/desktop-scheduled-tasks",
-    "lastModified": "Thu, 23 Apr 2026 23:33:44 GMT",
-    "size": 10234,
-    "updatedAt": "2026-04-24T00:19:44.050Z"
+    "lastModified": "Sat, 25 Apr 2026 18:47:54 GMT",
+    "size": 10705,
+    "updatedAt": "2026-04-26T00:17:20.488Z"
   },
   "devcontainer.md": {
     "url": "https://code.claude.com/docs/en/devcontainer",
@@ -379,9 +379,9 @@
   },
   "routines.md": {
     "url": "https://code.claude.com/docs/en/routines",
-    "lastModified": "Thu, 23 Apr 2026 23:33:13 GMT",
-    "size": 23727,
-    "updatedAt": "2026-04-24T00:19:57.371Z"
+    "lastModified": "Sat, 25 Apr 2026 18:47:59 GMT",
+    "size": 23736,
+    "updatedAt": "2026-04-26T00:17:33.632Z"
   },
   "sandboxing.md": {
     "url": "https://code.claude.com/docs/en/sandboxing",
@@ -439,9 +439,9 @@
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",
-    "lastModified": "Fri, 24 Apr 2026 22:10:59 GMT",
-    "size": 12921,
-    "updatedAt": "2026-04-25T00:17:33.864Z"
+    "lastModified": "Sat, 25 Apr 2026 18:48:29 GMT",
+    "size": 17765,
+    "updatedAt": "2026-04-26T00:17:37.393Z"
   },
   "third-party-integrations.md": {
     "url": "https://code.claude.com/docs/en/third-party-integrations",

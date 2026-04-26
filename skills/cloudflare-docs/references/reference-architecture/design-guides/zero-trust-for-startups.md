@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Building zero trust architecture into your startup
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 ## Introduction
 

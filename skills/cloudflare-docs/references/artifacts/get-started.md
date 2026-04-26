@@ -10,6 +10,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Start here to create, inspect, and version Artifacts from Cloudflare developer workflows.
 
+* Start by reading [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/), then choose the namespace name you will use.
 * Use **Workers** when you want the simplest path and already use Wrangler.
 * Use **REST API** when you want control-plane HTTP access with a Cloudflare API token.
 * [ Workers ](https://developers.cloudflare.com/artifacts/get-started/workers/)

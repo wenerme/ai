@@ -43,7 +43,7 @@ In Claude Code, run these two slash commands. The plugin installs all 8 Cloudfla
 4. **Try a prompt**  
 For example:  
 ```  
-Create a Cloudflare Workers application that serves as a backend API server.  
+Set up GitHub Actions to auto-deploy this Worker to Cloudflare.  
 ```
 
 ## Cloudflare platform access

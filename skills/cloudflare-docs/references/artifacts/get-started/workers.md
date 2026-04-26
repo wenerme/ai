@@ -12,6 +12,8 @@ Create an Artifacts repo from a Worker and use a standard Git client to push and
 
 By the end of this guide, you will create a Worker, bind it to Artifacts, create a repo through the Workers binding, push a commit, and clone the same repo back with a standard Git client.
 
+Start by reading [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/), then choose the namespace name you will use. This guide uses `default` in the examples.
+
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
@@ -23,9 +25,9 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 You also need:
 
-* Wrangler authenticated with `wrangler login`.
+* Wrangler installed. If you use local Wrangler commands in this guide, authenticate Wrangler first. For local OAuth authentication or CI setup, refer to [wrangler login](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) and [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
 * Access to Artifacts in your Cloudflare account.
-* An existing Artifacts namespace, for example `default`.
+* A namespace name, for example `default`.
 * A local `git` client.
 * `jq`, if you want to extract response fields automatically.
 
@@ -58,8 +60,8 @@ cd artifacts-worker
 
 Open your Wrangler config file and add the Artifacts binding:
 
-* [  wrangler.jsonc ](#tab-panel-5507)
-* [  wrangler.toml ](#tab-panel-5508)
+* [  wrangler.jsonc ](#tab-panel-5509)
+* [  wrangler.toml ](#tab-panel-5510)
 
 JSONC
 
@@ -75,7 +77,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-25",
 
   "artifacts": [
 
@@ -106,7 +108,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-25"
 
 
 [[artifacts]]
@@ -115,12 +117,12 @@ binding = "ARTIFACTS"
 
 namespace = "default"
 
+# Set remote = true if you want Wrangler to use the remote Artifacts service in local dev.
+
 
 ```
 
 This exposes Artifacts as `env.ARTIFACTS` inside your Worker.
-
-If you authenticate with `wrangler login`, Wrangler requests `artifacts:write` by default.
 
 If you are using TypeScript, regenerate your local binding types:
 
@@ -144,8 +146,8 @@ Wrangler adds an `Artifacts` type to your generated `worker-configuration.d.ts` 
 
 Replace `src/index.ts` with the following code:
 
-* [  JavaScript ](#tab-panel-5509)
-* [  TypeScript ](#tab-panel-5510)
+* [  JavaScript ](#tab-panel-5511)
+* [  TypeScript ](#tab-panel-5512)
 
 src/index.js
 
@@ -299,8 +301,8 @@ In a second terminal, choose one of the following ways to create a repo through 
 
 If you rerun this guide, use a different repo name in the request body.
 
-* [ Manual ](#tab-panel-5505)
-* [ jq ](#tab-panel-5506)
+* [ Manual ](#tab-panel-5507)
+* [ jq ](#tab-panel-5508)
 
 Terminal window
 
@@ -336,6 +338,10 @@ The response resembles the following:
 
 ```
 
+Use the exact `remote` value from the response. The example above uses `<ACCOUNT_ID>` as a placeholder for your Cloudflare account ID.
+
+The returned token encodes its expiry directly in the `?expires=` suffix.
+
 Copy the `remote` and `token` values into local shell variables:
 
 Terminal window
@@ -358,9 +364,6 @@ RESPONSE=$(curl --silent http://localhost:8787/repos \
   --header "Content-Type: application/json" \
 
   --data '{"name":"starter-repo"}')
-
-
-printf '%s\n' "$RESPONSE"
 
 
 export ARTIFACTS_REMOTE=$(printf '%s' "$RESPONSE" | jq -r '.remote')

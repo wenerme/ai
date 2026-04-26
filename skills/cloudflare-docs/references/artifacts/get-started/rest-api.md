@@ -10,15 +10,17 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Create an Artifacts repo with the REST API, then use a regular Git client to push and pull content.
 
-By the end of this guide, you will create a repo inside an existing namespace, read back the repo remote URL, push a commit, and clone the same repo with a standard Git client.
+By the end of this guide, you will create a repo inside a namespace, read back the repo remote URL, push a commit, and clone the same repo with a standard Git client.
+
+Start by reading [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/), then choose the namespace name you will use. This guide uses `default` in the examples.
 
 ## Prerequisites
 
 You need:
 
-* A Cloudflare account with access to Artifacts.
+* Access to Artifacts.
+* A namespace name, for example `default`.
 * A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with **Artifacts** \> **Read** and **Artifacts** \> **Edit**.
-* An existing Artifacts namespace, for example `default`.
 * A local `git` client.
 * `jq`, if you want to extract response fields automatically.
 
@@ -36,9 +38,9 @@ export ARTIFACTS_NAMESPACE="default"
 
 export ARTIFACTS_REPO="starter-repo"
 
-export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
-
 export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
+
+export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
 
 export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 
@@ -60,8 +62,8 @@ Authorization: Bearer $CLOUDFLARE_API_TOKEN
 
 Choose one of the following ways to create a repo inside that namespace:
 
-* [ Manual ](#tab-panel-5503)
-* [ jq ](#tab-panel-5504)
+* [ Manual ](#tab-panel-5505)
+* [ jq ](#tab-panel-5506)
 
 Terminal window
 
@@ -113,7 +115,9 @@ The response resembles the following:
 
 Explain Code
 
-The REST control-plane base URL and the returned Git remote use different hosts. Use `result.remote` for Git operations.
+The REST control-plane base URL and the returned Git remote use different hosts. Use the exact `result.remote` value for Git operations. The example above uses `<ACCOUNT_ID>` as a placeholder for your Cloudflare account ID.
+
+The returned token encodes its expiry directly in the `?expires=` suffix.
 
 Copy the `remote` and `token` values from `result` into local shell variables:
 

@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Set up GitHub Actions to auto-deploy this Worker to Cloudflare.  
+Set up a KV namespace and use it for session storage in my Worker.  
 ```
 
 ## Cloudflare platform access

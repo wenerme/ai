@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Use RpcTarget class to handle Durable Object metadata
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 Access the name from within a Durable Object using RpcTarget.
 
