@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Generate Vitest tests for my Worker.  
+Add a cron trigger to my Worker that runs every hour.  
 ```
 
 ## Cloudflare platform access

@@ -22,8 +22,8 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-9630)
-* [  wrangler.toml ](#tab-panel-9631)
+* [  wrangler.jsonc ](#tab-panel-9632)
+* [  wrangler.toml ](#tab-panel-9633)
 
 JSONC
 
@@ -79,8 +79,8 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-9634)
-* [  wrangler.toml ](#tab-panel-9635)
+* [  wrangler.jsonc ](#tab-panel-9636)
+* [  wrangler.toml ](#tab-panel-9637)
 
 JSONC
 
@@ -96,7 +96,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24"
+  "compatibility_date": "2026-04-27"
 
 }
 
@@ -111,13 +111,13 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-27"
 
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-9628)
-* [  wrangler.toml ](#tab-panel-9629)
+* [  wrangler.jsonc ](#tab-panel-9630)
+* [  wrangler.toml ](#tab-panel-9631)
 
 JSONC
 
@@ -149,8 +149,8 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-9632)
-* [  wrangler.toml ](#tab-panel-9633)
+* [  wrangler.jsonc ](#tab-panel-9634)
+* [  wrangler.toml ](#tab-panel-9635)
 
 JSONC
 
@@ -203,6 +203,49 @@ This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is e
 When `remove_nodejs_compat_eol_v22` is enabled, APIs that reached end-of-life in Node.js 22.x are removed.
 
 This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is enabled after 2027-04-30.
+
+### Workflows preserve `NonRetryableError` message
+
+| **Default as of**   | 2026-05-14                                          |
+| ------------------- | --------------------------------------------------- |
+| **Flag to enable**  | workflows\_preserve\_non\_retryable\_error\_message |
+| **Flag to disable** | workflows\_replace\_non\_retryable\_error\_message  |
+
+When enabled, if a [Workflow](https://developers.cloudflare.com/workflows/) step throws a [NonRetryableError](https://developers.cloudflare.com/workflows/build/workers-api/#nonretryableerror), the error `message` and `name` properties are preserved on the thrown exception instead of being replaced with a generic termination string.
+
+Previously, throwing a `NonRetryableError` with a custom message would result in the original error message being lost and replaced with `"The execution of the Workflow instance was terminated, as a step threw an NonRetryableError and it was not handled"`:
+
+JavaScript
+
+```
+
+import { WorkflowEntrypoint, NonRetryableError } from "cloudflare:workers";
+
+
+export class MyWorkflow extends WorkflowEntrypoint {
+
+  async run(event, step) {
+
+    await step.do("my-step", async () => {
+
+      throw new NonRetryableError("custom error message");
+
+      // Without this flag: error.message === "The execution of the Workflow instance was terminated, as a step threw an NonRetryableError and it was not handled"
+
+      // With this flag: error.message === "custom error message"
+
+    });
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+With the `workflows_preserve_non_retryable_error_message` flag enabled, the original error message and name are preserved, making it easier to debug and handle specific error cases in your Workflow code.
 
 ### Enhanced error serialization
 

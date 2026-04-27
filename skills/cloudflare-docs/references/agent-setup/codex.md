@@ -49,7 +49,7 @@ codex
 5. **Try a prompt**  
 For example:  
 ```  
-Deploy this project to Cloudflare Workers with a custom domain.  
+Create an AI chat agent using the Cloudflare Agents SDK that maintains conversation history.  
 ```
 
 ## Cloudflare platform access

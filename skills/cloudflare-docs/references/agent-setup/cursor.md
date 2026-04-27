@@ -32,7 +32,7 @@ In Cursor, install the Cloudflare Plugin which includes Cloudflare Skills and re
 3. **Try a prompt**  
 For example:  
 ```  
-Build an image upload service using R2 pre-signed URLs.  
+Create an AI chat agent using the Cloudflare Agents SDK that maintains conversation history.  
 ```
 
 ## Cloudflare platform access

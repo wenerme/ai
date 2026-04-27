@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Migrating a Jekyll-based site from GitHub Pages
 
-**Last reviewed:**  over 4 years ago 
+**Last reviewed:**  almost 5 years ago 
 
 In this tutorial, you will learn how to migrate an existing [GitHub Pages site using Jekyll ↗](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll) to Cloudflare Pages. Jekyll is one of the most popular static site generators used with GitHub Pages, and migrating your GitHub Pages site to Cloudflare Pages will take a few short steps.
 

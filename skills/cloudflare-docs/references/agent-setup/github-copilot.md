@@ -42,7 +42,7 @@ For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-
 4. **Try a prompt**  
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:  
 ```  
-Show me how to use Hyperdrive to connect my Worker to an existing Postgres database.  
+Set up GitHub Actions to auto-deploy this Worker to Cloudflare.  
 ```
 
 ## Cloudflare platform access
