@@ -49,7 +49,7 @@ codex
 5. **Try a prompt**  
 For example:  
 ```  
-Create separate staging and production environments for my Worker.  
+Deploy this project to Cloudflare Workers with a custom domain.  
 ```
 
 ## Cloudflare platform access

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Migrating from Netlify to Pages
 
-**Last reviewed:**  over 3 years ago 
+**Last reviewed:**  almost 4 years ago 
 
 In this tutorial, you will learn how to migrate your Netlify application to Cloudflare Pages.
 

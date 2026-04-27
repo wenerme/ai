@@ -4,6 +4,10 @@
 
 # Build Your Own Agent TUI
 
+<Info>
+  Looking to build a headless agent for scripts, pipelines, or API servers instead? See the [Build Your Own Headless Agent](/docs/guides/coding-agents/create-headless-agent) guide.
+</Info>
+
 The [create-agent-tui](https://github.com/OpenRouterTeam/skills/tree/main/skills/create-agent-tui) skill scaffolds a complete agent TUI (terminal user interface) in TypeScript — like `create-react-app` for terminal agents. Tell your AI coding agent what kind of agent you want, and it generates a runnable project targeting [OpenRouter](https://openrouter.ai) with a fully customizable terminal interface, tools, and configuration.
 
 Under the hood, this is a full **agent harness**: the generated project uses [`@openrouter/agent`](https://www.npmjs.com/package/@openrouter/agent) for the inner loop (model calls, tool execution, stop conditions) and provides everything around it — configuration, tool definitions, session management, and the entry point.
@@ -25,11 +29,11 @@ If you're already using Claude Code, Codex CLI, or Cursor as-is, you probably do
 The create-agent-tui skill is part of the [OpenRouter Skills](https://github.com/OpenRouterTeam/skills) collection. Install it with your AI coding agent of choice:
 
 <Tabs>
-  <Tab title="Skills CLI">
-    Works with any agent that supports [Agent Skills](https://agentskills.io/home):
+  <Tab title="GitHub CLI">
+    Requires [GitHub CLI](https://cli.github.com/) v2.90.0+. Works with Claude Code, Cursor, OpenCode, Codex, Gemini CLI, Windsurf, and [many more agents](https://cli.github.com/manual/gh_skill_install):
 
     ```bash
-    npx skills add OpenRouterTeam/skills
+    gh skill install OpenRouterTeam/skills create-agent-tui
     ```
   </Tab>
 

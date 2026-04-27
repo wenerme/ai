@@ -32,7 +32,7 @@ In Cursor, install the Cloudflare Plugin which includes Cloudflare Skills and re
 3. **Try a prompt**  
 For example:  
 ```  
-Show me how to use Hyperdrive to connect my Worker to an existing Postgres database.  
+Build an image upload service using R2 pre-signed URLs.  
 ```
 
 ## Cloudflare platform access

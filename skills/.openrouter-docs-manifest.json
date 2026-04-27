@@ -161,8 +161,8 @@
   },
   "guides/features/server-tools/overview.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/overview.md",
-    "size": 6679,
-    "updatedAt": "2026-04-23T00:31:45.399Z"
+    "size": 6930,
+    "updatedAt": "2026-04-27T00:30:52.024Z"
   },
   "guides/features/server-tools/web-search.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/web-search.md",
@@ -396,8 +396,13 @@
   },
   "guides/coding-agents/create-agent-harness-tui.md": {
     "url": "https://openrouter.ai/docs/guides/coding-agents/create-agent-harness-tui.md",
-    "size": 16803,
-    "updatedAt": "2026-04-25T00:31:34.449Z"
+    "size": 17139,
+    "updatedAt": "2026-04-27T00:31:15.994Z"
+  },
+  "guides/coding-agents/create-headless-agent.md": {
+    "url": "https://openrouter.ai/docs/guides/coding-agents/create-headless-agent.md",
+    "size": 11437,
+    "updatedAt": "2026-04-27T00:31:16.441Z"
   },
   "guides/coding-agents/claude-code-integration.md": {
     "url": "https://openrouter.ai/docs/guides/coding-agents/claude-code-integration.md",
@@ -886,8 +891,8 @@
   },
   "client-sdks/usage-for-agents.md": {
     "url": "https://openrouter.ai/docs/client-sdks/usage-for-agents.md",
-    "size": 3920,
-    "updatedAt": "2026-04-25T00:33:32.450Z"
+    "size": 4079,
+    "updatedAt": "2026-04-27T00:32:51.488Z"
   },
   "client-sdks/typescript/overview.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/overview.md",
@@ -1161,8 +1166,8 @@
   },
   "client-sdks/agent-migration.md": {
     "url": "https://openrouter.ai/docs/client-sdks/agent-migration.md",
-    "size": 7961,
-    "updatedAt": "2026-04-25T00:34:00.805Z"
+    "size": 7963,
+    "updatedAt": "2026-04-27T00:33:20.563Z"
   },
   "agent-sdk/overview.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/overview.md",
@@ -1171,8 +1176,8 @@
   },
   "agent-sdk/usage-for-agents.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/usage-for-agents.md",
-    "size": 3780,
-    "updatedAt": "2026-04-25T00:34:01.886Z"
+    "size": 3939,
+    "updatedAt": "2026-04-27T00:33:21.549Z"
   },
   "agent-sdk/call-model/overview.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/call-model/overview.md",

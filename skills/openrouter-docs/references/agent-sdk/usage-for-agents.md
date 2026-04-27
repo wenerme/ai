@@ -25,12 +25,12 @@ When working with the Agent SDK, your AI assistant will focus on the **agent fea
 
 Add via **Settings > Rules > Add Rule > Remote Rule (Github)** with `OpenRouterTeam/skills`.
 
-### Skills CLI
+### GitHub CLI
 
-Works with any supported agent ([docs](https://skills.sh/docs/cli)):
+Requires [GitHub CLI](https://cli.github.com/) v2.90.0+. Works with Claude Code, Cursor, OpenCode, Codex, Gemini CLI, Windsurf, and [many more agents](https://cli.github.com/manual/gh_skill_install):
 
 ```bash
-npx skills add OpenRouterTeam/skills
+gh skill install OpenRouterTeam/skills openrouter-typescript-sdk
 ```
 
 ## Supported AI Coding Assistants

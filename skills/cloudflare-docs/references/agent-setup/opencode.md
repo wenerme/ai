@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Set up a KV namespace and use it for session storage in my Worker.  
+Generate Vitest tests for my Worker.  
 ```
 
 ## Cloudflare platform access

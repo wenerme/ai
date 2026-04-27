@@ -42,7 +42,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Check my deployment logs for errors and suggest fixes.  
+Build a WebSocket-based pub/sub app using Durable Objects with hibernation.  
 ```
 
 ## Cloudflare platform access

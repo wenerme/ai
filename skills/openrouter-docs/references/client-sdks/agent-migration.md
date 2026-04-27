@@ -9,7 +9,7 @@
 <Tip>
   Using an AI coding assistant? Install the migration skill
   to let your agent handle the import updates for you:
-  `npx skills add OpenRouterTeam/skills/openrouter-agent-migration`
+  `gh skill install OpenRouterTeam/skills openrouter-agent-migration`
 </Tip>
 
 {/* banner:end */}
