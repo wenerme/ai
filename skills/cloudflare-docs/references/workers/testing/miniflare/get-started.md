@@ -342,7 +342,7 @@ Explain Code
 
 #### `Request#cf` Object
 
-By default, Miniflare will fetch the `Request#cf` object from a trusted Cloudflare endpoint. You can disable this behaviour, using the `cf` option:
+By default, Miniflare will fetch the `Request#cf` object from a trusted Cloudflare endpoint and cache it to `node_modules/.mf/cf.json`. You can disable this behaviour, using the `cf` option:
 
 JavaScript
 
@@ -371,6 +371,30 @@ const mf = new Miniflare({
 
 
 ```
+
+You can also control this behaviour using [system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/), which is useful when you are not using the Miniflare API directly (for example, when running `wrangler dev`):
+
+Terminal window
+
+```
+
+# Disable cf fetching entirely (uses fallback data)
+
+export CLOUDFLARE_CF_FETCH_ENABLED=false
+
+npx wrangler dev
+
+
+# Use a custom cache location for cf.json
+
+export CLOUDFLARE_CF_FETCH_PATH=/tmp/.cf-cache.json
+
+npx wrangler dev
+
+
+```
+
+The explicit `cf` option in the Miniflare API takes precedence over both environment variables.
 
 ### HTTPS Server
 

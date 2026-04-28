@@ -1,11 +1,11 @@
 ---
 title: "Poe | Models"
-description: "Use Poe models with Mastra. 119 models available."
+description: "Use Poe models with Mastra. 121 models available."
 ---
 
 # [Poe logo]Poe
 
-Access 119 Poe models through Mastra's model router. Authentication is handled automatically using the `POE_API_KEY` environment variable.
+Access 121 Poe models through Mastra's model router. Authentication is handled automatically using the `POE_API_KEY` environment variable.
 
 Learn more in the [Poe documentation](https://creator.poe.com/docs/external-applications/openai-compatible-api).
 
@@ -1106,6 +1106,30 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 27,
     "outputCost": 160
+  },
+  {
+    "model": "poe/openai/gpt-5.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 400000,
+    "maxOutput": 128000,
+    "inputCost": 4.5455,
+    "outputCost": 27.2727
+  },
+  {
+    "model": "poe/openai/gpt-5.5-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 400000,
+    "maxOutput": 128000,
+    "inputCost": 27.2727,
+    "outputCost": 163.6364
   },
   {
     "model": "poe/openai/gpt-image-1",

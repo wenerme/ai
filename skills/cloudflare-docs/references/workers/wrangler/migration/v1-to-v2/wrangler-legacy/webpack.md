@@ -66,8 +66,8 @@ module.exports = {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-11118)
-* [  wrangler.toml ](#tab-panel-11119)
+* [  wrangler.jsonc ](#tab-panel-9995)
+* [  wrangler.toml ](#tab-panel-9996)
 
 JSONC
 
@@ -115,8 +115,8 @@ webpack_config = "webpack.config.js"
 
 It is possible to use different webpack configuration files within different [Wrangler environments](https://developers.cloudflare.com/workers/wrangler/environments/). For example, the `"webpack.development.js"` configuration file is used during `wrangler dev` for development, but other, more production-ready configurations are used when building for the staging or production environments:
 
-* [  wrangler.jsonc ](#tab-panel-11120)
-* [  wrangler.toml ](#tab-panel-11121)
+* [  wrangler.jsonc ](#tab-panel-9997)
+* [  wrangler.toml ](#tab-panel-9998)
 
 JSONC
 

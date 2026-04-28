@@ -83,6 +83,10 @@ Wrangler supports the following environment variables:
    * Custom directory for Wrangler's cache files. When set, this overrides the default cache location (`node_modules/.cache/wrangler`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
 * `MINIFLARE_CACHE_DIR` ` string ` optional  
    * Custom directory for Miniflare's `cf.json` cache file, used during local development with `wrangler dev`. When set, this overrides the default cache location (`node_modules/.mf`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
+* `CLOUDFLARE_CF_FETCH_ENABLED` ` string ` optional  
+   * Controls whether [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/) fetches the `cf.json` file containing [Request.cf](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) properties from Cloudflare during local development. Set to `"false"` or `"0"` to disable fetching entirely and use fallback data. No `node_modules/.mf/cf.json` file will be created when disabled. Defaults to `"true"`. This is particularly useful for non-JavaScript projects (such as Rust or Go Workers) that do not want a `node_modules` directory created automatically. The explicit `cf` option in the [Miniflare API](https://developers.cloudflare.com/workers/testing/miniflare/get-started/#requestcf-object) takes precedence over this environment variable.
+* `CLOUDFLARE_CF_FETCH_PATH` ` string ` optional  
+   * Specifies a custom path for caching the `cf.json` file, overriding the default `node_modules/.mf/cf.json` location. This is useful for multi-project setups where you want a shared cache location, or for projects that want to store the cache outside of `node_modules`. The explicit `cf` option in the [Miniflare API](https://developers.cloudflare.com/workers/testing/miniflare/get-started/#requestcf-object) takes precedence over this environment variable, and `CLOUDFLARE_CF_FETCH_ENABLED=false` takes precedence over this variable.
 
 ### Example output file
 
@@ -129,6 +133,8 @@ WRANGLER_LOG=debug
 WRANGLER_LOG_PATH=../Desktop/my-logs/my-log-file.log
 
 WRANGLER_R2_SQL_AUTH_TOKEN=<YOUR_R2_API_TOKEN_VALUE>
+
+CLOUDFLARE_CF_FETCH_ENABLED=false
 
 
 ```

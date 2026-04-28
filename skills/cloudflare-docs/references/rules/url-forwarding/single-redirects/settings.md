@@ -25,6 +25,46 @@ A wildcard URL redirect has the following configuration parameters:
    * **308 - Advanced: Permanent, HTTP method preserved**: The page has permanently moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
 * **Preserve query string**: Whether to preserve the query string when redirecting (disabled by default).
 
+API information
+
+Wildcard URL redirects are regular [dynamic URL redirects](#dynamic-url-redirect) that use the [wildcard\_replace()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard%5Freplace) function in the `target_url.expression` parameter.
+
+The full syntax of the `"action_parameters"` field for a redirect rule performing a wildcard URL redirect is the following:
+
+```
+
+"action_parameters": {
+
+  "from_value": {
+
+    "target_url": {
+
+      "expression": "wildcard_replace(http.request.full_uri, r\"<REQUEST_URL_PATTERN>\", r\"<TARGET_URL_PATTERN>\")"
+
+    },
+
+    "status_code": <STATUS_CODE>,
+
+    "preserve_query_string": <BOOLEAN_VALUE>
+
+  }
+
+}
+
+
+```
+
+The required parameters are `<REQUEST_URL_PATTERN>` and `<TARGET_URL_PATTERN>`.
+
+The optional parameters can have the following values:
+
+* `"status_code"` (integer):  
+   * `301` (permanent redirect)  
+   * `302` (temporary redirect)  
+   * `307` (temporary redirect, preserving original HTTP method)  
+   * `308` (permanent redirect, preserving original HTTP method)
+* `"preserve_query_string"` (boolean): `true` or `false`
+
 ## Static URL redirect
 
 Performs a static URL redirect with a given HTTP status code and optionally preserves the query string.

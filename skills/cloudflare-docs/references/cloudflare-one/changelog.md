@@ -10,6 +10,19 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-04-28
+
+[ Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/) 
+
+  
+**Internet outage notifications for devices**   
+
+[Digital Experience](https://developers.cloudflare.com/cloudflare-one/insights/dex/) will display a dashboard notification when an Internet outage or traffic anomaly may impact a [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) device based on its geographic location or network connection.
+
+This Internet outage and traffic anomaly data is pulled from [Cloudflare Radar ↗](https://radar.cloudflare.com/). All Internet outage and traffic anomaly observations can be viewed in the [Radar Outage Center ↗](https://radar.cloudflare.com/outage-center).
+
+![Digital Experience Monitoring dashboard notification for Internet outage impacting Cloudflare One Client devices](https://developers.cloudflare.com/_astro/dex_radar_ux_notification.CpdrUVYA_ZSzgIe.webp)![Digital Experience Monitoring dashboard analytics for Internet outage impacting Cloudflare One Client devices](https://developers.cloudflare.com/_astro/dex_radar_analytics.GaPxWM6C_2jLyzS.webp) 
+
 ## 2026-04-24
 
 [ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
@@ -4083,8 +4096,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-5844)
-* [ Core Dashboard ](#tab-panel-5845)
+* [ Zero Trust Dashboard ](#tab-panel-4680)
+* [ Core Dashboard ](#tab-panel-4681)
 
 To update your view preference in the Zero Trust dashboard:
 

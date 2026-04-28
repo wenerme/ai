@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: This week's release introduces a new detection for a Remote Code Execution (RCE) vulnerability in Apache ActiveMQ (CVE-2026-34197) and an updated signature for Magento 2 - Unrestricted File Upload. Alongside these detections, we are continuing our work on rule refinements to provide deeper security insights for our customers.
+description: This week's release focuses on new improvements to enhance coverage.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -9,6 +9,55 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
+
+## 2026-04-27
+
+  
+**WAF Release - 2026-04-27**   
+
+This week's release focuses on new improvements to enhance coverage.
+
+**Key Findings**
+
+* Existing rule enhancements have been deployed to improve detection resilience against broad classes of web attacks and strengthen behavioral coverage.
+
+**Continuous Rule Improvements**
+
+We are continuously refining our managed rules to provide more resilient protection and deeper insights into attack patterns. To ensure an optimal security posture, we recommend consistently monitoring the Security Events dashboard and adjusting rule actions as these enhancements are deployed.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                  | Previous Action | New Action | Comments                                                                                                                                                                                                                                                              |
+| -------------------------- | ----------- | -------------- | -------------------------------------------- | --------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cloudflare Managed Ruleset | ...80cec1dd | N/A            | PostgreSQL - SQLi - COPY - Beta              | Log             | Block      | This is a new detection. This rule is merged into the original rule "PostgreSQL - SQLi - COPY - Body (ID: ...e7265a4e  ). The rule previously known as "PostgreSQL - SQLi - COPY" is now renamed to "PostgreSQL - SQLi - COPY - Body".                                |
+| Cloudflare Managed Ruleset | ...2903de89 | N/A            | PostgreSQL - SQLi - COPY - Headers           | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...1036cfa6 | N/A            | PostgreSQL - SQLi - COPY - URI               | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...55ff389e | N/A            | SQLi - AND/OR MAKE\_SET/ELT - Beta           | Log             | Block      | This is a new detection. This rule is merged into the original rule "SQLi - AND/OR MAKE\_SET/ELT - Body" (ID: ...252d3934  ). The rule previously known as "SQLi - AND/OR MAKE\_SET/ELT" is now renamed to "SQLi - AND/OR MAKE\_SET/ELT - Body".                      |
+| Cloudflare Managed Ruleset | ...346487f9 | N/A            | SQLi - AND/OR MAKE\_SET/ELT - Headers        | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...1ac6ceca | N/A            | SQLi - AND/OR MAKE\_SET/ELT - URI            | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...dd471337 | N/A            | SQLi - Common Patterns - Beta                | Log             | Block      | This is a new detection. This rule is merged into the original rule "SQLi - Common Patterns - Body" (ID: ...cb5d0b9b  ). The rule previously known as "SQLi - Common Patterns" is now renamed to "SQLi - Common Patterns - Body".                                     |
+| Cloudflare Managed Ruleset | ...975c07b7 | N/A            | SQLi - Common Patterns - Headers             | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...05b1b06b | N/A            | SQLi - Common Patterns - URI                 | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...dd0ba3c7 | N/A            | SQLi - Equation - Beta                       | Log             | Block      | This is a new detection. This rule is merged into the original rule "SQLi - Equation - Body" (ID: ...c2eb3e7f  ). The rule previously known as "SQLi - Equation" is now renamed to "SQLi - Equation - Body".                                                          |
+| Cloudflare Managed Ruleset | ...3d1c2384 | N/A            | SQLi - Equation - Headers                    | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...e1149ea6 | N/A            | SQLi - Equation - URI                        | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...205adbb0 | N/A            | SQLi - AND/OR Digit Operator Digit - Beta    | Log             | Block      | This is a new detection. This rule is merged into the original rule "SQLi - AND/OR Digit Operator Digit - Body" (ID: ...3893c564  ). The rule previously known as "SQLi - AND/OR Digit Operator Digit" is now renamed to "SQLi - AND/OR Digit Operator Digit - Body". |
+| Cloudflare Managed Ruleset | ...ad2abbaa | N/A            | SQLi - AND/OR Digit Operator Digit - Headers | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...53acbc0d | N/A            | SQLi - AND/OR Digit Operator Digit - URI     | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...2b45a97d | N/A            | SQLi - Benchmark Function - Beta             | Log             | Block      | This is a new detection. This rule is merged into the original rule "SQLi - Benchmark Function - Body" (ID: ...2ebc44ad  ). The rule previously known as "SQLi - Benchmark Function" is now renamed to "SQLi - Benchmark Function - Body".                            |
+| Cloudflare Managed Ruleset | ...9889aadc | N/A            | SQLi - Benchmark Function - Headers          | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...491b28e9 | N/A            | SQLi - Benchmark Function - URI              | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...2aa649de | N/A            | SQLi - Comparison - Beta                     | Log             | Block      | This is a new detection. This rule is merged into the original rule "SQLi - Comparison - Body" (ID: ...e7907480  ). The rule previously known as "SQLi - Comparison" is now renamed to "SQLi - Comparison - Body".                                                    |
+| Cloudflare Managed Ruleset | ...39e3e013 | N/A            | SQLi - Comparison - Headers                  | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...f4bdb492 | N/A            | SQLi - Comparison - URI                      | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...a1ff3b34 | N/A            | SQLi - String Concatenation - Body - Beta    | Log             | Block      | This is a new detection. This rule is merged into the original rule "SQLi - String Concatenation - Headers" (ID: ...2116d2fe  ).The rule previously known as "SQLi - String Concatenation - Headers" is now renamed to "SQLi - String Concatenation - Body".          |
+| Cloudflare Managed Ruleset | ...0d0e6c3b | N/A            | SQLi - String Concatenation - Headers        | Log             | Block      | This is a new detection.(Former Id was ...846d1940  )                                                                                                                                                                                                                 |
+| Cloudflare Managed Ruleset | ...26cc211f | N/A            | SQLi - String Concatenation - URI            | Log             | Block      | This is a new detection. (Former Id was ...8fae8c84  )                                                                                                                                                                                                                |
+| Cloudflare Managed Ruleset | ...eacc78ab | N/A            | SQLi - SELECT Expression - Beta              | Log             | Block      | This is a new detection. This rule is merged into the original rule "SQLi - SELECT Expression - Body" (ID: ...d0023a36  ). The rule previously known as "SQLi - SELECT Expression" is now renamed to "SQLi - SELECT Expression - Body".                               |
+| Cloudflare Managed Ruleset | ...630bb223 | N/A            | SQLi - SELECT Expression - Headers           | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...dcd6efb5 | N/A            | SQLi - SELECT Expression - URI               | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...18c47cea | N/A            | SQLi - ORD and ASCII - Beta                  | Log             | Block      | This is a new detection. This rule is merged into the original rule "SQLi - ORD and ASCII- Body" (ID: ...d0d207f9  ). The rule previously known as "SQLi - ORD and ASCII" is now renamed to "SQLi - ORD and ASCII- Body".                                             |
+| Cloudflare Managed Ruleset | ...bdb1618f | N/A            | SQLi - ORD and ASCII - URI                   | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...1d0906b6 | N/A            | SQLi - ORD and ASCII - Headers               | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
+| Cloudflare Managed Ruleset | ...9fe4eff5 | N/A            | SQLi - Destructive Operations                | Log             | Block      | This is a new detection.                                                                                                                                                                                                                                              |
 
 ## 2026-04-21
 
@@ -498,25 +547,6 @@ This vulnerability enables an unauthenticated attacker to bypass access controls
 | Cloudflare Managed Ruleset | ...4e2e1a2e | N/A            | FortiWeb - Authentication Bypass via CGIINFO Header - CVE:CVE-2025-64446 | Log             | Block      | This is a new detection                                                                             |
 | Cloudflare Managed Ruleset | ...b6c44ed5 | N/A            | PHP Wrapper Injection - Body - Beta                                      | Log             | Disabled   | This rule has been merged into the original rule "PHP Wrapper Injection - Body" (ID: ...1a3e521e  ) |
 | Cloudflare Managed Ruleset | ...900f4015 | N/A            | PHP Wrapper Injection - URI - Beta                                       | Log             | Disabled   | This rule has been merged into the original rule "PHP Wrapper Injection - URI" (ID: ...8f76bd74  )  |
-
-## 2025-11-21
-
-  
-**WAF Release - 2025-11-21**   
-
-This week’s release introduces a critical detection for CVE-2025-61757, a vulnerability in the Oracle Identity Manager REST WebServices component.
-
-**Key Findings**
-
-This flaw allows unauthenticated attackers with network access over HTTP to fully compromise the Identity Manager, potentially leading to a complete takeover.
-
-**Impact**
-
-Oracle Identity Manager (CVE-2025-61757): Exploitation could allow an unauthenticated remote attacker to bypass security checks by sending specially crafted requests to the application's message processor. This enables the creation of arbitrary employee accounts, which can be leveraged to modify system configurations and achieve full system compromise.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                 | Previous Action | New Action | Comments                 |
-| -------------------------- | ----------- | -------------- | ----------------------------------------------------------- | --------------- | ---------- | ------------------------ |
-| Cloudflare Managed Ruleset | ...39fdbe7e | N/A            | Oracle Identity Manager - Pre-Auth RCE - CVE:CVE-2025-61757 | N/A             | Block      | This is a new detection. |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}

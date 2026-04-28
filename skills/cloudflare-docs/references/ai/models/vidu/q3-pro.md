@@ -186,8 +186,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-432)
-* [ Output ](#tab-panel-433)
+* [ Input ](#tab-panel-348)
+* [ Output ](#tab-panel-349)
 
 prompt
 
@@ -221,166 +221,11 @@ video
 
 `string`format: uriURL to the generated video
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-430)
-* [ Output ](#tab-panel-431)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "description": "Text prompt describing what should appear in the video",
-
-      "type": "string",
-
-      "maxLength": 5000
-
-    },
-
-    "start_image": {
-
-      "description": "Start image for video generation. Use alone for image-to-video, or with end_image for start/end-to-video. Accepts public URL or Base64 data URI (data:image/png;base64,...)",
-
-      "type": "string"
-
-    },
-
-    "end_image": {
-
-      "description": "End image for start/end-to-video generation. Must be used together with start_image. Accepts public URL or Base64 data URI (data:image/png;base64,...)",
-
-      "type": "string"
-
-    },
-
-    "duration": {
-
-      "description": "Video duration in seconds (1-16)",
-
-      "default": 5,
-
-      "type": "integer",
-
-      "minimum": 1,
-
-      "maximum": 16
-
-    },
-
-    "resolution": {
-
-      "description": "Video resolution",
-
-      "default": "720p",
-
-      "type": "string",
-
-      "enum": [
-
-        "540p",
-
-        "720p",
-
-        "1080p"
-
-      ]
-
-    },
-
-    "audio": {
-
-      "description": "Enable audio-video synchronization. Default: true for Q3 models. When false, outputs silent video",
-
-      "type": "boolean"
-
-    },
-
-    "aspect_ratio": {
-
-      "description": "Video aspect ratio (text-to-video only). Default: 16:9",
-
-      "type": "string",
-
-      "enum": [
-
-        "16:9",
-
-        "9:16",
-
-        "3:4",
-
-        "4:3",
-
-        "1:1"
-
-      ]
-
-    }
-
-  },
-
-  "required": [
-
-    "duration",
-
-    "resolution"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "video": {
-
-      "description": "URL to the generated video",
-
-      "type": "string",
-
-      "format": "uri"
-
-    }
-
-  },
-
-  "required": [
-
-    "video"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

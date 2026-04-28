@@ -25,8 +25,8 @@ For example, to serve assets from `example.com/blog/*`, create a `blog` director
 
 With a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) like so:
 
-* [  wrangler.jsonc ](#tab-panel-10306)
-* [  wrangler.toml ](#tab-panel-10307)
+* [  wrangler.jsonc ](#tab-panel-9183)
+* [  wrangler.toml ](#tab-panel-9184)
 
 JSONC
 

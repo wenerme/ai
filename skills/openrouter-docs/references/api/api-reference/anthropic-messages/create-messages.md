@@ -3763,7 +3763,7 @@ components:
       required:
         - applied_edits
       title: MessagesResultContextManagement
-    MessagesResultUsageCostDetails:
+    CostDetails:
       type: object
       properties:
         upstream_inference_completions_cost:
@@ -3780,7 +3780,8 @@ components:
       required:
         - upstream_inference_completions_cost
         - upstream_inference_prompt_cost
-      title: MessagesResultUsageCostDetails
+      description: Breakdown of upstream inference costs
+      title: CostDetails
     MessagesResultUsage:
       type: object
       properties:
@@ -3814,9 +3815,7 @@ components:
             - 'null'
           format: double
         cost_details:
-          oneOf:
-            - $ref: '#/components/schemas/MessagesResultUsageCostDetails'
-            - type: 'null'
+          $ref: '#/components/schemas/CostDetails'
         is_byok:
           type: boolean
         iterations:

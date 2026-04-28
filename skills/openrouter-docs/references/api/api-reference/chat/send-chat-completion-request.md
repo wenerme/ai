@@ -2274,6 +2274,25 @@ components:
           description: Rejected prediction tokens
       description: Detailed completion token usage
       title: ChatUsageCompletionTokensDetails
+    CostDetails:
+      type: object
+      properties:
+        upstream_inference_completions_cost:
+          type: number
+          format: double
+        upstream_inference_cost:
+          type:
+            - number
+            - 'null'
+          format: double
+        upstream_inference_prompt_cost:
+          type: number
+          format: double
+      required:
+        - upstream_inference_completions_cost
+        - upstream_inference_prompt_cost
+      description: Breakdown of upstream inference costs
+      title: CostDetails
     ChatUsagePromptTokensDetails:
       type: object
       properties:
@@ -2304,6 +2323,17 @@ components:
             - $ref: '#/components/schemas/ChatUsageCompletionTokensDetails'
             - type: 'null'
           description: Detailed completion token usage
+        cost:
+          type:
+            - number
+            - 'null'
+          format: double
+          description: Cost of the completion
+        cost_details:
+          $ref: '#/components/schemas/CostDetails'
+        is_byok:
+          type: boolean
+          description: Whether a request was made using a Bring Your Own Key configuration
         prompt_tokens:
           type: integer
           description: Number of tokens in the prompt

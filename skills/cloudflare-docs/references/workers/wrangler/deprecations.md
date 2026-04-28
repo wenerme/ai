@@ -34,7 +34,7 @@ Use `npm create cloudflare@latest` for new Workers and Pages projects.
 
 #### `publish`
 
-The `wrangler deploy` command is deprecated, but still active in v3\. `wrangler deploy` will be fully removed in v4.
+The `wrangler publish` command is deprecated, but still active in v3\. `wrangler publish` will be fully removed in v4.
 
 Use [npx wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) to deploy Workers.
 

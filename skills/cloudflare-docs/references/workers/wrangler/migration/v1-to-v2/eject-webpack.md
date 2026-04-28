@@ -151,8 +151,8 @@ module.exports = {
 
 Remove the `type` and `webpack_config` keys from your Wrangler file, as they are not supported anymore.
 
-* [  wrangler.jsonc ](#tab-panel-11080)
-* [  wrangler.toml ](#tab-panel-11081)
+* [  wrangler.jsonc ](#tab-panel-9957)
+* [  wrangler.toml ](#tab-panel-9958)
 
 JSONC
 
@@ -186,8 +186,8 @@ webpack_config = "webpack.config.js"
 
 Wrangler no longer has any knowledge of how to build your Worker. You will need to tell it how to call webpack and where to look for webpack's output. This translates into two fields:
 
-* [  wrangler.jsonc ](#tab-panel-11082)
-* [  wrangler.toml ](#tab-panel-11083)
+* [  wrangler.jsonc ](#tab-panel-9959)
+* [  wrangler.toml ](#tab-panel-9960)
 
 JSONC
 

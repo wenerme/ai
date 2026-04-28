@@ -37,7 +37,7 @@ export default defineConfig({
 
 You can check your coverage report in Vitest UI: see [Vitest UI Coverage](/guide/coverage#vitest-ui) for more details.
 
-> **warning**: If you still want to see how your tests are running in real time in the terminal, don't forget to add `default` reporter to `reporters` option: `['default', 'html']`.
+> **warning**: If you still want to see how your tests are running in real time in the terminal, add `configDefaults.reporters` to the `reporters` option: `['html', ...configDefaults.reporters]`.
 
 > **tip**: To preview your HTML report, you can use the [vite preview](https://vitejs.dev/guide/cli.html#vite-preview) command:
 
