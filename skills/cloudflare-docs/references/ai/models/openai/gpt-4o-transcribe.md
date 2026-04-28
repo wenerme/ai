@@ -1,5 +1,5 @@
 ---
-title: GPT-4o Transcribe
+title: gpt-4o-transcribe
 description: A speech-to-text model that uses GPT-4o to transcribe audio with improved word error rate and better language recognition compared to original Whisper models.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
-#  GPT-4o Transcribe 
+#  gpt-4o-transcribe 
 
 Automatic Speech Recognition • OpenAI • Proxied 
 
@@ -55,8 +55,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-298)
-* [ Output ](#tab-panel-299)
+* [ Input ](#tab-panel-232)
+* [ Output ](#tab-panel-233)
 
 ```
 
@@ -117,8 +117,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-300)
-* [ Output ](#tab-panel-301)
+* [ Input ](#tab-panel-234)
+* [ Output ](#tab-panel-235)
 
 ```
 
@@ -183,8 +183,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-302)
-* [ Output ](#tab-panel-303)
+* [ Input ](#tab-panel-236)
+* [ Output ](#tab-panel-237)
 
 ```
 
@@ -247,8 +247,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-304)
-* [ Output ](#tab-panel-305)
+* [ Input ](#tab-panel-238)
+* [ Output ](#tab-panel-239)
 
 ```
 
@@ -276,8 +276,8 @@ Input / Output JSON
 
 ## Parameters
 
-* [ Input ](#tab-panel-308)
-* [ Output ](#tab-panel-309)
+* [ Input ](#tab-panel-240)
+* [ Output ](#tab-panel-241)
 
 file
 
@@ -299,108 +299,11 @@ text
 
 `string`The transcribed text.
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-306)
-* [ Output ](#tab-panel-307)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "file": {
-
-      "description": "The audio file as a data URI (data:audio/...;base64,...) or HTTPS URL. Supported formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, webm.",
-
-      "type": "string"
-
-    },
-
-    "language": {
-
-      "description": "The language of the input audio. Supplying the input language in ISO-639-1 format will improve accuracy and latency.",
-
-      "type": "string"
-
-    },
-
-    "prompt": {
-
-      "description": "An optional text to guide the model's style or continue a previous audio segment. The prompt should match the audio language.",
-
-      "type": "string"
-
-    },
-
-    "temperature": {
-
-      "description": "The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. Defaults to 0 if omitted.",
-
-      "type": "number",
-
-      "minimum": 0,
-
-      "maximum": 1
-
-    }
-
-  },
-
-  "required": [
-
-    "file"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "text": {
-
-      "description": "The transcribed text.",
-
-      "type": "string"
-
-    }
-
-  },
-
-  "required": [
-
-    "text"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

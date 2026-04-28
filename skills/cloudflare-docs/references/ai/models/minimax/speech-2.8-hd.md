@@ -1,5 +1,5 @@
 ---
-title: Speech 2.8 HD
+title: MiniMax Speech 2.8 HD
 description: MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion control, multilingual support (40+ languages), and voice cloning.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.DPZX-zZI.svg) 
 
-#  Speech 2.8 HD 
+#  MiniMax Speech 2.8 HD 
 
 Text-to-Speech • MiniMax • Proxied 
 
@@ -202,8 +202,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-252)
-* [ Output ](#tab-panel-253)
+* [ Input ](#tab-panel-204)
+* [ Output ](#tab-panel-205)
 
 text
 
@@ -241,250 +241,11 @@ audio
 
 `string`URL to the generated audio file
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-250)
-* [ Output ](#tab-panel-251)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "text": {
-
-      "description": "The text to convert to speech. Maximum 10,000 characters.",
-
-      "type": "string",
-
-      "maxLength": 10000
-
-    },
-
-    "voice_id": {
-
-      "description": "The voice ID to use for synthesis",
-
-      "default": "English_expressive_narrator",
-
-      "type": "string"
-
-    },
-
-    "speed": {
-
-      "description": "Speech speed (0.5 to 2)",
-
-      "default": 1,
-
-      "type": "number",
-
-      "minimum": 0.5,
-
-      "maximum": 2
-
-    },
-
-    "volume": {
-
-      "description": "Speech volume (0 to 10)",
-
-      "default": 1,
-
-      "type": "number",
-
-      "minimum": 0,
-
-      "maximum": 10
-
-    },
-
-    "pitch": {
-
-      "description": "Pitch adjustment (-12 to 12)",
-
-      "default": 0,
-
-      "type": "integer",
-
-      "minimum": -12,
-
-      "maximum": 12
-
-    },
-
-    "emotion": {
-
-      "description": "Emotion control for synthesized speech",
-
-      "type": "string",
-
-      "enum": [
-
-        "happy",
-
-        "sad",
-
-        "angry",
-
-        "fearful",
-
-        "disgusted",
-
-        "surprised",
-
-        "calm",
-
-        "fluent"
-
-      ]
-
-    },
-
-    "format": {
-
-      "description": "Output audio format",
-
-      "default": "mp3",
-
-      "type": "string",
-
-      "enum": [
-
-        "mp3",
-
-        "flac",
-
-        "wav"
-
-      ]
-
-    },
-
-    "sample_rate": {
-
-      "description": "Audio sample rate",
-
-      "anyOf": [
-
-        {
-
-          "type": "number",
-
-          "const": 8000
-
-        },
-
-        {
-
-          "type": "number",
-
-          "const": 16000
-
-        },
-
-        {
-
-          "type": "number",
-
-          "const": 22050
-
-        },
-
-        {
-
-          "type": "number",
-
-          "const": 24000
-
-        },
-
-        {
-
-          "type": "number",
-
-          "const": 32000
-
-        },
-
-        {
-
-          "type": "number",
-
-          "const": 44100
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "required": [
-
-    "text",
-
-    "voice_id",
-
-    "speed",
-
-    "volume",
-
-    "pitch",
-
-    "format"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "audio": {
-
-      "description": "URL to the generated audio file",
-
-      "type": "string"
-
-    }
-
-  },
-
-  "required": [
-
-    "audio"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

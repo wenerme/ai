@@ -90,8 +90,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ### Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-10386)
-* [  wrangler.toml ](#tab-panel-10387)
+* [  wrangler.jsonc ](#tab-panel-9243)
+* [  wrangler.toml ](#tab-panel-9244)
 
 JSONC
 
@@ -105,7 +105,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-27",
 
   "assets": {
 
@@ -128,7 +128,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-27"
 
 
 [assets]
@@ -237,8 +237,8 @@ tsconfig.json
 
 ### Add to your Worker configuration
 
-* [  wrangler.jsonc ](#tab-panel-10388)
-* [  wrangler.toml ](#tab-panel-10389)
+* [  wrangler.jsonc ](#tab-panel-9245)
+* [  wrangler.toml ](#tab-panel-9246)
 
 JSONC
 
@@ -252,7 +252,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-27",
 
   "assets": {
 
@@ -279,7 +279,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-27"
 
 main = "./worker/index.ts"
 
@@ -336,8 +336,8 @@ For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` he
 
 If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
-* [  wrangler.jsonc ](#tab-panel-10390)
-* [  wrangler.toml ](#tab-panel-10391)
+* [  wrangler.jsonc ](#tab-panel-9247)
+* [  wrangler.toml ](#tab-panel-9248)
 
 JSONC
 
@@ -351,7 +351,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-27",
 
   "assets": {
 
@@ -384,7 +384,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-27"
 
 main = "./worker/index.ts"
 

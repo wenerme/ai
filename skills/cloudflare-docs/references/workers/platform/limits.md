@@ -85,8 +85,8 @@ To resolve a CPU time limit error:
 
 On the Workers Paid plan, you can increase the maximum CPU time from the default 30 seconds to 5 minutes (300,000 ms).
 
-* [  wrangler.jsonc ](#tab-panel-10080)
-* [  wrangler.toml ](#tab-panel-10081)
+* [  wrangler.jsonc ](#tab-panel-8937)
+* [  wrangler.toml ](#tab-panel-8938)
 
 JSONC
 
@@ -233,8 +233,8 @@ Once response headers arrive for a connection, it no longer counts toward the si
 
 If you use `fetch()` but do not need the response body, calling `response.body.cancel()` is still good practice to free memory:
 
-* [  JavaScript ](#tab-panel-10082)
-* [  TypeScript ](#tab-panel-10083)
+* [  JavaScript ](#tab-panel-8939)
+* [  TypeScript ](#tab-panel-8940)
 
 src/index.js
 

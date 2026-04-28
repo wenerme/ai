@@ -1,0 +1,139 @@
+---
+title: Docs for agents
+description: Connect AI agents and LLMs to Cloudflare docs
+image: https://developers.cloudflare.com/cf-twitter-card.png
+---
+
+[Skip to content](#%5Ftop) 
+
+# Docs for agents
+
+Cloudflare documentation provides features and tools to help you use your own AI agents to effectively consume the information. This enables you to query your agent for your specific needs, as well as use Cloudflare skills and MCP servers to effectively interact with Cloudflare products and services.
+
+This page explains how you can use your agents on Cloudflare documentation.
+
+## Quick start
+
+Choose the approach that matches how you use AI tools:
+
+[ Understand key concepts ](#concepts) Learn about agent skills and MCP (Model Context Protocol). 
+
+[ Set up your agent ](https://developers.cloudflare.com/agent-setup/) Effectively consume documentation and interact with Cloudflare products. 
+
+[ Extract documentation in agent-friendly format ](#markdown-documentation-for-llms) Minimize token usage while improving the accuracy of your agent's responses. 
+
+## Concepts
+
+### Agent skills
+
+[Agent skills ↗](https://agentskills.io/home) are structured, task-specific instructions that AI tools load on demand — for example, a skill might teach your agent how to deploy a Cloudflare Worker or configure a WAF rule. Cloudflare publishes skills covering Workers, storage, AI, networking, security, and more in the [Cloudflare Skills repository ↗](https://github.com/cloudflare/skills).
+
+Each agent has its own installation method for Skills. Refer to [Agent setup](#set-up-your-agent) for installation instructions.
+
+### Model Context Protocol (MCP)
+
+The [Model Context Protocol ↗](https://modelcontextprotocol.io/) (MCP) is an open standard that connects AI tools to external tools, data, and services. When you connect an MCP server to your agent, the agent can search documentation, create DNS records, deploy Workers, and more.
+
+Cloudflare runs managed remote MCP servers that give your agent the ability to search documentation, call the Cloudflare API, and query logs and analytics while it works.
+
+There are two approaches:
+
+* **[Code Mode](https://developers.cloudflare.com/agents/api-reference/codemode/)**: A single MCP server that covers the entire Cloudflare API (over 2,500 endpoints). Use this when your agent needs broad access across multiple Cloudflare products.
+* **Domain-specific servers**: Focused servers for documentation, observability, DNS analytics, and more. Use these when your agent only needs access to a specific area. The full catalog is in the [cloudflare/mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare) repository.
+
+Each agent's [Agent setup](#set-up-your-agent) guide includes MCP server installation as part of its Quick start. For the full list of available MCP servers, refer to [MCP servers for Cloudflare](https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/).
+
+### Model flexibility
+
+AI agents use large language models (LLMs) to understand your requests and generate responses. How many models you can choose from depends on the agent:
+
+* **Locked**: Only the vendor's own models are supported.
+* **BYOK** (Bring Your Own Key): You supply your own API key for the model provider of your choice.
+* **Multi-provider**: Several model providers are supported out of the box.
+
+### Context approaches
+
+How the agent retains information about your project between conversations:
+
+* **Project memory**: The agent remembers context across sessions using stored files or memory.
+* **Indexed codebase**: The agent builds a searchable index of your repository for fast lookups.
+
+## Set up your agent
+
+Each supported agent has a dedicated setup guide covering installation, Skills, MCP server configuration, example prompts, tips, and troubleshooting.
+
+[ Get started ](https://developers.cloudflare.com/agent-setup/) 
+
+## Markdown documentation for LLMs
+
+AI tools work better with Markdown than HTML because Markdown's explicit structure has less overhead than HTML tags, which reduces wasted tokens (the units of text that AI models process) and produces better results.
+
+Every documentation page is available as Markdown using any of the following methods, powered by [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/).
+
+### Copy from the current page
+
+On any documentation page, select **Copy as Markdown** to copy the current page as Markdown.
+
+### Append `/index.md` to the URL
+
+Add `/index.md` to the end of any page URL. For example:
+
+```
+
+https://developers.cloudflare.com/workers/get-started/index.md
+
+
+```
+
+### Send an `Accept: text/markdown` header
+
+Request any page with the `Accept: text/markdown` header, which tells the server you prefer Markdown instead of HTML:
+
+Terminal window
+
+```
+
+curl "https://developers.cloudflare.com/workers/get-started/" \
+
+  --header "Accept: text/markdown"
+
+
+```
+
+The response includes an `x-markdown-tokens` header with an estimated token count for the document, useful for context window planning.
+
+### Site-wide endpoints
+
+These endpoints follow the [llms.txt standard ↗](https://llmstxt.org/) and provide documentation content in Markdown format:
+
+| Endpoint                                                          | Description                                                                                                           |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| [/llms.txt](https://developers.cloudflare.com/llms.txt)           | Page index grouped by product category, with links to each product's own llms.txt                                     |
+| [/llms-full.txt](https://developers.cloudflare.com/llms-full.txt) | Full content of all documentation in a single file, for offline indexing, bulk vectorization, or large-context models |
+
+### Per-product endpoints
+
+Each product has its own scoped `llms.txt` and `llms-full.txt`. Use these when you only need documentation for a specific product.
+
+| Endpoint                                                                          | Description                                     |
+| --------------------------------------------------------------------------------- | ----------------------------------------------- |
+| [/workers/llms.txt](https://developers.cloudflare.com/workers/llms.txt)           | Page index for Workers documentation            |
+| [/workers/llms-full.txt](https://developers.cloudflare.com/workers/llms-full.txt) | Full content of all Workers documentation pages |
+
+Replace `/workers/` with any product path. For the full list of available products, refer to [/llms.txt](https://developers.cloudflare.com/llms.txt).
+
+## OpenAPI specification
+
+An [OpenAPI specification ↗](https://www.openapis.org/) is a machine-readable description of an API — it lists every available endpoint, the parameters each one accepts, and the responses it returns. When you add this to your AI tool's context, the tool can generate API calls to Cloudflare services without you having to look up the documentation manually.
+
+The full Cloudflare API OpenAPI specification is available for AI coding tools, API clients, and code generators:
+
+| Endpoint                                                              | Description                                      |
+| --------------------------------------------------------------------- | ------------------------------------------------ |
+| [cloudflare/api-schemas ↗](https://github.com/cloudflare/api-schemas) | Full Cloudflare API OpenAPI specification (JSON) |
+
+For the full API reference, refer to the [Cloudflare API documentation](https://developers.cloudflare.com/api/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/docs-for-agents/","name":"Docs for agents"}}]}
+```

@@ -1,5 +1,5 @@
 ---
-title: GPT Image 1.5
+title: gpt-image-1.5
 description: OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
-#  GPT Image 1.5 
+#  gpt-image-1.5 
 
 Text-to-Image • OpenAI • Proxied 
 
@@ -207,8 +207,8 @@ Response200 ![Auto Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/
 
 ## Parameters
 
-* [ Input ](#tab-panel-374)
-* [ Output ](#tab-panel-375)
+* [ Input ](#tab-panel-314)
+* [ Output ](#tab-panel-315)
 
 prompt
 
@@ -234,148 +234,11 @@ image
 
 `string`format: uriURL to the generated image
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-372)
-* [ Output ](#tab-panel-373)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "description": "Text prompt describing the image to generate or edit",
-
-      "type": "string"
-
-    },
-
-    "image": {
-
-      "description": "Base64-encoded input image for image editing",
-
-      "type": "string"
-
-    },
-
-    "quality": {
-
-      "description": "Quality of the generated image",
-
-      "type": "string",
-
-      "enum": [
-
-        "low",
-
-        "medium",
-
-        "high",
-
-        "auto"
-
-      ]
-
-    },
-
-    "size": {
-
-      "description": "Size of the generated image",
-
-      "type": "string",
-
-      "enum": [
-
-        "256x256",
-
-        "512x512",
-
-        "1024x1024",
-
-        "1792x1024",
-
-        "1024x1792"
-
-      ]
-
-    },
-
-    "style": {
-
-      "description": "Style of the generated image",
-
-      "type": "string",
-
-      "enum": [
-
-        "vivid",
-
-        "natural"
-
-      ]
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "description": "URL to the generated image",
-
-      "type": "string",
-
-      "format": "uri"
-
-    }
-
-  },
-
-  "required": [
-
-    "image"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

@@ -62,7 +62,7 @@ In this case, the Cache Response Rule takes precedence. Cloudflare caches the as
 
 * If you strip last modified then Smart Edge Revalidation will be turned off.
 * Cache Response Rules ignore [1xx HTTP response status codes](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/) as they are treated as informational responses.
-* Currently, Cache Response Rules do not work with [Version Management](https://developers.cloudflare.com/version-management/).
+* Cache Response Rules can be versioned. Refer to the [Version Management](https://developers.cloudflare.com/version-management/) documentation for more information.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/cache-response-rules/","name":"Cache Response Rules"}}]}

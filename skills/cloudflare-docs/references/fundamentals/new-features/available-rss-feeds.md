@@ -133,6 +133,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/logs.xml)
 * [Registrar](https://developers.cloudflare.com/registrar/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/registrar.xml)
+* [Resource Tagging](https://developers.cloudflare.com/resource-tagging/)  
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/resource-tagging.xml)
 * [Rules](https://developers.cloudflare.com/rules/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/rules.xml)
 * [SDK](https://developers.cloudflare.com/fundamentals/api/reference/sdks/)  

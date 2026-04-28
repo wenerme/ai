@@ -1,5 +1,5 @@
 ---
-title: GPT-4.1 Mini
+title: GPT-4.1 mini
 description: Fast, affordable version of GPT-4.1 with a million-token context window.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
-#  GPT-4.1 Mini 
+#  GPT-4.1 mini 
 
 Text Generation • OpenAI • Proxied 
 
@@ -66,8 +66,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-284)
-* [ Output ](#tab-panel-285)
+* [ Input ](#tab-panel-220)
+* [ Output ](#tab-panel-221)
 
 ```
 
@@ -154,8 +154,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-286)
-* [ Output ](#tab-panel-287)
+* [ Input ](#tab-panel-222)
+* [ Output ](#tab-panel-223)
 
 ```
 
@@ -264,8 +264,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-290)
-* [ Output ](#tab-panel-291)
+* [ Input ](#tab-panel-226)
+* [ Output ](#tab-panel-227)
 
 ```
 
@@ -366,8 +366,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-288)
-* [ Output ](#tab-panel-289)
+* [ Input ](#tab-panel-224)
+* [ Output ](#tab-panel-225)
 
 ```
 
@@ -454,8 +454,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-294)
-* [ Output ](#tab-panel-295)
+* [ Input ](#tab-panel-228)
+* [ Output ](#tab-panel-229)
 
 ```
 
@@ -1149,8 +1149,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-296)
-* [ Output ](#tab-panel-297)
+* [ Input ](#tab-panel-230)
+* [ Output ](#tab-panel-231)
 
 ▶messages\[\]
 
@@ -1224,408 +1224,11 @@ model
 
 `object`
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-292)
-* [ Output ](#tab-panel-293)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "messages": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "object",
-
-        "properties": {
-
-          "role": {
-
-            "type": "string",
-
-            "enum": [
-
-              "system",
-
-              "developer",
-
-              "user",
-
-              "assistant",
-
-              "tool"
-
-            ]
-
-          },
-
-          "content": {
-
-            "anyOf": [
-
-              {
-
-                "type": "string"
-
-              },
-
-              {
-
-                "type": "null"
-
-              },
-
-              {
-
-                "type": "array",
-
-                "items": {}
-
-              }
-
-            ]
-
-          }
-
-        },
-
-        "required": [
-
-          "role",
-
-          "content"
-
-        ],
-
-        "additionalProperties": {}
-
-      }
-
-    },
-
-    "temperature": {
-
-      "type": "number",
-
-      "minimum": 0,
-
-      "maximum": 2
-
-    },
-
-    "max_tokens": {
-
-      "type": "number",
-
-      "exclusiveMinimum": 0
-
-    },
-
-    "max_completion_tokens": {
-
-      "type": "number",
-
-      "exclusiveMinimum": 0
-
-    },
-
-    "top_p": {
-
-      "type": "number",
-
-      "minimum": 0,
-
-      "maximum": 1
-
-    },
-
-    "frequency_penalty": {
-
-      "type": "number",
-
-      "minimum": -2,
-
-      "maximum": 2
-
-    },
-
-    "presence_penalty": {
-
-      "type": "number",
-
-      "minimum": -2,
-
-      "maximum": 2
-
-    },
-
-    "stream": {
-
-      "type": "boolean"
-
-    },
-
-    "stream_options": {
-
-      "type": "object",
-
-      "properties": {
-
-        "include_usage": {
-
-          "type": "boolean"
-
-        }
-
-      },
-
-      "additionalProperties": false
-
-    },
-
-    "tools": {
-
-      "type": "array",
-
-      "items": {}
-
-    },
-
-    "tool_choice": {},
-
-    "response_format": {}
-
-  },
-
-  "required": [
-
-    "messages"
-
-  ],
-
-  "additionalProperties": {}
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "id": {
-
-      "type": "string"
-
-    },
-
-    "object": {
-
-      "type": "string"
-
-    },
-
-    "created": {
-
-      "type": "number"
-
-    },
-
-    "model": {
-
-      "type": "string"
-
-    },
-
-    "choices": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "object",
-
-        "properties": {
-
-          "index": {
-
-            "type": "number"
-
-          },
-
-          "message": {
-
-            "type": "object",
-
-            "properties": {
-
-              "role": {
-
-                "type": "string"
-
-              },
-
-              "content": {
-
-                "anyOf": [
-
-                  {
-
-                    "type": "string"
-
-                  },
-
-                  {
-
-                    "type": "null"
-
-                  }
-
-                ]
-
-              },
-
-              "tool_calls": {
-
-                "type": "array",
-
-                "items": {}
-
-              }
-
-            },
-
-            "required": [
-
-              "role"
-
-            ],
-
-            "additionalProperties": {}
-
-          },
-
-          "finish_reason": {
-
-            "anyOf": [
-
-              {
-
-                "type": "string"
-
-              },
-
-              {
-
-                "type": "null"
-
-              }
-
-            ]
-
-          }
-
-        },
-
-        "required": [
-
-          "index",
-
-          "message",
-
-          "finish_reason"
-
-        ],
-
-        "additionalProperties": {}
-
-      }
-
-    },
-
-    "usage": {
-
-      "type": "object",
-
-      "properties": {
-
-        "prompt_tokens": {
-
-          "type": "number"
-
-        },
-
-        "completion_tokens": {
-
-          "type": "number"
-
-        },
-
-        "total_tokens": {
-
-          "type": "number"
-
-        }
-
-      },
-
-      "required": [
-
-        "prompt_tokens",
-
-        "completion_tokens",
-
-        "total_tokens"
-
-      ],
-
-      "additionalProperties": {}
-
-    }
-
-  },
-
-  "required": [
-
-    "id",
-
-    "object",
-
-    "created",
-
-    "model",
-
-    "choices"
-
-  ],
-
-  "additionalProperties": {}
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

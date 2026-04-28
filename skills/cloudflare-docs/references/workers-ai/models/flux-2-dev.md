@@ -24,8 +24,8 @@ FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate h
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3246)
-* [  curl ](#tab-panel-3247)
+* [  TypeScript ](#tab-panel-2532)
+* [  curl ](#tab-panel-2533)
 
 ```
 
@@ -111,8 +111,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-3248)
-* [ Output ](#tab-panel-3249)
+* [ Input ](#tab-panel-2534)
+* [ Output ](#tab-panel-2535)
 
 ▶multipart{}
 
@@ -122,86 +122,11 @@ image
 
 `string`Generated image as Base64 string.
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3244)
-* [ Output ](#tab-panel-3245)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "multipart": {
-
-      "type": "object",
-
-      "properties": {
-
-        "body": {
-
-          "type": "object"
-
-        },
-
-        "contentType": {
-
-          "type": "string"
-
-        }
-
-      },
-
-      "required": [
-
-        "body",
-
-        "contentType"
-
-      ]
-
-    },
-
-    "required": [
-
-      "multipart"
-
-    ]
-
-  }
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "type": "string",
-
-      "description": "Generated image as Base64 string."
-
-    }
-
-  }
-
-}
-
-
-```
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

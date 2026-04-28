@@ -18,9 +18,9 @@ EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embeddin
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3216)
-* [  Python ](#tab-panel-3217)
-* [  curl ](#tab-panel-3218)
+* [  TypeScript ](#tab-panel-2516)
+* [  Python ](#tab-panel-2517)
+* [  curl ](#tab-panel-2518)
 
 ```
 
@@ -135,8 +135,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-3219)
-* [ Output ](#tab-panel-3220)
+* [ Input ](#tab-panel-2519)
+* [ Output ](#tab-panel-2520)
 
 ▶text
 
@@ -150,124 +150,11 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 `array`Embeddings of the requested text values
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3214)
-* [ Output ](#tab-panel-3215)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "text": {
-
-      "oneOf": [
-
-        {
-
-          "type": "string",
-
-          "description": "The text to embed",
-
-          "minLength": 1
-
-        },
-
-        {
-
-          "type": "array",
-
-          "description": "Batch of text values to embed",
-
-          "items": {
-
-            "type": "string",
-
-            "description": "The text to embed",
-
-            "minLength": 1
-
-          },
-
-          "maxItems": 100
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "required": [
-
-    "text"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "contentType": "application/json",
-
-  "properties": {
-
-    "shape": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "number"
-
-      }
-
-    },
-
-    "data": {
-
-      "type": "array",
-
-      "description": "Embeddings of the requested text values",
-
-      "items": {
-
-        "type": "array",
-
-        "description": "Floating point embedding representation shaped by the embedding model",
-
-        "items": {
-
-          "type": "number"
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

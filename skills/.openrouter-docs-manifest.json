@@ -676,8 +676,8 @@
   },
   "api/api-reference/embeddings/list-embeddings-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/list-embeddings-models.md",
-    "size": 16828,
-    "updatedAt": "2026-04-23T00:32:43.269Z"
+    "size": 16852,
+    "updatedAt": "2026-04-28T00:33:51.321Z"
   },
   "api/api-reference/endpoints/list-endpoints-zdr.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints-zdr.md",
@@ -686,13 +686,13 @@
   },
   "api/api-reference/endpoints/list-endpoints.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints.md",
-    "size": 20062,
-    "updatedAt": "2026-04-24T00:32:39.881Z"
+    "size": 20086,
+    "updatedAt": "2026-04-28T00:33:54.465Z"
   },
   "api/api-reference/generations/get-generation.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/get-generation.md",
-    "size": 21559,
-    "updatedAt": "2026-04-24T00:32:41.053Z"
+    "size": 21573,
+    "updatedAt": "2026-04-28T00:33:55.890Z"
   },
   "api/api-reference/generations/list-generation-content.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/list-generation-content.md",
@@ -801,8 +801,8 @@
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
-    "size": 18041,
-    "updatedAt": "2026-04-23T00:33:15.267Z"
+    "size": 18065,
+    "updatedAt": "2026-04-28T00:34:26.122Z"
   },
   "api/api-reference/models/list-models-count.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/list-models-count.md",
@@ -811,8 +811,8 @@
   },
   "api/api-reference/models/list-models-user.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/list-models-user.md",
-    "size": 18640,
-    "updatedAt": "2026-04-23T00:33:17.595Z"
+    "size": 18664,
+    "updatedAt": "2026-04-28T00:34:28.778Z"
   },
   "api/api-reference/organization/list-organization-members.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/organization/list-organization-members.md",

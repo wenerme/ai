@@ -555,8 +555,8 @@ Adding a query parameter with custom text, you should receive:
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-10352)
-* [  wrangler.toml ](#tab-panel-10353)
+* [  wrangler.jsonc ](#tab-panel-9209)
+* [  wrangler.toml ](#tab-panel-9210)
 
 JSONC
 
@@ -846,8 +846,8 @@ Image transformations can only be tested when you deploy your Worker.
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-10354)
-* [  wrangler.toml ](#tab-panel-10355)
+* [  wrangler.jsonc ](#tab-panel-9211)
+* [  wrangler.toml ](#tab-panel-9212)
 
 JSONC
 

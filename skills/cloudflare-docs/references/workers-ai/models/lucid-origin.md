@@ -25,8 +25,8 @@ Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive mode
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3670)
-* [  curl ](#tab-panel-3671)
+* [  TypeScript ](#tab-panel-2722)
+* [  curl ](#tab-panel-2723)
 
 ```
 
@@ -94,8 +94,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3674)
-* [ Output ](#tab-panel-3675)
+* [ Input ](#tab-panel-2724)
+* [ Output ](#tab-panel-2725)
 
 prompt
 
@@ -129,146 +129,11 @@ image
 
 `string`The generated image in Base64 format.
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3672)
-* [ Output ](#tab-panel-3673)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string",
-
-      "minLength": 1,
-
-      "description": "A text description of the image you want to generate."
-
-    },
-
-    "guidance": {
-
-      "type": "number",
-
-      "default": 4.5,
-
-      "minimum": 0,
-
-      "maximum": 10,
-
-      "description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt"
-
-    },
-
-    "seed": {
-
-      "type": "integer",
-
-      "minimum": 0,
-
-      "description": "Random seed for reproducibility of the image generation"
-
-    },
-
-    "height": {
-
-      "type": "integer",
-
-      "minimum": 0,
-
-      "maximum": 2500,
-
-      "default": 1120,
-
-      "description": "The height of the generated image in pixels"
-
-    },
-
-    "width": {
-
-      "type": "integer",
-
-      "minimum": 0,
-
-      "maximum": 2500,
-
-      "default": 1120,
-
-      "description": "The width of the generated image in pixels"
-
-    },
-
-    "num_steps": {
-
-      "type": "integer",
-
-      "minimum": 1,
-
-      "maximum": 40,
-
-      "description": "The number of diffusion steps; higher values can improve quality but take longer"
-
-    },
-
-    "steps": {
-
-      "type": "integer",
-
-      "minimum": 1,
-
-      "maximum": 40,
-
-      "description": "The number of diffusion steps; higher values can improve quality but take longer"
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "contentType": "application/json",
-
-  "properties": {
-
-    "image": {
-
-      "type": "string",
-
-      "description": "The generated image in Base64 format."
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

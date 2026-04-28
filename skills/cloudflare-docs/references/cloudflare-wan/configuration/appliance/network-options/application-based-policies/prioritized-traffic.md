@@ -14,7 +14,7 @@ Similarly to breakout traffic, prioritized traffic also works via DNS requests i
 
 Warning 
 
- Prioritized traffic will not work for applications that use DNS-over-HTTPS. 
+Prioritized traffic will not work for applications that use DNS-over-HTTPS.
 
 ## Add an application to your account
 
@@ -86,8 +86,8 @@ You can now add this new app to the Prioritized traffic list in your Cloudflare 
 
 You need to configure Prioritized traffic applications for each of your existing sites, as this is a per-site configuration.
 
-* [ Dashboard ](#tab-panel-6404)
-* [ API ](#tab-panel-6405)
+* [ Dashboard ](#tab-panel-5240)
+* [ API ](#tab-panel-5241)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -165,8 +165,8 @@ Explain Code
 
 ### Delete an application from Cloudflare One Appliance
 
-* [ Dashboard ](#tab-panel-6402)
-* [ API ](#tab-panel-6403)
+* [ Dashboard ](#tab-panel-5238)
+* [ API ](#tab-panel-5239)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

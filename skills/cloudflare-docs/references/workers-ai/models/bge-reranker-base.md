@@ -24,9 +24,9 @@ Different from embedding model, reranker uses question and document as input and
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3117)
-* [  Python ](#tab-panel-3118)
-* [  curl ](#tab-panel-3119)
+* [  TypeScript ](#tab-panel-2471)
+* [  Python ](#tab-panel-2472)
+* [  curl ](#tab-panel-2473)
 
 ```
 
@@ -134,8 +134,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3122)
-* [ Output ](#tab-panel-3123)
+* [ Input ](#tab-panel-2474)
+* [ Output ](#tab-panel-2475)
 
 query
 
@@ -153,134 +153,11 @@ top\_k
 
 `array`
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3120)
-* [ Output ](#tab-panel-3121)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "query": {
-
-      "type": "string",
-
-      "minLength": 1,
-
-      "description": "A query you wish to perform against the provided contexts."
-
-    },
-
-    "top_k": {
-
-      "type": "integer",
-
-      "minimum": 1,
-
-      "description": "Number of returned results starting with the best score."
-
-    },
-
-    "contexts": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "object",
-
-        "properties": {
-
-          "text": {
-
-            "type": "string",
-
-            "minLength": 1,
-
-            "description": "One of the provided context content"
-
-          }
-
-        }
-
-      },
-
-      "description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it."
-
-    }
-
-  },
-
-  "required": [
-
-    "query",
-
-    "contexts"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "contentType": "application/json",
-
-  "properties": {
-
-    "response": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "object",
-
-        "properties": {
-
-          "id": {
-
-            "type": "integer",
-
-            "description": "Index of the context in the request"
-
-          },
-
-          "score": {
-
-            "type": "number",
-
-            "description": "Score of the context under the index."
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

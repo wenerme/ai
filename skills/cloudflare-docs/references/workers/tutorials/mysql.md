@@ -78,8 +78,8 @@ cd mysql-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-10362)
-* [  wrangler.toml ](#tab-panel-10363)
+* [  wrangler.jsonc ](#tab-panel-9219)
+* [  wrangler.toml ](#tab-panel-9220)
 
 JSONC
 
@@ -95,7 +95,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24"
+  "compatibility_date": "2026-04-27"
 
 }
 
@@ -110,7 +110,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-27"
 
 
 ```
@@ -130,8 +130,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-10360)
-* [  wrangler.toml ](#tab-panel-10361)
+* [  wrangler.jsonc ](#tab-panel-9217)
+* [  wrangler.toml ](#tab-panel-9218)
 
 JSONC
 
@@ -147,7 +147,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-27",
 
   "compatibility_flags": [
 
@@ -188,7 +188,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-27"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -232,8 +232,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-10364)
-* [  wrangler.toml ](#tab-panel-10365)
+* [  wrangler.jsonc ](#tab-panel-9221)
+* [  wrangler.toml ](#tab-panel-9222)
 
 JSONC
 
@@ -251,7 +251,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-27",
 
   "hyperdrive": [
 
@@ -280,7 +280,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-27"
 
 
 [[hyperdrive]]

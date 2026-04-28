@@ -1,5 +1,5 @@
 ---
-title: GPT Image 2
+title: OpenAI GPT Image 2
 description: OpenAI's next-generation image model that creates and edits images from text prompts, with support for multiple quality levels, sizes, and output formats. Note: transparent backgrounds are not supported — use openai/gpt-image-1.5 for transparent PNGs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
-#  GPT Image 2 
+#  OpenAI GPT Image 2 
 
 Text-to-Image • OpenAI • Proxied 
 
@@ -211,8 +211,8 @@ Response200 ![Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/ca
 
 ## Parameters
 
-* [ Input ](#tab-panel-378)
-* [ Output ](#tab-panel-379)
+* [ Input ](#tab-panel-316)
+* [ Output ](#tab-panel-317)
 
 prompt
 
@@ -242,166 +242,11 @@ image
 
 `string`format: uriURL to the generated image
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-376)
-* [ Output ](#tab-panel-377)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "description": "Text prompt describing the image to generate or edit",
-
-      "type": "string"
-
-    },
-
-    "image": {
-
-      "description": "Base64-encoded input image for image editing",
-
-      "type": "string"
-
-    },
-
-    "quality": {
-
-      "description": "Quality of the generated image",
-
-      "type": "string",
-
-      "enum": [
-
-        "low",
-
-        "medium",
-
-        "high",
-
-        "auto"
-
-      ]
-
-    },
-
-    "size": {
-
-      "description": "Size of the generated image",
-
-      "type": "string",
-
-      "enum": [
-
-        "1024x1024",
-
-        "1024x1536",
-
-        "1536x1024",
-
-        "auto"
-
-      ]
-
-    },
-
-    "background": {
-
-      "description": "Background transparency setting. Use transparent for images with no background, opaque for a solid background, or auto to let the model decide.",
-
-      "type": "string",
-
-      "enum": [
-
-        "transparent",
-
-        "opaque",
-
-        "auto"
-
-      ]
-
-    },
-
-    "output_format": {
-
-      "description": "Output format for the generated image",
-
-      "type": "string",
-
-      "enum": [
-
-        "png",
-
-        "webp",
-
-        "jpeg"
-
-      ]
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "description": "URL to the generated image",
-
-      "type": "string",
-
-      "format": "uri"
-
-    }
-
-  },
-
-  "required": [
-
-    "image"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

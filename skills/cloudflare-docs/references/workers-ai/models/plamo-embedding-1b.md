@@ -24,9 +24,9 @@ PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Net
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3837)
-* [  Python ](#tab-panel-3838)
-* [  curl ](#tab-panel-3839)
+* [  TypeScript ](#tab-panel-2787)
+* [  Python ](#tab-panel-2788)
+* [  curl ](#tab-panel-2789)
 
 ```
 
@@ -141,8 +141,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-3840)
-* [ Output ](#tab-panel-3841)
+* [ Input ](#tab-panel-2790)
+* [ Output ](#tab-panel-2791)
 
 ▶text
 
@@ -156,124 +156,11 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 `array`minItems: 2maxItems: 2Shape of the embedding data as \[number\_of\_embeddings, embedding\_dimension\].
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3835)
-* [ Output ](#tab-panel-3836)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "text": {
-
-      "oneOf": [
-
-        {
-
-          "type": "string"
-
-        },
-
-        {
-
-          "type": "array",
-
-          "items": {
-
-            "type": "string"
-
-          }
-
-        }
-
-      ],
-
-      "description": "Input text to embed. Can be a single string or a list of strings."
-
-    }
-
-  },
-
-  "required": [
-
-    "text"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "data": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "array",
-
-        "items": {
-
-          "type": "number"
-
-        }
-
-      },
-
-      "description": "Embedding vectors, where each vector is a list of floats."
-
-    },
-
-    "shape": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "integer"
-
-      },
-
-      "minItems": 2,
-
-      "maxItems": 2,
-
-      "description": "Shape of the embedding data as [number_of_embeddings, embedding_dimension]."
-
-    }
-
-  },
-
-  "required": [
-
-    "data",
-
-    "shape"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

@@ -1,11 +1,11 @@
 ---
 title: "Hugging Face | Models"
-description: "Use Hugging Face models with Mastra. 23 models available."
+description: "Use Hugging Face models with Mastra. 24 models available."
 ---
 
 # [Hugging Face logo]Hugging Face
 
-Access 23 Hugging Face models through Mastra's model router. Authentication is handled automatically using the `HF_TOKEN` environment variable.
+Access 24 Hugging Face models through Mastra's model router. Authentication is handled automatically using the `HF_TOKEN` environment variable.
 
 Learn more in the [Hugging Face documentation](https://huggingface.co).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.28,
     "outputCost": 0.4
+  },
+  {
+    "model": "huggingface/deepseek-ai/DeepSeek-V4-Pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 393216,
+    "inputCost": 1.74,
+    "outputCost": 3.48
   },
   {
     "model": "huggingface/MiniMaxAI/MiniMax-M2.1",

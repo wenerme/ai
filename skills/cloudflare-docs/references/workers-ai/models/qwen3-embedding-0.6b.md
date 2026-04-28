@@ -23,9 +23,9 @@ The Qwen3 Embedding model series is the latest proprietary model of the Qwen fam
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3918)
-* [  Python ](#tab-panel-3919)
-* [  curl ](#tab-panel-3920)
+* [  TypeScript ](#tab-panel-2822)
+* [  Python ](#tab-panel-2823)
+* [  curl ](#tab-panel-2824)
 
 ```
 
@@ -140,8 +140,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-3923)
-* [ Output ](#tab-panel-3924)
+* [ Input ](#tab-panel-2825)
+* [ Output ](#tab-panel-2826)
 
 ▶queries
 
@@ -167,192 +167,11 @@ instruction
 
 `array`
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3921)
-* [ Output ](#tab-panel-3922)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "queries": {
-
-      "oneOf": [
-
-        {
-
-          "type": "string",
-
-          "description": "A single query string",
-
-          "minLength": 1
-
-        },
-
-        {
-
-          "type": "array",
-
-          "description": "An array of query strings",
-
-          "items": {
-
-            "type": "string",
-
-            "minLength": 1
-
-          },
-
-          "maxItems": 32
-
-        }
-
-      ]
-
-    },
-
-    "instruction": {
-
-      "type": "string",
-
-      "default": "Given a web search query, retrieve relevant passages that answer the query",
-
-      "description": "Optional instruction for the task"
-
-    },
-
-    "documents": {
-
-      "oneOf": [
-
-        {
-
-          "type": "string",
-
-          "description": "A single document string",
-
-          "minLength": 1
-
-        },
-
-        {
-
-          "type": "array",
-
-          "description": "An array of document strings",
-
-          "items": {
-
-            "type": "string",
-
-            "minLength": 1
-
-          },
-
-          "maxItems": 32
-
-        }
-
-      ]
-
-    },
-
-    "text": {
-
-      "oneOf": [
-
-        {
-
-          "type": "string",
-
-          "description": "Alias for documents: a single text string",
-
-          "minLength": 1
-
-        },
-
-        {
-
-          "type": "array",
-
-          "description": "Alias for documents: an array of text strings",
-
-          "items": {
-
-            "type": "string",
-
-            "minLength": 1
-
-          },
-
-          "maxItems": 32
-
-        }
-
-      ]
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "data": {
-
-      "items": {
-
-        "items": {
-
-          "type": "number"
-
-        },
-
-        "type": "array"
-
-      },
-
-      "type": "array"
-
-    },
-
-    "shape": {
-
-      "items": {
-
-        "type": "integer"
-
-      },
-
-      "type": "array"
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

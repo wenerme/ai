@@ -23,8 +23,8 @@ Image Classification • Microsoft • Hosted
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3939)
-* [  curl ](#tab-panel-3940)
+* [  TypeScript ](#tab-panel-2831)
+* [  curl ](#tab-panel-2832)
 
 ```
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3941)
-* [ Output ](#tab-panel-3942)
+* [ Input ](#tab-panel-2833)
+* [ Output ](#tab-panel-2834)
 
 Option 1
 
@@ -113,108 +113,11 @@ items
 
 `[object Object]`
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3937)
-* [ Output ](#tab-panel-3938)
+Input 
 
-```
-
-{
-
-  "oneOf": [
-
-    {
-
-      "type": "string",
-
-      "format": "binary",
-
-      "description": "The image to classify"
-
-    },
-
-    {
-
-      "type": "object",
-
-      "properties": {
-
-        "image": {
-
-          "type": "array",
-
-          "description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-
-          "items": {
-
-            "type": "number",
-
-            "description": "A value between 0 and 255 (unsigned 8bit)"
-
-          }
-
-        }
-
-      },
-
-      "required": [
-
-        "image"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "array",
-
-  "contentType": "application/json",
-
-  "items": {
-
-    "type": "object",
-
-    "properties": {
-
-      "score": {
-
-        "type": "number",
-
-        "description": "A confidence value, between 0 and 1, indicating how certain the model is about the predicted label"
-
-      },
-
-      "label": {
-
-        "type": "string",
-
-        "description": "The predicted category or class for the input image based on analysis"
-
-      }
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

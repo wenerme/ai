@@ -20,9 +20,9 @@ The "Built with Cloudflare" button can be used to share that you're using Cloudf
 
 The Built with Cloudflare button is an SVG and can be embedded anywhere. Use the following snippet to paste the button into your README, blog post, or documentation.
 
-* [ Markdown ](#tab-panel-10064)
-* [ HTML ](#tab-panel-10065)
-* [ URL ](#tab-panel-10066)
+* [ Markdown ](#tab-panel-8921)
+* [ HTML ](#tab-panel-8922)
+* [ URL ](#tab-panel-8923)
 
 ```
 

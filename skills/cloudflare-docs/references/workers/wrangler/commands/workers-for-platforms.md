@@ -14,9 +14,9 @@ Wrangler commands for managing Workers for Platforms [dispatch namespace](https:
 
 List all dispatch namespaces
 
-* [  npm ](#tab-panel-10924)
-* [  pnpm ](#tab-panel-10925)
-* [  yarn ](#tab-panel-10926)
+* [  npm ](#tab-panel-9781)
+* [  pnpm ](#tab-panel-9782)
+* [  yarn ](#tab-panel-9783)
 
 Terminal window
 
@@ -66,9 +66,9 @@ Automatically provision draft bindings with new resources
 
 Get information about a dispatch namespace
 
-* [  npm ](#tab-panel-10927)
-* [  pnpm ](#tab-panel-10928)
-* [  yarn ](#tab-panel-10929)
+* [  npm ](#tab-panel-9784)
+* [  pnpm ](#tab-panel-9785)
+* [  yarn ](#tab-panel-9786)
 
 Terminal window
 
@@ -121,9 +121,9 @@ Automatically provision draft bindings with new resources
 
 Create a dispatch namespace
 
-* [  npm ](#tab-panel-10930)
-* [  pnpm ](#tab-panel-10931)
-* [  yarn ](#tab-panel-10932)
+* [  npm ](#tab-panel-9787)
+* [  pnpm ](#tab-panel-9788)
+* [  yarn ](#tab-panel-9789)
 
 Terminal window
 
@@ -176,9 +176,9 @@ Automatically provision draft bindings with new resources
 
 Delete a dispatch namespace
 
-* [  npm ](#tab-panel-10933)
-* [  pnpm ](#tab-panel-10934)
-* [  yarn ](#tab-panel-10935)
+* [  npm ](#tab-panel-9790)
+* [  pnpm ](#tab-panel-9791)
+* [  yarn ](#tab-panel-9792)
 
 Terminal window
 
@@ -235,9 +235,9 @@ You must delete all user Workers in the dispatch namespace before it can be dele
 
 Rename a dispatch namespace
 
-* [  npm ](#tab-panel-10936)
-* [  pnpm ](#tab-panel-10937)
-* [  yarn ](#tab-panel-10938)
+* [  npm ](#tab-panel-9793)
+* [  pnpm ](#tab-panel-9794)
+* [  yarn ](#tab-panel-9795)
 
 Terminal window
 

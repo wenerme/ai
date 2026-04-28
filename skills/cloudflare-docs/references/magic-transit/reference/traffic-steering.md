@@ -234,7 +234,7 @@ Refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/co
 
 Note 
 
- These address blocks are a part of [RFC 5737](https://datatracker.ietf.org/doc/rfc5737/) and are reserved for use as examples in documentation. 
+These address blocks are a part of [RFC 5737](https://datatracker.ietf.org/doc/rfc5737/) and are reserved for use as examples in documentation.
 
 ## Equal-cost multi-path routing
 

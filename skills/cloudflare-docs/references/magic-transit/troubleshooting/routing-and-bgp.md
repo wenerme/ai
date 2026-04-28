@@ -27,7 +27,7 @@ When you advertise or withdraw a BYOIP prefix, changes propagate across Cloudfla
 
 ISP route refresh delays may impact traffic 
 
- Cloudflare's action to advertise or withdraw a route takes effect across the global network within minutes. However, Cloudflare has no control over how quickly external ISPs refresh their BGP tables after the change. 
+Cloudflare's action to advertise or withdraw a route takes effect across the global network within minutes. However, Cloudflare has no control over how quickly external ISPs refresh their BGP tables after the change.
 
 | Action               | Cloudflare propagation | Global Internet propagation     |
 | -------------------- | ---------------------- | ------------------------------- |
@@ -46,7 +46,7 @@ During path hunting, traffic may be routed suboptimally or dropped entirely.
 
 Note 
 
- When failing traffic off Cloudflare, use the same-length prefix strategy. Advertise the identical prefix from your alternate provider before withdrawing from Cloudflare. This prevents path hunting because BGP does not need to search for alternative routes. 
+When failing traffic off Cloudflare, use the same-length prefix strategy. Advertise the identical prefix from your alternate provider before withdrawing from Cloudflare. This prevents path hunting because BGP does not need to search for alternative routes.
 
 Refer to [Safely withdraw a BYOIP prefix](https://developers.cloudflare.com/magic-transit/how-to/safely-withdraw-byoip-prefix/) for the recommended procedure.
 

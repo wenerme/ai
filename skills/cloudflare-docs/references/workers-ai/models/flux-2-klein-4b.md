@@ -24,8 +24,8 @@ FLUX.2 \[klein\] is an ultra-fast, distilled image model. It unifies image gener
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3252)
-* [  curl ](#tab-panel-3253)
+* [  TypeScript ](#tab-panel-2536)
+* [  curl ](#tab-panel-2537)
 
 ```
 
@@ -111,8 +111,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-3254)
-* [ Output ](#tab-panel-3255)
+* [ Input ](#tab-panel-2538)
+* [ Output ](#tab-panel-2539)
 
 ▶multipart{}
 
@@ -122,78 +122,11 @@ image
 
 `string`Generated image as Base64 string.
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3250)
-* [ Output ](#tab-panel-3251)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "multipart": {
-
-      "type": "object",
-
-      "properties": {
-
-        "body": {
-
-          "type": "object"
-
-        },
-
-        "contentType": {
-
-          "type": "string"
-
-        }
-
-      }
-
-    }
-
-  },
-
-  "required": [
-
-    "multipart"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "type": "string",
-
-      "description": "Generated image as Base64 string."
-
-    }
-
-  }
-
-}
-
-
-```
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

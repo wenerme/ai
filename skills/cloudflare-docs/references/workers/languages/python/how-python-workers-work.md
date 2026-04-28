@@ -34,8 +34,8 @@ class Default(WorkerEntrypoint):
 
 ...and a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) that points to this `.py` file:
 
-* [  wrangler.jsonc ](#tab-panel-10018)
-* [  wrangler.toml ](#tab-panel-10019)
+* [  wrangler.jsonc ](#tab-panel-8875)
+* [  wrangler.toml ](#tab-panel-8876)
 
 JSONC
 
@@ -51,7 +51,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24"
+  "compatibility_date": "2026-04-27"
 
 }
 
@@ -70,7 +70,7 @@ main = "src/entry.py"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-27"
 
 
 ```

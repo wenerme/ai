@@ -10,6 +10,11 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/version-management/changelog/index.xml)
 
+## 2026-04-27
+
+**Support for Cache Response Rules**
+* Version Management now supports versioning for [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/).
+
 ## 2024-02-26
 
 **Support for API Shield**

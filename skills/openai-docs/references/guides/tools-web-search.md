@@ -11,6 +11,7 @@ import {
 import {
   customUserLocationExampleCoarse,
   customUserLocationExampleCoarseChat,
+  listSourcesExample,
 } from "./web-search-examples";
 
 

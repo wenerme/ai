@@ -104,8 +104,8 @@ API clients typically include a `Content-Type` header and may include an `Author
 
 The following custom security rule blocks requests to `/api/` paths that are missing a `Content-Type` header. Adjust the path and header checks to match your API.
 
-* [  New dashboard ](#tab-panel-9273)
-* [ Old dashboard ](#tab-panel-9274)
+* [  New dashboard ](#tab-panel-8106)
+* [ Old dashboard ](#tab-panel-8107)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -133,8 +133,8 @@ The following custom security rule blocks requests to `/api/` paths that are mis
 
 If your `/api/users` endpoint only accepts `GET` and `POST` requests, block all other HTTP methods on that path. This prevents attackers from probing with `PUT`, `DELETE`, or `PATCH` requests against endpoints that do not support them.
 
-* [  New dashboard ](#tab-panel-9275)
-* [ Old dashboard ](#tab-panel-9276)
+* [  New dashboard ](#tab-panel-8108)
+* [ Old dashboard ](#tab-panel-8109)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -177,8 +177,8 @@ Create separate rate limiting rules for authenticated and unauthenticated endpoi
 
 The following example limits requests to `/api/auth/login` to 10 per minute per IP address. Adjust the path, request threshold, and period for your endpoints.
 
-* [  New dashboard ](#tab-panel-9279)
-* [ Old dashboard ](#tab-panel-9280)
+* [  New dashboard ](#tab-panel-8112)
+* [ Old dashboard ](#tab-panel-8113)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -228,8 +228,8 @@ If you are on a Cloudflare Pro or Business plan, go to the [next section](#creat
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to your entire domain and is available on all plans at no additional cost.
 
-* [  New dashboard ](#tab-panel-9285)
-* [ Old dashboard ](#tab-panel-9286)
+* [  New dashboard ](#tab-panel-8118)
+* [ Old dashboard ](#tab-panel-8119)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -249,8 +249,8 @@ For more information on Bot Fight Mode behavior and limitations, refer to [Bot F
 
 If your API receives traffic from known automated clients (monitoring services, partner APIs, CI/CD systems), create a [custom security rule with the _Skip_ action](https://developers.cloudflare.com/waf/custom-rules/skip/) to exclude them from bot protections. Create the exception rule before turning on Super Bot Fight Mode in the next section.
 
-* [  New dashboard ](#tab-panel-9277)
-* [ Old dashboard ](#tab-panel-9278)
+* [  New dashboard ](#tab-panel-8110)
+* [ Old dashboard ](#tab-panel-8111)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -293,8 +293,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 
 To configure Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-9287)
-* [ Old dashboard ](#tab-panel-9288)
+* [  New dashboard ](#tab-panel-8120)
+* [ Old dashboard ](#tab-panel-8121)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -361,8 +361,8 @@ After deploying your security rules, review the results to identify false positi
 
 [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) shows every request that your rules matched, including the action taken and the rule that triggered it. Filter by your API path prefix to see what Cloudflare is blocking and why.
 
-* [  New dashboard ](#tab-panel-9281)
-* [ Old dashboard ](#tab-panel-9282)
+* [  New dashboard ](#tab-panel-8114)
+* [ Old dashboard ](#tab-panel-8115)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -387,8 +387,8 @@ If you find false positives, update your custom rules to exclude the affected tr
 
 Rate limiting thresholds that are too tight block legitimate clients. Thresholds that are too loose allow abuse. Review rate limiting events in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to find the right balance.
 
-* [  New dashboard ](#tab-panel-9283)
-* [ Old dashboard ](#tab-panel-9284)
+* [  New dashboard ](#tab-panel-8116)
+* [ Old dashboard ](#tab-panel-8117)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -466,5 +466,5 @@ Enterprise customers have access to the [Advanced Security Events Alert](https:/
 * [Vulnerability Scanner](https://developers.cloudflare.com/api-shield/security/vulnerability-scanner/) — Test your API endpoints for common vulnerabilities
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/solutions/","name":"Solutions"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/solutions/discover-secure-api-endpoints/","name":"Discover and secure your API endpoints (Free, Pro, and Business)"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/solutions/","name":"Solution guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/solutions/discover-secure-api-endpoints/","name":"Discover and secure your API endpoints (Free, Pro, and Business)"}}]}
 ```

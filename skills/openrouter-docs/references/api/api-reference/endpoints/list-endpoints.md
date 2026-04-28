@@ -1,8 +1,8 @@
-# List all endpoints for a model
-
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/endpoints/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/api/api-reference/endpoints/llms-full.txt.
+
+# List all endpoints for a model
 
 GET https://openrouter.ai/api/v1/models/{author}/{slug}/endpoints
 
@@ -110,6 +110,7 @@ components:
         - video
         - rerank
         - speech
+        - transcription
       title: OutputModality
     ModelGroup:
       type: string

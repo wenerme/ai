@@ -100,8 +100,8 @@ To create a profile:
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-6388)
-* [ API ](#tab-panel-6389)
+* [ Dashboard ](#tab-panel-5224)
+* [ API ](#tab-panel-5225)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -160,8 +160,8 @@ Explain Code
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-6390)
-* [ API ](#tab-panel-6391)
+* [ Dashboard ](#tab-panel-5226)
+* [ API ](#tab-panel-5227)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.
@@ -309,7 +309,7 @@ When Cloudflare One Appliance is first activated, you need to have Internet conn
 
 Warning 
 
- Remember that if you chose the DHCP method you have to connect Cloudflare One Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Cloudflare One Appliance will not work. 
+Remember that if you chose the DHCP method you have to connect Cloudflare One Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Cloudflare One Appliance will not work.
 
 When you are ready to connect your Cloudflare One Appliance to the Cloudflare network:
 
@@ -329,7 +329,7 @@ After activating your device, you can use it in a network configuration with the
 
 Warning 
 
- Make sure you complete the setup workflow and activate your Cloudflare One Appliance before changing the WAN settings to a static IP. 
+Make sure you complete the setup workflow and activate your Cloudflare One Appliance before changing the WAN settings to a static IP.
 
 1. Connect Cloudflare One Appliance to a DHCP port with access to the Internet.
 2. [Create a new profile](#create-a-new-profile) in the dashboard.
@@ -350,7 +350,7 @@ The following is a detailed description of how to use the serial port to configu
 
 Note 
 
- The `reset device` option in your Cloudflare One Appliance clears most of the configuration that is locally cached, resets the password to the default, and reboots. 
+The `reset device` option in your Cloudflare One Appliance clears most of the configuration that is locally cached, resets the password to the default, and reboots.
 
 ### Equipment required
 
@@ -424,7 +424,7 @@ The `reset device` option in your Cloudflare One Appliance clears most of the co
 
 Note 
 
- The main reason to use the bootstrapper is if every network your Cloudflare One Appliance device is plugged into is either static, behind a VLAN, or both. If you find yourself here and configuring a network with DHCP and no VLAN, you are probably not in the right place. See the section on configuring your Cloudflare One Appliance [via the dashboard](#set-up-cloudflare-dashboard). 
+The main reason to use the bootstrapper is if every network your Cloudflare One Appliance device is plugged into is either static, behind a VLAN, or both. If you find yourself here and configuring a network with DHCP and no VLAN, you are probably not in the right place. See the section on configuring your Cloudflare One Appliance [via the dashboard](#set-up-cloudflare-dashboard).
 
 1. Enter the IP address you would like the appliance to have in CIDR form (for example, `10.0.0.2/24`).
 2. Enter the IP address of the Internet gateway (this must be in the same subnet as the previous IP address you entered and must not be the same address).

@@ -60,8 +60,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-3689)
-* [ Output ](#tab-panel-3690)
+* [ Input ](#tab-panel-2733)
+* [ Output ](#tab-panel-2734)
 
 prompt
 
@@ -81,100 +81,11 @@ stringcontentType: audio/mpegformat: binary
 
 The generated audio in MP3 format
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3687)
-* [ Output ](#tab-panel-3688)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string",
-
-      "minLength": 1,
-
-      "description": "A text description of the audio you want to generate"
-
-    },
-
-    "lang": {
-
-      "type": "string",
-
-      "default": "en",
-
-      "description": "The speech language (e.g., 'en' for English, 'fr' for French). Defaults to 'en' if not specified"
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "oneOf": [
-
-    {
-
-      "type": "object",
-
-      "contentType": "application/json",
-
-      "properties": {
-
-        "audio": {
-
-          "type": "string",
-
-          "description": "The generated audio in MP3 format, base64-encoded"
-
-        }
-
-      }
-
-    },
-
-    {
-
-      "type": "string",
-
-      "contentType": "audio/mpeg",
-
-      "format": "binary",
-
-      "description": "The generated audio in MP3 format"
-
-    }
-
-  ]
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

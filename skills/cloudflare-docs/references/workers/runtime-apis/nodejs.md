@@ -19,8 +19,8 @@ Cloudflare Workers provides a subset of Node.js APIs in two forms:
 
 To enable built-in Node.js APIs and add polyfills, add the `nodejs_compat` compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and ensure that your Worker's [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-10172)
-* [  wrangler.toml ](#tab-panel-10173)
+* [  wrangler.jsonc ](#tab-panel-9029)
+* [  wrangler.toml ](#tab-panel-9030)
 
 JSONC
 
@@ -36,7 +36,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24"
+  "compatibility_date": "2026-04-27"
 
 }
 
@@ -51,7 +51,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-27"
 
 
 ```
@@ -131,8 +131,8 @@ This allows you to import packages that use these Node.js modules, even if certa
 
 If you need to enable only the Node.js `AsyncLocalStorage` API, you can enable the `nodejs_als` compatibility flag:
 
-* [  wrangler.jsonc ](#tab-panel-10174)
-* [  wrangler.toml ](#tab-panel-10175)
+* [  wrangler.jsonc ](#tab-panel-9031)
+* [  wrangler.toml ](#tab-panel-9032)
 
 JSONC
 

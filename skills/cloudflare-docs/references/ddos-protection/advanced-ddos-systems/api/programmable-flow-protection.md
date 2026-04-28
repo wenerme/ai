@@ -1,16 +1,16 @@
 ---
-title: Programmable Flow Protection (Beta)
-description: Configure Programmable Flow Protection rules and thresholds using the API.
+title: Programmable Flow Protection
+description: Configure Programmable Flow Protection programs and rules using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
 
-# Programmable Flow Protection (Beta)
+# Programmable Flow Protection
 
-Use the [Cloudflare API](https://developers.cloudflare.com/api/) to configure Programmable Flow Protection via API.
+Use the [Cloudflare API](https://developers.cloudflare.com/api/) to configure Programmable Flow Protection.
 
-For examples of API calls, refer to the [Programmable Flow Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/) documentation.
+For examples of API calls, refer to [Common API calls](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/).
 
 ## Endpoints
 
@@ -25,34 +25,40 @@ https://api.cloudflare.com/client/v4
 
 The `{account_id}` argument is the [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) (a hexadecimal string). You can find this value in the Cloudflare dashboard.
 
-The following table summarizes the available operations.
+The tables in the following sections summarize the available operations.
 
-### Program API endpoints
+### Program operations
 
-| Operation           | Verb + Endpoint                                                                                    |
-| ------------------- | -------------------------------------------------------------------------------------------------- |
-| Upload a program    | POST /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs                 |
-| Update a program    | PATCH /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}  |
-| List programs       | GET /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs                  |
-| Delete a program    | DELETE /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id} |
-| Delete all programs | DELETE /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs               |
+| Operation           | Method and endpoint / Description                                                                                                                 |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| List programs       | GET accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programsFetches all Programmable Flow Protection programs in the account. |
+| Upload a program    | POST accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programsUploads a new program to the account.                            |
+| Get a program       | GET accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}Fetches the details of an existing program.         |
+| Update a program    | PATCH accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}Updates an existing program.                      |
+| Delete a program    | DELETE accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}Deletes an existing program from the account.    |
+| Delete all programs | DELETE accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programsDeletes all existing programs from the account.                |
 
-### Rule API endpoints
+### Rule operations
 
-| Operation        | Verb + Endpoint                                                                              |
-| ---------------- | -------------------------------------------------------------------------------------------- |
-| Create a rule    | POST /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules              |
-| Update a rule    | PATCH /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules/{rule\_id}  |
-| List rules       | GET /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules               |
-| Delete a rule    | DELETE /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules/{rule\_id} |
-| Delete all rules | DELETE /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules            |
+| Operation        | Method and endpoint / Description                                                                                                           |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| List rules       | GET accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rulesFetches all Programmable Flow Protection rules in the account. |
+| Create a rule    | POST accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rulesCreates a new rule in the account.                            |
+| Get a rule       | GET accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules/{rule\_id}Fetches the details of an existing rule.            |
+| Update a rule    | PATCH accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules/{rule\_id}Updates an existing rule in the account.          |
+| Delete a rule    | DELETE accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules/{rule\_id}Deletes an existing rule from the account.       |
+| Delete all rules | DELETE accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rulesDeletes all existing rules from the account.                |
 
-### Debug Packet CAPture (PCAP) API endpoint
+### Debug operations
 
-| Operation                   | Verb + Endpoint                                                                                       |
-| --------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Debug Packet CAPture (PCAP) | POST /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}/pcap |
+| Operation       | Method and endpoint / Description                                                                                                                                                           |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Debug with PCAP | POST accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}/pcapRuns a program against a PCAP file and returns an annotated PCAP with program verdicts. |
+
+## Pagination
+
+The API operations that return a list of items use pagination. For more information on the available pagination query parameters, refer to [Pagination](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#pagination).
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/","name":"API configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/","name":"Programmable Flow Protection (Beta)"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/","name":"API configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/","name":"Programmable Flow Protection"}}]}
 ```

@@ -74,8 +74,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-150)
-* [ Output ](#tab-panel-151)
+* [ Input ](#tab-panel-138)
+* [ Output ](#tab-panel-139)
 
 ```
 
@@ -192,8 +192,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-152)
-* [ Output ](#tab-panel-153)
+* [ Input ](#tab-panel-140)
+* [ Output ](#tab-panel-141)
 
 ```
 
@@ -346,8 +346,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-156)
-* [ Output ](#tab-panel-157)
+* [ Input ](#tab-panel-144)
+* [ Output ](#tab-panel-145)
 
 ```
 
@@ -488,8 +488,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-154)
-* [ Output ](#tab-panel-155)
+* [ Input ](#tab-panel-142)
+* [ Output ](#tab-panel-143)
 
 ```
 
@@ -543,8 +543,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-160)
-* [ Output ](#tab-panel-161)
+* [ Input ](#tab-panel-146)
+* [ Output ](#tab-panel-147)
 
 ▶contents\[\]
 
@@ -582,314 +582,11 @@ modelVersion
 
 `string`
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-158)
-* [ Output ](#tab-panel-159)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "contents": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "object",
-
-        "properties": {
-
-          "role": {
-
-            "type": "string",
-
-            "enum": [
-
-              "user",
-
-              "model"
-
-            ]
-
-          },
-
-          "parts": {
-
-            "type": "array",
-
-            "items": {
-
-              "type": "object",
-
-              "properties": {
-
-                "text": {
-
-                  "type": "string"
-
-                }
-
-              },
-
-              "additionalProperties": {}
-
-            }
-
-          }
-
-        },
-
-        "required": [
-
-          "parts"
-
-        ],
-
-        "additionalProperties": {}
-
-      }
-
-    },
-
-    "systemInstruction": {
-
-      "type": "object",
-
-      "properties": {
-
-        "parts": {
-
-          "type": "array",
-
-          "items": {
-
-            "type": "object",
-
-            "properties": {
-
-              "text": {
-
-                "type": "string"
-
-              }
-
-            },
-
-            "additionalProperties": {}
-
-          }
-
-        }
-
-      },
-
-      "required": [
-
-        "parts"
-
-      ],
-
-      "additionalProperties": {}
-
-    },
-
-    "generationConfig": {
-
-      "type": "object",
-
-      "properties": {
-
-        "temperature": {
-
-          "type": "number"
-
-        },
-
-        "topP": {
-
-          "type": "number"
-
-        },
-
-        "topK": {
-
-          "type": "number"
-
-        },
-
-        "maxOutputTokens": {
-
-          "type": "number"
-
-        },
-
-        "candidateCount": {
-
-          "type": "number"
-
-        },
-
-        "stopSequences": {
-
-          "type": "array",
-
-          "items": {
-
-            "type": "string"
-
-          }
-
-        },
-
-        "responseMimeType": {
-
-          "type": "string"
-
-        }
-
-      },
-
-      "additionalProperties": {}
-
-    },
-
-    "safetySettings": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "object",
-
-        "properties": {
-
-          "category": {
-
-            "type": "string"
-
-          },
-
-          "threshold": {
-
-            "type": "string"
-
-          }
-
-        },
-
-        "required": [
-
-          "category",
-
-          "threshold"
-
-        ],
-
-        "additionalProperties": {}
-
-      }
-
-    },
-
-    "tools": {
-
-      "type": "array",
-
-      "items": {}
-
-    },
-
-    "toolConfig": {}
-
-  },
-
-  "required": [
-
-    "contents"
-
-  ],
-
-  "additionalProperties": {}
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "candidates": {
-
-      "type": "array",
-
-      "items": {}
-
-    },
-
-    "usageMetadata": {
-
-      "type": "object",
-
-      "properties": {
-
-        "promptTokenCount": {
-
-          "type": "number"
-
-        },
-
-        "candidatesTokenCount": {
-
-          "type": "number"
-
-        },
-
-        "totalTokenCount": {
-
-          "type": "number"
-
-        }
-
-      },
-
-      "additionalProperties": {}
-
-    },
-
-    "modelVersion": {
-
-      "type": "string"
-
-    }
-
-  },
-
-  "additionalProperties": {}
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

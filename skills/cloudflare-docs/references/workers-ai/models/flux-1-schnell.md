@@ -23,9 +23,9 @@ FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable 
 
 ## Usage
 
-* [  Worker (Data URI) ](#tab-panel-3239)
-* [  Worker (Image) ](#tab-panel-3240)
-* [  curl ](#tab-panel-3241)
+* [  Worker (Data URI) ](#tab-panel-2527)
+* [  Worker (Image) ](#tab-panel-2528)
+* [  curl ](#tab-panel-2529)
 
 TypeScript
 
@@ -132,8 +132,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3242)
-* [ Output ](#tab-panel-3243)
+* [ Input ](#tab-panel-2530)
+* [ Output ](#tab-panel-2531)
 
 prompt
 
@@ -147,84 +147,11 @@ image
 
 `string`The generated image in Base64 format.
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3237)
-* [ Output ](#tab-panel-3238)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string",
-
-      "minLength": 1,
-
-      "maxLength": 2048,
-
-      "description": "A text description of the image you want to generate."
-
-    },
-
-    "steps": {
-
-      "type": "integer",
-
-      "default": 4,
-
-      "maximum": 8,
-
-      "description": "The number of diffusion steps; higher values can improve quality but take longer."
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "contentType": "application/json",
-
-  "properties": {
-
-    "image": {
-
-      "type": "string",
-
-      "description": "The generated image in Base64 format."
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

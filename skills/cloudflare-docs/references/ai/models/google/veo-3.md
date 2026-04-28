@@ -237,8 +237,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-204)
-* [ Output ](#tab-panel-205)
+* [ Input ](#tab-panel-176)
+* [ Output ](#tab-panel-177)
 
 prompt
 
@@ -268,166 +268,11 @@ video
 
 `string`format: uriURL to the generated video
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-202)
-* [ Output ](#tab-panel-203)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "description": "Text prompt describing the video to generate",
-
-      "type": "string"
-
-    },
-
-    "image_input": {
-
-      "description": "Base64-encoded reference image for i2v",
-
-      "type": "string"
-
-    },
-
-    "duration": {
-
-      "description": "Video duration",
-
-      "default": "6s",
-
-      "type": "string",
-
-      "enum": [
-
-        "4s",
-
-        "6s",
-
-        "8s"
-
-      ]
-
-    },
-
-    "aspect_ratio": {
-
-      "description": "Video aspect ratio",
-
-      "default": "16:9",
-
-      "type": "string",
-
-      "enum": [
-
-        "16:9",
-
-        "9:16",
-
-        "1:1"
-
-      ]
-
-    },
-
-    "resolution": {
-
-      "description": "Video resolution",
-
-      "default": "720p",
-
-      "type": "string",
-
-      "enum": [
-
-        "720p",
-
-        "1080p"
-
-      ]
-
-    },
-
-    "generate_audio": {
-
-      "description": "Whether to generate audio with the video",
-
-      "default": true,
-
-      "type": "boolean"
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt",
-
-    "duration",
-
-    "aspect_ratio",
-
-    "resolution",
-
-    "generate_audio"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "video": {
-
-      "description": "URL to the generated video",
-
-      "type": "string",
-
-      "format": "uri"
-
-    }
-
-  },
-
-  "required": [
-
-    "video"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

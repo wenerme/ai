@@ -101,6 +101,7 @@ components:
         - video
         - rerank
         - speech
+        - transcription
       title: OutputModality
     ModelGroup:
       type: string

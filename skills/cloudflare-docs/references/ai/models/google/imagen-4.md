@@ -207,8 +207,8 @@ Response200 ![Product Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev
 
 ## Parameters
 
-* [ Input ](#tab-panel-188)
-* [ Output ](#tab-panel-189)
+* [ Input ](#tab-panel-168)
+* [ Output ](#tab-panel-169)
 
 prompt
 
@@ -226,122 +226,11 @@ image
 
 `string`format: uriURL to the generated image
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-186)
-* [ Output ](#tab-panel-187)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "description": "Text prompt describing the image to generate",
-
-      "type": "string"
-
-    },
-
-    "aspect_ratio": {
-
-      "description": "Aspect ratio of the generated image",
-
-      "type": "string",
-
-      "enum": [
-
-        "1:1",
-
-        "3:4",
-
-        "4:3",
-
-        "9:16",
-
-        "16:9"
-
-      ]
-
-    },
-
-    "person_generation": {
-
-      "description": "Allow the model to generate images of people. dont_allow: block people, allow_adult: adults only, allow_all: adults and children",
-
-      "type": "string",
-
-      "enum": [
-
-        "dont_allow",
-
-        "allow_adult",
-
-        "allow_all"
-
-      ]
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "description": "URL to the generated image",
-
-      "type": "string",
-
-      "format": "uri"
-
-    }
-
-  },
-
-  "required": [
-
-    "image"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

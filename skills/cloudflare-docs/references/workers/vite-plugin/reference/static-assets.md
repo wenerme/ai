@@ -23,8 +23,8 @@ On running `vite build`, an output `wrangler.json` configuration file is generat
 
 The `assets` configuration should be used, however, if you wish to set [routing configuration](https://developers.cloudflare.com/workers/static-assets/routing/) or enable the [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/#binding). The following example configures the `not_found_handling` for a single-page application so that the fallback will always be the root `index.html` file.
 
-* [  wrangler.jsonc ](#tab-panel-10382)
-* [  wrangler.toml ](#tab-panel-10383)
+* [  wrangler.jsonc ](#tab-panel-9239)
+* [  wrangler.toml ](#tab-panel-9240)
 
 JSONC
 

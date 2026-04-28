@@ -18,7 +18,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 TerminalCloudExtension
 
-[ Skills ↗](https://github.com/cloudflare/skills)[ MCP Server ↗](https://github.com/cloudflare/mcp)[ GitHub Copilot Docs ↗](https://docs.github.com/en/copilot) 
+[ Cloudflare Skills ↗](https://github.com/cloudflare/skills)[ Cloudflare Code Mode API MCP ↗](https://github.com/cloudflare/mcp)[ Cloudflare Domain Specific MCPs ↗](https://github.com/cloudflare/mcp-server-cloudflare)[ GitHub Copilot Docs ↗](https://docs.github.com/en/copilot) 
 
 ## Quick start
 
@@ -30,19 +30,22 @@ Terminal window
 npx skills add https://github.com/cloudflare/skills  
 ```
 3. **Configure Cloudflare MCP servers**  
-For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-config.json`. For a full list of available Cloudflare MCP servers, refer to the repository on [GitHub ↗](https://github.com/cloudflare/mcp-server-cloudflare).  
+For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-config.json`. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗](https://github.com/cloudflare/mcp).  
 ```  
 {  
   "mcpServers": {  
     "cloudflare": { "url": "https://mcp.cloudflare.com/mcp" },  
-    "cloudflare-docs": { "url": "https://docs.mcp.cloudflare.com/mcp" }  
+    "cloudflare-docs": { "url": "https://docs.mcp.cloudflare.com/mcp" },  
+    "cloudflare-bindings": { "url": "https://bindings.mcp.cloudflare.com/mcp" },  
+    "cloudflare-builds": { "url": "https://builds.mcp.cloudflare.com/mcp" },  
+    "cloudflare-observability": { "url": "https://observability.mcp.cloudflare.com/mcp" }  
   }  
 }  
 ```
 4. **Try a prompt**  
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:  
 ```  
-Set up GitHub Actions to auto-deploy this Worker to Cloudflare.  
+Add bot protection and rate limiting to my login and checkout endpoints.  
 ```
 
 ## Cloudflare platform access
@@ -68,7 +71,7 @@ MCP servers
 
 Live access to the Cloudflare API, docs, and observability.
 
-MCP servers provide typed tools to call into Cloudflare at runtime. There are two options: [Code Mode](https://developers.cloudflare.com/agents/api-reference/codemode/) — a single server that covers the entire Cloudflare API (2,500+ endpoints in \~1,000 tokens) — or a set of focused, domain-specific servers hosted in the [cloudflare/mcp-server-cloudflare](https://github.com/cloudflare/mcp-server-cloudflare)repo. The full catalog is also in the [MCP servers for Cloudflare](https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/)docs.
+MCP servers provide typed tools to call into Cloudflare at runtime. There are two options: [Code Mode](https://blog.cloudflare.com/code-mode-mcp/) — a single server that covers the entire Cloudflare API (2,500+ endpoints in \~1,000 tokens) — or a set of focused, domain-specific servers hosted in the [cloudflare/mcp-server-cloudflare](https://github.com/cloudflare/mcp-server-cloudflare)repo. The full catalog is also in the [MCP servers for Cloudflare](https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/)docs.
 
 * Code mode API code mode Broad access to the full Cloudflare API via code execution, with minimal token overhead https://mcp.cloudflare.com/mcp
 * AI Gateway server Search your logs, get details about the prompts and responses https://ai-gateway.mcp.cloudflare.com/mcp
@@ -108,11 +111,11 @@ Append `/index.md` to any Cloudflare docs URL for a clean markdown version. Ever
 * [developers.cloudflare.com/r2/llms.txt](https://developers.cloudflare.com/r2/llms.txt)
 * [developers.cloudflare.com/d1/llms.txt](https://developers.cloudflare.com/d1/llms.txt)
 
-For a full overview of how these docs are structured for agents, refer to the [AI tooling guide](https://developers.cloudflare.com/style-guide/ai-tooling/).
+For a full overview of how these docs are structured for agents, refer to the [Docs for Agents guide](https://developers.cloudflare.com/docs-for-agents/).
 
 ## Example prompts
 
-“Create a Cloudflare Workers application that serves as a backend API server.” “Add a D1 database to my Worker and create a users table with CRUD endpoints.” “Build an image upload service using R2 pre-signed URLs.” “Set up a KV namespace and use it for session storage in my Worker.” “Show me how to use Hyperdrive to connect my Worker to an existing Postgres database.” “Create an AI chat agent using the Cloudflare Agents SDK that maintains conversation history.” “Build a Workers AI chatbot with streaming responses.” “Build a WebSocket-based pub/sub app using Durable Objects with hibernation.” “Add a cron trigger to my Worker that runs every hour.” “Add rate limiting and bot protection to my API endpoints.” “Set up GitHub Actions to auto-deploy this Worker to Cloudflare.” “Create separate staging and production environments for my Worker.” “Generate Vitest tests for my Worker.” “Check my deployment logs for errors and suggest fixes.” “Deploy this project to Cloudflare Workers with a custom domain.” 
+“Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.” “Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.” “Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.” “Build a serverless AI inference endpoint on Workers AI with streaming responses.” “Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.” “Add a D1 database to my Worker and create a users table with full CRUD endpoints.” “Build an image upload and transformation service using R2 and Cloudflare Images.” “Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.” “Set up a KV namespace for edge-cached session storage in my Worker.” “Add a cron trigger to my Worker that processes a job queue every hour.” “Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.” “Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.” “Add mTLS authentication and schema validation to protect my API endpoints.” “Set up rate limiting and WAF rules to block abuse on my public API.” “Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.” “Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.” “Use Workers for Platforms to let my customers deploy their own code in isolated environments.” “Add bot protection and rate limiting to my login and checkout endpoints.” “Set up WAF rules to block SQL injection and XSS attacks on my application.” “Configure Zero Trust access policies to protect my internal staging environment.” “Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.” “Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.” “Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.” “Check my Workers deployment logs for errors and suggest fixes.” “Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.” “Create a Logpush job to stream Workers analytics to my data warehouse.” 
 
 ## Tips
 

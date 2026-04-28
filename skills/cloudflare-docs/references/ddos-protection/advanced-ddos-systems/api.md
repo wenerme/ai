@@ -12,7 +12,7 @@ Refer to the following pages to configure Advanced TCP Protection and Advanced D
 
 * [ Advanced DNS Protection ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/)
 * [ Advanced TCP Protection ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/tcp-protection/)
-* [ Programmable Flow Protection (Beta) ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/)
+* [ Programmable Flow Protection ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/","name":"API configuration"}}]}

@@ -67,8 +67,8 @@ Cloudflare One Virtual Appliance uses a DHCP connection at first boot to downloa
 
 Select the appropriate tab to configure Cloudflare One Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment.
 
-* [ VMWare ESXi ](#tab-panel-6396)
-* [ Proxmox Virtual Environment (beta) ](#tab-panel-6397)
+* [ VMWare ESXi ](#tab-panel-5232)
+* [ Proxmox Virtual Environment (beta) ](#tab-panel-5233)
 
 **1\. Obtain the VMWare image**
 
@@ -206,8 +206,8 @@ For details, refer to [Configure a virtual machine](#configure-a-virtual-machine
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-6392)
-* [ API ](#tab-panel-6393)
+* [ Dashboard ](#tab-panel-5228)
+* [ API ](#tab-panel-5229)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -265,8 +265,8 @@ Explain Code
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-6394)
-* [ API ](#tab-panel-6395)
+* [ Dashboard ](#tab-panel-5230)
+* [ API ](#tab-panel-5231)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.
@@ -354,7 +354,7 @@ When the Cloudflare One Virtual Appliance is first activated, one of the ports m
 
 Warning 
 
- Remember to connect Cloudflare One Virtual Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Cloudflare One Virtual Appliance will not work. 
+Remember to connect Cloudflare One Virtual Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Cloudflare One Virtual Appliance will not work.
 
 When you are ready to connect your Cloudflare One Virtual Appliance to the Cloudflare network:
 
@@ -382,7 +382,7 @@ After activating your device, you can use it in a network configuration with the
 
 Warning 
 
- Make sure you complete the setup workflow and activate your Cloudflare One Virtual Appliance before changing the WAN settings to a static IP. 
+Make sure you complete the setup workflow and activate your Cloudflare One Virtual Appliance before changing the WAN settings to a static IP.
 
 1. Connect the machine where you installed the VM with Cloudflare One Virtual Appliance to a DHCP port with access to the Internet.
 2. [Create a new profile](#create-a-new-profile) in the dashboard.

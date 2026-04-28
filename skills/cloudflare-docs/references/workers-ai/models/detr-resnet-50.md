@@ -23,8 +23,8 @@ DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detect
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3183)
-* [  curl ](#tab-panel-3184)
+* [  TypeScript ](#tab-panel-2499)
+* [  curl ](#tab-panel-2500)
 
 ```
 
@@ -88,8 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3187)
-* [ Output ](#tab-panel-3188)
+* [ Input ](#tab-panel-2501)
+* [ Output ](#tab-panel-2502)
 
 Option 1
 
@@ -117,148 +117,11 @@ items
 
 `[object Object]`
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3185)
-* [ Output ](#tab-panel-3186)
+Input 
 
-```
-
-{
-
-  "oneOf": [
-
-    {
-
-      "type": "string",
-
-      "format": "binary",
-
-      "description": "The image to use for detection"
-
-    },
-
-    {
-
-      "type": "object",
-
-      "properties": {
-
-        "image": {
-
-          "type": "array",
-
-          "description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-
-          "items": {
-
-            "type": "number",
-
-            "description": "A value between 0 and 255 (unsigned 8bit)"
-
-          }
-
-        }
-
-      }
-
-    }
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "array",
-
-  "contentType": "application/json",
-
-  "description": "An array of detected objects within the input image",
-
-  "items": {
-
-    "type": "object",
-
-    "properties": {
-
-      "score": {
-
-        "type": "number",
-
-        "description": "Confidence score indicating the likelihood that the detection is correct"
-
-      },
-
-      "label": {
-
-        "type": "string",
-
-        "description": "The class label or name of the detected object"
-
-      },
-
-      "box": {
-
-        "type": "object",
-
-        "description": "Coordinates defining the bounding box around the detected object",
-
-        "properties": {
-
-          "xmin": {
-
-            "type": "number",
-
-            "description": "The x-coordinate of the top-left corner of the bounding box"
-
-          },
-
-          "ymin": {
-
-            "type": "number",
-
-            "description": "The y-coordinate of the top-left corner of the bounding box"
-
-          },
-
-          "xmax": {
-
-            "type": "number",
-
-            "description": "The x-coordinate of the bottom-right corner of the bounding box"
-
-          },
-
-          "ymax": {
-
-            "type": "number",
-
-            "description": "The y-coordinate of the bottom-right corner of the bounding box"
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

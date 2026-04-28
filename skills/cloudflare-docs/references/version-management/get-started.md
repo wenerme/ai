@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: 	Learn how to enable Version Management in the Cloudflare dashboard.
+description: Learn how to enable Version Management in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

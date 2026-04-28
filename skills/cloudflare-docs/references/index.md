@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 ![](https://developers.cloudflare.com/_astro/Dev-Docs-Header-Illustration-Dark-Mode-cropped.DDWqKYx5_1cIhMB.svg) ![](https://developers.cloudflare.com/_astro/Dev-Docs-Header-Illustration-Light-Mode-cropped.COpWJJAy_ZaWBfS.svg) 
 
-[Directory](https://developers.cloudflare.com/directory/) [Resources](https://developers.cloudflare.com/resources/) [API](https://developers.cloudflare.com/api/) [Agent setup](https://developers.cloudflare.com/agent-setup/) [Use cases](https://developers.cloudflare.com/use-cases/) [Changelog](https://developers.cloudflare.com/changelog/) 
+[Directory](https://developers.cloudflare.com/directory/) [Resources](https://developers.cloudflare.com/resources/) [API](https://developers.cloudflare.com/api/) [Agent setup](https://developers.cloudflare.com/agent-setup/) [Use cases](https://developers.cloudflare.com/use-cases/) [Docs for agents](https://developers.cloudflare.com/docs-for-agents/) [Changelog](https://developers.cloudflare.com/changelog/) 
 
 # Welcome to Cloudflare
 
@@ -16,7 +16,7 @@ Explore guides and tutorials to start building on Cloudflare's platform
 
 Featured 
 
-* [ AI tools ](https://developers.cloudflare.com/style-guide/ai-tooling/)
+* [ Docs for agents ](https://developers.cloudflare.com/docs-for-agents/)
 * [ Troubleshoot errors ](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/)
 * [ Register a domain ](https://developers.cloudflare.com/registrar/)
 * [ Setup 1.1.1.1 ](https://developers.cloudflare.com/1.1.1.1/setup/)
@@ -60,11 +60,13 @@ Zero Trust
 
 ## Build with your favorite AI agent
 
-Install an agent of your choice, connect skills and MCP servers, and start deploying to Cloudflare — all from your editor or terminal.
+Paste into any AI coding agent to install Cloudflare agent tooling:
+
+`Fetch https://developers.cloudflare.com/agent-setup/prompt.md ` 
+
+Or [read more about Cloudflare agent tools and setup guides →](https://developers.cloudflare.com/agent-setup/) 
 
 [ ![Claude Code](https://developers.cloudflare.com/icons/agents/claude/light.svg) ![Claude Code](https://developers.cloudflare.com/icons/agents/claude/dark.svg) ](https://developers.cloudflare.com/agent-setup/claude-code/ "Claude Code") [ ![Codex](https://developers.cloudflare.com/icons/agents/codex/light.svg) ![Codex](https://developers.cloudflare.com/icons/agents/codex/dark.svg) ](https://developers.cloudflare.com/agent-setup/codex/ "Codex") [ ![Cursor](https://developers.cloudflare.com/icons/agents/cursor/light.svg) ![Cursor](https://developers.cloudflare.com/icons/agents/cursor/dark.svg) ](https://developers.cloudflare.com/agent-setup/cursor/ "Cursor") [ ![OpenCode](https://developers.cloudflare.com/icons/agents/opencode/light.svg) ![OpenCode](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) ](https://developers.cloudflare.com/agent-setup/opencode/ "OpenCode") [ ![GitHub Copilot](https://developers.cloudflare.com/icons/agents/copilot/light.svg) ![GitHub Copilot](https://developers.cloudflare.com/icons/agents/copilot/dark.svg) ](https://developers.cloudflare.com/agent-setup/github-copilot/ "GitHub Copilot") [ ![Windsurf](https://developers.cloudflare.com/icons/agents/windsurf/light.svg) ![Windsurf](https://developers.cloudflare.com/icons/agents/windsurf/dark.svg) ](https://developers.cloudflare.com/agent-setup/windsurf/ "Windsurf") 
-
-[Explore agent setup → ](https://developers.cloudflare.com/agent-setup/) 
 
 ---
 
@@ -140,7 +142,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCArCMEBmABwA2KQEYRAFgBcLFm2Ac4XGnwHCxk2QuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ3JMcQwGAkDCQAAwAPABCZwAeSslQAmgAFACin2+YAAfM8tkCKLg6GiXi8gcd5CiABL2MBgdAkADqmDAuCByEJuLxJCBMBRlWO7hIwEQAGsQDASAB3XokADmjnsCAI9lw5Do2xIVgpIFwqDAiHs1MwfOliQZ7PRrOQWJxAKIFmNFwgIAQVFC9mFJAASrdPFQ3PZTl8fgAaJ4sz72OALBBufwbINbKJvMpOCA1exRfxRBzxFC+sBEE6IL0QBgAVUqADFsFIon7jVsAL5VvE1+6W2tVmtESzqZiabS6Hj8ISicTSOSKJQlWwOJyuDxeHxtKj+QLaUhhCLRCKEbTpAJZHJrqJkClkYrWCflKpJ+qNZq8VrtVK2KYWNZRXmxAD6o3G2RT+QWhTSGsO07btgl7fQByMYdTCUZhLCAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmAEwB2QQA4AbAFYAnIICMwgFwsWbYBzhcafASInT5S1QFgAUAGF0VCAFMH2ACJQAzjHQeo0e2ok2ngExCRUcMCODABEUDSOAB4AdABWHjGkqFBgzpHRcQkp6THWdg7OENgAKnQwjoFwMDBgfARQ9sipcABucB68CLAQANTA6LjgjtbWSd5IJLiOqHDgECQA3lYkJP10VLxBjhC8ABYAFAiOAI4gjh4QAJSb2zskvPYPJKcQwGAkDBIAAMADwAQlcAHkbNUAJoABQAot9fmAAHyvHYgii4OgYt5vEGnZRogASjjAYHQJAA6pgwLgQchifiCSQQTA0dVTp4SMBEABrEAwEgAd36JAA5s5HAgCI5cOQ6LsSDYqSBcKgwIhHLTMALZckmZzMezkDi8UCiFZTVcICAEFRwo5RSQAEr3bxUDyOc4-P4AGhebO+jjgSwQHkCWxDOxiHwqLggdUcMUCMSciRQ-rARDOiB9EAYAFVqgAxbBSGIB007AC+NYJdce1vrNbrRGsmmY2l0+h4-CEYkkskUKmEZXsThc7i8Pj8HSogWCulIESisSihF0mSCOTyG5iZCpZFKtinlRqKcazVavHanXS9hmVg2MX58QA+uNJrk04UlmKDI6y7bte1CftDCHExR3MYRmGsIA)
 
 JavaScript
 
@@ -166,7 +168,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOAKyDBARgDs0gGwAWOdIBcLFm2Ac4XGnwEjxU2YuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ388EkDE8vL8f2MBgdD+KIAd0wYFwUQANM8tgBfIgWeEkC4QEAIKgkABKt08VDc9hSblsp2092RiLhSMs6mYmm0uh4-CEYgkMnkSmkJVsDicrg8Xh8bSo-kC2lIYQi0QihG06QCWRyMqiZGBZGK1j55SqNTq20azV4rXaqVsUwsayiwDgsQA+qNxtkoip8gtCmkEXT6Yzgsz9GyjJzTNJmJYgA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAOYQGYA7ACYpARgBsYgJxSAXCxZtgHOFxp8BI8dLmKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4WQkgZn19eTg4wGB0AFogB3TBgXDRAA0L22AF8iJYESRLhAQAgqCQAEp3LxUdwOVLuOxnHQPFFI+HIqwaZhaHR6Hj8ISiSQyBTKKSlOyOZxuTzeXztKgBII6UjhSIxSKEHQZQLZXKy6JkEFkEo2fkVaq1eo7JotXhtDppOzTSzraLAOBxAD6YwmOWiqgKiyK6UR9IZTJCLIM7OMXLMUmYViAA)
 
 JavaScript
 
@@ -194,7 +196,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2YYICMAZgAcgyYIAskgFwsWbYBzhcafASLFTZ8pQFgAUAGF0VCAFNb2ACJQAzjHSuo0G8pIa8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3NkmQAKlen59eSACU7RrgvDsJAABucRvYQSQAO7eI4kCBHYFHTwrOiUGFueEQdAkVwOXAkc5XG4QVwI9CfTavZBU3g2W5EuwQ4EMEiRI4QCAwVzKZDIeJhRp2BL04BpcxU84QEAIKhbaFwbz7Q6ncHoewAGiZJNudyITwAvprzIaiBY1MwNFodDx+EJRBIZHJFJJijZ7I4XO5PN5WlQ-AEtKRQuEouFCFo0v5Mtkw5EyGB0GQilYPWVKtValsGk1eC02ikbJNzKtIsAlVQAPojMZZSLKPLzAqpQ0Wy3WoK2vQOwzOkySZgWIA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2AKyiAnADZRAJgDMg+QA4AXCxZtgHOFxp8BI8dLmKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkmQAKneX1-eSACUHM04LwHCQAAaXMaOMEkADuvhOJAgJ1BJ28azolDhHkREHQJHcTlwJEuNzuEHcSPQ32272QNN4dnuJIcUNBDBI0ROEAgMHcqmQyESEWaDiSjOAGUsNMuEBACCoO1hcF8h2O50h6EcABoWWT7g8iC8AL7ayzGohWDTMLQ6PQ8fhCMSSGQKJTKUp2RzONyeby+dpUAJBHSkcKRGKRQg6DKBbK5CPRMhgdBkEo2L0Vaq1eo7JotXhtDppOzTSzraLAFVUAD6YwmOWiqgKiyK6WNVuttpC9oMTuMrrMymYViAA)
 
 JavaScript
 
@@ -217,7 +219,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOQYIAsADgBsAZgCMg6YIBcLFm2Ac4XGnwEixUuYuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ387fQYb5UAKoAJQAMiQGCQoscIBAYG4VMhkAlwk17Ik3sB0s8tm8qB87gQQG4bAtQSRZIJ5ERMSQLhAQAgqCQAbdPDiURceBdeBBTgs7rFWrZAUCADQkPG0wljez3SlbAC+woscqIlnUzE02l0PH4QlEEhkCiUghKtgcTlcHi8PjaVH8gW0pDCEWiEUI2nSASyOWdUTIYHQZGK1lN5SqNTq20azV4AqoHTctimFjWUWAcFiAH1RuNslEVPkFoU0nLVWqNcEtfpdUYDaZBMxLEA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAOEYIAsAVkEBmGQE4AjAC4WLNsA5wuNPgLGipshYoCwAKADC6KhACmt7ABEoAZxjpXUaDeUkNeATEJFRwwHYMAERQNHYAHgB0AFaukaSoUGAOYRHRsYkpkRbWtg4Q2AAqdDB2fnAwMGB8BFA2yElwAG5wrrwIsBAA1MDouOB2FhbxHkgkuHaocOAQJADe5iQkPXRUvP52ELwAFgAUCHYAjiB2rhAAlGsbmyS8NrdzN9ChPlQAqgBKABkSAwSJEjhAIDBXMpkMh4mFGnYEq9gGknptXlR3rcCCBXNZ5iCSDJBIoiBiSOcICAEFQSP8bh5scjzjxzrwICd5rcYi0bADAQAaEi4mkE0Z2O4UzYAXyF5llRAsamYGi0Oh4-CEokM0jkSmKNnsjhc7k83laVD8AS0pFC4Si4UIWjS-ky2UdkTIYHQZCKVmNZUq1VqWwaTV4-Ko7VcNkm5lWkWAcBiAH0RmMspFlHl5gVUrKVar1UFNXodWIjAbFMwLEA)
 
 JavaScript
 
@@ -256,7 +258,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAmAIwBWAJzDBggGzjZALhYs2wDnC40+AkROmyFsgLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2-al5vKhIAWX3DkYA5dAgAEEwGB0AB3Wy4U4XK43e5rJ5PM4QEAId5UWxgkgAJWu7ioLlsxwABl8ID9cCQACQrM6Xa4QeJhckjAC+wQBmxB4Mh8WJABoHojETcCCAXL4ACyCcT8x7CkiHWxwOYICVChVPYGgsG+CIAcQAouUInLNSRWWbhazbkR5Rb7chkCQAPJUMB0EhG8okOmwiAuEhgzAAayDXkOJHJrhIMAQ6FidHi9qgqBI0PpNyZ3xGJAAhAwGCQDcaIvdkaj3mSKf8gdyIVC-QzbfaK2i9gcTsTDhAIDAJU64qEGrZ4rx0MBiS2NpazKyiOZVMx1JptDx+EIxFIZPJFIIitY7A5nG4PF4WlRfP5NKQQmFIsyVYFUn4Mll7xEyKCyIVLIfShUVQ1Js9SNLwzStMk1gTGYKwRMAcDRAA+sMoyZBESi5HM+QpKyi5LiugRrrom4GDuxiCMw5hAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCAjAFYAzAHYpYqQCYpIgFwsWbYBzhcafAcPHTZCpQFgAUAGF0VCAFNb2ACJQAzjHSuo0G8pIa8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3N-2peHyoSAFkDo9GAOXQEAAgmAwOgAO52XBnS7XW4PdbPZ7nCAgBAfKh2cEkABKNw8VFcdhOAANvhBfrgSAASVbnK43CAJcIU0YAXxCgK2oIhUISJIANI8kUjbgQQK4-AAWQRiAVPEUkI52ODzBCS4WK54gsHgvyRADiAFEKpF5VqSGzzSK2XciArLQ7kMgSAB5KhgOgkY0VEj0uEQVwkcGYADWwe8RxIFLcJBgCHQcToCQdUFQJBhDNuzJ+oxIAEIGAwSIaTZEHii0R9yZSAcCeZDof7GXaHZX0ftDqcSUcIBAYJLnfEwo07AleOhgCTW5sreY2UQLGpmBotDoePwhKJJDI5IoRMUbPZHC53J5vK0qH4AlpSKFwlEWaqgml-Jlsg-ImQwWQilYj2UlTVLUWwNE0vAtG0KQ2JM5irJEwBwDEAD6IxjFkkTKHk8wFKkbJLsuq5BOuehboYu4mCIzAWEAA)
 
 [ Learn more about Workers ](https://developers.cloudflare.com/workers/) 
 

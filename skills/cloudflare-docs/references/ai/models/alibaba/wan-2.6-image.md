@@ -207,8 +207,8 @@ Response200 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.d
 
 ## Parameters
 
-* [ Input ](#tab-panel-30)
-* [ Output ](#tab-panel-31)
+* [ Input ](#tab-panel-28)
+* [ Output ](#tab-panel-29)
 
 prompt
 
@@ -226,92 +226,11 @@ image
 
 `string`format: uri
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-28)
-* [ Output ](#tab-panel-29)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string"
-
-    },
-
-    "size": {
-
-      "type": "string",
-
-      "pattern": "^\\d+x\\d+$"
-
-    },
-
-    "negative_prompt": {
-
-      "type": "string"
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "type": "string",
-
-      "format": "uri"
-
-    }
-
-  },
-
-  "required": [
-
-    "image"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

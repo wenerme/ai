@@ -69,8 +69,8 @@ Now you'll create a destination in the Cloudflare dashboard that points to PostH
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable logs export.
 
-* [  wrangler.jsonc ](#tab-panel-10038)
-* [  wrangler.toml ](#tab-panel-10039)
+* [  wrangler.jsonc ](#tab-panel-8895)
+* [  wrangler.toml ](#tab-panel-8896)
 
 JSONC
 

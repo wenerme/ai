@@ -14,9 +14,9 @@ Interact with the [Browser Run](https://developers.cloudflare.com/browser-run/) 
 
 Create a new browser rendering session
 
-* [  npm ](#tab-panel-10402)
-* [  pnpm ](#tab-panel-10403)
-* [  yarn ](#tab-panel-10404)
+* [  npm ](#tab-panel-9259)
+* [  pnpm ](#tab-panel-9260)
+* [  yarn ](#tab-panel-9261)
 
 Terminal window
 
@@ -75,9 +75,9 @@ Automatically provision draft bindings with new resources
 
 Close a browser rendering session
 
-* [  npm ](#tab-panel-10405)
-* [  pnpm ](#tab-panel-10406)
-* [  yarn ](#tab-panel-10407)
+* [  npm ](#tab-panel-9262)
+* [  pnpm ](#tab-panel-9263)
+* [  yarn ](#tab-panel-9264)
 
 Terminal window
 
@@ -132,9 +132,9 @@ Automatically provision draft bindings with new resources
 
 List active browser rendering sessions
 
-* [  npm ](#tab-panel-10408)
-* [  pnpm ](#tab-panel-10409)
-* [  yarn ](#tab-panel-10410)
+* [  npm ](#tab-panel-9265)
+* [  pnpm ](#tab-panel-9266)
+* [  yarn ](#tab-panel-9267)
 
 Terminal window
 
@@ -187,9 +187,9 @@ Automatically provision draft bindings with new resources
 
 View a live browser session
 
-* [  npm ](#tab-panel-10411)
-* [  pnpm ](#tab-panel-10412)
-* [  yarn ](#tab-panel-10413)
+* [  npm ](#tab-panel-9268)
+* [  pnpm ](#tab-panel-9269)
+* [  yarn ](#tab-panel-9270)
 
 Terminal window
 

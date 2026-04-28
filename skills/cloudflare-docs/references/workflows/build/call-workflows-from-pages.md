@@ -34,8 +34,8 @@ To do this, you will need to:
 
 For example, if you have a Worker called `workflows-starter`, you would create a new Service Binding in your Pages project as follows, ensuring that the `service` name matches the name of the Worker your Workflow is defined in:
 
-* [  wrangler.jsonc ](#tab-panel-11122)
-* [  wrangler.toml ](#tab-panel-11123)
+* [  wrangler.jsonc ](#tab-panel-9979)
+* [  wrangler.toml ](#tab-panel-9980)
 
 JSONC
 
@@ -77,8 +77,8 @@ Your Worker can expose a specific method (or methods) that only other Workers or
 
 In the following example, we expose a specific `createInstance` method that accepts our `Payload` and returns the [InstanceStatus](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus) from the Workflows API:
 
-* [  JavaScript ](#tab-panel-11130)
-* [  TypeScript ](#tab-panel-11131)
+* [  JavaScript ](#tab-panel-9987)
+* [  TypeScript ](#tab-panel-9988)
 
 index.js
 
@@ -184,8 +184,8 @@ Explain Code
 
 Your Pages Function would resemble the following:
 
-* [  JavaScript ](#tab-panel-11124)
-* [  TypeScript ](#tab-panel-11125)
+* [  JavaScript ](#tab-panel-9981)
+* [  TypeScript ](#tab-panel-9982)
 
 functions/request.js
 
@@ -240,8 +240,8 @@ Service Bindings don't require you to expose a public endpoint from your Worker,
 
 An alternative to setting up a Service Binding is to call the Worker over HTTP by using the Workflows [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow) to `create` a new Workflow instance for each incoming HTTP call to the Worker:
 
-* [  JavaScript ](#tab-panel-11126)
-* [  TypeScript ](#tab-panel-11127)
+* [  JavaScript ](#tab-panel-9983)
+* [  TypeScript ](#tab-panel-9984)
 
 index.js
 
@@ -311,8 +311,8 @@ Explain Code
 
 Your [Pages Function](https://developers.cloudflare.com/pages/functions/get-started/) can then make a regular `fetch` call to the Worker:
 
-* [  JavaScript ](#tab-panel-11128)
-* [  TypeScript ](#tab-panel-11129)
+* [  JavaScript ](#tab-panel-9985)
+* [  TypeScript ](#tab-panel-9986)
 
 functions/request.js
 

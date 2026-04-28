@@ -16,8 +16,8 @@ You can use [node:net ↗](https://nodejs.org/api/net.html) to create a direct c
 
 These functions use [connect](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#connect) functionality from the built-in `cloudflare:sockets` module.
 
-* [  JavaScript ](#tab-panel-10184)
-* [  TypeScript ](#tab-panel-10185)
+* [  JavaScript ](#tab-panel-9041)
+* [  TypeScript ](#tab-panel-9042)
 
 index.js
 

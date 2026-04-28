@@ -89,8 +89,8 @@ bun add express @types/express
 
 Express.js on Cloudflare Workers requires the `nodejs_compat` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/). This flag enables Node.js APIs and allows Express to run on the Workers runtime. Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-10348)
-* [  wrangler.toml ](#tab-panel-10349)
+* [  wrangler.jsonc ](#tab-panel-9205)
+* [  wrangler.toml ](#tab-panel-9206)
 
 JSONC
 
@@ -179,8 +179,8 @@ Explain Code
 
 The binding will be added to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-10350)
-* [  wrangler.toml ](#tab-panel-10351)
+* [  wrangler.jsonc ](#tab-panel-9207)
+* [  wrangler.toml ](#tab-panel-9208)
 
 JSONC
 

@@ -26,8 +26,8 @@ Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3064)
-* [  curl ](#tab-panel-3065)
+* [  TypeScript ](#tab-panel-2438)
+* [  curl ](#tab-panel-2439)
 
 ```
 
@@ -72,8 +72,8 @@ curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCO
 
 ## Parameters
 
-* [ Input ](#tab-panel-3068)
-* [ Output ](#tab-panel-3069)
+* [ Input ](#tab-panel-2440)
+* [ Output ](#tab-panel-2441)
 
 speaker
 
@@ -101,156 +101,11 @@ bit\_rate
 
 The binding returns a `ReadableStream` with the audio in MPEG format (check the model's output schema).
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3066)
-* [ Output ](#tab-panel-3067)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "speaker": {
-
-      "type": "string",
-
-      "enum": [
-
-        "angus",
-
-        "asteria",
-
-        "arcas",
-
-        "orion",
-
-        "orpheus",
-
-        "athena",
-
-        "luna",
-
-        "zeus",
-
-        "perseus",
-
-        "helios",
-
-        "hera",
-
-        "stella"
-
-      ],
-
-      "default": "angus",
-
-      "description": "Speaker used to produce the audio."
-
-    },
-
-    "encoding": {
-
-      "type": "string",
-
-      "enum": [
-
-        "linear16",
-
-        "flac",
-
-        "mulaw",
-
-        "alaw",
-
-        "mp3",
-
-        "opus",
-
-        "aac"
-
-      ],
-
-      "description": "Encoding of the output audio."
-
-    },
-
-    "container": {
-
-      "type": "string",
-
-      "enum": [
-
-        "none",
-
-        "wav",
-
-        "ogg"
-
-      ],
-
-      "description": "Container specifies the file format wrapper for the output audio. The available options depend on the encoding type.."
-
-    },
-
-    "text": {
-
-      "type": "string",
-
-      "description": "The text content to be converted to speech"
-
-    },
-
-    "sample_rate": {
-
-      "type": "number",
-
-      "description": "Sample Rate specifies the sample rate for the output audio. Based on the encoding, different sample rates are supported. For some encodings, the sample rate is not configurable"
-
-    },
-
-    "bit_rate": {
-
-      "type": "number",
-
-      "description": "The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type."
-
-    }
-
-  },
-
-  "required": [
-
-    "text"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "string",
-
-  "contentType": "audio/mpeg",
-
-  "format": "binary",
-
-  "description": "The generated audio in MP3 format"
-
-}
-
-
-```
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

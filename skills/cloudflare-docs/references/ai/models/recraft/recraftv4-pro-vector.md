@@ -1,5 +1,5 @@
 ---
-title: Recraft V4 Pro Vector
+title: Recraft V4 Pro SVG
 description: Generate detailed, production-ready SVG vector graphics from text prompts with fine geometry, scalable to any size for print and design work.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg) 
 
-#  Recraft V4 Pro Vector 
+#  Recraft V4 Pro SVG 
 
 Text-to-Image • Recraft • Proxied 
 
@@ -196,8 +196,8 @@ Response200 ![Brand Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r
 
 ## Parameters
 
-* [ Input ](#tab-panel-420)
-* [ Output ](#tab-panel-421)
+* [ Input ](#tab-panel-342)
+* [ Output ](#tab-panel-343)
 
 prompt
 
@@ -223,190 +223,11 @@ image
 
 `string`
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-418)
-* [ Output ](#tab-panel-419)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string"
-
-    },
-
-    "size": {
-
-      "type": "string"
-
-    },
-
-    "style": {
-
-      "type": "string"
-
-    },
-
-    "substyle": {
-
-      "type": "string"
-
-    },
-
-    "controls": {
-
-      "type": "object",
-
-      "properties": {
-
-        "colors": {
-
-          "maxItems": 5,
-
-          "type": "array",
-
-          "items": {
-
-            "type": "object",
-
-            "properties": {
-
-              "rgb": {
-
-                "minItems": 3,
-
-                "maxItems": 3,
-
-                "type": "array",
-
-                "items": {
-
-                  "type": "integer",
-
-                  "minimum": 0,
-
-                  "maximum": 255
-
-                }
-
-              }
-
-            },
-
-            "required": [
-
-              "rgb"
-
-            ],
-
-            "additionalProperties": false
-
-          }
-
-        },
-
-        "background_color": {
-
-          "type": "object",
-
-          "properties": {
-
-            "rgb": {
-
-              "minItems": 3,
-
-              "maxItems": 3,
-
-              "type": "array",
-
-              "items": {
-
-                "type": "integer",
-
-                "minimum": 0,
-
-                "maximum": 255
-
-              }
-
-            }
-
-          },
-
-          "required": [
-
-            "rgb"
-
-          ],
-
-          "additionalProperties": false
-
-        }
-
-      },
-
-      "additionalProperties": false
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "type": "string"
-
-    }
-
-  },
-
-  "required": [
-
-    "image"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

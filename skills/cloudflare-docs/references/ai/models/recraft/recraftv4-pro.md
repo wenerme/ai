@@ -196,8 +196,8 @@ Response200 ![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd
 
 ## Parameters
 
-* [ Input ](#tab-panel-416)
-* [ Output ](#tab-panel-417)
+* [ Input ](#tab-panel-340)
+* [ Output ](#tab-panel-341)
 
 prompt
 
@@ -223,190 +223,11 @@ image
 
 `string`
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-414)
-* [ Output ](#tab-panel-415)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string"
-
-    },
-
-    "size": {
-
-      "type": "string"
-
-    },
-
-    "style": {
-
-      "type": "string"
-
-    },
-
-    "substyle": {
-
-      "type": "string"
-
-    },
-
-    "controls": {
-
-      "type": "object",
-
-      "properties": {
-
-        "colors": {
-
-          "maxItems": 5,
-
-          "type": "array",
-
-          "items": {
-
-            "type": "object",
-
-            "properties": {
-
-              "rgb": {
-
-                "minItems": 3,
-
-                "maxItems": 3,
-
-                "type": "array",
-
-                "items": {
-
-                  "type": "integer",
-
-                  "minimum": 0,
-
-                  "maximum": 255
-
-                }
-
-              }
-
-            },
-
-            "required": [
-
-              "rgb"
-
-            ],
-
-            "additionalProperties": false
-
-          }
-
-        },
-
-        "background_color": {
-
-          "type": "object",
-
-          "properties": {
-
-            "rgb": {
-
-              "minItems": 3,
-
-              "maxItems": 3,
-
-              "type": "array",
-
-              "items": {
-
-                "type": "integer",
-
-                "minimum": 0,
-
-                "maximum": 255
-
-              }
-
-            }
-
-          },
-
-          "required": [
-
-            "rgb"
-
-          ],
-
-          "additionalProperties": false
-
-        }
-
-      },
-
-      "additionalProperties": false
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "type": "string"
-
-    }
-
-  },
-
-  "required": [
-
-    "image"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

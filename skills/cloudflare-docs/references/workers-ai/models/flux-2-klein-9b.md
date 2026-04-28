@@ -24,8 +24,8 @@ FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced qualit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3258)
-* [  curl ](#tab-panel-3259)
+* [  TypeScript ](#tab-panel-2540)
+* [  curl ](#tab-panel-2541)
 
 ```
 
@@ -111,8 +111,8 @@ curl --request POST \
 
 ## Parameters
 
-* [ Input ](#tab-panel-3260)
-* [ Output ](#tab-panel-3261)
+* [ Input ](#tab-panel-2542)
+* [ Output ](#tab-panel-2543)
 
 ▶multipart{}
 
@@ -122,78 +122,11 @@ image
 
 `string`Generated image as Base64 string.
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3256)
-* [ Output ](#tab-panel-3257)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "multipart": {
-
-      "type": "object",
-
-      "properties": {
-
-        "body": {
-
-          "type": "object"
-
-        },
-
-        "contentType": {
-
-          "type": "string"
-
-        }
-
-      }
-
-    }
-
-  },
-
-  "required": [
-
-    "multipart"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "type": "string",
-
-      "description": "Generated image as Base64 string."
-
-    }
-
-  }
-
-}
-
-
-```
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

@@ -67,8 +67,8 @@ Virtual Appliance uses a DHCP connection at first boot to download your settings
 
 Select the appropriate tab to configure Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment.
 
-* [ VMWare ESXi ](#tab-panel-5996)
-* [ Proxmox Virtual Environment (beta) ](#tab-panel-5997)
+* [ VMWare ESXi ](#tab-panel-4832)
+* [ Proxmox Virtual Environment (beta) ](#tab-panel-4833)
 
 **1\. Obtain the VMWare image**
 
@@ -205,8 +205,8 @@ For more information, refer to [Configure a virtual machine](#configure-a-virtua
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-5992)
-* [ API ](#tab-panel-5993)
+* [ Dashboard ](#tab-panel-4828)
+* [ API ](#tab-panel-4829)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -264,8 +264,8 @@ Explain Code
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-5994)
-* [ API ](#tab-panel-5995)
+* [ Dashboard ](#tab-panel-4830)
+* [ API ](#tab-panel-4831)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.
@@ -353,7 +353,7 @@ When the Virtual Appliance is first activated, one of the ports must be connecte
 
 Warning 
 
- Remember to connect Virtual Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Virtual Appliance will not work. 
+Remember to connect Virtual Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Virtual Appliance will not work.
 
 When you are ready to connect your Virtual Appliance to the Cloudflare network:
 
@@ -380,7 +380,7 @@ After activating your device, you can use it in a network configuration with the
 
 Warning 
 
- Make sure you complete the setup workflow and activate your Virtual Appliance before changing the WAN settings to a static IP. 
+Make sure you complete the setup workflow and activate your Virtual Appliance before changing the WAN settings to a static IP.
 
 1. Connect the machine where you installed the VM with Virtual Appliance to a DHCP port with access to the Internet.
 2. [Create a new profile](#create-a-new-profile) in the dashboard.

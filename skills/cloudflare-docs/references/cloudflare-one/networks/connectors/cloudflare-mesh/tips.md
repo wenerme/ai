@@ -18,8 +18,8 @@ Operational guidance for managing Cloudflare Mesh deployments — updating the c
 
 Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) enabled, traffic fails over to a standby replica automatically.
 
-* [ Debian / Ubuntu ](#tab-panel-5903)
-* [ RedHat / CentOS ](#tab-panel-5904)
+* [ Debian / Ubuntu ](#tab-panel-4739)
+* [ RedHat / CentOS ](#tab-panel-4740)
 
 1. Check the current version:  
 Terminal window  
@@ -101,6 +101,18 @@ When deploying Mesh nodes in a cloud VPC, you may need to configure additional p
 Mesh nodes run in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/), which redirects DNS queries on the host to Cloudflare Gateway. This will conflict with DNS services running on the same machine (for example, Active Directory DNS, Pi-hole, Unbound, BIND, or dnsmasq).
 
 If your server runs a DNS service, do not install the Mesh node on that host. Instead, install the node on a separate machine on the same subnet and use [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) to make the DNS server reachable.
+
+## Running Mesh alongside other VPN or mesh software
+
+The Cloudflare One Client creates a virtual network interface and manages the system routing table. Other software that does the same — Tailscale, WireGuard, OpenVPN, Cisco AnyConnect, GlobalProtect, ZScaler, Netskope, or any traditional VPN client — will compete for control of routing. Running them simultaneously causes unpredictable behavior: traffic may flow through the wrong tunnel or fail entirely.
+
+If you are migrating to Cloudflare Mesh from another solution:
+
+1. Uninstall or disable the other client (for example, `sudo systemctl stop tailscaled && sudo systemctl disable tailscaled` on Linux, or quit the application from the system tray on macOS/Windows).
+2. Restart the machine so the Cloudflare One Client's virtual network interface takes priority in the routing table.
+3. Verify connectivity by running `warp-cli status` and pinging a Mesh IP.
+
+This applies to both Mesh nodes and client devices.
 
 ## Running Mesh with Cloudflare Tunnel
 

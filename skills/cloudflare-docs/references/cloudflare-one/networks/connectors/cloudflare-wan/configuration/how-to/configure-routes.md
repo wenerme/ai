@@ -29,8 +29,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-6028)
-* [ API ](#tab-panel-6029)
+* [ Dashboard ](#tab-panel-4864)
+* [ API ](#tab-panel-4865)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Routes** \> **WAN Routes**, and select **Create** to add a new route.
@@ -186,8 +186,8 @@ Explain Code
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-6030)
-* [ API ](#tab-panel-6031)
+* [ Dashboard ](#tab-panel-4866)
+* [ API ](#tab-panel-4867)
 
 1. In **Routes** \> **WAN Routes**, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -333,8 +333,8 @@ Explain Code
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-6024)
-* [ API ](#tab-panel-6025)
+* [ Dashboard ](#tab-panel-4860)
+* [ API ](#tab-panel-4861)
 
 1. In **Routes** \> **WAN Routes**, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -448,8 +448,8 @@ Explain Code
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-6026)
-* [ API ](#tab-panel-6027)
+* [ Dashboard ](#tab-panel-4862)
+* [ API ](#tab-panel-4863)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.
@@ -551,7 +551,7 @@ BGP over CNI is in closed beta and is not currently available to new customers. 
 1. Locate the CNI interconnect with Dataplane v2 to configure with BGP > select the **three dots** next to it > **Configure BGP**.
 2. In **Customer device ASN**, enter the ASN for your network.  
 Note  
- Multiple tunnels or interconnects with the same ASN will not exchange routes if standard BGP loop prevention is enabled. Consider using a different ASN per session, or enabling duplicate ASNs (like Cisco's `allowas-in` feature) to exchange routes between networks.
+Multiple tunnels or interconnects with the same ASN will not exchange routes if standard BGP loop prevention is enabled. Consider using a different ASN per session, or enabling duplicate ASNs (like Cisco's `allowas-in` feature) to exchange routes between networks.
 3. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
 4. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:  
    * A route to `0.0.0.0/0`, the default route — to attract all Internet-bound traffic if using Cloudflare WAN with Gateway.  
@@ -568,7 +568,7 @@ Note
 1. In **IPsec/GRE tunnels**, locate the tunnel you want to configure with BGP > select the **three dots** next to it > **Configure BGP**.
 2. In **Customer device ASN**, enter the ASN for your network.  
 Note  
- Multiple tunnels or interconnects with the same ASN will not exchange routes if standard BGP loop prevention is enabled. Consider using a different ASN per session, or enabling duplicate ASNs (like Cisco's `allowas-in` feature) to exchange routes between networks.
+Multiple tunnels or interconnects with the same ASN will not exchange routes if standard BGP loop prevention is enabled. Consider using a different ASN per session, or enabling duplicate ASNs (like Cisco's `allowas-in` feature) to exchange routes between networks.
 3. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
 4. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:  
    * A route to `0.0.0.0/0`, the default route — to attract all Internet-bound traffic if using Cloudflare WAN with Gateway.  

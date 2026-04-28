@@ -16,6 +16,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Private network routing allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network. When you enable this setting on a DNS record, Cloudflare routes traffic through your configured tunnel instead of over the public Internet.
 
+For an end-to-end setup walkthrough using Cloudflare WAN (formerly Magic WAN) IPsec, refer to [Set up a private origin via Cloudflare WAN](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-origins/private-origin-via-cloudflare-wan/).
+
 Closed beta
 
 This feature is in closed beta. Contact your account team to request access.
@@ -48,8 +50,8 @@ Virtual networks
 
 Traffic routes through your default virtual network. Selecting a specific virtual network is not supported.
 
-* [ Dashboard ](#tab-panel-6747)
-* [ API ](#tab-panel-6748)
+* [ Dashboard ](#tab-panel-5583)
+* [ API ](#tab-panel-5584)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -156,5 +158,5 @@ If traffic is not reaching your private origin:
 4. Verify the record has proxy status enabled.
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/private-network-routing/","name":"Private network routing"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/private-origins/","name":"Private origins"}},{"@type":"ListItem","position":6,"item":{"@id":"/dns/manage-dns-records/how-to/private-origins/private-network-routing/","name":"Private network routing"}}]}
 ```

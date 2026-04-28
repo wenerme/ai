@@ -54,8 +54,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-136)
-* [ Output ](#tab-panel-137)
+* [ Input ](#tab-panel-126)
+* [ Output ](#tab-panel-127)
 
 ```
 
@@ -126,8 +126,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-138)
-* [ Output ](#tab-panel-139)
+* [ Input ](#tab-panel-128)
+* [ Output ](#tab-panel-129)
 
 ```
 
@@ -202,8 +202,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-140)
-* [ Output ](#tab-panel-141)
+* [ Input ](#tab-panel-130)
+* [ Output ](#tab-panel-131)
 
 ```
 
@@ -278,8 +278,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-142)
-* [ Output ](#tab-panel-143)
+* [ Input ](#tab-panel-132)
+* [ Output ](#tab-panel-133)
 
 ```
 
@@ -356,8 +356,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-144)
-* [ Output ](#tab-panel-145)
+* [ Input ](#tab-panel-134)
+* [ Output ](#tab-panel-135)
 
 ```
 
@@ -397,8 +397,8 @@ Input / Output JSON
 
 ## Parameters
 
-* [ Input ](#tab-panel-148)
-* [ Output ](#tab-panel-149)
+* [ Input ](#tab-panel-136)
+* [ Output ](#tab-panel-137)
 
 prompt
 
@@ -432,182 +432,11 @@ output\_format
 
 `array`minItems: 1format: uri
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-146)
-* [ Output ](#tab-panel-147)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string"
-
-    },
-
-    "image_input": {
-
-      "maxItems": 14,
-
-      "type": "array",
-
-      "items": {
-
-        "type": "string",
-
-        "format": "uri"
-
-      }
-
-    },
-
-    "size": {
-
-      "type": "string",
-
-      "enum": [
-
-        "2K",
-
-        "3K"
-
-      ]
-
-    },
-
-    "aspect_ratio": {
-
-      "type": "string",
-
-      "enum": [
-
-        "match_input_image",
-
-        "1:1",
-
-        "4:3",
-
-        "3:4",
-
-        "16:9",
-
-        "9:16",
-
-        "3:2",
-
-        "2:3",
-
-        "21:9"
-
-      ]
-
-    },
-
-    "sequential_image_generation": {
-
-      "type": "string",
-
-      "enum": [
-
-        "disabled",
-
-        "auto"
-
-      ]
-
-    },
-
-    "max_images": {
-
-      "type": "integer",
-
-      "minimum": 1,
-
-      "maximum": 15
-
-    },
-
-    "output_format": {
-
-      "type": "string",
-
-      "enum": [
-
-        "png",
-
-        "jpeg"
-
-      ]
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "images": {
-
-      "minItems": 1,
-
-      "type": "array",
-
-      "items": {
-
-        "type": "string",
-
-        "format": "uri"
-
-      }
-
-    }
-
-  },
-
-  "required": [
-
-    "images"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

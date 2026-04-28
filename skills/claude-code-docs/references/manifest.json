@@ -157,9 +157,9 @@
   },
   "devcontainer.md": {
     "url": "https://code.claude.com/docs/en/devcontainer",
-    "lastModified": "Tue, 14 Apr 2026 06:26:41 GMT",
-    "size": 4982,
-    "updatedAt": "2026-04-14T10:28:30.226Z"
+    "lastModified": "Mon, 27 Apr 2026 20:44:47 GMT",
+    "size": 17417,
+    "updatedAt": "2026-04-28T00:21:33.652Z"
   },
   "discover-plugins.md": {
     "url": "https://code.claude.com/docs/en/discover-plugins",
@@ -307,9 +307,9 @@
   },
   "network-config.md": {
     "url": "https://code.claude.com/docs/en/network-config",
-    "lastModified": "Wed, 22 Apr 2026 23:14:13 GMT",
-    "size": 7259,
-    "updatedAt": "2026-04-23T00:20:47.557Z"
+    "lastModified": "Mon, 27 Apr 2026 20:44:54 GMT",
+    "size": 7492,
+    "updatedAt": "2026-04-28T00:21:42.431Z"
   },
   "output-styles.md": {
     "url": "https://code.claude.com/docs/en/output-styles",
@@ -325,9 +325,9 @@
   },
   "permission-modes.md": {
     "url": "https://code.claude.com/docs/en/permission-modes",
-    "lastModified": "Fri, 24 Apr 2026 21:19:29 GMT",
-    "size": 19223,
-    "updatedAt": "2026-04-25T00:17:26.773Z"
+    "lastModified": "Mon, 27 Apr 2026 20:41:41 GMT",
+    "size": 19224,
+    "updatedAt": "2026-04-28T00:21:43.469Z"
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
@@ -385,9 +385,9 @@
   },
   "sandboxing.md": {
     "url": "https://code.claude.com/docs/en/sandboxing",
-    "lastModified": "Wed, 22 Apr 2026 00:16:06 GMT",
-    "size": 20255,
-    "updatedAt": "2026-04-22T00:16:06.928Z"
+    "lastModified": "Mon, 27 Apr 2026 20:42:45 GMT",
+    "size": 20256,
+    "updatedAt": "2026-04-28T00:21:47.033Z"
   },
   "scheduled-tasks.md": {
     "url": "https://code.claude.com/docs/en/scheduled-tasks",
@@ -397,9 +397,9 @@
   },
   "security.md": {
     "url": "https://code.claude.com/docs/en/security",
-    "lastModified": "Tue, 14 Apr 2026 06:26:43 GMT",
-    "size": 9516,
-    "updatedAt": "2026-04-14T10:28:43.727Z"
+    "lastModified": "Mon, 27 Apr 2026 20:44:56 GMT",
+    "size": 9517,
+    "updatedAt": "2026-04-28T00:21:47.738Z"
   },
   "server-managed-settings.md": {
     "url": "https://code.claude.com/docs/en/server-managed-settings",
@@ -493,9 +493,9 @@
   },
   "whats-new.md": {
     "url": "https://code.claude.com/docs/en/whats-new",
-    "lastModified": "Tue, 14 Apr 2026 06:29:30 GMT",
-    "size": 2319,
-    "updatedAt": "2026-04-14T10:28:51.060Z"
+    "lastModified": "Mon, 27 Apr 2026 20:57:13 GMT",
+    "size": 3551,
+    "updatedAt": "2026-04-28T00:21:55.503Z"
   },
   "zero-data-retention.md": {
     "url": "https://code.claude.com/docs/en/zero-data-retention",

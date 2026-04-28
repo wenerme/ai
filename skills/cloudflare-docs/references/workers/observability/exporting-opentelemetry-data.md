@@ -61,8 +61,8 @@ To start sending data to your destination, you'll need to create a destination i
 
 After setting up destinations in the dashboard, configure your Worker to export telemetry data by updating your Wrangler configuration. Your destination name configured in your configuration file should be the same as the destination configured in the dashboard.
 
-* [  wrangler.jsonc ](#tab-panel-10030)
-* [  wrangler.toml ](#tab-panel-10031)
+* [  wrangler.jsonc ](#tab-panel-8887)
+* [  wrangler.toml ](#tab-panel-8888)
 
 JSONC
 

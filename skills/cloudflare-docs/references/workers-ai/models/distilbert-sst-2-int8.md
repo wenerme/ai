@@ -23,9 +23,9 @@ Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3203)
-* [  Python ](#tab-panel-3204)
-* [  curl ](#tab-panel-3205)
+* [  TypeScript ](#tab-panel-2507)
+* [  Python ](#tab-panel-2508)
+* [  curl ](#tab-panel-2509)
 
 ```
 
@@ -103,8 +103,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3206)
-* [ Output ](#tab-panel-3207)
+* [ Input ](#tab-panel-2510)
+* [ Output ](#tab-panel-2511)
 
 text
 
@@ -126,86 +126,11 @@ items
 
 `[object Object]`
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3201)
-* [ Output ](#tab-panel-3202)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "text": {
-
-      "type": "string",
-
-      "minLength": 1,
-
-      "description": "The text that you want to classify"
-
-    }
-
-  },
-
-  "required": [
-
-    "text"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "array",
-
-  "contentType": "application/json",
-
-  "description": "An array of classification results for the input text",
-
-  "items": {
-
-    "type": "object",
-
-    "properties": {
-
-      "score": {
-
-        "type": "number",
-
-        "description": "Confidence score indicating the likelihood that the text belongs to the specified label"
-
-      },
-
-      "label": {
-
-        "type": "string",
-
-        "description": "The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE')"
-
-      }
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

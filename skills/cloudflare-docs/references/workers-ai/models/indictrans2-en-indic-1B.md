@@ -22,9 +22,9 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3408)
-* [  Python ](#tab-panel-3409)
-* [  curl ](#tab-panel-3410)
+* [  TypeScript ](#tab-panel-2610)
+* [  Python ](#tab-panel-2611)
+* [  curl ](#tab-panel-2612)
 
 ```
 
@@ -120,8 +120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3413)
-* [ Output ](#tab-panel-3414)
+* [ Input ](#tab-panel-2613)
+* [ Output ](#tab-panel-2614)
 
 ▶text
 
@@ -135,182 +135,11 @@ target\_language
 
 `array`Translated texts
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3411)
-* [ Output ](#tab-panel-3412)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "text": {
-
-      "oneOf": [
-
-        {
-
-          "type": "string"
-
-        },
-
-        {
-
-          "type": "array",
-
-          "items": {
-
-            "type": "string"
-
-          }
-
-        }
-
-      ],
-
-      "description": "Input text to translate. Can be a single string or a list of strings."
-
-    },
-
-    "target_language": {
-
-      "type": "string",
-
-      "enum": [
-
-        "asm_Beng",
-
-        "awa_Deva",
-
-        "ben_Beng",
-
-        "bho_Deva",
-
-        "brx_Deva",
-
-        "doi_Deva",
-
-        "eng_Latn",
-
-        "gom_Deva",
-
-        "gon_Deva",
-
-        "guj_Gujr",
-
-        "hin_Deva",
-
-        "hne_Deva",
-
-        "kan_Knda",
-
-        "kas_Arab",
-
-        "kas_Deva",
-
-        "kha_Latn",
-
-        "lus_Latn",
-
-        "mag_Deva",
-
-        "mai_Deva",
-
-        "mal_Mlym",
-
-        "mar_Deva",
-
-        "mni_Beng",
-
-        "mni_Mtei",
-
-        "npi_Deva",
-
-        "ory_Orya",
-
-        "pan_Guru",
-
-        "san_Deva",
-
-        "sat_Olck",
-
-        "snd_Arab",
-
-        "snd_Deva",
-
-        "tam_Taml",
-
-        "tel_Telu",
-
-        "urd_Arab",
-
-        "unr_Deva"
-
-      ],
-
-      "default": "hin_Deva",
-
-      "description": "Target langauge to translate to"
-
-    }
-
-  },
-
-  "required": [
-
-    "text",
-
-    "target_language"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "translations": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "string"
-
-      },
-
-      "description": "Translated texts"
-
-    }
-
-  },
-
-  "required": [
-
-    "translations"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

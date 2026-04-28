@@ -1,5 +1,5 @@
 ---
-title: Hailuo 2.3 Fast
+title: MiniMax Hailuo 2.3 Fast
 description: A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.DPZX-zZI.svg) 
 
-#  Hailuo 2.3 Fast 
+#  MiniMax Hailuo 2.3 Fast 
 
 Text-to-Video • MiniMax • Proxied 
 
@@ -161,8 +161,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-232)
-* [ Output ](#tab-panel-233)
+* [ Input ](#tab-panel-190)
+* [ Output ](#tab-panel-191)
 
 first\_frame\_image
 
@@ -200,180 +200,11 @@ status
 
 `string`enum: Preparing, Queueing, Processing, Success, Fail
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-230)
-* [ Output ](#tab-panel-231)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "first_frame_image": {
-
-      "description": "URL or base64 data URI of the first frame image",
-
-      "type": "string"
-
-    },
-
-    "prompt": {
-
-      "type": "string",
-
-      "maxLength": 2000
-
-    },
-
-    "prompt_optimizer": {
-
-      "default": true,
-
-      "type": "boolean"
-
-    },
-
-    "fast_pretreatment": {
-
-      "default": false,
-
-      "type": "boolean"
-
-    },
-
-    "duration": {
-
-      "default": 6,
-
-      "anyOf": [
-
-        {
-
-          "type": "number",
-
-          "const": 6
-
-        },
-
-        {
-
-          "type": "number",
-
-          "const": 10
-
-        }
-
-      ]
-
-    },
-
-    "resolution": {
-
-      "default": "768P",
-
-      "type": "string",
-
-      "enum": [
-
-        "768P",
-
-        "1080P"
-
-      ]
-
-    }
-
-  },
-
-  "required": [
-
-    "first_frame_image",
-
-    "prompt_optimizer",
-
-    "fast_pretreatment",
-
-    "duration",
-
-    "resolution"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "video": {
-
-      "type": "string",
-
-      "format": "uri"
-
-    },
-
-    "task_id": {
-
-      "type": "string"
-
-    },
-
-    "status": {
-
-      "type": "string",
-
-      "enum": [
-
-        "Preparing",
-
-        "Queueing",
-
-        "Processing",
-
-        "Success",
-
-        "Fail"
-
-      ]
-
-    }
-
-  },
-
-  "required": [
-
-    "task_id"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

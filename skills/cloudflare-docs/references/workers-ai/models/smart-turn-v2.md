@@ -24,8 +24,8 @@ An open source, community-driven, native audio turn detection model in 2nd versi
 
 ## Parameters
 
-* [ Input ](#tab-panel-3945)
-* [ Output ](#tab-panel-3946)
+* [ Input ](#tab-panel-2835)
+* [ Output ](#tab-panel-2836)
 
 ▶Option 1{}
 
@@ -43,166 +43,11 @@ probability
 
 `number`probability of the end-of-turn detection
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3943)
-* [ Output ](#tab-panel-3944)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "oneOf": [
-
-    {
-
-      "properties": {
-
-        "audio": {
-
-          "type": "object",
-
-          "description": "readable stream with audio data and content-type specified for that data",
-
-          "properties": {
-
-            "body": {
-
-              "type": "object"
-
-            },
-
-            "contentType": {
-
-              "type": "string"
-
-            }
-
-          },
-
-          "required": [
-
-            "body",
-
-            "contentType"
-
-          ]
-
-        },
-
-        "dtype": {
-
-          "type": "string",
-
-          "description": "type of data PCM data that's sent to the inference server as raw array",
-
-          "enum": [
-
-            "uint8",
-
-            "float32",
-
-            "float64"
-
-          ]
-
-        }
-
-      },
-
-      "required": [
-
-        "audio"
-
-      ]
-
-    },
-
-    {
-
-      "properties": {
-
-        "audio": {
-
-          "type": "string",
-
-          "description": "base64 encoded audio data"
-
-        },
-
-        "dtype": {
-
-          "type": "string",
-
-          "description": "type of data PCM data that's sent to the inference server as raw array",
-
-          "enum": [
-
-            "uint8",
-
-            "float32",
-
-            "float64"
-
-          ]
-
-        }
-
-      },
-
-      "required": [
-
-        "audio"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "contentType": "application/json",
-
-  "properties": {
-
-    "is_complete": {
-
-      "type": "boolean",
-
-      "description": "if true, end-of-turn was detected"
-
-    },
-
-    "probability": {
-
-      "type": "number",
-
-      "description": "probability of the end-of-turn detection"
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

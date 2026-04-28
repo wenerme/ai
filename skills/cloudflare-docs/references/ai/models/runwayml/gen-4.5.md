@@ -305,8 +305,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-428)
-* [ Output ](#tab-panel-429)
+* [ Input ](#tab-panel-346)
+* [ Output ](#tab-panel-347)
 
 prompt
 
@@ -336,180 +336,11 @@ video
 
 `string`format: uriURL to the generated video
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-426)
-* [ Output ](#tab-panel-427)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "description": "Text prompt describing what should appear in the video",
-
-      "type": "string",
-
-      "minLength": 1,
-
-      "maxLength": 1000
-
-    },
-
-    "image_input": {
-
-      "description": "HTTPS URL, Runway URI, or data URI containing an image for image-to-video",
-
-      "type": "string"
-
-    },
-
-    "ratio": {
-
-      "description": "Resolution/aspect ratio of the output video",
-
-      "default": "1280:720",
-
-      "type": "string",
-
-      "enum": [
-
-        "1280:720",
-
-        "720:1280",
-
-        "1104:832",
-
-        "960:960",
-
-        "832:1104",
-
-        "1584:672"
-
-      ]
-
-    },
-
-    "duration": {
-
-      "description": "Video duration in seconds",
-
-      "default": 5,
-
-      "type": "integer",
-
-      "minimum": 2,
-
-      "maximum": 10
-
-    },
-
-    "seed": {
-
-      "description": "Random seed for reproducible results",
-
-      "type": "integer",
-
-      "minimum": 0,
-
-      "maximum": 4294967295
-
-    },
-
-    "content_moderation": {
-
-      "description": "Content moderation settings",
-
-      "type": "object",
-
-      "properties": {
-
-        "public_figure_threshold": {
-
-          "description": "Content moderation strictness for public figures",
-
-          "type": "string",
-
-          "enum": [
-
-            "auto",
-
-            "low"
-
-          ]
-
-        }
-
-      },
-
-      "additionalProperties": false
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt",
-
-    "ratio",
-
-    "duration"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "video": {
-
-      "description": "URL to the generated video",
-
-      "type": "string",
-
-      "format": "uri"
-
-    }
-
-  },
-
-  "required": [
-
-    "video"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

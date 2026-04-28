@@ -212,8 +212,8 @@ Response200 ![Detailed 4K](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/c
 
 ## Parameters
 
-* [ Input ](#tab-panel-120)
-* [ Output ](#tab-panel-121)
+* [ Input ](#tab-panel-112)
+* [ Output ](#tab-panel-113)
 
 prompt
 
@@ -243,150 +243,11 @@ image
 
 `string`format: uri
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-118)
-* [ Output ](#tab-panel-119)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string"
-
-    },
-
-    "size": {
-
-      "type": "string",
-
-      "enum": [
-
-        "1K",
-
-        "2K",
-
-        "4K",
-
-        "custom"
-
-      ]
-
-    },
-
-    "aspect_ratio": {
-
-      "type": "string",
-
-      "enum": [
-
-        "match_input_image",
-
-        "1:1",
-
-        "4:3",
-
-        "3:4",
-
-        "16:9",
-
-        "9:16",
-
-        "3:2",
-
-        "2:3",
-
-        "21:9"
-
-      ]
-
-    },
-
-    "width": {
-
-      "type": "integer",
-
-      "minimum": 1024,
-
-      "maximum": 4096
-
-    },
-
-    "height": {
-
-      "type": "integer",
-
-      "minimum": 1024,
-
-      "maximum": 4096
-
-    },
-
-    "enhance_prompt": {
-
-      "type": "boolean"
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "type": "string",
-
-      "format": "uri"
-
-    }
-
-  },
-
-  "required": [
-
-    "image"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

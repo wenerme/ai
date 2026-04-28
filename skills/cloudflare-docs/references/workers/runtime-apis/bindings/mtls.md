@@ -35,8 +35,8 @@ npx wrangler mtls-certificate upload --cert cert.pem --key key.pem --name my-cli
 
 Then, update your Worker project's Wrangler file to create an mTLS certificate binding:
 
-* [  wrangler.jsonc ](#tab-panel-10110)
-* [  wrangler.toml ](#tab-panel-10111)
+* [  wrangler.jsonc ](#tab-panel-8967)
+* [  wrangler.toml ](#tab-panel-8968)
 
 JSONC
 
@@ -86,8 +86,8 @@ mTLS certificate bindings present an API similar to [service bindings](https://d
 
 ### Interface
 
-* [  JavaScript ](#tab-panel-10108)
-* [  TypeScript ](#tab-panel-10109)
+* [  JavaScript ](#tab-panel-8965)
+* [  TypeScript ](#tab-panel-8966)
 
 JavaScript
 

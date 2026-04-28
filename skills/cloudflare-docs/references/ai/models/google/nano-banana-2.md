@@ -182,8 +182,8 @@ Response200 ![High Resolution Portrait](https://pub-04a6d208d361438ea01b797e6973
 
 ## Parameters
 
-* [ Input ](#tab-panel-196)
-* [ Output ](#tab-panel-197)
+* [ Input ](#tab-panel-172)
+* [ Output ](#tab-panel-173)
 
 prompt
 
@@ -217,166 +217,11 @@ image
 
 `string`format: uri
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-194)
-* [ Output ](#tab-panel-195)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string"
-
-    },
-
-    "image_input": {
-
-      "maxItems": 3,
-
-      "type": "array",
-
-      "items": {
-
-        "type": "string"
-
-      }
-
-    },
-
-    "aspect_ratio": {
-
-      "type": "string",
-
-      "enum": [
-
-        "match_input_image",
-
-        "1:1",
-
-        "2:3",
-
-        "3:2",
-
-        "3:4",
-
-        "4:3",
-
-        "4:5",
-
-        "5:4",
-
-        "9:16",
-
-        "16:9",
-
-        "21:9"
-
-      ]
-
-    },
-
-    "output_format": {
-
-      "type": "string",
-
-      "enum": [
-
-        "jpg",
-
-        "png"
-
-      ]
-
-    },
-
-    "resolution": {
-
-      "type": "string",
-
-      "enum": [
-
-        "1K",
-
-        "2K",
-
-        "4K"
-
-      ]
-
-    },
-
-    "google_search": {
-
-      "type": "boolean"
-
-    },
-
-    "image_search": {
-
-      "type": "boolean"
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "image": {
-
-      "type": "string",
-
-      "format": "uri"
-
-    }
-
-  },
-
-  "required": [
-
-    "image"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

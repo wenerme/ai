@@ -23,8 +23,8 @@ BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3078)
-* [  curl ](#tab-panel-3079)
+* [  TypeScript ](#tab-panel-2446)
+* [  curl ](#tab-panel-2447)
 
 ```
 
@@ -79,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/fa
 
 ## Parameters
 
-* [ Input ](#tab-panel-3082)
-* [ Output ](#tab-panel-3083)
+* [ Input ](#tab-panel-2448)
+* [ Output ](#tab-panel-2449)
 
 input\_text
 
@@ -94,80 +94,11 @@ summary
 
 `string`The summarized version of the input text
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3080)
-* [ Output ](#tab-panel-3081)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "input_text": {
-
-      "type": "string",
-
-      "minLength": 1,
-
-      "description": "The text that you want the model to summarize"
-
-    },
-
-    "max_length": {
-
-      "type": "integer",
-
-      "default": 1024,
-
-      "description": "The maximum length of the generated summary in tokens"
-
-    }
-
-  },
-
-  "required": [
-
-    "input_text"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "contentType": "application/json",
-
-  "properties": {
-
-    "summary": {
-
-      "type": "string",
-
-      "description": "The summarized version of the input text"
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

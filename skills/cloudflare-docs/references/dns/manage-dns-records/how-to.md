@@ -14,7 +14,7 @@ Refer to the following resources for more information about creating and maintai
 * [ Create zone apex record ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)
 * [ Create subdomain records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)
 * [ Set up email records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
-* [ Private network routing ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-network-routing/)
+* [ Private origins ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-origins/)
 * [ Import and export records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/)
 * [ Batch record changes ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/)
 * [ Dynamically update DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses/)

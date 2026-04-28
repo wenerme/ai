@@ -56,8 +56,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-122)
-* [ Output ](#tab-panel-123)
+* [ Input ](#tab-panel-114)
+* [ Output ](#tab-panel-115)
 
 ```
 
@@ -126,8 +126,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-124)
-* [ Output ](#tab-panel-125)
+* [ Input ](#tab-panel-116)
+* [ Output ](#tab-panel-117)
 
 ```
 
@@ -202,8 +202,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-126)
-* [ Output ](#tab-panel-127)
+* [ Input ](#tab-panel-118)
+* [ Output ](#tab-panel-119)
 
 ```
 
@@ -280,8 +280,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-128)
-* [ Output ](#tab-panel-129)
+* [ Input ](#tab-panel-120)
+* [ Output ](#tab-panel-121)
 
 ```
 
@@ -360,8 +360,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-130)
-* [ Output ](#tab-panel-131)
+* [ Input ](#tab-panel-122)
+* [ Output ](#tab-panel-123)
 
 ```
 
@@ -401,8 +401,8 @@ Input / Output JSON
 
 ## Parameters
 
-* [ Input ](#tab-panel-134)
-* [ Output ](#tab-panel-135)
+* [ Input ](#tab-panel-124)
+* [ Output ](#tab-panel-125)
 
 prompt
 
@@ -436,172 +436,11 @@ disable\_safety\_checker
 
 `array`minItems: 1format: uri
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-132)
-* [ Output ](#tab-panel-133)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string"
-
-    },
-
-    "image_input": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "string",
-
-        "format": "uri"
-
-      }
-
-    },
-
-    "size": {
-
-      "type": "string",
-
-      "enum": [
-
-        "2K",
-
-        "4K"
-
-      ]
-
-    },
-
-    "aspect_ratio": {
-
-      "type": "string",
-
-      "enum": [
-
-        "match_input_image",
-
-        "1:1",
-
-        "4:3",
-
-        "3:4",
-
-        "16:9",
-
-        "9:16",
-
-        "3:2",
-
-        "2:3",
-
-        "21:9"
-
-      ]
-
-    },
-
-    "sequential_image_generation": {
-
-      "type": "string",
-
-      "enum": [
-
-        "disabled",
-
-        "auto"
-
-      ]
-
-    },
-
-    "max_images": {
-
-      "type": "integer",
-
-      "minimum": 1,
-
-      "maximum": 15
-
-    },
-
-    "disable_safety_checker": {
-
-      "type": "boolean"
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "images": {
-
-      "minItems": 1,
-
-      "type": "array",
-
-      "items": {
-
-        "type": "string",
-
-        "format": "uri"
-
-      }
-
-    }
-
-  },
-
-  "required": [
-
-    "images"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

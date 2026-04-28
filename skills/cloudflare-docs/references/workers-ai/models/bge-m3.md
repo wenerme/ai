@@ -23,9 +23,9 @@ Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3108)
-* [  Python ](#tab-panel-3109)
-* [  curl ](#tab-panel-3110)
+* [  TypeScript ](#tab-panel-2464)
+* [  Python ](#tab-panel-2465)
+* [  curl ](#tab-panel-2466)
 
 ```
 
@@ -142,8 +142,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3113)
-* [ Output ](#tab-panel-3114)
+* [ Input ](#tab-panel-2467)
+* [ Output ](#tab-panel-2468)
 
 query
 
@@ -163,8 +163,8 @@ request\_id
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-3115)
-* [ Output ](#tab-panel-3116)
+* [ Input ](#tab-panel-2469)
+* [ Output ](#tab-panel-2470)
 
 ▶requests\[\]
 
@@ -176,311 +176,13 @@ request\_id
 
 ## API Schemas (Raw)
 
-Synchronous — Send a request and receive a complete response 
+Synchronous Input 
 
-* [ Input ](#tab-panel-3106)
-* [ Output ](#tab-panel-3107)
+Synchronous Output 
 
-```
+Batch Input 
 
-{
-
-  "title": "Input Query and Contexts",
-
-  "properties": {
-
-    "query": {
-
-      "type": "string",
-
-      "minLength": 1,
-
-      "description": "A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts"
-
-    },
-
-    "contexts": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "object",
-
-        "properties": {
-
-          "text": {
-
-            "type": "string",
-
-            "minLength": 1,
-
-            "description": "One of the provided context content"
-
-          }
-
-        }
-
-      },
-
-      "description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it."
-
-    },
-
-    "truncate_inputs": {
-
-      "type": "boolean",
-
-      "default": false,
-
-      "description": "When provided with too long context should the model error out or truncate the context to fit?"
-
-    }
-
-  },
-
-  "required": [
-
-    "contexts"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "contentType": "application/json",
-
-  "title": "Async response",
-
-  "properties": {
-
-    "request_id": {
-
-      "type": "string",
-
-      "description": "The async request id that can be used to obtain the results."
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
-
-Batch — Send multiple requests in a single API call 
-
-* [ Input ](#tab-panel-3111)
-* [ Output ](#tab-panel-3112)
-
-```
-
-{
-
-  "properties": {
-
-    "requests": {
-
-      "type": "array",
-
-      "description": "Batch of the embeddings requests to run using async-queue",
-
-      "items": {
-
-        "type": "object",
-
-        "oneOf": [
-
-          {
-
-            "title": "Input Query and Contexts",
-
-            "properties": {
-
-              "query": {
-
-                "type": "string",
-
-                "minLength": 1,
-
-                "description": "A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts"
-
-              },
-
-              "contexts": {
-
-                "type": "array",
-
-                "items": {
-
-                  "type": "object",
-
-                  "properties": {
-
-                    "text": {
-
-                      "type": "string",
-
-                      "minLength": 1,
-
-                      "description": "One of the provided context content"
-
-                    }
-
-                  }
-
-                },
-
-                "description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it."
-
-              },
-
-              "truncate_inputs": {
-
-                "type": "boolean",
-
-                "default": false,
-
-                "description": "When provided with too long context should the model error out or truncate the context to fit?"
-
-              }
-
-            },
-
-            "required": [
-
-              "contexts"
-
-            ]
-
-          },
-
-          {
-
-            "title": "Input Embedding",
-
-            "properties": {
-
-              "text": {
-
-                "oneOf": [
-
-                  {
-
-                    "type": "string",
-
-                    "description": "The text to embed",
-
-                    "minLength": 1
-
-                  },
-
-                  {
-
-                    "type": "array",
-
-                    "description": "Batch of text values to embed",
-
-                    "items": {
-
-                      "type": "string",
-
-                      "description": "The text to embed",
-
-                      "minLength": 1
-
-                    },
-
-                    "maxItems": 100
-
-                  }
-
-                ]
-
-              },
-
-              "truncate_inputs": {
-
-                "type": "boolean",
-
-                "default": false,
-
-                "description": "When provided with too long context should the model error out or truncate the context to fit?"
-
-              }
-
-            },
-
-            "required": [
-
-              "text"
-
-            ]
-
-          }
-
-        ]
-
-      }
-
-    }
-
-  },
-
-  "required": [
-
-    "requests"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "contentType": "application/json",
-
-  "title": "Async response",
-
-  "properties": {
-
-    "request_id": {
-
-      "type": "string",
-
-      "description": "The async request id that can be used to obtain the results."
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Batch Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

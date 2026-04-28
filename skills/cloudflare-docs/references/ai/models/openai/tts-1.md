@@ -221,8 +221,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-396)
-* [ Output ](#tab-panel-397)
+* [ Input ](#tab-panel-330)
+* [ Output ](#tab-panel-331)
 
 text
 
@@ -244,152 +244,11 @@ audio
 
 `string`URL to the generated audio file
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-394)
-* [ Output ](#tab-panel-395)
+Input 
 
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "text": {
-
-      "description": "The text to generate audio for. Maximum length is 4096 characters.",
-
-      "type": "string",
-
-      "maxLength": 4096
-
-    },
-
-    "voice": {
-
-      "description": "The voice to use when generating the audio. Defaults to alloy.",
-
-      "default": "alloy",
-
-      "type": "string",
-
-      "enum": [
-
-        "alloy",
-
-        "echo",
-
-        "fable",
-
-        "onyx",
-
-        "nova",
-
-        "shimmer"
-
-      ]
-
-    },
-
-    "response_format": {
-
-      "description": "The output format for the audio. Supported formats are mp3, opus, wav, aac and flac.",
-
-      "default": "mp3",
-
-      "type": "string",
-
-      "enum": [
-
-        "mp3",
-
-        "opus",
-
-        "wav",
-
-        "aac",
-
-        "flac"
-
-      ]
-
-    },
-
-    "speed": {
-
-      "description": "The speed of the generated audio. Select a value from 0.25 to 4.0. 1.0 is the default.",
-
-      "default": 1,
-
-      "type": "number",
-
-      "minimum": 0.25,
-
-      "maximum": 4
-
-    }
-
-  },
-
-  "required": [
-
-    "text",
-
-    "voice",
-
-    "response_format",
-
-    "speed"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-
-  "type": "object",
-
-  "properties": {
-
-    "audio": {
-
-      "description": "URL to the generated audio file",
-
-      "type": "string"
-
-    }
-
-  },
-
-  "required": [
-
-    "audio"
-
-  ],
-
-  "additionalProperties": false
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}

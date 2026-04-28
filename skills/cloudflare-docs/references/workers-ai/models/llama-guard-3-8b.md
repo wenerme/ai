@@ -30,9 +30,9 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3647)
-* [  Python ](#tab-panel-3648)
-* [  curl ](#tab-panel-3649)
+* [  TypeScript ](#tab-panel-2711)
+* [  Python ](#tab-panel-2712)
+* [  curl ](#tab-panel-2713)
 
 ```
 
@@ -139,8 +139,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3652)
-* [ Output ](#tab-panel-3653)
+* [ Input ](#tab-panel-2714)
+* [ Output ](#tab-panel-2715)
 
 ▶messages\[\]
 
@@ -166,238 +166,11 @@ temperature
 
 `object`Usage statistics for the inference request
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3650)
-* [ Output ](#tab-panel-3651)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "messages": {
-
-      "type": "array",
-
-      "description": "An array of message objects representing the conversation history.",
-
-      "items": {
-
-        "type": "object",
-
-        "properties": {
-
-          "role": {
-
-            "enum": [
-
-              "user",
-
-              "assistant"
-
-            ],
-
-            "description": "The role of the message sender must alternate between 'user' and 'assistant'."
-
-          },
-
-          "content": {
-
-            "type": "string",
-
-            "description": "The content of the message as a string."
-
-          }
-
-        },
-
-        "required": [
-
-          "role",
-
-          "content"
-
-        ]
-
-      }
-
-    },
-
-    "max_tokens": {
-
-      "type": "integer",
-
-      "default": 256,
-
-      "description": "The maximum number of tokens to generate in the response."
-
-    },
-
-    "temperature": {
-
-      "type": "number",
-
-      "default": 0.6,
-
-      "minimum": 0,
-
-      "maximum": 5,
-
-      "description": "Controls the randomness of the output; higher values produce more random results."
-
-    },
-
-    "response_format": {
-
-      "type": "object",
-
-      "description": "Dictate the output format of the generated response.",
-
-      "properties": {
-
-        "type": {
-
-          "type": "string",
-
-          "description": "Set to json_object to process and output generated text as JSON."
-
-        }
-
-      }
-
-    }
-
-  },
-
-  "required": [
-
-    "messages"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "contentType": "application/json",
-
-  "properties": {
-
-    "response": {
-
-      "oneOf": [
-
-        {
-
-          "type": "string",
-
-          "description": "The generated text response from the model."
-
-        },
-
-        {
-
-          "type": "object",
-
-          "description": "The json response parsed from the generated text response from the model.",
-
-          "properties": {
-
-            "safe": {
-
-              "type": "boolean",
-
-              "description": "Whether the conversation is safe or not."
-
-            },
-
-            "categories": {
-
-              "type": "array",
-
-              "description": "A list of what hazard categories predicted for the conversation, if the conversation is deemed unsafe.",
-
-              "items": {
-
-                "type": "string",
-
-                "description": "Hazard category classname, from S1 to S14."
-
-              }
-
-            }
-
-          }
-
-        }
-
-      ]
-
-    },
-
-    "usage": {
-
-      "type": "object",
-
-      "description": "Usage statistics for the inference request",
-
-      "properties": {
-
-        "prompt_tokens": {
-
-          "type": "number",
-
-          "description": "Total number of tokens in input",
-
-          "default": 0
-
-        },
-
-        "completion_tokens": {
-
-          "type": "number",
-
-          "description": "Total number of tokens in output",
-
-          "default": 0
-
-        },
-
-        "total_tokens": {
-
-          "type": "number",
-
-          "description": "Total number of input and output tokens",
-
-          "default": 0
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

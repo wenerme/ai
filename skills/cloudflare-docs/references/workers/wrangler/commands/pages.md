@@ -14,9 +14,9 @@ Configure [Cloudflare Pages](https://developers.cloudflare.com/pages/) using Wra
 
 Develop your full-stack Pages application locally
 
-* [  npm ](#tab-panel-10531)
-* [  pnpm ](#tab-panel-10532)
-* [  yarn ](#tab-panel-10533)
+* [  npm ](#tab-panel-9388)
+* [  pnpm ](#tab-panel-9389)
+* [  yarn ](#tab-panel-9390)
 
 Terminal window
 
@@ -117,9 +117,9 @@ Automatically provision draft bindings with new resources
 
 Compile a folder of Pages Functions into a single Worker
 
-* [  npm ](#tab-panel-10534)
-* [  pnpm ](#tab-panel-10535)
-* [  yarn ](#tab-panel-10536)
+* [  npm ](#tab-panel-9391)
+* [  pnpm ](#tab-panel-9392)
+* [  yarn ](#tab-panel-9393)
 
 Terminal window
 
@@ -204,9 +204,9 @@ Automatically provision draft bindings with new resources
 
 List your Cloudflare Pages projects
 
-* [  npm ](#tab-panel-10537)
-* [  pnpm ](#tab-panel-10538)
-* [  yarn ](#tab-panel-10539)
+* [  npm ](#tab-panel-9394)
+* [  pnpm ](#tab-panel-9395)
+* [  yarn ](#tab-panel-9396)
 
 Terminal window
 
@@ -259,9 +259,9 @@ Automatically provision draft bindings with new resources
 
 Create a new Cloudflare Pages project
 
-* [  npm ](#tab-panel-10540)
-* [  pnpm ](#tab-panel-10541)
-* [  yarn ](#tab-panel-10542)
+* [  npm ](#tab-panel-9397)
+* [  pnpm ](#tab-panel-9398)
+* [  yarn ](#tab-panel-9399)
 
 Terminal window
 
@@ -320,9 +320,9 @@ Automatically provision draft bindings with new resources
 
 Delete a Cloudflare Pages project
 
-* [  npm ](#tab-panel-10543)
-* [  pnpm ](#tab-panel-10544)
-* [  yarn ](#tab-panel-10545)
+* [  npm ](#tab-panel-9400)
+* [  pnpm ](#tab-panel-9401)
+* [  yarn ](#tab-panel-9402)
 
 Terminal window
 
@@ -377,9 +377,9 @@ Automatically provision draft bindings with new resources
 
 List deployments in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-10546)
-* [  pnpm ](#tab-panel-10547)
-* [  yarn ](#tab-panel-10548)
+* [  npm ](#tab-panel-9403)
+* [  pnpm ](#tab-panel-9404)
+* [  yarn ](#tab-panel-9405)
 
 Terminal window
 
@@ -436,9 +436,9 @@ Automatically provision draft bindings with new resources
 
 Start a tailing session for a project's deployment and livestream logs from your Functions
 
-* [  npm ](#tab-panel-10549)
-* [  pnpm ](#tab-panel-10550)
-* [  yarn ](#tab-panel-10551)
+* [  npm ](#tab-panel-9406)
+* [  pnpm ](#tab-panel-9407)
+* [  yarn ](#tab-panel-9408)
 
 Terminal window
 
@@ -509,9 +509,9 @@ Automatically provision draft bindings with new resources
 
 Delete a deployment in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-10552)
-* [  pnpm ](#tab-panel-10553)
-* [  yarn ](#tab-panel-10554)
+* [  npm ](#tab-panel-9409)
+* [  pnpm ](#tab-panel-9410)
+* [  yarn ](#tab-panel-9411)
 
 Terminal window
 
@@ -568,9 +568,9 @@ Automatically provision draft bindings with new resources
 
 Deploy a directory of static assets as a Pages deployment
 
-* [  npm ](#tab-panel-10555)
-* [  pnpm ](#tab-panel-10556)
-* [  yarn ](#tab-panel-10557)
+* [  npm ](#tab-panel-9412)
+* [  pnpm ](#tab-panel-9413)
+* [  yarn ](#tab-panel-9414)
 
 Terminal window
 
@@ -639,9 +639,9 @@ Automatically provision draft bindings with new resources
 
 Create or update a secret variable for a Pages project
 
-* [  npm ](#tab-panel-10558)
-* [  pnpm ](#tab-panel-10559)
-* [  yarn ](#tab-panel-10560)
+* [  npm ](#tab-panel-9415)
+* [  pnpm ](#tab-panel-9416)
+* [  yarn ](#tab-panel-9417)
 
 Terminal window
 
@@ -696,9 +696,9 @@ Automatically provision draft bindings with new resources
 
 Bulk upload secrets for a Pages project
 
-* [  npm ](#tab-panel-10561)
-* [  pnpm ](#tab-panel-10562)
-* [  yarn ](#tab-panel-10563)
+* [  npm ](#tab-panel-9418)
+* [  pnpm ](#tab-panel-9419)
+* [  yarn ](#tab-panel-9420)
 
 Terminal window
 
@@ -753,9 +753,9 @@ Automatically provision draft bindings with new resources
 
 Delete a secret variable from a Pages project
 
-* [  npm ](#tab-panel-10564)
-* [  pnpm ](#tab-panel-10565)
-* [  yarn ](#tab-panel-10566)
+* [  npm ](#tab-panel-9421)
+* [  pnpm ](#tab-panel-9422)
+* [  yarn ](#tab-panel-9423)
 
 Terminal window
 
@@ -810,9 +810,9 @@ Automatically provision draft bindings with new resources
 
 List all secrets for a Pages project
 
-* [  npm ](#tab-panel-10567)
-* [  pnpm ](#tab-panel-10568)
-* [  yarn ](#tab-panel-10569)
+* [  npm ](#tab-panel-9424)
+* [  pnpm ](#tab-panel-9425)
+* [  yarn ](#tab-panel-9426)
 
 Terminal window
 
@@ -868,9 +868,9 @@ Experimental
 
 Download your Pages project config as a Wrangler configuration file
 
-* [  npm ](#tab-panel-10570)
-* [  pnpm ](#tab-panel-10571)
-* [  yarn ](#tab-panel-10572)
+* [  npm ](#tab-panel-9427)
+* [  pnpm ](#tab-panel-9428)
+* [  yarn ](#tab-panel-9429)
 
 Terminal window
 

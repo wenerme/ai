@@ -23,8 +23,8 @@ Whisper is a general-purpose speech recognition model. It is trained on a large 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4023)
-* [  curl ](#tab-panel-4024)
+* [  TypeScript ](#tab-panel-2871)
+* [  curl ](#tab-panel-2872)
 
 ```
 
@@ -92,8 +92,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-4027)
-* [ Output ](#tab-panel-4028)
+* [ Input ](#tab-panel-2873)
+* [ Output ](#tab-panel-2874)
 
 Option 1
 
@@ -119,148 +119,11 @@ vtt
 
 `string`
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-4025)
-* [ Output ](#tab-panel-4026)
+Input 
 
-```
-
-{
-
-  "oneOf": [
-
-    {
-
-      "type": "string",
-
-      "format": "binary"
-
-    },
-
-    {
-
-      "type": "object",
-
-      "properties": {
-
-        "audio": {
-
-          "type": "array",
-
-          "description": "An array of integers that represent the audio data constrained to 8-bit unsigned integer values",
-
-          "items": {
-
-            "type": "number",
-
-            "description": "A value between 0 and 255"
-
-          }
-
-        }
-
-      },
-
-      "required": [
-
-        "audio"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "object",
-
-  "contentType": "application/json",
-
-  "properties": {
-
-    "text": {
-
-      "type": "string",
-
-      "description": "The transcription"
-
-    },
-
-    "word_count": {
-
-      "type": "number"
-
-    },
-
-    "words": {
-
-      "type": "array",
-
-      "items": {
-
-        "type": "object",
-
-        "properties": {
-
-          "word": {
-
-            "type": "string"
-
-          },
-
-          "start": {
-
-            "type": "number",
-
-            "description": "The second this word begins in the recording"
-
-          },
-
-          "end": {
-
-            "type": "number",
-
-            "description": "The ending second when the word completes"
-
-          }
-
-        }
-
-      }
-
-    },
-
-    "vtt": {
-
-      "type": "string"
-
-    }
-
-  },
-
-  "required": [
-
-    "text"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

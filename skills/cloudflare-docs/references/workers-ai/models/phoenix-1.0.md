@@ -24,8 +24,8 @@ Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional pro
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3829)
-* [  curl ](#tab-panel-3830)
+* [  TypeScript ](#tab-panel-2783)
+* [  curl ](#tab-panel-2784)
 
 ```
 
@@ -93,8 +93,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3833)
-* [ Output ](#tab-panel-3834)
+* [ Input ](#tab-panel-2785)
+* [ Output ](#tab-panel-2786)
 
 prompt
 
@@ -126,136 +126,11 @@ negative\_prompt
 
 The binding returns a `ReadableStream` with the output (check the model's output schema).
 
-## API Schemas
+## API Schemas (Raw)
 
-* [ Input ](#tab-panel-3831)
-* [ Output ](#tab-panel-3832)
+Input 
 
-```
-
-{
-
-  "type": "object",
-
-  "properties": {
-
-    "prompt": {
-
-      "type": "string",
-
-      "minLength": 1,
-
-      "description": "A text description of the image you want to generate."
-
-    },
-
-    "guidance": {
-
-      "type": "number",
-
-      "default": 2,
-
-      "minimum": 2,
-
-      "maximum": 10,
-
-      "description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt"
-
-    },
-
-    "seed": {
-
-      "type": "integer",
-
-      "minimum": 0,
-
-      "description": "Random seed for reproducibility of the image generation"
-
-    },
-
-    "height": {
-
-      "type": "integer",
-
-      "minimum": 0,
-
-      "maximum": 2048,
-
-      "default": 1024,
-
-      "description": "The height of the generated image in pixels"
-
-    },
-
-    "width": {
-
-      "type": "integer",
-
-      "minimum": 0,
-
-      "maximum": 2048,
-
-      "default": 1024,
-
-      "description": "The width of the generated image in pixels"
-
-    },
-
-    "num_steps": {
-
-      "type": "integer",
-
-      "default": 25,
-
-      "minimum": 1,
-
-      "maximum": 50,
-
-      "description": "The number of diffusion steps; higher values can improve quality but take longer"
-
-    },
-
-    "negative_prompt": {
-
-      "type": "string",
-
-      "minLength": 1,
-
-      "description": "Specify what to exclude from the generated images"
-
-    }
-
-  },
-
-  "required": [
-
-    "prompt"
-
-  ]
-
-}
-
-
-```
-
-Explain Code
-
-```
-
-{
-
-  "type": "string",
-
-  "contentType": "image/jpeg",
-
-  "format": "binary",
-
-  "description": "The generated image in JPEG format"
-
-}
-
-
-```
+Output 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

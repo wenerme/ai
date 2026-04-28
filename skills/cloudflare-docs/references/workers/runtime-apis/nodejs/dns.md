@@ -14,8 +14,8 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 You can use [node:dns ↗](https://nodejs.org/api/dns.html) for name resolution via [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/) using[Cloudflare DNS ↗](https://www.cloudflare.com/application-services/products/dns/) at 1.1.1.1.
 
-* [  JavaScript ](#tab-panel-10176)
-* [  TypeScript ](#tab-panel-10177)
+* [  JavaScript ](#tab-panel-9033)
+* [  TypeScript ](#tab-panel-9034)
 
 index.js
 

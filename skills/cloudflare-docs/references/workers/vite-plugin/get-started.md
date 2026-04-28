@@ -97,8 +97,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ## Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-10376)
-* [  wrangler.toml ](#tab-panel-10377)
+* [  wrangler.jsonc ](#tab-panel-9233)
+* [  wrangler.toml ](#tab-panel-9234)
 
 JSONC
 
@@ -112,7 +112,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-27",
 
   "main": "./src/index.ts"
 
@@ -131,7 +131,7 @@ name = "cloudflare-vite-get-started"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-27"
 
 main = "./src/index.ts"
 
