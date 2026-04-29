@@ -4,6 +4,10 @@ description: Implement human-in-the-loop functionality using Cloudflare Agents f
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Human-in-the-loop patterns
@@ -47,8 +51,8 @@ For durable, multi-step processes, use [Cloudflare Workflows](https://developers
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-5164)
-* [  TypeScript ](#tab-panel-5165)
+* [  JavaScript ](#tab-panel-3998)
+* [  TypeScript ](#tab-panel-3999)
 
 JavaScript
 
@@ -228,8 +232,8 @@ Explain Code
 
 The agent provides methods to approve or reject waiting workflows:
 
-* [  JavaScript ](#tab-panel-5168)
-* [  TypeScript ](#tab-panel-5169)
+* [  JavaScript ](#tab-panel-4002)
+* [  TypeScript ](#tab-panel-4003)
 
 JavaScript
 
@@ -505,8 +509,8 @@ Explain Code
 
 Set timeouts to prevent workflows from waiting indefinitely:
 
-* [  JavaScript ](#tab-panel-5158)
-* [  TypeScript ](#tab-panel-5159)
+* [  JavaScript ](#tab-panel-3992)
+* [  TypeScript ](#tab-panel-3993)
 
 JavaScript
 
@@ -560,8 +564,8 @@ if (!approval) {
 
 Use `schedule()` to set up escalation reminders:
 
-* [  JavaScript ](#tab-panel-5160)
-* [  TypeScript ](#tab-panel-5161)
+* [  JavaScript ](#tab-panel-3994)
+* [  TypeScript ](#tab-panel-3995)
 
 JavaScript
 
@@ -721,8 +725,8 @@ Explain Code
 
 Use `this.sql` to maintain an immutable audit trail:
 
-* [  JavaScript ](#tab-panel-5162)
-* [  TypeScript ](#tab-panel-5163)
+* [  JavaScript ](#tab-panel-3996)
+* [  TypeScript ](#tab-panel-3997)
 
 JavaScript
 
@@ -874,8 +878,8 @@ Explain Code
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-5156)
-* [  wrangler.toml ](#tab-panel-5157)
+* [  wrangler.jsonc ](#tab-panel-3990)
+* [  wrangler.toml ](#tab-panel-3991)
 
 JSONC
 
@@ -889,7 +893,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -932,7 +936,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -970,8 +974,8 @@ When building MCP servers with `McpAgent`, you can request additional user input
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-5170)
-* [  TypeScript ](#tab-panel-5171)
+* [  JavaScript ](#tab-panel-4004)
+* [  TypeScript ](#tab-panel-4005)
 
 JavaScript
 
@@ -1337,8 +1341,8 @@ Explain Code
 
 For sensitive operations requiring multiple approvers:
 
-* [  JavaScript ](#tab-panel-5166)
-* [  TypeScript ](#tab-panel-5167)
+* [  JavaScript ](#tab-panel-4000)
+* [  TypeScript ](#tab-panel-4001)
 
 JavaScript
 

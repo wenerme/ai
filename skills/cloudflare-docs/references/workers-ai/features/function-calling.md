@@ -4,6 +4,10 @@ description: Enable Workers AI models to execute functions and interact with ext
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -24,8 +28,8 @@ For industry-standard function calling, take a look at the documentation on [Tra
 
 To show you the value of embedded function calling, take a look at the example below that compares traditional function calling with embedded function calling. Embedded function calling allowed us to cut down the lines of code from 77 to 31.
 
-* [ Embedded ](#tab-panel-9497)
-* [ Traditional ](#tab-panel-9498)
+* [ Embedded ](#tab-panel-8380)
+* [ Traditional ](#tab-panel-8381)
 
 Terminal window
 

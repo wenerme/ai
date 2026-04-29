@@ -4,6 +4,10 @@ description: This guide is for customers looking to deploy Cloudflare's ZTNA ser
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Designing ZTNA access policies for Cloudflare Access

@@ -4,6 +4,10 @@ description: Learn how to deploy an Express.js application on Cloudflare Workers
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -89,8 +93,8 @@ bun add express @types/express
 
 Express.js on Cloudflare Workers requires the `nodejs_compat` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/). This flag enables Node.js APIs and allows Express to run on the Workers runtime. Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9205)
-* [  wrangler.toml ](#tab-panel-9206)
+* [  wrangler.jsonc ](#tab-panel-9233)
+* [  wrangler.toml ](#tab-panel-9234)
 
 JSONC
 
@@ -179,8 +183,8 @@ Explain Code
 
 The binding will be added to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-9207)
-* [  wrangler.toml ](#tab-panel-9208)
+* [  wrangler.jsonc ](#tab-panel-9235)
+* [  wrangler.toml ](#tab-panel-9236)
 
 JSONC
 

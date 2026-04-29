@@ -4,6 +4,10 @@ description: Create a modified request with edited properties based off of an in
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,10 +26,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9886)
-* [  TypeScript ](#tab-panel-9887)
-* [  Python ](#tab-panel-9888)
-* [  Hono ](#tab-panel-9889)
+* [  JavaScript ](#tab-panel-8771)
+* [  TypeScript ](#tab-panel-8772)
+* [  Python ](#tab-panel-8773)
+* [  Hono ](#tab-panel-8774)
 
 JavaScript
 

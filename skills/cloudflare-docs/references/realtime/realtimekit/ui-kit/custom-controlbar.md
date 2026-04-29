@@ -4,6 +4,10 @@ description: Add a custom controlbar to your RealtimeKit meeting UI with individ
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Add Custom Controlbar

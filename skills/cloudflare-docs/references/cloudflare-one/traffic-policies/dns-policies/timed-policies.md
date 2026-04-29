@@ -4,6 +4,10 @@ description: Reference information for Timed DNS policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -57,8 +61,8 @@ For policies with an exact end time, you can change the time before the policy t
 
 You can use Gateway to create a new DNS policy with a schedule or add a schedule to an existing policy.
 
-* [ Dashboard ](#tab-panel-6246)
-* [ API ](#tab-panel-6247)
+* [ Dashboard ](#tab-panel-5088)
+* [ API ](#tab-panel-5089)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Create a new DNS policy or choose an existing policy and select **Edit**.

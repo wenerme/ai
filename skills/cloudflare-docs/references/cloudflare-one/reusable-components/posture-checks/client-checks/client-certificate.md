@@ -4,6 +4,10 @@ description: Client certificate in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -105,9 +109,9 @@ Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the cli
 
 You can use the following commands to check if a client certificate is properly installed and trusted on the device.
 
-* [ Windows ](#tab-panel-6065)
-* [ macOS ](#tab-panel-6066)
-* [ Linux ](#tab-panel-6067)
+* [ Windows ](#tab-panel-4907)
+* [ macOS ](#tab-panel-4908)
+* [ Linux ](#tab-panel-4909)
 
 1. Open a PowerShell window.
 2. To search the local machine trust store for a certificate with a specific common name, run the following command:

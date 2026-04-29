@@ -4,6 +4,10 @@ description: Encryption modes allow you to control how Cloudflare connects to yo
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Encryption modes
@@ -127,8 +131,8 @@ To use Custom SSL/TLS, select the custom option (if you prefer to manually set t
 
 ## Update your encryption mode
 
-* [ Dashboard ](#tab-panel-9113)
-* [ API ](#tab-panel-9114)
+* [ Dashboard ](#tab-panel-7975)
+* [ API ](#tab-panel-7976)
 
 To change your encryption mode in the dashboard:
 

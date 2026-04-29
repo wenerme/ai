@@ -4,6 +4,10 @@ description: Send invoice when shopping cart is checked out and paid for
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -222,8 +226,8 @@ Here is a minimal package.json:
 
 Here is a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11188)
-* [  wrangler.toml ](#tab-panel-11189)
+* [  wrangler.jsonc ](#tab-panel-10073)
+* [  wrangler.toml ](#tab-panel-10074)
 
 JSONC
 
@@ -239,7 +243,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": [
 
@@ -302,7 +306,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 

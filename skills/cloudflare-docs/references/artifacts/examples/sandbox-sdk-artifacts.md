@@ -4,6 +4,10 @@ description: Connect a sandbox to an Artifacts repo.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Sandbox SDK + Artifacts
@@ -45,8 +49,8 @@ cd repo-per-sandbox
 
 The template keeps one Artifacts repo per sandbox ID. Use your own source of truth to decide whether this request should create a new repo or load an existing one.
 
-* [  JavaScript ](#tab-panel-5503)
-* [  TypeScript ](#tab-panel-5504)
+* [  JavaScript ](#tab-panel-4337)
+* [  TypeScript ](#tab-panel-4338)
 
 src/index.js
 
@@ -140,8 +144,8 @@ If your flow can race with repo creation, handle that retry at the application l
 
 Use the same ID for the sandbox:
 
-* [  JavaScript ](#tab-panel-5499)
-* [  TypeScript ](#tab-panel-5500)
+* [  JavaScript ](#tab-panel-4333)
+* [  TypeScript ](#tab-panel-4334)
 
 src/index.js
 
@@ -173,8 +177,8 @@ Convert the write token into an authenticated Git remote, then store it as an en
 
 Use a short-lived token and pass it into the sandbox only after the sandbox session is authorized to push changes.
 
-* [  JavaScript ](#tab-panel-5501)
-* [  TypeScript ](#tab-panel-5502)
+* [  JavaScript ](#tab-panel-4335)
+* [  TypeScript ](#tab-panel-4336)
 
 src/index.js
 

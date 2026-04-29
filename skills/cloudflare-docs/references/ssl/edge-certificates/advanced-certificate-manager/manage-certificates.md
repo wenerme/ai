@@ -4,6 +4,10 @@ description: Learn how to create, delete and perform other operations to manage 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Manage advanced certificates
@@ -14,8 +18,8 @@ If you are using an existing [Universal SSL certificate](https://developers.clou
 
 Once you order a certificate, you can review the [certificate's status](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or via the API with a [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/list/).
 
-* [ Dashboard ](#tab-panel-9081)
-* [ API ](#tab-panel-9082)
+* [ Dashboard ](#tab-panel-7923)
+* [ API ](#tab-panel-7924)
 
 To create a new advanced certificate in the dashboard:
 
@@ -43,8 +47,8 @@ The available options for **Validation method** and **Certificate Validity Perio
 
 ## Delete a certificate
 
-* [ Dashboard ](#tab-panel-9083)
-* [ API ](#tab-panel-9084)
+* [ Dashboard ](#tab-panel-7925)
+* [ API ](#tab-panel-7926)
 
 To delete an advanced certificate in the dashboard:
 

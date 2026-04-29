@@ -4,6 +4,10 @@ description: Install the Cloudflare WARP client on your devices.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/warp-client/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started

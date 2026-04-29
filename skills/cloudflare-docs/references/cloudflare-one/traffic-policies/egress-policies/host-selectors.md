@@ -4,6 +4,10 @@ description: Configure Host selectors in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -39,8 +43,8 @@ These selectors require additional configuration before they work.
 
 To turn on the selectors for your account:
 
-* [ Dashboard ](#tab-panel-6248)
-* [ API ](#tab-panel-6249)
+* [ Dashboard ](#tab-panel-5090)
+* [ API ](#tab-panel-5091)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Policy settings**, turn on **Allow egress policy host selectors**.

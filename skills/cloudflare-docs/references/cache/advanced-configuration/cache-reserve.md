@@ -4,6 +4,10 @@ description: Persist cached content in R2 storage to eliminate cache evictions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cache Reserve
@@ -30,8 +34,8 @@ Cache Reserve is a usage-based product and [pricing](#pricing) is detailed below
 
 A paid Cache Reserve Plan is required for the enablement.
 
-* [ Dashboard ](#tab-panel-5637)
-* [ API ](#tab-panel-5638)
+* [ Dashboard ](#tab-panel-4473)
+* [ API ](#tab-panel-4474)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -187,8 +191,8 @@ You can remove all data stored in Cache Reserve through the dashboard or via API
 
 Be aware that the deletion may take up to 24 hours to complete.
 
-* [ Dashboard ](#tab-panel-5639)
-* [ API ](#tab-panel-5640)
+* [ Dashboard ](#tab-panel-4475)
+* [ API ](#tab-panel-4476)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)

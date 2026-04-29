@@ -4,6 +4,10 @@ description: Create a tunnel to your private network.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Connect with Cloudflare Tunnel
@@ -14,8 +18,8 @@ Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any 
 
 To connect your private network:
 
-* [ Dashboard ](#tab-panel-7676)
-* [ Terraform (v5) ](#tab-panel-7677)
+* [ Dashboard ](#tab-panel-6518)
+* [ Terraform (v5) ](#tab-panel-6519)
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com) and go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select **Create a tunnel**.
@@ -88,10 +92,10 @@ resource "vault_generic_secret" "tunnel_token" {
 }  
 ```
 5. Install `cloudflared` on a host machine in your private network and run the tunnel:  
-   * [ Linux ](#tab-panel-7672)  
-   * [ Windows ](#tab-panel-7673)  
-   * [ macOS ](#tab-panel-7674)  
-   * [ Docker ](#tab-panel-7675)  
+   * [ Linux ](#tab-panel-6514)  
+   * [ Windows ](#tab-panel-6515)  
+   * [ macOS ](#tab-panel-6516)  
+   * [ Docker ](#tab-panel-6517)  
    1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.  
    2. Run the following command:  
    Terminal window  

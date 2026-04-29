@@ -5,6 +5,10 @@ description: Manage tunnel tokens and control who can run your remotely-managed 
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -19,9 +23,9 @@ A remotely-managed tunnel only requires the tunnel token to run. Anyone with acc
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-5906)
-* [ API ](#tab-panel-5907)
-* [ Terraform (v5) ](#tab-panel-5908)
+* [ Dashboard ](#tab-panel-4748)
+* [ API ](#tab-panel-4749)
+* [ Terraform (v5) ](#tab-panel-4750)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select a `cloudflared` tunnel and select **Edit**.
@@ -135,8 +139,8 @@ Cloudflare recommends rotating the tunnel token at a regular cadence to reduce t
 To rotate a tunnel token:
 
 1. Refresh the token on Cloudflare:  
-   * [ Dashboard ](#tab-panel-5909)  
-   * [ API ](#tab-panel-5910)  
+   * [ Dashboard ](#tab-panel-4751)  
+   * [ API ](#tab-panel-4752)  
    1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.  
    2. Select a `cloudflared` tunnel and select **Edit**.  
    3. Select **Refresh token**.  

@@ -4,6 +4,10 @@ description: Mount S3-compatible storage buckets into the Sandbox SDK filesystem
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Storage
@@ -39,8 +43,8 @@ await sandbox.mountBucket(
 * `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
 * `options` \- Mount configuration (see [MountBucketOptions](#mountbucketoptions))
 
-* [  JavaScript ](#tab-panel-8705)
-* [  TypeScript ](#tab-panel-8706)
+* [  JavaScript ](#tab-panel-7547)
+* [  TypeScript ](#tab-panel-7548)
 
 JavaScript
 
@@ -204,8 +208,8 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 * `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
 
-* [  JavaScript ](#tab-panel-8703)
-* [  TypeScript ](#tab-panel-8704)
+* [  JavaScript ](#tab-panel-7545)
+* [  TypeScript ](#tab-panel-7546)
 
 JavaScript
 

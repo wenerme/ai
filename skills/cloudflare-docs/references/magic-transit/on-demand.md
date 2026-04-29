@@ -4,6 +4,10 @@ description: Activate Magic Transit protection on demand during attacks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Magic Transit on-demand

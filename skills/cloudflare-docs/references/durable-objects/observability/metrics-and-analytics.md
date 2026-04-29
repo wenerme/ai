@@ -4,6 +4,10 @@ description: View Durable Objects namespace-level and request-level metrics, ana
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Metrics and analytics
@@ -35,8 +39,8 @@ You can view Durable Object logs from the Cloudflare dashboard. Logs are aggrega
 To start using Durable Object logging:
 
 1. Enable Durable Object logging in the Wrangler configuration file of the Worker that defines your Durable Object class:  
-   * [  wrangler.jsonc ](#tab-panel-7016)  
-   * [  wrangler.toml ](#tab-panel-7017)  
+   * [  wrangler.jsonc ](#tab-panel-5858)  
+   * [  wrangler.toml ](#tab-panel-5859)  
 JSONC  
 ```  
 {  

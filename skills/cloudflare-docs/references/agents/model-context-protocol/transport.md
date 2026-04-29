@@ -4,6 +4,10 @@ description: Configure Streamable HTTP transport for remote MCP servers built wi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -37,8 +41,8 @@ You can use the "Deploy to Cloudflare" button to create a remote MCP server.
 
 Create an MCP server using `createMcpHandler`. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker).
 
-* [  JavaScript ](#tab-panel-5260)
-* [  TypeScript ](#tab-panel-5261)
+* [  JavaScript ](#tab-panel-4094)
+* [  TypeScript ](#tab-panel-4095)
 
 JavaScript
 
@@ -186,8 +190,8 @@ Explain Code
 
 If your MCP server implements authentication & authorization using the [Workers OAuth Provider ↗](https://github.com/cloudflare/workers-oauth-provider) library, use `createMcpHandler` with the `apiRoute` and `apiHandler` properties. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker-authenticated).
 
-* [  JavaScript ](#tab-panel-5250)
-* [  TypeScript ](#tab-panel-5251)
+* [  JavaScript ](#tab-panel-4084)
+* [  TypeScript ](#tab-panel-4085)
 
 JavaScript
 
@@ -273,8 +277,8 @@ RPC transport does not support authentication. Use Streamable HTTP for external 
 
 Create your `McpAgent` with the tools you want to expose:
 
-* [  JavaScript ](#tab-panel-5262)
-* [  TypeScript ](#tab-panel-5263)
+* [  JavaScript ](#tab-panel-4096)
+* [  TypeScript ](#tab-panel-4097)
 
 JavaScript
 
@@ -405,8 +409,8 @@ Explain Code
 
 In your `Agent`, call `addMcpServer()` with the Durable Object binding in `onStart()`:
 
-* [  JavaScript ](#tab-panel-5256)
-* [  TypeScript ](#tab-panel-5257)
+* [  JavaScript ](#tab-panel-4090)
+* [  TypeScript ](#tab-panel-4091)
 
 JavaScript
 
@@ -547,8 +551,8 @@ Explain Code
 
 Route requests to your Chat agent:
 
-* [  JavaScript ](#tab-panel-5254)
-* [  TypeScript ](#tab-panel-5255)
+* [  JavaScript ](#tab-panel-4088)
+* [  TypeScript ](#tab-panel-4089)
 
 JavaScript
 
@@ -632,8 +636,8 @@ Explain Code
 
 Since RPC transport does not have an OAuth flow, you can pass user context directly as props:
 
-* [  JavaScript ](#tab-panel-5252)
-* [  TypeScript ](#tab-panel-5253)
+* [  JavaScript ](#tab-panel-4086)
+* [  TypeScript ](#tab-panel-4087)
 
 JavaScript
 
@@ -663,8 +667,8 @@ await this.addMcpServer("my-mcp", this.env.MyMCP, {
 
 Your `McpAgent` can then access these props:
 
-* [  JavaScript ](#tab-panel-5258)
-* [  TypeScript ](#tab-panel-5259)
+* [  JavaScript ](#tab-panel-4092)
+* [  TypeScript ](#tab-panel-4093)
 
 JavaScript
 
@@ -748,8 +752,8 @@ Props are type-safe (TypeScript extracts the Props type from your `McpAgent` gen
 
 The RPC transport has a configurable timeout for waiting for tool responses. By default, the server waits **60 seconds** for a tool handler to respond. You can customize this by overriding `getRpcTransportOptions()` in your `McpAgent`:
 
-* [  JavaScript ](#tab-panel-5264)
-* [  TypeScript ](#tab-panel-5265)
+* [  JavaScript ](#tab-panel-4098)
+* [  TypeScript ](#tab-panel-4099)
 
 JavaScript
 

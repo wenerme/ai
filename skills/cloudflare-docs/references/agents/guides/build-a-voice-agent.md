@@ -4,6 +4,10 @@ description: Build a real-time voice agent with speech-to-text, LLM processing, 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build a voice agent
@@ -45,8 +49,8 @@ The starter gives you a working Vite + React + Cloudflare Workers setup. You wil
 
 Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for your voice agent:
 
-* [  wrangler.jsonc ](#tab-panel-5128)
-* [  wrangler.toml ](#tab-panel-5129)
+* [  wrangler.jsonc ](#tab-panel-3962)
+* [  wrangler.toml ](#tab-panel-3963)
 
 JSONC
 
@@ -58,7 +62,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -113,7 +117,7 @@ name = "voice-agent"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -147,8 +151,8 @@ Explain Code
 
 Replace `src/server.ts` with the following. The `withVoice` mixin adds the full voice pipeline — STT, sentence chunking, TTS, and conversation persistence — to a standard `Agent` class.
 
-* [  JavaScript ](#tab-panel-5134)
-* [  TypeScript ](#tab-panel-5135)
+* [  JavaScript ](#tab-panel-3968)
+* [  TypeScript ](#tab-panel-3969)
 
 JavaScript
 
@@ -533,8 +537,8 @@ Open the app in your browser, select **Start Call**, and speak. You will see the
 
 You can intercept and transform data at each stage of the pipeline. For example, filter out short transcripts (noise) and adjust pronunciation before TTS:
 
-* [  JavaScript ](#tab-panel-5130)
-* [  TypeScript ](#tab-panel-5131)
+* [  JavaScript ](#tab-panel-3964)
+* [  TypeScript ](#tab-panel-3965)
 
 JavaScript
 
@@ -622,8 +626,8 @@ Returning `null` from `afterTranscribe` drops the utterance entirely — useful 
 
 Swap in third-party STT or TTS providers without changing your agent logic:
 
-* [  JavaScript ](#tab-panel-5132)
-* [  TypeScript ](#tab-panel-5133)
+* [  JavaScript ](#tab-panel-3966)
+* [  TypeScript ](#tab-panel-3967)
 
 JavaScript
 

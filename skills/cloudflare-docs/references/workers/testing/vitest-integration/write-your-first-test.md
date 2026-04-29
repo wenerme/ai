@@ -4,6 +4,10 @@ description: Write tests against Workers using Vitest
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Write your first test
@@ -172,8 +176,8 @@ If your test bindings differ from the bindings in your Wrangler config, you shou
 
 We will use this simple Worker as an example. It returns a 404 response for the `/404` path and `"Hello World!"` for all other paths.
 
-* [  JavaScript ](#tab-panel-9187)
-* [  TypeScript ](#tab-panel-9188)
+* [  JavaScript ](#tab-panel-9215)
+* [  TypeScript ](#tab-panel-9216)
 
 src/index.js
 
@@ -225,8 +229,8 @@ export default {
 
 By importing the Worker we can write a unit test for its `fetch` handler.
 
-* [  JavaScript ](#tab-panel-9191)
-* [  TypeScript ](#tab-panel-9192)
+* [  JavaScript ](#tab-panel-9219)
+* [  TypeScript ](#tab-panel-9220)
 
 test/unit.spec.js
 
@@ -346,8 +350,8 @@ Explain Code
 
 You can use the `exports` object provided by `cloudflare:workers` to write an integration test. `exports.default.fetch()` calls the default export handler defined in the main Worker.
 
-* [  JavaScript ](#tab-panel-9189)
-* [  TypeScript ](#tab-panel-9190)
+* [  JavaScript ](#tab-panel-9217)
+* [  TypeScript ](#tab-panel-9218)
 
 test/integration.spec.js
 

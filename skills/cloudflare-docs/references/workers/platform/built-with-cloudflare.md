@@ -4,6 +4,10 @@ description: Set up a Built with Cloudflare button
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Built with Cloudflare button
@@ -20,9 +24,9 @@ The "Built with Cloudflare" button can be used to share that you're using Cloudf
 
 The Built with Cloudflare button is an SVG and can be embedded anywhere. Use the following snippet to paste the button into your README, blog post, or documentation.
 
-* [ Markdown ](#tab-panel-8921)
-* [ HTML ](#tab-panel-8922)
-* [ URL ](#tab-panel-8923)
+* [ Markdown ](#tab-panel-8949)
+* [ HTML ](#tab-panel-8950)
+* [ URL ](#tab-panel-8951)
 
 ```
 

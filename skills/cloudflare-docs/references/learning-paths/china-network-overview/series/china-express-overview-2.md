@@ -4,12 +4,16 @@ description: Accelerate dynamic traffic outside mainland China.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # How to accelerate dynamic traffic outside of mainland China
 
-* [ Watch this episode ](#tab-panel-7513)
-* [ Series overview ](#tab-panel-7514)
+* [ Watch this episode ](#tab-panel-6409)
+* [ Series overview ](#tab-panel-6410)
 
 In this video, Jess Liu discusses Cloudflare's CDN Global Acceleration (formerly China Express), including solutions for high latency on dynamic content, accelerating API calls, accessing Cloudflare One services like the Cloudflare One Client and Cloudflare WAN from within mainland China, and securely connecting private enterprise networks.
 

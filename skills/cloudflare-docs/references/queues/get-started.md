@@ -4,6 +4,10 @@ description: Create your first Cloudflare Queue, a producer Worker, and a consum
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Getting started
@@ -89,8 +93,8 @@ To expose your queue to the code inside your Worker, you need to connect your qu
 
 To create a binding, open your newly generated `wrangler.jsonc` file and add the following:
 
-* [  wrangler.jsonc ](#tab-panel-8155)
-* [  wrangler.toml ](#tab-panel-8156)
+* [  wrangler.jsonc ](#tab-panel-6997)
+* [  wrangler.toml ](#tab-panel-6998)
 
 JSONC
 
@@ -297,8 +301,8 @@ Each queue can only have one consumer Worker connected to it. If you try to conn
 
 To connect your queue to your consumer Worker, open your Wrangler file and add this to the bottom:
 
-* [  wrangler.jsonc ](#tab-panel-8157)
-* [  wrangler.toml ](#tab-panel-8158)
+* [  wrangler.jsonc ](#tab-panel-6999)
+* [  wrangler.toml ](#tab-panel-7000)
 
 JSONC
 

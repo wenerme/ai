@@ -4,6 +4,10 @@ description: Pass in environment variables and secrets to your container
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Env Vars and Secrets
@@ -111,8 +115,8 @@ For full details on how to create secrets, see the [Workers Secrets documentatio
 
 Next, we need to add bindings to access our secrets, KV values, and environment variables in Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-6480)
-* [  wrangler.toml ](#tab-panel-6481)
+* [  wrangler.jsonc ](#tab-panel-5322)
+* [  wrangler.toml ](#tab-panel-5323)
 
 JSONC
 

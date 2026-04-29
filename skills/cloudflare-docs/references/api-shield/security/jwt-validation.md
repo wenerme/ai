@@ -4,6 +4,10 @@ description: Verify incoming JWTs to prevent replay attacks and token tampering 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # JSON Web Tokens validation
@@ -20,8 +24,8 @@ A JWT validation configuration has two parts: a token validation configuration t
 
 ### Add a token validation configuration
 
-* [  New dashboard ](#tab-panel-5433)
-* [ Old dashboard ](#tab-panel-5434)
+* [  New dashboard ](#tab-panel-4267)
+* [ Old dashboard ](#tab-panel-4268)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -44,8 +48,8 @@ To automatically keep your JWKS up to date when your identity provider refreshes
 
 ### Add a JWT validation rule
 
-* [  New dashboard ](#tab-panel-5435)
-* [ Old dashboard ](#tab-panel-5436)
+* [  New dashboard ](#tab-panel-4269)
+* [ Old dashboard ](#tab-panel-4270)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

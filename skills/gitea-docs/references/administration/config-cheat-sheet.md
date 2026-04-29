@@ -165,6 +165,9 @@ In addition, there is _`StaticRootPath`_ which can be set as a built-in at build
 - `ADD_CO_COMMITTER_TRAILERS`: **true**: Add co-authored-by and co-committed-by trailers to merge commit messages if committer does not match author.
 - `RETARGET_CHILDREN_ON_MERGE`: **true**: Retarget child pull requests to the parent pull request branch target on merge of parent pull request. It only works on merged PRs where the head and base branch target the same repo.
 - `DEFAULT_DELETE_BRANCH_AFTER_MERGE`: **false**: Set the default value for "Delete pull request branch after merge by default" for new repositories.
+- `DEFAULT_TITLE_SOURCE`: **first-commit**: Default source for the pull request title when opening a new PR. Valid options:
+  - `first-commit`: Uses the oldest commit's summary as the title. If there are multiple commits, still uses the first commit's message.
+  - `auto`: Uses the commit's summary when the PR contains a single commit; when there are multiple commits, converts the branch name into a human-readable title by normalizing separators and casing.
 
 ### Repository - Issue (`repository.issue`)
 
@@ -181,10 +184,10 @@ In addition, there is _`StaticRootPath`_ which can be set as a built-in at build
 
 ### Repository - Release (`repository.release`)
 
-- `ALLOWED_TYPES`: **_empty_**: Comma-separated list of allowed file extensions (`.zip`), mime types (`text/plain`) or wildcard type (`image/*`, `audio/*`, `video/*`). Empty value or `*/*` allows all types.
+- `ALLOWED_TYPES`: **_empty_**: Comma-separated list of allowed release attachment file extensions (`.zip`), mime types (`text/plain`) or wildcard type (`image/*`, `audio/*`, `video/*`). Empty value or `*/*` allows all types.
 - `DEFAULT_PAGING_NUM`: **10**: The default paging number of releases user interface
 - `FILE_MAX_SIZE`: **2048**: Max filesize limit for release attachments (MB)
-- `MAX_FILES`: **5**: Maximum number of attachments that can be uploaded at once for a release.
+- `MAX_FILES`: **5**: Maximum number of release attachments that can be uploaded at once for a release.
 - For other settings related to file attachments on releases, see the `attachment` section.
 
 ### Repository - Signing (`repository.signing`)
@@ -389,13 +392,13 @@ The following configuration set `Content-Type: application/vnd.android.package-a
 - `SSH_PORT`: **22**: SSH port displayed in clone URL.
 - `SSH_LISTEN_HOST`: **0.0.0.0**: Listen address for the built-in SSH server.
 - `SSH_LISTEN_PORT`: **`{SSH_PORT}`**: Port for the built-in SSH server.
-- `SSH_ROOT_PATH`: **~/.ssh**: Root path of SSH directory.
-- `SSH_CREATE_AUTHORIZED_KEYS_FILE`: **true**: Gitea will create a authorized_keys file by default when it is not using the internal ssh server. If you intend to use the AuthorizedKeysCommand functionality then you should turn this off.
+- `SSH_ROOT_PATH`: **_empty_**: Root path of SSH user directory for the system's standalone SSH server if Gitea is not using its builtin SSH server. Default is the '.ssh' directory in the run user's home directory.
+- `SSH_CREATE_AUTHORIZED_KEYS_FILE`: **true**: Gitea will create an authorized_keys file by default when it is not using the builtin SSH server. If you intend to use the AuthorizedKeysCommand functionality then you should turn this off.
 - `SSH_AUTHORIZED_KEYS_BACKUP`: **false**: Enable SSH Authorized Key Backup when rewriting all keys, default is false.
 - `SSH_TRUSTED_USER_CA_KEYS`: **_empty_**: Specifies the public keys of certificate authorities that are trusted to sign user certificates for authentication. Multiple keys should be comma separated. E.g.`ssh-<algorithm> <key>` or `ssh-<algorithm> <key1>, ssh-<algorithm> <key2>`. For more information see `TrustedUserCAKeys` in the sshd config man pages. When empty no file will be created and `SSH_AUTHORIZED_PRINCIPALS_ALLOW` will default to `off`.
 - `SSH_TRUSTED_USER_CA_KEYS_FILENAME`: **`RUN_USER`/.ssh/gitea-trusted-user-ca-keys.pem**: Absolute path of the `TrustedUserCaKeys` file Gitea will manage. If you're running your own ssh server and you want to use the Gitea managed file you'll also need to modify your sshd_config to point to this file. The official docker image will automatically work without further configuration.
 - `SSH_AUTHORIZED_PRINCIPALS_ALLOW`: **off** or **username, email**: \[off, username, email, anything\]: Specify the principals values that users are allowed to use as principal. When set to `anything` no checks are done on the principal string. When set to `off` authorized principal are not allowed to be set.
-- `SSH_CREATE_AUTHORIZED_PRINCIPALS_FILE`: **false/true**: Gitea will create a authorized_principals file by default when it is not using the internal ssh server and `SSH_AUTHORIZED_PRINCIPALS_ALLOW` is not `off`.
+- `SSH_CREATE_AUTHORIZED_PRINCIPALS_FILE`: **false/true**: Gitea will create an authorized_principals file by default when it is not using the builtin SSH server and `SSH_AUTHORIZED_PRINCIPALS_ALLOW` is not `off`.
 - `SSH_AUTHORIZED_PRINCIPALS_BACKUP`: **false/true**: Enable SSH Authorized Principals Backup when rewriting all keys, default is true if `SSH_AUTHORIZED_PRINCIPALS_ALLOW` is not `off`.
 - `SSH_AUTHORIZED_KEYS_COMMAND_TEMPLATE`: **`{{.AppPath}} --config={{.CustomConf}} serv key-{{.Key.ID}}`**: Set the template for the command to passed on authorized keys. Possible keys are: AppPath, AppWorkPath, CustomConf, CustomPath, Key - where Key is a `models/asymkey.PublicKey` and the others are strings which are shellquoted.
 - `SSH_SERVER_CIPHERS`: **`chacha20-poly1305@openssh.com`, `aes128-ctr`, `aes192-ctr`, `aes256-ctr`, `aes128-gcm@openssh.com`, `aes256-gcm@openssh.com`**: For the built-in SSH server, choose the ciphers to support for SSH connections, for system SSH this setting has no effect.
@@ -942,12 +945,15 @@ Default templates for project board view:
 - `PROJECT_BOARD_BASIC_KANBAN_TYPE`: **To Do, In Progress, Done**
 - `PROJECT_BOARD_BUG_TRIAGE_TYPE`: **Needs Triage, High Priority, Low Priority, Closed**
 
-## Issue and pull request attachments (`attachment`)
+## Issue, pull-request and release attachments (`attachment`)
 
-- `ENABLED`: **true**: Whether issue and pull request attachments are enabled.
-- `ALLOWED_TYPES`: **.avif,.cpuprofile,.csv,.dmp,.docx,.fodg,.fodp,.fods,.fodt,.gif,.gz,.jpeg,.jpg,.json,.jsonc,.log,.md,.mov,.mp4,.odf,.odg,.odp,.ods,.odt,.patch,.pdf,.png,.pptx,.svg,.tgz,.txt,.webm,.webp,.xls,.xlsx,.zip**: Comma-separated list of allowed file extensions (`.zip`), mime types (`text/plain`) or wildcard type (`image/*`, `audio/*`, `video/*`). Empty value or `*/*` allows all types.
-- `MAX_SIZE`: **100**: Max size of each file in MB.
-- `MAX_FILES`: **5**: Maximum number of attachments that can be uploaded at once.
+ALLOWED_TYPES/MAX_SIZE/MAX_FILES in this section only affect issue and pull-request attachments, not release attachments.
+Release attachment has its own config options in `[repository.release]` section.
+
+- `ENABLED`: **true**: Whether issue, pull-request and release attachments are enabled.
+- `ALLOWED_TYPES`: **.avif,.cpuprofile,.csv,.dmp,.docx,.fodg,.fodp,.fods,.fodt,.gif,.gz,.jpeg,.jpg,.json,.jsonc,.log,.md,.mov,.mp4,.odf,.odg,.odp,.ods,.odt,.patch,.pdf,.png,.pptx,.svg,.tgz,.txt,.webm,.webp,.xls,.xlsx,.zip**: Comma-separated list of allowed issue/pull-request attachment file extensions (`.zip`), mime types (`text/plain`) or wildcard type (`image/*`, `audio/*`, `video/*`). Empty value or `*/*` allows all types.
+- `MAX_SIZE`: **100**: Max size of each issue/pull-request attachment file in MB.
+- `MAX_FILES`: **5**: Maximum number of issue/pull-request attachments that can be uploaded at once.
 - `STORAGE_TYPE`: **local**: Storage type for attachments, it could be `<blank>`, `local`, `minio`, `azureblob` or `xxx` which defined in another section with `[storage.xxx]`.
 
   For `STORAGE_TYPE = ` or there is no this configuration item, all storages will be derived from `[storage]` if configured or defult values.

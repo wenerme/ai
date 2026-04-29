@@ -4,6 +4,10 @@ description: Reference information for Common policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -26,8 +30,8 @@ After seven days, view your [Shadow IT SaaS Analytics](https://developers.cloudf
 
 To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-6307)
-* [ API ](#tab-panel-6308)
+* [ Dashboard ](#tab-panel-5149)
+* [ API ](#tab-panel-5150)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -78,8 +82,8 @@ Explain Code
 
 Configure access on a per user or group basis by adding [identity-based conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to your policies.
 
-* [ Dashboard ](#tab-panel-6305)
-* [ API ](#tab-panel-6306)
+* [ Dashboard ](#tab-panel-5147)
+* [ API ](#tab-panel-5148)
 
 | Selector         | Operator | Value         | Logic | Action |
 | ---------------- | -------- | ------------- | ----- | ------ |
@@ -131,9 +135,9 @@ Require devices to have certain software installed or other configuration attrib
 
 In the following example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
 
-* [ Dashboard ](#tab-panel-6329)
-* [ API ](#tab-panel-6330)
-* [ Terraform ](#tab-panel-6331)
+* [ Dashboard ](#tab-panel-5171)
+* [ API ](#tab-panel-5172)
+* [ Terraform ](#tab-panel-5173)
 
 | Selector                     | Operator | Value                   | Logic | Action |
 | ---------------------------- | -------- | ----------------------- | ----- | ------ |
@@ -220,8 +224,8 @@ Restrict user access to only the specific sites or applications configured in yo
 
 ### 1\. Allow HTTP and HTTPS traffic
 
-* [ Dashboard ](#tab-panel-6309)
-* [ API ](#tab-panel-6310)
+* [ Dashboard ](#tab-panel-5151)
+* [ API ](#tab-panel-5152)
 
 | Selector          | Operator | Value   | Logic | Action |
 | ----------------- | -------- | ------- | ----- | ------ |
@@ -269,8 +273,8 @@ Explain Code
 
 ### 2\. Block all other traffic
 
-* [ Dashboard ](#tab-panel-6311)
-* [ API ](#tab-panel-6312)
+* [ Dashboard ](#tab-panel-5153)
+* [ API ](#tab-panel-5154)
 
 | Selector | Operator | Value        | Action |
 | -------- | -------- | ------------ | ------ |
@@ -319,8 +323,8 @@ Explain Code
 
 If your organization blocks traffic by default with a Network policy and you want to [inspect HTTP traffic on all ports](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/#inspect-on-all-ports), you need to explicitly allow HTTP and TLS traffic to filter it.
 
-* [ Dashboard ](#tab-panel-6313)
-* [ API ](#tab-panel-6314)
+* [ Dashboard ](#tab-panel-5155)
+* [ API ](#tab-panel-5156)
 
 | Selector          | Operator | Value  | Logic | Action |
 | ----------------- | -------- | ------ | ----- | ------ |
@@ -376,8 +380,8 @@ When using [source IP proxy endpoints](https://developers.cloudflare.com/cloudfl
 
 #### 1\. Allow proxy endpoint traffic from specific source IPs
 
-* [ Dashboard ](#tab-panel-6315)
-* [ API ](#tab-panel-6316)
+* [ Dashboard ](#tab-panel-5157)
+* [ API ](#tab-panel-5158)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -428,8 +432,8 @@ Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
 #### 2\. Block all other proxy endpoint traffic to private network
 
-* [ Dashboard ](#tab-panel-6317)
-* [ API ](#tab-panel-6318)
+* [ Dashboard ](#tab-panel-5159)
+* [ API ](#tab-panel-5160)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -483,8 +487,8 @@ When using [authorization proxy endpoints](https://developers.cloudflare.com/clo
 
 #### 1\. Allow proxy endpoint traffic from specific source IPs
 
-* [ Dashboard ](#tab-panel-6319)
-* [ API ](#tab-panel-6320)
+* [ Dashboard ](#tab-panel-5161)
+* [ API ](#tab-panel-5162)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -535,8 +539,8 @@ Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
 #### 2\. Block all other proxy endpoint traffic to private network
 
-* [ Dashboard ](#tab-panel-6323)
-* [ API ](#tab-panel-6324)
+* [ Dashboard ](#tab-panel-5165)
+* [ API ](#tab-panel-5166)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -592,8 +596,8 @@ The following example consists of two policies: the first allows specific users 
 
 ### 1\. Allow company employees
 
-* [ Dashboard ](#tab-panel-6321)
-* [ API ](#tab-panel-6322)
+* [ Dashboard ](#tab-panel-5163)
+* [ API ](#tab-panel-5164)
 
 | Selector       | Operator      | Value           | Logic | Action |
 | -------------- | ------------- | --------------- | ----- | ------ |
@@ -641,8 +645,8 @@ Explain Code
 
 ### 2\. Block everyone else
 
-* [ Dashboard ](#tab-panel-6325)
-* [ API ](#tab-panel-6326)
+* [ Dashboard ](#tab-panel-5167)
+* [ API ](#tab-panel-5168)
 
 | Selector       | Operator | Value      | Action |
 | -------------- | -------- | ---------- | ------ |
@@ -691,8 +695,8 @@ Explain Code
 
 Override traffic directed toward a specific IP address with a different IP address.
 
-* [ Dashboard ](#tab-panel-6327)
-* [ API ](#tab-panel-6328)
+* [ Dashboard ](#tab-panel-5169)
+* [ API ](#tab-panel-5170)
 
 | Selector         | Operator | Value        | Logic | Action           |
 | ---------------- | -------- | ------------ | ----- | ---------------- |

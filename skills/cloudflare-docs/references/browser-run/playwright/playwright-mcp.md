@@ -4,6 +4,10 @@ description: Deploy a Playwright MCP server that uses Browser Run to provide bro
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -64,8 +68,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-5585)
-* [  wrangler.toml ](#tab-panel-5586)
+* [  wrangler.jsonc ](#tab-panel-4421)
+* [  wrangler.toml ](#tab-panel-4422)
 
 JSONC
 
@@ -81,7 +85,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -138,7 +142,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 

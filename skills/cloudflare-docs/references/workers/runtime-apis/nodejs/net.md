@@ -4,6 +4,10 @@ description: Use the Node.js net module in Cloudflare Workers to create TCP sock
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # net
@@ -16,8 +20,8 @@ You can use [node:net ↗](https://nodejs.org/api/net.html) to create a direct c
 
 These functions use [connect](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#connect) functionality from the built-in `cloudflare:sockets` module.
 
-* [  JavaScript ](#tab-panel-9041)
-* [  TypeScript ](#tab-panel-9042)
+* [  JavaScript ](#tab-panel-9069)
+* [  TypeScript ](#tab-panel-9070)
 
 index.js
 

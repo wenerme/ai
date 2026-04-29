@@ -4,6 +4,10 @@ description: Cloudflare's Markdown for Agents converts HTML to Markdown at the e
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Markdown for Agents
@@ -35,8 +39,8 @@ curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agent
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-7192)
-* [  TypeScript ](#tab-panel-7193)
+* [  JavaScript ](#tab-panel-6034)
+* [  TypeScript ](#tab-panel-6035)
 
 JavaScript
 
@@ -150,9 +154,9 @@ By default Markdown for Agents converted responses include the `Content-Signal: 
 
 ## How to enable
 
-* [ Dashboard ](#tab-panel-7189)
-* [ API ](#tab-panel-7190)
-* [ Custom Hostnames ](#tab-panel-7191)
+* [ Dashboard ](#tab-panel-6031)
+* [ API ](#tab-panel-6032)
+* [ Custom Hostnames ](#tab-panel-6033)
 
 To enable Markdown for Agents for your zone in the dashboard:
 

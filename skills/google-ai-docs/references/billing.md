@@ -217,11 +217,13 @@ Each [tier](https://ai.google.dev/gemini-api/docs/billing#about-billing) has a m
 | **Tier 2** | $2,000 |
 | **Tier 3** | $20,000 - $100,000 |
 
-Monthly usage caps are enforced at the [billing account](https://ai.google.dev/gemini-api/docs/billing#cloud-billing)
-level; they are preset and non-configurable. Total spend is aggregated
-across all linked projects; after the cumulative total reaches the tier
-limit, service is suspended for all projects linked to that billing account
-until the start of the next billing cycle (monthly).
+Monthly usage caps are enforced for the Gemini API at the [billing account](https://ai.google.dev/gemini-api/docs/billing#cloud-billing) level. While default limits are preset, you can [request an
+increase](https://docs.google.com/forms/d/e/1FAIpQLSdiP6BWJyNNN65lnwnlOr-5Kv0MOFp0jLQyqi_ixVCfddqWBw/viewform)
+to accommodate higher usage. Total spend is aggregated across all linked
+projects that have the Gemini API service enabled. After the cumulative account
+total reaches the tier limit, service is paused for all projects linked to that
+billing account until the start of the next billing cycle (the 1st of each
+month).
 
 > [!CAUTION]
 > **Caution:** **Tier spend caps will start being *enforced* on April 1, 2026** , though their interface will be visible in AI Studio earlier, to allow users time to adjust.   

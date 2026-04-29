@@ -4,6 +4,10 @@ description: Short-lived certificates (legacy) in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -199,8 +203,8 @@ If there are any include statements below these lines, the configurations in tho
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-5793)
-* [ CentOS/RHEL ](#tab-panel-5794)
+* [ Debian/Ubuntu ](#tab-panel-4635)
+* [ CentOS/RHEL ](#tab-panel-4636)
 
 For Debian/Ubuntu:
 

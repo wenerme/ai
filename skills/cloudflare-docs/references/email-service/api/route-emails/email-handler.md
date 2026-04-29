@@ -4,6 +4,10 @@ description: Process incoming emails with the email() handler in Cloudflare Work
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Workers API
@@ -92,9 +96,9 @@ Explain Code
 
 ### Properties
 
-* [ Basic properties ](#tab-panel-7071)
-* [ Reading content ](#tab-panel-7072)
-* [ Parse email content ](#tab-panel-7073)
+* [ Basic properties ](#tab-panel-5913)
+* [ Reading content ](#tab-panel-5914)
+* [ Parse email content ](#tab-panel-5915)
 
 TypeScript
 
@@ -296,9 +300,9 @@ Explain Code
 
 Forward incoming emails to verified destination addresses:
 
-* [ Simple forwarding ](#tab-panel-7074)
-* [ Conditional forwarding ](#tab-panel-7075)
-* [ Multiple forwarding ](#tab-panel-7076)
+* [ Simple forwarding ](#tab-panel-5916)
+* [ Conditional forwarding ](#tab-panel-5917)
+* [ Multiple forwarding ](#tab-panel-5918)
 
 TypeScript
 
@@ -445,8 +449,8 @@ Explain Code
 
 Send automatic replies using the Email Service binding:
 
-* [ Simple auto-reply ](#tab-panel-7077)
-* [ Smart auto-reply ](#tab-panel-7078)
+* [ Simple auto-reply ](#tab-panel-5919)
+* [ Smart auto-reply ](#tab-panel-5920)
 
 TypeScript
 
@@ -614,8 +618,8 @@ Explain Code
 
 Reject emails with a permanent SMTP error:
 
-* [ Simple rejection ](#tab-panel-7079)
-* [ Content-based rejection ](#tab-panel-7080)
+* [ Simple rejection ](#tab-panel-5921)
+* [ Content-based rejection ](#tab-panel-5922)
 
 TypeScript
 

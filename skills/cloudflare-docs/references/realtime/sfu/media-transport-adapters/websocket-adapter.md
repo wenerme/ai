@@ -4,6 +4,10 @@ description: Stream audio and video between WebRTC tracks and WebSocket endpoint
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # WebSocket adapter
@@ -25,8 +29,8 @@ Stream audio and video between WebRTC tracks and WebSocket endpoints. Supports i
 
 ## How it works
 
-* [ Ingest (WebSocket → WebRTC) ](#tab-panel-8481)
-* [ Stream (WebRTC → WebSocket) ](#tab-panel-8482)
+* [ Ingest (WebSocket → WebRTC) ](#tab-panel-7323)
+* [ Stream (WebRTC → WebSocket) ](#tab-panel-7324)
 
 ### Create WebRTC tracks from external audio
 
@@ -84,8 +88,8 @@ POST /v1/apps/{appId}/adapters/websocket/new
 
 ```
 
-* [ Ingest ](#tab-panel-8483)
-* [ Stream ](#tab-panel-8484)
+* [ Ingest ](#tab-panel-7325)
+* [ Stream ](#tab-panel-7326)
 
 #### Request body
 

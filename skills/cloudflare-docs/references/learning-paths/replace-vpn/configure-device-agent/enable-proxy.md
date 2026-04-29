@@ -4,6 +4,10 @@ description: Route device traffic through Cloudflare Gateway.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Proxy traffic through Gateway
@@ -12,8 +16,8 @@ With Cloudflare Gateway, you can log and filter DNS, network, and HTTP traffic f
 
 ## Enable the proxy
 
-* [ Dashboard ](#tab-panel-7654)
-* [ Terraform (v5) ](#tab-panel-7655)
+* [ Dashboard ](#tab-panel-6496)
+* [ Terraform (v5) ](#tab-panel-6497)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.

@@ -4,6 +4,10 @@ description: Understand how to manage Iceberg REST catalogs associated with R2 b
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Manage catalogs
@@ -18,8 +22,8 @@ Learn how to:
 
 Enabling the catalog on a bucket turns on the REST catalog interface and provides a **Catalog URI** and **Warehouse name** required by Iceberg clients. Once enabled, you can create and manage Iceberg tables in that bucket.
 
-* [ Dashboard ](#tab-panel-8274)
-* [ Wrangler CLI ](#tab-panel-8275)
+* [ Dashboard ](#tab-panel-7116)
+* [ Wrangler CLI ](#tab-panel-7117)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -44,8 +48,8 @@ After enabling, Wrangler will return your catalog URI and warehouse name.
 
 When you disable the catalog on a bucket, it immediately stops serving requests from the catalog interface. Any Iceberg table references stored in that catalog become inaccessible until you re-enable it.
 
-* [ Dashboard ](#tab-panel-8276)
-* [ Wrangler CLI ](#tab-panel-8277)
+* [ Dashboard ](#tab-panel-7118)
+* [ Wrangler CLI ](#tab-panel-7119)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -73,8 +77,8 @@ Table maintenance operations such as compaction and snapshot expiration requires
 
 Refer to [Authenticate your Iceberg engine](#authenticate-your-iceberg-engine) for details on creating a token with the required permissions.
 
-* [ Dashboard ](#tab-panel-8278)
-* [ Wrangler CLI ](#tab-panel-8279)
+* [ Dashboard ](#tab-panel-7120)
+* [ Wrangler CLI ](#tab-panel-7121)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -113,8 +117,8 @@ Once enabled, compaction applies retroactively to all existing tables (for catal
 
 Disabling compaction will prevent the process from running for all tables (catalog level) or a specific table (table level). You can re-enable it at any time.
 
-* [ Dashboard ](#tab-panel-8280)
-* [ Wrangler CLI ](#tab-panel-8281)
+* [ Dashboard ](#tab-panel-7122)
+* [ Wrangler CLI ](#tab-panel-7123)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)

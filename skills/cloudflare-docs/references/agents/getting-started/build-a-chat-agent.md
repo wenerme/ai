@@ -4,6 +4,10 @@ description: Build a streaming AI chat agent with tools using Workers AI — no 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build a chat agent
@@ -47,8 +51,8 @@ npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
 
 Replace your `wrangler.jsonc` with:
 
-* [  wrangler.jsonc ](#tab-panel-5106)
-* [  wrangler.toml ](#tab-panel-5107)
+* [  wrangler.jsonc ](#tab-panel-3940)
+* [  wrangler.toml ](#tab-panel-3941)
 
 JSONC
 
@@ -62,7 +66,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -93,7 +97,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -131,8 +135,8 @@ Key settings:
 
 Create `src/server.ts`. This is where your agent lives:
 
-* [  JavaScript ](#tab-panel-5108)
-* [  TypeScript ](#tab-panel-5109)
+* [  JavaScript ](#tab-panel-3942)
+* [  TypeScript ](#tab-panel-3943)
 
 JavaScript
 
@@ -544,8 +548,8 @@ Explain Code
 
 Create `src/client.tsx`:
 
-* [  JavaScript ](#tab-panel-5110)
-* [  TypeScript ](#tab-panel-5111)
+* [  JavaScript ](#tab-panel-3944)
+* [  TypeScript ](#tab-panel-3945)
 
 JavaScript
 

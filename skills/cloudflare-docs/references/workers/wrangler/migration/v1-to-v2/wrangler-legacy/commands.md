@@ -4,6 +4,10 @@ description: Reference for all Wrangler v1 CLI commands, including generate, pub
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Commands
@@ -596,8 +600,8 @@ Additionally, KV namespaces can be used with environments. This is useful for wh
 
 A Wrangler file with two environments:
 
-* [  wrangler.jsonc ](#tab-panel-9941)
-* [  wrangler.toml ](#tab-panel-9942)
+* [  wrangler.jsonc ](#tab-panel-9969)
+* [  wrangler.toml ](#tab-panel-9970)
 
 JSONC
 
@@ -706,8 +710,8 @@ wrangler kv:key get --namespace-id=06779da6940b431db6e566b4846d64db "my key"
 
 Most `kv` subcommands also allow you to specify an environment with the optional `--env` flag. This allows you to publish Workers running the same code but with different namespaces. For example, you could use separate staging and production namespaces for KV data in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9943)
-* [  wrangler.toml ](#tab-panel-9944)
+* [  wrangler.jsonc ](#tab-panel-9971)
+* [  wrangler.toml ](#tab-panel-9972)
 
 JSONC
 

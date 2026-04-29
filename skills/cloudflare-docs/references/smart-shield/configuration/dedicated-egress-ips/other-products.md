@@ -4,6 +4,10 @@ description: Combine Dedicated CDN Egress IPs with Access, CNI, Spectrum, and Wo
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use with other Cloudflare products

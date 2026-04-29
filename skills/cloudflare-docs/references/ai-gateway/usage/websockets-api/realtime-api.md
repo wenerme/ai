@@ -4,6 +4,10 @@ description: Connect to AI providers that support real-time WebSocket interactio
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Realtime WebSockets API

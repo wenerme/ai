@@ -53,6 +53,22 @@ WORK_IN_PROGRESS_PREFIXES=WIP:,[WIP]
 
 The first value of the list will be used in helpers.
 
+## Default pull request title
+
+When opening a new pull request, Gitea pre-fills the title field. The source of that title is controlled by the `DEFAULT_TITLE_SOURCE` setting in `app.ini`:
+
+```ini
+[repository.pull-request]
+DEFAULT_TITLE_SOURCE = first-commit
+```
+
+Two modes are available:
+
+- **`first-commit`** (default): The title is taken from the summary line of the oldest commit in the branch. This applies regardless of how many commits are included in the PR.
+- **`auto`**: When the PR contains a single commit, its summary line is used as the title (same as `first-commit` for one commit). When the PR contains multiple commits, Gitea converts the branch name into a human-readable sentence: dashes, underscores, and `camelCase` word boundaries are replaced with spaces, and the first letter is capitalized.
+
+Example: branch name `fix-user-login-flow` with multiple commits produces the title `Fix user login flow` under `auto`, but would use the oldest commit's message under `first-commit`.
+
 ## Pull Request Templates
 
 You can find more information about pull request templates at the page [Issue and Pull Request templates](issue-pull-request-templates.md).

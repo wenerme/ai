@@ -4,6 +4,10 @@ description: In this tutorial, you will learn to build an API on Workers which w
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -174,8 +178,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs your Hyperdrive ID. You can now bind your Hyperdrive configuration to your Worker in your Wrangler configuration by replacing the content with the following:
 
-* [  wrangler.jsonc ](#tab-panel-7400)
-* [  wrangler.toml ](#tab-panel-7401)
+* [  wrangler.jsonc ](#tab-panel-6242)
+* [  wrangler.toml ](#tab-panel-6243)
 
 JSONC
 
@@ -191,7 +195,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": [
 
@@ -230,7 +234,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 

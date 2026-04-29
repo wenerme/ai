@@ -4,6 +4,10 @@ description: Gain end-to-end visibility into request flows across your Workers a
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Traces
@@ -31,8 +35,8 @@ For a full list of instrumented operations , see the [spans and attributes docum
 
 You can configure tracing by setting `observability.traces.enabled = true` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#observability).
 
-* [  wrangler.jsonc ](#tab-panel-8917)
-* [  wrangler.toml ](#tab-panel-8918)
+* [  wrangler.jsonc ](#tab-panel-8945)
+* [  wrangler.toml ](#tab-panel-8946)
 
 JSONC
 
@@ -98,8 +102,8 @@ The valid sampling range is from `0` to `1`, where `0` indicates zero out of one
 
 If you have not specified a sampling rate, it defaults to `1`, meaning 100% of requests will be traced.
 
-* [  wrangler.jsonc ](#tab-panel-8919)
-* [  wrangler.toml ](#tab-panel-8920)
+* [  wrangler.jsonc ](#tab-panel-8947)
+* [  wrangler.toml ](#tab-panel-8948)
 
 JSONC
 

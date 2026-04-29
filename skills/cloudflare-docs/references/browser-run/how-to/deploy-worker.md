@@ -4,6 +4,10 @@ description: Create and deploy a Cloudflare Worker that uses Browser Run to take
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Deploy a Browser Run Worker
@@ -94,8 +98,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-5575)
-* [  wrangler.toml ](#tab-panel-5576)
+* [  wrangler.jsonc ](#tab-panel-4411)
+* [  wrangler.toml ](#tab-panel-4412)
 
 JSONC
 
@@ -111,7 +115,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -154,7 +158,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -179,8 +183,8 @@ Explain Code
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-5573)
-* [  TypeScript ](#tab-panel-5574)
+* [  JavaScript ](#tab-panel-4409)
+* [  TypeScript ](#tab-panel-4410)
 
 Update `src/index.js` with your Worker code:
 

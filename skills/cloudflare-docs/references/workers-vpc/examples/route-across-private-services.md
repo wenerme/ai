@@ -4,6 +4,10 @@ description: Build a Worker gateway that routes and load balances across multipl
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Route to private services from Workers
@@ -58,8 +62,8 @@ Note the service IDs returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9549)
-* [  wrangler.toml ](#tab-panel-9550)
+* [  wrangler.jsonc ](#tab-panel-8432)
+* [  wrangler.toml ](#tab-panel-8433)
 
 JSONC
 
@@ -75,7 +79,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "vpc_services": [
 
@@ -116,7 +120,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[vpc_services]]

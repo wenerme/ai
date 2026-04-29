@@ -4,6 +4,10 @@ description: Set up advanced nameservers for your Foundation DNS zone.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Set up advanced nameservers
@@ -57,8 +61,8 @@ In this example, the TXT record and the A record for `www.example.com` will not 
 To enable advanced nameservers on an existing zone:
 
 1. Opt for advanced nameservers on your zone:  
-   * [ Dashboard ](#tab-panel-6715)  
-   * [ API ](#tab-panel-6716)  
+   * [ Dashboard ](#tab-panel-5557)  
+   * [ API ](#tab-panel-5558)  
    1. In the Cloudflare dashboard, go to the **DNS Records** page.  
    [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)  
    2. In the **Cloudflare nameservers** card, enable **Advanced nameservers**.  

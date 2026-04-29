@@ -4,6 +4,10 @@ description: Serve content over HTTP/3 with QUIC for faster connections.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -32,8 +36,8 @@ This setting is for connection between the user and Cloudflare. HTTP/3 connectio
 
 HTTP/3 is available to all plans (though it does require an [SSL certificate at Cloudflare’s edge network](https://developers.cloudflare.com/ssl/get-started/)).
 
-* [ Dashboard ](#tab-panel-9051)
-* [ API ](#tab-panel-9052)
+* [ Dashboard ](#tab-panel-7893)
+* [ API ](#tab-panel-7894)
 
 To enable **HTTP/3** in the dashboard:
 

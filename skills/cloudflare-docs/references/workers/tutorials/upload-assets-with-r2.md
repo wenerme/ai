@@ -4,6 +4,10 @@ description: This tutorial explains how to create a TypeScript-based Cloudflare 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -91,8 +95,8 @@ After your new R2 bucket is ready, use it inside your Worker application.
 
 Use your R2 bucket inside your Worker project by modifying the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to include an R2 bucket [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Add the following R2 bucket binding to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9229)
-* [  wrangler.toml ](#tab-panel-9230)
+* [  wrangler.jsonc ](#tab-panel-9257)
+* [  wrangler.toml ](#tab-panel-9258)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: Learn how Speed Brain enhances web performance by prefetching likel
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Speed Brain
@@ -90,9 +94,9 @@ While you can use Speed Brain without RUM enabled, you will not have visibility 
 
 Speed Brain is available in Cloudflare's **Speed** tab of the dashboard and also in the API.
 
-* [ Dashboard ](#tab-panel-9042)
-* [ API ](#tab-panel-9043)
-* [ Terraform ](#tab-panel-9044)
+* [ Dashboard ](#tab-panel-7884)
+* [ API ](#tab-panel-7885)
+* [ Terraform ](#tab-panel-7886)
 
 To enable or disable **Speed Brain** in the dashboard:
 

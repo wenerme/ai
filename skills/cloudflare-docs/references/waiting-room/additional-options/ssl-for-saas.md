@@ -4,6 +4,10 @@ description: Use Waiting Room with Cloudflare for SaaS custom hostnames.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Combine with Cloudflare for SaaS

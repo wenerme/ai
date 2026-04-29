@@ -4,6 +4,10 @@ description: Routes in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -37,8 +41,8 @@ Use CIDR routes to forward traffic from your mesh node to devices on your local 
 
 ### Add a route
 
-* [ Dashboard ](#tab-panel-5899)
-* [ API ](#tab-panel-5900)
+* [ Dashboard ](#tab-panel-4741)
+* [ API ](#tab-panel-4742)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -80,8 +84,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" 
 
 ### Edit a route
 
-* [ Dashboard ](#tab-panel-5901)
-* [ API ](#tab-panel-5902)
+* [ Dashboard ](#tab-panel-4743)
+* [ API ](#tab-panel-4744)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the edit icon next to the route you want to modify.
@@ -117,8 +121,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$
 
 ### Delete a route
 
-* [ Dashboard ](#tab-panel-5897)
-* [ API ](#tab-panel-5898)
+* [ Dashboard ](#tab-panel-4739)
+* [ API ](#tab-panel-4740)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the delete icon next to the route.

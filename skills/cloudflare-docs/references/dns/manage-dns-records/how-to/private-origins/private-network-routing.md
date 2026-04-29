@@ -4,6 +4,10 @@ description: Route DNS record traffic to private origins through tunnels.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -50,8 +54,8 @@ Virtual networks
 
 Traffic routes through your default virtual network. Selecting a specific virtual network is not supported.
 
-* [ Dashboard ](#tab-panel-5583)
-* [ API ](#tab-panel-5584)
+* [ Dashboard ](#tab-panel-5589)
+* [ API ](#tab-panel-5590)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

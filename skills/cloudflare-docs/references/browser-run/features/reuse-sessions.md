@@ -4,6 +4,10 @@ description: Improve Browser Run performance by reconnecting to existing browser
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Reuse sessions
@@ -73,8 +77,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-5559)
-* [  wrangler.toml ](#tab-panel-5560)
+* [  wrangler.jsonc ](#tab-panel-4395)
+* [  wrangler.toml ](#tab-panel-4396)
 
 JSONC
 
@@ -90,7 +94,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -119,7 +123,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -137,8 +141,8 @@ The script below starts by fetching the current running sessions. If there are a
 
 Take into account that if the browser is idle, i.e. does not get any command, for more than the current [limit](https://developers.cloudflare.com/browser-run/limits/), it will close automatically, so you must have enough requests per minute to keep it alive.
 
-* [  JavaScript ](#tab-panel-5561)
-* [  TypeScript ](#tab-panel-5562)
+* [  JavaScript ](#tab-panel-4397)
+* [  TypeScript ](#tab-panel-4398)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Create an origin rule to change the HTTP `Host` header and the reso
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Change the HTTP Host header and DNS record
@@ -14,8 +18,8 @@ The following origin rule overrides the HTTP `Host` header to `hr-server.example
 
 The `Host` header override only updates the header value; the DNS record override will handle the rerouting of incoming requests. For more information on these overrides, refer to [Origin Rules settings](https://developers.cloudflare.com/rules/origin-rules/features/).
 
-* [ Dashboard ](#tab-panel-8509)
-* [ API ](#tab-panel-8510)
+* [ Dashboard ](#tab-panel-7351)
+* [ API ](#tab-panel-7352)
 
 Expression when using the Expression Builder:
 

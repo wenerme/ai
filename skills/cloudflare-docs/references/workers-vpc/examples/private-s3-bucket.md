@@ -4,6 +4,10 @@ description: Use Workers VPC to read objects from a private S3-compatible bucket
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Access a private S3 bucket
@@ -145,8 +149,8 @@ curl -i https://your-bucket-name.s3.us-west-2.amazonaws.com/test-file.txt
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9547)
-* [  wrangler.toml ](#tab-panel-9548)
+* [  wrangler.jsonc ](#tab-panel-8430)
+* [  wrangler.toml ](#tab-panel-8431)
 
 JSONC
 
@@ -162,7 +166,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "vpc_services": [
 
@@ -195,7 +199,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[vpc_services]]

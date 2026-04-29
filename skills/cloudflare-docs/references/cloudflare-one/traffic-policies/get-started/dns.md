@@ -4,6 +4,10 @@ description: DNS filtering in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -58,8 +62,8 @@ To confirm that your device's DNS queries are flowing through Gateway:
 
 A DNS policy has two parts: a **traffic condition** that defines which queries to match (for example, all queries to gambling sites) and an **action** that defines what to do with matching queries (for example, block them). To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-6252)
-* [ API ](#tab-panel-6253)
+* [ Dashboard ](#tab-panel-5094)
+* [ API ](#tab-panel-5095)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.

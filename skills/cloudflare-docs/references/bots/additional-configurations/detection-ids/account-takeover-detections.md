@@ -4,6 +4,10 @@ description: Detection IDs for identifying and mitigating automated account take
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Account takeover detections
@@ -30,8 +34,8 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 
 To access account takeover detections:
 
-* [  New dashboard ](#tab-panel-5523)
-* [ Old dashboard ](#tab-panel-5524)
+* [  New dashboard ](#tab-panel-4359)
+* [ Old dashboard ](#tab-panel-4360)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -60,8 +64,8 @@ Rate limiting rules can limit the number of logins from a particular IP, JA4 fin
 
 To use rate limiting rules with account takeover detections:
 
-* [  New dashboard ](#tab-panel-5525)
-* [ Old dashboard ](#tab-panel-5526)
+* [  New dashboard ](#tab-panel-4361)
+* [ Old dashboard ](#tab-panel-4362)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

@@ -4,6 +4,10 @@ description: Capture, retrieve, and forward logs from dynamic Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Observability
@@ -31,8 +35,8 @@ Tail Workers run asynchronously after the Dynamic Worker has already sent its re
 
 Enable [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) by adding the `observability` setting to the loader Worker's Wrangler configuration. However, Workers Logs only captures log output from the loader Worker itself. Dynamic Workers are separate, so their `console.log()` calls are not included automatically. To get Dynamic Worker logs into Workers Logs, you need to define a Tail Worker that receives logs from the Dynamic Worker and writes them into the loader Worker's Workers Logs.
 
-* [  wrangler.jsonc ](#tab-panel-7060)
-* [  wrangler.toml ](#tab-panel-7061)
+* [  wrangler.jsonc ](#tab-panel-5902)
+* [  wrangler.toml ](#tab-panel-5903)
 
 JSONC
 

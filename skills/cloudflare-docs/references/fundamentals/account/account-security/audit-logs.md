@@ -4,6 +4,10 @@ description: Use Cloudflare Audit Logs v2 to track user-initiated and system-ini
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Audit Logs - version 2
@@ -359,9 +363,9 @@ The actor represents who performed the action. It includes identity attributes l
 
 ### Action
 
-The action field captures the nature of the event and whether it was successful. It includes a high-level type (e.g., `view`, `create`, `update`, `delete`), a specific description (such as `SSO_LOGIN`), the timestamp of when the action occurred, and the result (`success` or `failure`).
+The action field captures the nature of the event and whether it was successful. It includes a high-level type (e.g., `create`, `update`, `delete`), a specific description (such as `SSO_LOGIN`), the timestamp of when the action occurred, and the result (`success` or `failure`).
 
-All `GET` requests are captured as `view` actions in Audit Logs.
+`view` actions correspond to `GET` requests. These are defined in the schema but not currently captured in Audit Logs. Selective `GET` logging for sensitive read operations is planned for a future release.
 
 ### Account
 

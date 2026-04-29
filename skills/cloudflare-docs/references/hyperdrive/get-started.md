@@ -4,6 +4,10 @@ description: Create your first Hyperdrive configuration and connect a Cloudflare
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Getting started
@@ -90,8 +94,8 @@ This will create a new `hyperdrive-tutorial` directory. Your new `hyperdrive-tut
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-7379)
-* [  wrangler.toml ](#tab-panel-7380)
+* [  wrangler.jsonc ](#tab-panel-6221)
+* [  wrangler.toml ](#tab-panel-6222)
 
 JSONC
 
@@ -107,7 +111,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24"
+  "compatibility_date": "2026-04-29"
 
 }
 
@@ -122,7 +126,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 ```
@@ -153,8 +157,8 @@ To create your first Hyperdrive, you will need:
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
-* [ PostgreSQL ](#tab-panel-7373)
-* [ MySQL ](#tab-panel-7374)
+* [ PostgreSQL ](#tab-panel-6215)
+* [ MySQL ](#tab-panel-6216)
 
 ```
 
@@ -239,8 +243,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7381)
-* [  wrangler.toml ](#tab-panel-7382)
+* [  wrangler.jsonc ](#tab-panel-6223)
+* [  wrangler.toml ](#tab-panel-6224)
 
 JSONC
 
@@ -286,8 +290,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-7383)
-* [  wrangler.toml ](#tab-panel-7384)
+* [  wrangler.jsonc ](#tab-panel-6225)
+* [  wrangler.toml ](#tab-panel-6226)
 
 JSONC
 
@@ -339,8 +343,8 @@ Once you have created a Hyperdrive configuration and bound it to your Worker, yo
 
 ### Install a database driver
 
-* [ PostgreSQL ](#tab-panel-7377)
-* [ MySQL ](#tab-panel-7378)
+* [ PostgreSQL ](#tab-panel-6219)
+* [ MySQL ](#tab-panel-6220)
 
 To connect to your database, you will need a database driver which allows you to authenticate and query your database. For this tutorial, you will use [node-postgres (pg) ↗](https://node-postgres.com/), one of the most widely used PostgreSQL drivers.
 
@@ -424,8 +428,8 @@ With the driver installed, you can now create a Worker script that queries your 
 
 ### Write a Worker
 
-* [ PostgreSQL ](#tab-panel-7375)
-* [ MySQL ](#tab-panel-7376)
+* [ PostgreSQL ](#tab-panel-6217)
+* [ MySQL ](#tab-panel-6218)
 
 After you have set up your database, you will run a SQL query from within your Worker.
 

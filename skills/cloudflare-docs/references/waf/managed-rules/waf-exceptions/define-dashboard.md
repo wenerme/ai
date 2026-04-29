@@ -4,6 +4,10 @@ description: Use the Cloudflare dashboard to create exceptions that skip the exe
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Add an exception in the dashboard
@@ -12,8 +16,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To add an exception at the zone level:
 
-* [  New dashboard ](#tab-panel-9454)
-* [ Old dashboard ](#tab-panel-9455)
+* [  New dashboard ](#tab-panel-8337)
+* [ Old dashboard ](#tab-panel-8338)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -62,8 +66,8 @@ To add an exception at the account level (Enterprise plans only):
 
 To edit an exception at the zone level:
 
-* [  New dashboard ](#tab-panel-9456)
-* [ Old dashboard ](#tab-panel-9457)
+* [  New dashboard ](#tab-panel-8339)
+* [ Old dashboard ](#tab-panel-8340)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

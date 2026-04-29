@@ -4,6 +4,10 @@ description: Create a DNS record for your zone apex.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create zone apex record
@@ -28,8 +32,8 @@ To create a zone apex record, use `@` for the record **Name**, as in the followi
 | ---- | ---- | ------------ | ------------ |
 | A    | @    | 192.0.2.1    | Proxied      |
 
-* [ Dashboard ](#tab-panel-6741)
-* [ API ](#tab-panel-6742)
+* [ Dashboard ](#tab-panel-5583)
+* [ API ](#tab-panel-5584)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

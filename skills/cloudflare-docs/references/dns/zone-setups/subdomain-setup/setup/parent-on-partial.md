@@ -4,6 +4,10 @@ description: Set up subdomain zone when parent uses partial setup.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Parent zone on partial setup
@@ -14,8 +18,8 @@ When the parent zone is using a [CNAME setup (partial)](https://developers.cloud
 
 If you have not yet created a DNS record covering your subdomain in the parent zone:
 
-* [ child is full or secondary ](#tab-panel-6781)
-* [ child is partial ](#tab-panel-6782)
+* [ child is full or secondary ](#tab-panel-5623)
+* [ child is partial ](#tab-panel-5624)
 
 1. Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
 2. Complete the configuration accordingly for [full](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) setup.
@@ -60,8 +64,8 @@ sub.example.com CNAME sub.example.com.cdn.cloudflare.net
 
 If you have already created a DNS record covering your subdomain in the parent zone:
 
-* [ child is full or secondary ](#tab-panel-6783)
-* [ child is partial ](#tab-panel-6784)
+* [ child is full or secondary ](#tab-panel-5625)
+* [ child is partial ](#tab-panel-5626)
 
 1. Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
 2. Complete the configuration accordingly for [full](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) setup.

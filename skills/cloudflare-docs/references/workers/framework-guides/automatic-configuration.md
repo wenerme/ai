@@ -4,6 +4,10 @@ description: Learn how Wrangler automatically detects and configures your projec
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Deploy an existing project
@@ -55,8 +59,8 @@ When automatic configuration runs, the following files may be created or modifie
 
 A new Wrangler configuration file is created with settings appropriate for your framework:
 
-* [  wrangler.jsonc ](#tab-panel-9972)
-* [  wrangler.toml ](#tab-panel-9973)
+* [  wrangler.jsonc ](#tab-panel-8857)
+* [  wrangler.toml ](#tab-panel-8858)
 
 JSONC
 
@@ -72,7 +76,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -109,7 +113,7 @@ main = "dist/_worker.js/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 

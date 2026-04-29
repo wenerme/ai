@@ -4,12 +4,16 @@ description: Connect networks securely with Cloudflare SASE.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Connect and secure from any network to anywhere
 
-* [ Watch this episode ](#tab-panel-7628)
-* [ Series overview ](#tab-panel-7629)
+* [ Watch this episode ](#tab-panel-6524)
+* [ Series overview ](#tab-panel-6525)
 
 Build your new corporate network with Cloudflare, connecting any network into our modern SASE platform and secure applications, users, devices and your company data. In this video you will learn all the different methods of connecting networks to Cloudflare and what services can be used to improve security and performance.
 

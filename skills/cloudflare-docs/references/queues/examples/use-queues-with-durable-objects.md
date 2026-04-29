@@ -4,6 +4,10 @@ description: Publish to a queue from within a Durable Object.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use Queues from Durable Objects
@@ -22,8 +26,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-8153)
-* [  wrangler.toml ](#tab-panel-8154)
+* [  wrangler.jsonc ](#tab-panel-6995)
+* [  wrangler.toml ](#tab-panel-6996)
 
 JSONC
 

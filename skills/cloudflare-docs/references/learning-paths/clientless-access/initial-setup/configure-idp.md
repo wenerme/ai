@@ -4,6 +4,10 @@ description: Connect your identity provider to Cloudflare.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure an identity provider (recommended)
@@ -16,8 +20,8 @@ Some admins choose to test by authenticating with a [one-time PIN (OTP)](https:/
 
 To add an identity provider:
 
-* [ Dashboard ](#tab-panel-7579)
-* [ Terraform (v5) ](#tab-panel-7580)
+* [ Dashboard ](#tab-panel-6421)
+* [ Terraform (v5) ](#tab-panel-6422)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.

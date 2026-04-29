@@ -4,6 +4,10 @@ description: MCP server portals in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -185,8 +189,8 @@ For more information on building with code mode, refer to the [code mode SDK ref
 
 To turn off code mode for a portal:
 
-* [ Dashboard ](#tab-panel-5757)
-* [ API ](#tab-panel-5758)
+* [ Dashboard ](#tab-panel-4599)
+* [ API ](#tab-panel-4600)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.

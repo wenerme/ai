@@ -4,6 +4,10 @@ description: Hide email addresses from bots while keeping them visible to visito
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Email Address Obfuscation
@@ -26,9 +30,9 @@ Cloudflare injects a small decode script (`email-decode.min.js`) into the page u
 
 Cloudflare enables email address obfuscation automatically when you sign up.
 
-* [  New dashboard ](#tab-panel-9469)
-* [ Old dashboard ](#tab-panel-9470)
-* [ API ](#tab-panel-9471)
+* [  New dashboard ](#tab-panel-8352)
+* [ Old dashboard ](#tab-panel-8353)
+* [ API ](#tab-panel-8354)
 
 To disable **Email Address Obfuscation** in the dashboard:
 

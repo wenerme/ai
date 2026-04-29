@@ -4,6 +4,10 @@ description: Route Vercel AI SDK requests through AI Gateway using the ai-gatewa
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Vercel AI SDK
@@ -901,8 +905,8 @@ Explain Code
 
 If you are already using the [workers-ai-provider ↗](https://www.npmjs.com/package/workers-ai-provider) package, you can route requests through AI Gateway to call third-party models without needing separate provider SDKs. Pass a `gateway` option with your gateway ID to `createWorkersAI`:
 
-* [  JavaScript ](#tab-panel-5301)
-* [  TypeScript ](#tab-panel-5302)
+* [  JavaScript ](#tab-panel-4135)
+* [  TypeScript ](#tab-panel-4136)
 
 JavaScript
 

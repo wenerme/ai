@@ -4,6 +4,10 @@ description: Configure your Worker to present a client certificate to services t
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # mTLS
@@ -35,8 +39,8 @@ npx wrangler mtls-certificate upload --cert cert.pem --key key.pem --name my-cli
 
 Then, update your Worker project's Wrangler file to create an mTLS certificate binding:
 
-* [  wrangler.jsonc ](#tab-panel-8967)
-* [  wrangler.toml ](#tab-panel-8968)
+* [  wrangler.jsonc ](#tab-panel-8995)
+* [  wrangler.toml ](#tab-panel-8996)
 
 JSONC
 
@@ -86,8 +90,8 @@ mTLS certificate bindings present an API similar to [service bindings](https://d
 
 ### Interface
 
-* [  JavaScript ](#tab-panel-8965)
-* [  TypeScript ](#tab-panel-8966)
+* [  JavaScript ](#tab-panel-8993)
+* [  TypeScript ](#tab-panel-8994)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Get started with the Vite plugin
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started
@@ -97,8 +101,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ## Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-9233)
-* [  wrangler.toml ](#tab-panel-9234)
+* [  wrangler.jsonc ](#tab-panel-9261)
+* [  wrangler.toml ](#tab-panel-9262)
 
 JSONC
 
@@ -112,7 +116,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "main": "./src/index.ts"
 
@@ -131,7 +135,7 @@ name = "cloudflare-vite-get-started"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 main = "./src/index.ts"
 

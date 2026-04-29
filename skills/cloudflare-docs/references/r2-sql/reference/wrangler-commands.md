@@ -4,6 +4,10 @@ description: Wrangler CLI commands for querying data with R2 SQL.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Wrangler commands
@@ -16,9 +20,9 @@ R2 SQL is currently in open beta. Report R2 SQL bugs in [GitHub ↗](https://git
 
 Execute SQL query against R2 Data Catalog
 
-* [  npm ](#tab-panel-8238)
-* [  pnpm ](#tab-panel-8239)
-* [  yarn ](#tab-panel-8240)
+* [  npm ](#tab-panel-7080)
+* [  pnpm ](#tab-panel-7081)
+* [  yarn ](#tab-panel-7082)
 
 Terminal window
 

@@ -4,6 +4,10 @@ description: Route Google AI Studio and Gemini requests through AI Gateway for o
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Google AI Studio
@@ -31,8 +35,8 @@ So your final URL will come together as: `https://gateway.ai.cloudflare.com/v1/{
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5323)
-* [ Unauthenticated Gateway ](#tab-panel-5324)
+* [ With Authenticated Gateway ](#tab-panel-4157)
+* [ Unauthenticated Gateway ](#tab-panel-4158)
 
 Terminal window
 
@@ -149,8 +153,8 @@ If you are using the `@google/genai` package, you can set your endpoint like thi
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5325)
-* [ Unauthenticated Gateway ](#tab-panel-5326)
+* [ With Authenticated Gateway ](#tab-panel-4159)
+* [ Unauthenticated Gateway ](#tab-panel-4160)
 
 ```
 

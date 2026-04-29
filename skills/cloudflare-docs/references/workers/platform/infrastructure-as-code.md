@@ -4,6 +4,10 @@ description: Deploy and manage Cloudflare Workers using Terraform, Pulumi, and t
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Infrastructure as Code (IaC)
@@ -564,8 +568,8 @@ Explain Code
 
 This example uses the [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript) SDK which provides convenient access to the Cloudflare REST API from server-side JavaScript or TypeScript.
 
-* [  JavaScript ](#tab-panel-8935)
-* [  TypeScript ](#tab-panel-8936)
+* [  JavaScript ](#tab-panel-8963)
+* [  TypeScript ](#tab-panel-8964)
 
 JavaScript
 
@@ -1178,8 +1182,8 @@ Warning
 
 This API is in beta. See the multipart/form-data API below for the stable API.
 
-* [ ES Module ](#tab-panel-8931)
-* [ Python ](#tab-panel-8932)
+* [ ES Module ](#tab-panel-8959)
+* [ Python ](#tab-panel-8960)
 
 Terminal window
 
@@ -1498,8 +1502,8 @@ Explain Code
 
 This API uses [multipart/form-data ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) to upload a Worker and will implicitly create a version and deployment. The above API is recommended for direct management of versions and deployments.
 
-* [ Workers ](#tab-panel-8933)
-* [ Workers for Platforms ](#tab-panel-8934)
+* [ Workers ](#tab-panel-8961)
+* [ Workers for Platforms ](#tab-panel-8962)
 
 Terminal window
 

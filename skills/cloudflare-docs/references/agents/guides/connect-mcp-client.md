@@ -4,6 +4,10 @@ description: Create a Cloudflare Agent that connects to an external MCP server a
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -47,8 +51,8 @@ Terminal window
 cd my-mcp-client  
 ```  
 Your Agent is ready! The template includes a minimal Agent in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-5138)  
-   * [  TypeScript ](#tab-panel-5139)  
+   * [  JavaScript ](#tab-panel-3972)  
+   * [  TypeScript ](#tab-panel-3973)  
 JavaScript  
 ```  
 import { Agent, routeAgentRequest } from "agents";  
@@ -92,8 +96,8 @@ Explain Code
 ## 2\. Add MCP connection endpoint
 
 1. Add an endpoint to connect to MCP servers. Update your Agent class in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-5142)  
-   * [  TypeScript ](#tab-panel-5143)  
+   * [  JavaScript ](#tab-panel-3976)  
+   * [  TypeScript ](#tab-panel-3977)  
 JavaScript  
 ```  
 export class HelloAgent extends Agent {  
@@ -179,8 +183,8 @@ You should see a response with the server ID:
 ## 4\. List available tools
 
 1. Add an endpoint to see which tools are available from connected servers:  
-   * [  JavaScript ](#tab-panel-5140)  
-   * [  TypeScript ](#tab-panel-5141)  
+   * [  JavaScript ](#tab-panel-3974)  
+   * [  TypeScript ](#tab-panel-3975)  
 JavaScript  
 ```  
 export class HelloAgent extends Agent {  

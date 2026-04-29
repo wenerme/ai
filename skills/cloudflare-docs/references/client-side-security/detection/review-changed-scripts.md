@@ -4,6 +4,10 @@ description: Learn how to review scripts on your domain after receiving a code c
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Review changed scripts
@@ -19,8 +23,8 @@ You can configure a notification for [code change alerts](https://developers.clo
 When you receive such a notification:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-5655)  
-   * [ Old dashboard ](#tab-panel-5656)  
+   * [  New dashboard ](#tab-panel-4491)  
+   * [ Old dashboard ](#tab-panel-4492)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  

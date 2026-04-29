@@ -4,6 +4,10 @@ description: Block page in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Block page
@@ -85,8 +89,8 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-6056)
-* [ Terraform (v5) ](#tab-panel-6057)
+* [ Dashboard ](#tab-panel-4898)
+* [ Terraform (v5) ](#tab-panel-4899)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
@@ -149,8 +153,8 @@ For DNS Block policies, you will need to turn on the block page for each policy 
 
 To turn on the block page or override your global block page setting for an individual policy:
 
-* [ DNS policy ](#tab-panel-6058)
-* [ HTTP policy ](#tab-panel-6059)
+* [ DNS policy ](#tab-panel-4900)
+* [ HTTP policy ](#tab-panel-4901)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.

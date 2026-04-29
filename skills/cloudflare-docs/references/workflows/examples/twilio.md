@@ -4,6 +4,10 @@ description: Integrate Workflows with Twilio. Learn how to receive and send text
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Integrate Workflows with Twilio

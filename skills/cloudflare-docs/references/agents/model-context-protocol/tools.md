@@ -4,6 +4,10 @@ description: Define, register, and manage MCP tools that expose server-side func
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -20,8 +24,8 @@ Tools are defined using the `@modelcontextprotocol/sdk` package. The Agents SDK 
 
 Use `server.tool()` to register a tool on an `McpServer` instance. Each tool has a name, a description (used by the LLM to decide when to call it), an input schema defined with [Zod ↗](https://zod.dev), and a handler function.
 
-* [  JavaScript ](#tab-panel-5240)
-* [  TypeScript ](#tab-panel-5241)
+* [  JavaScript ](#tab-panel-4074)
+* [  TypeScript ](#tab-panel-4075)
 
 JavaScript
 
@@ -109,8 +113,8 @@ The tool handler receives the validated input and must return an object with a `
 
 Tool results are returned as an array of content parts. The most common type is `text`, but you can also return images and embedded resources.
 
-* [  JavaScript ](#tab-panel-5242)
-* [  TypeScript ](#tab-panel-5243)
+* [  JavaScript ](#tab-panel-4076)
+* [  TypeScript ](#tab-panel-4077)
 
 JavaScript
 
@@ -216,8 +220,8 @@ The `description` parameter is critical — it is what the LLM reads to decide w
 
 Tool inputs are defined as Zod schemas and validated automatically before the handler runs. Use Zod's `.describe()` method to give the LLM context about each parameter.
 
-* [  JavaScript ](#tab-panel-5246)
-* [  TypeScript ](#tab-panel-5247)
+* [  JavaScript ](#tab-panel-4080)
+* [  TypeScript ](#tab-panel-4081)
 
 JavaScript
 
@@ -333,8 +337,8 @@ Explain Code
 
 For stateless MCP servers, define tools inside a factory function and pass the server to [createMcpHandler](https://developers.cloudflare.com/agents/api-reference/mcp-handler-api/):
 
-* [  JavaScript ](#tab-panel-5244)
-* [  TypeScript ](#tab-panel-5245)
+* [  JavaScript ](#tab-panel-4078)
+* [  TypeScript ](#tab-panel-4079)
 
 JavaScript
 
@@ -430,8 +434,8 @@ Explain Code
 
 For stateful MCP servers, define tools in the `init()` method of an [McpAgent](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/). Tools have access to the agent instance via `this`, which means they can read and write state.
 
-* [  JavaScript ](#tab-panel-5248)
-* [  TypeScript ](#tab-panel-5249)
+* [  JavaScript ](#tab-panel-4082)
+* [  TypeScript ](#tab-panel-4083)
 
 JavaScript
 

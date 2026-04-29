@@ -4,6 +4,10 @@ description: Write structured queries to investigate and visualize your telemetr
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Query Builder
@@ -18,8 +22,8 @@ The Query Builder can be found in the **Observability** page of the Cloudflare d
 
 The Query Builder is available to all developers and requires no enablement. Queries search all Workers Logs stored by Cloudflare. If you have not yet enabled Workers Logs, you can do so by adding the following setting to your [Worker's Wrangler file](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs) and redeploying your Worker.
 
-* [  wrangler.jsonc ](#tab-panel-8933)
-* [  wrangler.toml ](#tab-panel-8934)
+* [  wrangler.jsonc ](#tab-panel-8941)
+* [  wrangler.toml ](#tab-panel-8942)
 
 JSONC
 

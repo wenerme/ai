@@ -4,6 +4,10 @@ description: Enable the Intrusion Detection System for your account.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enable IDS
@@ -16,8 +20,8 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-* [ Dashboard ](#tab-panel-5731)
-* [ API ](#tab-panel-5732)
+* [ Dashboard ](#tab-panel-4567)
+* [ API ](#tab-panel-4568)
 
 1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall) page.
 2. Select **IDS** and turn on **IDS**.

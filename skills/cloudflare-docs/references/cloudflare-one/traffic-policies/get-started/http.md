@@ -4,6 +4,10 @@ description: HTTP filtering in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -49,8 +53,8 @@ An HTTP policy defines which requests to match (for example, uploads to file-sha
 
 To create a new HTTP policy:
 
-* [ Dashboard ](#tab-panel-6254)
-* [ API ](#tab-panel-6255)
+* [ Dashboard ](#tab-panel-5096)
+* [ API ](#tab-panel-5097)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.

@@ -4,6 +4,10 @@ description: Connectivity pre-checks in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -57,9 +61,9 @@ First, you need to verify that your DNS resolver returns the expected IP address
 
 Depending on whether you are testing a global region or the US region, run one of the following commands:
 
-* [ Global region ](#tab-panel-5951)
-* [ US region ](#tab-panel-5952)
-* [ FedRAMP High region ](#tab-panel-5953)
+* [ Global region ](#tab-panel-4793)
+* [ US region ](#tab-panel-4794)
+* [ FedRAMP High region ](#tab-panel-4795)
 
 Terminal window
 

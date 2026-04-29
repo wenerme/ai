@@ -4,6 +4,10 @@ description: Set up your partner account and make your first Cloudflare Tenant A
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started
@@ -30,8 +34,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-9202)
-* [ API ](#tab-panel-9203)
+* [ Dashboard ](#tab-panel-8061)
+* [ API ](#tab-panel-8062)
 
 To create an account under your tenant using the dashboard:
 

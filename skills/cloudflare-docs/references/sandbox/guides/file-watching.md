@@ -4,6 +4,10 @@ description: Monitor files and directories in real-time to build responsive deve
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Watch filesystem changes
@@ -16,8 +20,8 @@ The `watch()` method returns an SSE (Server-Sent Events) stream that you consume
 
 Start by watching a directory for any changes:
 
-* [  JavaScript ](#tab-panel-8875)
-* [  TypeScript ](#tab-panel-8876)
+* [  JavaScript ](#tab-panel-7717)
+* [  TypeScript ](#tab-panel-7718)
 
 JavaScript
 
@@ -91,8 +95,8 @@ Filesystem change events (`event.eventType`) include:
 
 Use `include` patterns to watch only specific file types:
 
-* [  JavaScript ](#tab-panel-8877)
-* [  TypeScript ](#tab-panel-8878)
+* [  JavaScript ](#tab-panel-7719)
+* [  TypeScript ](#tab-panel-7720)
 
 JavaScript
 
@@ -169,8 +173,8 @@ Common include patterns:
 
 Use `exclude` patterns to skip certain directories or files:
 
-* [  JavaScript ](#tab-panel-8879)
-* [  TypeScript ](#tab-panel-8880)
+* [  JavaScript ](#tab-panel-7721)
+* [  TypeScript ](#tab-panel-7722)
 
 JavaScript
 
@@ -241,8 +245,8 @@ The following patterns are excluded by default: `.git`, `node_modules`, `.DS_Sto
 
 Trigger builds automatically when source files are modified:
 
-* [  JavaScript ](#tab-panel-8891)
-* [  TypeScript ](#tab-panel-8892)
+* [  JavaScript ](#tab-panel-7733)
+* [  TypeScript ](#tab-panel-7734)
 
 JavaScript
 
@@ -383,8 +387,8 @@ Explain Code
 
 Re-run tests when test files are modified:
 
-* [  JavaScript ](#tab-panel-8881)
-* [  TypeScript ](#tab-panel-8882)
+* [  JavaScript ](#tab-panel-7723)
+* [  TypeScript ](#tab-panel-7724)
 
 JavaScript
 
@@ -457,8 +461,8 @@ Explain Code
 
 Re-index only changed files instead of rescanning an entire directory tree:
 
-* [  JavaScript ](#tab-panel-8885)
-* [  TypeScript ](#tab-panel-8886)
+* [  JavaScript ](#tab-panel-7727)
+* [  TypeScript ](#tab-panel-7728)
 
 JavaScript
 
@@ -565,8 +569,8 @@ Explain Code
 
 Extract event processing into a reusable function that handles stream lifecycle:
 
-* [  JavaScript ](#tab-panel-8901)
-* [  TypeScript ](#tab-panel-8902)
+* [  JavaScript ](#tab-panel-7743)
+* [  TypeScript ](#tab-panel-7744)
 
 JavaScript
 
@@ -731,8 +735,8 @@ Explain Code
 
 Avoid excessive operations by collecting changes before processing:
 
-* [  JavaScript ](#tab-panel-8895)
-* [  TypeScript ](#tab-panel-8896)
+* [  JavaScript ](#tab-panel-7737)
+* [  TypeScript ](#tab-panel-7738)
 
 JavaScript
 
@@ -845,8 +849,8 @@ Explain Code
 
 Watch only the top level of a directory, without descending into subdirectories:
 
-* [  JavaScript ](#tab-panel-8883)
-* [  TypeScript ](#tab-panel-8884)
+* [  JavaScript ](#tab-panel-7725)
+* [  TypeScript ](#tab-panel-7726)
 
 JavaScript
 
@@ -927,8 +931,8 @@ The stream ends naturally when the container sleeps or shuts down. There are two
 
 Pass an `AbortSignal` to `parseSSEStream`. Aborting the signal cancels the stream reader, which propagates cleanup to the server. This is the recommended approach when you need to cancel the watch from outside the consuming loop:
 
-* [  JavaScript ](#tab-panel-8889)
-* [  TypeScript ](#tab-panel-8890)
+* [  JavaScript ](#tab-panel-7731)
+* [  TypeScript ](#tab-panel-7732)
 
 JavaScript
 
@@ -1011,8 +1015,8 @@ Explain Code
 
 Breaking out of the `for await` loop also cancels the stream:
 
-* [  JavaScript ](#tab-panel-8897)
-* [  TypeScript ](#tab-panel-8898)
+* [  JavaScript ](#tab-panel-7739)
+* [  TypeScript ](#tab-panel-7740)
 
 JavaScript
 
@@ -1107,8 +1111,8 @@ Note
 
 `include` and `exclude` are mutually exclusive. Use one or the other, not both. If you need to watch specific file types while ignoring certain directories, use `include` patterns that match the files you want.
 
-* [  JavaScript ](#tab-panel-8893)
-* [  TypeScript ](#tab-panel-8894)
+* [  JavaScript ](#tab-panel-7735)
+* [  TypeScript ](#tab-panel-7736)
 
 JavaScript
 
@@ -1189,8 +1193,8 @@ Explain Code
 
 Errors in your event handler do not stop the watch stream. Wrap handler logic in `try...catch` to prevent unhandled exceptions:
 
-* [  JavaScript ](#tab-panel-8899)
-* [  TypeScript ](#tab-panel-8900)
+* [  JavaScript ](#tab-panel-7741)
+* [  TypeScript ](#tab-panel-7742)
 
 JavaScript
 
@@ -1293,8 +1297,8 @@ Explain Code
 
 Watching a non-existent path returns an error. Verify the path exists before starting a watch:
 
-* [  JavaScript ](#tab-panel-8887)
-* [  TypeScript ](#tab-panel-8888)
+* [  JavaScript ](#tab-panel-7729)
+* [  TypeScript ](#tab-panel-7730)
 
 JavaScript
 

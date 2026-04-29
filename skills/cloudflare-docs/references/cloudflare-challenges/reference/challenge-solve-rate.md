@@ -4,6 +4,10 @@ description: Measure the percentage of issued challenges that visitors solve suc
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Challenge solve rate (CSR)
@@ -28,8 +32,8 @@ CSR indicates the false positive percentage of a rule. A high CSR means a large 
 
 You can find the CSR of a rule by going to its corresponding dashboard page:
 
-* [  New dashboard ](#tab-panel-5689)
-* [ Old dashboard ](#tab-panel-5690)
+* [  New dashboard ](#tab-panel-4525)
+* [ Old dashboard ](#tab-panel-4526)
 
 For [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), go to your zone > **Security** \> **Security rules**.
 

@@ -4,6 +4,10 @@ description: Analyze HTTP request data in Cloudflare Radar by device type, IP ve
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # HTTP requests

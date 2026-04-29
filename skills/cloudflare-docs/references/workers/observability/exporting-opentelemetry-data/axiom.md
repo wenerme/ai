@@ -4,6 +4,10 @@ description: Send OpenTelemetry traces and logs from Cloudflare Workers to Axiom
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Export to Axiom
@@ -80,8 +84,8 @@ Axiom provides separate OTLP endpoints for traces and logs:
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-8889)
-* [  wrangler.toml ](#tab-panel-8890)
+* [  wrangler.jsonc ](#tab-panel-8917)
+* [  wrangler.toml ](#tab-panel-8918)
 
 JSONC
 

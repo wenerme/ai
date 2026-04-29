@@ -4,6 +4,10 @@ description: Learn the basics of Python Workers
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # The Basics
@@ -92,8 +96,8 @@ The `env` attribute on the `WorkerEntrypoint` can be used to access[environment 
 
 For example, let us try setting and using an environment variable in a Python Worker. First, add the environment variable to your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8871)
-* [  wrangler.toml ](#tab-panel-8872)
+* [  wrangler.jsonc ](#tab-panel-8899)
+* [  wrangler.toml ](#tab-panel-8900)
 
 JSONC
 
@@ -115,7 +119,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "vars": {
 
@@ -144,7 +148,7 @@ compatibility_flags = [ "python_workers" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 [vars]

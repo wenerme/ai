@@ -4,14 +4,18 @@ description: Create a compression rule to turn off compression for AVIF images, 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Disable compression for AVIF images
 
 Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.
 
-* [ Dashboard ](#tab-panel-8491)
-* [ API ](#tab-panel-8492)
+* [ Dashboard ](#tab-panel-7333)
+* [ API ](#tab-panel-7334)
 
 The following example rule will disable compression for AVIF images, based on either the content type or the file extension specified in the request.
 

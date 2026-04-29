@@ -4,6 +4,10 @@ description: Create policies for your first application.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Secure your first application
@@ -19,9 +23,9 @@ To create a new policy, open [Cloudflare One ↗](https://one.dash.cloudflare.co
 
 ## Example DNS policy
 
-* [ Dashboard ](#tab-panel-7636)
-* [ API ](#tab-panel-7637)
-* [ Terraform (v5) ](#tab-panel-7638)
+* [ Dashboard ](#tab-panel-6478)
+* [ API ](#tab-panel-6479)
+* [ Terraform (v5) ](#tab-panel-6480)
 
 | Traffic Selector | Operator | Value                |
 | ---------------- | -------- | -------------------- |
@@ -149,9 +153,9 @@ Explain Code
 
 ## Example network policy
 
-* [ Dashboard ](#tab-panel-7639)
-* [ API ](#tab-panel-7640)
-* [ Terraform (v5) ](#tab-panel-7641)
+* [ Dashboard ](#tab-panel-6481)
+* [ API ](#tab-panel-6482)
+* [ Terraform (v5) ](#tab-panel-6483)
 
 | Traffic Selector | Operator | Value            |
 | ---------------- | -------- | ---------------- |
@@ -273,9 +277,9 @@ Explain Code
 
 We recommend adding a catch-all policy to the bottom of your network policy list. An effective Zero Trust model should prioritize default-deny actions to avoid any overly permissive policy building. For example,
 
-* [ Dashboard ](#tab-panel-7642)
-* [ API ](#tab-panel-7643)
-* [ Terraform (v5) ](#tab-panel-7644)
+* [ Dashboard ](#tab-panel-6484)
+* [ API ](#tab-panel-6485)
+* [ Terraform (v5) ](#tab-panel-6486)
 
 | Traffic Selector | Operator | Value                      | Logic |
 | ---------------- | -------- | -------------------------- | ----- |

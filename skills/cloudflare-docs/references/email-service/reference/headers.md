@@ -4,6 +4,10 @@ description: Allowed, platform-controlled, and custom email headers for Email Se
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Email headers
@@ -100,8 +104,8 @@ Any header starting with `X-` is allowed. This covers common headers like `X-Mai
 
 ## Usage examples
 
-* [ REST API (curl) ](#tab-panel-7115)
-* [ Workers binding ](#tab-panel-7116)
+* [ REST API (curl) ](#tab-panel-5957)
+* [ Workers binding ](#tab-panel-5958)
 
 Terminal window
 

@@ -4,6 +4,10 @@ description: Use Secrets Store to encrypt and store sensitive information as sec
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/secrets-store/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cloudflare Secrets Store

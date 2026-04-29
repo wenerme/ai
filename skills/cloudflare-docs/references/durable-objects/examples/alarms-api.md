@@ -4,6 +4,10 @@ description: Use the Durable Objects Alarms API to batch requests to a Durable O
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use the Alarms API
@@ -18,8 +22,8 @@ When a request is received and no alarm is set, it sets an alarm for 10 seconds 
 
 If no new requests are received, no further alarms will be set until the next request arrives.
 
-* [  JavaScript ](#tab-panel-6945)
-* [  Python ](#tab-panel-6946)
+* [  JavaScript ](#tab-panel-5787)
+* [  Python ](#tab-panel-5788)
 
 JavaScript
 
@@ -220,8 +224,8 @@ The `alarm()` handler will be called once every 10 seconds. If an unexpected err
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-6947)
-* [  wrangler.toml ](#tab-panel-6948)
+* [  wrangler.jsonc ](#tab-panel-5789)
+* [  wrangler.toml ](#tab-panel-5790)
 
 JSONC
 

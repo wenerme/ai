@@ -4,6 +4,10 @@ description: Learn Workers runtime and execution model.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cloudflare Workers
@@ -138,8 +142,8 @@ Scheduling and routing
 
 Most Workers are a variation on the default Workers flow:
 
-* [  JavaScript ](#tab-panel-7834)
-* [  TypeScript ](#tab-panel-7835)
+* [  JavaScript ](#tab-panel-6676)
+* [  TypeScript ](#tab-panel-6677)
 
 JavaScript
 

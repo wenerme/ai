@@ -4,6 +4,10 @@ description: Adding source maps and generating stack traces for Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Source maps and stack traces
@@ -18,8 +22,8 @@ Source maps translate compiled and minified code back to the original code that 
 
 To enable source maps, add the following to your Worker's [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8915)
-* [  wrangler.toml ](#tab-panel-8916)
+* [  wrangler.jsonc ](#tab-panel-8943)
+* [  wrangler.toml ](#tab-panel-8944)
 
 JSONC
 

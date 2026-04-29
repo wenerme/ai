@@ -4,6 +4,10 @@ description: Cloudflare matches the browser request protocol when connecting to 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Full
@@ -28,8 +32,8 @@ Depending on your origin configuration, you may have to adjust settings to avoid
 
 ### Process
 
-* [ Dashboard ](#tab-panel-9117)
-* [ API ](#tab-panel-9118)
+* [ Dashboard ](#tab-panel-7979)
+* [ API ](#tab-panel-7980)
 
 To change your encryption mode in the dashboard:
 

@@ -4,6 +4,10 @@ description: Use the Skip action to bypass security features for matching reques
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure a rule with the Skip action
@@ -16,9 +20,9 @@ You can skip [rate limiting rules](https://developers.cloudflare.com/waf/rate-li
 
 For more information on the available options, refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/).
 
-* [  New dashboard ](#tab-panel-9361)
-* [ Old dashboard ](#tab-panel-9362)
-* [ API ](#tab-panel-9363)
+* [  New dashboard ](#tab-panel-8244)
+* [ Old dashboard ](#tab-panel-8245)
+* [ API ](#tab-panel-8246)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

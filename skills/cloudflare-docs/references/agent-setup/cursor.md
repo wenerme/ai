@@ -4,6 +4,10 @@ description: AI-first IDE built on VS Code with multi-file Composer edits and ba
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agent-setup/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 [ All agents](https://developers.cloudflare.com/agent-setup/) 
@@ -32,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Add mTLS authentication and schema validation to protect my API endpoints.  
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.  
 ```
 
 ## Cloudflare platform access

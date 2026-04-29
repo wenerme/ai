@@ -4,6 +4,10 @@ description: Choose auth for bindings, API calls, and Git.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Authentication
@@ -28,8 +32,8 @@ The Workers binding uses the `artifacts` binding you configure in Wrangler. Your
 
 Add the binding in your Wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-5513)
-* [  wrangler.toml ](#tab-panel-5514)
+* [  wrangler.jsonc ](#tab-panel-4347)
+* [  wrangler.toml ](#tab-panel-4348)
 
 JSONC
 
@@ -45,7 +49,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-25",
+  "compatibility_date": "2026-04-29",
 
   "artifacts": [
 
@@ -76,7 +80,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-25"
+compatibility_date = "2026-04-29"
 
 
 [[artifacts]]

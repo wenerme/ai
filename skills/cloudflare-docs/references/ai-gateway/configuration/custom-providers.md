@@ -4,6 +4,10 @@ description: Create and manage custom AI providers for your account.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Custom Providers
@@ -42,8 +46,8 @@ To create an API token:
 
 ## Create a custom provider
 
-* [ API ](#tab-panel-5277)
-* [ Dashboard ](#tab-panel-5278)
+* [ API ](#tab-panel-4111)
+* [ Dashboard ](#tab-panel-4112)
 
 To create a new custom provider using the API:
 
@@ -160,8 +164,8 @@ To create a new custom provider using the dashboard:
 
 ## List custom providers
 
-* [ API ](#tab-panel-5279)
-* [ Dashboard ](#tab-panel-5280)
+* [ API ](#tab-panel-4113)
+* [ Dashboard ](#tab-panel-4114)
 
 Retrieve all custom providers with optional filtering and pagination:
 
@@ -270,7 +274,7 @@ To view all your custom providers:
 
 ## Get a specific custom provider
 
-* [ API ](#tab-panel-5276)
+* [ API ](#tab-panel-4110)
 
 Retrieve details for a specific custom provider by its ID:
 
@@ -336,8 +340,8 @@ Explain Code
 
 ## Update a custom provider
 
-* [ API ](#tab-panel-5281)
-* [ Dashboard ](#tab-panel-5282)
+* [ API ](#tab-panel-4115)
+* [ Dashboard ](#tab-panel-4116)
 
 Update an existing custom provider. All fields are optional - only include the fields you want to change:
 
@@ -426,8 +430,8 @@ To update an existing custom provider:
 
 ## Delete a custom provider
 
-* [ API ](#tab-panel-5283)
-* [ Dashboard ](#tab-panel-5284)
+* [ API ](#tab-panel-4117)
+* [ Dashboard ](#tab-panel-4118)
 
 Delete a custom provider:
 

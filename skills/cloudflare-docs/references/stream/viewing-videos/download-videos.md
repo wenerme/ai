@@ -4,6 +4,10 @@ description: Generate downloadable MP4 video or M4A audio files from Cloudflare 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Download video or audio

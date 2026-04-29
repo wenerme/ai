@@ -4,6 +4,10 @@ description: Build your first Gateway DNS policy.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create your first DNS policy
@@ -14,9 +18,9 @@ You can filter DNS traffic based on query or response parameters (such as domain
 
 To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-7695)
-* [ API ](#tab-panel-7696)
-* [ Terraform ](#tab-panel-7697)
+* [ Dashboard ](#tab-panel-6537)
+* [ API ](#tab-panel-6538)
+* [ Terraform ](#tab-panel-6539)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.

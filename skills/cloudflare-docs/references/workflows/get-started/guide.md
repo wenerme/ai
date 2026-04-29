@@ -4,6 +4,10 @@ description: Create and deploy your first Cloudflare Workflow with durable, mult
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build your first Workflow
@@ -122,8 +126,8 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
 ## 3\. Configure your Workflow
 
 1. Open `wrangler.jsonc`, which is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project and your Workflow, and add the `workflows` configuration:  
-   * [  wrangler.jsonc ](#tab-panel-11198)  
-   * [  wrangler.toml ](#tab-panel-11199)  
+   * [  wrangler.jsonc ](#tab-panel-10083)  
+   * [  wrangler.toml ](#tab-panel-10084)  
 JSONC  
 ```  
 {  
@@ -131,7 +135,7 @@ JSONC
   "name": "my-workflow",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-24",  
+  "compatibility_date": "2026-04-29",  
   "observability": {  
     "enabled": true  
   },  
@@ -151,7 +155,7 @@ TOML
 name = "my-workflow"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-24"  
+compatibility_date = "2026-04-29"  
 [observability]  
 enabled = true  
 [[workflows]]  

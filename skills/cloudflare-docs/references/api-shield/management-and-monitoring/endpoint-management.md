@@ -4,6 +4,10 @@ description: Save, organize, and monitor API endpoints in API Shield.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Endpoint Management
@@ -24,8 +28,8 @@ When an endpoint is using [Cloudflare Workers](https://developers.cloudflare.com
 
 ## Access
 
-* [  New dashboard ](#tab-panel-5423)
-* [ Old dashboard ](#tab-panel-5424)
+* [  New dashboard ](#tab-panel-4257)
+* [ Old dashboard ](#tab-panel-4258)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -43,8 +47,8 @@ There are two ways to add API endpoints from Discovery.
 
 #### Add from the Endpoints tab
 
-* [  New dashboard ](#tab-panel-5413)
-* [ Old dashboard ](#tab-panel-5414)
+* [  New dashboard ](#tab-panel-4247)
+* [ Old dashboard ](#tab-panel-4248)
 
 1. From **Endpoints**, go to **Add endpoints** \> **Select from Discovery** tab.
 2. Select the discovered endpoints you would like to add.
@@ -56,8 +60,8 @@ There are two ways to add API endpoints from Discovery.
 
 #### Add from the Discovery tab
 
-* [  New dashboard ](#tab-panel-5415)
-* [ Old dashboard ](#tab-panel-5416)
+* [  New dashboard ](#tab-panel-4249)
+* [ Old dashboard ](#tab-panel-4250)
 
 1. From **Web assets**, go to the **Discovery** tab.
 2. Select the discovered endpoints you would like to add.
@@ -69,8 +73,8 @@ There are two ways to add API endpoints from Discovery.
 
 ### Add endpoints from Schema validation
 
-* [  New dashboard ](#tab-panel-5417)
-* [ Old dashboard ](#tab-panel-5418)
+* [  New dashboard ](#tab-panel-4251)
+* [ Old dashboard ](#tab-panel-4252)
 
 1. From **Web assets**, go to the **Endpoints** tab.
 2. Select **Add endpoints** \> **Upload Schema**.
@@ -89,8 +93,8 @@ If you deselect **Save new endpoints to endpoint management**, the endpoints wil
 
 ### Add endpoints manually
 
-* [  New dashboard ](#tab-panel-5419)
-* [ Old dashboard ](#tab-panel-5420)
+* [  New dashboard ](#tab-panel-4253)
+* [ Old dashboard ](#tab-panel-4254)
 
 1. From **Web assets**, go to the **Endpoints** tab.
 2. Select **Add endpoints** \> **Manually add**.
@@ -139,8 +143,8 @@ For more information on how Cloudflare uses variables in API Shield, refer to th
 
 You can delete endpoints one at a time or in bulk.
 
-* [  New dashboard ](#tab-panel-5421)
-* [ Old dashboard ](#tab-panel-5422)
+* [  New dashboard ](#tab-panel-4255)
+* [ Old dashboard ](#tab-panel-4256)
 
 1. From **Web assets**, go to the **Endpoints** tab.
 2. Select the checkboxes for the endpoints that you want to delete.

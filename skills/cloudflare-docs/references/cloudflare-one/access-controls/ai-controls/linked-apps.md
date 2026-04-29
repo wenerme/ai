@@ -4,6 +4,10 @@ description: Allow MCP servers to access self-hosted applications in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -37,8 +41,8 @@ accTitle: Self-hosted MCP server accessing internal applications
 
 On each self-hosted application that the MCP server needs to access (for example, the `Internal API` and `Company wiki` apps), create a Linked App Token policy:
 
-* [ Dashboard ](#tab-panel-5753)
-* [ API ](#tab-panel-5754)
+* [ Dashboard ](#tab-panel-4595)
+* [ API ](#tab-panel-4596)
 
 1. In the [Cloudflare dashboard ↗](https://one.dash.cloudflare.com), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the downstream application and select **Edit**.
@@ -138,8 +142,8 @@ accTitle: SaaS MCP server accessing internal applications
 
 On each self-hosted application that the MCP server needs to access (for example, the `Internal API` and `Company wiki` apps), create a Linked App Token policy:
 
-* [ Dashboard ](#tab-panel-5755)
-* [ API ](#tab-panel-5756)
+* [ Dashboard ](#tab-panel-4597)
+* [ API ](#tab-panel-4598)
 
 1. In the [Cloudflare dashboard ↗](https://one.dash.cloudflare.com), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the downstream application and select **Edit**.

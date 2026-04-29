@@ -4,6 +4,10 @@ description: Determine how to cache a resource by setting TTLs, custom cache key
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,11 +26,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9811)
-* [  TypeScript ](#tab-panel-9812)
-* [  Hono ](#tab-panel-9813)
-* [  Python ](#tab-panel-9814)
-* [  Rust ](#tab-panel-9815)
+* [  JavaScript ](#tab-panel-8696)
+* [  TypeScript ](#tab-panel-8697)
+* [  Hono ](#tab-panel-8698)
+* [  Python ](#tab-panel-8699)
+* [  Rust ](#tab-panel-8700)
 
 JavaScript
 
@@ -392,9 +396,9 @@ fetch(event.request, { cf: { cacheKey: "some-string" } });
 
 Normally, Cloudflare computes the cache key for a request based on the request's URL. Sometimes, though, you may like different URLs to be treated as if they were the same for caching purposes. For example, if your website content is hosted from both Amazon S3 and Google Cloud Storage - you have the same content in both places, and you can use a Worker to randomly balance between the two. However, you do not want to end up caching two copies of your content. You could utilize custom cache keys to cache based on the original request URL rather than the subrequest URL:
 
-* [  JavaScript ](#tab-panel-9816)
-* [  TypeScript ](#tab-panel-9817)
-* [  Hono ](#tab-panel-9818)
+* [  JavaScript ](#tab-panel-8701)
+* [  TypeScript ](#tab-panel-8702)
+* [  Hono ](#tab-panel-8703)
 
 JavaScript
 
@@ -559,8 +563,8 @@ Using custom cache keys and overrides based on response code, you can write a Wo
 
 The following example demonstrates how you might use this to cache requests for streaming media assets:
 
-* [  Module Worker ](#tab-panel-9819)
-* [  Service Worker ](#tab-panel-9820)
+* [  Module Worker ](#tab-panel-8704)
+* [  Service Worker ](#tab-panel-8705)
 
 index.js
 

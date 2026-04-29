@@ -4,6 +4,10 @@ description: Reference for the AI binding with AI Gateway. Call Workers AI and t
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -20,8 +24,8 @@ For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](htt
 
 Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-5303)
-* [  wrangler.toml ](#tab-panel-5304)
+* [  wrangler.jsonc ](#tab-panel-4137)
+* [  wrangler.toml ](#tab-panel-4138)
 
 JSONC
 
@@ -61,8 +65,8 @@ Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` 
 
 **Workers AI model:**
 
-* [  JavaScript ](#tab-panel-5305)
-* [  TypeScript ](#tab-panel-5306)
+* [  JavaScript ](#tab-panel-4139)
+* [  TypeScript ](#tab-panel-4140)
 
 JavaScript
 
@@ -128,8 +132,8 @@ Explain Code
 
 **Third-party model:**
 
-* [  JavaScript ](#tab-panel-5307)
-* [  TypeScript ](#tab-panel-5308)
+* [  JavaScript ](#tab-panel-4141)
+* [  TypeScript ](#tab-panel-4142)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Create and manage sequence rules in the dashboard or via WAF custom
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Manage sequence rules
@@ -16,8 +20,8 @@ Sequence mitigation is currently in a closed beta and is only available for Ente
 
 ## Create a sequence rule
 
-* [  New dashboard ](#tab-panel-5459)
-* [ Old dashboard ](#tab-panel-5460)
+* [  New dashboard ](#tab-panel-4293)
+* [ Old dashboard ](#tab-panel-4294)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

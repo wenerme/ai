@@ -4,6 +4,10 @@ description: Reference information for Tips and best practices in Zero Trust net
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -18,8 +22,8 @@ Operational guidance for managing Cloudflare Mesh deployments — updating the c
 
 Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) enabled, traffic fails over to a standby replica automatically.
 
-* [ Debian / Ubuntu ](#tab-panel-4739)
-* [ RedHat / CentOS ](#tab-panel-4740)
+* [ Debian / Ubuntu ](#tab-panel-4745)
+* [ RedHat / CentOS ](#tab-panel-4746)
 
 1. Check the current version:  
 Terminal window  

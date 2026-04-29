@@ -4,6 +4,10 @@ description: Use the GraphQL Analytics API to retrieve Network Flow data.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -75,7 +79,7 @@ query MagicNetworkMonitoring($accountTag: string!, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwOYEsDGA5MAXA7gewgGs58A7FbQlMpACgBIE018QzsAVZALhgGdsEGkgCEAGhgNBCCNj6cUAWzCSGYMgBMFysAEoYAbwBQMGADcUYXJCOmzMZq3bZ+dAGYoANtkh9DjixsHNxIfExBLqEwAL4GJg4OSmRKAGJe+LgAIgjYCACCmggADtgo5mAA4hBsxW72iWaePn5GMEW+ZSoA+kjyUjJykh04ut1eYMDhGpqxDY1eypR8AIwADPOJhJqQAEJQfADaI11gqeVgcDQgvvzdWQCiAMoAwgC6mzDxn2b8IEp2RqNABGlH4PwcxWYRBw4KBZhiEM0ujI-BQ5H4gPhZhOunOFSuZBuYDh8MRQPJDkpiJiQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgBYh3AOzIxmbgFZMARnkAtBiACm8ACZc+gkeKnIlvOYpXqAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwOYEsDGA5MAXA7gewgGs58A7FbQlMpACgBIE018QzsAVZALhgGdsEGkgCEAGhgNBCCNj6cUAWzCSGYMgBMFysAEoYAbwBQMGADcUYXJCOmzMZq3bZ+dAGYoANtkh9DjixsHNxIfExBLqEwAL4GJg4OSmRKAGJe+LgAIgjYCACCmggADtgo5mAA4hBsxW72iWaePn5GMEW+ZSoA+kjyUjJykh04ut1eYMDhGpqxDY1eypR8AIwADPOJhJqQAEJQfADaI11gqeVgcDQgvvzdWQCiAMoAwgC6mzDxn2b8IEp2RqNABGlH4PwcxWYRBw4KBZhiEM0ujI-BQ5H4gPhZhOunOFSuZBuYDh8MRQPJDkpiJiQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgBYh3ABzIAjJMxzM3bgC0GIAKbwAJlz6CR47gE5kvXgvnK1AXyA)
 
 Note
 

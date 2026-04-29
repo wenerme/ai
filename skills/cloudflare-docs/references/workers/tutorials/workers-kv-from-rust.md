@@ -4,6 +4,10 @@ description: This tutorial will teach you how to read and write to KV directly f
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -70,8 +74,8 @@ npx wrangler kv namespace create cities
 
 To add this configuration to your project, open the Wrangler file and create an entry for `kv_namespaces` above the build command:
 
-* [  wrangler.jsonc ](#tab-panel-9231)
-* [  wrangler.toml ](#tab-panel-9232)
+* [  wrangler.jsonc ](#tab-panel-9259)
+* [  wrangler.toml ](#tab-panel-9260)
 
 JSONC
 

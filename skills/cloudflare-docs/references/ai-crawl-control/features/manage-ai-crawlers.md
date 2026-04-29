@@ -4,6 +4,10 @@ description: Allow, block, or configure actions for AI crawlers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Manage AI crawlers
@@ -47,8 +51,8 @@ The values of the table will update according to your filter.
 
 ## Take action for each AI crawler
 
-* [ Without pay per crawl ](#tab-panel-5268)
-* [ With pay per crawl ](#tab-panel-5269)
+* [ Without pay per crawl ](#tab-panel-4102)
+* [ With pay per crawl ](#tab-panel-4103)
 
 For each AI crawler, you can choose to allow or block access.
 

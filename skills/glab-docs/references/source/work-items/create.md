@@ -1,0 +1,51 @@
+---
+title: '`glab work-items create`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Create work items in a project or group. (EXPERIMENTAL)
+
+## Synopsis
+
+Use `--type` to specify the kind of work item to create.
+The command uses your repository context to detect scope automatically.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab work-items create [flags]
+```
+
+## Examples
+
+```console
+# Create a work item in the current project
+glab work-items create --type issue
+
+# Create a work item in a group
+glab work-items create --type epic --group my-group
+
+```
+
+## Options
+
+```plaintext
+  -c, --confidential         Mark work item confidential.
+  -d, --description string   Description of the work item. Set to "-" to open an editor.
+  -g, --group string         Create work items for a group or subgroup.
+  -F, --output string        Format output as: text, json. (default "text")
+  -R, --repo OWNER/REPO      Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+  -t, --title string         Add a title for the work item.
+  -T, --type string          Type of work item (epic, incident, issue, key_result, objective, requirement, task, test_case, ticket).
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

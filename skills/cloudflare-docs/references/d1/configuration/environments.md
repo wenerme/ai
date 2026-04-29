@@ -4,6 +4,10 @@ description: Configure separate D1 databases for staging and production Wrangler
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Environments
@@ -12,8 +16,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To specify different D1 databases for different environments, use the following syntax in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6524)
-* [  wrangler.toml ](#tab-panel-6525)
+* [  wrangler.jsonc ](#tab-panel-5366)
+* [  wrangler.toml ](#tab-panel-5367)
 
 JSONC
 
@@ -102,8 +106,8 @@ In the code above, the `staging` environment is using a different database (`DAT
 
 If you need to specify different D1 databases for different environments, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) may contain bindings that resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-6522)
-* [  wrangler.toml ](#tab-panel-6523)
+* [  wrangler.jsonc ](#tab-panel-5364)
+* [  wrangler.toml ](#tab-panel-5365)
 
 JSONC
 
@@ -189,8 +193,8 @@ Explain Code
 
 ### Example
 
-* [  wrangler.jsonc ](#tab-panel-6526)
-* [  wrangler.toml ](#tab-panel-6527)
+* [  wrangler.jsonc ](#tab-panel-5368)
+* [  wrangler.toml ](#tab-panel-5369)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: Configure token-based authentication with custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure token authentication
@@ -100,10 +104,10 @@ Then the token is valid and the `is_timed_hmac_valid_v0()` function returns `tru
 
 The following examples show how you could generate tokens at your origin server for the path validated using the custom rule described in the previous section:
 
-* [  Python 3.8 ](#tab-panel-9364)
-* [  Python 2.7 ](#tab-panel-9365)
-* [  PHP ](#tab-panel-9366)
-* [ Workers ](#tab-panel-9367)
+* [  Python 3.8 ](#tab-panel-8247)
+* [  Python 2.7 ](#tab-panel-8248)
+* [  PHP ](#tab-panel-8249)
+* [ Workers ](#tab-panel-8250)
 
 Python
 

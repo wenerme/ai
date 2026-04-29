@@ -4,6 +4,10 @@ description: Learn about reference zones. Cloudflare Internal DNS allows zones t
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -27,8 +31,8 @@ A wildcard record (`*.example.local`) in the matching internal zone will take pr
 
 ## Set up
 
-* [ Dashboard ](#tab-panel-6729)
-* [ API ](#tab-panel-6730)
+* [ Dashboard ](#tab-panel-5571)
+* [ API ](#tab-panel-5572)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

@@ -4,6 +4,10 @@ description: Create an ACL for DNS zone transfers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create ACL
@@ -12,8 +16,8 @@ You need to create an Access Control List (ACL) if Cloudflare is your [secondary
 
 An ACL is configured at the account level, which means that it will apply to every primary and secondary zone in your account.
 
-* [ Dashboard ](#tab-panel-6785)
-* [ API ](#tab-panel-6786)
+* [ Dashboard ](#tab-panel-5627)
+* [ API ](#tab-panel-5628)
 
 To create a new ACL using the dashboard:
 

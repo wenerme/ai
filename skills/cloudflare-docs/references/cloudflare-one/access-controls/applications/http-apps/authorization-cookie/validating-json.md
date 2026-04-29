@@ -4,6 +4,10 @@ description: Validate JWTs in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -145,8 +149,8 @@ When Cloudflare Access is in front of your [Worker](https://developers.cloudflar
 
 The following code will validate the JWT using the [jose NPM package ↗](https://www.npmjs.com/package/jose):
 
-* [  JavaScript ](#tab-panel-5771)
-* [  TypeScript ](#tab-panel-5772)
+* [  JavaScript ](#tab-panel-4613)
+* [  TypeScript ](#tab-panel-4614)
 
 JavaScript
 

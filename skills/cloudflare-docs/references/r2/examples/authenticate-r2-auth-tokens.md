@@ -4,6 +4,10 @@ description: Authenticate against the R2 S3-compatible API using API tokens with
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Authenticate against R2 API using auth tokens
@@ -35,9 +39,9 @@ export AWS_SECRET_ACCESS_KEY=your_secret_access_key
 
 ```
 
-* [  JavaScript ](#tab-panel-8282)
-* [  Python ](#tab-panel-8283)
-* [  Go ](#tab-panel-8284)
+* [  JavaScript ](#tab-panel-7124)
+* [  Python ](#tab-panel-7125)
+* [  Go ](#tab-panel-7126)
 
 Install the `@aws-sdk/client-s3` package for the S3 API:
 

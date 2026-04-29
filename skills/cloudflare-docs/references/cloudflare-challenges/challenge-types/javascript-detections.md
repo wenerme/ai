@@ -4,13 +4,17 @@ description: Client-side JavaScript challenges that run on every request to iden
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # JavaScript Detections
 
-JavaScript Detections is a type of challenge separate from Cloudflare’s Challenge Pages or Turnstile. Javascript Detections helps Cloudflare's [bot solutions](https://developers.cloudflare.com/bots/) identify automated requests.
+JavaScript Detections is a type of challenge separate from Cloudflare’s Challenge Pages or Turnstile. JavaScript Detections helps Cloudflare's [bot solutions](https://developers.cloudflare.com/bots/) identify automated requests.
 
-While Challenge Pages and Turnstile rely on client-side signals to determine the authenticity of a request, Bot Management’s JavaScript Detections relies on client-side signals and run on every single request made to your website.
+While Challenge Pages and Turnstile rely on client-side signals to determine the authenticity of a request, Bot Management’s JavaScript Detections relies on client-side signals and runs on every single request made to your website.
 
 ## Process
 
@@ -45,8 +49,8 @@ For Bot Fight Mode customers, [JavaScript Detections](https://developers.cloudfl
 
 For Super Bot Fight Mode and Bot Management for Enterprise customers, [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) is optional.
 
-* [  New dashboard ](#tab-panel-5687)
-* [ Old dashboard ](#tab-panel-5688)
+* [  New dashboard ](#tab-panel-4523)
+* [ Old dashboard ](#tab-panel-4524)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -77,8 +81,8 @@ When adding this field to WAF custom rules, it is used on endpoints expecting br
 
 The `cf.bot_management.js_detection.passed` field should never be used in a WAF custom rule that matches a visitor's first request to a site. It is necessary to have at least one HTML request before Cloudflare can inject JavaScript detection.
 
-* [ WAF rule example ](#tab-panel-5685)
-* [ Workers example ](#tab-panel-5686)
+* [ WAF rule example ](#tab-panel-4521)
+* [ Workers example ](#tab-panel-4522)
 
 ```
 
@@ -122,8 +126,6 @@ It is not recommended to combine both approaches (zone-wide toggle and the manua
 
 The following script must be added to every page that you wish to have JavaScript Detections enabled:
 
-JavaScript
-
 ```
 
 <script>
@@ -138,6 +140,8 @@ function jsdOnload(){
       callback: function(result){
 
         console.log('jsd outcome', result);
+
+      }
 
     }
 
@@ -193,6 +197,12 @@ JavaScript Detections is not supported with `nonce` set via `<meta>` tags.
 ### If you have ETags
 
 Enabling JavaScript Detections (JSD) will strip [ETags](https://developers.cloudflare.com/cache/reference/etag-headers/) from HTML responses where JSD is injected.
+
+### If your origin sends a `no-transform` header
+
+If the origin response includes a `Cache-Control: no-transform` directive, Cloudflare does not inject the JavaScript Detections script. The `cf.bot_management.js_detection.passed` field will show as `missing` for these requests.
+
+To use JavaScript Detections, remove the `no-transform` directive from `Cache-Control` response headers on pages where you want JavaScript Detections to run. For more information, refer to [Cache-Control directives](https://developers.cloudflare.com/cache/concepts/cache-control/#interaction-with-other-cloudflare-features).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/challenge-types/","name":"Available Challenges"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/challenge-types/javascript-detections/","name":"JavaScript Detections"}}]}

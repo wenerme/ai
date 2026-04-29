@@ -4,6 +4,10 @@ description: Configure Load Balancing with Regional Services and Customer Metada
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Load Balancing
@@ -16,8 +20,8 @@ You can load balance traffic at different levels of the networking stack dependi
 
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare and ensure that the Load Balancer is available only in-region, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-6687)
-* [ API ](#tab-panel-6688)
+* [ Dashboard ](#tab-panel-5529)
+* [ API ](#tab-panel-5530)
 
 1. In the Cloudflare dashboard, go to the **Load balancing** page.  
 [ Go to **Load Balancing** ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing)

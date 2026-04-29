@@ -4,6 +4,10 @@ description: Isolate search results per tenant in AI Search using separate insta
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build per-tenant search
@@ -14,8 +18,8 @@ AI Search supports per-tenant search isolation. You can either create a separate
 
 Create isolated AI Search instances for each tenant at runtime using the [namespace binding](https://developers.cloudflare.com/ai-search/concepts/namespaces/). Each tenant gets their own instance with separate storage and search index.
 
-* [  wrangler.jsonc ](#tab-panel-5366)
-* [  wrangler.toml ](#tab-panel-5367)
+* [  wrangler.jsonc ](#tab-panel-4200)
+* [  wrangler.toml ](#tab-panel-4201)
 
 JSONC
 
@@ -55,8 +59,8 @@ namespace = "default"
 
 ```
 
-* [  JavaScript ](#tab-panel-5370)
-* [  TypeScript ](#tab-panel-5371)
+* [  JavaScript ](#tab-panel-4204)
+* [  TypeScript ](#tab-panel-4205)
 
 JavaScript
 
@@ -277,8 +281,8 @@ Explain Code
 
 Use a single AI Search instance and organize content by tenant using folder paths. This approach works with both [R2 buckets](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) and [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/). Apply [metadata filters](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) at query time to ensure each tenant only retrieves their own documents.
 
-* [  wrangler.jsonc ](#tab-panel-5368)
-* [  wrangler.toml ](#tab-panel-5369)
+* [  wrangler.jsonc ](#tab-panel-4202)
+* [  wrangler.toml ](#tab-panel-4203)
 
 JSONC
 

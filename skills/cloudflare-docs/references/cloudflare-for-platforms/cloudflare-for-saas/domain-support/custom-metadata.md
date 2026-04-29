@@ -4,6 +4,10 @@ description: Configure per-hostname settings such as URL rewriting and custom he
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -89,8 +93,8 @@ The metadata object will be accessible on each request using the `request.cf.hos
 
 In the example below we will use the user\_id in the Worker that was submitted using the API call above `"custom_metadata":{"customer_id":"12345","redirect_to_https": true,"security_tag":"low"}`, and set a request header to send the `customer_id` to the origin:
 
-* [  JavaScript ](#tab-panel-5693)
-* [  TypeScript ](#tab-panel-5694)
+* [  JavaScript ](#tab-panel-4529)
+* [  TypeScript ](#tab-panel-4530)
 
 JavaScript
 

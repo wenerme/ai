@@ -4,6 +4,10 @@ description: Wrangler CLI commands for managing R2 buckets and objects.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Wrangler commands
@@ -20,9 +24,9 @@ The `r2 bucket` commands allow you to manage application data in the Cloudflare 
 
 Create a new R2 bucket
 
-* [  npm ](#tab-panel-8332)
-* [  pnpm ](#tab-panel-8333)
-* [  yarn ](#tab-panel-8334)
+* [  npm ](#tab-panel-7174)
+* [  pnpm ](#tab-panel-7175)
+* [  yarn ](#tab-panel-7176)
 
 Terminal window
 
@@ -87,9 +91,9 @@ Automatically provision draft bindings with new resources
 
 Get information about an R2 bucket
 
-* [  npm ](#tab-panel-8335)
-* [  pnpm ](#tab-panel-8336)
-* [  yarn ](#tab-panel-8337)
+* [  npm ](#tab-panel-7177)
+* [  pnpm ](#tab-panel-7178)
+* [  yarn ](#tab-panel-7179)
 
 Terminal window
 
@@ -146,9 +150,9 @@ Automatically provision draft bindings with new resources
 
 Delete an R2 bucket
 
-* [  npm ](#tab-panel-8338)
-* [  pnpm ](#tab-panel-8339)
-* [  yarn ](#tab-panel-8340)
+* [  npm ](#tab-panel-7180)
+* [  pnpm ](#tab-panel-7181)
+* [  yarn ](#tab-panel-7182)
 
 Terminal window
 
@@ -203,9 +207,9 @@ Automatically provision draft bindings with new resources
 
 List R2 buckets
 
-* [  npm ](#tab-panel-8341)
-* [  pnpm ](#tab-panel-8342)
-* [  yarn ](#tab-panel-8343)
+* [  npm ](#tab-panel-7183)
+* [  pnpm ](#tab-panel-7184)
+* [  yarn ](#tab-panel-7185)
 
 Terminal window
 
@@ -258,9 +262,9 @@ Automatically provision draft bindings with new resources
 
 Enable the data catalog on an R2 bucket
 
-* [  npm ](#tab-panel-8344)
-* [  pnpm ](#tab-panel-8345)
-* [  yarn ](#tab-panel-8346)
+* [  npm ](#tab-panel-7186)
+* [  pnpm ](#tab-panel-7187)
+* [  yarn ](#tab-panel-7188)
 
 Terminal window
 
@@ -313,9 +317,9 @@ Automatically provision draft bindings with new resources
 
 Disable the data catalog for an R2 bucket
 
-* [  npm ](#tab-panel-8347)
-* [  pnpm ](#tab-panel-8348)
-* [  yarn ](#tab-panel-8349)
+* [  npm ](#tab-panel-7189)
+* [  pnpm ](#tab-panel-7190)
+* [  yarn ](#tab-panel-7191)
 
 Terminal window
 
@@ -368,9 +372,9 @@ Automatically provision draft bindings with new resources
 
 Get the status of the data catalog for an R2 bucket
 
-* [  npm ](#tab-panel-8350)
-* [  pnpm ](#tab-panel-8351)
-* [  yarn ](#tab-panel-8352)
+* [  npm ](#tab-panel-7192)
+* [  pnpm ](#tab-panel-7193)
+* [  yarn ](#tab-panel-7194)
 
 Terminal window
 
@@ -423,9 +427,9 @@ Automatically provision draft bindings with new resources
 
 Enable automatic file compaction for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-8353)
-* [  pnpm ](#tab-panel-8354)
-* [  yarn ](#tab-panel-8355)
+* [  npm ](#tab-panel-7195)
+* [  pnpm ](#tab-panel-7196)
+* [  yarn ](#tab-panel-7197)
 
 Terminal window
 
@@ -504,9 +508,9 @@ npx wrangler r2 bucket catalog compaction enable my-bucket my-namespace my-table
 
 Disable automatic file compaction for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-8356)
-* [  pnpm ](#tab-panel-8357)
-* [  yarn ](#tab-panel-8358)
+* [  npm ](#tab-panel-7198)
+* [  pnpm ](#tab-panel-7199)
+* [  yarn ](#tab-panel-7200)
 
 Terminal window
 
@@ -581,9 +585,9 @@ npx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-tabl
 
 Enable automatic snapshot expiration for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-8359)
-* [  pnpm ](#tab-panel-8360)
-* [  yarn ](#tab-panel-8361)
+* [  npm ](#tab-panel-7201)
+* [  pnpm ](#tab-panel-7202)
+* [  yarn ](#tab-panel-7203)
 
 Terminal window
 
@@ -646,9 +650,9 @@ Automatically provision draft bindings with new resources
 
 Disable automatic snapshot expiration for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-8362)
-* [  pnpm ](#tab-panel-8363)
-* [  yarn ](#tab-panel-8364)
+* [  npm ](#tab-panel-7204)
+* [  pnpm ](#tab-panel-7205)
+* [  yarn ](#tab-panel-7206)
 
 Terminal window
 
@@ -707,9 +711,9 @@ Automatically provision draft bindings with new resources
 
 Set the CORS configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-8365)
-* [  pnpm ](#tab-panel-8366)
-* [  yarn ](#tab-panel-8367)
+* [  npm ](#tab-panel-7207)
+* [  pnpm ](#tab-panel-7208)
+* [  yarn ](#tab-panel-7209)
 
 Terminal window
 
@@ -768,9 +772,9 @@ Automatically provision draft bindings with new resources
 
 Clear the CORS configuration for an R2 bucket
 
-* [  npm ](#tab-panel-8368)
-* [  pnpm ](#tab-panel-8369)
-* [  yarn ](#tab-panel-8370)
+* [  npm ](#tab-panel-7210)
+* [  pnpm ](#tab-panel-7211)
+* [  yarn ](#tab-panel-7212)
 
 Terminal window
 
@@ -827,9 +831,9 @@ Automatically provision draft bindings with new resources
 
 List the CORS rules for an R2 bucket
 
-* [  npm ](#tab-panel-8371)
-* [  pnpm ](#tab-panel-8372)
-* [  yarn ](#tab-panel-8373)
+* [  npm ](#tab-panel-7213)
+* [  pnpm ](#tab-panel-7214)
+* [  yarn ](#tab-panel-7215)
 
 Terminal window
 
@@ -884,9 +888,9 @@ Automatically provision draft bindings with new resources
 
 Enable public access via the r2.dev URL for an R2 bucket
 
-* [  npm ](#tab-panel-8374)
-* [  pnpm ](#tab-panel-8375)
-* [  yarn ](#tab-panel-8376)
+* [  npm ](#tab-panel-7216)
+* [  pnpm ](#tab-panel-7217)
+* [  yarn ](#tab-panel-7218)
 
 Terminal window
 
@@ -943,9 +947,9 @@ Automatically provision draft bindings with new resources
 
 Disable public access via the r2.dev URL for an R2 bucket
 
-* [  npm ](#tab-panel-8377)
-* [  pnpm ](#tab-panel-8378)
-* [  yarn ](#tab-panel-8379)
+* [  npm ](#tab-panel-7219)
+* [  pnpm ](#tab-panel-7220)
+* [  yarn ](#tab-panel-7221)
 
 Terminal window
 
@@ -1002,9 +1006,9 @@ Automatically provision draft bindings with new resources
 
 Get the r2.dev URL and status for an R2 bucket
 
-* [  npm ](#tab-panel-8380)
-* [  pnpm ](#tab-panel-8381)
-* [  yarn ](#tab-panel-8382)
+* [  npm ](#tab-panel-7222)
+* [  pnpm ](#tab-panel-7223)
+* [  yarn ](#tab-panel-7224)
 
 Terminal window
 
@@ -1059,9 +1063,9 @@ Automatically provision draft bindings with new resources
 
 Connect a custom domain to an R2 bucket
 
-* [  npm ](#tab-panel-8383)
-* [  pnpm ](#tab-panel-8384)
-* [  yarn ](#tab-panel-8385)
+* [  npm ](#tab-panel-7225)
+* [  pnpm ](#tab-panel-7226)
+* [  yarn ](#tab-panel-7227)
 
 Terminal window
 
@@ -1124,9 +1128,9 @@ Automatically provision draft bindings with new resources
 
 Remove a custom domain from an R2 bucket
 
-* [  npm ](#tab-panel-8386)
-* [  pnpm ](#tab-panel-8387)
-* [  yarn ](#tab-panel-8388)
+* [  npm ](#tab-panel-7228)
+* [  pnpm ](#tab-panel-7229)
+* [  yarn ](#tab-panel-7230)
 
 Terminal window
 
@@ -1185,9 +1189,9 @@ Automatically provision draft bindings with new resources
 
 Update settings for a custom domain connected to an R2 bucket
 
-* [  npm ](#tab-panel-8389)
-* [  pnpm ](#tab-panel-8390)
-* [  yarn ](#tab-panel-8391)
+* [  npm ](#tab-panel-7231)
+* [  pnpm ](#tab-panel-7232)
+* [  yarn ](#tab-panel-7233)
 
 Terminal window
 
@@ -1246,9 +1250,9 @@ Automatically provision draft bindings with new resources
 
 Get custom domain connected to an R2 bucket
 
-* [  npm ](#tab-panel-8392)
-* [  pnpm ](#tab-panel-8393)
-* [  yarn ](#tab-panel-8394)
+* [  npm ](#tab-panel-7234)
+* [  pnpm ](#tab-panel-7235)
+* [  yarn ](#tab-panel-7236)
 
 Terminal window
 
@@ -1305,9 +1309,9 @@ Automatically provision draft bindings with new resources
 
 List custom domains for an R2 bucket
 
-* [  npm ](#tab-panel-8395)
-* [  pnpm ](#tab-panel-8396)
-* [  yarn ](#tab-panel-8397)
+* [  npm ](#tab-panel-7237)
+* [  pnpm ](#tab-panel-7238)
+* [  yarn ](#tab-panel-7239)
 
 Terminal window
 
@@ -1362,9 +1366,9 @@ Automatically provision draft bindings with new resources
 
 Add a lifecycle rule to an R2 bucket
 
-* [  npm ](#tab-panel-8398)
-* [  pnpm ](#tab-panel-8399)
-* [  yarn ](#tab-panel-8400)
+* [  npm ](#tab-panel-7240)
+* [  pnpm ](#tab-panel-7241)
+* [  yarn ](#tab-panel-7242)
 
 Terminal window
 
@@ -1435,9 +1439,9 @@ Automatically provision draft bindings with new resources
 
 Remove a lifecycle rule from an R2 bucket
 
-* [  npm ](#tab-panel-8401)
-* [  pnpm ](#tab-panel-8402)
-* [  yarn ](#tab-panel-8403)
+* [  npm ](#tab-panel-7243)
+* [  pnpm ](#tab-panel-7244)
+* [  yarn ](#tab-panel-7245)
 
 Terminal window
 
@@ -1494,9 +1498,9 @@ Automatically provision draft bindings with new resources
 
 List lifecycle rules for an R2 bucket
 
-* [  npm ](#tab-panel-8404)
-* [  pnpm ](#tab-panel-8405)
-* [  yarn ](#tab-panel-8406)
+* [  npm ](#tab-panel-7246)
+* [  pnpm ](#tab-panel-7247)
+* [  yarn ](#tab-panel-7248)
 
 Terminal window
 
@@ -1551,9 +1555,9 @@ Automatically provision draft bindings with new resources
 
 Set the lifecycle configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-8407)
-* [  pnpm ](#tab-panel-8408)
-* [  yarn ](#tab-panel-8409)
+* [  npm ](#tab-panel-7249)
+* [  pnpm ](#tab-panel-7250)
+* [  yarn ](#tab-panel-7251)
 
 Terminal window
 
@@ -1612,9 +1616,9 @@ Automatically provision draft bindings with new resources
 
 Add a lock rule to an R2 bucket
 
-* [  npm ](#tab-panel-8410)
-* [  pnpm ](#tab-panel-8411)
-* [  yarn ](#tab-panel-8412)
+* [  npm ](#tab-panel-7252)
+* [  pnpm ](#tab-panel-7253)
+* [  yarn ](#tab-panel-7254)
 
 Terminal window
 
@@ -1681,9 +1685,9 @@ Automatically provision draft bindings with new resources
 
 Remove a bucket lock rule from an R2 bucket
 
-* [  npm ](#tab-panel-8413)
-* [  pnpm ](#tab-panel-8414)
-* [  yarn ](#tab-panel-8415)
+* [  npm ](#tab-panel-7255)
+* [  pnpm ](#tab-panel-7256)
+* [  yarn ](#tab-panel-7257)
 
 Terminal window
 
@@ -1740,9 +1744,9 @@ Automatically provision draft bindings with new resources
 
 List lock rules for an R2 bucket
 
-* [  npm ](#tab-panel-8416)
-* [  pnpm ](#tab-panel-8417)
-* [  yarn ](#tab-panel-8418)
+* [  npm ](#tab-panel-7258)
+* [  pnpm ](#tab-panel-7259)
+* [  yarn ](#tab-panel-7260)
 
 Terminal window
 
@@ -1797,9 +1801,9 @@ Automatically provision draft bindings with new resources
 
 Set the lock configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-8419)
-* [  pnpm ](#tab-panel-8420)
-* [  yarn ](#tab-panel-8421)
+* [  npm ](#tab-panel-7261)
+* [  pnpm ](#tab-panel-7262)
+* [  yarn ](#tab-panel-7263)
 
 Terminal window
 
@@ -1858,9 +1862,9 @@ Automatically provision draft bindings with new resources
 
 Create an event notification rule for an R2 bucket
 
-* [  npm ](#tab-panel-8422)
-* [  pnpm ](#tab-panel-8423)
-* [  yarn ](#tab-panel-8424)
+* [  npm ](#tab-panel-7264)
+* [  pnpm ](#tab-panel-7265)
+* [  yarn ](#tab-panel-7266)
 
 Terminal window
 
@@ -1925,9 +1929,9 @@ Automatically provision draft bindings with new resources
 
 Delete an event notification rule from an R2 bucket
 
-* [  npm ](#tab-panel-8425)
-* [  pnpm ](#tab-panel-8426)
-* [  yarn ](#tab-panel-8427)
+* [  npm ](#tab-panel-7267)
+* [  pnpm ](#tab-panel-7268)
+* [  yarn ](#tab-panel-7269)
 
 Terminal window
 
@@ -1986,9 +1990,9 @@ Automatically provision draft bindings with new resources
 
 List event notification rules for an R2 bucket
 
-* [  npm ](#tab-panel-8428)
-* [  pnpm ](#tab-panel-8429)
-* [  yarn ](#tab-panel-8430)
+* [  npm ](#tab-panel-7270)
+* [  pnpm ](#tab-panel-7271)
+* [  yarn ](#tab-panel-7272)
 
 Terminal window
 
@@ -2043,9 +2047,9 @@ Automatically provision draft bindings with new resources
 
 Enable Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-8431)
-* [  pnpm ](#tab-panel-8432)
-* [  yarn ](#tab-panel-8433)
+* [  npm ](#tab-panel-7273)
+* [  pnpm ](#tab-panel-7274)
+* [  yarn ](#tab-panel-7275)
 
 Terminal window
 
@@ -2119,9 +2123,9 @@ Automatically provision draft bindings with new resources
 
 Disable Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-8434)
-* [  pnpm ](#tab-panel-8435)
-* [  yarn ](#tab-panel-8436)
+* [  npm ](#tab-panel-7276)
+* [  pnpm ](#tab-panel-7277)
+* [  yarn ](#tab-panel-7278)
 
 Terminal window
 
@@ -2176,9 +2180,9 @@ Automatically provision draft bindings with new resources
 
 Check the status of Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-8437)
-* [  pnpm ](#tab-panel-8438)
-* [  yarn ](#tab-panel-8439)
+* [  npm ](#tab-panel-7279)
+* [  pnpm ](#tab-panel-7280)
+* [  yarn ](#tab-panel-7281)
 
 Terminal window
 
@@ -2241,9 +2245,9 @@ The `r2 object` commands allow you to manage application data in the Cloudflare 
 
 Fetch an object from an R2 bucket
 
-* [  npm ](#tab-panel-8440)
-* [  pnpm ](#tab-panel-8441)
-* [  yarn ](#tab-panel-8442)
+* [  npm ](#tab-panel-7282)
+* [  pnpm ](#tab-panel-7283)
+* [  yarn ](#tab-panel-7284)
 
 Terminal window
 
@@ -2308,9 +2312,9 @@ Automatically provision draft bindings with new resources
 
 Create an object in an R2 bucket
 
-* [  npm ](#tab-panel-8443)
-* [  pnpm ](#tab-panel-8444)
-* [  yarn ](#tab-panel-8445)
+* [  npm ](#tab-panel-7285)
+* [  pnpm ](#tab-panel-7286)
+* [  yarn ](#tab-panel-7287)
 
 Terminal window
 
@@ -2391,9 +2395,9 @@ Automatically provision draft bindings with new resources
 
 Delete an object in an R2 bucket
 
-* [  npm ](#tab-panel-8446)
-* [  pnpm ](#tab-panel-8447)
-* [  yarn ](#tab-panel-8448)
+* [  npm ](#tab-panel-7288)
+* [  pnpm ](#tab-panel-7289)
+* [  yarn ](#tab-panel-7290)
 
 Terminal window
 

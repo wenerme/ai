@@ -4,6 +4,10 @@ description: Create your first Vectorize index, connect a Worker, and run a simi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Introduction to Vectorize
@@ -147,8 +151,8 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9309)
-* [  wrangler.toml ](#tab-panel-9310)
+* [  wrangler.jsonc ](#tab-panel-8192)
+* [  wrangler.toml ](#tab-panel-8193)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: This tutorial explains how to programmatically generate a custom Yo
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -555,8 +559,8 @@ Adding a query parameter with custom text, you should receive:
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-9209)
-* [  wrangler.toml ](#tab-panel-9210)
+* [  wrangler.jsonc ](#tab-panel-9237)
+* [  wrangler.toml ](#tab-panel-9238)
 
 JSONC
 
@@ -846,8 +850,8 @@ Image transformations can only be tested when you deploy your Worker.
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-9211)
-* [  wrangler.toml ](#tab-panel-9212)
+* [  wrangler.jsonc ](#tab-panel-9239)
+* [  wrangler.toml ](#tab-panel-9240)
 
 JSONC
 

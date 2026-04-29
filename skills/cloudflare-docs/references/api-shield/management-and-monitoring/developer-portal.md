@@ -4,6 +4,10 @@ description: Create interactive API documentation portals from saved endpoints o
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build developer portals
@@ -12,8 +16,8 @@ Once your endpoints are saved, API Shield doubles as an API catalog. API Shield 
 
 To create a developer portal:
 
-* [  New dashboard ](#tab-panel-5405)
-* [ Old dashboard ](#tab-panel-5406)
+* [  New dashboard ](#tab-panel-4239)
+* [ Old dashboard ](#tab-panel-4240)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

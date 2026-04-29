@@ -106,28 +106,25 @@ allowed_web_search_modes = ["cached"] # "disabled" remains implicitly allowed
 `allowed_web_search_modes = []` allows only `"disabled"`.
 For example, `allowed_web_search_modes = ["cached"]` prevents live web search even in `danger-full-access` sessions.
 
-You can also pin [feature flags](https://developers.openai.com/codex/config-basic/#feature-flags):
+### Pin feature flags
+
+You can also pin [feature flags](https://developers.openai.com/codex/config-basic/#feature-flags) for users
+receiving a managed `requirements.toml`:
 
 ```toml
 [features]
 personality = true
 unified_exec = false
-```
 
-Use the canonical feature keys from `config.toml`'s `[features]` table. Codex normalizes the resulting feature set to meet these pins and rejects conflicting writes to `config.toml` or profile-scoped feature settings.
-
-### Disable Codex feature surfaces
-
-Admins can use `[feature_requirements]` to disable specific Codex feature
-surfaces for users receiving a managed `requirements.toml`. You can also set
-the same keys in the existing `[features]` table.
-
-```toml
-[feature_requirements]
+# Disable specific Codex feature surfaces when needed.
 browser_use = false
 in_app_browser = false
 computer_use = false
 ```
+
+Use the canonical feature keys from `config.toml`'s `[features]` table. Codex normalizes the resulting feature set to meet these pins and rejects conflicting writes to `config.toml` or profile-scoped feature settings.
+
+<a id="disable-codex-feature-surfaces"></a>
 
 - `in_app_browser = false` disables the in-app browser pane.
 - `browser_use = false` disables Browser Use and Browser Agent availability.

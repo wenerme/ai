@@ -1,3 +1,5 @@
+# Using files
+
 The Gemini API supports uploading media files separately from the prompt input, allowing your media to be reused across multiple requests and multiple prompts. For more details, check out the [Prompting with media](https://ai.google.dev/gemini-api/docs/prompting_with_media) guide.
 
 ## Method: media.upload

@@ -4,6 +4,10 @@ description: High availability in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -42,8 +46,8 @@ flowchart LR
 
 ## Create a node with high availability
 
-* [ Dashboard ](#tab-panel-5889)
-* [ API ](#tab-panel-5890)
+* [ Dashboard ](#tab-panel-4731)
+* [ API ](#tab-panel-4732)
 
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
@@ -82,8 +86,8 @@ The response includes a `token` field. Use this token to register replicas.
 
 To add a replica to an existing high-availability node, install the Cloudflare One Client on a new Linux host and register it using the same node token.
 
-* [ Dashboard ](#tab-panel-5895)
-* [ API ](#tab-panel-5896)
+* [ Dashboard ](#tab-panel-4737)
+* [ API ](#tab-panel-4738)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -94,8 +98,8 @@ To add a replica to an existing high-availability node, install the Cloudflare O
 
 Installation commands
 
-* [ Debian / Ubuntu ](#tab-panel-5891)
-* [ RedHat / CentOS ](#tab-panel-5892)
+* [ Debian / Ubuntu ](#tab-panel-4733)
+* [ RedHat / CentOS ](#tab-panel-4734)
 
 Terminal window
 
@@ -127,7 +131,7 @@ Terminal window
 
 ```
 
-sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm &&
+curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
 
 sudo yum install -y cloudflare-warp &&
 
@@ -155,8 +159,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/
 ```  
 The response contains the token string.
 2. Install the client and register on a new Linux host:  
-   * [ Debian / Ubuntu ](#tab-panel-5893)  
-   * [ RedHat / CentOS ](#tab-panel-5894)  
+   * [ Debian / Ubuntu ](#tab-panel-4735)  
+   * [ RedHat / CentOS ](#tab-panel-4736)  
 Terminal window  
 ```  
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  
@@ -171,7 +175,7 @@ sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
 ```  
 Terminal window  
 ```  
-sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm &&  
+curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&  
 sudo yum install -y cloudflare-warp &&  
 printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&  
 sudo sysctl --system  

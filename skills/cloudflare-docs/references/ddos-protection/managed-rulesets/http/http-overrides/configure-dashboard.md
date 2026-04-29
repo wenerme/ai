@@ -4,6 +4,10 @@ description: Create HTTP DDoS Attack Protection overrides in the Cloudflare dash
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure in the dashboard
@@ -24,8 +28,8 @@ Rules in the phase entry point ruleset, where you create overrides, are evaluate
 
 ## Access
 
-* [  New dashboard ](#tab-panel-6695)
-* [ Old dashboard ](#tab-panel-6696)
+* [  New dashboard ](#tab-panel-5537)
+* [ Old dashboard ](#tab-panel-5538)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -59,8 +63,8 @@ Notes
 
 ### Delete a DDoS override
 
-* [  New dashboard ](#tab-panel-6697)
-* [ Old dashboard ](#tab-panel-6698)
+* [  New dashboard ](#tab-panel-5539)
+* [ Old dashboard ](#tab-panel-5540)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

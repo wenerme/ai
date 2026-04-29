@@ -4,6 +4,10 @@ description: Create isolated execution contexts with independent shell state wit
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Sessions
@@ -39,8 +43,8 @@ const session = await sandbox.createSession(options?: SessionOptions): Promise<E
 
 **Returns**: `Promise<ExecutionSession>` with all sandbox methods bound to this session
 
-* [  JavaScript ](#tab-panel-8701)
-* [  TypeScript ](#tab-panel-8702)
+* [  JavaScript ](#tab-panel-7543)
+* [  TypeScript ](#tab-panel-7544)
 
 JavaScript
 
@@ -197,8 +201,8 @@ const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSe
 
 **Returns**: `Promise<ExecutionSession>` bound to the specified session
 
-* [  JavaScript ](#tab-panel-8695)
-* [  TypeScript ](#tab-panel-8696)
+* [  JavaScript ](#tab-panel-7537)
+* [  TypeScript ](#tab-panel-7538)
 
 JavaScript
 
@@ -269,8 +273,8 @@ const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDe
 * `sessionId` \- ID of the deleted session
 * `timestamp` \- Deletion timestamp
 
-* [  JavaScript ](#tab-panel-8697)
-* [  TypeScript ](#tab-panel-8698)
+* [  JavaScript ](#tab-panel-7539)
+* [  TypeScript ](#tab-panel-7540)
 
 JavaScript
 
@@ -349,8 +353,8 @@ Warning
 
 Call `setEnvVars()` **before** any other sandbox operations to ensure environment variables are available from the start.
 
-* [  JavaScript ](#tab-panel-8699)
-* [  TypeScript ](#tab-panel-8700)
+* [  JavaScript ](#tab-panel-7541)
+* [  TypeScript ](#tab-panel-7542)
 
 JavaScript
 

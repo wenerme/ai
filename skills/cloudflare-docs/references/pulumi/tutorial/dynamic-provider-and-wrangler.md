@@ -4,6 +4,10 @@ description: Pulumi and Wrangler can be used to create different types of resour
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pulumi/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create different resources using Pulumi and Wrangler

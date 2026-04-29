@@ -4,6 +4,10 @@ description: Send server-initiated messages and trigger LLM responses from Cloud
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Autonomous responses
@@ -47,8 +51,8 @@ Always call `waitUntilStable()` before reading `this.messages` or calling `saveM
 
 It returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves. If nothing is pending, it returns immediately.
 
-* [  JavaScript ](#tab-panel-5122)
-* [  TypeScript ](#tab-panel-5123)
+* [  JavaScript ](#tab-panel-3956)
+* [  TypeScript ](#tab-panel-3957)
 
 JavaScript
 
@@ -104,8 +108,8 @@ Without this guard, you risk reading stale messages or overlapping with an in-fl
 
 A daily digest agent that summarizes activity every morning. Cron schedules are idempotent by default, so calling `schedule()` in `onStart` is safe — it does not create duplicates across Durable Object restarts.
 
-* [  JavaScript ](#tab-panel-5126)
-* [  TypeScript ](#tab-panel-5127)
+* [  JavaScript ](#tab-panel-3960)
+* [  TypeScript ](#tab-panel-3961)
 
 JavaScript
 
@@ -498,8 +502,8 @@ Explain Code
 
 ### Broadcasting state
 
-* [  JavaScript ](#tab-panel-5124)
-* [  TypeScript ](#tab-panel-5125)
+* [  JavaScript ](#tab-panel-3958)
+* [  TypeScript ](#tab-panel-3959)
 
 JavaScript
 

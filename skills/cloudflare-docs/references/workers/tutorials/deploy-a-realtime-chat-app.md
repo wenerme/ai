@@ -4,6 +4,10 @@ description: This tutorial shows how to deploy a serverless, real-time chat appl
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -69,8 +73,8 @@ To deploy your application to a custom domain using Wrangler, open your project'
 
 To configure a route in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-9199)
-* [  wrangler.toml ](#tab-panel-9200)
+* [  wrangler.jsonc ](#tab-panel-9227)
+* [  wrangler.toml ](#tab-panel-9228)
 
 JSONC
 
@@ -112,8 +116,8 @@ If you have specified your zone ID in the environment of your Wrangler configura
 
 To configure a subdomain in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-9201)
-* [  wrangler.toml ](#tab-panel-9202)
+* [  wrangler.jsonc ](#tab-panel-9229)
+* [  wrangler.toml ](#tab-panel-9230)
 
 JSONC
 
@@ -164,8 +168,8 @@ To test your live application:
 
 To uninstall your chat application, modify your Wrangler file to remove the `durable_objects` bindings and add a `deleted_classes` migration:
 
-* [  wrangler.jsonc ](#tab-panel-9203)
-* [  wrangler.toml ](#tab-panel-9204)
+* [  wrangler.jsonc ](#tab-panel-9231)
+* [  wrangler.toml ](#tab-panel-9232)
 
 JSONC
 

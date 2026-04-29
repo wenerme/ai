@@ -4,6 +4,10 @@ description: Similar to Full Mode, but with added validation of the origin serve
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Full (strict)
@@ -42,8 +46,8 @@ Otherwise, your visitors may experience a [526 error](https://developers.cloudfl
 
 ### Process
 
-* [ Dashboard ](#tab-panel-9119)
-* [ API ](#tab-panel-9120)
+* [ Dashboard ](#tab-panel-7981)
+* [ API ](#tab-panel-7982)
 
 To change your encryption mode in the dashboard:
 

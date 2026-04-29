@@ -4,6 +4,10 @@ description: Learn about create monitor in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create monitor
@@ -12,8 +16,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-7609)
-* [ API ](#tab-panel-7610)
+* [ Dashboard ](#tab-panel-6451)
+* [ API ](#tab-panel-6452)
 
 **Set up the monitor**
 

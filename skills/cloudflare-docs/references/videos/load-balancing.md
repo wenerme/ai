@@ -4,6 +4,10 @@ description: Unexpected traffic spikes can crash your website, but Cloudflare Lo
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # How to set up a load balancer

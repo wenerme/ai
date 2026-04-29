@@ -4,6 +4,10 @@ description: Run serverless containers alongside Workers to handle resource-inte
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Containers
@@ -24,8 +28,8 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-6436)
-* [ Worker Config ](#tab-panel-6437)
+* [ Worker Code ](#tab-panel-5278)
+* [ Worker Config ](#tab-panel-5279)
 
 JavaScript
 
@@ -66,8 +70,8 @@ export default {
 
 Explain Code
 
-* [  wrangler.jsonc ](#tab-panel-6434)
-* [  wrangler.toml ](#tab-panel-6435)
+* [  wrangler.jsonc ](#tab-panel-5276)
+* [  wrangler.toml ](#tab-panel-5277)
 
 JSONC
 
@@ -81,7 +85,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "containers": [
 
@@ -142,7 +146,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[containers]]

@@ -4,6 +4,10 @@ description: Control where your containers run with regional and jurisdictional 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Placement
@@ -43,8 +47,8 @@ When you specify both `jurisdiction` and `regions`, the regions must be valid fo
 
 Set placement constraints in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6500)
-* [  wrangler.toml ](#tab-panel-6501)
+* [  wrangler.jsonc ](#tab-panel-5342)
+* [  wrangler.toml ](#tab-panel-5343)
 
 JSONC
 

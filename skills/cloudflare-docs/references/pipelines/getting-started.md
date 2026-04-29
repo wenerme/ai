@@ -4,6 +4,10 @@ description: Create your first pipeline to ingest streaming data and write to R2
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Getting started
@@ -43,8 +47,8 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 2\. Create your first pipeline
 
-* [ Wrangler CLI ](#tab-panel-7985)
-* [ Dashboard ](#tab-panel-7986)
+* [ Wrangler CLI ](#tab-panel-6827)
+* [ Dashboard ](#tab-panel-6828)
 
 First, create a schema file that defines your ecommerce data structure:
 

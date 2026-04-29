@@ -4,6 +4,10 @@ description: Connect browser-based terminals to sandbox shells using xterm.js or
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Browser terminals
@@ -40,8 +44,8 @@ If you are not using xterm.js, you only need `@cloudflare/sandbox` for types.
 
 Add a route that proxies WebSocket connections to the sandbox terminal. The example below supports both the default session and named sessions via a query parameter:
 
-* [  JavaScript ](#tab-panel-8809)
-* [  TypeScript ](#tab-panel-8810)
+* [  JavaScript ](#tab-panel-7651)
+* [  TypeScript ](#tab-panel-7652)
 
 JavaScript
 
@@ -151,8 +155,8 @@ Explain Code
 
 Create the terminal in your browser code and attach the `SandboxAddon`. The addon manages the WebSocket connection, automatic reconnection, and resize forwarding.
 
-* [  JavaScript ](#tab-panel-8811)
-* [  TypeScript ](#tab-panel-8812)
+* [  JavaScript ](#tab-panel-7653)
+* [  TypeScript ](#tab-panel-7654)
 
 JavaScript
 
@@ -290,8 +294,8 @@ For the full addon API, refer to the [Terminal API reference](https://developers
 
 If you are building a custom terminal UI or running in an environment without xterm.js, connect directly over WebSockets. The protocol uses binary frames for terminal data and JSON text frames for control messages.
 
-* [  JavaScript ](#tab-panel-8813)
-* [  TypeScript ](#tab-panel-8814)
+* [  JavaScript ](#tab-panel-7655)
+* [  TypeScript ](#tab-panel-7656)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Wrangler CLI commands for managing, deploying, and interacting with
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Wrangler commands
@@ -12,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-11208)
-* [  pnpm ](#tab-panel-11209)
-* [  yarn ](#tab-panel-11210)
+* [  npm ](#tab-panel-10093)
+* [  pnpm ](#tab-panel-10094)
+* [  yarn ](#tab-panel-10095)
 
 Terminal window
 
@@ -73,9 +77,9 @@ Automatically provision draft bindings with new resources
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-11211)
-* [  pnpm ](#tab-panel-11212)
-* [  yarn ](#tab-panel-11213)
+* [  npm ](#tab-panel-10096)
+* [  pnpm ](#tab-panel-10097)
+* [  yarn ](#tab-panel-10098)
 
 Terminal window
 
@@ -132,9 +136,9 @@ Automatically provision draft bindings with new resources
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-11214)
-* [  pnpm ](#tab-panel-11215)
-* [  yarn ](#tab-panel-11216)
+* [  npm ](#tab-panel-10099)
+* [  pnpm ](#tab-panel-10100)
+* [  yarn ](#tab-panel-10101)
 
 Terminal window
 
@@ -191,9 +195,9 @@ Automatically provision draft bindings with new resources
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-11217)
-* [  pnpm ](#tab-panel-11218)
-* [  yarn ](#tab-panel-11219)
+* [  npm ](#tab-panel-10102)
+* [  pnpm ](#tab-panel-10103)
+* [  yarn ](#tab-panel-10104)
 
 Terminal window
 
@@ -254,9 +258,9 @@ Automatically provision draft bindings with new resources
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-11220)
-* [  pnpm ](#tab-panel-11221)
-* [  yarn ](#tab-panel-11222)
+* [  npm ](#tab-panel-10105)
+* [  pnpm ](#tab-panel-10106)
+* [  yarn ](#tab-panel-10107)
 
 Terminal window
 
@@ -321,9 +325,9 @@ Automatically provision draft bindings with new resources
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-11223)
-* [  pnpm ](#tab-panel-11224)
-* [  yarn ](#tab-panel-11225)
+* [  npm ](#tab-panel-10108)
+* [  pnpm ](#tab-panel-10109)
+* [  yarn ](#tab-panel-10110)
 
 Terminal window
 
@@ -386,9 +390,9 @@ Automatically provision draft bindings with new resources
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-11226)
-* [  pnpm ](#tab-panel-11227)
-* [  yarn ](#tab-panel-11228)
+* [  npm ](#tab-panel-10111)
+* [  pnpm ](#tab-panel-10112)
+* [  yarn ](#tab-panel-10113)
 
 Terminal window
 
@@ -451,9 +455,9 @@ Automatically provision draft bindings with new resources
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-11229)
-* [  pnpm ](#tab-panel-11230)
-* [  yarn ](#tab-panel-11231)
+* [  npm ](#tab-panel-10114)
+* [  pnpm ](#tab-panel-10115)
+* [  yarn ](#tab-panel-10116)
 
 Terminal window
 
@@ -512,9 +516,9 @@ Automatically provision draft bindings with new resources
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-11232)
-* [  pnpm ](#tab-panel-11233)
-* [  yarn ](#tab-panel-11234)
+* [  npm ](#tab-panel-10117)
+* [  pnpm ](#tab-panel-10118)
+* [  yarn ](#tab-panel-10119)
 
 Terminal window
 
@@ -573,9 +577,9 @@ Automatically provision draft bindings with new resources
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-11235)
-* [  pnpm ](#tab-panel-11236)
-* [  yarn ](#tab-panel-11237)
+* [  npm ](#tab-panel-10120)
+* [  pnpm ](#tab-panel-10121)
+* [  yarn ](#tab-panel-10122)
 
 Terminal window
 
@@ -634,9 +638,9 @@ Automatically provision draft bindings with new resources
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-11238)
-* [  pnpm ](#tab-panel-11239)
-* [  yarn ](#tab-panel-11240)
+* [  npm ](#tab-panel-10123)
+* [  pnpm ](#tab-panel-10124)
+* [  yarn ](#tab-panel-10125)
 
 Terminal window
 

@@ -4,6 +4,10 @@ description: Redirect all HTTP requests to HTTPS for your domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -34,8 +38,8 @@ Note
 
 If only some parts of your application can support HTTPS traffic, do not enable **Always Use HTTPS** and use a [single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) to selectively perform the redirect to HTTPS. Refer to [Redirect admin area requests to HTTPS](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/) for an example.
 
-* [ Dashboard ](#tab-panel-9061)
-* [ API ](#tab-panel-9062)
+* [ Dashboard ](#tab-panel-7903)
+* [ API ](#tab-panel-7904)
 
 To enable **Always Use HTTPS** in the dashboard:
 

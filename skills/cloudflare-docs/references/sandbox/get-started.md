@@ -4,6 +4,10 @@ description: Create your first Sandbox SDK Worker to execute Python code in isol
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Getting started
@@ -250,8 +254,8 @@ If you plan to expose ports from sandboxes (using `exposePort()` for preview URL
 
 Your `wrangler.jsonc` connects three pieces together:
 
-* [  wrangler.jsonc ](#tab-panel-8751)
-* [  wrangler.toml ](#tab-panel-8752)
+* [  wrangler.jsonc ](#tab-panel-7593)
+* [  wrangler.toml ](#tab-panel-7594)
 
 JSONC
 

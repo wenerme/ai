@@ -4,6 +4,10 @@ description: Create an AI binding to connect your Cloudflare Worker to Workers A
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Workers Bindings
@@ -16,8 +20,8 @@ To use Workers AI with Workers, you must create a Workers AI [binding](https://d
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9493)
-* [  wrangler.toml ](#tab-panel-9494)
+* [  wrangler.jsonc ](#tab-panel-8376)
+* [  wrangler.toml ](#tab-panel-8377)
 
 JSONC
 

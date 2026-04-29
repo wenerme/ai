@@ -4,6 +4,10 @@ description: Secure MCP servers with Cloudflare Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -32,8 +36,8 @@ The following guide deploys a remote MCP server on [Cloudflare Workers](https://
 
 To deploy our [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access-self-hosted) to your Cloudflare account:
 
-* [ Dashboard ](#tab-panel-5759)
-* [ CLI ](#tab-panel-5760)
+* [ Dashboard ](#tab-panel-4601)
+* [ CLI ](#tab-panel-4602)
 
 1. Select the following button to launch the quickstart flow:  
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access-self-hosted)
@@ -75,8 +79,8 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-access-sel
 
 ### 2\. Create a self-hosted Access application
 
-* [ Dashboard ](#tab-panel-5767)
-* [ API ](#tab-panel-5768)
+* [ Dashboard ](#tab-panel-4609)
+* [ API ](#tab-panel-4610)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
 2. Select **Add an application**.
@@ -119,8 +123,8 @@ The MCP server validates the `Cf-Access-Jwt-Assertion` header on each request by
 
 To configure the environment variables for our [example MCP server](#1-deploy-an-example-mcp-server):
 
-* [ Dashboard ](#tab-panel-5763)
-* [ CLI ](#tab-panel-5764)
+* [ Dashboard ](#tab-panel-4605)
+* [ CLI ](#tab-panel-4606)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.  
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
@@ -174,8 +178,8 @@ The following guide walks through the Access for SaaS approach. It deploys a rem
 
 To deploy our [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access) to your Cloudflare account:
 
-* [ Dashboard ](#tab-panel-5761)
-* [ CLI ](#tab-panel-5762)
+* [ Dashboard ](#tab-panel-4603)
+* [ CLI ](#tab-panel-4604)
 
 1. Select the following button to launch the quickstart flow:  
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access)
@@ -245,8 +249,8 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-server-cf-
 
 ### 2\. Create an Access for SaaS app
 
-* [ Dashboard ](#tab-panel-5769)
-* [ API ](#tab-panel-5770)
+* [ Dashboard ](#tab-panel-4611)
+* [ API ](#tab-panel-4612)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
 2. Select **Add an application**.
@@ -315,8 +319,8 @@ Your MCP server needs to perform an OAuth 2.0 authorization flow to get an `acce
 
 To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-example-mcp-server-1):
 
-* [ Dashboard ](#tab-panel-5765)
-* [ CLI ](#tab-panel-5766)
+* [ Dashboard ](#tab-panel-4607)
+* [ CLI ](#tab-panel-4608)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.  
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)

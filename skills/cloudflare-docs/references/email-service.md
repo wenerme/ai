@@ -4,6 +4,10 @@ description: Send transactional emails and route incoming emails to Workers or e
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cloudflare Email Service
@@ -31,9 +35,9 @@ Together, these two features make it possible for you to send and receive emails
 
 Access Email Service using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) from any platform, or directly from Cloudflare Workers using [bindings](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/):
 
-* [ REST API (curl) ](#tab-panel-7068)
-* [ index.ts (Workers) ](#tab-panel-7069)
-* [ wrangler.jsonc ](#tab-panel-7070)
+* [ REST API (curl) ](#tab-panel-5910)
+* [ index.ts (Workers) ](#tab-panel-5911)
+* [ wrangler.jsonc ](#tab-panel-5912)
 
 Terminal window
 

@@ -4,6 +4,10 @@ description: Client sessions in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -34,8 +38,8 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-* [ Dashboard ](#tab-panel-6072)
-* [ Terraform (v5) ](#tab-panel-6073)
+* [ Dashboard ](#tab-panel-4914)
+* [ Terraform (v5) ](#tab-panel-4915)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to either **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
 2. Add a policy and select the _Allow_ action. Alternatively, choose any existing _Allow_ policy.

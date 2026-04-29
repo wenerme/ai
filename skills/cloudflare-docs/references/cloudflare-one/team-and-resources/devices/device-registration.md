@@ -4,6 +4,10 @@ description: Reference information for Device registration in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -30,8 +34,8 @@ A single physical device can have [multiple device registrations](https://develo
 
 ## Review device registration status
 
-* [ Dashboard ](#tab-panel-6159)
-* [ API ](#tab-panel-6160)
+* [ Dashboard ](#tab-panel-5001)
+* [ API ](#tab-panel-5002)
 
 To review how many device registrations are associated with a device:
 
@@ -141,8 +145,8 @@ The following table summarizes the actions available for managing device registr
 
 Devices can have multiple device registrations. Deleting one registration does not affect other registrations on the same device.
 
-* [ Dashboard ](#tab-panel-6161)
-* [ API ](#tab-panel-6162)
+* [ Dashboard ](#tab-panel-5003)
+* [ API ](#tab-panel-5004)
 
 To delete a device registration:
 

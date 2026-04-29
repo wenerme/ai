@@ -4,6 +4,10 @@ description: Load balance public traffic to private origins via Tunnel.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -21,8 +25,8 @@ The specific configuration steps can vary depending on your infrastructure and s
 1. [Create a tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#1-create-a-tunnel) to connect your data center to Cloudflare.
 2. Create a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) and assign it to the tunnel you configured in the previous step.
 
-* [ Dashboard ](#tab-panel-7871)
-* [ cli ](#tab-panel-7872)
+* [ Dashboard ](#tab-panel-6713)
+* [ cli ](#tab-panel-6714)
 
 To create a virtual network:
 

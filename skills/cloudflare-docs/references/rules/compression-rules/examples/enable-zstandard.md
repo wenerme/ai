@@ -4,14 +4,18 @@ description: Create a compression rule to turn on Zstandard compression for resp
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enable Zstandard compression for default content types
 
 Create a compression rule to turn on Zstandard compression for response content types where Cloudflare applies compression by default.
 
-* [ Dashboard ](#tab-panel-8493)
-* [ API ](#tab-panel-8494)
+* [ Dashboard ](#tab-panel-7335)
+* [ API ](#tab-panel-7336)
 
 The following example rule will turn on Zstandard compression for response content types where [Cloudflare applies compression by default](https://developers.cloudflare.com/speed/optimization/content/compression/). If the client does not support Zstandard compression, it will use Brotli or Gzip compression as a fallback.
 

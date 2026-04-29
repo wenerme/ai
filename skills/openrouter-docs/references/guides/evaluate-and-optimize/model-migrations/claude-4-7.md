@@ -1,6 +1,6 @@
 > For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/guides/evaluate-and-optimize/model-migrations/llms.txt.
-> For full documentation content, see https://openrouter.ai/docs/guides/evaluate-and-optimize/model-migrations/llms-full.txt.
+> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
 
 # Claude 4.7 Migration Guide
 

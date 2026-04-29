@@ -4,6 +4,10 @@ description: Upload large objects to R2 using the multipart API through a Cloudf
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use the R2 multipart API from Workers

@@ -4,6 +4,10 @@ description: Static rules that identify predictable bot behavior and configurabl
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Detection IDs
@@ -45,8 +49,8 @@ Detection tags are available in Security Analytics, but not in the Security Even
 
 ## Create or edit an expression
 
-* [  New dashboard ](#tab-panel-5519)
-* [ Old dashboard ](#tab-panel-5520)
+* [  New dashboard ](#tab-panel-4355)
+* [ Old dashboard ](#tab-panel-4356)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -107,8 +111,8 @@ and not any(cf.bot_management.detection_ids[*] in {3355446 12577893})
 
 You can create or edit existing Logpush jobs to include the new Bot Detection IDs field which will provide an array of IDs for each request that has heuristics match on it. The `BotDetectionIDs` field is available as part of the HTTP Requests dataset and you can add it to new or existing jobs via the Logpush API or on the Cloudflare dashboard. This is the primary method to discover Detection IDs.
 
-* [ Dashboard ](#tab-panel-5521)
-* [ API ](#tab-panel-5522)
+* [ Dashboard ](#tab-panel-4357)
+* [ API ](#tab-panel-4358)
 
 1. In the Cloudflare dashboard, go to the **Logpush** page.  
 [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/logs)

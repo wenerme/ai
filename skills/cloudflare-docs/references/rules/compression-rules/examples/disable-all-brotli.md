@@ -4,14 +4,18 @@ description: Create a compression rule to turn off Brotli compression for all in
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Disable Brotli compression
 
 Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.
 
-* [ Dashboard ](#tab-panel-8489)
-* [ API ](#tab-panel-8490)
+* [ Dashboard ](#tab-panel-7331)
+* [ API ](#tab-panel-7332)
 
 The following example rule will disable Brotli compression for all incoming requests of a given zone. The only available compression algorithm will be Gzip.
 

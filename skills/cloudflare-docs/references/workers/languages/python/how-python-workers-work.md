@@ -4,6 +4,10 @@ description: Learn how Python Workers run via Pyodide in V8 isolates and how loc
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # How Python Workers Work
@@ -34,8 +38,8 @@ class Default(WorkerEntrypoint):
 
 ...and a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) that points to this `.py` file:
 
-* [  wrangler.jsonc ](#tab-panel-8875)
-* [  wrangler.toml ](#tab-panel-8876)
+* [  wrangler.jsonc ](#tab-panel-8903)
+* [  wrangler.toml ](#tab-panel-8904)
 
 JSONC
 
@@ -51,7 +55,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27"
+  "compatibility_date": "2026-04-29"
 
 }
 
@@ -70,7 +74,7 @@ main = "src/entry.py"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 ```

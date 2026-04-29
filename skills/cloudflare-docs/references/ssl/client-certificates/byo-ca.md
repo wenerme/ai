@@ -4,6 +4,10 @@ description: Cloudflare mTLS now supports client certificates that have not been
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -44,8 +48,8 @@ Uploading the CA private key is only required if you wish to use [Zero Trust's b
 
 ## Set up mTLS with your CA
 
-* [ Dashboard ](#tab-panel-9053)
-* [ API ](#tab-panel-9054)
+* [ Dashboard ](#tab-panel-7895)
+* [ API ](#tab-panel-7896)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -98,8 +102,8 @@ There can be multiple CAs (Cloudflare-managed or BYOCA) associated with the same
 
 If you wish to remove the association from the Cloudflare-managed certificate and only use your BYOCA certificate(s):
 
-* [ Dashboard ](#tab-panel-9059)
-* [ API ](#tab-panel-9060)
+* [ Dashboard ](#tab-panel-7901)
+* [ API ](#tab-panel-7902)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -163,8 +167,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authoritie
 
 If you want to remove a CA that you have previously uploaded, you must first remove any hostname associations that it has.
 
-* [ Dashboard ](#tab-panel-9055)
-* [ API ](#tab-panel-9056)
+* [ Dashboard ](#tab-panel-7897)
+* [ API ](#tab-panel-7898)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -188,8 +192,8 @@ If you want to remove a CA that you have previously uploaded, you must first rem
 
 ## List CA hostname associations
 
-* [ Dashboard ](#tab-panel-9057)
-* [ API ](#tab-panel-9058)
+* [ Dashboard ](#tab-panel-7899)
+* [ API ](#tab-panel-7900)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)

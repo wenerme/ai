@@ -4,6 +4,10 @@ description: The following tutorial shows some snippets for how to use Server-Si
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use SSE-C
@@ -19,8 +23,8 @@ The following tutorial shows some snippets for how to use Server-Side Encryption
 
 ## Workers
 
-* [  TypeScript ](#tab-panel-8286)
-* [  JavaScript ](#tab-panel-8287)
+* [  TypeScript ](#tab-panel-7128)
+* [  JavaScript ](#tab-panel-7129)
 
 TypeScript
 
@@ -310,7 +314,7 @@ Explain Code
 
 ## S3-API
 
-* [  @aws-sdk/client-s3 ](#tab-panel-8285)
+* [  @aws-sdk/client-s3 ](#tab-panel-7127)
 
 TypeScript
 

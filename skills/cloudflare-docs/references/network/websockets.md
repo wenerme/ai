@@ -4,6 +4,10 @@ description: Proxy WebSocket connections through Cloudflare's network.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # WebSockets
@@ -16,8 +20,8 @@ WebSockets are open connections sustained between the client and the origin serv
 
 ## Enable WebSockets
 
-* [ Dashboard ](#tab-panel-7918)
-* [ API ](#tab-panel-7919)
+* [ Dashboard ](#tab-panel-6760)
+* [ API ](#tab-panel-6761)
 
 To enable **WebSockets** connections to your origin server in the dashboard:
 

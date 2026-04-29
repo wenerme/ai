@@ -4,6 +4,10 @@ description: Build a counter using Durable Objects and Workers with RPC methods.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build a counter
@@ -14,9 +18,9 @@ Build a counter using Durable Objects and Workers with RPC methods.
 
 This example shows how to build a counter using Durable Objects and Workers with [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc) that can print, increment, and decrement a `name` provided by the URL query string parameter, for example, `?name=A`.
 
-* [  JavaScript ](#tab-panel-6949)
-* [  TypeScript ](#tab-panel-6950)
-* [  Python ](#tab-panel-6951)
+* [  JavaScript ](#tab-panel-5791)
+* [  TypeScript ](#tab-panel-5792)
+* [  Python ](#tab-panel-5793)
 
 JavaScript
 
@@ -390,8 +394,8 @@ Explain Code
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-6952)
-* [  wrangler.toml ](#tab-panel-6953)
+* [  wrangler.jsonc ](#tab-panel-5794)
+* [  wrangler.toml ](#tab-panel-5795)
 
 JSONC
 

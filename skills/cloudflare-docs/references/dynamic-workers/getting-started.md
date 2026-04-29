@@ -4,6 +4,10 @@ description: Load and run a dynamic Worker.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Getting started
@@ -37,8 +41,8 @@ In order for a Worker to be able to create Dynamic Workers, it needs a Worker Lo
 
 Configure it like so, in your Worker's `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-7050)
-* [  wrangler.toml ](#tab-panel-7051)
+* [  wrangler.jsonc ](#tab-panel-5892)
+* [  wrangler.toml ](#tab-panel-5893)
 
 JSONC
 
@@ -78,8 +82,8 @@ Your Worker will then have access to the Worker Loader API via `env.LOADER`.
 
 Use `env.LOADER.load()` to create a Dynamic Worker and run it:
 
-* [  JavaScript ](#tab-panel-7054)
-* [  TypeScript ](#tab-panel-7055)
+* [  JavaScript ](#tab-panel-5896)
+* [  TypeScript ](#tab-panel-5897)
 
 JavaScript
 
@@ -93,7 +97,7 @@ export default {
 
     const worker = env.LOADER.load({
 
-      compatibilityDate: "2026-04-24",
+      compatibilityDate: "2026-04-29",
 
 
       mainModule: "src/index.js",
@@ -156,7 +160,7 @@ export default {
 
     const worker = env.LOADER.load({
 
-      compatibilityDate: "2026-04-24",
+      compatibilityDate: "2026-04-29",
 
 
       mainModule: "src/index.js",
@@ -217,8 +221,8 @@ If you expect to load the exact same Worker more than once, use [get(id, callbac
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
-* [  JavaScript ](#tab-panel-7052)
-* [  TypeScript ](#tab-panel-7053)
+* [  JavaScript ](#tab-panel-5894)
+* [  TypeScript ](#tab-panel-5895)
 
 JavaScript
 
@@ -240,7 +244,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
   return {
 
-    compatibilityDate: "2026-04-24",
+    compatibilityDate: "2026-04-29",
 
     mainModule: "index.js",
 
@@ -277,7 +281,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
   return {
 
-    compatibilityDate: "2026-04-24",
+    compatibilityDate: "2026-04-29",
 
     mainModule: "index.js",
 

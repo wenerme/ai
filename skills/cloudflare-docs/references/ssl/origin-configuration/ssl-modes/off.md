@@ -4,6 +4,10 @@ description: No encryption is used for traffic between browsers and Cloudflare o
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Off (no encryption)
@@ -21,8 +25,8 @@ Cloudflare does not recommend setting your encryption mode to **Off**.
 
 ## Required setup
 
-* [ Dashboard ](#tab-panel-9121)
-* [ API ](#tab-panel-9122)
+* [ Dashboard ](#tab-panel-7983)
+* [ API ](#tab-panel-7984)
 
 To change your encryption mode in the dashboard:
 

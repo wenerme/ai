@@ -4,6 +4,10 @@ description: Block credential stuffing and brute force attacks on login endpoint
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Stop account takeover attacks (Free, Pro, and Business)
@@ -22,8 +26,8 @@ Credentials sent over plain HTTP are visible to anyone on the network path betwe
 
 Always Use HTTPS redirects all visitor requests from `http` to `https` for all subdomains and hosts.
 
-* [ Dashboard ](#tab-panel-8134)
-* [ API ](#tab-panel-8135)
+* [ Dashboard ](#tab-panel-8160)
+* [ API ](#tab-panel-8161)
 
 To enable **Always Use HTTPS** in the dashboard:
 
@@ -54,8 +58,8 @@ Cloudflare provides bot protection on all plans, with features that vary by plan
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to all traffic on your domain and cannot be customized with exceptions or path-specific rules.
 
-* [  New dashboard ](#tab-panel-8136)
-* [ Old dashboard ](#tab-panel-8137)
+* [  New dashboard ](#tab-panel-8162)
+* [ Old dashboard ](#tab-panel-8163)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -82,8 +86,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
-* [  New dashboard ](#tab-panel-8138)
-* [ Old dashboard ](#tab-panel-8139)
+* [  New dashboard ](#tab-panel-8164)
+* [ Old dashboard ](#tab-panel-8165)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -321,10 +325,10 @@ The `cf.waf.credential_check.username_and_password_leaked` field requires a Pro 
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-8140)
-* [ Old dashboard ](#tab-panel-8141)
-* [ API ](#tab-panel-8142)
-* [ Terraform ](#tab-panel-8143)
+* [  New dashboard ](#tab-panel-8166)
+* [ Old dashboard ](#tab-panel-8167)
+* [ API ](#tab-panel-8168)
+* [ Terraform ](#tab-panel-8169)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

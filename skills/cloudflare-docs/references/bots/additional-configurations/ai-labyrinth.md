@@ -4,6 +4,10 @@ description: Trap unauthorized AI crawlers with invisible honeypot links to wast
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -18,8 +22,8 @@ These links do not impact your search engine optimization (SEO) or your website'
 
 To enable AI Labyrinth:
 
-* [  New dashboard ](#tab-panel-5517)
-* [ Old dashboard ](#tab-panel-5518)
+* [  New dashboard ](#tab-panel-4353)
+* [ Old dashboard ](#tab-panel-4354)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

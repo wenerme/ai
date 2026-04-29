@@ -4,6 +4,10 @@ description: Inspect encrypted traffic with TLS decryption.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enable TLS decryption (optional)
@@ -24,8 +28,8 @@ With TLS decryption turned off, Gateway can only inspect and apply HTTP policies
 
 ## Enable TLS decryption
 
-* [ Dashboard ](#tab-panel-7656)
-* [ Terraform (v5) ](#tab-panel-7657)
+* [ Dashboard ](#tab-panel-6498)
+* [ Terraform (v5) ](#tab-panel-6499)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.

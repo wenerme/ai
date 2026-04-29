@@ -4,6 +4,10 @@ description: Use the GraphQL API to configure query size and depth limits for yo
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure GraphQL malicious query protection via the API
@@ -102,7 +106,7 @@ query ApiGatewayGraphqlQueryAnalytics(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccfqjZtUAZk4YKIGFAAmzdl14DhcAIySJ02SAC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccAIxDUozqj4sMFEDCgATZuy68BLAJxw2bSdNnyAvkA)
 
 With the above query, you will get the following response:
 

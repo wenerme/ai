@@ -4,6 +4,10 @@ description: Serve HTTP sites over an encrypted TLS channel.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Opportunistic Encryption
@@ -22,8 +26,8 @@ Use HTTPS when both strong encryption and authentication are required. HTTP Oppo
 
 You do not need to configure your origin web server to support Opportunistic Encryption. All it requires is updating your settings in the Cloudflare dashboard.
 
-* [ Dashboard ](#tab-panel-9075)
-* [ API ](#tab-panel-9076)
+* [ Dashboard ](#tab-panel-7917)
+* [ API ](#tab-panel-7918)
 
 To enable Opportunistic Encryption in the dashboard:
 

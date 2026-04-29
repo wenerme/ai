@@ -4,6 +4,10 @@ description: Deploy a Hugo static site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Hugo
@@ -26,9 +30,9 @@ Go to [Deploy with Cloudflare Pages](#deploy-with-cloudflare-pages) if you alrea
 
 Install the Hugo CLI, using the specific instructions for your operating system.
 
-* [ macos ](#tab-panel-7929)
-* [ windows ](#tab-panel-7930)
-* [ linux ](#tab-panel-7931)
+* [ macos ](#tab-panel-6771)
+* [ windows ](#tab-panel-6772)
+* [ linux ](#tab-panel-6773)
 
 If you use the package manager [Homebrew ↗](https://brew.sh), run the `brew install` command in your terminal to install Hugo:
 

@@ -4,6 +4,10 @@ description: Use client-side security to meet PCI DSS v4 requirements 6.4.3 and 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Client-side security and PCI DSS compliance

@@ -4,6 +4,10 @@ description: Develop and test your Workers locally.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Development & testing
@@ -85,8 +89,8 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-9739)
-* [  wrangler.toml ](#tab-panel-9740)
+* [  wrangler.jsonc ](#tab-panel-8622)
+* [  wrangler.toml ](#tab-panel-8623)
 
 JSONC
 
@@ -98,7 +102,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
 
   "r2_buckets": [
@@ -130,7 +134,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[r2_buckets]]
@@ -152,8 +156,8 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-9751)
-* [  wrangler.toml ](#tab-panel-9752)
+* [  wrangler.jsonc ](#tab-panel-8634)
+* [  wrangler.toml ](#tab-panel-8635)
 
 JSONC
 
@@ -165,7 +169,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
 
   "env": {
@@ -221,7 +225,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[env.production.r2_buckets]]
@@ -259,8 +263,8 @@ The following bindings are recommended to have `remote: true` in your Wrangler c
 
 To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-9737)
-* [  wrangler.toml ](#tab-panel-9738)
+* [  wrangler.jsonc ](#tab-panel-8620)
+* [  wrangler.toml ](#tab-panel-8621)
 
 JSONC
 
@@ -298,8 +302,8 @@ remote = true
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-9741)
-* [  wrangler.toml ](#tab-panel-9742)
+* [  wrangler.jsonc ](#tab-panel-8624)
+* [  wrangler.toml ](#tab-panel-8625)
 
 JSONC
 
@@ -337,8 +341,8 @@ remote = true
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-9743)
-* [  wrangler.toml ](#tab-panel-9744)
+* [  wrangler.jsonc ](#tab-panel-8626)
+* [  wrangler.toml ](#tab-panel-8627)
 
 JSONC
 
@@ -384,8 +388,8 @@ remote = true
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-9747)
-* [  wrangler.toml ](#tab-panel-9748)
+* [  wrangler.jsonc ](#tab-panel-8630)
+* [  wrangler.toml ](#tab-panel-8631)
 
 JSONC
 
@@ -431,8 +435,8 @@ remote = true
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/optimization/transformations/bindings/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-9745)
-* [  wrangler.toml ](#tab-panel-9746)
+* [  wrangler.jsonc ](#tab-panel-8628)
+* [  wrangler.toml ](#tab-panel-8629)
 
 JSONC
 
@@ -476,8 +480,8 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-9749)
-* [  wrangler.toml ](#tab-panel-9750)
+* [  wrangler.jsonc ](#tab-panel-8632)
+* [  wrangler.toml ](#tab-panel-8633)
 
 JSONC
 
@@ -612,8 +616,8 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-9753)
-* [  TypeScript ](#tab-panel-9754)
+* [  JavaScript ](#tab-panel-8636)
+* [  TypeScript ](#tab-panel-8637)
 
 JavaScript
 

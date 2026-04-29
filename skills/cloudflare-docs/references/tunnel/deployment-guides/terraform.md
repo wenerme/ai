@@ -4,6 +4,10 @@ description: Learn how to deploy a Cloudflare Tunnel using Terraform and our lig
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Terraform
@@ -144,8 +148,8 @@ Terminal window
 touch providers.tf  
 ```
 2. Add the following providers to `providers.tf`. The `random` provider is used to generate a tunnel secret.  
-   * [ Terraform (v5) ](#tab-panel-9226)  
-   * [ Terraform (v4) ](#tab-panel-9227)  
+   * [ Terraform (v5) ](#tab-panel-8085)  
+   * [ Terraform (v4) ](#tab-panel-8086)  
 ```  
 terraform {  
   required_providers {  
@@ -208,8 +212,8 @@ Terminal window
 touch Cloudflare-config.tf  
 ```
 2. Add the following resources to `Cloudflare-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-9222)  
-   * [ Terraform (v4) ](#tab-panel-9223)  
+   * [ Terraform (v5) ](#tab-panel-8081)  
+   * [ Terraform (v4) ](#tab-panel-8082)  
 ```  
 # Creates a new remotely-managed tunnel for the GCP VM.  
 resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {  
@@ -359,8 +363,8 @@ Terminal window
 touch GCP-config.tf  
 ```
 2. Add the following content to `GCP-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-9224)  
-   * [ Terraform (v4) ](#tab-panel-9225)  
+   * [ Terraform (v5) ](#tab-panel-8083)  
+   * [ Terraform (v4) ](#tab-panel-8084)  
 ```  
 # OS the server will use  
 data "google_compute_image" "image" {  

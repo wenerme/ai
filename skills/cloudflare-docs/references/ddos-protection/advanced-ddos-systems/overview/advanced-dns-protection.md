@@ -4,6 +4,10 @@ description: Protect against sophisticated DNS-based DDoS attacks with traffic p
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Advanced DNS Protection

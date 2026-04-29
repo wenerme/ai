@@ -4,6 +4,10 @@ description: Add live video and voice to web or mobile apps with RealtimeKit SDK
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # RealtimeKit

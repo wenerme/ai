@@ -4,6 +4,10 @@ description: Configure Bot Management for Enterprise to identify and act on auto
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Bot Management
@@ -22,8 +26,8 @@ This Enterprise product provides the most flexibility to customers by:
 
 Bot Management is automatically enabled for Enterprise zones entitled with the add-on.
 
-* [  New dashboard ](#tab-panel-5541)
-* [ Old dashboard ](#tab-panel-5542)
+* [  New dashboard ](#tab-panel-4377)
+* [ Old dashboard ](#tab-panel-4378)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -58,8 +62,8 @@ Cloudflare encourages Enterprise customers to enable auto-updates to its Machine
 
 To enable auto-updates:
 
-* [  New dashboard ](#tab-panel-5543)
-* [ Old dashboard ](#tab-panel-5544)
+* [  New dashboard ](#tab-panel-4379)
+* [ Old dashboard ](#tab-panel-4380)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

@@ -4,6 +4,10 @@ description: Upcoming scheduled rule changes for the Network-layer DDoS managed 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Scheduled changes

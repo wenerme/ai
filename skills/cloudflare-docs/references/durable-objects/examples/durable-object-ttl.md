@@ -4,6 +4,10 @@ description: Use the Durable Objects Alarms API to implement a Time To Live (TTL
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Durable Object Time To Live
@@ -18,9 +22,9 @@ Be careful when calling `setAlarm` in the Durable Object class constructor
 
 In this example the TTL is extended upon every new fetch request to the Durable Object. It might be tempting to instead extend the TTL in the constructor of the Durable Object. This is not advised because the Durable Object's constructor will be called before invoking the alarm handler if the alarm wakes the Durable Object up from hibernation. This approach will naively result in the constructor continually extending the TTL without running the alarm handler. If you must call `setAlarm` in the Durable Object class constructor be sure to check that there is no alarm previously set.
 
-* [  JavaScript ](#tab-panel-6958)
-* [  TypeScript ](#tab-panel-6959)
-* [  Python ](#tab-panel-6960)
+* [  JavaScript ](#tab-panel-5800)
+* [  TypeScript ](#tab-panel-5801)
+* [  Python ](#tab-panel-5802)
 
 JavaScript
 
@@ -207,8 +211,8 @@ Explain Code
 
 To test and deploy this example, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-6961)
-* [  wrangler.toml ](#tab-panel-6962)
+* [  wrangler.jsonc ](#tab-panel-5803)
+* [  wrangler.toml ](#tab-panel-5804)
 
 JSONC
 

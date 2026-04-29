@@ -4,6 +4,10 @@ description: Apply filters to GraphQL Analytics API queries.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Filtering
@@ -173,7 +177,7 @@ query GeneralExample($zoneTag: string, $start: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mAdpAhgGwKIA8UFsAOaYAFACQBeA9sgCooDmAXDAM4AuEAlovQDQyl2KCG2Y1OuMAEoYAbwBQMGADdOYAO6Q5ipTCrIWxAGac0bSM1l7qYOkwH7bDGAF8ZC3boAWbNvgBKYKBg7CwAggAmKPhsnMpgcBCUIPiGOp5KJmYWcjBR5rGSAPr0ogJCIvwAxmhqiGwAwsn10AByeGDMAERwAEJdrukZtbicZQCMQ0ruU7pVzWyzLkPLSssuQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccfqjZtUAZj4YQAXyA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mAdpAhgGwKIA8UFsAOaYAFACQBeA9sgCooDmAXDAM4AuEAlovQDQyl2KCG2Y1OuMAEoYAbwBQMGADdOYAO6Q5ipTCrIWxAGac0bSM1l7qYOkwH7bDGAF8ZC3boAWbNvgBKYKBg7CwAggAmKPhsnMpgcBCUIPiGOp5KJmYWcjBR5rGSAPr0ogJCIvwAxmhqiGwAwsn10AByeGDMAERwAEJdrukZtbicZQCMQ0ruU7pVzWyzLkPLSssuQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccAIxDUozqj6iMIAL5A)
 
 ### Filter on a specific node
 

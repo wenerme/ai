@@ -4,6 +4,10 @@ description: Magic Transit uses a static configuration to route your traffic thr
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure routes
@@ -24,8 +28,8 @@ Cloudflare uses anycast to route traffic. Anycast is a network addressing and ro
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-7900)
-* [ API ](#tab-panel-7901)
+* [ Dashboard ](#tab-panel-6742)
+* [ API ](#tab-panel-6743)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -182,8 +186,8 @@ Explain Code
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-7902)
-* [ API ](#tab-panel-7903)
+* [ Dashboard ](#tab-panel-6744)
+* [ API ](#tab-panel-6745)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -329,8 +333,8 @@ Explain Code
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-7898)
-* [ API ](#tab-panel-7899)
+* [ Dashboard ](#tab-panel-6740)
+* [ API ](#tab-panel-6741)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.

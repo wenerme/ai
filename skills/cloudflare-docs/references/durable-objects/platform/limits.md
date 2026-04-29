@@ -4,6 +4,10 @@ description: Account, storage, CPU, and SQL limits for Durable Objects on Free a
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Limits
@@ -92,8 +96,8 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7018)
-* [  wrangler.toml ](#tab-panel-7019)
+* [  wrangler.jsonc ](#tab-panel-5860)
+* [  wrangler.toml ](#tab-panel-5861)
 
 JSONC
 

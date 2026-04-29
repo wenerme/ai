@@ -4,6 +4,10 @@ description: Fix WordPress loopback errors caused by Super Bot Fight Mode blocki
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Super Bot Fight Mode for WordPress
@@ -18,8 +22,8 @@ Loopback requests may also be blocked by [I’m Under Attack mode](https://devel
 
 ## Enable Optimize for WordPress
 
-* [  New dashboard ](#tab-panel-5551)
-* [ Old dashboard ](#tab-panel-5552)
+* [  New dashboard ](#tab-panel-4387)
+* [ Old dashboard ](#tab-panel-4388)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

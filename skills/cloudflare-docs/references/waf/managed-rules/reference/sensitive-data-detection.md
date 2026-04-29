@@ -4,6 +4,10 @@ description: Detect sensitive data like credit card numbers in HTTP responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cloudflare Sensitive Data Detection
@@ -40,8 +44,8 @@ Note
 
 Requires an Enterprise plan.
 
-* [  New dashboard ](#tab-panel-9446)
-* [ Old dashboard ](#tab-panel-9447)
+* [  New dashboard ](#tab-panel-8329)
+* [ Old dashboard ](#tab-panel-8330)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -70,8 +74,8 @@ You can configure (or override) the following Cloudflare Sensitive Data Detectio
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-9448)
-* [ Old dashboard ](#tab-panel-9449)
+* [  New dashboard ](#tab-panel-8331)
+* [ Old dashboard ](#tab-panel-8332)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -99,8 +103,8 @@ Setting the rule status for specific tags affects all current and future rules w
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-9450)
-* [ Old dashboard ](#tab-panel-9451)
+* [  New dashboard ](#tab-panel-8333)
+* [ Old dashboard ](#tab-panel-8334)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -141,8 +145,8 @@ You can configure (or override) the following setting in the dashboard for the s
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-9452)
-* [ Old dashboard ](#tab-panel-9453)
+* [  New dashboard ](#tab-panel-8335)
+* [ Old dashboard ](#tab-panel-8336)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

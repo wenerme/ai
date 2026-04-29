@@ -4,6 +4,10 @@ description: Control traffic to your AI Gateway with fixed or sliding rate limit
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Rate limiting
@@ -24,8 +28,8 @@ When your requests exceed the allowed rate, you will encounter rate limiting. Th
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-5293)
-* [ API ](#tab-panel-5294)
+* [ Dashboard ](#tab-panel-4127)
+* [ API ](#tab-panel-4128)
 
 To set the default rate limiting configuration in the dashboard:
 

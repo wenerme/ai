@@ -4,6 +4,10 @@ description: Forward incoming emails to existing mailboxes or process them with 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Route emails
@@ -49,8 +53,8 @@ Once your domain is onboarded, you can start routing emails.
 
 You can route your first email by setting up forwarding rules in the dashboard, or by processing emails with Workers.
 
-* [ Route to email ](#tab-panel-7105)
-* [ Route to Workers ](#tab-panel-7106)
+* [ Route to email ](#tab-panel-5947)
+* [ Route to Workers ](#tab-panel-5948)
 
 The simplest way to route emails is forwarding them to existing email addresses.
 
@@ -95,8 +99,8 @@ Terminal window
 npm install mimetext  
 ```
 3. Add the `nodejs_compat` compatibility flag to your Wrangler configuration file. This is required for the `mimetext` package:  
-   * [  wrangler.jsonc ](#tab-panel-7103)  
-   * [  wrangler.toml ](#tab-panel-7104)  
+   * [  wrangler.jsonc ](#tab-panel-5945)  
+   * [  wrangler.toml ](#tab-panel-5946)  
 JSONC  
 ```  
 {  

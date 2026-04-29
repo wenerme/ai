@@ -4,6 +4,10 @@ description: Letter of Agency requirements for onboarding IP prefixes to Cloudfl
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Letter of Agency

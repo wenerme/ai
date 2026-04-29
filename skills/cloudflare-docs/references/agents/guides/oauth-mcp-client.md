@@ -4,6 +4,10 @@ description: Implement OAuth authentication flows in Cloudflare Agents to connec
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -29,8 +33,8 @@ The MCP client uses a built-in `DurableObjectOAuthClientProvider` to manage OAut
 
 When connecting to an OAuth-protected server, check if `authUrl` is returned. If present, redirect your user to complete authorization:
 
-* [  JavaScript ](#tab-panel-5176)
-* [  TypeScript ](#tab-panel-5177)
+* [  JavaScript ](#tab-panel-4010)
+* [  TypeScript ](#tab-panel-4011)
 
 JavaScript
 
@@ -146,8 +150,8 @@ After OAuth completes, the provider redirects back to your Agent's callback URL.
 
 Redirect users back to your application after OAuth completes:
 
-* [  JavaScript ](#tab-panel-5172)
-* [  TypeScript ](#tab-panel-5173)
+* [  JavaScript ](#tab-panel-4006)
+* [  TypeScript ](#tab-panel-4007)
 
 JavaScript
 
@@ -201,8 +205,8 @@ Users return to `/dashboard` on success or `/auth-error?error=<message>` on fail
 
 If you opened OAuth in a popup, close it automatically when complete:
 
-* [  JavaScript ](#tab-panel-5174)
-* [  TypeScript ](#tab-panel-5175)
+* [  JavaScript ](#tab-panel-4008)
+* [  TypeScript ](#tab-panel-4009)
 
 JavaScript
 
@@ -284,8 +288,8 @@ Your main application can detect the popup closing and refresh the connection st
 
 Use the `useAgent` hook for real-time updates via WebSocket:
 
-* [  JavaScript ](#tab-panel-5180)
-* [  TypeScript ](#tab-panel-5181)
+* [  JavaScript ](#tab-panel-4014)
+* [  TypeScript ](#tab-panel-4015)
 
 JavaScript
 
@@ -458,8 +462,8 @@ The `onMcpUpdate` callback fires automatically when MCP state changes — no pol
 
 Poll the connection status via an endpoint:
 
-* [  JavaScript ](#tab-panel-5178)
-* [  TypeScript ](#tab-panel-5179)
+* [  JavaScript ](#tab-panel-4012)
+* [  TypeScript ](#tab-panel-4013)
 
 JavaScript
 
@@ -585,8 +589,8 @@ Connection states flow: `authenticating` (needs OAuth) → `connecting` (complet
 
 When OAuth fails, the connection state becomes `"failed"` and the error message is stored in the `server.error` field. Display this error in your UI and allow users to retry:
 
-* [  JavaScript ](#tab-panel-5182)
-* [  TypeScript ](#tab-panel-5183)
+* [  JavaScript ](#tab-panel-4016)
+* [  TypeScript ](#tab-panel-4017)
 
 JavaScript
 
@@ -830,8 +834,8 @@ Failed connections remain in state until removed with `removeMcpServer(serverId)
 
 This example demonstrates a complete OAuth integration with Cloudflare Observability. Users connect, authorize in a popup window, and the connection becomes available. Errors are automatically stored in the connection state for display in your UI.
 
-* [  JavaScript ](#tab-panel-5184)
-* [  TypeScript ](#tab-panel-5185)
+* [  JavaScript ](#tab-panel-4018)
+* [  TypeScript ](#tab-panel-4019)
 
 JavaScript
 

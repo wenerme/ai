@@ -161,7 +161,7 @@ This separation makes it easier to roll out Codex while keeping analytics, envir
 
 Codex Admins can deploy admin-enforced `requirements.toml` policies from the Codex [Policies page](https://chatgpt.com/codex/settings/policies).
 
-Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, MCP server allowlists, feature pins, and restrictive command rules. To disable Browser Use, the in-app browser, or Computer Use, see [Disable Codex feature surfaces](https://developers.openai.com/codex/enterprise/managed-configuration#disable-codex-feature-surfaces).
+Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, MCP server allowlists, feature pins, and restrictive command rules. To disable Browser Use, the in-app browser, or Computer Use, see [Pin feature flags](https://developers.openai.com/codex/enterprise/managed-configuration#pin-feature-flags).
 
 <div class="max-w-1xl mx-auto py-1">
   <img src="https://developers.openai.com/images/codex/enterprise/policies_and_configurations_page.png"
@@ -196,6 +196,15 @@ Example: limit web search, sandbox mode, and approvals for a standard local roll
 allowed_web_search_modes = ["disabled", "cached"]
 allowed_sandbox_modes = ["workspace-write"]
 allowed_approval_policies = ["on-request"]
+```
+
+Example: disable Browser Use, the in-app browser, and Computer Use:
+
+```toml
+[features]
+browser_use = false
+in_app_browser = false
+computer_use = false
 ```
 
 Example: add a restrictive command rule when you want admins to block or gate specific commands:

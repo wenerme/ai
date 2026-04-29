@@ -4,6 +4,10 @@ description: Manage your security.txt file via the dashboard or the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Set up your security.txt file
@@ -16,8 +20,8 @@ When using the API, the preferred languages field name is `preferred_languages` 
 
 To manage your security.txt file via the Cloudflare dashboard:
 
-* [  New dashboard ](#tab-panel-9036)
-* [ Old dashboard ](#tab-panel-9037)
+* [  New dashboard ](#tab-panel-7878)
+* [ Old dashboard ](#tab-panel-7879)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select your account and domain.
 2. Go to **Security** \> **Settings** and filter by **Web application exploits**.

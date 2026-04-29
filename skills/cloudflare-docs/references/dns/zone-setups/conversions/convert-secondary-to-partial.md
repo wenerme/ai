@@ -4,6 +4,10 @@ description: If you initially set up incoming zone transfers (Cloudflare as seco
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Convert secondary setup to partial setup

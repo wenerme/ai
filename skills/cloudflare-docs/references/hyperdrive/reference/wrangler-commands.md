@@ -4,6 +4,10 @@ description: Wrangler CLI commands for creating and managing Hyperdrive configur
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Wrangler commands
@@ -14,9 +18,9 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-7385)
-* [  pnpm ](#tab-panel-7386)
-* [  yarn ](#tab-panel-7387)
+* [  npm ](#tab-panel-6227)
+* [  pnpm ](#tab-panel-6228)
+* [  yarn ](#tab-panel-6229)
 
 Terminal window
 
@@ -107,9 +111,9 @@ Automatically provision draft bindings with new resources
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-7388)
-* [  pnpm ](#tab-panel-7389)
-* [  yarn ](#tab-panel-7390)
+* [  npm ](#tab-panel-6230)
+* [  pnpm ](#tab-panel-6231)
+* [  yarn ](#tab-panel-6232)
 
 Terminal window
 
@@ -162,9 +166,9 @@ Automatically provision draft bindings with new resources
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-7391)
-* [  pnpm ](#tab-panel-7392)
-* [  yarn ](#tab-panel-7393)
+* [  npm ](#tab-panel-6233)
+* [  pnpm ](#tab-panel-6234)
+* [  yarn ](#tab-panel-6235)
 
 Terminal window
 
@@ -217,9 +221,9 @@ Automatically provision draft bindings with new resources
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-7394)
-* [  pnpm ](#tab-panel-7395)
-* [  yarn ](#tab-panel-7396)
+* [  npm ](#tab-panel-6236)
+* [  pnpm ](#tab-panel-6237)
+* [  yarn ](#tab-panel-6238)
 
 Terminal window
 
@@ -269,9 +273,9 @@ Automatically provision draft bindings with new resources
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-7397)
-* [  pnpm ](#tab-panel-7398)
-* [  yarn ](#tab-panel-7399)
+* [  npm ](#tab-panel-6239)
+* [  pnpm ](#tab-panel-6240)
+* [  yarn ](#tab-panel-6241)
 
 Terminal window
 

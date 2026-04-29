@@ -4,6 +4,10 @@ description: Build Cloudflare Workflows using the Python SDK with WorkflowEntryp
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Python Workflows SDK
@@ -86,8 +90,8 @@ Explain Code
 
 You must add both `python_workflows` and `python_workers` compatibility flags to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-11200)
-* [  wrangler.toml ](#tab-panel-11201)
+* [  wrangler.jsonc ](#tab-panel-10085)
+* [  wrangler.toml ](#tab-panel-10086)
 
 JSONC
 
@@ -111,7 +115,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "workflows": [
 
@@ -148,7 +152,7 @@ compatibility_flags = [ "python_workers", "python_workflows" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[workflows]]

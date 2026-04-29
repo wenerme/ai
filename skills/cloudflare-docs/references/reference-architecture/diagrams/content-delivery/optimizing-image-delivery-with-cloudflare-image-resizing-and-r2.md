@@ -4,6 +4,10 @@ description: Learn how to get a scalable, high-performance solution to optimizin
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Optimizing image delivery with Cloudflare image resizing and R2

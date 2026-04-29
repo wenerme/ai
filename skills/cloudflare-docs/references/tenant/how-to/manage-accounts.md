@@ -4,6 +4,10 @@ description: Create, update, and delete customer accounts using the Cloudflare T
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Manage accounts
@@ -18,8 +22,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-9206)
-* [ API ](#tab-panel-9207)
+* [ Dashboard ](#tab-panel-8065)
+* [ API ](#tab-panel-8066)
 
 To create an account under your tenant using the dashboard:
 
@@ -196,8 +200,8 @@ Explain Code
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-9204)
-* [ API ](#tab-panel-9205)
+* [ Dashboard ](#tab-panel-8063)
+* [ API ](#tab-panel-8064)
 
 To view any accounts owned by your tenant using the dashboard:
 

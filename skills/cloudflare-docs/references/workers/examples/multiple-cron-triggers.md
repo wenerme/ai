@@ -4,6 +4,10 @@ description: Set multiple Cron Triggers on three different schedules.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,9 +26,9 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9894)
-* [  TypeScript ](#tab-panel-9895)
-* [  Hono ](#tab-panel-9896)
+* [  JavaScript ](#tab-panel-8779)
+* [  TypeScript ](#tab-panel-8780)
+* [  Hono ](#tab-panel-8781)
 
 JavaScript
 

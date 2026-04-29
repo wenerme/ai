@@ -4,6 +4,10 @@ description: Learn how to create a recording app using RealtimeKit's SDKs. Follo
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create Custom Recording App Using Recording SDKs

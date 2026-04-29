@@ -4,6 +4,10 @@ description: Migrate from Page Rules to modern Cloudflare Rules alternatives.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Page Rules migration guide
@@ -111,8 +115,8 @@ Also, to streamline common configurations, the Cloudflare dashboard now includes
 
 ### Migrate Always Use HTTPS
 
-* [ Dashboard ](#tab-panel-8520)
-* [ Visual guide ](#tab-panel-8521)
+* [ Dashboard ](#tab-panel-7362)
+* [ Visual guide ](#tab-panel-7363)
 
 **Context:**
 
@@ -139,8 +143,8 @@ You configured a Page Rule to perform an automatic redirect from HTTP to HTTPS f
 
 ### Migrate Automatic HTTPS Rewrites
 
-* [ Dashboard ](#tab-panel-8522)
-* [ Visual guide ](#tab-panel-8523)
+* [ Dashboard ](#tab-panel-7364)
+* [ Visual guide ](#tab-panel-7365)
 
 **Context:**
 
@@ -170,8 +174,8 @@ You configured a Page Rule turning on Automatic HTTPS Rewrites for all subdomain
 
 ### Migrate Browser Cache TTL
 
-* [ Dashboard ](#tab-panel-8552)
-* [ Visual guide ](#tab-panel-8553)
+* [ Dashboard ](#tab-panel-7394)
+* [ Visual guide ](#tab-panel-7395)
 
 **Context:**
 
@@ -204,8 +208,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Browser Integrity Check
 
-* [ Dashboard ](#tab-panel-8524)
-* [ Visual guide ](#tab-panel-8525)
+* [ Dashboard ](#tab-panel-7366)
+* [ Visual guide ](#tab-panel-7367)
 
 **Context:**
 
@@ -235,8 +239,8 @@ You configured a Page Rule turning on Browser Integrity Check for all subdomains
 
 ### Migrate Bypass Cache on Cookie
 
-* [ Dashboard ](#tab-panel-8554)
-* [ Visual guide ](#tab-panel-8555)
+* [ Dashboard ](#tab-panel-7396)
+* [ Visual guide ](#tab-panel-7397)
 
 **Context:**
 
@@ -267,8 +271,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache By Device Type
 
-* [ Dashboard ](#tab-panel-8556)
-* [ Visual guide ](#tab-panel-8557)
+* [ Dashboard ](#tab-panel-7398)
+* [ Visual guide ](#tab-panel-7399)
 
 **Context:**
 
@@ -301,8 +305,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache Deception Armor
 
-* [ Dashboard ](#tab-panel-8558)
-* [ Visual guide ](#tab-panel-8559)
+* [ Dashboard ](#tab-panel-7400)
+* [ Visual guide ](#tab-panel-7401)
 
 **Context:**
 
@@ -334,8 +338,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache Level (Cache Everything)
 
-* [ Dashboard ](#tab-panel-8560)
-* [ Visual guide ](#tab-panel-8561)
+* [ Dashboard ](#tab-panel-7402)
+* [ Visual guide ](#tab-panel-7403)
 
 **Context:**
 
@@ -366,8 +370,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache on Cookie
 
-* [ Dashboard ](#tab-panel-8562)
-* [ Visual guide ](#tab-panel-8563)
+* [ Dashboard ](#tab-panel-7404)
+* [ Visual guide ](#tab-panel-7405)
 
 **Context:**
 
@@ -398,8 +402,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache TTL by status code
 
-* [ Dashboard ](#tab-panel-8564)
-* [ Visual guide ](#tab-panel-8565)
+* [ Dashboard ](#tab-panel-7406)
+* [ Visual guide ](#tab-panel-7407)
 
 **Context:**
 
@@ -438,8 +442,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Custom Cache Key
 
-* [ Dashboard ](#tab-panel-8566)
-* [ Visual guide ](#tab-panel-8567)
+* [ Dashboard ](#tab-panel-7408)
+* [ Visual guide ](#tab-panel-7409)
 
 **Context:**
 
@@ -472,8 +476,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Disable Apps
 
-* [ Dashboard ](#tab-panel-8526)
-* [ Visual guide ](#tab-panel-8527)
+* [ Dashboard ](#tab-panel-7368)
+* [ Visual guide ](#tab-panel-7369)
 
 **Context:**
 
@@ -507,8 +511,8 @@ The **Disable Performance** setting is deprecated. Any Page Rules with this sett
 
 This Page Rules setting turned off Polish and Rocket Loader. You can still turn on or off relevant Cloudflare features one by one using Configuration Rules.
 
-* [ Dashboard ](#tab-panel-8528)
-* [ Visual guide ](#tab-panel-8529)
+* [ Dashboard ](#tab-panel-7370)
+* [ Visual guide ](#tab-panel-7371)
 
 **Context:**
 
@@ -543,7 +547,7 @@ The **Disable Security** setting is deprecated. Any Page Rules with this setting
 
 This Page Rules setting turns off Email Obfuscation, Rate Limiting (previous version), Scrape Shield, URL (Zone) Lockdown, and WAF managed rules (previous version). You can still turn on or off relevant Cloudflare features one by one using Configuration Rules and WAF custom rules.
 
-* [ Dashboard ](#tab-panel-8519)
+* [ Dashboard ](#tab-panel-7361)
 
 **Context:**
 
@@ -569,8 +573,8 @@ If you are still using [WAF managed rules (previous version)](https://developers
 
 ### Migrate Disable Zaraz
 
-* [ Dashboard ](#tab-panel-8530)
-* [ Visual guide ](#tab-panel-8531)
+* [ Dashboard ](#tab-panel-7372)
+* [ Visual guide ](#tab-panel-7373)
 
 **Context:**
 
@@ -598,8 +602,8 @@ You configured a Page Rule turning off [Zaraz](https://developers.cloudflare.com
 
 ### Migrate Edge Cache TTL
 
-* [ Dashboard ](#tab-panel-8568)
-* [ Visual guide ](#tab-panel-8569)
+* [ Dashboard ](#tab-panel-7410)
+* [ Visual guide ](#tab-panel-7411)
 
 **Context:**
 
@@ -633,8 +637,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Email Obfuscation
 
-* [ Dashboard ](#tab-panel-8532)
-* [ Visual guide ](#tab-panel-8533)
+* [ Dashboard ](#tab-panel-7374)
+* [ Visual guide ](#tab-panel-7375)
 
 **Context:**
 
@@ -666,8 +670,8 @@ You configured a Page Rule turning off [Email Obfuscation](https://developers.cl
 
 **Example #1: Redirect `www` to root domain**
 
-* [ Dashboard ](#tab-panel-8578)
-* [ Visual guide ](#tab-panel-8579)
+* [ Dashboard ](#tab-panel-7420)
+* [ Visual guide ](#tab-panel-7421)
 
 **Context:**
 
@@ -708,8 +712,8 @@ This would require you to also change the **Target URL** to use the second wildc
 
 **Example #2: Redirect all pages under old path to new path**
 
-* [ Dashboard ](#tab-panel-8580)
-* [ Visual guide ](#tab-panel-8581)
+* [ Dashboard ](#tab-panel-7422)
+* [ Visual guide ](#tab-panel-7423)
 
 **Context:**
 
@@ -750,8 +754,8 @@ This would require you to also change the **Target URL** to use the second wildc
 
 ### Migrate Host Header Override
 
-* [ Dashboard ](#tab-panel-8534)
-* [ Visual guide ](#tab-panel-8535)
+* [ Dashboard ](#tab-panel-7376)
+* [ Visual guide ](#tab-panel-7377)
 
 **Context:**
 
@@ -781,8 +785,8 @@ You configured a Page Rule changing the `Host` HTTP header to `example.saas-prov
 
 ### Migrate IP Geolocation Header
 
-* [ Dashboard ](#tab-panel-8536)
-* [ Visual guide ](#tab-panel-8537)
+* [ Dashboard ](#tab-panel-7378)
+* [ Visual guide ](#tab-panel-7379)
 
 **Context:**
 
@@ -804,8 +808,8 @@ You configured a Page Rule adding a `CF-IPCountry` HTTP header, for all requests
 
 ### Migrate Opportunistic Encryption
 
-* [ Dashboard ](#tab-panel-8538)
-* [ Visual guide ](#tab-panel-8539)
+* [ Dashboard ](#tab-panel-7380)
+* [ Visual guide ](#tab-panel-7381)
 
 **Context:**
 
@@ -835,8 +839,8 @@ You configured a Page Rule turning off Opportunistic Encryption for all subdomai
 
 ### Migrate Origin Cache Control
 
-* [ Dashboard ](#tab-panel-8570)
-* [ Visual guide ](#tab-panel-8571)
+* [ Dashboard ](#tab-panel-7412)
+* [ Visual guide ](#tab-panel-7413)
 
 **Context:**
 
@@ -869,8 +873,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Origin Error Page Pass-thru
 
-* [ Dashboard ](#tab-panel-8572)
-* [ Visual guide ](#tab-panel-8573)
+* [ Dashboard ](#tab-panel-7414)
+* [ Visual guide ](#tab-panel-7415)
 
 **Context:**
 
@@ -903,8 +907,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Polish
 
-* [ Dashboard ](#tab-panel-8540)
-* [ Visual guide ](#tab-panel-8541)
+* [ Dashboard ](#tab-panel-7382)
+* [ Visual guide ](#tab-panel-7383)
 
 **Context:**
 
@@ -934,8 +938,8 @@ You configured a Page Rule turning off [Polish](https://developers.cloudflare.co
 
 ### Migrate Query String Sort
 
-* [ Dashboard ](#tab-panel-8574)
-* [ Visual guide ](#tab-panel-8575)
+* [ Dashboard ](#tab-panel-7416)
+* [ Visual guide ](#tab-panel-7417)
 
 **Context:**
 
@@ -968,8 +972,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Resolve Override
 
-* [ Dashboard ](#tab-panel-8542)
-* [ Visual guide ](#tab-panel-8543)
+* [ Dashboard ](#tab-panel-7384)
+* [ Visual guide ](#tab-panel-7385)
 
 **Context:**
 
@@ -998,8 +1002,8 @@ You configured a Page Rule changing the origin to `example.saas-provider.com`, f
 
 ### Migrate Respect Strong ETags
 
-* [ Dashboard ](#tab-panel-8576)
-* [ Visual guide ](#tab-panel-8577)
+* [ Dashboard ](#tab-panel-7418)
+* [ Visual guide ](#tab-panel-7419)
 
 **Context:**
 
@@ -1032,8 +1036,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Rocket Loader
 
-* [ Dashboard ](#tab-panel-8544)
-* [ Visual guide ](#tab-panel-8545)
+* [ Dashboard ](#tab-panel-7386)
+* [ Visual guide ](#tab-panel-7387)
 
 **Context:**
 
@@ -1063,8 +1067,8 @@ You configured a Page Rule turning off Rocket Loader for all subdomains of `exam
 
 ### Migrate Security Level
 
-* [ Dashboard ](#tab-panel-8546)
-* [ Visual guide ](#tab-panel-8547)
+* [ Dashboard ](#tab-panel-7388)
+* [ Visual guide ](#tab-panel-7389)
 
 **Context:**
 
@@ -1094,8 +1098,8 @@ You configured a Page Rule setting Security Level to _I'm Under Attack_ for all 
 
 ### Migrate True Client IP Header
 
-* [ Dashboard ](#tab-panel-8548)
-* [ Visual guide ](#tab-panel-8549)
+* [ Dashboard ](#tab-panel-7390)
+* [ Visual guide ](#tab-panel-7391)
 
 **Context:**
 
@@ -1117,8 +1121,8 @@ You configured a Page Rule adding a `True-Client-IP` HTTP header for all request
 
 ### Migrate SSL
 
-* [ Dashboard ](#tab-panel-8550)
-* [ Visual guide ](#tab-panel-8551)
+* [ Dashboard ](#tab-panel-7392)
+* [ Visual guide ](#tab-panel-7393)
 
 **Context:**
 

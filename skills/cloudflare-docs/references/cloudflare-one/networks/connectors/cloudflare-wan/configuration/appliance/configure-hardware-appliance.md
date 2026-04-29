@@ -4,6 +4,10 @@ description: Configure hardware Connector in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure hardware Connector
@@ -98,8 +102,8 @@ To create a profile:
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-4826)
-* [ API ](#tab-panel-4827)
+* [ Dashboard ](#tab-panel-4832)
+* [ API ](#tab-panel-4833)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -158,8 +162,8 @@ Explain Code
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-4824)
-* [ API ](#tab-panel-4825)
+* [ Dashboard ](#tab-panel-4830)
+* [ API ](#tab-panel-4831)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.

@@ -4,6 +4,10 @@ description: Test Email Service sending Workers locally using wrangler dev with 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Email sending
@@ -29,8 +33,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-7111)
-* [  wrangler.toml ](#tab-panel-7112)
+* [  wrangler.jsonc ](#tab-panel-5953)
+* [  wrangler.toml ](#tab-panel-5954)
 
 JSONC
 
@@ -83,8 +87,8 @@ Using [remote bindings](https://developers.cloudflare.com/workers/development-te
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7113)
-* [  wrangler.toml ](#tab-panel-7114)
+* [  wrangler.jsonc ](#tab-panel-5955)
+* [  wrangler.toml ](#tab-panel-5956)
 
 JSONC
 
@@ -98,7 +102,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "send_email": [
 
@@ -127,7 +131,7 @@ name = "email-sending-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[send_email]]

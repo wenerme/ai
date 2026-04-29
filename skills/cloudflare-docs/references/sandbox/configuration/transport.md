@@ -4,6 +4,10 @@ description: Configure how Sandbox SDK communicates between Durable Objects and 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Transport modes
@@ -82,8 +86,8 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable WebSocket transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-8741)
-* [  wrangler.toml ](#tab-panel-8742)
+* [  wrangler.jsonc ](#tab-panel-7583)
+* [  wrangler.toml ](#tab-panel-7584)
 
 JSONC
 
@@ -97,7 +101,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "vars": {
 
@@ -150,7 +154,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [vars]
@@ -236,8 +240,8 @@ Switching between transports requires no code changes.
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-8737)
-* [  wrangler.toml ](#tab-panel-8738)
+* [  wrangler.jsonc ](#tab-panel-7579)
+* [  wrangler.toml ](#tab-panel-7580)
 
 JSONC
 
@@ -282,8 +286,8 @@ npx wrangler deploy
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-8739)
-* [  wrangler.toml ](#tab-panel-8740)
+* [  wrangler.jsonc ](#tab-panel-7581)
+* [  wrangler.toml ](#tab-panel-7582)
 
 JSONC
 

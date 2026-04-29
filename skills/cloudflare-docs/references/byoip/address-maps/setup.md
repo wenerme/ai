@@ -4,6 +4,10 @@ description: Create and configure address maps for your IP prefixes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Set up address maps
@@ -18,8 +22,8 @@ There is **no expected downtime** when setting up or updating your address maps.
 
 If you are using BYOIP, refer to the following steps. If you have [static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/), Cloudflare creates an address map during the static IP onboarding process, meaning you may only [edit](#manage-address-maps) the Cloudflare-created map.
 
-* [ Dashboard ](#tab-panel-5623)
-* [ API ](#tab-panel-5624)
+* [ Dashboard ](#tab-panel-4459)
+* [ API ](#tab-panel-4460)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -89,8 +93,8 @@ A zone membership will take priority over an account membership.
 
 ## Manage address maps
 
-* [ Dashboard ](#tab-panel-5621)
-* [ API ](#tab-panel-5622)
+* [ Dashboard ](#tab-panel-4457)
+* [ API ](#tab-panel-4458)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)

@@ -4,6 +4,10 @@ description: Route requests to any AI provider through a single AI Gateway endpo
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Universal Endpoint
@@ -204,8 +208,8 @@ Explain Code
 
 ## Workers Binding example
 
-* [  wrangler.jsonc ](#tab-panel-5335)
-* [  wrangler.toml ](#tab-panel-5336)
+* [  wrangler.jsonc ](#tab-panel-4169)
+* [  wrangler.toml ](#tab-panel-4170)
 
 JSONC
 

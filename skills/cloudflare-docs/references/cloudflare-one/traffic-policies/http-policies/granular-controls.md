@@ -4,6 +4,10 @@ description: How Application Granular Controls works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -28,8 +32,8 @@ To use Application Granular Controls, you must:
 
 To create a Gateway HTTP policy with Application Granular Controls:
 
-* [ Dashboard ](#tab-panel-6296)
-* [ API ](#tab-panel-6297)
+* [ Dashboard ](#tab-panel-5138)
+* [ API ](#tab-panel-5139)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.

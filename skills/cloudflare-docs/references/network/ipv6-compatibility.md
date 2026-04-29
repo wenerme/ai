@@ -4,6 +4,10 @@ description: Configure IPv6 compatibility for your Cloudflare domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -43,8 +47,8 @@ Note
 
 To allow IPv6-only clients to connect to IPv4-only origin web servers, keep IPv6 compatibility enabled and configure [Pseudo IPv4](https://developers.cloudflare.com/network/pseudo-ipv4/).
 
-* [ Dashboard ](#tab-panel-7912)
-* [ API ](#tab-panel-7913)
+* [ Dashboard ](#tab-panel-6754)
+* [ API ](#tab-panel-6755)
 
 To turn off IPv6 compatibility in the dashboard:
 

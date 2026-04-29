@@ -4,6 +4,10 @@ description: Vite plugin API
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # API
@@ -50,6 +54,9 @@ An optional override for state persistence. By default, state is persisted to `.
 * `inspectorPort` ` number | false ` optional  
 An optional override for debugging your Workers. By default, the debugging inspector is enabled and listens on port `9229`. A custom port can be provided or, alternatively, setting this to `false` will disable the debugging inspector.  
 See [Debugging](https://developers.cloudflare.com/workers/vite-plugin/reference/debugging/) for more information.
+* `tunnel` ` boolean ` optional  
+Open a publicly reachable Cloudflare Quick Tunnel for sharing a preview, testing webhooks, or accessing the app from another device.  
+See [Share a local dev server](https://developers.cloudflare.com/workers/development-testing/local-dev-tunnels/) for more information.
 * `auxiliaryWorkers` ` Array<AuxiliaryWorkerConfig> ` optional  
 An optional array of auxiliary Workers. Auxiliary Workers are additional Workers that are used as part of your application. You can use [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) to call auxiliary Workers from your main (entry) Worker. All requests are routed through your entry Worker. During the build, each Worker is output to a separate subdirectory of `dist`.  
 Note  

@@ -4,6 +4,10 @@ description: Mount R2 buckets as filesystems using FUSE in Containers
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Mount R2 buckets with FUSE
@@ -112,8 +116,8 @@ The startup script creates a mount point, starts tigrisfs in the background to m
 
 Your Container needs [R2 credentials](https://developers.cloudflare.com/r2/api/tokens/) and configuration passed as environment variables. Store credentials as [Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/), then pass them through the `envVars` property:
 
-* [  JavaScript ](#tab-panel-6482)
-* [  TypeScript ](#tab-panel-6483)
+* [  JavaScript ](#tab-panel-5324)
+* [  TypeScript ](#tab-panel-5325)
 
 src/index.js
 

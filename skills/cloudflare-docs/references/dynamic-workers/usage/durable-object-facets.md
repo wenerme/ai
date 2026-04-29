@@ -4,6 +4,10 @@ description: Run dynamically-loaded code with isolated persistent storage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Durable Object Facets
@@ -28,8 +32,8 @@ The supervisor's database and the facet's database are stored together as part o
 
 Your Worker needs two things: a Durable Object class with a SQLite storage backend, and a Worker Loader binding.
 
-* [  wrangler.jsonc ](#tab-panel-7056)
-* [  wrangler.toml ](#tab-panel-7057)
+* [  wrangler.jsonc ](#tab-panel-5898)
+* [  wrangler.toml ](#tab-panel-5899)
 
 JSONC
 
@@ -41,7 +45,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "main": "src/index.ts",
 
@@ -84,7 +88,7 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 main = "src/index.ts"
 
@@ -111,8 +115,8 @@ The following example shows a supervisor Durable Object (`AppRunner`) that loads
 
 The dynamic code is a simple counter app that tracks how many requests it has received, using its own SQLite-backed storage. In a real application, this code would come from an AI agent or user upload rather than a static string.
 
-* [  JavaScript ](#tab-panel-7058)
-* [  TypeScript ](#tab-panel-7059)
+* [  JavaScript ](#tab-panel-5900)
+* [  TypeScript ](#tab-panel-5901)
 
 JavaScript
 

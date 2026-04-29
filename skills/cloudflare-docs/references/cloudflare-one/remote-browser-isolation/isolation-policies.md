@@ -4,6 +4,10 @@ description: Reference information for Isolation policies in Browser Isolation.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -138,8 +142,8 @@ Custom block dialogs are still in beta. Contact your account team to start using
 
 Isolate security threats such as malware and phishing.
 
-* [ Dashboard ](#tab-panel-6046)
-* [ API ](#tab-panel-6047)
+* [ Dashboard ](#tab-panel-4888)
+* [ API ](#tab-panel-4889)
 
 | Selector            | Operator | Value                | Action  |
 | ------------------- | -------- | -------------------- | ------- |
@@ -188,8 +192,8 @@ Explain Code
 
 Isolate high risk content categories such as newly registered domains.
 
-* [ Dashboard ](#tab-panel-6048)
-* [ API ](#tab-panel-6049)
+* [ Dashboard ](#tab-panel-4890)
+* [ API ](#tab-panel-4891)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -238,8 +242,8 @@ Explain Code
 
 Isolate news and media sites, which are targets for malvertising attacks.
 
-* [ Dashboard ](#tab-panel-6050)
-* [ API ](#tab-panel-6051)
+* [ Dashboard ](#tab-panel-4892)
+* [ API ](#tab-panel-4893)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -288,8 +292,8 @@ Explain Code
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
 
-* [ Dashboard ](#tab-panel-6052)
-* [ API ](#tab-panel-6053)
+* [ Dashboard ](#tab-panel-4894)
+* [ API ](#tab-panel-4895)
 
 | Selector           | Operator | Value                    | Action  |
 | ------------------ | -------- | ------------------------ | ------- |
@@ -338,8 +342,8 @@ Explain Code
 
 Isolate the use of ChatGPT.
 
-* [ Dashboard ](#tab-panel-6054)
-* [ API ](#tab-panel-6055)
+* [ Dashboard ](#tab-panel-4896)
+* [ API ](#tab-panel-4897)
 
 | Selector    | Operator | Value     | Action  |
 | ----------- | -------- | --------- | ------- |

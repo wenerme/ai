@@ -4,6 +4,10 @@ description: Enforce MFA in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -71,6 +75,10 @@ Settings at lower levels (policy) override settings at higher levels (organizati
 ### Prerequisites
 
 Before you configure independent MFA on applications or policies, you must [turn on independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) at the organization level.
+
+Tip
+
+At the organization level, you can also [restrict which authenticators can be enrolled using AAGUIDs](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid) and \[skip independent MFA when the identity provider already performed MFA\](/cloudflare-one/access-controls/access-settings/independent-mfa/#use-identity-provider-mfa.
 
 ### Configure independent MFA for an application
 

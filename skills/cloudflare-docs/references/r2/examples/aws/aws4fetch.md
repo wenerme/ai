@@ -4,6 +4,10 @@ description: Configure aws4fetch to sign requests to Cloudflare R2 using the S3-
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # aws4fetch

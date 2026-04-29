@@ -4,6 +4,10 @@ description: Set up DNS Firewall to protect upstream nameservers from DDoS attac
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Setup
@@ -20,8 +24,8 @@ Prior to setting up DNS Firewall, you need:
 
 ### Create a DNS Firewall cluster
 
-* [ Dashboard ](#tab-panel-6709)
-* [ API ](#tab-panel-6710)
+* [ Dashboard ](#tab-panel-5551)
+* [ API ](#tab-panel-5552)
 
 1. In the Cloudflare dashboard, go to the **DNS Firewall Clusters** page.  
 [ Go to **Clusters** ](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)

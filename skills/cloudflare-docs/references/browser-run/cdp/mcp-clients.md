@@ -4,6 +4,10 @@ description: Configure AI coding agents to control Browser Run sessions through 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Using with MCP clients (CDP)

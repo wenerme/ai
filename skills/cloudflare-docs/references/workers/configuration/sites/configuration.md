@@ -4,6 +4,10 @@ description: Configure Workers Sites settings for static asset hosting in your W
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Workers Sites configuration
@@ -33,8 +37,8 @@ If your project uses [environments](https://developers.cloudflare.com/workers/wr
 
 Example of a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-9691)
-* [  wrangler.toml ](#tab-panel-9692)
+* [  wrangler.jsonc ](#tab-panel-8574)
+* [  wrangler.toml ](#tab-panel-8575)
 
 JSONC
 
@@ -127,8 +131,8 @@ This means that you should use gitignore semantics when declaring which director
 
 If you want to include only a certain set of files or directories in your `bucket`, you can add an `include` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9687)
-* [  wrangler.toml ](#tab-panel-9688)
+* [  wrangler.jsonc ](#tab-panel-8570)
+* [  wrangler.toml ](#tab-panel-8571)
 
 JSONC
 
@@ -172,8 +176,8 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, you can add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9689)
-* [  wrangler.toml ](#tab-panel-9690)
+* [  wrangler.jsonc ](#tab-panel-8572)
+* [  wrangler.toml ](#tab-panel-8573)
 
 JSONC
 

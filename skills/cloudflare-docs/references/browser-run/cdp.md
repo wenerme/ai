@@ -4,6 +4,10 @@ description: Create persistent browser sessions, manage tabs, and interact with 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Chrome DevTools Protocol (CDP)

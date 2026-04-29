@@ -4,11 +4,15 @@ description: Authenticate against R2 with temporary credentials.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Authenticate against R2 with temporary credentials
 
-**Last reviewed:**  6 days ago 
+**Last reviewed:**  10 days ago 
 
 The following examples show how to generate R2 [temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/) via both the Temporary Credentials API and local client-side signing, and how to use the resulting credentials with an S3 client.
 

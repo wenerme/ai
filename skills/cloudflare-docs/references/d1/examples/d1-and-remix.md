@@ -4,6 +4,10 @@ description: Query your D1 database from a Remix application.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -33,7 +37,7 @@ The following example shows you how to define a Remix [loader ↗](https://remix
 * Bindings are passed through on the `context.cloudflare.env` parameter passed to a `LoaderFunction`.
 * If you configured a [binding](https://developers.cloudflare.com/pages/functions/bindings/#d1-databases) named `DB`, then you would access [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) methods via `context.cloudflare.env.DB`.
 
-* [  TypeScript ](#tab-panel-6530)
+* [  TypeScript ](#tab-panel-5372)
 
 TypeScript
 

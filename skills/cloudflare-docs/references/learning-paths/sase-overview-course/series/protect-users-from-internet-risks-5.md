@@ -4,12 +4,16 @@ description: Filter Internet traffic to protect users.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Protect your users from Internet risks
 
-* [ Watch this episode ](#tab-panel-7632)
-* [ Series overview ](#tab-panel-7633)
+* [ Watch this episode ](#tab-panel-6528)
+* [ Series overview ](#tab-panel-6529)
 
 The Internet has become part of your corporate network, however browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.
 

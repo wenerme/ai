@@ -4,6 +4,10 @@ description: Manage Browser Run sessions from the command line using Wrangler.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Wrangler commands
@@ -14,9 +18,9 @@ Use `wrangler browser` commands to manage Browser Run sessions from the command 
 
 Create a new browser rendering session
 
-* [  npm ](#tab-panel-5607)
-* [  pnpm ](#tab-panel-5608)
-* [  yarn ](#tab-panel-5609)
+* [  npm ](#tab-panel-4443)
+* [  pnpm ](#tab-panel-4444)
+* [  yarn ](#tab-panel-4445)
 
 Terminal window
 
@@ -75,9 +79,9 @@ Automatically provision draft bindings with new resources
 
 Close a browser rendering session
 
-* [  npm ](#tab-panel-5610)
-* [  pnpm ](#tab-panel-5611)
-* [  yarn ](#tab-panel-5612)
+* [  npm ](#tab-panel-4446)
+* [  pnpm ](#tab-panel-4447)
+* [  yarn ](#tab-panel-4448)
 
 Terminal window
 
@@ -132,9 +136,9 @@ Automatically provision draft bindings with new resources
 
 List active browser rendering sessions
 
-* [  npm ](#tab-panel-5613)
-* [  pnpm ](#tab-panel-5614)
-* [  yarn ](#tab-panel-5615)
+* [  npm ](#tab-panel-4449)
+* [  pnpm ](#tab-panel-4450)
+* [  yarn ](#tab-panel-4451)
 
 Terminal window
 
@@ -187,9 +191,9 @@ Automatically provision draft bindings with new resources
 
 View a live browser session
 
-* [  npm ](#tab-panel-5616)
-* [  pnpm ](#tab-panel-5617)
-* [  yarn ](#tab-panel-5618)
+* [  npm ](#tab-panel-4452)
+* [  pnpm ](#tab-panel-4453)
+* [  yarn ](#tab-panel-4454)
 
 Terminal window
 

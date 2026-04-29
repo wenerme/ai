@@ -4,6 +4,10 @@ description: Page views, visits, and other high-level metrics in Web Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # High-level metrics

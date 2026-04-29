@@ -4,6 +4,10 @@ description: Restrict access to specific URLs by allowlisted IP addresses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Zone Lockdown
@@ -34,9 +38,9 @@ The number of available zone lockdown rules depends on your Cloudflare plan.
 
 ## Create a zone lockdown rule
 
-* [  New dashboard ](#tab-panel-9478)
-* [ Old dashboard ](#tab-panel-9479)
-* [ API ](#tab-panel-9480)
+* [  New dashboard ](#tab-panel-8361)
+* [ Old dashboard ](#tab-panel-8362)
+* [ API ](#tab-panel-8363)
 
 Note
 

@@ -4,6 +4,10 @@ description: Prioritized traffic allows you to define which applications are pro
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Prioritized traffic
@@ -86,8 +90,8 @@ You can now add this new app to the Prioritized traffic list in your Cloudflare 
 
 You need to configure Prioritized traffic applications for each of your existing sites, as this is a per-site configuration.
 
-* [ Dashboard ](#tab-panel-4840)
-* [ API ](#tab-panel-4841)
+* [ Dashboard ](#tab-panel-4846)
+* [ API ](#tab-panel-4847)
 
 1. Log in to the [Cloudflare One dashboard](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.
@@ -164,8 +168,8 @@ Explain Code
 
 ### Delete an application from Cloudflare One Appliance
 
-* [ Dashboard ](#tab-panel-4838)
-* [ API ](#tab-panel-4839)
+* [ Dashboard ](#tab-panel-4844)
+* [ API ](#tab-panel-4845)
 
 1. Log in to the [Cloudflare One dashboard](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.

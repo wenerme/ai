@@ -4,6 +4,10 @@ description: Create an Artifacts repo over HTTP.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # REST API
@@ -62,8 +66,8 @@ Authorization: Bearer $CLOUDFLARE_API_TOKEN
 
 Choose one of the following ways to create a repo inside that namespace:
 
-* [ Manual ](#tab-panel-5505)
-* [ jq ](#tab-panel-5506)
+* [ Manual ](#tab-panel-4339)
+* [ jq ](#tab-panel-4340)
 
 Terminal window
 

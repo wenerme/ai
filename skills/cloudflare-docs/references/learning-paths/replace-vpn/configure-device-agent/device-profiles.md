@@ -4,6 +4,10 @@ description: Configure WARP client device profiles.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Customize device profiles
@@ -18,9 +22,9 @@ Set your default device profile to be applicable to a majority of your userbase,
 
 To customize the default settings:
 
-* [ Dashboard ](#tab-panel-7651)
-* [ API ](#tab-panel-7652)
-* [ Terraform (v5) ](#tab-panel-7653)
+* [ Dashboard ](#tab-panel-6493)
+* [ API ](#tab-panel-6494)
+* [ Terraform (v5) ](#tab-panel-6495)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select the **Default** profile and select \*_Edit_.

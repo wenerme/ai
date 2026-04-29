@@ -4,6 +4,10 @@ description: Create a Durable Object that stores the last location it was access
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Durable Object in-memory state
@@ -14,8 +18,8 @@ Create a Durable Object that stores the last location it was accessed from in-me
 
 This example shows you how Durable Objects are stateful, meaning in-memory state can be retained between requests. After a brief period of inactivity, the Durable Object will be evicted, and all in-memory state will be lost. The next request will reconstruct the object, but instead of showing the city of the previous request, it will display a message indicating that the object has been reinitialized. If you need your applications state to survive eviction, write the state to storage by using the [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), or by storing your data elsewhere.
 
-* [  JavaScript ](#tab-panel-6954)
-* [  Python ](#tab-panel-6955)
+* [  JavaScript ](#tab-panel-5796)
+* [  Python ](#tab-panel-5797)
 
 JavaScript
 
@@ -205,8 +209,8 @@ Explain Code
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-6956)
-* [  wrangler.toml ](#tab-panel-6957)
+* [  wrangler.jsonc ](#tab-panel-5798)
+* [  wrangler.toml ](#tab-panel-5799)
 
 JSONC
 

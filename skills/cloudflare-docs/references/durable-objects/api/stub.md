@@ -4,6 +4,10 @@ description: API reference for DurableObjectStub, the client used to invoke RPC 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Durable Object Stub
@@ -16,8 +20,8 @@ Durable Objects implement E-order semantics, a concept deriving from the [E dist
 
 If an exception is thrown by a Durable Object stub all in-flight calls and future calls will fail with [exceptions](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/). To continue invoking methods on a remote Durable Object a Worker must recreate the stub. There are no ordering guarantees between different stubs.
 
-* [  JavaScript ](#tab-panel-6860)
-* [  TypeScript ](#tab-panel-6861)
+* [  JavaScript ](#tab-panel-5702)
+* [  TypeScript ](#tab-panel-5703)
 
 JavaScript
 
@@ -140,8 +144,8 @@ Explain Code
 
 `id` is a property of the `DurableObjectStub` corresponding to the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) used to create the stub.
 
-* [  JavaScript ](#tab-panel-6856)
-* [  Python ](#tab-panel-6857)
+* [  JavaScript ](#tab-panel-5698)
+* [  Python ](#tab-panel-5699)
 
 JavaScript
 
@@ -173,8 +177,8 @@ assert id.equals(stub.id), "This should always be true"
 
 `name` is an optional property of a `DurableObjectStub`, which returns a name if it was provided upon stub creation either directly via [DurableObjectNamespace::getByName](https://developers.cloudflare.com/durable-objects/api/namespace/#getbyname) or indirectly via a [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) created by [DurableObjectNamespace::idFromName](https://developers.cloudflare.com/durable-objects/api/namespace/#idfromname). This value is undefined if the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) used to create the `DurableObjectStub` was constructed using [DurableObjectNamespace::newUniqueId](https://developers.cloudflare.com/durable-objects/api/namespace/#newuniqueid).
 
-* [  JavaScript ](#tab-panel-6858)
-* [  Python ](#tab-panel-6859)
+* [  JavaScript ](#tab-panel-5700)
+* [  Python ](#tab-panel-5701)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Learn how to remove custom hostnames for inactive customers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Remove custom hostnames
@@ -27,8 +31,8 @@ You should remove a customer's custom hostname from your zone if they decide to 
 
 If your customer's domain is not using Cloudflare, you must remove a customer's custom hostname from your zone if they decide to churn.
 
-* [ Dashboard ](#tab-panel-5695)
-* [ API ](#tab-panel-5696)
+* [ Dashboard ](#tab-panel-4531)
+* [ API ](#tab-panel-4532)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

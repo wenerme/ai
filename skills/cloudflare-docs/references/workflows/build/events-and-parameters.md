@@ -4,6 +4,10 @@ description: Pass data to Workflows using events and parameters, including reque
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Events and parameters
@@ -28,8 +32,8 @@ A `WorkflowEvent` and its associated `payload` property are effectively _immutab
 
 Store state durably by returning it from your `step.do` callbacks.
 
-* [  JavaScript ](#tab-panel-10015)
-* [  TypeScript ](#tab-panel-10016)
+* [  JavaScript ](#tab-panel-10023)
+* [  TypeScript ](#tab-panel-10024)
 
 JavaScript
 
@@ -150,8 +154,8 @@ The `waitForEvent` type parameter only supports letters, digits, `-`, and `_`. C
 
 For example, to wait for billing webhook:
 
-* [  JavaScript ](#tab-panel-10011)
-* [  TypeScript ](#tab-panel-10012)
+* [  JavaScript ](#tab-panel-10019)
+* [  TypeScript ](#tab-panel-10020)
 
 JavaScript
 
@@ -219,8 +223,8 @@ The above example:
 
 The default timeout for a `waitForEvent` call is 24 hours, which can be changed by passing `{ timeout: WorkflowTimeoutDuration }` as the second argument to your `waitForEvent` call.
 
-* [  JavaScript ](#tab-panel-10009)
-* [  TypeScript ](#tab-panel-10010)
+* [  JavaScript ](#tab-panel-10017)
+* [  TypeScript ](#tab-panel-10018)
 
 JavaScript
 
@@ -258,8 +262,8 @@ Timeout behavior
 
 When `waitForEvent` times out, the Workflow will throw an error and the instance will fail. If you want your Workflow to continue even if the event is not received, wrap the `waitForEvent` call in a `try...catch` block:
 
-* [  JavaScript ](#tab-panel-10013)
-* [  TypeScript ](#tab-panel-10014)
+* [  JavaScript ](#tab-panel-10021)
+* [  TypeScript ](#tab-panel-10022)
 
 JavaScript
 
@@ -323,8 +327,8 @@ Explain Code
 
 Workflow instances that are waiting on events using the `waitForEvent` API can be sent events using the `instance.sendEvent` API:
 
-* [  JavaScript ](#tab-panel-10017)
-* [  TypeScript ](#tab-panel-10018)
+* [  JavaScript ](#tab-panel-10025)
+* [  TypeScript ](#tab-panel-10026)
 
 JavaScript
 

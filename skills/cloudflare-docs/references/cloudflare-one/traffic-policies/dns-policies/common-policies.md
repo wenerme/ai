@@ -4,6 +4,10 @@ description: Reference information for Common policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,8 +26,8 @@ Refer to the [DNS policies page](https://developers.cloudflare.com/cloudflare-on
 
 This policy allows users to access official corporate domains. By deploying the policy with high [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence), you ensure that employees can access trusted domains even if they fall under a blocked category like _Newly seen domains_ or _Login pages_.
 
-* [ Dashboard ](#tab-panel-6213)
-* [ API ](#tab-panel-6214)
+* [ Dashboard ](#tab-panel-5055)
+* [ API ](#tab-panel-5056)
 
 | Selector | Operator | Value             | Action | Precedence |
 | -------- | -------- | ----------------- | ------ | ---------- |
@@ -74,9 +78,9 @@ To get the UUIDs of your lists, use the [List Zero Trust lists](https://develope
 
 Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) such as Command & Control, Botnet and Malware based on Cloudflare's threat intelligence.
 
-* [ Dashboard ](#tab-panel-6237)
-* [ API ](#tab-panel-6238)
-* [ Terraform ](#tab-panel-6239)
+* [ Dashboard ](#tab-panel-5079)
+* [ API ](#tab-panel-5080)
+* [ Terraform ](#tab-panel-5081)
 
 | Selector            | Operator | Value                | Action |
 | ------------------- | -------- | -------------------- | ------ |
@@ -152,9 +156,9 @@ Explain Code
 
 The categories included in this policy are not always a security threat, but blocking them can help minimize the risk that your organization is exposed to. For more information, refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/).
 
-* [ Dashboard ](#tab-panel-6240)
-* [ API ](#tab-panel-6241)
-* [ Terraform ](#tab-panel-6242)
+* [ Dashboard ](#tab-panel-5082)
+* [ API ](#tab-panel-5083)
+* [ Terraform ](#tab-panel-5084)
 
 | Selector           | Operator | Value                                                     | Action |
 | ------------------ | -------- | --------------------------------------------------------- | ------ |
@@ -243,9 +247,9 @@ You can add a list of category IDs to the [EDNS (Extension Mechanisms for DNS) �
 
 With the [Request Context Categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#request-context-categories) selector, you can block the category IDs sent with EDNS. This is useful to filter by categories not known at the time of creating a policy, or to enforce device-specific DNS content filtering without reaching your account limit. When Gateway uses this selector to block a DNS query, the request will return an Extended DNS Error (EDE) Code 15 (`Blocked`), along with a field containing an array of the matched categories.
 
-* [ Dashboard ](#tab-panel-6208)
-* [ API ](#tab-panel-6209)
-* [ Terraform ](#tab-panel-6210)
+* [ Dashboard ](#tab-panel-5050)
+* [ API ](#tab-panel-5051)
+* [ Terraform ](#tab-panel-5052)
 
 | Selector                 | Operator | Value     | Action |
 | ------------------------ | -------- | --------- | ------ |
@@ -323,9 +327,9 @@ After seven days, view your [Shadow IT SaaS Analytics](https://developers.cloudf
 
 To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-6243)
-* [ API ](#tab-panel-6244)
-* [ Terraform ](#tab-panel-6245)
+* [ Dashboard ](#tab-panel-5085)
+* [ API ](#tab-panel-5086)
+* [ Terraform ](#tab-panel-5087)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -401,8 +405,8 @@ Explain Code
 
 You can implement policies to block websites hosted in countries categorized as high risk. The designation of such countries may result from your organization's requirements or through regulations including [EAR (Export Administration Regulations) ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), [OFAC (Office of Foreign Assets Control) ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries), and [ITAR (International Traffic in Arms Regulations) ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries). This policy blocks DNS queries that resolve to IP addresses geolocated in the countries you specify.
 
-* [ Dashboard ](#tab-panel-6211)
-* [ API ](#tab-panel-6212)
+* [ Dashboard ](#tab-panel-5053)
+* [ API ](#tab-panel-5054)
 
 | Selector                        | Operator | Value                                                                                                                                                          | Action |
 | ------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
@@ -449,8 +453,8 @@ Explain Code
 
 Blocking [frequently misused ↗](https://www.spamhaus.org/statistics/tlds/) top-level domains (TLDs) — the last segment of a domain name, such as `.com` or `.ru` — can reduce security risks, especially when there is no discernible advantage to be gained from allowing access. Similarly, restricting access to specific country-level TLDs may be necessary to comply with regulations like [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries) or [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries).
 
-* [ Dashboard ](#tab-panel-6215)
-* [ API ](#tab-panel-6216)
+* [ Dashboard ](#tab-panel-5057)
+* [ API ](#tab-panel-5058)
 
 | Selector | Operator      | Value                                                         | Logic | Action |
 | -------- | ------------- | ------------------------------------------------------------- | ----- | ------ |
@@ -499,8 +503,8 @@ Explain Code
 
 To protect against [sophisticated phishing attacks ↗](https://blog.cloudflare.com/2022-07-sms-phishing-attacks/), you could prevent users from accessing phishing domains that are specifically targeting your organization. The following policy blocks specific keywords associated with an organization or its authentication services (such as _okta_, _2fa_, _cloudflare_ or _sso_), while still allowing access to official corporate domains.
 
-* [ Dashboard ](#tab-panel-6217)
-* [ API ](#tab-panel-6218)
+* [ Dashboard ](#tab-panel-5059)
+* [ API ](#tab-panel-5060)
 
 | Selector | Operator      | Value                                          | Logic | Action |
 | -------- | ------------- | ---------------------------------------------- | ----- | ------ |
@@ -550,8 +554,8 @@ To get the UUIDs of your lists, use the [List Zero Trust lists](https://develope
 
 To safeguard user privacy, some organizations will block tracking domains such as `dig.whatsapp.com` as well as other tracking domains embedded at the OS level. This policy is implemented by creating a custom blocklist. Refer to [this repository ↗](https://github.com/nextdns/native-tracking-domains/tree/28991a0d5b2ab6d35588a74af82162ea7caff420/domains) for a list of widespread tracking domains that you can add to your blocklist.
 
-* [ Dashboard ](#tab-panel-6219)
-* [ API ](#tab-panel-6220)
+* [ Dashboard ](#tab-panel-5061)
+* [ API ](#tab-panel-5062)
 
 | Selector | Operator | Value                  | Action |
 | -------- | -------- | ---------------------- | ------ |
@@ -600,8 +604,8 @@ To get the UUIDs of your lists, use the [List Zero Trust lists](https://develope
 
 Block specific IP addresses that are known to be malicious or pose a threat to your organization. This policy is usually implemented by creating custom blocklists or by using blocklists provided by threat intelligence partners or regional Computer Emergency and Response Teams (CERTs).
 
-* [ Dashboard ](#tab-panel-6223)
-* [ API ](#tab-panel-6224)
+* [ Dashboard ](#tab-panel-5065)
+* [ API ](#tab-panel-5066)
 
 | Selector    | Operator | Value     | Action |
 | ----------- | -------- | --------- | ------ |
@@ -650,8 +654,8 @@ To get the UUIDs of your lists, use the [List Zero Trust lists](https://develope
 
 The CIPA (Children's Internet Protection Act) Filter is a collection of subcategories that encompass a wide range of topics that could be harmful or inappropriate for minors. It is used as a part of [Project Cybersafe Schools](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/) to block access to unwanted or harmful online content. Upon creating this policy, your organization will have minimum [CIPA compliance ↗](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act).
 
-* [ Dashboard ](#tab-panel-6221)
-* [ API ](#tab-panel-6222)
+* [ Dashboard ](#tab-panel-5063)
+* [ API ](#tab-panel-5064)
 
 | Selector           | Operator | Value         | Action |
 | ------------------ | -------- | ------------- | ------ |
@@ -698,8 +702,8 @@ Explain Code
 
 SafeSearch is a feature of search engines that helps you filter explicit or offensive content. You can force SafeSearch on search engines like Google, Bing, Yandex, YouTube, and DuckDuckGo:
 
-* [ Dashboard ](#tab-panel-6225)
-* [ API ](#tab-panel-6226)
+* [ Dashboard ](#tab-panel-5067)
+* [ API ](#tab-panel-5068)
 
 | Selector           | Operator | Value            | Action      |
 | ------------------ | -------- | ---------------- | ----------- |
@@ -746,8 +750,8 @@ Explain Code
 
 Configure access on a per user or group basis by adding [identity-based conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to your policies.
 
-* [ Dashboard ](#tab-panel-6227)
-* [ API ](#tab-panel-6228)
+* [ Dashboard ](#tab-panel-5069)
+* [ API ](#tab-panel-5070)
 
 | Selector         | Operator | Value        | Logic | Action |
 | ---------------- | -------- | ------------ | ----- | ------ |
@@ -799,8 +803,8 @@ The following example includes two policies. The first policy allows the specifi
 
 ### 1\. Allow a group
 
-* [ Dashboard ](#tab-panel-6229)
-* [ API ](#tab-panel-6230)
+* [ Dashboard ](#tab-panel-5071)
+* [ API ](#tab-panel-5072)
 
 | Selector           | Operator | Value             | Logic | Action |
 | ------------------ | -------- | ----------------- | ----- | ------ |
@@ -848,8 +852,8 @@ Explain Code
 
 ### 2\. Block all other users
 
-* [ Dashboard ](#tab-panel-6231)
-* [ API ](#tab-panel-6232)
+* [ Dashboard ](#tab-panel-5073)
+* [ API ](#tab-panel-5074)
 
 | Selector           | Operator | Value             | Action |
 | ------------------ | -------- | ----------------- | ------ |
@@ -908,8 +912,8 @@ To ensure traffic routes through your preferred IP version, turn off **Modify Ga
 
 Force users to connect with IPv4 by blocking `AAAA` (IPv6) record resolution.
 
-* [ Dashboard ](#tab-panel-6233)
-* [ API ](#tab-panel-6234)
+* [ Dashboard ](#tab-panel-5075)
+* [ API ](#tab-panel-5076)
 
 | Selector          | Operator | Value  | Action |
 | ----------------- | -------- | ------ | ------ |
@@ -956,8 +960,8 @@ Explain Code
 
 Force users to connect with IPv6 by blocking `A` (IPv4) record resolution.
 
-* [ Dashboard ](#tab-panel-6235)
-* [ API ](#tab-panel-6236)
+* [ Dashboard ](#tab-panel-5077)
+* [ API ](#tab-panel-5078)
 
 | Selector          | Operator | Value | Action |
 | ----------------- | -------- | ----- | ------ |

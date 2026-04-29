@@ -4,6 +4,10 @@ description: Create a new Workers Sites project from scratch with Wrangler.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Start from scratch
@@ -46,8 +50,8 @@ The template project contains the following files and directories:
 ## Customize the `wrangler.jsonc` file:
 
 * Change the `name` property to the name of your project:  
-   * [  wrangler.jsonc ](#tab-panel-9699)  
-   * [  wrangler.toml ](#tab-panel-9700)  
+   * [  wrangler.jsonc ](#tab-panel-8582)  
+   * [  wrangler.toml ](#tab-panel-8583)  
 JSONC  
 ```  
 {  
@@ -61,8 +65,8 @@ TOML
 name = "my-site"  
 ```
 * Consider updating`compatibility_date` to today's date to get access to the most recent Workers features:  
-   * [  wrangler.jsonc ](#tab-panel-9701)  
-   * [  wrangler.toml ](#tab-panel-9702)  
+   * [  wrangler.jsonc ](#tab-panel-8584)  
+   * [  wrangler.toml ](#tab-panel-8585)  
 JSONC  
 ```  
 {  
@@ -74,8 +78,8 @@ TOML
 compatibility_date = "yyyy-mm-dd"  
 ```
 * Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:  
-   * [  wrangler.jsonc ](#tab-panel-9703)  
-   * [  wrangler.toml ](#tab-panel-9704)  
+   * [  wrangler.jsonc ](#tab-panel-8586)  
+   * [  wrangler.toml ](#tab-panel-8587)  
 JSONC  
 ```  
 {  

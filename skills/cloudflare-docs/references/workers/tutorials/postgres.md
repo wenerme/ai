@@ -4,6 +4,10 @@ description: This tutorial explains how to connect to a Postgres database with C
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -72,8 +76,8 @@ cd postgres-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-9227)
-* [  wrangler.toml ](#tab-panel-9228)
+* [  wrangler.jsonc ](#tab-panel-9255)
+* [  wrangler.toml ](#tab-panel-9256)
 
 JSONC
 
@@ -89,7 +93,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27"
+  "compatibility_date": "2026-04-29"
 
 }
 
@@ -104,7 +108,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 ```
@@ -214,8 +218,8 @@ DB_URL="<ENTER YOUR POSTGRESQL CONNECTION STRING>"
 
 Configure each database parameter as an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) via the [Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard) or in your Wrangler file. Refer to an example of a Wrangler file configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9223)
-* [  wrangler.toml ](#tab-panel-9224)
+* [  wrangler.jsonc ](#tab-panel-9251)
+* [  wrangler.toml ](#tab-panel-9252)
 
 JSONC
 
@@ -611,8 +615,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-9225)
-* [  wrangler.toml ](#tab-panel-9226)
+* [  wrangler.jsonc ](#tab-panel-9253)
+* [  wrangler.toml ](#tab-panel-9254)
 
 JSONC
 
@@ -628,7 +632,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": [
 
@@ -669,7 +673,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 

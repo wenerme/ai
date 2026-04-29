@@ -4,6 +4,10 @@ description: This tutorial uses the HTMLRewriter functionality in the Cloudflare
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -444,8 +448,8 @@ Your i18n tool built on Cloudflare Pages is complete and it is time to deploy it
 
 To deploy your application to a `*.pages.dev` subdomain, you need to specify a directory of static assets to serve, configure the `pages_build_output_dir` in your project’s Wrangler file and set the value to `./public`:
 
-* [  wrangler.jsonc ](#tab-panel-7981)
-* [  wrangler.toml ](#tab-panel-7982)
+* [  wrangler.jsonc ](#tab-panel-6823)
+* [  wrangler.toml ](#tab-panel-6824)
 
 JSONC
 
@@ -461,7 +465,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24"
+  "compatibility_date": "2026-04-29"
 
 }
 
@@ -480,7 +484,7 @@ pages_build_output_dir = "./public"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 ```

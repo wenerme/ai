@@ -4,6 +4,10 @@ description: Query a D1 database from a SvelteKit application.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -32,7 +36,7 @@ The following example shows you how to create a server endpoint configured to qu
 
 The example also shows you how to configure both your app-wide types within `src/app.d.ts` to recognize your `D1Database` binding, import the `@sveltejs/adapter-cloudflare` adapter into `svelte.config.js`, and configure it to apply to all of your routes.
 
-* [  TypeScript ](#tab-panel-6531)
+* [  TypeScript ](#tab-panel-5373)
 
 TypeScript
 

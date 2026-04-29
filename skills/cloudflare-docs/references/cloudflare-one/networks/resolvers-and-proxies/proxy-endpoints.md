@@ -4,6 +4,10 @@ description: Proxy endpoints in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -86,8 +90,8 @@ Warning
 
 All devices you add to the proxy endpoint can access your Cloudflare Tunnel applications and services. If you only want to proxy web traffic, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/common-policies/#restrict-private-network-access-to-proxy-endpoint-users) that restricts proxy endpoint traffic from connecting to your internal resources.
 
-* [ Dashboard ](#tab-panel-6038)
-* [ API ](#tab-panel-6039)
+* [ Dashboard ](#tab-panel-4880)
+* [ API ](#tab-panel-4881)
 
 Authorization endpoint
 
@@ -326,8 +330,8 @@ You may need to configure your organization's firewall to allow your users to co
 
 To get the domain of a proxy endpoint:
 
-* [ Dashboard ](#tab-panel-6036)
-* [ API ](#tab-panel-6037)
+* [ Dashboard ](#tab-panel-4878)
+* [ API ](#tab-panel-4879)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Resolvers & Proxies** \> **Proxy endpoints**.
 2. Choose the proxy endpoint. Select **Edit**.
@@ -359,8 +363,8 @@ Explain Code
 
 Using your proxy endpoint's domain, you can get the IP addresses assigned to the proxy endpoint:
 
-* [ macOS and Linux ](#tab-panel-6034)
-* [ Windows ](#tab-panel-6035)
+* [ macOS and Linux ](#tab-panel-4876)
+* [ Windows ](#tab-panel-4877)
 
 1. Open a terminal.
 2. Run `dig` on your proxy endpoint's A records to get its IPv4 addresses. For example:  

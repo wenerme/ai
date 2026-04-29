@@ -4,6 +4,10 @@ description: Point a custom domain to a specific branch deployment of your Cloud
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Add a custom domain to a branch

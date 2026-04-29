@@ -4,6 +4,10 @@ description: Step-by-step Workers tutorials and video guides to help you build p
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Tutorials
@@ -21,12 +25,12 @@ View tutorials to help you get started with Workers.
 | [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/)                                                   | 6 months ago       | Beginner     |
 | [Connect to a PostgreSQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/postgres/)                                                              | 10 months ago      | Beginner     |
 | [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/)                                                                                         | 11 months ago      | Beginner     |
-| [Migrate from Netlify to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/)                                                        | 11 months ago      | Beginner     |
-| [Migrate from Vercel to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)                                                          | 12 months ago      | Beginner     |
+| [Migrate from Netlify to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/)                                                        | 12 months ago      | Beginner     |
+| [Migrate from Vercel to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)                                                          | about 1 year ago   | Beginner     |
 | [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/)                                                                                    | about 1 year ago   |              |
 | [Connect to a MySQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/mysql/)                                                                      | about 1 year ago   | Beginner     |
 | [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/)                                                   | about 1 year ago   | Beginner     |
-| [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | about 1 year ago   | Beginner     |
+| [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | over 1 year ago    | Beginner     |
 | [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/)                            | over 1 year ago    | Beginner     |
 | [Using BigQuery with Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/)                                                        | over 1 year ago    | Beginner     |
 | [How to Build an Image Generator using Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/)                                         | over 1 year ago    | Beginner     |
@@ -42,7 +46,7 @@ View tutorials to help you get started with Workers.
 | [Use Workers KV directly from Rust](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/)                                                                         | almost 2 years ago | Intermediate |
 | [Build a todo list Jamstack application](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app/)                                                                    | almost 2 years ago | Beginner     |
 | [Send Emails With Postmark](https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/)                                                                            | almost 2 years ago | Beginner     |
-| [Send Emails With Resend](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/)                                                                                | almost 2 years ago | Beginner     |
+| [Send Emails With Resend](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/)                                                                                | about 2 years ago  | Beginner     |
 | [Log and store upload events in R2 with event notifications](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/)                                          | about 2 years ago  | Beginner     |
 | [Create custom headers for Cloudflare Access-protected origins with Workers](https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/)                               | over 2 years ago   | Intermediate |
 | [Create a serverless, globally distributed time-series API with Timescale](https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/)           | over 2 years ago   | Beginner     |

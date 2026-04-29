@@ -4,6 +4,10 @@ description: Schedule future wake-ups for Durable Objects using the Alarms API w
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Alarms
@@ -165,8 +169,8 @@ This example shows how to both set alarms with the `setAlarm(timestamp)` method 
 * If an unexpected error terminates the Durable Object, the `alarm()` handler may be re-instantiated on another machine.
 * Following a short delay, the `alarm()` handler will run from the beginning on the other machine.
 
-* [  JavaScript ](#tab-panel-6809)
-* [  Python ](#tab-panel-6810)
+* [  JavaScript ](#tab-panel-5651)
+* [  Python ](#tab-panel-5652)
 
 JavaScript
 
@@ -287,8 +291,8 @@ Explain Code
 
 The following example shows how to use the `alarmInfo` property to identify if the alarm event has been attempted before.
 
-* [  JavaScript ](#tab-panel-6811)
-* [  Python ](#tab-panel-6812)
+* [  JavaScript ](#tab-panel-5653)
+* [  Python ](#tab-panel-5654)
 
 JavaScript
 

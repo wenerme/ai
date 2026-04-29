@@ -4,6 +4,10 @@ description: The number of malicious content objects detected in the request (ze
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 #  cf.waf.content\_scan.num\_malicious\_obj 

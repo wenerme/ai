@@ -4,6 +4,10 @@ description: With zone-level custom nameservers, each custom nameserver name mus
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Set up zone custom nameservers
@@ -22,8 +26,8 @@ Zone custom nameservers are available for zones on Business or Enterprise plans.
 
 To create zone custom nameservers:
 
-* [ Dashboard ](#tab-panel-6759)
-* [ API ](#tab-panel-6760)
+* [ Dashboard ](#tab-panel-5601)
+* [ API ](#tab-panel-5602)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -59,8 +63,8 @@ If you are using [Cloudflare as a secondary DNS provider](https://developers.clo
 
 To remove zone custom nameservers (and their associated, read-only DNS records):
 
-* [ Dashboard ](#tab-panel-6761)
-* [ API ](#tab-panel-6762)
+* [ Dashboard ](#tab-panel-5603)
+* [ API ](#tab-panel-5604)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

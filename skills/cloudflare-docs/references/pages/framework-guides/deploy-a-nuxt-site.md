@@ -4,6 +4,10 @@ description: Web framework making Vue.js-based development simple and powerful.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Nuxt
@@ -196,8 +200,8 @@ In Nuxt, add server-side code via [Server Routes and Middleware ↗](https://nux
 
 The following code block shows an example of accessing a KV namespace in Nuxt.
 
-* [  JavaScript ](#tab-panel-7932)
-* [  TypeScript ](#tab-panel-7933)
+* [  JavaScript ](#tab-panel-6774)
+* [  TypeScript ](#tab-panel-6775)
 
 JavaScript
 

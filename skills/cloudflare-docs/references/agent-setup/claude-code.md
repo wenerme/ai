@@ -4,6 +4,10 @@ description: Terminal-based coding agent that understands your codebase, runs co
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agent-setup/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 [ All agents](https://developers.cloudflare.com/agent-setup/) 
@@ -43,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.  
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.  
 ```
 
 ## Cloudflare platform access

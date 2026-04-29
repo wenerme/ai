@@ -4,6 +4,10 @@ description: Cloudflare WAN uses a static configuration to route your traffic th
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure routes
@@ -29,8 +33,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-5264)
-* [ API ](#tab-panel-5265)
+* [ Dashboard ](#tab-panel-5270)
+* [ API ](#tab-panel-5271)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -187,8 +191,8 @@ Explain Code
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-5266)
-* [ API ](#tab-panel-5267)
+* [ Dashboard ](#tab-panel-5272)
+* [ API ](#tab-panel-5273)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -334,8 +338,8 @@ Explain Code
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-5260)
-* [ API ](#tab-panel-5261)
+* [ Dashboard ](#tab-panel-5266)
+* [ API ](#tab-panel-5267)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -449,8 +453,8 @@ Explain Code
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-5262)
-* [ API ](#tab-panel-5263)
+* [ Dashboard ](#tab-panel-5268)
+* [ API ](#tab-panel-5269)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.

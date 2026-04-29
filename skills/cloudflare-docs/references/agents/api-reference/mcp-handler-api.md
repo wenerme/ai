@@ -4,6 +4,10 @@ description: Create a stateless MCP server fetch handler for a plain Worker usin
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -117,8 +121,8 @@ The URL path where the MCP handler responds. Requests to other paths return a 40
 
 **Default:** `"/mcp"`
 
-* [  JavaScript ](#tab-panel-4460)
-* [  TypeScript ](#tab-panel-4461)
+* [  JavaScript ](#tab-panel-3294)
+* [  TypeScript ](#tab-panel-3295)
 
 JavaScript
 
@@ -156,8 +160,8 @@ When using the [OAuthProvider](https://developers.cloudflare.com/agents/model-co
 
 A custom `WorkerTransport` instance. If not provided, a new transport is created on every request.
 
-* [  JavaScript ](#tab-panel-4462)
-* [  TypeScript ](#tab-panel-4463)
+* [  JavaScript ](#tab-panel-3296)
+* [  TypeScript ](#tab-panel-3297)
 
 JavaScript
 
@@ -231,8 +235,8 @@ MCP SDK 1.26.0 introduces a guard that prevents connecting to a server instance 
 
 See the [migration guide](https://developers.cloudflare.com/agents/api-reference/mcp-handler-api/#migration-guide-for-mcp-sdk-1260) below for details.
 
-* [  JavaScript ](#tab-panel-4482)
-* [  TypeScript ](#tab-panel-4483)
+* [  JavaScript ](#tab-panel-3316)
+* [  TypeScript ](#tab-panel-3317)
 
 JavaScript
 
@@ -396,8 +400,8 @@ For stateful MCP servers that need to maintain session state across multiple req
 
 Provide a custom `WorkerTransport` with persistent storage. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation).
 
-* [  JavaScript ](#tab-panel-4484)
-* [  TypeScript ](#tab-panel-4485)
+* [  JavaScript ](#tab-panel-3318)
+* [  TypeScript ](#tab-panel-3319)
 
 JavaScript
 
@@ -542,8 +546,8 @@ Explain Code
 
 In this case we are defining the `sessionIdGenerator` to return the Agent name as the session ID. To make sure we route to the correct Agent we can use `getAgentByName` in the Worker handler:
 
-* [  JavaScript ](#tab-panel-4468)
-* [  TypeScript ](#tab-panel-4469)
+* [  JavaScript ](#tab-panel-3302)
+* [  TypeScript ](#tab-panel-3303)
 
 JavaScript
 
@@ -643,8 +647,8 @@ The previous pattern of declaring `McpServer` instances in the global scope allo
 
 ### Before (broken with SDK 1.26.0)
 
-* [  JavaScript ](#tab-panel-4474)
-* [  TypeScript ](#tab-panel-4475)
+* [  JavaScript ](#tab-panel-3308)
+* [  TypeScript ](#tab-panel-3309)
 
 JavaScript
 
@@ -744,8 +748,8 @@ Explain Code
 
 ### After (correct)
 
-* [  JavaScript ](#tab-panel-4480)
-* [  TypeScript ](#tab-panel-4481)
+* [  JavaScript ](#tab-panel-3314)
+* [  TypeScript ](#tab-panel-3315)
 
 JavaScript
 
@@ -865,8 +869,8 @@ Explain Code
 
 If you are using the raw SDK transport directly (not via `createMcpHandler`), you must also create new transport instances per request:
 
-* [  JavaScript ](#tab-panel-4478)
-* [  TypeScript ](#tab-panel-4479)
+* [  JavaScript ](#tab-panel-3312)
+* [  TypeScript ](#tab-panel-3313)
 
 JavaScript
 
@@ -1098,8 +1102,8 @@ Explain Code
 
 Provides a custom session identifier. This session identifier is used to identify the session in the MCP Client.
 
-* [  JavaScript ](#tab-panel-4464)
-* [  TypeScript ](#tab-panel-4465)
+* [  JavaScript ](#tab-panel-3298)
+* [  TypeScript ](#tab-panel-3299)
 
 JavaScript
 
@@ -1131,8 +1135,8 @@ const transport = new WorkerTransport({
 
 Disables SSE streaming and returns responses as standard JSON.
 
-* [  JavaScript ](#tab-panel-4466)
-* [  TypeScript ](#tab-panel-4467)
+* [  JavaScript ](#tab-panel-3300)
+* [  TypeScript ](#tab-panel-3301)
 
 JavaScript
 
@@ -1164,8 +1168,8 @@ const transport = new WorkerTransport({
 
 A callback that fires when a session is initialized, either by creating a new session or restoring from storage.
 
-* [  JavaScript ](#tab-panel-4470)
-* [  TypeScript ](#tab-panel-4471)
+* [  JavaScript ](#tab-panel-3304)
+* [  TypeScript ](#tab-panel-3305)
 
 JavaScript
 
@@ -1226,8 +1230,8 @@ interface CORSOptions {
 
 ```
 
-* [  JavaScript ](#tab-panel-4472)
-* [  TypeScript ](#tab-panel-4473)
+* [  JavaScript ](#tab-panel-3306)
+* [  TypeScript ](#tab-panel-3307)
 
 JavaScript
 
@@ -1307,8 +1311,8 @@ interface TransportState {
 
 Explain Code
 
-* [  JavaScript ](#tab-panel-4476)
-* [  TypeScript ](#tab-panel-4477)
+* [  JavaScript ](#tab-panel-3310)
+* [  TypeScript ](#tab-panel-3311)
 
 JavaScript
 
@@ -1405,8 +1409,8 @@ function getMcpAuthContext(): McpAuthContext | undefined;
 
 ```
 
-* [  JavaScript ](#tab-panel-4488)
-* [  TypeScript ](#tab-panel-4489)
+* [  JavaScript ](#tab-panel-3322)
+* [  TypeScript ](#tab-panel-3323)
 
 JavaScript
 
@@ -1518,8 +1522,8 @@ For a complete guide on setting up OAuth authentication with MCP servers, see th
 
 The `createMcpHandler` automatically catches errors and returns JSON-RPC error responses with code `-32603` (Internal error).
 
-* [  JavaScript ](#tab-panel-4486)
-* [  TypeScript ](#tab-panel-4487)
+* [  JavaScript ](#tab-panel-3320)
+* [  TypeScript ](#tab-panel-3321)
 
 JavaScript
 

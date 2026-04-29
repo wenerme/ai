@@ -4,6 +4,10 @@ description: Guided tutorials to help you build and deploy projects on Cloudflar
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Tutorials
@@ -23,11 +27,11 @@ View tutorials to help you get started with Pages.
 | [Build a Staff Directory Application](https://developers.cloudflare.com/d1/tutorials/build-a-staff-directory-app/)                                    | about 2 years ago  | Intermediate |
 | [Deploy a static WordPress site](https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/)                                             | about 3 years ago  | Intermediate |
 | [Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/) | over 3 years ago   | Intermediate |
-| [Create a HTML form](https://developers.cloudflare.com/pages/tutorials/forms/)                                                                        | over 3 years ago   | Beginner     |
-| [Migrating from Netlify to Pages](https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/)                                         | over 3 years ago   | Beginner     |
+| [Create a HTML form](https://developers.cloudflare.com/pages/tutorials/forms/)                                                                        | almost 4 years ago | Beginner     |
+| [Migrating from Netlify to Pages](https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/)                                         | almost 4 years ago | Beginner     |
 | [Add a React form with Formspree](https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/)                                 | over 4 years ago   | Beginner     |
 | [Add an HTML form with Formspree](https://developers.cloudflare.com/pages/tutorials/add-an-html-form-with-formspree/)                                 | over 4 years ago   | Beginner     |
-| [Migrating a Jekyll-based site from GitHub Pages](https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/)             | over 4 years ago   | Beginner     |
+| [Migrating a Jekyll-based site from GitHub Pages](https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/)             | almost 5 years ago | Beginner     |
 | [Migrating from Firebase](https://developers.cloudflare.com/pages/migrations/migrating-from-firebase/)                                                | over 5 years ago   | Beginner     |
 | [Migrating from Workers Sites to Pages](https://developers.cloudflare.com/pages/migrations/migrating-from-workers/)                                   | over 5 years ago   | Beginner     |
 

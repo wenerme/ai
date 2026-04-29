@@ -4,6 +4,10 @@ description: Generic SAML 2.0 in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -48,8 +52,8 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
 ## 2\. Add a SAML identity provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-5878)
-* [ Terraform (v5) ](#tab-panel-5879)
+* [ Dashboard ](#tab-panel-4720)
+* [ Terraform (v5) ](#tab-panel-4721)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.

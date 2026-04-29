@@ -4,6 +4,10 @@ description: Connect to RDP in a browser in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -39,9 +43,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-5961)
-* [ API ](#tab-panel-5962)
-* [ Terraform ](#tab-panel-5963)
+* [ Dashboard ](#tab-panel-4803)
+* [ API ](#tab-panel-4804)
+* [ Terraform ](#tab-panel-4805)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -274,9 +278,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-5958)
-* [ API ](#tab-panel-5959)
-* [ Terraform ](#tab-panel-5960)
+* [ Dashboard ](#tab-panel-4800)
+* [ API ](#tab-panel-4801)
+* [ Terraform ](#tab-panel-4802)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.
@@ -476,8 +480,11 @@ However, the following products are not supported:
 
 * [Automatic Platform Optimization](https://developers.cloudflare.com/automatic-platform-optimization)
 * [Zaraz](https://developers.cloudflare.com/zaraz)
+* [Google tag gateway for advertisers](https://developers.cloudflare.com/google-tag-gateway)
 
 You can disable Zaraz for a specific application - instead of across your entire zone - using a [Configuration Rule](https://developers.cloudflare.com/rules/configuration-rules/) scoped to the application domain.
+
+Google tag gateway is configured at the zone level and cannot be scoped to specific hostnames. To use Access binding cookie on a hostname, disable Google tag gateway for the entire zone.
 
 ## Known limitations
 

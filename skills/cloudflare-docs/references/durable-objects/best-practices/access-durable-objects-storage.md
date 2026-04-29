@@ -4,6 +4,10 @@ description: Read and write persistent data in Durable Objects using the Storage
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Access Durable Objects Storage
@@ -34,8 +38,8 @@ Only Durable Object classes with a SQLite storage backend can access SQL API.
 
 Use `new_sqlite_classes` on the migration in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6862)
-* [  wrangler.toml ](#tab-panel-6863)
+* [  wrangler.jsonc ](#tab-panel-5704)
+* [  wrangler.toml ](#tab-panel-5705)
 
 JSONC
 

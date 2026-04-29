@@ -4,6 +4,10 @@ description: Create and configure a locally-managed Cloudflare Tunnel.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create a locally-managed tunnel
@@ -19,10 +23,10 @@ Before you start, make sure you:
 
 ## 1\. Download and install `cloudflared`
 
-* [ Windows ](#tab-panel-9210)
-* [ macOS ](#tab-panel-9211)
-* [ Linux ](#tab-panel-9212)
-* [ Build from source ](#tab-panel-9213)
+* [ Windows ](#tab-panel-8069)
+* [ macOS ](#tab-panel-8070)
+* [ Linux ](#tab-panel-8071)
+* [ Build from source ](#tab-panel-8072)
 
 1. Download `cloudflared` on your machine. Visit the [downloads](https://developers.cloudflare.com/tunnel/downloads/) page to find the right package for your OS.
 2. Rename the executable to `cloudflared.exe`

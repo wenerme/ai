@@ -4,6 +4,10 @@ description: Once a request is routed to the nearest Cloudflare data center and 
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Life of a Request: The Finish Line - Serving the Content

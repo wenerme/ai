@@ -4,6 +4,10 @@ description: Route traffic to pools based on visitor geographic location.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -32,8 +36,8 @@ Warning
 
 If you add a pool to a region, you cannot [delete this pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#delete-a-pool) until you remove it from the **Geo steering** configuration. The configuration is **not** automatically removed when you change to a different **Traffic Steering** method.
 
-* [ Dashboard ](#tab-panel-7875)
-* [ API ](#tab-panel-7876)
+* [ Dashboard ](#tab-panel-6717)
+* [ API ](#tab-panel-6718)
 
 When [creating or editing a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/):
 
@@ -114,8 +118,8 @@ If you only define `WNAM`, then traffic from the East Coast will be routed to th
 
 ### Country steering
 
-* [ Dashboard ](#tab-panel-7877)
-* [ API ](#tab-panel-7878)
+* [ Dashboard ](#tab-panel-6719)
+* [ API ](#tab-panel-6720)
 
 When [creating or editing a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/):
 

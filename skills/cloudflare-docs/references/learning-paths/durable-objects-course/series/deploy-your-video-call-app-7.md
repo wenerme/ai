@@ -4,12 +4,16 @@ description: Deploy the completed video call application.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Deploy your video call app
 
-* [ Watch this episode ](#tab-panel-7541)
-* [ Series overview ](#tab-panel-7542)
+* [ Watch this episode ](#tab-panel-6437)
+* [ Series overview ](#tab-panel-6438)
 
 We are almost done with the project, and in this final episode, we add the finishing touches, such as learning how to handle call disconnections, wiring up essential media controls like muting/unmuting and video toggling, and integrating a TURN server to ensure reliable connections even behind firewalls. By the end of this video, your app will be fully functional and ready for deployment.
 

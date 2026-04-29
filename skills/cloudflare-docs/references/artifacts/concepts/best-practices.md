@@ -4,6 +4,10 @@ description: Use repo, token, metadata, and namespace patterns.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Best practices for Artifacts
@@ -36,8 +40,8 @@ Include stable identifiers in the repo name, such as the agent name, session ID,
 
 This example creates a unique repo name before creating the repo.
 
-* [  JavaScript ](#tab-panel-5487)
-* [  TypeScript ](#tab-panel-5488)
+* [  JavaScript ](#tab-panel-4321)
+* [  TypeScript ](#tab-panel-4322)
 
 src/index.js
 
@@ -98,8 +102,8 @@ This keeps your starting point consistent and makes downstream diffs easier to r
 
 This example forks a reviewed baseline repo into a session-specific repo.
 
-* [  JavaScript ](#tab-panel-5489)
-* [  TypeScript ](#tab-panel-5490)
+* [  JavaScript ](#tab-panel-4323)
+* [  TypeScript ](#tab-panel-4324)
 
 src/index.js
 
@@ -188,8 +192,8 @@ This example uses the [Workers binding](https://developers.cloudflare.com/artifa
 
 Assume the caller is already authenticated and authorized before this route returns a token.
 
-* [  JavaScript ](#tab-panel-5491)
-* [  TypeScript ](#tab-panel-5492)
+* [  JavaScript ](#tab-panel-4325)
+* [  TypeScript ](#tab-panel-4326)
 
 src/index.js
 

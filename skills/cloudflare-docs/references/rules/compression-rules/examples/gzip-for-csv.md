@@ -4,14 +4,18 @@ description: Create a compression rule to set Gzip compression as the preferred 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use Gzip compression for CSV files
 
 Create a compression rule to set Gzip compression as the preferred compression method for CSV files.
 
-* [ Dashboard ](#tab-panel-8495)
-* [ API ](#tab-panel-8496)
+* [ Dashboard ](#tab-panel-7337)
+* [ API ](#tab-panel-7338)
 
 The following example rule will configure Gzip compression as the preferred compression method for CSV files. If the visitor does not support this algorithm, Cloudflare will try to compress the response using a different algorithm supported by the visitor.
 

@@ -4,14 +4,18 @@ description: Verify pool and server health status.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Check pool health
 
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
 
-* [ Dashboard ](#tab-panel-7607)
-* [ API ](#tab-panel-7608)
+* [ Dashboard ](#tab-panel-6449)
+* [ API ](#tab-panel-6450)
 
 To confirm pool health using the dashboard:
 

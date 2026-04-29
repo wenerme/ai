@@ -4,6 +4,10 @@ description: Subscribe to structured Agent events for RPC calls, state changes, 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Observability
@@ -58,8 +62,8 @@ Events are routed to eight named channels based on their type:
 
 The `subscribe()` function from `agents/observability` provides type-safe access to events on a specific channel:
 
-* [  JavaScript ](#tab-panel-4494)
-* [  TypeScript ](#tab-panel-4495)
+* [  JavaScript ](#tab-panel-3328)
+* [  TypeScript ](#tab-panel-3329)
 
 JavaScript
 
@@ -141,8 +145,8 @@ The callback is fully typed — `event` is narrowed to only the event types that
 
 You can also subscribe directly using the Node.js API:
 
-* [  JavaScript ](#tab-panel-4490)
-* [  TypeScript ](#tab-panel-4491)
+* [  JavaScript ](#tab-panel-3324)
+* [  TypeScript ](#tab-panel-3325)
 
 JavaScript
 
@@ -180,8 +184,8 @@ subscribe("agents:schedule", (event) => {
 
 In production, all diagnostics channel messages are automatically forwarded to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/). No subscription code is needed in the agent itself — attach a Tail Worker and access events via `event.diagnosticsChannelEvents`:
 
-* [  JavaScript ](#tab-panel-4496)
-* [  TypeScript ](#tab-panel-4497)
+* [  JavaScript ](#tab-panel-3330)
+* [  TypeScript ](#tab-panel-3331)
 
 JavaScript
 
@@ -251,8 +255,8 @@ This gives you structured, filterable observability in production with zero over
 
 You can override the default implementation by providing your own `Observability` interface:
 
-* [  JavaScript ](#tab-panel-4498)
-* [  TypeScript ](#tab-panel-4499)
+* [  JavaScript ](#tab-panel-3332)
+* [  TypeScript ](#tab-panel-3333)
 
 JavaScript
 
@@ -327,8 +331,8 @@ Explain Code
 
 Set `observability` to `undefined` to disable all event emission:
 
-* [  JavaScript ](#tab-panel-4492)
-* [  TypeScript ](#tab-panel-4493)
+* [  JavaScript ](#tab-panel-3326)
+* [  TypeScript ](#tab-panel-3327)
 
 JavaScript
 

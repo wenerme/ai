@@ -4,6 +4,10 @@ description: Get started in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -43,8 +47,8 @@ The setup wizard [configures your account for Mesh networking](#what-the-wizard-
 4. Select **Create node**.
 5. (Optional) If you have a Linux server, run the install commands shown in the dashboard to bring the node online. If you do not have a server ready, select **I'll connect later** — you can install the node at any time from the node detail page.  
 Installation commands  
-   * [ Debian / Ubuntu ](#tab-panel-5885)  
-   * [ RedHat / CentOS ](#tab-panel-5886)  
+   * [ Debian / Ubuntu ](#tab-panel-4727)  
+   * [ RedHat / CentOS ](#tab-panel-4728)  
 Terminal window  
 ```  
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  
@@ -59,7 +63,7 @@ sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
 ```  
 Terminal window  
 ```  
-sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm &&  
+curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&  
 sudo yum install -y cloudflare-warp &&  
 printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&  
 sudo sysctl --system  
@@ -80,8 +84,8 @@ Connect a laptop or phone to your Mesh network:
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-5887)
-* [ Version 2026.1 and earlier ](#tab-panel-5888)
+* [ Version 2026.2+ ](#tab-panel-4729)
+* [ Version 2026.1 and earlier ](#tab-panel-4730)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.

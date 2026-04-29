@@ -4,6 +4,10 @@ description: Regardless of whether the browser-to-Cloudflare connection uses HTT
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Strict (SSL-Only Origin Pull)
@@ -30,8 +34,8 @@ In addition to **Strict (SSL-Only Origin Pull)** encryption, you can also set up
 
 ### Process
 
-* [ Dashboard ](#tab-panel-9123)
-* [ API ](#tab-panel-9124)
+* [ Dashboard ](#tab-panel-7985)
+* [ API ](#tab-panel-7986)
 
 To change your encryption mode in the dashboard:
 

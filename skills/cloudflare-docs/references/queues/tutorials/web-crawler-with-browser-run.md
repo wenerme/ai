@@ -4,6 +4,10 @@ description: Example of how to use Queues and Browser Run to power a web crawler
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -136,8 +140,8 @@ Explain Code
 
 Then, in your Wrangler file, add the following with the values generated in the terminal:
 
-* [  wrangler.jsonc ](#tab-panel-8226)
-* [  wrangler.toml ](#tab-panel-8227)
+* [  wrangler.jsonc ](#tab-panel-7068)
+* [  wrangler.toml ](#tab-panel-7069)
 
 JSONC
 
@@ -236,8 +240,8 @@ bun add robots-parser
 
 Then, add a Browser Run binding. Adding a Browser Run binding gives the Worker access to a headless Chromium instance you will control with Puppeteer.
 
-* [  wrangler.jsonc ](#tab-panel-8224)
-* [  wrangler.toml ](#tab-panel-8225)
+* [  wrangler.jsonc ](#tab-panel-7066)
+* [  wrangler.toml ](#tab-panel-7067)
 
 JSONC
 
@@ -300,8 +304,8 @@ Created queue queues-web-crawler.
 
 Then, in your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-8228)
-* [  wrangler.toml ](#tab-panel-8229)
+* [  wrangler.jsonc ](#tab-panel-7070)
+* [  wrangler.toml ](#tab-panel-7071)
 
 JSONC
 
@@ -368,8 +372,8 @@ Adding the `max_batch_timeout` of 60 seconds to the consumer queue is important 
 
 Your final Wrangler file should look similar to the one below.
 
-* [  wrangler.jsonc ](#tab-panel-8230)
-* [  wrangler.toml ](#tab-panel-8231)
+* [  wrangler.jsonc ](#tab-panel-7072)
+* [  wrangler.toml ](#tab-panel-7073)
 
 JSONC
 
@@ -385,7 +389,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -462,7 +466,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 

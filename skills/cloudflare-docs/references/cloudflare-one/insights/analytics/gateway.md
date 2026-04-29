@@ -4,6 +4,10 @@ description: Reference information for Gateway analytics (DNS, HTTP, network ses
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -138,7 +142,7 @@ query GatewaySampleQuery($accountTag: string!, $start: Time) {
   }  
 }  
 ```  
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4gQwC5gO4KgZQQWwA4A2YAiuNABQAkCAxjQPYgB2SAKggOYBcMAzkhACWTDgEIANDEr8EEJD1aCcYAJQwA3gCgYMAG6C0kDdp0xaDZkl7kAZoIIoIPdWbqMW7blPPu2nGAC+alqmphzIaBgASmC89AS6kKSQBrwAggAmCHhIgolwEIx41iahOnYOkM4wWSi5ygD6HPJSMnKBpWUESoItAIwADJ06wcOmFixjOhlKYEy8gvTzxmVloJBQAHK4YDGJELxgGVOmELHx+wAiYDSCC0snAWNPoS8dAUA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgBYh3ABzIxmXr0yiBALRABfIA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4gQwC5gO4KgZQQWwA4A2YAiuNABQAkCAxjQPYgB2SAKggOYBcMAzkhACWTDgEIANDEr8EEJD1aCcYAJQwA3gCgYMAG6C0kDdp0xaDZkl7kAZoIIoIPdWbqMW7blPPu2nGAC+alqmphzIaBgASmC89AS6kKSQBrwAggAmCHhIgolwEIx41iahOnYOkM4wWSi5ygD6HPJSMnKBpWUESoItAIwADJ06wcOmFixjOhlKYEy8gvTzxmVloJBQAHK4YDGJELxgGVOmELHx+wAiYDSCC0snAWNPoS8dAUA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgBYh3ABzIAjJMwyBmAKwyAWiAC+QA)
 
 For more information, refer to [Compose a query in GraphiQL](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/).
 

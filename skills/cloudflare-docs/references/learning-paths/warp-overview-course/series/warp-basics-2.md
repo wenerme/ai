@@ -4,12 +4,16 @@ description: Analyze WARP diagnostic log files.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # WARP diagnostic logs
 
-* [ Watch this episode ](#tab-panel-7778)
-* [ Series overview ](#tab-panel-7779)
+* [ Watch this episode ](#tab-panel-6674)
+* [ Series overview ](#tab-panel-6675)
 
 In this more advanced episode, we explain how to use warp-diag files to identify and resolve connection issues with the WARP client. You will learn how to locate and interpret three key files: `warp-status`, `warp-settings`, and `daemon.log`. The video also provides troubleshooting tips including specific keyword searches and guidance on how to cross-reference logs to identify a bigger picture of the problem.
 

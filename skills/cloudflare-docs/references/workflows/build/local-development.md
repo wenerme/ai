@@ -4,6 +4,10 @@ description: Develop and test Cloudflare Workflows locally using Wrangler's emul
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Local Development
@@ -118,6 +122,22 @@ npx wrangler workflows instances describe my-workflow <INSTANCE_ID> --local
 ```
 
 All commands accept `--port` to target a specific `wrangler dev` session (defaults to `8787`).
+
+## Local Explorer
+
+[Local Explorer](https://developers.cloudflare.com/workers/development-testing/local-explorer/) is a browser-based interface for viewing and managing your local Workflow instances during development. Instead of running CLI commands, you can open Local Explorer in your browser and interact with your Workflows directly.
+
+While a `wrangler dev` session is running, press `e` in your terminal to open Local Explorer, or go to `http://localhost:8787/cdn-cgi/explorer` in your browser.
+
+With Local Explorer you can:
+
+* View all Workflows defined in your project and their instances.
+* Inspect the step history and current status of each instance.
+* Trigger new Workflow runs and send events to running instances.
+* Pause, resume, terminate, and restart instances.
+* Delete specific instances or clear all of them at once.
+
+Local Explorer requires Wrangler version `4.82.1` or later, or [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) version `1.32.0` or later.
 
 ## Known Issues
 

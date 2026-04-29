@@ -4,6 +4,10 @@ description: Set up API Shield to identify and address API security best practic
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started with API Shield
@@ -28,8 +32,8 @@ You must have specific entitlements to configure session identifiers or cookies 
 
 ### To set up session identifiers
 
-* [  New dashboard ](#tab-panel-5399)
-* [ Old dashboard ](#tab-panel-5400)
+* [  New dashboard ](#tab-panel-4233)
+* [ Old dashboard ](#tab-panel-4234)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

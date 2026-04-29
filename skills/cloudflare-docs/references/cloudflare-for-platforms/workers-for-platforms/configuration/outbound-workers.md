@@ -4,6 +4,10 @@ description: Intercept and control outgoing fetch requests from user Workers usi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Outbound Workers
@@ -33,8 +37,8 @@ To use Outbound Workers:
 
 Make sure that you have `wrangler@3.3.0` or later [installed](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
-* [  wrangler.jsonc ](#tab-panel-5713)
-* [  wrangler.toml ](#tab-panel-5714)
+* [  wrangler.jsonc ](#tab-panel-4549)
+* [  wrangler.toml ](#tab-panel-4550)
 
 JSONC
 

@@ -1,3 +1,5 @@
+# Gemini API reference
+
 <br />
 
 > [!IMPORTANT]

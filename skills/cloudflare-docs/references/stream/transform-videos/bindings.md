@@ -4,6 +4,10 @@ description: Bind the Media Transformations API to a Cloudflare Worker to transf
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Bind to Workers API
@@ -34,8 +38,8 @@ The Media binding is enabled on a per-Worker basis.
 
 To bind Media Transformations to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9127)
-* [  wrangler.toml ](#tab-panel-9128)
+* [  wrangler.jsonc ](#tab-panel-7989)
+* [  wrangler.toml ](#tab-panel-7990)
 
 JSONC
 
@@ -494,8 +498,8 @@ The Media Transformations API is available _in remote mode_ for local developmen
 
 To enable usage in local development, add `remote` to the binding configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9129)
-* [  wrangler.toml ](#tab-panel-9130)
+* [  wrangler.jsonc ](#tab-panel-7991)
+* [  wrangler.toml ](#tab-panel-7992)
 
 JSONC
 

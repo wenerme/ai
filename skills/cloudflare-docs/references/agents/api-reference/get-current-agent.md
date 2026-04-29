@@ -4,6 +4,10 @@ description: Access the current Agent context from external utility functions us
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # getCurrentAgent()
@@ -16,8 +20,8 @@ All custom methods automatically have full agent context. The framework automati
 
 ## How it works
 
-* [  JavaScript ](#tab-panel-4376)
-* [  TypeScript ](#tab-panel-4377)
+* [  JavaScript ](#tab-panel-3210)
+* [  TypeScript ](#tab-panel-3211)
 
 JavaScript
 
@@ -105,8 +109,8 @@ No configuration is required. The framework automatically:
 
 ## Real-world example
 
-* [  JavaScript ](#tab-panel-4392)
-* [  TypeScript ](#tab-panel-4393)
+* [  JavaScript ](#tab-panel-3226)
+* [  TypeScript ](#tab-panel-3227)
 
 JavaScript
 
@@ -234,8 +238,8 @@ Explain Code
 
 ### The context flow
 
-* [  JavaScript ](#tab-panel-4374)
-* [  TypeScript ](#tab-panel-4375)
+* [  JavaScript ](#tab-panel-3208)
+* [  TypeScript ](#tab-panel-3209)
 
 JavaScript
 
@@ -275,8 +279,8 @@ agent.customMethod();
 
 ### Working with AI SDK tools
 
-* [  JavaScript ](#tab-panel-4386)
-* [  TypeScript ](#tab-panel-4387)
+* [  JavaScript ](#tab-panel-3220)
+* [  TypeScript ](#tab-panel-3221)
 
 JavaScript
 
@@ -366,8 +370,8 @@ Explain Code
 
 ### Calling external libraries
 
-* [  JavaScript ](#tab-panel-4384)
-* [  TypeScript ](#tab-panel-4385)
+* [  JavaScript ](#tab-panel-3218)
+* [  TypeScript ](#tab-panel-3219)
 
 JavaScript
 
@@ -445,8 +449,8 @@ Explain Code
 
 ### Accessing request and connection context
 
-* [  JavaScript ](#tab-panel-4388)
-* [  TypeScript ](#tab-panel-4389)
+* [  JavaScript ](#tab-panel-3222)
+* [  TypeScript ](#tab-panel-3223)
 
 JavaScript
 
@@ -522,8 +526,8 @@ Explain Code
 
 Gets the current agent from any context where it is available.
 
-* [  JavaScript ](#tab-panel-4378)
-* [  TypeScript ](#tab-panel-4379)
+* [  JavaScript ](#tab-panel-3212)
+* [  TypeScript ](#tab-panel-3213)
 
 JavaScript
 
@@ -567,8 +571,8 @@ function getCurrentAgent<T extends Agent>(): {
 
 #### Usage:
 
-* [  JavaScript ](#tab-panel-4390)
-* [  TypeScript ](#tab-panel-4391)
+* [  JavaScript ](#tab-panel-3224)
+* [  TypeScript ](#tab-panel-3225)
 
 JavaScript
 
@@ -645,8 +649,8 @@ The context available depends on how the method was invoked:
 1. **Use `this` when possible**: Inside agent methods, prefer `this.name`, `this.state`, etc. over `getCurrentAgent()`.
 2. **Use `getCurrentAgent()` in external functions**: When you need agent context in utility functions or libraries that do not have access to `this`.
 3. **Check for undefined**: The returned values may be `undefined` if called outside an agent context.  
-   * [  JavaScript ](#tab-panel-4382)  
-   * [  TypeScript ](#tab-panel-4383)  
+   * [  JavaScript ](#tab-panel-3216)  
+   * [  TypeScript ](#tab-panel-3217)  
 JavaScript  
 ```  
 const { agent } = getCurrentAgent();  
@@ -664,8 +668,8 @@ if (agent) {
 }  
 ```
 4. **Type the agent**: Pass your agent class as a type parameter for proper typing.  
-   * [  JavaScript ](#tab-panel-4380)  
-   * [  TypeScript ](#tab-panel-4381)  
+   * [  JavaScript ](#tab-panel-3214)  
+   * [  TypeScript ](#tab-panel-3215)  
 JavaScript  
 ```  
 const { agent } = getCurrentAgent();  

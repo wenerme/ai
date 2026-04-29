@@ -4,6 +4,10 @@ description: Integrate Miro with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -39,8 +43,8 @@ This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/
 
 ## 2\. Add a SAML SSO provider to Miro
 
-* [ business plan ](#tab-panel-5781)
-* [ enterprise plan ](#tab-panel-5782)
+* [ business plan ](#tab-panel-4621)
+* [ enterprise plan ](#tab-panel-4622)
 
 1. In Miro, select your profile picture > **Settings** \> **\*\*Security\*\***.
 2. Turn on **SSO/SAML**.

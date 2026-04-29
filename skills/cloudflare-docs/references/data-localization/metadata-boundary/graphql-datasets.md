@@ -4,6 +4,10 @@ description: GraphQL Analytics API fields that respect Customer Metadata Boundar
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # GraphQL datasets

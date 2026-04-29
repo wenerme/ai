@@ -4,6 +4,10 @@ description: A set of low-level functions for common cryptographic tasks.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Web Crypto
@@ -63,8 +67,8 @@ The Web Crypto API differs significantly from the [Node.js Crypto API](https://d
 
 ### Usage
 
-* [  JavaScript ](#tab-panel-9095)
-* [  TypeScript ](#tab-panel-9096)
+* [  JavaScript ](#tab-panel-9123)
+* [  TypeScript ](#tab-panel-9124)
 
 JavaScript
 

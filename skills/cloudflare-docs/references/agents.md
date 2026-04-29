@@ -4,6 +4,10 @@ description: Create stateful AI agents with persistent memory, real-time WebSock
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -55,8 +59,8 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 
 An agent is a TypeScript class. Methods marked with `@callable()` become typed RPC that clients can call directly over WebSocket.
 
-* [  JavaScript ](#tab-panel-4054)
-* [  TypeScript ](#tab-panel-4055)
+* [  JavaScript ](#tab-panel-2888)
+* [  TypeScript ](#tab-panel-2889)
 
 JavaScript
 
@@ -145,8 +149,8 @@ Explain Code
 
 For AI chat, extend `AIChatAgent` instead. Messages are persisted automatically, streams resume on disconnect, and the React hook handles the UI.
 
-* [  JavaScript ](#tab-panel-4056)
-* [  TypeScript ](#tab-panel-4057)
+* [  JavaScript ](#tab-panel-2890)
+* [  TypeScript ](#tab-panel-2891)
 
 JavaScript
 

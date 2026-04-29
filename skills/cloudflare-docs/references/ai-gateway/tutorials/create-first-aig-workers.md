@@ -4,6 +4,10 @@ description: This tutorial guides you through creating your first AI Gateway usi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create your first AI Gateway using Workers AI
@@ -21,8 +25,8 @@ This tutorial guides you through creating your first AI Gateway using Workers AI
 
 Then, create a new AI Gateway.
 
-* [ Dashboard ](#tab-panel-5315)
-* [ API ](#tab-panel-5316)
+* [ Dashboard ](#tab-panel-4149)
+* [ API ](#tab-panel-4150)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.

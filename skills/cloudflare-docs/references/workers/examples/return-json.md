@@ -4,6 +4,10 @@ description: Return JSON directly from a Worker script, useful for building APIs
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,11 +26,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8806)
-* [  TypeScript ](#tab-panel-8807)
-* [  Python ](#tab-panel-8808)
-* [  Rust ](#tab-panel-8809)
-* [  Hono ](#tab-panel-8810)
+* [  JavaScript ](#tab-panel-8814)
+* [  TypeScript ](#tab-panel-8815)
+* [  Python ](#tab-panel-8816)
+* [  Rust ](#tab-panel-8817)
+* [  Hono ](#tab-panel-8818)
 
 JavaScript
 
@@ -52,7 +56,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAOQQDYAzAEYA7MOEyxYgFwsWbYBzhcafASPHS5CpQFgAUAGF0VCAFNb2ACJQAzjHSuo0G8pIa8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3Nkl4bW7mgkgZH5+ejuzAYHQfkiAHdMGBcJEADRPTYAXyI5jhJHOEBACCoJAASjcPFRXHZkq4bCctHckQjYYiLGpmBotDoePwhKJJLJ5IoxMUbPZHC53J5vK0qH4AlpSKFwlFwoQtGl-JlstLImQgWQilZeWVKtValsGk1eC02ikbJNzKtIsA4DEAPojMZZSLKPLzAqpeG0ukMoJMvSswwckxiZgWIA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAmAMwAOAKzCAjABZRkiQC4WLNsA5wuNPgJETp8xRICwAKADC6KhACmt7ABEoAZxjpXUaDeUkNeATEJFRwwHYMAERQNHYAHgB0AFaukaSoUGAOYRHRsYkpkRbWtg4Q2AAqdDB2fnAwMGB8BFA2yElwAG5wrrwIsBAA1MDouOB2FhbxHkgkuHaocOAQJADe5iQkPXRUvP52ELwAFgAUCHYAjiB2rhAAlGsbmyS8NrdzQSQMj8-PR3ZgMDoPyRADumDAuEiABonpsAL5EcxwkjnCAgBBUEgAJRuHiorjsyVcNhOWjuSIRsMRFjUzA0Wh0PH4QjEUlkCiU4mKNnsjhc7k83laVD8AS0pFC4Si4UIWjS-ky2WlkTIQLIRSsvLKlWqtS2DSavBabRSNkm5lWkWAcBiAH0RmMspFlHl5gVUvDaXSGUEmXpWYYOSZxMwLEA)
 
 TypeScript
 

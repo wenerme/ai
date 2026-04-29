@@ -4,6 +4,10 @@ description: Llama Guard 3 is a Llama-3.1-8B pretrained model, fine-tuned for co
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg) 

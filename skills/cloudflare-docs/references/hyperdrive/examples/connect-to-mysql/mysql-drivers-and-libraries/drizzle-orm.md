@@ -4,6 +4,10 @@ description: Use Drizzle ORM with Hyperdrive to query MySQL databases from Cloud
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Drizzle ORM
@@ -37,8 +41,8 @@ npm i -D drizzle-kit tsx @types/node
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-7259)
-* [  wrangler.toml ](#tab-panel-7260)
+* [  wrangler.jsonc ](#tab-panel-6101)
+* [  wrangler.toml ](#tab-panel-6102)
 
 JSONC
 
@@ -56,7 +60,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "hyperdrive": [
 
@@ -85,7 +89,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[hyperdrive]]

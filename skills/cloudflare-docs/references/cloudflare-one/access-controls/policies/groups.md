@@ -4,6 +4,10 @@ description: How Rule groups works in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,8 +26,8 @@ Rule groups are distinct from groups in your identity provider, like Okta groups
 
 To create an Access rule group:
 
-* [ Dashboard ](#tab-panel-5839)
-* [ API ](#tab-panel-5840)
+* [ Dashboard ](#tab-panel-4681)
+* [ API ](#tab-panel-4682)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Policies**, and select the **Rule groups** tab.
 2. Select **Add a group**.

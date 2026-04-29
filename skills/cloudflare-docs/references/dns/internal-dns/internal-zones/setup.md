@@ -4,6 +4,10 @@ description: Understand how to set up and manage internal DNS zones with Cloudfl
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -30,8 +34,8 @@ When setting up internal zones, observe the following conditions:
 
 ## Create an internal zone
 
-* [ Dashboard ](#tab-panel-6731)
-* [ API ](#tab-panel-6732)
+* [ Dashboard ](#tab-panel-5573)
+* [ API ](#tab-panel-5574)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

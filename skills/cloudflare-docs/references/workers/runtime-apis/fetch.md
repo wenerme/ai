@@ -4,6 +4,10 @@ description: An interface for asynchronously fetching resources via HTTP request
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Fetch
@@ -20,9 +24,9 @@ Worker-to-Worker `fetch` requests are possible with [Service bindings](https://d
 
 ## Syntax
 
-* [  Module Worker ](#tab-panel-9019)
-* [  Service Worker ](#tab-panel-9020)
-* [  Python Worker ](#tab-panel-9021)
+* [  Module Worker ](#tab-panel-9047)
+* [  Service Worker ](#tab-panel-9048)
+* [  Python Worker ](#tab-panel-9049)
 
 JavaScript
 

@@ -4,12 +4,16 @@ description: Replace self-hosted VPNs with ZTNA.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Stop hosting your own VPN service
 
-* [ Watch this episode ](#tab-panel-7636)
-* [ Series overview ](#tab-panel-7637)
+* [ Watch this episode ](#tab-panel-6532)
+* [ Series overview ](#tab-panel-6533)
 
 Cloudflare's SASE platform can replace your traditional, expensive VPN appliances which deliver poor performance for users and create more security risks than solve them. Cloudflare's Zero Trust Network Access (ZTNA) service is a more secure, highly scalable cloud solution. In this video we look at how easily you can deploy Cloudflare to secure access to internal resources.
 

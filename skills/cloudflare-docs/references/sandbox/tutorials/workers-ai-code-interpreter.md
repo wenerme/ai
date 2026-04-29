@@ -4,6 +4,10 @@ description: Build a code interpreter using Workers AI GPT-OSS model with the of
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Code interpreter with Workers AI
@@ -138,8 +142,8 @@ Explain Code
 
 The template includes the proper Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9021)
-* [  wrangler.toml ](#tab-panel-9022)
+* [  wrangler.jsonc ](#tab-panel-7863)
+* [  wrangler.toml ](#tab-panel-7864)
 
 JSONC
 
@@ -153,7 +157,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "ai": {
 
@@ -212,7 +216,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [ai]

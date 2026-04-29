@@ -4,6 +4,10 @@ description: Vite environments and the Vite plugin
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Vite Environments
@@ -24,8 +28,8 @@ The default Vite environment name for a Worker is always the top-level Worker na
 
 In the following example we have a Worker named `my-worker` that is associated with a Vite environment named `my_worker`. We use the Vite config to set global constant replacements for this environment:
 
-* [  wrangler.jsonc ](#tab-panel-9261)
-* [  wrangler.toml ](#tab-panel-9262)
+* [  wrangler.jsonc ](#tab-panel-9269)
+* [  wrangler.toml ](#tab-panel-9270)
 
 JSONC
 
@@ -39,7 +43,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-28",
+  "compatibility_date": "2026-04-29",
 
   "main": "./src/index.ts"
 
@@ -58,7 +62,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-28"
+compatibility_date = "2026-04-29"
 
 main = "./src/index.ts"
 

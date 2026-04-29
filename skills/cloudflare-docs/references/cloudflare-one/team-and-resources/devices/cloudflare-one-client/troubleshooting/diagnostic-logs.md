@@ -4,6 +4,10 @@ description: Reference information for Diagnostic logs in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -39,9 +43,9 @@ Chapters
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-6147)
-* [ Windows ](#tab-panel-6148)
-* [ Linux ](#tab-panel-6149)
+* [ macOS ](#tab-panel-4989)
+* [ Windows ](#tab-panel-4990)
+* [ Linux ](#tab-panel-4991)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -253,8 +257,8 @@ The Cloudflare One Client does not provide an official method to configure loggi
 
 To view client logs on mobile devices:
 
-* [ iOS ](#tab-panel-6145)
-* [ Android/ChromeOS ](#tab-panel-6146)
+* [ iOS ](#tab-panel-4987)
+* [ Android/ChromeOS ](#tab-panel-4988)
 
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.

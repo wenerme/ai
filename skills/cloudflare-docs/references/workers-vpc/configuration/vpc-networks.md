@@ -4,6 +4,10 @@ description: Bind Workers to an entire tunnel or Cloudflare Mesh without pre-reg
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # VPC Networks
@@ -24,8 +28,8 @@ Binding directly to a tunnel through a VPC Network binding requires the **Connec
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-9535)
-* [  wrangler.toml ](#tab-panel-9536)
+* [  wrangler.jsonc ](#tab-panel-8418)
+* [  wrangler.toml ](#tab-panel-8419)
 
 JSONC
 
@@ -85,8 +89,8 @@ Your account must have at least one active [Cloudflare Tunnel](https://developer
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-9537)
-* [  wrangler.toml ](#tab-panel-9538)
+* [  wrangler.jsonc ](#tab-panel-8420)
+* [  wrangler.toml ](#tab-panel-8421)
 
 JSONC
 

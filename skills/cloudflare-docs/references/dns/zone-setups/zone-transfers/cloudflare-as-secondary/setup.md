@@ -4,6 +4,10 @@ description: With incoming zone transfers, you can keep your primary DNS provide
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Setup
@@ -59,8 +63,8 @@ The TSIG names configured at your primary and secondary DNS providers have to be
 
 While optional, this step is highly recommended.
 
-* [ Dashboard ](#tab-panel-6807)
-* [ API ](#tab-panel-6808)
+* [ Dashboard ](#tab-panel-5649)
+* [ API ](#tab-panel-5650)
 
 To create a TSIG using the dashboard:
 
@@ -78,8 +82,8 @@ To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/
 
 ## 2\. Create Peer Server
 
-* [ Dashboard ](#tab-panel-6803)
-* [ API ](#tab-panel-6804)
+* [ Dashboard ](#tab-panel-5645)
+* [ API ](#tab-panel-5646)
 
 To create a peer server using the dashboard:
 
@@ -98,8 +102,8 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 ## 3\. Create the Secondary Zone
 
-* [ Dashboard ](#tab-panel-6805)
-* [ API ](#tab-panel-6806)
+* [ Dashboard ](#tab-panel-5647)
+* [ API ](#tab-panel-5648)
 
 To create a secondary zone using the dashboard:
 

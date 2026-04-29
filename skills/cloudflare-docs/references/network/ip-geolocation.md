@@ -4,6 +4,10 @@ description: Add visitor country information via the CF-IPCountry header.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -28,8 +32,8 @@ The recommended procedure to enable IP geolocation information is to [enable the
 
 If you only want the request header for the visitor's country, you can enable **IP Geolocation**.
 
-* [ Dashboard ](#tab-panel-7910)
-* [ API ](#tab-panel-7911)
+* [ Dashboard ](#tab-panel-6752)
+* [ API ](#tab-panel-6753)
 
 To enable **IP Geolocation** in the dashboard:
 

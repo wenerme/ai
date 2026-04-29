@@ -4,6 +4,10 @@ description: Split a single application into independently deployable frontends,
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Microfrontends
@@ -337,8 +341,8 @@ To add a new microfrontend to your application after initial setup:
 1. **Create and deploy the new microfrontend worker**  
 Deploy your new microfrontend as a separate Worker. This can be a [framework application](https://developers.cloudflare.com/workers/framework-guides/) (Next.js, Astro, etc.) or a static site with [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 2. **Add a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) in your router's Wrangler configuration file**  
-   * [  wrangler.jsonc ](#tab-panel-9980)  
-   * [  wrangler.toml ](#tab-panel-9981)  
+   * [  wrangler.jsonc ](#tab-panel-8865)  
+   * [  wrangler.toml ](#tab-panel-8866)  
 JSONC  
 ```  
 {  
@@ -385,8 +389,8 @@ If you only need to work on one of the microfrontends, you can run the others re
 
 For each microfrontend you want to run remotely while in local dev, configure its service binding with the remote flag:
 
-* [  wrangler.jsonc ](#tab-panel-9982)
-* [  wrangler.toml ](#tab-panel-9983)
+* [  wrangler.jsonc ](#tab-panel-8867)
+* [  wrangler.toml ](#tab-panel-8868)
 
 JSONC
 

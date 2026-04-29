@@ -4,6 +4,10 @@ description: Preview URLs allow you to preview new versions of your project with
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Preview URLs
@@ -136,8 +140,8 @@ Older Wrangler versions will default to Preview URLs being enabled.
 
 To toggle Preview URLs for a Worker, include any of the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9669)
-* [  wrangler.toml ](#tab-panel-9670)
+* [  wrangler.jsonc ](#tab-panel-8552)
+* [  wrangler.toml ](#tab-panel-8553)
 
 JSONC
 
@@ -161,8 +165,8 @@ preview_urls = true
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-9671)
-* [  wrangler.toml ](#tab-panel-9672)
+* [  wrangler.jsonc ](#tab-panel-8554)
+* [  wrangler.toml ](#tab-panel-8555)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: Generate vector embeddings with Workers AI and store them in a Vect
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Vectorize and Workers AI
@@ -140,8 +144,8 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9305)
-* [  wrangler.toml ](#tab-panel-9306)
+* [  wrangler.jsonc ](#tab-panel-8188)
+* [  wrangler.toml ](#tab-panel-8189)
 
 JSONC
 
@@ -191,8 +195,8 @@ Before you deploy your embedding example, ensure your Worker uses your model cat
 
 From within the `embeddings-tutorial` directory, open your Wrangler file in your editor and add the new `[[ai]]` binding to make Workers AI's models available in your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-9307)
-* [  wrangler.toml ](#tab-panel-9308)
+* [  wrangler.jsonc ](#tab-panel-8190)
+* [  wrangler.toml ](#tab-panel-8191)
 
 JSONC
 

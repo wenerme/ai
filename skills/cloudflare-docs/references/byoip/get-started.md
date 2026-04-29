@@ -4,6 +4,10 @@ description: Onboard your IP prefixes to Cloudflare with BYOIP.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started
@@ -127,8 +131,8 @@ The process described on this page leverages automated [LOA](https://developers.
 ### Validate prefix ownership
 
 1. Validate prefix ownership using one of the following methods:  
-   * [ IRR record ](#tab-panel-5627)  
-   * [ Reverse DNS zone and TXT record ](#tab-panel-5628)  
+   * [ IRR record ](#tab-panel-4463)  
+   * [ Reverse DNS zone and TXT record ](#tab-panel-4464)  
    1. Copy the `ownership_validation_token` returned by the API call.  
    2. On the IRR record of the prefix you are onboarding, add the following string in either a `description` or `remarks` field. Replace `<OWNERSHIP_VALIDATION_TOKEN>` by the actual token you copied in the previous step.  
 ```  

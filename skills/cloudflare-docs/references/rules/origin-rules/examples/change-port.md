@@ -4,6 +4,10 @@ description: Create an origin rule to change the destination port.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Change the destination port
@@ -12,8 +16,8 @@ Create an origin rule to change the destination port.
 
 The following origin rule overrides the destination port to `8081` for all requests where the URI path starts with `/team/calendar/`.
 
-* [ Dashboard ](#tab-panel-8511)
-* [ API ](#tab-panel-8512)
+* [ Dashboard ](#tab-panel-7353)
+* [ API ](#tab-panel-7354)
 
 Text in Expression Editor:
 

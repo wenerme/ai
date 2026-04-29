@@ -4,6 +4,10 @@ description: How to configure a Worker with static assets on a subpath.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Serving a subdirectory
@@ -25,8 +29,8 @@ For example, to serve assets from `example.com/blog/*`, create a `blog` director
 
 With a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) like so:
 
-* [  wrangler.jsonc ](#tab-panel-9183)
-* [  wrangler.toml ](#tab-panel-9184)
+* [  wrangler.jsonc ](#tab-panel-9191)
+* [  wrangler.toml ](#tab-panel-9192)
 
 JSONC
 

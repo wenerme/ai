@@ -4,6 +4,10 @@ description: Cloudflare recommends two tunnels for each ISP and network location
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -63,8 +67,8 @@ Warning
 
 Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
 
-* [ Dashboard ](#tab-panel-6032)
-* [ API ](#tab-panel-6033)
+* [ Dashboard ](#tab-panel-4874)
+* [ API ](#tab-panel-4875)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Cloudflare WAN**, and select **Create**.

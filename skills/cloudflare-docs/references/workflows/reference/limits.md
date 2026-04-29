@@ -4,6 +4,10 @@ description: Limits for Cloudflare Workflows, including maximum steps, payload s
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Limits
@@ -150,8 +154,8 @@ This will appear as `exceededCpu` in [wrangler tail](https://developers.cloudfla
 
 By default, the maximum CPU time per Workflow invocation is set to 30 seconds, but can be increased for all invocations associated with a Workflow definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11204)
-* [  wrangler.toml ](#tab-panel-11205)
+* [  wrangler.jsonc ](#tab-panel-10089)
+* [  wrangler.toml ](#tab-panel-10090)
 
 JSONC
 
@@ -204,8 +208,8 @@ This will appear as `exceededResources` in [Workers metrics](https://developers.
 
 By default, the maximum number of subrequests per Workflow instance is 10,000 on Workers Paid plans, but this can be increased up to 10 million by setting `limits.subrequests` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11206)
-* [  wrangler.toml ](#tab-panel-11207)
+* [  wrangler.jsonc ](#tab-panel-10091)
+* [  wrangler.toml ](#tab-panel-10092)
 
 JSONC
 

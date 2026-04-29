@@ -4,6 +4,10 @@ description: Create a Docusaurus application and deploy it to Cloudflare Workers
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -87,15 +91,15 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
 
 1. **Add a Wrangler configuration file.**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-9984)  
-   * [  wrangler.toml ](#tab-panel-9985)  
+   * [  wrangler.jsonc ](#tab-panel-8869)  
+   * [  wrangler.toml ](#tab-panel-8870)  
 JSONC  
 ```  
   {  
     "name": "my-docusaurus-app",  
     // Update to today's date  
     // Set this to today's date  
-    "compatibility_date": "2026-04-24",  
+    "compatibility_date": "2026-04-29",  
     "assets": {  
       "directory": "./build"  
     }  
@@ -105,7 +109,7 @@ TOML
 ```  
 name = "my-docusaurus-app"  
 # Set this to today's date  
-compatibility_date = "2026-04-24"  
+compatibility_date = "2026-04-29"  
 [assets]  
 directory = "./build"  
 ```  

@@ -4,6 +4,10 @@ description: Learn how to set up AI Crawl Control.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started
@@ -28,8 +32,8 @@ This guide instructs you on how to:
 
 ## 2\. Block specific AI crawlers
 
-* [ All plans ](#tab-panel-5271)
-* [ Paid plans ](#tab-panel-5272)
+* [ All plans ](#tab-panel-4105)
+* [ Paid plans ](#tab-panel-4106)
 
 To block specific AI crawlers:
 
@@ -57,7 +61,7 @@ You can also create more complex rules when taking action on AI crawlers, using 
 
 ## 3\. Explore detailed metrics
 
-* [ All plans ](#tab-panel-5270)
+* [ All plans ](#tab-panel-4104)
 
 For more detailed analytics, use the **Metrics** tab.
 

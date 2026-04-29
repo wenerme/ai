@@ -4,6 +4,10 @@ description: Layer 3 and 4 DDoS protection for TCP and UDP Spectrum applications
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # DDoS Protection for Spectrum

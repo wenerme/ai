@@ -4,14 +4,18 @@ description: Create a compression rule to set Brotli as the only supported compr
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use only Brotli compression for a specific path
 
 Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.
 
-* [ Dashboard ](#tab-panel-8497)
-* [ API ](#tab-panel-8498)
+* [ Dashboard ](#tab-panel-7339)
+* [ API ](#tab-panel-7340)
 
 The following example rule will configure only Brotli compression for a specific URI path.
 

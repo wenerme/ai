@@ -4,12 +4,16 @@ description: Secure remote access to critical infrastructure.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Secure remote access to your critical infrastructure
 
-* [ Watch this episode ](#tab-panel-7634)
-* [ Series overview ](#tab-panel-7635)
+* [ Watch this episode ](#tab-panel-6530)
+* [ Series overview ](#tab-panel-6531)
 
 In this video learn how Cloudflare's SASE platform can provide highly secure access to your critical infrastructure by leveraging a modern ZTNA service to implement Zero Trust principles. Applications, databases and their servers are running in a variety of locations from on-premises data centers to cloud hyperscalers, making the need to secure administrative access more important than ever.
 

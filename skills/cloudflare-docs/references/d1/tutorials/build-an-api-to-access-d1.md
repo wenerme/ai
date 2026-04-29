@@ -4,6 +4,10 @@ description: This tutorial shows how to create an API that allows you to securel
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -196,8 +200,8 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
 
 1. From your `d1-http` folder, open the Wrangler file, Wrangler's configuration file.
 2. Add the following binding in the file. Make sure that the `database_name` and the `database_id` are correct.  
-   * [  wrangler.jsonc ](#tab-panel-6577)  
-   * [  wrangler.toml ](#tab-panel-6578)  
+   * [  wrangler.jsonc ](#tab-panel-5419)  
+   * [  wrangler.toml ](#tab-panel-5420)  
 JSONC  
 ```  
 {  

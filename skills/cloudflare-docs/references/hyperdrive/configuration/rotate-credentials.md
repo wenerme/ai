@@ -4,6 +4,10 @@ description: Update or rotate database credentials for an existing Hyperdrive co
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Rotating database credentials
@@ -32,8 +36,8 @@ npx wrangler hyperdrive create my-updated-hyperdrive --connection-string="<YOUR_
 
 The command above will output the ID of your Hyperdrive. Set this ID in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-7226)
-* [  wrangler.toml ](#tab-panel-7227)
+* [  wrangler.jsonc ](#tab-panel-6068)
+* [  wrangler.toml ](#tab-panel-6069)
 
 JSONC
 
@@ -51,7 +55,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "hyperdrive": [
 
@@ -80,7 +84,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[hyperdrive]]

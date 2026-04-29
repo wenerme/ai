@@ -4,6 +4,10 @@ description: Editor extension and CLI with agent mode, workspace context, and na
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agent-setup/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 [ All agents](https://developers.cloudflare.com/agent-setup/) 
@@ -45,7 +49,7 @@ For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-
 4. **Try a prompt**  
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:  
 ```  
-Set up WAF rules to block SQL injection and XSS attacks on my application.  
+Add mTLS authentication and schema validation to protect my API endpoints.  
 ```
 
 ## Cloudflare platform access

@@ -4,11 +4,15 @@ description: Build a testing pipeline that clones Git repositories, installs dep
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Automated testing pipeline
 
-**Last reviewed:**  6 months ago 
+**Last reviewed:**  7 months ago 
 
 Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.
 

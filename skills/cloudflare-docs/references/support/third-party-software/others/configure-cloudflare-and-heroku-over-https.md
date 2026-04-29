@@ -4,6 +4,10 @@ description: Set up Cloudflare with Heroku for HTTPS traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure Cloudflare and Heroku over HTTPS

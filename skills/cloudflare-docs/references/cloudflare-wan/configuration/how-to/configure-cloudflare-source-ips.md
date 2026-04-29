@@ -4,6 +4,10 @@ description: Configure the Cloudflare source IP range used when you receive traf
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure Cloudflare source IPs (beta)
@@ -65,8 +69,8 @@ Note
 
 You need Unified Routing (beta) to configure source IPs. If your account is not yet migrated, contact your account team to discuss migration and availability.
 
-* [ Dashboard ](#tab-panel-6422)
-* [ API ](#tab-panel-6423)
+* [ Dashboard ](#tab-panel-5264)
+* [ API ](#tab-panel-5265)
 
 1. Go to the **Address space** page.  
 [ Go to **Address space** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)

@@ -4,6 +4,10 @@ description: Manage DNS views to return different responses by network.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -31,8 +35,8 @@ When setting up DNS views, observe the following conditions:
 
 ## Create a view
 
-* [ Dashboard ](#tab-panel-6719)
-* [ API ](#tab-panel-6720)
+* [ Dashboard ](#tab-panel-5561)
+* [ API ](#tab-panel-5562)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -50,8 +54,8 @@ DNS views can be deleted even if they still have internal zones linked to them. 
 
 It is also possible to delete a DNS view that is being referenced by a Gateway resolver policy. In this case, queries matching the policy will return SERVFAIL.
 
-* [ Dashboard ](#tab-panel-6717)
-* [ API ](#tab-panel-6718)
+* [ Dashboard ](#tab-panel-5559)
+* [ API ](#tab-panel-5560)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

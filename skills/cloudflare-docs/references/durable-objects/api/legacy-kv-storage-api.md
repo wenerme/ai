@@ -4,6 +4,10 @@ description: API reference for the legacy KV-backed Durable Objects storage meth
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # KV-backed Durable Object Storage (Legacy)
@@ -48,9 +52,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-6832)
-* [  TypeScript ](#tab-panel-6833)
-* [  Python ](#tab-panel-6834)
+* [  JavaScript ](#tab-panel-5674)
+* [  TypeScript ](#tab-panel-5675)
+* [  Python ](#tab-panel-5676)
 
 JavaScript
 

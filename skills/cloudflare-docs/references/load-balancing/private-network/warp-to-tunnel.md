@@ -4,6 +4,10 @@ description: Load balance WARP client traffic to private origins via Tunnel.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -63,8 +67,8 @@ Load balancer pools are logical groupings of endpoints, typically organized by p
 
 Pools can be created using either the Cloudflare dashboard or the API.
 
-* [ Dashboard ](#tab-panel-7873)
-* [ API ](#tab-panel-7874)
+* [ Dashboard ](#tab-panel-6715)
+* [ API ](#tab-panel-6716)
 
 To create a pool using the dashboard, refer to the [Create a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool) documentation.
 

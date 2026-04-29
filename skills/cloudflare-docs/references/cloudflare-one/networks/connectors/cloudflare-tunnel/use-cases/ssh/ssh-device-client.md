@@ -4,6 +4,10 @@ description: Connect with self-managed SSH keys in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -207,8 +211,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:  
-   * [ Exclude IPs and domains ](#tab-panel-5970)  
-   * [ Include IPs and domains ](#tab-panel-5971)  
+   * [ Exclude IPs and domains ](#tab-panel-4812)  
+   * [ Include IPs and domains ](#tab-panel-4813)  
 If you are using **Exclude** mode:  
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your private network's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.  
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your private network. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.  
@@ -228,8 +232,8 @@ If you are using **Include** mode:
 
 By default, all devices enrolled in your organization can SSH to the server unless you build Gateway network policies to allow or block specific users. You can create policies based on user identity, device posture, location, and other criteria.
 
-* [ Dashboard ](#tab-panel-5968)
-* [ Terraform (v5) ](#tab-panel-5969)
+* [ Dashboard ](#tab-panel-4810)
+* [ Terraform (v5) ](#tab-panel-4811)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.

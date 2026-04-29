@@ -4,6 +4,10 @@ description: Resolve client-side errors in Turnstile widget rendering.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Client-side errors
@@ -22,8 +26,8 @@ The `error-callback` option for explicitly rendering widgets and the `data-error
 
 This callback mechanism gives you complete control over how errors are presented to visitors and allows you to implement custom recovery strategies tailored to your application's needs.
 
-* [ Explicit rendering with error callback ](#tab-panel-9271)
-* [ Implicit rendering with error callback ](#tab-panel-9272)
+* [ Explicit rendering with error callback ](#tab-panel-8130)
+* [ Implicit rendering with error callback ](#tab-panel-8131)
 
 JavaScript
 

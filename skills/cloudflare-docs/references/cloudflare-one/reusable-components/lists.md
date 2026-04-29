@@ -4,6 +4,10 @@ description: Lists in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Lists
@@ -26,6 +30,7 @@ Lists can contain a single type of data each. Supported data types include:
 * User email addresses
 * IP addresses
 * Device ID numbers
+* AAGUIDs (used by [Access independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid) to restrict the WebAuthn authenticators users can enroll)
 
 ## Create a list from a CSV file
 
@@ -55,8 +60,8 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-6060)
-* [ Terraform (v5) ](#tab-panel-6061)
+* [ Dashboard ](#tab-panel-4902)
+* [ Terraform (v5) ](#tab-panel-4903)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -87,9 +92,9 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-6062)
-* [ API ](#tab-panel-6063)
-* [ Terraform (v5) ](#tab-panel-6064)
+* [ Dashboard ](#tab-panel-4904)
+* [ API ](#tab-panel-4905)
+* [ Terraform (v5) ](#tab-panel-4906)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.

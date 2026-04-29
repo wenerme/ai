@@ -4,6 +4,10 @@ description: Private network connectivity in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -75,8 +79,8 @@ Under **Traffic policies** \> **Traffic settings**, ensure that **Allow Secure W
 
 Verify that you can connect to the application directly from the `cloudflared` host machine:
 
-* [ macOS and Linux ](#tab-panel-5954)
-* [ Windows ](#tab-panel-5955)
+* [ macOS and Linux ](#tab-panel-4796)
+* [ Windows ](#tab-panel-4797)
 
 Open Terminal and run the following command:
 

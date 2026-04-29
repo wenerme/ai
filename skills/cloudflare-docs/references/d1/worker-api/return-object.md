@@ -4,6 +4,10 @@ description: Understand the D1Result and D1ExecResult objects returned by D1 Wor
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Return objects
@@ -74,8 +78,8 @@ Explain Code
 
 ### Example
 
-* [  JavaScript ](#tab-panel-6643)
-* [  Python ](#tab-panel-6644)
+* [  JavaScript ](#tab-panel-5485)
+* [  Python ](#tab-panel-5486)
 
 JavaScript
 
@@ -201,8 +205,8 @@ JavaScript
 
 ### Example
 
-* [  JavaScript ](#tab-panel-6645)
-* [  Python ](#tab-panel-6646)
+* [  JavaScript ](#tab-panel-5487)
+* [  Python ](#tab-panel-5488)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Handle real-time output from commands and processes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Stream output
@@ -30,8 +34,8 @@ Use non-streaming (`exec()`) for:
 
 Use `execStream()` to get real-time output:
 
-* [  JavaScript ](#tab-panel-9001)
-* [  TypeScript ](#tab-panel-9002)
+* [  JavaScript ](#tab-panel-7843)
+* [  TypeScript ](#tab-panel-7844)
 
 JavaScript
 
@@ -143,8 +147,8 @@ Explain Code
 
 Return streaming output to users via Server-Sent Events:
 
-* [  JavaScript ](#tab-panel-8997)
-* [  TypeScript ](#tab-panel-8998)
+* [  JavaScript ](#tab-panel-7839)
+* [  TypeScript ](#tab-panel-7840)
 
 JavaScript
 
@@ -230,8 +234,8 @@ Explain Code
 
 Client-side consumption:
 
-* [  JavaScript ](#tab-panel-8995)
-* [  TypeScript ](#tab-panel-8996)
+* [  JavaScript ](#tab-panel-7837)
+* [  TypeScript ](#tab-panel-7838)
 
 JavaScript
 
@@ -303,8 +307,8 @@ Explain Code
 
 Monitor background process output:
 
-* [  JavaScript ](#tab-panel-8999)
-* [  TypeScript ](#tab-panel-9000)
+* [  JavaScript ](#tab-panel-7841)
+* [  TypeScript ](#tab-panel-7842)
 
 JavaScript
 
@@ -376,8 +380,8 @@ Explain Code
 
 Check exit codes and handle stream errors:
 
-* [  JavaScript ](#tab-panel-9003)
-* [  TypeScript ](#tab-panel-9004)
+* [  JavaScript ](#tab-panel-7845)
+* [  TypeScript ](#tab-panel-7846)
 
 JavaScript
 

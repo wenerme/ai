@@ -4,6 +4,10 @@ description: Use a _worker.js file to develop Pages Functions instead of the /fu
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Advanced mode
@@ -20,8 +24,8 @@ In advanced mode, your Function will assume full control of all incoming HTTP re
 
 After making a `_worker.js` file in your output directory, add the following code snippet:
 
-* [  JavaScript ](#tab-panel-7934)
-* [  TypeScript ](#tab-panel-7935)
+* [  JavaScript ](#tab-panel-6776)
+* [  TypeScript ](#tab-panel-6777)
 
 JavaScript
 

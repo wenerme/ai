@@ -4,6 +4,10 @@ description: Get started with Cloudflare for SaaS
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configuring Cloudflare for SaaS
@@ -46,8 +50,8 @@ To create your fallback origin:
 
 1. Designate that record as your fallback origin.
 
-* [ Dashboard ](#tab-panel-5707)
-* [ API ](#tab-panel-5708)
+* [ Dashboard ](#tab-panel-4543)
+* [ API ](#tab-panel-4544)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -103,8 +107,8 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-* [ Dashboard ](#tab-panel-5709)
-* [ API ](#tab-panel-5710)
+* [ Dashboard ](#tab-panel-4545)
+* [ API ](#tab-panel-4546)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

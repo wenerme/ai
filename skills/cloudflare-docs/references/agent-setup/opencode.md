@@ -4,6 +4,10 @@ description: Open-source terminal agent with a rich TUI that works with 75+ LLMs
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agent-setup/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 [ All agents](https://developers.cloudflare.com/agent-setup/) 
@@ -55,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.  
+Build a serverless AI inference endpoint on Workers AI with streaming responses.  
 ```
 
 ## Cloudflare platform access

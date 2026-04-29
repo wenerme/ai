@@ -4,6 +4,10 @@ description: View matched payload content in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # View the payload content in the dashboard
@@ -11,8 +15,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 View the content of the matched rule payload in the dashboard by entering your private key.
 
 1. Open [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/):  
-   * [  New dashboard ](#tab-panel-9428)  
-   * [ Old dashboard ](#tab-panel-9429)  
+   * [  New dashboard ](#tab-panel-8311)  
+   * [ Old dashboard ](#tab-panel-8312)  
    1. In the Cloudflare dashboard, go to the **Analytics** page.  
    [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)  
    2. Select the **Events** tab.  

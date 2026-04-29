@@ -4,6 +4,10 @@ description: Set up custom domains for preview URLs in production.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Deploy to production
@@ -49,8 +53,8 @@ This routes all subdomains through Cloudflare's proxy. The IP address `192.0.2.0
 
 Add a wildcard route to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8983)
-* [  wrangler.toml ](#tab-panel-8984)
+* [  wrangler.jsonc ](#tab-panel-7825)
+* [  wrangler.toml ](#tab-panel-7826)
 
 JSONC
 
@@ -66,7 +70,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "routes": [
 
@@ -99,7 +103,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[routes]]

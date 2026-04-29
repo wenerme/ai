@@ -4,6 +4,10 @@ description: This tutorial covers how to use a Cloudflare Worker to add custom h
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -33,8 +37,8 @@ Some applications and networking implementations require specific custom headers
 4. Select **Edit code**.
 5. Input the following Worker:
 
-* [  JavaScript ](#tab-panel-6357)
-* [  TypeScript ](#tab-panel-6358)
+* [  JavaScript ](#tab-panel-5199)
+* [  TypeScript ](#tab-panel-5200)
 
 JavaScript
 

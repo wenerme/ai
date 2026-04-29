@@ -4,6 +4,10 @@ description: Create IP Access rules to allow, block, or challenge by IP.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create an IP access rule
@@ -16,9 +20,9 @@ Warning
 
 For [Spectrum](https://developers.cloudflare.com/spectrum/) applications configured with the non-HTTP/HTTPS application type, IP Access rules are the only supported mechanism for filtering traffic by IP address, IP range, country, or ASN. To use them, enable IP Access rules in your [Spectrum app configuration](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules).
 
-* [  New dashboard ](#tab-panel-9464)
-* [ Old dashboard ](#tab-panel-9465)
-* [ API ](#tab-panel-9466)
+* [  New dashboard ](#tab-panel-8347)
+* [ Old dashboard ](#tab-panel-8348)
+* [ API ](#tab-panel-8349)
 
 Note
 

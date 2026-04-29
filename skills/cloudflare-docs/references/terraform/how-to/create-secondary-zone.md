@@ -4,6 +4,10 @@ description: Automate the setup of a Cloudflare subdomain zone for Enterprise ac
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create a subdomain zone using Terraform

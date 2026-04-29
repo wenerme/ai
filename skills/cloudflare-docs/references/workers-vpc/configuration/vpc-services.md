@@ -4,6 +4,10 @@ description: Register private network resources as VPC Services that Workers can
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # VPC Services
@@ -147,8 +151,8 @@ Explain Code
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-9539)
-* [  wrangler.toml ](#tab-panel-9540)
+* [  wrangler.jsonc ](#tab-panel-8422)
+* [  wrangler.toml ](#tab-panel-8423)
 
 JSONC
 
@@ -207,8 +211,8 @@ remote = true
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-9541)
-* [  wrangler.toml ](#tab-panel-9542)
+* [  wrangler.jsonc ](#tab-panel-8424)
+* [  wrangler.toml ](#tab-panel-8425)
 
 JSONC
 

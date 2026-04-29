@@ -4,6 +4,10 @@ description: Create full-stack applications deployed to Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Static Assets
@@ -42,8 +46,8 @@ When you deploy your project, Cloudflare deploys both your Worker code and your 
 
 The **assets directory** specified in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#assets) is central to this design. During deployment, Wrangler automatically uploads the files from this directory to Cloudflare's infrastructure. Once deployed, requests for these assets are routed efficiently to locations closest to your users.
 
-* [  wrangler.jsonc ](#tab-panel-9101)
-* [  wrangler.toml ](#tab-panel-9102)
+* [  wrangler.jsonc ](#tab-panel-9129)
+* [  wrangler.toml ](#tab-panel-9130)
 
 JSONC
 
@@ -59,7 +63,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "assets": {
 
@@ -88,7 +92,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 [assets]
@@ -106,8 +110,8 @@ If you are using the [Cloudflare Vite plugin](https://developers.cloudflare.com/
 
 By adding an [**assets binding**](https://developers.cloudflare.com/workers/static-assets/binding/#binding), you can directly fetch and serve assets within your Worker code.
 
-* [  JavaScript ](#tab-panel-9097)
-* [  Python ](#tab-panel-9098)
+* [  JavaScript ](#tab-panel-9125)
+* [  Python ](#tab-panel-9126)
 
 JavaScript
 
@@ -183,8 +187,8 @@ The default behavior for requests which don't match a static asset can be change
 * [not\_found\_handling = "single-page-application"](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/): Sets your application to return a `200 OK` response with `index.html` for requests which don't match a static asset. Use this if you have a Single Page Application. We recommend pairing this with selective routing using `run_worker_first` for [advanced routing control](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control).
 * [not\_found\_handling = "404-page"](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/#custom-404-pages): Sets your application to return a `404 Not Found` response with the nearest `404.html` for requests which don't match a static asset.
 
-* [  wrangler.jsonc ](#tab-panel-9099)
-* [  wrangler.toml ](#tab-panel-9100)
+* [  wrangler.jsonc ](#tab-panel-9127)
+* [  wrangler.toml ](#tab-panel-9128)
 
 JSONC
 
@@ -222,8 +226,8 @@ If you want the Worker code to execute before serving assets, you can use the `r
 
 **Invoking your Worker script on specific paths:**
 
-* [  wrangler.jsonc ](#tab-panel-9103)
-* [  wrangler.toml ](#tab-panel-9104)
+* [  wrangler.jsonc ](#tab-panel-9131)
+* [  wrangler.toml ](#tab-panel-9132)
 
 JSONC
 
@@ -235,7 +239,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "main": "./src/index.ts",
 
@@ -266,7 +270,7 @@ name = "my-spa-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 main = "./src/index.ts"
 

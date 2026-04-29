@@ -4,6 +4,10 @@ description: Improve page load order with Enhanced HTTP/2 Prioritization.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enhanced HTTP/2 Prioritization
@@ -26,8 +30,8 @@ For more details, refer to [the introductory blog post ↗](https://blog.cloudfl
 
 ## Enable Enhanced HTTP/2 Prioritization
 
-* [ Dashboard ](#tab-panel-9047)
-* [ API ](#tab-panel-9048)
+* [ Dashboard ](#tab-panel-7889)
+* [ API ](#tab-panel-7890)
 
 To enable **Enhanced HTTP/2 Prioritization** in the Cloudflare dashboard:
 

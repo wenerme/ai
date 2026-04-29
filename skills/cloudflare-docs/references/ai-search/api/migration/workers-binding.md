@@ -4,6 +4,10 @@ description: Upgrade from the legacy env.AI.autorag() binding to the new AI Sear
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Workers binding migration
@@ -96,8 +100,8 @@ Existing instances are in the default namespace. For a simple upgrade path, use 
 
 **Before:**
 
-* [  wrangler.jsonc ](#tab-panel-5345)
-* [  wrangler.toml ](#tab-panel-5346)
+* [  wrangler.jsonc ](#tab-panel-4179)
+* [  wrangler.toml ](#tab-panel-4180)
 
 JSONC
 
@@ -131,8 +135,8 @@ binding = "AI"
 
 **After:**
 
-* [  wrangler.jsonc ](#tab-panel-5347)
-* [  wrangler.toml ](#tab-panel-5348)
+* [  wrangler.jsonc ](#tab-panel-4181)
+* [  wrangler.toml ](#tab-panel-4182)
 
 JSONC
 

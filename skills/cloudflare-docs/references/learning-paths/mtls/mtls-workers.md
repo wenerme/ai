@@ -4,6 +4,10 @@ description: Implement mutual TLS authentication with Cloudflare.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # mTLS with Workers
@@ -20,8 +24,8 @@ All Client Certificate details can be found in the [tlsClientAuth](https://devel
 
 Example Cloudflare Workers code to return all headers and gain visibility, including [Client Certificate headers](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#cloudflare-workers):
 
-* [  Module Worker ](#tab-panel-7615)
-* [  Service Worker ](#tab-panel-7616)
+* [  Module Worker ](#tab-panel-6457)
+* [  Service Worker ](#tab-panel-6458)
 
 JavaScript
 

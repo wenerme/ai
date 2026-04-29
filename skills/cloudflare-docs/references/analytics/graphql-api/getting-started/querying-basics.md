@@ -4,6 +4,10 @@ description: Learn the basics of querying with Cloudflare's GraphQL API. Underst
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Querying basics
@@ -83,7 +87,7 @@ query ASingleDatasetExample($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggZQJYDsDmAbMARAhgF1wGcx8BRAD1wFsAHLACgBIAvAexTABVc0AuGEXwRUaADQwmQ3BHwCuSamAlMwKACbzFYAJQwA3gCgYMAG5IwAd0gHjJmO05EGAMyQZ8kAfocduvAVY-HjQYAF89I3t7NwgrXAwMMlM1fCI4dVxafCQUhjtokzcPLwMYTM8cpQB9NDlJaVkJCtJtao9AtXVwgsKMRSR6gCZe6LYIdUgAISgBAG0WqrBq7DIEAGEAXVGYSJ2TXABjHI598oJWpTOACzYhAUP+1IAlMFAwIQAJLi4ABU+7vgdmFeiCTCCwkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccfqjZtUAZgCsGCiBhQAJs3ZdeA4XACMkidLkgAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggZQJYDsDmAbMARAhgF1wGcx8BRAD1wFsAHLACgBIAvAexTABVc0AuGEXwRUaADQwmQ3BHwCuSamAlMwKACbzFYAJQwA3gCgYMAG5IwAd0gHjJmO05EGAMyQZ8kAfocduvAVY-HjQYAF89I3t7NwgrXAwMMlM1fCI4dVxafCQUhjtokzcPLwMYTM8cpQB9NDlJaVkJCtJtao9AtXVwgsKMRSR6gCZe6LYIdUgAISgBAG0WqrBq7DIEAGEAXVGYSJ2TXABjHI598oJWpTOACzYhAUP+1IAlMFAwIQAJLi4ABU+7vgdmFeiCTCCwkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccAIxDUozqj6iMFEDCgATZuy68BLAJxw2bSdNnyAvkA)
 
 In the query above, we have variable placeholders: $zoneTag, $start, and $end. We provide values for those placeholders alongside the query by placing them into`variables` field of the payload. Note that the examples below use the UTC timezone, indicated by the letter "Z".
 
@@ -232,7 +236,7 @@ query MultipleDatasetsExample(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsiANgFwJYAdFgCIENm4DOYyhAogB64C2mYAFAFAwwAkAXgPYB2YAKrgDmALhiFkEVN0HM243BGSi+qamFmsw3ACbLV6lq1Ki8ydQEoYAb1kA3VGADuka7JZdehegDNUKSKJWMB78QqIcPKGCMAC+ljYsiTCIRMgAjAAMZLZaxjC+EE64iIjZuYQAgtq46Gg5TElJvv4QgTDVZmhqAPqCSnIEigA07fgk+t0o4VrasW6NiKqo-ZnzSZwQ2pAAQlCiANod4z3YZADKAMIAumsw8bcsuADGaDwPo5367wAWnOKiT0WuQASmBQGBxAAJPh8AAKkL+yFuMVuyE46AAzNgwPYnvwoOgIaJvshkOhQeDxJVqrVUDkAOIQTggdBed7NMytawfMDhUhzRqJRbUZaiVaClgbLYQXYHJ7M7jIbqnS43QX3CUweUgRXvbT6biEVA8QiuTUsLa43laoGK7FWvgEgwSlGC12Jd0omJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccfqjZtUAZgCsGCiBhQAJs3ZdeA4XACMkidLkKaVNRx79BQkAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsiANgFwJYAdFgCIENm4DOYyhAogB64C2mYAFAFAwwAkAXgPYB2YAKrgDmALhiFkEVN0HM243BGSi+qamFmsw3ACbLV6lq1Ki8ydQEoYAb1kA3VGADuka7JZdehegDNUKSKJWMB78QqIcPKGCMAC+ljYsiTCIRMgAjAAMZLZaxjC+EE64iIjZuYQAgtq46Gg5TElJvv4QgTDVZmhqAPqCSnIEigA07fgk+t0o4VrasW6NiKqo-ZnzSZwQ2pAAQlCiANod4z3YZADKAMIAumsw8bcsuADGaDwPo5367wAWnOKiT0WuQASmBQGBxAAJPh8AAKkL+yFuMVuyE46AAzNgwPYnvwoOgIaJvshkOhQeDxJVqrVUDkAOIQTggdBed7NMytawfMDhUhzRqJRbUZaiVaClgbLYQXYHJ7M7jIbqnS43QX3CUweUgRXvbT6biEVA8QiuTUsLa43laoGK7FWvgEgwSlGC12Jd0omJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccAIxDUozqj6iMFEDCgATZuy68BLAJxw2bSdNnzKNKmo49+g7SAC+QA)
 
 A set of variables for the query above
 

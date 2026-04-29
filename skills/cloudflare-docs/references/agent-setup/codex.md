@@ -4,6 +4,10 @@ description: Lightweight open-source terminal agent that reads and writes files,
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agent-setup/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 [ All agents](https://developers.cloudflare.com/agent-setup/) 
@@ -42,7 +46,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.  
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.  
 ```
 
 ## Cloudflare platform access

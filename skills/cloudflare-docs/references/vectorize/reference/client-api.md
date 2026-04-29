@@ -4,6 +4,10 @@ description: Vectorize Workers binding API for inserting, upserting, querying, a
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Vectorize API
@@ -334,8 +338,8 @@ Bindings are defined in either the [Wrangler configuration file](https://develop
 
 Vectorize indexes are bound by name. A binding for an index named `production-doc-search` would resemble the below:
 
-* [  wrangler.jsonc ](#tab-panel-9311)
-* [  wrangler.toml ](#tab-panel-9312)
+* [  wrangler.jsonc ](#tab-panel-8194)
+* [  wrangler.toml ](#tab-panel-8195)
 
 JSONC
 

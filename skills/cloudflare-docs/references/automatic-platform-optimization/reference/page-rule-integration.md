@@ -4,6 +4,10 @@ description: Page Rules that control APO caching behavior for specific URL patte
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/automatic-platform-optimization/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Page Rule integration with APO

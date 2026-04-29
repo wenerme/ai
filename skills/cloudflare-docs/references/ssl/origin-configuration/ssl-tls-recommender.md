@@ -4,6 +4,10 @@ description: Get recommendations for the optimal SSL/TLS encryption mode.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # SSL/TLS Recommender
@@ -32,8 +36,8 @@ To make sure you do not inadvertently block the **SSL/TLS Recommender**, review 
 
 Then, you can enable the SSL/TLS recommender.
 
-* [ Dashboard ](#tab-panel-9125)
-* [ API ](#tab-panel-9126)
+* [ Dashboard ](#tab-panel-7987)
+* [ API ](#tab-panel-7988)
 
 To enable SSL/TLS recommendations in the dashboard:
 

@@ -4,6 +4,10 @@ description: Authenticate WebSocket connections to Cloudflare Agents across doma
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cross-domain authentication
@@ -40,8 +44,8 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-5144)
-* [  TypeScript ](#tab-panel-5145)
+* [  JavaScript ](#tab-panel-3978)
+* [  TypeScript ](#tab-panel-3979)
 
 JavaScript
 
@@ -113,8 +117,8 @@ Explain Code
 
 Build query values right before connect. Use Suspense for async setup.
 
-* [  JavaScript ](#tab-panel-5150)
-* [  TypeScript ](#tab-panel-5151)
+* [  JavaScript ](#tab-panel-3984)
+* [  TypeScript ](#tab-panel-3985)
 
 JavaScript
 
@@ -242,8 +246,8 @@ Explain Code
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-5152)
-* [  TypeScript ](#tab-panel-5153)
+* [  JavaScript ](#tab-panel-3986)
+* [  TypeScript ](#tab-panel-3987)
 
 JavaScript
 
@@ -433,8 +437,8 @@ Pass credentials in the URL when connecting to another host, then verify on the 
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-5146)
-* [  TypeScript ](#tab-panel-5147)
+* [  JavaScript ](#tab-panel-3980)
+* [  TypeScript ](#tab-panel-3981)
 
 JavaScript
 
@@ -508,8 +512,8 @@ Explain Code
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-5148)
-* [  TypeScript ](#tab-panel-5149)
+* [  JavaScript ](#tab-panel-3982)
+* [  TypeScript ](#tab-panel-3983)
 
 JavaScript
 
@@ -611,8 +615,8 @@ Explain Code
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-5154)
-* [  TypeScript ](#tab-panel-5155)
+* [  JavaScript ](#tab-panel-3988)
+* [  TypeScript ](#tab-panel-3989)
 
 JavaScript
 

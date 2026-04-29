@@ -4,6 +4,10 @@ description: Resource limits for Sandbox SDK including vCPU, memory, disk, and c
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Limits
@@ -33,8 +37,8 @@ When using the Sandbox SDK from Workers or Durable Objects, you are subject to [
 
 Enable WebSocket transport to multiplex all SDK calls over a single persistent connection:
 
-* [  wrangler.jsonc ](#tab-panel-9017)
-* [  wrangler.toml ](#tab-panel-9018)
+* [  wrangler.jsonc ](#tab-panel-7859)
+* [  wrangler.toml ](#tab-panel-7860)
 
 JSONC
 

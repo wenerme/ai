@@ -4,6 +4,10 @@ description: Block or challenge requests based on User-Agent header values.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # User Agent Blocking
@@ -34,9 +38,9 @@ The number of available user agent rules depends on your Cloudflare plan.
 
 ## Create a User Agent Blocking rule
 
-* [  New dashboard ](#tab-panel-9475)
-* [ Old dashboard ](#tab-panel-9476)
-* [ API ](#tab-panel-9477)
+* [  New dashboard ](#tab-panel-8358)
+* [ Old dashboard ](#tab-panel-8359)
+* [ API ](#tab-panel-8360)
 
 Note
 

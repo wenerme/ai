@@ -4,6 +4,10 @@ description: Build a durable AI agent using Cloudflare Workflows that researches
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build a Durable AI Agent
@@ -552,8 +556,8 @@ Explain Code
 ## 5\. Configure your project
 
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:  
-   * [  wrangler.jsonc ](#tab-panel-11196)  
-   * [  wrangler.toml ](#tab-panel-11197)  
+   * [  wrangler.jsonc ](#tab-panel-10081)  
+   * [  wrangler.toml ](#tab-panel-10082)  
 JSONC  
 ```  
 {  
@@ -561,7 +565,7 @@ JSONC
   "name": "durable-ai-agent",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-24",  
+  "compatibility_date": "2026-04-29",  
   "observability": {  
     "enabled": true  
   },  
@@ -595,7 +599,7 @@ TOML
 name = "durable-ai-agent"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-24"  
+compatibility_date = "2026-04-29"  
 [observability]  
 enabled = true  
 [[durable_objects.bindings]]  

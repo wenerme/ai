@@ -4,6 +4,10 @@ description: Access KV, R2, Durable Objects, and other bindings from a sandbox.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Connect to Workers bindings
@@ -16,8 +20,8 @@ The sandbox makes a plain HTTP request to a virtual hostname (for example, `http
 
 Define an `outboundByHost` handler for each virtual hostname. The `env` argument gives you access to every binding declared in your Wrangler configuration.
 
-* [  JavaScript ](#tab-panel-9015)
-* [  TypeScript ](#tab-panel-9016)
+* [  JavaScript ](#tab-panel-7857)
+* [  TypeScript ](#tab-panel-7858)
 
 JavaScript
 
@@ -113,8 +117,8 @@ You can use `ctx.containerId` to apply different rules per sandbox instance — 
 
 The `ctx` argument exposes `containerId`, which lets you interact with the sandbox's own Durable Object from an outbound handler.
 
-* [  JavaScript ](#tab-panel-9013)
-* [  TypeScript ](#tab-panel-9014)
+* [  JavaScript ](#tab-panel-7855)
+* [  TypeScript ](#tab-panel-7856)
 
 JavaScript
 

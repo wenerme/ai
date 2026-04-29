@@ -4,6 +4,10 @@ description: In the final part of the AI Image Playground series, Kristian teach
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -12,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Store and Catalog AI Generated Images with R2 (Part 3)
 
-**Last reviewed:**  about 1 year ago 
+**Last reviewed:**  over 1 year ago 
 
 In the final part of the AI Image Playground series, Kristian teaches how to utilize Cloudflare's [R2](https://developers.cloudflare.com/r2) object storage in order to maintain and keep track of each AI generated image.
 

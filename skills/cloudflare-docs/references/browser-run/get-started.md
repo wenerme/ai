@@ -4,6 +4,10 @@ description: Choose an integration method and set up your first Browser Run proj
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started
@@ -154,8 +158,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-5567)
-* [  wrangler.toml ](#tab-panel-5568)
+* [  wrangler.jsonc ](#tab-panel-4403)
+* [  wrangler.toml ](#tab-panel-4404)
 
 JSONC
 
@@ -171,7 +175,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -214,7 +218,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -239,8 +243,8 @@ Explain Code
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-5565)
-* [  TypeScript ](#tab-panel-5566)
+* [  JavaScript ](#tab-panel-4401)
+* [  TypeScript ](#tab-panel-4402)
 
 Update `src/index.js` with your Worker code:
 

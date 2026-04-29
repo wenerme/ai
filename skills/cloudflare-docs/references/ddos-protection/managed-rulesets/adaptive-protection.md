@@ -4,6 +4,10 @@ description: Explore Cloudflare's Adaptive DDoS Protection, which learns traffic
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Adaptive DDoS Protection
@@ -54,8 +58,8 @@ HTTP Adaptive DDoS Protection rules calculate the traffic profile at the zone-le
 
 To view traffic flagged by HTTP Adaptive DDoS Protection rules:
 
-* [  New dashboard ](#tab-panel-6691)
-* [ Old dashboard ](#tab-panel-6692)
+* [  New dashboard ](#tab-panel-5533)
+* [ Old dashboard ](#tab-panel-5534)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -68,8 +72,8 @@ To view traffic flagged by HTTP Adaptive DDoS Protection rules:
 
 To view traffic flagged by L3/4 Adaptive DDoS Protection rules:
 
-* [  New dashboard ](#tab-panel-6693)
-* [ Old dashboard ](#tab-panel-6694)
+* [  New dashboard ](#tab-panel-5535)
+* [ Old dashboard ](#tab-panel-5536)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)

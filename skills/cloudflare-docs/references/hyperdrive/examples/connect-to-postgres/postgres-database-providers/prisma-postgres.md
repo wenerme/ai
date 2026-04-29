@@ -4,6 +4,10 @@ description: Connect Hyperdrive to a Prisma Postgres database.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Prisma Postgres
@@ -69,8 +73,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-7343)
-* [ Wrangler CLI ](#tab-panel-7344)
+* [ Dashboard ](#tab-panel-6185)
+* [ Wrangler CLI ](#tab-panel-6186)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -88,8 +92,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-7341)  
-   * [  wrangler.toml ](#tab-panel-7342)  
+   * [  wrangler.jsonc ](#tab-panel-6183)  
+   * [  wrangler.toml ](#tab-panel-6184)  
 JSONC  
 ```  
 {  
@@ -97,7 +101,7 @@ JSONC
   "name": "hyperdrive-example",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-24",  
+  "compatibility_date": "2026-04-29",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -117,7 +121,7 @@ TOML
 name = "hyperdrive-example"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-24"  
+compatibility_date = "2026-04-29"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[hyperdrive]]  
 binding = "HYPERDRIVE"  
@@ -177,8 +181,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-7345)
-* [  wrangler.toml ](#tab-panel-7346)
+* [  wrangler.jsonc ](#tab-panel-6187)
+* [  wrangler.toml ](#tab-panel-6188)
 
 JSONC
 
@@ -196,7 +200,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "hyperdrive": [
 
@@ -225,7 +229,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[hyperdrive]]
@@ -322,8 +326,8 @@ There are two limits to consider here.
 
 Hyperdrive's origin connection limit should be lower than the Prisma Postgres connection limit, since Hyperdrive's origin connection limit is a soft limit, and Hyperdrive may create more connections if there are network disruptions that prevent existing connections from being used.
 
-* [ Dashboard ](#tab-panel-7339)
-* [ Wrangler CLI ](#tab-panel-7340)
+* [ Dashboard ](#tab-panel-6181)
+* [ Wrangler CLI ](#tab-panel-6182)
 
 1. From the [Cloudflare Hyperdrive dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive), select your newly created Hyperdrive configuration.
 2. Go to **Settings**.

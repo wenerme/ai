@@ -4,6 +4,10 @@ description: Map URL patterns to Cloudflare Workers to run your code on matching
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Routes
@@ -57,8 +61,8 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 
 To configure a route using your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), refer to the following example.
 
-* [  wrangler.jsonc ](#tab-panel-9679)
-* [  wrangler.toml ](#tab-panel-9680)
+* [  wrangler.jsonc ](#tab-panel-8562)
+* [  wrangler.toml ](#tab-panel-8563)
 
 JSONC
 
@@ -123,8 +127,8 @@ Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `z
 
 To add multiple routes:
 
-* [  wrangler.jsonc ](#tab-panel-9681)
-* [  wrangler.toml ](#tab-panel-9682)
+* [  wrangler.jsonc ](#tab-panel-8564)
+* [  wrangler.toml ](#tab-panel-8565)
 
 JSONC
 

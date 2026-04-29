@@ -4,6 +4,10 @@ description: Learn about enable notifications in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enable Notifications
@@ -49,8 +53,8 @@ For details, refer to [How Cloudflare calculates Tunnel health alerts](https://d
 
 ## Set up Tunnel Health Alerts
 
-* [ Dashboard ](#tab-panel-7591)
-* [ API ](#tab-panel-7592)
+* [ Dashboard ](#tab-panel-6433)
+* [ API ](#tab-panel-6434)
 
 1. Go to the **Notifications** page.  
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)

@@ -4,6 +4,10 @@ description: Configure mTLS enforcement and minimum TLS version per custom hostn
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -173,8 +177,8 @@ Refer to [Minimum TLS version - SSL/TLS](https://developers.cloudflare.com/ssl/e
 
 Minimum TLS version for custom hostname
 
-* [ Dashboard ](#tab-panel-5699)
-* [ API ](#tab-panel-5700)
+* [ Dashboard ](#tab-panel-4535)
+* [ API ](#tab-panel-4536)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

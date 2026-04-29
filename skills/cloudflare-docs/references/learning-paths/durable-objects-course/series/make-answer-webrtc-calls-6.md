@@ -4,12 +4,16 @@ description: Implement peer-to-peer WebRTC video calls.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Make and answer WebRTC calls
 
-* [ Watch this episode ](#tab-panel-7545)
-* [ Series overview ](#tab-panel-7546)
+* [ Watch this episode ](#tab-panel-6441)
+* [ Series overview ](#tab-panel-6442)
 
 In this video, we build on the frontend we set up earlier by adding functionality for making and answering WebRTC video calls. You will learn how to create peer-to-peer connections, handle ICE candidates, and seamlessly send and receive video streams between users.
 

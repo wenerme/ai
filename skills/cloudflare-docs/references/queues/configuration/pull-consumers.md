@@ -4,6 +4,10 @@ description: Pull messages from a Cloudflare Queue over HTTP from any environmen
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Pull consumers
@@ -112,9 +116,9 @@ You will need to note the token down: it will only be displayed once.
 
 To pull a message, make a HTTP POST request to the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) with a JSON-encoded body that optionally specifies a `visibility_timeout` and a `batch_size`, or an empty JSON object (`{}`):
 
-* [  JavaScript ](#tab-panel-8143)
-* [  TypeScript ](#tab-panel-8144)
-* [  Python ](#tab-panel-8145)
+* [  JavaScript ](#tab-panel-6985)
+* [  TypeScript ](#tab-panel-6986)
+* [  Python ](#tab-panel-6987)
 
 index.js
 
@@ -331,9 +335,9 @@ Messages pulled by a consumer need to be either acknowledged or marked for retry
 
 To acknowledge and/or mark messages to be retried, make a HTTP `POST` request to `/ack` endpoint of your queue per the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) by providing an array of `lease_id` objects to acknowledge and/or retry:
 
-* [  JavaScript ](#tab-panel-8146)
-* [  TypeScript ](#tab-panel-8147)
-* [  Python ](#tab-panel-8148)
+* [  JavaScript ](#tab-panel-6988)
+* [  TypeScript ](#tab-panel-6989)
+* [  Python ](#tab-panel-6990)
 
 index.js
 

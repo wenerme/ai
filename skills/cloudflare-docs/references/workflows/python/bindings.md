@@ -4,6 +4,10 @@ description: Trigger and manage Workflows from Python Workers using FFI bindings
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Interact with a Workflow
@@ -18,8 +22,8 @@ The Python Workers platform leverages [FFI ↗](https://en.wikipedia.org/wiki/Fo
 
 From the configuration perspective, enabling Python Workflows requires adding the `python_workflows` compatibility flag to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-11202)
-* [  wrangler.toml ](#tab-panel-11203)
+* [  wrangler.jsonc ](#tab-panel-10087)
+* [  wrangler.toml ](#tab-panel-10088)
 
 JSONC
 
@@ -35,7 +39,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["python_workflows", "python_workers"],
 
@@ -78,7 +82,7 @@ main = "src/index.py"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "python_workflows", "python_workers" ]
 

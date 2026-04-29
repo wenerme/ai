@@ -4,6 +4,10 @@ description: Reduce read latency and scale throughput by replicating D1 database
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Global read replication
@@ -22,8 +26,8 @@ Tip: Place your database further away for the read replication demo
 
 To simulate how read replication can improve a worst case latency scenario, set your D1 database location hint to be in a farther away region. For example, if you are in Europe create your database in Western North America (WNAM).
 
-* [  JavaScript ](#tab-panel-6520)
-* [  TypeScript ](#tab-panel-6521)
+* [  JavaScript ](#tab-panel-5362)
+* [  TypeScript ](#tab-panel-5363)
 
 JavaScript
 
@@ -342,8 +346,8 @@ With the REST API, set `read_replication.mode: auto` to enable read replication 
 
 For this REST endpoint, you need to have an API token with `D1:Edit` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-6514)
-* [ TypeScript ](#tab-panel-6515)
+* [ cURL ](#tab-panel-5356)
+* [ TypeScript ](#tab-panel-5357)
 
 Terminal window
 
@@ -402,8 +406,8 @@ Note
 
 Disabling read replication takes up to 24 hours for replicas to stop processing requests. Sessions API works with databases that do not have read replication enabled, so it is safe to run code with Sessions API even after disabling read replication.
 
-* [ cURL ](#tab-panel-6516)
-* [ TypeScript ](#tab-panel-6517)
+* [ cURL ](#tab-panel-5358)
+* [ TypeScript ](#tab-panel-5359)
 
 Terminal window
 
@@ -460,8 +464,8 @@ Alternatively, `GET` D1 database REST endpoint returns if read replication is en
 
 For this REST endpoint, you need to have an API token with `D1:Read` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-6518)
-* [ TypeScript ](#tab-panel-6519)
+* [ cURL ](#tab-panel-5360)
+* [ TypeScript ](#tab-panel-5361)
 
 Terminal window
 
@@ -547,9 +551,9 @@ There are some known limitations for D1 read replication.
 
 To account for replica lag, it is important to consider the consistency model for D1\. A consistency model is a logical framework that governs how a database system serves user queries (how the data is updated and accessed) when there are multiple database instances. Different models can be useful in different use cases. Most database systems provide [read committed ↗](https://jepsen.io/consistency/models/read-committed), [snapshot isolation ↗](https://jepsen.io/consistency/models/snapshot-isolation), or [serializable ↗](https://jepsen.io/consistency/models/serializable) consistency models, depending on their configuration.
 
-#### Without Sessions API
+#### Without a consistency model framework
 
-Consider what could happen in a distributed database system.
+Consider what could happen in a distributed database system without an explicit framework to enforce a consistency model.
 
 ![Distributed replicas could cause inconsistencies without Sessions API](https://developers.cloudflare.com/images/d1/consistency-without-sessions-api.png) 
 1. Your SQL write query is processed by the primary database instance.

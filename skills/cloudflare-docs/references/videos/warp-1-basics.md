@@ -4,6 +4,10 @@ description: In this episode, we explain the core features of the Cloudflare WAR
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # WARP - Understand Cloudflare WARP basics

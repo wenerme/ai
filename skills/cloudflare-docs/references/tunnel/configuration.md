@@ -4,6 +4,10 @@ description: Configure tunnel ingress rules, origins, and protocol settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configuration
@@ -36,8 +40,8 @@ graph LR
 
 ### Deploy a replica
 
-* [ Dashboard ](#tab-panel-9220)
-* [ CLI ](#tab-panel-9221)
+* [ Dashboard ](#tab-panel-8079)
+* [ CLI ](#tab-panel-8080)
 
 To deploy a replica for a remotely-managed tunnel:
 

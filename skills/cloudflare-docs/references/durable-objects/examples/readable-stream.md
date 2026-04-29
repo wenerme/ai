@@ -4,6 +4,10 @@ description: Stream ReadableStream from Durable Objects.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use ReadableStream with Durable Object and Workers
@@ -19,8 +23,8 @@ This example demonstrates:
 * The Worker reads and logs the values from the stream.
 * The Worker then cancels the stream after 5 values.
 
-* [  JavaScript ](#tab-panel-5799)
-* [  TypeScript ](#tab-panel-5800)
+* [  JavaScript ](#tab-panel-5805)
+* [  TypeScript ](#tab-panel-5806)
 
 JavaScript
 

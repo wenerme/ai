@@ -4,6 +4,10 @@ description: Control where R2 stores your data using automatic placement, locati
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Data location
@@ -96,8 +100,8 @@ Use Jurisdictional Restrictions when you need to ensure data is stored and proce
 
 To access R2 buckets that belong to a jurisdiction from [Workers](https://developers.cloudflare.com/workers/), you will need to specify the jurisdiction as well as the bucket name as part of your [bindings](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#3-bind-your-bucket-to-a-worker) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8330)
-* [  wrangler.toml ](#tab-panel-8331)
+* [  wrangler.jsonc ](#tab-panel-7172)
+* [  wrangler.toml ](#tab-panel-7173)
 
 JSONC
 

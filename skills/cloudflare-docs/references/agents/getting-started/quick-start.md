@@ -4,6 +4,10 @@ description: Build your first agent in 10 minutes — a counter with persistent 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Quick start
@@ -98,8 +102,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-5120)
-* [  TypeScript ](#tab-panel-5121)
+* [  JavaScript ](#tab-panel-3954)
+* [  TypeScript ](#tab-panel-3955)
 
 JavaScript
 
@@ -262,8 +266,8 @@ Explain Code
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-5112)
-* [  wrangler.toml ](#tab-panel-5113)
+* [  wrangler.jsonc ](#tab-panel-3946)
+* [  wrangler.toml ](#tab-panel-3947)
 
 JSONC
 
@@ -277,7 +281,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -326,7 +330,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -451,8 +455,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-5116)
-* [  TypeScript ](#tab-panel-5117)
+* [  JavaScript ](#tab-panel-3950)
+* [  TypeScript ](#tab-panel-3951)
 
 JavaScript
 
@@ -555,8 +559,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-5114)
-* [  TypeScript ](#tab-panel-5115)
+* [  JavaScript ](#tab-panel-3948)
+* [  TypeScript ](#tab-panel-3949)
 
 JavaScript
 
@@ -606,8 +610,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-5118)
-* [  TypeScript ](#tab-panel-5119)
+* [  JavaScript ](#tab-panel-3952)
+* [  TypeScript ](#tab-panel-3953)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Configure SSL/TLS encryption from edge to origin, redirect HTTP to 
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enforce HTTPS and encrypt all traffic (Free, Pro, and Business)
@@ -76,8 +80,8 @@ If you do not see your server listed, search the [DigiCert documentation ↗](ht
 
 After installing a valid certificate on your origin server, set the encryption mode to **Full (strict)** by following the steps below.
 
-* [ Dashboard ](#tab-panel-8132)
-* [ API ](#tab-panel-8133)
+* [ Dashboard ](#tab-panel-8158)
+* [ API ](#tab-panel-8159)
 
 To change your encryption mode in the dashboard:
 
@@ -106,8 +110,8 @@ Note
 
 If only some parts of your application can support HTTPS traffic, do not turn on Always Use HTTPS. Use a [single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) to selectively redirect specific paths to HTTPS instead. Refer to [Redirect admin area requests to HTTPS](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/) for an example.
 
-* [ Dashboard ](#tab-panel-8122)
-* [ API ](#tab-panel-8123)
+* [ Dashboard ](#tab-panel-8148)
+* [ API ](#tab-panel-8149)
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
@@ -122,8 +126,8 @@ If only some parts of your application can support HTTPS traffic, do not turn on
 
 Automatic HTTPS Rewrites prevents mixed content errors by rewriting HTTP resource URLs in your page HTML to HTTPS. This is useful for sites where you do not control all asset URLs, such as CMS-hosted content or embedded third-party resources.
 
-* [ Dashboard ](#tab-panel-8124)
-* [ API ](#tab-panel-8125)
+* [ Dashboard ](#tab-panel-8150)
+* [ API ](#tab-panel-8151)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
@@ -143,8 +147,8 @@ After your encryption mode is set and HTTP traffic is redirected, strengthen you
 
 TLS 1.0 and 1.1 have known vulnerabilities and are no longer considered secure. Setting the minimum TLS version to 1.2 blocks connections from clients using older protocols. For guidance on which version to choose, refer to [TLS protocols](https://developers.cloudflare.com/ssl/reference/protocols/).
 
-* [ Dashboard ](#tab-panel-8126)
-* [ API ](#tab-panel-8127)
+* [ Dashboard ](#tab-panel-8152)
+* [ API ](#tab-panel-8153)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
@@ -160,8 +164,8 @@ To set minimum TLS versions for individual hostnames instead of the entire zone,
 
 TLS 1.3 provides faster handshakes and improved security over TLS 1.2.
 
-* [ Dashboard ](#tab-panel-8128)
-* [ API ](#tab-panel-8129)
+* [ Dashboard ](#tab-panel-8154)
+* [ API ](#tab-panel-8155)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
@@ -183,8 +187,8 @@ Before turning on HSTS, confirm these prerequisites:
 * Your DNS records are set to [Proxied](https://developers.cloudflare.com/dns/proxy-status/).
 * You are not redirecting HTTPS to HTTP anywhere.
 
-* [ Dashboard ](#tab-panel-8130)
-* [ API ](#tab-panel-8131)
+* [ Dashboard ](#tab-panel-8156)
+* [ API ](#tab-panel-8157)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)

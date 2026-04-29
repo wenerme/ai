@@ -4,14 +4,18 @@ description: Turn on Rocket Loader for your zone.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enable
 
 To enable or disable Rocket Loader, use the following instructions.
 
-* [ Dashboard ](#tab-panel-9040)
-* [ API ](#tab-panel-9041)
+* [ Dashboard ](#tab-panel-7882)
+* [ API ](#tab-panel-7883)
 
 To enable or disable **Rocket Loader** in the dashboard:
 

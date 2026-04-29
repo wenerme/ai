@@ -4,6 +4,10 @@ description: Set up AI Gateway and send your first request to observe and contro
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Getting started
@@ -64,8 +68,8 @@ Create a gateway manually
 
 You can also create gateways manually with a custom name and configuration through the dashboard or API.
 
-* [ Dashboard ](#tab-panel-5297)
-* [ API ](#tab-panel-5298)
+* [ Dashboard ](#tab-panel-4131)
+* [ API ](#tab-panel-4132)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.

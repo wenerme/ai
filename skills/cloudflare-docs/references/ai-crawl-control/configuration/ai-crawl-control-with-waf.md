@@ -4,6 +4,10 @@ description: Use AI Crawl Control alongside WAF custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # AI Crawl Control with Cloudflare WAF
@@ -87,8 +91,8 @@ You may have both of the following features enabled:
 
 In this scenario, you have two custom rules, each directing a different logic for handling AI crawlers. To resolve this issue:
 
-* [  New dashboard ](#tab-panel-5266)
-* [ Old dashboard ](#tab-panel-5267)
+* [  New dashboard ](#tab-panel-4100)
+* [ Old dashboard ](#tab-panel-4101)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

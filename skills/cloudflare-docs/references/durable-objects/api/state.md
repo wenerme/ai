@@ -4,6 +4,10 @@ description: API reference for DurableObjectState, which controls concurrency, W
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Durable Object State
@@ -14,9 +18,9 @@ The `DurableObjectState` interface is accessible as an instance property on the 
 
 The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [DurableObjectStorage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [DurableObjectState::storage](https://developers.cloudflare.com/durable-objects/api/state/#storage).
 
-* [  JavaScript ](#tab-panel-6849)
-* [  TypeScript ](#tab-panel-6850)
-* [  Python ](#tab-panel-6851)
+* [  JavaScript ](#tab-panel-5691)
+* [  TypeScript ](#tab-panel-5692)
+* [  Python ](#tab-panel-5693)
 
 JavaScript
 
@@ -146,8 +150,8 @@ For regular request handling, you rarely need `blockConcurrencyWhile`. SQLite st
 
 Reserve `blockConcurrencyWhile` outside the constructor for cases where you make external async calls (such as `fetch()`) and cannot tolerate state changes while the event loop yields.
 
-* [  JavaScript ](#tab-panel-6852)
-* [  Python ](#tab-panel-6853)
+* [  JavaScript ](#tab-panel-5694)
+* [  Python ](#tab-panel-5695)
 
 JavaScript
 
@@ -355,8 +359,8 @@ If no parameter or a parameter of `0` is provided and a timeout has been previou
 
 `abort` is used to forcibly reset a Durable Object. A JavaScript `Error` with the message passed as a parameter will be logged. This error is not able to be caught within the application code.
 
-* [  TypeScript ](#tab-panel-6854)
-* [  Python ](#tab-panel-6855)
+* [  TypeScript ](#tab-panel-5696)
+* [  Python ](#tab-panel-5697)
 
 JavaScript
 

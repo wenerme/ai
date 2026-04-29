@@ -4,6 +4,10 @@ description: Learn how to set up Geo Key Manager and choose the geographical bou
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Setup
@@ -102,8 +106,8 @@ For more information on the `policy` field, refer to [Supported options](https:/
 
 The first version of Geo Key Manager supports 3 regions: U.S., E.U., and a set of High Security Data Centers. If you would like to restrict your private key to another country or region, [apply for the closed beta ↗](https://www.cloudflare.com/lp/geo-key-manager/) of the new version.
 
-* [ Dashboard ](#tab-panel-9095)
-* [ API ](#tab-panel-9096)
+* [ Dashboard ](#tab-panel-7937)
+* [ API ](#tab-panel-7938)
 
 To use Geo Key Manager in the dashboard:
 

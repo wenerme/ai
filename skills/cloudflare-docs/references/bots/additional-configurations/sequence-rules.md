@@ -4,6 +4,10 @@ description: Detect and mitigate bot traffic based on cookie-based request seque
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Sequence rules
@@ -42,8 +46,8 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule via the Cloudflare dashboard
 
-* [  New dashboard ](#tab-panel-5531)
-* [ Old dashboard ](#tab-panel-5532)
+* [  New dashboard ](#tab-panel-4367)
+* [ Old dashboard ](#tab-panel-4368)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

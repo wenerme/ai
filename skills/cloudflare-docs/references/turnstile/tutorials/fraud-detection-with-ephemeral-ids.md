@@ -4,6 +4,10 @@ description: Learn how to implement fraud detection using Turnstile's Ephemeral 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -12,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Fraud detection with Ephemeral IDs
 
-**Last reviewed:**  3 months ago 
+**Last reviewed:**  4 months ago 
 
 [Ephemeral IDs](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/) let you detect fraud patterns that evade traditional IP-based detection. This tutorial will show you how to log Ephemeral IDs, detect suspicious patterns, and block bad actors.
 

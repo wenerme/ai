@@ -4,6 +4,10 @@ description: You can add environment variables, which are a type of binding, to 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Environment variables
@@ -18,8 +22,8 @@ Text strings and JSON values are not encrypted and are useful for storing applic
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file. In the following example, `API_HOST` and `API_ACCOUNT_ID` are text values and `SERVICE_X_DATA` is a JSON value.
 
-* [  wrangler.jsonc ](#tab-panel-9651)
-* [  wrangler.toml ](#tab-panel-9652)
+* [  wrangler.jsonc ](#tab-panel-8534)
+* [  wrangler.toml ](#tab-panel-8535)
 
 JSONC
 
@@ -83,8 +87,8 @@ Explain Code
 
 Refer to the following example on how to access the `API_HOST` environment variable in your Worker code:
 
-* [  JavaScript ](#tab-panel-9645)
-* [  TypeScript ](#tab-panel-9646)
+* [  JavaScript ](#tab-panel-8528)
+* [  TypeScript ](#tab-panel-8529)
 
 JavaScript
 
@@ -131,8 +135,8 @@ export default {
 
 You can also import `env` from [cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-9649)
-* [  TypeScript ](#tab-panel-9650)
+* [  JavaScript ](#tab-panel-8532)
+* [  TypeScript ](#tab-panel-8533)
 
 JavaScript
 
@@ -201,8 +205,8 @@ For more details, refer to [Importing env as a global](https://developers.cloudf
 
 The example below sets up two environments, `staging` and `production`, with different values for `API_HOST`.
 
-* [  wrangler.jsonc ](#tab-panel-9647)
-* [  wrangler.toml ](#tab-panel-9648)
+* [  wrangler.jsonc ](#tab-panel-8530)
+* [  wrangler.toml ](#tab-panel-8531)
 
 JSONC
 

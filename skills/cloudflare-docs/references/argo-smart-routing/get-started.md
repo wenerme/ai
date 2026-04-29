@@ -4,6 +4,10 @@ description: Learn how to enable Argo Smart Routing in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/argo-smart-routing/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started
@@ -14,8 +18,8 @@ This functionality is now offered as part of Cloudflare's origin server safeguar
 
 Argo Smart Routing is a one-click solution to speed up your global traffic.
 
-* [ Dashboard ](#tab-panel-5461)
-* [ API ](#tab-panel-5462)
+* [ Dashboard ](#tab-panel-4295)
+* [ API ](#tab-panel-4296)
 
 To enable [Argo Smart Routing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic) in the dashboard:
 

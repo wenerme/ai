@@ -4,6 +4,10 @@ description: Device IPs in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -197,9 +201,9 @@ The Cloudflare One dashboard defaults to showing devices that were last seen wit
 
 To check the device IP used by the device client's virtual network interface:
 
-* [ Windows ](#tab-panel-6074)
-* [ macOS ](#tab-panel-6075)
-* [ Linux ](#tab-panel-6076)
+* [ Windows ](#tab-panel-4916)
+* [ macOS ](#tab-panel-4917)
+* [ Linux ](#tab-panel-4918)
 
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
 

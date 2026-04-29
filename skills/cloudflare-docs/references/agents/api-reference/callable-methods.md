@@ -4,6 +4,10 @@ description: Expose Agent methods to external clients over WebSocket RPC using t
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Callable methods
@@ -12,8 +16,8 @@ Callable methods let clients invoke agent methods over WebSocket using RPC (Remo
 
 ## Overview
 
-* [  JavaScript ](#tab-panel-4078)
-* [  TypeScript ](#tab-panel-4079)
+* [  JavaScript ](#tab-panel-2912)
+* [  TypeScript ](#tab-panel-2913)
 
 JavaScript
 
@@ -59,8 +63,8 @@ export class MyAgent extends Agent {
 
 ```
 
-* [  JavaScript ](#tab-panel-4076)
-* [  TypeScript ](#tab-panel-4077)
+* [  JavaScript ](#tab-panel-2910)
+* [  TypeScript ](#tab-panel-2911)
 
 JavaScript
 
@@ -114,8 +118,8 @@ The `@callable()` decorator is specifically for WebSocket-based RPC from externa
 
 Add the `@callable()` decorator to any method you want to expose:
 
-* [  JavaScript ](#tab-panel-4096)
-* [  TypeScript ](#tab-panel-4097)
+* [  JavaScript ](#tab-panel-2930)
+* [  TypeScript ](#tab-panel-2931)
 
 JavaScript
 
@@ -264,8 +268,8 @@ There are two ways to call methods from the client:
 
 #### Using `agent.stub` (recommended):
 
-* [  JavaScript ](#tab-panel-4080)
-* [  TypeScript ](#tab-panel-4081)
+* [  JavaScript ](#tab-panel-2914)
+* [  TypeScript ](#tab-panel-2915)
 
 JavaScript
 
@@ -299,8 +303,8 @@ const stats = await agent.stub.getStats();
 
 #### Using `agent.call()`:
 
-* [  JavaScript ](#tab-panel-4082)
-* [  TypeScript ](#tab-panel-4083)
+* [  JavaScript ](#tab-panel-2916)
+* [  TypeScript ](#tab-panel-2917)
 
 JavaScript
 
@@ -340,8 +344,8 @@ The `stub` proxy provides better ergonomics and TypeScript support.
 
 Arguments and return values must be JSON-serializable:
 
-* [  JavaScript ](#tab-panel-4088)
-* [  TypeScript ](#tab-panel-4089)
+* [  JavaScript ](#tab-panel-2922)
+* [  TypeScript ](#tab-panel-2923)
 
 JavaScript
 
@@ -433,8 +437,8 @@ Explain Code
 
 Both sync and async methods work:
 
-* [  JavaScript ](#tab-panel-4090)
-* [  TypeScript ](#tab-panel-4091)
+* [  JavaScript ](#tab-panel-2924)
+* [  TypeScript ](#tab-panel-2925)
 
 JavaScript
 
@@ -520,8 +524,8 @@ Explain Code
 
 Methods that do not return a value:
 
-* [  JavaScript ](#tab-panel-4086)
-* [  TypeScript ](#tab-panel-4087)
+* [  JavaScript ](#tab-panel-2920)
+* [  TypeScript ](#tab-panel-2921)
 
 JavaScript
 
@@ -563,8 +567,8 @@ class MyAgent extends Agent {
 
 On the client, these still return a Promise that resolves when the method completes:
 
-* [  JavaScript ](#tab-panel-4084)
-* [  TypeScript ](#tab-panel-4085)
+* [  JavaScript ](#tab-panel-2918)
+* [  TypeScript ](#tab-panel-2919)
 
 JavaScript
 
@@ -594,8 +598,8 @@ For methods that produce data over time (like AI text generation), use streaming
 
 ### Defining a streaming method
 
-* [  JavaScript ](#tab-panel-4098)
-* [  TypeScript ](#tab-panel-4099)
+* [  JavaScript ](#tab-panel-2932)
+* [  TypeScript ](#tab-panel-2933)
 
 JavaScript
 
@@ -701,8 +705,8 @@ Explain Code
 
 ### Consuming streams on the client
 
-* [  JavaScript ](#tab-panel-4106)
-* [  TypeScript ](#tab-panel-4107)
+* [  JavaScript ](#tab-panel-2940)
+* [  TypeScript ](#tab-panel-2941)
 
 JavaScript
 
@@ -824,8 +828,8 @@ Explain Code
 | end(finalChunk?) | End the stream, optionally with a final value    |
 | error(message)   | Send an error to the client and close the stream |
 
-* [  JavaScript ](#tab-panel-4092)
-* [  TypeScript ](#tab-panel-4093)
+* [  JavaScript ](#tab-panel-2926)
+* [  TypeScript ](#tab-panel-2927)
 
 JavaScript
 
@@ -891,8 +895,8 @@ Explain Code
 
 Pass your agent class as a type parameter for full type safety:
 
-* [  JavaScript ](#tab-panel-4104)
-* [  TypeScript ](#tab-panel-4105)
+* [  JavaScript ](#tab-panel-2938)
+* [  TypeScript ](#tab-panel-2939)
 
 JavaScript
 
@@ -983,8 +987,8 @@ Explain Code
 
 If you have methods that are not decorated with `@callable()`, you can exclude them from the type:
 
-* [  JavaScript ](#tab-panel-4110)
-* [  TypeScript ](#tab-panel-4111)
+* [  JavaScript ](#tab-panel-2944)
+* [  TypeScript ](#tab-panel-2945)
 
 JavaScript
 
@@ -1080,8 +1084,8 @@ Explain Code
 
 Errors thrown in callable methods are propagated to the client:
 
-* [  JavaScript ](#tab-panel-4100)
-* [  TypeScript ](#tab-panel-4101)
+* [  JavaScript ](#tab-panel-2934)
+* [  TypeScript ](#tab-panel-2935)
 
 JavaScript
 
@@ -1157,8 +1161,8 @@ Explain Code
 
 ### Client-side error handling
 
-* [  JavaScript ](#tab-panel-4094)
-* [  TypeScript ](#tab-panel-4095)
+* [  JavaScript ](#tab-panel-2928)
+* [  TypeScript ](#tab-panel-2929)
 
 JavaScript
 
@@ -1202,8 +1206,8 @@ try {
 
 For streaming methods, use the `onError` callback:
 
-* [  JavaScript ](#tab-panel-4102)
-* [  TypeScript ](#tab-panel-4103)
+* [  JavaScript ](#tab-panel-2936)
+* [  TypeScript ](#tab-panel-2937)
 
 JavaScript
 
@@ -1265,8 +1269,8 @@ Explain Code
 
 Server-side, you can use `stream.error()` to gracefully send an error mid-stream:
 
-* [  JavaScript ](#tab-panel-4112)
-* [  TypeScript ](#tab-panel-4113)
+* [  JavaScript ](#tab-panel-2946)
+* [  TypeScript ](#tab-panel-2947)
 
 JavaScript
 
@@ -1350,8 +1354,8 @@ Explain Code
 
 If the WebSocket connection closes while RPC calls are pending, they automatically reject with a "Connection closed" error:
 
-* [  JavaScript ](#tab-panel-4108)
-* [  TypeScript ](#tab-panel-4109)
+* [  JavaScript ](#tab-panel-2942)
+* [  TypeScript ](#tab-panel-2943)
 
 JavaScript
 
@@ -1403,8 +1407,8 @@ try {
 
 The client automatically reconnects after disconnection. To retry a failed call after reconnection, await `agent.ready` before retrying:
 
-* [  JavaScript ](#tab-panel-4118)
-* [  TypeScript ](#tab-panel-4119)
+* [  JavaScript ](#tab-panel-2952)
+* [  TypeScript ](#tab-panel-2953)
 
 JavaScript
 
@@ -1496,8 +1500,8 @@ Only retry idempotent operations. If the server received the request but the con
 
 When calling an agent from the same Worker (for example, in your `fetch` handler), use Durable Object RPC directly:
 
-* [  JavaScript ](#tab-panel-4114)
-* [  TypeScript ](#tab-panel-4115)
+* [  JavaScript ](#tab-panel-2948)
+* [  TypeScript ](#tab-panel-2949)
 
 JavaScript
 
@@ -1567,8 +1571,8 @@ Explain Code
 
 When one agent needs to call another:
 
-* [  JavaScript ](#tab-panel-4116)
-* [  TypeScript ](#tab-panel-4117)
+* [  JavaScript ](#tab-panel-2950)
+* [  TypeScript ](#tab-panel-2951)
 
 JavaScript
 
@@ -1643,8 +1647,8 @@ Durable Object RPC is more efficient for internal calls since it does not go thr
 
 Marks a method as callable from external clients.
 
-* [  JavaScript ](#tab-panel-4120)
-* [  TypeScript ](#tab-panel-4121)
+* [  JavaScript ](#tab-panel-2954)
+* [  TypeScript ](#tab-panel-2955)
 
 JavaScript
 
@@ -1731,8 +1735,8 @@ type CallableMetadata = {
 
 Used in streaming callable methods to send data to the client.
 
-* [  JavaScript ](#tab-panel-4122)
-* [  TypeScript ](#tab-panel-4123)
+* [  JavaScript ](#tab-panel-2956)
+* [  TypeScript ](#tab-panel-2957)
 
 JavaScript
 
@@ -1803,8 +1807,8 @@ Explain Code
 | agent.call | (method, args?, options?) => Promise | Call a method by name |
 | agent.stub | Proxy                                | Typed method calls    |
 
-* [  JavaScript ](#tab-panel-4126)
-* [  TypeScript ](#tab-panel-4127)
+* [  JavaScript ](#tab-panel-2960)
+* [  TypeScript ](#tab-panel-2961)
 
 JavaScript
 
@@ -1903,8 +1907,8 @@ The legacy format `{ onChunk, onDone, onError }` (without nesting under `stream`
 
 Returns a map of all callable methods on the agent with their metadata. Useful for introspection and automatic documentation.
 
-* [  JavaScript ](#tab-panel-4124)
-* [  TypeScript ](#tab-panel-4125)
+* [  JavaScript ](#tab-panel-2958)
+* [  TypeScript ](#tab-panel-2959)
 
 JavaScript
 

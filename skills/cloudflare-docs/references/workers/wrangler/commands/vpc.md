@@ -4,6 +4,10 @@ description: Wrangler commands for managing Workers VPC services.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # VPC
@@ -14,9 +18,9 @@ Manage [Workers VPC](https://developers.cloudflare.com/workers-vpc/) services us
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-9738)
-* [  pnpm ](#tab-panel-9739)
-* [  yarn ](#tab-panel-9740)
+* [  npm ](#tab-panel-9746)
+* [  pnpm ](#tab-panel-9747)
+* [  yarn ](#tab-panel-9748)
 
 Terminal window
 
@@ -91,9 +95,9 @@ Automatically provision draft bindings with new resources
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-9741)
-* [  pnpm ](#tab-panel-9742)
-* [  yarn ](#tab-panel-9743)
+* [  npm ](#tab-panel-9749)
+* [  pnpm ](#tab-panel-9750)
+* [  yarn ](#tab-panel-9751)
 
 Terminal window
 
@@ -146,9 +150,9 @@ Automatically provision draft bindings with new resources
 
 Get a VPC service
 
-* [  npm ](#tab-panel-9744)
-* [  pnpm ](#tab-panel-9745)
-* [  yarn ](#tab-panel-9746)
+* [  npm ](#tab-panel-9752)
+* [  pnpm ](#tab-panel-9753)
+* [  yarn ](#tab-panel-9754)
 
 Terminal window
 
@@ -201,9 +205,9 @@ Automatically provision draft bindings with new resources
 
 List VPC services
 
-* [  npm ](#tab-panel-9747)
-* [  pnpm ](#tab-panel-9748)
-* [  yarn ](#tab-panel-9749)
+* [  npm ](#tab-panel-9755)
+* [  pnpm ](#tab-panel-9756)
+* [  yarn ](#tab-panel-9757)
 
 Terminal window
 
@@ -253,9 +257,9 @@ Automatically provision draft bindings with new resources
 
 Update a VPC service
 
-* [  npm ](#tab-panel-9750)
-* [  pnpm ](#tab-panel-9751)
-* [  yarn ](#tab-panel-9752)
+* [  npm ](#tab-panel-9758)
+* [  pnpm ](#tab-panel-9759)
+* [  yarn ](#tab-panel-9760)
 
 Terminal window
 

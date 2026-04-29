@@ -4,6 +4,10 @@ description: Cloudflare Queues account limits for message size, throughput, rete
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Limits
@@ -49,8 +53,8 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form â
 
 By default, the maximum CPU time per consumer Worker invocation is set to 30 seconds, but can be increased by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8159)
-* [  wrangler.toml ](#tab-panel-8160)
+* [  wrangler.jsonc ](#tab-panel-7001)
+* [  wrangler.toml ](#tab-panel-7002)
 
 JSONC
 

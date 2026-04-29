@@ -4,6 +4,10 @@ description: Monitor sandbox filesystem changes in real-time using the Sandbox S
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # File watching
@@ -36,8 +40,8 @@ const stream = await sandbox.watch(path: string, options?: WatchOptions): Promis
 
 **Returns**: `Promise<ReadableStream<Uint8Array>>` — an SSE stream of `FileWatchSSEEvent` objects
 
-* [  JavaScript ](#tab-panel-8637)
-* [  TypeScript ](#tab-panel-8638)
+* [  JavaScript ](#tab-panel-7479)
+* [  TypeScript ](#tab-panel-7480)
 
 JavaScript
 

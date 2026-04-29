@@ -4,6 +4,10 @@ description: Add CAA DNS records to control which CAs can issue certificates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -92,8 +96,8 @@ This list is not exhaustive, and other CAs might be added or removed for operati
 
 Create a CAA record for each Certificate Authority (CA) that you plan to use for your domain.
 
-* [ Dashboard ](#tab-panel-9085)
-* [ API ](#tab-panel-9086)
+* [ Dashboard ](#tab-panel-7927)
+* [ API ](#tab-panel-7928)
 
 To add a CAA record in the dashboard,
 

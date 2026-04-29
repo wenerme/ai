@@ -4,6 +4,10 @@ description: How Captive portal detection works in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -71,8 +75,8 @@ Captive portal logs are used by Cloudflare Support to troubleshoot Cloudflare On
 
 To get captive portal logs:
 
-* [ Version 2026.2+ ](#tab-panel-6114)
-* [ Version 2026.1 and earlier ](#tab-panel-6115)
+* [ Version 2026.2+ ](#tab-panel-4956)
+* [ Version 2026.1 and earlier ](#tab-panel-4957)
 
 1. Open a terminal window.
 2. Run the following command:  

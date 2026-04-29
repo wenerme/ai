@@ -4,6 +4,10 @@ description: Set up and deploy your first Workers AI project with embedded funct
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get Started
@@ -40,8 +44,8 @@ bun add @cloudflare/ai-utils
 
 Update the `index.ts` file in your application directory with the following code:
 
-* [  JavaScript ](#tab-panel-9499)
-* [  TypeScript ](#tab-panel-9500)
+* [  JavaScript ](#tab-panel-8382)
+* [  TypeScript ](#tab-panel-8383)
 
 index.js
 

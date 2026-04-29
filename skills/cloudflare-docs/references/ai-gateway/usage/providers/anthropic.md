@@ -4,6 +4,10 @@ description: Route Anthropic API requests through AI Gateway for observability a
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Anthropic
@@ -27,8 +31,8 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5319)
-* [ Unauthenticated Gateway ](#tab-panel-5320)
+* [ With Authenticated Gateway ](#tab-panel-4153)
+* [ Unauthenticated Gateway ](#tab-panel-4154)
 
 Terminal window
 
@@ -131,8 +135,8 @@ Explain Code
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5321)
-* [ Unauthenticated Gateway ](#tab-panel-5322)
+* [ With Authenticated Gateway ](#tab-panel-4155)
+* [ Unauthenticated Gateway ](#tab-panel-4156)
 
 ```
 

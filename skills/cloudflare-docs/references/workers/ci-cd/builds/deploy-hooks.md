@@ -4,6 +4,10 @@ description: Generate unique URLs that trigger new builds when they receive an H
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Deploy Hooks
@@ -142,8 +146,8 @@ Once the earlier build moves past `initializing`, a later POST creates a new bui
 
 A Worker that receives a `/deploy` command from Slack and triggers a build:
 
-* [  JavaScript ](#tab-panel-9624)
-* [  TypeScript ](#tab-panel-9625)
+* [  JavaScript ](#tab-panel-8507)
+* [  TypeScript ](#tab-panel-8508)
 
 JavaScript
 
@@ -237,8 +241,8 @@ Explain Code
 
 A Worker with a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) that rebuilds every hour:
 
-* [  JavaScript ](#tab-panel-9622)
-* [  TypeScript ](#tab-panel-9623)
+* [  JavaScript ](#tab-panel-8505)
+* [  TypeScript ](#tab-panel-8506)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Manage your Cloudflare configuration as infrastructure as code usin
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cloudflare Terraform provider

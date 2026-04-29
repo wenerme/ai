@@ -4,6 +4,10 @@ description: Create a dynamic dispatch Worker to route incoming requests to user
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Dynamic dispatch Worker
@@ -33,8 +37,8 @@ You can also create a dispatch Worker from the Cloudflare dashboard. Go to **Wor
 
 To allow your dynamic dispatch Worker to dynamically route requests to Workers in a namespace, you need to configure a dispatch namespace [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). This binding enables your dynamic dispatch Worker to call any user Worker within that namespace using `env.dispatcher.get()`.
 
-* [  wrangler.jsonc ](#tab-panel-5711)
-* [  wrangler.toml ](#tab-panel-5712)
+* [  wrangler.jsonc ](#tab-panel-4547)
+* [  wrangler.toml ](#tab-panel-4548)
 
 JSONC
 

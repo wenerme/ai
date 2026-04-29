@@ -4,6 +4,10 @@ description: Update cloudflared to the latest version.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Update cloudflared
@@ -14,12 +18,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-9230)
-* [ macOS ](#tab-panel-9231)
-* [ Debian ](#tab-panel-9232)
-* [ Red Hat ](#tab-panel-9233)
-* [ Docker ](#tab-panel-9234)
-* [ Other ](#tab-panel-9235)
+* [ Windows ](#tab-panel-8089)
+* [ macOS ](#tab-panel-8090)
+* [ Debian ](#tab-panel-8091)
+* [ Red Hat ](#tab-panel-8092)
+* [ Docker ](#tab-panel-8093)
+* [ Other ](#tab-panel-8094)
 
 Run the following command:
 

@@ -4,6 +4,10 @@ description: Microsoft Entra ID (formerly Azure Active Directory) calculates a u
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -80,15 +84,15 @@ cd risky-users
    * `<ACCOUNT_ID>`: your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).  
    * `<TENANT_ID>`: your Entra ID **Directory (tenant) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
    * `<CLIENT_ID>`: your Entra ID **Application (client) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
-   * [  wrangler.jsonc ](#tab-panel-6378)  
-   * [  wrangler.toml ](#tab-panel-6379)  
+   * [  wrangler.jsonc ](#tab-panel-5220)  
+   * [  wrangler.toml ](#tab-panel-5221)  
 JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
   "name": "risky-users",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-24",  
+  "compatibility_date": "2026-04-29",  
   "main": "src/index.js",  
   "workers_dev": false,  
   "account_id": "<ACCOUNT-ID>",  
@@ -107,7 +111,7 @@ TOML
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "risky-users"  
 # Set this to today's date  
-compatibility_date = "2026-04-24"  
+compatibility_date = "2026-04-29"  
 main = "src/index.js"  
 workers_dev = false  
 account_id = "<ACCOUNT-ID>"  

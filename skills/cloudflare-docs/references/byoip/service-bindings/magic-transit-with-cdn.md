@@ -4,6 +4,10 @@ description: Service bindings allow BYOIP customers to selectively route traffic
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use BYOIP with Magic Transit and CDN
@@ -163,8 +167,8 @@ Tip
 
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a zone on [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
-* [ Dashboard ](#tab-panel-5633)
-* [ API ](#tab-panel-5634)
+* [ Dashboard ](#tab-panel-4469)
+* [ API ](#tab-panel-4470)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -180,8 +184,8 @@ Make sure you have the correct Key/Token and permissions.
 
 ## 4\. Create DNS records
 
-* [ Dashboard ](#tab-panel-5635)
-* [ API ](#tab-panel-5636)
+* [ Dashboard ](#tab-panel-4471)
+* [ API ](#tab-panel-4472)
 
 To create a DNS record in the dashboard:
 

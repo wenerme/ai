@@ -4,6 +4,10 @@ description: Resolve requests to your domain to a set of proxy third-party origi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -16,10 +20,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Resolve requests to your domain to a set of proxy third-party origin URLs.
 
-* [  JavaScript ](#tab-panel-9791)
-* [  TypeScript ](#tab-panel-9792)
-* [  Hono ](#tab-panel-9793)
-* [  Python ](#tab-panel-9794)
+* [  JavaScript ](#tab-panel-8676)
+* [  TypeScript ](#tab-panel-8677)
+* [  Hono ](#tab-panel-8678)
+* [  Python ](#tab-panel-8679)
 
 JavaScript
 

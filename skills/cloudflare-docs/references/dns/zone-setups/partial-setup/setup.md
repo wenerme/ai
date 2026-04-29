@@ -4,6 +4,10 @@ description: A CNAME setup (also known as partial) allows you to use Cloudflare'
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Setup
@@ -29,8 +33,8 @@ If your domain is sensitive to downtime, instead of using Universal SSL, conside
 
 ## 1\. Convert your zone and review DNS records
 
-* [ Dashboard ](#tab-panel-6779)
-* [ API ](#tab-panel-6780)
+* [ Dashboard ](#tab-panel-5621)
+* [ API ](#tab-panel-5622)
 
 Make sure you have the correct plan
 

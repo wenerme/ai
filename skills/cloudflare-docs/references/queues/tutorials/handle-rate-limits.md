@@ -4,6 +4,10 @@ description: Example of how to use Queues to handle rate limits of external APIs
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -103,8 +107,8 @@ Created queue rate-limit-queue.
 
 In your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-8220)
-* [  wrangler.toml ](#tab-panel-8221)
+* [  wrangler.jsonc ](#tab-panel-7062)
+* [  wrangler.toml ](#tab-panel-7063)
 
 JSONC
 
@@ -179,8 +183,8 @@ It is important to include the `max_batch_size` of two to the consumer queue is 
 
 Your final Wrangler file should look similar to the example below.
 
-* [  wrangler.jsonc ](#tab-panel-8222)
-* [  wrangler.toml ](#tab-panel-8223)
+* [  wrangler.jsonc ](#tab-panel-7064)
+* [  wrangler.toml ](#tab-panel-7065)
 
 JSONC
 
@@ -196,7 +200,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": [
 
@@ -255,7 +259,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 

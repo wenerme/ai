@@ -4,6 +4,10 @@ description: Manage tunnel authentication tokens for remote and local tunnels.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Tunnel tokens
@@ -14,8 +18,8 @@ A remotely-managed tunnel only requires a token to run. Anyone with the token ca
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-9218)
-* [ API ](#tab-panel-9219)
+* [ Dashboard ](#tab-panel-8077)
+* [ API ](#tab-panel-8078)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.  
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)

@@ -4,6 +4,10 @@ description: Prefetch URLs to load resources before visitors request them.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -30,8 +34,8 @@ For Cloudflare to start prefetching URLs, you will need to [enable the feature](
 
 ### Enable Prefetch URLs
 
-* [ Dashboard ](#tab-panel-9038)
-* [ API ](#tab-panel-9039)
+* [ Dashboard ](#tab-panel-7880)
+* [ API ](#tab-panel-7881)
 
 To enable **Prefetch URLs** in the dashboard:
 

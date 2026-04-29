@@ -4,6 +4,10 @@ description: Configure Wrangler migrations to create, rename, delete, or transfe
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Durable Objects migrations
@@ -33,8 +37,8 @@ The most common migration performed is a new class migration, which informs the 
 To apply a Create migration:
 
 1. Add the following lines to your Wrangler configuration file:  
-   * [  wrangler.jsonc ](#tab-panel-7020)  
-   * [  wrangler.toml ](#tab-panel-7021)  
+   * [  wrangler.jsonc ](#tab-panel-5862)  
+   * [  wrangler.toml ](#tab-panel-5863)  
 JSONC  
 ```  
 {  
@@ -65,8 +69,8 @@ Create migration example
 
 To create a new Durable Object binding `DURABLE_OBJECT_A`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-7026)
-* [  wrangler.toml ](#tab-panel-7027)
+* [  wrangler.jsonc ](#tab-panel-5868)
+* [  wrangler.toml ](#tab-panel-5869)
 
 JSONC
 
@@ -149,8 +153,8 @@ The [key-value storage backend](https://developers.cloudflare.com/durable-object
 
 Use `new_classes` on the migration in your Worker's Wrangler file to create a Durable Object class with the key-value storage backend:
 
-* [  wrangler.jsonc ](#tab-panel-7022)
-* [  wrangler.toml ](#tab-panel-7023)
+* [  wrangler.jsonc ](#tab-panel-5864)
+* [  wrangler.toml ](#tab-panel-5865)
 
 JSONC
 
@@ -218,8 +222,8 @@ To apply a Delete migration:
 1. Remove the binding for the class you wish to delete from the Wrangler configuration file.
 2. Remove references for the class you wish to delete from your Worker code.
 3. Add the following lines to your Wrangler configuration file.  
-   * [  wrangler.jsonc ](#tab-panel-7024)  
-   * [  wrangler.toml ](#tab-panel-7025)  
+   * [  wrangler.jsonc ](#tab-panel-5866)  
+   * [  wrangler.toml ](#tab-panel-5867)  
 JSONC  
 ```  
 {  
@@ -249,8 +253,8 @@ Delete migration example
 
 To delete a Durable Object binding `DEPRECATED_OBJECT`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-7028)
-* [  wrangler.toml ](#tab-panel-7029)
+* [  wrangler.jsonc ](#tab-panel-5870)
+* [  wrangler.toml ](#tab-panel-5871)
 
 JSONC
 
@@ -315,8 +319,8 @@ Rename migrations are used to transfer stored Durable Objects between two Durabl
 To apply a Rename migration:
 
 1. Update the previous class name to the new class name by editing your Wrangler configuration file in the following way:  
-   * [  wrangler.jsonc ](#tab-panel-7030)  
-   * [  wrangler.toml ](#tab-panel-7031)  
+   * [  wrangler.jsonc ](#tab-panel-5872)  
+   * [  wrangler.toml ](#tab-panel-5873)  
 JSONC  
 ```  
 {  
@@ -366,8 +370,8 @@ Rename migration example
 
 To rename a Durable Object class, from `OldName` to `UpdatedName`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-7032)
-* [  wrangler.toml ](#tab-panel-7033)
+* [  wrangler.jsonc ](#tab-panel-5874)
+* [  wrangler.toml ](#tab-panel-5875)
 
 JSONC
 
@@ -466,8 +470,8 @@ Do not run a [Create migration](#create-migration) for the destination class bef
 To apply a Transfer migration:
 
 1. Edit your Wrangler configuration file in the following way:  
-   * [  wrangler.jsonc ](#tab-panel-7034)  
-   * [  wrangler.toml ](#tab-panel-7035)  
+   * [  wrangler.jsonc ](#tab-panel-5876)  
+   * [  wrangler.toml ](#tab-panel-5877)  
 JSONC  
 ```  
 {  
@@ -520,8 +524,8 @@ Transfer migration example
 
 You can transfer stored Durable Objects from `DurableObjectExample` to `TransferredClass` from a Worker script named `OldWorkerScript`. The configuration of the Wrangler configuration file for your new Worker code (destination Worker code) would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-7036)
-* [  wrangler.toml ](#tab-panel-7037)
+* [  wrangler.jsonc ](#tab-panel-5878)
+* [  wrangler.toml ](#tab-panel-5879)
 
 JSONC
 

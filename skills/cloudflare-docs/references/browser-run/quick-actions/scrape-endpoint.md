@@ -4,6 +4,10 @@ description: Extract structured data from specific webpage elements using the Br
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # /scrape - Scrape HTML elements
@@ -37,8 +41,8 @@ You must provide either `url` or `elements`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-5599)
-* [ TypeScript SDK ](#tab-panel-5600)
+* [ curl ](#tab-panel-4435)
+* [ TypeScript SDK ](#tab-panel-4436)
 
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 

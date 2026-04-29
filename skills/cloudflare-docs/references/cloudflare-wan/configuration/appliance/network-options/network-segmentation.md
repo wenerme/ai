@@ -4,6 +4,10 @@ description: Define policies to determine if traffic should flow between your LA
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Network segmentation
@@ -41,8 +45,8 @@ The following guide assumes you have already created a site and configured your 
 
 ## Create a policy
 
-* [ Dashboard ](#tab-panel-6414)
-* [ API ](#tab-panel-6415)
+* [ Dashboard ](#tab-panel-5256)
+* [ API ](#tab-panel-5257)
 
 Follow these steps to create a new LAN policy to segment your network. Only the fields marked **required** are mandatory.
 
@@ -266,8 +270,8 @@ The new policy will ensure that traffic between the specified LANs flows locally
 
 ## Edit a policy
 
-* [ Dashboard ](#tab-panel-6416)
-* [ API ](#tab-panel-6417)
+* [ Dashboard ](#tab-panel-5258)
+* [ API ](#tab-panel-5259)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -426,8 +430,8 @@ Explain Code
 
 ## Delete a policy
 
-* [ Dashboard ](#tab-panel-6412)
-* [ API ](#tab-panel-6413)
+* [ Dashboard ](#tab-panel-5254)
+* [ API ](#tab-panel-5255)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

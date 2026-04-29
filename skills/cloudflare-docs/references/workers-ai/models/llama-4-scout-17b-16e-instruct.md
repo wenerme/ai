@@ -4,6 +4,10 @@ description: Meta's Llama 4 Scout is a 17 billion parameter model with 16 expert
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg) 

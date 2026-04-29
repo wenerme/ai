@@ -4,6 +4,10 @@ description: Test Email Workers locally using Wrangler dev or the Cloudflare Vit
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-routing/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Local Development
@@ -12,8 +16,8 @@ You can test the behavior of an Email Worker script in local development using W
 
 This is the minimal wrangler configuration required to run an Email Worker locally:
 
-* [  wrangler.jsonc ](#tab-panel-7062)
-* [  wrangler.toml ](#tab-panel-7063)
+* [  wrangler.jsonc ](#tab-panel-5904)
+* [  wrangler.toml ](#tab-panel-5905)
 
 JSONC
 

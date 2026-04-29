@@ -4,6 +4,10 @@ description: Clone repositories, manage branches, and automate Git operations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Work with Git
@@ -12,8 +16,8 @@ This guide shows you how to clone repositories, manage branches, and automate Gi
 
 ## Clone repositories
 
-* [  JavaScript ](#tab-panel-8913)
-* [  TypeScript ](#tab-panel-8914)
+* [  JavaScript ](#tab-panel-7755)
+* [  TypeScript ](#tab-panel-7756)
 
 JavaScript
 
@@ -111,8 +115,8 @@ Explain Code
 
 Use a personal access token in the URL:
 
-* [  JavaScript ](#tab-panel-8903)
-* [  TypeScript ](#tab-panel-8904)
+* [  JavaScript ](#tab-panel-7745)
+* [  TypeScript ](#tab-panel-7746)
 
 JavaScript
 
@@ -150,8 +154,8 @@ Embedding a token in the URL passes the credential directly into the sandbox. Fo
 
 Clone a repository and run build steps:
 
-* [  JavaScript ](#tab-panel-8905)
-* [  TypeScript ](#tab-panel-8906)
+* [  JavaScript ](#tab-panel-7747)
+* [  TypeScript ](#tab-panel-7748)
 
 JavaScript
 
@@ -199,8 +203,8 @@ console.log('Build complete');
 
 ## Work with branches
 
-* [  JavaScript ](#tab-panel-8907)
-* [  TypeScript ](#tab-panel-8908)
+* [  JavaScript ](#tab-panel-7749)
+* [  TypeScript ](#tab-panel-7750)
 
 JavaScript
 
@@ -242,8 +246,8 @@ await sandbox.exec('cd repo && git checkout -b new-feature');
 
 ## Make changes and commit
 
-* [  JavaScript ](#tab-panel-8915)
-* [  TypeScript ](#tab-panel-8916)
+* [  JavaScript ](#tab-panel-7757)
+* [  TypeScript ](#tab-panel-7758)
 
 JavaScript
 
@@ -321,8 +325,8 @@ Explain Code
 
 Verify your token is set:
 
-* [  JavaScript ](#tab-panel-8911)
-* [  TypeScript ](#tab-panel-8912)
+* [  JavaScript ](#tab-panel-7753)
+* [  TypeScript ](#tab-panel-7754)
 
 JavaScript
 
@@ -364,8 +368,8 @@ await sandbox.gitCheckout(repoUrl);
 
 Use shallow clone:
 
-* [  JavaScript ](#tab-panel-8909)
-* [  TypeScript ](#tab-panel-8910)
+* [  JavaScript ](#tab-panel-7751)
+* [  TypeScript ](#tab-panel-7752)
 
 JavaScript
 

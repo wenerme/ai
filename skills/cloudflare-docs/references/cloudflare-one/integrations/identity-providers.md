@@ -4,6 +4,10 @@ description: Identity providers in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -24,8 +28,8 @@ Cloudflare One supports social identity providers that do not require administra
 
 ## Set up IdPs in Cloudflare One
 
-* [ Dashboard ](#tab-panel-5870)
-* [ Terraform (v5) ](#tab-panel-5871)
+* [ Dashboard ](#tab-panel-4712)
+* [ Terraform (v5) ](#tab-panel-4713)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.

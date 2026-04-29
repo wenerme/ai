@@ -4,6 +4,10 @@ description: You can secure access to R2 buckets using Cloudflare Access, which 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Protect an R2 Bucket with Cloudflare Access

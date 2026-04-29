@@ -4,6 +4,10 @@ description: Query Cloudflare Queues backlog, concurrency, and message operation
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Metrics
@@ -70,6 +74,20 @@ The `queueMessageOperationsAdaptiveGroups` dataset provides the following dimens
 * `datetimeHour` \- Timestamp for the message operation, truncated to the start of an hour
 * `datetimeMinute` \- Timestamp for the message operation, truncated to the start of a minute
 
+### Realtime backlog
+
+You can access realtime backlog metrics via the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/) and [JavaScript API](https://developers.cloudflare.com/queues/configuration/javascript-apis/). These metrics provide point-in-time values rather than aggregated data.
+
+| Metric                   | Field Name                     | Description                                                    |
+| ------------------------ | ------------------------------ | -------------------------------------------------------------- |
+| Backlog count            | backlog\_count                 | Number of messages currently in the queue                      |
+| Backlog bytes            | backlog\_bytes                 | Total size of messages in the queue, in bytes                  |
+| Oldest message timestamp | oldest\_message\_timestamp\_ms | Timestamp (in milliseconds) of the oldest message in the queue |
+
+To retrieve these metrics via the REST API, use the metrics endpoint (`/accounts/{account_id}/queues/{queue_id}/metrics`).
+
+These fields are also included in `metadata.metrics` when calling `send()`, `sendBatch()`, or `metrics()` via the JavaScript API.
+
 ## Example GraphQL Queries
 
 ### Get average queue backlog over time period
@@ -127,7 +145,7 @@ query QueueBacklog(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucAhAhgYwNYBsD2BzACgCgYYASdNHEAOwBcAVFPALhgGc6IBLGvAQhLlQYcAEkAJm048+g0mQko6YOtwC2YAMp0UEOmwYaw88kpVrNAURpSYRzYICUMAN5CAbtzAB3SG6FSSmp6dgIAM24sFQg2Vxhg2kZmNgo0KiSmPBgAXxd3UkKYEWR0bHwAQSUABzUPMABxCGpqsMCimCwNbgMYAEYABiGB9qLI6Mg40Y6SsElU2clpovNVYwB9PDBgVNXLbV19ZcK9jaxt3eU161tjnOn845QPbIKOos12dmYwdmPSABGUBUf3epHu7whhSh9xyQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSmALFeMAOZHcymAjJncWAWgxBKKupa-PDc2GaWNvZOyO6mbp7efgC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucAhAhgYwNYBsD2BzACgCgYYASdNHEAOwBcAVFPALhgGc6IBLGvAQhLlQYcAEkAJm048+g0mQko6YOtwC2YAMp0UEOmwYaw88kpVrNAURpSYRzYICUMAN5CAbtzAB3SG6FSSmp6dgIAM24sFQg2Vxhg2kZmNgo0KiSmPBgAXxd3UkKYEWR0bHwAQSUABzUPMABxCGpqsMCimCwNbgMYAEYABiGB9qLI6Mg40Y6SsElU2clpovNVYwB9PDBgVNXLbV19ZcK9jaxt3eU161tjnOn845QPbIKOos12dmYwdmPSABGUBUf3epHu7whhSh9xyQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSmALFeMAOZAEZHmFwHZMxlwC0GECUVdS1+eG5sM0sbe2MATmRTUw9vXwCAXyA)
 
 ### Get average consumer concurrency by hour
 
@@ -190,7 +208,7 @@ query QueueConcurrencyByHour(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucBhA9gOwMYghMmoBCUAEitgBQBQMMAJAIYYZloAuAKvQOYBcMAzqwgBLNFwCE1OqDDgAkgBM+gkWMk1aC+qzCthAWzABlVvQis+7A2HV0tOvYYCiaJTCuHJAShgBvKQBuwmAA7pB+UjSMzCBs-OQAZsIANjoQfL4w0Swc3HwMTDmcXDAAvj7+NFUwMsjo-CCGEACyuiIY-ACCWgAOegFgAOIQZD3xkdUwyQbCFjAAjAAMy4sT1UmpkBlrk7Vgivl7ijvV9rrWAPpcYMD5Z47GpuYnVfeXyTd32ufOri+lLxQEAUkCIfAA2m9DKRsBcACJOIxIAC6OwqL3oARKlUm1WYmGwuHw-xeCmsaH4wnqEVxp2+DxhEBJuIB1VZZUopSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSmALFeMAOZHcymAjJncWAWgxBKKupa-PDc2GaWNvZOyO6mbp7efgC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucBhA9gOwMYghMmoBCUAEitgBQBQMMAJAIYYZloAuAKvQOYBcMAzqwgBLNFwCE1OqDDgAkgBM+gkWMk1aC+qzCthAWzABlVvQis+7A2HV0tOvYYCiaJTCuHJAShgBvKQBuwmAA7pB+UjSMzCBs-OQAZsIANjoQfL4w0Swc3HwMTDmcXDAAvj7+NFUwMsjo-CCGEACyuiIY-ACCWgAOegFgAOIQZD3xkdUwyQbCFjAAjAAMy4sT1UmpkBlrk7Vgivl7ijvV9rrWAPpcYMD5Z47GpuYnVfeXyTd32ufOri+lLxQEAUkCIfAA2m9DKRsBcACJOIxIAC6OwqL3oARKlUm1WYmGwuHw-xeCmsaH4wnqEVxp2+DxhEBJuIB1VZZUopSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSmALFeMAOZAEZHmFwHZMxlwC0GECUVdS1+eG5sM0sbe2MATmRTUw9vXwCAXyA)
 
 ### Get message operations by minute
 
@@ -255,7 +273,7 @@ query QueueMessageOperationsByMinute(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucBZMBnVBDA5mA8gB0gwBcBLAewDtUAhKJUykYsACgCgYYASDAYz7kQlYgBVsALhipiERlgCEnHqDDgAkgBMpMuZUXLumkmDIBbMAGViGCMSkARE0q5GT5sAFFK2mE5ZKAJQwAN7KAG6kYADukKHKXPyCwsSorABmpAA2LBBSITBJQiLiWFK8AsVi2DAAvsFhXE0wqshomDgERGRUqACCxvhk4WAA4hBC+GkJzTBZpGak9jAAjAAMG2szzZk5kPnbs61gWuXHWofNxiweAPo4wOXXpgtWNnaXTc93WWCPPN9Xt5NJ9ap9yBBNJA6FIANqAiwMJgsW4OTyWADCAF1Dg1PskRJ9UCAzPFZrMAEZQFioUGfTSvagUahk8lfdyvJHMMB08lg5r8ursWpAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSmALFeMB2BiCUr1W-vG7Yzlm-bGABwgAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucBZMBnVBDA5mA8gB0gwBcBLAewDtUAhKJUykYsACgCgYYASDAYz7kQlYgBVsALhipiERlgCEnHqDDgAkgBMpMuZUXLumkmDIBbMAGViGCMSkARE0q5GT5sAFFK2mE5ZKAJQwAN7KAG6kYADukKHKXPyCwsSorABmpAA2LBBSITBJQiLiWFK8AsVi2DAAvsFhXE0wqshomDgERGRUqACCxvhk4WAA4hBC+GkJzTBZpGak9jAAjAAMG2szzZk5kPnbs61gWuXHWofNxiweAPo4wOXXpgtWNnaXTc93WWCPPN9Xt5NJ9ap9yBBNJA6FIANqAiwMJgsW4OTyWADCAF1Dg1PskRJ9UCAzPFZrMAEZQFioUGfTSvagUahk8lfdyvJHMMB08lg5r8ursWpAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSmALFeMAOBiCUr1W-vG7Yzlm-bGAJwgAL5AA)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/observability/metrics/","name":"Metrics"}}]}

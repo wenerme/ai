@@ -4,6 +4,10 @@ description: Send emails from any application using the Email Service REST API w
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # REST API
@@ -34,9 +38,9 @@ Authorization: Bearer <API_TOKEN>
 
 ## Send an email
 
-* [ Simple email ](#tab-panel-7081)
-* [ Multiple recipients ](#tab-panel-7082)
-* [ With CC and BCC ](#tab-panel-7083)
+* [ Simple email ](#tab-panel-5923)
+* [ Multiple recipients ](#tab-panel-5924)
+* [ With CC and BCC ](#tab-panel-5925)
 
 Terminal window
 

@@ -4,6 +4,10 @@ description: Control which hostnames can serve your Turnstile widget.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Hostname management
@@ -67,8 +71,8 @@ Use a specific subdomain when you want to restrict the widget to a narrower scop
 
 ## Add hostnames
 
-* [ Dashboard ](#tab-panel-8081)
-* [ API ](#tab-panel-8082)
+* [ Dashboard ](#tab-panel-8107)
+* [ API ](#tab-panel-8108)
 
 Existing widget
 

@@ -4,6 +4,10 @@ description: Redirect requests to certain URLs based on a mapped object to the r
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -16,10 +20,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.
 
-* [  JavaScript ](#tab-panel-9795)
-* [  TypeScript ](#tab-panel-9796)
-* [  Python ](#tab-panel-9797)
-* [  Hono ](#tab-panel-9798)
+* [  JavaScript ](#tab-panel-8680)
+* [  TypeScript ](#tab-panel-8681)
+* [  Python ](#tab-panel-8682)
+* [  Hono ](#tab-panel-8683)
 
 JavaScript
 

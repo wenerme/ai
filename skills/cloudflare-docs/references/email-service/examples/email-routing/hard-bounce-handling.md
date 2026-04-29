@@ -4,6 +4,10 @@ description: Detect and process hard bounce notifications in Email Service to ma
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Handle hard bounce emails
@@ -25,8 +29,8 @@ Hard bounces occur when an email cannot be delivered due to permanent reasons:
 
 Configure your worker to handle bounce notifications:
 
-* [  wrangler.jsonc ](#tab-panel-7101)
-* [  wrangler.toml ](#tab-panel-7102)
+* [  wrangler.jsonc ](#tab-panel-5943)
+* [  wrangler.toml ](#tab-panel-5944)
 
 JSONC
 
@@ -40,7 +44,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "send_email": [
 
@@ -79,7 +83,7 @@ name = "bounce-handler"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[send_email]]

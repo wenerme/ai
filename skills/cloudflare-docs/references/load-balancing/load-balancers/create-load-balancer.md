@@ -4,6 +4,10 @@ description: Learn how to set up and maintain load balancers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Manage load balancers
@@ -15,8 +19,8 @@ For more details about load balancers, refer to [Load balancers](https://develop
 
 ## Create a load balancer
 
-* [ Dashboard ](#tab-panel-7857)
-* [ API ](#tab-panel-7858)
+* [ Dashboard ](#tab-panel-6699)
+* [ API ](#tab-panel-6700)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -268,8 +272,8 @@ Sharing load balancers across sites is only supported if the target zone is on a
 
 ## Edit a load balancer
 
-* [ Dashboard ](#tab-panel-7853)
-* [ API ](#tab-panel-7854)
+* [ Dashboard ](#tab-panel-6695)
+* [ API ](#tab-panel-6696)
 
 To edit a load balancer in the dashboard:
 
@@ -288,8 +292,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 If you delete or disable a load balancer, your endpoint's response to requests will depend on your [existing DNS records](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#disabling-a-load-balancer).
 
-* [ Dashboard ](#tab-panel-7855)
-* [ API ](#tab-panel-7856)
+* [ Dashboard ](#tab-panel-6697)
+* [ API ](#tab-panel-6698)
 
 To delete a load balancer in the dashboard:
 

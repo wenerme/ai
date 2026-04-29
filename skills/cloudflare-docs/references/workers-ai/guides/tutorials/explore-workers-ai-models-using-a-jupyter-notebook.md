@@ -4,6 +4,10 @@ description: This Jupyter notebook explores various models (including Whisper, D
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -12,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Explore Workers AI Models Using a Jupyter Notebook
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 A handy way to explore all of the models available on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗](https://jupyter.org/).
 

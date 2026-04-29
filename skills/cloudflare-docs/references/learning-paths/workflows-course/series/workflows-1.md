@@ -5,13 +5,17 @@ description: Cloudflare Workflows provides durable execution capabilities, allow
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Introduction to Workflows
 
-* [ Watch this episode ](#tab-panel-7782)
-* [ Step-by-step tutorial ](#tab-panel-7783)
-* [ Series overview ](#tab-panel-7784)
+* [ Watch this episode ](#tab-panel-6678)
+* [ Step-by-step tutorial ](#tab-panel-6679)
+* [ Series overview ](#tab-panel-6680)
 
 Cloudflare Workflows provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background. Workflows are designed to resume execution even if the underlying compute fails, ensuring that tasks complete eventually. They are built on top of Cloudflare Workers and handle scaling and provisioning automatically.
 

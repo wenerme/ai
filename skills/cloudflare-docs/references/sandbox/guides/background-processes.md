@@ -4,6 +4,10 @@ description: Start and manage long-running services and applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Run background processes
@@ -26,8 +30,8 @@ For **one-time commands, builds, or scripts that complete and exit**, use `exec(
 
 ## Start a background process
 
-* [  JavaScript ](#tab-panel-8755)
-* [  TypeScript ](#tab-panel-8756)
+* [  JavaScript ](#tab-panel-7597)
+* [  TypeScript ](#tab-panel-7598)
 
 JavaScript
 
@@ -95,8 +99,8 @@ Explain Code
 
 Set working directory and environment variables:
 
-* [  JavaScript ](#tab-panel-8757)
-* [  TypeScript ](#tab-panel-8758)
+* [  JavaScript ](#tab-panel-7599)
+* [  TypeScript ](#tab-panel-7600)
 
 JavaScript
 
@@ -162,8 +166,8 @@ Explain Code
 
 List and check running processes:
 
-* [  JavaScript ](#tab-panel-8763)
-* [  TypeScript ](#tab-panel-8764)
+* [  JavaScript ](#tab-panel-7605)
+* [  TypeScript ](#tab-panel-7606)
 
 JavaScript
 
@@ -225,8 +229,8 @@ Explain Code
 
 Wait for a process to be ready before proceeding:
 
-* [  JavaScript ](#tab-panel-8753)
-* [  TypeScript ](#tab-panel-8754)
+* [  JavaScript ](#tab-panel-7595)
+* [  TypeScript ](#tab-panel-7596)
 
 JavaScript
 
@@ -264,8 +268,8 @@ console.log('Server is ready');
 
 Or wait for specific log patterns:
 
-* [  JavaScript ](#tab-panel-8759)
-* [  TypeScript ](#tab-panel-8760)
+* [  JavaScript ](#tab-panel-7601)
+* [  TypeScript ](#tab-panel-7602)
 
 JavaScript
 
@@ -303,8 +307,8 @@ console.log('Server is ready:', result.line);
 
 Stream logs in real-time:
 
-* [  JavaScript ](#tab-panel-8765)
-* [  TypeScript ](#tab-panel-8766)
+* [  JavaScript ](#tab-panel-7607)
+* [  TypeScript ](#tab-panel-7608)
 
 JavaScript
 
@@ -360,8 +364,8 @@ Explain Code
 
 Or get accumulated logs:
 
-* [  JavaScript ](#tab-panel-8761)
-* [  TypeScript ](#tab-panel-8762)
+* [  JavaScript ](#tab-panel-7603)
+* [  TypeScript ](#tab-panel-7604)
 
 JavaScript
 
@@ -389,8 +393,8 @@ console.log('Logs:', logs);
 
 Stop background processes and their children:
 
-* [  JavaScript ](#tab-panel-8767)
-* [  TypeScript ](#tab-panel-8768)
+* [  JavaScript ](#tab-panel-7609)
+* [  TypeScript ](#tab-panel-7610)
 
 JavaScript
 
@@ -438,8 +442,8 @@ await sandbox.killAllProcesses();
 
 For example, if your process spawns multiple worker processes or background tasks, `killProcess()` will clean up the entire process tree:
 
-* [  JavaScript ](#tab-panel-8769)
-* [  TypeScript ](#tab-panel-8770)
+* [  JavaScript ](#tab-panel-7611)
+* [  TypeScript ](#tab-panel-7612)
 
 JavaScript
 
@@ -485,8 +489,8 @@ await sandbox.killProcess(batch.id);
 
 Start services in sequence, waiting for dependencies:
 
-* [  JavaScript ](#tab-panel-8775)
-* [  TypeScript ](#tab-panel-8776)
+* [  JavaScript ](#tab-panel-7617)
+* [  TypeScript ](#tab-panel-7618)
 
 JavaScript
 
@@ -562,8 +566,8 @@ Explain Code
 
 By default, containers automatically shut down after 10 minutes of inactivity. For long-running processes that may have idle periods (like CI/CD pipelines, batch jobs, or monitoring tasks), use the [keepAlive option](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive):
 
-* [  JavaScript ](#tab-panel-8777)
-* [  TypeScript ](#tab-panel-8778)
+* [  JavaScript ](#tab-panel-7619)
+* [  TypeScript ](#tab-panel-7620)
 
 JavaScript
 
@@ -721,8 +725,8 @@ When using `keepAlive: true`, containers will not automatically timeout. You **m
 
 Check logs to see why:
 
-* [  JavaScript ](#tab-panel-8773)
-* [  TypeScript ](#tab-panel-8774)
+* [  JavaScript ](#tab-panel-7615)
+* [  TypeScript ](#tab-panel-7616)
 
 JavaScript
 
@@ -772,8 +776,8 @@ if (!processes.find(p => p.id === process.id)) {
 
 Kill existing processes before starting:
 
-* [  JavaScript ](#tab-panel-8771)
-* [  TypeScript ](#tab-panel-8772)
+* [  JavaScript ](#tab-panel-7613)
+* [  TypeScript ](#tab-panel-7614)
 
 JavaScript
 

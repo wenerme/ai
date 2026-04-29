@@ -4,6 +4,10 @@ description: Query D1 from the Hono web framework
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -32,8 +36,8 @@ If you are using [Pages Functions](https://developers.cloudflare.com/pages/funct
 
 The following examples show how to access a D1 database bound to `DB` from both a Workers script and a Pages Function:
 
-* [ workers ](#tab-panel-6528)
-* [ pages ](#tab-panel-6529)
+* [ workers ](#tab-panel-5370)
+* [ pages ](#tab-panel-5371)
 
 TypeScript
 

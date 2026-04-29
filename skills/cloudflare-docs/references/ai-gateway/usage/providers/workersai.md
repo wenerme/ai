@@ -4,6 +4,10 @@ description: Route Workers AI requests through AI Gateway for analytics, caching
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -133,8 +137,8 @@ Explain Code
 
 You can integrate Workers AI with AI Gateway using an environment binding. To include an AI Gateway within your Worker, add the gateway as an object in your Workers AI request.
 
-* [  JavaScript ](#tab-panel-5333)
-* [  TypeScript ](#tab-panel-5334)
+* [  JavaScript ](#tab-panel-4167)
+* [  TypeScript ](#tab-panel-4168)
 
 JavaScript
 

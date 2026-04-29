@@ -4,14 +4,18 @@ description: Configure the Appliance DHCP server.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # DHCP server
 
 When you use a static IP address, Cloudflare One Appliance (formerly Magic WAN Connector) can also act as a DHCP server in your network. To enable this feature:
 
-* [ Dashboard ](#tab-panel-6408)
-* [ API ](#tab-panel-6409)
+* [ Dashboard ](#tab-panel-5250)
+* [ API ](#tab-panel-5251)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

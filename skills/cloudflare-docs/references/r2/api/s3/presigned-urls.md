@@ -4,6 +4,10 @@ description: Generate presigned URLs to grant temporary access to R2 objects wit
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Presigned URLs
@@ -39,9 +43,9 @@ R2 supports two patterns for time-limited access. They overlap but have differen
 
 ### SDK examples
 
-* [ JavaScript ](#tab-panel-8249)
-* [ Python ](#tab-panel-8250)
-* [ CLI ](#tab-panel-8251)
+* [ JavaScript ](#tab-panel-7091)
+* [ Python ](#tab-panel-7092)
+* [ CLI ](#tab-panel-7093)
 
 TypeScript
 

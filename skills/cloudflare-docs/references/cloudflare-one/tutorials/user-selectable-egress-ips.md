@@ -4,6 +4,10 @@ description: This tutorial gives administrators an easy way to allow their users
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -37,8 +41,8 @@ Make sure you have:
 
 First, create [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) corresponding to your dedicated egress IPs.
 
-* [ Dashboard ](#tab-panel-6382)
-* [ API ](#tab-panel-6383)
+* [ Dashboard ](#tab-panel-5224)
+* [ API ](#tab-panel-5225)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Routes**.
 2. In **Virtual networks**, select **Create virtual network**.
@@ -69,8 +73,8 @@ For more information, refer to [Create a virtual network](https://developers.clo
 
 After creating your virtual networks, route your private network CIDRs over each virtual network. This ensures that users can reach all services on your network regardless of which egress IP they use.
 
-* [ Dashboard ](#tab-panel-6384)
-* [ API ](#tab-panel-6385)
+* [ Dashboard ](#tab-panel-5226)
+* [ API ](#tab-panel-5227)
 
 1. Go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select your tunnel routing `10.0.0.0/8`, then select **Configure**.
@@ -131,8 +135,8 @@ Each tunnel connected to your private network should have each of your virtual n
 
 Next, assign your dedicated egress IPs to each virtual network using Gateway egress policies.
 
-* [ Dashboard ](#tab-panel-6386)
-* [ API ](#tab-panel-6387)
+* [ Dashboard ](#tab-panel-5228)
+* [ API ](#tab-panel-5229)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Egress policies**.
 2. Select **Add a policy**.

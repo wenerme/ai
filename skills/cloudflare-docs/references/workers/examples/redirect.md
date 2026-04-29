@@ -4,6 +4,10 @@ description: Redirect requests from one URL to another or from one set of URLs t
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -24,11 +28,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 ## Redirect all requests to one URL
 
-* [  JavaScript ](#tab-panel-8793)
-* [  TypeScript ](#tab-panel-8794)
-* [  Python ](#tab-panel-8795)
-* [  Rust ](#tab-panel-8796)
-* [  Hono ](#tab-panel-8797)
+* [  JavaScript ](#tab-panel-8801)
+* [  TypeScript ](#tab-panel-8802)
+* [  Python ](#tab-panel-8803)
+* [  Rust ](#tab-panel-8804)
+* [  Hono ](#tab-panel-8805)
 
 JavaScript
 
@@ -51,7 +55,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2AIwAWYQCZBogGwBOAMziAXCxZtgHOFxp8BIidNmKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4W76HC-KgBVABKABkSAwSNEThAIDB3KpkMhEhFmg4ku9gBkXtt3lRPvcCCB3LZFmCSEpZEQsSRLhAQAgqCRAXcvLjUZceJdeBAzot7nE2nYgcCADQkfG0onjBwPSnbAC+wsscqIVg0zC0Oj0PH4QjEkhk8mU4lKdkczjcnm8vnaVACQR0pHCkRikUIOgygWyuWd0TIYHQZBKNlNFWqtXqOyaLV4AqonXcdmmlnW0WAcDiAH0xhMctFVAVFkV0nLVWqNSEtQZdcYDWZxMwrEA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGYQCYALAE4pEwVPkAuFizbAOcLjT4CR46bPnyAsACgAwuioQAptewARKAGcY6Z1GhXFJNXgLEJFRwwDYMAERQNDYAHgB0AFbO4aSoUGB2IWGR0fFJ4WaW1nYQ2AAqdDA2PnAwMGB8BFBWyAlwAG5wzrwIsBAA1MDouOA2ZmaxbkgkuDaocOAQJADepiQkXXRUvL42ELwAFgAUCDYAjiA2zhAAlCtr6yS8VtczV9DBXlQAqgBKADIkBgkcIHCAQGDORTIZCxEL1GxxZ7AFIPdbPKiva4EEDOSyzIEkADMIiIaJIpwgIAQVBIvyubkxiNOPFOvAgR1m1yiTSsf3+ABoSNiqXjhjYbmT1gBfAWmaVEMwqZhqDRaHj8ISiSQyOQKKSFKy2exOVzuTzNKg+PwaUjBUIRUKEDQpXzpTIO8JkMDoMgFCxGkrlSrVDZ1Bq8XlUVrOKzjUzLcLAOBRAD6QxGGXCihyszyyWlSuVqoC6p0Wv0uqMUmYZiAA)
 
 TypeScript
 
@@ -144,11 +148,11 @@ Explain Code
 
 ## Redirect requests from one domain to another
 
-* [  JavaScript ](#tab-panel-8788)
-* [  TypeScript ](#tab-panel-8789)
-* [  Python ](#tab-panel-8790)
-* [  Rust ](#tab-panel-8791)
-* [  Hono ](#tab-panel-8792)
+* [  JavaScript ](#tab-panel-8796)
+* [  TypeScript ](#tab-panel-8797)
+* [  Python ](#tab-panel-8798)
+* [  Rust ](#tab-panel-8799)
+* [  Hono ](#tab-panel-8800)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Configure rolling deployments for Containers, including step percen
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Rollouts
@@ -20,8 +24,8 @@ Because Worker code updates immediately while container instances roll out gradu
 
 Here is an example configuration that sets a 5 minute grace period and a two step rollout where the first step updates 10% of instances and the second step updates 100% of instances:
 
-* [  wrangler.jsonc ](#tab-panel-6502)
-* [  wrangler.toml ](#tab-panel-6503)
+* [  wrangler.jsonc ](#tab-panel-5344)
+* [  wrangler.toml ](#tab-panel-5345)
 
 JSONC
 

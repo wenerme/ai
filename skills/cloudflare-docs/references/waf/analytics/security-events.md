@@ -4,6 +4,10 @@ description: Review individual security events triggered by WAF rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Security Events
@@ -38,8 +42,8 @@ Available features vary according to your Cloudflare plan:
 
 To open Security Events for a given zone:
 
-* [  New dashboard ](#tab-panel-9357)
-* [ Old dashboard ](#tab-panel-9358)
+* [  New dashboard ](#tab-panel-8240)
+* [ Old dashboard ](#tab-panel-8241)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)

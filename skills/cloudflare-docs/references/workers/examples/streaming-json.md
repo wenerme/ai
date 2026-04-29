@@ -4,6 +4,10 @@ description: Parse and transform large JSON request and response bodies using st
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -12,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Stream large JSON
 
-**Last reviewed:**  4 months ago 
+**Last reviewed:**  5 months ago 
 
 Parse and transform large JSON request and response bodies using streaming.
 
@@ -35,8 +39,8 @@ npm install @streamparser/json-whatwg
 
 This example parses a large JSON request body and extracts specific fields without loading the entire payload into memory.
 
-* [  TypeScript ](#tab-panel-9955)
-* [  JavaScript ](#tab-panel-9956)
+* [  TypeScript ](#tab-panel-8840)
+* [  JavaScript ](#tab-panel-8841)
 
 TypeScript
 
@@ -154,8 +158,8 @@ Explain Code
 
 This example fetches a large JSON response from an upstream API, transforms specific fields, and streams the modified response to the client.
 
-* [  TypeScript ](#tab-panel-9957)
-* [  JavaScript ](#tab-panel-9958)
+* [  TypeScript ](#tab-panel-8842)
+* [  JavaScript ](#tab-panel-8843)
 
 TypeScript
 

@@ -4,6 +4,10 @@ description: Create point-in-time snapshots of sandbox directories and restore t
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Backups
@@ -39,8 +43,8 @@ await sandbox.createBackup(options: BackupOptions): Promise<DirectoryBackup>
 * `id` \- Unique backup identifier (UUID)
 * `dir` \- Directory that was backed up
 
-* [  JavaScript ](#tab-panel-8595)
-* [  TypeScript ](#tab-panel-8596)
+* [  JavaScript ](#tab-panel-7437)
+* [  TypeScript ](#tab-panel-7438)
 
 JavaScript
 
@@ -144,8 +148,8 @@ await sandbox.restoreBackup(backup: DirectoryBackup): Promise<RestoreBackupResul
 * `dir` \- Directory that was restored
 * `id` \- Backup ID that was restored
 
-* [  JavaScript ](#tab-panel-8597)
-* [  TypeScript ](#tab-panel-8598)
+* [  JavaScript ](#tab-panel-7439)
+* [  TypeScript ](#tab-panel-7440)
 
 JavaScript
 
@@ -230,8 +234,8 @@ In production, the FUSE mount is lost when the sandbox sleeps or restarts. Re-re
 
 Use `useGitignore` to exclude files matching `.gitignore` rules (such as `node_modules/` or `dist/`) from the backup. This reduces backup size for git repositories.
 
-* [  JavaScript ](#tab-panel-8599)
-* [  TypeScript ](#tab-panel-8600)
+* [  JavaScript ](#tab-panel-7441)
+* [  TypeScript ](#tab-panel-7442)
 
 JavaScript
 
@@ -301,8 +305,8 @@ If the directory is not inside a git repository, `useGitignore` has no effect an
 
 Use backups as checkpoints before risky operations.
 
-* [  JavaScript ](#tab-panel-8601)
-* [  TypeScript ](#tab-panel-8602)
+* [  JavaScript ](#tab-panel-7443)
+* [  TypeScript ](#tab-panel-7444)
 
 JavaScript
 
@@ -362,8 +366,8 @@ Explain Code
 
 ### Error handling
 
-* [  JavaScript ](#tab-panel-8603)
-* [  TypeScript ](#tab-panel-8604)
+* [  JavaScript ](#tab-panel-7445)
+* [  TypeScript ](#tab-panel-7446)
 
 JavaScript
 

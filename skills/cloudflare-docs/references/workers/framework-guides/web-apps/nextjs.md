@@ -4,6 +4,10 @@ description: Create an Next.js application and deploy it to Cloudflare Workers w
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -201,8 +205,8 @@ bun add -d wrangler@latest
 ```
 3. **Add a Wrangler configuration file**  
 In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-9986)  
-   * [  wrangler.toml ](#tab-panel-9987)  
+   * [  wrangler.jsonc ](#tab-panel-8871)  
+   * [  wrangler.toml ](#tab-panel-8872)  
 JSONC  
 ```  
 {  
@@ -210,7 +214,7 @@ JSONC
   "main": ".open-next/worker.js",  
   "name": "my-app",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-24",  
+  "compatibility_date": "2026-04-29",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -227,7 +231,7 @@ TOML
 main = ".open-next/worker.js"  
 name = "my-app"  
 # Set this to today's date  
-compatibility_date = "2026-04-24"  
+compatibility_date = "2026-04-29"  
 compatibility_flags = [ "nodejs_compat" ]  
 [assets]  
 directory = ".open-next/assets"  

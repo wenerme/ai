@@ -4,11 +4,15 @@ description: Upload CSV files, generate analysis code with Claude, and return vi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Analyze data with AI
 
-**Last reviewed:**  6 months ago 
+**Last reviewed:**  7 months ago 
 
 Build an AI-powered data analysis system that accepts CSV uploads, uses Claude to generate Python analysis code, executes it in sandboxes, and returns visualizations.
 

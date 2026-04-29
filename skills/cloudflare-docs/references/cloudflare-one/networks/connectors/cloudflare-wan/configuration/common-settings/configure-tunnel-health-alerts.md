@@ -4,6 +4,10 @@ description: Use the API to set up and configure tunnel health alerts
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure tunnel health alerts
@@ -49,8 +53,8 @@ For details, refer to [How Cloudflare calculates Tunnel health alerts](https://d
 
 ## Set up Tunnel Health Alerts
 
-* [ Dashboard ](#tab-panel-6018)
-* [ API ](#tab-panel-6019)
+* [ Dashboard ](#tab-panel-4860)
+* [ API ](#tab-panel-4861)
 
 1. Go to the **Notifications** page.  
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)

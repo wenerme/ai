@@ -4,6 +4,10 @@ description: Bypass Cloudflare's reverse proxy for all zones at once.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enforce DNS-only
@@ -33,6 +37,10 @@ Before relying on enforce DNS-only as part of your incident response plan, you s
 * Verify origin server capacity: Without Cloudflare proxying, your origin servers handle all traffic directly, including traffic that Cloudflare would normally cache or filter. Ensure your infrastructure can sustain this load.
 * Review exposed record content: When enforce DNS-only is active, all origin IPs configured in proxied `A` and `AAAA` records, as well as the targets of proxied `CNAME` records, become publicly visible through DNS queries. If your origins rely on IP obscurity for security, plan accordingly.
 * Test in advance: Use the API in a staging or test account to confirm that you understand the behavior before you need it in an emergency.
+
+Verify SSL certificates
+
+If your origins serve HTTPS traffic, ensure they have publicly trusted SSL certificates installed for the relevant hostnames. Cloudflare [Origin CA certificates](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/) are only trusted by Cloudflare and will cause certificate errors for direct client connections.
 
 ## Enable enforce DNS-only
 

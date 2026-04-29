@@ -4,6 +4,10 @@ description: Route OpenAI API requests through AI Gateway for observability and 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # OpenAI
@@ -37,8 +41,8 @@ When making requests to OpenAI, replace `https://api.openai.com/v1` in the URL y
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5327)
-* [ Unauthenticated Gateway ](#tab-panel-5328)
+* [ With Authenticated Gateway ](#tab-panel-4161)
+* [ Unauthenticated Gateway ](#tab-panel-4162)
 
 ```
 
@@ -143,8 +147,8 @@ Explain Code
 
 Responses API with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5329)
-* [ Unauthenticated Gateway ](#tab-panel-5330)
+* [ With Authenticated Gateway ](#tab-panel-4163)
+* [ Unauthenticated Gateway ](#tab-panel-4164)
 
 Terminal window
 
@@ -216,8 +220,8 @@ Explain Code
 
 Chat Completions with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-5331)
-* [ Unauthenticated Gateway ](#tab-panel-5332)
+* [ With Authenticated Gateway ](#tab-panel-4165)
+* [ Unauthenticated Gateway ](#tab-panel-4166)
 
 Terminal window
 

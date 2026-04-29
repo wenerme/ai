@@ -4,6 +4,10 @@ description: Learn how to use Puppeteer with Cloudflare Workers for browser auto
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Puppeteer
@@ -42,8 +46,8 @@ The current version is [@cloudflare/puppeteer v1.1.0 ↗](https://github.com/clo
 
 Once the [browser binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) is configured and the `@cloudflare/puppeteer` library is installed, Puppeteer can be used in a Worker:
 
-* [  JavaScript ](#tab-panel-5587)
-* [  TypeScript ](#tab-panel-5588)
+* [  JavaScript ](#tab-panel-4423)
+* [  TypeScript ](#tab-panel-4424)
 
 JavaScript
 

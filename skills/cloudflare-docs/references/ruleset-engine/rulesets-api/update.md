@@ -4,6 +4,10 @@ description: Update an existing ruleset or deploy it to a phase using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Update or deploy a ruleset

@@ -4,6 +4,10 @@ description: Traffic from browsers to Cloudflare can be encrypted via HTTPS, but
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Flexible
@@ -27,8 +31,8 @@ Depending on your origin configuration, you may have to adjust settings to avoid
 
 ### Process
 
-* [ Dashboard ](#tab-panel-9115)
-* [ API ](#tab-panel-9116)
+* [ Dashboard ](#tab-panel-7977)
+* [ API ](#tab-panel-7978)
 
 To change your encryption mode in the dashboard:
 

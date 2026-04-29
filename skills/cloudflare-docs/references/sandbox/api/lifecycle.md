@@ -4,6 +4,10 @@ description: Create, configure, and manage Sandbox SDK container instances and t
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Lifecycle
@@ -49,8 +53,8 @@ Note
 
 The container starts lazily on first operation. Calling `getSandbox()` returns immediately—the container only spins up when you execute a command, write a file, or perform other operations. See [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) for details.
 
-* [  JavaScript ](#tab-panel-8675)
-* [  TypeScript ](#tab-panel-8676)
+* [  JavaScript ](#tab-panel-7517)
+* [  TypeScript ](#tab-panel-7518)
 
 JavaScript
 
@@ -125,8 +129,8 @@ await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
 
 When enabled, the sandbox automatically sends heartbeat pings every 30 seconds to prevent container eviction. When disabled, the sandbox returns to normal sleep behavior based on the `sleepAfter` configuration.
 
-* [  JavaScript ](#tab-panel-8677)
-* [  TypeScript ](#tab-panel-8678)
+* [  JavaScript ](#tab-panel-7519)
+* [  TypeScript ](#tab-panel-7520)
 
 JavaScript
 
@@ -200,8 +204,8 @@ Immediately terminates the container and permanently deletes all state:
 * All sessions (including the default session)
 * Network connections and exposed ports
 
-* [  JavaScript ](#tab-panel-8679)
-* [  TypeScript ](#tab-panel-8680)
+* [  JavaScript ](#tab-panel-7521)
+* [  TypeScript ](#tab-panel-7522)
 
 JavaScript
 

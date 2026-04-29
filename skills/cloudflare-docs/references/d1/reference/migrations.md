@@ -4,6 +4,10 @@ description: Version your D1 database schema using SQL migration files that you 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Migrations
@@ -32,8 +36,8 @@ By default, migrations are created in the `migrations/` folder in your Worker pr
 
 This location and table name can be customized in your Wrangler file, inside the D1 binding.
 
-* [  wrangler.jsonc ](#tab-panel-6555)
-* [  wrangler.toml ](#tab-panel-6556)
+* [  wrangler.jsonc ](#tab-panel-5397)
+* [  wrangler.toml ](#tab-panel-5398)
 
 JSONC
 

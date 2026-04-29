@@ -4,6 +4,10 @@ description: Detect unsafe and custom topics in AI application traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -72,8 +76,8 @@ You can manage custom topics from two places in the dashboard:
 
 Both methods will update the same underlying topic list. Changes made in one are immediately reflected in the other.
 
-* [ Dashboard ](#tab-panel-9382)
-* [ API ](#tab-panel-9383)
+* [ Dashboard ](#tab-panel-8265)
+* [ API ](#tab-panel-8266)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)  

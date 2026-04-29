@@ -4,6 +4,10 @@ description: Workers KV is a global, low-latency, key-value data store for build
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cloudflare Workers KV
@@ -22,11 +26,11 @@ For example, you can use Workers KV for:
 
 Access your Workers KV namespace from Cloudflare Workers using [Workers Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or from your external application using the REST API:
 
-* [ Workers Binding API ](#tab-panel-7481)
-* [ REST API ](#tab-panel-7482)
+* [ Workers Binding API ](#tab-panel-6323)
+* [ REST API ](#tab-panel-6324)
 
-* [ index.ts ](#tab-panel-7477)
-* [ wrangler.jsonc ](#tab-panel-7478)
+* [ index.ts ](#tab-panel-6319)
+* [ wrangler.jsonc ](#tab-panel-6320)
 
 TypeScript
 
@@ -120,8 +124,8 @@ Explain Code
 
 See the full [Workers KV binding API reference](https://developers.cloudflare.com/kv/api/read-key-value-pairs/).
 
-* [ cURL ](#tab-panel-7479)
-* [ TypeScript ](#tab-panel-7480)
+* [ cURL ](#tab-panel-6321)
+* [ TypeScript ](#tab-panel-6322)
 
 ```
 

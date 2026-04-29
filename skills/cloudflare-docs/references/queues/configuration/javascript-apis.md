@@ -4,6 +4,10 @@ description: Produce and consume Cloudflare Queues messages using the Workers Ja
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # JavaScript APIs
@@ -20,9 +24,9 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-8137)
-* [  TypeScript ](#tab-panel-8138)
-* [  Python ](#tab-panel-8139)
+* [  JavaScript ](#tab-panel-6979)
+* [  TypeScript ](#tab-panel-6980)
+* [  Python ](#tab-panel-6981)
 
 index.js
 
@@ -121,9 +125,9 @@ Explain Code
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-8134)
-* [  TypeScript ](#tab-panel-8135)
-* [  Python ](#tab-panel-8136)
+* [  JavaScript ](#tab-panel-6976)
+* [  TypeScript ](#tab-panel-6977)
+* [  Python ](#tab-panel-6978)
 
 index.js
 
@@ -195,22 +199,27 @@ TypeScript
 
 interface Queue<Body = unknown> {
 
-  send(body: Body, options?: QueueSendOptions): Promise<void>;
+  send(body: Body, options?: QueueSendOptions): Promise<QueueSendResult>;
 
-  sendBatch(messages: Iterable<MessageSendRequest<Body>>, options?: QueueSendBatchOptions): Promise<void>;
+  sendBatch(messages: Iterable<MessageSendRequest<Body>>, options?: QueueSendBatchOptions): Promise<QueueSendResult>;
+
+  metrics(): Promise<QueueMetrics>;
 
 }
 
 
 ```
 
-* `send(bodyunknown, options?{ contentType?: QueuesContentType })` ` Promise<void> `  
+* `send(body: unknown, options?: {contentType?: QueuesContentType })` ` Promise<QueueSendResult> `  
    * Sends a message to the Queue. The body can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm#supported%5Ftypes), as long as its size is less than 128 KB.  
-   * When the promise resolves, the message is confirmed to be written to disk.
-* `sendBatch(messagesIterable<MessageSendRequest<unknown>>, options?QueueSendBatchOptions)` ` Promise<void> `  
+   * When the promise resolves, the message is confirmed to be written to disk.  
+   * Returns a [QueueSendResult](#queuesendresult) containing realtime metrics about the queue.
+* `sendBatch(messages: Iterable<MessageSendRequest<unknown>>, options?: QueueSendBatchOptions)` ` Promise<QueueSendBatchResult> `  
    * Sends a batch of messages to the Queue. Each item in the provided [Iterable ↗](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html) must be supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm#supported%5Ftypes). A batch can contain up to 100 messages, though items are limited to 128 KB each, and the total size of the array cannot exceed 256 KB.  
    * The optional `options` parameter can be used to apply settings (such as `delaySeconds`) to all messages in the batch. See [QueueSendBatchOptions](#queuesendbatchoptions).  
    * When the promise resolves, the messages are confirmed to be written to disk.
+* `metrics()` ` Promise<QueueMetrics> `  
+   * Returns realtime [QueueMetrics](#queuemetrics) for the queue.
 
 ### `MessageSendRequest`
 
@@ -289,6 +298,60 @@ The default content type for Queues changed to `json` (from `v8`) to improve com
 
 If you specify an invalid content type, or if your specified content type does not match the message content's type, the send operation will fail with an error.
 
+### `QueueSendResult`
+
+The result of a successful send operation.
+
+TypeScript
+
+```
+
+interface QueueSendResult {
+
+  metadata: {
+
+    metrics: QueueMetrics;
+
+  };
+
+}
+
+
+```
+
+* `metadata` ` object `  
+   * Contains metadata about the queue after the send operation.
+* `metadata.metrics` ` QueueMetrics `  
+   * Realtime metrics for the queue. See [QueueMetrics](#queuemetrics).
+
+### `QueueMetrics`
+
+Realtime metrics for a queue.
+
+TypeScript
+
+```
+
+interface QueueMetrics {
+
+  backlogCount: number;
+
+  backlogBytes: number;
+
+  oldestMessageTimestamp: number;
+
+}
+
+
+```
+
+* `backlogCount` ` number `  
+   * The number of messages currently in the queue.
+* `backlogBytes` ` number `  
+   * The total size of messages in the queue, in bytes.
+* `oldestMessageTimestamp` ` number `  
+   * The timestamp (in milliseconds since epoch) of the oldest message in the queue.
+
 ## Consumer
 
 These APIs allow a consumer Worker to consume messages from a Queue.
@@ -307,9 +370,9 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-8140)
-* [  TypeScript ](#tab-panel-8141)
-* [  Python ](#tab-panel-8142)
+* [  JavaScript ](#tab-panel-6982)
+* [  TypeScript ](#tab-panel-6983)
+* [  Python ](#tab-panel-6984)
 
 index.js
 
@@ -498,6 +561,8 @@ interface QueueRetryOptions {
 * `delaySeconds` ` number `  
    * The number of seconds to [delay a message](https://developers.cloudflare.com/queues/configuration/batching-retries/) for within the queue, before it can be delivered to a consumer.  
    * Must be a positive integer.
+* When the promise resolves, the messages are written to disk.  
+   * Returns a [QueueSendResult](#queuesendresult) containing realtime metrics about the queue.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/javascript-apis/","name":"JavaScript APIs"}}]}

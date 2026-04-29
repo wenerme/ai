@@ -4,6 +4,10 @@ description: Flagship evaluation reason values and error codes returned by bindi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Evaluation reasons and error codes
@@ -33,8 +37,8 @@ When an evaluation error occurs, the method returns the default value you provid
 
 The following example inspects evaluation details returned by `getBooleanDetails`:
 
-* [  JavaScript ](#tab-panel-7137)
-* [  TypeScript ](#tab-panel-7138)
+* [  JavaScript ](#tab-panel-5979)
+* [  TypeScript ](#tab-panel-5980)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Download objects from R2 using the dashboard, Workers API, S3 API, 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Download objects
@@ -47,8 +51,8 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to download objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-8308)
-* [ Python ](#tab-panel-8309)
+* [ JavaScript ](#tab-panel-7150)
+* [ Python ](#tab-panel-7151)
 
 TypeScript
 

@@ -4,6 +4,10 @@ description: Fix Enhanced HTTP/2 Prioritization issues on iOS and Safari.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enhanced HTTP/2 Prioritization negatively affects iOS/Safari devices

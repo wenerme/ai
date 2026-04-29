@@ -4,14 +4,18 @@ description: Use the D1Database binding to prepare statements, execute queries, 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # D1 Database
 
 To interact with your D1 database from your Worker, you need to access it through the environment bindings provided to the Worker (`env`).
 
-* [  JavaScript ](#tab-panel-6587)
-* [  Python ](#tab-panel-6588)
+* [  JavaScript ](#tab-panel-5429)
+* [  Python ](#tab-panel-5430)
 
 JavaScript
 
@@ -52,8 +56,8 @@ A D1 binding has the type `D1Database`, and supports a number of methods, as lis
 
 Prepares a query statement to be later executed.
 
-* [  JavaScript ](#tab-panel-6589)
-* [  Python ](#tab-panel-6590)
+* [  JavaScript ](#tab-panel-5431)
+* [  Python ](#tab-panel-5432)
 
 JavaScript
 
@@ -92,8 +96,8 @@ stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind
 You can use the `bind` method to dynamically bind a value into the query statement, as shown below.
 
 * Example of a static statement without using `bind`:  
-   * [  JavaScript ](#tab-panel-6591)  
-   * [  Python ](#tab-panel-6592)  
+   * [  JavaScript ](#tab-panel-5433)  
+   * [  Python ](#tab-panel-5434)  
 JavaScript  
 ```  
 const stmt = db  
@@ -104,8 +108,8 @@ Python
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")  
 ```
 * Example of an ordered statement using `bind`:  
-   * [  JavaScript ](#tab-panel-6593)  
-   * [  Python ](#tab-panel-6594)  
+   * [  JavaScript ](#tab-panel-5435)  
+   * [  Python ](#tab-panel-5436)  
 JavaScript  
 ```  
 const stmt = db  
@@ -127,8 +131,8 @@ Batched statements are [SQL transactions ↗](https://www.sqlite.org/lang%5Ftran
 
 To send batch statements, provide `D1Database::batch` a list of prepared statements and get the results in the same order.
 
-* [  JavaScript ](#tab-panel-6595)
-* [  Python ](#tab-panel-6596)
+* [  JavaScript ](#tab-panel-5437)
+* [  Python ](#tab-panel-5438)
 
 JavaScript
 
@@ -188,8 +192,8 @@ batch_result = await self.env.DB.batch(to_js([
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-6597)
-* [  Python ](#tab-panel-6598)
+* [  JavaScript ](#tab-panel-5439)
+* [  Python ](#tab-panel-5440)
 
 JavaScript
 
@@ -341,8 +345,8 @@ Explain Code
 
 Explain Code
 
-* [  JavaScript ](#tab-panel-6599)
-* [  Python ](#tab-panel-6600)
+* [  JavaScript ](#tab-panel-5441)
+* [  Python ](#tab-panel-5442)
 
 JavaScript
 
@@ -384,8 +388,8 @@ print(stmt[1].results.to_py())
 #### Guidance
 
 * You can construct batches reusing the same prepared statement:  
-   * [  JavaScript ](#tab-panel-6601)  
-   * [  Python ](#tab-panel-6602)  
+   * [  JavaScript ](#tab-panel-5443)  
+   * [  Python ](#tab-panel-5444)  
 JavaScript  
 ```  
 const companyName1 = `Bs Beverages`;  
@@ -416,8 +420,8 @@ Explain Code
 
 Executes one or more queries directly without prepared statements or parameter bindings.
 
-* [  JavaScript ](#tab-panel-6603)
-* [  Python ](#tab-panel-6604)
+* [  JavaScript ](#tab-panel-5445)
+* [  Python ](#tab-panel-5446)
 
 JavaScript
 
@@ -451,8 +455,8 @@ return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-6605)
-* [  Python ](#tab-panel-6606)
+* [  JavaScript ](#tab-panel-5447)
+* [  Python ](#tab-panel-5448)
 
 JavaScript
 
@@ -507,8 +511,8 @@ This API only works on databases created during D1's alpha period. Check which v
 
 Dumps the entire D1 database to an SQLite compatible file inside an ArrayBuffer.
 
-* [  JavaScript ](#tab-panel-6607)
-* [  Python ](#tab-panel-6608)
+* [  JavaScript ](#tab-panel-5449)
+* [  Python ](#tab-panel-5450)
 
 JavaScript
 
@@ -557,8 +561,8 @@ return Response(dump, status=200, headers={"Content-Type": "application/octet-st
 
 Starts a D1 session which maintains sequential consistency among queries executed on the returned `D1DatabaseSession` object.
 
-* [  JavaScript ](#tab-panel-6609)
-* [  Python ](#tab-panel-6610)
+* [  JavaScript ](#tab-panel-5451)
+* [  Python ](#tab-panel-5452)
 
 JavaScript
 
@@ -608,8 +612,8 @@ session = self.env.DB.withSession("<parameter>")
 
 Retrieves the latest `bookmark` from the D1 Session.
 
-* [  JavaScript ](#tab-panel-6611)
-* [  Python ](#tab-panel-6612)
+* [  JavaScript ](#tab-panel-5453)
+* [  Python ](#tab-panel-5454)
 
 JavaScript
 

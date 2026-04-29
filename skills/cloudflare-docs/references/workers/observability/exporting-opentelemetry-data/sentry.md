@@ -4,6 +4,10 @@ description: Export OpenTelemetry traces and logs from Cloudflare Workers to Sen
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Export to Sentry
@@ -79,8 +83,8 @@ To configure your logs destination, click **Add destination** and configure the 
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-8897)
-* [  wrangler.toml ](#tab-panel-8898)
+* [  wrangler.jsonc ](#tab-panel-8925)
+* [  wrangler.toml ](#tab-panel-8926)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: Profile SSL/TLS clients across requests using JA3 and JA4 fingerpri
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # JA3/JA4 fingerprint

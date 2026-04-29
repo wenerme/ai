@@ -4,6 +4,10 @@ description: Independent MFA in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -28,16 +32,17 @@ Because you can [configure MFA at the application and policy level](https://deve
 
 Before you can [enforce independent MFA on applications and policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), you must turn on independent MFA at the organization level.
 
-* [ Dashboard ](#tab-panel-5751)
-* [ API ](#tab-panel-5752)
+* [ Dashboard ](#tab-panel-4587)
+* [ API ](#tab-panel-4588)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, select the [MFA methods](#supported-mfa-methods) you want to allow in your organization.
 3. Set an **Authentication duration**. This determines how long a user can log in to Access without being prompted for MFA again. If the user does not have an active MFA session for the required authenticator method, they must complete MFA in addition to IdP authentication.
-4. (Optional) To apply your MFA methods and authentication duration to all Access applications, select **Apply global MFA settings by default**. You can [override the global MFA settings](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#configure-independent-mfa-for-an-application) for individual applications and policies.  
+4. (Optional) To avoid double prompting a user for MFA, you can enable [**Use identity provider MFA**](#use-identity-provider-mfa). This will check the AMR value passed from the identity provider at the time of authentication, if that AMR value passes an allowed MFA method, the user will not be prompted for MFA for the duration configured.
+5. (Optional) To apply your MFA methods and authentication duration to all Access applications, select **Apply global MFA settings by default**. You can [override the global MFA settings](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#configure-independent-mfa-for-an-application) for individual applications and policies.  
 Note  
 The [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) is exempt from the global MFA requirement. Users must be able to access the App Launcher without MFA to enroll their authenticators.
-5. Select **Save**.
+6. Select **Save**.
 
 1. Get your existing Zero Trust organization configuration:  
 Required API token permissions  
@@ -83,6 +88,220 @@ Set `session_duration` to a duration string (for example, `30m`, `1h`, `24h`). T
 
 After you turn on independent MFA, users can [enroll authenticators](#enroll-authenticators) through the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/).
 
+## Restrict authenticators by AAGUID
+
+An [AAGUID ↗](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-registry-v2.0-id-20180227.html#authenticator-attestation-guid) (Authenticator Attestation GUID) is a 128-bit identifier that indicates the make and model of a [WebAuthn ↗](https://www.w3.org/TR/webauthn-2/) authenticator. By restricting enrollment to a specific set of AAGUIDs, you can require that users only enroll approved hardware, such as FIPS-validated security keys or company-issued devices.
+
+AAGUID restrictions apply at enrollment time only. Access verifies the AAGUID when a user registers an authenticator, not when they authenticate. As a result, AAGUID restrictions are configured at the organization level.
+
+Warning
+
+Some authenticators do not send an AAGUID during WebAuthn registration, including:
+
+* Apple devices using iCloud Keychain passkeys.
+* YubiKey 4 and earlier models using U2F (CTAP1).
+
+Users cannot enroll these authenticators when AAGUID restrictions are turned on. Before turning on AAGUID restrictions, confirm that your required authenticators are in the [FIDO Alliance Metadata Service ↗](https://fidoalliance.org/metadata/).
+
+### 1\. Create an AAGUID list
+
+AAGUIDs are managed using [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Create a list of type **AAGUID**, then reference the list in your organization's MFA configuration.
+
+* [ Dashboard ](#tab-panel-4585)
+* [ API ](#tab-panel-4586)
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Resources** \> **Lists**.
+2. Select **Create new list**.
+3. Enter a **List name** (for example, `Approved security keys`) and an optional description.
+4. Set **List type** to **MFA AAGUIDs**.
+5. Add one or more AAGUID entries:  
+   * To add predefined AAGUIDs, select authenticators from the **Known authenticators** list.  
+   * To add a custom AAGUID, fill out the following fields:  
+         * **MFA AAGUIDs** — The AAGUID of the authenticator, in 32-character hexadecimal format without dashes (for example, `8c39ee867f9a4a959ba3f6b097e5c2ee`).  
+         * **Description** — An optional label such as the authenticator's name and model.
+6. Select **Save**.
+
+Send a `POST` request to create the list:
+
+Create Zero Trust list
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
+
+  --request POST \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --json '{
+
+    "name": "Approved security keys",
+
+    "description": "AAGUIDs for MFA enrollment",
+
+    "type": "AAGUID",
+
+    "items": [
+
+        {
+
+            "value": "8c39ee867f9a4a959ba3f6b097e5c2ee",
+
+            "description": "YubiKey Bio Series - FIDO Edition (Enterprise Profile)"
+
+        }
+
+    ]
+
+  }'
+
+
+```
+
+Explain Code
+
+The response contains an `id` (UUID) for the list. Use this ID when you assign the list to your organization's MFA configuration.
+
+Tip
+
+You can look up AAGUIDs for common authenticators in the [FIDO Alliance Metadata Service ↗](https://fidoalliance.org/metadata/). Most vendors also publish AAGUIDs for their hardware on their support sites.
+
+### 2\. Assign an AAGUID list to your organization
+
+* [ Dashboard ](#tab-panel-4591)
+* [ API ](#tab-panel-4592)
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
+2. Under **Allow multi-factor authentication (MFA)**, go to **Limit MFA to specific authentication methods**.
+3. Select an existing [AAGUID list](#1-create-an-aaguid-list).
+4. Select **Save**.
+
+After you save, only authenticators whose AAGUIDs appear in the list can be enrolled. Users with previously enrolled authenticators outside the list can continue to use them until they are [deleted by an administrator](#delete-a-user-authenticator).
+
+1. Get your existing Zero Trust organization configuration:  
+Required API token permissions  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
+   * `Access: Organizations, Identity Providers, and Groups Revoke`  
+   * `Access: Organizations, Identity Providers, and Groups Write`  
+   * `Access: Organizations, Identity Providers, and Groups Read`  
+Get your Zero Trust organization  
+```  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
+  --request GET \  
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+```
+2. Send a `PUT` request to assign the list. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request. Set `mfa_config.required_aaguids` to the ID of your AAGUID list.  
+Required API token permissions  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
+   * `Access: Organizations, Identity Providers, and Groups Write`  
+Update your Zero Trust organization  
+```  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
+  --request PUT \  
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
+  --json '{  
+    "auth_domain": "your-team-name.cloudflareaccess.com",  
+    "name": "Your Team Name",  
+    "mfa_config": {  
+        "allowed_authenticators": [  
+            "security_key",  
+            "totp",  
+            "biometrics"  
+        ],  
+        "session_duration": "24h",  
+        "required_aaguids": "05ddacda-5131-41ab-9eeb-6763f8dce3be"  
+    }  
+  }'  
+```  
+Explain Code  
+To remove the restriction, set `required_aaguids` to `null`.
+
+Note
+
+AAGUID requirements and [AMR matching](#use-identity-provider-mfa) cannot both be turned on at the organization level. If AAGUID requirements are turned on, Access skips AMR matching even when the identity provider returns a matching AMR value.
+
+## Use identity provider MFA
+
+If your identity provider already prompts users for MFA, you can configure Access to accept that MFA instead of prompting again. Access checks the Authentication Method Reference (AMR) claim returned by the IdP, as defined in [RFC 8176 ↗](https://datatracker.ietf.org/doc/html/rfc8176). If the AMR value matches an [allowed authenticator type](#supported-mfa-methods) for the application or policy, Access skips the independent MFA prompt.
+
+### Supported AMR values
+
+| AMR value | Matches Access authenticator type | Description                           |
+| --------- | --------------------------------- | ------------------------------------- |
+| hwk       | Security key                      | Proof-of-possession of a hardware key |
+| swk       | Security key                      | Proof-of-possession of a software key |
+| otp       | Authenticator application         | One-time password                     |
+| face      | Biometrics                        | Facial recognition                    |
+| fpt       | Biometrics                        | Fingerprint                           |
+| iris      | Biometrics                        | Iris scan                             |
+| retina    | Biometrics                        | Retina scan                           |
+| vbm       | Biometrics                        | Voice biometric                       |
+
+Access ignores AMR values that do not map to a supported authenticator type (for example, `pwd`, `sms`, `tel`, `geo`, `kba`, `sc`, `pin`, `user`, `mca`, `rba`, `wia`).
+
+### Turn on AMR matching
+
+* [ Dashboard ](#tab-panel-4593)
+* [ API ](#tab-panel-4594)
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
+2. Under **Allow multi-factor authentication (MFA)**, turn on **Use identity provider MFA**.
+3. Under **Authentication Method Reference (AMR) matching duration**, set how long a successful IdP MFA remains valid. During this period, users can log in to Access without an additional MFA prompt. You can set a custom duration (default 24 hours) or check for a [valid AMR value](#supported-amr-values) on every login.
+4. Select **Save**.
+
+1. Get your existing Zero Trust organization configuration:  
+Required API token permissions  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
+   * `Access: Organizations, Identity Providers, and Groups Revoke`  
+   * `Access: Organizations, Identity Providers, and Groups Write`  
+   * `Access: Organizations, Identity Providers, and Groups Read`  
+Get your Zero Trust organization  
+```  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
+  --request GET \  
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+```
+2. Send a `PUT` request to update your organization's AMR matching settings. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.  
+Required API token permissions  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
+   * `Access: Organizations, Identity Providers, and Groups Write`  
+Update your Zero Trust organization  
+```  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
+  --request PUT \  
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
+  --json '{  
+    "auth_domain": "your-team-name.cloudflareaccess.com",  
+    "name": "Your Team Name",  
+    "mfa_config": {  
+        "allowed_authenticators": [  
+            "totp",  
+            "biometrics",  
+            "security_key"  
+        ],  
+        "session_duration": "24h",  
+        "amr_matching_enabled": true,  
+        "amr_session_duration": "1h"  
+    }  
+  }'  
+```  
+Explain Code
+
+### When AMR matching is skipped
+
+Access does not apply AMR matching in the following cases:
+
+* [AAGUID requirements](#restrict-authenticators-by-aaguid) are turned on at the organization level. AAGUID information is not present in the IdP's AMR claim, so Access cannot verify that the IdP's MFA came from an approved device.
+* The IdP does not return an `amr` claim.
+* The IdP returns only AMR values that do not map to an [allowed authenticator type](#supported-mfa-methods) for the application or policy.
+* The user's AMR matching session has expired because they last performed MFA via their IdP longer ago than the configured AMR matching duration.
+
+In these cases, Access falls back to checking for existing MFA sessions. If there are no valid MFA sessions, Access prompts the user to complete independent MFA.
+
+Note
+
+Identity providers differ in how they populate the `amr` claim. Some providers, including Okta, may return provider-specific values such as `pop` that are not part of RFC 8176\. Test the behavior with your IdP before relying on AMR matching for production applications.
+
 ## Turn off independent MFA
 
 Warning
@@ -91,8 +310,8 @@ Turning off independent MFA removes MFA protection on all Access applications. B
 
 To turn off independent MFA for the organization:
 
-* [ Dashboard ](#tab-panel-5749)
-* [ API ](#tab-panel-5750)
+* [ Dashboard ](#tab-panel-4589)
+* [ API ](#tab-panel-4590)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn off **Apply global MFA settings by default**.
@@ -203,8 +422,8 @@ To view a user's enrolled authenticators:
 
 If a user is locked out or you need to revoke an authenticator for security reasons, you can delete it from the dashboard or API.
 
-* [ Dashboard ](#tab-panel-5747)
-* [ API ](#tab-panel-5748)
+* [ Dashboard ](#tab-panel-4583)
+* [ API ](#tab-panel-4584)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
 2. Select the user whose authenticator you want to delete.

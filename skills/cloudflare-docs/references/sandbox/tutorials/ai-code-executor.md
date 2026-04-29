@@ -4,11 +4,15 @@ description: Use Claude to generate Python code from natural language and execut
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build an AI code executor
 
-**Last reviewed:**  6 months ago 
+**Last reviewed:**  7 months ago 
 
 Build an AI-powered code execution system using Sandbox SDK and Claude. Turn natural language questions into Python code, execute it securely, and return results.
 

@@ -4,6 +4,10 @@ description: Learn to configure Salesforce as a SAML app in Cloudflare One. Foll
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -12,7 +16,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Salesforce (SAML)
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Salesforce ↗](https://help.salesforce.com/s/articleView?id=sf.sso%5Fsaml.htm&type=5) as a SAML application in Cloudflare One.
 

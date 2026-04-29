@@ -4,6 +4,10 @@ description: Set up private DNS resolution.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Resolve private DNS
@@ -23,8 +27,8 @@ To learn more about how Local Domain Fallback works, refer to [How the Cloudflar
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-7660)
-* [ Terraform (v5) ](#tab-panel-7661)
+* [ Dashboard ](#tab-panel-6502)
+* [ Terraform (v5) ](#tab-panel-6503)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
@@ -142,8 +146,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-7658)
-* [ Terraform (v5) ](#tab-panel-7659)
+* [ Dashboard ](#tab-panel-6500)
+* [ Terraform (v5) ](#tab-panel-6501)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.

@@ -4,6 +4,10 @@ description: Connect client devices in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -26,8 +30,8 @@ Connect a laptop or phone to your Mesh network:
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-5883)
-* [ Version 2026.1 and earlier ](#tab-panel-5884)
+* [ Version 2026.2+ ](#tab-panel-4725)
+* [ Version 2026.1 and earlier ](#tab-panel-4726)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.

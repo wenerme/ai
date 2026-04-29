@@ -4,6 +4,10 @@ description: Fetch weather data from an API using the user's geolocation data.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,10 +26,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9862)
-* [  TypeScript ](#tab-panel-9863)
-* [  Hono ](#tab-panel-9864)
-* [  Python ](#tab-panel-9865)
+* [  JavaScript ](#tab-panel-8747)
+* [  TypeScript ](#tab-panel-8748)
+* [  Hono ](#tab-panel-8749)
+* [  Python ](#tab-panel-8750)
 
 JavaScript
 

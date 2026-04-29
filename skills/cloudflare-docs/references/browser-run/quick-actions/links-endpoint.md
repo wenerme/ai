@@ -4,6 +4,10 @@ description: Extract all links from a webpage, including hidden ones, using the 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # /links - Retrieve links from a webpage
@@ -38,8 +42,8 @@ You must provide either `url` or `html`:
 
 ### Get all links on a page
 
-* [ curl ](#tab-panel-5593)
-* [ TypeScript SDK ](#tab-panel-5594)
+* [ curl ](#tab-panel-4429)
+* [ TypeScript SDK ](#tab-panel-4430)
 
 This example grabs all links from the [Cloudflare Doc's homepage ↗](https://developers.cloudflare.com/). The response will be a JSON array containing the links found on the page.
 

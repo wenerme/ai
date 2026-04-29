@@ -4,6 +4,10 @@ description: Breakout traffic allows you to define which applications should byp
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Breakout traffic
@@ -103,8 +107,8 @@ You can now add this new app to the Breakout traffic list in your Cloudflare One
 
 You need to configure Breakout traffic applications for each of your existing sites, as this is a per-site configuration.
 
-* [ Dashboard ](#tab-panel-5236)
-* [ API ](#tab-panel-5237)
+* [ Dashboard ](#tab-panel-5242)
+* [ API ](#tab-panel-5243)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -183,8 +187,8 @@ Explain Code
 
 ### Delete an application from Cloudflare One Appliance
 
-* [ Dashboard ](#tab-panel-5234)
-* [ API ](#tab-panel-5235)
+* [ Dashboard ](#tab-panel-5240)
+* [ API ](#tab-panel-5241)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

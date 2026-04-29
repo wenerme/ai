@@ -4,6 +4,10 @@ description: Write your Worker code in ES modules syntax for an optimized experi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Migrate from Service Workers to ES Modules
@@ -103,8 +107,8 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 2. Create a Worker.
 3. Find your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add a KV namespace binding:
 
-* [  wrangler.jsonc ](#tab-panel-8943)
-* [  wrangler.toml ](#tab-panel-8944)
+* [  wrangler.jsonc ](#tab-panel-8971)
+* [  wrangler.toml ](#tab-panel-8972)
 
 JSONC
 
@@ -243,8 +247,8 @@ export { getTodos }
 
 Review the following example environment variable configuration in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8945)
-* [  wrangler.toml ](#tab-panel-8946)
+* [  wrangler.jsonc ](#tab-panel-8973)
+* [  wrangler.toml ](#tab-panel-8974)
 
 JSONC
 
@@ -331,8 +335,8 @@ export default {
 
 You can also import `env` from `cloudflare:workers` to access environment variables from anywhere in your code, including the top-level scope:
 
-* [  JavaScript ](#tab-panel-8947)
-* [  TypeScript ](#tab-panel-8948)
+* [  JavaScript ](#tab-panel-8975)
+* [  TypeScript ](#tab-panel-8976)
 
 JavaScript
 

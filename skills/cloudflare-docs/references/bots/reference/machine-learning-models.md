@@ -4,6 +4,10 @@ description: Manage auto-updates for Bot Management machine learning models.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Machine Learning models
@@ -14,8 +18,8 @@ Cloudflare encourages Enterprise customers to enable auto-updates to its Machine
 
 To enable auto-updates:
 
-* [  New dashboard ](#tab-panel-5549)
-* [ Old dashboard ](#tab-panel-5550)
+* [  New dashboard ](#tab-panel-4385)
+* [ Old dashboard ](#tab-panel-4386)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

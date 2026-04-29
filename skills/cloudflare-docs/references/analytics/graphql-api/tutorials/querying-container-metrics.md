@@ -4,6 +4,10 @@ description: Query Cloudflare Containers metrics with the GraphQL Analytics API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Querying Containers metrics with GraphQL
@@ -510,7 +514,7 @@ query ContainersByLabel(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAwgewHYBcCGBLJkDOAhKAGTQCMwAbACgCgYYASNAYyYRFQBU0BzALhgDKKCFm60GAEzQowKDAFswQtBBT8OCsOPpSZcxQFEkE9ZuoBKGAG9xANwxgA7pGvi6zVuxQ5KAMwzkMhD8VjAebJw8-IwsEShc3DAAvpY2dOkwrKiY2BA4ALKyIkw4AIJSAA5ytmAA4hBsFT5uGTDkChhqMACMAAy9LRn+gZAhg626spoA+txgwNGT+kroquMZSzPk84vSU4bG6+nkpBQ40wAWaDj8AERgSLYAvBUNEiBMcsi3R0njqUcJJokDgMMgcK5Wq0HrZ+CcyFQkGhFHcYbdzEc6BAwNwwUg4adEciwHdsbjvhioXQ-lSYDgQPJIbTMhUQBpFAIwExfkd5GgAB5M2mKeQIaA8qE09JSv5JIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgCxzxADmRLMkyZgDMAVgBaDZqw482AUXhMxU2QuVrkARh3a9RkAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAwgewHYBcCGBLJkDOAhKAGTQCMwAbACgCgYYASNAYyYRFQBU0BzALhgDKKCFm60GAEzQowKDAFswQtBBT8OCsOPpSZcxQFEkE9ZuoBKGAG9xANwxgA7pGvi6zVuxQ5KAMwzkMhD8VjAebJw8-IwsEShc3DAAvpY2dOkwrKiY2BA4ALKyIkw4AIJSAA5ytmAA4hBsFT5uGTDkChhqMACMAAy9LRn+gZAhg626spoA+txgwNGT+kroquMZSzPk84vSU4bG6+nkpBQ40wAWaDj8AERgSLYAvBUNEiBMcsi3R0njqUcJJokDgMMgcK5Wq0HrZ+CcyFQkGhFHcYbdzEc6BAwNwwUg4adEciwHdsbjvhioXQ-lSYDgQPJIbTMhUQBpFAIwExfkd5GgAB5M2mKeQIaA8qE09JSv5JIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0kgCxzxADmQBGVZg0zMijQC0GzVhx5sAovCZipshcvEBOZJMk69B4wF8gA)
 
 The aliased dimensions appear directly on each result:
 

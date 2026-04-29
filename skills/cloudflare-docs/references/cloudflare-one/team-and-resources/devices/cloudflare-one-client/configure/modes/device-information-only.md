@@ -4,6 +4,10 @@ description: Enable Posture only mode in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -65,12 +69,12 @@ When enrolled in Posture only mode, the Cloudflare One Client (formerly WARP) wi
 ## 3\. (Optional) Verify the client certificate
 
 1. To view the client certificates installed on the device:  
-   * [ Windows ](#tab-panel-6086)  
-   * [ macOS ](#tab-panel-6087)  
-   * [ Linux ](#tab-panel-6088)  
-   * [ iOS ](#tab-panel-6089)  
-   * [ Android ](#tab-panel-6090)  
-   * [ ChromeOS ](#tab-panel-6091)  
+   * [ Windows ](#tab-panel-4928)  
+   * [ macOS ](#tab-panel-4929)  
+   * [ Linux ](#tab-panel-4930)  
+   * [ iOS ](#tab-panel-4931)  
+   * [ Android ](#tab-panel-4932)  
+   * [ ChromeOS ](#tab-panel-4933)  
    1. Open the **Start** menu and select **Run**.  
    2. Enter `certlm.msc`.  
    3. Go to **Personal** \> **Certificates**.  

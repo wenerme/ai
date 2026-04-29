@@ -4,6 +4,10 @@ description: Manage AI Search instances from a Cloudflare Worker using the Insta
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Workers binding
@@ -21,8 +25,8 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-5337)
-* [  wrangler.toml ](#tab-panel-5338)
+* [  wrangler.jsonc ](#tab-panel-4171)
+* [  wrangler.toml ](#tab-panel-4172)
 
 JSONC
 
@@ -79,8 +83,8 @@ namespace = "my-namespace"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-5339)
-* [  wrangler.toml ](#tab-panel-5340)
+* [  wrangler.jsonc ](#tab-panel-4173)
+* [  wrangler.toml ](#tab-panel-4174)
 
 JSONC
 

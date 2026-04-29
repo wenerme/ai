@@ -4,6 +4,10 @@ description: Configure Cloudflare for SaaS to support apex domain custom hostnam
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Setup
@@ -58,8 +62,8 @@ To create your fallback origin:
 
 1. Designate that record as your fallback origin.
 
-* [ Dashboard ](#tab-panel-5703)
-* [ API ](#tab-panel-5704)
+* [ Dashboard ](#tab-panel-4539)
+* [ API ](#tab-panel-4540)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -105,8 +109,8 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-* [ Dashboard ](#tab-panel-5705)
-* [ API ](#tab-panel-5706)
+* [ Dashboard ](#tab-panel-4541)
+* [ API ](#tab-panel-4542)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

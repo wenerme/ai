@@ -4,6 +4,10 @@ description: Secure your MCP servers with OAuth 2.1, token validation, and scope
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -20,8 +24,8 @@ This guide covers security best practices for MCP servers that act as OAuth prox
 
 Cloudflare's [workers-oauth-provider ↗](https://github.com/cloudflare/workers-oauth-provider) handles token management, client registration, and access token validation:
 
-* [  JavaScript ](#tab-panel-5196)
-* [  TypeScript ](#tab-panel-5197)
+* [  JavaScript ](#tab-panel-4030)
+* [  TypeScript ](#tab-panel-4031)
 
 JavaScript
 
@@ -91,8 +95,8 @@ When your MCP server proxies to third-party OAuth providers, you must implement 
 
 Without CSRF protection, attackers can trick users into approving malicious OAuth clients. Use a random token stored in a secure cookie:
 
-* [  JavaScript ](#tab-panel-5200)
-* [  TypeScript ](#tab-panel-5201)
+* [  JavaScript ](#tab-panel-4034)
+* [  TypeScript ](#tab-panel-4035)
 
 JavaScript
 
@@ -219,8 +223,8 @@ Include the token as a hidden field in your consent form:
 
 User-controlled content (client names, logos, URIs) can execute malicious scripts if not sanitized:
 
-* [  JavaScript ](#tab-panel-5204)
-* [  TypeScript ](#tab-panel-5205)
+* [  JavaScript ](#tab-panel-4038)
+* [  TypeScript ](#tab-panel-4039)
 
 JavaScript
 
@@ -344,8 +348,8 @@ Explain Code
 
 CSP headers instruct browsers to block dangerous content:
 
-* [  JavaScript ](#tab-panel-5202)
-* [  TypeScript ](#tab-panel-5203)
+* [  JavaScript ](#tab-panel-4036)
+* [  TypeScript ](#tab-panel-4037)
 
 JavaScript
 
@@ -451,8 +455,8 @@ Explain Code
 
 Between the consent dialog and the OAuth callback, you need to ensure it is the same user. Use a state token stored in KV with a short expiration:
 
-* [  JavaScript ](#tab-panel-5206)
-* [  TypeScript ](#tab-panel-5207)
+* [  JavaScript ](#tab-panel-4040)
+* [  TypeScript ](#tab-panel-4041)
 
 JavaScript
 
@@ -675,8 +679,8 @@ __Host-APPROVED_CLIENTS_GOOGLE
 
 Maintain a registry of approved client IDs per user to avoid showing the consent dialog repeatedly:
 
-* [  JavaScript ](#tab-panel-5198)
-* [  TypeScript ](#tab-panel-5199)
+* [  JavaScript ](#tab-panel-4032)
+* [  TypeScript ](#tab-panel-4033)
 
 JavaScript
 

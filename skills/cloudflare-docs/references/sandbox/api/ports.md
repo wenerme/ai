@@ -4,6 +4,10 @@ description: Expose sandbox services via public preview URLs using the Sandbox S
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Ports
@@ -38,8 +42,8 @@ proxyToSandbox(request: Request, env: Env): Promise<Response | null>
 
 The function inspects the request hostname to determine whether it matches the subdomain pattern of an exposed port (for example, `8080-sandbox-id-token.yourdomain.com`). If it matches, `proxyToSandbox()` proxies the request to the correct Durable Object, and the sandbox service handles it. Both HTTP and WebSocket upgrade requests are supported.
 
-* [  JavaScript ](#tab-panel-8685)
-* [  TypeScript ](#tab-panel-8686)
+* [  JavaScript ](#tab-panel-7527)
+* [  TypeScript ](#tab-panel-7528)
 
 JavaScript
 
@@ -146,8 +150,8 @@ const response = await sandbox.exposePort(port: number, options: ExposePortOptio
 
 **Returns**: `Promise<ExposePortResponse>` with `port`, `url` (preview URL), `name`
 
-* [  JavaScript ](#tab-panel-8693)
-* [  TypeScript ](#tab-panel-8694)
+* [  JavaScript ](#tab-panel-7535)
+* [  TypeScript ](#tab-panel-7536)
 
 JavaScript
 
@@ -317,8 +321,8 @@ Custom tokens enable consistent preview URLs across container restarts and deplo
 * Only lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_)
 * Must be unique per sandbox (cannot reuse tokens across different ports)
 
-* [  JavaScript ](#tab-panel-8687)
-* [  TypeScript ](#tab-panel-8688)
+* [  JavaScript ](#tab-panel-7529)
+* [  TypeScript ](#tab-panel-7530)
 
 JavaScript
 
@@ -406,8 +410,8 @@ const isValid = await sandbox.validatePortToken(port: number, token: string): Pr
 
 **Returns**: `Promise<boolean>` \- `true` if token is valid for the port, `false` otherwise
 
-* [  JavaScript ](#tab-panel-8691)
-* [  TypeScript ](#tab-panel-8692)
+* [  JavaScript ](#tab-panel-7533)
+* [  TypeScript ](#tab-panel-7534)
 
 JavaScript
 
@@ -534,8 +538,8 @@ await sandbox.unexposePort(port: number): Promise<void>
 
 * `port` \- Port number to unexpose
 
-* [  JavaScript ](#tab-panel-8681)
-* [  TypeScript ](#tab-panel-8682)
+* [  JavaScript ](#tab-panel-7523)
+* [  TypeScript ](#tab-panel-7524)
 
 JavaScript
 
@@ -570,8 +574,8 @@ const response = await sandbox.getExposedPorts(): Promise<GetExposedPortsRespons
 
 **Returns**: `Promise<GetExposedPortsResponse>` with `ports` array (containing `port`, `url`, `name`)
 
-* [  JavaScript ](#tab-panel-8683)
-* [  TypeScript ](#tab-panel-8684)
+* [  JavaScript ](#tab-panel-7525)
+* [  TypeScript ](#tab-panel-7526)
 
 JavaScript
 
@@ -632,8 +636,8 @@ const response = await sandbox.wsConnect(request: Request, port: number): Promis
 
 **Returns**: `Promise<Response>` \- WebSocket response establishing the connection
 
-* [  JavaScript ](#tab-panel-8689)
-* [  TypeScript ](#tab-panel-8690)
+* [  JavaScript ](#tab-panel-7531)
+* [  TypeScript ](#tab-panel-7532)
 
 JavaScript
 

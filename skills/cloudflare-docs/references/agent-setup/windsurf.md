@@ -4,6 +4,10 @@ description: Agentic IDE with Cascade context and Flows for multi-step tasks. Ma
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agent-setup/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 [ All agents](https://developers.cloudflare.com/agent-setup/) 
@@ -45,7 +49,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.  
+Add mTLS authentication and schema validation to protect my API endpoints.  
 ```
 
 ## Cloudflare platform access

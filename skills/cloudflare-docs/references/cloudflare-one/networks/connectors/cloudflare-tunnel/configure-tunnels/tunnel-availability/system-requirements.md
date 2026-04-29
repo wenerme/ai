@@ -4,6 +4,10 @@ description: How System requirements works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -33,8 +37,8 @@ When `cloudflared` receives a request from a device, it uses the ports on the ho
 * `cloudflared` should be deployed on a dedicated host machine. This model is typically appropriate, but there may be serverless or clustered workflows where a dedicated host is not possible.
 * The host machine should allocate 50,000 ports to be available for use by the `cloudflared` service. The remaining ports are reserved for system administrative processes.
 
-* [ Linux ](#tab-panel-5914)
-* [ Windows ](#tab-panel-5915)
+* [ Linux ](#tab-panel-4756)
+* [ Windows ](#tab-panel-4757)
 
 To increase the number of ports available to `cloudflared` on Linux:
 

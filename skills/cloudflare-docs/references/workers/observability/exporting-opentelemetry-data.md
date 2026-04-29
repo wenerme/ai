@@ -4,6 +4,10 @@ description: Export traces and logs from Cloudflare Workers to any OpenTelemetry
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Exporting OpenTelemetry Data
@@ -61,8 +65,8 @@ To start sending data to your destination, you'll need to create a destination i
 
 After setting up destinations in the dashboard, configure your Worker to export telemetry data by updating your Wrangler configuration. Your destination name configured in your configuration file should be the same as the destination configured in the dashboard.
 
-* [  wrangler.jsonc ](#tab-panel-8887)
-* [  wrangler.toml ](#tab-panel-8888)
+* [  wrangler.jsonc ](#tab-panel-8915)
+* [  wrangler.toml ](#tab-panel-8916)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: Restrict access to Cloudflare Images by generating signed URL token
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Serve private images
@@ -29,8 +33,8 @@ Note
 
 Never hardcode your signing key in source code. Store it as a secret using [npx wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) and access it via the `env` parameter. For more information, refer to [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
 
-* [  JavaScript ](#tab-panel-7453)
-* [  TypeScript ](#tab-panel-7454)
+* [  JavaScript ](#tab-panel-6295)
+* [  TypeScript ](#tab-panel-6296)
 
 JavaScript
 

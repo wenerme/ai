@@ -4,6 +4,10 @@ description: Configure Super Bot Fight Mode to challenge or block bots on Pro, B
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Super Bot Fight Mode
@@ -45,8 +49,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 
 To start using Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-5547)
-* [ Old dashboard ](#tab-panel-5548)
+* [  New dashboard ](#tab-panel-4383)
+* [ Old dashboard ](#tab-panel-4384)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -84,8 +88,8 @@ If you find that **Super Bot Fight Mode** is causing problems with your applicat
 
 To disable Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-5545)
-* [ Old dashboard ](#tab-panel-5546)
+* [  New dashboard ](#tab-panel-4381)
+* [ Old dashboard ](#tab-panel-4382)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

@@ -4,6 +4,10 @@ description: Use a Worker to add configurable delays to requests with low bot sc
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Delay action
@@ -12,8 +16,8 @@ Customers with a Bot Management and a [Workers](https://developers.cloudflare.co
 
 The template sets a minimum and maximum delay, and delays requests where the bot score is less than 30 and the URI path starts with `/exampleURI`.
 
-* [  JavaScript ](#tab-panel-5553)
-* [  TypeScript ](#tab-panel-5554)
+* [  JavaScript ](#tab-panel-4389)
+* [  TypeScript ](#tab-panel-4390)
 
 JavaScript
 

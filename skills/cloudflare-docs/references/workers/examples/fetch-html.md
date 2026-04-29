@@ -4,6 +4,10 @@ description: Send a request to a remote server, read HTML from the response, and
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,10 +26,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8731)
-* [  TypeScript ](#tab-panel-8732)
-* [  Python ](#tab-panel-8733)
-* [  Hono ](#tab-panel-8734)
+* [  JavaScript ](#tab-panel-8739)
+* [  TypeScript ](#tab-panel-8740)
+* [  Python ](#tab-panel-8741)
+* [  Hono ](#tab-panel-8742)
 
 JavaScript
 
@@ -53,7 +57,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmQQBYAbACYAHAE4ArKKkAuFizbAOcLjT4CR46fKWCpAWABQAYXRUIAU3vYAIlADOMdO6jQ7Kkk08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkmQAKneX1-eSACUHM04LwHCQAAaXMaOMEkADuvhOJAgJ1BJ28azolDhHkREHQJHcTlwJEuNzuEHcSPQ32272QNN4dnuJIcUNBDBI0ROEAgMHcKmQyESEWaDiSjOAGUsNMuEBACCoO1hcF8h2O50h6EcABoWWT7g8iC8AL7ayzGohWdTMTTaXQ8fhCUSSWSKZSlOyOZxuTzeXztKgBILaUjhSIxSKEbQZQLZXLh6JkMDoMglGyeirVWr1HZNFq8NodNJ2aaWdbRYAqqgAfTGExy0RUBUWRXSxqt1ttIXt+idRldpikzCsQA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGYQBYxAVjEAOMSJkAuFizbAOcLjT4CR4qbPnCZAWABQAYXRUIAUxvYAIlADOMdC6jRrikmrwExCRUcMC2DABEUDS2AB4AdABWLhGkqFBg9qHhUTEJyRHmVjb2ENgAKnQwtr5wMDBgfARQ1siJcABucC68CLAQANTA6Ljgtubmce5IJLi2qHDgECQA3mYkJN10VLx+thC8ABYAFAi2AI4gti4QAJSr6xskyABUL49PLyQASrYNcLxbCQAAZnYZ2YEkADuXkOJAghyBhw8yzolGhrjhEHQJBc9lwJDOl2uEBc8PQHw2L2QlN41huhNs4KBDBIEUOEAgMBcimQyDioQatnidOAqTMlLOEBACComyhcC8ewOJzB6DsABpGcSbrciI8AL4aswGojmFTMNQaLQ8fhCUQSaRyBRFax2BzONweLwtKi+fwaUghMKRMKEDSpPwZLIhiJkMDoMiFSxu0oVKo1Tb1Rq8ZqtZLWCZmFYRYCKqgAfWGo0yEUUuTm+RSBvNFqtgRtOnt+idRhkzHMQA)
 
 TypeScript
 

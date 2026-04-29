@@ -4,6 +4,10 @@ description: Enable malicious upload detection for file upload endpoints.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started
@@ -14,10 +18,10 @@ WAF content scanning is available to customers on an Enterprise plan with a paid
 
 ## 1\. Turn on the detection
 
-* [  New dashboard ](#tab-panel-9392)
-* [ Old dashboard ](#tab-panel-9393)
-* [ API ](#tab-panel-9394)
-* [ Terraform ](#tab-panel-9395)
+* [  New dashboard ](#tab-panel-8275)
+* [ Old dashboard ](#tab-panel-8276)
+* [ API ](#tab-panel-8277)
+* [ Terraform ](#tab-panel-8278)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -128,10 +132,10 @@ For additional examples, refer to [Example rules](https://developers.cloudflare.
 
 To check uploaded content in a way that is not covered by the default configuration, add a [custom scan expression](https://developers.cloudflare.com/waf/detections/malicious-uploads/#custom-scan-expressions).
 
-* [  New dashboard ](#tab-panel-9396)
-* [ Old dashboard ](#tab-panel-9397)
-* [ API ](#tab-panel-9398)
-* [ Terraform ](#tab-panel-9399)
+* [  New dashboard ](#tab-panel-8279)
+* [ Old dashboard ](#tab-panel-8280)
+* [ API ](#tab-panel-8281)
+* [ Terraform ](#tab-panel-8282)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

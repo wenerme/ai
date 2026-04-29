@@ -4,6 +4,10 @@ description: Configure the maximum number of database connections in your Hyperd
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Tune connection pooling
@@ -20,9 +24,9 @@ Hyperdrive does have a limit of _origin_ connections that can be made from Hyper
 
 You can configure the connection pool size using the Cloudflare dashboard, the Wrangler CLI, or the Cloudflare API.
 
-* [ Dashboard ](#tab-panel-7232)
-* [ Wrangler ](#tab-panel-7233)
-* [ API ](#tab-panel-7234)
+* [ Dashboard ](#tab-panel-6074)
+* [ Wrangler ](#tab-panel-6075)
+* [ API ](#tab-panel-6076)
 
 To configure connection pool size via the dashboard:
 

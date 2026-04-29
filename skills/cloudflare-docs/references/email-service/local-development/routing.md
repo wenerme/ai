@@ -4,6 +4,10 @@ description: Test Email Service routing Workers locally using wrangler dev with 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Email routing
@@ -25,8 +29,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-7109)
-* [  wrangler.toml ](#tab-panel-7110)
+* [  wrangler.jsonc ](#tab-panel-5951)
+* [  wrangler.toml ](#tab-panel-5952)
 
 JSONC
 
@@ -40,7 +44,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "send_email": [
 
@@ -67,7 +71,7 @@ name = "email-routing-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[send_email]]

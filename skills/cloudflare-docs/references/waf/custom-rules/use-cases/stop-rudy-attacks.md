@@ -4,6 +4,10 @@ description: Block R-U-Dead-Yet slow POST attacks with custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Stop R-U-Dead-Yet? (R.U.D.Y.) attacks

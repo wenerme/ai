@@ -4,6 +4,10 @@ description: Learn how to streamline WAF deployment across different zones and a
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Streamlined WAF deployment across zones and applications

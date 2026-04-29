@@ -4,6 +4,10 @@ description: Cloudflare Workers plan and platform limits.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Limits
@@ -85,8 +89,8 @@ To resolve a CPU time limit error:
 
 On the Workers Paid plan, you can increase the maximum CPU time from the default 30 seconds to 5 minutes (300,000 ms).
 
-* [  wrangler.jsonc ](#tab-panel-8937)
-* [  wrangler.toml ](#tab-panel-8938)
+* [  wrangler.jsonc ](#tab-panel-8965)
+* [  wrangler.toml ](#tab-panel-8966)
 
 JSONC
 
@@ -233,8 +237,8 @@ Once response headers arrive for a connection, it no longer counts toward the si
 
 If you use `fetch()` but do not need the response body, calling `response.body.cancel()` is still good practice to free memory:
 
-* [  JavaScript ](#tab-panel-8939)
-* [  TypeScript ](#tab-panel-8940)
+* [  JavaScript ](#tab-panel-8967)
+* [  TypeScript ](#tab-panel-8968)
 
 src/index.js
 

@@ -4,6 +4,10 @@ description: Deploy the sandbox bridge Worker to control Cloudflare Sandboxes ov
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -12,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Sandbox bridge
 
-**Last reviewed:**  12 days ago 
+**Last reviewed:**  16 days ago 
 
 The sandbox bridge is a reference-implementation Cloudflare Worker that exposes the [Sandbox SDK](https://developers.cloudflare.com/sandbox/api/) as an HTTP API. Any HTTP client — Python script, Node.js service, CI pipeline — can create and control sandboxes without writing a Worker.
 
@@ -99,9 +103,9 @@ export SANDBOX_API_KEY=<your-token>
 
 ### Create a sandbox and run a command
 
-* [ curl ](#tab-panel-8713)
-* [ Node.js ](#tab-panel-8714)
-* [ Python ](#tab-panel-8715)
+* [ curl ](#tab-panel-7555)
+* [ Node.js ](#tab-panel-7556)
+* [ Python ](#tab-panel-7557)
 
 Terminal window
 
@@ -292,9 +296,9 @@ Explain Code
 
 ### Write and read files
 
-* [ curl ](#tab-panel-8716)
-* [ Node.js ](#tab-panel-8717)
-* [ Python ](#tab-panel-8718)
+* [ curl ](#tab-panel-7558)
+* [ Node.js ](#tab-panel-7559)
+* [ Python ](#tab-panel-7560)
 
 Terminal window
 

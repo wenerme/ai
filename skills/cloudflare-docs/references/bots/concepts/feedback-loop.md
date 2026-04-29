@@ -4,6 +4,10 @@ description: Submit feedback to improve bot detection accuracy for your domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Bot Feedback Loop
@@ -42,8 +46,8 @@ If Cloudflare is unable to detect a portion of automated traffic on your site, s
 
 ## Submit a report
 
-* [  New dashboard ](#tab-panel-5535)
-* [ Old dashboard ](#tab-panel-5536)
+* [  New dashboard ](#tab-panel-4371)
+* [ Old dashboard ](#tab-panel-4372)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)

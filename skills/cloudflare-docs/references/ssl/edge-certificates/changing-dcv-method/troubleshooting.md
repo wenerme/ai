@@ -4,6 +4,10 @@ description: Resolve domain control validation failures.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Troubleshooting
@@ -54,8 +58,8 @@ Consider the following when troubleshooting:
 
 You can check the CAA records by running the following command:
 
-* [ macOS and Linux ](#tab-panel-9089)
-* [ Windows ](#tab-panel-9090)
+* [ macOS and Linux ](#tab-panel-7931)
+* [ Windows ](#tab-panel-7932)
 
 Terminal window
 

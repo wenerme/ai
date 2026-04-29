@@ -4,14 +4,18 @@ description: Using Cloudflare environments with the Vite plugin
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cloudflare Environments
 
 A Worker config file may contain configuration for multiple [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/). With the Cloudflare Vite plugin, you select a Cloudflare environment at dev or build time by providing the `CLOUDFLARE_ENV` environment variable. Consider the following example Worker config file:
 
-* [  wrangler.jsonc ](#tab-panel-9235)
-* [  wrangler.toml ](#tab-panel-9236)
+* [  wrangler.jsonc ](#tab-panel-9263)
+* [  wrangler.toml ](#tab-panel-9264)
 
 JSONC
 
@@ -25,7 +29,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "main": "./src/index.ts",
 
@@ -76,7 +80,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 main = "./src/index.ts"
 
@@ -186,8 +190,8 @@ It is possible to control how `.env` files are loaded in local development by se
 
 You may wish to combine the concepts of [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/) and [Vite modes ↗](https://vite.dev/guide/env-and-mode.html#modes). With this approach, the Vite mode can be used to select the Cloudflare environment and a single method can be used to determine environment specific configuration and code. Consider again the previous example:
 
-* [  wrangler.jsonc ](#tab-panel-9237)
-* [  wrangler.toml ](#tab-panel-9238)
+* [  wrangler.jsonc ](#tab-panel-9265)
+* [  wrangler.toml ](#tab-panel-9266)
 
 JSONC
 
@@ -201,7 +205,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "main": "./src/index.ts",
 
@@ -252,7 +256,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 main = "./src/index.ts"
 

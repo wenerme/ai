@@ -4,6 +4,10 @@ description: Set the minimum TLS version for connections to your domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Minimum TLS Version
@@ -43,8 +47,8 @@ The Minimum TLS version that you set up following these steps does not apply to 
 
 To manage the TLS version applied to your whole zone when proxied through Cloudflare:
 
-* [ Dashboard ](#tab-panel-9073)
-* [ API ](#tab-panel-9074)
+* [ Dashboard ](#tab-panel-7915)
+* [ API ](#tab-panel-7916)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)

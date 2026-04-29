@@ -1,11 +1,11 @@
 ---
 title: "Deep Infra | Models"
-description: "Use Deep Infra models with Mastra. 32 models available."
+description: "Use Deep Infra models with Mastra. 33 models available."
 ---
 
 # [Deep Infra logo]Deep Infra
 
-Access 32 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
+Access 33 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
 
 Learn more in the [Deep Infra documentation](https://deepinfra.com/models).
 
@@ -84,6 +84,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 0.26,
     "outputCost": 0.38
+  },
+  {
+    "model": "deepinfra/deepseek-ai/DeepSeek-V4-Pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 65536,
+    "maxOutput": 65536,
+    "inputCost": 1.74,
+    "outputCost": 3.48
   },
   {
     "model": "deepinfra/meta-llama/Llama-3.1-70B-Instruct",

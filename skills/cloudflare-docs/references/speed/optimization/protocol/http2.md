@@ -4,6 +4,10 @@ description: Serve content over HTTP/2 for multiplexed, lower-latency connection
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # HTTP/2
@@ -29,8 +33,8 @@ HTTP/2 is enabled by default for all plans (though it does require an [SSL certi
 
 Domains on Free plans cannot disable Cloudflare's HTTP/2 setting.
 
-* [ Dashboard ](#tab-panel-9049)
-* [ API ](#tab-panel-9050)
+* [ Dashboard ](#tab-panel-7891)
+* [ API ](#tab-panel-7892)
 
 To disable **HTTP/2** in the dashboard:
 

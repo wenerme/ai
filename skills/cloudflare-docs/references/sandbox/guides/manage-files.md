@@ -4,6 +4,10 @@ description: Read, write, organize, and synchronize files in the sandbox.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Manage files
@@ -18,8 +22,8 @@ File operations support both absolute and relative paths:
 * `/tmp` \- Temporary files (may be cleared)
 * `/home` \- User home directory
 
-* [  JavaScript ](#tab-panel-8917)
-* [  TypeScript ](#tab-panel-8918)
+* [  JavaScript ](#tab-panel-7759)
+* [  TypeScript ](#tab-panel-7760)
 
 JavaScript
 
@@ -67,8 +71,8 @@ await session.writeFile('src/index.js', code);  // Writes to /workspace/my-proje
 
 ## Write files
 
-* [  JavaScript ](#tab-panel-8925)
-* [  TypeScript ](#tab-panel-8926)
+* [  JavaScript ](#tab-panel-7767)
+* [  TypeScript ](#tab-panel-7768)
 
 JavaScript
 
@@ -154,8 +158,8 @@ Explain Code
 
 ## Read files
 
-* [  JavaScript ](#tab-panel-8931)
-* [  TypeScript ](#tab-panel-8932)
+* [  JavaScript ](#tab-panel-7773)
+* [  TypeScript ](#tab-panel-7774)
 
 JavaScript
 
@@ -247,8 +251,8 @@ Explain Code
 
 ## Organize files
 
-* [  JavaScript ](#tab-panel-8921)
-* [  TypeScript ](#tab-panel-8922)
+* [  JavaScript ](#tab-panel-7763)
+* [  TypeScript ](#tab-panel-7764)
 
 JavaScript
 
@@ -314,8 +318,8 @@ Explain Code
 
 Write multiple files in parallel:
 
-* [  JavaScript ](#tab-panel-8923)
-* [  TypeScript ](#tab-panel-8924)
+* [  JavaScript ](#tab-panel-7765)
+* [  TypeScript ](#tab-panel-7766)
 
 JavaScript
 
@@ -379,8 +383,8 @@ Explain Code
 
 ## Check if file exists
 
-* [  JavaScript ](#tab-panel-8929)
-* [  TypeScript ](#tab-panel-8930)
+* [  JavaScript ](#tab-panel-7771)
+* [  TypeScript ](#tab-panel-7772)
 
 JavaScript
 
@@ -466,8 +470,8 @@ Explain Code
 
 Create parent directories first:
 
-* [  JavaScript ](#tab-panel-8919)
-* [  TypeScript ](#tab-panel-8920)
+* [  JavaScript ](#tab-panel-7761)
+* [  TypeScript ](#tab-panel-7762)
 
 JavaScript
 
@@ -499,8 +503,8 @@ await sandbox.writeFile('/workspace/data/file.txt', content);
 
 Use base64 for binary files:
 
-* [  JavaScript ](#tab-panel-8927)
-* [  TypeScript ](#tab-panel-8928)
+* [  JavaScript ](#tab-panel-7769)
+* [  TypeScript ](#tab-panel-7770)
 
 JavaScript
 
@@ -554,8 +558,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 When writing with `encoding: 'base64'`, content must contain only valid base64 characters:
 
-* [  JavaScript ](#tab-panel-8933)
-* [  TypeScript ](#tab-panel-8934)
+* [  JavaScript ](#tab-panel-7775)
+* [  TypeScript ](#tab-panel-7776)
 
 JavaScript
 

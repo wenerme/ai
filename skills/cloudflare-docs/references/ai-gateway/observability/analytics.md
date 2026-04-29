@@ -4,6 +4,10 @@ description: View AI Gateway metrics for requests, tokens, caching, errors, and 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Analytics
@@ -18,8 +22,8 @@ Your AI Gateway dashboard shows metrics on requests, tokens, caching, errors, an
 
 ## View analytics
 
-* [ Dashboard ](#tab-panel-5309)
-* [ graphql ](#tab-panel-5310)
+* [ Dashboard ](#tab-panel-4143)
+* [ graphql ](#tab-panel-4144)
 
 To view analytics in the dashboard:
 

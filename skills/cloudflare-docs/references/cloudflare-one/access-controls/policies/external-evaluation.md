@@ -4,6 +4,10 @@ description: External Evaluation rules in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -57,8 +61,8 @@ The command will output the binding name and KV namespace ID, for example
    * `[[kv_namespaces]]`: Add the output generated in the previous step.  
    * `<TEAM_NAME>`: your Cloudflare One team name.
 
-* [  wrangler.jsonc ](#tab-panel-5837)
-* [  wrangler.toml ](#tab-panel-5838)
+* [  wrangler.jsonc ](#tab-panel-4679)
+* [  wrangler.toml ](#tab-panel-4680)
 
 JSONC
 
@@ -74,7 +78,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "main": "index.js",
 
@@ -117,7 +121,7 @@ workers_dev = true
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 main = "index.js"
 

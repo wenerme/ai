@@ -4,6 +4,10 @@ description: Phoenix 1.0 is a model by Leonardo.Ai that generates images with ex
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ![Leonardo logo](https://developers.cloudflare.com/_astro/leonardo.Ch-T5rST.svg) 

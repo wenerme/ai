@@ -4,6 +4,10 @@ description: Deploy your first Realtime Agent using the CLI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Getting started
@@ -84,8 +88,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8465)
-* [  wrangler.toml ](#tab-panel-8466)
+* [  wrangler.jsonc ](#tab-panel-7307)
+* [  wrangler.toml ](#tab-panel-7308)
 
 JSONC
 
@@ -121,8 +125,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 Update the `index.ts` file in your `hello-agent` application directory with the following code:
 
-* [  JavaScript ](#tab-panel-8467)
-* [  TypeScript ](#tab-panel-8468)
+* [  JavaScript ](#tab-panel-7309)
+* [  TypeScript ](#tab-panel-7310)
 
 index.js
 

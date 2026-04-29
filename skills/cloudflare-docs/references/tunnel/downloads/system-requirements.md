@@ -4,6 +4,10 @@ description: System requirements for running cloudflared.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # System requirements
@@ -16,8 +20,8 @@ Run a `cloudflared` [replica](https://developers.cloudflare.com/tunnel/configura
 
 ## Port configuration
 
-* [ Linux ](#tab-panel-9228)
-* [ Windows ](#tab-panel-9229)
+* [ Linux ](#tab-panel-8087)
+* [ Windows ](#tab-panel-8088)
 
 To increase the number of ports available to `cloudflared` on Linux:
 

@@ -4,6 +4,10 @@ description: Set up the Cloudflare WAF to protect your applications from attacks
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started
@@ -28,8 +32,8 @@ If you are on a Free plan, you may skip to [5\. Review traffic in security dashb
 
 The [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) protects against Common Vulnerabilities and Exposures (CVEs) and known attack vectors. This ruleset is designed to identify common attacks using signatures, while generating low false positives. Rule changes are published on a weekly basis in the [WAF changelog](https://developers.cloudflare.com/waf/change-log/). Cloudflare may also add rules at any time during emergency releases for high profile zero-day protection.
 
-* [  New dashboard ](#tab-panel-9404)
-* [ Old dashboard ](#tab-panel-9405)
+* [  New dashboard ](#tab-panel-8287)
+* [ Old dashboard ](#tab-panel-8288)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -115,8 +119,8 @@ Warning
 
 The Cloudflare OWASP Core Ruleset is prone to false positives and offers only marginal benefits when added on top of Cloudflare Managed Ruleset and WAF attack score. If you decide to deploy this managed ruleset, you will need to monitor and adjust its settings based on your traffic to prevent false positives.
 
-* [  New dashboard ](#tab-panel-9406)
-* [ Old dashboard ](#tab-panel-9407)
+* [  New dashboard ](#tab-panel-8289)
+* [ Old dashboard ](#tab-panel-8290)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

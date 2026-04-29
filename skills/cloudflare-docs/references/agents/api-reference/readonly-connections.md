@@ -4,6 +4,10 @@ description: Restrict WebSocket clients to view-only access so they receive stat
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Readonly connections
@@ -25,8 +29,8 @@ This is useful for scenarios like:
 * **Multi-tenant scenarios**: Some tenants have read-only access
 * **Audit and monitoring connections**: Observers that should not affect the system
 
-* [  JavaScript ](#tab-panel-4532)
-* [  TypeScript ](#tab-panel-4533)
+* [  JavaScript ](#tab-panel-3366)
+* [  TypeScript ](#tab-panel-3367)
 
 JavaScript
 
@@ -72,8 +76,8 @@ export class DocAgent extends Agent<Env, DocState> {
 
 ```
 
-* [  JavaScript ](#tab-panel-4534)
-* [  TypeScript ](#tab-panel-4535)
+* [  JavaScript ](#tab-panel-3368)
+* [  TypeScript ](#tab-panel-3369)
 
 JavaScript
 
@@ -131,8 +135,8 @@ const agent = useAgent({
 
 Override `shouldConnectionBeReadonly` to evaluate each connection when it first connects. Return `true` to mark it readonly.
 
-* [  JavaScript ](#tab-panel-4538)
-* [  TypeScript ](#tab-panel-4539)
+* [  JavaScript ](#tab-panel-3372)
+* [  TypeScript ](#tab-panel-3373)
 
 JavaScript
 
@@ -190,8 +194,8 @@ This hook runs before the initial state is sent to the client, so the connection
 
 Use `setConnectionReadonly` to change a connection's readonly status dynamically:
 
-* [  JavaScript ](#tab-panel-4544)
-* [  TypeScript ](#tab-panel-4545)
+* [  JavaScript ](#tab-panel-3378)
+* [  TypeScript ](#tab-panel-3379)
 
 JavaScript
 
@@ -281,8 +285,8 @@ Explain Code
 
 A connection can toggle its own readonly status via a callable. This is useful for lock/unlock UIs where viewers can opt into editing mode:
 
-* [  JavaScript ](#tab-panel-4540)
-* [  TypeScript ](#tab-panel-4541)
+* [  JavaScript ](#tab-panel-3374)
+* [  TypeScript ](#tab-panel-3375)
 
 JavaScript
 
@@ -346,8 +350,8 @@ Explain Code
 
 On the client:
 
-* [  JavaScript ](#tab-panel-4536)
-* [  TypeScript ](#tab-panel-4537)
+* [  JavaScript ](#tab-panel-3370)
+* [  TypeScript ](#tab-panel-3371)
 
 JavaScript
 
@@ -379,8 +383,8 @@ await agent.call("setMyReadonly", [false]); // unlock
 
 Use `isConnectionReadonly` to check a connection's current status:
 
-* [  JavaScript ](#tab-panel-4542)
-* [  TypeScript ](#tab-panel-4543)
+* [  JavaScript ](#tab-panel-3376)
+* [  TypeScript ](#tab-panel-3377)
 
 JavaScript
 
@@ -443,8 +447,8 @@ Note
 
 `onStateUpdateError` also fires when `validateStateChange` rejects a client-originated state update (with the message `"State update rejected"`). This makes the callback useful for handling any rejected state write, not just readonly errors.
 
-* [  JavaScript ](#tab-panel-4546)
-* [  TypeScript ](#tab-panel-4547)
+* [  JavaScript ](#tab-panel-3380)
+* [  TypeScript ](#tab-panel-3381)
 
 JavaScript
 
@@ -593,8 +597,8 @@ Callback on `AgentClient` and `useAgent` options. Called when the server rejects
 
 ### Query parameter based access
 
-* [  JavaScript ](#tab-panel-4550)
-* [  TypeScript ](#tab-panel-4551)
+* [  JavaScript ](#tab-panel-3384)
+* [  TypeScript ](#tab-panel-3385)
 
 JavaScript
 
@@ -688,8 +692,8 @@ Explain Code
 
 ### Role-based access control
 
-* [  JavaScript ](#tab-panel-4560)
-* [  TypeScript ](#tab-panel-4561)
+* [  JavaScript ](#tab-panel-3394)
+* [  TypeScript ](#tab-panel-3395)
 
 JavaScript
 
@@ -831,8 +835,8 @@ Explain Code
 
 ### Admin dashboard
 
-* [  JavaScript ](#tab-panel-4562)
-* [  TypeScript ](#tab-panel-4563)
+* [  JavaScript ](#tab-panel-3396)
+* [  TypeScript ](#tab-panel-3397)
 
 JavaScript
 
@@ -978,8 +982,8 @@ Explain Code
 
 ### Dynamic permission changes
 
-* [  JavaScript ](#tab-panel-4564)
-* [  TypeScript ](#tab-panel-4565)
+* [  JavaScript ](#tab-panel-3398)
+* [  TypeScript ](#tab-panel-3399)
 
 JavaScript
 
@@ -1270,8 +1274,8 @@ The enforcement happens inside `setState()` itself. When a `@callable()` method 
 
 The readonly check happens inside `this.setState()`, not at the start of the callable. If your method has side effects before the state write, those will still execute:
 
-* [  JavaScript ](#tab-panel-4548)
-* [  TypeScript ](#tab-panel-4549)
+* [  JavaScript ](#tab-panel-3382)
+* [  TypeScript ](#tab-panel-3383)
 
 JavaScript
 
@@ -1321,8 +1325,8 @@ export class MyAgent extends Agent<Env, State> {
 
 To avoid this, either check permissions before side effects or structure your code so the state write comes first:
 
-* [  JavaScript ](#tab-panel-4552)
-* [  TypeScript ](#tab-panel-4553)
+* [  JavaScript ](#tab-panel-3386)
+* [  TypeScript ](#tab-panel-3387)
 
 JavaScript
 
@@ -1386,8 +1390,8 @@ Explain Code
 
 ### Combine with authentication
 
-* [  JavaScript ](#tab-panel-4556)
-* [  TypeScript ](#tab-panel-4557)
+* [  JavaScript ](#tab-panel-3390)
+* [  TypeScript ](#tab-panel-3391)
 
 JavaScript
 
@@ -1453,8 +1457,8 @@ Explain Code
 
 ### Provide clear user feedback
 
-* [  JavaScript ](#tab-panel-4554)
-* [  TypeScript ](#tab-panel-4555)
+* [  JavaScript ](#tab-panel-3388)
+* [  TypeScript ](#tab-panel-3389)
 
 JavaScript
 
@@ -1551,8 +1555,8 @@ Explain Code
 
 ### Log access attempts
 
-* [  JavaScript ](#tab-panel-4558)
-* [  TypeScript ](#tab-panel-4559)
+* [  JavaScript ](#tab-panel-3392)
+* [  TypeScript ](#tab-panel-3393)
 
 JavaScript
 

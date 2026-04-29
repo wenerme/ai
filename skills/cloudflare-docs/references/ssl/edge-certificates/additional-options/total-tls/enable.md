@@ -4,14 +4,18 @@ description: Enable Total TLS to issue certificates for all subdomains.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enable
 
 To enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) \- which issues individual certificates for your proxied hostnames - follow these instructions:
 
-* [ Dashboard ](#tab-panel-9079)
-* [ API ](#tab-panel-9080)
+* [ Dashboard ](#tab-panel-7921)
+* [ API ](#tab-panel-7922)
 
 To enable Total TLS in the dashboard:
 

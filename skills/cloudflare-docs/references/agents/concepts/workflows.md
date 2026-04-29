@@ -4,6 +4,10 @@ description: Integrate Cloudflare Workflows with Agents for durable, multi-step 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Workflows
@@ -63,8 +67,8 @@ Workflows can communicate with Agents through several mechanisms:
 * **State updates**: Modify Agent state via `step.updateAgentState()` or `step.mergeAgentState()`, which broadcasts to connected clients
 * **Client broadcasts**: Send messages to all WebSocket clients via `this.broadcastToClients()`
 
-* [  JavaScript ](#tab-panel-5064)
-* [  TypeScript ](#tab-panel-5065)
+* [  JavaScript ](#tab-panel-3898)
+* [  TypeScript ](#tab-panel-3899)
 
 JavaScript
 
@@ -158,8 +162,8 @@ When an Agent starts a workflow using `runWorkflow()`, the workflow is automatic
 
 An Agent receives a request, starts a Workflow for heavy processing, and broadcasts progress updates to connected clients as the Workflow executes each step.
 
-* [  JavaScript ](#tab-panel-5066)
-* [  TypeScript ](#tab-panel-5067)
+* [  JavaScript ](#tab-panel-3900)
+* [  TypeScript ](#tab-panel-3901)
 
 JavaScript
 
@@ -219,8 +223,8 @@ A Workflow prepares a request, pauses to wait for approval using `waitForApprova
 
 A Workflow wraps external API calls in durable steps with retry logic. If the API fails or the workflow restarts, completed calls are not repeated and failed calls retry automatically.
 
-* [  JavaScript ](#tab-panel-5068)
-* [  TypeScript ](#tab-panel-5069)
+* [  JavaScript ](#tab-panel-3902)
+* [  TypeScript ](#tab-panel-3903)
 
 JavaScript
 

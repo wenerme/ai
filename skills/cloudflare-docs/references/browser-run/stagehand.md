@@ -4,6 +4,10 @@ description: Deploy a Stagehand server that uses Browser Run to provide browser 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Stagehand
@@ -62,8 +66,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-5619)
-* [  wrangler.toml ](#tab-panel-5620)
+* [  wrangler.jsonc ](#tab-panel-4455)
+* [  wrangler.toml ](#tab-panel-4456)
 
 JSONC
 
@@ -79,7 +83,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "observability": {
 
@@ -118,7 +122,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [observability]

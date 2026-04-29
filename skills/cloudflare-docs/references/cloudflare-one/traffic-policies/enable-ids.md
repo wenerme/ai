@@ -4,6 +4,10 @@ description: Enable IDS in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -32,8 +36,8 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-* [ Dashboard ](#tab-panel-6250)
-* [ API ](#tab-panel-6251)
+* [ Dashboard ](#tab-panel-5092)
+* [ API ](#tab-panel-5093)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies**.
 2. Select **Policy settings** and turn on **IDS**.

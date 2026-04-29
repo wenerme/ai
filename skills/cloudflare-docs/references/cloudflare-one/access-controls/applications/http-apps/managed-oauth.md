@@ -4,6 +4,10 @@ description: Allow non-browser clients to authenticate with Access-protected app
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -27,8 +31,8 @@ If you run your own OAuth server behind an Access application and rely on your o
 
 ## Enable managed OAuth on a self-hosted application
 
-* [ Dashboard ](#tab-panel-5773)
-* [ API ](#tab-panel-5774)
+* [ Dashboard ](#tab-panel-4615)
+* [ API ](#tab-panel-4616)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the application you want to configure, then select the three dots on the right > **Edit**.
@@ -69,8 +73,8 @@ To test, open an RFC 8707-compliant OAuth client and make a request to your appl
 
 Managed OAuth is available on [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) and is the mechanism that allows MCP clients to authenticate users through the portal without a browser cookie flow.
 
-* [ Dashboard ](#tab-panel-5775)
-* [ API ](#tab-panel-5776)
+* [ Dashboard ](#tab-panel-4617)
+* [ API ](#tab-panel-4618)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots on the right > **Edit**.
@@ -109,8 +113,8 @@ To test, open an MCP client and [connect to the MCP portal](https://developers.c
 
 ## Managed OAuth settings
 
-* [ Dashboard ](#tab-panel-5777)
-* [ API ](#tab-panel-5778)
+* [ Dashboard ](#tab-panel-4619)
+* [ API ](#tab-panel-4620)
 
 Configure these settings in the **Advanced settings** tab of your [self-hosted app](#enable-managed-oauth-on-a-self-hosted-application) or [MCP server portal](#enable-managed-oauth-on-an-mcp-server-portal).
 

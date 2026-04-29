@@ -4,6 +4,10 @@ description: Example of how to add, change, or delete headers sent in a request 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,10 +26,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9771)
-* [  TypeScript ](#tab-panel-9772)
-* [  Python ](#tab-panel-9773)
-* [  Hono ](#tab-panel-9774)
+* [  JavaScript ](#tab-panel-8656)
+* [  TypeScript ](#tab-panel-8657)
+* [  Python ](#tab-panel-8658)
+* [  Hono ](#tab-panel-8659)
 
 JavaScript
 

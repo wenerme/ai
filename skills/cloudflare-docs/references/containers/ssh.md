@@ -4,6 +4,10 @@ description: Connect to running container instances with SSH.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # SSH
@@ -20,8 +24,8 @@ The `wrangler_ssh.enabled` property only controls whether you can SSH into a Con
 
 To SSH into a Container with Wrangler, you must first enable Wrangler SSH. The following example shows a basic configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6504)
-* [  wrangler.toml ](#tab-panel-6505)
+* [  wrangler.jsonc ](#tab-panel-5346)
+* [  wrangler.toml ](#tab-panel-5347)
 
 JSONC
 

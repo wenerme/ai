@@ -4,11 +4,15 @@ description: Clone repositories, analyze code with Claude, and post review comme
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build a code review bot
 
-**Last reviewed:**  6 months ago 
+**Last reviewed:**  7 months ago 
 
 Build a GitHub bot that responds to pull requests, clones the repository in a sandbox, uses Claude to analyze code changes, and posts review comments.
 

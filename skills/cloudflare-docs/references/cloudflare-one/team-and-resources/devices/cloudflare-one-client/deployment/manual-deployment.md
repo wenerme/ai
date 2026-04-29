@@ -4,6 +4,10 @@ description: Manual deployment in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -24,8 +28,8 @@ If you plan to direct your users to manually download and configure the Cloudfla
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-6130)
-* [ Version 2026.1 and earlier ](#tab-panel-6131)
+* [ Version 2026.2+ ](#tab-panel-4972)
+* [ Version 2026.1 and earlier ](#tab-panel-4973)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.

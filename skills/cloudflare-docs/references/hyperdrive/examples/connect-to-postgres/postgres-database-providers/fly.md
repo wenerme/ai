@@ -4,6 +4,10 @@ description: Connect Hyperdrive to a Fly Postgres database instance.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Fly
@@ -68,8 +72,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-7299)
-* [ Wrangler CLI ](#tab-panel-7300)
+* [ Dashboard ](#tab-panel-6141)
+* [ Wrangler CLI ](#tab-panel-6142)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -87,8 +91,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-7297)  
-   * [  wrangler.toml ](#tab-panel-7298)  
+   * [  wrangler.jsonc ](#tab-panel-6139)  
+   * [  wrangler.toml ](#tab-panel-6140)  
 JSONC  
 ```  
 {  
@@ -96,7 +100,7 @@ JSONC
   "name": "hyperdrive-example",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-24",  
+  "compatibility_date": "2026-04-29",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -116,7 +120,7 @@ TOML
 name = "hyperdrive-example"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-24"  
+compatibility_date = "2026-04-29"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[hyperdrive]]  
 binding = "HYPERDRIVE"  
@@ -176,8 +180,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-7301)
-* [  wrangler.toml ](#tab-panel-7302)
+* [  wrangler.jsonc ](#tab-panel-6143)
+* [  wrangler.toml ](#tab-panel-6144)
 
 JSONC
 
@@ -195,7 +199,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "hyperdrive": [
 
@@ -224,7 +228,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[hyperdrive]]

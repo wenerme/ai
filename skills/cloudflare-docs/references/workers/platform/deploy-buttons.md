@@ -4,6 +4,10 @@ description: Set up a Deploy to Cloudflare button
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Deploy to Cloudflare buttons
@@ -25,9 +29,9 @@ Deploy to Cloudflare buttons simplify the deployment of a Workers application by
 
 Deploy to Cloudflare buttons can be embedded anywhere developers might want to launch your project. To add a Deploy to Cloudflare button, copy the following snippet and replace the Git repository URL with your project's URL. You can also optionally specify a subdirectory.
 
-* [ Markdown ](#tab-panel-8924)
-* [ HTML ](#tab-panel-8925)
-* [ URL ](#tab-panel-8926)
+* [ Markdown ](#tab-panel-8952)
+* [ HTML ](#tab-panel-8953)
+* [ URL ](#tab-panel-8954)
 
 ```
 
@@ -69,8 +73,8 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 
 [Worker environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) can be defined in your Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-8927)
-* [  wrangler.toml ](#tab-panel-8928)
+* [  wrangler.jsonc ](#tab-panel-8955)
+* [  wrangler.toml ](#tab-panel-8956)
 
 JSONC
 
@@ -84,7 +88,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "vars": {
 
@@ -107,7 +111,7 @@ main = "./src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 [vars]
@@ -130,8 +134,8 @@ COOKIE_SIGNING_KEY=my-secret # comment
 
 [Secrets Store](https://developers.cloudflare.com/secrets-store/) secrets can be configured in the Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-8929)
-* [  wrangler.toml ](#tab-panel-8930)
+* [  wrangler.jsonc ](#tab-panel-8957)
+* [  wrangler.toml ](#tab-panel-8958)
 
 JSONC
 
@@ -145,7 +149,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "secrets_store_secrets": [
 
@@ -178,7 +182,7 @@ main = "./src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 [[secrets_store_secrets]]

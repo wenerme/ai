@@ -4,6 +4,10 @@ description: Set up and access Network Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started
@@ -16,8 +20,8 @@ Note
 
 You do not need to manually create a dataset in the Cloudflare dashboard. Workers Analytics Engine datasets are created automatically the first time you write to them after defining the binding in your Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-5395)
-* [  wrangler.toml ](#tab-panel-5396)
+* [  wrangler.jsonc ](#tab-panel-4229)
+* [  wrangler.toml ](#tab-panel-4230)
 
 JSONC
 

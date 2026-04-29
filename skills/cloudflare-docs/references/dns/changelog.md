@@ -4,11 +4,50 @@ description: Track the latest updates and changes to Cloudflare DNS features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dns.xml) 
+
+## 2026-04-28
+
+  
+**Account-level enforce DNS-only**   
+
+You can now disable Cloudflare's reverse proxy across all zones in your account simultaneously using the new `enforce_dns_only` setting. When enabled, Cloudflare responds to DNS queries for all proxied records with your origin IP addresses instead of Cloudflare's anycast IPs. This account-level kill switch is designed for incident response scenarios where you need to quickly route traffic directly to your origin servers.
+
+Warning
+
+Enabling this setting exposes your origin IP addresses and removes all Cloudflare protections — including DDoS mitigation, WAF, caching, and all other proxy-based features — for every zone in your account. Use with extreme caution and only after proper [preparations](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/#preparation).
+
+#### Key characteristics
+
+* **Account-level** — Affects all zones in the account simultaneously with a single API call.
+* **Non-destructive** — Does not modify your DNS records. Disabling the setting restores normal proxy behavior.
+* **API-only** — Available through the API only, not in the Cloudflare dashboard.
+
+#### What's affected
+
+**Included:** Standard proxied A, AAAA, and CNAME records, Load Balancing records, and records matching Worker routes.
+
+**Excluded:** Spectrum applications, Cloudflare Tunnel CNAMEs, R2 custom domains, Web3 gateways, and Workers custom domains continue to operate normally.
+
+#### Before you enable
+
+* Verify your origin servers can handle direct traffic without Cloudflare's caching and filtering.
+* Review which origin IPs will become publicly visible through DNS queries.
+* Test the API in a staging account before relying on it for incident response.
+
+#### Availability
+
+Available via API to all Cloudflare customers.
+
+For information on how to use it, refer to [Enforce DNS-only developer documentation](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/) .
 
 ## 2026-03-31
 

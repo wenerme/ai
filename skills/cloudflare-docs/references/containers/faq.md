@@ -4,6 +4,10 @@ description: Answers to common questions about Containers, including logging, sc
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Frequently Asked Questions
@@ -12,8 +16,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To get logs in the Dashboard, including live tailing of logs, toggle `observability` to true in your Worker's wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-6484)
-* [  wrangler.toml ](#tab-panel-6485)
+* [  wrangler.jsonc ](#tab-panel-5326)
+* [  wrangler.toml ](#tab-panel-5327)
 
 JSONC
 

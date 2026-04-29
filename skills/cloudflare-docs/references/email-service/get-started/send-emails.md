@@ -4,6 +4,10 @@ description: Send your first email using the Cloudflare Email Service REST API o
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Send emails
@@ -127,8 +131,8 @@ pnpm create cloudflare@latest email-service-tutorial
 ```  
 When prompted, select **"Hello World" Worker** as the template.
 2. Add the email binding to your Wrangler configuration file:  
-   * [  wrangler.jsonc ](#tab-panel-7107)  
-   * [  wrangler.toml ](#tab-panel-7108)  
+   * [  wrangler.jsonc ](#tab-panel-5949)  
+   * [  wrangler.toml ](#tab-panel-5950)  
 JSONC  
 ```  
 {  

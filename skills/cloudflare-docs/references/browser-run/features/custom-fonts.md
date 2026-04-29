@@ -4,6 +4,10 @@ description: Learn how to add custom fonts to Browser Run for use in screenshots
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Custom fonts
@@ -25,8 +29,8 @@ The examples below use [Puppeteer](https://developers.cloudflare.com/browser-run
 
 ### From a CDN URL
 
-* [  JavaScript ](#tab-panel-5555)
-* [  TypeScript ](#tab-panel-5556)
+* [  JavaScript ](#tab-panel-4391)
+* [  TypeScript ](#tab-panel-4392)
 
 Example with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and a CDN source:
 
@@ -116,8 +120,8 @@ Explain Code
 
 The following examples use [Playwright](https://developers.cloudflare.com/browser-run/playwright/), but this method works the same way with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/).
 
-* [  JavaScript ](#tab-panel-5557)
-* [  TypeScript ](#tab-panel-5558)
+* [  JavaScript ](#tab-panel-4393)
+* [  TypeScript ](#tab-panel-4394)
 
 Example with a Base64-encoded data source:
 

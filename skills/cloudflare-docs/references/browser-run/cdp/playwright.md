@@ -4,6 +4,10 @@ description: Connect Playwright to Browser Run sessions from any Node.js environ
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Using with Playwright (CDP)

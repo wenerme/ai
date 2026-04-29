@@ -4,6 +4,10 @@ description: Set up custom domain for Images using a Worker or serve images usin
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -29,10 +33,10 @@ To serve images from a custom domain:
 2. Select **Create application** \> **Workers** \> **Create Worker** and create your Worker.
 3. In your Worker, select **Quick edit** and paste the following code.
 
-* [  JavaScript ](#tab-panel-9877)
-* [  TypeScript ](#tab-panel-9878)
-* [  Hono ](#tab-panel-9879)
-* [  Python ](#tab-panel-9880)
+* [  JavaScript ](#tab-panel-8762)
+* [  TypeScript ](#tab-panel-8763)
+* [  Hono ](#tab-panel-8764)
+* [  Python ](#tab-panel-8765)
 
 JavaScript
 

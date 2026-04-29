@@ -4,6 +4,10 @@ description: Write tests for Durable Objects using the Workers Vitest integratio
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Testing Durable Objects
@@ -18,9 +22,9 @@ Use the [@cloudflare/vitest-pool-workers ↗](https://www.npmjs.com/package/@clo
 
 Install Vitest and the Workers Vitest integration as dev dependencies:
 
-* [ npm ](#tab-panel-6965)
-* [ pnpm ](#tab-panel-6966)
-* [ yarn ](#tab-panel-6967)
+* [ npm ](#tab-panel-5807)
+* [ pnpm ](#tab-panel-5808)
+* [ yarn ](#tab-panel-5809)
 
 Terminal window
 
@@ -53,8 +57,8 @@ yarn add -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
 
 This example tests a simple counter Durable Object with SQLite storage:
 
-* [  JavaScript ](#tab-panel-6980)
-* [  TypeScript ](#tab-panel-6981)
+* [  JavaScript ](#tab-panel-5822)
+* [  TypeScript ](#tab-panel-5823)
 
 src/index.js
 
@@ -325,8 +329,8 @@ Explain Code
 
 Make sure your Wrangler configuration includes the Durable Object binding and SQLite migration:
 
-* [  wrangler.jsonc ](#tab-panel-6968)
-* [  wrangler.toml ](#tab-panel-6969)
+* [  wrangler.jsonc ](#tab-panel-5810)
+* [  wrangler.toml ](#tab-panel-5811)
 
 JSONC
 
@@ -340,7 +344,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "durable_objects": {
 
@@ -375,7 +379,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[durable_objects.bindings]]
@@ -444,8 +448,8 @@ declare module "cloudflare:workers" {
 
 You can get a stub to a Durable Object directly from the `env` object provided by `cloudflare:workers`:
 
-* [  JavaScript ](#tab-panel-6982)
-* [  TypeScript ](#tab-panel-6983)
+* [  JavaScript ](#tab-panel-5824)
+* [  TypeScript ](#tab-panel-5825)
 
 test/counter.test.js
 
@@ -685,8 +689,8 @@ Explain Code
 
 Use `exports.default.fetch()` to test your Worker's HTTP handler, which routes requests to Durable Objects:
 
-* [  JavaScript ](#tab-panel-6984)
-* [  TypeScript ](#tab-panel-6985)
+* [  JavaScript ](#tab-panel-5826)
+* [  TypeScript ](#tab-panel-5827)
 
 test/integration.test.js
 
@@ -892,8 +896,8 @@ Explain Code
 
 Use `runInDurableObject()` to access instance properties and storage directly. This is useful for verifying internal state or testing private methods:
 
-* [  JavaScript ](#tab-panel-6978)
-* [  TypeScript ](#tab-panel-6979)
+* [  JavaScript ](#tab-panel-5820)
+* [  TypeScript ](#tab-panel-5821)
 
 test/direct-access.test.js
 
@@ -1083,8 +1087,8 @@ Explain Code
 
 Each test automatically gets isolated storage. Durable Objects created in one test do not affect other tests:
 
-* [  JavaScript ](#tab-panel-6972)
-* [  TypeScript ](#tab-panel-6973)
+* [  JavaScript ](#tab-panel-5814)
+* [  TypeScript ](#tab-panel-5815)
 
 test/isolation.test.js
 
@@ -1200,8 +1204,8 @@ Explain Code
 
 SQLite-backed Durable Objects work seamlessly in tests. The SQL API is available when your Durable Object class is configured with `new_sqlite_classes` in your Wrangler configuration:
 
-* [  JavaScript ](#tab-panel-6974)
-* [  TypeScript ](#tab-panel-6975)
+* [  JavaScript ](#tab-panel-5816)
+* [  TypeScript ](#tab-panel-5817)
 
 test/sqlite.test.js
 
@@ -1339,8 +1343,8 @@ Explain Code
 
 Use `runDurableObjectAlarm()` to immediately trigger a scheduled alarm without waiting for the timer. This allows you to test alarm handlers synchronously:
 
-* [  JavaScript ](#tab-panel-6976)
-* [  TypeScript ](#tab-panel-6977)
+* [  JavaScript ](#tab-panel-5818)
+* [  TypeScript ](#tab-panel-5819)
 
 test/alarm.test.js
 
@@ -1488,8 +1492,8 @@ Explain Code
 
 To test alarms, add an `alarm()` method to your Durable Object:
 
-* [  JavaScript ](#tab-panel-6970)
-* [  TypeScript ](#tab-panel-6971)
+* [  JavaScript ](#tab-panel-5812)
+* [  TypeScript ](#tab-panel-5813)
 
 src/index.js
 

@@ -6,6 +6,10 @@ description: Different from embedding model, reranker uses question and document
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ![BAAI logo](https://developers.cloudflare.com/_astro/baai.mOtdbKlV.svg) 

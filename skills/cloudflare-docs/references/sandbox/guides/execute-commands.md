@@ -4,6 +4,10 @@ description: Run commands with streaming output, error handling, and shell acces
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Execute commands
@@ -26,8 +30,8 @@ For **web servers, databases, or services that need to keep running**, use `star
 
 Use `exec()` for simple commands that complete quickly:
 
-* [  JavaScript ](#tab-panel-8833)
-* [  TypeScript ](#tab-panel-8834)
+* [  JavaScript ](#tab-panel-7675)
+* [  TypeScript ](#tab-panel-7676)
 
 JavaScript
 
@@ -85,8 +89,8 @@ Explain Code
 
 When passing user input or dynamic values, avoid string interpolation to prevent injection attacks:
 
-* [  JavaScript ](#tab-panel-8835)
-* [  TypeScript ](#tab-panel-8836)
+* [  JavaScript ](#tab-panel-7677)
+* [  TypeScript ](#tab-panel-7678)
 
 JavaScript
 
@@ -153,8 +157,8 @@ Commands can fail in two ways:
 1. **Non-zero exit code** \- Command ran but failed (result.success === false)
 2. **Execution error** \- Command couldn't start (throws exception)
 
-* [  JavaScript ](#tab-panel-8849)
-* [  TypeScript ](#tab-panel-8850)
+* [  JavaScript ](#tab-panel-7691)
+* [  TypeScript ](#tab-panel-7692)
 
 JavaScript
 
@@ -265,8 +269,8 @@ Explain Code
 
 The sandbox supports shell features like pipes, redirects, and chaining:
 
-* [  JavaScript ](#tab-panel-8839)
-* [  TypeScript ](#tab-panel-8840)
+* [  JavaScript ](#tab-panel-7681)
+* [  TypeScript ](#tab-panel-7682)
 
 JavaScript
 
@@ -316,8 +320,8 @@ await sandbox.exec('cd /workspace && npm install && npm test');
 
 ## Execute Python scripts
 
-* [  JavaScript ](#tab-panel-8847)
-* [  TypeScript ](#tab-panel-8848)
+* [  JavaScript ](#tab-panel-7689)
+* [  TypeScript ](#tab-panel-7690)
 
 JavaScript
 
@@ -391,8 +395,8 @@ Set a maximum execution time for commands to prevent long-running operations fro
 
 Pass `timeout` in the options to set a timeout for a single command:
 
-* [  JavaScript ](#tab-panel-8837)
-* [  TypeScript ](#tab-panel-8838)
+* [  JavaScript ](#tab-panel-7679)
+* [  TypeScript ](#tab-panel-7680)
 
 JavaScript
 
@@ -424,8 +428,8 @@ const result = await sandbox.exec('npm run build', {
 
 Set a default timeout for all commands in a session with `commandTimeoutMs`:
 
-* [  JavaScript ](#tab-panel-8843)
-* [  TypeScript ](#tab-panel-8844)
+* [  JavaScript ](#tab-panel-7685)
+* [  TypeScript ](#tab-panel-7686)
 
 JavaScript
 
@@ -507,8 +511,8 @@ When a command times out, the SDK raises an error and closes the connection. The
 
 Verify the command exists in the container:
 
-* [  JavaScript ](#tab-panel-8841)
-* [  TypeScript ](#tab-panel-8842)
+* [  JavaScript ](#tab-panel-7683)
+* [  TypeScript ](#tab-panel-7684)
 
 JavaScript
 
@@ -544,8 +548,8 @@ if (!check.success) {
 
 Use absolute paths or change directory:
 
-* [  JavaScript ](#tab-panel-8845)
-* [  TypeScript ](#tab-panel-8846)
+* [  JavaScript ](#tab-panel-7687)
+* [  TypeScript ](#tab-panel-7688)
 
 JavaScript
 

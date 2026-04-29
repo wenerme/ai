@@ -4,6 +4,10 @@ description: Enable leaked credentials detection and configure custom or managed
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Get started
@@ -12,10 +16,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-9388)
-* [ Old dashboard ](#tab-panel-9389)
-* [ API ](#tab-panel-9390)
-* [ Terraform ](#tab-panel-9391)
+* [  New dashboard ](#tab-panel-8271)
+* [ Old dashboard ](#tab-panel-8272)
+* [ API ](#tab-panel-8273)
+* [ Terraform ](#tab-panel-8274)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -144,10 +148,10 @@ Only available for Enterprise customers.
 
 To check for leaked credentials in a way that is not covered by the default configuration, add a [custom detection location](https://developers.cloudflare.com/waf/detections/leaked-credentials/#custom-detection-locations).
 
-* [  New dashboard ](#tab-panel-9384)
-* [ Old dashboard ](#tab-panel-9385)
-* [ API ](#tab-panel-9386)
-* [ Terraform ](#tab-panel-9387)
+* [  New dashboard ](#tab-panel-8267)
+* [ Old dashboard ](#tab-panel-8268)
+* [ API ](#tab-panel-8269)
+* [ Terraform ](#tab-panel-8270)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

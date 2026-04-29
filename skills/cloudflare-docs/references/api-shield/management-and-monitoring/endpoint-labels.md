@@ -4,6 +4,10 @@ description: Organize API endpoints and address vulnerabilities with managed and
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Endpoint labeling service
@@ -177,8 +181,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-5409)
-* [ Old dashboard ](#tab-panel-5410)
+* [  New dashboard ](#tab-panel-4243)
+* [ Old dashboard ](#tab-panel-4244)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -218,8 +222,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-5411)
-* [ Old dashboard ](#tab-panel-5412)
+* [  New dashboard ](#tab-panel-4245)
+* [ Old dashboard ](#tab-panel-4246)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -237,8 +241,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-5407)
-* [ Old dashboard ](#tab-panel-5408)
+* [  New dashboard ](#tab-panel-4241)
+* [ Old dashboard ](#tab-panel-4242)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

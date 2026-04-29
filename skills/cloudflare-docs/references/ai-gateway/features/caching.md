@@ -4,6 +4,10 @@ description: Override caching settings on a per-request basis.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Caching
@@ -24,8 +28,8 @@ This configuration benefits use cases with limited prompt options. For example, 
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-5291)
-* [ API ](#tab-panel-5292)
+* [ Dashboard ](#tab-panel-4125)
+* [ API ](#tab-panel-4126)
 
 To set the default caching configuration in the dashboard:
 

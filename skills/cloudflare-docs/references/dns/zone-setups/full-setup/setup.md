@@ -4,6 +4,10 @@ description: If you want to use Cloudflare as your primary DNS provider and mana
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Set up a primary zone (Full setup)
@@ -19,8 +23,8 @@ Make sure that you:
 
 ## 1\. Add your domain to Cloudflare
 
-* [ Dashboard ](#tab-panel-6777)
-* [ API ](#tab-panel-6778)
+* [ Dashboard ](#tab-panel-5619)
+* [ API ](#tab-panel-5620)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).  
 [ Go to **Domains** ](https://dash.cloudflare.com/?to=/:account/domains/overview)
@@ -124,8 +128,8 @@ If your domain is particularly sensitive to downtime, review our suggestions to 
 
 ### 3.1\. Get nameserver names
 
-* [ Dashboard ](#tab-panel-6775)
-* [ API ](#tab-panel-6776)
+* [ Dashboard ](#tab-panel-5617)
+* [ API ](#tab-panel-5618)
 
 Your assigned nameservers are displayed as part of the onboarding flow. If you need to find them once again, go the zone **Overview** page.
 

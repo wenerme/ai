@@ -4,6 +4,10 @@ description: Gemma 4 is Google's most intelligent family of open models, built f
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg) 

@@ -4,6 +4,10 @@ description: Configure Resolver policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -93,8 +97,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-6338)
-* [ Terraform (v5) ](#tab-panel-6339)
+* [ Dashboard ](#tab-panel-5180)
+* [ Terraform (v5) ](#tab-panel-5181)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.

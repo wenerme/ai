@@ -4,6 +4,10 @@ description: Add RAG to Cloudflare Agents using Vectorize for vector search and 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Retrieval Augmented Generation
@@ -22,8 +26,8 @@ You can query a vector index (or indexes) from any method on your Agent: any Vec
 
 Here's an example of how to give an Agent retrieval capabilities:
 
-* [  JavaScript ](#tab-panel-4530)
-* [  TypeScript ](#tab-panel-4531)
+* [  JavaScript ](#tab-panel-3364)
+* [  TypeScript ](#tab-panel-3365)
 
 JavaScript
 
@@ -176,8 +180,8 @@ Explain Code
 
 You'll also need to connect your Agent to your vector indexes:
 
-* [  wrangler.jsonc ](#tab-panel-4528)
-* [  wrangler.toml ](#tab-panel-4529)
+* [  wrangler.jsonc ](#tab-panel-3362)
+* [  wrangler.toml ](#tab-panel-3363)
 
 JSONC
 

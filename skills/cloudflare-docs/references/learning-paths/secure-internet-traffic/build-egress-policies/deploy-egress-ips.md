@@ -4,6 +4,10 @@ description: Deploy dedicated egress IPs effectively.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Egress IP best practices
@@ -28,8 +32,8 @@ One of the most common use cases for egress policies is to ensure a consistent e
 
 We recommend building baseline egress policies that can cover a majority of your use cases without making policy management overly complex. If all of your users need to access a series of applications that all require a specific egress IP, you should build a policy explicit to those users (or to all of your users) to ensure that all of their traffic egresses using those egress IPs. For example, you can define specific egress IPs for users with access to financial data:
 
-* [ Dashboard ](#tab-panel-7728)
-* [ API ](#tab-panel-7729)
+* [ Dashboard ](#tab-panel-6570)
+* [ API ](#tab-panel-6571)
 
 | Selector         | Operator | Value           | Egress method                       |
 | ---------------- | -------- | --------------- | ----------------------------------- |

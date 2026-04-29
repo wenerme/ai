@@ -4,6 +4,10 @@ description: Reference information for Origin parameters in Zero Trust networkin
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -18,7 +22,7 @@ Origin parameters determine how `cloudflared` sends requests to the origin serve
 
 This section describes how to update origin parameters for a remotely-managed tunnel. If you are using a locally-managed tunnel, add these parameters to your [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/).
 
-* [ Dashboard ](#tab-panel-5905)
+* [ Dashboard ](#tab-panel-4747)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Choose a tunnel and select **Edit**.

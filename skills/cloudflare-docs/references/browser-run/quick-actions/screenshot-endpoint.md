@@ -4,6 +4,10 @@ description: Capture a screenshot of a fully rendered webpage using the Browser 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # /screenshot - Capture screenshot
@@ -37,8 +41,8 @@ You must provide either `url` or `html`:
 
 ### Take a screenshot from custom HTML
 
-* [ curl ](#tab-panel-5601)
-* [ TypeScript SDK ](#tab-panel-5602)
+* [ curl ](#tab-panel-4437)
+* [ TypeScript SDK ](#tab-panel-4438)
 
 Sets the HTML content of the page to `Hello World!` and then takes a screenshot. The option `omitBackground` hides the default white background and allows capturing screenshots with transparency.
 

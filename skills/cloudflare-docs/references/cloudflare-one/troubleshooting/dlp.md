@@ -4,6 +4,10 @@ description: DLP for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # DLP
@@ -16,8 +20,8 @@ DLP not inspecting or blocking content is the most common issue reported. If you
 
 To turn on TLS decryption:
 
-* [ Dashboard ](#tab-panel-6344)
-* [ Terraform (v5) ](#tab-panel-6345)
+* [ Dashboard ](#tab-panel-5186)
+* [ Terraform (v5) ](#tab-panel-5187)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.

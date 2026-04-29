@@ -4,6 +4,10 @@ description: Deploy an existing static site project to Cloudflare using Workers 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Start from existing
@@ -35,8 +39,8 @@ This command adds/update the following files:
    * `tsconfig.json`: Added if not already there to support writing the Worker in TypeScript.  
    * `src/index.ts`: A basic Cloudflare Worker, written in TypeScript.
 2. Add your site's build/output directory to the Wrangler file:  
-   * [  wrangler.jsonc ](#tab-panel-9695)  
-   * [  wrangler.toml ](#tab-panel-9696)  
+   * [  wrangler.jsonc ](#tab-panel-8578)  
+   * [  wrangler.toml ](#tab-panel-8579)  
 JSONC  
 ```  
 {  
@@ -62,8 +66,8 @@ npm i -D @cloudflare/kv-asset-handler
 ```
 4. Replace the contents of `src/index.ts` with the following code snippet:
 
-* [  Module Worker ](#tab-panel-9693)
-* [  Service Worker ](#tab-panel-9694)
+* [  Module Worker ](#tab-panel-8576)
+* [  Service Worker ](#tab-panel-8577)
 
 JavaScript
 
@@ -180,8 +184,8 @@ Terminal window
 npx wrangler deploy  
 ```
 2. Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone. Add a `route` property to the Wrangler file.  
-   * [  wrangler.jsonc ](#tab-panel-9697)  
-   * [  wrangler.toml ](#tab-panel-9698)  
+   * [  wrangler.jsonc ](#tab-panel-8580)  
+   * [  wrangler.toml ](#tab-panel-8581)  
 JSONC  
 ```  
 {  

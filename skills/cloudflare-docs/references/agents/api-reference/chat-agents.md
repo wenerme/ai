@@ -4,6 +4,10 @@ description: Build AI chat interfaces with AIChatAgent and useAgentChat, includi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Chat agents
@@ -43,8 +47,8 @@ npm install @cloudflare/ai-chat agents ai
 
 ### Server
 
-* [  JavaScript ](#tab-panel-4130)
-* [  TypeScript ](#tab-panel-4131)
+* [  JavaScript ](#tab-panel-2964)
+* [  TypeScript ](#tab-panel-2965)
 
 JavaScript
 
@@ -128,8 +132,8 @@ Explain Code
 
 ### Client
 
-* [  JavaScript ](#tab-panel-4156)
-* [  TypeScript ](#tab-panel-4157)
+* [  JavaScript ](#tab-panel-2990)
+* [  TypeScript ](#tab-panel-2991)
 
 JavaScript
 
@@ -339,8 +343,8 @@ sequenceDiagram
 
 Extends `Agent` from the `agents` package. Manages conversation state, persistence, and streaming.
 
-* [  JavaScript ](#tab-panel-4136)
-* [  TypeScript ](#tab-panel-4137)
+* [  JavaScript ](#tab-panel-2970)
+* [  TypeScript ](#tab-panel-2971)
 
 JavaScript
 
@@ -424,8 +428,8 @@ This is the main method you override. It receives the conversation context and s
 
 **Streaming response** (most common):
 
-* [  JavaScript ](#tab-panel-4134)
-* [  TypeScript ](#tab-panel-4135)
+* [  JavaScript ](#tab-panel-2968)
+* [  TypeScript ](#tab-panel-2969)
 
 JavaScript
 
@@ -554,8 +558,8 @@ The current conversation history, loaded from SQLite. This is an array of `UIMes
 
 Cap the number of messages stored in SQLite. When the limit is exceeded, the oldest messages are deleted. This controls storage only — it does not affect what is sent to the LLM.
 
-* [  JavaScript ](#tab-panel-4128)
-* [  TypeScript ](#tab-panel-4129)
+* [  JavaScript ](#tab-panel-2962)
+* [  TypeScript ](#tab-panel-2963)
 
 JavaScript
 
@@ -585,8 +589,8 @@ export class ChatAgent extends AIChatAgent {
 
 To control what is sent to the model, use the AI SDK's `pruneMessages()`:
 
-* [  JavaScript ](#tab-panel-4146)
-* [  TypeScript ](#tab-panel-4147)
+* [  JavaScript ](#tab-panel-2980)
+* [  TypeScript ](#tab-panel-2981)
 
 JavaScript
 
@@ -683,8 +687,8 @@ Controls whether `AIChatAgent` waits for MCP server connections to settle before
 | true                 | Wait indefinitely until all connections ready |
 | false                | Do not wait (old behavior before 0.2.0)       |
 
-* [  JavaScript ](#tab-panel-4140)
-* [  TypeScript ](#tab-panel-4141)
+* [  JavaScript ](#tab-panel-2974)
+* [  TypeScript ](#tab-panel-2975)
 
 JavaScript
 
@@ -746,8 +750,8 @@ For lower-level control, call `this.mcp.waitForConnections()` directly inside yo
 
 Controls how overlapping user submissions behave when a chat turn is already active or queued.
 
-* [  JavaScript ](#tab-panel-4132)
-* [  TypeScript ](#tab-panel-4133)
+* [  JavaScript ](#tab-panel-2966)
+* [  TypeScript ](#tab-panel-2967)
 
 JavaScript
 
@@ -791,8 +795,8 @@ This setting only applies to `sendMessage()` submissions. Regenerations, tool co
 
 `saveMessages` persists messages **and** triggers `onChatMessage()` for a new response. It waits for any active chat turn to finish before starting, so scheduled or programmatic messages never overlap an in-flight stream.
 
-* [  JavaScript ](#tab-panel-4138)
-* [  TypeScript ](#tab-panel-4139)
+* [  JavaScript ](#tab-panel-2972)
+* [  TypeScript ](#tab-panel-2973)
 
 JavaScript
 
@@ -828,8 +832,8 @@ const { requestId, status } = await this.saveMessages(messages);
 
 `saveMessages` accepts either an array of messages or a function that derives the next message list from the latest persisted `this.messages`. Use the function form to avoid stale baselines when multiple calls queue up:
 
-* [  JavaScript ](#tab-panel-4142)
-* [  TypeScript ](#tab-panel-4143)
+* [  JavaScript ](#tab-panel-2976)
+* [  TypeScript ](#tab-panel-2977)
 
 JavaScript
 
@@ -887,8 +891,8 @@ await this.saveMessages((messages) => [
 
 Called after a chat turn completes and the assistant message has been persisted. The turn lock is released before this hook runs, so it is safe to call `saveMessages` from inside. Fires for all turn completion paths: WebSocket chat requests, `saveMessages`, and auto-continuation.
 
-* [  JavaScript ](#tab-panel-4152)
-* [  TypeScript ](#tab-panel-4153)
+* [  JavaScript ](#tab-panel-2986)
+* [  TypeScript ](#tab-panel-2987)
 
 JavaScript
 
@@ -969,8 +973,8 @@ Responses triggered from inside `onChatResponse` (for example, via `saveMessages
 
 Override this method to apply custom transformations to messages before they are persisted to storage. This hook runs **after** the built-in sanitization (OpenAI metadata stripping, Anthropic provider-executed tool payload truncation, empty reasoning part filtering).
 
-* [  JavaScript ](#tab-panel-4158)
-* [  TypeScript ](#tab-panel-4159)
+* [  JavaScript ](#tab-panel-2992)
+* [  TypeScript ](#tab-panel-2993)
 
 JavaScript
 
@@ -1066,8 +1070,8 @@ These methods help you coordinate programmatic turns and wait for pending intera
 
 Returns `true` when an assistant message is waiting on a client tool result or approval.
 
-* [  JavaScript ](#tab-panel-4144)
-* [  TypeScript ](#tab-panel-4145)
+* [  JavaScript ](#tab-panel-2978)
+* [  TypeScript ](#tab-panel-2979)
 
 JavaScript
 
@@ -1099,8 +1103,8 @@ if (this.hasPendingInteraction()) {
 
 Waits until the conversation is fully stable — no active stream, no pending client-tool interactions, and no queued continuation turns. Returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves.
 
-* [  JavaScript ](#tab-panel-4148)
-* [  TypeScript ](#tab-panel-4149)
+* [  JavaScript ](#tab-panel-2982)
+* [  TypeScript ](#tab-panel-2983)
 
 JavaScript
 
@@ -1134,8 +1138,8 @@ if (stable) {
 
 This is especially useful with `saveMessages` for server-driven flows:
 
-* [  JavaScript ](#tab-panel-4150)
-* [  TypeScript ](#tab-panel-4151)
+* [  JavaScript ](#tab-panel-2984)
+* [  TypeScript ](#tab-panel-2985)
 
 JavaScript
 
@@ -1171,8 +1175,8 @@ Aborts the active turn and invalidates queued continuations. The built-in `CF_AG
 
 Override `onConnect` and `onClose` to add custom logic. Stream resumption and message sync are handled for you:
 
-* [  JavaScript ](#tab-panel-4160)
-* [  TypeScript ](#tab-panel-4161)
+* [  JavaScript ](#tab-panel-2994)
+* [  TypeScript ](#tab-panel-2995)
 
 JavaScript
 
@@ -1244,8 +1248,8 @@ The `destroy()` method cancels any pending chat requests and cleans up stream st
 
 When a user clicks "stop" in the chat UI, the client sends a `CF_AGENT_CHAT_REQUEST_CANCEL` message. The server propagates this to the `abortSignal` in `options`:
 
-* [  JavaScript ](#tab-panel-4162)
-* [  TypeScript ](#tab-panel-4163)
+* [  JavaScript ](#tab-panel-2996)
+* [  TypeScript ](#tab-panel-2997)
 
 JavaScript
 
@@ -1315,8 +1319,8 @@ If you do not pass `abortSignal` to `streamText`, the LLM call will continue run
 
 When a Durable Object is evicted mid-stream (code update, inactivity timeout, resource limit), the LLM connection is severed permanently and the in-memory streaming state is lost. `chatRecovery` wraps each chat turn in a [runFiber()](https://developers.cloudflare.com/agents/api-reference/durable-execution/), providing automatic `keepAlive` during streaming and a recovery hook on restart.
 
-* [  JavaScript ](#tab-panel-4154)
-* [  TypeScript ](#tab-panel-4155)
+* [  JavaScript ](#tab-panel-2988)
+* [  TypeScript ](#tab-panel-2989)
 
 JavaScript
 
@@ -1350,8 +1354,8 @@ When enabled, every `onChatMessage` call runs inside a fiber. If the agent is ev
 
 Override to implement provider-specific recovery. The default behavior persists the partial response and schedules a continuation via `continueLastTurn()`.
 
-* [  JavaScript ](#tab-panel-4164)
-* [  TypeScript ](#tab-panel-4165)
+* [  JavaScript ](#tab-panel-2998)
+* [  TypeScript ](#tab-panel-2999)
 
 JavaScript
 
@@ -1459,8 +1463,8 @@ Called automatically by the default recovery path. Can also be called manually f
 
 Use `this.stash()` inside `onChatMessage` to persist provider-specific data for recovery. The stash is stored in the fiber's SQLite row, separate from agent state, and available as `ctx.recoveryData` in `onChatRecovery`.
 
-* [  JavaScript ](#tab-panel-4180)
-* [  TypeScript ](#tab-panel-4181)
+* [  JavaScript ](#tab-panel-3014)
+* [  TypeScript ](#tab-panel-3015)
 
 JavaScript
 
@@ -1587,8 +1591,8 @@ For how chat recovery fits into the broader long-running agents story, refer to 
 
 React hook that connects to an `AIChatAgent` over WebSocket. Wraps the AI SDK's `useChat` with a native WebSocket transport.
 
-* [  JavaScript ](#tab-panel-4168)
-* [  TypeScript ](#tab-panel-4169)
+* [  JavaScript ](#tab-panel-3002)
+* [  TypeScript ](#tab-panel-3003)
 
 JavaScript
 
@@ -1710,8 +1714,8 @@ Explain Code
 
 Tools with an `execute` function run automatically on the server:
 
-* [  JavaScript ](#tab-panel-4184)
-* [  TypeScript ](#tab-panel-4185)
+* [  JavaScript ](#tab-panel-3018)
+* [  TypeScript ](#tab-panel-3019)
 
 JavaScript
 
@@ -1833,8 +1837,8 @@ Define a tool on the server without `execute`, then handle it on the client with
 
 **Server:**
 
-* [  JavaScript ](#tab-panel-4166)
-* [  TypeScript ](#tab-panel-4167)
+* [  JavaScript ](#tab-panel-3000)
+* [  TypeScript ](#tab-panel-3001)
 
 JavaScript
 
@@ -1880,8 +1884,8 @@ tools: {
 
 **Client:**
 
-* [  JavaScript ](#tab-panel-4172)
-* [  TypeScript ](#tab-panel-4173)
+* [  JavaScript ](#tab-panel-3006)
+* [  TypeScript ](#tab-panel-3007)
 
 JavaScript
 
@@ -1965,8 +1969,8 @@ Use `needsApproval` for tools that require user confirmation before executing.
 
 **Server:**
 
-* [  JavaScript ](#tab-panel-4170)
-* [  TypeScript ](#tab-panel-4171)
+* [  JavaScript ](#tab-panel-3004)
+* [  TypeScript ](#tab-panel-3005)
 
 JavaScript
 
@@ -2032,8 +2036,8 @@ Explain Code
 
 **Client:**
 
-* [  JavaScript ](#tab-panel-4202)
-* [  TypeScript ](#tab-panel-4203)
+* [  JavaScript ](#tab-panel-3036)
+* [  TypeScript ](#tab-panel-3037)
 
 JavaScript
 
@@ -2199,8 +2203,8 @@ Explain Code
 
 When a user rejects a tool, `addToolApprovalResponse({ id, approved: false })` sets the tool state to `output-denied` with a generic message. To give the LLM a more specific reason for the denial, use `addToolOutput` with `state: "output-error"` instead:
 
-* [  JavaScript ](#tab-panel-4174)
-* [  TypeScript ](#tab-panel-4175)
+* [  JavaScript ](#tab-panel-3008)
+* [  TypeScript ](#tab-panel-3009)
 
 JavaScript
 
@@ -2256,8 +2260,8 @@ For more patterns, refer to [Human-in-the-loop](https://developers.cloudflare.co
 
 Include custom data with every chat request using the `body` option:
 
-* [  JavaScript ](#tab-panel-4178)
-* [  TypeScript ](#tab-panel-4179)
+* [  JavaScript ](#tab-panel-3012)
+* [  TypeScript ](#tab-panel-3013)
 
 JavaScript
 
@@ -2303,8 +2307,8 @@ const { messages, sendMessage } = useAgentChat({
 
 For dynamic values, use a function:
 
-* [  JavaScript ](#tab-panel-4176)
-* [  TypeScript ](#tab-panel-4177)
+* [  JavaScript ](#tab-panel-3010)
+* [  TypeScript ](#tab-panel-3011)
 
 JavaScript
 
@@ -2338,8 +2342,8 @@ body: () => ({
 
 Access these fields on the server:
 
-* [  JavaScript ](#tab-panel-4182)
-* [  TypeScript ](#tab-panel-4183)
+* [  JavaScript ](#tab-panel-3016)
+* [  TypeScript ](#tab-panel-3017)
 
 JavaScript
 
@@ -2381,8 +2385,8 @@ export class ChatAgent extends AIChatAgent {
 
 For advanced per-request customization (custom headers, different body per request), use `prepareSendMessagesRequest`:
 
-* [  JavaScript ](#tab-panel-4186)
-* [  TypeScript ](#tab-panel-4187)
+* [  JavaScript ](#tab-panel-3020)
+* [  TypeScript ](#tab-panel-3021)
 
 JavaScript
 
@@ -2434,8 +2438,8 @@ Data parts let you attach typed JSON to messages alongside text — progress ind
 
 Use `createUIMessageStream` with `writer.write()` to send data parts from the server:
 
-* [  JavaScript ](#tab-panel-4208)
-* [  TypeScript ](#tab-panel-4209)
+* [  JavaScript ](#tab-panel-3042)
+* [  TypeScript ](#tab-panel-3043)
 
 JavaScript
 
@@ -2633,8 +2637,8 @@ Transient parts are broadcast to connected clients in real time but excluded fro
 
 Non-transient data parts appear in `message.parts`. Use the `UIMessage` generic to type them:
 
-* [  JavaScript ](#tab-panel-4198)
-* [  TypeScript ](#tab-panel-4199)
+* [  JavaScript ](#tab-panel-3032)
+* [  TypeScript ](#tab-panel-3033)
 
 JavaScript
 
@@ -2718,8 +2722,8 @@ Explain Code
 
 Transient data parts are not in `message.parts`. Use the `onData` callback instead:
 
-* [  JavaScript ](#tab-panel-4192)
-* [  TypeScript ](#tab-panel-4193)
+* [  JavaScript ](#tab-panel-3026)
+* [  TypeScript ](#tab-panel-3027)
 
 JavaScript
 
@@ -2779,8 +2783,8 @@ Explain Code
 
 On the server, write transient parts with `transient: true`:
 
-* [  JavaScript ](#tab-panel-4190)
-* [  TypeScript ](#tab-panel-4191)
+* [  JavaScript ](#tab-panel-3024)
+* [  TypeScript ](#tab-panel-3025)
 
 JavaScript
 
@@ -2830,8 +2834,8 @@ When streaming is active:
 
 Disable with `resume: false`:
 
-* [  JavaScript ](#tab-panel-4188)
-* [  TypeScript ](#tab-panel-4189)
+* [  JavaScript ](#tab-panel-3022)
+* [  TypeScript ](#tab-panel-3023)
 
 JavaScript
 
@@ -2872,8 +2876,8 @@ Storage (`maxPersistedMessages`) and LLM context are independent:
 | What the model sees             | pruneMessages()      | LLM context |
 | Row size limits                 | Automatic compaction | Per-message |
 
-* [  JavaScript ](#tab-panel-4204)
-* [  TypeScript ](#tab-panel-4205)
+* [  JavaScript ](#tab-panel-3038)
+* [  TypeScript ](#tab-panel-3039)
 
 JavaScript
 
@@ -2957,8 +2961,8 @@ Explain Code
 
 ### Workers AI (Cloudflare)
 
-* [  JavaScript ](#tab-panel-4194)
-* [  TypeScript ](#tab-panel-4195)
+* [  JavaScript ](#tab-panel-3028)
+* [  TypeScript ](#tab-panel-3029)
 
 JavaScript
 
@@ -3002,8 +3006,8 @@ const result = streamText({
 
 ### OpenAI
 
-* [  JavaScript ](#tab-panel-4196)
-* [  TypeScript ](#tab-panel-4197)
+* [  JavaScript ](#tab-panel-3030)
+* [  TypeScript ](#tab-panel-3031)
 
 JavaScript
 
@@ -3047,8 +3051,8 @@ const result = streamText({
 
 ### Anthropic
 
-* [  JavaScript ](#tab-panel-4200)
-* [  TypeScript ](#tab-panel-4201)
+* [  JavaScript ](#tab-panel-3034)
+* [  TypeScript ](#tab-panel-3035)
 
 JavaScript
 
@@ -3098,8 +3102,8 @@ Since `onChatMessage` gives you full control over the `streamText` call, you can
 
 Use [prepareStep ↗](https://ai-sdk.dev/docs/agents/loop-control) to change the model, available tools, or system prompt between steps in a multi-step agent loop:
 
-* [  JavaScript ](#tab-panel-4212)
-* [  TypeScript ](#tab-panel-4213)
+* [  JavaScript ](#tab-panel-3046)
+* [  TypeScript ](#tab-panel-3047)
 
 JavaScript
 
@@ -3278,8 +3282,8 @@ Explain Code
 
 Use [wrapLanguageModel ↗](https://ai-sdk.dev/docs/ai-sdk-core/middleware) to add guardrails, RAG, caching, or logging without modifying your chat logic:
 
-* [  JavaScript ](#tab-panel-4210)
-* [  TypeScript ](#tab-panel-4211)
+* [  JavaScript ](#tab-panel-3044)
+* [  TypeScript ](#tab-panel-3045)
 
 JavaScript
 
@@ -3408,8 +3412,8 @@ Multiple middlewares compose in order: `middleware: [first, second]` applies as 
 
 Use [generateObject ↗](https://ai-sdk.dev/docs/ai-sdk-core/generating-structured-data) inside tools for structured data extraction:
 
-* [  JavaScript ](#tab-panel-4214)
-* [  TypeScript ](#tab-panel-4215)
+* [  JavaScript ](#tab-panel-3048)
+* [  TypeScript ](#tab-panel-3049)
 
 JavaScript
 
@@ -3597,8 +3601,8 @@ This section covers **in-process** subagents using the AI SDK's `ToolLoopAgent`.
 
 Tools can delegate work to focused sub-calls with their own context. Use [ToolLoopAgent ↗](https://ai-sdk.dev/docs/reference/ai-sdk-core/tool-loop-agent) to define a reusable agent, then call it from a tool's `execute`:
 
-* [  JavaScript ](#tab-panel-4216)
-* [  TypeScript ](#tab-panel-4217)
+* [  JavaScript ](#tab-panel-3050)
+* [  TypeScript ](#tab-panel-3051)
 
 JavaScript
 
@@ -3790,8 +3794,8 @@ Note
 
 By default, a tool part appears as loading until `execute` returns. Use an async generator (`async function*`) to stream progress updates to the client while the tool is still working:
 
-* [  JavaScript ](#tab-panel-4206)
-* [  TypeScript ](#tab-panel-4207)
+* [  JavaScript ](#tab-panel-3040)
+* [  TypeScript ](#tab-panel-3041)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Learn about isolate access applications in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Isolate Access applications
@@ -60,8 +64,8 @@ with HTTP policies applied"]
 
 **Policy 1: Allow employees who pass device posture checks**
 
-* [ Dashboard ](#tab-panel-7571)
-* [ API ](#tab-panel-7572)
+* [ Dashboard ](#tab-panel-6413)
+* [ API ](#tab-panel-6414)
 
 | Action  | Rule type                                                                                                                                             | Selector                 | Value     |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | --------- |
@@ -131,8 +135,8 @@ To create a list of serial numbers, refer to [Create Zero Trust list](https://de
 
 **Policy 2: Allow and isolate contractors**
 
-* [ Dashboard ](#tab-panel-7573)
-* [ API ](#tab-panel-7574)
+* [ Dashboard ](#tab-panel-6415)
+* [ API ](#tab-panel-6416)
 
 | Action | Rule type | Selector         | Value                       |
 | ------ | --------- | ---------------- | --------------------------- |
@@ -203,8 +207,8 @@ Explain Code
 
 Prevents users on unmanaged devices from downloading any files from your private application.
 
-* [ Dashboard ](#tab-panel-7575)
-* [ API ](#tab-panel-7576)
+* [ Dashboard ](#tab-panel-6417)
+* [ API ](#tab-panel-6418)
 
 | Selector                     | Operator | Value                    | Logic | Action  |
 | ---------------------------- | -------- | ------------------------ | ----- | ------- |
@@ -343,8 +347,8 @@ Block users on unmanaged devices from downloading files that contain credit card
 * **Policy 1: [Disable file downloads in isolated browser](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#disable-file-downloads-in-isolated-browser)**
 * **Policy 2: Block credit card numbers**
 
-* [ Dashboard ](#tab-panel-7577)
-* [ API ](#tab-panel-7578)
+* [ Dashboard ](#tab-panel-6419)
+* [ API ](#tab-panel-6420)
 
 | Selector                                                                                           | Operator | Value                      | Logic | Action |
 | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ----- | ------ |

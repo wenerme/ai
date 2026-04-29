@@ -4,6 +4,10 @@ description: Configure the OWASP Core Ruleset in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure in the dashboard
@@ -16,8 +20,8 @@ Learn more about the [concepts](https://developers.cloudflare.com/waf/managed-ru
 
 ## Deploy the Cloudflare OWASP Core Ruleset
 
-* [  New dashboard ](#tab-panel-9438)
-* [ Old dashboard ](#tab-panel-9439)
+* [  New dashboard ](#tab-panel-8321)
+* [ Old dashboard ](#tab-panel-8322)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -61,8 +65,8 @@ You can configure (or override) the following Cloudflare OWASP Core Ruleset sett
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-9440)
-* [ Old dashboard ](#tab-panel-9441)
+* [  New dashboard ](#tab-panel-8323)
+* [ Old dashboard ](#tab-panel-8324)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -100,8 +104,8 @@ Setting the rule status for specific tags affects all current and future rules w
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-9444)
-* [ Old dashboard ](#tab-panel-9445)
+* [  New dashboard ](#tab-panel-8327)
+* [ Old dashboard ](#tab-panel-8328)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -143,8 +147,8 @@ You can configure (or override) the following setting in the dashboard for the s
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-9442)
-* [ Old dashboard ](#tab-panel-9443)
+* [  New dashboard ](#tab-panel-8325)
+* [ Old dashboard ](#tab-panel-8326)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

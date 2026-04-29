@@ -4,6 +4,10 @@ description: Proxy traffic through Cloudflare on secondary zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Proxy traffic
@@ -28,8 +32,8 @@ If you use Secondary DNS override and keep other nameservers at your registrar, 
 
 ## Set up Secondary DNS override
 
-* [ Dashboard ](#tab-panel-6801)
-* [ API ](#tab-panel-6802)
+* [ Dashboard ](#tab-panel-5643)
+* [ API ](#tab-panel-5644)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

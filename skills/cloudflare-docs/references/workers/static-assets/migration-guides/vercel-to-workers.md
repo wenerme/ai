@@ -4,6 +4,10 @@ description: Migrate your Vercel application to Cloudflare Workers. You should a
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Migrate from Vercel to Workers
@@ -34,8 +38,8 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-9151)
-* [  wrangler.toml ](#tab-panel-9152)
+* [  wrangler.jsonc ](#tab-panel-9179)
+* [  wrangler.toml ](#tab-panel-9180)
 
 JSONC
 
@@ -47,7 +51,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "assets": {
 
@@ -68,7 +72,7 @@ name = "<your-project-name>"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 [assets]
@@ -80,8 +84,8 @@ directory = "<your-build-directory>"
 
 For a **single page application**, you will need to add the following to your wrangler file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-9153)
-* [  wrangler.toml ](#tab-panel-9154)
+* [  wrangler.jsonc ](#tab-panel-9181)
+* [  wrangler.toml ](#tab-panel-9182)
 
 JSONC
 
@@ -93,7 +97,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "assets": {
 
@@ -116,7 +120,7 @@ name = "<your-project-name>"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 [assets]

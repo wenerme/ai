@@ -4,12 +4,16 @@ description: Create WAF custom rules in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create a custom rule in the dashboard
 
-* [  New dashboard ](#tab-panel-9359)
-* [ Old dashboard ](#tab-panel-9360)
+* [  New dashboard ](#tab-panel-8242)
+* [ Old dashboard ](#tab-panel-8243)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

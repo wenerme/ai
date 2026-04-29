@@ -4,6 +4,10 @@ description: Read and write to/from KV within a Durable Object
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use Workers KV from Durable Objects
@@ -22,8 +26,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-6988)
-* [  wrangler.toml ](#tab-panel-6989)
+* [  wrangler.jsonc ](#tab-panel-5830)
+* [  wrangler.toml ](#tab-panel-5831)
 
 JSONC
 
@@ -101,8 +105,8 @@ class_name = "YourDurableObject"
 
 Explain Code
 
-* [  TypeScript ](#tab-panel-6986)
-* [  Python ](#tab-panel-6987)
+* [  TypeScript ](#tab-panel-5828)
+* [  Python ](#tab-panel-5829)
 
 TypeScript
 

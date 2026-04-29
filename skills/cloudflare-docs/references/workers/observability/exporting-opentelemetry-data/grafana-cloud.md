@@ -4,6 +4,10 @@ description: Send OpenTelemetry traces and logs from Cloudflare Workers to Grafa
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Export to Grafana Cloud
@@ -49,8 +53,8 @@ Before you begin, ensure you have:
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-8891)
-* [  wrangler.toml ](#tab-panel-8892)
+* [  wrangler.jsonc ](#tab-panel-8919)
+* [  wrangler.toml ](#tab-panel-8920)
 
 JSONC
 

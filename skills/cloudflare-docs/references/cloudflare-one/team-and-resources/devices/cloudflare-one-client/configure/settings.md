@@ -4,6 +4,10 @@ description: Reference information for Device client settings in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -68,8 +72,8 @@ The user will have an unlimited amount of time to activate their code.
 
 To activate the override code on a user device:
 
-* [ Version 2026.2+ ](#tab-panel-6109)
-* [ Version 2026.1 and earlier ](#tab-panel-6110)
+* [ Version 2026.2+ ](#tab-panel-4951)
+* [ Version 2026.1 and earlier ](#tab-panel-4952)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
@@ -381,9 +385,9 @@ Enabling this setting comes with two major consequences:
 
 To turn on local network access in the Cloudflare One Client:
 
-* [ Windows and macOS ](#tab-panel-6111)
-* [ Linux ](#tab-panel-6112)
-* [ Android and ChromeOS ](#tab-panel-6113)
+* [ Windows and macOS ](#tab-panel-4953)
+* [ Linux ](#tab-panel-4954)
+* [ Android and ChromeOS ](#tab-panel-4955)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily access local network resources**, select **Access resources**.

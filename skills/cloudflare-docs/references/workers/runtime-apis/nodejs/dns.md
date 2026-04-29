@@ -4,6 +4,10 @@ description: Use the Node.js dns module in Cloudflare Workers for DNS name resol
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # dns
@@ -14,8 +18,8 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 You can use [node:dns ↗](https://nodejs.org/api/dns.html) for name resolution via [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/) using[Cloudflare DNS ↗](https://www.cloudflare.com/application-services/products/dns/) at 1.1.1.1.
 
-* [  JavaScript ](#tab-panel-9033)
-* [  TypeScript ](#tab-panel-9034)
+* [  JavaScript ](#tab-panel-9061)
+* [  TypeScript ](#tab-panel-9062)
 
 index.js
 

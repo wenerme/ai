@@ -4,6 +4,10 @@ description: IP addresses used by Cloudflare for DNS zone transfers and NOTIFY m
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 Cloudflare is updating the source IP addresses used for DNS zone transfers (AXFR/IXFR) and NOTIFY messages. You must update your allow lists before **December 1, 2026** to avoid service disruption.

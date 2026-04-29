@@ -4,6 +4,10 @@ description: Certificate Transparency (CT) Monitoring is an opt-in feature in pu
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Certificate Transparency Monitoring

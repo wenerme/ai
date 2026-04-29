@@ -4,11 +4,15 @@ description: This reference architecture outlines how Cloudflare and CrowdStrike
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection
 
-**Last reviewed:**  2 months ago 
+**Last reviewed:**  3 months ago 
 
 ## Abstract
 

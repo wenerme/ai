@@ -4,6 +4,10 @@ description: Set up the FlagshipClientProvider to evaluate feature flags synchro
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Client provider
@@ -30,8 +34,8 @@ The client provider requires an API token to fetch flag values. This token is no
 
 The following example initializes the provider with a set of pre-fetched flags and evaluates them in a browser application.
 
-* [  JavaScript ](#tab-panel-7139)
-* [  TypeScript ](#tab-panel-7140)
+* [  JavaScript ](#tab-panel-5981)
+* [  TypeScript ](#tab-panel-5982)
 
 JavaScript
 

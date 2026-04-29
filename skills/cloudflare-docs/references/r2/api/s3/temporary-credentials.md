@@ -4,6 +4,10 @@ description: Learn about temporary credentials in r2.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Temporary credentials
@@ -143,9 +147,9 @@ JSONC
 
 Any S3-compatible client that supports session tokens will accept R2 temporary credentials. Pass all three values (access key ID, secret access key, session token) using the client's standard credential fields.
 
-* [ JavaScript ](#tab-panel-8252)
-* [ Python ](#tab-panel-8253)
-* [ Environment variables ](#tab-panel-8254)
+* [ JavaScript ](#tab-panel-7094)
+* [ Python ](#tab-panel-7095)
+* [ Environment variables ](#tab-panel-7096)
 
 TypeScript
 

@@ -4,6 +4,10 @@ description: Learn how to create a content security rule in the Cloudflare dashb
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create a content security rule in the dashboard
@@ -12,8 +16,8 @@ Note
 
 Only available to customers with Client-Side Security Advanced.
 
-* [  New dashboard ](#tab-panel-5679)
-* [ Old dashboard ](#tab-panel-5680)
+* [  New dashboard ](#tab-panel-4515)
+* [ Old dashboard ](#tab-panel-4516)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

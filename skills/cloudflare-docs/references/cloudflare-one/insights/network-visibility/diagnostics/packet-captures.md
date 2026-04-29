@@ -4,6 +4,10 @@ description: Packet captures in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -37,8 +41,8 @@ For help determining which data center to select for a packet capture, go to [ht
 
 * `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
 
-* [ Dashboard ](#tab-panel-5864)
-* [ API ](#tab-panel-5865)
+* [ Dashboard ](#tab-panel-4706)
+* [ API ](#tab-panel-4707)
 
 1. In the Cloudflare dashboard, go to the **Network health** page.  
 [ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
@@ -249,8 +253,8 @@ Explain Code
 
 ## Check packet capture status
 
-* [ Dashboard ](#tab-panel-5860)
-* [ API ](#tab-panel-5861)
+* [ Dashboard ](#tab-panel-4702)
+* [ API ](#tab-panel-4703)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Go to the **Diagnostics** tab.
@@ -334,8 +338,8 @@ The capture status displays one of the following options:
 
 After your request finishes processing, you can download your packet captures.
 
-* [ Dashboard ](#tab-panel-5862)
-* [ API ](#tab-panel-5863)
+* [ Dashboard ](#tab-panel-4704)
+* [ API ](#tab-panel-4705)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** \> **Diagnostics**.
 2. In **Packet captures**, select **Start a capture**.
@@ -370,8 +374,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 
 ## List packet captures
 
-* [ Dashboard ](#tab-panel-5866)
-* [ API ](#tab-panel-5867)
+* [ Dashboard ](#tab-panel-4708)
+* [ API ](#tab-panel-4709)
 
 1. In the Cloudflare dashboard, go to the **Network health** page.  
 [ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)

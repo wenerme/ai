@@ -4,6 +4,10 @@ description: If you initially set up a partial zone on Cloudflare, you can later
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Convert partial setup to secondary setup
@@ -120,8 +124,8 @@ If you keep any DNS records that still refer `cdn.cloudflare.net`, HTTP traffic 
 
 1. Enable outgoing zone transfers at your primary provider and create a peer DNS server on your Cloudflare account.
 
-* [ Dashboard ](#tab-panel-6773)
-* [ API ](#tab-panel-6774)
+* [ Dashboard ](#tab-panel-5615)
+* [ API ](#tab-panel-5616)
 
 To create a peer server using the dashboard:
 
@@ -140,8 +144,8 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 1. Link your Cloudflare zone to the peer DNS server you just created.
 
-* [ Dashboard ](#tab-panel-6771)
-* [ API ](#tab-panel-6772)
+* [ Dashboard ](#tab-panel-5613)
+* [ API ](#tab-panel-5614)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

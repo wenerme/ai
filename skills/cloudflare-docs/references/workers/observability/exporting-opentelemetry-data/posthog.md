@@ -4,6 +4,10 @@ description: Send OpenTelemetry logs from Cloudflare Workers to PostHog for anal
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Export to PostHog
@@ -69,8 +73,8 @@ Now you'll create a destination in the Cloudflare dashboard that points to PostH
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable logs export.
 
-* [  wrangler.jsonc ](#tab-panel-8895)
-* [  wrangler.toml ](#tab-panel-8896)
+* [  wrangler.jsonc ](#tab-panel-8923)
+* [  wrangler.toml ](#tab-panel-8924)
 
 JSONC
 

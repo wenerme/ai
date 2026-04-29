@@ -4,6 +4,10 @@ description: Example of how to use Workers KV to build a distributed application
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cache data with Workers KV
@@ -28,8 +32,8 @@ With Workers KV, the data is persisted by default to [central stores](https://de
 
 In the following `index.ts` file, the Worker fetches data from an external server and caches the response in Workers KV. If the data is already cached in Workers KV, the Worker reads the cached data from Workers KV instead of calling the external API.
 
-* [ index.ts ](#tab-panel-7489)
-* [ wrangler.jsonc ](#tab-panel-7490)
+* [ index.ts ](#tab-panel-6331)
+* [ wrangler.jsonc ](#tab-panel-6332)
 
 index.ts
 

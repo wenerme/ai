@@ -4,6 +4,10 @@ description: Organize repositories by environment or tenant.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Namespaces
@@ -38,8 +42,8 @@ If you have not chosen a namespace strategy yet, use `default` in the examples t
 
 Use the same namespace name in your Wrangler binding:
 
-* [  wrangler.jsonc ](#tab-panel-5493)
-* [  wrangler.toml ](#tab-panel-5494)
+* [  wrangler.jsonc ](#tab-panel-4327)
+* [  wrangler.toml ](#tab-panel-4328)
 
 JSONC
 

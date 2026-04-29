@@ -1371,34 +1371,28 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
         "Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table.",
     },
     {
-      key: "feature_requirements",
-      type: "table",
-      description:
-        "Alias for `features` in `requirements.toml`. Use it to pin feature values by canonical feature key.",
-    },
-    {
       key: "features.<name>",
       type: "boolean",
       description:
         "Require a specific canonical feature key to stay enabled or disabled.",
     },
     {
-      key: "feature_requirements.in_app_browser",
+      key: "features.in_app_browser",
       type: "boolean",
       description:
-        "Set to `false` in `requirements.toml` to disable the in-app browser pane. You can also set `features.in_app_browser`.",
+        "Set to `false` in `requirements.toml` to disable the in-app browser pane.",
     },
     {
-      key: "feature_requirements.browser_use",
+      key: "features.browser_use",
       type: "boolean",
       description:
-        "Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. You can also set `features.browser_use`.",
+        "Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability.",
     },
     {
-      key: "feature_requirements.computer_use",
+      key: "features.computer_use",
       type: "boolean",
       description:
-        "Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows. You can also set `features.computer_use`.",
+        "Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows.",
     },
     {
       key: "hooks",

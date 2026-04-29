@@ -4,6 +4,10 @@ description: Enforce HTTPS connections with HSTS response headers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -52,8 +56,8 @@ If you remove HTTPS before disabling HSTS or before waiting for the duration of 
 
 ## Enable HSTS
 
-* [ Dashboard ](#tab-panel-9071)
-* [ API ](#tab-panel-9072)
+* [ Dashboard ](#tab-panel-7913)
+* [ API ](#tab-panel-7914)
 
 To enable HSTS using the dashboard:
 

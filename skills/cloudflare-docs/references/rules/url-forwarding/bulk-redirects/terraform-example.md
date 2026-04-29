@@ -4,6 +4,10 @@ description: Create Bulk Redirects using the Terraform Cloudflare provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure Bulk Redirects using Terraform
@@ -200,8 +204,8 @@ Explain Code
 
 Your API token must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* [ Dashboard ](#tab-panel-8587)
-* [ API ](#tab-panel-8588)
+* [ Dashboard ](#tab-panel-7429)
+* [ API ](#tab-panel-7430)
 
 * Account Filter Lists > Edit
 * Bulk URL Redirects > Edit

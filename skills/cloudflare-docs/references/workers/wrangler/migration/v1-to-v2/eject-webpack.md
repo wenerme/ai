@@ -4,6 +4,10 @@ description: Migrate webpack-based Workers projects from Wrangler v1 to v2 by ej
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # 1\. Migrate webpack projects
@@ -151,8 +155,8 @@ module.exports = {
 
 Remove the `type` and `webpack_config` keys from your Wrangler file, as they are not supported anymore.
 
-* [  wrangler.jsonc ](#tab-panel-9957)
-* [  wrangler.toml ](#tab-panel-9958)
+* [  wrangler.jsonc ](#tab-panel-9965)
+* [  wrangler.toml ](#tab-panel-9966)
 
 JSONC
 
@@ -186,8 +190,8 @@ webpack_config = "webpack.config.js"
 
 Wrangler no longer has any knowledge of how to build your Worker. You will need to tell it how to call webpack and where to look for webpack's output. This translates into two fields:
 
-* [  wrangler.jsonc ](#tab-panel-9959)
-* [  wrangler.toml ](#tab-panel-9960)
+* [  wrangler.jsonc ](#tab-panel-9967)
+* [  wrangler.toml ](#tab-panel-9968)
 
 JSONC
 

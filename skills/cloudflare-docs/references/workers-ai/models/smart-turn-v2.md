@@ -4,6 +4,10 @@ description: An open source, community-driven, native audio turn detection model
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ![Pipecat logo](https://developers.cloudflare.com/_astro/pipecat.B-PNBdef.svg) 

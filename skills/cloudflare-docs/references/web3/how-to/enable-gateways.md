@@ -4,6 +4,10 @@ description: Subscribe to Ethereum or IPFS gateways on your Cloudflare account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Subscribe to gateways

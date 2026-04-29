@@ -4,6 +4,10 @@ description: NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ![NVIDIA logo](https://developers.cloudflare.com/_astro/nvidia.y1O6VlZA.svg) 

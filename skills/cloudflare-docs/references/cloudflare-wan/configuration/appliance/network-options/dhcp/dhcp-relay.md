@@ -4,6 +4,10 @@ description: Configure DHCP relay on the Appliance.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # DHCP relay
@@ -35,8 +39,8 @@ DHCP relay will not work if your DHCP server is behind a [Cloudflare Tunnel](htt
 
 To configure DHCP relay:
 
-* [ Dashboard ](#tab-panel-6406)
-* [ API ](#tab-panel-6407)
+* [ Dashboard ](#tab-panel-5248)
+* [ API ](#tab-panel-5249)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

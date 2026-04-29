@@ -4,6 +4,10 @@ description: Create your first pipeline to ingest streaming data and write to R2
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Getting started
@@ -27,8 +31,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket
 
-* [ Wrangler CLI ](#tab-panel-8232)
-* [ Dashboard ](#tab-panel-8233)
+* [ Wrangler CLI ](#tab-panel-7074)
+* [ Dashboard ](#tab-panel-7075)
 
 1. If not already logged in, run:  
 ```  
@@ -47,8 +51,8 @@ npx wrangler r2 bucket create pipelines-tutorial
 
 ## 2\. Enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-8234)
-* [ Dashboard ](#tab-panel-8235)
+* [ Wrangler CLI ](#tab-panel-7076)
+* [ Dashboard ](#tab-panel-7077)
 
 Enable the catalog on your R2 bucket:
 
@@ -86,8 +90,8 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 4\. Create a pipeline
 
-* [ Wrangler CLI ](#tab-panel-8236)
-* [ Dashboard ](#tab-panel-8237)
+* [ Wrangler CLI ](#tab-panel-7078)
+* [ Dashboard ](#tab-panel-7079)
 
 First, create a schema file that defines your ecommerce data structure:
 

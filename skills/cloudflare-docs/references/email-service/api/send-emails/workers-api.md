@@ -4,6 +4,10 @@ description: Send emails directly from Cloudflare Workers using the Email Servic
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Workers API
@@ -14,8 +18,8 @@ The Workers API provides native email sending capabilities directly from your Cl
 
 Configure email bindings in your Wrangler configuration file to enable email sending:
 
-* [  wrangler.jsonc ](#tab-panel-7090)
-* [  wrangler.toml ](#tab-panel-7091)
+* [  wrangler.jsonc ](#tab-panel-5932)
+* [  wrangler.toml ](#tab-panel-5933)
 
 JSONC
 
@@ -153,9 +157,9 @@ Explain Code
 
 ### Basic usage
 
-* [ Simple email ](#tab-panel-7085)
-* [ Multiple recipients ](#tab-panel-7086)
-* [ With CC and BCC ](#tab-panel-7087)
+* [ Simple email ](#tab-panel-5927)
+* [ Multiple recipients ](#tab-panel-5928)
+* [ With CC and BCC ](#tab-panel-5929)
 
 TypeScript
 
@@ -224,8 +228,8 @@ Explain Code
 
 ### Attachments
 
-* [ PDF attachment ](#tab-panel-7088)
-* [ Inline image ](#tab-panel-7089)
+* [ PDF attachment ](#tab-panel-5930)
+* [ Inline image ](#tab-panel-5931)
 
 TypeScript
 
@@ -315,7 +319,7 @@ Explain Code
 
 Handle email sending errors gracefully:
 
-* [ Single send errors ](#tab-panel-7084)
+* [ Single send errors ](#tab-panel-5926)
 
 TypeScript
 

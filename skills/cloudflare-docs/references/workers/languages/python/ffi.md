@@ -4,6 +4,10 @@ description: Call JavaScript APIs, bindings, and globals from Python Workers usi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Foreign Function Interface (FFI)
@@ -22,8 +26,8 @@ Bindings allow your Worker to interact with resources on the Cloudflare Develope
 
 For example, to access a [KV](https://developers.cloudflare.com/kv) namespace from a Python Worker, you would declare the following in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8873)
-* [  wrangler.toml ](#tab-panel-8874)
+* [  wrangler.jsonc ](#tab-panel-8901)
+* [  wrangler.toml ](#tab-panel-8902)
 
 JSONC
 

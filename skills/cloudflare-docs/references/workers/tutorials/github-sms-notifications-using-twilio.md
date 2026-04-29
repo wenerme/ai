@@ -4,6 +4,10 @@ description: This tutorial shows you how to build an SMS notification system on 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -229,8 +233,8 @@ npx wrangler secret put GITHUB_SECRET_TOKEN
 
 Add the nodejs\_compat flag to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9213)
-* [  wrangler.toml ](#tab-panel-9214)
+* [  wrangler.jsonc ](#tab-panel-9241)
+* [  wrangler.toml ](#tab-panel-9242)
 
 JSONC
 

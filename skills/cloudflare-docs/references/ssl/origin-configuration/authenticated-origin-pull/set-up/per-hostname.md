@@ -4,6 +4,10 @@ description: Set up per-hostname Authenticated Origin Pulls with custom certific
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Per-hostname
@@ -77,8 +81,8 @@ basicConstraints=CA:FALSE
 
 ## 1\. Upload custom certificate
 
-* [ Dashboard ](#tab-panel-9107)
-* [ API ](#tab-panel-9108)
+* [ Dashboard ](#tab-panel-7969)
+* [ API ](#tab-panel-7970)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -179,8 +183,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable Authenticated Origin Pulls for the hostname
 
-* [ Dashboard ](#tab-panel-9105)
-* [ API ](#tab-panel-9106)
+* [ Dashboard ](#tab-panel-7967)
+* [ API ](#tab-panel-7968)
 
 Note
 

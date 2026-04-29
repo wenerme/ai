@@ -4,6 +4,10 @@ description: Configure Cache with Regional Services and Customer Metadata Bounda
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cache
@@ -14,8 +18,8 @@ In the following sections, we will give you some details about how to configure 
 
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare and ensure that [eligible assets](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) are cached only in-region, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-6683)
-* [ API ](#tab-panel-6684)
+* [ Dashboard ](#tab-panel-5525)
+* [ API ](#tab-panel-5526)
 
 1. In the Cloudflare dashboard, go to the **Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

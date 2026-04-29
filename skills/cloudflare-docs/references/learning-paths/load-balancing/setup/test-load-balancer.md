@@ -4,6 +4,10 @@ description: Learn about create load balancer on test domain in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create load balancer on test domain
@@ -14,8 +18,8 @@ Starting with a test domain allows you to verify everything is working correctly
 
 ## Create a load balancer
 
-* [ Dashboard ](#tab-panel-7613)
-* [ API ](#tab-panel-7614)
+* [ Dashboard ](#tab-panel-6455)
+* [ API ](#tab-panel-6456)
 
 To create a Public or a Private load balancer in the dashboard:
 

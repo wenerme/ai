@@ -4,6 +4,10 @@ description: Fix mixed content by rewriting HTTP URLs to HTTPS in page responses
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Automatic HTTPS Rewrites
@@ -28,8 +32,8 @@ For security reasons, this feature will run on URLs pointing to `localhost` if t
 
 ## Enable Automatic HTTPS Rewrites
 
-* [ Dashboard ](#tab-panel-9063)
-* [ API ](#tab-panel-9064)
+* [ Dashboard ](#tab-panel-7905)
+* [ API ](#tab-panel-7906)
 
 To enable **Automatic HTTPS Rewrites** in the dashboard:
 

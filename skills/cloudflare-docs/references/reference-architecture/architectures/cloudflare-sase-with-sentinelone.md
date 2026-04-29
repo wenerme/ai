@@ -4,6 +4,10 @@ description: The integration between Cloudflare One and SentinelOne provides org
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Enhancing security posture with SentinelOne and Cloudflare One

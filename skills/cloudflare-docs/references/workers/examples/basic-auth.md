@@ -4,6 +4,10 @@ description: Shows how to restrict access using the HTTP Basic schema.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -24,10 +28,10 @@ Caution when using in production
 
 This code is provided as a sample, and is not suitable for production use. Basic Authentication sends credentials unencrypted, and must be used with an HTTPS connection to be considered secure. For a production-ready authentication system, consider using [Cloudflare Access ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 
-* [  JavaScript ](#tab-panel-9783)
-* [  TypeScript ](#tab-panel-9784)
-* [  Rust ](#tab-panel-9785)
-* [  Hono ](#tab-panel-9786)
+* [  JavaScript ](#tab-panel-8668)
+* [  TypeScript ](#tab-panel-8669)
+* [  Rust ](#tab-panel-8670)
+* [  Hono ](#tab-panel-8671)
 
 JavaScript
 

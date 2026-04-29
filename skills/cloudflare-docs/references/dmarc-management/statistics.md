@@ -4,6 +4,10 @@ description: Review whether emails sent on your behalf passed DMARC, SPF, and DK
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dmarc-management/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Statistics and details

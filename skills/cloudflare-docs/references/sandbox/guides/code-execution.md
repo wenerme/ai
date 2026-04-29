@@ -4,6 +4,10 @@ description: Execute Python and JavaScript code with rich outputs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use code interpreter
@@ -30,8 +34,8 @@ Use `exec()` for **advanced or custom workflows**:
 
 Code contexts maintain state between executions:
 
-* [  JavaScript ](#tab-panel-8815)
-* [  TypeScript ](#tab-panel-8816)
+* [  JavaScript ](#tab-panel-7657)
+* [  TypeScript ](#tab-panel-7658)
 
 JavaScript
 
@@ -111,8 +115,8 @@ Explain Code
 
 ### Simple execution
 
-* [  JavaScript ](#tab-panel-8817)
-* [  TypeScript ](#tab-panel-8818)
+* [  JavaScript ](#tab-panel-7659)
+* [  TypeScript ](#tab-panel-7660)
 
 JavaScript
 
@@ -194,8 +198,8 @@ Explain Code
 
 Variables and imports remain available between executions in the same context, as long as the container stays active:
 
-* [  JavaScript ](#tab-panel-8823)
-* [  TypeScript ](#tab-panel-8824)
+* [  JavaScript ](#tab-panel-7665)
+* [  TypeScript ](#tab-panel-7666)
 
 JavaScript
 
@@ -307,8 +311,8 @@ Context state is lost if the container restarts due to inactivity. For critical 
 
 The code interpreter returns multiple output formats:
 
-* [  JavaScript ](#tab-panel-8827)
-* [  TypeScript ](#tab-panel-8828)
+* [  JavaScript ](#tab-panel-7669)
+* [  TypeScript ](#tab-panel-7670)
 
 JavaScript
 
@@ -448,8 +452,8 @@ Explain Code
 
 For long-running code, stream output in real-time:
 
-* [  JavaScript ](#tab-panel-8825)
-* [  TypeScript ](#tab-panel-8826)
+* [  JavaScript ](#tab-panel-7667)
+* [  TypeScript ](#tab-panel-7668)
 
 JavaScript
 
@@ -579,8 +583,8 @@ Explain Code
 
 Run LLM-generated code safely in a sandbox:
 
-* [  JavaScript ](#tab-panel-8829)
-* [  TypeScript ](#tab-panel-8830)
+* [  JavaScript ](#tab-panel-7671)
+* [  TypeScript ](#tab-panel-7672)
 
 JavaScript
 
@@ -714,8 +718,8 @@ Explain Code
 
 ### List all contexts
 
-* [  JavaScript ](#tab-panel-8819)
-* [  TypeScript ](#tab-panel-8820)
+* [  JavaScript ](#tab-panel-7661)
+* [  TypeScript ](#tab-panel-7662)
 
 JavaScript
 
@@ -757,8 +761,8 @@ for (const ctx of contexts) {
 
 ### Delete contexts
 
-* [  JavaScript ](#tab-panel-8821)
-* [  TypeScript ](#tab-panel-8822)
+* [  JavaScript ](#tab-panel-7663)
+* [  TypeScript ](#tab-panel-7664)
 
 JavaScript
 

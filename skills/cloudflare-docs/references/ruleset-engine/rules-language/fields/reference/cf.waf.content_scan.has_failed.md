@@ -4,6 +4,10 @@ description: Indicates whether the file scanner was unable to scan any of the co
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 #  cf.waf.content\_scan.has\_failed 

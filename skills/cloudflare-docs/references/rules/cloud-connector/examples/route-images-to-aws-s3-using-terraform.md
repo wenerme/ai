@@ -4,6 +4,10 @@ description: Route requests with a URI path starting with `/images` to a specifi
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Route /images to an S3 Bucket using Terraform

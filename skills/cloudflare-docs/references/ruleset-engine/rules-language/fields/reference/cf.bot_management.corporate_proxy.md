@@ -4,6 +4,10 @@ description: Indicates whether the incoming request comes from an identified Ent
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 #  cf.bot\_management.corporate\_proxy 

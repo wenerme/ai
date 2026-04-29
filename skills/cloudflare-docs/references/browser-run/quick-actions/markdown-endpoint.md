@@ -4,6 +4,10 @@ description: Convert webpage content to Markdown format using the Browser Run /m
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # /markdown - Extract Markdown from a webpage
@@ -38,8 +42,8 @@ You must provide either `url` or `html`:
 
 ### Convert a URL to Markdown
 
-* [ curl ](#tab-panel-5595)
-* [ TypeScript SDK ](#tab-panel-5596)
+* [ curl ](#tab-panel-4431)
+* [ TypeScript SDK ](#tab-panel-4432)
 
 This example fetches the Markdown representation of a webpage.
 

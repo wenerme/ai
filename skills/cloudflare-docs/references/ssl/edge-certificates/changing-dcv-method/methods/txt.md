@@ -4,6 +4,10 @@ description: Validate domain control with a TXT DNS record.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # TXT
@@ -33,8 +37,8 @@ Once you [create a new certificate](https://developers.cloudflare.com/ssl/edge-c
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-* [ API ](#tab-panel-9087)
-* [ Dashboard ](#tab-panel-9088)
+* [ API ](#tab-panel-7929)
+* [ Dashboard ](#tab-panel-7930)
 
 You can access these tokens using the API with the [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/get/) and including `status=pending_validation` as a request parameter.
 

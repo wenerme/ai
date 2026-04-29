@@ -1,3 +1,5 @@
+# Models
+
 The models endpoint provides a way for you to programmatically list the available models, and retrieve extended metadata such as supported functionality and context window sizing. Read more in [the Models guide](https://ai.google.dev/gemini-api/docs/models/gemini).
 
 ## Method: models.get

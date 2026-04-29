@@ -4,6 +4,10 @@ description: Use Cloudflare Workers and Airtable to persist form submissions fro
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -385,8 +389,8 @@ To make an authenticated request to Airtable, you need to provide four constants
 
 Add a `vars` table at the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9215)
-* [  wrangler.toml ](#tab-panel-9216)
+* [  wrangler.jsonc ](#tab-panel-9243)
+* [  wrangler.toml ](#tab-panel-9244)
 
 JSONC
 
@@ -402,7 +406,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27",
+  "compatibility_date": "2026-04-29",
 
   "vars": {
 
@@ -431,7 +435,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 [vars]

@@ -4,6 +4,10 @@ description: Resolve false positives where legitimate traffic is blocked by bot 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Handle False Positives from Bot Fight Mode or Super Bot Fight Mode

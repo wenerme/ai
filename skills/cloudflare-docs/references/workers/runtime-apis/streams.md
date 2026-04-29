@@ -4,6 +4,10 @@ description: A web standard API that allows JavaScript to programmatically acces
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Streams
@@ -29,8 +33,8 @@ If your Worker only forwards subrequest responses to the client verbatim without
 
 The worker can create a `Response` object using a `ReadableStream` as the body. Any data provided through the`ReadableStream` will be streamed to the client as it becomes available.
 
-* [  Module Worker ](#tab-panel-9091)
-* [  Service Worker ](#tab-panel-9092)
+* [  Module Worker ](#tab-panel-9119)
+* [  Service Worker ](#tab-panel-9120)
 
 JavaScript
 
@@ -91,8 +95,8 @@ Explain Code
 
 A [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) and the [ReadableStream.pipeTo()](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/#methods) method can be used to modify the response body as it is being streamed:
 
-* [  Module Worker ](#tab-panel-9093)
-* [  Service Worker ](#tab-panel-9094)
+* [  Module Worker ](#tab-panel-9121)
+* [  Service Worker ](#tab-panel-9122)
 
 JavaScript
 

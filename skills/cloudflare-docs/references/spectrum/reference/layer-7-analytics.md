@@ -4,6 +4,10 @@ description: How Spectrum Layer 4 traffic can appear in Layer 7 analytics dashbo
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Why Spectrum-enabled hostnames might appear in Layer 7 Analytics

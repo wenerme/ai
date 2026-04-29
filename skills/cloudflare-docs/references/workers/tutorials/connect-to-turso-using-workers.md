@@ -4,6 +4,10 @@ description: This tutorial will guide you on how to build globally distributed a
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -222,8 +226,8 @@ libsql://my-db-<your-github-username>.turso.io
 
 Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in your editor and at the bottom of the file, create a new `[vars]` section representing the [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) for your project:
 
-* [  wrangler.jsonc ](#tab-panel-9215)
-* [  wrangler.toml ](#tab-panel-9216)
+* [  wrangler.jsonc ](#tab-panel-9223)
+* [  wrangler.toml ](#tab-panel-9224)
 
 JSONC
 

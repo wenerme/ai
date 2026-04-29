@@ -4,6 +4,10 @@ description: Learn how to upload images to Cloudflare using Workers. This guide 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Upload via a Worker
@@ -12,8 +16,8 @@ You can use a Worker to upload your image to Cloudflare Images.
 
 Refer to the example below or refer to the [Workers documentation](https://developers.cloudflare.com/workers/) for more information.
 
-* [  JavaScript ](#tab-panel-7461)
-* [  TypeScript ](#tab-panel-7462)
+* [  JavaScript ](#tab-panel-6303)
+* [  TypeScript ](#tab-panel-6304)
 
 JavaScript
 
@@ -99,8 +103,8 @@ Explain Code
 
 You can use an AI Worker to generate an image and then upload that image to store it in Cloudflare Images. For more information about using Workers AI to generate an image, refer to the [SDXL-Lightning Model](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning).
 
-* [  JavaScript ](#tab-panel-7463)
-* [  TypeScript ](#tab-panel-7464)
+* [  JavaScript ](#tab-panel-6305)
+* [  TypeScript ](#tab-panel-6306)
 
 JavaScript
 

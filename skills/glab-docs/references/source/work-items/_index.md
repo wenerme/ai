@@ -28,4 +28,5 @@ For more information, see
 
 ## Subcommands
 
+- [`create`](create.md)
 - [`list`](list.md)

@@ -4,6 +4,10 @@ description: Device profiles in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -18,9 +22,9 @@ For example, users in one identity provider group (signifying a specific office 
 
 ## Create a new profile
 
-* [ Dashboard ](#tab-panel-6077)
-* [ API ](#tab-panel-6078)
-* [ Terraform (v5) ](#tab-panel-6079)
+* [ Dashboard ](#tab-panel-4919)
+* [ API ](#tab-panel-4920)
+* [ Terraform (v5) ](#tab-panel-4921)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select **Create new profile**. This will make a copy of the **Default** profile.

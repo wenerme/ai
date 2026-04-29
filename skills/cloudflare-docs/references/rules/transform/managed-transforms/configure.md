@@ -4,13 +4,17 @@ description: Learn how to configure Managed Transforms.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure Managed Transforms
 
-* [ Dashboard ](#tab-panel-8582)
-* [ API ](#tab-panel-8583)
-* [ Terraform ](#tab-panel-8584)
+* [ Dashboard ](#tab-panel-7424)
+* [ API ](#tab-panel-7425)
+* [ Terraform ](#tab-panel-7426)
 
 1. In the Cloudflare dashboard, go to the Rules **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/settings)

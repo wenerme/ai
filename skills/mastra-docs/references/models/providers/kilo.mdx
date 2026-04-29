@@ -1,11 +1,11 @@
 ---
 title: "Kilo Gateway | Models"
-description: "Use Kilo Gateway models with Mastra. 335 models available."
+description: "Use Kilo Gateway models with Mastra. 337 models available."
 ---
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 335 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 337 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -3912,6 +3912,30 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
+    "inputCost": 1,
+    "outputCost": 3
+  },
+  {
+    "model": "kilo/xiaomi/mimo-v2.5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.4,
+    "outputCost": 2
+  },
+  {
+    "model": "kilo/xiaomi/mimo-v2.5-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 128000,
     "inputCost": 1,
     "outputCost": 3
   },

@@ -4,6 +4,10 @@ description: Learn how to connect to Cloudflare's 1.1.1.1 using DNS over HTTPS (
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Connect to 1.1.1.1 using DoH clients

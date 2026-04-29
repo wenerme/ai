@@ -4,6 +4,10 @@ description: Use the OpenAI v4 SDK to stream responses from OpenAI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -28,8 +32,8 @@ Note
 
 For analytics, caching, rate limiting, and more, you can also send requests like this through Cloudflare's [AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/).
 
-* [  TypeScript ](#tab-panel-9897)
-* [  Hono ](#tab-panel-9898)
+* [  TypeScript ](#tab-panel-8782)
+* [  Hono ](#tab-panel-8783)
 
 TypeScript
 

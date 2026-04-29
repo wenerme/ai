@@ -4,6 +4,10 @@ description: Send browser push notifications from a Cloudflare Agent, even when 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Push notifications
@@ -94,8 +98,8 @@ wrangler secret put VAPID_SUBJECT
 
 The agent has three responsibilities: store push subscriptions, schedule reminders, and send notifications when alarms fire.
 
-* [  JavaScript ](#tab-panel-5194)
-* [  TypeScript ](#tab-panel-5195)
+* [  JavaScript ](#tab-panel-4028)
+* [  TypeScript ](#tab-panel-4029)
 
 JavaScript
 
@@ -687,8 +691,8 @@ The client needs to: register the service worker, request notification permissio
 
 ### Register the service worker
 
-* [  JavaScript ](#tab-panel-5188)
-* [  TypeScript ](#tab-panel-5189)
+* [  JavaScript ](#tab-panel-4022)
+* [  TypeScript ](#tab-panel-4023)
 
 JavaScript
 
@@ -732,8 +736,8 @@ useEffect(() => {
 
 Fetch the VAPID public key from the agent, then subscribe through the Push API:
 
-* [  JavaScript ](#tab-panel-5192)
-* [  TypeScript ](#tab-panel-5193)
+* [  JavaScript ](#tab-panel-4026)
+* [  TypeScript ](#tab-panel-4027)
 
 JavaScript
 
@@ -867,8 +871,8 @@ Explain Code
 
 With the subscription stored, creating a reminder is a single RPC call. The agent handles scheduling and delivery:
 
-* [  JavaScript ](#tab-panel-5186)
-* [  TypeScript ](#tab-panel-5187)
+* [  JavaScript ](#tab-panel-4020)
+* [  TypeScript ](#tab-panel-4021)
 
 JavaScript
 
@@ -968,8 +972,8 @@ A single user may subscribe from multiple browsers or devices. The agent stores 
 
 If the push service returns a 5xx error (temporary failure), you can retry using `this.schedule()` with a short delay:
 
-* [  JavaScript ](#tab-panel-5190)
-* [  TypeScript ](#tab-panel-5191)
+* [  JavaScript ](#tab-panel-4024)
+* [  TypeScript ](#tab-panel-4025)
 
 JavaScript
 

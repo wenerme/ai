@@ -4,6 +4,10 @@ description: Cloudflare allows users to use their Cloudflare prefix to route tra
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Use BYOIP with CDN and Spectrum
@@ -211,8 +215,8 @@ Note
 
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
-* [ Dashboard ](#tab-panel-5629)
-* [ API ](#tab-panel-5630)
+* [ Dashboard ](#tab-panel-4465)
+* [ API ](#tab-panel-4466)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -234,8 +238,8 @@ Note
 
 As you create the necessary DNS records, [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) can help making sure that you have SSL/TLS certificates in place for all your hostnames.
 
-* [ Dashboard ](#tab-panel-5631)
-* [ API ](#tab-panel-5632)
+* [ Dashboard ](#tab-panel-4467)
+* [ API ](#tab-panel-4468)
 
 To create a DNS record in the dashboard:
 

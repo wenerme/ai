@@ -4,6 +4,10 @@ description: Create DNS allow and block lists.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create an allowlist or blocklist
@@ -14,9 +18,9 @@ Gateway supports creating [lists](https://developers.cloudflare.com/cloudflare-o
 
 ## Example list policy
 
-* [ Dashboard ](#tab-panel-7692)
-* [ API ](#tab-panel-7693)
-* [ Terraform ](#tab-panel-7694)
+* [ Dashboard ](#tab-panel-6534)
+* [ API ](#tab-panel-6535)
+* [ Terraform ](#tab-panel-6536)
 
 The following DNS policy will allow access to all approved corporate domains included in a list called **Corporate Domains**.
 

@@ -4,6 +4,10 @@ description: Update tunnel health checks frequency in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Update tunnel health checks frequency
@@ -20,8 +24,8 @@ To configure health checks frequency in Cloudflare One Appliance, refer to [Conf
 
 ## Manual configuration
 
-* [ Dashboard ](#tab-panel-6020)
-* [ API ](#tab-panel-6021)
+* [ Dashboard ](#tab-panel-4862)
+* [ API ](#tab-panel-4863)
 
 1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels).
 2. Change the **Health check rate** to your desired rate. For example, _Low_.

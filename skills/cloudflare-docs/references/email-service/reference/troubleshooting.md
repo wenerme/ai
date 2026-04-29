@@ -4,6 +4,10 @@ description: Diagnose and fix SPF, DKIM, and DMARC authentication issues for Ema
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Troubleshoot SPF, DKIM and DMARC

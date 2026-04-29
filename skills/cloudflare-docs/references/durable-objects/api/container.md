@@ -4,6 +4,10 @@ description: Access and manage containers associated with a Durable Object, incl
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Durable Object Container
@@ -16,8 +20,8 @@ Note
 
 It is likely preferable to use the official `Container` class, which provides helper methods and a more idiomatic API for working with containers on top of Durable Objects.
 
-* [  JavaScript ](#tab-panel-6826)
-* [  TypeScript ](#tab-panel-6827)
+* [  JavaScript ](#tab-panel-5668)
+* [  TypeScript ](#tab-panel-5669)
 
 index.js
 

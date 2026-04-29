@@ -4,6 +4,10 @@ description: Facilitate Worker-to-Worker communication by forwarding Request obj
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # HTTP
@@ -12,8 +16,8 @@ Worker A that declares a Service binding to Worker B can forward a [Request](htt
 
 For example, consider the following Worker that implements a [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/):
 
-* [  wrangler.jsonc ](#tab-panel-8983)
-* [  wrangler.toml ](#tab-panel-8984)
+* [  wrangler.jsonc ](#tab-panel-9011)
+* [  wrangler.toml ](#tab-panel-9012)
 
 JSONC
 
@@ -64,8 +68,8 @@ export default {
 
 The following Worker declares a binding to the Worker above:
 
-* [  wrangler.jsonc ](#tab-panel-8985)
-* [  wrangler.toml ](#tab-panel-8986)
+* [  wrangler.jsonc ](#tab-panel-9013)
+* [  wrangler.toml ](#tab-panel-9014)
 
 JSONC
 

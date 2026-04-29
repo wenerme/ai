@@ -4,6 +4,10 @@ description: Use a VPC Network binding with Cloudflare Mesh to reach private ser
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Connect Workers to Cloudflare Mesh
@@ -21,8 +25,8 @@ When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-
 
 Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9543)
-* [  wrangler.toml ](#tab-panel-9544)
+* [  wrangler.jsonc ](#tab-panel-8426)
+* [  wrangler.toml ](#tab-panel-8427)
 
 JSONC
 
@@ -38,7 +42,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "vpc_networks": [
 
@@ -73,7 +77,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[vpc_networks]]

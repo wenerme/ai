@@ -4,6 +4,10 @@ description: Learn how to configure Virtual Appliance on VMWare ESXi or Proxmox 
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure Virtual Appliance
@@ -67,8 +71,8 @@ Virtual Appliance uses a DHCP connection at first boot to download your settings
 
 Select the appropriate tab to configure Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment.
 
-* [ VMWare ESXi ](#tab-panel-4832)
-* [ Proxmox Virtual Environment (beta) ](#tab-panel-4833)
+* [ VMWare ESXi ](#tab-panel-4838)
+* [ Proxmox Virtual Environment (beta) ](#tab-panel-4839)
 
 **1\. Obtain the VMWare image**
 
@@ -205,8 +209,8 @@ For more information, refer to [Configure a virtual machine](#configure-a-virtua
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-4828)
-* [ API ](#tab-panel-4829)
+* [ Dashboard ](#tab-panel-4834)
+* [ API ](#tab-panel-4835)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -264,8 +268,8 @@ Explain Code
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-4830)
-* [ API ](#tab-panel-4831)
+* [ Dashboard ](#tab-panel-4836)
+* [ API ](#tab-panel-4837)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.

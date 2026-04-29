@@ -4,6 +4,10 @@ description: Validate Turnstile tokens on your server with the siteverify API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Validate the token
@@ -67,11 +71,11 @@ To ensure a successful validation, the visitor must initiate the request and sub
 
 ## Basic validation examples
 
-* [  JavaScript ](#tab-panel-9264)
-* [  PHP ](#tab-panel-9265)
-* [  Python ](#tab-panel-9266)
-* [  Java ](#tab-panel-9267)
-* [  C# ](#tab-panel-9268)
+* [  JavaScript ](#tab-panel-8123)
+* [  PHP ](#tab-panel-8124)
+* [  Python ](#tab-panel-8125)
+* [  Java ](#tab-panel-8126)
+* [  C# ](#tab-panel-8127)
 
 #### JSON
 
@@ -914,8 +918,8 @@ Explain Code
 
 ## API response format
 
-* [ Successful response ](#tab-panel-9269)
-* [ Failed response ](#tab-panel-9270)
+* [ Successful response ](#tab-panel-8128)
+* [ Failed response ](#tab-panel-8129)
 
 Example
 

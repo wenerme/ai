@@ -4,6 +4,10 @@ description: Route API requests to different back-end services using API Shield 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # API Routing
@@ -20,8 +24,8 @@ You must add Source Endpoints to Endpoint Management through established methods
 
 To create a route, you will need the operation ID of the Source Endpoint. To find the operation ID in the dashboard:
 
-* [  New dashboard ](#tab-panel-5401)
-* [ Old dashboard ](#tab-panel-5402)
+* [  New dashboard ](#tab-panel-4235)
+* [ Old dashboard ](#tab-panel-4236)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -39,8 +43,8 @@ Once your Source Endpoints are added to Endpoint Management, use the following s
 
 ### Create a route
 
-* [  New dashboard ](#tab-panel-5403)
-* [ Old dashboard ](#tab-panel-5404)
+* [  New dashboard ](#tab-panel-4237)
+* [ Old dashboard ](#tab-panel-4238)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

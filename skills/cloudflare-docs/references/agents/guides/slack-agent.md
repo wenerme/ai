@@ -4,6 +4,10 @@ description: Build and deploy an AI-powered Slack bot on Cloudflare Workers usin
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build a Slack Agent
@@ -150,8 +154,8 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 
 1. Update your `wrangler.jsonc` to configure your Agent:
 
-* [  wrangler.jsonc ](#tab-panel-5208)
-* [  wrangler.toml ](#tab-panel-5209)
+* [  wrangler.jsonc ](#tab-panel-4042)
+* [  wrangler.toml ](#tab-panel-4043)
 
 JSONC
 
@@ -167,7 +171,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": [
 
@@ -228,7 +232,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 

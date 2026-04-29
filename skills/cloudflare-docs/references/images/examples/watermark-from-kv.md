@@ -4,6 +4,10 @@ description: Draw a watermark from KV on an image from R2
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Watermarks
@@ -12,8 +16,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Draw a watermark from KV on an image from R2
 
-* [  JavaScript ](#tab-panel-7402)
-* [  TypeScript ](#tab-panel-7403)
+* [  JavaScript ](#tab-panel-6244)
+* [  TypeScript ](#tab-panel-6245)
 
 JavaScript
 

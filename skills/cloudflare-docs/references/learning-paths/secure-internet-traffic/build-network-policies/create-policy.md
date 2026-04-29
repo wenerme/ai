@@ -4,6 +4,10 @@ description: Build your first Gateway network policy.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create your first network policy
@@ -12,8 +16,8 @@ You can control network-level traffic by filtering requests by selectors such as
 
 To create a new network policy:
 
-* [ Dashboard ](#tab-panel-7778)
-* [ API ](#tab-panel-7779)
+* [ Dashboard ](#tab-panel-6620)
+* [ API ](#tab-panel-6621)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **Network** tab, select **Add a network policy**.

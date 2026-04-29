@@ -4,6 +4,10 @@ description: API reference for DurableObjectNamespace, which creates IDs and obt
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Durable Object Namespace
@@ -16,9 +20,9 @@ The `DurableObjectNamespace` interface is used to obtain a reference to new or e
 
 This interface defines several [methods](https://developers.cloudflare.com/durable-objects/api/namespace/#methods) that can be used to create an ID for a Durable Object. Note that creating an ID for a Durable Object does not create the Durable Object. The Durable Object is created lazily after calling [DurableObjectNamespace::get](https://developers.cloudflare.com/durable-objects/api/namespace/#get) to create a [DurableObjectStub](https://developers.cloudflare.com/durable-objects/api/stub) from a `DurableObjectId`. This ensures that objects are not constructed until they are actually accessed.
 
-* [  JavaScript ](#tab-panel-6835)
-* [  TypeScript ](#tab-panel-6836)
-* [  Python ](#tab-panel-6837)
+* [  JavaScript ](#tab-panel-5677)
+* [  TypeScript ](#tab-panel-5678)
+* [  Python ](#tab-panel-5679)
 
 JavaScript
 

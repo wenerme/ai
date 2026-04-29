@@ -4,6 +4,10 @@ description: Set up Magic Transit static routes.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure routes
@@ -24,8 +28,8 @@ Cloudflare uses anycast to route traffic. Anycast is a network addressing and ro
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-7585)
-* [ API ](#tab-panel-7586)
+* [ Dashboard ](#tab-panel-6427)
+* [ API ](#tab-panel-6428)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -182,8 +186,8 @@ Explain Code
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-7587)
-* [ API ](#tab-panel-7588)
+* [ Dashboard ](#tab-panel-6429)
+* [ API ](#tab-panel-6430)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -329,8 +333,8 @@ Explain Code
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-7583)
-* [ API ](#tab-panel-7584)
+* [ Dashboard ](#tab-panel-6425)
+* [ API ](#tab-panel-6426)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.

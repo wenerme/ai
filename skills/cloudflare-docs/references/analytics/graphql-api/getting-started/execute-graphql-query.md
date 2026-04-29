@@ -4,6 +4,10 @@ description: Learn about execute a graphql query with curl in Cloudflare analyti
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Execute a GraphQL query with curl

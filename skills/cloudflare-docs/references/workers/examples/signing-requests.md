@@ -4,6 +4,10 @@ description: Verify a signed request using the HMAC and SHA-256 algorithms or re
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -33,10 +37,10 @@ The following Worker will:
 * For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.
 * For all other request URLs, verify the signed URL and allow the request through.
 
-* [  JavaScript ](#tab-panel-9943)
-* [  TypeScript ](#tab-panel-9944)
-* [  Hono ](#tab-panel-9945)
-* [  Python ](#tab-panel-9946)
+* [  JavaScript ](#tab-panel-8828)
+* [  TypeScript ](#tab-panel-8829)
+* [  Hono ](#tab-panel-8830)
+* [  Python ](#tab-panel-8831)
 
 JavaScript
 

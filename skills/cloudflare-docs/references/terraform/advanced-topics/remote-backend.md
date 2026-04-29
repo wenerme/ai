@@ -4,6 +4,10 @@ description: Store Terraform state files remotely using Cloudflare R2 as an S3-c
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Remote R2 backend
@@ -18,8 +22,8 @@ Cloudflare R2 is an object storage service that provides a highly available, sca
 
 Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), [API](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/methods/create/), or [Account View Dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/new) create an [R2 Bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/).
 
-* [ Wrangler ](#tab-panel-9208)
-* [ API ](#tab-panel-9209)
+* [ Wrangler ](#tab-panel-8067)
+* [ API ](#tab-panel-8068)
 
 Terminal window
 

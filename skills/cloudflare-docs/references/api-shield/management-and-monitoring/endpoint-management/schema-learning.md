@@ -4,6 +4,10 @@ description: Automatically learn API schema parameters from traffic and export i
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Schema learning
@@ -14,8 +18,8 @@ To protect your API with a learned schema, refer to [Schema validation](https://
 
 ## Export a schema
 
-* [  New dashboard ](#tab-panel-5425)
-* [ Old dashboard ](#tab-panel-5426)
+* [  New dashboard ](#tab-panel-4259)
+* [ Old dashboard ](#tab-panel-4260)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

@@ -4,6 +4,10 @@ description: Build reusable IP and domain lists.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create a list of IPs or domains
@@ -42,8 +46,8 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-7825)
-* [ Terraform (v5) ](#tab-panel-7826)
+* [ Dashboard ](#tab-panel-6667)
+* [ Terraform (v5) ](#tab-panel-6668)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -74,9 +78,9 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-7827)
-* [ API ](#tab-panel-7828)
-* [ Terraform (v5) ](#tab-panel-7829)
+* [ Dashboard ](#tab-panel-6669)
+* [ API ](#tab-panel-6670)
+* [ Terraform (v5) ](#tab-panel-6671)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.

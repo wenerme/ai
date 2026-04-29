@@ -4,14 +4,18 @@ description: Evaluate Flagship feature flags directly in Cloudflare Workers usin
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Binding API
 
 Workers access Flagship through a binding that you add to your Wrangler configuration file. The `binding` field sets the variable name you use in your Worker code.
 
-* [  wrangler.jsonc ](#tab-panel-7117)
-* [  wrangler.toml ](#tab-panel-7118)
+* [  wrangler.jsonc ](#tab-panel-5959)
+* [  wrangler.toml ](#tab-panel-5960)
 
 JSONC
 
@@ -49,8 +53,8 @@ Replace `<APP_ID>` with the app ID from your Flagship app. If you have not creat
 
 The binding provides type-safe methods for evaluating feature flags. If an evaluation fails or a flag is not found, the method returns the default value you provide.
 
-* [  JavaScript ](#tab-panel-7119)
-* [  TypeScript ](#tab-panel-7120)
+* [  JavaScript ](#tab-panel-5961)
+* [  TypeScript ](#tab-panel-5962)
 
 JavaScript
 

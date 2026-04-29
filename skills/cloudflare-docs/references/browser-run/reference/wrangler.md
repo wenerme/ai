@@ -4,6 +4,10 @@ description: Use Wrangler, a command-line tool, to deploy projects using Cloudfl
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Wrangler
@@ -26,8 +30,8 @@ Note
 
 To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This also enables nodejs\_compat\_v2 as long as your compatibility date is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-5605)
-* [  wrangler.toml ](#tab-panel-5606)
+* [  wrangler.jsonc ](#tab-panel-4441)
+* [  wrangler.toml ](#tab-panel-4442)
 
 JSONC
 

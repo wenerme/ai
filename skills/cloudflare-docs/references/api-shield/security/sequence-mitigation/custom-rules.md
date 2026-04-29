@@ -4,6 +4,10 @@ description: Write custom rules that match valid or invalid API request sequence
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Sequence mitigation custom rules
@@ -41,8 +45,8 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule
 
-* [  New dashboard ](#tab-panel-5457)
-* [ Old dashboard ](#tab-panel-5458)
+* [  New dashboard ](#tab-panel-4291)
+* [ Old dashboard ](#tab-panel-4292)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

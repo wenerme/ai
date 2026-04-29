@@ -4,6 +4,10 @@ description: Add an infrastructure application in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -44,9 +48,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-5787)
-* [ API ](#tab-panel-5788)
-* [ Terraform ](#tab-panel-5789)
+* [ Dashboard ](#tab-panel-4629)
+* [ API ](#tab-panel-4630)
+* [ Terraform ](#tab-panel-4631)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -137,9 +141,9 @@ Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-5790)
-* [ API ](#tab-panel-5791)
-* [ Terraform (v4) ](#tab-panel-5792)
+* [ Dashboard ](#tab-panel-4632)
+* [ API ](#tab-panel-4633)
+* [ Terraform (v4) ](#tab-panel-4634)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Select **Add an application**.

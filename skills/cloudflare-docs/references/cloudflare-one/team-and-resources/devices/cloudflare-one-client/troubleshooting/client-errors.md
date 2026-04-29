@@ -4,6 +4,10 @@ description: Reference information for Client errors in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -272,8 +276,8 @@ The device is not authenticated to an [organization](https://developers.cloudfla
 
 ### Resolution
 
-* [ Version 2026.2+ ](#tab-panel-6143)
-* [ Version 2026.1 and earlier ](#tab-panel-6144)
+* [ Version 2026.2+ ](#tab-panel-4985)
+* [ Version 2026.1 and earlier ](#tab-panel-4986)
 
 1. Launch the Cloudflare One Client.
 2. Go to **Profile** \> **Account information**.

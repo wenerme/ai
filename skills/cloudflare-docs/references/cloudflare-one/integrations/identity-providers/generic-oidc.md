@@ -4,6 +4,10 @@ description: Generic OIDC in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -32,9 +36,9 @@ You can find these values on your identity provider's **OIDC discovery endpoint*
 
 ## 2\. Add an OIDC provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-5875)
-* [ API ](#tab-panel-5876)
-* [ Terraform (v5) ](#tab-panel-5877)
+* [ Dashboard ](#tab-panel-4717)
+* [ API ](#tab-panel-4718)
+* [ Terraform (v5) ](#tab-panel-4719)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.

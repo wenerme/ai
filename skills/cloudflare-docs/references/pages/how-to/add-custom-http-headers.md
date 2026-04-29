@@ -4,6 +4,10 @@ description: Customize HTTP headers on Cloudflare Pages using a Workers function
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Add custom HTTP headers
@@ -101,8 +105,8 @@ npm install
 
 To operate your Workers function alongside your Pages application, deploy it to the same custom domain as your Pages application. To do this, update the Wrangler file in your project with your account and zone details:
 
-* [  wrangler.jsonc ](#tab-panel-7979)
-* [  wrangler.toml ](#tab-panel-7980)
+* [  wrangler.jsonc ](#tab-panel-6821)
+* [  wrangler.toml ](#tab-panel-6822)
 
 JSONC
 

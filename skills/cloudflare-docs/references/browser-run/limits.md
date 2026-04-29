@@ -4,6 +4,10 @@ description: Learn about the limits associated with Browser Run.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Limits
@@ -100,8 +104,8 @@ When you make too many requests in a short period of time, Browser Run will resp
 
 The example below demonstrates how to handle rate limiting gracefully by reading the `Retry-After` value and retrying the request after that delay.
 
-* [ Quick Actions ](#tab-panel-5579)
-* [ Puppeteer ](#tab-panel-5580)
+* [ Quick Actions ](#tab-panel-4415)
+* [ Puppeteer ](#tab-panel-4416)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Node.js APIs available in Cloudflare Workers
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Node.js compatibility
@@ -19,8 +23,8 @@ Cloudflare Workers provides a subset of Node.js APIs in two forms:
 
 To enable built-in Node.js APIs and add polyfills, add the `nodejs_compat` compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and ensure that your Worker's [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-9029)
-* [  wrangler.toml ](#tab-panel-9030)
+* [  wrangler.jsonc ](#tab-panel-9057)
+* [  wrangler.toml ](#tab-panel-9058)
 
 JSONC
 
@@ -36,7 +40,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27"
+  "compatibility_date": "2026-04-29"
 
 }
 
@@ -51,7 +55,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 ```
@@ -131,8 +135,8 @@ This allows you to import packages that use these Node.js modules, even if certa
 
 If you need to enable only the Node.js `AsyncLocalStorage` API, you can enable the `nodejs_als` compatibility flag:
 
-* [  wrangler.jsonc ](#tab-panel-9031)
-* [  wrangler.toml ](#tab-panel-9032)
+* [  wrangler.jsonc ](#tab-panel-9059)
+* [  wrangler.toml ](#tab-panel-9060)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: Test your dynamic dispatch Worker locally while connecting to deplo
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Local development
@@ -24,8 +28,8 @@ This is helpful when:
 
 In the dynamic dispatch Worker's Wrangler file, configure the [dispatch namespace binding](https://developers.cloudflare.com/workers/wrangler/configuration/#dispatch-namespace-bindings-workers-for-platforms) to connect to the remote namespace by setting [remote = true](https://developers.cloudflare.com/workers/development-testing/#remote-bindings):
 
-* [  wrangler.jsonc ](#tab-panel-5717)
-* [  wrangler.toml ](#tab-panel-5718)
+* [  wrangler.jsonc ](#tab-panel-4553)
+* [  wrangler.toml ](#tab-panel-4554)
 
 JSONC
 

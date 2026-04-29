@@ -4,6 +4,10 @@ description: Learn about Queues architecture including producers, consumers, and
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # How Queues Works
@@ -241,8 +245,8 @@ Explain Code
 
 You then connect that consumer to a queue with `wrangler queues consumer <queue-name> <worker-script-name>` or by defining a `[[queues.consumers]]` configuration in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) manually:
 
-* [  wrangler.jsonc ](#tab-panel-8161)
-* [  wrangler.toml ](#tab-panel-8162)
+* [  wrangler.jsonc ](#tab-panel-7003)
+* [  wrangler.toml ](#tab-panel-7004)
 
 JSONC
 

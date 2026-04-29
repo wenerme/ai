@@ -4,6 +4,10 @@ description: Service tokens in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -18,9 +22,9 @@ This section covers how to create, renew, and revoke a service token.
 
 ## Create a service token
 
-* [ Dashboard ](#tab-panel-5841)
-* [ API ](#tab-panel-5842)
-* [ Terraform (v5) ](#tab-panel-5843)
+* [ Dashboard ](#tab-panel-4683)
+* [ API ](#tab-panel-4684)
+* [ Terraform (v5) ](#tab-panel-4685)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.

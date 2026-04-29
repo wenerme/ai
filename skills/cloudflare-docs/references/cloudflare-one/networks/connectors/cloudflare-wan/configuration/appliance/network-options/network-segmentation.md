@@ -4,6 +4,10 @@ description: Define policies to define if traffic should flow between your LANs 
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Network segmentation
@@ -41,8 +45,8 @@ The following guide assumes you have already created a site and configured your 
 
 ## Create a policy
 
-* [ Dashboard ](#tab-panel-6014)
-* [ API ](#tab-panel-6015)
+* [ Dashboard ](#tab-panel-4856)
+* [ API ](#tab-panel-4857)
 
 Follow these steps to create a new LAN policy to segment your network. Only the fields marked **required** are mandatory.
 
@@ -265,8 +269,8 @@ The new policy will ensure that traffic between the specified LANs flows locally
 
 ## Edit a policy
 
-* [ Dashboard ](#tab-panel-6016)
-* [ API ](#tab-panel-6017)
+* [ Dashboard ](#tab-panel-4858)
+* [ API ](#tab-panel-4859)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.
@@ -424,8 +428,8 @@ Explain Code
 
 ## Delete a policy
 
-* [ Dashboard ](#tab-panel-6012)
-* [ API ](#tab-panel-6013)
+* [ Dashboard ](#tab-panel-4854)
+* [ API ](#tab-panel-4855)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.

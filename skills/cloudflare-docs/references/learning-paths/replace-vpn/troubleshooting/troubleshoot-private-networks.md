@@ -4,6 +4,10 @@ description: Debug private network connectivity issues.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Troubleshoot private networks
@@ -71,8 +75,8 @@ Under **Traffic policies** \> **Traffic settings**, ensure that **Allow Secure W
 
 Verify that you can connect to the application directly from the `cloudflared` host machine:
 
-* [ macOS and Linux ](#tab-panel-7680)
-* [ Windows ](#tab-panel-7681)
+* [ macOS and Linux ](#tab-panel-6522)
+* [ Windows ](#tab-panel-6523)
 
 Open Terminal and run the following command:
 

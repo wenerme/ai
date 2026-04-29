@@ -4,6 +4,10 @@ description: Extract structured JSON data from webpages using AI with the Browse
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -51,8 +55,8 @@ And at least one of:
 
 ### With a Prompt and JSON schema
 
-* [ curl ](#tab-panel-5591)
-* [ TypeScript SDK ](#tab-panel-5592)
+* [ curl ](#tab-panel-4427)
+* [ TypeScript SDK ](#tab-panel-4428)
 
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 

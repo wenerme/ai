@@ -4,6 +4,10 @@ description: Learn how to migrate from Wrangler v1 to v2 using webpack. This gui
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Webpack
@@ -66,8 +70,8 @@ module.exports = {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-9995)
-* [  wrangler.toml ](#tab-panel-9996)
+* [  wrangler.jsonc ](#tab-panel-10003)
+* [  wrangler.toml ](#tab-panel-10004)
 
 JSONC
 
@@ -115,8 +119,8 @@ webpack_config = "webpack.config.js"
 
 It is possible to use different webpack configuration files within different [Wrangler environments](https://developers.cloudflare.com/workers/wrangler/environments/). For example, the `"webpack.development.js"` configuration file is used during `wrangler dev` for development, but other, more production-ready configurations are used when building for the staging or production environments:
 
-* [  wrangler.jsonc ](#tab-panel-9997)
-* [  wrangler.toml ](#tab-panel-9998)
+* [  wrangler.jsonc ](#tab-panel-10005)
+* [  wrangler.toml ](#tab-panel-10006)
 
 JSONC
 

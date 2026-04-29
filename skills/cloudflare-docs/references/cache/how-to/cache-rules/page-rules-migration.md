@@ -4,6 +4,10 @@ description: Migrate caching Page Rules to Cache Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,8 +26,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 1
 
-* [ Dashboard ](#tab-panel-5641)
-* [ visual guide ](#tab-panel-5642)
+* [ Dashboard ](#tab-panel-4477)
+* [ visual guide ](#tab-panel-4478)
 
 1. Enter a rule name, for instance `bypass everything`.
 2. In **When incoming requests match**, select **All incoming requests**.
@@ -33,8 +37,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 2
 
-* [ Dashboard ](#tab-panel-5643)
-* [ visual guide ](#tab-panel-5644)
+* [ Dashboard ](#tab-panel-4479)
+* [ visual guide ](#tab-panel-4480)
 
 1. Enter a rule name, for instance `cache all default cacheable extensions`.
 2. In **When incoming requests match**, select **Custom filter expression**.

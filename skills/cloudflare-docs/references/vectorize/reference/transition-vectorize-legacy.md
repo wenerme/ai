@@ -4,6 +4,10 @@ description: Migrate from legacy Vectorize V1 indexes to the current V2 format.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Transition legacy Vectorize indexes

@@ -4,6 +4,10 @@ description: General Wrangler commands for authentication, telemetry, and shell 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # General commands
@@ -14,9 +18,9 @@ General Wrangler commands for authentication, telemetry, and shell completions.
 
 Open the Cloudflare developer documentation in your default browser.
 
-* [  npm ](#tab-panel-9334)
-* [  pnpm ](#tab-panel-9335)
-* [  yarn ](#tab-panel-9336)
+* [  npm ](#tab-panel-9362)
+* [  pnpm ](#tab-panel-9363)
+* [  yarn ](#tab-panel-9364)
 
 Terminal window
 
@@ -286,9 +290,9 @@ The following global flags work on every command:
 
 🕵️ Retrieve your user information
 
-* [  npm ](#tab-panel-9337)
-* [  pnpm ](#tab-panel-9338)
-* [  yarn ](#tab-panel-9339)
+* [  npm ](#tab-panel-9365)
+* [  pnpm ](#tab-panel-9366)
+* [  yarn ](#tab-panel-9367)
 
 Terminal window
 
@@ -411,10 +415,10 @@ wrangler complete <SHELL>
 
 Generate and add the completion script to your shell configuration file:
 
-* [ Bash ](#tab-panel-9330)
-* [ Zsh ](#tab-panel-9331)
-* [ Fish ](#tab-panel-9332)
-* [ PowerShell ](#tab-panel-9333)
+* [ Bash ](#tab-panel-9358)
+* [ Zsh ](#tab-panel-9359)
+* [ Fish ](#tab-panel-9360)
+* [ PowerShell ](#tab-panel-9361)
 
 Terminal window
 

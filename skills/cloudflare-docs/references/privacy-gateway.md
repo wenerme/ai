@@ -4,6 +4,10 @@ description: Privacy Gateway is a managed Oblivious HTTP (OHTTP) relay service t
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-gateway/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cloudflare Privacy Gateway

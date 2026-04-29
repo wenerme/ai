@@ -4,6 +4,10 @@ description: Use TypeScript with fully typed APIs to build Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # TypeScript
@@ -200,9 +204,9 @@ Most projects will have existing build and development scripts, as well as some 
 
 We recommend you commit your generated types file for use in CI. You can run `wrangler types` before other CI commands, as it should not take more than a few seconds. For example:
 
-* [ npm ](#tab-panel-8877)
-* [ yarn ](#tab-panel-8878)
-* [ pnpm ](#tab-panel-8879)
+* [ npm ](#tab-panel-8905)
+* [ yarn ](#tab-panel-8906)
+* [ pnpm ](#tab-panel-8907)
 
 YAML
 
@@ -245,9 +249,9 @@ YAML
 
 Alternatively, if you commit your generated types file and want to verify it stays up-to-date in CI, you can use the `--check` flag:
 
-* [ npm ](#tab-panel-8880)
-* [ yarn ](#tab-panel-8881)
-* [ pnpm ](#tab-panel-8882)
+* [ npm ](#tab-panel-8908)
+* [ yarn ](#tab-panel-8909)
+* [ pnpm ](#tab-panel-8910)
 
 YAML
 

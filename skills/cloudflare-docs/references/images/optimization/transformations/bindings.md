@@ -4,6 +4,10 @@ description: Bind the Cloudflare Images API to a Worker to transform images with
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Bind to Workers API
@@ -32,8 +36,8 @@ You can define variables in the Wrangler configuration file of your Worker proje
 
 To bind Images to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7455)
-* [  wrangler.toml ](#tab-panel-7456)
+* [  wrangler.jsonc ](#tab-panel-6297)
+* [  wrangler.toml ](#tab-panel-6298)
 
 JSONC
 
@@ -79,8 +83,8 @@ Within your Worker code, you can interact with this binding by using `env.IMAGES
 
 For example, to draw a resized watermark on an image:
 
-* [  JavaScript ](#tab-panel-7457)
-* [  TypeScript ](#tab-panel-7458)
+* [  JavaScript ](#tab-panel-6299)
+* [  TypeScript ](#tab-panel-6300)
 
 JavaScript
 
@@ -167,8 +171,8 @@ Explain Code
 
 For example, to rotate, resize, and blur an image, then output the image as AVIF:
 
-* [  JavaScript ](#tab-panel-7459)
-* [  TypeScript ](#tab-panel-7460)
+* [  JavaScript ](#tab-panel-6301)
+* [  TypeScript ](#tab-panel-6302)
 
 JavaScript
 

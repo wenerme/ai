@@ -4,6 +4,10 @@ description: Configure session identifiers to track authenticated API traffic pe
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Session identifiers
@@ -22,8 +26,8 @@ You must have specific entitlements to configure session identifiers or cookies 
 
 ## To set up session identifiers
 
-* [  New dashboard ](#tab-panel-5427)
-* [ Old dashboard ](#tab-panel-5428)
+* [  New dashboard ](#tab-panel-4261)
+* [ Old dashboard ](#tab-panel-4262)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

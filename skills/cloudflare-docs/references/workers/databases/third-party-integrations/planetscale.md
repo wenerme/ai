@@ -4,6 +4,10 @@ description: Connect Cloudflare Workers to a PlanetScale MySQL-compatible databa
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # PlanetScale
@@ -16,8 +20,8 @@ You can connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.
 
 Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Hyperdrive (recommended) ](#tab-panel-9721)
-* [ PlanetScale serverless driver ](#tab-panel-9722)
+* [ Hyperdrive (recommended) ](#tab-panel-8604)
+* [ PlanetScale serverless driver ](#tab-panel-8605)
 
 To connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
@@ -96,8 +100,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-9717)
-* [  wrangler.toml ](#tab-panel-9718)
+* [  wrangler.jsonc ](#tab-panel-8600)
+* [  wrangler.toml ](#tab-panel-8601)
 
 JSONC
 
@@ -113,7 +117,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "compatibility_flags": [
 
@@ -154,7 +158,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -198,8 +202,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9719)
-* [  wrangler.toml ](#tab-panel-9720)
+* [  wrangler.jsonc ](#tab-panel-8602)
+* [  wrangler.toml ](#tab-panel-8603)
 
 JSONC
 
@@ -217,7 +221,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "hyperdrive": [
 
@@ -246,7 +250,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[hyperdrive]]

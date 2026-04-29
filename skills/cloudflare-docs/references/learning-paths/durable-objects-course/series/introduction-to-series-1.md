@@ -4,12 +4,16 @@ description: Overview of the Durable Objects video series.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Introduction to the series
 
-* [ Watch this episode ](#tab-panel-7543)
-* [ Series overview ](#tab-panel-7544)
+* [ Watch this episode ](#tab-panel-6439)
+* [ Series overview ](#tab-panel-6440)
 
 In this episode, we present an overview of the series, discuss its underlying architecture, and access resources to set up the project locally.
 

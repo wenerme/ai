@@ -4,6 +4,10 @@ description: Set up Cloudflare Queues bindings, producers, and consumers using W
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure Queues
@@ -46,8 +50,8 @@ A producer is a [Cloudflare Worker](https://developers.cloudflare.com/workers/) 
 
 To produce to a queue, set up a binding in your Wrangler file. These options should be used when a Worker wants to send messages to a queue.
 
-* [  wrangler.jsonc ](#tab-panel-8126)
-* [  wrangler.toml ](#tab-panel-8127)
+* [  wrangler.jsonc ](#tab-panel-6968)
+* [  wrangler.toml ](#tab-panel-6969)
 
 JSONC
 
@@ -100,8 +104,8 @@ binding = "MY_QUEUE"
 
 To consume messages from one or more queues, set up a binding in your Wrangler file. These options should be used when a Worker wants to receive messages from a queue.
 
-* [  wrangler.jsonc ](#tab-panel-8128)
-* [  wrangler.toml ](#tab-panel-8129)
+* [  wrangler.jsonc ](#tab-panel-6970)
+* [  wrangler.toml ](#tab-panel-6971)
 
 JSONC
 

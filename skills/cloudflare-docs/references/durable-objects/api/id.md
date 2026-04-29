@@ -4,6 +4,10 @@ description: API reference for DurableObjectId, the 64-digit hex identifier used
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Durable Object ID
@@ -58,8 +62,8 @@ const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 
 `equals` is used to compare equality between two instances of `DurableObjectId`.
 
-* [  JavaScript ](#tab-panel-6828)
-* [  Python ](#tab-panel-6829)
+* [  JavaScript ](#tab-panel-5670)
+* [  Python ](#tab-panel-5671)
 
 JavaScript
 
@@ -107,8 +111,8 @@ Note
 
 Alarms created before 2026-03-15 do not have `name` stored. When such an alarm fires, `ctx.id.name` will be `undefined`, and any new alarm scheduled from that handler will also lack a `name`. To fix this, reschedule the alarm from a `fetch()` or RPC handler where `name` is available.
 
-* [  JavaScript ](#tab-panel-6830)
-* [  Python ](#tab-panel-6831)
+* [  JavaScript ](#tab-panel-5672)
+* [  Python ](#tab-panel-5673)
 
 JavaScript
 

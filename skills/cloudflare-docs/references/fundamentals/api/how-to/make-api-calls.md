@@ -4,6 +4,10 @@ description: Learn how to make API calls using Cloudflare's API with step-by-ste
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Make API calls
@@ -306,9 +310,9 @@ The procedure for setting and referencing environment variables depends on your 
 
 ### Define an environment variable
 
-* [ Linux and macOS ](#tab-panel-7155)
-* [ PowerShell ](#tab-panel-7156)
-* [ Windows Command Prompt ](#tab-panel-7157)
+* [ Linux and macOS ](#tab-panel-5997)
+* [ PowerShell ](#tab-panel-5998)
+* [ Windows Command Prompt ](#tab-panel-5999)
 
 To define a `ZONE_ID` environment variable for the current shell session, run the following command:
 
@@ -375,9 +379,9 @@ Running this command will not affect the current window. You will need to either
 
 ### Reference an environment variable
 
-* [ Linux and macOS ](#tab-panel-7158)
-* [ PowerShell ](#tab-panel-7159)
-* [ Windows Command Prompt ](#tab-panel-7160)
+* [ Linux and macOS ](#tab-panel-6000)
+* [ PowerShell ](#tab-panel-6001)
+* [ Windows Command Prompt ](#tab-panel-6002)
 
 When referencing an environment variable in a command, add a `$` prefix to the variable name (for example, `$ZONE_ID`). Make sure that the full string referencing the variable is either unquoted (if it does not contain spaces) or enclosed in double quotes (`""`).
 

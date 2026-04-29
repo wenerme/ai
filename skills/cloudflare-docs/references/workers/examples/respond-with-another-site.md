@@ -4,6 +4,10 @@ description: Respond to the Worker request with the response from another websit
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,9 +26,9 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8778)
-* [  TypeScript ](#tab-panel-8779)
-* [  Python ](#tab-panel-8780)
+* [  JavaScript ](#tab-panel-8806)
+* [  TypeScript ](#tab-panel-8807)
+* [  Python ](#tab-panel-8808)
 
 JavaScript
 
@@ -63,7 +67,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCAjAFYAzAHYpYqQCYpIgFwsWbYBzhcafAcPHTZCpQFgAUAGF0VCAFNb2ACJQAzjHSuo0G8pIa8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3N-2peHyoSAFkDo9GAOXQEAAgmAwOgAO52XBnS7XW4PdbPZ7nCAgBAfKh2cEkABKNw8VFcdhOAANvhBfrgSAASVbnK43CAJcIU0YAXxCgK2oIhUISJIANI8kUjbgQQK4-AAWQRiAVPEUkI52ODzBCS4WK54gsHgvyRADiAFEKpF5VqSGzzSK2XciArLQ7kMgSAB5KhgOgkY0VEj0uEQVwkcGYADWwe8RxIFLcJBgCHQcToCQdUFQJBhDNuzJ+oxIAEIGAwSIaTZEHii0R9yZSAcCeZDof7GXaHZX0ftDqcSUcIBAYJLnfEwo07AleOhgCTW5sreY2UQLGpmBotDoePwhKJJDI5IoRMUbPZHC53J5vK0qH4AlpSKFwlEWaqgml-Jlsg-ImQwWQilYj2UlTVLUWwNE0vAtG0KQ2JM5irJEwBwDEAD6IxjFkkTKHk8wFKkbJLsuq5BOuehboYu4mCIzAWEAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGAJzCALAFZhwgBwA2BcIBcLFm2Ac4XGnwEjx02YuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1sB1Ly+VCQAsofHYwBy6AgAEEwGB0AB3ey4c5XG53R4bF4vC4QEAIT5UewQkgAJVuniobnspwABj8IH9cCQACRrC7XW4QRIRSljAC+oSB2zBkOhiVJABonsjkXcCCA3P4JIIpILnqKSMd7HAFggpSLFS9QeCIf4ogBxACilSi8q1JHZ5tF7PuRAVlodyGQJAA8lQwHQSMbKiQGfCIG4SBDMABrYM+Y4kSnuEgwBDoeJ0RIOqCoEiwxl3Fm-MYkACEDAYJENJqij1R6M+FKpgJBvKhMP9TLtDsrGIORzOpOOEAgMClzoS4Sa9kSvHQwFJra2Vos7KIlnUzE02l0PH4QjEkhk8iUwhKtgcTlcHi8PjaVH8gW0pDCEWirNVwXSASyOQfUTI4LIxWsR-KKoajqbZGmaXhWnaVJbCmCw1iiYA4FiAB9UZxmyKIVHyBZCjSdkl2XVdgnXfQtyMXdTGEZhLCAA)
 
 TypeScript
 

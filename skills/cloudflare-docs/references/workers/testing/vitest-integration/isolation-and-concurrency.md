@@ -4,6 +4,10 @@ description: Review how the Workers Vitest integration runs your tests, how it i
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Isolation and concurrency
@@ -43,8 +47,8 @@ However, if you use Node.js globals that are not supported by the runtime, your 
 
 The Wrangler configuration file does not specify either `nodejs_compat` or `nodejs_compat_v2`:
 
-* [  wrangler.jsonc ](#tab-panel-9185)
-* [  wrangler.toml ](#tab-panel-9186)
+* [  wrangler.jsonc ](#tab-panel-9213)
+* [  wrangler.toml ](#tab-panel-9214)
 
 JSONC
 
@@ -56,7 +60,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-27"
+  "compatibility_date": "2026-04-29"
 
   # no nodejs_compat flags here
 
@@ -75,7 +79,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-27"
+compatibility_date = "2026-04-29"
 
 
 ```

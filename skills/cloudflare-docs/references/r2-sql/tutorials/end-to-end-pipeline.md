@@ -4,6 +4,10 @@ description: This tutorial demonstrates how to build a complete data pipeline us
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build an end to end data pipeline
@@ -76,8 +80,8 @@ npx wrangler login
 
 ## 2\. Create an R2 bucket and enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-8241)
-* [ Dashboard ](#tab-panel-8242)
+* [ Wrangler CLI ](#tab-panel-7083)
+* [ Dashboard ](#tab-panel-7084)
 
 Create an R2 bucket:
 
@@ -98,8 +102,8 @@ npx wrangler r2 bucket create fraud-pipeline
 
 Enable the catalog on your R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-8243)
-* [ Dashboard ](#tab-panel-8244)
+* [ Wrangler CLI ](#tab-panel-7085)
+* [ Dashboard ](#tab-panel-7086)
 
 Terminal window
 
@@ -135,8 +139,8 @@ export WAREHOUSE= #Paste your warehouse here
 
 R2 Data Catalog can automatically compact tables for you. In production event streaming use cases, it is common to end up with many small files, so it is recommended to enable compaction. Since the tutorial only demonstrates a sample use case, this step is optional.
 
-* [ Wrangler CLI ](#tab-panel-8245)
-* [ Dashboard ](#tab-panel-8246)
+* [ Wrangler CLI ](#tab-panel-7087)
+* [ Dashboard ](#tab-panel-7088)
 
 Terminal window
 
@@ -157,8 +161,8 @@ npx wrangler r2 bucket catalog compaction enable fraud-pipeline --token $WRANGLE
 
 ### 3.1\. Create the Pipeline stream
 
-* [ Wrangler CLI ](#tab-panel-8247)
-* [ Dashboard ](#tab-panel-8248)
+* [ Wrangler CLI ](#tab-panel-7089)
+* [ Dashboard ](#tab-panel-7090)
 
 First, create a schema file called `raw_transactions_schema.json` with the following `json` schema:
 

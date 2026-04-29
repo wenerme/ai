@@ -4,6 +4,10 @@ description: DHCP relay in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # DHCP relay
@@ -35,8 +39,8 @@ DHCP relay will not work if your DHCP server is behind a [Cloudflare Tunnel](htt
 
 To configure DHCP relay:
 
-* [ Dashboard ](#tab-panel-6006)
-* [ API ](#tab-panel-6007)
+* [ Dashboard ](#tab-panel-4848)
+* [ API ](#tab-panel-4849)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.

@@ -4,6 +4,10 @@ description: Use Workers VPC to fetch data from a private REST API behind Cloudf
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Access a private API or website
@@ -74,8 +78,8 @@ Note the service ID returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9545)
-* [  wrangler.toml ](#tab-panel-9546)
+* [  wrangler.jsonc ](#tab-panel-8428)
+* [  wrangler.toml ](#tab-panel-8429)
 
 JSONC
 
@@ -91,7 +95,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "vpc_services": [
 
@@ -126,7 +130,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[vpc_services]]

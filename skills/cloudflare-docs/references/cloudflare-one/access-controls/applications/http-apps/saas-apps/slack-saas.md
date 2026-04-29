@@ -4,6 +4,10 @@ description: Integrate Slack with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -43,8 +47,8 @@ This guide covers how to configure [Slack ↗](https://slack.com/help/articles/2
 
 ## 3\. Add a SAML SSO provider to Slack
 
-* [ business+ plan ](#tab-panel-5781)
-* [ enterprise grid plan ](#tab-panel-5782)
+* [ business+ plan ](#tab-panel-4623)
+* [ enterprise grid plan ](#tab-panel-4624)
 
 1. In Slack, go to **Settings & administrations** \> **Workspace settings** \> **Authentication**.
 2. Select **Configure**.

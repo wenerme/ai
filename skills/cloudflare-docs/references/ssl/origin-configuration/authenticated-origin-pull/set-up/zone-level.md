@@ -4,6 +4,10 @@ description: Set up zone-level Authenticated Origin Pulls with a custom certific
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Zone-level
@@ -79,8 +83,8 @@ basicConstraints=CA:FALSE
 
 ## 1\. Upload your certificate to Cloudflare
 
-* [ Dashboard ](#tab-panel-9109)
-* [ API ](#tab-panel-9110)
+* [ Dashboard ](#tab-panel-7971)
+* [ API ](#tab-panel-7972)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -135,8 +139,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 4\. Enable zone-level Authenticated Origin Pulls
 
-* [ Dashboard ](#tab-panel-9111)
-* [ API ](#tab-panel-9112)
+* [ Dashboard ](#tab-panel-7973)
+* [ API ](#tab-panel-7974)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)

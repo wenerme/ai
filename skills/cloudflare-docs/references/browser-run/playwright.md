@@ -4,6 +4,10 @@ description: Learn how to use Playwright with Cloudflare Workers for browser aut
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Playwright
@@ -50,8 +54,8 @@ Note
 
 To use the latest version of `@cloudflare/playwright`, your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later. This change is necessary because the library's functionality requires the native `node.fs` API.
 
-* [  wrangler.jsonc ](#tab-panel-5581)
-* [  wrangler.toml ](#tab-panel-5582)
+* [  wrangler.jsonc ](#tab-panel-4417)
+* [  wrangler.toml ](#tab-panel-4418)
 
 JSONC
 
@@ -71,7 +75,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "upload_source_maps": true,
 
@@ -104,7 +108,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 upload_source_maps = true
 
@@ -379,8 +383,8 @@ npx wrangler kv namespace create KV
 
 Then, add the KV namespace to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-5583)
-* [  wrangler.toml ](#tab-panel-5584)
+* [  wrangler.jsonc ](#tab-panel-4419)
+* [  wrangler.toml ](#tab-panel-4420)
 
 JSONC
 
@@ -396,7 +400,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "browser": {
 
@@ -435,7 +439,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [browser]

@@ -4,6 +4,10 @@ description: Explore how the Cloudflare One Client routes DNS and IP traffic to 
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -84,9 +88,9 @@ R -- No --> G[Cloudflare Gateway]
 
 You can verify that the operating system is using the Cloudflare One Client's local DNS proxy:
 
-* [ macOS ](#tab-panel-6092)
-* [ Windows ](#tab-panel-6093)
-* [ Linux ](#tab-panel-6094)
+* [ macOS ](#tab-panel-4934)
+* [ Windows ](#tab-panel-4935)
+* [ Linux ](#tab-panel-4936)
 
 On macOS, open a terminal window and run `scutil --dns`. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
@@ -239,9 +243,9 @@ Virtual interfaces allow the operating system to logically subdivide a physical 
 
 To view a list of all network interfaces on the operating system:
 
-* [ Windows ](#tab-panel-6098)
-* [ macOS ](#tab-panel-6099)
-* [ Linux ](#tab-panel-6100)
+* [ Windows ](#tab-panel-4940)
+* [ macOS ](#tab-panel-4941)
+* [ Linux ](#tab-panel-4942)
 
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
 
@@ -363,9 +367,9 @@ The Cloudflare One Client edits the system routing table to control what IP traf
 
 You can verify that the routing table matches your Split Tunnel rules:
 
-* [ macOS ](#tab-panel-6095)
-* [ Windows ](#tab-panel-6096)
-* [ Linux ](#tab-panel-6097)
+* [ macOS ](#tab-panel-4937)
+* [ Windows ](#tab-panel-4938)
+* [ Linux ](#tab-panel-4939)
 
 To view the entire routing table on macOS, run `netstat -r`.
 

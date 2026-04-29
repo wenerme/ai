@@ -4,6 +4,10 @@ description: KV bindings connect a Cloudflare Worker to a KV namespace for readi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -30,8 +34,8 @@ To execute your Worker, define the binding.
 
 In the following example, the binding is called `TODO`. In the `kv_namespaces` portion of your Wrangler configuration file, add:
 
-* [  wrangler.jsonc ](#tab-panel-7483)
-* [  wrangler.toml ](#tab-panel-7484)
+* [  wrangler.jsonc ](#tab-panel-6325)
+* [  wrangler.toml ](#tab-panel-6326)
 
 JSONC
 
@@ -118,8 +122,8 @@ When you use Wrangler to develop locally with the `wrangler dev` command, Wrangl
 
 To have `wrangler dev` connect to your Workers KV namespace running on Cloudflare's global network, set `"remote" : true` in the KV binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) for more information.
 
-* [  wrangler.jsonc ](#tab-panel-7485)
-* [  wrangler.toml ](#tab-panel-7486)
+* [  wrangler.jsonc ](#tab-panel-6327)
+* [  wrangler.toml ](#tab-panel-6328)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: Understand the different settings associated with your build.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configuration
@@ -126,8 +130,8 @@ It is recommended to consistently use the same API token across all uploads and 
 
 You can provide custom environment variables to your build.
 
-* [ Dashboard ](#tab-panel-9620)
-* [ Wrangler ](#tab-panel-9621)
+* [ Dashboard ](#tab-panel-8503)
+* [ Wrangler ](#tab-panel-8504)
 
 To add environment variables via the dashboard:
 
@@ -138,8 +142,8 @@ To add environment variables via the dashboard:
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-9618)
-* [  wrangler.toml ](#tab-panel-9619)
+* [  wrangler.jsonc ](#tab-panel-8501)
+* [  wrangler.toml ](#tab-panel-8502)
 
 JSONC
 

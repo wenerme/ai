@@ -4,6 +4,10 @@ description: Adding source maps and generating stack traces for Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Source maps and stack traces
@@ -22,8 +26,8 @@ Support for uploading source maps for Pages is available now in open beta. Minim
 
 To enable source maps, provide the `--upload-source-maps` flag to [wrangler pages deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or add the following to your Pages application's [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) if you are using the Pages build environment:
 
-* [  wrangler.jsonc ](#tab-panel-7960)
-* [  wrangler.toml ](#tab-panel-7961)
+* [  wrangler.jsonc ](#tab-panel-6802)
+* [  wrangler.toml ](#tab-panel-6803)
 
 JSONC
 

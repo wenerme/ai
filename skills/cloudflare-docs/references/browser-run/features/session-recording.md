@@ -4,6 +4,10 @@ description: Record and replay Browser Run sessions to visually debug browser au
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Session recording
@@ -16,8 +20,8 @@ When browser automation fails or behaves unexpectedly, it can be difficult to un
 
 Pass `recording: true` to `puppeteer.launch()` or `playwright.launch()`:
 
-* [ Puppeteer ](#tab-panel-5563)
-* [ Playwright ](#tab-panel-5564)
+* [ Puppeteer ](#tab-panel-4399)
+* [ Playwright ](#tab-panel-4400)
 
 TypeScript
 

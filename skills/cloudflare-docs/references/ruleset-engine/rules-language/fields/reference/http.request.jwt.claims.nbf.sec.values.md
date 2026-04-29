@@ -4,6 +4,10 @@ description: The `nbf` (not before) claim identifies the time (number of seconds
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 #  http.request.jwt.claims.nbf.sec.values 

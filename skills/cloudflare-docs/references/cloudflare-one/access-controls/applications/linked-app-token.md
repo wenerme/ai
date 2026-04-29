@@ -4,6 +4,10 @@ description: Forward Access JWTs between linked applications.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Linked App Token
@@ -33,8 +37,8 @@ accTitle: Self-hosted to self-hosted linked app token flow
 
 Create a policy on Application B (the downstream application that will receive forwarded requests):
 
-* [ Dashboard ](#tab-panel-5783)
-* [ API ](#tab-panel-5784)
+* [ Dashboard ](#tab-panel-4625)
+* [ API ](#tab-panel-4626)
 
 1. In the [Cloudflare dashboard ↗](https://one.dash.cloudflare.com), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select Application B and select **Edit**.
@@ -134,8 +138,8 @@ accTitle: SaaS to self-hosted linked app token flow
 
 Create a policy on the self-hosted application (Application B):
 
-* [ Dashboard ](#tab-panel-5785)
-* [ API ](#tab-panel-5786)
+* [ Dashboard ](#tab-panel-4627)
+* [ API ](#tab-panel-4628)
 
 1. In the [Cloudflare dashboard ↗](https://one.dash.cloudflare.com), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the self-hosted app (Application B) and select **Edit**.

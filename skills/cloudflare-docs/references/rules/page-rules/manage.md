@@ -4,6 +4,10 @@ description: Create, edit, and manage Page Rules in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Manage Page Rules
@@ -18,8 +22,8 @@ For more flexibility and customization, consider using [Snippets](https://develo
 
 ## Create a page rule
 
-* [ Dashboard ](#tab-panel-8517)
-* [ API ](#tab-panel-8518)
+* [ Dashboard ](#tab-panel-7359)
+* [ API ](#tab-panel-7360)
 
 To create a page rule in the dashboard:
 
@@ -45,8 +49,8 @@ Notes
 
 ## Edit a page rule
 
-* [ Dashboard ](#tab-panel-8513)
-* [ API ](#tab-panel-8514)
+* [ Dashboard ](#tab-panel-7355)
+* [ API ](#tab-panel-7356)
 
 To edit a page rule in the dashboard:
 
@@ -62,8 +66,8 @@ To entirely replace the configuration of a page rule, send a [PUT request](https
 
 ## Delete a page rule
 
-* [ Dashboard ](#tab-panel-8515)
-* [ API ](#tab-panel-8516)
+* [ Dashboard ](#tab-panel-7357)
+* [ API ](#tab-panel-7358)
 
 To delete a page rule in the dashboard:
 

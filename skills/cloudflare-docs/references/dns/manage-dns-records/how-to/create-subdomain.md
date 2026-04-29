@@ -4,6 +4,10 @@ description: Add DNS records for subdomains.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create subdomain records
@@ -22,8 +26,8 @@ Then, you would create a corresponding [IP address resolution record](https://de
 | ---- | ---- | ------------ | ------------ |
 | A    | blog | 192.0.2.1    | Proxied      |
 
-* [ Dashboard ](#tab-panel-6739)
-* [ API ](#tab-panel-6740)
+* [ Dashboard ](#tab-panel-5581)
+* [ API ](#tab-panel-5582)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

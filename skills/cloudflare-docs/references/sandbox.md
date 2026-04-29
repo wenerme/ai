@@ -4,6 +4,10 @@ description: Build secure, isolated code execution environments powered by Cloud
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Sandbox SDK
@@ -18,12 +22,12 @@ Sandboxes are ideal for building AI agents that need to execute code, interactiv
 
 With Sandbox, you can execute Python scripts, run Node.js applications, analyze data, compile code, and perform complex computations — all with a simple TypeScript API and no infrastructure to manage.
 
-* [ Execute Commands ](#tab-panel-8589)
-* [ Code interpreter ](#tab-panel-8590)
-* [ File Operations ](#tab-panel-8591)
-* [ File watching ](#tab-panel-8592)
-* [ Terminal Access ](#tab-panel-8593)
-* [ WebSocket connections ](#tab-panel-8594)
+* [ Execute Commands ](#tab-panel-7431)
+* [ Code interpreter ](#tab-panel-7432)
+* [ File Operations ](#tab-panel-7433)
+* [ File watching ](#tab-panel-7434)
+* [ Terminal Access ](#tab-panel-7435)
+* [ WebSocket connections ](#tab-panel-7436)
 
 TypeScript
 

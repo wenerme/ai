@@ -4,6 +4,10 @@ description: Protect against timing attacks by safely comparing values using `ti
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -34,9 +38,9 @@ Do not return early when the input and secret have different lengths. An early r
 
 In order to compare two strings, you must use the [TextEncoder](https://developers.cloudflare.com/workers/runtime-apis/encoding/#textencoder) API.
 
-* [  TypeScript ](#tab-panel-9903)
-* [  Python ](#tab-panel-9904)
-* [  Hono ](#tab-panel-9905)
+* [  TypeScript ](#tab-panel-8788)
+* [  Python ](#tab-panel-8789)
+* [  Hono ](#tab-panel-8790)
 
 TypeScript
 

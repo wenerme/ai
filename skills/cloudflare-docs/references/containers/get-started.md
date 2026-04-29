@@ -4,6 +4,10 @@ description: Deploy your first Container on Cloudflare by building an image, con
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Getting started
@@ -134,8 +138,8 @@ See the [documentation for Durable Object container methods](https://developers.
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
 
-* [  wrangler.jsonc ](#tab-panel-6486)
-* [  wrangler.toml ](#tab-panel-6487)
+* [  wrangler.jsonc ](#tab-panel-5328)
+* [  wrangler.toml ](#tab-panel-5329)
 
 JSONC
 

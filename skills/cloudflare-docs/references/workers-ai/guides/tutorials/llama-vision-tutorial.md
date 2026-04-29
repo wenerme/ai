@@ -4,6 +4,10 @@ description: Learn how to use the Llama 3.2 11B Vision Instruct model on Cloudfl
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -139,8 +143,8 @@ Explain Code
 
 1. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add the following configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9529)
-* [  wrangler.toml ](#tab-panel-9530)
+* [  wrangler.jsonc ](#tab-panel-8412)
+* [  wrangler.toml ](#tab-panel-8413)
 
 JSONC
 

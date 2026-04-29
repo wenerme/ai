@@ -4,6 +4,10 @@ description: Block other websites from linking to your content. This is useful f
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,10 +26,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9873)
-* [  TypeScript ](#tab-panel-9874)
-* [  Python ](#tab-panel-9875)
-* [  Hono ](#tab-panel-9876)
+* [  JavaScript ](#tab-panel-8758)
+* [  TypeScript ](#tab-panel-8759)
+* [  Python ](#tab-panel-8760)
+* [  Hono ](#tab-panel-8761)
 
 JavaScript
 

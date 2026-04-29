@@ -4,6 +4,10 @@ description: Import and export DNS records using zone files.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Import and export records
@@ -25,8 +29,8 @@ If you are using certain record types — for example, `CNAME`, `DNAME`, `MX`, `
 
 ### Import zone file to Cloudflare
 
-* [ Dashboard ](#tab-panel-6743)
-* [ API ](#tab-panel-6744)
+* [ Dashboard ](#tab-panel-5585)
+* [ API ](#tab-panel-5586)
 
 To import a zone file using the dashboard:
 
@@ -64,8 +68,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/import" \
 
 You can also bulk export records from Cloudflare.
 
-* [ Dashboard ](#tab-panel-6745)
-* [ API ](#tab-panel-6746)
+* [ Dashboard ](#tab-panel-5587)
+* [ API ](#tab-panel-5588)
 
 To export records using the dashboard:
 

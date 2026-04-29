@@ -4,6 +4,10 @@ description: Prevent other sites from linking to your hosted images.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Hotlink Protection
@@ -22,9 +26,9 @@ Hotlink protection has no impact on crawling, but it will prevent the images fro
 
 ## Enable Hotlink Protection
 
-* [  New dashboard ](#tab-panel-9472)
-* [ Old dashboard ](#tab-panel-9473)
-* [ API ](#tab-panel-9474)
+* [  New dashboard ](#tab-panel-8355)
+* [ Old dashboard ](#tab-panel-8356)
+* [ API ](#tab-panel-8357)
 
 To enable **Hotlink Protection** in the dashboard:
 

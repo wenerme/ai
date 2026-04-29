@@ -4,6 +4,10 @@ description: Publish to a Queue directly from your Worker.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Publish to a Queue via Workers
@@ -21,8 +25,8 @@ The following example shows you how to publish messages to a Queue from a Worker
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-8149)
-* [  wrangler.toml ](#tab-panel-8150)
+* [  wrangler.jsonc ](#tab-panel-6991)
+* [  wrangler.toml ](#tab-panel-6992)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: Use AI Search for retrieval while generating responses with an exte
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -20,8 +24,8 @@ Note
 
 AI Search supports [bringing your own models natively](https://developers.cloudflare.com/ai-search/configuration/models/). You can attach provider keys through AI Gateway and select third-party models directly in your AI Search settings. The example below still works, but the recommended approach is to configure your external model through AI Gateway.
 
-* [  JavaScript ](#tab-panel-5364)
-* [  TypeScript ](#tab-panel-5365)
+* [  JavaScript ](#tab-panel-4198)
+* [  TypeScript ](#tab-panel-4199)
 
 JavaScript
 

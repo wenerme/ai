@@ -4,6 +4,10 @@ description: Map out and understand your API attack surface with API Discovery.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # API Discovery
@@ -83,8 +87,8 @@ Your API endpoints are discovered with both session identifier-based discovery a
 
 To access machine learning-based discovery:
 
-* [  New dashboard ](#tab-panel-5429)
-* [ Old dashboard ](#tab-panel-5430)
+* [  New dashboard ](#tab-panel-4263)
+* [ Old dashboard ](#tab-panel-4264)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

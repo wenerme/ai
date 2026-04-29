@@ -4,6 +4,10 @@ description: Enable your Worker to be executed on a schedule.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cron Triggers
@@ -26,9 +30,9 @@ Cron Triggers execute on UTC time.
 
 To respond to a Cron Trigger, you must add a ["scheduled" handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to your Worker.
 
-* [  JavaScript ](#tab-panel-9636)
-* [  TypeScript ](#tab-panel-9637)
-* [  Python ](#tab-panel-9638)
+* [  JavaScript ](#tab-panel-8519)
+* [  TypeScript ](#tab-panel-8520)
+* [  Python ](#tab-panel-8521)
 
 JavaScript
 
@@ -111,8 +115,8 @@ If a Worker is managed with Wrangler, Cron Triggers should be exclusively manage
 
 Refer to the example below for a Cron Triggers configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9641)
-* [  wrangler.toml ](#tab-panel-9642)
+* [  wrangler.jsonc ](#tab-panel-8524)
+* [  wrangler.toml ](#tab-panel-8525)
 
 JSONC
 
@@ -162,8 +166,8 @@ crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `triggers` array under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-9643)
-* [  wrangler.toml ](#tab-panel-9644)
+* [  wrangler.jsonc ](#tab-panel-8526)
+* [  wrangler.toml ](#tab-panel-8527)
 
 JSONC
 
@@ -325,8 +329,8 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 * If the `crons` property is an empty array then all the Cron Triggers are removed.
 * If the `triggers` or `crons` property are `undefined` then the currently deploy Cron Triggers are left in-place.
 
-* [  wrangler.jsonc ](#tab-panel-9639)
-* [  wrangler.toml ](#tab-panel-9640)
+* [  wrangler.jsonc ](#tab-panel-8522)
+* [  wrangler.toml ](#tab-panel-8523)
 
 JSONC
 

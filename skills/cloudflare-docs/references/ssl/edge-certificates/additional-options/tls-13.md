@@ -4,6 +4,10 @@ description: Enable TLS 1.3 for improved performance and security.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -30,8 +34,8 @@ By turning on the TLS 1.3 feature, traffic to and from your website will be serv
 
 TLS 1.3 can be activated in the Cloudflare dashboard or through the API:
 
-* [ Dashboard ](#tab-panel-9077)
-* [ API ](#tab-panel-9078)
+* [ Dashboard ](#tab-panel-7919)
+* [ API ](#tab-panel-7920)
 
 To enable TLS 1.3 in the dashboard:
 

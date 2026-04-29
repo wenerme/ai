@@ -1188,7 +1188,7 @@ their corresponding top-level category object in your `settings.json` file.
           },
           "stateTransitions": {
             "terminal": "terminal",
-            "transient": "terminal",
+            "transient": "sticky_retry",
             "not_found": "terminal",
             "unknown": "terminal"
           }
@@ -1204,7 +1204,7 @@ their corresponding top-level category object in your `settings.json` file.
           },
           "stateTransitions": {
             "terminal": "terminal",
-            "transient": "terminal",
+            "transient": "sticky_retry",
             "not_found": "terminal",
             "unknown": "terminal"
           }
@@ -1221,7 +1221,7 @@ their corresponding top-level category object in your `settings.json` file.
           },
           "stateTransitions": {
             "terminal": "terminal",
-            "transient": "terminal",
+            "transient": "sticky_retry",
             "not_found": "terminal",
             "unknown": "terminal"
           }
@@ -1237,7 +1237,7 @@ their corresponding top-level category object in your `settings.json` file.
           },
           "stateTransitions": {
             "terminal": "terminal",
-            "transient": "terminal",
+            "transient": "sticky_retry",
             "not_found": "terminal",
             "unknown": "terminal"
           }
@@ -1254,7 +1254,7 @@ their corresponding top-level category object in your `settings.json` file.
           },
           "stateTransitions": {
             "terminal": "terminal",
-            "transient": "terminal",
+            "transient": "sticky_retry",
             "not_found": "terminal",
             "unknown": "terminal"
           }
@@ -1269,7 +1269,7 @@ their corresponding top-level category object in your `settings.json` file.
           },
           "stateTransitions": {
             "terminal": "terminal",
-            "transient": "terminal",
+            "transient": "sticky_retry",
             "not_found": "terminal",
             "unknown": "terminal"
           }
@@ -1285,7 +1285,7 @@ their corresponding top-level category object in your `settings.json` file.
           },
           "stateTransitions": {
             "terminal": "terminal",
-            "transient": "terminal",
+            "transient": "sticky_retry",
             "not_found": "terminal",
             "unknown": "terminal"
           }

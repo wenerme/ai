@@ -4,6 +4,10 @@ description: Mount R2 buckets as local filesystem paths to persist data across s
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Data persistence with R2
@@ -112,8 +116,8 @@ Replace `my-data-bucket` with your R2 bucket name. Create the bucket first in th
 
 Replace `src/index.ts` with code that mounts R2 and processes data:
 
-* [  JavaScript ](#tab-panel-9019)
-* [  TypeScript ](#tab-panel-9020)
+* [  JavaScript ](#tab-panel-7861)
+* [  TypeScript ](#tab-panel-7862)
 
 JavaScript
 

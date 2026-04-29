@@ -4,6 +4,10 @@ description: Connect Cloudflare Workers to a Supabase PostgreSQL database using 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Supabase
@@ -16,8 +20,8 @@ The Supabase client (`@supabase/supabase-js`) provides access to Supabase's vari
 
 If you want to connect directly to the Supabase Postgres database, connect using [Hyperdrive](https://developers.cloudflare.com/hyperdrive). Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Supabase client ](#tab-panel-9729)
-* [ Hyperdrive ](#tab-panel-9730)
+* [ Supabase client ](#tab-panel-8612)
+* [ Hyperdrive ](#tab-panel-8613)
 
 ### Supabase client setup
 
@@ -115,8 +119,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-9725)
-* [ Wrangler CLI ](#tab-panel-9726)
+* [ Dashboard ](#tab-panel-8608)
+* [ Wrangler CLI ](#tab-panel-8609)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -134,8 +138,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-9723)  
-   * [  wrangler.toml ](#tab-panel-9724)  
+   * [  wrangler.jsonc ](#tab-panel-8606)  
+   * [  wrangler.toml ](#tab-panel-8607)  
 JSONC  
 ```  
 {  
@@ -143,7 +147,7 @@ JSONC
   "name": "hyperdrive-example",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-24",  
+  "compatibility_date": "2026-04-29",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -163,7 +167,7 @@ TOML
 name = "hyperdrive-example"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-24"  
+compatibility_date = "2026-04-29"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[hyperdrive]]  
 binding = "HYPERDRIVE"  
@@ -223,8 +227,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9727)
-* [  wrangler.toml ](#tab-panel-9728)
+* [  wrangler.jsonc ](#tab-panel-8610)
+* [  wrangler.toml ](#tab-panel-8611)
 
 JSONC
 
@@ -242,7 +246,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "hyperdrive": [
 
@@ -271,7 +275,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [[hyperdrive]]

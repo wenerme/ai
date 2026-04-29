@@ -4,6 +4,10 @@ description: Send data to streams via Worker bindings or HTTP endpoints
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Writing to streams
@@ -18,8 +22,8 @@ Worker bindings provide a secure way to send data to streams from [Workers](http
 
 Add a pipeline binding to your Wrangler file that points to your stream:
 
-* [  wrangler.jsonc ](#tab-panel-8029)
-* [  wrangler.toml ](#tab-panel-8030)
+* [  wrangler.jsonc ](#tab-panel-6871)
+* [  wrangler.toml ](#tab-panel-6872)
 
 JSONC
 
@@ -65,8 +69,8 @@ The pipeline binding exposes a method for sending data to your stream:
 
 Sends an array of JSON-serializable records to the stream. Returns a Promise that resolves when records are confirmed as ingested.
 
-* [  JavaScript ](#tab-panel-8031)
-* [  TypeScript ](#tab-panel-8032)
+* [  JavaScript ](#tab-panel-6873)
+* [  TypeScript ](#tab-panel-6874)
 
 JavaScript
 

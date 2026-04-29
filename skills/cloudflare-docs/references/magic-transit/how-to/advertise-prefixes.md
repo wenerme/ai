@@ -4,6 +4,10 @@ description: Advertise and withdraw IP prefixes with Magic Transit.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Advertise prefixes
@@ -87,8 +91,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefi
 
 ### Advertise or withdraw a BGP prefix
 
-* [ Dashboard ](#tab-panel-7896)
-* [ API ](#tab-panel-7897)
+* [ Dashboard ](#tab-panel-6738)
+* [ API ](#tab-panel-6739)
 
 Note
 

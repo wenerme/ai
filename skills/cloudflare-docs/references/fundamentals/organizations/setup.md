@@ -4,6 +4,10 @@ description: Create a Cloudflare Organization, assign accounts, and invite membe
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Set up
@@ -14,9 +18,12 @@ This guide covers how to create an organization, assign accounts, and invite mem
 
 Before you create an organization:
 
-* You must have an Enterprise plan.
+* Your account must have an Enterprise plan.
 * You must have [two-factor authentication (2FA)](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/) or [single sign-on (SSO)](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/) enabled.
 * You must be a Super Administrator on the accounts you want to assign.
+* Your accounts must meet the [eligibility requirements](https://developers.cloudflare.com/fundamentals/organizations/limitations) around the number of zones
+* You may only create a single organization. You, or another member of your company, must not have already created an organization.
+* Your accounts must not be part of a [tenant](https://developers.cloudflare.com/tenant).
 
 Note
 
@@ -93,6 +100,19 @@ The data includes traffic for proxied hostnames and may be based on a sample. Th
 ## Terraform
 
 You can manage Organizations using the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/organization).
+
+## Troubleshooting
+
+You may encounter the following errors during the setup flow. Please see below for more information on how to resolve these.
+
+| Error                                                                                                                                                | Description                                                                                                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Organization management is only available on the Enterprise plan at this time.                                                                       | You are not a member of any Enterprise accounts.                                                                                                                                                                         |
+| You need a super admin role on an enterprise account to create an Organization.                                                                      | You are not a Super Administrator of an Enterprise account.                                                                                                                                                              |
+| One or more of your enterprise accounts is already part of an Organization.                                                                          | You may not create another organization because your accounts are already in an organization.                                                                                                                            |
+| You have reached the maximum number of organizations.                                                                                                | You may not create another organization because you already have one.                                                                                                                                                    |
+| An Organization has already been created for accounts associated with your company. Please contact your company administrator.                       | We limit every company to one Organization for all business units. Please work with other Cloudflare administrators at your company who may have set up an Organization already to be invited to join that Organization. |
+| You are not eligible to create an Organization because we think there's a problem. Please contact Cloudflare support and we will help you create it. | This is a rare error which may indicate an issue with the internal metadata for one or more of your accounts. Before you can set up an Organization, Cloudflare needs to investigate the internal data.                  |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/organizations/","name":"Organizations"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/organizations/setup/","name":"Set up"}}]}

@@ -4,6 +4,10 @@ description: Running a container on a schedule using Cron Triggers
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Cron Container
@@ -18,8 +22,8 @@ For a full example, see the [Cron Container Template ↗](https://github.com/mik
 
 Use a cron expression in your Wrangler config to specify the schedule:
 
-* [  wrangler.jsonc ](#tab-panel-6478)
-* [  wrangler.toml ](#tab-panel-6479)
+* [  wrangler.jsonc ](#tab-panel-5320)
+* [  wrangler.toml ](#tab-panel-5321)
 
 JSONC
 

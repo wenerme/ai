@@ -4,6 +4,10 @@ description: Deploy and manage WAF managed rulesets at the account level.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Managed rulesets
@@ -40,8 +44,8 @@ This configuration gives you additional protection by enabling PL3 rules, but wi
 
 The second rule logs any matches for PL4 rules, the most strict set of rules in the ruleset, so that it does not affect live traffic. You could use this configuration to understand which traffic would be affected by PL4 rules.
 
-* [ Dashboard ](#tab-panel-9355)
-* [ API ](#tab-panel-9356)
+* [ Dashboard ](#tab-panel-8238)
+* [ API ](#tab-panel-8239)
 
 1. Deploy the Cloudflare OWASP Core Ruleset by following the [dashboard instructions](https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-dashboard/#deploy-a-managed-ruleset), customizing the ruleset behavior using these settings:  
    * **OWASP Anomaly Score Threshold**: _Medium - 40 and higher_  

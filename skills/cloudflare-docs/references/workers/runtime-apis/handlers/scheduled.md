@@ -4,6 +4,10 @@ description: Run Workers on a recurring schedule using the scheduled() handler a
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Scheduled Handler
@@ -37,9 +41,9 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*" # Python W
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-9022)
-* [  TypeScript ](#tab-panel-9023)
-* [  Python ](#tab-panel-9024)
+* [  JavaScript ](#tab-panel-9050)
+* [  TypeScript ](#tab-panel-9051)
+* [  Python ](#tab-panel-9052)
 
 JavaScript
 
@@ -120,8 +124,8 @@ class Default(WorkerEntrypoint):
 
 When you configure multiple [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for a single Worker, each trigger invokes the same `scheduled()` handler. Use `controller.cron` to distinguish which schedule fired and run different logic for each.
 
-* [  wrangler.jsonc ](#tab-panel-9027)
-* [  wrangler.toml ](#tab-panel-9028)
+* [  wrangler.jsonc ](#tab-panel-9055)
+* [  wrangler.toml ](#tab-panel-9056)
 
 JSONC
 
@@ -151,8 +155,8 @@ crons = [ "*/5 * * * *", "0 0 * * *" ]
 
 ```
 
-* [  JavaScript ](#tab-panel-9025)
-* [  TypeScript ](#tab-panel-9026)
+* [  JavaScript ](#tab-panel-9053)
+* [  TypeScript ](#tab-panel-9054)
 
 JavaScript
 

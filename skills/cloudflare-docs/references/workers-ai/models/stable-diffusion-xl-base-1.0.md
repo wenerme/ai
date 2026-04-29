@@ -4,6 +4,10 @@ description: Diffusion-based text-to-image generative model by Stability AI. Gen
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ![Stability.ai logo](https://developers.cloudflare.com/_astro/stabilityai.CmlmNdqR.svg) 

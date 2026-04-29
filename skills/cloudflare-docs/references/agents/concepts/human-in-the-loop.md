@@ -4,6 +4,10 @@ description: Add human review and approval steps to Cloudflare Agents for compli
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Human in the Loop
@@ -80,8 +84,8 @@ For durable, multi-step processes with approval gates that can wait hours, days,
 
 For `AIChatAgent` tools that should pause for user confirmation before executing. Define `needsApproval` on the tool — it can be a boolean or an async predicate based on the tool arguments:
 
-* [  JavaScript ](#tab-panel-5022)
-* [  TypeScript ](#tab-panel-5023)
+* [  JavaScript ](#tab-panel-3856)
+* [  TypeScript ](#tab-panel-3857)
 
 JavaScript
 
@@ -147,8 +151,8 @@ Explain Code
 
 On the client, render pending approvals from message parts and call `addToolApprovalResponse`:
 
-* [  JavaScript ](#tab-panel-5032)
-* [  TypeScript ](#tab-panel-5033)
+* [  JavaScript ](#tab-panel-3866)
+* [  TypeScript ](#tab-panel-3867)
 
 JavaScript
 
@@ -300,8 +304,8 @@ Explain Code
 
 For custom denial messages, use `addToolOutput` with `state: "output-error"` instead of `addToolApprovalResponse`:
 
-* [  JavaScript ](#tab-panel-5020)
-* [  TypeScript ](#tab-panel-5021)
+* [  JavaScript ](#tab-panel-3854)
+* [  TypeScript ](#tab-panel-3855)
 
 JavaScript
 
@@ -341,8 +345,8 @@ addToolOutput({
 
 For tools that need browser APIs (geolocation, clipboard, camera) or user interaction before returning a result. Define the tool on the server without `execute`, then handle it on the client:
 
-* [  JavaScript ](#tab-panel-5028)
-* [  TypeScript ](#tab-panel-5029)
+* [  JavaScript ](#tab-panel-3862)
+* [  TypeScript ](#tab-panel-3863)
 
 JavaScript
 
@@ -424,8 +428,8 @@ When `autoContinueAfterToolResult` is `true` (the default), the conversation aut
 
 For MCP servers that need to request additional structured input from users during tool execution. The MCP client renders a form based on your JSON Schema:
 
-* [  JavaScript ](#tab-panel-5030)
-* [  TypeScript ](#tab-panel-5031)
+* [  JavaScript ](#tab-panel-3864)
+* [  TypeScript ](#tab-panel-3865)
 
 JavaScript
 
@@ -562,8 +566,8 @@ In a workflow-based approval:
 
 Set timeouts to prevent workflows from waiting indefinitely:
 
-* [  JavaScript ](#tab-panel-5024)
-* [  TypeScript ](#tab-panel-5025)
+* [  JavaScript ](#tab-panel-3858)
+* [  TypeScript ](#tab-panel-3859)
 
 JavaScript
 
@@ -593,8 +597,8 @@ const approval = await this.waitForApproval(step, {
 
 Use [scheduling](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) for escalation:
 
-* [  JavaScript ](#tab-panel-5026)
-* [  TypeScript ](#tab-panel-5027)
+* [  JavaScript ](#tab-panel-3860)
+* [  TypeScript ](#tab-panel-3861)
 
 JavaScript
 

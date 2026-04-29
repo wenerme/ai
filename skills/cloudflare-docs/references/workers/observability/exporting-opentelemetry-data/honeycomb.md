@@ -4,6 +4,10 @@ description: Send OpenTelemetry traces and logs from Cloudflare Workers to Honey
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Export to Honeycomb
@@ -82,8 +86,8 @@ Repeat the process for logs:
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-8893)
-* [  wrangler.toml ](#tab-panel-8894)
+* [  wrangler.jsonc ](#tab-panel-8921)
+* [  wrangler.toml ](#tab-panel-8922)
 
 JSONC
 

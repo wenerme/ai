@@ -4,6 +4,10 @@ description: Session management in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -29,7 +33,7 @@ The global token expiration is usually set to equal or exceed the application to
 
 In summary, Access checks sessions from most specific to least specific:
 
-1. **[WARP session](#warp-session-duration)** (if enabled) — Overrides all other durations. The user re-authenticates when this expires.
+1. **[Client session](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/)** (if enabled) — Overrides all other durations. The user re-authenticates when this expires.
 2. **[Policy session](#policy-session-duration)** — Controls access to a specific application for users matching a specific policy.
 3. **[Application session](#application-session-duration)** — The default policy session duration for all policies in the application.
 4. **[Global session](#global-session-duration)** — Controls how often the user must log in to the IdP across all applications.

@@ -4,6 +4,10 @@ description: Accelerate access to your existing databases from Cloudflare Worker
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Hyperdrive
@@ -18,11 +22,11 @@ Hyperdrive supports any Postgres or MySQL database, including those hosted on AW
 
 Use Hyperdrive's connection string from your Cloudflare Workers application with your existing Postgres drivers and object-relational mapping (ORM) libraries:
 
-* [ PostgreSQL ](#tab-panel-7198)
-* [ MySQL ](#tab-panel-7199)
+* [ PostgreSQL ](#tab-panel-6040)
+* [ MySQL ](#tab-panel-6041)
 
-* [ index.ts ](#tab-panel-7194)
-* [ wrangler.jsonc ](#tab-panel-7195)
+* [ index.ts ](#tab-panel-6036)
+* [ wrangler.jsonc ](#tab-panel-6037)
 
 TypeScript
 
@@ -119,8 +123,8 @@ Explain Code
 
 Explain Code
 
-* [ index.ts ](#tab-panel-7196)
-* [ wrangler.jsonc ](#tab-panel-7197)
+* [ index.ts ](#tab-panel-6038)
+* [ wrangler.jsonc ](#tab-panel-6039)
 
 TypeScript
 

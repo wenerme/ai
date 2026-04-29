@@ -4,6 +4,10 @@ description: Delete objects from R2 using the dashboard, Workers API, S3 API, or
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Delete objects
@@ -48,8 +52,8 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to delete objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-8306)
-* [ Python ](#tab-panel-8307)
+* [ JavaScript ](#tab-panel-7148)
+* [ Python ](#tab-panel-7149)
 
 TypeScript
 

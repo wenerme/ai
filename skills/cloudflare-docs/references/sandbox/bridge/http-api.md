@@ -4,11 +4,15 @@ description: Complete HTTP API reference for the sandbox bridge Worker.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # HTTP API reference
 
-**Last reviewed:**  12 days ago 
+**Last reviewed:**  16 days ago 
 
 This page documents every route exposed by the [sandbox bridge](https://developers.cloudflare.com/sandbox/bridge/).
 
@@ -193,8 +197,8 @@ The WebSocket carries binary frames for terminal I/O and JSON text frames for co
 
 The warm pool pre-starts sandbox containers so new sessions boot instantly. Configure it with environment variables in `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-8719)
-* [  wrangler.toml ](#tab-panel-8720)
+* [  wrangler.jsonc ](#tab-panel-7561)
+* [  wrangler.toml ](#tab-panel-7562)
 
 JSONC
 

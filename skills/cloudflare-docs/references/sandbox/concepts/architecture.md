@@ -4,6 +4,10 @@ description: Sandbox SDK combines Workers, Durable Objects, and Containers for s
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Architecture
@@ -127,8 +131,8 @@ Multiplexes all SDK calls over a single persistent WebSocket connection. Avoids 
 
 Enable WebSocket transport by setting the `SANDBOX_TRANSPORT` variable in your Worker's configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8721)
-* [  wrangler.toml ](#tab-panel-8722)
+* [  wrangler.jsonc ](#tab-panel-7563)
+* [  wrangler.toml ](#tab-panel-7564)
 
 JSONC
 

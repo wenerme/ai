@@ -4,6 +4,10 @@ description: Route failed messages to a Dead Letter Queue after exceeding the re
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Dead Letter Queues
@@ -14,8 +18,8 @@ With Cloudflare Queues, a Dead Letter Queue is defined within your [consumer con
 
 For example, the following consumer configuration would send messages to our DLQ named `"my-other-queue"` after retrying delivery (by default, 3 times):
 
-* [  wrangler.jsonc ](#tab-panel-8132)
-* [  wrangler.toml ](#tab-panel-8133)
+* [  wrangler.jsonc ](#tab-panel-6974)
+* [  wrangler.toml ](#tab-panel-6975)
 
 JSONC
 

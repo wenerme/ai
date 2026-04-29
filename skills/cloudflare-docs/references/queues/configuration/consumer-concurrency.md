@@ -4,6 +4,10 @@ description: Automatically scale out Queues consumer Workers horizontally to pro
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Consumer concurrency
@@ -81,8 +85,8 @@ Ensure you are using the latest version of [wrangler](https://developers.cloudfl
 
 To set a fixed maximum number of concurrent consumer invocations for a given queue, configure a `max_concurrency` in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8130)
-* [  wrangler.toml ](#tab-panel-8131)
+* [  wrangler.jsonc ](#tab-panel-6972)
+* [  wrangler.toml ](#tab-panel-6973)
 
 JSONC
 

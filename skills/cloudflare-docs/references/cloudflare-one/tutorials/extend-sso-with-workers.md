@@ -4,6 +4,10 @@ description: This tutorial will walk you through extending the single-sign-on (S
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -259,8 +263,8 @@ Explain Code
 
 In the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), [set up a route](https://developers.cloudflare.com/workers/configuration/routing/routes/) that maps the Worker to your Access application domain:
 
-* [  wrangler.jsonc ](#tab-panel-6380)
-* [  wrangler.toml ](#tab-panel-6381)
+* [  wrangler.jsonc ](#tab-panel-5222)
+* [  wrangler.toml ](#tab-panel-5223)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: Develop and test Hyperdrive-connected Workers locally using Wrangle
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Local development
@@ -64,8 +68,8 @@ npx wrangler dev
 
 Alternatively, you can set `localConnectionString` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7222)
-* [  wrangler.toml ](#tab-panel-7223)
+* [  wrangler.jsonc ](#tab-panel-6064)
+* [  wrangler.toml ](#tab-panel-6065)
 
 JSONC
 
@@ -122,8 +126,8 @@ This mode is useful for testing how your Worker behaves with Hyperdrive's featur
 
 Configure your Hyperdrive binding in `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-7224)
-* [  wrangler.toml ](#tab-panel-7225)
+* [  wrangler.jsonc ](#tab-panel-6066)
+* [  wrangler.toml ](#tab-panel-6067)
 
 JSONC
 

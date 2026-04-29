@@ -4,6 +4,10 @@ description: Detect BGP hijack and route leak events using the Cloudflare Radar 
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # BGP anomalies
@@ -325,8 +329,8 @@ cd hijack-alerts
 
 In your Wrangler file, change the default checking frequency (once per hour) to what you like. Here is an example of configuring the workers to run the script five minutes.
 
-* [  wrangler.jsonc ](#tab-panel-8461)
-* [  wrangler.toml ](#tab-panel-8462)
+* [  wrangler.jsonc ](#tab-panel-7303)
+* [  wrangler.toml ](#tab-panel-7304)
 
 JSONC
 
@@ -342,7 +346,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "triggers": {
 
@@ -373,7 +377,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [triggers]
@@ -385,8 +389,8 @@ crons = [ "*/5 * * * *" ]
 
 In this example, we will also need to use Cloudflare KV to save the latest checked event IDs which allows us to know what events are new. Once you have created a KV, you can head back to the `wrangler.jsonc` file and add the following sections:
 
-* [  wrangler.jsonc ](#tab-panel-8459)
-* [  wrangler.toml ](#tab-panel-8460)
+* [  wrangler.jsonc ](#tab-panel-7301)
+* [  wrangler.toml ](#tab-panel-7302)
 
 JSONC
 
@@ -671,8 +675,8 @@ If you have [Email Routing](https://developers.cloudflare.com/email-routing/) en
 
 For this alert to work, you will need to configure the proper email bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#email-bindings).
 
-* [  wrangler.jsonc ](#tab-panel-8463)
-* [  wrangler.toml ](#tab-panel-8464)
+* [  wrangler.jsonc ](#tab-panel-7305)
+* [  wrangler.toml ](#tab-panel-7306)
 
 JSONC
 

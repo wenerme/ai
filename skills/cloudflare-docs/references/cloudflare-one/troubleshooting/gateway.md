@@ -4,6 +4,10 @@ description: Gateway for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Gateway
@@ -104,8 +108,8 @@ These applications do not use the operating system's trust store and therefore d
 
 To resolve this issue:
 
-* [ Recommended ](#tab-panel-6346)
-* [ Workaround ](#tab-panel-6347)
+* [ Recommended ](#tab-panel-5188)
+* [ Workaround ](#tab-panel-5189)
 
 Create a targeted HTTP policy to bypass decryption for the specific domains these tools need to access. Place this policy at a higher precedence (lower order number) than your main TLS decryption policy.
 

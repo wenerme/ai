@@ -4,6 +4,10 @@ description: Dynamic Workers pricing is based on requests, CPU time, and the num
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Pricing
@@ -22,7 +26,7 @@ Dynamic Workers are currently only available on the [Workers Paid plan](https://
 
 Pricing availability
 
-The Dynamic Workers created daily charge is not yet active — you will not be billed for the number of Dynamic Workers created at this time. Pricing information is shared in advance so you can estimate future costs.
+Starting May 26, 2026, you will be billed for the number of Dynamic Workers created daily. Pricing information is shared in advance so you can estimate future costs.
 
 Dynamic Workers requests and CPU time are already billed as part of your Workers plan — they count toward your Workers requests and CPU usage.
 

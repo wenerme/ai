@@ -4,6 +4,10 @@ description: Troubleshoot what settings are applied when i click optimize cloudf
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # What settings are applied when I click Optimize Cloudflare for WordPress in Cloudflare's WordPress plugin

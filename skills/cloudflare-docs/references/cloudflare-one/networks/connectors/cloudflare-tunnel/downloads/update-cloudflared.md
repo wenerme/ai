@@ -4,6 +4,10 @@ description: Update cloudflared in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -18,12 +22,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-5926)
-* [ macOS ](#tab-panel-5927)
-* [ Debian ](#tab-panel-5928)
-* [ Red Hat ](#tab-panel-5929)
-* [ Docker ](#tab-panel-5930)
-* [ Other ](#tab-panel-5931)
+* [ Windows ](#tab-panel-4768)
+* [ macOS ](#tab-panel-4769)
+* [ Debian ](#tab-panel-4770)
+* [ Red Hat ](#tab-panel-4771)
+* [ Docker ](#tab-panel-4772)
+* [ Other ](#tab-panel-4773)
 
 Run the following command:
 

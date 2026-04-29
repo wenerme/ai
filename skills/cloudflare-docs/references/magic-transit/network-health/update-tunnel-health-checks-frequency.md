@@ -4,6 +4,10 @@ description: Update tunnel health check frequency.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Update tunnel health checks frequency
@@ -14,8 +18,8 @@ You can configure the health check frequency through the dashboard or [the API](
 
 Available options are `low`, `mid`, and `high`.
 
-* [ Dashboard ](#tab-panel-7908)
-* [ API ](#tab-panel-7909)
+* [ Dashboard ](#tab-panel-6750)
+* [ API ](#tab-panel-6751)
 
 1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#add-tunnels).
 2. Change the **Health check rate** to your desired rate. For example, _Low_.

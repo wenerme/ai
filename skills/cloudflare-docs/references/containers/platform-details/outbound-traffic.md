@@ -4,6 +4,10 @@ description: Intercept and handle outbound HTTP from containers using Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Handle outbound traffic
@@ -315,10 +319,10 @@ For HTTPS interception to work, you must trust the CA file. The CA is ephemeral 
 
 If your base image does not already include the trust-store tooling, install the distro's `ca-certificates` package in your image first.
 
-* [ Debian/Ubuntu ](#tab-panel-6496)
-* [ Alpine ](#tab-panel-6497)
-* [ Fedora/RHEL ](#tab-panel-6498)
-* [ Arch ](#tab-panel-6499)
+* [ Debian/Ubuntu ](#tab-panel-5338)
+* [ Alpine ](#tab-panel-5339)
+* [ Fedora/RHEL ](#tab-panel-5340)
+* [ Arch ](#tab-panel-5341)
 
 JavaScript
 

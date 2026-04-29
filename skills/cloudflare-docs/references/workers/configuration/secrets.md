@@ -4,6 +4,10 @@ description: Store sensitive information, like API keys and auth tokens, in your
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Secrets
@@ -56,8 +60,8 @@ Explain Code
 
 You can also import `env` from `cloudflare:workers` to access secrets from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-9685)
-* [  TypeScript ](#tab-panel-9686)
+* [  JavaScript ](#tab-panel-8568)
+* [  TypeScript ](#tab-panel-8569)
 
 JavaScript
 

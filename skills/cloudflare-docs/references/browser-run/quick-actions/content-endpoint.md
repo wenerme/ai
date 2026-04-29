@@ -4,6 +4,10 @@ description: Capture fully rendered HTML from a webpage after JavaScript executi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # /content - Fetch HTML
@@ -37,8 +41,8 @@ You must provide either `url` or `html`:
 
 ### Fetch rendered HTML from a URL
 
-* [ curl ](#tab-panel-5589)
-* [ TypeScript SDK ](#tab-panel-5590)
+* [ curl ](#tab-panel-4425)
+* [ TypeScript SDK ](#tab-panel-4426)
 
 Go to `https://developers.cloudflare.com/` and return the rendered HTML.
 

@@ -4,6 +4,10 @@ description: Learn how to enable the R2 Data Catalog on your bucket, load sample
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Getting started
@@ -26,8 +30,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket
 
-* [ Wrangler CLI ](#tab-panel-8270)
-* [ Dashboard ](#tab-panel-8271)
+* [ Wrangler CLI ](#tab-panel-7112)
+* [ Dashboard ](#tab-panel-7113)
 
 1. If not already logged in, run:  
 ```  
@@ -46,8 +50,8 @@ npx wrangler r2 bucket create r2-data-catalog-tutorial
 
 ## 2\. Enable the data catalog for your bucket
 
-* [ Wrangler CLI ](#tab-panel-8272)
-* [ Dashboard ](#tab-panel-8273)
+* [ Wrangler CLI ](#tab-panel-7114)
+* [ Dashboard ](#tab-panel-7115)
 
 Then, enable the catalog on your chosen R2 bucket:
 

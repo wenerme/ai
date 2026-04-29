@@ -4,6 +4,10 @@ description: Reference information for Common policies in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -31,8 +35,8 @@ The following example logs any upload or download that matches your enabled [Fin
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-5848)
-* [ API ](#tab-panel-5849)
+* [ Dashboard ](#tab-panel-4690)
+* [ API ](#tab-panel-4691)
 
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |

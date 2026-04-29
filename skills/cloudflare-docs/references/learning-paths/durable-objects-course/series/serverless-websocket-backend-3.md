@@ -4,12 +4,16 @@ description: Learn about create a serverless websocket backend in this guide.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create a serverless websocket 'backend'
 
-* [ Watch this episode ](#tab-panel-7549)
-* [ Series overview ](#tab-panel-7550)
+* [ Watch this episode ](#tab-panel-6445)
+* [ Series overview ](#tab-panel-6446)
 
 In this video, we'll create a WebSocket backend using serverless technology, making the process simpler than ever before. You'll learn how to create your first Durable Object, set up a WebSocket server to coordinate connections, and keep track of connected clients.
 

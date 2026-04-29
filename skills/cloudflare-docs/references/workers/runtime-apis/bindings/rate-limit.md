@@ -4,6 +4,10 @@ description: Define rate limits and interact with them directly from your Cloudf
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Rate Limiting
@@ -27,8 +31,8 @@ You must use version 4.36.0 or later of the [Wrangler CLI](https://developers.cl
 
 First, add a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to your Worker that gives it access to the Rate Limiting API:
 
-* [  wrangler.jsonc ](#tab-panel-8973)
-* [  wrangler.toml ](#tab-panel-8974)
+* [  wrangler.jsonc ](#tab-panel-9001)
+* [  wrangler.toml ](#tab-panel-9002)
 
 JSONC
 
@@ -100,8 +104,8 @@ namespace_id = "1001"
 
 This binding makes the `MY_RATE_LIMITER` binding available, which provides a `limit()` method:
 
-* [  JavaScript ](#tab-panel-8969)
-* [  TypeScript ](#tab-panel-8970)
+* [  JavaScript ](#tab-panel-8997)
+* [  TypeScript ](#tab-panel-8998)
 
 JavaScript
 
@@ -181,8 +185,8 @@ You can define and configure multiple rate limiting configurations per Worker, w
 
 For example, here is how you can define two rate limiting configurations for free and paid tier users:
 
-* [  wrangler.jsonc ](#tab-panel-8975)
-* [  wrangler.toml ](#tab-panel-8976)
+* [  wrangler.jsonc ](#tab-panel-9003)
+* [  wrangler.toml ](#tab-panel-9004)
 
 JSONC
 
@@ -297,8 +301,8 @@ If you do not want to share rate limit state between bindings, use a unique `nam
 
 For example, to apply a rate limit of 1500 requests per minute, you would define a rate limiting configuration as follows:
 
-* [  wrangler.jsonc ](#tab-panel-8971)
-* [  wrangler.toml ](#tab-panel-8972)
+* [  wrangler.jsonc ](#tab-panel-8999)
+* [  wrangler.toml ](#tab-panel-9000)
 
 JSONC
 

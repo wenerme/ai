@@ -1,8 +1,8 @@
-# Text-to-Speech
-
 > For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt.
-> For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+
+# Text-to-Speech
 
 OpenRouter supports text-to-speech (TTS) via a dedicated `/api/v1/audio/speech` endpoint that is compatible with the [OpenAI Audio Speech API](https://platform.openai.com/docs/api-reference/audio/createSpeech). Send text and receive a raw audio byte stream in your chosen format.
 
@@ -191,7 +191,7 @@ The TTS endpoint returns a **raw audio byte stream**, not JSON. The response inc
 
 | Header            | Description                                                                             |
 | ----------------- | --------------------------------------------------------------------------------------- |
-| `Content-Type`    | The MIME type of the audio. `audio/mpeg` for `mp3` format, `audio/L16` for `pcm` format |
+| `Content-Type`    | The MIME type of the audio. `audio/mpeg` for `mp3` format, `audio/pcm` for `pcm` format |
 | `X-Generation-Id` | The unique generation ID for the request, useful for tracking and debugging             |
 
 ### Output Formats
@@ -199,7 +199,7 @@ The TTS endpoint returns a **raw audio byte stream**, not JSON. The response inc
 | Format | Content-Type | Description                                                                       |
 | ------ | ------------ | --------------------------------------------------------------------------------- |
 | `mp3`  | `audio/mpeg` | Compressed audio, smaller file size. Good for storage and playback                |
-| `pcm`  | `audio/L16`  | Uncompressed raw audio. Lower latency, suitable for real-time streaming pipelines |
+| `pcm`  | `audio/pcm`  | Uncompressed raw audio. Lower latency, suitable for real-time streaming pipelines |
 
 ## Pricing
 

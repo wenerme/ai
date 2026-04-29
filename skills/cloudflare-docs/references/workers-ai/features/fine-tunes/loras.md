@@ -4,6 +4,10 @@ description: Upload and use LoRA adapters to get fine-tuned inference on Workers
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Using LoRA adapters
@@ -241,8 +245,8 @@ Explain Code
 
 To make inference requests and apply the LoRA adapter, you will need your model and finetune `name` or `id`. You should use the chat template that your LoRA was trained on, but you can try running it with `raw: true` and the messages template like below.
 
-* [ workers ai sdk ](#tab-panel-9495)
-* [ rest api ](#tab-panel-9496)
+* [ workers ai sdk ](#tab-panel-8378)
+* [ rest api ](#tab-panel-8379)
 
 JavaScript
 

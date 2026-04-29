@@ -4,6 +4,10 @@ description: Local Domain Fallback in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -60,8 +64,8 @@ To view the fallback domains applied to a device, you can:
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-6101)
-* [ Terraform (v5) ](#tab-panel-6102)
+* [ Dashboard ](#tab-panel-4943)
+* [ Terraform (v5) ](#tab-panel-4944)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.

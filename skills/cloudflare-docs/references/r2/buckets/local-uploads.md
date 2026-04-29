@@ -4,6 +4,10 @@ description: Improve R2 upload performance by writing object data to a nearby lo
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Local uploads
@@ -82,8 +86,8 @@ Local uploads are not supported for buckets with [jurisdictional restrictions](h
 
 When you enable Local Uploads, existing uploads will complete as expected with no interruption to traffic.
 
-* [ Dashboard ](#tab-panel-8266)
-* [ Wrangler ](#tab-panel-8267)
+* [ Dashboard ](#tab-panel-7108)
+* [ Wrangler ](#tab-panel-7109)
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -106,8 +110,8 @@ npx wrangler r2 bucket local-uploads enable <BUCKET_NAME>
 
 You can disable local uploads at any time. Existing requests made with local uploads will complete replication with no interruption to your traffic.
 
-* [ Dashboard ](#tab-panel-8268)
-* [ Wrangler ](#tab-panel-8269)
+* [ Dashboard ](#tab-panel-7110)
+* [ Wrangler ](#tab-panel-7111)
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)

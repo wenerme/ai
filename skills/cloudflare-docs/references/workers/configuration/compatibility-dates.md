@@ -4,6 +4,10 @@ description: Opt into a specific version of the Workers runtime for your Workers
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Compatibility dates
@@ -27,8 +31,8 @@ However, even though you do not need to update the `compatibility_date` field, i
 
 The compatibility date can be set in a Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
-* [  wrangler.jsonc ](#tab-panel-9626)
-* [  wrangler.toml ](#tab-panel-9627)
+* [  wrangler.jsonc ](#tab-panel-8509)
+* [  wrangler.toml ](#tab-panel-8510)
 
 JSONC
 

@@ -4,6 +4,10 @@ description: Resume TLS connections faster with zero round-trip time.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # 0-RTT Connection Resumption
@@ -26,8 +30,8 @@ For more information on 0-RTT, including its functionality and potential limitat
 
 By default, 0-RTT Connection Resumption is not enabled on your Cloudflare application.
 
-* [ Dashboard ](#tab-panel-9045)
-* [ API ](#tab-panel-9046)
+* [ Dashboard ](#tab-panel-7887)
+* [ API ](#tab-panel-7888)
 
 To enable 0-RTT Connection Resumption in the dashboard:
 

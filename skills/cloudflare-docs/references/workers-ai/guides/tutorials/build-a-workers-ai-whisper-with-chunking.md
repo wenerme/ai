@@ -4,6 +4,10 @@ description: Learn how to transcribe large audio files using Workers AI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -79,8 +83,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9525)
-* [  wrangler.toml ](#tab-panel-9526)
+* [  wrangler.jsonc ](#tab-panel-8408)
+* [  wrangler.toml ](#tab-panel-8409)
 
 JSONC
 
@@ -116,8 +120,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 In your wrangler file, add or update the following settings to enable Node.js APIs and polyfills (with a compatibility date of 2024‑09‑23 or later):
 
-* [  wrangler.jsonc ](#tab-panel-9527)
-* [  wrangler.toml ](#tab-panel-9528)
+* [  wrangler.jsonc ](#tab-panel-8410)
+* [  wrangler.toml ](#tab-panel-8411)
 
 JSONC
 
@@ -133,7 +137,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24"
+  "compatibility_date": "2026-04-29"
 
 }
 
@@ -148,7 +152,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 ```

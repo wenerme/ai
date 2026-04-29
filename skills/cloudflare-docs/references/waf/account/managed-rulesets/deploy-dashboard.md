@@ -4,6 +4,10 @@ description: Deploy WAF managed rulesets at the account level in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Deploy a WAF managed ruleset in the dashboard (account)

@@ -4,6 +4,10 @@ description: Serve content directly through the Tor network with Onion Routing.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Onion Routing and Tor support
@@ -29,8 +33,8 @@ You should note that the visible domain in the user interface remains unchanged,
 
 ## Enable Onion Routing
 
-* [ Dashboard ](#tab-panel-7914)
-* [ API ](#tab-panel-7915)
+* [ Dashboard ](#tab-panel-6756)
+* [ API ](#tab-panel-6757)
 
 To enable **Onion Routing** in the dashboard:
 

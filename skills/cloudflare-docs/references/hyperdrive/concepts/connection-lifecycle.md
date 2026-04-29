@@ -4,6 +4,10 @@ description: Understand how connections are managed between Workers, Hyperdrive,
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Connection lifecycle
@@ -85,8 +89,8 @@ You should always create database clients inside your request handlers (`fetch`,
 
 Do not create database clients or connection pools in the global scope. Instead, create a new client inside each handler invocation — Hyperdrive's connection pool ensures this is fast:
 
-* [  JavaScript ](#tab-panel-7200)
-* [  TypeScript ](#tab-panel-7201)
+* [  JavaScript ](#tab-panel-6042)
+* [  TypeScript ](#tab-panel-6043)
 
 index.js
 

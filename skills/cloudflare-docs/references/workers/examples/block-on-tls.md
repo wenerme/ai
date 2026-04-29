@@ -4,6 +4,10 @@ description: Inspects the incoming request's TLS version and blocks if under TLS
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -16,10 +20,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 
-* [  JavaScript ](#tab-panel-9787)
-* [  TypeScript ](#tab-panel-9788)
-* [  Hono ](#tab-panel-9789)
-* [  Python ](#tab-panel-9790)
+* [  JavaScript ](#tab-panel-8672)
+* [  TypeScript ](#tab-panel-8673)
+* [  Hono ](#tab-panel-8674)
+* [  Python ](#tab-panel-8675)
 
 JavaScript
 

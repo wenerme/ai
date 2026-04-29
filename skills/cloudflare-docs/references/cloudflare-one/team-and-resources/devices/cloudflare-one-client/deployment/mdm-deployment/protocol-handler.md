@@ -4,6 +4,10 @@ description: Register the Cloudflare One Client with minimal user interaction in
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -66,8 +70,8 @@ _Note: Labels in this image may reflect a previous product name._
 
 Chromium-based browsers such as Google Chrome and Microsoft Edge have a policy setting called [AutoLaunchProtocolsFromOrigins ↗](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#autolaunchprotocolsfromorigins). This setting takes in two parameters: a protocol for the browser to launch and the origins that are allowed to launch it. For the browser to launch the Cloudflare One Client, you need to set the protocol to `com.cloudflare.warp` and the origin to your Cloudflare Zero Trust team domain (`https://<your-team-name>.cloudflareaccess.com`).
 
-* [ Windows ](#tab-panel-6132)
-* [ macOS ](#tab-panel-6133)
+* [ Windows ](#tab-panel-4974)
+* [ macOS ](#tab-panel-4975)
 
 On Windows, you can configure `AutoLaunchProtocolsFromOrigins` by adding a new registry key.
 

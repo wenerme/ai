@@ -4,6 +4,10 @@ description: Rewrite URL links in HTML using the HTMLRewriter. This is useful fo
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,10 +26,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9934)
-* [  TypeScript ](#tab-panel-9935)
-* [  Python ](#tab-panel-9936)
-* [  Hono ](#tab-panel-9937)
+* [  JavaScript ](#tab-panel-8819)
+* [  TypeScript ](#tab-panel-8820)
+* [  Python ](#tab-panel-8821)
+* [  Hono ](#tab-panel-8822)
 
 JavaScript
 

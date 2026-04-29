@@ -4,6 +4,10 @@ description: Request confidence intervals for sampled data.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Confidence Intervals
@@ -78,7 +82,7 @@ query SingleDatasetWithConfidence($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygSwHYHMA2YAiBDALtgZzFwHUFcALAYQHskAzBAEzCQGMwAKAEgC86wAFWwoAXDAK4IyFABoY3Sdgi5xghAFsw87qyZrNYAJQwA3gCgYMAG4IwAd0hnLVmPyRgCnRmlyRxpu5CIuJ8AsIoAL4mFq6ujBAO2GhoAKLWrLgEAIJM2AAOuAgZAOIQNCD5Xi5xVj5+EAF5fkVaAPooqgpKKvLNxIZtvqF6kTW1aJrk4gCMAAwL41YxS65sFUi4q1bY1ijOtbUE2Br5GACSm5DWydswY4dW6wzMrBycGBlo4nMAdACcAFYVo81htcAdQa5PK08GA7nE0DRHBAEa5KvlIGirMdThhELx4VD7ncHrUyVYyWNIkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwDscAIydULFqgCsojBRAwoAE2bsuvAcLhTJ0uQoC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygSwHYHMA2YAiBDALtgZzFwHUFcALAYQHskAzBAEzCQGMwAKAEgC86wAFWwoAXDAK4IyFABoY3Sdgi5xghAFsw87qyZrNYAJQwA3gCgYMAG4IwAd0hnLVmPyRgCnRmlyRxpu5CIuJ8AsIoAL4mFq6ujBAO2GhoAKLWrLgEAIJM2AAOuAgZAOIQNCD5Xi5xVj5+EAF5fkVaAPooqgpKKvLNxIZtvqF6kTW1aJrk4gCMAAwL41YxS65sFUi4q1bY1ijOtbUE2Br5GACSm5DWydswY4dW6wzMrBycGBlo4nMAdACcAFYVo81htcAdQa5PK08GA7nE0DRHBAEa5KvlIGirMdThhELx4VD7ncHrUyVYyWNIkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccAIxDUozqj5sMFEDCgATZuy68BLAJxw2bSdNnyAvkA)
 
 ### Response
 

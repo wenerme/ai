@@ -4,6 +4,10 @@ description: Configure your operating system or browser to use a Proxy Auto-Conf
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -28,12 +32,12 @@ Before you configure a PAC file on your device, make sure you have:
 
 Configure your operating system to use the PAC file. This applies the proxy to all browsers that use system proxy settings (Chrome, Edge, Brave, Safari).
 
-* [ Windows ](#tab-panel-6040)
-* [ macOS ](#tab-panel-6041)
-* [ Linux ](#tab-panel-6042)
-* [ iOS / iPadOS ](#tab-panel-6043)
-* [ Android ](#tab-panel-6044)
-* [ ChromeOS ](#tab-panel-6045)
+* [ Windows ](#tab-panel-4882)
+* [ macOS ](#tab-panel-4883)
+* [ Linux ](#tab-panel-4884)
+* [ iOS / iPadOS ](#tab-panel-4885)
+* [ Android ](#tab-panel-4886)
+* [ ChromeOS ](#tab-panel-4887)
 
 For more information, refer to [Use a proxy server in Windows ↗](https://support.microsoft.com/windows/use-a-proxy-server-in-windows-03096c53-0554-4ffe-b6ab-8b1deee8dae1).
 

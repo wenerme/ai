@@ -4,6 +4,10 @@ description: Set up custom Gateway block pages.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Gateway block page
@@ -35,8 +39,8 @@ The Gateway custom block page is a different concept from [Access custom block p
 
 For DNS policies, you will need to enable the block page on a per-policy basis.
 
-* [ Dashboard ](#tab-panel-7629)
-* [ Terraform (v5) ](#tab-panel-7630)
+* [ Dashboard ](#tab-panel-6471)
+* [ Terraform (v5) ](#tab-panel-6472)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
@@ -88,8 +92,8 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-7627)
-* [ Terraform (v5) ](#tab-panel-7628)
+* [ Dashboard ](#tab-panel-6469)
+* [ Terraform (v5) ](#tab-panel-6470)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.

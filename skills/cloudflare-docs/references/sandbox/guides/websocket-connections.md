@@ -4,6 +4,10 @@ description: Connect to WebSocket servers running in sandboxes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # WebSocket connections
@@ -118,8 +122,8 @@ exec bun dist/index.js
 
 **Connect from your Worker:**
 
-* [  JavaScript ](#tab-panel-9007)
-* [  TypeScript ](#tab-panel-9008)
+* [  JavaScript ](#tab-panel-7849)
+* [  TypeScript ](#tab-panel-7850)
 
 JavaScript
 
@@ -209,8 +213,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Get a public URL for your WebSocket server:
 
-* [  JavaScript ](#tab-panel-9009)
-* [  TypeScript ](#tab-panel-9010)
+* [  JavaScript ](#tab-panel-7851)
+* [  TypeScript ](#tab-panel-7852)
 
 JavaScript
 
@@ -347,8 +351,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Your Worker can connect to a WebSocket service to get real-time data, even when the incoming request isn't a WebSocket:
 
-* [  JavaScript ](#tab-panel-9011)
-* [  TypeScript ](#tab-panel-9012)
+* [  JavaScript ](#tab-panel-7853)
+* [  TypeScript ](#tab-panel-7854)
 
 JavaScript
 
@@ -534,8 +538,8 @@ This pattern is useful when you need streaming data from sandbox services but wa
 
 Verify request has WebSocket headers:
 
-* [  JavaScript ](#tab-panel-9005)
-* [  TypeScript ](#tab-panel-9006)
+* [  JavaScript ](#tab-panel-7847)
+* [  TypeScript ](#tab-panel-7848)
 
 JavaScript
 

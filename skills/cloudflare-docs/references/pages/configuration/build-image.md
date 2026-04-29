@@ -4,6 +4,10 @@ description: Review supported languages, tools, and environment variables in the
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Build image
@@ -18,9 +22,9 @@ In the following tables, review the preinstalled versions for languages and tool
 
 ### Languages and runtime
 
-* [ v3 ](#tab-panel-7920)
-* [ v2 ](#tab-panel-7921)
-* [ v1 ](#tab-panel-7922)
+* [ v3 ](#tab-panel-6762)
+* [ v2 ](#tab-panel-6763)
+* [ v1 ](#tab-panel-6764)
 
 | Tool        | Default version | Supported versions | Environment variable | File                         |
 | ----------- | --------------- | ------------------ | -------------------- | ---------------------------- |
@@ -58,9 +62,9 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Tools
 
-* [ v3 ](#tab-panel-7923)
-* [ v2 ](#tab-panel-7924)
-* [ v1 ](#tab-panel-7925)
+* [ v3 ](#tab-panel-6765)
+* [ v2 ](#tab-panel-6766)
+* [ v1 ](#tab-panel-6767)
 
 | Tool                   | Default version | Supported versions               | Environment variable          |
 | ---------------------- | --------------- | -------------------------------- | ----------------------------- |
@@ -188,9 +192,9 @@ The following features are not currently supported when using the v3 build syste
 
 Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) container.
 
-* [ v3 ](#tab-panel-7926)
-* [ v2 ](#tab-panel-7927)
-* [ v1 ](#tab-panel-7928)
+* [ v3 ](#tab-panel-6768)
+* [ v2 ](#tab-panel-6769)
+* [ v1 ](#tab-panel-6770)
 
 | **Build environment** | Ubuntu 22.04.2 |
 | --------------------- | -------------- |

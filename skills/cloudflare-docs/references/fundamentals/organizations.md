@@ -4,6 +4,10 @@ description: Manage multiple Cloudflare accounts from a single organization with
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Organizations
@@ -11,8 +15,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
  Enterprise-only 
 
 An organization is a top-level container in Cloudflare for managing multiple accounts. It allows administrators to govern accounts, members, and resources from a single location rather than managing each account individually. Organization Super Administrators have implicit access to all accounts within the organization. This means they do not need explicit membership on each account.
-
-Each user can create one organization.
 
 Note
 

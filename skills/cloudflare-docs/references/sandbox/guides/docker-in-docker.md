@@ -4,6 +4,10 @@ description: Run Docker commands inside a sandbox container.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Run Docker-in-Docker
@@ -84,8 +88,8 @@ This allows you to connect to the container, but it means each inner container h
 
 Once deployed, you can run Docker commands through the sandbox:
 
-* [  JavaScript ](#tab-panel-8831)
-* [  TypeScript ](#tab-panel-8832)
+* [  JavaScript ](#tab-panel-7673)
+* [  TypeScript ](#tab-panel-7674)
 
 JavaScript
 

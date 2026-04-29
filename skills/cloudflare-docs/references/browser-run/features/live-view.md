@@ -4,6 +4,10 @@ description: View and interact with remote Browser Run sessions in real time usi
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Live View
@@ -21,6 +25,10 @@ There are three ways to access Live View: through the Cloudflare dashboard, via 
 In the Cloudflare dashboard, go to the **Browser Run** page and select the **Live Sessions** tab. This shows all active browser sessions in your account. Expand a session to see its tabs, then select **Open** to open the Live View for that tab.
 
 [ Go to **Browser Run** ](https://dash.cloudflare.com/?to=/:account/workers/browser-run) 
+
+Note
+
+Sessions created from the dashboard default to a five-minute inactivity timeout (`keep_alive`), compared to the one-minute default when creating sessions through the API. You can adjust the timeout up to 10 minutes — in the dashboard, use the timeout field when creating a session, or in the API and Workers Bindings, use the [keep\_alive option](https://developers.cloudflare.com/browser-run/puppeteer/#keep-alive).
 
 ### Hosted UI (any browser)
 

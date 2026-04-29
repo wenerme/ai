@@ -4,6 +4,10 @@ description: One-time PIN login in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -22,9 +26,9 @@ Access and the Cloudflare One Client will evaluate identity based on a user's la
 
 ## Set up OTP
 
-* [ Dashboard ](#tab-panel-5880)
-* [ API ](#tab-panel-5881)
-* [ Terraform (v5) ](#tab-panel-5882)
+* [ Dashboard ](#tab-panel-4722)
+* [ API ](#tab-panel-4723)
+* [ Terraform (v5) ](#tab-panel-4724)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.

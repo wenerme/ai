@@ -4,6 +4,10 @@ description: This tutorial explains how to deploy the Cloudflare One Client on h
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -30,9 +34,9 @@ Fully automated deployments rely on a service token to enroll the Cloudflare One
 
 To create a service token:
 
-* [ Dashboard ](#tab-panel-6363)
-* [ API ](#tab-panel-6364)
-* [ Terraform (v5) ](#tab-panel-6365)
+* [ Dashboard ](#tab-panel-5205)
+* [ API ](#tab-panel-5206)
+* [ Terraform (v5) ](#tab-panel-5207)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.

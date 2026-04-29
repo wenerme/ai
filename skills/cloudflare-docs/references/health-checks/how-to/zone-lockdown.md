@@ -4,6 +4,10 @@ description: Restrict Health Checks access to specific Cloudflare IP addresses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/health-checks/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Zone Lockdown

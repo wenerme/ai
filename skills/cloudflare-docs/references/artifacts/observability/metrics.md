@@ -4,6 +4,10 @@ description: Review the metrics exposed by Artifacts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Metrics
@@ -79,13 +83,13 @@ Use this query to find the busiest repos in one namespace over a time range. It 
 
 query ArtifactsOperationsByRepo(
 
-  $accountTag: string!
+  $accountTag: String!
 
   $datetimeStart: Time
 
   $datetimeEnd: Time
 
-  $repositoryNamespace: string!
+  $repositoryNamespace: String!
 
 ) {
 
@@ -148,7 +152,7 @@ Use this query to rank repos by error volume. It helps you spot which repos fail
 
 query ArtifactsErrorsByRepo(
 
-  $accountTag: string!
+  $accountTag: String!
 
   $datetimeStart: Time
 
@@ -209,7 +213,7 @@ Use this query to see which repos receive the most pushes in a time window. It i
 
 query ArtifactsPushesByRepo(
 
-  $accountTag: string!
+  $accountTag: String!
 
   $datetimeStart: Time
 

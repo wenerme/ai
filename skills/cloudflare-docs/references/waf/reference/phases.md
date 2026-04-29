@@ -4,6 +4,10 @@ description: WAF rule execution phases and their order of evaluation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # WAF phases
@@ -16,8 +20,8 @@ The Web Application Firewall provides the following [phases](https://developers.
 
 These phases exist both at the account level and at the zone level. Considering the available phases and the two different levels, rules will be evaluated in the following order:
 
-* [  New dashboard ](#tab-panel-9399)
-* [ Old dashboard ](#tab-panel-9400)
+* [  New dashboard ](#tab-panel-8343)
+* [ Old dashboard ](#tab-panel-8344)
 
 | Security feature                                                                                | Scope   | Phase                            | Ruleset kind                 | Location in the dashboard                                                                                               |
 | ----------------------------------------------------------------------------------------------- | ------- | -------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |

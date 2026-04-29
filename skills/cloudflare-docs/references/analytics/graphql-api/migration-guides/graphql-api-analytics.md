@@ -4,6 +4,10 @@ description: Migrate colo groups queries to adaptive groups.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # HTTP Requests by Colo Groups to HTTP Requests by Adaptive Groups
@@ -247,7 +251,7 @@ query MigrationSample($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgSwOYQIYBcEHsB2BlVAWwAcAbMACgBIAvXMAFVSQC4YBndCBHJAGhhVOqCOjYMEhMAKpgcAE3GSwAShgBvAFAwYANwRgA7pA3adMOjjDsKAMwSl0kNuov0mrQZcbMYAXzUtc3N2SAN2NgALdHRiACUwUGt0dgBBeVRiTF0wAHEILBBiGzNgnVJJBDEYAFZSsqwIeUgAISg2AG0AY0KcdAB9ABEAUTwAYQBdeuD7R2dTMrKMp0wpfqREtiF0EXRppYwwVbB+xy25eX3giETwTjxCiC6wNgAiMCgwACNUUlJXq7+faBQE9EB9QGoXRIBaLEJEMhgACSfUgul+gL8gPYIEIsLhegQ7Cq7EBOjA8g2CXYxFwoTaTlJBKxBPkyhwxLp+LhPVIWDGWGamP2LPMoqxfiAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccfqjZtUAZgCsGCiBhQAJs3ZdeA4XACMkidLkgAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgSwOYQIYBcEHsB2BlVAWwAcAbMACgBIAvXMAFVSQC4YBndCBHJAGhhVOqCOjYMEhMAKpgcAE3GSwAShgBvAFAwYANwRgA7pA3adMOjjDsKAMwSl0kNuov0mrQZcbMYAXzUtc3N2SAN2NgALdHRiACUwUGt0dgBBeVRiTF0wAHEILBBiGzNgnVJJBDEYAFZSsqwIeUgAISg2AG0AY0KcdAB9ABEAUTwAYQBdeuD7R2dTMrKMp0wpfqREtiF0EXRppYwwVbB+xy25eX3giETwTjxCiC6wNgAiMCgwACNUUlJXq7+faBQE9EB9QGoXRIBaLEJEMhgACSfUgul+gL8gPYIEIsLhegQ7Cq7EBOjA8g2CXYxFwoTaTlJBKxBPkyhwxLp+LhPVIWDGWGamP2LPMoqxfiAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwAccAIxDUozqj6iMFEDCgATZuy68BLAJxw2bSdNnyAvkA)
 
 Response
 

@@ -4,6 +4,10 @@ description: Build a simple search engine using the AI Search Workers binding an
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create a simple search engine
@@ -15,8 +19,8 @@ To replicate this example:
 * Disable query rewriting so that the original user query is matched directly
 * Configure your AI Search instance to have small chunk sizes (256 tokens is usually enough)
 
-* [  JavaScript ](#tab-panel-5372)
-* [  TypeScript ](#tab-panel-5373)
+* [  JavaScript ](#tab-panel-4206)
+* [  TypeScript ](#tab-panel-4207)
 
 JavaScript
 

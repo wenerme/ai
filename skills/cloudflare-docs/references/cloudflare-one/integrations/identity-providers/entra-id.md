@@ -4,6 +4,10 @@ description: Microsoft Entra ID in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -72,9 +76,9 @@ More narrow permissions may be used, however this is the set of permissions that
 
 ### 3\. Add Entra ID as an identity provider
 
-* [ Dashboard ](#tab-panel-5872)
-* [ API ](#tab-panel-5873)
-* [ Terraform ](#tab-panel-5874)
+* [ Dashboard ](#tab-panel-4714)
+* [ API ](#tab-panel-4715)
+* [ Terraform ](#tab-panel-4716)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.

@@ -4,6 +4,10 @@ description: Commonly used Cloudflare Access policies for securing applications.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Common policies
@@ -16,9 +20,9 @@ Refer to the [Access policies page](https://developers.cloudflare.com/cloudflare
 
 The most basic Access policy grants access to anyone who authenticates with an email address belonging to your organization. This is a good starting point when you first protect an application with Access and want to restrict it to employees using your corporate [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 
-* [ Dashboard ](#tab-panel-5795)
-* [ API ](#tab-panel-5796)
-* [ Terraform ](#tab-panel-5797)
+* [ Dashboard ](#tab-panel-4637)
+* [ API ](#tab-panel-4638)
+* [ Terraform ](#tab-panel-4639)
 
 | Action | Rule type | Selector         | Value        |
 | ------ | --------- | ---------------- | ------------ |
@@ -109,9 +113,9 @@ Organizations that operate in specific regions or need to comply with data resid
 
 Because Require rules use AND logic, you cannot add multiple countries directly to a single Require rule — that would require the user to be in all countries simultaneously. Instead, first create a [rule group](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/) that lists the approved countries:
 
-* [ Dashboard ](#tab-panel-5798)
-* [ API ](#tab-panel-5799)
-* [ Terraform ](#tab-panel-5800)
+* [ Dashboard ](#tab-panel-4640)
+* [ API ](#tab-panel-4641)
+* [ Terraform ](#tab-panel-4642)
 
 | Rule type | Selector | Value                   |
 | --------- | -------- | ----------------------- |
@@ -216,9 +220,9 @@ Explain Code
 
 Then reference the rule group in your Access policy:
 
-* [ Dashboard ](#tab-panel-5831)
-* [ API ](#tab-panel-5832)
-* [ Terraform ](#tab-panel-5833)
+* [ Dashboard ](#tab-panel-4673)
+* [ API ](#tab-panel-4674)
+* [ Terraform ](#tab-panel-4675)
 
 | Action  | Rule type  | Selector                               | Value        |
 | ------- | ---------- | -------------------------------------- | ------------ |
@@ -387,9 +391,9 @@ Note
 
 Before creating this policy, [create device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) for each requirement and [enable the Require Gateway posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/).
 
-* [ Dashboard ](#tab-panel-5816)
-* [ API ](#tab-panel-5817)
-* [ Terraform ](#tab-panel-5818)
+* [ Dashboard ](#tab-panel-4658)
+* [ API ](#tab-panel-4659)
+* [ Terraform ](#tab-panel-4660)
 
 | Action  | Rule type  | Selector                  | Value               |
 | ------- | ---------- | ------------------------- | ------------------- |
@@ -543,9 +547,9 @@ Access supports two approaches to enforcing MFA:
 
 If your identity provider reports the authentication method used during login, you can add an **Authentication method** selector to require a specific MFA method such as a hardware security key.
 
-* [ Dashboard ](#tab-panel-5822)
-* [ API ](#tab-panel-5823)
-* [ Terraform ](#tab-panel-5824)
+* [ Dashboard ](#tab-panel-4664)
+* [ API ](#tab-panel-4665)
+* [ Terraform ](#tab-panel-4666)
 
 | Action  | Rule type             | Selector     | Value     |
 | ------- | --------------------- | ------------ | --------- |
@@ -703,9 +707,9 @@ Note
 
 Before creating this policy, [enable OTP as a login method](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/#set-up-otp) in your identity provider settings.
 
-* [ Dashboard ](#tab-panel-5825)
-* [ API ](#tab-panel-5826)
-* [ Terraform ](#tab-panel-5827)
+* [ Dashboard ](#tab-panel-4667)
+* [ API ](#tab-panel-4668)
+* [ Terraform ](#tab-panel-4669)
 
 | Action  | Rule type     | Selector         | Value                                |
 | ------- | ------------- | ---------------- | ------------------------------------ |
@@ -853,9 +857,9 @@ Note
 
 Before creating this policy, you must turn on [Clientless Web Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/).
 
-* [ Dashboard ](#tab-panel-5810)
-* [ API ](#tab-panel-5811)
-* [ Terraform ](#tab-panel-5812)
+* [ Dashboard ](#tab-panel-4652)
+* [ API ](#tab-panel-4653)
+* [ Terraform ](#tab-panel-4654)
 
 | Action | Rule type | Selector         | Value                                |
 | ------ | --------- | ---------------- | ------------------------------------ |
@@ -1059,9 +1063,9 @@ Note
 
 Before creating this policy, [create a list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) with your approved IP ranges.
 
-* [ Dashboard ](#tab-panel-5813)
-* [ API ](#tab-panel-5814)
-* [ Terraform ](#tab-panel-5815)
+* [ Dashboard ](#tab-panel-4655)
+* [ API ](#tab-panel-4656)
+* [ Terraform ](#tab-panel-4657)
 
 | Action  | Rule type | Selector               | Value              |
 | ------- | --------- | ---------------------- | ------------------ |
@@ -1179,9 +1183,9 @@ Block policies are best used together with [Allow policies](#allow-employees-by-
 
 If your organization uses [Cloudflare User Risk Scores](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) to flag users with anomalous behavior, you can exclude high-risk users from accessing sensitive applications. This is useful as a dynamic safeguard that automatically restricts access when a user's behavior triggers a risk level change, without requiring manual intervention.
 
-* [ Dashboard ](#tab-panel-5819)
-* [ API ](#tab-panel-5820)
-* [ Terraform ](#tab-panel-5821)
+* [ Dashboard ](#tab-panel-4661)
+* [ API ](#tab-panel-4662)
+* [ Terraform ](#tab-panel-4663)
 
 | Action  | Rule type       | Selector         | Value        |
 | ------- | --------------- | ---------------- | ------------ |
@@ -1303,9 +1307,9 @@ Note
 
 Before creating this policy, [create a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#create-a-service-token).
 
-* [ Dashboard ](#tab-panel-5828)
-* [ API ](#tab-panel-5829)
-* [ Terraform ](#tab-panel-5830)
+* [ Dashboard ](#tab-panel-4670)
+* [ API ](#tab-panel-4671)
+* [ Terraform ](#tab-panel-4672)
 
 | Action       | Rule type | Selector      | Value            |
 | ------------ | --------- | ------------- | ---------------- |
@@ -1427,9 +1431,9 @@ Before creating this policy, [upload a certificate authority (CA)](https://devel
 
 To restrict access to a specific client, use the **Common Name** selector to match the identity in the client certificate:
 
-* [ Dashboard ](#tab-panel-5804)
-* [ API ](#tab-panel-5805)
-* [ Terraform ](#tab-panel-5806)
+* [ Dashboard ](#tab-panel-4646)
+* [ API ](#tab-panel-4647)
+* [ Terraform ](#tab-panel-4648)
 
 | Action       | Rule type | Selector    | Value    |
 | ------------ | --------- | ----------- | -------- |
@@ -1514,9 +1518,9 @@ Explain Code
 
 To allow any client presenting a valid certificate signed by your CA, use the **Valid Certificate** selector. This selector is useful when you trust all certificates issued by your CA and do not need to check a specific Common Name.
 
-* [ Dashboard ](#tab-panel-5801)
-* [ API ](#tab-panel-5802)
-* [ Terraform ](#tab-panel-5803)
+* [ Dashboard ](#tab-panel-4643)
+* [ API ](#tab-panel-4644)
+* [ Terraform ](#tab-panel-4645)
 
 | Action       | Rule type | Selector          |
 | ------------ | --------- | ----------------- |
@@ -1593,9 +1597,9 @@ resource "cloudflare_zero_trust_access_policy" "authenticate_service_with_valid_
 
 For applications such as database admin tools, production consoles, or HR systems, you can require users to provide a written reason each time they access the application. This creates an audit trail that helps security teams understand why access was requested. The justification prompt appears after the user authenticates and before they reach the application. For more information, refer to [Require purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/).
 
-* [ Dashboard ](#tab-panel-5834)
-* [ API ](#tab-panel-5835)
-* [ Terraform ](#tab-panel-5836)
+* [ Dashboard ](#tab-panel-4676)
+* [ API ](#tab-panel-4677)
+* [ Terraform ](#tab-panel-4678)
 
 | Action  | Rule type  | Selector                  | Value             |
 | ------- | ---------- | ------------------------- | ----------------- |
@@ -1753,9 +1757,9 @@ You can combine purpose justification with [temporary authentication](https://de
 
 Some applications have endpoints that must be publicly reachable, such as OAuth callback URLs, webhook receivers, or health check paths. You can create a Bypass policy scoped to a specific [application path](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/) to disable Access enforcement for that endpoint only. For example, if your application is `app.example.com`, you could create a separate Access application for `app.example.com/oauth/callback` and apply the following Bypass policy:
 
-* [ Dashboard ](#tab-panel-5807)
-* [ API ](#tab-panel-5808)
-* [ Terraform ](#tab-panel-5809)
+* [ Dashboard ](#tab-panel-4649)
+* [ API ](#tab-panel-4650)
+* [ Terraform ](#tab-panel-4651)
 
 | Action | Rule type | Selector | Value    |
 | ------ | --------- | -------- | -------- |

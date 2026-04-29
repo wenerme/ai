@@ -4,6 +4,10 @@ description: Publish a self-hosted web application with Cloudflare Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Publish a self-hosted application to the Internet
@@ -101,8 +105,11 @@ However, the following products are not supported:
 
 * [Automatic Platform Optimization](https://developers.cloudflare.com/automatic-platform-optimization)
 * [Zaraz](https://developers.cloudflare.com/zaraz)
+* [Google tag gateway for advertisers](https://developers.cloudflare.com/google-tag-gateway)
 
 You can disable Zaraz for a specific application - instead of across your entire zone - using a [Configuration Rule](https://developers.cloudflare.com/rules/configuration-rules/) scoped to the application domain.
+
+Google tag gateway is configured at the zone level and cannot be scoped to specific hostnames. To use Access binding cookie on a hostname, disable Google tag gateway for the entire zone.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/","name":"Add web applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/","name":"Publish a self-hosted application to the Internet"}}]}

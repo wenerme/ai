@@ -4,6 +4,10 @@ description: Turn on Bot Fight Mode to challenge requests matching bot patterns 
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Bot Fight Mode
@@ -33,8 +37,8 @@ If you are using several app security features like custom rules, Managed Rules,
 
 To start using Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-5539)
-* [ Old dashboard ](#tab-panel-5540)
+* [  New dashboard ](#tab-panel-4375)
+* [ Old dashboard ](#tab-panel-4376)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -61,8 +65,8 @@ If you find that **Bot Fight Mode** is causing problems with your application tr
 
 To disable Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-5537)
-* [ Old dashboard ](#tab-panel-5538)
+* [  New dashboard ](#tab-panel-4373)
+* [ Old dashboard ](#tab-panel-4374)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

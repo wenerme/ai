@@ -4,6 +4,10 @@ description: Route traffic to private networks and services through Cloudflare T
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Routing
@@ -51,8 +55,8 @@ The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the sam
 
 To create a DNS record for a Cloudflare Tunnel:
 
-* [ Dashboard ](#tab-panel-9238)
-* [ CLI ](#tab-panel-9239)
+* [ Dashboard ](#tab-panel-8097)
+* [ CLI ](#tab-panel-8098)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

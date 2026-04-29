@@ -4,6 +4,10 @@ description: Use the Node.js http module in Cloudflare Workers for client and se
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # http
@@ -20,8 +24,8 @@ To use the HTTP client-side methods (`http.get`, `http.request`, etc.), you must
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-08-15` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9035)
-* [  wrangler.toml ](#tab-panel-9036)
+* [  wrangler.jsonc ](#tab-panel-9063)
+* [  wrangler.toml ](#tab-panel-9064)
 
 JSONC
 
@@ -57,8 +61,8 @@ To use the HTTP server-side methods (`http.createServer`, `http.Server`, `http.S
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-09-01` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9037)
-* [  wrangler.toml ](#tab-panel-9038)
+* [  wrangler.jsonc ](#tab-panel-9065)
+* [  wrangler.toml ](#tab-panel-9066)
 
 JSONC
 
@@ -90,8 +94,8 @@ compatibility_flags = [ "nodejs_compat", "enable_nodejs_http_server_modules" ]
 
 To use both client-side and server-side methods, enable both flags:
 
-* [  wrangler.jsonc ](#tab-panel-9039)
-* [  wrangler.toml ](#tab-panel-9040)
+* [  wrangler.jsonc ](#tab-panel-9067)
+* [  wrangler.toml ](#tab-panel-9068)
 
 JSONC
 

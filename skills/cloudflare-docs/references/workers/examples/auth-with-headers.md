@@ -4,6 +4,10 @@ description: Allow or deny a request based on a known pre-shared key in a header
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -20,10 +24,10 @@ Caution when using in production
 
 The example code contains a generic header key and value of `X-Custom-PSK` and `mypresharedkey`. To best protect your resources, change the header key and value in the Workers editor before saving your code.
 
-* [  JavaScript ](#tab-panel-9779)
-* [  TypeScript ](#tab-panel-9780)
-* [  Python ](#tab-panel-9781)
-* [  Hono ](#tab-panel-9782)
+* [  JavaScript ](#tab-panel-8664)
+* [  TypeScript ](#tab-panel-8665)
+* [  Python ](#tab-panel-8666)
+* [  Hono ](#tab-panel-8667)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Learn how to create API tokens via Cloudflare's API. Follow steps t
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create tokens via API
@@ -230,8 +234,8 @@ Each parameter in the `in` and `not_in` objects must be in CIDR notation. For ex
 
 Combine the previous information to create a token as in the following example:
 
-* [ Account token ](#tab-panel-7153)
-* [ User token ](#tab-panel-7154)
+* [ Account token ](#tab-panel-5995)
+* [ User token ](#tab-panel-5996)
 
 Terminal window
 

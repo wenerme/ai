@@ -4,15 +4,19 @@ description: API reference for the DurableObject abstract base class and its han
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Durable Object Base Class
 
 The `DurableObject` base class is an abstract class which all Durable Objects inherit from. This base class provides a set of optional methods, frequently referred to as handler methods, which can respond to events, for example a `webSocketMessage` when using the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api). To provide a concrete example, here is a Durable Object `MyDurableObject` which extends `DurableObject` and implements the fetch handler to return "Hello, World!" to the calling Worker.
 
-* [  JavaScript ](#tab-panel-6823)
-* [  TypeScript ](#tab-panel-6824)
-* [  Python ](#tab-panel-6825)
+* [  JavaScript ](#tab-panel-5665)
+* [  TypeScript ](#tab-panel-5666)
+* [  Python ](#tab-panel-5667)
 
 JavaScript
 
@@ -103,8 +107,8 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-6813)
-* [  TypeScript ](#tab-panel-6814)
+* [  JavaScript ](#tab-panel-5655)
+* [  TypeScript ](#tab-panel-5656)
 
 JavaScript
 
@@ -176,8 +180,8 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-6815)
-* [  TypeScript ](#tab-panel-6816)
+* [  JavaScript ](#tab-panel-5657)
+* [  TypeScript ](#tab-panel-5658)
 
 JavaScript
 
@@ -241,8 +245,8 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-6817)
-* [  TypeScript ](#tab-panel-6818)
+* [  JavaScript ](#tab-panel-5659)
+* [  TypeScript ](#tab-panel-5660)
 
 JavaScript
 
@@ -314,8 +318,8 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-6821)
-* [  TypeScript ](#tab-panel-6822)
+* [  JavaScript ](#tab-panel-5663)
+* [  TypeScript ](#tab-panel-5664)
 
 JavaScript
 
@@ -382,8 +386,8 @@ export class MyDurableObject extends DurableObject<Env> {
 
 #### Example
 
-* [  JavaScript ](#tab-panel-6819)
-* [  TypeScript ](#tab-panel-6820)
+* [  JavaScript ](#tab-panel-5661)
+* [  TypeScript ](#tab-panel-5662)
 
 JavaScript
 

@@ -4,6 +4,10 @@ description: Add background tasks to a built-in FIFO queue for asynchronous proc
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Queue tasks
@@ -71,8 +75,8 @@ async queue<T>(
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4518)
-* [  TypeScript ](#tab-panel-4519)
+* [  JavaScript ](#tab-panel-3352)
+* [  TypeScript ](#tab-panel-3353)
 
 JavaScript
 
@@ -171,8 +175,8 @@ dequeue(id: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4508)
-* [  TypeScript ](#tab-panel-4509)
+* [  JavaScript ](#tab-panel-3342)
+* [  TypeScript ](#tab-panel-3343)
 
 JavaScript
 
@@ -211,8 +215,8 @@ dequeueAll(): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4510)
-* [  TypeScript ](#tab-panel-4511)
+* [  JavaScript ](#tab-panel-3344)
+* [  TypeScript ](#tab-panel-3345)
 
 JavaScript
 
@@ -255,8 +259,8 @@ dequeueAllByCallback(callback: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4512)
-* [  TypeScript ](#tab-panel-4513)
+* [  JavaScript ](#tab-panel-3346)
+* [  TypeScript ](#tab-panel-3347)
 
 JavaScript
 
@@ -303,8 +307,8 @@ The payload is automatically parsed from JSON before being returned.
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4516)
-* [  TypeScript ](#tab-panel-4517)
+* [  JavaScript ](#tab-panel-3350)
+* [  TypeScript ](#tab-panel-3351)
 
 JavaScript
 
@@ -364,8 +368,8 @@ This method fetches all queue items and filters them in memory by parsing each p
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4514)
-* [  TypeScript ](#tab-panel-4515)
+* [  JavaScript ](#tab-panel-3348)
+* [  TypeScript ](#tab-panel-3349)
 
 JavaScript
 
@@ -414,8 +418,8 @@ async callbackMethod(payload: unknown, queueItem: QueueItem): Promise<void>
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-4522)
-* [  TypeScript ](#tab-panel-4523)
+* [  JavaScript ](#tab-panel-3356)
+* [  TypeScript ](#tab-panel-3357)
 
 JavaScript
 
@@ -517,8 +521,8 @@ Explain Code
 
 ### Background processing
 
-* [  JavaScript ](#tab-panel-4520)
-* [  TypeScript ](#tab-panel-4521)
+* [  JavaScript ](#tab-panel-3354)
+* [  TypeScript ](#tab-panel-3355)
 
 JavaScript
 
@@ -600,8 +604,8 @@ Explain Code
 
 ### Batch operations
 
-* [  JavaScript ](#tab-panel-4524)
-* [  TypeScript ](#tab-panel-4525)
+* [  JavaScript ](#tab-panel-3358)
+* [  TypeScript ](#tab-panel-3359)
 
 JavaScript
 
@@ -703,8 +707,8 @@ Explain Code
 
 Use the built-in `retry` option instead of manual re-queue logic. When a callback throws, the task is automatically retried with exponential backoff:
 
-* [  JavaScript ](#tab-panel-4526)
-* [  TypeScript ](#tab-panel-4527)
+* [  JavaScript ](#tab-panel-3360)
+* [  TypeScript ](#tab-panel-3361)
 
 JavaScript
 

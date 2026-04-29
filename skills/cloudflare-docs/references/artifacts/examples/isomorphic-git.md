@@ -4,6 +4,10 @@ description: Push commits to Artifacts repos from Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # isomorphic-git
@@ -44,8 +48,8 @@ Protect write-capable routes
 
 This example omits authentication so it can focus on the Git flow. In production, authorize the caller before creating repos or granting write capability.
 
-* [  JavaScript ](#tab-panel-5493)
-* [  TypeScript ](#tab-panel-5494)
+* [  JavaScript ](#tab-panel-4329)
+* [  TypeScript ](#tab-panel-4330)
 
 src/index.js
 
@@ -296,8 +300,8 @@ In-memory filesystem helper
 
 Use this helper with `isomorphic-git` in Workers when you need a short-lived working tree in memory.
 
-* [  JavaScript ](#tab-panel-5495)
-* [  TypeScript ](#tab-panel-5496)
+* [  JavaScript ](#tab-panel-4331)
+* [  TypeScript ](#tab-panel-4332)
 
 src/memory-fs.js
 

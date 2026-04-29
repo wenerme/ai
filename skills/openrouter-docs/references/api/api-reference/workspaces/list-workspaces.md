@@ -1,8 +1,8 @@
-# List workspaces
-
 > For clean Markdown of any page, append .md to the page URL.
-> For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/workspaces/llms.txt.
-> For full documentation content, see https://openrouter.ai/docs/api/api-reference/workspaces/llms-full.txt.
+> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+
+# List workspaces
 
 GET https://openrouter.ai/api/v1/workspaces
 

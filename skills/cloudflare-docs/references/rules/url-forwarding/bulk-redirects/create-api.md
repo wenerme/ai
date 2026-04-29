@@ -4,6 +4,10 @@ description: Learn how to create Bulk Redirects using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Create Bulk Redirects via API
@@ -569,8 +573,8 @@ Explain Code
 
 The API token used in API requests to manage Bulk Redirects objects (lists, list items, and rules) must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* [ Dashboard ](#tab-panel-8585)
-* [ API ](#tab-panel-8586)
+* [ Dashboard ](#tab-panel-7427)
+* [ API ](#tab-panel-7428)
 
 * _Account_ \> _Bulk URL Redirects_ \> _Edit_
 * _Account_ \> _Account Filter Lists_ \> _Edit_

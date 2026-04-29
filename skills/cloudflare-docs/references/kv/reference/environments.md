@@ -4,6 +4,10 @@ description: Bind different Workers KV namespaces to the same Worker across stag
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Environments
@@ -12,8 +16,8 @@ KV namespaces can be used with [environments](https://developers.cloudflare.com/
 
 The following code in the Wrangler file shows you how to have two environments that have two different KV namespaces but the same binding name:
 
-* [  wrangler.jsonc ](#tab-panel-7522)
-* [  wrangler.toml ](#tab-panel-7523)
+* [  wrangler.jsonc ](#tab-panel-6364)
+* [  wrangler.toml ](#tab-panel-6365)
 
 JSONC
 
@@ -120,8 +124,8 @@ Specifying an environment with the optional `--env` flag allows you to publish W
 
 For example, you could use separate staging and production KV namespaces for KV data in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7524)
-* [  wrangler.toml ](#tab-panel-7525)
+* [  wrangler.jsonc ](#tab-panel-6366)
+* [  wrangler.toml ](#tab-panel-6367)
 
 JSONC
 

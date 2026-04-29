@@ -4,6 +4,10 @@ description: Buckets in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -20,8 +24,8 @@ You can configure an Amazon S3 or Google Cloud Platform bucket to use as a targe
 
 Learn how to set up a bucket for use with full packet captures.
 
-* [ Dashboard ](#tab-panel-5854)
-* [ API ](#tab-panel-5855)
+* [ Dashboard ](#tab-panel-4696)
+* [ API ](#tab-panel-4697)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** \> **Diagnostics**.
 2. Select the **Buckets** tab > **Add a bucket**.
@@ -41,8 +45,8 @@ Next, validate the bucket and confirm ownership.
 
 After the initial bucket set up, you need to confirm you own the bucket via an ownership challenge. After you validate your bucket, you can begin using it to collect full packet captures.
 
-* [ Dashboard ](#tab-panel-5856)
-* [ API ](#tab-panel-5857)
+* [ Dashboard ](#tab-panel-4698)
+* [ API ](#tab-panel-4699)
 
 1. From the **Prove ownership** step of the **Bucket configuration**, locate the **Ownership token** field.
 2. In the **Ownership token** field, enter the ownership token for your service provider.
@@ -182,8 +186,8 @@ The bucket status displays one of the following options:
 
 View a list of all buckets configured on your account.
 
-* [ Dashboard ](#tab-panel-5858)
-* [ API ](#tab-panel-5859)
+* [ Dashboard ](#tab-panel-4700)
+* [ API ](#tab-panel-4701)
 
 1. In the Cloudflare dashboard, go to the **Network health** page.  
 [ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)

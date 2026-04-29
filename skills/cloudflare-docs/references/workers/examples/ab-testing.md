@@ -4,6 +4,10 @@ description: Set up an A/B test by controlling what response is served based on 
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -16,10 +20,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Set up an A/B test by controlling what response is served based on cookies. This version supports passing the request through to test and control on the origin, bypassing random assignment.
 
-* [  JavaScript ](#tab-panel-9759)
-* [  TypeScript ](#tab-panel-9760)
-* [  Python ](#tab-panel-9761)
-* [  Hono ](#tab-panel-9762)
+* [  JavaScript ](#tab-panel-8644)
+* [  TypeScript ](#tab-panel-8645)
+* [  Python ](#tab-panel-8646)
+* [  Hono ](#tab-panel-8647)
 
 JavaScript
 

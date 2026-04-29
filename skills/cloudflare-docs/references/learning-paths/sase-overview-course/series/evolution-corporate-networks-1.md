@@ -4,12 +4,16 @@ description: Explore how corporate networks have evolved.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # The evolution of corporate networks
 
-* [ Watch this episode ](#tab-panel-7630)
-* [ Series overview ](#tab-panel-7631)
+* [ Watch this episode ](#tab-panel-6526)
+* [ Series overview ](#tab-panel-6527)
 
 In this video, we discuss Cloudflare One, our Secure Access Service Edge (SASE) platform and how it has been designed to revolutionize the corporate network and enable companies with their Zero Trust strategy. Legacy network design is struggling to address today's challenges of security, performance and monitoring needs. Many IT teams are trying to evolve their corporate network with point solutions and finding the lack of integration and performance an issue.
 

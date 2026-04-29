@@ -4,6 +4,10 @@ description: Create Network-layer DDoS Attack Protection overrides in the dashbo
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Configure in the dashboard
@@ -40,8 +44,8 @@ Notes
 
 ### Delete a DDoS override
 
-* [  New dashboard ](#tab-panel-6703)
-* [ Old dashboard ](#tab-panel-6704)
+* [  New dashboard ](#tab-panel-5545)
+* [ Old dashboard ](#tab-panel-5546)
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.  
 [ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)

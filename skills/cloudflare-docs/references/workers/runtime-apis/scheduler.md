@@ -4,6 +4,10 @@ description: Use the scheduler.wait() API to delay execution in Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Scheduler
@@ -48,8 +52,8 @@ A `Promise<void>` that resolves after `delay` milliseconds. If an `AbortSignal` 
 
 Use `scheduler.wait()` to pause execution for a specified duration.
 
-* [  JavaScript ](#tab-panel-9085)
-* [  TypeScript ](#tab-panel-9086)
+* [  JavaScript ](#tab-panel-9113)
+* [  TypeScript ](#tab-panel-9114)
 
 JavaScript
 
@@ -97,8 +101,8 @@ export default {
 
 Use `scheduler.wait()` to implement a delay between retry attempts. This example uses exponential backoff with jitter.
 
-* [  JavaScript ](#tab-panel-9089)
-* [  TypeScript ](#tab-panel-9090)
+* [  JavaScript ](#tab-panel-9117)
+* [  TypeScript ](#tab-panel-9118)
 
 JavaScript
 
@@ -226,8 +230,8 @@ Explain Code
 
 Use an [AbortController](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) to cancel a pending wait.
 
-* [  JavaScript ](#tab-panel-9087)
-* [  TypeScript ](#tab-panel-9088)
+* [  JavaScript ](#tab-panel-9115)
+* [  TypeScript ](#tab-panel-9116)
 
 JavaScript
 

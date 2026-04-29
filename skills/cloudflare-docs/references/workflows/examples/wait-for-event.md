@@ -4,6 +4,10 @@ description: Human-in-the-loop Workflow with waitForEvent API
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 ### Tags
@@ -45,8 +49,8 @@ The `index.ts` file defines the core logic of the Cloudflare Workflow responsibl
 
 For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
 
-* [  JavaScript ](#tab-panel-11194)
-* [  TypeScript ](#tab-panel-11195)
+* [  JavaScript ](#tab-panel-10079)
+* [  TypeScript ](#tab-panel-10080)
 
 JavaScript
 
@@ -224,8 +228,8 @@ Explain Code
 
 The Workflow configuration is defined in the `wrangler.jsonc` file. This file includes bindings for the R2 bucket, D1 database, Workers AI, and the Workflow itself. Ensure that all necessary bindings and environment variables are correctly set up to match your Cloudflare account and services.
 
-* [  wrangler.jsonc ](#tab-panel-11192)
-* [  wrangler.toml ](#tab-panel-11193)
+* [  wrangler.jsonc ](#tab-panel-10077)
+* [  wrangler.toml ](#tab-panel-10078)
 
 JSONC
 
@@ -241,7 +245,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-24",
+  "compatibility_date": "2026-04-29",
 
   "observability": {
 
@@ -316,7 +320,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-24"
+compatibility_date = "2026-04-29"
 
 
 [observability]

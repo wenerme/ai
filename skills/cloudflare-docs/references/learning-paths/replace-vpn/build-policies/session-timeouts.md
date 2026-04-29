@@ -4,6 +4,10 @@ description: Configure WARP session timeout settings.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
 [Skip to content](#%5Ftop) 
 
 # Session timeouts
@@ -28,8 +32,8 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-* [ Dashboard ](#tab-panel-7645)
-* [ Terraform (v5) ](#tab-panel-7646)
+* [ Dashboard ](#tab-panel-6487)
+* [ Terraform (v5) ](#tab-panel-6488)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to either **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
 2. Add a policy and select the _Allow_ action. Alternatively, choose any existing _Allow_ policy.
