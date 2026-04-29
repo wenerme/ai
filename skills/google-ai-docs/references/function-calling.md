@@ -1,5 +1,3 @@
-# Function calling with the Gemini API
-
 Function calling lets you connect models to external tools and APIs.
 Instead of generating text responses, the model determines when to call specific
 functions and provides the necessary parameters to execute real-world actions.

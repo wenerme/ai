@@ -1,11 +1,11 @@
 ---
 title: "Weights & Biases | Models"
-description: "Use Weights & Biases models with Mastra. 17 models available."
+description: "Use Weights & Biases models with Mastra. 18 models available."
 ---
 
 # [Weights & Biases logo]Weights & Biases
 
-Access 17 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
+Access 18 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
 
 Learn more in the [Weights & Biases documentation](https://docs.wandb.ai).
 
@@ -242,6 +242,18 @@ for await (const chunk of stream) {
     "maxOutput": 200000,
     "inputCost": 1,
     "outputCost": 3.2
+  },
+  {
+    "model": "wandb/zai-org/GLM-5.1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 131072,
+    "inputCost": 1.4,
+    "outputCost": 4.4
   }
 ]}
 />
@@ -274,7 +286,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "wandb/zai-org/GLM-5-FP8"
+      ? "wandb/zai-org/GLM-5.1"
       : "wandb/MiniMaxAI/MiniMax-M2.5";
   }
 });

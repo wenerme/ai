@@ -46,7 +46,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.  
+Configure Zero Trust access policies to protect my internal staging environment.  
 ```
 
 ## Cloudflare platform access

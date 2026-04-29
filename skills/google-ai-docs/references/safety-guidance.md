@@ -1,5 +1,3 @@
-# Safety and factuality guidance
-
 Generative artificial intelligence models are powerful tools, but they are not
 without their limitations. Their versatility and applicability can sometimes
 lead to unexpected outputs, such as outputs that are inaccurate, biased, or

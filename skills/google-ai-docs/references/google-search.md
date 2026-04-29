@@ -1,4 +1,4 @@
-# Grounding with Google Search connects the Gemini model to real-time web content
+Grounding with Google Search connects the Gemini model to real-time web content
 and works with all available languages. This allows
 Gemini to provide more accurate answers and cite verifiable sources beyond its
 knowledge cutoff.

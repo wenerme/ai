@@ -1,5 +1,3 @@
-# Files API
-
 Gemini can handle various types of input data, including text, images, and
 audio, at the same time.
 

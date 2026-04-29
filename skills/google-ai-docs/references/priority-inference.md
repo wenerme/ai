@@ -1,5 +1,3 @@
-# Priority inference
-
 > [!WARNING]
 > **Preview:** The Gemini Priority API is in [Preview](https://cloud.google.com/products#product-launch-stages).
 

@@ -1,5 +1,3 @@
-# Image understanding
-
 Gemini models are built to be multimodal from the ground up, unlocking a wide
 range of image processing and computer vision tasks including but not limited to
 image captioning, classification, and visual question answering without having

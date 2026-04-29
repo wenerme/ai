@@ -1,5 +1,3 @@
-# Code execution
-
 The Gemini API provides a code execution tool that enables the model to
 generate and run Python code. The model can then learn iteratively from the
 code execution results until it arrives at a final output. You can use code

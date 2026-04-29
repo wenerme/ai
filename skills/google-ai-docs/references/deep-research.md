@@ -1,5 +1,3 @@
-# Gemini Deep Research Agent
-
 The Gemini Deep Research Agent autonomously plans, executes, and synthesizes
 multi-step research tasks. Powered by Gemini, it navigates complex
 information landscapes to produce detailed, cited reports. New

@@ -49,7 +49,7 @@ For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-
 4. **Try a prompt**  
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:  
 ```  
-Add mTLS authentication and schema validation to protect my API endpoints.  
+Configure Zero Trust access policies to protect my internal staging environment.  
 ```
 
 ## Cloudflare platform access

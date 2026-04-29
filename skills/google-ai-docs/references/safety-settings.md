@@ -1,5 +1,3 @@
-# Safety settings
-
 The Gemini API provides safety settings that you can adjust during the
 prototyping stage to determine if your application requires a more or less
 restrictive safety configuration. You can adjust these settings across four

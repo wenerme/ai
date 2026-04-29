@@ -1,5 +1,3 @@
-# Available regions for Google AI Studio and Gemini API
-
 If you reached this page while attempting to access [Google AI Studio](https://aistudio.google.com/), it may
 be due to one of the following reasons:
 

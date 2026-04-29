@@ -1,11 +1,11 @@
 ---
 title: "Nvidia | Models"
-description: "Use Nvidia models with Mastra. 79 models available."
+description: "Use Nvidia models with Mastra. 80 models available."
 ---
 
 # [Nvidia logo]Nvidia
 
-Access 79 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
+Access 80 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
 
 Learn more in the [Nvidia documentation](https://docs.api.nvidia.com/nim/).
 
@@ -768,6 +768,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 65536,
     "inputCost": null,
     "outputCost": null
   },

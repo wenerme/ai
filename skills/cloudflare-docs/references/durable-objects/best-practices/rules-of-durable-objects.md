@@ -4492,7 +4492,7 @@ This pattern does not scale. As traffic increases, the single Durable Object bec
 
 ### Test with Vitest and plan for class migrations
 
-Use `@cloudflare/vitest-pool-workers` for testing Durable Objects. The integration provides isolated storage per test and utilities for direct instance access.
+Use `@cloudflare/vitest-pool-workers` for testing Durable Objects. The integration provides utilities for direct instance access.
 
 * [  JavaScript ](#tab-panel-5760)
 * [  TypeScript ](#tab-panel-5761)
@@ -4509,8 +4509,6 @@ import { describe, it, expect } from "vitest";
 
 
 describe("ChatRoom", () => {
-
-  // Each test gets isolated storage automatically
 
   it("should send and retrieve messages", async () => {
 
@@ -4550,7 +4548,7 @@ describe("ChatRoom", () => {
 
         .one();
 
-      expect(count.count).toBe(0); // Fresh instance due to test isolation
+      expect(count.count).toBe(2);
 
     });
 
@@ -4589,7 +4587,6 @@ import { describe, it, expect } from "vitest";
 
 describe("ChatRoom", () => {
 
-// Each test gets isolated storage automatically
 
 it("should send and retrieve messages", async () => {
 
@@ -4629,7 +4626,7 @@ const stub = env.CHAT_ROOM.get(id);
 
           .one();
 
-        expect(count.count).toBe(0); // Fresh instance due to test isolation
+        expect(count.count).toBe(2);
 
       });
 

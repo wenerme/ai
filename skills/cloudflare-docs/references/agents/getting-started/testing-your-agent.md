@@ -28,81 +28,33 @@ Terminal window
 
 ```
 
-npm install vitest@~3.0.0 --save-dev --save-exact
-
-npm install @cloudflare/vitest-pool-workers --save-dev
+npm install vitest@^4.1.0 @cloudflare/vitest-pool-workers --save-dev
 
 
 ```
 
-Ensure that your `vitest.config.js` file is identical to the following:
+Ensure that your `vitest.config.js` has the `cloudflareTest` plugin configured:
 
 JavaScript
 
 ```
 
-import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+
+import { defineConfig } from "vitest/config";
 
 
-export default defineWorkersConfig({
+export default defineConfig({
 
-  test: {
+  plugins: [
 
-    poolOptions: {
+    cloudflareTest({
 
-      workers: {
+      wrangler: { configPath: "./wrangler.jsonc" },
 
-        wrangler: { configPath: "./wrangler.jsonc" },
+    }),
 
-      },
-
-    },
-
-  },
-
-});
-
-
-```
-
-Explain Code
-
-### Add the Agent configuration
-
-Add a `durableObjects` configuration to `vitest.config.js` with the name of your Agent class:
-
-JavaScript
-
-```
-
-import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
-
-
-export default defineWorkersConfig({
-
-  test: {
-
-    poolOptions: {
-
-      workers: {
-
-        main: "./src/index.ts",
-
-        miniflare: {
-
-          durableObjects: {
-
-            NAME: "MyAgent",
-
-          },
-
-        },
-
-      },
-
-    },
-
-  },
+  ],
 
 });
 
@@ -123,15 +75,13 @@ TypeScript
 
 ```
 
-import {
+import { env, exports } from "cloudflare:workers";
 
-  env,
+import {
 
   createExecutionContext,
 
   waitOnExecutionContext,
-
-  SELF,
 
 } from "cloudflare:test";
 
@@ -176,7 +126,7 @@ describe("make a request to my Agent", () => {
 
     const request = new Request("http://example.com/agent/my-agent/agent-123");
 
-    const response = await SELF.fetch(request);
+    const response = await exports.default.fetch(request);
 
     expect(await response.text()).toMatchObject({ hello: "from your agent" });
 

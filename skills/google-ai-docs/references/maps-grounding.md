@@ -1,4 +1,4 @@
-# Grounding with Google Maps connects the generative capabilities of Gemini with
+Grounding with Google Maps connects the generative capabilities of Gemini with
 the rich, factual, and up-to-date data of Google Maps. This feature enables
 developers to easily incorporate location-aware functionality into their
 applications. When a user query has a context related to Maps data, the Gemini

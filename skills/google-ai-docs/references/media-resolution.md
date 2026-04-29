@@ -1,5 +1,3 @@
-# Media resolution
-
 The `media_resolution` parameter controls how the Gemini API processes media inputs like images, videos, and PDF documents by determining the **maximum number of tokens** allocated for media inputs, allowing you to balance response quality against latency and cost. For different settings, default values and how they correspond to tokens, see the [Token counts](https://ai.google.dev/gemini-api/docs/media-resolution#token-counts) section.
 
 You can configure media resolution in two ways:

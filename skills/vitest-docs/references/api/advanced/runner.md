@@ -135,7 +135,7 @@ export default class Runner {
 
 > **warning**: If you don't have a custom runner or didn't define `runTest` method, Vitest will try to retrieve a task automatically. If you didn't add a function with `setFn`, it will fail.
 
-> **tip**: Snapshot support and some other features depend on the runner. If you don't want to lose it, you can extend your runner from `VitestTestRunner` imported from `vitest/runners`. It also exposes `NodeBenchmarkRunner`, if you want to extend benchmark functionality.
+> **tip**: Snapshot support and some other features depend on the runner. If you don't want to lose it, you can extend your runner from `TestRunner` imported from `vitest`. It also exposes `NodeBenchmarkRunner`, if you want to extend benchmark functionality.
 
 ## Tasks
 

@@ -1,5 +1,3 @@
-# Gemini deprecations
-
 <br />
 
 This page lists the known deprecation schedules for [stable (GA)](https://ai.google.dev/gemini-api/docs/models#stable) and [preview](https://ai.google.dev/gemini-api/docs/models#preview)

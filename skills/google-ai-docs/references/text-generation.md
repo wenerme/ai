@@ -1,5 +1,3 @@
-# Text generation
-
 The Gemini API can generate text output from text, images, video, and audio
 inputs.
 

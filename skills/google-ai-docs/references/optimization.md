@@ -1,5 +1,3 @@
-# Gemini API optimization and inference
-
 The Gemini API offers a variety of optimization mechanisms to help you balance
 speed, cost, and reliability based on your specific workload needs.
 Whether you're building real-time conversational bots or running heavy offline

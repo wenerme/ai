@@ -1,5 +1,3 @@
-# Computer Use
-
 <br />
 
 Computer Use enables you to build browser control agents that interact

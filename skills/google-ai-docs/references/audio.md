@@ -1,5 +1,3 @@
-# Audio understanding
-
 Gemini can analyze audio input and generate text responses.
 
 ### Python

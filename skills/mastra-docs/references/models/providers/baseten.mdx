@@ -1,11 +1,11 @@
 ---
 title: "Baseten | Models"
-description: "Use Baseten models with Mastra. 10 models available."
+description: "Use Baseten models with Mastra. 11 models available."
 ---
 
 # [Baseten logo]Baseten
 
-Access 10 Baseten models through Mastra's model router. Authentication is handled automatically using the `BASETEN_API_KEY` environment variable.
+Access 11 Baseten models through Mastra's model router. Authentication is handled automatically using the `BASETEN_API_KEY` environment variable.
 
 Learn more in the [Baseten documentation](https://docs.baseten.co/development/model-apis/overview).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 131000,
     "inputCost": 0.5,
     "outputCost": 1.5
+  },
+  {
+    "model": "baseten/deepseek-ai/DeepSeek-V4-Pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 1.74,
+    "outputCost": 3.48
   },
   {
     "model": "baseten/MiniMaxAI/MiniMax-M2.5",

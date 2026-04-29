@@ -448,8 +448,8 @@ declare module "cloudflare:workers" {
 
 You can get a stub to a Durable Object directly from the `env` object provided by `cloudflare:workers`:
 
-* [  JavaScript ](#tab-panel-5824)
-* [  TypeScript ](#tab-panel-5825)
+* [  JavaScript ](#tab-panel-5820)
+* [  TypeScript ](#tab-panel-5821)
 
 test/counter.test.js
 
@@ -461,8 +461,6 @@ import { describe, it, expect, beforeEach } from "vitest";
 
 
 describe("Counter Durable Object", () => {
-
-  // Each test gets isolated storage automatically
 
   it("should increment the counter", async () => {
 
@@ -490,25 +488,14 @@ describe("Counter Durable Object", () => {
   });
 
 
-  it("should track separate counters independently", async () => {
+  it("should persist storage within a test file", async () => {
 
     const id = env.COUNTER.idFromName("test-counter");
 
     const stub = env.COUNTER.get(id);
 
 
-    await stub.increment("counter-a");
-
-    await stub.increment("counter-a");
-
-    await stub.increment("counter-b");
-
-
-    expect(await stub.getCount("counter-a")).toBe(2);
-
-    expect(await stub.getCount("counter-b")).toBe(1);
-
-    expect(await stub.getCount("counter-c")).toBe(0);
+    expect(await stub.getCount()).toBe(3);
 
   });
 
@@ -579,8 +566,6 @@ import { describe, it, expect, beforeEach } from "vitest";
 
 describe("Counter Durable Object", () => {
 
-  // Each test gets isolated storage automatically
-
   it("should increment the counter", async () => {
 
     const id = env.COUNTER.idFromName("test-counter");
@@ -607,25 +592,14 @@ describe("Counter Durable Object", () => {
   });
 
 
-  it("should track separate counters independently", async () => {
+  it("should persist storage within a test file", async () => {
 
     const id = env.COUNTER.idFromName("test-counter");
 
     const stub = env.COUNTER.get(id);
 
 
-    await stub.increment("counter-a");
-
-    await stub.increment("counter-a");
-
-    await stub.increment("counter-b");
-
-
-    expect(await stub.getCount("counter-a")).toBe(2);
-
-    expect(await stub.getCount("counter-b")).toBe(1);
-
-    expect(await stub.getCount("counter-c")).toBe(0);
+    expect(await stub.getCount()).toBe(3);
 
   });
 
@@ -689,8 +663,8 @@ Explain Code
 
 Use `exports.default.fetch()` to test your Worker's HTTP handler, which routes requests to Durable Objects:
 
-* [  JavaScript ](#tab-panel-5826)
-* [  TypeScript ](#tab-panel-5827)
+* [  JavaScript ](#tab-panel-5824)
+* [  TypeScript ](#tab-panel-5825)
 
 test/integration.test.js
 
@@ -896,8 +870,8 @@ Explain Code
 
 Use `runInDurableObject()` to access instance properties and storage directly. This is useful for verifying internal state or testing private methods:
 
-* [  JavaScript ](#tab-panel-5820)
-* [  TypeScript ](#tab-panel-5821)
+* [  JavaScript ](#tab-panel-5818)
+* [  TypeScript ](#tab-panel-5819)
 
 test/direct-access.test.js
 
@@ -1083,129 +1057,12 @@ describe("Direct Durable Object access", () => {
 
 Explain Code
 
-### Test isolation
-
-Each test automatically gets isolated storage. Durable Objects created in one test do not affect other tests:
-
-* [  JavaScript ](#tab-panel-5814)
-* [  TypeScript ](#tab-panel-5815)
-
-test/isolation.test.js
-
-```
-
-import { env } from "cloudflare:workers";
-
-import { listDurableObjectIds } from "cloudflare:test";
-
-import { describe, it, expect } from "vitest";
-
-
-describe("Test isolation", () => {
-
-  it("first test: creates a Durable Object", async () => {
-
-    const id = env.COUNTER.idFromName("isolated-counter");
-
-    const stub = env.COUNTER.get(id);
-
-
-    await stub.increment();
-
-    await stub.increment();
-
-    expect(await stub.getCount()).toBe(2);
-
-  });
-
-
-  it("second test: previous Durable Object does not exist", async () => {
-
-    // The Durable Object from the previous test is automatically cleaned up
-
-    const ids = await listDurableObjectIds(env.COUNTER);
-
-    expect(ids.length).toBe(0);
-
-
-    // Creating the same ID gives a fresh instance
-
-    const id = env.COUNTER.idFromName("isolated-counter");
-
-    const stub = env.COUNTER.get(id);
-
-    expect(await stub.getCount()).toBe(0);
-
-  });
-
-});
-
-
-```
-
-Explain Code
-
-test/isolation.test.ts
-
-```
-
-import { env } from "cloudflare:workers";
-
-import { listDurableObjectIds } from "cloudflare:test";
-
-import { describe, it, expect } from "vitest";
-
-
-describe("Test isolation", () => {
-
-  it("first test: creates a Durable Object", async () => {
-
-    const id = env.COUNTER.idFromName("isolated-counter");
-
-    const stub = env.COUNTER.get(id);
-
-
-    await stub.increment();
-
-    await stub.increment();
-
-    expect(await stub.getCount()).toBe(2);
-
-  });
-
-
-  it("second test: previous Durable Object does not exist", async () => {
-
-    // The Durable Object from the previous test is automatically cleaned up
-
-    const ids = await listDurableObjectIds(env.COUNTER);
-
-    expect(ids.length).toBe(0);
-
-
-    // Creating the same ID gives a fresh instance
-
-    const id = env.COUNTER.idFromName("isolated-counter");
-
-    const stub = env.COUNTER.get(id);
-
-    expect(await stub.getCount()).toBe(0);
-
-  });
-
-});
-
-
-```
-
-Explain Code
-
 ### Testing SQLite storage
 
 SQLite-backed Durable Objects work seamlessly in tests. The SQL API is available when your Durable Object class is configured with `new_sqlite_classes` in your Wrangler configuration:
 
-* [  JavaScript ](#tab-panel-5816)
-* [  TypeScript ](#tab-panel-5817)
+* [  JavaScript ](#tab-panel-5814)
+* [  TypeScript ](#tab-panel-5815)
 
 test/sqlite.test.js
 
@@ -1343,8 +1200,8 @@ Explain Code
 
 Use `runDurableObjectAlarm()` to immediately trigger a scheduled alarm without waiting for the timer. This allows you to test alarm handlers synchronously:
 
-* [  JavaScript ](#tab-panel-5818)
-* [  TypeScript ](#tab-panel-5819)
+* [  JavaScript ](#tab-panel-5816)
+* [  TypeScript ](#tab-panel-5817)
 
 test/alarm.test.js
 

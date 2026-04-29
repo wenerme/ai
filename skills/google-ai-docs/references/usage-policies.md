@@ -1,5 +1,3 @@
-# Abuse monitoring
-
 Google is committed to the responsible development and use of AI. To ensure the
 safety and integrity of the Gemini API, we have created these policy guidelines.
 By using the Gemini API, you agree to the following guidelines, the [Gemini API

@@ -1,5 +1,3 @@
-# File input methods
-
 This guide explains the different ways you can include media files such as
 images, audio, video, and documents when making requests to the Gemini API.
 The new methods are supported in all of the Gemini API endpoints, including

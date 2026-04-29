@@ -1,5 +1,3 @@
-# Gemini 3 Developer Guide
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 

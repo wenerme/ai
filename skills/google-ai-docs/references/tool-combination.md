@@ -1,5 +1,3 @@
-# Combine built-in tools and function calling
-
 > [!WARNING]
 > **Preview:** Built-in and custom tools combinations are in [Preview](https://cloud.google.com/products#product-launch-stages) and supported for [Gemini 3](https://ai.google.dev/gemini-api/docs/models#gemini-3) models only.
 

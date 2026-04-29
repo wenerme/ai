@@ -1,5 +1,3 @@
-# File Search
-
 The Gemini API enables Retrieval Augmented Generation ("RAG") through the File
 Search tool. File Search imports, chunks, and indexes your data to
 enable fast retrieval of relevant information based on a provided prompt. This
