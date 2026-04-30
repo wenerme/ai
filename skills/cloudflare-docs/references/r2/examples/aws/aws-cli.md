@@ -105,8 +105,6 @@ aws s3api list-objects-v2 --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestora
 
 ```
 
-Explain Code
-
 ## Generate presigned URLs
 
 You can also generate presigned links which allow you to share public access to a file temporarily.

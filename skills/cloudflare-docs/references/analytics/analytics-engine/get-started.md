@@ -188,8 +188,6 @@ ORDER BY t, avg_humidity DESC
 
 ```
 
-Explain Code
-
 This query first rounds the `timestamp` field to the nearest five minutes. Then, it groups by that field and city and calculates the average humidity in each city for a five minute period.
 
 Refer to [Querying Workers Analytics Engine from Grafana](https://developers.cloudflare.com/analytics/analytics-engine/grafana/) for more details on how to create efficient Grafana queries against Workers Analytics Engine.

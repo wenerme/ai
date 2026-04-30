@@ -48,8 +48,8 @@ The following bindings are available today:
 
 When you declare a binding on your Worker, you grant it a specific capability, such as being able to read and write files to an [R2](https://developers.cloudflare.com/r2/) bucket. For example:
 
-* [  wrangler.jsonc ](#tab-panel-8991)
-* [  wrangler.toml ](#tab-panel-8992)
+* [  wrangler.jsonc ](#tab-panel-9029)
+* [  wrangler.toml ](#tab-panel-9030)
 
 JSONC
 
@@ -92,8 +92,8 @@ bucket_name = "<MY_BUCKET_NAME>"
 
 ```
 
-* [  JavaScript ](#tab-panel-8977)
-* [  Python ](#tab-panel-8978)
+* [  JavaScript ](#tab-panel-9015)
+* [  Python ](#tab-panel-9016)
 
 JavaScript
 
@@ -213,8 +213,8 @@ export default {
 };  
 ```
 * It is as class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env),[DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):  
-   * [  JavaScript ](#tab-panel-8979)  
-   * [  Python ](#tab-panel-8980)  
+   * [  JavaScript ](#tab-panel-9017)  
+   * [  Python ](#tab-panel-9018)  
 JavaScript  
 ```  
 export class MyDurableObject extends DurableObject {  
@@ -231,8 +231,8 @@ class Default(WorkerEntrypoint):
     return Response(f"Hi {self.env.NAME}")  
 ```
 * It can be imported from `cloudflare:workers`:  
-   * [  JavaScript ](#tab-panel-8981)  
-   * [  Python ](#tab-panel-8982)  
+   * [  JavaScript ](#tab-panel-9019)  
+   * [  Python ](#tab-panel-9020)  
 JavaScript  
 ```  
 import { env } from "cloudflare:workers";  
@@ -249,8 +249,8 @@ print(f"Hi, {env.NAME}")
 
 Importing `env` from `cloudflare:workers` is useful when you need to access a binding such as [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) or [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/)in top-level global scope. For example, to initialize an API client:
 
-* [  JavaScript ](#tab-panel-8983)
-* [  Python ](#tab-panel-8984)
+* [  JavaScript ](#tab-panel-9021)
+* [  Python ](#tab-panel-9022)
 
 JavaScript
 
@@ -281,8 +281,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -310,8 +308,8 @@ Workers do not allow I/O from outside a request context. This means that even th
 
 For instance, environment variables and secrets are accessible, and you are able to call `env.NAMESPACE.get` to get a [Durable Object stub](https://developers.cloudflare.com/durable-objects/api/stub/) in the top-level context. However, calling methods on the Durable Object stub, making [calls to a KV store](https://developers.cloudflare.com/kv/api/), and [calling to other Workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) will not work.
 
-* [  JavaScript ](#tab-panel-8985)
-* [  Python ](#tab-panel-8986)
+* [  JavaScript ](#tab-panel-9023)
+* [  Python ](#tab-panel-9024)
 
 JavaScript
 
@@ -342,8 +340,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -369,12 +365,10 @@ class Default(WorkerEntrypoint):
 
 ```
 
-Explain Code
-
 Additionally, importing `env` from `cloudflare:workers` lets you avoid passing `env`as an argument through many function calls if you need to access a binding from a deeply-nested function. This can be helpful in a complex codebase.
 
-* [  JavaScript ](#tab-panel-8987)
-* [  Python ](#tab-panel-8988)
+* [  JavaScript ](#tab-panel-9025)
+* [  Python ](#tab-panel-9026)
 
 JavaScript
 
@@ -416,8 +410,6 @@ function getName() {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -450,8 +442,6 @@ def get_name():
 
 ```
 
-Explain Code
-
 Note
 
 While using `env` from `cloudflare:workers` may be simpler to write than passing it through a series of function calls, passing `env` as an argument is a helpful pattern for dependency injection and testing.
@@ -462,8 +452,8 @@ The `withEnv` function provides a mechanism for overriding values of `env`.
 
 Imagine a user has defined the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/)"NAME" to be "Alice" in their Wrangler configuration file and deployed a Worker. By default, logging`env.NAME` would print "Alice". Using the `withEnv` function, you can override the value of "NAME".
 
-* [  JavaScript ](#tab-panel-8989)
-* [  Python ](#tab-panel-8990)
+* [  JavaScript ](#tab-panel-9027)
+* [  Python ](#tab-panel-9028)
 
 JavaScript
 
@@ -506,8 +496,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -540,8 +528,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 This can be useful when testing code that relies on an imported `env` object.
 

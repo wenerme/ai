@@ -55,8 +55,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png) 
 
 ## Examples
@@ -94,8 +92,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png) 
 
 **Portrait Format**  — Vertical portrait-style image 
@@ -130,8 +126,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png) 
 
@@ -168,8 +162,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![With People](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png) 
 
 **Product Photo**  — Square product photography 
@@ -204,8 +196,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Product Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png) 
 

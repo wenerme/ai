@@ -199,8 +199,6 @@ tcp     LISTEN   0        4096                   *:9094                *:*
 
 ```
 
-Explain Code
-
 Users connect to GitLab over SSH (port 22 here) and HTTP for the web app (port 80). In the next step, you will make it possible for users to try both through Cloudflare Access. I'll leave this running and head over to the Cloudflare dashboard.
 
 ## Securing GitLab with Zero Trust rules
@@ -317,8 +315,6 @@ ingress:
 
 
 ```
-
-Explain Code
 
 ![Self Hosted](https://developers.cloudflare.com/_astro/config-file.C9yhlhb3_fa9dL.webp) 
 1. You can test that the configuration file is set correctly with the following command:

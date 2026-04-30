@@ -51,8 +51,8 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to download objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-7150)
-* [ Python ](#tab-panel-7151)
+* [ JavaScript ](#tab-panel-7148)
+* [ Python ](#tab-panel-7149)
 
 TypeScript
 
@@ -97,8 +97,6 @@ const response = await S3.send(
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -131,8 +129,6 @@ image_data = response["Body"].read()
 
 
 ```
-
-Explain Code
 
 Refer to R2's [S3 API documentation](https://developers.cloudflare.com/r2/api/s3/api/) for all S3 API methods.
 

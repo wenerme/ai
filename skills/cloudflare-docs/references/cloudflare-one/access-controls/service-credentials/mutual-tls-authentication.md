@@ -251,7 +251,6 @@ You can install these packages from the [Cloudflare SSL GitHub repository ↗](h
      ]  
    }  
    ```  
-   Explain Code  
    * **config**. Create a file named `ca-config.json` and add the following JSON blob, then save the file.  
    ```  
    {  
@@ -271,8 +270,7 @@ You can install these packages from the [Cloudflare SSL GitHub repository ↗](h
        }  
      }  
    }  
-   ```  
-   Explain Code
+   ```
 3. Now, run the following command to generate the root CA with those files.  
 Terminal window  
 ```  
@@ -311,8 +309,7 @@ To generate a client certificate that will authenticate against the uploaded roo
     }  
   ]  
 }  
-```  
-Explain Code
+```
 2. Now, use the following command to generate a client certificate with the Cloudflare PKI toolkit:  
 Terminal window  
 ```  
@@ -511,8 +508,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/se
 
 ```
 
-Explain Code
-
 Once `client_certificate_forwarding` is set to `true`, every request within an mTLS connection will now include the following headers:
 
 * `Cf-Client-Cert-Der-Base64`
@@ -558,8 +553,6 @@ const tlsHeaders = {
 
 
 ```
-
-Explain Code
 
 ## Known limitations
 

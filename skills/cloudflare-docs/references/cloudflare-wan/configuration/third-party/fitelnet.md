@@ -167,8 +167,6 @@ exit
 
 ```
 
-Explain Code
-
 #### Router 2 settings
 
 Use the CLI to configure these settings:
@@ -294,8 +292,6 @@ exit
 
 
 ```
-
-Explain Code
 
 ## Static route configuration
 
@@ -431,8 +427,6 @@ show crypto sa
 
 ```
 
-Explain Code
-
 ### Route Status
 
 In the FITELnet router CLI, you can run `show ip route` to check the route information. A `*` in the route information indicates that the route information is valid.
@@ -463,8 +457,6 @@ S > * 192.168.1.0/24 [100/0] is directly connected, Tunnel1
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/fitelnet/","name":"Furukawa Electric FITELnet"}}]}

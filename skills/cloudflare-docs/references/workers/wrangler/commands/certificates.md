@@ -28,9 +28,9 @@ These certificates can be used in [mtls\_certificate bindings](https://developer
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-9299)
-* [  pnpm ](#tab-panel-9300)
-* [  yarn ](#tab-panel-9301)
+* [  npm ](#tab-panel-9337)
+* [  pnpm ](#tab-panel-9338)
+* [  yarn ](#tab-panel-9339)
 
 Terminal window
 
@@ -111,8 +111,8 @@ Expires: 1/01/2025
 
 You can then add this certificate as a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-9320)
-* [  wrangler.toml ](#tab-panel-9321)
+* [  wrangler.jsonc ](#tab-panel-9358)
+* [  wrangler.toml ](#tab-panel-9359)
 
 JSONC
 
@@ -156,9 +156,9 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-9302)
-* [  pnpm ](#tab-panel-9303)
-* [  yarn ](#tab-panel-9304)
+* [  npm ](#tab-panel-9340)
+* [  pnpm ](#tab-panel-9341)
+* [  yarn ](#tab-panel-9342)
 
 Terminal window
 
@@ -239,15 +239,13 @@ Expires: 1/01/2025
 
 ```
 
-Explain Code
-
 ### `mtls-certificate delete`
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-9305)
-* [  pnpm ](#tab-panel-9306)
-* [  yarn ](#tab-panel-9307)
+* [  npm ](#tab-panel-9343)
+* [  pnpm ](#tab-panel-9344)
+* [  yarn ](#tab-panel-9345)
 
 Terminal window
 
@@ -334,9 +332,9 @@ These certificates can be used in Hyperdrive configurations, enabling them to pr
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-9308)
-* [  pnpm ](#tab-panel-9309)
-* [  yarn ](#tab-panel-9310)
+* [  npm ](#tab-panel-9346)
+* [  pnpm ](#tab-panel-9347)
+* [  yarn ](#tab-panel-9348)
 
 Terminal window
 
@@ -421,9 +419,9 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 Upload a CA certificate chain
 
-* [  npm ](#tab-panel-9311)
-* [  pnpm ](#tab-panel-9312)
-* [  yarn ](#tab-panel-9313)
+* [  npm ](#tab-panel-9349)
+* [  pnpm ](#tab-panel-9350)
+* [  yarn ](#tab-panel-9351)
 
 Terminal window
 
@@ -504,9 +502,9 @@ Expires: 1/01/2025
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-9314)
-* [  pnpm ](#tab-panel-9315)
-* [  yarn ](#tab-panel-9316)
+* [  npm ](#tab-panel-9352)
+* [  pnpm ](#tab-panel-9353)
+* [  yarn ](#tab-panel-9354)
 
 Terminal window
 
@@ -587,15 +585,13 @@ Expires: 1/01/2025
 
 ```
 
-Explain Code
-
 ### `cert delete`
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-9317)
-* [  pnpm ](#tab-panel-9318)
-* [  yarn ](#tab-panel-9319)
+* [  npm ](#tab-panel-9355)
+* [  pnpm ](#tab-panel-9356)
+* [  yarn ](#tab-panel-9357)
 
 Terminal window
 

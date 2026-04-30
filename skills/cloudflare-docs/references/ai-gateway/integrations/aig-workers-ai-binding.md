@@ -177,8 +177,6 @@ export default {
 
 ```
 
-Explain Code
-
 Up to this point, you have created an AI binding for your Worker and configured your Worker to be able to execute the Llama 3.1 model. You can now test your project locally before you deploy globally.
 
 ## 4\. Develop locally with Wrangler

@@ -59,8 +59,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -116,8 +114,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -191,8 +187,6 @@ await instance.items.upload("doc.txt", request.body);
 
 ```
 
-Explain Code
-
 #### Upload with metadata
 
 Attach [custom metadata](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) to a document for filtering in search queries. Custom metadata fields must be defined on the instance first using the [update()](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#update) method or at creation time.
@@ -264,8 +258,6 @@ const results = await instance.search({
 
 
 ```
-
-Explain Code
 
 #### Parameters
 

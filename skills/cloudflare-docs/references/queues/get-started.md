@@ -93,8 +93,8 @@ To expose your queue to the code inside your Worker, you need to connect your qu
 
 To create a binding, open your newly generated `wrangler.jsonc` file and add the following:
 
-* [  wrangler.jsonc ](#tab-panel-6997)
-* [  wrangler.toml ](#tab-panel-6998)
+* [  wrangler.jsonc ](#tab-panel-6995)
+* [  wrangler.toml ](#tab-panel-6996)
 
 JSONC
 
@@ -122,8 +122,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -178,8 +176,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Replace `MY_QUEUE` with the name you have set for your binding from your `wrangler.jsonc` file.
 
@@ -283,8 +279,6 @@ export default {
 
 ```
 
-Explain Code
-
 Replace `MY_QUEUE` with the name you have set for your binding from your `wrangler.jsonc` file.
 
 Every time messages are published to the queue, your consumer Worker's `queue` handler (`async queue`) is called and it is passed one or more messages.
@@ -301,8 +295,8 @@ Each queue can only have one consumer Worker connected to it. If you try to conn
 
 To connect your queue to your consumer Worker, open your Wrangler file and add this to the bottom:
 
-* [  wrangler.jsonc ](#tab-panel-6999)
-* [  wrangler.toml ](#tab-panel-7000)
+* [  wrangler.jsonc ](#tab-panel-6997)
+* [  wrangler.toml ](#tab-panel-6998)
 
 JSONC
 
@@ -336,8 +330,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 

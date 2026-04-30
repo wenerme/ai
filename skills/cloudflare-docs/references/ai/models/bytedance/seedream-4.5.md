@@ -56,8 +56,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Input / Output JSON 
 
 * [ Input ](#tab-panel-114)
@@ -125,8 +123,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Input / Output JSON 
 
@@ -201,8 +197,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Input / Output JSON 
 
@@ -279,8 +273,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Input / Output JSON 
 
@@ -359,8 +351,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Input / Output JSON 
 

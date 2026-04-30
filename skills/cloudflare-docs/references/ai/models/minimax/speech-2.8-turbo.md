@@ -65,8 +65,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -109,8 +107,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 
@@ -155,8 +151,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Adjusted Pitch**  — Lower the pitch for a deeper voice 
@@ -197,8 +191,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

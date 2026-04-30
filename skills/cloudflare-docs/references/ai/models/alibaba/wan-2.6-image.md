@@ -55,8 +55,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/simple-generation.png) 
 
 ## Examples
@@ -94,8 +92,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Custom Dimensions](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/custom-dimensions.png) 
 
 **Square Format**  — Square image for social media or product photos 
@@ -130,8 +126,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Square Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/square-format.png) 
 
@@ -168,8 +162,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Negative Prompt](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/negative-prompt.png) 
 
 **Portrait Format**  — Tall vertical image for portraits 
@@ -204,8 +196,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/portrait-format.png) 
 

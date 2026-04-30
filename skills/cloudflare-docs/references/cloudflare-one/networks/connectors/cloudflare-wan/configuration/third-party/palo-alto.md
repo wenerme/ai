@@ -414,8 +414,6 @@ set network ike gateway cf-wan-ike-gw-02 local-id type fqdn id "0287844e9d<REDAC
 
 ```
 
-Explain Code
-
 ##### Web UI
 
 1. Go to **Network** \> **Network Profiles** \> **IKE Gateways**.
@@ -519,8 +517,6 @@ set network tunnel ipsec cf-wan-ipsec-tun-02 anti-replay no
 
 ```
 
-Explain Code
-
 ###### Web UI - Define IPsec Tunnels
 
 1. Go to **Network** \> **IPsec Tunnels**.
@@ -605,8 +601,6 @@ set rulebase security rules trust-to-cloudflare rule-type universal
 
 ```
 
-Explain Code
-
 ### Web UI - Add Security Policy from `trust` to `cloudflare`
 
 1. Go to **Policies** \> **Security**.
@@ -652,8 +646,6 @@ set rulebase security rules cloudflare-to-trust rule-type universal
 
 
 ```
-
-Explain Code
 
 ### Web UI - Add Security Policy from `cloudflare` to `trust`
 

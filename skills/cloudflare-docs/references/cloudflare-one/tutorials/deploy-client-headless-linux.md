@@ -76,7 +76,6 @@ Response
   "client_secret_version": 1  
 }  
 ```  
-Explain Code  
 Warning  
 This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 
@@ -191,8 +190,7 @@ EOF
 #main program  
 warp  
 mdm  
-```  
-Explain Code
+```
 3. If you are using Debian or RHEL / CentOS, modify the `warp()` function so that it installs the correct [WARP package ↗](https://pkg.cloudflareclient.com/) for your OS.
 4. Modify the values in the `mdm()` function:  
    1. For `auth_client_id` and `auth_client_secret`, replace the string values with the Client ID and Client Secret of your [service token](https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/#1-create-a-service-token).  

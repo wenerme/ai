@@ -85,8 +85,6 @@ resource "cloudflare_page_rule" "legacy_redirect" {
 
 ```
 
-Explain Code
-
 The first rule increases security to "Under Attack" mode for your database endpoint. The second rule redirects old URLs with a 301 permanent redirect.
 
 ## 2\. Preview and apply the changes:

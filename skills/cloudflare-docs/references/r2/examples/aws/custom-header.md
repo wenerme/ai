@@ -66,8 +66,6 @@ print(response)
 
 ```
 
-Explain Code
-
 ### Set a header for all requests with `aws-sdk-js-v3`
 
 `aws-sdk-js-v3` allows the customization of request behavior through the use of its [middleware stack ↗](https://aws.amazon.com/blogs/developer/middleware-stack-modular-aws-sdk-js/). This example adds a middleware to the client which adds a header to every `PutObject` request being made.
@@ -141,8 +139,6 @@ console.log(response);
 
 ```
 
-Explain Code
-
 ## Set a different header on each request
 
 Certain extensions that R2 has provided in the S3 compatible api may require setting a different header on each request. For example, you may want to only want to overwrite an object if its etag matches a certain expected value. This value will likely be different for each object that is being overwritten, which requires the `If-Match` header to be different with each request you make. This section shows examples of how to accomplish that.
@@ -210,8 +206,6 @@ print(response)
 
 
 ```
-
-Explain Code
 
 ### Set a header per request in `aws-sdk-js-v3`
 
@@ -299,8 +293,6 @@ console.log(response);
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/examples/aws/custom-header/","name":"Configure custom headers"}}]}

@@ -226,8 +226,8 @@ libsql://my-db-<your-github-username>.turso.io
 
 Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in your editor and at the bottom of the file, create a new `[vars]` section representing the [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) for your project:
 
-* [  wrangler.jsonc ](#tab-panel-9223)
-* [  wrangler.toml ](#tab-panel-9224)
+* [  wrangler.jsonc ](#tab-panel-9261)
+* [  wrangler.toml ](#tab-panel-9262)
 
 JSONC
 
@@ -489,8 +489,6 @@ function buildRouter(env: Env): RouterType {
 
 ```
 
-Explain Code
-
 Save your `src/index.ts` file with your changes.
 
 Note:
@@ -552,8 +550,6 @@ Debugger attached.
 
 
 ```
-
-Explain Code
 
 The localhost address — the one with `127.0.0.1` in it — is a web-server running locally on your machine.
 

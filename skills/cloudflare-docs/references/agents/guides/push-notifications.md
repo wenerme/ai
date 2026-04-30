@@ -47,8 +47,6 @@ Browser                              Agent (Durable Object)
 
 ```
 
-Explain Code
-
 The agent stores push subscriptions durably in its state and uses `this.schedule()` to fire notifications at the right time. When the alarm triggers, the agent calls the push service endpoint using the [web-push ↗](https://www.npmjs.com/package/web-push) library. The browser's service worker receives the push event and displays a native notification.
 
 ## Prerequisites
@@ -330,8 +328,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -606,8 +602,6 @@ export default {
 
 ```
 
-Explain Code
-
 The `sendReminder` callback handles three things: delivering the push notification via the `web-push` library, cleaning up dead subscriptions (the push service returns 404 or 410 when a subscription is no longer valid), and broadcasting to any connected clients so the UI updates in real time.
 
 ## Set up the service worker
@@ -680,8 +674,6 @@ self.addEventListener("notificationclick", (event) => {
 
 
 ```
-
-Explain Code
 
 The `push` event handler parses the JSON payload and displays a native notification. The `notificationclick` handler focuses an existing tab or opens a new one when the user taps the notification.
 
@@ -799,8 +791,6 @@ async function subscribeToPush(agent) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -864,8 +854,6 @@ async function subscribeToPush(
 
 
 ```
-
-Explain Code
 
 ### Create reminders
 
@@ -935,8 +923,6 @@ JSONC
 
 ```
 
-Explain Code
-
 The `nodejs_compat` compatibility flag is required for the `web-push` library.
 
 ### Dependencies
@@ -1004,8 +990,6 @@ try {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1036,8 +1020,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ## Next steps
 

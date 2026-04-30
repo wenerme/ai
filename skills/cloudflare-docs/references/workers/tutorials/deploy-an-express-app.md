@@ -93,8 +93,8 @@ bun add express @types/express
 
 Express.js on Cloudflare Workers requires the `nodejs_compat` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/). This flag enables Node.js APIs and allows Express to run on the Workers runtime. Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9233)
-* [  wrangler.toml ](#tab-panel-9234)
+* [  wrangler.jsonc ](#tab-panel-9271)
+* [  wrangler.toml ](#tab-panel-9272)
 
 JSONC
 
@@ -179,12 +179,10 @@ To access your new D1 Database in your Worker, add the following snippet to your
 
 ```
 
-Explain Code
-
 The binding will be added to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-9235)
-* [  wrangler.toml ](#tab-panel-9236)
+* [  wrangler.jsonc ](#tab-panel-9273)
+* [  wrangler.toml ](#tab-panel-9274)
 
 JSONC
 
@@ -262,8 +260,6 @@ INSERT INTO members (name, email, joined_date) VALUES
 
 ```
 
-Explain Code
-
 This schema creates a `members` table with an auto-incrementing ID, name, email, and join date fields. It also inserts three sample members.
 
 Execute the schema file against your D1 database:
@@ -315,8 +311,6 @@ export default httpServerHandler({ port: 3000 });
 
 
 ```
-
-Explain Code
 
 This code initializes Express and creates a basic health check endpoint. The key import `import { env } from "cloudflare:workers"` allows you to access [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) like your D1 database from anywhere in your code. The [httpServerHandler](https://developers.cloudflare.com/workers/runtime-apis/nodejs/http/#httpserverhandler) integrates Express with the Workers runtime, enabling your application to handle HTTP requests on Cloudflare's network.
 
@@ -388,8 +382,6 @@ app.get('/api/members/:id', async (req, res) => {
 
 
 ```
-
-Explain Code
 
 These routes use the D1 binding (`env.DB`) to prepare SQL statements and execute them. Since you imported `env` from `cloudflare:workers` at the top of the file, it is accessible throughout your application. The `prepare`, `bind`, and `all` methods on the D1 binding allow you to safely query the database. Refer to [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) for all available methods.
 
@@ -502,8 +494,6 @@ app.post("/api/members", async (req, res) => {
 
 
 ```
-
-Explain Code
 
 This endpoint validates the input, checks the email format, and inserts a new member into the database. It also handles duplicate email addresses by checking for unique constraint violations.
 
@@ -630,8 +620,6 @@ app.put("/api/members/:id", async (req, res) => {
 
 ```
 
-Explain Code
-
 This endpoint allows updating either the name, email, or both fields of an existing member. It builds a dynamic SQL query based on the provided fields.
 
 ## 9\. Implement delete operation
@@ -681,8 +669,6 @@ app.delete("/api/members/:id", async (req, res) => {
 
 
 ```
-
-Explain Code
 
 This endpoint deletes a member by their ID and returns an error if the member does not exist.
 
@@ -760,8 +746,6 @@ curl http://localhost:8787/api/members
 
 
 ```
-
-Explain Code
 
 Test creating a new member:
 
@@ -877,8 +861,6 @@ Current Version ID: <version-id>
 
 
 ```
-
-Explain Code
 
 After successful deployment, Wrangler will output your Worker's URL.
 

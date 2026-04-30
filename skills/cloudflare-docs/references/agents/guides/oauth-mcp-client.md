@@ -83,8 +83,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -131,8 +129,6 @@ export class MyAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 ### Alternative approaches
 
@@ -242,8 +238,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -277,8 +271,6 @@ export class MyAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 Your main application can detect the popup closing and refresh the connection status. If OAuth fails, the connection state becomes `"failed"` and the error message is stored in `server.error` for display in your UI.
 
@@ -370,8 +362,6 @@ function App() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -454,8 +444,6 @@ function App() {
 
 ```
 
-Explain Code
-
 The `onMcpUpdate` callback fires automatically when MCP state changes — no polling needed.
 
 ### Other frameworks
@@ -522,8 +510,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -580,8 +566,6 @@ export class MyAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 Connection states flow: `authenticating` (needs OAuth) → `connecting` (completing setup) → `ready` (available for use)
 
@@ -698,8 +682,6 @@ function App() {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -818,8 +800,6 @@ function App() {
 
 
 ```
-
-Explain Code
 
 Common failure reasons:
 
@@ -971,8 +951,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1113,8 +1091,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Related
 

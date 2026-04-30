@@ -80,8 +80,8 @@ npx wrangler login
 
 ## 2\. Create an R2 bucket and enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-7083)
-* [ Dashboard ](#tab-panel-7084)
+* [ Wrangler CLI ](#tab-panel-7081)
+* [ Dashboard ](#tab-panel-7082)
 
 Create an R2 bucket:
 
@@ -102,8 +102,8 @@ npx wrangler r2 bucket create fraud-pipeline
 
 Enable the catalog on your R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-7085)
-* [ Dashboard ](#tab-panel-7086)
+* [ Wrangler CLI ](#tab-panel-7083)
+* [ Dashboard ](#tab-panel-7084)
 
 Terminal window
 
@@ -139,8 +139,8 @@ export WAREHOUSE= #Paste your warehouse here
 
 R2 Data Catalog can automatically compact tables for you. In production event streaming use cases, it is common to end up with many small files, so it is recommended to enable compaction. Since the tutorial only demonstrates a sample use case, this step is optional.
 
-* [ Wrangler CLI ](#tab-panel-7087)
-* [ Dashboard ](#tab-panel-7088)
+* [ Wrangler CLI ](#tab-panel-7085)
+* [ Dashboard ](#tab-panel-7086)
 
 Terminal window
 
@@ -161,8 +161,8 @@ npx wrangler r2 bucket catalog compaction enable fraud-pipeline --token $WRANGLE
 
 ### 3.1\. Create the Pipeline stream
 
-* [ Wrangler CLI ](#tab-panel-7089)
-* [ Dashboard ](#tab-panel-7090)
+* [ Wrangler CLI ](#tab-panel-7087)
+* [ Dashboard ](#tab-panel-7088)
 
 First, create a schema file called `raw_transactions_schema.json` with the following `json` schema:
 
@@ -192,8 +192,6 @@ First, create a schema file called `raw_transactions_schema.json` with the follo
 
 
 ```
-
-Explain Code
 
 Create a stream to receive incoming fraud detection events:
 
@@ -295,8 +293,6 @@ Input Schema:
 
 ```
 
-Explain Code
-
 ### 3.2\. Create the data sink
 
 Create a sink that writes data to your R2 bucket as Apache Iceberg tables:
@@ -369,7 +365,6 @@ npx wrangler pipelines create raw_events_pipeline \
      ]  
    }  
    ```  
-   Explain Code  
    * Select **Next**
 5. **Define Sink**:  
    * Select your R2 bucket: `fraud-pipeline`  
@@ -645,8 +640,6 @@ if __name__ == "__main__":
 
 ```
 
-Explain Code
-
 Install the required Python dependency and run the script:
 
 Terminal window
@@ -698,8 +691,6 @@ LIMIT 10"
 
 
 ```
-
-Explain Code
 
 ### 5.2\. Filter the raw transactions into a new table to highlight high-value transactions
 
@@ -774,8 +765,6 @@ LIMIT 10"
 
 ```
 
-Explain Code
-
 Also verify that the non-fraudulent events are being filtered out:
 
 Terminal window
@@ -808,8 +797,6 @@ LIMIT 10"
 
 
 ```
-
-Explain Code
 
 You should see the following output:
 

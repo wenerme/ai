@@ -149,8 +149,6 @@ function MeetingInfo() {
 
 ```
 
-Explain Code
-
 Kotlin
 
 ```
@@ -212,8 +210,6 @@ useEffect(() => {
 
 
 ```
-
-Explain Code
 
 ## Connection events
 
@@ -296,8 +292,6 @@ function MediaConnectionMonitor() {
 
 
 ```
-
-Explain Code
 
 The `mediaConnectionUpdate` event provides:
 
@@ -391,8 +385,6 @@ meeting.meta.on(
 
 ```
 
-Explain Code
-
 The `socketConnectionUpdate` event provides:
 
 * **`state`** \- Connection state: `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
@@ -470,8 +462,6 @@ function SocketConnectionMonitor() {
 
 ```
 
-Explain Code
-
 The `socketConnectionUpdate` event provides:
 
 * **`state`** \- Connection state: `'connected'`, `'disconnected'`, `'reconnecting'`, or `'failed'`
@@ -537,8 +527,6 @@ meeting.meta.on(
 
 
 ```
-
-Explain Code
 
 The `socketConnectionUpdate` event provides:
 

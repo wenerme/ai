@@ -125,8 +125,6 @@ The API returns a list of zones (domains) that have Pay Per Crawl enabled and ar
 
 ```
 
-Explain Code
-
 ### Response fields
 
 * `result.zones`: Array of zone objects containing domains with Pay Per Crawl enabled

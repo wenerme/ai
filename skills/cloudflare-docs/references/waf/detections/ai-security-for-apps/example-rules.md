@@ -125,8 +125,6 @@ showMessage(data.message);
 
 ```
 
-Explain Code
-
 ### Display custom error messages from the WAF
 
 For more control, configure your block rules with a [custom JSON response](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#configure-a-custom-response-for-blocked-requests) — for example, `{ "message": "That question is outside this assistant's scope." }`. Your application can then parse the response and show the custom message when available, falling back to the default when it is not.
@@ -195,8 +193,6 @@ showMessage(data.message);
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/ai-security-for-apps/example-rules/","name":"Example mitigation rules"}}]}

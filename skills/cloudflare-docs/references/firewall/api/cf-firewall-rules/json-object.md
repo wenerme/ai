@@ -51,8 +51,6 @@ A JSON response for the [Firewall Rules API](https://developers.cloudflare.com/a
 
 ```
 
-Explain Code
-
 This table summarizes the object properties:
 
 | Name               | Description                                                                                                                                                                                                                               | Constraints                                                                                                                              |

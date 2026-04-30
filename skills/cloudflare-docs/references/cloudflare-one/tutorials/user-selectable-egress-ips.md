@@ -174,7 +174,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
     }  
   }'  
 ```  
-Explain Code  
 For more information, refer to [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/).
 2. Repeat Step 1 to create an egress policy for each virtual network you created.
 

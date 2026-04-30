@@ -248,8 +248,6 @@ Address: 127.0.2.3
 
 ```
 
-Explain Code
-
 ## Windows App connection issue
 
 When the Cloudflare One Client is active on a local machine, users may be unable to connect to a Windows 365 PC using the [Windows App ↗](https://aka.ms/WindowsApp). This issue does not affect browser-based connections to Windows 365.

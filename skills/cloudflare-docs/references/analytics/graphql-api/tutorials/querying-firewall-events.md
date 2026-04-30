@@ -95,8 +95,6 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
-Explain Code
-
 The results returned will be in JSON (as requested), so piping the output to `jq` will make them easier to read, for example:
 
 Terminal window
@@ -364,8 +362,6 @@ https://api.cloudflare.com/client/v4/graphql \
 
 
 ```
-
-Explain Code
 
 ## Footnotes
 

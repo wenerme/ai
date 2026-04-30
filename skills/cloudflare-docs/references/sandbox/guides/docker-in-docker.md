@@ -74,8 +74,6 @@ CMD ["/home/rootless/boot-docker-for-dind.sh"]
 
 ```
 
-Explain Code
-
 Working with disabled iptables
 
 Cloudflare Containers do not support iptables manipulation. The `--iptables=false` and `--ip6tables=false` flags prevent Docker from attempting to configure network rules, which would otherwise fail.
@@ -142,8 +140,6 @@ console.log(run.stdout); // "Hello from Docker!"
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -194,8 +190,6 @@ console.log(run.stdout); // "Hello from Docker!"
 
 
 ```
-
-Explain Code
 
 ## Limitations
 

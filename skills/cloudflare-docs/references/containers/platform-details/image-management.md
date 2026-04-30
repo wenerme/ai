@@ -235,8 +235,6 @@ Public ECR images are not supported. To generate the required credentials, creat
 
 ```
 
-Explain Code
-
 After you create the IAM user, use its credentials to [configure the registry in Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-registries-configure). Wrangler prompts you to create a Secrets Store store if one does not already exist, then stores the secret there.
 
 Interactive:

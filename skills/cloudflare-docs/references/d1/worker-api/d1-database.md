@@ -242,8 +242,6 @@ return Response.json(stmt)
 
 ```
 
-Explain Code
-
 ```
 
 [
@@ -343,8 +341,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 * [  JavaScript ](#tab-panel-5441)
 * [  Python ](#tab-panel-5442)
 
@@ -413,8 +409,7 @@ batch_result = await self.env.DB.batch(to_js([
     stmt.bind(company_name2)  
 ]))  
 return Response.json(batch_result)  
-```  
-Explain Code
+```
 
 ### `exec()`
 

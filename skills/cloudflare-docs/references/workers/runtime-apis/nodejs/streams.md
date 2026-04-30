@@ -130,8 +130,6 @@ export default {
 
 ```
 
-Explain Code
-
 Refer to the [Node.js documentation for stream ↗](https://nodejs.org/api/stream.html) for more information.
 
 ```json

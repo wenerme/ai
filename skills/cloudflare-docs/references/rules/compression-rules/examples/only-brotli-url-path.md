@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.
 
-* [ Dashboard ](#tab-panel-7339)
-* [ API ](#tab-panel-7340)
+* [ Dashboard ](#tab-panel-7337)
+* [ API ](#tab-panel-7338)
 
 The following example rule will configure only Brotli compression for a specific URI path.
 
@@ -102,8 +102,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 
 ```
-
-Explain Code
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 

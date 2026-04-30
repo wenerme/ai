@@ -61,8 +61,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -106,8 +104,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Instrumental**  — Generate instrumental music without vocals 
@@ -144,8 +140,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 
@@ -188,8 +182,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Auto-Generated Lyrics**  — Let the model generate lyrics from the prompt 
@@ -224,8 +216,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

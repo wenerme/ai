@@ -73,8 +73,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8396)
-* [  wrangler.toml ](#tab-panel-8397)
+* [  wrangler.jsonc ](#tab-panel-8434)
+* [  wrangler.toml ](#tab-panel-8435)
 
 JSONC
 
@@ -114,8 +114,8 @@ You are now ready to run an inference task in your Worker. In this case, you wil
 
 Update the `index.ts` file in your `hello-ai` application directory with the following code:
 
-* [  JavaScript ](#tab-panel-8398)
-* [  TypeScript ](#tab-panel-8399)
+* [  JavaScript ](#tab-panel-8436)
+* [  TypeScript ](#tab-panel-8437)
 
 index.js
 
@@ -175,8 +175,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Up to this point, you have created an AI binding for your Worker and configured your Worker to be able to execute the Llama 3.1 model. You can now test your project locally before you deploy globally.
 

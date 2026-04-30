@@ -100,8 +100,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/fal \
 
 ```
 
-Explain Code
-
 ## WebSocket API
 
 Fal AI also supports real-time interactions through WebSockets. For WebSocket connections and examples, see the [Realtime WebSockets API documentation](https://developers.cloudflare.com/ai-gateway/usage/websockets-api/realtime-api/#fal-ai).
@@ -155,8 +153,6 @@ console.log(result.data.images[0]);
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/fal/","name":"Fal AI"}}]}

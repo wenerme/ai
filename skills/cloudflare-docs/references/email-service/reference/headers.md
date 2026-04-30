@@ -104,8 +104,8 @@ Any header starting with `X-` is allowed. This covers common headers like `X-Mai
 
 ## Usage examples
 
-* [ REST API (curl) ](#tab-panel-5957)
-* [ Workers binding ](#tab-panel-5958)
+* [ REST API (curl) ](#tab-panel-5955)
+* [ Workers binding ](#tab-panel-5956)
 
 Terminal window
 
@@ -147,8 +147,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -192,8 +190,6 @@ const response = await env.EMAIL.send({
 
 
 ```
-
-Explain Code
 
 ## Header limits
 

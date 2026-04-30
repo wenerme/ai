@@ -72,8 +72,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_
 
 ```
 
-Explain Code
-
 ### Create DNS protection rule
 
 The following example creates an Advanced DNS Protection rule with a global scope.
@@ -104,8 +102,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -143,8 +139,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/json-objects/) for more information on the fields in the JSON body.
 
@@ -215,8 +209,6 @@ curl --request PATCH \
 
 
 ```
-
-Explain Code
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/json-objects/) for more information on the fields in the JSON body.
 

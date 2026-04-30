@@ -86,8 +86,8 @@ Repeat the process for logs:
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-8921)
-* [  wrangler.toml ](#tab-panel-8922)
+* [  wrangler.jsonc ](#tab-panel-8959)
+* [  wrangler.toml ](#tab-panel-8960)
 
 JSONC
 
@@ -123,8 +123,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 

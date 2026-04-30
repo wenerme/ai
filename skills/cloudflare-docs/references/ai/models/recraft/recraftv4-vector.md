@@ -55,8 +55,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Simple Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/simple-icon.jpg) 
 
 ## Examples
@@ -94,8 +92,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![App Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/app-icon.jpg) 
 
 **Illustration**  — Vector illustration for web use 
@@ -130,8 +126,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/illustration.jpg) 
 
@@ -191,8 +185,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![With Brand Colors](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/with-brand-colors.jpg) 
 

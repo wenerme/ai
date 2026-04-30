@@ -73,8 +73,6 @@ To use an IP, it must be assigned to a Spectrum app to create the appropriate A 
 
 ```
 
-Explain Code
-
 ## Example
 
 In the example below, the application routes traffic through Cloudflare’s HTTP pipeline, including WAF, Workers and CDN functionality.
@@ -134,8 +132,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/about/byoip/","name":"BYOIP"}}]}

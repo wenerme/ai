@@ -72,8 +72,6 @@ const embeddings = await openai.embeddings.create({
 
 ```
 
-Explain Code
-
 cURL example
 
 ```
@@ -110,8 +108,6 @@ curl --request POST \
 
 
 ```
-
-Explain Code
 
 ### AI Gateway
 

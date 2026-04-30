@@ -72,8 +72,6 @@ curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audit
 
 ```
 
-Explain Code
-
 ### Constraints
 
 * If `root` is defined for the namespace, the first epoch must match it (number and digest).

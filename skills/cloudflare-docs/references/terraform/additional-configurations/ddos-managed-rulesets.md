@@ -51,9 +51,104 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 This example configures the [HTTP DDoS Attack Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/) managed ruleset for a zone using Terraform.
 
-Note
+* [ Terraform (v5) ](#tab-panel-8067)
+* [ Terraform (v4) ](#tab-panel-8068)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+
+* `HTTP DDoS Managed Ruleset Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "zone_level_http_ddos_config" {
+
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "HTTP DDoS Attack Protection entry point ruleset"
+
+  description = ""
+
+  kind        = "zone"
+
+  phase       = "ddos_l7"
+
+
+  rules = [{
+
+    action = "execute"
+
+    action_parameters = {
+
+      # Cloudflare L7 DDoS Attack Protection Ruleset
+
+      id = "4d21379b4f9f4bb088e0729962c8b3cf"
+
+      overrides = {
+
+        action            = "block"
+
+        sensitivity_level = "default"
+
+        rules = [
+
+          {
+
+            # Adaptive DDoS Protection based on Locations (Available only to Enterprise zones with Advanced DDoS service)
+
+            id                = "a8c6333711ff4b0a81371d1c444be2c3"
+
+            sensitivity_level = "default"
+
+            action            = "managed_challenge"
+
+          },
+
+          {
+
+            # Adaptive DDoS Protection based on User-Agents (Available only to Enterprise zones with Advanced DDoS service)
+
+            id                = "7709d496081e458899c1e3a6e4fe8e55"
+
+            sensitivity_level = "default"
+
+            action            = "managed_challenge"
+
+          },
+
+          {
+
+            # HTTP requests causing a high number of origin errors.
+
+            id                = "dd42da7baabe4e518eaf11c393596a9d"
+
+            sensitivity_level = "default"
+
+            action            = "managed_challenge"
+
+          },
+
+        ]
+
+      }
+
+    }
+
+    expression  = "true"
+
+    description = "Zone-wide HTTP DDoS Override"
+
+    enabled     = true
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -139,8 +234,6 @@ resource "cloudflare_ruleset" "zone_level_http_ddos_config" {
 
 ```
 
-Explain Code
-
 For more information about HTTP DDoS Attack Protection, refer to [HTTP DDoS Attack Protection managed ruleset](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/).
 
 ## Example: Configure Network-layer DDoS Attack Protection
@@ -152,9 +245,70 @@ Important
 * Only Magic Transit and Spectrum customers on an Enterprise plan can configure this managed ruleset using overrides.
 * This managed ruleset only supports overrides at the account level.
 
-Note
+* [ Terraform (v5) ](#tab-panel-8069)
+* [ Terraform (v4) ](#tab-panel-8070)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+
+* `L4 DDoS Managed Ruleset Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "account_level_network_ddos_config" {
+
+  account_id  = var.cloudflare_account_id
+
+  name        = "Network-layer DDoS Attack Protection entry point ruleset"
+
+  description = ""
+
+  kind        = "root"
+
+  phase       = "ddos_l4"
+
+
+  rules = [{
+
+    ref         = "override_l7_ddos_ruleset_dst_ip"
+
+    description = "Override the HTTP DDoS Attack Protection managed ruleset"
+
+    expression  = "ip.dst in { 192.0.2.0/24 }"
+
+    action      = "execute"
+
+    action_parameters = {
+
+      # Cloudflare L3/4 DDoS Attack Protection Ruleset
+
+      id = "3b64149bfa6e4220bbbc2bd6db589552"
+
+      overrides = {
+
+        rules = [{
+
+          # Rule: Generic high-volume UDP traffic flows.
+
+          id                = "599dab0942ff4898ac1b7797e954e98b"
+
+          sensitivity_level = "low"
+
+        }]
+
+      }
+
+    }
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -210,8 +364,6 @@ resource "cloudflare_ruleset" "account_level_network_ddos_config" {
 
 ```
 
-Explain Code
-
 For more information about Network-layer DDoS Attack Protection, refer to [Network-layer DDoS Attack Protection managed ruleset](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/).
 
 ---
@@ -231,9 +383,183 @@ Important considerations
 * Since rules are evaluated in order and the first one to match the conditions of both the expression and the sensitivity level will get applied, take care when editing and reordering existing rules. Changing a rule from Block to Log may allow attack traffic to reach your web property.
 * Overrides will not affect read-only rules in the managed ruleset.
 
-Note
+* [ Terraform (v5) ](#tab-panel-8071)
+* [ Terraform (v4) ](#tab-panel-8072)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+
+* `HTTP DDoS Managed Ruleset Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "zone_level_http_ddos_config" {
+
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "HTTP DDoS - Terraform managed"
+
+  description = ""
+
+  kind        = "zone"
+
+  phase       = "ddos_l7"
+
+
+  # The resource configuration contains two rules:
+
+  #  1. The first rule has the lowest sensitivity level (highest threshold)
+
+  #     and it will block attacks.
+
+  #  2. The second rule has a higher sensitivity level (lower threshold) and
+
+  #     will only apply a Log action.
+
+  #
+
+  # In practice, evaluation stops whenever a rule matches both the expression
+
+  # and the threshold, so the rule order is important:
+
+  #   - When the traffic rate is below the (low) threshold of the default
+
+  #     sensitivity level ('High'), no rules match (no action is applied).
+
+  #   - When the traffic rate is between the thresholds of the 'Low' and
+
+  #     default ('High') sensitivity levels, the first rule does not match,
+
+  #     but the second rule does (traffic gets logged).
+
+  #   - When the traffic rate goes above the (high) threshold of the 'Low'
+
+  #     sensitivity level, the first rule matches (traffic gets blocked).
+
+  #
+
+  # The DDoS protection systems will still apply mitigation actions to incoming
+
+  # traffic when rates exceed the threshold of the _Essentially Off_ sensitivity
+
+  # level.
+
+
+  rules = [
+
+    {
+
+      ref         = "l7_ddos_block_traffic_low_threshold"
+
+      description = "At the low sensitivity threshold, block the traffic"
+
+      expression  = "true"
+
+      action      = "execute"
+
+      action_parameters = {
+
+        # Cloudflare L7 DDoS Attack Protection Ruleset
+
+        id = "4d21379b4f9f4bb088e0729962c8b3cf"
+
+        overrides = {
+
+          rules = [
+
+            {
+
+              # Rule: HTTP requests from known botnet (signature #4).
+
+              id                = "29d170ba2f004cc787b1ac272c9e04e7"
+
+              sensitivity_level = "low"
+
+              action            = "block"
+
+            },
+
+            {
+
+              # Rule: HTTP requests with unusual HTTP headers or URI path (signature #16).
+
+              id                = "60a48054bbcf4014ac63c44f1712a123"
+
+              sensitivity_level = "low"
+
+              action            = "block"
+
+            },
+
+          ]
+
+        }
+
+      }
+
+    },
+
+    {
+
+      ref         = "l7_ddos_log_default_threshold"
+
+      description = "At the default sensitivity threshold, log to see if any legitimate traffic gets caught"
+
+      expression  = "true"
+
+      action      = "execute"
+
+      action_parameters = {
+
+        # Cloudflare L7 DDoS Attack Protection Ruleset
+
+        id = "4d21379b4f9f4bb088e0729962c8b3cf"
+
+        overrides = {
+
+          rules = [
+
+            {
+
+              # Rule: HTTP requests from known botnet (signature #4).
+
+              id                = "29d170ba2f004cc787b1ac272c9e04e7"
+
+              sensitivity_level = "default"
+
+              action            = "log"
+
+            },
+
+            {
+
+              # Rule: HTTP requests with unusual HTTP headers or URI path (signature #16).
+
+              id                = "60a48054bbcf4014ac63c44f1712a123"
+
+              sensitivity_level = "default"
+
+              action            = "log"
+
+            },
+
+          ]
+
+        }
+
+      }
+
+    },
+
+  ]
+
+}
+
+
+```
 
 ```
 
@@ -397,8 +723,6 @@ resource "cloudflare_ruleset" "zone_level_http_ddos_config" {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/ddos-managed-rulesets/","name":"DDoS managed rulesets configuration using Terraform"}}]}

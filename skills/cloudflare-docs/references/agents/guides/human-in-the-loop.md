@@ -129,8 +129,6 @@ export class ExpenseWorkflow extends AgentWorkflow {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -225,8 +223,6 @@ export class ExpenseWorkflow extends AgentWorkflow<
 
 
 ```
-
-Explain Code
 
 ### Agent methods for approval
 
@@ -352,8 +348,6 @@ export class ExpenseAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -503,8 +497,6 @@ export class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ```
 
-Explain Code
-
 ### Timeout handling
 
 Set timeouts to prevent workflows from waiting indefinitely:
@@ -642,8 +634,6 @@ class ExpenseAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -719,8 +709,6 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ```
 
-Explain Code
-
 ### Audit trail with SQL
 
 Use `this.sql` to maintain an immutable audit trail:
@@ -795,8 +783,6 @@ class ExpenseAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -874,8 +860,6 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ```
 
-Explain Code
-
 ### Configuration
 
 * [  wrangler.jsonc ](#tab-panel-3990)
@@ -924,8 +908,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -965,8 +947,6 @@ new_sqlite_classes = [ "ExpenseAgent" ]
 
 
 ```
-
-Explain Code
 
 ## MCP elicitation
 
@@ -1107,8 +1087,6 @@ export class CounterMCP extends McpAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1242,8 +1220,6 @@ export class CounterMCP extends McpAgent<Env, State, {}> {
 
 ```
 
-Explain Code
-
 ## Elicitation vs workflow approval
 
 | Aspect       | MCP Elicitation               | Workflow Approval             |
@@ -1335,8 +1311,6 @@ function PendingApprovals() {
 
 ```
 
-Explain Code
-
 ## Multi-approver patterns
 
 For sensitive operations requiring multiple approvers:
@@ -1407,8 +1381,6 @@ class MultiApprovalAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -1493,8 +1465,6 @@ class MultiApprovalAgent extends Agent<Env, State> {
 
 
 ```
-
-Explain Code
 
 ## Best practices
 

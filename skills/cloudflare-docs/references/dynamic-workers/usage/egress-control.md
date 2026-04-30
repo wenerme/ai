@@ -113,8 +113,6 @@ export default {
 
 ```
 
-Explain Code
-
 From here, you can add any logic to the gateway, such as restricting destinations, injecting credentials, or logging requests.
 
 ## Inject credentials
@@ -209,8 +207,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/usage/","name":"Usage"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/usage/egress-control/","name":"Egress control"}}]}

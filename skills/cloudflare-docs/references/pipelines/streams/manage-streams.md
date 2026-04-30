@@ -156,8 +156,6 @@ Example schema file:
 
 ```
 
-Explain Code
-
 **Supported data types:**
 
 * `string` \- Text values

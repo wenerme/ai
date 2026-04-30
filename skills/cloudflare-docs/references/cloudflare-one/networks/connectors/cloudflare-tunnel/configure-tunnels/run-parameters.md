@@ -47,8 +47,7 @@ Restart=on-failure
 RestartSec=5s  
 [Install]  
 WantedBy=multi-user.target  
-```  
-Explain Code
+```
 3. Restart `cloudflared.service`:  
 Terminal window  
 ```  
@@ -102,8 +101,7 @@ sudo launchctl unload /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
             <string>--token</string>  
             <string><TOKEN VALUE> </string>  
         </array>  
-```  
-Explain Code
+```
 5. Load the updated configuration file.  
 Terminal window  
 ```  

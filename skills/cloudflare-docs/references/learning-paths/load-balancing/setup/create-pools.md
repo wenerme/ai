@@ -16,8 +16,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-6453)
-* [ API ](#tab-panel-6454)
+* [ Dashboard ](#tab-panel-6451)
+* [ API ](#tab-panel-6452)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 
@@ -155,8 +155,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/p
 
 ```
 
-Explain Code
-
 The response contains the complete definition of the new pool.
 
 Response
@@ -267,8 +265,6 @@ Response
 
 
 ```
-
-Explain Code
 
 After creating the pool, you would also want to [create a new notification](https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/) with the following parameters specified:
 

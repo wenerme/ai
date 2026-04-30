@@ -162,8 +162,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -242,8 +240,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Sending outbound email
 
 ### Using `sendEmail()`
@@ -291,8 +287,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -330,8 +324,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 When `secret` is provided, the agent signs the routing headers so that replies verified by `createSecureReplyEmailResolver` route back to the same agent instance.
 
@@ -452,8 +444,6 @@ const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET, {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -479,8 +469,6 @@ const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET, {
 
 
 ```
-
-Explain Code
 
 **When to use:** If your agent initiates email conversations and you need replies to route back to the same agent instance securely.
 
@@ -578,8 +566,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -634,8 +620,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Handling emails in your Agent
 
 ### The `AgentEmail` interface
@@ -669,8 +653,6 @@ type AgentEmail = {
 
 
 ```
-
-Explain Code
 
 ### Parsing email content
 
@@ -710,8 +692,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -742,8 +722,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Detecting auto-reply emails
 
@@ -790,8 +768,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -829,8 +805,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 This checks for standard RFC 3834 headers (`Auto-Submitted`, `X-Auto-Response-Suppress`, `Precedence`) that indicate an email is an auto-reply.
 
@@ -878,8 +852,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -916,8 +888,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Deferred replies
 
@@ -992,8 +962,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1059,8 +1027,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 The `inReplyTo` field sets the `In-Reply-To` header so mail clients thread the reply correctly. The `secret` signs the agent routing headers so that follow-up replies route back to this agent instance via `createSecureReplyEmailResolver`.
 
@@ -1226,8 +1192,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1288,8 +1252,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Common error codes
 
@@ -1359,7 +1321,6 @@ export default {
   },  
 };  
 ```  
-Explain Code  
 TypeScript  
 ```  
 export default {  
@@ -1377,8 +1338,7 @@ export default {
     });  
   },  
 } satisfies ExportedHandler<Env>;  
-```  
-Explain Code
+```
 3. Sign outbound emails:  
    * [  JavaScript ](#tab-panel-3198)  
    * [  TypeScript ](#tab-panel-3199)  
@@ -1560,8 +1520,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1711,8 +1669,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## API reference
 
 ### `sendEmail`
@@ -1751,8 +1707,6 @@ async sendEmail(options: {
 
 
 ```
-
-Explain Code
 
 Send an outbound email through the Email Service binding. Automatically injects `X-Agent-Name` and `X-Agent-ID` headers. When `secret` is provided, signs headers with HMAC-SHA256 for secure reply routing.
 
@@ -1842,8 +1796,6 @@ type SignatureFailureReason =
 
 
 ```
-
-Explain Code
 
 Creates a resolver for routing email replies with signature verification.
 

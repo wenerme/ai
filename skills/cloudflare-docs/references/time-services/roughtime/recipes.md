@@ -55,8 +55,6 @@ The client configuration consists of a list of named Roughtime servers formatted
 
 ```
 
-Explain Code
-
 It includes each server's _root public key_. When the server starts, it generates an _online_ public/secret key pair. The root secret key is used to create a _delegation_ for the online public key and the online secret key is used to sign the response.
 
 The delegation serves the same function as a traditional [X.509 certificate ↗](https://en.wikipedia.org/wiki/X.509) on the web. The client first uses the root public key to verify the delegation, then uses the online public key to verify the response.

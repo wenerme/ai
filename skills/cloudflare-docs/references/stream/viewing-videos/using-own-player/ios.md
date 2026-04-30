@@ -70,8 +70,6 @@ struct MyView_Previews: PreviewProvider {
 
 ```
 
-Explain Code
-
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/viewing-videos/","name":"Play video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/viewing-videos/using-own-player/","name":"Use your own player"}},{"@type":"ListItem","position":5,"item":{"@id":"/stream/viewing-videos/using-own-player/ios/","name":"iOS"}}]}
 ```

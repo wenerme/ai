@@ -56,8 +56,6 @@ type WhateverGroup {
 
 ```
 
-Explain Code
-
 Unique values are not available as a dimension but can be queried as demonstrated in this example:
 
 ```
@@ -107,8 +105,6 @@ Unique values are not available as a dimension but can be queried as demonstrate
 
 
 ```
-
-Explain Code
 
 ### Schema type definitions
 
@@ -175,8 +171,6 @@ type Request {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/features/","name":"Features"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/features/data-sets/","name":"Datasets (tables)"}}]}

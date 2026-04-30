@@ -86,8 +86,6 @@ Terminal window
 
 ```
 
-Explain Code
-
 Note
 
 This list is not exhaustive, and other CAs might be added or removed for operational reasons.

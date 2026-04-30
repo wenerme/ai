@@ -45,9 +45,60 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 This example creates a rate limiting rule in zone with ID `<ZONE_ID>` blocking traffic that exceeds the configured rate:
 
-Note
+* [ Terraform (v5) ](#tab-panel-8073)
+* [ Terraform (v4) ](#tab-panel-8074)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+
+* `Zone WAF Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "zone_rl" {
+
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "Rate limiting for my zone"
+
+  description = ""
+
+  kind        = "zone"
+
+  phase       = "http_ratelimit"
+
+
+  rules = [{
+
+    ref         = "rate_limit_api_requests_ip"
+
+    description = "Rate limit API requests by IP"
+
+    expression  = "(http.request.uri.path matches \"^/api/\")"
+
+    action      = "block"
+
+    ratelimit = {
+
+      characteristics     = ["cf.colo.id", "ip.src"]
+
+      period              = 60
+
+      requests_per_period = 100
+
+      mitigation_timeout  = 600
+
+    }
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -93,11 +144,13 @@ resource "cloudflare_ruleset" "zone_rl" {
 
 ```
 
-Explain Code
-
 To create another rate limiting rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
   
+Use a single ruleset resource per phase
+
+Each zone supports one [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) per phase. Define all your rate limiting rules for a given zone within a single `cloudflare_ruleset` resource with `kind = "zone"` and `phase = "http_ratelimit"`.
+
 ## Create a rate limiting rule at the account level
 
 Notes
@@ -107,9 +160,102 @@ Notes
 
 This example defines a [custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/) with a single rate limiting rule in account with ID `<ACCOUNT_ID>` that blocks traffic for the `/api/` path exceeding the configured rate. The second `cloudflare_ruleset` resource defines an `execute` rule that deploys the custom ruleset for traffic addressed at `example.com`.
 
-Note
+* [ Terraform (v5) ](#tab-panel-8075)
+* [ Terraform (v4) ](#tab-panel-8076)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+
+* `Account WAF Write`
+* `Account Rulesets Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "account_rl" {
+
+  account_id  = var.cloudflare_account_id
+
+  name        = "Rate limiting rules for APIs"
+
+  description = ""
+
+  kind        = "custom"
+
+  phase       = "http_ratelimit"
+
+
+  rules = [{
+
+    ref         = "rate_limit_api_ip"
+
+    description = "Rate limit API requests by IP"
+
+    expression  = "http.request.uri.path contains \"/api/\""
+
+    action      = "block"
+
+    ratelimit = {
+
+      characteristics     = ["cf.colo.id", "ip.src"]
+
+      period              = 60
+
+      requests_per_period = 100
+
+      mitigation_timeout  = 600
+
+    }
+
+  }]
+
+}
+
+
+# Account-level entry point ruleset for the 'http_ratelimit' phase
+
+resource "cloudflare_ruleset" "account_rl_entrypoint" {
+
+  account_id  = var.cloudflare_account_id
+
+  name        = "Account-level rate limiting"
+
+  description = ""
+
+  kind        = "root"
+
+  phase       = "http_ratelimit"
+
+
+  depends_on = [cloudflare_ruleset.account_rl]
+
+
+  rules = [{
+
+    # Deploy the previously defined custom ruleset containing a rate limiting rule
+
+    ref         = "deploy_rate_limit_example_com"
+
+    description = "Deploy custom ruleset with RL rule"
+
+    expression  = "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\""
+
+    action      = "execute"
+
+    action_parameters = {
+
+      id = cloudflare_ruleset.account_rl.id
+
+    }
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -157,7 +303,7 @@ resource "cloudflare_ruleset" "account_rl" {
 
 resource "cloudflare_ruleset" "account_rl_entrypoint" {
 
-  account_id  = <ACCOUNT_ID>
+  account_id  = "<ACCOUNT_ID>"
 
   name        = "Account-level rate limiting"
 
@@ -196,8 +342,6 @@ resource "cloudflare_ruleset" "account_rl_entrypoint" {
 
 ```
 
-Explain Code
-
 To create another rate limiting rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
   
@@ -208,9 +352,76 @@ This example creates a rate limiting rule in zone with ID `<ZONE_ID>` with:
 * A custom counting expression that includes a response field (`http.response.code`).
 * A custom JSON response for rate limited requests.
 
-Note
+* [ Terraform (v5) ](#tab-panel-8077)
+* [ Terraform (v4) ](#tab-panel-8078)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+
+* `Zone WAF Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "zone_rl_custom_response" {
+
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "Advanced rate limiting rule for my zone"
+
+  description = ""
+
+  kind        = "zone"
+
+  phase       = "http_ratelimit"
+
+
+  rules = [{
+
+    ref         = "rate_limit_example_com_status_404"
+
+    description = "Rate limit requests to www.example.com when exceeding the threshold of 404 responses on /status/"
+
+    expression  = "http.host eq \"www.example.com\" and (http.request.uri.path matches \"^/status/\")"
+
+    action      = "block"
+
+    action_parameters = {
+
+      response = {
+
+        status_code  = 429
+
+        content      = "{\"response\": \"block\"}"
+
+        content_type = "application/json"
+
+      }
+
+    }
+
+    ratelimit = {
+
+      characteristics     = ["ip.src", "cf.colo.id"]
+
+      period              = 10
+
+      requests_per_period = 5
+
+      mitigation_timeout  = 30
+
+      counting_expression = "(http.host eq \"www.example.com\") and (http.request.uri.path matches \"^/status/\") and (http.response.code eq 404)"
+
+    }
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -271,8 +482,6 @@ resource "cloudflare_ruleset" "zone_rl_custom_response" {
 
 
 ```
-
-Explain Code
 
 To create another rate limiting rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 

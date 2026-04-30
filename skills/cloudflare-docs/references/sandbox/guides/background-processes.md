@@ -62,8 +62,6 @@ console.log("Status:", server.status); // 'running'
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -92,8 +90,6 @@ console.log('Status:', server.status); // 'running'
 
 
 ```
-
-Explain Code
 
 ## Configure process environment
 
@@ -130,8 +126,6 @@ console.log("API server started");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -159,8 +153,6 @@ console.log('API server started');
 
 
 ```
-
-Explain Code
 
 ## Monitor process status
 
@@ -197,8 +189,6 @@ const isRunning = processes.some(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -222,8 +212,6 @@ const isRunning = processes.some(p => p.id === processId && p.status === 'runnin
 
 
 ```
-
-Explain Code
 
 ## Wait for process readiness
 
@@ -334,8 +322,6 @@ for await (const log of parseSSEStream(logStream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -359,8 +345,6 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 
 ```
-
-Explain Code
 
 Or get accumulated logs:
 
@@ -525,8 +509,6 @@ console.log("All services running");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -559,8 +541,6 @@ console.log('All services running');
 
 
 ```
-
-Explain Code
 
 ## Keep containers alive for long-running processes
 
@@ -636,8 +616,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -704,8 +682,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Always destroy with keepAlive
 

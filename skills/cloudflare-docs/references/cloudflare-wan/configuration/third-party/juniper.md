@@ -321,8 +321,6 @@ set security ike gateway cf-wan-ike-gw-02 version v2-only
 
 ```
 
-Explain Code
-
 ### IPsec - Phase 2
 
 _Perform in Configuration Mode_
@@ -398,8 +396,6 @@ set security ipsec vpn cf-wan-ipsec-vpn-02 establish-tunnels immediately
 
 ```
 
-Explain Code
-
 Note
 
 Enabling `establish-tunnels-immediately` ensures the SRX is always the tunnel initiator. This is crucial as Cloudflare will never initiate the IPsec tunnel. If you do not enable this option, you will need to generate some traffic that will traverse the IPsec tunnels at which point the SRX will initiate the tunnel in an on-demand fashion.
@@ -468,8 +464,6 @@ set security policies from-zone trust to-zone cloudflare policy trust-to-cloudfl
 
 
 ```
-
-Explain Code
 
 ### Filter-Based Forwarding - Policy-Based Routing
 
@@ -788,8 +782,6 @@ version v2-only;
 
 ```
 
-Explain Code
-
 Note the presence of `inactive: security ipsec vpn cf-wan-ike-gw-01` at the top of the IPsec VPN stanza:
 
 ```
@@ -820,8 +812,6 @@ establish-tunnels immediately;
 
 
 ```
-
-Explain Code
 
 #### Activate IKE Gateway and IPsec VPN Objects
 
@@ -963,8 +953,6 @@ inet.0: 11 destinations, 11 routes (11 active, 0 holddown, 0 hidden)
 
 ```
 
-Explain Code
-
 #### Routing Instance Route Table (CF\_WAN\_RI.inet.0)
 
 ```
@@ -1029,8 +1017,6 @@ CF_WAN_RI.inet.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
 
 
 ```
-
-Explain Code
 
 ### Display Firewall Filter Counters
 

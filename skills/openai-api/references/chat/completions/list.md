@@ -444,7 +444,7 @@ curl https://api.openai.com/v1/chat/completions \
                   "end_index": 0,
                   "start_index": 0,
                   "title": "title",
-                  "url": "url"
+                  "url": "https://example.com"
                 }
               }
             ],

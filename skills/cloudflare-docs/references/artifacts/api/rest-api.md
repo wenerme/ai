@@ -204,8 +204,6 @@ export interface TokenInfo {
 
 ```
 
-Explain Code
-
 ## Repos
 
 ### Create a repo
@@ -259,8 +257,6 @@ export type CreateRepoResponse = ApiEnvelope<CreateRepoResult>;
 
 
 ```
-
-Explain Code
 
 Terminal window
 
@@ -317,8 +313,6 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos" \
 
 
 ```
-
-Explain Code
 
 Create, fork, and import responses return the token string only. The token encodes its expiry directly in the `?expires=` suffix. The separate `POST /tokens` route also returns `expires_at` alongside the plaintext token.
 
@@ -424,8 +418,6 @@ curl "$ARTIFACTS_BASE_URL/repos?limit=20&sort=updated_at&direction=desc" \
 
 ```
 
-Explain Code
-
 ### Get a repo
 
 Route: `GET /repos/:name`
@@ -490,8 +482,6 @@ curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \
 
 
 ```
-
-Explain Code
 
 ### Delete a repo
 
@@ -591,8 +581,6 @@ export type ForkRepoResponse = ApiEnvelope<ForkRepoResult>;
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -650,8 +638,6 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/fork" \
 
 
 ```
-
-Explain Code
 
 ### Import a public HTTPS remote
 
@@ -743,8 +729,6 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos/react-mirror/import" \
 
 
 ```
-
-Explain Code
 
 If a repo exists but is still importing or forking, this route can return `409 Conflict` with a retriable error message.
 
@@ -842,8 +826,6 @@ curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/tokens?state=all&per_page=30&pag
 
 ```
 
-Explain Code
-
 ### Create a token
 
 Route: `POST /tokens`
@@ -888,8 +870,6 @@ export type CreateTokenResponse = ApiEnvelope<CreateTokenResult>;
 
 
 ```
-
-Explain Code
 
 Terminal window
 
@@ -940,8 +920,6 @@ curl --request POST "$ARTIFACTS_BASE_URL/tokens" \
 
 
 ```
-
-Explain Code
 
 ### Revoke a token
 

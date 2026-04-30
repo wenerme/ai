@@ -109,8 +109,6 @@ await sandbox.mountBucket("shared-bucket", "/user-data", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -173,8 +171,6 @@ await sandbox.mountBucket('shared-bucket', '/user-data', {
 
 
 ```
-
-Explain Code
 
 **Throws**:
 

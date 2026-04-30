@@ -55,8 +55,7 @@ resource "cloudflare_zero_trust_access_policy" "allow_company_emails" {
     }  
   ]  
 }  
-```  
-Explain Code
+```
 3. Use the [cloudflare\_zero\_trust\_access\_application ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fapplication) resource to create an application with type `warp`.  
 ```  
 resource "cloudflare_zero_trust_access_application" "device_enrollment" {  
@@ -73,8 +72,7 @@ resource "cloudflare_zero_trust_access_application" "device_enrollment" {
     }  
   ]  
 }  
-```  
-Explain Code
+```
 
 Users can now [enroll their device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) by logging in to your identity provider. To prevent users from logging out of your organization after they enroll, disable [Allow devices to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) in your device client settings.
 
@@ -119,8 +117,7 @@ resource "cloudflare_zero_trust_access_policy" "warp_enrollment_service_token" {
     }  
   ]  
 }  
-```  
-Explain Code
+```
 4. Add the policy to your [cloudflared\_zero\_trust\_access\_application for the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
 5. In your MDM [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/), add the following fields:  
    * `auth_client_id`: The **Client ID** of your service token.  
@@ -190,8 +187,7 @@ resource "cloudflare_zero_trust_access_mtls_certificate" "example_mtls_cert" {
   EOT  
   associated_hostnames = ["your-team-name.cloudflareaccess.com"]  
 }  
-```  
-Explain Code
+```
 3. Create the following Access policy:  
 ```  
 resource "cloudflare_zero_trust_access_policy" "warp_enrollment_mtls" {  
@@ -218,8 +214,7 @@ resource "cloudflare_zero_trust_access_policy" "warp_enrollment_mtls" {
     }  
   ]  
 }  
-```  
-Explain Code
+```
 4. Add the policy to your [cloudflared\_zero\_trust\_access\_application for the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
 5. On your device, add the client certificate to the [system keychain](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-in-the-browser).
 

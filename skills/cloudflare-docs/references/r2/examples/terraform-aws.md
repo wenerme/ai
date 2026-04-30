@@ -141,8 +141,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "default" {
 
 ```
 
-Explain Code
-
 You can then use `terraform plan` to view the changes and `terraform apply` to apply changes.
 
 ```json

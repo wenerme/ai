@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Authenticate against R2 with temporary credentials
 
-**Last reviewed:**  10 days ago 
+**Last reviewed:**  11 days ago 
 
 The following examples show how to generate R2 [temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/) via both the Temporary Credentials API and local client-side signing, and how to use the resulting credentials with an S3 client.
 
@@ -53,8 +53,6 @@ curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/temp-access-c
 
 ```
 
-Explain Code
-
 The response wraps the credentials in a `result` object:
 
 ```
@@ -81,8 +79,6 @@ The response wraps the credentials in a `result` object:
 
 
 ```
-
-Explain Code
 
 ## Generate locally (client-side signing)
 
@@ -256,8 +252,6 @@ export async function createTempCredentials(
 
 ```
 
-Explain Code
-
 The following example returns a credential that is valid for 15 minutes and can only `GetObject` and `HeadObject` under the `data/` prefix:
 
 TypeScript
@@ -298,8 +292,6 @@ const creds = await createTempCredentials(
 
 
 ```
-
-Explain Code
 
 ## Use the credentials
 
@@ -343,8 +335,6 @@ console.log(denied.status); // 403
 
 
 ```
-
-Explain Code
 
 ## Related resources
 

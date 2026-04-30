@@ -143,8 +143,6 @@ When a request matches DLP policies (whether flagged or blocked), an additional 
 
 ```
 
-Explain Code
-
 #### Example header value
 
 ```
@@ -185,8 +183,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 Use this header to programmatically detect which DLP profiles and entries were matched, which policies triggered, and whether the match occurred in the request or response.
 
@@ -241,8 +237,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ## Best practices
 

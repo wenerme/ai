@@ -65,8 +65,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -109,8 +107,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 
@@ -155,8 +151,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **High Sample Rate**  — Studio quality at 44.1kHz sample rate 
@@ -199,8 +193,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

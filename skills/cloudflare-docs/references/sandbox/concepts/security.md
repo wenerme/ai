@@ -88,8 +88,6 @@ await sandbox.exec('cat /tmp/input');
 
 ```
 
-Explain Code
-
 ## Authentication
 
 ### Sandbox access
@@ -125,8 +123,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Preview URLs
 
@@ -175,8 +171,6 @@ def get_data():
 
 ```
 
-Explain Code
-
 ## Secrets management
 
 Use environment variables, not hardcoded secrets:
@@ -208,8 +202,6 @@ await sandbox.startProcess('node app.js', {
 
 
 ```
-
-Explain Code
 
 Clean up temporary sensitive data:
 

@@ -179,8 +179,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/insta
 
 ```
 
-Explain Code
-
 You can also test queries in the dashboard by going to your instance and selecting the **Playground** tab.
 
 ## Add to your application

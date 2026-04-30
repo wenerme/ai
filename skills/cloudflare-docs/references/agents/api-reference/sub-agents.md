@@ -60,8 +60,6 @@ export class Researcher extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -98,8 +96,6 @@ export class Researcher extends Agent {
 
 
 ```
-
-Explain Code
 
 Both classes must be exported from the worker entry point. No separate Durable Object bindings are needed — child classes are discovered automatically via `ctx.exports`.
 
@@ -163,8 +159,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -191,8 +185,6 @@ tag = "v1"
 
 
 ```
-
-Explain Code
 
 Only the parent agent needs a Durable Object binding and migration. Child agents are created as facets of the parent — they share the same machine but have fully isolated SQLite storage.
 
@@ -277,8 +269,6 @@ class MyChild extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -308,8 +298,6 @@ class MyChild extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Requirements
 
@@ -443,8 +431,6 @@ export class Child extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -494,8 +480,6 @@ export class Child extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Naming and identity
 
@@ -607,8 +591,6 @@ export class Orchestrator extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -637,8 +619,6 @@ export class Orchestrator extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Nested sub-agents
 
@@ -690,8 +670,6 @@ export class Worker extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -734,8 +712,6 @@ export class Worker extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Callback streaming
 
@@ -800,8 +776,6 @@ export class Streamer extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -857,8 +831,6 @@ export class Streamer extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Limitations
 

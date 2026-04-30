@@ -107,8 +107,6 @@ As shown in the example below, `https://<your-team-name>.cloudflareaccess.com/cd
 
 ```
 
-Explain Code
-
 Avoid key rotation issues
 
 * Validate tokens using the external endpoint rather than saving the public key as a hard-coded value.
@@ -251,8 +249,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -366,8 +362,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 #### Required environment variables
 
@@ -498,8 +492,6 @@ func main() {
 
 
 ```
-
-Explain Code
 
 ### Python example
 
@@ -640,8 +632,6 @@ if __name__ == '__main__':
 
 ```
 
-Explain Code
-
 ### JavaScript (Node.js) example
 
 JavaScript
@@ -752,8 +742,6 @@ app.listen(3333);
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/","name":"Add web applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/","name":"Authorization cookie"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/","name":"Validate JWTs"}}]}

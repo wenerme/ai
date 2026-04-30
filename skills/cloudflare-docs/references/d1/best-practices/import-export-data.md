@@ -55,8 +55,6 @@ INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCNF67KV7FPPSEJVJME
 
 ```
 
-Explain Code
-
 With your `users_export.sql` file in the current working directory, you can pass the `--file=users_export.sql` flag to `d1 execute` to execute (import) our table schema and values:
 
 Terminal window
@@ -103,8 +101,6 @@ npx wrangler d1 execute example-db --remote --command "SELECT name FROM sqlite_s
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -286,8 +282,6 @@ VALUES
 
 
 ```
-
-Explain Code
 
 ## Foreign key constraints
 

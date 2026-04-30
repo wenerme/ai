@@ -106,8 +106,6 @@ export class CounterAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -152,8 +150,6 @@ export class CounterAgent extends Agent<Env, CounterState> {
 
 
 ```
-
-Explain Code
 
 ## 3\. Update Wrangler configuration
 
@@ -213,8 +209,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -245,8 +239,6 @@ new_sqlite_classes = [ "CounterAgent" ]
 
 
 ```
-
-Explain Code
 
 **Key points:**
 
@@ -440,8 +432,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -482,8 +472,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Hono
 
 * [  JavaScript ](#tab-panel-3918)
@@ -518,8 +506,6 @@ export default app;
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -548,8 +534,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 ### With static assets
 
@@ -592,8 +576,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -627,8 +609,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Configure assets in the Wrangler configuration file:
 
@@ -730,8 +710,6 @@ function CounterWidget() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -776,8 +754,6 @@ function CounterWidget() {
 
 ```
 
-Explain Code
-
 ### Vanilla JavaScript
 
 * [  JavaScript ](#tab-panel-3928)
@@ -812,8 +788,6 @@ document.getElementById("increment").onclick = () => agent.call("increment");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -842,8 +816,6 @@ document.getElementById("increment").onclick = () => agent.call("increment");
 
 
 ```
-
-Explain Code
 
 ## Adding multiple agents
 
@@ -942,8 +914,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -977,8 +947,6 @@ new_sqlite_classes = [ "CounterAgent", "Chat", "Scheduler" ]
 
 
 ```
-
-Explain Code
 
 Export all agents from your entry point:
 
@@ -1057,8 +1025,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1095,8 +1061,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Custom agent path prefix
 
@@ -1178,8 +1142,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1211,8 +1173,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Troubleshooting
 

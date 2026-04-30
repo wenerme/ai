@@ -193,8 +193,6 @@ ORDER BY avg_amount DESC
 
 ```
 
-Explain Code
-
 Note
 
 CTEs must reference a single table. Multi-table CTEs, JOINs within CTEs, and cross-table references are not supported.
@@ -294,8 +292,6 @@ WHERE department ILIKE '%eng%'
 
 
 ```
-
-Explain Code
 
 ---
 
@@ -421,8 +417,6 @@ ORDER BY dept_count DESC, department ASC
 
 
 ```
-
-Explain Code
 
 ---
 
@@ -730,8 +724,6 @@ LIMIT 20
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/sql-reference/","name":"SQL reference"}}]}

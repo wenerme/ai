@@ -145,8 +145,6 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
-Explain Code
-
 Pipe the output to `jq` to format the JSON response for easier reading:
 
 Terminal window
@@ -252,8 +250,6 @@ https://api.cloudflare.com/client/v4/graphql \
 
 
 ```
-
-Explain Code
 
 In this response, `sum.total` is the number of probes sent during the interval and `sum.failures` is the number that did not receive a reply. A `failures` value of `0` indicates the endpoint was fully reachable during that period.
 

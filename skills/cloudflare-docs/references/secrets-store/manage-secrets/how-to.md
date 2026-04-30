@@ -92,8 +92,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/st
 
 ```
 
-Explain Code
-
 ## Duplicate a secret
 
 Duplicate a secret to keep the same secret value but change name, scope, or comments.

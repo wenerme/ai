@@ -138,8 +138,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/st
 
 ```
 
-Explain Code
-
 Refer to [manage account secrets](https://developers.cloudflare.com/secrets-store/manage-secrets/) for further options.
 
 ## 2\. Bind an account secret to your Worker
@@ -187,8 +185,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -274,8 +270,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/secrets-store/","name":"Secrets Store"}},{"@type":"ListItem","position":3,"item":{"@id":"/secrets-store/integrations/","name":"Secrets Store integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/secrets-store/integrations/workers/","name":"Workers integration"}}]}

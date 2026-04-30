@@ -79,8 +79,6 @@ git -C /tmp/starter-repo log --oneline -5
 
 ```
 
-Explain Code
-
 Use a short-lived token in the authenticated remote URL. If you need a smaller repo or a simpler local workflow, use a normal [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/) clone instead.
 
 ```json

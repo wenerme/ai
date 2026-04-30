@@ -103,8 +103,6 @@ region1.v2.argotunnel.com. 86400 IN  A  198.41.192.77
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -142,8 +140,6 @@ region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::10
 
 
 ```
-
-Explain Code
 
 Terminal window
 
@@ -183,8 +179,6 @@ region2.v2.argotunnel.com. 86400 IN  A  198.41.200.23
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -222,8 +216,6 @@ region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::10
 
 
 ```
-
-Explain Code
 
 Terminal window
 
@@ -263,8 +255,6 @@ us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.10
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -302,8 +292,6 @@ us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::10
 
 
 ```
-
-Explain Code
 
 Terminal window
 
@@ -343,8 +331,6 @@ us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.10
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -382,8 +368,6 @@ us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::10
 
 
 ```
-
-Explain Code
 
 Terminal window
 
@@ -423,8 +407,6 @@ fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.10
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -462,8 +444,6 @@ fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::10
 
 
 ```
-
-Explain Code
 
 Terminal window
 
@@ -503,8 +483,6 @@ fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.10
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -542,8 +520,6 @@ fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::10
 
 
 ```
-
-Explain Code
 
 The `ANSWER SECTION` should include the expected IP addresses for Cloudflare Tunnel endpoints.
 

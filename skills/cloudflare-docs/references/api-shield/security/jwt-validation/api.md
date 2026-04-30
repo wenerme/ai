@@ -107,8 +107,6 @@ Example
 
 ```
 
-Explain Code
-
 ## Create a token configuration using the Cloudflare API
 
 Use cURL or any other API client tool to send the new configuration to Cloudflare’s API to enable JWT validation. Make sure to replace `{zone_id}` with the relevant zone ID and add your [authentication credentials](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) header.
@@ -167,8 +165,6 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/conf
 
 
 ```
-
-Explain Code
 
 The response will be in a Cloudflare `v4` response envelope and the result contains the created configuration. Note the returned ID, as it will be used to reference the token configuration when creating token validation rules using the API.
 
@@ -236,8 +232,6 @@ Example response
 
 
 ```
-
-Explain Code
 
 ## Token validation rules
 
@@ -371,8 +365,6 @@ Selector example
 
 ```
 
-Explain Code
-
 Operations can be included at a host level and ignored on a per-operation basis.
 
 You can use the `POST /zones/{zone_id}/token_validation/rules/preview` endpoint to see the operations covered by this rule:
@@ -425,8 +417,6 @@ curl --request PUT \
 
 
 ```
-
-Explain Code
 
 The response will include all operations on a zone with an additional `state` field.
 
@@ -609,8 +599,6 @@ Result
 
 ```
 
-Explain Code
-
 Operations with a `included` state will be covered by the token validation rule. The response also shows the hostnames of included operations in `result.selected_hosts` and shows all hostnames used by all zone operations in `result.available_hosts`.
 
 You can also send an empty object in the request body:
@@ -699,8 +687,6 @@ Token Validation Rule JSON example
 
 ```
 
-Explain Code
-
 ## Create a token Validation rule using the Cloudflare API
 
 Use cURL or any other API client tool to send the new configuration to Cloudflare’s API to enable JWT validation. Make sure to replace `{zone_id}` with the relevant zone ID and add your [authentication credentials](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) header.
@@ -773,8 +759,6 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rule
 
 
 ```
-
-Explain Code
 
 The response will be in a Cloudflare `v4` response envelope and the result contains the created rules. Note the returned ID for each rule, which can be used to edit or delete an existing rule.
 
@@ -857,8 +841,6 @@ Result
 
 ```
 
-Explain Code
-
 ## Maintenance
 
 ### Update token configuration
@@ -928,8 +910,6 @@ curl --request PUT \
 
 ```
 
-Explain Code
-
 Make sure to replace `{zone_id}` with the relevant zone ID and add your [authentication credentials](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) header.
 
 ### Update token validation rules
@@ -975,8 +955,6 @@ curl --request PATCH \
 
 ```
 
-Explain Code
-
 Rules can be reordered by setting a position field in the `PATCH` body.
 
 This example places rule `714d3dd0-cc59-4911-862f-8a27e22353cc` after rule `7124f9bc-d6b5-430d-b488-b6bc2892f2fb`:
@@ -1010,8 +988,6 @@ curl --request PATCH \
 
 ```
 
-Explain Code
-
 This example places rule `714d3dd0-cc59-4911-862f-8a27e22353cc` before rule `7124f9bc-d6b5-430d-b488-b6bc2892f2fb`:
 
 Example using cURL
@@ -1042,8 +1018,6 @@ curl --request PATCH \
 
 
 ```
-
-Explain Code
 
 ## Perform JWT validation
 

@@ -22,8 +22,8 @@ Cloudflare R2 is an object storage service that provides a highly available, sca
 
 Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), [API](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/methods/create/), or [Account View Dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/new) create an [R2 Bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/).
 
-* [ Wrangler ](#tab-panel-8067)
-* [ API ](#tab-panel-8068)
+* [ Wrangler ](#tab-panel-8105)
+* [ API ](#tab-panel-8106)
 
 Terminal window
 
@@ -130,8 +130,6 @@ variable "account_id" { default = "<YOUR_ACCOUNT_ID>" }
 
 
 ```
-
-Explain Code
 
 ## Migrate state file to R2 backend
 

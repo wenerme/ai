@@ -155,8 +155,6 @@ export default {
 
 ```
 
-Explain Code
-
 To make this work, you need to use [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) to set your `OPENAI_API_KEY`. This will save the API key to your environment so your Worker can access it when deployed. This key is the API key you created earlier in the OpenAI dashboard:
 
  npm  yarn  pnpm 
@@ -242,8 +240,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## 5\. Deploy your Worker application
 

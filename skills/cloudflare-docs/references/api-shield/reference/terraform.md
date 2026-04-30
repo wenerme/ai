@@ -96,8 +96,6 @@ resource "cloudflare_api_shield_operation" "post_image" {
 
 ```
 
-Explain Code
-
 ## Manage Schema validation
 
 Note
@@ -154,8 +152,6 @@ resource "cloudflare_schema_validation_operation_settings" "post_image_log_only"
 
 
 ```
-
-Explain Code
 
 ## Validate JWTs
 
@@ -281,8 +277,6 @@ resource "cloudflare_api_shield" "session_identifiers" {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/reference/terraform/","name":"Terraform"}}]}

@@ -80,8 +80,7 @@ The response will return a UUID for the certificate. For example:
     ...  
   }  
 }  
-```  
-Explain Code
+```
 2. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Posture checks**.
 3. Go to **Cloudflare One Client checks** and select **Add a check**.
 4. Select **Client certificate**.
@@ -266,8 +265,6 @@ Certificate:
 
 
 ```
-
-Explain Code
 
 For the posture check to pass, a certificate must appear in the output that validates against the uploaded signing certificate.
 

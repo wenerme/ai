@@ -77,13 +77,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-6903)
-* [  TypeScript ](#tab-panel-6904)
-* [  Python ](#tab-panel-6905)
-* [ go ](#tab-panel-6906)
-* [ Java ](#tab-panel-6907)
-* [ .NET ](#tab-panel-6908)
-* [ YAML ](#tab-panel-6909)
+* [  JavaScript ](#tab-panel-6901)
+* [  TypeScript ](#tab-panel-6902)
+* [  Python ](#tab-panel-6903)
+* [ go ](#tab-panel-6904)
+* [ Java ](#tab-panel-6905)
+* [ .NET ](#tab-panel-6906)
+* [ YAML ](#tab-panel-6907)
 
 Terminal window
 
@@ -237,13 +237,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-6910)
-* [  TypeScript ](#tab-panel-6911)
-* [  Python ](#tab-panel-6912)
-* [ go ](#tab-panel-6913)
-* [ Java ](#tab-panel-6914)
-* [ .NET ](#tab-panel-6915)
-* [ YAML ](#tab-panel-6916)
+* [  JavaScript ](#tab-panel-6908)
+* [  TypeScript ](#tab-panel-6909)
+* [  Python ](#tab-panel-6910)
+* [ go ](#tab-panel-6911)
+* [ Java ](#tab-panel-6912)
+* [ .NET ](#tab-panel-6913)
+* [ YAML ](#tab-panel-6914)
 
 Terminal window
 
@@ -383,13 +383,13 @@ The [Workers Script resource ↗](https://www.pulumi.com/registry/packages/cloud
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-6917)
-* [  TypeScript ](#tab-panel-6918)
-* [  Python ](#tab-panel-6919)
-* [ go ](#tab-panel-6920)
-* [ Java ](#tab-panel-6921)
-* [ .NET ](#tab-panel-6922)
-* [ YAML ](#tab-panel-6923)
+* [  JavaScript ](#tab-panel-6915)
+* [  TypeScript ](#tab-panel-6916)
+* [  Python ](#tab-panel-6917)
+* [ go ](#tab-panel-6918)
+* [ Java ](#tab-panel-6919)
+* [ .NET ](#tab-panel-6920)
+* [ YAML ](#tab-panel-6921)
 
 **Filename: `index.js`**
 
@@ -439,8 +439,6 @@ const worker = new cloudflare.WorkersScript("hello-world-worker", {
 
 ```
 
-Explain Code
-
 **Filename: `index.ts`**
 
 TypeScript
@@ -486,8 +484,6 @@ const worker = new cloudflare.WorkersScript("hello-world-worker", {
 
 
 ```
-
-Explain Code
 
 **Filename: `__main__.py`**
 
@@ -539,8 +535,6 @@ worker = cloudflare.WorkersScript("hello-world-worker",
 
 
 ```
-
-Explain Code
 
 **Filename: `main.go`**
 
@@ -614,8 +608,6 @@ func main() {
 
 ```
 
-Explain Code
-
 **Filename: `src/main/java/myproject/App.java`**
 
 ```
@@ -683,8 +675,6 @@ public class App {
 
 ```
 
-Explain Code
-
 **Filename: `Program.cs`**
 
 ```
@@ -742,8 +732,6 @@ return await Deployment.RunAsync(() =>
 
 ```
 
-Explain Code
-
 **Filename: `Pulumi.yaml`**
 
 YAML
@@ -785,21 +773,19 @@ resources:
 
 ```
 
-Explain Code
-
 ### b. Add a Route
 
 You will now add a [Workers Route resource ↗](https://www.pulumi.com/registry/packages/cloudflare/api-docs/workersroute/) to your Pulumi program so the Workers script can have an endpoint and be active. To properly configure the Route, you will also look up the zone ID for your domain.
 
 Add the following code snippet to your entrypoint file **after** the Worker script resource:
 
-* [  JavaScript ](#tab-panel-6924)
-* [  TypeScript ](#tab-panel-6925)
-* [  Python ](#tab-panel-6926)
-* [ go ](#tab-panel-6927)
-* [ Java ](#tab-panel-6928)
-* [ .NET ](#tab-panel-6929)
-* [ YAML ](#tab-panel-6930)
+* [  JavaScript ](#tab-panel-6922)
+* [  TypeScript ](#tab-panel-6923)
+* [  Python ](#tab-panel-6924)
+* [ go ](#tab-panel-6925)
+* [ Java ](#tab-panel-6926)
+* [ .NET ](#tab-panel-6927)
+* [ YAML ](#tab-panel-6928)
 
 **Filename: `index.js`**
 
@@ -832,8 +818,6 @@ const route = new cloudflare.WorkersRoute("hello-world-route", {
 
 ```
 
-Explain Code
-
 **Filename: `index.ts`**
 
 TypeScript
@@ -864,8 +848,6 @@ const route = new cloudflare.WorkersRoute("hello-world-route", {
 
 
 ```
-
-Explain Code
 
 **Filename: `__main__.py`**
 
@@ -928,8 +910,6 @@ if err != nil {
 
 ```
 
-Explain Code
-
 **Filename: `src/main/java/myproject/App.java`**
 
 ```
@@ -983,8 +963,6 @@ var route = new Cloudflare.WorkersRoute("hello-world-route", new()
 
 
 ```
-
-Explain Code
 
 **Filename: `Pulumi.yaml`**
 
@@ -1040,13 +1018,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Route resource:
 
-* [  JavaScript ](#tab-panel-6931)
-* [  TypeScript ](#tab-panel-6932)
-* [  Python ](#tab-panel-6933)
-* [ go ](#tab-panel-6934)
-* [ Java ](#tab-panel-6935)
-* [ .NET ](#tab-panel-6936)
-* [ YAML ](#tab-panel-6937)
+* [  JavaScript ](#tab-panel-6929)
+* [  TypeScript ](#tab-panel-6930)
+* [  Python ](#tab-panel-6931)
+* [ go ](#tab-panel-6932)
+* [ Java ](#tab-panel-6933)
+* [ .NET ](#tab-panel-6934)
+* [ YAML ](#tab-panel-6935)
 
 **Filename: `index.js`**
 
@@ -1128,8 +1106,6 @@ pulumi.export('url', url)
 
 ```
 
-Explain Code
-
 **Filename: `main.go`**
 
 ```
@@ -1159,8 +1135,6 @@ ctx.Export("url", pulumi.Sprintf("https://%s", record.Hostname))
 
 
 ```
-
-Explain Code
 
 **Filename: `src/main/java/myproject/App.java`**
 
@@ -1220,8 +1194,6 @@ return new Dictionary<string, object?>
 
 ```
 
-Explain Code
-
 Notice the new top-level `outputs` section.
 
 YAML
@@ -1252,8 +1224,6 @@ outputs:
 
 ```
 
-Explain Code
-
 Note
 
 You may need to use `http` instead depending on your domain settings.
@@ -1262,13 +1232,13 @@ You may need to use `http` instead depending on your domain settings.
 
 Confirm all your changes match the full solution below:
 
-* [  JavaScript ](#tab-panel-6938)
-* [  TypeScript ](#tab-panel-6939)
-* [  Python ](#tab-panel-6940)
-* [ go ](#tab-panel-6941)
-* [ Java ](#tab-panel-6942)
-* [ .NET ](#tab-panel-6943)
-* [ YAML ](#tab-panel-6944)
+* [  JavaScript ](#tab-panel-6936)
+* [  TypeScript ](#tab-panel-6937)
+* [  Python ](#tab-panel-6938)
+* [ go ](#tab-panel-6939)
+* [ Java ](#tab-panel-6940)
+* [ .NET ](#tab-panel-6941)
+* [ YAML ](#tab-panel-6942)
 
 **Filename: `index.js`**
 
@@ -1359,8 +1329,6 @@ exports.url = pulumi.interpolate`https://${record.hostname}`;
 
 ```
 
-Explain Code
-
 **Filename: `index.ts`**
 
 TypeScript
@@ -1448,8 +1416,6 @@ export const url = pulumi.interpolate`https://${record.hostname}`;
 
 ```
 
-Explain Code
-
 **Filename: `__main__.py`**
 
 Python
@@ -1535,8 +1501,6 @@ pulumi.export('url', url)
 
 
 ```
-
-Explain Code
 
 **Filename: `main.go`**
 
@@ -1665,8 +1629,6 @@ func main() {
 
 ```
 
-Explain Code
-
 **Filename: `src/main/java/myproject/App.java`**
 
 ```
@@ -1781,8 +1743,6 @@ public class App {
 
 ```
 
-Explain Code
-
 **Filename: `Program.cs`**
 
 ```
@@ -1888,8 +1848,6 @@ return await Deployment.RunAsync(() =>
 
 ```
 
-Explain Code
-
 **Filename: `Pulumi.yaml`**
 
 YAML
@@ -1978,8 +1936,6 @@ outputs:
 
 
 ```
-
-Explain Code
 
 ## 3\. Deploy your application
 

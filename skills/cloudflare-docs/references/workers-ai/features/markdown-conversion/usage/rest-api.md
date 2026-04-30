@@ -102,8 +102,6 @@ Options that allow you to control how your files are converted. Refer to [Conver
 
 ```
 
-Explain Code
-
 ## Supported
 
 This endpoint lets you programmatically retrieve the full set of rich formats that are supported for conversion.
@@ -157,8 +155,6 @@ You can get your `ACCOUNT_ID` by going to [Workers & Pages on the dashboard](htt
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/markdown-conversion/","name":"Markdown Conversion"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/markdown-conversion/usage/","name":"Usage"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers-ai/features/markdown-conversion/usage/rest-api/","name":"REST API"}}]}

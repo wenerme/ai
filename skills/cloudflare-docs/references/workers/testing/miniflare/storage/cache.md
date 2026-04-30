@@ -140,8 +140,6 @@ console.log(await res.text()); // 2
 
 ```
 
-Explain Code
-
 ## Purging
 
 You can programmatically purge all entries from a cache using the `purgeCache` method on the `Miniflare` instance. This is useful during development when cached assets need to be cleared without restarting the instance:

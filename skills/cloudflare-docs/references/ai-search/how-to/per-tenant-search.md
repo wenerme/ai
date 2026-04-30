@@ -164,8 +164,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -275,8 +273,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Shared instance with metadata filtering
 
 Use a single AI Search instance and organize content by tenant using folder paths. This approach works with both [R2 buckets](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) and [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/). Apply [metadata filters](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) at query time to ensure each tenant only retrieves their own documents.
@@ -363,8 +359,6 @@ const results = await env.SHARED_INSTANCE.search({
 
 
 ```
-
-Explain Code
 
 This example uses a ["starts with" filter](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/#starts-with-filter-for-folders) to match all files under `customer-a/` including subfolders.
 

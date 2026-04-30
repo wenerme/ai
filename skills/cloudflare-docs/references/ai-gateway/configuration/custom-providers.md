@@ -81,8 +81,6 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gatew
 
 ```
 
-Explain Code
-
 **Required fields:**
 
 * `name` (string): Display name for your provider
@@ -144,8 +142,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 Auto-generated logo
 
@@ -264,8 +260,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 ```
 
-Explain Code
-
 To view all your custom providers:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
@@ -335,8 +329,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 
 ```
-
-Explain Code
 
 ## Update a custom provider
 
@@ -780,8 +772,6 @@ response = client.chat.completions.create(
 
 ```
 
-Explain Code
-
 **URL mapping:**
 
 | Component          | Value                                                                                                    |
@@ -821,8 +811,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 Each custom provider slug must be unique within your account. Choose a different slug or update the existing provider.
 
@@ -879,8 +867,6 @@ The specified provider ID does not exist or you don't have access to it. Verify 
 
 
 ```
-
-Explain Code
 
 The `base_url` field must be a valid HTTPS URL. HTTP URLs are not supported for security reasons.
 

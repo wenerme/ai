@@ -14,6 +14,20 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dex.xml) 
 
+## 2026-04-29
+
+  
+**Digital experience tests to authenticated resources and enhanced configuration**   
+
+[Digital experience tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) now support testing applications protected by Cloudflare Access or third-party authentication. All authentication secrets are managed via [Cloudflare Secret Store](https://developers.cloudflare.com/secrets-store/).
+
+Digital experience tests also have enhanced configuration options including:
+
+* New HTTP methods (DELETE, PATCH, POST, PUT)
+* Secret Store headers, custom plain text headers, and custom request bodies
+* Advanced settings: follow redirects, response bodies, response headers, and allow untrusted certificates
+![Digital experience test configuration for Cloudflare Access applications](https://developers.cloudflare.com/_astro/dex_test_auth_config.CD3G3zb__o7m7g.webp)![Digital experience enhanced test configuration](https://developers.cloudflare.com/_astro/dex_test_enhanced_config.Nsv7Vcob_ppxh5.webp) 
+
 ## 2026-04-28
 
   
@@ -24,6 +38,23 @@ image: https://developers.cloudflare.com/zt-preview.png
 This Internet outage and traffic anomaly data is pulled from [Cloudflare Radar ↗](https://radar.cloudflare.com/). All Internet outage and traffic anomaly observations can be viewed in the [Radar Outage Center ↗](https://radar.cloudflare.com/outage-center).
 
 ![Digital Experience Monitoring dashboard notification for Internet outage impacting Cloudflare One Client devices](https://developers.cloudflare.com/_astro/dex_radar_ux_notification.CpdrUVYA_ZSzgIe.webp)![Digital Experience Monitoring dashboard analytics for Internet outage impacting Cloudflare One Client devices](https://developers.cloudflare.com/_astro/dex_radar_analytics.GaPxWM6C_2jLyzS.webp) 
+
+## 2026-04-28
+
+  
+**Cloudflare One Client speed tests**   
+
+IT teams can now remotely run speed tests from the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) to Cloudflare's network edge.
+
+Each speed test includes the following metrics:
+
+* Internet speed: download and upload throughput
+* Latency: download, upload, unloaded latency, and jitter
+* Network quality score: video streaming, webchat/real-time communication (RTC)
+
+In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Digital experience** \> **Diagnostics** and select **Run diagnostics** to use the feature today.
+
+![Cloudflare One client speed test result](https://developers.cloudflare.com/_astro/dex_speed_test.DukupcRs_gXUVw.webp) 
 
 ## 2026-04-15
 

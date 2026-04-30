@@ -89,8 +89,6 @@ curl --request PATCH \
 
 ```
 
-Explain Code
-
 For more guidance on choosing a shedding policy, see [Shedding policies](#shedding-policies).
 
 ## Step 3 — Monitor traffic

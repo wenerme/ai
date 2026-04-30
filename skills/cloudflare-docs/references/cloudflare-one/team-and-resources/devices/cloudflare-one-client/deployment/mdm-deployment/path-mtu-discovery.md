@@ -151,8 +151,7 @@ Body:
 PMTU:  
   1500 bytes  
 "  
-```  
-Explain Code
+```
 
 The example above shows an MTU of 1500 bytes, which meets the [recommended MTU requirements](#recommended-mtu) for the Cloudflare One Client. If your MTU falls below the recommended threshold, consider [enabling Path MTU Discovery](#enable-path-mtu-discovery) to optimize connection performance.
 

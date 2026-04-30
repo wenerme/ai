@@ -194,8 +194,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{
 
 ```
 
-Explain Code
-
 Health checks might take some time to stabilize after the configuration is changed.
 
 ## 9\. Verify tunnel status on Cloudflare dashboard

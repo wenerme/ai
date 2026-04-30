@@ -96,8 +96,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -158,8 +156,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Warning
 
@@ -239,8 +235,6 @@ return Response.json({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -282,8 +276,6 @@ return Response.json({
 
 
 ```
-
-Explain Code
 
 **Token requirements:**
 
@@ -357,8 +349,6 @@ console.log("- Frontend:", frontend.url);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -411,8 +401,6 @@ console.log('- Frontend:', frontend.url);
 
 ```
 
-Explain Code
-
 ## Wait for service readiness
 
 Always verify a service is ready before exposing. Use a simple delay for most cases:
@@ -446,8 +434,6 @@ await sandbox.exposePort(8080, { hostname });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -473,8 +459,6 @@ await sandbox.exposePort(8080, { hostname });
 
 
 ```
-
-Explain Code
 
 For critical services, poll the health endpoint:
 
@@ -520,8 +504,6 @@ await sandbox.exposePort(8080, { hostname });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -556,8 +538,6 @@ await sandbox.exposePort(8080, { hostname });
 
 
 ```
-
-Explain Code
 
 ## Multiple services
 
@@ -617,8 +597,6 @@ return Response.json({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -670,8 +648,6 @@ return Response.json({
 
 ```
 
-Explain Code
-
 ## Manage exposed ports
 
 ### List currently exposed ports
@@ -704,8 +680,6 @@ for (const port of ports) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -730,8 +704,6 @@ for (const port of ports) {
 
 
 ```
-
-Explain Code
 
 ### Unexpose ports
 

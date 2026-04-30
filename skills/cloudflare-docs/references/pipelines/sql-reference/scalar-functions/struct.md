@@ -61,8 +61,6 @@ select struct(a, b) from t;
 
 ```
 
-Explain Code
-
 #### Arguments
 
 * **expression\_n**: Expression to include in the output struct. Can be a constant, column, or function, and any combination of arithmetic or string operators.

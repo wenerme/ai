@@ -82,8 +82,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
 
 ```
 
-Explain Code
-
 You can now add this new app to the Prioritized traffic list in your Cloudflare One Appliance.
 
 ### Add an application to Cloudflare One Appliance
@@ -135,7 +133,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
     ]  
   }  
 ```  
-Explain Code  
 Take note of the `"managed_app_id"` value for any application you want to add.
 2. Send a `POST` request to add new apps to the Prioritized traffic policy.  
 Required API token permissions  
@@ -163,8 +160,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 
 ### Delete an application from Cloudflare One Appliance
 
@@ -209,7 +205,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
     ]  
   }  
 ```  
-Explain Code  
 Take note of the `"id"` value for the application that you want to delete.
 2. Send a `DELETE` request to delete an application from the Prioritized traffic policy.  
 Terminal window  
@@ -229,8 +224,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites
     "errors": [],  
     "messages": []  
 }  
-```  
-Explain Code
+```
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/","name":"Configure with Connector"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/","name":"Network options"}},{"@type":"ListItem","position":9,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/","name":"Application-aware policies"}},{"@type":"ListItem","position":10,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/","name":"Prioritized traffic"}}]}

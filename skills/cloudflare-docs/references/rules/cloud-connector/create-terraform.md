@@ -117,8 +117,6 @@ resource "cloudflare_cloud_connector_rules" "cloud_connector_rules" {
 
 ```
 
-Explain Code
-
 ## More resources
 
 Refer to the [Terraform Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) for more information on the `cloudflare_cloud_connector_rules` resource.

@@ -26,8 +26,8 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-8513)
-* [  wrangler.toml ](#tab-panel-8514)
+* [  wrangler.jsonc ](#tab-panel-8551)
+* [  wrangler.toml ](#tab-panel-8552)
 
 JSONC
 
@@ -83,8 +83,8 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-8517)
-* [  wrangler.toml ](#tab-panel-8518)
+* [  wrangler.jsonc ](#tab-panel-8555)
+* [  wrangler.toml ](#tab-panel-8556)
 
 JSONC
 
@@ -120,8 +120,8 @@ compatibility_date = "2026-04-29"
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-8511)
-* [  wrangler.toml ](#tab-panel-8512)
+* [  wrangler.jsonc ](#tab-panel-8549)
+* [  wrangler.toml ](#tab-panel-8550)
 
 JSONC
 
@@ -153,8 +153,8 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-8515)
-* [  wrangler.toml ](#tab-panel-8516)
+* [  wrangler.jsonc ](#tab-panel-8553)
+* [  wrangler.toml ](#tab-panel-8554)
 
 JSONC
 
@@ -246,8 +246,6 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 
 ```
-
-Explain Code
 
 With the `workflows_preserve_non_retryable_error_message` flag enabled, the original error message and name are preserved, making it easier to debug and handle specific error cases in your Workflow code.
 
@@ -439,8 +437,6 @@ ws.addEventListener("message", (event) => {
 
 ```
 
-Explain Code
-
 If you are not ready to migrate and want to keep `ArrayBuffer` as the default for every WebSocket in your Worker, add the `no_websocket_standard_binary_type` flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
 This flag has no effect on the Durable Object hibernatable WebSocket [webSocketMessage](https://developers.cloudflare.com/durable-objects/best-practices/websockets/) handler, which always receives binary data as `ArrayBuffer`.
@@ -523,8 +519,6 @@ server.addEventListener("close", (event) => {
 
 ```
 
-Explain Code
-
 Note that there is no corresponding option to the `WebSocket` constructor. WebSockets constructed with `new WebSocket` will always auto-reply to closes after this flag takes effect. WebSockets constructed this way are automatically "accepted", so there is no opportunity to pass the option to `accept()`. If you are creating a WebSocket with `new WebSocket`, but you need half-open behavior, you will need to switch to using `fetch()` instead.
 
 JavaScript
@@ -556,8 +550,6 @@ ws.accept({ allowHalfOpen: true });
 
 
 ```
-
-Explain Code
 
 For more information, refer to the [WebSocket API documentation](https://developers.cloudflare.com/workers/runtime-apis/websockets/).
 
@@ -1331,8 +1323,6 @@ function sleep(ms) {
 
 ```
 
-Explain Code
-
 If the `queue_consumer_no_wait_for_wait_until` flag is enabled, Queues consumers will no longer wait for promises passed to `ctx.waitUntil()` to resolve before acknowledging messages. This can improve the performance of queue consumers which utilize `ctx.waitUntil()`. With the flag enabled, in the above example, the consumer Worker will acknowledge the batch without waiting for the sleep function to resolve.
 
 Using this flag will not affect the behavior of `ctx.waitUntil()`. `ctx.waitUntil()` will continue to extend the lifetime of your consumer Worker to continue to work even after the batch of messages has been acknowledged.
@@ -1557,8 +1547,6 @@ if (result.done) {
 
 
 ```
-
-Explain Code
 
 ### Brotli Content-Encoding support
 
@@ -2031,8 +2019,6 @@ while (true) {
 
 ```
 
-Explain Code
-
 The more recently added extension method `readAtLeast()` will always detach the `ArrayBuffer` and is unaffected by this feature flag setting.
 
 ### `FormData` parsing supports `File`
@@ -2110,8 +2096,6 @@ function sleep(ms) {
 
 
 ```
-
-Explain Code
 
 If the `queue_consumer_no_wait_for_wait_until` flag is enabled, Queues consumers will no longer wait for promises passed to `ctx.waitUntil()` to resolve before acknowledging messages. This can improve the performance of queue consumers which utilize `ctx.waitUntil()`. With the flag enabled, in the above example, the consumer Worker will acknowledge the batch without waiting for the sleep function to resolve.
 

@@ -59,8 +59,6 @@ arrow_cast(expression, datatype)
 
 ```
 
-Explain Code
-
 ## `arrow_typeof`
 
 Returns the name of the underlying [Arrow data type ↗](https://docs.rs/arrow/latest/arrow/datatypes/enum.DataType.html) of the expression:

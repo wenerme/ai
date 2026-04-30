@@ -35,8 +35,8 @@ Using the Wrangler configuration file to configure your Pages project allows you
 
 ## Example Wrangler file
 
-* [  wrangler.jsonc ](#tab-panel-6811)
-* [  wrangler.toml ](#tab-panel-6812)
+* [  wrangler.jsonc ](#tab-panel-6809)
+* [  wrangler.toml ](#tab-panel-6810)
 
 JSONC
 
@@ -87,8 +87,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -123,8 +121,6 @@ API_KEY = "1234567asdf"
 
 ```
 
-Explain Code
-
 ## Requirements
 
 ### V2 build system
@@ -145,8 +141,8 @@ Before you could use the Wrangler configuration file to define your preview and 
 
 If you have been using a Wrangler configuration file for local development, you may already have a file in your Pages project that looks like this:
 
-* [  wrangler.jsonc ](#tab-panel-6807)
-* [  wrangler.toml ](#tab-panel-6808)
+* [  wrangler.jsonc ](#tab-panel-6805)
+* [  wrangler.toml ](#tab-panel-6806)
 
 JSONC
 
@@ -201,9 +197,9 @@ You can continue to use your Wrangler file for local development without migrati
 
 If you have an existing Pages project with configuration set up via the Cloudflare dashboard and do not have an existing Wrangler file in your Project, run the `wrangler pages download config` command in your Pages project directory. The `wrangler pages download config` command will download your existing Cloudflare dashboard configuration and generate a valid Wrangler file in your Pages project directory.
 
-* [ npm ](#tab-panel-6804)
-* [ yarn ](#tab-panel-6805)
-* [ pnpm ](#tab-panel-6806)
+* [ npm ](#tab-panel-6802)
+* [ yarn ](#tab-panel-6803)
+* [ pnpm ](#tab-panel-6804)
 
 Terminal window
 
@@ -259,8 +255,8 @@ With a Wrangler configuration file, you can quickly set configuration across you
 
 The Wrangler configuration file applies locally when using `wrangler pages dev`. This means that you can test out configuration changes quickly without a need to login to the Cloudflare dashboard. Refer to the following config file for an example:
 
-* [  wrangler.jsonc ](#tab-panel-6809)
-* [  wrangler.toml ](#tab-panel-6810)
+* [  wrangler.jsonc ](#tab-panel-6807)
+* [  wrangler.toml ](#tab-panel-6808)
 
 JSONC
 
@@ -301,8 +297,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -328,8 +322,6 @@ id = "<NAMESPACE_ID>"
 
 
 ```
-
-Explain Code
 
 This Wrangler configuration file adds the `nodejs_compat` compatibility flag and a KV namespace binding to your Pages project. Running `wrangler pages dev` in a Pages project directory with this Wrangler configuration file will apply the `nodejs_compat` compatibility flag locally, and expose the `KV` binding in your Pages Function code at `context.env.KV`.
 
@@ -383,8 +375,8 @@ Unlike [Workers Environments](https://developers.cloudflare.com/workers/wrangler
 
 Refer to the following Wrangler configuration file for an example of how to override preview deployment configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6813)
-* [  wrangler.toml ](#tab-panel-6814)
+* [  wrangler.jsonc ](#tab-panel-6811)
+* [  wrangler.toml ](#tab-panel-6812)
 
 JSONC
 
@@ -447,8 +439,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -486,14 +476,12 @@ API_KEY = "8901234bfgd"
 
 ```
 
-Explain Code
-
 If you deployed this file via `wrangler pages deploy`, `name`, `pages_build_output_dir`, `kv_namespaces`, and `vars` would apply the configuration to local and production, while `env.preview` would override `kv_namespaces` and `vars` for preview deployments.
 
 If you wanted to have configuration values apply to local and preview, but override production, your file would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-6817)
-* [  wrangler.toml ](#tab-panel-6818)
+* [  wrangler.jsonc ](#tab-panel-6815)
+* [  wrangler.toml ](#tab-panel-6816)
 
 JSONC
 
@@ -556,8 +544,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -595,12 +581,10 @@ API_KEY = "8901234bfgd"
 
 ```
 
-Explain Code
-
 You can always be explicit and override both preview and production:
 
-* [  wrangler.jsonc ](#tab-panel-6819)
-* [  wrangler.toml ](#tab-panel-6820)
+* [  wrangler.jsonc ](#tab-panel-6817)
+* [  wrangler.toml ](#tab-panel-6818)
 
 JSONC
 
@@ -685,8 +669,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -736,8 +718,6 @@ API_KEY = "6567875fvgt"
 
 ```
 
-Explain Code
-
 ## Inheritable keys
 
 Inheritable keys are configurable at the top-level, and can be inherited (or overridden) by environment-specific configuration.
@@ -765,8 +745,8 @@ Non-inheritable keys are configurable at the top-level, but, if any one non-inhe
 
 For example, this configuration will not work:
 
-* [  wrangler.jsonc ](#tab-panel-6815)
-* [  wrangler.toml ](#tab-panel-6816)
+* [  wrangler.jsonc ](#tab-panel-6813)
+* [  wrangler.toml ](#tab-panel-6814)
 
 JSONC
 
@@ -817,8 +797,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -848,8 +826,6 @@ API_KEY = "8901234bfgd"
 
 
 ```
-
-Explain Code
 
 `[[env.production.vars]]` is set to override `[vars]`. Because of this `[[kv_namespaces]]` must also be overridden by defining `[[env.production.kv_namespaces]]`.
 

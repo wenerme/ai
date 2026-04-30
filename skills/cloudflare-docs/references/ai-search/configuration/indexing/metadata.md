@@ -116,8 +116,6 @@ const results = await instance.search({
 
 ```
 
-Explain Code
-
 ### Filter syntax
 
 Filters are JSON objects where keys are metadata attribute names and values specify the filter condition.
@@ -230,8 +228,6 @@ When you specify multiple keys, all conditions must match:
 
 
 ```
-
-Explain Code
 
 #### `$in` operator
 

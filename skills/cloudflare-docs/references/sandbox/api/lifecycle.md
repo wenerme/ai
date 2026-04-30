@@ -235,8 +235,6 @@ async function executeCode(code) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -264,8 +262,6 @@ async function executeCode(code: string): Promise<string> {
 
 
 ```
-
-Explain Code
 
 Note
 

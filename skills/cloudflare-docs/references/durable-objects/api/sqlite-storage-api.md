@@ -90,8 +90,6 @@ export class Counter extends DurableObject {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -123,8 +121,6 @@ export class Counter extends DurableObject {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -151,8 +147,6 @@ class Counter(DurableObject):
 
 
 ```
-
-Explain Code
 
 JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
@@ -210,8 +204,6 @@ export class MyDurableObject extends DurableObject {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -250,8 +242,6 @@ class MyDurableObject(DurableObject):
 
 
 ```
-
-Explain Code
 
 * SQL API methods accessed with `ctx.storage.sql` are only allowed on [Durable Object classes with SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) and will return an error if called on Durable Object classes with a KV-storage backend.
 * When writing data, every row update of an index counts as an additional row. However, indexes may be beneficial for read-heavy use cases. Refer to [Index for SQLite Durable Objects](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#indexes-in-sqlite).
@@ -321,8 +311,6 @@ console.log(cursor.toArray()); // prints [{ artistid: 456, artistname: 'Bob' },{
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -347,8 +335,6 @@ print(cursor.toArray())  # prints [{ artistid: 456, artistname: 'Bob' },{ artist
 
 
 ```
-
-Explain Code
 
 `SqlStorageCursor` has the following properties:
 
@@ -408,8 +394,6 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
-
-Explain Code
 
 Iterate over query results as row objects:
 
@@ -529,8 +513,6 @@ TypeScript
 
 ```
 
-Explain Code
-
 Returned cursor and `raw()` iterator iterate over the same query results:
 
 TypeScript
@@ -557,8 +539,6 @@ TypeScript
 
 
 ```
-
-Explain Code
 
 `sql.exec().rowsRead()`:
 

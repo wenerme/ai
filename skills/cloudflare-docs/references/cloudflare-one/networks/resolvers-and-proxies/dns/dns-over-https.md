@@ -229,8 +229,6 @@ Example response
 
 ```
 
-Explain Code
-
 ### 2\. Enable DoH functionality for the service token
 
 Terminal window
@@ -286,8 +284,6 @@ Example response
 
 
 ```
-
-Explain Code
 
 ### 3\. Create a user
 
@@ -368,8 +364,6 @@ Example response
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -476,8 +470,6 @@ Example response
 
 
 ```
-
-Explain Code
 
 You can verify that the request was associated with the correct user email by checking your [Gateway DNS logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/). To filter these requests, build a DNS policy using any of the Gateway [identity-based selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/).
 

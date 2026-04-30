@@ -64,7 +64,6 @@ JSONC
   ],  
 }  
 ```  
-Explain Code  
 TOML  
 ```  
 name = "my-sandbox-worker"  
@@ -87,8 +86,7 @@ CLOUDFLARE_ACCOUNT_ID = "<YOUR_ACCOUNT_ID>"
 [[r2_buckets]]  
 binding = "BACKUP_BUCKET"  
 bucket_name = "my-backup-bucket"  
-```  
-Explain Code
+```
 3. Set your R2 API credentials as secrets:  
 Terminal window  
 ```  
@@ -179,8 +177,6 @@ console.log(`Restored: ${result.success}`);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -204,8 +200,6 @@ console.log(`Restored: ${result.success}`);
 
 
 ```
-
-Explain Code
 
 Ephemeral mount
 
@@ -310,8 +304,6 @@ try {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -342,8 +334,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ## Store backup handles
 
@@ -390,8 +380,6 @@ if (stored) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -429,8 +417,6 @@ if (stored) {
 
 
 ```
-
-Explain Code
 
 ## Use named backups
 
@@ -521,8 +507,6 @@ const longBackup = await sandbox.createBackup({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -555,8 +539,6 @@ const longBackup = await sandbox.createBackup({
 
 
 ```
-
-Explain Code
 
 ### How TTL is enforced
 
@@ -651,8 +633,6 @@ console.log(`Restored: ${result.success}`);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -679,8 +659,6 @@ console.log(`Restored: ${result.success}`);
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -763,8 +741,6 @@ await env.KV.put("latest-backup", JSON.stringify(backup));
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -803,8 +779,6 @@ await env.KV.put("latest-backup", JSON.stringify(backup));
 
 
 ```
-
-Explain Code
 
 ### List and delete old backups by prefix
 
@@ -850,8 +824,6 @@ for (const object of listed.objects) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -888,8 +860,6 @@ for (const object of listed.objects) {
 
 
 ```
-
-Explain Code
 
 ### Delete a specific backup by ID
 
@@ -968,8 +938,6 @@ await sandbox.restoreBackup(backup);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1004,8 +972,6 @@ await sandbox.restoreBackup(backup);
 
 
 ```
-
-Explain Code
 
 ## Handle errors
 
@@ -1076,8 +1042,6 @@ try {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1139,8 +1103,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ## Path permissions
 

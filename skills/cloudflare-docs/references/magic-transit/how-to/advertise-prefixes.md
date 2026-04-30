@@ -91,8 +91,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefi
 
 ### Advertise or withdraw a BGP prefix
 
-* [ Dashboard ](#tab-panel-6738)
-* [ API ](#tab-panel-6739)
+* [ Dashboard ](#tab-panel-6736)
+* [ API ](#tab-panel-6737)
 
 Note
 
@@ -382,8 +382,6 @@ exit-address-family
 
 ```
 
-Explain Code
-
 #### Juniper MX (Junos OS set commands)
 
 ```
@@ -415,8 +413,6 @@ set policy-options policy-statement BGP-CONTROL-OUT then reject
 
 
 ```
-
-Explain Code
 
 #### Juniper MX (Junos OS XML format)
 
@@ -462,8 +458,6 @@ neighbor 141.101.67.22 {
 
 
 ```
-
-Explain Code
 
 ## BGP peering
 

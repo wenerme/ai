@@ -53,8 +53,8 @@ For details, refer to [How Cloudflare calculates Tunnel health alerts](https://d
 
 ## Set up Tunnel Health Alerts
 
-* [ Dashboard ](#tab-panel-6748)
-* [ API ](#tab-panel-6749)
+* [ Dashboard ](#tab-panel-6746)
+* [ API ](#tab-panel-6747)
 
 1. Go to the **Notifications** page.  
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
@@ -146,8 +146,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/alerting/v3/poli
 
 ```
 
-Explain Code
-
 ```
 
   {
@@ -236,8 +234,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Test SLOs
 

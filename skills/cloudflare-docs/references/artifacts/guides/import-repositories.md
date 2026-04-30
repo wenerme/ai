@@ -86,8 +86,6 @@ export ARTIFACTS_TOKEN=$(printf '%s' "$IMPORT_RESPONSE" | jq -r '.result.token')
 
 ```
 
-Explain Code
-
 The response includes the new Artifacts repo metadata, including `result.remote` and `result.token`.
 
 If the request fails, this check prints the API response and exits before it exports empty values.

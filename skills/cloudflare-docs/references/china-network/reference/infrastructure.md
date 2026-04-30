@@ -72,8 +72,6 @@ curl "https://api.cloudflare.com/client/v4/ips?networks=jdcloud" \
 
 ```
 
-Explain Code
-
 The `jdcloud_cidrs` array lists the IP addresses of JD Cloud data centers.
 
 Cloudflare will add new IP addresses to this list 30 days in advance before connecting from those IP addresses to an origin server. If you are using the China Network on JD Cloud, you should update your firewalls to reflect any IP address changes at least once every 30 days.

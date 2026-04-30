@@ -168,8 +168,6 @@ export default {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -293,8 +291,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 In-memory filesystem helper
 
@@ -676,8 +672,6 @@ export class MemoryFS {
 
 
 ```
-
-Explain Code
 
 src/memory-fs.ts
 
@@ -1075,8 +1069,6 @@ export class MemoryFS {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/examples/isomorphic-git/","name":"isomorphic-git"}}]}

@@ -128,8 +128,6 @@ Terminal window
 
 ```
 
-Explain Code
-
 ## Deprecations
 
 Refer to [Deprecations](https://developers.cloudflare.com/workers/wrangler/deprecations/) for more details on what is no longer supported.

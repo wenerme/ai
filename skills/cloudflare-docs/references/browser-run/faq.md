@@ -161,8 +161,6 @@ Cookie-based authentication:
 
 ```
 
-Explain Code
-
 Token-based authentication:
 
 ```

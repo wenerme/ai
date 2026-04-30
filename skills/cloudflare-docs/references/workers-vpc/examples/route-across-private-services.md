@@ -54,16 +54,14 @@ npx wrangler vpc service create order-service \
 
 ```
 
-Explain Code
-
 Note the service IDs returned for the next step.
 
 ## 2\. Configure your Worker
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8432)
-* [  wrangler.toml ](#tab-panel-8433)
+* [  wrangler.jsonc ](#tab-panel-8470)
+* [  wrangler.toml ](#tab-panel-8471)
 
 JSONC
 
@@ -106,8 +104,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -138,8 +134,6 @@ service_id = "<YOUR_ORDER_SERVICE_ID>"
 
 
 ```
-
-Explain Code
 
 ## 3\. Implement the Worker
 
@@ -181,8 +175,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## 4\. Deploy and test
 

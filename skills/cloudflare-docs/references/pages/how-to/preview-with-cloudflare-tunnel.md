@@ -88,8 +88,6 @@ cloudflared tunnel --url http://localhost:5173
 
 ```
 
-Explain Code
-
 In this example, the randomly-generated URL `https://seasonal-deck-organisms-sf.trycloudflare.com` has been created and assigned to your tunnel instance. Visiting this URL in a browser will show the application running, with requests being securely forwarded through Cloudflare's global network, through the tunnel running on your machine, to `localhost:5173`:
 
 ![Cloudflare Tunnel example rendering a randomly-generated URL](https://developers.cloudflare.com/_astro/tunnel.DK_OjmvC_Z1WC5Wq.webp) 

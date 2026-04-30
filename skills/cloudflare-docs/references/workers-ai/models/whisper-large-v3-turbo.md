@@ -94,8 +94,6 @@ export default {
 
 ```
 
-Explain Code
-
 Note
 
 To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This also enables nodejs\_compat\_v2 as long as your compatibility date is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
@@ -143,8 +141,6 @@ print(output)
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -170,8 +166,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 
 ```
-
-Explain Code
 
 ## Parameters
 

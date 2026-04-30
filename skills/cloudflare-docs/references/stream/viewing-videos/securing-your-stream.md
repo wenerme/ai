@@ -70,8 +70,6 @@ Response:
 
 ```
 
-Explain Code
-
 ## Two Ways to Generate Signed Tokens
 
 You can program your app to generate tokens in two ways:
@@ -213,8 +211,6 @@ JavaScript
 
 ```
 
-Explain Code
-
 However, if you are generating tokens programmatically or adding customizations like these, it is faster and more scalable to use a signing key and generate the token within your application entirely.
 
 ## Option 2: Using a signing key to create signed tokens
@@ -264,8 +260,6 @@ The response will return `pem` and `jwk` values.
 
 
 ```
-
-Explain Code
 
 These values will not be shown again so we recommend saving them securely right away. If you are using Cloudflare Workers, you can store them using [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/). If you are using another platform, store them in secure environment variables.
 
@@ -421,8 +415,6 @@ function objectToBase64url(payload) {
 
 ```
 
-Explain Code
-
 ### Step 3: Rendering the video
 
 If you are using the Stream Player, insert the `token` value returned by the Worker in Step 2 in place of the `video id`, replacing the entire string located between `cloudflarestream.com/` and `/iframe`:
@@ -487,8 +479,6 @@ curl --request DELETE \
 
 
 ```
-
-Explain Code
 
 ## Supported Restrictions
 
@@ -576,8 +566,6 @@ The first rule matches on country, US, DE, and MX here. When that rule matches, 
 
 
 ```
-
-Explain Code
 
 The first rule matches on country, US and MX here. When that rule matches, the allow action will have the token considered valid. If it doesn't match we continue evaluating rules
 

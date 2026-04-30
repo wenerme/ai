@@ -1,6 +1,6 @@
 ---
 title: Packet captures
-description: Packet captures in Zero Trust analytics.
+description: Request, monitor, and download packet captures to diagnose network issues.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -16,7 +16,12 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Packet captures
 
-After a packet capture is requested and the capture is collected, the output is contained within one or more files in PCAP file format. Before starting a `full` type packet capture, you must first follow instructions for [configuring a bucket](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/).
+Packet captures record network traffic flowing through Cloudflare's network so you can analyze individual packets for troubleshooting or security investigations. The output is contained within one or more files in PCAP format, which you can open in tools like [Wireshark ↗](https://www.wireshark.org/).
+
+There are two capture types:
+
+* **Sample** captures query historical traffic data that has already passed through Cloudflare's network. They complete immediately and can be downloaded directly from the API, or from the Cloudflare dashboard.
+* **Full** captures actively monitor for new traffic matching your filters and write the complete packet data to a cloud storage bucket you own. Before starting a full capture, you must first [configure a bucket](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/).
 
 Note
 
@@ -24,7 +29,7 @@ Packet captures are available for Cloudflare Advanced Network Firewall users. Fo
 
 ## Send a packet capture request
 
-Currently, when a packet capture is requested, packets flowing at Cloudflare's global network through the Magic Transit system are captured. The default API field for this is `"system": "magic-transit"`, both for the request and response.
+Currently, when a packet capture is requested, packets flowing through Cloudflare's global network via the Magic Transit system are captured. The default API field for this is `"system": "magic-transit"`, both for the request and response.
 
 Note
 
@@ -34,12 +39,12 @@ For help determining which data center to select for a packet capture, go to [ht
 
 **Sample and full**
 
-* `time_limit`: The minimum value is `1` seconds and maximum value is `300` seconds.
+* `time_limit`: The minimum value is `1` second and maximum value is `300` seconds.
 * `packet_limit`: The minimum value is `1` packet and maximum value is `10000` packets.
 
 **Full**
 
-* `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
+* `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes (1 GB).
 
 * [ Dashboard ](#tab-panel-4706)
 * [ API ](#tab-panel-4707)
@@ -61,7 +66,7 @@ Full PCAP
 
 For full PCAP requests, refer to the required parameters listed at [Create full PCAP requests](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/methods/create/). Note that full packet captures require two more parameters than sample packets.
 
-The full PCAP request endpoint also contains optional fields you can use to limit the amount of packets captured. Both full and sample packet requests contain an optional `filter_v1` parameter you can use to filter packets by IPv4 Source address, for example. For a full list of the filter options, refer to the parameter lists above.
+The full PCAP request endpoint also contains optional fields you can use to limit the amount of packets captured. Both full and sample packet requests contain an optional `filter_v1` parameter you can use to filter packets by IPv4 Source address, for example. For a full list of the filter options, refer to the [API reference](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/methods/create/).
 
 Leave `filter_v1` empty to collect all packets without any filtering.
 
@@ -99,8 +104,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 
 
 ```
-
-Explain Code
 
 While the collection is in progress, the response returns the `status` field as `pending`. You must wait for the PCAP collection to complete before downloading the file. When the PCAP is ready to download, the status changes to `success`.
 
@@ -147,13 +150,15 @@ Full PCAP example response
 
 ```
 
-Explain Code
-
 Sample PCAP
 
 To create a sample PCAP request, send a JSON body with the required parameter listed at [Create sample PCAP request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/methods/create/).
 
-Leave `filter_v1` to collect all packets without any filtering.
+Note
+
+The API uses `"type": "simple"` for sample captures. Use `simple` as the type value in your API requests.
+
+Leave `filter_v1` empty to collect all packets without any filtering.
 
 Sample PCAP example request
 
@@ -195,8 +200,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 
 
 ```
-
-Explain Code
 
 The response is a JSON body that contains the details of the job running to build the packet capture. The response contains a unique identifier for the packet capture request along with the details sent in the request.
 
@@ -248,8 +251,6 @@ Sample PCAP example response
 
 
 ```
-
-Explain Code
 
 ## Check packet capture status
 
@@ -326,13 +327,11 @@ Sample PCAP example result
 
 ```
 
-Explain Code
-
 The capture status displays one of the following options:
 
-* **Complete:** The capture request is done and ready for download.
-* **In progress:** The capture request was captured but still processing.
-* **Failure:** The capture failed. If this occurs, verify your ownership information.
+* **Complete** (API: `success`): The capture is done and ready for download.
+* **In progress** (API: `pending`): Packets have been captured but the PCAP file is still being assembled.
+* **Failure**: The capture failed. For full captures, verify that your bucket is correctly configured and that Cloudflare has write access to it. For sample captures, verify your filter configuration.
 
 ## Download packet captures
 
@@ -347,7 +346,7 @@ After your request finishes processing, you can download your packet captures.
 
 Packet captures are available to download when the **Status** displays **Success**.
 
-For more information on how to process multiple saved capture files into a single output file, refer to [Wireshark's mergecap documentation ↗](https://www.wireshark.org/docs/man-pages/mergecap.html).
+Full captures can produce multiple PCAP files per capture because the capture can run across multiple machines at the data center. To merge these into a single file for analysis, refer to [Wireshark's mergecap documentation ↗](https://www.wireshark.org/docs/man-pages/mergecap.html).
 
 **Full PCAPs**
 
@@ -440,8 +439,6 @@ List response example
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/network-visibility/","name":"Network visibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/","name":"Diagnostics"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/","name":"Packet captures"}}]}

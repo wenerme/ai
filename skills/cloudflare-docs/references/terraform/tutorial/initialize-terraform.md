@@ -97,8 +97,6 @@ resource "cloudflare_dns_record" "www" {
 
 ```
 
-Explain Code
-
 Warning
 
 To prevent accidentally exposing your Cloudflare credentials, do not save this file in your version control system. The [next tutorial](https://developers.cloudflare.com/terraform/tutorial/track-history/) will cover best practices for passing in your API token.
@@ -182,8 +180,6 @@ Plan: 1 to add, 0 to change, 0 to destroy.
 
 
 ```
-
-Explain Code
 
 ## 3\. Apply and verify
 
@@ -273,8 +269,6 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 
 ```
-
-Explain Code
 
 After creation, verify the DNS record:
 

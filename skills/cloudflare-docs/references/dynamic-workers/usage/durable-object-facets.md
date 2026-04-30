@@ -32,8 +32,8 @@ The supervisor's database and the facet's database are stored together as part o
 
 Your Worker needs two things: a Durable Object class with a SQLite storage backend, and a Worker Loader binding.
 
-* [  wrangler.jsonc ](#tab-panel-5898)
-* [  wrangler.toml ](#tab-panel-5899)
+* [  wrangler.jsonc ](#tab-panel-5896)
+* [  wrangler.toml ](#tab-panel-5897)
 
 JSONC
 
@@ -80,8 +80,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -107,16 +105,14 @@ binding = "LOADER"
 
 ```
 
-Explain Code
-
 ## Load and run a dynamic class
 
 The following example shows a supervisor Durable Object (`AppRunner`) that loads dynamic code, creates a facet from it, and forwards HTTP requests to the facet.
 
 The dynamic code is a simple counter app that tracks how many requests it has received, using its own SQLite-backed storage. In a real application, this code would come from an AI agent or user upload rather than a static string.
 
-* [  JavaScript ](#tab-panel-5900)
-* [  TypeScript ](#tab-panel-5901)
+* [  JavaScript ](#tab-panel-5898)
+* [  TypeScript ](#tab-panel-5899)
 
 JavaScript
 
@@ -250,8 +246,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -393,8 +387,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 In this example:
 

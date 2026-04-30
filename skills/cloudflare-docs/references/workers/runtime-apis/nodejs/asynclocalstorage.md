@@ -90,8 +90,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Multiple stores
 
 The API supports multiple `AsyncLocalStorage` instances to be used concurrently.
@@ -132,8 +130,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Unhandled Rejections
 
@@ -177,8 +173,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### `AsyncLocalStorage.bind()` and `AsyncLocalStorage.snapshot()`
 
 JavaScript
@@ -218,8 +212,6 @@ snapshot(bar); // prints 'abc'
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -254,8 +246,6 @@ console.log(myResource.doSomething()); // prints 123
 
 
 ```
-
-Explain Code
 
 ## `AsyncResource`
 
@@ -305,8 +295,6 @@ console.log(myResource.doSomething()); // prints 123
 
 
 ```
-
-Explain Code
 
 * `new AsyncResource(typestring, optionsAsyncResourceOptions)` : AsyncResource  
    * Returns a new `AsyncResource`. Importantly, while the constructor arguments are required in Node.js' implementation of `AsyncResource`, they are not used in Workers.

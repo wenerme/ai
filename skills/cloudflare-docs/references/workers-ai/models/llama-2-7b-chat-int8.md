@@ -90,8 +90,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
 export interface Env {
@@ -131,8 +129,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -174,8 +170,6 @@ print(result)
 
 
 ```
-
-Explain Code
 
 Terminal window
 

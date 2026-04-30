@@ -114,8 +114,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Stream Text
 
 For longer responses, consider streaming responses to provide as the generation completes.
@@ -176,8 +174,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Generate Structured Objects
 
 You can provide a Zod schema to generate a structured JSON response.
@@ -235,8 +231,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/configuration/ai-sdk/","name":"Vercel AI SDK"}}]}

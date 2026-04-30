@@ -99,8 +99,6 @@ Response
 
 ```
 
-Explain Code
-
 Create a new regional hostname entry
 
 Required API token permissions
@@ -156,8 +154,6 @@ Response
 
 ```
 
-Explain Code
-
 List all regional hostnames for a zone or get a specific one
 
 Required API token permissions
@@ -210,8 +206,6 @@ Response
 
 ```
 
-Explain Code
-
 List all regional hostnames for a specific zone
 
 Required API token permissions
@@ -259,8 +253,6 @@ Response
 
 
 ```
-
-Explain Code
 
 Patch the region for a specific hostname
 
@@ -314,8 +306,6 @@ Response
 
 
 ```
-
-Explain Code
 
 Delete the region configuration
 

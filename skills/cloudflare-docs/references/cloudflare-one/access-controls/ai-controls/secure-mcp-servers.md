@@ -113,8 +113,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
     ],  
     "allowed_idps": []  
   }'  
-```  
-Explain Code
+```
 2. Copy the `aud` value returned in the response.
 
 ### 3\. Configure your MCP server
@@ -303,8 +302,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
     ],  
     "allowed_idps": []  
   }'  
-```  
-Explain Code
+```
 2. Copy the `client_id` and `client_secret` returned in the response.
 3. Build the OAuth endpoint URLs using your team name and the `client_id` returned in the response:  
 | Endpoint               | URL                                                                                          |  

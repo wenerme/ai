@@ -28,8 +28,8 @@ The top-level configuration is the collection of values you specify at the top o
 
 The layout of a top-level configuration in a Wrangler file is displayed below:
 
-* [  wrangler.jsonc ](#tab-panel-9975)
-* [  wrangler.toml ](#tab-panel-9976)
+* [  wrangler.jsonc ](#tab-panel-10015)
+* [  wrangler.toml ](#tab-panel-10016)
 
 JSONC
 
@@ -70,8 +70,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -107,8 +105,8 @@ Some environment properties can be [_inherited_](#keys) from the top-level confi
 
 An example of an `[env.name]` configuration looks like this:
 
-* [  wrangler.jsonc ](#tab-panel-9995)
-* [  wrangler.toml ](#tab-panel-9996)
+* [  wrangler.jsonc ](#tab-panel-10035)
+* [  wrangler.toml ](#tab-panel-10036)
 
 JSONC
 
@@ -193,8 +191,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -248,8 +244,6 @@ account_id = "your-other-account-id"
 
 
 ```
-
-Explain Code
 
 To deploy this example Worker to the `helloworld` environment, you would run `wrangler deploy --env helloworld`.
 
@@ -306,8 +300,8 @@ The `vars` key defines a table of [environment variables](https://developers.clo
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-9971)
-* [  wrangler.toml ](#tab-panel-9972)
+* [  wrangler.jsonc ](#tab-panel-10011)
+* [  wrangler.toml ](#tab-panel-10012)
 
 JSONC
 
@@ -363,8 +357,8 @@ console.log(BAR);
 
 Alternatively, you can define `vars` using an inline table format. This style should not include any new lines to be considered a valid TOML configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9973)
-* [  wrangler.toml ](#tab-panel-9974)
+* [  wrangler.jsonc ](#tab-panel-10013)
+* [  wrangler.toml ](#tab-panel-10014)
 
 JSONC
 
@@ -408,8 +402,8 @@ Secrets should be handled using the [wrangler secret](https://developers.cloudfl
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-9979)
-* [  wrangler.toml ](#tab-panel-9980)
+* [  wrangler.jsonc ](#tab-panel-10019)
+* [  wrangler.toml ](#tab-panel-10020)
 
 JSONC
 
@@ -446,8 +440,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -474,8 +466,8 @@ preview_id = "fb69528dbc7336525313f2e8c3b17db0"
 
 Alternatively, you can define `kv namespaces` like so:
 
-* [  wrangler.jsonc ](#tab-panel-9983)
-* [  wrangler.toml ](#tab-panel-9984)
+* [  wrangler.jsonc ](#tab-panel-10023)
+* [  wrangler.toml ](#tab-panel-10024)
 
 JSONC
 
@@ -511,8 +503,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -577,8 +567,8 @@ A [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/s
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-9977)
-* [  wrangler.toml ](#tab-panel-9978)
+* [  wrangler.jsonc ](#tab-panel-10017)
+* [  wrangler.toml ](#tab-panel-10018)
 
 JSONC
 
@@ -631,8 +621,8 @@ For exceptionally large pages, Workers Sites may not be ideal. There is a 25 MiB
 
 If you want to include only a certain set of files or directories in your `bucket`, add an `include` field to your`[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9981)
-* [  wrangler.toml ](#tab-panel-9982)
+* [  wrangler.jsonc ](#tab-panel-10021)
+* [  wrangler.toml ](#tab-panel-10022)
 
 JSONC
 
@@ -680,8 +670,8 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9985)
-* [  wrangler.toml ](#tab-panel-9986)
+* [  wrangler.jsonc ](#tab-panel-10025)
+* [  wrangler.toml ](#tab-panel-10026)
 
 JSONC
 
@@ -753,8 +743,8 @@ A set of cron triggers used to call a Worker on a schedule.
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-9987)
-* [  wrangler.toml ](#tab-panel-9988)
+* [  wrangler.jsonc ](#tab-panel-10027)
+* [  wrangler.toml ](#tab-panel-10028)
 
 JSONC
 
@@ -799,8 +789,8 @@ Arguments for `wrangler dev` can be configured here so you do not have to repeat
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-9989)
-* [  wrangler.toml ](#tab-panel-9990)
+* [  wrangler.jsonc ](#tab-panel-10029)
+* [  wrangler.toml ](#tab-panel-10030)
 
 JSONC
 
@@ -870,8 +860,8 @@ addEventListener("fetch", (event) => {
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-9991)
-* [  wrangler.toml ](#tab-panel-9992)
+* [  wrangler.jsonc ](#tab-panel-10031)
+* [  wrangler.toml ](#tab-panel-10032)
 
 JSONC
 
@@ -974,12 +964,10 @@ export default {
 
 ```
 
-Explain Code
-
 To create a Workers project using Wrangler and Modules, add a `[build]` section:
 
-* [  wrangler.jsonc ](#tab-panel-9993)
-* [  wrangler.toml ](#tab-panel-9994)
+* [  wrangler.jsonc ](#tab-panel-10033)
+* [  wrangler.toml ](#tab-panel-10034)
 
 JSONC
 
@@ -1051,8 +1039,8 @@ If your project is written using CommonJS modules, you will need to re-export yo
 
 Defaults:
 
-* [  wrangler.jsonc ](#tab-panel-9997)
-* [  wrangler.toml ](#tab-panel-9998)
+* [  wrangler.jsonc ](#tab-panel-10037)
+* [  wrangler.toml ](#tab-panel-10038)
 
 JSONC
 
@@ -1111,8 +1099,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -1140,8 +1126,6 @@ main = "./worker.mjs"
 
 ```
 
-Explain Code
-
 * `type` required  
    * The module type, see the table below for acceptable options:
 * `globs` required  
@@ -1155,8 +1139,8 @@ Explain Code
 
 To illustrate how these levels are applied, here is a Wrangler file using multiple environments:
 
-* [  wrangler.jsonc ](#tab-panel-9999)
-* [  wrangler.toml ](#tab-panel-10000)
+* [  wrangler.jsonc ](#tab-panel-10039)
+* [  wrangler.toml ](#tab-panel-10040)
 
 JSONC
 
@@ -1303,8 +1287,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -1411,8 +1393,6 @@ workers_dev = true
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/migration/","name":"Migrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/","name":"Migrate from Wrangler v1 to v2"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/","name":"Wrangler v1 (legacy)"}},{"@type":"ListItem","position":7,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/","name":"Configuration"}}]}

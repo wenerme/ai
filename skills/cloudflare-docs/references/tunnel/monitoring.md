@@ -100,8 +100,8 @@ cloudflared tunnel --loglevel info --logfile cloudflared.log run <UUID>
 
 You can stream real-time logs from a running tunnel without SSH access to the server.
 
-* [ CLI ](#tab-panel-8095)
-* [ Dashboard ](#tab-panel-8096)
+* [ CLI ](#tab-panel-8133)
+* [ Dashboard ](#tab-panel-8134)
 
 The `cloudflared` daemon can stream logs from any tunnel in your account to the local command line. `cloudflared` must be installed on both your local machine and the origin server.
 
@@ -311,8 +311,7 @@ This command should return a JSON:
   ],  
   "icmp_sources": ["192.168.1.243", "fe80::c59:bd4a:e815:ed6"]  
 }  
-```  
-Explain Code
+```
 4. Run the diagnostic using the Docker container ID:  
 Terminal window  
 ```  

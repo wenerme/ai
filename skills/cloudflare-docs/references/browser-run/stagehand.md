@@ -108,8 +108,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -141,8 +139,6 @@ binding = "AI"
 
 
 ```
-
-Explain Code
 
 If you are using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/), you need to include the following [alias ↗](https://vite.dev/config/shared-options.html#resolve-alias) in `vite.config.ts`:
 
@@ -287,8 +283,6 @@ export default {
 
 ```
 
-Explain Code
-
 Note
 
 The snippet above requires [Zod v3 ↗](https://v3.zod.dev/) and is currently not compatible with Zod v4.
@@ -319,8 +313,6 @@ Ensure your `package.json` has the following dependencies:
 
 
 ```
-
-Explain Code
 
 ### 4\. Build the project
 

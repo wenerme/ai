@@ -132,8 +132,6 @@ describe("worker", () => {
 
 ```
 
-Explain Code
-
 You should be able to run the above test via `node --test`
 
 The highlighted lines of the test file above demonstrate how to set up Miniflare to run a JavaScript Worker. Once Miniflare has been set up, your individual tests can send requests to the running Worker and assert against the responses. This is the main limitation of using Miniflare for testing your Worker as compared to the [Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) — all access to your Worker must be through the `dispatchFetch()` Miniflare API, and you cannot unit test individual functions from your Worker.
@@ -194,8 +192,6 @@ describe("worker", () => {
 
 ```
 
-Explain Code
-
 You can also interact with local resources such as KV and R2 using the same API as you would from a Worker. For example, here's how you would interact with a KV namespace:
 
 src/index.test.js
@@ -240,8 +236,6 @@ describe("worker", () => {
 
 ```
 
-Explain Code
-
 ## More complex Workers
 
 The example given above shows how to test a simple Worker consisting of a single JavaScript file. However, most real-world Workers are more complex than that. Miniflare supports providing all constituent files of your Worker directly using the API:
@@ -276,8 +270,6 @@ new Miniflare({
 
 
 ```
-
-Explain Code
 
 This can be a bit cumbersome as your Worker grows. To help with this, Miniflare can also crawl your module graph to automatically figure out which modules to include:
 

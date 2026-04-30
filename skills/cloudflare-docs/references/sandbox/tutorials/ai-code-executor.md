@@ -234,8 +234,6 @@ Return ONLY the code, no explanations.`
 
 ```
 
-Explain Code
-
 **How it works:**
 
 1. Receives a question via POST to `/execute`
@@ -382,8 +380,6 @@ curl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \
 
 
 ```
-
-Explain Code
 
 ## What you built
 

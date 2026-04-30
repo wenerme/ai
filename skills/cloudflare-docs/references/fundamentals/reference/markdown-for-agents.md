@@ -39,8 +39,8 @@ curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agent
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-6034)
-* [  TypeScript ](#tab-panel-6035)
+* [  JavaScript ](#tab-panel-6032)
+* [  TypeScript ](#tab-panel-6033)
 
 JavaScript
 
@@ -69,8 +69,6 @@ const markdown = await r.text();
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -97,8 +95,6 @@ const markdown = await r.text();
 
 
 ```
-
-Explain Code
 
 The response to this request is now formatting in markdown:
 
@@ -140,8 +136,6 @@ ultimately resulting in better results while minimizing token waste.
 
 ```
 
-Explain Code
-
 ### x-markdown-tokens
 
 Note that we include an `x-markdown-tokens` header with the converted response that indicates the estimated number of tokens in the markdown document. You can use this value in your flow, for example to calculate the size of a context window or to decide on your chunking strategy.
@@ -154,9 +148,9 @@ By default Markdown for Agents converted responses include the `Content-Signal: 
 
 ## How to enable
 
-* [ Dashboard ](#tab-panel-6031)
-* [ API ](#tab-panel-6032)
-* [ Custom Hostnames ](#tab-panel-6033)
+* [ Dashboard ](#tab-panel-6029)
+* [ API ](#tab-panel-6030)
+* [ Custom Hostnames ](#tab-panel-6031)
 
 To enable Markdown for Agents for your zone in the dashboard:
 
@@ -233,8 +227,6 @@ curl --request PUT \
 
 
 ```
-
-Explain Code
 
 You can also use path-based expressions like `starts_with(http.request.uri.path, "/blog/")`. For more information on building expressions, refer to [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/).
 
@@ -320,8 +312,6 @@ curl --request PUT \
 
 
 ```
-
-Explain Code
 
 This will enable the feature on custom hostnames that have the `content_converter` custom metadata tag set.
 

@@ -148,8 +148,6 @@ await sandbox.setEnvVars({
 
 ```
 
-Explain Code
-
 **Use when:** You need the same environment variables for multiple commands.
 
 **Unsetting variables**: Pass `undefined` or `null` to unset environment variables:
@@ -207,8 +205,6 @@ await sandbox.startProcess("python server.py", {
 
 ```
 
-Explain Code
-
 **Use when:** You need different environment variables for different commands, or want to override sandbox-level variables.
 
 Note
@@ -244,8 +240,6 @@ await session.exec("python seed.py");
 
 
 ```
-
-Explain Code
 
 **Use when:** You need isolated execution contexts with different environment variables running concurrently.
 
@@ -416,8 +410,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Combine default and specific variables
 
 TypeScript
@@ -474,8 +466,6 @@ await Promise.all([
 
 
 ```
-
-Explain Code
 
 ### Configure transport mode
 
@@ -561,8 +551,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 The SDK automatically detects `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` from your Worker's environment when you call `mountBucket()` without explicit credentials.
 

@@ -118,8 +118,6 @@ Your downloaded key JSON file from Google Cloud Platform should have the followi
 
 ```
 
-Explain Code
-
 For this tutorial, you will only need the values of the following fields: `client_email`, `private_key`, `private_key_id`, and `project_id`.
 
 Instead of storing this information in plain text in the Worker, you will use [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) to make sure its unencrypted content is only accessible via the Worker itself.
@@ -373,8 +371,6 @@ export default {
 
 ```
 
-Explain Code
-
 Now that you have created a JWT, it is time to do an API call to BigQuery to fetch some data.
 
 ## 5\. Make authenticated requests to Google BigQuery
@@ -445,8 +441,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Having the raw row data from BigQuery means that you can now format it in a JSON-like style next.
 
@@ -561,8 +555,6 @@ Now that you have retrieved the data from BigQuery, your BigQuery API response s
 
 ```
 
-Explain Code
-
 This format may be difficult to read and work with when iterating through results. So you will now implement a function that maps the schema into each individual value, and the resulting output will be easier to read, as shown below. Each row corresponds to an object within an array.
 
 JavaScript
@@ -599,8 +591,6 @@ JavaScript
 
 
 ```
-
-Explain Code
 
 Create a `formatRows` function that takes a number of rows and fields returned from the BigQuery response body and returns an array of results as objects with named fields.
 
@@ -687,8 +677,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## 7\. Feed data into Workers AI
 
@@ -782,12 +770,10 @@ formattedResults = formattedResults?.map((formattedResult, i) => {
 
 ```
 
-Explain Code
-
 Uncomment the following lines from the Wrangler file in your project:
 
-* [  wrangler.jsonc ](#tab-panel-8414)
-* [  wrangler.toml ](#tab-panel-8415)
+* [  wrangler.jsonc ](#tab-panel-8452)
+* [  wrangler.toml ](#tab-panel-8453)
 
 JSONC
 
@@ -900,8 +886,6 @@ Terminal window
 
 
 ```
-
-Explain Code
 
 The actual values and fields will mostly depend on the query made in Step 5 that is then fed into the LLM.
 
@@ -1202,8 +1186,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 If you wish to deploy this Worker, you can do so by running `npx wrangler deploy`:
 

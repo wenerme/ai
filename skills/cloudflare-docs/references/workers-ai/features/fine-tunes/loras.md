@@ -71,8 +71,6 @@ Before you upload your LoRA adapter, you'll need to edit your `adapter_config.js
 
 ```
 
-Explain Code
-
 ### Wrangler
 
 You can create a finetune and upload your LoRA adapter via wrangler with the following commands:
@@ -106,8 +104,6 @@ npx wrangler ai finetune list
 
 
 ```
-
-Explain Code
 
 ### REST API
 
@@ -237,16 +233,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \
 
 ```
 
-Explain Code
-
 ---
 
 ## Running inference with LoRAs
 
 To make inference requests and apply the LoRA adapter, you will need your model and finetune `name` or `id`. You should use the chat template that your LoRA was trained on, but you can try running it with `raw: true` and the messages template like below.
 
-* [ workers ai sdk ](#tab-panel-8378)
-* [ rest api ](#tab-panel-8379)
+* [ workers ai sdk ](#tab-panel-8416)
+* [ rest api ](#tab-panel-8417)
 
 JavaScript
 

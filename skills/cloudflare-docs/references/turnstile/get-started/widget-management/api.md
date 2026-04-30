@@ -56,8 +56,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widge
 
 ```
 
-Explain Code
-
 ### Manage widgets via the API
 
 Required API token permissions
@@ -140,8 +138,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widge
 
 
 ```
-
-Explain Code
 
 Required API token permissions
 

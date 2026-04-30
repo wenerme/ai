@@ -250,8 +250,6 @@ Response
 
 ```
 
-Explain Code
-
 If Cache Reserve is turned off, you can proceed to the Cache Reserve Clear operation.
 
 **Request 2: Start Cache Reserve Clear**
@@ -301,8 +299,6 @@ Response
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/advanced-configuration/","name":"Advanced configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/advanced-configuration/cache-reserve/","name":"Cache Reserve"}}]}

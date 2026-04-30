@@ -65,8 +65,6 @@ filename: .vscode/launch.json
 
 ```
 
-Explain Code
-
 From the **Run and Debug** menu in the activity bar, select the `Miniflare`configuration, and click the green play button to start debugging.
 
 ## WebStorm

@@ -22,8 +22,8 @@ Besides determining the difference between a `SELECT` and an `INSERT`, Hyperdriv
 
 For example, a read query that populates the front page of a news site would be cached:
 
-* [ PostgreSQL ](#tab-panel-6044)
-* [ MySQL ](#tab-panel-6045)
+* [ PostgreSQL ](#tab-panel-6042)
+* [ MySQL ](#tab-panel-6043)
 
 ```
 
@@ -49,8 +49,8 @@ ORDER BY published_time DESC LIMIT 50
 
 Mutating queries (including `INSERT`, `UPSERT`, or `CREATE TABLE`) and queries that use functions designated as [volatile ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) or [stable ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) by PostgreSQL are not cached:
 
-* [ PostgreSQL ](#tab-panel-6046)
-* [ MySQL ](#tab-panel-6047)
+* [ PostgreSQL ](#tab-panel-6044)
+* [ MySQL ](#tab-panel-6045)
 
 ```
 
@@ -158,8 +158,8 @@ You can also configure multiple Hyperdrive connections from a single application
 
 For example, using database drivers:
 
-* [ PostgreSQL ](#tab-panel-6048)
-* [ MySQL ](#tab-panel-6049)
+* [ PostgreSQL ](#tab-panel-6046)
+* [ MySQL ](#tab-panel-6047)
 
 index.ts
 
@@ -235,12 +235,10 @@ export default {
 
 ```
 
-Explain Code
-
 The Wrangler configuration remains the same both for PostgreSQL and MySQL.
 
-* [  wrangler.jsonc ](#tab-panel-6050)
-* [  wrangler.toml ](#tab-panel-6051)
+* [  wrangler.jsonc ](#tab-panel-6048)
+* [  wrangler.toml ](#tab-panel-6049)
 
 JSONC
 
@@ -272,8 +270,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 

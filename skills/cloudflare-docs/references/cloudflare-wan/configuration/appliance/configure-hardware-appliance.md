@@ -160,8 +160,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 
 ```
 
-Explain Code
-
 ### Create a LAN
 
 * [ Dashboard ](#tab-panel-5232)
@@ -222,8 +220,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 
 
 ```
-
-Explain Code
 
 #### Network segmentation
 

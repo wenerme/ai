@@ -52,8 +52,6 @@ export default {
 
 ```
 
-Explain Code
-
 Note
 
 This example uses `getRandom`, which randomly selects one of a fixed number of Container instances for each request.

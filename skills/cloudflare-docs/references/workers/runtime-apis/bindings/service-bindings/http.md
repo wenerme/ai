@@ -16,8 +16,8 @@ Worker A that declares a Service binding to Worker B can forward a [Request](htt
 
 For example, consider the following Worker that implements a [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/):
 
-* [  wrangler.jsonc ](#tab-panel-9011)
-* [  wrangler.toml ](#tab-panel-9012)
+* [  wrangler.jsonc ](#tab-panel-9049)
+* [  wrangler.toml ](#tab-panel-9050)
 
 JSONC
 
@@ -68,8 +68,8 @@ export default {
 
 The following Worker declares a binding to the Worker above:
 
-* [  wrangler.jsonc ](#tab-panel-9013)
-* [  wrangler.toml ](#tab-panel-9014)
+* [  wrangler.jsonc ](#tab-panel-9051)
+* [  wrangler.toml ](#tab-panel-9052)
 
 JSONC
 
@@ -99,8 +99,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 

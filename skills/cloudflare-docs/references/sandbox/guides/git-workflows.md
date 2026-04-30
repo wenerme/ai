@@ -63,8 +63,6 @@ await sandbox.gitCheckout("https://github.com/user/my-app", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -108,8 +106,6 @@ await sandbox.gitCheckout('https://github.com/user/my-app', {
 
 
 ```
-
-Explain Code
 
 ## Clone private repositories
 
@@ -282,8 +278,6 @@ await sandbox.exec('cd repo && git commit -m "Update README"');
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -310,8 +304,6 @@ await sandbox.exec('cd repo && git commit -m "Update README"');
 
 
 ```
-
-Explain Code
 
 ## Best practices
 

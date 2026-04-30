@@ -77,8 +77,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
-Explain Code
-
 Example: Set static cache tags on API responses
 
 Update a zone entry point ruleset
@@ -126,8 +124,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
-Explain Code
-
 Example: Add cache tags from a response header using an expression
 
 Update a zone entry point ruleset
@@ -168,8 +164,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 
 ```
-
-Explain Code
 
 Example: Override cache-control with max-age 
 
@@ -217,8 +211,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 
 ```
-
-Explain Code
 
 Example: Set private directive with qualifiers
 
@@ -277,8 +269,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
-Explain Code
-
 Example: Set immutable for static font assets
 
 Update a zone entry point ruleset
@@ -329,8 +319,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 
 ```
-
-Explain Code
 
 Example: Multiple rules with strip headers, tag responses, and set cache control
 
@@ -426,8 +414,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 
 ```
-
-Explain Code
 
 ## Required API token permissions
 

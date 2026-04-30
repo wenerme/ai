@@ -119,8 +119,6 @@ Exit $installProcess.ExitCode
 
 ```
 
-Explain Code
-
 Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each argument.
 
 ### 3\. Install the Cloudflare One Client with Fleet
@@ -179,8 +177,6 @@ sudo apt-get -y update && sudo apt-get -y install cloudflare-warp
 
 
 ```
-
-Explain Code
 
 To install the Cloudflare One Client on other Linux distributions, refer to the [package repository ↗](https://pkg.cloudflareclient.com/).
 

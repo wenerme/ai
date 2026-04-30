@@ -127,8 +127,6 @@ Queue consumers receive notifications as [Messages](https://developers.cloudflar
 
 ```
 
-Explain Code
-
 ### Properties
 
 | Property          | Type   | Description                                                                                                                                      |

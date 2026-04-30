@@ -321,8 +321,6 @@ resource "cloudflare_zero_trust_gateway_policy" "zt_block_dns_tech_categories" {
 
 ```
 
-Explain Code
-
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/domain-categories/","name":"Domain categories"}}]}
 ```

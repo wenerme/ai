@@ -102,8 +102,6 @@ type ChatRoomProps = {
 
 ```
 
-Explain Code
-
 Now we can load a Dynamic Worker and give it a Chat Room. To create the chat room RPC stub, we use [ctx.exports](https://developers.cloudflare.com/workers/runtime-apis/context#exports), then we simply pass it into the Dynamic Worker Loader in the `env` object:
 
 TypeScript
@@ -188,8 +186,6 @@ return worker.getEntrypoint("Agent").run();
 
 
 ```
-
-Explain Code
 
 We have achieved an elegant sandbox:
 

@@ -129,8 +129,6 @@ async function handleAIRequest(input: string, env: Env): Promise<string> {
 
 ```
 
-Explain Code
-
 **Key improvements over direct REST API calls:**
 
 * **Official packages**: Uses `workers-ai-provider` instead of manual API calls
@@ -204,8 +202,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -245,8 +241,6 @@ name = "Sandbox"
 
 
 ```
-
-Explain Code
 
 **Configuration highlights:**
 
@@ -306,8 +300,6 @@ curl -X POST http://localhost:8787/run \
 
 ```
 
-Explain Code
-
 ## 5\. Deploy
 
 Deploy your Worker:
@@ -361,8 +353,6 @@ curl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \
 
 
 ```
-
-Explain Code
 
 ## How it works
 

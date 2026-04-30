@@ -120,8 +120,6 @@ export default config;
 
 ```
 
-Explain Code
-
 1. (Needed if you are using TypeScript) Include support for environment variables. The `env` object, containing KV namespaces and other storage objects, is passed to SvelteKit via the platform property along with context and caches, meaning you can access it in hooks and endpoints. For example:
 
 ```
@@ -159,8 +157,6 @@ declare namespace App {
 
 
 ```
-
-Explain Code
 
 1. Access the added KV or Durable objects (or generally any [binding](https://developers.cloudflare.com/pages/functions/bindings/)) in your endpoint with `env`:
 

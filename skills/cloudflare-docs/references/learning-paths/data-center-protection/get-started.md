@@ -110,8 +110,6 @@ Regards,
 
 ```
 
-Explain Code
-
 ## Verify IRR entries
 
 Verify that your Internet Routing Registry (IRR) entries match your corresponding origin autonomous system numbers (ASNs) to ensure Magic Transit routes traffic to the correct autonomous systems (AS). For guidance, refer to [Verify IRR entries](https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/#verify-an-irr-entry).

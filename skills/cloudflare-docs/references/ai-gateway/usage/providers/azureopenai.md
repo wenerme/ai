@@ -70,8 +70,6 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{
 
 ```
 
-Explain Code
-
 ### Use `openai` JavaScript SDK
 
 JavaScript
@@ -104,8 +102,6 @@ const result = await azure_openai.chat.completions.create({
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/azureopenai/","name":"Azure OpenAI"}}]}

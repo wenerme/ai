@@ -46,8 +46,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Parameters
 
 | Parameter | Type                    | Description                                   |
@@ -92,13 +90,11 @@ interface ForwardableEmailMessage {
 
 ```
 
-Explain Code
-
 ### Properties
 
-* [ Basic properties ](#tab-panel-5913)
-* [ Reading content ](#tab-panel-5914)
-* [ Parse email content ](#tab-panel-5915)
+* [ Basic properties ](#tab-panel-5911)
+* [ Reading content ](#tab-panel-5912)
+* [ Parse email content ](#tab-panel-5913)
 
 TypeScript
 
@@ -138,8 +134,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -194,8 +188,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -292,17 +284,15 @@ export default {
 
 ```
 
-Explain Code
-
 ## Email actions
 
 ### Forward emails
 
 Forward incoming emails to verified destination addresses:
 
-* [ Simple forwarding ](#tab-panel-5916)
-* [ Conditional forwarding ](#tab-panel-5917)
-* [ Multiple forwarding ](#tab-panel-5918)
+* [ Simple forwarding ](#tab-panel-5914)
+* [ Conditional forwarding ](#tab-panel-5915)
+* [ Multiple forwarding ](#tab-panel-5916)
 
 TypeScript
 
@@ -365,8 +355,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -405,8 +393,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Forward with custom headers
 
 Add custom headers when forwarding:
@@ -443,14 +429,12 @@ export default {
 
 ```
 
-Explain Code
-
 ### Reply to emails
 
 Send automatic replies using the Email Service binding:
 
-* [ Simple auto-reply ](#tab-panel-5919)
-* [ Smart auto-reply ](#tab-panel-5920)
+* [ Simple auto-reply ](#tab-panel-5917)
+* [ Smart auto-reply ](#tab-panel-5918)
 
 TypeScript
 
@@ -505,8 +489,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -612,14 +594,12 @@ export default {
 
 ```
 
-Explain Code
-
 ### Reject emails
 
 Reject emails with a permanent SMTP error:
 
-* [ Simple rejection ](#tab-panel-5921)
-* [ Content-based rejection ](#tab-panel-5922)
+* [ Simple rejection ](#tab-panel-5919)
+* [ Content-based rejection ](#tab-panel-5920)
 
 TypeScript
 
@@ -658,8 +638,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -715,8 +693,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Error handling
 
@@ -816,8 +792,6 @@ async function processEmail(message, env) {
 
 
 ```
-
-Explain Code
 
 ---
 

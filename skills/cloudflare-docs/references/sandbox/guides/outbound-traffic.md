@@ -150,8 +150,6 @@ export class MySandbox extends Sandbox {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -176,8 +174,6 @@ export class MySandbox extends Sandbox {
 
 
 ```
-
-Explain Code
 
 ## Define outbound handlers
 
@@ -217,8 +213,6 @@ MySandbox.outbound = async (request, env, ctx) => {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -256,8 +250,6 @@ MySandbox.outbound = async (
 
 ```
 
-Explain Code
-
 Note
 
 HTTP requests to the outbound handler remain secure because they run on the same machine as the sandbox. You can upgrade requests to HTTPS from the Worker itself to prevent plain-text traffic from reaching the internet.
@@ -294,8 +286,6 @@ MySandbox.outboundByHost = {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -330,8 +320,6 @@ MySandbox.outboundByHost = {
 
 
 ```
-
-Explain Code
 
 Calls to `http://my.worker` from the sandbox invoke the handler, which runs inside the Workers runtime, outside the sandbox.
 
@@ -430,8 +418,6 @@ MySandbox.outboundByHost = {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -466,8 +452,6 @@ MySandbox.outboundByHost = {
 
 
 ```
-
-Explain Code
 
 ## HTTPS traffic
 
@@ -525,8 +509,6 @@ MySandbox.outboundHandlers = {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -561,8 +543,6 @@ MySandbox.outboundHandlers = {
 
 
 ```
-
-Explain Code
 
 Apply handlers to hosts programmatically from your Worker:
 
@@ -603,8 +583,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -638,8 +616,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Handler precedence
 

@@ -191,8 +191,6 @@ EOF
 
 ```
 
-Explain Code
-
 `sni_custom` is recommended by Cloudflare. Use `legacy_custom` when a specific client requires non-SNI support. The Cloudflare API treats all Custom SSL certificates as Legacy by default.
 
 Warning

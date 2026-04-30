@@ -26,8 +26,8 @@ It is not recommended that you enable all the available rules using overrides, s
 
 ## Deploy the Cloudflare Managed Ruleset
 
-* [  New dashboard ](#tab-panel-8313)
-* [ Old dashboard ](#tab-panel-8314)
+* [  New dashboard ](#tab-panel-8351)
+* [ Old dashboard ](#tab-panel-8352)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -65,8 +65,8 @@ When you enable all the rules in the ruleset, you will affect rules that are dis
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-8315)
-* [ Old dashboard ](#tab-panel-8316)
+* [  New dashboard ](#tab-panel-8353)
+* [ Old dashboard ](#tab-panel-8354)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -105,8 +105,8 @@ Setting any of these configurations for specific tags affects all current and fu
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-8319)
-* [ Old dashboard ](#tab-panel-8320)
+* [  New dashboard ](#tab-panel-8357)
+* [ Old dashboard ](#tab-panel-8358)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -149,8 +149,8 @@ You can configure (or override) the following Cloudflare Managed Ruleset setting
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-8317)
-* [ Old dashboard ](#tab-panel-8318)
+* [  New dashboard ](#tab-panel-8355)
+* [ Old dashboard ](#tab-panel-8356)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -210,8 +210,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the Cloudflare Managed Ruleset (with ID `efb7b8c949ac4650a09736fc376e9aee`). By default, the rule will be added at the end of the list of rules already in the ruleset.  
 Create a zone ruleset rule  
 ```  
@@ -227,7 +226,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
     "description": "Execute the Cloudflare Managed Ruleset"  
   }'  
 ```  
-Explain Code  
 ```  
 {  
   "result": {  
@@ -260,8 +258,7 @@ Explain Code
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the Cloudflare Managed Ruleset (with ID `efb7b8c949ac4650a09736fc376e9aee`) for all incoming requests in the zone.  
 Create a zone ruleset  
 ```  
@@ -284,8 +281,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
         }  
     ]  
   }'  
-```  
-Explain Code
+```
 
 ### Next steps
 
@@ -363,8 +359,6 @@ resource "cloudflare_ruleset" "zone_level_managed_waf" {
 
 
 ```
-
-Explain Code
 
 For more information, refer to [WAF Managed Rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/).
 

@@ -49,8 +49,8 @@ The `index.ts` file defines the core logic of the Cloudflare Workflow responsibl
 
 For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
 
-* [  JavaScript ](#tab-panel-10079)
-* [  TypeScript ](#tab-panel-10080)
+* [  JavaScript ](#tab-panel-10117)
+* [  TypeScript ](#tab-panel-10118)
 
 JavaScript
 
@@ -139,8 +139,6 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -222,14 +220,12 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, WorkflowParams> {
 
 ```
 
-Explain Code
-
 ## Workflow wrangler.jsonc
 
 The Workflow configuration is defined in the `wrangler.jsonc` file. This file includes bindings for the R2 bucket, D1 database, Workers AI, and the Workflow itself. Ensure that all necessary bindings and environment variables are correctly set up to match your Cloudflare account and services.
 
-* [  wrangler.jsonc ](#tab-panel-10077)
-* [  wrangler.toml ](#tab-panel-10078)
+* [  wrangler.jsonc ](#tab-panel-10115)
+* [  wrangler.toml ](#tab-panel-10116)
 
 JSONC
 
@@ -306,8 +302,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -361,8 +355,6 @@ database_id = "66e4fbe9-06ac-4548-abba-2dc42088e13a"
 
 
 ```
-
-Explain Code
 
 For access to the codebase, deployment instructions, and reference architecture, please visit the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent). This resource provides all the necessary tools and information to effectively implement the Workflow and Next.js frontend application.
 

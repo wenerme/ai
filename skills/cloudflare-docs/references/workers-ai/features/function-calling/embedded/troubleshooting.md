@@ -51,8 +51,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Logging within `runWithTools`
 
 The `runWithTools` function has a `verbose` mode that emits helpful logs for debugging of function calls as well input and output statistics.
@@ -91,8 +89,6 @@ const response = await runWithTools(
 
 
 ```
-
-Explain Code
 
 ## Performance
 
@@ -159,8 +155,6 @@ async fetch(request, env, ctx) {
 
 
 ```
-
-Explain Code
 
 ## Common Errors
 

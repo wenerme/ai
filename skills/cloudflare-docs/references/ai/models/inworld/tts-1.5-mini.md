@@ -63,8 +63,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -108,8 +106,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Low Latency**  — Minimize latency by disabling text normalization 
@@ -150,8 +146,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

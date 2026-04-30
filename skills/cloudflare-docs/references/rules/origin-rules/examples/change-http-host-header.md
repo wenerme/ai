@@ -18,8 +18,8 @@ The following origin rule overrides the HTTP `Host` header to `hr-server.example
 
 The `Host` header override only updates the header value; the DNS record override will handle the rerouting of incoming requests. For more information on these overrides, refer to [Origin Rules settings](https://developers.cloudflare.com/rules/origin-rules/features/).
 
-* [ Dashboard ](#tab-panel-7351)
-* [ API ](#tab-panel-7352)
+* [ Dashboard ](#tab-panel-7349)
+* [ API ](#tab-panel-7350)
 
 Expression when using the Expression Builder:
 
@@ -126,8 +126,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -196,8 +194,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 

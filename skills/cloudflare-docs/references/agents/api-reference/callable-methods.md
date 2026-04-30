@@ -185,8 +185,6 @@ export class CounterAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -259,8 +257,6 @@ export class CounterAgent extends Agent<Env, CounterState> {
 
 
 ```
-
-Explain Code
 
 ### Calling from the client
 
@@ -388,8 +384,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -430,8 +424,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Async methods
 
@@ -478,8 +470,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -517,8 +507,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Void methods
 
@@ -650,8 +638,6 @@ export class AIAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -700,8 +686,6 @@ export class AIAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Consuming streams on the client
 
@@ -762,8 +746,6 @@ await agent.call("generateText", [prompt], {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -818,8 +800,6 @@ await agent.call("generateText", [prompt], {
 
 ```
 
-Explain Code
-
 ### StreamingResponse API
 
 | Method           | Description                                      |
@@ -858,8 +838,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -886,8 +864,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## TypeScript integration
 
@@ -937,8 +913,6 @@ function App() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -980,8 +954,6 @@ function App() {
 
 
 ```
-
-Explain Code
 
 ### Excluding non-callable methods
 
@@ -1032,8 +1004,6 @@ agent.stub.publicMethod(); // Works
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1075,8 +1045,6 @@ agent.stub.publicMethod(); // Works
 
 
 ```
-
-Explain Code
 
 ## Error handling
 
@@ -1121,8 +1089,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1156,8 +1122,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Client-side error handling
 
@@ -1236,8 +1200,6 @@ await agent.call("streamData", [input], {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1264,8 +1226,6 @@ await agent.call("streamData", [input], {
 
 
 ```
-
-Explain Code
 
 Server-side, you can use `stream.error()` to gracefully send an error mid-stream:
 
@@ -1309,8 +1269,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1347,8 +1305,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Connection errors
 
@@ -1444,8 +1400,6 @@ const result = await callWithRetry(agent, "processData", [data]);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1487,8 +1441,6 @@ const result = await callWithRetry(agent, "processData", [data]);
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -1533,8 +1485,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1564,8 +1514,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Agent-to-Agent calls
 
@@ -1601,8 +1549,6 @@ class OrchestratorAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1629,8 +1575,6 @@ class OrchestratorAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Why the distinction?
 
@@ -1678,8 +1622,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1707,8 +1649,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### CallableMetadata type
 
@@ -1764,8 +1704,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1791,8 +1729,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 | Method | Signature                      | Description                        |
 | ------ | ------------------------------ | ---------------------------------- |
@@ -1837,8 +1773,6 @@ await agent.stub.methodName(arg1, arg2);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1865,8 +1799,6 @@ await agent.stub.methodName(arg1, arg2);
 
 
 ```
-
-Explain Code
 
 ### CallOptions type
 
@@ -1896,8 +1828,6 @@ type CallOptions = {
 
 
 ```
-
-Explain Code
 
 Note
 

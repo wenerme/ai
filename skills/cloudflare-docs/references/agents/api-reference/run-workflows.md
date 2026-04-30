@@ -89,8 +89,6 @@ export class ProcessingWorkflow extends AgentWorkflow {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -159,8 +157,6 @@ export class ProcessingWorkflow extends AgentWorkflow<MyAgent, TaskParams> {
 
 ```
 
-Explain Code
-
 ### 2\. Start a Workflow from an Agent
 
 Use `runWorkflow()` to start and track workflows:
@@ -218,8 +214,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -288,8 +282,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 ### 3\. Configure Wrangler
 
 * [  wrangler.jsonc ](#tab-panel-3488)
@@ -336,8 +328,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -375,8 +365,6 @@ new_sqlite_classes = [ "MyAgent" ]
 
 
 ```
-
-Explain Code
 
 ## AgentWorkflow class
 
@@ -761,8 +749,6 @@ if (page1.nextCursor) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -817,8 +803,6 @@ if (page1.nextCursor) {
 
 
 ```
-
-Explain Code
 
 The `WorkflowPage` type:
 
@@ -876,8 +860,6 @@ this.deleteWorkflows({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -903,8 +885,6 @@ this.deleteWorkflows({
 
 
 ```
-
-Explain Code
 
 ### terminateWorkflow(instanceId)
 
@@ -1189,8 +1169,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1249,8 +1227,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Workflow tracking
 
@@ -1359,8 +1335,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1446,8 +1420,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 ### Retry with backoff
 
 * [  JavaScript ](#tab-panel-3532)
@@ -1505,8 +1477,6 @@ export class ResilientWorkflow extends AgentWorkflow {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1561,8 +1531,6 @@ export class ResilientWorkflow extends AgentWorkflow<MyAgent, TaskParams> {
 
 
 ```
-
-Explain Code
 
 ### State synchronization
 
@@ -1625,8 +1593,6 @@ export class StatefulWorkflow extends AgentWorkflow {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1683,8 +1649,6 @@ export class StatefulWorkflow extends AgentWorkflow<MyAgent, TaskParams> {
 
 
 ```
-
-Explain Code
 
 ### Custom progress types
 
@@ -1743,8 +1707,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -1829,8 +1791,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 ### Cleanup strategy
 
 The internal `cf_agents_workflows` table can grow unbounded, so implement a retention policy:
@@ -1878,8 +1838,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -1930,8 +1888,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 ## Bidirectional communication
 
 ### Workflow to Agent
@@ -1975,8 +1931,6 @@ await step.mergeAgentState({ progress: 0.5 });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2012,8 +1966,6 @@ await step.mergeAgentState({ progress: 0.5 });
 
 
 ```
-
-Explain Code
 
 ### Agent to Workflow
 
@@ -2051,8 +2003,6 @@ await this.rejectWorkflow(instanceId, { reason: "Request denied" });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2083,8 +2033,6 @@ await this.rejectWorkflow(instanceId, { reason: "Request denied" });
 
 
 ```
-
-Explain Code
 
 ## Best practices
 

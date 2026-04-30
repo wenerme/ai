@@ -102,14 +102,34 @@ Terminal window
 
 ```
 
-npx wrangler pages deployment list --project-name <PROJECT_NAME> --json \
+prod_id=""
 
-  | jq -r '.[].Id' \
+while :; do
 
-  | xargs -I {} npx wrangler pages deployment delete {} --project-name <PROJECT_NAME> --force
+  ids=$(npx wrangler pages deployment list --project-name <PROJECT_NAME> --json | jq -r '.[].Id')
+
+  to_delete=$(echo "$ids" | grep -v -F -x "$prod_id" | grep .)
+
+  [ -z "$to_delete" ] && { echo "Done. Production: $prod_id"; break; }
+
+  echo "Deleting $(echo "$to_delete" | wc -l | tr -d ' ') deployments..."
+
+  while IFS= read -r id; do
+
+    if ! npx wrangler pages deployment delete "$id" --project-name <PROJECT_NAME> --force 2>&1 | tee /tmp/wrangler-del.log | grep -q "Successfully deleted"; then
+
+      grep -q "active production deployment" /tmp/wrangler-del.log && prod_id="$id"
+
+    fi
+
+  done <<< "$to_delete"
+
+done
 
 
 ```
+
+Note that this will not delete the active production deployment if one exists.
 
 ## Use Pages as Origin in Cloudflare Load Balancer
 

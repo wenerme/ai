@@ -147,8 +147,6 @@ export const myApi = {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -193,8 +191,6 @@ export const myApi: ServiceConfig<Env> = {
 
 
 ```
-
-Explain Code
 
 The `transform` function receives the outgoing request and a context object containing `ctx.env` (your Worker environment) and `ctx.jwt` (the verified token payload, including `sandboxId`). Return the modified request to forward it, or return a `Response` to short-circuit with an error.
 
@@ -285,8 +281,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -379,8 +373,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 The `mountPath` (`/proxy`) and service name (`myapi`) together form the proxy route. A request to `/proxy/myapi/some/path` is validated and forwarded to `https://api.example.com/some/path`.
 
@@ -493,8 +485,6 @@ const proxyHandler = createProxyHandler({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -530,8 +520,6 @@ const proxyHandler = createProxyHandler<Env>({
 
 
 ```
-
-Explain Code
 
 Each service is reachable at `/proxy/<service-name>/*`. The sandbox uses the same JWT token for all of them.
 

@@ -74,8 +74,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 ```
 
-Explain Code
-
 Example: Extend read timeout for Android clients
 
 Update a zone ruleset
@@ -116,8 +114,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 
 ```
-
-Explain Code
 
 Example: Disable Cache Reserve for frequently updated assets
 
@@ -164,8 +160,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 ```
 
-Explain Code
-
 Example: Turn off default cache TTLs
 
 Update a zone ruleset
@@ -211,8 +205,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 ```
 
-Explain Code
-
 Example: Update the position of an existing rule
 
 Update a zone ruleset rule
@@ -251,8 +243,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 
 
 ```
-
-Explain Code
 
 ## Required API token permissions
 

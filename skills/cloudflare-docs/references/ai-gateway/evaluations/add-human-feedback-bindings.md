@@ -50,8 +50,6 @@ const myLogId = env.AI.aiGatewayLogId;
 
 ```
 
-Explain Code
-
 Let the user interact with or evaluate the AI response. This interaction will inform the feedback you send back to the AI Gateway.
 
 ## 2\. Send Human Feedback

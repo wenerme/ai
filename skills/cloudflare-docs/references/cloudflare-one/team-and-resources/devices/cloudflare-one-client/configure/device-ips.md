@@ -253,8 +253,6 @@ Unknown adapter CloudflareWARP:
 
 ```
 
-Explain Code
-
 On macOS, run `ifconfig`. When the Cloudflare One Client is turned on, you will see a `utun` interface with your device IP.
 
 Terminal window
@@ -419,8 +417,7 @@ if __name__ == "__main__":
             print(f"\nNo devices found within the {TARGET_CIDR} range.")  
     except Exception as e:  
         print(f"Script Error: {e}")  
-```  
-Explain Code
+```
 2. In the script configuration section, input your Cloudflare API credentials and your IP subnet range.
 3. Open a terminal and navigate to the script directory. To run the script, type:  
 Terminal window  

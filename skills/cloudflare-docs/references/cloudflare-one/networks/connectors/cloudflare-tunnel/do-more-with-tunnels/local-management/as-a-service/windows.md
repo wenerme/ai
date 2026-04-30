@@ -75,8 +75,7 @@ ingress:
     service: https://internal.mydomain.com  
   - service: http_status:404  
 logfile:  C:\Cloudflared\cloudflared.log  
-```  
-Explain Code
+```
 11. Copy the credentials file to the folder created in step 6:  
 Terminal window  
 ```  
@@ -110,8 +109,7 @@ SERVICE_NAME: cloudflared
         WAIT_HINT          : 0x7d0  
         PID                : 3548  
         FLAGS              :  
-```  
-Explain Code
+```
 
 ## Next steps
 

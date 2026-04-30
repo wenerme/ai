@@ -90,8 +90,6 @@ Below is an example of an audit log entry showing the creation of a new bucket:
 
 ```
 
-Explain Code
-
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/platform/audit-logs/","name":"Audit Logs"}}]}
 ```

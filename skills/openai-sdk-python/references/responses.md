@@ -3325,11 +3325,11 @@ as input for the model's response.
 
   Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-- `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+- `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
   The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-  - `"in-memory"`
+  - `"in_memory"`
 
   - `"24h"`
 
@@ -3822,7 +3822,7 @@ as input for the model's response.
 
     Unique identifier for this Response.
 
-  - `created_at: float`
+  - `created_at: int`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -8197,7 +8197,7 @@ as input for the model's response.
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[float]`
+  - `completed_at: Optional[int]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.
@@ -8261,11 +8261,11 @@ as input for the model's response.
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-  - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+  - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-    - `"in-memory"`
+    - `"in_memory"`
 
     - `"24h"`
 
@@ -8630,7 +8630,7 @@ for response in client.responses.create():
     "version": "version"
   },
   "prompt_cache_key": "prompt-cache-key-1234",
-  "prompt_cache_retention": "in-memory",
+  "prompt_cache_retention": "in_memory",
   "reasoning": {
     "effort": "none",
     "generate_summary": "auto",
@@ -9502,7 +9502,7 @@ Retrieves a model response with the given ID.
 
     Unique identifier for this Response.
 
-  - `created_at: float`
+  - `created_at: int`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -13877,7 +13877,7 @@ Retrieves a model response with the given ID.
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[float]`
+  - `completed_at: Optional[int]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.
@@ -13941,11 +13941,11 @@ Retrieves a model response with the given ID.
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-  - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+  - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-    - `"in-memory"`
+    - `"in_memory"`
 
     - `"24h"`
 
@@ -14312,7 +14312,7 @@ for response in client.responses.retrieve(
     "version": "version"
   },
   "prompt_cache_key": "prompt-cache-key-1234",
-  "prompt_cache_retention": "in-memory",
+  "prompt_cache_retention": "in_memory",
   "reasoning": {
     "effort": "none",
     "generate_summary": "auto",
@@ -14484,7 +14484,7 @@ the `background` parameter set to `true` can be cancelled.
 
     Unique identifier for this Response.
 
-  - `created_at: float`
+  - `created_at: int`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -18859,7 +18859,7 @@ the `background` parameter set to `true` can be cancelled.
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[float]`
+  - `completed_at: Optional[int]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.
@@ -18923,11 +18923,11 @@ the `background` parameter set to `true` can be cancelled.
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-  - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+  - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-    - `"in-memory"`
+    - `"in_memory"`
 
     - `"24h"`
 
@@ -19294,7 +19294,7 @@ print(response.id)
     "version": "version"
   },
   "prompt_cache_key": "prompt-cache-key-1234",
-  "prompt_cache_retention": "in-memory",
+  "prompt_cache_retention": "in_memory",
   "reasoning": {
     "effort": "none",
     "generate_summary": "auto",
@@ -29781,7 +29781,7 @@ print(compacted_response)
 
     Unique identifier for this Response.
 
-  - `created_at: float`
+  - `created_at: int`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -34156,7 +34156,7 @@ print(compacted_response)
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[float]`
+  - `completed_at: Optional[int]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.
@@ -34220,11 +34220,11 @@ print(compacted_response)
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-  - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+  - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-    - `"in-memory"`
+    - `"in_memory"`
 
     - `"24h"`
 
@@ -34934,7 +34934,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: float`
+    - `created_at: int`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -39309,7 +39309,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[float]`
+    - `completed_at: Optional[int]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -39373,11 +39373,11 @@ print(compacted_response)
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-    - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+    - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-      - `"in-memory"`
+      - `"in_memory"`
 
       - `"24h"`
 
@@ -40837,7 +40837,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: float`
+    - `created_at: int`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -45212,7 +45212,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[float]`
+    - `completed_at: Optional[int]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -45276,11 +45276,11 @@ print(compacted_response)
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-    - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+    - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-      - `"in-memory"`
+      - `"in_memory"`
 
       - `"24h"`
 
@@ -45890,7 +45890,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: float`
+    - `created_at: int`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -50265,7 +50265,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[float]`
+    - `completed_at: Optional[int]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -50329,11 +50329,11 @@ print(compacted_response)
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-    - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+    - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-      - `"in-memory"`
+      - `"in_memory"`
 
       - `"24h"`
 
@@ -51689,7 +51689,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: float`
+    - `created_at: int`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -56064,7 +56064,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[float]`
+    - `completed_at: Optional[int]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -56128,11 +56128,11 @@ print(compacted_response)
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-    - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+    - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-      - `"in-memory"`
+      - `"in_memory"`
 
       - `"24h"`
 
@@ -56445,7 +56445,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: float`
+    - `created_at: int`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -60820,7 +60820,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[float]`
+    - `completed_at: Optional[int]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -60884,11 +60884,11 @@ print(compacted_response)
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-    - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+    - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-      - `"in-memory"`
+      - `"in_memory"`
 
       - `"24h"`
 
@@ -79497,7 +79497,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: float`
+    - `created_at: int`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -83872,7 +83872,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[float]`
+    - `completed_at: Optional[int]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -83936,11 +83936,11 @@ print(compacted_response)
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-    - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+    - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-      - `"in-memory"`
+      - `"in_memory"`
 
       - `"24h"`
 
@@ -84767,7 +84767,7 @@ print(compacted_response)
 
         Unique identifier for this Response.
 
-      - `created_at: float`
+      - `created_at: int`
 
         Unix timestamp (in seconds) of when this Response was created.
 
@@ -89142,7 +89142,7 @@ print(compacted_response)
         Whether to run the model response in the background.
         [Learn more](https://platform.openai.com/docs/guides/background).
 
-      - `completed_at: Optional[float]`
+      - `completed_at: Optional[int]`
 
         Unix timestamp (in seconds) of when this Response was completed.
         Only present when the status is `completed`.
@@ -89206,11 +89206,11 @@ print(compacted_response)
 
         Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-      - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+      - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
         The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-        - `"in-memory"`
+        - `"in_memory"`
 
         - `"24h"`
 
@@ -96392,11 +96392,11 @@ print(compacted_response)
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-  - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+  - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-    - `"in-memory"`
+    - `"in_memory"`
 
     - `"24h"`
 
@@ -97079,7 +97079,7 @@ print(compacted_response)
 
         Unique identifier for this Response.
 
-      - `created_at: float`
+      - `created_at: int`
 
         Unix timestamp (in seconds) of when this Response was created.
 
@@ -101454,7 +101454,7 @@ print(compacted_response)
         Whether to run the model response in the background.
         [Learn more](https://platform.openai.com/docs/guides/background).
 
-      - `completed_at: Optional[float]`
+      - `completed_at: Optional[int]`
 
         Unix timestamp (in seconds) of when this Response was completed.
         Only present when the status is `completed`.
@@ -101518,11 +101518,11 @@ print(compacted_response)
 
         Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-      - `prompt_cache_retention: Optional[Literal["in-memory", "24h"]]`
+      - `prompt_cache_retention: Optional[Literal["in_memory", "24h"]]`
 
         The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-        - `"in-memory"`
+        - `"in_memory"`
 
         - `"24h"`
 

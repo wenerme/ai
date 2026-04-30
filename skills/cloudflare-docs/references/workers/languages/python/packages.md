@@ -50,8 +50,6 @@ dev = [
 
 ```
 
-Explain Code
-
 The above will allow your worker to depend on the [FastAPI ↗](https://fastapi.tiangolo.com/) package.
 
 To run the worker locally:

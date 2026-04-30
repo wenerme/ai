@@ -89,8 +89,6 @@ export class CounterAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -118,8 +116,6 @@ export class CounterAgent extends Agent<Env, { count: number }> {
 
 ```
 
-Explain Code
-
 ```
 
 import { useAgent } from "agents/react";
@@ -144,8 +140,6 @@ function Counter() {
 
 
 ```
-
-Explain Code
 
 For AI chat, extend `AIChatAgent` instead. Messages are persisted automatically, streams resume on disconnect, and the React hook handles the UI.
 
@@ -186,8 +180,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -221,8 +213,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 Refer to the [quick start](https://developers.cloudflare.com/agents/getting-started/quick-start/) for a full walkthrough, the [chat agents guide](https://developers.cloudflare.com/agents/api-reference/chat-agents/) for the full chat API, or the [Agents API reference](https://developers.cloudflare.com/agents/api-reference/agents-api/) for the complete SDK.
 

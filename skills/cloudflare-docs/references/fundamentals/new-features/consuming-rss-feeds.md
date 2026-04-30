@@ -69,8 +69,6 @@ A single product will also appear in the custom `<product>` tag for legacy reaso
 
 ```
 
-Explain Code
-
 ## Related resources
 
 You can surface RSS feeds in several different providers, including:

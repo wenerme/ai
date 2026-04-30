@@ -94,8 +94,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ### Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-9271)
-* [  wrangler.toml ](#tab-panel-9272)
+* [  wrangler.jsonc ](#tab-panel-9309)
+* [  wrangler.toml ](#tab-panel-9310)
 
 JSONC
 
@@ -241,8 +241,8 @@ tsconfig.json
 
 ### Add to your Worker configuration
 
-* [  wrangler.jsonc ](#tab-panel-9273)
-* [  wrangler.toml ](#tab-panel-9274)
+* [  wrangler.jsonc ](#tab-panel-9311)
+* [  wrangler.toml ](#tab-panel-9312)
 
 JSONC
 
@@ -270,8 +270,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -330,8 +328,6 @@ export default {
 
 ```
 
-Explain Code
-
 The Worker above will be invoked for any non-navigation request that does not match a static asset. It returns a JSON response if the `pathname` starts with `/api/` and otherwise return a `404` response.
 
 Note
@@ -340,8 +336,8 @@ For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` he
 
 If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
-* [  wrangler.jsonc ](#tab-panel-9275)
-* [  wrangler.toml ](#tab-panel-9276)
+* [  wrangler.jsonc ](#tab-panel-9313)
+* [  wrangler.toml ](#tab-panel-9314)
 
 JSONC
 
@@ -375,8 +371,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -519,8 +513,6 @@ export default App;
 
 
 ```
-
-Explain Code
 
 Now, if you click the button, it will display 'Name from API is: Cloudflare'.
 

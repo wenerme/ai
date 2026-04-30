@@ -105,8 +105,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
 
 ```
 
-Explain Code
-
 After creating the rule, Cloudflare will create distinct cache entries for each image variant, improving performance for users with modern browsers.
 
 Availability
@@ -177,8 +175,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 1. Save and deploy the Snippet.
 2. From the Snippets dashboard, select **Attach to routes** to assign the Snippet.
@@ -279,8 +275,6 @@ export default {
 
 ```
 
-Explain Code
-
 Availability
 
 Free and Paid plans
@@ -340,8 +334,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Availability
 

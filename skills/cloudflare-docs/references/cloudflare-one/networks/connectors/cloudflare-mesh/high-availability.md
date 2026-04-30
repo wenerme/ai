@@ -267,8 +267,6 @@ The response includes each replica with its `ha_status` (`active` or `passive`),
 
 ```
 
-Explain Code
-
 ## Considerations
 
 ### Setup requirements

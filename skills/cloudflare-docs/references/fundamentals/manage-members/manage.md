@@ -30,8 +30,8 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6019)
-* [ API ](#tab-panel-6020)
+* [ Dashboard ](#tab-panel-6017)
+* [ API ](#tab-panel-6018)
 
 To view members using the dashboard:
 
@@ -45,8 +45,8 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6021)
-* [ API ](#tab-panel-6022)
+* [ Dashboard ](#tab-panel-6019)
+* [ API ](#tab-panel-6020)
 
 To add a member to your account:
 
@@ -70,8 +70,8 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6023)
-* [ API ](#tab-panel-6024)
+* [ Dashboard ](#tab-panel-6021)
+* [ API ](#tab-panel-6022)
 
 To edit member permissions using the dashboard:
 
@@ -121,8 +121,6 @@ curl --request PUT \
 
 ```
 
-Explain Code
-
 ## Resend an invitation
 
 If you invited a member to your account but they cannot find the invitation or the invitation expires, you can resend the invitation through the Cloudflare dashboard:
@@ -141,8 +139,8 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6025)
-* [ API ](#tab-panel-6026)
+* [ Dashboard ](#tab-panel-6023)
+* [ API ](#tab-panel-6024)
 
 To revoke a member's access to your account:
 

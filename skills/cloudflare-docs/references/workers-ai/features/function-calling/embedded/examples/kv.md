@@ -144,8 +144,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Verify results
 
 To verify the results, run the following command

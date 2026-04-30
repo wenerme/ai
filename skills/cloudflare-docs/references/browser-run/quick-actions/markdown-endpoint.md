@@ -107,8 +107,6 @@ console.log(markdown);
 
 ```
 
-Explain Code
-
 ### Convert raw HTML to Markdown
 
 Instead of fetching the content by specifying the URL, you can provide raw HTML content directly.

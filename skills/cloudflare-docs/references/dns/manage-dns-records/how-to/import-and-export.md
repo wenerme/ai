@@ -144,8 +144,6 @@ g.example.com.  60  IN  A   1.1.1.1
 
 ```
 
-Explain Code
-
 ### Reserved cf- tags
 
 When exporting and importing, special tags starting by `cf-` allow you to control specific Cloudflare configurations. On export, these tags are automatically added to reflect the current configuration for each record on your zone.

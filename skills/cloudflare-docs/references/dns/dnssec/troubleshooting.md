@@ -131,8 +131,6 @@ www.cloudflare.com. 15  IN  A   198.41.214.162
 
 ```
 
-Explain Code
-
 ---
 
 ## Troubleshoot DNSSEC validation using DNSViz

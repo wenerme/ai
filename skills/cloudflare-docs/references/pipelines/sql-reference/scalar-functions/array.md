@@ -454,8 +454,6 @@ array_intersect(array1, array2)
 
 ```
 
-Explain Code
-
 ---
 
 **Aliases**
@@ -1213,8 +1211,6 @@ array_union(array1, array2)
 
 ```
 
-Explain Code
-
 ---
 
 **Aliases**
@@ -1267,8 +1263,6 @@ array_except(array1, array2)
 
 
 ```
-
-Explain Code
 
 ---
 

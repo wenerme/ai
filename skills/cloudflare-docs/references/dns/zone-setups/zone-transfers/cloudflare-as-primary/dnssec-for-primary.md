@@ -93,8 +93,6 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records' \
 
 ```
 
-Explain Code
-
 1. Once the DNSKEY record is transferred out from Cloudflare to your secondary provider, get Cloudflare's ZSK and manually add it to the DNSKEY record.  
 Currently, the ZSK is not automatically transferred out. You can use either the API or a query from one of the assigned Cloudflare nameservers to obtain it.
 

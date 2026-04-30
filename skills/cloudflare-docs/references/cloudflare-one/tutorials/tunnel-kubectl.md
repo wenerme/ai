@@ -100,8 +100,7 @@ contexts:
       user: cloudflare-user  
     name: cloudflare-k8s-context  
 current-context: cloudflare-k8s-context  
-```  
-Explain Code
+```
 
 ## 4\. Use kubectl with Cloudflare Tunnel
 

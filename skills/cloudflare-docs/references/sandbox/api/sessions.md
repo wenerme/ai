@@ -112,8 +112,6 @@ await session.exec("sleep 10", { timeout: 3000 }); // Times out after 3s
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -179,8 +177,6 @@ await session.exec('sleep 10', { timeout: 3000 }); // Times out after 3s
 
 
 ```
-
-Explain Code
 
 ### `getSession()`
 
@@ -385,8 +381,6 @@ await sandbox.exec("python script.py");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -415,8 +409,6 @@ await sandbox.exec('python script.py');
 
 
 ```
-
-Explain Code
 
 ---
 

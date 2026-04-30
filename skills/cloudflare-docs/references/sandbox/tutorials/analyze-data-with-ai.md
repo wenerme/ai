@@ -358,8 +358,6 @@ Use pandas, numpy, matplotlib.`,
 
 ```
 
-Explain Code
-
 ## 4\. Set up local environment variables
 
 Create a `.dev.vars` file in your project root for local development:

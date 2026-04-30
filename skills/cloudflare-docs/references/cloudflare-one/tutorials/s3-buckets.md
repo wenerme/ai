@@ -111,8 +111,6 @@ After you create the VPC endpoint, a new entry in the VPC route table with the t
 
 ```
 
-Explain Code
-
 Your bucket policy will allow your VPC to access your S3 bucket.
 
 ### 3\. Enable static website hosting for the S3 bucket
@@ -224,8 +222,6 @@ flowchart TB
 
 
 ```
-
-Explain Code
 
 ### 2\. Enable static website hosting for the S3 bucket
 

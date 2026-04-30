@@ -16,8 +16,8 @@ KV namespaces can be used with [environments](https://developers.cloudflare.com/
 
 The following code in the Wrangler file shows you how to have two environments that have two different KV namespaces but the same binding name:
 
-* [  wrangler.jsonc ](#tab-panel-6364)
-* [  wrangler.toml ](#tab-panel-6365)
+* [  wrangler.jsonc ](#tab-panel-6362)
+* [  wrangler.toml ](#tab-panel-6363)
 
 JSONC
 
@@ -65,8 +65,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -124,8 +122,8 @@ Specifying an environment with the optional `--env` flag allows you to publish W
 
 For example, you could use separate staging and production KV namespaces for KV data in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6366)
-* [  wrangler.toml ](#tab-panel-6367)
+* [  wrangler.jsonc ](#tab-panel-6364)
+* [  wrangler.toml ](#tab-panel-6365)
 
 JSONC
 
@@ -184,8 +182,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -223,8 +219,6 @@ route = "example.com/*"
 
 
 ```
-
-Explain Code
 
 With the Wrangler file above, you can specify `--env production` when you want to perform a KV action on the KV namespace `MY_KV` under `env.production`.
 

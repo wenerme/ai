@@ -27,8 +27,8 @@ Use Cloudflare's image optimization capabilities through:
 
 Cloudflare uses a different URL structure depending on whether you are optimizing a [remote](https://developers.cloudflare.com/images/optimization/transformations/overview/) or a [hosted](https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/) image:
 
-* [ Remote image (transformation) ](#tab-panel-6293)
-* [ Hosted image ](#tab-panel-6294)
+* [ Remote image (transformation) ](#tab-panel-6291)
+* [ Hosted image ](#tab-panel-6292)
 
 When optimizing images outside of Images, the default transformation URL uses the following structure:
 
@@ -91,8 +91,8 @@ This setting is recommended when enlarging images or processing arbitrary user-u
 | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | **Original**                                                                      | anim=false                                                                       |
 
-* [ URL format ](#tab-panel-6249)
-* [ Workers ](#tab-panel-6250)
+* [ URL format ](#tab-panel-6247)
+* [ Workers ](#tab-panel-6248)
 
 ```
 
@@ -126,8 +126,8 @@ The background color is visible in images with transparent pixels, including ima
 | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | **Original**1080 x 720                                                            | **Output**1080 x 900                                                                           |
 
-* [ URL format ](#tab-panel-6251)
-* [ Workers ](#tab-panel-6252)
+* [ URL format ](#tab-panel-6249)
+* [ Workers ](#tab-panel-6250)
 
 ```
 
@@ -161,8 +161,8 @@ This parameter should not be used to reliably obscure image content when optimiz
 | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | **Original**                                                                      | blur=50                                                                          |
 
-* [ URL format ](#tab-panel-6253)
-* [ Workers ](#tab-panel-6254)
+* [ URL format ](#tab-panel-6251)
+* [ Workers ](#tab-panel-6252)
 
 ```
 
@@ -196,7 +196,7 @@ Accepts the following properties:
 
 The border is applied after the image has been resized. The border width automatically scales with the [dpr](https://developers.cloudflare.com/images/optimization/features#dpr) parameter to ensure sharpness on high-resolution screens.
 
-* [ Workers ](#tab-panel-6246)
+* [ Workers ](#tab-panel-6244)
 
 JavaScript
 
@@ -221,8 +221,8 @@ Adjusts the image's overall luminance using a multiplier.
 | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | **Original**                                                                      | brightness=0.5                                                                                 | brightness=2                                                                               |
 
-* [ URL format ](#tab-panel-6255)
-* [ Workers ](#tab-panel-6256)
+* [ URL format ](#tab-panel-6253)
+* [ Workers ](#tab-panel-6254)
 
 ```
 
@@ -248,8 +248,8 @@ The `compression=fast` option prioritizes encoding speed over output quality and
 
 This option is not recommended, except in unusual circumstances like resizing uncacheable, dynamically-generated images.
 
-* [ URL format ](#tab-panel-6257)
-* [ Workers ](#tab-panel-6258)
+* [ URL format ](#tab-panel-6255)
+* [ Workers ](#tab-panel-6256)
 
 ```
 
@@ -279,8 +279,8 @@ Adjusts the image's overall difference between the darkest and lightest parts us
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
 | **Original**                                                                      | contrast=0.5                                                                               | contrast=2                                                                             |
 
-* [ URL format ](#tab-panel-6259)
-* [ Workers ](#tab-panel-6260)
+* [ URL format ](#tab-panel-6257)
+* [ Workers ](#tab-panel-6258)
 
 ```
 
@@ -310,8 +310,8 @@ The `dpr` parameter can be used with `srcset` to [serve responsive images](https
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | width=300,height=200,dpr=1                                                   | width=300,height=200,dpr=2                                                   |
 
-* [ URL format ](#tab-panel-6261)
-* [ Workers ](#tab-panel-6262)
+* [ URL format ](#tab-panel-6259)
+* [ Workers ](#tab-panel-6260)
 
 ```
 
@@ -344,8 +344,8 @@ Fit is performed after setting the [width](https://developers.cloudflare.com/ima
 | scale-down        | Same as contain, but never upscales                         | Yes                         | No       |
 | squeeze           | Scale to exact dimensions, distorting if needed             | No                          | Yes      |
 
-* [ URL format ](#tab-panel-6263)
-* [ Workers ](#tab-panel-6264)
+* [ URL format ](#tab-panel-6261)
+* [ Workers ](#tab-panel-6262)
 
 ```
 
@@ -451,8 +451,8 @@ Flip can be used with the `rotate` parameter to set the orientation of the image
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | **Original**                                                                      | flip=h                                                                         | flip=v                                                                         |
 
-* [ URL format ](#tab-panel-6265)
-* [ Workers ](#tab-panel-6266)
+* [ URL format ](#tab-panel-6263)
+* [ Workers ](#tab-panel-6264)
 
 ```
 
@@ -483,8 +483,8 @@ Accepts the following values:
 * `baseline-jpeg` — Transcode the image in baseline sequential JPEG format. It should be used in cases when target devices do not support progressive JPEG or other modern file formats.
 * `json` — Outputs information about the image as a JSON object. This contains data such as image size (before and after resizing), the source image's MIME type, and file size.
 
-* [ URL format ](#tab-panel-6267)
-* [ Workers ](#tab-panel-6268)
+* [ URL format ](#tab-panel-6265)
+* [ Workers ](#tab-panel-6266)
 
 ```
 
@@ -531,8 +531,6 @@ return fetch(url, { cf: { image } });
 
 ```
 
-Explain Code
-
 ### `gamma`
 
 Adjusts the exposure of an image using a multiplier. Gamma controls the midtone brightness without affecting the darkest or lightest parts of the image.
@@ -545,8 +543,8 @@ Adjusts the exposure of an image using a multiplier. Gamma controls the midtone 
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
 | **Original**                                                                      | gamma=0.5                                                                            | gamma=2                                                                          |
 
-* [ URL format ](#tab-panel-6269)
-* [ Workers ](#tab-panel-6270)
+* [ URL format ](#tab-panel-6267)
+* [ Workers ](#tab-panel-6268)
 
 ```
 
@@ -570,8 +568,8 @@ Specifies how the image should be cropped when used with `fit=cover` and `fit=cr
 
 Accepts `auto`, `face`, a side (`left`, `right`, `top`, `bottom`), and relative coordinates (`XxY`).
 
-* [ URL format ](#tab-panel-6271)
-* [ Workers ](#tab-panel-6272)
+* [ URL format ](#tab-panel-6269)
+* [ Workers ](#tab-panel-6270)
 
 ```
 
@@ -662,8 +660,8 @@ Sets the height of the output image in pixels using a positive integer value. By
 
 When `height` is set, the exact behavior depends on the `fit` parameter.
 
-* [ URL format ](#tab-panel-6273)
-* [ Workers ](#tab-panel-6274)
+* [ URL format ](#tab-panel-6271)
+* [ Workers ](#tab-panel-6272)
 
 ```
 
@@ -699,8 +697,8 @@ Accepts the following values:
 * `keep` — Preserves most of EXIF metadata, including GPS location, if present.
 * `none` — Discards all invisible EXIF metadata.
 
-* [ URL format ](#tab-panel-6275)
-* [ Workers ](#tab-panel-6276)
+* [ URL format ](#tab-panel-6273)
+* [ Workers ](#tab-panel-6274)
 
 ```
 
@@ -730,7 +728,7 @@ This option works only if the image is in the same zone (subdomains are accepted
 
 This may be useful in cases where an image requires user authentication and the image cannot be fetched anonymously via Workers. However, this option is not recommended if the source image is very large.
 
-* [ URL format ](#tab-panel-6247)
+* [ URL format ](#tab-panel-6245)
 
 ```
 
@@ -748,8 +746,8 @@ Specifies the output quality of an image for JPEG, WebP, and AVIF formats, expre
 
 When the output format is PNG, an explicit `quality` setting allows the use of PNG8 (palette) variant of the format.
 
-* [ URL format ](#tab-panel-6277)
-* [ Workers ](#tab-panel-6278)
+* [ URL format ](#tab-panel-6275)
+* [ Workers ](#tab-panel-6276)
 
 ```
 
@@ -783,8 +781,8 @@ Rotation is performed before resizing; `width` and `height` options will refer t
 | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | **Original**                                                                      | rotate=180                                                                             |
 
-* [ URL format ](#tab-panel-6279)
-* [ Workers ](#tab-panel-6280)
+* [ URL format ](#tab-panel-6277)
+* [ Workers ](#tab-panel-6278)
 
 ```
 
@@ -815,8 +813,8 @@ Adjusts the color saturation of an image using a multiplier.
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | **Original**                                                                      | saturation=0                                                                               | saturation=2                                                                               |
 
-* [ URL format ](#tab-panel-6281)
-* [ Workers ](#tab-panel-6282)
+* [ URL format ](#tab-panel-6279)
+* [ Workers ](#tab-panel-6280)
 
 ```
 
@@ -844,8 +842,8 @@ This feature uses an open-source model called BiRefNet through [Workers AI](http
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | **Original**                                                                      | segment=foreground                                                                                     |
 
-* [ URL format ](#tab-panel-6283)
-* [ Workers ](#tab-panel-6284)
+* [ URL format ](#tab-panel-6281)
+* [ Workers ](#tab-panel-6282)
 
 ```
 
@@ -871,8 +869,8 @@ Applies a sharpening filter to enhance edge definition in an image. Accepts a de
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | **Original**                                                                      | sharpen=5                                                                            |
 
-* [ URL format ](#tab-panel-6285)
-* [ Workers ](#tab-panel-6286)
+* [ URL format ](#tab-panel-6283)
+* [ Workers ](#tab-panel-6284)
 
 ```
 
@@ -914,7 +912,7 @@ accept-ch: rtt, save-data, ect, downlink
 * [ect ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/ECT): Value is one of `slow-2g|2g|3g`.
 * [downlink ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Downlink): Less than 5Mbps.
 
-* [ URL format ](#tab-panel-6248)
+* [ URL format ](#tab-panel-6246)
 
 ```
 
@@ -954,8 +952,8 @@ Trim can also be applied to a specific side using the following parameters:
 * `trim.height` — Sets the height, in pixels, of the image from the top edge, then trims everything below the specified value.
 * `trim.width` — Sets the width of the image from the left edge, then trims everything to the right of the specified value.
 
-* [ URL format ](#tab-panel-6287)
-* [ Workers ](#tab-panel-6288)
+* [ URL format ](#tab-panel-6285)
+* [ Workers ](#tab-panel-6286)
 
 ```
 
@@ -993,8 +991,8 @@ Accepts the following values:
 * A number in pixels (for example, `250`).
 * `auto` — Automatically serves the image in the most optimal width based on available information about the browser and device. This method is supported only by Chromium browsers. For more information, refer to [Transform width parameter](https://developers.cloudflare.com/images/optimization/make-responsive-images/#transform-with-width-parameter).
 
-* [ URL format ](#tab-panel-6289)
-* [ Workers ](#tab-panel-6290)
+* [ URL format ](#tab-panel-6287)
+* [ Workers ](#tab-panel-6288)
 
 ```
 
@@ -1022,8 +1020,8 @@ Ideally, image sizes should match the exact dimensions at which they are display
 
 Specifies how closely the image is cropped toward detected faces when combined with the `gravity=face` option. Accepts a valid range between `0.0` (includes as much of the background as possible) and `1.0` (crops the image as closely to the face as possible). The default is `0`.
 
-* [ URL format ](#tab-panel-6291)
-* [ Workers ](#tab-panel-6292)
+* [ URL format ](#tab-panel-6289)
+* [ Workers ](#tab-panel-6290)
 
 ```
 

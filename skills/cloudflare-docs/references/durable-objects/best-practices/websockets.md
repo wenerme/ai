@@ -139,8 +139,6 @@ export class WebSocketHibernationServer extends DurableObject {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -228,8 +226,6 @@ export class WebSocketHibernationServer extends DurableObject {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -302,8 +298,6 @@ self.ctx = state
 
 ```
 
-Explain Code
-
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
 * [  wrangler.jsonc ](#tab-panel-5779)
@@ -352,8 +346,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -378,8 +370,6 @@ new_sqlite_classes = [ "WebSocketHibernationServer" ]
 
 
 ```
-
-Explain Code
 
 A full example is available in [Build a WebSocket server with WebSocket Hibernation](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/).
 
@@ -470,8 +460,6 @@ export class GameRoom extends DurableObject {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -552,8 +540,6 @@ export class GameRoom extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 #### Why batching helps
 
@@ -672,8 +658,6 @@ export class WebSocketServer extends DurableObject {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -755,8 +739,6 @@ export class WebSocketServer extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 ## WebSocket Standard API
 
@@ -851,8 +833,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -927,8 +907,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -998,8 +976,6 @@ headers={
 
 
 ```
-
-Explain Code
 
 The following Durable Object creates a WebSocket connection and responds to messages with the total number of connections:
 
@@ -1091,8 +1067,6 @@ export class WebSocketServer extends DurableObject {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1173,8 +1147,6 @@ export class WebSocketServer extends DurableObject {
 
 
 ```
-
-Explain Code
 
 Python
 
@@ -1258,8 +1230,6 @@ self.currently_connected_websockets = 0
 
 ```
 
-Explain Code
-
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
 * [  wrangler.jsonc ](#tab-panel-5781)
@@ -1308,8 +1278,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -1334,8 +1302,6 @@ new_sqlite_classes = [ "WebSocketServer" ]
 
 
 ```
-
-Explain Code
 
 A full example is available in [Build a WebSocket server](https://developers.cloudflare.com/durable-objects/examples/websocket-server/).
 

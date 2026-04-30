@@ -60,8 +60,6 @@ export default {
 
 ```
 
-Explain Code
-
 Step 2: Deploy your Worker
 
 Terminal window
@@ -155,8 +153,6 @@ function generateRandomAudio() {
 
 
 ```
-
-Explain Code
 
 ## Parameters
 

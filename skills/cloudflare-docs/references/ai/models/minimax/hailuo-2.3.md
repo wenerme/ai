@@ -63,8 +63,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -107,8 +105,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 
@@ -155,8 +151,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Fast Processing**  — Enable fast pretreatment for quicker results 
@@ -197,8 +191,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

@@ -41,8 +41,6 @@ writeArrayToStream([1, 2, 3, 4, 5], writableStream)
 
 ```
 
-Explain Code
-
 ## Properties
 
 * `writer.desiredSize` int  

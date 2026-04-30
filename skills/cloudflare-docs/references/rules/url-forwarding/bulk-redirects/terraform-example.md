@@ -198,8 +198,6 @@ resource "cloudflare_ruleset" "bulk_root_redirect_to_id" {
 
 ```
 
-Explain Code
-
 ## Required token permissions
 
 Your API token must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):

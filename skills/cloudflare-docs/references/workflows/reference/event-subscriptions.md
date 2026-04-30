@@ -63,8 +63,6 @@ Triggered when an instance was created and is awaiting execution.
 
 ```
 
-Explain Code
-
 #### `instance.started`
 
 Triggered when an instance starts or resumes execution.
@@ -109,8 +107,6 @@ Triggered when an instance starts or resumes execution.
 
 
 ```
-
-Explain Code
 
 #### `instance.paused`
 
@@ -157,8 +153,6 @@ Triggered when an instance pauses execution.
 
 ```
 
-Explain Code
-
 #### `instance.errored`
 
 Triggered when an instance step throws an error.
@@ -203,8 +197,6 @@ Triggered when an instance step throws an error.
 
 
 ```
-
-Explain Code
 
 #### `instance.terminated`
 
@@ -251,8 +243,6 @@ Triggered when an instance is manually terminated.
 
 ```
 
-Explain Code
-
 #### `instance.completed`
 
 Triggered when an instance finishes execution successfully.
@@ -297,8 +287,6 @@ Triggered when an instance finishes execution successfully.
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/reference/event-subscriptions/","name":"Event subscriptions"}}]}

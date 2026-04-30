@@ -119,8 +119,6 @@ await sandbox.writeFile("/workspace/image.png", base64, { encoding: "base64" });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -153,8 +151,6 @@ await sandbox.writeFile('/workspace/image.png', base64, { encoding: 'base64' });
 
 
 ```
-
-Explain Code
 
 ## Read files
 
@@ -207,8 +203,6 @@ const textAsBase64 = await sandbox.readFile("/workspace/data.txt", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -247,8 +241,6 @@ const textAsBase64 = await sandbox.readFile('/workspace/data.txt', { encoding: '
 
 ```
 
-Explain Code
-
 ## Organize files
 
 * [  JavaScript ](#tab-panel-7763)
@@ -282,8 +274,6 @@ await sandbox.deleteFile("/workspace/temp.txt");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -311,8 +301,6 @@ await sandbox.deleteFile('/workspace/temp.txt');
 
 
 ```
-
-Explain Code
 
 ## Batch operations
 
@@ -349,8 +337,6 @@ await Promise.all(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -378,8 +364,6 @@ await Promise.all(
 
 
 ```
-
-Explain Code
 
 ## Check if file exists
 
@@ -419,8 +403,6 @@ const sessionResult = await session.exists("/workspace/temp.txt");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -453,8 +435,6 @@ const sessionResult = await session.exists('/workspace/temp.txt');
 
 
 ```
-
-Explain Code
 
 ## Best practices
 
@@ -590,8 +570,6 @@ try {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -620,8 +598,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ## Related resources
 

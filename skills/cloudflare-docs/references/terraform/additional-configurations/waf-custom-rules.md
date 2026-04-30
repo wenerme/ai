@@ -48,9 +48,48 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example configures a custom rule in the zone entry point ruleset for the `http_request_firewall_custom` phase for zone with ID `<ZONE_ID>`. The rule will block all traffic on non-standard HTTP(S) ports:
 
-Note
+* [ Terraform (v5) ](#tab-panel-8089)
+* [ Terraform (v4) ](#tab-panel-8090)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+
+* `Zone WAF Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "zone_custom_firewall" {
+
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "Phase entry point ruleset for custom rules in my zone"
+
+  description = ""
+
+  kind        = "zone"
+
+  phase       = "http_request_firewall_custom"
+
+
+  rules = [{
+
+    ref         = "block_non_default_ports"
+
+    description = "Block ports other than 80 and 443"
+
+    expression  = "(not cf.edge.server_port in {80 443})"
+
+    action      = "block"
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -84,8 +123,6 @@ resource "cloudflare_ruleset" "zone_custom_firewall" {
 
 ```
 
-Explain Code
-
 To create another custom rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
   
@@ -100,9 +137,49 @@ The following example creates a [custom ruleset](https://developers.cloudflare.c
 
 The following configuration creates a custom ruleset with a single rule:
 
-Note
+* [ Terraform (v5) ](#tab-panel-8091)
+* [ Terraform (v4) ](#tab-panel-8092)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+
+* `Account WAF Write`
+* `Account Rulesets Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "account_firewall_custom_ruleset" {
+
+  account_id  = var.cloudflare_account_id
+
+  name        = "Custom ruleset blocking traffic in non-standard HTTP(S) ports"
+
+  description = ""
+
+  kind        = "custom"
+
+  phase       = "http_request_firewall_custom"
+
+
+  rules = [{
+
+    ref         = "block_non_default_ports"
+
+    description = "Block ports other than 80 and 443"
+
+    expression  = "(not cf.edge.server_port in {80 443})"
+
+    action      = "block"
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -136,16 +213,63 @@ resource "cloudflare_ruleset" "account_firewall_custom_ruleset" {
 
 ```
 
-Explain Code
-
 To create another custom rule in the custom ruleset, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
   
 The following configuration deploys the custom ruleset at the account level. It defines a dependency on the `account_firewall_custom_ruleset` resource and uses the ID of the created custom ruleset in `action_parameters`:
 
-Note
+* [ Terraform (v5) ](#tab-panel-8087)
+* [ Terraform (v4) ](#tab-panel-8088)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+
+* `Account WAF Write`
+* `Account Rulesets Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "account_firewall_custom_entrypoint" {
+
+  account_id  = var.cloudflare_account_id
+
+  name        = "Account-level entry point ruleset for the http_request_firewall_custom phase deploying a custom ruleset"
+
+  description = ""
+
+  kind        = "root"
+
+  phase       = "http_request_firewall_custom"
+
+
+  depends_on = [cloudflare_ruleset.account_firewall_custom_ruleset]
+
+
+  rules = [{
+
+    ref         = "deploy_custom_ruleset_example_com"
+
+    description = "Deploy custom ruleset for example.com"
+
+    expression  = "(cf.zone.name eq \"example.com\") and (cf.zone.plan eq \"ENT\")"
+
+    action      = "execute"
+
+    action_parameters = {
+
+      id = cloudflare_ruleset.account_firewall_custom_ruleset.id
+
+    }
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -187,8 +311,6 @@ resource "cloudflare_ruleset" "account_firewall_custom_entrypoint" {
 
 
 ```
-
-Explain Code
 
 For more information on configuring and deploying custom rulesets, refer to [Work with custom rulesets](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/) in the Ruleset Engine documentation.
 

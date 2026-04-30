@@ -141,8 +141,6 @@ const hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connect
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -174,8 +172,6 @@ const hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connect
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -206,8 +202,6 @@ const hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connect
 
 
 ```
-
-Explain Code
 
 ### Create breakout rooms
 
@@ -410,8 +404,6 @@ const response = await meeting.connectedMeetings.moveParticipants(
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -445,8 +437,6 @@ const response = await meeting.connectedMeetings.moveParticipants(
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -479,8 +469,6 @@ const response = await meeting.connectedMeetings.moveParticipants(
 
 
 ```
-
-Explain Code
 
 ### Move participants, with a specific preset, to breakout rooms
 
@@ -573,8 +561,6 @@ meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -603,8 +589,6 @@ meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -632,8 +616,6 @@ meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {
 
 
 ```
-
-Explain Code
 
 ### Close breakout rooms
 

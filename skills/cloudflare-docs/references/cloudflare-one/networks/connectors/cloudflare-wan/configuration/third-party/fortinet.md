@@ -204,8 +204,6 @@ end
 
 ```
 
-Explain Code
-
 #### Add Phase 2 interfaces
 
 Add two `phase2-interfaces` \- one for each of the two `phase1-interfaces` as follows:
@@ -254,8 +252,6 @@ end
 
 
 ```
-
-Explain Code
 
 ### Network interfaces
 
@@ -320,8 +316,6 @@ end
 
 ```
 
-Explain Code
-
 ### Validate communication across virtual tunnel interfaces
 
 Once the virtual tunnel interfaces have been configured, you should be able to ping the IP address associated with the `remote-ip` attribute.
@@ -356,8 +350,6 @@ round-trip min/avg/max = 5.7/5.7/5.8 ms
 
 ```
 
-Explain Code
-
 #### MWAN\_IPsec\_Tun2
 
 ```
@@ -385,8 +377,6 @@ round-trip min/avg/max = 6.0/6.0/6.1 ms
 
 
 ```
-
-Explain Code
 
 ### Zone objects (optional)
 
@@ -428,8 +418,6 @@ end
 
 
 ```
-
-Explain Code
 
 ### Create Address Objects
 
@@ -584,8 +572,6 @@ end
 
 ```
 
-Explain Code
-
 ### Configure Address Group Object
 
 Create an Address Object that contains all Cloudflare IPv4 subnets. Copy and paste the following CLI commands into an SSH terminal to create the objects automatically:
@@ -648,8 +634,6 @@ end
 
 ```
 
-Explain Code
-
 ### Policy-based routing
 
 Add policy-based routing rules to ensure traffic associated with bidirectional health checks received over an IPsec tunnel returns across the same tunnel.
@@ -697,8 +681,6 @@ end
 
 ```
 
-Explain Code
-
 ## Monitor Cloudflare IPsec tunnel health checks
 
 The Cloudflare dashboard monitors the health of all anycast tunnels on your account that route traffic from Cloudflare to your origin network. Refer to [Check tunnel health in the dashboard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/) for more information.
@@ -744,8 +726,6 @@ filters=[host 172.64.240.253]
 
 ```
 
-Explain Code
-
 Conversely, traffic ingressing Tunnel 02 of 02 should egress the same tunnel:
 
 ```
@@ -776,8 +756,6 @@ filters=[host 172.64.240.254]
 
 
 ```
-
-Explain Code
 
 ### Flow Debugging
 
@@ -833,8 +811,6 @@ fortigate # 2023-08-01 09:27:26 id=20085 trace_id=2871 func=print_pkt_detail lin
 
 
 ```
-
-Explain Code
 
 ### Disable Flow Debugging
 

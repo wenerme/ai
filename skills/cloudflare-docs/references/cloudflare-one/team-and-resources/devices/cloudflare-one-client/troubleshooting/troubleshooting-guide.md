@@ -357,8 +357,6 @@ Merged configuration:
 
 ```
 
-Explain Code
-
 Quick debugging
 
 The command `warp-cli settings` in a terminal will generate the same information that is present in the `warp-settings.txt` file.

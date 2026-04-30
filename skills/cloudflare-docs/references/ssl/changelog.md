@@ -86,8 +86,6 @@ const message = await anthropic.messages.create({
 
 ```
 
-Explain Code
-
 For more information, check out the [blog ↗](https://blog.cloudflare.com/ai-gateway-aug-2025-refresh)!
 
 ## 2025-05-27
@@ -197,8 +195,6 @@ curl -X POST https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostname
 
 
 ```
-
-Explain Code
 
 You can also:
 

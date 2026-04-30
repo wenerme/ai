@@ -266,8 +266,6 @@ const fullBackup = await sandbox.createBackup({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -296,8 +294,6 @@ const fullBackup = await sandbox.createBackup({
 
 
 ```
-
-Explain Code
 
 If the directory is not inside a git repository, `useGitignore` has no effect and all files are included. If `useGitignore` is `true` but `git` is not installed in the container, a `BackupCreateError` is thrown.
 
@@ -334,8 +330,6 @@ try {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -361,8 +355,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ### Error handling
 
@@ -402,8 +394,6 @@ try {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -436,8 +426,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ## Behavior
 

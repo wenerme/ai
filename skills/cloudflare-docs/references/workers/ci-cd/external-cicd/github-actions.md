@@ -93,8 +93,6 @@ jobs:
 
 ```
 
-Explain Code
-
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/external-cicd/","name":"External CI/CD"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/external-cicd/github-actions/","name":"GitHub Actions"}}]}
 ```

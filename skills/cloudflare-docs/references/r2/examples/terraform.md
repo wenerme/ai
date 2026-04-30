@@ -64,8 +64,6 @@ resource "cloudflare_r2_bucket" "cloudflare-bucket" {
 
 ```
 
-Explain Code
-
 You can then use `terraform plan` to view the changes and `terraform apply` to apply changes.
 
 ```json

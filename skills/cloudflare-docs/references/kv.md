@@ -26,11 +26,11 @@ For example, you can use Workers KV for:
 
 Access your Workers KV namespace from Cloudflare Workers using [Workers Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or from your external application using the REST API:
 
-* [ Workers Binding API ](#tab-panel-6323)
-* [ REST API ](#tab-panel-6324)
+* [ Workers Binding API ](#tab-panel-6321)
+* [ REST API ](#tab-panel-6322)
 
-* [ index.ts ](#tab-panel-6319)
-* [ wrangler.jsonc ](#tab-panel-6320)
+* [ index.ts ](#tab-panel-6317)
+* [ wrangler.jsonc ](#tab-panel-6318)
 
 TypeScript
 
@@ -82,8 +82,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -120,12 +118,10 @@ Explain Code
 
 ```
 
-Explain Code
-
 See the full [Workers KV binding API reference](https://developers.cloudflare.com/kv/api/read-key-value-pairs/).
 
-* [ cURL ](#tab-panel-6321)
-* [ TypeScript ](#tab-panel-6322)
+* [ cURL ](#tab-panel-6319)
+* [ TypeScript ](#tab-panel-6320)
 
 ```
 
@@ -154,8 +150,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namesp
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -203,8 +197,6 @@ for await (const namespace of client.kv.namespaces.list({ account_id: '<ACCOUNT_
 
 
 ```
-
-Explain Code
 
 See the full Workers KV [REST API and SDK reference](https://developers.cloudflare.com/api/resources/kv/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 

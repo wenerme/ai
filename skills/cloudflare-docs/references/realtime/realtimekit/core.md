@@ -86,8 +86,6 @@ export default function App() {
 
 ```
 
-Explain Code
-
 Use the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) to fetch the `authToken`.
 
 Install the client SDK.
@@ -143,8 +141,6 @@ JavaScript
 
 ```
 
-Explain Code
-
 Use the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) to fetch the `authToken`.
 
 Install the client SDK.
@@ -199,8 +195,6 @@ class AppComponent {
 
 
 ```
-
-Explain Code
 
 Use the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) to fetch the `authToken`.
 
@@ -436,8 +430,6 @@ export default function App() {
 
 ```
 
-Explain Code
-
 Use the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) to fetch the `authToken`.
 
 ### Advanced Options
@@ -554,8 +546,6 @@ init({
 
 
 ```
-
-Explain Code
 
 Tip
 
@@ -688,8 +678,6 @@ interface Overrides {
 
 
 ```
-
-Explain Code
 
 You can configure meeting defaults using `enableAudio` and `enableVideo` parameters.
 

@@ -91,8 +91,6 @@ export class IoTAgent extends Agent<Env, State> {
 
 ```
 
-Explain Code
-
 This hook runs during `onConnect`, before any messages are sent. When it returns `false`:
 
 * No `cf_agent_identity`, `cf_agent_state`, or `cf_agent_mcp_servers` messages are sent on connect
@@ -154,8 +152,6 @@ export class MqttAgent extends Agent<Env, State> {
 
 ```
 
-Explain Code
-
 ## Checking protocol status
 
 Use `isConnectionProtocolEnabled` to check whether a connection has protocol messages enabled:
@@ -193,8 +189,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -224,8 +218,6 @@ export class MyAgent extends Agent<Env, State> {
 
 
 ```
-
-Explain Code
 
 ## What is and is not suppressed
 
@@ -296,8 +288,6 @@ export class SensorHub extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -356,8 +346,6 @@ export class SensorHub extends Agent<Env, SensorState> {
 
 
 ```
-
-Explain Code
 
 Both flags are stored in the connection's WebSocket attachment and hidden from `connection.state` — they do not interfere with each other or with user-defined connection state.
 

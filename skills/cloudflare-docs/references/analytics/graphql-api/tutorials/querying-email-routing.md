@@ -111,8 +111,6 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
-Explain Code
-
 The results returned will be in JSON (as requested):
 
 ```
@@ -260,8 +258,6 @@ The results returned will be in JSON (as requested):
 
 ```
 
-Explain Code
-
 ## Analytics API Call
 
 The following API call will count the number of events grouped by hour.
@@ -330,8 +326,6 @@ https://api.cloudflare.com/client/v4/graphql \
 
 
 ```
-
-Explain Code
 
 The results returned will be in JSON (as requested):
 
@@ -557,8 +551,6 @@ The results returned will be in JSON (as requested):
 
 
 ```
-
-Explain Code
 
 ## Footnotes
 

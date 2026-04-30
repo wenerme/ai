@@ -63,8 +63,6 @@ curl "https://api.cloudflare.com/client/v4/{zone_id}/rulesets/{ruleset_id}/rules
 
 ```
 
-Explain Code
-
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/smart-shield/configuration/health-checks/","name":"Health Checks"}},{"@type":"ListItem","position":5,"item":{"@id":"/smart-shield/configuration/health-checks/zone-lockdown/","name":"Zone Lockdown"}}]}
 ```

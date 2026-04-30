@@ -139,8 +139,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
 
 ```
 
-Explain Code
-
 ## Change the order of a rule in a ruleset
 
 To reorder a rule in a list of ruleset rules, include a `position` object in the request, containing one of the following:

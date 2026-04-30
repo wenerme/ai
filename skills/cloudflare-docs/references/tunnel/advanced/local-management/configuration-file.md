@@ -94,8 +94,6 @@ ingress:
 
 ```
 
-Explain Code
-
 #### Wildcards
 
 You can use wildcards to match traffic to multiple subdomains. For example, if you set the `hostname` key to `*.example.com`, both `alpha.example.com` and `beta.example.com` will route traffic to your origin. `cloudflared` does not support wildcards in the middle of the hostname, such as `test.*.example.com`.
@@ -139,8 +137,6 @@ ingress:
 
 
 ```
-
-Explain Code
 
 ### Origin configuration
 
@@ -191,8 +187,6 @@ ingress:
 
 
 ```
-
-Explain Code
 
 ### Validate ingress rules
 

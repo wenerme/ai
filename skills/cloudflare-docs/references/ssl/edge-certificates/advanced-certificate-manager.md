@@ -44,7 +44,7 @@ Enterprise customers can also purchase a subscription for Advanced Certificate M
 
 Note
 
-Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
+Eligible enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
 
 ## Limitations
 

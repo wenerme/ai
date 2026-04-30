@@ -80,8 +80,6 @@ export default {
 
 ```
 
-Explain Code
-
 Note
 
 You can also use [context.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) to send the message without blocking the response.
@@ -146,8 +144,6 @@ export default {
 
 ```
 
-Explain Code
-
 To only accept simple strings when writing to a queue, set `{ contentType: "text" }` instead:
 
 TypeScript
@@ -189,8 +185,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 The [QueuesContentType](https://developers.cloudflare.com/queues/configuration/javascript-apis/#queuescontenttype) API documentation describes how each format is serialized to a queue.
 
@@ -241,12 +235,10 @@ export default {
 
 ```
 
-Explain Code
-
 You then connect that consumer to a queue with `wrangler queues consumer <queue-name> <worker-script-name>` or by defining a `[[queues.consumers]]` configuration in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) manually:
 
-* [  wrangler.jsonc ](#tab-panel-7003)
-* [  wrangler.toml ](#tab-panel-7004)
+* [  wrangler.jsonc ](#tab-panel-7001)
+* [  wrangler.toml ](#tab-panel-7002)
 
 JSONC
 
@@ -276,8 +268,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -358,8 +348,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Remove a consumer
 

@@ -2045,7 +2045,7 @@ console.log(run.id);
       "testing_criteria": "testing_criteria"
     }
   ],
-  "report_url": "report_url",
+  "report_url": "https://example.com",
   "result_counts": {
     "errored": 0,
     "failed": 0,

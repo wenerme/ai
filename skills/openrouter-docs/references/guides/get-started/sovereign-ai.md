@@ -6,6 +6,8 @@
 
 Sovereign AI refers to a nation's or region's ability to develop, deploy, and control artificial intelligence systems within its own borders, using local infrastructure and under local regulatory frameworks. As AI becomes critical infrastructure, governments and enterprises increasingly require that AI workloads -- including the data they process -- remain within specific geographic and jurisdictional boundaries.
 
+OpenRouter offers fully in-region routing in the EU for enterprise customers. [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable it for your account.
+
 ## Why Sovereign AI Matters
 
 Sovereign AI is driven by two converging forces:
@@ -88,7 +90,10 @@ https://eu.openrouter.ai
 </CodeGroup>
 
 <Info title="EU-only models list">
-  To see which models are available for EU in-region routing, call `/api/v1/models/user` through the EU domain. [Learn more](/docs/api/api-reference/models/list-models-user)
+  To see which models are available for EU in-region routing, you can:
+
+  * Call [`/api/v1/models`](https://eu.openrouter.ai/api/v1/models) through the EU domain to get the full list programmatically
+  * Browse [EU-eligible models](https://openrouter.ai/models?region=eu) on the models page using the **In-Region Routing** filter
 </Info>
 
 EU in-region routing is available for enterprise customers by request. [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable it for your account.

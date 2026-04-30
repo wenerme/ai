@@ -146,8 +146,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/alerting/v3/poli
 
 ```
 
-Explain Code
-
 ```
 
   {
@@ -236,8 +234,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Test SLOs
 

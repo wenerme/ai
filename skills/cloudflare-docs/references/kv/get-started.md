@@ -51,8 +51,8 @@ New to Workers?
 
 Refer to [How Workers works](https://developers.cloudflare.com/workers/reference/how-workers-works/) to learn about the Workers serverless execution model works. Go to the [Workers Get started guide](https://developers.cloudflare.com/workers/get-started/guide/) to set up your first Worker.
 
-* [ CLI ](#tab-panel-6352)
-* [ Dashboard ](#tab-panel-6353)
+* [ CLI ](#tab-panel-6350)
+* [ Dashboard ](#tab-panel-6351)
 
 Create a new Worker to read and write to your KV namespace.
 
@@ -110,8 +110,8 @@ For example: `CI=true npm create cloudflare@latest kv-tutorial --type=simple --g
 
 A [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) is a key-value database replicated to Cloudflare's global network.
 
-* [ CLI ](#tab-panel-6344)
-* [ Dashboard ](#tab-panel-6345)
+* [ CLI ](#tab-panel-6342)
+* [ Dashboard ](#tab-panel-6343)
 
 You can use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to create a new KV namespace. You can also use it to perform operations such as put, list, get, and delete within your KV namespace.
 
@@ -144,8 +144,7 @@ Add the following to your configuration file in your kv_namespaces array:
     }  
   ]  
 }  
-```  
-Explain Code
+```
 
 1. In the Cloudflare dashboard, go to the **Workers KV** page.  
 [ Go to **Workers KV** ](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
@@ -165,12 +164,12 @@ Refer to [Environment](https://developers.cloudflare.com/kv/reference/environmen
 
 To bind your KV namespace to your Worker:
 
-* [ CLI ](#tab-panel-6356)
-* [ Dashboard ](#tab-panel-6357)
+* [ CLI ](#tab-panel-6354)
+* [ Dashboard ](#tab-panel-6355)
 
 1. In your Wrangler file, add the following with the values generated in your terminal from [step 2](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace):  
-   * [  wrangler.jsonc ](#tab-panel-6354)  
-   * [  wrangler.toml ](#tab-panel-6355)  
+   * [  wrangler.jsonc ](#tab-panel-6352)  
+   * [  wrangler.toml ](#tab-panel-6353)  
 JSONC  
 ```  
 {  
@@ -207,8 +206,8 @@ You can interact with your KV namespace via [Wrangler](https://developers.cloudf
 
 ### 4.1\. Write a value
 
-* [ CLI ](#tab-panel-6346)
-* [ Dashboard ](#tab-panel-6347)
+* [ CLI ](#tab-panel-6344)
+* [ Dashboard ](#tab-panel-6345)
 
 To write a value to your empty KV namespace using Wrangler:
 
@@ -269,8 +268,8 @@ npx wrangler kv key put --namespace-id=xxxxxxxxxxxxxxxx "<KEY>" "<VALUE>" --remo
 
 ### 4.2\. Get a value
 
-* [ CLI ](#tab-panel-6350)
-* [ Dashboard ](#tab-panel-6351)
+* [ CLI ](#tab-panel-6348)
+* [ Dashboard ](#tab-panel-6349)
 
 To access the value from your KV namespace using Wrangler:
 
@@ -303,8 +302,8 @@ You can view key-value pairs directly from the dashboard.
 
 ## 5\. Access your KV namespace from your Worker
 
-* [ CLI ](#tab-panel-6362)
-* [ Dashboard ](#tab-panel-6363)
+* [ CLI ](#tab-panel-6360)
+* [ Dashboard ](#tab-panel-6361)
 
 Note
 
@@ -335,8 +334,8 @@ let value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
 
 Your Worker code should look like this:
 
-* [  JavaScript ](#tab-panel-6360)
-* [  TypeScript ](#tab-panel-6361)
+* [  JavaScript ](#tab-panel-6356)
+* [  TypeScript ](#tab-panel-6357)
 
 JavaScript
 
@@ -388,8 +387,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -449,8 +446,6 @@ export default {
 
 ```
 
-Explain Code
-
 The code above:
 
 1. Writes a key to your KV namespace using KV's `put()` method.
@@ -491,7 +486,6 @@ export default {
   },  
 };  
 ```  
-Explain Code  
 TypeScript  
 ```  
 export interface Env {  
@@ -520,7 +514,6 @@ export default {
   },  
 } satisfies ExportedHandler<Env>;  
 ```  
-Explain Code  
 The code above:  
    1. Writes a key to `BINDING_NAME` using KV's `put()` method.  
    2. Reads the same key using KV's `get()` method, and returns an error if the key is null (or in case the key is not set, or does not exist).  
@@ -532,8 +525,8 @@ The browser should simply return the `VALUE` corresponding to the `KEY` you have
 
 Deploy your Worker to Cloudflare's global network.
 
-* [ CLI ](#tab-panel-6348)
-* [ Dashboard ](#tab-panel-6349)
+* [ CLI ](#tab-panel-6346)
+* [ Dashboard ](#tab-panel-6347)
 
 1. Run the following command to deploy KV to Cloudflare's global network:  
 Terminal window  

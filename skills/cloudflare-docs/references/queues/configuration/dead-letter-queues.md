@@ -18,8 +18,8 @@ With Cloudflare Queues, a Dead Letter Queue is defined within your [consumer con
 
 For example, the following consumer configuration would send messages to our DLQ named `"my-other-queue"` after retrying delivery (by default, 3 times):
 
-* [  wrangler.jsonc ](#tab-panel-6974)
-* [  wrangler.toml ](#tab-panel-6975)
+* [  wrangler.jsonc ](#tab-panel-6972)
+* [  wrangler.toml ](#tab-panel-6973)
 
 JSONC
 
@@ -47,8 +47,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 

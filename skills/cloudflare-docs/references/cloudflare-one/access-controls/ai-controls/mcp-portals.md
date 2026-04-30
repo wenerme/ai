@@ -179,8 +179,6 @@ MCP client configuration with code mode
 
 ```
 
-Explain Code
-
 When code mode is active, the portal advertises a single `code` tool to connected MCP clients. The AI agent discovers available tools by inspecting the typed method signatures in the Dynamic Worker environment and composes multiple tool calls into a single code execution.
 
 For more information on building with code mode, refer to the [code mode SDK reference](https://developers.cloudflare.com/agents/api-reference/codemode/).
@@ -294,8 +292,6 @@ MCP client configuration for MCP portals
 
 ```
 
-Explain Code
-
 We do not recommend using the `serverURL` parameter since it may cause issues with portal session creation and management.
 
 ## Optimize context
@@ -352,8 +348,6 @@ MCP client configuration with minimize\_tools
 
 ```
 
-Explain Code
-
 ### Search and execute
 
 The `search_and_execute` option hides all upstream tools and exposes only two tools to the agent: `query` and `execute`. The `query` tool searches and retrieves tool definitions. The `execute` tool runs the upstream tools. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, which keeps authentication credentials and environment variables out of the model context.
@@ -401,8 +395,6 @@ MCP client configuration with search\_and\_execute
 
 
 ```
-
-Explain Code
 
 For more information on the code mode pattern behind `search_and_execute`, refer to the [Code mode SDK reference](https://developers.cloudflare.com/agents/api-reference/codemode/).
 

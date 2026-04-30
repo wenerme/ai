@@ -100,8 +100,6 @@ unsub();
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -136,8 +134,6 @@ unsub();
 
 
 ```
-
-Explain Code
 
 The callback is fully typed — `event` is narrowed to only the event types that flow through that channel.
 
@@ -216,8 +212,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -246,8 +240,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 This gives you structured, filterable observability in production with zero overhead in the agent hot path.
 
@@ -290,8 +282,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -326,8 +316,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 Set `observability` to `undefined` to disable all event emission:
 

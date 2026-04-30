@@ -20,10 +20,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Set up an A/B test by controlling what response is served based on cookies. This version supports passing the request through to test and control on the origin, bypassing random assignment.
 
-* [  JavaScript ](#tab-panel-8644)
-* [  TypeScript ](#tab-panel-8645)
-* [  Python ](#tab-panel-8646)
-* [  Hono ](#tab-panel-8647)
+* [  JavaScript ](#tab-panel-8682)
+* [  TypeScript ](#tab-panel-8683)
+* [  Python ](#tab-panel-8684)
+* [  Hono ](#tab-panel-8685)
 
 JavaScript
 
@@ -98,8 +98,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -169,8 +167,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Python
 
@@ -247,8 +243,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -341,8 +335,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/ab-testing/","name":"A/B testing with same-URL direct access"}}]}

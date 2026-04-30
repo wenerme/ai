@@ -148,8 +148,6 @@ export default {
 
 ```
 
-Explain Code
-
 **Key concepts**:
 
 * `getSandbox()` \- Gets or creates a sandbox instance by ID. Use the same ID to reuse the same sandbox instance across requests.
@@ -312,8 +310,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -344,8 +340,6 @@ tag = "v1"
 
 
 ```
-
-Explain Code
 
 * **containers** \- Defines the [container image, instance type, and resource limits](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) for your sandbox environment. If you expect to have multiple sandbox instances, you can increase `max_instances`.
 * **durable\_objects** \- You need not be familiar with [Durable Objects](https://developers.cloudflare.com/durable-objects) to use Sandbox SDK, but if you'd like, you can [learn more about Cloudflare Containers and Durable Objects](https://developers.cloudflare.com/containers/get-started/#each-container-is-backed-by-its-own-durable-object). This configuration creates a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings#what-is-a-binding) that makes the `Sandbox` Durable Object accessible in your Worker code.

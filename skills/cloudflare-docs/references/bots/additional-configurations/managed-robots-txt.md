@@ -165,8 +165,6 @@ Sitemap: https://www.crawlstop.com/sitemap.xml
 
 ```
 
-Explain Code
-
 ### No robots.txt file
 
 If your website does not have a `robots.txt` file, Cloudflare creates a new file with managed `Disallow` rules for known AI crawlers and serves it for you.
@@ -247,8 +245,6 @@ Content Signals Policy
 
 
 ```
-
-Explain Code
 
 Cloudflare's Content Signals Policy is included by default in the `robots.txt` file when you turn on **robots.txt setting**.
 

@@ -53,8 +53,6 @@ await promisifiedFoo(args);
 
 ```
 
-Explain Code
-
 Similarly to `promisify`, `callbackify` converts a Promise-returning async function into a Node.js-style callback function:
 
 JavaScript
@@ -82,8 +80,6 @@ callbackifiedFoo(args, (err, value) => {
 
 
 ```
-
-Explain Code
 
 `callbackify` and `promisify` make it easy to handle all of the challenges that come with bridging between callbacks and promises.
 
@@ -127,8 +123,6 @@ types.isAsyncFunction(async function foo() {}); // Returns true
 
 ```
 
-Explain Code
-
 Warning
 
 The Workers implementation currently does not provide implementations of the `util.types.isExternal()`, `util.types.isProxy()`, `util.types.isKeyObject()`, or `util.type.isWebAssemblyCompiledModule()` APIs.
@@ -170,8 +164,6 @@ console.log(String(myMIME));
 
 
 ```
-
-Explain Code
 
 For more about `util.MIMEType`, refer to the [Node.js documentation for util.MIMEType ↗](https://nodejs.org/api/util.html#class-utilmimetype).
 

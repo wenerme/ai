@@ -112,8 +112,6 @@ X509v3 extensions:
 
 ```
 
-Explain Code
-
 ## The gokeyless binary cannot load the CA file
 
 Ensure permissions are correct on all keys and certificates installed on the server.

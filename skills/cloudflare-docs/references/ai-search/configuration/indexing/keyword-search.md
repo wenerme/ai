@@ -92,8 +92,6 @@ const results = await instance.search({
 
 ```
 
-Explain Code
-
 ## Limits
 
 Instances with keyword search enabled support up to 500,000 files per instance on the Workers Paid tier, compared to 1,000,000 for vector-only instances. Refer to [Limits and pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/) for the full list of limits.

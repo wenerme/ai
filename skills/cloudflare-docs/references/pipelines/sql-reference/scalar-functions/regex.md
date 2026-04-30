@@ -69,8 +69,6 @@ SELECT regexp_like('aBc', '(b|d)', 'i');
 
 ```
 
-Explain Code
-
 Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
 
 ## `regexp_match`
@@ -125,8 +123,6 @@ SELECT regexp_match('aBc', '(b|d)', 'i');
 
 
 ```
-
-Explain Code
 
 Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
 
@@ -184,8 +180,6 @@ SELECT regexp_replace('aBc', '(b|d)', 'Ab\\1a', 'i');
 
 
 ```
-
-Explain Code
 
 Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
 

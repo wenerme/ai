@@ -120,8 +120,6 @@ const textAsBase64 = await sandbox.readFile("/workspace/data.txt", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -197,8 +195,6 @@ if (!dirResult.exists) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -226,8 +222,6 @@ if (!dirResult.exists) {
 
 
 ```
-
-Explain Code
 
 Available on sessions
 
@@ -452,8 +446,6 @@ await sandbox.gitCheckout("https://github.com/facebook/react", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -482,8 +474,6 @@ await sandbox.gitCheckout('https://github.com/facebook/react', {
 
 
 ```
-
-Explain Code
 
 ## Related resources
 

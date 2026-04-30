@@ -39,8 +39,8 @@ The Gateway custom block page is a different concept from [Access custom block p
 
 For DNS policies, you will need to enable the block page on a per-policy basis.
 
-* [ Dashboard ](#tab-panel-6471)
-* [ Terraform (v5) ](#tab-panel-6472)
+* [ Dashboard ](#tab-panel-6469)
+* [ Terraform (v5) ](#tab-panel-6470)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
@@ -83,8 +83,7 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_block_security_categories" 
     block_reason  = "This domain has been flagged as a potential security risk." // Adds an additional message to the custom block page. Requires enabling custom block page in cloudflare_zero_trust_gateway_settings.  
   }  
 }  
-```  
-Explain Code
+```
 
 ### Customize the block page
 
@@ -92,8 +91,8 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-6469)
-* [ Terraform (v5) ](#tab-panel-6470)
+* [ Dashboard ](#tab-panel-6467)
+* [ Terraform (v5) ](#tab-panel-6468)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
@@ -127,8 +126,7 @@ resource "cloudflare_zero_trust_gateway_settings" "team_name" {
     }  
   }  
 }  
-```  
-Explain Code
+```
 
 Gateway will now display a custom Gateway block page when your users visit a blocked website.
 

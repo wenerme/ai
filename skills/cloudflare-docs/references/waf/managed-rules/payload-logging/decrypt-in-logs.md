@@ -79,8 +79,6 @@ Once you decrypt its value, the `encrypted_matched_data` property of the `Metada
 
 ```
 
-Explain Code
-
 The `before` and `after` properties are optional (there may be no content before/after the matched text) and will contain at most 15 bytes of content appearing before and after the match.
 
 Below are a few examples of payload matches:

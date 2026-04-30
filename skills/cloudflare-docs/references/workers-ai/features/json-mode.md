@@ -55,8 +55,6 @@ JSON Mode is compatible with OpenAI’s implementation; to enable add the `respo
 
 ```
 
-Explain Code
-
 Where `json_schema` must be a valid [JSON Schema ↗](https://json-schema.org/) declaration.
 
 ## JSON Mode example
@@ -142,8 +140,6 @@ When using JSON Format, pass the schema as in the example below as part of the r
 
 ```
 
-Explain Code
-
 The LLM will follow the schema, and return a response such as below:
 
 ```
@@ -192,8 +188,6 @@ The LLM will follow the schema, and return a response such as below:
 
 
 ```
-
-Explain Code
 
 As you can see, the model is complying with the JSON schema definition in the request and responding with a validated JSON object.
 

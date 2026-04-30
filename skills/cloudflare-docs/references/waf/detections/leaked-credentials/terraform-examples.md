@@ -98,8 +98,6 @@ resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
 
 ```
 
-Explain Code
-
 ## More resources
 
 For additional Terraform configuration examples, refer to [WAF custom rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/).

@@ -76,8 +76,6 @@ A successful response will look similar to the following:
 
 ```
 
-Explain Code
-
 This response means that 41% of the requests are classified as coming from mobile devices, while 58% are desktop traffic.
 
 Note
@@ -138,8 +136,6 @@ df.plot(kind="bar", stacked=True)
 
 
 ```
-
-Explain Code
 
 ### Notebooks
 

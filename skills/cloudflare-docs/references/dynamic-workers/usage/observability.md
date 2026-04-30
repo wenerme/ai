@@ -35,8 +35,8 @@ Tail Workers run asynchronously after the Dynamic Worker has already sent its re
 
 Enable [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) by adding the `observability` setting to the loader Worker's Wrangler configuration. However, Workers Logs only captures log output from the loader Worker itself. Dynamic Workers are separate, so their `console.log()` calls are not included automatically. To get Dynamic Worker logs into Workers Logs, you need to define a Tail Worker that receives logs from the Dynamic Worker and writes them into the loader Worker's Workers Logs.
 
-* [  wrangler.jsonc ](#tab-panel-5902)
-* [  wrangler.toml ](#tab-panel-5903)
+* [  wrangler.jsonc ](#tab-panel-5900)
+* [  wrangler.toml ](#tab-panel-5901)
 
 JSONC
 
@@ -118,8 +118,6 @@ export class DynamicWorkerTail extends WorkerEntrypoint {
 
 ```
 
-Explain Code
-
 The Tail Worker reads `workerId` from `this.ctx.props.workerId`. You set this value when you attach the Tail Worker to the Dynamic Worker in the next step.
 
 Since the Tail Worker is defined within the loader Worker, its `console.log()` output is saved to Workers Logs along with the loader Worker's own logs.
@@ -164,8 +162,6 @@ return worker.getEntrypoint().fetch(request);
 
 ```
 
-Explain Code
-
 ## Return logs in real time
 
 The setup above stores logs for later, but sometimes you need logs right away for real-time development. The challenge is that the Tail Worker and the loader Worker's `fetch()` handler run separately. The Tail Worker has the logs, but the `fetch()` handler is the one building the response. You need a shared place where the Tail Worker can write the logs and the `fetch()` handler can read them.
@@ -204,8 +200,6 @@ const logs = await logWaiter.getLogs(1000);
 
 
 ```
-
-Explain Code
 
 For a full working implementation, refer to the [Dynamic Workers Playground example ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground).
 

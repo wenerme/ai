@@ -120,8 +120,6 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/bucke
 
 ```
 
-Explain Code
-
 This request creates two rules:
 
 * `lock-logs-7d`: Objects under the `logs/` prefix are retained for 7 days (604800 seconds).

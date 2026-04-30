@@ -67,8 +67,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -116,8 +114,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Terminal window
 

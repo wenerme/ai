@@ -43,9 +43,9 @@ R2 supports two patterns for time-limited access. They overlap but have differen
 
 ### SDK examples
 
-* [ JavaScript ](#tab-panel-7091)
-* [ Python ](#tab-panel-7092)
-* [ CLI ](#tab-panel-7093)
+* [ JavaScript ](#tab-panel-7089)
+* [ Python ](#tab-panel-7090)
+* [ CLI ](#tab-panel-7091)
 
 TypeScript
 
@@ -117,8 +117,6 @@ const putUrl = await getSignedUrl(
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -185,8 +183,6 @@ put_url = s3.generate_presigned_url(
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -213,8 +209,6 @@ aws s3 presign --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com \
 
 
 ```
-
-Explain Code
 
 For complete examples and additional operations, refer to the SDK-specific documentation:
 

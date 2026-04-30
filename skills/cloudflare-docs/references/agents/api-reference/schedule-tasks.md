@@ -102,8 +102,6 @@ export class ReminderAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -171,8 +169,6 @@ export class ReminderAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Scheduling modes
 
@@ -272,8 +268,6 @@ await this.schedule(twoHoursFromNow, "checkIn", {});
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -306,8 +300,6 @@ await this.schedule(twoHoursFromNow, "checkIn", {});
 
 
 ```
-
-Explain Code
 
 **Use cases:**
 
@@ -354,8 +346,6 @@ await this.schedule("0 0 1 * *", "monthlyCleanup", {});
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -386,8 +376,6 @@ await this.schedule("0 0 1 * *", "monthlyCleanup", {});
 
 
 ```
-
-Explain Code
 
 **Cron syntax:** `minute hour day month weekday`
 
@@ -596,8 +584,6 @@ await this.scheduleEvery(30, "poll", {});
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -625,8 +611,6 @@ await this.scheduleEvery(30, "poll", {});
 
 
 ```
-
-Explain Code
 
 When a skip occurs, you will see a warning in logs:
 
@@ -734,8 +718,6 @@ if (schedule) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -763,8 +745,6 @@ if (schedule) {
 
 
 ```
-
-Explain Code
 
 ### List schedules
 
@@ -826,8 +806,6 @@ const upcomingCronJobs = this.getSchedules({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -880,8 +858,6 @@ const upcomingCronJobs = this.getSchedules({
 
 
 ```
-
-Explain Code
 
 ### Cancel a schedule
 
@@ -1001,8 +977,6 @@ class ReminderAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1069,8 +1043,6 @@ class ReminderAgent extends Agent {
 
 ```
 
-Explain Code
-
 ## The Schedule object
 
 When you create or retrieve a schedule, you get a `Schedule` object:
@@ -1103,8 +1075,6 @@ type Schedule<T> = {
 
 
 ```
-
-Explain Code
 
 **Example:**
 
@@ -1139,8 +1109,6 @@ console.log(schedule);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1168,8 +1136,6 @@ console.log(schedule);
 
 
 ```
-
-Explain Code
 
 ## Patterns
 
@@ -1238,8 +1204,6 @@ class PollingAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1297,8 +1261,6 @@ class PollingAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Exponential backoff retry
 
@@ -1369,8 +1331,6 @@ class RetryAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -1445,8 +1405,6 @@ class RetryAgent extends Agent {
 
 ```
 
-Explain Code
-
 ### Self-destructing agents
 
 You can safely call `this.destroy()` from within a scheduled callback:
@@ -1487,8 +1445,6 @@ class TemporaryAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1521,8 +1477,6 @@ class TemporaryAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -1634,8 +1588,6 @@ class SmartScheduler extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1731,8 +1683,6 @@ class SmartScheduler extends Agent {
 
 ```
 
-Explain Code
-
 ### `scheduleSchema`
 
 A Zod schema for validating parsed scheduling data. Uses a discriminated union on `when.type` so each variant only contains the fields it needs:
@@ -1768,8 +1718,6 @@ import { scheduleSchema } from "agents";
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1797,8 +1745,6 @@ import { scheduleSchema } from "agents";
 
 
 ```
-
-Explain Code
 
 Note
 

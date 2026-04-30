@@ -167,8 +167,6 @@ Example output:
 
 ```
 
-Explain Code
-
 Save the `trigger_uuid` for the trigger you want to work with. Remember, you will have at most two triggers: one for your production branch (for example, `main`) that deploys to your live Worker, and optionally one for all other branches that creates preview deployments.
 
 ## Step 3: Work with builds
@@ -347,8 +345,6 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
 ```
 
-Explain Code
-
 And different values for preview builds:
 
 Terminal window
@@ -377,8 +373,6 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
 
 ```
-
-Explain Code
 
 Use `type: "text"` for plain values and `type: "secret"` for sensitive values that should be masked in logs.
 
@@ -502,8 +496,6 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/repos
 
 ```
 
-Explain Code
-
 Save the `repo_connection_uuid` from the response.
 
 #### Step 3: Get your Worker tag
@@ -591,8 +583,6 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
 ```
 
-Explain Code
-
 #### Step 6: Create a preview trigger (optional)
 
 Create a second trigger for preview deployments on all other branches:
@@ -637,8 +627,6 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
 
 ```
-
-Explain Code
 
 Note the different `deploy_command`: production uses `wrangler deploy` while preview uses `wrangler versions upload` to create preview URLs without affecting the live deployment.
 
@@ -798,8 +786,6 @@ Passing both `branch` and `commit_hash` pins the build to that exact commit on t
 
 
 ```
-
-Explain Code
 
 ## Troubleshooting
 

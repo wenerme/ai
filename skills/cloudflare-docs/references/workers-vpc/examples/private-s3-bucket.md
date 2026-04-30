@@ -123,8 +123,6 @@ Configure your S3 bucket to allow anonymous access from your VPC endpoint. This 
 
 ```
 
-Explain Code
-
 ### Testing S3 access directly
 
 You can test S3 access directly from the VM where your Cloudflare Tunnel is running to verify the bucket policy is working correctly. These commands should work without any AWS credentials:
@@ -149,8 +147,8 @@ curl -i https://your-bucket-name.s3.us-west-2.amazonaws.com/test-file.txt
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8430)
-* [  wrangler.toml ](#tab-panel-8431)
+* [  wrangler.jsonc ](#tab-panel-8468)
+* [  wrangler.toml ](#tab-panel-8469)
 
 JSONC
 
@@ -184,8 +182,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -246,8 +242,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 This guide demonstrates how you could access private object storage from your Workers. You could use Workers VPC Services to fetch files directly and manipulate the responses to enable you to build more full-stack and backend functionality on Workers.
 

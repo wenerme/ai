@@ -76,8 +76,6 @@ console.log("WebSocket server listening on port 8080");
 
 ```
 
-Explain Code
-
 **Extend the Dockerfile:**
 
 Dockerfile
@@ -157,8 +155,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -191,8 +187,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 **Client connects:**
 
@@ -267,8 +261,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -320,8 +312,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 **Client connects to preview URL:**
 
@@ -437,8 +427,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -527,8 +515,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 This pattern is useful when you need streaming data from sandbox services but want to return HTTP responses to clients.
 

@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build an AI coding agent with OpenAI Agents SDK
 
-**Last reviewed:**  16 days ago 
+**Last reviewed:**  17 days ago 
 
 The [OpenAI Agents SDK ↗](https://openai.github.io/openai-agents-python/) is a lightweight Python framework for building multi-agent workflows. A Cloudflare Sandbox integration is provided out of the box and ensures that the SDK includes a first-class Cloudflare backend that gives your agents isolated containers for running code, installing packages, and managing files.
 
@@ -281,8 +281,6 @@ if __name__ == "__main__":
 
 
 ```
-
-Explain Code
 
 Here is what the key pieces do:
 

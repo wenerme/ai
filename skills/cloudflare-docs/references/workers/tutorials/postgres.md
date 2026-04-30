@@ -76,8 +76,8 @@ cd postgres-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-9255)
-* [  wrangler.toml ](#tab-panel-9256)
+* [  wrangler.jsonc ](#tab-panel-9293)
+* [  wrangler.toml ](#tab-panel-9294)
 
 JSONC
 
@@ -218,8 +218,8 @@ DB_URL="<ENTER YOUR POSTGRESQL CONNECTION STRING>"
 
 Configure each database parameter as an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) via the [Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard) or in your Wrangler file. Refer to an example of a Wrangler file configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9251)
-* [  wrangler.toml ](#tab-panel-9252)
+* [  wrangler.jsonc ](#tab-panel-9289)
+* [  wrangler.toml ](#tab-panel-9290)
 
 JSONC
 
@@ -348,8 +348,6 @@ await sql.connect();
 
 ```
 
-Explain Code
-
 ## 5\. Interact with the products database
 
 To demonstrate how to interact with the products database, you will fetch data from the `products` table by querying the table when a request is received.
@@ -428,8 +426,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 This code establishes a connection to the PostgreSQL database within your Worker application and queries the `products` table, returning the results as a JSON response.
 
@@ -558,8 +554,6 @@ export default {
 
 ```
 
-Explain Code
-
 This code snippet does the following:
 
 1. Checks if the request is a `POST` request and the URL path is `/products`.
@@ -615,8 +609,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-9253)
-* [  wrangler.toml ](#tab-panel-9254)
+* [  wrangler.jsonc ](#tab-panel-9291)
+* [  wrangler.toml ](#tab-panel-9292)
 
 JSONC
 
@@ -659,8 +653,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -686,8 +678,6 @@ id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 
 
 ```
-
-Explain Code
 
 Create the types for your Hyperdrive binding using the following command:
 

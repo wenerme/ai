@@ -231,8 +231,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{
 
 ```
 
-Explain Code
-
 1. Go to **Configure** \> **Network** \> **Interfaces** \> **Add alias**. Add the IP address provided by Cloudflare for the ICMP probe traffic. This is needed to prevent Sophos firewall from dropping them as spoof packets. This is not the same IP used to create VPN. This is the special IP address for probe traffic only.
 ![Add the IP address provided by Cloudflare to prevent the probe from being dropped by the firewall.](https://developers.cloudflare.com/_astro/2-icmp-probe-firewall.BD1XaeDb_Z2b9mrl.webp) 
 1. ICMP reply from SFOS should go back via the same tunnel on which the probe packets are received. You will need to create an additional SD-WAN policy route.

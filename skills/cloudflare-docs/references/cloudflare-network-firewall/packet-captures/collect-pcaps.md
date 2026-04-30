@@ -98,8 +98,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 
 ```
 
-Explain Code
-
 While the collection is in progress, the response returns the `status` field as `pending`. You must wait for the PCAP collection to complete before downloading the file. When the PCAP is ready to download, the status changes to `success`.
 
 Full PCAP example response
@@ -144,8 +142,6 @@ Full PCAP example response
 
 
 ```
-
-Explain Code
 
 Sample PCAP
 
@@ -193,8 +189,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 
 
 ```
-
-Explain Code
 
 The response is a JSON body that contains the details of the job running to build the packet capture. The response contains a unique identifier for the packet capture request along with the details sent in the request.
 
@@ -246,8 +240,6 @@ Sample PCAP example response
 
 
 ```
-
-Explain Code
 
 ## Check packet capture status
 
@@ -323,8 +315,6 @@ Sample PCAP example result
 
 
 ```
-
-Explain Code
 
 The capture status displays one of the following options:
 
@@ -437,8 +427,6 @@ List response example
 
 
 ```
-
-Explain Code
 
 ## Best practices
 

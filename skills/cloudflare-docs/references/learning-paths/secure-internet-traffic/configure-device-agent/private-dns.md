@@ -27,8 +27,8 @@ To learn more about how Local Domain Fallback works, refer to [How the Cloudflar
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-6655)
-* [ Terraform (v5) ](#tab-panel-6656)
+* [ Dashboard ](#tab-panel-6653)
+* [ Terraform (v5) ](#tab-panel-6654)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
@@ -91,8 +91,7 @@ locals {
 }  
   ]  
 }  
-```  
-Explain Code
+```
 3. To configure Local Domain Fallback for the default device profile, use the [cloudflare\_zero\_trust\_device\_default\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile%5Flocal%5Fdomain%5Ffallback) resource. To configure Local Domain Fallback for a custom device profile, use[cloudflare\_zero\_trust\_device\_custom\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile%5Flocal%5Fdomain%5Ffallback). For example:  
 device-profiles.tf  
 ```  
@@ -112,8 +111,7 @@ resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "ex
     ]  
   )  
 }  
-```  
-Explain Code
+```
 
 For `suffix`, specify the apex domain (`example.com`) that you want to resolve using your private DNS server. All prefixes under the apex domain are subject to Local Domain Fallback (in other words, `example.com` is interpreted as `*.example.com`). For `dns_server`, enter the IP address of the DNS servers that should resolve that domain name.
 
@@ -146,8 +144,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-6653)
-* [ Terraform (v5) ](#tab-panel-6654)
+* [ Dashboard ](#tab-panel-6651)
+* [ Terraform (v5) ](#tab-panel-6652)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
@@ -195,8 +193,7 @@ resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {
       }  
   }  
 }  
-```  
-Explain Code
+```
 
 When a user's query matches a resolver policy, Gateway will send the query to your listed resolvers in the following order:
 

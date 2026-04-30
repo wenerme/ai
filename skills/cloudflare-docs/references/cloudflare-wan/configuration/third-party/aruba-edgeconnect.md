@@ -195,8 +195,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tun
 
 ```
 
-Explain Code
-
 1. Create a new IPsec tunnel
 
 Terminal window
@@ -235,8 +233,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunn
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -291,8 +287,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 1. Generate Pre Shared Key (PSK) for tunnel
 
 Use the tunnel ID from the response in Step 2\. Save the pre-shared key generated in this step as you will need it to set up tunnels on the Orchestrator.
@@ -342,8 +336,6 @@ curl --request POST \
 
 
 ```
-
-Explain Code
 
 **Create an IPsec tunnel on EdgeConnect**
 

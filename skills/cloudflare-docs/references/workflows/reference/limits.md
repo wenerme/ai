@@ -39,6 +39,7 @@ Workflows cannot be deployed to Workers for Platforms namespaces, as Workflows d
 | Maximum length of a Workflow name [9](#user-content-fn-4)                                                                      | 64 characters                                                                                                                     | 64 characters                                                                                                                              |
 | Maximum length of a Workflow instance ID [9](#user-content-fn-4)                                                               | 100 characters                                                                                                                    | 100 characters                                                                                                                             |
 | Maximum number of subrequests per Workflow instance                                                                            | 50/request                                                                                                                        | 10,000/request (default) / configurable up to 10 million                                                                                   |
+| Maximum number of retries per step                                                                                             | 10,000                                                                                                                            | 10,000                                                                                                                                     |
 
 Need a higher limit?
 
@@ -129,8 +130,6 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
 
 ```
 
-Explain Code
-
 While a given Workflow instance is waiting for 30 days, it will transition to the `waiting` state, allowing other `queued` instances to run if concurrency limits are reached.
 
 ### Increasing Workflow step limits
@@ -154,8 +153,8 @@ This will appear as `exceededCpu` in [wrangler tail](https://developers.cloudfla
 
 By default, the maximum CPU time per Workflow invocation is set to 30 seconds, but can be increased for all invocations associated with a Workflow definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10089)
-* [  wrangler.toml ](#tab-panel-10090)
+* [  wrangler.jsonc ](#tab-panel-10127)
+* [  wrangler.toml ](#tab-panel-10128)
 
 JSONC
 
@@ -208,8 +207,8 @@ This will appear as `exceededResources` in [Workers metrics](https://developers.
 
 By default, the maximum number of subrequests per Workflow instance is 10,000 on Workers Paid plans, but this can be increased up to 10 million by setting `limits.subrequests` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10091)
-* [  wrangler.toml ](#tab-panel-10092)
+* [  wrangler.jsonc ](#tab-panel-10129)
+* [  wrangler.toml ](#tab-panel-10130)
 
 JSONC
 

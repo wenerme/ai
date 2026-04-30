@@ -76,8 +76,6 @@ export async function GET({ request, platform }) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -124,8 +122,6 @@ export {};
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -157,8 +153,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/examples/d1-and-sveltekit/","name":"Query D1 from SvelteKit"}}]}

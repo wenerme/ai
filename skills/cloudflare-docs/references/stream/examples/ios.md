@@ -68,8 +68,6 @@ struct MyView_Previews: PreviewProvider {
 
 ```
 
-Explain Code
-
 ### Download and run an example app
 
 1. Download [this example app ↗](https://developer.apple.com/documentation/avfoundation/offline%5Fplayback%5Fand%5Fstorage/using%5Favfoundation%5Fto%5Fplay%5Fand%5Fpersist%5Fhttp%5Flive%5Fstreams) from Apple's developer docs

@@ -72,8 +72,6 @@ dig mx <YOUR_DOMAIN>
 
 ```
 
-Explain Code
-
 In the above example, TTL is shown in seconds as `300` (or five minutes).
 
 If you are using Cloudflare for DNS, you can leave the [TTL setting as **Auto**](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/).

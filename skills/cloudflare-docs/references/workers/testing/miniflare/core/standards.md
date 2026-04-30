@@ -98,8 +98,6 @@ console.log(await res.text()); // "response:Mocked response!"
 
 ```
 
-Explain Code
-
 ## Subrequests
 
 Miniflare does not support limiting the amount of[subrequests](https://developers.cloudflare.com/workers/platform/limits#account-plan-limits). Please keep this in mind if you make a large amount of subrequests from your Worker.

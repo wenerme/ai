@@ -120,8 +120,6 @@ Response
 
 ```
 
-Explain Code
-
 How do we get the same result using the GraphQL API?
 
 The GraphQL API allows us to be much more specific about the data that we want to retrieve. While the colos endpoint forces us to retrieve all the information about the breakdown of requests and bandwidth per colo, using the GraphQL API allows us to fetch only the information we are interested in.
@@ -174,8 +172,6 @@ The following is a GraphQL API query to retrieve the data we need to answer the 
 
 
 ```
-
-Explain Code
 
 Then we can run it with curl:
 

@@ -61,8 +61,6 @@ export default defineConfig({
 
 ```
 
-Explain Code
-
 ### Write a test
 
 Note
@@ -136,8 +134,6 @@ describe("make a request to my Agent", () => {
 
 
 ```
-
-Explain Code
 
 ### Run tests
 

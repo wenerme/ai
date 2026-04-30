@@ -69,8 +69,6 @@ To use this SDK, add an additional `<script>` tag to your website:
 
 ```
 
-Explain Code
-
 ## Methods
 
 * `play()` Promise  

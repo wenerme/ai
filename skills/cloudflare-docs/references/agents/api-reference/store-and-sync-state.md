@@ -89,8 +89,6 @@ export class GameAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -156,8 +154,6 @@ export class GameAgent extends Agent<Env, GameState> {
 
 ```
 
-Explain Code
-
 ## Defining initial state
 
 Use the `initialState` property to define default values for new agent instances:
@@ -217,8 +213,6 @@ export class ChatAgent extends Agent<Env, State> {
 
 
 ```
-
-Explain Code
 
 ### Type safety
 
@@ -364,8 +358,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -401,8 +393,6 @@ class MyAgent extends Agent<
 
 ```
 
-Explain Code
-
 ### Undefined state
 
 If you do not define `initialState`, `this.state` returns `undefined`:
@@ -436,8 +426,6 @@ export class MinimalAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -463,8 +451,6 @@ export class MinimalAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Updating state
 
@@ -507,8 +493,6 @@ this.setState({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -538,8 +522,6 @@ this.setState({
 
 
 ```
-
-Explain Code
 
 ### State must be serializable
 
@@ -587,8 +569,6 @@ this.setState({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -627,8 +607,6 @@ this.setState({
 
 
 ```
-
-Explain Code
 
 ## Responding to state changes
 
@@ -728,8 +706,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -770,8 +746,6 @@ class MyAgent extends Agent<
 
 
 ```
-
-Explain Code
 
 ### Common pattern: Client-driven actions
 
@@ -818,8 +792,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -859,8 +831,6 @@ class MyAgent extends Agent<Env, { messages: Message[] }> {
 
 
 ```
-
-Explain Code
 
 ## Validating state updates
 
@@ -905,8 +875,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -938,8 +906,6 @@ class MyAgent extends Agent<Env, GameState> {
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -1000,8 +966,6 @@ function GameUI() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1048,8 +1012,6 @@ function GameUI() {
 
 ```
 
-Explain Code
-
 ### Vanilla JS (AgentClient)
 
 * [  JavaScript ](#tab-panel-3662)
@@ -1084,8 +1046,6 @@ client.setState({ ...client.state, score: 100 });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1114,8 +1074,6 @@ client.setState({ ...client.state, score: 100 });
 
 
 ```
-
-Explain Code
 
 ### State flow
 
@@ -1172,8 +1130,6 @@ class MyWorkflow extends Workflow {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1207,8 +1163,6 @@ class MyWorkflow extends Workflow<Env> {
 
 
 ```
-
-Explain Code
 
 These are durable operations - they persist even if the workflow retries.
 
@@ -1247,8 +1201,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1274,8 +1226,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 You can also supply a TypeScript type argument to the query, which will be used to infer the type of the result:
 
@@ -1343,8 +1293,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 You do not need to specify an array type (`User[]` or `Array<User>`), as `this.sql` will always return an array of the specified type.
 
 Note
@@ -1393,8 +1341,6 @@ async getMessages(limit = 50) {
 
 
 ```
-
-Explain Code
 
 ### Optimistic updates
 
@@ -1474,8 +1420,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1546,8 +1490,6 @@ class MyAgent extends Agent<Env, { messages: Message[] }> {
 
 
 ```
-
-Explain Code
 
 ### State vs SQL
 
@@ -1624,8 +1566,6 @@ export class ChatAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1689,8 +1629,6 @@ export class ChatAgent extends Agent {
 
 ```
 
-Explain Code
-
 ### Avoid infinite loops
 
 Be careful not to trigger state updates in response to your own updates:
@@ -1720,8 +1658,6 @@ onStateChanged(state: State, source: Connection | "server") {
 
 
 ```
-
-Explain Code
 
 ## Use Agent state as model context
 
@@ -1797,8 +1733,6 @@ export class ReasoningAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1870,8 +1804,6 @@ export class ReasoningAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 This works because each instance of an Agent has its own database, and the state stored in that database is private to that Agent: whether it is acting on behalf of a single user, a room or channel, or a deep research tool. By default, you do not have to manage contention or reach out over the network to a centralized database to retrieve and store state.
 

@@ -76,8 +76,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/asn/13335
 
 ```
 
-Explain Code
-
 ### Custom Indicator Feed Download
 
 Download Custom Indicator Feed
@@ -163,8 +161,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/10d79d097895ae7ed7942a2b3832
 
 
 ```
-
-Explain Code
 
 ### Domain Intelligence
 
@@ -266,8 +262,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/domain?do
 
 ```
 
-Explain Code
-
 ### Domain History
 
 Get Domain History
@@ -354,8 +348,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/domain-hi
 
 ```
 
-Explain Code
-
 ### IP Intelligence
 
 Get IP Overview
@@ -423,8 +415,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/ip?ipv4=1
 
 
 ```
-
-Explain Code
 
 ### Passive DNS by IP
 
@@ -518,8 +508,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/dns?ipv4=
 
 ```
 
-Explain Code
-
 ### Phishing Intelligence
 
 Get results for a URL scan
@@ -596,8 +584,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/brand-protectio
 
 ```
 
-Explain Code
-
 ### Miscategorization Intelligence
 
 Create Miscategorization
@@ -666,8 +652,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/miscatego
 
 ```
 
-Explain Code
-
 ### WHOIS
 
 Get WHOIS Record
@@ -729,8 +713,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/whois?dom
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/intel-apis/","name":"Threat Intelligence APIs"}}]}

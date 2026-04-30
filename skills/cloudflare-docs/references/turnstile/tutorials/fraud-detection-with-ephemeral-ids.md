@@ -73,8 +73,6 @@ CREATE TABLE blocked_ephemeral_ids (
 
 ```
 
-Explain Code
-
 ### Extract and log the Ephemeral IDs
 
 When you call Siteverify, the Ephemeral ID is returned in the `metadata` field. Log it with every protected action.
@@ -179,8 +177,6 @@ async function verifyAndLogTurnstile(
 
 ```
 
-Explain Code
-
 ### Use the Ephemeral ID in your sign up flow
 
 TypeScript
@@ -270,8 +266,6 @@ export async function handleSignup(request: Request, env: Env) {
 
 ```
 
-Explain Code
-
 ### Detect fraud patterns
 
 Run the following query periodically (for example, every five minutes) to find suspicious Ephemeral IDs:
@@ -303,8 +297,6 @@ HAVING COUNT(*) > 3;  -- More than 3 signups = suspicious
 
 ```
 
-Explain Code
-
 When you find suspicious IDs, block them:
 
 ```
@@ -333,8 +325,6 @@ ON CONFLICT (ephemeral_id) DO NOTHING;
 
 
 ```
-
-Explain Code
 
 ### Investigate and take action
 

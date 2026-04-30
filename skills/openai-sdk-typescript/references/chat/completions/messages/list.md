@@ -118,7 +118,7 @@ for await (const chatCompletionStoreMessage of client.chat.completions.messages.
             "end_index": 0,
             "start_index": 0,
             "title": "title",
-            "url": "url"
+            "url": "https://example.com"
           }
         }
       ],

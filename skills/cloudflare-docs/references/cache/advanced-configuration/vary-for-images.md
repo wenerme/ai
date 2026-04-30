@@ -92,8 +92,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
 
 ```
 
-Explain Code
-
 ### Modify to only allow WebP variants
 
 Required API token permissions
@@ -134,8 +132,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
 
 
 ```
-
-Explain Code
 
 ### Delete the rule
 

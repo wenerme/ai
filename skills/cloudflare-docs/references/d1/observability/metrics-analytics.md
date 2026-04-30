@@ -351,8 +351,6 @@ npx wrangler d1 insights <database_name> --sort-type=sum --sort-by=count --limit
 
 ```
 
-Explain Code
-
 To find top 3 queries by average execution time:
 
 Terminal window
@@ -453,8 +451,6 @@ npx wrangler d1 insights <database_name> --sort-type=avg --sort-by=time --limit=
 
 ```
 
-Explain Code
-
 To find top 10 queries by rows written in last 7 days:
 
 Terminal window
@@ -554,8 +550,6 @@ npx wrangler d1 insights <database_name> --sort-type=sum --sort-by=writes --limi
 
 
 ```
-
-Explain Code
 
 Note
 

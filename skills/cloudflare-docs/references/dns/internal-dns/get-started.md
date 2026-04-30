@@ -128,8 +128,6 @@ curl "https://api.cloudflare.com/client/v4/zones" \
 
 ```
 
-Explain Code
-
 1. Add DNS records to your internal zone using your preferred option:
 * [Import](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/import/) a formatted BIND file. Refer to the [DNS records how-to](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/) for guidance.
 * Use other API endpoints, such as [/batch](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/batch/), to manage DNS records. Refer to [Batch record changes](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/#use-the-api) for details.

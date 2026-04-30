@@ -71,8 +71,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq/chat/co
 
 ```
 
-Explain Code
-
 ### Use Groq SDK with JavaScript
 
 If using the [groq-sdk ↗](https://www.npmjs.com/package/groq-sdk), set your endpoint like this:
@@ -117,8 +115,6 @@ const chatCompletion = await groq.chat.completions.create({
 
 
 ```
-
-Explain Code
 
 ## OpenAI-Compatible Endpoint
 

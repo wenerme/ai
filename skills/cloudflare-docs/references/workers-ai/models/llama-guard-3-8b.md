@@ -83,8 +83,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
 import os
@@ -123,8 +121,6 @@ print(result)
 
 
 ```
-
-Explain Code
 
 Terminal window
 

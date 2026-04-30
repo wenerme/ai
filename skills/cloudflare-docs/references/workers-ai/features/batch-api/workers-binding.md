@@ -90,8 +90,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -150,8 +148,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -190,8 +186,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 When the inference is complete, the API returns a final HTTP status code of `200` along with an array of responses. Each response object corresponds to an individual input prompt, identified by an `id` that maps to the index of the prompt in your original request.
 

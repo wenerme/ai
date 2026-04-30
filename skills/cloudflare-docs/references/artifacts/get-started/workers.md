@@ -100,8 +100,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -207,8 +205,6 @@ export default {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -272,8 +268,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 This Worker does one job: create an Artifacts repo and return the values your Git client needs next.
 

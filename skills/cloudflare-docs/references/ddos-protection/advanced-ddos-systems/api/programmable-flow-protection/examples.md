@@ -64,8 +64,6 @@ Response
 
 ```
 
-Explain Code
-
 ## Upload a program
 
 This example uploads a new eBPF program written in C. The program source code is sent as the request body with `Content-Type: text/plain`.
@@ -116,8 +114,6 @@ Response
 
 ```
 
-Explain Code
-
 If the program fails compilation or verification, the API returns a detailed error message:
 
 Example error response
@@ -148,8 +144,6 @@ Example error response
 
 
 ```
-
-Explain Code
 
 ## Update a program
 
@@ -202,8 +196,6 @@ Response
 
 
 ```
-
-Explain Code
 
 ## Delete a program
 
@@ -297,8 +289,6 @@ Response
 
 ```
 
-Explain Code
-
 ## Create a rule
 
 This example creates a Programmable Flow Protection rule with a global scope in monitoring mode.
@@ -365,8 +355,6 @@ Response
 
 ```
 
-Explain Code
-
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/) for more information on the fields in the JSON body.
 
 ## Create a rule with regional scope
@@ -399,8 +387,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
 
 
 ```
-
-Explain Code
 
 Response
 
@@ -438,8 +424,6 @@ Response
 
 
 ```
-
-Explain Code
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/) for more information on the fields in the JSON body.
 
@@ -504,8 +488,6 @@ Response
 
 
 ```
-
-Explain Code
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/) for more information on the fields in the JSON body.
 

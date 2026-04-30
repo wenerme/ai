@@ -55,8 +55,6 @@ export default new OAuthProvider({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -84,8 +82,6 @@ export default new OAuthProvider({
 
 
 ```
-
-Explain Code
 
 ## Consent dialog security
 
@@ -152,8 +148,6 @@ function validateCSRFToken(formData, request) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -207,8 +201,6 @@ function validateCSRFToken(formData: FormData, request: Request) {
 
 
 ```
-
-Explain Code
 
 Include the token as a hidden field in your consent form:
 
@@ -283,8 +275,6 @@ const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -342,8 +332,6 @@ const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
 
 ```
 
-Explain Code
-
 ### Content Security Policy
 
 CSP headers instruct browsers to block dangerous content:
@@ -399,8 +387,6 @@ function buildSecurityHeaders(setCookie, nonce) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -448,8 +434,6 @@ function buildSecurityHeaders(setCookie: string, nonce?: string): HeadersInit {
 
 
 ```
-
-Explain Code
 
 ## State handling
 
@@ -550,8 +534,6 @@ async function validateOAuthState(request, kv) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -644,8 +626,6 @@ async function validateOAuthState(request: Request, kv: KVNamespace) {
 
 ```
 
-Explain Code
-
 ## Cookie security
 
 ### Why use the `__Host-` prefix?
@@ -709,8 +689,6 @@ async function addApprovedClient(request, clientId, cookieSecret) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -745,8 +723,6 @@ async function addApprovedClient(
 
 
 ```
-
-Explain Code
 
 When reading the cookie, verify the HMAC signature before trusting the data. If the client is not in the approved list, show the consent dialog.
 

@@ -65,8 +65,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -95,8 +93,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
 
 
 ```
-
-Explain Code
 
 With Stored Keys (BYOK) / Unified Billing
 
@@ -128,8 +124,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
 
 
 ```
-
-Explain Code
 
 ### Anthropic SDK
 
@@ -174,8 +168,6 @@ const message = await anthropic.messages.create({
 
 ```
 
-Explain Code
-
 ```
 
 import Anthropic from "@anthropic-ai/sdk";
@@ -205,8 +197,6 @@ const message = await anthropic.messages.create({
 
 
 ```
-
-Explain Code
 
 With Stored Keys (BYOK) / Unified Billing
 
@@ -243,8 +233,6 @@ const message = await anthropic.messages.create({
 
 
 ```
-
-Explain Code
 
 ## OpenAI-Compatible Endpoint
 

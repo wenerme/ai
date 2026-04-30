@@ -100,8 +100,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -148,8 +146,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Connect with xterm.js and SandboxAddon
 
@@ -221,8 +217,6 @@ window.addEventListener("resize", () => fitAddon.fit());
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -285,8 +279,6 @@ window.addEventListener('resize', () => fitAddon.fit());
 
 
 ```
-
-Explain Code
 
 For the full addon API, refer to the [Terminal API reference](https://developers.cloudflare.com/sandbox/api/terminal/).
 
@@ -375,8 +367,6 @@ function sendInput(text) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -454,8 +444,6 @@ function sendInput(text: string): void {
 
 
 ```
-
-Explain Code
 
 Key protocol details:
 

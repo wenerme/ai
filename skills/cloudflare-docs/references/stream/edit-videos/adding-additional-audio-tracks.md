@@ -68,8 +68,6 @@ Example response to add additional audio tracks
 
 ```
 
-Explain Code
-
 The `uid` uniquely identifies the audio track and can be used for editing or deleting the audio track. Please see instructions below on how to perform these operations.
 
 The `default` field denotes whether the audio track will be played by default in a player. Additional audio tracks have a `false` default status, but can be edited following instructions below.
@@ -131,8 +129,6 @@ Example response to add Additional audio tracks
 
 
 ```
-
-Explain Code
 
 ## List the additional audio tracks on a video
 
@@ -200,8 +196,6 @@ Example response to get the audio tracks associated with a video
 
 ```
 
-Explain Code
-
 Note this API will not return information for audio attached to the video upload.
 
 ## Edit an additional audio track
@@ -253,8 +247,6 @@ Example response to edit the audio tracks associated with a video
 
 
 ```
-
-Explain Code
 
 ## Delete an additional audio track
 

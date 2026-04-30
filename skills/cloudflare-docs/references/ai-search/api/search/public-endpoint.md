@@ -59,8 +59,6 @@ curl https://<INSTANCE_ID>.search.ai.cloudflare.com/chat/completions \
 
 ```
 
-Explain Code
-
 For the full list of options, refer to the [Chat Completions API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/).
 
 ## Search
@@ -93,8 +91,6 @@ curl https://<INSTANCE_ID>.search.ai.cloudflare.com/search \
 
 
 ```
-
-Explain Code
 
 For the full list of options, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/).
 

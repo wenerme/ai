@@ -160,7 +160,7 @@ Terminal window
 
 ```
 
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/values/environment?type=workers_script" \
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/values/environment?type=worker" \
 
   -H "Authorization: Bearer $API_TOKEN"
 

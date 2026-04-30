@@ -161,8 +161,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -313,8 +311,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Use cases
 
 Webhooks combined with agents enable patterns where each external entity gets its own isolated, stateful agent instance.
@@ -414,8 +410,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -459,8 +453,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Extract entity from URL
 
@@ -614,8 +606,6 @@ async function verifySignature(payload, signature, secret) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -676,8 +666,6 @@ async function verifySignature(
 
 
 ```
-
-Explain Code
 
 ### Provider-specific headers
 
@@ -776,8 +764,6 @@ export class WebhookAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -856,8 +842,6 @@ export class WebhookAgent extends Agent {
 
 ```
 
-Explain Code
-
 ## Storing webhook events
 
 Use SQLite to persist webhook events for history and replay.
@@ -917,8 +901,6 @@ class WebhookAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -969,8 +951,6 @@ class WebhookAgent extends Agent {
 
 ```
 
-Explain Code
-
 ### Cleanup old events
 
 Prevent unbounded growth by keeping only recent events:
@@ -1008,8 +988,6 @@ this.sql`
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1039,8 +1017,6 @@ this.sql`
 
 
 ```
-
-Explain Code
 
 ### Query events
 
@@ -1104,8 +1080,6 @@ class WebhookAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1163,8 +1137,6 @@ class WebhookAgent extends Agent {
 
 ```
 
-Explain Code
-
 ## Real-time broadcasting
 
 When a webhook arrives, update agent state to automatically broadcast to connected WebSocket clients.
@@ -1205,8 +1177,6 @@ class WebhookAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1239,8 +1209,6 @@ class WebhookAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 On the client side:
 
@@ -1275,8 +1243,6 @@ function Dashboard() {
 
 
 ```
-
-Explain Code
 
 ## Patterns
 
@@ -1330,8 +1296,6 @@ class WebhookAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1374,8 +1338,6 @@ class WebhookAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Respond quickly, process asynchronously
 
@@ -1433,8 +1395,6 @@ class WebhookAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1483,8 +1443,6 @@ class WebhookAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Multi-provider routing
 
@@ -1566,8 +1524,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1641,8 +1597,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Sending outgoing webhooks
 
 Agents can also send webhooks to external services:
@@ -1708,8 +1662,6 @@ export class NotificationAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1767,8 +1719,6 @@ export class NotificationAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Security best practices
 

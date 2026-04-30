@@ -32,8 +32,8 @@ In this example, a multi-tenant e-Commerce application is built on Cloudflare Wo
 
 For simplicity of demonstration, the storefront will be identified with a path element containing the storefront ID, where`https://<WORKER_HOSTNAME>/<STOREFRONT_ID>/...` is the URL pattern for the storefront. You may prefer to use subdomains to identify storefronts in a real-world scenario.
 
-* [ index.ts ](#tab-panel-6338)
-* [ wrangler.jsonc ](#tab-panel-6339)
+* [ index.ts ](#tab-panel-6336)
+* [ wrangler.jsonc ](#tab-panel-6337)
 
 index.ts
 
@@ -187,8 +187,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -223,8 +221,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 In this example, the Cloudflare Worker receives a request and extracts the storefront ID from the URL path. The storefront ID is used to look up the origin server URL from Workers KV using the `get()` method. The request is then forwarded to the origin server, and the response is modified to include custom headers before being returned to the client.
 

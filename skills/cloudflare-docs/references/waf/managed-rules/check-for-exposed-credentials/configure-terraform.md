@@ -88,8 +88,6 @@ resource "cloudflare_ruleset" "account_firewall_custom_ruleset_exposed_creds" {
 
 ```
 
-Explain Code
-
 To create another rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
 The following configuration deploys the custom ruleset. It defines a dependency on the `account_firewall_custom_ruleset_exposed_creds` resource and obtains the ID of the created custom ruleset:
@@ -138,8 +136,6 @@ resource "cloudflare_ruleset" "account_firewall_custom_entrypoint" {
 
 
 ```
-
-Explain Code
 
 ## More resources
 

@@ -60,8 +60,6 @@ export class MyMCP extends McpAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -100,8 +98,6 @@ export class MyMCP extends McpAgent {
 
 
 ```
-
-Explain Code
 
 This means that each instance of your MCP server has its own durable state, backed by a [Durable Object](https://developers.cloudflare.com/durable-objects/), with its own [SQL database](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state).
 
@@ -173,8 +169,6 @@ export default MyMCP.serve("/mcp");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -210,8 +204,6 @@ export default MyMCP.serve("/mcp");
 
 
 ```
-
-Explain Code
 
 This is the simplest way to deploy an MCP server — about 15 lines of code. The `serve()` method handles Streamable HTTP transport automatically.
 
@@ -475,8 +467,6 @@ export class MyMCP extends McpAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -568,8 +558,6 @@ export class MyMCP extends McpAgent<Env, State, {}> {
 
 
 ```
-
-Explain Code
 
 ## Elicitation (human-in-the-loop)
 
@@ -728,8 +716,6 @@ export class CounterMCP extends McpAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -863,8 +849,6 @@ export class CounterMCP extends McpAgent<Env, State, {}> {
 
 ```
 
-Explain Code
-
 ### JSON Schema for forms
 
 The `requestedSchema` defines the form structure shown to the user:
@@ -936,8 +920,6 @@ const schema = {
 
 ```
 
-Explain Code
-
 ### Handling responses
 
 * [  JavaScript ](#tab-panel-3246)
@@ -980,8 +962,6 @@ switch (result.action) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1018,8 +998,6 @@ switch (result.action) {
 
 
 ```
-
-Explain Code
 
 MCP client support
 

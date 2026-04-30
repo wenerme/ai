@@ -129,8 +129,6 @@ const hls = new Hls({
 
 ```
 
-Explain Code
-
 ## Clip manifest
 
 To play a clip of a live stream or recording, request a clip manifest with a duration and a start time, relative to the start of the live stream.

@@ -116,8 +116,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 ## Define outbound handlers
 
 Outbound handlers are programmable egress proxies that run on the same machine as the container. They have access to all Workers bindings.
@@ -157,8 +155,6 @@ MyContainer.outbound = async (request, env, ctx) => {
 
 ```
 
-Explain Code
-
 Note
 
 HTTP requests to the outbound handler remain secure because they run on the same machine as the container. You can upgrade requests to HTTPS from the Worker itself to prevent plain-text traffic from reaching the internet.
@@ -195,8 +191,6 @@ MyContainer.outboundByHost = {
 
 
 ```
-
-Explain Code
 
 Calls to `http://my.worker` from the container invoke the handler, which runs inside the Workers runtime, outside the container sandbox.
 
@@ -235,8 +229,6 @@ MyContainer.outboundByHost = {
 
 
 ```
-
-Explain Code
 
 This is especially useful for agentic workloads where you cannot fully trust the code running inside the container. With this pattern:
 
@@ -278,8 +270,6 @@ MyContainer.outboundByHost = {
 
 
 ```
-
-Explain Code
 
 ## HTTPS traffic
 
@@ -360,8 +350,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -397,8 +385,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 JavaScript
 
@@ -436,8 +422,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -473,8 +457,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 Replace `node server.js` with the command that starts your application.
 
@@ -526,8 +508,6 @@ MyContainer.outboundHandlers = {
 
 ```
 
-Explain Code
-
 Apply handlers to hosts programmatically from your Worker:
 
 JavaScript
@@ -562,8 +542,6 @@ async removeAccessToGithub(req, env) {
 
 
 ```
-
-Explain Code
 
 ## Handler precedence
 
@@ -611,8 +589,6 @@ await this.ctx.container.interceptAllOutboundHttp(worker);
 
 ```
 
-Explain Code
-
 You can call these methods before or after starting the container, and even while connections are open. In-flight TCP connections pick up the new handler automatically — no connections are dropped.
 
 JavaScript
@@ -640,8 +616,6 @@ await this.ctx.container.interceptOutboundHttp("203.0.113.0/24", updated);
 
 
 ```
-
-Explain Code
 
 For HTTPS, `interceptOutboundHttps` works the same way as `interceptOutboundHttp`.
 

@@ -56,8 +56,6 @@ socket.on("end", () => {
 
 ```
 
-Explain Code
-
 The following APIs are available:
 
 * [connect ↗](https://nodejs.org/api/tls.html#tlsconnectoptions-callback)

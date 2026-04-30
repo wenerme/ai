@@ -97,8 +97,6 @@ class MyApp extends StatelessWidget {
 
 ```
 
-Explain Code
-
 Note
 
 You do not need to wrap the root of your application inside `RtkProvider`. You can wrap a specific subtree where you use RealtimeKit components. A `MaterialApp` widget must exist below `RtkProvider` in the widget tree.

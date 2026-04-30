@@ -81,8 +81,6 @@ resource "cloudflare_zone_setting" "ssl" {
 
 ```
 
-Explain Code
-
 ## 2\. Preview and apply the changes
 
 Review the proposed changes:
@@ -146,8 +144,6 @@ Terraform will perform the following actions:
 
 
 ```
-
-Explain Code
 
 Commit and merge the changes:
 

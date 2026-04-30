@@ -75,8 +75,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/mist
 
 ```
 
-Explain Code
-
 ### Use `@mistralai/mistralai` package with JavaScript
 
 If you are using the `@mistralai/mistralai` package, you can set your endpoint like this:
@@ -117,8 +115,6 @@ await client.chat.create({
 
 
 ```
-
-Explain Code
 
 ## OpenAI-Compatible Endpoint
 

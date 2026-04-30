@@ -116,8 +116,6 @@ Response
 
 ```
 
-Explain Code
-
 ### Step 3: Play the video in your website or app
 
 Videos uploaded to Stream can be played on any device and platform, from websites to native apps. See [Play videos](https://developers.cloudflare.com/stream/viewing-videos) for details and examples of video playback across platforms.
@@ -221,8 +219,6 @@ Response
 
 
 ```
-
-Explain Code
 
 ### Step 2: Copy the RTMPS URL and key, and use them with your live streaming application.
 

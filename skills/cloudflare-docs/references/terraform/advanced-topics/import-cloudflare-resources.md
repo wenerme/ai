@@ -177,8 +177,6 @@ resource "cloudflare_record" "terraform_managed_resource_5799bb01054843eea726758
 
 ```
 
-Explain Code
-
 Calling `terraform plan` at this point will try to create these resources as if they did not exist, since they are not present in the local state file:
 
 Terminal window
@@ -346,8 +344,6 @@ guarantee to take exactly these actions if you run "terraform apply" now.
 
 
 ```
-
-Explain Code
 
 To fix this, you must import the real state of those resources from Cloudflare into the Terraform state file (`.tfstate`).
 

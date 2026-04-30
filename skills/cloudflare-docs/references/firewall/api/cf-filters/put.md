@@ -59,8 +59,6 @@ curl --request PUT \
 
 ```
 
-Explain Code
-
 Response
 
 ```
@@ -106,8 +104,6 @@ Response
 
 ```
 
-Explain Code
-
 ## Update a single filter
 
 This example updates the filter with ID `{filter_id}`.
@@ -141,8 +137,6 @@ curl --request PUT \
 
 ```
 
-Explain Code
-
 Response
 
 ```
@@ -171,8 +165,6 @@ Response
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}},{"@type":"ListItem","position":3,"item":{"@id":"/firewall/api/","name":"Manage rules via the APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/firewall/api/cf-filters/","name":"Cloudflare Filters API"}},{"@type":"ListItem","position":5,"item":{"@id":"/firewall/api/cf-filters/put/","name":"PUT examples"}}]}

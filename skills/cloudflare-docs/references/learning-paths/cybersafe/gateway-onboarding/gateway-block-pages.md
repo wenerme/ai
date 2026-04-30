@@ -33,8 +33,8 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-6423)
-* [ Terraform (v5) ](#tab-panel-6424)
+* [ Dashboard ](#tab-panel-6421)
+* [ Terraform (v5) ](#tab-panel-6422)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
@@ -68,8 +68,7 @@ resource "cloudflare_zero_trust_gateway_settings" "team_name" {
     }  
   }  
 }  
-```  
-Explain Code
+```
 
 Gateway will now display a custom Gateway block page when your users visit a blocked website.
 

@@ -61,8 +61,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -93,8 +91,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 By default, `this.retry()` retries up to three times with jittered exponential backoff.
 
@@ -192,8 +188,6 @@ const data = await this.retry(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -224,8 +218,6 @@ const data = await this.retry(
 
 
 ```
-
-Explain Code
 
 **Using the attempt number:**
 
@@ -310,8 +302,6 @@ const data = await this.retry(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -352,8 +342,6 @@ const data = await this.retry(
 
 
 ```
-
-Explain Code
 
 ## Retries in schedules
 
@@ -452,8 +440,6 @@ await this.scheduleEvery(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -544,8 +530,6 @@ await this.scheduleEvery(
 
 ```
 
-Explain Code
-
 If the callback throws, it is retried according to the retry options. If all attempts fail, the error is logged and routed through `onError()`. The schedule is still removed (for one-time schedules) or rescheduled (for cron/interval) regardless of success or failure.
 
 ## Retries in queues
@@ -591,8 +575,6 @@ await this.queue("processWebhook", webhookData, {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -628,8 +610,6 @@ await this.queue("processWebhook", webhookData, {
 
 
 ```
-
-Explain Code
 
 If the callback throws, it is retried before the task is dequeued. After all attempts are exhausted, the task is dequeued and the error is logged.
 
@@ -690,8 +670,6 @@ await this.queue("sendEmail", data, {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -741,8 +719,6 @@ await this.queue("sendEmail", data, {
 
 
 ```
-
-Explain Code
 
 Validation resolves partial options against class-level or built-in defaults before checking cross-field constraints. This means `{ baseDelayMs: 5000 }` is caught immediately when the resolved `maxDelayMs` is 3000, rather than failing later at execution time.
 
@@ -1082,8 +1058,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1131,8 +1105,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 ### Retry with fallback
 
 * [  JavaScript ](#tab-panel-3424)
@@ -1177,8 +1149,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1217,8 +1187,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Combining retries with scheduling
 
@@ -1284,8 +1252,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1342,8 +1308,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Limitations
 

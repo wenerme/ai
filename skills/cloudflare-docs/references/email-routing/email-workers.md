@@ -47,8 +47,6 @@ export default {
 
 ```
 
-Explain Code
-
 Refer to the [Workers Languages](https://developers.cloudflare.com/workers/languages/) for more information regarding the languages you can use with Workers.
 
 ## How to use Email Workers

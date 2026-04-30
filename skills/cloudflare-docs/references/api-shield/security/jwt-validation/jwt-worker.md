@@ -83,8 +83,6 @@ curl https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/certs -s | jq 
 
 ```
 
-Explain Code
-
 ### Configure the Worker
 
 1. [Create a new Worker](https://developers.cloudflare.com/workers/get-started/guide/).
@@ -193,8 +191,7 @@ export default {
     ctx.waitUntil(updateCredentials(env.CF_API_TOKEN));  
   },  
 };  
-```  
-Explain Code
+```
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/jwt-validation/","name":"JSON Web Tokens validation"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/jwt-validation/jwt-worker/","name":"Configure the Worker"}}]}

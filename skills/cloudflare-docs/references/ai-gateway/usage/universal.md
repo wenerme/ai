@@ -127,8 +127,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
 
 ```
 
-Explain Code
-
 The above will send a request to Workers AI Inference API, if it fails it will proceed to OpenAI. You can add as many fallbacks as you need, just by adding another JSON in the array.
 
 ## WebSockets API beta
@@ -204,8 +202,6 @@ ws.on("message", function incoming(message) {
 
 ```
 
-Explain Code
-
 ## Workers Binding example
 
 * [  wrangler.jsonc ](#tab-panel-4169)
@@ -280,8 +276,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Header configuration hierarchy
 
@@ -402,8 +396,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/universal/","name":"Universal Endpoint"}}]}

@@ -109,8 +109,6 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
-Explain Code
-
 Note
 
 Rather than filter by `cfRayId`, you may also [filter](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/) by any other field in the query such as `userUuid` or `deviceId`.
@@ -187,8 +185,6 @@ Rather than filter by `cfRayId`, you may also [filter](https://developers.cloudf
 
 
 ```
-
-Explain Code
 
 You can compare the query results to your Access policies to understand why a user was blocked. For example, if your application requires a valid mTLS certificate, Access blocked the request shown above because `mtlsStatus`, `mtlsCommonName`, and `mtlsCertSerialId` are empty.
 

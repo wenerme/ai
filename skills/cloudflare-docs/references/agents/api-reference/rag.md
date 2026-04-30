@@ -97,8 +97,6 @@ export class RAGAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -176,8 +174,6 @@ export class RAGAgent extends Agent {
 
 ```
 
-Explain Code
-
 You'll also need to connect your Agent to your vector indexes:
 
 * [  wrangler.jsonc ](#tab-panel-3362)
@@ -209,8 +205,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 

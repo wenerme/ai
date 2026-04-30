@@ -83,8 +83,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8408)
-* [  wrangler.toml ](#tab-panel-8409)
+* [  wrangler.jsonc ](#tab-panel-8446)
+* [  wrangler.toml ](#tab-panel-8447)
 
 JSONC
 
@@ -120,8 +120,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 In your wrangler file, add or update the following settings to enable Node.js APIs and polyfills (with a compatibility date of 2024‑09‑23 or later):
 
-* [  wrangler.jsonc ](#tab-panel-8410)
-* [  wrangler.toml ](#tab-panel-8411)
+* [  wrangler.jsonc ](#tab-panel-8448)
+* [  wrangler.toml ](#tab-panel-8449)
 
 JSONC
 
@@ -360,8 +360,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## 5\. Deploy your Worker
 

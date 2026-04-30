@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to turn on Zstandard compression for response content types where Cloudflare applies compression by default.
 
-* [ Dashboard ](#tab-panel-7335)
-* [ API ](#tab-panel-7336)
+* [ Dashboard ](#tab-panel-7333)
+* [ API ](#tab-panel-7334)
 
 The following example rule will turn on Zstandard compression for response content types where [Cloudflare applies compression by default](https://developers.cloudflare.com/speed/optimization/content/compression/). If the client does not support Zstandard compression, it will use Brotli or Gzip compression as a fallback.
 
@@ -112,8 +112,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 
 ```
-
-Explain Code
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 

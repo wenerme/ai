@@ -24,9 +24,9 @@ Worker-to-Worker `fetch` requests are possible with [Service bindings](https://d
 
 ## Syntax
 
-* [  Module Worker ](#tab-panel-9047)
-* [  Service Worker ](#tab-panel-9048)
-* [  Python Worker ](#tab-panel-9049)
+* [  Module Worker ](#tab-panel-9085)
+* [  Service Worker ](#tab-panel-9086)
+* [  Python Worker ](#tab-panel-9087)
 
 JavaScript
 
@@ -82,8 +82,6 @@ async function eventHandler(event) {
 
 
 ```
-
-Explain Code
 
 Python
 
@@ -173,8 +171,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Related resources
 

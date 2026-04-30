@@ -25,8 +25,8 @@ When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-
 
 Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8426)
-* [  wrangler.toml ](#tab-panel-8427)
+* [  wrangler.jsonc ](#tab-panel-8464)
+* [  wrangler.toml ](#tab-panel-8465)
 
 JSONC
 
@@ -63,8 +63,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -90,8 +88,6 @@ remote = true
 
 
 ```
-
-Explain Code
 
 With this single binding, your Worker can reach any service across all tunnels and Mesh nodes in your account.
 
@@ -138,8 +134,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Unlike [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), the URL you pass to `fetch()` determines the actual destination. You can reach any IP and port accessible through your Mesh network without creating separate bindings for each service.
 

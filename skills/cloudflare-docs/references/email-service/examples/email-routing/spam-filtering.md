@@ -268,8 +268,6 @@ function getScoreRange(score: number): string {
 
 ```
 
-Explain Code
-
 ## Advanced spam detection with AI
 
 For more sophisticated spam detection, you can enhance the basic filter using [Workers AI](https://developers.cloudflare.com/workers-ai) to analyze email content with machine learning models. This approach can identify subtle spam patterns that keyword-based filters might miss.

@@ -281,7 +281,7 @@ for image in client.images.generate(
     {
       "b64_json": "b64_json",
       "revised_prompt": "revised_prompt",
-      "url": "url"
+      "url": "https://example.com"
     }
   ],
   "output_format": "png",
@@ -658,7 +658,7 @@ for image in client.images.edit(
     {
       "b64_json": "b64_json",
       "revised_prompt": "revised_prompt",
-      "url": "url"
+      "url": "https://example.com"
     }
   ],
   "output_format": "png",
@@ -938,7 +938,7 @@ print(images_response.created)
     {
       "b64_json": "b64_json",
       "revised_prompt": "revised_prompt",
-      "url": "url"
+      "url": "https://example.com"
     }
   ],
   "output_format": "png",

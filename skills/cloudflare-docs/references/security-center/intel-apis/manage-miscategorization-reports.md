@@ -62,8 +62,6 @@ curl -X POST "$URL" \
 
 ```
 
-Explain Code
-
 You should receive a response with the value `"success": true`:
 
 ```

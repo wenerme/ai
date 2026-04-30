@@ -610,8 +610,6 @@ exports.myServiceTokenClientSecret = myAddServiceToken.clientSecret;
 
 ```
 
-Explain Code
-
 ## Access Pulumi exports
 
 Once you run your Pulumi script with `pulumi up`, your resources will be created or updated.

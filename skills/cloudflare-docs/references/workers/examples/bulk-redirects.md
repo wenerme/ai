@@ -20,10 +20,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.
 
-* [  JavaScript ](#tab-panel-8680)
-* [  TypeScript ](#tab-panel-8681)
-* [  Python ](#tab-panel-8682)
-* [  Hono ](#tab-panel-8683)
+* [  JavaScript ](#tab-panel-8718)
+* [  TypeScript ](#tab-panel-8719)
+* [  Python ](#tab-panel-8720)
+* [  Hono ](#tab-panel-8721)
 
 JavaScript
 
@@ -73,8 +73,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -123,8 +121,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -170,8 +166,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -241,8 +235,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/bulk-redirects/","name":"Bulk redirects"}}]}

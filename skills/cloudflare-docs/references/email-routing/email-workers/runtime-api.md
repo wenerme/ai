@@ -111,8 +111,6 @@ TypeScript
 
 ```
 
-Explain Code
-
 An email message that is sent to a consumer Worker and can be rejected/forwarded.
 
 * `from` string  

@@ -68,8 +68,6 @@ export default {
 
 ```
 
-Explain Code
-
 * [  wrangler.jsonc ](#tab-panel-5276)
 * [  wrangler.toml ](#tab-panel-5277)
 
@@ -134,8 +132,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -173,8 +169,6 @@ tag = "v1"
 
 
 ```
-
-Explain Code
 
 [ Get started ](https://developers.cloudflare.com/containers/get-started/) [ Containers dashboard ](https://dash.cloudflare.com/?to=/:account/workers/containers) 
 

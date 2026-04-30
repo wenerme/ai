@@ -113,8 +113,6 @@ RUN apt-get update && apt-get install -y \
 
 ```
 
-Explain Code
-
 Update `wrangler.jsonc` to reference your Dockerfile:
 
 wrangler.jsonc
@@ -189,8 +187,6 @@ CMD ["node", "server.js"]
 
 ```
 
-Explain Code
-
 When using `CMD`, the sandbox binary runs your command as a child process with proper signal forwarding.
 
 ## Custom startup scripts
@@ -243,8 +239,6 @@ wait
 
 
 ```
-
-Explain Code
 
 Legacy startup scripts
 

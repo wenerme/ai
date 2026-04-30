@@ -84,8 +84,6 @@ Response MP4
 
 ```
 
-Explain Code
-
 And for an M4A file:
 
 Request M4A
@@ -131,8 +129,6 @@ Response M4A
 
 
 ```
-
-Explain Code
 
 ## Get download links
 
@@ -191,8 +187,6 @@ Response
 
 
 ```
-
-Explain Code
 
 ## Customize download file name
 
@@ -271,8 +265,6 @@ For more details about using signed URLs with videos, refer to [Securing your St
 
 
 ```
-
-Explain Code
 
 ## Billing for MP4 downloads
 

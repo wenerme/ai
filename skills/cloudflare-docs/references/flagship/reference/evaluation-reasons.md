@@ -37,8 +37,8 @@ When an evaluation error occurs, the method returns the default value you provid
 
 The following example inspects evaluation details returned by `getBooleanDetails`:
 
-* [  JavaScript ](#tab-panel-5979)
-* [  TypeScript ](#tab-panel-5980)
+* [  JavaScript ](#tab-panel-5977)
+* [  TypeScript ](#tab-panel-5978)
 
 JavaScript
 
@@ -93,8 +93,6 @@ if (details.errorCode) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -147,8 +145,6 @@ if (details.errorCode) {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/reference/evaluation-reasons/","name":"Evaluation reasons and error codes"}}]}

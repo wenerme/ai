@@ -96,8 +96,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -131,8 +129,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Instance naming patterns
 
@@ -323,8 +319,6 @@ const agent = useAgent({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -363,8 +357,6 @@ const agent = useAgent({
 
 
 ```
-
-Explain Code
 
 ## Custom URL routing
 
@@ -465,8 +457,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -508,8 +498,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Custom path with dynamic instance
 
 Route different paths to different instances:
@@ -549,8 +537,6 @@ if (url.pathname.startsWith("/doc/")) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -582,8 +568,6 @@ if (url.pathname.startsWith("/doc/")) {
 
 
 ```
-
-Explain Code
 
 ### Receiving the instance identity (client-side)
 
@@ -628,8 +612,6 @@ return (
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -665,8 +647,6 @@ return (
 
 
 ```
-
-Explain Code
 
 For `AgentClient`:
 
@@ -705,8 +685,6 @@ console.log(agent.name); // Now has the server-determined name
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -738,8 +716,6 @@ console.log(agent.name); // Now has the server-determined name
 
 
 ```
-
-Explain Code
 
 ### Handling identity changes on reconnect
 
@@ -1234,8 +1210,6 @@ const response = await routeAgentRequest(request, env, {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1262,8 +1236,6 @@ const response = await routeAgentRequest(request, env, {
 
 
 ```
-
-Explain Code
 
 These hooks are useful for authentication and validation. Refer to [Cross-domain authentication](https://developers.cloudflare.com/agents/guides/cross-domain-authentication/) for detailed examples.
 
@@ -1318,8 +1290,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1363,8 +1333,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 For options like `locationHint`, `jurisdiction`, and `props`, refer to [Routing options](#routing-options).
 
@@ -1429,8 +1397,6 @@ export class API extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1474,8 +1440,6 @@ export class API extends Agent {
 
 ```
 
-Explain Code
-
 ## Multiple agents
 
 You can have multiple agent classes in one project. Each gets its own namespace:
@@ -1515,8 +1479,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1548,8 +1510,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 * [  wrangler.jsonc ](#tab-panel-3432)
 * [  wrangler.toml ](#tab-panel-3433)
@@ -1591,8 +1551,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -1626,8 +1584,6 @@ new_sqlite_classes = [ "Counter", "ChatRoom", "UserProfile" ]
 
 
 ```
-
-Explain Code
 
 Each agent is accessed via its own path:
 
@@ -1728,8 +1684,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1792,8 +1746,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Manual authentication
 
 Check authentication before calling `routeAgentRequest()`:
@@ -1853,8 +1805,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1906,8 +1856,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Using a framework (Hono)
 
@@ -1963,8 +1911,6 @@ export default app;
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2011,8 +1957,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 For WebSocket authentication patterns (tokens in URLs, JWT refresh), refer to [Cross-domain authentication](https://developers.cloudflare.com/agents/guides/cross-domain-authentication/).
 

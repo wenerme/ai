@@ -108,8 +108,6 @@ CMD ["/startup.sh"]
 
 ```
 
-Explain Code
-
 The startup script creates a mount point, starts tigrisfs in the background to mount the bucket, and then lists the mounted directory contents.
 
 ### Passing credentials to the container
@@ -148,8 +146,6 @@ export class FUSEDemo extends Container {
 
 
 ```
-
-Explain Code
 
 src/index.ts
 
@@ -195,8 +191,6 @@ export class FUSEDemo extends Container<Env> {
 
 
 ```
-
-Explain Code
 
 The `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` should be stored as secrets, while `R2_BUCKET_NAME` and `R2_ACCOUNT_ID` can be configured as variables in your `wrangler.jsonc`:
 
@@ -260,8 +254,6 @@ RUN printf '#!/bin/sh\n\
 
 ```
 
-Explain Code
-
 Your application can then read from `/mnt/r2/${BUCKET_PREFIX}` to access only the files under that prefix. Pass `BUCKET_PREFIX` as an environment variable alongside your other R2 configuration.
 
 ## Mounting buckets as read-only
@@ -294,8 +286,6 @@ RUN printf '#!/bin/sh\n\
 
 
 ```
-
-Explain Code
 
 This is useful for shared assets or configuration files where you want to ensure applications only read data.
 

@@ -67,8 +67,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
 API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"

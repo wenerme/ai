@@ -58,8 +58,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/default
 
 ```
 
-Explain Code
-
 Note
 
 AI Gateway automatically creates a gateway for you on the first request. The gateway is created with [authentication](https://developers.cloudflare.com/ai-gateway/configuration/authentication/) turned on, so the `cf-aig-authorization` header is required for all requests. For more details on how the default gateway works, refer to [Default gateway](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#default-gateway).
@@ -151,8 +149,6 @@ const response = await client.chat.completions.create({
 
 ```
 
-Explain Code
-
 ```
 
 import OpenAI from "openai";
@@ -179,8 +175,6 @@ const response = await client.chat.completions.create({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -209,8 +203,6 @@ const response = await client.chat.completions.create({
 
 ```
 
-Explain Code
-
 ```
 
 import OpenAI from "openai";
@@ -237,8 +229,6 @@ const response = await client.chat.completions.create({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -267,8 +257,6 @@ const response = await client.chat.completions.create({
 
 ```
 
-Explain Code
-
 ```
 
 import OpenAI from "openai";
@@ -295,8 +283,6 @@ const response = await client.chat.completions.create({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -333,8 +319,6 @@ const response = await client.chat.completions.create({
 
 ```
 
-Explain Code
-
 ```
 
 import OpenAI from "openai";
@@ -369,8 +353,6 @@ const response = await client.chat.completions.create({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -407,8 +389,6 @@ const response = await client.chat.completions.create({
 
 ```
 
-Explain Code
-
 ```
 
 import OpenAI from "openai";
@@ -443,8 +423,6 @@ const response = await client.chat.completions.create({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -481,8 +459,6 @@ const response = await client.chat.completions.create({
 
 ```
 
-Explain Code
-
 ```
 
 import OpenAI from "openai";
@@ -518,8 +494,6 @@ const response = await client.chat.completions.create({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -553,8 +527,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -590,8 +562,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -625,8 +595,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -662,8 +630,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -698,8 +664,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -733,8 +697,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -770,8 +732,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -805,8 +765,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -842,8 +800,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -877,8 +833,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -914,8 +868,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -949,8 +901,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -986,8 +936,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -1021,8 +969,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -1058,8 +1004,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -1093,8 +1037,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -1130,8 +1072,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -1165,8 +1105,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -1202,8 +1140,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -1237,8 +1173,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -1274,8 +1208,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -1309,8 +1241,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -1346,8 +1276,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -1382,8 +1310,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
@@ -1412,8 +1338,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -1444,8 +1368,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 ```
 
-Explain Code
-
 ```
 
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
@@ -1474,8 +1396,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -1506,8 +1426,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 ```
 
-Explain Code
-
 ```
 
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
@@ -1537,8 +1455,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 ```
 
-Explain Code
-
 ```
 
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
@@ -1567,8 +1483,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -1601,8 +1515,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 ```
 
-Explain Code
-
 ```
 
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
@@ -1633,8 +1545,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -1667,8 +1577,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 ```
 
-Explain Code
-
 ```
 
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
@@ -1699,8 +1607,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -1733,8 +1639,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 ```
 
-Explain Code
-
 ```
 
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
@@ -1765,8 +1669,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 
 ```
-
-Explain Code
 
 Refer to [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) to learn more about OpenAI compatibility.
 

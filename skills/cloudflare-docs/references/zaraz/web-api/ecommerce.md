@@ -151,8 +151,6 @@ zaraz.ecommerce("Product Viewed", {
 
 ```
 
-Explain Code
-
 ### Product List Viewed
 
 JavaScript
@@ -218,8 +216,6 @@ zaraz.ecommerce("Product List Viewed", {
 
 ```
 
-Explain Code
-
 ### Product added
 
 JavaScript
@@ -254,8 +250,6 @@ zaraz.ecommerce("Product Added", {
 
 
 ```
-
-Explain Code
 
 ### Checkout Step Viewed
 
@@ -340,8 +334,6 @@ zaraz.ecommerce("Order Completed", {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/web-api/","name":"Web API"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/web-api/ecommerce/","name":"E-commerce"}}]}

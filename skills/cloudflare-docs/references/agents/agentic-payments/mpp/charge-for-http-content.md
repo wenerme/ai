@@ -63,8 +63,6 @@ JSONC
 
 ```
 
-Explain Code
-
 Note
 
 Set `TEMPO_TESTNET` to `true` and `PAYMENT_CURRENCY` to `0x20c0000000000000000000000000000000000000` for testnet development.
@@ -165,8 +163,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 Refer to the [Hono middleware reference ↗](https://mpp.dev/sdk/typescript/middlewares/hono) for the full API, including session payments and payer identification.
 

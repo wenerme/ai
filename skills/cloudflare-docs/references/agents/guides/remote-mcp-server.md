@@ -126,8 +126,7 @@ For example, to connect from Claude Desktop:
     }  
   }  
 }  
-```  
-Explain Code
+```
 2. Restart Claude Desktop to load the MCP Server. Once this is done, Claude will be able to make calls to your remote MCP server.
 3. To test, ask Claude to use one of your tools. For example:  
 ```  
@@ -209,8 +208,6 @@ export default new OAuthProvider({
 
 
 ```
-
-Explain Code
 
 This ensures that your users are redirected to GitHub to authenticate. To get this working though, you need to create OAuth client apps in the steps below.
 

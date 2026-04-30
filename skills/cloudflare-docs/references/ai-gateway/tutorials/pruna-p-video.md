@@ -122,8 +122,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/pr
 
 ```
 
-Explain Code
-
 * `Authorization` — your Replicate API token (authenticates with Replicate).
 * `cf-aig-authorization` — your Cloudflare API token (for authenticated gateways).
 * `Prefer: wait` — blocks until the prediction completes instead of returning immediately.
@@ -170,8 +168,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/pr
 
 
 ```
-
-Explain Code
 
 The response includes a prediction `id`:
 

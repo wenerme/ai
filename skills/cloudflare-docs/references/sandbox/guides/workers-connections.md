@@ -63,8 +63,6 @@ MySandbox.outboundByHost = {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -105,8 +103,6 @@ MySandbox.outboundByHost = {
 
 ```
 
-Explain Code
-
 The sandbox calls `http://my.kv/some-key` and the handler resolves it using the KV binding. A call to `http://my.r2/file.png` reads from R2, scoped to the current sandbox instance.
 
 Note
@@ -146,8 +142,6 @@ MySandbox.outboundByHost = {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -181,8 +175,6 @@ MySandbox.outboundByHost = {
 
 
 ```
-
-Explain Code
 
 ## Related resources
 

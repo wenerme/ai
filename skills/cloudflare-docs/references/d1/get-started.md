@@ -133,8 +133,7 @@ Created your new D1 database.
     }  
   ]  
 }  
-```  
-Explain Code
+```
 3. When prompted: `Would you like Wrangler to add it on your behalf?`, select `Yes`. This will automatically add the binding to your Wrangler configuration file.
 
 This creates a new D1 database and outputs the [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) configuration needed in the next step.
@@ -260,8 +259,7 @@ npx wrangler d1 execute prod-d1-tutorial --local --command="SELECT * FROM Custom
  ├────────────┼─────────────────────┼───────────────────┤  
  │ 13         │ Bs Beverages        │ Random Name       │  
  └────────────┴─────────────────────┴───────────────────┘  
-```  
-Explain Code
+```
 
 Use the Dashboard to create a table and populate it with data.
 
@@ -310,7 +308,6 @@ export default {
   },  
 };  
 ```  
-Explain Code  
 index.ts  
 ```  
 export interface Env {  
@@ -336,7 +333,6 @@ export default {
   },  
 } satisfies ExportedHandler<Env>;  
 ```  
-Explain Code  
 entry.py  
 ```  
 from workers import Response, WorkerEntrypoint  
@@ -357,7 +353,6 @@ class Default(WorkerEntrypoint):
             "Call /api/beverages to see everyone who works at Bs Beverages"  
         )  
 ```  
-Explain Code  
 In the code above, you:  
    1. Define a binding to your D1 database in your code. This binding matches the `binding` value you set in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) under `d1_databases`.  
    2. Query your database using `env.prod_d1_tutorial.prepare` to issue a [prepared query](https://developers.cloudflare.com/d1/worker-api/d1-database/#prepare) with a placeholder (the `?` in the query).  
@@ -395,8 +390,7 @@ export default {
     );  
   },  
 };  
-```  
-Explain Code
+```
 5. Select **Save**.
 
 ## 5\. Deploy your application
@@ -429,8 +423,7 @@ Database is currently at bookmark 00000000-0000000a-00004f6d-b85c16a3dbcf077cb8f
 ├────────────────────────┼───────────┼──────────────┼────────────────────┤  
 │ 3                      │ 5         │ 6            │ 0.02               │  
 └────────────────────────┴───────────┴──────────────┴────────────────────┘  
-```  
-Explain Code
+```
 2. Validate the data is in production by running:  
 Terminal window  
 ```  
@@ -453,8 +446,7 @@ npx wrangler d1 execute prod-d1-tutorial --remote --command="SELECT * FROM Custo
 ├────────────┼─────────────────────┼───────────────────┤  
 │ 13         │ Bs Beverages        │ Random Name       │  
 └────────────┴─────────────────────┴───────────────────┘  
-```  
-Explain Code
+```
 3. Deploy your Worker to make your project accessible on the Internet. Run:  
 Terminal window  
 ```  
@@ -472,7 +464,6 @@ Deployed prod-d1-tutorial triggers (3.49 sec)
 https://prod-d1-tutorial.pcx-team.workers.dev  
 Current Version ID: 42c82f1c-ff2b-4dce-9ea2-265adcccd0d5  
 ```  
-Explain Code  
 You can now visit the URL for your newly created project to query your live database.  
 For example, if the URL of your new Worker is `d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev`, accessing `https://d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev/api/beverages` sends a request to your Worker that queries your live database directly.
 4. Test your database is running successfully. Add `/api/beverages` to the provided Wrangler URL. For example, `https://d1-tutorial.<YOUR_SUBDOMAIN>.workers.dev/api/beverages`.

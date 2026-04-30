@@ -141,8 +141,6 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 ```
 
-Explain Code
-
 ### List feedback reports
 
 Terminal window
@@ -229,8 +227,6 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 ```
 
-Explain Code
-
 ## API Fields
 
 | Field                    | Type    | Description                                                                 | Value Example                                                                                                                                                         |
@@ -309,8 +305,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ### Expression fields
 

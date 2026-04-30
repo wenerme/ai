@@ -70,8 +70,6 @@ curl 'https://plexi.key-transparency.cloudflare.com/namespaces' \
 
 ```
 
-Explain Code
-
 After publishing the first epoch, `status` will show `Online`. Possible statuses include:
 
 * `Online`
@@ -143,8 +141,6 @@ curl -X PATCH 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespa
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/key-transparency/","name":"Key Transparency Auditor"}},{"@type":"ListItem","position":3,"item":{"@id":"/key-transparency/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/key-transparency/api/namespaces/","name":"Namespaces"}}]}

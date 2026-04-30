@@ -30,7 +30,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
 
   -d '{
 
-    "resource_type": "workers_script",
+    "resource_type": "worker",
 
     "resource_id": "'"$RESOURCE_ID"'",
 
@@ -48,8 +48,6 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
 
 
 ```
-
-Explain Code
 
 For zone-level resources, use the zone endpoint:
 
@@ -82,8 +80,6 @@ curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags" \
 
 ```
 
-Explain Code
-
 Some resource types require additional fields. Refer to [supported resource types](https://developers.cloudflare.com/resource-tagging/reference/resource-types/) for details.
 
 ## Get tags for a resource
@@ -94,7 +90,7 @@ Terminal window
 
 ```
 
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=workers_script&resource_id=$RESOURCE_ID" \
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \
 
   -H "Authorization: Bearer $API_TOKEN"
 
@@ -115,7 +111,7 @@ Terminal window
 
 ```
 
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=workers_script&resource_id=$RESOURCE_ID" \
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \
 
   -H "Authorization: Bearer $API_TOKEN"
 
@@ -156,7 +152,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
 
   -d '{
 
-    "resource_type": "workers_script",
+    "resource_type": "worker",
 
     "resource_id": "'"$RESOURCE_ID"'",
 
@@ -174,8 +170,6 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
 
 
 ```
-
-Explain Code
 
 Warning
 
@@ -201,7 +195,7 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" 
 
   -d '{
 
-    "resource_type": "workers_script",
+    "resource_type": "worker",
 
     "resource_id": "'"$RESOURCE_ID"'"
 

@@ -109,8 +109,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
     "identity": "",  
     "device_posture": "not(any(device_posture.checks.passed[*] in {\"LIST_UUID\"}))"  
   }'  
-```  
-Explain Code
+```
 
 ```
 

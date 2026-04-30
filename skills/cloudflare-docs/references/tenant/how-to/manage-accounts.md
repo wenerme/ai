@@ -118,8 +118,6 @@ Response
 
 ```
 
-Explain Code
-
 A request with a unit ID:
 
 Request
@@ -150,8 +148,6 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 
 
 ```
-
-Explain Code
 
 A request with a unit ID and KYC:
 
@@ -193,8 +189,6 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 
 
 ```
-
-Explain Code
 
 ## View accounts
 
@@ -287,8 +281,6 @@ Response
 
 
 ```
-
-Explain Code
 
 ## Update account
 

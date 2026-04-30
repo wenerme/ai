@@ -44,8 +44,8 @@ Note
 
 Requires an Enterprise plan.
 
-* [  New dashboard ](#tab-panel-8329)
-* [ Old dashboard ](#tab-panel-8330)
+* [  New dashboard ](#tab-panel-8367)
+* [ Old dashboard ](#tab-panel-8368)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -74,8 +74,8 @@ You can configure (or override) the following Cloudflare Sensitive Data Detectio
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-8331)
-* [ Old dashboard ](#tab-panel-8332)
+* [  New dashboard ](#tab-panel-8369)
+* [ Old dashboard ](#tab-panel-8370)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -103,8 +103,8 @@ Setting the rule status for specific tags affects all current and future rules w
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-8333)
-* [ Old dashboard ](#tab-panel-8334)
+* [  New dashboard ](#tab-panel-8371)
+* [ Old dashboard ](#tab-panel-8372)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -145,8 +145,8 @@ You can configure (or override) the following setting in the dashboard for the s
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-8335)
-* [ Old dashboard ](#tab-panel-8336)
+* [  New dashboard ](#tab-panel-8373)
+* [ Old dashboard ](#tab-panel-8374)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -205,8 +205,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the Cloudflare Sensitive Data Detection managed ruleset (with ID `e22d83c647c64a3eae91b71b499d988e`). By default, the rule will be added at the end of the list of rules already in the ruleset.  
 Create a zone ruleset rule  
 ```  
@@ -222,7 +221,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
     "description": "Execute the Cloudflare Sensitive Data Detection managed ruleset"  
   }'  
 ```  
-Explain Code  
 ```  
 {  
   "result": {  
@@ -255,8 +253,7 @@ Explain Code
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the Cloudflare Sensitive Data Detection managed ruleset (with ID `e22d83c647c64a3eae91b71b499d988e`) for all incoming requests in the zone.  
 Create a zone ruleset  
 ```  
@@ -279,8 +276,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
         }  
     ]  
   }'  
-```  
-Explain Code
+```
 
 ### Next steps
 

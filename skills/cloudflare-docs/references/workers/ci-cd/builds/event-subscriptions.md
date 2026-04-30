@@ -114,8 +114,6 @@ Triggered when a build starts.
 
 ```
 
-Explain Code
-
 #### `build.failed`
 
 Triggered when a build fails.
@@ -196,8 +194,6 @@ Triggered when a build fails.
 
 
 ```
-
-Explain Code
 
 #### `build.canceled`
 
@@ -280,8 +276,6 @@ Triggered when a build is canceled.
 
 ```
 
-Explain Code
-
 #### `build.succeeded`
 
 Triggered when a build succeeds.
@@ -362,8 +356,6 @@ Triggered when a build succeeds.
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/event-subscriptions/","name":"Event subscriptions"}}]}

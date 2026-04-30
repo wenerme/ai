@@ -97,8 +97,6 @@ const resp = await env.AI.run(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -127,8 +125,6 @@ const resp = await env.AI.run(
 
 
 ```
-
-Explain Code
 
 **Third-party model:**
 
@@ -164,8 +160,6 @@ const resp = await env.AI.run(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -194,8 +188,6 @@ const resp = await env.AI.run(
 
 
 ```
-
-Explain Code
 
 Third-party models require an AI Gateway and use [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/). Cloudflare manages the provider credentials and deducts credits from your account. You do not need to supply your own API keys.
 
@@ -400,8 +392,6 @@ const resp = await gateway.run({
 
 
 ```
-
-Explain Code
 
 **Returns:** `Promise<Response>`
 

@@ -28,11 +28,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 ## Redirect all requests to one URL
 
-* [  JavaScript ](#tab-panel-8799)
-* [  TypeScript ](#tab-panel-8800)
-* [  Python ](#tab-panel-8801)
-* [  Rust ](#tab-panel-8802)
-* [  Hono ](#tab-panel-8803)
+* [  JavaScript ](#tab-panel-8839)
+* [  TypeScript ](#tab-panel-8840)
+* [  Python ](#tab-panel-8841)
+* [  Rust ](#tab-panel-8842)
+* [  Hono ](#tab-panel-8843)
 
 JavaScript
 
@@ -55,7 +55,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGYQDYAzABYA7ACZBU2QC4WLNsA5wuNPgJHjp8xbICwAKADC6KhACmt7ABEoAZxjpXUaDeUkNeATEJFRwwHYMAERQNHYAHgB0AFaukaSoUGAOYRHRsYkpkRbWtg4Q2AAqdDB2fnAwMGB8BFA2yElwAG5wrrwIsBAA1MDouOB2FhbxHkgkuHaocOAQJADe5iQkPXRUvP52ELwAFgAUCHYAjiB2rhAAlGsbmyS8NrdzN9ChPlQAqgBKABkSAwSJEjhAIDBXMpkMh4mFGnYEq9gGknptXlR3rcCCBXNZ5iCSBIREQMSRzhAQAgqCR-jcPNjkeceOdeBATvNbjEWjYAYCADQkXHUgmjOx3cmbAC+gvMMqIFjUzA0Wh0PH4QlEklkCiUMmKNnsjhc7k83laVD8AS0pFC4Si4UIWjS-ky2UdkTIYHQZCKVmNZUq1VqWwaTV4fKo7VcNkm5lWkWAcBiAH0RmMspFlHl5gVUjLlSq1UENXptYY9SYZMwLEA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwA2YYICMADgBME8QFZJALhYs2wDnC40+AkWKmzxCyQFgAUAGF0VCAFNb2ACJQAzjHSuo0G0pLq8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3Nkl4bW7mb6FCfKgBVACUADIkBgkSJHCAQGCuJTIZDxMKNOwJV7ANJPTavKjvW4EECuazzEEkADMEiIGJI5wgIAQVBI-xuHmxyPOPHOvAgJ3mtxiLRsAMBABoSLiaQTRnY7hTNgBfIXmWVECyqZjqTTaHj8ISiCQyOSKYo2eyOFzuTzeVpUPwBTSkULhKLhQiaNL+TLZR2RMhgdBkIpWY1lSrVWpbBpNXj8qjtVw2SbmVaRYBwGIAfRGYyykSUeXmBVSspVqvVQU1uh1Bn1xkUzAsQA)
 
 TypeScript
 
@@ -144,15 +144,13 @@ export default app;
 
 ```
 
-Explain Code
-
 ## Redirect requests from one domain to another
 
-* [  JavaScript ](#tab-panel-8794)
-* [  TypeScript ](#tab-panel-8795)
-* [  Python ](#tab-panel-8796)
-* [  Rust ](#tab-panel-8797)
-* [  Hono ](#tab-panel-8798)
+* [  JavaScript ](#tab-panel-8834)
+* [  TypeScript ](#tab-panel-8835)
+* [  Python ](#tab-panel-8836)
+* [  Rust ](#tab-panel-8837)
+* [  Hono ](#tab-panel-8838)
 
 JavaScript
 
@@ -186,8 +184,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -220,8 +216,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -252,8 +246,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -286,8 +278,6 @@ async fn fetch(req: Request, _env: Env, _ctx: Context) -> Result<Response> {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -323,8 +313,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/redirect/","name":"Redirect"}}]}

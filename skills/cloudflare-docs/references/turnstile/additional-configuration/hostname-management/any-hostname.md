@@ -81,8 +81,6 @@ async function validateTurnstileWithHostname(token, expectedHostnames = []) {
 
 ```
 
-Explain Code
-
 You should regularly review Turnstile Analytics for unexpected usage patterns and monitor the hostname field in Siteverify responses. You can set up alerts for widget usage on unexpected domains.
 
 Use `action` and `cData` parameters to track widget usage sources.

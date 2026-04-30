@@ -111,8 +111,7 @@ spec:
           imagePullPolicy: IfNotPresent  
           ports:  
             - containerPort: 80  
-```  
-Explain Code
+```
 4. Create a new `httpbinsvc.yaml` file. This file defines a Kubernetes service that allows other apps in the cluster (such as `cloudflared`) to access the set of httpbin pods.  
 httpbinsvc.yaml  
 ```  
@@ -128,8 +127,7 @@ spec:
   ports:  
     - port: 80  
       targetPort: 80  
-```  
-Explain Code
+```
 5. Use the following command to run the application inside the cluster:  
 Terminal window  
 ```  
@@ -151,8 +149,7 @@ NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/httpbin-deployment   2/2     2            2           79s  
 NAME                                           DESIRED   CURRENT   READY   AGE  
 replicaset.apps/httpbin-deployment-bc6689c5d   2         2         2       79s  
-```  
-Explain Code
+```
 
 ## 3\. Create a tunnel
 
@@ -255,8 +252,7 @@ spec:
             failureThreshold: 1  
             initialDelaySeconds: 10  
             periodSeconds: 10  
-```  
-Explain Code
+```
 2. Deploy `cloudflared` to the cluster:  
 Terminal window  
 ```  
@@ -283,8 +279,7 @@ deployment.apps/httpbin-deployment       2/2     2            2           3m37s
 NAME                                                DESIRED   CURRENT   READY   AGE  
 replicaset.apps/cloudflared-deployment-6d5f9f9666   2         2         2       22s  
 replicaset.apps/httpbin-deployment-bc6689c5d        2         2         2       3m37s  
-```  
-Explain Code
+```
 
 You should see two `cloudflared` pods and two `httpbin` pods with a `Running` status. If your `cloudflared` pods keep restarting, check the `command` syntax in `tunnel.yaml` and make sure that the [tunnel run parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/) are in the correct order.
 

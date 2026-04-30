@@ -163,8 +163,6 @@ export class ErrorThrowingObject extends DurableObject {
 
 ```
 
-Explain Code
-
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/best-practices/error-handling/","name":"Error handling"}}]}
 ```

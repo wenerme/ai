@@ -70,8 +70,6 @@ This page contains examples of the JSON objects used in the Programmable Flow Pr
 
 ```
 
-Explain Code
-
 | Field        | Description                                                                                                                                                        |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | id           | Unique identifier for the rule.                                                                                                                                    |

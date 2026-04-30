@@ -125,8 +125,6 @@ In-flight queries and transactions will be cancelled.
 
 ```
 
-Explain Code
-
 Note that:
 
 * Timestamps are converted to a deterministic, stable bookmark. The same timestamp will always represent the same bookmark.

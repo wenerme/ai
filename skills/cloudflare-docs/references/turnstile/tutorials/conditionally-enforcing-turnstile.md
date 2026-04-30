@@ -116,8 +116,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Server-side integration
 
 We will exit early in our validation if the same logic we used to remove the client-side elements is present.
@@ -154,8 +152,6 @@ async function handlePost(request) {
 
 
 ```
-
-Explain Code
 
 With these changes, Turnstile will not be enforced on requests with the header `x-bypass-turnstile: VerySecretValue` present.
 

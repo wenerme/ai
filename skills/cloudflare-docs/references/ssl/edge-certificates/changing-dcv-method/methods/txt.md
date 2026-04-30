@@ -107,8 +107,6 @@ Response
 
 ```
 
-Explain Code
-
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select a certificate.

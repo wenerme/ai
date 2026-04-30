@@ -67,8 +67,6 @@ When setting up your models, specify the `cloudflare` endpoint.
 
 ```
 
-Explain Code
-
 ## Supported models
 
 This template works with any [text generation models](https://developers.cloudflare.com/workers-ai/models/) that begin with the `@hf` parameter.

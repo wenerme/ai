@@ -78,8 +78,6 @@ function ChatComponent() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -110,8 +108,6 @@ function ChatComponent() {
 
 
 ```
-
-Explain Code
 
 ### Async authentication
 
@@ -179,8 +175,6 @@ function App() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -239,8 +233,6 @@ function App() {
 
 
 ```
-
-Explain Code
 
 ### JWT refresh pattern
 
@@ -338,8 +330,6 @@ function useJWTAgent(agentName) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -429,8 +419,6 @@ function useJWTAgent(agentName: string) {
 
 ```
 
-Explain Code
-
 ## Cross-domain authentication
 
 Pass credentials in the URL when connecting to another host, then verify on the server.
@@ -473,8 +461,6 @@ function StaticCrossDomainAuth() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -507,8 +493,6 @@ function StaticCrossDomainAuth() {
 
 
 ```
-
-Explain Code
 
 ### Async cross-domain auth
 
@@ -561,8 +545,6 @@ function AsyncCrossDomainAuth() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -608,8 +590,6 @@ function AsyncCrossDomainAuth() {
 
 
 ```
-
-Explain Code
 
 ## Server-side verification
 
@@ -701,8 +681,6 @@ export class SecureAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -785,8 +763,6 @@ export class SecureAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Best practices
 

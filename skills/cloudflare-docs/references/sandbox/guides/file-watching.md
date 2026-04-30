@@ -74,8 +74,6 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 ```
 
-Explain Code
-
 The stream emits four lifecycle event types:
 
 * **`watching`** — Watch established, includes the `watchId`
@@ -126,8 +124,6 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -158,8 +154,6 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 
 ```
-
-Explain Code
 
 Common include patterns:
 
@@ -202,8 +196,6 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -232,8 +224,6 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 
 ```
-
-Explain Code
 
 Default exclusions
 
@@ -312,8 +302,6 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -381,8 +369,6 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 ```
 
-Explain Code
-
 ### Auto-run tests on change
 
 Re-run tests when test files are modified:
@@ -420,8 +406,6 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -454,8 +438,6 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 
 ```
-
-Explain Code
 
 ### Incremental indexing
 
@@ -510,8 +492,6 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -560,8 +540,6 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 
 ```
-
-Explain Code
 
 ## Advanced patterns
 
@@ -638,8 +616,6 @@ await watchFiles(
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -729,8 +705,6 @@ await watchFiles(
 
 ```
 
-Explain Code
-
 ### Debounced file operations
 
 Avoid excessive operations by collecting changes before processing:
@@ -788,8 +762,6 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -843,8 +815,6 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 ```
 
-Explain Code
-
 ### Watch with non-recursive mode
 
 Watch only the top level of a directory, without descending into subdirectories:
@@ -884,8 +854,6 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -920,8 +888,6 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 
 ```
-
-Explain Code
 
 ## Stop a watch
 
@@ -966,8 +932,6 @@ console.log("Watch stopped");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1008,8 +972,6 @@ console.log("Watch stopped");
 
 
 ```
-
-Explain Code
 
 ### Break out of the loop
 
@@ -1056,8 +1018,6 @@ console.log("Watch stopped");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1098,8 +1058,6 @@ console.log("Watch stopped");
 
 
 ```
-
-Explain Code
 
 ## Best practices
 
@@ -1148,8 +1106,6 @@ for await (const event of parseSSEStream(stream2)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1186,8 +1142,6 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream2)) {
 
 
 ```
-
-Explain Code
 
 ### Handle errors in event processing
 
@@ -1241,8 +1195,6 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1291,8 +1243,6 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 ```
 
-Explain Code
-
 ### Ensure directories exist before watching
 
 Watching a non-existent path returns an error. Verify the path exists before starting a watch:
@@ -1325,8 +1275,6 @@ const stream = await sandbox.watch(watchPath, {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1351,8 +1299,6 @@ const stream = await sandbox.watch(watchPath, {
 
 
 ```
-
-Explain Code
 
 ## Troubleshooting
 

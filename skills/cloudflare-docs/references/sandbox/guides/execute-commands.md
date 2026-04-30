@@ -57,8 +57,6 @@ console.log(result.success); // true
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -82,8 +80,6 @@ console.log(result.success);  // true
 
 
 ```
-
-Explain Code
 
 ## Pass arguments safely
 
@@ -119,8 +115,6 @@ await sandbox.exec("python process.py /tmp/input.txt");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -147,8 +141,6 @@ await sandbox.exec('python process.py /tmp/input.txt');
 
 
 ```
-
-Explain Code
 
 ## Handle errors
 
@@ -210,8 +202,6 @@ try {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -262,8 +252,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ## Execute shell commands
 
@@ -356,8 +344,6 @@ await sandbox.exec("python /workspace/analyze.py data.csv");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -384,8 +370,6 @@ await sandbox.exec('python /workspace/analyze.py data.csv');
 
 
 ```
-
-Explain Code
 
 ## Timeouts
 

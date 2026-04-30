@@ -91,8 +91,6 @@ function getTurnstileCredentials(request) {
 
 ```
 
-Explain Code
-
 ## Server-side integration
 
 When rendering your page, inject the appropriate sitekey based on the environment:
@@ -179,8 +177,6 @@ it('submits form successfully', () => {
 
 
 ```
-
-Explain Code
 
 ## Conclusion
 

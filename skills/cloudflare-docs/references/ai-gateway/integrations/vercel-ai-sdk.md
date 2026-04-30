@@ -71,8 +71,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -106,8 +104,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -143,8 +139,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -178,8 +172,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -215,8 +207,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -250,8 +240,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -287,8 +275,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -322,8 +308,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -359,8 +343,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -394,8 +376,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -431,8 +411,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -466,8 +444,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -503,8 +479,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -538,8 +512,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -575,8 +547,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -610,8 +580,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -647,8 +615,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -682,8 +648,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -719,8 +683,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -754,8 +716,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -791,8 +751,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -826,8 +784,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -863,8 +819,6 @@ const { text } = await generateText({
 
 ```
 
-Explain Code
-
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -898,8 +852,6 @@ const { text } = await generateText({
 
 
 ```
-
-Explain Code
 
 ### AI binding with third-party models
 
@@ -948,8 +900,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -989,8 +939,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 This works with any [supported provider and model](https://developers.cloudflare.com/ai/models/) available through AI Gateway.
 

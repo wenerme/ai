@@ -46,7 +46,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Configure Zero Trust access policies to protect my internal staging environment.  
+Set up rate limiting and WAF rules to block abuse on my public API.  
 ```
 
 ## Cloudflare platform access

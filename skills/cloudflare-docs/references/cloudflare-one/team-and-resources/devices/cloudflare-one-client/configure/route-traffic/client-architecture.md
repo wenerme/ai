@@ -140,8 +140,6 @@ resolver #2
 
 ```
 
-Explain Code
-
 On Windows, open a PowerShell window and run `ipconfig`. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
 PowerShell
@@ -189,8 +187,6 @@ Unknown adapter CloudflareWARP:
 
 
 ```
-
-Explain Code
 
 On Linux, check the `/etc/resolv.conf` file. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
@@ -294,8 +290,6 @@ Unknown adapter CloudflareWARP:
 
 
 ```
-
-Explain Code
 
 On macOS, run `ifconfig`. When the Cloudflare One Client is turned on, you will see a `utun` interface with your device IP.
 

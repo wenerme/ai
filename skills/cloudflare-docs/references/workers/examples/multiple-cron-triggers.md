@@ -26,9 +26,9 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8779)
-* [  TypeScript ](#tab-panel-8780)
-* [  Hono ](#tab-panel-8781)
+* [  JavaScript ](#tab-panel-8817)
+* [  TypeScript ](#tab-panel-8818)
+* [  Hono ](#tab-panel-8819)
 
 JavaScript
 
@@ -76,8 +76,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -135,8 +133,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -217,8 +213,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Test Cron Triggers using Wrangler
 

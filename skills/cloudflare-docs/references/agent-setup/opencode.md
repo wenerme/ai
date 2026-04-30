@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.  
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.  
 ```
 
 ## Cloudflare platform access

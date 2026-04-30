@@ -308,8 +308,6 @@ return Response.json(return_value)
 
 ```
 
-Explain Code
-
 #### Guidance
 
 * `results` is empty for write operations such as `UPDATE`, `DELETE`, or `INSERT`.
@@ -371,8 +369,6 @@ return Response.json(return_value.results)
 
 
 ```
-
-Explain Code
 
 ### `raw()`
 
@@ -540,8 +536,6 @@ return Response.json(return_value)
 
 
 ```
-
-Explain Code
 
 #### Guidance
 

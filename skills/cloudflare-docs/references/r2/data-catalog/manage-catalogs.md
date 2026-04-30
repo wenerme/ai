@@ -22,8 +22,8 @@ Learn how to:
 
 Enabling the catalog on a bucket turns on the REST catalog interface and provides a **Catalog URI** and **Warehouse name** required by Iceberg clients. Once enabled, you can create and manage Iceberg tables in that bucket.
 
-* [ Dashboard ](#tab-panel-7116)
-* [ Wrangler CLI ](#tab-panel-7117)
+* [ Dashboard ](#tab-panel-7114)
+* [ Wrangler CLI ](#tab-panel-7115)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -48,8 +48,8 @@ After enabling, Wrangler will return your catalog URI and warehouse name.
 
 When you disable the catalog on a bucket, it immediately stops serving requests from the catalog interface. Any Iceberg table references stored in that catalog become inaccessible until you re-enable it.
 
-* [ Dashboard ](#tab-panel-7118)
-* [ Wrangler CLI ](#tab-panel-7119)
+* [ Dashboard ](#tab-panel-7116)
+* [ Wrangler CLI ](#tab-panel-7117)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -77,8 +77,8 @@ Table maintenance operations such as compaction and snapshot expiration requires
 
 Refer to [Authenticate your Iceberg engine](#authenticate-your-iceberg-engine) for details on creating a token with the required permissions.
 
-* [ Dashboard ](#tab-panel-7120)
-* [ Wrangler CLI ](#tab-panel-7121)
+* [ Dashboard ](#tab-panel-7118)
+* [ Wrangler CLI ](#tab-panel-7119)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -117,8 +117,8 @@ Once enabled, compaction applies retroactively to all existing tables (for catal
 
 Disabling compaction will prevent the process from running for all tables (catalog level) or a specific table (table level). You can re-enable it at any time.
 
-* [ Dashboard ](#tab-panel-7122)
-* [ Wrangler CLI ](#tab-panel-7123)
+* [ Dashboard ](#tab-panel-7120)
+* [ Wrangler CLI ](#tab-panel-7121)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -180,8 +180,6 @@ npx wrangler r2 bucket catalog snapshot-expiration enable <BUCKET_NAME> <NAMESPA
 
 
 ```
-
-Explain Code
 
 ## Disable snapshot expiration
 
@@ -266,8 +264,6 @@ To create an API token programmatically for use with R2 Data Catalog, you'll nee
 
 
 ```
-
-Explain Code
 
 To learn more about how to create API tokens for R2 Data Catalog using the API, including required permission groups and usage examples, refer to the [Create API tokens via API documentation](https://developers.cloudflare.com/r2/api/tokens/#create-api-tokens-via-api).
 

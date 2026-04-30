@@ -61,8 +61,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Product Photography](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/product-photography.png) 
 
 ## Examples
@@ -101,8 +99,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Fantasy Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/fantasy-illustration.png) 
 
@@ -143,8 +139,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Architectural Visualization](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/architectural-visualization.jpg) 
 
 **Character Design**  — Game character concept art 
@@ -179,8 +173,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Character Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/character-design.png) 
 

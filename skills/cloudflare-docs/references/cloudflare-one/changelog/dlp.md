@@ -14,6 +14,34 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dlp.xml) 
 
+## 2026-04-28
+
+  
+**Detect PII records with a new predefined DLP profile**   
+
+Cloudflare DLP now includes a new predefined profile designed to detect PII records that contain multiple types of personal data: **Personally Identifiable Information (PII) Record**.
+
+Most predefined and custom DLP profiles match when any enabled detection entry matches. The **Personally Identifiable Information (PII) Record** profile is different. It only matches when at least three unique detection entries are found in close proximity, which reduces false positives from standalone values that may not represent a real PII record.
+
+Detection entries included in the profile:
+
+* AU Passport Number
+* American Express Card Number
+* Diners Club Card Number
+* Driver's License Number
+* Email Address
+* Full Name
+* Mailing Address
+* Mastercard Card Number
+* US Individual Tax Identification Number (ITIN)
+* US Passport Number
+* US Phone Number
+* Union Pay Card Number
+* United States SSN Numeric Detection
+* Visa Card Number
+
+For more information, refer to [predefined DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
+
 ## 2026-04-14
 
   

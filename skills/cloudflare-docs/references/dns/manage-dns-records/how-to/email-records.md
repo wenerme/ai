@@ -52,7 +52,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
     "proxied": false  
   }'  
 ```  
-Explain Code  
 Response  
 ```  
 {  
@@ -79,8 +78,7 @@ Response
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 3. [Add an MX record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) that points to that subdomain.  
 | **Type** | **Name** | **Mail server**  | **TTL** | **Priority** |  
 | -------- | -------- | ---------------- | ------- | ------------ |  
@@ -102,7 +100,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
     "ttl": 3600  
   }'  
 ```  
-Explain Code  
 Response  
 ```  
 {  
@@ -130,8 +127,7 @@ Response
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 
 Note
 

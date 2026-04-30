@@ -129,8 +129,6 @@ Example of a rule definition that skips rules `A` and `B` of managed ruleset `1`
 
 ```
 
-Explain Code
-
 The rules in the `rules` object must belong to the specified managed rulesets, otherwise you will get an error.
 
 For a full example, refer to the [WAF documentation](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/#skip-one-or-more-rules-of-waf-managed-rulesets).

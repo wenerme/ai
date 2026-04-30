@@ -67,8 +67,6 @@ export class ResearchAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -108,8 +106,6 @@ export class ResearchAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 This means the client does not need to send the full conversation on every message. The Agent owns the history, can prune it, enrich it with retrieved documents, or summarize older turns before sending to the model.
 
@@ -169,8 +165,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -217,8 +211,6 @@ export class MyAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 With [AIChatAgent](https://developers.cloudflare.com/agents/api-reference/chat-agents/), this is handled automatically — messages are persisted to SQLite and streams resume on reconnect.
 
@@ -279,8 +271,6 @@ export class DigestAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -330,8 +320,6 @@ export class DigestAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 ## Multi-model pipelines
 
@@ -401,8 +389,6 @@ export class TriageAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -464,8 +450,6 @@ export class TriageAgent extends Agent<Env> {
 
 ```
 
-Explain Code
-
 Each intermediate result stays in the Agent's memory for the duration of the method, and the final result is persisted to SQL for future reference.
 
 ## Caching and cost control
@@ -523,8 +507,6 @@ export class CachingAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -572,8 +554,6 @@ export class CachingAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 For provider-level caching and rate limit management across multiple agents, use [AI Gateway](https://developers.cloudflare.com/ai-gateway/).
 

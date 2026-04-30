@@ -79,8 +79,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepseek/cha
 
 ```
 
-Explain Code
-
 ### Use DeepSeek with JavaScript
 
 If you are using the OpenAI SDK, you can set your endpoint like this:
@@ -127,8 +125,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ## OpenAI-Compatible Endpoint
 

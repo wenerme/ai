@@ -74,8 +74,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -138,8 +136,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -188,8 +184,6 @@ Therefore, the above binding is equivalent to:
 
 
 ```
-
-Explain Code
 
 ### Example
 
@@ -246,8 +240,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -323,8 +315,6 @@ The above is equivalent to the following structure in JSON:
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/configuration/environments/","name":"Environments"}}]}

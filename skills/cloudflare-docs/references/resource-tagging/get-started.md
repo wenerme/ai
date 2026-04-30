@@ -63,7 +63,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
 
   -d '{
 
-    "resource_type": "workers_script",
+    "resource_type": "worker",
 
     "resource_id": "'"$RESOURCE_ID"'",
 
@@ -80,15 +80,13 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
 
 ```
 
-Explain Code
-
 Then retrieve the tags:
 
 Terminal window
 
 ```
 
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=workers_script&resource_id=$RESOURCE_ID" \
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \
 
   -H "Authorization: Bearer $API_TOKEN" \
 

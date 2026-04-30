@@ -16,8 +16,8 @@ You can test the behavior of an Email Worker script in local development using W
 
 This is the minimal wrangler configuration required to run an Email Worker locally:
 
-* [  wrangler.jsonc ](#tab-panel-5904)
-* [  wrangler.toml ](#tab-panel-5905)
+* [  wrangler.jsonc ](#tab-panel-5902)
+* [  wrangler.toml ](#tab-panel-5903)
 
 JSONC
 
@@ -87,8 +87,6 @@ export default {
 
 ```
 
-Explain Code
-
 Now when you run `npx wrangler dev`, wrangler will expose a local `/cdn-cgi/handler/email` endpoint that you can `POST` email messages to and trigger your Worker's `email()` handler:
 
 Terminal window
@@ -130,8 +128,6 @@ Hi there'
 
 
 ```
-
-Explain Code
 
 This is what you get in the console:
 
@@ -194,8 +190,6 @@ This is what you get in the console:
 
 ```
 
-Explain Code
-
 ## Send an email
 
 Wrangler can also simulate sending emails locally. Consider this example Email Worker script that uses the [mimetext ↗](https://www.npmjs.com/package/mimetext) npm package:
@@ -243,8 +237,6 @@ export default {
 
 ```
 
-Explain Code
-
 Now when you run `npx wrangler dev`, go to [http://localhost:8787/ ↗](http://localhost:8787/) to trigger the `fetch()` handler and send the email. You will see the follow message in your terminal:
 
 ```
@@ -287,8 +279,6 @@ Congratulations, you just sent an email from a worker.
 
 
 ```
-
-Explain Code
 
 ## Reply to and forward messages
 
@@ -357,8 +347,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Run `npx wrangler dev` and use curl to `POST` the same message from the [Receive an email](#receive-an-email) example. Your terminal will show you where to find the replied message in your local disk and to whom the email was forwarded:
 

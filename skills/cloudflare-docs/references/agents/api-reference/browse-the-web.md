@@ -86,8 +86,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -190,8 +188,6 @@ const result = streamText({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -224,8 +220,6 @@ const result = streamText({
 
 
 ```
-
-Explain Code
 
 Both tools accept a `code` parameter containing a JavaScript async arrow function. The sandbox injects globals depending on the tool — `spec` for `browser_search` and `cdp` for `browser_execute`.
 
@@ -286,8 +280,6 @@ async () => {
 
 
 ```
-
-Explain Code
 
 ## Use with an Agent
 
@@ -352,8 +344,6 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -410,8 +400,6 @@ export class MyAgent extends AIChatAgent<Env> {
 
 ```
 
-Explain Code
-
 ## TanStack AI
 
 For TanStack AI, use the `/tanstack-ai` export:
@@ -450,8 +438,6 @@ const stream = chat({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -482,8 +468,6 @@ const stream = chat({
 
 
 ```
-
-Explain Code
 
 ## Execution model
 
@@ -576,8 +560,6 @@ session.close();
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -605,8 +587,6 @@ session.close();
 
 
 ```
-
-Explain Code
 
 ## Local development
 
@@ -722,8 +702,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -798,8 +776,6 @@ export class MyAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 Add the browser binding to your wrangler configuration:
 
@@ -919,8 +895,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -961,8 +935,6 @@ export class MyAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/api-reference/browse-the-web/","name":"Browse the web"}}]}

@@ -3240,7 +3240,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -3259,6 +3259,10 @@ Get audio speeches usage details for the organization.
         - `value: optional number`
 
           The numeric value of the cost.
+
+      - `api_key_id: optional string`
+
+        When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
       - `line_item: optional string`
 
@@ -3689,7 +3693,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -3708,6 +3712,10 @@ Get audio transcriptions usage details for the organization.
         - `value: optional number`
 
           The numeric value of the cost.
+
+      - `api_key_id: optional string`
+
+        When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
       - `line_item: optional string`
 
@@ -4120,7 +4128,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -4139,6 +4147,10 @@ Get code interpreter sessions usage details for the organization.
         - `value: optional number`
 
           The numeric value of the cost.
+
+      - `api_key_id: optional string`
+
+        When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
       - `line_item: optional string`
 
@@ -4573,7 +4585,7 @@ Get completions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -4592,6 +4604,10 @@ Get completions usage details for the organization.
         - `value: optional number`
 
           The numeric value of the cost.
+
+      - `api_key_id: optional string`
+
+        When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
       - `line_item: optional string`
 
@@ -5028,7 +5044,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -5047,6 +5063,10 @@ Get embeddings usage details for the organization.
         - `value: optional number`
 
           The numeric value of the cost.
+
+      - `api_key_id: optional string`
+
+        When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
       - `line_item: optional string`
 
@@ -5505,7 +5525,7 @@ Get images usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -5524,6 +5544,10 @@ Get images usage details for the organization.
         - `value: optional number`
 
           The numeric value of the cost.
+
+      - `api_key_id: optional string`
+
+        When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
       - `line_item: optional string`
 
@@ -5956,7 +5980,7 @@ Get moderations usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -5975,6 +5999,10 @@ Get moderations usage details for the organization.
         - `value: optional number`
 
           The numeric value of the cost.
+
+      - `api_key_id: optional string`
+
+        When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
       - `line_item: optional string`
 
@@ -6387,7 +6415,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -6406,6 +6434,10 @@ Get vector stores usage details for the organization.
         - `value: optional number`
 
           The numeric value of the cost.
+
+      - `api_key_id: optional string`
+
+        When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
       - `line_item: optional string`
 
@@ -6510,6 +6542,10 @@ Get costs details for the organization.
 
   Start time (Unix seconds) of the query time range, inclusive.
 
+- `api_key_ids: optional array of string`
+
+  Return only costs for these API keys.
+
 - `bucket_width: optional "1d"`
 
   Width of each time bucket in response. Currently only `1d` is supported, default to `1d`.
@@ -6520,13 +6556,15 @@ Get costs details for the organization.
 
   End time (Unix seconds) of the query time range, exclusive.
 
-- `group_by: optional array of "project_id" or "line_item"`
+- `group_by: optional array of "project_id" or "line_item" or "api_key_id"`
 
-  Group the costs by the specified fields. Support fields include `project_id`, `line_item` and any combination of them.
+  Group the costs by the specified fields. Support fields include `project_id`, `line_item`, `api_key_id` and any combination of them.
 
   - `"project_id"`
 
   - `"line_item"`
+
+  - `"api_key_id"`
 
 - `limit: optional number`
 
@@ -6808,7 +6846,7 @@ Get costs details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -6827,6 +6865,10 @@ Get costs details for the organization.
         - `value: optional number`
 
           The numeric value of the cost.
+
+      - `api_key_id: optional string`
+
+        When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
       - `line_item: optional string`
 
@@ -6913,7 +6955,8 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
                         "currency": "usd"
                     },
                     "line_item": null,
-                    "project_id": null
+                    "project_id": null,
+                    "api_key_id": null
                 }
             ]
         }
@@ -7195,7 +7238,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, line_item, project_id }`
+      - `CostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -7214,6 +7257,10 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
           - `value: optional number`
 
             The numeric value of the cost.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
         - `line_item: optional string`
 
@@ -7503,7 +7550,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, line_item, project_id }`
+      - `CostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -7522,6 +7569,10 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
           - `value: optional number`
 
             The numeric value of the cost.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
         - `line_item: optional string`
 
@@ -7811,7 +7862,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, line_item, project_id }`
+      - `CostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -7830,6 +7881,10 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
           - `value: optional number`
 
             The numeric value of the cost.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
         - `line_item: optional string`
 
@@ -8119,7 +8174,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, line_item, project_id }`
+      - `CostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -8138,6 +8193,10 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
           - `value: optional number`
 
             The numeric value of the cost.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
         - `line_item: optional string`
 
@@ -8427,7 +8486,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, line_item, project_id }`
+      - `CostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -8446,6 +8505,10 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
           - `value: optional number`
 
             The numeric value of the cost.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
         - `line_item: optional string`
 
@@ -8735,7 +8798,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, line_item, project_id }`
+      - `CostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -8754,6 +8817,10 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
           - `value: optional number`
 
             The numeric value of the cost.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
         - `line_item: optional string`
 
@@ -9043,7 +9110,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, line_item, project_id }`
+      - `CostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -9062,6 +9129,10 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
           - `value: optional number`
 
             The numeric value of the cost.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
         - `line_item: optional string`
 
@@ -9351,7 +9422,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, line_item, project_id }`
+      - `CostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -9370,6 +9441,10 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
           - `value: optional number`
 
             The numeric value of the cost.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
         - `line_item: optional string`
 
@@ -9659,7 +9734,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, line_item, project_id }`
+      - `CostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -9678,6 +9753,10 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
           - `value: optional number`
 
             The numeric value of the cost.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
         - `line_item: optional string`
 

@@ -55,8 +55,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/simple-generation.png) 
 
 ## Examples
@@ -94,8 +92,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![High Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/high-quality.png) 
 
 **Low Quality Draft**  — Fast, rough draft for iteration 
@@ -130,8 +126,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Low Quality Draft](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/low-quality-draft.png) 
 
@@ -168,8 +162,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Medium Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/medium-quality.png) 
 
 **Auto Quality**  — Let the model pick an appropriate quality level 
@@ -204,8 +196,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Auto Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/auto-quality.png) 
 

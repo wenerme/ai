@@ -85,8 +85,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/addre
 
 ```
 
-Explain Code
-
 Note
 
 A zone membership will take priority over an account membership.
@@ -175,8 +173,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/addre
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/address-maps/","name":"About address maps"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/address-maps/setup/","name":"Set up address maps"}}]}

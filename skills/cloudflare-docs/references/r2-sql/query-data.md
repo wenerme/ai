@@ -172,8 +172,6 @@ To create an API token programmatically for use with R2 SQL, you'll need to spec
 
 ```
 
-Explain Code
-
 To learn more about how to create API tokens for R2 SQL using the API, including required permission groups and usage examples, refer to the [Create API tokens via API documentation](https://developers.cloudflare.com/r2/api/tokens/#create-api-tokens-via-api).
 
 ## Additional resources

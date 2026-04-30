@@ -80,8 +80,6 @@ export default defineConfig({
 
 ```
 
-Explain Code
-
 Then run:
 
  npm  yarn  pnpm 

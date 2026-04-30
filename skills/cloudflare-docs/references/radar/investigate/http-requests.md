@@ -102,8 +102,6 @@ Here is the abbreviated response:
 
 ```
 
-Explain Code
-
 Mobile devices tend to be considerably more present when examining human generated traffic versus bot generated traffic.
 
 Note
@@ -168,8 +166,6 @@ Here is the abbreviated response:
 
 ```
 
-Explain Code
-
 For more information refer to the [API reference](https://developers.cloudflare.com/api/resources/radar/subresources/http/subresources/summary/methods/device%5Ftype/) for this endpoint.
 
 #### Example: breakdown by IP version and human/bot traffic
@@ -221,8 +217,6 @@ This returns the following:
 
 
 ```
-
-Explain Code
 
 Bots tend to use more IPv4 addresses.
 
@@ -317,8 +311,6 @@ curl "https://api.cloudflare.com/client/v4/radar/http/top/locations/ip_version/I
 
 
 ```
-
-Explain Code
 
 According to the returned data, India is leading in IPv6 adoption.
 

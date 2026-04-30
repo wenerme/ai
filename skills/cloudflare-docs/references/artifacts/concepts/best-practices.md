@@ -92,8 +92,6 @@ async function createRepoCopy(
 
 ```
 
-Explain Code
-
 ### Fork from a stable baseline
 
 Start new repos from a trusted baseline when agents need the same starter files, prompts, or application structure. Forking from a reviewed repo is safer than copying files into every new repo by hand.
@@ -137,8 +135,6 @@ async function forkFromBaseline(env, sessionId) {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -177,8 +173,6 @@ async function forkFromBaseline(env: Env, sessionId: string) {
 
 
 ```
-
-Explain Code
 
 ## Scope access narrowly
 
@@ -232,8 +226,6 @@ export default {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -277,8 +269,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Use the same pattern for `write` tokens only after your Worker authorizes a session that must push changes.
 

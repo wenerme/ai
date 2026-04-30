@@ -99,7 +99,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
     "identity": ""  
   }'  
 ```  
-Explain Code  
 ```  
 {  
    "success": true,  

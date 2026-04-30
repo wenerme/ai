@@ -63,8 +63,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -108,8 +106,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **High Quality Audio**  — Higher sample rate for studio quality 
@@ -151,8 +147,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **With Text Normalization**  — Expand numbers and abbreviations before synthesis 
@@ -193,8 +187,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

@@ -70,8 +70,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -120,8 +118,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/workers-templates/","name":"Workers templates"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/workers-templates/delay-action/","name":"Delay action"}}]}

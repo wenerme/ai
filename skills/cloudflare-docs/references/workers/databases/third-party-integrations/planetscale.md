@@ -20,8 +20,8 @@ You can connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.
 
 Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Hyperdrive (recommended) ](#tab-panel-8604)
-* [ PlanetScale serverless driver ](#tab-panel-8605)
+* [ Hyperdrive (recommended) ](#tab-panel-8642)
+* [ PlanetScale serverless driver ](#tab-panel-8643)
 
 To connect to PlanetScale using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
@@ -100,8 +100,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8600)
-* [  wrangler.toml ](#tab-panel-8601)
+* [  wrangler.jsonc ](#tab-panel-8638)
+* [  wrangler.toml ](#tab-panel-8639)
 
 JSONC
 
@@ -144,8 +144,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -171,8 +169,6 @@ id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 
 
 ```
-
-Explain Code
 
 ## 3\. Use Hyperdrive from your Worker
 
@@ -202,8 +198,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8602)
-* [  wrangler.toml ](#tab-panel-8603)
+* [  wrangler.jsonc ](#tab-panel-8640)
+* [  wrangler.toml ](#tab-panel-8641)
 
 JSONC
 
@@ -239,8 +235,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -333,8 +327,6 @@ export default {
 
 ```
 
-Explain Code
-
 Note
 
 The minimum version of `mysql2` required for Hyperdrive is `3.13.0`.
@@ -382,8 +374,7 @@ npx wrangler secret put DATABASE_USERNAME
 # Add the database password as a secret  
 npx wrangler secret put DATABASE_PASSWORD  
 # When prompted, paste your PlanetScale password  
-```  
-Explain Code
+```
 5. In your Worker, install the `@planetscale/database` driver to connect to your PlanetScale database and start manipulating data:  
  npm  yarn  pnpm  bun  
 ```  
@@ -424,8 +415,7 @@ export default {
     });  
   },  
 };  
-```  
-Explain Code
+```
 
 To learn more about PlanetScale, refer to [PlanetScale's official documentation ↗](https://docs.planetscale.com/).
 

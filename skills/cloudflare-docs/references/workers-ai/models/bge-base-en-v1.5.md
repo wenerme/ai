@@ -84,8 +84,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
 import os
@@ -124,8 +122,6 @@ print(response.json())
 
 
 ```
-
-Explain Code
 
 Terminal window
 

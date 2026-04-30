@@ -118,8 +118,6 @@ export class MyDurableObject extends DurableObject {
 
 ```
 
-Explain Code
-
 ### `alarm()`
 
 HTTP and RPC requests are not the only entrypoints for a Durable Object. Alarms allow developers to schedule an event to trigger at a later time. Whenever the next alarm is due, the runtime will call the `alarm()` method, which is left to the developer to implement.
@@ -269,8 +267,6 @@ class MyServer extends Server {
 
 ```
 
-Explain Code
-
 ### WebSockets
 
 Just as `onConnect` is the callback for every new connection, `Server` also provides wrappers on top of the default callbacks from the `DurableObject` class: `onMessage`, `onClose` and `onError`.
@@ -320,8 +316,6 @@ class MyAgent extends Agent<Env, { count: number }> {
 
 ```
 
-Explain Code
-
 State is stored in the `cf_agents_state` SQL table. State messages are sent with `type: "cf_agent_state"` (both from the client and the server). Since `agents` provides [JS and React clients](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/#synchronizing-state), real-time state updates are available out of the box.
 
 ### `this.sql`
@@ -370,8 +364,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### RPC and Callable Methods
 
@@ -460,8 +452,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 Tasks are stored in the `cf_agents_queues` SQL table and are automatically flushed in sequence. If a task succeeds, it is automatically dequeued.
 
 ### `this.schedule` and friends
@@ -524,8 +514,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 Schedules are stored in the `cf_agents_schedules` SQL table. Cron schedules automatically reschedule themselves after execution, while one-time schedules are deleted.
 
 ### `this.mcp` and friends
@@ -559,8 +547,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Email Handling
 
@@ -604,8 +590,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 To route emails to your Agent, use `routeAgentEmail` in your Worker's email handler:
 
@@ -664,8 +648,6 @@ function someUtilityFunction() {
 
 ```
 
-Explain Code
-
 ### `this.onError`
 
 `Agent` extends `Server`'s `onError` so it can be used to handle errors that are not necessarily WebSocket errors. It is called with a `Connection` or `unknown` error.
@@ -703,8 +685,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### `this.destroy`
 
@@ -761,8 +741,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 Using destroy() in scheduled tasks
 
@@ -844,8 +822,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 `AIChatAgent` uses `keepAliveWhile` internally to keep the agent alive during streaming LLM responses. For more details, refer to [Schedule tasks — Keeping the agent alive](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/#keeping-the-agent-alive).
 

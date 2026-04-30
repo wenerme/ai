@@ -89,8 +89,8 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-8622)
-* [  wrangler.toml ](#tab-panel-8623)
+* [  wrangler.jsonc ](#tab-panel-8660)
+* [  wrangler.toml ](#tab-panel-8661)
 
 JSONC
 
@@ -124,8 +124,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -156,8 +154,8 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-8634)
-* [  wrangler.toml ](#tab-panel-8635)
+* [  wrangler.jsonc ](#tab-panel-8672)
+* [  wrangler.toml ](#tab-panel-8673)
 
 JSONC
 
@@ -215,8 +213,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -246,8 +242,6 @@ remote = true
 
 ```
 
-Explain Code
-
 Running `wrangler dev -e staging` (or `CLOUDFLARE_ENV=staging vite dev`) with the above configuration means that:
 
 * Your Worker code runs locally
@@ -263,8 +257,8 @@ The following bindings are recommended to have `remote: true` in your Wrangler c
 
 To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-8620)
-* [  wrangler.toml ](#tab-panel-8621)
+* [  wrangler.jsonc ](#tab-panel-8658)
+* [  wrangler.toml ](#tab-panel-8659)
 
 JSONC
 
@@ -302,8 +296,8 @@ remote = true
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-8624)
-* [  wrangler.toml ](#tab-panel-8625)
+* [  wrangler.jsonc ](#tab-panel-8662)
+* [  wrangler.toml ](#tab-panel-8663)
 
 JSONC
 
@@ -341,8 +335,8 @@ remote = true
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-8626)
-* [  wrangler.toml ](#tab-panel-8627)
+* [  wrangler.jsonc ](#tab-panel-8664)
+* [  wrangler.toml ](#tab-panel-8665)
 
 JSONC
 
@@ -388,8 +382,8 @@ remote = true
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-8630)
-* [  wrangler.toml ](#tab-panel-8631)
+* [  wrangler.jsonc ](#tab-panel-8668)
+* [  wrangler.toml ](#tab-panel-8669)
 
 JSONC
 
@@ -435,8 +429,8 @@ remote = true
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/optimization/transformations/bindings/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-8628)
-* [  wrangler.toml ](#tab-panel-8629)
+* [  wrangler.jsonc ](#tab-panel-8666)
+* [  wrangler.toml ](#tab-panel-8667)
 
 JSONC
 
@@ -480,8 +474,8 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-8632)
-* [  wrangler.toml ](#tab-panel-8633)
+* [  wrangler.jsonc ](#tab-panel-8670)
+* [  wrangler.toml ](#tab-panel-8671)
 
 JSONC
 
@@ -616,8 +610,8 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-8636)
-* [  TypeScript ](#tab-panel-8637)
+* [  JavaScript ](#tab-panel-8674)
+* [  TypeScript ](#tab-panel-8675)
 
 JavaScript
 
@@ -704,8 +698,6 @@ async function startOrUpdateDevSession() {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -796,8 +788,6 @@ async function startOrUpdateDevSession() {
 
 
 ```
-
-Explain Code
 
 ## `wrangler dev --remote` (Legacy)
 

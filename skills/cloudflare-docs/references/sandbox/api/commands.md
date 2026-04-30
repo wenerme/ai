@@ -115,8 +115,6 @@ await sandbox.exec("python process_login.py", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -186,8 +184,6 @@ await sandbox.exec('python process_login.py', {
 
 
 ```
-
-Explain Code
 
 Timeout behavior
 
@@ -283,8 +279,6 @@ for await (const event of parseSSEStream(inputStream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -343,8 +337,6 @@ for await (const event of parseSSEStream<ExecEvent>(inputStream)) {
 
 
 ```
-
-Explain Code
 
 ### `startProcess()`
 
@@ -418,8 +410,6 @@ const interactive = await sandbox.startProcess("python interactive_app.py", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -450,8 +440,6 @@ const interactive = await sandbox.startProcess('python interactive_app.py', {
 
 
 ```
-
-Explain Code
 
 ### `listProcesses()`
 
@@ -648,8 +636,6 @@ for await (const log of parseSSEStream(logStream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -673,8 +659,6 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 
 ```
-
-Explain Code
 
 ### `getProcessLogs()`
 
@@ -981,8 +965,6 @@ await server.waitForPort(8080, {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1009,8 +991,6 @@ await server.waitForPort(8080, {
 
 
 ```
-
-Explain Code
 
 **TCP mode** checks if the port accepts connections:
 
@@ -1116,8 +1096,6 @@ await server.waitForLog("Ready", 30000);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1145,8 +1123,6 @@ await server.waitForLog('Ready', 30000);
 
 
 ```
-
-Explain Code
 
 **Throws**:
 

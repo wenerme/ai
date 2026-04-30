@@ -147,8 +147,6 @@ await new Promise(resolve => setTimeout(resolve, retryAfter \* 1000));
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -195,8 +193,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ### Error: `429 Browser time limit exceeded for today`
 

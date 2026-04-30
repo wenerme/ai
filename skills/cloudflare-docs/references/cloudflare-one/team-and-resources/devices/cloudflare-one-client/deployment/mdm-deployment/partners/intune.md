@@ -105,8 +105,7 @@ try {
 catch {  
   Write-Error "Failed to create mdm.xml file: $_"  
 }  
-```  
-Explain Code
+```
 7. In **Assignments**, select the Windows devices that should receive the new `mdm.xml` file.
 8. To deploy the script, select **Add**.
 
@@ -248,8 +247,7 @@ This step allows the Cloudflare One Client to install without user interaction. 
         </array>  
     </dict>  
 </plist>  
-```  
-Explain Code
+```
 2. Open your macOS Terminal and run `uuidgen`. This will generate a value for `PayloadUUID`. Use this value to replace the default value (`YOUR_PAYLOAD_UUID_HERE`) used in the template (three locations total).
 3. Update your organization's string (`YOUR_TEAM_NAME_HERE`) with your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name).
 4. Modify the file with your desired [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).  
@@ -492,7 +490,6 @@ To deploy the Cloudflare One Client on Android devices:
   ]  
 }  
 ```  
-Explain Code  
 Alternatively, if you do not want to copy and paste the JSON data, you can change **Configuration settings format** to _Use configuration designer_ and manually configure each deployment parameter.  
 Once you have configured the deployment parameters, select **Next**.
 12. Assign users or groups to this policy and select **Next**.
@@ -625,7 +622,6 @@ To configure your Cloudflare One Agent app policy:
      ]  
    }  
    ```  
-   Explain Code  
    Refer to [Per-app VPN parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#per-app-vpn-parameters-android) to learn more about the MDM parameters introduced to support the per-app VPN for Android devices.  
    3. After you have configured the deployment parameters, click **Next**.
 4. Fill out the assignments for the configuration policy. The admin can `Include` or `Exclude` specific groups of users to this policy. After you finish, select **Next**.

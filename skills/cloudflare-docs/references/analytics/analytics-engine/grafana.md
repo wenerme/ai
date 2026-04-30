@@ -54,8 +54,6 @@ ORDER BY t
 
 ```
 
-Explain Code
-
 The Altinity plugin provides some useful macros that can simplify writing queries of this type. The macros require setting `Column:DateTime` to `timestamp` in the query builder, then they can be used like this:
 
 ```

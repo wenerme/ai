@@ -770,11 +770,11 @@ chunk objects if the request is streamed.
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
-    - `prompt_cache_retention?: "in-memory" | "24h" | null`
+    - `prompt_cache_retention?: "in_memory" | "24h" | null`
 
       The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](https://platform.openai.com/docs/guides/prompt-caching#prompt-cache-retention).
 
-      - `"in-memory"`
+      - `"in_memory"`
 
       - `"24h"`
 
@@ -1661,7 +1661,7 @@ console.log(chatCompletion);
               "end_index": 0,
               "start_index": 0,
               "title": "title",
-              "url": "url"
+              "url": "https://example.com"
             }
           }
         ],
@@ -2618,7 +2618,7 @@ for await (const chatCompletion of client.chat.completions.list()) {
                   "end_index": 0,
                   "start_index": 0,
                   "title": "title",
-                  "url": "url"
+                  "url": "https://example.com"
                 }
               }
             ],
@@ -3085,7 +3085,7 @@ console.log(chatCompletion.id);
               "end_index": 0,
               "start_index": 0,
               "title": "title",
-              "url": "url"
+              "url": "https://example.com"
             }
           }
         ],
@@ -3560,7 +3560,7 @@ console.log(chatCompletion.id);
               "end_index": 0,
               "start_index": 0,
               "title": "title",
-              "url": "url"
+              "url": "https://example.com"
             }
           }
         ],
@@ -6211,7 +6211,7 @@ for await (const chatCompletionStoreMessage of client.chat.completions.messages.
             "end_index": 0,
             "start_index": 0,
             "title": "title",
-            "url": "url"
+            "url": "https://example.com"
           }
         }
       ],

@@ -77,8 +77,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/m
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -129,8 +127,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Traffic steering
 

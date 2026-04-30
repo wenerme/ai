@@ -83,8 +83,7 @@ initializeAppCheck(app, { provider });
 cpo.getToken().then(({ token }) => {  
     document.getElementById('app-check-token').innerHTML = token;  
 });  
-```  
-Explain Code
+```
 
 ### 3d. Verify the App Check token in your web application
 
@@ -148,8 +147,6 @@ expressApp.get("/yourApiEndpoint", [appCheckVerification], (req, res) => {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/extensions/","name":"Extensions"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/extensions/google-firebase/","name":"Implement Turnstile with Google Firebase"}}]}

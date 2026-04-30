@@ -98,7 +98,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
     ]  
   }'  
 ```  
-Explain Code  
 Note  
 The `linked_app_token` rule type only works with [non\_identity decisions](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), similar to service token rules.
 
@@ -199,7 +198,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
     ]  
   }'  
 ```  
-Explain Code  
 Note  
 The `linked_app_token` rule type only works with [non\_identity decisions](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), similar to service token rules.
 

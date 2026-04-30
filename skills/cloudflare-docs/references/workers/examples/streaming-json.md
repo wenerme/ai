@@ -39,8 +39,8 @@ npm install @streamparser/json-whatwg
 
 This example parses a large JSON request body and extracts specific fields without loading the entire payload into memory.
 
-* [  TypeScript ](#tab-panel-8840)
-* [  JavaScript ](#tab-panel-8841)
+* [  TypeScript ](#tab-panel-8878)
+* [  JavaScript ](#tab-panel-8879)
 
 TypeScript
 
@@ -96,8 +96,6 @@ export default {
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -152,14 +150,12 @@ export default {
 
 ```
 
-Explain Code
-
 ## Stream and transform a JSON response
 
 This example fetches a large JSON response from an upstream API, transforms specific fields, and streams the modified response to the client.
 
-* [  TypeScript ](#tab-panel-8842)
-* [  JavaScript ](#tab-panel-8843)
+* [  TypeScript ](#tab-panel-8880)
+* [  JavaScript ](#tab-panel-8881)
 
 TypeScript
 
@@ -252,8 +248,6 @@ export default {
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -344,8 +338,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Related resources
 

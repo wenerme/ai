@@ -69,8 +69,6 @@ export default defineConfig({
 
 ```
 
-Explain Code
-
 You can also override or define additional configuration using the `miniflare` key. This takes precedence over values set in via your Wrangler config.
 
 For example, this configuration would add a KV namespace `TEST_NAMESPACE` that was only accessed and modified in tests.
@@ -101,8 +99,6 @@ export default defineConfig({
 
 
 ```
-
-Explain Code
 
 For a full list of available Miniflare options, refer to the [Miniflare WorkersOptions API documentation ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions).
 
@@ -151,14 +147,12 @@ test/tsconfig.json
 
 ```
 
-Explain Code
-
 ## Writing tests
 
 We will use this simple Worker as an example. It returns a 404 response for the `/404` path and `"Hello World!"` for all other paths.
 
-* [  JavaScript ](#tab-panel-9213)
-* [  TypeScript ](#tab-panel-9214)
+* [  JavaScript ](#tab-panel-9253)
+* [  TypeScript ](#tab-panel-9254)
 
 src/index.js
 
@@ -210,8 +204,8 @@ export default {
 
 By importing the Worker we can write a unit test for its `fetch` handler.
 
-* [  JavaScript ](#tab-panel-9217)
-* [  TypeScript ](#tab-panel-9218)
+* [  JavaScript ](#tab-panel-9257)
+* [  TypeScript ](#tab-panel-9258)
 
 test/unit.spec.js
 
@@ -268,8 +262,6 @@ describe("Hello World worker", () => {
 
 ```
 
-Explain Code
-
 test/unit.spec.ts
 
 ```
@@ -325,14 +317,12 @@ describe("Hello World worker", () => {
 
 ```
 
-Explain Code
-
 ### Integration tests
 
 You can use the `exports` object provided by `cloudflare:workers` to write an integration test. `exports.default.fetch()` calls the default export handler defined in the main Worker.
 
-* [  JavaScript ](#tab-panel-9215)
-* [  TypeScript ](#tab-panel-9216)
+* [  JavaScript ](#tab-panel-9255)
+* [  TypeScript ](#tab-panel-9256)
 
 test/integration.spec.js
 
@@ -360,8 +350,6 @@ describe("Hello World worker", () => {
 
 ```
 
-Explain Code
-
 test/integration.spec.ts
 
 ```
@@ -387,8 +375,6 @@ describe("Hello World worker", () => {
 
 
 ```
-
-Explain Code
 
 When using `exports.default.fetch()` for integration tests, your Worker code runs in the same context as the test runner. This means you can use global mocks to control your Worker, but also means your Worker uses the subtly different module resolution behavior provided by Vite. Usually this is not a problem, but to run your Worker in a fresh environment that is as close to production as possible, you can use an auxiliary Worker. Refer to [this example ↗](https://github.com/cloudflare/workers-sdk/blob/main/fixtures/vitest-pool-workers-examples/basics-integration-auxiliary/vitest.config.ts) for how to set up integration tests using auxiliary Workers. However, using auxiliary Workers comes with [limitations](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#workerspooloptions) that you should be aware of.
 

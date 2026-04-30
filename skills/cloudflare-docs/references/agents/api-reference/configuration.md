@@ -131,8 +131,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -189,8 +187,6 @@ enabled = true
 
 
 ```
-
-Explain Code
 
 ### Key fields
 
@@ -259,8 +255,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -312,8 +306,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -453,8 +445,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -483,8 +473,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 #### `ai`
 
@@ -611,8 +599,6 @@ This is equivalent to:
 
 
 ```
-
-Explain Code
 
 You can override individual options as needed:
 
@@ -823,8 +809,6 @@ interface Env {
 
 
 ```
-
-Explain Code
 
 ### Adding to package.json
 
@@ -1053,8 +1037,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -1078,8 +1060,6 @@ API_URL = "https://api.example.com"
 
 
 ```
-
-Explain Code
 
 Deploy to specific environment:
 
@@ -1429,8 +1409,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -1481,8 +1459,6 @@ name = "my-agent-production"
 
 
 ```
-
-Explain Code
 
 ### Deploying to environments
 
@@ -1555,8 +1531,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -1613,8 +1587,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -1684,8 +1656,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -1710,8 +1680,6 @@ tag = "v2"
 
 
 ```
-
-Explain Code
 
 Also update:
 
@@ -1756,8 +1724,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 

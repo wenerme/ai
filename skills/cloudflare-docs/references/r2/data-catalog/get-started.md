@@ -30,8 +30,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket
 
-* [ Wrangler CLI ](#tab-panel-7112)
-* [ Dashboard ](#tab-panel-7113)
+* [ Wrangler CLI ](#tab-panel-7110)
+* [ Dashboard ](#tab-panel-7111)
 
 1. If not already logged in, run:  
 ```  
@@ -50,8 +50,8 @@ npx wrangler r2 bucket create r2-data-catalog-tutorial
 
 ## 2\. Enable the data catalog for your bucket
 
-* [ Wrangler CLI ](#tab-panel-7114)
-* [ Dashboard ](#tab-panel-7115)
+* [ Wrangler CLI ](#tab-panel-7112)
+* [ Dashboard ](#tab-panel-7113)
 
 Then, enable the catalog on your chosen R2 bucket:
 
@@ -198,8 +198,7 @@ def _():
     return  
 if __name__ == "__main__":  
     app.run()  
-```  
-Explain Code
+```
 3. Replace the `CATALOG_URI`, `WAREHOUSE`, and `TOKEN` variables with your values from sections **2** and **3** respectively.
 4. Launch the notebook editor in your browser:  
 ```  

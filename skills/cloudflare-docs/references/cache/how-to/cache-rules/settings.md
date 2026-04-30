@@ -162,8 +162,6 @@ API configuration example
 
 ```
 
-Explain Code
-
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
 
 #### Browser TTL
@@ -324,8 +322,6 @@ API configuration example
 
 
 ```
-
-Explain Code
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
 

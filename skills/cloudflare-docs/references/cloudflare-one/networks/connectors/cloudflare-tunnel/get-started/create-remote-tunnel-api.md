@@ -120,8 +120,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel" \
 
 ```
 
-Explain Code
-
 Copy the `id` and `token` values shown in the output. You will need these values to configure and run the tunnel.
 
 The next steps depend on whether you want to [publish an application to the Internet](#3a-publish-an-application) or [connect a private network](#3b-connect-a-network).
@@ -161,7 +159,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNN
     }  
   }'  
 ```  
-Explain Code  
 Note  
 If you add a multi-level subdomain (more than one level of subdomain), you must [order an Advanced Certificate for the hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#i-see-this-site-cant-provide-a-secure-connection).  
 Your ingress rules must include a catch-all rule at the end. In this example, `cloudflared` will respond with a 404 status code when the request does not match any of the previous hostnames.
@@ -408,8 +405,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/c1744
 
 
 ```
-
-Explain Code
 
 A healthy tunnel will have four connections to Cloudflare's network.
 

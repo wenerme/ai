@@ -18,8 +18,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A bucket stores your objects in R2\. To create a new R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-7144)
-* [ Dashboard ](#tab-panel-7145)
+* [ Wrangler CLI ](#tab-panel-7142)
+* [ Dashboard ](#tab-panel-7143)
 
 1. Log in to your Cloudflare account:  
 Terminal window  
@@ -65,8 +65,8 @@ Terminal window
 cd r2-worker  
 ```
 3. Add an R2 binding to your Wrangler configuration file. Replace `my-bucket` with your bucket name:  
-   * [  wrangler.jsonc ](#tab-panel-7146)  
-   * [  wrangler.toml ](#tab-panel-7147)  
+   * [  wrangler.jsonc ](#tab-panel-7144)  
+   * [  wrangler.toml ](#tab-panel-7145)  
 JSONC  
 ```  
 {  
@@ -94,8 +94,8 @@ npx wrangler types
 
 Use the binding to interact with your bucket. This example stores and retrieves objects based on the URL path:
 
-* [ JavaScript ](#tab-panel-7142)
-* [ TypeScript ](#tab-panel-7143)
+* [ JavaScript ](#tab-panel-7140)
+* [ TypeScript ](#tab-panel-7141)
 
 src/index.js
 
@@ -144,8 +144,6 @@ export default {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -192,8 +190,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## 4\. Test and deploy
 

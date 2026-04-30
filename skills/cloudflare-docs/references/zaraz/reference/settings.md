@@ -104,6 +104,10 @@ The options are:
 
 Refer to the [Context Enricher](https://developers.cloudflare.com/zaraz/advanced/context-enricher/) for more information on this setting.
 
+### Automatic Pageview Tracking
+
+If disabled, Zaraz will not automatically trigger the `Pageview` action immediately upon user's visit. You can then run `zaraz.track("Pageview")` manually somewhere in the browserside scripts in order to register this event. This can be useful when integrating custom consent solutions – see [Consent API](https://developers.cloudflare.com/zaraz/consent-management/api/).
+
 ### Logpush
 
  Enterprise-only 

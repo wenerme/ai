@@ -93,8 +93,6 @@ Each token can contain multiple policies.
 
 ```
 
-Explain Code
-
 | Field              | Description                                                                                                                                                                                                                         |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | id                 | Unique read-only identifier for the policy generated after creation.                                                                                                                                                                |
@@ -201,8 +199,6 @@ curl "https://api.cloudflare.com/client/v4/user/tokens/permission_groups" \
 
 ```
 
-Explain Code
-
 ### 2\. Define the restrictions
 
 Set up any limitations on how the token can be used. API tokens allow restrictions for client IP address filtering and TTLs. Refer to [Restrict token use](https://developers.cloudflare.com/fundamentals/api/how-to/restrict-tokens/) for more information.
@@ -234,8 +230,8 @@ Each parameter in the `in` and `not_in` objects must be in CIDR notation. For ex
 
 Combine the previous information to create a token as in the following example:
 
-* [ Account token ](#tab-panel-5995)
-* [ User token ](#tab-panel-5996)
+* [ Account token ](#tab-panel-5993)
+* [ User token ](#tab-panel-5994)
 
 Terminal window
 
@@ -320,8 +316,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/tokens" \
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -405,8 +399,6 @@ curl "https://api.cloudflare.com/client/v4/user/tokens" \
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -489,8 +481,6 @@ curl "https://api.cloudflare.com/client/v4/user/tokens" \
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/how-to/create-via-api/","name":"Create tokens via API"}}]}

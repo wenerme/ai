@@ -110,8 +110,6 @@ Terminal window
 
 ```
 
-Explain Code
-
 1. Open the command line and run:
 
 Terminal window
@@ -215,8 +213,6 @@ JavaScript
 
 ```
 
-Explain Code
-
 ## 2\. Update nameservers
 
 For each domain to become active on Cloudflare, it must be activated in either [Full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) or [Partial setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/). The following script will output a list containing the nameservers associated with each domain.
@@ -289,8 +285,6 @@ JavaScript
 
 
 ```
-
-Explain Code
 
 | ID         | ZONE        | NAME SERVERS                                  |
 | ---------- | ----------- | --------------------------------------------- |

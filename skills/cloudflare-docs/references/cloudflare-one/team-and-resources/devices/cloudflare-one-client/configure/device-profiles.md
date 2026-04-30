@@ -98,8 +98,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" 
 
 ```
 
-Explain Code
-
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
    * `Zero Trust Write`
 2. Create a new profile using the [cloudflare\_zero\_trust\_device\_custom\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile) resource:  
@@ -128,8 +126,7 @@ resource "cloudflare_zero_trust_device_custom_profile" "example" {
   EOT  
   , "\n", " "))  
 }  
-```  
-Explain Code
+```
 
 ## Edit profile settings
 

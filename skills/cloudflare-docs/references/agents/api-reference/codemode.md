@@ -112,8 +112,6 @@ const tools = {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -157,8 +155,6 @@ const tools = {
 
 
 ```
-
-Explain Code
 
 ### 2\. Create the codemode tool
 
@@ -291,8 +287,6 @@ async () => {
 
 ```
 
-Explain Code
-
 The code runs in an isolated Worker sandbox, tool calls are dispatched back to the host via Workers RPC, and the result is returned to the LLM.
 
 ## Configuration
@@ -332,8 +326,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -462,8 +454,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -520,8 +510,6 @@ export class MyAgent extends Agent<Env, State> {
 
 
 ```
-
-Explain Code
 
 ### With MCP tools
 
@@ -664,8 +652,6 @@ const server = openApiMcpServer({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -706,8 +692,6 @@ const server = openApiMcpServer({
 
 ```
 
-Explain Code
-
 ## The Executor interface
 
 The `Executor` interface is deliberately minimal — implement it to run code in any sandbox:
@@ -741,8 +725,6 @@ interface ExecuteResult {
 
 
 ```
-
-Explain Code
 
 `DynamicWorkerExecutor` is the built-in Cloudflare Workers implementation. You can build your own for Node VM, QuickJS, containers, or any other sandbox.
 

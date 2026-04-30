@@ -117,8 +117,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/default
 
 ```
 
-Explain Code
-
 The `default` gateway is created automatically on your first request. Replace `default` with a specific gateway ID if you have already created one.
 
 The HTTP API supports the following providers through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) and the [Unified API (chat completions)](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/):
@@ -203,8 +201,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/{gatewa
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/unified-billing/","name":"Unified Billing"}}]}

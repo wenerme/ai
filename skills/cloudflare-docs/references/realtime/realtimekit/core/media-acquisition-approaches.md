@@ -86,8 +86,6 @@ export default function App() {
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -140,8 +138,6 @@ class AppComponent {
 
 
 ```
-
-Explain Code
 
 ## Approach 2: Media-first
 
@@ -252,8 +248,6 @@ export default function App() {
 
 ```
 
-Explain Code
-
 Initialize the media handler first using `RealtimeKitClient.initMedia()`, then pass it to the SDK during initialization. The SDK reuses the acquired media tracks without requesting permissions again.
 
 **When to use**: You need to acquire media tracks minutes in advance before joining a session. This is particularly useful for EdTech assessment platforms where you want to enable proctoring or tracking systems early without managing WebSocket connections or handling media disconnects that come with full SDK initialization.
@@ -302,8 +296,6 @@ setTimeout(() => {
 
 
 ```
-
-Explain Code
 
 Initialize the media handler first using `RealtimeKitClient.initMedia()`, then pass it to the SDK during initialization. The SDK reuses the acquired media tracks without requesting permissions again.
 
@@ -368,8 +360,6 @@ class AppComponent {
 
 
 ```
-
-Explain Code
 
 ## Approach 3: Self-managed (advanced)
 
@@ -440,8 +430,6 @@ export default function App() {
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -502,8 +490,6 @@ class AppComponent {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/media-acquisition-approaches/","name":"Media Acquisition Approaches"}}]}

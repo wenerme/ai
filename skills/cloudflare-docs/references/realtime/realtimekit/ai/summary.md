@@ -55,8 +55,6 @@ Set `summarize_on_end: true` when [creating a meeting](https://developers.cloudf
 
 ```
 
-Explain Code
-
 ## Configuration
 
 | Option        | Type   | Default     | Description                            |
@@ -173,8 +171,6 @@ With `text_format: "markdown"` and `summary_type: "team_meeting"`:
 
 
 ```
-
-Explain Code
 
 ## Retention
 

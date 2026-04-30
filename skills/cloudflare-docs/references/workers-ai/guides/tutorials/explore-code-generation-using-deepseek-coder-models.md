@@ -177,8 +177,6 @@ display(Markdown(f"""
 
 ```
 
-Explain Code
-
 """))
 
 ```
@@ -218,8 +216,6 @@ print(is_palindrome("hello"))    # Output: False
 
 
 ```
-
-Explain Code
 
 ### Assist in debugging
 
@@ -268,8 +264,6 @@ display(Markdown(response))
 
 
 ```
-
-Explain Code
 
 The error in your code is that you are trying to use a variable `name` which is not defined anywhere in your function. The correct variable to use is `first_name`. So, you should change `f"Hello, {name}!"` to `f"Hello, {first_name}!"`.
 
@@ -352,8 +346,6 @@ display(Markdown(response))
 
 ```
 
-Explain Code
-
 Here is a simple unittest test case for the User class:
 
 Python
@@ -386,8 +378,6 @@ if __name__ == '__main__':
 
 
 ```
-
-Explain Code
 
 In this test case, we have two tests:
 
@@ -456,8 +446,6 @@ display(Markdown(f"""
 
 
 ```
-
-Explain Code
 
 """))
 
@@ -592,8 +580,6 @@ display(Markdown(f"""
 
 
 ```
-
-Explain Code
 
 """))
 

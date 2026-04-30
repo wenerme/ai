@@ -54,8 +54,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/simple-generation.jpeg) 
 
 ## Examples
@@ -95,8 +93,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/high-resolution.jpeg) 
 
 **Widescreen Landscape**  — Cinematic aspect ratio image 
@@ -133,8 +129,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/widescreen-landscape.jpeg) 
 
@@ -173,8 +167,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/portrait-format.jpeg) 
 
 **Detailed 4K**  — High-resolution detailed botanical illustration 
@@ -209,8 +201,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Detailed 4K](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/detailed-4k.jpeg) 
 

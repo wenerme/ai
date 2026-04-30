@@ -22,8 +22,8 @@ Text strings and JSON values are not encrypted and are useful for storing applic
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file. In the following example, `API_HOST` and `API_ACCOUNT_ID` are text values and `SERVICE_X_DATA` is a JSON value.
 
-* [  wrangler.jsonc ](#tab-panel-8534)
-* [  wrangler.toml ](#tab-panel-8535)
+* [  wrangler.jsonc ](#tab-panel-8572)
+* [  wrangler.toml ](#tab-panel-8573)
 
 JSONC
 
@@ -56,8 +56,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -83,12 +81,10 @@ API_ACCOUNT_ID = "example_user"
 
 ```
 
-Explain Code
-
 Refer to the following example on how to access the `API_HOST` environment variable in your Worker code:
 
-* [  JavaScript ](#tab-panel-8528)
-* [  TypeScript ](#tab-panel-8529)
+* [  JavaScript ](#tab-panel-8566)
+* [  TypeScript ](#tab-panel-8567)
 
 JavaScript
 
@@ -135,8 +131,8 @@ export default {
 
 You can also import `env` from [cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-8532)
-* [  TypeScript ](#tab-panel-8533)
+* [  JavaScript ](#tab-panel-8570)
+* [  TypeScript ](#tab-panel-8571)
 
 JavaScript
 
@@ -163,8 +159,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -190,8 +184,6 @@ export default {
 
 ```
 
-Explain Code
-
 This approach is useful when you need to:
 
 * Initialize configuration or API clients at the top level of your Worker.
@@ -205,8 +197,8 @@ For more details, refer to [Importing env as a global](https://developers.cloudf
 
 The example below sets up two environments, `staging` and `production`, with different values for `API_HOST`.
 
-* [  wrangler.jsonc ](#tab-panel-8530)
-* [  wrangler.toml ](#tab-panel-8531)
+* [  wrangler.jsonc ](#tab-panel-8568)
+* [  wrangler.toml ](#tab-panel-8569)
 
 JSONC
 
@@ -255,8 +247,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -282,8 +272,6 @@ API_HOST = "production.example.com"
 
 
 ```
-
-Explain Code
 
 To run Wrangler commands in specific environments, you can pass in the `--env` or `-e` flag. For example, you can develop the Worker in an environment called `staging` by running `npx wrangler dev --env staging`, and deploy it with `npx wrangler deploy --env staging`.
 

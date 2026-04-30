@@ -184,8 +184,6 @@ curl --silent \
 
 ```
 
-Explain Code
-
 1. [Associate the certificate with the hostname](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostnames/methods/update/) that should use it.
 
 Required API token permissions
@@ -224,8 +222,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth
 
 ```
 
-Explain Code
-
 Note
 
 Make sure your [encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) is set to **Full** or higher. If you only want to adjust this setting for a specific hostname, use [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/settings/#ssl).
@@ -252,8 +248,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth
         }  
     ]  
   }'  
-```  
-Explain Code
+```
 2. (Optional) Use a [GET request](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/list/) to obtain a list of the client certificate IDs. You will need the ID of the certificate you want to remove for the following step.  
 Required API token permissions  
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  

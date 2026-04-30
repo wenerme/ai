@@ -26,9 +26,9 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8804)
-* [  TypeScript ](#tab-panel-8805)
-* [  Python ](#tab-panel-8806)
+* [  JavaScript ](#tab-panel-8844)
+* [  TypeScript ](#tab-panel-8845)
+* [  Python ](#tab-panel-8846)
 
 JavaScript
 
@@ -67,7 +67,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAmAJwBmAOyTxAVnEAOAIyyAXCxZtgHOFxp8BIidLmKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3twOpePyoSAFkjk-GAHLoCAAQTAYHQAHcHLgLtdbvcnptXq9LhAQAgvlQHJCSAAlO5eKjuBxnAAGvwg-1wJAAJOtLjc7hAkpEqeMAL5hYE7cFQmFJMkAGmeKJR9wIIHcAQALIJZEKXmKSCcHHBFghpaLla8wRDIQFogBxACiVWiip1JA5lrFHIeRCV1qdyGQJAA8lQwHQSKaqiRGQiIO4SJDMABrUO+E4kKkeEgwBDoBJ0JJOqCoEhwpn3Vl-cYkACEDAYJGNZuiTzRGK+lOpQNBfOhsMDzIdTurmMOx3OZJOEAgMGlrsSEWaDiSvHQwDJ7e2NssHKIVg0zC0Oj0PH4QjEUhk8mUslKdkczjcnm8vnaVACQR0pHCkRibPVIQygWyuSf0TIELIJRsE8KmqWp6h2JoWl4NoOjSOxpksdZomAOA4gAfTGCYcmiVQCkWIp0g5FdV3XEJNwMHdjH3MxZGYKwgA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAWAOwAOYcIBMAZgBsggKzCAXCxZtgHOFxp8BIiVLmKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3twOpePyoSAFkjk-GAHLoCAAQTAYHQAHcHLgLtdbvcnptXq9LhAQAgvlQHJCSAAlO5eKjuBxnAAGvwg-1wJAAJOtLjc7hAkpEqeMAL5hYE7cFQmFJMkAGmeKJR9wIIHcAWEyiFLzFJBODjgiwQ0tFiteYIhkIC0QA4gBRKrReVakgc81ijkPIgKy0O5DIEgAeSoYDoJGNVRIjIREHcJEhmAA1sHfCcSFSPCQYAh0Ak6EkHVBUCQ4Uz7qy-uMSABCBgMEiGk3RJ5ojFfSnUoGgvnQ2H+5l2h2VzGHY7nMknCAQGDS52JCLNBxJXjoYBk1vbK2WDlEKwaZhaHR6Hj8IRiSQyBTKYSlOyOZxuTzeXztKgBII6UjhSIxNmqkIZQLZXIP6JkCFkEo2I8VNUtT1DsTQtLwbQdGkdjTJY6zRMAcBxAA+mMEw5NEqgFIsRTpByS7LquITrgYW7GLuZjCMwVhAA)
 
 TypeScript
 
@@ -106,8 +106,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -139,8 +137,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/respond-with-another-site/","name":"Respond with another site"}}]}

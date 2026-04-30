@@ -60,8 +60,6 @@ MyContainer.outboundByHost = {
 
 ```
 
-Explain Code
-
 The container calls `http://my.kv/some-key` and the handler resolves it using the KV binding. A call to `http://my.r2/file.png` reads from R2, scoped to the current container instance.
 
 Note

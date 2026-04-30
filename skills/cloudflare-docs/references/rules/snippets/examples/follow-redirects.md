@@ -56,8 +56,6 @@ export default {
 
 ```
 
-Explain Code
-
 This template is ready for use and should fit most redirect-following scenarios.
 
 It ensures the Snippet transparently follows redirects issued by the origin server. The `redirect: "follow"` option of the [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/) ensures automatic handling of `3xx` redirects, returning the final response. If the origin response is not a redirect, the original content is returned.

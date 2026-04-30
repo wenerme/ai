@@ -76,8 +76,6 @@ This is the abbreviated response:
 
 ```
 
-Explain Code
-
 `HTTP` traffic values are similar to `ALL` traffic values. This means that most traffic Cloudflare receives from this AS is traffic to websites served by Cloudflare's [CDN ↗](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/) product.
 
 In this other example, we will examine [AS174 ↗](https://radar.cloudflare.com/as174), another autonomous system that is not an ISP:
@@ -127,8 +125,6 @@ The abbreviated response is:
 
 
 ```
-
-Explain Code
 
 Here, there is less `HTTP` traffic compared to other types of traffic — which makes sense, since this is not an ISP serving end-users.
 
@@ -195,8 +191,6 @@ which would lead to a response like this:
 
 
 ```
-
-Explain Code
 
 This response shows how Cloudflare receives more traffic from AS174 than from AS3243.
 

@@ -74,8 +74,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 ## Why fibers exist
 
 Durable Objects get evicted for three reasons:
@@ -224,8 +222,6 @@ type FiberRecoveryContext = {
 
 ```
 
-Explain Code
-
 ### Lifecycle
 
 #### Normal execution
@@ -254,8 +250,6 @@ runFiber("work", fn)
 
 
 ```
-
-Explain Code
 
 #### Eviction and recovery
 
@@ -289,8 +283,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 Both recovery paths call the same hook. The alarm path is critical for background agents that have no incoming client connections — the persisted alarm wakes the agent on its own.
 
@@ -384,8 +376,6 @@ await this.runFiber("research", async (ctx) => {
 
 ```
 
-Explain Code
-
 ### this.stash vs ctx.stash
 
 Both do the same thing. `ctx.stash()` uses a direct closure over the fiber ID. `this.stash()` uses `AsyncLocalStorage` to find the currently executing fiber — it works correctly even with concurrent fibers, since each fiber's ALS context is independent.
@@ -454,8 +444,6 @@ class ResearchAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 Key points:
 

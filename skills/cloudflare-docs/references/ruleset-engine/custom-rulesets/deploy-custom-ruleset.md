@@ -97,8 +97,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -216,8 +214,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 Warning
 
 When deploying the custom ruleset at the account level, you must use parentheses to enclose any custom conditions and end your expression with `and cf.zone.plan eq "ENT"` like in the example above, or else the API operation will fail.
@@ -295,8 +291,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -380,8 +374,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 Note
 

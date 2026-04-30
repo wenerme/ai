@@ -61,8 +61,6 @@ Review the following example module (`;;` denotes a comment):
 
 ```
 
-Explain Code
-
 Using [wat2wasm ↗](https://github.com/WebAssembly/wabt), convert the WAT format to WebAssembly Binary Format:
 
 Terminal window
@@ -135,8 +133,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 When invoked, this Worker should log `Hello from JavaScript: 42` and return `Success: 42`, demonstrating the ability to invoke Wasm methods with arguments from JavaScript and vice versa.
 

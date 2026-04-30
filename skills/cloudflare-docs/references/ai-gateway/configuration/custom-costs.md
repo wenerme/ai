@@ -64,8 +64,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/
 
 ```
 
-Explain Code
-
 Note
 
 If a response is served from cache (cache hit), the cost is always `0`, even if you specified a custom cost. Custom costs only apply when the request reaches the model provider.

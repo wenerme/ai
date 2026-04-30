@@ -169,8 +169,6 @@ query GetAdaptiveGroups($start: DateTime!, $end: DateTime!) {
 
 ```
 
-Explain Code
-
 Replace `cf-log-in` with any [managed label](#managed-labels) or [risk label](#risk-labels). You can also omit the `webAssetsLabelsManaged_hasany` filter and use `webAssetsOperationId` as the sole dimension to group traffic by matched operation regardless of label.
 
 ### Logpush

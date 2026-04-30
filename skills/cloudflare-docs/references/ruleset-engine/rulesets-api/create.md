@@ -98,8 +98,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -150,8 +148,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Example - Create a zone-level phase entry point ruleset
 
@@ -229,8 +225,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -287,8 +281,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Example - Create an account-level phase entry point ruleset
 
@@ -353,8 +345,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -411,8 +401,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 Warning
 

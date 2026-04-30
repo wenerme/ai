@@ -165,8 +165,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -196,8 +194,6 @@ id = "<your-kv-namespace-id>"
 
 
 ```
-
-Explain Code
 
 Note that `"WORKER_SECRET"` does not need to be specified in the Wrangler config file, as it is automatically added to `env`.
 
@@ -235,8 +231,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 Every instance of this `Container` will now have these variables and secrets set as environment variables when it launches.
 
@@ -332,8 +326,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Reading KV values in containers
 
 KV values are particularly useful for configuration data that changes infrequently but needs to be accessible to your containers. Since KV operations are asynchronous, you must read the values at runtime when starting containers.
@@ -392,8 +384,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Feature flags
 
 JavaScript
@@ -449,8 +439,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Build-time environment variables
 

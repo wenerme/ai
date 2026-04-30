@@ -122,8 +122,6 @@ http.request.uri.path matches r"/api/login\.aspx$"
 
 ```
 
-Explain Code
-
 ### Case sensitivity in string comparisons
 
 Since the evaluation of string literal values in expressions is case-sensitive, consider one of the following options to capture capitalization variants in your expression:
@@ -279,8 +277,6 @@ not len(http.request.uri.args["order"]) >= 0  # ==> true
 
 
 ```
-
-Explain Code
 
 For more information on `any()`, `all()`, `len()`, and other available functions, refer to [Functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/).
 

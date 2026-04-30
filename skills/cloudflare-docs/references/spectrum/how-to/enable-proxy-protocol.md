@@ -114,8 +114,6 @@ A PROXY Protocol binary header for a IPv4 incoming address has the format:
 
 ```
 
-Explain Code
-
 A PROXY Protocol binary header for a IPv6 incoming address has the format:
 
 ```
@@ -180,8 +178,6 @@ A PROXY Protocol binary header for a IPv6 incoming address has the format:
 
 
 ```
-
-Explain Code
 
 ## Enable Simple Proxy Protocol for UDP
 

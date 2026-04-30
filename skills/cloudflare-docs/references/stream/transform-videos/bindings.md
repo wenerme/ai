@@ -153,8 +153,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Extract a still frame
 
 Extract a single frame as a JPEG thumbnail:
@@ -185,8 +183,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 #### Identify content with Media Transformations and Workers AI
 
@@ -259,8 +255,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Extract audio
 
 Extract the audio track from a video as an M4A file. This example demonstrates skipping `.transform()` since no resizing is needed:
@@ -295,8 +289,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 #### Transcribe audio with Media Transformations and Workers AI
 
@@ -376,8 +368,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Store transformed output in R2
 
 Transform a video and store the result directly in R2:
@@ -417,8 +407,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Error handling
 
@@ -481,8 +469,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Caching
 

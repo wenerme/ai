@@ -84,8 +84,6 @@ console.log(privateKey);
 
 ```
 
-Explain Code
-
 Run the script by executing the below code on your terminal. Replace `file name` with the name of your JavaScript file.
 
 Terminal window
@@ -298,8 +296,6 @@ run();
 
 
 ```
-
-Explain Code
 
 Run the script by executing the below code on your terminal. Replace `file name` with the name of your JavaScript file.
 

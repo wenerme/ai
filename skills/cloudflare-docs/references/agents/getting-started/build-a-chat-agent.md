@@ -85,8 +85,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -122,8 +120,6 @@ new_sqlite_classes = [ "ChatAgent" ]
 
 
 ```
-
-Explain Code
 
 Key settings:
 
@@ -335,8 +331,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -533,8 +527,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### What each tool type does
 
@@ -767,8 +759,6 @@ export default function App() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -990,8 +980,6 @@ export default function App() {
 
 
 ```
-
-Explain Code
 
 ### Key client concepts
 

@@ -132,8 +132,6 @@ query{
 
 ```
 
-Explain Code
-
 Below is a query that queries usage only for a single customer.
 
 ```
@@ -184,8 +182,6 @@ query{
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/replacing-existing/","name":"Replacing existing TURN servers"}}]}

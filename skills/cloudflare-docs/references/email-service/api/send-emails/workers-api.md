@@ -18,8 +18,8 @@ The Workers API provides native email sending capabilities directly from your Cl
 
 Configure email bindings in your Wrangler configuration file to enable email sending:
 
-* [  wrangler.jsonc ](#tab-panel-5932)
-* [  wrangler.toml ](#tab-panel-5933)
+* [  wrangler.jsonc ](#tab-panel-5930)
+* [  wrangler.toml ](#tab-panel-5931)
 
 JSONC
 
@@ -57,8 +57,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -153,13 +151,11 @@ interface EmailSendResult {
 
 ```
 
-Explain Code
-
 ### Basic usage
 
-* [ Simple email ](#tab-panel-5927)
-* [ Multiple recipients ](#tab-panel-5928)
-* [ With CC and BCC ](#tab-panel-5929)
+* [ Simple email ](#tab-panel-5925)
+* [ Multiple recipients ](#tab-panel-5926)
+* [ With CC and BCC ](#tab-panel-5927)
 
 TypeScript
 
@@ -224,12 +220,10 @@ const response = await env.EMAIL.send({
 
 ```
 
-Explain Code
-
 ### Attachments
 
-* [ PDF attachment ](#tab-panel-5930)
-* [ Inline image ](#tab-panel-5931)
+* [ PDF attachment ](#tab-panel-5928)
+* [ Inline image ](#tab-panel-5929)
 
 TypeScript
 
@@ -265,8 +259,6 @@ const response = await env.EMAIL.send({
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -313,13 +305,11 @@ const response = await env.EMAIL.send({
 
 ```
 
-Explain Code
-
 ## Error handling
 
 Handle email sending errors gracefully:
 
-* [ Single send errors ](#tab-panel-5926)
+* [ Single send errors ](#tab-panel-5924)
 
 TypeScript
 
@@ -428,8 +418,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Error codes
 
 The following error codes may be returned when sending emails:
@@ -511,8 +499,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ---
 

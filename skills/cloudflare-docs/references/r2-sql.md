@@ -85,8 +85,6 @@ On average, 3.36 kB / s
 
 ```
 
-Explain Code
-
 Create an end-to-end data pipeline by following [this step by step guide](https://developers.cloudflare.com/r2-sql/get-started/), which shows you how to stream events into an Apache Iceberg table and query it with R2 SQL.
 
 ```json

@@ -96,8 +96,6 @@ const result = await sandbox.exec('echo $MY_VAR', { sessionId: 'temp' });
 
 ```
 
-Explain Code
-
 This auto-creation means you can't "break" commands by referencing non-existent sessions. However, custom configuration (environment variables, working directory) is lost after deletion.
 
 ## Creating sessions
@@ -138,8 +136,6 @@ await testSession.exec("npm test");
 
 
 ```
-
-Explain Code
 
 You can also set a default command timeout for all commands in a session:
 
@@ -285,8 +281,6 @@ await appSession.exec("node server.js");
 
 
 ```
-
-Explain Code
 
 **Use separate sandboxes when**:
 

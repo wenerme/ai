@@ -83,8 +83,6 @@ df.describe().to_csv('/data/summary.csv')
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -125,8 +123,6 @@ df.describe().to_csv('/data/summary.csv')
 
 
 ```
-
-Explain Code
 
 Mounting affects entire sandbox
 
@@ -295,8 +291,6 @@ await sandbox.mountBucket("datasets", "/test-data", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -350,8 +344,6 @@ prefix: '/ml/testing/'
 
 ```
 
-Explain Code
-
 Prefix format
 
 The `prefix` must start and end with `/` (e.g., `/data/`, `/logs/2024/`). This is required by the underlying s3fs tool.
@@ -388,8 +380,6 @@ await sandbox.writeFile("/data/new-file.txt", "data"); // Error: Read-only files
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -414,8 +404,6 @@ await sandbox.writeFile('/data/new-file.txt', 'data');  // Error: Read-only file
 
 
 ```
-
-Explain Code
 
 ## Local development
 
@@ -565,8 +553,6 @@ await sandbox.mountBucket("MY_BUCKET", "/images", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -594,8 +580,6 @@ prefix: '/uploads/images/'
 
 
 ```
-
-Explain Code
 
 ### Local development considerations
 
@@ -989,8 +973,6 @@ await sandbox.exec("cp", {
 
 
 ```
-
-Explain Code
 
 TypeScript
 

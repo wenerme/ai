@@ -47,8 +47,6 @@ This page contains an example of the DNS protection rule JSON object used in the
 
 ```
 
-Explain Code
-
 The `scope` field value must be one of `global`, `region`, or `datacenter`. You must provide a region code (or data center code) in the `name` field when specifying a `region` (or `datacenter`) scope.
 
 The `mode` value must be one of `enabled`, `disabled`, or `monitoring`.

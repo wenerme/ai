@@ -32,8 +32,8 @@ With Workers KV, the data is persisted by default to [central stores](https://de
 
 In the following `index.ts` file, the Worker fetches data from an external server and caches the response in Workers KV. If the data is already cached in Workers KV, the Worker reads the cached data from Workers KV instead of calling the external API.
 
-* [ index.ts ](#tab-panel-6331)
-* [ wrangler.jsonc ](#tab-panel-6332)
+* [ index.ts ](#tab-panel-6329)
+* [ wrangler.jsonc ](#tab-panel-6330)
 
 index.ts
 
@@ -172,8 +172,6 @@ if (!bodyMatch) return 'No content found';
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -208,8 +206,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 This code snippet demonstrates how to read and update cached data in Workers KV from your Worker. If the data is not in the Workers KV cache, the Worker fetches the data from an external server and caches it in Workers KV.
 

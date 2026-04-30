@@ -110,8 +110,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -187,8 +185,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 ### Edit a static route
 
 * [ Dashboard ](#tab-panel-5272)
@@ -258,8 +254,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -333,8 +327,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ### Delete static route
 
@@ -445,8 +437,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 ```
 
-Explain Code
-
 ## Configure Automatic Return Routing (beta)
 
 [Automatic Return Routing (beta)](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#automatic-return-routing-beta) allows Cloudflare to track network flows from your Cloudflare WAN (formerly Magic WAN) connected locations, ensuring return traffic is routed back to the connection where it was received without requiring static or dynamic routes. This functionality requires the new [Unified Routing mode (beta)](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta).
@@ -498,8 +488,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunn
 
 
 ```
-
-Explain Code
 
 ## Configure BGP routes
 

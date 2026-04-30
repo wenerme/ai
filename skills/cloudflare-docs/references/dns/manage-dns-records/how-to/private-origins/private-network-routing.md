@@ -100,8 +100,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
 
 ```
 
-Explain Code
-
 To enable private routing on an existing record, use a [PATCH request](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/edit/):
 
 Required API token permissions

@@ -152,8 +152,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -261,8 +259,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 Take note of the `id` parameter, as you will need it to edit or delete network policies.
 
 The new policy will ensure that traffic between the specified LANs flows locally, bypassing Cloudflare.
@@ -363,8 +359,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -423,8 +417,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Delete a policy
 

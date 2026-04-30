@@ -127,8 +127,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -156,8 +154,6 @@ database_id = "YOUR_DATABASE_ID"
 
 
 ```
-
-Explain Code
 
 The value of `binding` is how you will refer to your database from within your Worker. If you change this, you must change this in your Worker script as well.
 
@@ -196,8 +192,6 @@ class Default(WorkerEntrypoint):
 
 ```
 
-Explain Code
-
 The value of `binding` in your Wrangler file exactly must match the name of the variable in your Python code. This example refers to the database via a `DB` binding, and query this binding via `await env.DB.prepare(...)`.
 
 You can then deploy your Python Worker directly:
@@ -235,8 +229,6 @@ npx wrangler deploy
 
 
 ```
-
-Explain Code
 
 Your Worker will be available at `https://python-and-d1.YOUR_SUBDOMAIN.workers.dev`.
 

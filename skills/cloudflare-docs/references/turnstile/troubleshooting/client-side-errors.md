@@ -26,8 +26,8 @@ The `error-callback` option for explicitly rendering widgets and the `data-error
 
 This callback mechanism gives you complete control over how errors are presented to visitors and allows you to implement custom recovery strategies tailored to your application's needs.
 
-* [ Explicit rendering with error callback ](#tab-panel-8130)
-* [ Implicit rendering with error callback ](#tab-panel-8131)
+* [ Explicit rendering with error callback ](#tab-panel-8168)
+* [ Implicit rendering with error callback ](#tab-panel-8169)
 
 JavaScript
 
@@ -113,8 +113,6 @@ function handleTurnstileError(errorCode) {
 
 ```
 
-Explain Code
-
 ## Retry
 
 By default, Turnstile will automatically retry upon encountering a problem, which helps handle transient network issues or temporary service disruptions without requiring user intervention.
@@ -160,8 +158,6 @@ turnstile.render('#my-widget', {
 
 ```
 
-Explain Code
-
 You can adjust the retry behavior by setting the retry value to `never` instead of the default `auto`. This will result in Turnstile not automatically retrying, giving you control over when and how recovery attempts are made. If there is any issue or error verifying the visitor, the widget will not retry and will remain in the respective failure state until you take manual action.
 
 JavaScript
@@ -190,8 +186,6 @@ turnstile.render('#my-widget', {
 
 
 ```
-
-Explain Code
 
 You may call `turnstile.reset()` in the corresponding `error-callback` to manually trigger a retry. This approach is useful for when you want to implement custom retry logic, such as exponential backoff, user confirmation before retrying, or different retry strategies based on the specific error encountered.
 
@@ -267,8 +261,6 @@ turnstile.render('#my-widget', {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/troubleshooting/client-side-errors/","name":"Client-side errors"}}]}

@@ -99,8 +99,6 @@ To apply an override for a managed ruleset:
 
 ```
 
-Explain Code
-
 You can override the following rule properties:
 
 * `"action"`
@@ -198,8 +196,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
-Explain Code
-
 ### Ruleset override example
 
 The following `PUT` request adds a rule that executes a managed ruleset in the `http_request_firewall_managed` phase at the account level, and defines a ruleset override that sets the action to `log` for all (enabled) rules.
@@ -258,8 +254,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/
 
 
 ```
-
-Explain Code
 
 ## More resources
 

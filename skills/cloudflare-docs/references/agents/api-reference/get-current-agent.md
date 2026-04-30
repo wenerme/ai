@@ -60,8 +60,6 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -98,8 +96,6 @@ export class MyAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 No configuration is required. The framework automatically:
 
@@ -169,8 +165,6 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -227,8 +221,6 @@ export class MyAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ### Built-in vs custom methods
 
@@ -323,8 +315,6 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -366,8 +356,6 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 ### Calling external libraries
 
 * [  JavaScript ](#tab-panel-3218)
@@ -408,8 +396,6 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -444,8 +430,6 @@ export class MyAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ### Accessing request and connection context
 
@@ -484,8 +468,6 @@ function logRequestInfo() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -517,8 +499,6 @@ function logRequestInfo() {
 
 
 ```
-
-Explain Code
 
 ## API reference
 
@@ -600,8 +580,6 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -627,8 +605,6 @@ export class MyAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ### Context availability
 

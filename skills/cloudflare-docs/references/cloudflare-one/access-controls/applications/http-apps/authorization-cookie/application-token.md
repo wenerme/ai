@@ -84,8 +84,6 @@ The payload contains the actual claim and user information to pass to the applic
 
 ```
 
-Explain Code
-
 | Field           | Description                                                                                                                                                                                                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | aud             | [Application audience (AUD) tag](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#get-your-aud-tag) of the Access application.                                                                                                                              |

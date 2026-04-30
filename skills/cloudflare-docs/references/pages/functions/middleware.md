@@ -85,8 +85,6 @@ export const onRequest = [errorHandling, authentication];
 
 ```
 
-Explain Code
-
 In the above example, the `errorHandling` function will run first. It will capture any errors in the `authentication` function and any errors in any other subsequent Pages Functions.
 
 ```json

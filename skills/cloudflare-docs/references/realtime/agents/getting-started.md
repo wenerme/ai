@@ -88,8 +88,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7307)
-* [  wrangler.toml ](#tab-panel-7308)
+* [  wrangler.jsonc ](#tab-panel-7305)
+* [  wrangler.toml ](#tab-panel-7306)
 
 JSONC
 
@@ -125,8 +125,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 Update the `index.ts` file in your `hello-agent` application directory with the following code:
 
-* [  JavaScript ](#tab-panel-7309)
-* [  TypeScript ](#tab-panel-7310)
+* [  JavaScript ](#tab-panel-7307)
+* [  TypeScript ](#tab-panel-7308)
 
 index.js
 
@@ -363,8 +363,6 @@ export default {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -568,8 +566,6 @@ export default {
 
 ```
 
-Explain Code
-
 The Realtime Agents SDK provides several elements that work together to create an end-to-end pipeline
 
 * `RealtimeKitTransport`: Represents a RealtimeKit meeting that will be joined by the agent
@@ -615,8 +611,6 @@ In `wrangler.jsonc`, append the following fields to enable the [Node.js Compatib
 
 
 ```
-
-Explain Code
 
 You must also setup a few [secrets ↗](https://developers.cloudflare.com/workers/configuration/secrets/):
 

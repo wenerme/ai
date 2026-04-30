@@ -116,8 +116,6 @@ tools: {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -146,8 +144,6 @@ tools: {
 
 
 ```
-
-Explain Code
 
 On the client, render pending approvals from message parts and call `addToolApprovalResponse`:
 
@@ -224,8 +220,6 @@ const { messages, addToolApprovalResponse } = useAgentChat({ agent });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -299,8 +293,6 @@ const { messages, addToolApprovalResponse } = useAgentChat({ agent });
 
 
 ```
-
-Explain Code
 
 For custom denial messages, use `addToolOutput` with `state: "output-error"` instead of `addToolApprovalResponse`:
 
@@ -383,8 +375,6 @@ const { messages, sendMessage } = useAgentChat({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -419,8 +409,6 @@ const { messages, sendMessage } = useAgentChat({
 
 
 ```
-
-Explain Code
 
 When `autoContinueAfterToolResult` is `true` (the default), the conversation automatically continues after the client provides the tool output.
 
@@ -487,8 +475,6 @@ export class MyMcpAgent extends McpAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -544,8 +530,6 @@ export class MyMcpAgent extends McpAgent {
 
 
 ```
-
-Explain Code
 
 **Best for:** Interactive tool confirmations, gathering additional parameters mid-execution
 

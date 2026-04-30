@@ -24,8 +24,8 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
 
 1. Create a directory that will contain the assets in the root of your project (for example, `./public`)
 2. Add configuration to your Wrangler file to point to it.  
-   * [  wrangler.jsonc ](#tab-panel-8590)  
-   * [  wrangler.toml ](#tab-panel-8591)  
+   * [  wrangler.jsonc ](#tab-panel-8628)  
+   * [  wrangler.toml ](#tab-panel-8629)  
 JSONC  
 ```  
 {  
@@ -46,8 +46,8 @@ npm i -D @cloudflare/kv-asset-handler
 ```
 4. Import the `getAssetFromKV()` function into your Worker entry point and use it to respond with static assets.
 
-* [  Module Worker ](#tab-panel-8588)
-* [  Service Worker ](#tab-panel-8589)
+* [  Module Worker ](#tab-panel-8626)
+* [  Service Worker ](#tab-panel-8627)
 
 JavaScript
 
@@ -109,8 +109,6 @@ export default {
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -151,8 +149,6 @@ async function handleEvent(event) {
 
 
 ```
-
-Explain Code
 
 For more information on the configurable options of `getAssetFromKV()` refer to [kv-asset-handler docs ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/kv-asset-handler).
 

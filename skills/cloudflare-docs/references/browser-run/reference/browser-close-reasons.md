@@ -71,8 +71,6 @@ async function runBrowser(env) {
 
 ```
 
-Explain Code
-
 For long-running or critical workflows, consider adding retry logic:
 
 JavaScript
@@ -101,8 +99,6 @@ async function runWithRetry(env, maxRetries = 3) {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/reference/browser-close-reasons/","name":"Browser close reasons"}}]}

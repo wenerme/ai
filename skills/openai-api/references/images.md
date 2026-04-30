@@ -284,7 +284,7 @@ curl https://api.openai.com/v1/images/generations \
     {
       "b64_json": "b64_json",
       "revised_prompt": "revised_prompt",
-      "url": "url"
+      "url": "https://example.com"
     }
   ],
   "output_format": "png",
@@ -650,7 +650,7 @@ curl https://api.openai.com/v1/images/edits \
     {
       "b64_json": "b64_json",
       "revised_prompt": "revised_prompt",
-      "url": "url"
+      "url": "https://example.com"
     }
   ],
   "output_format": "png",
@@ -844,7 +844,7 @@ curl https://api.openai.com/v1/images/variations \
     {
       "b64_json": "b64_json",
       "revised_prompt": "revised_prompt",
-      "url": "url"
+      "url": "https://example.com"
     }
   ],
   "output_format": "png",

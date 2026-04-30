@@ -82,8 +82,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 2. Save the following IDs for the next step:  
    * The ID of the entry point ruleset: `060013b1eeb14c93b0dcd896537e0d2c`  
    * The ID of the `execute` rule deploying the Cloudflare Managed Ruleset: `1bdb49371c1f46958fc8b985efcb79e7`  
@@ -107,7 +106,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/060013b1eeb14
     "expression": "true"  
   }'  
 ```  
-Explain Code  
 The response will include the complete ruleset after updating the rule.
 
 For more information on deploying managed rulesets via API, refer to [Deploy a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/deploy-managed-ruleset/) in the Ruleset Engine documentation.
@@ -149,8 +147,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 
 
 ```
-
-Explain Code
 
 For details on obtaining the entry point ruleset ID and the ID of the rule to update, refer to [Configure and enable payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/#configure-and-enable-payload-logging).
 

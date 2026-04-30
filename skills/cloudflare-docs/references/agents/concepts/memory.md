@@ -54,8 +54,6 @@ const history = session.getHistory();
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -82,8 +80,6 @@ const history = session.getHistory();
 
 
 ```
-
-Explain Code
 
 Conversation history persists across Durable Object hibernation and eviction. When the agent wakes up, the full history is available in SQLite. It does not need to be replayed or reconstructed.
 
@@ -155,8 +151,6 @@ const session = Session.create(this).withContext("soul", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -184,8 +178,6 @@ const session = Session.create(this)
 
 
 ```
-
-Explain Code
 
 Or load it from R2 so you can update the agent's personality without redeploying:
 
@@ -333,8 +325,6 @@ TODOS (Task list) [12% — 240/2000 tokens] [writable]
 
 ```
 
-Explain Code
-
 The content persists across messages and survives hibernation. It is always visible in the system prompt, so the agent sees it on every turn without needing to fetch anything.
 
 ### Searchable context
@@ -434,8 +424,6 @@ const session = Session.create(this).withContext("knowledge", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -476,8 +464,6 @@ const session = Session.create(this)
 
 
 ```
-
-Explain Code
 
 The agent gets a `search_context` tool for querying and a `set_context` tool for indexing new entries. It decides what to search for, and you decide how the search works.
 
@@ -584,8 +570,6 @@ const session = Session.create(this)
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -631,8 +615,6 @@ const session = Session.create(this)
 
 
 ```
-
-Explain Code
 
 The `prefix` option scopes the provider to a subdirectory in the bucket. Skill keys in the metadata listing are shown without the prefix, so `skills/api-ref` becomes `api-ref` in the system prompt.
 
@@ -801,8 +783,6 @@ class DatabaseSkillProvider {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -878,8 +858,6 @@ class DatabaseSkillProvider implements SkillProvider {
 
 
 ```
-
-Explain Code
 
 The Session detects the `load()` method via duck-typing and generates the appropriate tools automatically.
 
@@ -1014,8 +992,6 @@ SKILLS [loadable]
 
 ```
 
-Explain Code
-
 The tags (`[readonly]`, `[writable]`, `[searchable]`, `[loadable]`) tell the LLM what kind of interaction is possible with each block. Token budgets show the agent how much space remains in writable blocks, helping it manage its own memory.
 
 ## Gotchas
@@ -1072,8 +1048,6 @@ await session.refreshSystemPrompt();
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1109,8 +1083,6 @@ await session.refreshSystemPrompt();
 
 
 ```
-
-Explain Code
 
 ### Compaction
 
@@ -1179,8 +1151,6 @@ const session = Session.create(this)
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1210,8 +1180,6 @@ const session = Session.create(this)
 
 
 ```
-
-Explain Code
 
 Auto-compaction triggers after `appendMessage()` when the estimated token count exceeds the threshold. Compaction failure is non-fatal, the message is already saved.
 

@@ -80,8 +80,7 @@ resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example"
     attributes = ["employeeID", "groups"]  
   }  
 }  
-```  
-Explain Code
+```
 
 Warning
 

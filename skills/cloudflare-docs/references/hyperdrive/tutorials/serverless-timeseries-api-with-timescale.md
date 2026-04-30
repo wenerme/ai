@@ -178,8 +178,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs your Hyperdrive ID. You can now bind your Hyperdrive configuration to your Worker in your Wrangler configuration by replacing the content with the following:
 
-* [  wrangler.jsonc ](#tab-panel-6242)
-* [  wrangler.toml ](#tab-panel-6243)
+* [  wrangler.jsonc ](#tab-panel-6240)
+* [  wrangler.toml ](#tab-panel-6241)
 
 JSONC
 
@@ -220,8 +220,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -247,8 +245,6 @@ id = "your-id-here"
 
 
 ```
-
-Explain Code
 
 Install the Postgres driver into your Worker project:
 
@@ -392,8 +388,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## 5\. Deploy your Worker
 
 Run the following command to redeploy your Worker:
@@ -470,8 +464,6 @@ EOF
 
 
 ```
-
-Explain Code
 
 Query some data
 

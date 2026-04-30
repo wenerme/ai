@@ -191,7 +191,6 @@ To rotate a tunnel token:
      }  
    }  
    ```  
-   Explain Code  
    3. Copy the `token` value shown in the output.  
 After refreshing the token, `cloudflared` can no longer establish new connections to Cloudflare using the old token. However, existing connectors will remain active and the tunnel will continue serving traffic.
 2. On half of your `cloudflared` replicas, reinstall the `cloudflared` service with the new token. For example, on a Linux host:  

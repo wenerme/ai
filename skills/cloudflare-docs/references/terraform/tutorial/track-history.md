@@ -102,8 +102,6 @@ resource "cloudflare_dns_record" "www" {
 
 ```
 
-Explain Code
-
 Note
 
 You must still include the empty provider definition in the file, so that Terraform knows to install the Cloudflare plugin. For more information about advanced options you can use to customize the Cloudflare provider, refer to [Provider customization](https://developers.cloudflare.com/terraform/advanced-topics/provider-customization/).

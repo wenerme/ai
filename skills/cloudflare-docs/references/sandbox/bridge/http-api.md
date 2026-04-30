@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # HTTP API reference
 
-**Last reviewed:**  16 days ago 
+**Last reviewed:**  17 days ago 
 
 This page documents every route exposed by the [sandbox bridge](https://developers.cloudflare.com/sandbox/bridge/).
 
@@ -147,8 +147,6 @@ The `/mount` endpoint accepts a JSON body:
 
 
 ```
-
-Explain Code
 
 Credentials are optional — the bridge auto-detects from Worker secrets (`R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` or `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`) when omitted.
 

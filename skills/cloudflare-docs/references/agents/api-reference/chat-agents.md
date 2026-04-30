@@ -88,8 +88,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -127,8 +125,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ### Client
 
@@ -207,8 +203,6 @@ function Chat() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -284,8 +278,6 @@ function Chat() {
 
 
 ```
-
-Explain Code
 
 ### Wrangler configuration
 
@@ -382,8 +374,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -419,8 +409,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ### `onChatMessage`
 
@@ -462,8 +450,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -494,8 +480,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 **Plain text response**:
 
@@ -547,8 +531,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ### `this.messages`
 
@@ -632,8 +614,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -674,8 +654,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 ### `waitForMcpConnections`
 
 Controls whether `AIChatAgent` waits for MCP server connections to settle before calling `onChatMessage`. This ensures `this.mcp.getAITools()` returns the full set of tools, especially after Durable Object hibernation when connections are being restored in the background.
@@ -715,8 +693,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -741,8 +717,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 For lower-level control, call `this.mcp.waitForConnections()` directly inside your `onChatMessage` instead.
 
@@ -921,8 +895,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -952,8 +924,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 The `ChatResponseResult` contains:
 
@@ -1017,8 +987,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1059,8 +1027,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ### Turn lifecycle helpers
 
@@ -1208,8 +1174,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1239,8 +1203,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 The `destroy()` method cancels any pending chat requests and cleans up stream state. It is called automatically when the Durable Object is evicted, but you can call it manually if needed.
 
@@ -1279,8 +1241,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1308,8 +1268,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 Warning
 
@@ -1382,8 +1340,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1415,8 +1371,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 **`ChatRecoveryContext`:**
 
@@ -1515,8 +1469,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1570,8 +1522,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 #### Recovery strategies by provider
 
@@ -1633,8 +1583,6 @@ function Chat() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1673,8 +1621,6 @@ function Chat() {
 
 
 ```
-
-Explain Code
 
 ### Options
 
@@ -1772,8 +1718,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1828,8 +1772,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ### Client-side tools
 
@@ -1922,8 +1864,6 @@ const { messages, sendMessage } = useAgentChat({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1958,8 +1898,6 @@ const { messages, sendMessage } = useAgentChat({
 
 
 ```
-
-Explain Code
 
 When the LLM invokes `getLocation`, the stream pauses. The `onToolCall` callback fires, your code provides the output, and the conversation continues.
 
@@ -2001,8 +1939,6 @@ tools: {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2031,8 +1967,6 @@ tools: {
 
 
 ```
-
-Explain Code
 
 **Client:**
 
@@ -2117,8 +2051,6 @@ const { messages, addToolApprovalResponse } = useAgentChat({ agent });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2196,8 +2128,6 @@ const { messages, addToolApprovalResponse } = useAgentChat({ agent });
 
 
 ```
-
-Explain Code
 
 #### Custom denial messages with `addToolOutput`
 
@@ -2530,8 +2460,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2621,8 +2549,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 ### Three patterns
 
 | Pattern            | How                                          | Persisted? | Use case                              |
@@ -2667,8 +2593,6 @@ for (const msg of messages) {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -2716,8 +2640,6 @@ for (const msg of messages) {
 
 ```
 
-Explain Code
-
 ### Transient parts with `onData`
 
 Transient data parts are not in `message.parts`. Use the `onData` callback instead:
@@ -2751,8 +2673,6 @@ const { messages } = useAgentChat({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2778,8 +2698,6 @@ const { messages } = useAgentChat<unknown, ChatMessage>({
 
 
 ```
-
-Explain Code
 
 On the server, write transient parts with `transient: true`:
 
@@ -2915,8 +2833,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2952,8 +2868,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ## Using different AI providers
 
@@ -3186,8 +3100,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -3269,8 +3181,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 `prepareStep` runs before each step and can return overrides for `model`, `activeTools`, `toolChoice`, `system`, and `messages`. Use it to:
 
 * **Switch models** — use a cheap model for simple steps, escalate for reasoning
@@ -3339,8 +3249,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -3397,8 +3305,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 The AI SDK includes built-in middlewares:
 
@@ -3502,8 +3408,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -3590,8 +3494,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ### Subagent delegation
 
@@ -3692,8 +3594,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -3782,8 +3682,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 The research agent runs in its own context — its token budget is separate from the orchestrator's. Only the summary goes back to the parent model.
 
 Note
@@ -3832,8 +3730,6 @@ deepResearch: tool({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -3868,8 +3764,6 @@ deepResearch: tool({
 
 
 ```
-
-Explain Code
 
 Each `yield` updates the tool part on the client in real-time (with `preliminary: true`). The last yielded value becomes the final output that the model sees.
 

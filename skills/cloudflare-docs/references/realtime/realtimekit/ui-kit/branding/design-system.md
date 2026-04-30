@@ -165,8 +165,6 @@ import {
 
 ```
 
-Explain Code
-
 ```
 
 <div id="app"></div>
@@ -216,8 +214,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 JavaScript
 
@@ -287,8 +283,6 @@ function Example() {
 
 
 ```
-
-Explain Code
 
 Construct an `RtkDesignTokens` object and pass it to `RealtimeKitUIInfo`. Then call `RealtimeKitUIBuilder.build()` to launch the meeting.
 
@@ -390,8 +384,6 @@ RealtimeKitUIBuilder.build(uiKitInfo).startMeeting()
 
 ```
 
-Explain Code
-
 Construct an `RtkDesignTokens` object and pass it to `RealtimeKitUIInfo` via the `designToken` parameter.
 
 Flutter supports two approaches for color configuration:
@@ -434,8 +426,6 @@ Navigator.push(context, MaterialPageRoute(builder: (_) => rtkUI));
 
 
 ```
-
-Explain Code
 
 **Advanced color configuration** — use `RtkColorSwatch` for precise control over each shade:
 
@@ -489,8 +479,6 @@ final designTokens = RtkDesignTokens(
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -547,8 +535,6 @@ function App() {
 
 ```
 
-Explain Code
-
 The `generateBrandColors()` helper derives five brand shades from a single hex value. Use `generateBackgroundColors()` for the same behavior with background colors.
 
 The iOS UI Kit uses `DesignLibrary.shared` as its central design token registry. Create a custom configurator that conforms to `DesignLibraryConfiguratorProtocol` and pass it to the design library before starting a meeting.
@@ -599,8 +585,6 @@ DesignLibrary.shared.setConfigurator(configurator: CustomConfigurator())
 
 
 ```
-
-Explain Code
 
 The SDK auto-generates shade variations from each base color. Brand shades run 300–700 and background shades run 600–1000, derived by lightening the base color.
 
@@ -765,8 +749,6 @@ const designTokens = {
 
 ```
 
-Explain Code
-
 Brand color shades run from 300 (lightest) to 700 (darkest), with 500 as the primary shade. Background shades run from 600 (lightest) to 1000 (deepest).
 
 Set `colorBrandBase` and `colorBackgroundBase` in your `DesignLibraryConfiguratorProtocol` implementation. The SDK auto-generates shades 300–700 for brand and 600–1000 for background by lightening the base color in 12% increments.
@@ -812,8 +794,6 @@ class CustomConfigurator: DesignLibraryConfiguratorProtocol {
 
 
 ```
-
-Explain Code
 
 Android provides a `videoBackground` field on `RtkColorTokens` to set the color shown behind video tiles when no video stream is active. The default value is `#333333`.
 
@@ -1039,8 +1019,6 @@ DesignLibrary.shared.setConfigurator(configurator: CustomConfigurator())
 
 
 ```
-
-Explain Code
 
 iOS uses `BorderRadiusToken.RadiusType` with values `.sharp`, `.rounded`, `.extrarounded`, and `.circular`. Border width uses `BorderWidthToken.Width` with values `.none`, `.thin`, and `.fat`.
 

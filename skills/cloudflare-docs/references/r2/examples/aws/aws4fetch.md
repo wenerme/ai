@@ -132,8 +132,6 @@ console.log(await ListObjectsV2Result.text());
 
 ```
 
-Explain Code
-
 ## Generate presigned URLs
 
 You can also generate presigned links that can be used to share public read or write access to a bucket temporarily.
@@ -224,8 +222,6 @@ console.log(
 
 ```
 
-Explain Code
-
 ```
 
 https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/dog.png?X-Amz-Expires=3600&X-Amz-Date=<timestamp>&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
@@ -312,8 +308,6 @@ const putUrl = signedRequest.url.toString();
 
 
 ```
-
-Explain Code
 
 When a client uses this presigned URL, they must:
 

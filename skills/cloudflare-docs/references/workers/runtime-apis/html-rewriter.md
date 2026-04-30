@@ -99,8 +99,6 @@ async function handleRequest(req) {
 
 ```
 
-Explain Code
-
 ### Document Handlers
 
 A document handler represents the incoming HTML document. A number of functions can be defined on a document handler to query and manipulate a document’s `doctype`, `comments`, `text`, and `end`. Unlike an element handler, a document handler’s `doctype`, `comments`, `text`, and `end` functions are not scoped by a particular selector. A document handler's functions are called for all the content on the page including the content outside of the top-level HTML tag:
@@ -143,8 +141,6 @@ class DocumentHandler {
 
 ```
 
-Explain Code
-
 #### Async Handlers
 
 All functions defined on both element and document handlers can return either `void` or a `Promise<void>`. Making your handler function `async` allows you to access external resources such as an API via fetch, Workers KV, Durable Objects, or the cache.
@@ -184,8 +180,6 @@ async function handleRequest(req) {
 
 
 ```
-
-Explain Code
 
 ### Element
 
@@ -475,8 +469,6 @@ async function handle(request) {
 
 
 ```
-
-Explain Code
 
 ---
 

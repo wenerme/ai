@@ -124,8 +124,6 @@ export class Batcher extends DurableObject {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -218,8 +216,6 @@ class Batcher(DurableObject):
 
 ```
 
-Explain Code
-
 The `alarm()` handler will be called once every 10 seconds. If an unexpected error terminates the Durable Object, the `alarm()` handler will be re-instantiated on another machine. Following a short delay, the `alarm()` handler will run from the beginning on the other machine.
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
@@ -276,8 +272,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -304,8 +298,6 @@ new_sqlite_classes = [ "Batcher" ]
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/alarms-api/","name":"Use the Alarms API"}}]}

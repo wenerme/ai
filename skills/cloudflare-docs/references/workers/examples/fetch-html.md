@@ -26,10 +26,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8737)
-* [  TypeScript ](#tab-panel-8738)
-* [  Python ](#tab-panel-8739)
-* [  Hono ](#tab-panel-8740)
+* [  JavaScript ](#tab-panel-8777)
+* [  TypeScript ](#tab-panel-8778)
+* [  Python ](#tab-panel-8779)
+* [  Hono ](#tab-panel-8780)
 
 JavaScript
 
@@ -57,7 +57,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAmAIwAOAJzjxAVkmyAzJIBcLFm2Ac4XGnwEiJ0uQuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skyABUb88vbyQASvZNOC8ewkAAGF1GDlBJAA7j5jiQIMcQccvKs6JRYe4ERB0CQ3I5cCQLtdbhA3Ij0F8tm9kNTeLY7sT7JCQQwSFFjhAIDA3CpkMgEuEmvZEgzgOkLNSLhAQAgqNsYXAfAcjmcIegHAAaZmku73IjPAC+WosRqIlnUzE02l0PH4QjEUhk8iUkhKtgcTlcHi8PjaVH8gW0pDCEWiEUI2nSASyOXDUTIYHQZGK1k95SqNTq20azV4rXaqVsUwsayiwGVVAA+qNxtkoip8gtCmkjZarTbgnb9I6jC7TJJmJYgA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGAJyCA7IIDMogCzTBADgBcLFm2Ac4XGnwEjxU2QuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skyABUb88vbyQASvZNOC8ewkAAGF1GDlBJAA7j5jiQIMcQccvKs6JRYe4ERB0CQ3I5cCQLtdbhA3Ij0F8tm9kNTeLY7sT7JCQQwSFFjhAIDA3CpkMgEuEmvZEgzgOkLNSLhAQAgqNsYXAfAcjmcIegHAAaZmku73IjPAC+WosRqIlnUzE02l0PH4QjEkhk8kUShKtgcTlcHi8PjaVH8gW0pDCEWiEUI2nSASyOXDUTIYHQZGK1k95SqNTq20azV4rXaqVsUwsayiwGVVAA+qNxtkoip8gtCmkjZarTbgnb9I6jC7TEpmJYgA)
 
 TypeScript
 
@@ -84,8 +84,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Python
 
@@ -141,8 +139,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/fetch-html/","name":"Fetch HTML"}}]}

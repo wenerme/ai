@@ -99,8 +99,6 @@ CREATE VIEW [ProductDetails_V] as select p.*, c.CategoryName, c.Description as [
 
 ```
 
-Explain Code
-
 Warning
 
 D1 PRAGMA statements only apply to the current transaction.
@@ -216,8 +214,6 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_list'
 
 ```
 
-Explain Code
-
 ### `PRAGMA table_info("TABLE_NAME")`
 
 Shows the schema (columns, types, null, default values) for the given `TABLE_NAME`.
@@ -317,8 +313,6 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_info("Order")'
 
 ```
 
-Explain Code
-
 ### `PRAGMA table_xinfo("TABLE_NAME")`
 
 Similar to `PRAGMA table_info(TABLE_NAME)` but also includes [generated columns](https://developers.cloudflare.com/d1/reference/generated-columns/).
@@ -406,8 +400,6 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_xinfo("Order")'
 
 
 ```
-
-Explain Code
 
 ### `PRAGMA index_list("TABLE_NAME")`
 
@@ -538,8 +530,6 @@ npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA index_xinfo("sqlite_au
 
 
 ```
-
-Explain Code
 
 ### `PRAGMA quick_check`
 
@@ -730,8 +720,6 @@ SELECT name, sql FROM sqlite_master
 
 
 ```
-
-Explain Code
 
 ## Search with LIKE
 

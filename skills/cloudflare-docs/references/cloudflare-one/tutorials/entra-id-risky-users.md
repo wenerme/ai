@@ -105,7 +105,6 @@ JSONC
   },  
 }  
 ```  
-Explain Code  
 TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
@@ -120,8 +119,7 @@ AZURE_AD_TENANT_ID = "<TENANT-ID>"
 AZURE_AD_CLIENT_ID = "<CLIENT-ID>"  
 [triggers]  
 crons = [ "* * * * *" ]  
-```  
-Explain Code
+```
 
 Note
 

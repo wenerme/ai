@@ -495,8 +495,7 @@ Unknown adapter CloudflareWARP:
   DNS Servers . . . . . . . . . . . : 127.0.2.2  
                                       127.0.2.3  
   NetBIOS over Tcpip. . . . . . . . : Disabled  
-```  
-Explain Code
+```
 2. In Microsoft SCCM:  
 a. [Create a boundary ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundaries#create-a-boundary) with the following settings:  
    * **Description**: `Remote Cloudflare One Clients`  
@@ -598,8 +597,6 @@ Unknown adapter CloudflareWARP:
 
 
 ```
-
-Explain Code
 
 ## Footnotes
 

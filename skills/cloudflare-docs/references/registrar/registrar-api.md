@@ -198,8 +198,6 @@ Example response:
 
 ```
 
-Explain Code
-
 ## 2\. Check real-time availability and pricing
 
 Use the Check endpoint to confirm whether a domain is currently registrable and to retrieve the current price.
@@ -283,8 +281,6 @@ Example response:
 
 ```
 
-Explain Code
-
 If a domain cannot be registered through the API, the response includes a reason. For example:
 
 ```
@@ -319,8 +315,6 @@ If a domain cannot be registered through the API, the response includes a reason
 
 
 ```
-
-Explain Code
 
 Common `reason` values include:
 
@@ -431,8 +425,6 @@ curl --request POST \
 
 ```
 
-Explain Code
-
 Example successful response:
 
 ```
@@ -493,8 +485,6 @@ Example successful response:
 
 
 ```
-
-Explain Code
 
 ## Handle registration responses
 
@@ -575,8 +565,6 @@ Example `202 Accepted` response:
 
 ```
 
-Explain Code
-
 ## Poll registration status
 
 If the registration is still in progress, poll the status endpoint until the workflow reaches a terminal state.
@@ -655,8 +643,6 @@ Example response:
 
 ```
 
-Explain Code
-
 Possible workflow states include:
 
 * `in_progress`
@@ -724,8 +710,6 @@ Example response:
 
 
 ```
-
-Explain Code
 
 ## Beta limitations
 

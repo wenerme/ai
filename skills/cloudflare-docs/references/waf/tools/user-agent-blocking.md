@@ -38,9 +38,9 @@ The number of available user agent rules depends on your Cloudflare plan.
 
 ## Create a User Agent Blocking rule
 
-* [  New dashboard ](#tab-panel-8358)
-* [ Old dashboard ](#tab-panel-8359)
-* [ API ](#tab-panel-8360)
+* [  New dashboard ](#tab-panel-8396)
+* [ Old dashboard ](#tab-panel-8397)
+* [ API ](#tab-panel-8398)
 
 Note
 
@@ -98,7 +98,9 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/ua_rules" \
 
 ```
 
-Explain Code
+## Challenge actions
+
+When a User Agent Blocking rule uses a challenge action such as _Managed Challenge_, the visitor must pass a challenge page. After passing the challenge, a `cf_clearance` cookie is set. The duration of this cookie is controlled by the [Challenge Passage](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/challenge-passage/) setting.
 
 ## Related resources
 

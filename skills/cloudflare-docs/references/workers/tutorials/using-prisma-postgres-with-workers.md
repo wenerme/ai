@@ -225,8 +225,6 @@ model User {
 
 ```
 
-Explain Code
-
 Next, add the following helper scripts to the `scripts` section of your `package.json`:
 
 package.json
@@ -341,8 +339,6 @@ Number of users in the database: ${userCount}.
 
 
 ```
-
-Explain Code
 
 Run the development server:
 

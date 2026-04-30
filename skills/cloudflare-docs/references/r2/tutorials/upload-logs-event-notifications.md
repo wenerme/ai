@@ -102,8 +102,8 @@ cd consumer-worker
 
 In your Worker project's \[[Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)\](/workers/wrangler/configuration/), add a [queue consumer](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) and [R2 bucket binding](https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets). The queues consumer bindings will register your Worker as a consumer of your future event notifications and the R2 bucket bindings will allow your Worker to access your R2 bucket.
 
-* [  wrangler.jsonc ](#tab-panel-7299)
-* [  wrangler.toml ](#tab-panel-7300)
+* [  wrangler.jsonc ](#tab-panel-7297)
+* [  wrangler.toml ](#tab-panel-7298)
 
 JSONC
 
@@ -162,8 +162,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -198,8 +196,6 @@ bucket_name = "example-log-sink-bucket"
 
 
 ```
-
-Explain Code
 
 ## 6\. Write event notification messages to R2
 
@@ -252,8 +248,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## 7\. Deploy your Worker
 

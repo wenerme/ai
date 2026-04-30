@@ -47,8 +47,6 @@ All generic webhook notifications follow this schema:
 
 ```
 
-Explain Code
-
 ### Field descriptions
 
 | Field                  | Type    | Description                                                                         |
@@ -145,8 +143,6 @@ DDoS attack (Layer 4)
 
 ```
 
-Explain Code
-
 DDoS attack (Layer 7)
 
 ```
@@ -216,8 +212,6 @@ DDoS attack (Layer 7)
 
 ```
 
-Explain Code
-
 SSL certificate expiration
 
 ```
@@ -276,8 +270,6 @@ SSL certificate expiration
 
 
 ```
-
-Explain Code
 
 Origin health check
 
@@ -339,8 +331,6 @@ Origin health check
 
 
 ```
-
-Explain Code
 
 Workers alert
 
@@ -443,8 +433,6 @@ Workers alert
 
 ```
 
-Explain Code
-
 Access certificate expiration
 
 ```
@@ -491,8 +479,6 @@ Access certificate expiration
 
 
 ```
-
-Explain Code
 
 Workers observability alert
 
@@ -560,8 +546,6 @@ Workers observability alert
 
 
 ```
-
-Explain Code
 
 ## Validate webhook payloads
 

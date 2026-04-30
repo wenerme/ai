@@ -46,8 +46,8 @@ Warning
 
 You must create an [Account API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the role `SSO Connector Edit` and store it securely. This acts as a backup plan, allowing you to disable SSO via the API if you are accidentally locked out, such as due to changes in your IdP configuration later.
 
-* [ Dashboard ](#tab-panel-6013)
-* [ API ](#tab-panel-6014)
+* [ Dashboard ](#tab-panel-6011)
+* [ API ](#tab-panel-6012)
 
 1. Once you have configured an IdP in Cloudflare One, go to the **Members** page to manage SSO connectors.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -113,12 +113,10 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors"
 
 ```
 
-Explain Code
-
 ## 3\. Verify domain ownership
 
-* [ Dashboard ](#tab-panel-6015)
-* [ API ](#tab-panel-6016)
+* [ Dashboard ](#tab-panel-6013)
+* [ API ](#tab-panel-6014)
 
 If you are unable to change your DNS records right away, the option to verify later is available. The verification process can be manually triggered from the actions menu for that connector in the list.
 
@@ -177,8 +175,8 @@ Once the verification process has completed and successfully verified domain own
 
 Domains that are associated with an already enabled connector belonging to a different account may not be enabled on a new account until disabled on the old account.
 
-* [ Dashboard ](#tab-panel-6017)
-* [ API ](#tab-panel-6018)
+* [ Dashboard ](#tab-panel-6015)
+* [ API ](#tab-panel-6016)
 
 Enable the connector by selecting **Enable** in the Actions menu for that connector in the list.
 
@@ -330,8 +328,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/3537
     "name": "SSO App",  
     "allowed_idps": []  
   }'  
-```  
-Explain Code
+```
 
 Users will now have the option to log in using a one-time PIN.
 
@@ -341,8 +338,8 @@ Warning
 
 Before disabling SSO, make sure you have access to your Cloudflare user email. This will allow you to reset your password in case you get logged out of the Cloudflare dashboard.
 
-* [ Dashboard ](#tab-panel-6009)
-* [ API ](#tab-panel-6010)
+* [ Dashboard ](#tab-panel-6007)
+* [ API ](#tab-panel-6008)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -391,8 +388,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors"
 
 ```
 
-Explain Code
-
 1. Disable the SSO connector:  
 cURL command  
 ```  
@@ -435,16 +430,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/
 
 ```
 
-Explain Code
-
 Users can now log in using their Cloudflare account email and password. If a user does not have a password, they can use the [forgot password](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#forgot-your-password) method on the login page to create one.
 
 ## Change your Zero Trust team name
 
 Cloudflare does not allow you to change your team name while a SSO connector is created. To change your team name, you must disable and delete your SSO connector(s).
 
-* [ Dashboard ](#tab-panel-6011)
-* [ API ](#tab-panel-6012)
+* [ Dashboard ](#tab-panel-6009)
+* [ API ](#tab-panel-6010)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)

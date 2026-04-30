@@ -29,8 +29,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-5951)
-* [  wrangler.toml ](#tab-panel-5952)
+* [  wrangler.jsonc ](#tab-panel-5949)
+* [  wrangler.toml ](#tab-panel-5950)
 
 JSONC
 
@@ -60,8 +60,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -137,8 +135,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Testing
 
 Start your development server:
@@ -191,8 +187,6 @@ Hi there'
 
 
 ```
-
-Explain Code
 
 This will output the parsed email structure in the console:
 
@@ -254,8 +248,6 @@ This will output the parsed email structure in the console:
 
 
 ```
-
-Explain Code
 
 ## Next steps
 

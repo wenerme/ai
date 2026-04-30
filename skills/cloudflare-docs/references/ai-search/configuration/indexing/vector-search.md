@@ -79,8 +79,6 @@ const results = await instance.search({
 
 ```
 
-Explain Code
-
 ## Scoring details
 
 When using vector search, each chunk includes a `scoring_details` object:

@@ -184,8 +184,6 @@ export class DigestAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -259,8 +257,6 @@ export class DigestAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 The function form of `saveMessages` — `saveMessages((messages) => [...])` — reads the latest persisted messages at execution time. This avoids stale baselines when multiple calls queue up (for example, rapid webhook arrivals). Refer to [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) for more on `schedule()` and cron syntax.
 
 ### Processing a queue
@@ -314,8 +310,6 @@ async processQueue() {
 
 
 ```
-
-Explain Code
 
 No special hooks needed — `saveMessages` returns after the full turn completes.
 
@@ -375,8 +369,6 @@ async onEmail(email: AgentEmail) {
 
 
 ```
-
-Explain Code
 
 ### Webhook-triggered
 
@@ -452,8 +444,6 @@ async onRequest(request: Request): Promise<Response> {
 
 ```
 
-Explain Code
-
 ### Injecting context without triggering a response
 
 Use `persistMessages` to add messages that the LLM will see on its next turn, without starting a turn now:
@@ -493,8 +483,6 @@ async addBackgroundContext(data: string) {
 
 
 ```
-
-Explain Code
 
 ## Reacting to responses you did not initiate
 
@@ -536,8 +524,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -568,8 +554,6 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
-
-Explain Code
 
 ### Analytics
 
@@ -607,8 +591,6 @@ protected async onChatResponse(result: ChatResponseResult) {
 
 
 ```
-
-Explain Code
 
 ### Chained reasoning
 
@@ -659,8 +641,6 @@ protected async onChatResponse(result: ChatResponseResult) {
 
 ```
 
-Explain Code
-
 When `saveMessages` is called from inside `onChatResponse`, the inner turn runs to completion and `saveMessages` returns. After the current `onChatResponse` call returns, the framework fires `onChatResponse` again for the inner response. This continues until no more work is queued. The framework never nests `onChatResponse` calls — results are drained sequentially.
 
 ### Reactive queue processing
@@ -701,8 +681,6 @@ protected async onChatResponse(result: ChatResponseResult) {
 
 
 ```
-
-Explain Code
 
 ### `ChatResponseResult` fields
 
@@ -796,8 +774,6 @@ function Chat() {
 
 
 ```
-
-Explain Code
 
 When a server-driven response arrives while the user is idle, connected clients see the new messages appear in real time. The `isStreaming` flag transitions from `false` to `true` to `false` as the stream runs, so UI elements like the send button automatically disable and re-enable.
 

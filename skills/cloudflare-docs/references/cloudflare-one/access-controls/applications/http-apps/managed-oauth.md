@@ -171,8 +171,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP
         }  
     }  
   }'  
-```  
-Explain Code
+```
 
 ## Authorization flow
 

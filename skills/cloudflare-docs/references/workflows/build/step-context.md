@@ -110,8 +110,6 @@ await step.do(
 
 ```
 
-Explain Code
-
 ## Examples
 
 ### Adjust behavior based on retry attempt
@@ -156,8 +154,6 @@ await step.do(
 
 ```
 
-Explain Code
-
 ### Log step metadata for observability
 
 Use `ctx.step` to add structured metadata to your logs:
@@ -191,8 +187,6 @@ await step.do("process-order", async (ctx) => {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/step-context/","name":"Step context"}}]}

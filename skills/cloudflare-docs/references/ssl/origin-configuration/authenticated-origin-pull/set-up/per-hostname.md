@@ -145,8 +145,6 @@ curl --silent \
 
 ```
 
-Explain Code
-
 In the API response, save the certificate `id` since it will be required in step 3.
 
 ## 2\. Configure origin to accept client certificates

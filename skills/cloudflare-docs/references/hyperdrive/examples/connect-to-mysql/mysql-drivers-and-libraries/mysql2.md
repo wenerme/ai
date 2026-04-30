@@ -42,8 +42,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6105)
-* [  wrangler.toml ](#tab-panel-6106)
+* [  wrangler.jsonc ](#tab-panel-6103)
+* [  wrangler.toml ](#tab-panel-6104)
 
 JSONC
 
@@ -79,8 +79,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -172,8 +170,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Note
 

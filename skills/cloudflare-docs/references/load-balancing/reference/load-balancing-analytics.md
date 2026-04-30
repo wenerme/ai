@@ -219,8 +219,6 @@ Example event (truncated):
 
 ```
 
-Explain Code
-
 In this example:
 
 * Each origin includes a `monitors` array listing all monitors within the attached group.
@@ -290,7 +288,7 @@ query RequestsPerPool($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmUYDOAXZAFSGD2OA2AFACQBeOAdmACoCGA5gFwxoQCWF9ANDMWrRFTNqbALZgexMBQAmwsWACUMAN4AoGDABubMAHdIqjZpjkqyQgDM2+VJGYrTlGg2ZlndejAC+y9SZN8HFoZACFafFoKAGMOegQkNGQAQRlaAAdUNi0wAHEIHBB0i2MAzXwxNiEYAEYABjrSsutbeyMysrS7LPEAfXpEN35BJo6usB6wXvxB3mkZUbL8ACMAOVpxZgAiFYA6MAAPDfSZ3eicUS3FzW9rmBwIGUhQqGYAbXHJgDE2SztpACyHBAdmQvQAIgBRADKAGEALqLPx3c4gCioO4yBQUZBsSjIdodEyfBQ-P5gQHA0F3TTnIKwnBPGksMAzaJ2GS4AjrcR3W4dfkmQW3bxAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwCccNgGZUAVgljOGCiBhQAJs3ZdeA4aKFSZckAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmUYDOAXZAFSGD2OA2AFACQBeOAdmACoCGA5gFwxoQCWF9ANDMWrRFTNqbALZgexMBQAmwsWACUMAN4AoGDABubMAHdIqjZpjkqyQgDM2+VJGYrTlGg2ZlndejAC+y9SZN8HFoZACFafFoKAGMOegQkNGQAQRlaAAdUNi0wAHEIHBB0i2MAzXwxNiEYAEYABjrSsutbeyMysrS7LPEAfXpEN35BJo6usB6wXvxB3mkZUbL8ACMAOVpxZgAiFYA6MAAPDfSZ3eicUS3FzW9rmBwIGUhQqGYAbXHJgDE2SztpACyHBAdmQvQAIgBRADKAGEALqLPx3c4gCioO4yBQUZBsSjIdodEyfBQ-P5gQHA0F3TTnIKwnBPGksMAzaJ2GS4AjrcR3W4dfkmQW3bxAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwCccAIydUAZgDsqFiwwUQMKABNm7LrwHC48qbPmKAvkA)
 
 Response (truncated)
 
@@ -340,8 +338,6 @@ Response (truncated)
 
 
 ```
-
-Explain Code
 
 Requests per data center
 
@@ -406,7 +402,7 @@ query RequestsPerDataCenter($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmUYDOAXZAFSARAhq3AYTADtVIAKAEgC8B7EsAFVwHMAuGNCASxNYA0MKmlwRUnJjwC2YIVVIATSTLABKGAG8AUDBgA3HmADukLbr0x6jZBQBmPADbkInTVYbM2nWp5asYAF8NHUtLRzpcRQAhXEdcEgBjPlYEJDRkAEFFXAAHVB59MAoLML1HGR4JGABGAAY60rKHZ0g3JrKYHPIC2QB9VkQfUXEOsu6wXrA+xyHhJTGwxwAjADlcWU4AIhWAOjAADw3c2d3EumktxctziMI6RTBtgGUASVWrzr1A67oIR4g0SgnAA2hMpn1sABRZ6EAC6YxC12QYFmiXIigwdDojnWsmuuWxjmQ5i+lkJOLxYGuegAFmA4qhaVAaTB6YzaYR6YkANZQki4ZazRSs3D6VKoVAAWWQ1x+nXllkVP0CQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwCccNgGZUAVgljOGCiBhQAJs3ZdeA4aKFSZckAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmUYDOAXZAFSARAhq3AYTADtVIAKAEgC8B7EsAFVwHMAuGNCASxNYA0MKmlwRUnJjwC2YIVVIATSTLABKGAG8AUDBgA3HmADukLbr0x6jZBQBmPADbkInTVYbM2nWp5asYAF8NHUtLRzpcRQAhXEdcEgBjPlYEJDRkAEFFXAAHVB59MAoLML1HGR4JGABGAAY60rKHZ0g3JrKYHPIC2QB9VkQfUXEOsu6wXrA+xyHhJTGwxwAjADlcWU4AIhWAOjAADw3c2d3EumktxctziMI6RTBtgGUASVWrzr1A67oIR4g0SgnAA2hMpn1sABRZ6EAC6YxC12QYFmiXIigwdDojnWsmuuWxjmQ5i+lkJOLxYGuegAFmA4qhaVAaTB6YzaYR6YkANZQki4ZazRSs3D6VKoVAAWWQ1x+nXllkVP0CQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwCccAIydUAZgDsqFiwwUQMKABNm7LrwHC48qbPmKAvkA)
 
 Response (truncated)
 
@@ -486,8 +482,6 @@ Response (truncated)
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/reference/load-balancing-analytics/","name":"Analytics"}}]}

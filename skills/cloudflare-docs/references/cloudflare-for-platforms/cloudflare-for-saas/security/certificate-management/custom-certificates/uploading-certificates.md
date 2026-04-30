@@ -108,8 +108,6 @@ EOF
 
 ```
 
-Explain Code
-
 1. Use a [POST request](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) to upload your certificate and key.
 
 Note

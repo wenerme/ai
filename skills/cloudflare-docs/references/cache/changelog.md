@@ -178,8 +178,6 @@ The detailed audit payload is visible within the Cloudflare Dashboard (under **M
 
 ```
 
-Explain Code
-
 #### Get started
 
 To get started, refer to the [Audit Logs documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
@@ -235,8 +233,6 @@ The Trace response includes the cache key in the `cache` object:
 
 
 ```
-
-Explain Code
 
 #### Get started
 
@@ -520,8 +516,6 @@ When configuring [custom cache keys](https://developers.cloudflare.com/cache/how
 
 
 ```
-
-Explain Code
 
 This configuration creates separate cache entries based on the `accept-language` and `user-agent` headers, while also considering whether the `referer` header is present.
 

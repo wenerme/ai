@@ -186,8 +186,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
-Explain Code
-
 ### Isolate high risk content
 
 Isolate high risk content categories such as newly registered domains.
@@ -235,8 +233,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
-
-Explain Code
 
 ### Isolate news and media
 
@@ -286,8 +282,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
-Explain Code
-
 ### Isolate uncategorized content
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
@@ -335,8 +329,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
-
-Explain Code
 
 ### Isolate ChatGPT
 
@@ -387,8 +379,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/remote-browser-isolation/","name":"Remote browser isolation"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/remote-browser-isolation/isolation-policies/","name":"Isolation policies"}}]}

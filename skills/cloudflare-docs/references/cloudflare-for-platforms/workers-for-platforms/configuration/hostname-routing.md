@@ -87,8 +87,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Subdomain routing
 
 If you're only looking to route subdomain records (e.g. `customer1.saas.com`), you can use a more specific route (`*.saas.com/*`) to route requests to your dispatch Worker.
@@ -135,8 +133,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### O2O Behavior
 

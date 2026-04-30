@@ -55,8 +55,6 @@ import {
 
 ```
 
-Explain Code
-
 In your `RtkUIProvider` from [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/), replace:
 
 ```
@@ -139,8 +137,6 @@ with:
 
 ```
 
-Explain Code
-
 Define the click handler:
 
 ```
@@ -213,8 +209,6 @@ with:
 
 
 ```
-
-Explain Code
 
 Register the click handler after rendering:
 
@@ -402,8 +396,6 @@ export class CustomHeaderComponent implements AfterViewInit {
 
 ```
 
-Explain Code
-
 #### Use in Your Meeting Component
 
 In your main meeting component template, replace:
@@ -514,8 +506,6 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
 ```
 
-Explain Code
-
 #### Module Configuration
 
 Don't forget to declare your custom header component in your Angular module:
@@ -554,8 +544,6 @@ export class AppModule {}
 
 
 ```
-
-Explain Code
 
 This approach gives you full control over the header layout while maintaining Angular's component architecture and event handling patterns.
 
@@ -744,8 +732,6 @@ class CustomHeaderView: UIView {
 
 ```
 
-Explain Code
-
 #### Use in your meeting view controller
 
 In your `MeetingViewController`, replace the default header with your custom header:
@@ -832,8 +818,6 @@ class MeetingViewController: UIViewController {
 
 
 ```
-
-Explain Code
 
 RealtimeKit UI provides the `RtkMeetingHeaderView` component for a default header.
 
@@ -1010,8 +994,6 @@ layout/custom\_header.xml
 
 ```
 
-Explain Code
-
 #### Create custom header view class
 
 CustomHeaderView.kt
@@ -1078,8 +1060,6 @@ class CustomHeaderView @JvmOverloads constructor(
 
 
 ```
-
-Explain Code
 
 #### Use in your meeting activity
 
@@ -1148,8 +1128,6 @@ class MeetingActivity : AppCompatActivity() {
 
 
 ```
-
-Explain Code
 
 RealtimeKit UI provides the `RtkAppBar` widget for a default header.
 
@@ -1306,8 +1284,6 @@ class CustomHeader extends StatelessWidget {
 
 
 ```
-
-Explain Code
 
 #### Use in your meeting screen
 
@@ -1477,8 +1453,6 @@ class _MeetingScreenState extends State<MeetingScreen> {
 
 ```
 
-Explain Code
-
 RealtimeKit UI provides the `RtkHeader` component for a default header.
 
 If you need additional controls, replace `RtkHeader` with individual UI Kit components and custom elements.
@@ -1515,8 +1489,6 @@ import {
 
 
 ```
-
-Explain Code
 
 #### Create custom header component
 
@@ -1717,8 +1689,6 @@ const styles = StyleSheet.create({
 
 ```
 
-Explain Code
-
 Note
 
 `useRealtimeKitMeeting` and `useRealtimeKitSelector` must be called inside a component rendered within a `RealtimeKitProvider`. The `roomJoined` guard ensures the header only renders once the participant has successfully joined the meeting. `meeting.join()` is called from the parent `MeetingScreen` so that the join lifecycle is managed in one place.
@@ -1859,8 +1829,6 @@ const styles = StyleSheet.create({
 
 
 ```
-
-Explain Code
 
 Note
 

@@ -59,8 +59,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Cozy Coffee Shop](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/cozy-coffee-shop.png) 
 
 ## Examples
@@ -98,8 +96,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Vintage Tokyo Poster](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/vintage-tokyo-poster.png) 
 
 **Dewdrops Macro**  — Photorealistic macro photography 
@@ -135,8 +131,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Dewdrops Macro](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/dewdrops-macro.png) 
 
 **Pixel Art Marketplace**  — Isometric pixel art scene 
@@ -171,8 +165,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Pixel Art Marketplace](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/pixel-art-marketplace.png) 
 
@@ -212,8 +204,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![High Resolution Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/high-resolution-landscape.png) 
 

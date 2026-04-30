@@ -57,8 +57,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/print-ready-illustration.png) 
 
 ## Examples
@@ -95,8 +93,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/large-format-art.png) 
 
@@ -159,8 +155,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Brand Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/brand-asset.png) 
 
 **Editorial Illustration**  — Magazine-quality editorial illustration 
@@ -193,8 +187,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/editorial-illustration.png) 
 

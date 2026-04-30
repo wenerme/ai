@@ -73,8 +73,6 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/google-ai
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -107,8 +105,6 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/google-ai
 
 
 ```
-
-Explain Code
 
 With Stored Keys (BYOK) / Unified Billing
 
@@ -144,8 +140,6 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/google-ai
 
 
 ```
-
-Explain Code
 
 ### `@google/genai`
 
@@ -194,8 +188,6 @@ console.log(response.text);
 
 ```
 
-Explain Code
-
 ```
 
 import { GoogleGenAI } from "@google/genai";
@@ -227,8 +219,6 @@ console.log(response.text);
 
 
 ```
-
-Explain Code
 
 With Stored Keys (BYOK) / Unified Billing
 
@@ -263,8 +253,6 @@ console.log(response.text);
 
 
 ```
-
-Explain Code
 
 ## OpenAI-Compatible Endpoint
 

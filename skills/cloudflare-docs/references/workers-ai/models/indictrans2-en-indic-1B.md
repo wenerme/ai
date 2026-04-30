@@ -70,8 +70,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
 import requests
@@ -104,8 +102,6 @@ print(output)
 
 
 ```
-
-Explain Code
 
 Terminal window
 

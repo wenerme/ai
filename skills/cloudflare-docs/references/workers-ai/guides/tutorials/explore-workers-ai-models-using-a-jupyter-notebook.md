@@ -160,8 +160,6 @@ display(Markdown(result["response"]))
 
 ```
 
-Explain Code
-
 # **Using Keyboard Shortcuts to Execute Cells in Jupyter Notebooks**
 
 Executing cells in Jupyter Notebooks can be done quickly and efficiently using various keyboard shortcuts, saving you time and effort. Here are the shortcuts you can use:
@@ -252,8 +250,6 @@ print(data["description"])
 
 ```
 
-Explain Code
-
 ![lava lamps](https://blog.cloudflare.com/content/images/2017/11/lava-lamps.jpg) 
 
 The image features a display of various colored lava lamps. There are at least 14 lava lamps in the scene, each with a different color and design. The lamps are arranged in a visually appealing manner, with some placed closer to the foreground and others further back. The display creates an eye-catching and vibrant atmosphere, showcasing the diverse range of lava lamps available.
@@ -288,8 +284,6 @@ response
 
 
 ```
-
-Explain Code
 
 Your browser does not support the audio element.
 
@@ -490,8 +484,6 @@ JavaScript
 
 ```
 
-Explain Code
-
 ### Translations
 
 Explore all [Translation models](https://developers.cloudflare.com/workers-ai/models)
@@ -519,8 +511,6 @@ print(result["translated_text"])
 
 
 ```
-
-Explain Code
 
 La inteligencia artificial es bastante impresionante en estos días.Es un buen momento para ser un constructor
 
@@ -579,8 +569,6 @@ response
 
 
 ```
-
-Explain Code
 
 ![jpeg](https://developers.cloudflare.com/workers-ai-notebooks/cloudflare-workers-ai/assets/output_27_0.jpg) 
 

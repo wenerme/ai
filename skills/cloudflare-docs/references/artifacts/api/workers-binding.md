@@ -133,8 +133,6 @@ async function createRepo(artifacts) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -168,8 +166,6 @@ async function createRepo(artifacts: Artifacts) {
 
 
 ```
-
-Explain Code
 
 The returned token encodes its expiry directly in the `?expires=` suffix.
 
@@ -249,8 +245,6 @@ async function listRepos(artifacts) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -278,8 +272,6 @@ async function listRepos(artifacts: Artifacts) {
 
 
 ```
-
-Explain Code
 
 Each listed repo includes a `status` value of `ready`, `importing`, or `forking`.
 
@@ -338,8 +330,6 @@ async function importFromGitHub(artifacts) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -379,8 +369,6 @@ async function importFromGitHub(artifacts: Artifacts) {
 
 
 ```
-
-Explain Code
 
 Imported repos return the same create-style token format. The token encodes its expiry directly in the `?expires=` suffix.
 
@@ -624,8 +612,6 @@ async function forkRepo(artifacts) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -651,8 +637,6 @@ async function forkRepo(artifacts: Artifacts) {
 
 
 ```
-
-Explain Code
 
 ## Worker example
 
@@ -732,8 +716,6 @@ export default {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -811,8 +793,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Protect token routes
 

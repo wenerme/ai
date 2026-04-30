@@ -87,8 +87,6 @@ export class ImageProcessingWorkflow extends WorkflowEntrypoint {
 
 ```
 
-Explain Code
-
 [ Get started ](https://developers.cloudflare.com/workflows/get-started/guide/) [ Browse the examples ](https://developers.cloudflare.com/workflows/examples/) 
 
 ---

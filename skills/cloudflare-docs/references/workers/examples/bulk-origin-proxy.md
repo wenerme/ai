@@ -20,10 +20,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Resolve requests to your domain to a set of proxy third-party origin URLs.
 
-* [  JavaScript ](#tab-panel-8676)
-* [  TypeScript ](#tab-panel-8677)
-* [  Hono ](#tab-panel-8678)
-* [  Python ](#tab-panel-8679)
+* [  JavaScript ](#tab-panel-8714)
+* [  TypeScript ](#tab-panel-8715)
+* [  Hono ](#tab-panel-8716)
+* [  Python ](#tab-panel-8717)
 
 JavaScript
 
@@ -78,8 +78,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -132,8 +130,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -191,8 +187,6 @@ export default app;
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -237,8 +231,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/bulk-origin-proxy/","name":"Bulk origin override"}}]}

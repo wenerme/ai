@@ -159,8 +159,6 @@ Determine what [permission groups](https://developers.cloudflare.com/fundamental
 
 ```
 
-Explain Code
-
 ### Get S3 API credentials from an API token
 
 You can get the Access Key ID and Secret Access Key values from the response of the [Create Token](https://developers.cloudflare.com/api/resources/user/subresources/tokens/methods/create/) API:

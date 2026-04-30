@@ -84,8 +84,6 @@ After successfully uploading the image, you will receive a response similar to t
 
 ```
 
-Explain Code
-
 If your origin server returns an error while fetching the images, the API response will return a 4xx error.
 
 ```json

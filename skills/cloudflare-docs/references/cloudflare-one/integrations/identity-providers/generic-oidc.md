@@ -113,8 +113,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_
 
 ```
 
-Explain Code
-
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
    * `Access: Organizations, Identity Providers, and Groups Write`
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:  
@@ -135,8 +133,7 @@ resource "cloudflare_zero_trust_access_identity_provider" "generic_oidc_example"
     scopes = ["openid", "email", "profile"]  
   }  
 }  
-```  
-Explain Code
+```
 
 ## 3\. Test the connection
 

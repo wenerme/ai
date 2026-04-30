@@ -117,8 +117,6 @@ The response resembles the following:
 
 ```
 
-Explain Code
-
 The REST control-plane base URL and the returned Git remote use different hosts. Use the exact `result.remote` value for Git operations. The example above uses `<ACCOUNT_ID>` as a placeholder for your Cloudflare account ID.
 
 The returned token encodes its expiry directly in the `?expires=` suffix.
@@ -211,8 +209,6 @@ curl "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \
 
 
 ```
-
-Explain Code
 
 This endpoint returns repo metadata only. If you need a new repo token, mint one with `POST /tokens`.
 

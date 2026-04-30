@@ -108,8 +108,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
-Explain Code
-
 * `"id": "<MANAGED_RULESET_ID>"` adds a rule to the ruleset of a phase that will apply the Cloudflare Managed Ruleset to requests for the specified zone (`$ZONE_ID`).
 * `"enabled": false` defines an override at the ruleset level that disables all rules in the managed ruleset.
 * `"categories": [{"category": "joomla", "action": "block", "enabled": true}]` defines an override at the tag level that enables the Joomla rules and sets their action to `block`.
@@ -182,8 +180,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/
 
 
 ```
-
-Explain Code
 
 * `"id": "<MANAGED_RULESET_ID>"` adds a rule to the ruleset of a phase that will apply the Cloudflare Managed Ruleset to requests for `example.com`.
 * `"enabled": false` defines an override at the ruleset level that disables all rules in the managed ruleset.
@@ -285,8 +281,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
-Explain Code
-
 Example: Add more than one category override at the account level
 
 Required API token permissions
@@ -363,8 +357,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/
 
 
 ```
-
-Explain Code
 
 The order of the overrides in the ruleset determines if rules in the deployed managed ruleset are enabled or disabled. Overrides placed later in the list take precedence over earlier overrides.
 

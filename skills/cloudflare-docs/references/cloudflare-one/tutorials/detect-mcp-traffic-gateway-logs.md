@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Detect MCP traffic in Gateway logs
 
-**Last reviewed:**  19 days ago 
+**Last reviewed:**  20 days ago 
 
 Organizations may lack visibility into Model Context Protocol (MCP) traffic, which can allow employees to connect to remote MCP servers outside of IT oversight. These connections risk the exfiltration of sensitive internal data and credentials, tool injection attacks or software supply chain risks.
 
@@ -152,8 +152,6 @@ const groups =
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -250,8 +248,6 @@ const groups =
 
 ```
 
-Explain Code
-
 Replace `<YOUR_ACCOUNT_ID>` with your Cloudflare account ID. Replace `<START_DATE>` and `<END_DATE>` with ISO-8601 timestamps covering your desired time range (up to 30 days).
 
 ## 3\. Process the query results
@@ -295,8 +291,6 @@ console.log(`${unblockedHits.length} destinations are unblocked`);
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -351,8 +345,6 @@ console.log(`${unblockedHits.length} destinations are unblocked`);
 
 
 ```
-
-Explain Code
 
 Key insights from the data:
 
@@ -492,8 +484,6 @@ const DLP_REGEX_PATTERNS = [
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -585,8 +575,6 @@ const DLP_REGEX_PATTERNS = [
 
 ```
 
-Explain Code
-
 Pattern explanation:
 
 * `\\s{0,5}` — Allows zero to five whitespace characters to handle both minified and pretty-printed JSON
@@ -666,8 +654,6 @@ if (data.success) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -733,8 +719,6 @@ if (data.success) {
 
 ```
 
-Explain Code
-
 Replace `${accountId}` with your Cloudflare account ID and `${apiToken}` with your API token.
 
 ### Reference the DLP profile in a Gateway rule
@@ -771,8 +755,6 @@ const dlpRule = {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -799,8 +781,6 @@ const dlpRule = {
 
 
 ```
-
-Explain Code
 
 This rule triggers when the DLP profile matches any of the regex patterns in the request body.
 
@@ -878,8 +858,6 @@ console.log("Shadow MCP traffic:", shadowTraffic);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -932,8 +910,6 @@ console.log("Shadow MCP traffic:", shadowTraffic);
 
 
 ```
-
-Explain Code
 
 Replace the `portalDomains` array with the actual domains of your approved MCP Server Portals.
 

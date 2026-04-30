@@ -68,8 +68,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
-Explain Code
-
 Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
@@ -102,8 +100,6 @@ resource "cloudflare_zero_trust_access_policy" "allow_employees_by_email_domain"
 
 
 ```
-
-Explain Code
 
 You can add multiple email domains to the Include rule if your organization uses more than one domain (for example, `@example.com` and `@example.co.uk`).
 
@@ -169,8 +165,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/groups" \
 
 ```
 
-Explain Code
-
 Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
@@ -215,8 +209,6 @@ resource "cloudflare_zero_trust_access_group" "approved_countries" {
 
 
 ```
-
-Explain Code
 
 Then reference the rule group in your Access policy:
 
@@ -308,8 +300,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
-Explain Code
-
 Replace `<APPROVED_COUNTRIES_GROUP_ID>` with the `id` returned when you created the rule group above. To look up existing groups, use the [List Access groups](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/groups/methods/list/) endpoint.
 
 Required API token permissions
@@ -378,8 +368,6 @@ resource "cloudflare_zero_trust_access_policy" "allow_employees_from_specific_co
 
 
 ```
-
-Explain Code
 
 The `cloudflare_zero_trust_access_group.approved_countries` reference points to the [cloudflare\_zero\_trust\_access\_group ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fgroup) resource created above.
 
@@ -467,8 +455,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
-Explain Code
-
 Replace the `okta` rule with the [appropriate rule for your identity provider](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/policies/methods/create/). To get your identity provider ID, use the [List Access identity providers](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/identity%5Fproviders/methods/list/) endpoint. To get the integration UIDs for your device posture checks, use the [List device posture checks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/posture/methods/list/) endpoint.
 
 Required API token permissions
@@ -529,8 +515,6 @@ resource "cloudflare_zero_trust_access_policy" "require_device_posture" {
 
 
 ```
-
-Explain Code
 
 * Replace the `okta` rule with the appropriate [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource for your identity provider. To configure the identity provider resource, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 * To configure the [cloudflare\_zero\_trust\_device\_posture\_rule ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fposture%5Frule) resources referenced above, refer to [Device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
@@ -623,8 +607,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
-Explain Code
-
 The `auth_method` value uses [RFC 8176 ↗](https://datatracker.ietf.org/doc/html/rfc8176#section-2) authentication method reference values. For example, `swk` represents a software-secured key (security key). Replace the `okta` rule with the [appropriate rule for your identity provider](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/policies/methods/create/). To get your identity provider ID, use the [List Access identity providers](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/identity%5Fproviders/methods/list/) endpoint. To get `<GATEWAY_CHECK_ID>`, use the [List device posture checks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/posture/methods/list/) endpoint.
 
 Required API token permissions
@@ -685,8 +667,6 @@ resource "cloudflare_zero_trust_access_policy" "require_mfa" {
 
 
 ```
-
-Explain Code
 
 The `auth_method` value uses [RFC 8176 ↗](https://datatracker.ietf.org/doc/html/rfc8176#section-2) authentication method reference values. For example, `swk` represents a software-secured key (security key).
 
@@ -780,8 +760,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
-Explain Code
-
 To get the ID of your OTP identity provider, use the [List Access identity providers](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/identity%5Fproviders/methods/list/) endpoint.
 
 Required API token permissions
@@ -841,8 +819,6 @@ resource "cloudflare_zero_trust_access_policy" "allow_contractor_access_with_otp
 
 ```
 
-Explain Code
-
 To configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource for OTP (configured with `type = "onetimepin"`), refer to [One-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/).
 
 Warning
@@ -895,8 +871,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configur
 
 
 ```
-
-Explain Code
 
 Then, create the Access policy with `isolation_required` set to `true`:
 
@@ -951,8 +925,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 
 ```
-
-Explain Code
 
 First, configure the [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings) resource to enable Clientless Web Isolation on your account if you have not already:
 
@@ -1031,8 +1003,6 @@ resource "cloudflare_zero_trust_access_policy" "isolate_contractor_access" {
 
 
 ```
-
-Explain Code
 
 To restrict what users can do inside the isolated session, create a companion [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) that matches traffic to the application domain. Set the action to **Isolate** and disable interactive controls in the [policy settings](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#policy-settings).
 
@@ -1126,8 +1096,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
-Explain Code
-
 To get the ID of your IP list, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/) endpoint.
 
 Required API token permissions
@@ -1172,8 +1140,6 @@ resource "cloudflare_zero_trust_access_policy" "block_high_risk_countries" {
 
 
 ```
-
-Explain Code
 
 To configure the [cloudflare\_zero\_trust\_list ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Flist) resource referenced above (configured with `type = "IP"`), refer to [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/).
 
@@ -1250,8 +1216,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
-Explain Code
-
 Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
@@ -1294,8 +1258,6 @@ resource "cloudflare_zero_trust_access_policy" "exclude_high_risk_users" {
 
 
 ```
-
-Explain Code
 
 In this example, any user scored as high risk is excluded even if they match the Include rule. To learn how risk scores are calculated and how to configure risk behaviors, refer to [User risk score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/).
 
@@ -1370,8 +1332,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
-Explain Code
-
 To get the ID of your service token, use the [List service tokens](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/service%5Ftokens/methods/list/) endpoint.
 
 Required API token permissions
@@ -1416,8 +1376,6 @@ resource "cloudflare_zero_trust_access_policy" "authenticate_service_with_token"
 
 
 ```
-
-Explain Code
 
 To configure the [cloudflare\_zero\_trust\_access\_service\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fservice%5Ftoken) resource referenced above, refer to [Service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).
 
@@ -1479,8 +1437,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
-Explain Code
-
 Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
@@ -1513,8 +1469,6 @@ resource "cloudflare_zero_trust_access_policy" "authenticate_service_with_mtls" 
 
 
 ```
-
-Explain Code
 
 To allow any client presenting a valid certificate signed by your CA, use the **Valid Certificate** selector. This selector is useful when you trust all certificates issued by your CA and do not need to check a specific Common Name.
 
@@ -1561,8 +1515,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 
 ```
-
-Explain Code
 
 Required API token permissions
 
@@ -1679,8 +1631,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
-Explain Code
-
 Replace the `okta` rule with the [appropriate rule for your identity provider](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/policies/methods/create/). To get your identity provider ID, use the [List Access identity providers](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/identity%5Fproviders/methods/list/) endpoint. To get the integration UIDs for your device posture checks, use the [List device posture checks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/posture/methods/list/) endpoint.
 
 Required API token permissions
@@ -1746,8 +1696,6 @@ resource "cloudflare_zero_trust_access_policy" "require_purpose_justification" {
 
 ```
 
-Explain Code
-
 * Replace the `okta` rule with the appropriate [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource for your identity provider. To configure the identity provider resource, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 * To configure the [cloudflare\_zero\_trust\_device\_posture\_rule ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fposture%5Frule) resources referenced above, refer to [Device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
@@ -1800,8 +1748,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 
 ```
-
-Explain Code
 
 Required API token permissions
 

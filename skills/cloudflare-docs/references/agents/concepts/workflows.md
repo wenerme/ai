@@ -257,8 +257,6 @@ const result = await step.do(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -289,8 +287,6 @@ const result = await step.do(
 
 
 ```
-
-Explain Code
 
 ### State synchronization
 

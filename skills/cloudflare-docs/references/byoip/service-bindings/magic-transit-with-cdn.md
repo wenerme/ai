@@ -150,8 +150,6 @@ In the response body, the initial provisioning state should be `provisioning`.
 
 ```
 
-Explain Code
-
 You can periodically check the service binding status using the [List Service Bindings](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/methods/list/) endpoint.
 
 ## 3\. Create address maps

@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to set Gzip compression as the preferred compression method for CSV files.
 
-* [ Dashboard ](#tab-panel-7337)
-* [ API ](#tab-panel-7338)
+* [ Dashboard ](#tab-panel-7335)
+* [ API ](#tab-panel-7336)
 
 The following example rule will configure Gzip compression as the preferred compression method for CSV files. If the visitor does not support this algorithm, Cloudflare will try to compress the response using a different algorithm supported by the visitor.
 
@@ -106,8 +106,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 
 ```
-
-Explain Code
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 

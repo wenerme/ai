@@ -28,10 +28,10 @@ Caution when using in production
 
 This code is provided as a sample, and is not suitable for production use. Basic Authentication sends credentials unencrypted, and must be used with an HTTPS connection to be considered secure. For a production-ready authentication system, consider using [Cloudflare Access ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 
-* [  JavaScript ](#tab-panel-8668)
-* [  TypeScript ](#tab-panel-8669)
-* [  Rust ](#tab-panel-8670)
-* [  Hono ](#tab-panel-8671)
+* [  JavaScript ](#tab-panel-8706)
+* [  TypeScript ](#tab-panel-8707)
+* [  Rust ](#tab-panel-8708)
+* [  Hono ](#tab-panel-8709)
 
 JavaScript
 
@@ -247,8 +247,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -451,8 +449,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
 use base64::prelude::*;
@@ -588,8 +584,6 @@ async fn fetch(req: Request, env: Env, _ctx: Context) -> Result<Response> {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -675,8 +669,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/basic-auth/","name":"HTTP Basic Authentication"}}]}

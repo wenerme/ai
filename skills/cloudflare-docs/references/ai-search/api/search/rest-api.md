@@ -93,8 +93,6 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 ```
 
-Explain Code
-
 ### Chat completions
 
 Generate a response from a specific instance. For the full specification, refer to the [Chat completions API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/).
@@ -128,8 +126,6 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 ```
 
-Explain Code
-
 #### Streaming
 
 Set `stream` to `true` to receive responses as Server-Sent Events (SSE). The retrieved chunks are sent first as a `chunks` event, followed by the streamed response.
@@ -157,8 +153,6 @@ data: [DONE]
 
 
 ```
-
-Explain Code
 
 ## Cross-instance search and chat
 
@@ -198,8 +192,6 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/search/","name":"Search"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/search/rest-api/","name":"REST API"}}]}

@@ -54,8 +54,6 @@ curl "https://api.cloudflare.com/client/v4/user/tokens/verify" \
 
 ```
 
-Explain Code
-
 ## The token has incorrect permissions
 
 Review the permissions groups for your token in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/profile/api-tokens). Refer to [API token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) for more information.

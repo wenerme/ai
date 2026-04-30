@@ -254,8 +254,6 @@ let upserted = await env.YOUR_INDEX.upsert(newMetadataVectors);
 
 ```
 
-Explain Code
-
 ### Query examples
 
 Use the `query()` method:
@@ -350,8 +348,6 @@ Results without metadata filtering:
 
 ```
 
-Explain Code
-
 The same `query()` method with a `filter` property supports metadata filtering.
 
 TypeScript
@@ -427,8 +423,6 @@ Results with metadata filtering:
 
 
 ```
-
-Explain Code
 
 ## Limitations
 

@@ -88,8 +88,6 @@ Response
 
 ```
 
-Explain Code
-
 No code
 
 To find pools with existing notifications in the dashboard:

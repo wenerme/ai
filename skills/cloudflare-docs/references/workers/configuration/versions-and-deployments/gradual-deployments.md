@@ -371,8 +371,6 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/logpush
 
 ```
 
-Explain Code
-
 `ScriptVersion` is an object with the following structure:
 
 ```

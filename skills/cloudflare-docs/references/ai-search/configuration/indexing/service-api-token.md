@@ -86,8 +86,6 @@ curl -X POST "https://api.cloudflare.com/client/v4/user/tokens" \
 
 ```
 
-Explain Code
-
 Save the `id` and `value` from the response:
 
 ```
@@ -166,8 +164,6 @@ Save the `id` from the response. This is your `token_id` to pass when creating R
 
 
 ```
-
-Explain Code
 
 ### 4\. Use the token when creating an instance
 

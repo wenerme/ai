@@ -78,8 +78,6 @@ For the [Cloudflare API via HTTP](https://developers.cloudflare.com/api/resource
 
 ```
 
-Explain Code
-
 ## Error code reference
 
 ### Client side errors

@@ -74,8 +74,6 @@ try {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -108,8 +106,6 @@ try {
 
 
 ```
-
-Explain Code
 
 Resource management with keepAlive
 
@@ -223,8 +219,6 @@ const sandbox2 = getSandbox(env.Sandbox, "user-env", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -258,8 +252,6 @@ const sandbox2 = getSandbox(env.Sandbox, 'user-env', {
 
 
 ```
-
-Explain Code
 
 **Available timeout options**:
 
@@ -368,8 +360,6 @@ const sandbox2 = getSandbox(env.Sandbox, "MyProject-123", {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -401,8 +391,6 @@ const sandbox2 = getSandbox(env.Sandbox, 'MyProject-123', {
 
 
 ```
-
-Explain Code
 
 Different normalizeId values = different sandboxes
 

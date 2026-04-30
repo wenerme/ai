@@ -65,8 +65,6 @@ function createServer() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -104,8 +102,6 @@ function createServer() {
 
 
 ```
-
-Explain Code
 
 The tool handler receives the validated input and must return an object with a `content` array. Each content item has a `type` (typically `"text"`) and the corresponding data.
 
@@ -159,8 +155,6 @@ server.tool(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -203,8 +197,6 @@ server.tool(
 
 
 ```
-
-Explain Code
 
 Set `isError: true` to signal that the tool call failed. The LLM receives the error message and can decide how to proceed.
 
@@ -276,8 +268,6 @@ server.tool(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -331,8 +321,6 @@ server.tool(
 
 ```
 
-Explain Code
-
 ## Using tools with `createMcpHandler`
 
 For stateless MCP servers, define tools inside a factory function and pass the server to [createMcpHandler](https://developers.cloudflare.com/agents/api-reference/mcp-handler-api/):
@@ -383,8 +371,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -427,8 +413,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Using tools with `McpAgent`
 
@@ -486,8 +470,6 @@ export class MyMCP extends McpAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -536,8 +518,6 @@ export class MyMCP extends McpAgent {
 
 
 ```
-
-Explain Code
 
 ## Next steps
 

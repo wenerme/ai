@@ -30,8 +30,8 @@ If you are using [Smart Placement](https://developers.cloudflare.com/workers/con
 
 If you need to always run your Worker script before serving static assets (for example, you wish to log requests, perform some authentication checks, use [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/), or otherwise transform assets before serving), set `run_worker_first` to `true`:
 
-* [  wrangler.jsonc ](#tab-panel-9205)
-* [  wrangler.toml ](#tab-panel-9206)
+* [  wrangler.jsonc ](#tab-panel-9243)
+* [  wrangler.toml ](#tab-panel-9244)
 
 JSONC
 
@@ -62,8 +62,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -88,8 +86,8 @@ run_worker_first = true
 
 ```
 
-* [  JavaScript ](#tab-panel-9209)
-* [  TypeScript ](#tab-panel-9210)
+* [  JavaScript ](#tab-panel-9247)
+* [  TypeScript ](#tab-panel-9248)
 
 ./worker/index.js
 
@@ -142,8 +140,6 @@ export default class extends WorkerEntrypoint {
 
 ```
 
-Explain Code
-
 ./worker/index.ts
 
 ```
@@ -195,14 +191,12 @@ export default class extends WorkerEntrypoint<Env> {
 
 ```
 
-Explain Code
-
 ### Run Worker first for selective paths
 
 You can also configure selective Worker-first routing using an array of route patterns, often paired with the [single-page-application setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control). This allows you to run the Worker first only for specific routes while letting other requests follow the default asset-first behavior:
 
-* [  wrangler.jsonc ](#tab-panel-9207)
-* [  wrangler.toml ](#tab-panel-9208)
+* [  wrangler.jsonc ](#tab-panel-9245)
+* [  wrangler.toml ](#tab-panel-9246)
 
 JSONC
 
@@ -235,8 +229,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -263,10 +255,8 @@ run_worker_first = [ "/oauth/callback" ]
 
 ```
 
-Explain Code
-
-* [  JavaScript ](#tab-panel-9211)
-* [  TypeScript ](#tab-panel-9212)
+* [  JavaScript ](#tab-panel-9249)
+* [  TypeScript ](#tab-panel-9250)
 
 ./worker/index.js
 
@@ -316,8 +306,6 @@ export default class extends WorkerEntrypoint {
 
 ```
 
-Explain Code
-
 ./worker/index.ts
 
 ```
@@ -365,8 +353,6 @@ export default class extends WorkerEntrypoint<Env> {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/routing/","name":"Routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/routing/worker-script/","name":"Worker script"}}]}

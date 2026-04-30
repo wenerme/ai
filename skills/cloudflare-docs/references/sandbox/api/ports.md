@@ -81,8 +81,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -118,8 +116,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -226,8 +222,6 @@ const frontend = await sandbox.exposePort(5173, {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -301,8 +295,6 @@ const frontend = await sandbox.exposePort(5173, {
 
 ```
 
-Explain Code
-
 Local development
 
 When using `wrangler dev`, you must add `EXPOSE` directives to your Dockerfile for each port. See [Expose Services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/#local-development) for details.
@@ -355,8 +347,6 @@ await sandbox.exposePort(8080, { hostname, token: "v1-stable" });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -387,8 +377,6 @@ await sandbox.exposePort(8080, { hostname, token: 'v1-stable' });
 
 
 ```
-
-Explain Code
 
 ### `validatePortToken()`
 
@@ -465,8 +453,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -518,8 +504,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### `unexposePort()`
 
@@ -671,8 +655,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -704,8 +686,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Related resources
 

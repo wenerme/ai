@@ -64,7 +64,6 @@ Response
   "client_secret_version": 1  
 }  
 ```  
-Explain Code  
 Warning  
 This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 

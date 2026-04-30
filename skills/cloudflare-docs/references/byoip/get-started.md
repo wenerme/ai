@@ -120,8 +120,6 @@ Response
 
 ```
 
-Explain Code
-
 1. Take note of the `id` assigned to the prefix you added. It will be used in future steps.
 
 Letter of Agency (LOA)
@@ -349,8 +347,6 @@ In the response body, the initial provisioning state should be `provisioning`.
 
 
 ```
-
-Explain Code
 
 Once a service binding is created (or deleted), it will take **four to six hours** to propagate across Cloudflare's global network.
 

@@ -97,8 +97,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/groups" \
 
 ```
 
-Explain Code
-
 You can now add this group to an Access policy using the _Rule groups_ selector.
 
 ## Use cases

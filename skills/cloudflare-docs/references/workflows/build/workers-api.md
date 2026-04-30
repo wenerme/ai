@@ -129,8 +129,8 @@ After a `ReadableStream<Uint8Array>` object has been persisted within a step, it
 
 :::
 
-* [  JavaScript ](#tab-panel-10069)
-* [  TypeScript ](#tab-panel-10070)
+* [  JavaScript ](#tab-panel-10107)
+* [  TypeScript ](#tab-panel-10108)
 
 JavaScript
 
@@ -167,8 +167,6 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -213,8 +211,6 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
 
 ```
 
-Explain Code
-
 * `step.sleep(name: string, duration: WorkflowDuration): Promise<void>`  
    * `name` \- the name of the step.  
    * `duration` \- the duration to sleep until, in either seconds or as a `WorkflowDuration` compatible string.  
@@ -231,8 +227,8 @@ More information about the limits imposed on Workflow can be found in the [Workf
 
 * `step.waitForEvent(name: string, options: ): Promise<void>`\-`name` \- the name of the step. - `options` \- an object with properties for`type` (up to 100 characters [1](#user-content-fn-1)), which determines which event type this`waitForEvent` call will match on when calling `instance.sendEvent`, and an optional `timeout` property, which defines how long the `waitForEvent` call will block for before throwing a timeout exception. The default timeout is 24 hours.
 
-* [  JavaScript ](#tab-panel-10065)
-* [  TypeScript ](#tab-panel-10066)
+* [  JavaScript ](#tab-panel-10103)
+* [  TypeScript ](#tab-panel-10104)
 
 JavaScript
 
@@ -261,8 +257,6 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -289,8 +283,6 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
 
 
 ```
-
-Explain Code
 
 Review the documentation on [events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/) to learn how to send events to a running Workflow instance.
 
@@ -360,8 +352,8 @@ Refer to the [step context documentation](https://developers.cloudflare.com/work
 
 Each workflow on Workers Paid supports 10,000 steps by default. You can increase this up to 25,000 steps by configuring `steps` within the `limits` property of your Workflow definition in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10061)
-* [  wrangler.toml ](#tab-panel-10062)
+* [  wrangler.jsonc ](#tab-panel-10099)
+* [  wrangler.toml ](#tab-panel-10100)
 
 JSONC
 
@@ -395,8 +387,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -436,8 +426,8 @@ You can bind to a Workflow by defining a `[[workflows]]` binding within your Wra
 
 For example, to bind to a Workflow called `workflows-starter` and to make it available on the `MY_WORKFLOW` variable to your Worker script, you would configure the following fields within the `[[workflows]]` binding definition:
 
-* [  wrangler.jsonc ](#tab-panel-10063)
-* [  wrangler.toml ](#tab-panel-10064)
+* [  wrangler.jsonc ](#tab-panel-10101)
+* [  wrangler.toml ](#tab-panel-10102)
 
 JSONC
 
@@ -480,8 +470,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -508,8 +496,6 @@ class_name = "MyWorkflow"
 
 ```
 
-Explain Code
-
 ### Bind from Pages
 
 You can bind and trigger Workflows from [Pages Functions](https://developers.cloudflare.com/pages/functions/) by deploying a Workers project with your Workflow definition and then invoking that Worker using [service bindings](https://developers.cloudflare.com/pages/functions/bindings/#service-bindings) or a standard `fetch()` call.
@@ -522,8 +508,8 @@ You can also bind to a Workflow that is defined in a different Worker script fro
 
 For example, if your Workflow is defined in a Worker script named `billing-worker`, but you are calling it from your `web-api-worker` script, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-10067)
-* [  wrangler.toml ](#tab-panel-10068)
+* [  wrangler.jsonc ](#tab-panel-10105)
+* [  wrangler.toml ](#tab-panel-10106)
 
 JSONC
 
@@ -572,8 +558,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -601,8 +585,6 @@ script_name = "billing-worker"
 
 
 ```
-
-Explain Code
 
 If you're using TypeScript, run [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
 
@@ -738,8 +720,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### createBatch
 
 Create (trigger) a batch of new instance of the given Workflow, up to 100 instances at a time.
@@ -819,8 +799,6 @@ try {
 
 ```
 
-Explain Code
-
 ## WorkflowInstanceCreateOptions
 
 Optional properties to pass when creating an instance.
@@ -851,8 +829,6 @@ interface WorkflowInstanceCreateOptions {
 
 
 ```
-
-Explain Code
 
 ## WorkflowInstance
 
@@ -911,8 +887,6 @@ declare abstract class WorkflowInstance {
 
 ```
 
-Explain Code
-
 ### id
 
 Return the id of a Workflow.
@@ -957,8 +931,8 @@ Terminate a Workflow instance.
 
 Return `void` on success; throws an exception if the Workflow is not running or is an errored state.
 
-* [  JavaScript ](#tab-panel-10071)
-* [  TypeScript ](#tab-panel-10072)
+* [  JavaScript ](#tab-panel-10109)
+* [  TypeScript ](#tab-panel-10110)
 
 JavaScript
 
@@ -1001,8 +975,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1043,8 +1015,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 You can call `sendEvent` multiple times, setting the value of the `type` property to match the specific `waitForEvent` calls in your Workflow.
 
@@ -1094,8 +1064,6 @@ type InstanceStatus = {
 
 
 ```
-
-Explain Code
 
 ## Footnotes
 

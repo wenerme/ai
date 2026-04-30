@@ -42,8 +42,8 @@ Wrangler will print the public tunnel URL for the current dev session.
 
 Enable `tunnel` conditionally in the plugin config:
 
-* [  JavaScript ](#tab-panel-8638)
-* [  TypeScript ](#tab-panel-8639)
+* [  JavaScript ](#tab-panel-8676)
+* [  TypeScript ](#tab-panel-8677)
 
 vite.config.js
 
@@ -71,8 +71,6 @@ export default defineConfig({
 
 ```
 
-Explain Code
-
 vite.config.ts
 
 ```
@@ -98,8 +96,6 @@ export default defineConfig({
 
 
 ```
-
-Explain Code
 
 Then enable the tunnel only for the sessions where you want a public URL:
 

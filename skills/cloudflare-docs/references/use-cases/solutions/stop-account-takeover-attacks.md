@@ -26,8 +26,8 @@ Credentials sent over plain HTTP are visible to anyone on the network path betwe
 
 Always Use HTTPS redirects all visitor requests from `http` to `https` for all subdomains and hosts.
 
-* [ Dashboard ](#tab-panel-8160)
-* [ API ](#tab-panel-8161)
+* [ Dashboard ](#tab-panel-8198)
+* [ API ](#tab-panel-8199)
 
 To enable **Always Use HTTPS** in the dashboard:
 
@@ -58,8 +58,8 @@ Cloudflare provides bot protection on all plans, with features that vary by plan
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to all traffic on your domain and cannot be customized with exceptions or path-specific rules.
 
-* [  New dashboard ](#tab-panel-8162)
-* [ Old dashboard ](#tab-panel-8163)
+* [  New dashboard ](#tab-panel-8200)
+* [ Old dashboard ](#tab-panel-8201)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -86,8 +86,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
-* [  New dashboard ](#tab-panel-8164)
-* [ Old dashboard ](#tab-panel-8165)
+* [  New dashboard ](#tab-panel-8202)
+* [ Old dashboard ](#tab-panel-8203)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -183,8 +183,6 @@ Add the Turnstile script and widget container to your login form. Replace `<YOUR
 
 ```
 
-Explain Code
-
 The widget renders inside the `div` and produces a token when the visitor passes the challenge. When the form is submitted, a `cf-turnstile-response` token is included in the form data.
 
 #### 3\. Validate the token on your server
@@ -247,8 +245,6 @@ async function validateTurnstile(token, remoteip) {
 
 
 ```
-
-Explain Code
 
 Replace `"your-secret-key"` with your Turnstile secret key. The endpoint returns a JSON object with a `success` field. Only process the form submission if `success` is `true`.
 
@@ -325,10 +321,10 @@ The `cf.waf.credential_check.username_and_password_leaked` field requires a Pro 
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-8166)
-* [ Old dashboard ](#tab-panel-8167)
-* [ API ](#tab-panel-8168)
-* [ Terraform ](#tab-panel-8169)
+* [  New dashboard ](#tab-panel-8204)
+* [ Old dashboard ](#tab-panel-8205)
+* [ API ](#tab-panel-8206)
+* [ Terraform ](#tab-panel-8207)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

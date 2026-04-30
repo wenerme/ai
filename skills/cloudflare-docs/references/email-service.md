@@ -35,9 +35,9 @@ Together, these two features make it possible for you to send and receive emails
 
 Access Email Service using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) from any platform, or directly from Cloudflare Workers using [bindings](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/):
 
-* [ REST API (curl) ](#tab-panel-5910)
-* [ index.ts (Workers) ](#tab-panel-5911)
-* [ wrangler.jsonc ](#tab-panel-5912)
+* [ REST API (curl) ](#tab-panel-5908)
+* [ index.ts (Workers) ](#tab-panel-5909)
+* [ wrangler.jsonc ](#tab-panel-5910)
 
 Terminal window
 
@@ -65,8 +65,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -135,8 +133,6 @@ export default {
 
 ```
 
-Explain Code
-
 JSONC
 
 ```
@@ -181,8 +177,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 See the full [API reference](https://developers.cloudflare.com/email-service/api/send-emails/) for the REST API and Workers binding.
 

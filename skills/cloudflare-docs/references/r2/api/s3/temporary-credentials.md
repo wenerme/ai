@@ -147,9 +147,9 @@ JSONC
 
 Any S3-compatible client that supports session tokens will accept R2 temporary credentials. Pass all three values (access key ID, secret access key, session token) using the client's standard credential fields.
 
-* [ JavaScript ](#tab-panel-7094)
-* [ Python ](#tab-panel-7095)
-* [ Environment variables ](#tab-panel-7096)
+* [ JavaScript ](#tab-panel-7092)
+* [ Python ](#tab-panel-7093)
+* [ Environment variables ](#tab-panel-7094)
 
 TypeScript
 
@@ -179,8 +179,6 @@ const response = await client.fetch(`${R2_URL}/my-bucket/image.png`);
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -206,8 +204,6 @@ s3 = boto3.client(
 
 
 ```
-
-Explain Code
 
 Most AWS SDKs and the AWS CLI read credentials from these environment variables by default:
 

@@ -74,8 +74,6 @@ JavaScript
 
 ```
 
-Explain Code
-
 ### Example
 
 * [  JavaScript ](#tab-panel-5485)
@@ -178,8 +176,6 @@ return Response.json(return_value)
 
 
 ```
-
-Explain Code
 
 ## `D1ExecResult`
 

@@ -72,8 +72,6 @@ await page.addStyleTag({
 
 ```
 
-Explain Code
-
 Example with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and a CDN source:
 
 TypeScript
@@ -113,8 +111,6 @@ await page.addStyleTag({
 
 
 ```
-
-Explain Code
 
 ### Base64-encoded
 
@@ -163,8 +159,6 @@ await page.addStyleTag({
 
 ```
 
-Explain Code
-
 Example with a Base64-encoded data source:
 
 TypeScript
@@ -204,8 +198,6 @@ await page.addStyleTag({
 
 
 ```
-
-Explain Code
 
 ### CDP connection example
 
@@ -296,8 +288,6 @@ browser.disconnect();
 
 ```
 
-Explain Code
-
 ## Quick Actions
 
 When using [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/), you can load custom fonts by including the `addStyleTag` parameter in your request body. This works with both the [screenshot](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/) and [PDF](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/) endpoints.
@@ -335,8 +325,6 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```
 
-Explain Code
-
 ### Base64-encoded
 
 Terminal window
@@ -369,8 +357,6 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 
 ```
-
-Explain Code
 
 For more details on using `addStyleTag` with Quick Actions, refer to [Customize CSS and embed custom JavaScript](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/#customize-css-and-embed-custom-javascript).
 

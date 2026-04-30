@@ -44,8 +44,8 @@ bun add @cloudflare/ai-utils
 
 Update the `index.ts` file in your application directory with the following code:
 
-* [  JavaScript ](#tab-panel-8382)
-* [  TypeScript ](#tab-panel-8383)
+* [  JavaScript ](#tab-panel-8420)
+* [  TypeScript ](#tab-panel-8421)
 
 index.js
 
@@ -140,8 +140,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 index.ts
 
@@ -243,8 +241,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 This example imports the utils with `import { runWithTools} from "@cloudflare/ai-utils"` and follows the API reference below.
 

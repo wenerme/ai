@@ -128,8 +128,6 @@ export default {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -244,8 +242,6 @@ export default {
 
 ```
 
-Explain Code
-
 A common pattern is to use Workers as the stateless entry point that routes requests to Durable Objects when coordination is needed. The Worker handles authentication, validation, and response formatting, while the Durable Object handles the stateful logic.
 
 ## Design and sharding
@@ -320,8 +316,6 @@ export default {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -390,8 +384,6 @@ export default {
 
 ```
 
-Explain Code
-
 Note
 
 If you have global application or user configuration that you need to access frequently (on every request), consider using [Workers KV](https://developers.cloudflare.com/kv/) instead.
@@ -457,8 +449,6 @@ export default {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -521,8 +511,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Message throughput limits
 
@@ -606,8 +594,6 @@ export default {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -667,8 +653,6 @@ export default {
 
 ```
 
-Explain Code
-
 Creating a stub does not instantiate or wake up the Durable Object. The Durable Object is only activated when you call a method on the stub.
 
 Use `newUniqueId()` only when you need a new, random instance and will store the mapping externally:
@@ -721,8 +705,6 @@ export default {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -774,8 +756,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Use parent-child relationships for related entities
 
@@ -909,8 +889,6 @@ export class GameMatch extends DurableObject {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -1043,8 +1021,6 @@ export class GameMatch extends DurableObject<Env> {
 
 ```
 
-Explain Code
-
 With this pattern:
 
 * Listing matches only queries the parent (children stay hibernated)
@@ -1099,8 +1075,6 @@ export default {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -1148,8 +1122,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Location hints are suggestions, not guarantees. Refer to [Data location](https://developers.cloudflare.com/durable-objects/reference/data-location/) for available regions and details.
 
@@ -1272,8 +1244,6 @@ export class ChatRoom extends DurableObject {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -1366,8 +1336,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 Refer to [Access Durable Objects storage](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/) for more details on the SQL API.
 
@@ -1490,8 +1458,6 @@ export class ChatRoom extends DurableObject {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -1602,8 +1568,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 ```
 
-Explain Code
-
 ### Understand the difference between in-memory state and persistent storage
 
 Durable Objects provide multiple state management layers, each with different characteristics:
@@ -1688,8 +1652,6 @@ export class ChatRoom extends DurableObject {
 
 
 ```
-
-Explain Code
 
 index.ts
 
@@ -1781,8 +1743,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 ```
 
-Explain Code
-
 Warning
 
 If an uncaught exception occurs in your Durable Object, the runtime may terminate the instance. Any in-memory state will be lost, but SQLite storage remains intact. Always persist critical state to storage before performing operations that might fail.
@@ -1871,8 +1831,6 @@ export class ChatRoom extends DurableObject {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -1957,8 +1915,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 ```
 
-Explain Code
-
 ### Understand how input and output gates work
 
 While Durable Objects are single-threaded, JavaScript's `async`/`await` can allow multiple requests to interleave execution while a request waits for the result of an asynchronous operation. Cloudflare's runtime uses **input gates** and **output gates** to prevent data races and ensure correctness by default.
@@ -1998,8 +1954,6 @@ export class Counter extends DurableObject {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -2036,8 +1990,6 @@ export class Counter extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 **Output gates** hold outgoing network messages (responses, fetch requests) until pending storage writes complete. This ensures clients never see confirmation of data that has not been persisted:
 
@@ -2082,8 +2034,6 @@ export class ChatRoom extends DurableObject {
 
 
 ```
-
-Explain Code
 
 index.ts
 
@@ -2130,8 +2080,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 **Write coalescing:** Multiple storage writes without intervening `await` calls are automatically batched into a single atomic implicit transaction:
 
@@ -2210,8 +2158,6 @@ export class Account extends DurableObject {
 
 
 ```
-
-Explain Code
 
 index.ts
 
@@ -2293,8 +2239,6 @@ export class Account extends DurableObject<Env> {
 
 ```
 
-Explain Code
-
 For more details, see [Durable Objects: Easy, Fast, Correct — Choose three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/) and the [glossary](https://developers.cloudflare.com/durable-objects/reference/glossary/).
 
 ### Avoid race conditions with non-storage I/O
@@ -2340,8 +2284,6 @@ export class Processor extends DurableObject {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -2384,8 +2326,6 @@ export class Processor extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 To handle this, use optimistic locking (check-and-set) patterns: read a version number before the external call, then verify it has not changed before writing.
 
@@ -2479,8 +2419,6 @@ export class ChatRoom extends DurableObject {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -2566,8 +2504,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 Because `blockConcurrencyWhile()` blocks _all_ concurrency unconditionally, it significantly reduces throughput. If each call takes \~5ms, that individual Durable Object is limited to approximately 200 requests/second. Reserve it for initialization and migrations, not regular request handling. For normal operations, rely on input/output gates and write coalescing instead.
 
@@ -2691,8 +2627,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 index.ts
 
@@ -2830,8 +2764,6 @@ export default {
 
 ```
 
-Explain Code
-
 Refer to [Invoke methods](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) for more details on RPC and the legacy `fetch()` handler.
 
 ### Initialize Durable Objects explicitly with an `init()` method
@@ -2939,8 +2871,6 @@ export default {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -3046,8 +2976,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Always `await` RPC calls
 
 When calling methods on a Durable Object stub, always use `await`. Unawaited calls create dangling promises, causing errors to be swallowed and return values to be lost.
@@ -3115,8 +3043,6 @@ export default {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -3183,8 +3109,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Error handling
 
@@ -3272,8 +3196,6 @@ export class ChatRoom extends DurableObject {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -3357,8 +3279,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 When calling Durable Objects from a Worker, errors may include `.retryable` and `.overloaded` properties indicating whether the operation can be retried. For transient failures, implement exponential backoff to avoid overwhelming the system.
 
@@ -3467,8 +3387,6 @@ export class ChatRoom extends DurableObject {
 
 
 ```
-
-Explain Code
 
 index.ts
 
@@ -3581,8 +3499,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 With the Hibernation API, your Durable Object can go to sleep when there is no active JavaScript execution, but WebSocket connections remain open. When a message arrives, the Durable Object wakes up automatically.
 
@@ -3724,8 +3640,6 @@ export class ChatRoom extends DurableObject {
 
 
 ```
-
-Explain Code
 
 index.ts
 
@@ -3870,8 +3784,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 ```
 
-Explain Code
-
 ## Scheduling and lifecycle
 
 ### Use alarms for per-entity scheduled tasks
@@ -3976,8 +3888,6 @@ export class GameMatch extends DurableObject {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -4074,8 +3984,6 @@ export class GameMatch extends DurableObject<Env> {
 
 ```
 
-Explain Code
-
 ### Make alarm handlers idempotent
 
 In rare cases, alarms may fire more than once. Your `alarm()` handler should be safe to run multiple times without causing issues.
@@ -4151,8 +4059,6 @@ export class Subscription extends DurableObject {
 
 
 ```
-
-Explain Code
 
 index.ts
 
@@ -4230,8 +4136,6 @@ export class Subscription extends DurableObject<Env> {
 
 ```
 
-Explain Code
-
 ### Clean up storage with `deleteAll()`
 
 To fully clear a Durable Object's storage, call `deleteAll()`. Simply deleting individual keys or dropping tables is not sufficient, as some internal metadata may remain. Workers with a compatibility date before [2026-02-24](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-deleteall-deletes-alarms) and an alarm set should delete the alarm first with `deleteAlarm()`.
@@ -4265,8 +4169,6 @@ export class ChatRoom extends DurableObject {
 
 
 ```
-
-Explain Code
 
 index.ts
 
@@ -4302,8 +4204,6 @@ export class ChatRoom extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 ### Design for unexpected shutdowns
 
@@ -4413,8 +4313,6 @@ export default {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -4483,8 +4381,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 This pattern does not scale. As traffic increases, the single Durable Object becomes a chokepoint. Instead, identify natural coordination boundaries in your application (per user, per room, per document) and create separate Durable Objects for each.
 
@@ -4566,8 +4462,6 @@ describe("ChatRoom", () => {
 
 ```
 
-Explain Code
-
 test/chat-room.test.ts
 
 ```
@@ -4644,8 +4538,6 @@ const stub = env.CHAT_ROOM.get(id);
 
 ```
 
-Explain Code
-
 Configure Vitest in your `vitest.config.ts`:
 
 TypeScript
@@ -4673,8 +4565,6 @@ export default defineConfig({
 
 
 ```
-
-Explain Code
 
 For schema changes, run migrations in the constructor using `blockConcurrencyWhile()`. For class renames or deletions, use Wrangler migrations:
 
@@ -4728,8 +4618,6 @@ deleted_classes = [ "DeprecatedRoom" ]
 
 
 ```
-
-Explain Code
 
 Refer to [Durable Objects migrations](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) for more details on class migrations, and [Testing with Durable Objects](https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/) for comprehensive testing patterns including SQLite queries and alarm testing.
 

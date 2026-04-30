@@ -63,8 +63,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -108,8 +106,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Motion Graphics**  — Quick animated graphics 
@@ -151,8 +147,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Ambient Scene**  — Relaxing background video 
@@ -193,8 +187,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

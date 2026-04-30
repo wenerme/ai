@@ -28,11 +28,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 To inject CSP nonces into inline `<script>` tags using HTMLRewriter, refer to this [CSP nonce example](https://developers.cloudflare.com/workers/examples/spa-shell/#add-csp-nonces).
 
-* [  JavaScript ](#tab-panel-8823)
-* [  TypeScript ](#tab-panel-8824)
-* [  Python ](#tab-panel-8825)
-* [  Rust ](#tab-panel-8826)
-* [  Hono ](#tab-panel-8827)
+* [  JavaScript ](#tab-panel-8861)
+* [  TypeScript ](#tab-panel-8862)
+* [  Python ](#tab-panel-8863)
+* [  Rust ](#tab-panel-8864)
+* [  Hono ](#tab-panel-8865)
 
 JavaScript
 
@@ -202,8 +202,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -372,8 +370,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -471,8 +467,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -612,8 +606,6 @@ async fn fetch(req: Request, _env: Env, _ctx: Context) -> Result<Response> {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -641,8 +633,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/security-headers/","name":"Set security headers"}}]}

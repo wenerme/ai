@@ -100,8 +100,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -179,8 +177,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 ## Example: Add a single rule to a phase entry point ruleset at the zone level
 
 The following example adds a single rule to a phase entry point ruleset (with ID `$RULESET_ID`) at the zone level using the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation.
@@ -236,8 +232,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -315,8 +309,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/basic-operations/","name":"Basic API operations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/basic-operations/add-rule-phase-rulesets/","name":"Add rules to phase entry point rulesets"}}]}

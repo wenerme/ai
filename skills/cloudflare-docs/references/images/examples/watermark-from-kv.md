@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Draw a watermark from KV on an image from R2
 
-* [  JavaScript ](#tab-panel-6244)
-* [  TypeScript ](#tab-panel-6245)
+* [  JavaScript ](#tab-panel-6242)
+* [  TypeScript ](#tab-panel-6243)
 
 JavaScript
 
@@ -79,8 +79,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -152,8 +150,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/examples/watermark-from-kv/","name":"Watermarks"}}]}

@@ -189,8 +189,6 @@ function App() {
 
 ```
 
-Explain Code
-
 **Alternative: Using Refs (Multiple Meetings)**
 
 If you're building an experience with multiple meetings on the same page or back-to-back meetings, using refs is recommended to avoid state conflicts between different meeting instances:
@@ -300,8 +298,6 @@ function App() {
 
 ```
 
-Explain Code
-
 Note
 
 Using refs with event listeners provides better control and isolation when handling multiple `RtkMeeting` instances. This approach ensures that state updates from one meeting don't interfere with another, which is crucial for back-to-back meetings or multi-meeting interfaces.
@@ -377,8 +373,6 @@ For Web Components, you need to add an event listener to the `rtk-meeting` compo
 
 
 ```
-
-Explain Code
 
 For Angular, you need to add an event listener to the `rtk-meeting` component to listen for `rtkStatesUpdate` events.
 
@@ -554,8 +548,6 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
 ```
 
-Explain Code
-
 For Android, attach event listeners to the `meeting` object to observe state changes. Use `RtkMeetingRoomEventListener` for meeting lifecycle events and `RtkSelfEventListener` for local participant state changes.
 
 Kotlin
@@ -672,8 +664,6 @@ class MeetingActivity : AppCompatActivity() {
 
 ```
 
-Explain Code
-
 For iOS, implement event listener protocols and register them on the `meeting` object. Use `RtkMeetingRoomEventListener` for meeting lifecycle events and `RtkSelfEventListener` for local participant state changes.
 
 Swift
@@ -751,8 +741,6 @@ meeting.addSelfEventListener(selfEventListener: self)
 
 
 ```
-
-Explain Code
 
 For Flutter, create event listener classes and attach them to the `meeting` object. Use `RtkMeetingRoomEventListener` for meeting lifecycle events and `RtkSelfEventListener` for local participant state changes.
 
@@ -920,8 +908,6 @@ meeting.addSelfEventListener(SelfListener(
 
 ```
 
-Explain Code
-
 For React Native, use the `useRealtimeKitSelector` hook to observe specific properties on the meeting object. This pattern is similar to the web Core SDK.
 
 ```
@@ -1039,8 +1025,6 @@ function MeetingWithState() {
 
 ```
 
-Explain Code
-
 **Alternative: Using Event Listeners**
 
 You can also use event-based listeners for more fine-grained control, similar to the web Core SDK:
@@ -1100,8 +1084,6 @@ function MeetingEvents() {
 
 
 ```
-
-Explain Code
 
 ## State Properties
 

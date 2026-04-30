@@ -104,7 +104,6 @@ JSONC
   ]  
 }  
 ```  
-Explain Code  
 TOML  
 ```  
 name = "d1-comments-api"  
@@ -134,8 +133,7 @@ CREATE TABLE IF NOT EXISTS comments (
 CREATE INDEX idx_comments_post_slug ON comments (post_slug);  
 -- Optionally, uncomment the below query to insert seed data  
 -- INSERT INTO comments (author, body, post_slug) VALUES ('Kristian', 'Great post!', 'hello-world');  
-```  
-Explain Code
+```
 2. Run the schema against your local database first:  
 Terminal window  
 ```  
@@ -199,8 +197,6 @@ export default app;
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -240,8 +236,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 ## 6\. Query comments
 
@@ -355,8 +349,6 @@ app.post("/api/posts/:slug/comments", async (c) => {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -408,8 +400,6 @@ app.post("/api/posts/:slug/comments", async (c) => {
 
 
 ```
-
-Explain Code
 
 ## 8\. (Optional) Add CORS support
 
@@ -583,8 +573,6 @@ export default app;
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -675,8 +663,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 ## Next steps
 

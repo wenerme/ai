@@ -76,8 +76,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -126,8 +124,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Creating a session
 
@@ -223,8 +219,6 @@ const session = new Session(new AgentSessionProvider(this), {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -264,8 +258,6 @@ const session = new Session(new AgentSessionProvider(this), {
 
 
 ```
-
-Explain Code
 
 ### Builder methods
 
@@ -315,8 +307,6 @@ session.clearMessages();
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -344,8 +334,6 @@ session.clearMessages();
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -387,8 +375,6 @@ const count = session.getPathLength();
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -419,8 +405,6 @@ const count = session.getPathLength();
 
 
 ```
-
-Explain Code
 
 ### Branching
 
@@ -642,8 +626,6 @@ await session.refreshSystemPrompt();
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -670,8 +652,6 @@ await session.refreshSystemPrompt();
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -710,8 +690,6 @@ await session.appendContextBlock("memory", "\nUser prefers dark roast.");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -740,8 +718,6 @@ await session.appendContextBlock("memory", "\nUser prefers dark roast.");
 
 ```
 
-Explain Code
-
 ### System prompt
 
 The system prompt is built from all context blocks with headers and metadata:
@@ -769,8 +745,6 @@ User prefers dark roast.
 
 
 ```
-
-Explain Code
 
 * [  JavaScript ](#tab-panel-3610)
 * [  TypeScript ](#tab-panel-3611)
@@ -901,8 +875,6 @@ const session = Session.create(this)
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -936,8 +908,6 @@ const session = Session.create(this)
 
 
 ```
-
-Explain Code
 
 ### How compaction works
 
@@ -1114,8 +1084,6 @@ manager.delete(sessionId);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1159,8 +1127,6 @@ manager.delete(sessionId);
 
 
 ```
-
-Explain Code
 
 ### Accessing sessions
 
@@ -1241,8 +1207,6 @@ manager.deleteMessages(sessionId, ["msg-1"]);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1283,8 +1247,6 @@ manager.deleteMessages(sessionId, ["msg-1"]);
 
 
 ```
-
-Explain Code
 
 ### Forking
 
@@ -1436,8 +1398,6 @@ const mySearch = {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1489,8 +1449,6 @@ const mySearch: SearchProvider = {
 
 
 ```
-
-Explain Code
 
 You can also implement `SessionProvider` to replace the SQLite storage entirely:
 
@@ -1580,8 +1538,6 @@ const myStorage = {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1616,8 +1572,6 @@ const myStorage: SessionProvider = {
 
 
 ```
-
-Explain Code
 
 ## Storage tables
 

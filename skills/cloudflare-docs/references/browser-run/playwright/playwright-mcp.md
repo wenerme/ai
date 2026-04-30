@@ -128,8 +128,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -167,8 +165,6 @@ class_name = "PlaywrightMCP"
 
 
 ```
-
-Explain Code
 
 1. Edit the code.
 
@@ -215,8 +211,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 1. Deploy the server.
 

@@ -69,6 +69,8 @@ Evaluates a condition based on request parameters and routes the request accordi
    * `true`: Forwards request to provided element if condition evaluates to true  
    * `false`: Forwards request to provided element if condition evaluates to false
 
+`conditions` supports MongoDB-like operators such as `$eq`, `$ne`, `$in`, `$and`, and `$or`.
+
 ```
 
 {
@@ -79,9 +81,9 @@ Evaluates a condition based on request parameters and routes the request accordi
 
   "properties": {
 
-    "condition": {
+    "conditions": {
 
-      "metadata.plan": { "$eq": "free" } // Supports MongoDB-like operators
+      "metadata.plan": { "$eq": "free" }
 
     }
 
@@ -100,16 +102,13 @@ Evaluates a condition based on request parameters and routes the request accordi
 
 ```
 
-Explain Code
-
 ### Percentage Split
 
 Routes requests probabilistically across multiple outputs, useful for A/B testing and gradual rollouts.
 
 * **Inputs**: Request
-* **Outputs**: Up to 5 named percentage outputs, plus an optional `else` fallback  
-   * Each output has a fractional probability (must total 100%)  
-   * `else` output handles remaining percentage if other branches don't sum to 100%
+* **Outputs**: Up to 5 named percentage outputs  
+   * Each output key (for example, `"10%"`) is the probability for that branch, and the keys must sum to 100%
 
 ```
 
@@ -123,9 +122,9 @@ Routes requests probabilistically across multiple outputs, useful for A/B testin
 
     "10%": { "elementId": "<id>" },
 
-    "50%": { "elementId": "<id>" },
+    "40%": { "elementId": "<id>" },
 
-    "else": { "elementId": "<id>" }
+    "50%": { "elementId": "<id>" }
 
   }
 
@@ -148,8 +147,7 @@ Apply limits based on request metadata. Supports both count-based and cost-based
 * `limitType`: "count" or "cost"
 * `key`: Request field to use for rate limiting (e.g. "metadata.user\_id")
 * `limit`: Maximum allowed requests/cost
-* `interval`: Time window in seconds
-* `technique`: "sliding" or "fixed" window
+* `window`: Time window in seconds
 
 ```
 
@@ -157,7 +155,7 @@ Apply limits based on request metadata. Supports both count-based and cost-based
 
   "id": "<id>",
 
-  "type": "rate_limit",
+  "type": "rate",
 
   "properties": {
 
@@ -167,9 +165,7 @@ Apply limits based on request metadata. Supports both count-based and cost-based
 
     "limit": 100,
 
-    "interval": 3600,
-
-    "technique": "sliding"
+    "window": 3600
 
   },
 
@@ -185,8 +181,6 @@ Apply limits based on request metadata. Supports both count-based and cost-based
 
 
 ```
-
-Explain Code
 
 ### Model
 
@@ -237,14 +231,12 @@ Executes inference using a specified model and provider with configurable timeou
 
 ```
 
-Explain Code
-
 ### End element
 
 Marks the end of a route. Returns the last successful model response, or an error if no model response was generated.
 
 * **Inputs**: Request
-* **Outputs**: None
+* **Outputs**: None (provide an empty `outputs` object)
 
 ```
 
@@ -252,7 +244,9 @@ Marks the end of a route. Returns the last successful model response, or an erro
 
   "id": "<id>",
 
-  "type": "end"
+  "type": "end",
+
+  "outputs": {}
 
 }
 

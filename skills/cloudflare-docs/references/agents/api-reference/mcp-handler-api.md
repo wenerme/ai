@@ -111,8 +111,6 @@ interface CreateMcpHandlerOptions extends WorkerTransportOptions {
 
 ```
 
-Explain Code
-
 #### Options
 
 ##### route
@@ -190,8 +188,6 @@ const handler = createMcpHandler(server, { transport });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -218,8 +214,6 @@ const handler = createMcpHandler(server, { transport });
 
 
 ```
-
-Explain Code
 
 ## Stateless MCP Servers
 
@@ -313,8 +307,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -390,8 +382,6 @@ export default {
 
 ```
 
-Explain Code
-
 Each request to this MCP server creates a new session and server instance. The server does not maintain state between requests. This is the simplest way to implement an MCP server.
 
 ## Stateful MCP Servers
@@ -465,8 +455,6 @@ export class MyStatefulMcpAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -542,8 +530,6 @@ export class MyStatefulMcpAgent extends Agent<Env, State> {
 
 ```
 
-Explain Code
-
 In this case we are defining the `sessionIdGenerator` to return the Agent name as the session ID. To make sure we route to the correct Agent we can use `getAgentByName` in the Worker handler:
 
 * [  JavaScript ](#tab-panel-3302)
@@ -583,8 +569,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -618,8 +602,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 With persistent storage, the transport preserves:
 
@@ -696,8 +678,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -743,8 +723,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### After (correct)
 
@@ -806,8 +784,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -862,8 +838,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### For raw SDK transport users
 
@@ -921,8 +895,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -972,8 +944,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### WorkerTransport
 
 The `WorkerTransport` class implements the MCP Transport interface, handling HTTP request/response cycles, Server-Sent Events (SSE) streaming, session management, and CORS.
@@ -1022,8 +992,6 @@ class WorkerTransport implements Transport {
 
 
 ```
-
-Explain Code
 
 #### Constructor Options
 
@@ -1095,8 +1063,6 @@ interface WorkerTransportOptions {
 
 
 ```
-
-Explain Code
 
 #### sessionIdGenerator
 
@@ -1309,8 +1275,6 @@ interface TransportState {
 
 ```
 
-Explain Code
-
 * [  JavaScript ](#tab-panel-3310)
 * [  TypeScript ](#tab-panel-3311)
 
@@ -1343,8 +1307,6 @@ const transport = new WorkerTransport({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1373,8 +1335,6 @@ const transport = new WorkerTransport({
 
 
 ```
-
-Explain Code
 
 ## Authentication Context
 
@@ -1461,8 +1421,6 @@ function createServer() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1511,8 +1469,6 @@ function createServer() {
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -1567,8 +1523,6 @@ server.tool("riskyOperation", "An operation that might fail", {}, async () => {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1610,8 +1564,6 @@ server.tool("riskyOperation", "An operation that might fail", {}, async () => {
 
 
 ```
-
-Explain Code
 
 ## Related Resources
 

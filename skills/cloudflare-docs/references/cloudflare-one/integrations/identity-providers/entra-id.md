@@ -134,8 +134,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_
 
 ```
 
-Explain Code
-
 Provider versions
 
 The following example requires Cloudflare provider version `4.40.0` or greater.
@@ -155,8 +153,7 @@ resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {
     support_groups             = true  
     }  
 }  
-```  
-Explain Code
+```
 
 #### UPN and email
 
@@ -333,8 +330,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_
     },  
     "scim_base_url": "https://<TEAM_NAME>.cloudflareaccess.com/populations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/scim/v2"  
   }'  
-```  
-Explain Code
+```
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/entra-id/","name":"Microsoft Entra ID"}}]}

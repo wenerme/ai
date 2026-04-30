@@ -150,8 +150,6 @@ let someState = await step.do(
 
 ```
 
-Explain Code
-
 ## Force a Workflow instance to fail
 
 You can also force a Workflow instance to fail and _not_ retry by throwing a `NonRetryableError` from within the step.
@@ -203,8 +201,6 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
 
 
 ```
-
-Explain Code
 
 The Workflow instance itself will fail immediately, no further steps will be invoked, and the Workflow will not be retried.
 
@@ -265,8 +261,6 @@ await step.do('next-task', async() => {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/sleeping-and-retrying/","name":"Sleeping and retrying"}}]}

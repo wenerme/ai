@@ -72,8 +72,6 @@ const jsContext = await sandbox.createCodeContext({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -108,8 +106,6 @@ const jsContext = await sandbox.createCodeContext({
 
 
 ```
-
-Explain Code
 
 ## Execute code
 
@@ -157,8 +153,6 @@ console.log("Success:", result.success);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -191,8 +185,6 @@ console.log('Success:', result.success);
 
 
 ```
-
-Explain Code
 
 ### State within a context
 
@@ -256,8 +248,6 @@ console.log(result.output); // "Mean: 3.0"
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -300,8 +290,6 @@ console.log(result.output); // "Mean: 3.0"
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -382,8 +370,6 @@ if (result.outputs.json) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -445,8 +431,6 @@ if (result.outputs.json) {
 
 
 ```
-
-Explain Code
 
 ## Stream execution output
 
@@ -515,8 +499,6 @@ print("Done!")
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -576,8 +558,6 @@ print("Done!")
 
 
 ```
-
-Explain Code
 
 ## Execute AI-generated code
 
@@ -650,8 +630,6 @@ console.log("Success:", result.success);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -711,8 +689,6 @@ console.log('Success:', result.success);
 
 
 ```
-
-Explain Code
 
 ## Manage contexts
 
@@ -790,8 +766,6 @@ console.log("All contexts deleted");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -817,8 +791,6 @@ console.log('All contexts deleted');
 
 
 ```
-
-Explain Code
 
 ## Best practices
 

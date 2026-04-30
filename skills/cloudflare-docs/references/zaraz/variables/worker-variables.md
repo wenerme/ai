@@ -61,8 +61,6 @@ client.products[0].name // name of the first product in an ecommerce call
 
 ```
 
-Explain Code
-
 Keep reading for more complete examples of different use cases or refer to [Zaraz Context](https://developers.cloudflare.com/zaraz/reference/context/).
 
 ## Configuring a Worker Variable
@@ -152,8 +150,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Match a cookie with a user in your backend
 
 Zaraz exposes all cookies automatically under the `system.cookies` object, so they are always available. Accessing the cookie and using it to query your backend might look like this:
@@ -193,8 +189,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Hash a value before sending it to a third-party vendor
 
@@ -254,8 +248,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/variables/","name":"Variables"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/variables/worker-variables/","name":"Worker Variables"}}]}

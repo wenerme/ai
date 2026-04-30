@@ -110,8 +110,6 @@ mdm.xml
 
 ```
 
-Explain Code
-
 ### plist
 
 [Download](https://developers.cloudflare.com/cloudflare-one/static/mdm/multiple-orgs/com.cloudflare.warp.plist) an example `.plist` file.

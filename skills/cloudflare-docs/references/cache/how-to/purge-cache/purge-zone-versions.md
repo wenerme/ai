@@ -114,8 +114,6 @@ This API call will return a JSON response similar to the example below:
 
 ```
 
-Explain Code
-
 In this particular example, we have three environments: Production, Staging, and Development. You can find the environment ID in the `ref` field.
 
 ## Step 2: Purge cache per environment

@@ -113,7 +113,6 @@ http {
     }  
 }  
 ```  
-Explain Code  
 If needed, replace `/certs/cert.pem` and `/certs/key.pem` with the locations of your certificate and key.  
 b. Add the nginx image to your Docker compose file:  
 docker-compose.yml  

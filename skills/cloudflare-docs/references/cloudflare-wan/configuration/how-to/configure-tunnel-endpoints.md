@@ -167,8 +167,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/gre_tunnel
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -242,8 +240,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 IPsec tunnel
 
 1. Create a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/create/) to create an IPsec tunnel.  
@@ -265,7 +261,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunn
     "customer_endpoint": "<CUSTOMER_ENDPOINT>"  
   }'  
 ```  
-Explain Code  
 ```  
 {  
   "errors": [  
@@ -303,7 +298,6 @@ Explain Code
   "success": true  
 }  
 ```  
-Explain Code  
 Take note of the tunnel `id` value. We will use it to generate a pre-shared key (PSK).
 2. Create a `POST` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/psk%5Fgenerate/) to generate a PSK. Use the tunnel `id` value you received from the previous command.  
 Required API token permissions  
@@ -331,7 +325,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunn
   "messages": []  
 }  
 ```  
-Explain Code  
 Take note of your `psk` value.
 3. Create a `PUT` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/update/) to update your IPsec tunnel with the PSK.  
 Terminal window  
@@ -413,8 +406,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec
 
 
 ```
-
-Explain Code
 
 1. Use the `psk` value from step 3 to configure the IPsec tunnel on your equipment as well.
 
@@ -515,8 +506,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec
 
 
 ```
-
-Explain Code
 
 ## Bidirectional vs unidirectional health checks
 

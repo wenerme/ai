@@ -26,11 +26,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8696)
-* [  TypeScript ](#tab-panel-8697)
-* [  Hono ](#tab-panel-8698)
-* [  Python ](#tab-panel-8699)
-* [  Rust ](#tab-panel-8700)
+* [  JavaScript ](#tab-panel-8734)
+* [  TypeScript ](#tab-panel-8735)
+* [  Hono ](#tab-panel-8736)
+* [  Python ](#tab-panel-8737)
+* [  Rust ](#tab-panel-8738)
 
 JavaScript
 
@@ -85,8 +85,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -139,8 +137,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -210,8 +206,6 @@ export default app;
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -279,8 +273,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -358,8 +350,6 @@ async fn fetch(req: Request, _env: Env, _ctx: Context) -> Result<Response> {
 
 ```
 
-Explain Code
-
 ## Caching HTML resources
 
 JavaScript
@@ -396,9 +386,9 @@ fetch(event.request, { cf: { cacheKey: "some-string" } });
 
 Normally, Cloudflare computes the cache key for a request based on the request's URL. Sometimes, though, you may like different URLs to be treated as if they were the same for caching purposes. For example, if your website content is hosted from both Amazon S3 and Google Cloud Storage - you have the same content in both places, and you can use a Worker to randomly balance between the two. However, you do not want to end up caching two copies of your content. You could utilize custom cache keys to cache based on the original request URL rather than the subrequest URL:
 
-* [  JavaScript ](#tab-panel-8701)
-* [  TypeScript ](#tab-panel-8702)
-* [  Hono ](#tab-panel-8703)
+* [  JavaScript ](#tab-panel-8739)
+* [  TypeScript ](#tab-panel-8740)
+* [  Hono ](#tab-panel-8741)
 
 JavaScript
 
@@ -437,8 +427,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -475,8 +463,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -532,8 +518,6 @@ export default app;
 
 ```
 
-Explain Code
-
 Workers operating on behalf of different zones cannot affect each other's cache. You can only override cache keys when making requests within your own zone (in the above example `event.request.url` was the key stored), or requests to hosts that are not on Cloudflare. When making a request to another Cloudflare zone (for example, belonging to a different Cloudflare customer), that zone fully controls how its own content is cached within Cloudflare; you cannot override it.
 
 ## Override based on origin response code
@@ -563,8 +547,8 @@ Using custom cache keys and overrides based on response code, you can write a Wo
 
 The following example demonstrates how you might use this to cache requests for streaming media assets:
 
-* [  Module Worker ](#tab-panel-8704)
-* [  Service Worker ](#tab-panel-8705)
+* [  Module Worker ](#tab-panel-8742)
+* [  Service Worker ](#tab-panel-8743)
 
 index.js
 
@@ -769,8 +753,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Service Workers are deprecated
 
@@ -985,8 +967,6 @@ async function handleRequest(request) {
 
 
 ```
-
-Explain Code
 
 ## Using the HTTP Cache API
 

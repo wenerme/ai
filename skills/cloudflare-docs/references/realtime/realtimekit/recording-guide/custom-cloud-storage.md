@@ -78,8 +78,6 @@ curl --request POST \
 
 ```
 
-Explain Code
-
 To familiarize yourself with the RealtimeKit REST APIs, we recommend exploring the [RealtimeKit REST API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/).
 
 ## Supported Cloud Providers

@@ -83,8 +83,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -131,8 +129,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 Connections persist in the agent's [SQL storage](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/), and when an agent connects to an MCP server, all tools from that server become available automatically.
 
@@ -373,8 +369,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -409,8 +403,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### OAuth callback
 
@@ -521,8 +513,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -610,8 +600,6 @@ export default {
 
 ```
 
-Explain Code
-
 How callback matching works
 
 OAuth callbacks are matched by the `state` query parameter (format: `{serverId}:{stateValue}`), not by URL path. This means your custom `callbackPath` can be any path you choose, as long as requests to that path are routed to the correct agent instance.
@@ -666,8 +654,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -710,8 +696,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Using MCP capabilities
 
@@ -798,8 +782,6 @@ for (const prompt of state.prompts) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -826,8 +808,6 @@ for (const prompt of state.prompts) {
 
 
 ```
-
-Explain Code
 
 ### Server status
 
@@ -912,8 +892,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -948,8 +926,6 @@ export class MyAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -1099,8 +1075,6 @@ function Dashboard() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1165,8 +1139,6 @@ function Dashboard() {
 
 
 ```
-
-Explain Code
 
 ## API reference
 
@@ -1245,8 +1217,6 @@ async addMcpServer(
 
 
 ```
-
-Explain Code
 
 #### Parameters (HTTP transport)
 
@@ -1372,8 +1342,6 @@ type MCPServersState = {
 
 ```
 
-Explain Code
-
 The `state` field indicates the connection lifecycle:
 
 * `authenticating` — Waiting for OAuth authorization to complete
@@ -1471,8 +1439,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1514,8 +1480,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Custom OAuth provider
 
@@ -1581,8 +1545,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1641,8 +1603,6 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
-Explain Code
-
 If you do not override this method, the agent uses the default provider which performs [OAuth 2.0 Dynamic Client Registration ↗](https://datatracker.ietf.org/doc/html/rfc7591) with the MCP server.
 
 ### Custom storage backend
@@ -1679,8 +1639,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1710,8 +1668,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Advanced: MCPClientManager
 
@@ -1784,8 +1740,6 @@ if (connectResult.state === "connected") {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1847,8 +1801,6 @@ if (connectResult.state === "connected") {
 
 
 ```
-
-Explain Code
 
 ### Event subscription
 
@@ -1936,8 +1888,6 @@ async registerServer(
 
 ```
 
-Explain Code
-
 #### `this.mcp.connectToServer()`
 
 Establish a connection to a previously registered server.
@@ -1989,8 +1939,6 @@ type MCPDiscoverResult = {
 
 
 ```
-
-Explain Code
 
 #### `this.mcp.waitForConnections()`
 
@@ -2088,8 +2036,6 @@ const tools = this.mcp.getAITools({ state: "ready" });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2115,8 +2061,6 @@ const tools = this.mcp.getAITools({ state: "ready" });
 
 
 ```
-
-Explain Code
 
 The filter type is available from `agents/mcp/client`:
 
@@ -2187,8 +2131,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2226,8 +2168,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Next steps
 

@@ -24,8 +24,8 @@ Unlike logs, Analytics Engine is designed for aggregated queries over high-cardi
 
 Add an Analytics Engine dataset binding to your Wrangler configuration file. The dataset is created automatically when you first write to it.
 
-* [  wrangler.jsonc ](#tab-panel-8660)
-* [  wrangler.toml ](#tab-panel-8661)
+* [  wrangler.jsonc ](#tab-panel-8698)
+* [  wrangler.toml ](#tab-panel-8699)
 
 JSONC
 
@@ -65,8 +65,8 @@ dataset = "my_dataset"
 
 ## Write data points
 
-* [  JavaScript ](#tab-panel-8662)
-* [  TypeScript ](#tab-panel-8663)
+* [  JavaScript ](#tab-panel-8700)
+* [  TypeScript ](#tab-panel-8701)
 
 JavaScript
 
@@ -128,8 +128,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -198,8 +196,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Data point structure
 

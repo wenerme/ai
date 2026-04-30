@@ -77,8 +77,6 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -154,8 +152,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -183,8 +179,6 @@ console.log(scrapes);
 
 
 ```
-
-Explain Code
 
 Many more options exist, like setting HTTP credentials using `authenticate`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/scrape/methods/create/) for all available parameters.
 

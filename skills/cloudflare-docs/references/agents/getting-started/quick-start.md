@@ -179,8 +179,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -262,8 +260,6 @@ export default {
 
 ```
 
-Explain Code
-
 Update `wrangler.jsonc` to register the agent:
 
 * [  wrangler.jsonc ](#tab-panel-3946)
@@ -318,8 +314,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -350,8 +344,6 @@ new_sqlite_classes = [ "CounterAgent" ]
 
 
 ```
-
-Explain Code
 
 ## Connect from React
 
@@ -420,8 +412,6 @@ root.render(<App />);
 
 ```
 
-Explain Code
-
 Key points:
 
 * `useAgent` connects to your agent via WebSocket
@@ -489,8 +479,6 @@ await agent.call("reset");
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -521,8 +509,6 @@ await agent.call("reset");
 
 
 ```
-
-Explain Code
 
 ## Deploy to Cloudflare
 
@@ -663,8 +649,6 @@ agent.stub.increment();
 
 
 ```
-
-Explain Code
 
 ### `SyntaxError: Invalid or unexpected token` with `@callable()`
 

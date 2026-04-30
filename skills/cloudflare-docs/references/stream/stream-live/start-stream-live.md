@@ -104,8 +104,6 @@ Response
 
 ```
 
-Explain Code
-
 #### Optional API parameters
 
 [API Reference Docs for /live\_inputs](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/create/)

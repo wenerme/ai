@@ -258,8 +258,7 @@ Example response:
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 
 The returned configuration in the example above, which would match the existing configuration for the previous WAF version, contains:
 
@@ -296,7 +295,6 @@ curl --request PUT \
   ]  
 }'  
 ```  
-Explain Code  
 After invoking this API endpoint, both WAF managed rules and WAF Managed Rules will be enabled. Check [sampled logs](https://developers.cloudflare.com/waf/analytics/security-events/#sampled-logs) in Security Events for any legitimate traffic getting blocked, and perform any required adjustments to the WAF Managed Rules configuration. For example, you can [add an override](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) for a single rule that disables it or changes its action.
 2. To finish the upgrade and disable WAF managed rules, set the configuration for the new WAF using the settings you obtained in step 2 and possibly adjusted in step 3\. Make sure you include the `waf_migration=pending&phase_two=1` query string parameters.  
 Terminal window  
@@ -331,8 +329,7 @@ curl --request PUT \
     }  
   ]  
 }'  
-```  
-Explain Code
+```
 
 Once the provided configuration is saved and the new WAF Managed Rules are enabled, the previous version of the WAF managed rules will be automatically disabled, due to the presence of the `waf_migration=pending&phase_two=1` parameters. This will make sure that your zone stays protected by one of the WAF versions during the update process.
 
@@ -429,8 +426,7 @@ resource "cloudflare_ruleset" "terraform_managed_resource_3c0b456bc2aa443089c5f4
   [...]  
 }  
 [...]  
-```  
-Explain Code
+```
 2. The previous command may return additional ruleset configurations for other Cloudflare products also based on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/). Since you are looking for the WAF Managed Rules configuration, keep only the Terraform resource for the `http_request_firewall_managed` phase and save it to a `.tf` configuration file. You will need the full resource name in the next step.
 3. Import the `cloudflare_ruleset` resource you previously identified into Terraform state using the `terraform import` command. For example:  
 Terminal window  

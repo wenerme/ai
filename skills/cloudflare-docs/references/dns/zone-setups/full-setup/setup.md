@@ -320,8 +320,6 @@ nslookup -type=ns <DOMAIN_NAME> 8.8.8.8
 
 ```
 
-Explain Code
-
 Note
 
 If you see unexpected results, refer to our [troubleshooting suggestions](https://developers.cloudflare.com/dns/zone-setups/full-setup/troubleshooting/) and check with your domain registrar.

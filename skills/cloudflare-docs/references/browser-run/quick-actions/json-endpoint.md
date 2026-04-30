@@ -131,8 +131,6 @@ curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -194,8 +192,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 ### With only a prompt
 
 In this example, only a prompt is provided. The endpoint will use the prompt to extract the data, but the response will not be structured according to a JSON schema. This is useful for simple extractions where you do not need a specific format.
@@ -247,8 +243,6 @@ curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID
 
 
 ```
-
-Explain Code
 
 ### With only a JSON schema (no prompt)
 
@@ -316,8 +310,6 @@ curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -460,8 +452,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 Below is an example using the TypeScript SDK:
 
 TypeScript
@@ -538,8 +528,6 @@ console.log(json);
 
 
 ```
-
-Explain Code
 
 ## Advanced Usage
 
@@ -625,8 +613,6 @@ curl --request POST \
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -684,8 +670,6 @@ In this example, Browser Run first calls Anthropic's Claude Sonnet 4 model. If t
 
 
 ```
-
-Explain Code
 
 ## Troubleshooting
 

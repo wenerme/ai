@@ -481,8 +481,8 @@
   },
   "guides/get-started/sovereign-ai.md": {
     "url": "https://openrouter.ai/docs/guides/get-started/sovereign-ai.md",
-    "size": 6162,
-    "updatedAt": "2026-04-29T00:36:35.530Z"
+    "size": 6497,
+    "updatedAt": "2026-04-30T00:34:38.662Z"
   },
   "guides/get-started/stripe-projects.md": {
     "url": "https://openrouter.ai/docs/guides/get-started/stripe-projects.md",
@@ -706,8 +706,8 @@
   },
   "api/api-reference/guardrails/create-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/create-guardrail.md",
-    "size": 15505,
-    "updatedAt": "2026-04-29T00:37:14.755Z"
+    "size": 16171,
+    "updatedAt": "2026-04-30T00:35:19.003Z"
   },
   "api/api-reference/guardrails/get-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/get-guardrail.md",

@@ -22,8 +22,8 @@ The Python Workers platform leverages [FFI ↗](https://en.wikipedia.org/wiki/Fo
 
 From the configuration perspective, enabling Python Workflows requires adding the `python_workflows` compatibility flag to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-10087)
-* [  wrangler.toml ](#tab-panel-10088)
+* [  wrangler.jsonc ](#tab-panel-10125)
+* [  wrangler.toml ](#tab-panel-10126)
 
 JSONC
 
@@ -68,8 +68,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -97,8 +95,6 @@ class_name = "MyWorkflow"
 
 
 ```
-
-Explain Code
 
 And this is how you use the payload in your workflow:
 
@@ -162,8 +158,6 @@ class Default(WorkerEntrypoint):
 
 ```
 
-Explain Code
-
 Note
 
 Values returned from steps need to be converted into Javascript objects using `to_js`. This is why we explicitly construct the payload using `Object.fromEntries`.
@@ -212,8 +206,6 @@ class Default(WorkerEntrypoint):
 
 ```
 
-Explain Code
-
 ### `get`
 
 Get a workflow instance by ID.
@@ -252,8 +244,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 ### `send_event`
 

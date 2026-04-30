@@ -52,8 +52,8 @@ A `Promise<void>` that resolves after `delay` milliseconds. If an `AbortSignal` 
 
 Use `scheduler.wait()` to pause execution for a specified duration.
 
-* [  JavaScript ](#tab-panel-9113)
-* [  TypeScript ](#tab-panel-9114)
+* [  JavaScript ](#tab-panel-9151)
+* [  TypeScript ](#tab-panel-9152)
 
 JavaScript
 
@@ -101,8 +101,8 @@ export default {
 
 Use `scheduler.wait()` to implement a delay between retry attempts. This example uses exponential backoff with jitter.
 
-* [  JavaScript ](#tab-panel-9117)
-* [  TypeScript ](#tab-panel-9118)
+* [  JavaScript ](#tab-panel-9155)
+* [  TypeScript ](#tab-panel-9156)
 
 JavaScript
 
@@ -163,8 +163,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -224,14 +222,12 @@ export default {
 
 ```
 
-Explain Code
-
 ### Cancel with AbortSignal
 
 Use an [AbortController](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) to cancel a pending wait.
 
-* [  JavaScript ](#tab-panel-9115)
-* [  TypeScript ](#tab-panel-9116)
+* [  JavaScript ](#tab-panel-9153)
+* [  TypeScript ](#tab-panel-9154)
 
 JavaScript
 
@@ -274,8 +270,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -316,8 +310,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Related resources
 

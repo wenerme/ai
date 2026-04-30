@@ -86,7 +86,6 @@ export default {
   },  
 };  
 ```  
-Explain Code  
 Note  
 `Redis.fromEnv(env)` automatically picks up the default `url` and `token` names created in the integration.  
 If you have renamed the secrets, you must declare them explicitly like in the [Upstash basic example ↗](https://docs.upstash.com/redis/sdks/redis-ts/getstarted#basic-usage).

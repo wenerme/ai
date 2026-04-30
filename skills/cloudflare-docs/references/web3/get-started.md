@@ -76,8 +76,6 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \
 
 ```
 
-Explain Code
-
 The response contains the complete definition of the new gateway.
 
 Response
@@ -116,8 +114,6 @@ Response
 
 
 ```
-
-Explain Code
 
 When you create a gateway, Cloudflare automatically:
 

@@ -105,8 +105,6 @@ browser.disconnect();
 
 ```
 
-Explain Code
-
 The Live View URL is valid for five minutes from when it was generated. If the URL expires before the human operator opens it, list the targets again to get a fresh URL.
 
 ## Use cases

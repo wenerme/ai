@@ -32,8 +32,7 @@ To create the correct Sourcing Kit permissions:
     }  
   ]  
 }  
-```  
-Explain Code
+```
 3. Next, create a new user and attach the created policy to that user.
 
 You can now use both the Access Key ID and Secret Access Key to create a new source in Sourcing Kit. Refer to [Enable Sourcing Kit](https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/enable/) to learn more.

@@ -107,8 +107,6 @@ For DNS origins:
 
 ```
 
-Explain Code
-
 The number of ports in an origin port range must match the number of ports specified in the `protocol` field. Connections to a port within a port range at the edge will be proxied to the equivalent port offset in the origin range. For example, in the configurations above, a connection to `range.example.com:1005` would be proxied to port `3005` on the origin.
 
 ## IP Access rules

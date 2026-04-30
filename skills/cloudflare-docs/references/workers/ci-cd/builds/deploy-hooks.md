@@ -74,8 +74,6 @@ Example response:
 
 ```
 
-Explain Code
-
 The `build_uuid` in the response can be used to [monitor build status and retrieve logs](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#get-build-logs).
 
 ### Verify the build
@@ -136,8 +134,6 @@ Example response when an existing pending build is returned:
 
 ```
 
-Explain Code
-
 Once the earlier build moves past `initializing`, a later POST creates a new build as normal. This makes Deploy Hooks safe to use with systems that retry webhooks or emit bursts of content-update events.
 
 ## Examples
@@ -146,8 +142,8 @@ Once the earlier build moves past `initializing`, a later POST creates a new bui
 
 A Worker that receives a `/deploy` command from Slack and triggers a build:
 
-* [  JavaScript ](#tab-panel-8507)
-* [  TypeScript ](#tab-panel-8508)
+* [  JavaScript ](#tab-panel-8545)
+* [  TypeScript ](#tab-panel-8546)
 
 JavaScript
 
@@ -191,8 +187,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -235,14 +229,12 @@ export default {
 
 ```
 
-Explain Code
-
 ### Rebuild on a schedule
 
 A Worker with a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) that rebuilds every hour:
 
-* [  JavaScript ](#tab-panel-8505)
-* [  TypeScript ](#tab-panel-8506)
+* [  JavaScript ](#tab-panel-8543)
+* [  TypeScript ](#tab-panel-8544)
 
 JavaScript
 

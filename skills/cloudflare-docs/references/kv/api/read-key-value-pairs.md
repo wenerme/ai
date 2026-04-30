@@ -91,8 +91,6 @@ export default {
 
 ```
 
-Explain Code
-
 Note
 
 `get()` and `getWithMetadata()` methods may return stale values. If a given key has recently been read in a given location, writes or updates to the key made in other locations may take up to 60 seconds (or the duration of the `cacheTtl`) to display.

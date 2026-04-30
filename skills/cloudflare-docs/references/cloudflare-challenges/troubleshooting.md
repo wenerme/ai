@@ -99,8 +99,6 @@ Example JavaScript
 
 ```
 
-Explain Code
-
 ### Cross-origin resource sharing (CORS) preflight requests
 
 Cross-origin resource sharing (CORS) preflight requests, or `OPTIONS`, exclude user credentials that include cookies. As a result, the `cf_clearance` cookie will not be sent with the request, causing it to fail to bypass a Challenge Page (Non-interactive, Managed, or Interactive Challenge).

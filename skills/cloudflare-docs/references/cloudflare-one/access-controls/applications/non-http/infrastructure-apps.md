@@ -110,8 +110,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/t
 
 ```
 
-Explain Code
-
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
@@ -134,8 +132,7 @@ resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target"
       }  
     }  
 }  
-```  
-Explain Code
+```
 
 Next, create an Access application to secure the target.
 
@@ -257,8 +254,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 
 ```
 
-Explain Code
-
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
@@ -280,8 +275,7 @@ resource "cloudflare_zero_trust_access_application" "infra-app" {
     }  
   }  
 }  
-```  
-Explain Code
+```
 3. Use the [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource to add an infrastructure policy to the application:  
 ```  
 resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {  
@@ -299,8 +293,7 @@ resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {
     }  
   }  
 }  
-```  
-Explain Code
+```
 
 The targets in this application are now secured by your infrastructure policies.
 

@@ -71,8 +71,6 @@ Pass `ai_config.transcription` when [creating a meeting](https://developers.clou
 
 ```
 
-Explain Code
-
 | Option            | Type       | Default | Description                                |
 | ----------------- | ---------- | ------- | ------------------------------------------ |
 | language          | string     | en-US   | Language code for transcription            |
@@ -138,8 +136,6 @@ meeting.ai.on("transcript", (data) => {
 
 ```
 
-Explain Code
-
 #### Transcript payload
 
 ```
@@ -166,8 +162,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 | Field               | Description                                      |
 | ------------------- | ------------------------------------------------ |
@@ -244,8 +238,6 @@ Timestamp,Participant ID,User ID,Custom Participant ID,Participant Name,Transcri
 
 
 ```
-
-Explain Code
 
 ### Fetch transcripts
 

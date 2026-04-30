@@ -135,8 +135,6 @@ let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
 
 ```
 
-Explain Code
-
 To query vectors within a namespace:
 
 TypeScript
@@ -222,8 +220,6 @@ let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
 
 ```
 
-Explain Code
-
 Refer to [Vectorize API](https://developers.cloudflare.com/vectorize/reference/client-api/) for additional examples.
 
 ### wrangler CLI
@@ -294,8 +290,6 @@ with open('embeddings.ndjson', 'rb') as embeddings:
 
 
 ```
-
-Explain Code
 
 This code would insert the vectors defined in `embeddings.ndjson` into the provided index. Python libraries, including Pandas, also support the NDJSON format via the built-in `read_json` method:
 

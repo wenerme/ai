@@ -19,7 +19,7 @@ As a SaaS provider, you may want to support subdomains under your own zone in ad
 
 Note
 
-Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
+Eligible enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
 
 ## Benefits
 

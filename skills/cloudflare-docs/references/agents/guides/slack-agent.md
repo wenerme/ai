@@ -218,8 +218,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -254,8 +252,6 @@ new_classes = [ "MyAgent" ]
 
 
 ```
-
-Explain Code
 
 ## 4\. Create your Slack Agent
 
@@ -447,8 +443,6 @@ export default MyAgent.listen({
 
 
 ```
-
-Explain Code
 
 ## 5\. Test locally
 
@@ -680,8 +674,6 @@ async onSlackEvent(event: { type: string } & Record<string, unknown>) {
 
 ```
 
-Explain Code
-
 ### Use different LLM providers
 
 Replace OpenAI with [Workers AI](https://developers.cloudflare.com/workers-ai/):
@@ -713,8 +705,6 @@ export class MyAgent extends SlackAgent {
 
 
 ```
-
-Explain Code
 
 ## Next steps
 

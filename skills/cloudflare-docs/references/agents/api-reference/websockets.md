@@ -73,8 +73,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -111,8 +109,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Handling connections
 
@@ -176,8 +172,6 @@ export class ChatAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -232,8 +226,6 @@ export class ChatAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Connection object
 
@@ -294,8 +286,6 @@ export class ChatAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -350,8 +340,6 @@ export class ChatAgent extends Agent {
 
 ```
 
-Explain Code
-
 ## Broadcasting to all clients
 
 Use `this.broadcast()` to send a message to all connected clients:
@@ -399,8 +387,6 @@ export class ChatAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -440,8 +426,6 @@ export class ChatAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Excluding connections
 
@@ -533,8 +517,6 @@ export class ChatAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -576,8 +558,6 @@ export class ChatAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Connection management methods
 
@@ -636,8 +616,6 @@ export class FileAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -676,8 +654,6 @@ export class FileAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -740,8 +716,6 @@ export class ChatAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -811,8 +785,6 @@ export class ChatAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 The default `onError` implementation logs the error and rethrows it. Override it to add custom error handling, reporting, or recovery logic.
 
@@ -915,8 +887,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -948,8 +918,6 @@ export class MyAgent extends Agent<Env, { counter: number }> {
 
 
 ```
-
-Explain Code
 
 ## Common patterns
 
@@ -1079,8 +1047,6 @@ export class PresenceAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -1213,8 +1179,6 @@ export class PresenceAgent extends Agent {
 
 ```
 
-Explain Code
-
 ### Chat room with broadcast
 
 * [  JavaScript ](#tab-panel-3840)
@@ -1312,8 +1276,6 @@ export class ChatRoom extends Agent {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -1420,8 +1382,6 @@ export class ChatRoom extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Suppressing protocol messages
 

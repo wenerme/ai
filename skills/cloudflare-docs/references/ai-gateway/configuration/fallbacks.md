@@ -127,8 +127,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
 
 ```
 
-Explain Code
-
 ## Response header(cf-aig-step)
 
 When using the [Universal endpoint](https://developers.cloudflare.com/ai-gateway/usage/universal/) with fallbacks, the response header `cf-aig-step` indicates which model successfully processed the request by returning the step number. This header provides visibility into whether a fallback was triggered and which model ultimately processed the response.

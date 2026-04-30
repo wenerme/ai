@@ -176,8 +176,6 @@ console.log(result.results[0].text); // "15"
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -285,8 +283,6 @@ console.log(result.logs.stdout); // Data persists across executions
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -313,8 +309,6 @@ console.log(result.logs.stdout); // Data persists across executions
 
 
 ```
-
-Explain Code
 
 Variables declared with `const`, `let`, or `var` persist across executions, enabling multi-step workflows:
 
@@ -489,8 +483,6 @@ if (result.results[0]?.png) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -525,8 +517,6 @@ if (result.results[0]?.png) {
 
 
 ```
-
-Explain Code
 
 **Tables (pandas)**:
 
@@ -567,8 +557,6 @@ if (result.results[0]?.html) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -596,8 +584,6 @@ if (result.results[0]?.html) {
 
 
 ```
-
-Explain Code
 
 ## Related resources
 

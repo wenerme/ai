@@ -144,8 +144,6 @@ export default {
 
 ```
 
-Explain Code
-
 To test your code locally, run the following command and navigate to [http://localhost:8787/ ↗](http://localhost:8787/) in a browser:
 
 Terminal window
@@ -218,8 +216,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 And finally, deploy this update with `npm run deploy`.
 

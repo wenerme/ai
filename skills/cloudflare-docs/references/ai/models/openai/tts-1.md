@@ -61,8 +61,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -102,8 +100,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Narration**  — Slower narration style with the Onyx voice 
@@ -140,8 +136,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 
@@ -180,8 +174,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Fast Playback**  — Speed up speech for quick listening 
@@ -218,8 +210,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

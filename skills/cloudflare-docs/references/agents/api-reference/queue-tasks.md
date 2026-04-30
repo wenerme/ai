@@ -115,8 +115,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -153,8 +151,6 @@ class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### `dequeue()`
 
@@ -464,8 +460,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -515,8 +509,6 @@ class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 ## Use cases
 
 ### Background processing
@@ -561,8 +553,6 @@ class DataProcessor extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -599,8 +589,6 @@ class DataProcessor extends Agent {
 
 
 ```
-
-Explain Code
 
 ### Batch operations
 
@@ -653,8 +641,6 @@ class BatchProcessor extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -700,8 +686,6 @@ class BatchProcessor extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Error handling
 
@@ -762,8 +746,6 @@ class RobustAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -815,8 +797,6 @@ class RobustAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 If no `retry` option is provided, the class-level defaults from `static options.retry` are used (3 attempts, 100ms base delay, 3s max delay). Refer to [Retries](https://developers.cloudflare.com/agents/api-reference/retries/) for full details.
 

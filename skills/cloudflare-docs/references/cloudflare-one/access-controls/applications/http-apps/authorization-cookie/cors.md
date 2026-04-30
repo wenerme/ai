@@ -104,8 +104,7 @@ report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=A%
 nel: {"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}  
 server: cloudflare  
 cf-ray: 7109408e6b84efe4-EWR  
-```  
-Explain Code
+```
 
 ## Send authentication token with Cloudflare Worker
 
@@ -248,8 +247,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Then, deploy the Worker to your Cloudflare account:
 

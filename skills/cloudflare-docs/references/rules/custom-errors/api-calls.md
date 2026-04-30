@@ -66,8 +66,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \
 
 ```
 
-Explain Code
-
 To create an asset at the account level, use the account-level endpoint:
 
 ```
@@ -141,8 +139,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \
 
 ```
 
-Explain Code
-
 To retrieve a list of assets at the account level, use the account-level endpoint:
 
 ```
@@ -202,8 +198,6 @@ curl --request PUT \
 
 ```
 
-Explain Code
-
 You can update the asset description and URL. You cannot update the asset name after creation.
 
 If you provide the same URL when updating an asset, Cloudflare will fetch the URL again, along with its resources.
@@ -256,8 +250,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets/50
 
 
 ```
-
-Explain Code
 
 To retrieve an asset at the account level, use the account-level endpoint:
 
@@ -358,8 +350,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_IDENTIFIER/custom_pages/r
 
 ```
 
-Explain Code
-
 The response indicates that the page is currently set to the Cloudflare default page (`"state": "default"`).
 
 For a list of error page identifiers, refer to [Error page types](https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/).
@@ -431,8 +421,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_IDENTIFIER/custom_pages/r
 
 
 ```
-
-Explain Code
 
 To set the error page back to the default page, use `"state": "default"` in the request body.
 

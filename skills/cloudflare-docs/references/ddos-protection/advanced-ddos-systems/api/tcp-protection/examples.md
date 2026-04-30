@@ -121,8 +121,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_t
 
 ```
 
-Explain Code
-
 ## Add prefixes
 
 This example `POST` request adds two prefixes. The second prefix excludes a subset of the first prefix from Advanced TCP Protection.
@@ -163,8 +161,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_t
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -217,8 +213,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 ## Get all prefixes in allowlist
 
 This example fetches all the prefixes in the allowlist.
@@ -268,8 +262,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_t
 
 
 ```
-
-Explain Code
 
 ## Add a prefix to the allowlist
 
@@ -329,8 +321,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_t
 
 ```
 
-Explain Code
-
 ## Create a SYN flood rule
 
 This example `POST` request creates a SYN flood rule with a regional scope (Western Europe) in monitoring mode.
@@ -361,8 +351,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_t
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -399,8 +387,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/tcp-protection/json-objects/) for more information on the fields in the JSON body.
 
 ## Create an out-of-state TCP rule
@@ -433,8 +419,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_t
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -470,8 +454,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/tcp-protection/json-objects/) for more information on the fields in the JSON body.
 
@@ -529,8 +511,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_t
 
 ```
 
-Explain Code
-
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/tcp-protection/json-objects/) for more information on the fields in the JSON body.
 
 ## Create an out-of-state TCP filter
@@ -586,8 +566,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_t
 
 
 ```
-
-Explain Code
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/tcp-protection/json-objects/) for more information on the fields in the JSON body.
 

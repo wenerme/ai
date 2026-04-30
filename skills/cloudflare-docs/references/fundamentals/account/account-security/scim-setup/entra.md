@@ -148,8 +148,6 @@ Example response
 
 ```
 
-Explain Code
-
 **3\. Create a provisioning job**
 
 To enable provisioning, you will also need to create a job. Note the SERVICE\_PRINCIPAL\_ID in the previous request will be used in the request below. The SCIM templateId is an Entra provided template.
@@ -202,8 +200,6 @@ Example response
 
 ```
 
-Explain Code
-
 **4\. Configure the SCIM provisioning URL and API token**
 
 Next, configure the Tenant URL (Cloudflare SCIM endpoint) and API token (SCIM Provisioning API Token).
@@ -244,8 +240,6 @@ Example request
 
 
 ```
-
-Explain Code
 
 After completing the tasks above, the next steps in Entra include:
 

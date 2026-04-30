@@ -26,11 +26,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8807)
-* [  TypeScript ](#tab-panel-8808)
-* [  Python ](#tab-panel-8809)
-* [  Rust ](#tab-panel-8810)
-* [  Hono ](#tab-panel-8811)
+* [  JavaScript ](#tab-panel-8847)
+* [  TypeScript ](#tab-panel-8848)
+* [  Python ](#tab-panel-8849)
+* [  Rust ](#tab-panel-8850)
+* [  Hono ](#tab-panel-8851)
 
 JavaScript
 
@@ -68,7 +68,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOAMyjhARkkBWScIAsADgBcLFm2Ac4XGnwEjxU2fOUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ3JMcQwGAkDCQAAwAPABCZwAeSslQAmgAFACin2+YAAfM8tkCKLg6GiXi8gcdJCiABL2MBgdAkADqmDAuCByEJuLxJCBMBRlWO7hIwEQAGsQDASAB3XokADmjnsCAI9lw5Do2xIVgpIFwqDAiHs1MwfOliQZ7PRrOQWJxAKIFmNFwgIAQVFC9mFJAASrdPFQ3PZTl8fgAaJ4sz72OALBBufwbINbKJvMpOCA1exRfxRBzxFC+sBEE6IL0QBgAVUqADFsEoon7jVsAL5VvE1+6W2tVmtESzqZiabS6Hj8IRiCTSOSKJQlWwOJyuDxeHxtKj+QLaUhhCLRCKEbTpAJZHJrqJkClkYrWCflKpJ+qNZq8VrtVK2KYWNZRXmxAD6o3G2RT+QWhTSGsO07btgl7fQByMYdTCUZhLCAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAWAKzCAzAHYAjFOHDBADgBcLFm2Ac4XGnwEjx0uQuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ3JMcQwGAkDCQAAwAPABCZwAeSslQAmgAFACin2+YAAfM8tkCKLg6GiXi8gccZCiABL2MBgdAkADqmDAuCByEJuLxJCBMBRlWO7hIwEQAGsQDASAB3XokADmjnsCAI9lw5Do2xIVgpIFwqDAiHs1MwfOliQZ7PRrOQWJxAKIFmNFwgIAQVFC9mFJAASrdPFQ3PZTl8fgAaJ4sz72OALBBufwbINbKJvMpOCA1exRfxRBzxFC+sBEE6IL0QBgAVUqADFsEoon7jVsAL5VvE1+6W2tVmtESzqZiabS6Hj8IRiSSyeSKJQlWwOJyuDxeHxtKj+QLaUhhCLRCKEbTpAJZHJrqJkClkYrWCflKpJ+qNZq8VrtVK2KYWNZRXmxAD6o3G2RT+QWhTSGsO07btgl7fQByMYdTCUZhLCAA)
 
 TypeScript
 
@@ -106,8 +106,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -137,8 +135,6 @@ class Default(WorkerEntrypoint):
 
 ```
 
-Explain Code
-
 ```
 
 use worker::*;
@@ -166,8 +162,6 @@ async fn fetch(_req: Request, _env: Env, _ctx: Context) -> Result<Response> {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -203,8 +197,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/return-html/","name":"Return small HTML page"}}]}

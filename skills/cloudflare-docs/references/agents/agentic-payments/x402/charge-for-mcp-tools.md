@@ -105,8 +105,6 @@ export class PaidMCP extends McpAgent<Env> {
 
 ```
 
-Explain Code
-
 ## Configuration
 
 | Field       | Description                                                |

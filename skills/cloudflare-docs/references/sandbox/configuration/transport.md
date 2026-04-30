@@ -142,8 +142,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -177,8 +175,6 @@ name = "Sandbox"
 
 
 ```
-
-Explain Code
 
 No application code changes are needed. The SDK automatically uses the configured transport for all operations.
 

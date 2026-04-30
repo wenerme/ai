@@ -78,8 +78,6 @@ zaraz.track('Product List Viewed',
 
 ```
 
-Explain Code
-
 If the field in which you want to show the sum, you will enter `{{ $sum(client.products.(price * quantity)) }}`. This will multiply the price of each product by its quantity, and then sum up the total.
 
 ```json

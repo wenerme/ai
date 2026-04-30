@@ -61,8 +61,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -102,8 +100,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Nature Close-up**  — Close-up wildlife shot in 16:9 
@@ -141,8 +137,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Cinematic Scene**  — Longer duration cinematic video 
@@ -179,8 +173,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 
@@ -221,8 +213,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Reproducible Generation**  — Use seed for consistent results 
@@ -259,8 +249,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 
@@ -302,8 +290,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

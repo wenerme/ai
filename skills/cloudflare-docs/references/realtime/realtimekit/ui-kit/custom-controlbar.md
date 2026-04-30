@@ -73,8 +73,6 @@ import {
 
 ```
 
-Explain Code
-
 In your `RtkUIProvider` from [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/), replace:
 
 ```
@@ -179,8 +177,6 @@ with:
 
 ```
 
-Explain Code
-
 Define a ref for the fullscreen target and attach it to your container element:
 
 ```
@@ -223,8 +219,6 @@ const fullScreenRef = useRef<HTMLDivElement>(null);
 
 
 ```
-
-Explain Code
 
 A complete example to build your own UI with custom controlbar can be found [here ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/create-your-own-ui) with the custom controlbar component [here ↗](https://github.com/cloudflare/realtimekit-web-examples/blob/main/react-examples/examples/create-your-own-ui/src/components/meeting-control-bar.tsx).
 
@@ -329,8 +323,6 @@ with:
 
 
 ```
-
-Explain Code
 
 Register the fullscreen target after rendering:
 
@@ -531,8 +523,6 @@ export class CustomControlbarComponent implements AfterViewInit {
 
 ```
 
-Explain Code
-
 #### Use in Your Meeting Component
 
 In your main meeting component template, replace:
@@ -649,8 +639,6 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
 ```
 
-Explain Code
-
 #### Module Configuration
 
 Don't forget to declare your custom controlbar component in your Angular module:
@@ -689,8 +677,6 @@ export class AppModule {}
 
 
 ```
-
-Explain Code
 
 #### Advanced Customization
 
@@ -868,8 +854,6 @@ export class EnhancedControlbarComponent implements AfterViewInit {
 
 ```
 
-Explain Code
-
 This approach gives you complete control over the controlbar layout while maintaining Angular's component architecture and leveraging RealtimeKit's built-in functionality.
 
 The iOS UI Kit provides `RtkMeetingControlBar` as the default controlbar for group call meetings. To build a custom controlbar, compose individual button components inside a `RtkTabBar`.
@@ -935,8 +919,6 @@ func buildCustomControlBar(
 
 ```
 
-Explain Code
-
 ### Add the custom controlbar to your view controller
 
 Swift
@@ -981,8 +963,6 @@ override func viewDidLoad() {
 
 
 ```
-
-Explain Code
 
 ### Use the DataSource pattern for button replacement
 
@@ -1042,8 +1022,6 @@ controlBar.dataSource = CustomControlBarDataSource()
 
 
 ```
-
-Explain Code
 
 ### Add custom buttons
 
@@ -1157,8 +1135,6 @@ layout\_custom\_controlbar.xml
 
 ```
 
-Explain Code
-
 ### Activate the controlbar buttons in your Activity
 
 CustomMeetingActivity.kt
@@ -1211,8 +1187,6 @@ class CustomMeetingActivity : AppCompatActivity() {
 
 
 ```
-
-Explain Code
 
 ### Add custom buttons using RtkControlBarButton
 
@@ -1328,8 +1302,6 @@ class CustomControlBar extends StatelessWidget {
 
 ```
 
-Explain Code
-
 ### Use the custom controlbar in your meeting screen
 
 Replace the default controlbar in your `Scaffold`:
@@ -1392,8 +1364,6 @@ class CustomMeetingScreen extends StatelessWidget {
 
 ```
 
-Explain Code
-
 ### Add custom buttons alongside RealtimeKit widgets
 
 Add your own `IconButton` or any Flutter widget next to the RealtimeKit buttons:
@@ -1434,8 +1404,6 @@ Row(
 
 
 ```
-
-Explain Code
 
 ### Customize button appearance with design tokens
 
@@ -1548,8 +1516,6 @@ const styles = StyleSheet.create({
 
 ```
 
-Explain Code
-
 ### Use the custom controlbar in your meeting screen
 
 In your `MeetingScreens` component from [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/), replace:
@@ -1615,8 +1581,6 @@ function CustomControlbar({ meeting }) {
 
 
 ```
-
-Explain Code
 
 Note
 

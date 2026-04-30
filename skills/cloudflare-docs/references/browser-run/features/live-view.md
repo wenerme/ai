@@ -110,8 +110,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-renderin
 
 ```
 
-Explain Code
-
 1. Copy the `devtoolsFrontendUrl` from `targets[0]` and open it in your browser. You now have a live, interactive view of the remote browser session.
 
 ## View an existing session
@@ -144,8 +142,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-renderin
     "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/28d75446-.../page/110850A8...?jwt=..."  
   }  
 ]  
-```  
-Explain Code
+```
 3. Copy the `devtoolsFrontendUrl` and open it in your browser.
 
 ```json

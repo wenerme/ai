@@ -59,8 +59,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -99,8 +97,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 
@@ -141,8 +137,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Extended Duration**  — Longer video clip 
@@ -180,8 +174,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Low Resolution Fast Preview**  — Quick preview at 540p 
@@ -216,8 +208,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

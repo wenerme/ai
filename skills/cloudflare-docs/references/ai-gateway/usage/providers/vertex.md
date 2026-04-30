@@ -119,8 +119,6 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vert
 
 ```
 
-Explain Code
-
 ### Option 2: Service Account JSON in Header
 
 You can pass a Google service account JSON directly in the `Authorization` header on each request with a base64-encoded version of the JSON. This option is useful for testing or when you cannot use BYOK.
@@ -165,8 +163,6 @@ When passing the service account JSON directly in the header (not using BYOK), y
 
 
 ```
-
-Explain Code
 
 ### Option 3: Direct Access Token
 
@@ -215,8 +211,6 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vert
 
 ```
 
-Explain Code
-
 ## Using Unified Chat Completions API
 
 AI Gateway provides a [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) that works across providers. For Google Vertex AI, you can use the standard chat completions format. Note that the model field includes the provider prefix, so your model string will look like `google-vertex-ai/google/gemini-2.5-pro`.
@@ -264,8 +258,6 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat
 
 
 ```
-
-Explain Code
 
 ### Example with OpenAI SDK
 
@@ -334,8 +326,6 @@ console.log(response.choices[0].message.content);
 
 ```
 
-Explain Code
-
 ### Example with cURL
 
 Terminal window
@@ -375,8 +365,6 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -427,8 +415,6 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vert
 
 ```
 
-Explain Code
-
 ### cURL with Service Account JSON
 
 If not using BYOK, pass the base64-encoded service account JSON (with `region` key included) in the Authorization header:
@@ -476,8 +462,6 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vert
 
 
 ```
-
-Explain Code
 
 ## Troubleshooting
 

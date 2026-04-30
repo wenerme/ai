@@ -141,8 +141,6 @@ export default {
 
 ```
 
-Explain Code
-
 #### Subdomain-Based Routing
 
 Route subdomains to the corresponding Worker. For example, `my-customer.example.com` will route to the Worker named `my-customer` in the dispatch namespace.
@@ -194,8 +192,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 #### Path-Based routing
 
@@ -250,8 +246,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Enforce custom limits
 
@@ -330,8 +324,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 For more details on available limits, refer to [Custom limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/).
 

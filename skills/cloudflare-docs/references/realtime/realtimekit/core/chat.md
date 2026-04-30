@@ -231,8 +231,6 @@ type Message = TextMessage | ImageMessage | FileMessage;
 
 ```
 
-Explain Code
-
 The `Message` type is defined as follows:
 
 TypeScript
@@ -294,8 +292,6 @@ type Message = TextMessage | ImageMessage | FileMessage;
 
 ```
 
-Explain Code
-
 The `ChatMessage` class is defined as follows:
 
 Kotlin
@@ -352,8 +348,6 @@ class FileMessage(
 
 
 ```
-
-Explain Code
 
 The `ChatMessage` class is defined as follows:
 
@@ -420,8 +414,6 @@ public final class FileMessage: ChatMessage {
 
 ```
 
-Explain Code
-
 The `ChatMessage` class is defined as follows:
 
 Dart
@@ -474,8 +466,6 @@ class FileMessage extends ChatMessage {
 
 
 ```
-
-Explain Code
 
 The `Message` type is defined as follows:
 
@@ -537,8 +527,6 @@ type Message = TextMessage | ImageMessage | FileMessage;
 
 
 ```
-
-Explain Code
 
 ## Sending a Chat Message
 
@@ -716,8 +704,6 @@ function ChatComponent() {
 
 ```
 
-Explain Code
-
 You can send an image with the help of `meeting.chat.sendImageMessage()` and sends it to the participants in the meeting.
 
 Kotlin
@@ -801,8 +787,6 @@ async function onSendImage() {
 
 ```
 
-Explain Code
-
 ### Send a File
 
 Sending a file is similar to sending an image. The only difference is that when you send an image, a preview will be shown in the meeting chat, which is not the case for sending files. That being said, an image can be sent as a file too using `meeting.chat.sendFileMessage()`.
@@ -876,8 +860,6 @@ function ChatComponent() {
 
 
 ```
-
-Explain Code
 
 Sending a file is similar to sending an image. The only difference is that when you send an image, a preview will be shown in the meeting chat, which is not the case for sending files. That being said, an image can be sent as a file too using `meeting.chat.sendFileMessage()`.
 
@@ -961,8 +943,6 @@ async function onSendFile() {
 
 
 ```
-
-Explain Code
 
 ### Send Any Message Type
 
@@ -1195,8 +1175,6 @@ meeting.addChatEventListener(object : RtkChatEventListener {
 
 ```
 
-Explain Code
-
 The `onChatUpdates()` method will be called whenever there is a change in the chat messages. The `messages` parameter is a list of `ChatMessage` objects that have been sent in the chat.
 
 The `onNewChatMessage()` method will be called whenever a new chat message is shared in the meeting. The `message` parameter is a `ChatMessage` object that has been sent in the chat.
@@ -1235,8 +1213,6 @@ extension MainChatListener: RtkChatEventListener {
 
 
 ```
-
-Explain Code
 
 The `onChatUpdates()` method will be called whenever there is a change in the chat messages. The `messages` parameter is a list of `ChatMessage` objects that have been sent in the chat.
 
@@ -1313,8 +1289,6 @@ class ChatEventListener extends RtkChatEventListener {
 
 
 ```
-
-Explain Code
 
 In this context, `messages` refers to a list of all the chat messages in the meeting. The type of message used is `ChatMessage`, which was introduced earlier in the introduction to Chat topic.
 
@@ -1502,8 +1476,6 @@ function ChatComponent() {
 
 ```
 
-Explain Code
-
 You can edit an image with the help of `meeting.chat.editImageMessage()`. This accepts a `messageId` of type `string` and an image of type File.
 
 ```
@@ -1541,8 +1513,6 @@ async function onEditImage() {
 
 
 ```
-
-Explain Code
 
 ### Edit a File
 
@@ -1622,8 +1592,6 @@ function ChatComponent() {
 
 ```
 
-Explain Code
-
 Editing a file is similar to editing an image. To edit a file, use `meeting.chat.editFileMessage()`.
 
 ```
@@ -1661,8 +1629,6 @@ async function onEditFile() {
 
 
 ```
-
-Explain Code
 
 ### Edit Any Message Type
 

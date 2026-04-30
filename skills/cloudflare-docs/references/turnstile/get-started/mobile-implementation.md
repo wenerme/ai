@@ -83,8 +83,6 @@ webView.loadUrl("https://yoursite.com/protected-form");
 
 ```
 
-Explain Code
-
 #### iOS WKWebView (Swift)
 
 Swift
@@ -126,8 +124,6 @@ class ViewController: UIViewController {
 
 ```
 
-Explain Code
-
 #### React Native WebView
 
 JavaScript
@@ -161,8 +157,6 @@ export default function App() {
 
 
 ```
-
-Explain Code
 
 #### Flutter WebView
 
@@ -219,8 +213,6 @@ class WebViewScreen extends StatelessWidget {
 
 
 ```
-
-Explain Code
 
 ---
 

@@ -124,8 +124,7 @@ variable "cloudflare_token" {
   type        = string  
   sensitive   = true  
 }  
-```  
-Explain Code
+```
 
 ### Assign values to the variables
 
@@ -186,7 +185,6 @@ provider "google" {
 provider "random" {  
 }  
 ```  
-Explain Code  
 ```  
 terraform {  
   required_providers {  
@@ -212,8 +210,7 @@ provider "google" {
 }  
 provider "random" {  
 }  
-```  
-Explain Code
+```
 
 ### Configure Cloudflare resources
 
@@ -303,7 +300,6 @@ resource "cloudflare_zero_trust_access_application" "http_app" {
   ]  
 }  
 ```  
-Explain Code  
 ```  
 # Generates a 32-byte secret for the tunnel.  
 resource "random_bytes" "tunnel_secret" {  
@@ -361,8 +357,7 @@ resource "cloudflare_zero_trust_access_policy" "allow_emails" {
     email = [var.cloudflare_email]  
   }  
 }  
-```  
-Explain Code
+```
 
 To learn more about these resources, refer to the [Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
@@ -413,7 +408,6 @@ resource "google_compute_instance" "http_server" {
     })  
 }  
 ```  
-Explain Code  
 ```  
 # OS the server will use  
 data "google_compute_image" "image" {  
@@ -448,8 +442,7 @@ resource "google_compute_instance" "http_server" {
       tunnel_token = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.tunnel_token  
     })  
 }  
-```  
-Explain Code
+```
 
 ### Create a startup script
 
@@ -491,8 +484,7 @@ services:
 EOF  
 cd /tmp  
 sudo docker-compose up -d  
-```  
-Explain Code
+```
 
 ## 6\. Deploy Terraform
 

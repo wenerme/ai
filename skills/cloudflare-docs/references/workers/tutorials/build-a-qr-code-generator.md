@@ -147,8 +147,6 @@ export default {
 
 ```
 
-Explain Code
-
 You have established the basic flow of the request. You will now set up a response to incoming valid requests. If a `POST` request comes in, the function should generate a QR code. To start, move the `"Hello Worker!"` response into a new function, `generateQRCode`, which will ultimately contain the bulk of your function’s logic:
 
 JavaScript
@@ -178,8 +176,6 @@ async function generateQRCode(request) {
 
 
 ```
-
-Explain Code
 
 With the `generateQRCode` function filled out, call it within `fetch` function and return its result directly to the client:
 
@@ -354,8 +350,6 @@ const landing = `
 
 ```
 
-Explain Code
-
 The `landing` variable, which is a static HTML string, sets up an `input` tag and a corresponding `button`, which calls the `generateQRCode` function. This function will make an HTTP `POST` request back to your Worker, allowing you to see the corresponding QR code image returned on the page.
 
 With the above steps complete, your Worker is ready. The full version of the code looks like this:
@@ -460,8 +454,6 @@ const landing = `
 
 
 ```
-
-Explain Code
 
 ## 5\. Deploy your Worker
 

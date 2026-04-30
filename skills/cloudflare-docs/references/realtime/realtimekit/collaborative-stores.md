@@ -245,8 +245,6 @@ store.unsubscribe('key');
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -276,8 +274,6 @@ store.unsubscribe('key');
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -306,8 +302,6 @@ store.unsubscribe('key');
 
 
 ```
-
-Explain Code
 
 Kotlin
 
@@ -338,8 +332,6 @@ store.unsubscribe("key", keyChangeCallback)
 
 ```
 
-Explain Code
-
 Swift
 
 ```
@@ -368,8 +360,6 @@ store.unsubscribe(key: "key", onChange: keyChangeCallback)
 
 
 ```
-
-Explain Code
 
 ### Fetch Store Data
 

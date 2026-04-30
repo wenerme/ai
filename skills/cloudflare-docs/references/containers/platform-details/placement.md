@@ -89,8 +89,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```

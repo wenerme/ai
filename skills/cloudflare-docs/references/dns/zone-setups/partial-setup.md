@@ -16,6 +16,10 @@ A CNAME setup (also known as partial setup) allows you to use [Cloudflare's reve
 
 Use this option to proxy only individual subdomains through Cloudflare when you cannot change your authoritative DNS provider. You will be able to create A, AAAA, and CNAME records, which are the DNS record types that can be [proxied](https://developers.cloudflare.com/dns/proxy-status/).
 
+Availability
+
+A CNAME setup (partial) is only available to customers on a Business or Enterprise plan. Partial setups are not supported on Cloudflare Registrar domains.
+
 Once you are on a CNAME setup (partial), the actual resolution of your records to Cloudflare depends on CNAME records [added at your authoritative DNS provider](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/#3-add-dns-records). Check your authoritative DNS provider to know which records are pointing to `{your-hostname}.cdn.cloudflare.net`.
 
 ## How to

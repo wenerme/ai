@@ -26,10 +26,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8656)
-* [  TypeScript ](#tab-panel-8657)
-* [  Python ](#tab-panel-8658)
-* [  Hono ](#tab-panel-8659)
+* [  JavaScript ](#tab-panel-8694)
+* [  TypeScript ](#tab-panel-8695)
+* [  Python ](#tab-panel-8696)
+* [  Hono ](#tab-panel-8697)
 
 JavaScript
 
@@ -79,8 +79,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -129,8 +127,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -175,8 +171,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -247,8 +241,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 You can also use the [custom-headers-example template ↗](https://github.com/kristianfreeman/custom-headers-example) to deploy this code to your custom domain.
 

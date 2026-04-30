@@ -5966,7 +5966,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs \
           "testing_criteria": "testing_criteria"
         }
       ],
-      "report_url": "report_url",
+      "report_url": "https://example.com",
       "result_counts": {
         "errored": 0,
         "failed": 0,
@@ -10054,7 +10054,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs \
       "testing_criteria": "testing_criteria"
     }
   ],
-  "report_url": "report_url",
+  "report_url": "https://example.com",
   "result_counts": {
     "errored": 0,
     "failed": 0,
@@ -12212,7 +12212,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
       "testing_criteria": "testing_criteria"
     }
   ],
-  "report_url": "report_url",
+  "report_url": "https://example.com",
   "result_counts": {
     "errored": 0,
     "failed": 0,
@@ -14453,7 +14453,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
       "testing_criteria": "testing_criteria"
     }
   ],
-  "report_url": "report_url",
+  "report_url": "https://example.com",
   "result_counts": {
     "errored": 0,
     "failed": 0,

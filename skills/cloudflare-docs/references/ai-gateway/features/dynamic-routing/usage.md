@@ -72,8 +72,6 @@ try {
 
 ```
 
-Explain Code
-
 ### Fetch
 
 Terminal window
@@ -106,8 +104,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 
 ```
-
-Explain Code
 
 ### Workers
 
@@ -162,8 +158,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Response Metadata
 

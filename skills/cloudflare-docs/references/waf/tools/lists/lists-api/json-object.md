@@ -45,8 +45,6 @@ A JSON response for the [Lists API](https://developers.cloudflare.com/api/resour
 
 ```
 
-Explain Code
-
 This table summarizes the object properties:
 
 | Property                         | Description                                                                                              | Constraints                                                                                                                                                  |
@@ -171,8 +169,6 @@ A fully populated JSON object for a Bulk Redirect List item has the following st
 
 
 ```
-
-Explain Code
 
 ### Properties reference
 

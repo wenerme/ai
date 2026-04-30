@@ -165,8 +165,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -376,8 +374,6 @@ const result = await env.AI.autorag("my-instance").search({
 
 ```
 
-Explain Code
-
 **After:**
 
 TypeScript
@@ -408,8 +404,6 @@ const result = await env.MY_INSTANCE.search({
 
 
 ```
-
-Explain Code
 
 ## Backwards compatibility
 

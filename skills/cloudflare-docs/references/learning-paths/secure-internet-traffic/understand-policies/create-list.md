@@ -46,8 +46,8 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-6667)
-* [ Terraform (v5) ](#tab-panel-6668)
+* [ Dashboard ](#tab-panel-6665)
+* [ Terraform (v5) ](#tab-panel-6666)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -78,9 +78,9 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-6669)
-* [ API ](#tab-panel-6670)
-* [ Terraform (v5) ](#tab-panel-6671)
+* [ Dashboard ](#tab-panel-6667)
+* [ API ](#tab-panel-6668)
+* [ Terraform (v5) ](#tab-panel-6669)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.
@@ -127,8 +127,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
 
 ```
 
-Explain Code
-
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
    * `Zero Trust Write`
 2. Create a list using the [cloudflare\_zero\_trust\_list ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Flist) resource.  
@@ -150,7 +148,6 @@ resource "cloudflare_zero_trust_list" "wiki_IPs" {
   ]  
 }  
 ```  
-Explain Code  
 Example list of domains:  
 ```  
 resource "cloudflare_zero_trust_list" "wiki_domains" {  
@@ -166,8 +163,7 @@ resource "cloudflare_zero_trust_list" "wiki_domains" {
       value = "wiki2.example.com"  
     }]  
 }  
-```  
-Explain Code
+```
 
 You can now use this list in the policy builder by choosing the _in list_ operator.
 

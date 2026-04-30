@@ -109,8 +109,6 @@ Ownership challenge response example
 
 ```
 
-Explain Code
-
 Validate the bucket by inserting the copied text in the `ownership_text` below:
 
 Bucket validation example
@@ -168,8 +166,6 @@ Bucket validation response
 
 
 ```
-
-Explain Code
 
 If the `status` shows `success`, the bucket is configured and ready to use.
 
@@ -240,8 +236,6 @@ Bucket list response example
 
 
 ```
-
-Explain Code
 
 To learn how to collect packet captures, refer to [Collect packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/).
 
@@ -318,8 +312,6 @@ The [response](https://developers.cloudflare.com/api/resources/magic%5Ftransit/s
 
 
 ```
-
-Explain Code
 
 ### Validate bucket ownership
 

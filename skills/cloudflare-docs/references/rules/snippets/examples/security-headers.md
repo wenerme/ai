@@ -126,8 +126,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Other common security headers
 
 * Content-Security-Policy headers: Enabling these headers will permit content from a trusted domain and all its subdomains. Refer to [Content-Security-Policy ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy) for details.

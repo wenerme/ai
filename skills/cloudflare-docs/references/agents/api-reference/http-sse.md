@@ -77,8 +77,6 @@ export class APIAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -134,8 +132,6 @@ export class APIAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## Server-Sent Events (SSE)
 
@@ -207,8 +203,6 @@ export class StreamAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -267,8 +261,6 @@ export class StreamAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ### SSE message format
 
@@ -340,8 +332,6 @@ export class ChatAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -387,8 +377,6 @@ export class ChatAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 ## Connection handling
 
@@ -446,8 +434,6 @@ export class ResumeAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -492,8 +478,6 @@ export class ResumeAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## WebSockets vs SSE
 

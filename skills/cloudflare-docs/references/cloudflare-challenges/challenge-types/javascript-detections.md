@@ -156,8 +156,6 @@ function jsdOnload(){
 
 ```
 
-Explain Code
-
 Note
 
 `result` \= `success` or `error` only refers to the execution of JavaScript Detections. It does not indicate whether a visitor is a human or a bot.

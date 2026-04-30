@@ -75,8 +75,6 @@ npx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-tabl
 
 ```
 
-Explain Code
-
 For more details on managing compaction, refer to [Manage catalogs](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/).
 
 ### Choose the right target file size
@@ -148,8 +146,6 @@ npx wrangler r2 bucket catalog snapshot-expiration disable my-bucket
 
 
 ```
-
-Explain Code
 
 ### Choose the right retention policy
 

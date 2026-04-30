@@ -67,8 +67,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -95,8 +93,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 1. Select **Save and deploy**.
 

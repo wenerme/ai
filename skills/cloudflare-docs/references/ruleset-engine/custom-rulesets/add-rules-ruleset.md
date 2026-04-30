@@ -86,8 +86,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -163,8 +161,6 @@ Explain Code
 
 ```
 
-Explain Code
-
 ## Update rules
 
 To update one or more rules in a custom ruleset, use the [Update an account or zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation. Include the ID of the rules you want to modify in the rules array and add the fields you wish to update. The request replaces the entire ruleset with a new version. Therefore, you must include the ID of all the rules you wish to keep.
@@ -223,8 +219,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -300,8 +294,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 Warning
 

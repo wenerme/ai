@@ -66,8 +66,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## PDF Attachments
 
 Generate and send PDF documents as email attachments:
@@ -237,8 +235,6 @@ startxref
 
 
 ```
-
-Explain Code
 
 ## Inline Images
 
@@ -423,8 +419,6 @@ function getCompanyLogo(): string {
 
 
 ```
-
-Explain Code
 
 ## File Uploads
 
@@ -712,8 +706,6 @@ function getFileTypeDescription(mimeType: string): string {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/email-attachments/","name":"Email attachments"}}]}

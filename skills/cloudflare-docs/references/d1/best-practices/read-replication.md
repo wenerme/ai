@@ -108,8 +108,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -188,8 +186,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Primary database instance vs read replicas
 
@@ -394,8 +390,6 @@ await fetch ("/v4/accounts/{account_id}/d1/database/{database_id}", {
 
 ```
 
-Explain Code
-
 ### Disable read replication via REST API
 
 With the REST API, set `read_replication.mode: disabled` to disable read replication on a D1 database.
@@ -454,8 +448,6 @@ await fetch ("/v4/accounts/{account_id}/d1/database/{database_id}", {
 
 ```
 
-Explain Code
-
 ### Check if read replication is enabled
 
 On the Cloudflare dashboard, check **Settings** for your D1 database to view if read replication is enabled.
@@ -504,8 +496,6 @@ console.log(data.read_replication.mode);
 
 
 ```
-
-Explain Code
 
 * Check the `read_replication` property of the `result` object  
    * `"mode": "auto"` indicates read replication is enabled  

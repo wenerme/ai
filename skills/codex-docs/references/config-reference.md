@@ -525,6 +525,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Minimum idle time before a thread is considered for memory generation. Defaults to `6` and is clamped to `1`-`48`.",
     },
     {
+      key: "memories.min_rate_limit_remaining_percent",
+      type: "number",
+      description:
+        "Minimum remaining percentage required in Codex rate-limit windows before memory generation starts. Defaults to `25` and is clamped to `0`-`100`.",
+    },
+    {
       key: "memories.extract_model",
       type: "string",
       description: "Optional model override for per-thread memory extraction.",

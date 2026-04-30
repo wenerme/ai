@@ -116,8 +116,6 @@ export class AgentServer extends DurableObject {
 
 ```
 
-Explain Code
-
 ## Storage methods
 
 ### `getAlarm`
@@ -232,8 +230,6 @@ export class AlarmExample extends DurableObject {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -286,8 +282,6 @@ class AlarmExample(DurableObject):
 
 
 ```
-
-Explain Code
 
 The following example shows how to use the `alarmInfo` property to identify if the alarm event has been attempted before.
 

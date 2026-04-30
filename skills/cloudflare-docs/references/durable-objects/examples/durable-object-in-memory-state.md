@@ -119,8 +119,6 @@ New Location: ${request.cf.city}`);
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -205,8 +203,6 @@ New Location: {request.js_object.cf.city}"""
 
 ```
 
-Explain Code
-
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
 * [  wrangler.jsonc ](#tab-panel-5798)
@@ -261,8 +257,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -289,8 +283,6 @@ new_sqlite_classes = [ "Location" ]
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/durable-object-in-memory-state/","name":"Durable Object in-memory state"}}]}

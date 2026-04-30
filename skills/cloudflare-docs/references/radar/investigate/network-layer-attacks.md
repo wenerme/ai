@@ -102,8 +102,6 @@ If we inspect the abbreviated response below, we can conclude that globally, at 
 
 ```
 
-Explain Code
-
 We can also conclude that the distribution of network layer attacks coming from Singapore — or, more accurately, reaching Cloudflare's data center located in Singapore — differs quite a bit from the worldwide distribution. At those times, the distribution of network layer attacks clearly favors [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/).
 
 For more information refer to the [API reference](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries/) for this endpoint.
@@ -169,8 +167,6 @@ curl "https://api.cloudflare.com/client/v4/radar/attacks/layer3/summary?location
 
 
 ```
-
-Explain Code
 
 The response shows that the attacks coming from Russia to other locations tended to use the [UDP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/user-datagram-protocol-udp/) network protocol at those timestamps.
 

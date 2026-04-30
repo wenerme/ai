@@ -29,10 +29,10 @@ The Monitoring API includes the following core entities, which each provide dist
 
 You can construct any query you'd like using the above datasets, but here are some example queries you can use.
 
-* [ Events ](#tab-panel-10124)
-* [ Loads ](#tab-panel-10125)
-* [ Triggers ](#tab-panel-10126)
-* [ Erroneous responses ](#tab-panel-10127)
+* [ Events ](#tab-panel-10164)
+* [ Loads ](#tab-panel-10165)
+* [ Triggers ](#tab-panel-10166)
+* [ Erroneous responses ](#tab-panel-10167)
 
 Query for the count of Zaraz events, grouped by time.
 
@@ -85,7 +85,7 @@ query ZarazEvents(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgUQG5gHYBcDOAFAFAwwAkKA9tmACoIDmAXDPrhAJbaOkUA2nALadcrEN1wA2ACwBCPuXZIxMOsLCKcAE1bqhmsuSoRtkAEJRWcGmETIUdZAGMA1gEFtCAA65OWAHEIKhBvfAB5UwsoBQBKGABvPgxOMAB3SES+MmpaIgAzTn5cSFYEmFz6JlZKWwZGGABfeKSyNpgvXARWFCRUJwQ3Tx8-QODQomz2mEERVXJZ0Sn2wuLSxI6EEr8DAAkQiAB9RjBgGuUIXAAaTe2NfZAj-lOanSbltpMzCEtWAG1jFEflAALofFofMjOEJ4SEdDTYfCcGj4LLTaYEVidMA7MAPCBwxofIntEnvRpAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtGwAsEoQE44bAMyoArNNTKxGCiBhQAJmhAjxU2QqXz1m7bsoQ+hmHwBCATxOGEjGI3oYAAkIAFc+AgBBAGUAYRAAXyA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgQwggXgUQG5gHYBcDOAFAFAwwAkKA9tmACoIDmAXDPrhAJbaOkUA2nALadcrEN1wA2ACwBCPuXZIxMOsLCKcAE1bqhmsuSoRtkAEJRWcGmETIUdZAGMA1gEFtCAA65OWAHEIKhBvfAB5UwsoBQBKGABvPgxOMAB3SES+MmpaIgAzTn5cSFYEmFz6JlZKWwZGGABfeKSyNpgvXARWFCRUJwQ3Tx8-QODQomz2mEERVXJZ0Sn2wuLSxI6EEr8DAAkQiAB9RjBgGuUIXAAaTe2NfZAj-lOanSbltpMzCEtWAG1jFEflAALofFofMjOEJ4SEdDTYfCcGj4LLTaYEVidMA7MAPCBwxofIntEnvRpAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtGwAsEoQE44LMagDMADlRChGCiBhQAJmhAjxU2Qrja1m7bsoQ+hmHwBCATxOGEjGI3oYAAkIAFc+AgBBAGUAYRAAXyA)
 
 Query for the count of Zaraz loads, grouped by time.
 
@@ -254,7 +254,7 @@ query ErroneousResponses(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAohCB7AdmJIDOAlMmAOqmeAFAFAwwAkAXqmACoCGA5gFwyYAuEAliiwrUANrwC2vLhxD8uANgAsAQiFVuTCFJgNxYVWBQATDjrF7KVJBEOQAQlA4Ateo41MaAMTBcAxgAsAQUMmfC5eADcwAHFkEHxMAHlrOygVAEoYAG8hcN4wAHdILKFKOjRMEgAzXmEuSA5MmDLGVg5aemYWGABfDOzKAZhgriYOGjdPb38gkLDImIx48kHB0QktKjXJEpXq2vrilZXh710ACQwIAH0WMGA29U0do5OwswuQa+E7toNDZ5Wn2EVzQ9xgACJwQDBuouFgOAoAAyI6E9VFWGwQewcADalmSWKgAF0AX1UT4MCguKjDLoUJheERDkcBlxMBxXudLqjKCgmGZpBBhKjugDRYNxWjukA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtGwAsEoQE44bAMyoArNNTKxGCiBhQAJmhAjxU2QqXz1m7bsoQ+hmHwBCATxOGEjGI3oYAAkIAFc+AgBBAGUAYRAAXyA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAohCB7AdmJIDOAlMmAOqmeAFAFAwwAkAXqmACoCGA5gFwyYAuEAliiwrUANrwC2vLhxD8uANgAsAQiFVuTCFJgNxYVWBQATDjrF7KVJBEOQAQlA4Ateo41MaAMTBcAxgAsAQUMmfC5eADcwAHFkEHxMAHlrOygVAEoYAG8hcN4wAHdILKFKOjRMEgAzXmEuSA5MmDLGVg5aemYWGABfDOzKAZhgriYOGjdPb38gkLDImIx48kHB0QktKjXJEpXq2vrilZXh710ACQwIAH0WMGA29U0do5OwswuQa+E7toNDZ5Wn2EVzQ9xgACJwQDBuouFgOAoAAyI6E9VFWGwQewcADalmSWKgAF0AX1UT4MCguKjDLoUJheERDkcBlxMBxXudLqjKCgmGZpBBhKjugDRYNxWjukA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABsBLAWxoBc0BGABjcoGdGEAnZugBMbIQDYAtGwAsEoQE44LMagDMADlRChGCiBhQAJmhAjxU2Qrja1m7bsoQ+hmHwBCATxOGEjGI3oYAAkIAFc+AgBBAGUAYRAAXyA)
 
 ### Variables Example
 
@@ -322,8 +322,6 @@ curl -X POST https://api.cloudflare.com/client/v4/graphql \
 
 
 ```
-
-Explain Code
 
 ### Explanation of the `curl` Components
 

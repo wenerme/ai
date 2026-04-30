@@ -83,8 +83,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -143,8 +141,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -211,8 +207,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -271,8 +265,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 The `URL` associated with the [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object passed to the `fetch()` handler of your Durable Object must be a well-formed URL, but does not have to be a publicly-resolvable hostname.
 
@@ -372,8 +364,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -471,8 +461,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/","name":"Invoke methods"}}]}

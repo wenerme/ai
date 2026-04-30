@@ -83,8 +83,6 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 ```
 
-Explain Code
-
 ## Search
 
 How to migrate from the AutoRAG `/search` endpoint to the new `/search` endpoint:
@@ -142,8 +140,6 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 
 ```
-
-Explain Code
 
 ## Streaming behavior changes
 
@@ -273,8 +269,6 @@ Combine multiple conditions where all must match:
 
 
 ```
-
-Explain Code
 
 ## API references
 

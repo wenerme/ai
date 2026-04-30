@@ -18,9 +18,9 @@ You can filter DNS traffic based on query or response parameters (such as domain
 
 To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-6537)
-* [ API ](#tab-panel-6538)
-* [ Terraform ](#tab-panel-6539)
+* [ Dashboard ](#tab-panel-6535)
+* [ API ](#tab-panel-6536)
+* [ Terraform ](#tab-panel-6537)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.
@@ -79,8 +79,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
-Explain Code
-
 To create a new DNS policy using **Terraform**:
 
 ```
@@ -115,8 +113,6 @@ resource "cloudflare_zero_trust_gateway_policy" "security_risks_dns_policy" {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-dns-policies/","name":"Build DNS security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-dns-policies/create-policy/","name":"Create your first DNS policy"}}]}

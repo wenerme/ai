@@ -147,8 +147,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 ```
 
-Explain Code
-
 The `Plan` type is introduced in [Planning as a durability strategy](#planning-as-a-durability-strategy). We add capabilities to this agent section by section.
 
 ## Waking up: how agents get activated
@@ -245,8 +243,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 ```
 
-Explain Code
-
 ## Staying alive during long work
 
 Sometimes an agent needs to do work that takes longer than the idle eviction window (\~70–140 seconds). Streaming an LLM response, orchestrating a multi-step tool chain, or waiting on a slow API all risk the agent being evicted mid-flight.
@@ -294,8 +290,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 
 ```
-
-Explain Code
 
 `keepAliveWhile()` is the recommended approach — it guarantees the heartbeat is cleaned up when the work finishes (or throws). For manual control, `keepAlive()` returns a disposer:
 
@@ -394,8 +388,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 ```
 
-Explain Code
-
 The pattern is: **checkpoint before expensive work, recover from the last checkpoint.** This is not automatic replay — you decide what recovery means for your domain.
 
 Testing recovery locally
@@ -478,8 +470,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 
 ```
-
-Explain Code
 
 ### Pattern: polling with schedule
 
@@ -567,8 +557,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 ```
 
-Explain Code
-
 ### Pattern: workflow delegation
 
 A production deployment involves multiple steps that must each retry independently — build, test, stage, promote. The project manager should not manage these steps internally; it delegates to a [Workflow](https://developers.cloudflare.com/agents/concepts/workflows/) that handles retries and step sequencing:
@@ -620,8 +608,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 
 ```
-
-Explain Code
 
 ## Reconstructing context after a long wait
 
@@ -826,8 +812,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 ```
 
-Explain Code
-
 This pattern has several advantages for long-running agents:
 
 * **Recovery is trivial** — on restart, check `plan.currentStep` and resume
@@ -870,8 +854,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 
 ```
-
-Explain Code
 
 Sub-agents are independent Durable Objects. They have their own state, their own schedules, and their own lifecycle. The parent does not need to stay alive while the sub-agent works — it can start the work, hibernate, and be woken by a callback or scheduled check.
 
@@ -923,8 +905,6 @@ class ProjectChat extends AIChatAgent<Env> {
 
 
 ```
-
-Explain Code
 
 The right recovery strategy depends on the LLM provider:
 
@@ -1002,8 +982,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 ```
 
-Explain Code
-
 ### Conversation history management
 
 For agents that use `AIChatAgent`, conversation history can grow large over extended lifespans. Without management, a 3-month conversation will exhaust the LLM's context window long before the project ends.
@@ -1048,8 +1026,6 @@ export class ProjectManager extends Agent<ProjectState> {
 
 
 ```
-
-Explain Code
 
 `this.destroy()` is permanent. If you may need the agent's data later, archive it to an external store (R2, D1, or an API call) before destroying. For agents that might be reactivated, simply mark them as complete and let them hibernate — they cost nothing when idle.
 

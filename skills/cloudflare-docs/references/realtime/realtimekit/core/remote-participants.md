@@ -115,8 +115,6 @@ console.log(meeting.participants.lastActiveSpeaker);
 
 ```
 
-Explain Code
-
 Use the `useRealtimeKitSelector` hook to access properties:
 
 ```
@@ -150,8 +148,6 @@ const lastActiveSpeaker = useRealtimeKitSelector(
 
 
 ```
-
-Explain Code
 
 Kotlin
 
@@ -256,8 +252,6 @@ const lastActiveSpeaker = useRealtimeKitSelector(
 
 
 ```
-
-Explain Code
 
 ### Access participant object
 
@@ -376,8 +370,6 @@ if (participant != null) {
 
 ```
 
-Explain Code
-
 ```
 
 // Get a specific participant
@@ -466,8 +458,6 @@ const waitlistedParticipants = meeting.participants.waitlisted;
 
 ```
 
-Explain Code
-
 Use the `useRealtimeKitSelector` hook to access participant maps:
 
 ```
@@ -501,8 +491,6 @@ const waitlistedParticipants = useRealtimeKitSelector(
 
 ```
 
-Explain Code
-
 Kotlin
 
 ```
@@ -533,8 +521,6 @@ val screenShareParticipants: List<RtkRemoteParticipant> = meeting.participants.s
 
 
 ```
-
-Explain Code
 
 Swift
 
@@ -567,8 +553,6 @@ let screenShareParticipants: [RtkRemoteParticipant] = meeting.participants.scree
 
 ```
 
-Explain Code
-
 Dart
 
 ```
@@ -594,8 +578,6 @@ final waitlistedParticipants = meeting.participants.waitlisted;
 
 
 ```
-
-Explain Code
 
 Use the `useRealtimeKitSelector` hook to access participant maps:
 
@@ -629,8 +611,6 @@ const waitlistedParticipants = useRealtimeKitSelector(
 
 
 ```
-
-Explain Code
 
 ## View Modes
 
@@ -825,8 +805,6 @@ participant.kick();
 
 ```
 
-Explain Code
-
 ```
 
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
@@ -853,8 +831,6 @@ participant.kick();
 
 
 ```
-
-Explain Code
 
 Kotlin
 
@@ -884,8 +860,6 @@ participant?.let { pcpt ->
 
 ```
 
-Explain Code
-
 Swift
 
 ```
@@ -910,8 +884,6 @@ if let participant = meeting.participants.joined.first(where: { $0.id == partici
 
 
 ```
-
-Explain Code
 
 Dart
 
@@ -942,8 +914,6 @@ participant.kick();
 
 ```
 
-Explain Code
-
 **Required Permission**: `permissions.host.canDisableVideo`, `permissions.host.canDisableAudio` must be `true`
 
 ```
@@ -967,8 +937,6 @@ participant.kick();
 
 
 ```
-
-Explain Code
 
 ### Waiting room controls
 
@@ -1141,8 +1109,6 @@ await participant.unpin();
 
 ```
 
-Explain Code
-
 Kotlin
 
 ```
@@ -1276,8 +1242,6 @@ meeting.participants.updatePermissions(participantIds, newPermissions);
 
 ```
 
-Explain Code
-
 The following permissions can be modified:
 
 TypeScript
@@ -1330,8 +1294,6 @@ interface UpdatedPermissions {
 
 
 ```
-
-Explain Code
 
 ## Display participant videos
 
@@ -1418,8 +1380,6 @@ participant.deregisterVideoElement(videoElement);
 
 
 ```
-
-Explain Code
 
 For local user preview (video not sent to other users):
 
@@ -1529,8 +1489,6 @@ function VideoView() {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/remote-participants/","name":"Remote Participants"}}]}

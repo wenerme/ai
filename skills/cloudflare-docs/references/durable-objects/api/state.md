@@ -48,8 +48,6 @@ export class MyDurableObject extends DurableObject {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -82,8 +80,6 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
-
-Explain Code
 
 Python
 
@@ -186,8 +182,6 @@ export class MyDurableObject extends DurableObject {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -215,8 +209,6 @@ class MyDurableObject(DurableObject):
 
 
 ```
-
-Explain Code
 
 #### Parameters
 
@@ -389,8 +381,6 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
-
-Explain Code
 
 Python
 

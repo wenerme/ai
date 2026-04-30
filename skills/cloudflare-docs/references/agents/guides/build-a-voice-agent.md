@@ -107,8 +107,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -144,8 +142,6 @@ new_sqlite_classes = [ "MyVoiceAgent" ]
 
 
 ```
-
-Explain Code
 
 ## 3\. Build the server
 
@@ -269,8 +265,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -398,8 +392,6 @@ export default {
 
 ```
 
-Explain Code
-
 Key points:
 
 * `WorkersAIFluxSTT` handles continuous speech-to-text — the model detects when the user finishes speaking.
@@ -516,8 +508,6 @@ function App() {
 
 ```
 
-Explain Code
-
 The `status` field cycles through `"idle"` → `"listening"` → `"thinking"` → `"speaking"` → `"listening"`, giving you everything you need to build a responsive UI.
 
 ## 5\. Run it
@@ -578,8 +568,6 @@ export class MyVoiceAgent extends VoiceAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -617,8 +605,6 @@ export class MyVoiceAgent extends VoiceAgent<Env> {
 
 
 ```
-
-Explain Code
 
 Returning `null` from `afterTranscribe` drops the utterance entirely — useful for filtering noise or very short transcripts.
 
@@ -667,8 +653,6 @@ export class MyVoiceAgent extends VoiceAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -706,8 +690,6 @@ export class MyVoiceAgent extends VoiceAgent<Env> {
 
 
 ```
-
-Explain Code
 
 ## Next steps
 

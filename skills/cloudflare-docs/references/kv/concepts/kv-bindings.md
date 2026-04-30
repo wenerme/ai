@@ -34,8 +34,8 @@ To execute your Worker, define the binding.
 
 In the following example, the binding is called `TODO`. In the `kv_namespaces` portion of your Wrangler configuration file, add:
 
-* [  wrangler.jsonc ](#tab-panel-6325)
-* [  wrangler.toml ](#tab-panel-6326)
+* [  wrangler.jsonc ](#tab-panel-6323)
+* [  wrangler.toml ](#tab-panel-6324)
 
 JSONC
 
@@ -65,8 +65,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -114,16 +112,14 @@ export default {
 
 ```
 
-Explain Code
-
 ## Use KV bindings when developing locally
 
 When you use Wrangler to develop locally with the `wrangler dev` command, Wrangler will default to using a local version of KV to avoid interfering with any of your live production data in KV. This means that reading keys that you have not written locally will return `null`.
 
 To have `wrangler dev` connect to your Workers KV namespace running on Cloudflare's global network, set `"remote" : true` in the KV binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) for more information.
 
-* [  wrangler.jsonc ](#tab-panel-6327)
-* [  wrangler.toml ](#tab-panel-6328)
+* [  wrangler.jsonc ](#tab-panel-6325)
+* [  wrangler.toml ](#tab-panel-6326)
 
 JSONC
 
@@ -153,8 +149,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -208,8 +202,6 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/concepts/","name":"Key concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/concepts/kv-bindings/","name":"KV bindings"}}]}

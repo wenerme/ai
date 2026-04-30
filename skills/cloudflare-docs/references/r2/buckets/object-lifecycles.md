@@ -239,8 +239,6 @@ await client
 
 ```
 
-Explain Code
-
 ## Get lifecycle rules for your bucket
 
 ### Wrangler
@@ -302,8 +300,6 @@ console.log(
 
 
 ```
-
-Explain Code
 
 ## Delete lifecycle rules from your bucket
 
@@ -371,8 +367,6 @@ await client
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/buckets/","name":"Buckets"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/buckets/object-lifecycles/","name":"Object lifecycles"}}]}

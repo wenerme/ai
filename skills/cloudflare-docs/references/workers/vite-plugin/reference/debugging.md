@@ -77,8 +77,6 @@ To set up [VS Code ↗](https://code.visualstudio.com/) to support breakpoint de
 
 ```
 
-Explain Code
-
 Here, `<NAME_OF_WORKER>` indicates the name of the Worker as specified in your Worker config file. If you have used the `inspectorPort` option to set a custom port then this should be the value provided in the `websocketaddress` field.
 
 Note

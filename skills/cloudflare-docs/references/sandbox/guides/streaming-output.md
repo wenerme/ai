@@ -88,8 +88,6 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -141,8 +139,6 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 
 ```
 
-Explain Code
-
 ## Stream to client
 
 Return streaming output to users via Server-Sent Events:
@@ -189,8 +185,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -230,8 +224,6 @@ export default {
 
 ```
 
-Explain Code
-
 Client-side consumption:
 
 * [  JavaScript ](#tab-panel-7837)
@@ -268,8 +260,6 @@ eventSource.addEventListener("complete", (event) => {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -300,8 +290,6 @@ eventSource.addEventListener('complete', (event) => {
 
 
 ```
-
-Explain Code
 
 ## Stream process logs
 
@@ -341,8 +329,6 @@ for await (const log of parseSSEStream(logStream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -373,8 +359,6 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 
 ```
-
-Explain Code
 
 ## Handle errors
 
@@ -423,8 +407,6 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -464,8 +446,6 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 
 
 ```
-
-Explain Code
 
 ## Best practices
 

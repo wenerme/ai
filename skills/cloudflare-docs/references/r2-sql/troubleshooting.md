@@ -208,8 +208,6 @@ LIMIT 100
 
 ```
 
-Explain Code
-
 **Solution**: Implement cursor-based pagination using `ORDER BY` and `WHERE` conditions.
 
 ---

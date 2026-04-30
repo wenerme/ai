@@ -55,8 +55,6 @@ public static void Main(string[] args)
 
 ```
 
-Explain Code
-
 ## List buckets and objects
 
 The [ListBucketsAsync ↗](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/MIS3ListBucketsAsyncListBucketsRequestCancellationToken.html) and [ListObjectsAsync ↗](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/MIS3ListObjectsV2AsyncListObjectsV2RequestCancellationToken.html) methods can be used to list buckets under your account and the contents of those buckets respectively.
@@ -123,8 +121,6 @@ static async Task ListObjectsV2()
 
 ```
 
-Explain Code
-
 ```
 
 dog.png
@@ -172,8 +168,6 @@ static async Task PutObject()
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -249,8 +243,6 @@ static string? GeneratePresignedUrl()
 
 
 ```
-
-Explain Code
 
 ```
 

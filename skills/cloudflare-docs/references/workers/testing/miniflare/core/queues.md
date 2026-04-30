@@ -66,8 +66,6 @@ const mf = new Miniflare({
 
 ```
 
-Explain Code
-
 ## Manipulating Outside Workers
 
 For testing, it can be valuable to interact with Queues outside a Worker. You can do this by using the `workers` option to run multiple Workers in the same instance:
@@ -139,8 +137,6 @@ await queue.send("message"); // Logs "message" 1 second later
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/miniflare/core/","name":"Core"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/testing/miniflare/core/queues/","name":"Queues"}}]}

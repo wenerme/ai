@@ -69,8 +69,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/perplexity-a
 
 ```
 
-Explain Code
-
 ### Use Perplexity through OpenAI SDK with JavaScript
 
 Perplexity does not have their own SDK, but they have compatibility with the OpenAI SDK. You can use the OpenAI SDK to make a Perplexity call through AI Gateway as follows:
@@ -119,8 +117,6 @@ const chatCompletion = await perplexity.chat.completions.create({
 
 
 ```
-
-Explain Code
 
 ## OpenAI-Compatible Endpoint
 

@@ -88,8 +88,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6093)
-* [  wrangler.toml ](#tab-panel-6094)
+* [  wrangler.jsonc ](#tab-panel-6091)
+* [  wrangler.toml ](#tab-panel-6092)
 
 JSONC
 
@@ -132,8 +132,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -159,8 +157,6 @@ id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 
 
 ```
-
-Explain Code
 
 ## 3\. Use Hyperdrive from your Worker
 
@@ -190,8 +186,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6095)
-* [  wrangler.toml ](#tab-panel-6096)
+* [  wrangler.jsonc ](#tab-panel-6093)
+* [  wrangler.toml ](#tab-panel-6094)
 
 JSONC
 
@@ -227,8 +223,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -320,8 +314,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Note
 

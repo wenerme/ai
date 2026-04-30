@@ -53,8 +53,6 @@ type Request {
 
 ```
 
-Explain Code
-
 You can run a query to get the status by subrequest:
 
 JavaScript
@@ -115,8 +113,6 @@ JavaScript
 
 ```
 
-Explain Code
-
 ## Maps
 
 Maps behave like arrays, but can be grouped using the `sum` function. They are used in aggregated datasets, such as `httpRequest1dGroups`.
@@ -150,8 +146,6 @@ type Request {
 
 
 ```
-
-Explain Code
 
 Query:
 
@@ -189,8 +183,6 @@ JavaScript
 
 
 ```
-
-Explain Code
 
 Response:
 
@@ -249,8 +241,6 @@ JavaScript
 
 ```
 
-Explain Code
-
 ## Examples
 
 Query array fields in raw datasets:
@@ -286,7 +276,7 @@ query NestedFields($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAcmAzgFzAEwGIEswBs2IAUAJAF4D2AdmACoCGA5gFwwoRaUMA0MxKdEZCxpYAtmB7EwlNMLFgAlDADeAKBgwAbjgDukFeo0wK1IgDMsuVBBbLjVWoxZkH9BjAC+StUaNhN0shEuGJYQjAATDwWVpC2MGh0qMjyAPoMYMDO-II8iclpuJnO0mie3oa+GqJJAMYAFkgGVVUQIEUAkmiVLTB0tSlUPS2I5CAQtWDDRh7Ts77znqoeQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwCccNgGZUAVgn8MFEDCgATZuy68Bw0UKky+cgL5A)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAcmAzgFzAEwGIEswBs2IAUAJAF4D2AdmACoCGA5gFwwoRaUMA0MxKdEZCxpYAtmB7EwlNMLFgAlDADeAKBgwAbjgDukFeo0wK1IgDMsuVBBbLjVWoxZkH9BjAC+StUaNhN0shEuGJYQjAATDwWVpC2MGh0qMjyAPoMYMDO-II8iclpuJnO0mie3oa+GqJJAMYAFkgGVVUQIEUAkmiVLTB0tSlUPS2I5CAQtWDDRh7Ts77znqoeQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbiwCccAIydUAZgl8hGCiBhQAJs3ZdeA4XBYspMuSAC+QA)
 
 Example response:
 
@@ -350,8 +340,6 @@ JavaScript
 
 
 ```
-
-Explain Code
 
 Query maps fields in aggregated datasets:
 
@@ -426,7 +414,7 @@ query MapCapacity(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwA4GFkIMYEsAuUAUAUDDACQBeA9gHZgAqCA5gFwwDOOEW1jxZAJghxgAyjgQQcrACJCwfUoOEBRavxlyFHCVJh0sAW3klSYNa31HCAShgBvPgDcsYAO6R7fElVpt8AMywAG2EIVjsYH3omVgoaaMYYAF9bBxJ0mAALHBwkACUwUDAONgBGAwBxCEoQJD8vDJggw1xWUoAGBozAkMhwrsalMAB9RkLYobEdAYyh4aDxgTlVfhn0oZxDEbHgWO1JNZINrfndUzU1pIHUtbYQA09Gxowa6k4oRCRHp+fmsxwUK93gA5BBWH6NCCFcAlQ7pABGUGEbDhJBwmShQhREJIVwheJ+-C21DYWBobG+EOORgAEjUIJcBgTcXwrkkgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGAZVoQCda0QAmABk4DYAtNwAsAzgA4K1OjDxQqHHvyGjOATikBnZm0W9BIsWrjcAzKgCs5kRikx5e5YfUm1l68NsBfIA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwA4GFkIMYEsAuUAUAUDDACQBeA9gHZgAqCA5gFwwDOOEW1jxZAJghxgAyjgQQcrACJCwfUoOEBRavxlyFHCVJh0sAW3klSYNa31HCAShgBvPgDcsYAO6R7fElVpt8AMywAG2EIVjsYH3omVgoaaMYYAF9bBxJ0mAALHBwkACUwUDAONgBGAwBxCEoQJD8vDJggw1xWUoAGBozAkMhwrsalMAB9RkLYobEdAYyh4aDxgTlVfhn0oZxDEbHgWO1JNZINrfndUzU1pIHUtbYQA09Gxowa6k4oRCRHp+fmsxwUK93gA5BBWH6NCCFcAlQ7pABGUGEbDhJBwmShQhREJIVwheJ+-C21DYWBobG+EOORgAEjUIJcBgTcXwrkkgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGAZVoQCda0QAmABk4DYAtNwAsAzgA4K1OjDxQqHHvyGjOATikBnZm0W9BIsWrgBGPqgDM54WoxSY8vcsPq4nTpeu2QAXyA)
 
 Example response:
 
@@ -506,8 +494,6 @@ JavaScript
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/features/","name":"Features"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/features/nested-structures/","name":"Nested Structures"}}]}

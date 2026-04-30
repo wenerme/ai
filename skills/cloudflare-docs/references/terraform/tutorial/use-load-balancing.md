@@ -63,8 +63,6 @@ resource "cloudflare_dns_record" "www_asia" {
 
 ```
 
-Explain Code
-
 Note
 
 Note that while the name of the `resource` is different because Terraform resources of the same type must be uniquely named, the DNS name, or what your customers will type in their browser, is the same: `www`.
@@ -239,8 +237,6 @@ resource "cloudflare_load_balancer" "www_lb" {
 
 ```
 
-Explain Code
-
 Note
 
 The load balancer will automatically replace your existing DNS records with the same name (www).
@@ -309,8 +305,6 @@ Hello, this is 198.51.100.15!
 
 
 ```
-
-Explain Code
 
 You should now see more predictable load distribution with the added benefits of health monitoring and automatic failover.
 

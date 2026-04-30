@@ -99,8 +99,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
 
 ```
 
-Explain Code
-
 You can now add this new app to the Breakout traffic list in your Cloudflare One Appliance.
 
 ### Add an application to Cloudflare One Appliance
@@ -154,7 +152,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
     ]  
   }  
 ```  
-Explain Code  
 Take note of the `"managed_app_id"` value for any application you want to add.
 2. Send a `POST` request to add new apps to the Breakout traffic policy.  
 Required API token permissions  
@@ -182,8 +179,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 
 ### Delete an application from Cloudflare One Appliance
 
@@ -229,7 +225,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
     ]  
   }  
 ```  
-Explain Code  
 Take note of the `"id"` value for the application that you want to delete.
 2. Send a `DELETE` request to delete an application from the Breakout traffic policy.  
 Terminal window  
@@ -249,8 +244,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites
     "errors": [],  
     "messages": []  
 }  
-```  
-Explain Code
+```
 
 ## Designate WAN ports for breakout apps
 

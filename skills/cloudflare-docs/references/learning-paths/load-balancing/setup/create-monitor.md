@@ -16,8 +16,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-6451)
-* [ API ](#tab-panel-6452)
+* [ Dashboard ](#tab-panel-6449)
+* [ API ](#tab-panel-6450)
 
 **Set up the monitor**
 
@@ -141,8 +141,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/m
 
 ```
 
-Explain Code
-
 The response contains the complete definition of the new monitor.
 
 Response
@@ -217,8 +215,6 @@ Response
 
 
 ```
-
-Explain Code
 
 **Prepare your servers**
 

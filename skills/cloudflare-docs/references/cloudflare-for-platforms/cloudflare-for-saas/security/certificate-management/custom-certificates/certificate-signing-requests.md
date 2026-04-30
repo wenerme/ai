@@ -77,8 +77,6 @@ EOF
 
 ```
 
-Explain Code
-
 ### 2\. Generate a CSR
 
 Now, you want to generate a CSR that you can provide to your customer.
@@ -141,8 +139,6 @@ curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_csrs \
 
 ```
 
-Explain Code
-
 Replace the `\n` characters with actual newlines before passing to your customer. This can be accomplished by piping the output of the prior call to a tool like jq and perl, such as:
 
 Terminal window
@@ -203,8 +199,6 @@ EOF
 
 
 ```
-
-Explain Code
 
 With the request body built, [create the custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) with the supplied custom certificate. If you intend to use the certificate with multiple hostnames, make multiple API calls replacing the `hostname` field.
 

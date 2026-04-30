@@ -191,8 +191,6 @@ const theme = await env.FLAGS.getObjectValue<ThemeConfig>(
 
 ```
 
-Explain Code
-
 ## `getBooleanDetails()`
 
 Returns the flag value as a `boolean` with evaluation metadata.
@@ -351,8 +349,6 @@ console.log(details.variant); // "brand-refresh"
 
 
 ```
-
-Explain Code
 
 ## Error handling
 

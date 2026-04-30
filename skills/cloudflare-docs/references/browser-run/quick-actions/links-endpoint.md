@@ -223,8 +223,6 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -252,8 +250,6 @@ console.log(links);
 
 
 ```
-
-Explain Code
 
 ## Advanced usage
 
@@ -442,8 +438,6 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 
 ```
-
-Explain Code
 
 ### Retrieve only links from the same domain
 

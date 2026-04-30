@@ -81,8 +81,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 
 ```
 
-Explain Code
-
 Changes to metadata will propagate across Cloudflare's edge within 30 seconds.
 
 ---
@@ -136,8 +134,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -177,8 +173,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Accessing custom metadata in a rule expression
 

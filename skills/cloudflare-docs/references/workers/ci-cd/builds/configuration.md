@@ -130,8 +130,8 @@ It is recommended to consistently use the same API token across all uploads and 
 
 You can provide custom environment variables to your build.
 
-* [ Dashboard ](#tab-panel-8503)
-* [ Wrangler ](#tab-panel-8504)
+* [ Dashboard ](#tab-panel-8541)
+* [ Wrangler ](#tab-panel-8542)
 
 To add environment variables via the dashboard:
 
@@ -142,8 +142,8 @@ To add environment variables via the dashboard:
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-8501)
-* [  wrangler.toml ](#tab-panel-8502)
+* [  wrangler.jsonc ](#tab-panel-8539)
+* [  wrangler.toml ](#tab-panel-8540)
 
 JSONC
 
@@ -176,8 +176,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -202,8 +200,6 @@ API_ACCOUNT_ID = "example_user"
 
 
 ```
-
-Explain Code
 
 ### Default variables
 

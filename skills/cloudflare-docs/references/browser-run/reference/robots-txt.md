@@ -188,8 +188,6 @@ sitemap.xml
 
 ```
 
-Explain Code
-
 | Attribute  | Purpose                       | Recommendation                                                                           |
 | ---------- | ----------------------------- | ---------------------------------------------------------------------------------------- |
 | <loc>      | URL of the page               | Required. Use full URLs.                                                                 |
@@ -230,8 +228,6 @@ sitemap.xml
 
 
 ```
-
-Explain Code
 
 ### Caching headers
 

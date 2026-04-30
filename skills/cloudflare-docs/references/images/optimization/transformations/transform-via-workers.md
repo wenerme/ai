@@ -97,8 +97,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Lack of preview in the dashboard
 
 Note
@@ -295,8 +293,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 When testing image resizing, please deploy the script first. Resizing will not be active in the online editor in the dashboard.
 

@@ -78,8 +78,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
 
 ```
 
-Explain Code
-
 With this ruleset added, IDS will start inspecting packets and report any anomalous traffic. Next, you can [configure Logpush](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/) to start receiving details about the anomalous traffic.
 
 1. Use the rule created in the previous step to enable or disable IDS. The Rulesets API documentation describes [how to patch a rule](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/).  
@@ -116,8 +114,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_rulese
 
 
 ```
-
-Explain Code
 
 Similarly, sending a patch request with the `enabled` field set to `true` will enable IDS.
 

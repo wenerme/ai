@@ -186,8 +186,6 @@ function NSLookup(type, domain, useCache = false, minCacheTTL = 30) {
 
 ```
 
-Explain Code
-
 ## Using 1.1.1.1
 
 When you feed the function `NSLookup` a record type and a domain, you will get a DNS record value in the cell you called `NSLookup`.

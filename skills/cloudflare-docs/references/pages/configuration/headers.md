@@ -68,8 +68,6 @@ https://myproject.pages.dev/*
 
 ```
 
-Explain Code
-
 An incoming request which matches multiple rules' URL patterns will inherit all rules' headers. Using the previous `_headers` file, the following requests will have the following headers applied:
 
 | Request URL                                   | Headers                                                                                                  |

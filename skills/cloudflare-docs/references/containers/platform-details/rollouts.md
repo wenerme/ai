@@ -84,8 +84,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -118,8 +116,6 @@ new_sqlite_classes = [ "MyContainer" ]
 
 
 ```
-
-Explain Code
 
 ## Immediate rollouts
 

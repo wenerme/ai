@@ -65,8 +65,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -110,8 +108,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Abstract Art**  — Abstract motion graphics 
@@ -153,8 +149,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Food Video**  — Appetizing food footage 
@@ -195,8 +189,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

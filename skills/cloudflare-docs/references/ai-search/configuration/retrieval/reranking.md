@@ -58,8 +58,6 @@ const results = await instance.search({
 
 ```
 
-Explain Code
-
 ### Considerations
 
 Adding reranking will include an additional step to the query request, as a result, there may be an increase in the latency of the request.

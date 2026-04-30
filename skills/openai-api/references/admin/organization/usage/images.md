@@ -360,7 +360,7 @@ Get images usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -379,6 +379,10 @@ Get images usage details for the organization.
         - `value: optional number`
 
           The numeric value of the cost.
+
+      - `api_key_id: optional string`
+
+        When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
       - `line_item: optional string`
 

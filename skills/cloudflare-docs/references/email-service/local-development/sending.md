@@ -33,8 +33,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-5953)
-* [  wrangler.toml ](#tab-panel-5954)
+* [  wrangler.jsonc ](#tab-panel-5951)
+* [  wrangler.toml ](#tab-panel-5952)
 
 JSONC
 
@@ -63,8 +63,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -87,8 +85,8 @@ Using [remote bindings](https://developers.cloudflare.com/workers/development-te
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5955)
-* [  wrangler.toml ](#tab-panel-5956)
+* [  wrangler.jsonc ](#tab-panel-5953)
+* [  wrangler.toml ](#tab-panel-5954)
 
 JSONC
 
@@ -120,8 +118,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -237,8 +233,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Testing locally
 

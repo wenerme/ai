@@ -146,8 +146,7 @@ resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {
       }  
   }  
 }  
-```  
-Explain Code
+```
 
 When a user's query matches a resolver policy, Gateway will send the query to your listed resolvers in the following order:
 

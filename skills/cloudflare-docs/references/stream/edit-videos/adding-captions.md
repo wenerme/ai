@@ -115,8 +115,6 @@ Example response:
 
 ```
 
-Explain Code
-
 The result will provide a `status` denoting the progress of the caption generation.  
 There are three statuses: inprogress, ready, and error. Note that (auto-generated) is applied to the label.
 
@@ -173,8 +171,6 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/ca
 
 
 ```
-
-Explain Code
 
 ## List the captions associated with a video
 
@@ -235,8 +231,6 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/ca
 
 
 ```
-
-Explain Code
 
 ## Fetch a caption file
 

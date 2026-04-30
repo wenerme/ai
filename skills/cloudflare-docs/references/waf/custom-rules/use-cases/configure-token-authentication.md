@@ -104,10 +104,10 @@ Then the token is valid and the `is_timed_hmac_valid_v0()` function returns `tru
 
 The following examples show how you could generate tokens at your origin server for the path validated using the custom rule described in the previous section:
 
-* [  Python 3.8 ](#tab-panel-8247)
-* [  Python 2.7 ](#tab-panel-8248)
-* [  PHP ](#tab-panel-8249)
-* [ Workers ](#tab-panel-8250)
+* [  Python 3.8 ](#tab-panel-8285)
+* [  Python 2.7 ](#tab-panel-8286)
+* [  PHP ](#tab-panel-8287)
+* [ Workers ](#tab-panel-8288)
 
 Python
 
@@ -141,8 +141,6 @@ print("{}={}-{}".format(separator, timestamp, token))
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -174,8 +172,6 @@ print(param)
 
 
 ```
-
-Explain Code
 
 ```
 

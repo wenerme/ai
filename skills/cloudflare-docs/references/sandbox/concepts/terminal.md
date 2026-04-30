@@ -88,8 +88,6 @@ const testSession = await sandbox.createSession({
 
 ```
 
-Explain Code
-
 Multiple browser clients can connect to the same session's terminal simultaneously — they all see the same shell output and can all send input. This enables collaborative terminal use cases.
 
 ## WebSocket protocol

@@ -100,8 +100,6 @@ const results = await instance.search({
 
 ```
 
-Explain Code
-
 Note
 
 Requesting a `retrieval_type` that is not compatible with the instance `index_method` returns an error.

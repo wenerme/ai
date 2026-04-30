@@ -183,8 +183,6 @@ function App() {
 
 ```
 
-Explain Code
-
 ## Chat agents
 
 For AI chat applications, extend `AIChatAgent` instead of `Agent`:
@@ -257,8 +255,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Refer to [Routing](https://developers.cloudflare.com/agents/api-reference/routing/) for custom paths, CORS, and instance naming patterns.
 

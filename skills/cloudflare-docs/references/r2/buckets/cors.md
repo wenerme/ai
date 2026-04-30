@@ -130,8 +130,6 @@ cors.json
 
 ```
 
-Explain Code
-
 1. Apply the CORS policy to your bucket:
 
 Terminal window

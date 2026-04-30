@@ -147,8 +147,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configur
 
 ```
 
-Explain Code
-
 You can set multiple certificates to **Available**, but you can only turn on one certificate for use in inspection at a time. Setting a certificate as **In-Use** will set any other in-use certificates as **Available** only and prevent them from being used for inspection until turned on again.
 
 ```json

@@ -226,8 +226,6 @@ function App() {
 
 ```
 
-Explain Code
-
 The `meetingChanged` event is triggered when a participant switches between the main meeting and breakout rooms. In React, the meeting object is automatically managed by the provider.
 
 ```
@@ -258,8 +256,6 @@ The `meetingChanged` event is triggered when a participant switches between the 
 
 
 ```
-
-Explain Code
 
 The `meetingChanged` event is triggered when a participant switches between the main meeting and breakout rooms. Update the meeting object reference when this event fires.
 
@@ -327,8 +323,6 @@ export class AppComponent implements AfterViewInit {
 
 
 ```
-
-Explain Code
 
 The `meetingChanged` event is triggered when a participant switches between the main meeting and breakout rooms. Update the meeting object reference when this event fires.
 
@@ -403,8 +397,6 @@ function App() {
 
 ```
 
-Explain Code
-
 Note
 
 The Default Meeting UI (`RtkMeeting` component) automatically joins the session, so you do not need to call `meeting.join()`.
@@ -451,8 +443,6 @@ The `showSetupScreen` property controls whether the setup screen is displayed, a
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -531,8 +521,6 @@ export class AppComponent implements AfterViewInit {
 
 
 ```
-
-Explain Code
 
 Note
 

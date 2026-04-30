@@ -1,6 +1,6 @@
 ---
 title: Resource Tagging
-description: Resource Tagging lets you attach key-value pairs to a wide range of Cloudflare resource types — including zones, custom hostnames, Cloudflare Tunnels, Workers scripts, D1 databases, R2 buckets, KV namespaces, and more. Tags are stored separately from the resources themselves, enabling cross-resource queries and policy enforcement without modifying underlying resource configurations.
+description: Resource Tagging lets you attach key-value pairs to a wide range of Cloudflare resource types — including zones, custom hostnames, Cloudflare Tunnels, Workers, D1 databases, R2 buckets, KV namespaces, and more. Tags are stored separately from the resources themselves, enabling cross-resource queries and policy enforcement without modifying underlying resource configurations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,7 +16,7 @@ Attach custom key-value metadata to Cloudflare resources for organization, acces
 
  Available on all plans 
 
-Resource Tagging lets you attach key-value pairs to a wide range of [Cloudflare resource types](https://developers.cloudflare.com/resource-tagging/reference/resource-types/) — including zones, custom hostnames, Cloudflare Tunnels, Workers scripts, D1 databases, R2 buckets, KV namespaces, and more. Tags are stored separately from the resources themselves, enabling cross-resource queries and policy enforcement without modifying underlying resource configurations.
+Resource Tagging lets you attach key-value pairs to a wide range of [Cloudflare resource types](https://developers.cloudflare.com/resource-tagging/reference/resource-types/) — including zones, custom hostnames, Cloudflare Tunnels, Workers, D1 databases, R2 buckets, KV namespaces, and more. Tags are stored separately from the resources themselves, enabling cross-resource queries and policy enforcement without modifying underlying resource configurations.
 
 Public beta
 

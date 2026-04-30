@@ -99,8 +99,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_virtual_network" "production_
   comment    = "Production virtual network"  
   is_default = false  
 }  
-```  
-Explain Code
+```
 3. Create a Cloudflare Tunnel for each private network with overlapping IPs (one tunnel per isolated environment, for example staging and production):  
 ```  
 resource "cloudflare_zero_trust_tunnel_cloudflared" "staging_tunnel" {  
@@ -113,8 +112,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared" "production_tunnel" {
   name       = "Production tunnel"  
   config_src = "cloudflare"  
 }  
-```  
-Explain Code
+```
 4. Route `10.128.0.1/32` through `Staging tunnel` and assign it to `staging-vnet`. Route `10.128.0.1/32` through `Production tunnel` and assign it to `production-vnet`.  
 ```  
 resource "cloudflare_zero_trust_tunnel_cloudflared_route" "staging_tunnel_route" {  
@@ -131,8 +129,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_route" "production_tunnel_rou
   comment            = "Production tunnel route"  
   virtual_network_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.production_vnet.id  
 }  
-```  
-Explain Code
+```
 5. [Get the token](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/#get-the-tunnel-token) for each tunnel.
 6. Using the tunnel tokens, run `Staging tunnel` in your staging environment and run `Production tunnel` in your production environment. Refer to [Install and run the tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/#4-install-and-run-the-tunnel).
 

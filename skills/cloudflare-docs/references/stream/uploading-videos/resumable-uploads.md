@@ -148,8 +148,6 @@ func main() {
 
 ```
 
-Explain Code
-
 You can also get the progress of the upload if you are running the upload in a goroutine.
 
 Get progress of upload
@@ -292,8 +290,6 @@ upload.start();
 
 
 ```
-
-Explain Code
 
 ## Specify upload options
 

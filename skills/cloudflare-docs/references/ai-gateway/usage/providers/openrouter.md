@@ -71,8 +71,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 
 ```
 
-Explain Code
-
 ### Use OpenAI SDK with JavaScript
 
 If you are using the OpenAI SDK with JavaScript, you can set your endpoint like this:
@@ -119,8 +117,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/openrouter/","name":"OpenRouter"}}]}

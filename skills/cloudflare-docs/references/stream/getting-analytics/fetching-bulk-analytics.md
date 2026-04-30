@@ -187,8 +187,6 @@ GraphQL response
 
 ```
 
-Explain Code
-
 ## Pagination
 
 GraphQL API supports seek pagination: using filters, you can specify the last video UID so the response only includes data for videos after the last video UID.

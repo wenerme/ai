@@ -141,8 +141,6 @@ def verify_token(request):
 
 ```
 
-Explain Code
-
 ## 2\. Use the validation function in your app
 
 You can now add the validation function as a dependency in your FastAPI app. One way to do this is by creating an [APIRouter instance ↗](https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter). The following example executes the validation function on each request made to paths that start with `/admin`:
@@ -177,8 +175,6 @@ async def root():
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/fastapi/","name":"Validate the Access token with FastAPI"}}]}

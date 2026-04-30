@@ -72,8 +72,6 @@ export default {
 
 ```
 
-Explain Code
-
 It is strongly recommended that you _do not_ replace the entire `process.env` object with the cloudflare `env` object. Doing so will cause you to lose any environment variables that were set previously and will cause unexpected behavior for other Workers running in the same isolate. Specifically, it would cause inconsistency with the `process.env` object when accessed via named imports.
 
 JavaScript

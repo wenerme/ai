@@ -65,8 +65,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -108,8 +106,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -158,8 +154,6 @@ For example, to enable session recording in an MCP client, add `recording=true` 
 
 
 ```
-
-Explain Code
 
 For other MCP clients and CDP usage with Puppeteer or Playwright, refer to the [CDP documentation](https://developers.cloudflare.com/browser-run/cdp/).
 

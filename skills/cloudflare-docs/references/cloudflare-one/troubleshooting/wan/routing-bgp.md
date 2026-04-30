@@ -219,8 +219,6 @@ show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 
 ```
 
-Explain Code
-
 ## Resources
 
 * [Traffic steering](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#route-prioritization): Route prioritization, BGP communities, and ECMP behavior

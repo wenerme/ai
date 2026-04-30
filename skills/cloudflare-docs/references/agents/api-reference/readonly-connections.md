@@ -186,8 +186,6 @@ export class MyAgent extends Agent<Env, State> {
 
 ```
 
-Explain Code
-
 This hook runs before the initial state is sent to the client, so the connection is readonly from the very first message.
 
 ### At any time
@@ -237,8 +235,6 @@ export class GameAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -279,8 +275,6 @@ export class GameAgent extends Agent<Env, GameState> {
 
 ```
 
-Explain Code
-
 ### Letting a connection toggle its own status
 
 A connection can toggle its own readonly status via a callable. This is useful for lock/unlock UIs where viewers can opt into editing mode:
@@ -316,8 +310,6 @@ export class CollabAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -345,8 +337,6 @@ export class CollabAgent extends Agent<Env, State> {
 
 
 ```
-
-Explain Code
 
 On the client:
 
@@ -486,8 +476,6 @@ try {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -524,8 +512,6 @@ try {
 
 ```
 
-Explain Code
-
 To avoid showing errors in the first place, check permissions before rendering edit controls:
 
 ```
@@ -550,8 +536,6 @@ function Editor() {
 
 
 ```
-
-Explain Code
 
 ## API reference
 
@@ -640,8 +624,6 @@ const agent = useAgent({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -687,8 +669,6 @@ const agent = useAgent({
 
 
 ```
-
-Explain Code
 
 ### Role-based access control
 
@@ -759,8 +739,6 @@ export class CollaborativeAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -830,8 +808,6 @@ export class CollaborativeAgent extends Agent<Env, CollabState> {
 
 
 ```
-
-Explain Code
 
 ### Admin dashboard
 
@@ -904,8 +880,6 @@ const viewerAgent = useAgent({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -977,8 +951,6 @@ const viewerAgent = useAgent({
 
 
 ```
-
-Explain Code
 
 ### Dynamic permission changes
 
@@ -1056,8 +1028,6 @@ export class GameAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1129,8 +1099,6 @@ export class GameAgent extends Agent<Env, GameState> {
 
 ```
 
-Explain Code
-
 Client-side React component:
 
 ```
@@ -1201,8 +1169,6 @@ function GameComponent() {
 
 ```
 
-Explain Code
-
 ## How it works
 
 Readonly status is stored in the connection's WebSocket attachment, which persists through the WebSocket Hibernation API. The flag is namespaced internally so it cannot be accidentally overwritten by `connection.setState()`. The same mechanism is used by [protocol message control](https://developers.cloudflare.com/agents/api-reference/protocol-messages/) — both flag coexist safely in the attachment. This means:
@@ -1254,8 +1220,6 @@ Client (readonly)                     Agent
 
 
 ```
-
-Explain Code
 
 ### What readonly does and does not restrict
 
@@ -1355,8 +1319,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1383,8 +1345,6 @@ export class MyAgent extends Agent<Env, State> {
 
 
 ```
-
-Explain Code
 
 ## Best practices
 
@@ -1419,8 +1379,6 @@ export class SecureAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1452,8 +1410,6 @@ export class SecureAgent extends Agent<Env, State> {
 
 
 ```
-
-Explain Code
 
 ### Provide clear user feedback
 
@@ -1487,8 +1443,6 @@ const agent = useAgent({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1515,8 +1469,6 @@ const agent = useAgent({
 
 
 ```
-
-Explain Code
 
 ### Check permissions before UI actions
 
@@ -1550,8 +1502,6 @@ function EditButton() {
 
 
 ```
-
-Explain Code
 
 ### Log access attempts
 
@@ -1589,8 +1539,6 @@ export class AuditedAgent extends Agent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1621,8 +1569,6 @@ export class AuditedAgent extends Agent<Env, State> {
 
 
 ```
-
-Explain Code
 
 ## Limitations
 

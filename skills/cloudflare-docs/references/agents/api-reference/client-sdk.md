@@ -78,8 +78,6 @@ function Chat() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -120,8 +118,6 @@ function Chat() {
 
 ```
 
-Explain Code
-
 ### Vanilla JavaScript
 
 * [  JavaScript ](#tab-panel-3056)
@@ -158,8 +154,6 @@ const response = await client.call("sendMessage", ["Hello!"]);
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -190,8 +184,6 @@ const response = await client.call("sendMessage", ["Hello!"]);
 
 
 ```
-
-Explain Code
 
 ## Connecting to agents
 
@@ -330,8 +322,6 @@ useAgent({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -373,8 +363,6 @@ useAgent({
 
 
 ```
-
-Explain Code
 
 ### Async query parameters
 
@@ -419,8 +407,6 @@ useAgent({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -456,8 +442,6 @@ useAgent({
 
 
 ```
-
-Explain Code
 
 The query function is cached and only re-called when:
 
@@ -543,8 +527,6 @@ const agent = useAgent({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -571,8 +553,6 @@ const agent = useAgent({
 
 
 ```
-
-Explain Code
 
 ### Pushing state updates
 
@@ -833,8 +813,6 @@ await agent.call("generateText", [prompt], {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -890,8 +868,6 @@ await agent.call("generateText", [prompt], {
 
 
 ```
-
-Explain Code
 
 ## HTTP requests with agentFetch
 
@@ -952,8 +928,6 @@ const response = await agentFetch(
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1006,8 +980,6 @@ const response = await agentFetch(
 
 ```
 
-Explain Code
-
 **When to use `agentFetch` vs WebSocket:**
 
 | Use agentFetch                  | Use useAgent/AgentClient    |
@@ -1053,8 +1025,6 @@ const agent = useAgent({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1083,8 +1053,6 @@ const agent = useAgent({
 
 
 ```
-
-Explain Code
 
 ## Error handling
 
@@ -1408,8 +1376,6 @@ type UseAgentOptions<State> = {
 
 ```
 
-Explain Code
-
 ### Return value
 
 The `useAgent` hook returns an object with the following properties and methods:
@@ -1459,8 +1425,6 @@ type AgentClientOptions<State> = {
 
 
 ```
-
-Explain Code
 
 ### AgentClient methods
 

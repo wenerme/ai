@@ -63,8 +63,6 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/settings/minify" \
 
 ```
 
-Explain Code
-
 If any of the values in the highlighted line are `"on"`, then you need to turn them off.
 
 ## Turn off Auto Minify using the API
@@ -114,8 +112,6 @@ curl --request PATCH \
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":6,"item":{"@id":"/speed/optimization/content/troubleshooting/disable-auto-minify/","name":"Turn off Auto Minify via API"}}]}

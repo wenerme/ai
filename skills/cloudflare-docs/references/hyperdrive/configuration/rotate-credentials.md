@@ -36,8 +36,8 @@ npx wrangler hyperdrive create my-updated-hyperdrive --connection-string="<YOUR_
 
 The command above will output the ID of your Hyperdrive. Set this ID in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-6068)
-* [  wrangler.toml ](#tab-panel-6069)
+* [  wrangler.jsonc ](#tab-panel-6066)
+* [  wrangler.toml ](#tab-panel-6067)
 
 JSONC
 
@@ -73,8 +73,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 

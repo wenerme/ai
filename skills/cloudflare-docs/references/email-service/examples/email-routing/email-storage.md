@@ -187,8 +187,6 @@ async function handleSupportEmail(message, env, emailId) {
 
 ```
 
-Explain Code
-
 ## Queue-based processing
 
 Process emails asynchronously using Cloudflare Queues:
@@ -829,8 +827,6 @@ async function processGeneral(
 
 
 ```
-
-Explain Code
 
 ---
 

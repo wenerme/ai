@@ -86,8 +86,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -132,8 +130,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 The `Container` class extends `DurableObject`, so all [Durable Object](https://developers.cloudflare.com/durable-objects) functionality is available.
 
@@ -200,8 +196,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -229,8 +223,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 ### `onStop`
 
@@ -419,8 +411,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -449,8 +439,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 ## Request methods
 
@@ -513,8 +501,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -548,8 +534,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 `fetch` is the only method that supports WebSocket proxying. Refer to the [WebSocket example](https://developers.cloudflare.com/containers/examples/websocket/) for a full example.
 
@@ -633,8 +617,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -684,8 +666,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 ## Start and stop
 
@@ -780,8 +760,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -827,8 +805,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Refer to the [env vars and secrets example](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/) for a full example.
 
@@ -898,8 +874,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -935,8 +909,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Refer to the [cron example](https://developers.cloudflare.com/containers/examples/cron/) for a full example.
 
@@ -1001,8 +973,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1037,8 +1007,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 ### `stop`
 
@@ -1096,8 +1064,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1130,8 +1096,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 ### `destroy`
 
@@ -1185,8 +1149,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1219,8 +1181,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 ## State and monitoring
 
@@ -1280,8 +1240,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1314,8 +1272,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 ### `renewActivityTimeout`
 
@@ -1371,8 +1327,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1407,8 +1361,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 ## Scheduling
 
@@ -1481,8 +1433,6 @@ export class MyContainer extends Container {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1517,8 +1467,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 ## Outbound interception
 
@@ -1587,8 +1535,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1649,8 +1595,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 For more information, refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/platform-details/outbound-traffic/).
 

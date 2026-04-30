@@ -59,8 +59,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -102,8 +100,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Reproducible Output**  — Use a fixed seed for reproducibility 
@@ -144,8 +140,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

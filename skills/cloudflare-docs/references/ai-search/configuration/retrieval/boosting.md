@@ -122,8 +122,6 @@ const results = await instance.search({
 
 ```
 
-Explain Code
-
 To disable boosting for a single request, pass an empty array:
 
 TypeScript

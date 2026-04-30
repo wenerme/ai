@@ -65,8 +65,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Input / Output JSON 
 
 * [ Input ](#tab-panel-16)
@@ -153,8 +151,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Input / Output JSON 
 
 * [ Input ](#tab-panel-18)
@@ -188,8 +184,6 @@ Input / Output JSON
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -263,8 +257,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Input / Output JSON 
 
 * [ Input ](#tab-panel-22)
@@ -308,8 +300,6 @@ Input / Output JSON
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -364,8 +354,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Input / Output JSON 
 
@@ -453,8 +441,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Input / Output JSON 
 
 * [ Input ](#tab-panel-24)
@@ -488,8 +474,6 @@ Input / Output JSON
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -821,8 +805,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Parameters
 

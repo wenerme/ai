@@ -22,9 +22,9 @@ Set your default device profile to be applicable to a majority of your userbase,
 
 To customize the default settings:
 
-* [ Dashboard ](#tab-panel-6650)
-* [ API ](#tab-panel-6651)
-* [ Terraform (v5) ](#tab-panel-6652)
+* [ Dashboard ](#tab-panel-6648)
+* [ API ](#tab-panel-6649)
+* [ Terraform (v5) ](#tab-panel-6650)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select the **Default** profile and select \*_Edit_.
@@ -92,8 +92,6 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
 
 ```
 
-Explain Code
-
 1. Update global settings:
 
 Terminal window
@@ -137,8 +135,7 @@ resource "cloudflare_zero_trust_device_default_profile" "default_profile" {
   switch_locked         = true  
   tunnel_protocol       = "wireguard"  
 }  
-```  
-Explain Code
+```
 3. Configure [global settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#global-settings) using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:  
 ```  
 resource "cloudflare_zero_trust_device_settings" "global_warp_settings" {  

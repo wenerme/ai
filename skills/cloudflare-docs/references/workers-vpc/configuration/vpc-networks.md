@@ -28,8 +28,8 @@ Binding directly to a tunnel through a VPC Network binding requires the **Connec
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-8418)
-* [  wrangler.toml ](#tab-panel-8419)
+* [  wrangler.jsonc ](#tab-panel-8456)
+* [  wrangler.toml ](#tab-panel-8457)
 
 JSONC
 
@@ -89,8 +89,8 @@ Your account must have at least one active [Cloudflare Tunnel](https://developer
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-8420)
-* [  wrangler.toml ](#tab-panel-8421)
+* [  wrangler.jsonc ](#tab-panel-8458)
+* [  wrangler.toml ](#tab-panel-8459)
 
 JSONC
 
@@ -162,8 +162,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 When a VPC Network cannot establish a connection to your target service, `fetch()` throws an exception.
 

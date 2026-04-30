@@ -205,8 +205,6 @@ Created your new D1 database.
 
 ```
 
-Explain Code
-
 You now have a D1 database in your Cloudflare account with a binding to your Cloudflare Worker.
 
 Copy the last part of the command output and paste it into your Wrangler file. It should look similar to this:
@@ -261,8 +259,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -295,8 +291,6 @@ database_id = "<D1_DATABASE_ID>"
 
 
 ```
-
-Explain Code
 
 Replace `<D1_DATABASE_ID>` with the database ID of your D1 instance. If you were not able to fetch this ID from the terminal output, you can also find it in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), or by running `npx wrangler d1 info prisma-demo-db` in your terminal.
 
@@ -527,8 +521,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -566,8 +558,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Before running the Worker, generate Prisma Client with the following command:
 

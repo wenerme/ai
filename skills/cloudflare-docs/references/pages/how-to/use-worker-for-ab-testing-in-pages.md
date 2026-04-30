@@ -98,8 +98,6 @@ export const onRequest = [abTest];
 
 ```
 
-Explain Code
-
 ## Set up conditional logic
 
 Based on the URL pathname, check that the cookie value is equal to `new`. If the value is `new`, then `newHomepagePathName` will be served.
@@ -156,8 +154,6 @@ export const onRequest = [abTest];
 
 
 ```
-
-Explain Code
 
 If the cookie value is not present, you will have to assign one. Generate a percentage (from 0-99) by using: `Math.floor(Math.random() * 100)`. Your default cookie version is given a value of `current`.
 
@@ -242,8 +238,6 @@ export const onRequest = [abTest];
 
 
 ```
-
-Explain Code
 
 ## Deploy to Cloudflare Pages
 

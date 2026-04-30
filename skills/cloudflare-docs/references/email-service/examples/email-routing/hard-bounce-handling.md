@@ -29,8 +29,8 @@ Hard bounces occur when an email cannot be delivered due to permanent reasons:
 
 Configure your worker to handle bounce notifications:
 
-* [  wrangler.jsonc ](#tab-panel-5943)
-* [  wrangler.toml ](#tab-panel-5944)
+* [  wrangler.jsonc ](#tab-panel-5941)
+* [  wrangler.toml ](#tab-panel-5942)
 
 JSONC
 
@@ -73,8 +73,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -99,8 +97,6 @@ id = "your-kv-namespace-id"
 
 
 ```
-
-Explain Code
 
 ## Hard bounce detection
 
@@ -353,8 +349,6 @@ async function handleHardBounce(bounceInfo, env) {
 
 ```
 
-Explain Code
-
 ## Testing hard bounce handling
 
 Create a test bounce notification:
@@ -416,8 +410,6 @@ Welcome! Thanks for signing up.'
 
 ```
 
-Explain Code
-
 ## Checking suppression list
 
 Add a utility function to check if an email is suppressed before sending:
@@ -468,8 +460,6 @@ export async function sendEmail(recipient, subject, content, env) {
 
 
 ```
-
-Explain Code
 
 ## Best practices
 

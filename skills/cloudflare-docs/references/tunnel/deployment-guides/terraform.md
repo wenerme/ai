@@ -111,8 +111,7 @@ variable "cloudflare_token" {
   type        = string  
   sensitive   = true  
 }  
-```  
-Explain Code
+```
 
 ### Assign values to the variables
 
@@ -148,8 +147,8 @@ Terminal window
 touch providers.tf  
 ```
 2. Add the following providers to `providers.tf`. The `random` provider is used to generate a tunnel secret.  
-   * [ Terraform (v5) ](#tab-panel-8085)  
-   * [ Terraform (v4) ](#tab-panel-8086)  
+   * [ Terraform (v5) ](#tab-panel-8123)  
+   * [ Terraform (v4) ](#tab-panel-8124)  
 ```  
 terraform {  
   required_providers {  
@@ -173,7 +172,6 @@ provider "google" {
 provider "random" {  
 }  
 ```  
-Explain Code  
 ```  
 terraform {  
   required_providers {  
@@ -199,8 +197,7 @@ provider "google" {
 }  
 provider "random" {  
 }  
-```  
-Explain Code
+```
 
 ### Configure Cloudflare resources
 
@@ -212,8 +209,8 @@ Terminal window
 touch Cloudflare-config.tf  
 ```
 2. Add the following resources to `Cloudflare-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-8081)  
-   * [ Terraform (v4) ](#tab-panel-8082)  
+   * [ Terraform (v5) ](#tab-panel-8119)  
+   * [ Terraform (v4) ](#tab-panel-8120)  
 ```  
 # Creates a new remotely-managed tunnel for the GCP VM.  
 resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {  
@@ -290,7 +287,6 @@ resource "cloudflare_zero_trust_access_application" "http_app" {
   ]  
 }  
 ```  
-Explain Code  
 ```  
 # Generates a 32-byte secret for the tunnel.  
 resource "random_bytes" "tunnel_secret" {  
@@ -348,8 +344,7 @@ resource "cloudflare_zero_trust_access_policy" "allow_emails" {
     email = [var.cloudflare_email]  
   }  
 }  
-```  
-Explain Code
+```
 
 To learn more about these resources, refer to the [Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
@@ -363,8 +358,8 @@ Terminal window
 touch GCP-config.tf  
 ```
 2. Add the following content to `GCP-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-8083)  
-   * [ Terraform (v4) ](#tab-panel-8084)  
+   * [ Terraform (v5) ](#tab-panel-8121)  
+   * [ Terraform (v4) ](#tab-panel-8122)  
 ```  
 # OS the server will use  
 data "google_compute_image" "image" {  
@@ -400,7 +395,6 @@ resource "google_compute_instance" "http_server" {
     })  
 }  
 ```  
-Explain Code  
 ```  
 # OS the server will use  
 data "google_compute_image" "image" {  
@@ -435,8 +429,7 @@ resource "google_compute_instance" "http_server" {
       tunnel_token = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.tunnel_token  
     })  
 }  
-```  
-Explain Code
+```
 
 ### Create a startup script
 
@@ -478,8 +471,7 @@ services:
 EOF  
 cd /tmp  
 sudo docker-compose up -d  
-```  
-Explain Code
+```
 
 ## 6\. Deploy Terraform
 

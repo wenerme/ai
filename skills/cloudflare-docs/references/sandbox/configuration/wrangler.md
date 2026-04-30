@@ -80,8 +80,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -119,8 +117,6 @@ tag = "v1"
 
 
 ```
-
-Explain Code
 
 ## Required settings
 
@@ -182,8 +178,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -259,8 +253,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 

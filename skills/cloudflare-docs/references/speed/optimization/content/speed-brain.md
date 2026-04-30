@@ -74,8 +74,6 @@ The configuration looks like this:
 
 ```
 
-Explain Code
-
 This configuration instructs the browser to initiate prefetch requests for future navigations. These prefetch requests will include the `sec-purpose: prefetch` HTTP request header. Prefetches that are not successful will respond with a `503` status code. Prefetches that are successful will respond with a `200` status code.
 
 ## Test Speed Brain

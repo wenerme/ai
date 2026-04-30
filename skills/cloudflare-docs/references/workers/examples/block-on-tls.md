@@ -20,10 +20,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 
-* [  JavaScript ](#tab-panel-8672)
-* [  TypeScript ](#tab-panel-8673)
-* [  Hono ](#tab-panel-8674)
-* [  Python ](#tab-panel-8675)
+* [  JavaScript ](#tab-panel-8710)
+* [  TypeScript ](#tab-panel-8711)
+* [  Hono ](#tab-panel-8712)
+* [  Python ](#tab-panel-8713)
 
 JavaScript
 
@@ -74,8 +74,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -124,8 +122,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -187,8 +183,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 Python
 

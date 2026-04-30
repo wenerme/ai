@@ -83,8 +83,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -129,8 +127,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 That is it. Think handles the WebSocket chat protocol, message persistence, the agentic loop, message sanitization, stream resumption, client tool support, and workspace file tools.
 
@@ -207,8 +203,6 @@ function Chat() {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -281,8 +275,6 @@ function Chat() {
 
 ```
 
-Explain Code
-
 ### Configuration
 
 * [  wrangler.jsonc ](#tab-panel-3704)
@@ -351,8 +343,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -384,8 +374,6 @@ tag = "v1"
 
 
 ```
-
-Explain Code
 
 ## Think vs AIChatAgent
 
@@ -468,8 +456,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -499,8 +485,6 @@ export class MyAgent extends Think<Env, MyConfig> {
 
 
 ```
-
-Explain Code
 
 | Method                      | Description                                                   |
 | --------------------------- | ------------------------------------------------------------- |
@@ -541,8 +525,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -571,8 +553,6 @@ export class MyAgent extends Think<Env, MyConfig> {
 
 
 ```
-
-Explain Code
 
 ## Session integration
 
@@ -624,8 +604,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -668,8 +646,6 @@ export class MyAgent extends Think<Env> {
 
 
 ```
-
-Explain Code
 
 When `configureSession` adds context blocks, Think builds the system prompt from those blocks instead of using `getSystemPrompt()`. Think's `this.messages` getter reads directly from Session's tree-structured storage.
 
@@ -745,8 +721,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -779,8 +753,6 @@ export class MyAgent extends Think<Env> {
 
 
 ```
-
-Explain Code
 
 This requires an R2 bucket binding:
 
@@ -889,8 +861,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -950,8 +920,6 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-Explain Code
-
 Custom tools are merged with workspace tools automatically. If a custom tool has the same name as a workspace tool, the custom tool wins.
 
 ### Tool approval
@@ -990,8 +958,6 @@ getTools(): ToolSet {
 
 
 ```
-
-Explain Code
 
 When `needsApproval` returns `true`, the tool call is sent to the client for approval. The conversation pauses until the client responds with `CF_AGENT_TOOL_APPROVAL`.
 
@@ -1116,8 +1082,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1155,8 +1119,6 @@ export class MyAgent extends Think<Env> {
 
 
 ```
-
-Explain Code
 
 ### Code execution tool
 
@@ -1215,8 +1177,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1257,8 +1217,6 @@ export class MyAgent extends Think<Env> {
 
 
 ```
-
-Explain Code
 
 * [  wrangler.jsonc ](#tab-panel-3706)
 * [  wrangler.toml ](#tab-panel-3707)
@@ -1388,8 +1346,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1429,8 +1385,6 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-Explain Code
-
 * [  wrangler.jsonc ](#tab-panel-3708)
 * [  wrangler.toml ](#tab-panel-3709)
 
@@ -1462,8 +1416,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -1648,8 +1600,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1711,8 +1661,6 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-Explain Code
-
 Extension tools are namespaced — a `math` extension with an `add` tool becomes `math_add` in the model's tool set.
 
 #### LLM-driven extensions
@@ -1758,8 +1706,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1795,8 +1741,6 @@ export class MyAgent extends Think<Env> {
 
 
 ```
-
-Explain Code
 
 This gives the model two tools:
 
@@ -1840,8 +1784,6 @@ getExtensions() {
 
 ```
 
-Explain Code
-
 The context block is registered as `notes_scratchpad` (namespaced by extension name).
 
 ### Custom workspace backends
@@ -1878,8 +1820,6 @@ import {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1906,8 +1846,6 @@ import {
 
 
 ```
-
-Explain Code
 
 Implement the operations interface for your storage backend:
 
@@ -2020,8 +1958,6 @@ onChatResponse()            ← message persisted, turn lock released
 
 
 ```
-
-Explain Code
 
 ### beforeTurn
 
@@ -2316,8 +2252,6 @@ const { messages, sendMessage } = useAgentChat({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2362,8 +2296,6 @@ const { messages, sendMessage } = useAgentChat({
 
 
 ```
-
-Explain Code
 
 Client tools are tools without an `execute` function on the server — they only have a schema. When the LLM produces a tool call for one, Think routes it to the client.
 
@@ -2608,8 +2540,6 @@ export class ChildAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2683,8 +2613,6 @@ export class ChildAgent extends Think<Env> {
 
 ```
 
-Explain Code
-
 #### Passing extra tools
 
 The `tools` option adds tools for this turn only, with the highest merge priority:
@@ -2722,8 +2650,6 @@ await child.chat("Summarize the report", callback, {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -2753,8 +2679,6 @@ await child.chat("Summarize the report", callback, {
 
 
 ```
-
-Explain Code
 
 #### Aborting a sub-agent turn
 
@@ -2965,8 +2889,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -3002,8 +2924,6 @@ export class MyAgent extends Think<Env> {
 
 
 ```
-
-Explain Code
 
 #### Chaining from onChatResponse
 
@@ -3148,8 +3068,6 @@ export class MyAgent extends Think {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -3188,8 +3106,6 @@ export class MyAgent extends Think<Env> {
 
 
 ```
-
-Explain Code
 
 #### ChatRecoveryContext
 
@@ -3264,8 +3180,6 @@ if (stable) {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -3292,8 +3206,6 @@ if (stable) {
 
 
 ```
-
-Explain Code
 
 ## Package exports
 

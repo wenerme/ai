@@ -63,8 +63,6 @@ function FindProxyForURL(url, host) {
 
 ```
 
-Explain Code
-
 You can [customize the PAC file ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy%5Fservers%5Fand%5Ftunneling/Proxy%5FAuto-Configuration%5FPAC%5Ffile) and host it somewhere your browser can access.
 
 ### Formatting considerations
@@ -211,8 +209,6 @@ function FindProxyForURL(url, host) {
 
 ```
 
-Explain Code
-
 IdP bypass requirement
 
 When using authorization endpoints, you must configure IdP bypass for your identity provider. Without this, your users will be unable to authenticate and encounter errors when trying to use the proxy.
@@ -259,8 +255,6 @@ function FindProxyForURL(url, host) {
 
 ```
 
-Explain Code
-
 ### Check for plain hostnames first
 
 NetBIOS names (hostnames without periods) are typically internal and should bypass the proxy. Check for these first:
@@ -306,8 +300,6 @@ function FindProxyForURL(url, host) {
 
 
 ```
-
-Explain Code
 
 ## Common bypass rules
 
@@ -370,6 +362,33 @@ if (
 
 
 ```
+
+### Apps with certificate pinning
+
+When HTTPS inspection is enabled, applications and services that use certificate pinning reject the Cloudflare-injected certificate and fail to load when routed through the proxy. Bypass these domains in your PAC file:
+
+JavaScript
+
+```
+
+// Bypass certificate-pinned apps
+
+if (
+
+  shExpMatch(host, "*.example-bank.com") ||
+
+  shExpMatch(host, "*.example-pinned-app.com")
+
+) {
+
+  return "DIRECT";
+
+}
+
+
+```
+
+[Do Not Inspect (DNI) policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) will not prevent certificate pinning errors on these connections — bypassing certificate-pinned apps in the PAC file is required.
 
 ## Test PAC files
 

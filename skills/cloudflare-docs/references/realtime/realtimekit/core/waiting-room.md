@@ -98,8 +98,6 @@ function MeetingStatus() {
 
 ```
 
-Explain Code
-
 Alternatively, use event listeners:
 
 ```
@@ -132,8 +130,6 @@ useEffect(() => {
 
 
 ```
-
-Explain Code
 
 JavaScript
 
@@ -240,8 +236,6 @@ function MeetingStatus() {
 
 ```
 
-Explain Code
-
 Alternatively, use event listeners:
 
 ```
@@ -274,8 +268,6 @@ useEffect(() => {
 
 
 ```
-
-Explain Code
 
 ### Waitlisted Event
 
@@ -310,8 +302,6 @@ function WaitingRoomStatus() {
 
 ```
 
-Explain Code
-
 Alternatively, use event listeners:
 
 ```
@@ -341,8 +331,6 @@ useEffect(() => {
 
 
 ```
-
-Explain Code
 
 JavaScript
 
@@ -396,8 +384,6 @@ meeting.addSelfEventListener(object : RtkSelfEventListener {
 
 ```
 
-Explain Code
-
 Swift
 
 ```
@@ -432,8 +418,6 @@ extension MeetingViewModel: RtkSelfEventListener {
 
 
 ```
-
-Explain Code
 
 Dart
 
@@ -475,8 +459,6 @@ meeting.addSelfEventListener(WaitingRoomNotifier());
 
 ```
 
-Explain Code
-
 Monitor when the local user is in the waiting room:
 
 ```
@@ -505,8 +487,6 @@ function WaitingRoomStatus() {
 
 
 ```
-
-Explain Code
 
 Alternatively, use event listeners:
 
@@ -537,8 +517,6 @@ useEffect(() => {
 
 
 ```
-
-Explain Code
 
 ### Rejected Event
 
@@ -573,8 +551,6 @@ function RejectionStatus() {
 
 ```
 
-Explain Code
-
 Alternatively, use event listeners:
 
 ```
@@ -608,8 +584,6 @@ useEffect(() => {
 
 
 ```
-
-Explain Code
 
 JavaScript
 
@@ -671,8 +645,6 @@ meeting.addSelfEventListener(object : RtkSelfEventListener {
 
 ```
 
-Explain Code
-
 When the host rejects the entry request, the `onWaitListStatusUpdate` callback is triggered with `WaitListStatus.rejected`:
 
 Swift
@@ -715,8 +687,6 @@ extension MeetingViewModel: RtkSelfEventListener {
 
 
 ```
-
-Explain Code
 
 When the host rejects the entry request, the `onWaitListStatusUpdate` callback is triggered with `WaitlistStatus.rejected`:
 
@@ -766,8 +736,6 @@ meeting.addSelfEventListener(WaitingRoomNotifier());
 
 ```
 
-Explain Code
-
 Monitor when the host rejects the entry request:
 
 ```
@@ -796,8 +764,6 @@ function RejectionStatus() {
 
 
 ```
-
-Explain Code
 
 Alternatively, use event listeners:
 
@@ -832,8 +798,6 @@ useEffect(() => {
 
 
 ```
-
-Explain Code
 
 ### Monitor State with roomState
 
@@ -892,8 +856,6 @@ function WaitingRoomManager() {
 
 
 ```
-
-Explain Code
 
 JavaScript
 
@@ -979,8 +941,6 @@ function WaitingRoomManager() {
 
 ```
 
-Explain Code
-
 ## Host Actions
 
 Hosts can manage waiting room requests using participant management methods. See [Remote Participants](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/) for details on:
@@ -1062,8 +1022,6 @@ function WaitingRoomHost() {
 
 
 ```
-
-Explain Code
 
 JavaScript
 
@@ -1154,8 +1112,6 @@ meeting.addWaitlistEventListener(object : RtkWaitlistEventListener {
 
 ```
 
-Explain Code
-
 Swift
 
 ```
@@ -1218,8 +1174,6 @@ extension MeetingViewModel: RtkWaitlistEventListener {
 
 
 ```
-
-Explain Code
 
 Dart
 
@@ -1304,8 +1258,6 @@ meeting.addWaitlistEventListener(WaitlistStatusNotifier());
 
 ```
 
-Explain Code
-
 ```
 
 import {
@@ -1384,8 +1336,6 @@ function WaitingRoomHost() {
 
 
 ```
-
-Explain Code
 
 ## Best Practices
 

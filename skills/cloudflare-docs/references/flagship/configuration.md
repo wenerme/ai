@@ -18,8 +18,8 @@ To use Flagship in a Cloudflare Worker, add a Flagship binding to your Wrangler 
 
 Add the `flagship` block to your Wrangler configuration file with a binding name and your app ID.
 
-* [  wrangler.jsonc ](#tab-panel-5963)
-* [  wrangler.toml ](#tab-panel-5964)
+* [  wrangler.jsonc ](#tab-panel-5961)
+* [  wrangler.toml ](#tab-panel-5962)
 
 JSONC
 
@@ -59,8 +59,8 @@ Replace `<APP_ID>` with the app ID from your Flagship app. If you have not creat
 
 A single Worker can bind to multiple Flagship apps. Use the array form to define more than one binding:
 
-* [  wrangler.jsonc ](#tab-panel-5965)
-* [  wrangler.toml ](#tab-panel-5966)
+* [  wrangler.jsonc ](#tab-panel-5963)
+* [  wrangler.toml ](#tab-panel-5964)
 
 JSONC
 
@@ -92,8 +92,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -140,8 +138,8 @@ interface Env {
 
 Call evaluation methods on `env.FLAGS` to resolve flag values at runtime. Each method accepts a flag key, a default value, and an optional evaluation context.
 
-* [  JavaScript ](#tab-panel-5967)
-* [  TypeScript ](#tab-panel-5968)
+* [  JavaScript ](#tab-panel-5965)
+* [  TypeScript ](#tab-panel-5966)
 
 JavaScript
 

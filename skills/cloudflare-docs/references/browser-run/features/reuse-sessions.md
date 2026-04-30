@@ -109,8 +109,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -276,8 +274,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -418,8 +414,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Besides `puppeteer.sessions()`, we have added other methods to facilitate [Session Management](https://developers.cloudflare.com/browser-run/puppeteer/#session-management).
 

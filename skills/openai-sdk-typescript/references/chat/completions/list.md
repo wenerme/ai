@@ -438,7 +438,7 @@ for await (const chatCompletion of client.chat.completions.list()) {
                   "end_index": 0,
                   "start_index": 0,
                   "title": "title",
-                  "url": "url"
+                  "url": "https://example.com"
                 }
               }
             ],

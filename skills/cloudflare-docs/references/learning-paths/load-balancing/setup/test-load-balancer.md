@@ -18,8 +18,8 @@ Starting with a test domain allows you to verify everything is working correctly
 
 ## Create a load balancer
 
-* [ Dashboard ](#tab-panel-6455)
-* [ API ](#tab-panel-6456)
+* [ Dashboard ](#tab-panel-6453)
+* [ API ](#tab-panel-6454)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -170,8 +170,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
 
 ```
 
-Explain Code
-
 The response contains the complete definition of the new load balancer.
 
 Response
@@ -254,8 +252,6 @@ Response
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/load-balancing/setup/","name":"Setup"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/load-balancing/setup/test-load-balancer/","name":"Create load balancer on test domain"}}]}

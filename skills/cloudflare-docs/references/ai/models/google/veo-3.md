@@ -65,8 +65,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -110,8 +108,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Vertical Video**  — Portrait orientation for social media 
@@ -153,8 +149,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Short Format**  — Short video for social media posts 
@@ -194,8 +188,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Silent Video**  — Video without audio generation 
@@ -234,8 +226,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

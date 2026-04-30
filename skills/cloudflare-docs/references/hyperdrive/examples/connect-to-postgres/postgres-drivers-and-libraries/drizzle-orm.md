@@ -39,8 +39,8 @@ npm i -D drizzle-kit tsx @types/pg @types/node
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6207)
-* [  wrangler.toml ](#tab-panel-6208)
+* [  wrangler.jsonc ](#tab-panel-6205)
+* [  wrangler.toml ](#tab-panel-6206)
 
 JSONC
 
@@ -76,8 +76,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -183,8 +181,6 @@ export default {
 
 ```
 
-Explain Code
-
 Note
 
 You may use [node-postgres ↗](https://orm.drizzle.team/docs/get-started-postgresql#node-postgres) or [Postgres.js ↗](https://orm.drizzle.team/docs/get-started-postgresql#postgresjs)when using Drizzle ORM. Both are supported and compatible.
@@ -220,8 +216,7 @@ export default defineConfig({
     url: process.env.DATABASE_URL!,  
   },  
 });  
-```  
-Explain Code
+```
 3. Generate the migration file for your database according to your schema files and apply the migrations to your database.  
 Run the following two commands:  
 Terminal window  

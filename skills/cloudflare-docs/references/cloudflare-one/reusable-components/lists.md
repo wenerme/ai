@@ -141,8 +141,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
 
 ```
 
-Explain Code
-
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
    * `Zero Trust Write`
 2. Create a list using the [cloudflare\_zero\_trust\_list ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Flist) resource.  
@@ -164,7 +162,6 @@ resource "cloudflare_zero_trust_list" "wiki_IPs" {
   ]  
 }  
 ```  
-Explain Code  
 Example list of domains:  
 ```  
 resource "cloudflare_zero_trust_list" "wiki_domains" {  
@@ -180,8 +177,7 @@ resource "cloudflare_zero_trust_list" "wiki_domains" {
       value = "wiki2.example.com"  
     }]  
 }  
-```  
-Explain Code
+```
 
 You can now use this list in the policy builder by choosing the _in list_ operator.
 

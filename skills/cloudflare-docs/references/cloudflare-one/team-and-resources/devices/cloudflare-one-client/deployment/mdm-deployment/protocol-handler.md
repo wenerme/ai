@@ -109,7 +109,6 @@ On macOS, you can configure `AutoLaunchProtocolsFromOrigins` by deploying a prop
   </dict>  
 </array>  
 ```  
-Explain Code  
 Be sure to replace `<your-team-name>` with your actual Zero Trust team name.
 3. Some MDMs require converting the `.plist` to a `.mobileconfig` before pushing it to a device. You can use a [file converter ↗](https://github.com/timsutton/mcxToProfile) or modify the following example `com.google.Chrome.mobileconfig`:  
 ```  
@@ -177,8 +176,7 @@ Be sure to replace `<your-team-name>` with your actual Zero Trust team name.
     </array>  
 </dict>  
 </plist>  
-```  
-Explain Code
+```
 4. Upload the `.plist` or `.mobileconfig` file to your preferred MDM.
 5. Deploy the configuration profile to your devices.
 

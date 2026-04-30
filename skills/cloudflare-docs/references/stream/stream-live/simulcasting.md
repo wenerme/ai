@@ -60,8 +60,6 @@ Response
 
 ```
 
-Explain Code
-
 ## Control when you start and stop simulcasting
 
 You can enable and disable individual live outputs with either:

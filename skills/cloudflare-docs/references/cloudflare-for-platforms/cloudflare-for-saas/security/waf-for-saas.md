@@ -198,8 +198,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
-Explain Code
-
 To build rules through the dashboard:
 
 1. In the Cloudflare dashboard, go to the **WAF** page.  

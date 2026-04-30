@@ -63,8 +63,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -105,8 +103,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 
@@ -149,8 +145,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Product Shot**  — Quick product video preview 
@@ -189,8 +183,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

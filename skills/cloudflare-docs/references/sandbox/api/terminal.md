@@ -176,8 +176,6 @@ addon.connect({ sandboxId: "my-sandbox" });
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -219,8 +217,6 @@ addon.connect({ sandboxId: 'my-sandbox' });
 
 
 ```
-
-Explain Code
 
 ### `connect()`
 
@@ -367,8 +363,6 @@ interface SandboxAddonOptions {
 
 
 ```
-
-Explain Code
 
 ## Related resources
 

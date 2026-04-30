@@ -62,8 +62,6 @@ git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFAC
 
 ```
 
-Explain Code
-
 This flow is useful when another system owns repo discovery or access control, but your local tooling still expects a normal git remote.
 
 Treat `ARTIFACTS_TOKEN` as a secret. Keep it out of logs, and prefer `http.extraHeader` over saving credentials in a remote URL.

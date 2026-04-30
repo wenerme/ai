@@ -48,9 +48,63 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example creates a URL rewrite rule that rewrites requests for `example.com/old-folder` to `example.com/new-folder`:
 
-Note
+* [ Terraform (v5) ](#tab-panel-8081)
+* [ Terraform (v4) ](#tab-panel-8082)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+
+* `Zone Transform Rules Write`
+* `Account Rulesets Read`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "transform_url_rewrite" {
+
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "Transform Rule performing a static URL rewrite"
+
+  description = ""
+
+  kind        = "zone"
+
+  phase       = "http_request_transform"
+
+
+  rules = [{
+
+    ref         = "url_rewrite_old_folder"
+
+    description = "Example URL rewrite rule"
+
+    expression  = "(http.host eq \"example.com\" and http.request.uri.path eq \"/old-folder\")"
+
+    action      = "rewrite"
+
+    action_parameters = {
+
+      uri = {
+
+        path = {
+
+          value = "/new-folder"
+
+        }
+
+      }
+
+    }
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -98,11 +152,9 @@ resource "cloudflare_ruleset" "transform_url_rewrite" {
 
 ```
 
-Explain Code
+To create another URL rewrite rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications).
-
-To create another URL rewrite rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
   
 For more information on rewriting URLs, refer to [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/).
@@ -115,9 +167,79 @@ The following configuration example performs the following adjustments to HTTP r
 * Adds a `my-header-2` header to the request with a dynamic value defined by an expression.
 * Deletes the `existing-header` header from the request, if it exists.
 
-Note
+* [ Terraform (v5) ](#tab-panel-8083)
+* [ Terraform (v4) ](#tab-panel-8084)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+
+* `Zone Transform Rules Write`
+* `Account Rulesets Read`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "transform_modify_request_headers" {
+
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "Transform Rule performing HTTP request header modifications"
+
+  description = ""
+
+  kind        = "zone"
+
+  phase       = "http_request_late_transform"
+
+
+  rules = [{
+
+    ref         = "modify_request_headers"
+
+    description = "Example request header transform rule"
+
+    expression  = "true"
+
+    action      = "rewrite"
+
+    action_parameters = {
+
+      headers = {
+
+        "my-header-1" = {
+
+          operation = "set"
+
+          value     = "Fixed value"
+
+        }
+
+        "my-header-2" = {
+
+          operation  = "set"
+
+          expression = "cf.zone.name"
+
+        }
+
+        "existing-header" = {
+
+          operation = "remove"
+
+        }
+
+      }
+
+    }
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -183,11 +305,9 @@ resource "cloudflare_ruleset" "transform_modify_request_headers" {
 
 ```
 
-Explain Code
+To create another request header transform rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications).
-
-To create another request header transform rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
 For more information on modifying request headers, refer to [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/request-header-modification/).
 
@@ -199,9 +319,79 @@ The following configuration example performs the following adjustments to HTTP r
 * Adds a `my-header-2` header to the response with a dynamic value defined by an expression.
 * Deletes the `existing-header` header from the response, if it exists.
 
-Note
+* [ Terraform (v5) ](#tab-panel-8085)
+* [ Terraform (v4) ](#tab-panel-8086)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+
+* `Zone Transform Rules Write`
+* `Account Rulesets Read`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+
+```
+
+resource "cloudflare_ruleset" "transform_modify_response_headers" {
+
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "Transform Rule performing HTTP response header modifications"
+
+  description = ""
+
+  kind        = "zone"
+
+  phase       = "http_response_headers_transform"
+
+
+  rules = [{
+
+    ref         = "modify_response_headers"
+
+    description = "Example response header transform rule"
+
+    expression  = "true"
+
+    action      = "rewrite"
+
+    action_parameters = {
+
+      headers = {
+
+        "my-header-1" = {
+
+          operation = "set"
+
+          value     = "Fixed value"
+
+        }
+
+        "my-header-2" = {
+
+          operation  = "set"
+
+          expression = "cf.zone.name"
+
+        }
+
+        "existing-header" = {
+
+          operation = "remove"
+
+        }
+
+      }
+
+    }
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -267,21 +457,54 @@ resource "cloudflare_ruleset" "transform_modify_response_headers" {
 
 ```
 
-Explain Code
+To create another response header transform rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications).
-
-To create another response header transform rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
 For more information on modifying response headers, refer to [Response Header Transform Rules](https://developers.cloudflare.com/rules/transform/response-header-modification/).
 
 ## Configure Managed Transforms
 
-Note
+* [ Terraform (v5) ](#tab-panel-8079)
+* [ Terraform (v4) ](#tab-panel-8080)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
 
-Use the `cloudflare_managed_headers` Terraform resource to configure Managed Transforms. For example:
+All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+
+* `Managed headers Write`
+* `Account Rulesets Read`
+
+Configure the [cloudflare\_managed\_transforms ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/managed%5Ftransforms) resource:
+
+```
+
+resource "cloudflare_managed_transforms" "tf_example" {
+
+  zone_id = var.cloudflare_zone_id
+
+
+  managed_request_headers = [{
+
+    id      = "add_visitor_location_headers"
+
+    enabled = true
+
+  }]
+
+
+  managed_response_headers = [{
+
+    id      = "remove_x-powered-by_header"
+
+    enabled = true
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -311,8 +534,6 @@ resource "cloudflare_managed_headers" "tf_example" {
 
 
 ```
-
-Explain Code
 
 Make sure you include the Managed Transforms you are updating in the correct object (`managed_request_headers` or `managed_response_headers`).
 

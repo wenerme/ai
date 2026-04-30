@@ -61,8 +61,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -102,8 +100,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Podcast Style**  — Conversational podcast narration 
@@ -141,8 +137,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Shimmer Voice**  — Bright and expressive voice 
@@ -179,8 +173,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

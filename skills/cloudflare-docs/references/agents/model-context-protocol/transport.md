@@ -113,8 +113,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -184,8 +182,6 @@ export default {
 
 ```
 
-Explain Code
-
 #### MCP server with authentication
 
 If your MCP server implements authentication & authorization using the [Workers OAuth Provider ↗](https://github.com/cloudflare/workers-oauth-provider) library, use `createMcpHandler` with the `apiRoute` and `apiHandler` properties. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker-authenticated).
@@ -222,8 +218,6 @@ export default new OAuthProvider({
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -252,8 +246,6 @@ export default new OAuthProvider({
 
 
 ```
-
-Explain Code
 
 ### Stateful MCP servers
 
@@ -339,8 +331,6 @@ export class MyMCP extends McpAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -403,8 +393,6 @@ export class MyMCP extends McpAgent<Env, State> {
 
 ```
 
-Explain Code
-
 #### 2\. Connect your Agent to the MCP server
 
 In your `Agent`, call `addMcpServer()` with the Durable Object binding in `onStart()`:
@@ -455,8 +443,6 @@ export class Chat extends AIChatAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -500,8 +486,6 @@ export class Chat extends AIChatAgent<Env> {
 
 ```
 
-Explain Code
-
 RPC connections are automatically restored after Durable Object hibernation, just like HTTP connections. The binding name and props are persisted to storage so the connection can be re-established without any extra code.
 
 For RPC transport, if `addMcpServer` is called with a name that already has an active connection, the existing connection is returned instead of creating a duplicate. For HTTP transport, deduplication matches on both server name and URL (refer to [MCP Client API](https://developers.cloudflare.com/agents/api-reference/mcp-client-api/) for details). This makes it safe to call in `onStart()`.
@@ -544,8 +528,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 #### 4\. Set up your Worker fetch handler
 
@@ -591,8 +573,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -629,8 +609,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ### Passing props to the MCP server
 
@@ -700,8 +678,6 @@ export class MyMCP extends McpAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -743,8 +719,6 @@ export class MyMCP extends McpAgent<
 
 
 ```
-
-Explain Code
 
 Props are type-safe (TypeScript extracts the Props type from your `McpAgent` generic), persistent (stored in Durable Object storage), and available immediately before any tool calls are made.
 
@@ -802,8 +776,6 @@ export class MyMCP extends McpAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -850,8 +822,6 @@ export class MyMCP extends McpAgent<Env, State> {
 
 
 ```
-
-Explain Code
 
 ## Choosing a transport
 

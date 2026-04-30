@@ -78,8 +78,6 @@ curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_TAG>/images/v1/vari
 
 ```
 
-Explain Code
-
 When the Browser TTL is set to one day for images requested with this variant, the response for the `cache-control` header is essentially `public`, `max-age=86400`, `stale-while-revalidate=7200`.
 
 Note

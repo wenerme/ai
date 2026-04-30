@@ -78,8 +78,8 @@ Note the service ID returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8428)
-* [  wrangler.toml ](#tab-panel-8429)
+* [  wrangler.jsonc ](#tab-panel-8466)
+* [  wrangler.toml ](#tab-panel-8467)
 
 JSONC
 
@@ -116,8 +116,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -143,8 +141,6 @@ remote = true
 
 
 ```
-
-Explain Code
 
 ## 4\. Implement the Worker
 
@@ -181,8 +177,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 This guide demonstrates how you could create a simple proxy in your Workers. However, you could use VPC Services to fetch APIs directly and manipulate the responses to enable you to build more full-stack and backend functionality on Workers.
 

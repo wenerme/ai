@@ -37,8 +37,8 @@ npx wrangler hyperdrive create my-first-hyperdrive --connection-string="postgres
 
 The command above will output the ID of your Hyperdrive, which you will need to set in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-6109)
-* [  wrangler.toml ](#tab-panel-6110)
+* [  wrangler.jsonc ](#tab-panel-6107)
+* [  wrangler.toml ](#tab-panel-6108)
 
 JSONC
 
@@ -74,8 +74,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -127,8 +125,8 @@ Recommended driver
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-6107)
-* [  wrangler.toml ](#tab-panel-6108)
+* [  wrangler.jsonc ](#tab-panel-6105)
+* [  wrangler.toml ](#tab-panel-6106)
 
 JSONC
 
@@ -220,8 +218,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6111)
-* [  wrangler.toml ](#tab-panel-6112)
+* [  wrangler.jsonc ](#tab-panel-6109)
+* [  wrangler.toml ](#tab-panel-6110)
 
 JSONC
 
@@ -257,8 +255,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -350,8 +346,6 @@ export default {
 
 ```
 
-Explain Code
-
 ### Postgres.js
 
 Install [Postgres.js ↗](https://github.com/porsager/postgres):
@@ -380,8 +374,8 @@ The minimum version of `postgres-js` required for Hyperdrive is `3.4.5`.
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6113)
-* [  wrangler.toml ](#tab-panel-6114)
+* [  wrangler.jsonc ](#tab-panel-6111)
+* [  wrangler.toml ](#tab-panel-6112)
 
 JSONC
 
@@ -417,8 +411,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -513,8 +505,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 ## Identify connections from Hyperdrive
 

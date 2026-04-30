@@ -237,8 +237,6 @@ export * from "./mywasmlib_bg.js";
 
 ```
 
-Explain Code
-
 1. In your Worker entrypoint, import the function and use it directly:
 
 JavaScript

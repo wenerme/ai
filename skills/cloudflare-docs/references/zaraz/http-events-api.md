@@ -57,8 +57,6 @@ The endpoint you have configured for the API will receive `POST` requests with a
 
 ```
 
-Explain Code
-
 The payload must contain an `events` array. Each Event Object in this array corresponds to one event you want Zaraz to process. The above example is similar to calling `zaraz.track('transaction successful', { value: "200" })` using the Web API.
 
 The Event Object holds the `client` object, in which you can pass information about the event itself. Every key you include in the Event Object will be available as a _Track Property_ in the Zaraz dashboard.
@@ -118,8 +116,6 @@ The same payload from before will resemble the following example, when we add th
 
 
 ```
-
-Explain Code
 
 For all available system keys, refer to the table below:
 

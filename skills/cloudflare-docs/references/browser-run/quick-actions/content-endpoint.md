@@ -89,8 +89,6 @@ console.log(content);
 
 ```
 
-Explain Code
-
 ## Advanced usage
 
 Looking for more parameters?

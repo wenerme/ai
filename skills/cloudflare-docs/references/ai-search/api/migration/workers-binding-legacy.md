@@ -53,8 +53,6 @@ const answer = await env.AI.autorag("my-autorag").aiSearch({
 
 ```
 
-Explain Code
-
 #### Parameters
 
 `query` ` string ` required
@@ -202,8 +200,6 @@ This is the response structure without `stream` enabled.
 
 ```
 
-Explain Code
-
 ### `search()`
 
 This method searches for results from your corpus and returns the relevant results:
@@ -238,8 +234,6 @@ const answer = await env.AI.autorag("my-autorag").search({
 
 
 ```
-
-Explain Code
 
 #### Parameters
 
@@ -353,8 +347,6 @@ For the full list of optional parameters, refer to the [Search API reference](ht
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/migration/","name":"API Migration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/migration/workers-binding-legacy/","name":"Workers binding (legacy)"}}]}

@@ -67,8 +67,6 @@ export class MyDurableObject extends DurableObject {
 
 ```
 
-Explain Code
-
 Python
 
 ```

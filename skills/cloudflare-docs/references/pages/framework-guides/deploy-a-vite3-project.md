@@ -56,8 +56,6 @@ Done. Now run:
 
 ```
 
-Explain Code
-
 You will now create a new GitHub repository, and push your code using [GitHub's gh command line (CLI) ↗](https://cli.github.com):
 
 Terminal window

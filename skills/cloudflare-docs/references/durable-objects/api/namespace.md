@@ -59,8 +59,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -103,8 +101,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -133,8 +129,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 ## Methods
 

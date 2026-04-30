@@ -52,8 +52,6 @@ The full syntax of the `action_parameters` field for a static URL rewrite rule t
 
 ```
 
-Explain Code
-
 If you are only rewriting the URI path or the query string, omit the `query` or `path` parameter, respectively.
 
 ### Dynamic URL rewrites
@@ -84,8 +82,6 @@ The full syntax of the `action_parameters` field for a dynamic URL rewrite rule 
 
 
 ```
-
-Explain Code
 
 If you are only rewriting the URI path or the query string, omit the `query` or `path` parameter, respectively.
 
@@ -128,8 +124,6 @@ The syntax of a dynamic URL rewrite rule that rewrites both the URI path and the
 
 ```
 
-Explain Code
-
 The `<REQUEST_URL>`, `<PATH_TARGET_PATH>`, `<PATH_REWRITE_TO>`, `<QUERY_TARGET_QUERY>`, and `<QUERY_REWRITE_TO>` value placeholders correspond to the fields available in the Cloudflare dashboard when you select the **Wildcard pattern** option. For more information, refer to [Wildcard pattern parameters](https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/#wildcard-pattern-parameters).
 
 Note
@@ -164,8 +158,6 @@ The same rule can have different types of URL rewrites for the URI path and the 
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/url-rewrite/","name":"URL Rewrite Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/url-rewrite/reference/","name":"Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/rules/transform/url-rewrite/reference/parameters/","name":"URL rewrite parameters"}}]}

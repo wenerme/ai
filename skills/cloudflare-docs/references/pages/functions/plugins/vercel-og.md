@@ -95,8 +95,6 @@ export const onRequest = vercelOGPagesPlugin<Props>({
 
 ```
 
-Explain Code
-
 The Plugin takes an object with six properties:
 
 * `imagePathSuffix`: the path suffix to make the generate image available at. For example, if you mount this Plugin at `functions/blog/_middleware.ts`, set the `imagePathSuffix` as `/social-image.png` and have a `/blog/hello-world` page, the image will be available at `/blog/hello-world/social-image.png`.
@@ -141,8 +139,6 @@ export const onRequest: PagesFunction = async () => {
 
 
 ```
-
-Explain Code
 
 This is the same API that the underlying [@vercel/og library ↗](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation/og-image-api) offers.
 

@@ -193,8 +193,6 @@ console.log(
 
 ```
 
-Explain Code
-
 ## Generate presigned URLs
 
 You can also generate presigned links that can be used to share public read or write access to a bucket temporarily.
@@ -250,8 +248,6 @@ console.log(
 
 
 ```
-
-Explain Code
 
 ```
 

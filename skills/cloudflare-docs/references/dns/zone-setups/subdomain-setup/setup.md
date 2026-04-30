@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Setup
 
-Warning
+Availability
 
 Subdomain setup is only available for Enterprise accounts. If you only want to create a subdomain for your site in Cloudflare, refer to [Create a subdomain record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/).
 

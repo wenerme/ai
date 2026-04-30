@@ -63,8 +63,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Reference
 
 The following method is provided to delete from KV:

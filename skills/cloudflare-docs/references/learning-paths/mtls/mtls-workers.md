@@ -24,8 +24,8 @@ All Client Certificate details can be found in the [tlsClientAuth](https://devel
 
 Example Cloudflare Workers code to return all headers and gain visibility, including [Client Certificate headers](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#cloudflare-workers):
 
-* [  Module Worker ](#tab-panel-6457)
-* [  Service Worker ](#tab-panel-6458)
+* [  Module Worker ](#tab-panel-6455)
+* [  Service Worker ](#tab-panel-6456)
 
 JavaScript
 
@@ -75,8 +75,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Service Workers are deprecated
 
@@ -134,8 +132,6 @@ addEventListener('fetch', event => {
 
 ```
 
-Explain Code
-
 The response when using the browser with a P12 Certificate to visit the mTLS hostname would look similar to this example:
 
 ![Example response after exposing an mTLS header with Cloudflare Workers](https://developers.cloudflare.com/_astro/expose-mtls-workers.CZtg7nI7_2kyLoG.webp) 
@@ -164,8 +160,6 @@ The response when using the browser with a P12 Certificate to visit the mTLS hos
 
 
 ```
-
-Explain Code
 
 Note
 

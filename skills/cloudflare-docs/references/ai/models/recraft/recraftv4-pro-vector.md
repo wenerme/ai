@@ -57,8 +57,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Logo Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/logo-design.jpg) 
 
 ## Examples
@@ -96,8 +94,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Icon Set](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/icon-set.jpg) 
 
 **Print-Ready Vector**  — High-resolution vector for large-format print 
@@ -132,8 +128,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Print-Ready Vector](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/print-ready-vector.jpg) 
 
@@ -193,8 +187,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Brand Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/brand-illustration.jpg) 
 

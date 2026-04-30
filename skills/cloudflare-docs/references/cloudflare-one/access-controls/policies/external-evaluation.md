@@ -107,8 +107,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -141,8 +139,6 @@ DEBUG = false
 
 
 ```
-
-Explain Code
 
 ### 2\. Program your business logic
 

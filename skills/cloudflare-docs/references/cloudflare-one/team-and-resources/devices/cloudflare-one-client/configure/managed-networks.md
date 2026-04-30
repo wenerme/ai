@@ -88,7 +88,6 @@ http {
     }  
 }  
 ```  
-Explain Code  
 If needed, replace `/certs/cert.pem` and `/certs/key.pem` with the locations of your certificate and key.  
 b. Add the nginx image to your Docker compose file:  
 docker-compose.yml  
@@ -286,8 +285,6 @@ resource "cloudflare_zero_trust_device_custom_profile" "office" {
 
 
 ```
-
-Explain Code
 
 Managed networks are now enabled. Every time a device in your organization connects to a network (for example, when waking up the device or changing Wi-Fi networks), the Cloudflare One Client will determine its network location and apply the corresponding settings profile.
 

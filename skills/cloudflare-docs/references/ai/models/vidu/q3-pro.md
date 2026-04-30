@@ -59,8 +59,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -102,8 +100,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Silent Video**  — Generate video without audio 
@@ -143,8 +139,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Square Format**  — Square video for product demos or social posts 
@@ -183,8 +177,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

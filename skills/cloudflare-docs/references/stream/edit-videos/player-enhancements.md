@@ -56,8 +56,6 @@ curl --location --request POST "https://api.cloudflare.com/client/v4/accounts/<$
 
 ```
 
-Explain Code
-
 Because the `publicDetails` properties are optional, you can choose which properties to include. In the example below, only the `logo` is added to the video.
 
 Terminal window

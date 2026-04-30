@@ -92,8 +92,6 @@ The response (shortened below for brevity) uses the provided `name` property to 
 
 ```
 
-Explain Code
-
 Comparisons can be made in most endpoints, not just endpoints that use `min-max`.
 
 ## Compare date ranges
@@ -145,8 +143,6 @@ Now, in the `result` property, you should get something like this:
 
 
 ```
-
-Explain Code
 
 Examining this information, we can conclude that the maximum value was reached at `2022-10-27T14:00:00Z` (all Radar timestamps are in Coordinated Universal Time (UTC)). We can also check what the date range shortcuts `7d` and `7dControl` were resolved to at the time this was run.
 
@@ -201,8 +197,6 @@ The `result` property should return a response like this:
 
 
 ```
-
-Explain Code
 
 This shows how traffic dropped to almost zero during the outage. If we chart it and set the end date to January 18 to make it clearer, we get the following:
 

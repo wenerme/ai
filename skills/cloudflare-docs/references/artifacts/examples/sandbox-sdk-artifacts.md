@@ -92,8 +92,6 @@ if (sandboxWasJustCreated) {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -133,8 +131,6 @@ if (sandboxWasJustCreated) {
 
 
 ```
-
-Explain Code
 
 The template already knows the repo name, so start with direct lookup instead of scanning `list()` pages. Avoid broad `catch` blocks here. They can hide missing-repo, auth, and validation failures behind the same retry message.
 

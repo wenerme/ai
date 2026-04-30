@@ -72,8 +72,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Parameters
 
 * [ Input ](#tab-panel-2720)

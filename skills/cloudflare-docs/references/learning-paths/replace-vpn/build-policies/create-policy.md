@@ -23,9 +23,9 @@ To create a new policy, open [Cloudflare One ↗](https://one.dash.cloudflare.co
 
 ## Example DNS policy
 
-* [ Dashboard ](#tab-panel-6478)
-* [ API ](#tab-panel-6479)
-* [ Terraform (v5) ](#tab-panel-6480)
+* [ Dashboard ](#tab-panel-6476)
+* [ API ](#tab-panel-6477)
+* [ Terraform (v5) ](#tab-panel-6478)
 
 | Traffic Selector | Operator | Value                |
 | ---------------- | -------- | -------------------- |
@@ -120,8 +120,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 
 ```
 
-Explain Code
-
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "dns_allow_wiki_domains" {
@@ -149,13 +147,11 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_allow_wiki_domains" {
 
 ```
 
-Explain Code
-
 ## Example network policy
 
-* [ Dashboard ](#tab-panel-6481)
-* [ API ](#tab-panel-6482)
-* [ Terraform (v5) ](#tab-panel-6483)
+* [ Dashboard ](#tab-panel-6479)
+* [ API ](#tab-panel-6480)
+* [ Terraform (v5) ](#tab-panel-6481)
 
 | Traffic Selector | Operator | Value            |
 | ---------------- | -------- | ---------------- |
@@ -242,8 +238,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 
 ```
 
-Explain Code
-
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
@@ -271,15 +265,13 @@ resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
 
 ```
 
-Explain Code
-
 ### Catch-all policy
 
 We recommend adding a catch-all policy to the bottom of your network policy list. An effective Zero Trust model should prioritize default-deny actions to avoid any overly permissive policy building. For example,
 
-* [ Dashboard ](#tab-panel-6484)
-* [ API ](#tab-panel-6485)
-* [ Terraform (v5) ](#tab-panel-6486)
+* [ Dashboard ](#tab-panel-6482)
+* [ API ](#tab-panel-6483)
+* [ Terraform (v5) ](#tab-panel-6484)
 
 | Traffic Selector | Operator | Value                      | Logic |
 | ---------------- | -------- | -------------------------- | ----- |
@@ -373,8 +365,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 
 ```
 
-Explain Code
-
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "network_catch_all" {
@@ -399,8 +389,6 @@ resource "cloudflare_zero_trust_gateway_policy" "network_catch_all" {
 
 
 ```
-
-Explain Code
 
 Network policies are evaluated in [top-down order](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence), so if a user does not match an explicitly defined policy for an application, they will be blocked. To learn how multiple policies interact, refer to [Order of enforcement](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/).
 

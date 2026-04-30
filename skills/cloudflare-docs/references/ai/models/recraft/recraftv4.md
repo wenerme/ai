@@ -55,8 +55,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/simple-generation.png) 
 
 ## Examples
@@ -92,8 +90,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![Scene Composition](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/scene-composition.png) 
 
 **Custom Size**  — Specify output dimensions 
@@ -128,8 +124,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/custom-size.png) 
 
@@ -184,8 +178,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 ![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/with-color-controls.png) 
 
 **Background Color**  — Set a specific background color 
@@ -228,8 +220,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 ![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/background-color.png) 
 

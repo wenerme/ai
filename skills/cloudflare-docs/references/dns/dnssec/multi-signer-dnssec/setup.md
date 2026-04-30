@@ -114,8 +114,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
 
 ```
 
-Explain Code
-
 1. Add your external provider(s) nameservers as NS records on your zone apex.
 
 Required API token permissions

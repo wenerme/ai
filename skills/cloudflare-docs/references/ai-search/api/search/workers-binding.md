@@ -59,8 +59,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -116,8 +114,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -301,8 +297,6 @@ const response = await instance.chatCompletions({
 
 ```
 
-Explain Code
-
 #### Stream responses
 
 Set `stream: true` to receive responses as Server-Sent Events (SSE) as they are generated:
@@ -337,8 +331,6 @@ return new Response(stream, {
 
 
 ```
-
-Explain Code
 
 When `stream` is enabled, the method returns a `ReadableStream` of SSE events. Each event contains a JSON object with `choices[0].delta.content` for incremental text. The stream ends with a `data: [DONE]` event.
 
@@ -459,8 +451,6 @@ data: [DONE]
 
 ```
 
-Explain Code
-
 ## Namespace methods
 
 The following methods are only available when using the `ai_search_namespaces` binding. Search and chat across multiple instances in a single call using the namespace handle directly (`env.AI_SEARCH`).
@@ -579,8 +569,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/search/","name":"Search"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/search/workers-binding/","name":"Workers binding"}}]}

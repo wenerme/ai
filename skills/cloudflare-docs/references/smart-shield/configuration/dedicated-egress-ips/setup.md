@@ -66,8 +66,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
 
 ```
 
-Explain Code
-
 ## Check DCEI status for a zone
 
 Required API token permissions

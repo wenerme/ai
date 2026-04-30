@@ -145,8 +145,6 @@ Response
 
 ```
 
-Explain Code
-
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Select a hostname.

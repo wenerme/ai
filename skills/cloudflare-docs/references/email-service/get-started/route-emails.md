@@ -53,8 +53,8 @@ Once your domain is onboarded, you can start routing emails.
 
 You can route your first email by setting up forwarding rules in the dashboard, or by processing emails with Workers.
 
-* [ Route to email ](#tab-panel-5947)
-* [ Route to Workers ](#tab-panel-5948)
+* [ Route to email ](#tab-panel-5945)
+* [ Route to Workers ](#tab-panel-5946)
 
 The simplest way to route emails is forwarding them to existing email addresses.
 
@@ -99,8 +99,8 @@ Terminal window
 npm install mimetext  
 ```
 3. Add the `nodejs_compat` compatibility flag to your Wrangler configuration file. This is required for the `mimetext` package:  
-   * [  wrangler.jsonc ](#tab-panel-5945)  
-   * [  wrangler.toml ](#tab-panel-5946)  
+   * [  wrangler.jsonc ](#tab-panel-5943)  
+   * [  wrangler.toml ](#tab-panel-5944)  
 JSONC  
 ```  
 {  
@@ -171,7 +171,6 @@ export default {
   },  
 } satisfies ExportedHandler<Env>;  
 ```  
-Explain Code  
 Update configuration  
 Before deploying, update the constants at the top of the file:  
    * `YOUR_DOMAIN`: Your verified domain from the Cloudflare dashboard  

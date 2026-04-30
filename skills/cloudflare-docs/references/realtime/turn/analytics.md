@@ -124,8 +124,6 @@ query concurrentConnections {
 
 ```
 
-Explain Code
-
 Example response:
 
 ```
@@ -206,8 +204,6 @@ Example response:
 
 ```
 
-Explain Code
-
 ### Top TURN keys by egress
 
 ```
@@ -259,8 +255,6 @@ query egressByTurnKey{
 
 ```
 
-Explain Code
-
 Example response:
 
 ```
@@ -310,8 +304,6 @@ Example response:
 
 ```
 
-Explain Code
-
 ### Top TURN custom identifiers
 
 ```
@@ -354,8 +346,6 @@ query topTurnCustomIdentifiers {
 
 
 ```
-
-Explain Code
 
 Example response:
 
@@ -405,8 +395,6 @@ Example response:
 
 
 ```
-
-Explain Code
 
 ### Usage for a specific custom identifier
 
@@ -461,8 +449,6 @@ query {
 
 ```
 
-Explain Code
-
 Example response:
 
 ```
@@ -514,8 +500,6 @@ Example response:
 
 ```
 
-Explain Code
-
 ### Usage as a timeseries (for graphs)
 
 ```
@@ -558,8 +542,6 @@ query {
 
 
 ```
-
-Explain Code
 
 Example response:
 
@@ -628,8 +610,6 @@ Example response:
 
 ```
 
-Explain Code
-
 ### Usage breakdown by geographic location
 
 You can break down usage data by Cloudflare data center location to understand where your TURN traffic is being served. This is useful for optimizing regional capacity and understanding geographic distribution of your users.
@@ -688,8 +668,6 @@ query {
 
 
 ```
-
-Explain Code
 
 Example response:
 
@@ -756,8 +734,6 @@ Example response:
 
 ```
 
-Explain Code
-
 ### Filter by specific key or identifier
 
 You can filter data to analyze a specific TURN key or custom identifier. This is useful for debugging specific connections or analyzing usage patterns for particular clients.
@@ -820,8 +796,6 @@ query {
 
 
 ```
-
-Explain Code
 
 Example response:
 
@@ -909,8 +883,6 @@ Example response:
 
 
 ```
-
-Explain Code
 
 ### Time aggregation options
 
@@ -982,8 +954,6 @@ query {
 
 ```
 
-Explain Code
-
 Example response:
 
 ```
@@ -1071,8 +1041,6 @@ Example response:
 
 ```
 
-Explain Code
-
 ## Advanced use cases
 
 ### Combining multiple dimensions
@@ -1125,8 +1093,6 @@ query {
 
 
 ```
-
-Explain Code
 
 Example response:
 
@@ -1207,8 +1173,6 @@ Example response:
 
 ```
 
-Explain Code
-
 ### Identifying top consumers
 
 To find which keys or custom identifiers are using the most bandwidth:
@@ -1263,8 +1227,6 @@ query {
 
 
 ```
-
-Explain Code
 
 Example response:
 
@@ -1324,8 +1286,6 @@ Example response:
 
 
 ```
-
-Explain Code
 
 ## Schema exploration
 

@@ -51,8 +51,7 @@ Your worker has access to the following bindings:
 ⎔ Starting local server...  
 [mf:inf] Ready on http://127.0.0.1:8787/  
 [b] open a browser, [d] open Devtools, [l] turn off local mode, [c] clear console, [x] to exit  
-```  
-Explain Code
+```
 
 In this example, the Worker has access to local-only D1 database. The corresponding D1 binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
@@ -144,8 +143,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -312,8 +309,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -419,8 +414,6 @@ describe("Test D1 Worker endpoint", () => {
 
 
 ```
-
-Explain Code
 
 Review the [unstable\_dev()](https://developers.cloudflare.com/workers/wrangler/api/#usage) documentation for more details on how to use the API within your tests.
 

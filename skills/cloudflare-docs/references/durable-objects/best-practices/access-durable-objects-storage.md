@@ -68,8 +68,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -134,8 +132,6 @@ export class Counter extends DurableObject {
 
 ```
 
-Explain Code
-
 ### Remove a Durable Object's storage
 
 A Durable Object fully ceases to exist if, when it shuts down, its storage is empty. If you never write to a Durable Object's storage at all (including setting alarms), then storage remains empty, and so the Durable Object will no longer exist once it shuts down.
@@ -176,8 +172,6 @@ export class MyDurableObject extends DurableObject<Env> {
 
 
 ```
-
-Explain Code
 
 ## SQL API Examples
 
@@ -223,8 +217,6 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
-
-Explain Code
 
 Iterate over query results as row objects:
 
@@ -344,8 +336,6 @@ TypeScript
 
 ```
 
-Explain Code
-
 Returned cursor and `raw()` iterator iterate over the same query results:
 
 TypeScript
@@ -372,8 +362,6 @@ TypeScript
 
 
 ```
-
-Explain Code
 
 `sql.exec().rowsRead()`:
 
@@ -504,8 +492,6 @@ for (let row of cursor) {
 
 
 ```
-
-Explain Code
 
 You can represent the shape of any result type you wish, including more complex types. If you are performing a`JOIN` across multiple tables, you can compose a type that reflects the results of your queries.
 

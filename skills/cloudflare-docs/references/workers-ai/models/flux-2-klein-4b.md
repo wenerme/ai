@@ -88,8 +88,6 @@ export default {
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```

@@ -38,9 +38,9 @@ Authorization: Bearer <API_TOKEN>
 
 ## Send an email
 
-* [ Simple email ](#tab-panel-5923)
-* [ Multiple recipients ](#tab-panel-5924)
-* [ With CC and BCC ](#tab-panel-5925)
+* [ Simple email ](#tab-panel-5921)
+* [ Multiple recipients ](#tab-panel-5922)
+* [ With CC and BCC ](#tab-panel-5923)
 
 Terminal window
 
@@ -69,8 +69,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 
 ```
 
-Explain Code
-
 Terminal window
 
 ```
@@ -97,8 +95,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 
 
 ```
-
-Explain Code
 
 Terminal window
 
@@ -132,8 +128,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 
 
 ```
-
-Explain Code
 
 ## Attachments
 
@@ -180,8 +174,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 
 ```
 
-Explain Code
-
 ## Custom headers
 
 Set custom headers for threading, list management, or tracking. Refer to the [email headers reference](https://developers.cloudflare.com/email-service/reference/headers/) for the full list of allowed headers.
@@ -221,8 +213,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 
 ```
 
-Explain Code
-
 ## Response
 
 A successful response returns the delivery status for each recipient:
@@ -251,8 +241,6 @@ A successful response returns the delivery status for each recipient:
 
 
 ```
-
-Explain Code
 
 * `delivered` \- Email addresses to which the message was delivered immediately
 * `permanent_bounces` \- Email addresses that permanently bounced
@@ -288,8 +276,6 @@ The REST API returns standard Cloudflare API error responses. A failed request r
 
 
 ```
-
-Explain Code
 
 Common REST API error codes:
 

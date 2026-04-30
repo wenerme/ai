@@ -103,8 +103,6 @@ fun main() = runBlocking {
 
 ```
 
-Explain Code
-
 ```
 
 Available buckets:
@@ -166,8 +164,6 @@ println(getUrl)
 
 
 ```
-
-Explain Code
 
 You can use these presigned URLs with any HTTP client. For example, to upload a file using the PUT URL:
 

@@ -278,8 +278,6 @@ if (type === "HAND_RAISE") {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -314,8 +312,6 @@ if (type === "HAND_RAISE") {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -349,8 +345,6 @@ if (type === "HAND_RAISE") {
 
 
 ```
-
-Explain Code
 
 #### Broadcast to a specific set of participants.
 

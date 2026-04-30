@@ -86,12 +86,10 @@ class Default(WorkerEntrypoint):
 
 ```
 
-Explain Code
-
 You must add both `python_workflows` and `python_workers` compatibility flags to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-10085)
-* [  wrangler.toml ](#tab-panel-10086)
+* [  wrangler.jsonc ](#tab-panel-10123)
+* [  wrangler.toml ](#tab-panel-10124)
 
 JSONC
 
@@ -136,8 +134,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -165,8 +161,6 @@ class_name = "PythonWorkflowStarter"
 
 
 ```
-
-Explain Code
 
 To run a Python Workflow locally, use [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the CLI for Cloudflare Workers:
 

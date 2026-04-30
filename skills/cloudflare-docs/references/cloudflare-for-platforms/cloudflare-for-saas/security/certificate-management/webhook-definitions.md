@@ -101,8 +101,6 @@ Cloudflare sends this alert when certificates move from a status of `pending_val
 
 ```
 
-Explain Code
-
 ### Validation failed
 
 Cloudflare sends this alert each time a certificate remains in a `pending_validation` status during [DCV retries](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/).
@@ -194,8 +192,6 @@ Cloudflare sends this alert each time a certificate remains in a `pending_valida
 
 ```
 
-Explain Code
-
 ---
 
 ## Certificate issuance
@@ -278,8 +274,6 @@ Cloudflare sends this alert when certificates move from a status of `pending_val
 
 
 ```
-
-Explain Code
 
 ### Issuance failed
 
@@ -372,8 +366,6 @@ Cloudflare sends this alert each time a certificate remains in a status of `pend
 
 ```
 
-Explain Code
-
 ---
 
 ## Certificate deployment
@@ -457,8 +449,6 @@ Cloudflare sends this alert when certificates move from a status of `pending_dep
 
 ```
 
-Explain Code
-
 ### Deployment failed
 
 Cloudflare sends this alert each time a certificate remains in a status of `pending_deployment` during [DCV retries](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/).
@@ -536,8 +526,6 @@ Cloudflare sends this alert each time a certificate remains in a status of `pend
 
 ```
 
-Explain Code
-
 ---
 
 ## Certificate deletion
@@ -611,8 +599,6 @@ Cloudflare sends this alert when certificates move from a status of `pending_del
 
 ```
 
-Explain Code
-
 ### Deletion failed
 
 Cloudflare sends this alert each time a certificate remains in status of `pending_deletion` during [DCV retries](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/).
@@ -681,8 +667,6 @@ Cloudflare sends this alert each time a certificate remains in status of `pendin
 
 
 ```
-
-Explain Code
 
 ---
 
@@ -777,8 +761,6 @@ The actions that you need to perform to renew certificates depend on your [valid
 
 ```
 
-Explain Code
-
 ### Renewal succeeded
 
 Cloudflare sends this alert when certificates move from a status of `active` to `pending_deployment`.
@@ -855,8 +837,6 @@ Cloudflare sends this alert when certificates move from a status of `active` to 
 
 
 ```
-
-Explain Code
 
 ### Renewal failed
 
@@ -948,8 +928,6 @@ Cloudflare sends this alert when certificates move from a status of `active` to 
 
 
 ```
-
-Explain Code
 
 ## Troubleshooting
 

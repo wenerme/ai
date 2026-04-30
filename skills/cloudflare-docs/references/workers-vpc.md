@@ -24,8 +24,8 @@ Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
 
-* [ index.ts ](#tab-panel-8416)
-* [ wrangler.jsonc ](#tab-panel-8417)
+* [ index.ts ](#tab-panel-8454)
+* [ wrangler.jsonc ](#tab-panel-8455)
 
 TypeScript
 
@@ -63,8 +63,6 @@ export default {
 
 ```
 
-Explain Code
-
 ```
 
   {
@@ -95,8 +93,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Use cases
 

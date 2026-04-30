@@ -37,8 +37,8 @@ If your project uses [environments](https://developers.cloudflare.com/workers/wr
 
 Example of a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8574)
-* [  wrangler.toml ](#tab-panel-8575)
+* [  wrangler.jsonc ](#tab-panel-8612)
+* [  wrangler.toml ](#tab-panel-8613)
 
 JSONC
 
@@ -81,8 +81,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -113,8 +111,6 @@ route = "https://staging.example.com/docs*"
 
 ```
 
-Explain Code
-
 ## Storage limits
 
 For very exceptionally large pages, Workers Sites might not work for you. There is a 25 MiB limit per page or file.
@@ -131,8 +127,8 @@ This means that you should use gitignore semantics when declaring which director
 
 If you want to include only a certain set of files or directories in your `bucket`, you can add an `include` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8570)
-* [  wrangler.toml ](#tab-panel-8571)
+* [  wrangler.jsonc ](#tab-panel-8608)
+* [  wrangler.toml ](#tab-panel-8609)
 
 JSONC
 
@@ -176,8 +172,8 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, you can add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8572)
-* [  wrangler.toml ](#tab-panel-8573)
+* [  wrangler.jsonc ](#tab-panel-8610)
+* [  wrangler.toml ](#tab-panel-8611)
 
 JSONC
 

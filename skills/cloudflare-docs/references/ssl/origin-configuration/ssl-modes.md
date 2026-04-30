@@ -111,8 +111,7 @@ for zoneID in $(cat zone.txt); do
     --data '{"value":"custom"}'  
   printf "\n\n"  
 done  
-```  
-Explain Code
+```
 5. Open your command line and run:  
 Terminal window  
 ```  

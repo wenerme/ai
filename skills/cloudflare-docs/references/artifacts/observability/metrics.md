@@ -142,8 +142,6 @@ query ArtifactsOperationsByRepo(
 
 ```
 
-Explain Code
-
 ### Errors by repo, descending
 
 Use this query to rank repos by error volume. It helps you spot which repos fail most often and which error types are driving those failures.
@@ -203,8 +201,6 @@ query ArtifactsErrorsByRepo(
 
 ```
 
-Explain Code
-
 ### Repos by pushes, descending
 
 Use this query to see which repos receive the most pushes in a time window. It is useful for identifying active write-heavy repos across an account.
@@ -263,8 +259,6 @@ query ArtifactsPushesByRepo(
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/observability/metrics/","name":"Metrics"}}]}

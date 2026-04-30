@@ -69,8 +69,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/baseten/v1/c
 
 ```
 
-Explain Code
-
 ### Use OpenAI SDK with JavaScript
 
 JavaScript
@@ -116,8 +114,6 @@ console.log(chatCompletion);
 
 
 ```
-
-Explain Code
 
 ## OpenAI-Compatible Endpoint
 
@@ -216,8 +212,6 @@ console.log(result);
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/baseten/","name":"Baseten"}}]}

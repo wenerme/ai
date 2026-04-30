@@ -75,8 +75,6 @@ export default new OAuthProvider({
 
 ```
 
-Explain Code
-
 Note that as [defined in the Model Context Protocol specification ↗](https://spec.modelcontextprotocol.io/specification/draft/basic/authorization/#292-flow-description) when you use a third-party OAuth provider, the MCP Server (your Worker) generates and issues its own token to the MCP client:
 
 sequenceDiagram
@@ -181,8 +179,6 @@ export default new OAuthProvider({
 
 ```
 
-Explain Code
-
 Refer to the [getting started example](https://developers.cloudflare.com/agents/guides/remote-mcp-server/) for a complete example of the `OAuthProvider` in use, with a mock authentication flow.
 
 The authorization flow in this case works like this:
@@ -253,8 +249,6 @@ export class MyMCP extends McpAgent<Env, unknown, AuthContext> {
 
 ```
 
-Explain Code
-
 ### With createMcpHandler
 
 Use `getMcpAuthContext()` to access the same information from within a tool handler. This uses `AsyncLocalStorage` under the hood.
@@ -294,8 +288,6 @@ function createServer() {
 
 
 ```
-
-Explain Code
 
 ## Permission-based tool access
 
@@ -370,8 +362,6 @@ export class MyMCP extends McpAgent<Env, unknown, AuthContext> {
 
 
 ```
-
-Explain Code
 
 Checking inside the handler returns an error message to the LLM, which can explain the denial to the user. Conditionally registering tools means the LLM never sees tools the user cannot access — it cannot attempt to call them at all.
 

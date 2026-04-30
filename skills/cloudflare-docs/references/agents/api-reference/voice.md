@@ -83,8 +83,6 @@ export class MyAgent extends VoiceAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -124,8 +122,6 @@ export class MyAgent extends VoiceAgent<Env> {
 
 
 ```
-
-Explain Code
 
 ### Client (React)
 
@@ -204,8 +200,6 @@ function VoiceUI() {
 
 ```
 
-Explain Code
-
 ### Wrangler configuration
 
 * [  wrangler.jsonc ](#tab-panel-3786)
@@ -256,8 +250,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -282,8 +274,6 @@ new_sqlite_classes = [ "MyAgent" ]
 
 
 ```
-
-Explain Code
 
 ## How it works
 
@@ -311,8 +301,6 @@ Browser                              Durable Object (withVoice)
 
 
 ```
-
-Explain Code
 
 1. The client captures mic audio and sends it as binary WebSocket frames (16kHz mono 16-bit PCM).
 2. Audio streams continuously to the transcriber session (created at `start_call`, lives for the entire call).
@@ -541,8 +529,6 @@ export class MyAgent extends VoiceAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -597,8 +583,6 @@ export class MyAgent extends VoiceAgent<Env> {
 
 
 ```
-
-Explain Code
 
 The `context` object provides:
 
@@ -671,8 +655,6 @@ export class MyAgent extends VoiceAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -713,8 +695,6 @@ export class MyAgent extends VoiceAgent<Env> {
 
 
 ```
-
-Explain Code
 
 ### Convenience methods
 
@@ -808,8 +788,6 @@ export class DictationAgent extends InputAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -837,8 +815,6 @@ export class DictationAgent extends InputAgent<Env> {
 
 
 ```
-
-Explain Code
 
 ### `onTranscript(text, connection)`
 
@@ -908,8 +884,6 @@ const {
 
 
 ```
-
-Explain Code
 
 #### Tuning options
 
@@ -989,8 +963,6 @@ function Dictation() {
 
 ```
 
-Explain Code
-
 ## Client API: `VoiceClient`
 
 Framework-agnostic client for environments without React.
@@ -1043,8 +1015,6 @@ client.disconnect();
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1089,8 +1059,6 @@ client.disconnect();
 
 
 ```
-
-Explain Code
 
 ### Events
 
@@ -1187,8 +1155,6 @@ export class CustomAgent extends VoiceAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1246,8 +1212,6 @@ export class CustomAgent extends VoiceAgent<Env> {
 
 
 ```
-
-Explain Code
 
 ### Third-party providers
 
@@ -1528,8 +1492,6 @@ export class MyAgent extends VoiceAgent {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -1571,8 +1533,6 @@ export class MyAgent extends VoiceAgent<Env> {
 
 
 ```
-
-Explain Code
 
 ## Pipeline metrics
 

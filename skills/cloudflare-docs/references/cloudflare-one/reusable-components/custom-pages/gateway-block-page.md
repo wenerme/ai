@@ -124,8 +124,7 @@ resource "cloudflare_zero_trust_gateway_settings" "team_name" {
     }  
   }  
 }  
-```  
-Explain Code
+```
 
 Gateway will now display a custom Gateway block page when your users visit a blocked website.
 

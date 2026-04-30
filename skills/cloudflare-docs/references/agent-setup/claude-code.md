@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Add mTLS authentication and schema validation to protect my API endpoints.  
+Add a cron trigger to my Worker that processes a job queue every hour.  
 ```
 
 ## Cloudflare platform access

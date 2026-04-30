@@ -101,8 +101,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 
 ```
 
-Explain Code
-
 You can include a list of rules in the custom ruleset creation request. If you have not added any rules, refer to [Add rules to a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/) for more information.
 
 ## Example B - Custom ruleset at the zone level
@@ -191,8 +189,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
 
 
 ```
-
-Explain Code
 
 You can include a list of rules in the custom ruleset creation request. If you have not added any rules, refer to [Add rules to a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/) for more information.
 

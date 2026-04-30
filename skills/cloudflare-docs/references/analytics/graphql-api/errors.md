@@ -51,8 +51,6 @@ All responses contain an `errors` array, which will be `null` if there are no er
 
 ```
 
-Explain Code
-
 ## Common error types
 
 ### Service unavailability

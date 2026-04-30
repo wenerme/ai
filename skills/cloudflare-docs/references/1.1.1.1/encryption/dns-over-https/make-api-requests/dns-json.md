@@ -93,8 +93,6 @@ curl --header "accept: application/dns-json" "https://cloudflare-dns.com/dns-que
 
 ```
 
-Explain Code
-
 In the case of an invalid request a `400 Bad Request` error is returned:
 
 Terminal window

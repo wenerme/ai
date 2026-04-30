@@ -54,8 +54,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Snippet rule
 
 Configure a custom filter expression:

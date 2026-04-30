@@ -28,8 +28,8 @@ If your server is behind a restrictive firewall, verify it can reach Cloudflare 
 
 To create a new Cloudflare Tunnel:
 
-* [ Dashboard ](#tab-panel-8103)
-* [ API ](#tab-panel-8104)
+* [ Dashboard ](#tab-panel-8141)
+* [ API ](#tab-panel-8142)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.  
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
@@ -69,8 +69,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel" \
 
 To make an application accessible from the Internet, add a published application route to your tunnel. The tunnel route maps a public hostname to a local service.
 
-* [ Dashboard ](#tab-panel-8105)
-* [ API ](#tab-panel-8106)
+* [ Dashboard ](#tab-panel-8143)
+* [ API ](#tab-panel-8144)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels** and select your tunnel. [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Under **Routes**, select **Add route**.
@@ -109,7 +109,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNN
     }  
   }'  
 ```  
-Explain Code  
 Your ingress rules must include a catch-all rule at the end. In this example, `cloudflared` will respond with a 404 status code when the request does not match any hostname.
 2. Create a DNS record for your application:  
 Required API token permissions  
@@ -128,10 +127,10 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
   }'  
 ```
 3. Install `cloudflared` on your server and run the tunnel using the `token` obtained in [Create a tunnel](https://developers.cloudflare.com/tunnel/setup/#create-a-tunnel):  
-   * [ Linux ](#tab-panel-8099)  
-   * [ Windows ](#tab-panel-8100)  
-   * [ macOS ](#tab-panel-8101)  
-   * [ Docker ](#tab-panel-8102)  
+   * [ Linux ](#tab-panel-8137)  
+   * [ Windows ](#tab-panel-8138)  
+   * [ macOS ](#tab-panel-8139)  
+   * [ Docker ](#tab-panel-8140)  
    1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.  
    2. Run the following command:  
    Terminal window  

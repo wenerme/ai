@@ -67,8 +67,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 ## Examples
@@ -114,8 +112,6 @@ console.log(response)
 
 ```
 
-Explain Code
-
 Response200 
 
 **Fast Processing**  — Quick I2V with fast pretreatment enabled 
@@ -158,8 +154,6 @@ console.log(response)
 
 
 ```
-
-Explain Code
 
 Response200 
 

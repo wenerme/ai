@@ -96,8 +96,6 @@ You should get a result similar to the following:
 
 ```
 
-Explain Code
-
 The list of tools changes depending on the website you are visiting and the actions you have performed on the page.
 
 For instance, on the hotel chain website, after executing the `search_location` tool:
@@ -215,8 +213,6 @@ After you select **Confirm Reservation**, you will get a confirmation message an
 
 ```
 
-Explain Code
-
 Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CLOUDFLARE_API_TOKEN>` with your API token. The `lab=true` parameter ensures the agent connects to a lab session with WebMCP enabled.
 
 #### 2\. (Optional) Add a WebMCP Skill
@@ -295,8 +291,6 @@ evaluate_script({
 
 
 ```
-
-Explain Code
 
 #### 3\. Interact with WebMCP sites
 

@@ -118,8 +118,6 @@ curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/explorer/datasets
 
 ```
 
-Explain Code
-
 To enable an account-level dataset, replace `zones/{zone_id}` with `accounts/{account_id}` in the `curl` command. For example:
 
 Terminal window

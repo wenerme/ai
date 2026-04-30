@@ -214,8 +214,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
 
 ```
 
-Explain Code
-
 **2\. Change the status of Managed Transforms**
 
 Change the status of the [desired Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/) using the [Update status of Managed Transforms](https://developers.cloudflare.com/api/resources/managed%5Ftransforms/methods/edit/) operation.
@@ -291,8 +289,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -421,13 +417,46 @@ Explain Code
 
 ```
 
-Explain Code
+* [ Terraform (v5) ](#tab-panel-7422)
+* [ Terraform (v4) ](#tab-panel-7423)
 
-Note
+Required API token permissions
 
-Terraform code snippets below refer to the v4 SDK only.
+All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
 
-Use the `cloudflare_managed_headers` Terraform resource to configure Managed Transforms. For example:
+* `Managed headers Write`
+* `Account Rulesets Read`
+
+Configure the [cloudflare\_managed\_transforms ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/managed%5Ftransforms) resource:
+
+```
+
+resource "cloudflare_managed_transforms" "tf_example" {
+
+  zone_id = var.cloudflare_zone_id
+
+
+  managed_request_headers = [{
+
+    id      = "add_visitor_location_headers"
+
+    enabled = true
+
+  }]
+
+
+  managed_response_headers = [{
+
+    id      = "remove_x-powered-by_header"
+
+    enabled = true
+
+  }]
+
+}
+
+
+```
 
 ```
 
@@ -457,8 +486,6 @@ resource "cloudflare_managed_headers" "tf_example" {
 
 
 ```
-
-Explain Code
 
 Make sure you include the Managed Transforms you are updating in the correct object (`managed_request_headers` or `managed_response_headers`).
 

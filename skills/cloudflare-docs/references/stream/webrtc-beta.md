@@ -61,8 +61,6 @@ API response from a POST request to /live\_inputs
 
 ```
 
-Explain Code
-
 ## Step 2: Go live using WHIP
 
 Every live input has a unique URL that one creator can be stream to. This URL should _only_ be shared with the creator — anyone with this URL has the ability to stream live video to this live input.

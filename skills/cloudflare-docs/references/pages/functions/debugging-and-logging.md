@@ -130,8 +130,6 @@ JavaScript
 
 ```
 
-Explain Code
-
 `wrangler pages deployment tail` allows you to customize a logging session to better suit your needs. Refer to the [wrangler pages deployment tail documentation](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-tail) for available configuration options.
 
 ## View logs in the Cloudflare Dashboard

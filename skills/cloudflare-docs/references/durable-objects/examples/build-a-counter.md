@@ -146,8 +146,6 @@ export class Counter extends DurableObject {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -277,8 +275,6 @@ export class Counter extends DurableObject {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -390,8 +386,6 @@ class Counter(DurableObject):
 
 ```
 
-Explain Code
-
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
 * [  wrangler.jsonc ](#tab-panel-5794)
@@ -446,8 +440,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -474,8 +466,6 @@ new_sqlite_classes = [ "Counter" ]
 
 
 ```
-
-Explain Code
 
 ### Related resources
 

@@ -59,8 +59,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Reference
 
 The following method is provided to write to KV:
@@ -294,8 +292,6 @@ export default {
 
 ```
 
-Explain Code
-
 To handle these errors, we recommend implementing a retry logic, with exponential backoff. Here is a simple approach to add retries to the above code.
 
 TypeScript
@@ -425,8 +421,6 @@ async function retryWithBackoff(
 
 
 ```
-
-Explain Code
 
 ## Other methods to access KV
 

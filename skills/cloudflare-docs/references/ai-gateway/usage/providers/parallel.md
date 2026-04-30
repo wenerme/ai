@@ -110,8 +110,6 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1b
 
 ```
 
-Explain Code
-
 ## Chat API
 
 The [Chat API ↗](https://docs.parallel.ai/chat-api/chat-quickstart) is supported through AI Gateway's Unified Chat Completions API. See below for more details:
@@ -193,8 +191,6 @@ try {
 
 
 ```
-
-Explain Code
 
 ### FindAll API
 

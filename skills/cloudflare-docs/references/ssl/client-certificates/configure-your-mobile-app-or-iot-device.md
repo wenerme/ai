@@ -171,8 +171,6 @@ export default {
 
 ```
 
-Explain Code
-
 ---
 
 ## 1\. Validate API
@@ -244,8 +242,6 @@ $ curl --silent https://shield.upinatoms.com/temps | jq .
 
 
 ```
-
-Explain Code
 
 ---
 
@@ -464,8 +460,6 @@ $ curl https://api.cloudflare.com/client/v4/zones/{zone_id}/client_certificates 
 
 ```
 
-Explain Code
-
 ---
 
 ## 3\. Embed the client certificate in your mobile app
@@ -610,8 +604,6 @@ private OkHttpClient setUpClient() {
 
 ```
 
-Explain Code
-
 The above function returns an `OkHttpClient` embedded with the client certificate. You can now use this client to make HTTP requests to your API endpoint protected with mTLS.
 
 ---
@@ -678,8 +670,6 @@ def main():
 
 
 ```
-
-Explain Code
 
 When the script attempts to connect to `https://shield.upinatoms.com/temps`, Cloudflare requests that a client certificate is sent and the script sends the contents of `/etc/ssl/certs/sensor.pem`. Then, as required to complete the SSL/TLS handshake, the script demonstrates it has possession of `/etc/ssl/private/sensor-key.pem`.
 

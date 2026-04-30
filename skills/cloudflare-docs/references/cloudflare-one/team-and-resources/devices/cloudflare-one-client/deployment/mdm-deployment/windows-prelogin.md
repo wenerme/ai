@@ -81,7 +81,6 @@ Response
   "client_secret_version": 1  
 }  
 ```  
-Explain Code  
 Warning  
 This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 
@@ -214,8 +213,6 @@ To enable the Windows pre-login feature, an MDM file in the following format mus
 
 
 ```
-
-Explain Code
 
 The Cloudflare One Client will apply the pre-login configuration when no other Cloudflare One Client registration exists and the user has not yet logged into Windows. When the pre-login configuration is in effect, the device will appear on **Team & Resources** \> **Devices** with the email `non_identity@<team-name>.cloudflareaccess.com`.
 

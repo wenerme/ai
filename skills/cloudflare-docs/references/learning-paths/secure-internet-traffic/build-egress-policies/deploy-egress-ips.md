@@ -32,8 +32,8 @@ One of the most common use cases for egress policies is to ensure a consistent e
 
 We recommend building baseline egress policies that can cover a majority of your use cases without making policy management overly complex. If all of your users need to access a series of applications that all require a specific egress IP, you should build a policy explicit to those users (or to all of your users) to ensure that all of their traffic egresses using those egress IPs. For example, you can define specific egress IPs for users with access to financial data:
 
-* [ Dashboard ](#tab-panel-6570)
-* [ API ](#tab-panel-6571)
+* [ Dashboard ](#tab-panel-6568)
+* [ API ](#tab-panel-6569)
 
 | Selector         | Operator | Value           | Egress method                       |
 | ---------------- | -------- | --------------- | ----------------------------------- |
@@ -91,8 +91,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
-
-Explain Code
 
 ## User-selectable egress locations
 

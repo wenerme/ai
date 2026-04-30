@@ -134,8 +134,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering
 
 ```
 
-Explain Code
-
 ## Step 4: Open the DevTools UI
 
 Copy the `devtoolsFrontendUrl` from the response and open it in Chrome. This URL provides direct access to the Chrome DevTools UI connected to your remote browser session.

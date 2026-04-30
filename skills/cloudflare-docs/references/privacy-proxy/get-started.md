@@ -116,8 +116,6 @@ tls=TLSv1.3
 
 ```
 
-Explain Code
-
 The `ip` value confirms the egress IP address used by the proxy.
 
 ---

@@ -49,8 +49,6 @@ package.json
 
 ```
 
-Explain Code
-
 Note
 
 Ensure that you include `"type": "module"` in order to use ES modules by default.
@@ -101,8 +99,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ## Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-9261)
-* [  wrangler.toml ](#tab-panel-9262)
+* [  wrangler.jsonc ](#tab-panel-9299)
+* [  wrangler.toml ](#tab-panel-9300)
 
 JSONC
 

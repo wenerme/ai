@@ -47,8 +47,8 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 2\. Create your first pipeline
 
-* [ Wrangler CLI ](#tab-panel-6827)
-* [ Dashboard ](#tab-panel-6828)
+* [ Wrangler CLI ](#tab-panel-6825)
+* [ Dashboard ](#tab-panel-6826)
 
 First, create a schema file that defines your ecommerce data structure:
 
@@ -106,8 +106,6 @@ First, create a schema file that defines your ecommerce data structure:
 
 
 ```
-
-Explain Code
 
 Use the interactive setup to create a pipeline that writes to R2 Data Catalog:
 
@@ -212,7 +210,6 @@ npx wrangler pipelines setup --name ecommerce
      ]  
    }  
    ```  
-   Explain Code  
    * Select **Next**
 10. **Define Sink**:  
    * Select your R2 bucket: `pipelines-tutorial`  
@@ -285,8 +282,6 @@ curl -X POST https://{stream-id}.ingest.cloudflare.com \
 
 
 ```
-
-Explain Code
 
 Replace `{stream-id}` with your actual stream endpoint from the pipeline setup.
 

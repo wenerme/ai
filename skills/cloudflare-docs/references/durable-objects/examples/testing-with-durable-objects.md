@@ -172,8 +172,6 @@ export default {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -293,8 +291,6 @@ export default {
 
 ```
 
-Explain Code
-
 ## Configure Vitest
 
 Create a `vitest.config.ts` file that uses the `cloudflareTest()` plugin:
@@ -324,8 +320,6 @@ export default defineConfig({
 
 
 ```
-
-Explain Code
 
 Make sure your Wrangler configuration includes the Durable Object binding and SQLite migration:
 
@@ -367,8 +361,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -397,8 +389,6 @@ new_sqlite_classes = [ "Counter" ]
 
 
 ```
-
-Explain Code
 
 ## Define types for tests
 
@@ -553,8 +543,6 @@ describe("Counter Durable Object", () => {
 
 ```
 
-Explain Code
-
 test/counter.test.ts
 
 ```
@@ -656,8 +644,6 @@ describe("Counter Durable Object", () => {
 
 
 ```
-
-Explain Code
 
 ### Integration tests with `exports`
 
@@ -783,8 +769,6 @@ describe("Counter Worker integration", () => {
 
 ```
 
-Explain Code
-
 test/integration.test.ts
 
 ```
@@ -863,8 +847,6 @@ describe("Counter Worker integration", () => {
 
 
 ```
-
-Explain Code
 
 ### Direct access to Durable Object internals
 
@@ -956,8 +938,6 @@ describe("Direct Durable Object access", () => {
 
 
 ```
-
-Explain Code
 
 test/direct-access.test.ts
 
@@ -1055,8 +1035,6 @@ describe("Direct Durable Object access", () => {
 
 ```
 
-Explain Code
-
 ### Testing SQLite storage
 
 SQLite-backed Durable Objects work seamlessly in tests. The SQL API is available when your Durable Object class is configured with `new_sqlite_classes` in your Wrangler configuration:
@@ -1128,8 +1106,6 @@ describe("SQLite in Durable Objects", () => {
 
 ```
 
-Explain Code
-
 test/sqlite.test.ts
 
 ```
@@ -1193,8 +1169,6 @@ describe("SQLite in Durable Objects", () => {
 
 
 ```
-
-Explain Code
 
 ### Testing alarms
 
@@ -1270,8 +1244,6 @@ describe("Durable Object alarms", () => {
 
 ```
 
-Explain Code
-
 test/alarm.test.ts
 
 ```
@@ -1345,8 +1317,6 @@ describe("Durable Object alarms", () => {
 
 ```
 
-Explain Code
-
 To test alarms, add an `alarm()` method to your Durable Object:
 
 * [  JavaScript ](#tab-panel-5812)
@@ -1386,8 +1356,6 @@ export class Counter extends DurableObject {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -1421,8 +1389,6 @@ export class Counter extends DurableObject {
 
 
 ```
-
-Explain Code
 
 ## Running tests
 

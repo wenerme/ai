@@ -103,8 +103,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -182,8 +180,6 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
-Explain Code
-
 You can also persist AI model responses back to [Agent state](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) using `this.setState`. If a user disconnects, read the message history back and send it to the user when they reconnect.
 
 ## Workers AI
@@ -234,8 +230,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -281,8 +275,6 @@ export class MyAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 Your Wrangler configuration needs an `ai` binding:
 
@@ -371,8 +363,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -426,8 +416,6 @@ export class MyAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 The `ai` binding in your Wrangler configuration is shared across both Workers AI and AI Gateway.
 
@@ -524,8 +512,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -567,8 +553,6 @@ export class MyAgent extends Agent<Env> {
 
 
 ```
-
-Explain Code
 
 You can swap the provider to use OpenAI, Anthropic, or any other AI SDK-compatible adapter:
 
@@ -626,8 +610,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -660,8 +642,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ## OpenAI-compatible endpoints
 
@@ -746,8 +726,6 @@ export class MyAgent extends Agent {
 
 ```
 
-Explain Code
-
 src/index.ts
 
 ```
@@ -821,8 +799,6 @@ export class MyAgent extends Agent {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/api-reference/using-ai-models/","name":"Using AI Models"}}]}

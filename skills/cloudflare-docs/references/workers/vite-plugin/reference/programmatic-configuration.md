@@ -70,8 +70,6 @@ export default defineConfig({
 
 ```
 
-Explain Code
-
 These values merge with Wrangler config file values, with the `config` values taking precedence.
 
 ### Dynamic configuration function
@@ -114,8 +112,6 @@ export default defineConfig({
 
 ```
 
-Explain Code
-
 The function receives the current configuration (defaults or loaded config file). Return an object with values to merge.
 
 ### In-place editing
@@ -153,8 +149,6 @@ export default defineConfig({
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -220,8 +214,6 @@ export default defineConfig({
 
 ```
 
-Explain Code
-
 ### Configuration overrides
 
 Combine a config file with `config` to override specific values:
@@ -272,8 +264,6 @@ export default defineConfig({
 
 ```
 
-Explain Code
-
 ### Configuration inheritance
 
 Auxiliary Workers receive the resolved entry Worker config in the second parameter to the `config` function. This makes it straightforward to inherit configuration from the entry Worker in auxiliary Workers.
@@ -323,8 +313,6 @@ export default defineConfig({
 
 
 ```
-
-Explain Code
 
 ## Configuration merging behavior
 

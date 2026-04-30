@@ -300,8 +300,6 @@ pages/index.vue
 
 ```
 
-Explain Code
-
 Vue SFCs, or _single file components_, are a unique Vue feature that allow you to combine JavaScript, HTML and CSS into a single file. In `pages/index.vue`, a `template` tag is provided, which represents the Vue component.
 
 Importantly, `v-for` is used as a directive to tell Vue to render HTML for each `post` in an array of `posts`:
@@ -440,8 +438,6 @@ pages/\_slug.vue
 
 
 ```
-
-Explain Code
 
 When visiting, for example, `/hello-world`, Nuxt will take the incoming slug `hello-world`, and make a GROQ query to Sanity for any objects with a `_type` of `post`, as well as a slug that matches the value `/hello-world`. From that set, you can get the first object in the array (using the array index operator you would find in JavaScript – `[0]`) and set it as `post` in your page data.
 
@@ -589,8 +585,6 @@ pages/\_slug.vue
 
 ```
 
-Explain Code
-
 In `pages/index.vue`, you can use the `block-content` component to render a summary of the content, by taking the first block in your blog post content and rendering it:
 
 pages/index.vue
@@ -684,8 +678,6 @@ pages/index.vue
 
 
 ```
-
-Explain Code
 
 There are many other things inside of your blog schema that you can add to your project. As an exercise, consider one of the following to continue developing your understanding of how to build with a headless CMS:
 

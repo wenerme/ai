@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 By default, [Workers](https://developers.cloudflare.com/workers/) and [Pages Functions](https://developers.cloudflare.com/pages/functions/) run in a data center closest to where the request was received. If your Worker makes requests to back-end infrastructure such as databases or APIs, it may be more performant to run that Worker closer to your back-end than the end user.
 
-* [  wrangler.jsonc ](#tab-panel-8538)
-* [  wrangler.toml ](#tab-panel-8539)
+* [  wrangler.jsonc ](#tab-panel-8576)
+* [  wrangler.toml ](#tab-panel-8577)
 
 JSONC
 
@@ -105,8 +105,8 @@ Smart Placement is available on all Workers plans.
 
 Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8536)
-* [  wrangler.toml ](#tab-panel-8537)
+* [  wrangler.jsonc ](#tab-panel-8574)
+* [  wrangler.toml ](#tab-panel-8575)
 
 JSONC
 
@@ -211,8 +211,8 @@ Workers run on [Cloudflare's global network ↗](https://www.cloudflare.com/netw
 
 If your infrastructure runs in AWS, GCP, or Azure, set the `placement.region` property using the format `{provider}:{region}`:
 
-* [  wrangler.jsonc ](#tab-panel-8540)
-* [  wrangler.toml ](#tab-panel-8541)
+* [  wrangler.jsonc ](#tab-panel-8578)
+* [  wrangler.toml ](#tab-panel-8579)
 
 JSONC
 
@@ -254,8 +254,8 @@ Host-based placement is experimental.
 
 Set `placement.host` to identify a layer 4 service. Cloudflare uses TCP CONNECT checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-8542)
-* [  wrangler.toml ](#tab-panel-8543)
+* [  wrangler.jsonc ](#tab-panel-8580)
+* [  wrangler.toml ](#tab-panel-8581)
 
 JSONC
 
@@ -287,8 +287,8 @@ host = "my_database_host.com:5432"
 
 Set `placement.hostname` to identify a layer 7 service. Cloudflare uses HTTP HEAD checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-8544)
-* [  wrangler.toml ](#tab-panel-8545)
+* [  wrangler.jsonc ](#tab-panel-8582)
+* [  wrangler.toml ](#tab-panel-8583)
 
 JSONC
 
@@ -372,11 +372,11 @@ This example shows two Workers:
 * `auth-worker` — runs at the edge (no placement), handles authentication
 * `app-worker` — placed near your database, handles data queries
 
-* [ auth-worker ](#tab-panel-8550)
-* [ app-worker ](#tab-panel-8551)
+* [ auth-worker ](#tab-panel-8588)
+* [ app-worker ](#tab-panel-8589)
 
-* [  wrangler.jsonc ](#tab-panel-8546)
-* [  wrangler.toml ](#tab-panel-8547)
+* [  wrangler.jsonc ](#tab-panel-8584)
+* [  wrangler.toml ](#tab-panel-8585)
 
 JSONC
 
@@ -469,10 +469,8 @@ async function validateToken(token: string): Promise<string | null> {
 
 ```
 
-Explain Code
-
-* [  wrangler.jsonc ](#tab-panel-8548)
-* [  wrangler.toml ](#tab-panel-8549)
+* [  wrangler.jsonc ](#tab-panel-8586)
+* [  wrangler.toml ](#tab-panel-8587)
 
 JSONC
 
@@ -502,8 +500,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -592,8 +588,6 @@ export default class AppWorker extends WorkerEntrypoint {
 
 ```
 
-Explain Code
-
 The `auth-worker` runs at the edge to reject unauthorized requests quickly. Authenticated requests are forwarded via RPC to `app-worker`, which runs near your database for fast queries.
 
 ### Durable Objects
@@ -657,8 +651,6 @@ export class AgentHistory extends DurableObject {
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/placement/","name":"Placement"}}]}

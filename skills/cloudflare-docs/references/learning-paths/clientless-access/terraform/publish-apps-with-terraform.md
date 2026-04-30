@@ -103,8 +103,6 @@ variable "tunnel_id" {
 
 ```
 
-Explain Code
-
 Warning
 
 To prevent accidentally exposing your Cloudflare credentials, do not save this file in your version control system. Learn more about [tracking a Terraform configuration](https://developers.cloudflare.com/terraform/tutorial/track-history/).
@@ -167,8 +165,6 @@ resource "cloudflare_tunnel_config" "example_config" {
 
 ```
 
-Explain Code
-
 Note
 
 Published application configurations must include a catch-all ingress rule at the bottom of the file.
@@ -228,8 +224,6 @@ resource "cloudflare_access_policy" "example_policy" {
 
 
 ```
-
-Explain Code
 
 ## 4\. Deploy Terraform
 

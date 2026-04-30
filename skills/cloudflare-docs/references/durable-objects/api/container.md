@@ -49,8 +49,6 @@ export class MyDurableObject extends DurableObject {
 
 ```
 
-Explain Code
-
 index.ts
 
 ```
@@ -77,8 +75,6 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
-
-Explain Code
 
 ## Attributes
 
@@ -228,8 +224,6 @@ try {
 
 ```
 
-Explain Code
-
 #### Parameters
 
 * `port` (number): a TCP port number to use for communication with the container.
@@ -279,8 +273,6 @@ class MyContainer extends DurableObject {
 
 ```
 
-Explain Code
-
 #### Parameters
 
 * None
@@ -321,8 +313,6 @@ await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
 
 
 ```
-
-Explain Code
 
 #### Parameters
 
@@ -383,8 +373,6 @@ this.ctx.container.interceptOutboundHttps("*", worker);
 
 
 ```
-
-Explain Code
 
 #### Parameters
 

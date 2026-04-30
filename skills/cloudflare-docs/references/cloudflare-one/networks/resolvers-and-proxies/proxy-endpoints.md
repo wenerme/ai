@@ -18,8 +18,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 Note
 
-[Authorization endpoints](#authorization-endpoint) and [PAC file hosting](#create-a-hosted-pac-file) are in open beta for all customers.
-
 [Source IP proxy endpoints](#source-ip-endpoint) are only available on Enterprise plans.
 
 Proxy endpoints allow you to apply Gateway policies without installing a client on your devices. By configuring a [Proxy Auto-Configuration (PAC) file](#what-is-a-pac-file) at the browser level, you can route traffic through Gateway for filtering and policy enforcement. Cloudflare supports configuring two types of proxy endpoints: identity-based [authorization endpoints](#authorization-endpoint) and [source IP proxy endpoints](#source-ip-endpoint).
@@ -62,7 +60,7 @@ Cloudflare One offers two types of proxy endpoints, each with different authoriz
 
 Once you create a proxy endpoint, you cannot change its type. If you need a different authorization method, you must create a new proxy endpoint.
 
-#### Authorization endpoint Beta
+#### Authorization endpoint
 
 Authorization endpoints use [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to provide Zero Trust authorization. Users must authenticate through an identity provider and pass Access policies before they can use the proxy endpoint.
 
@@ -150,7 +148,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_en
   "messages": []  
 }  
 ```  
-Explain Code  
 Note the `subdomain` value returned by the API. You will use this to create the Access application.
 3. Use [Add An Access Application](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/) to associate the proxy endpoint with Access policies:  
 Required API token permissions  
@@ -173,7 +170,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
     ]  
   }'  
 ```  
-Explain Code  
 Replace `<SUBDOMAIN>` with the subdomain from step 2 and `<ACCESS_POLICY_ID>` with the ID of an existing [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
 Source IP endpoint
@@ -195,7 +191,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_en
     ]  
   }'  
 ```  
-Explain Code  
 Replace `<PUBLIC_IP>` with the source IP address of your device in CIDR notation. For example:  
    * **IPv4**: `192.0.2.0/8`  
    * **IPv6**: `2001:0db8:0000:0000:0000:1234:5678:0000/32`  
@@ -217,7 +212,6 @@ Gateway limits the prefix length of source networks for proxy endpoints to `/8` 
   "messages": []  
 }  
 ```  
-Explain Code  
 Note the `subdomain` value returned by the API. Your Cloudflare proxy server domain is of the form:  
 ```  
 <SUBDOMAIN>.proxy.cloudflare-gateway.com  
@@ -232,7 +226,7 @@ Tip
 
 For detailed instructions and examples for creating a PAC file, refer to [PAC file best practices](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices/).
 
-### Create a hosted PAC file Beta
+### Create a hosted PAC file
 
 When you create a PAC file in Cloudflare One, Cloudflare will host it in a publicly accessible Worker. Hosted PAC files are automatically distributed through Cloudflare's global network.
 
@@ -356,8 +350,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_en
     "updated_at": "2014-01-01T05:20:00.12345Z"  
   }  
 }  
-```  
-Explain Code
+```
 2. Find the proxy endpoint you want to use.
 3. Copy the value of the `subdomain` key.
 
@@ -450,11 +443,7 @@ Each user who authenticates through an authorization proxy endpoint occupies a [
 
 ### Authorization endpoint limitations
 
-When using [authorization endpoints](#authorization-endpoint), be aware of the following limitations.
-
-#### Domain bypassing and certificate pinning
-
-You must bypass domains you do not intend to inspect with your PAC file. Gateway will still apply [Do Not Inspect (DNI) policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) when using authorization endpoints, but this will not bypass certificate pinning errors.
+When using [authorization endpoints](#authorization-endpoint), be aware of the following limitations. For configuration guidance on apps with certificate pinning, refer to [PAC file best practices](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices/#apps-with-certificate-pinning).
 
 #### Plaintext HTTP traffic
 
@@ -462,7 +451,7 @@ Authorization endpoints do not support plaintext HTTP traffic unless the traffic
 
 #### Browser Isolation
 
-Gateway [HTTP Isolate policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#isolate) are not currently supported with authorization endpoints during the beta period.
+Gateway [HTTP Isolate policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#isolate) are not supported with authorization endpoints.
 
 #### Referer header traffic
 

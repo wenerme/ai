@@ -28,8 +28,8 @@ Cloudflare uses anycast to route traffic. Anycast is a network addressing and ro
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-6427)
-* [ API ](#tab-panel-6428)
+* [ Dashboard ](#tab-panel-6425)
+* [ API ](#tab-panel-6426)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -104,8 +104,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -182,12 +180,10 @@ Explain Code
 
 ```
 
-Explain Code
-
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-6429)
-* [ API ](#tab-panel-6430)
+* [ Dashboard ](#tab-panel-6427)
+* [ API ](#tab-panel-6428)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -253,8 +249,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 
 ```
-
-Explain Code
 
 ```
 
@@ -329,12 +323,10 @@ Explain Code
 
 ```
 
-Explain Code
-
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-6425)
-* [ API ](#tab-panel-6426)
+* [ Dashboard ](#tab-panel-6423)
+* [ API ](#tab-panel-6424)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -439,8 +431,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 
 ```
-
-Explain Code
 
 ## Configure BGP routes
 

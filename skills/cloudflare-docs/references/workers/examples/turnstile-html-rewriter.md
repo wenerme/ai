@@ -20,10 +20,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Inject [Turnstile](https://developers.cloudflare.com/turnstile/) implicitly into HTML elements using the HTMLRewriter runtime API.
 
-* [  JavaScript ](#tab-panel-8844)
-* [  TypeScript ](#tab-panel-8845)
-* [  Hono ](#tab-panel-8846)
-* [  Python ](#tab-panel-8847)
+* [  JavaScript ](#tab-panel-8882)
+* [  TypeScript ](#tab-panel-8883)
+* [  Hono ](#tab-panel-8884)
+* [  Python ](#tab-panel-8885)
 
 JavaScript
 
@@ -98,8 +98,6 @@ export default {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -173,8 +171,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -382,8 +378,6 @@ export default app;
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -445,8 +439,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 Note
 
@@ -588,8 +580,6 @@ export default {
 
 
 ```
-
-Explain Code
 
 Prevent potential errors when accessing request.body
 

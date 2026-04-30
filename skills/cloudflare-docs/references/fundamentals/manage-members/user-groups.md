@@ -37,8 +37,8 @@ Cloudflare is actively working on improving this experience to make inherited an
 
 With your Group created, you can now add a [Permission Policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/) to your Group.
 
-* [ Dashboard ](#tab-panel-6027)
-* [ API ](#tab-panel-6028)
+* [ Dashboard ](#tab-panel-6025)
+* [ API ](#tab-panel-6026)
 
 1. In the **Groups** tab under **Permission policies**, select **Add a Policy**.
 2. Specify the scope and permissions you want applied to the members of the group.
@@ -87,8 +87,6 @@ PAYLOAD
 
 ```
 
-Explain Code
-
 **Reset a policy to an empty state**
 
 If you made a mistake while creating the group policy or need to reset the policy to an empty state, send another PUT request to the group API with an empty policy array to overwrite with your new policy.
@@ -128,8 +126,8 @@ To set up a user group with SCIM, refer to the [Provisioning with SCIM guide](ht
 
 After a user group is created either manually in Cloudflare dashboard or through SCIM integration the final step is to attach permissions to it.
 
-* [ Dashboard ](#tab-panel-6029)
-* [ API ](#tab-panel-6030)
+* [ Dashboard ](#tab-panel-6027)
+* [ API ](#tab-panel-6028)
 
 1. Go to **Manage members** \> **Members** \> **User groups**.
 2. Select the user group you want to attach permissions to.
@@ -291,8 +289,6 @@ Example response
 
 ```
 
-Explain Code
-
 **2\. Make a query against the resource ID**
 
 Locate the tag of the group you pushed from the IdP and use it to make a direct query against its resource ID:
@@ -396,8 +392,6 @@ Example response
 
 ```
 
-Explain Code
-
 Note
 
 These permission groups are from our staging environment and tags will not function in your production deployment.
@@ -465,8 +459,6 @@ Example response
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-members/user-groups/","name":"User Groups"}}]}

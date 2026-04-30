@@ -106,8 +106,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
-Explain Code
-
 The policy's schedule will appear in the Cloudflare dashboard under **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS** when you select the policy.
 
 ### How Gateway determines time zone
@@ -165,8 +163,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
-Explain Code
-
 Refer to [this table ↗](https://en.wikipedia.org/wiki/List%5Fof%5Ftz%5Fdatabase%5Ftime%5Fzones#List) for a list of all time zone identifiers.
 
 #### Example: User's time zone
@@ -205,8 +201,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
-
-Explain Code
 
 Note
 

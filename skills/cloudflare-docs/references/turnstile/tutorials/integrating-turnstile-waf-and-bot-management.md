@@ -107,8 +107,6 @@ Add the Turnstile widget to your existing login form:
 
 ```
 
-Explain Code
-
 Replace `<YOUR-SITE-KEY>` with your actual Turnstile site key.
 
 ## Handle the login request
@@ -235,8 +233,6 @@ async function checkCredentials(
 
 
 ```
-
-Explain Code
 
 This setup ensures that the Turnstile token is validated on the server-side before proceeding with the login process, adding an extra layer of security based on client-side signals.
 

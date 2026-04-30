@@ -99,8 +99,6 @@ JWT content
 
 ```
 
-Explain Code
-
 Cloudflare exposes a specific [endpoint](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#%5Ftop) to allow anyone to validate and expand a Cloudflare signed JWT.
 
 Cloudflare's Workers are a great candidate for interacting with incoming JSON Web Tokens (JWTs), enabling additional processing directly within the serverless platform without introducing any added latency.
@@ -251,8 +249,6 @@ Expanded JWT
 
 
 ```
-
-Explain Code
 
 Using the details in the JWT, you can use a Worker to extract the details of the device posture and then reinsert them into HTTP headers which the application uses for its own authorization logic. Below is a guided tutorial explaining how this request modification can be performed with Cloudflare Developer platform.
 

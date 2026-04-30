@@ -79,7 +79,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizat
     "mfa_required_for_all_apps": false  
   }'  
 ```  
-Explain Code  
 Set `allowed_authenticators` to an array containing one or more of:  
    * `totp` — Authenticator application (time-based one-time passwords).  
    * `biometrics` — Biometrics (Touch ID, Face ID, Windows Hello).  
@@ -158,8 +157,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
 
 ```
 
-Explain Code
-
 The response contains an `id` (UUID) for the list. Use this ID when you assign the list to your organization's MFA configuration.
 
 Tip
@@ -213,7 +210,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizat
     }  
   }'  
 ```  
-Explain Code  
 To remove the restriction, set `required_aaguids` to `null`.
 
 Note
@@ -284,8 +280,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizat
         "amr_session_duration": "1h"  
     }  
   }'  
-```  
-Explain Code
+```
 
 ### When AMR matching is skipped
 
@@ -347,8 +342,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizat
         "allowed_authenticators": []  
     }  
   }'  
-```  
-Explain Code
+```
 
 ## Enroll authenticators
 

@@ -20,8 +20,8 @@ Review the following environments flow:
 
 1. Create a Worker, named `my-worker` for example.
 2. Create an environment, for example `dev`, in the Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), by adding a `[env.<ENV_NAME>]` section.  
-   * [  wrangler.jsonc ](#tab-panel-9951)  
-   * [  wrangler.toml ](#tab-panel-9952)  
+   * [  wrangler.jsonc ](#tab-panel-9989)  
+   * [  wrangler.toml ](#tab-panel-9990)  
 JSONC  
 ```  
 {  
@@ -40,8 +40,8 @@ name = "my-worker"
 "<ENV_NAME>" = { }  
 ```
 3. You can configure the `dev` environment with different values to the top-level environment. Refer [here](https://developers.cloudflare.com/workers/wrangler/configuration/#environments) for how different options are inherited - or not inherited - between environments. For example, to set a different route for a Worker in the `dev` environment:  
-   * [  wrangler.jsonc ](#tab-panel-9953)  
-   * [  wrangler.toml ](#tab-panel-9954)  
+   * [  wrangler.jsonc ](#tab-panel-9991)  
+   * [  wrangler.toml ](#tab-panel-9992)  
 JSONC  
 ```  
 {  
@@ -55,7 +55,6 @@ JSONC
   },  
 }  
 ```  
-Explain Code  
 TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
@@ -77,8 +76,8 @@ For example, [bindings](https://developers.cloudflare.com/workers/runtime-apis/b
 
 Review the following example Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9961)
-* [  wrangler.toml ](#tab-panel-9962)
+* [  wrangler.jsonc ](#tab-panel-9999)
+* [  wrangler.toml ](#tab-panel-10000)
 
 JSONC
 
@@ -139,8 +138,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -176,14 +173,12 @@ id = "<KV_NAMESPACE_ID_PRODUCTION>"
 
 ```
 
-Explain Code
-
 ### Service bindings
 
 To use a [service binding](https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings) that targets a Worker in a specific environment, you need to append the environment name to the target Worker name in the `service` field. This should be in the format `<worker-name>-<environment-name>`. In the example below, we have two Workers, both with a `staging` environment. `worker-b` has a service binding to `worker-a`. Note how the `service` field in the `staging` environment points to `worker-a-staging`, whereas the top-level service binding points to `worker-a`.
 
-* [  wrangler.jsonc ](#tab-panel-9955)
-* [  wrangler.toml ](#tab-panel-9956)
+* [  wrangler.jsonc ](#tab-panel-9993)
+* [  wrangler.toml ](#tab-panel-9994)
 
 JSONC
 
@@ -220,8 +215,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -243,8 +236,8 @@ FOO = "<staging-var>"
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-9959)
-* [  wrangler.toml ](#tab-panel-9960)
+* [  wrangler.jsonc ](#tab-panel-9997)
+* [  wrangler.toml ](#tab-panel-9998)
 
 JSONC
 
@@ -287,8 +280,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -313,8 +304,6 @@ service = "worker-a-staging"
 
 
 ```
-
-Explain Code
 
 ### Secrets for production
 
@@ -379,8 +368,8 @@ It is possible to control how `.env` files are loaded in local development by se
 
 The following Wrangler file adds two environments, `[env.staging]` and `[env.production]`, to the Wrangler file. If you are deploying to a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or [route](https://developers.cloudflare.com/workers/configuration/routing/routes/), you must provide a [route or routes key](https://developers.cloudflare.com/workers/wrangler/configuration/) for each environment.
 
-* [  wrangler.jsonc ](#tab-panel-9963)
-* [  wrangler.toml ](#tab-panel-9964)
+* [  wrangler.jsonc ](#tab-panel-10001)
+* [  wrangler.toml ](#tab-panel-10002)
 
 JSONC
 
@@ -433,8 +422,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -472,8 +459,6 @@ routes = [ "example.com/foo/*", "example.com/bar/*" ]
 
 
 ```
-
-Explain Code
 
 You can pass the name of the environment via the `--env` flag to run commands in a specific environment.
 
@@ -572,8 +557,8 @@ export default {
 
 To deploy your code to your `*.workers.dev` subdomain, include `workers_dev = true` in the desired environment. Your Wrangler file may look like this:
 
-* [  wrangler.jsonc ](#tab-panel-9957)
-* [  wrangler.toml ](#tab-panel-9958)
+* [  wrangler.jsonc ](#tab-panel-9995)
+* [  wrangler.toml ](#tab-panel-9996)
 
 JSONC
 
@@ -601,8 +586,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 

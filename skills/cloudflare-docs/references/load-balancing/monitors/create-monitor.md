@@ -22,8 +22,8 @@ For more details about monitors, refer to [Monitors](https://developers.cloudfla
 
 ## Create a monitor
 
-* [ Dashboard ](#tab-panel-6705)
-* [ API ](#tab-panel-6706)
+* [ Dashboard ](#tab-panel-6703)
+* [ API ](#tab-panel-6704)
 
 **Set up the monitor**
 
@@ -160,8 +160,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/m
 
 ```
 
-Explain Code
-
 The response contains the complete definition of the new monitor.
 
 Response
@@ -237,8 +235,6 @@ Response
 
 ```
 
-Explain Code
-
 **Prepare your servers**
 
 Make sure that your firewall or web server does not block or rate limit your configured health monitors or requests associated with [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips).
@@ -257,8 +253,8 @@ Once your monitor is created, save its `id` property. Include this value in the 
 
 ## Edit a monitor
 
-* [ Dashboard ](#tab-panel-6701)
-* [ API ](#tab-panel-6702)
+* [ Dashboard ](#tab-panel-6699)
+* [ API ](#tab-panel-6700)
 
 To edit a monitor in the dashboard:
 
@@ -276,8 +272,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 ## Delete a monitor
 
-* [ Dashboard ](#tab-panel-6703)
-* [ API ](#tab-panel-6704)
+* [ Dashboard ](#tab-panel-6701)
+* [ API ](#tab-panel-6702)
 
 To delete a monitor in the dashboard:
 

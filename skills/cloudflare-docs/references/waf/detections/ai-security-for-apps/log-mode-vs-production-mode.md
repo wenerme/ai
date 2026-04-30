@@ -63,8 +63,8 @@ In log mode:
 
 ### Enable log mode
 
-* [ Dashboard ](#tab-panel-8263)
-* [ API ](#tab-panel-8264)
+* [ Dashboard ](#tab-panel-8301)
+* [ API ](#tab-panel-8302)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -115,8 +115,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 
 ```
-
-Explain Code
 
 The ID of the AI Security Log Mode Ruleset is ...d385e336 .
 

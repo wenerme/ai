@@ -58,8 +58,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 
 ```
 
-Explain Code
-
 ## Skip a phase
 
 This example invokes the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add a rule to the existing `http_request_firewall_custom` phase entry point ruleset with ID `$RULESET_ID`. The rule will skip the `http_ratelimit` phase for requests matching the rule expression.
@@ -96,8 +94,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 
 
 ```
-
-Explain Code
 
 Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/) for the list of phases you can skip.
 
@@ -147,8 +143,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 
 ```
 
-Explain Code
-
 Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/#log-requests-matching-the-skip-rule) for more information on disabling logging for requests that match a skip rule.
 
 ## Skip security products
@@ -190,8 +184,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 
 ```
 
-Explain Code
-
 Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/#skip-products) for the list of products you can skip.
 
 ## Skip the remaining rules in the current phase
@@ -226,8 +218,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 
 
 ```
-
-Explain Code
 
 Currently, this skip option is only available at the zone level. Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/#skip-the-remaining-custom-rules-current-phase) for more details.
 

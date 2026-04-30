@@ -26,9 +26,9 @@ Note
 
 WebSocket Hibernation is unavailable for outgoing WebSocket use cases. Hibernation is only supported when the Durable Object acts as a server. For use cases where outgoing WebSockets are required, refer to [Write a WebSocket client](https://developers.cloudflare.com/workers/examples/websockets/#write-a-websocket-client).
 
-* [  JavaScript ](#tab-panel-5834)
-* [  TypeScript ](#tab-panel-5835)
-* [  Python ](#tab-panel-5836)
+* [  JavaScript ](#tab-panel-5832)
+* [  TypeScript ](#tab-panel-5833)
+* [  Python ](#tab-panel-5834)
 
 JavaScript
 
@@ -292,8 +292,6 @@ export class WebSocketHibernationServer extends DurableObject {
 
 ```
 
-Explain Code
-
 TypeScript
 
 ```
@@ -540,8 +538,6 @@ export class WebSocketHibernationServer extends DurableObject {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -750,12 +746,10 @@ class WebSocketHibernationServer(DurableObject):
 
 ```
 
-Explain Code
-
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-5832)
-* [  wrangler.toml ](#tab-panel-5833)
+* [  wrangler.jsonc ](#tab-panel-5830)
+* [  wrangler.toml ](#tab-panel-5831)
 
 JSONC
 
@@ -806,8 +800,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -834,8 +826,6 @@ new_sqlite_classes = [ "WebSocketHibernationServer" ]
 
 
 ```
-
-Explain Code
 
 ### Related resources
 

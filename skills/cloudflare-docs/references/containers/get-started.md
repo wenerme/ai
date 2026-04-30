@@ -194,8 +194,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -224,8 +222,6 @@ new_sqlite_classes = [ "MyContainer" ]
 
 
 ```
-
-Explain Code
 
 Important points about this config:
 
@@ -307,8 +303,6 @@ export class MyContainer extends Container {
 
 
 ```
-
-Explain Code
 
 This defines basic configuration for the container:
 

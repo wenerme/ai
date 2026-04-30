@@ -89,8 +89,8 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the `<YOUR_BUCKET_NAME>` you used to create your bucket in [step 2](#2-create-your-bucket):
 
-* [  wrangler.jsonc ](#tab-panel-7106)
-* [  wrangler.toml ](#tab-panel-7107)
+* [  wrangler.jsonc ](#tab-panel-7104)
+* [  wrangler.toml ](#tab-panel-7105)
 
 JSONC
 
@@ -142,9 +142,9 @@ If you want the R2 operations that are performed during development to be perfor
 
 An R2 bucket is able to READ, LIST, WRITE, and DELETE objects. You can see an example of all operations below using the Module Worker syntax. Add the following snippet into your project's `index.js` file:
 
-* [  TypeScript ](#tab-panel-7101)
-* [  JavaScript ](#tab-panel-7102)
-* [  Python ](#tab-panel-7103)
+* [  TypeScript ](#tab-panel-7099)
+* [  JavaScript ](#tab-panel-7100)
+* [  Python ](#tab-panel-7101)
 
 TypeScript
 
@@ -246,8 +246,6 @@ export default class extends WorkerEntrypoint<Env> {
 
 ```
 
-Explain Code
-
 JavaScript
 
 ```
@@ -345,8 +343,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -431,8 +427,6 @@ class Default(WorkerEntrypoint):
 
 ```
 
-Explain Code
-
 Prevent potential errors when accessing request.body
 
 The body of a [Request ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request) can only be accessed once. If you previously used `request.formData()` in the same request, you may encounter a TypeError when attempting to access `request.body`.
@@ -454,8 +448,8 @@ For `PUT` and `DELETE` requests, you will make use of a new `AUTH_KEY_SECRET` en
 
 For `GET` requests, you will ensure that only a specific file can be requested. All of this custom logic occurs inside of an `authorizeRequest` function, with the `hasValidHeader` function handling the custom header logic. If all validation passes, then the operation is allowed.
 
-* [  JavaScript ](#tab-panel-7104)
-* [  Python ](#tab-panel-7105)
+* [  JavaScript ](#tab-panel-7102)
+* [  Python ](#tab-panel-7103)
 
 JavaScript
 
@@ -521,8 +515,6 @@ export default {
 
 ```
 
-Explain Code
-
 Python
 
 ```
@@ -575,8 +567,6 @@ class Default(WorkerEntrypoint):
 
 
 ```
-
-Explain Code
 
 For this to work, you need to create a secret via Wrangler:
 
@@ -684,8 +674,6 @@ curl https://your-worker.dev/cat-pic.jpg
 
 
 ```
-
-Explain Code
 
 By completing this guide, you have successfully installed Wrangler and deployed your R2 bucket to Cloudflare.
 

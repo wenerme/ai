@@ -67,8 +67,6 @@ In case you want to [create your own CA](https://developers.cloudflare.com/cloud
 
 ```
 
-Explain Code
-
 1. Create a JSON file called `ca-config.json`:
 
 ```
@@ -109,8 +107,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 1. Run the following [cfssl](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-mtls-using-cloudflare-pki) command to generate the CA certificate `ca.pem`:
 
@@ -163,8 +159,6 @@ cfssl gencert -initca ca-csr.json | cfssljson -bare ca
 
 
 ```
-
-Explain Code
 
 1. Now you can run the following command to generate the Client Certificates, which will output the files `client.pem`, `client-key.pem` and `client.csr`:
 

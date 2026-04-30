@@ -91,8 +91,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the Cloudflare Exposed Credentials Check Managed Ruleset (with ID `c2e184081120413c86c3ab7e14069605`). By default, the rule will be added at the end of the list of rules already in the ruleset.  
 Create a zone ruleset rule  
 ```  
@@ -108,7 +107,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_
     "description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"  
   }'  
 ```  
-Explain Code  
 ```  
 {  
   "result": {  
@@ -141,8 +139,7 @@ Explain Code
   "errors": [],  
   "messages": []  
 }  
-```  
-Explain Code
+```
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the Cloudflare Exposed Credentials Check Managed Ruleset (with ID `c2e184081120413c86c3ab7e14069605`) for all incoming requests in the zone.  
 Create a zone ruleset  
 ```  
@@ -165,8 +162,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
         }  
     ]  
   }'  
-```  
-Explain Code
+```
 
 ### Next steps
 

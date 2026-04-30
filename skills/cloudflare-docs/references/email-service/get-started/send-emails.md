@@ -81,8 +81,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/email/sending/s
 
 ```
 
-Explain Code
-
 A successful response includes the delivery status for each recipient:
 
 ```
@@ -110,8 +108,6 @@ A successful response includes the delivery status for each recipient:
 
 ```
 
-Explain Code
-
 For more details, see the [REST API reference](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/).
 
 ## Send your first email with Workers
@@ -131,8 +127,8 @@ pnpm create cloudflare@latest email-service-tutorial
 ```  
 When prompted, select **"Hello World" Worker** as the template.
 2. Add the email binding to your Wrangler configuration file:  
-   * [  wrangler.jsonc ](#tab-panel-5949)  
-   * [  wrangler.toml ](#tab-panel-5950)  
+   * [  wrangler.jsonc ](#tab-panel-5947)  
+   * [  wrangler.toml ](#tab-panel-5948)  
 JSONC  
 ```  
 {  
@@ -170,8 +166,7 @@ export default {
     return new Response(`Email sent: ${response.messageId}`);  
   },  
 } satisfies ExportedHandler<Env>;  
-```  
-Explain Code
+```
 4. You can use `npx wrangler dev` to develop your Worker project and send emails. This runs your code locally while connecting to Cloudflare Email Service (using [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings)).  
 Terminal window  
 ```  

@@ -90,8 +90,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \
 
 ```
 
-Explain Code
-
 To configure cipher suites per hostname, replace the first two lines by the following:
 
 Terminal window
@@ -151,8 +149,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \
 
 ```
 
-Explain Code
-
 To configure cipher suites per hostname, replace the first two lines by the following:
 
 Terminal window
@@ -207,8 +203,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \
 
 
 ```
-
-Explain Code
 
 To configure cipher suites per hostname, replace the first two lines by the following:
 
@@ -282,8 +276,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ciphers" \
 
 
 ```
-
-Explain Code
 
 To configure cipher suites per hostname, replace the first two lines by the following:
 

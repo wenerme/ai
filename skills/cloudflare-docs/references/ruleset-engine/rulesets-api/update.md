@@ -102,8 +102,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -160,8 +158,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Example - Deploy a ruleset
 
@@ -231,8 +227,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
-Explain Code
-
 ```
 
 {
@@ -297,8 +291,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 For more information on deploying rulesets, refer to [Deploy rulesets](https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/).
 
@@ -394,8 +386,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rulesets-api/","name":"Rulesets API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rulesets-api/update/","name":"Update or deploy a ruleset"}}]}

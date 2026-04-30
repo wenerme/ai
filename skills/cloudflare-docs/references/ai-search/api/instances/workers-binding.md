@@ -55,8 +55,6 @@ JSONC
 
 ```
 
-Explain Code
-
 TOML
 
 ```
@@ -112,8 +110,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 TOML
 
@@ -674,8 +670,6 @@ JSONC
 
 
 ```
-
-Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/instances/","name":"Instances"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/instances/workers-binding/","name":"Workers binding"}}]}

@@ -72,8 +72,6 @@ A sample Network Error Report payload appears as follows:
 
 ```
 
-Explain Code
-
 ## Privacy
 
 Cloudflare uses geolocation lookups to extract the following information from every client IP in a NEL report:

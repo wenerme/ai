@@ -59,8 +59,6 @@ Define protected routes in `wrangler.jsonc`:
 
 ```
 
-Explain Code
-
 Note
 
 `base-sepolia` is a test network. Change to `base` for production.
@@ -161,8 +159,6 @@ export default app;
 
 
 ```
-
-Explain Code
 
 Refer to the [x402 Workers example ↗](https://github.com/cloudflare/agents/tree/main/examples/x402) for a complete implementation.
 
