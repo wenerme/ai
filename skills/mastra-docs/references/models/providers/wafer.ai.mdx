@@ -1,11 +1,11 @@
 ---
 title: "Wafer | Models"
-description: "Use Wafer models with Mastra. 2 models available."
+description: "Use Wafer models with Mastra. 3 models available."
 ---
 
 # [Wafer logo]Wafer
 
-Access 2 Wafer models through Mastra's model router. Authentication is handled automatically using the `WAFER_API_KEY` environment variable.
+Access 3 Wafer models through Mastra's model router. Authentication is handled automatically using the `WAFER_API_KEY` environment variable.
 
 Learn more in the [Wafer documentation](https://docs.wafer.ai/wafer-pass).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "wafer.ai/GLM-5.1"
+  model: "wafer.ai/DeepSeek-V4-Pro"
 });
 
 // Generate a response
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "wafer.ai/DeepSeek-V4-Pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": null,
+    "outputCost": null
+  },
   {
     "model": "wafer.ai/GLM-5.1",
     "imageInput": false,
@@ -76,7 +88,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://pass.wafer.ai/v1",
-    id: "wafer.ai/GLM-5.1",
+    id: "wafer.ai/DeepSeek-V4-Pro",
     apiKey: process.env.WAFER_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -95,7 +107,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "wafer.ai/Qwen3.5-397B-A17B"
-      : "wafer.ai/GLM-5.1";
+      : "wafer.ai/DeepSeek-V4-Pro";
   }
 });
 ```

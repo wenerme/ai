@@ -3,6 +3,10 @@ title: "开始 ComfyUI 的 AI 绘图之旅"
 description: "本部分教程将会带你完成首次 ComfyUI 的图片生成，了解并熟悉 ComfyUI 中的一些界面基础操作，如工作流加载、模型安装、图片生成等"
 ---
 
+本部分文档仅针对**本地用户**，即在自己设备上安装并运行 ComfyUI 的用户。如果你不想进行本地安装，可以直接使用我们的官方云服务。
+
+  无需安装，直接在云端运行 ComfyUI。使用 Google 账号登录，每位用户**每月可获得 400 积分**。
+
 本篇的主要目的是带你初步了解 ComfyUI 熟悉 ComfyUI 的一些基础操作，并引导你首次的图片生成
 
 1. 加载示例工作流
@@ -11,7 +15,6 @@ description: "本部分教程将会带你完成首次 ComfyUI 的图片生成，
 2. 指导你完成模型
     - 自动安装模型
     - 手动安装模型
-    - 使用 **ComfyUI Manager** 的模型管理功能安装模型
 3. 进行一次文本到图片的生成
 
 ## 关于文生图的说明
@@ -44,9 +47,6 @@ description: "本部分教程将会带你完成首次 ComfyUI 的图片生成，
   [加载工作流]
 
   4. 选择默认的第一个工作流 **Image Generation** 以加载图标
-
-  或者你也可以从`workflow`菜单中选择**Browse workflow templates** 浏览工作流模板
-  [ComfyUI 菜单 - 浏览工作流模板]
   
   
   
@@ -74,13 +74,38 @@ description: "本部分教程将会带你完成首次 ComfyUI 的图片生成，
 
 在你完成第二步，工作流的加载后，如果你的电脑上没有安装[v1-5-pruned-emaonly-fp16.safetensors](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/blob/main/v1-5-pruned-emaonly-fp16.safetensors) 这个模型文件时，一般会出现下图的提示
 
-[模型缺失]
+首先，ComfyUI 会提示有模型缺失：
+
+[模型缺失提示]
+
+点击这个提示后，你可以看到具体缺失的模型以及对应的下载链接：
+
+[缺失模型详情]
 
 你可以直接选择点击 `Download` 按钮，让 ComfyUI 自动完成对应的模型的下载，但由于在有些地区不能够顺利访问对应模型的下载源，所以在这个步骤中，我将说明几种不同的模型安装方法。
 
-无论使用哪种方法，模型都会被保存到 `<你的 ComfyUI 安装位置>/ComfyUI/models/` 文件夹下，你可以在你的电脑上尝试找到这个文件夹位置，你可以看到许多文件夹比如 `checkpoints`、`embeddings`、`vae`、`lora`、`upscale_model` 等，这些都是不同的模型保存的文件夹，通常以文件夹名称区分，ComfyUI 在启动时会检测这些文件夹下的模型文件，以及`extra_model_paths.yaml` 文件中配置的文件路径
+无论使用哪种方法，模型都会被保存到 `<你的 ComfyUI 安装位置>/ComfyUI/models/` 文件夹下。你可以在电脑上找到这个文件夹位置，并留意以下几点：
 
-[ComfyUI 模型文件夹]
+- 你会看到很多子文件夹（按用途分类），例如：`checkpoints`、`embeddings`、`vae`、`lora`、`upscale_model` 等
+- ComfyUI 会在启动时检测这些文件夹下的模型文件
+- 如果你在 `extra_model_paths.yaml` 里配置了额外的模型路径，ComfyUI 也会在启动时一并检测
+
+  
+  [桌面版模型文件夹位置]
+
+  **ComfyUI 桌面版**的模型安装位置可能与其它版本不同。按下面步骤打开模型文件夹：
+
+  1. 点击左上角 **应用图标（Logo）**
+  2. 打开 **帮助** → **打开文件夹**
+  3. 选择 **打开模型文件夹**
+
+  下面截图可能显示为英文菜单；如果你使用的是中文界面，请按上面的 **帮助** → **打开文件夹** → **打开模型文件夹** 操作即可。
+  
+  
+  便携版的模型文件夹一般在：
+
+  `ComfyUI_windows_portable/ComfyUI/models/`
+  
 
 被检测到的不同的文件夹里的模型将可以在 ComfyUI 的不同 **模型加载节点** 里使用，下面让我们开始了解不同模型的安装方式：
 
@@ -94,7 +119,11 @@ description: "本部分教程将会带你完成首次 ComfyUI 的图片生成，
 
     [模型下载进度]
 
-    如果一切顺利，模型应该可以自动下载到本地，如果长时间未下载成功，请尝试其它安装方法
+    
+      自动下载通常会从 **Hugging Face** 拉取模型，请确保你的网络可以正常访问 Hugging Face。
+
+      如果出现**长时间没有开始下载**或**进度一直不动**的情况，请从缺失模型的详情里**复制下载链接**，或直接使用本文下方的 **手动安装模型** 流程完成安装。
+    
 
     
     
@@ -103,30 +132,6 @@ description: "本部分教程将会带你完成首次 ComfyUI 的图片生成，
     
     
   
-
-  
-  
-  [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager) 是由 [ltdrdata](https://github.com/ltdrdata) 开发的用于扩展和管理自定义节点、模型及插件的工具，目前 ComfyUI 的安装过程会自动完成 ComfyUI Manager 的安装，下面的步骤将会引导你使用 ComfyUI Manager 安装模型
-
-  
-    
-      [ComfyUI Manager 安装]
-
-      如图，点击对应的 `Manager` 按钮，即可打开 ComfyUI Manager 的界面
-    
-    
-      [ComfyUI Manager 模型管理]
-
-      如图，点击对应的 `Model Manager` 按钮，即可打开模型管理界面
-    
-    
-      [ComfyUI Manager 模型下载]
-      1. 请在搜索框输入`v1-5-pruned-emaonly.ckpt`
-      2. 在搜索结果里，点击对应的 `install` 按钮，即可下载模型
-      
-      不过由于目前各类模型的更新迭代速度较快，你不一定可以在这里找到所有的模型，另外在某些地区因为无法正常访问 ComfyUI Manager 的模型下载源，所以会存在下载不成功的情况，如果长时间无法下载成功，请尝试手动安装
-    
-   
 
   
   
@@ -151,21 +156,18 @@ description: "本部分教程将会带你完成首次 ComfyUI 的图片生成，
         [ComfyUI 便携版模型保存位置]
       
     
-      请参考 桌面版和便携版部分的说明查找 **ComfyUI/models/checkpoints**文件夹位置
-      
-    
     完成对应保存操作后，请刷新或者重启 ComfyUI 保证对应模型可以被 ComfyUI 检测
 
   
 
 ### 4. 加载模型，并进行第一次图片生成
 
-在完成了对应的绘图模型安装后，请参考下图步骤加载对应的模型，并进行第一次图片的生成
+在你完成模型的安装或更新后，可以按键盘上的 **`R`** 键刷新对象定义，从而更新节点里的模型列表（例如 **Load Checkpoint** 下拉框中的可选模型）。然后请对照下图完成加载模型并进行第一次生成：
 
-[图片生成]
+[运行工作流]
 请对应图片序号，完成下面操作
 1. 请在 **Load Checkpoint** 节点使用箭头或者点击文本区域确保 **v1-5-pruned-emaonly-fp16.safetensors** 被选中，且左右切换箭头不会出现 **null** 的文本
-2. 点击 `Queue` 按钮，或者使用快捷键 `Ctrl + enter(回车)` 来执行图片生成
+2. 点击 `Run` 按钮，或者使用快捷键 `Ctrl + enter(回车)` 来执行图片生成
 
 等待对应流程执行完成后，你应该可以在界面的 **保存图像(Save Image)** 节点中看到对应的图片结果，可以在上面右键保存到本地
 

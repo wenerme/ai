@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Dropbox
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Dropbox ↗](https://help.dropbox.com/security/sso-admin) as a SAML application in Cloudflare One.
 

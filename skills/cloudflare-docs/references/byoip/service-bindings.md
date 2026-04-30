@@ -16,17 +16,19 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # IP address service bindings
 
-In IP address management, service bindings map the traffic destined for a given IP address to the Cloudflare service that it should be routed through.
+In the context of BYOIP, service bindings map traffic destined for IP addresses to the Cloudflare service it should be routed through - such as Magic Transit, CDN, or Spectrum. A default binding covering the entire prefix is required when you first [onboard](https://developers.cloudflare.com/byoip/get-started/#2-create-service-bindings), and additional bindings can be created at any time to route specific IP addresses or CIDR ranges to a different service.
 
-Service binding operations are currently only available via API. You can find all endpoints and their specifications in the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/). For detailed guidance, refer to the sections and tutorials linked below.
+For example, you could set Magic Transit as the default service for Layer 3 DDoS protection across the entire prefix, while directing specific IPs to the CDN for Layer 7 processing. Refer to [Scope](#scope) for the available combinations.
 
 Note
 
-Service bindings take four to six hours to propagate across Cloudflare's global network after being created or deleted. Services for the IP addresses in scope are likely disrupted during this window.
+**API-only**: Service binding operations are currently only available via API. You can find all endpoints and their specifications in the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/). For detailed guidance, refer to the sections and tutorials linked below.
+
+**Time to propagate**: Service bindings take four to six hours to propagate across Cloudflare's global network after being created or deleted. Services for the IP addresses in scope are likely disrupted during this window.
 
 ## Scope
 
-Customers using BYOIP with Magic Transit, [CDN services](https://developers.cloudflare.com/cache/), or [Spectrum](https://developers.cloudflare.com/spectrum/) can leverage the [service binding API endpoints](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/) to selectively route traffic through the CDN \[^1\] or Spectrum \[^2\] pipelines on a per-IP address basis. This means:
+Customers using BYOIP with Magic Transit, [CDN services](https://developers.cloudflare.com/cache/), or [Spectrum](https://developers.cloudflare.com/spectrum/) can leverage the [service binding API endpoints](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/) to selectively route traffic through the CDN [1](#user-content-fn-1) or Spectrum [2](#user-content-fn-2) pipelines on a per-IP address basis. This means:
 
 * You can upgrade individual IPs within a Magic Transit prefix to either a CDN IP or a Spectrum IP. For example, if you have a Magic Transit prefix `203.0.113.0/24`, you can upgrade `203.0.113.1` to CDN and `203.0.113.2` to Spectrum.
 * You can upgrade individual IPs within a CDN prefix to a Spectrum IP. For example, if you have a CDN prefix `203.0.113.0/24`, you can upgrade `203.0.113.1` to Spectrum.
@@ -75,6 +77,11 @@ When adding a service binding for a given IP address, it must be either a CDN se
 
 * [ Use BYOIP with Magic Transit and CDN ](https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/)
 * [ Use BYOIP with CDN and Spectrum ](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/)
+
+## Footnotes
+
+1. Layer 7 HTTP-based [↩](#user-content-fnref-1)
+2. Layer 4 or Layer 7 HTTP with custom ports [↩](#user-content-fnref-2)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/service-bindings/","name":"IP address service bindings"}}]}

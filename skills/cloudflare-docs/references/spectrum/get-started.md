@@ -96,8 +96,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
 
 ```
 
-Explain Code
-
 **Example data:**
 
 ```
@@ -154,8 +152,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Create a Spectrum application using a CNAME record
 
@@ -226,8 +222,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
 
 ```
 
-Explain Code
-
 **Example data:**
 
 ```
@@ -264,8 +258,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## Create a Spectrum application using a load balancer
 
@@ -341,8 +333,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
 
 ```
 
-Explain Code
-
 **Example data:**
 
 ```
@@ -379,8 +369,6 @@ Explain Code
 
 
 ```
-
-Explain Code
 
 ## View traffic
 

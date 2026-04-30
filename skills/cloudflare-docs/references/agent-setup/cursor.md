@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.  
 ```
 
 ## Cloudflare platform access

@@ -114,8 +114,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
 
 ```
 
-Explain Code
-
 ### Block a country
 
 The example below blocks all packets with a source or destination IP address coming from Brazil by using its 2-letter country code in [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) format.
@@ -158,8 +156,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
 
 
 ```
-
-Explain Code
 
 ### Use an IP list
 
@@ -208,8 +204,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
 
 
 ```
-
-Explain Code
 
 ## Next steps
 

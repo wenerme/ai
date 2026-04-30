@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Enhancing security posture with SentinelOne and Cloudflare One
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 ## Introduction
 

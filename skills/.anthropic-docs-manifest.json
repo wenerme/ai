@@ -50,10 +50,10 @@
   "anthropic-docs/build-with-claude/extended-thinking.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
     "skill": "anthropic-docs",
-    "etag": "W/\"2257a-19dd1f04248\"",
-    "lastModified": "Tue, 28 Apr 2026 02:34:37 GMT",
-    "size": 140636,
-    "updatedAt": "2026-04-28T10:39:14.421Z"
+    "etag": "W/\"22644-19ddc97a920\"",
+    "lastModified": "Thu, 30 Apr 2026 04:13:40 GMT",
+    "size": 140838,
+    "updatedAt": "2026-04-30T10:34:27.190Z"
   },
   "anthropic-docs/build-with-claude/adaptive-thinking.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking",
@@ -114,10 +114,10 @@
   "anthropic-docs/build-with-claude/batch-processing.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/batch-processing",
     "skill": "anthropic-docs",
-    "etag": "W/\"11e5d-19d98b47300\"",
-    "lastModified": "Thu, 16 Apr 2026 23:50:56 GMT",
-    "size": 73309,
-    "updatedAt": "2026-04-17T00:18:10.947Z"
+    "etag": "W/\"11f9a-19ddc97a920\"",
+    "lastModified": "Thu, 30 Apr 2026 04:13:40 GMT",
+    "size": 73626,
+    "updatedAt": "2026-04-30T10:34:29.602Z"
   },
   "anthropic-docs/build-with-claude/search-results.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/search-results",
@@ -378,10 +378,10 @@
   "anthropic-docs/build-with-claude/prompt-caching.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
     "skill": "anthropic-docs",
-    "etag": "W/\"1ce82-19dd1f04248\"",
-    "lastModified": "Tue, 28 Apr 2026 02:34:37 GMT",
-    "size": 118338,
-    "updatedAt": "2026-04-28T10:39:26.913Z"
+    "etag": "W/\"1fa2d-19ddc97a920\"",
+    "lastModified": "Thu, 30 Apr 2026 04:13:40 GMT",
+    "size": 129517,
+    "updatedAt": "2026-04-30T10:34:38.955Z"
   },
   "anthropic-docs/build-with-claude/token-counting.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/token-counting",

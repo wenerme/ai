@@ -12,9 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Prefix delegations
 
-BYOIP supports prefix delegations, which occur when a prefix owner’s account (Account A) allows another account (Account B) to use all or part of their prefix. The original prefix is still managed by the original account, but a delegation allows another account to use the delegated IP(s) on various services within that account.
-
-Refer to [service bindings](https://developers.cloudflare.com/byoip/service-bindings/) for more information on the services an IP can be bound to.
+Prefix delegations allow a prefix owner (Account A) to grant another Cloudflare account (Account B) permission to use all or part of their BYOIP prefix. The original prefix remains managed by Account A, but Account B can use the delegated IPs with CDN services (including Cloudflare for SaaS) or Spectrum. Refer to [service bindings](https://developers.cloudflare.com/byoip/service-bindings/) for more information on the services an IP can be bound to.
 
 ## CDN
 

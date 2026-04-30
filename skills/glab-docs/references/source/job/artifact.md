@@ -12,8 +12,11 @@ Download all artifacts from the most recent pipeline.
 Downloads all artifacts from the most recent successful pipeline.
 
 `<refName>` is a branch name, tag, or merge request reference. For a branch
-or tag, use the name directly. For a merge request pipeline, use the ref
-`refs/merge-requests/<iid>/head`, where `<iid>` is the merge request IID.
+or tag, use the name directly. For a merge request pipeline, replace `<iid>`
+with the merge request IID and use the format that matches the pipeline type:
+
+- `refs/merge-requests/<iid>/head`: Pipeline on the latest commit of the source branch.
+- `refs/merge-requests/<iid>/merge`: Pipeline on the merged result (pipelines for merged results).
 
 ```plaintext
 glab job artifact <refName> <jobName> [flags]
@@ -32,6 +35,7 @@ glab job artifact main build
 glab job artifact main deploy --path="artifacts/"
 glab job artifact main deploy --list-paths
 glab job artifact refs/merge-requests/123/head build
+glab job artifact refs/merge-requests/123/merge build
 ```
 
 ## Options

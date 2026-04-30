@@ -3,6 +3,10 @@ title: "Getting Started with AI Image Generation"
 description: "This tutorial will guide you through your first image generation with ComfyUI, covering basic interface operations like workflow loading, model installation, and image generation"
 ---
 
+This guide is intended for **local users** running ComfyUI on their own device. If you'd prefer not to install anything locally, try our official cloud service instead.
+
+  Run ComfyUI online with zero setup. Sign in with Google to get **400 free credits every month**.
+
 This guide aims to help you understand ComfyUI's basic operations and complete your first image generation. We'll cover:
 
 1. Loading example workflows
@@ -11,7 +15,6 @@ This guide aims to help you understand ComfyUI's basic operations and complete y
 2. Model installation guidance
     - Automatic model installation
     - Manual model installation
-    - Using ComfyUI Manager for model installation
 3. Completing your first text-to-image generation
 
 ## About Text-to-Image
@@ -43,9 +46,6 @@ ComfyUI usually loads the default text-to-image workflow automatically when laun
   [Load Workflow]
 
   4. Select the first default workflow **Image Generation** to load it
-
-  Alternatively, you can select **Browse workflow templates** from the workflow menu
-  [ComfyUI Menu - Browse Workflow Templates]
   
 
   
@@ -73,11 +73,32 @@ ComfyUI usually loads the default text-to-image workflow automatically when laun
 
 Most ComfyUI installations don't include base models by default. After loading the workflow, if you don't have the [v1-5-pruned-emaonly-fp16.safetensors](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/blob/main/v1-5-pruned-emaonly-fp16.safetensors) model installed, you'll see this prompt:
 
-[Missing Models]
+First, ComfyUI will warn you that some models are missing:
+
+[Missing models warning]
+
+Click the warning to see which model is missing and the download link:
+
+[Missing model details]
 
 All models are stored in `<your ComfyUI installation>/ComfyUI/models/` with subfolders like `checkpoints`, `embeddings`, `vae`, `lora`, `upscale_model`, etc. ComfyUI detects models in these folders and paths configured in `extra_model_paths.yaml` at startup.
 
-[ComfyUI Models Folder]
+  
+  [Desktop models folder path]
+
+  On **ComfyUI Desktop**, the models folder location may differ from portable/other installs. Follow these steps:
+
+  1. Click the **logo** at the top-left
+  2. Open **Help** → **Open folder**
+  3. Choose **Open models folder**
+
+  If your interface is in another language, the exact menu text may differ, but the flow is the same: **Help** → **Open folder** → **Open models folder** (or the closest equivalent in your language).
+  
+  
+  For the portable version, the models folder is usually located at:
+
+  `ComfyUI_windows_portable/ComfyUI/models/`
+  
 
 You can install models through:
 
@@ -91,36 +112,17 @@ You can install models through:
 
     [Model Download Progress]
 
-    If everything goes smoothly, the model should be able to download locally. If the download fails for a long time, please try other installation methods.
+    
+      Automatic downloads typically fetch models from **Hugging Face**. Make sure your network can reliably reach Hugging Face.
+
+      If the download **does not start** or shows **no progress for a long time**, copy the model link from the missing-model details (or use the manual installation section below) and install the model manually.
+    
 
     
     
 
     The browser will execute file downloads. Please save the file to the `<your ComfyUI installation location>/ComfyUI_windows_portable/ComfyUI/models/checkpoints` directory after the download is complete.
     
-    
-  
-  
-
-  
-  ComfyUI Manager is a tool for managing custom nodes, models, and plugins.
-
-  
-    
-      [ComfyUI Manager Installation]
-      
-      Click the `Manager` button to open ComfyUI Manager
-    
-    
-      [ComfyUI Manager Model Management]
-      
-      Click `Model Manager`
-    
-    
-      [ComfyUI Manager Model Download]
-      
-      1. Search for `v1-5-pruned-emaonly.ckpt`
-      2. Click `install` on the desired model
     
   
   
@@ -150,11 +152,11 @@ You can install models through:
 
 ### 4. Load Model and Generate Your First Image
 
-After installing the model:
+After you install or update models, press **`R`** on your keyboard to refresh object definitions and update model lists in nodes (for example, the dropdown in **Load Checkpoint**). Then continue with the steps below:
 
-[Image Generation]
+[Run workflow]
 1. In the **Load Checkpoint** node, ensure **v1-5-pruned-emaonly-fp16.safetensors** is selected
-2. Click `Queue` or press `Ctrl + Enter` to generate
+2. Click `Run` or press `Ctrl + Enter` to generate
 
 The result will appear in the **Save Image** node. Right-click to save locally.
 

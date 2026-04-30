@@ -16,9 +16,9 @@ Get Cloudflare's security and performance while using your own IPs.
 
  Enterprise-only 
 
-Considering [how Cloudflare works as a reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/), for some customers it may be important to maintain this functionality while also keeping their website or application associated with their own public IP space (instead of Cloudflare's[1](#user-content-fn-1)).
+When you use Cloudflare as a [reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/), Cloudflare responds to DNS queries for proxied records with Cloudflare-owned IP addresses[1](#user-content-fn-1). For some organizations, it is important to keep their website or application associated with IP addresses they already own rather than using Cloudflare's.
 
-With Bring Your Own IP (BYOIP), Cloudflare announces your IPs in all our locations. Use your IPs with [Magic Transit](https://developers.cloudflare.com/magic-transit/), [Spectrum](https://developers.cloudflare.com/spectrum/), [CDN services](https://developers.cloudflare.com/cache/), or Gateway [DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) and [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/).
+With Bring Your Own IP (BYOIP), Cloudflare announces your IP prefixes in all our locations. Use your IPs with [Magic Transit](https://developers.cloudflare.com/magic-transit/), [Spectrum](https://developers.cloudflare.com/spectrum/), [CDN services](https://developers.cloudflare.com/cache/), or Gateway [DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) and [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/).
 
 Learn how to [get started](https://developers.cloudflare.com/byoip/get-started/).
 

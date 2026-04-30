@@ -1525,6 +1525,12 @@ components:
       properties:
         content:
           type: string
+        error:
+          type: string
+          description: The error message if the fetch failed.
+        httpStatus:
+          type: integer
+          description: The HTTP status code returned by the upstream URL fetch.
         id:
           type: string
         status:
@@ -4592,6 +4598,12 @@ components:
               $ref: '#/components/schemas/OutputWebFetchServerToolItemType'
             content:
               type: string
+            error:
+              type: string
+              description: The error message if the fetch failed.
+            httpStatus:
+              type: integer
+              description: The HTTP status code returned by the upstream URL fetch.
             id:
               type: string
             status:

@@ -66,6 +66,10 @@ By default, Cloudflare encrypts and securely distributes private keys to all Clo
 
 If you want to upload a custom certificate but retain your private key on your own infrastructure, consider using [Keyless SSL](https://developers.cloudflare.com/ssl/keyless-ssl/).
 
+### Certificate pinning
+
+Custom certificates are the only certificate type where certificate pinning can work on Cloudflare. For guidance on pinning and its risks, refer to [Certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/).
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/custom-certificates/","name":"Custom certificates"}}]}
 ```

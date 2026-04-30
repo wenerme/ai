@@ -54,6 +54,10 @@ Advanced certificates are [Domain Validated (DV)](https://developers.cloudflare.
 
 Advanced certificates do not cover multiple different domains. For multi-domain certificate (MDC), consider the [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) product. You can also find further guidance in [Leveraging Cloudflare for your SaaS applications](https://developers.cloudflare.com/reference-architecture/design-guides/leveraging-cloudflare-for-your-saas-applications/).
 
+Note
+
+Cloudflare does not support HTTP public key pinning (HPKP) for universal, advanced, or custom hostname certificates. For details and recommended alternatives, refer to [Certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/).
+
 ## Related resources
 
 * [ Manage advanced certificates ](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/)

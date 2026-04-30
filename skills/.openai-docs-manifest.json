@@ -1106,18 +1106,18 @@
   "openai-sdk-python/admin.md": {
     "url": "https://developers.openai.com/api/reference/python/resources/admin/index.md",
     "skill": "openai-sdk-python",
-    "etag": "\"3a81c476a8923906424d9cb964e62543\"",
-    "lastModified": "Wed, 29 Apr 2026 00:29:24 GMT",
-    "size": 268,
-    "updatedAt": "2026-04-29T00:29:24.220Z"
+    "etag": "W/\"5f1110cc1e49ede97ddf5af4a8a742e0\"",
+    "lastModified": "Thu, 30 Apr 2026 10:39:39 GMT",
+    "size": 49662,
+    "updatedAt": "2026-04-30T10:39:39.705Z"
   },
   "openai-sdk-python/admin/organization.md": {
     "url": "https://developers.openai.com/api/reference/python/resources/admin/subresources/organization/index.md",
     "skill": "openai-sdk-python",
-    "etag": "\"ac63a2d924d9d5109f8584c71b86797f\"",
-    "lastModified": "Wed, 29 Apr 2026 00:29:24 GMT",
-    "size": 259,
-    "updatedAt": "2026-04-29T00:29:24.518Z"
+    "etag": "W/\"8d16a88d9fb0a91a1c20762298a44a0f\"",
+    "lastModified": "Thu, 30 Apr 2026 10:39:39 GMT",
+    "size": 49653,
+    "updatedAt": "2026-04-30T10:39:40.005Z"
   },
   "openai-sdk-python/admin/organization/admin_api_keys.md": {
     "url": "https://developers.openai.com/api/reference/python/resources/admin/subresources/organization/subresources/admin_api_keys/index.md",
@@ -1162,18 +1162,18 @@
   "openai-sdk-python/admin/organization/audit_logs.md": {
     "url": "https://developers.openai.com/api/reference/python/resources/admin/subresources/organization/subresources/audit_logs/index.md",
     "skill": "openai-sdk-python",
-    "etag": "\"d947373507f20a187852ccd8f2acf942\"",
-    "lastModified": "Wed, 29 Apr 2026 00:29:26 GMT",
-    "size": 13,
-    "updatedAt": "2026-04-29T00:29:26.405Z"
+    "etag": "W/\"042ed8ffc4e11d287146d3c082b736fc\"",
+    "lastModified": "Thu, 30 Apr 2026 10:39:41 GMT",
+    "size": 49407,
+    "updatedAt": "2026-04-30T10:39:41.677Z"
   },
   "openai-sdk-python/admin/organization/audit_logs/list.md": {
     "url": "https://developers.openai.com/api/reference/python/resources/admin/subresources/organization/subresources/audit_logs/methods/list/index.md",
     "skill": "openai-sdk-python",
-    "etag": "\"24970fd934cc3ca470b787c4fe0050d0\"",
-    "lastModified": "Wed, 29 Apr 2026 00:29:26 GMT",
-    "size": 53,
-    "updatedAt": "2026-04-29T00:29:26.702Z"
+    "etag": "W/\"c02a21b56b0a3c13288a1263b3f17016\"",
+    "lastModified": "Thu, 30 Apr 2026 10:39:41 GMT",
+    "size": 30074,
+    "updatedAt": "2026-04-30T10:39:41.931Z"
   },
   "openai-sdk-python/admin/organization/certificates.md": {
     "url": "https://developers.openai.com/api/reference/python/resources/admin/subresources/organization/subresources/certificates/index.md",
@@ -6402,18 +6402,18 @@
   "openai-sdk-typescript/admin.md": {
     "url": "https://developers.openai.com/api/reference/typescript/resources/admin/index.md",
     "skill": "openai-sdk-typescript",
-    "etag": "\"3a81c476a8923906424d9cb964e62543\"",
-    "lastModified": "Wed, 29 Apr 2026 00:33:13 GMT",
-    "size": 268,
-    "updatedAt": "2026-04-29T00:33:13.809Z"
+    "etag": "W/\"9cc4a72b54e5d955a446d6940372ebd2\"",
+    "lastModified": "Thu, 30 Apr 2026 10:42:47 GMT",
+    "size": 46554,
+    "updatedAt": "2026-04-30T10:42:47.587Z"
   },
   "openai-sdk-typescript/admin/organization.md": {
     "url": "https://developers.openai.com/api/reference/typescript/resources/admin/subresources/organization/index.md",
     "skill": "openai-sdk-typescript",
-    "etag": "\"ac63a2d924d9d5109f8584c71b86797f\"",
-    "lastModified": "Wed, 29 Apr 2026 00:33:14 GMT",
-    "size": 259,
-    "updatedAt": "2026-04-29T00:33:14.141Z"
+    "etag": "W/\"d2e08d79ca7aa0fe4fcb211f1a7cb093\"",
+    "lastModified": "Thu, 30 Apr 2026 10:42:47 GMT",
+    "size": 46545,
+    "updatedAt": "2026-04-30T10:42:47.928Z"
   },
   "openai-sdk-typescript/admin/organization/admin_api_keys.md": {
     "url": "https://developers.openai.com/api/reference/typescript/resources/admin/subresources/organization/subresources/admin_api_keys/index.md",
@@ -6458,18 +6458,18 @@
   "openai-sdk-typescript/admin/organization/audit_logs.md": {
     "url": "https://developers.openai.com/api/reference/typescript/resources/admin/subresources/organization/subresources/audit_logs/index.md",
     "skill": "openai-sdk-typescript",
-    "etag": "\"d947373507f20a187852ccd8f2acf942\"",
-    "lastModified": "Wed, 29 Apr 2026 00:33:16 GMT",
-    "size": 13,
-    "updatedAt": "2026-04-29T00:33:16.044Z"
+    "etag": "W/\"47836280e10b07ebde659d3b7b3a3868\"",
+    "lastModified": "Thu, 30 Apr 2026 10:42:49 GMT",
+    "size": 46299,
+    "updatedAt": "2026-04-30T10:42:49.676Z"
   },
   "openai-sdk-typescript/admin/organization/audit_logs/list.md": {
     "url": "https://developers.openai.com/api/reference/typescript/resources/admin/subresources/organization/subresources/audit_logs/methods/list/index.md",
     "skill": "openai-sdk-typescript",
-    "etag": "\"24970fd934cc3ca470b787c4fe0050d0\"",
-    "lastModified": "Wed, 29 Apr 2026 00:33:16 GMT",
-    "size": 53,
-    "updatedAt": "2026-04-29T00:33:16.343Z"
+    "etag": "W/\"01d22bbd7bff7f97a53bdbfebf564560\"",
+    "lastModified": "Thu, 30 Apr 2026 10:42:49 GMT",
+    "size": 28620,
+    "updatedAt": "2026-04-30T10:42:49.995Z"
   },
   "openai-sdk-typescript/admin/organization/certificates.md": {
     "url": "https://developers.openai.com/api/reference/typescript/resources/admin/subresources/organization/subresources/certificates/index.md",

@@ -27,13 +27,17 @@ JSONC
 
 {
 
-  "flagship": {
+  "flagship": [
 
-    "binding": "FLAGS",
+    {
 
-    "app_id": "<APP_ID>",
+      "binding": "FLAGS",
 
-  },
+      "app_id": "<APP_ID>",
+
+    },
+
+  ],
 
 }
 
@@ -44,7 +48,7 @@ TOML
 
 ```
 
-[flagship]
+[[flagship]]
 
 binding = "FLAGS"
 
