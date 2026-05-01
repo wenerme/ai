@@ -22,7 +22,7 @@ This guide covers how to enable secure remote access to private IP addresses usi
 
 To connect your infrastructure with Cloudflare Tunnel:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
 1. In the **CIDR** tab for the tunnel, enter the IP/CIDR range that you wish to route through the tunnel (for example, `10.0.0.1` or `10.0.0.0/8`).
 2. (Optional) Under **Additional settings**, select a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) for this tunnel route. This step is only needed if the route's IP/CIDR range overlaps with another route in your account. If you do not select a virtual network, the IP route will be assigned to the `default` network.  
@@ -42,8 +42,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:  
-   * [ Exclude IPs and domains ](#tab-panel-4780)  
-   * [ Include IPs and domains ](#tab-panel-4781)  
+   * [ Exclude IPs and domains ](#tab-panel-4584)  
+   * [ Include IPs and domains ](#tab-panel-4585)  
 If you are using **Exclude** mode:  
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your private network's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.  
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your private network. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.  
@@ -65,8 +65,8 @@ By default, all devices enrolled in your Zero Trust organization can connect to 
 
 ### Enable the Gateway proxy
 
-* [ Dashboard ](#tab-panel-4778)
-* [ Terraform (v5) ](#tab-panel-4779)
+* [ Dashboard ](#tab-panel-4582)
+* [ Terraform (v5) ](#tab-panel-4583)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.

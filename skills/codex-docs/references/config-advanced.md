@@ -196,6 +196,24 @@ refresh_interval_ms = 300000
 
 The auth command receives no `stdin` and must print the token to stdout. Codex trims surrounding whitespace, treats an empty token as an error, and refreshes proactively at `refresh_interval_ms`; set `refresh_interval_ms = 0` to refresh only after an authentication retry. Don't combine `[model_providers.<id>.auth]` with `env_key`, `experimental_bearer_token`, or `requires_openai_auth`.
 
+### Amazon Bedrock provider
+
+Codex includes a built-in `amazon-bedrock` model provider. Set it directly as
+`model_provider`; unlike custom providers, this built-in provider supports only
+the nested AWS profile and region overrides.
+
+```toml
+model_provider = "amazon-bedrock"
+model = "<bedrock-model-id>"
+
+[model_providers.amazon-bedrock.aws]
+profile = "default"
+region = "eu-central-1"
+```
+
+If you omit `profile`, Codex uses the standard AWS credential chain. Set
+`region` to the supported Bedrock region that should handle requests.
+
 ## OSS mode (local providers)
 
 Codex can run against a local "open source" provider (for example, Ollama or LM Studio) when you pass `--oss`. If you pass `--oss` without specifying a provider, Codex uses `oss_provider` as the default.
@@ -284,6 +302,36 @@ policy = """
 Use your organization's automatic review policy.
 """
 ```
+
+### Named permission profiles
+
+Set `default_permissions` to reuse a sandbox profile by name. Codex includes
+the built-in profiles `:read-only`, `:workspace`, and `:danger-no-sandbox`:
+
+```toml
+default_permissions = ":workspace"
+```
+
+For custom profiles, point `default_permissions` at a name you define under
+`[permissions.<name>]`:
+
+```toml
+default_permissions = "workspace"
+
+[permissions.workspace.filesystem]
+":project_roots" = { "." = "write", "**/*.env" = "none" }
+glob_scan_max_depth = 3
+
+[permissions.workspace.network]
+enabled = true
+mode = "limited"
+
+[permissions.workspace.network.domains]
+"api.openai.com" = "allow"
+```
+
+Use built-in names with a leading colon. Custom names don't use a leading
+colon and must have matching `permissions` tables.
 
 Need the complete key list (including profile-scoped overrides and requirements constraints)? See [Configuration Reference](https://developers.openai.com/codex/config-reference) and [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration).
 

@@ -24,7 +24,7 @@ You can configure a **Private Network** application to manage access to specific
 
 To create a private network application:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications** \> **Add an application**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications** \> **Add an application**.
 2. Select **Private Network**.
 3. Name your application.
 4. For **Application type**, select _Destination IP_.

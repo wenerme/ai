@@ -52,10 +52,10 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
 ## 2\. Add a SAML identity provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-4720)
-* [ Terraform (v5) ](#tab-panel-4721)
+* [ Dashboard ](#tab-panel-4524)
+* [ Terraform (v5) ](#tab-panel-4525)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.
 3. Choose a descriptive name for your identity provider.
 4. Enter the **Single Sign on URL**, **IdP Entity ID or Issuer URL**, and **Signing certificate** obtained from your identity provider.
@@ -100,7 +100,7 @@ Your identity provider must support SCIM version 2.0.
 
 ### 1\. Enable SCIM in Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Find the IdP integration and select **Edit**.
 3. Turn on **Enable SCIM**
 4. (Optional) Configure the following settings:

@@ -20,12 +20,18 @@ Agents need memory to be useful over time. Without it, every conversation starts
 
 The [Session API](https://developers.cloudflare.com/agents/api-reference/sessions/) provides the memory layer for agents built on the Cloudflare Agents SDK. It manages two kinds of memory: **conversation history** (the messages and tool calls that make up a session) and **context memory** (persistent blocks injected into the system prompt that the agent can read, write, search, and load).
 
+Use this page when you need more than simple synced state or flat chat history. For small UI state, use [Store and sync state](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/). For basic chat persistence, `AIChatAgent` stores messages for you. For opinionated long-term memory, Think builds on Session and context blocks.
+
+Experimental
+
+The Session memory APIs currently use `agents/experimental/memory/session`. The concepts are stable, but import paths and details may change before graduation.
+
 ## Conversation history
 
 The most fundamental type of memory is the conversation itself: the messages between the user and the agent, the tool calls the agent made, and the results it received. The Session stores all of this in a tree-structured message history backed by a Session Provider, defaulting to SQLite.
 
-* [  JavaScript ](#tab-panel-3872)
-* [  TypeScript ](#tab-panel-3873)
+* [  JavaScript ](#tab-panel-3676)
+* [  TypeScript ](#tab-panel-3677)
 
 JavaScript
 
@@ -69,7 +75,7 @@ await session.appendMessage({
 
   role: "user",
 
-  parts: [{ type: "text", text: "What's the status of the deployment?" }]
+  parts: [{ type: "text", text: "What's the status of the deployment?" }],
 
 });
 
@@ -87,8 +93,8 @@ Messages are stored in a tree structure via `parent_id`, which enables branching
 
 The Session also provides full-text search across the conversation history:
 
-* [  JavaScript ](#tab-panel-3870)
-* [  TypeScript ](#tab-panel-3871)
+* [  JavaScript ](#tab-panel-3674)
+* [  TypeScript ](#tab-panel-3675)
 
 JavaScript
 
@@ -122,8 +128,8 @@ This is your traditional system prompt: the agent's identity, personality, and i
 
 A coding assistant might have a soul that defines its personality and constraints:
 
-* [  JavaScript ](#tab-panel-3874)
-* [  TypeScript ](#tab-panel-3875)
+* [  JavaScript ](#tab-panel-3678)
+* [  TypeScript ](#tab-panel-3679)
 
 JavaScript
 
@@ -158,31 +164,29 @@ TypeScript
 import { Session } from "agents/experimental/memory/session";
 
 
-const session = Session.create(this)
+const session = Session.create(this).withContext("soul", {
 
-  .withContext("soul", {
+  provider: {
 
-    provider: {
+    get: async () =>
 
-      get: async () =>
+      "You are a senior TypeScript engineer. You write concise, " +
 
-        "You are a senior TypeScript engineer. You write concise, " +
+      "well-tested code. You prefer composition over inheritance. " +
 
-        "well-tested code. You prefer composition over inheritance. " +
+      "When you are unsure, you say so rather than guessing.",
 
-        "When you are unsure, you say so rather than guessing."
+  },
 
-    }
-
-  });
+});
 
 
 ```
 
 Or load it from R2 so you can update the agent's personality without redeploying:
 
-* [  JavaScript ](#tab-panel-3876)
-* [  TypeScript ](#tab-panel-3877)
+* [  JavaScript ](#tab-panel-3680)
+* [  TypeScript ](#tab-panel-3681)
 
 JavaScript
 
@@ -211,23 +215,21 @@ TypeScript
 
 ```
 
-const session = Session.create(this)
+const session = Session.create(this).withContext("soul", {
 
-  .withContext("soul", {
+  provider: {
 
-    provider: {
+    get: async () => {
 
-      get: async () => {
+      const obj = await env.CONFIG_BUCKET.get("soul.md");
 
-        const obj = await env.CONFIG_BUCKET.get("soul.md");
+      return obj ? obj.text() : "You are a helpful assistant.";
 
-        return obj ? obj.text() : "You are a helpful assistant.";
+    },
 
-      }
+  },
 
-    }
-
-  });
+});
 
 
 ```
@@ -238,8 +240,8 @@ Read-only blocks are defined by providing an object with only a `get()` method. 
 
 Think of this as a scratchpad the agent maintains for itself, a place to jot down things it needs to remember. Like how Claude Code keeps a todo list of tasks to work through, or how a customer support agent might track what it has learned about the user during the conversation.
 
-* [  JavaScript ](#tab-panel-3878)
-* [  TypeScript ](#tab-panel-3879)
+* [  JavaScript ](#tab-panel-3682)
+* [  TypeScript ](#tab-panel-3683)
 
 JavaScript
 
@@ -276,7 +278,7 @@ const session = Session.create(this)
 
     description: "Important facts learned during conversation",
 
-    maxTokens: 1100
+    maxTokens: 1100,
 
   })
 
@@ -284,7 +286,7 @@ const session = Session.create(this)
 
     description: "Task list, track what needs to be done and what is complete",
 
-    maxTokens: 2000
+    maxTokens: 2000,
 
   });
 
@@ -335,8 +337,8 @@ You provide a provider with a `search()` method. How that search works is entire
 
 The built-in `AgentSearchProvider` uses Durable Object SQLite with FTS5 as default:
 
-* [  JavaScript ](#tab-panel-3880)
-* [  TypeScript ](#tab-panel-3881)
+* [  JavaScript ](#tab-panel-3684)
+* [  TypeScript ](#tab-panel-3685)
 
 JavaScript
 
@@ -365,23 +367,23 @@ TypeScript
 import { AgentSearchProvider } from "agents/experimental/memory/session";
 
 
-const session = Session.create(this)
+const session = Session.create(this).withContext("knowledge", {
 
-  .withContext("knowledge", {
+  description:
 
-    description: "Searchable knowledge base, search for relevant information before answering",
+    "Searchable knowledge base, search for relevant information before answering",
 
-    provider: new AgentSearchProvider(this)
+  provider: new AgentSearchProvider(this),
 
-  });
+});
 
 
 ```
 
 But you can implement your own provider backed by any search mechanism:
 
-* [  JavaScript ](#tab-panel-3884)
-* [  TypeScript ](#tab-panel-3885)
+* [  JavaScript ](#tab-panel-3688)
+* [  TypeScript ](#tab-panel-3689)
 
 JavaScript
 
@@ -428,39 +430,39 @@ TypeScript
 
 ```
 
-const session = Session.create(this)
+const session = Session.create(this).withContext("knowledge", {
 
-  .withContext("knowledge", {
+  description: "Searchable knowledge base",
 
-    description: "Searchable knowledge base",
+  provider: {
 
-    provider: {
+    get: async () => "Product documentation and FAQs",
 
-      get: async () => "Product documentation and FAQs",
+    search: async (query) => {
 
-      search: async (query) => {
+      // Use Vectorize, an external API, whatever you need
 
-        // Use Vectorize, an external API, whatever you need
+      const results = await env.VECTORIZE_INDEX.query(
 
-        const results = await env.VECTORIZE_INDEX.query(
+        await generateEmbedding(query),
 
-          await generateEmbedding(query), { topK: 5 }
+        { topK: 5 },
 
-        );
+      );
 
-        return results.matches.map(m => m.metadata.text).join("\n\n");
+      return results.matches.map((m) => m.metadata.text).join("\n\n");
 
-      },
+    },
 
-      set: async (key, content) => {
+    set: async (key, content) => {
 
-        // Index new content
+      // Index new content
 
-      }
+    },
 
-    }
+  },
 
-  });
+});
 
 
 ```
@@ -519,8 +521,8 @@ Agent calls: load_context({ block: "skills", key: "deploy-checklist" })
 
 The built-in `R2SkillProvider` stores skills in a Cloudflare R2 bucket. Each skill is an R2 object with optional custom metadata for descriptions.
 
-* [  JavaScript ](#tab-panel-3890)
-* [  TypeScript ](#tab-panel-3891)
+* [  JavaScript ](#tab-panel-3694)
+* [  TypeScript ](#tab-panel-3695)
 
 JavaScript
 
@@ -583,17 +585,19 @@ const session = Session.create(this)
 
     provider: {
 
-      get: async () => [
+      get: async () =>
 
-        "You are a helpful assistant with access to skills.",
+        [
 
-        "When a user asks you to do something, check the SKILLS section",
+          "You are a helpful assistant with access to skills.",
 
-        "for a relevant skill and use load_context to load it.",
+          "When a user asks you to do something, check the SKILLS section",
 
-      ].join("\n")
+          "for a relevant skill and use load_context to load it.",
 
-    }
+        ].join("\n"),
+
+    },
 
   })
 
@@ -601,13 +605,13 @@ const session = Session.create(this)
 
     description: "Learned facts",
 
-    maxTokens: 1100
+    maxTokens: 1100,
 
   })
 
   .withContext("skills", {
 
-    provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" })
+    provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
 
   })
 
@@ -620,8 +624,8 @@ The `prefix` option scopes the provider to a subdirectory in the bucket. Skill k
 
 Add an R2 bucket binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-3868)
-* [  wrangler.toml ](#tab-panel-3869)
+* [  wrangler.jsonc ](#tab-panel-3672)
+* [  wrangler.toml ](#tab-panel-3673)
 
 JSONC
 
@@ -674,8 +678,8 @@ wrangler r2 object put my-agent-skills/skills/style-guide --file ./docs/style-gu
 
 To add descriptions (shown in the metadata listing), set custom metadata on the R2 object:
 
-* [  JavaScript ](#tab-panel-3882)
-* [  TypeScript ](#tab-panel-3883)
+* [  JavaScript ](#tab-panel-3686)
+* [  TypeScript ](#tab-panel-3687)
 
 JavaScript
 
@@ -696,7 +700,7 @@ TypeScript
 
 await env.SKILLS_BUCKET.put("skills/api-ref", content, {
 
-  customMetadata: { description: "API Reference documentation" }
+  customMetadata: { description: "API Reference documentation" },
 
 });
 
@@ -707,8 +711,8 @@ await env.SKILLS_BUCKET.put("skills/api-ref", content, {
 
 You can back skills with any storage by implementing the `SkillProvider` interface:
 
-* [  JavaScript ](#tab-panel-3896)
-* [  TypeScript ](#tab-panel-3897)
+* [  JavaScript ](#tab-panel-3700)
+* [  TypeScript ](#tab-panel-3701)
 
 JavaScript
 
@@ -814,7 +818,7 @@ class DatabaseSkillProvider implements SkillProvider {
 
     return rows.results
 
-      .map(r => `- ${r.key}${r.description ? `: ${r.description}` : ""}`)
+      .map((r) => `- ${r.key}${r.description ? `: ${r.description}` : ""}`)
 
       .join("\n");
 
@@ -844,7 +848,7 @@ class DatabaseSkillProvider implements SkillProvider {
 
         "INSERT INTO skills (key, content, description) VALUES (?, ?, ?) " +
 
-        "ON CONFLICT(key) DO UPDATE SET content = ?, description = ?"
+          "ON CONFLICT(key) DO UPDATE SET content = ?, description = ?",
 
       )
 
@@ -877,8 +881,8 @@ The key distinction: skills are **lazy**. They cost nearly nothing in the system
 
 The Session automatically generates tools based on the provider types of your context blocks. You pass these tools to your LLM alongside your own application-specific tools:
 
-* [  JavaScript ](#tab-panel-3886)
-* [  TypeScript ](#tab-panel-3887)
+* [  JavaScript ](#tab-panel-3690)
+* [  TypeScript ](#tab-panel-3691)
 
 JavaScript
 
@@ -921,7 +925,7 @@ const result = streamText({
 
   messages: await convertToModelMessages(session.getHistory()),
 
-  tools: allTools
+  tools: allTools,
 
 });
 
@@ -1009,8 +1013,8 @@ When the agent uses `set_context` to update a writable block, the underlying pro
 
 This means the system prompt stays stable throughout a multi-step tool-use turn, preserving the provider's prefix cache across every step.
 
-* [  JavaScript ](#tab-panel-3892)
-* [  TypeScript ](#tab-panel-3893)
+* [  JavaScript ](#tab-panel-3696)
+* [  TypeScript ](#tab-panel-3697)
 
 JavaScript
 
@@ -1056,7 +1060,7 @@ const session = Session.create(this)
 
   .withContext("soul", {
 
-    provider: { get: async () => "You are a helpful assistant." }
+    provider: { get: async () => "You are a helpful assistant." },
 
   })
 
@@ -1114,8 +1118,8 @@ The key points:
 * **Boundary-aware**, compaction boundaries are shifted to avoid splitting tool call / tool result pairs.
 * **Configurable**, `protectHead` preserves the first N messages (usually the system context), and `tailTokenBudget` keeps the most recent messages intact.
 
-* [  JavaScript ](#tab-panel-3894)
-* [  TypeScript ](#tab-panel-3895)
+* [  JavaScript ](#tab-panel-3698)
+* [  TypeScript ](#tab-panel-3699)
 
 JavaScript
 
@@ -1162,19 +1166,23 @@ const session = Session.create(this)
 
   .withContext("memory", { maxTokens: 1100 })
 
-  .onCompaction(createCompactFunction({
+  .onCompaction(
 
-    summarize: (prompt) =>
+    createCompactFunction({
 
-      generateText({ model: myModel, prompt }).then(r => r.text),
+      summarize: (prompt) =>
 
-    protectHead: 3,
+        generateText({ model: myModel, prompt }).then((r) => r.text),
 
-    tailTokenBudget: 20000,
+      protectHead: 3,
 
-    minTailMessages: 2
+      tailTokenBudget: 20000,
 
-  }))
+      minTailMessages: 2,
+
+    }),
+
+  )
 
   .compactAfter(100_000); // Auto-compact when token estimate exceeds threshold
 
@@ -1189,8 +1197,8 @@ Micro-compaction works at the individual message level rather than across ranges
 
 **Read-time truncation**: `truncateOlderMessages()` shortens tool outputs and long text in older messages before sending them to the LLM. Recent messages (last 4 by default) are kept intact. This operates on a copy, stored messages are not mutated.
 
-* [  JavaScript ](#tab-panel-3888)
-* [  TypeScript ](#tab-panel-3889)
+* [  JavaScript ](#tab-panel-3692)
+* [  TypeScript ](#tab-panel-3693)
 
 JavaScript
 

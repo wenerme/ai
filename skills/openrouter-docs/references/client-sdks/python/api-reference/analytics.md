@@ -4,14 +4,10 @@
 
 # Analytics - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Analytics and usage endpoints
 Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="getUserActivity" method="get" path="/activity" */}
 
 ```python
 from openrouter import OpenRouter

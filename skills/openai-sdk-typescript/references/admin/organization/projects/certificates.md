@@ -1,1 +1,344 @@
 # Certificates
+
+## List project certificates
+
+`client.admin.organization.projects.certificates.list(stringprojectID, CertificateListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<Certificate>`
+
+**get** `/organization/projects/{project_id}/certificates`
+
+List certificates for this project.
+
+### Parameters
+
+- `projectID: string`
+
+- `query: CertificateListParams`
+
+  - `after?: string`
+
+    A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
+
+  - `limit?: number`
+
+    A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
+
+  - `order?: "asc" | "desc"`
+
+    Sort order by the `created_at` timestamp of the objects. `asc` for ascending order and `desc` for descending order.
+
+    - `"asc"`
+
+    - `"desc"`
+
+### Returns
+
+- `Certificate`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: CertificateDetails`
+
+    - `content?: string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" | "organization.certificate" | "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active?: boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+// Automatically fetches more pages as needed.
+for await (const certificate of client.admin.organization.projects.certificates.list(
+  'project_id',
+)) {
+  console.log(certificate.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "certificate_details": {
+        "content": "content",
+        "expires_at": 0,
+        "valid_at": 0
+      },
+      "created_at": 0,
+      "name": "name",
+      "object": "certificate",
+      "active": true
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "cert_abc",
+  "last_id": "cert_abc"
+}
+```
+
+## Activate certificates for project
+
+`client.admin.organization.projects.certificates.activate(stringprojectID, CertificateActivateParamsbody, RequestOptionsoptions?): Page<Certificate>`
+
+**post** `/organization/projects/{project_id}/certificates/activate`
+
+Activate certificates at the project level.
+
+You can atomically and idempotently activate up to 10 certificates at a time.
+
+### Parameters
+
+- `projectID: string`
+
+- `body: CertificateActivateParams`
+
+  - `certificate_ids: Array<string>`
+
+### Returns
+
+- `Certificate`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: CertificateDetails`
+
+    - `content?: string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" | "organization.certificate" | "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active?: boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+// Automatically fetches more pages as needed.
+for await (const certificate of client.admin.organization.projects.certificates.activate(
+  'project_id',
+  { certificate_ids: ['cert_abc'] },
+)) {
+  console.log(certificate.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "certificate_details": {
+        "content": "content",
+        "expires_at": 0,
+        "valid_at": 0
+      },
+      "created_at": 0,
+      "name": "name",
+      "object": "certificate",
+      "active": true
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "cert_abc",
+  "last_id": "cert_abc"
+}
+```
+
+## Deactivate certificates for project
+
+`client.admin.organization.projects.certificates.deactivate(stringprojectID, CertificateDeactivateParamsbody, RequestOptionsoptions?): Page<Certificate>`
+
+**post** `/organization/projects/{project_id}/certificates/deactivate`
+
+Deactivate certificates at the project level. You can atomically and
+idempotently deactivate up to 10 certificates at a time.
+
+### Parameters
+
+- `projectID: string`
+
+- `body: CertificateDeactivateParams`
+
+  - `certificate_ids: Array<string>`
+
+### Returns
+
+- `Certificate`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: CertificateDetails`
+
+    - `content?: string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" | "organization.certificate" | "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active?: boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+// Automatically fetches more pages as needed.
+for await (const certificate of client.admin.organization.projects.certificates.deactivate(
+  'project_id',
+  { certificate_ids: ['cert_abc'] },
+)) {
+  console.log(certificate.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "certificate_details": {
+        "content": "content",
+        "expires_at": 0,
+        "valid_at": 0
+      },
+      "created_at": 0,
+      "name": "name",
+      "object": "certificate",
+      "active": true
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "cert_abc",
+  "last_id": "cert_abc"
+}
+```

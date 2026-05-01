@@ -63,8 +63,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Slow Narration**  — Slower speech for narration 
@@ -106,8 +104,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **High Quality Audio**  — Higher sample rate for studio quality 
 
 TypeScript
@@ -146,8 +142,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **With Text Normalization**  — Expand numbers and abbreviations before synthesis 
 
@@ -188,12 +182,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-184)
-* [ Output ](#tab-panel-185)
+* [ Input ](#tab-panel-52)
+* [ Output ](#tab-panel-53)
 
 text
 

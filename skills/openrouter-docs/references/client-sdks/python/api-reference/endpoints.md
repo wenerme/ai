@@ -4,14 +4,10 @@
 
 # Endpoints - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ Endpoint information
 Preview the impact of ZDR on the available endpoints
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listEndpointsZdr" method="get" path="/endpoints/zdr" */}
 
 ```python
 from openrouter import OpenRouter
@@ -73,8 +67,6 @@ with OpenRouter(
 List all endpoints for a model
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listEndpoints" method="get" path="/models/{author}/{slug}/endpoints" */}
 
 ```python
 from openrouter import OpenRouter

@@ -45,13 +45,6 @@ export const globalFlagOptions = [
       "Control when Codex pauses for human approval before running a command. `on-failure` is deprecated; prefer `on-request` for interactive runs or `never` for non-interactive runs.",
   },
   {
-    key: "--full-auto",
-    type: "boolean",
-    defaultValue: "false",
-    description:
-      "Shortcut for low-friction local work: sets `--ask-for-approval on-request` and `--sandbox workspace-write`.",
-  },
-  {
     key: "--dangerously-bypass-approvals-and-sandbox, --yolo",
     type: "boolean",
     defaultValue: "false",
@@ -144,6 +137,13 @@ export const commandOverview = [
     type: "experimental",
     description:
       "Debug app-server by sending a single V2 message through the built-in test client.",
+  },
+  {
+    key: "codex debug models",
+    href: "/codex/cli/reference#codex-debug-models",
+    type: "experimental",
+    description:
+      "Print the raw model catalog Codex sees, including an option to inspect only the bundled catalog.",
   },
   {
     key: "codex apply",
@@ -240,7 +240,14 @@ export const commandOverview = [
     href: "/codex/cli/reference#codex-sandbox",
     type: "experimental",
     description:
-      "Run arbitrary commands inside Codex-provided macOS seatbelt or Linux bubblewrap sandboxes.",
+      "Run arbitrary commands inside Codex-provided macOS, Linux, or Windows sandboxes.",
+  },
+  {
+    key: "codex update",
+    href: "/codex/cli/reference#codex-update",
+    type: "stable",
+    description:
+      "Check for and apply a Codex CLI update when the installed release supports self-update.",
   },
 ];
 
@@ -285,7 +292,7 @@ export const execOptions = [
     type: "boolean",
     defaultValue: "false",
     description:
-      "Apply the low-friction automation preset (`workspace-write` sandbox and `on-request` approvals).",
+      "Deprecated compatibility flag. Prefer `--sandbox workspace-write`; Codex prints a warning when this flag is used.",
   },
   {
     key: "--dangerously-bypass-approvals-and-sandbox, --yolo",
@@ -311,6 +318,20 @@ export const execOptions = [
     type: "boolean",
     defaultValue: "false",
     description: "Run without persisting session rollout files to disk.",
+  },
+  {
+    key: "--ignore-user-config",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Do not load `$CODEX_HOME/config.toml`. Authentication still uses `CODEX_HOME`.",
+  },
+  {
+    key: "--ignore-rules",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Do not load user or project execpolicy `.rules` files for this run.",
   },
   {
     key: "--output-schema",
@@ -420,6 +441,16 @@ export const debugAppServerSendMessageV2Options = [
     type: "string",
     description:
       "Message text sent to app-server through the built-in V2 test-client flow.",
+  },
+];
+
+export const debugModelsOptions = [
+  {
+    key: "--bundled",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Skip refresh and print only the model catalog bundled with the current Codex binary.",
   },
 ];
 
@@ -577,11 +608,36 @@ export const applyOptions = [
 
 export const sandboxMacOptions = [
   {
-    key: "--full-auto",
+    key: "--permissions-profile",
+    type: "NAME",
+    description:
+      "Apply a named permissions profile from the active configuration stack.",
+  },
+  {
+    key: "--cd, -C",
+    type: "DIR",
+    description:
+      "Working directory used for profile resolution and command execution. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--include-managed-config",
     type: "boolean",
     defaultValue: "false",
     description:
-      "Grant write access to the current workspace and `/tmp` without approvals.",
+      "Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--allow-unix-socket",
+    type: "path",
+    description:
+      "Allow the sandboxed command to bind or connect Unix sockets rooted at this path. Repeat to allow multiple paths.",
+  },
+  {
+    key: "--log-denials",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Capture macOS sandbox denials with `log stream` while the command runs and print them after exit.",
   },
   {
     key: "--config, -c",
@@ -599,11 +655,23 @@ export const sandboxMacOptions = [
 
 export const sandboxLinuxOptions = [
   {
-    key: "--full-auto",
+    key: "--permissions-profile",
+    type: "NAME",
+    description:
+      "Apply a named permissions profile from the active configuration stack.",
+  },
+  {
+    key: "--cd, -C",
+    type: "DIR",
+    description:
+      "Working directory used for profile resolution and command execution. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--include-managed-config",
     type: "boolean",
     defaultValue: "false",
     description:
-      "Grant write access to the current workspace and `/tmp` inside the Landlock sandbox.",
+      "Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`.",
   },
   {
     key: "--config, -c",
@@ -616,6 +684,40 @@ export const sandboxLinuxOptions = [
     type: "var-args",
     description:
       "Command to execute under Landlock + seccomp. Provide the executable after `--`.",
+  },
+];
+
+export const sandboxWindowsOptions = [
+  {
+    key: "--permissions-profile",
+    type: "NAME",
+    description:
+      "Apply a named permissions profile from the active configuration stack.",
+  },
+  {
+    key: "--cd, -C",
+    type: "DIR",
+    description:
+      "Working directory used for profile resolution and command execution. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--include-managed-config",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`.",
+  },
+  {
+    key: "--config, -c",
+    type: "key=value",
+    description:
+      "Configuration overrides applied before launching the sandbox (repeatable).",
+  },
+  {
+    key: "COMMAND...",
+    type: "var-args",
+    description:
+      "Command to execute under the native Windows sandbox. Provide the executable after `--`.",
   },
 ];
 
@@ -789,7 +891,7 @@ The Maturity column uses feature maturity labels such as Experimental, Beta,
 
 ### `codex` (interactive)
 
-Running `codex` with no subcommand launches the interactive terminal UI (TUI). The agent accepts the global flags above plus image attachments. Web search defaults to cached mode; use `--search` to switch to live browsing and `--full-auto` to let Codex run most commands without prompts.
+Running `codex` with no subcommand launches the interactive terminal UI (TUI). The agent accepts the global flags above plus image attachments. Web search defaults to cached mode; use `--search` to switch to live browsing. For low-friction local work, use `--sandbox workspace-write --ask-for-approval on-request`.
 
 Use `--remote ws://host:port` or `--remote wss://host:port` to connect the TUI to an app server started with `codex app-server --listen ws://IP:PORT`. Add `--remote-auth-token-env <ENV_VAR>` when the server requires a bearer token for WebSocket authentication. See [Codex CLI features](https://developers.openai.com/codex/cli/features#connect-the-tui-to-a-remote-app-server) for setup examples and authentication guidance.
 
@@ -818,6 +920,14 @@ Send one message through app-server's V2 thread/turn flow using the built-in app
 <ConfigTable client:load options={debugAppServerSendMessageV2Options} />
 
 This debug flow initializes with `experimentalApi: true`, starts a thread, sends a turn, and streams server notifications. Use it to reproduce and inspect app-server protocol behavior locally.
+
+### `codex debug models`
+
+Print the raw model catalog Codex sees as JSON.
+
+<ConfigTable client:load options={debugModelsOptions} />
+
+Use `--bundled` when you want to inspect only the catalog bundled with the current binary, without refreshing from the remote models endpoint.
 
 ### `codex apply`
 
@@ -934,9 +1044,17 @@ Use the sandbox helper to run a command under the same policies Codex uses inter
 
 <ConfigTable client:load options={sandboxLinuxOptions} />
 
+#### Windows
+
+<ConfigTable client:load options={sandboxWindowsOptions} />
+
+### `codex update`
+
+Check for and apply a Codex CLI update when the installed release supports self-update. Debug builds print a message telling you to install a release build instead.
+
 ## Flag combinations and safety tips
 
-- Set `--full-auto` for unattended local work, but avoid combining it with `--dangerously-bypass-approvals-and-sandbox` unless you are inside a dedicated sandbox VM.
+- Use `--sandbox workspace-write` for unattended local work that can stay inside the workspace, and avoid `--dangerously-bypass-approvals-and-sandbox` unless you are inside a dedicated sandbox VM.
 - When you need to grant Codex write access to more directories, prefer `--add-dir` rather than forcing `--sandbox danger-full-access`.
 - Pair `--json` with `--output-last-message` in CI to capture machine-readable progress and a final natural-language summary.
 

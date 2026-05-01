@@ -4,14 +4,10 @@
 
 # Tts - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Text-to-speech endpoints
 Synthesizes audio from the input text
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="createAudioSpeech" method="post" path="/audio/speech" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

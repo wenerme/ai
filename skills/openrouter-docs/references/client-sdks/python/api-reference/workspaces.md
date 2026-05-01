@@ -4,14 +4,10 @@
 
 # Workspaces - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -32,8 +28,6 @@ Workspaces endpoints
 List all workspaces for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listWorkspaces" method="get" path="/workspaces" */}
 
 ```python
 from openrouter import OpenRouter
@@ -83,8 +77,6 @@ with OpenRouter(
 Create a new workspace for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="createWorkspace" method="post" path="/workspaces" */}
 
 ```python
 from openrouter import OpenRouter
@@ -144,8 +136,6 @@ Delete an existing workspace. The default workspace cannot be deleted. Workspace
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="deleteWorkspace" method="delete" path="/workspaces/{id}" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -195,8 +185,6 @@ Get a single workspace by ID or slug. [Management key](/docs/guides/overview/aut
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="getWorkspace" method="get" path="/workspaces/{id}" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -243,8 +231,6 @@ with OpenRouter(
 Update an existing workspace by ID or slug. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="updateWorkspace" method="patch" path="/workspaces/{id}" */}
 
 ```python
 from openrouter import OpenRouter
@@ -306,8 +292,6 @@ Add multiple organization members to a workspace. Members are assigned the same 
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="bulkAddWorkspaceMembers" method="post" path="/workspaces/{id}/members/add" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -360,8 +344,6 @@ with OpenRouter(
 Remove multiple members from a workspace. Members with active API keys in the workspace cannot be removed. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="bulkRemoveWorkspaceMembers" method="post" path="/workspaces/{id}/members/remove" */}
 
 ```python
 from openrouter import OpenRouter

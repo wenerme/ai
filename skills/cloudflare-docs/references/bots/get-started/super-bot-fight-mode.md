@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Super Bot Fight Mode
 
-Super Bot Fight Mode is included in your Pro, Business, or Enterprise subscription. When enabled, the product:
+Super Bot Fight Mode is included in your Pro, Business, or Enterprise subscription. Compared to [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/), Super Bot Fight Mode adds configurable actions per bot category, bot analytics, and the ability to create exceptions using [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/). When enabled, the product:
 
 * Identifies traffic matching patterns of known bots
 * Can challenge or block bots
@@ -49,8 +49,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 
 To start using Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-4383)
-* [ Old dashboard ](#tab-panel-4384)
+* [  New dashboard ](#tab-panel-4187)
+* [ Old dashboard ](#tab-panel-4188)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -74,7 +74,7 @@ To start using Super Bot Fight Mode:
 
 Warning
 
-If your organization also uses [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), keep **Definitely Automated** set to **Allow**. Otherwise, tunnels might fail with a `websocket: bad handshake` error.
+If your organization also uses [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), keep **Definitely Automated** set to **Allow**. Otherwise, Super Bot Fight Mode may block tunnel connections, causing failures with a `websocket: bad handshake` error.
 
 In parts of your site where you want bot traffic, you can use the [_Skip_ action](https://developers.cloudflare.com/waf/custom-rules/skip/) in [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) to specify where Super Bot Fight Mode should not run.
 
@@ -88,8 +88,8 @@ If you find that **Super Bot Fight Mode** is causing problems with your applicat
 
 To disable Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-4381)
-* [ Old dashboard ](#tab-panel-4382)
+* [  New dashboard ](#tab-panel-4185)
+* [ Old dashboard ](#tab-panel-4186)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -138,7 +138,7 @@ You can see bot-related actions by going to **Security** \> **Events**. Any requ
 
 ## Ruleset Engine
 
-Super Bot Fight Mode runs during the `http_request_sbfm` phase of the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/about/phases/).
+Super Bot Fight Mode rules run after WAF custom rules in the request evaluation pipeline. Specifically, Super Bot Fight Mode runs during the `http_request_sbfm` phase of the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/about/phases/).
 
 Change notice for Super Bot Fight Mode rulesets
 

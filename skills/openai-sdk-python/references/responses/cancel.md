@@ -20,7 +20,7 @@ the `background` parameter set to `true` can be cancelled.
 
     Unique identifier for this Response.
 
-  - `created_at: int`
+  - `created_at: float`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -4395,7 +4395,7 @@ the `background` parameter set to `true` can be cancelled.
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[int]`
+  - `completed_at: Optional[float]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.

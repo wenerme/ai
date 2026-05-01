@@ -22,6 +22,8 @@ The **value** of the HTTP response header you want to set can only contain:
 * Alphanumeric characters: `a`\-`z`, `A`\-`Z`, and `0`\-`9`
 * The following special characters: `` _ :;.,\/"'?!(){}[]@<>=-+*#$&`|~^% ``
 
+The **length** of the HTTP response header can be a maximum of 4 KB (\~4,096 characters).
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/response-header-modification/","name":"Response Header Transform Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/response-header-modification/reference/","name":"Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/rules/transform/response-header-modification/reference/header-format/","name":"Format of HTTP response header names and values"}}]}
 ```

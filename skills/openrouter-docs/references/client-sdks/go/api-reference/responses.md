@@ -4,14 +4,10 @@
 
 # Beta.Responses - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ beta.responses endpoints
 Creates a streaming or non-streaming response using OpenResponses API format
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="createResponses" method="post" path="/responses" */}
 
 ```go
 package main

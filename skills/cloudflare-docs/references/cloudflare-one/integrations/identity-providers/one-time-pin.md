@@ -26,11 +26,11 @@ Access and the Cloudflare One Client will evaluate identity based on a user's la
 
 ## Set up OTP
 
-* [ Dashboard ](#tab-panel-4722)
-* [ API ](#tab-panel-4723)
-* [ Terraform (v5) ](#tab-panel-4724)
+* [ Dashboard ](#tab-panel-4526)
+* [ API ](#tab-panel-4527)
+* [ Terraform (v5) ](#tab-panel-4528)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **One-time PIN**.
 

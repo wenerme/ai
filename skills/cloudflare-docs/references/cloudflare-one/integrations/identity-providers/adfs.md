@@ -140,7 +140,7 @@ Set-ADFSRelyingPartyTrust -TargetName "Name of RPT Display Name" -SamlResponseSi
 
 To enable Cloudflare One to accept the claims and assertions sent from AD FS, follow these steps:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **SAML**.
 4. Enter an IdP **Name**.

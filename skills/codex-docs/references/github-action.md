@@ -84,7 +84,7 @@ Replace `.github/codex/prompts/review.md` with your own prompt file or use the `
 Fine-tune how Codex runs by setting the action inputs that map to `codex exec` options:
 
 - `prompt` or `prompt-file` (choose one): Inline instructions or a repository path to Markdown or text with your task. Consider storing prompts in `.github/codex/prompts/`.
-- `codex-args`: Extra CLI flags. Provide a JSON array (for example `["--full-auto"]`) or a shell string (`--full-auto --sandbox danger-full-access`) to allow edits, streaming, or MCP configuration.
+- `codex-args`: Extra CLI flags. Provide a JSON array (for example `["--json"]`) or a shell string (`--sandbox workspace-write --json`) to allow edits, streaming, or MCP configuration.
 - `model` and `effort`: Pick the Codex agent configuration you want; leave empty for defaults.
 - `sandbox`: Match the sandbox mode (`workspace-write`, `read-only`, `danger-full-access`) to the permissions Codex needs during the run.
 - `output-file`: Save the final Codex message to disk so later steps can upload or diff it.

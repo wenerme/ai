@@ -4,7 +4,7 @@
 
 # Preview the impact of ZDR on the available endpoints
 
-GET https://openrouter.ai/api/v1/endpoints/zdr
+GET https://openrouter.ai/api/v1//endpoints/zdr
 
 Reference: https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints-zdr
 
@@ -16,7 +16,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /endpoints/zdr:
+  //endpoints/zdr:
     get:
       operationId: list-endpoints-zdr
       summary: Preview the impact of ZDR on the available endpoints
@@ -75,90 +75,42 @@ components:
         measures time to first token. Only visible when authenticated with an
         API key or cookie; returns null for unauthenticated requests.
       title: PercentileStats
-    PublicEndpointPricingAudio:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingAudio
-    PublicEndpointPricingAudioOutput:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingAudioOutput
-    PublicEndpointPricingCompletion:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingCompletion
-    PublicEndpointPricingImage:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingImage
-    PublicEndpointPricingImageOutput:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingImageOutput
-    PublicEndpointPricingImageToken:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingImageToken
-    PublicEndpointPricingInputAudioCache:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingInputAudioCache
-    PublicEndpointPricingInputCacheRead:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingInputCacheRead
-    PublicEndpointPricingInputCacheWrite:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingInputCacheWrite
-    PublicEndpointPricingInternalReasoning:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingInternalReasoning
-    PublicEndpointPricingPrompt:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingPrompt
-    PublicEndpointPricingRequest:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingRequest
-    PublicEndpointPricingWebSearch:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingWebSearch
+    BigNumberUnion:
+      type: string
+      description: Price per million prompt tokens
+      title: BigNumberUnion
     PublicEndpointPricing:
       type: object
       properties:
         audio:
-          $ref: '#/components/schemas/PublicEndpointPricingAudio'
+          $ref: '#/components/schemas/BigNumberUnion'
         audio_output:
-          $ref: '#/components/schemas/PublicEndpointPricingAudioOutput'
+          $ref: '#/components/schemas/BigNumberUnion'
         completion:
-          $ref: '#/components/schemas/PublicEndpointPricingCompletion'
+          $ref: '#/components/schemas/BigNumberUnion'
         discount:
           type: number
           format: double
         image:
-          $ref: '#/components/schemas/PublicEndpointPricingImage'
+          $ref: '#/components/schemas/BigNumberUnion'
         image_output:
-          $ref: '#/components/schemas/PublicEndpointPricingImageOutput'
+          $ref: '#/components/schemas/BigNumberUnion'
         image_token:
-          $ref: '#/components/schemas/PublicEndpointPricingImageToken'
+          $ref: '#/components/schemas/BigNumberUnion'
         input_audio_cache:
-          $ref: '#/components/schemas/PublicEndpointPricingInputAudioCache'
+          $ref: '#/components/schemas/BigNumberUnion'
         input_cache_read:
-          $ref: '#/components/schemas/PublicEndpointPricingInputCacheRead'
+          $ref: '#/components/schemas/BigNumberUnion'
         input_cache_write:
-          $ref: '#/components/schemas/PublicEndpointPricingInputCacheWrite'
+          $ref: '#/components/schemas/BigNumberUnion'
         internal_reasoning:
-          $ref: '#/components/schemas/PublicEndpointPricingInternalReasoning'
+          $ref: '#/components/schemas/BigNumberUnion'
         prompt:
-          $ref: '#/components/schemas/PublicEndpointPricingPrompt'
+          $ref: '#/components/schemas/BigNumberUnion'
         request:
-          $ref: '#/components/schemas/PublicEndpointPricingRequest'
+          $ref: '#/components/schemas/BigNumberUnion'
         web_search:
-          $ref: '#/components/schemas/PublicEndpointPricingWebSearch'
+          $ref: '#/components/schemas/BigNumberUnion'
       required:
         - completion
         - prompt
@@ -248,10 +200,19 @@ components:
         - Z.AI
         - FakeProvider
       title: ProviderName
-    PublicEndpointQuantization:
-      type: object
-      properties: {}
-      title: PublicEndpointQuantization
+    Quantization:
+      type: string
+      enum:
+        - int4
+        - int8
+        - fp4
+        - fp6
+        - fp8
+        - fp16
+        - bf16
+        - fp32
+        - unknown
+      title: Quantization
     EndpointStatus:
       type: string
       enum:
@@ -315,6 +276,11 @@ components:
         - p75
         - p90
         - p99
+      description: >-
+        Throughput percentiles in tokens per second over the last 30 minutes.
+        Throughput measures output token generation speed. Only visible when
+        authenticated with an API key or cookie; returns null for
+        unauthenticated requests.
       title: PublicEndpointThroughputLast30M
     PublicEndpoint:
       type: object
@@ -343,7 +309,7 @@ components:
         provider_name:
           $ref: '#/components/schemas/ProviderName'
         quantization:
-          $ref: '#/components/schemas/PublicEndpointQuantization'
+          $ref: '#/components/schemas/Quantization'
         status:
           $ref: '#/components/schemas/EndpointStatus'
         supported_parameters:
@@ -450,10 +416,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Endpoints_listEndpointsZdr_example
 import requests
 
-url = "https://openrouter.ai/api/v1/endpoints/zdr"
+url = "https://openrouter.ai/api/v1//endpoints/zdr"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -462,8 +428,8 @@ response = requests.get(url, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/endpoints/zdr';
+```javascript Endpoints_listEndpointsZdr_example
+const url = 'https://openrouter.ai/api/v1//endpoints/zdr';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -475,7 +441,7 @@ try {
 }
 ```
 
-```go
+```go Endpoints_listEndpointsZdr_example
 package main
 
 import (
@@ -486,7 +452,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/endpoints/zdr"
+	url := "https://openrouter.ai/api/v1//endpoints/zdr"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -503,11 +469,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Endpoints_listEndpointsZdr_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/endpoints/zdr")
+url = URI("https://openrouter.ai/api/v1//endpoints/zdr")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -519,22 +485,22 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Endpoints_listEndpointsZdr_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/endpoints/zdr")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//endpoints/zdr")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
 
-```php
+```php Endpoints_listEndpointsZdr_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/endpoints/zdr', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1//endpoints/zdr', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -543,21 +509,21 @@ $response = $client->request('GET', 'https://openrouter.ai/api/v1/endpoints/zdr'
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Endpoints_listEndpointsZdr_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/endpoints/zdr");
+var client = new RestClient("https://openrouter.ai/api/v1//endpoints/zdr");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Endpoints_listEndpointsZdr_example
 import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/endpoints/zdr")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//endpoints/zdr")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

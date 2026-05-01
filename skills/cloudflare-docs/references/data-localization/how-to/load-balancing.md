@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Load Balancing
 
-In the following sections, we will give you some details about how to configure Load Balancing with Regional Services and Customer Metadata Boundary.
+The following sections describe how to configure Load Balancing with Regional Services and Customer Metadata Boundary to control where load balancing decisions and traffic processing occur.
 
 ## Regional Services
 
 You can load balance traffic at different levels of the networking stack depending on the [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/): Layer 7 (`HTTP/S`) and Layer 4 (`TCP`) are supported; however, `DNS-only` is not supported, as it is not [proxied](https://developers.cloudflare.com/dns/proxy-status/).
 
-To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare and ensure that the Load Balancer is available only in-region, follow these steps for the dashboard or API configuration:
+To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and ensure that the Load Balancer is available only in-region, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-5529)
-* [ API ](#tab-panel-5530)
+* [ Dashboard ](#tab-panel-5333)
+* [ API ](#tab-panel-5334)
 
 1. In the Cloudflare dashboard, go to the **Load balancing** page.  
 [ Go to **Load Balancing** ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing)

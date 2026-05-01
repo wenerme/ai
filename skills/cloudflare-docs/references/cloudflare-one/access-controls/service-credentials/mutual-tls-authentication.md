@@ -50,7 +50,7 @@ The mTLS certificate is used only to verify the client certificate. It does not 
 
 ### Add mTLS to your Access application
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Service credentials** \> **Mutual TLS**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Mutual TLS**.
 2. Select **Add mTLS Certificate**.
 3. Enter any name for the root CA.
 4. In **Certificate content**, paste the contents of your root CA.  

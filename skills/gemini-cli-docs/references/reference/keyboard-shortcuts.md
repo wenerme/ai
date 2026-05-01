@@ -37,7 +37,7 @@ available combinations.
 | `edit.deleteWordRight` | Delete the next word.                            | `Ctrl+Delete``Alt+Delete``Alt+D`             |
 | `edit.deleteLeft`      | Delete the character to the left.                | `Backspace``Ctrl+H`                                |
 | `edit.deleteRight`     | Delete the character to the right.               | `Delete``Ctrl+D`                                   |
-| `edit.undo`            | Undo the most recent text edit.                  | `Cmd/Win+Z``Alt+Z`                                 |
+| `edit.undo`            | Undo the most recent text edit.                  | `Ctrl+Z``Alt+Z``Cmd/Win+Z`                   |
 | `edit.redo`            | Redo the most recent undone text edit.           | `Ctrl+Shift+Z``Shift+Cmd/Win+Z``Alt+Shift+Z` |
 
 #### Scrolling

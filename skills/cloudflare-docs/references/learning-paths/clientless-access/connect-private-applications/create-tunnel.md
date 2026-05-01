@@ -20,7 +20,7 @@ To enable clientless access to your applications, you will need to create a Clou
 
 To create a Cloudflare Tunnel:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com) and go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select **Create a tunnel**.
 3. Choose **Cloudflared** for the connector type and select **Next**.
 4. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).

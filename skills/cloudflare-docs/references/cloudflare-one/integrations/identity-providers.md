@@ -20,7 +20,7 @@ Cloudflare One integrates with your organization's identity provider to apply Cl
 
 As an alternative to configuring an identity provider, Cloudflare One can send a [one-time PIN (OTP)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) to approved email addresses. No configuration needed — simply add a user's email address to an [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and to the group that allows your team to reach the application. You can simultaneously configure an OTP and an identity provider to allow users to use their own authentication method.
 
-Adding an identity provider as a login method requires configuration both in [Cloudflare One ↗](https://one.dash.cloudflare.com) and with the identity provider itself. Consult our IdP-specific documentation to learn more about what you need to set up.
+Adding an identity provider as a login method requires configuration both in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Integrations** \> **Identity providers** and with the identity provider itself. Consult our IdP-specific documentation to learn more about what you need to set up.
 
 Note
 
@@ -28,10 +28,10 @@ Cloudflare One supports social identity providers that do not require administra
 
 ## Set up IdPs in Cloudflare One
 
-* [ Dashboard ](#tab-panel-4712)
-* [ Terraform (v5) ](#tab-panel-4713)
+* [ Dashboard ](#tab-panel-4516)
+* [ Terraform (v5) ](#tab-panel-4517)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.
 3. Select the identity provider you want to add.  
 If you do not see your identity provider listed, these providers can typically still be enabled. If they support OIDC or OAuth, select the [generic OIDC](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/) option. If they support SAML, select the [generic SAML](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/) option. Cloudflare supports all SAML and OIDC providers and can integrate with the majority of OAuth providers. If your provider supports both SAML and OIDC, we recommend OIDC for ease of configuration.

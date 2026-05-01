@@ -4,7 +4,7 @@
 
 # Update a guardrail
 
-PATCH https://openrouter.ai/api/v1/guardrails/{id}
+PATCH https://openrouter.ai/api/v1//guardrails/{id}
 Content-Type: application/json
 
 Update an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /guardrails/{id}:
+  //guardrails/{id}:
     patch:
       operationId: update-guardrail
       summary: Update a guardrail
@@ -217,6 +217,7 @@ components:
         - id
         - name
         - workspace_id
+      description: The updated guardrail
       title: UpdateGuardrailResponseData
     UpdateGuardrailResponse:
       type: object
@@ -360,10 +361,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Guardrails_updateGuardrail_example
 import requests
 
-url = "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000"
+url = "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000"
 
 payload = {
     "description": "Updated description",
@@ -381,8 +382,8 @@ response = requests.patch(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000';
+```javascript Guardrails_updateGuardrail_example
+const url = 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000';
 const options = {
   method: 'PATCH',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -398,7 +399,7 @@ try {
 }
 ```
 
-```go
+```go Guardrails_updateGuardrail_example
 package main
 
 import (
@@ -410,7 +411,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000"
+	url := "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000"
 
 	payload := strings.NewReader("{\n  \"description\": \"Updated description\",\n  \"limit_usd\": 75,\n  \"name\": \"Updated Guardrail Name\",\n  \"reset_interval\": \"weekly\"\n}")
 
@@ -430,11 +431,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Guardrails_updateGuardrail_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000")
+url = URI("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -448,24 +449,24 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Guardrails_updateGuardrail_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.patch("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000")
+HttpResponse<String> response = Unirest.patch("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"description\": \"Updated description\",\n  \"limit_usd\": 75,\n  \"name\": \"Updated Guardrail Name\",\n  \"reset_interval\": \"weekly\"\n}")
   .asString();
 ```
 
-```php
+```php Guardrails_updateGuardrail_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('PATCH', 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000', [
+$response = $client->request('PATCH', 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000', [
   'body' => '{
   "description": "Updated description",
   "limit_usd": 75,
@@ -481,10 +482,10 @@ $response = $client->request('PATCH', 'https://openrouter.ai/api/v1/guardrails/5
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Guardrails_updateGuardrail_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000");
+var client = new RestClient("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -492,7 +493,7 @@ request.AddParameter("application/json", "{\n  \"description\": \"Updated descri
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Guardrails_updateGuardrail_example
 import Foundation
 
 let headers = [
@@ -508,7 +509,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "PATCH"

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Cache
 
-In the following sections, we will give you some details about how to configure Cache with Regional Services and Customer Metadata Boundary.
+The following sections describe how to configure Cache with Regional Services and Customer Metadata Boundary to control where cached content is stored and served from.
 
 ## Regional Services
 
-To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare and ensure that [eligible assets](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) are cached only in-region, follow these steps for the dashboard or API configuration:
+To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and ensure that [eligible assets](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) are cached only in-region, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-5525)
-* [ API ](#tab-panel-5526)
+* [ Dashboard ](#tab-panel-5329)
+* [ API ](#tab-panel-5330)
 
 1. In the Cloudflare dashboard, go to the **Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

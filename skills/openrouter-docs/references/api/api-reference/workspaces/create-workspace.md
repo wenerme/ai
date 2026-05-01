@@ -4,7 +4,7 @@
 
 # Create a workspace
 
-POST https://openrouter.ai/api/v1/workspaces
+POST https://openrouter.ai/api/v1//workspaces
 Content-Type: application/json
 
 Create a new workspace for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /workspaces:
+  //workspaces:
     post:
       operationId: create-workspace
       summary: Create a workspace
@@ -218,6 +218,7 @@ components:
         - name
         - slug
         - updated_at
+      description: The created workspace
       title: CreateWorkspaceResponseData
     CreateWorkspaceResponse:
       type: object
@@ -361,10 +362,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Workspaces_createWorkspace_example
 import requests
 
-url = "https://openrouter.ai/api/v1/workspaces"
+url = "https://openrouter.ai/api/v1//workspaces"
 
 payload = {
     "name": "Production",
@@ -384,8 +385,8 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/workspaces';
+```javascript Workspaces_createWorkspace_example
+const url = 'https://openrouter.ai/api/v1//workspaces';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -401,7 +402,7 @@ try {
 }
 ```
 
-```go
+```go Workspaces_createWorkspace_example
 package main
 
 import (
@@ -413,7 +414,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/workspaces"
+	url := "https://openrouter.ai/api/v1//workspaces"
 
 	payload := strings.NewReader("{\n  \"name\": \"Production\",\n  \"slug\": \"production\",\n  \"default_image_model\": \"openai/dall-e-3\",\n  \"default_provider_sort\": \"price\",\n  \"default_text_model\": \"openai/gpt-4o\",\n  \"description\": \"Production environment workspace\"\n}")
 
@@ -433,11 +434,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Workspaces_createWorkspace_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/workspaces")
+url = URI("https://openrouter.ai/api/v1//workspaces")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -451,24 +452,24 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Workspaces_createWorkspace_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/workspaces")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//workspaces")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"name\": \"Production\",\n  \"slug\": \"production\",\n  \"default_image_model\": \"openai/dall-e-3\",\n  \"default_provider_sort\": \"price\",\n  \"default_text_model\": \"openai/gpt-4o\",\n  \"description\": \"Production environment workspace\"\n}")
   .asString();
 ```
 
-```php
+```php Workspaces_createWorkspace_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/workspaces', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1//workspaces', [
   'body' => '{
   "name": "Production",
   "slug": "production",
@@ -486,10 +487,10 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/workspaces', 
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Workspaces_createWorkspace_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/workspaces");
+var client = new RestClient("https://openrouter.ai/api/v1//workspaces");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -497,7 +498,7 @@ request.AddParameter("application/json", "{\n  \"name\": \"Production\",\n  \"sl
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Workspaces_createWorkspace_example
 import Foundation
 
 let headers = [
@@ -515,7 +516,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/workspaces")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//workspaces")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

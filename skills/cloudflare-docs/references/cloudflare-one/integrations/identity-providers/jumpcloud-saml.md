@@ -48,7 +48,7 @@ The following steps are specific to setting up JumpCloud with Cloudflare Access.
 
 ### 2\. Add JumpCloud to Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **SAML**.
 4. Upload your JumpCloud XML metadata file.
@@ -64,7 +64,7 @@ The JumpCloud integration allows you to synchronize user groups and automaticall
 
 ### 1\. Enable SCIM in Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Find the JumpCloud integration and select **Edit**.
 3. Turn on **Enable SCIM**
 4. (Optional) Configure the following settings:

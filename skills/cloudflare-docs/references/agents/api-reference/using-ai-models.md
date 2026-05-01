@@ -18,7 +18,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Agents can call AI models from any provider. [Workers AI](https://developers.cloudflare.com/workers-ai/) is built in and requires no API keys. You can also use [OpenAI ↗](https://platform.openai.com/docs/quickstart?language=javascript), [Anthropic ↗](https://docs.anthropic.com/en/api/client-sdks#typescript), [Google Gemini ↗](https://ai.google.dev/gemini-api/docs/openai), or any service that exposes an OpenAI-compatible API.
 
-The [AI SDK ↗](https://sdk.vercel.ai/docs/introduction) provides a unified interface across all of these providers, and is what `AIChatAgent` and the starter template use under the hood. You can also use the model routing features in [AI Gateway](https://developers.cloudflare.com/ai-gateway/) to route across providers, eval responses, and manage rate limits.
+The [AI SDK ↗](https://ai-sdk.dev/docs/introduction) provides a unified interface across all of these providers, and is what `AIChatAgent` and the starter template use under the hood. You can also use the model routing features in [AI Gateway](https://developers.cloudflare.com/ai-gateway/) to route across providers, eval responses, and manage rate limits.
 
 ## Calling AI Models
 
@@ -30,8 +30,8 @@ Agents can call AI models on their own — autonomously — and can handle long-
 
 Modern reasoning models can take some time to both generate a response _and_ stream the response back to the client. Instead of buffering the entire response, you can stream it back over [WebSockets](https://developers.cloudflare.com/agents/api-reference/websockets/).
 
-* [  JavaScript ](#tab-panel-3782)
-* [  TypeScript ](#tab-panel-3783)
+* [  JavaScript ](#tab-panel-3586)
+* [  TypeScript ](#tab-panel-3587)
 
 src/index.js
 
@@ -188,8 +188,8 @@ You can use [any of the models available in Workers AI](https://developers.cloud
 
 Workers AI supports streaming responses by setting `stream: true`. Use streaming to avoid buffering and delaying responses, especially for larger models or reasoning models.
 
-* [  JavaScript ](#tab-panel-3776)
-* [  TypeScript ](#tab-panel-3777)
+* [  JavaScript ](#tab-panel-3580)
+* [  TypeScript ](#tab-panel-3581)
 
 src/index.js
 
@@ -278,8 +278,8 @@ export class MyAgent extends Agent<Env> {
 
 Your Wrangler configuration needs an `ai` binding:
 
-* [  wrangler.jsonc ](#tab-panel-3770)
-* [  wrangler.toml ](#tab-panel-3771)
+* [  wrangler.jsonc ](#tab-panel-3574)
+* [  wrangler.toml ](#tab-panel-3575)
 
 JSONC
 
@@ -313,8 +313,8 @@ binding = "AI"
 
 You can use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) directly from an Agent by specifying a [gateway configuration](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) when calling the AI binding. Model routing lets you route requests across providers based on availability, rate limits, or cost budgets.
 
-* [  JavaScript ](#tab-panel-3780)
-* [  TypeScript ](#tab-panel-3781)
+* [  JavaScript ](#tab-panel-3584)
+* [  TypeScript ](#tab-panel-3585)
 
 src/index.js
 
@@ -419,8 +419,8 @@ export class MyAgent extends Agent<Env> {
 
 The `ai` binding in your Wrangler configuration is shared across both Workers AI and AI Gateway.
 
-* [  wrangler.jsonc ](#tab-panel-3772)
-* [  wrangler.toml ](#tab-panel-3773)
+* [  wrangler.jsonc ](#tab-panel-3576)
+* [  wrangler.toml ](#tab-panel-3577)
 
 JSONC
 
@@ -454,7 +454,7 @@ Visit the [AI Gateway documentation](https://developers.cloudflare.com/ai-gatewa
 
 ## AI SDK
 
-The [AI SDK ↗](https://sdk.vercel.ai/docs/introduction) provides a unified API for text generation, tool calling, structured responses, and more. It works with any provider that has an AI SDK adapter, including Workers AI via [workers-ai-provider ↗](https://www.npmjs.com/package/workers-ai-provider).
+The [AI SDK ↗](https://ai-sdk.dev/docs/introduction) provides a unified API for text generation, tool calling, structured responses, and more. It works with any provider that has an AI SDK adapter, including Workers AI via [workers-ai-provider ↗](https://www.npmjs.com/package/workers-ai-provider).
 
  npm  yarn  pnpm  bun 
 
@@ -474,8 +474,8 @@ pnpm add ai workers-ai-provider
 bun add ai workers-ai-provider
 ```
 
-* [  JavaScript ](#tab-panel-3778)
-* [  TypeScript ](#tab-panel-3779)
+* [  JavaScript ](#tab-panel-3582)
+* [  TypeScript ](#tab-panel-3583)
 
 src/index.js
 
@@ -574,8 +574,8 @@ pnpm add ai @ai-sdk/openai
 bun add ai @ai-sdk/openai
 ```
 
-* [  JavaScript ](#tab-panel-3774)
-* [  TypeScript ](#tab-panel-3775)
+* [  JavaScript ](#tab-panel-3578)
+* [  TypeScript ](#tab-panel-3579)
 
 src/index.js
 
@@ -649,8 +649,8 @@ Agents can call models across any service that supports the OpenAI API. For exam
 
 Agents can stream responses back over HTTP using Server-Sent Events (SSE) from within an `onRequest` handler, or by using the native [WebSocket API](https://developers.cloudflare.com/agents/api-reference/websockets/) to stream responses back to a client.
 
-* [  JavaScript ](#tab-panel-3784)
-* [  TypeScript ](#tab-panel-3785)
+* [  JavaScript ](#tab-panel-3588)
+* [  TypeScript ](#tab-panel-3589)
 
 src/index.js
 

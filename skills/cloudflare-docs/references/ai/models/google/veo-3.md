@@ -65,8 +65,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Cinematic Scene**  — Widescreen cinematic video in 1080p 
@@ -108,8 +106,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Vertical Video**  — Portrait orientation for social media 
 
 TypeScript
@@ -149,8 +145,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Short Format**  — Short video for social media posts 
 
 TypeScript
@@ -187,8 +181,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Silent Video**  — Video without audio generation 
 
@@ -227,12 +219,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-176)
-* [ Output ](#tab-panel-177)
+* [ Input ](#tab-panel-44)
+* [ Output ](#tab-panel-45)
 
 prompt
 

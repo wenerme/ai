@@ -61,8 +61,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Portrait Video**  — Vertical video for social media 
@@ -100,8 +98,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Nature Close-up**  — Close-up wildlife shot in 16:9 
 
 TypeScript
@@ -137,8 +133,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Cinematic Scene**  — Longer duration cinematic video 
 
 TypeScript
@@ -173,8 +167,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Image-to-Video**  — Animate an existing image 
 
@@ -213,8 +205,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Reproducible Generation**  — Use seed for consistent results 
 
 TypeScript
@@ -249,8 +239,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **With Content Moderation**  — Adjust content moderation settings 
 
@@ -291,12 +279,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-346)
-* [ Output ](#tab-panel-347)
+* [ Input ](#tab-panel-108)
+* [ Output ](#tab-panel-109)
 
 prompt
 

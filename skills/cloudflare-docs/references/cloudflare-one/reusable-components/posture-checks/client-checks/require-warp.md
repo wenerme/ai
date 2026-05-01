@@ -28,7 +28,7 @@ Cloudflare One enables you to restrict access to your applications to devices ru
 
 ## 1\. Enable the WARP check
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Ensure that _Allow Secure Web Gateway to proxy traffic_\* is enabled.
 3. Go to **Reusable components** \> **Posture checks**.
 4. In **Cloudflare One Client checks**, select **Add a check**.
@@ -36,7 +36,7 @@ Cloudflare One enables you to restrict access to your applications to devices ru
 
 ## 2\. Add the check to an Access policy
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate the application for which you want to require WARP. Select **Configure**.
 3. In the **Policies** tab, create a new Access policy or edit an existing policy.
 4. In the policy builder, add an Include or Require rule which uses the _WARP_ selector. Save the policy.

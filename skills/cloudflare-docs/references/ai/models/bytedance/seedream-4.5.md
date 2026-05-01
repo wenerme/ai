@@ -56,36 +56,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-114)
-* [ Output ](#tab-panel-115)
-
-```
-
-{
-
-    "prompt": "A cozy reading nook with floor-to-ceiling bookshelves and a comfortable armchair"
-
-}
-
-
-```
-
-```
-
-{
-
-    "images": [
-
-        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/simple-generation-0.jpeg"
-
-    ]
-
-}
-
-
-```
+![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/simple-generation-0.jpeg) 
 
 ## Examples
 
@@ -124,40 +95,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-116)
-* [ Output ](#tab-panel-117)
-
-```
-
-{
-
-    "prompt": "A hyperrealistic still life painting of fresh fruit on an antique wooden table with dramatic chiaroscuro lighting",
-
-    "size": "4K",
-
-    "aspect_ratio": "4:3"
-
-}
-
-
-```
-
-```
-
-{
-
-    "images": [
-
-        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/high-resolution-0.jpeg"
-
-    ]
-
-}
-
-
-```
+![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/high-resolution-0.jpeg) 
 
 **Image-to-Image**  — Edit using reference images 
 
@@ -198,44 +136,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-118)
-* [ Output ](#tab-panel-119)
-
-```
-
-{
-
-    "prompt": "Transform this scene into a winter wonderland with snow covering everything",
-
-    "image_input": [
-
-        "https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg"
-
-    ],
-
-    "aspect_ratio": "match_input_image"
-
-}
-
-
-```
-
-```
-
-{
-
-    "images": [
-
-        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/image-to-image-0.jpeg"
-
-    ]
-
-}
-
-
-```
+![Image-to-Image](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/image-to-image-0.jpeg) 
 
 **Sequential Generation**  — Generate multiple related images 
 
@@ -274,42 +175,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-120)
-* [ Output ](#tab-panel-121)
-
-```
-
-{
-
-    "prompt": "A character design sheet for a fantasy warrior: front view, side view, and back view",
-
-    "aspect_ratio": "16:9",
-
-    "sequential_image_generation": "auto",
-
-    "max_images": 3
-
-}
-
-
-```
-
-```
-
-{
-
-    "images": [
-
-        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/sequential-generation-0.jpeg"
-
-    ]
-
-}
-
-
-```
+![Sequential Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/sequential-generation-0.jpeg) 
 
 **Multi-Image Edit**  — Combine multiple reference images 
 
@@ -352,51 +218,12 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-122)
-* [ Output ](#tab-panel-123)
-
-```
-
-{
-
-    "prompt": "Combine the style of the first image with the subject from the second image",
-
-    "image_input": [
-
-        "https://replicate.delivery/xezq/TRYcLgNMrBpPJVq09ICKXWe4Z8d6olzpK5vtQPOB8O23ZaMLA/tmpaecga26m.jpg",
-
-        "https://replicate.delivery/xezq/1SbAc0aXYXbVD9doyrdCW78hYufVefMsaJXBrETN7Lu2npxsA/tmphvkx7emy.jpg"
-
-    ],
-
-    "size": "2K"
-
-}
-
-
-```
-
-```
-
-{
-
-    "images": [
-
-        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/multi-image-edit-0.jpeg"
-
-    ]
-
-}
-
-
-```
+![Multi-Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/multi-image-edit-0.jpeg) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-124)
-* [ Output ](#tab-panel-125)
+* [ Input ](#tab-panel-26)
+* [ Output ](#tab-panel-27)
 
 prompt
 

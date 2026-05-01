@@ -4,14 +4,10 @@
 
 # Organization - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Organization endpoints
 List all members of the organization associated with the authenticated management key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listOrganizationMembers" method="get" path="/organization/members" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

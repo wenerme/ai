@@ -55,7 +55,7 @@ console.log(response)
 
 ```
 
-Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/simple-generation.png) 
+![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/simple-generation.png) 
 
 ## Examples
 
@@ -92,7 +92,7 @@ console.log(response)
 
 ```
 
-Response200 ![High Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/high-quality.png) 
+![High Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/high-quality.png) 
 
 **Custom Size**  — Generate a portrait-oriented image 
 
@@ -127,7 +127,7 @@ console.log(response)
 
 ```
 
-Response200 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/custom-size.png) 
+![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/custom-size.png) 
 
 **WebP Output**  — Generate an image in WebP format for smaller file size 
 
@@ -164,7 +164,7 @@ console.log(response)
 
 ```
 
-Response200 ![WebP Output](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/webp-output.webp) 
+![WebP Output](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/webp-output.webp) 
 
 **Image Edit**  — Edit an existing image by providing it as base64 (a raw string or a data:image/{png|jpeg|webp};base64,... URI). This routes the call to OpenAI's /v1/images/edits endpoint. The example uses a tiny 32x32 smiley-face PNG - real inputs are the full base64 encoding of your source image. 
 
@@ -201,12 +201,12 @@ console.log(response)
 
 ```
 
-Response200 ![Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/image-edit.png) 
+![Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-2/image-edit.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-316)
-* [ Output ](#tab-panel-317)
+* [ Input ](#tab-panel-88)
+* [ Output ](#tab-panel-89)
 
 prompt
 

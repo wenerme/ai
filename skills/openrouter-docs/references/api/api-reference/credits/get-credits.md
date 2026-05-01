@@ -4,7 +4,7 @@
 
 # Get remaining credits
 
-GET https://openrouter.ai/api/v1/credits
+GET https://openrouter.ai/api/v1//credits
 
 Get total credits purchased and used for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /credits:
+  //credits:
     get:
       operationId: get-credits
       summary: Get remaining credits
@@ -192,10 +192,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Credits_getCredits_example
 import requests
 
-url = "https://openrouter.ai/api/v1/credits"
+url = "https://openrouter.ai/api/v1//credits"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -204,8 +204,8 @@ response = requests.get(url, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/credits';
+```javascript Credits_getCredits_example
+const url = 'https://openrouter.ai/api/v1//credits';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -217,7 +217,7 @@ try {
 }
 ```
 
-```go
+```go Credits_getCredits_example
 package main
 
 import (
@@ -228,7 +228,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/credits"
+	url := "https://openrouter.ai/api/v1//credits"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -245,11 +245,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Credits_getCredits_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/credits")
+url = URI("https://openrouter.ai/api/v1//credits")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -261,22 +261,22 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Credits_getCredits_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/credits")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//credits")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
 
-```php
+```php Credits_getCredits_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/credits', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1//credits', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -285,21 +285,21 @@ $response = $client->request('GET', 'https://openrouter.ai/api/v1/credits', [
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Credits_getCredits_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/credits");
+var client = new RestClient("https://openrouter.ai/api/v1//credits");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Credits_getCredits_example
 import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/credits")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//credits")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

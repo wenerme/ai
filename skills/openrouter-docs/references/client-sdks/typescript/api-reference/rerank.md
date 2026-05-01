@@ -4,14 +4,10 @@
 
 # Rerank - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Rerank endpoints
 Submits a rerank request to the rerank router
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="createRerank" method="post" path="/rerank" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

@@ -147,7 +147,7 @@ try {
 
 While any `keepAlive` ref is held, an alarm fires every 30 seconds that resets the inactivity timer. When all disposers are called, alarms stop and the DO can go idle naturally.
 
-The heartbeat is invisible to `getSchedules()` — no schedule rows are created. It does not conflict with your own schedules; the alarm system multiplexes all schedules and the keepAlive heartbeat through a single alarm slot.
+The heartbeat is invisible to `listSchedules()` — no schedule rows are created. It does not conflict with your own schedules; the alarm system multiplexes all schedules and the keepAlive heartbeat through a single alarm slot.
 
 ### Configurable interval
 
@@ -217,6 +217,8 @@ type FiberRecoveryContext = {
 
   snapshot: unknown | null;
 
+  createdAt: number;
+
 };
 
 
@@ -230,19 +232,19 @@ type FiberRecoveryContext = {
 
 runFiber("work", fn)
 
-  ├─ INSERT row into cf_agents_runs
+  ├─ Persist recovery metadata
 
   ├─ keepAlive() — heartbeat starts
 
   ├─ Execute fn(ctx)
 
-  │    ├─ ctx.stash(data) → UPDATE snapshot in SQLite
+  │    ├─ ctx.stash(data) → persist snapshot
 
-  │    ├─ ctx.stash(data) → UPDATE snapshot in SQLite
+  │    ├─ ctx.stash(data) → persist snapshot
 
   │    └─ return result
 
-  ├─ DELETE row from cf_agents_runs
+  ├─ Delete recovery metadata
 
   ├─ keepAlive dispose — heartbeat stops
 
@@ -269,22 +271,30 @@ runFiber("work", fn)
 
   Recovery:
 
-  ├─ SELECT * FROM cf_agents_runs
+  ├─ Load interrupted fibers from storage
 
-  ├─ For each orphaned row:
+  ├─ For each interrupted fiber:
 
   │    ├─ Parse snapshot from JSON
 
   │    ├─ Call onFiberRecovered(ctx)
 
-  │    └─ DELETE the row
+  │    └─ Delete recovery metadata
 
-  └─ If onFiberRecovered calls runFiber() again → new row, normal execution
+  └─ If onFiberRecovered calls runFiber() again → new fiber, normal execution
 
 
 ```
 
 Both recovery paths call the same hook. The alarm path is critical for background agents that have no incoming client connections — the persisted alarm wakes the agent on its own.
+
+#### Sub-agents
+
+Fibers also work inside sub-agents. The fiber row and snapshots are stored in the sub-agent's own SQLite database, and `onFiberRecovered()` runs with the sub-agent as `this`.
+
+Sub-agents do not have independent alarm slots, so the top-level parent owns the physical heartbeat. When a sub-agent starts a fiber, the parent tracks enough metadata to route recovery checks back into the owning sub-agent, even if the child has no client connection or incoming RPC.
+
+This keeps recovery local to the child while preserving the single physical alarm slot owned by the parent. A recovered continuation can use `schedule()` from inside the facet; the parent owns the physical alarm and routes the callback back to the child.
 
 #### Error during execution
 
@@ -365,7 +375,7 @@ await this.runFiber("research", async (ctx) => {
 
       results,
 
-      pendingSteps: steps.slice(completed.length)
+      pendingSteps: steps.slice(completed.length),
 
     });
 
@@ -428,7 +438,7 @@ class ResearchAgent extends Agent {
 
             results,
 
-            pendingSteps: pendingSteps.slice(pendingSteps.indexOf(step) + 1)
+            pendingSteps: pendingSteps.slice(pendingSteps.indexOf(step) + 1),
 
           });
 
@@ -511,6 +521,7 @@ Called once per orphaned fiber row on agent restart. Override to implement recov
 * **`ctx.id`** — unique fiber ID
 * **`ctx.name`** — the name passed to `runFiber()`
 * **`ctx.snapshot`** — the last `stash()` data, or `null` if `stash()` was never called
+* **`ctx.createdAt`** — epoch milliseconds when `runFiber()` started. Compare against `Date.now()` to skip recoveries that are too old to replay safely.
 
 ### keepAlive()
 
@@ -524,6 +535,7 @@ Run an async function while keeping the DO alive. Heartbeat starts before `fn` a
 
 * [Long-running agents](https://developers.cloudflare.com/agents/concepts/long-running-agents/) — how fibers compose with schedules, plans, and async operations
 * [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) — `keepAlive` details and the alarm system
+* [Sub-agents](https://developers.cloudflare.com/agents/api-reference/sub-agents/) — durable execution and schedules inside sub-agents
 * [Workflows](https://developers.cloudflare.com/agents/concepts/workflows/) — durable multi-step execution outside the agent
 * [Chat agents](https://developers.cloudflare.com/agents/api-reference/chat-agents/) — `chatRecovery` and `onChatRecovery`
 

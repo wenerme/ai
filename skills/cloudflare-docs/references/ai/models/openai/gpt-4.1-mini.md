@@ -66,42 +66,22 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+The three laws of thermodynamics are fundamental principles that describe how energy behaves in physical systems:
 
-* [ Input ](#tab-panel-220)
-* [ Output ](#tab-panel-221)
+1. **First Law of Thermodynamics (Law of Energy Conservation):**  
+   Energy cannot be created or destroyed; it can only be transferred or transformed from one form to another. In other words, the total energy of an isolated system remains constant. Mathematically, it is often expressed as:  
+   \[
+   \Delta U = Q - W
+   \]  
+   where \(\Delta U\) is the change in internal energy of the system, \(Q\) is the heat added to the system, and \(W\) is the work done by the system.
 
-```
+2. **Second Law of Thermodynamics:**  
+   The total entropy of an isolated system can never decrease over time; it either increases or remains constant in ideal cases. Entropy is a measure of disorder or randomness. This law implies that natural processes tend to move toward a state of greater disorder, and it explains the direction of heat transfer (from hot to cold).  
 
-{
+3. **Third Law of Thermodynamics:**  
+   As the temperature of a system approaches absolute zero (0 Kelvin), the entropy of a perfect crystal approaches a constant minimum, which can be taken as zero. This means it is impossible to reach absolute zero temperature through any finite series of processes.
 
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "What are the three laws of thermodynamics?"
-
-        }
-
-    ]
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "The three laws of thermodynamics are fundamental principles that describe how energy behaves in physical systems:\n\n1. **First Law of Thermodynamics (Law of Energy Conservation):**  \n   Energy cannot be created or destroyed; it can only be transferred or transformed from one form to another. In other words, the total energy of an isolated system remains constant. Mathematically, it is often expressed as:  \n   \\[\n   \\Delta U = Q - W\n   \\]  \n   where \\(\\Delta U\\) is the change in internal energy of the system, \\(Q\\) is the heat added to the system, and \\(W\\) is the work done by the system.\n\n2. **Second Law of Thermodynamics:**  \n   The total entropy of an isolated system can never decrease over time; it either increases or remains constant in ideal cases. Entropy is a measure of disorder or randomness. This law implies that natural processes tend to move toward a state of greater disorder, and it explains the direction of heat transfer (from hot to cold).  \n\n3. **Third Law of Thermodynamics:**  \n   As the temperature of a system approaches absolute zero (0 Kelvin), the entropy of a perfect crystal approaches a constant minimum, which can be taken as zero. This means it is impossible to reach absolute zero temperature through any finite series of processes.\n\nIf you need, I can also explain the Zeroth Law, which is foundational and often included when discussing thermodynamics."
-
-}
-
-
-```
+If you need, I can also explain the Zeroth Law, which is foundational and often included when discussing thermodynamics.
 
 ## Examples
 
@@ -152,50 +132,27 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+To read a JSON file in Python, you can use the built-in `json` module. Here's a simple example:
 
-* [ Input ](#tab-panel-222)
-* [ Output ](#tab-panel-223)
+```python
+import json
 
+# Open the JSON file
+with open('data.json', 'r') as file:
+    # Load the content of the file into a Python dictionary
+    data = json.load(file)
+
+# Now you can use `data` like a regular Python dictionary
+print(data)
 ```
 
-{
+### Explanation:
+- `open('data.json', 'r')` opens the file in read mode.
+- `json.load(file)` reads the JSON content from the file and converts it into a Python dictionary (or list, depending on the JSON structure).
 
-    "messages": [
+Make sure your JSON file is properly formatted. If you want to handle errors, you can add a try-except block as well.
 
-        {
-
-            "role": "system",
-
-            "content": "You are a helpful coding assistant specializing in Python."
-
-        },
-
-        {
-
-            "role": "user",
-
-            "content": "How do I read a JSON file in Python?"
-
-        }
-
-    ]
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "To read a JSON file in Python, you can use the built-in `json` module. Here's a simple example:\n\n```python\nimport json\n\n# Open the JSON file\nwith open('data.json', 'r') as file:\n    # Load the content of the file into a Python dictionary\n    data = json.load(file)\n\n# Now you can use `data` like a regular Python dictionary\nprint(data)\n```\n\n### Explanation:\n- `open('data.json', 'r')` opens the file in read mode.\n- `json.load(file)` reads the JSON content from the file and converts it into a Python dictionary (or list, depending on the JSON structure).\n\nMake sure your JSON file is properly formatted. If you want to handle errors, you can add a try-except block as well.\n\nLet me know if you need help with that!"
-
-}
-
-
-```
+Let me know if you need help with that!
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
@@ -258,60 +215,18 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+Great! Here are some popular and scenic stops along the drive from San Francisco to Los Angeles:
 
-* [ Input ](#tab-panel-226)
-* [ Output ](#tab-panel-227)
+1. **Half Moon Bay** – Just south of San Francisco, it’s a charming coastal town with beautiful beaches and great spots for breakfast or coffee.
+2. **Santa Cruz** – Known for its classic boardwalk, beach vibes, and surfing culture.
+3. **Monterey** – Famous for the Monterey Bay Aquarium, Cannery Row, and stunning coastal views.
+4. **Carmel-by-the-Sea** – A picturesque town with art galleries, boutique shops, and beautiful beaches.
+5. **Big Sur** – One of the most scenic stretches of the California coast with dramatic cliffs, waterfalls (like McWay Falls), and state parks.
+6. **San Simeon** – Home to Hearst Castle, a historic mansion worth touring.
+7. **Pismo Beach** – Great for a beach break, known for its dunes and laid-back atmosphere.
+8. **Santa Barbara** – Often called the “American Riviera” for its Mediterranean climate, with beaches, shopping, and wine tasting.
 
-```
-
-{
-
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "I need help planning a road trip from San Francisco to Los Angeles."
-
-        },
-
-        {
-
-            "role": "assistant",
-
-            "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
-
-        },
-
-        {
-
-            "role": "user",
-
-            "content": "Yes, what are some good places to stop?"
-
-        }
-
-    ],
-
-    "max_completion_tokens": 2048
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "Great! Here are some popular and scenic stops along the drive from San Francisco to Los Angeles:\n\n1. **Half Moon Bay** – Just south of San Francisco, it’s a charming coastal town with beautiful beaches and great spots for breakfast or coffee.\n2. **Santa Cruz** – Known for its classic boardwalk, beach vibes, and surfing culture.\n3. **Monterey** – Famous for the Monterey Bay Aquarium, Cannery Row, and stunning coastal views.\n4. **Carmel-by-the-Sea** – A picturesque town with art galleries, boutique shops, and beautiful beaches.\n5. **Big Sur** – One of the most scenic stretches of the California coast with dramatic cliffs, waterfalls (like McWay Falls), and state parks.\n6. **San Simeon** – Home to Hearst Castle, a historic mansion worth touring.\n7. **Pismo Beach** – Great for a beach break, known for its dunes and laid-back atmosphere.\n8. **Santa Barbara** – Often called the “American Riviera” for its Mediterranean climate, with beaches, shopping, and wine tasting.\n\nWould you like recommendations for dining, accommodations, or activities at any of these stops?"
-
-}
-
-
-```
+Would you like recommendations for dining, accommodations, or activities at any of these stops?
 
 **Creative Writing**  — Longer completion for creative output 
 
@@ -356,44 +271,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-224)
-* [ Output ](#tab-panel-225)
-
-```
-
-{
-
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "Write a short story opening about a detective finding an unusual clue."
-
-        }
-
-    ],
-
-    "max_completion_tokens": 2048
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "Detective Elena Marsh crouched beside the shattered window, the cold wind tugging at her coat. Amid the splintered glass and upturned furniture, something caught her eye—a single, iridescent feather resting delicately on the floor. It shimmered with colors she couldn’t place, almost otherworldly. She reached down, careful not to disturb the scene further, and traced the feather’s fragile quill between her fingers. This wasn’t just a clue. It was a message. And Elena had a feeling it was about to rewrite everything she thought she knew about the case."
-
-}
-
-
-```
+Detective Elena Marsh crouched beside the shattered window, the cold wind tugging at her coat. Amid the splintered glass and upturned furniture, something caught her eye—a single, iridescent feather resting delicately on the floor. It shimmered with colors she couldn’t place, almost otherworldly. She reached down, careful not to disturb the scene further, and traced the feather’s fragile quill between her fingers. This wasn’t just a clue. It was a message. And Elena had a feeling it was about to rewrite everything she thought she knew about the case.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
@@ -442,701 +320,43 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+Recursion is a programming concept where a function calls itself in order to solve a problem. A recursive function typically has two main parts:
 
-* [ Input ](#tab-panel-228)
-* [ Output ](#tab-panel-229)
+1. **Base Case:** The condition under which the function stops calling itself. This prevents infinite recursion.
+2. **Recursive Case:** The part where the function calls itself with a smaller or simpler input, gradually approaching the base case.
 
+### Simple Example: Factorial of a Number
+
+The factorial of a number \( n \) (written as \( n! \)) is the product of all positive integers less than or equal to \( n \). It can be defined recursively as:
+
+- \( 0! = 1 \) (Base case)
+- \( n! = n \times (n-1)! \) (Recursive case)
+
+Here's how you can implement factorial recursively in Python:
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1                     # Base case
+    else:
+        return n * factorial(n - 1) # Recursive case
+
+print(factorial(5))  # Output: 120
 ```
 
-{
+### Explanation:
 
-    "messages": [
+- When `factorial(5)` is called, it returns \( 5 \times factorial(4) \).
+- `factorial(4)` returns \( 4 \times factorial(3) \), and so on.
+- Eventually, `factorial(0)` returns 1, stopping the recursion.
+- The results are then combined back up to give the final answer.
 
-        {
-
-            "role": "user",
-
-            "content": "Explain the concept of recursion with a simple example."
-
-        }
-
-    ],
-
-    "stream": true,
-
-    "stream_options": {
-
-        "include_usage": true
-
-    }
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": [
-
-        "Rec",
-
-        "ursion",
-
-        " is",
-
-        " a",
-
-        " programming",
-
-        " concept",
-
-        " where",
-
-        " a",
-
-        " function",
-
-        " calls",
-
-        " itself",
-
-        " in",
-
-        " order",
-
-        " to",
-
-        " solve",
-
-        " a",
-
-        " problem",
-
-        ".",
-
-        " A",
-
-        " recursive",
-
-        " function",
-
-        " typically",
-
-        " has",
-
-        " two",
-
-        " main",
-
-        " parts",
-
-        ":\n\n",
-
-        "1",
-
-        ".",
-
-        " **",
-
-        "Base",
-
-        " Case",
-
-        ":**",
-
-        " The",
-
-        " condition",
-
-        " under",
-
-        " which",
-
-        " the",
-
-        " function",
-
-        " stops",
-
-        " calling",
-
-        " itself",
-
-        ".",
-
-        " This",
-
-        " prevents",
-
-        " infinite",
-
-        " recursion",
-
-        ".\n",
-
-        "2",
-
-        ".",
-
-        " **",
-
-        "Recursive",
-
-        " Case",
-
-        ":**",
-
-        " The",
-
-        " part",
-
-        " where",
-
-        " the",
-
-        " function",
-
-        " calls",
-
-        " itself",
-
-        " with",
-
-        " a",
-
-        " smaller",
-
-        " or",
-
-        " simpler",
-
-        " input",
-
-        ",",
-
-        " gradually",
-
-        " approaching",
-
-        " the",
-
-        " base",
-
-        " case",
-
-        ".\n\n",
-
-        "###",
-
-        " Simple",
-
-        " Example",
-
-        ":",
-
-        " Factor",
-
-        "ial",
-
-        " of",
-
-        " a",
-
-        " Number",
-
-        "\n\n",
-
-        "The",
-
-        " factorial",
-
-        " of",
-
-        " a",
-
-        " number",
-
-        " \\(",
-
-        " n",
-
-        " \\",
-
-        ")",
-
-        " (",
-
-        "written",
-
-        " as",
-
-        " \\(",
-
-        " n",
-
-        "!",
-
-        " \\",
-
-        "))",
-
-        " is",
-
-        " the",
-
-        " product",
-
-        " of",
-
-        " all",
-
-        " positive",
-
-        " integers",
-
-        " less",
-
-        " than",
-
-        " or",
-
-        " equal",
-
-        " to",
-
-        " \\(",
-
-        " n",
-
-        " \\",
-
-        ").",
-
-        " It",
-
-        " can",
-
-        " be",
-
-        " defined",
-
-        " recursively",
-
-        " as",
-
-        ":\n\n",
-
-        "-",
-
-        " \\(",
-
-        " ",
-
-        "0",
-
-        "!",
-
-        " =",
-
-        " ",
-
-        "1",
-
-        " \\",
-
-        ")",
-
-        " (",
-
-        "Base",
-
-        " case",
-
-        ")\n",
-
-        "-",
-
-        " \\(",
-
-        " n",
-
-        "!",
-
-        " =",
-
-        " n",
-
-        " \\",
-
-        "times",
-
-        " (",
-
-        "n",
-
-        "-",
-
-        "1",
-
-        ")!",
-
-        " \\",
-
-        ")",
-
-        " (",
-
-        "Recursive",
-
-        " case",
-
-        ")\n\n",
-
-        "Here's",
-
-        " how",
-
-        " you",
-
-        " can",
-
-        " implement",
-
-        " factorial",
-
-        " recursively",
-
-        " in",
-
-        " Python",
-
-        ":\n\n",
-
-        "```",
-
-        "python",
-
-        "\n",
-
-        "def",
-
-        " factorial",
-
-        "(n",
-
-        "):\n",
-
-        "   ",
-
-        " if",
-
-        " n",
-
-        " ==",
-
-        " ",
-
-        "0",
-
-        ":\n",
-
-        "       ",
-
-        " return",
-
-        " ",
-
-        "1",
-
-        "                    ",
-
-        " #",
-
-        " Base",
-
-        " case",
-
-        "\n",
-
-        "   ",
-
-        " else",
-
-        ":\n",
-
-        "       ",
-
-        " return",
-
-        " n",
-
-        " *",
-
-        " factorial",
-
-        "(n",
-
-        " -",
-
-        " ",
-
-        "1",
-
-        ")",
-
-        " #",
-
-        " Recursive",
-
-        " case",
-
-        "\n\n",
-
-        "print",
-
-        "(f",
-
-        "actor",
-
-        "ial",
-
-        "(",
-
-        "5",
-
-        "))",
-
-        " ",
-
-        " #",
-
-        " Output",
-
-        ":",
-
-        " ",
-
-        "120",
-
-        "\n",
-
-        "``",
-
-        "`\n\n",
-
-        "###",
-
-        " Explanation",
-
-        ":\n\n",
-
-        "-",
-
-        " When",
-
-        " `",
-
-        "factor",
-
-        "ial",
-
-        "(",
-
-        "5",
-
-        ")`",
-
-        " is",
-
-        " called",
-
-        ",",
-
-        " it",
-
-        " returns",
-
-        " \\(",
-
-        " ",
-
-        "5",
-
-        " \\",
-
-        "times",
-
-        " factorial",
-
-        "(",
-
-        "4",
-
-        ")",
-
-        " \\",
-
-        ").\n",
-
-        "-",
-
-        " `",
-
-        "factor",
-
-        "ial",
-
-        "(",
-
-        "4",
-
-        ")`",
-
-        " returns",
-
-        " \\(",
-
-        " ",
-
-        "4",
-
-        " \\",
-
-        "times",
-
-        " factorial",
-
-        "(",
-
-        "3",
-
-        ")",
-
-        " \\",
-
-        "),",
-
-        " and",
-
-        " so",
-
-        " on",
-
-        ".\n",
-
-        "-",
-
-        " Eventually",
-
-        ",",
-
-        " `",
-
-        "factor",
-
-        "ial",
-
-        "(",
-
-        "0",
-
-        ")`",
-
-        " returns",
-
-        " ",
-
-        "1",
-
-        ",",
-
-        " stopping",
-
-        " the",
-
-        " recursion",
-
-        ".\n",
-
-        "-",
-
-        " The",
-
-        " results",
-
-        " are",
-
-        " then",
-
-        " combined",
-
-        " back",
-
-        " up",
-
-        " to",
-
-        " give",
-
-        " the",
-
-        " final",
-
-        " answer",
-
-        ".\n\n",
-
-        "This",
-
-        " shows",
-
-        " how",
-
-        " recursion",
-
-        " breaks",
-
-        " down",
-
-        " a",
-
-        " problem",
-
-        " into",
-
-        " smaller",
-
-        " identical",
-
-        " problems",
-
-        " until",
-
-        " reaching",
-
-        " the",
-
-        " simplest",
-
-        " one",
-
-        "."
-
-    ]
-
-}
-
-
-```
+This shows how recursion breaks down a problem into smaller identical problems until reaching the simplest one.
 
 ## Parameters
 
-* [ Input ](#tab-panel-230)
-* [ Output ](#tab-panel-231)
+* [ Input ](#tab-panel-70)
+* [ Output ](#tab-panel-71)
 
 ▶messages\[\]
 

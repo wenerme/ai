@@ -4,14 +4,10 @@
 
 # Rerank - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Rerank endpoints
 Submits a rerank request to the rerank router
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="createRerank" method="post" path="/rerank" */}
 
 ```go
 package main

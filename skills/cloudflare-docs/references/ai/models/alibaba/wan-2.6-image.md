@@ -55,7 +55,7 @@ console.log(response)
 
 ```
 
-Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/simple-generation.png) 
+![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/simple-generation.png) 
 
 ## Examples
 
@@ -92,7 +92,7 @@ console.log(response)
 
 ```
 
-Response200 ![Custom Dimensions](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/custom-dimensions.png) 
+![Custom Dimensions](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/custom-dimensions.png) 
 
 **Square Format**  — Square image for social media or product photos 
 
@@ -127,7 +127,7 @@ console.log(response)
 
 ```
 
-Response200 ![Square Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/square-format.png) 
+![Square Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/square-format.png) 
 
 **Negative Prompt**  — Guide generation away from unwanted elements 
 
@@ -162,7 +162,7 @@ console.log(response)
 
 ```
 
-Response200 ![Negative Prompt](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/negative-prompt.png) 
+![Negative Prompt](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/negative-prompt.png) 
 
 **Portrait Format**  — Tall vertical image for portraits 
 
@@ -197,12 +197,12 @@ console.log(response)
 
 ```
 
-Response200 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/portrait-format.png) 
+![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/portrait-format.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-28)
-* [ Output ](#tab-panel-29)
+* [ Input ](#tab-panel-8)
+* [ Output ](#tab-panel-9)
 
 prompt
 

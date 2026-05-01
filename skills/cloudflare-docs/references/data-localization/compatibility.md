@@ -12,12 +12,18 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Product compatibility
 
-The table below provides a summary of the Data Localization Suite product's behavior with Cloudflare products. Refer to the table legend for guidance on interpreting the table.
+The Data Localization Suite (DLS) has three features, each controlling a different aspect of where your data is handled:
 
-✅ Product works with no caveats   
-🚧 Product can be used with some caveats   
-✘ Product cannot be used   
-⚫️ Not applicable
+* **Geo Key Manager**: Controls where your private TLS keys are stored.
+* **Regional Services**: Controls which Cloudflare data centers can decrypt and process your HTTPS traffic.
+* **Customer Metadata Boundary (CMB)**: Controls which region stores your logs and analytics data.
+
+The tables below show whether each Cloudflare product is compatible with each DLS feature. If you see 🚧, check the footnote number for specific restrictions.
+
+✅ Fully compatible — no restrictions   
+🚧 Compatible with caveats — check the footnote for details   
+✘ Not compatible — this product cannot be used with this DLS feature   
+⚫️ Not applicable — this product does not interact with this DLS feature
 
 ## Application Performance
 
@@ -125,15 +131,15 @@ The table below provides a summary of the Data Localization Suite product's beha
 ## Footnotes
 
 1. You cannot yet specify region location for object storage itself. [↩](#user-content-fnref-29)
-2. [Outgoing zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/) will carry Earth region proxy IPs, thus making regional service dysfunctional when non-Cloudflare nameservers respond to the DNS queries. [↩](#user-content-fnref-33)
+2. If you use [outgoing zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/) (where Cloudflare sends your DNS records to non-Cloudflare nameservers), those transfers will include global Cloudflare IP addresses rather than region-specific ones. This means Regional Services will not function correctly when end users receive DNS answers from non-Cloudflare nameservers. [↩](#user-content-fnref-33)
 3. Only when using a Custom Domain set to a region, either through Workers or [Transform Rules](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/) within the same zone. [↩](#user-content-fnref-6)
 4. Logs / Analytics not available outside US region when using Customer Metadata Boundary. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3) [↩4](#user-content-fnref-1-4) [↩5](#user-content-fnref-1-5) [↩6](#user-content-fnref-1-6) [↩7](#user-content-fnref-1-7) [↩8](#user-content-fnref-1-8) [↩9](#user-content-fnref-1-9)
-5. Regular and Custom Tiered Cache works; Smart Tiered Caching not available with Regional Services. [↩](#user-content-fnref-2)
-6. Regular/Generic and Custom Tiered Cache works; Smart Tiered Caching does not work with Customer Metadata Boundary (CMB).  
+5. Regular and Custom Tiered Cache (where you define the caching hierarchy) work with Regional Services. Smart Tiered Caching (where Cloudflare automatically selects intermediate cache data centers) is not available with Regional Services. [↩](#user-content-fnref-2)
+6. Regular/Generic and Custom Tiered Cache work with Customer Metadata Boundary (CMB). Smart Tiered Caching (where Cloudflare automatically selects intermediate cache data centers) does not work with CMB.  
  With CMB set to EU, the Zone Dashboard **Caching** \> **Tiered Cache** \> **Smart Tiered Caching** option will not populate the Dashboard Analytics. [↩](#user-content-fnref-30)
 7. Web Analytics collects the [minimum amount of information](https://developers.cloudflare.com/web-analytics/data-metrics/data-origin-and-collection/). Alternatively, you can [exclude EU Visitors from RUM](https://developers.cloudflare.com/speed/observatory/rum-beacon/#rum-excluding-eeaeu). [↩](#user-content-fnref-43)
-8. [Adaptive DDoS Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/) is only supported for CMB = US. All other features are available to all CMB regions. [↩](#user-content-fnref-3) [↩2](#user-content-fnref-3-2)
-9. API Discovery, Volumetric Abuse Detection and [Sequence Analytics and Mitigation](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) will not work with CMB = EU. All other features are available to all CMB regions. [↩](#user-content-fnref-4)
+8. [Adaptive DDoS Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/) (which automatically adjusts DDoS rules based on your traffic patterns) is only supported when Customer Metadata Boundary is set to the US. All other DDoS protection features work with any CMB region. [↩](#user-content-fnref-3) [↩2](#user-content-fnref-3-2)
+9. The following API Shield sub-features do not work when CMB is set to EU: API Discovery (automatic detection of your API endpoints), Volumetric Abuse Detection (identifying unusually high API call volumes), and [Sequence Analytics and Mitigation](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) (tracking the order of API calls to detect misuse). All other API Shield features work with any CMB region. [↩](#user-content-fnref-4)
 10. Legacy Zone Analytics & Logs section not available outside US region when using CMB. Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) instead. [↩](#user-content-fnref-37)
 11. [Turnstile Analytics](https://developers.cloudflare.com/turnstile/turnstile-analytics/) are available. However, there are no regionalization guarantees for the Siteverify API yet. [↩](#user-content-fnref-38)
 12. Only when using a [Custom Domain](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/) set to a region. [↩](#user-content-fnref-36)
@@ -163,13 +169,13 @@ The table below provides a summary of the Data Localization Suite product's beha
 36. Can be localized to US FedRAMP Moderate Domestic region only. [↩](#user-content-fnref-15)
 37. Customer Metadata Boundary can be used to limit data transfer outside region, but Access User Logs will not be available outside US region. EU customers must use Logpush to retain logs. [↩](#user-content-fnref-16)
 38. Currently may only be used with US FedRAMP region. [↩](#user-content-fnref-17)
-39. When Cloudflare Tunnel connects to Cloudflare, the connectivity options available are the Global Region (default) and [US FedRAMP Moderate Domestic region](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region). For incoming requests to the Cloudflare Edge, Regional Services only applies when using [published applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/). In this case, the region associated with the DNS record will apply. [↩](#user-content-fnref-18)
+39. When Cloudflare Tunnel (a secure outbound connection from your network to Cloudflare) connects to Cloudflare, it can use either the Global Region (default, any data center worldwide) or the [US FedRAMP Moderate Domestic region](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) (data centers that meet the US government's FedRAMP security standard). For incoming web requests, Regional Services only applies when you have [published applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) (services exposed to users through the tunnel). In that case, the region associated with the DNS record will apply. [↩](#user-content-fnref-18)
 40. Dashboard Analytics are empty when using CMB outside the US region. Use [Logpush](https://developers.cloudflare.com/logs/logpush/) instead. [↩](#user-content-fnref-49)
 41. Uses Gateway HTTP and CASB. [↩](#user-content-fnref-19) [↩2](#user-content-fnref-19-2)
 42. DLP is part of Gateway HTTP, however, [DLP detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/) are not available outside US region when using Customer Metadata Boundary. [↩](#user-content-fnref-31)
 43. You can [bring your own certificate ↗](https://blog.cloudflare.com/bring-your-certificates-cloudflare-gateway/) to Gateway but these cannot yet be restricted to a specific region. [↩](#user-content-fnref-20)
-44. Gateway HTTP supports Regional Services. Gateway DNS does not yet support regionalization.  
- ICMP proxy and Mesh proxy are not available to Regional Services users. [File Sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/) (add-on) is incompatible with DLS. [↩](#user-content-fnref-21)
+44. Gateway HTTP (web traffic filtering) supports Regional Services. Gateway DNS (domain name filtering) does not yet support regionalization.  
+ ICMP proxy (forwarding network diagnostic traffic like ping) and Mesh proxy are not available to Regional Services users. [File Sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/) (an add-on that quarantines and scans suspicious files in an isolated environment) is incompatible with DLS. [↩](#user-content-fnref-21)
 45. Dashboard Analytics and Logs are empty when using CMB outside the US region. Use Logpush instead. [↩](#user-content-fnref-22)
 
 ```json

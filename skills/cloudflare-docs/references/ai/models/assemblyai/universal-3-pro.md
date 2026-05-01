@@ -55,32 +55,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-102)
-* [ Output ](#tab-panel-103)
-
-```
-
-{
-
-    "audio_url": "https://cdn.openai.com/API/docs/audio/alloy.wav"
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "The sun rises in the east and sets in the west. This simple fact has been observed by humans for thousands of years."
-
-}
-
-
-```
+The sun rises in the east and sets in the west. This simple fact has been observed by humans for thousands of years.
 
 ## Examples
 
@@ -115,34 +90,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-104)
-* [ Output ](#tab-panel-105)
-
-```
-
-{
-
-    "audio_url": "https://cdn.openai.com/API/docs/audio/echo.wav",
-
-    "language_code": "en"
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "In the heart of the city, there is a large park where people go to relax and enjoy nature. The park has a beautiful pond with ducks and swans."
-
-}
-
-
-```
+In the heart of the city, there is a large park where people go to relax and enjoy nature. The park has a beautiful pond with ducks and swans.
 
 **With Key Terms**  — Improve accuracy for domain-specific vocabulary 
 
@@ -185,44 +133,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-108)
-* [ Output ](#tab-panel-109)
-
-```
-
-{
-
-    "audio_url": "https://cdn.openai.com/API/docs/audio/nova.wav",
-
-    "keyterms_prompt": [
-
-        "Kubernetes",
-
-        "microservices",
-
-        "containerization",
-
-        "load balancer"
-
-    ]
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "In the kitchen, the aroma of freshly baked bread filled the air. The loaves were golden brown and crusty on the outside and soft and warm on the inside."
-
-}
-
-
-```
+In the kitchen, the aroma of freshly baked bread filled the air. The loaves were golden brown and crusty on the outside and soft and warm on the inside.
 
 **Speaker Diarization**  — Identify different speakers in the audio 
 
@@ -255,39 +166,12 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-106)
-* [ Output ](#tab-panel-107)
-
-```
-
-{
-
-    "audio_url": "https://cdn.openai.com/API/docs/audio/onyx.wav",
-
-    "speaker_labels": true
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "The train chugged along the tracks, carrying passengers to their destinations. The rhythmic sound of the wheels on the rails was soothing."
-
-}
-
-
-```
+The train chugged along the tracks, carrying passengers to their destinations. The rhythmic sound of the wheels on the rails was soothing.
 
 ## Parameters
 
-* [ Input ](#tab-panel-110)
-* [ Output ](#tab-panel-111)
+* [ Input ](#tab-panel-22)
+* [ Output ](#tab-panel-23)
 
 audio\_url
 

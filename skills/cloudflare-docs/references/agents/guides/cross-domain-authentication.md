@@ -44,8 +44,8 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-3978)
-* [  TypeScript ](#tab-panel-3979)
+* [  JavaScript ](#tab-panel-3782)
+* [  TypeScript ](#tab-panel-3783)
 
 JavaScript
 
@@ -113,8 +113,8 @@ function ChatComponent() {
 
 Build query values right before connect. Use Suspense for async setup.
 
-* [  JavaScript ](#tab-panel-3984)
-* [  TypeScript ](#tab-panel-3985)
+* [  JavaScript ](#tab-panel-3788)
+* [  TypeScript ](#tab-panel-3789)
 
 JavaScript
 
@@ -238,8 +238,8 @@ function App() {
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-3986)
-* [  TypeScript ](#tab-panel-3987)
+* [  JavaScript ](#tab-panel-3790)
+* [  TypeScript ](#tab-panel-3791)
 
 JavaScript
 
@@ -425,8 +425,8 @@ Pass credentials in the URL when connecting to another host, then verify on the 
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-3980)
-* [  TypeScript ](#tab-panel-3981)
+* [  JavaScript ](#tab-panel-3784)
+* [  TypeScript ](#tab-panel-3785)
 
 JavaScript
 
@@ -496,8 +496,8 @@ function StaticCrossDomainAuth() {
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-3982)
-* [  TypeScript ](#tab-panel-3983)
+* [  JavaScript ](#tab-panel-3786)
+* [  TypeScript ](#tab-panel-3787)
 
 JavaScript
 
@@ -595,8 +595,8 @@ function AsyncCrossDomainAuth() {
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-3988)
-* [  TypeScript ](#tab-panel-3989)
+* [  JavaScript ](#tab-panel-3792)
+* [  TypeScript ](#tab-panel-3793)
 
 JavaScript
 
@@ -778,6 +778,8 @@ export class SecureAgent extends Agent {
 [ Routing ](https://developers.cloudflare.com/agents/api-reference/routing/) Routing and authentication hooks. 
 
 [ WebSockets ](https://developers.cloudflare.com/agents/api-reference/websockets/) Real-time bidirectional communication. 
+
+[ GitHub OAuth agent example ](https://github.com/cloudflare/agents/tree/main/examples/auth-agent) Protect an app built with Agents using GitHub OAuth, HTTP-only cookies, and server-owned Durable Object routing. 
 
 [ Agents API ](https://developers.cloudflare.com/agents/api-reference/agents-api/) Complete API reference for the Agents SDK. 
 

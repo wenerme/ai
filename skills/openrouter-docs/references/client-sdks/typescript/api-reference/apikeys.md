@@ -4,14 +4,10 @@
 
 # APIKeys - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -31,8 +27,6 @@ API key management endpoints
 Get information on the API key associated with the current authentication session
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="getCurrentKey" method="get" path="/key" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -110,8 +104,6 @@ List all API keys for the authenticated user. [Management key](/docs/guides/over
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="list" method="get" path="/keys" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -188,8 +180,6 @@ run();
 Create a new API key for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="createKeys" method="post" path="/keys" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -286,8 +276,6 @@ Delete an existing API key. [Management key](/docs/guides/overview/auth/manageme
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="deleteKeys" method="delete" path="/keys/{hash}" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -370,8 +358,6 @@ Get a single API key by hash. [Management key](/docs/guides/overview/auth/manage
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="getKey" method="get" path="/keys/{hash}" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -453,8 +439,6 @@ run();
 Update an existing API key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="updateKeys" method="patch" path="/keys/{hash}" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

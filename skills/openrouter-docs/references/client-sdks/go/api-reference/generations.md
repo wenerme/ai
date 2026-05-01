@@ -4,14 +4,10 @@
 
 # Generations - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ Generation history endpoints
 Get request & usage metadata for a generation
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="getGeneration" method="get" path="/generation" */}
 
 ```go
 package main
@@ -88,8 +82,6 @@ func main() {
 Get stored prompt and completion content for a generation
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listGenerationContent" method="get" path="/generation/content" */}
 
 ```go
 package main

@@ -4,14 +4,10 @@
 
 # OAuth - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ OAuth authentication endpoints
 Exchange an authorization code from the PKCE flow for a user-controlled API key
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="exchangeAuthCodeForAPIKey" method="post" path="/auth/keys" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -118,8 +112,6 @@ run();
 Create an authorization code for the PKCE flow to generate a user-controlled API key
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="createAuthKeysCode" method="post" path="/auth/keys/code" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

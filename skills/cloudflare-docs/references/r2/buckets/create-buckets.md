@@ -52,16 +52,7 @@ wrangler r2 bucket list
 
 ```
 
-Delete a bucket with the [r2 bucket delete](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-delete) command. Note that the bucket must be empty and all objects must be deleted.
-
-Terminal window
-
-```
-
-wrangler r2 bucket delete BUCKET_TO_DELETE
-
-
-```
+To delete a bucket, you must first empty it and then delete it. For detailed instructions, refer to [Delete buckets](https://developers.cloudflare.com/r2/buckets/delete-buckets/).
 
 ## Notes
 

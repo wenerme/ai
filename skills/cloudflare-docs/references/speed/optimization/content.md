@@ -14,6 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 * [ Automatic Platform Optimization ](https://developers.cloudflare.com/automatic-platform-optimization/)
 * [ Content compression ](https://developers.cloudflare.com/speed/optimization/content/compression/)
+* [ Shared dictionaries ](https://developers.cloudflare.com/speed/optimization/content/shared-dictionaries/)
 * [ Cloudflare Fonts ](https://developers.cloudflare.com/speed/optimization/content/fonts/)
 * [ Early Hints ](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/)
 * [ Prefetch URLs ](https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/)

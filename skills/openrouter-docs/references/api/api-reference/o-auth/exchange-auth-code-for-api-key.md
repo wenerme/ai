@@ -4,7 +4,7 @@
 
 # Exchange authorization code for API key
 
-POST https://openrouter.ai/api/v1/auth/keys
+POST https://openrouter.ai/api/v1//auth/keys
 Content-Type: application/json
 
 Exchange an authorization code from the PKCE flow for a user-controlled API key
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /auth/keys:
+  //auth/keys:
     post:
       operationId: exchange-auth-code-for-api-key
       summary: Exchange authorization code for API key
@@ -212,10 +212,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python OAuth_exchangeAuthCodeForAPIKey_example
 import requests
 
-url = "https://openrouter.ai/api/v1/auth/keys"
+url = "https://openrouter.ai/api/v1//auth/keys"
 
 payload = {
     "code": "auth_code_abc123def456",
@@ -232,8 +232,8 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/auth/keys';
+```javascript OAuth_exchangeAuthCodeForAPIKey_example
+const url = 'https://openrouter.ai/api/v1//auth/keys';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -249,7 +249,7 @@ try {
 }
 ```
 
-```go
+```go OAuth_exchangeAuthCodeForAPIKey_example
 package main
 
 import (
@@ -261,7 +261,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/auth/keys"
+	url := "https://openrouter.ai/api/v1//auth/keys"
 
 	payload := strings.NewReader("{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_challenge_method\": \"S256\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\"\n}")
 
@@ -281,11 +281,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby OAuth_exchangeAuthCodeForAPIKey_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/auth/keys")
+url = URI("https://openrouter.ai/api/v1//auth/keys")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -299,24 +299,24 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java OAuth_exchangeAuthCodeForAPIKey_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/auth/keys")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//auth/keys")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_challenge_method\": \"S256\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\"\n}")
   .asString();
 ```
 
-```php
+```php OAuth_exchangeAuthCodeForAPIKey_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/auth/keys', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1//auth/keys', [
   'body' => '{
   "code": "auth_code_abc123def456",
   "code_challenge_method": "S256",
@@ -331,10 +331,10 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/auth/keys', [
 echo $response->getBody();
 ```
 
-```csharp
+```csharp OAuth_exchangeAuthCodeForAPIKey_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/auth/keys");
+var client = new RestClient("https://openrouter.ai/api/v1//auth/keys");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -342,7 +342,7 @@ request.AddParameter("application/json", "{\n  \"code\": \"auth_code_abc123def45
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift OAuth_exchangeAuthCodeForAPIKey_example
 import Foundation
 
 let headers = [
@@ -357,7 +357,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/auth/keys")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//auth/keys")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

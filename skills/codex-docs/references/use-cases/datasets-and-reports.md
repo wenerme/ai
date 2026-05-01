@@ -5,7 +5,6 @@ summary: Use Codex to clean data, join sources, explore hypotheses, model
   results, and package the output as a reusable artifact.
 skills:
   - token: $spreadsheet
-    url: https://github.com/openai/skills/tree/main/skills/.curated/spreadsheet
     description: Inspect CSV, TSV, and Excel files when formulas, exports, or quick
       spreadsheet checks matter.
   - token: $jupyter-notebook

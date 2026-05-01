@@ -51,7 +51,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 
 ### 2\. Add Centrify to Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Paste in the **Client ID**, **Client Secret**, **Centrify account URL** and **Application ID**.
 4. (Optional) To enable SCIM, refer to [Synchronize users and groups](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#synchronize-users-and-groups).

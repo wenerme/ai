@@ -55,7 +55,7 @@ There are three ways you can resolve this error:
 
 You can configure Cloudflare to send OPTIONS requests directly to your origin server. To bypass Access for OPTIONS requests:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate the origin that will be receiving OPTIONS requests and select **Configure**.
 3. Go to **Advanced settings** \> **Cross-Origin Resource Sharing (CORS) settings**.
 4. Turn on **Bypass options requests to origin**. This will remove all existing CORS settings for this application.
@@ -68,7 +68,7 @@ You can configure Cloudflare to respond to the OPTIONS request on your behalf. T
 
 To configure how Cloudflare responds to preflight requests:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate the origin that will be receiving OPTIONS requests and select **Configure**.
 3. Go to **Advanced settings** \> **Cross-Origin Resource Sharing (CORS) settings**.
 4. Configure these [CORS settings ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#the%5Fhttp%5Fresponse%5Fheaders) to match the response headers sent by your origin.  
@@ -124,7 +124,7 @@ Follow [these instructions](https://developers.cloudflare.com/cloudflare-one/acc
 
 ### 2\. Add a Service Auth policy
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find your `api.mysite.com` application and select **Configure**.
 3. Select the **Policies** tab.
 4. Add the following policy:  

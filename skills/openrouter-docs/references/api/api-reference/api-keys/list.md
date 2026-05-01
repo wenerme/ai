@@ -4,7 +4,7 @@
 
 # List API keys
 
-GET https://openrouter.ai/api/v1/keys
+GET https://openrouter.ai/api/v1//keys
 
 List all API keys for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /keys:
+  //keys:
     get:
       operationId: list
       summary: List API keys
@@ -319,10 +319,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python API Keys_list_example
 import requests
 
-url = "https://openrouter.ai/api/v1/keys"
+url = "https://openrouter.ai/api/v1//keys"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -331,8 +331,8 @@ response = requests.get(url, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/keys';
+```javascript API Keys_list_example
+const url = 'https://openrouter.ai/api/v1//keys';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -344,7 +344,7 @@ try {
 }
 ```
 
-```go
+```go API Keys_list_example
 package main
 
 import (
@@ -355,7 +355,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/keys"
+	url := "https://openrouter.ai/api/v1//keys"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -372,11 +372,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby API Keys_list_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/keys")
+url = URI("https://openrouter.ai/api/v1//keys")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -388,22 +388,22 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java API Keys_list_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/keys")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//keys")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
 
-```php
+```php API Keys_list_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/keys', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1//keys', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -412,21 +412,21 @@ $response = $client->request('GET', 'https://openrouter.ai/api/v1/keys', [
 echo $response->getBody();
 ```
 
-```csharp
+```csharp API Keys_list_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/keys");
+var client = new RestClient("https://openrouter.ai/api/v1//keys");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift API Keys_list_example
 import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/keys")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//keys")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

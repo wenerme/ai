@@ -24,7 +24,7 @@ The Cloudflare One platform allows organizations to move away from a patchwork o
 
 Refer to our [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/) to learn how to plan, deploy, and manage SASE architecture with Cloudflare.
 
-[ Get started ](https://developers.cloudflare.com/cloudflare-one/setup/) [ Cloudflare One dashboard ](https://one.dash.cloudflare.com/) [ Implementation guides ](https://developers.cloudflare.com/cloudflare-one/implementation-guides/) 
+[ Get started ](https://developers.cloudflare.com/cloudflare-one/setup/) [ Cloudflare dashboard ](https://dash.cloudflare.com/) [ Implementation guides ](https://developers.cloudflare.com/cloudflare-one/implementation-guides/) 
 
 ## Products
 

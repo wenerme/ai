@@ -16,7 +16,7 @@ Note
 
 Interested customers need to contact their account team to enable DNS Regionalisation.
 
-You can use Regional Services through the dashboard or via API.
+Regional Services controls which Cloudflare data centers can decrypt and process your HTTPS traffic. You can configure it through the dashboard or via API.
 
 ## Configure Regional Services in the dashboard
 

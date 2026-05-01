@@ -36,7 +36,7 @@ Before you begin, ensure you have completed the following:
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
 2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Use a Node version manager like [nvm ↗](https://github.com/nvm-sh/nvm) or [Volta ↗](https://volta.sh/) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
-3. Have a publicly accessible PostgreSQL or MySQL (or compatible) database. _If your database is in a private network (like a VPC)_, refer to [Connect to a private database](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/) for instructions on using Cloudflare Tunnel with Hyperdrive.
+3. Have a publicly accessible PostgreSQL or MySQL (or compatible) database. _If your database is in a private network_, refer to [Connect to a private database using Workers VPC](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/).
 
 ## 1\. Log in
 
@@ -94,8 +94,8 @@ This will create a new `hyperdrive-tutorial` directory. Your new `hyperdrive-tut
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-6219)
-* [  wrangler.toml ](#tab-panel-6220)
+* [  wrangler.jsonc ](#tab-panel-6037)
+* [  wrangler.toml ](#tab-panel-6038)
 
 JSONC
 
@@ -111,7 +111,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29"
+  "compatibility_date": "2026-04-30"
 
 }
 
@@ -126,7 +126,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-04-30"
 
 
 ```
@@ -157,8 +157,8 @@ To create your first Hyperdrive, you will need:
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
-* [ PostgreSQL ](#tab-panel-6213)
-* [ MySQL ](#tab-panel-6214)
+* [ PostgreSQL ](#tab-panel-6031)
+* [ MySQL ](#tab-panel-6032)
 
 ```
 
@@ -243,8 +243,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6221)
-* [  wrangler.toml ](#tab-panel-6222)
+* [  wrangler.jsonc ](#tab-panel-6039)
+* [  wrangler.toml ](#tab-panel-6040)
 
 JSONC
 
@@ -290,8 +290,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-6223)
-* [  wrangler.toml ](#tab-panel-6224)
+* [  wrangler.jsonc ](#tab-panel-6041)
+* [  wrangler.toml ](#tab-panel-6042)
 
 JSONC
 
@@ -343,8 +343,8 @@ Once you have created a Hyperdrive configuration and bound it to your Worker, yo
 
 ### Install a database driver
 
-* [ PostgreSQL ](#tab-panel-6217)
-* [ MySQL ](#tab-panel-6218)
+* [ PostgreSQL ](#tab-panel-6035)
+* [ MySQL ](#tab-panel-6036)
 
 To connect to your database, you will need a database driver which allows you to authenticate and query your database. For this tutorial, you will use [node-postgres (pg) ↗](https://node-postgres.com/), one of the most widely used PostgreSQL drivers.
 
@@ -428,8 +428,8 @@ With the driver installed, you can now create a Worker script that queries your 
 
 ### Write a Worker
 
-* [ PostgreSQL ](#tab-panel-6215)
-* [ MySQL ](#tab-panel-6216)
+* [ PostgreSQL ](#tab-panel-6033)
+* [ MySQL ](#tab-panel-6034)
 
 After you have set up your database, you will run a SQL query from within your Worker.
 
@@ -531,7 +531,7 @@ TypeScript
 
 // mysql2 v3.13.0 or later is required
 
-import { createConnection  } from 'mysql2/promise';
+import { createConnection } from "mysql2/promise";
 
 
 export interface Env {
@@ -547,8 +547,7 @@ export interface Env {
 
 export default {
 
- async fetch(request, env, ctx): Promise<Response> {
-
+  async fetch(request, env, ctx): Promise<Response> {
 
     // Create a new connection on each request. Hyperdrive maintains the underlying
 
@@ -573,20 +572,16 @@ export default {
 
       // Configure mysql2 to use static parsing instead of eval() parsing with disableEval
 
-      disableEval: true
+      disableEval: true,
 
     });
 
 
-    try{
+    try {
 
       // Sample query
 
-      const [results, fields] = await connection.query(
-
-        'SHOW tables;'
-
-      );
+      const [results, fields] = await connection.query("SHOW tables;");
 
 
       // Return result rows as JSON
@@ -595,17 +590,15 @@ export default {
 
         headers: {
 
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
 
-          'Access-Control-Allow-Origin': '*',
+          "Access-Control-Allow-Origin": "*",
 
         },
 
       });
 
-    }
-
-    catch(e){
+    } catch (e) {
 
       console.error(e);
 
@@ -619,8 +612,7 @@ export default {
 
     }
 
-
- },
+  },
 
 } satisfies ExportedHandler<Env>;
 

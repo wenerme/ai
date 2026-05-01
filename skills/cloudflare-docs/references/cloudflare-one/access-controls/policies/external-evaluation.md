@@ -61,8 +61,8 @@ The command will output the binding name and KV namespace ID, for example
    * `[[kv_namespaces]]`: Add the output generated in the previous step.  
    * `<TEAM_NAME>`: your Cloudflare One team name.
 
-* [  wrangler.jsonc ](#tab-panel-4679)
-* [  wrangler.toml ](#tab-panel-4680)
+* [  wrangler.jsonc ](#tab-panel-4483)
+* [  wrangler.toml ](#tab-panel-4484)
 
 JSONC
 
@@ -78,7 +78,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-04-30",
 
   "main": "index.js",
 
@@ -119,7 +119,7 @@ workers_dev = true
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-04-30"
 
 main = "index.js"
 
@@ -170,7 +170,7 @@ Other key formats (such as DSA) are not supported at this time.
 
 ### 4\. Create an External Evaluation rule
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
 2. Edit an existing policy or select **Add a policy**.
 3. Add the following rule to your policy:
 

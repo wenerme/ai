@@ -6,7 +6,6 @@ summary: Drag in or mention a messy CSV or spreadsheet, describe the problems
   unchanged.
 skills:
   - token: $spreadsheet
-    url: https://github.com/openai/skills/tree/main/skills/.curated/spreadsheet
     description: Inspect tabular files, clean columns, and produce reviewable outputs.
 bestFor:
   - CSV or spreadsheet exports with mixed dates, currencies, duplicates, summary

@@ -67,8 +67,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **High Resolution I2V**  — Animate a photo in 1080P 
@@ -112,8 +110,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Fast Processing**  — Quick I2V with fast pretreatment enabled 
 
 TypeScript
@@ -155,12 +151,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-190)
-* [ Output ](#tab-panel-191)
+* [ Input ](#tab-panel-58)
+* [ Output ](#tab-panel-59)
 
 first\_frame\_image
 

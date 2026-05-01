@@ -18,10 +18,10 @@ Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any 
 
 To connect your private network:
 
-* [ Dashboard ](#tab-panel-6518)
-* [ Terraform (v5) ](#tab-panel-6519)
+* [ Dashboard ](#tab-panel-6334)
+* [ Terraform (v5) ](#tab-panel-6335)
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com) and go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select **Create a tunnel**.
 3. Choose **Cloudflared** for the connector type and select **Next**.
 4. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
@@ -92,10 +92,10 @@ resource "vault_generic_secret" "tunnel_token" {
 }  
 ```
 5. Install `cloudflared` on a host machine in your private network and run the tunnel:  
-   * [ Linux ](#tab-panel-6514)  
-   * [ Windows ](#tab-panel-6515)  
-   * [ macOS ](#tab-panel-6516)  
-   * [ Docker ](#tab-panel-6517)  
+   * [ Linux ](#tab-panel-6330)  
+   * [ Windows ](#tab-panel-6331)  
+   * [ macOS ](#tab-panel-6332)  
+   * [ Docker ](#tab-panel-6333)  
    1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.  
    2. Run the following command:  
    Terminal window  

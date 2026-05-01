@@ -54,36 +54,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-126)
-* [ Output ](#tab-panel-127)
-
-```
-
-{
-
-    "prompt": "A cute robot watering plants in a sunny greenhouse"
-
-}
-
-
-```
-
-```
-
-{
-
-    "images": [
-
-        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/simple-generation-0.jpeg"
-
-    ]
-
-}
-
-
-```
+![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/simple-generation-0.jpeg) 
 
 ## Examples
 
@@ -124,42 +95,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-128)
-* [ Output ](#tab-panel-129)
-
-```
-
-{
-
-    "prompt": "A detailed technical blueprint of a futuristic spacecraft with annotations and measurements",
-
-    "size": "3K",
-
-    "aspect_ratio": "16:9",
-
-    "output_format": "png"
-
-}
-
-
-```
-
-```
-
-{
-
-    "images": [
-
-        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/high-resolution-png-0.png"
-
-    ]
-
-}
-
-
-```
+![High Resolution PNG](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/high-resolution-png-0.png) 
 
 **Portrait Photo**  — JPEG output for photographs 
 
@@ -198,42 +134,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-130)
-* [ Output ](#tab-panel-131)
-
-```
-
-{
-
-    "prompt": "A professional headshot portrait with soft studio lighting and a neutral gray background",
-
-    "size": "2K",
-
-    "aspect_ratio": "3:4",
-
-    "output_format": "jpeg"
-
-}
-
-
-```
-
-```
-
-{
-
-    "images": [
-
-        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg"
-
-    ]
-
-}
-
-
-```
+![Portrait Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg) 
 
 **Sequential Comic**  — Generate sequential comic panels 
 
@@ -272,42 +173,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-132)
-* [ Output ](#tab-panel-133)
-
-```
-
-{
-
-    "prompt": "A four-panel comic strip showing a cat discovering a cardboard box and deciding to sit in it",
-
-    "aspect_ratio": "4:3",
-
-    "sequential_image_generation": "auto",
-
-    "max_images": 4
-
-}
-
-
-```
-
-```
-
-{
-
-    "images": [
-
-        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/sequential-comic-0.jpeg"
-
-    ]
-
-}
-
-
-```
+![Sequential Comic](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/sequential-comic-0.jpeg) 
 
 **Image Variation**  — Create variation from reference 
 
@@ -348,51 +214,12 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-134)
-* [ Output ](#tab-panel-135)
-
-```
-
-{
-
-    "prompt": "Create a variation of this image in a watercolor painting style",
-
-    "image_input": [
-
-        "https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg"
-
-    ],
-
-    "size": "2K",
-
-    "aspect_ratio": "match_input_image"
-
-}
-
-
-```
-
-```
-
-{
-
-    "images": [
-
-        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/image-variation-0.jpeg"
-
-    ]
-
-}
-
-
-```
+![Image Variation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/image-variation-0.jpeg) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-136)
-* [ Output ](#tab-panel-137)
+* [ Input ](#tab-panel-28)
+* [ Output ](#tab-panel-29)
 
 prompt
 

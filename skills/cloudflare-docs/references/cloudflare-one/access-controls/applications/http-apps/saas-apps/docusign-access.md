@@ -28,7 +28,7 @@ This guide covers how to configure [Docusign ↗](https://support.docusign.com/s
 
 ## 1\. Create the Access for SaaS application
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Add an Application**.
 3. Select **SaaS**.
 4. Use the following configuration:  

@@ -4,7 +4,7 @@
 
 # List guardrails
 
-GET https://openrouter.ai/api/v1/guardrails
+GET https://openrouter.ai/api/v1//guardrails
 
 List all guardrails for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /guardrails:
+  //guardrails:
     get:
       operationId: list-guardrails
       summary: List guardrails
@@ -246,10 +246,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Guardrails_listGuardrails_example
 import requests
 
-url = "https://openrouter.ai/api/v1/guardrails"
+url = "https://openrouter.ai/api/v1//guardrails"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -258,8 +258,8 @@ response = requests.get(url, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/guardrails';
+```javascript Guardrails_listGuardrails_example
+const url = 'https://openrouter.ai/api/v1//guardrails';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -271,7 +271,7 @@ try {
 }
 ```
 
-```go
+```go Guardrails_listGuardrails_example
 package main
 
 import (
@@ -282,7 +282,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/guardrails"
+	url := "https://openrouter.ai/api/v1//guardrails"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -299,11 +299,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Guardrails_listGuardrails_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/guardrails")
+url = URI("https://openrouter.ai/api/v1//guardrails")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -315,22 +315,22 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Guardrails_listGuardrails_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/guardrails")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//guardrails")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
 
-```php
+```php Guardrails_listGuardrails_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/guardrails', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1//guardrails', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -339,21 +339,21 @@ $response = $client->request('GET', 'https://openrouter.ai/api/v1/guardrails', [
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Guardrails_listGuardrails_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/guardrails");
+var client = new RestClient("https://openrouter.ai/api/v1//guardrails");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Guardrails_listGuardrails_example
 import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

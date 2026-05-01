@@ -12,7 +12,11 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business)
 
-The right defense against malicious bot traffic depends on the traffic patterns on your site and your plan. This guide covers a layered approach using [Cloudflare Bots](https://developers.cloudflare.com/bots/), [Cloudflare Application Security](https://developers.cloudflare.com/waf/) (also known as Web Application Firewall or WAF), and [Turnstile](https://developers.cloudflare.com/turnstile/), from baseline protection to targeted custom rules. The core workflow uses features on Free, Pro, and Business plans, with callouts for Enterprise options. Most settings in this guide are configured per domain. [Select a domain ↗](https://dash.cloudflare.com/) in the Cloudflare dashboard before following the steps below.
+The right defense against malicious bot traffic depends on the traffic patterns on your site and your plan. This guide covers a layered approach using [Cloudflare Bots](https://developers.cloudflare.com/bots/), [Cloudflare Application Security](https://developers.cloudflare.com/waf/) (also known as Web Application Firewall or WAF), and [Turnstile](https://developers.cloudflare.com/turnstile/), from baseline protection to targeted custom rules. The core workflow uses features on Free, Pro, and Business plans, with callouts for Enterprise options.
+
+Note
+
+Most procedures in this guide are configured per domain or [zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones). Select your domain in the Cloudflare dashboard before starting. Turnstile is the exception: widgets are configured at the account level.
 
 ## Review your bot traffic
 
@@ -26,8 +30,8 @@ Bot Analytics requires a Business plan or above
 
 Bot score distribution data and detailed bot analytics are available on Business and Enterprise plans. Free and Pro plan users can review basic security metrics through [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/). For full bot analytics capabilities, refer to [Bot Analytics](https://developers.cloudflare.com/bots/bot-analytics/).
 
-* [  New dashboard ](#tab-panel-8208)
-* [ Old dashboard ](#tab-panel-8209)
+* [  New dashboard ](#tab-panel-8031)
+* [ Old dashboard ](#tab-panel-8032)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -69,8 +73,8 @@ For more details, refer to [Bot Fight Mode considerations](https://developers.cl
 
 ### Turn on Bot Fight Mode (Free plan)
 
-* [  New dashboard ](#tab-panel-8222)
-* [ Old dashboard ](#tab-panel-8223)
+* [  New dashboard ](#tab-panel-8045)
+* [ Old dashboard ](#tab-panel-8046)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -93,8 +97,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
-* [  New dashboard ](#tab-panel-8224)
-* [ Old dashboard ](#tab-panel-8225)
+* [  New dashboard ](#tab-panel-8047)
+* [ Old dashboard ](#tab-panel-8048)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -226,8 +230,8 @@ Rules that use counting expressions with response codes (such as counting only `
 
 **Short-window rule:** Challenge an IP that sends too many failed login requests in a short window.
 
-* [  New dashboard ](#tab-panel-8212)
-* [ Old dashboard ](#tab-panel-8213)
+* [  New dashboard ](#tab-panel-8035)
+* [ Old dashboard ](#tab-panel-8036)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -253,8 +257,8 @@ Rules that use counting expressions with response codes (such as counting only `
 
 **Long-window rule:** Block an IP that accumulates failed login attempts over a longer period.
 
-* [  New dashboard ](#tab-panel-8214)
-* [ Old dashboard ](#tab-panel-8215)
+* [  New dashboard ](#tab-panel-8037)
+* [ Old dashboard ](#tab-panel-8038)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -300,8 +304,8 @@ If the built-in settings do not cover your needs, create custom rules. Start by 
 
 Navigate to custom rules, then create both rules:
 
-* [  New dashboard ](#tab-panel-8216)
-* [ Old dashboard ](#tab-panel-8217)
+* [  New dashboard ](#tab-panel-8039)
+* [ Old dashboard ](#tab-panel-8040)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -345,8 +349,8 @@ Rate limiting options vary by plan
 
 Available periods, actions, and counting options vary by plan. The example below uses a 1-minute period with Managed Challenge. Refer to [Rate limiting rules availability](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability) for your plan's options.
 
-* [  New dashboard ](#tab-panel-8218)
-* [ Old dashboard ](#tab-panel-8219)
+* [  New dashboard ](#tab-panel-8041)
+* [ Old dashboard ](#tab-panel-8042)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -388,8 +392,8 @@ After you deploy bot protection rules, use [Security Events](https://developers.
 
 Security Events displays requests that Cloudflare security products acted on or flagged, including blocks, challenges, and flags.
 
-* [  New dashboard ](#tab-panel-8210)
-* [ Old dashboard ](#tab-panel-8211)
+* [  New dashboard ](#tab-panel-8033)
+* [ Old dashboard ](#tab-panel-8034)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -438,8 +442,8 @@ For details on Skip action configuration, refer to [Configure a rule with the Sk
 
 Bot activity appears in Security Events that your current rules do not catch. Bots that stay under rate limits or evade single-signal rules require combining multiple signals. For example, to challenge `POST` requests to `/login` that are not from verified bots:
 
-* [  New dashboard ](#tab-panel-8220)
-* [ Old dashboard ](#tab-panel-8221)
+* [  New dashboard ](#tab-panel-8043)
+* [ Old dashboard ](#tab-panel-8044)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

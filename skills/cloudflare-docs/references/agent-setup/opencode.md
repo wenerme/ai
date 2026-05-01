@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.  
 ```
 
 ## Cloudflare platform access

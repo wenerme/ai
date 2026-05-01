@@ -20,10 +20,10 @@ Some admins choose to test by authenticating with a [one-time PIN (OTP)](https:/
 
 To add an identity provider:
 
-* [ Dashboard ](#tab-panel-6419)
-* [ Terraform (v5) ](#tab-panel-6420)
+* [ Dashboard ](#tab-panel-6237)
+* [ Terraform (v5) ](#tab-panel-6238)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.
 3. Select the identity provider you want to add.  
 If you do not see your identity provider listed, these providers can typically still be enabled. If they support OIDC or OAuth, select the [generic OIDC](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/) option. If they support SAML, select the [generic SAML](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/) option. Cloudflare supports all SAML and OIDC providers and can integrate with the majority of OAuth providers. If your provider supports both SAML and OIDC, we recommend OIDC for ease of configuration.

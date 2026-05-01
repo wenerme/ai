@@ -4,14 +4,10 @@
 
 # Workspaces - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -32,8 +28,6 @@ Workspaces endpoints
 List all workspaces for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listWorkspaces" method="get" path="/workspaces" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -114,8 +108,6 @@ run();
 Create a new workspace for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="createWorkspace" method="post" path="/workspaces" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -213,8 +205,6 @@ Delete an existing workspace. The default workspace cannot be deleted. Workspace
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="deleteWorkspace" method="delete" path="/workspaces/{id}" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -298,8 +288,6 @@ Get a single workspace by ID or slug. [Management key](/docs/guides/overview/aut
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="getWorkspace" method="get" path="/workspaces/{id}" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -380,8 +368,6 @@ run();
 Update an existing workspace by ID or slug. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="updateWorkspace" method="patch" path="/workspaces/{id}" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -473,8 +459,6 @@ run();
 Add multiple organization members to a workspace. Members are assigned the same role they hold in the organization. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="bulkAddWorkspaceMembers" method="post" path="/workspaces/{id}/members/add" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -570,8 +554,6 @@ run();
 Remove multiple members from a workspace. Members with active API keys in the workspace cannot be removed. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="bulkRemoveWorkspaceMembers" method="post" path="/workspaces/{id}/members/remove" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

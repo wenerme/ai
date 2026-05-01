@@ -16,7 +16,7 @@ You can customize the login page that is displayed to end users when they go to 
 
 To change the appearance of your login page:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Reusable components** \> **Custom pages**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Find the **Access login page** setting and select **Manage**.
 3. Give the login page the look and feel of your organization by adding:  
    * Your organization's name  

@@ -155,8 +155,8 @@ replicaset.apps/httpbin-deployment-bc6689c5d   2         2         2       79s
 
 To create a Cloudflare Tunnel:
 
-1. Open a new browser tab and log in to [Cloudflare One](https://one.dash.cloudflare.com).
-2. Go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Open a new browser tab and log in to the [Cloudflare dashboard](https://dash.cloudflare.com/).
+2. Go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 3. Select **Create a tunnel**.
 4. Choose **Cloudflared** for the connector type and select **Next**.
 5. Enter a name for your tunnel (for example, `gke-tunnel`).

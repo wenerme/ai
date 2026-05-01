@@ -31,7 +31,7 @@ Some SaaS applications provide the Redirect URL after you [configure the SSO pro
 
 ## 2\. Add your application to Access
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Add an application**.
 3. Select **SaaS**.
 4. Select your **Application** from the drop-down menu. If your application is not listed, enter a custom name in the **Application** field and select the textbox that appears below.

@@ -48,7 +48,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 ![Assigning individuals and groups to Okta application](https://developers.cloudflare.com/_astro/okta-saml-4.CrMrhldk_17Ee6y.webp) 
 1. To retrieve the SAML provider information, go to the **Sign On** tab and select **View Setup Instructions**. A new page will open showing the **Identity Provider Single Sign-on URL**, **Identity Provider Issuer**, and **X.509 Certificate**. Save this information for configuring your Cloudflare One settings.
 ![Retrieving SAML provider information in Okta](https://developers.cloudflare.com/_astro/okta-saml-5.CWJU56SQ_1In0gM.webp) 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity provider**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity provider**.
 2. Under **Your identity providers**, select **Add new identity provider**, and select _SAML_.
 3. Fill in the following information:  
    * **Name**: Name your identity provider.  

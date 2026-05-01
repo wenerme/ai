@@ -4,14 +4,10 @@
 
 # VideoGeneration - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -29,8 +25,6 @@ Video Generation endpoints
 Submits a video generation request and returns a polling URL to check status
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="createVideos" method="post" path="/videos" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -128,8 +122,6 @@ Returns job status and content URLs when completed
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="getVideos" method="get" path="/videos/{jobId}" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -210,8 +202,6 @@ run();
 Streams the generated video content from the upstream provider
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listVideosContent" method="get" path="/videos/{jobId}/content" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -295,8 +285,6 @@ run();
 Returns a list of all available video generation models and their properties
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listVideosModels" method="get" path="/videos/models" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

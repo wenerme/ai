@@ -4,14 +4,10 @@
 
 # Models - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -28,8 +24,6 @@ Model information endpoints
 List all models and their properties
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="getModels" method="get" path="/models" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -107,8 +101,6 @@ Get total count of available models
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="listModelsCount" method="get" path="/models/count" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -184,8 +176,6 @@ run();
 List models filtered by user provider preferences, [privacy settings](https://openrouter.ai/docs/guides/privacy/provider-logging), and [guardrails](https://openrouter.ai/docs/guides/features/guardrails). If requesting through `eu.openrouter.ai/api/v1/...` the results will be filtered to models that satisfy [EU in-region routing](https://openrouter.ai/docs/guides/privacy/provider-logging#enterprise-eu-in-region-routing).
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listModelsUser" method="get" path="/models/user" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

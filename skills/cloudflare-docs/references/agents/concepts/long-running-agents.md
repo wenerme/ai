@@ -18,6 +18,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Build agents that persist for days, weeks, or months — surviving restarts, waking on demand, and managing work that spans far longer than any single request.
 
+The short version:
+
+* Agents are durable identities, not always-on processes.
+* State, SQL data, schedules, and fiber checkpoints survive hibernation and restarts.
+* In-memory variables, timers, open fetches, and local closures do not survive eviction.
+* Use `keepAlive()` for active work measured in minutes, `runFiber()` when work needs recovery, and Workflows for heavyweight multi-step jobs.
+* Use sub-agents when one parent coordinates many long-lived child contexts.
+
 ## Why Cloudflare for long-running agents
 
 Agents spend most of their time waiting. Waiting for user input (seconds to days), LLM responses (seconds to minutes), tool results (seconds to hours), human approvals (hours to days), or scheduled wake-ups (minutes to months). On a traditional VM or container, you pay for all that idle time. An agent that is 99% dormant and 1% active still costs you 100% of a server.
@@ -138,7 +146,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
     tasks: [],
 
-    plan: null
+    plan: null,
 
   };
 
@@ -185,9 +193,9 @@ export class ProjectManager extends Agent<ProjectState> {
 
       {
 
-        idempotent: true
+        idempotent: true,
 
-      }
+      },
 
     );
 
@@ -219,7 +227,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       project: this.state.name,
 
-      status: this.state.status
+      status: this.state.status,
 
     });
 
@@ -263,7 +271,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       const tasks = await this.callLLM(
 
-        `Break this into tasks: ${JSON.stringify(plan)}`
+        `Break this into tasks: ${JSON.stringify(plan)}`,
 
       );
 
@@ -280,7 +288,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       plan: result.plan,
 
-      tasks: result.tasks
+      tasks: result.tasks,
 
     });
 
@@ -375,7 +383,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
         "complete",
 
-        (ctx.snapshot as { result: unknown }).result
+        (ctx.snapshot as { result: unknown }).result,
 
       );
 
@@ -422,9 +430,9 @@ export class ProjectManager extends Agent<ProjectState> {
 
         branch: "main",
 
-        callback_url: `${this.url}/ci-callback?taskId=${task.id}`
+        callback_url: `${this.url}/ci-callback?taskId=${task.id}`,
 
-      })
+      }),
 
     });
 
@@ -435,7 +443,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       status: "in_progress",
 
-      externalJobId: pipelineId
+      externalJobId: pipelineId,
 
     });
 
@@ -454,7 +462,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       this.updateTask(taskId, {
 
-        status: result.status === "success" ? "complete" : "blocked"
+        status: result.status === "success" ? "complete" : "blocked",
 
       });
 
@@ -487,7 +495,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       method: "POST",
 
-      body: JSON.stringify({ prompt: task.title })
+      body: JSON.stringify({ prompt: task.title }),
 
     });
 
@@ -501,7 +509,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       jobId,
 
-      attempt: 1
+      attempt: 1,
 
     });
 
@@ -520,7 +528,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
     const response = await fetch(
 
-      `https://video-api.example.com/status/${payload.jobId}`
+      `https://video-api.example.com/status/${payload.jobId}`,
 
     );
 
@@ -531,7 +539,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       this.updateTask(payload.taskId, {
 
-        status: status.state === "complete" ? "complete" : "blocked"
+        status: status.state === "complete" ? "complete" : "blocked",
 
       });
 
@@ -546,7 +554,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       ...payload,
 
-      attempt: payload.attempt + 1
+      attempt: payload.attempt + 1,
 
     });
 
@@ -573,7 +581,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       taskId: task.id,
 
-      environment: "production"
+      environment: "production",
 
     });
 
@@ -581,7 +589,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       status: "in_progress",
 
-      externalJobId: instanceId
+      externalJobId: instanceId,
 
     });
 
@@ -594,7 +602,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
     instanceId: string,
 
-    result?: unknown
+    result?: unknown,
 
   ) {
 
@@ -633,7 +641,7 @@ ctx.stash({
 
   onFailure: "Notify team, schedule retry in 1 hour",
 
-  relevantContext: { taskId, planStep: 3 }
+  relevantContext: { taskId, planStep: 3 },
 
 });
 
@@ -711,7 +719,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
           ...s,
 
-          status: "pending" as const
+          status: "pending" as const,
 
         })),
 
@@ -719,9 +727,9 @@ export class ProjectManager extends Agent<ProjectState> {
 
         createdAt: new Date().toISOString(),
 
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
 
-      }
+      },
 
     });
 
@@ -754,7 +762,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       const updatedSteps = plan.steps.map((s) =>
 
-        s.id === step.id ? { ...s, status: "complete" as const, result } : s
+        s.id === step.id ? { ...s, status: "complete" as const, result } : s,
 
       );
 
@@ -770,9 +778,9 @@ export class ProjectManager extends Agent<ProjectState> {
 
           currentStep: plan.currentStep + 1,
 
-          updatedAt: new Date().toISOString()
+          updatedAt: new Date().toISOString(),
 
-        }
+        },
 
       });
 
@@ -783,7 +791,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       const updatedSteps = plan.steps.map((s) =>
 
-        s.id === step.id ? { ...s, status: "failed" as const } : s
+        s.id === step.id ? { ...s, status: "failed" as const } : s,
 
       );
 
@@ -797,9 +805,9 @@ export class ProjectManager extends Agent<ProjectState> {
 
           steps: updatedSteps,
 
-          updatedAt: new Date().toISOString()
+          updatedAt: new Date().toISOString(),
 
-        }
+        },
 
       });
 
@@ -836,7 +844,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       ResearchAgent,
 
-      `research-${task.id}`
+      `research-${task.id}`,
 
     );
 
@@ -855,9 +863,11 @@ export class ProjectManager extends Agent<ProjectState> {
 
 ```
 
-Sub-agents are independent Durable Objects. They have their own state, their own schedules, and their own lifecycle. The parent does not need to stay alive while the sub-agent works — it can start the work, hibernate, and be woken by a callback or scheduled check.
+Sub-agents have their own state, schedules, durable fibers, and lifecycle. They are colocated under the parent, but each child stores its own SQLite data and runs callbacks with the child as `this`.
 
-For the full `subAgent()` API — typed RPC stubs, abort, delete, storage isolation, and limitations — refer to [Sub-agents](https://developers.cloudflare.com/agents/api-reference/sub-agents/). For AI-specific sub-agent streaming (running full LLM turns through a child agent), refer to [Think: Sub-agent RPC](https://developers.cloudflare.com/agents/api-reference/think/#sub-agent-rpc-and-programmatic-turns).
+Because facets do not have independent alarm slots, the top-level parent owns the physical Durable Object alarm. The Agents SDK records which sub-agent owns each schedule or fiber recovery lease, wakes the parent, and routes the callback back into the child. The parent does not need to stay active while the sub-agent works — it can start the work, hibernate, and be woken by the child-owned schedule or recovery check.
+
+For the full `subAgent()` API — typed RPC stubs, client routing, access control, storage isolation, and alarm-backed APIs — refer to [Sub-agents](https://developers.cloudflare.com/agents/api-reference/sub-agents/). For AI-specific sub-agent streaming (running full LLM turns through a child agent), refer to [Think: Sub-agent RPC](https://developers.cloudflare.com/agents/api-reference/think/#sub-agent-rpc-and-programmatic-turns).
 
 ## Recovering interrupted LLM streams
 
@@ -875,7 +885,7 @@ import type {
 
   ChatRecoveryContext,
 
-  ChatRecoveryOptions
+  ChatRecoveryOptions,
 
 } from "@cloudflare/ai-chat";
 
@@ -887,7 +897,7 @@ class ProjectChat extends AIChatAgent<Env> {
 
   override async onChatRecovery(
 
-    ctx: ChatRecoveryContext
+    ctx: ChatRecoveryContext,
 
   ): Promise<ChatRecoveryOptions> {
 
@@ -896,6 +906,8 @@ class ProjectChat extends AIChatAgent<Env> {
     // ctx.recoveryData   — whatever you stashed via this.stash()
 
     // ctx.messages        — full conversation history
+
+    // ctx.createdAt       — when the interrupted turn started
 
     return {};
 
@@ -914,6 +926,8 @@ The right recovery strategy depends on the LLM provider:
 | OpenAI (Responses API) | Retrieve completed response         | Stash responseId during streaming, retrieve on recovery                     | Zero       |
 | Anthropic              | Synthetic continuation              | Persist partial, send a synthetic user message asking the model to continue | Medium     |
 | Other                  | Try prefill, fall back to synthetic | continueLastTurn() if the provider supports it, synthetic message otherwise | Varies     |
+
+Use `ctx.createdAt` to suppress stale recoveries. For example, if a recovered chat turn is older than a few minutes, you may persist the partial answer but skip automatic continuation to avoid surprising the user with an old response.
 
 ## Managing state over time
 
@@ -942,7 +956,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
     const toArchive = this.state.tasks.filter(
 
-      (t) => t.status === "complete" && (t.completedAt ?? 0) < cutoff
+      (t) => t.status === "complete" && (t.completedAt ?? 0) < cutoff,
 
     );
 
@@ -960,9 +974,9 @@ export class ProjectManager extends Agent<ProjectState> {
 
       tasks: this.state.tasks.filter(
 
-        (t) => !toArchive.some((a) => a.id === t.id)
+        (t) => !toArchive.some((a) => a.id === t.id),
 
-      )
+      ),
 
     });
 
@@ -971,7 +985,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
       status: ["complete", "errored"],
 
-      createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+      createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
 
     });
 
@@ -1004,7 +1018,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
   async completeProject() {
 
-    const schedules = this.getSchedules();
+    const schedules = await this.listSchedules();
 
     for (const schedule of schedules) {
 

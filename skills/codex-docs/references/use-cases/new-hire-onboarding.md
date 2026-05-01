@@ -6,8 +6,7 @@ summary: Use Codex to gather approved new-hire context, stage tracker updates,
   before anything is sent.
 skills:
   - token: $spreadsheet
-    url: https://github.com/openai/skills/tree/main/skills/.curated/spreadsheet
-    description: Inspect CSV, TSV, and Excel trackers; stage spreadsheet updates;
+    description: Inspect CSV, TSV, and Excel trackers, stage spreadsheet updates,
       and review tabular operations data before it becomes a source of truth.
   - token: google-drive
     url: https://github.com/openai/plugins/tree/main/plugins/google-drive

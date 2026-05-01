@@ -278,12 +278,16 @@ npx wrangler secret put GITHUB_CLIENT_SECRET
 
 ```
 
-```
-
-npx wrangler secret put COOKIE_ENCRYPTION_KEY # add any random string here e.g. openssl rand -hex 32
-
+Terminal window
 
 ```
+
+npx wrangler secret put COOKIE_ENCRYPTION_KEY
+
+
+```
+
+Use any random string for `COOKIE_ENCRYPTION_KEY`, for example the output of `openssl rand -hex 32`.
 
 Warning
 

@@ -84,5 +84,5 @@ They're useful when the refactor spans more than one module or takes more than o
 
 ## Use skills for repeatable patterns
 
-[Skills](https://developers.openai.com/codex/guides/skills) are useful when the same cleanup rules repeat across repos, services, or teams. Use framework-specific skills when available, add security and CI skills around risky cleanups, and create a team skill when you have a proven checklist for unused-code removal, module extraction, or legacy-pattern modernization.
+[Skills](https://developers.openai.com/codex/skills) are useful when the same cleanup rules repeat across repos, services, or teams. Use framework-specific skills when available, add security and CI skills around risky cleanups, and create a team skill when you have a proven checklist for unused-code removal, module extraction, or legacy-pattern modernization.
 If you end up doing the same modernization pass across more than one codebase, Codex can help turn the first successful pass into a reusable skill.

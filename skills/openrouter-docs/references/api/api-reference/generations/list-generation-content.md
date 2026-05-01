@@ -4,7 +4,7 @@
 
 # Get stored prompt and completion content for a generation
 
-GET https://openrouter.ai/api/v1/generation/content
+GET https://openrouter.ai/api/v1//generation/content
 
 Reference: https://openrouter.ai/docs/api/api-reference/generations/list-generation-content
 
@@ -16,7 +16,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /generation/content:
+  //generation/content:
     get:
       operationId: list-generation-content
       summary: Get stored prompt and completion content for a generation
@@ -347,10 +347,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Generations_listGenerationContent_example
 import requests
 
-url = "https://openrouter.ai/api/v1/generation/content"
+url = "https://openrouter.ai/api/v1//generation/content"
 
 querystring = {"id":"gen-1234567890"}
 
@@ -361,8 +361,8 @@ response = requests.get(url, headers=headers, params=querystring)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/generation/content?id=gen-1234567890';
+```javascript Generations_listGenerationContent_example
+const url = 'https://openrouter.ai/api/v1//generation/content?id=gen-1234567890';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -374,7 +374,7 @@ try {
 }
 ```
 
-```go
+```go Generations_listGenerationContent_example
 package main
 
 import (
@@ -385,7 +385,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/generation/content?id=gen-1234567890"
+	url := "https://openrouter.ai/api/v1//generation/content?id=gen-1234567890"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -402,11 +402,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Generations_listGenerationContent_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/generation/content?id=gen-1234567890")
+url = URI("https://openrouter.ai/api/v1//generation/content?id=gen-1234567890")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -418,22 +418,22 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Generations_listGenerationContent_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/generation/content?id=gen-1234567890")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//generation/content?id=gen-1234567890")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
 
-```php
+```php Generations_listGenerationContent_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/generation/content?id=gen-1234567890', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1//generation/content?id=gen-1234567890', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -442,21 +442,21 @@ $response = $client->request('GET', 'https://openrouter.ai/api/v1/generation/con
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Generations_listGenerationContent_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/generation/content?id=gen-1234567890");
+var client = new RestClient("https://openrouter.ai/api/v1//generation/content?id=gen-1234567890");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Generations_listGenerationContent_example
 import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/generation/content?id=gen-1234567890")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//generation/content?id=gen-1234567890")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

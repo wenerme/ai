@@ -61,8 +61,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **With Lyrics**  — Generate a song with custom lyrics 
@@ -104,8 +102,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Instrumental**  — Generate instrumental music without vocals 
 
 TypeScript
@@ -140,8 +136,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **High Quality Audio**  — Specify audio format and sample rate 
 
@@ -182,8 +176,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Auto-Generated Lyrics**  — Let the model generate lyrics from the prompt 
 
 TypeScript
@@ -217,12 +209,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-202)
-* [ Output ](#tab-panel-203)
+* [ Input ](#tab-panel-62)
+* [ Output ](#tab-panel-63)
 
 prompt
 

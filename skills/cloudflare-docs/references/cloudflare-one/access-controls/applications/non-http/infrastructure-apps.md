@@ -48,11 +48,11 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-4629)
-* [ API ](#tab-panel-4630)
-* [ Terraform ](#tab-panel-4631)
+* [ Dashboard ](#tab-panel-4433)
+* [ API ](#tab-panel-4434)
+* [ Terraform ](#tab-panel-4435)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
 3. In **Target hostname**, enter a user-friendly name for the target. We recommend using the server hostname, for example `production-server`. The target hostname does not need to be unique and can be reused for multiple targets. Hostnames are used to define the targets secured by an Access application; they are not used for DNS address resolution.  
 Hostname format restrictions  
@@ -138,11 +138,11 @@ Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-4632)
-* [ API ](#tab-panel-4633)
-* [ Terraform (v4) ](#tab-panel-4634)
+* [ Dashboard ](#tab-panel-4436)
+* [ API ](#tab-panel-4437)
+* [ Terraform (v4) ](#tab-panel-4438)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Add an application**.
 3. Select **Infrastructure**.
 4. Enter any name for the application.
@@ -301,7 +301,7 @@ The targets in this application are now secured by your infrastructure policies.
 
 By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:  
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:  
 | Selector                     | Operator | Value     | Action |  
 | ---------------------------- | -------- | --------- | ------ |  
 | Access Infrastructure Target | is       | _Present_ | Allow  |

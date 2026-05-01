@@ -1,11 +1,11 @@
 ---
 title: "Berget.AI | Models"
-description: "Use Berget.AI models with Mastra. 5 models available."
+description: "Use Berget.AI models with Mastra. 6 models available."
 ---
 
 # [Berget.AI logo]Berget.AI
 
-Access 5 Berget.AI models through Mastra's model router. Authentication is handled automatically using the `BERGET_API_KEY` environment variable.
+Access 6 Berget.AI models through Mastra's model router. Authentication is handled automatically using the `BERGET_API_KEY` environment variable.
 
 Learn more in the [Berget.AI documentation](https://api.berget.ai).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 8192,
     "inputCost": 0.99,
     "outputCost": 0.99
+  },
+  {
+    "model": "berget/mistralai/Mistral-Medium-3.5-128B",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 131072,
+    "inputCost": 1.65,
+    "outputCost": 5.5
   },
   {
     "model": "berget/mistralai/Mistral-Small-3.2-24B-Instruct-2506",

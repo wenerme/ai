@@ -63,8 +63,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Social Media Clip**  — Quick vertical video for stories 
@@ -103,8 +101,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Animated Loop**  — Short loopable animation 
 
@@ -145,8 +141,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Product Shot**  — Quick product video preview 
 
 TypeScript
@@ -184,12 +178,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-178)
-* [ Output ](#tab-panel-179)
+* [ Input ](#tab-panel-46)
+* [ Output ](#tab-panel-47)
 
 prompt
 

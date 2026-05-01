@@ -61,8 +61,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Storytelling**  — HD narration with the Fable voice 
@@ -100,8 +98,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Podcast Style**  — Conversational podcast narration 
 
 TypeScript
@@ -136,8 +132,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Shimmer Voice**  — Bright and expressive voice 
 
@@ -174,12 +168,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-332)
-* [ Output ](#tab-panel-333)
+* [ Input ](#tab-panel-94)
+* [ Output ](#tab-panel-95)
 
 text
 

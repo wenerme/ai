@@ -38,10 +38,10 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-* [ Dashboard ](#tab-panel-4914)
-* [ Terraform (v5) ](#tab-panel-4915)
+* [ Dashboard ](#tab-panel-4718)
+* [ Terraform (v5) ](#tab-panel-4719)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to either **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
 2. Add a policy and select the _Allow_ action. Alternatively, choose any existing _Allow_ policy.
 3. Under **Step 4 - Configure policy settings**, select **Edit** next to **Enforce Cloudflare One Client session duration**.
 4. Enter a session expiration time in `1h30m0s` format and save.

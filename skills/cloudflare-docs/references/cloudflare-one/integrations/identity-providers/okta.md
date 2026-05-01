@@ -77,17 +77,17 @@ Token claim expressions
 
 1. In the **General** tab, copy the **Client ID** and **Client secret**.  
 ![Finding your Client credentials in Okta](https://developers.cloudflare.com/_astro/okta-3.BzGr0OXt_293BnQ.webp)
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**. Select **Okta** as your identity provider.
 3. Fill in the following information:  
    * **Name**: Name your identity provider.  
    * **App ID**: Enter your Okta client ID.  
    * **Client secret**: Enter your Okta client secret.  
    * **Okta account URL**: Enter your [Okta domain ↗](https://developer.okta.com/docs/guides/find-your-domain/main/), for example `https://my-company.okta.com`.
-4. (Optional) Create an Okta API token and enter it in [Cloudflare One ↗](https://one.dash.cloudflare.com/) (the token can be read-only). This will prevent your Okta groups from failing if you have more than 100 groups.
+4. (Optional) Create an Okta API token and enter it in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Integrations** \> **Identity providers** (the token can be read-only). This will prevent your Okta groups from failing if you have more than 100 groups.
 5. (Optional) To configure [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims):  
    1. In Okta, create a [custom authorization server ↗](https://developer.okta.com/docs/guides/customize-authz-server/main/) and ensure that the `groups` scope is enabled.  
-   2. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), enter the **Authorization Server ID** obtained from Okta.  
+   2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), enter the **Authorization Server ID** obtained from Okta.  
    3. Under **Optional configurations**, enter the claims that you wish to add to your users' identity.
 6. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
 7. Select **Save**.
@@ -107,7 +107,7 @@ If you would like to only maintain one Okta app instance, Okta does support SAML
 
 ### 1\. Enable SCIM in Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Find the Okta integration and select **Edit**.
 3. Turn on **Enable SCIM**
 4. (Optional) Configure the following settings:

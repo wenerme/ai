@@ -101,11 +101,11 @@ describe("make a request to my Agent", () => {
 
     // Provide a valid URL that your Worker can use to route to your Agent
 
-    // If you are using routeAgentRequest, this will be /agent/:agent/:name
+    // If you are using routeAgentRequest, this will be /agents/:agent/:name
 
     const request = new Request<unknown, IncomingRequestCfProperties>(
 
-      "http://example.com/agent/my-agent/agent-123",
+      "http://example.com/agents/my-agent/agent-123",
 
     );
 
@@ -115,18 +115,18 @@ describe("make a request to my Agent", () => {
 
     await waitOnExecutionContext(ctx);
 
-    expect(await response.text()).toMatchObject({ hello: "from your agent" });
+    expect(await response.json()).toEqual({ hello: "from your agent" });
 
   });
 
 
   it("also responds with state", async () => {
 
-    const request = new Request("http://example.com/agent/my-agent/agent-123");
+    const request = new Request("http://example.com/agents/my-agent/agent-123");
 
     const response = await exports.default.fetch(request);
 
-    expect(await response.text()).toMatchObject({ hello: "from your agent" });
+    expect(await response.json()).toEqual({ hello: "from your agent" });
 
   });
 
@@ -143,11 +143,11 @@ Terminal window
 
 ```
 
-$ npm run test
+npm run test
 
 # or run vitest directly
 
-$ npx vitest
+npx vitest
 
 
 ```
@@ -174,7 +174,7 @@ Terminal window
 
 ```
 
-$ npx wrangler dev
+npx wrangler dev
 
 
 ```

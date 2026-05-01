@@ -16,16 +16,16 @@ Securely connect your private cloud to Cloudflare to build cross-cloud apps.
 
  Available on Free and Paid plans 
 
-Workers VPC allows you to connect your Workers to your private APIs and services in external clouds (AWS, Azure, GCP, on-premise, etc.) that are not accessible from the public Internet.
+Workers VPC allows you to connect your Workers to your private APIs, services, and databases in external clouds (AWS, Azure, GCP, on-premise, and others) that are not accessible from the public Internet.
 
-With Workers VPC, you can configure a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to establish secure, private connections from your private networks to Cloudflare. Then, you can configure a [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) for each service in the external private network you need to connect to, and use [VPC Service bindings](https://developers.cloudflare.com/workers-vpc/api/) to connect from Workers.
+With Workers VPC, you can configure a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to establish secure, private connections from your private networks to Cloudflare. Then, you can configure a [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) for each service in the external private network you need to connect to, and use [VPC Service bindings](https://developers.cloudflare.com/workers-vpc/api/) to connect from Workers. VPC Services support both HTTP and TCP service types, allowing you to connect to web APIs and databases (through [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)).
 
 Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
 
-* [ index.ts ](#tab-panel-8454)
-* [ wrangler.jsonc ](#tab-panel-8455)
+* [ index.ts ](#tab-panel-8277)
+* [ wrangler.jsonc ](#tab-panel-8278)
 
 TypeScript
 

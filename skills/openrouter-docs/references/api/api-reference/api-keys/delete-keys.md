@@ -4,7 +4,7 @@
 
 # Delete an API key
 
-DELETE https://openrouter.ai/api/v1/keys/{hash}
+DELETE https://openrouter.ai/api/v1//keys/{hash}
 
 Delete an existing API key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /keys/{hash}:
+  //keys/{hash}:
     delete:
       operationId: delete-keys
       summary: Delete an API key
@@ -220,21 +220,29 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python API Keys_deleteKeys_example
 import requests
 
-url = "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
+url = "https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
 
-headers = {"Authorization": "Bearer <token>"}
+payload = {}
+headers = {
+    "Authorization": "Bearer <token>",
+    "Content-Type": "application/json"
+}
 
-response = requests.delete(url, headers=headers)
+response = requests.delete(url, json=payload, headers=headers)
 
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943';
-const options = {method: 'DELETE', headers: {Authorization: 'Bearer <token>'}};
+```javascript API Keys_deleteKeys_example
+const url = 'https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943';
+const options = {
+  method: 'DELETE',
+  headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
+  body: '{}'
+};
 
 try {
   const response = await fetch(url, options);
@@ -245,22 +253,26 @@ try {
 }
 ```
 
-```go
+```go API Keys_deleteKeys_example
 package main
 
 import (
 	"fmt"
+	"strings"
 	"net/http"
 	"io"
 )
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
+	url := "https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
 
-	req, _ := http.NewRequest("DELETE", url, nil)
+	payload := strings.NewReader("{}")
+
+	req, _ := http.NewRequest("DELETE", url, payload)
 
 	req.Header.Add("Authorization", "Bearer <token>")
+	req.Header.Add("Content-Type", "application/json")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -273,65 +285,80 @@ func main() {
 }
 ```
 
-```ruby
+```ruby API Keys_deleteKeys_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
+url = URI("https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
 request = Net::HTTP::Delete.new(url)
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java API Keys_deleteKeys_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.delete("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
+HttpResponse<String> response = Unirest.delete("https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
   .header("Authorization", "Bearer <token>")
+  .header("Content-Type", "application/json")
+  .body("{}")
   .asString();
 ```
 
-```php
+```php API Keys_deleteKeys_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('DELETE', 'https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943', [
+$response = $client->request('DELETE', 'https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
   ],
 ]);
 
 echo $response->getBody();
 ```
 
-```csharp
+```csharp API Keys_deleteKeys_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943");
+var client = new RestClient("https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift API Keys_deleteKeys_example
 import Foundation
 
-let headers = ["Authorization": "Bearer <token>"]
+let headers = [
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
+]
+let parameters = [] as [String : Any]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")! as URL,
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "DELETE"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in

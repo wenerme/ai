@@ -18,6 +18,8 @@ Build a chat agent that streams AI responses, calls server-side tools, executes 
 
 **Time:** \~15 minutes
 
+This tutorial starts from a minimal Hello World Worker so you can see each moving part. If you want a complete starter app with the same core pieces already wired together, start with the [quick start](https://developers.cloudflare.com/agents/getting-started/quick-start/) and then return here to understand how the chat pieces fit together.
+
 **Prerequisites:**
 
 * Node.js 18+
@@ -51,8 +53,8 @@ npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
 
 Replace your `wrangler.jsonc` with:
 
-* [  wrangler.jsonc ](#tab-panel-3940)
-* [  wrangler.toml ](#tab-panel-3941)
+* [  wrangler.jsonc ](#tab-panel-3744)
+* [  wrangler.toml ](#tab-panel-3745)
 
 JSONC
 
@@ -66,7 +68,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-04-30",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -95,7 +97,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-04-30"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -131,8 +133,8 @@ Key settings:
 
 Create `src/server.ts`. This is where your agent lives:
 
-* [  JavaScript ](#tab-panel-3942)
-* [  TypeScript ](#tab-panel-3943)
+* [  JavaScript ](#tab-panel-3746)
+* [  TypeScript ](#tab-panel-3747)
 
 JavaScript
 
@@ -540,8 +542,8 @@ export default {
 
 Create `src/client.tsx`:
 
-* [  JavaScript ](#tab-panel-3944)
-* [  TypeScript ](#tab-panel-3945)
+* [  JavaScript ](#tab-panel-3748)
+* [  TypeScript ](#tab-panel-3749)
 
 JavaScript
 

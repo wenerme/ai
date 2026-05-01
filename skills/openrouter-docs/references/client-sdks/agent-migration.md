@@ -4,15 +4,11 @@
 
 # Migrating to @openrouter/agent
 
-{/* banner:start */}
-
 <Tip>
   Using an AI coding assistant? Install the migration skill
   to let your agent handle the import updates for you:
   `gh skill install OpenRouterTeam/skills openrouter-agent-migration`
 </Tip>
-
-{/* banner:end */}
 
 The agent toolkit (`callModel`, `tool`, stop conditions, etc.)
 has moved from `@openrouter/sdk` to a standalone

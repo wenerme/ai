@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 This page lists and defines common patterns for implementing AI agents, based on [Anthropic's patterns for building effective agents ↗](https://www.anthropic.com/research/building-effective-agents).
 
-Code samples use the [AI SDK ↗](https://sdk.vercel.ai/docs/foundations/agents), running in [Durable Objects](https://developers.cloudflare.com/durable-objects).
+Code samples use the [AI SDK ↗](https://ai-sdk.dev/docs/foundations/agents), running in [Durable Objects](https://developers.cloudflare.com/durable-objects).
 
 ## Prompt Chaining
 

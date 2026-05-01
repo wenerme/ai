@@ -20,6 +20,8 @@ Most AI applications today are stateless — they process a request, return a re
 
 Each agent runs on a [Durable Object](https://developers.cloudflare.com/durable-objects/) — a stateful micro-server with its own SQL database, WebSocket connections, and scheduling. Deploy once and Cloudflare runs your agents across its global network, scaling to tens of millions of instances. No infrastructure to manage, no sessions to reconstruct, no state to externalize.
 
+The mental model is simple: define a TypeScript class, give each real-world thing a stable name, and route requests or WebSocket connections to that named instance. The instance wakes when something happens, reads its durable state, does work, and hibernates when idle.
+
 ### Get started
 
 Three commands to a running agent. No API keys required — the starter uses [Workers AI](https://developers.cloudflare.com/workers-ai/) by default.
@@ -52,15 +54,15 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 * **Act on their own** — [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) on a delay, at a specific time, or on a cron. Agents can wake themselves up, do work, and go back to sleep — without a user present.
 * **Browse the web** — Give your agents [browser tools](https://developers.cloudflare.com/agents/api-reference/browse-the-web/) powered by the Chrome DevTools Protocol to scrape, screenshot, debug, and interact with web pages.
 * **Talk to users** — Build real-time [voice agents](https://developers.cloudflare.com/agents/api-reference/voice/) with speech-to-text, text-to-speech, and conversation persistence — audio streams over WebSocket.
-* **Orchestrate work** — Run multi-step [workflows](https://developers.cloudflare.com/agents/api-reference/run-workflows/) with automatic retries, or coordinate across multiple agents.
-* **React to events** — Handle [inbound email](https://developers.cloudflare.com/agents/api-reference/email/), HTTP requests, WebSocket messages, and state changes — all from the same class.
+* **Orchestrate work** — Run multi-step [workflows](https://developers.cloudflare.com/agents/api-reference/run-workflows/) with automatic retries, coordinate across [sub-agents](https://developers.cloudflare.com/agents/api-reference/sub-agents/), or run chat-capable [agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/) with retained streaming timelines.
+* **React to events** — Handle [inbound email](https://developers.cloudflare.com/agents/api-reference/email/) (see the [email agent example ↗](https://github.com/cloudflare/agents/tree/main/examples/email-agent)), HTTP requests, WebSocket messages, and state changes — all from the same class.
 
 ### How it works
 
 An agent is a TypeScript class. Methods marked with `@callable()` become typed RPC that clients can call directly over WebSocket.
 
-* [  JavaScript ](#tab-panel-2888)
-* [  TypeScript ](#tab-panel-2889)
+* [  JavaScript ](#tab-panel-2666)
+* [  TypeScript ](#tab-panel-2667)
 
 JavaScript
 
@@ -143,8 +145,8 @@ function Counter() {
 
 For AI chat, extend `AIChatAgent` instead. Messages are persisted automatically, streams resume on disconnect, and the React hook handles the UI.
 
-* [  JavaScript ](#tab-panel-2890)
-* [  TypeScript ](#tab-panel-2891)
+* [  JavaScript ](#tab-panel-2668)
+* [  TypeScript ](#tab-panel-2669)
 
 JavaScript
 

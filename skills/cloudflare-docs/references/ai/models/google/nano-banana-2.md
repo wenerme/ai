@@ -59,7 +59,7 @@ console.log(response)
 
 ```
 
-Response200 ![Futuristic City](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png) 
+![Futuristic City](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png) 
 
 ## Examples
 
@@ -98,7 +98,7 @@ console.log(response)
 
 ```
 
-Response200 ![Abstract Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png) 
+![Abstract Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png) 
 
 **With Google Search**  — Use web search grounding for current events 
 
@@ -135,7 +135,7 @@ console.log(response)
 
 ```
 
-Response200 ![With Google Search](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png) 
+![With Google Search](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png) 
 
 **High Resolution Portrait**  — 4K portrait with specific aspect ratio 
 
@@ -174,12 +174,12 @@ console.log(response)
 
 ```
 
-Response200 ![High Resolution Portrait](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg) 
+![High Resolution Portrait](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-172)
-* [ Output ](#tab-panel-173)
+* [ Input ](#tab-panel-40)
+* [ Output ](#tab-panel-41)
 
 prompt
 

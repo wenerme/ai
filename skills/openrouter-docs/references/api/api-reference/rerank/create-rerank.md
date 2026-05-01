@@ -4,7 +4,7 @@
 
 # Submit a rerank request
 
-POST https://openrouter.ai/api/v1/rerank
+POST https://openrouter.ai/api/v1//rerank
 Content-Type: application/json
 
 Submits a rerank request to the rerank router
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /rerank:
+  //rerank:
     post:
       operationId: create-rerank
       summary: Submit a rerank request
@@ -89,6 +89,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServiceUnavailableResponse'
       requestBody:
+        description: Rerank request input
         content:
           application/json:
             schema:
@@ -119,7 +120,7 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    ProviderPreferencesDataCollection:
+    RerankPostRequestBodyContentApplicationJsonSchemaProviderDataCollection:
       type: string
       enum:
         - deny
@@ -133,7 +134,7 @@ components:
 
 
         - deny: use only providers which do not collect user data.
-      title: ProviderPreferencesDataCollection
+      title: RerankPostRequestBodyContentApplicationJsonSchemaProviderDataCollection
     ProviderName:
       type: string
       enum:
@@ -219,58 +220,42 @@ components:
         - Z.AI
         - FakeProvider
       title: ProviderName
-    ProviderPreferencesIgnoreItems:
+    RerankPostRequestBodyContentApplicationJsonSchemaProviderIgnoreItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ProviderPreferencesIgnoreItems
-    ProviderPreferencesMaxPriceAudio:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceAudio
-    ProviderPreferencesMaxPriceCompletion:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceCompletion
-    ProviderPreferencesMaxPriceImage:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceImage
+      title: RerankPostRequestBodyContentApplicationJsonSchemaProviderIgnoreItems
     BigNumberUnion:
       type: string
       description: Price per million prompt tokens
       title: BigNumberUnion
-    ProviderPreferencesMaxPriceRequest:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceRequest
-    ProviderPreferencesMaxPrice:
+    RerankPostRequestBodyContentApplicationJsonSchemaProviderMaxPrice:
       type: object
       properties:
         audio:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceAudio'
+          $ref: '#/components/schemas/BigNumberUnion'
         completion:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceCompletion'
+          $ref: '#/components/schemas/BigNumberUnion'
         image:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceImage'
+          $ref: '#/components/schemas/BigNumberUnion'
         prompt:
           $ref: '#/components/schemas/BigNumberUnion'
         request:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceRequest'
+          $ref: '#/components/schemas/BigNumberUnion'
       description: >-
         The object specifying the maximum price you want to pay for this
         request. USD price per million tokens, for prompt and completion.
-      title: ProviderPreferencesMaxPrice
-    ProviderPreferencesOnlyItems:
+      title: RerankPostRequestBodyContentApplicationJsonSchemaProviderMaxPrice
+    RerankPostRequestBodyContentApplicationJsonSchemaProviderOnlyItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ProviderPreferencesOnlyItems
-    ProviderPreferencesOrderItems:
+      title: RerankPostRequestBodyContentApplicationJsonSchemaProviderOnlyItems
+    RerankPostRequestBodyContentApplicationJsonSchemaProviderOrderItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ProviderPreferencesOrderItems
+      title: RerankPostRequestBodyContentApplicationJsonSchemaProviderOrderItems
     PercentileLatencyCutoffs:
       type: object
       properties:
@@ -419,7 +404,7 @@ components:
             fallbacks), "none" sorts all endpoints together regardless of model.
       description: The provider sorting strategy (price, throughput, latency)
       title: ProviderSortConfig
-    ProviderPreferencesSort:
+    RerankPostRequestBodyContentApplicationJsonSchemaProviderSort:
       oneOf:
         - $ref: '#/components/schemas/ProviderSort'
         - $ref: '#/components/schemas/ProviderSortConfig'
@@ -427,7 +412,7 @@ components:
       description: >-
         The sorting strategy to use for this request, if "order" is not
         specified. When set, no load balancing is performed.
-      title: ProviderPreferencesSort
+      title: RerankPostRequestBodyContentApplicationJsonSchemaProviderSort
     RerankPostRequestBodyContentApplicationJsonSchemaProvider:
       type: object
       properties:
@@ -445,7 +430,8 @@ components:
             upstream error if it's unavailable.
         data_collection:
           oneOf:
-            - $ref: '#/components/schemas/ProviderPreferencesDataCollection'
+            - $ref: >-
+                #/components/schemas/RerankPostRequestBodyContentApplicationJsonSchemaProviderDataCollection
             - type: 'null'
           description: >-
             Data collection setting. If no available model provider meets the
@@ -469,12 +455,14 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ProviderPreferencesIgnoreItems'
+            $ref: >-
+              #/components/schemas/RerankPostRequestBodyContentApplicationJsonSchemaProviderIgnoreItems
           description: >-
             List of provider slugs to ignore. If provided, this list is merged
             with your account-wide ignored provider settings for this request.
         max_price:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPrice'
+          $ref: >-
+            #/components/schemas/RerankPostRequestBodyContentApplicationJsonSchemaProviderMaxPrice
           description: >-
             The object specifying the maximum price you want to pay for this
             request. USD price per million tokens, for prompt and completion.
@@ -483,7 +471,8 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ProviderPreferencesOnlyItems'
+            $ref: >-
+              #/components/schemas/RerankPostRequestBodyContentApplicationJsonSchemaProviderOnlyItems
           description: >-
             List of provider slugs to allow. If provided, this list is merged
             with your account-wide allowed provider settings for this request.
@@ -492,7 +481,8 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ProviderPreferencesOrderItems'
+            $ref: >-
+              #/components/schemas/RerankPostRequestBodyContentApplicationJsonSchemaProviderOrderItems
           description: >-
             An ordered list of provider slugs. The router will attempt to use
             the first provider in the subset of this list that supports your
@@ -520,7 +510,8 @@ components:
             false, then providers will receive only the parameters they support,
             and ignore the rest.
         sort:
-          $ref: '#/components/schemas/ProviderPreferencesSort'
+          $ref: >-
+            #/components/schemas/RerankPostRequestBodyContentApplicationJsonSchemaProviderSort
           description: >-
             The sorting strategy to use for this request, if "order" is not
             specified. When set, no load balancing is performed.
@@ -532,6 +523,7 @@ components:
             Whether to restrict routing to only ZDR (Zero Data Retention)
             endpoints. When true, only endpoints that do not retain prompts will
             be used.
+      description: Provider routing preferences for the request.
       title: RerankPostRequestBodyContentApplicationJsonSchemaProvider
     RerankPostResponsesContentApplicationJsonSchemaResultsItemsDocument:
       type: object
@@ -866,7 +858,7 @@ components:
 ```python
 import requests
 
-url = "https://openrouter.ai/api/v1/rerank"
+url = "https://openrouter.ai/api/v1//rerank"
 
 payload = {
     "documents": ["Paris is the capital of France.", "Berlin is the capital of Germany."],
@@ -885,7 +877,7 @@ print(response.json())
 ```
 
 ```javascript
-const url = 'https://openrouter.ai/api/v1/rerank';
+const url = 'https://openrouter.ai/api/v1//rerank';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -913,7 +905,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/rerank"
+	url := "https://openrouter.ai/api/v1//rerank"
 
 	payload := strings.NewReader("{\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"top_n\": 3\n}")
 
@@ -937,7 +929,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/rerank")
+url = URI("https://openrouter.ai/api/v1//rerank")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -955,7 +947,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/rerank")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//rerank")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"top_n\": 3\n}")
@@ -968,7 +960,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/rerank', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1//rerank', [
   'body' => '{
   "documents": [
     "Paris is the capital of France.",
@@ -990,7 +982,7 @@ echo $response->getBody();
 ```csharp
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/rerank");
+var client = new RestClient("https://openrouter.ai/api/v1//rerank");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -1014,7 +1006,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/rerank")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//rerank")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

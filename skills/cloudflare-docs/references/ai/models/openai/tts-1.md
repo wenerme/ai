@@ -61,8 +61,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Different Voice**  — Use the Nova voice for a different tone 
@@ -100,8 +98,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Narration**  — Slower narration style with the Onyx voice 
 
 TypeScript
@@ -136,8 +132,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Echo Voice**  — Use the Echo voice for a deeper tone 
 
@@ -174,8 +168,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Fast Playback**  — Speed up speech for quick listening 
 
 TypeScript
@@ -211,12 +203,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-330)
-* [ Output ](#tab-panel-331)
+* [ Input ](#tab-panel-92)
+* [ Output ](#tab-panel-93)
 
 text
 

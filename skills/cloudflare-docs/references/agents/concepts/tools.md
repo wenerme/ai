@@ -16,6 +16,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Tools enable AI systems to interact with external services and perform actions. They provide a structured way for agents and workflows to invoke APIs, manipulate data, and integrate with external systems. Tools form the bridge between AI decision-making capabilities and real-world actions.
 
+## Tools on Cloudflare Agents
+
+Cloudflare Agents support several tool patterns. Choose the smallest one that fits the job:
+
+| Pattern           | Use when                                                                                  | Start here                                                                                           |
+| ----------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Server-side tools | The tool can run entirely in the Worker, such as fetching an API or querying SQL          | [Chat agents](https://developers.cloudflare.com/agents/api-reference/chat-agents/#server-side-tools) |
+| Client-side tools | The tool needs browser APIs such as geolocation, clipboard, or local storage              | [Chat agents](https://developers.cloudflare.com/agents/api-reference/chat-agents/#client-side-tools) |
+| Human approvals   | The tool is sensitive and needs a user decision before it runs                            | [Human-in-the-loop](https://developers.cloudflare.com/agents/concepts/human-in-the-loop/)            |
+| MCP tools         | You want to expose or consume tools through the Model Context Protocol                    | [Model Context Protocol](https://developers.cloudflare.com/agents/model-context-protocol/)           |
+| Agent tools       | You want a chat agent to run another chat-capable sub-agent as a retained, streaming tool | [Agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/)                   |
+
 ### Understanding tools
 
 In an AI system, tools are typically implemented as function calls that the AI can use to accomplish specific tasks. For example, a travel booking agent might have tools for:

@@ -4,14 +4,10 @@
 
 # APIKeys - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -31,8 +27,6 @@ API key management endpoints
 Get information on the API key associated with the current authentication session
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="getCurrentKey" method="get" path="/key" */}
 
 ```python
 from openrouter import OpenRouter
@@ -78,8 +72,6 @@ with OpenRouter(
 List all API keys for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="list" method="get" path="/keys" */}
 
 ```python
 from openrouter import OpenRouter
@@ -129,8 +121,6 @@ with OpenRouter(
 Create a new API key for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="createKeys" method="post" path="/keys" */}
 
 ```python
 from openrouter import OpenRouter
@@ -188,8 +178,6 @@ Delete an existing API key. [Management key](/docs/guides/overview/auth/manageme
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="deleteKeys" method="delete" path="/keys/{hash}" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -238,8 +226,6 @@ Get a single API key by hash. [Management key](/docs/guides/overview/auth/manage
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="getKey" method="get" path="/keys/{hash}" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -287,8 +273,6 @@ with OpenRouter(
 Update an existing API key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="updateKeys" method="patch" path="/keys/{hash}" */}
 
 ```python
 from openrouter import OpenRouter

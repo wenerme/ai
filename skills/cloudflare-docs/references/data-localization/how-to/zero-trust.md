@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Zero Trust
 
-In the following sections, we will give you some details about how different Zero Trust products can be used with the Data Localization Suite.
+The following sections describe how to configure Zero Trust products with the Data Localization Suite, including which features support Regional Services and Customer Metadata Boundary.
 
 ## Gateway
 
@@ -38,7 +38,7 @@ You are able to [configure SSH proxy and command logs](https://developers.cloudf
 
 ### DNS policies
 
-Regional Services controls where Cloudflare decrypts traffic; because most DNS traffic is not encrypted, Gateway DNS cannot be regionalized using Regional Services.
+Regional Services controls where Cloudflare decrypts traffic. Because most DNS traffic is not encrypted, Gateway DNS (domain name filtering) cannot be regionalized using Regional Services.
 
 Refer to the [Cloudflare One Client settings](https://developers.cloudflare.com/data-localization/how-to/zero-trust/#cloudflare-one-client-settings) section below for more information.
 

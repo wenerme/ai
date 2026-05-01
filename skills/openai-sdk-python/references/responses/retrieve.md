@@ -62,7 +62,7 @@ Retrieves a model response with the given ID.
 
     Unique identifier for this Response.
 
-  - `created_at: int`
+  - `created_at: float`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -4437,7 +4437,7 @@ Retrieves a model response with the given ID.
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[int]`
+  - `completed_at: Optional[float]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.

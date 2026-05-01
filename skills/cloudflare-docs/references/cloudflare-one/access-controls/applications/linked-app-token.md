@@ -37,10 +37,10 @@ accTitle: Self-hosted to self-hosted linked app token flow
 
 Create a policy on Application B (the downstream application that will receive forwarded requests):
 
-* [ Dashboard ](#tab-panel-4625)
-* [ API ](#tab-panel-4626)
+* [ Dashboard ](#tab-panel-4429)
+* [ API ](#tab-panel-4430)
 
-1. In the [Cloudflare dashboard ↗](https://one.dash.cloudflare.com), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select Application B and select **Edit**.
 3. Go to the **Policies** tab and select **Create new policy**.
 4. Set the policy **Action** to _Service Auth_.  
@@ -137,10 +137,10 @@ accTitle: SaaS to self-hosted linked app token flow
 
 Create a policy on the self-hosted application (Application B):
 
-* [ Dashboard ](#tab-panel-4627)
-* [ API ](#tab-panel-4628)
+* [ Dashboard ](#tab-panel-4431)
+* [ API ](#tab-panel-4432)
 
-1. In the [Cloudflare dashboard ↗](https://one.dash.cloudflare.com), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the self-hosted app (Application B) and select **Edit**.
 3. Go to the **Policies** tab and select **Create new policy**.
 4. Set the policy **Action** to _Service Auth_.  

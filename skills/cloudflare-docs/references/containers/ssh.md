@@ -16,16 +16,16 @@ Anyone with write access to a Container can SSH into it with Wrangler as long as
 
 ## Configure SSH
 
-SSH can be configured in your [Container's configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) with the `wrangler_ssh` and `authorized_keys` properties. Only the `ssh-ed25519` key type is supported.
+SSH can be configured in your [Container's configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) with the `ssh` and `authorized_keys` properties. Only the `ssh-ed25519` key type is supported.
 
-The `wrangler_ssh.enabled` property only controls whether you can SSH into a Container through Wrangler. If `wrangler_ssh.enabled` is false but keys are still present in `authorized_keys`, the SSH service will still be started on the Container.
+The `ssh.enabled` property only controls whether you can SSH into a Container through Wrangler. If `ssh.enabled` is false but keys are still present in `authorized_keys`, the SSH service will still be started on the Container.
 
 ## Connect with Wrangler
 
-To SSH into a Container with Wrangler, you must first enable Wrangler SSH. The following example shows a basic configuration:
+To SSH into a Container with Wrangler, you must first enable SSH in your Container configuration. The following example shows a basic configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5346)
-* [  wrangler.toml ](#tab-panel-5347)
+* [  wrangler.jsonc ](#tab-panel-5150)
+* [  wrangler.toml ](#tab-panel-5151)
 
 JSONC
 
@@ -39,7 +39,7 @@ JSONC
 
       // other options here...
 
-      "wrangler_ssh": {
+      "ssh": {
 
         "enabled": true
 
@@ -72,7 +72,7 @@ TOML
 
 [[containers]]
 
-[containers.wrangler_ssh]
+[containers.ssh]
 
 enabled = true
 
@@ -86,7 +86,7 @@ public_key = "<YOUR_PUBLIC_KEY_HERE>"
 
 ```
 
-For more information on configuring SSH, refer to [Wrangler SSH configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#wrangler-ssh).
+For more information on configuring SSH, refer to [SSH configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#ssh).
 
 Find the instance ID for your Container by running [wrangler containers instances](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-instances) or in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/containers). The instance you want to SSH into must be running. SSH will not start a stopped Container, and an active SSH connection alone will not keep a Container alive.
 

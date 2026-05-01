@@ -22,8 +22,8 @@ The Python Workers platform leverages [FFI ↗](https://en.wikipedia.org/wiki/Fo
 
 From the configuration perspective, enabling Python Workflows requires adding the `python_workflows` compatibility flag to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-10125)
-* [  wrangler.toml ](#tab-panel-10126)
+* [  wrangler.jsonc ](#tab-panel-9954)
+* [  wrangler.toml ](#tab-panel-9955)
 
 JSONC
 
@@ -39,7 +39,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-04-30",
 
   "compatibility_flags": ["python_workflows", "python_workers"],
 
@@ -80,7 +80,7 @@ main = "src/index.py"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-04-30"
 
 compatibility_flags = [ "python_workflows", "python_workers" ]
 

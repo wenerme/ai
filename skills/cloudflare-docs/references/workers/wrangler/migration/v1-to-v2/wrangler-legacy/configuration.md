@@ -28,8 +28,8 @@ The top-level configuration is the collection of values you specify at the top o
 
 The layout of a top-level configuration in a Wrangler file is displayed below:
 
-* [  wrangler.jsonc ](#tab-panel-10015)
-* [  wrangler.toml ](#tab-panel-10016)
+* [  wrangler.jsonc ](#tab-panel-9844)
+* [  wrangler.toml ](#tab-panel-9845)
 
 JSONC
 
@@ -105,8 +105,8 @@ Some environment properties can be [_inherited_](#keys) from the top-level confi
 
 An example of an `[env.name]` configuration looks like this:
 
-* [  wrangler.jsonc ](#tab-panel-10035)
-* [  wrangler.toml ](#tab-panel-10036)
+* [  wrangler.jsonc ](#tab-panel-9864)
+* [  wrangler.toml ](#tab-panel-9865)
 
 JSONC
 
@@ -300,8 +300,8 @@ The `vars` key defines a table of [environment variables](https://developers.clo
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-10011)
-* [  wrangler.toml ](#tab-panel-10012)
+* [  wrangler.jsonc ](#tab-panel-9840)
+* [  wrangler.toml ](#tab-panel-9841)
 
 JSONC
 
@@ -357,8 +357,8 @@ console.log(BAR);
 
 Alternatively, you can define `vars` using an inline table format. This style should not include any new lines to be considered a valid TOML configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10013)
-* [  wrangler.toml ](#tab-panel-10014)
+* [  wrangler.jsonc ](#tab-panel-9842)
+* [  wrangler.toml ](#tab-panel-9843)
 
 JSONC
 
@@ -402,8 +402,8 @@ Secrets should be handled using the [wrangler secret](https://developers.cloudfl
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-10019)
-* [  wrangler.toml ](#tab-panel-10020)
+* [  wrangler.jsonc ](#tab-panel-9848)
+* [  wrangler.toml ](#tab-panel-9849)
 
 JSONC
 
@@ -466,8 +466,8 @@ preview_id = "fb69528dbc7336525313f2e8c3b17db0"
 
 Alternatively, you can define `kv namespaces` like so:
 
-* [  wrangler.jsonc ](#tab-panel-10023)
-* [  wrangler.toml ](#tab-panel-10024)
+* [  wrangler.jsonc ](#tab-panel-9852)
+* [  wrangler.toml ](#tab-panel-9853)
 
 JSONC
 
@@ -567,8 +567,8 @@ A [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/s
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-10017)
-* [  wrangler.toml ](#tab-panel-10018)
+* [  wrangler.jsonc ](#tab-panel-9846)
+* [  wrangler.toml ](#tab-panel-9847)
 
 JSONC
 
@@ -621,8 +621,8 @@ For exceptionally large pages, Workers Sites may not be ideal. There is a 25 MiB
 
 If you want to include only a certain set of files or directories in your `bucket`, add an `include` field to your`[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10021)
-* [  wrangler.toml ](#tab-panel-10022)
+* [  wrangler.jsonc ](#tab-panel-9850)
+* [  wrangler.toml ](#tab-panel-9851)
 
 JSONC
 
@@ -670,8 +670,8 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10025)
-* [  wrangler.toml ](#tab-panel-10026)
+* [  wrangler.jsonc ](#tab-panel-9854)
+* [  wrangler.toml ](#tab-panel-9855)
 
 JSONC
 
@@ -743,8 +743,8 @@ A set of cron triggers used to call a Worker on a schedule.
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-10027)
-* [  wrangler.toml ](#tab-panel-10028)
+* [  wrangler.jsonc ](#tab-panel-9856)
+* [  wrangler.toml ](#tab-panel-9857)
 
 JSONC
 
@@ -789,8 +789,8 @@ Arguments for `wrangler dev` can be configured here so you do not have to repeat
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-10029)
-* [  wrangler.toml ](#tab-panel-10030)
+* [  wrangler.jsonc ](#tab-panel-9858)
+* [  wrangler.toml ](#tab-panel-9859)
 
 JSONC
 
@@ -860,8 +860,8 @@ addEventListener("fetch", (event) => {
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-10031)
-* [  wrangler.toml ](#tab-panel-10032)
+* [  wrangler.jsonc ](#tab-panel-9860)
+* [  wrangler.toml ](#tab-panel-9861)
 
 JSONC
 
@@ -966,8 +966,8 @@ export default {
 
 To create a Workers project using Wrangler and Modules, add a `[build]` section:
 
-* [  wrangler.jsonc ](#tab-panel-10033)
-* [  wrangler.toml ](#tab-panel-10034)
+* [  wrangler.jsonc ](#tab-panel-9862)
+* [  wrangler.toml ](#tab-panel-9863)
 
 JSONC
 
@@ -1039,8 +1039,8 @@ If your project is written using CommonJS modules, you will need to re-export yo
 
 Defaults:
 
-* [  wrangler.jsonc ](#tab-panel-10037)
-* [  wrangler.toml ](#tab-panel-10038)
+* [  wrangler.jsonc ](#tab-panel-9866)
+* [  wrangler.toml ](#tab-panel-9867)
 
 JSONC
 
@@ -1139,8 +1139,8 @@ main = "./worker.mjs"
 
 To illustrate how these levels are applied, here is a Wrangler file using multiple environments:
 
-* [  wrangler.jsonc ](#tab-panel-10039)
-* [  wrangler.toml ](#tab-panel-10040)
+* [  wrangler.jsonc ](#tab-panel-9868)
+* [  wrangler.toml ](#tab-panel-9869)
 
 JSONC
 

@@ -27,7 +27,7 @@ If your domain uses a [partial (CNAME) setup](https://developers.cloudflare.com/
 
 ## 1\. Add your application to Access
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Add an application**.
 3. Select **Self-hosted**.
 4. Enter any name for the application.

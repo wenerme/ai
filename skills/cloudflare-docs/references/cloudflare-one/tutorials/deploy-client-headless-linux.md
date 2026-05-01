@@ -34,11 +34,11 @@ Fully automated deployments rely on a service token to enroll the Cloudflare One
 
 To create a service token:
 
-* [ Dashboard ](#tab-panel-5205)
-* [ API ](#tab-panel-5206)
-* [ Terraform (v5) ](#tab-panel-5207)
+* [ Dashboard ](#tab-panel-5009)
+* [ API ](#tab-panel-5010)
+* [ Terraform (v5) ](#tab-panel-5011)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Choose a **Service Token Duration**. This sets the expiration date for the token.
@@ -135,7 +135,7 @@ Device enrollment permissions determine the users and devices that can register 
 
 To allow devices to enroll using a service token:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices**. Select the **Management** tab.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices**. Select the **Management** tab.
 2. In **Device enrollment permissions**, select **Manage**.
 3. In the **Policies** tab, select **Create new policy**. A new tab will open with the policy creation page.
 4. For **Action**, select _Service Auth_.
@@ -213,7 +213,7 @@ Terminal window
 sudo ./install_warp.sh  
 ```
 
-The Cloudflare One Client is now deployed with the configuration parameters stored in `/var/lib/cloudflare-warp/mdm.xml`. Assuming [auto\_connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto%5Fconnect) is configured, the Cloudflare One Client will automatically connect to your Zero Trust organization. Once connected, the device will appear in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Team & Resources** \> **Devices** with the email `non_identity@<team-name>.cloudflareaccess.com`.
+The Cloudflare One Client is now deployed with the configuration parameters stored in `/var/lib/cloudflare-warp/mdm.xml`. Assuming [auto\_connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto%5Fconnect) is configured, the Cloudflare One Client will automatically connect to your Zero Trust organization. Once connected, the device will appear in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Team & Resources** \> **Devices** with the email `non_identity@<team-name>.cloudflareaccess.com`.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/deploy-client-headless-linux/","name":"Deploy the Cloudflare One Client on headless Linux machines"}}]}

@@ -49,8 +49,8 @@ The starter gives you a working Vite + React + Cloudflare Workers setup. You wil
 
 Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for your voice agent:
 
-* [  wrangler.jsonc ](#tab-panel-3962)
-* [  wrangler.toml ](#tab-panel-3963)
+* [  wrangler.jsonc ](#tab-panel-3766)
+* [  wrangler.toml ](#tab-panel-3767)
 
 JSONC
 
@@ -62,7 +62,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-04-30",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -115,7 +115,7 @@ name = "voice-agent"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-04-30"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -147,8 +147,8 @@ new_sqlite_classes = [ "MyVoiceAgent" ]
 
 Replace `src/server.ts` with the following. The `withVoice` mixin adds the full voice pipeline — STT, sentence chunking, TTS, and conversation persistence — to a standard `Agent` class.
 
-* [  JavaScript ](#tab-panel-3968)
-* [  TypeScript ](#tab-panel-3969)
+* [  JavaScript ](#tab-panel-3772)
+* [  TypeScript ](#tab-panel-3773)
 
 JavaScript
 
@@ -182,7 +182,7 @@ export class MyVoiceAgent extends VoiceAgent {
 
     const result = streamText({
 
-      model: workersAi("@cf/moonshotai/kimi-k2.5"),
+      model: workersAi("@cf/moonshotai/kimi-k2.6"),
 
       system:
 
@@ -308,7 +308,7 @@ export class MyVoiceAgent extends VoiceAgent<Env> {
 
     const result = streamText({
 
-      model: workersAi("@cf/moonshotai/kimi-k2.5"),
+      model: workersAi("@cf/moonshotai/kimi-k2.6"),
 
       system:
 
@@ -454,11 +454,7 @@ function App() {
 
         {status !== "idle" && (
 
-          <button onClick={toggleMute}>
-
-            {isMuted ? "Unmute" : "Mute"}
-
-          </button>
+          <button onClick={toggleMute}>{isMuted ? "Unmute" : "Mute"}</button>
 
         )}
 
@@ -491,9 +487,9 @@ function App() {
 
         <p>
 
-          LLM: {metrics.llm_ms}ms | TTS: {metrics.tts_ms}ms | First
+          LLM: {metrics.llm_ms}ms | TTS: {metrics.tts_ms}ms | First audio:{" "}
 
-          audio: {metrics.first_audio_ms}ms
+          {metrics.first_audio_ms}ms
 
         </p>
 
@@ -527,8 +523,8 @@ Open the app in your browser, select **Start Call**, and speak. You will see the
 
 You can intercept and transform data at each stage of the pipeline. For example, filter out short transcripts (noise) and adjust pronunciation before TTS:
 
-* [  JavaScript ](#tab-panel-3964)
-* [  TypeScript ](#tab-panel-3965)
+* [  JavaScript ](#tab-panel-3768)
+* [  TypeScript ](#tab-panel-3769)
 
 JavaScript
 
@@ -612,8 +608,8 @@ Returning `null` from `afterTranscribe` drops the utterance entirely — useful 
 
 Swap in third-party STT or TTS providers without changing your agent logic:
 
-* [  JavaScript ](#tab-panel-3966)
-* [  TypeScript ](#tab-panel-3967)
+* [  JavaScript ](#tab-panel-3770)
+* [  TypeScript ](#tab-panel-3771)
 
 JavaScript
 

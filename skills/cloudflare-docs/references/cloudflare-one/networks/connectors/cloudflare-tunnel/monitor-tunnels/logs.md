@@ -45,7 +45,7 @@ Tunnel log streams require [edit permissions](https://developers.cloudflare.com/
 
 Dashboard log streams are only available for remotely-managed tunnels. To stream tunnel logs from the dashboard:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select **View logs** next to the tunnel you want to monitor.
 3. Select **Begin log stream**.
 
@@ -53,7 +53,7 @@ Dashboard log streams are only available for remotely-managed tunnels. To stream
 
 If you are running multiple `cloudflared` instances for the same tunnel (also known as [replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/)), you can stream logs for a specific replica:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels** and select your tunnel.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels** and select your tunnel.
 2. In the **Connectors** list, select the **Connector ID** for the replica you want to view.
 3. Select **Begin log stream**.
 
@@ -102,7 +102,7 @@ cloudflared tail --level debug <UUID>
 
 If you are running multiple `cloudflared` instances for the same tunnel (also known as [replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/)), you must specify an individual instance to stream logs from:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels** and select your tunnel.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels** and select your tunnel.
 2. Find the **Connector ID** for the `cloudflared` instance you want to view.
 3. Specify the Connector ID in `cloudflared tail`:  
 Terminal window  

@@ -55,7 +55,7 @@ console.log(response)
 
 ```
 
-Response200 ![Simple Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/simple-icon.jpg) 
+![Simple Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/simple-icon.jpg) 
 
 ## Examples
 
@@ -92,7 +92,7 @@ console.log(response)
 
 ```
 
-Response200 ![App Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/app-icon.jpg) 
+![App Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/app-icon.jpg) 
 
 **Illustration**  — Vector illustration for web use 
 
@@ -127,7 +127,7 @@ console.log(response)
 
 ```
 
-Response200 ![Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/illustration.jpg) 
+![Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/illustration.jpg) 
 
 **With Brand Colors**  — Vector with specific color palette 
 
@@ -186,12 +186,12 @@ console.log(response)
 
 ```
 
-Response200 ![With Brand Colors](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/with-brand-colors.jpg) 
+![With Brand Colors](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/with-brand-colors.jpg) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-344)
-* [ Output ](#tab-panel-345)
+* [ Input ](#tab-panel-106)
+* [ Output ](#tab-panel-107)
 
 prompt
 

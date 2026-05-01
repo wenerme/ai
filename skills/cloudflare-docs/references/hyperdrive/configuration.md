@@ -12,6 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Configuration
 
+* [ Connect to a private database using Workers VPC (Recommended) ](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/)
 * [ Connect to a private database using Tunnel ](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/)
 * [ Local development ](https://developers.cloudflare.com/hyperdrive/configuration/local-development/)
 * [ SSL/TLS certificates ](https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/)

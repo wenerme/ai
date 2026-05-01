@@ -4,14 +4,10 @@
 
 # Credits - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Credit management endpoints
 Get total credits purchased and used for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="getCredits" method="get" path="/credits" */}
 
 ```go
 package main

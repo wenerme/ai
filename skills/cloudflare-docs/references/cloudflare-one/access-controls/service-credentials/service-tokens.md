@@ -22,11 +22,11 @@ This section covers how to create, renew, and revoke a service token.
 
 ## Create a service token
 
-* [ Dashboard ](#tab-panel-4683)
-* [ API ](#tab-panel-4684)
-* [ Terraform (v5) ](#tab-panel-4685)
+* [ Dashboard ](#tab-panel-4487)
+* [ API ](#tab-panel-4488)
+* [ Terraform (v5) ](#tab-panel-4489)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Choose a **Service Token Duration**. This sets the expiration date for the token.
@@ -216,7 +216,7 @@ Service tokens expire according to the token duration you selected when you crea
 
 To renew the service token:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Locate the token you want to renew.
 3. To extend the token's lifetime by one year, select **Refresh**.
 4. To extend the token's lifetime by more than a year:  
@@ -228,7 +228,7 @@ To renew the service token:
 
 If you need to revoke access before the token expires, simply delete the token.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. **Delete** the token you need to revoke.
 
 Services that rely on a deleted service token can no longer reach your application.

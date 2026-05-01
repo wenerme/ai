@@ -4,14 +4,10 @@
 
 # Providers - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Provider information endpoints
 List all providers
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listProviders" method="get" path="/providers" */}
 
 ```python
 from openrouter import OpenRouter

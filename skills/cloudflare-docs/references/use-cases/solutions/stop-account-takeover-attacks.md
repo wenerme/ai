@@ -16,7 +16,7 @@ When your site has login pages, you need to decide how to verify that visitors a
 
 Note
 
-Most procedures in this guide are configured per domain. Select your domain in the Cloudflare dashboard before starting. Turnstile is the exception. It is configured at the account level.
+Most procedures in this guide are configured per domain or [zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones). Select your domain in the Cloudflare dashboard before starting. Turnstile is the exception: widgets are configured at the account level.
 
 ## Enforce HTTPS to protect credentials in transit
 
@@ -26,8 +26,8 @@ Credentials sent over plain HTTP are visible to anyone on the network path betwe
 
 Always Use HTTPS redirects all visitor requests from `http` to `https` for all subdomains and hosts.
 
-* [ Dashboard ](#tab-panel-8198)
-* [ API ](#tab-panel-8199)
+* [ Dashboard ](#tab-panel-8021)
+* [ API ](#tab-panel-8022)
 
 To enable **Always Use HTTPS** in the dashboard:
 
@@ -58,8 +58,8 @@ Cloudflare provides bot protection on all plans, with features that vary by plan
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to all traffic on your domain and cannot be customized with exceptions or path-specific rules.
 
-* [  New dashboard ](#tab-panel-8200)
-* [ Old dashboard ](#tab-panel-8201)
+* [  New dashboard ](#tab-panel-8023)
+* [ Old dashboard ](#tab-panel-8024)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -86,8 +86,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
-* [  New dashboard ](#tab-panel-8202)
-* [ Old dashboard ](#tab-panel-8203)
+* [  New dashboard ](#tab-panel-8025)
+* [ Old dashboard ](#tab-panel-8026)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -193,7 +193,7 @@ server.js
 
 ```
 
-const SECRET_KEY = "your-secret-key";
+const SECRET_KEY = "<YOUR-SECRET-KEY>";
 
 
 async function validateTurnstile(token, remoteip) {
@@ -246,7 +246,7 @@ async function validateTurnstile(token, remoteip) {
 
 ```
 
-Replace `"your-secret-key"` with your Turnstile secret key. The endpoint returns a JSON object with a `success` field. Only process the form submission if `success` is `true`.
+Replace `"<YOUR-SECRET-KEY>"` with your Turnstile secret key. The endpoint returns a JSON object with a `success` field. Only process the form submission if `success` is `true`.
 
 For additional fraud detection, Turnstile supports [Ephemeral IDs](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/) that provide a unique, temporary identifier for each visitor session without storing personal data.
 
@@ -276,21 +276,25 @@ Managed Challenge and other [challenge types](https://developers.cloudflare.com/
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** and choose **Rate limiting rules**.
 3. Enter a name for the rule (for example, "Rate limit login endpoint").
-4. Under **When incoming requests match**, enter the following expression:  
-```  
-http.host eq "example.com" and http.request.uri.path eq "/login" and http.request.method eq "POST"  
-```  
-Replace `example.com` with your domain and `/login` with your login endpoint path.
+4. Under **When incoming requests match**, select **Edit expression** and enter: `http.host eq "example.com" and http.request.uri.path eq "/login" and http.request.method eq "POST"`  
+Replace \`example.com\` with your domain and \`/login\` with your login endpoint path.
 5. Under **With the same characteristics**, verify that _IP_ is selected. On Free plans, this is preset to _IP_.
 6. Under **When rate exceeds**, enter _5_ for **Requests** and select a value for **Period**. On Free plans, select _10 seconds_. Pro and above plans offer additional periods. For available values by plan, refer to [Rate limiting parameters](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/).
-7. Under **Then take action**, select an action from the **Choose action** dropdown. On Free plans, select _Block_. On Pro and above, _Managed Challenge_ is recommended as it allows legitimate users who trigger the limit to pass by completing a challenge.
+7. Under **Then take action**, select an action from the **Choose action** dropdown. On Free plans, select _Block_. On Pro and above, _Managed Challenge_ is recommended because it allows legitimate users who trigger the limit to pass by completing a challenge.
 8. Under **For duration**, select a duration for the action. On Free plans, select _10 seconds_. Pro and above plans offer longer durations. This is how long the action applies after the rate limit is triggered.
-9. Select **Deploy**.  
-Note  
-(Optional) To count only failed login attempts instead of all matching requests, Business plan and above users can add a separate counting expression under **Increment counter when**:  
-```  
-http.request.uri.path eq "/login" and http.request.method eq "POST" and http.response.code in {401 403}  
-```  
+9. Select **Deploy**.
+
+Note
+
+(Optional) To count only failed login attempts instead of all matching requests, Business plan and above users can add a separate counting expression under **Increment counter when**:
+
+```
+
+http.request.uri.path eq "/login" and http.request.method eq "POST" and http.response.code in {401 403}
+
+
+```
+
 This counts requests based on the response status code. Successful logins (200) do not increment the counter.
 
 Advanced Rate Limiting (Enterprise)
@@ -321,10 +325,10 @@ The `cf.waf.credential_check.username_and_password_leaked` field requires a Pro 
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-8204)
-* [ Old dashboard ](#tab-panel-8205)
-* [ API ](#tab-panel-8206)
-* [ Terraform ](#tab-panel-8207)
+* [  New dashboard ](#tab-panel-8027)
+* [ Old dashboard ](#tab-panel-8028)
+* [ API ](#tab-panel-8029)
+* [ Terraform ](#tab-panel-8030)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

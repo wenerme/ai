@@ -64,7 +64,7 @@ add authentication samlIdPProfile samlProf_CloudflareAccess \
 add authentication samlIdPPolicy samlPol_CloudflareAccess -rule true -action samlProf_CloudflareAccess  
 bind authentication vserver nsidp -policy samlPol_CloudflareAccess  
 ```
-3. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+3. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 4. Under **Your identity providers**, select **Add new identity provider**.
 5. Configure the fields as follows:  
 | Field                        | Description                                      |  

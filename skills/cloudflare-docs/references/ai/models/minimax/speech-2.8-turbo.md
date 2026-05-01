@@ -65,8 +65,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Fast Narration**  — Speed up narration for quick playback 
@@ -107,8 +105,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Calm Tone**  — Calm and steady speech for meditation or relaxation 
 
@@ -151,8 +147,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Adjusted Pitch**  — Lower the pitch for a deeper voice 
 
 TypeScript
@@ -192,12 +186,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-206)
-* [ Output ](#tab-panel-207)
+* [ Input ](#tab-panel-66)
+* [ Output ](#tab-panel-67)
 
 text
 

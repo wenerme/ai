@@ -18,10 +18,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Spawn child agents as co-located Durable Objects with their own isolated SQLite storage. The parent gets a typed RPC stub for calling methods on the child — every public method on the child class is callable as a remote procedure call with Promise-wrapped return types.
 
+Use sub-agents when a single user or entity owns an open-ended set of long-lived agents, such as chats, documents, sessions, shards, or projects. Each sub-agent runs in parallel with its own state while the parent coordinates discovery, access control, and lifecycle.
+
+If you want a parent chat agent to dispatch another chat-capable agent during a single turn and render that child's progress inline, use [Agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/). Agent tools are built on sub-agents, but add a parent-side run registry, streaming `agent-tool-event` frames, replay, cancellation, and cleanup.
+
 ## Quick start
 
-* [  JavaScript ](#tab-panel-3688)
-* [  TypeScript ](#tab-panel-3689)
+* [  JavaScript ](#tab-panel-3478)
+* [  TypeScript ](#tab-panel-3479)
 
 JavaScript
 
@@ -99,8 +103,8 @@ export class Researcher extends Agent {
 
 Both classes must be exported from the worker entry point. No separate Durable Object bindings are needed — child classes are discovered automatically via `ctx.exports`.
 
-* [  wrangler.jsonc ](#tab-panel-3678)
-* [  wrangler.toml ](#tab-panel-3679)
+* [  wrangler.jsonc ](#tab-panel-3466)
+* [  wrangler.toml ](#tab-panel-3467)
 
 JSONC
 
@@ -112,13 +116,11 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-04-30",
 
   "compatibility_flags": [
 
-    "nodejs_compat",
-
-    "experimental"
+    "nodejs_compat"
 
   ],
 
@@ -165,9 +167,9 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-04-30"
 
-compatibility_flags = ["nodejs_compat", "experimental"]
+compatibility_flags = ["nodejs_compat"]
 
 
 [[durable_objects.bindings]]
@@ -192,8 +194,8 @@ Only the parent agent needs a Durable Object binding and migration. Child agents
 
 Get or create a named sub-agent. The first call for a given name triggers the child's `onStart()`. Subsequent calls return the existing instance.
 
-* [  JavaScript ](#tab-panel-3680)
-* [  TypeScript ](#tab-panel-3681)
+* [  JavaScript ](#tab-panel-3468)
+* [  TypeScript ](#tab-panel-3469)
 
 JavaScript
 
@@ -236,8 +238,8 @@ The stub exposes all public instance methods you define on the child class. Meth
 
 Return types are automatically wrapped in `Promise` if they are not already:
 
-* [  JavaScript ](#tab-panel-3690)
-* [  TypeScript ](#tab-panel-3691)
+* [  JavaScript ](#tab-panel-3480)
+* [  TypeScript ](#tab-panel-3481)
 
 JavaScript
 
@@ -304,13 +306,15 @@ class MyChild extends Agent {
 * The child class must extend `Agent`
 * The child class must be exported from the worker entry point (`export class MyChild extends Agent`)
 * The export name must match the class name — `export { Foo as Bar }` is not supported
+* The parent class must be bound as a Durable Object namespace in `wrangler.jsonc`
+* The child class name cannot be `Sub`, because `/sub/` is reserved as the URL separator for nested routes
 
 ## abortSubAgent
 
 Forcefully stop a running sub-agent. The child stops executing immediately and restarts on the next `subAgent()` call. Storage is preserved — only the running instance is killed.
 
-* [  JavaScript ](#tab-panel-3682)
-* [  TypeScript ](#tab-panel-3683)
+* [  JavaScript ](#tab-panel-3470)
+* [  TypeScript ](#tab-panel-3471)
 
 JavaScript
 
@@ -346,8 +350,8 @@ Abort is transitive — if the child has its own sub-agents, they are also abort
 
 Abort the child (if running) and permanently wipe its storage. The next `subAgent()` call creates a fresh instance with empty SQLite.
 
-* [  JavaScript ](#tab-panel-3684)
-* [  TypeScript ](#tab-panel-3685)
+* [  JavaScript ](#tab-panel-3472)
+* [  TypeScript ](#tab-panel-3473)
 
 JavaScript
 
@@ -378,12 +382,392 @@ class Agent {
 
 Deletion is transitive — the child's own sub-agents are also deleted.
 
+## Introspection and access control
+
+### `hasSubAgent`
+
+Check whether a child has been spawned and not deleted. This is backed by a framework-maintained SQLite registry.
+
+* [  JavaScript ](#tab-panel-3474)
+* [  TypeScript ](#tab-panel-3475)
+
+JavaScript
+
+```
+
+if (!this.hasSubAgent(Chat, id)) {
+
+  return new Response("Not found", { status: 404 });
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+if (!this.hasSubAgent(Chat, id)) {
+
+  return new Response("Not found", { status: 404 });
+
+}
+
+
+```
+
+### `listSubAgents`
+
+List spawned sub-agents, optionally filtered by class. Rows are returned in creation order.
+
+* [  JavaScript ](#tab-panel-3476)
+* [  TypeScript ](#tab-panel-3477)
+
+JavaScript
+
+```
+
+const chats = this.listSubAgents(Chat);
+
+// [{ className: "Chat", name: "chat-abc", createdAt: 1700000000000 }]
+
+
+```
+
+TypeScript
+
+```
+
+const chats = this.listSubAgents(Chat);
+
+// [{ className: "Chat", name: "chat-abc", createdAt: 1700000000000 }]
+
+
+```
+
+### `onBeforeSubAgent`
+
+Override this middleware hook on the parent to gate, mutate, or short-circuit incoming `/sub/` requests before the framework wakes the child. It mirrors `onBeforeConnect` and `onBeforeRequest`.
+
+The hook can return:
+
+| Return value | Effect                                    |
+| ------------ | ----------------------------------------- |
+| void         | Forward the original request to the child |
+| Request      | Forward a modified request                |
+| Response     | Short-circuit and do not wake the child   |
+
+* [  JavaScript ](#tab-panel-3484)
+* [  TypeScript ](#tab-panel-3485)
+
+JavaScript
+
+```
+
+export class Inbox extends Agent {
+
+  async onBeforeSubAgent(_request, { className, name }) {
+
+    // Strict registry gate: only allow clients to reach chats that were created.
+
+    if (!this.hasSubAgent(className, name)) {
+
+      return new Response(`${className} "${name}" not found`, {
+
+        status: 404,
+
+      });
+
+    }
+
+  }
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+export class Inbox extends Agent {
+
+  override async onBeforeSubAgent(_request, { className, name }) {
+
+    // Strict registry gate: only allow clients to reach chats that were created.
+
+    if (!this.hasSubAgent(className, name)) {
+
+      return new Response(`${className} "${name}" not found`, {
+
+        status: 404,
+
+      });
+
+    }
+
+  }
+
+}
+
+
+```
+
+WebSocket upgrade requests flow through this hook the same way as plain HTTP requests. If you return a modified `Request`, preserve the original WebSocket upgrade headers.
+
+## Parent and child identity
+
+Sub-agents know who their parent is through `this.parentPath` and `this.selfPath`.
+
+* [  JavaScript ](#tab-panel-3486)
+* [  TypeScript ](#tab-panel-3487)
+
+JavaScript
+
+```
+
+// Inside a Chat spawned by Inbox:
+
+this.parentPath;
+
+// [{ className: "Inbox", name: "user-123" }]
+
+
+this.selfPath;
+
+// [
+
+//   { className: "Inbox", name: "user-123" },
+
+//   { className: "Chat", name: "chat-abc" }
+
+// ]
+
+
+```
+
+TypeScript
+
+```
+
+// Inside a Chat spawned by Inbox:
+
+this.parentPath;
+
+// [{ className: "Inbox", name: "user-123" }]
+
+
+this.selfPath;
+
+// [
+
+//   { className: "Inbox", name: "user-123" },
+
+//   { className: "Chat", name: "chat-abc" }
+
+// ]
+
+
+```
+
+`parentPath` is root-first, so the direct parent is always `parentPath.at(-1)`. Top-level agents have `parentPath === []`.
+
+Use `parentAgent(Cls)` from a sub-agent to get a typed RPC stub to its immediate parent:
+
+* [  JavaScript ](#tab-panel-3482)
+* [  TypeScript ](#tab-panel-3483)
+
+JavaScript
+
+```
+
+const inbox = await this.parentAgent(Inbox);
+
+await inbox.recordTurn(this.name, "...");
+
+
+```
+
+TypeScript
+
+```
+
+const inbox = await this.parentAgent(Inbox);
+
+await inbox.recordTurn(this.name, "...");
+
+
+```
+
+For grandparents and further ancestors, iterate `this.parentPath` and call `getAgentByName()` directly. If the binding name does not match the class name, call `getAgentByName(env.MY_BINDING, this.parentPath.at(-1)!.name)` instead of `parentAgent()`.
+
+## Client routing
+
+### `useAgent({ sub })`
+
+Extend any `useAgent` call with a `sub` chain to connect to a descendant facet:
+
+* [  JavaScript ](#tab-panel-3488)
+* [  TypeScript ](#tab-panel-3489)
+
+JavaScript
+
+```
+
+const chat = useAgent({
+
+  agent: "Inbox",
+
+  name: userId,
+
+  sub: [{ agent: "Chat", name: chatId }],
+
+});
+
+
+```
+
+TypeScript
+
+```
+
+const chat = useAgent({
+
+  agent: "Inbox",
+
+  name: userId,
+
+  sub: [{ agent: "Chat", name: chatId }],
+
+});
+
+
+```
+
+The hook builds a URL like `/agents/inbox/user-123/sub/chat/chat-abc` and opens a direct WebSocket to the `Chat` child. Every other `useAgent` feature works as usual: state sync, `stub` calls, `@callable` RPC, and `useAgentChat` on top of the returned socket.
+
+### Custom HTTP routing
+
+For fetch handlers that do their own top-level URL parsing, use `routeSubAgentRequest()` to dispatch a request into a sub-agent from an already-resolved parent stub:
+
+* [  JavaScript ](#tab-panel-3494)
+* [  TypeScript ](#tab-panel-3495)
+
+JavaScript
+
+```
+
+import { getAgentByName, routeSubAgentRequest } from "agents";
+
+
+export default {
+
+  async fetch(request, env) {
+
+    const url = new URL(request.url);
+
+    const match = url.pathname.match(/^\/api\/u\/([^/]+)(\/.*)$/);
+
+    if (!match) return new Response("Not found", { status: 404 });
+
+
+    const [, userId, rest] = match;
+
+    const parent = await getAgentByName(env.Inbox, userId);
+
+    return routeSubAgentRequest(request, parent, { fromPath: rest });
+
+  },
+
+};
+
+
+```
+
+TypeScript
+
+```
+
+import { getAgentByName, routeSubAgentRequest } from "agents";
+
+
+export default {
+
+  async fetch(request: Request, env: Env) {
+
+    const url = new URL(request.url);
+
+    const match = url.pathname.match(/^\/api\/u\/([^/]+)(\/.*)$/);
+
+    if (!match) return new Response("Not found", { status: 404 });
+
+
+    const [, userId, rest] = match;
+
+    const parent = await getAgentByName(env.Inbox, userId);
+
+    return routeSubAgentRequest(request, parent, { fromPath: rest });
+
+  },
+
+};
+
+
+```
+
+`fromPath` takes the sub-agent tail, such as `/sub/chat/chat-abc`. The helper parses it, runs the parent's `onBeforeSubAgent` hook, and forwards the request into the facet.
+
+### External typed RPC
+
+From inside the parent Durable Object, `this.subAgent(Cls, name)` returns a typed stub. From outside the parent, use `getSubAgentByName()`:
+
+* [  JavaScript ](#tab-panel-3490)
+* [  TypeScript ](#tab-panel-3491)
+
+JavaScript
+
+```
+
+import { getAgentByName, getSubAgentByName } from "agents";
+
+
+const inbox = await getAgentByName(env.Inbox, userId);
+
+const chat = await getSubAgentByName(inbox, Chat, chatId);
+
+
+await chat.addMessage({ role: "user", content: "hello" });
+
+
+```
+
+TypeScript
+
+```
+
+import { getAgentByName, getSubAgentByName } from "agents";
+
+
+const inbox = await getAgentByName(env.Inbox, userId);
+
+const chat = await getSubAgentByName(inbox, Chat, chatId);
+
+
+await chat.addMessage({ role: "user", content: "hello" });
+
+
+```
+
+`getSubAgentByName()` returns an RPC-only proxy. Method calls work, but `.fetch()` throws. Use `routeSubAgentRequest()` for HTTP and WebSocket forwarding.
+
 ## Storage isolation
 
 Each sub-agent has its own SQLite database, completely isolated from the parent and from other sub-agents. A parent writing to `this.sql` and a child writing to `this.sql` operate on different databases:
 
-* [  JavaScript ](#tab-panel-3696)
-* [  TypeScript ](#tab-panel-3697)
+* [  JavaScript ](#tab-panel-3500)
+* [  TypeScript ](#tab-panel-3501)
 
 JavaScript
 
@@ -485,8 +869,8 @@ export class Child extends Agent {
 
 Two different classes can share the same user-facing name — they are resolved independently. The internal key is a composite of class name and facet name:
 
-* [  JavaScript ](#tab-panel-3686)
-* [  TypeScript ](#tab-panel-3687)
+* [  JavaScript ](#tab-panel-3492)
+* [  TypeScript ](#tab-panel-3493)
 
 JavaScript
 
@@ -516,8 +900,8 @@ const logger = await this.subAgent(Logger, "shared-name");
 
 The child's `this.name` property returns the facet name (not the parent's name):
 
-* [  JavaScript ](#tab-panel-3692)
-* [  TypeScript ](#tab-panel-3693)
+* [  JavaScript ](#tab-panel-3496)
+* [  TypeScript ](#tab-panel-3497)
 
 JavaScript
 
@@ -559,8 +943,8 @@ export class Child extends Agent {
 
 Run multiple sub-agents concurrently:
 
-* [  JavaScript ](#tab-panel-3694)
-* [  TypeScript ](#tab-panel-3695)
+* [  JavaScript ](#tab-panel-3498)
+* [  TypeScript ](#tab-panel-3499)
 
 JavaScript
 
@@ -624,8 +1008,8 @@ export class Orchestrator extends Agent {
 
 Sub-agents can spawn their own sub-agents, forming a tree:
 
-* [  JavaScript ](#tab-panel-3698)
-* [  TypeScript ](#tab-panel-3699)
+* [  JavaScript ](#tab-panel-3502)
+* [  TypeScript ](#tab-panel-3503)
 
 JavaScript
 
@@ -717,8 +1101,8 @@ export class Worker extends Agent {
 
 Pass an `RpcTarget` callback to stream results from a sub-agent back to the parent:
 
-* [  JavaScript ](#tab-panel-3700)
-* [  TypeScript ](#tab-panel-3701)
+* [  JavaScript ](#tab-panel-3504)
+* [  TypeScript ](#tab-panel-3505)
 
 JavaScript
 
@@ -832,27 +1216,38 @@ export class Streamer extends Agent {
 
 ```
 
-## Limitations
+## Scheduling and durable work
 
-Sub-agents run as facets of the parent Durable Object. Some `Agent` methods are not available in sub-agents:
+Sub-agents can schedule their own callbacks and run durable fibers:
 
-| Method           | Behavior in sub-agent                              |
-| ---------------- | -------------------------------------------------- |
-| schedule()       | Throws "not supported in sub-agents"               |
-| cancelSchedule() | Throws "not supported in sub-agents"               |
-| keepAlive()      | Throws "not supported in sub-agents"               |
-| setState()       | Works normally (writes to the child's own storage) |
-| this.sql         | Works normally (child's own SQLite)                |
-| subAgent()       | Works — sub-agents can spawn their own children    |
+| Method                              | Behavior in sub-agent                                                      |
+| ----------------------------------- | -------------------------------------------------------------------------- |
+| schedule() / scheduleEvery()        | Work normally and run callbacks inside the sub-agent                       |
+| cancelSchedule()                    | Works for schedules owned by the calling sub-agent                         |
+| getScheduleById() / listSchedules() | Work and return schedules scoped to the calling sub-agent                  |
+| keepAlive() / keepAliveWhile()      | Work by delegating the heartbeat to the top-level parent                   |
+| runFiber()                          | Works, with fiber rows and snapshots stored in the child's SQLite database |
+| setState()                          | Works normally and writes to the child's own storage                       |
+| this.sql                            | Works normally and points at the child's own SQLite database               |
+| subAgent()                          | Works, so sub-agents can spawn their own children                          |
 
-For scheduled work, have the parent schedule the task and delegate to the sub-agent when the schedule fires.
+The top-level parent still owns the physical Durable Object alarm because facets do not have independent alarm slots. The Agents SDK records which child owns each scheduled callback or recovery check, wakes the parent, and routes the work back into the child. The callback still runs with the sub-agent as `this`, so it uses the child's state, SQLite storage, and `getCurrentAgent()` context.
+
+The older synchronous `getSchedule()` and `getSchedules()` APIs throw inside sub-agents because scheduled rows are stored on the top-level parent. Use `getScheduleById()` and `listSchedules()` instead.
+
+Calling `this.destroy()` inside a sub-agent delegates cleanup to the parent. The parent cancels that sub-agent's schedules, removes recovery metadata for the sub-agent and its descendants, removes the registry entry, and asks the runtime to wipe the child storage. Treat `this.destroy()` as fire-and-forget because deleting the sub-agent can abort its isolate before the method returns cleanly.
+
+## Example
+
+[ Multi-session chat example ](https://github.com/cloudflare/agents/tree/main/examples/multi-ai-chat) Build an inbox where each chat is an AIChatAgent sub-agent with isolated state and direct client routing. 
 
 ## Related
 
 * [Think](https://developers.cloudflare.com/agents/api-reference/think/) — `chat()` method for streaming AI turns through sub-agents
 * [Long-running agents](https://developers.cloudflare.com/agents/concepts/long-running-agents/) — sub-agent delegation in the context of multi-week agent lifetimes
 * [Callable methods](https://developers.cloudflare.com/agents/api-reference/callable-methods/) — RPC via `@callable` and service bindings
-* [Chat agents](https://developers.cloudflare.com/agents/api-reference/chat-agents/) — `ToolLoopAgent` for in-process AI SDK sub-calls
+* [Agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/) — run Think or `AIChatAgent` sub-agents as retained, streaming tools
+* [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) — scheduling primitives for top-level agents and sub-agents
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/api-reference/sub-agents/","name":"Sub-agents"}}]}

@@ -22,8 +22,8 @@ Because a step might be retried multiple times, your steps should (ideally) be i
 
 As an example, let us assume you have a Workflow that charges your customers, and you really do not want to charge them twice by accident. Before charging them, you should check if they were already charged:
 
-* [  JavaScript ](#tab-panel-10069)
-* [  TypeScript ](#tab-panel-10070)
+* [  JavaScript ](#tab-panel-9898)
+* [  TypeScript ](#tab-panel-9899)
 
 index.js
 
@@ -179,8 +179,8 @@ You can also think of it as a transaction, or a unit of work.
 
 * ✅ Minimize the number of API/binding calls per step (unless you need multiple calls to prove idempotency).
 
-* [  JavaScript ](#tab-panel-10067)
-* [  TypeScript ](#tab-panel-10068)
+* [  JavaScript ](#tab-panel-9896)
+* [  TypeScript ](#tab-panel-9897)
 
 index.js
 
@@ -261,8 +261,8 @@ Otherwise, your entire Workflow might not be as durable as you might think, and 
 * 🔴 Do not make too many service calls in the same step (unless you need it to prove idempotency).
 * 🔴 Do not do too much CPU-intensive work inside a single step - sometimes the engine may have to restart, and it will start over from the beginning of that step.
 
-* [  JavaScript ](#tab-panel-10065)
-* [  TypeScript ](#tab-panel-10066)
+* [  JavaScript ](#tab-panel-9894)
+* [  TypeScript ](#tab-panel-9895)
 
 index.js
 
@@ -328,8 +328,8 @@ Workflows may hibernate and lose all in-memory state. This will happen when engi
 
 This means that you should not store state outside of a step:
 
-* [  JavaScript ](#tab-panel-10079)
-* [  TypeScript ](#tab-panel-10080)
+* [  JavaScript ](#tab-panel-9908)
+* [  TypeScript ](#tab-panel-9909)
 
 index.js
 
@@ -485,8 +485,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 Instead, you should build top-level state exclusively comprised of `step.do` returns:
 
-* [  JavaScript ](#tab-panel-10077)
-* [  TypeScript ](#tab-panel-10078)
+* [  JavaScript ](#tab-panel-9906)
+* [  TypeScript ](#tab-panel-9907)
 
 index.js
 
@@ -646,8 +646,8 @@ Note
 
 If you use [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) in a Workflow, create a new connection inside each `step.do()` and run your queries in that same step. Do not reuse a Hyperdrive-backed connection across steps.
 
-* [  JavaScript ](#tab-panel-10091)
-* [  TypeScript ](#tab-panel-10092)
+* [  JavaScript ](#tab-panel-9920)
+* [  TypeScript ](#tab-panel-9921)
 
 index.js
 
@@ -837,8 +837,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 The `event` passed to your Workflow's `run` method is immutable: changes you make to the event are not persisted across steps and/or Workflow restarts.
 
-* [  JavaScript ](#tab-panel-10075)
-* [  TypeScript ](#tab-panel-10076)
+* [  JavaScript ](#tab-panel-9904)
+* [  TypeScript ](#tab-panel-9905)
 
 index.js
 
@@ -963,8 +963,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 Steps should be named deterministically (that is, not using the current date/time, randomness, etc). This ensures that their state is cached, and prevents the step from being rerun unnecessarily. Step names act as the "cache key" in your Workflow.
 
-* [  JavaScript ](#tab-panel-10083)
-* [  TypeScript ](#tab-panel-10084)
+* [  JavaScript ](#tab-panel-9912)
+* [  TypeScript ](#tab-panel-9913)
 
 index.js
 
@@ -1112,8 +1112,8 @@ Workflows allows the usage steps within the `Promise.race()` or `Promise.any()` 
 
 Due to the nature of Workflows' instance lifecycle, and given that a step inside a Promise will run until it finishes, the step that is returned during the first passage may not be the actual cached step, as [steps are cached by their names](#name-steps-deterministically).
 
-* [  JavaScript ](#tab-panel-10071)
-* [  TypeScript ](#tab-panel-10072)
+* [  JavaScript ](#tab-panel-9900)
+* [  TypeScript ](#tab-panel-9901)
 
 index.js
 
@@ -1221,8 +1221,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 To ensure consistency, we suggest to surround the `Promise.race()` or `Promise.any()` within a `step.do()`, as this will ensure caching consistency across multiple passages.
 
-* [  JavaScript ](#tab-panel-10081)
-* [  TypeScript ](#tab-panel-10082)
+* [  JavaScript ](#tab-panel-9910)
+* [  TypeScript ](#tab-panel-9911)
 
 index.js
 
@@ -1344,8 +1344,8 @@ It would also present a problem if you wanted to run multiple different Workflow
 
 If you need to associate multiple instances with a specific user, merchant or other "customer" ID in your system, consider using a composite ID or using randomly generated IDs and storing the mapping in a database like [D1](https://developers.cloudflare.com/d1/).
 
-* [  JavaScript ](#tab-panel-10085)
-* [  TypeScript ](#tab-panel-10086)
+* [  JavaScript ](#tab-panel-9914)
+* [  TypeScript ](#tab-panel-9915)
 
 index.js
 
@@ -1477,8 +1477,8 @@ If you don't call `await step.do` or `await step.sleep`, you create a dangling P
 
 This happens when you do not use the `await` keyword or fail to chain `.then()` methods to handle the result of a Promise. For example, calling `fetch(GITHUB_URL)` without awaiting its response will cause subsequent code to execute immediately, regardless of whether the fetch completed. This can cause issues like premature logging, exceptions being swallowed (and not terminating the Workflow), and lost return values (state).
 
-* [  JavaScript ](#tab-panel-10073)
-* [  TypeScript ](#tab-panel-10074)
+* [  JavaScript ](#tab-panel-9902)
+* [  TypeScript ](#tab-panel-9903)
 
 index.js
 
@@ -1566,8 +1566,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 You can use `if` statements, loops, and other control flow outside of steps. However, conditions must be based on **deterministic values** — either values from `event.payload` or return values from previous steps. Non-deterministic conditions (such as `Math.random()` or `Date.now()`) outside of steps can cause unexpected behavior if the Workflow restarts.
 
-* [  JavaScript ](#tab-panel-10093)
-* [  TypeScript ](#tab-panel-10094)
+* [  JavaScript ](#tab-panel-9922)
+* [  TypeScript ](#tab-panel-9923)
 
 index.js
 
@@ -1719,8 +1719,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 When creating multiple Workflow instances, use the [createBatch](https://developers.cloudflare.com/workflows/build/workers-api/#createBatch) method to batch the invocations together. This allows you to create multiple Workflow instances in a single request, which will reduce the number of requests made to the Workflows API. However, each individual instance in the batch will still count towards the [creation rate limit](https://developers.cloudflare.com/workflows/reference/limits/). Unlike `create`, `createBatch` is idempotent: if an existing instance with the same ID is still within its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/), it will be skipped and excluded from the returned array.
 
-* [  JavaScript ](#tab-panel-10087)
-* [  TypeScript ](#tab-panel-10088)
+* [  JavaScript ](#tab-panel-9916)
+* [  TypeScript ](#tab-panel-9917)
 
 index.js
 
@@ -1847,8 +1847,8 @@ Note that streamed outputs are still considered part of the Workflow instance st
 
 If these storage limits still do not work for you, consider storing your step outputs externally (for example, in [R2](https://developers.cloudflare.com/r2)) and saving a reference to it.
 
-* [  JavaScript ](#tab-panel-10089)
-* [  TypeScript ](#tab-panel-10090)
+* [  JavaScript ](#tab-panel-9918)
+* [  TypeScript ](#tab-panel-9919)
 
 index.js
 

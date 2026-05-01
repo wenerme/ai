@@ -22,7 +22,7 @@ The core workflow uses [Cloudflare Application Security](https://developers.clou
 
 Note
 
-Most procedures in this guide are configured per domain or [zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones). Select your domain in the Cloudflare dashboard before starting.
+Most procedures in this guide are configured per domain or [zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones). Select your domain in the Cloudflare dashboard before starting. 
 
 ## Know what you are exposing
 
@@ -108,8 +108,8 @@ API clients typically include a `Content-Type` header and may include an `Author
 
 The following custom security rule blocks requests to `/api/` paths that are missing a `Content-Type` header. Adjust the path and header checks to match your API.
 
-* [  New dashboard ](#tab-panel-8132)
-* [ Old dashboard ](#tab-panel-8133)
+* [  New dashboard ](#tab-panel-7991)
+* [ Old dashboard ](#tab-panel-7992)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -137,8 +137,8 @@ The following custom security rule blocks requests to `/api/` paths that are mis
 
 If your `/api/users` endpoint only accepts `GET` and `POST` requests, block all other HTTP methods on that path. This prevents attackers from probing with `PUT`, `DELETE`, or `PATCH` requests against endpoints that do not support them.
 
-* [  New dashboard ](#tab-panel-8134)
-* [ Old dashboard ](#tab-panel-8135)
+* [  New dashboard ](#tab-panel-7993)
+* [ Old dashboard ](#tab-panel-7994)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -181,8 +181,8 @@ Create separate rate limiting rules for authenticated and unauthenticated endpoi
 
 The following example limits requests to `/api/auth/login` to 10 per minute per IP address. Adjust the path, request threshold, and period for your endpoints.
 
-* [  New dashboard ](#tab-panel-8138)
-* [ Old dashboard ](#tab-panel-8139)
+* [  New dashboard ](#tab-panel-7997)
+* [ Old dashboard ](#tab-panel-7998)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -232,8 +232,8 @@ If you are on a Cloudflare Pro or Business plan, go to the [next section](#creat
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to your entire domain and is available on all plans at no additional cost.
 
-* [  New dashboard ](#tab-panel-8144)
-* [ Old dashboard ](#tab-panel-8145)
+* [  New dashboard ](#tab-panel-8003)
+* [ Old dashboard ](#tab-panel-8004)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -253,8 +253,8 @@ For more information on Bot Fight Mode behavior and limitations, refer to [Bot F
 
 If your API receives traffic from known automated clients (monitoring services, partner APIs, CI/CD systems), create a [custom security rule with the _Skip_ action](https://developers.cloudflare.com/waf/custom-rules/skip/) to exclude them from bot protections. Create the exception rule before turning on Super Bot Fight Mode in the next section.
 
-* [  New dashboard ](#tab-panel-8136)
-* [ Old dashboard ](#tab-panel-8137)
+* [  New dashboard ](#tab-panel-7995)
+* [ Old dashboard ](#tab-panel-7996)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -297,8 +297,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 
 To configure Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-8146)
-* [ Old dashboard ](#tab-panel-8147)
+* [  New dashboard ](#tab-panel-8005)
+* [ Old dashboard ](#tab-panel-8006)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -365,8 +365,8 @@ After deploying your security rules, review the results to identify false positi
 
 [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) shows every request that your rules matched, including the action taken and the rule that triggered it. Filter by your API path prefix to see what Cloudflare is blocking and why.
 
-* [  New dashboard ](#tab-panel-8140)
-* [ Old dashboard ](#tab-panel-8141)
+* [  New dashboard ](#tab-panel-7999)
+* [ Old dashboard ](#tab-panel-8000)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -391,8 +391,8 @@ If you find false positives, update your custom rules to exclude the affected tr
 
 Rate limiting thresholds that are too tight block legitimate clients. Thresholds that are too loose allow abuse. Review rate limiting events in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to find the right balance.
 
-* [  New dashboard ](#tab-panel-8142)
-* [ Old dashboard ](#tab-panel-8143)
+* [  New dashboard ](#tab-panel-8001)
+* [ Old dashboard ](#tab-panel-8002)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)

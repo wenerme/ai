@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Configuration guides
 
-Learn how to use Cloudflare products with the Data Localization Suite.
+Learn how to configure Cloudflare products with the Data Localization Suite, including Regional Services (which controls where traffic is decrypted and processed) and Customer Metadata Boundary (which controls where logs are stored).
 
 * [ Zero Trust ](https://developers.cloudflare.com/data-localization/how-to/zero-trust/)
 * [ Pages ](https://developers.cloudflare.com/data-localization/how-to/pages/)
@@ -45,7 +45,7 @@ curl -s https://<HOSTNAME>/cdn-cgi/trace | grep "colo="
 
 ```
 
-The first command will return a three-letter IATA code in the [Cf-Ray](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ray) header, indicating the Cloudflare data center location of processing and/or TLS termination. The second command will directly return the three-letter IATA code.
+The first command will return a three-letter IATA code (an airport identifier that corresponds to the nearest Cloudflare data center) in the [Cf-Ray](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ray) header, indicating the Cloudflare data center location of processing and/or TLS termination (traffic decryption). The second command will directly return the three-letter IATA code.
 
 For example, when a hostname is configured to use the region European Union (EU), the three-letter IATA code will always return a data center inside of the EU.
 

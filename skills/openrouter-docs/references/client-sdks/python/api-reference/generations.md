@@ -4,14 +4,10 @@
 
 # Generations - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ Generation history endpoints
 Get request & usage metadata for a generation
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="getGeneration" method="get" path="/generation" */}
 
 ```python
 from openrouter import OpenRouter
@@ -81,8 +75,6 @@ with OpenRouter(
 Get stored prompt and completion content for a generation
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listGenerationContent" method="get" path="/generation/content" */}
 
 ```python
 from openrouter import OpenRouter

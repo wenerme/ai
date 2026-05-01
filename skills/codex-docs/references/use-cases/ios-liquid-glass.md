@@ -65,7 +65,7 @@ relatedLinks:
     url: /codex/skills
 techStack:
   - need: Liquid Glass UI APIs
-    goodDefault: "[SwiftUI](https://developer.apple.com/xcode/swiftui/) with
+    goodDefault: "[SwiftUI](https://developer.apple.com/documentation/swiftui/) with
       `glassEffect`, `GlassEffectContainer`, and glass button styles"
     why: These are the native APIs the skill should reach for first, so Codex
       removes custom blur layers instead of reinventing the material system.

@@ -62,7 +62,7 @@ relatedLinks:
     url: /codex/skills
 techStack:
   - need: UI framework
-    goodDefault: "[SwiftUI](https://developer.apple.com/xcode/swiftui/)"
+    goodDefault: "[SwiftUI](https://developer.apple.com/documentation/swiftui/)"
     why: The fastest way to prototype views, navigation, and shared state for iPhone
       and iPad while keeping the UI code readable.
   - need: Build tooling

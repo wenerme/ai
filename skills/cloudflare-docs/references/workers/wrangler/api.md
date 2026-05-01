@@ -14,9 +14,133 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Wrangler offers APIs to programmatically interact with your Cloudflare Workers.
 
+* [experimental\_generateTypes](#experimental%5Fgeneratetypes) \- Generate TypeScript type definitions from your Worker configuration.
 * [unstable\_startWorker](#unstable%5Fstartworker) \- Start a server for running integration tests against your Worker.
 * [unstable\_dev](#unstable%5Fdev) \- Start a server for running either end-to-end (e2e) or integration tests against your Worker.
 * [getPlatformProxy](#getplatformproxy) \- Get proxies and values for emulating the Cloudflare Workers platform in a Node.js process.
+
+## `experimental_generateTypes`
+
+Generate TypeScript type definitions from your Worker configuration. This API uses the same core logic as the `wrangler types` CLI command, so outputs stay aligned between the CLI and programmatic API.
+
+Unlike the CLI command, `experimental_generateTypes` does not write to disk automatically. Instead, it returns the generated type content as structured strings for you to handle as needed.
+
+Note
+
+The `experimental_generateTypes()` function has an `experimental_` prefix because the API is experimental and may change in the future.
+
+### Syntax
+
+TypeScript
+
+```
+
+import { experimental_generateTypes } from "wrangler";
+
+
+const result = await experimental_generateTypes(options);
+
+
+```
+
+### Parameters
+
+* `options` ` object ` optional  
+   * Optional options object mirroring the `wrangler types` CLI flags:  
+         * `config` `string | string[]`  
+         Path to the Wrangler configuration file to use. Can be an array for multi-config type resolution.  
+         * `env` `string`  
+         Name of the Wrangler environment to generate types for.  
+         * `envFile` `string[]`  
+         Paths to `.env` files to load when inferring local variables and secrets.  
+         * `envInterface` `string`  
+         Name of the generated environment interface. Defaults to `Env`.  
+         * `includeEnv` `boolean`  
+         Whether to include environment and bindings types in the output. Defaults to `true`.  
+         * `includeRuntime` `boolean`  
+         Whether to include runtime types in the output. Defaults to `true`.  
+         * `path` `string`  
+         Path to the declaration file for generated types. Defaults to `worker-configuration.d.ts`.  
+         * `strictVars` `boolean`  
+         Whether to generate strict literal and union types for variables. Defaults to `true`.
+
+### Return Type
+
+`experimental_generateTypes()` returns a `Promise` resolving to an object containing the following fields:
+
+* `content` `string`  
+   * Combined formatted output containing all generated sections, including headers and both env and runtime types.
+* `env` `string | null`  
+   * Generated environment and bindings types, or `null` when env types are excluded.
+* `path` `string`  
+   * Target declaration file path associated with this generation run.
+* `runtime` `string | null`  
+   * Generated runtime types, or `null` when runtime types are excluded.
+
+### Usage
+
+You can use `experimental_generateTypes` to generate types programmatically and write them to disk yourself, or pass them to other tools:
+
+TypeScript
+
+```
+
+import { experimental_generateTypes } from "wrangler";
+
+import * as fs from "node:fs";
+
+
+const result = await experimental_generateTypes({
+
+  config: "wrangler.json",
+
+  includeRuntime: true,
+
+  includeEnv: true,
+
+});
+
+
+// Write the combined content to the path specified in options
+
+fs.writeFileSync(result.path, result.content, "utf-8");
+
+
+```
+
+To generate only env types without runtime types:
+
+TypeScript
+
+```
+
+const result = await experimental_generateTypes({
+
+  includeRuntime: false,
+
+});
+
+
+```
+
+To generate types for a specific environment with a custom interface name:
+
+TypeScript
+
+```
+
+const result = await experimental_generateTypes({
+
+  env: "staging",
+
+  envInterface: "StagingEnv",
+
+  path: "./types/staging.d.ts",
+
+});
+
+
+```
 
 ## `unstable_startWorker`
 
@@ -123,8 +247,8 @@ To wrap up a test suite, call `await worker.stop()` in an `afterAll` function.
 
 #### Single Worker example
 
-* [  JavaScript ](#tab-panel-9315)
-* [  TypeScript ](#tab-panel-9316)
+* [  JavaScript ](#tab-panel-9144)
+* [  TypeScript ](#tab-panel-9145)
 
 JavaScript
 
@@ -224,8 +348,8 @@ You can test Workers that call other Workers. In the below example, we refer to 
 
 If you shut down the child Worker prematurely, the parent Worker will not know the child Worker exists and your tests will fail.
 
-* [  JavaScript ](#tab-panel-9317)
-* [  TypeScript ](#tab-panel-9318)
+* [  JavaScript ](#tab-panel-9146)
+* [  TypeScript ](#tab-panel-9147)
 
 JavaScript
 
@@ -432,8 +556,8 @@ const platform = await getPlatformProxy(options);
 
 The `getPlatformProxy` function uses bindings found in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). For example, if you have an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-wrangler) configuration set up in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9319)
-* [  wrangler.toml ](#tab-panel-9320)
+* [  wrangler.jsonc ](#tab-panel-9148)
+* [  wrangler.toml ](#tab-panel-9149)
 
 JSONC
 
@@ -511,8 +635,8 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
 * [Durable Object bindings](https://developers.cloudflare.com/durable-objects/api/)  
    * To use a Durable Object binding with `getPlatformProxy`, always specify a [script\_name](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects).  
    For example, you might have the following binding in a Wrangler configuration file read by `getPlatformProxy`.  
-         * [  wrangler.jsonc ](#tab-panel-9323)  
-         * [  wrangler.toml ](#tab-panel-9324)  
+         * [  wrangler.jsonc ](#tab-panel-9152)  
+         * [  wrangler.toml ](#tab-panel-9153)  
    JSONC  
    ```  
    {  
@@ -542,14 +666,14 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
    }  
    export default {  
      fetch() {  
-         // Doesn't have to do anything, but a DO cannot be the default export  
-         return new Response("Hello, world!");  
+       // Doesn't have to do anything, but a DO cannot be the default export  
+       return new Response("Hello, world!");  
      },  
    };  
    ```  
    That Worker also needs a Wrangler configuration file that looks like this:  
-         * [  wrangler.jsonc ](#tab-panel-9321)  
-         * [  wrangler.toml ](#tab-panel-9322)  
+         * [  wrangler.jsonc ](#tab-panel-9150)  
+         * [  wrangler.toml ](#tab-panel-9151)  
    JSONC  
    ```  
    {  

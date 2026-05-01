@@ -15,7 +15,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Bot Fight Mode is a simple, free product that helps detect and mitigate bot traffic on your domain. When enabled, the product:
 
 * Identifies traffic matching patterns of known bots
-* Issues computationally expensive challenges in response to these bots
+* Issues computationally expensive challenges that force the requesting client to perform CPU-intensive calculations, increasing the cost for bots to send automated requests
 * Notifies [Bandwidth Alliance ↗](https://cloudflare.com/bandwidth-alliance/) partners (if applicable) to disable bots
 
 ## Considerations
@@ -37,8 +37,8 @@ If you are using several app security features like custom rules, Managed Rules,
 
 To start using Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-4375)
-* [ Old dashboard ](#tab-panel-4376)
+* [  New dashboard ](#tab-panel-4179)
+* [ Old dashboard ](#tab-panel-4180)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -65,8 +65,8 @@ If you find that **Bot Fight Mode** is causing problems with your application tr
 
 To disable Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-4373)
-* [ Old dashboard ](#tab-panel-4374)
+* [  New dashboard ](#tab-panel-4177)
+* [ Old dashboard ](#tab-panel-4178)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -100,9 +100,11 @@ You can see bot-related actions by going to **Security** \> **Events**. Any requ
 
 ### Rules
 
-You cannot bypass or skip Bot Fight Mode using the _Skip_ action in WAF custom rules or using Page Rules. _Skip_, _Bypass_, and _Allow_ actions apply to rules or rulesets running on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/). While Super Bot Fight Mode rules are implemented in the Ruleset Engine, Bot Fight Mode checks are not. This is why you can skip Super Bot Fight Mode, but not Bot Fight Mode. If you need to skip Bot Fight Mode, consider using [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/).
+You cannot bypass or skip Bot Fight Mode using WAF custom rules or Page Rules. This is because Bot Fight Mode does not run on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/) — it operates in a separate evaluation pipeline where _Skip_, _Bypass_, and _Allow_ actions have no effect.
 
-Bot Fight Mode can still trigger if you have IP Access rules, but it cannot trigger if an IP Access rule matches the request. For example, the IP Access rule matches the connecting IP.
+If you need to create exceptions for specific traffic (for example, your own API clients or monitoring tools), use [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) instead. Super Bot Fight Mode runs on the Ruleset Engine and supports Skip rules.
+
+Bot Fight Mode can still trigger if you have [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/), but it will not trigger if an IP Access rule matches the request first.
 
 ### JavaScript Detections
 

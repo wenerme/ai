@@ -57,7 +57,7 @@ console.log(response)
 
 ```
 
-Response200 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/print-ready-illustration.png) 
+![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/print-ready-illustration.png) 
 
 ## Examples
 
@@ -94,7 +94,7 @@ console.log(response)
 
 ```
 
-Response200 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/large-format-art.png) 
+![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/large-format-art.png) 
 
 **Brand Asset**  — Professional brand asset with controlled colors 
 
@@ -155,7 +155,7 @@ console.log(response)
 
 ```
 
-Response200 ![Brand Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/brand-asset.png) 
+![Brand Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/brand-asset.png) 
 
 **Editorial Illustration**  — Magazine-quality editorial illustration 
 
@@ -188,12 +188,12 @@ console.log(response)
 
 ```
 
-Response200 ![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/editorial-illustration.png) 
+![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/editorial-illustration.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-340)
-* [ Output ](#tab-panel-341)
+* [ Input ](#tab-panel-102)
+* [ Output ](#tab-panel-103)
 
 prompt
 

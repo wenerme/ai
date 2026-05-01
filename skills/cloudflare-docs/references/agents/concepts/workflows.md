@@ -20,14 +20,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Agents and Workflows have complementary strengths:
 
-| Capability              | Agents                     | Workflows                      |
-| ----------------------- | -------------------------- | ------------------------------ |
-| Execution model         | Can run indefinitely       | Run to completion              |
-| Real-time communication | WebSockets, HTTP streaming | Not supported                  |
-| State persistence       | Built-in SQL database      | Step-level persistence         |
-| Failure handling        | Application-defined        | Automatic retries and recovery |
-| External events         | Direct handling            | Pause and wait for events      |
-| User interaction        | Direct (chat, UI)          | Through Agent callbacks        |
+| Capability              | Agents                                   | Workflows                      |
+| ----------------------- | ---------------------------------------- | ------------------------------ |
+| Execution model         | Long-lived identity that wakes on events | Run to completion              |
+| Real-time communication | WebSockets, HTTP streaming               | Not supported                  |
+| State persistence       | Built-in SQL database                    | Step-level persistence         |
+| Failure handling        | Application-defined                      | Automatic retries and recovery |
+| External events         | Direct handling                          | Pause and wait for events      |
+| User interaction        | Direct (chat, UI)                        | Through Agent callbacks        |
 
 Agents can loop, branch, and interact directly with users. Workflows execute steps sequentially with guaranteed delivery and can pause for days waiting for approvals or external data.
 
@@ -67,8 +67,8 @@ Workflows can communicate with Agents through several mechanisms:
 * **State updates**: Modify Agent state via `step.updateAgentState()` or `step.mergeAgentState()`, which broadcasts to connected clients
 * **Client broadcasts**: Send messages to all WebSocket clients via `this.broadcastToClients()`
 
-* [  JavaScript ](#tab-panel-3898)
-* [  TypeScript ](#tab-panel-3899)
+* [  JavaScript ](#tab-panel-3702)
+* [  TypeScript ](#tab-panel-3703)
 
 JavaScript
 
@@ -162,8 +162,8 @@ When an Agent starts a workflow using `runWorkflow()`, the workflow is automatic
 
 An Agent receives a request, starts a Workflow for heavy processing, and broadcasts progress updates to connected clients as the Workflow executes each step.
 
-* [  JavaScript ](#tab-panel-3900)
-* [  TypeScript ](#tab-panel-3901)
+* [  JavaScript ](#tab-panel-3704)
+* [  TypeScript ](#tab-panel-3705)
 
 JavaScript
 
@@ -223,8 +223,8 @@ A Workflow prepares a request, pauses to wait for approval using `waitForApprova
 
 A Workflow wraps external API calls in durable steps with retry logic. If the API fails or the workflow restarts, completed calls are not repeated and failed calls retry automatically.
 
-* [  JavaScript ](#tab-panel-3902)
-* [  TypeScript ](#tab-panel-3903)
+* [  JavaScript ](#tab-panel-3706)
+* [  TypeScript ](#tab-panel-3707)
 
 JavaScript
 

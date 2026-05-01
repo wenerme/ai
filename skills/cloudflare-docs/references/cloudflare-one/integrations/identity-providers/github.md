@@ -38,7 +38,7 @@ https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 7. Select **Register application**.
 8. Make note of the **Client ID**.
 9. Select **Generate a new client secret** and copy the client secret to a safe place.
-10. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+10. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 11. Select **Add new identity provider** and select **GitHub**.
 12. In **App ID**, enter the **Client ID** obtained from GitHub (refer to step 8).
 13. In **Client secret**, enter the **Client secret** obtained from GitHub (refer to step 9).
@@ -48,7 +48,7 @@ https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    * Email addresses (read-only)
 16. Select **Authorize**.
 
-To test that your connection is working, go to [Cloudflare One ↗](https://one.dash.cloudflare.com) \> **Integrations** \> **Identity providers** and select **Test** next to your GitHub login method. If you have GitHub two-factor authentication enabled, you will need to first login to GitHub directly and return to Access.
+To test that your connection is working, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) \> **Zero Trust** \> **Integrations** \> **Identity providers** and select **Test** next to your GitHub login method. If you have GitHub two-factor authentication enabled, you will need to first login to GitHub directly and return to Access.
 
 Troubleshooting organization policies
 

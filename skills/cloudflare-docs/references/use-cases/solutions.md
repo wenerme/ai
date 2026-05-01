@@ -16,6 +16,7 @@ Each guide starts from your goal, identifies which Cloudflare products you need,
 
 * [ Discover and secure your API endpoints (Free, Pro, and Business) ](https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/)
 * [ Enforce HTTPS and encrypt all traffic (Free, Pro, and Business) ](https://developers.cloudflare.com/use-cases/solutions/encrypt-all-keep-site-secure/)
+* [ Protect your forms from spam and abuse (Free, Pro, and Business) ](https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/)
 * [ Stop account takeover attacks (Free, Pro, and Business) ](https://developers.cloudflare.com/use-cases/solutions/stop-account-takeover-attacks/)
 * [ Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business) ](https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/)
 

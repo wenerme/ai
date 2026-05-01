@@ -4,14 +4,10 @@
 
 # Embeddings - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ Text embedding endpoints
 Submits an embedding request to the embeddings router
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="createEmbeddings" method="post" path="/embeddings" */}
 
 ```go
 package main
@@ -96,8 +90,6 @@ func main() {
 Returns a list of all available embeddings models and their properties
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listEmbeddingsModels" method="get" path="/embeddings/models" */}
 
 ```go
 package main

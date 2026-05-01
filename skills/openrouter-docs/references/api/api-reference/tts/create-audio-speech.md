@@ -4,7 +4,7 @@
 
 # Create speech
 
-POST https://openrouter.ai/api/v1/audio/speech
+POST https://openrouter.ai/api/v1//audio/speech
 Content-Type: application/json
 
 Synthesizes audio from the input text
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /audio/speech:
+  //audio/speech:
     post:
       operationId: create-audio-speech
       summary: Create speech
@@ -98,7 +98,7 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    SpeechRequestProviderOptions:
+    ProviderOptions:
       type: object
       properties:
         01ai:
@@ -540,15 +540,12 @@ components:
       description: >-
         Provider-specific options keyed by provider slug. The options for the
         matched provider are spread into the upstream request body.
-      title: SpeechRequestProviderOptions
+      title: ProviderOptions
     SpeechRequestProvider:
       type: object
       properties:
         options:
-          $ref: '#/components/schemas/SpeechRequestProviderOptions'
-          description: >-
-            Provider-specific options keyed by provider slug. The options for
-            the matched provider are spread into the upstream request body.
+          $ref: '#/components/schemas/ProviderOptions'
       description: Provider-specific passthrough configuration
       title: SpeechRequestProvider
     SpeechRequestResponseFormat:
@@ -850,7 +847,7 @@ components:
 ```python
 import requests
 
-url = "https://openrouter.ai/api/v1/audio/speech"
+url = "https://openrouter.ai/api/v1//audio/speech"
 
 payload = {
     "input": "Hello world",
@@ -870,7 +867,7 @@ print(response.json())
 ```
 
 ```javascript
-const url = 'https://openrouter.ai/api/v1/audio/speech';
+const url = 'https://openrouter.ai/api/v1//audio/speech';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -898,7 +895,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/audio/speech"
+	url := "https://openrouter.ai/api/v1//audio/speech"
 
 	payload := strings.NewReader("{\n  \"input\": \"Hello world\",\n  \"model\": \"elevenlabs/eleven-turbo-v2\",\n  \"voice\": \"alloy\",\n  \"response_format\": \"pcm\",\n  \"speed\": 1\n}")
 
@@ -922,7 +919,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/audio/speech")
+url = URI("https://openrouter.ai/api/v1//audio/speech")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -940,7 +937,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/audio/speech")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//audio/speech")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"input\": \"Hello world\",\n  \"model\": \"elevenlabs/eleven-turbo-v2\",\n  \"voice\": \"alloy\",\n  \"response_format\": \"pcm\",\n  \"speed\": 1\n}")
@@ -953,7 +950,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/audio/speech', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1//audio/speech', [
   'body' => '{
   "input": "Hello world",
   "model": "elevenlabs/eleven-turbo-v2",
@@ -973,7 +970,7 @@ echo $response->getBody();
 ```csharp
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/audio/speech");
+var client = new RestClient("https://openrouter.ai/api/v1//audio/speech");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -998,7 +995,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/audio/speech")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//audio/speech")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

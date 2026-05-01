@@ -46,8 +46,8 @@ Warning
 
 You must create an [Account API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the role `SSO Connector Edit` and store it securely. This acts as a backup plan, allowing you to disable SSO via the API if you are accidentally locked out, such as due to changes in your IdP configuration later.
 
-* [ Dashboard ](#tab-panel-6011)
-* [ API ](#tab-panel-6012)
+* [ Dashboard ](#tab-panel-5815)
+* [ API ](#tab-panel-5816)
 
 1. Once you have configured an IdP in Cloudflare One, go to the **Members** page to manage SSO connectors.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -115,8 +115,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors"
 
 ## 3\. Verify domain ownership
 
-* [ Dashboard ](#tab-panel-6013)
-* [ API ](#tab-panel-6014)
+* [ Dashboard ](#tab-panel-5817)
+* [ API ](#tab-panel-5818)
 
 If you are unable to change your DNS records right away, the option to verify later is available. The verification process can be manually triggered from the actions menu for that connector in the list.
 
@@ -175,8 +175,8 @@ Once the verification process has completed and successfully verified domain own
 
 Domains that are associated with an already enabled connector belonging to a different account may not be enabled on a new account until disabled on the old account.
 
-* [ Dashboard ](#tab-panel-6015)
-* [ API ](#tab-panel-6016)
+* [ Dashboard ](#tab-panel-5819)
+* [ API ](#tab-panel-5820)
 
 Enable the connector by selecting **Enable** in the Actions menu for that connector in the list.
 
@@ -203,7 +203,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/
 
 Before enabling SSO for your domain, verify that your identity provider is configured correctly:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Find your IdP and select **Test**.
 3. Confirm that the test returns a successful authentication result.
 
@@ -237,7 +237,7 @@ Configure an identity provider (IdP)-initiated single sign-on (SSO) session usin
 
 #### Prerequisites
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications** \> select your **SSO App**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications** \> select your **SSO App**.
 2. Select **Configure** to access the application settings.
 3. In the **Basic Information** section, copy the **SSO Endpoint URL** and **Access Entity ID or Issuer**. You will need these values for your IdP setup.
 
@@ -258,7 +258,7 @@ Configure an identity provider (IdP)-initiated single sign-on (SSO) session usin
 
 If you use only one IdP (for example, Okta) for Cloudflare SSO and want users to skip the identity provider selection prompt:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications** \> select your **SSO App**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications** \> select your **SSO App**.
 2. Go to **Login methods**.
 3. Disable **Accept all available identity providers** and ensure only Okta is selected as the login method.
 4. Enable **Instant Auth** to allow users to skip identity provider selection.
@@ -338,8 +338,8 @@ Warning
 
 Before disabling SSO, make sure you have access to your Cloudflare user email. This will allow you to reset your password in case you get logged out of the Cloudflare dashboard.
 
-* [ Dashboard ](#tab-panel-6007)
-* [ API ](#tab-panel-6008)
+* [ Dashboard ](#tab-panel-5811)
+* [ API ](#tab-panel-5812)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -436,8 +436,8 @@ Users can now log in using their Cloudflare account email and password. If a use
 
 Cloudflare does not allow you to change your team name while a SSO connector is created. To change your team name, you must disable and delete your SSO connector(s).
 
-* [ Dashboard ](#tab-panel-6009)
-* [ API ](#tab-panel-6010)
+* [ Dashboard ](#tab-panel-5813)
+* [ API ](#tab-panel-5814)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -470,7 +470,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Reusable components** \> **Custom pages**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Team domain**, select **Edit** to enter the new team name. Select **Save**.
 3. In your identity provider, update your Cloudflare integration with the new team name. For example, if you are using a SAML IdP, you will need to update the Single Sign-on URL and Entity ID to `https://<new-team-name>.cloudflareaccess.com/cdn-cgi/access/callback`.
 4. Recreate any deleted SSO connectors using the steps in [Register your domain with Cloudflare for SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#2-register-your-domain-with-cloudflare-for-sso).

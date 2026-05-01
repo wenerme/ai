@@ -35,8 +35,8 @@ npm install @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zo
 
 ### Server
 
-* [  JavaScript ](#tab-panel-3714)
-* [  TypeScript ](#tab-panel-3715)
+* [  JavaScript ](#tab-panel-3518)
+* [  TypeScript ](#tab-panel-3519)
 
 JavaScript
 
@@ -55,7 +55,7 @@ export class MyAgent extends Think {
 
     return createWorkersAI({ binding: this.env.AI })(
 
-      "@cf/moonshotai/kimi-k2.5",
+      "@cf/moonshotai/kimi-k2.6",
 
     );
 
@@ -100,7 +100,7 @@ export class MyAgent extends Think<Env> {
 
     return createWorkersAI({ binding: this.env.AI })(
 
-      "@cf/moonshotai/kimi-k2.5",
+      "@cf/moonshotai/kimi-k2.6",
 
     );
 
@@ -132,8 +132,8 @@ That is it. Think handles the WebSocket chat protocol, message persistence, the 
 
 ### Client
 
-* [  JavaScript ](#tab-panel-3730)
-* [  TypeScript ](#tab-panel-3731)
+* [  JavaScript ](#tab-panel-3534)
+* [  TypeScript ](#tab-panel-3535)
 
 JavaScript
 
@@ -277,8 +277,8 @@ function Chat() {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-3704)
-* [  wrangler.toml ](#tab-panel-3705)
+* [  wrangler.jsonc ](#tab-panel-3508)
+* [  wrangler.toml ](#tab-panel-3509)
 
 JSONC
 
@@ -290,13 +290,11 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-04-30",
 
   "compatibility_flags": [
 
-    "nodejs_compat",
-
-    "experimental"
+    "nodejs_compat"
 
   ],
 
@@ -349,9 +347,9 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-04-30"
 
-compatibility_flags = ["nodejs_compat", "experimental"]
+compatibility_flags = ["nodejs_compat"]
 
 
 [ai]
@@ -417,17 +415,18 @@ Both Think and [AIChatAgent](https://developers.cloudflare.com/agents/api-refere
 | getSystemPrompt()     | "You are a helpful assistant." | System prompt (fallback when no context blocks)                                                                                        |
 | getTools()            | {}                             | AI SDK ToolSet for the agentic loop                                                                                                    |
 | maxSteps              | 10                             | Max tool-call rounds per turn                                                                                                          |
+| sendReasoning         | true                           | Send reasoning chunks to chat clients                                                                                                  |
 | configureSession()    | identity                       | Add context blocks, compaction, search, skills — refer to [Sessions](https://developers.cloudflare.com/agents/api-reference/sessions/) |
 | messageConcurrency    | "queue"                        | How overlapping submits behave — refer to [Message concurrency](#message-concurrency)                                                  |
 | waitForMcpConnections | false                          | Wait for MCP servers before inference                                                                                                  |
-| chatRecovery          | true                           | Wrap turns in runFiber for durable execution                                                                                           |
+| chatRecovery          | true                           | Wrap WebSocket, programmatic, and continuation turns in runFiber for durable execution                                                 |
 
 ## Dynamic configuration
 
-Think accepts a `Config` type parameter for per-instance typed configuration. Configuration is persisted in SQLite and survives hibernation and restarts.
+Think's class generics match `Agent<Env, State, Props>`. Persisted runtime configuration is typed at the `configure<T>()` and `getConfig<T>()` call sites, stored in SQLite, and survives hibernation and restarts.
 
-* [  JavaScript ](#tab-panel-3710)
-* [  TypeScript ](#tab-panel-3711)
+* [  JavaScript ](#tab-panel-3514)
+* [  TypeScript ](#tab-panel-3515)
 
 JavaScript
 
@@ -441,7 +440,7 @@ export class MyAgent extends Think {
 
     const models = {
 
-      fast: "@cf/moonshotai/kimi-k2.5",
+      fast: "@cf/moonshotai/kimi-k2.6",
 
       capable: "@cf/meta/llama-4-scout-17b-16e-instruct",
 
@@ -463,15 +462,15 @@ TypeScript
 type MyConfig = { modelTier: "fast" | "capable"; theme: string };
 
 
-export class MyAgent extends Think<Env, MyConfig> {
+export class MyAgent extends Think<Env> {
 
   getModel() {
 
-    const tier = this.getConfig()?.modelTier ?? "fast";
+    const tier = this.getConfig<MyConfig>()?.modelTier ?? "fast";
 
     const models = {
 
-      fast: "@cf/moonshotai/kimi-k2.5",
+      fast: "@cf/moonshotai/kimi-k2.6",
 
       capable: "@cf/meta/llama-4-scout-17b-16e-instruct",
 
@@ -486,15 +485,15 @@ export class MyAgent extends Think<Env, MyConfig> {
 
 ```
 
-| Method                      | Description                                                   |
-| --------------------------- | ------------------------------------------------------------- |
-| configure(config: Config)   | Persist a typed configuration object                          |
-| getConfig(): Config \| null | Read the persisted configuration, or null if never configured |
+| Method                    | Description                                                   |
+| ------------------------- | ------------------------------------------------------------- |
+| configure<T>(config: T)   | Persist a typed configuration object                          |
+| getConfig<T>(): T \| null | Read the persisted configuration, or null if never configured |
 
 Expose configuration to the client via `@callable`:
 
-* [  JavaScript ](#tab-panel-3712)
-* [  TypeScript ](#tab-panel-3713)
+* [  JavaScript ](#tab-panel-3516)
+* [  TypeScript ](#tab-panel-3517)
 
 JavaScript
 
@@ -532,7 +531,7 @@ TypeScript
 import { callable } from "agents";
 
 
-export class MyAgent extends Think<Env, MyConfig> {
+export class MyAgent extends Think<Env> {
 
   getModel() {
 
@@ -545,7 +544,7 @@ export class MyAgent extends Think<Env, MyConfig> {
 
   updateConfig(config: MyConfig) {
 
-    this.configure(config);
+    this.configure<MyConfig>(config);
 
   }
 
@@ -558,8 +557,8 @@ export class MyAgent extends Think<Env, MyConfig> {
 
 Think uses [Session](https://developers.cloudflare.com/agents/api-reference/sessions/) for conversation storage. Override `configureSession` to add persistent memory, compaction, search, and skills:
 
-* [  JavaScript ](#tab-panel-3720)
-* [  TypeScript ](#tab-panel-3721)
+* [  JavaScript ](#tab-panel-3524)
+* [  TypeScript ](#tab-panel-3525)
 
 JavaScript
 
@@ -661,8 +660,8 @@ On every turn, Think merges tools from multiple sources. Later sources override 
 
 1. **Workspace tools** — `read`, `write`, `edit`, `list`, `find`, `grep`, `delete` (built-in)
 2. **`getTools()`** — your custom server-side tools
-3. **Session tools** — `set_context`, `load_context`, `search_context` (from `configureSession`)
-4. **Extension tools** — tools from loaded extensions (prefixed by extension name)
+3. **Extension tools** — tools from loaded extensions (prefixed by extension name)
+4. **Session tools** — `set_context`, `load_context`, `search_context` (from `configureSession`)
 5. **MCP tools** — from connected MCP servers
 6. **Client tools** — from the browser (refer to [Client tools](#client-tools))
 7. **Caller tools** — from `chat()` options when used as a sub-agent
@@ -685,8 +684,8 @@ Every Think agent gets `this.workspace` — a virtual filesystem backed by Durab
 
 By default, the workspace stores everything in SQLite. For large files, override `workspace` to add R2 spillover:
 
-* [  JavaScript ](#tab-panel-3718)
-* [  TypeScript ](#tab-panel-3719)
+* [  JavaScript ](#tab-panel-3522)
+* [  TypeScript ](#tab-panel-3523)
 
 JavaScript
 
@@ -756,8 +755,8 @@ export class MyAgent extends Think<Env> {
 
 This requires an R2 bucket binding:
 
-* [  wrangler.jsonc ](#tab-panel-3702)
-* [  wrangler.toml ](#tab-panel-3703)
+* [  wrangler.jsonc ](#tab-panel-3506)
+* [  wrangler.toml ](#tab-panel-3507)
 
 JSONC
 
@@ -801,8 +800,8 @@ bucket_name = "agent-files"
 
 Override `getTools()` to add your own tools. These are standard AI SDK `tool()` definitions with Zod schemas:
 
-* [  JavaScript ](#tab-panel-3734)
-* [  TypeScript ](#tab-panel-3735)
+* [  JavaScript ](#tab-panel-3538)
+* [  TypeScript ](#tab-panel-3539)
 
 JavaScript
 
@@ -992,8 +991,8 @@ Think inherits MCP client support from the `Agent` base class. MCP tools from co
 
 Set `waitForMcpConnections` to ensure MCP servers are connected before inference runs:
 
-* [  JavaScript ](#tab-panel-3716)
-* [  TypeScript ](#tab-panel-3717)
+* [  JavaScript ](#tab-panel-3520)
+* [  TypeScript ](#tab-panel-3521)
 
 JavaScript
 
@@ -1041,8 +1040,8 @@ export class MyAgent extends Think<Env> {
 
 Add MCP servers programmatically or via `@callable` methods:
 
-* [  JavaScript ](#tab-panel-3726)
-* [  TypeScript ](#tab-panel-3727)
+* [  JavaScript ](#tab-panel-3530)
+* [  TypeScript ](#tab-panel-3531)
 
 JavaScript
 
@@ -1133,8 +1132,8 @@ npm install @cloudflare/codemode
 
 ```
 
-* [  JavaScript ](#tab-panel-3732)
-* [  TypeScript ](#tab-panel-3733)
+* [  JavaScript ](#tab-panel-3536)
+* [  TypeScript ](#tab-panel-3537)
 
 JavaScript
 
@@ -1218,8 +1217,8 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-3706)
-* [  wrangler.toml ](#tab-panel-3707)
+* [  wrangler.jsonc ](#tab-panel-3510)
+* [  wrangler.toml ](#tab-panel-3511)
 
 JSONC
 
@@ -1257,8 +1256,8 @@ binding = "LOADER"
 
 For richer filesystem access, pass a `state` backend:
 
-* [  JavaScript ](#tab-panel-3722)
-* [  TypeScript ](#tab-panel-3723)
+* [  JavaScript ](#tab-panel-3526)
+* [  TypeScript ](#tab-panel-3527)
 
 JavaScript
 
@@ -1304,8 +1303,8 @@ createExecuteTool({
 
 Give your agent access to the Chrome DevTools Protocol (CDP) for web page inspection, scraping, screenshots, and debugging. Requires `@cloudflare/codemode` and a Browser Run binding.
 
-* [  JavaScript ](#tab-panel-3736)
-* [  TypeScript ](#tab-panel-3737)
+* [  JavaScript ](#tab-panel-3540)
+* [  TypeScript ](#tab-panel-3541)
 
 JavaScript
 
@@ -1385,8 +1384,8 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-3708)
-* [  wrangler.toml ](#tab-panel-3709)
+* [  wrangler.jsonc ](#tab-panel-3512)
+* [  wrangler.toml ](#tab-panel-3513)
 
 JSONC
 
@@ -1442,8 +1441,8 @@ This adds two tools:
 
 For a custom Chrome endpoint, pass `cdpUrl` instead of `browser`:
 
-* [  JavaScript ](#tab-panel-3724)
-* [  TypeScript ](#tab-panel-3725)
+* [  JavaScript ](#tab-panel-3528)
+* [  TypeScript ](#tab-panel-3529)
 
 JavaScript
 
@@ -1483,8 +1482,8 @@ Extensions are dynamically loaded sandboxed Workers that add tools at runtime. T
 
 Extensions require a `worker_loaders` binding:
 
-* [  JavaScript ](#tab-panel-3728)
-* [  TypeScript ](#tab-panel-3729)
+* [  JavaScript ](#tab-panel-3532)
+* [  TypeScript ](#tab-panel-3533)
 
 JavaScript
 
@@ -1536,8 +1535,8 @@ export class MyAgent extends Think<Env> {
 
 Define extensions that load at startup:
 
-* [  JavaScript ](#tab-panel-3754)
-* [  TypeScript ](#tab-panel-3755)
+* [  JavaScript ](#tab-panel-3558)
+* [  TypeScript ](#tab-panel-3559)
 
 JavaScript
 
@@ -1667,8 +1666,8 @@ Extension tools are namespaced — a `math` extension with an `add` tool becomes
 
 Give the model `createExtensionTools` so it can load extensions dynamically:
 
-* [  JavaScript ](#tab-panel-3742)
-* [  TypeScript ](#tab-panel-3743)
+* [  JavaScript ](#tab-panel-3546)
+* [  TypeScript ](#tab-panel-3547)
 
 JavaScript
 
@@ -1790,8 +1789,8 @@ The context block is registered as `notes_scratchpad` (namespaced by extension n
 
 The individual tool factories are exported for use with custom storage backends:
 
-* [  JavaScript ](#tab-panel-3738)
-* [  TypeScript ](#tab-panel-3739)
+* [  JavaScript ](#tab-panel-3542)
+* [  TypeScript ](#tab-panel-3543)
 
 JavaScript
 
@@ -1849,8 +1848,8 @@ import {
 
 Implement the operations interface for your storage backend:
 
-* [  JavaScript ](#tab-panel-3740)
-* [  TypeScript ](#tab-panel-3741)
+* [  JavaScript ](#tab-panel-3544)
+* [  TypeScript ](#tab-panel-3545)
 
 JavaScript
 
@@ -1901,8 +1900,9 @@ Think owns the `streamText` call and provides hooks at each stage of the chat tu
 | ------------------------- | --------------------------------------------- | ------------------------ | ----- |
 | configureSession(session) | Once during onStart                           | Session                  | yes   |
 | beforeTurn(ctx)           | Before streamText                             | TurnConfig or void       | yes   |
-| beforeToolCall(ctx)       | When model calls a tool                       | ToolCallDecision or void | yes   |
-| afterToolCall(ctx)        | After tool execution                          | void                     | yes   |
+| beforeStep(ctx)           | Before each model step                        | StepConfig or void       | yes   |
+| beforeToolCall(ctx)       | Before a server-side tool executes            | ToolCallDecision or void | yes   |
+| afterToolCall(ctx)        | After a tool outcome is known                 | void                     | yes   |
 | onStepFinish(ctx)         | After each step completes                     | void                     | yes   |
 | onChunk(ctx)              | Per streaming chunk                           | void                     | yes   |
 | onChatResponse(result)    | After turn completes and message is persisted | void                     | yes   |
@@ -1924,6 +1924,10 @@ beforeTurn()                ← inspect assembled context, override model/tools/
 
   ┌── streamText ───────────────────────────────────┐
 
+  │   beforeStep()                                  │
+
+  │       │                                         │
+
   │   onChunk()  onChunk()  onChunk()  ...          │
 
   │       │                                         │
@@ -1935,6 +1939,10 @@ beforeTurn()                ← inspect assembled context, override model/tools/
   │       │                                         │
 
   │   onStepFinish()                                │
+
+  │       │                                         │
+
+  │   beforeStep()                                  │
 
   │       │                                         │
 
@@ -1974,29 +1982,32 @@ beforeTurn(ctx: TurnContext): TurnConfig | void | Promise<TurnConfig | void>
 
 #### TurnContext
 
-| Field        | Type                    | Description                                                              |
-| ------------ | ----------------------- | ------------------------------------------------------------------------ |
-| system       | string                  | Assembled system prompt (from context blocks or getSystemPrompt())       |
-| messages     | ModelMessage\[\]        | Assembled model messages (truncated, pruned)                             |
-| tools        | ToolSet                 | Merged tool set (workspace + getTools + session + MCP + client + caller) |
-| model        | LanguageModel           | The model from getModel()                                                |
-| continuation | boolean                 | Whether this is a continuation turn (auto-continue after tool result)    |
-| body         | Record<string, unknown> | Custom body fields from the client request                               |
+| Field        | Type                    | Description                                                                           |
+| ------------ | ----------------------- | ------------------------------------------------------------------------------------- |
+| system       | string                  | Assembled system prompt (from context blocks or getSystemPrompt())                    |
+| messages     | ModelMessage\[\]        | Assembled model messages (truncated, pruned)                                          |
+| tools        | ToolSet                 | Merged tool set (workspace + getTools + extensions + session + MCP + client + caller) |
+| model        | LanguageModel           | The model from getModel()                                                             |
+| continuation | boolean                 | Whether this is a continuation turn (auto-continue after tool result)                 |
+| body         | Record<string, unknown> | Custom body fields from the client request                                            |
 
 #### TurnConfig
 
 All fields are optional. Return only what you want to change.
 
-| Field           | Type                    | Description                          |
-| --------------- | ----------------------- | ------------------------------------ |
-| model           | LanguageModel           | Override the model for this turn     |
-| system          | string                  | Override the system prompt           |
-| messages        | ModelMessage\[\]        | Override the assembled messages      |
-| tools           | ToolSet                 | Extra tools to merge (additive)      |
-| activeTools     | string\[\]              | Limit which tools the model can call |
-| toolChoice      | ToolChoice              | Force a specific tool call           |
-| maxSteps        | number                  | Override maxSteps for this turn      |
-| providerOptions | Record<string, unknown> | Provider-specific options            |
+| Field                   | Type                    | Description                             |
+| ----------------------- | ----------------------- | --------------------------------------- |
+| model                   | LanguageModel           | Override the model for this turn        |
+| system                  | string                  | Override the system prompt              |
+| messages                | ModelMessage\[\]        | Override the assembled messages         |
+| tools                   | ToolSet                 | Extra tools to merge (additive)         |
+| activeTools             | string\[\]              | Limit which tools the model can call    |
+| toolChoice              | ToolChoice              | Force a specific tool call              |
+| maxSteps                | number                  | Override maxSteps for this turn         |
+| sendReasoning           | boolean                 | Send reasoning chunks for this turn     |
+| output                  | Output                  | Request structured output for this turn |
+| providerOptions         | Record<string, unknown> | Provider-specific options               |
+| experimental\_telemetry | object                  | AI SDK telemetry settings for this turn |
 
 #### Examples
 
@@ -2057,35 +2068,133 @@ beforeTurn(ctx: TurnContext) {
 
 ```
 
-### beforeToolCall
-
-Called when the model produces a tool call. Only fires for server-side tools (tools with `execute`).
-
-Note
-
-`beforeToolCall` currently fires as an observation hook — after tool execution, via `onStepFinish` data. The `block` and `substitute` actions in `ToolCallDecision` are defined in the types but are not yet functional. For now, use this hook for logging and analytics.
+Hide reasoning for internal continuation turns:
 
 TypeScript
 
 ```
 
-beforeToolCall(ctx: ToolCallContext) {
+beforeTurn(ctx: TurnContext) {
 
-  console.log(`Tool called: ${ctx.toolName}`, ctx.args);
+  if (ctx.continuation) {
+
+    return { sendReasoning: false };
+
+  }
 
 }
 
 
 ```
 
-| Field    | Type                    | Description                   |
-| -------- | ----------------------- | ----------------------------- |
-| toolName | string                  | Name of the tool being called |
-| args     | Record<string, unknown> | Arguments the model provided  |
+Force structured output for a turn:
+
+TypeScript
+
+```
+
+import { Output } from "ai";
+
+import { z } from "zod";
+
+
+const ResultSchema = z.object({ severity: z.enum(["low", "high"]) });
+
+
+beforeTurn(ctx: TurnContext) {
+
+  if (ctx.body?.mode === "structured-answer") {
+
+    return {
+
+      output: Output.object({ schema: ResultSchema }),
+
+      activeTools: [],
+
+    };
+
+  }
+
+}
+
+
+```
+
+`output` is a turn-level setting only. The AI SDK's `prepareStep` does not accept an `output` override, so `beforeStep` cannot toggle structured output on a single step.
+
+### beforeStep
+
+Called before each AI SDK step in the agentic loop. Think forwards this hook to `streamText` as `prepareStep`, so it receives the AI SDK's full prepare-step context and can return per-step overrides. Use `beforeTurn` for turn-wide assembly and `beforeStep` when the decision depends on the step number or previous step results.
+
+TypeScript
+
+```
+
+beforeStep(ctx: PrepareStepContext): StepConfig | void {
+
+  if (ctx.stepNumber > 0) {
+
+    return { activeTools: [] };
+
+  }
+
+}
+
+
+```
+
+### beforeToolCall
+
+Called before a server-side tool's `execute` function runs. Think wraps each server-side tool so the hook can allow, modify, block, or substitute the call before the model receives the tool result.
+
+TypeScript
+
+```
+
+beforeToolCall(ctx: ToolCallContext): ToolCallDecision | void {
+
+  if (ctx.toolName === "delete" && this.isReadOnlyMode) {
+
+    return { action: "block", reason: "delete is disabled in read-only mode" };
+
+  }
+
+
+  if (ctx.toolName === "weather") {
+
+    const cached = this.weatherCache.get(JSON.stringify(ctx.input));
+
+    if (cached) return { action: "substitute", output: cached };
+
+  }
+
+}
+
+
+```
+
+| Field       | Type                     | Description                                |
+| ----------- | ------------------------ | ------------------------------------------ |
+| toolName    | string                   | Name of the tool being called              |
+| input       | unknown                  | Input the model provided                   |
+| toolCallId  | string                   | ID for this tool call                      |
+| messages    | ModelMessage\[\]         | Messages visible at tool execution time    |
+| abortSignal | AbortSignal \| undefined | Signal that aborts if the turn is canceled |
+
+Return a `ToolCallDecision` to control execution:
+
+| Decision                         | Behavior                                                    |
+| -------------------------------- | ----------------------------------------------------------- |
+| void or { action: "allow" }      | Run the original tool with the original input               |
+| { action: "allow", input }       | Run the original tool with modified input                   |
+| { action: "block", reason }      | Skip the original tool and return reason as the tool result |
+| { action: "substitute", output } | Skip the original tool and return output as the tool result |
+
+If a wrapped tool returns an `AsyncIterable` for preliminary tool results, Think collapses the iterable to its final yielded value after `beforeToolCall` runs. If you need true preliminary streaming from that tool, avoid intercepting it with `beforeToolCall`.
 
 ### afterToolCall
 
-Called after a tool executes.
+Called after a tool outcome is known. This includes real executions, blocked calls, substituted calls, and thrown tool errors.
 
 TypeScript
 
@@ -2093,11 +2202,14 @@ TypeScript
 
 afterToolCall(ctx: ToolCallResultContext) {
 
+  if (!ctx.success) return;
+
+
   this.env.ANALYTICS.writeDataPoint({
 
     blobs: [ctx.toolName],
 
-    doubles: [JSON.stringify(ctx.result).length],
+    doubles: [JSON.stringify(ctx.output).length],
 
   });
 
@@ -2106,15 +2218,22 @@ afterToolCall(ctx: ToolCallResultContext) {
 
 ```
 
-| Field    | Type                    | Description                        |
-| -------- | ----------------------- | ---------------------------------- |
-| toolName | string                  | Name of the tool that was called   |
-| args     | Record<string, unknown> | Arguments the tool was called with |
-| result   | unknown                 | The result returned by the tool    |
+| Field      | Type             | Description                                          |
+| ---------- | ---------------- | ---------------------------------------------------- |
+| toolName   | string           | Name of the tool that was called                     |
+| input      | unknown          | Input the model provided                             |
+| toolCallId | string           | ID for this tool call                                |
+| messages   | ModelMessage\[\] | Messages visible at tool execution time              |
+| durationMs | number           | Tool execution duration in milliseconds              |
+| success    | boolean          | Whether the model received a successful tool outcome |
+| output     | unknown          | Present when success is true                         |
+| error      | unknown          | Present when success is false                        |
+
+For blocked and substituted tool calls, `success` is `true` because the model receives a valid tool result. Only thrown errors from the original tool execution surface as `success: false`.
 
 ### onStepFinish
 
-Called after each step completes in the agentic loop. A step is one `streamText` iteration — the model generates text, optionally calls tools, and the step ends.
+Called after each step completes in the agentic loop. `StepContext` is the AI SDK's step-finish event, so it includes the full step record: generated text, reasoning, files, sources, typed tool calls and results, usage, warnings, request and response metadata, and provider metadata.
 
 TypeScript
 
@@ -2124,7 +2243,9 @@ onStepFinish(ctx: StepContext) {
 
   console.log(
 
-    `Step ${ctx.stepType}: ${ctx.usage.inputTokens}in/${ctx.usage.outputTokens}out`,
+    `Step ${ctx.stepNumber} (${ctx.finishReason}): ` +
+
+      `${ctx.usage.inputTokens}in/${ctx.usage.outputTokens}out`,
 
   );
 
@@ -2133,14 +2254,18 @@ onStepFinish(ctx: StepContext) {
 
 ```
 
-| Field        | Type                          | Description                 |                  |
-| ------------ | ----------------------------- | --------------------------- | ---------------- |
-| stepType     | "initial" \| "continue"       | "tool-result"               | Why the step ran |
-| text         | string                        | Text generated in this step |                  |
-| toolCalls    | unknown\[\]                   | Tool calls made             |                  |
-| toolResults  | unknown\[\]                   | Tool results received       |                  |
-| finishReason | string                        | Why the step ended          |                  |
-| usage        | { inputTokens, outputTokens } | Token usage for this step   |                  |
+| Field            | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| stepNumber       | Zero-based index of the step                      |
+| text             | Text generated in this step                       |
+| reasoning        | Reasoning parts emitted by the model              |
+| files            | Files generated during the step                   |
+| sources          | Citations or sources used by the model            |
+| toolCalls        | Typed tool calls made in this step                |
+| toolResults      | Typed tool results received in this step          |
+| finishReason     | Why the step ended                                |
+| usage            | Token usage, including cache and reasoning tokens |
+| providerMetadata | Provider-specific metadata                        |
 
 ### onChunk
 
@@ -2148,9 +2273,9 @@ Called for each streaming chunk. High-frequency — fires per token. Use for str
 
 ### onChatResponse
 
-Called after a chat turn completes and the assistant message has been persisted. The turn lock is released before this hook runs, so it is safe to call `saveMessages` or other methods from inside.
+Called after a chat turn produces and persists an assistant message. The turn lock is released before this hook runs, so it is safe to call `saveMessages` or other methods from inside.
 
-Fires for all turn completion paths: WebSocket, sub-agent RPC, `saveMessages`, and auto-continuation.
+Fires for all turn paths that persist an assistant message: WebSocket, sub-agent RPC, `saveMessages`, and auto-continuation. If a turn fails before producing any assistant parts, `onChatError` handles the error instead.
 
 TypeScript
 
@@ -2198,14 +2323,14 @@ onChatError(error: unknown) {
 
 ## Client tools
 
-Think supports tools that execute in the browser. The client sends tool schemas in the chat request body, Think merges them with server tools, and when the LLM calls a client tool, the call is routed to the client for execution.
+Think supports tools that execute in the browser. The client sends serializable tool schemas in the chat request body, Think merges them with server tools, and when the LLM calls a client tool, the call is routed to the client for execution.
 
 ### Defining client tools
 
-On the client, pass `clientTools` to `useAgentChat`:
+For dynamic client-side tools, pass `tools` to `useAgentChat`. Tools with an `execute` function are registered with the server as client-executed tools:
 
-* [  JavaScript ](#tab-panel-3750)
-* [  TypeScript ](#tab-panel-3751)
+* [  JavaScript ](#tab-panel-3554)
+* [  TypeScript ](#tab-panel-3555)
 
 JavaScript
 
@@ -2215,7 +2340,7 @@ const { messages, sendMessage } = useAgentChat({
 
   agent,
 
-  clientTools: {
+  tools: {
 
     getUserTimezone: {
 
@@ -2260,7 +2385,7 @@ const { messages, sendMessage } = useAgentChat({
 
   agent,
 
-  clientTools: {
+  tools: {
 
     getUserTimezone: {
 
@@ -2299,30 +2424,38 @@ const { messages, sendMessage } = useAgentChat({
 
 Client tools are tools without an `execute` function on the server — they only have a schema. When the LLM produces a tool call for one, Think routes it to the client.
 
+For most apps, prefer defining tools on the server and using `onToolCall` for browser-only execution. The `tools` option is most useful for SDKs or platforms where the browser decides the available tool surface at runtime.
+
 ### Approval flow
 
-Handle approvals on the client with `onToolCall`:
+Handle browser-side tool execution on the client with `onToolCall`:
 
-* [  JavaScript ](#tab-panel-3744)
-* [  TypeScript ](#tab-panel-3745)
+* [  JavaScript ](#tab-panel-3550)
+* [  TypeScript ](#tab-panel-3551)
 
 JavaScript
 
 ```
 
-const { messages, sendMessage, addToolResult } = useAgentChat({
+useAgentChat({
 
   agent,
 
-  onToolCall: ({ toolCall }) => {
+  onToolCall: async ({ toolCall, addToolOutput }) => {
 
     if (toolCall.toolName === "read") {
 
-      return { approve: true };
+      const result = await readFromBrowser(toolCall.input);
+
+      addToolOutput({
+
+        toolCallId: toolCall.toolCallId,
+
+        output: result,
+
+      });
 
     }
-
-    // Others go through the UI approval flow
 
   },
 
@@ -2335,19 +2468,25 @@ TypeScript
 
 ```
 
-const { messages, sendMessage, addToolResult } = useAgentChat({
+useAgentChat({
 
   agent,
 
-  onToolCall: ({ toolCall }) => {
+  onToolCall: async ({ toolCall, addToolOutput }) => {
 
     if (toolCall.toolName === "read") {
 
-      return { approve: true };
+      const result = await readFromBrowser(toolCall.input);
+
+      addToolOutput({
+
+        toolCallId: toolCall.toolCallId,
+
+        output: result,
+
+      });
 
     }
-
-    // Others go through the UI approval flow
 
   },
 
@@ -2364,16 +2503,16 @@ After a client tool result is received, Think automatically continues the conver
 
 The `messageConcurrency` property controls how overlapping user submits behave when a chat turn is already active.
 
-| Strategy                                      | Behavior                                                                              |
-| --------------------------------------------- | ------------------------------------------------------------------------------------- |
-| "queue"                                       | Queue every submit and process them in order. Default.                                |
-| "latest"                                      | Keep only the latest overlapping submit.                                              |
-| "merge"                                       | All overlapping user messages remain in history; the model sees them all in one turn. |
-| "drop"                                        | Ignore overlapping submits entirely. Messages are not persisted.                      |
-| { strategy: "debounce", debounceMs?: number } | Trailing-edge latest with a quiet window (default 750ms).                             |
+| Strategy                                      | Behavior                                                                                                                            |
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| "queue"                                       | Queue every submit and process them in order. Default.                                                                              |
+| "latest"                                      | Keep only the latest overlapping submission; superseded submissions still persist their user messages but do not start a model turn |
+| "merge"                                       | Queue overlapping submissions, then collapse their trailing user messages into one combined turn before the latest queued turn runs |
+| "drop"                                        | Ignore overlapping submits entirely. Messages are not persisted.                                                                    |
+| { strategy: "debounce", debounceMs?: number } | Trailing-edge latest with a quiet window (default 750ms).                                                                           |
 
-* [  JavaScript ](#tab-panel-3746)
-* [  TypeScript ](#tab-panel-3747)
+* [  JavaScript ](#tab-panel-3548)
+* [  TypeScript ](#tab-panel-3549)
 
 JavaScript
 
@@ -2424,6 +2563,10 @@ export class SearchAgent extends Think<Env> {
 
 Think broadcasts streaming responses to all connected WebSocket clients. When multiple browser tabs are connected to the same agent, all tabs see the streamed response in real time. Tool call states (pending, result, approval) are broadcast to all tabs.
 
+## Agent tools
+
+Use [Agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/) when a parent chat agent should run a Think sub-agent as a retained, streaming tool. The parent uses `agentTool()` or `runAgentTool()` from `agents/agent-tools`; the child Think instance keeps its own messages, tools, resumable stream, and storage.
+
 ## Sub-agent RPC and programmatic turns
 
 Think works as both a top-level agent and a sub-agent. When used as a sub-agent, the `chat()` method runs a full turn and streams events via a callback.
@@ -2449,11 +2592,11 @@ async chat(
 
 #### StreamCallback
 
-| Method         | When it fires                                                   |
-| -------------- | --------------------------------------------------------------- |
-| onEvent(json)  | For each streaming chunk (JSON-serialized UIMessageChunk)       |
-| onDone()       | After the turn completes and the assistant message is persisted |
-| onError(error) | On error during the turn (if not provided, the error is thrown) |
+| Method           | When it fires                                                   |
+| ---------------- | --------------------------------------------------------------- |
+| onEvent(json)    | For each streaming chunk (JSON-serialized UIMessageChunk)       |
+| onDone()         | After the turn completes and the assistant message is persisted |
+| onError(message) | On error during the turn (if not provided, the error is thrown) |
 
 #### ChatOptions
 
@@ -2464,8 +2607,8 @@ async chat(
 
 #### Example: parent calling a child
 
-* [  JavaScript ](#tab-panel-3768)
-* [  TypeScript ](#tab-panel-3769)
+* [  JavaScript ](#tab-panel-3572)
+* [  TypeScript ](#tab-panel-3573)
 
 JavaScript
 
@@ -2617,8 +2760,8 @@ export class ChildAgent extends Think<Env> {
 
 The `tools` option adds tools for this turn only, with the highest merge priority:
 
-* [  JavaScript ](#tab-panel-3756)
-* [  TypeScript ](#tab-panel-3757)
+* [  JavaScript ](#tab-panel-3560)
+* [  TypeScript ](#tab-panel-3561)
 
 JavaScript
 
@@ -2684,8 +2827,8 @@ await child.chat("Summarize the report", callback, {
 
 Pass an `AbortSignal` to cancel mid-stream. When aborted, the partial assistant message is still persisted.
 
-* [  JavaScript ](#tab-panel-3748)
-* [  TypeScript ](#tab-panel-3749)
+* [  JavaScript ](#tab-panel-3552)
+* [  TypeScript ](#tab-panel-3553)
 
 JavaScript
 
@@ -2739,17 +2882,21 @@ async saveMessages(
 
     | ((current: UIMessage[]) => UIMessage[] | Promise<UIMessage[]>),
 
+  options?: SaveMessagesOptions,
+
 ): Promise<SaveMessagesResult>
 
 
 ```
 
-Returns `{ requestId, status }` where `status` is `"completed"` or `"skipped"`.
+Returns `{ requestId, status }` where `status` is `"completed"`, `"skipped"`, or `"aborted"`.
+
+Pass `options.signal` to cancel a programmatic turn from the Durable Object that starts it. `AbortSignal` cannot cross Durable Object RPC boundaries, and the signal is not persisted across hibernation.
 
 #### Static messages
 
-* [  JavaScript ](#tab-panel-3752)
-* [  TypeScript ](#tab-panel-3753)
+* [  JavaScript ](#tab-panel-3556)
+* [  TypeScript ](#tab-panel-3557)
 
 JavaScript
 
@@ -2797,8 +2944,8 @@ await this.saveMessages([
 
 When multiple `saveMessages` calls queue up, the function form runs with the latest messages when the turn actually starts:
 
-* [  JavaScript ](#tab-panel-3758)
-* [  TypeScript ](#tab-panel-3759)
+* [  JavaScript ](#tab-panel-3562)
+* [  TypeScript ](#tab-panel-3563)
 
 JavaScript
 
@@ -2850,8 +2997,8 @@ await this.saveMessages((current) => [
 
 Trigger a turn from a cron schedule:
 
-* [  JavaScript ](#tab-panel-3762)
-* [  TypeScript ](#tab-panel-3763)
+* [  JavaScript ](#tab-panel-3566)
+* [  TypeScript ](#tab-panel-3567)
 
 JavaScript
 
@@ -2956,7 +3103,7 @@ async onChatResponse(result: ChatResponseResult) {
 
 ### continueLastTurn
 
-Resume the last assistant turn without injecting a new user message. Useful after tool results are received or after recovery from an interruption.
+Run another model call after the latest assistant message without injecting a new user message. Think persists the result as a new assistant message with `continuation: true`; it does not append chunks to the existing assistant message.
 
 TypeScript
 
@@ -2966,19 +3113,38 @@ protected async continueLastTurn(
 
   body?: Record<string, unknown>,
 
+  options?: SaveMessagesOptions,
+
 ): Promise<SaveMessagesResult>
 
 
 ```
 
-Returns `{ requestId, status: "skipped" }` if the last message is not an assistant message. The optional `body` parameter overrides the stored body for this continuation.
+Returns `{ requestId, status: "skipped" }` if the last message is not an assistant message. The optional `body` parameter overrides the stored body for this continuation. Pass `options.signal` to cancel the continuation while it is running.
+
+### abortRequest and abortAllRequests
+
+Cancel in-flight chat turns from inside the Durable Object:
+
+TypeScript
+
+```
+
+protected abortRequest(requestId: string, reason?: unknown): void
+
+protected abortAllRequests(): void
+
+
+```
+
+Use `abortRequest()` when you know the request ID. Use `abortAllRequests()` for single-purpose helpers that should cancel whatever turn is currently running. Prefer `SaveMessagesOptions.signal` for programmatic turns when you can pass a signal at the call site.
 
 ### Chat recovery
 
 Think can wrap chat turns in Durable Object fibers for durable execution. When a DO is evicted mid-turn, the turn can be recovered on restart.
 
-* [  JavaScript ](#tab-panel-3760)
-* [  TypeScript ](#tab-panel-3761)
+* [  JavaScript ](#tab-panel-3564)
+* [  TypeScript ](#tab-panel-3565)
 
 JavaScript
 
@@ -3026,8 +3192,8 @@ When `chatRecovery` is `true`, all four turn paths (WebSocket, auto-continuation
 
 When an interrupted chat fiber is detected after DO restart, Think calls `onChatRecovery`:
 
-* [  JavaScript ](#tab-panel-3766)
-* [  TypeScript ](#tab-panel-3767)
+* [  JavaScript ](#tab-panel-3570)
+* [  TypeScript ](#tab-panel-3571)
 
 JavaScript
 
@@ -3119,6 +3285,7 @@ export class MyAgent extends Think<Env> {
 | messages        | UIMessage\[\]            | Current conversation history              |
 | lastBody        | Record<string, unknown>? | Body from the interrupted turn            |
 | lastClientTools | ClientToolSchema\[\]?    | Client tools from the interrupted turn    |
+| createdAt       | number                   | Epoch milliseconds when the turn started  |
 
 #### ChatRecoveryOptions
 
@@ -3128,6 +3295,8 @@ export class MyAgent extends Think<Env> {
 | continue | boolean? | Whether to auto-continue with a new turn         |
 
 With `persist: true`, the partial message is saved. With `continue: true`, Think calls `continueLastTurn()` after the agent reaches a stable state.
+
+Use `ctx.createdAt` to skip stale recoveries. For example, if the interrupted turn is older than a few minutes, return `{ continue: false }` so the partial response is preserved without starting an old continuation.
 
 ### Stability detection
 
@@ -3150,8 +3319,8 @@ protected hasPendingInteraction(): boolean
 
 Returns a promise that resolves to `true` when the agent reaches a stable state, or `false` if the timeout is exceeded.
 
-* [  JavaScript ](#tab-panel-3764)
-* [  TypeScript ](#tab-panel-3765)
+* [  JavaScript ](#tab-panel-3568)
+* [  TypeScript ](#tab-panel-3569)
 
 JavaScript
 
@@ -3214,7 +3383,9 @@ if (stable) {
 | @cloudflare/think                  | Think, Session, Workspace — main class and re-exports       |
 | @cloudflare/think/tools/workspace  | createWorkspaceTools() — for custom storage backends        |
 | @cloudflare/think/tools/execute    | createExecuteTool() — sandboxed code execution via codemode |
+| @cloudflare/think/tools/browser    | createBrowserTools() — Chrome DevTools Protocol tools       |
 | @cloudflare/think/tools/extensions | createExtensionTools() — LLM-driven extension loading       |
+| @cloudflare/think/tools/sandbox    | createSandboxTools() — placeholder export; returns no tools |
 | @cloudflare/think/extensions       | ExtensionManager, HostBridgeLoopback — extension runtime    |
 
 ## Peer dependencies
@@ -3222,7 +3393,7 @@ if (stable) {
 | Package              | Required | Notes                  |
 | -------------------- | -------- | ---------------------- |
 | agents               | yes      | Cloudflare Agents SDK  |
-| ai                   | yes      | Vercel AI SDK v6       |
+| ai                   | yes      | AI SDK v6              |
 | zod                  | yes      | Schema validation (v4) |
 | @cloudflare/shell    | yes      | Workspace filesystem   |
 | @cloudflare/codemode | optional | For createExecuteTool  |
@@ -3230,6 +3401,10 @@ if (stable) {
 ## Acknowledgments
 
 Think's design is inspired by [Pi ↗](https://pi.dev).
+
+## Example
+
+[ Assistant example ](https://github.com/cloudflare/agents/tree/main/examples/assistant) Explore a multi-session Think assistant with sub-agent routing, shared workspace, MCP, chat recovery, and GitHub OAuth. 
 
 ## Related
 

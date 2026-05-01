@@ -30,7 +30,7 @@ However, if you want to update the Minimum TLS settings for all wildcard hostnam
 
 ## Enable mTLS
 
-Once you have [added a custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/), you can enable mTLS by using Cloudflare Access. Go to [Cloudflare Zero Trust ↗](https://one.dash.cloudflare.com/) and [add mTLS authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/) with a few clicks.
+Once you have [added a custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/), you can enable mTLS by using Cloudflare Access. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** and [add mTLS authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/) with a few clicks.
 
 Note
 
@@ -175,8 +175,8 @@ Refer to [Minimum TLS version - SSL/TLS](https://developers.cloudflare.com/ssl/e
 
 Minimum TLS version for custom hostname
 
-* [ Dashboard ](#tab-panel-4535)
-* [ API ](#tab-panel-4536)
+* [ Dashboard ](#tab-panel-4339)
+* [ API ](#tab-panel-4340)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

@@ -4,7 +4,7 @@
 
 # Create a message
 
-POST https://openrouter.ai/api/v1/messages
+POST https://openrouter.ai/api/v1//messages
 Content-Type: application/json
 
 Creates a message using the Anthropic Messages API format. Supports text, images, PDFs, tools, and extended thinking.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /messages:
+  //messages:
     post:
       operationId: create-messages
       summary: Create a message
@@ -154,42 +154,36 @@ components:
         - type
         - value
       title: AnthropicToolUsesKeep
-    AnthropicInputTokensTriggerType:
-      type: string
-      enum:
-        - input_tokens
-      title: AnthropicInputTokensTriggerType
-    AnthropicInputTokensTrigger:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/AnthropicInputTokensTriggerType'
-        value:
-          type: integer
-      required:
-        - type
-        - value
-      title: AnthropicInputTokensTrigger
-    AnthropicToolUsesTriggerType:
-      type: string
-      enum:
-        - tool_uses
-      title: AnthropicToolUsesTriggerType
-    AnthropicToolUsesTrigger:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/AnthropicToolUsesTriggerType'
-        value:
-          type: integer
-      required:
-        - type
-        - value
-      title: AnthropicToolUsesTrigger
     MessagesRequestContextManagementEditsItemsOneOf0Trigger:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicInputTokensTrigger'
-        - $ref: '#/components/schemas/AnthropicToolUsesTrigger'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - input_tokens
+              description: 'Discriminator value: input_tokens'
+            value:
+              type: integer
+          required:
+            - type
+            - value
+          description: input_tokens variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - tool_uses
+              description: 'Discriminator value: tool_uses'
+            value:
+              type: integer
+          required:
+            - type
+            - value
+          description: tool_uses variant
+      discriminator:
+        propertyName: type
       title: MessagesRequestContextManagementEditsItemsOneOf0Trigger
     MessagesRequestContextManagementEditsItemsOneOf0Type:
       type: string
@@ -281,11 +275,17 @@ components:
       required:
         - type
       title: MessagesRequestContextManagementEditsItems1
+    MessagesRequestContextManagementEditsItemsOneOf2TriggerType:
+      type: string
+      enum:
+        - input_tokens
+      title: MessagesRequestContextManagementEditsItemsOneOf2TriggerType
     MessagesRequestContextManagementEditsItemsOneOf2Trigger:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/AnthropicInputTokensTriggerType'
+          $ref: >-
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf2TriggerType
         value:
           type: integer
       required:
@@ -329,163 +329,145 @@ components:
           items:
             $ref: '#/components/schemas/MessagesRequestContextManagementEditsItems'
       title: MessagesRequestContextManagement
-    AnthropicCitationCharLocationParamType:
-      type: string
-      enum:
-        - char_location
-      title: AnthropicCitationCharLocationParamType
-    AnthropicCitationCharLocationParam:
-      type: object
-      properties:
-        cited_text:
-          type: string
-        document_index:
-          type: integer
-        document_title:
-          type:
-            - string
-            - 'null'
-        end_char_index:
-          type: integer
-        start_char_index:
-          type: integer
-        type:
-          $ref: '#/components/schemas/AnthropicCitationCharLocationParamType'
-      required:
-        - cited_text
-        - document_index
-        - document_title
-        - end_char_index
-        - start_char_index
-        - type
-      title: AnthropicCitationCharLocationParam
-    AnthropicCitationPageLocationParamType:
-      type: string
-      enum:
-        - page_location
-      title: AnthropicCitationPageLocationParamType
-    AnthropicCitationPageLocationParam:
-      type: object
-      properties:
-        cited_text:
-          type: string
-        document_index:
-          type: integer
-        document_title:
-          type:
-            - string
-            - 'null'
-        end_page_number:
-          type: integer
-        start_page_number:
-          type: integer
-        type:
-          $ref: '#/components/schemas/AnthropicCitationPageLocationParamType'
-      required:
-        - cited_text
-        - document_index
-        - document_title
-        - end_page_number
-        - start_page_number
-        - type
-      title: AnthropicCitationPageLocationParam
-    AnthropicCitationContentBlockLocationParamType:
-      type: string
-      enum:
-        - content_block_location
-      title: AnthropicCitationContentBlockLocationParamType
-    AnthropicCitationContentBlockLocationParam:
-      type: object
-      properties:
-        cited_text:
-          type: string
-        document_index:
-          type: integer
-        document_title:
-          type:
-            - string
-            - 'null'
-        end_block_index:
-          type: integer
-        start_block_index:
-          type: integer
-        type:
-          $ref: '#/components/schemas/AnthropicCitationContentBlockLocationParamType'
-      required:
-        - cited_text
-        - document_index
-        - document_title
-        - end_block_index
-        - start_block_index
-        - type
-      title: AnthropicCitationContentBlockLocationParam
-    AnthropicCitationWebSearchResultLocationType:
-      type: string
-      enum:
-        - web_search_result_location
-      title: AnthropicCitationWebSearchResultLocationType
-    AnthropicCitationWebSearchResultLocation:
-      type: object
-      properties:
-        cited_text:
-          type: string
-        encrypted_index:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        type:
-          $ref: '#/components/schemas/AnthropicCitationWebSearchResultLocationType'
-        url:
-          type: string
-      required:
-        - cited_text
-        - encrypted_index
-        - title
-        - type
-        - url
-      title: AnthropicCitationWebSearchResultLocation
-    AnthropicCitationSearchResultLocationType:
-      type: string
-      enum:
-        - search_result_location
-      title: AnthropicCitationSearchResultLocationType
-    AnthropicCitationSearchResultLocation:
-      type: object
-      properties:
-        cited_text:
-          type: string
-        end_block_index:
-          type: integer
-        search_result_index:
-          type: integer
-        source:
-          type: string
-        start_block_index:
-          type: integer
-        title:
-          type:
-            - string
-            - 'null'
-        type:
-          $ref: '#/components/schemas/AnthropicCitationSearchResultLocationType'
-      required:
-        - cited_text
-        - end_block_index
-        - search_result_index
-        - source
-        - start_block_index
-        - title
-        - type
-      title: AnthropicCitationSearchResultLocation
     AnthropicTextBlockParamCitationsItems:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicCitationCharLocationParam'
-        - $ref: '#/components/schemas/AnthropicCitationPageLocationParam'
-        - $ref: '#/components/schemas/AnthropicCitationContentBlockLocationParam'
-        - $ref: '#/components/schemas/AnthropicCitationWebSearchResultLocation'
-        - $ref: '#/components/schemas/AnthropicCitationSearchResultLocation'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - char_location
+              description: 'Discriminator value: char_location'
+            cited_text:
+              type: string
+            document_index:
+              type: integer
+            document_title:
+              type:
+                - string
+                - 'null'
+            end_char_index:
+              type: integer
+            start_char_index:
+              type: integer
+          required:
+            - type
+            - cited_text
+            - document_index
+            - document_title
+            - end_char_index
+            - start_char_index
+          description: char_location variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - content_block_location
+              description: 'Discriminator value: content_block_location'
+            cited_text:
+              type: string
+            document_index:
+              type: integer
+            document_title:
+              type:
+                - string
+                - 'null'
+            end_block_index:
+              type: integer
+            start_block_index:
+              type: integer
+          required:
+            - type
+            - cited_text
+            - document_index
+            - document_title
+            - end_block_index
+            - start_block_index
+          description: content_block_location variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - page_location
+              description: 'Discriminator value: page_location'
+            cited_text:
+              type: string
+            document_index:
+              type: integer
+            document_title:
+              type:
+                - string
+                - 'null'
+            end_page_number:
+              type: integer
+            start_page_number:
+              type: integer
+          required:
+            - type
+            - cited_text
+            - document_index
+            - document_title
+            - end_page_number
+            - start_page_number
+          description: page_location variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - search_result_location
+              description: 'Discriminator value: search_result_location'
+            cited_text:
+              type: string
+            end_block_index:
+              type: integer
+            search_result_index:
+              type: integer
+            source:
+              type: string
+            start_block_index:
+              type: integer
+            title:
+              type:
+                - string
+                - 'null'
+          required:
+            - type
+            - cited_text
+            - end_block_index
+            - search_result_index
+            - source
+            - start_block_index
+            - title
+          description: search_result_location variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - web_search_result_location
+              description: 'Discriminator value: web_search_result_location'
+            cited_text:
+              type: string
+            encrypted_index:
+              type: string
+            title:
+              type:
+                - string
+                - 'null'
+            url:
+              type: string
+          required:
+            - type
+            - cited_text
+            - encrypted_index
+            - title
+            - url
+          description: web_search_result_location variant
+      discriminator:
+        propertyName: type
       title: AnthropicTextBlockParamCitationsItems
     AnthropicTextBlockParamType:
       type: string
@@ -519,45 +501,41 @@ components:
         - image/gif
         - image/webp
       title: AnthropicImageMimeType
-    AnthropicBase64ImageSourceType:
-      type: string
-      enum:
-        - base64
-      title: AnthropicBase64ImageSourceType
-    AnthropicBase64ImageSource:
-      type: object
-      properties:
-        data:
-          type: string
-        media_type:
-          $ref: '#/components/schemas/AnthropicImageMimeType'
-        type:
-          $ref: '#/components/schemas/AnthropicBase64ImageSourceType'
-      required:
-        - data
-        - media_type
-        - type
-      title: AnthropicBase64ImageSource
     AnthropicUrlImageSourceType:
       type: string
       enum:
         - url
       title: AnthropicUrlImageSourceType
-    AnthropicUrlImageSource:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/AnthropicUrlImageSourceType'
-        url:
-          type: string
-      required:
-        - type
-        - url
-      title: AnthropicUrlImageSource
     AnthropicImageBlockParamSource:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicBase64ImageSource'
-        - $ref: '#/components/schemas/AnthropicUrlImageSource'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - base64
+              description: 'Discriminator value: base64'
+            data:
+              type: string
+            media_type:
+              $ref: '#/components/schemas/AnthropicImageMimeType'
+          required:
+            - type
+            - data
+            - media_type
+          description: base64 variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicUrlImageSourceType'
+            url:
+              type: string
+          required:
+            - type
+            - url
+          description: url variant
+      discriminator:
+        propertyName: type
       title: AnthropicImageBlockParamSource
     AnthropicImageBlockParamType:
       type: string
@@ -633,8 +611,38 @@ components:
       title: AnthropicPlainTextSource
     AnthropicDocumentBlockParamSourceOneOf2ContentOneOf1Items:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicTextBlockParam'
-        - $ref: '#/components/schemas/AnthropicImageBlockParam'
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicImageBlockParamType'
+            cache_control:
+              $ref: '#/components/schemas/AnthropicCacheControlDirective'
+            source:
+              $ref: '#/components/schemas/AnthropicImageBlockParamSource'
+          required:
+            - type
+            - source
+          description: image variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicTextBlockParamType'
+            cache_control:
+              $ref: '#/components/schemas/AnthropicCacheControlDirective'
+            citations:
+              type:
+                - array
+                - 'null'
+              items:
+                $ref: '#/components/schemas/AnthropicTextBlockParamCitationsItems'
+            text:
+              type: string
+          required:
+            - type
+            - text
+          description: text variant
+      discriminator:
+        propertyName: type
       title: AnthropicDocumentBlockParamSourceOneOf2ContentOneOf1Items
     AnthropicDocumentBlockParamSourceOneOf2Content1:
       type: array
@@ -1160,135 +1168,12 @@ components:
         Configuration for controlling output behavior. Supports the effort
         parameter and structured output format.
       title: MessagesOutputConfig
-    AutoRouterPluginId:
+    ContextCompressionEngine:
       type: string
       enum:
-        - auto-router
-      title: AutoRouterPluginId
-    AutoRouterPlugin:
-      type: object
-      properties:
-        allowed_models:
-          type: array
-          items:
-            type: string
-          description: >-
-            List of model patterns to filter which models the auto-router can
-            route between. Supports wildcards (e.g., "anthropic/*" matches all
-            Anthropic models). When not specified, uses the default supported
-            models list.
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the auto-router plugin for this request.
-            Defaults to true.
-        id:
-          $ref: '#/components/schemas/AutoRouterPluginId'
-      required:
-        - id
-      title: AutoRouterPlugin
-    ModerationPluginId:
-      type: string
-      enum:
-        - moderation
-      title: ModerationPluginId
-    ModerationPlugin:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/ModerationPluginId'
-      required:
-        - id
-      title: ModerationPlugin
-    WebSearchEngine:
-      type: string
-      enum:
-        - native
-        - exa
-        - firecrawl
-        - parallel
-      description: The search engine to use for web search.
-      title: WebSearchEngine
-    WebSearchPluginId:
-      type: string
-      enum:
-        - web
-      title: WebSearchPluginId
-    WebSearchUserLocationType:
-      type: string
-      enum:
-        - approximate
-      title: WebSearchUserLocationType
-    WebSearchPluginUserLocation:
-      type: object
-      properties:
-        city:
-          type:
-            - string
-            - 'null'
-        country:
-          type:
-            - string
-            - 'null'
-        region:
-          type:
-            - string
-            - 'null'
-        timezone:
-          type:
-            - string
-            - 'null'
-        type:
-          $ref: '#/components/schemas/WebSearchUserLocationType'
-      title: WebSearchPluginUserLocation
-    WebSearchPlugin:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the web-search plugin for this request.
-            Defaults to true.
-        engine:
-          $ref: '#/components/schemas/WebSearchEngine'
-        exclude_domains:
-          type: array
-          items:
-            type: string
-          description: >-
-            A list of domains to exclude from web search results. Supports
-            wildcards (e.g. "*.substack.com") and path filtering (e.g.
-            "openai.com/blog").
-        id:
-          $ref: '#/components/schemas/WebSearchPluginId'
-        include_domains:
-          type: array
-          items:
-            type: string
-          description: >-
-            A list of domains to restrict web search results to. Supports
-            wildcards (e.g. "*.substack.com") and path filtering (e.g.
-            "openai.com/blog").
-        max_results:
-          type: integer
-        max_uses:
-          type: integer
-          description: >-
-            Maximum number of times the model can invoke web search in a single
-            turn. Passed through to native providers that support it (e.g.
-            Anthropic).
-        search_prompt:
-          type: string
-        user_location:
-          $ref: '#/components/schemas/WebSearchPluginUserLocation'
-      required:
-        - id
-      title: WebSearchPlugin
-    FileParserPluginId:
-      type: string
-      enum:
-        - file-parser
-      title: FileParserPluginId
+        - middle-out
+      description: The compression engine to use. Defaults to "middle-out".
+      title: ContextCompressionEngine
     PdfParserEngine0:
       type: string
       enum:
@@ -1316,101 +1201,205 @@ components:
           $ref: '#/components/schemas/PDFParserEngine'
       description: Options for PDF parsing.
       title: PDFParserOptions
-    FileParserPlugin:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the file-parser plugin for this request.
-            Defaults to true.
-        id:
-          $ref: '#/components/schemas/FileParserPluginId'
-        pdf:
-          $ref: '#/components/schemas/PDFParserOptions'
-      required:
-        - id
-      title: FileParserPlugin
-    ResponseHealingPluginId:
+    WebSearchEngine:
       type: string
       enum:
-        - response-healing
-      title: ResponseHealingPluginId
-    ResponseHealingPlugin:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the response-healing plugin for this
-            request. Defaults to true.
-        id:
-          $ref: '#/components/schemas/ResponseHealingPluginId'
-      required:
-        - id
-      title: ResponseHealingPlugin
-    ContextCompressionEngine:
+        - native
+        - exa
+        - firecrawl
+        - parallel
+      description: The search engine to use for web search.
+      title: WebSearchEngine
+    WebSearchPluginId:
       type: string
       enum:
-        - middle-out
-      description: The compression engine to use. Defaults to "middle-out".
-      title: ContextCompressionEngine
-    ContextCompressionPluginId:
+        - web
+      title: WebSearchPluginId
+    WebSearchPluginUserLocationType:
       type: string
       enum:
-        - context-compression
-      title: ContextCompressionPluginId
-    ContextCompressionPlugin:
+        - approximate
+      title: WebSearchPluginUserLocationType
+    WebSearchPluginUserLocation:
       type: object
       properties:
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the context-compression plugin for this
-            request. Defaults to true.
-        engine:
-          $ref: '#/components/schemas/ContextCompressionEngine'
-        id:
-          $ref: '#/components/schemas/ContextCompressionPluginId'
+        city:
+          type:
+            - string
+            - 'null'
+        country:
+          type:
+            - string
+            - 'null'
+        region:
+          type:
+            - string
+            - 'null'
+        timezone:
+          type:
+            - string
+            - 'null'
+        type:
+          $ref: '#/components/schemas/WebSearchPluginUserLocationType'
       required:
-        - id
-      title: ContextCompressionPlugin
-    ParetoRouterPluginId:
-      type: string
-      enum:
-        - pareto-router
-      title: ParetoRouterPluginId
-    ParetoRouterPlugin:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the pareto-router plugin for this request.
-            Defaults to true.
-        id:
-          $ref: '#/components/schemas/ParetoRouterPluginId'
-        min_coding_score:
-          type: number
-          format: double
-          description: >-
-            Minimum desired coding score between 0 and 1, where 1 is best.
-            Higher values select from stronger coding models (sourced from
-            Artificial Analysis coding percentiles). Maps internally to one of
-            three tiers (low, medium, high). Omit to use the router default
-            tier.
-      required:
-        - id
-      title: ParetoRouterPlugin
+        - type
+      description: >-
+        Approximate user location for location-biased search results. Passed
+        through to native providers that support it (e.g. Anthropic).
+      title: WebSearchPluginUserLocation
     MessagesRequestPluginsItems:
       oneOf:
-        - $ref: '#/components/schemas/AutoRouterPlugin'
-        - $ref: '#/components/schemas/ModerationPlugin'
-        - $ref: '#/components/schemas/WebSearchPlugin'
-        - $ref: '#/components/schemas/FileParserPlugin'
-        - $ref: '#/components/schemas/ResponseHealingPlugin'
-        - $ref: '#/components/schemas/ContextCompressionPlugin'
-        - $ref: '#/components/schemas/ParetoRouterPlugin'
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - auto-router
+              description: 'Discriminator value: auto-router'
+            allowed_models:
+              type: array
+              items:
+                type: string
+              description: >-
+                List of model patterns to filter which models the auto-router
+                can route between. Supports wildcards (e.g., "anthropic/*"
+                matches all Anthropic models). When not specified, uses the
+                default supported models list.
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the auto-router plugin for this request.
+                Defaults to true.
+          required:
+            - id
+          description: auto-router variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - context-compression
+              description: 'Discriminator value: context-compression'
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the context-compression plugin for this
+                request. Defaults to true.
+            engine:
+              $ref: '#/components/schemas/ContextCompressionEngine'
+          required:
+            - id
+          description: context-compression variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - file-parser
+              description: 'Discriminator value: file-parser'
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the file-parser plugin for this request.
+                Defaults to true.
+            pdf:
+              $ref: '#/components/schemas/PDFParserOptions'
+          required:
+            - id
+          description: file-parser variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - moderation
+              description: 'Discriminator value: moderation'
+          required:
+            - id
+          description: moderation variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - pareto-router
+              description: 'Discriminator value: pareto-router'
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the pareto-router plugin for this
+                request. Defaults to true.
+            min_coding_score:
+              type: number
+              format: double
+              description: >-
+                Minimum desired coding score between 0 and 1, where 1 is best.
+                Higher values select from stronger coding models (sourced from
+                Artificial Analysis coding percentiles). Maps internally to one
+                of three tiers (low, medium, high). Omit to use the router
+                default tier.
+          required:
+            - id
+          description: pareto-router variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - response-healing
+              description: 'Discriminator value: response-healing'
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the response-healing plugin for this
+                request. Defaults to true.
+          required:
+            - id
+          description: response-healing variant
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/WebSearchPluginId'
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the web-search plugin for this request.
+                Defaults to true.
+            engine:
+              $ref: '#/components/schemas/WebSearchEngine'
+            exclude_domains:
+              type: array
+              items:
+                type: string
+              description: >-
+                A list of domains to exclude from web search results. Supports
+                wildcards (e.g. "*.substack.com") and path filtering (e.g.
+                "openai.com/blog").
+            include_domains:
+              type: array
+              items:
+                type: string
+              description: >-
+                A list of domains to restrict web search results to. Supports
+                wildcards (e.g. "*.substack.com") and path filtering (e.g.
+                "openai.com/blog").
+            max_results:
+              type: integer
+            max_uses:
+              type: integer
+              description: >-
+                Maximum number of times the model can invoke web search in a
+                single turn. Passed through to native providers that support it
+                (e.g. Anthropic).
+            search_prompt:
+              type: string
+            user_location:
+              $ref: '#/components/schemas/WebSearchPluginUserLocation'
+          required:
+            - id
+          description: web variant
+      discriminator:
+        propertyName: id
       title: MessagesRequestPluginsItems
     ProviderPreferencesDataCollection:
       type: string
@@ -1517,39 +1506,23 @@ components:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
       title: ProviderPreferencesIgnoreItems
-    ProviderPreferencesMaxPriceAudio:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceAudio
-    ProviderPreferencesMaxPriceCompletion:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceCompletion
-    ProviderPreferencesMaxPriceImage:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceImage
     BigNumberUnion:
       type: string
       description: Price per million prompt tokens
       title: BigNumberUnion
-    ProviderPreferencesMaxPriceRequest:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceRequest
     ProviderPreferencesMaxPrice:
       type: object
       properties:
         audio:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceAudio'
+          $ref: '#/components/schemas/BigNumberUnion'
         completion:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceCompletion'
+          $ref: '#/components/schemas/BigNumberUnion'
         image:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceImage'
+          $ref: '#/components/schemas/BigNumberUnion'
         prompt:
           $ref: '#/components/schemas/BigNumberUnion'
         request:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceRequest'
+          $ref: '#/components/schemas/BigNumberUnion'
       description: >-
         The object specifying the maximum price you want to pay for this
         request. USD price per million tokens, for prompt and completion.
@@ -1835,10 +1808,12 @@ components:
         - auto
         - standard_only
       title: MessagesRequestServiceTier
-    MessagesRequestSpeed:
-      type: object
-      properties: {}
-      title: MessagesRequestSpeed
+    AnthropicSpeed:
+      type: string
+      enum:
+        - fast
+        - standard
+      title: AnthropicSpeed
     MessagesRequestSystem1:
       type: array
       items:
@@ -2513,7 +2488,7 @@ components:
             both the request body and the x-session-id header, the body value
             takes precedence. Maximum of 256 characters.
         speed:
-          $ref: '#/components/schemas/MessagesRequestSpeed'
+          $ref: '#/components/schemas/AnthropicSpeed'
         stop_sequences:
           type: array
           items:
@@ -2564,393 +2539,569 @@ components:
         - expires_at
         - id
       title: AnthropicContainer
-    AnthropicCitationCharLocationType:
+    AnthropicBashCodeExecutionOutputType:
       type: string
       enum:
-        - char_location
-      title: AnthropicCitationCharLocationType
-    AnthropicCitationCharLocation:
+        - bash_code_execution_output
+      title: AnthropicBashCodeExecutionOutputType
+    AnthropicBashCodeExecutionOutput:
       type: object
       properties:
-        cited_text:
-          type: string
-        document_index:
-          type: integer
-        document_title:
-          type:
-            - string
-            - 'null'
-        end_char_index:
-          type: integer
         file_id:
-          type:
-            - string
-            - 'null'
-        start_char_index:
-          type: integer
+          type: string
         type:
-          $ref: '#/components/schemas/AnthropicCitationCharLocationType'
+          $ref: '#/components/schemas/AnthropicBashCodeExecutionOutputType'
       required:
-        - cited_text
-        - document_index
-        - document_title
-        - end_char_index
         - file_id
-        - start_char_index
         - type
-      title: AnthropicCitationCharLocation
-    AnthropicCitationPageLocationType:
+      title: AnthropicBashCodeExecutionOutput
+    AnthropicBashCodeExecutionResultType:
       type: string
       enum:
-        - page_location
-      title: AnthropicCitationPageLocationType
-    AnthropicCitationPageLocation:
-      type: object
-      properties:
-        cited_text:
-          type: string
-        document_index:
-          type: integer
-        document_title:
-          type:
-            - string
-            - 'null'
-        end_page_number:
-          type: integer
-        file_id:
-          type:
-            - string
-            - 'null'
-        start_page_number:
-          type: integer
-        type:
-          $ref: '#/components/schemas/AnthropicCitationPageLocationType'
-      required:
-        - cited_text
-        - document_index
-        - document_title
-        - end_page_number
-        - file_id
-        - start_page_number
-        - type
-      title: AnthropicCitationPageLocation
-    AnthropicCitationContentBlockLocationType:
+        - bash_code_execution_result
+      title: AnthropicBashCodeExecutionResultType
+    AnthropicBashCodeExecutionToolResultErrorErrorCode:
       type: string
       enum:
-        - content_block_location
-      title: AnthropicCitationContentBlockLocationType
-    AnthropicCitationContentBlockLocation:
-      type: object
-      properties:
-        cited_text:
-          type: string
-        document_index:
-          type: integer
-        document_title:
-          type:
-            - string
-            - 'null'
-        end_block_index:
-          type: integer
-        file_id:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: integer
-        type:
-          $ref: '#/components/schemas/AnthropicCitationContentBlockLocationType'
-      required:
-        - cited_text
-        - document_index
-        - document_title
-        - end_block_index
-        - file_id
-        - start_block_index
-        - type
-      title: AnthropicCitationContentBlockLocation
-    AnthropicTextCitation:
+        - invalid_tool_input
+        - unavailable
+        - too_many_requests
+        - execution_time_exceeded
+        - output_file_too_large
+      title: AnthropicBashCodeExecutionToolResultErrorErrorCode
+    AnthropicBashCodeExecutionToolResultErrorType:
+      type: string
+      enum:
+        - bash_code_execution_tool_result_error
+      title: AnthropicBashCodeExecutionToolResultErrorType
+    AnthropicBashCodeExecutionContent:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicCitationCharLocation'
-        - $ref: '#/components/schemas/AnthropicCitationPageLocation'
-        - $ref: '#/components/schemas/AnthropicCitationContentBlockLocation'
-        - $ref: '#/components/schemas/AnthropicCitationWebSearchResultLocation'
-        - $ref: '#/components/schemas/AnthropicCitationSearchResultLocation'
-      title: AnthropicTextCitation
-    AnthropicTextBlockType:
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicBashCodeExecutionResultType'
+            content:
+              type: array
+              items:
+                $ref: '#/components/schemas/AnthropicBashCodeExecutionOutput'
+            return_code:
+              type: integer
+            stderr:
+              type: string
+            stdout:
+              type: string
+          required:
+            - type
+            - content
+            - return_code
+            - stderr
+            - stdout
+          description: bash_code_execution_result variant
+        - type: object
+          properties:
+            type:
+              $ref: >-
+                #/components/schemas/AnthropicBashCodeExecutionToolResultErrorType
+            error_code:
+              $ref: >-
+                #/components/schemas/AnthropicBashCodeExecutionToolResultErrorErrorCode
+          required:
+            - type
+            - error_code
+          description: bash_code_execution_tool_result_error variant
+      discriminator:
+        propertyName: type
+      title: AnthropicBashCodeExecutionContent
+    AnthropicCodeExecutionOutputType:
       type: string
       enum:
-        - text
-      title: AnthropicTextBlockType
-    AnthropicTextBlock:
+        - code_execution_output
+      title: AnthropicCodeExecutionOutputType
+    AnthropicCodeExecutionOutput:
       type: object
       properties:
-        citations:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: '#/components/schemas/AnthropicTextCitation'
-        text:
+        file_id:
           type: string
         type:
-          $ref: '#/components/schemas/AnthropicTextBlockType'
+          $ref: '#/components/schemas/AnthropicCodeExecutionOutputType'
       required:
-        - citations
-        - text
+        - file_id
         - type
-      title: AnthropicTextBlock
-    AnthropicDirectCallerType:
+      title: AnthropicCodeExecutionOutput
+    AnthropicCodeExecutionResultType:
       type: string
       enum:
-        - direct
-      title: AnthropicDirectCallerType
-    AnthropicDirectCaller:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/AnthropicDirectCallerType'
-      required:
-        - type
-      title: AnthropicDirectCaller
+        - code_execution_result
+      title: AnthropicCodeExecutionResultType
+    AnthropicServerToolErrorCode:
+      type: string
+      enum:
+        - invalid_tool_input
+        - unavailable
+        - too_many_requests
+        - execution_time_exceeded
+      title: AnthropicServerToolErrorCode
+    AnthropicCodeExecutionToolResultErrorType:
+      type: string
+      enum:
+        - code_execution_tool_result_error
+      title: AnthropicCodeExecutionToolResultErrorType
+    AnthropicEncryptedCodeExecutionResultType:
+      type: string
+      enum:
+        - encrypted_code_execution_result
+      title: AnthropicEncryptedCodeExecutionResultType
+    AnthropicCodeExecutionContent:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicCodeExecutionResultType'
+            content:
+              type: array
+              items:
+                $ref: '#/components/schemas/AnthropicCodeExecutionOutput'
+            return_code:
+              type: integer
+            stderr:
+              type: string
+            stdout:
+              type: string
+          required:
+            - type
+            - content
+            - return_code
+            - stderr
+            - stdout
+          description: code_execution_result variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicCodeExecutionToolResultErrorType'
+            error_code:
+              $ref: '#/components/schemas/AnthropicServerToolErrorCode'
+          required:
+            - type
+            - error_code
+          description: code_execution_tool_result_error variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicEncryptedCodeExecutionResultType'
+            content:
+              type: array
+              items:
+                $ref: '#/components/schemas/AnthropicCodeExecutionOutput'
+            encrypted_stdout:
+              type: string
+            return_code:
+              type: integer
+            stderr:
+              type: string
+          required:
+            - type
+            - content
+            - encrypted_stdout
+            - return_code
+            - stderr
+          description: encrypted_code_execution_result variant
+      discriminator:
+        propertyName: type
+      title: AnthropicCodeExecutionContent
     AnthropicCodeExecution20250825CallerType:
       type: string
       enum:
         - code_execution_20250825
       title: AnthropicCodeExecution20250825CallerType
-    AnthropicCodeExecution20250825Caller:
-      type: object
-      properties:
-        tool_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicCodeExecution20250825CallerType'
-      required:
-        - tool_id
-        - type
-      title: AnthropicCodeExecution20250825Caller
     AnthropicCodeExecution20260120CallerType:
       type: string
       enum:
         - code_execution_20260120
       title: AnthropicCodeExecution20260120CallerType
-    AnthropicCodeExecution20260120Caller:
-      type: object
-      properties:
-        tool_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicCodeExecution20260120CallerType'
-      required:
-        - tool_id
-        - type
-      title: AnthropicCodeExecution20260120Caller
+    AnthropicDirectCallerType:
+      type: string
+      enum:
+        - direct
+      title: AnthropicDirectCallerType
     AnthropicCaller:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicDirectCaller'
-        - $ref: '#/components/schemas/AnthropicCodeExecution20250825Caller'
-        - $ref: '#/components/schemas/AnthropicCodeExecution20260120Caller'
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicCodeExecution20250825CallerType'
+            tool_id:
+              type: string
+          required:
+            - type
+            - tool_id
+          description: code_execution_20250825 variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicCodeExecution20260120CallerType'
+            tool_id:
+              type: string
+          required:
+            - type
+            - tool_id
+          description: code_execution_20260120 variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicDirectCallerType'
+          required:
+            - type
+          description: direct variant
+      discriminator:
+        propertyName: type
       title: AnthropicCaller
-    AnthropicToolUseBlockType:
-      type: string
-      enum:
-        - tool_use
-      title: AnthropicToolUseBlockType
-    AnthropicToolUseBlock:
-      type: object
-      properties:
-        caller:
-          $ref: '#/components/schemas/AnthropicCaller'
-        id:
-          type: string
-        input:
-          oneOf:
-            - description: Any type
-            - type: 'null'
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicToolUseBlockType'
-      required:
-        - caller
-        - id
-        - name
-        - type
-      title: AnthropicToolUseBlock
-    AnthropicThinkingBlockType:
-      type: string
-      enum:
-        - thinking
-      title: AnthropicThinkingBlockType
-    AnthropicThinkingBlock:
-      type: object
-      properties:
-        signature:
-          type: string
-        thinking:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicThinkingBlockType'
-      required:
-        - signature
-        - thinking
-        - type
-      title: AnthropicThinkingBlock
-    AnthropicRedactedThinkingBlockType:
-      type: string
-      enum:
-        - redacted_thinking
-      title: AnthropicRedactedThinkingBlockType
-    AnthropicRedactedThinkingBlock:
-      type: object
-      properties:
-        data:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicRedactedThinkingBlockType'
-      required:
-        - data
-        - type
-      title: AnthropicRedactedThinkingBlock
-    AnthropicServerToolUseBlockType:
-      type: string
-      enum:
-        - server_tool_use
-      title: AnthropicServerToolUseBlockType
-    AnthropicServerToolUseBlock:
-      type: object
-      properties:
-        caller:
-          $ref: '#/components/schemas/AnthropicCaller'
-        id:
-          type: string
-        input:
-          oneOf:
-            - description: Any type
-            - type: 'null'
-        name:
-          $ref: '#/components/schemas/AnthropicServerToolName'
-        type:
-          $ref: '#/components/schemas/AnthropicServerToolUseBlockType'
-      required:
-        - caller
-        - id
-        - name
-        - type
-      title: AnthropicServerToolUseBlock
-    AnthropicWebSearchResultType:
-      type: string
-      enum:
-        - web_search_result
-      title: AnthropicWebSearchResultType
-    AnthropicWebSearchResult:
-      type: object
-      properties:
-        encrypted_content:
-          type: string
-        page_age:
-          type:
-            - string
-            - 'null'
-        title:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicWebSearchResultType'
-        url:
-          type: string
-      required:
-        - encrypted_content
-        - page_age
-        - title
-        - type
-        - url
-      title: AnthropicWebSearchResult
-    AnthropicWebSearchToolResultContent0:
-      type: array
-      items:
-        $ref: '#/components/schemas/AnthropicWebSearchResult'
-      title: AnthropicWebSearchToolResultContent0
-    AnthropicWebSearchToolResultErrorErrorCode:
-      type: string
-      enum:
-        - invalid_tool_input
-        - unavailable
-        - max_uses_exceeded
-        - too_many_requests
-        - query_too_long
-        - request_too_large
-      title: AnthropicWebSearchToolResultErrorErrorCode
-    AnthropicWebSearchToolResultErrorType:
-      type: string
-      enum:
-        - web_search_tool_result_error
-      title: AnthropicWebSearchToolResultErrorType
-    AnthropicWebSearchToolResultError:
-      type: object
-      properties:
-        error_code:
-          $ref: '#/components/schemas/AnthropicWebSearchToolResultErrorErrorCode'
-        type:
-          $ref: '#/components/schemas/AnthropicWebSearchToolResultErrorType'
-      required:
-        - error_code
-        - type
-      title: AnthropicWebSearchToolResultError
-    AnthropicWebSearchToolResultContent:
+    AnthropicTextCitation:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicWebSearchToolResultContent0'
-        - $ref: '#/components/schemas/AnthropicWebSearchToolResultError'
-      title: AnthropicWebSearchToolResultContent
-    AnthropicWebSearchToolResultType:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - char_location
+              description: 'Discriminator value: char_location'
+            cited_text:
+              type: string
+            document_index:
+              type: integer
+            document_title:
+              type:
+                - string
+                - 'null'
+            end_char_index:
+              type: integer
+            file_id:
+              type:
+                - string
+                - 'null'
+            start_char_index:
+              type: integer
+          required:
+            - type
+            - cited_text
+            - document_index
+            - document_title
+            - end_char_index
+            - file_id
+            - start_char_index
+          description: char_location variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - content_block_location
+              description: 'Discriminator value: content_block_location'
+            cited_text:
+              type: string
+            document_index:
+              type: integer
+            document_title:
+              type:
+                - string
+                - 'null'
+            end_block_index:
+              type: integer
+            file_id:
+              type:
+                - string
+                - 'null'
+            start_block_index:
+              type: integer
+          required:
+            - type
+            - cited_text
+            - document_index
+            - document_title
+            - end_block_index
+            - file_id
+            - start_block_index
+          description: content_block_location variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - page_location
+              description: 'Discriminator value: page_location'
+            cited_text:
+              type: string
+            document_index:
+              type: integer
+            document_title:
+              type:
+                - string
+                - 'null'
+            end_page_number:
+              type: integer
+            file_id:
+              type:
+                - string
+                - 'null'
+            start_page_number:
+              type: integer
+          required:
+            - type
+            - cited_text
+            - document_index
+            - document_title
+            - end_page_number
+            - file_id
+            - start_page_number
+          description: page_location variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - search_result_location
+              description: 'Discriminator value: search_result_location'
+            cited_text:
+              type: string
+            end_block_index:
+              type: integer
+            search_result_index:
+              type: integer
+            source:
+              type: string
+            start_block_index:
+              type: integer
+            title:
+              type:
+                - string
+                - 'null'
+          required:
+            - type
+            - cited_text
+            - end_block_index
+            - search_result_index
+            - source
+            - start_block_index
+            - title
+          description: search_result_location variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - web_search_result_location
+              description: 'Discriminator value: web_search_result_location'
+            cited_text:
+              type: string
+            encrypted_index:
+              type: string
+            title:
+              type:
+                - string
+                - 'null'
+            url:
+              type: string
+          required:
+            - type
+            - cited_text
+            - encrypted_index
+            - title
+            - url
+          description: web_search_result_location variant
+      discriminator:
+        propertyName: type
+      title: AnthropicTextCitation
+    AnthropicTextEditorCodeExecutionCreateResultType:
       type: string
       enum:
-        - web_search_tool_result
-      title: AnthropicWebSearchToolResultType
-    AnthropicWebSearchToolResult:
-      type: object
-      properties:
-        caller:
-          $ref: '#/components/schemas/AnthropicCaller'
-        content:
-          $ref: '#/components/schemas/AnthropicWebSearchToolResultContent'
-        tool_use_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicWebSearchToolResultType'
-      required:
-        - caller
-        - content
-        - tool_use_id
-        - type
-      title: AnthropicWebSearchToolResult
-    AnthropicWebFetchToolResultErrorErrorCode:
+        - text_editor_code_execution_create_result
+      title: AnthropicTextEditorCodeExecutionCreateResultType
+    AnthropicTextEditorCodeExecutionStrReplaceResultType:
+      type: string
+      enum:
+        - text_editor_code_execution_str_replace_result
+      title: AnthropicTextEditorCodeExecutionStrReplaceResultType
+    AnthropicTextEditorCodeExecutionToolResultErrorErrorCode:
       type: string
       enum:
         - invalid_tool_input
-        - url_too_long
-        - url_not_allowed
-        - url_not_accessible
-        - unsupported_content_type
-        - too_many_requests
-        - max_uses_exceeded
         - unavailable
-      title: AnthropicWebFetchToolResultErrorErrorCode
-    AnthropicWebFetchToolResultErrorType:
+        - too_many_requests
+        - execution_time_exceeded
+        - file_not_found
+      title: AnthropicTextEditorCodeExecutionToolResultErrorErrorCode
+    AnthropicTextEditorCodeExecutionToolResultErrorType:
       type: string
       enum:
-        - web_fetch_tool_result_error
-      title: AnthropicWebFetchToolResultErrorType
-    AnthropicWebFetchToolResultError:
+        - text_editor_code_execution_tool_result_error
+      title: AnthropicTextEditorCodeExecutionToolResultErrorType
+    AnthropicTextEditorCodeExecutionViewResultFileType:
+      type: string
+      enum:
+        - text
+        - image
+        - pdf
+      title: AnthropicTextEditorCodeExecutionViewResultFileType
+    AnthropicTextEditorCodeExecutionViewResultType:
+      type: string
+      enum:
+        - text_editor_code_execution_view_result
+      title: AnthropicTextEditorCodeExecutionViewResultType
+    AnthropicTextEditorCodeExecutionContent:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              $ref: >-
+                #/components/schemas/AnthropicTextEditorCodeExecutionCreateResultType
+            is_file_update:
+              type: boolean
+          required:
+            - type
+            - is_file_update
+          description: text_editor_code_execution_create_result variant
+        - type: object
+          properties:
+            type:
+              $ref: >-
+                #/components/schemas/AnthropicTextEditorCodeExecutionStrReplaceResultType
+            lines:
+              type:
+                - array
+                - 'null'
+              items:
+                type: string
+            new_lines:
+              type:
+                - integer
+                - 'null'
+            new_start:
+              type:
+                - integer
+                - 'null'
+            old_lines:
+              type:
+                - integer
+                - 'null'
+            old_start:
+              type:
+                - integer
+                - 'null'
+          required:
+            - type
+            - lines
+            - new_lines
+            - new_start
+            - old_lines
+            - old_start
+          description: text_editor_code_execution_str_replace_result variant
+        - type: object
+          properties:
+            type:
+              $ref: >-
+                #/components/schemas/AnthropicTextEditorCodeExecutionToolResultErrorType
+            error_code:
+              $ref: >-
+                #/components/schemas/AnthropicTextEditorCodeExecutionToolResultErrorErrorCode
+            error_message:
+              type:
+                - string
+                - 'null'
+          required:
+            - type
+            - error_code
+            - error_message
+          description: text_editor_code_execution_tool_result_error variant
+        - type: object
+          properties:
+            type:
+              $ref: >-
+                #/components/schemas/AnthropicTextEditorCodeExecutionViewResultType
+            content:
+              type: string
+            file_type:
+              $ref: >-
+                #/components/schemas/AnthropicTextEditorCodeExecutionViewResultFileType
+            num_lines:
+              type:
+                - integer
+                - 'null'
+            start_line:
+              type:
+                - integer
+                - 'null'
+            total_lines:
+              type:
+                - integer
+                - 'null'
+          required:
+            - type
+            - content
+            - file_type
+            - num_lines
+            - start_line
+            - total_lines
+          description: text_editor_code_execution_view_result variant
+      discriminator:
+        propertyName: type
+      title: AnthropicTextEditorCodeExecutionContent
+    AnthropicToolSearchResultErrorType:
+      type: string
+      enum:
+        - tool_search_tool_result_error
+      title: AnthropicToolSearchResultErrorType
+    AnthropicToolReferenceType:
+      type: string
+      enum:
+        - tool_reference
+      title: AnthropicToolReferenceType
+    AnthropicToolReference:
       type: object
       properties:
-        error_code:
-          $ref: '#/components/schemas/AnthropicWebFetchToolResultErrorErrorCode'
+        tool_name:
+          type: string
         type:
-          $ref: '#/components/schemas/AnthropicWebFetchToolResultErrorType'
+          $ref: '#/components/schemas/AnthropicToolReferenceType'
       required:
-        - error_code
+        - tool_name
         - type
-      title: AnthropicWebFetchToolResultError
+      title: AnthropicToolReference
+    AnthropicToolSearchResultType:
+      type: string
+      enum:
+        - tool_search_tool_search_result
+      title: AnthropicToolSearchResultType
+    AnthropicToolSearchContent:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicToolSearchResultErrorType'
+            error_code:
+              $ref: '#/components/schemas/AnthropicServerToolErrorCode'
+            error_message:
+              type:
+                - string
+                - 'null'
+          required:
+            - type
+            - error_code
+            - error_message
+          description: tool_search_tool_result_error variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicToolSearchResultType'
+            tool_references:
+              type: array
+              items:
+                $ref: '#/components/schemas/AnthropicToolReference'
+          required:
+            - type
+            - tool_references
+          description: tool_search_tool_search_result variant
+      discriminator:
+        propertyName: type
+      title: AnthropicToolSearchContent
     AnthropicCitationsConfig:
       type: object
       properties:
@@ -2988,562 +3139,359 @@ components:
         - title
         - type
       title: AnthropicDocumentBlock
-    AnthropicWebFetchBlockType:
+    AnthropicWebFetchToolResultErrorErrorCode:
       type: string
       enum:
-        - web_fetch_result
-      title: AnthropicWebFetchBlockType
-    AnthropicWebFetchBlock:
+        - invalid_tool_input
+        - url_too_long
+        - url_not_allowed
+        - url_not_accessible
+        - unsupported_content_type
+        - too_many_requests
+        - max_uses_exceeded
+        - unavailable
+      title: AnthropicWebFetchToolResultErrorErrorCode
+    AnthropicWebFetchToolResultErrorType:
+      type: string
+      enum:
+        - web_fetch_tool_result_error
+      title: AnthropicWebFetchToolResultErrorType
+    AnthropicWebFetchContent:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - web_fetch_result
+              description: 'Discriminator value: web_fetch_result'
+            content:
+              $ref: '#/components/schemas/AnthropicDocumentBlock'
+            retrieved_at:
+              type:
+                - string
+                - 'null'
+            url:
+              type: string
+          required:
+            - type
+            - content
+            - retrieved_at
+            - url
+          description: web_fetch_result variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/AnthropicWebFetchToolResultErrorType'
+            error_code:
+              $ref: '#/components/schemas/AnthropicWebFetchToolResultErrorErrorCode'
+          required:
+            - type
+            - error_code
+          description: web_fetch_tool_result_error variant
+      discriminator:
+        propertyName: type
+      title: AnthropicWebFetchContent
+    AnthropicWebSearchResultType:
+      type: string
+      enum:
+        - web_search_result
+      title: AnthropicWebSearchResultType
+    AnthropicWebSearchResult:
       type: object
       properties:
-        content:
-          $ref: '#/components/schemas/AnthropicDocumentBlock'
-        retrieved_at:
+        encrypted_content:
+          type: string
+        page_age:
           type:
             - string
             - 'null'
+        title:
+          type: string
         type:
-          $ref: '#/components/schemas/AnthropicWebFetchBlockType'
+          $ref: '#/components/schemas/AnthropicWebSearchResultType'
         url:
           type: string
       required:
-        - content
-        - retrieved_at
+        - encrypted_content
+        - page_age
+        - title
         - type
         - url
-      title: AnthropicWebFetchBlock
-    AnthropicWebFetchContent:
-      oneOf:
-        - $ref: '#/components/schemas/AnthropicWebFetchToolResultError'
-        - $ref: '#/components/schemas/AnthropicWebFetchBlock'
-      title: AnthropicWebFetchContent
-    AnthropicWebFetchToolResultType:
-      type: string
-      enum:
-        - web_fetch_tool_result
-      title: AnthropicWebFetchToolResultType
-    AnthropicWebFetchToolResult:
-      type: object
-      properties:
-        caller:
-          $ref: '#/components/schemas/AnthropicCaller'
-        content:
-          $ref: '#/components/schemas/AnthropicWebFetchContent'
-        tool_use_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicWebFetchToolResultType'
-      required:
-        - caller
-        - content
-        - tool_use_id
-        - type
-      title: AnthropicWebFetchToolResult
-    AnthropicServerToolErrorCode:
+      title: AnthropicWebSearchResult
+    OrAnthropicContentBlockDiscriminatorMappingWebSearchToolResultContent0:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnthropicWebSearchResult'
+      title: OrAnthropicContentBlockDiscriminatorMappingWebSearchToolResultContent0
+    AnthropicWebSearchToolResultErrorErrorCode:
       type: string
       enum:
         - invalid_tool_input
         - unavailable
+        - max_uses_exceeded
         - too_many_requests
-        - execution_time_exceeded
-      title: AnthropicServerToolErrorCode
-    AnthropicCodeExecutionToolResultErrorType:
+        - query_too_long
+        - request_too_large
+      title: AnthropicWebSearchToolResultErrorErrorCode
+    AnthropicWebSearchToolResultErrorType:
       type: string
       enum:
-        - code_execution_tool_result_error
-      title: AnthropicCodeExecutionToolResultErrorType
-    AnthropicCodeExecutionToolResultError:
+        - web_search_tool_result_error
+      title: AnthropicWebSearchToolResultErrorType
+    AnthropicWebSearchToolResultError:
       type: object
       properties:
         error_code:
-          $ref: '#/components/schemas/AnthropicServerToolErrorCode'
+          $ref: '#/components/schemas/AnthropicWebSearchToolResultErrorErrorCode'
         type:
-          $ref: '#/components/schemas/AnthropicCodeExecutionToolResultErrorType'
+          $ref: '#/components/schemas/AnthropicWebSearchToolResultErrorType'
       required:
         - error_code
         - type
-      title: AnthropicCodeExecutionToolResultError
-    AnthropicCodeExecutionOutputType:
-      type: string
-      enum:
-        - code_execution_output
-      title: AnthropicCodeExecutionOutputType
-    AnthropicCodeExecutionOutput:
-      type: object
-      properties:
-        file_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicCodeExecutionOutputType'
-      required:
-        - file_id
-        - type
-      title: AnthropicCodeExecutionOutput
-    AnthropicCodeExecutionResultType:
-      type: string
-      enum:
-        - code_execution_result
-      title: AnthropicCodeExecutionResultType
-    AnthropicCodeExecutionResult:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnthropicCodeExecutionOutput'
-        return_code:
-          type: integer
-        stderr:
-          type: string
-        stdout:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicCodeExecutionResultType'
-      required:
-        - content
-        - return_code
-        - stderr
-        - stdout
-        - type
-      title: AnthropicCodeExecutionResult
-    AnthropicEncryptedCodeExecutionResultType:
-      type: string
-      enum:
-        - encrypted_code_execution_result
-      title: AnthropicEncryptedCodeExecutionResultType
-    AnthropicEncryptedCodeExecutionResult:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnthropicCodeExecutionOutput'
-        encrypted_stdout:
-          type: string
-        return_code:
-          type: integer
-        stderr:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicEncryptedCodeExecutionResultType'
-      required:
-        - content
-        - encrypted_stdout
-        - return_code
-        - stderr
-        - type
-      title: AnthropicEncryptedCodeExecutionResult
-    AnthropicCodeExecutionContent:
+      title: AnthropicWebSearchToolResultError
+    OrAnthropicContentBlockDiscriminatorMappingWebSearchToolResultContent:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicCodeExecutionToolResultError'
-        - $ref: '#/components/schemas/AnthropicCodeExecutionResult'
-        - $ref: '#/components/schemas/AnthropicEncryptedCodeExecutionResult'
-      title: AnthropicCodeExecutionContent
-    AnthropicCodeExecutionToolResultType:
-      type: string
-      enum:
-        - code_execution_tool_result
-      title: AnthropicCodeExecutionToolResultType
-    AnthropicCodeExecutionToolResult:
-      type: object
-      properties:
-        content:
-          $ref: '#/components/schemas/AnthropicCodeExecutionContent'
-        tool_use_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicCodeExecutionToolResultType'
-      required:
-        - content
-        - tool_use_id
-        - type
-      title: AnthropicCodeExecutionToolResult
-    AnthropicBashCodeExecutionToolResultErrorErrorCode:
-      type: string
-      enum:
-        - invalid_tool_input
-        - unavailable
-        - too_many_requests
-        - execution_time_exceeded
-        - output_file_too_large
-      title: AnthropicBashCodeExecutionToolResultErrorErrorCode
-    AnthropicBashCodeExecutionToolResultErrorType:
-      type: string
-      enum:
-        - bash_code_execution_tool_result_error
-      title: AnthropicBashCodeExecutionToolResultErrorType
-    AnthropicBashCodeExecutionToolResultError:
-      type: object
-      properties:
-        error_code:
-          $ref: >-
-            #/components/schemas/AnthropicBashCodeExecutionToolResultErrorErrorCode
-        type:
-          $ref: '#/components/schemas/AnthropicBashCodeExecutionToolResultErrorType'
-      required:
-        - error_code
-        - type
-      title: AnthropicBashCodeExecutionToolResultError
-    AnthropicBashCodeExecutionOutputType:
-      type: string
-      enum:
-        - bash_code_execution_output
-      title: AnthropicBashCodeExecutionOutputType
-    AnthropicBashCodeExecutionOutput:
-      type: object
-      properties:
-        file_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicBashCodeExecutionOutputType'
-      required:
-        - file_id
-        - type
-      title: AnthropicBashCodeExecutionOutput
-    AnthropicBashCodeExecutionResultType:
-      type: string
-      enum:
-        - bash_code_execution_result
-      title: AnthropicBashCodeExecutionResultType
-    AnthropicBashCodeExecutionResult:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnthropicBashCodeExecutionOutput'
-        return_code:
-          type: integer
-        stderr:
-          type: string
-        stdout:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicBashCodeExecutionResultType'
-      required:
-        - content
-        - return_code
-        - stderr
-        - stdout
-        - type
-      title: AnthropicBashCodeExecutionResult
-    AnthropicBashCodeExecutionContent:
-      oneOf:
-        - $ref: '#/components/schemas/AnthropicBashCodeExecutionToolResultError'
-        - $ref: '#/components/schemas/AnthropicBashCodeExecutionResult'
-      title: AnthropicBashCodeExecutionContent
-    AnthropicBashCodeExecutionToolResultType:
-      type: string
-      enum:
-        - bash_code_execution_tool_result
-      title: AnthropicBashCodeExecutionToolResultType
-    AnthropicBashCodeExecutionToolResult:
-      type: object
-      properties:
-        content:
-          $ref: '#/components/schemas/AnthropicBashCodeExecutionContent'
-        tool_use_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicBashCodeExecutionToolResultType'
-      required:
-        - content
-        - tool_use_id
-        - type
-      title: AnthropicBashCodeExecutionToolResult
-    AnthropicTextEditorCodeExecutionToolResultErrorErrorCode:
-      type: string
-      enum:
-        - invalid_tool_input
-        - unavailable
-        - too_many_requests
-        - execution_time_exceeded
-        - file_not_found
-      title: AnthropicTextEditorCodeExecutionToolResultErrorErrorCode
-    AnthropicTextEditorCodeExecutionToolResultErrorType:
-      type: string
-      enum:
-        - text_editor_code_execution_tool_result_error
-      title: AnthropicTextEditorCodeExecutionToolResultErrorType
-    AnthropicTextEditorCodeExecutionToolResultError:
-      type: object
-      properties:
-        error_code:
-          $ref: >-
-            #/components/schemas/AnthropicTextEditorCodeExecutionToolResultErrorErrorCode
-        error_message:
-          type:
-            - string
-            - 'null'
-        type:
-          $ref: >-
-            #/components/schemas/AnthropicTextEditorCodeExecutionToolResultErrorType
-      required:
-        - error_code
-        - error_message
-        - type
-      title: AnthropicTextEditorCodeExecutionToolResultError
-    AnthropicTextEditorCodeExecutionViewResultFileType:
-      type: string
-      enum:
-        - text
-        - image
-        - pdf
-      title: AnthropicTextEditorCodeExecutionViewResultFileType
-    AnthropicTextEditorCodeExecutionViewResultType:
-      type: string
-      enum:
-        - text_editor_code_execution_view_result
-      title: AnthropicTextEditorCodeExecutionViewResultType
-    AnthropicTextEditorCodeExecutionViewResult:
-      type: object
-      properties:
-        content:
-          type: string
-        file_type:
-          $ref: >-
-            #/components/schemas/AnthropicTextEditorCodeExecutionViewResultFileType
-        num_lines:
-          type:
-            - integer
-            - 'null'
-        start_line:
-          type:
-            - integer
-            - 'null'
-        total_lines:
-          type:
-            - integer
-            - 'null'
-        type:
-          $ref: '#/components/schemas/AnthropicTextEditorCodeExecutionViewResultType'
-      required:
-        - content
-        - file_type
-        - num_lines
-        - start_line
-        - total_lines
-        - type
-      title: AnthropicTextEditorCodeExecutionViewResult
-    AnthropicTextEditorCodeExecutionCreateResultType:
-      type: string
-      enum:
-        - text_editor_code_execution_create_result
-      title: AnthropicTextEditorCodeExecutionCreateResultType
-    AnthropicTextEditorCodeExecutionCreateResult:
-      type: object
-      properties:
-        is_file_update:
-          type: boolean
-        type:
-          $ref: >-
-            #/components/schemas/AnthropicTextEditorCodeExecutionCreateResultType
-      required:
-        - is_file_update
-        - type
-      title: AnthropicTextEditorCodeExecutionCreateResult
-    AnthropicTextEditorCodeExecutionStrReplaceResultType:
-      type: string
-      enum:
-        - text_editor_code_execution_str_replace_result
-      title: AnthropicTextEditorCodeExecutionStrReplaceResultType
-    AnthropicTextEditorCodeExecutionStrReplaceResult:
-      type: object
-      properties:
-        lines:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-        new_lines:
-          type:
-            - integer
-            - 'null'
-        new_start:
-          type:
-            - integer
-            - 'null'
-        old_lines:
-          type:
-            - integer
-            - 'null'
-        old_start:
-          type:
-            - integer
-            - 'null'
-        type:
-          $ref: >-
-            #/components/schemas/AnthropicTextEditorCodeExecutionStrReplaceResultType
-      required:
-        - lines
-        - new_lines
-        - new_start
-        - old_lines
-        - old_start
-        - type
-      title: AnthropicTextEditorCodeExecutionStrReplaceResult
-    AnthropicTextEditorCodeExecutionContent:
-      oneOf:
-        - $ref: '#/components/schemas/AnthropicTextEditorCodeExecutionToolResultError'
-        - $ref: '#/components/schemas/AnthropicTextEditorCodeExecutionViewResult'
-        - $ref: '#/components/schemas/AnthropicTextEditorCodeExecutionCreateResult'
         - $ref: >-
-            #/components/schemas/AnthropicTextEditorCodeExecutionStrReplaceResult
-      title: AnthropicTextEditorCodeExecutionContent
-    AnthropicTextEditorCodeExecutionToolResultType:
-      type: string
-      enum:
-        - text_editor_code_execution_tool_result
-      title: AnthropicTextEditorCodeExecutionToolResultType
-    AnthropicTextEditorCodeExecutionToolResult:
-      type: object
-      properties:
-        content:
-          $ref: '#/components/schemas/AnthropicTextEditorCodeExecutionContent'
-        tool_use_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicTextEditorCodeExecutionToolResultType'
-      required:
-        - content
-        - tool_use_id
-        - type
-      title: AnthropicTextEditorCodeExecutionToolResult
-    AnthropicToolSearchResultErrorType:
-      type: string
-      enum:
-        - tool_search_tool_result_error
-      title: AnthropicToolSearchResultErrorType
-    AnthropicToolSearchResultError:
-      type: object
-      properties:
-        error_code:
-          $ref: '#/components/schemas/AnthropicServerToolErrorCode'
-        error_message:
-          type:
-            - string
-            - 'null'
-        type:
-          $ref: '#/components/schemas/AnthropicToolSearchResultErrorType'
-      required:
-        - error_code
-        - error_message
-        - type
-      title: AnthropicToolSearchResultError
-    AnthropicToolReferenceType:
-      type: string
-      enum:
-        - tool_reference
-      title: AnthropicToolReferenceType
-    AnthropicToolReference:
-      type: object
-      properties:
-        tool_name:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicToolReferenceType'
-      required:
-        - tool_name
-        - type
-      title: AnthropicToolReference
-    AnthropicToolSearchResultType:
-      type: string
-      enum:
-        - tool_search_tool_search_result
-      title: AnthropicToolSearchResultType
-    AnthropicToolSearchResult:
-      type: object
-      properties:
-        tool_references:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnthropicToolReference'
-        type:
-          $ref: '#/components/schemas/AnthropicToolSearchResultType'
-      required:
-        - tool_references
-        - type
-      title: AnthropicToolSearchResult
-    AnthropicToolSearchContent:
-      oneOf:
-        - $ref: '#/components/schemas/AnthropicToolSearchResultError'
-        - $ref: '#/components/schemas/AnthropicToolSearchResult'
-      title: AnthropicToolSearchContent
-    AnthropicToolSearchToolResultType:
-      type: string
-      enum:
-        - tool_search_tool_result
-      title: AnthropicToolSearchToolResultType
-    AnthropicToolSearchToolResult:
-      type: object
-      properties:
-        content:
-          $ref: '#/components/schemas/AnthropicToolSearchContent'
-        tool_use_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicToolSearchToolResultType'
-      required:
-        - content
-        - tool_use_id
-        - type
-      title: AnthropicToolSearchToolResult
-    AnthropicContainerUploadType:
-      type: string
-      enum:
-        - container_upload
-      title: AnthropicContainerUploadType
-    AnthropicContainerUpload:
-      type: object
-      properties:
-        file_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/AnthropicContainerUploadType'
-      required:
-        - file_id
-        - type
-      title: AnthropicContainerUpload
-    AnthropicCompactionBlockType:
-      type: string
-      enum:
-        - compaction
-      title: AnthropicCompactionBlockType
-    AnthropicCompactionBlock:
-      type: object
-      properties:
-        content:
-          type:
-            - string
-            - 'null'
-        type:
-          $ref: '#/components/schemas/AnthropicCompactionBlockType'
-      required:
-        - content
-        - type
-      title: AnthropicCompactionBlock
+            #/components/schemas/OrAnthropicContentBlockDiscriminatorMappingWebSearchToolResultContent0
+        - $ref: '#/components/schemas/AnthropicWebSearchToolResultError'
+      title: OrAnthropicContentBlockDiscriminatorMappingWebSearchToolResultContent
     ORAnthropicContentBlock:
       oneOf:
-        - $ref: '#/components/schemas/AnthropicTextBlock'
-        - $ref: '#/components/schemas/AnthropicToolUseBlock'
-        - $ref: '#/components/schemas/AnthropicThinkingBlock'
-        - $ref: '#/components/schemas/AnthropicRedactedThinkingBlock'
-        - $ref: '#/components/schemas/AnthropicServerToolUseBlock'
-        - $ref: '#/components/schemas/AnthropicWebSearchToolResult'
-        - $ref: '#/components/schemas/AnthropicWebFetchToolResult'
-        - $ref: '#/components/schemas/AnthropicCodeExecutionToolResult'
-        - $ref: '#/components/schemas/AnthropicBashCodeExecutionToolResult'
-        - $ref: '#/components/schemas/AnthropicTextEditorCodeExecutionToolResult'
-        - $ref: '#/components/schemas/AnthropicToolSearchToolResult'
-        - $ref: '#/components/schemas/AnthropicContainerUpload'
-        - $ref: '#/components/schemas/AnthropicCompactionBlock'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - bash_code_execution_tool_result
+              description: 'Discriminator value: bash_code_execution_tool_result'
+            content:
+              $ref: '#/components/schemas/AnthropicBashCodeExecutionContent'
+            tool_use_id:
+              type: string
+          required:
+            - type
+            - content
+            - tool_use_id
+          description: bash_code_execution_tool_result variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - code_execution_tool_result
+              description: 'Discriminator value: code_execution_tool_result'
+            content:
+              $ref: '#/components/schemas/AnthropicCodeExecutionContent'
+            tool_use_id:
+              type: string
+          required:
+            - type
+            - content
+            - tool_use_id
+          description: code_execution_tool_result variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - compaction
+              description: 'Discriminator value: compaction'
+            content:
+              type:
+                - string
+                - 'null'
+          required:
+            - type
+            - content
+          description: compaction variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - container_upload
+              description: 'Discriminator value: container_upload'
+            file_id:
+              type: string
+          required:
+            - type
+            - file_id
+          description: container_upload variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - redacted_thinking
+              description: 'Discriminator value: redacted_thinking'
+            data:
+              type: string
+          required:
+            - type
+            - data
+          description: redacted_thinking variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - server_tool_use
+              description: 'Discriminator value: server_tool_use'
+            caller:
+              $ref: '#/components/schemas/AnthropicCaller'
+            id:
+              type: string
+            input:
+              oneOf:
+                - description: Any type
+                - type: 'null'
+            name:
+              $ref: '#/components/schemas/AnthropicServerToolName'
+          required:
+            - type
+            - caller
+            - id
+            - name
+          description: server_tool_use variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - text
+              description: 'Discriminator value: text'
+            citations:
+              type:
+                - array
+                - 'null'
+              items:
+                $ref: '#/components/schemas/AnthropicTextCitation'
+            text:
+              type: string
+          required:
+            - type
+            - citations
+            - text
+          description: text variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - text_editor_code_execution_tool_result
+              description: 'Discriminator value: text_editor_code_execution_tool_result'
+            content:
+              $ref: '#/components/schemas/AnthropicTextEditorCodeExecutionContent'
+            tool_use_id:
+              type: string
+          required:
+            - type
+            - content
+            - tool_use_id
+          description: text_editor_code_execution_tool_result variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - thinking
+              description: 'Discriminator value: thinking'
+            signature:
+              type: string
+            thinking:
+              type: string
+          required:
+            - type
+            - signature
+            - thinking
+          description: thinking variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - tool_search_tool_result
+              description: 'Discriminator value: tool_search_tool_result'
+            content:
+              $ref: '#/components/schemas/AnthropicToolSearchContent'
+            tool_use_id:
+              type: string
+          required:
+            - type
+            - content
+            - tool_use_id
+          description: tool_search_tool_result variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - tool_use
+              description: 'Discriminator value: tool_use'
+            caller:
+              $ref: '#/components/schemas/AnthropicCaller'
+            id:
+              type: string
+            input:
+              oneOf:
+                - description: Any type
+                - type: 'null'
+            name:
+              type: string
+          required:
+            - type
+            - caller
+            - id
+            - name
+          description: tool_use variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - web_fetch_tool_result
+              description: 'Discriminator value: web_fetch_tool_result'
+            caller:
+              $ref: '#/components/schemas/AnthropicCaller'
+            content:
+              $ref: '#/components/schemas/AnthropicWebFetchContent'
+            tool_use_id:
+              type: string
+          required:
+            - type
+            - caller
+            - content
+            - tool_use_id
+          description: web_fetch_tool_result variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - web_search_tool_result
+              description: 'Discriminator value: web_search_tool_result'
+            caller:
+              $ref: '#/components/schemas/AnthropicCaller'
+            content:
+              $ref: >-
+                #/components/schemas/OrAnthropicContentBlockDiscriminatorMappingWebSearchToolResultContent
+            tool_use_id:
+              type: string
+          required:
+            - type
+            - caller
+            - content
+            - tool_use_id
+          description: web_search_tool_result variant
+      discriminator:
+        propertyName: type
       title: ORAnthropicContentBlock
-    BaseMessagesResultRole:
+    MessagesResultRole:
       type: string
       enum:
         - assistant
-      title: BaseMessagesResultRole
+      title: MessagesResultRole
     AnthropicRefusalStopDetailsCategory:
       type: string
       enum:
@@ -3585,11 +3533,11 @@ components:
         - refusal
         - compaction
       title: ORAnthropicStopReason
-    BaseMessagesResultType:
+    MessagesResultType:
       type: string
       enum:
         - message
-      title: BaseMessagesResultType
+      title: MessagesResultType
     AnthropicCacheCreation:
       type: object
       properties:
@@ -3697,13 +3645,7 @@ components:
         - $ref: '#/components/schemas/AnthropicMessageUsageIteration'
         - $ref: '#/components/schemas/AnthropicUnknownUsageIteration'
       title: AnthropicUsageIteration
-    AnthropicSpeed:
-      type: string
-      enum:
-        - fast
-        - standard
-      title: AnthropicSpeed
-    BaseMessagesResultUsage:
+    MessagesResultUsage:
       type: object
       properties:
         cache_creation:
@@ -3743,7 +3685,7 @@ components:
         - output_tokens
         - server_tool_use
         - service_tier
-      title: BaseMessagesResultUsage
+      title: MessagesResultUsage
     MessagesResultContextManagementAppliedEditsItems:
       type: object
       properties:
@@ -3763,77 +3705,6 @@ components:
       required:
         - applied_edits
       title: MessagesResultContextManagement
-    CostDetails:
-      type: object
-      properties:
-        upstream_inference_completions_cost:
-          type: number
-          format: double
-        upstream_inference_cost:
-          type:
-            - number
-            - 'null'
-          format: double
-        upstream_inference_prompt_cost:
-          type: number
-          format: double
-      required:
-        - upstream_inference_completions_cost
-        - upstream_inference_prompt_cost
-      description: Breakdown of upstream inference costs
-      title: CostDetails
-    MessagesResultUsage:
-      type: object
-      properties:
-        cache_creation:
-          $ref: '#/components/schemas/AnthropicCacheCreation'
-        cache_creation_input_tokens:
-          type:
-            - integer
-            - 'null'
-        cache_read_input_tokens:
-          type:
-            - integer
-            - 'null'
-        inference_geo:
-          type:
-            - string
-            - 'null'
-        input_tokens:
-          type: integer
-        output_tokens:
-          type: integer
-        server_tool_use:
-          $ref: '#/components/schemas/AnthropicServerToolUsage'
-        service_tier:
-          type:
-            - string
-            - 'null'
-        cost:
-          type:
-            - number
-            - 'null'
-          format: double
-        cost_details:
-          $ref: '#/components/schemas/CostDetails'
-        is_byok:
-          type: boolean
-        iterations:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnthropicUsageIteration'
-        speed:
-          $ref: '#/components/schemas/AnthropicSpeed'
-      required:
-        - cache_creation
-        - cache_creation_input_tokens
-        - cache_read_input_tokens
-        - inference_geo
-        - input_tokens
-        - output_tokens
-        - server_tool_use
-        - service_tier
-      title: MessagesResultUsage
     MessagesResult:
       type: object
       properties:
@@ -3848,7 +3719,7 @@ components:
         model:
           type: string
         role:
-          $ref: '#/components/schemas/BaseMessagesResultRole'
+          $ref: '#/components/schemas/MessagesResultRole'
         stop_details:
           $ref: '#/components/schemas/AnthropicRefusalStopDetails'
         stop_reason:
@@ -3858,7 +3729,7 @@ components:
             - string
             - 'null'
         type:
-          $ref: '#/components/schemas/BaseMessagesResultType'
+          $ref: '#/components/schemas/MessagesResultType'
         usage:
           $ref: '#/components/schemas/MessagesResultUsage'
         context_management:
@@ -3919,10 +3790,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Anthropic Messages_createMessages_example
 import requests
 
-url = "https://openrouter.ai/api/v1/messages"
+url = "https://openrouter.ai/api/v1//messages"
 
 payload = {
     "messages": [
@@ -3944,8 +3815,8 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/messages';
+```javascript Anthropic Messages_createMessages_example
+const url = 'https://openrouter.ai/api/v1//messages';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -3961,7 +3832,7 @@ try {
 }
 ```
 
-```go
+```go Anthropic Messages_createMessages_example
 package main
 
 import (
@@ -3973,7 +3844,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/messages"
+	url := "https://openrouter.ai/api/v1//messages"
 
 	payload := strings.NewReader("{\n  \"messages\": [\n    {\n      \"content\": \"Hello, how are you?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"max_tokens\": 1024\n}")
 
@@ -3993,11 +3864,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Anthropic Messages_createMessages_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/messages")
+url = URI("https://openrouter.ai/api/v1//messages")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -4011,24 +3882,24 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Anthropic Messages_createMessages_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/messages")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//messages")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"messages\": [\n    {\n      \"content\": \"Hello, how are you?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"max_tokens\": 1024\n}")
   .asString();
 ```
 
-```php
+```php Anthropic Messages_createMessages_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/messages', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1//messages', [
   'body' => '{
   "messages": [
     {
@@ -4048,10 +3919,10 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/messages', [
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Anthropic Messages_createMessages_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/messages");
+var client = new RestClient("https://openrouter.ai/api/v1//messages");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -4059,7 +3930,7 @@ request.AddParameter("application/json", "{\n  \"messages\": [\n    {\n      \"c
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Anthropic Messages_createMessages_example
 import Foundation
 
 let headers = [
@@ -4079,7 +3950,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/messages")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//messages")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

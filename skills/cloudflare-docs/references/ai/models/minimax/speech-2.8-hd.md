@@ -65,8 +65,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Custom Voice**  — Use a specific voice and adjust speed 
@@ -107,8 +105,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **With Emotion**  — Apply emotional tone to speech 
 
@@ -151,8 +147,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **High Sample Rate**  — Studio quality at 44.1kHz sample rate 
 
 TypeScript
@@ -194,12 +188,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-204)
-* [ Output ](#tab-panel-205)
+* [ Input ](#tab-panel-64)
+* [ Output ](#tab-panel-65)
 
 text
 

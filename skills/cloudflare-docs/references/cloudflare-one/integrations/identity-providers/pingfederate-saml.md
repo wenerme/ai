@@ -46,7 +46,7 @@ In versions 9.0 above, you can leave both of these options enabled.
 
 This file shares several fields with Cloudflare Access so you do not have to input this data.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select SAML.
 4. In the **IdP Entity ID** field, enter the following URL:

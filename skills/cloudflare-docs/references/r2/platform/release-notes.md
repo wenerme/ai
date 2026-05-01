@@ -14,6 +14,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/r2/platform/release-notes/index.xml)
 
+## 2026-04-27
+
+* You can now [empty a bucket](https://developers.cloudflare.com/r2/buckets/delete-buckets/) or [delete folders](https://developers.cloudflare.com/r2/objects/delete-objects/#delete-a-folder) directly from the R2 dashboard without writing scripts or configuring lifecycle rules.
+
 ## 2025-09-23
 
 * Fixed a bug where you could attempt to delete objects even if they had a bucket lock rule applied on the dashboard. Previously, they would momentarily vanish from the table but reappear after a page refresh. Now, the delete action is disabled on locked objects in the dashboard.

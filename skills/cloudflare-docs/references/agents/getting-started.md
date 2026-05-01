@@ -12,18 +12,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Getting started
 
-Start building agents that can remember context and make decisions. This guide walks you through creating your first agent and understanding how they work.
+Start building agents that can remember context, communicate with users, and act on their own. Pick the path that matches what you want to build first.
 
-Agents maintain state across conversations and can execute workflows. Use them for customer support automation, personal assistants, or interactive experiences.
+## Choose a path
 
-## What you will learn
+[ Quick start ](https://developers.cloudflare.com/agents/getting-started/quick-start/) Build a small stateful counter agent and learn the core Agent, state, and client SDK model. 
 
-Building with agents involves understanding a few core concepts:
+[ Build a chat agent ](https://developers.cloudflare.com/agents/getting-started/build-a-chat-agent/) Build a streaming AI chat agent with Workers AI, server tools, client tools, and approvals. 
 
-* **State management**: How agents remember information across interactions.
-* **Decision making**: How agents analyze requests and choose actions.
-* **Tool integration**: How agents access external APIs and data sources.
-* **Conversation flow**: How agents maintain context and personality.
+[ Add Agents to an existing project ](https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/) Install the Agents SDK into an existing Workers application and wire up routing. 
+
+[ Testing your Agents ](https://developers.cloudflare.com/agents/getting-started/testing-your-agent/) Write tests with Vitest and the Workers test pool. 
+
+## All getting started pages
+
 * [ Quick start ](https://developers.cloudflare.com/agents/getting-started/quick-start/)
 * [ Add to existing project ](https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/)
 * [ Testing your Agents ](https://developers.cloudflare.com/agents/getting-started/testing-your-agent/)

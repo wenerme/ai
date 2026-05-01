@@ -31,7 +31,7 @@ This feature replaces the legacy [private network app type](https://developers.c
 
 ## Add your application to Access
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Add an application**.
 3. Select **Self-hosted**.
 4. Enter any name for the application.
@@ -98,7 +98,7 @@ Ensure that your operating system allows notifications for the Cloudflare One Cl
 
 By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:  
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:  
 | Selector           | Operator | Value     | Action |  
 | ------------------ | -------- | --------- | ------ |  
 | Access Private App | is       | _Present_ | Allow  |

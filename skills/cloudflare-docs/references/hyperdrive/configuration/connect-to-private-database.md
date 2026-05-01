@@ -14,6 +14,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Hyperdrive can securely connect to your private databases using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) and [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
+Note
+
+You can also connect Hyperdrive to a private database using [Workers VPC (Recommended)](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/), which does not require configuring Access applications or service tokens.
+
 ## How it works
 
 When your database is isolated within a private network (such as a [virtual private cloud ↗](https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud) or an on-premise network), you must enable a secure connection from your network to Cloudflare.
@@ -46,7 +50,7 @@ If your organization also uses [Super Bot Fight Mode](https://developers.cloudfl
 
 First, create a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) in your private network to establish a secure connection between your network and Cloudflare. Your network must be configured such that the tunnel has permissions to egress to the Cloudflare network and access the database within your network.
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com) and go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select **Create a tunnel**.
 3. Choose **Cloudflared** for the connector type and select **Next**.
 4. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
@@ -94,7 +98,7 @@ Manual creation
 
 The service token will be used to restrict requests to the tunnel, and is needed for the next step.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Set a **Service Token Duration** of `Non-expiring`. This prevents the service token from expiring, ensuring it can be used throughout the life of the Hyperdrive configuration.
@@ -107,7 +111,7 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 
 [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) will be used to verify that requests to the tunnel originate from Hyperdrive using the service token created above.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Add an application**.
 3. Select **Self-hosted**.
 4. Enter any name for the application.
@@ -129,8 +133,8 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 
 To create a Hyperdrive configuration for your private database, you'll need to specify the Access application and Cloudflare Tunnel information upon creation.
 
-* [ Wrangler ](#tab-panel-6050)
-* [ Terraform ](#tab-panel-6051)
+* [ Wrangler ](#tab-panel-5854)
+* [ Terraform ](#tab-panel-5855)
 
 Terminal window
 
@@ -198,8 +202,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6052)
-* [  wrangler.toml ](#tab-panel-6053)
+* [  wrangler.jsonc ](#tab-panel-5856)
+* [  wrangler.toml ](#tab-panel-5857)
 
 JSONC
 
@@ -245,8 +249,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-6054)
-* [  wrangler.toml ](#tab-panel-6055)
+* [  wrangler.jsonc ](#tab-panel-5858)
+* [  wrangler.toml ](#tab-panel-5859)
 
 JSONC
 
@@ -296,8 +300,8 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 Validate that you can connect to your database from Workers and make queries.
 
-* [ PostgreSQL ](#tab-panel-6060)
-* [ MySQL ](#tab-panel-6061)
+* [ PostgreSQL ](#tab-panel-5864)
+* [ MySQL ](#tab-panel-5865)
 
 Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query to validate that the connection has been successful.
 
@@ -347,8 +351,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6056)
-* [  wrangler.toml ](#tab-panel-6057)
+* [  wrangler.jsonc ](#tab-panel-5860)
+* [  wrangler.toml ](#tab-panel-5861)
 
 JSONC
 
@@ -366,7 +370,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-04-30",
 
   "hyperdrive": [
 
@@ -393,7 +397,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-04-30"
 
 
 [[hyperdrive]]
@@ -516,8 +520,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6058)
-* [  wrangler.toml ](#tab-panel-6059)
+* [  wrangler.jsonc ](#tab-panel-5862)
+* [  wrangler.toml ](#tab-panel-5863)
 
 JSONC
 
@@ -535,7 +539,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-04-30",
 
   "hyperdrive": [
 
@@ -562,7 +566,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-04-30"
 
 
 [[hyperdrive]]

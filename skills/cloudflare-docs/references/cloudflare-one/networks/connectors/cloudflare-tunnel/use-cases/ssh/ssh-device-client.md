@@ -71,7 +71,7 @@ In order to be able to establish an SSH connection, do not enable [OS Login ↗]
 
 This section covers how to create a new Cloudflare Tunnel for your SSH server. You can reuse the same tunnel for all services on a private network that are reachable from the `cloudflared` host.
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com) and go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select **Create a tunnel**.
 3. Choose **Cloudflared** for the connector type and select **Next**.
 4. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
@@ -211,8 +211,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:  
-   * [ Exclude IPs and domains ](#tab-panel-4812)  
-   * [ Include IPs and domains ](#tab-panel-4813)  
+   * [ Exclude IPs and domains ](#tab-panel-4616)  
+   * [ Include IPs and domains ](#tab-panel-4617)  
 If you are using **Exclude** mode:  
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your private network's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.  
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your private network. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.  
@@ -232,8 +232,8 @@ If you are using **Include** mode:
 
 By default, all devices enrolled in your organization can SSH to the server unless you build Gateway network policies to allow or block specific users. You can create policies based on user identity, device posture, location, and other criteria.
 
-* [ Dashboard ](#tab-panel-4810)
-* [ Terraform (v5) ](#tab-panel-4811)
+* [ Dashboard ](#tab-panel-4614)
+* [ Terraform (v5) ](#tab-panel-4615)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.

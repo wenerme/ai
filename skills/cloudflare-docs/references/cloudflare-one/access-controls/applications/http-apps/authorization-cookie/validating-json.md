@@ -135,7 +135,7 @@ Cloudflare Access assigns a unique AUD tag to each application. The `aud` claim 
 
 To get the AUD tag:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Configure** for your application.
 3. From the **Additional settings** tab, copy the **Application Audience (AUD) Tag**.
 
@@ -147,8 +147,8 @@ When Cloudflare Access is in front of your [Worker](https://developers.cloudflar
 
 The following code will validate the JWT using the [jose NPM package ↗](https://www.npmjs.com/package/jose):
 
-* [  JavaScript ](#tab-panel-4613)
-* [  TypeScript ](#tab-panel-4614)
+* [  JavaScript ](#tab-panel-4417)
+* [  TypeScript ](#tab-panel-4418)
 
 JavaScript
 

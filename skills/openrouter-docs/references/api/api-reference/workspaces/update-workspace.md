@@ -4,7 +4,7 @@
 
 # Update a workspace
 
-PATCH https://openrouter.ai/api/v1/workspaces/{id}
+PATCH https://openrouter.ai/api/v1//workspaces/{id}
 Content-Type: application/json
 
 Update an existing workspace by ID or slug. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /workspaces/{id}:
+  //workspaces/{id}:
     patch:
       operationId: update-workspace
       summary: Update a workspace
@@ -227,6 +227,7 @@ components:
         - name
         - slug
         - updated_at
+      description: The updated workspace
       title: UpdateWorkspaceResponseData
     UpdateWorkspaceResponse:
       type: object
@@ -401,10 +402,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Workspaces_updateWorkspace_example
 import requests
 
-url = "https://openrouter.ai/api/v1/workspaces/production"
+url = "https://openrouter.ai/api/v1//workspaces/production"
 
 payload = {
     "name": "Updated Workspace",
@@ -420,8 +421,8 @@ response = requests.patch(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/workspaces/production';
+```javascript Workspaces_updateWorkspace_example
+const url = 'https://openrouter.ai/api/v1//workspaces/production';
 const options = {
   method: 'PATCH',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -437,7 +438,7 @@ try {
 }
 ```
 
-```go
+```go Workspaces_updateWorkspace_example
 package main
 
 import (
@@ -449,7 +450,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/workspaces/production"
+	url := "https://openrouter.ai/api/v1//workspaces/production"
 
 	payload := strings.NewReader("{\n  \"name\": \"Updated Workspace\",\n  \"slug\": \"updated-workspace\"\n}")
 
@@ -469,11 +470,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Workspaces_updateWorkspace_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/workspaces/production")
+url = URI("https://openrouter.ai/api/v1//workspaces/production")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -487,24 +488,24 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Workspaces_updateWorkspace_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.patch("https://openrouter.ai/api/v1/workspaces/production")
+HttpResponse<String> response = Unirest.patch("https://openrouter.ai/api/v1//workspaces/production")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"name\": \"Updated Workspace\",\n  \"slug\": \"updated-workspace\"\n}")
   .asString();
 ```
 
-```php
+```php Workspaces_updateWorkspace_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('PATCH', 'https://openrouter.ai/api/v1/workspaces/production', [
+$response = $client->request('PATCH', 'https://openrouter.ai/api/v1//workspaces/production', [
   'body' => '{
   "name": "Updated Workspace",
   "slug": "updated-workspace"
@@ -518,10 +519,10 @@ $response = $client->request('PATCH', 'https://openrouter.ai/api/v1/workspaces/p
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Workspaces_updateWorkspace_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/workspaces/production");
+var client = new RestClient("https://openrouter.ai/api/v1//workspaces/production");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -529,7 +530,7 @@ request.AddParameter("application/json", "{\n  \"name\": \"Updated Workspace\",\
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Workspaces_updateWorkspace_example
 import Foundation
 
 let headers = [
@@ -543,7 +544,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/workspaces/production")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//workspaces/production")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "PATCH"

@@ -43,7 +43,7 @@ Create a `.tf` file and copy-paste the following example. Fill in your API token
 
 Find the Tunnel ID
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select the tunnel name.
 3. Copy the **Tunnel ID**.
 
@@ -245,7 +245,7 @@ Terminal window
 terraform apply  
 ```
 
-Users can now access the private application by going to the public URL and authenticating with Cloudflare Access. You can view your new tunnel route, Access application, and Access policy in [Cloudflare One ↗](https://one.dash.cloudflare.com). The new DNS record is shown in the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+Users can now access the private application by going to the public URL and authenticating with Cloudflare Access. You can view your new tunnel route in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Networks** \> **Connectors**, and your Access application and policy under **Zero Trust** \> **Access controls** \> **Applications**. The new DNS record is shown in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 
 Note
 

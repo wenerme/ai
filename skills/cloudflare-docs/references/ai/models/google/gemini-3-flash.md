@@ -74,50 +74,41 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+While there are actually four laws of thermodynamics (numbered 0 through 3), the "Three Laws" usually refer to the following fundamental principles that govern how energy, heat, and matter behave:
 
-* [ Input ](#tab-panel-138)
-* [ Output ](#tab-panel-139)
+### 1. The First Law: The Law of Conservation of Energy
+**"Energy cannot be created or destroyed, only transformed from one form to another."**
 
-```
+This law states that the total amount of energy in an isolated system remains constant. In practical terms, if you add heat to a system, that energy must either increase the system's internal temperature or be used to do work on the surroundings.
+*   **The Equation:** $\Delta U = Q - W$
+    *(Change in internal energy = Heat added - Work done by the system)*
 
-{
+### 2. The Second Law: The Law of Entropy
+**"The total entropy of an isolated system can never decrease over time; it can only remain constant or increase."**
 
-    "contents": [
+Entropy is a measure of "disorder" or randomness. This law explains why processes have a specific direction (the "arrow of time"). It tells us that heat will always flow spontaneously from a hot object to a cold object, and that no machine can ever be 100% efficient because some energy is always "lost" as waste heat.
+*   **Key takeaway:** Systems naturally progress toward a state of maximum disorder.
 
-        {
+### 3. The Third Law: The Law of Absolute Zero
+**"As the temperature of a system approaches absolute zero, its entropy approaches a constant minimum."**
 
-            "role": "user",
+Absolute zero ($0$ Kelvin, or $-273.15^\circ\text{C}$) is the theoretical point where all molecular motion stops. This law implies that it is impossible to reach absolute zero in a finite number of steps. At this temperature, a perfect crystal would have zero entropy.
+*   **Key takeaway:** You can get very close to absolute zero, but you can never actually get there.
 
-            "parts": [
+***
 
-                {
+### Bonus: The Zeroth Law (The Law of Equilibrium)
+Physicists realized they needed this law *after* the first three were already named, so they called it the "Zeroth" law because it is the most fundamental. 
+*   **The Law:** If two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. 
+*   **Simplified:** This is the logic that allows us to use **thermometers**. If the thermometer says the water is $100^\circ$ and the same thermometer says the tea is $100^\circ$, then the water and the tea are the same temperature.
 
-                    "text": "What are the three laws of thermodynamics?"
+***
 
-                }
-
-            ]
-
-        }
-
-    ]
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "While there are actually four laws of thermodynamics (numbered 0 through 3), the \"Three Laws\" usually refer to the following fundamental principles that govern how energy, heat, and matter behave:\n\n### 1. The First Law: The Law of Conservation of Energy\n**\"Energy cannot be created or destroyed, only transformed from one form to another.\"**\n\nThis law states that the total amount of energy in an isolated system remains constant. In practical terms, if you add heat to a system, that energy must either increase the system's internal temperature or be used to do work on the surroundings.\n*   **The Equation:** $\\Delta U = Q - W$\n    *(Change in internal energy = Heat added - Work done by the system)*\n\n### 2. The Second Law: The Law of Entropy\n**\"The total entropy of an isolated system can never decrease over time; it can only remain constant or increase.\"**\n\nEntropy is a measure of \"disorder\" or randomness. This law explains why processes have a specific direction (the \"arrow of time\"). It tells us that heat will always flow spontaneously from a hot object to a cold object, and that no machine can ever be 100% efficient because some energy is always \"lost\" as waste heat.\n*   **Key takeaway:** Systems naturally progress toward a state of maximum disorder.\n\n### 3. The Third Law: The Law of Absolute Zero\n**\"As the temperature of a system approaches absolute zero, its entropy approaches a constant minimum.\"**\n\nAbsolute zero ($0$ Kelvin, or $-273.15^\\circ\\text{C}$) is the theoretical point where all molecular motion stops. This law implies that it is impossible to reach absolute zero in a finite number of steps. At this temperature, a perfect crystal would have zero entropy.\n*   **Key takeaway:** You can get very close to absolute zero, but you can never actually get there.\n\n***\n\n### Bonus: The Zeroth Law (The Law of Equilibrium)\nPhysicists realized they needed this law *after* the first three were already named, so they called it the \"Zeroth\" law because it is the most fundamental. \n*   **The Law:** If two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. \n*   **Simplified:** This is the logic that allows us to use **thermometers**. If the thermometer says the water is $100^\\circ$ and the same thermometer says the tea is $100^\\circ$, then the water and the tea are the same temperature.\n\n***\n\n### A Common Way to Remember Them:\nScientists often use a cynical \"gambling\" analogy to remember the laws:\n1.  **First Law:** You can’t win (you can’t get more energy out than you put in).\n2.  **Second Law:** You can’t even break even (entropy always increases; you always lose some energy to heat).\n3.  **Third Law:** You can’t quit the game (you can’t reach absolute zero)."
-
-}
-
-
-```
+### A Common Way to Remember Them:
+Scientists often use a cynical "gambling" analogy to remember the laws:
+1.  **First Law:** You can’t win (you can’t get more energy out than you put in).
+2.  **Second Law:** You can’t even break even (entropy always increases; you always lose some energy to heat).
+3.  **Third Law:** You can’t quit the game (you can’t reach absolute zero).
 
 ## Examples
 
@@ -188,69 +179,66 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+To read a JSON file in Python, you use the built-in **`json`** module.
 
-* [ Input ](#tab-panel-140)
-* [ Output ](#tab-panel-141)
+Here is the most common and recommended way to do it:
 
+### Basic Example
+```python
+import json
+
+# Open the file and load the data
+with open('data.json', 'r', encoding='utf-8') as file:
+    data = json.load(file)
+
+# Now 'data' is a Python dictionary (or list)
+print(data)
 ```
 
-{
+---
 
-    "contents": [
+### Key Details to Remember
 
-        {
+#### 1. `json.load()` vs `json.loads()`
+*   **`json.load(file_object)`**: Used to read from a **file**.
+*   **`json.loads(json_string)`**: Used to parse a **string** that contains JSON data (the "s" stands for "string").
 
-            "role": "user",
+#### 2. Using the `with` statement
+It is best practice to use the `with` statement because it automatically closes the file for you, even if an error occurs during reading.
 
-            "parts": [
-
-                {
-
-                    "text": "How do I read a JSON file in Python?"
-
-                }
-
-            ]
-
-        }
-
-    ],
-
-    "systemInstruction": {
-
-        "parts": [
-
-            {
-
-                "text": "You are a helpful coding assistant specializing in Python."
-
-            }
-
-        ]
-
-    },
-
-    "generationConfig": {
-
-        "temperature": 0.3
-
-    }
-
-}
-
-
+#### 3. Handling Encoding
+If your JSON file contains special characters (like emojis or non-English letters), it is safer to specify the encoding:
+```python
+with open('data.json', 'r', encoding='utf-8') as file:
+    data = json.load(file)
 ```
 
+---
+
+### Error Handling
+If the file is missing or the JSON is formatted incorrectly, your program will crash. You can wrap it in a `try-except` block to handle these cases:
+
+```python
+import json
+
+try:
+    with open('data.json', 'r') as file:
+        data = json.load(file)
+except FileNotFoundError:
+    print("The file was not found.")
+except json.JSONDecodeError:
+    print("The file is not a valid JSON format.")
 ```
 
-{
+### Reading JSON from a URL
+If you want to read JSON directly from the web, you can use the `requests` library:
 
-    "text": "To read a JSON file in Python, you use the built-in **`json`** module.\n\nHere is the most common and recommended way to do it:\n\n### Basic Example\n```python\nimport json\n\n# Open the file and load the data\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n\n# Now 'data' is a Python dictionary (or list)\nprint(data)\n```\n\n---\n\n### Key Details to Remember\n\n#### 1. `json.load()` vs `json.loads()`\n*   **`json.load(file_object)`**: Used to read from a **file**.\n*   **`json.loads(json_string)`**: Used to parse a **string** that contains JSON data (the \"s\" stands for \"string\").\n\n#### 2. Using the `with` statement\nIt is best practice to use the `with` statement because it automatically closes the file for you, even if an error occurs during reading.\n\n#### 3. Handling Encoding\nIf your JSON file contains special characters (like emojis or non-English letters), it is safer to specify the encoding:\n```python\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n```\n\n---\n\n### Error Handling\nIf the file is missing or the JSON is formatted incorrectly, your program will crash. You can wrap it in a `try-except` block to handle these cases:\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"The file was not found.\")\nexcept json.JSONDecodeError:\n    print(\"The file is not a valid JSON format.\")\n```\n\n### Reading JSON from a URL\nIf you want to read JSON directly from the web, you can use the `requests` library:\n\n```python\nimport requests\n\nresponse = requests.get('https://api.example.com/data')\ndata = response.json()  # Automatically parses the JSON\nprint(data)\n```"
+```python
+import requests
 
-}
-
-
+response = requests.get('https://api.example.com/data')
+data = response.json()  # Automatically parses the JSON
+print(data)
 ```
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
@@ -338,88 +326,7 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-144)
-* [ Output ](#tab-panel-145)
-
-```
-
-{
-
-    "contents": [
-
-        {
-
-            "role": "user",
-
-            "parts": [
-
-                {
-
-                    "text": "I need help planning a road trip from San Francisco to Los Angeles."
-
-                }
-
-            ]
-
-        },
-
-        {
-
-            "role": "model",
-
-            "parts": [
-
-                {
-
-                    "text": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
-
-                }
-
-            ]
-
-        },
-
-        {
-
-            "role": "user",
-
-            "parts": [
-
-                {
-
-                    "text": "Yes, what are some good places to stop?"
-
-                }
-
-            ]
-
-        }
-
-    ],
-
-    "generationConfig": {
-
-        "maxOutputTokens": 500
-
-    }
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "To give you the best recommendations, it helps to know how much time you have. The drive can"
-
-}
-
-
-```
+To give you the best recommendations, it helps to know how much time you have. The drive can
 
 **Creative Writing**  — Higher temperature for creative output 
 
@@ -476,63 +383,12 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-142)
-* [ Output ](#tab-panel-143)
-
-```
-
-{
-
-    "contents": [
-
-        {
-
-            "role": "user",
-
-            "parts": [
-
-                {
-
-                    "text": "Write a short story opening about a detective finding an unusual clue."
-
-                }
-
-            ]
-
-        }
-
-    ],
-
-    "generationConfig": {
-
-        "temperature": 0.8,
-
-        "maxOutputTokens": 300
-
-    }
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "The yellow police tape hummed in the drafty"
-
-}
-
-
-```
+The yellow police tape hummed in the drafty
 
 ## Parameters
 
-* [ Input ](#tab-panel-146)
-* [ Output ](#tab-panel-147)
+* [ Input ](#tab-panel-30)
+* [ Output ](#tab-panel-31)
 
 ▶contents\[\]
 

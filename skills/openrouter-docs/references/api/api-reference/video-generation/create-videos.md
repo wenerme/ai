@@ -4,7 +4,7 @@
 
 # Submit a video generation request
 
-POST https://openrouter.ai/api/v1/videos
+POST https://openrouter.ai/api/v1//videos
 Content-Type: application/json
 
 Submits a video generation request and returns a polling URL to check status
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /videos:
+  //videos:
     post:
       operationId: create-videos
       summary: Submit a video generation request
@@ -99,6 +99,41 @@ components:
         - '9:21'
       description: Aspect ratio of the generated video
       title: VideoGenerationRequestAspectRatio
+    FrameImageImageUrl:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+        - url
+      title: FrameImageImageUrl
+    FrameImageType:
+      type: string
+      enum:
+        - image_url
+      title: FrameImageType
+    FrameImageFrameType:
+      type: string
+      enum:
+        - first_frame
+        - last_frame
+      description: Whether this image represents the first or last frame of the video
+      title: FrameImageFrameType
+    FrameImage:
+      type: object
+      properties:
+        image_url:
+          $ref: '#/components/schemas/FrameImageImageUrl'
+        type:
+          $ref: '#/components/schemas/FrameImageType'
+        frame_type:
+          $ref: '#/components/schemas/FrameImageFrameType'
+          description: Whether this image represents the first or last frame of the video
+      required:
+        - image_url
+        - type
+        - frame_type
+      title: FrameImage
     ContentPartImageImageUrl:
       type: object
       properties:
@@ -112,28 +147,6 @@ components:
       enum:
         - image_url
       title: ContentPartImageType
-    FrameImageFrameType:
-      type: string
-      enum:
-        - first_frame
-        - last_frame
-      description: Whether this image represents the first or last frame of the video
-      title: FrameImageFrameType
-    FrameImage:
-      type: object
-      properties:
-        image_url:
-          $ref: '#/components/schemas/ContentPartImageImageUrl'
-        type:
-          $ref: '#/components/schemas/ContentPartImageType'
-        frame_type:
-          $ref: '#/components/schemas/FrameImageFrameType'
-          description: Whether this image represents the first or last frame of the video
-      required:
-        - image_url
-        - type
-        - frame_type
-      title: FrameImage
     ContentPartImage:
       type: object
       properties:
@@ -593,9 +606,6 @@ components:
       properties:
         options:
           $ref: '#/components/schemas/VideoGenerationRequestProviderOptions'
-          description: >-
-            Provider-specific options keyed by provider slug. The options for
-            the matched provider are spread into the upstream request body.
       description: Provider-specific passthrough configuration
       title: VideoGenerationRequestProvider
     VideoGenerationRequestResolution:
@@ -920,10 +930,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Video Generation_createVideos_example
 import requests
 
-url = "https://openrouter.ai/api/v1/videos"
+url = "https://openrouter.ai/api/v1//videos"
 
 payload = {
     "model": "google/veo-3.1",
@@ -942,8 +952,8 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/videos';
+```javascript Video Generation_createVideos_example
+const url = 'https://openrouter.ai/api/v1//videos';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -959,7 +969,7 @@ try {
 }
 ```
 
-```go
+```go Video Generation_createVideos_example
 package main
 
 import (
@@ -971,7 +981,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/videos"
+	url := "https://openrouter.ai/api/v1//videos"
 
 	payload := strings.NewReader("{\n  \"model\": \"google/veo-3.1\",\n  \"prompt\": \"A serene mountain landscape at sunset\",\n  \"aspect_ratio\": \"16:9\",\n  \"duration\": 8,\n  \"resolution\": \"720p\"\n}")
 
@@ -991,11 +1001,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Video Generation_createVideos_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/videos")
+url = URI("https://openrouter.ai/api/v1//videos")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -1009,24 +1019,24 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Video Generation_createVideos_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/videos")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//videos")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"model\": \"google/veo-3.1\",\n  \"prompt\": \"A serene mountain landscape at sunset\",\n  \"aspect_ratio\": \"16:9\",\n  \"duration\": 8,\n  \"resolution\": \"720p\"\n}")
   .asString();
 ```
 
-```php
+```php Video Generation_createVideos_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/videos', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1//videos', [
   'body' => '{
   "model": "google/veo-3.1",
   "prompt": "A serene mountain landscape at sunset",
@@ -1043,10 +1053,10 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/videos', [
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Video Generation_createVideos_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/videos");
+var client = new RestClient("https://openrouter.ai/api/v1//videos");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -1054,7 +1064,7 @@ request.AddParameter("application/json", "{\n  \"model\": \"google/veo-3.1\",\n 
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Video Generation_createVideos_example
 import Foundation
 
 let headers = [
@@ -1071,7 +1081,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/videos")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//videos")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

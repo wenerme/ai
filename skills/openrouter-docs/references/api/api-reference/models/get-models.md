@@ -4,7 +4,7 @@
 
 # List all models and their properties
 
-GET https://openrouter.ai/api/v1/models
+GET https://openrouter.ai/api/v1//models
 
 Reference: https://openrouter.ai/docs/api/api-reference/models/get-models
 
@@ -16,7 +16,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /models:
+  //models:
     get:
       operationId: get-models
       summary: List all models and their properties
@@ -266,90 +266,42 @@ components:
         - prompt_tokens
       description: Per-request token limits
       title: PerRequestLimits
-    PublicPricingAudio:
-      type: object
-      properties: {}
-      title: PublicPricingAudio
-    PublicPricingAudioOutput:
-      type: object
-      properties: {}
-      title: PublicPricingAudioOutput
-    PublicPricingCompletion:
-      type: object
-      properties: {}
-      title: PublicPricingCompletion
-    PublicPricingImage:
-      type: object
-      properties: {}
-      title: PublicPricingImage
-    PublicPricingImageOutput:
-      type: object
-      properties: {}
-      title: PublicPricingImageOutput
-    PublicPricingImageToken:
-      type: object
-      properties: {}
-      title: PublicPricingImageToken
-    PublicPricingInputAudioCache:
-      type: object
-      properties: {}
-      title: PublicPricingInputAudioCache
-    PublicPricingInputCacheRead:
-      type: object
-      properties: {}
-      title: PublicPricingInputCacheRead
-    PublicPricingInputCacheWrite:
-      type: object
-      properties: {}
-      title: PublicPricingInputCacheWrite
-    PublicPricingInternalReasoning:
-      type: object
-      properties: {}
-      title: PublicPricingInternalReasoning
-    PublicPricingPrompt:
-      type: object
-      properties: {}
-      title: PublicPricingPrompt
-    PublicPricingRequest:
-      type: object
-      properties: {}
-      title: PublicPricingRequest
-    PublicPricingWebSearch:
-      type: object
-      properties: {}
-      title: PublicPricingWebSearch
+    BigNumberUnion:
+      type: string
+      description: Price per million prompt tokens
+      title: BigNumberUnion
     PublicPricing:
       type: object
       properties:
         audio:
-          $ref: '#/components/schemas/PublicPricingAudio'
+          $ref: '#/components/schemas/BigNumberUnion'
         audio_output:
-          $ref: '#/components/schemas/PublicPricingAudioOutput'
+          $ref: '#/components/schemas/BigNumberUnion'
         completion:
-          $ref: '#/components/schemas/PublicPricingCompletion'
+          $ref: '#/components/schemas/BigNumberUnion'
         discount:
           type: number
           format: double
         image:
-          $ref: '#/components/schemas/PublicPricingImage'
+          $ref: '#/components/schemas/BigNumberUnion'
         image_output:
-          $ref: '#/components/schemas/PublicPricingImageOutput'
+          $ref: '#/components/schemas/BigNumberUnion'
         image_token:
-          $ref: '#/components/schemas/PublicPricingImageToken'
+          $ref: '#/components/schemas/BigNumberUnion'
         input_audio_cache:
-          $ref: '#/components/schemas/PublicPricingInputAudioCache'
+          $ref: '#/components/schemas/BigNumberUnion'
         input_cache_read:
-          $ref: '#/components/schemas/PublicPricingInputCacheRead'
+          $ref: '#/components/schemas/BigNumberUnion'
         input_cache_write:
-          $ref: '#/components/schemas/PublicPricingInputCacheWrite'
+          $ref: '#/components/schemas/BigNumberUnion'
         internal_reasoning:
-          $ref: '#/components/schemas/PublicPricingInternalReasoning'
+          $ref: '#/components/schemas/BigNumberUnion'
         prompt:
-          $ref: '#/components/schemas/PublicPricingPrompt'
+          $ref: '#/components/schemas/BigNumberUnion'
         request:
-          $ref: '#/components/schemas/PublicPricingRequest'
+          $ref: '#/components/schemas/BigNumberUnion'
         web_search:
-          $ref: '#/components/schemas/PublicPricingWebSearch'
+          $ref: '#/components/schemas/BigNumberUnion'
       required:
         - completion
         - prompt
@@ -565,10 +517,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Models_getModels_example
 import requests
 
-url = "https://openrouter.ai/api/v1/models"
+url = "https://openrouter.ai/api/v1//models"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -577,8 +529,8 @@ response = requests.get(url, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/models';
+```javascript Models_getModels_example
+const url = 'https://openrouter.ai/api/v1//models';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -590,7 +542,7 @@ try {
 }
 ```
 
-```go
+```go Models_getModels_example
 package main
 
 import (
@@ -601,7 +553,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/models"
+	url := "https://openrouter.ai/api/v1//models"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -618,11 +570,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Models_getModels_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/models")
+url = URI("https://openrouter.ai/api/v1//models")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -634,22 +586,22 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Models_getModels_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/models")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//models")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
 
-```php
+```php Models_getModels_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/models', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1//models', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -658,21 +610,21 @@ $response = $client->request('GET', 'https://openrouter.ai/api/v1/models', [
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Models_getModels_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/models");
+var client = new RestClient("https://openrouter.ai/api/v1//models");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Models_getModels_example
 import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/models")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//models")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

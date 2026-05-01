@@ -65,8 +65,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Urban Time-lapse**  — City life time-lapse video 
@@ -108,8 +106,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Abstract Art**  — Abstract motion graphics 
 
 TypeScript
@@ -148,8 +144,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Food Video**  — Appetizing food footage 
 
@@ -190,12 +184,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-180)
-* [ Output ](#tab-panel-181)
+* [ Input ](#tab-panel-48)
+* [ Output ](#tab-panel-49)
 
 prompt
 

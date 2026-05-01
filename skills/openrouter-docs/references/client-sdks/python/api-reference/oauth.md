@@ -4,14 +4,10 @@
 
 # OAuth - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ OAuth authentication endpoints
 Exchange an authorization code from the PKCE flow for a user-controlled API key
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="exchangeAuthCodeForAPIKey" method="post" path="/auth/keys" */}
 
 ```python
 from openrouter import OpenRouter
@@ -78,8 +72,6 @@ with OpenRouter(
 Create an authorization code for the PKCE flow to generate a user-controlled API key
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="createAuthKeysCode" method="post" path="/auth/keys/code" */}
 
 ```python
 from openrouter import OpenRouter

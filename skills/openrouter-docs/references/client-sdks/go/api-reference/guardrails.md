@@ -4,14 +4,10 @@
 
 # Guardrails - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -38,8 +34,6 @@ Guardrails endpoints
 List all guardrails for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listGuardrails" method="get" path="/guardrails" */}
 
 ```go
 package main
@@ -108,8 +102,6 @@ func main() {
 Create a new guardrail for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="createGuardrail" method="post" path="/guardrails" */}
 
 ```go
 package main
@@ -182,8 +174,6 @@ Delete an existing guardrail. [Management key](/docs/guides/overview/auth/manage
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="deleteGuardrail" method="delete" path="/guardrails/{id}" */}
-
 ```go
 package main
 
@@ -238,8 +228,6 @@ Get a single guardrail by ID. [Management key](/docs/guides/overview/auth/manage
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="getGuardrail" method="get" path="/guardrails/{id}" */}
-
 ```go
 package main
 
@@ -293,8 +281,6 @@ func main() {
 Update an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="updateGuardrail" method="patch" path="/guardrails/{id}" */}
 
 ```go
 package main
@@ -358,8 +344,6 @@ func main() {
 List all API key assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listGuardrailKeyAssignments" method="get" path="/guardrails/{id}/assignments/keys" */}
 
 ```go
 package main
@@ -430,8 +414,6 @@ Assign multiple API keys to a specific guardrail. [Management key](/docs/guides/
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="bulkAssignKeysToGuardrail" method="post" path="/guardrails/{id}/assignments/keys" */}
-
 ```go
 package main
 
@@ -493,8 +475,6 @@ Unassign multiple API keys from a specific guardrail. [Management key](/docs/gui
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="bulkUnassignKeysFromGuardrail" method="post" path="/guardrails/{id}/assignments/keys/remove" */}
-
 ```go
 package main
 
@@ -555,8 +535,6 @@ func main() {
 List all organization member assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listGuardrailMemberAssignments" method="get" path="/guardrails/{id}/assignments/members" */}
 
 ```go
 package main
@@ -627,8 +605,6 @@ Assign multiple organization members to a specific guardrail. [Management key](/
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="bulkAssignMembersToGuardrail" method="post" path="/guardrails/{id}/assignments/members" */}
-
 ```go
 package main
 
@@ -691,8 +667,6 @@ Unassign multiple organization members from a specific guardrail. [Management ke
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="bulkUnassignMembersFromGuardrail" method="post" path="/guardrails/{id}/assignments/members/remove" */}
-
 ```go
 package main
 
@@ -754,8 +728,6 @@ func main() {
 List all API key guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listKeyAssignments" method="get" path="/guardrails/assignments/keys" */}
 
 ```go
 package main
@@ -823,8 +795,6 @@ func main() {
 List all organization member guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listMemberAssignments" method="get" path="/guardrails/assignments/members" */}
 
 ```go
 package main

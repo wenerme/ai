@@ -148,7 +148,7 @@ Since this will put the security of your server entirely dependent on your Acces
 
 ## 3\. Generate a short-lived certificate public key
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **SSH**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
 3. In the **Application** dropdown, choose the Access application that represents your SSH server.
 4. Select **Generate certificate**. A new row will appear in the short-lived certificates table with the name of your Access application.
@@ -203,8 +203,8 @@ If there are any include statements below these lines, the configurations in tho
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-4635)
-* [ CentOS/RHEL ](#tab-panel-4636)
+* [ Debian/Ubuntu ](#tab-panel-4439)
+* [ CentOS/RHEL ](#tab-panel-4440)
 
 For Debian/Ubuntu:
 

@@ -68,7 +68,7 @@ At this step, your `*.pages.dev` domain has been secured behind Access. To resec
 
 If you have a custom domain and protected your `*.pages.dev` domain behind Access, you must:
 
-1. Select **Add an application** \> **Self hosted** in [Cloudflare Zero Trust ↗](https://one.dash.cloudflare.com/).
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**. Select **Add an application** \> **Self hosted**.
 2. Input an **Application name** and select your custom domain from the _Domain_ dropdown menu.
 3. Select **Next** and configure your access rules to define who can reach the Access authentication page.
 4. Select **Add application**.

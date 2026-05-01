@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Get started
 
-You can configure the Metadata Boundary to select the region where your logs and analytics are stored via API or dashboard.
+You can configure the Customer Metadata Boundary to select the region where your logs and analytics are stored. This setting controls where Cloudflare stores traffic metadata that could identify your end users. You can configure it via API or the dashboard.
 
 Currently, this can only be applied at the account-level. If you only want the Metadata Boundary to be applied on a portion of zones beneath the same account, you will have to [move the rest of zones to a new account](https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/).
 

@@ -86,7 +86,7 @@ With [Bot Management](https://developers.cloudflare.com/bots/), the proxy can ch
 
 ```
 
-Requests with a bot score below `bot_score_threshold` are directed to the paywall. Use `except_detection_ids` to allowlist specific crawlers by [detection ID](https://developers.cloudflare.com/ai-crawl-control/reference/bots/).
+Requests with a bot score at or below `bot_score_threshold` are directed to the paywall. Use `except_detection_ids` to allowlist specific crawlers by [detection ID](https://developers.cloudflare.com/ai-crawl-control/reference/bots/).
 
 ## Deploy
 

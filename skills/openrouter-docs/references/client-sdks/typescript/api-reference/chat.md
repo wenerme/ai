@@ -4,14 +4,10 @@
 
 # Chat - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -24,8 +20,6 @@
 Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="sendChatCompletionRequest" method="post" path="/chat/completions" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

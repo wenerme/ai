@@ -35,17 +35,31 @@ TypeScript
 
 ```
 
-import { Agent } from "agents";
+import { Agent, routeAgentRequest } from "agents";
 
 
-class MyAgent extends Agent<Env, State> {
+export class MyAgent extends Agent<Env, State> {
 
   // Your agent logic
 
 }
 
 
-export default MyAgent;
+export default {
+
+  async fetch(request: Request, env: Env) {
+
+    return (
+
+      (await routeAgentRequest(request, env)) ||
+
+      new Response("Not found", { status: 404 })
+
+    );
+
+  },
+
+} satisfies ExportedHandler<Env>;
 
 
 ```
@@ -95,7 +109,7 @@ flowchart TD
 | --------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | **State**             | setState(), onStateChanged(), initialState                             | [Store and sync state](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) |
 | **Callable methods**  | @callable() decorator                                                  | [Callable methods](https://developers.cloudflare.com/agents/api-reference/callable-methods/)         |
-| **Scheduling**        | schedule(), scheduleEvery(), getSchedules(), cancelSchedule()          | [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/)             |
+| **Scheduling**        | schedule(), scheduleEvery(), getScheduleById(), listSchedules()        | [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/)             |
 | **Durable execution** | runFiber(), stash(), onFiberRecovered(), keepAlive(), keepAliveWhile() | [Durable execution](https://developers.cloudflare.com/agents/api-reference/durable-execution/)       |
 | **Queue**             | queue(), dequeue(), dequeueAll(), getQueue()                           | [Queue tasks](https://developers.cloudflare.com/agents/api-reference/queue-tasks/)                   |
 | **WebSockets**        | onConnect(), onMessage(), onClose(), broadcast()                       | [WebSockets](https://developers.cloudflare.com/agents/api-reference/websockets/)                     |
@@ -108,6 +122,7 @@ flowchart TD
 | **Context**           | getCurrentAgent()                                                      | [getCurrentAgent()](https://developers.cloudflare.com/agents/api-reference/get-current-agent/)       |
 | **Observability**     | subscribe(), diagnostics channels, Tail Workers                        | [Observability](https://developers.cloudflare.com/agents/api-reference/observability/)               |
 | **Sub-agents**        | subAgent(), abortSubAgent(), deleteSubAgent()                          | [Sub-agents](https://developers.cloudflare.com/agents/api-reference/sub-agents/)                     |
+| **Agent tools**       | runAgentTool(), clearAgentToolRuns(), hasAgentToolRun()                | [Agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/)                   |
 | **Sessions**          | Session.create(), context blocks, compaction, search                   | [Sessions](https://developers.cloudflare.com/agents/api-reference/sessions/)                         |
 | **Think**             | Think base class, workspace tools, lifecycle hooks, extensions         | [Think](https://developers.cloudflare.com/agents/api-reference/think/)                               |
 
@@ -140,12 +155,15 @@ For state that needs to sync with clients, use the [State API](https://developer
 
 ## Client-side API reference
 
-| Feature              | Methods        | Documentation                                                                                                  |
-| -------------------- | -------------- | -------------------------------------------------------------------------------------------------------------- |
-| **WebSocket client** | AgentClient    | [Client SDK](https://developers.cloudflare.com/agents/api-reference/client-sdk/)                               |
-| **HTTP client**      | agentFetch()   | [Client SDK](https://developers.cloudflare.com/agents/api-reference/client-sdk/#http-requests-with-agentfetch) |
-| **React hook**       | useAgent()     | [Client SDK](https://developers.cloudflare.com/agents/api-reference/client-sdk/#react)                         |
-| **Chat hook**        | useAgentChat() | [Client SDK](https://developers.cloudflare.com/agents/api-reference/client-sdk/)                               |
+| Feature               | Methods              | Documentation                                                                                                      |
+| --------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **WebSocket client**  | AgentClient          | [Client SDK](https://developers.cloudflare.com/agents/api-reference/client-sdk/)                                   |
+| **HTTP client**       | agentFetch()         | [Client SDK](https://developers.cloudflare.com/agents/api-reference/client-sdk/#http-requests-with-agentfetch)     |
+| **React hook**        | useAgent()           | [Client SDK](https://developers.cloudflare.com/agents/api-reference/client-sdk/#react)                             |
+| **Chat hook**         | useAgentChat()       | [Client SDK](https://developers.cloudflare.com/agents/api-reference/client-sdk/)                                   |
+| **Agent tool events** | useAgentToolEvents() | [Agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/#render-child-timelines-in-react) |
+
+Module-level helper exports include `agentTool()` from `agents/agent-tools`, which converts a Think or `AIChatAgent` subclass into an AI SDK tool definition.
 
 ### Quick example
 
@@ -191,7 +209,7 @@ TypeScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 
 class ChatAgent extends AIChatAgent {

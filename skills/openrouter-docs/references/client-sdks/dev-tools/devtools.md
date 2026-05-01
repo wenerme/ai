@@ -4,13 +4,9 @@
 
 # DevTools
 
-{/* banner:start */}
-
 <Warning>
   The DevTools SDK and CLI are currently in pre-release status. DevTools is designed for development use only and should never be deployed in production environments.
 </Warning>
-
-{/* banner:end */}
 
 The OpenRouter DevTools provide a comprehensive solution for SDK telemetry capture and visualization during development. Monitor your AI application's requests, responses, token usage, and errors in real-time with a beautiful web interface.
 

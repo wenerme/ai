@@ -25,12 +25,12 @@ The specific configuration steps can vary depending on your infrastructure and s
 1. [Create a tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#1-create-a-tunnel) to connect your data center to Cloudflare.
 2. Create a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) and assign it to the tunnel you configured in the previous step.
 
-* [ Dashboard ](#tab-panel-6713)
-* [ cli ](#tab-panel-6714)
+* [ Dashboard ](#tab-panel-6529)
+* [ cli ](#tab-panel-6530)
 
 To create a virtual network:
 
-1. Within the [Zero Trust dashboard ↗](https://one.dash.cloudflare.com), go to **Settings** \> **WARP Client** and find the **Virtual networks** setting.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Settings** \> **WARP Client** and find the **Virtual networks** setting.
 2. Select **Add new** or **Manage** \> **Create virtual network** to create virtual networks.
 3. Define your virtual network name and select **Save**.
 

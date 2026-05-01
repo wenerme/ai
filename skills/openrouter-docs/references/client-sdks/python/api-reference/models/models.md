@@ -4,14 +4,10 @@
 
 # Models - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -28,8 +24,6 @@ Model information endpoints
 List all models and their properties
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="getModels" method="get" path="/models" */}
 
 ```python
 from openrouter import OpenRouter
@@ -79,8 +73,6 @@ Get total count of available models
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="listModelsCount" method="get" path="/models/count" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -126,8 +118,6 @@ with OpenRouter(
 List models filtered by user provider preferences, [privacy settings](https://openrouter.ai/docs/guides/privacy/provider-logging), and [guardrails](https://openrouter.ai/docs/guides/features/guardrails). If requesting through `eu.openrouter.ai/api/v1/...` the results will be filtered to models that satisfy [EU in-region routing](https://openrouter.ai/docs/guides/privacy/provider-logging#enterprise-eu-in-region-routing).
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listModelsUser" method="get" path="/models/user" */}
 
 ```python
 from openrouter import OpenRouter, operations

@@ -4,7 +4,7 @@
 
 # Bulk unassign keys from a guardrail
 
-POST https://openrouter.ai/api/v1/guardrails/{id}/assignments/keys/remove
+POST https://openrouter.ai/api/v1//guardrails/{id}/assignments/keys/remove
 Content-Type: application/json
 
 Unassign multiple API keys from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /guardrails/{id}/assignments/keys/remove:
+  //guardrails/{id}/assignments/keys/remove:
     post:
       operationId: bulk-unassign-keys-from-guardrail
       summary: Bulk unassign keys from a guardrail
@@ -236,10 +236,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Guardrails_bulkUnassignKeysFromGuardrail_example
 import requests
 
-url = "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove"
+url = "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove"
 
 payload = { "key_hashes": ["c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93"] }
 headers = {
@@ -252,8 +252,8 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove';
+```javascript Guardrails_bulkUnassignKeysFromGuardrail_example
+const url = 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -269,7 +269,7 @@ try {
 }
 ```
 
-```go
+```go Guardrails_bulkUnassignKeysFromGuardrail_example
 package main
 
 import (
@@ -281,7 +281,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove"
+	url := "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove"
 
 	payload := strings.NewReader("{\n  \"key_hashes\": [\n    \"c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93\"\n  ]\n}")
 
@@ -301,11 +301,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Guardrails_bulkUnassignKeysFromGuardrail_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove")
+url = URI("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -319,24 +319,24 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Guardrails_bulkUnassignKeysFromGuardrail_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"key_hashes\": [\n    \"c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93\"\n  ]\n}")
   .asString();
 ```
 
-```php
+```php Guardrails_bulkUnassignKeysFromGuardrail_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove', [
   'body' => '{
   "key_hashes": [
     "c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93"
@@ -351,10 +351,10 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/guardrails/55
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Guardrails_bulkUnassignKeysFromGuardrail_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove");
+var client = new RestClient("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -362,7 +362,7 @@ request.AddParameter("application/json", "{\n  \"key_hashes\": [\n    \"c56454ed
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Guardrails_bulkUnassignKeysFromGuardrail_example
 import Foundation
 
 let headers = [
@@ -373,7 +373,7 @@ let parameters = ["key_hashes": ["c56454edb818d6b14bc0d61c46025f1450b0f4012d1230
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys/remove")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

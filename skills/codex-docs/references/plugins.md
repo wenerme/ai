@@ -52,8 +52,9 @@ codex
 />
 
 The CLI plugin browser groups plugins by marketplace. Use the marketplace tabs
-to switch sources, open a plugin to inspect details, and press <kbd>Space</kbd>
-on an installed plugin to toggle its enabled state.
+to switch sources, open a plugin to inspect details, install or uninstall
+marketplace entries, and press <kbd>Space</kbd> on an installed plugin to toggle
+its enabled state.
 
 ### Install and use a plugin
 

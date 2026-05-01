@@ -67,8 +67,8 @@ Load balancer pools are logical groupings of endpoints, typically organized by p
 
 Pools can be created using either the Cloudflare dashboard or the API.
 
-* [ Dashboard ](#tab-panel-6713)
-* [ API ](#tab-panel-6714)
+* [ Dashboard ](#tab-panel-6531)
+* [ API ](#tab-panel-6532)
 
 To create a pool using the dashboard, refer to the [Create a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool) documentation.
 
@@ -141,7 +141,7 @@ After completing the setup, you will be redirected to the Load Balancing dashboa
 
 In order for Cloudflare One Clients to connect to your load balancer, the load balancer's IP address must route through the WARP tunnel in your [Split Tunnel settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/).
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Device profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Device profiles**.
 2. Find the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to modify and select **Edit**.
 3. Under **Split Tunnels**, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include**.
 4. Select **Manage**. Depending on the mode:  
@@ -156,7 +156,7 @@ Cloudflare One Client traffic can now reach your private load balancer. For exam
 
 If you want your load balancer and its endpoints to be transparently accessible to users via a hostname, you can create a Gateway DNS [Override policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#override) that maps the hostname to the load balancer's IP address. This ensures that traffic destined for the hostname resolves to the correct IP.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies**\> **DNS**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy**.
 3. In **Traffic**, create an expression where the **Selector** equals `Host`, the **Operator** equals `is`, and **Value** is the hostname you wish to associate with your load balancer. For example,  
 | Selector | Operator | Value              |  

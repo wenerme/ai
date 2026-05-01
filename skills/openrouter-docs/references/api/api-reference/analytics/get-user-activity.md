@@ -4,7 +4,7 @@
 
 # Get user activity grouped by endpoint
 
-GET https://openrouter.ai/api/v1/activity
+GET https://openrouter.ai/api/v1//activity
 
 Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /activity:
+  //activity:
     get:
       operationId: get-user-activity
       summary: Get user activity grouped by endpoint
@@ -325,10 +325,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Analytics_getUserActivity_example
 import requests
 
-url = "https://openrouter.ai/api/v1/activity"
+url = "https://openrouter.ai/api/v1//activity"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -337,8 +337,8 @@ response = requests.get(url, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/activity';
+```javascript Analytics_getUserActivity_example
+const url = 'https://openrouter.ai/api/v1//activity';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -350,7 +350,7 @@ try {
 }
 ```
 
-```go
+```go Analytics_getUserActivity_example
 package main
 
 import (
@@ -361,7 +361,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/activity"
+	url := "https://openrouter.ai/api/v1//activity"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -378,11 +378,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Analytics_getUserActivity_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/activity")
+url = URI("https://openrouter.ai/api/v1//activity")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -394,22 +394,22 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Analytics_getUserActivity_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/activity")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//activity")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
 
-```php
+```php Analytics_getUserActivity_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/activity', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1//activity', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -418,21 +418,21 @@ $response = $client->request('GET', 'https://openrouter.ai/api/v1/activity', [
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Analytics_getUserActivity_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/activity");
+var client = new RestClient("https://openrouter.ai/api/v1//activity");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Analytics_getUserActivity_example
 import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/activity")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//activity")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

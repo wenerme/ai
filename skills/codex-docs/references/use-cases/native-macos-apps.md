@@ -59,7 +59,7 @@ relatedLinks:
     url: /codex/skills
 techStack:
   - need: UI framework
-    goodDefault: "[SwiftUI](https://developer.apple.com/xcode/swiftui/)"
+    goodDefault: "[SwiftUI](https://developer.apple.com/documentation/swiftui/)"
     why: A strong default for windows, sidebars, toolbars, settings, and
       scene-driven Mac app structure.
   - need: AppKit bridge

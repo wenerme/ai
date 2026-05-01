@@ -59,8 +59,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **High Resolution**  — Generate at 1080p 
@@ -97,8 +95,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Portrait Video**  — Vertical video for mobile viewing 
 
@@ -137,8 +133,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Extended Duration**  — Longer video clip 
 
 TypeScript
@@ -174,8 +168,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Low Resolution Fast Preview**  — Quick preview at 540p 
 
 TypeScript
@@ -209,12 +201,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-350)
-* [ Output ](#tab-panel-351)
+* [ Input ](#tab-panel-112)
+* [ Output ](#tab-panel-113)
 
 prompt
 

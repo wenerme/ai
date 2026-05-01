@@ -22,12 +22,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-4768)
-* [ macOS ](#tab-panel-4769)
-* [ Debian ](#tab-panel-4770)
-* [ Red Hat ](#tab-panel-4771)
-* [ Docker ](#tab-panel-4772)
-* [ Other ](#tab-panel-4773)
+* [ Windows ](#tab-panel-4572)
+* [ macOS ](#tab-panel-4573)
+* [ Debian ](#tab-panel-4574)
+* [ Red Hat ](#tab-panel-4575)
+* [ Docker ](#tab-panel-4576)
+* [ Other ](#tab-panel-4577)
 
 Run the following command:
 
@@ -155,7 +155,7 @@ sudo systemctl restart cloudflared.service
 
 **If you created a remotely-managed tunnel using the dashboard:**
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select your tunnel and select **Edit**.
 3. Select **Docker** and copy the installation command shown in the dashboard. The copied command will contain your token.
 4. Paste this command into a terminal window.

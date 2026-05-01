@@ -12,6 +12,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Bot detection engines
 
+Cloudflare uses multiple detection engines because different bot types require different detection strategies. Simple bots can be caught by pattern matching against known signatures, while sophisticated bots require machine learning and behavioral anomaly detection.
+
+The engines available to your domain depend on your plan.
+
 ## Heuristics
 
 The **Heuristics** engine processes all requests. Cloudflare conducts a number of heuristic checks to identify automated traffic, and requests are matched against a growing database of malicious fingerprints.

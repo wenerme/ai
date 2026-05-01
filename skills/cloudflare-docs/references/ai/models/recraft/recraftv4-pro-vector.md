@@ -57,7 +57,7 @@ console.log(response)
 
 ```
 
-Response200 ![Logo Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/logo-design.jpg) 
+![Logo Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/logo-design.jpg) 
 
 ## Examples
 
@@ -94,7 +94,7 @@ console.log(response)
 
 ```
 
-Response200 ![Icon Set](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/icon-set.jpg) 
+![Icon Set](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/icon-set.jpg) 
 
 **Print-Ready Vector**  — High-resolution vector for large-format print 
 
@@ -129,7 +129,7 @@ console.log(response)
 
 ```
 
-Response200 ![Print-Ready Vector](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/print-ready-vector.jpg) 
+![Print-Ready Vector](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/print-ready-vector.jpg) 
 
 **Brand Illustration**  — Vector illustration with brand colors 
 
@@ -188,12 +188,12 @@ console.log(response)
 
 ```
 
-Response200 ![Brand Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/brand-illustration.jpg) 
+![Brand Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/brand-illustration.jpg) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-342)
-* [ Output ](#tab-panel-343)
+* [ Input ](#tab-panel-104)
+* [ Output ](#tab-panel-105)
 
 prompt
 

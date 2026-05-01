@@ -24,18 +24,16 @@ When setting up internal zones, observe the following conditions:
 
 * Internal zones can contain the same [DNS record types](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/) that Cloudflare supports for public zones.
 * An internal zone can have the same name as a public zone in the same account.
-* Each internal zone can be linked to multiple [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/)[1](#user-content-fn-20).
+* Each internal zone can be linked to multiple [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/).1
 * There can be several internal zones with the same name in one account. However, two internal zones with the same name cannot be linked to the same view.
 * Internal zones are not subject to any top-level domain (TLD) restrictions. This means that an internal zone can be created if its TLD is not registered publicly (for example, `xyz.local`), if it is created on the TLD itself (`local`), or even if on the root (`.`).
 
-## Footnotes
-
-1. Logical groupings of internal DNS zones that are referenced by Gateway resolver policies to define how a specific query should be resolved. [↩](#user-content-fnref-20)
+1 Logical groupings of internal DNS zones that are referenced by Gateway resolver policies to define how a specific query should be resolved.
 
 ## Create an internal zone
 
-* [ Dashboard ](#tab-panel-5573)
-* [ API ](#tab-panel-5574)
+* [ Dashboard ](#tab-panel-5377)
+* [ API ](#tab-panel-5378)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

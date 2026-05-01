@@ -22,9 +22,6 @@ Once enabled, OpenRouter will automatically send trace data for all your API req
 
 ## Supported Destinations
 
-{/* When updating this list, sync with getPublicDestinationMetadata() in packages/broadcast/registry.ts
-    which filters by isActive && releaseStatus === 'stable'. See destination metadata in packages/broadcast/destinations/*.ts */}
-
 The following destinations are currently available:
 
 * [Arize AI](/docs/guides/features/broadcast/arize)

@@ -68,44 +68,21 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+# The Three Laws of Thermodynamics
 
-* [ Input ](#tab-panel-78)
-* [ Output ](#tab-panel-79)
+## **First Law: Conservation of Energy**
+Energy cannot be created or destroyed, only converted from one form to another. The total energy of an isolated system remains constant.
+- Also stated as: ΔU = Q - W (change in internal energy equals heat added minus work done)
 
-```
+## **Second Law: Entropy**
+The entropy of an isolated system always increases over time. Heat naturally flows from hot to cold, and processes tend toward disorder.
+- This law explains why certain processes are irreversible and why we can't have 100% efficient heat engines
 
-{
+## **Third Law: Absolute Zero**
+As temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of a perfect crystal approaches zero.
+- Practically, this means absolute zero cannot be reached through any finite number of processes
 
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "What are the three laws of thermodynamics?"
-
-        }
-
-    ],
-
-    "max_tokens": 1024
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "# The Three Laws of Thermodynamics\n\n## **First Law: Conservation of Energy**\nEnergy cannot be created or destroyed, only converted from one form to another. The total energy of an isolated system remains constant.\n- Also stated as: ΔU = Q - W (change in internal energy equals heat added minus work done)\n\n## **Second Law: Entropy**\nThe entropy of an isolated system always increases over time. Heat naturally flows from hot to cold, and processes tend toward disorder.\n- This law explains why certain processes are irreversible and why we can't have 100% efficient heat engines\n\n## **Third Law: Absolute Zero**\nAs temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of a perfect crystal approaches zero.\n- Practically, this means absolute zero cannot be reached through any finite number of processes\n\n**Note:** There's also a \"Zeroth Law\" (named later): If two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. This establishes the concept of temperature."
-
-}
-
-
-```
+**Note:** There's also a "Zeroth Law" (named later): If two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. This establishes the concept of temperature.
 
 ## Examples
 
@@ -154,48 +131,70 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+# Reading a JSON File in Python
 
-* [ Input ](#tab-panel-80)
-* [ Output ](#tab-panel-81)
+You can read a JSON file using Python's built-in `json` module. Here are the common methods:
 
+## Basic Method
+
+```python
+import json
+
+# Read JSON file
+with open('data.json', 'r') as file:
+    data = json.load(file)
+
+print(data)
 ```
 
-{
+## Complete Example
 
-    "messages": [
+```python
+import json
 
-        {
-
-            "role": "user",
-
-            "content": "How do I read a JSON file in Python?"
-
-        }
-
-    ],
-
-    "max_tokens": 1024,
-
-    "system": "You are a helpful coding assistant specializing in Python.",
-
-    "temperature": 0.3
-
-}
-
-
+# Reading JSON file
+with open('data.json', 'r') as file:
+    data = json.load(file)
+    
+# Access the data
+print(data)
+print(type(data))  # Usually dict or list
 ```
 
+## With Error Handling
+
+```python
+import json
+
+try:
+    with open('data.json', 'r') as file:
+        data = json.load(file)
+    print(data)
+except FileNotFoundError:
+    print("File not found!")
+except json.JSONDecodeError:
+    print("Invalid JSON format!")
 ```
 
-{
+## Reading JSON String (not file)
 
-    "text": "# Reading a JSON File in Python\n\nYou can read a JSON file using Python's built-in `json` module. Here are the common methods:\n\n## Basic Method\n\n```python\nimport json\n\n# Read JSON file\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n\nprint(data)\n```\n\n## Complete Example\n\n```python\nimport json\n\n# Reading JSON file\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n    \n# Access the data\nprint(data)\nprint(type(data))  # Usually dict or list\n```\n\n## With Error Handling\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\n    print(data)\nexcept FileNotFoundError:\n    print(\"File not found!\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON format!\")\n```\n\n## Reading JSON String (not file)\n\nIf you have a JSON string instead of a file:\n\n```python\nimport json\n\njson_string = '{\"name\": \"John\", \"age\": 30}'\ndata = json.loads(json_string)  # Note: loads() not load()\nprint(data)\n```\n\n## Key Points\n\n- **`json.load()`** - reads from a **file object**\n- **`json.loads()`** - reads from a **string**\n- Always use `with open()` to ensure the file is properly closed\n- JSON objects become Python dictionaries\n- JSON arrays become Python lists"
+If you have a JSON string instead of a file:
 
-}
+```python
+import json
 
-
+json_string = '{"name": "John", "age": 30}'
+data = json.loads(json_string)  # Note: loads() not load()
+print(data)
 ```
+
+## Key Points
+
+- **`json.load()`** - reads from a **file object**
+- **`json.loads()`** - reads from a **string**
+- Always use `with open()` to ensure the file is properly closed
+- JSON objects become Python dictionaries
+- JSON arrays become Python lists
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
@@ -258,60 +257,29 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+Here are some great stops between San Francisco and Los Angeles:
 
-* [ Input ](#tab-panel-84)
-* [ Output ](#tab-panel-85)
+**Scenic Route (Highway 1/PCH - about 10 hours driving):**
+- **Monterey & Carmel** - Monterey Bay Aquarium, 17-Mile Drive, charming downtown Carmel
+- **Big Sur** - McWay Falls, Bixby Bridge, stunning coastal views
+- **Hearst Castle** - Historic mansion tours in San Simeon
+- **Morro Bay** - Iconic Morro Rock and waterfront
+- **San Luis Obispo** - Downtown shopping, Madonna Inn
+- **Santa Barbara** - Spanish architecture, beaches, wine country
+- **Solvang** - Danish-themed village (short detour)
 
-```
+**Faster Route (Highway 101 - about 6 hours):**
+- **Gilroy** - Famous garlic capital
+- **San Luis Obispo** - Bubblegum Alley, Mission
+- **Pismo Beach** - Classic beach town
+- **Santa Barbara** - Mission, State Street
 
-{
+**Tips:**
+- Big Sur has limited cell service and few gas stations
+- Book Hearst Castle tickets in advance
+- Consider splitting into 2-3 days to enjoy stops
 
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "I need help planning a road trip from San Francisco to Los Angeles."
-
-        },
-
-        {
-
-            "role": "assistant",
-
-            "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
-
-        },
-
-        {
-
-            "role": "user",
-
-            "content": "Yes, what are some good places to stop?"
-
-        }
-
-    ],
-
-    "max_tokens": 1024
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "Here are some great stops between San Francisco and Los Angeles:\n\n**Scenic Route (Highway 1/PCH - about 10 hours driving):**\n- **Monterey & Carmel** - Monterey Bay Aquarium, 17-Mile Drive, charming downtown Carmel\n- **Big Sur** - McWay Falls, Bixby Bridge, stunning coastal views\n- **Hearst Castle** - Historic mansion tours in San Simeon\n- **Morro Bay** - Iconic Morro Rock and waterfront\n- **San Luis Obispo** - Downtown shopping, Madonna Inn\n- **Santa Barbara** - Spanish architecture, beaches, wine country\n- **Solvang** - Danish-themed village (short detour)\n\n**Faster Route (Highway 101 - about 6 hours):**\n- **Gilroy** - Famous garlic capital\n- **San Luis Obispo** - Bubblegum Alley, Mission\n- **Pismo Beach** - Classic beach town\n- **Santa Barbara** - Mission, State Street\n\n**Tips:**\n- Big Sur has limited cell service and few gas stations\n- Book Hearst Castle tickets in advance\n- Consider splitting into 2-3 days to enjoy stops\n\nWhat interests you most - beaches, nature, food, or historic sites? I can refine recommendations based on your preferences!"
-
-}
-
-
-```
+What interests you most - beaches, nature, food, or historic sites? I can refine recommendations based on your preferences!
 
 **Creative Writing**  — Higher temperature for creative output 
 
@@ -358,46 +326,21 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+# The Blue Feather
 
-* [ Input ](#tab-panel-82)
-* [ Output ](#tab-panel-83)
+Detective Sarah Chen had seen plenty of strange things at crime scenes over her fifteen years on the force, but she'd never seen anything quite like this.
 
-```
+The penthouse apartment was pristine—too pristine for a place where someone had allegedly been murdered just hours ago. No blood spatter. No signs of struggle. No body, for that matter, despite three separate witnesses reporting screams and a gunshot at 2:47 AM.
 
-{
+She was about to call it in as a false alarm when the morning sun shifted through the floor-to-ceiling windows, catching something wedged between the marble tiles near the balcony door.
 
-    "messages": [
+Sarah knelt down and pulled out her tweezers. The object was impossibly delicate: a single feather, no longer than her thumb, glowing an electric blue that seemed to pulse with its own light. She'd never seen a bird with plumage this color—not naturally, anyway.
 
-        {
+But it was what happened when she picked it up that made her breath catch.
 
-            "role": "user",
+The feather was warm. And getting warmer.
 
-            "content": "Write a short story opening about a detective finding an unusual clue."
-
-        }
-
-    ],
-
-    "max_tokens": 512,
-
-    "temperature": 0.8
-
-}
-
-
-```
-
-```
-
-{
-
-    "text": "# The Blue Feather\n\nDetective Sarah Chen had seen plenty of strange things at crime scenes over her fifteen years on the force, but she'd never seen anything quite like this.\n\nThe penthouse apartment was pristine—too pristine for a place where someone had allegedly been murdered just hours ago. No blood spatter. No signs of struggle. No body, for that matter, despite three separate witnesses reporting screams and a gunshot at 2:47 AM.\n\nShe was about to call it in as a false alarm when the morning sun shifted through the floor-to-ceiling windows, catching something wedged between the marble tiles near the balcony door.\n\nSarah knelt down and pulled out her tweezers. The object was impossibly delicate: a single feather, no longer than her thumb, glowing an electric blue that seemed to pulse with its own light. She'd never seen a bird with plumage this color—not naturally, anyway.\n\nBut it was what happened when she picked it up that made her breath catch.\n\nThe feather was warm. And getting warmer.\n\nThen it started to hum."
-
-}
-
-
-```
+Then it started to hum.
 
 **Streaming Response**  — Enable streaming for real-time output 
 
@@ -442,77 +385,61 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
+# Recursion Explained
 
-* [ Input ](#tab-panel-86)
-* [ Output ](#tab-panel-87)
+**Recursion** is when a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.
 
+## Key Components
+
+1. **Base case**: A condition that stops the recursion
+2. **Recursive case**: The function calling itself with a simpler input
+
+## Simple Example: Countdown
+
+```python
+def countdown(n):
+    # Base case: stop when we reach 0
+    if n <= 0:
+        print("Done!")
+    else:
+        # Recursive case
+        print(n)
+        countdown(n - 1)  # Call itself with smaller number
+
+countdown(3)
 ```
 
-{
-
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "Explain the concept of recursion with a simple example."
-
-        }
-
-    ],
-
-    "max_tokens": 1024,
-
-    "stream": true
-
-}
-
-
+**Output:**
+```
+3
+2
+1
+Done!
 ```
 
-```
+**How it works:**
+1. `countdown(3)` prints 3, then calls `countdown(2)`
+2. `countdown(2)` prints 2, then calls `countdown(1)`
+3. `countdown(1)` prints 1, then calls `countdown(0)`
+4. `countdown(0)` hits the base case and prints "Done!"
 
-{
+## Real-World Analogy
 
-    "text": [
+Think of Russian nesting dolls:
+- Opening one doll reveals a smaller doll inside
+- You keep opening dolls (recursion) until you find the smallest one (base case)
+- Then you're done!
 
-        "#",
-
-        " Recursion Explained\n\n**Recursion** is when a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.\n\n## Key Components",
-
-        "\n\n1. **Base case**: A condition that stops the recursion\n2. **Recursive case**: The function calling itself with a simpler input\n\n## Simple Example: Countdown",
-
-        "\n\n```python\ndef countdown(n):\n    # Base case: stop when we reach 0\n    if n <= 0:\n        print(\"Done!\")\n    else:\n        # Recursive case",
-
-        "\n        print(n)\n        countdown(n - 1)  # Call itself with smaller number\n\ncountdown(3",
-
-        ")\n```\n\n**Output:**\n```\n3\n2\n1\nDone!\n```\n\n**How it works:**\n1. `countdown(3)` prints 3, then calls `countdown(2)`",
-
-        "\n2. `countdown(2)` prints 2, then calls `countdown(1)`\n3. `countdown(1)` prints 1, then calls `countdown(0)`\n4. `countdown(0)` hits the base case and prints",
-
-        " \"Done!\"\n\n## Real-World Analogy\n\nThink of Russian nesting dolls:\n- Opening one",
-
-        " doll reveals a smaller doll inside\n- You keep opening dolls (recursion",
-
-        ") until you find the smallest one (base case)\n- Then you're done!\n\n## Common Use Cases",
-
-        "\n- Calculating factorials\n- Tree/graph traversal\n- Sorting algorithms (quicksort, mergesort)",
-
-        "\n- Processing nested structures"
-
-    ]
-
-}
-
-
-```
+## Common Use Cases
+- Calculating factorials
+- Tree/graph traversal
+- Sorting algorithms (quicksort, mergesort)
+- Processing nested structures
 
 ## Parameters
 
-* [ Input ](#tab-panel-88)
-* [ Output ](#tab-panel-89)
+* [ Input ](#tab-panel-18)
+* [ Output ](#tab-panel-19)
 
 ▶messages\[\]
 

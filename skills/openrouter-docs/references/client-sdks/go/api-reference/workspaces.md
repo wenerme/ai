@@ -4,14 +4,10 @@
 
 # Workspaces - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -32,8 +28,6 @@ Workspaces endpoints
 List all workspaces for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listWorkspaces" method="get" path="/workspaces" */}
 
 ```go
 package main
@@ -102,8 +96,6 @@ Create a new workspace for the authenticated user. [Management key](/docs/guides
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="createWorkspace" method="post" path="/workspaces" */}
-
 ```go
 package main
 
@@ -168,8 +160,6 @@ Delete an existing workspace. The default workspace cannot be deleted. Workspace
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="deleteWorkspace" method="delete" path="/workspaces/{id}" */}
-
 ```go
 package main
 
@@ -226,8 +216,6 @@ Get a single workspace by ID or slug. [Management key](/docs/guides/overview/aut
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="getWorkspace" method="get" path="/workspaces/{id}" */}
-
 ```go
 package main
 
@@ -281,8 +269,6 @@ func main() {
 Update an existing workspace by ID or slug. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="updateWorkspace" method="patch" path="/workspaces/{id}" */}
 
 ```go
 package main
@@ -344,8 +330,6 @@ func main() {
 Add multiple organization members to a workspace. Members are assigned the same role they hold in the organization. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="bulkAddWorkspaceMembers" method="post" path="/workspaces/{id}/members/add" */}
 
 ```go
 package main
@@ -409,8 +393,6 @@ func main() {
 Remove multiple members from a workspace. Members with active API keys in the workspace cannot be removed. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="bulkRemoveWorkspaceMembers" method="post" path="/workspaces/{id}/members/remove" */}
 
 ```go
 package main

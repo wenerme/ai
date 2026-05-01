@@ -4,7 +4,7 @@
 
 # Create a new API key
 
-POST https://openrouter.ai/api/v1/keys
+POST https://openrouter.ai/api/v1//keys
 Content-Type: application/json
 
 Create a new API key for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /keys:
+  //keys:
     post:
       operationId: create-keys
       summary: Create a new API key
@@ -438,10 +438,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python API Keys_createKeys_example
 import requests
 
-url = "https://openrouter.ai/api/v1/keys"
+url = "https://openrouter.ai/api/v1//keys"
 
 payload = {
     "name": "Analytics Service Key",
@@ -460,8 +460,8 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/keys';
+```javascript API Keys_createKeys_example
+const url = 'https://openrouter.ai/api/v1//keys';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -477,7 +477,7 @@ try {
 }
 ```
 
-```go
+```go API Keys_createKeys_example
 package main
 
 import (
@@ -489,7 +489,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/keys"
+	url := "https://openrouter.ai/api/v1//keys"
 
 	payload := strings.NewReader("{\n  \"name\": \"Analytics Service Key\",\n  \"expires_at\": \"2029-11-30T23:59:59Z\",\n  \"include_byok_in_limit\": false,\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\"\n}")
 
@@ -509,11 +509,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby API Keys_createKeys_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/keys")
+url = URI("https://openrouter.ai/api/v1//keys")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -527,24 +527,24 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java API Keys_createKeys_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/keys")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//keys")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"name\": \"Analytics Service Key\",\n  \"expires_at\": \"2029-11-30T23:59:59Z\",\n  \"include_byok_in_limit\": false,\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\"\n}")
   .asString();
 ```
 
-```php
+```php API Keys_createKeys_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/keys', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1//keys', [
   'body' => '{
   "name": "Analytics Service Key",
   "expires_at": "2029-11-30T23:59:59Z",
@@ -561,10 +561,10 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/keys', [
 echo $response->getBody();
 ```
 
-```csharp
+```csharp API Keys_createKeys_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/keys");
+var client = new RestClient("https://openrouter.ai/api/v1//keys");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -572,7 +572,7 @@ request.AddParameter("application/json", "{\n  \"name\": \"Analytics Service Key
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift API Keys_createKeys_example
 import Foundation
 
 let headers = [
@@ -589,7 +589,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/keys")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//keys")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

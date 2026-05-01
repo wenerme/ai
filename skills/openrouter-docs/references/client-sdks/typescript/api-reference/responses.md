@@ -4,14 +4,10 @@
 
 # Beta.Responses - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ beta.responses endpoints
 Creates a streaming or non-streaming response using OpenResponses API format
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="createResponses" method="post" path="/responses" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

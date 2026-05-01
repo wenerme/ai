@@ -56,14 +56,14 @@ Here are a few scenarios where virtual networks may prove useful:
 
 In this example, "private network" refers to a distinct environment (such as staging or production) that has its own overlapping IP address space (`10.128.0.1/32` staging and `10.128.0.1/32` production). If your environments use non-overlapping IPs, you do not need a separate tunnel for each. Instead, you can add multiple routes to a single tunnel.
 
-* [ Dashboard ](#tab-panel-4788)
-* [ Terraform (v5) ](#tab-panel-4789)
-* [ Locally-managed tunnels ](#tab-panel-4790)
+* [ Dashboard ](#tab-panel-4592)
+* [ Terraform (v5) ](#tab-panel-4593)
+* [ Locally-managed tunnels ](#tab-panel-4594)
 
 To route overlapping IPs over virtual networks:
 
 1. Create two unique virtual networks:  
-   1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Routes** \> **Virtual networks**.  
+   1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Routes** \> **Virtual networks**.  
    Note  
    The **Virtual networks** card will only appear if a CIDR route exists in your account. If you do not already have a route, you can navigate to **Virtual networks** using this [direct link ↗](https://dash.cloudflare.com/?to=/:account/one/networks/routes/cidr/vnets).  
    2. Select **Create virtual network**.  
@@ -204,12 +204,12 @@ You can use now the Cloudflare One Client to [switch between virtual networks](#
 
 ## Delete a virtual network
 
-* [ Dashboard ](#tab-panel-4784)
-* [ Locally-managed tunnels ](#tab-panel-4785)
+* [ Dashboard ](#tab-panel-4588)
+* [ Locally-managed tunnels ](#tab-panel-4589)
 
 To delete a virtual network:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels** and ensure that no IP routes are assigned to the virtual network you are trying to delete. If your virtual network is in use, delete the route or reassign it to a different virtual network.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels** and ensure that no IP routes are assigned to the virtual network you are trying to delete. If your virtual network is in use, delete the route or reassign it to a different virtual network.
 2. Next, go to **Networks** \> **Routes**.
 3. In **Virtual networks**, find your virtual network.
 4. Select the three-dot menu and choose **Delete**.
@@ -240,8 +240,8 @@ You can verify that the virtual network was successfully deleted by typing `clou
 
 ### Windows, macOS, and Linux
 
-* [ Version 2026.2+ ](#tab-panel-4786)
-* [ Version 2026.1 and earlier ](#tab-panel-4787)
+* [ Version 2026.2+ ](#tab-panel-4590)
+* [ Version 2026.1 and earlier ](#tab-panel-4591)
 
 1. Open the Cloudflare One Client.
 2. Go to **Home**.

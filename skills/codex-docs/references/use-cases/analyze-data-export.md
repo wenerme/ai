@@ -6,7 +6,6 @@ summary: Use Codex with a CSV, spreadsheet, dashboard export, Google Sheet, or
   the result.
 skills:
   - token: $spreadsheet
-    url: https://github.com/openai/skills/tree/main/skills/.curated/spreadsheet
     description: Inspect tabular data, run calculations, and create charts or tables.
   - token: google-sheets
     url: /codex/plugins

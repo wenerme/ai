@@ -14,15 +14,15 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 Regional Services gives you the ability to accommodate regional restrictions by choosing which subset of data centers decrypt and service HTTPS traffic.
 
-Regional Services proceeds and processes traffic within certain regions for customers who have to meet regional compliance or have preferences for maintaining regional control over their data. Examples of use cases could be a customer that needs to accommodate regional restrictions like [GDPR ↗](https://www.cloudflare.com/trust-hub/gdpr/) (General Data Protection Regulation), or customers that are bound by agreement with their own customers that include geographic restrictions on data flows or data processing.
+Regional Services receives and processes traffic within designated regions for customers who need to meet regional compliance requirements or have preferences for maintaining regional control over their data. Examples of use cases include accommodating regional restrictions like [GDPR ↗](https://www.cloudflare.com/trust-hub/gdpr/) (General Data Protection Regulation), or fulfilling contractual agreements with customers that include geographic restrictions on data flows or data processing.
 
-With Regional Services, TLS is only terminated inside the configured region. For example, if a hostname is configured to regionalize to the European Union (EU), any HTTPS request from the United States (US) will route to the EU.
+With Regional Services, TLS termination — the point at which encrypted HTTPS traffic is decrypted so Cloudflare can inspect and apply your security rules — only occurs inside the configured region. For example, if a hostname is configured to regionalize to the European Union (EU), any HTTPS request from the United States (US) will be forwarded in encrypted form to an EU data center before being decrypted.
 
 ## Global traffic management
 
-Regional Services globally ingests traffic, implementing [L3/L4 DDoS mitigations](https://developers.cloudflare.com/ddos-protection/about/attack-coverage/). Meanwhile, security, performance, and reliability functions are serviced at only in-region Cloudflare locations.
+Regional Services accepts traffic at any Cloudflare data center worldwide and applies [L3/L4 DDoS mitigations](https://developers.cloudflare.com/ddos-protection/about/attack-coverage/) — network-layer and transport-layer protections that block volumetric attacks without needing to decrypt traffic content. Meanwhile, security, performance, and reliability functions that require access to decrypted traffic are applied only at in-region Cloudflare locations.
 
-Regional Services ensures that all edge application services operate within the selected region. This includes (the following list is not exhaustive):
+Regional Services ensures that all of the following application-layer services (among others) operate within the selected region:
 
 * Storing and retrieving content from Cache.
 * Blocking malicious HTTP payloads with the Web Application Firewall (WAF).

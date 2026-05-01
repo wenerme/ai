@@ -59,7 +59,7 @@ console.log(response)
 
 ```
 
-Response200 ![Cozy Coffee Shop](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/cozy-coffee-shop.png) 
+![Cozy Coffee Shop](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/cozy-coffee-shop.png) 
 
 ## Examples
 
@@ -96,7 +96,7 @@ console.log(response)
 
 ```
 
-Response200 ![Vintage Tokyo Poster](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/vintage-tokyo-poster.png) 
+![Vintage Tokyo Poster](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/vintage-tokyo-poster.png) 
 
 **Dewdrops Macro**  — Photorealistic macro photography 
 
@@ -131,7 +131,7 @@ console.log(response)
 
 ```
 
-Response200 ![Dewdrops Macro](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/dewdrops-macro.png) 
+![Dewdrops Macro](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/dewdrops-macro.png) 
 
 **Pixel Art Marketplace**  — Isometric pixel art scene 
 
@@ -166,7 +166,7 @@ console.log(response)
 
 ```
 
-Response200 ![Pixel Art Marketplace](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/pixel-art-marketplace.png) 
+![Pixel Art Marketplace](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/pixel-art-marketplace.png) 
 
 **High Resolution Landscape**  — Generate a high-resolution 4K landscape image 
 
@@ -205,12 +205,12 @@ console.log(response)
 
 ```
 
-Response200 ![High Resolution Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/high-resolution-landscape.png) 
+![High Resolution Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/high-resolution-landscape.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-170)
-* [ Output ](#tab-panel-171)
+* [ Input ](#tab-panel-38)
+* [ Output ](#tab-panel-39)
 
 prompt
 

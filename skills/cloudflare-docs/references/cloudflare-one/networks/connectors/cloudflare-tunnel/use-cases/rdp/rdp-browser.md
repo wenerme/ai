@@ -33,7 +33,7 @@ Browser-based RDP can be used in conjunction with [the Cloudflare One Client](ht
 
 ## 1\. Connect the server to Cloudflare
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
 1. In the **CIDR** tab for the tunnel, enter the IP or CIDR address of your server. Typically this would be a private IP, but public IPs are also allowed.
 
@@ -43,11 +43,11 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-4803)
-* [ API ](#tab-panel-4804)
-* [ Terraform ](#tab-panel-4805)
+* [ Dashboard ](#tab-panel-4607)
+* [ API ](#tab-panel-4608)
+* [ Terraform ](#tab-panel-4609)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
 3. In **Target hostname**, enter a user-friendly name for the target. We recommend using the server hostname, for example `production-server`. The target hostname does not need to be unique and can be reused for multiple targets. Hostnames are used to define the targets secured by an Access application; they are not used for DNS address resolution.  
 Hostname format restrictions  
@@ -170,7 +170,7 @@ The DNS record does not need to point to an active destination IP address or hos
 
 ## 4\. Create an Access application
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Add an application**.
 3. Select **Self-hosted**.
 4. Enter any name for the application.
@@ -214,7 +214,7 @@ Ensure that users match an Allow rule in your [App Launcher policies](https://de
 
 By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:  
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:  
 | Selector                     | Operator | Value     | Action |  
 | ---------------------------- | -------- | --------- | ------ |  
 | Access Infrastructure Target | is       | _Present_ | Allow  |
@@ -275,11 +275,11 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-4800)
-* [ API ](#tab-panel-4801)
-* [ Terraform ](#tab-panel-4802)
+* [ Dashboard ](#tab-panel-4604)
+* [ API ](#tab-panel-4605)
+* [ Terraform ](#tab-panel-4606)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.
 3. Select the **Policies** tab.
 4. Create a new policy or select an existing policy to edit.

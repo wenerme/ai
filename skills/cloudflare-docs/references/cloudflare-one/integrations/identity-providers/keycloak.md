@@ -38,7 +38,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 7. Set the built-in protocol mapper for the `email` property.  
 ![Protocol Mapper with email property set](https://developers.cloudflare.com/_astro/protocol-mapper.CZf2t0Ex_o71H2.webp)  
 Next, you will need to integrate with Cloudflare Access.
-8. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Identity providers**.
+8. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 9. Under **Your identity providers**, select **Add new identity provider**.
 10. Choose **SAML** on the next page.  
 You will need to input the Keycloak details manually. The examples below should be replaced with the specific domains in use with Keycloak and Cloudflare Access.  

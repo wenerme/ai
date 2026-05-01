@@ -338,8 +338,8 @@ on or off state in `~/.codex/config.toml`.
 
 Every plugin has a manifest at `.codex-plugin/plugin.json`. It can also include
 a `skills/` directory, an `.app.json` file that points at one or more apps or
-connectors, an `.mcp.json` file that configures MCP servers, and assets used to
-present the plugin across supported surfaces.
+connectors, an `.mcp.json` file that configures MCP servers, lifecycle config,
+and assets used to present the plugin across supported surfaces.
 
 <FileTree
   class="mt-4"
@@ -383,6 +383,16 @@ present the plugin across supported surfaces.
           comment: "Optional: MCP server configuration",
         },
         {
+          name: "hooks/",
+          open: true,
+          children: [
+            {
+              name: "hooks.json",
+              comment: "Optional: lifecycle configuration",
+            },
+          ],
+        },
+        {
           name: "assets/",
           comment: "Optional: icons, logos, screenshots",
         },
@@ -392,7 +402,7 @@ present the plugin across supported surfaces.
 />
 
 Only `plugin.json` belongs in `.codex-plugin/`. Keep `skills/`, `assets/`,
-`.mcp.json`, and `.app.json` at the plugin root.
+`.mcp.json`, `.app.json`, and lifecycle config files at the plugin root.
 
 Published plugins typically use a richer manifest than the minimal example that
 appears in quick-start scaffolds. The manifest has three jobs:
@@ -421,6 +431,7 @@ Here's a complete manifest example:
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "apps": "./.app.json",
+  "hooks": "./hooks/hooks.json",
   "interface": {
     "displayName": "My Plugin",
     "shortDescription": "Reusable skills and apps",
@@ -454,8 +465,8 @@ components:
 - `name`, `version`, and `description` identify the plugin.
 - `author`, `homepage`, `repository`, `license`, and `keywords` provide
   publisher and discovery metadata.
-- `skills`, `mcpServers`, and `apps` point to bundled components relative to
-  the plugin root.
+- `skills`, `mcpServers`, `apps`, and `hooks` point to bundled components
+  relative to the plugin root.
 - `interface` controls how install surfaces present the plugin.
 
 Use the `interface` object for install-surface metadata:
@@ -474,8 +485,44 @@ Use the `interface` object for install-surface metadata:
 - Keep manifest paths relative to the plugin root and start them with `./`.
 - Store visual assets such as `composerIcon`, `logo`, and `screenshots` under
   `./assets/` when possible.
-- Use `skills` for bundled skill folders, `apps` for `.app.json`, and
-  `mcpServers` for `.mcp.json`.
+- Use `skills` for bundled skill folders, `apps` for `.app.json`,
+  `mcpServers` for `.mcp.json`, and `hooks` for lifecycle config.
+- If you omit `hooks` and the plugin includes `./hooks/hooks.json`, Codex loads
+  that default lifecycle config automatically.
+
+### Bundled MCP servers and lifecycle config
+
+`mcpServers` can point to an `.mcp.json` file that contains either a direct
+server map or a wrapped `mcp_servers` object.
+
+Direct server map:
+
+```json
+{
+  "docs": {
+    "command": "docs-mcp",
+    "args": ["--stdio"]
+  }
+}
+```
+
+Wrapped server map:
+
+```json
+{
+  "mcp_servers": {
+    "docs": {
+      "command": "docs-mcp",
+      "args": ["--stdio"]
+    }
+  }
+}
+```
+
+`hooks` can point to one lifecycle JSON file, an array of lifecycle JSON files,
+an inline lifecycle object, or an array of inline lifecycle objects. File paths
+must follow the same `./`-prefixed plugin-root path rules as other manifest
+paths. If you omit the manifest field, Codex still checks `./hooks/hooks.json`.
 
 ### Publish official public plugins
 

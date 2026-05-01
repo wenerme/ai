@@ -167,9 +167,10 @@ The common approval policies are:
 - `never`: Codex doesn't stop for approval prompts.
 
 Full access means using `sandbox_mode = "danger-full-access"` together with
-`approval_policy = "never"`. By contrast, `--full-auto` is the lower-risk local
-automation preset: `sandbox_mode = "workspace-write"` and
-`approval_policy = "on-request"`.
+`approval_policy = "never"`. By contrast, the lower-risk local automation
+preset is `sandbox_mode = "workspace-write"` together with
+`approval_policy = "on-request"`, or the matching CLI flags
+`--sandbox workspace-write --ask-for-approval on-request`.
 
 If you need Codex to work across more than one directory, writable roots let
 you extend the places it can modify without removing the sandbox entirely. If

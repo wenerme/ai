@@ -160,8 +160,8 @@ Terminal window
 touch providers.tf  
 ```
 2. Add the following providers to `providers.tf`. The `random` provider is used to generate a tunnel secret.  
-   * [ Terraform (v5) ](#tab-panel-4762)  
-   * [ Terraform (v4) ](#tab-panel-4763)  
+   * [ Terraform (v5) ](#tab-panel-4566)  
+   * [ Terraform (v4) ](#tab-panel-4567)  
 ```  
 terraform {  
   required_providers {  
@@ -222,8 +222,8 @@ Terminal window
 touch Cloudflare-config.tf  
 ```
 2. Add the following resources to `Cloudflare-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-4758)  
-   * [ Terraform (v4) ](#tab-panel-4759)  
+   * [ Terraform (v5) ](#tab-panel-4562)  
+   * [ Terraform (v4) ](#tab-panel-4563)  
 ```  
 # Creates a new remotely-managed tunnel for the GCP VM.  
 resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {  
@@ -371,8 +371,8 @@ Terminal window
 touch GCP-config.tf  
 ```
 2. Add the following content to `GCP-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-4760)  
-   * [ Terraform (v4) ](#tab-panel-4761)  
+   * [ Terraform (v5) ](#tab-panel-4564)  
+   * [ Terraform (v4) ](#tab-panel-4565)  
 ```  
 # OS the server will use  
 data "google_compute_image" "image" {  
@@ -506,7 +506,7 @@ Terminal window
 terraform apply  
 ```
 
-It may take several minutes for the GCP instance and tunnel to come online. You can view your new tunnel, Access application, and Access policy in [Cloudflare One ↗](https://one.dash.cloudflare.com). The new DNS records are available in the [Cloudflare dashboard](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
+It may take several minutes for the GCP instance and tunnel to come online. You can view your new tunnel in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Networks** \> **Connectors**, and your Access application and policy under **Zero Trust** \> **Access controls** \> **Applications**. The new DNS records are available on the [**DNS Records** page](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
 Remove Terraform resources
 

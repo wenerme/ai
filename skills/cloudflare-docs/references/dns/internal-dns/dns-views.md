@@ -25,18 +25,16 @@ Refer to the sections below for details on how to manage your DNS views, or cons
 When setting up DNS views, observe the following conditions:
 
 * DNS views can be empty, with no [internal zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/) linked to them.
-* A DNS view cannot contain public DNS zones [1](#user-content-fn-1).
+* A DNS view cannot contain public DNS zones.1
 * Each internal DNS zone name must be unique within a given DNS view.
 * Each DNS view name must be unique within a given Cloudflare account.
 
-## Footnotes
-
-1. DNS zones that contain public DNS records and are accessible by public resolvers. [↩](#user-content-fnref-1)
+1 DNS zones that contain public DNS records and are accessible by public resolvers.
 
 ## Create a view
 
-* [ Dashboard ](#tab-panel-5561)
-* [ API ](#tab-panel-5562)
+* [ Dashboard ](#tab-panel-5365)
+* [ API ](#tab-panel-5366)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -54,8 +52,8 @@ DNS views can be deleted even if they still have internal zones linked to them. 
 
 It is also possible to delete a DNS view that is being referenced by a Gateway resolver policy. In this case, queries matching the policy will return SERVFAIL.
 
-* [ Dashboard ](#tab-panel-5559)
-* [ API ](#tab-panel-5560)
+* [ Dashboard ](#tab-panel-5363)
+* [ API ](#tab-panel-5364)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

@@ -56,29 +56,6 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-290)
-* [ Output ](#tab-panel-291)
-
-```
-
-{
-
-    "input": "What are the three laws of thermodynamics?"
-
-}
-
-
-```
-
-```
-
-{}
-
-
-```
-
 ## Examples
 
 **With Instructions**  — Using instructions to set context 
@@ -108,31 +85,6 @@ const response = await env.AI.run(
 )
 
 console.log(response)
-
-
-```
-
-Input / Output JSON 
-
-* [ Input ](#tab-panel-292)
-* [ Output ](#tab-panel-293)
-
-```
-
-{
-
-    "input": "How do I read a JSON file in Python?",
-
-    "instructions": "You are a helpful coding assistant specializing in Python."
-
-}
-
-
-```
-
-```
-
-{}
 
 
 ```
@@ -198,57 +150,6 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-298)
-* [ Output ](#tab-panel-299)
-
-```
-
-{
-
-    "input": [
-
-        {
-
-            "role": "user",
-
-            "content": "I need help planning a road trip from San Francisco to Los Angeles."
-
-        },
-
-        {
-
-            "role": "assistant",
-
-            "content": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
-
-        },
-
-        {
-
-            "role": "user",
-
-            "content": "Yes, what are some good places to stop?"
-
-        }
-
-    ],
-
-    "max_output_tokens": 150
-
-}
-
-
-```
-
-```
-
-{}
-
-
-```
-
 **Temperature Control**  — Using temperature for creative responses 
 
 TypeScript
@@ -276,31 +177,6 @@ const response = await env.AI.run(
 )
 
 console.log(response)
-
-
-```
-
-Input / Output JSON 
-
-* [ Input ](#tab-panel-294)
-* [ Output ](#tab-panel-295)
-
-```
-
-{
-
-    "input": "Write a haiku about artificial intelligence",
-
-    "temperature": 1
-
-}
-
-
-```
-
-```
-
-{}
 
 
 ```
@@ -342,39 +218,10 @@ console.log(response)
 
 ```
 
-Input / Output JSON 
-
-* [ Input ](#tab-panel-296)
-* [ Output ](#tab-panel-297)
-
-```
-
-{
-
-    "input": "Solve this problem step by step: A train leaves Chicago at 60mph heading east. Another train leaves New York at 80mph heading west. They are 900 miles apart. When do they meet?",
-
-    "reasoning": {
-
-        "effort": "medium"
-
-    }
-
-}
-
-
-```
-
-```
-
-{}
-
-
-```
-
 ## Parameters
 
-* [ Input ](#tab-panel-300)
-* [ Output ](#tab-panel-301)
+* [ Input ](#tab-panel-82)
+* [ Output ](#tab-panel-83)
 
 ▶input
 

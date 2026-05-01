@@ -50,8 +50,8 @@ API token configuration
 
 ## 1\. Set up your internal DNS zone
 
-* [ Dashboard ](#tab-panel-5567)
-* [ API ](#tab-panel-5568)
+* [ Dashboard ](#tab-panel-5371)
+* [ API ](#tab-panel-5372)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -62,13 +62,11 @@ Internal zone configuration conditions
 
 * Internal zones can contain the same [DNS record types](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/) that Cloudflare supports for public zones.
 * An internal zone can have the same name as a public zone in the same account.
-* Each internal zone can be linked to multiple [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/)[1](#user-content-fn-20).
+* Each internal zone can be linked to multiple [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/).1
 * There can be several internal zones with the same name in one account. However, two internal zones with the same name cannot be linked to the same view.
 * Internal zones are not subject to any top-level domain (TLD) restrictions. This means that an internal zone can be created if its TLD is not registered publicly (for example, `xyz.local`), if it is created on the TLD itself (`local`), or even if on the root (`.`).
 
-## Footnotes
-
-1. Logical groupings of internal DNS zones that are referenced by Gateway resolver policies to define how a specific query should be resolved. [↩](#user-content-fnref-20)
+1 Logical groupings of internal DNS zones that are referenced by Gateway resolver policies to define how a specific query should be resolved.
 
 1. Add DNS records to your internal zone using your preferred option:
 * [Import](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/) a formatted BIND file.
@@ -85,13 +83,11 @@ Internal zone configuration conditions
 
 * Internal zones can contain the same [DNS record types](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/) that Cloudflare supports for public zones.
 * An internal zone can have the same name as a public zone in the same account.
-* Each internal zone can be linked to multiple [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/)[1](#user-content-fn-20).
+* Each internal zone can be linked to multiple [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/).1
 * There can be several internal zones with the same name in one account. However, two internal zones with the same name cannot be linked to the same view.
 * Internal zones are not subject to any top-level domain (TLD) restrictions. This means that an internal zone can be created if its TLD is not registered publicly (for example, `xyz.local`), if it is created on the TLD itself (`local`), or even if on the root (`.`).
 
-## Footnotes
-
-1. Logical groupings of internal DNS zones that are referenced by Gateway resolver policies to define how a specific query should be resolved. [↩](#user-content-fnref-20)
+1 Logical groupings of internal DNS zones that are referenced by Gateway resolver policies to define how a specific query should be resolved.
 
 Example
 
@@ -139,8 +135,8 @@ During an [internal DNS query resolution](https://developers.cloudflare.com/dns/
 
 For details, refer to [reference zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/).
 
-* [ Dashboard ](#tab-panel-5569)
-* [ API ](#tab-panel-5570)
+* [ Dashboard ](#tab-panel-5373)
+* [ API ](#tab-panel-5374)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -186,8 +182,8 @@ curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f
 
 Since the resolver policy will require a [DNS view](https://developers.cloudflare.com/dns/internal-dns/dns-views/), you must have at least one view to be able to route requests to internal zones.
 
-* [ Dashboard ](#tab-panel-5565)
-* [ API ](#tab-panel-5566)
+* [ Dashboard ](#tab-panel-5369)
+* [ API ](#tab-panel-5370)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -198,13 +194,11 @@ Since the resolver policy will require a [DNS view](https://developers.cloudflar
 DNS view configuration conditions
 
 * DNS views can be empty, with no [internal zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/) linked to them.
-* A DNS view cannot contain public DNS zones [1](#user-content-fn-1).
+* A DNS view cannot contain public DNS zones.1
 * Each internal DNS zone name must be unique within a given DNS view.
 * Each DNS view name must be unique within a given Cloudflare account.
 
-## Footnotes
-
-1. DNS zones that contain public DNS records and are accessible by public resolvers. [↩](#user-content-fnref-1)
+1 DNS zones that contain public DNS records and are accessible by public resolvers.
 
 1. Select **Manage zones** to add zones to your view. Select the internal zones that should be used to resolve queries sent by Gateway resolver to this view.
 2. Choose **Save** to confirm.
@@ -214,13 +208,11 @@ DNS view configuration conditions
 DNS view configuration conditions
 
 * DNS views can be empty, with no [internal zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/) linked to them.
-* A DNS view cannot contain public DNS zones [1](#user-content-fn-1).
+* A DNS view cannot contain public DNS zones.1
 * Each internal DNS zone name must be unique within a given DNS view.
 * Each DNS view name must be unique within a given Cloudflare account.
 
-## Footnotes
-
-1. DNS zones that contain public DNS records and are accessible by public resolvers. [↩](#user-content-fnref-1)
+1 DNS zones that contain public DNS records and are accessible by public resolvers.
 
 ## 3\. Configure Gateway policies
 
@@ -230,8 +222,8 @@ The Gateway configuration must exist within the same Cloudflare account where th
 
 Besides selecting an internal DNS view when setting up your resolver policies, you can also enable the **fallback through public DNS** option.
 
-* [ Dashboard ](#tab-panel-5563)
-* [ API ](#tab-panel-5564)
+* [ Dashboard ](#tab-panel-5367)
+* [ API ](#tab-panel-5368)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies** \> **Resolver policies**.
 2. Select **Add a policy** and enter a name and description.

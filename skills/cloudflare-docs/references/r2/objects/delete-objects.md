@@ -1,6 +1,6 @@
 ---
 title: Delete objects
-description: Delete objects from R2 using the dashboard, Workers API, S3 API, or CLI tools.
+description: Delete individual objects or folders from an R2 bucket.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -12,16 +12,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Delete objects
 
-You can delete objects from R2 using the dashboard, Workers API, S3 API, or command-line tools.
+You can delete objects from R2 using the dashboard, Workers API, S3 API, or command-line tools. To empty or delete an entire bucket, refer to [Delete buckets](https://developers.cloudflare.com/r2/buckets/delete-buckets/).
 
 ## Delete via dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
-2. Locate and select your bucket.
-3. Locate the object you want to delete. You can select multiple objects to delete at one time.
-4. Select your objects and select **Delete**.
-5. Confirm your choice by selecting **Delete**.
+2. Select your bucket.
+3. (Optional) Select the **View prefixes as directories** checkbox to view prefixes grouped as [folders](https://developers.cloudflare.com/r2/objects/#prefixes-and-folders).
+4. Select the objects or folders you want to delete. You can select a mix of both in the same operation.
+5. Select **Delete**.
+6. Confirm your choice in the dialog that appears.
+
+To delete all objects in a bucket at once, refer to [Empty a bucket](https://developers.cloudflare.com/r2/buckets/delete-buckets/#empty-a-bucket).
 
 ## Delete via Workers API
 
@@ -52,8 +55,8 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to delete objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-7146)
-* [ Python ](#tab-panel-7147)
+* [ JavaScript ](#tab-panel-6964)
+* [ Python ](#tab-panel-6965)
 
 TypeScript
 
@@ -147,6 +150,14 @@ wrangler r2 object delete test-bucket/image.png
 
 
 ```
+
+## Related resources
+
+[ Delete buckets ](https://developers.cloudflare.com/r2/buckets/delete-buckets/) Empty all objects from a bucket and permanently delete it. 
+
+[ Bucket locks ](https://developers.cloudflare.com/r2/buckets/bucket-locks/) Protect objects from accidental deletion with retention policies. 
+
+[ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Automatically expire objects after a specified period. 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/objects/","name":"Objects"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/objects/delete-objects/","name":"Delete objects"}}]}

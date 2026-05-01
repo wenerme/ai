@@ -65,7 +65,7 @@ https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 
 ### 2\. Add Google Workspace to Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Select **Add new identity provider** and select **Google Workspace**.
 3. Input the Client ID (**App ID** in the Cloudflare dashboard) and Client Secret fields generated previously. Additionally, enter the domain of your Google Workspace account.
 4. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.

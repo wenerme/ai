@@ -4,14 +4,10 @@
 
 # Providers - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Provider information endpoints
 List all providers
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listProviders" method="get" path="/providers" */}
 
 ```go
 package main

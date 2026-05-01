@@ -4,7 +4,7 @@
 
 # Create a chat completion
 
-POST https://openrouter.ai/api/v1/chat/completions
+POST https://openrouter.ai/api/v1//chat/completions
 Content-Type: application/json
 
 Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /chat/completions:
+  //chat/completions:
     post:
       operationId: send-chat-completion-request
       summary: Create a chat completion
@@ -123,20 +123,24 @@ components:
         - 5m
         - 1h
       title: AnthropicCacheControlTtl
-    AnthropicCacheControlDirectiveType:
+    ChatRequestCacheControlType:
       type: string
       enum:
         - ephemeral
-      title: AnthropicCacheControlDirectiveType
+      title: ChatRequestCacheControlType
     ChatRequestCacheControl:
       type: object
       properties:
         ttl:
           $ref: '#/components/schemas/AnthropicCacheControlTtl'
         type:
-          $ref: '#/components/schemas/AnthropicCacheControlDirectiveType'
+          $ref: '#/components/schemas/ChatRequestCacheControlType'
       required:
         - type
+      description: >-
+        Enable automatic prompt caching. When set, the system automatically
+        applies cache breakpoints to the last cacheable block in the request.
+        Currently supported for Anthropic Claude models.
       title: ChatRequestCacheControl
     ChatDebugOptions:
       type: object
@@ -157,285 +161,6 @@ components:
           items:
             description: Any type
       title: ImageConfig
-    ChatContentCacheControl:
-      type: object
-      properties:
-        ttl:
-          $ref: '#/components/schemas/AnthropicCacheControlTtl'
-        type:
-          $ref: '#/components/schemas/AnthropicCacheControlDirectiveType'
-      required:
-        - type
-      description: Cache control for the content part
-      title: ChatContentCacheControl
-    ChatContentTextType:
-      type: string
-      enum:
-        - text
-      title: ChatContentTextType
-    ChatContentText:
-      type: object
-      properties:
-        cache_control:
-          $ref: '#/components/schemas/ChatContentCacheControl'
-        text:
-          type: string
-        type:
-          $ref: '#/components/schemas/ChatContentTextType'
-      required:
-        - text
-        - type
-      description: Text content part
-      title: ChatContentText
-    ChatSystemMessageContent1:
-      type: array
-      items:
-        $ref: '#/components/schemas/ChatContentText'
-      title: ChatSystemMessageContent1
-    ChatSystemMessageContent:
-      oneOf:
-        - type: string
-        - $ref: '#/components/schemas/ChatSystemMessageContent1'
-      description: System message content
-      title: ChatSystemMessageContent
-    ChatSystemMessageRole:
-      type: string
-      enum:
-        - system
-      title: ChatSystemMessageRole
-    ChatSystemMessage:
-      type: object
-      properties:
-        content:
-          $ref: '#/components/schemas/ChatSystemMessageContent'
-          description: System message content
-        name:
-          type: string
-          description: Optional name for the system message
-        role:
-          $ref: '#/components/schemas/ChatSystemMessageRole'
-      required:
-        - content
-        - role
-      description: System message for setting behavior
-      title: ChatSystemMessage
-    ChatContentImageImageUrlDetail:
-      type: string
-      enum:
-        - auto
-        - low
-        - high
-      description: Image detail level for vision models
-      title: ChatContentImageImageUrlDetail
-    ChatContentImageImageUrl:
-      type: object
-      properties:
-        detail:
-          $ref: '#/components/schemas/ChatContentImageImageUrlDetail'
-          description: Image detail level for vision models
-        url:
-          type: string
-          description: 'URL of the image (data: URLs supported)'
-      required:
-        - url
-      title: ChatContentImageImageUrl
-    ChatContentImageType:
-      type: string
-      enum:
-        - image_url
-      title: ChatContentImageType
-    ChatContentImage:
-      type: object
-      properties:
-        image_url:
-          $ref: '#/components/schemas/ChatContentImageImageUrl'
-        type:
-          $ref: '#/components/schemas/ChatContentImageType'
-      required:
-        - image_url
-        - type
-      description: Image content part for vision models
-      title: ChatContentImage
-    ChatContentAudioInputAudio:
-      type: object
-      properties:
-        data:
-          type: string
-          description: Base64 encoded audio data
-        format:
-          type: string
-          description: >-
-            Audio format (e.g., wav, mp3, flac, m4a, ogg, aiff, aac, pcm16,
-            pcm24). Supported formats vary by provider.
-      required:
-        - data
-        - format
-      title: ChatContentAudioInputAudio
-    ChatContentAudioType:
-      type: string
-      enum:
-        - input_audio
-      title: ChatContentAudioType
-    ChatContentAudio:
-      type: object
-      properties:
-        input_audio:
-          $ref: '#/components/schemas/ChatContentAudioInputAudio'
-        type:
-          $ref: '#/components/schemas/ChatContentAudioType'
-      required:
-        - input_audio
-        - type
-      description: Audio input content part. Supported audio formats vary by provider.
-      title: ChatContentAudio
-    LegacyChatContentVideoType:
-      type: string
-      enum:
-        - input_video
-      title: LegacyChatContentVideoType
-    ChatContentVideoInput:
-      type: object
-      properties:
-        url:
-          type: string
-          description: 'URL of the video (data: URLs supported)'
-      required:
-        - url
-      description: Video input object
-      title: ChatContentVideoInput
-    Legacy_ChatContentVideo:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/LegacyChatContentVideoType'
-        video_url:
-          $ref: '#/components/schemas/ChatContentVideoInput'
-      required:
-        - type
-        - video_url
-      description: Video input content part (legacy format - deprecated)
-      title: Legacy_ChatContentVideo
-    ChatContentVideoType:
-      type: string
-      enum:
-        - video_url
-      title: ChatContentVideoType
-    ChatContentVideo:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ChatContentVideoType'
-        video_url:
-          $ref: '#/components/schemas/ChatContentVideoInput'
-      required:
-        - type
-        - video_url
-      description: Video input content part
-      title: ChatContentVideo
-    ChatContentFileFile:
-      type: object
-      properties:
-        file_data:
-          type: string
-          description: File content as base64 data URL or URL
-        file_id:
-          type: string
-          description: File ID for previously uploaded files
-        filename:
-          type: string
-          description: Original filename
-      title: ChatContentFileFile
-    ChatContentFileType:
-      type: string
-      enum:
-        - file
-      title: ChatContentFileType
-    ChatContentFile:
-      type: object
-      properties:
-        file:
-          $ref: '#/components/schemas/ChatContentFileFile'
-        type:
-          $ref: '#/components/schemas/ChatContentFileType'
-      required:
-        - file
-        - type
-      description: File content part for document processing
-      title: ChatContentFile
-    ChatContentItems:
-      oneOf:
-        - $ref: '#/components/schemas/ChatContentText'
-        - $ref: '#/components/schemas/ChatContentImage'
-        - $ref: '#/components/schemas/ChatContentAudio'
-        - $ref: '#/components/schemas/Legacy_ChatContentVideo'
-        - $ref: '#/components/schemas/ChatContentVideo'
-        - $ref: '#/components/schemas/ChatContentFile'
-      description: Content part for chat completion messages
-      title: ChatContentItems
-    ChatUserMessageContent1:
-      type: array
-      items:
-        $ref: '#/components/schemas/ChatContentItems'
-      title: ChatUserMessageContent1
-    ChatUserMessageContent:
-      oneOf:
-        - type: string
-        - $ref: '#/components/schemas/ChatUserMessageContent1'
-      description: User message content
-      title: ChatUserMessageContent
-    ChatUserMessageRole:
-      type: string
-      enum:
-        - user
-      title: ChatUserMessageRole
-    ChatUserMessage:
-      type: object
-      properties:
-        content:
-          $ref: '#/components/schemas/ChatUserMessageContent'
-          description: User message content
-        name:
-          type: string
-          description: Optional name for the user
-        role:
-          $ref: '#/components/schemas/ChatUserMessageRole'
-      required:
-        - content
-        - role
-      description: User message
-      title: ChatUserMessage
-    ChatDeveloperMessageContent1:
-      type: array
-      items:
-        $ref: '#/components/schemas/ChatContentText'
-      title: ChatDeveloperMessageContent1
-    ChatDeveloperMessageContent:
-      oneOf:
-        - type: string
-        - $ref: '#/components/schemas/ChatDeveloperMessageContent1'
-      description: Developer message content
-      title: ChatDeveloperMessageContent
-    ChatDeveloperMessageRole:
-      type: string
-      enum:
-        - developer
-      title: ChatDeveloperMessageRole
-    ChatDeveloperMessage:
-      type: object
-      properties:
-        content:
-          $ref: '#/components/schemas/ChatDeveloperMessageContent'
-          description: Developer message content
-        name:
-          type: string
-          description: Optional name for the developer message
-        role:
-          $ref: '#/components/schemas/ChatDeveloperMessageRole'
-      required:
-        - content
-        - role
-      description: Developer message
-      title: ChatDeveloperMessage
     ChatAudioOutput:
       type: object
       properties:
@@ -453,18 +178,189 @@ components:
           description: Audio transcript
       description: Audio output data or reference
       title: ChatAudioOutput
-    ChatAssistantMessageContent1:
+    ChatContentItemsDiscriminatorMappingFileFile:
+      type: object
+      properties:
+        file_data:
+          type: string
+          description: File content as base64 data URL or URL
+        file_id:
+          type: string
+          description: File ID for previously uploaded files
+        filename:
+          type: string
+          description: Original filename
+      title: ChatContentItemsDiscriminatorMappingFileFile
+    ChatContentItemsDiscriminatorMappingImageUrlImageUrlDetail:
+      type: string
+      enum:
+        - auto
+        - low
+        - high
+      description: Image detail level for vision models
+      title: ChatContentItemsDiscriminatorMappingImageUrlImageUrlDetail
+    ChatContentItemsDiscriminatorMappingImageUrlImageUrl:
+      type: object
+      properties:
+        detail:
+          $ref: >-
+            #/components/schemas/ChatContentItemsDiscriminatorMappingImageUrlImageUrlDetail
+          description: Image detail level for vision models
+        url:
+          type: string
+          description: 'URL of the image (data: URLs supported)'
+      required:
+        - url
+      title: ChatContentItemsDiscriminatorMappingImageUrlImageUrl
+    ChatContentItemsDiscriminatorMappingInputAudioInputAudio:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Base64 encoded audio data
+        format:
+          type: string
+          description: >-
+            Audio format (e.g., wav, mp3, flac, m4a, ogg, aiff, aac, pcm16,
+            pcm24). Supported formats vary by provider.
+      required:
+        - data
+        - format
+      title: ChatContentItemsDiscriminatorMappingInputAudioInputAudio
+    LegacyChatContentVideoType:
+      type: string
+      enum:
+        - input_video
+      title: LegacyChatContentVideoType
+    ChatContentVideoInput:
+      type: object
+      properties:
+        url:
+          type: string
+          description: 'URL of the video (data: URLs supported)'
+      required:
+        - url
+      description: Video input object
+      title: ChatContentVideoInput
+    ChatContentCacheControlType:
+      type: string
+      enum:
+        - ephemeral
+      title: ChatContentCacheControlType
+    ChatContentCacheControl:
+      type: object
+      properties:
+        ttl:
+          $ref: '#/components/schemas/AnthropicCacheControlTtl'
+        type:
+          $ref: '#/components/schemas/ChatContentCacheControlType'
+      required:
+        - type
+      description: Cache control for the content part
+      title: ChatContentCacheControl
+    ChatContentTextType:
+      type: string
+      enum:
+        - text
+      title: ChatContentTextType
+    ChatContentVideoType:
+      type: string
+      enum:
+        - video_url
+      title: ChatContentVideoType
+    ChatContentItems:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - file
+              description: 'Discriminator value: file'
+            file:
+              $ref: >-
+                #/components/schemas/ChatContentItemsDiscriminatorMappingFileFile
+          required:
+            - type
+            - file
+          description: File content part for document processing
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - image_url
+              description: 'Discriminator value: image_url'
+            image_url:
+              $ref: >-
+                #/components/schemas/ChatContentItemsDiscriminatorMappingImageUrlImageUrl
+          required:
+            - type
+            - image_url
+          description: Image content part for vision models
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - input_audio
+              description: 'Discriminator value: input_audio'
+            input_audio:
+              $ref: >-
+                #/components/schemas/ChatContentItemsDiscriminatorMappingInputAudioInputAudio
+          required:
+            - type
+            - input_audio
+          description: Audio input content part. Supported audio formats vary by provider.
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/LegacyChatContentVideoType'
+            video_url:
+              $ref: '#/components/schemas/ChatContentVideoInput'
+          required:
+            - type
+            - video_url
+          description: Video input content part (legacy format - deprecated)
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/ChatContentTextType'
+            cache_control:
+              $ref: '#/components/schemas/ChatContentCacheControl'
+            text:
+              type: string
+          required:
+            - type
+            - text
+          description: Text content part
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/ChatContentVideoType'
+            video_url:
+              $ref: '#/components/schemas/ChatContentVideoInput'
+          required:
+            - type
+            - video_url
+          description: Video input content part
+      discriminator:
+        propertyName: type
+      description: Content part for chat completion messages
+      title: ChatContentItems
+    ChatMessagesDiscriminatorMappingAssistantContent1:
       type: array
       items:
         $ref: '#/components/schemas/ChatContentItems'
-      title: ChatAssistantMessageContent1
-    ChatAssistantMessageContent:
+      title: ChatMessagesDiscriminatorMappingAssistantContent1
+    ChatMessagesDiscriminatorMappingAssistantContent:
       oneOf:
         - type: string
-        - $ref: '#/components/schemas/ChatAssistantMessageContent1'
+        - $ref: >-
+            #/components/schemas/ChatMessagesDiscriminatorMappingAssistantContent1
         - description: Any type
       description: Assistant message content
-      title: ChatAssistantMessageContent
+      title: ChatMessagesDiscriminatorMappingAssistantContent
     ChatAssistantImagesItemsImageUrl:
       type: object
       properties:
@@ -498,91 +394,78 @@ components:
         - anthropic-claude-v1
         - google-gemini-v1
       title: ReasoningFormat
-    ReasoningDetailSummaryType:
-      type: string
-      enum:
-        - reasoning.summary
-      title: ReasoningDetailSummaryType
-    ReasoningDetailSummary:
-      type: object
-      properties:
-        format:
-          $ref: '#/components/schemas/ReasoningFormat'
-        id:
-          type:
-            - string
-            - 'null'
-        index:
-          type: integer
-        summary:
-          type: string
-        type:
-          $ref: '#/components/schemas/ReasoningDetailSummaryType'
-      required:
-        - summary
-        - type
-      description: Reasoning detail summary schema
-      title: ReasoningDetailSummary
-    ReasoningDetailEncryptedType:
-      type: string
-      enum:
-        - reasoning.encrypted
-      title: ReasoningDetailEncryptedType
-    ReasoningDetailEncrypted:
-      type: object
-      properties:
-        data:
-          type: string
-        format:
-          $ref: '#/components/schemas/ReasoningFormat'
-        id:
-          type:
-            - string
-            - 'null'
-        index:
-          type: integer
-        type:
-          $ref: '#/components/schemas/ReasoningDetailEncryptedType'
-      required:
-        - data
-        - type
-      description: Reasoning detail encrypted schema
-      title: ReasoningDetailEncrypted
-    ReasoningDetailTextType:
-      type: string
-      enum:
-        - reasoning.text
-      title: ReasoningDetailTextType
-    ReasoningDetailText:
-      type: object
-      properties:
-        format:
-          $ref: '#/components/schemas/ReasoningFormat'
-        id:
-          type:
-            - string
-            - 'null'
-        index:
-          type: integer
-        signature:
-          type:
-            - string
-            - 'null'
-        text:
-          type:
-            - string
-            - 'null'
-        type:
-          $ref: '#/components/schemas/ReasoningDetailTextType'
-      required:
-        - type
-      description: Reasoning detail text schema
-      title: ReasoningDetailText
     ReasoningDetailUnion:
       oneOf:
-        - $ref: '#/components/schemas/ReasoningDetailSummary'
-        - $ref: '#/components/schemas/ReasoningDetailEncrypted'
-        - $ref: '#/components/schemas/ReasoningDetailText'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - reasoning.encrypted
+              description: 'Discriminator value: reasoning.encrypted'
+            data:
+              type: string
+            format:
+              $ref: '#/components/schemas/ReasoningFormat'
+            id:
+              type:
+                - string
+                - 'null'
+            index:
+              type: integer
+          required:
+            - type
+            - data
+          description: Reasoning detail encrypted schema
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - reasoning.summary
+              description: 'Discriminator value: reasoning.summary'
+            format:
+              $ref: '#/components/schemas/ReasoningFormat'
+            id:
+              type:
+                - string
+                - 'null'
+            index:
+              type: integer
+            summary:
+              type: string
+          required:
+            - type
+            - summary
+          description: Reasoning detail summary schema
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - reasoning.text
+              description: 'Discriminator value: reasoning.text'
+            format:
+              $ref: '#/components/schemas/ReasoningFormat'
+            id:
+              type:
+                - string
+                - 'null'
+            index:
+              type: integer
+            signature:
+              type:
+                - string
+                - 'null'
+            text:
+              type:
+                - string
+                - 'null'
+          required:
+            - type
+          description: Reasoning detail text schema
+      discriminator:
+        propertyName: type
       description: Reasoning detail union schema
       title: ReasoningDetailUnion
     ChatReasoningDetails:
@@ -591,11 +474,6 @@ components:
         $ref: '#/components/schemas/ReasoningDetailUnion'
       description: Reasoning details for extended thinking models
       title: ChatReasoningDetails
-    ChatAssistantMessageRole:
-      type: string
-      enum:
-        - assistant
-      title: ChatAssistantMessageRole
     ChatToolCallFunction:
       type: object
       properties:
@@ -630,42 +508,48 @@ components:
         - type
       description: Tool call made by the assistant
       title: ChatToolCall
-    ChatAssistantMessage:
+    ChatContentText:
       type: object
       properties:
-        audio:
-          $ref: '#/components/schemas/ChatAudioOutput'
-        content:
-          $ref: '#/components/schemas/ChatAssistantMessageContent'
-          description: Assistant message content
-        images:
-          $ref: '#/components/schemas/ChatAssistantImages'
-        name:
+        cache_control:
+          $ref: '#/components/schemas/ChatContentCacheControl'
+        text:
           type: string
-          description: Optional name for the assistant
-        reasoning:
-          type:
-            - string
-            - 'null'
-          description: Reasoning output
-        reasoning_details:
-          $ref: '#/components/schemas/ChatReasoningDetails'
-        refusal:
-          type:
-            - string
-            - 'null'
-          description: Refusal message if content was refused
-        role:
-          $ref: '#/components/schemas/ChatAssistantMessageRole'
-        tool_calls:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChatToolCall'
-          description: Tool calls made by the assistant
+        type:
+          $ref: '#/components/schemas/ChatContentTextType'
       required:
-        - role
-      description: Assistant message for requests and responses
-      title: ChatAssistantMessage
+        - text
+        - type
+      description: Text content part
+      title: ChatContentText
+    ChatMessagesDiscriminatorMappingDeveloperContent1:
+      type: array
+      items:
+        $ref: '#/components/schemas/ChatContentText'
+      title: ChatMessagesDiscriminatorMappingDeveloperContent1
+    ChatMessagesDiscriminatorMappingDeveloperContent:
+      oneOf:
+        - type: string
+        - $ref: >-
+            #/components/schemas/ChatMessagesDiscriminatorMappingDeveloperContent1
+      description: Developer message content
+      title: ChatMessagesDiscriminatorMappingDeveloperContent
+    ChatSystemMessageContent1:
+      type: array
+      items:
+        $ref: '#/components/schemas/ChatContentText'
+      title: ChatSystemMessageContent1
+    ChatSystemMessageContent:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/ChatSystemMessageContent1'
+      description: System message content
+      title: ChatSystemMessageContent
+    ChatSystemMessageRole:
+      type: string
+      enum:
+        - system
+      title: ChatSystemMessageRole
     ChatToolMessageContent1:
       type: array
       items:
@@ -682,30 +566,125 @@ components:
       enum:
         - tool
       title: ChatToolMessageRole
-    ChatToolMessage:
-      type: object
-      properties:
-        content:
-          $ref: '#/components/schemas/ChatToolMessageContent'
-          description: Tool response content
-        role:
-          $ref: '#/components/schemas/ChatToolMessageRole'
-        tool_call_id:
-          type: string
-          description: ID of the assistant message tool call this message responds to
-      required:
-        - content
-        - role
-        - tool_call_id
-      description: Tool response message
-      title: ChatToolMessage
+    ChatUserMessageContent1:
+      type: array
+      items:
+        $ref: '#/components/schemas/ChatContentItems'
+      title: ChatUserMessageContent1
+    ChatUserMessageContent:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/ChatUserMessageContent1'
+      description: User message content
+      title: ChatUserMessageContent
+    ChatUserMessageRole:
+      type: string
+      enum:
+        - user
+      title: ChatUserMessageRole
     ChatMessages:
       oneOf:
-        - $ref: '#/components/schemas/ChatSystemMessage'
-        - $ref: '#/components/schemas/ChatUserMessage'
-        - $ref: '#/components/schemas/ChatDeveloperMessage'
-        - $ref: '#/components/schemas/ChatAssistantMessage'
-        - $ref: '#/components/schemas/ChatToolMessage'
+        - type: object
+          properties:
+            role:
+              type: string
+              enum:
+                - assistant
+              description: 'Discriminator value: assistant'
+            audio:
+              $ref: '#/components/schemas/ChatAudioOutput'
+            content:
+              $ref: >-
+                #/components/schemas/ChatMessagesDiscriminatorMappingAssistantContent
+              description: Assistant message content
+            images:
+              $ref: '#/components/schemas/ChatAssistantImages'
+            name:
+              type: string
+              description: Optional name for the assistant
+            reasoning:
+              type:
+                - string
+                - 'null'
+              description: Reasoning output
+            reasoning_details:
+              $ref: '#/components/schemas/ChatReasoningDetails'
+            refusal:
+              type:
+                - string
+                - 'null'
+              description: Refusal message if content was refused
+            tool_calls:
+              type: array
+              items:
+                $ref: '#/components/schemas/ChatToolCall'
+              description: Tool calls made by the assistant
+          required:
+            - role
+          description: Assistant message for requests and responses
+        - type: object
+          properties:
+            role:
+              type: string
+              enum:
+                - developer
+              description: 'Discriminator value: developer'
+            content:
+              $ref: >-
+                #/components/schemas/ChatMessagesDiscriminatorMappingDeveloperContent
+              description: Developer message content
+            name:
+              type: string
+              description: Optional name for the developer message
+          required:
+            - role
+            - content
+          description: Developer message
+        - type: object
+          properties:
+            role:
+              $ref: '#/components/schemas/ChatSystemMessageRole'
+            content:
+              $ref: '#/components/schemas/ChatSystemMessageContent'
+              description: System message content
+            name:
+              type: string
+              description: Optional name for the system message
+          required:
+            - role
+            - content
+          description: System message for setting behavior
+        - type: object
+          properties:
+            role:
+              $ref: '#/components/schemas/ChatToolMessageRole'
+            content:
+              $ref: '#/components/schemas/ChatToolMessageContent'
+              description: Tool response content
+            tool_call_id:
+              type: string
+              description: ID of the assistant message tool call this message responds to
+          required:
+            - role
+            - content
+            - tool_call_id
+          description: Tool response message
+        - type: object
+          properties:
+            role:
+              $ref: '#/components/schemas/ChatUserMessageRole'
+            content:
+              $ref: '#/components/schemas/ChatUserMessageContent'
+              description: User message content
+            name:
+              type: string
+              description: Optional name for the user
+          required:
+            - role
+            - content
+          description: User message
+      discriminator:
+        propertyName: role
       description: Chat completion message with role-based discrimination
       title: ChatMessages
     ChatRequestModalitiesItems:
@@ -719,145 +698,18 @@ components:
       type: string
       description: Model to use for completion
       title: ModelName
-    ChatModelNamesItems:
-      type: object
-      properties: {}
-      title: ChatModelNamesItems
     ChatModelNames:
       type: array
       items:
-        $ref: '#/components/schemas/ChatModelNamesItems'
+        $ref: '#/components/schemas/ModelName'
       description: Models to use for completion
       title: ChatModelNames
-    AutoRouterPluginId:
+    ContextCompressionEngine:
       type: string
       enum:
-        - auto-router
-      title: AutoRouterPluginId
-    AutoRouterPlugin:
-      type: object
-      properties:
-        allowed_models:
-          type: array
-          items:
-            type: string
-          description: >-
-            List of model patterns to filter which models the auto-router can
-            route between. Supports wildcards (e.g., "anthropic/*" matches all
-            Anthropic models). When not specified, uses the default supported
-            models list.
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the auto-router plugin for this request.
-            Defaults to true.
-        id:
-          $ref: '#/components/schemas/AutoRouterPluginId'
-      required:
-        - id
-      title: AutoRouterPlugin
-    ModerationPluginId:
-      type: string
-      enum:
-        - moderation
-      title: ModerationPluginId
-    ModerationPlugin:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/ModerationPluginId'
-      required:
-        - id
-      title: ModerationPlugin
-    WebSearchEngine:
-      type: string
-      enum:
-        - native
-        - exa
-        - firecrawl
-        - parallel
-      description: The search engine to use for web search.
-      title: WebSearchEngine
-    WebSearchPluginId:
-      type: string
-      enum:
-        - web
-      title: WebSearchPluginId
-    WebSearchUserLocationType:
-      type: string
-      enum:
-        - approximate
-      title: WebSearchUserLocationType
-    WebSearchPluginUserLocation:
-      type: object
-      properties:
-        city:
-          type:
-            - string
-            - 'null'
-        country:
-          type:
-            - string
-            - 'null'
-        region:
-          type:
-            - string
-            - 'null'
-        timezone:
-          type:
-            - string
-            - 'null'
-        type:
-          $ref: '#/components/schemas/WebSearchUserLocationType'
-      title: WebSearchPluginUserLocation
-    WebSearchPlugin:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the web-search plugin for this request.
-            Defaults to true.
-        engine:
-          $ref: '#/components/schemas/WebSearchEngine'
-        exclude_domains:
-          type: array
-          items:
-            type: string
-          description: >-
-            A list of domains to exclude from web search results. Supports
-            wildcards (e.g. "*.substack.com") and path filtering (e.g.
-            "openai.com/blog").
-        id:
-          $ref: '#/components/schemas/WebSearchPluginId'
-        include_domains:
-          type: array
-          items:
-            type: string
-          description: >-
-            A list of domains to restrict web search results to. Supports
-            wildcards (e.g. "*.substack.com") and path filtering (e.g.
-            "openai.com/blog").
-        max_results:
-          type: integer
-        max_uses:
-          type: integer
-          description: >-
-            Maximum number of times the model can invoke web search in a single
-            turn. Passed through to native providers that support it (e.g.
-            Anthropic).
-        search_prompt:
-          type: string
-        user_location:
-          $ref: '#/components/schemas/WebSearchPluginUserLocation'
-      required:
-        - id
-      title: WebSearchPlugin
-    FileParserPluginId:
-      type: string
-      enum:
-        - file-parser
-      title: FileParserPluginId
+        - middle-out
+      description: The compression engine to use. Defaults to "middle-out".
+      title: ContextCompressionEngine
     PdfParserEngine0:
       type: string
       enum:
@@ -885,101 +737,205 @@ components:
           $ref: '#/components/schemas/PDFParserEngine'
       description: Options for PDF parsing.
       title: PDFParserOptions
-    FileParserPlugin:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the file-parser plugin for this request.
-            Defaults to true.
-        id:
-          $ref: '#/components/schemas/FileParserPluginId'
-        pdf:
-          $ref: '#/components/schemas/PDFParserOptions'
-      required:
-        - id
-      title: FileParserPlugin
-    ResponseHealingPluginId:
+    WebSearchEngine:
       type: string
       enum:
-        - response-healing
-      title: ResponseHealingPluginId
-    ResponseHealingPlugin:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the response-healing plugin for this
-            request. Defaults to true.
-        id:
-          $ref: '#/components/schemas/ResponseHealingPluginId'
-      required:
-        - id
-      title: ResponseHealingPlugin
-    ContextCompressionEngine:
+        - native
+        - exa
+        - firecrawl
+        - parallel
+      description: The search engine to use for web search.
+      title: WebSearchEngine
+    WebSearchPluginId:
       type: string
       enum:
-        - middle-out
-      description: The compression engine to use. Defaults to "middle-out".
-      title: ContextCompressionEngine
-    ContextCompressionPluginId:
+        - web
+      title: WebSearchPluginId
+    WebSearchPluginUserLocationType:
       type: string
       enum:
-        - context-compression
-      title: ContextCompressionPluginId
-    ContextCompressionPlugin:
+        - approximate
+      title: WebSearchPluginUserLocationType
+    WebSearchPluginUserLocation:
       type: object
       properties:
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the context-compression plugin for this
-            request. Defaults to true.
-        engine:
-          $ref: '#/components/schemas/ContextCompressionEngine'
-        id:
-          $ref: '#/components/schemas/ContextCompressionPluginId'
+        city:
+          type:
+            - string
+            - 'null'
+        country:
+          type:
+            - string
+            - 'null'
+        region:
+          type:
+            - string
+            - 'null'
+        timezone:
+          type:
+            - string
+            - 'null'
+        type:
+          $ref: '#/components/schemas/WebSearchPluginUserLocationType'
       required:
-        - id
-      title: ContextCompressionPlugin
-    ParetoRouterPluginId:
-      type: string
-      enum:
-        - pareto-router
-      title: ParetoRouterPluginId
-    ParetoRouterPlugin:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: >-
-            Set to false to disable the pareto-router plugin for this request.
-            Defaults to true.
-        id:
-          $ref: '#/components/schemas/ParetoRouterPluginId'
-        min_coding_score:
-          type: number
-          format: double
-          description: >-
-            Minimum desired coding score between 0 and 1, where 1 is best.
-            Higher values select from stronger coding models (sourced from
-            Artificial Analysis coding percentiles). Maps internally to one of
-            three tiers (low, medium, high). Omit to use the router default
-            tier.
-      required:
-        - id
-      title: ParetoRouterPlugin
+        - type
+      description: >-
+        Approximate user location for location-biased search results. Passed
+        through to native providers that support it (e.g. Anthropic).
+      title: WebSearchPluginUserLocation
     ChatRequestPluginsItems:
       oneOf:
-        - $ref: '#/components/schemas/AutoRouterPlugin'
-        - $ref: '#/components/schemas/ModerationPlugin'
-        - $ref: '#/components/schemas/WebSearchPlugin'
-        - $ref: '#/components/schemas/FileParserPlugin'
-        - $ref: '#/components/schemas/ResponseHealingPlugin'
-        - $ref: '#/components/schemas/ContextCompressionPlugin'
-        - $ref: '#/components/schemas/ParetoRouterPlugin'
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - auto-router
+              description: 'Discriminator value: auto-router'
+            allowed_models:
+              type: array
+              items:
+                type: string
+              description: >-
+                List of model patterns to filter which models the auto-router
+                can route between. Supports wildcards (e.g., "anthropic/*"
+                matches all Anthropic models). When not specified, uses the
+                default supported models list.
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the auto-router plugin for this request.
+                Defaults to true.
+          required:
+            - id
+          description: auto-router variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - context-compression
+              description: 'Discriminator value: context-compression'
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the context-compression plugin for this
+                request. Defaults to true.
+            engine:
+              $ref: '#/components/schemas/ContextCompressionEngine'
+          required:
+            - id
+          description: context-compression variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - file-parser
+              description: 'Discriminator value: file-parser'
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the file-parser plugin for this request.
+                Defaults to true.
+            pdf:
+              $ref: '#/components/schemas/PDFParserOptions'
+          required:
+            - id
+          description: file-parser variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - moderation
+              description: 'Discriminator value: moderation'
+          required:
+            - id
+          description: moderation variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - pareto-router
+              description: 'Discriminator value: pareto-router'
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the pareto-router plugin for this
+                request. Defaults to true.
+            min_coding_score:
+              type: number
+              format: double
+              description: >-
+                Minimum desired coding score between 0 and 1, where 1 is best.
+                Higher values select from stronger coding models (sourced from
+                Artificial Analysis coding percentiles). Maps internally to one
+                of three tiers (low, medium, high). Omit to use the router
+                default tier.
+          required:
+            - id
+          description: pareto-router variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
+                - response-healing
+              description: 'Discriminator value: response-healing'
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the response-healing plugin for this
+                request. Defaults to true.
+          required:
+            - id
+          description: response-healing variant
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/WebSearchPluginId'
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the web-search plugin for this request.
+                Defaults to true.
+            engine:
+              $ref: '#/components/schemas/WebSearchEngine'
+            exclude_domains:
+              type: array
+              items:
+                type: string
+              description: >-
+                A list of domains to exclude from web search results. Supports
+                wildcards (e.g. "*.substack.com") and path filtering (e.g.
+                "openai.com/blog").
+            include_domains:
+              type: array
+              items:
+                type: string
+              description: >-
+                A list of domains to restrict web search results to. Supports
+                wildcards (e.g. "*.substack.com") and path filtering (e.g.
+                "openai.com/blog").
+            max_results:
+              type: integer
+            max_uses:
+              type: integer
+              description: >-
+                Maximum number of times the model can invoke web search in a
+                single turn. Passed through to native providers that support it
+                (e.g. Anthropic).
+            search_prompt:
+              type: string
+            user_location:
+              $ref: '#/components/schemas/WebSearchPluginUserLocation'
+          required:
+            - id
+          description: web variant
+      discriminator:
+        propertyName: id
       title: ChatRequestPluginsItems
     ProviderPreferencesDataCollection:
       type: string
@@ -1086,39 +1042,23 @@ components:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
       title: ProviderPreferencesIgnoreItems
-    ProviderPreferencesMaxPriceAudio:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceAudio
-    ProviderPreferencesMaxPriceCompletion:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceCompletion
-    ProviderPreferencesMaxPriceImage:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceImage
     BigNumberUnion:
       type: string
       description: Price per million prompt tokens
       title: BigNumberUnion
-    ProviderPreferencesMaxPriceRequest:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceRequest
     ProviderPreferencesMaxPrice:
       type: object
       properties:
         audio:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceAudio'
+          $ref: '#/components/schemas/BigNumberUnion'
         completion:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceCompletion'
+          $ref: '#/components/schemas/BigNumberUnion'
         image:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceImage'
+          $ref: '#/components/schemas/BigNumberUnion'
         prompt:
           $ref: '#/components/schemas/BigNumberUnion'
         request:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceRequest'
+          $ref: '#/components/schemas/BigNumberUnion'
       description: >-
         The object specifying the maximum price you want to pay for this
         request. USD price per million tokens, for prompt and completion.
@@ -1428,34 +1368,11 @@ components:
           $ref: '#/components/schemas/ChatReasoningSummaryVerbosityEnum'
       description: Configuration options for reasoning models
       title: ChatRequestReasoning
-    ChatFormatTextConfigType:
-      type: string
-      enum:
-        - text
-      title: ChatFormatTextConfigType
-    ChatFormatTextConfig:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ChatFormatTextConfigType'
-      required:
-        - type
-      description: Default text response format
-      title: ChatFormatTextConfig
     FormatJsonObjectConfigType:
       type: string
       enum:
         - json_object
       title: FormatJsonObjectConfigType
-    FormatJsonObjectConfig:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/FormatJsonObjectConfigType'
-      required:
-        - type
-      description: JSON object response format
-      title: FormatJsonObjectConfig
     ChatJsonSchemaConfig:
       type: object
       properties:
@@ -1479,62 +1396,64 @@ components:
         - name
       description: JSON Schema configuration object
       title: ChatJsonSchemaConfig
-    ChatFormatJsonSchemaConfigType:
-      type: string
-      enum:
-        - json_schema
-      title: ChatFormatJsonSchemaConfigType
-    ChatFormatJsonSchemaConfig:
-      type: object
-      properties:
-        json_schema:
-          $ref: '#/components/schemas/ChatJsonSchemaConfig'
-        type:
-          $ref: '#/components/schemas/ChatFormatJsonSchemaConfigType'
-      required:
-        - json_schema
-        - type
-      description: JSON Schema response format for structured outputs
-      title: ChatFormatJsonSchemaConfig
-    ChatFormatGrammarConfigType:
-      type: string
-      enum:
-        - grammar
-      title: ChatFormatGrammarConfigType
-    ChatFormatGrammarConfig:
-      type: object
-      properties:
-        grammar:
-          type: string
-          description: Custom grammar for text generation
-        type:
-          $ref: '#/components/schemas/ChatFormatGrammarConfigType'
-      required:
-        - grammar
-        - type
-      description: Custom grammar response format
-      title: ChatFormatGrammarConfig
-    ChatFormatPythonConfigType:
-      type: string
-      enum:
-        - python
-      title: ChatFormatPythonConfigType
-    ChatFormatPythonConfig:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ChatFormatPythonConfigType'
-      required:
-        - type
-      description: Python code response format
-      title: ChatFormatPythonConfig
     ChatRequestResponseFormat:
       oneOf:
-        - $ref: '#/components/schemas/ChatFormatTextConfig'
-        - $ref: '#/components/schemas/FormatJsonObjectConfig'
-        - $ref: '#/components/schemas/ChatFormatJsonSchemaConfig'
-        - $ref: '#/components/schemas/ChatFormatGrammarConfig'
-        - $ref: '#/components/schemas/ChatFormatPythonConfig'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - grammar
+              description: 'Discriminator value: grammar'
+            grammar:
+              type: string
+              description: Custom grammar for text generation
+          required:
+            - type
+            - grammar
+          description: Custom grammar response format
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/FormatJsonObjectConfigType'
+          required:
+            - type
+          description: JSON object response format
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - json_schema
+              description: 'Discriminator value: json_schema'
+            json_schema:
+              $ref: '#/components/schemas/ChatJsonSchemaConfig'
+          required:
+            - type
+            - json_schema
+          description: JSON Schema response format for structured outputs
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - python
+              description: 'Discriminator value: python'
+          required:
+            - type
+          description: Python code response format
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - text
+              description: 'Discriminator value: text'
+          required:
+            - type
+          description: Default text response format
+      discriminator:
+        propertyName: type
       description: Response format configuration
       title: ChatRequestResponseFormat
     ChatRequestServiceTier:
@@ -2226,6 +2145,39 @@ components:
         - content
       description: Log probabilities for the completion
       title: ChatTokenLogprobs
+    ChatAssistantMessage:
+      type: object
+      properties:
+        audio:
+          $ref: '#/components/schemas/ChatAudioOutput'
+        content:
+          $ref: >-
+            #/components/schemas/ChatMessagesDiscriminatorMappingAssistantContent
+          description: Assistant message content
+        images:
+          $ref: '#/components/schemas/ChatAssistantImages'
+        name:
+          type: string
+          description: Optional name for the assistant
+        reasoning:
+          type:
+            - string
+            - 'null'
+          description: Reasoning output
+        reasoning_details:
+          $ref: '#/components/schemas/ChatReasoningDetails'
+        refusal:
+          type:
+            - string
+            - 'null'
+          description: Refusal message if content was refused
+        tool_calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatToolCall'
+          description: Tool calls made by the assistant
+      description: Assistant message for requests and responses
+      title: ChatAssistantMessage
     ChatChoice:
       type: object
       properties:
@@ -2742,20 +2694,20 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Chat_sendChatCompletionRequest_example
 import requests
 
-url = "https://openrouter.ai/api/v1/chat/completions"
+url = "https://openrouter.ai/api/v1//chat/completions"
 
 payload = {
     "messages": [
         {
-            "content": "You are a helpful assistant.",
-            "role": "system"
+            "role": "system",
+            "content": "You are a helpful assistant."
         },
         {
-            "content": "What is the capital of France?",
-            "role": "user"
+            "role": "user",
+            "content": "What is the capital of France?"
         }
     ],
     "max_tokens": 150,
@@ -2772,12 +2724,12 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/chat/completions';
+```javascript Chat_sendChatCompletionRequest_example
+const url = 'https://openrouter.ai/api/v1//chat/completions';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"messages":[{"content":"You are a helpful assistant.","role":"system"},{"content":"What is the capital of France?","role":"user"}],"max_tokens":150,"model":"openai/gpt-4","temperature":0.7}'
+  body: '{"messages":[{"role":"system","content":"You are a helpful assistant."},{"role":"user","content":"What is the capital of France?"}],"max_tokens":150,"model":"openai/gpt-4","temperature":0.7}'
 };
 
 try {
@@ -2789,7 +2741,7 @@ try {
 }
 ```
 
-```go
+```go Chat_sendChatCompletionRequest_example
 package main
 
 import (
@@ -2801,9 +2753,9 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/chat/completions"
+	url := "https://openrouter.ai/api/v1//chat/completions"
 
-	payload := strings.NewReader("{\n  \"messages\": [\n    {\n      \"content\": \"You are a helpful assistant.\",\n      \"role\": \"system\"\n    },\n    {\n      \"content\": \"What is the capital of France?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}")
+	payload := strings.NewReader("{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the capital of France?\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -2821,11 +2773,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Chat_sendChatCompletionRequest_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/chat/completions")
+url = URI("https://openrouter.ai/api/v1//chat/completions")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -2833,39 +2785,39 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"messages\": [\n    {\n      \"content\": \"You are a helpful assistant.\",\n      \"role\": \"system\"\n    },\n    {\n      \"content\": \"What is the capital of France?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}"
+request.body = "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the capital of France?\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}"
 
 response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Chat_sendChatCompletionRequest_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/chat/completions")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//chat/completions")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"messages\": [\n    {\n      \"content\": \"You are a helpful assistant.\",\n      \"role\": \"system\"\n    },\n    {\n      \"content\": \"What is the capital of France?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}")
+  .body("{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the capital of France?\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}")
   .asString();
 ```
 
-```php
+```php Chat_sendChatCompletionRequest_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/chat/completions', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1//chat/completions', [
   'body' => '{
   "messages": [
     {
-      "content": "You are a helpful assistant.",
-      "role": "system"
+      "role": "system",
+      "content": "You are a helpful assistant."
     },
     {
-      "content": "What is the capital of France?",
-      "role": "user"
+      "role": "user",
+      "content": "What is the capital of France?"
     }
   ],
   "max_tokens": 150,
@@ -2881,18 +2833,18 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/chat/completi
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Chat_sendChatCompletionRequest_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/chat/completions");
+var client = new RestClient("https://openrouter.ai/api/v1//chat/completions");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"messages\": [\n    {\n      \"content\": \"You are a helpful assistant.\",\n      \"role\": \"system\"\n    },\n    {\n      \"content\": \"What is the capital of France?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the capital of France?\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Chat_sendChatCompletionRequest_example
 import Foundation
 
 let headers = [
@@ -2902,12 +2854,12 @@ let headers = [
 let parameters = [
   "messages": [
     [
-      "content": "You are a helpful assistant.",
-      "role": "system"
+      "role": "system",
+      "content": "You are a helpful assistant."
     ],
     [
-      "content": "What is the capital of France?",
-      "role": "user"
+      "role": "user",
+      "content": "What is the capital of France?"
     ]
   ],
   "max_tokens": 150,
@@ -2917,7 +2869,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/chat/completions")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//chat/completions")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

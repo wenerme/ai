@@ -18,7 +18,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Cloudflare is [targeting 2029 ↗](https://blog.cloudflare.com/post-quantum-roadmap/) to be fully post-quantum secure across its entire product suite.
 
-The sections below group Cloudflare products by the **Cloudflare-operated connection or service** that provides their secure communication channel. Many products share the same underlying connection or service — once that has been upgraded to post-quantum, every product on top of it inherits the same protection. Each section captures which classes of post-quantum algorithms are currently deployed: [key agreement](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#hybrid-key-agreement) (which protects against [harvest-now-decrypt-later ↗](https://en.wikipedia.org/wiki/Harvest%5Fnow,%5Fdecrypt%5Flater) attacks) and [signatures](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#post-quantum-signatures) (which protect against quantum-forged authentication).
+The sections below group Cloudflare products by the **Cloudflare-operated connection or service** that provides their secure communication channel. Many products share the same underlying connection or service — once that has been upgraded to post-quantum, every product on top of it inherits the same protection. Each section captures which classes of post-quantum algorithms are currently deployed: [key agreement](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#hybrid-key-agreement) (which protects against [harvest-now, decrypt-later ↗](https://en.wikipedia.org/wiki/Harvest%5Fnow,%5Fdecrypt%5Flater) attacks) and [signatures](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#post-quantum-signatures) (which protect against quantum-forged authentication).
 
 A Cloudflare-side ✅ entry only delivers end-to-end post-quantum protection when **the party on the other side of the connection also supports the same post-quantum algorithms**. Refer to [PQC support](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-support/) for the list of browsers, libraries, and servers that support the algorithms Cloudflare has deployed.
 
@@ -102,12 +102,12 @@ Reference: [PQC SASE ↗](https://blog.cloudflare.com/post-quantum-sase/), [Clou
 
 IKEv2 key exchange for IPsec tunnels between third-party branch connectors and Cloudflare's global network.
 
-| Protection    | Status                                                         |
-| ------------- | -------------------------------------------------------------- |
-| Key agreement | ✅ ML-KEM-768/1024 + DH Group 20 (P-384) in IKEv2 (closed beta) |
-| Signatures    | Not yet                                                        |
+| Protection    | Status                                           |
+| ------------- | ------------------------------------------------ |
+| Key agreement | ✅ ML-KEM-768/1024 + DH Group 20 (P-384) in IKEv2 |
+| Signatures    | Not yet                                          |
 
-Reference: [PQC SASE ↗](https://blog.cloudflare.com/post-quantum-sase/), [GRE and IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/), [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/).
+Reference: [PQC SASE ↗](https://blog.cloudflare.com/post-quantum-sase/), [GRE and IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#tested-third-party-vendor-interoperability), [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/).
 
 ## Contributing
 

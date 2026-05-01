@@ -18,11 +18,12 @@ Learn more about bucket level operations from the items below.
 
 * [ Bucket locks ](https://developers.cloudflare.com/r2/buckets/bucket-locks/)
 * [ Create new buckets ](https://developers.cloudflare.com/r2/buckets/create-buckets/)
+* [ Public buckets ](https://developers.cloudflare.com/r2/buckets/public-buckets/)
 * [ Configure CORS ](https://developers.cloudflare.com/r2/buckets/cors/)
+* [ Delete buckets ](https://developers.cloudflare.com/r2/buckets/delete-buckets/)
 * [ Event notifications ](https://developers.cloudflare.com/r2/buckets/event-notifications/)
 * [ Local uploads ](https://developers.cloudflare.com/r2/buckets/local-uploads/)
 * [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/)
-* [ Public buckets ](https://developers.cloudflare.com/r2/buckets/public-buckets/)
 * [ Storage classes ](https://developers.cloudflare.com/r2/buckets/storage-classes/)
 
 ```json

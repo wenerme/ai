@@ -59,8 +59,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Portrait Aspect Ratio**  — Vertical video for social media 
@@ -100,8 +98,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Silent Video**  — Generate video without audio 
 
 TypeScript
@@ -138,8 +134,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Square Format**  — Square video for product demos or social posts 
 
@@ -178,12 +172,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-348)
-* [ Output ](#tab-panel-349)
+* [ Input ](#tab-panel-110)
+* [ Output ](#tab-panel-111)
 
 prompt
 

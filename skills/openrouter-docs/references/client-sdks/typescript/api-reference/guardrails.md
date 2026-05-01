@@ -4,14 +4,10 @@
 
 # Guardrails - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -38,8 +34,6 @@ Guardrails endpoints
 List all guardrails for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listGuardrails" method="get" path="/guardrails" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -120,8 +114,6 @@ run();
 Create a new guardrail for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="createGuardrail" method="post" path="/guardrails" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -233,8 +225,6 @@ Delete an existing guardrail. [Management key](/docs/guides/overview/auth/manage
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="deleteGuardrail" method="delete" path="/guardrails/{id}" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -316,8 +306,6 @@ Get a single guardrail by ID. [Management key](/docs/guides/overview/auth/manage
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="getGuardrail" method="get" path="/guardrails/{id}" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -398,8 +386,6 @@ run();
 Update an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="updateGuardrail" method="patch" path="/guardrails/{id}" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -495,8 +481,6 @@ List all API key assignments for a specific guardrail. [Management key](/docs/gu
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="listGuardrailKeyAssignments" method="get" path="/guardrails/{id}/assignments/keys" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -581,8 +565,6 @@ run();
 Assign multiple API keys to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="bulkAssignKeysToGuardrail" method="post" path="/guardrails/{id}/assignments/keys" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -676,8 +658,6 @@ Unassign multiple API keys from a specific guardrail. [Management key](/docs/gui
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="bulkUnassignKeysFromGuardrail" method="post" path="/guardrails/{id}/assignments/keys/remove" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -770,8 +750,6 @@ List all organization member assignments for a specific guardrail. [Management k
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="listGuardrailMemberAssignments" method="get" path="/guardrails/{id}/assignments/members" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -856,8 +834,6 @@ run();
 Assign multiple organization members to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="bulkAssignMembersToGuardrail" method="post" path="/guardrails/{id}/assignments/members" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -953,8 +929,6 @@ Unassign multiple organization members from a specific guardrail. [Management ke
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="bulkUnassignMembersFromGuardrail" method="post" path="/guardrails/{id}/assignments/members/remove" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -1049,8 +1023,6 @@ List all API key guardrail assignments for the authenticated user. [Management k
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="listKeyAssignments" method="get" path="/guardrails/assignments/keys" */}
-
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
 
@@ -1130,8 +1102,6 @@ run();
 List all organization member guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listMemberAssignments" method="get" path="/guardrails/assignments/members" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

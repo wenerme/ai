@@ -55,8 +55,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Vertical 1080P**  — Vertical 9:16 output at 1080P for social media 
@@ -96,8 +94,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Reproducible Output**  — Use a fixed seed for reproducibility 
 
 TypeScript
@@ -134,8 +130,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 ## Parameters
 

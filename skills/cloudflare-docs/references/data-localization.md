@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
  Enterprise-only paid add-on 
 
-The Data Localization Suite (DLS) is a collection of tools that enable customers to choose the location where Cloudflare inspects and stores data, while maintaining the security and performance benefits of our global network.
+The Data Localization Suite (DLS) is a collection of tools that enable customers to choose the location where Cloudflare inspects and stores data, while maintaining the security and performance benefits of our global network. Organizations subject to data residency regulations such as [GDPR ↗](https://www.cloudflare.com/trust-hub/gdpr/) can use DLS to control where their encryption keys are stored, where traffic metadata and logs are kept, and where HTTPS traffic is decrypted and processed.
 
 ---
 
@@ -22,19 +22,19 @@ The Data Localization Suite (DLS) is a collection of tools that enable customers
 
 ###  Geo Key Manager 
 
-Keep your keys within a specified region, ensuring compliance and data sovereignty.
+Control where your private encryption keys are stored, ensuring compliance with data sovereignty requirements.
 
 [ Use Geo Key Manager ](https://developers.cloudflare.com/data-localization/geo-key-manager/) 
 
 ###  Customer Metadata Boundary 
 
-Ensure that any traffic metadata that can identify your end user stays in the region you selected.
+Ensure that any traffic metadata — logs and analytics that could identify your end users — stays in the region you selected.
 
 [ Use Customer Metadata Boundary ](https://developers.cloudflare.com/data-localization/metadata-boundary/) 
 
 ###  Regional Services 
 
-Comply with regional restrictions by choosing which subset of data centers decrypts and services your HTTPS traffic.
+Comply with regional restrictions by choosing which Cloudflare data centers are allowed to decrypt and process your HTTPS traffic.
 
 [ Use Regional Services ](https://developers.cloudflare.com/data-localization/regional-services/) 
 

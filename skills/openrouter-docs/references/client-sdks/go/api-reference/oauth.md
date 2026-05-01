@@ -4,14 +4,10 @@
 
 # OAuth - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ OAuth authentication endpoints
 Exchange an authorization code from the PKCE flow for a user-controlled API key
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="exchangeAuthCodeForAPIKey" method="post" path="/auth/keys" */}
 
 ```go
 package main
@@ -89,8 +83,6 @@ func main() {
 Create an authorization code for the PKCE flow to generate a user-controlled API key
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="createAuthKeysCode" method="post" path="/auth/keys/code" */}
 
 ```go
 package main

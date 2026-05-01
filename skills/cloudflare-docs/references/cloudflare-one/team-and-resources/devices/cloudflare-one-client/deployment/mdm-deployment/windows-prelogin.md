@@ -39,11 +39,11 @@ With Cloudflare Zero Trust, you can use an on-premise Active Directory (or simil
 
 ## 1\. Create a service token
 
-* [ Dashboard ](#tab-panel-4978)
-* [ API ](#tab-panel-4979)
-* [ Terraform (v5) ](#tab-panel-4980)
+* [ Dashboard ](#tab-panel-4782)
+* [ API ](#tab-panel-4783)
+* [ Terraform (v5) ](#tab-panel-4784)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Choose a **Service Token Duration**. This sets the expiration date for the token.

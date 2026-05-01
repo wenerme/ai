@@ -20,8 +20,8 @@ Device enrollment permissions determine which users can connect new devices to y
 
 ## Set device enrollment permissions
 
-* [ Dashboard ](#tab-panel-4966)
-* [ Terraform (v5) ](#tab-panel-4967)
+* [ Dashboard ](#tab-panel-4770)
+* [ Terraform (v5) ](#tab-panel-4771)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **Management**.
 2. In **Device enrollment** \> **Device enrollment permissions**, select **Manage**.
@@ -84,8 +84,8 @@ Instead of requiring users to authenticate with their credentials, you can use a
 
 To enroll devices using a service token:
 
-* [ Dashboard ](#tab-panel-4968)
-* [ Terraform (v5) ](#tab-panel-4969)
+* [ Dashboard ](#tab-panel-4772)
+* [ Terraform (v5) ](#tab-panel-4773)
 
 1. [Create a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#create-a-service-token).
 2. Copy the token's **Client ID** and **Client Secret**.
@@ -148,10 +148,10 @@ Allowed signature algorithms
 
 To check for an mTLS certificate:
 
-* [ Dashboard ](#tab-panel-4970)
-* [ Terraform (v5) ](#tab-panel-4971)
+* [ Dashboard ](#tab-panel-4774)
+* [ Terraform (v5) ](#tab-panel-4775)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Service credentials** \> **Mutual TLS**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Mutual TLS**.
 2. Select **Add mTLS Certificate**.
 3. Enter any name for the root CA.
 4. In **Certificate content**, paste the contents of your root CA.  

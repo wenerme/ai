@@ -40,7 +40,7 @@ Terminal window
 
 ```
 
-cd my-agent
+cd agents-starter
 
 npm install
 
@@ -102,8 +102,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-3954)
-* [  TypeScript ](#tab-panel-3955)
+* [  JavaScript ](#tab-panel-3758)
+* [  TypeScript ](#tab-panel-3759)
 
 JavaScript
 
@@ -262,8 +262,8 @@ export default {
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-3946)
-* [  wrangler.toml ](#tab-panel-3947)
+* [  wrangler.jsonc ](#tab-panel-3750)
+* [  wrangler.toml ](#tab-panel-3751)
 
 JSONC
 
@@ -277,7 +277,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-04-30",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -324,7 +324,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-04-30"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -445,8 +445,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-3950)
-* [  TypeScript ](#tab-panel-3951)
+* [  JavaScript ](#tab-panel-3754)
+* [  TypeScript ](#tab-panel-3755)
 
 JavaScript
 
@@ -545,8 +545,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-3948)
-* [  TypeScript ](#tab-panel-3949)
+* [  JavaScript ](#tab-panel-3752)
+* [  TypeScript ](#tab-panel-3753)
 
 JavaScript
 
@@ -596,8 +596,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-3952)
-* [  TypeScript ](#tab-panel-3953)
+* [  JavaScript ](#tab-panel-3756)
+* [  TypeScript ](#tab-panel-3757)
 
 JavaScript
 

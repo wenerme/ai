@@ -61,7 +61,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 ![Configuring attribute statements in IAM Identity Center](https://developers.cloudflare.com/_astro/aws-saml-attributes.DuPGeU5b_1ShHlb.webp) 
 1. Select **Save changes**.
 2. Under **Assign users and groups**, add individuals and/or groups that should be allowed to login to Cloudflare One.
-3. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+3. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 4. Under **Your identity providers**, select **Add new identity provider**.
 5. Select **SAML**.
 6. Enter a **Name** for the IdP integration (for example, `AWS`).

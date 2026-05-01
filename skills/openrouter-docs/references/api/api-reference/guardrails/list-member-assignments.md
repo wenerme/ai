@@ -4,7 +4,7 @@
 
 # List all member assignments
 
-GET https://openrouter.ai/api/v1/guardrails/assignments/members
+GET https://openrouter.ai/api/v1//guardrails/assignments/members
 
 List all organization member guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /guardrails/assignments/members:
+  //guardrails/assignments/members:
     get:
       operationId: list-member-assignments
       summary: List all member assignments
@@ -190,10 +190,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Guardrails_listMemberAssignments_example
 import requests
 
-url = "https://openrouter.ai/api/v1/guardrails/assignments/members"
+url = "https://openrouter.ai/api/v1//guardrails/assignments/members"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -202,8 +202,8 @@ response = requests.get(url, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/guardrails/assignments/members';
+```javascript Guardrails_listMemberAssignments_example
+const url = 'https://openrouter.ai/api/v1//guardrails/assignments/members';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -215,7 +215,7 @@ try {
 }
 ```
 
-```go
+```go Guardrails_listMemberAssignments_example
 package main
 
 import (
@@ -226,7 +226,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/guardrails/assignments/members"
+	url := "https://openrouter.ai/api/v1//guardrails/assignments/members"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -243,11 +243,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Guardrails_listMemberAssignments_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/guardrails/assignments/members")
+url = URI("https://openrouter.ai/api/v1//guardrails/assignments/members")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -259,22 +259,22 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Guardrails_listMemberAssignments_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/guardrails/assignments/members")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//guardrails/assignments/members")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
 
-```php
+```php Guardrails_listMemberAssignments_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/guardrails/assignments/members', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1//guardrails/assignments/members', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -283,21 +283,21 @@ $response = $client->request('GET', 'https://openrouter.ai/api/v1/guardrails/ass
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Guardrails_listMemberAssignments_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/guardrails/assignments/members");
+var client = new RestClient("https://openrouter.ai/api/v1//guardrails/assignments/members");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Guardrails_listMemberAssignments_example
 import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails/assignments/members")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails/assignments/members")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

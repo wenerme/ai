@@ -4,14 +4,10 @@
 
 # Tts - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Text-to-speech endpoints
 Synthesizes audio from the input text
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="createAudioSpeech" method="post" path="/audio/speech" */}
 
 ```go
 package main

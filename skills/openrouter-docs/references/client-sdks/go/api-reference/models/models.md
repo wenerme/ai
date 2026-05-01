@@ -4,14 +4,10 @@
 
 # Models - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -28,8 +24,6 @@ Model information endpoints
 List all models and their properties
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="getModels" method="get" path="/models" */}
 
 ```go
 package main
@@ -86,8 +80,6 @@ Get total count of available models
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="listModelsCount" method="get" path="/models/count" */}
-
 ```go
 package main
 
@@ -140,8 +132,6 @@ func main() {
 List models filtered by user provider preferences, [privacy settings](https://openrouter.ai/docs/guides/privacy/provider-logging), and [guardrails](https://openrouter.ai/docs/guides/features/guardrails). If requesting through `eu.openrouter.ai/api/v1/...` the results will be filtered to models that satisfy [EU in-region routing](https://openrouter.ai/docs/guides/privacy/provider-logging#enterprise-eu-in-region-routing).
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listModelsUser" method="get" path="/models/user" */}
 
 ```go
 package main

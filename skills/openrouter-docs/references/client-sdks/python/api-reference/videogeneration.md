@@ -4,14 +4,10 @@
 
 # VideoGeneration - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -29,8 +25,6 @@ Video Generation endpoints
 Submits a video generation request and returns a polling URL to check status
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="createVideos" method="post" path="/videos" */}
 
 ```python
 from openrouter import OpenRouter
@@ -93,8 +87,6 @@ Returns job status and content URLs when completed
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="getVideos" method="get" path="/videos/{jobId}" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -141,8 +133,6 @@ with OpenRouter(
 Streams the generated video content from the upstream provider
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listVideosContent" method="get" path="/videos/{jobId}/content" */}
 
 ```python
 from openrouter import OpenRouter
@@ -193,8 +183,6 @@ with OpenRouter(
 Returns a list of all available video generation models and their properties
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listVideosModels" method="get" path="/videos/models" */}
 
 ```python
 from openrouter import OpenRouter

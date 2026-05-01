@@ -63,7 +63,7 @@ To retrieve those values:
 
 ### 2\. Add Amazon Cognito as an identity provider
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **OpenID Connect**.
 4. Name your identity provider and fill in the required fields with the information obtained from Amazon Cognito.

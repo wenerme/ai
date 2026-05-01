@@ -94,7 +94,7 @@ The dashboard confirms that your application is available and protected behind C
    2. On the Access login screen, enter one of the email addresses you added to your Access policy.  
    3. Select **Send me a code**.  
    4. Enter the code from your email and select **Sign in**.
-* **Explore more with Zero Trust**: Review your applications, policies, and tunnels in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com).
+* **Explore more with Zero Trust**: Review your applications and policies in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Access controls**, and your tunnels under **Zero Trust** \> **Networks** \> **Connectors**.
 * **Configure an identity provider**: Replace email one-time PINs with your organization's identity provider for a seamless login experience. For more information, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 
 For in-depth guidance on clientless access, refer to the [Clientless access learning path](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/).

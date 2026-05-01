@@ -20,14 +20,14 @@ All custom methods automatically have full agent context. The framework automati
 
 ## How it works
 
-* [  JavaScript ](#tab-panel-3210)
-* [  TypeScript ](#tab-panel-3211)
+* [  JavaScript ](#tab-panel-2998)
+* [  TypeScript ](#tab-panel-2999)
 
 JavaScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 import { getCurrentAgent } from "agents";
 
@@ -64,7 +64,7 @@ TypeScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 import { getCurrentAgent } from "agents";
 
@@ -105,14 +105,14 @@ No configuration is required. The framework automatically:
 
 ## Real-world example
 
-* [  JavaScript ](#tab-panel-3226)
-* [  TypeScript ](#tab-panel-3227)
+* [  JavaScript ](#tab-panel-3014)
+* [  TypeScript ](#tab-panel-3015)
 
 JavaScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 import { getCurrentAgent } from "agents";
 
@@ -169,7 +169,7 @@ TypeScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 import { getCurrentAgent } from "agents";
 
@@ -230,8 +230,8 @@ export class MyAgent extends AIChatAgent {
 
 ### The context flow
 
-* [  JavaScript ](#tab-panel-3208)
-* [  TypeScript ](#tab-panel-3209)
+* [  JavaScript ](#tab-panel-2996)
+* [  TypeScript ](#tab-panel-2997)
 
 JavaScript
 
@@ -271,14 +271,14 @@ agent.customMethod();
 
 ### Working with AI SDK tools
 
-* [  JavaScript ](#tab-panel-3220)
-* [  TypeScript ](#tab-panel-3221)
+* [  JavaScript ](#tab-panel-3008)
+* [  TypeScript ](#tab-panel-3009)
 
 JavaScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 import { generateText } from "ai";
 
@@ -319,7 +319,7 @@ TypeScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 import { generateText } from "ai";
 
@@ -358,14 +358,14 @@ export class MyAgent extends AIChatAgent {
 
 ### Calling external libraries
 
-* [  JavaScript ](#tab-panel-3218)
-* [  TypeScript ](#tab-panel-3219)
+* [  JavaScript ](#tab-panel-3006)
+* [  TypeScript ](#tab-panel-3007)
 
 JavaScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 import { getCurrentAgent } from "agents";
 
@@ -400,7 +400,7 @@ TypeScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 import { getCurrentAgent } from "agents";
 
@@ -433,8 +433,8 @@ export class MyAgent extends AIChatAgent {
 
 ### Accessing request and connection context
 
-* [  JavaScript ](#tab-panel-3222)
-* [  TypeScript ](#tab-panel-3223)
+* [  JavaScript ](#tab-panel-3010)
+* [  TypeScript ](#tab-panel-3011)
 
 JavaScript
 
@@ -506,8 +506,8 @@ function logRequestInfo() {
 
 Gets the current agent from any context where it is available.
 
-* [  JavaScript ](#tab-panel-3212)
-* [  TypeScript ](#tab-panel-3213)
+* [  JavaScript ](#tab-panel-3000)
+* [  TypeScript ](#tab-panel-3001)
 
 JavaScript
 
@@ -551,14 +551,14 @@ function getCurrentAgent<T extends Agent>(): {
 
 #### Usage:
 
-* [  JavaScript ](#tab-panel-3224)
-* [  TypeScript ](#tab-panel-3225)
+* [  JavaScript ](#tab-panel-3012)
+* [  TypeScript ](#tab-panel-3013)
 
 JavaScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 import { getCurrentAgent } from "agents";
 
@@ -584,7 +584,7 @@ TypeScript
 
 ```
 
-import { AIChatAgent } from "agents/ai-chat-agent";
+import { AIChatAgent } from "@cloudflare/ai-chat";
 
 import { getCurrentAgent } from "agents";
 
@@ -625,8 +625,8 @@ The context available depends on how the method was invoked:
 1. **Use `this` when possible**: Inside agent methods, prefer `this.name`, `this.state`, etc. over `getCurrentAgent()`.
 2. **Use `getCurrentAgent()` in external functions**: When you need agent context in utility functions or libraries that do not have access to `this`.
 3. **Check for undefined**: The returned values may be `undefined` if called outside an agent context.  
-   * [  JavaScript ](#tab-panel-3216)  
-   * [  TypeScript ](#tab-panel-3217)  
+   * [  JavaScript ](#tab-panel-3004)  
+   * [  TypeScript ](#tab-panel-3005)  
 JavaScript  
 ```  
 const { agent } = getCurrentAgent();  
@@ -644,8 +644,8 @@ if (agent) {
 }  
 ```
 4. **Type the agent**: Pass your agent class as a type parameter for proper typing.  
-   * [  JavaScript ](#tab-panel-3214)  
-   * [  TypeScript ](#tab-panel-3215)  
+   * [  JavaScript ](#tab-panel-3002)  
+   * [  TypeScript ](#tab-panel-3003)  
 JavaScript  
 ```  
 const { agent } = getCurrentAgent();  

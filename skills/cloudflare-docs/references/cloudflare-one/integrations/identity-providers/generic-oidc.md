@@ -36,11 +36,11 @@ You can find these values on your identity provider's **OIDC discovery endpoint*
 
 ## 2\. Add an OIDC provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-4717)
-* [ API ](#tab-panel-4718)
-* [ Terraform (v5) ](#tab-panel-4719)
+* [ Dashboard ](#tab-panel-4521)
+* [ API ](#tab-panel-4522)
+* [ Terraform (v5) ](#tab-panel-4523)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Choose **OpenID Connect**.
 4. Name your identity provider and fill in the required fields with the information obtained from your identity provider.
@@ -149,7 +149,7 @@ Your identity provider must support SCIM version 2.0.
 
 ### 1\. Enable SCIM in Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Find the IdP integration and select **Edit**.
 3. Turn on **Enable SCIM**
 4. (Optional) Configure the following settings:
@@ -192,7 +192,7 @@ All OIDC IdP integrations support the use of custom OIDC claims. Once configured
 To add a custom OIDC claim to an IdP integration:
 
 1. In your identity provider, ensure that the custom claim is included in your OIDC ID token.
-2. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 3. Under **Your identity providers**, find your identity provider and select **Edit**.
 4. Under **OIDC Claims**, enter the name of your custom claim (for example, `oid`).
 5. Select **Save**.

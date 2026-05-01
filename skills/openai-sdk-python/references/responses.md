@@ -3822,7 +3822,7 @@ as input for the model's response.
 
     Unique identifier for this Response.
 
-  - `created_at: int`
+  - `created_at: float`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -8197,7 +8197,7 @@ as input for the model's response.
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[int]`
+  - `completed_at: Optional[float]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.
@@ -9502,7 +9502,7 @@ Retrieves a model response with the given ID.
 
     Unique identifier for this Response.
 
-  - `created_at: int`
+  - `created_at: float`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -13877,7 +13877,7 @@ Retrieves a model response with the given ID.
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[int]`
+  - `completed_at: Optional[float]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.
@@ -14484,7 +14484,7 @@ the `background` parameter set to `true` can be cancelled.
 
     Unique identifier for this Response.
 
-  - `created_at: int`
+  - `created_at: float`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -18859,7 +18859,7 @@ the `background` parameter set to `true` can be cancelled.
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[int]`
+  - `completed_at: Optional[float]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.
@@ -29781,7 +29781,7 @@ print(compacted_response)
 
     Unique identifier for this Response.
 
-  - `created_at: int`
+  - `created_at: float`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -34156,7 +34156,7 @@ print(compacted_response)
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[int]`
+  - `completed_at: Optional[float]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.
@@ -34934,7 +34934,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: int`
+    - `created_at: float`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -39309,7 +39309,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[int]`
+    - `completed_at: Optional[float]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -40837,7 +40837,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: int`
+    - `created_at: float`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -45212,7 +45212,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[int]`
+    - `completed_at: Optional[float]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -45890,7 +45890,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: int`
+    - `created_at: float`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -50265,7 +50265,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[int]`
+    - `completed_at: Optional[float]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -51689,7 +51689,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: int`
+    - `created_at: float`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -56064,7 +56064,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[int]`
+    - `completed_at: Optional[float]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -56445,7 +56445,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: int`
+    - `created_at: float`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -60820,7 +60820,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[int]`
+    - `completed_at: Optional[float]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -79497,7 +79497,7 @@ print(compacted_response)
 
       Unique identifier for this Response.
 
-    - `created_at: int`
+    - `created_at: float`
 
       Unix timestamp (in seconds) of when this Response was created.
 
@@ -83872,7 +83872,7 @@ print(compacted_response)
       Whether to run the model response in the background.
       [Learn more](https://platform.openai.com/docs/guides/background).
 
-    - `completed_at: Optional[int]`
+    - `completed_at: Optional[float]`
 
       Unix timestamp (in seconds) of when this Response was completed.
       Only present when the status is `completed`.
@@ -84767,7 +84767,7 @@ print(compacted_response)
 
         Unique identifier for this Response.
 
-      - `created_at: int`
+      - `created_at: float`
 
         Unix timestamp (in seconds) of when this Response was created.
 
@@ -89142,7 +89142,7 @@ print(compacted_response)
         Whether to run the model response in the background.
         [Learn more](https://platform.openai.com/docs/guides/background).
 
-      - `completed_at: Optional[int]`
+      - `completed_at: Optional[float]`
 
         Unix timestamp (in seconds) of when this Response was completed.
         Only present when the status is `completed`.
@@ -97079,7 +97079,7 @@ print(compacted_response)
 
         Unique identifier for this Response.
 
-      - `created_at: int`
+      - `created_at: float`
 
         Unix timestamp (in seconds) of when this Response was created.
 
@@ -101454,7 +101454,7 @@ print(compacted_response)
         Whether to run the model response in the background.
         [Learn more](https://platform.openai.com/docs/guides/background).
 
-      - `completed_at: Optional[int]`
+      - `completed_at: Optional[float]`
 
         Unix timestamp (in seconds) of when this Response was completed.
         Only present when the status is `completed`.

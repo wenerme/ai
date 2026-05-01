@@ -314,6 +314,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         'Allow tool suggestions for additional discoverable connectors or plugins. Each entry uses `type = "connector"` or `"plugin"` and an `id`.',
     },
     {
+      key: "tool_suggest.disabled_tools",
+      type: "array<table>",
+      description:
+        'Disable suggestions for specific discoverable connectors or plugins. Each entry uses `type = "connector"` or `"plugin"` and an `id`.',
+    },
+    {
       key: "features.apps",
       type: "boolean",
       description: "Enable ChatGPT Apps/connectors support (experimental).",
@@ -741,6 +747,17 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       description: "Working directory for the token command.",
     },
     {
+      key: "model_providers.amazon-bedrock.aws.profile",
+      type: "string",
+      description:
+        "AWS profile name used by the built-in `amazon-bedrock` provider.",
+    },
+    {
+      key: "model_providers.amazon-bedrock.aws.region",
+      type: "string",
+      description: "AWS region used by the built-in `amazon-bedrock` provider.",
+    },
+    {
       key: "model_reasoning_effort",
       type: "minimal | low | medium | high | xhigh",
       description:
@@ -1074,6 +1091,18 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Syntax-highlighting theme override (kebab-case theme name).",
     },
     {
+      key: "tui.keymap.<context>.<action>",
+      type: "string | array<string>",
+      description:
+        "Keyboard shortcut binding for a TUI action. Supported contexts include `global`, `chat`, `composer`, `editor`, `pager`, `list`, and `approval`; context-specific bindings override `tui.keymap.global`.",
+    },
+    {
+      key: "tui.keymap.<context>.<action> = []",
+      type: "empty array",
+      description:
+        "Unbind the action in that keymap context. Key names use normalized strings such as `ctrl-a`, `shift-enter`, or `page-down`.",
+    },
+    {
       key: "tui.model_availability_nux.<model>",
       type: "integer",
       description: "Internal startup-tooltip state keyed by model slug.",
@@ -1155,7 +1184,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "default_permissions",
       type: "string",
       description:
-        "Name of the default permissions profile to apply to sandboxed tool calls.",
+        "Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-no-sandbox`; custom profile names require matching `[permissions.<name>]` tables.",
     },
     {
       key: "permissions.<name>.filesystem",

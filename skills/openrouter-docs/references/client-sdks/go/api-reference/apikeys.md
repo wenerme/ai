@@ -4,14 +4,10 @@
 
 # APIKeys - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -31,8 +27,6 @@ API key management endpoints
 Get information on the API key associated with the current authentication session
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="getCurrentKey" method="get" path="/key" */}
 
 ```go
 package main
@@ -85,8 +79,6 @@ func main() {
 List all API keys for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="list" method="get" path="/keys" */}
 
 ```go
 package main
@@ -144,8 +136,6 @@ func main() {
 Create a new API key for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="createKeys" method="post" path="/keys" */}
 
 ```go
 package main
@@ -212,8 +202,6 @@ Delete an existing API key. [Management key](/docs/guides/overview/auth/manageme
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="deleteKeys" method="delete" path="/keys/{hash}" */}
-
 ```go
 package main
 
@@ -269,8 +257,6 @@ Get a single API key by hash. [Management key](/docs/guides/overview/auth/manage
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="getKey" method="get" path="/keys/{hash}" */}
-
 ```go
 package main
 
@@ -325,8 +311,6 @@ func main() {
 Update an existing API key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="updateKeys" method="patch" path="/keys/{hash}" */}
 
 ```go
 package main

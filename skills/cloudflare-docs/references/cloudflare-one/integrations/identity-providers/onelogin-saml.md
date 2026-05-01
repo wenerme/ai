@@ -45,7 +45,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 
 ### 2\. Add OneLogin to Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **SAML**.
 4. Input the details from your OneLogin account in the fields.

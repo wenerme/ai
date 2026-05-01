@@ -41,10 +41,10 @@ accTitle: Self-hosted MCP server accessing internal applications
 
 On each self-hosted application that the MCP server needs to access (for example, the `Internal API` and `Company wiki` apps), create a Linked App Token policy:
 
-* [ Dashboard ](#tab-panel-4595)
-* [ API ](#tab-panel-4596)
+* [ Dashboard ](#tab-panel-4399)
+* [ API ](#tab-panel-4400)
 
-1. In the [Cloudflare dashboard ↗](https://one.dash.cloudflare.com), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the downstream application and select **Edit**.
 3. Go to the **Policies** tab and select **Create new policy**.
 4. Set the policy **Action** to _Service Auth_.  
@@ -141,10 +141,10 @@ accTitle: SaaS MCP server accessing internal applications
 
 On each self-hosted application that the MCP server needs to access (for example, the `Internal API` and `Company wiki` apps), create a Linked App Token policy:
 
-* [ Dashboard ](#tab-panel-4597)
-* [ API ](#tab-panel-4598)
+* [ Dashboard ](#tab-panel-4401)
+* [ API ](#tab-panel-4402)
 
-1. In the [Cloudflare dashboard ↗](https://one.dash.cloudflare.com), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the downstream application and select **Edit**.
 3. Go to the **Policies** tab and select **Create new policy**.
 4. Set the policy **Action** to _Service Auth_.  

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Durable Objects
 
-In the following sections, we will give you some details about how to configure Durable Objects with Regional Services and Customer Metadata Boundary.
+The following sections describe how to configure Durable Objects with Regional Services and Customer Metadata Boundary to control where your Durable Objects run, persist data, and where logs are stored.
 
 ## Regional Services
 
-To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare and ensure that processing of a Durable Object (DO) occurs only in-region, follow these steps:
+To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and ensure that processing of a Durable Object (DO) occurs only in-region, follow these steps:
 
 1. Follow the steps in the Durable Objects [Get Started](https://developers.cloudflare.com/durable-objects/get-started/) guide.
 2. [Restrict Durable Objects to a jurisdiction](https://developers.cloudflare.com/durable-objects/reference/data-location/#restrict-durable-objects-to-a-jurisdiction), in order to control where the DO itself runs and persists data, by creating a jurisidictional subnamespace in your Worker’s code.

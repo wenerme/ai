@@ -3800,7 +3800,7 @@ as input for the model's response.
 
     Unique identifier for this Response.
 
-  - `created_at: int`
+  - `created_at: float`
 
     Unix timestamp (in seconds) of when this Response was created.
 
@@ -8175,7 +8175,7 @@ as input for the model's response.
     Whether to run the model response in the background.
     [Learn more](https://platform.openai.com/docs/guides/background).
 
-  - `completed_at: Optional[int]`
+  - `completed_at: Optional[float]`
 
     Unix timestamp (in seconds) of when this Response was completed.
     Only present when the status is `completed`.

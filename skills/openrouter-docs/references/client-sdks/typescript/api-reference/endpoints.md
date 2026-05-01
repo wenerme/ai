@@ -4,14 +4,10 @@
 
 # Endpoints - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ Endpoint information
 Preview the impact of ZDR on the available endpoints
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listEndpointsZdr" method="get" path="/endpoints/zdr" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -104,8 +98,6 @@ run();
 List all endpoints for a model
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listEndpoints" method="get" path="/models/{author}/{slug}/endpoints" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

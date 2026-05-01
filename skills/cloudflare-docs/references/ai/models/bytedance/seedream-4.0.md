@@ -54,7 +54,7 @@ console.log(response)
 
 ```
 
-Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/simple-generation.jpeg) 
+![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/simple-generation.jpeg) 
 
 ## Examples
 
@@ -93,7 +93,7 @@ console.log(response)
 
 ```
 
-Response200 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/high-resolution.jpeg) 
+![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/high-resolution.jpeg) 
 
 **Widescreen Landscape**  — Cinematic aspect ratio image 
 
@@ -130,7 +130,7 @@ console.log(response)
 
 ```
 
-Response200 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/widescreen-landscape.jpeg) 
+![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/widescreen-landscape.jpeg) 
 
 **Portrait Format**  — Vertical image for portraits 
 
@@ -167,7 +167,7 @@ console.log(response)
 
 ```
 
-Response200 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/portrait-format.jpeg) 
+![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/portrait-format.jpeg) 
 
 **Detailed 4K**  — High-resolution detailed botanical illustration 
 
@@ -202,12 +202,12 @@ console.log(response)
 
 ```
 
-Response200 ![Detailed 4K](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/detailed-4k.jpeg) 
+![Detailed 4K](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/detailed-4k.jpeg) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-112)
-* [ Output ](#tab-panel-113)
+* [ Input ](#tab-panel-24)
+* [ Output ](#tab-panel-25)
 
 prompt
 

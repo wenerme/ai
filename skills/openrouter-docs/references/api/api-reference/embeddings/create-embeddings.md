@@ -4,7 +4,7 @@
 
 # Submit an embedding request
 
-POST https://openrouter.ai/api/v1/embeddings
+POST https://openrouter.ai/api/v1//embeddings
 Content-Type: application/json
 
 Submits an embedding request to the embeddings router
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /embeddings:
+  //embeddings:
     post:
       operationId: create-embeddings
       summary: Submit an embedding request
@@ -89,6 +89,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServiceUnavailableResponse'
       requestBody:
+        description: Embeddings request input
         content:
           application/json:
             schema:
@@ -224,7 +225,7 @@ components:
             #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInput4
       description: Text, token, or multimodal input(s) to embed
       title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaInput
-    ProviderPreferencesDataCollection:
+    EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderDataCollection:
       type: string
       enum:
         - deny
@@ -238,7 +239,8 @@ components:
 
 
         - deny: use only providers which do not collect user data.
-      title: ProviderPreferencesDataCollection
+      title: >-
+        EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderDataCollection
     ProviderName:
       type: string
       enum:
@@ -324,58 +326,42 @@ components:
         - Z.AI
         - FakeProvider
       title: ProviderName
-    ProviderPreferencesIgnoreItems:
+    EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderIgnoreItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ProviderPreferencesIgnoreItems
-    ProviderPreferencesMaxPriceAudio:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceAudio
-    ProviderPreferencesMaxPriceCompletion:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceCompletion
-    ProviderPreferencesMaxPriceImage:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceImage
+      title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderIgnoreItems
     BigNumberUnion:
       type: string
       description: Price per million prompt tokens
       title: BigNumberUnion
-    ProviderPreferencesMaxPriceRequest:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceRequest
-    ProviderPreferencesMaxPrice:
+    EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderMaxPrice:
       type: object
       properties:
         audio:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceAudio'
+          $ref: '#/components/schemas/BigNumberUnion'
         completion:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceCompletion'
+          $ref: '#/components/schemas/BigNumberUnion'
         image:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceImage'
+          $ref: '#/components/schemas/BigNumberUnion'
         prompt:
           $ref: '#/components/schemas/BigNumberUnion'
         request:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceRequest'
+          $ref: '#/components/schemas/BigNumberUnion'
       description: >-
         The object specifying the maximum price you want to pay for this
         request. USD price per million tokens, for prompt and completion.
-      title: ProviderPreferencesMaxPrice
-    ProviderPreferencesOnlyItems:
+      title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderMaxPrice
+    EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderOnlyItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ProviderPreferencesOnlyItems
-    ProviderPreferencesOrderItems:
+      title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderOnlyItems
+    EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderOrderItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ProviderPreferencesOrderItems
+      title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderOrderItems
     PercentileLatencyCutoffs:
       type: object
       properties:
@@ -524,7 +510,7 @@ components:
             fallbacks), "none" sorts all endpoints together regardless of model.
       description: The provider sorting strategy (price, throughput, latency)
       title: ProviderSortConfig
-    ProviderPreferencesSort:
+    EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderSort:
       oneOf:
         - $ref: '#/components/schemas/ProviderSort'
         - $ref: '#/components/schemas/ProviderSortConfig'
@@ -532,7 +518,7 @@ components:
       description: >-
         The sorting strategy to use for this request, if "order" is not
         specified. When set, no load balancing is performed.
-      title: ProviderPreferencesSort
+      title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderSort
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaProvider:
       type: object
       properties:
@@ -550,7 +536,8 @@ components:
             upstream error if it's unavailable.
         data_collection:
           oneOf:
-            - $ref: '#/components/schemas/ProviderPreferencesDataCollection'
+            - $ref: >-
+                #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderDataCollection
             - type: 'null'
           description: >-
             Data collection setting. If no available model provider meets the
@@ -574,12 +561,14 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ProviderPreferencesIgnoreItems'
+            $ref: >-
+              #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderIgnoreItems
           description: >-
             List of provider slugs to ignore. If provided, this list is merged
             with your account-wide ignored provider settings for this request.
         max_price:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPrice'
+          $ref: >-
+            #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderMaxPrice
           description: >-
             The object specifying the maximum price you want to pay for this
             request. USD price per million tokens, for prompt and completion.
@@ -588,7 +577,8 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ProviderPreferencesOnlyItems'
+            $ref: >-
+              #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderOnlyItems
           description: >-
             List of provider slugs to allow. If provided, this list is merged
             with your account-wide allowed provider settings for this request.
@@ -597,7 +587,8 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ProviderPreferencesOrderItems'
+            $ref: >-
+              #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderOrderItems
           description: >-
             An ordered list of provider slugs. The router will attempt to use
             the first provider in the subset of this list that supports your
@@ -625,7 +616,8 @@ components:
             false, then providers will receive only the parameters they support,
             and ignore the rest.
         sort:
-          $ref: '#/components/schemas/ProviderPreferencesSort'
+          $ref: >-
+            #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaProviderSort
           description: >-
             The sorting strategy to use for this request, if "order" is not
             specified. When set, no load balancing is performed.
@@ -637,6 +629,7 @@ components:
             Whether to restrict routing to only ZDR (Zero Data Retention)
             endpoints. When true, only endpoints that do not retain prompts will
             be used.
+      description: Provider routing preferences for the request.
       title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaProvider
     EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsEmbedding:
       oneOf:
@@ -1011,7 +1004,7 @@ components:
 ```python
 import requests
 
-url = "https://openrouter.ai/api/v1/embeddings"
+url = "https://openrouter.ai/api/v1//embeddings"
 
 payload = {
     "input": "The quick brown fox jumps over the lazy dog",
@@ -1029,7 +1022,7 @@ print(response.json())
 ```
 
 ```javascript
-const url = 'https://openrouter.ai/api/v1/embeddings';
+const url = 'https://openrouter.ai/api/v1//embeddings';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -1057,7 +1050,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/embeddings"
+	url := "https://openrouter.ai/api/v1//embeddings"
 
 	payload := strings.NewReader("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}")
 
@@ -1081,7 +1074,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/embeddings")
+url = URI("https://openrouter.ai/api/v1//embeddings")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -1099,7 +1092,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/embeddings")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//embeddings")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}")
@@ -1112,7 +1105,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/embeddings', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1//embeddings', [
   'body' => '{
   "input": "The quick brown fox jumps over the lazy dog",
   "model": "openai/text-embedding-3-small",
@@ -1130,7 +1123,7 @@ echo $response->getBody();
 ```csharp
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/embeddings");
+var client = new RestClient("https://openrouter.ai/api/v1//embeddings");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -1153,7 +1146,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/embeddings")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//embeddings")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

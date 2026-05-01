@@ -4,14 +4,10 @@
 
 # Generations - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ Generation history endpoints
 Get request & usage metadata for a generation
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="getGeneration" method="get" path="/generation" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -115,8 +109,6 @@ run();
 Get stored prompt and completion content for a generation
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listGenerationContent" method="get" path="/generation/content" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

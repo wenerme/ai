@@ -4,14 +4,10 @@
 
 # VideoGeneration - Go SDK
 
-{/* banner:start */}
-
 <Warning>
   The Go SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -29,8 +25,6 @@ Video Generation endpoints
 Submits a video generation request and returns a polling URL to check status
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="createVideos" method="post" path="/videos" */}
 
 ```go
 package main
@@ -96,8 +90,6 @@ Returns job status and content URLs when completed
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="getVideos" method="get" path="/videos/{jobId}" */}
-
 ```go
 package main
 
@@ -151,8 +143,6 @@ func main() {
 Streams the generated video content from the upstream provider
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listVideosContent" method="get" path="/videos/{jobId}/content" */}
 
 ```go
 package main
@@ -211,8 +201,6 @@ func main() {
 Returns a list of all available video generation models and their properties
 
 ### Example Usage
-
-{/* UsageSnippet language="go" operationID="listVideosModels" method="get" path="/videos/models" */}
 
 ```go
 package main

@@ -24,13 +24,13 @@ With Require Gateway, you can allow access to your applications only to devices 
 
 ## 1\. Enable the Gateway check
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Posture checks**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
 2. Go to **Cloudflare One Client checks** and select **Add a check**.
 3. Select **Gateway**, then select **Save**.
 
 ## 2\. Add the check to an Access application
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate the application for which you want to require Gateway. Select **Configure**.
 3. In the **Policies** tab, create a new Access policy or edit an existing policy.
 4. In the policy builder, add an Include or Require rule which uses the _Gateway_ selector. Save the policy.

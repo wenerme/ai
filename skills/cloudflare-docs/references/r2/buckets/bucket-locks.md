@@ -197,6 +197,7 @@ If multiple rules apply to the same prefix or object key, the strictest (longest
 * Rules without prefix apply to all objects in the bucket.
 * Rules apply to both new and existing objects in the bucket.
 * Bucket lock rules take precedence over [lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/). For example, if a lifecycle rule attempts to delete an object at 30 days but a bucket lock rule requires it be retained for 90 days, the object will not be deleted until the 90-day requirement is met.
+* A bucket cannot be emptied while any bucket lock rules are configured. Remove all lock rules before [emptying a bucket](https://developers.cloudflare.com/r2/buckets/delete-buckets/#empty-a-bucket). Bucket lock rules also apply when [deleting folders](https://developers.cloudflare.com/r2/objects/delete-objects/) from the dashboard.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/buckets/","name":"Buckets"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/buckets/bucket-locks/","name":"Bucket locks"}}]}

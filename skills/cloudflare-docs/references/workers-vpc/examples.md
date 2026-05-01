@@ -14,6 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 * [ Access a private API or website ](https://developers.cloudflare.com/workers-vpc/examples/private-api/)
 * [ Access a private S3 bucket ](https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/)
+* [ Connect to a private database ](https://developers.cloudflare.com/workers-vpc/examples/private-database/)
 * [ Connect Workers to Cloudflare Mesh ](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/)
 * [ Route to private services from Workers ](https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/)
 

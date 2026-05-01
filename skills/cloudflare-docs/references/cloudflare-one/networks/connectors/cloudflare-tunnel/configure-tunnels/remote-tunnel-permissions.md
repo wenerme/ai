@@ -23,11 +23,11 @@ A remotely-managed tunnel only requires the tunnel token to run. Anyone with acc
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-4748)
-* [ API ](#tab-panel-4749)
-* [ Terraform (v5) ](#tab-panel-4750)
+* [ Dashboard ](#tab-panel-4552)
+* [ API ](#tab-panel-4553)
+* [ Terraform (v5) ](#tab-panel-4554)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select a `cloudflared` tunnel and select **Edit**.
 3. Copy the `cloudflared` installation command into a text editor (do not run the command). The token is the `eyJ...` string.
 
@@ -139,9 +139,9 @@ Cloudflare recommends rotating the tunnel token at a regular cadence to reduce t
 To rotate a tunnel token:
 
 1. Refresh the token on Cloudflare:  
-   * [ Dashboard ](#tab-panel-4751)  
-   * [ API ](#tab-panel-4752)  
-   1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.  
+   * [ Dashboard ](#tab-panel-4555)  
+   * [ API ](#tab-panel-4556)  
+   1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.  
    2. Select a `cloudflared` tunnel and select **Edit**.  
    3. Select **Refresh token**.  
    4. Copy the `cloudflared` installation command for your operating system. This command contains the new token.  

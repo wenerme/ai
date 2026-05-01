@@ -4,14 +4,10 @@
 
 # Chat - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -24,8 +20,6 @@
 Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="sendChatCompletionRequest" method="post" path="/chat/completions" */}
 
 ```python
 from openrouter import OpenRouter

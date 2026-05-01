@@ -69,6 +69,16 @@ sandbox_mode = "workspace-write"
 
 For mode-by-mode behavior (including protected `.git`/`.codex` paths and network defaults), see [Sandbox and approvals](https://developers.openai.com/codex/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](https://developers.openai.com/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](https://developers.openai.com/codex/agent-approvals-security#network-access).
 
+#### Permission profiles
+
+Use a named permission profile when you want one reusable filesystem or network policy across sessions:
+
+```toml
+default_permissions = ":workspace"
+```
+
+Built-in profiles include `:read-only`, `:workspace`, and `:danger-no-sandbox`. For custom filesystem or network rules, define `[permissions.<name>]` tables and set `default_permissions` to that name.
+
 #### Windows sandbox mode
 
 When running Codex natively on Windows, set the native sandbox mode to `elevated` in the `windows` table. Use `unelevated` only if you don't have administrator permissions or if elevated setup fails.
@@ -110,6 +120,18 @@ personality = "friendly" # or "pragmatic" or "none"
 ```
 
 You can override this later in an active session with `/personality` or per thread/turn when using the app-server APIs.
+
+#### TUI keymap
+
+Customize terminal shortcuts under `tui.keymap`. Context-specific bindings override `tui.keymap.global`, and an empty list unbinds the action.
+
+```toml
+[tui.keymap.global]
+open_transcript = "ctrl-t"
+
+[tui.keymap.composer]
+submit = ["enter", "ctrl-m"]
+```
 
 #### Command environment
 

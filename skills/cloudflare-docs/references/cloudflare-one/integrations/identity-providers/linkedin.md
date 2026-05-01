@@ -36,7 +36,7 @@ To configure LinkedIn as an IdP:
 8. In the **Products** tab of your LinkedIn application, select **Request Access** next to the **Sign In with LinkedIn using OpenID Connect** option.
 9. In the **Auth** tab of your LinkedIn application, find the **Client ID** and **Client Secret**.  
 ![LinkedIn account settings where you will copy the Client ID and Client Secret](https://developers.cloudflare.com/_astro/lin5.ovn9KSN7_Z1EBFwv.webp)
-10. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Identity providers**.
+10. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 11. Under **Your identity providers**, select **Add new identity provider**.
 12. Select **LinkedIn** as your IdP.
 13. In the **App ID** field, copy and paste the **Client ID** from step 9\. In the **Client secret** field, copy and paste the **Client secret** from step 9.
@@ -48,7 +48,7 @@ https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```  
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 
-To test that your connection is working, go to [Cloudflare One ↗](https://one.dash.cloudflare.com/) \> **Integrations** \> **Identity providers** \> select **Test** next to your LinkedIn login method.
+To test that your connection is working, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) \> **Zero Trust** \> **Integrations** \> **Identity providers** and select **Test** next to your LinkedIn login method.
 
 ## Example API configuration
 

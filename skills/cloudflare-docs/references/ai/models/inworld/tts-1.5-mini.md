@@ -63,8 +63,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Fast Speech**  — Speed up speech for quick playback 
@@ -106,8 +104,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Low Latency**  — Minimize latency by disabling text normalization 
 
 TypeScript
@@ -147,12 +143,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-186)
-* [ Output ](#tab-panel-187)
+* [ Input ](#tab-panel-54)
+* [ Output ](#tab-panel-55)
 
 text
 

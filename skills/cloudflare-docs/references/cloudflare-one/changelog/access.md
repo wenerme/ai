@@ -26,6 +26,25 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 To get started, refer to [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/).
 
+## 2026-04-17
+
+  
+**Homepage and sign-out for MCP server portals**   
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) display a homepage when users visit the portal domain in a browser.
+
+![MCP server portal homepage showing connection status and setup instructions](https://developers.cloudflare.com/_astro/portals-homepage-disconnected.BHbOwayQ_Z1G37WD.webp) 
+
+The homepage shows:
+
+* The portal name and organization branding
+* The MCP endpoint URL with a copy button
+* Per-client connection instructions for Claude Desktop, Workers AI Playground, OpenCode, Windsurf, and other MCP clients
+
+Authenticated users see their email address and a **Sign out** button. Selecting **Sign out** revokes all portal-level OAuth grants, deletes upstream server OAuth states, and redirects through Cloudflare Access logout. A confirmation page shows a summary of the revoked sessions.
+
+For more information, refer to [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#portal-homepage).
+
 ## 2026-04-15
 
   

@@ -4,7 +4,7 @@
 
 # List all key assignments
 
-GET https://openrouter.ai/api/v1/guardrails/assignments/keys
+GET https://openrouter.ai/api/v1//guardrails/assignments/keys
 
 List all API key guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /guardrails/assignments/keys:
+  //guardrails/assignments/keys:
     get:
       operationId: list-key-assignments
       summary: List all key assignments
@@ -194,10 +194,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python Guardrails_listKeyAssignments_example
 import requests
 
-url = "https://openrouter.ai/api/v1/guardrails/assignments/keys"
+url = "https://openrouter.ai/api/v1//guardrails/assignments/keys"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -206,8 +206,8 @@ response = requests.get(url, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/guardrails/assignments/keys';
+```javascript Guardrails_listKeyAssignments_example
+const url = 'https://openrouter.ai/api/v1//guardrails/assignments/keys';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -219,7 +219,7 @@ try {
 }
 ```
 
-```go
+```go Guardrails_listKeyAssignments_example
 package main
 
 import (
@@ -230,7 +230,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/guardrails/assignments/keys"
+	url := "https://openrouter.ai/api/v1//guardrails/assignments/keys"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -247,11 +247,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby Guardrails_listKeyAssignments_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/guardrails/assignments/keys")
+url = URI("https://openrouter.ai/api/v1//guardrails/assignments/keys")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -263,22 +263,22 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java Guardrails_listKeyAssignments_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/guardrails/assignments/keys")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//guardrails/assignments/keys")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
 
-```php
+```php Guardrails_listKeyAssignments_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/guardrails/assignments/keys', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1//guardrails/assignments/keys', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -287,21 +287,21 @@ $response = $client->request('GET', 'https://openrouter.ai/api/v1/guardrails/ass
 echo $response->getBody();
 ```
 
-```csharp
+```csharp Guardrails_listKeyAssignments_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/guardrails/assignments/keys");
+var client = new RestClient("https://openrouter.ai/api/v1//guardrails/assignments/keys");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift Guardrails_listKeyAssignments_example
 import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails/assignments/keys")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails/assignments/keys")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

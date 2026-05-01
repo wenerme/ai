@@ -12,6 +12,21 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Region support
 
+The Data Localization Suite allows you to restrict where your data is processed and stored. The table below shows which regions are available for each DLS feature:
+
+* **Geo Key Manager** — restricts where your TLS private keys are stored.
+* **Regional Services** — restricts which Cloudflare data centers can decrypt and inspect your HTTPS traffic.
+* **Customer Metadata Boundary (CMB)** — restricts where your logs and analytics data are stored.
+
+Some regions are defined by geography (for example, "Germany"), while others are defined by compliance frameworks:
+
+* **FedRAMP Moderate** — the US Federal Risk and Authorization Management Program, a government security certification standard. "Domestic" means only US-based certified data centers. "International" includes certified data centers outside the US.
+* **IRAP Protected** — the Australian government's Information Security Registered Assessors Program. This region includes IRAP-assessed data centers, which may be located outside Australia.
+* **ISO 27001 Certified European Union** — restricts traffic to EU data centers that hold ISO 27001 certification, an international standard for information security management.
+* **Cloudflare Green Energy** — restricts traffic to data centers powered by renewable energy sources. This is an energy-sourcing constraint, not a geographic one.
+
+"Exclusive of" regions work in reverse — they exclude specific countries rather than restricting to them. For example, "Exclusive of Russia and Belarus" means Cloudflare will use any data center worldwide except those in Russia and Belarus.
+
 Support by product and region is summarized in the following table:
 
 | Region                                                                                   | Geo Key Manager           | Regional Services | Customer Metadata Boundary    |
@@ -94,7 +109,7 @@ Refer to the table below for the complete list of available regions and their de
 
 ## Footnotes
 
-1. Only supported in [Geo Key Manager v2](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/). [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3) [↩4](#user-content-fnref-1-4) [↩5](#user-content-fnref-1-5) [↩6](#user-content-fnref-1-6) [↩7](#user-content-fnref-1-7) [↩8](#user-content-fnref-1-8) [↩9](#user-content-fnref-1-9)
+1. Only supported in [Geo Key Manager v2](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/), the current version with expanded region support. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3) [↩4](#user-content-fnref-1-4) [↩5](#user-content-fnref-1-5) [↩6](#user-content-fnref-1-6) [↩7](#user-content-fnref-1-7) [↩8](#user-content-fnref-1-8) [↩9](#user-content-fnref-1-9)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/region-support/","name":"Region support"}}]}

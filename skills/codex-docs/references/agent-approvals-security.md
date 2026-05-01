@@ -24,7 +24,7 @@ Codex uses different sandbox modes depending on where you run it:
 - **Codex cloud**: Runs in isolated OpenAI-managed containers, preventing access to your host system or unrelated data. Uses a two-phase runtime model: setup runs before the agent phase and can access the network to install specified dependencies, then the agent phase runs offline by default unless you enable internet access for that environment. Secrets configured for cloud environments are available only during setup and are removed before the agent phase starts.
 - **Codex CLI / IDE extension**: OS-level mechanisms enforce sandbox policies. Defaults include no network access and write permissions limited to the active workspace. You can configure the sandbox, approval policy, and network settings based on your risk tolerance.
 
-In the `Auto` preset (for example, `--full-auto`), Codex can read files, make edits, and run commands in the working directory automatically.
+In the `Auto` preset (for example, `--sandbox workspace-write --ask-for-approval on-request`), Codex can read files, make edits, and run commands in the working directory automatically.
 
 Codex asks for approval to edit files outside the workspace or to run commands that require network access. If you want to chat or plan without making changes, switch to `read-only` mode with the `/permissions` command.
 
@@ -148,15 +148,15 @@ can constrain it with `allowed_approvals_reviewers`.
 
 ### Common sandbox and approval combinations
 
-| Intent                                                            | Flags                                                          | Effect                                                                                                                                           |
-| ----------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Auto (preset)                                                     | _no flags needed_ or `--full-auto`                             | Codex can read files, make edits, and run commands in the workspace. Codex requires approval to edit outside the workspace or to access network. |
-| Safe read-only browsing                                           | `--sandbox read-only --ask-for-approval on-request`            | Codex can read files and answer questions. Codex requires approval to make edits, run commands, or access network.                               |
-| Read-only non-interactive (CI)                                    | `--sandbox read-only --ask-for-approval never`                 | Codex can only read files; never asks for approval.                                                                                              |
-| Automatically edit but ask for approval to run untrusted commands | `--sandbox workspace-write --ask-for-approval untrusted`       | Codex can read and edit files but asks for approval before running untrusted commands.                                                           |
-| Dangerous full access                                             | `--dangerously-bypass-approvals-and-sandbox` (alias: `--yolo`) | <ElevatedRiskBadge /> No sandbox; no approvals _(not recommended)_                                                                               |
+| Intent                                                            | Flags                                                                          | Effect                                                                                                                                           |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Auto (preset)                                                     | _no flags needed_ or `--sandbox workspace-write --ask-for-approval on-request` | Codex can read files, make edits, and run commands in the workspace. Codex requires approval to edit outside the workspace or to access network. |
+| Safe read-only browsing                                           | `--sandbox read-only --ask-for-approval on-request`                            | Codex can read files and answer questions. Codex requires approval to make edits, run commands, or access network.                               |
+| Read-only non-interactive (CI)                                    | `--sandbox read-only --ask-for-approval never`                                 | Codex can only read files; never asks for approval.                                                                                              |
+| Automatically edit but ask for approval to run untrusted commands | `--sandbox workspace-write --ask-for-approval untrusted`                       | Codex can read and edit files but asks for approval before running untrusted commands.                                                           |
+| Dangerous full access                                             | `--dangerously-bypass-approvals-and-sandbox` (alias: `--yolo`)                 | <ElevatedRiskBadge /> No sandbox; no approvals _(not recommended)_                                                                               |
 
-`--full-auto` is a convenience alias for `--sandbox workspace-write --ask-for-approval on-request`.
+For non-interactive runs, use `codex exec --sandbox workspace-write`; Codex keeps older `codex exec --full-auto` invocations as a deprecated compatibility path and prints a warning.
 
 With `--ask-for-approval untrusted`, Codex runs only known-safe read operations automatically. Commands that can mutate state or trigger external execution paths (for example, destructive Git operations or Git output/config-override flags) require approval.
 
@@ -202,9 +202,11 @@ To see what happens when a command runs under the Codex sandbox, use these Codex
 
 ```bash
 # macOS
-codex sandbox macos [--full-auto] [--log-denials] [COMMAND]...
+codex sandbox macos [--permissions-profile <name>] [--log-denials] [COMMAND]...
 # Linux
-codex sandbox linux [--full-auto] [COMMAND]...
+codex sandbox linux [--permissions-profile <name>] [COMMAND]...
+# Windows
+codex sandbox windows [--permissions-profile <name>] [COMMAND]...
 ```
 
 The `sandbox` command is also available as `codex debug`, and the platform helpers have aliases (for example `codex sandbox seatbelt` and `codex sandbox landlock`).

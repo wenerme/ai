@@ -4,14 +4,10 @@
 
 # Rerank - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Rerank endpoints
 Submits a rerank request to the rerank router
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="createRerank" method="post" path="/rerank" */}
 
 ```python
 from openrouter import OpenRouter

@@ -4,14 +4,10 @@
 
 # Embeddings - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ Text embedding endpoints
 Submits an embedding request to the embeddings router
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="createEmbeddings" method="post" path="/embeddings" */}
 
 ```python
 from openrouter import OpenRouter
@@ -89,8 +83,6 @@ with OpenRouter(
 Returns a list of all available embeddings models and their properties
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listEmbeddingsModels" method="get" path="/embeddings/models" */}
 
 ```python
 from openrouter import OpenRouter

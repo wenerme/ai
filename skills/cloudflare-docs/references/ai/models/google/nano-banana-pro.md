@@ -61,7 +61,7 @@ console.log(response)
 
 ```
 
-Response200 ![Product Photography](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/product-photography.png) 
+![Product Photography](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/product-photography.png) 
 
 ## Examples
 
@@ -100,7 +100,7 @@ console.log(response)
 
 ```
 
-Response200 ![Fantasy Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/fantasy-illustration.png) 
+![Fantasy Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/fantasy-illustration.png) 
 
 **Architectural Visualization**  — Modern architecture render 
 
@@ -139,7 +139,7 @@ console.log(response)
 
 ```
 
-Response200 ![Architectural Visualization](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/architectural-visualization.jpg) 
+![Architectural Visualization](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/architectural-visualization.jpg) 
 
 **Character Design**  — Game character concept art 
 
@@ -174,12 +174,12 @@ console.log(response)
 
 ```
 
-Response200 ![Character Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/character-design.png) 
+![Character Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/character-design.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-174)
-* [ Output ](#tab-panel-175)
+* [ Input ](#tab-panel-42)
+* [ Output ](#tab-panel-43)
 
 prompt
 

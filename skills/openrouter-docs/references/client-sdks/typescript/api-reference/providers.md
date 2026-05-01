@@ -4,14 +4,10 @@
 
 # Providers - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Provider information endpoints
 List all providers
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listProviders" method="get" path="/providers" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

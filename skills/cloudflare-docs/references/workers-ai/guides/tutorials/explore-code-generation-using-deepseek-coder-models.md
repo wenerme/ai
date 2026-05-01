@@ -174,14 +174,16 @@ display(Markdown(f"""
 
     {code.strip()}
 
-
-```
+    ```
 
 """))
 
+
 ```
 
-```python
+Python
+
+```
 
 # A function that checks if a given word is a palindrome
 
@@ -444,14 +446,16 @@ display(Markdown(f"""
 
     {response.strip()}
 
-
-```
+    ```
 
 """))
 
+
 ```
 
-```python
+Python
+
+```
 
 is_valid_email = re.match(r"[^@]+@[^@]+\.[^@]+", email_address)
 
@@ -578,14 +582,14 @@ display(Markdown(f"""
 
     {response.strip()}
 
-
-```
+    ```
 
 """))
 
+
 ```
 
-```json
+```
 
 {
 

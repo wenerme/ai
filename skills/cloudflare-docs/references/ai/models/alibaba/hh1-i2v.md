@@ -59,8 +59,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **High Resolution**  — Generate at 1080P with a longer duration 
@@ -100,8 +98,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Reproducible Output**  — Use a fixed seed for reproducibility 
 
 TypeScript
@@ -140,8 +136,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 ## Parameters
 

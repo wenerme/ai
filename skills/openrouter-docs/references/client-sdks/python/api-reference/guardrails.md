@@ -4,14 +4,10 @@
 
 # Guardrails - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -38,8 +34,6 @@ Guardrails endpoints
 List all guardrails for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listGuardrails" method="get" path="/guardrails" */}
 
 ```python
 from openrouter import OpenRouter
@@ -90,8 +84,6 @@ with OpenRouter(
 Create a new guardrail for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="createGuardrail" method="post" path="/guardrails" */}
 
 ```python
 from openrouter import OpenRouter
@@ -154,8 +146,6 @@ Delete an existing guardrail. [Management key](/docs/guides/overview/auth/manage
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="deleteGuardrail" method="delete" path="/guardrails/{id}" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -203,8 +193,6 @@ Get a single guardrail by ID. [Management key](/docs/guides/overview/auth/manage
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="getGuardrail" method="get" path="/guardrails/{id}" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -251,8 +239,6 @@ with OpenRouter(
 Update an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="updateGuardrail" method="patch" path="/guardrails/{id}" */}
 
 ```python
 from openrouter import OpenRouter
@@ -311,8 +297,6 @@ List all API key assignments for a specific guardrail. [Management key](/docs/gu
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="listGuardrailKeyAssignments" method="get" path="/guardrails/{id}/assignments/keys" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -363,8 +347,6 @@ with OpenRouter(
 Assign multiple API keys to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="bulkAssignKeysToGuardrail" method="post" path="/guardrails/{id}/assignments/keys" */}
 
 ```python
 from openrouter import OpenRouter
@@ -417,8 +399,6 @@ Unassign multiple API keys from a specific guardrail. [Management key](/docs/gui
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="bulkUnassignKeysFromGuardrail" method="post" path="/guardrails/{id}/assignments/keys/remove" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -470,8 +450,6 @@ List all organization member assignments for a specific guardrail. [Management k
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="listGuardrailMemberAssignments" method="get" path="/guardrails/{id}/assignments/members" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -522,8 +500,6 @@ with OpenRouter(
 Assign multiple organization members to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="bulkAssignMembersToGuardrail" method="post" path="/guardrails/{id}/assignments/members" */}
 
 ```python
 from openrouter import OpenRouter
@@ -577,8 +553,6 @@ Unassign multiple organization members from a specific guardrail. [Management ke
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="bulkUnassignMembersFromGuardrail" method="post" path="/guardrails/{id}/assignments/members/remove" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -631,8 +605,6 @@ List all API key guardrail assignments for the authenticated user. [Management k
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="listKeyAssignments" method="get" path="/guardrails/assignments/keys" */}
-
 ```python
 from openrouter import OpenRouter
 import os
@@ -681,8 +653,6 @@ with OpenRouter(
 List all organization member guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="listMemberAssignments" method="get" path="/guardrails/assignments/members" */}
 
 ```python
 from openrouter import OpenRouter

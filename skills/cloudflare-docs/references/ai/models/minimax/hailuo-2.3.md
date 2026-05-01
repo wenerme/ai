@@ -63,8 +63,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **High Resolution**  — 1080P video for higher quality output 
@@ -105,8 +103,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Image to Video**  — Animate a still image with I2V 
 
@@ -151,8 +147,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Fast Processing**  — Enable fast pretreatment for quicker results 
 
 TypeScript
@@ -192,12 +186,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-188)
-* [ Output ](#tab-panel-189)
+* [ Input ](#tab-panel-56)
+* [ Output ](#tab-panel-57)
 
 prompt
 

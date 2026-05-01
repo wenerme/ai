@@ -76,11 +76,11 @@ More narrow permissions may be used, however this is the set of permissions that
 
 ### 3\. Add Entra ID as an identity provider
 
-* [ Dashboard ](#tab-panel-4714)
-* [ API ](#tab-panel-4715)
-* [ Terraform ](#tab-panel-4716)
+* [ Dashboard ](#tab-panel-4518)
+* [ API ](#tab-panel-4519)
+* [ Terraform ](#tab-panel-4520)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **Azure AD**.
 4. Enter the **Application (client) ID**, **Client secret**, and **Directory (tenant) ID** obtained from Microsoft Entra ID.
@@ -169,7 +169,7 @@ To receive an email claim in the `id_token` from Microsoft Entra, you must:
 ![Email claim for Entra](https://developers.cloudflare.com/_astro/entra-email-claim.CPt-1jZE_1PVHWt.webp)  
 The example above includes both a UPN claim and an email claim. Because an email claim was created in the Microsoft Entra configuration, Cloudflare will look for the `email` key-value pair in the JSON response.
 4. If you gave your email claim another name than `email`, you must update your configuration in Cloudflare One:  
-a. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers** \> **Azure AD** \> **Edit**.  
+a. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers** \> **Azure AD** \> **Edit**.  
 b. Under **Optional configurations** \> **Email claim**, enter the name of the claim representing your organization's email addresses.
 
 #### Object ID
@@ -186,7 +186,7 @@ The Microsoft Entra ID integration allows you to synchronize IdP groups and auto
 
 ### 1\. Enable SCIM in Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Find the Entra ID integration and select **Edit**.
 3. Turn on **Enable SCIM**  and **Support groups**.
 4. (Optional) Configure the following settings:
@@ -234,7 +234,7 @@ Note
 
 New users must first [register the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) or authenticate to an Access application before SCIM provisioning can begin.
 
-To monitor the exchange of identity details between Cloudflare Access and Microsoft Entra ID, go to [Cloudflare One ↗](https://one.dash.cloudflare.com) \> **Insights** \> **Logs** \> **SCIM provisioning logs** and view the [SCIM activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/).
+To monitor the exchange of identity details between Cloudflare Access and Microsoft Entra ID, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) \> **Zero Trust** \> **Insights** \> **Logs** \> **SCIM provisioning logs** and view the [SCIM activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/).
 
 ### Provisioning attributes
 

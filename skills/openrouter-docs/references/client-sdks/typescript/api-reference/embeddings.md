@@ -4,14 +4,10 @@
 
 # Embeddings - TypeScript SDK
 
-{/* banner:start */}
-
 <Warning>
   The TypeScript SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/typescript-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -27,8 +23,6 @@ Text embedding endpoints
 Submits an embedding request to the embeddings router
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="createEmbeddings" method="post" path="/embeddings" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -123,8 +117,6 @@ run();
 Returns a list of all available embeddings models and their properties
 
 ### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="listEmbeddingsModels" method="get" path="/embeddings/models" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";

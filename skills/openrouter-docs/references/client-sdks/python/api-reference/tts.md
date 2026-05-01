@@ -4,14 +4,10 @@
 
 # Tts - Python SDK
 
-{/* banner:start */}
-
 <Warning>
   The Python SDK and docs are currently in beta.
   Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 </Warning>
-
-{/* banner:end */}
 
 ## Overview
 
@@ -26,8 +22,6 @@ Text-to-speech endpoints
 Synthesizes audio from the input text
 
 ### Example Usage
-
-{/* UsageSnippet language="python" operationID="createAudioSpeech" method="post" path="/audio/speech" */}
 
 ```python
 from openrouter import OpenRouter

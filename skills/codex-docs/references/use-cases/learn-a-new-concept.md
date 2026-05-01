@@ -6,9 +6,8 @@ summary: Use Codex to study material such as research papers or courses, split
   with diagrams.
 skills:
   - token: $imagegen
-    url: https://github.com/openai/skills/tree/main/skills/.curated/imagegen
-    description: Generate illustrative, non-exact visual assets when a
-      Markdown-native diagram is not enough.
+    description: Generate illustrative, non-exact visual assets when a Mermaid
+      diagram is not enough.
 bestFor:
   - Individuals learning about an unfamiliar concept
   - Dense source material that benefits from parallel reading, context
@@ -134,7 +133,7 @@ Good defaults include:
 - An experiment map that connects datasets, metrics, baselines, and reported claims.
 - A limitations diagram that separates assumptions, failure modes, and open questions.
 
-For Markdown-first reports, ask for Mermaid when the destination supports it, or a small checked-in SVG/PNG asset when it does not. Ask Codex to use imagegen only when you need an illustrative, non-exact visual or something that doesn't fit in a Markdown-native diagram.
+For Markdown-first reports, ask for Mermaid when the destination supports it, or a small checked-in SVG/PNG asset when it does not. Ask Codex to use the imagegen system skill, which comes with Codex by default, only when you need an illustrative, non-exact visual or something that doesn't fit in a Markdown-native diagram.
 
 ## Write the Markdown report
 

@@ -63,8 +63,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Examples
 
 **Social Content**  — Quick vertical video for social media 
@@ -106,8 +104,6 @@ console.log(response)
 
 ```
 
-Response200 
-
 **Motion Graphics**  — Quick animated graphics 
 
 TypeScript
@@ -146,8 +142,6 @@ console.log(response)
 
 
 ```
-
-Response200 
 
 **Ambient Scene**  — Relaxing background video 
 
@@ -188,12 +182,10 @@ console.log(response)
 
 ```
 
-Response200 
-
 ## Parameters
 
-* [ Input ](#tab-panel-182)
-* [ Output ](#tab-panel-183)
+* [ Input ](#tab-panel-50)
+* [ Output ](#tab-panel-51)
 
 prompt
 

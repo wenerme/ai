@@ -55,7 +55,7 @@ console.log(response)
 
 ```
 
-Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/simple-generation.png) 
+![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/simple-generation.png) 
 
 ## Examples
 
@@ -90,7 +90,7 @@ console.log(response)
 
 ```
 
-Response200 ![Scene Composition](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/scene-composition.png) 
+![Scene Composition](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/scene-composition.png) 
 
 **Custom Size**  — Specify output dimensions 
 
@@ -125,7 +125,7 @@ console.log(response)
 
 ```
 
-Response200 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/custom-size.png) 
+![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/custom-size.png) 
 
 **With Color Controls**  — Guide generation with specific brand colors 
 
@@ -178,7 +178,7 @@ console.log(response)
 
 ```
 
-Response200 ![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/with-color-controls.png) 
+![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/with-color-controls.png) 
 
 **Background Color**  — Set a specific background color 
 
@@ -221,12 +221,12 @@ console.log(response)
 
 ```
 
-Response200 ![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/background-color.png) 
+![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/background-color.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-338)
-* [ Output ](#tab-panel-339)
+* [ Input ](#tab-panel-100)
+* [ Output ](#tab-panel-101)
 
 prompt
 

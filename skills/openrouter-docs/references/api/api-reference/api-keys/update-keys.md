@@ -4,7 +4,7 @@
 
 # Update an API key
 
-PATCH https://openrouter.ai/api/v1/keys/{hash}
+PATCH https://openrouter.ai/api/v1//keys/{hash}
 Content-Type: application/json
 
 Update an existing API key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /keys/{hash}:
+  //keys/{hash}:
     patch:
       operationId: update-keys
       summary: Update an API key
@@ -419,10 +419,10 @@ components:
 
 ## SDK Code Examples
 
-```python
+```python API Keys_updateKeys_example
 import requests
 
-url = "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
+url = "https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
 
 payload = {
     "disabled": False,
@@ -441,8 +441,8 @@ response = requests.patch(url, json=payload, headers=headers)
 print(response.json())
 ```
 
-```javascript
-const url = 'https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943';
+```javascript API Keys_updateKeys_example
+const url = 'https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943';
 const options = {
   method: 'PATCH',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -458,7 +458,7 @@ try {
 }
 ```
 
-```go
+```go API Keys_updateKeys_example
 package main
 
 import (
@@ -470,7 +470,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
+	url := "https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
 
 	payload := strings.NewReader("{\n  \"disabled\": false,\n  \"include_byok_in_limit\": true,\n  \"limit\": 75,\n  \"limit_reset\": \"daily\",\n  \"name\": \"Updated API Key Name\"\n}")
 
@@ -490,11 +490,11 @@ func main() {
 }
 ```
 
-```ruby
+```ruby API Keys_updateKeys_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
+url = URI("https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -508,24 +508,24 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```java
+```java API Keys_updateKeys_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.patch("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
+HttpResponse<String> response = Unirest.patch("https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"disabled\": false,\n  \"include_byok_in_limit\": true,\n  \"limit\": 75,\n  \"limit_reset\": \"daily\",\n  \"name\": \"Updated API Key Name\"\n}")
   .asString();
 ```
 
-```php
+```php API Keys_updateKeys_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('PATCH', 'https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943', [
+$response = $client->request('PATCH', 'https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943', [
   'body' => '{
   "disabled": false,
   "include_byok_in_limit": true,
@@ -542,10 +542,10 @@ $response = $client->request('PATCH', 'https://openrouter.ai/api/v1/keys/f01d526
 echo $response->getBody();
 ```
 
-```csharp
+```csharp API Keys_updateKeys_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943");
+var client = new RestClient("https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -553,7 +553,7 @@ request.AddParameter("application/json", "{\n  \"disabled\": false,\n  \"include
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift API Keys_updateKeys_example
 import Foundation
 
 let headers = [
@@ -570,7 +570,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "PATCH"
