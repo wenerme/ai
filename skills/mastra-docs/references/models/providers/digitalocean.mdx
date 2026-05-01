@@ -1,11 +1,11 @@
 ---
 title: "DigitalOcean | Models"
-description: "Use DigitalOcean models with Mastra. 46 models available."
+description: "Use DigitalOcean models with Mastra. 62 models available."
 ---
 
 # [DigitalOcean logo]DigitalOcean
 
-Access 46 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
+Access 62 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
 
 Learn more in the [DigitalOcean documentation](https://docs.digitalocean.com/products/gradient-ai-platform/details/models/).
 
@@ -184,6 +184,42 @@ for await (const chunk of stream) {
     "outputCost": 0.9
   },
   {
+    "model": "digitalocean/bge-m3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 8192,
+    "maxOutput": 1024,
+    "inputCost": 0.02,
+    "outputCost": null
+  },
+  {
+    "model": "digitalocean/bge-reranker-v2-m3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 8192,
+    "maxOutput": 1,
+    "inputCost": 0.01,
+    "outputCost": null
+  },
+  {
+    "model": "digitalocean/deepseek-3.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 128000,
+    "maxOutput": 64000,
+    "inputCost": 0.5,
+    "outputCost": 1.6
+  },
+  {
     "model": "digitalocean/deepseek-r1-distill-llama-70b",
     "imageInput": false,
     "audioInput": false,
@@ -194,6 +230,18 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.99,
     "outputCost": 0.99
+  },
+  {
+    "model": "digitalocean/e5-large-v2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 512,
+    "maxOutput": 1024,
+    "inputCost": 0.02,
+    "outputCost": null
   },
   {
     "model": "digitalocean/fal-ai/elevenlabs/tts/multilingual-v2",
@@ -244,6 +292,18 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "digitalocean/gemma-4-31B-it",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 256000,
+    "maxOutput": 8192,
+    "inputCost": 0.18,
+    "outputCost": 0.5
+  },
+  {
     "model": "digitalocean/glm-5",
     "imageInput": false,
     "audioInput": false,
@@ -280,6 +340,30 @@ for await (const chunk of stream) {
     "outputCost": 2.7
   },
   {
+    "model": "digitalocean/llama-4-maverick",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 1000000,
+    "maxOutput": 16384,
+    "inputCost": 0.25,
+    "outputCost": 0.87
+  },
+  {
+    "model": "digitalocean/llama-guard-4-12b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 128000,
+    "maxOutput": 16384,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "digitalocean/llama3.3-70b-instruct",
     "imageInput": false,
     "audioInput": false,
@@ -304,6 +388,18 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
+    "model": "digitalocean/mistral-3-14B",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 262144,
+    "maxOutput": 128000,
+    "inputCost": 0.2,
+    "outputCost": 0.2
+  },
+  {
     "model": "digitalocean/multi-qa-mpnet-base-dot-v1",
     "imageInput": false,
     "audioInput": false,
@@ -314,6 +410,30 @@ for await (const chunk of stream) {
     "maxOutput": 768,
     "inputCost": 0.009,
     "outputCost": null
+  },
+  {
+    "model": "digitalocean/nemotron-3-nano-omni",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 65536,
+    "maxOutput": 65536,
+    "inputCost": 0.5,
+    "outputCost": 0.9
+  },
+  {
+    "model": "digitalocean/nemotron-nano-12b-v2-vl",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 128000,
+    "maxOutput": 16384,
+    "inputCost": 0.2,
+    "outputCost": 0.6
   },
   {
     "model": "digitalocean/nvidia-nemotron-3-super-120b",
@@ -376,18 +496,6 @@ for await (const chunk of stream) {
     "outputCost": 10
   },
   {
-    "model": "digitalocean/openai-gpt-5-2-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 400000,
-    "maxOutput": 128000,
-    "inputCost": 21,
-    "outputCost": 168
-  },
-  {
     "model": "digitalocean/openai-gpt-5-mini",
     "imageInput": true,
     "audioInput": false,
@@ -434,6 +542,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 1.75,
     "outputCost": 14
+  },
+  {
+    "model": "digitalocean/openai-gpt-5.2-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 400000,
+    "maxOutput": 128000,
+    "inputCost": 21,
+    "outputCost": 168
   },
   {
     "model": "digitalocean/openai-gpt-5.3-codex",
@@ -494,6 +614,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 30,
     "outputCost": 180
+  },
+  {
+    "model": "digitalocean/openai-gpt-5.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 30
   },
   {
     "model": "digitalocean/openai-gpt-image-1",
@@ -580,6 +712,18 @@ for await (const chunk of stream) {
     "outputCost": 4.4
   },
   {
+    "model": "digitalocean/qwen3-coder-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 0.45,
+    "outputCost": 1.7
+  },
+  {
     "model": "digitalocean/qwen3-embedding-0.6b",
     "imageInput": false,
     "audioInput": false,
@@ -589,6 +733,54 @@ for await (const chunk of stream) {
     "contextWindow": 8000,
     "maxOutput": 1024,
     "inputCost": 0.04,
+    "outputCost": null
+  },
+  {
+    "model": "digitalocean/qwen3-tts-voicedesign",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 32768,
+    "maxOutput": 1,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "digitalocean/qwen3.5-397b-a17b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 81920,
+    "inputCost": 0.55,
+    "outputCost": 3.5
+  },
+  {
+    "model": "digitalocean/stable-diffusion-3.5-large",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 256,
+    "maxOutput": 1,
+    "inputCost": 0.08,
+    "outputCost": null
+  },
+  {
+    "model": "digitalocean/wan2-2-t2v-a14b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 100,
+    "maxOutput": 1,
+    "inputCost": 0.6,
     "outputCost": null
   }
 ]}
@@ -622,7 +814,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "digitalocean/qwen3-embedding-0.6b"
+      ? "digitalocean/wan2-2-t2v-a14b"
       : "digitalocean/alibaba-qwen3-32b";
   }
 });

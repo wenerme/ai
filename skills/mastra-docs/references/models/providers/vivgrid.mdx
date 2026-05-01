@@ -1,11 +1,11 @@
 ---
 title: "Vivgrid | Models"
-description: "Use Vivgrid models with Mastra. 12 models available."
+description: "Use Vivgrid models with Mastra. 13 models available."
 ---
 
 # [Vivgrid logo]Vivgrid
 
-Access 12 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
+Access 13 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
 
 Learn more in the [Vivgrid documentation](https://docs.vivgrid.com/models).
 
@@ -52,6 +52,18 @@ for await (const chunk of stream) {
     "outputCost": 0.42
   },
   {
+    "model": "vivgrid/deepseek-v4-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 1.74,
+    "outputCost": 3.48
+  },
+  {
     "model": "vivgrid/gemini-3.1-flash-lite-preview",
     "imageInput": true,
     "audioInput": true,
@@ -74,18 +86,6 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 2,
     "outputCost": 12
-  },
-  {
-    "model": "vivgrid/glm-5",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 131000,
-    "inputCost": 1,
-    "outputCost": 3.2
   },
   {
     "model": "vivgrid/gpt-5-mini",
@@ -182,6 +182,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 0.2,
     "outputCost": 1.25
+  },
+  {
+    "model": "vivgrid/gpt-5.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 30
   }
 ]}
 />
@@ -214,7 +226,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "vivgrid/gpt-5.4-nano"
+      ? "vivgrid/gpt-5.5"
       : "vivgrid/deepseek-v3.2";
   }
 });

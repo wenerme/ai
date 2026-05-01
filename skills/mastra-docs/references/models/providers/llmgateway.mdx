@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 184 models available."
+description: "Use LLM Gateway models with Mastra. 189 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 184 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 189 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1061,6 +1061,30 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/gpt-5.4-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 30,
+    "outputCost": 180
+  },
+  {
+    "model": "llmgateway/gpt-5.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 30
+  },
+  {
+    "model": "llmgateway/gpt-5.5-pro",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -2138,6 +2162,42 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.2,
     "outputCost": 1.6
+  },
+  {
+    "model": "llmgateway/qwen3.6-35b-a3b",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 0.248,
+    "outputCost": 1.485
+  },
+  {
+    "model": "llmgateway/qwen3.6-max-preview",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 1.3,
+    "outputCost": 7.8
+  },
+  {
+    "model": "llmgateway/qwen3.6-plus",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
+    "inputCost": 0.276,
+    "outputCost": 1.651
   },
   {
     "model": "llmgateway/qwen35-397b-a17b",
