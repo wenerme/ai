@@ -81,7 +81,7 @@ The response will return a UUID for the certificate. For example:
   }  
 }  
 ```
-2. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Posture checks**.
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
 3. Go to **Cloudflare One Client checks** and select **Add a check**.
 4. Select **Client certificate**.
 5. You will be prompted for the following information:  
@@ -108,9 +108,9 @@ Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the cli
 
 You can use the following commands to check if a client certificate is properly installed and trusted on the device.
 
-* [ Windows ](#tab-panel-4907)
-* [ macOS ](#tab-panel-4908)
-* [ Linux ](#tab-panel-4909)
+* [ Windows ](#tab-panel-4711)
+* [ macOS ](#tab-panel-4712)
+* [ Linux ](#tab-panel-4713)
 
 1. Open a PowerShell window.
 2. To search the local machine trust store for a certificate with a specific common name, run the following command:

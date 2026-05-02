@@ -48,7 +48,7 @@ You can get a certificate regardless of whether it is active or not.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 

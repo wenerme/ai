@@ -12,7 +12,7 @@ Retrieves a user in the project.
 
 ### Returns
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -24,27 +24,23 @@ Retrieves a user in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### Example
 
@@ -59,10 +55,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 

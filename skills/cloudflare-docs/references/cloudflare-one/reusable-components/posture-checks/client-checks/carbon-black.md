@@ -25,7 +25,7 @@ Cloudflare One can check if [Carbon Black ↗](https://www.carbonblack.com/) is 
 
 ## Configure the Carbon Black check
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Posture checks**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
 2. Go to **Cloudflare One Client checks** and select **Add a check**.
 3. Select **Carbon Black**.
 4. You will be prompted for the following information:  

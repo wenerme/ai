@@ -143,8 +143,8 @@ curl --insecure https://<server-ip>:3333/status/disconnect
 
 ### 2\. Extract the SHA-256 fingerprint
 
-* [ Local certificate ](#tab-panel-4964)
-* [ Remote server ](#tab-panel-4965)
+* [ Local certificate ](#tab-panel-4768)
+* [ Remote server ](#tab-panel-4769)
 
 To obtain the SHA-256 fingerprint of a local certificate:
 
@@ -188,13 +188,13 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 
 ### 3\. Turn on External Emergency Disconnect
 
-* [ Dashboard ](#tab-panel-4958)
-* [ API ](#tab-panel-4959)
-* [ MDM ](#tab-panel-4960)
+* [ Dashboard ](#tab-panel-4762)
+* [ API ](#tab-panel-4763)
+* [ MDM ](#tab-panel-4764)
 
 To configure External Emergency Disconnect using the dashboard:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Management**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Management**.
 2. Select **Global disconnection settings**.
 3. Find **Manage device connection using an external signal** and select **Edit**.
 4. Configure the following fields:  
@@ -307,11 +307,11 @@ The current status is also available in [client diagnostic logs](https://develop
 
 If the external endpoint becomes unavailable or serves an invalid configuration, Cloudflare One Clients can get stuck in the emergency disconnect state. You can recover clients by removing their External Emergency Disconnect configuration:
 
-* [ Dashboard ](#tab-panel-4961)
-* [ API ](#tab-panel-4962)
-* [ MDM ](#tab-panel-4963)
+* [ Dashboard ](#tab-panel-4765)
+* [ API ](#tab-panel-4766)
+* [ MDM ](#tab-panel-4767)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Management**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Management**.
 2. Select **Global disconnection settings**.
 3. Turn off **Manage device connection using an external signal**.
 

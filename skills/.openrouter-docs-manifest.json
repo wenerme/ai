@@ -16,8 +16,8 @@
   },
   "guides/overview/multimodal/overview.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/overview.md",
-    "size": 6432,
-    "updatedAt": "2026-04-29T00:35:44.488Z"
+    "size": 7185,
+    "updatedAt": "2026-05-02T00:34:52.729Z"
   },
   "guides/overview/multimodal/image-understanding.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/image-understanding.md",
@@ -53,6 +53,11 @@
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/tts.md",
     "size": 10950,
     "updatedAt": "2026-04-29T00:35:48.770Z"
+  },
+  "guides/overview/multimodal/stt.md": {
+    "url": "https://openrouter.ai/docs/guides/overview/multimodal/stt.md",
+    "size": 10413,
+    "updatedAt": "2026-05-02T00:35:06.444Z"
   },
   "guides/overview/auth/oauth.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/oauth.md",
@@ -101,8 +106,8 @@
   },
   "guides/routing/model-variants/extended.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/extended.md",
-    "size": 616,
-    "updatedAt": "2026-04-29T00:35:54.076Z"
+    "size": 602,
+    "updatedAt": "2026-05-02T00:35:26.430Z"
   },
   "guides/routing/model-variants/exacto.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/exacto.md",
@@ -451,8 +456,8 @@
   },
   "guides/evaluate-and-optimize/model-migrations/gpt-5-4.md": {
     "url": "https://openrouter.ai/docs/guides/evaluate-and-optimize/model-migrations/gpt-5-4.md",
-    "size": 6377,
-    "updatedAt": "2026-04-29T00:36:32.001Z"
+    "size": 6372,
+    "updatedAt": "2026-05-02T00:37:33.229Z"
   },
   "guides/evaluate-and-optimize/rag.md": {
     "url": "https://openrouter.ai/docs/guides/evaluate-and-optimize/rag.md",
@@ -601,8 +606,8 @@
   },
   "api/reference/errors-and-debugging.md": {
     "url": "https://openrouter.ai/docs/api/reference/errors-and-debugging.md",
-    "size": 12678,
-    "updatedAt": "2026-04-29T00:36:49.223Z"
+    "size": 12672,
+    "updatedAt": "2026-05-02T00:38:34.034Z"
   },
   "api/reference/responses/overview.md": {
     "url": "https://openrouter.ai/docs/api/reference/responses/overview.md",

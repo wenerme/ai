@@ -24,17 +24,17 @@ The OS Version device posture attribute checks whether the version of a device's
 
 ## Enable the OS version check
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Posture checks**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
 2. Go to **Cloudflare One Client checks** and select **Add a check**.
 3. Select **OS version**.
 4. Configure the **Operating system**, **Operator**, and **Version** fields to specify the [OS version](#determine-the-os-version) you want devices to match.  
 Note  
 The OS version must be specified as a valid [Semver ↗](https://semver.org/). For example, if your device is running OS version `1.2`, you must enter `1.2.0`.
 5. (Optional) Configure additional OS-specific fields:  
-   * [ Windows ](#tab-panel-4910)  
-   * [ macOS ](#tab-panel-4911)  
-   * [ Linux ](#tab-panel-4912)  
-   * [ iOS ](#tab-panel-4913)  
+   * [ Windows ](#tab-panel-4714)  
+   * [ macOS ](#tab-panel-4715)  
+   * [ Linux ](#tab-panel-4716)  
+   * [ iOS ](#tab-panel-4717)  
 To check that Windows devices have required security patches and features installed, include an Update Build Revision (UBR) number in the OS version check.  
    * **Update Build Revision**: Enter the Windows UBR you want devices to match (for example, `3803`). The UBR is the fourth part of the full Windows version number (for example, in `10.0.19045.3803`, the UBR is `3803`).  
    * **Rapid Security Response Version**: Enter the macOS [Rapid Security Response (RSR) ↗](https://support.apple.com/guide/deployment/rapid-security-responses-dep93ff7ea78/web) version you want devices to match (for example, `(a)`). Be sure to include the parenthesis around the letter.  

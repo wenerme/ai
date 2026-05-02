@@ -1,6 +1,6 @@
 ## List group users
 
-`client.admin.organization.groups.users.list(stringgroupID, UserListParamsquery?, RequestOptionsoptions?): CursorPage<OrganizationUser>`
+`client.admin.organization.groups.users.list(stringgroupID, UserListParamsquery?, RequestOptionsoptions?): NextCursorPage<OrganizationGroupUser>`
 
 **get** `/organization/groups/{group_id}/users`
 
@@ -30,39 +30,21 @@ Lists the users assigned to a group.
 
 ### Returns
 
-- `OrganizationUser`
+- `OrganizationGroupUser`
 
-  Represents an individual `user` within an organization.
+  Represents an individual user returned when inspecting group membership.
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `email: string | null`
 
-    The Unix timestamp (in seconds) of when the user was added.
-
-  - `email: string`
-
-    The email address of the user
+    The email address of the user.
 
   - `name: string`
 
-    The name of the user
-
-  - `object: "organization.user"`
-
-    The object type, which is always `organization.user`
-
-    - `"organization.user"`
-
-  - `role: "owner" | "reader"`
-
-    `owner` or `reader`
-
-    - `"owner"`
-
-    - `"reader"`
+    The name of the user.
 
 ### Example
 
@@ -74,8 +56,8 @@ const client = new OpenAI({
 });
 
 // Automatically fetches more pages as needed.
-for await (const organizationUser of client.admin.organization.groups.users.list('group_id')) {
-  console.log(organizationUser.id);
+for await (const organizationGroupUser of client.admin.organization.groups.users.list('group_id')) {
+  console.log(organizationGroupUser.id);
 }
 ```
 
@@ -86,11 +68,8 @@ for await (const organizationUser of client.admin.organization.groups.users.list
   "data": [
     {
       "id": "id",
-      "added_at": 0,
       "email": "email",
-      "name": "name",
-      "object": "organization.user",
-      "role": "owner"
+      "name": "name"
     }
   ],
   "has_more": true,

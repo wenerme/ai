@@ -28,6 +28,12 @@ DLP scans HTTP traffic, SaaS application files, and AI prompts for sensitive dat
 
 Cloudflare does not write scanned content to disk. DLP encrypts and temporarily stores content in memory only. To retain matched content for review, configure [payload logging](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules) for encrypted payload copies or a [Logpush destination](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#send-dlp-forensic-copies-to-logpush-destination) to export full matching HTTP requests.
 
+## Data classification
+
+Data Classification extends Cloudflare DLP with reusable labels and data classes for organizing sensitive content. Use it to define sensitivity schemas, sensitivity levels, data tag groups, data tags, and reusable classification rules that can then be applied in custom DLP profiles.
+
+To get started, refer to [Data Classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/).
+
 ## Data in transit
 
 Data Loss Prevention complements [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to detect sensitive data transferred in HTTP requests. DLP scans the HTTP body (excluding headers), which may include uploaded or downloaded files, chat messages, forms, and other web content. You can also use DLP with [Email security](https://developers.cloudflare.com/cloudflare-one/email-security/) to scan [outbound emails](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/).

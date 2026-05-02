@@ -82,7 +82,7 @@ Get audio speeches usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -328,13 +328,13 @@ Get audio speeches usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -376,7 +376,7 @@ Get audio speeches usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -404,7 +404,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -512,7 +512,7 @@ Get audio transcriptions usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -758,13 +758,13 @@ Get audio transcriptions usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -806,7 +806,7 @@ Get audio transcriptions usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -834,7 +834,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -924,7 +924,7 @@ Get code interpreter sessions usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -1170,13 +1170,13 @@ Get code interpreter sessions usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -1218,7 +1218,7 @@ Get code interpreter sessions usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -1246,7 +1246,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -1362,7 +1362,7 @@ Get completions usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -1608,13 +1608,13 @@ Get completions usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -1656,7 +1656,7 @@ Get completions usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -1684,7 +1684,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -1792,7 +1792,7 @@ Get embeddings usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -2038,13 +2038,13 @@ Get embeddings usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -2086,7 +2086,7 @@ Get embeddings usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -2114,7 +2114,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -2250,7 +2250,7 @@ Get images usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -2496,13 +2496,13 @@ Get images usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -2544,7 +2544,7 @@ Get images usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -2572,7 +2572,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -2680,7 +2680,7 @@ Get moderations usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -2926,13 +2926,13 @@ Get moderations usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -2974,7 +2974,7 @@ Get moderations usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -3002,7 +3002,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -3092,7 +3092,7 @@ Get vector stores usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -3338,13 +3338,13 @@ Get vector stores usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -3386,7 +3386,7 @@ Get vector stores usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -3414,7 +3414,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -3504,7 +3504,7 @@ Get costs details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -3750,13 +3750,13 @@ Get costs details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -3798,7 +3798,7 @@ Get costs details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -3826,7 +3826,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -3866,7 +3866,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -4112,13 +4112,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -4160,7 +4160,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -4178,7 +4178,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -4424,13 +4424,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -4472,7 +4472,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -4490,7 +4490,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -4736,13 +4736,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -4784,7 +4784,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -4802,7 +4802,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -5048,13 +5048,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -5096,7 +5096,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -5114,7 +5114,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -5360,13 +5360,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -5408,7 +5408,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -5426,7 +5426,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -5672,13 +5672,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -5720,7 +5720,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -5738,7 +5738,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -5984,13 +5984,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -6032,7 +6032,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -6050,7 +6050,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -6296,13 +6296,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -6344,7 +6344,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -6362,7 +6362,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -6608,13 +6608,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -6656,7 +6656,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 

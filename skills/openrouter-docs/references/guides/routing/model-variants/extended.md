@@ -12,7 +12,7 @@ Append `:extended` to any model ID:
 
 ```json
 {
-  "model": "anthropic/claude-sonnet-4.5:extended"
+  "model": "openai/gpt-4o:extended"
 }
 ```
 

@@ -16,7 +16,7 @@ Develop Web3 applications without having to worry about running infrastructure
 
  Add-on feature 
 
-Web3, or the distributed web, is a set of technologies that enables hosting of content and web applications in a serverless manner by leveraging distributed systems and consensus protocols.
+Web3 (also called the distributed web) refers to a set of technologies for hosting content and applications on decentralized networks — where data is stored across many computers rather than on a single server. These networks use consensus protocols to agree on the state of shared data without relying on a central authority.
 
 Note
 
@@ -46,13 +46,13 @@ Gives you read and write access to the [Ethereum network](https://developers.clo
 
 ## Benefits
 
-Cloudflare's Web3 gateways provide HTTP-accessible interfaces to Web3 networks, providing:
+Cloudflare's Web3 gateways provide HTTP-accessible interfaces to Web3 networks. Instead of running your own IPFS or Ethereum node, you access these networks through Cloudflare, which provides:
 
 * **Ease of access**: Access content from Web3 networks without installing or running any special software.
 * **Security**: Get the protection benefits of Cloudflare's global anycast network for [enhanced security ↗](https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported/).
-* **Reduced maintenance**: Cloudflare — and not your developers — maintains and monitors security, reliability, and performance.
+* **Reduced maintenance**: Cloudflare — not your developers — maintains and monitors the gateway infrastructure.
 * **Reliability**: Cloudflare's global anycast network provides a high level of [reliability and availability ↗](https://www.cloudflare.com/network/).
-* **Performance**: With Cloudflare's edge network of data centers in [hundreds of cities worldwide ↗](https://www.cloudflare.com/network/), content can be cached and served from data centers close to your end users.
+* **Performance**: With data centers in [hundreds of cities worldwide ↗](https://www.cloudflare.com/network/), responses are cached and served from locations close to your end users.
 
 ---
 

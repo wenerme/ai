@@ -2,7 +2,7 @@
 
 ## List project groups
 
-`client.admin.organization.projects.groups.list(stringprojectID, GroupListParamsquery?, RequestOptionsoptions?): CursorPage<ProjectGroup>`
+`client.admin.organization.projects.groups.list(stringprojectID, GroupListParamsquery?, RequestOptionsoptions?): NextCursorPage<ProjectGroup>`
 
 **get** `/organization/projects/{project_id}/groups`
 
@@ -48,6 +48,10 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `object: "project.group"`
 
     Always `project.group`.
@@ -82,6 +86,7 @@ for await (const projectGroup of client.admin.organization.projects.groups.list(
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
+      "group_type": "group_type",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -132,6 +137,10 @@ Grants a group access to a project.
 
     Display name of the group.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `object: "project.group"`
 
     Always `project.group`.
@@ -166,6 +175,7 @@ console.log(projectGroup.group_id);
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
+  "group_type": "group_type",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -250,6 +260,10 @@ console.log(group.deleted);
 
     Display name of the group.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `object: "project.group"`
 
     Always `project.group`.
@@ -280,7 +294,7 @@ console.log(group.deleted);
 
 ## List project group role assignments
 
-`client.admin.organization.projects.groups.roles.list(stringgroupID, RoleListParamsparams, RequestOptionsoptions?): CursorPage<RoleListResponse>`
+`client.admin.organization.projects.groups.roles.list(stringgroupID, RoleListParamsparams, RequestOptionsoptions?): NextCursorPage<RoleListResponse>`
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 

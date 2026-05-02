@@ -2,7 +2,7 @@
 
 ## List groups
 
-`client.admin.organization.groups.list(GroupListParamsquery?, RequestOptionsoptions?): CursorPage<Group>`
+`client.admin.organization.groups.list(GroupListParamsquery?, RequestOptionsoptions?): NextCursorPage<Group>`
 
 **get** `/organization/groups`
 
@@ -42,6 +42,10 @@ Lists all groups in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `is_scim_managed: boolean`
 
     Whether the group is managed through SCIM and controlled by your identity provider.
@@ -73,6 +77,7 @@ for await (const group of client.admin.organization.groups.list()) {
     {
       "id": "id",
       "created_at": 0,
+      "group_type": "group_type",
       "is_scim_managed": true,
       "name": "name"
     }
@@ -113,6 +118,10 @@ Creates a new group in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `is_scim_managed: boolean`
 
     Whether the group is managed through SCIM and controlled by your identity provider.
@@ -141,6 +150,7 @@ console.log(group.id);
 {
   "id": "id",
   "created_at": 0,
+  "group_type": "group_type",
   "is_scim_managed": true,
   "name": "name"
 }
@@ -283,6 +293,10 @@ console.log(group.id);
 
     Unix timestamp (in seconds) when the group was created.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `is_scim_managed: boolean`
 
     Whether the group is managed through SCIM and controlled by your identity provider.
@@ -337,7 +351,7 @@ console.log(group.id);
 
 ## List group users
 
-`client.admin.organization.groups.users.list(stringgroupID, UserListParamsquery?, RequestOptionsoptions?): CursorPage<OrganizationUser>`
+`client.admin.organization.groups.users.list(stringgroupID, UserListParamsquery?, RequestOptionsoptions?): NextCursorPage<OrganizationGroupUser>`
 
 **get** `/organization/groups/{group_id}/users`
 
@@ -367,39 +381,21 @@ Lists the users assigned to a group.
 
 ### Returns
 
-- `OrganizationUser`
+- `OrganizationGroupUser`
 
-  Represents an individual `user` within an organization.
+  Represents an individual user returned when inspecting group membership.
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `email: string | null`
 
-    The Unix timestamp (in seconds) of when the user was added.
-
-  - `email: string`
-
-    The email address of the user
+    The email address of the user.
 
   - `name: string`
 
-    The name of the user
-
-  - `object: "organization.user"`
-
-    The object type, which is always `organization.user`
-
-    - `"organization.user"`
-
-  - `role: "owner" | "reader"`
-
-    `owner` or `reader`
-
-    - `"owner"`
-
-    - `"reader"`
+    The name of the user.
 
 ### Example
 
@@ -411,8 +407,8 @@ const client = new OpenAI({
 });
 
 // Automatically fetches more pages as needed.
-for await (const organizationUser of client.admin.organization.groups.users.list('group_id')) {
-  console.log(organizationUser.id);
+for await (const organizationGroupUser of client.admin.organization.groups.users.list('group_id')) {
+  console.log(organizationGroupUser.id);
 }
 ```
 
@@ -423,11 +419,8 @@ for await (const organizationUser of client.admin.organization.groups.users.list
   "data": [
     {
       "id": "id",
-      "added_at": 0,
       "email": "email",
-      "name": "name",
-      "object": "organization.user",
-      "role": "owner"
+      "name": "name"
     }
   ],
   "has_more": true,
@@ -561,6 +554,24 @@ console.log(user.deleted);
 
 ## Domain Types
 
+### Organization Group User
+
+- `OrganizationGroupUser`
+
+  Represents an individual user returned when inspecting group membership.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `email: string | null`
+
+    The email address of the user.
+
+  - `name: string`
+
+    The name of the user.
+
 ### User Create Response
 
 - `UserCreateResponse`
@@ -601,7 +612,7 @@ console.log(user.deleted);
 
 ## List group organization role assignments
 
-`client.admin.organization.groups.roles.list(stringgroupID, RoleListParamsquery?, RequestOptionsoptions?): CursorPage<RoleListResponse>`
+`client.admin.organization.groups.roles.list(stringgroupID, RoleListParamsquery?, RequestOptionsoptions?): NextCursorPage<RoleListResponse>`
 
 **get** `/organization/groups/{group_id}/roles`
 

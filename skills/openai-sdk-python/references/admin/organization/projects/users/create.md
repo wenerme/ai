@@ -10,15 +10,15 @@ Adds a user to the project. Users must already be members of the organization to
 
 - `project_id: str`
 
-- `role: Literal["owner", "member"]`
+- `role: str`
 
   `owner` or `member`
 
-  - `"owner"`
+- `email: Optional[str]`
 
-  - `"member"`
+  Email of the user to add.
 
-- `user_id: str`
+- `user_id: Optional[str]`
 
   The ID of the user.
 
@@ -36,27 +36,23 @@ Adds a user to the project. Users must already be members of the organization to
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### Example
 
@@ -69,8 +65,7 @@ client = OpenAI(
 )
 project_user = client.admin.organization.projects.users.create(
     project_id="project_id",
-    role="owner",
-    user_id="user_id",
+    role="role",
 )
 print(project_user.id)
 ```
@@ -81,9 +76,9 @@ print(project_user.id)
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```

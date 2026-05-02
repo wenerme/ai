@@ -19,13 +19,13 @@ To ensure holistic security precautions, we recommend securing each distinct pri
 
 ## Create a Gateway policy
 
-To create a new policy, open [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Traffic policies** \> **Firewall policies**.
+To create a new policy, open the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 
 ## Example DNS policy
 
-* [ Dashboard ](#tab-panel-6476)
-* [ API ](#tab-panel-6477)
-* [ Terraform (v5) ](#tab-panel-6478)
+* [ Dashboard ](#tab-panel-6300)
+* [ API ](#tab-panel-6301)
+* [ Terraform (v5) ](#tab-panel-6302)
 
 | Traffic Selector | Operator | Value                |
 | ---------------- | -------- | -------------------- |
@@ -149,9 +149,9 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_allow_wiki_domains" {
 
 ## Example network policy
 
-* [ Dashboard ](#tab-panel-6479)
-* [ API ](#tab-panel-6480)
-* [ Terraform (v5) ](#tab-panel-6481)
+* [ Dashboard ](#tab-panel-6303)
+* [ API ](#tab-panel-6304)
+* [ Terraform (v5) ](#tab-panel-6305)
 
 | Traffic Selector | Operator | Value            |
 | ---------------- | -------- | ---------------- |
@@ -269,9 +269,9 @@ resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
 
 We recommend adding a catch-all policy to the bottom of your network policy list. An effective Zero Trust model should prioritize default-deny actions to avoid any overly permissive policy building. For example,
 
-* [ Dashboard ](#tab-panel-6482)
-* [ API ](#tab-panel-6483)
-* [ Terraform (v5) ](#tab-panel-6484)
+* [ Dashboard ](#tab-panel-6306)
+* [ API ](#tab-panel-6307)
+* [ Terraform (v5) ](#tab-panel-6308)
 
 | Traffic Selector | Operator | Value                      | Logic |
 | ---------------- | -------- | -------------------------- | ----- |

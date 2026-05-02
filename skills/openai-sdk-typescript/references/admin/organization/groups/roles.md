@@ -2,7 +2,7 @@
 
 ## List group organization role assignments
 
-`client.admin.organization.groups.roles.list(stringgroupID, RoleListParamsquery?, RequestOptionsoptions?): CursorPage<RoleListResponse>`
+`client.admin.organization.groups.roles.list(stringgroupID, RoleListParamsquery?, RequestOptionsoptions?): NextCursorPage<RoleListResponse>`
 
 **get** `/organization/groups/{group_id}/roles`
 

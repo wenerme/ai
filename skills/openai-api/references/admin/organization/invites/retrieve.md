@@ -10,7 +10,7 @@ Retrieves an invite.
 
 ### Returns
 
-- `Invite object { id, email, expires_at, 6 more }`
+- `Invite object { id, created_at, email, 6 more }`
 
   Represents an individual `invite` to the organization.
 
@@ -18,23 +18,35 @@ Retrieves an invite.
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: array of object { id, role }`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" or "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" or "reader"`
 
@@ -58,21 +70,9 @@ Retrieves an invite.
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects: optional array of object { id, role }`
+  - `expires_at: optional number`
 
-    The projects that were granted membership upon acceptance of the invite.
-
-    - `id: optional string`
-
-      Project's public ID
-
-    - `role: optional "member" or "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+    The Unix timestamp (in seconds) of when the invite expires.
 
 ### Example
 
@@ -86,19 +86,19 @@ curl https://api.openai.com/v1/organization/invites/$INVITE_ID \
 ```json
 {
   "id": "id",
+  "created_at": 0,
   "email": "email",
-  "expires_at": 0,
-  "invited_at": 0,
   "object": "organization.invite",
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
   "projects": [
     {
       "id": "id",
       "role": "member"
     }
-  ]
+  ],
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "expires_at": 0
 }
 ```
 
@@ -119,7 +119,7 @@ curl https://api.openai.com/v1/organization/invites/invite-abc \
     "email": "user@example.com",
     "role": "owner",
     "status": "accepted",
-    "invited_at": 1711471533,
+    "created_at": 1711471533,
     "expires_at": 1711471533,
     "accepted_at": 1711471533
 }

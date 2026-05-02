@@ -22,11 +22,11 @@ Set your default device profile to be applicable to a majority of your userbase,
 
 To customize the default settings:
 
-* [ Dashboard ](#tab-panel-6648)
-* [ API ](#tab-panel-6649)
-* [ Terraform (v5) ](#tab-panel-6650)
+* [ Dashboard ](#tab-panel-6472)
+* [ API ](#tab-panel-6473)
+* [ Terraform (v5) ](#tab-panel-6474)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select the **Default** profile and select \*_Edit_.
 3. Many users running Cloudflare Zero Trust to secure their organization have a default profile that resembles the following. Refer to [Cloudflare One Client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/) for a description of each setting.  
 | Setting                              | State                                                                                                                             | Notes                                                                                                                                                                                                                                                                                                       |  

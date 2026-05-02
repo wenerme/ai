@@ -1,6 +1,6 @@
 ## Delete project API key
 
-**delete** `/organization/projects/{project_id}/api_keys/{key_id}`
+**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Deletes an API key from the project.
 
@@ -11,7 +11,7 @@ a service account.
 
 - `project_id: string`
 
-- `key_id: string`
+- `api_key_id: string`
 
 ### Returns
 
@@ -26,7 +26,7 @@ a service account.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_ID \
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```

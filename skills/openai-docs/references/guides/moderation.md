@@ -1,6 +1,6 @@
 # Moderation
 
-Use the [moderations](https://developers.openai.com/api/docs/api-reference/moderations) endpoint to check whether text or images are potentially harmful. If harmful content is identified, you can take corrective action, like filtering content or intervening with user accounts creating offending content. The moderation endpoint is free to use.
+Use the [moderations](https://developers.openai.com/api/docs/api-reference/moderations) endpoint to check whether text or images are potentially harmful. If harmful content is identified, you can take corrective action, like filtering content or intervening with user accounts creating offending content. The moderation endpoint is free to use. Image files are limited to 20 MB.
 
 You can use two models for this endpoint:
 
@@ -134,7 +134,8 @@ The table below describes the types of content that can be detected in the moder
 
 Categories marked as "Text only" do not support image inputs. If you send only
   images (without accompanying text) to the `omni-moderation-latest` model, it
-  will return a score of 0 for these unsupported categories.
+  will return a score of 0 for these unsupported categories. Image files are
+  limited to 20 MB.
 
 <table>
   <tr>

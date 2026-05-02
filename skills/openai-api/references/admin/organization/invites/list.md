@@ -22,23 +22,35 @@ Returns a list of invites in the organization.
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: array of object { id, role }`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" or "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" or "reader"`
 
@@ -62,21 +74,13 @@ Returns a list of invites in the organization.
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects: optional array of object { id, role }`
+  - `expires_at: optional number`
 
-    The projects that were granted membership upon acceptance of the invite.
+    The Unix timestamp (in seconds) of when the invite expires.
 
-    - `id: optional string`
+- `has_more: boolean`
 
-      Project's public ID
-
-    - `role: optional "member" or "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+  The `has_more` property is used for pagination to indicate there are additional results.
 
 - `object: "list"`
 
@@ -87,10 +91,6 @@ Returns a list of invites in the organization.
 - `first_id: optional string`
 
   The first `invite_id` in the retrieved `list`
-
-- `has_more: optional boolean`
-
-  The `has_more` property is used for pagination to indicate there are additional results.
 
 - `last_id: optional string`
 
@@ -110,24 +110,24 @@ curl https://api.openai.com/v1/organization/invites \
   "data": [
     {
       "id": "id",
+      "created_at": 0,
       "email": "email",
-      "expires_at": 0,
-      "invited_at": 0,
       "object": "organization.invite",
-      "role": "owner",
-      "status": "accepted",
-      "accepted_at": 0,
       "projects": [
         {
           "id": "id",
           "role": "member"
         }
-      ]
+      ],
+      "role": "owner",
+      "status": "accepted",
+      "accepted_at": 0,
+      "expires_at": 0
     }
   ],
+  "has_more": true,
   "object": "list",
   "first_id": "first_id",
-  "has_more": true,
   "last_id": "last_id"
 }
 ```
@@ -152,7 +152,7 @@ curl https://api.openai.com/v1/organization/invites?after=invite-abc&limit=20 \
       "email": "user@example.com",
       "role": "owner",
       "status": "accepted",
-      "invited_at": 1711471533,
+      "created_at": 1711471533,
       "expires_at": 1711471533,
       "accepted_at": 1711471533
     }

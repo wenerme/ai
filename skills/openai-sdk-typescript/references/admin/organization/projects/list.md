@@ -36,27 +36,27 @@ Returns a list of projects.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" | "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at?: number | null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id?: string | null`
+
+    The external key associated with the project.
+
+  - `name?: string | null`
+
+    The name of the project. This appears in reporting.
+
+  - `status?: string | null`
+
+    `active` or `archived`
 
 ### Example
 
@@ -81,15 +81,16 @@ for await (const project of client.admin.organization.projects.list()) {
     {
       "id": "id",
       "created_at": 0,
-      "name": "name",
       "object": "organization.project",
-      "status": "active",
-      "archived_at": 0
+      "archived_at": 0,
+      "external_key_id": "external_key_id",
+      "name": "name",
+      "status": "status"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```

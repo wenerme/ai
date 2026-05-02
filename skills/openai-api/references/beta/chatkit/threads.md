@@ -452,7 +452,7 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID/items \
           "id": "id",
           "mime_type": "mime_type",
           "name": "name",
-          "preview_url": "preview_url",
+          "preview_url": "https://example.com",
           "type": "image"
         }
       ],

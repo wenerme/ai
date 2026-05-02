@@ -22,7 +22,7 @@ Creates a new service account in the project. This also returns an unredacted AP
 
   - `id: string`
 
-  - `api_key: APIKey`
+  - `api_key: APIKey | null`
 
     - `id: string`
 

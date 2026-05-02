@@ -1,6 +1,6 @@
 ## List project group role assignments
 
-`admin.organization.projects.groups.roles.list(strgroup_id, RoleListParams**kwargs)  -> SyncCursorPage[RoleListResponse]`
+`admin.organization.projects.groups.roles.list(strgroup_id, RoleListParams**kwargs)  -> SyncNextCursorPage[RoleListResponse]`
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 

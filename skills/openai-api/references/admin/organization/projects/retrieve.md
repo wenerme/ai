@@ -10,7 +10,7 @@ Retrieves a project.
 
 ### Returns
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -22,27 +22,27 @@ Retrieves a project.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 ### Example
 
@@ -57,10 +57,11 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 

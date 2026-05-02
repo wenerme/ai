@@ -41,10 +41,10 @@ Zero Trust will indicate if a certificate is ready for use in inspection based o
 
 To generate a new Cloudflare root certificate for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-5005)
-* [ API ](#tab-panel-5006)
+* [ Dashboard ](#tab-panel-4809)
+* [ API ](#tab-panel-4810)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
 3. Select **Generate certificate**.
 4. Choose a duration of time before the certificate expires. Cloudflare recommends expiration after five years. Alternatively, choose _Custom_ and enter a custom amount in days.
@@ -81,10 +81,10 @@ Once a certificate is generated in or uploaded to Zero Trust, you need to activa
 
 To activate your root certificate:
 
-* [ Dashboard ](#tab-panel-5007)
-* [ API ](#tab-panel-5008)
+* [ Dashboard ](#tab-panel-4811)
+* [ API ](#tab-panel-4812)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
 3. Select the certificate you want to activate.
 4. Select **Activate**.
@@ -108,10 +108,10 @@ The status of the certificate will change to **Pending** while it deploys. Once 
 
 Once you deploy and install your certificate, you can turn it on for use in inspection:
 
-* [ Dashboard ](#tab-panel-5009)
-* [ API ](#tab-panel-5010)
+* [ Dashboard ](#tab-panel-4813)
+* [ API ](#tab-panel-4814)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
 3. Select the certificate you want to turn on.
 4. In **Basic information**, select **Confirm and turn on certificate**.

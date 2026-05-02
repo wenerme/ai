@@ -185,7 +185,7 @@ on assistant messages:
    it back on subsequent requests.
 2. **Do not add phase to user messages** — `phase` is
    only valid on assistant messages. The Responses API
-   will reject requests with `phase` on user messages.
+   will silently ignore `phase` on user messages.
 3. **Do not drop phase** — Omitting `phase` from
    assistant messages in multi-turn conversations will
    degrade model performance.

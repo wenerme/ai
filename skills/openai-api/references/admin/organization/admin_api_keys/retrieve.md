@@ -12,7 +12,7 @@ Retrieve a single organization API key
 
 ### Returns
 
-- `AdminAPIKey object { id, created_at, last_used_at, 5 more }`
+- `AdminAPIKey object { id, created_at, object, 4 more }`
 
   Represents an individual Admin API key in an org.
 
@@ -24,17 +24,11 @@ Retrieve a single organization API key
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: object { id, created_at, name, 3 more }`
 
@@ -66,9 +60,13 @@ Retrieve a single organization API key
 
     The redacted value of the API key
 
-  - `value: optional string`
+  - `last_used_at: optional number`
 
-    The value of the API key. Only shown on create.
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: optional string`
+
+    The name of the API key
 
 ### Example
 
@@ -83,8 +81,6 @@ curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
 {
   "id": "key_abc",
   "created_at": 1711471533,
-  "last_used_at": 1711471534,
-  "name": "Administration Key",
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -95,7 +91,8 @@ curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
     "type": "user"
   },
   "redacted_value": "sk-admin...def",
-  "value": "sk-admin-1234abcd"
+  "last_used_at": 1711471534,
+  "name": "Administration Key"
 }
 ```
 

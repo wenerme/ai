@@ -16,13 +16,9 @@ Modifies a user's role in the project.
 
     Path param: The ID of the project.
 
-  - `role: "owner" | "member"`
+  - `role?: string | null`
 
     Body param: `owner` or `member`
-
-    - `"owner"`
-
-    - `"member"`
 
 ### Returns
 
@@ -38,27 +34,23 @@ Modifies a user's role in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" | "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email?: string | null`
 
-    - `"member"`
+    The email address of the user
+
+  - `name?: string | null`
+
+    The name of the user
 
 ### Example
 
@@ -71,7 +63,6 @@ const client = new OpenAI({
 
 const projectUser = await client.admin.organization.projects.users.update('user_id', {
   project_id: 'project_id',
-  role: 'owner',
 });
 
 console.log(projectUser.id);
@@ -83,9 +74,9 @@ console.log(projectUser.id);
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```

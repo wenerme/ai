@@ -32,35 +32,31 @@ Returns a list of users in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
 
-- `first_id: string`
+  - `name: optional string`
+
+    The name of the user
 
 - `has_more: boolean`
 
-- `last_id: string`
-
 - `object: string`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -77,16 +73,16 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
     {
       "id": "id",
       "added_at": 0,
-      "email": "email",
-      "name": "name",
       "object": "organization.project.user",
-      "role": "owner"
+      "role": "role",
+      "email": "email",
+      "name": "name"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "object"
+  "object": "object",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -131,21 +127,21 @@ Adds a user to the project. Users must already be members of the organization to
 
 ### Body Parameters
 
-- `role: "owner" or "member"`
+- `role: string`
 
   `owner` or `member`
 
-  - `"owner"`
+- `email: optional string`
 
-  - `"member"`
+  Email of the user to add.
 
-- `user_id: string`
+- `user_id: optional string`
 
   The ID of the user.
 
 ### Returns
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -157,27 +153,23 @@ Adds a user to the project. Users must already be members of the organization to
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### Example
 
@@ -186,8 +178,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
     -d '{
-          "role": "owner",
-          "user_id": "user_id"
+          "role": "role"
         }'
 ```
 
@@ -197,10 +188,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -242,7 +233,7 @@ Retrieves a user in the project.
 
 ### Returns
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -254,27 +245,23 @@ Retrieves a user in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### Example
 
@@ -289,10 +276,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -331,17 +318,13 @@ Modifies a user's role in the project.
 
 ### Body Parameters
 
-- `role: "owner" or "member"`
+- `role: optional string`
 
   `owner` or `member`
 
-  - `"owner"`
-
-  - `"member"`
-
 ### Returns
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -353,27 +336,23 @@ Modifies a user's role in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### Example
 
@@ -381,9 +360,7 @@ Modifies a user's role in the project.
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "role": "owner"
-        }'
+    -d '{}'
 ```
 
 #### Response
@@ -392,10 +369,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -488,7 +465,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
 
 ### Project User
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -500,27 +477,23 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### User Delete Response
 
@@ -780,27 +753,93 @@ Assigns a project role to a user within a project.
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" or "reader"`
+  - `api_key_last_used_at: optional number`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created: optional number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona: optional string`
+
+    The developer persona metadata for the user.
+
+  - `email: optional string`
+
+    The email address of the user
+
+  - `is_default: optional boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser: optional boolean`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed: optional boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account: optional boolean`
+
+    Whether the user is a service account.
+
+  - `name: optional string`
+
+    The name of the user
+
+  - `projects: optional object { data, object }`
+
+    Projects associated with the user, if included.
+
+    - `data: array of object { id, name, role }`
+
+      - `id: optional string`
+
+      - `name: optional string`
+
+      - `role: optional string`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role: optional string`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level: optional string`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user: optional object { id, object, banned, 5 more }`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned: optional boolean`
+
+    - `banned_at: optional number`
+
+    - `email: optional string`
+
+    - `enabled: optional boolean`
+
+    - `name: optional string`
+
+    - `picture: optional string`
 
 ### Example
 
@@ -832,10 +871,38 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles \
   "user": {
     "id": "id",
     "added_at": 0,
-    "email": "email",
-    "name": "name",
     "object": "organization.user",
-    "role": "owner"
+    "api_key_last_used_at": 0,
+    "created": 0,
+    "developer_persona": "developer_persona",
+    "email": "email",
+    "is_default": true,
+    "is_scale_tier_authorized_purchaser": true,
+    "is_scim_managed": true,
+    "is_service_account": true,
+    "name": "name",
+    "projects": {
+      "data": [
+        {
+          "id": "id",
+          "name": "name",
+          "role": "role"
+        }
+      ],
+      "object": "list"
+    },
+    "role": "role",
+    "technical_level": "technical_level",
+    "user": {
+      "id": "id",
+      "object": "user",
+      "banned": true,
+      "banned_at": 0,
+      "email": "email",
+      "enabled": true,
+      "name": "name",
+      "picture": "picture"
+    }
   }
 }
 ```
@@ -1047,27 +1114,93 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: string`
-
-      The email address of the user
-
-    - `name: string`
-
-      The name of the user
-
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: "owner" or "reader"`
+    - `api_key_last_used_at: optional number`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created: optional number`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona: optional string`
+
+      The developer persona metadata for the user.
+
+    - `email: optional string`
+
+      The email address of the user
+
+    - `is_default: optional boolean`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser: optional boolean`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed: optional boolean`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account: optional boolean`
+
+      Whether the user is a service account.
+
+    - `name: optional string`
+
+      The name of the user
+
+    - `projects: optional object { data, object }`
+
+      Projects associated with the user, if included.
+
+      - `data: array of object { id, name, role }`
+
+        - `id: optional string`
+
+        - `name: optional string`
+
+        - `role: optional string`
+
+      - `object: "list"`
+
+        - `"list"`
+
+    - `role: optional string`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level: optional string`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user: optional object { id, object, banned, 5 more }`
+
+      Nested user details.
+
+      - `id: string`
+
+      - `object: "user"`
+
+        - `"user"`
+
+      - `banned: optional boolean`
+
+      - `banned_at: optional number`
+
+      - `email: optional string`
+
+      - `enabled: optional boolean`
+
+      - `name: optional string`
+
+      - `picture: optional string`
 
 ### Role Delete Response
 

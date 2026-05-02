@@ -38,7 +38,7 @@ Note
 The integration does not currently support Safari.
 
 1. Configure your Tanium deployment using the [step-by-step documentation ↗](https://docs.tanium.com/endpoint%5Fidentity/endpoint%5Fidentity/userguide.html) provided. You will need the public key to integrate your Tanium deployment with Cloudflare Access.
-2. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Posture checks**.
+2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
 3. Go to **Cloudflare One Client checks** and select **Add a check**.
 4. Select **Tanium** from the list of providers.
 5. Enter any **Name** for the integration.

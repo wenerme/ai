@@ -33,7 +33,7 @@ If your manual test fails, troubleshoot the Cloudflare One Client. Cloudflare re
 
 Analytics provide visualizations of [log data](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/test-your-first-application/#review-logs). To review Access or Gateway analytics:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Analytics** \> **Dashboards**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Analytics** \> **Dashboards**.
 2. Select **[Access event analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/access/)** for a summary of login events or **[Application Access Report](https://developers.cloudflare.com/cloudflare-one/insights/analytics/application-access/)** for a summary of overall Access Activity.
 3. Select the **HTTP request analytics**, **DNS query analytics** or **Network session analytics** depending on [your Gateway investigation scope](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/).
 
@@ -43,13 +43,13 @@ Analytics provide visualizations of [log data](https://developers.cloudflare.com
 
 To review traffic activity for applications protected by Access:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Logs**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Logs**.
 2. Select **Access authentication logs**.
 3. Review the [per-request logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/#per-request-logs) for your application.
 
 To review traffic activity in the [Gateway logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/):
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Logs**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Logs**.
 2. Select **HTTP request logs**, **Network logs**, or **DNS query logs** depending on your investigation scope.
 
 Refer to [Troubleshoot Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshoot-gateway/) to troubleshoot common issues with Gateway egress policies.

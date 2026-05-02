@@ -164,79 +164,11 @@ List user actions and configuration changes within this organization.
 
 ### Returns
 
-- `data: array of object { id, actor, effective_at, 49 more }`
+- `data: array of object { id, effective_at, type, 49 more }`
 
   - `id: string`
 
     The ID of this log.
-
-  - `actor: object { api_key, session, type }`
-
-    The actor who performed the audit logged action.
-
-    - `api_key: optional object { id, service_account, type, user }`
-
-      The API Key used to perform the audit logged action.
-
-      - `id: optional string`
-
-        The tracking id of the API key.
-
-      - `service_account: optional object { id }`
-
-        The service account that performed the audit logged action.
-
-        - `id: optional string`
-
-          The service account id.
-
-      - `type: optional "user" or "service_account"`
-
-        The type of API key. Can be either `user` or `service_account`.
-
-        - `"user"`
-
-        - `"service_account"`
-
-      - `user: optional object { id, email }`
-
-        The user who performed the audit logged action.
-
-        - `id: optional string`
-
-          The user id.
-
-        - `email: optional string`
-
-          The user email.
-
-    - `session: optional object { ip_address, user }`
-
-      The session in which the audit logged action was performed.
-
-      - `ip_address: optional string`
-
-        The IP address from which the action was performed.
-
-      - `user: optional object { id, email }`
-
-        The user who performed the audit logged action.
-
-        - `id: optional string`
-
-          The user id.
-
-        - `email: optional string`
-
-          The user email.
-
-    - `type: optional "session" or "api_key"`
-
-      The type of actor. Is either `session` or `api_key`.
-
-      - `"session"`
-
-      - `"api_key"`
 
   - `effective_at: number`
 
@@ -347,6 +279,74 @@ List user actions and configuration changes within this organization.
     - `"user.updated"`
 
     - `"user.deleted"`
+
+  - `actor: optional object { api_key, session, type }`
+
+    The actor who performed the audit logged action.
+
+    - `api_key: optional object { id, service_account, type, user }`
+
+      The API Key used to perform the audit logged action.
+
+      - `id: optional string`
+
+        The tracking id of the API key.
+
+      - `service_account: optional object { id }`
+
+        The service account that performed the audit logged action.
+
+        - `id: optional string`
+
+          The service account id.
+
+      - `type: optional "user" or "service_account"`
+
+        The type of API key. Can be either `user` or `service_account`.
+
+        - `"user"`
+
+        - `"service_account"`
+
+      - `user: optional object { id, email }`
+
+        The user who performed the audit logged action.
+
+        - `id: optional string`
+
+          The user id.
+
+        - `email: optional string`
+
+          The user email.
+
+    - `session: optional object { ip_address, user }`
+
+      The session in which the audit logged action was performed.
+
+      - `ip_address: optional string`
+
+        The IP address from which the action was performed.
+
+      - `user: optional object { id, email }`
+
+        The user who performed the audit logged action.
+
+        - `id: optional string`
+
+          The user id.
+
+        - `email: optional string`
+
+          The user email.
+
+    - `type: optional "session" or "api_key"`
+
+      The type of actor. Is either `session` or `api_key`.
+
+      - `"session"`
+
+      - `"api_key"`
 
   - `"api_key.created": optional object { id, data }`
 
@@ -1052,15 +1052,15 @@ List user actions and configuration changes within this organization.
 
         The role of the user. Is either `owner` or `member`.
 
-- `first_id: string`
-
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -1076,6 +1076,8 @@ curl https://api.openai.com/v1/organization/audit_logs \
   "data": [
     {
       "id": "id",
+      "effective_at": 0,
+      "type": "api_key.created",
       "actor": {
         "api_key": {
           "id": "id",
@@ -1097,8 +1099,6 @@ curl https://api.openai.com/v1/organization/audit_logs \
         },
         "type": "session"
       },
-      "effective_at": 0,
-      "type": "api_key.created",
       "api_key.created": {
         "id": "id",
         "data": {
@@ -1367,10 +1367,10 @@ curl https://api.openai.com/v1/organization/audit_logs \
       }
     }
   ],
-  "first_id": "audit_log-defb456h8dks",
   "has_more": true,
-  "last_id": "audit_log-hnbkd8s93s",
-  "object": "list"
+  "object": "list",
+  "first_id": "audit_log-defb456h8dks",
+  "last_id": "audit_log-hnbkd8s93s"
 }
 ```
 
@@ -1450,81 +1450,13 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
 ### Audit Log List Response
 
-- `AuditLogListResponse object { id, actor, effective_at, 49 more }`
+- `AuditLogListResponse object { id, effective_at, type, 49 more }`
 
   A log of a user action or configuration change within this organization.
 
   - `id: string`
 
     The ID of this log.
-
-  - `actor: object { api_key, session, type }`
-
-    The actor who performed the audit logged action.
-
-    - `api_key: optional object { id, service_account, type, user }`
-
-      The API Key used to perform the audit logged action.
-
-      - `id: optional string`
-
-        The tracking id of the API key.
-
-      - `service_account: optional object { id }`
-
-        The service account that performed the audit logged action.
-
-        - `id: optional string`
-
-          The service account id.
-
-      - `type: optional "user" or "service_account"`
-
-        The type of API key. Can be either `user` or `service_account`.
-
-        - `"user"`
-
-        - `"service_account"`
-
-      - `user: optional object { id, email }`
-
-        The user who performed the audit logged action.
-
-        - `id: optional string`
-
-          The user id.
-
-        - `email: optional string`
-
-          The user email.
-
-    - `session: optional object { ip_address, user }`
-
-      The session in which the audit logged action was performed.
-
-      - `ip_address: optional string`
-
-        The IP address from which the action was performed.
-
-      - `user: optional object { id, email }`
-
-        The user who performed the audit logged action.
-
-        - `id: optional string`
-
-          The user id.
-
-        - `email: optional string`
-
-          The user email.
-
-    - `type: optional "session" or "api_key"`
-
-      The type of actor. Is either `session` or `api_key`.
-
-      - `"session"`
-
-      - `"api_key"`
 
   - `effective_at: number`
 
@@ -1635,6 +1567,74 @@ curl https://api.openai.com/v1/organization/audit_logs \
     - `"user.updated"`
 
     - `"user.deleted"`
+
+  - `actor: optional object { api_key, session, type }`
+
+    The actor who performed the audit logged action.
+
+    - `api_key: optional object { id, service_account, type, user }`
+
+      The API Key used to perform the audit logged action.
+
+      - `id: optional string`
+
+        The tracking id of the API key.
+
+      - `service_account: optional object { id }`
+
+        The service account that performed the audit logged action.
+
+        - `id: optional string`
+
+          The service account id.
+
+      - `type: optional "user" or "service_account"`
+
+        The type of API key. Can be either `user` or `service_account`.
+
+        - `"user"`
+
+        - `"service_account"`
+
+      - `user: optional object { id, email }`
+
+        The user who performed the audit logged action.
+
+        - `id: optional string`
+
+          The user id.
+
+        - `email: optional string`
+
+          The user email.
+
+    - `session: optional object { ip_address, user }`
+
+      The session in which the audit logged action was performed.
+
+      - `ip_address: optional string`
+
+        The IP address from which the action was performed.
+
+      - `user: optional object { id, email }`
+
+        The user who performed the audit logged action.
+
+        - `id: optional string`
+
+          The user id.
+
+        - `email: optional string`
+
+          The user email.
+
+    - `type: optional "session" or "api_key"`
+
+      The type of actor. Is either `session` or `api_key`.
+
+      - `"session"`
+
+      - `"api_key"`
 
   - `"api_key.created": optional object { id, data }`
 

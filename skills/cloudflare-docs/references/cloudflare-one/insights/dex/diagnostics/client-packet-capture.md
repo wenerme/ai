@@ -1,6 +1,6 @@
 ---
-title: Remote captures
-description: Reference information for Remote captures in Zero Trust analytics.
+title: Client packet capture
+description: Feature documentation for Cloudflare One client packet captures.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
 
-# Remote captures
+# Client packet capture
 
 Feature availability
 
@@ -52,12 +52,12 @@ DEX will now send capture requests to the configured devices. If the Cloudflare 
 
 ## Check remote capture status
 
-To view a list of captures, go to **DEX** \> **Remote captures**. The **Status** column displays one of the following options:
+To view a list of captures, go to **Insights** \> **Digital experience** \> **Diagnostics**. The **Status** column displays one of the following options:
 
-* **Success**: The capture is complete and ready for download. Any partially successful captures will still upload to Cloudflare. For example, there could be a scenario where the PCAP succeeds on the primary network interface but fails on the WARP tunnel interface. You can [review PCAP results](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/#download-remote-captures) to determine which PCAPs succeeded or failed.
+* **Success**: The capture is complete and ready for download. Any partially successful captures will still upload to Cloudflare. For example, there could be a scenario where the PCAP succeeds on the primary network interface but fails on the WARP tunnel interface. You can [review PCAP results](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#download-remote-captures) to determine which PCAPs succeeded or failed.
 * **Running**: The capture is in progress on the device.
 * **Pending Upload**: The capture is complete but not yet ready for download.
-* **Failed**: The capture has either timed out or encountered an error. To retry the capture, check the Cloudflare One Client version and [connectivity status](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#fleet-status), then start a [new capture](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/#start-a-remote-capture).
+* **Failed**: The capture has either timed out or encountered an error. To retry the capture, check the Cloudflare One Client version and [connectivity status](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#fleet-status), then start a [new capture](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#start-a-remote-capture).
 
 ## Download remote captures
 
@@ -121,5 +121,5 @@ Cloudflare DEX will store the `warp-diag` log and its detection report per our [
 * On Windows, packet captures may fail on devices configured with a non-English language due to limitations with the underlying `PktMon` tool.
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/dex/","name":"Digital experience"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/dex/remote-captures/","name":"Remote captures"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/dex/","name":"Digital experience"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/dex/diagnostics/","name":"Diagnostics"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/dex/diagnostics/client-packet-capture/","name":"Client packet capture"}}]}
 ```

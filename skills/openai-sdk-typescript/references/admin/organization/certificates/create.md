@@ -12,7 +12,7 @@ Organizations can upload up to 50 certificates.
 
 - `body: CertificateCreateParams`
 
-  - `content: string`
+  - `certificate: string`
 
     The certificate content in PEM format
 
@@ -48,7 +48,7 @@ Organizations can upload up to 50 certificates.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
@@ -79,7 +79,9 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const certificate = await client.admin.organization.certificates.create({ content: 'content' });
+const certificate = await client.admin.organization.certificates.create({
+  certificate: 'certificate',
+});
 
 console.log(certificate.id);
 ```

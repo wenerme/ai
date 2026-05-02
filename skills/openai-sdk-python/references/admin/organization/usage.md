@@ -80,7 +80,7 @@ Get audio speeches usage details for the organization.
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -326,13 +326,13 @@ Get audio speeches usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -374,7 +374,7 @@ Get audio speeches usage details for the organization.
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -403,7 +403,7 @@ print(response.data)
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -509,7 +509,7 @@ Get audio transcriptions usage details for the organization.
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -755,13 +755,13 @@ Get audio transcriptions usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -803,7 +803,7 @@ Get audio transcriptions usage details for the organization.
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -832,7 +832,7 @@ print(response.data)
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -920,7 +920,7 @@ Get code interpreter sessions usage details for the organization.
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -1166,13 +1166,13 @@ Get code interpreter sessions usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -1214,7 +1214,7 @@ Get code interpreter sessions usage details for the organization.
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -1243,7 +1243,7 @@ print(response.data)
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -1357,7 +1357,7 @@ Get completions usage details for the organization.
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -1603,13 +1603,13 @@ Get completions usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -1651,7 +1651,7 @@ Get completions usage details for the organization.
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -1680,7 +1680,7 @@ print(response.data)
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -1786,7 +1786,7 @@ Get embeddings usage details for the organization.
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -2032,13 +2032,13 @@ Get embeddings usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -2080,7 +2080,7 @@ Get embeddings usage details for the organization.
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -2109,7 +2109,7 @@ print(response.data)
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -2243,7 +2243,7 @@ Get images usage details for the organization.
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -2489,13 +2489,13 @@ Get images usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -2537,7 +2537,7 @@ Get images usage details for the organization.
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -2566,7 +2566,7 @@ print(response.data)
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -2672,7 +2672,7 @@ Get moderations usage details for the organization.
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -2918,13 +2918,13 @@ Get moderations usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -2966,7 +2966,7 @@ Get moderations usage details for the organization.
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -2995,7 +2995,7 @@ print(response.data)
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -3083,7 +3083,7 @@ Get vector stores usage details for the organization.
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -3329,13 +3329,13 @@ Get vector stores usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -3377,7 +3377,7 @@ Get vector stores usage details for the organization.
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -3406,7 +3406,7 @@ print(response.data)
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -3494,7 +3494,7 @@ Get costs details for the organization.
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -3740,13 +3740,13 @@ Get costs details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -3788,7 +3788,7 @@ Get costs details for the organization.
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -3817,7 +3817,7 @@ print(response.data)
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -3857,7 +3857,7 @@ print(response.data)
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -4103,13 +4103,13 @@ print(response.data)
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -4151,7 +4151,7 @@ print(response.data)
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -4169,7 +4169,7 @@ print(response.data)
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -4415,13 +4415,13 @@ print(response.data)
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -4463,7 +4463,7 @@ print(response.data)
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -4481,7 +4481,7 @@ print(response.data)
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -4727,13 +4727,13 @@ print(response.data)
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -4775,7 +4775,7 @@ print(response.data)
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -4793,7 +4793,7 @@ print(response.data)
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -5039,13 +5039,13 @@ print(response.data)
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -5087,7 +5087,7 @@ print(response.data)
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -5105,7 +5105,7 @@ print(response.data)
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -5351,13 +5351,13 @@ print(response.data)
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -5399,7 +5399,7 @@ print(response.data)
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -5417,7 +5417,7 @@ print(response.data)
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -5663,13 +5663,13 @@ print(response.data)
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -5711,7 +5711,7 @@ print(response.data)
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -5729,7 +5729,7 @@ print(response.data)
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -5975,13 +5975,13 @@ print(response.data)
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -6023,7 +6023,7 @@ print(response.data)
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -6041,7 +6041,7 @@ print(response.data)
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -6287,13 +6287,13 @@ print(response.data)
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -6335,7 +6335,7 @@ print(response.data)
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -6353,7 +6353,7 @@ print(response.data)
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -6599,13 +6599,13 @@ print(response.data)
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -6647,7 +6647,7 @@ print(response.data)
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 

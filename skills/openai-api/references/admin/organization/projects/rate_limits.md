@@ -66,15 +66,15 @@ Returns the rate limits per model for a project.
 
     The maximum requests per day. Only present for relevant models.
 
-- `first_id: string`
-
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -100,10 +100,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits \
       "max_requests_per_1_day": 0
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Securing data in transit
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 ## Introduction
 
@@ -56,7 +56,7 @@ When traffic from the device, to the hosted application, all flows via Cloudflar
 
 A common challenge is trying to determine what data is sensitive and requires policy intervention. Data Loss Prevention services are used to inspect the contents of a piece of traffic, and then provide metadata to the policy to impact enforcement.
 
-For example, when a user attempts to upload a file to a SaaS application and the traffic route has been configured to always go via the Cloudflare network, [Cloudflare DLP](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) inspects the file by using DLP profiles assigned to a Gateway policy. After a DLP profile matches, the Gateway policy will allow or block the traffic, and the activity will be written to the logs. A DLP profile is a collection of regular expressions (also known as detection entries) that define the data patterns you want to detect. Cloudflare DLP provides [predefined profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#configure-a-predefined-profile) for common detections, or you can build [custom profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile) specific to your data, and even the ability to leverage [Exact Data Match](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#exact-data-match) (EDM).
+For example, when a user attempts to upload a file to a SaaS application and the traffic route has been configured to always go via the Cloudflare network, [Cloudflare DLP](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) inspects the file by using DLP profiles assigned to a Gateway policy. After a DLP profile matches, the Gateway policy will allow or block the traffic, and the activity will be written to the logs. A DLP profile is built from detection entries that define the sensitive content you want to detect. Cloudflare DLP provides [predefined profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#configure-a-predefined-profile) for common detections, or you can build [custom profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile) specific to your data, and even the ability to leverage [Exact Data Match](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#exact-data-match-datasets) (EDM).
 
 DLP profiles are then used in combination with other policy attributes to specifically identify the traffic, such as only enforcing the policy when sensitive data is being uploaded to approved Cloud based storage services.
 

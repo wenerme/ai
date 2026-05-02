@@ -8,7 +8,7 @@ Organizations can upload up to 50 certificates.
 
 ### Body Parameters
 
-- `content: string`
+- `certificate: string`
 
   The certificate content in PEM format
 
@@ -73,7 +73,7 @@ curl https://api.openai.com/v1/organization/certificates \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
     -d '{
-          "content": "content"
+          "certificate": "certificate"
         }'
 ```
 

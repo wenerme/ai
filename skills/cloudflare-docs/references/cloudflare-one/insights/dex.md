@@ -44,7 +44,7 @@ To start using DEX for device, network, and application monitoring:
 2. [Install the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and sign in to register your device to the organization.
 3. Create [tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) to verify device connectivity to applications and networks.
 4. [Monitor](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/) device and network health across your fleet using real-time and historical metrics.
-5. Run [remote captures](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/) to collect diagnostic logs and packet captures from user devices.
+5. Use [diagnostics](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/) to run speed tests and collect remote captures from user devices.
 6. Set up [notifications](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/) to get alerts when degraded connectivity or application performance is detected.
 
 ### Troubleshooting
@@ -58,7 +58,7 @@ Review all available documentation for DEX capabilities.
 * [ Device monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/)
 * [ Synthetic tests ](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/)
 * [ Rules ](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/)
-* [ Remote captures ](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/)
+* [ Diagnostics ](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/)
 * [ Notifications ](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/)
 * [ IP visibility ](https://developers.cloudflare.com/cloudflare-one/insights/dex/ip-visibility/)
 * [ DEX MCP server ](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/)

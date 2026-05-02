@@ -30,35 +30,31 @@ Returns a list of users in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
 
-- `first_id: string`
+  - `name: optional string`
+
+    The name of the user
 
 - `has_more: boolean`
 
-- `last_id: string`
-
 - `object: string`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -75,16 +71,16 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
     {
       "id": "id",
       "added_at": 0,
-      "email": "email",
-      "name": "name",
       "object": "organization.project.user",
-      "role": "owner"
+      "role": "role",
+      "email": "email",
+      "name": "name"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "object"
+  "object": "object",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 

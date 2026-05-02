@@ -24,17 +24,17 @@ List uploaded certificates for this organization.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the organization level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -52,33 +52,21 @@ List uploaded certificates for this organization.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
 
-    - `"organization.project.certificate"`
-
-  - `active: optional boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+- `first_id: string`
 
 - `has_more: boolean`
+
+- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
 
 ### Example
 
@@ -94,21 +82,20 @@ curl https://api.openai.com/v1/organization/certificates \
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
   "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "has_more": true,
+  "last_id": "cert_abc",
+  "object": "list"
 }
 ```
 

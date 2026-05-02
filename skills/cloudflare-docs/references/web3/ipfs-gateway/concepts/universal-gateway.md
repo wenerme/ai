@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Universal Path gateway
 
-When you set up a Universal Path gateway — a gateway without a _DNSLink_ record — you are creating an unrestricted gateway that allows users to access any content hosted on the IPFS network.
+A Universal Path gateway is a gateway without a DNSLink record. It allows users to access any content hosted on the IPFS network by specifying a CID or IPNS path in the URL.
 
-This differs from a [restricted gateway](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/), which restricts the gateway to a particular piece of content (either a specific Content Identifier (CID) or an Interplanetary Name Service (IPNS) hostname).
+This differs from a [restricted gateway](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/), which limits the gateway to a single piece of content (a specific CID or IPNS hostname).
 
 ## How is it used with Cloudflare?
 
-You can add a Universal Path gateway just as you would [create any gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/).
+You can set up a Universal Path gateway the same way you [create any gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/).
 
-Likely, you will also want to add items to the [gateway blocklist](https://developers.cloudflare.com/web3/how-to/manage-gateways/#update-blocklist), which allows you to block content access through the Universal Path gateway for one or more:
+Because a Universal Path gateway is open by default, you may want to use the [gateway blocklist](https://developers.cloudflare.com/web3/how-to/manage-gateways/#update-blocklist) to prevent access to specific content. You can block one or more:
 
 * CIDs (`QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB`)
-* IPFS content (`/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme`)
+* IPFS content paths (`/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme`)
 * IPNS content paths (`/ipns/example.com`)
 
 Note

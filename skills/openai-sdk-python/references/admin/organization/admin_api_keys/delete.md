@@ -16,11 +16,13 @@ Delete an organization admin API key
 
 - `class AdminAPIKeyDeleteResponse: …`
 
-  - `id: Optional[str]`
+  - `id: str`
 
-  - `deleted: Optional[bool]`
+  - `deleted: bool`
 
-  - `object: Optional[str]`
+  - `object: Literal["organization.admin_api_key.deleted"]`
+
+    - `"organization.admin_api_key.deleted"`
 
 ### Example
 

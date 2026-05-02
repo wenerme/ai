@@ -36,6 +36,10 @@ Grants a group access to a project.
 
     Display name of the group.
 
+  - `group_type: str`
+
+    The type of the group.
+
   - `object: Literal["project.group"]`
 
     Always `project.group`.
@@ -70,6 +74,7 @@ print(project_group.group_id)
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
+  "group_type": "group_type",
   "object": "project.group",
   "project_id": "project_id"
 }

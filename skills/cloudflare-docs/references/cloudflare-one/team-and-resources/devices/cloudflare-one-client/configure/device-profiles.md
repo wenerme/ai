@@ -22,11 +22,11 @@ For example, users in one identity provider group (signifying a specific office 
 
 ## Create a new profile
 
-* [ Dashboard ](#tab-panel-4919)
-* [ API ](#tab-panel-4920)
-* [ Terraform (v5) ](#tab-panel-4921)
+* [ Dashboard ](#tab-panel-4723)
+* [ API ](#tab-panel-4724)
+* [ Terraform (v5) ](#tab-panel-4725)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select **Create new profile**. This will make a copy of the **Default** profile.
 3. Enter any name for the profile.
 4. Create rules to define the devices that will use this profile. Learn more about the available [Selectors](#selectors), [Operators](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#comparison-operators), and [Values](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#value).
@@ -130,7 +130,7 @@ resource "cloudflare_zero_trust_device_custom_profile" "example" {
 
 ## Edit profile settings
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to update and select **Configure**.
 3. Use [selectors](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#selectors) to add or adjust match rules, and modify [device client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-settings) for this profile as needed.  
 Note  
@@ -148,18 +148,18 @@ It may take up to 10 minutes for newly updated settings to propagate to devices.
 
 To verify the last active device profile for a specific device:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** \> **Devices**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices**.
 2. Under devices, find your device.
 3. Review the device profile under **Last active device profile**.
 
 To verify the last active device profile for a user's devices:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** \> **Users**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
 2. Under **User name**, find the user you would like to investigate.
 3. Select **Devices** to see all devices used by the user.
 4. Find the device you want to investigate and verify the last active device profile for that device under the **Device profile** column.
 
-Alternatively, you can use [DEX remote captures](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/) to collect client diagnostic logs. The device profile UUID is shown in your [detection report](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/#diagnostics-analyzer-beta) under `Profile ID`.
+Alternatively, you can use [DEX remote captures](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/) to collect client diagnostic logs. The device profile UUID is shown in your [detection report](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#diagnostics-analyzer-beta) under `Profile ID`.
 
 ### Via the CLI
 

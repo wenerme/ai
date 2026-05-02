@@ -14,25 +14,13 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The friendly name of the project, this name appears in reports.
 
-  - `geography?: "US" | "EU" | "JP" | 5 more`
+  - `external_key_id?: string | null`
+
+    External key ID to associate with the project.
+
+  - `geography?: string | null`
 
     Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](https://platform.openai.com/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
-
-    - `"US"`
-
-    - `"EU"`
-
-    - `"JP"`
-
-    - `"IN"`
-
-    - `"KR"`
-
-    - `"CA"`
-
-    - `"AU"`
-
-    - `"SG"`
 
 ### Returns
 
@@ -48,27 +36,27 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" | "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at?: number | null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id?: string | null`
+
+    The external key associated with the project.
+
+  - `name?: string | null`
+
+    The name of the project. This appears in reporting.
+
+  - `status?: string | null`
+
+    `active` or `archived`
 
 ### Example
 
@@ -90,9 +78,10 @@ console.log(project.id);
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```

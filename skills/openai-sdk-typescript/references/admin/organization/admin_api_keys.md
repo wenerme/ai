@@ -42,17 +42,11 @@ List organization API keys
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number | null`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: Owner`
 
@@ -84,9 +78,13 @@ List organization API keys
 
     The redacted value of the API key
 
-  - `value?: string`
+  - `last_used_at?: number | null`
 
-    The value of the API key. Only shown on create.
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name?: string | null`
+
+    The name of the API key
 
 ### Example
 
@@ -111,8 +109,6 @@ for await (const adminAPIKey of client.admin.organization.adminAPIKeys.list()) {
     {
       "id": "key_abc",
       "created_at": 1711471533,
-      "last_used_at": 1711471534,
-      "name": "Administration Key",
       "object": "organization.admin_api_key",
       "owner": {
         "id": "sa_456",
@@ -123,19 +119,20 @@ for await (const adminAPIKey of client.admin.organization.adminAPIKeys.list()) {
         "type": "user"
       },
       "redacted_value": "sk-admin...def",
-      "value": "sk-admin-1234abcd"
+      "last_used_at": 1711471534,
+      "name": "Administration Key"
     }
   ],
-  "first_id": "key_abc",
   "has_more": false,
-  "last_id": "key_xyz",
-  "object": "list"
+  "object": "list",
+  "first_id": "key_abc",
+  "last_id": "key_xyz"
 }
 ```
 
 ## Create admin API key
 
-`client.admin.organization.adminAPIKeys.create(AdminAPIKeyCreateParamsbody, RequestOptionsoptions?): AdminAPIKey`
+`client.admin.organization.adminAPIKeys.create(AdminAPIKeyCreateParamsbody, RequestOptionsoptions?): AdminAPIKeyCreateResponse`
 
 **post** `/organization/admin_api_keys`
 
@@ -149,61 +146,11 @@ Create an organization admin API key
 
 ### Returns
 
-- `AdminAPIKey`
+- `AdminAPIKeyCreateResponse extends AdminAPIKey`
 
   Represents an individual Admin API key in an org.
 
-  - `id: string`
-
-    The identifier, which can be referenced in API endpoints
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) of when the API key was created
-
-  - `last_used_at: number | null`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
-
-    The object type, which is always `organization.admin_api_key`
-
-  - `owner: Owner`
-
-    - `id?: string`
-
-      The identifier, which can be referenced in API endpoints
-
-    - `created_at?: number`
-
-      The Unix timestamp (in seconds) of when the user was created
-
-    - `name?: string`
-
-      The name of the user
-
-    - `object?: string`
-
-      The object type, which is always organization.user
-
-    - `role?: string`
-
-      Always `owner`
-
-    - `type?: string`
-
-      Always `user`
-
-  - `redacted_value: string`
-
-    The redacted value of the API key
-
-  - `value?: string`
+  - `value: string`
 
     The value of the API key. Only shown on create.
 
@@ -218,7 +165,7 @@ const client = new OpenAI({
 
 const adminAPIKey = await client.admin.organization.adminAPIKeys.create({ name: 'New Admin Key' });
 
-console.log(adminAPIKey.id);
+console.log(adminAPIKey);
 ```
 
 #### Response
@@ -227,8 +174,6 @@ console.log(adminAPIKey.id);
 {
   "id": "key_abc",
   "created_at": 1711471533,
-  "last_used_at": 1711471534,
-  "name": "Administration Key",
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -239,6 +184,8 @@ console.log(adminAPIKey.id);
     "type": "user"
   },
   "redacted_value": "sk-admin...def",
+  "last_used_at": 1711471534,
+  "name": "Administration Key",
   "value": "sk-admin-1234abcd"
 }
 ```
@@ -271,17 +218,11 @@ Retrieve a single organization API key
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number | null`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: Owner`
 
@@ -313,9 +254,13 @@ Retrieve a single organization API key
 
     The redacted value of the API key
 
-  - `value?: string`
+  - `last_used_at?: number | null`
 
-    The value of the API key. Only shown on create.
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name?: string | null`
+
+    The name of the API key
 
 ### Example
 
@@ -337,8 +282,6 @@ console.log(adminAPIKey.id);
 {
   "id": "key_abc",
   "created_at": 1711471533,
-  "last_used_at": 1711471534,
-  "name": "Administration Key",
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -349,7 +292,8 @@ console.log(adminAPIKey.id);
     "type": "user"
   },
   "redacted_value": "sk-admin...def",
-  "value": "sk-admin-1234abcd"
+  "last_used_at": 1711471534,
+  "name": "Administration Key"
 }
 ```
 
@@ -371,11 +315,13 @@ Delete an organization admin API key
 
 - `AdminAPIKeyDeleteResponse`
 
-  - `id?: string`
+  - `id: string`
 
-  - `deleted?: boolean`
+  - `deleted: boolean`
 
-  - `object?: string`
+  - `object: "organization.admin_api_key.deleted"`
+
+    - `"organization.admin_api_key.deleted"`
 
 ### Example
 
@@ -417,17 +363,11 @@ console.log(adminAPIKey.id);
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number | null`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: Owner`
 
@@ -459,7 +399,21 @@ console.log(adminAPIKey.id);
 
     The redacted value of the API key
 
-  - `value?: string`
+  - `last_used_at?: number | null`
+
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name?: string | null`
+
+    The name of the API key
+
+### Admin API Key Create Response
+
+- `AdminAPIKeyCreateResponse extends AdminAPIKey`
+
+  Represents an individual Admin API key in an org.
+
+  - `value: string`
 
     The value of the API key. Only shown on create.
 
@@ -467,8 +421,10 @@ console.log(adminAPIKey.id);
 
 - `AdminAPIKeyDeleteResponse`
 
-  - `id?: string`
+  - `id: string`
 
-  - `deleted?: boolean`
+  - `deleted: boolean`
 
-  - `object?: string`
+  - `object: "organization.admin_api_key.deleted"`
+
+    - `"organization.admin_api_key.deleted"`

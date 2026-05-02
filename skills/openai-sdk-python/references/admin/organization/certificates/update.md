@@ -10,7 +10,7 @@ Modify a certificate. Note that only the name can be modified.
 
 - `certificate_id: str`
 
-- `name: str`
+- `name: Optional[str]`
 
   The updated name for the certificate
 
@@ -42,7 +42,7 @@ Modify a certificate. Note that only the name can be modified.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
@@ -75,7 +75,6 @@ client = OpenAI(
 )
 certificate = client.admin.organization.certificates.update(
     certificate_id="certificate_id",
-    name="name",
 )
 print(certificate.id)
 ```

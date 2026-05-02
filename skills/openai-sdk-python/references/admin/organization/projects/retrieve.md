@@ -24,27 +24,27 @@ Retrieves a project.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: str`
-
-    The name of the project. This appears in reporting.
-
   - `object: Literal["organization.project"]`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: Literal["active", "archived"]`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: Optional[str]`
+
+    The external key associated with the project.
+
+  - `name: Optional[str]`
+
+    The name of the project. This appears in reporting.
+
+  - `status: Optional[str]`
+
+    `active` or `archived`
 
 ### Example
 
@@ -67,9 +67,10 @@ print(project.id)
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```

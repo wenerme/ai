@@ -2,7 +2,7 @@
 
 ## List project user role assignments
 
-`client.admin.organization.projects.users.roles.list(stringuserID, RoleListParamsparams, RequestOptionsoptions?): CursorPage<RoleListResponse>`
+`client.admin.organization.projects.users.roles.list(stringuserID, RoleListParamsparams, RequestOptionsoptions?): NextCursorPage<RoleListResponse>`
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
@@ -213,27 +213,93 @@ Assigns a project role to a user within a project.
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: string`
-
-      The email address of the user
-
-    - `name: string`
-
-      The name of the user
-
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: "owner" | "reader"`
+    - `api_key_last_used_at?: number | null`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created?: number`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona?: string | null`
+
+      The developer persona metadata for the user.
+
+    - `email?: string | null`
+
+      The email address of the user
+
+    - `is_default?: boolean`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser?: boolean | null`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed?: boolean`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account?: boolean`
+
+      Whether the user is a service account.
+
+    - `name?: string | null`
+
+      The name of the user
+
+    - `projects?: Projects | null`
+
+      Projects associated with the user, if included.
+
+      - `data: Array<Data>`
+
+        - `id?: string | null`
+
+        - `name?: string | null`
+
+        - `role?: string | null`
+
+      - `object: "list"`
+
+        - `"list"`
+
+    - `role?: string | null`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level?: string | null`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user?: User`
+
+      Nested user details.
+
+      - `id: string`
+
+      - `object: "user"`
+
+        - `"user"`
+
+      - `banned?: boolean | null`
+
+      - `banned_at?: number | null`
+
+      - `email?: string | null`
+
+      - `enabled?: boolean | null`
+
+      - `name?: string | null`
+
+      - `picture?: string | null`
 
 ### Example
 
@@ -271,10 +337,38 @@ console.log(role.object);
   "user": {
     "id": "id",
     "added_at": 0,
-    "email": "email",
-    "name": "name",
     "object": "organization.user",
-    "role": "owner"
+    "api_key_last_used_at": 0,
+    "created": 0,
+    "developer_persona": "developer_persona",
+    "email": "email",
+    "is_default": true,
+    "is_scale_tier_authorized_purchaser": true,
+    "is_scim_managed": true,
+    "is_service_account": true,
+    "name": "name",
+    "projects": {
+      "data": [
+        {
+          "id": "id",
+          "name": "name",
+          "role": "role"
+        }
+      ],
+      "object": "list"
+    },
+    "role": "role",
+    "technical_level": "technical_level",
+    "user": {
+      "id": "id",
+      "object": "user",
+      "banned": true,
+      "banned_at": 0,
+      "email": "email",
+      "enabled": true,
+      "name": "name",
+      "picture": "picture"
+    }
   }
 }
 ```
@@ -451,27 +545,93 @@ console.log(role.deleted);
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: string`
-
-      The email address of the user
-
-    - `name: string`
-
-      The name of the user
-
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: "owner" | "reader"`
+    - `api_key_last_used_at?: number | null`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created?: number`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona?: string | null`
+
+      The developer persona metadata for the user.
+
+    - `email?: string | null`
+
+      The email address of the user
+
+    - `is_default?: boolean`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser?: boolean | null`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed?: boolean`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account?: boolean`
+
+      Whether the user is a service account.
+
+    - `name?: string | null`
+
+      The name of the user
+
+    - `projects?: Projects | null`
+
+      Projects associated with the user, if included.
+
+      - `data: Array<Data>`
+
+        - `id?: string | null`
+
+        - `name?: string | null`
+
+        - `role?: string | null`
+
+      - `object: "list"`
+
+        - `"list"`
+
+    - `role?: string | null`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level?: string | null`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user?: User`
+
+      Nested user details.
+
+      - `id: string`
+
+      - `object: "user"`
+
+        - `"user"`
+
+      - `banned?: boolean | null`
+
+      - `banned_at?: number | null`
+
+      - `email?: string | null`
+
+      - `enabled?: boolean | null`
+
+      - `name?: string | null`
+
+      - `picture?: string | null`
 
 ### Role Delete Response
 

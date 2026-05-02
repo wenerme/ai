@@ -180,74 +180,6 @@ List user actions and configuration changes within this organization.
 
     The ID of this log.
 
-  - `actor: Actor`
-
-    The actor who performed the audit logged action.
-
-    - `api_key?: APIKey`
-
-      The API Key used to perform the audit logged action.
-
-      - `id?: string`
-
-        The tracking id of the API key.
-
-      - `service_account?: ServiceAccount`
-
-        The service account that performed the audit logged action.
-
-        - `id?: string`
-
-          The service account id.
-
-      - `type?: "user" | "service_account"`
-
-        The type of API key. Can be either `user` or `service_account`.
-
-        - `"user"`
-
-        - `"service_account"`
-
-      - `user?: User`
-
-        The user who performed the audit logged action.
-
-        - `id?: string`
-
-          The user id.
-
-        - `email?: string`
-
-          The user email.
-
-    - `session?: Session`
-
-      The session in which the audit logged action was performed.
-
-      - `ip_address?: string`
-
-        The IP address from which the action was performed.
-
-      - `user?: User`
-
-        The user who performed the audit logged action.
-
-        - `id?: string`
-
-          The user id.
-
-        - `email?: string`
-
-          The user email.
-
-    - `type?: "session" | "api_key"`
-
-      The type of actor. Is either `session` or `api_key`.
-
-      - `"session"`
-
-      - `"api_key"`
-
   - `effective_at: number`
 
     The Unix timestamp (in seconds) of the event.
@@ -357,6 +289,74 @@ List user actions and configuration changes within this organization.
     - `"user.updated"`
 
     - `"user.deleted"`
+
+  - `actor?: Actor | null`
+
+    The actor who performed the audit logged action.
+
+    - `api_key?: APIKey`
+
+      The API Key used to perform the audit logged action.
+
+      - `id?: string`
+
+        The tracking id of the API key.
+
+      - `service_account?: ServiceAccount`
+
+        The service account that performed the audit logged action.
+
+        - `id?: string`
+
+          The service account id.
+
+      - `type?: "user" | "service_account"`
+
+        The type of API key. Can be either `user` or `service_account`.
+
+        - `"user"`
+
+        - `"service_account"`
+
+      - `user?: User`
+
+        The user who performed the audit logged action.
+
+        - `id?: string`
+
+          The user id.
+
+        - `email?: string`
+
+          The user email.
+
+    - `session?: Session`
+
+      The session in which the audit logged action was performed.
+
+      - `ip_address?: string`
+
+        The IP address from which the action was performed.
+
+      - `user?: User`
+
+        The user who performed the audit logged action.
+
+        - `id?: string`
+
+          The user id.
+
+        - `email?: string`
+
+          The user email.
+
+    - `type?: "session" | "api_key"`
+
+      The type of actor. Is either `session` or `api_key`.
+
+      - `"session"`
+
+      - `"api_key"`
 
   - `"api_key.created"?: APIKeyCreated`
 
@@ -1084,6 +1084,8 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
   "data": [
     {
       "id": "id",
+      "effective_at": 0,
+      "type": "api_key.created",
       "actor": {
         "api_key": {
           "id": "id",
@@ -1105,8 +1107,6 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
         },
         "type": "session"
       },
-      "effective_at": 0,
-      "type": "api_key.created",
       "api_key.created": {
         "id": "id",
         "data": {
@@ -1375,10 +1375,10 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
       }
     }
   ],
-  "first_id": "audit_log-defb456h8dks",
   "has_more": true,
-  "last_id": "audit_log-hnbkd8s93s",
-  "object": "list"
+  "object": "list",
+  "first_id": "audit_log-defb456h8dks",
+  "last_id": "audit_log-hnbkd8s93s"
 }
 ```
 
@@ -1393,74 +1393,6 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
   - `id: string`
 
     The ID of this log.
-
-  - `actor: Actor`
-
-    The actor who performed the audit logged action.
-
-    - `api_key?: APIKey`
-
-      The API Key used to perform the audit logged action.
-
-      - `id?: string`
-
-        The tracking id of the API key.
-
-      - `service_account?: ServiceAccount`
-
-        The service account that performed the audit logged action.
-
-        - `id?: string`
-
-          The service account id.
-
-      - `type?: "user" | "service_account"`
-
-        The type of API key. Can be either `user` or `service_account`.
-
-        - `"user"`
-
-        - `"service_account"`
-
-      - `user?: User`
-
-        The user who performed the audit logged action.
-
-        - `id?: string`
-
-          The user id.
-
-        - `email?: string`
-
-          The user email.
-
-    - `session?: Session`
-
-      The session in which the audit logged action was performed.
-
-      - `ip_address?: string`
-
-        The IP address from which the action was performed.
-
-      - `user?: User`
-
-        The user who performed the audit logged action.
-
-        - `id?: string`
-
-          The user id.
-
-        - `email?: string`
-
-          The user email.
-
-    - `type?: "session" | "api_key"`
-
-      The type of actor. Is either `session` or `api_key`.
-
-      - `"session"`
-
-      - `"api_key"`
 
   - `effective_at: number`
 
@@ -1571,6 +1503,74 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
     - `"user.updated"`
 
     - `"user.deleted"`
+
+  - `actor?: Actor | null`
+
+    The actor who performed the audit logged action.
+
+    - `api_key?: APIKey`
+
+      The API Key used to perform the audit logged action.
+
+      - `id?: string`
+
+        The tracking id of the API key.
+
+      - `service_account?: ServiceAccount`
+
+        The service account that performed the audit logged action.
+
+        - `id?: string`
+
+          The service account id.
+
+      - `type?: "user" | "service_account"`
+
+        The type of API key. Can be either `user` or `service_account`.
+
+        - `"user"`
+
+        - `"service_account"`
+
+      - `user?: User`
+
+        The user who performed the audit logged action.
+
+        - `id?: string`
+
+          The user id.
+
+        - `email?: string`
+
+          The user email.
+
+    - `session?: Session`
+
+      The session in which the audit logged action was performed.
+
+      - `ip_address?: string`
+
+        The IP address from which the action was performed.
+
+      - `user?: User`
+
+        The user who performed the audit logged action.
+
+        - `id?: string`
+
+          The user id.
+
+        - `email?: string`
+
+          The user email.
+
+    - `type?: "session" | "api_key"`
+
+      The type of actor. Is either `session` or `api_key`.
+
+      - `"session"`
+
+      - `"api_key"`
 
   - `"api_key.created"?: APIKeyCreated`
 
@@ -2320,17 +2320,11 @@ List organization API keys
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number | null`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: Owner`
 
@@ -2362,9 +2356,13 @@ List organization API keys
 
     The redacted value of the API key
 
-  - `value?: string`
+  - `last_used_at?: number | null`
 
-    The value of the API key. Only shown on create.
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name?: string | null`
+
+    The name of the API key
 
 ### Example
 
@@ -2389,8 +2387,6 @@ for await (const adminAPIKey of client.admin.organization.adminAPIKeys.list()) {
     {
       "id": "key_abc",
       "created_at": 1711471533,
-      "last_used_at": 1711471534,
-      "name": "Administration Key",
       "object": "organization.admin_api_key",
       "owner": {
         "id": "sa_456",
@@ -2401,19 +2397,20 @@ for await (const adminAPIKey of client.admin.organization.adminAPIKeys.list()) {
         "type": "user"
       },
       "redacted_value": "sk-admin...def",
-      "value": "sk-admin-1234abcd"
+      "last_used_at": 1711471534,
+      "name": "Administration Key"
     }
   ],
-  "first_id": "key_abc",
   "has_more": false,
-  "last_id": "key_xyz",
-  "object": "list"
+  "object": "list",
+  "first_id": "key_abc",
+  "last_id": "key_xyz"
 }
 ```
 
 ## Create admin API key
 
-`client.admin.organization.adminAPIKeys.create(AdminAPIKeyCreateParamsbody, RequestOptionsoptions?): AdminAPIKey`
+`client.admin.organization.adminAPIKeys.create(AdminAPIKeyCreateParamsbody, RequestOptionsoptions?): AdminAPIKeyCreateResponse`
 
 **post** `/organization/admin_api_keys`
 
@@ -2427,61 +2424,11 @@ Create an organization admin API key
 
 ### Returns
 
-- `AdminAPIKey`
+- `AdminAPIKeyCreateResponse extends AdminAPIKey`
 
   Represents an individual Admin API key in an org.
 
-  - `id: string`
-
-    The identifier, which can be referenced in API endpoints
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) of when the API key was created
-
-  - `last_used_at: number | null`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
-
-    The object type, which is always `organization.admin_api_key`
-
-  - `owner: Owner`
-
-    - `id?: string`
-
-      The identifier, which can be referenced in API endpoints
-
-    - `created_at?: number`
-
-      The Unix timestamp (in seconds) of when the user was created
-
-    - `name?: string`
-
-      The name of the user
-
-    - `object?: string`
-
-      The object type, which is always organization.user
-
-    - `role?: string`
-
-      Always `owner`
-
-    - `type?: string`
-
-      Always `user`
-
-  - `redacted_value: string`
-
-    The redacted value of the API key
-
-  - `value?: string`
+  - `value: string`
 
     The value of the API key. Only shown on create.
 
@@ -2496,7 +2443,7 @@ const client = new OpenAI({
 
 const adminAPIKey = await client.admin.organization.adminAPIKeys.create({ name: 'New Admin Key' });
 
-console.log(adminAPIKey.id);
+console.log(adminAPIKey);
 ```
 
 #### Response
@@ -2505,8 +2452,6 @@ console.log(adminAPIKey.id);
 {
   "id": "key_abc",
   "created_at": 1711471533,
-  "last_used_at": 1711471534,
-  "name": "Administration Key",
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -2517,6 +2462,8 @@ console.log(adminAPIKey.id);
     "type": "user"
   },
   "redacted_value": "sk-admin...def",
+  "last_used_at": 1711471534,
+  "name": "Administration Key",
   "value": "sk-admin-1234abcd"
 }
 ```
@@ -2549,17 +2496,11 @@ Retrieve a single organization API key
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number | null`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: Owner`
 
@@ -2591,9 +2532,13 @@ Retrieve a single organization API key
 
     The redacted value of the API key
 
-  - `value?: string`
+  - `last_used_at?: number | null`
 
-    The value of the API key. Only shown on create.
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name?: string | null`
+
+    The name of the API key
 
 ### Example
 
@@ -2615,8 +2560,6 @@ console.log(adminAPIKey.id);
 {
   "id": "key_abc",
   "created_at": 1711471533,
-  "last_used_at": 1711471534,
-  "name": "Administration Key",
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -2627,7 +2570,8 @@ console.log(adminAPIKey.id);
     "type": "user"
   },
   "redacted_value": "sk-admin...def",
-  "value": "sk-admin-1234abcd"
+  "last_used_at": 1711471534,
+  "name": "Administration Key"
 }
 ```
 
@@ -2649,11 +2593,13 @@ Delete an organization admin API key
 
 - `AdminAPIKeyDeleteResponse`
 
-  - `id?: string`
+  - `id: string`
 
-  - `deleted?: boolean`
+  - `deleted: boolean`
 
-  - `object?: string`
+  - `object: "organization.admin_api_key.deleted"`
+
+    - `"organization.admin_api_key.deleted"`
 
 ### Example
 
@@ -2695,17 +2641,11 @@ console.log(adminAPIKey.id);
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number | null`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: Owner`
 
@@ -2737,7 +2677,21 @@ console.log(adminAPIKey.id);
 
     The redacted value of the API key
 
-  - `value?: string`
+  - `last_used_at?: number | null`
+
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name?: string | null`
+
+    The name of the API key
+
+### Admin API Key Create Response
+
+- `AdminAPIKeyCreateResponse extends AdminAPIKey`
+
+  Represents an individual Admin API key in an org.
+
+  - `value: string`
 
     The value of the API key. Only shown on create.
 
@@ -2745,11 +2699,13 @@ console.log(adminAPIKey.id);
 
 - `AdminAPIKeyDeleteResponse`
 
-  - `id?: string`
+  - `id: string`
 
-  - `deleted?: boolean`
+  - `deleted: boolean`
 
-  - `object?: string`
+  - `object: "organization.admin_api_key.deleted"`
+
+    - `"organization.admin_api_key.deleted"`
 
 # Usage
 
@@ -2835,7 +2791,7 @@ Get audio speeches usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -3081,13 +3037,13 @@ Get audio speeches usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -3129,7 +3085,7 @@ Get audio speeches usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -3157,7 +3113,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -3265,7 +3221,7 @@ Get audio transcriptions usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -3511,13 +3467,13 @@ Get audio transcriptions usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -3559,7 +3515,7 @@ Get audio transcriptions usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -3587,7 +3543,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -3677,7 +3633,7 @@ Get code interpreter sessions usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -3923,13 +3879,13 @@ Get code interpreter sessions usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -3971,7 +3927,7 @@ Get code interpreter sessions usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -3999,7 +3955,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -4115,7 +4071,7 @@ Get completions usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -4361,13 +4317,13 @@ Get completions usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -4409,7 +4365,7 @@ Get completions usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -4437,7 +4393,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -4545,7 +4501,7 @@ Get embeddings usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -4791,13 +4747,13 @@ Get embeddings usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -4839,7 +4795,7 @@ Get embeddings usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -4867,7 +4823,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -5003,7 +4959,7 @@ Get images usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -5249,13 +5205,13 @@ Get images usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -5297,7 +5253,7 @@ Get images usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -5325,7 +5281,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -5433,7 +5389,7 @@ Get moderations usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -5679,13 +5635,13 @@ Get moderations usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -5727,7 +5683,7 @@ Get moderations usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -5755,7 +5711,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -5845,7 +5801,7 @@ Get vector stores usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -6091,13 +6047,13 @@ Get vector stores usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -6139,7 +6095,7 @@ Get vector stores usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -6167,7 +6123,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -6257,7 +6213,7 @@ Get costs details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -6503,13 +6459,13 @@ Get costs details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -6551,7 +6507,7 @@ Get costs details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -6579,7 +6535,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -6619,7 +6575,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -6865,13 +6821,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -6913,7 +6869,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -6931,7 +6887,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -7177,13 +7133,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -7225,7 +7181,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -7243,7 +7199,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -7489,13 +7445,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -7537,7 +7493,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -7555,7 +7511,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -7801,13 +7757,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -7849,7 +7805,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -7867,7 +7823,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -8113,13 +8069,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -8161,7 +8117,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -8179,7 +8135,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -8425,13 +8381,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -8473,7 +8429,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -8491,7 +8447,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -8737,13 +8693,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -8785,7 +8741,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -8803,7 +8759,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -9049,13 +9005,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -9097,7 +9053,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -9115,7 +9071,7 @@ console.log(response.data);
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -9361,13 +9317,13 @@ console.log(response.data);
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -9409,7 +9365,7 @@ console.log(response.data);
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -9447,23 +9403,35 @@ Returns a list of invites in the organization.
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: Array<Project>`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" | "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" | "reader"`
 
@@ -9483,25 +9451,13 @@ Returns a list of invites in the organization.
 
     - `"pending"`
 
-  - `accepted_at?: number`
+  - `accepted_at?: number | null`
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects?: Array<Project>`
+  - `expires_at?: number | null`
 
-    The projects that were granted membership upon acceptance of the invite.
-
-    - `id?: string`
-
-      Project's public ID
-
-    - `role?: "member" | "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+    The Unix timestamp (in seconds) of when the invite expires.
 
 ### Example
 
@@ -9525,24 +9481,24 @@ for await (const invite of client.admin.organization.invites.list()) {
   "data": [
     {
       "id": "id",
+      "created_at": 0,
       "email": "email",
-      "expires_at": 0,
-      "invited_at": 0,
       "object": "organization.invite",
-      "role": "owner",
-      "status": "accepted",
-      "accepted_at": 0,
       "projects": [
         {
           "id": "id",
           "role": "member"
         }
-      ]
+      ],
+      "role": "owner",
+      "status": "accepted",
+      "accepted_at": 0,
+      "expires_at": 0
     }
   ],
+  "has_more": true,
   "object": "list",
   "first_id": "first_id",
-  "has_more": true,
   "last_id": "last_id"
 }
 ```
@@ -9597,23 +9553,35 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: Array<Project>`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" | "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" | "reader"`
 
@@ -9633,25 +9601,13 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
     - `"pending"`
 
-  - `accepted_at?: number`
+  - `accepted_at?: number | null`
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects?: Array<Project>`
+  - `expires_at?: number | null`
 
-    The projects that were granted membership upon acceptance of the invite.
-
-    - `id?: string`
-
-      Project's public ID
-
-    - `role?: "member" | "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+    The Unix timestamp (in seconds) of when the invite expires.
 
 ### Example
 
@@ -9672,19 +9628,19 @@ console.log(invite.id);
 ```json
 {
   "id": "id",
+  "created_at": 0,
   "email": "email",
-  "expires_at": 0,
-  "invited_at": 0,
   "object": "organization.invite",
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
   "projects": [
     {
       "id": "id",
       "role": "member"
     }
-  ]
+  ],
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "expires_at": 0
 }
 ```
 
@@ -9710,23 +9666,35 @@ Retrieves an invite.
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: Array<Project>`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" | "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" | "reader"`
 
@@ -9746,25 +9714,13 @@ Retrieves an invite.
 
     - `"pending"`
 
-  - `accepted_at?: number`
+  - `accepted_at?: number | null`
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects?: Array<Project>`
+  - `expires_at?: number | null`
 
-    The projects that were granted membership upon acceptance of the invite.
-
-    - `id?: string`
-
-      Project's public ID
-
-    - `role?: "member" | "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+    The Unix timestamp (in seconds) of when the invite expires.
 
 ### Example
 
@@ -9785,19 +9741,19 @@ console.log(invite.id);
 ```json
 {
   "id": "id",
+  "created_at": 0,
   "email": "email",
-  "expires_at": 0,
-  "invited_at": 0,
   "object": "organization.invite",
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
   "projects": [
     {
       "id": "id",
       "role": "member"
     }
-  ]
+  ],
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "expires_at": 0
 }
 ```
 
@@ -9863,23 +9819,35 @@ console.log(invite.id);
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: Array<Project>`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" | "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" | "reader"`
 
@@ -9899,25 +9867,13 @@ console.log(invite.id);
 
     - `"pending"`
 
-  - `accepted_at?: number`
+  - `accepted_at?: number | null`
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects?: Array<Project>`
+  - `expires_at?: number | null`
 
-    The projects that were granted membership upon acceptance of the invite.
-
-    - `id?: string`
-
-      Project's public ID
-
-    - `role?: "member" | "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+    The Unix timestamp (in seconds) of when the invite expires.
 
 ### Invite Delete Response
 
@@ -9973,27 +9929,93 @@ Lists all of the users in the organization.
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" | "reader"`
+  - `api_key_last_used_at?: number | null`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created?: number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona?: string | null`
+
+    The developer persona metadata for the user.
+
+  - `email?: string | null`
+
+    The email address of the user
+
+  - `is_default?: boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser?: boolean | null`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed?: boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account?: boolean`
+
+    Whether the user is a service account.
+
+  - `name?: string | null`
+
+    The name of the user
+
+  - `projects?: Projects | null`
+
+    Projects associated with the user, if included.
+
+    - `data: Array<Data>`
+
+      - `id?: string | null`
+
+      - `name?: string | null`
+
+      - `role?: string | null`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role?: string | null`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level?: string | null`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user?: User`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned?: boolean | null`
+
+    - `banned_at?: number | null`
+
+    - `email?: string | null`
+
+    - `enabled?: boolean | null`
+
+    - `name?: string | null`
+
+    - `picture?: string | null`
 
 ### Example
 
@@ -10018,16 +10040,44 @@ for await (const organizationUser of client.admin.organization.users.list()) {
     {
       "id": "id",
       "added_at": 0,
-      "email": "email",
-      "name": "name",
       "object": "organization.user",
-      "role": "owner"
+      "api_key_last_used_at": 0,
+      "created": 0,
+      "developer_persona": "developer_persona",
+      "email": "email",
+      "is_default": true,
+      "is_scale_tier_authorized_purchaser": true,
+      "is_scim_managed": true,
+      "is_service_account": true,
+      "name": "name",
+      "projects": {
+        "data": [
+          {
+            "id": "id",
+            "name": "name",
+            "role": "role"
+          }
+        ],
+        "object": "list"
+      },
+      "role": "role",
+      "technical_level": "technical_level",
+      "user": {
+        "id": "id",
+        "object": "user",
+        "banned": true,
+        "banned_at": 0,
+        "email": "email",
+        "enabled": true,
+        "name": "name",
+        "picture": "picture"
+      }
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -10057,27 +10107,93 @@ Retrieves a user by their identifier.
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" | "reader"`
+  - `api_key_last_used_at?: number | null`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created?: number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona?: string | null`
+
+    The developer persona metadata for the user.
+
+  - `email?: string | null`
+
+    The email address of the user
+
+  - `is_default?: boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser?: boolean | null`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed?: boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account?: boolean`
+
+    Whether the user is a service account.
+
+  - `name?: string | null`
+
+    The name of the user
+
+  - `projects?: Projects | null`
+
+    Projects associated with the user, if included.
+
+    - `data: Array<Data>`
+
+      - `id?: string | null`
+
+      - `name?: string | null`
+
+      - `role?: string | null`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role?: string | null`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level?: string | null`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user?: User`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned?: boolean | null`
+
+    - `banned_at?: number | null`
+
+    - `email?: string | null`
+
+    - `enabled?: boolean | null`
+
+    - `name?: string | null`
+
+    - `picture?: string | null`
 
 ### Example
 
@@ -10099,10 +10215,38 @@ console.log(organizationUser.id);
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.user",
-  "role": "owner"
+  "api_key_last_used_at": 0,
+  "created": 0,
+  "developer_persona": "developer_persona",
+  "email": "email",
+  "is_default": true,
+  "is_scale_tier_authorized_purchaser": true,
+  "is_scim_managed": true,
+  "is_service_account": true,
+  "name": "name",
+  "projects": {
+    "data": [
+      {
+        "id": "id",
+        "name": "name",
+        "role": "role"
+      }
+    ],
+    "object": "list"
+  },
+  "role": "role",
+  "technical_level": "technical_level",
+  "user": {
+    "id": "id",
+    "object": "user",
+    "banned": true,
+    "banned_at": 0,
+    "email": "email",
+    "enabled": true,
+    "name": "name",
+    "picture": "picture"
+  }
 }
 ```
 
@@ -10120,13 +10264,21 @@ Modifies a user's role in the organization.
 
 - `body: UserUpdateParams`
 
-  - `role: "owner" | "reader"`
+  - `developer_persona?: string | null`
+
+    Developer persona metadata.
+
+  - `role?: string | null`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `role_id?: string | null`
 
-    - `"reader"`
+    Role ID to assign to the user.
+
+  - `technical_level?: string | null`
+
+    Technical level metadata.
 
 ### Returns
 
@@ -10142,27 +10294,93 @@ Modifies a user's role in the organization.
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" | "reader"`
+  - `api_key_last_used_at?: number | null`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created?: number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona?: string | null`
+
+    The developer persona metadata for the user.
+
+  - `email?: string | null`
+
+    The email address of the user
+
+  - `is_default?: boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser?: boolean | null`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed?: boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account?: boolean`
+
+    Whether the user is a service account.
+
+  - `name?: string | null`
+
+    The name of the user
+
+  - `projects?: Projects | null`
+
+    Projects associated with the user, if included.
+
+    - `data: Array<Data>`
+
+      - `id?: string | null`
+
+      - `name?: string | null`
+
+      - `role?: string | null`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role?: string | null`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level?: string | null`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user?: User`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned?: boolean | null`
+
+    - `banned_at?: number | null`
+
+    - `email?: string | null`
+
+    - `enabled?: boolean | null`
+
+    - `name?: string | null`
+
+    - `picture?: string | null`
 
 ### Example
 
@@ -10173,7 +10391,7 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const organizationUser = await client.admin.organization.users.update('user_id', { role: 'owner' });
+const organizationUser = await client.admin.organization.users.update('user_id');
 
 console.log(organizationUser.id);
 ```
@@ -10184,10 +10402,38 @@ console.log(organizationUser.id);
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.user",
-  "role": "owner"
+  "api_key_last_used_at": 0,
+  "created": 0,
+  "developer_persona": "developer_persona",
+  "email": "email",
+  "is_default": true,
+  "is_scale_tier_authorized_purchaser": true,
+  "is_scim_managed": true,
+  "is_service_account": true,
+  "name": "name",
+  "projects": {
+    "data": [
+      {
+        "id": "id",
+        "name": "name",
+        "role": "role"
+      }
+    ],
+    "object": "list"
+  },
+  "role": "role",
+  "technical_level": "technical_level",
+  "user": {
+    "id": "id",
+    "object": "user",
+    "banned": true,
+    "banned_at": 0,
+    "email": "email",
+    "enabled": true,
+    "name": "name",
+    "picture": "picture"
+  }
 }
 ```
 
@@ -10255,27 +10501,93 @@ console.log(user.id);
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" | "reader"`
+  - `api_key_last_used_at?: number | null`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created?: number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona?: string | null`
+
+    The developer persona metadata for the user.
+
+  - `email?: string | null`
+
+    The email address of the user
+
+  - `is_default?: boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser?: boolean | null`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed?: boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account?: boolean`
+
+    Whether the user is a service account.
+
+  - `name?: string | null`
+
+    The name of the user
+
+  - `projects?: Projects | null`
+
+    Projects associated with the user, if included.
+
+    - `data: Array<Data>`
+
+      - `id?: string | null`
+
+      - `name?: string | null`
+
+      - `role?: string | null`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role?: string | null`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level?: string | null`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user?: User`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned?: boolean | null`
+
+    - `banned_at?: number | null`
+
+    - `email?: string | null`
+
+    - `enabled?: boolean | null`
+
+    - `name?: string | null`
+
+    - `picture?: string | null`
 
 ### User Delete Response
 
@@ -10293,7 +10605,7 @@ console.log(user.id);
 
 ## List user organization role assignments
 
-`client.admin.organization.users.roles.list(stringuserID, RoleListParamsquery?, RequestOptionsoptions?): CursorPage<RoleListResponse>`
+`client.admin.organization.users.roles.list(stringuserID, RoleListParamsquery?, RequestOptionsoptions?): NextCursorPage<RoleListResponse>`
 
 **get** `/organization/users/{user_id}/roles`
 
@@ -10493,27 +10805,93 @@ Assigns an organization role to a user within the organization.
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: string`
-
-      The email address of the user
-
-    - `name: string`
-
-      The name of the user
-
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: "owner" | "reader"`
+    - `api_key_last_used_at?: number | null`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created?: number`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona?: string | null`
+
+      The developer persona metadata for the user.
+
+    - `email?: string | null`
+
+      The email address of the user
+
+    - `is_default?: boolean`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser?: boolean | null`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed?: boolean`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account?: boolean`
+
+      Whether the user is a service account.
+
+    - `name?: string | null`
+
+      The name of the user
+
+    - `projects?: Projects | null`
+
+      Projects associated with the user, if included.
+
+      - `data: Array<Data>`
+
+        - `id?: string | null`
+
+        - `name?: string | null`
+
+        - `role?: string | null`
+
+      - `object: "list"`
+
+        - `"list"`
+
+    - `role?: string | null`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level?: string | null`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user?: User`
+
+      Nested user details.
+
+      - `id: string`
+
+      - `object: "user"`
+
+        - `"user"`
+
+      - `banned?: boolean | null`
+
+      - `banned_at?: number | null`
+
+      - `email?: string | null`
+
+      - `enabled?: boolean | null`
+
+      - `name?: string | null`
+
+      - `picture?: string | null`
 
 ### Example
 
@@ -10548,10 +10926,38 @@ console.log(role.object);
   "user": {
     "id": "id",
     "added_at": 0,
-    "email": "email",
-    "name": "name",
     "object": "organization.user",
-    "role": "owner"
+    "api_key_last_used_at": 0,
+    "created": 0,
+    "developer_persona": "developer_persona",
+    "email": "email",
+    "is_default": true,
+    "is_scale_tier_authorized_purchaser": true,
+    "is_scim_managed": true,
+    "is_service_account": true,
+    "name": "name",
+    "projects": {
+      "data": [
+        {
+          "id": "id",
+          "name": "name",
+          "role": "role"
+        }
+      ],
+      "object": "list"
+    },
+    "role": "role",
+    "technical_level": "technical_level",
+    "user": {
+      "id": "id",
+      "object": "user",
+      "banned": true,
+      "banned_at": 0,
+      "email": "email",
+      "enabled": true,
+      "name": "name",
+      "picture": "picture"
+    }
   }
 }
 ```
@@ -10721,27 +11127,93 @@ console.log(role.deleted);
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: string`
-
-      The email address of the user
-
-    - `name: string`
-
-      The name of the user
-
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: "owner" | "reader"`
+    - `api_key_last_used_at?: number | null`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created?: number`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona?: string | null`
+
+      The developer persona metadata for the user.
+
+    - `email?: string | null`
+
+      The email address of the user
+
+    - `is_default?: boolean`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser?: boolean | null`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed?: boolean`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account?: boolean`
+
+      Whether the user is a service account.
+
+    - `name?: string | null`
+
+      The name of the user
+
+    - `projects?: Projects | null`
+
+      Projects associated with the user, if included.
+
+      - `data: Array<Data>`
+
+        - `id?: string | null`
+
+        - `name?: string | null`
+
+        - `role?: string | null`
+
+      - `object: "list"`
+
+        - `"list"`
+
+    - `role?: string | null`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level?: string | null`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user?: User`
+
+      Nested user details.
+
+      - `id: string`
+
+      - `object: "user"`
+
+        - `"user"`
+
+      - `banned?: boolean | null`
+
+      - `banned_at?: number | null`
+
+      - `email?: string | null`
+
+      - `enabled?: boolean | null`
+
+      - `name?: string | null`
+
+      - `picture?: string | null`
 
 ### Role Delete Response
 
@@ -10761,7 +11233,7 @@ console.log(role.deleted);
 
 ## List groups
 
-`client.admin.organization.groups.list(GroupListParamsquery?, RequestOptionsoptions?): CursorPage<Group>`
+`client.admin.organization.groups.list(GroupListParamsquery?, RequestOptionsoptions?): NextCursorPage<Group>`
 
 **get** `/organization/groups`
 
@@ -10801,6 +11273,10 @@ Lists all groups in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `is_scim_managed: boolean`
 
     Whether the group is managed through SCIM and controlled by your identity provider.
@@ -10832,6 +11308,7 @@ for await (const group of client.admin.organization.groups.list()) {
     {
       "id": "id",
       "created_at": 0,
+      "group_type": "group_type",
       "is_scim_managed": true,
       "name": "name"
     }
@@ -10872,6 +11349,10 @@ Creates a new group in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `is_scim_managed: boolean`
 
     Whether the group is managed through SCIM and controlled by your identity provider.
@@ -10900,6 +11381,7 @@ console.log(group.id);
 {
   "id": "id",
   "created_at": 0,
+  "group_type": "group_type",
   "is_scim_managed": true,
   "name": "name"
 }
@@ -11042,6 +11524,10 @@ console.log(group.id);
 
     Unix timestamp (in seconds) when the group was created.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `is_scim_managed: boolean`
 
     Whether the group is managed through SCIM and controlled by your identity provider.
@@ -11096,7 +11582,7 @@ console.log(group.id);
 
 ## List group users
 
-`client.admin.organization.groups.users.list(stringgroupID, UserListParamsquery?, RequestOptionsoptions?): CursorPage<OrganizationUser>`
+`client.admin.organization.groups.users.list(stringgroupID, UserListParamsquery?, RequestOptionsoptions?): NextCursorPage<OrganizationGroupUser>`
 
 **get** `/organization/groups/{group_id}/users`
 
@@ -11126,39 +11612,21 @@ Lists the users assigned to a group.
 
 ### Returns
 
-- `OrganizationUser`
+- `OrganizationGroupUser`
 
-  Represents an individual `user` within an organization.
+  Represents an individual user returned when inspecting group membership.
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `email: string | null`
 
-    The Unix timestamp (in seconds) of when the user was added.
-
-  - `email: string`
-
-    The email address of the user
+    The email address of the user.
 
   - `name: string`
 
-    The name of the user
-
-  - `object: "organization.user"`
-
-    The object type, which is always `organization.user`
-
-    - `"organization.user"`
-
-  - `role: "owner" | "reader"`
-
-    `owner` or `reader`
-
-    - `"owner"`
-
-    - `"reader"`
+    The name of the user.
 
 ### Example
 
@@ -11170,8 +11638,8 @@ const client = new OpenAI({
 });
 
 // Automatically fetches more pages as needed.
-for await (const organizationUser of client.admin.organization.groups.users.list('group_id')) {
-  console.log(organizationUser.id);
+for await (const organizationGroupUser of client.admin.organization.groups.users.list('group_id')) {
+  console.log(organizationGroupUser.id);
 }
 ```
 
@@ -11182,11 +11650,8 @@ for await (const organizationUser of client.admin.organization.groups.users.list
   "data": [
     {
       "id": "id",
-      "added_at": 0,
       "email": "email",
-      "name": "name",
-      "object": "organization.user",
-      "role": "owner"
+      "name": "name"
     }
   ],
   "has_more": true,
@@ -11320,6 +11785,24 @@ console.log(user.deleted);
 
 ## Domain Types
 
+### Organization Group User
+
+- `OrganizationGroupUser`
+
+  Represents an individual user returned when inspecting group membership.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `email: string | null`
+
+    The email address of the user.
+
+  - `name: string`
+
+    The name of the user.
+
 ### User Create Response
 
 - `UserCreateResponse`
@@ -11360,7 +11843,7 @@ console.log(user.deleted);
 
 ## List group organization role assignments
 
-`client.admin.organization.groups.roles.list(stringgroupID, RoleListParamsquery?, RequestOptionsoptions?): CursorPage<RoleListResponse>`
+`client.admin.organization.groups.roles.list(stringgroupID, RoleListParamsquery?, RequestOptionsoptions?): NextCursorPage<RoleListResponse>`
 
 **get** `/organization/groups/{group_id}/roles`
 
@@ -11815,7 +12298,7 @@ console.log(role.deleted);
 
 ## List organization roles
 
-`client.admin.organization.roles.list(RoleListParamsquery?, RequestOptionsoptions?): CursorPage<Role>`
+`client.admin.organization.roles.list(RoleListParamsquery?, RequestOptionsoptions?): NextCursorPage<Role>`
 
 **get** `/organization/roles`
 
@@ -12218,7 +12701,7 @@ console.log(role.id);
 
 ## List organization certificates
 
-`client.admin.organization.certificates.list(CertificateListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<Certificate>`
+`client.admin.organization.certificates.list(CertificateListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<CertificateListResponse>`
 
 **get** `/organization/certificates`
 
@@ -12246,19 +12729,19 @@ List uploaded certificates for this organization.
 
 ### Returns
 
-- `Certificate`
+- `CertificateListResponse`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the organization level.
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content?: string`
-
-      The content of the certificate in PEM format.
 
     - `expires_at?: number`
 
@@ -12272,27 +12755,15 @@ List uploaded certificates for this organization.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
-  - `object: "certificate" | "organization.certificate" | "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
-
-    - `"organization.project.certificate"`
-
-  - `active?: boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -12304,8 +12775,8 @@ const client = new OpenAI({
 });
 
 // Automatically fetches more pages as needed.
-for await (const certificate of client.admin.organization.certificates.list()) {
-  console.log(certificate.id);
+for await (const certificateListResponse of client.admin.organization.certificates.list()) {
+  console.log(certificateListResponse.id);
 }
 ```
 
@@ -12316,21 +12787,20 @@ for await (const certificate of client.admin.organization.certificates.list()) {
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
   "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "has_more": true,
+  "last_id": "cert_abc",
+  "object": "list"
 }
 ```
 
@@ -12348,7 +12818,7 @@ Organizations can upload up to 50 certificates.
 
 - `body: CertificateCreateParams`
 
-  - `content: string`
+  - `certificate: string`
 
     The certificate content in PEM format
 
@@ -12384,7 +12854,7 @@ Organizations can upload up to 50 certificates.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
@@ -12415,7 +12885,9 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const certificate = await client.admin.organization.certificates.create({ content: 'content' });
+const certificate = await client.admin.organization.certificates.create({
+  certificate: 'certificate',
+});
 
 console.log(certificate.id);
 ```
@@ -12487,7 +12959,7 @@ You can get a certificate regardless of whether it is active or not.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
@@ -12554,7 +13026,7 @@ Modify a certificate. Note that only the name can be modified.
 
 - `body: CertificateUpdateParams`
 
-  - `name: string`
+  - `name?: string`
 
     The updated name for the certificate
 
@@ -12586,7 +13058,7 @@ Modify a certificate. Note that only the name can be modified.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
@@ -12617,9 +13089,7 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const certificate = await client.admin.organization.certificates.update('certificate_id', {
-  name: 'name',
-});
+const certificate = await client.admin.organization.certificates.update('certificate_id');
 
 console.log(certificate.id);
 ```
@@ -12694,7 +13164,7 @@ console.log(certificate.id);
 
 ## Activate certificates for organization
 
-`client.admin.organization.certificates.activate(CertificateActivateParamsbody, RequestOptionsoptions?): Page<Certificate>`
+`client.admin.organization.certificates.activate(CertificateActivateParamsbody, RequestOptionsoptions?): Page<CertificateActivateResponse>`
 
 **post** `/organization/certificates/activate`
 
@@ -12710,19 +13180,19 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Returns
 
-- `Certificate`
+- `CertificateActivateResponse`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the organization level.
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content?: string`
-
-      The content of the certificate in PEM format.
 
     - `expires_at?: number`
 
@@ -12736,27 +13206,15 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
-  - `object: "certificate" | "organization.certificate" | "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
-
-    - `"organization.project.certificate"`
-
-  - `active?: boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -12768,10 +13226,10 @@ const client = new OpenAI({
 });
 
 // Automatically fetches more pages as needed.
-for await (const certificate of client.admin.organization.certificates.activate({
+for await (const certificateActivateResponse of client.admin.organization.certificates.activate({
   certificate_ids: ['cert_abc'],
 })) {
-  console.log(certificate.id);
+  console.log(certificateActivateResponse.id);
 }
 ```
 
@@ -12782,27 +13240,23 @@ for await (const certificate of client.admin.organization.certificates.activate(
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.certificate.activation"
 }
 ```
 
 ## Deactivate certificates for organization
 
-`client.admin.organization.certificates.deactivate(CertificateDeactivateParamsbody, RequestOptionsoptions?): Page<Certificate>`
+`client.admin.organization.certificates.deactivate(CertificateDeactivateParamsbody, RequestOptionsoptions?): Page<CertificateDeactivateResponse>`
 
 **post** `/organization/certificates/deactivate`
 
@@ -12818,19 +13272,19 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
 ### Returns
 
-- `Certificate`
+- `CertificateDeactivateResponse`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the organization level.
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content?: string`
-
-      The content of the certificate in PEM format.
 
     - `expires_at?: number`
 
@@ -12844,27 +13298,15 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
-  - `object: "certificate" | "organization.certificate" | "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
-
-    - `"organization.project.certificate"`
-
-  - `active?: boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -12876,10 +13318,10 @@ const client = new OpenAI({
 });
 
 // Automatically fetches more pages as needed.
-for await (const certificate of client.admin.organization.certificates.deactivate({
-  certificate_ids: ['cert_abc'],
-})) {
-  console.log(certificate.id);
+for await (const certificateDeactivateResponse of client.admin.organization.certificates.deactivate(
+  { certificate_ids: ['cert_abc'] },
+)) {
+  console.log(certificateDeactivateResponse.id);
 }
 ```
 
@@ -12890,21 +13332,17 @@ for await (const certificate of client.admin.organization.certificates.deactivat
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.certificate.deactivation"
 }
 ```
 
@@ -12938,7 +13376,7 @@ for await (const certificate of client.admin.organization.certificates.deactivat
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
@@ -12960,6 +13398,44 @@ for await (const certificate of client.admin.organization.certificates.deactivat
 
     Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
+### Certificate List Response
+
+- `CertificateListResponse`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string | null`
+
+    The name of the certificate.
+
+  - `object: "organization.certificate"`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`
+
 ### Certificate Delete Response
 
 - `CertificateDeleteResponse`
@@ -12973,6 +13449,82 @@ for await (const certificate of client.admin.organization.certificates.deactivat
     The object type, must be `certificate.deleted`.
 
     - `"certificate.deleted"`
+
+### Certificate Activate Response
+
+- `CertificateActivateResponse`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string | null`
+
+    The name of the certificate.
+
+  - `object: "organization.certificate"`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`
+
+### Certificate Deactivate Response
+
+- `CertificateDeactivateResponse`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string | null`
+
+    The name of the certificate.
+
+  - `object: "organization.certificate"`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`
 
 # Projects
 
@@ -13014,27 +13566,27 @@ Returns a list of projects.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" | "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at?: number | null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id?: string | null`
+
+    The external key associated with the project.
+
+  - `name?: string | null`
+
+    The name of the project. This appears in reporting.
+
+  - `status?: string | null`
+
+    `active` or `archived`
 
 ### Example
 
@@ -13059,16 +13611,17 @@ for await (const project of client.admin.organization.projects.list()) {
     {
       "id": "id",
       "created_at": 0,
-      "name": "name",
       "object": "organization.project",
-      "status": "active",
-      "archived_at": 0
+      "archived_at": 0,
+      "external_key_id": "external_key_id",
+      "name": "name",
+      "status": "status"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -13088,25 +13641,13 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The friendly name of the project, this name appears in reports.
 
-  - `geography?: "US" | "EU" | "JP" | 5 more`
+  - `external_key_id?: string | null`
+
+    External key ID to associate with the project.
+
+  - `geography?: string | null`
 
     Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](https://platform.openai.com/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
-
-    - `"US"`
-
-    - `"EU"`
-
-    - `"JP"`
-
-    - `"IN"`
-
-    - `"KR"`
-
-    - `"CA"`
-
-    - `"AU"`
-
-    - `"SG"`
 
 ### Returns
 
@@ -13122,27 +13663,27 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" | "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at?: number | null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id?: string | null`
+
+    The external key associated with the project.
+
+  - `name?: string | null`
+
+    The name of the project. This appears in reporting.
+
+  - `status?: string | null`
+
+    `active` or `archived`
 
 ### Example
 
@@ -13164,10 +13705,11 @@ console.log(project.id);
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -13197,27 +13739,27 @@ Retrieves a project.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" | "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at?: number | null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id?: string | null`
+
+    The external key associated with the project.
+
+  - `name?: string | null`
+
+    The name of the project. This appears in reporting.
+
+  - `status?: string | null`
+
+    `active` or `archived`
 
 ### Example
 
@@ -13239,10 +13781,11 @@ console.log(project.id);
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -13260,7 +13803,15 @@ Modifies a project in the organization.
 
 - `body: ProjectUpdateParams`
 
-  - `name: string`
+  - `external_key_id?: string | null`
+
+    External key ID to associate with the project.
+
+  - `geography?: string | null`
+
+    Geography for the project.
+
+  - `name?: string | null`
 
     The updated name of the project, this name appears in reports.
 
@@ -13278,27 +13829,27 @@ Modifies a project in the organization.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" | "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at?: number | null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id?: string | null`
+
+    The external key associated with the project.
+
+  - `name?: string | null`
+
+    The name of the project. This appears in reporting.
+
+  - `status?: string | null`
+
+    `active` or `archived`
 
 ### Example
 
@@ -13309,7 +13860,7 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const project = await client.admin.organization.projects.update('project_id', { name: 'name' });
+const project = await client.admin.organization.projects.update('project_id');
 
 console.log(project.id);
 ```
@@ -13320,10 +13871,11 @@ console.log(project.id);
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -13353,27 +13905,27 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" | "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at?: number | null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id?: string | null`
+
+    The external key associated with the project.
+
+  - `name?: string | null`
+
+    The name of the project. This appears in reporting.
+
+  - `status?: string | null`
+
+    `active` or `archived`
 
 ### Example
 
@@ -13395,10 +13947,11 @@ console.log(project.id);
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -13418,27 +13971,27 @@ console.log(project.id);
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" | "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at?: number | null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id?: string | null`
+
+    The external key associated with the project.
+
+  - `name?: string | null`
+
+    The name of the project. This appears in reporting.
+
+  - `status?: string | null`
+
+    `active` or `archived`
 
 # Users
 
@@ -13478,27 +14031,23 @@ Returns a list of users in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" | "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email?: string | null`
 
-    - `"member"`
+    The email address of the user
+
+  - `name?: string | null`
+
+    The name of the user
 
 ### Example
 
@@ -13523,16 +14072,16 @@ for await (const projectUser of client.admin.organization.projects.users.list('p
     {
       "id": "id",
       "added_at": 0,
-      "email": "email",
-      "name": "name",
       "object": "organization.project.user",
-      "role": "owner"
+      "role": "role",
+      "email": "email",
+      "name": "name"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "object"
+  "object": "object",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -13550,15 +14099,15 @@ Adds a user to the project. Users must already be members of the organization to
 
 - `body: UserCreateParams`
 
-  - `role: "owner" | "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email?: string | null`
 
-    - `"member"`
+    Email of the user to add.
 
-  - `user_id: string`
+  - `user_id?: string | null`
 
     The ID of the user.
 
@@ -13576,27 +14125,23 @@ Adds a user to the project. Users must already be members of the organization to
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" | "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email?: string | null`
 
-    - `"member"`
+    The email address of the user
+
+  - `name?: string | null`
+
+    The name of the user
 
 ### Example
 
@@ -13608,8 +14153,7 @@ const client = new OpenAI({
 });
 
 const projectUser = await client.admin.organization.projects.users.create('project_id', {
-  role: 'owner',
-  user_id: 'user_id',
+  role: 'role',
 });
 
 console.log(projectUser.id);
@@ -13621,10 +14165,10 @@ console.log(projectUser.id);
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -13660,27 +14204,23 @@ Retrieves a user in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" | "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email?: string | null`
 
-    - `"member"`
+    The email address of the user
+
+  - `name?: string | null`
+
+    The name of the user
 
 ### Example
 
@@ -13704,10 +14244,10 @@ console.log(projectUser.id);
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -13729,13 +14269,9 @@ Modifies a user's role in the project.
 
     Path param: The ID of the project.
 
-  - `role: "owner" | "member"`
+  - `role?: string | null`
 
     Body param: `owner` or `member`
-
-    - `"owner"`
-
-    - `"member"`
 
 ### Returns
 
@@ -13751,27 +14287,23 @@ Modifies a user's role in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" | "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email?: string | null`
 
-    - `"member"`
+    The email address of the user
+
+  - `name?: string | null`
+
+    The name of the user
 
 ### Example
 
@@ -13784,7 +14316,6 @@ const client = new OpenAI({
 
 const projectUser = await client.admin.organization.projects.users.update('user_id', {
   project_id: 'project_id',
-  role: 'owner',
 });
 
 console.log(projectUser.id);
@@ -13796,10 +14327,10 @@ console.log(projectUser.id);
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -13878,27 +14409,23 @@ console.log(user.id);
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" | "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email?: string | null`
 
-    - `"member"`
+    The email address of the user
+
+  - `name?: string | null`
+
+    The name of the user
 
 ### User Delete Response
 
@@ -13916,7 +14443,7 @@ console.log(user.id);
 
 ## List project user role assignments
 
-`client.admin.organization.projects.users.roles.list(stringuserID, RoleListParamsparams, RequestOptionsoptions?): CursorPage<RoleListResponse>`
+`client.admin.organization.projects.users.roles.list(stringuserID, RoleListParamsparams, RequestOptionsoptions?): NextCursorPage<RoleListResponse>`
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
@@ -14127,27 +14654,93 @@ Assigns a project role to a user within a project.
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: string`
-
-      The email address of the user
-
-    - `name: string`
-
-      The name of the user
-
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: "owner" | "reader"`
+    - `api_key_last_used_at?: number | null`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created?: number`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona?: string | null`
+
+      The developer persona metadata for the user.
+
+    - `email?: string | null`
+
+      The email address of the user
+
+    - `is_default?: boolean`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser?: boolean | null`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed?: boolean`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account?: boolean`
+
+      Whether the user is a service account.
+
+    - `name?: string | null`
+
+      The name of the user
+
+    - `projects?: Projects | null`
+
+      Projects associated with the user, if included.
+
+      - `data: Array<Data>`
+
+        - `id?: string | null`
+
+        - `name?: string | null`
+
+        - `role?: string | null`
+
+      - `object: "list"`
+
+        - `"list"`
+
+    - `role?: string | null`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level?: string | null`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user?: User`
+
+      Nested user details.
+
+      - `id: string`
+
+      - `object: "user"`
+
+        - `"user"`
+
+      - `banned?: boolean | null`
+
+      - `banned_at?: number | null`
+
+      - `email?: string | null`
+
+      - `enabled?: boolean | null`
+
+      - `name?: string | null`
+
+      - `picture?: string | null`
 
 ### Example
 
@@ -14185,10 +14778,38 @@ console.log(role.object);
   "user": {
     "id": "id",
     "added_at": 0,
-    "email": "email",
-    "name": "name",
     "object": "organization.user",
-    "role": "owner"
+    "api_key_last_used_at": 0,
+    "created": 0,
+    "developer_persona": "developer_persona",
+    "email": "email",
+    "is_default": true,
+    "is_scale_tier_authorized_purchaser": true,
+    "is_scim_managed": true,
+    "is_service_account": true,
+    "name": "name",
+    "projects": {
+      "data": [
+        {
+          "id": "id",
+          "name": "name",
+          "role": "role"
+        }
+      ],
+      "object": "list"
+    },
+    "role": "role",
+    "technical_level": "technical_level",
+    "user": {
+      "id": "id",
+      "object": "user",
+      "banned": true,
+      "banned_at": 0,
+      "email": "email",
+      "enabled": true,
+      "name": "name",
+      "picture": "picture"
+    }
   }
 }
 ```
@@ -14365,27 +14986,93 @@ console.log(role.deleted);
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: string`
-
-      The email address of the user
-
-    - `name: string`
-
-      The name of the user
-
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: "owner" | "reader"`
+    - `api_key_last_used_at?: number | null`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created?: number`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona?: string | null`
+
+      The developer persona metadata for the user.
+
+    - `email?: string | null`
+
+      The email address of the user
+
+    - `is_default?: boolean`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser?: boolean | null`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed?: boolean`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account?: boolean`
+
+      Whether the user is a service account.
+
+    - `name?: string | null`
+
+      The name of the user
+
+    - `projects?: Projects | null`
+
+      Projects associated with the user, if included.
+
+      - `data: Array<Data>`
+
+        - `id?: string | null`
+
+        - `name?: string | null`
+
+        - `role?: string | null`
+
+      - `object: "list"`
+
+        - `"list"`
+
+    - `role?: string | null`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level?: string | null`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user?: User`
+
+      Nested user details.
+
+      - `id: string`
+
+      - `object: "user"`
+
+        - `"user"`
+
+      - `banned?: boolean | null`
+
+      - `banned_at?: number | null`
+
+      - `email?: string | null`
+
+      - `enabled?: boolean | null`
+
+      - `name?: string | null`
+
+      - `picture?: string | null`
 
 ### Role Delete Response
 
@@ -14487,10 +15174,10 @@ for await (const projectServiceAccount of client.admin.organization.projects.ser
       "role": "owner"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -14518,7 +15205,7 @@ Creates a new service account in the project. This also returns an unredacted AP
 
   - `id: string`
 
-  - `api_key: APIKey`
+  - `api_key: APIKey | null`
 
     - `id: string`
 
@@ -14763,7 +15450,7 @@ console.log(serviceAccount.id);
 
   - `id: string`
 
-  - `api_key: APIKey`
+  - `api_key: APIKey | null`
 
     - `id: string`
 
@@ -14843,7 +15530,7 @@ Returns a list of API keys in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number | null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -14859,9 +15546,9 @@ Returns a list of API keys in the project.
 
   - `owner: Owner`
 
-    - `service_account?: ProjectServiceAccount`
+    - `service_account?: ServiceAccount`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -14869,25 +15556,15 @@ Returns a list of API keys in the project.
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type?: "user" | "service_account"`
 
@@ -14897,39 +15574,29 @@ Returns a list of API keys in the project.
 
       - `"service_account"`
 
-    - `user?: ProjectUser`
+    - `user?: User`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
@@ -14966,40 +15633,38 @@ for await (const projectAPIKey of client.admin.organization.projects.apiKeys.lis
           "id": "id",
           "created_at": 0,
           "name": "name",
-          "object": "organization.project.service_account",
-          "role": "owner"
+          "role": "role"
         },
         "type": "user",
         "user": {
           "id": "id",
-          "added_at": 0,
+          "created_at": 0,
           "email": "email",
           "name": "name",
-          "object": "organization.project.user",
-          "role": "owner"
+          "role": "role"
         }
       },
       "redacted_value": "redacted_value"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
 ## Retrieve project API key
 
-`client.admin.organization.projects.apiKeys.retrieve(stringkeyID, APIKeyRetrieveParamsparams, RequestOptionsoptions?): ProjectAPIKey`
+`client.admin.organization.projects.apiKeys.retrieve(stringapiKeyID, APIKeyRetrieveParamsparams, RequestOptionsoptions?): ProjectAPIKey`
 
-**get** `/organization/projects/{project_id}/api_keys/{key_id}`
+**get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Retrieves an API key in the project.
 
 ### Parameters
 
-- `keyID: string`
+- `apiKeyID: string`
 
 - `params: APIKeyRetrieveParams`
 
@@ -15021,7 +15686,7 @@ Retrieves an API key in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number | null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -15037,9 +15702,9 @@ Retrieves an API key in the project.
 
   - `owner: Owner`
 
-    - `service_account?: ProjectServiceAccount`
+    - `service_account?: ServiceAccount`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -15047,25 +15712,15 @@ Retrieves an API key in the project.
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type?: "user" | "service_account"`
 
@@ -15075,39 +15730,29 @@ Retrieves an API key in the project.
 
       - `"service_account"`
 
-    - `user?: ProjectUser`
+    - `user?: User`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
@@ -15122,7 +15767,7 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const projectAPIKey = await client.admin.organization.projects.apiKeys.retrieve('key_id', {
+const projectAPIKey = await client.admin.organization.projects.apiKeys.retrieve('api_key_id', {
   project_id: 'project_id',
 });
 
@@ -15143,17 +15788,15 @@ console.log(projectAPIKey.id);
       "id": "id",
       "created_at": 0,
       "name": "name",
-      "object": "organization.project.service_account",
-      "role": "owner"
+      "role": "role"
     },
     "type": "user",
     "user": {
       "id": "id",
-      "added_at": 0,
+      "created_at": 0,
       "email": "email",
       "name": "name",
-      "object": "organization.project.user",
-      "role": "owner"
+      "role": "role"
     }
   },
   "redacted_value": "redacted_value"
@@ -15162,9 +15805,9 @@ console.log(projectAPIKey.id);
 
 ## Delete project API key
 
-`client.admin.organization.projects.apiKeys.delete(stringkeyID, APIKeyDeleteParamsparams, RequestOptionsoptions?): APIKeyDeleteResponse`
+`client.admin.organization.projects.apiKeys.delete(stringapiKeyID, APIKeyDeleteParamsparams, RequestOptionsoptions?): APIKeyDeleteResponse`
 
-**delete** `/organization/projects/{project_id}/api_keys/{key_id}`
+**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Deletes an API key from the project.
 
@@ -15173,7 +15816,7 @@ a service account.
 
 ### Parameters
 
-- `keyID: string`
+- `apiKeyID: string`
 
 - `params: APIKeyDeleteParams`
 
@@ -15202,7 +15845,7 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const apiKey = await client.admin.organization.projects.apiKeys.delete('key_id', {
+const apiKey = await client.admin.organization.projects.apiKeys.delete('api_key_id', {
   project_id: 'project_id',
 });
 
@@ -15235,7 +15878,7 @@ console.log(apiKey.id);
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number | null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -15251,9 +15894,9 @@ console.log(apiKey.id);
 
   - `owner: Owner`
 
-    - `service_account?: ProjectServiceAccount`
+    - `service_account?: ServiceAccount`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -15261,25 +15904,15 @@ console.log(apiKey.id);
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type?: "user" | "service_account"`
 
@@ -15289,39 +15922,29 @@ console.log(apiKey.id);
 
       - `"service_account"`
 
-    - `user?: ProjectUser`
+    - `user?: User`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
@@ -15445,10 +16068,10 @@ for await (const projectRateLimit of client.admin.organization.projects.rateLimi
       "max_requests_per_1_day": 0
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -15621,7 +16244,7 @@ console.log(projectRateLimit.id);
 
 ## List project groups
 
-`client.admin.organization.projects.groups.list(stringprojectID, GroupListParamsquery?, RequestOptionsoptions?): CursorPage<ProjectGroup>`
+`client.admin.organization.projects.groups.list(stringprojectID, GroupListParamsquery?, RequestOptionsoptions?): NextCursorPage<ProjectGroup>`
 
 **get** `/organization/projects/{project_id}/groups`
 
@@ -15667,6 +16290,10 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `object: "project.group"`
 
     Always `project.group`.
@@ -15701,6 +16328,7 @@ for await (const projectGroup of client.admin.organization.projects.groups.list(
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
+      "group_type": "group_type",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -15751,6 +16379,10 @@ Grants a group access to a project.
 
     Display name of the group.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `object: "project.group"`
 
     Always `project.group`.
@@ -15785,6 +16417,7 @@ console.log(projectGroup.group_id);
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
+  "group_type": "group_type",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -15869,6 +16502,10 @@ console.log(group.deleted);
 
     Display name of the group.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `object: "project.group"`
 
     Always `project.group`.
@@ -15899,7 +16536,7 @@ console.log(group.deleted);
 
 ## List project group role assignments
 
-`client.admin.organization.projects.groups.roles.list(stringgroupID, RoleListParamsparams, RequestOptionsoptions?): CursorPage<RoleListResponse>`
+`client.admin.organization.projects.groups.roles.list(stringgroupID, RoleListParamsparams, RequestOptionsoptions?): NextCursorPage<RoleListResponse>`
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 
@@ -16371,7 +17008,7 @@ console.log(role.deleted);
 
 ## List project roles
 
-`client.admin.organization.projects.roles.list(stringprojectID, RoleListParamsquery?, RequestOptionsoptions?): CursorPage<Role>`
+`client.admin.organization.projects.roles.list(stringprojectID, RoleListParamsquery?, RequestOptionsoptions?): NextCursorPage<Role>`
 
 **get** `/projects/{project_id}/roles`
 
@@ -16756,7 +17393,7 @@ console.log(role.id);
 
 ## List project certificates
 
-`client.admin.organization.projects.certificates.list(stringprojectID, CertificateListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<Certificate>`
+`client.admin.organization.projects.certificates.list(stringprojectID, CertificateListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<CertificateListResponse>`
 
 **get** `/organization/projects/{project_id}/certificates`
 
@@ -16786,19 +17423,19 @@ List certificates for this project.
 
 ### Returns
 
-- `Certificate`
+- `CertificateListResponse`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the project level.
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content?: string`
-
-      The content of the certificate in PEM format.
 
     - `expires_at?: number`
 
@@ -16812,27 +17449,15 @@ List certificates for this project.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
-  - `object: "certificate" | "organization.certificate" | "organization.project.certificate"`
+  - `object: "organization.project.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
-
-  - `active?: boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -16844,10 +17469,10 @@ const client = new OpenAI({
 });
 
 // Automatically fetches more pages as needed.
-for await (const certificate of client.admin.organization.projects.certificates.list(
+for await (const certificateListResponse of client.admin.organization.projects.certificates.list(
   'project_id',
 )) {
-  console.log(certificate.id);
+  console.log(certificateListResponse.id);
 }
 ```
 
@@ -16858,27 +17483,26 @@ for await (const certificate of client.admin.organization.projects.certificates.
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
   "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "has_more": true,
+  "last_id": "cert_abc",
+  "object": "list"
 }
 ```
 
 ## Activate certificates for project
 
-`client.admin.organization.projects.certificates.activate(stringprojectID, CertificateActivateParamsbody, RequestOptionsoptions?): Page<Certificate>`
+`client.admin.organization.projects.certificates.activate(stringprojectID, CertificateActivateParamsbody, RequestOptionsoptions?): Page<CertificateActivateResponse>`
 
 **post** `/organization/projects/{project_id}/certificates/activate`
 
@@ -16896,19 +17520,19 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Returns
 
-- `Certificate`
+- `CertificateActivateResponse`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the project level.
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content?: string`
-
-      The content of the certificate in PEM format.
 
     - `expires_at?: number`
 
@@ -16922,27 +17546,15 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
-  - `object: "certificate" | "organization.certificate" | "organization.project.certificate"`
+  - `object: "organization.project.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
-
-  - `active?: boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -16954,11 +17566,11 @@ const client = new OpenAI({
 });
 
 // Automatically fetches more pages as needed.
-for await (const certificate of client.admin.organization.projects.certificates.activate(
+for await (const certificateActivateResponse of client.admin.organization.projects.certificates.activate(
   'project_id',
   { certificate_ids: ['cert_abc'] },
 )) {
-  console.log(certificate.id);
+  console.log(certificateActivateResponse.id);
 }
 ```
 
@@ -16969,27 +17581,23 @@ for await (const certificate of client.admin.organization.projects.certificates.
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.project.certificate.activation"
 }
 ```
 
 ## Deactivate certificates for project
 
-`client.admin.organization.projects.certificates.deactivate(stringprojectID, CertificateDeactivateParamsbody, RequestOptionsoptions?): Page<Certificate>`
+`client.admin.organization.projects.certificates.deactivate(stringprojectID, CertificateDeactivateParamsbody, RequestOptionsoptions?): Page<CertificateDeactivateResponse>`
 
 **post** `/organization/projects/{project_id}/certificates/deactivate`
 
@@ -17006,19 +17614,19 @@ idempotently deactivate up to 10 certificates at a time.
 
 ### Returns
 
-- `Certificate`
+- `CertificateDeactivateResponse`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the project level.
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content?: string`
-
-      The content of the certificate in PEM format.
 
     - `expires_at?: number`
 
@@ -17032,27 +17640,15 @@ idempotently deactivate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
-  - `object: "certificate" | "organization.certificate" | "organization.project.certificate"`
+  - `object: "organization.project.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
-
-  - `active?: boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -17064,11 +17660,11 @@ const client = new OpenAI({
 });
 
 // Automatically fetches more pages as needed.
-for await (const certificate of client.admin.organization.projects.certificates.deactivate(
+for await (const certificateDeactivateResponse of client.admin.organization.projects.certificates.deactivate(
   'project_id',
   { certificate_ids: ['cert_abc'] },
 )) {
-  console.log(certificate.id);
+  console.log(certificateDeactivateResponse.id);
 }
 ```
 
@@ -17079,20 +17675,132 @@ for await (const certificate of client.admin.organization.projects.certificates.
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.project.certificate.deactivation"
 }
 ```
+
+## Domain Types
+
+### Certificate List Response
+
+- `CertificateListResponse`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string | null`
+
+    The name of the certificate.
+
+  - `object: "organization.project.certificate"`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`
+
+### Certificate Activate Response
+
+- `CertificateActivateResponse`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string | null`
+
+    The name of the certificate.
+
+  - `object: "organization.project.certificate"`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`
+
+### Certificate Deactivate Response
+
+- `CertificateDeactivateResponse`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at?: number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string | null`
+
+    The name of the certificate.
+
+  - `object: "organization.project.certificate"`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`

@@ -12,6 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Gaming consoles
 
+The steps below configure your gaming console to use 1.1.1.1 instead of the default DNS resolver provided by your ISP.
+
 ## PS4
 
 1. Go to **Settings** \> **Network** \> **Set Up Internet Connection**.
@@ -37,7 +39,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 1. Open the Network screen by pressing the Xbox button on your controller.
 2. Go to **Settings** \> **Network** \> **Network Settings**.
-3. Next, go to **Advanced Settings** \> **DNS Settings**.
+3. Go to **Advanced Settings** \> **DNS Settings**.
 4. Select **Manual**.
 5. Set **Primary DNS** and **Secondary DNS** to:  
 ```  

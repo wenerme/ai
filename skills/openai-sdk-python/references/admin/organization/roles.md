@@ -2,7 +2,7 @@
 
 ## List organization roles
 
-`admin.organization.roles.list(RoleListParams**kwargs)  -> SyncCursorPage[Role]`
+`admin.organization.roles.list(RoleListParams**kwargs)  -> SyncNextCursorPage[Role]`
 
 **get** `/organization/roles`
 

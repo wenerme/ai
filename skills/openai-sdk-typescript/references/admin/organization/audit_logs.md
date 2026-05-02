@@ -176,74 +176,6 @@ List user actions and configuration changes within this organization.
 
     The ID of this log.
 
-  - `actor: Actor`
-
-    The actor who performed the audit logged action.
-
-    - `api_key?: APIKey`
-
-      The API Key used to perform the audit logged action.
-
-      - `id?: string`
-
-        The tracking id of the API key.
-
-      - `service_account?: ServiceAccount`
-
-        The service account that performed the audit logged action.
-
-        - `id?: string`
-
-          The service account id.
-
-      - `type?: "user" | "service_account"`
-
-        The type of API key. Can be either `user` or `service_account`.
-
-        - `"user"`
-
-        - `"service_account"`
-
-      - `user?: User`
-
-        The user who performed the audit logged action.
-
-        - `id?: string`
-
-          The user id.
-
-        - `email?: string`
-
-          The user email.
-
-    - `session?: Session`
-
-      The session in which the audit logged action was performed.
-
-      - `ip_address?: string`
-
-        The IP address from which the action was performed.
-
-      - `user?: User`
-
-        The user who performed the audit logged action.
-
-        - `id?: string`
-
-          The user id.
-
-        - `email?: string`
-
-          The user email.
-
-    - `type?: "session" | "api_key"`
-
-      The type of actor. Is either `session` or `api_key`.
-
-      - `"session"`
-
-      - `"api_key"`
-
   - `effective_at: number`
 
     The Unix timestamp (in seconds) of the event.
@@ -353,6 +285,74 @@ List user actions and configuration changes within this organization.
     - `"user.updated"`
 
     - `"user.deleted"`
+
+  - `actor?: Actor | null`
+
+    The actor who performed the audit logged action.
+
+    - `api_key?: APIKey`
+
+      The API Key used to perform the audit logged action.
+
+      - `id?: string`
+
+        The tracking id of the API key.
+
+      - `service_account?: ServiceAccount`
+
+        The service account that performed the audit logged action.
+
+        - `id?: string`
+
+          The service account id.
+
+      - `type?: "user" | "service_account"`
+
+        The type of API key. Can be either `user` or `service_account`.
+
+        - `"user"`
+
+        - `"service_account"`
+
+      - `user?: User`
+
+        The user who performed the audit logged action.
+
+        - `id?: string`
+
+          The user id.
+
+        - `email?: string`
+
+          The user email.
+
+    - `session?: Session`
+
+      The session in which the audit logged action was performed.
+
+      - `ip_address?: string`
+
+        The IP address from which the action was performed.
+
+      - `user?: User`
+
+        The user who performed the audit logged action.
+
+        - `id?: string`
+
+          The user id.
+
+        - `email?: string`
+
+          The user email.
+
+    - `type?: "session" | "api_key"`
+
+      The type of actor. Is either `session` or `api_key`.
+
+      - `"session"`
+
+      - `"api_key"`
 
   - `"api_key.created"?: APIKeyCreated`
 
@@ -1080,6 +1080,8 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
   "data": [
     {
       "id": "id",
+      "effective_at": 0,
+      "type": "api_key.created",
       "actor": {
         "api_key": {
           "id": "id",
@@ -1101,8 +1103,6 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
         },
         "type": "session"
       },
-      "effective_at": 0,
-      "type": "api_key.created",
       "api_key.created": {
         "id": "id",
         "data": {
@@ -1371,10 +1371,10 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
       }
     }
   ],
-  "first_id": "audit_log-defb456h8dks",
   "has_more": true,
-  "last_id": "audit_log-hnbkd8s93s",
-  "object": "list"
+  "object": "list",
+  "first_id": "audit_log-defb456h8dks",
+  "last_id": "audit_log-hnbkd8s93s"
 }
 ```
 
@@ -1389,74 +1389,6 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
   - `id: string`
 
     The ID of this log.
-
-  - `actor: Actor`
-
-    The actor who performed the audit logged action.
-
-    - `api_key?: APIKey`
-
-      The API Key used to perform the audit logged action.
-
-      - `id?: string`
-
-        The tracking id of the API key.
-
-      - `service_account?: ServiceAccount`
-
-        The service account that performed the audit logged action.
-
-        - `id?: string`
-
-          The service account id.
-
-      - `type?: "user" | "service_account"`
-
-        The type of API key. Can be either `user` or `service_account`.
-
-        - `"user"`
-
-        - `"service_account"`
-
-      - `user?: User`
-
-        The user who performed the audit logged action.
-
-        - `id?: string`
-
-          The user id.
-
-        - `email?: string`
-
-          The user email.
-
-    - `session?: Session`
-
-      The session in which the audit logged action was performed.
-
-      - `ip_address?: string`
-
-        The IP address from which the action was performed.
-
-      - `user?: User`
-
-        The user who performed the audit logged action.
-
-        - `id?: string`
-
-          The user id.
-
-        - `email?: string`
-
-          The user email.
-
-    - `type?: "session" | "api_key"`
-
-      The type of actor. Is either `session` or `api_key`.
-
-      - `"session"`
-
-      - `"api_key"`
 
   - `effective_at: number`
 
@@ -1567,6 +1499,74 @@ for await (const auditLogListResponse of client.admin.organization.auditLogs.lis
     - `"user.updated"`
 
     - `"user.deleted"`
+
+  - `actor?: Actor | null`
+
+    The actor who performed the audit logged action.
+
+    - `api_key?: APIKey`
+
+      The API Key used to perform the audit logged action.
+
+      - `id?: string`
+
+        The tracking id of the API key.
+
+      - `service_account?: ServiceAccount`
+
+        The service account that performed the audit logged action.
+
+        - `id?: string`
+
+          The service account id.
+
+      - `type?: "user" | "service_account"`
+
+        The type of API key. Can be either `user` or `service_account`.
+
+        - `"user"`
+
+        - `"service_account"`
+
+      - `user?: User`
+
+        The user who performed the audit logged action.
+
+        - `id?: string`
+
+          The user id.
+
+        - `email?: string`
+
+          The user email.
+
+    - `session?: Session`
+
+      The session in which the audit logged action was performed.
+
+      - `ip_address?: string`
+
+        The IP address from which the action was performed.
+
+      - `user?: User`
+
+        The user who performed the audit logged action.
+
+        - `id?: string`
+
+          The user id.
+
+        - `email?: string`
+
+          The user email.
+
+    - `type?: "session" | "api_key"`
+
+      The type of actor. Is either `session` or `api_key`.
+
+      - `"session"`
+
+      - `"api_key"`
 
   - `"api_key.created"?: APIKeyCreated`
 

@@ -48,15 +48,15 @@ Returns a list of service accounts in the project.
 
     - `"member"`
 
-- `first_id: string`
-
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -78,10 +78,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
       "role": "owner"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 

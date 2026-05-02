@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Azure
 
+These steps configure 1.1.1.1 as the DNS resolver for an Azure Virtual Network (VNet). This applies to all resources in the VNet, including virtual machines.
+
 1. Log in to your Azure portal.
 2. From the Azure portal side menu, select **Virtual Networks**.
-3. Navigate to the virtual network associated with your virtual machine (VM).
+3. Select the virtual network you want to configure.
 4. Select **DNS Servers** \> **Custom**, and add two entries:  
 ```  
 1.1.1.1  

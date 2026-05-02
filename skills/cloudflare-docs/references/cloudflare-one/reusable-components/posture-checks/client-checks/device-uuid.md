@@ -33,7 +33,7 @@ You will need to use a [managed deployment tool](https://developers.cloudflare.c
 
 To create rules based on device UUIDs, you first need to create a [Gateway List](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of UUIDs.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Lists**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list** or **Upload CSV**. For larger teams, we recommend uploading a CSV or using Cloudflare's [API endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/).
 3. Give your list a descriptive name, as this name will appear when configuring your policies.
 4. Set **List Type** to _Device IDs_.
@@ -46,7 +46,7 @@ Hyphens are automatically stripped from UUIDs. For example, the posture check wi
 
 ## 3\. Enable the posture check
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Posture checks**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
 2. Go to **Cloudflare One Client checks** and select **Add a check**.
 3. Select **Unique Client ID**.
 4. You will be prompted for the following information:  

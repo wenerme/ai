@@ -128,7 +128,7 @@ Key characteristics:
 
 ## OpenAI Responses API Error Events
 
-The OpenAI Responses API (`/api/alpha/responses`) uses specific event types for streaming errors:
+The OpenAI Responses API (`/api/v1/responses`) uses specific event types for streaming errors:
 
 ### Error Event Types
 
@@ -192,7 +192,7 @@ Different OpenRouter API endpoints handle errors in distinct ways:
 * **Some tokens sent**: Embeds error information within the `choices` array of the final response
 * **Streaming**: Errors sent as SSE events with top-level error field
 
-### OpenAI Responses API (`/api/alpha/responses`)
+### OpenAI Responses API (`/api/v1/responses`)
 
 * **Error transformations**: Certain errors become successful responses with appropriate finish reasons
 * **Streaming events**: Uses typed events (`response.failed`, `response.error`, `error`)

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Get started
 
-Use this tutorial to start using Cloudflare's Web3 Gateways to the IPFS and Ethereum networks.
+Use this tutorial to set up a Cloudflare Web3 gateway, which gives your application HTTP access to the IPFS or Ethereum network without running your own node.
 
 ## Before you begin
 
-Before you start, make sure the you have [set up an account](https://developers.cloudflare.com/fundamentals/account/) and [added your website](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare.
+Before you start, make sure you have [set up an account](https://developers.cloudflare.com/fundamentals/account/) and [added your website](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare.
 
 ## Step 1 - Subscribe to a gateway
 
-To get access to Web3 gateways for your account, you need to first [subscribe to a gateway](https://developers.cloudflare.com/web3/how-to/enable-gateways/).
+Web3 gateways are a paid add-on. To get access, [subscribe to a gateway](https://developers.cloudflare.com/web3/how-to/enable-gateways/).
 
 ## Step 2 - Create a gateway
 

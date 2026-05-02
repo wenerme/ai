@@ -46,7 +46,7 @@ Remote captures require the Cloudflare One Client to be connected and able to co
 
 ## How to contact Support
 
-If you cannot resolve the issue, [open a support case](https://developers.cloudflare.com/support/contacting-cloudflare-support/). Please provide a [remote capture](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/) from the Zero Trust dashboard for the affected device.
+If you cannot resolve the issue, [open a support case](https://developers.cloudflare.com/support/contacting-cloudflare-support/). Please provide a [remote capture](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/) from the Zero Trust dashboard for the affected device.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/dex/","name":"Digital experience"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/dex/troubleshooting/","name":"Troubleshoot Digital Experience Monitoring"}}]}

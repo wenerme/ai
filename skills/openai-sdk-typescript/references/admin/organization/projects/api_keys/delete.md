@@ -1,8 +1,8 @@
 ## Delete project API key
 
-`client.admin.organization.projects.apiKeys.delete(stringkeyID, APIKeyDeleteParamsparams, RequestOptionsoptions?): APIKeyDeleteResponse`
+`client.admin.organization.projects.apiKeys.delete(stringapiKeyID, APIKeyDeleteParamsparams, RequestOptionsoptions?): APIKeyDeleteResponse`
 
-**delete** `/organization/projects/{project_id}/api_keys/{key_id}`
+**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Deletes an API key from the project.
 
@@ -11,7 +11,7 @@ a service account.
 
 ### Parameters
 
-- `keyID: string`
+- `apiKeyID: string`
 
 - `params: APIKeyDeleteParams`
 
@@ -40,7 +40,7 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const apiKey = await client.admin.organization.projects.apiKeys.delete('key_id', {
+const apiKey = await client.admin.organization.projects.apiKeys.delete('api_key_id', {
   project_id: 'project_id',
 });
 

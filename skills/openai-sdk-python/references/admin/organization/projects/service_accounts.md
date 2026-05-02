@@ -81,10 +81,10 @@ print(page.id)
       "role": "owner"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -110,7 +110,7 @@ Creates a new service account in the project. This also returns an unredacted AP
 
   - `id: str`
 
-  - `api_key: APIKey`
+  - `api_key: Optional[APIKey]`
 
     - `id: str`
 
@@ -344,7 +344,7 @@ print(service_account.id)
 
   - `id: str`
 
-  - `api_key: APIKey`
+  - `api_key: Optional[APIKey]`
 
     - `id: str`
 

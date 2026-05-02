@@ -30,7 +30,7 @@ Lists the users assigned to a group.
 
 ### Returns
 
-- `data: array of OrganizationUser`
+- `data: array of OrganizationGroupUser`
 
   Users in the current page.
 
@@ -38,31 +38,13 @@ Lists the users assigned to a group.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
-
-    The Unix timestamp (in seconds) of when the user was added.
-
   - `email: string`
 
-    The email address of the user
+    The email address of the user.
 
   - `name: string`
 
-    The name of the user
-
-  - `object: "organization.user"`
-
-    The object type, which is always `organization.user`
-
-    - `"organization.user"`
-
-  - `role: "owner" or "reader"`
-
-    `owner` or `reader`
-
-    - `"owner"`
-
-    - `"reader"`
+    The name of the user.
 
 - `has_more: boolean`
 
@@ -92,11 +74,8 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
   "data": [
     {
       "id": "id",
-      "added_at": 0,
       "email": "email",
-      "name": "name",
-      "object": "organization.user",
-      "role": "owner"
+      "name": "name"
     }
   ],
   "has_more": true,
@@ -120,12 +99,9 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?lim
     "object": "list",
     "data": [
         {
-            "object": "organization.user",
             "id": "user_abc123",
             "name": "Ada Lovelace",
-            "email": "ada@example.com",
-            "role": "owner",
-            "added_at": 1711471533
+            "email": "ada@example.com"
         }
     ],
     "has_more": false,
@@ -266,6 +242,24 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 ```
 
 ## Domain Types
+
+### Organization Group User
+
+- `OrganizationGroupUser object { id, email, name }`
+
+  Represents an individual user returned when inspecting group membership.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `email: string`
+
+    The email address of the user.
+
+  - `name: string`
+
+    The name of the user.
 
 ### User Create Response
 

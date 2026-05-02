@@ -2,7 +2,7 @@
 
 ## List organization certificates
 
-`admin.organization.certificates.list(CertificateListParams**kwargs)  -> SyncConversationCursorPage[Certificate]`
+`admin.organization.certificates.list(CertificateListParams**kwargs)  -> SyncConversationCursorPage[CertificateListResponse]`
 
 **get** `/organization/certificates`
 
@@ -28,19 +28,19 @@ List uploaded certificates for this organization.
 
 ### Returns
 
-- `class Certificate: …`
+- `class CertificateListResponse: …`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the organization level.
 
   - `id: str`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: bool`
+
+    Whether the certificate is currently active at the organization level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content: Optional[str]`
-
-      The content of the certificate in PEM format.
 
     - `expires_at: Optional[int]`
 
@@ -54,27 +54,15 @@ List uploaded certificates for this organization.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
-  - `object: Literal["certificate", "organization.certificate", "organization.project.certificate"]`
+  - `object: Literal["organization.certificate"]`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
-
-    - `"organization.project.certificate"`
-
-  - `active: Optional[bool]`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -97,21 +85,20 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
   "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "has_more": true,
+  "last_id": "cert_abc",
+  "object": "list"
 }
 ```
 
@@ -127,7 +114,7 @@ Organizations can upload up to 50 certificates.
 
 ### Parameters
 
-- `content: str`
+- `certificate: str`
 
   The certificate content in PEM format
 
@@ -163,7 +150,7 @@ Organizations can upload up to 50 certificates.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
@@ -195,7 +182,7 @@ client = OpenAI(
     admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
 )
 certificate = client.admin.organization.certificates.create(
-    content="content",
+    certificate="certificate",
 )
 print(certificate.id)
 ```
@@ -265,7 +252,7 @@ You can get a certificate regardless of whether it is active or not.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
@@ -331,7 +318,7 @@ Modify a certificate. Note that only the name can be modified.
 
 - `certificate_id: str`
 
-- `name: str`
+- `name: Optional[str]`
 
   The updated name for the certificate
 
@@ -363,7 +350,7 @@ Modify a certificate. Note that only the name can be modified.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
@@ -396,7 +383,6 @@ client = OpenAI(
 )
 certificate = client.admin.organization.certificates.update(
     certificate_id="certificate_id",
-    name="name",
 )
 print(certificate.id)
 ```
@@ -472,7 +458,7 @@ print(certificate.id)
 
 ## Activate certificates for organization
 
-`admin.organization.certificates.activate(CertificateActivateParams**kwargs)  -> SyncPage[Certificate]`
+`admin.organization.certificates.activate(CertificateActivateParams**kwargs)  -> SyncPage[CertificateActivateResponse]`
 
 **post** `/organization/certificates/activate`
 
@@ -486,19 +472,19 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Returns
 
-- `class Certificate: …`
+- `class CertificateActivateResponse: …`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the organization level.
 
   - `id: str`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: bool`
+
+    Whether the certificate is currently active at the organization level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content: Optional[str]`
-
-      The content of the certificate in PEM format.
 
     - `expires_at: Optional[int]`
 
@@ -512,27 +498,15 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
-  - `object: Literal["certificate", "organization.certificate", "organization.project.certificate"]`
+  - `object: Literal["organization.certificate"]`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
-
-    - `"organization.project.certificate"`
-
-  - `active: Optional[bool]`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -557,27 +531,23 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.certificate.activation"
 }
 ```
 
 ## Deactivate certificates for organization
 
-`admin.organization.certificates.deactivate(CertificateDeactivateParams**kwargs)  -> SyncPage[Certificate]`
+`admin.organization.certificates.deactivate(CertificateDeactivateParams**kwargs)  -> SyncPage[CertificateDeactivateResponse]`
 
 **post** `/organization/certificates/deactivate`
 
@@ -591,19 +561,19 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
 ### Returns
 
-- `class Certificate: …`
+- `class CertificateDeactivateResponse: …`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the organization level.
 
   - `id: str`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: bool`
+
+    Whether the certificate is currently active at the organization level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content: Optional[str]`
-
-      The content of the certificate in PEM format.
 
     - `expires_at: Optional[int]`
 
@@ -617,27 +587,15 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
-  - `object: Literal["certificate", "organization.certificate", "organization.project.certificate"]`
+  - `object: Literal["organization.certificate"]`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
-
-    - `"organization.project.certificate"`
-
-  - `active: Optional[bool]`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -662,21 +620,17 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.certificate.deactivation"
 }
 ```
 
@@ -710,7 +664,7 @@ print(page.id)
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
@@ -732,6 +686,44 @@ print(page.id)
 
     Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
+### Certificate List Response
+
+- `class CertificateListResponse: …`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: bool`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: Optional[str]`
+
+    The name of the certificate.
+
+  - `object: Literal["organization.certificate"]`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`
+
 ### Certificate Delete Response
 
 - `class CertificateDeleteResponse: …`
@@ -745,3 +737,79 @@ print(page.id)
     The object type, must be `certificate.deleted`.
 
     - `"certificate.deleted"`
+
+### Certificate Activate Response
+
+- `class CertificateActivateResponse: …`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: bool`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: Optional[str]`
+
+    The name of the certificate.
+
+  - `object: Literal["organization.certificate"]`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`
+
+### Certificate Deactivate Response
+
+- `class CertificateDeactivateResponse: …`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: bool`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: Optional[str]`
+
+    The name of the certificate.
+
+  - `object: Literal["organization.certificate"]`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`

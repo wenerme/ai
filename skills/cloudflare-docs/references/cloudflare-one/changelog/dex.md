@@ -139,7 +139,7 @@ For more details refer to our [DEX](https://developers.cloudflare.com/cloudflare
 
 **Remote captures**
 
-Admins can now collect packet captures (PCAPs) and WARP diagnostic logs from end-user devices. For more information, refer to [Remote captures](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/).
+Admins can now collect packet captures (PCAPs) and WARP diagnostic logs from end-user devices. For more information, refer to [Remote captures](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/).
 
 ## 2024-05-20
 

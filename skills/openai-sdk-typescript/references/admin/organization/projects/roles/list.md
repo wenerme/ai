@@ -1,6 +1,6 @@
 ## List project roles
 
-`client.admin.organization.projects.roles.list(stringprojectID, RoleListParamsquery?, RequestOptionsoptions?): CursorPage<Role>`
+`client.admin.organization.projects.roles.list(stringprojectID, RoleListParamsquery?, RequestOptionsoptions?): NextCursorPage<Role>`
 
 **get** `/projects/{project_id}/roles`
 

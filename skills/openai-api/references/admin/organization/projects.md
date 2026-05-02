@@ -32,37 +32,37 @@ Returns a list of projects.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-- `first_id: string`
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -79,16 +79,17 @@ curl https://api.openai.com/v1/organization/projects \
     {
       "id": "id",
       "created_at": 0,
-      "name": "name",
       "object": "organization.project",
-      "status": "active",
-      "archived_at": 0
+      "archived_at": 0,
+      "external_key_id": "external_key_id",
+      "name": "name",
+      "status": "status"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -133,29 +134,17 @@ Create a new project in the organization. Projects can be created and archived, 
 
   The friendly name of the project, this name appears in reports.
 
-- `geography: optional "US" or "EU" or "JP" or 5 more`
+- `external_key_id: optional string`
+
+  External key ID to associate with the project.
+
+- `geography: optional string`
 
   Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
 
-  - `"US"`
-
-  - `"EU"`
-
-  - `"JP"`
-
-  - `"IN"`
-
-  - `"KR"`
-
-  - `"CA"`
-
-  - `"AU"`
-
-  - `"SG"`
-
 ### Returns
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -167,27 +156,27 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 ### Example
 
@@ -206,10 +195,11 @@ curl https://api.openai.com/v1/organization/projects \
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -249,7 +239,7 @@ Retrieves a project.
 
 ### Returns
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -261,27 +251,27 @@ Retrieves a project.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 ### Example
 
@@ -296,10 +286,11 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -336,13 +327,21 @@ Modifies a project in the organization.
 
 ### Body Parameters
 
-- `name: string`
+- `external_key_id: optional string`
+
+  External key ID to associate with the project.
+
+- `geography: optional string`
+
+  Geography for the project.
+
+- `name: optional string`
 
   The updated name of the project, this name appears in reports.
 
 ### Returns
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -354,27 +353,27 @@ Modifies a project in the organization.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 ### Example
 
@@ -382,9 +381,7 @@ Modifies a project in the organization.
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "name": "name"
-        }'
+    -d '{}'
 ```
 
 #### Response
@@ -393,10 +390,11 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -423,7 +421,7 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
 ### Returns
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -435,27 +433,27 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 ### Example
 
@@ -471,10 +469,11 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/archive \
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -503,7 +502,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/archive \
 
 ### Project
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -515,27 +514,27 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/archive \
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 # Users
 
@@ -571,35 +570,31 @@ Returns a list of users in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
 
-- `first_id: string`
+  - `name: optional string`
+
+    The name of the user
 
 - `has_more: boolean`
 
-- `last_id: string`
-
 - `object: string`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -616,16 +611,16 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
     {
       "id": "id",
       "added_at": 0,
-      "email": "email",
-      "name": "name",
       "object": "organization.project.user",
-      "role": "owner"
+      "role": "role",
+      "email": "email",
+      "name": "name"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "object"
+  "object": "object",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -670,21 +665,21 @@ Adds a user to the project. Users must already be members of the organization to
 
 ### Body Parameters
 
-- `role: "owner" or "member"`
+- `role: string`
 
   `owner` or `member`
 
-  - `"owner"`
+- `email: optional string`
 
-  - `"member"`
+  Email of the user to add.
 
-- `user_id: string`
+- `user_id: optional string`
 
   The ID of the user.
 
 ### Returns
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -696,27 +691,23 @@ Adds a user to the project. Users must already be members of the organization to
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### Example
 
@@ -725,8 +716,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
     -d '{
-          "role": "owner",
-          "user_id": "user_id"
+          "role": "role"
         }'
 ```
 
@@ -736,10 +726,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -781,7 +771,7 @@ Retrieves a user in the project.
 
 ### Returns
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -793,27 +783,23 @@ Retrieves a user in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### Example
 
@@ -828,10 +814,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -870,17 +856,13 @@ Modifies a user's role in the project.
 
 ### Body Parameters
 
-- `role: "owner" or "member"`
+- `role: optional string`
 
   `owner` or `member`
 
-  - `"owner"`
-
-  - `"member"`
-
 ### Returns
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -892,27 +874,23 @@ Modifies a user's role in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### Example
 
@@ -920,9 +898,7 @@ Modifies a user's role in the project.
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "role": "owner"
-        }'
+    -d '{}'
 ```
 
 #### Response
@@ -931,10 +907,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -1027,7 +1003,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
 
 ### Project User
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -1039,27 +1015,23 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### User Delete Response
 
@@ -1319,27 +1291,93 @@ Assigns a project role to a user within a project.
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" or "reader"`
+  - `api_key_last_used_at: optional number`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created: optional number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona: optional string`
+
+    The developer persona metadata for the user.
+
+  - `email: optional string`
+
+    The email address of the user
+
+  - `is_default: optional boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser: optional boolean`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed: optional boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account: optional boolean`
+
+    Whether the user is a service account.
+
+  - `name: optional string`
+
+    The name of the user
+
+  - `projects: optional object { data, object }`
+
+    Projects associated with the user, if included.
+
+    - `data: array of object { id, name, role }`
+
+      - `id: optional string`
+
+      - `name: optional string`
+
+      - `role: optional string`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role: optional string`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level: optional string`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user: optional object { id, object, banned, 5 more }`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned: optional boolean`
+
+    - `banned_at: optional number`
+
+    - `email: optional string`
+
+    - `enabled: optional boolean`
+
+    - `name: optional string`
+
+    - `picture: optional string`
 
 ### Example
 
@@ -1371,10 +1409,38 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles \
   "user": {
     "id": "id",
     "added_at": 0,
-    "email": "email",
-    "name": "name",
     "object": "organization.user",
-    "role": "owner"
+    "api_key_last_used_at": 0,
+    "created": 0,
+    "developer_persona": "developer_persona",
+    "email": "email",
+    "is_default": true,
+    "is_scale_tier_authorized_purchaser": true,
+    "is_scim_managed": true,
+    "is_service_account": true,
+    "name": "name",
+    "projects": {
+      "data": [
+        {
+          "id": "id",
+          "name": "name",
+          "role": "role"
+        }
+      ],
+      "object": "list"
+    },
+    "role": "role",
+    "technical_level": "technical_level",
+    "user": {
+      "id": "id",
+      "object": "user",
+      "banned": true,
+      "banned_at": 0,
+      "email": "email",
+      "enabled": true,
+      "name": "name",
+      "picture": "picture"
+    }
   }
 }
 ```
@@ -1586,27 +1652,93 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: string`
-
-      The email address of the user
-
-    - `name: string`
-
-      The name of the user
-
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: "owner" or "reader"`
+    - `api_key_last_used_at: optional number`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created: optional number`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona: optional string`
+
+      The developer persona metadata for the user.
+
+    - `email: optional string`
+
+      The email address of the user
+
+    - `is_default: optional boolean`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser: optional boolean`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed: optional boolean`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account: optional boolean`
+
+      Whether the user is a service account.
+
+    - `name: optional string`
+
+      The name of the user
+
+    - `projects: optional object { data, object }`
+
+      Projects associated with the user, if included.
+
+      - `data: array of object { id, name, role }`
+
+        - `id: optional string`
+
+        - `name: optional string`
+
+        - `role: optional string`
+
+      - `object: "list"`
+
+        - `"list"`
+
+    - `role: optional string`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level: optional string`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user: optional object { id, object, banned, 5 more }`
+
+      Nested user details.
+
+      - `id: string`
+
+      - `object: "user"`
+
+        - `"user"`
+
+      - `banned: optional boolean`
+
+      - `banned_at: optional number`
+
+      - `email: optional string`
+
+      - `enabled: optional boolean`
+
+      - `name: optional string`
+
+      - `picture: optional string`
 
 ### Role Delete Response
 
@@ -1674,15 +1806,15 @@ Returns a list of service accounts in the project.
 
     - `"member"`
 
-- `first_id: string`
-
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -1704,10 +1836,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
       "role": "owner"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -2125,9 +2257,9 @@ Returns a list of API keys in the project.
 
   - `owner: object { service_account, type, user }`
 
-    - `service_account: optional ProjectServiceAccount`
+    - `service_account: optional object { id, created_at, name, role }`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -2135,25 +2267,15 @@ Returns a list of API keys in the project.
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: optional "user" or "service_account"`
 
@@ -2163,53 +2285,43 @@ Returns a list of API keys in the project.
 
       - `"service_account"`
 
-    - `user: optional ProjectUser`
+    - `user: optional object { id, created_at, email, 2 more }`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
     The redacted value of the API key
 
-- `first_id: string`
-
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -2234,26 +2346,24 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys \
           "id": "id",
           "created_at": 0,
           "name": "name",
-          "object": "organization.project.service_account",
-          "role": "owner"
+          "role": "role"
         },
         "type": "user",
         "user": {
           "id": "id",
-          "added_at": 0,
+          "created_at": 0,
           "email": "email",
           "name": "name",
-          "object": "organization.project.user",
-          "role": "owner"
+          "role": "role"
         }
       },
       "redacted_value": "redacted_value"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -2281,12 +2391,11 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key
             "owner": {
                 "type": "user",
                 "user": {
-                    "object": "organization.project.user",
                     "id": "user_abc",
                     "name": "First Last",
                     "email": "user@example.com",
                     "role": "owner",
-                    "added_at": 1711471533
+                    "created_at": 1711471533
                 }
             }
         }
@@ -2299,7 +2408,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key
 
 ## Retrieve project API key
 
-**get** `/organization/projects/{project_id}/api_keys/{key_id}`
+**get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Retrieves an API key in the project.
 
@@ -2307,7 +2416,7 @@ Retrieves an API key in the project.
 
 - `project_id: string`
 
-- `key_id: string`
+- `api_key_id: string`
 
 ### Returns
 
@@ -2339,9 +2448,9 @@ Retrieves an API key in the project.
 
   - `owner: object { service_account, type, user }`
 
-    - `service_account: optional ProjectServiceAccount`
+    - `service_account: optional object { id, created_at, name, role }`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -2349,25 +2458,15 @@ Retrieves an API key in the project.
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: optional "user" or "service_account"`
 
@@ -2377,39 +2476,29 @@ Retrieves an API key in the project.
 
       - `"service_account"`
 
-    - `user: optional ProjectUser`
+    - `user: optional object { id, created_at, email, 2 more }`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
@@ -2418,7 +2507,7 @@ Retrieves an API key in the project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_ID \
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
@@ -2436,17 +2525,15 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_I
       "id": "id",
       "created_at": 0,
       "name": "name",
-      "object": "organization.project.service_account",
-      "role": "owner"
+      "role": "role"
     },
     "type": "user",
     "user": {
       "id": "id",
-      "added_at": 0,
+      "created_at": 0,
       "email": "email",
       "name": "name",
-      "object": "organization.project.user",
-      "role": "owner"
+      "role": "role"
     }
   },
   "redacted_value": "redacted_value"
@@ -2474,12 +2561,11 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
     "owner": {
         "type": "user",
         "user": {
-            "object": "organization.project.user",
             "id": "user_abc",
             "name": "First Last",
             "email": "user@example.com",
             "role": "owner",
-            "added_at": 1711471533
+            "created_at": 1711471533
         }
     }
 }
@@ -2487,7 +2573,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
 
 ## Delete project API key
 
-**delete** `/organization/projects/{project_id}/api_keys/{key_id}`
+**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Deletes an API key from the project.
 
@@ -2498,7 +2584,7 @@ a service account.
 
 - `project_id: string`
 
-- `key_id: string`
+- `api_key_id: string`
 
 ### Returns
 
@@ -2513,7 +2599,7 @@ a service account.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_ID \
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
@@ -2578,9 +2664,9 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
   - `owner: object { service_account, type, user }`
 
-    - `service_account: optional ProjectServiceAccount`
+    - `service_account: optional object { id, created_at, name, role }`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -2588,25 +2674,15 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: optional "user" or "service_account"`
 
@@ -2616,39 +2692,29 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
       - `"service_account"`
 
-    - `user: optional ProjectUser`
+    - `user: optional object { id, created_at, email, 2 more }`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
@@ -2734,15 +2800,15 @@ Returns the rate limits per model for a project.
 
     The maximum requests per day. Only present for relevant models.
 
-- `first_id: string`
-
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -2768,10 +2834,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits \
       "max_requests_per_1_day": 0
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -3029,6 +3095,10 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `object: "project.group"`
 
     Always `project.group`.
@@ -3069,6 +3139,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
+      "group_type": "group_type",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -3128,7 +3199,7 @@ Grants a group access to a project.
 
 ### Returns
 
-- `ProjectGroup object { created_at, group_id, group_name, 2 more }`
+- `ProjectGroup object { created_at, group_id, group_name, 3 more }`
 
   Details about a group's membership in a project.
 
@@ -3143,6 +3214,10 @@ Grants a group access to a project.
   - `group_name: string`
 
     Display name of the group.
+
+  - `group_type: string`
+
+    The type of the group.
 
   - `object: "project.group"`
 
@@ -3173,6 +3248,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
+  "group_type": "group_type",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -3264,7 +3340,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/group
 
 ### Project Group
 
-- `ProjectGroup object { created_at, group_id, group_name, 2 more }`
+- `ProjectGroup object { created_at, group_id, group_name, 3 more }`
 
   Details about a group's membership in a project.
 
@@ -3279,6 +3355,10 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/group
   - `group_name: string`
 
     Display name of the group.
+
+  - `group_type: string`
+
+    The type of the group.
 
   - `object: "project.group"`
 
@@ -4340,17 +4420,17 @@ List certificates for this project.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the project level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -4368,33 +4448,21 @@ List certificates for this project.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.project.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
 
-  - `active: optional boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+- `first_id: string`
 
 - `has_more: boolean`
+
+- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
 
 ### Example
 
@@ -4410,21 +4478,20 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates \
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
   "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "has_more": true,
+  "last_id": "cert_abc",
+  "object": "list"
 }
 ```
 
@@ -4477,17 +4544,17 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the project level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -4505,33 +4572,17 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.project.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
 
-  - `active: optional boolean`
+- `object: "organization.project.certificate.activation"`
 
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+  The project certificate activation result type.
 
-- `has_more: boolean`
-
-- `object: "list"`
-
-  - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
+  - `"organization.project.certificate.activation"`
 
 ### Example
 
@@ -4553,21 +4604,17 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/ac
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.project.certificate.activation"
 }
 ```
 
@@ -4578,7 +4625,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/activ
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
 -d '{
-  "data": ["cert_abc", "cert_def"]
+  "certificate_ids": ["cert_abc", "cert_def"]
 }'
 ```
 
@@ -4631,17 +4678,17 @@ idempotently deactivate up to 10 certificates at a time.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the project level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -4659,33 +4706,17 @@ idempotently deactivate up to 10 certificates at a time.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.project.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
 
-  - `active: optional boolean`
+- `object: "organization.project.certificate.deactivation"`
 
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+  The project certificate deactivation result type.
 
-- `has_more: boolean`
-
-- `object: "list"`
-
-  - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
+  - `"organization.project.certificate.deactivation"`
 
 ### Example
 
@@ -4707,21 +4738,17 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/de
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.project.certificate.deactivation"
 }
 ```
 
@@ -4732,7 +4759,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deact
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
 -d '{
-  "data": ["cert_abc", "cert_def"]
+  "certificate_ids": ["cert_abc", "cert_def"]
 }'
 ```
 
@@ -4767,3 +4794,119 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deact
   ],
 }
 ```
+
+## Domain Types
+
+### Certificate List Response
+
+- `CertificateListResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.project.certificate"`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`
+
+### Certificate Activate Response
+
+- `CertificateActivateResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.project.certificate"`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`
+
+### Certificate Deactivate Response
+
+- `CertificateDeactivateResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.project.certificate"`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`

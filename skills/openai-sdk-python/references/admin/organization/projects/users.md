@@ -34,27 +34,23 @@ Returns a list of users in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### Example
 
@@ -80,16 +76,16 @@ print(page.id)
     {
       "id": "id",
       "added_at": 0,
-      "email": "email",
-      "name": "name",
       "object": "organization.project.user",
-      "role": "owner"
+      "role": "role",
+      "email": "email",
+      "name": "name"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "object"
+  "object": "object",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -105,15 +101,15 @@ Adds a user to the project. Users must already be members of the organization to
 
 - `project_id: str`
 
-- `role: Literal["owner", "member"]`
+- `role: str`
 
   `owner` or `member`
 
-  - `"owner"`
+- `email: Optional[str]`
 
-  - `"member"`
+  Email of the user to add.
 
-- `user_id: str`
+- `user_id: Optional[str]`
 
   The ID of the user.
 
@@ -131,27 +127,23 @@ Adds a user to the project. Users must already be members of the organization to
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### Example
 
@@ -164,8 +156,7 @@ client = OpenAI(
 )
 project_user = client.admin.organization.projects.users.create(
     project_id="project_id",
-    role="owner",
-    user_id="user_id",
+    role="role",
 )
 print(project_user.id)
 ```
@@ -176,10 +167,10 @@ print(project_user.id)
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -211,27 +202,23 @@ Retrieves a user in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### Example
 
@@ -255,10 +242,10 @@ print(project_user.id)
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -276,13 +263,9 @@ Modifies a user's role in the project.
 
 - `user_id: str`
 
-- `role: Literal["owner", "member"]`
+- `role: Optional[str]`
 
   `owner` or `member`
-
-  - `"owner"`
-
-  - `"member"`
 
 ### Returns
 
@@ -298,27 +281,23 @@ Modifies a user's role in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### Example
 
@@ -332,7 +311,6 @@ client = OpenAI(
 project_user = client.admin.organization.projects.users.update(
     user_id="user_id",
     project_id="project_id",
-    role="owner",
 )
 print(project_user.id)
 ```
@@ -343,10 +321,10 @@ print(project_user.id)
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -421,27 +399,23 @@ print(user.id)
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### User Delete Response
 
@@ -459,7 +433,7 @@ print(user.id)
 
 ## List project user role assignments
 
-`admin.organization.projects.users.roles.list(struser_id, RoleListParams**kwargs)  -> SyncCursorPage[RoleListResponse]`
+`admin.organization.projects.users.roles.list(struser_id, RoleListParams**kwargs)  -> SyncNextCursorPage[RoleListResponse]`
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
@@ -661,27 +635,93 @@ Assigns a project role to a user within a project.
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: str`
-
-      The email address of the user
-
-    - `name: str`
-
-      The name of the user
-
     - `object: Literal["organization.user"]`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: Literal["owner", "reader"]`
+    - `api_key_last_used_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona: Optional[str]`
+
+      The developer persona metadata for the user.
+
+    - `email: Optional[str]`
+
+      The email address of the user
+
+    - `is_default: Optional[bool]`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser: Optional[bool]`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed: Optional[bool]`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account: Optional[bool]`
+
+      Whether the user is a service account.
+
+    - `name: Optional[str]`
+
+      The name of the user
+
+    - `projects: Optional[Projects]`
+
+      Projects associated with the user, if included.
+
+      - `data: List[ProjectsData]`
+
+        - `id: Optional[str]`
+
+        - `name: Optional[str]`
+
+        - `role: Optional[str]`
+
+      - `object: Literal["list"]`
+
+        - `"list"`
+
+    - `role: Optional[str]`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level: Optional[str]`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user: Optional[User]`
+
+      Nested user details.
+
+      - `id: str`
+
+      - `object: Literal["user"]`
+
+        - `"user"`
+
+      - `banned: Optional[bool]`
+
+      - `banned_at: Optional[int]`
+
+      - `email: Optional[str]`
+
+      - `enabled: Optional[bool]`
+
+      - `name: Optional[str]`
+
+      - `picture: Optional[str]`
 
 ### Example
 
@@ -719,10 +759,38 @@ print(role.object)
   "user": {
     "id": "id",
     "added_at": 0,
-    "email": "email",
-    "name": "name",
     "object": "organization.user",
-    "role": "owner"
+    "api_key_last_used_at": 0,
+    "created": 0,
+    "developer_persona": "developer_persona",
+    "email": "email",
+    "is_default": true,
+    "is_scale_tier_authorized_purchaser": true,
+    "is_scim_managed": true,
+    "is_service_account": true,
+    "name": "name",
+    "projects": {
+      "data": [
+        {
+          "id": "id",
+          "name": "name",
+          "role": "role"
+        }
+      ],
+      "object": "list"
+    },
+    "role": "role",
+    "technical_level": "technical_level",
+    "user": {
+      "id": "id",
+      "object": "user",
+      "banned": true,
+      "banned_at": 0,
+      "email": "email",
+      "enabled": true,
+      "name": "name",
+      "picture": "picture"
+    }
   }
 }
 ```
@@ -893,27 +961,93 @@ print(role.deleted)
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: str`
-
-      The email address of the user
-
-    - `name: str`
-
-      The name of the user
-
     - `object: Literal["organization.user"]`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: Literal["owner", "reader"]`
+    - `api_key_last_used_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona: Optional[str]`
+
+      The developer persona metadata for the user.
+
+    - `email: Optional[str]`
+
+      The email address of the user
+
+    - `is_default: Optional[bool]`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser: Optional[bool]`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed: Optional[bool]`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account: Optional[bool]`
+
+      Whether the user is a service account.
+
+    - `name: Optional[str]`
+
+      The name of the user
+
+    - `projects: Optional[Projects]`
+
+      Projects associated with the user, if included.
+
+      - `data: List[ProjectsData]`
+
+        - `id: Optional[str]`
+
+        - `name: Optional[str]`
+
+        - `role: Optional[str]`
+
+      - `object: Literal["list"]`
+
+        - `"list"`
+
+    - `role: Optional[str]`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level: Optional[str]`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user: Optional[User]`
+
+      Nested user details.
+
+      - `id: str`
+
+      - `object: Literal["user"]`
+
+        - `"user"`
+
+      - `banned: Optional[bool]`
+
+      - `banned_at: Optional[int]`
+
+      - `email: Optional[str]`
+
+      - `enabled: Optional[bool]`
+
+      - `name: Optional[str]`
+
+      - `picture: Optional[str]`
 
 ### Role Delete Response
 

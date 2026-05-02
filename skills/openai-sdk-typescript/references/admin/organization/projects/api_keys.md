@@ -36,7 +36,7 @@ Returns a list of API keys in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number | null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -52,9 +52,9 @@ Returns a list of API keys in the project.
 
   - `owner: Owner`
 
-    - `service_account?: ProjectServiceAccount`
+    - `service_account?: ServiceAccount`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -62,25 +62,15 @@ Returns a list of API keys in the project.
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type?: "user" | "service_account"`
 
@@ -90,39 +80,29 @@ Returns a list of API keys in the project.
 
       - `"service_account"`
 
-    - `user?: ProjectUser`
+    - `user?: User`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
@@ -159,40 +139,38 @@ for await (const projectAPIKey of client.admin.organization.projects.apiKeys.lis
           "id": "id",
           "created_at": 0,
           "name": "name",
-          "object": "organization.project.service_account",
-          "role": "owner"
+          "role": "role"
         },
         "type": "user",
         "user": {
           "id": "id",
-          "added_at": 0,
+          "created_at": 0,
           "email": "email",
           "name": "name",
-          "object": "organization.project.user",
-          "role": "owner"
+          "role": "role"
         }
       },
       "redacted_value": "redacted_value"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
 ## Retrieve project API key
 
-`client.admin.organization.projects.apiKeys.retrieve(stringkeyID, APIKeyRetrieveParamsparams, RequestOptionsoptions?): ProjectAPIKey`
+`client.admin.organization.projects.apiKeys.retrieve(stringapiKeyID, APIKeyRetrieveParamsparams, RequestOptionsoptions?): ProjectAPIKey`
 
-**get** `/organization/projects/{project_id}/api_keys/{key_id}`
+**get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Retrieves an API key in the project.
 
 ### Parameters
 
-- `keyID: string`
+- `apiKeyID: string`
 
 - `params: APIKeyRetrieveParams`
 
@@ -214,7 +192,7 @@ Retrieves an API key in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number | null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -230,9 +208,9 @@ Retrieves an API key in the project.
 
   - `owner: Owner`
 
-    - `service_account?: ProjectServiceAccount`
+    - `service_account?: ServiceAccount`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -240,25 +218,15 @@ Retrieves an API key in the project.
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type?: "user" | "service_account"`
 
@@ -268,39 +236,29 @@ Retrieves an API key in the project.
 
       - `"service_account"`
 
-    - `user?: ProjectUser`
+    - `user?: User`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
@@ -315,7 +273,7 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const projectAPIKey = await client.admin.organization.projects.apiKeys.retrieve('key_id', {
+const projectAPIKey = await client.admin.organization.projects.apiKeys.retrieve('api_key_id', {
   project_id: 'project_id',
 });
 
@@ -336,17 +294,15 @@ console.log(projectAPIKey.id);
       "id": "id",
       "created_at": 0,
       "name": "name",
-      "object": "organization.project.service_account",
-      "role": "owner"
+      "role": "role"
     },
     "type": "user",
     "user": {
       "id": "id",
-      "added_at": 0,
+      "created_at": 0,
       "email": "email",
       "name": "name",
-      "object": "organization.project.user",
-      "role": "owner"
+      "role": "role"
     }
   },
   "redacted_value": "redacted_value"
@@ -355,9 +311,9 @@ console.log(projectAPIKey.id);
 
 ## Delete project API key
 
-`client.admin.organization.projects.apiKeys.delete(stringkeyID, APIKeyDeleteParamsparams, RequestOptionsoptions?): APIKeyDeleteResponse`
+`client.admin.organization.projects.apiKeys.delete(stringapiKeyID, APIKeyDeleteParamsparams, RequestOptionsoptions?): APIKeyDeleteResponse`
 
-**delete** `/organization/projects/{project_id}/api_keys/{key_id}`
+**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Deletes an API key from the project.
 
@@ -366,7 +322,7 @@ a service account.
 
 ### Parameters
 
-- `keyID: string`
+- `apiKeyID: string`
 
 - `params: APIKeyDeleteParams`
 
@@ -395,7 +351,7 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const apiKey = await client.admin.organization.projects.apiKeys.delete('key_id', {
+const apiKey = await client.admin.organization.projects.apiKeys.delete('api_key_id', {
   project_id: 'project_id',
 });
 
@@ -428,7 +384,7 @@ console.log(apiKey.id);
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number | null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -444,9 +400,9 @@ console.log(apiKey.id);
 
   - `owner: Owner`
 
-    - `service_account?: ProjectServiceAccount`
+    - `service_account?: ServiceAccount`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -454,25 +410,15 @@ console.log(apiKey.id);
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type?: "user" | "service_account"`
 
@@ -482,39 +428,29 @@ console.log(apiKey.id);
 
       - `"service_account"`
 
-    - `user?: ProjectUser`
+    - `user?: User`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" | "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 

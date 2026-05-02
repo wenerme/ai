@@ -1,8 +1,8 @@
 ## Delete project API key
 
-`admin.organization.projects.api_keys.delete(strkey_id, APIKeyDeleteParams**kwargs)  -> APIKeyDeleteResponse`
+`admin.organization.projects.api_keys.delete(strapi_key_id, APIKeyDeleteParams**kwargs)  -> APIKeyDeleteResponse`
 
-**delete** `/organization/projects/{project_id}/api_keys/{key_id}`
+**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Deletes an API key from the project.
 
@@ -13,7 +13,7 @@ a service account.
 
 - `project_id: str`
 
-- `key_id: str`
+- `api_key_id: str`
 
 ### Returns
 
@@ -37,7 +37,7 @@ client = OpenAI(
     admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
 )
 api_key = client.admin.organization.projects.api_keys.delete(
-    key_id="key_id",
+    api_key_id="api_key_id",
     project_id="project_id",
 )
 print(api_key.id)

@@ -1,6 +1,6 @@
 ## List groups
 
-`admin.organization.groups.list(GroupListParams**kwargs)  -> SyncCursorPage[Group]`
+`admin.organization.groups.list(GroupListParams**kwargs)  -> SyncNextCursorPage[Group]`
 
 **get** `/organization/groups`
 
@@ -38,6 +38,10 @@ Lists all groups in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
+  - `group_type: str`
+
+    The type of the group.
+
   - `is_scim_managed: bool`
 
     Whether the group is managed through SCIM and controlled by your identity provider.
@@ -68,6 +72,7 @@ print(page.id)
     {
       "id": "id",
       "created_at": 0,
+      "group_type": "group_type",
       "is_scim_managed": true,
       "name": "name"
     }

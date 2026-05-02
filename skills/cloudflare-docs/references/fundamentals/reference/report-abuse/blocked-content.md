@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index  
-> Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
 > Use this file to discover all available pages before exploring further.
 
 [Skip to content](#%5Ftop) 
@@ -42,5 +42,5 @@ You can view all your pending blocks by selecting **Pending** on the dashboard. 
 Resolved blocks list your recently resolved blocks. Resolved blocks are limited to 30 days of recently resolved blocks. Resolved blocks require no action. You can only sort and/or filter the list.
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/blocked-content/","name":"Blocked Content"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/report-abuse/","name":"Abuse"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/reference/report-abuse/blocked-content/","name":"Blocked Content"}}]}
 ```

@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Asana
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Asana ↗](https://help.asana.com/hc/en-us/articles/14075208738587-Authentication-and-access-management-options-for-paid-plans#gl-saml) as a SAML application in Cloudflare One.
 

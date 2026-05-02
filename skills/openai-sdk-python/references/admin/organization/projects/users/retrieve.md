@@ -26,27 +26,23 @@ Retrieves a user in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### Example
 
@@ -70,9 +66,9 @@ print(project_user.id)
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```

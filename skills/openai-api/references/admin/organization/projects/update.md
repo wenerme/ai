@@ -10,13 +10,21 @@ Modifies a project in the organization.
 
 ### Body Parameters
 
-- `name: string`
+- `external_key_id: optional string`
+
+  External key ID to associate with the project.
+
+- `geography: optional string`
+
+  Geography for the project.
+
+- `name: optional string`
 
   The updated name of the project, this name appears in reports.
 
 ### Returns
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -28,27 +36,27 @@ Modifies a project in the organization.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 ### Example
 
@@ -56,9 +64,7 @@ Modifies a project in the organization.
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "name": "name"
-        }'
+    -d '{}'
 ```
 
 #### Response
@@ -67,10 +73,11 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 

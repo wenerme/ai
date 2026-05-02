@@ -26,17 +26,17 @@ List uploaded certificates for this organization.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the organization level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -54,33 +54,21 @@ List uploaded certificates for this organization.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
 
-    - `"organization.project.certificate"`
-
-  - `active: optional boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+- `first_id: string`
 
 - `has_more: boolean`
+
+- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
 
 ### Example
 
@@ -96,21 +84,20 @@ curl https://api.openai.com/v1/organization/certificates \
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
   "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "has_more": true,
+  "last_id": "cert_abc",
+  "object": "list"
 }
 ```
 
@@ -155,7 +142,7 @@ Organizations can upload up to 50 certificates.
 
 ### Body Parameters
 
-- `content: string`
+- `certificate: string`
 
   The certificate content in PEM format
 
@@ -220,7 +207,7 @@ curl https://api.openai.com/v1/organization/certificates \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
     -d '{
-          "content": "content"
+          "certificate": "certificate"
         }'
 ```
 
@@ -397,7 +384,7 @@ Modify a certificate. Note that only the name can be modified.
 
 ### Body Parameters
 
-- `name: string`
+- `name: optional string`
 
   The updated name for the certificate
 
@@ -457,9 +444,7 @@ Modify a certificate. Note that only the name can be modified.
 curl https://api.openai.com/v1/organization/certificates/$CERTIFICATE_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "name": "name"
-        }'
+    -d '{}'
 ```
 
 #### Response
@@ -576,17 +561,17 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the organization level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -604,33 +589,17 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
 
-    - `"organization.project.certificate"`
+- `object: "organization.certificate.activation"`
 
-  - `active: optional boolean`
+  The organization certificate activation result type.
 
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
-
-- `has_more: boolean`
-
-- `object: "list"`
-
-  - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
+  - `"organization.certificate.activation"`
 
 ### Example
 
@@ -652,21 +621,17 @@ curl https://api.openai.com/v1/organization/certificates/activate \
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.certificate.activation"
 }
 ```
 
@@ -677,7 +642,7 @@ curl https://api.openai.com/v1/organization/certificates/activate \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
 -d '{
-  "data": ["cert_abc", "cert_def"]
+  "certificate_ids": ["cert_abc", "cert_def"]
 }'
 ```
 
@@ -727,17 +692,17 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the organization level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -755,33 +720,17 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
 
-    - `"organization.project.certificate"`
+- `object: "organization.certificate.deactivation"`
 
-  - `active: optional boolean`
+  The organization certificate deactivation result type.
 
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
-
-- `has_more: boolean`
-
-- `object: "list"`
-
-  - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
+  - `"organization.certificate.deactivation"`
 
 ### Example
 
@@ -803,21 +752,17 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.certificate.deactivation"
 }
 ```
 
@@ -828,7 +773,7 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
 -d '{
-  "data": ["cert_abc", "cert_def"]
+  "certificate_ids": ["cert_abc", "cert_def"]
 }'
 ```
 
@@ -916,6 +861,44 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
 
     Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
+### Certificate List Response
+
+- `CertificateListResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.certificate"`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`
+
 ### Certificate Delete Response
 
 - `CertificateDeleteResponse object { id, object }`
@@ -929,3 +912,79 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
     The object type, must be `certificate.deleted`.
 
     - `"certificate.deleted"`
+
+### Certificate Activate Response
+
+- `CertificateActivateResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.certificate"`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`
+
+### Certificate Deactivate Response
+
+- `CertificateDeactivateResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.certificate"`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`

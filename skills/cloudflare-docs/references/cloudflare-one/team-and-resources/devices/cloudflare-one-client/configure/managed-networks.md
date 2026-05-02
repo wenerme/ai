@@ -165,8 +165,8 @@ The Cloudflare One Client establishes a TLS connection using [Rustls ↗](https:
 
 The SHA-256 fingerprint is only required if your TLS endpoint uses a self-signed certificate.
 
-* [ Local certificate ](#tab-panel-4926)
-* [ Remote server ](#tab-panel-4927)
+* [ Local certificate ](#tab-panel-4730)
+* [ Remote server ](#tab-panel-4731)
 
 To obtain the SHA-256 fingerprint of a local certificate:
 
@@ -210,10 +210,10 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 
 ## 3\. Add managed network to Cloudflare One
 
-* [ Dashboard ](#tab-panel-4922)
-* [ Terraform (v5) ](#tab-panel-4923)
+* [ Dashboard ](#tab-panel-4726)
+* [ Terraform (v5) ](#tab-panel-4727)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**.
 2. Select **Managed networks** and select **Add new managed network**.
 3. Name your network location.
 4. In **Host and Port**, enter the private IP address and port number of your [TLS endpoint](#create-a-new-tls-endpoint) (for example, `192.168.185.198:3333`).  
@@ -245,10 +245,10 @@ If a device profile uses [Split Tunnels](https://developers.cloudflare.com/cloud
 
 ## 4\. Configure device profile
 
-* [ Dashboard ](#tab-panel-4924)
-* [ Terraform (v5) ](#tab-panel-4925)
+* [ Dashboard ](#tab-panel-4728)
+* [ Terraform (v5) ](#tab-panel-4729)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Create a [new profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) or edit an existing profile.
 3. To apply this profile whenever a device connects to your network, add the following rule:  
 | Selector        | Operator | Value          |  

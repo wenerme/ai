@@ -48,8 +48,8 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 
 #### Via the device
 
-* [ Version 2026.2+ ](#tab-panel-4992)
-* [ Version 2026.1 and earlier ](#tab-panel-4993)
+* [ Version 2026.2+ ](#tab-panel-4796)
+* [ Version 2026.1 and earlier ](#tab-panel-4797)
 
 1. Open the Cloudflare One Client on your desktop.
 2. Select **About**.
@@ -177,12 +177,12 @@ DEX will now send capture requests to the configured devices. If the Cloudflare 
 
 #### Check remote capture status
 
-To view a list of captures, go to **DEX** \> **Remote captures**. The **Status** column displays one of the following options:
+To view a list of captures, go to **Insights** \> **Digital experience** \> **Diagnostics**. The **Status** column displays one of the following options:
 
-* **Success**: The capture is complete and ready for download. Any partially successful captures will still upload to Cloudflare. For example, there could be a scenario where the PCAP succeeds on the primary network interface but fails on the WARP tunnel interface. You can [review PCAP results](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/#download-remote-captures) to determine which PCAPs succeeded or failed.
+* **Success**: The capture is complete and ready for download. Any partially successful captures will still upload to Cloudflare. For example, there could be a scenario where the PCAP succeeds on the primary network interface but fails on the WARP tunnel interface. You can [review PCAP results](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#download-remote-captures) to determine which PCAPs succeeded or failed.
 * **Running**: The capture is in progress on the device.
 * **Pending Upload**: The capture is complete but not yet ready for download.
-* **Failed**: The capture has either timed out or encountered an error. To retry the capture, check the Cloudflare One Client version and [connectivity status](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#fleet-status), then start a [new capture](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/#start-a-remote-capture).
+* **Failed**: The capture has either timed out or encountered an error. To retry the capture, check the Cloudflare One Client version and [connectivity status](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#fleet-status), then start a [new capture](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#start-a-remote-capture).
 
 #### Download remote captures
 
@@ -212,9 +212,9 @@ Collect client diagnostic logs on your desktop using the `warp-diag` CLI.
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-4996)
-* [ Windows ](#tab-panel-4997)
-* [ Linux ](#tab-panel-4998)
+* [ macOS ](#tab-panel-4800)
+* [ Windows ](#tab-panel-4801)
+* [ Linux ](#tab-panel-4802)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -581,7 +581,7 @@ Reauthenticating resets your [session duration](https://developers.cloudflare.co
 
 To modify the match rules of a device profile, you will need to edit the device profile. To edit the device profile:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to update and select **Configure**.
 3. Use [selectors](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#selectors) to add or adjust match rules, and modify [device client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-settings) for this profile as needed.  
 Note  
@@ -637,8 +637,8 @@ Both methods update the client with the latest configuration.
 
 **Option A: Disconnect and reconnect the client**
 
-* [ Version 2026.2+ ](#tab-panel-4994)
-* [ Version 2026.1 and earlier ](#tab-panel-4995)
+* [ Version 2026.2+ ](#tab-panel-4798)
+* [ Version 2026.1 and earlier ](#tab-panel-4799)
 
 1. On the end user device, open the Cloudflare One Client and select **Disconnect**.
 
@@ -666,8 +666,8 @@ The client will fetch new settings when it reconnects.
 
 To reset the encryption keys on an end user's desktop:
 
-* [ Version 2026.2+ ](#tab-panel-4999)
-* [ Version 2026.1 and earlier ](#tab-panel-5000)
+* [ Version 2026.2+ ](#tab-panel-4803)
+* [ Version 2026.1 and earlier ](#tab-panel-4804)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Connectivity** \> **Encryption keys**

@@ -50,6 +50,12 @@ Generate speech audio from text using a dedicated OpenAI-compatible endpoint. Op
 
 [Learn more about text-to-speech →](/docs/features/multimodal/tts)
 
+### Speech-to-Text
+
+Transcribe audio into text using a dedicated endpoint. OpenRouter supports multiple STT providers and models, returning structured JSON with transcribed text and usage statistics.
+
+[Learn more about speech-to-text →](/docs/features/multimodal/stt)
+
 ## Getting Started
 
 Most multimodal inputs use the same `/api/v1/chat/completions` endpoint with the `messages` parameter. Different content types are specified in the message content array:
@@ -62,6 +68,8 @@ Most multimodal inputs use the same `/api/v1/chat/completions` endpoint with the
 You can combine multiple modalities in a single request, and the number of files you can send varies by provider and model.
 
 **Text-to-Speech** uses a separate dedicated endpoint at `/api/v1/audio/speech`. See the [TTS documentation](/docs/features/multimodal/tts) for details.
+
+**Speech-to-Text** uses a separate dedicated endpoint at `/api/v1/audio/transcriptions`. See the [STT documentation](/docs/features/multimodal/stt) for details.
 
 ## Model Compatibility
 
@@ -123,5 +131,9 @@ OpenRouter supports both **direct URLs** and **base64-encoded data** for multimo
 
   <Accordion title="How does text-to-speech work?">
     Text-to-speech uses a dedicated endpoint at `/api/v1/audio/speech`. Send text and receive a raw audio byte stream. The endpoint is compatible with the OpenAI Audio Speech API, so you can use OpenAI client libraries. See the [TTS documentation](/docs/features/multimodal/tts) for details.
+  </Accordion>
+
+  <Accordion title="How does speech-to-text work?">
+    Speech-to-text uses a dedicated endpoint at `/api/v1/audio/transcriptions`. Send base64-encoded audio and receive a JSON response with the transcribed text and usage statistics. See the [STT documentation](/docs/features/multimodal/stt) for details.
   </Accordion>
 </AccordionGroup>

@@ -84,10 +84,10 @@ for await (const projectServiceAccount of client.admin.organization.projects.ser
       "role": "owner"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -115,7 +115,7 @@ Creates a new service account in the project. This also returns an unredacted AP
 
   - `id: string`
 
-  - `api_key: APIKey`
+  - `api_key: APIKey | null`
 
     - `id: string`
 
@@ -360,7 +360,7 @@ console.log(serviceAccount.id);
 
   - `id: string`
 
-  - `api_key: APIKey`
+  - `api_key: APIKey | null`
 
     - `id: string`
 

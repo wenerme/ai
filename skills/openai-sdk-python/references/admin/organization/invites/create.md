@@ -46,23 +46,35 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: str`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: int`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: int`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: Literal["organization.invite"]`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: List[Project]`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: str`
+
+      Project's public ID
+
+    - `role: Literal["member", "owner"]`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: Literal["owner", "reader"]`
 
@@ -86,21 +98,9 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects: Optional[List[Project]]`
+  - `expires_at: Optional[int]`
 
-    The projects that were granted membership upon acceptance of the invite.
-
-    - `id: Optional[str]`
-
-      Project's public ID
-
-    - `role: Optional[Literal["member", "owner"]]`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+    The Unix timestamp (in seconds) of when the invite expires.
 
 ### Example
 
@@ -123,18 +123,18 @@ print(invite.id)
 ```json
 {
   "id": "id",
+  "created_at": 0,
   "email": "email",
-  "expires_at": 0,
-  "invited_at": 0,
   "object": "organization.invite",
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
   "projects": [
     {
       "id": "id",
       "role": "member"
     }
-  ]
+  ],
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "expires_at": 0
 }
 ```

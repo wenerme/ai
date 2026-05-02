@@ -60,7 +60,7 @@ Get costs details for the organization.
 
       - `"bucket"`
 
-    - `result: List[DataResult]`
+    - `results: List[DataResult]`
 
       - `class DataResultOrganizationUsageCompletionsResult: …`
 
@@ -306,13 +306,13 @@ Get costs details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: int`
+
+          The number of code interpreter sessions.
+
         - `object: Literal["organization.usage.code_interpreter_sessions.result"]`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions: Optional[int]`
-
-          The number of code interpreter sessions.
 
         - `project_id: Optional[str]`
 
@@ -354,7 +354,7 @@ Get costs details for the organization.
 
   - `has_more: bool`
 
-  - `next_page: str`
+  - `next_page: Optional[str]`
 
   - `object: Literal["page"]`
 
@@ -383,7 +383,7 @@ print(response.data)
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,

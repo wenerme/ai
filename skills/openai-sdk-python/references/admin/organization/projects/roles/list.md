@@ -1,6 +1,6 @@
 ## List project roles
 
-`admin.organization.projects.roles.list(strproject_id, RoleListParams**kwargs)  -> SyncCursorPage[Role]`
+`admin.organization.projects.roles.list(strproject_id, RoleListParams**kwargs)  -> SyncNextCursorPage[Role]`
 
 **get** `/projects/{project_id}/roles`
 

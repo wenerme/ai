@@ -10,7 +10,7 @@ Organizations can upload up to 50 certificates.
 
 ### Parameters
 
-- `content: str`
+- `certificate: str`
 
   The certificate content in PEM format
 
@@ -46,7 +46,7 @@ Organizations can upload up to 50 certificates.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
@@ -78,7 +78,7 @@ client = OpenAI(
     admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
 )
 certificate = client.admin.organization.certificates.create(
-    content="content",
+    certificate="certificate",
 )
 print(certificate.id)
 ```

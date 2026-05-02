@@ -20,23 +20,35 @@ Retrieves an invite.
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: Array<Project>`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" | "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" | "reader"`
 
@@ -56,25 +68,13 @@ Retrieves an invite.
 
     - `"pending"`
 
-  - `accepted_at?: number`
+  - `accepted_at?: number | null`
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects?: Array<Project>`
+  - `expires_at?: number | null`
 
-    The projects that were granted membership upon acceptance of the invite.
-
-    - `id?: string`
-
-      Project's public ID
-
-    - `role?: "member" | "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+    The Unix timestamp (in seconds) of when the invite expires.
 
 ### Example
 
@@ -95,18 +95,18 @@ console.log(invite.id);
 ```json
 {
   "id": "id",
+  "created_at": 0,
   "email": "email",
-  "expires_at": 0,
-  "invited_at": 0,
   "object": "organization.invite",
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
   "projects": [
     {
       "id": "id",
       "role": "member"
     }
-  ]
+  ],
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "expires_at": 0
 }
 ```

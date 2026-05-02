@@ -36,27 +36,27 @@ Returns a list of projects.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: str`
-
-    The name of the project. This appears in reporting.
-
   - `object: Literal["organization.project"]`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: Literal["active", "archived"]`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: Optional[str]`
+
+    The external key associated with the project.
+
+  - `name: Optional[str]`
+
+    The name of the project. This appears in reporting.
+
+  - `status: Optional[str]`
+
+    `active` or `archived`
 
 ### Example
 
@@ -80,16 +80,17 @@ print(page.id)
     {
       "id": "id",
       "created_at": 0,
-      "name": "name",
       "object": "organization.project",
-      "status": "active",
-      "archived_at": 0
+      "archived_at": 0,
+      "external_key_id": "external_key_id",
+      "name": "name",
+      "status": "status"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -107,25 +108,13 @@ Create a new project in the organization. Projects can be created and archived, 
 
   The friendly name of the project, this name appears in reports.
 
-- `geography: Optional[Literal["US", "EU", "JP", 5 more]]`
+- `external_key_id: Optional[str]`
+
+  External key ID to associate with the project.
+
+- `geography: Optional[str]`
 
   Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](https://platform.openai.com/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
-
-  - `"US"`
-
-  - `"EU"`
-
-  - `"JP"`
-
-  - `"IN"`
-
-  - `"KR"`
-
-  - `"CA"`
-
-  - `"AU"`
-
-  - `"SG"`
 
 ### Returns
 
@@ -141,27 +130,27 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: str`
-
-    The name of the project. This appears in reporting.
-
   - `object: Literal["organization.project"]`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: Literal["active", "archived"]`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: Optional[str]`
+
+    The external key associated with the project.
+
+  - `name: Optional[str]`
+
+    The name of the project. This appears in reporting.
+
+  - `status: Optional[str]`
+
+    `active` or `archived`
 
 ### Example
 
@@ -184,10 +173,11 @@ print(project.id)
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -217,27 +207,27 @@ Retrieves a project.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: str`
-
-    The name of the project. This appears in reporting.
-
   - `object: Literal["organization.project"]`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: Literal["active", "archived"]`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: Optional[str]`
+
+    The external key associated with the project.
+
+  - `name: Optional[str]`
+
+    The name of the project. This appears in reporting.
+
+  - `status: Optional[str]`
+
+    `active` or `archived`
 
 ### Example
 
@@ -260,10 +250,11 @@ print(project.id)
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -279,7 +270,15 @@ Modifies a project in the organization.
 
 - `project_id: str`
 
-- `name: str`
+- `external_key_id: Optional[str]`
+
+  External key ID to associate with the project.
+
+- `geography: Optional[str]`
+
+  Geography for the project.
+
+- `name: Optional[str]`
 
   The updated name of the project, this name appears in reports.
 
@@ -297,27 +296,27 @@ Modifies a project in the organization.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: str`
-
-    The name of the project. This appears in reporting.
-
   - `object: Literal["organization.project"]`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: Literal["active", "archived"]`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: Optional[str]`
+
+    The external key associated with the project.
+
+  - `name: Optional[str]`
+
+    The name of the project. This appears in reporting.
+
+  - `status: Optional[str]`
+
+    `active` or `archived`
 
 ### Example
 
@@ -330,7 +329,6 @@ client = OpenAI(
 )
 project = client.admin.organization.projects.update(
     project_id="project_id",
-    name="name",
 )
 print(project.id)
 ```
@@ -341,10 +339,11 @@ print(project.id)
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -374,27 +373,27 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: str`
-
-    The name of the project. This appears in reporting.
-
   - `object: Literal["organization.project"]`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: Literal["active", "archived"]`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: Optional[str]`
+
+    The external key associated with the project.
+
+  - `name: Optional[str]`
+
+    The name of the project. This appears in reporting.
+
+  - `status: Optional[str]`
+
+    `active` or `archived`
 
 ### Example
 
@@ -417,10 +416,11 @@ print(project.id)
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -440,27 +440,27 @@ print(project.id)
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: str`
-
-    The name of the project. This appears in reporting.
-
   - `object: Literal["organization.project"]`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: Literal["active", "archived"]`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: Optional[str]`
+
+    The external key associated with the project.
+
+  - `name: Optional[str]`
+
+    The name of the project. This appears in reporting.
+
+  - `status: Optional[str]`
+
+    `active` or `archived`
 
 # Users
 
@@ -498,27 +498,23 @@ Returns a list of users in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### Example
 
@@ -544,16 +540,16 @@ print(page.id)
     {
       "id": "id",
       "added_at": 0,
-      "email": "email",
-      "name": "name",
       "object": "organization.project.user",
-      "role": "owner"
+      "role": "role",
+      "email": "email",
+      "name": "name"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "object"
+  "object": "object",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -569,15 +565,15 @@ Adds a user to the project. Users must already be members of the organization to
 
 - `project_id: str`
 
-- `role: Literal["owner", "member"]`
+- `role: str`
 
   `owner` or `member`
 
-  - `"owner"`
+- `email: Optional[str]`
 
-  - `"member"`
+  Email of the user to add.
 
-- `user_id: str`
+- `user_id: Optional[str]`
 
   The ID of the user.
 
@@ -595,27 +591,23 @@ Adds a user to the project. Users must already be members of the organization to
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### Example
 
@@ -628,8 +620,7 @@ client = OpenAI(
 )
 project_user = client.admin.organization.projects.users.create(
     project_id="project_id",
-    role="owner",
-    user_id="user_id",
+    role="role",
 )
 print(project_user.id)
 ```
@@ -640,10 +631,10 @@ print(project_user.id)
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -675,27 +666,23 @@ Retrieves a user in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### Example
 
@@ -719,10 +706,10 @@ print(project_user.id)
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -740,13 +727,9 @@ Modifies a user's role in the project.
 
 - `user_id: str`
 
-- `role: Literal["owner", "member"]`
+- `role: Optional[str]`
 
   `owner` or `member`
-
-  - `"owner"`
-
-  - `"member"`
 
 ### Returns
 
@@ -762,27 +745,23 @@ Modifies a user's role in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### Example
 
@@ -796,7 +775,6 @@ client = OpenAI(
 project_user = client.admin.organization.projects.users.update(
     user_id="user_id",
     project_id="project_id",
-    role="owner",
 )
 print(project_user.id)
 ```
@@ -807,10 +785,10 @@ print(project_user.id)
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -885,27 +863,23 @@ print(user.id)
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: str`
-
-    The email address of the user
-
-  - `name: str`
-
-    The name of the user
-
   - `object: Literal["organization.project.user"]`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: Literal["owner", "member"]`
+  - `role: str`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: Optional[str]`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: Optional[str]`
+
+    The name of the user
 
 ### User Delete Response
 
@@ -923,7 +897,7 @@ print(user.id)
 
 ## List project user role assignments
 
-`admin.organization.projects.users.roles.list(struser_id, RoleListParams**kwargs)  -> SyncCursorPage[RoleListResponse]`
+`admin.organization.projects.users.roles.list(struser_id, RoleListParams**kwargs)  -> SyncNextCursorPage[RoleListResponse]`
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 
@@ -1125,27 +1099,93 @@ Assigns a project role to a user within a project.
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: str`
-
-      The email address of the user
-
-    - `name: str`
-
-      The name of the user
-
     - `object: Literal["organization.user"]`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: Literal["owner", "reader"]`
+    - `api_key_last_used_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona: Optional[str]`
+
+      The developer persona metadata for the user.
+
+    - `email: Optional[str]`
+
+      The email address of the user
+
+    - `is_default: Optional[bool]`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser: Optional[bool]`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed: Optional[bool]`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account: Optional[bool]`
+
+      Whether the user is a service account.
+
+    - `name: Optional[str]`
+
+      The name of the user
+
+    - `projects: Optional[Projects]`
+
+      Projects associated with the user, if included.
+
+      - `data: List[ProjectsData]`
+
+        - `id: Optional[str]`
+
+        - `name: Optional[str]`
+
+        - `role: Optional[str]`
+
+      - `object: Literal["list"]`
+
+        - `"list"`
+
+    - `role: Optional[str]`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level: Optional[str]`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user: Optional[User]`
+
+      Nested user details.
+
+      - `id: str`
+
+      - `object: Literal["user"]`
+
+        - `"user"`
+
+      - `banned: Optional[bool]`
+
+      - `banned_at: Optional[int]`
+
+      - `email: Optional[str]`
+
+      - `enabled: Optional[bool]`
+
+      - `name: Optional[str]`
+
+      - `picture: Optional[str]`
 
 ### Example
 
@@ -1183,10 +1223,38 @@ print(role.object)
   "user": {
     "id": "id",
     "added_at": 0,
-    "email": "email",
-    "name": "name",
     "object": "organization.user",
-    "role": "owner"
+    "api_key_last_used_at": 0,
+    "created": 0,
+    "developer_persona": "developer_persona",
+    "email": "email",
+    "is_default": true,
+    "is_scale_tier_authorized_purchaser": true,
+    "is_scim_managed": true,
+    "is_service_account": true,
+    "name": "name",
+    "projects": {
+      "data": [
+        {
+          "id": "id",
+          "name": "name",
+          "role": "role"
+        }
+      ],
+      "object": "list"
+    },
+    "role": "role",
+    "technical_level": "technical_level",
+    "user": {
+      "id": "id",
+      "object": "user",
+      "banned": true,
+      "banned_at": 0,
+      "email": "email",
+      "enabled": true,
+      "name": "name",
+      "picture": "picture"
+    }
   }
 }
 ```
@@ -1357,27 +1425,93 @@ print(role.deleted)
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: str`
-
-      The email address of the user
-
-    - `name: str`
-
-      The name of the user
-
     - `object: Literal["organization.user"]`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: Literal["owner", "reader"]`
+    - `api_key_last_used_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona: Optional[str]`
+
+      The developer persona metadata for the user.
+
+    - `email: Optional[str]`
+
+      The email address of the user
+
+    - `is_default: Optional[bool]`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser: Optional[bool]`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed: Optional[bool]`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account: Optional[bool]`
+
+      Whether the user is a service account.
+
+    - `name: Optional[str]`
+
+      The name of the user
+
+    - `projects: Optional[Projects]`
+
+      Projects associated with the user, if included.
+
+      - `data: List[ProjectsData]`
+
+        - `id: Optional[str]`
+
+        - `name: Optional[str]`
+
+        - `role: Optional[str]`
+
+      - `object: Literal["list"]`
+
+        - `"list"`
+
+    - `role: Optional[str]`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level: Optional[str]`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user: Optional[User]`
+
+      Nested user details.
+
+      - `id: str`
+
+      - `object: Literal["user"]`
+
+        - `"user"`
+
+      - `banned: Optional[bool]`
+
+      - `banned_at: Optional[int]`
+
+      - `email: Optional[str]`
+
+      - `enabled: Optional[bool]`
+
+      - `name: Optional[str]`
+
+      - `picture: Optional[str]`
 
 ### Role Delete Response
 
@@ -1476,10 +1610,10 @@ print(page.id)
       "role": "owner"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -1505,7 +1639,7 @@ Creates a new service account in the project. This also returns an unredacted AP
 
   - `id: str`
 
-  - `api_key: APIKey`
+  - `api_key: Optional[APIKey]`
 
     - `id: str`
 
@@ -1739,7 +1873,7 @@ print(service_account.id)
 
   - `id: str`
 
-  - `api_key: APIKey`
+  - `api_key: Optional[APIKey]`
 
     - `id: str`
 
@@ -1817,7 +1951,7 @@ Returns a list of API keys in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: int`
+  - `last_used_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -1833,9 +1967,9 @@ Returns a list of API keys in the project.
 
   - `owner: Owner`
 
-    - `service_account: Optional[ProjectServiceAccount]`
+    - `service_account: Optional[OwnerServiceAccount]`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: str`
 
@@ -1843,25 +1977,15 @@ Returns a list of API keys in the project.
 
       - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: str`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: Literal["organization.project.service_account"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: Optional[Literal["user", "service_account"]]`
 
@@ -1871,39 +1995,29 @@ Returns a list of API keys in the project.
 
       - `"service_account"`
 
-    - `user: Optional[ProjectUser]`
+    - `user: Optional[OwnerUser]`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: str`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: int`
+      - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: str`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: str`
 
-        The name of the user
+        The name of the user.
 
-      - `object: Literal["organization.project.user"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: str`
 
@@ -1941,34 +2055,32 @@ print(page.id)
           "id": "id",
           "created_at": 0,
           "name": "name",
-          "object": "organization.project.service_account",
-          "role": "owner"
+          "role": "role"
         },
         "type": "user",
         "user": {
           "id": "id",
-          "added_at": 0,
+          "created_at": 0,
           "email": "email",
           "name": "name",
-          "object": "organization.project.user",
-          "role": "owner"
+          "role": "role"
         }
       },
       "redacted_value": "redacted_value"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
 ## Retrieve project API key
 
-`admin.organization.projects.api_keys.retrieve(strkey_id, APIKeyRetrieveParams**kwargs)  -> ProjectAPIKey`
+`admin.organization.projects.api_keys.retrieve(strapi_key_id, APIKeyRetrieveParams**kwargs)  -> ProjectAPIKey`
 
-**get** `/organization/projects/{project_id}/api_keys/{key_id}`
+**get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Retrieves an API key in the project.
 
@@ -1976,7 +2088,7 @@ Retrieves an API key in the project.
 
 - `project_id: str`
 
-- `key_id: str`
+- `api_key_id: str`
 
 ### Returns
 
@@ -1992,7 +2104,7 @@ Retrieves an API key in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: int`
+  - `last_used_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -2008,9 +2120,9 @@ Retrieves an API key in the project.
 
   - `owner: Owner`
 
-    - `service_account: Optional[ProjectServiceAccount]`
+    - `service_account: Optional[OwnerServiceAccount]`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: str`
 
@@ -2018,25 +2130,15 @@ Retrieves an API key in the project.
 
       - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: str`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: Literal["organization.project.service_account"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: Optional[Literal["user", "service_account"]]`
 
@@ -2046,39 +2148,29 @@ Retrieves an API key in the project.
 
       - `"service_account"`
 
-    - `user: Optional[ProjectUser]`
+    - `user: Optional[OwnerUser]`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: str`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: int`
+      - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: str`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: str`
 
-        The name of the user
+        The name of the user.
 
-      - `object: Literal["organization.project.user"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: str`
 
@@ -2094,7 +2186,7 @@ client = OpenAI(
     admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
 )
 project_api_key = client.admin.organization.projects.api_keys.retrieve(
-    key_id="key_id",
+    api_key_id="api_key_id",
     project_id="project_id",
 )
 print(project_api_key.id)
@@ -2114,17 +2206,15 @@ print(project_api_key.id)
       "id": "id",
       "created_at": 0,
       "name": "name",
-      "object": "organization.project.service_account",
-      "role": "owner"
+      "role": "role"
     },
     "type": "user",
     "user": {
       "id": "id",
-      "added_at": 0,
+      "created_at": 0,
       "email": "email",
       "name": "name",
-      "object": "organization.project.user",
-      "role": "owner"
+      "role": "role"
     }
   },
   "redacted_value": "redacted_value"
@@ -2133,9 +2223,9 @@ print(project_api_key.id)
 
 ## Delete project API key
 
-`admin.organization.projects.api_keys.delete(strkey_id, APIKeyDeleteParams**kwargs)  -> APIKeyDeleteResponse`
+`admin.organization.projects.api_keys.delete(strapi_key_id, APIKeyDeleteParams**kwargs)  -> APIKeyDeleteResponse`
 
-**delete** `/organization/projects/{project_id}/api_keys/{key_id}`
+**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Deletes an API key from the project.
 
@@ -2146,7 +2236,7 @@ a service account.
 
 - `project_id: str`
 
-- `key_id: str`
+- `api_key_id: str`
 
 ### Returns
 
@@ -2170,7 +2260,7 @@ client = OpenAI(
     admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
 )
 api_key = client.admin.organization.projects.api_keys.delete(
-    key_id="key_id",
+    api_key_id="api_key_id",
     project_id="project_id",
 )
 print(api_key.id)
@@ -2202,7 +2292,7 @@ print(api_key.id)
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: int`
+  - `last_used_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -2218,9 +2308,9 @@ print(api_key.id)
 
   - `owner: Owner`
 
-    - `service_account: Optional[ProjectServiceAccount]`
+    - `service_account: Optional[OwnerServiceAccount]`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: str`
 
@@ -2228,25 +2318,15 @@ print(api_key.id)
 
       - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: str`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: Literal["organization.project.service_account"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: Optional[Literal["user", "service_account"]]`
 
@@ -2256,39 +2336,29 @@ print(api_key.id)
 
       - `"service_account"`
 
-    - `user: Optional[ProjectUser]`
+    - `user: Optional[OwnerUser]`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: str`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: int`
+      - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: str`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: str`
 
-        The name of the user
+        The name of the user.
 
-      - `object: Literal["organization.project.user"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: str`
 
@@ -2409,10 +2479,10 @@ print(page.id)
       "max_requests_per_1_day": 0
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -2580,7 +2650,7 @@ print(project_rate_limit.id)
 
 ## List project groups
 
-`admin.organization.projects.groups.list(strproject_id, GroupListParams**kwargs)  -> SyncCursorPage[ProjectGroup]`
+`admin.organization.projects.groups.list(strproject_id, GroupListParams**kwargs)  -> SyncNextCursorPage[ProjectGroup]`
 
 **get** `/organization/projects/{project_id}/groups`
 
@@ -2624,6 +2694,10 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
+  - `group_type: str`
+
+    The type of the group.
+
   - `object: Literal["project.group"]`
 
     Always `project.group`.
@@ -2659,6 +2733,7 @@ print(page.group_id)
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
+      "group_type": "group_type",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -2707,6 +2782,10 @@ Grants a group access to a project.
 
     Display name of the group.
 
+  - `group_type: str`
+
+    The type of the group.
+
   - `object: Literal["project.group"]`
 
     Always `project.group`.
@@ -2741,6 +2820,7 @@ print(project_group.group_id)
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
+  "group_type": "group_type",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -2821,6 +2901,10 @@ print(group.deleted)
 
     Display name of the group.
 
+  - `group_type: str`
+
+    The type of the group.
+
   - `object: Literal["project.group"]`
 
     Always `project.group`.
@@ -2851,7 +2935,7 @@ print(group.deleted)
 
 ## List project group role assignments
 
-`admin.organization.projects.groups.roles.list(strgroup_id, RoleListParams**kwargs)  -> SyncCursorPage[RoleListResponse]`
+`admin.organization.projects.groups.roles.list(strgroup_id, RoleListParams**kwargs)  -> SyncNextCursorPage[RoleListResponse]`
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 
@@ -3308,7 +3392,7 @@ print(role.deleted)
 
 ## List project roles
 
-`admin.organization.projects.roles.list(strproject_id, RoleListParams**kwargs)  -> SyncCursorPage[Role]`
+`admin.organization.projects.roles.list(strproject_id, RoleListParams**kwargs)  -> SyncNextCursorPage[Role]`
 
 **get** `/projects/{project_id}/roles`
 
@@ -3682,7 +3766,7 @@ print(role.id)
 
 ## List project certificates
 
-`admin.organization.projects.certificates.list(strproject_id, CertificateListParams**kwargs)  -> SyncConversationCursorPage[Certificate]`
+`admin.organization.projects.certificates.list(strproject_id, CertificateListParams**kwargs)  -> SyncConversationCursorPage[CertificateListResponse]`
 
 **get** `/organization/projects/{project_id}/certificates`
 
@@ -3710,19 +3794,19 @@ List certificates for this project.
 
 ### Returns
 
-- `class Certificate: …`
+- `class CertificateListResponse: …`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the project level.
 
   - `id: str`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: bool`
+
+    Whether the certificate is currently active at the project level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content: Optional[str]`
-
-      The content of the certificate in PEM format.
 
     - `expires_at: Optional[int]`
 
@@ -3736,27 +3820,15 @@ List certificates for this project.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
-  - `object: Literal["certificate", "organization.certificate", "organization.project.certificate"]`
+  - `object: Literal["organization.project.certificate"]`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
-
-  - `active: Optional[bool]`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -3781,27 +3853,26 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
   "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "has_more": true,
+  "last_id": "cert_abc",
+  "object": "list"
 }
 ```
 
 ## Activate certificates for project
 
-`admin.organization.projects.certificates.activate(strproject_id, CertificateActivateParams**kwargs)  -> SyncPage[Certificate]`
+`admin.organization.projects.certificates.activate(strproject_id, CertificateActivateParams**kwargs)  -> SyncPage[CertificateActivateResponse]`
 
 **post** `/organization/projects/{project_id}/certificates/activate`
 
@@ -3817,19 +3888,19 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Returns
 
-- `class Certificate: …`
+- `class CertificateActivateResponse: …`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the project level.
 
   - `id: str`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: bool`
+
+    Whether the certificate is currently active at the project level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content: Optional[str]`
-
-      The content of the certificate in PEM format.
 
     - `expires_at: Optional[int]`
 
@@ -3843,27 +3914,15 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
-  - `object: Literal["certificate", "organization.certificate", "organization.project.certificate"]`
+  - `object: Literal["organization.project.certificate"]`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
-
-  - `active: Optional[bool]`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -3889,27 +3948,23 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.project.certificate.activation"
 }
 ```
 
 ## Deactivate certificates for project
 
-`admin.organization.projects.certificates.deactivate(strproject_id, CertificateDeactivateParams**kwargs)  -> SyncPage[Certificate]`
+`admin.organization.projects.certificates.deactivate(strproject_id, CertificateDeactivateParams**kwargs)  -> SyncPage[CertificateDeactivateResponse]`
 
 **post** `/organization/projects/{project_id}/certificates/deactivate`
 
@@ -3924,19 +3979,19 @@ idempotently deactivate up to 10 certificates at a time.
 
 ### Returns
 
-- `class Certificate: …`
+- `class CertificateDeactivateResponse: …`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the project level.
 
   - `id: str`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: bool`
+
+    Whether the certificate is currently active at the project level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content: Optional[str]`
-
-      The content of the certificate in PEM format.
 
     - `expires_at: Optional[int]`
 
@@ -3950,27 +4005,15 @@ idempotently deactivate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
-  - `object: Literal["certificate", "organization.certificate", "organization.project.certificate"]`
+  - `object: Literal["organization.project.certificate"]`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
-
-  - `active: Optional[bool]`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -3996,20 +4039,132 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.project.certificate.deactivation"
 }
 ```
+
+## Domain Types
+
+### Certificate List Response
+
+- `class CertificateListResponse: …`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: bool`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: Optional[str]`
+
+    The name of the certificate.
+
+  - `object: Literal["organization.project.certificate"]`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`
+
+### Certificate Activate Response
+
+- `class CertificateActivateResponse: …`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: bool`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: Optional[str]`
+
+    The name of the certificate.
+
+  - `object: Literal["organization.project.certificate"]`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`
+
+### Certificate Deactivate Response
+
+- `class CertificateDeactivateResponse: …`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: bool`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: CertificateDetails`
+
+    - `expires_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: Optional[str]`
+
+    The name of the certificate.
+
+  - `object: Literal["organization.project.certificate"]`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`

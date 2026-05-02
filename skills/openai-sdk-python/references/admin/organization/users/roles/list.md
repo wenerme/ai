@@ -1,6 +1,6 @@
 ## List user organization role assignments
 
-`admin.organization.users.roles.list(struser_id, RoleListParams**kwargs)  -> SyncCursorPage[RoleListResponse]`
+`admin.organization.users.roles.list(struser_id, RoleListParams**kwargs)  -> SyncNextCursorPage[RoleListResponse]`
 
 **get** `/organization/users/{user_id}/roles`
 

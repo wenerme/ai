@@ -12,6 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # macOS
 
+These steps configure 1.1.1.1 as the DNS resolver for a specific network service (such as Wi-Fi or Ethernet) on your Mac.
+
 Take note of any DNS addresses you might have set up, and save them in a safe place in case you need to use them later.
 
 1. Go to **System Settings**. You can find it by pressing `CMD + Space` on your keyboard and typing `System Settings`.

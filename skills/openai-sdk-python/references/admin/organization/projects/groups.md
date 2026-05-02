@@ -2,7 +2,7 @@
 
 ## List project groups
 
-`admin.organization.projects.groups.list(strproject_id, GroupListParams**kwargs)  -> SyncCursorPage[ProjectGroup]`
+`admin.organization.projects.groups.list(strproject_id, GroupListParams**kwargs)  -> SyncNextCursorPage[ProjectGroup]`
 
 **get** `/organization/projects/{project_id}/groups`
 
@@ -46,6 +46,10 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
+  - `group_type: str`
+
+    The type of the group.
+
   - `object: Literal["project.group"]`
 
     Always `project.group`.
@@ -81,6 +85,7 @@ print(page.group_id)
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
+      "group_type": "group_type",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -129,6 +134,10 @@ Grants a group access to a project.
 
     Display name of the group.
 
+  - `group_type: str`
+
+    The type of the group.
+
   - `object: Literal["project.group"]`
 
     Always `project.group`.
@@ -163,6 +172,7 @@ print(project_group.group_id)
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
+  "group_type": "group_type",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -243,6 +253,10 @@ print(group.deleted)
 
     Display name of the group.
 
+  - `group_type: str`
+
+    The type of the group.
+
   - `object: Literal["project.group"]`
 
     Always `project.group`.
@@ -273,7 +287,7 @@ print(group.deleted)
 
 ## List project group role assignments
 
-`admin.organization.projects.groups.roles.list(strgroup_id, RoleListParams**kwargs)  -> SyncCursorPage[RoleListResponse]`
+`admin.organization.projects.groups.roles.list(strgroup_id, RoleListParams**kwargs)  -> SyncNextCursorPage[RoleListResponse]`
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 

@@ -147,7 +147,7 @@ Next, secure the external API behind Cloudflare Access so that the Cloudflare On
 
 To create a custom service-to-service integration:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Service providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Service providers**.
 2. Select **Add new**.
 3. Select **Custom service provider**.
 4. Enter any name for the provider. This name will be used throughout the dashboard to reference this connection.
@@ -160,7 +160,7 @@ Next, [configure a device posture check](#4-configure-the-posture-check) to dete
 
 ### 4\. Configure the posture check
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Posture checks** \> **Service provider checks**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks** \> **Service provider checks**.
 2. Select **Add a check**.
 3. Select the Custom service provider provider.
 4. Enter any name for the posture check.

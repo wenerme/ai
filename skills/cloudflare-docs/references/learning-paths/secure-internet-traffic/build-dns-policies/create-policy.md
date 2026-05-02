@@ -18,11 +18,11 @@ You can filter DNS traffic based on query or response parameters (such as domain
 
 To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-6535)
-* [ API ](#tab-panel-6536)
-* [ Terraform ](#tab-panel-6537)
+* [ Dashboard ](#tab-panel-6359)
+* [ API ](#tab-panel-6360)
+* [ Terraform ](#tab-panel-6361)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow or block.

@@ -20,7 +20,7 @@ Grants a group access to a project.
 
 ### Returns
 
-- `ProjectGroup object { created_at, group_id, group_name, 2 more }`
+- `ProjectGroup object { created_at, group_id, group_name, 3 more }`
 
   Details about a group's membership in a project.
 
@@ -35,6 +35,10 @@ Grants a group access to a project.
   - `group_name: string`
 
     Display name of the group.
+
+  - `group_type: string`
+
+    The type of the group.
 
   - `object: "project.group"`
 
@@ -65,6 +69,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
+  "group_type": "group_type",
   "object": "project.group",
   "project_id": "project_id"
 }

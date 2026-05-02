@@ -10,7 +10,15 @@ Modifies a project in the organization.
 
 - `project_id: str`
 
-- `name: str`
+- `external_key_id: Optional[str]`
+
+  External key ID to associate with the project.
+
+- `geography: Optional[str]`
+
+  Geography for the project.
+
+- `name: Optional[str]`
 
   The updated name of the project, this name appears in reports.
 
@@ -28,27 +36,27 @@ Modifies a project in the organization.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: str`
-
-    The name of the project. This appears in reporting.
-
   - `object: Literal["organization.project"]`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: Literal["active", "archived"]`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: Optional[str]`
+
+    The external key associated with the project.
+
+  - `name: Optional[str]`
+
+    The name of the project. This appears in reporting.
+
+  - `status: Optional[str]`
+
+    `active` or `archived`
 
 ### Example
 
@@ -61,7 +69,6 @@ client = OpenAI(
 )
 project = client.admin.organization.projects.update(
     project_id="project_id",
-    name="name",
 )
 print(project.id)
 ```
@@ -72,9 +79,10 @@ print(project.id)
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```

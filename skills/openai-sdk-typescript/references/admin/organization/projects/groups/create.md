@@ -38,6 +38,10 @@ Grants a group access to a project.
 
     Display name of the group.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `object: "project.group"`
 
     Always `project.group`.
@@ -72,6 +76,7 @@ console.log(projectGroup.group_id);
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
+  "group_type": "group_type",
   "object": "project.group",
   "project_id": "project_id"
 }

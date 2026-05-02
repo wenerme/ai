@@ -54,7 +54,7 @@ For issues related to authentication loops, blocked websites, or policy enforcem
 
 ### Digital Experience Monitoring (DEX)
 
-For issues with DEX tests or device monitoring, provide a [remote capture](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/) from the Zero Trust dashboard.
+For issues with DEX tests or device monitoring, provide a [remote capture](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/) from the Zero Trust dashboard.
 
 ---
 

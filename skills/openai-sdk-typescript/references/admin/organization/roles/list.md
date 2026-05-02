@@ -1,6 +1,6 @@
 ## List organization roles
 
-`client.admin.organization.roles.list(RoleListParamsquery?, RequestOptionsoptions?): CursorPage<Role>`
+`client.admin.organization.roles.list(RoleListParamsquery?, RequestOptionsoptions?): NextCursorPage<Role>`
 
 **get** `/organization/roles`
 

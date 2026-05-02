@@ -36,6 +36,10 @@ Lists all groups in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `is_scim_managed: boolean`
 
     Whether the group is managed through SCIM and controlled by your identity provider.
@@ -73,6 +77,7 @@ curl https://api.openai.com/v1/organization/groups \
     {
       "id": "id",
       "created_at": 0,
+      "group_type": "group_type",
       "is_scim_managed": true,
       "name": "name"
     }

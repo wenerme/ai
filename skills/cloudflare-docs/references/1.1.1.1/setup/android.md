@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Android
 
-[1.1.1.1: Faster Internet ↗](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone) is the preferred method of setting up 1.1.1.1 DNS resolver and 1.1.1.1 for Families. It allows you to automatically configure your phone to use 1.1.1.1 on any network you connect to.
+The [1.1.1.1: Faster Internet ↗](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone) app is the recommended way to set up 1.1.1.1 on Android. It automatically configures your phone to use 1.1.1.1 on any network you connect to.
 
 The app also allows you to enable encryption for DNS queries or enable [WARP mode](https://developers.cloudflare.com/warp-client/), which keeps all your HTTP traffic private and secure, including your DNS queries to 1.1.1.1.
 
-You can select between the options available in the app settings. By default, 1.1.1.1: Faster Internet is configured to WARP mode.
+You can select between these options in the app settings. By default, the app uses WARP mode.
 
 ## Set up 1.1.1.1: Faster Internet
 
@@ -38,12 +38,12 @@ Your connection to the Internet and your DNS queries are now protected.
 
 ### Android 11 or later
 
-Android 11 or later versions support both DNS over TLS (DoT) and DNS over HTTPS (DoH).
+Android 11 and later support encrypted DNS through a feature called Private DNS, which uses DNS over TLS (DoT). When you configure Private DNS, your device uses that DNS resolver on all networks — including cellular — without needing per-network configuration.
 
 1. Go to **Settings** \> **Network & internet**.
 2. Select **Advanced** \> **Private DNS**.
 3. Select the **Private DNS provider hostname** option.
-4. Depending on what you want to configure, use one of the following DNS hostnames or [IP addresses](https://developers.cloudflare.com/1.1.1.1/ip-addresses/) and select **Save**.
+4. Enter one of the following hostnames and select **Save**.
 
 Use 1.1.1.1 resolver
 
@@ -74,12 +74,12 @@ Or the corresponding IP address if your device requires it:
 
 ### Android 9 or 10
 
-Android 9 and Android 10 support DNS over TLS to secure your queries through encryption. In Android, this option is called Private DNS. It prevents your queries from being tracked, modified or surveilled by third-parties. Unlike previous versions of Android, this method also ensures 1.1.1.1 does not need to be configured for each new Wi-Fi network your smartphone joins.
+Android 9 and 10 support DNS over TLS through a feature called Private DNS. When you configure Private DNS, your device encrypts DNS queries and uses the configured resolver on all networks, including cellular.
 
 1. Go to **Settings** \> **Network & internet**.
 2. Select **Advanced** \> **Private DNS**.
 3. Select the **Private DNS provider hostname** option.
-4. Enter `one.one.one.one` and select **Save**. Or consider the following options if you want to use 1.1.1.1 for Families.
+4. Enter `one.one.one.one` and select **Save**. Or use one of the following hostnames if you want to use 1.1.1.1 for Families.
 
 Block malware with 1.1.1.1 for Families
 
@@ -140,7 +140,7 @@ Block malware and adult content with 1.1.1.1 for Families
 2606:4700:4700::1113  
 2606:4700:4700::1003  
 ```
-8. Select **Save**. You may need to disconnect from the Wi-Fi and reconnect for the changes to take place.
+8. Select **Save**. You may need to disconnect from the Wi-Fi and reconnect for the changes to take effect.
 
 Note
 

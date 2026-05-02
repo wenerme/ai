@@ -24,7 +24,7 @@ List organization API keys
 
 ### Returns
 
-- `data: optional array of AdminAPIKey`
+- `data: array of AdminAPIKey`
 
   - `id: string`
 
@@ -34,17 +34,11 @@ List organization API keys
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: object { id, created_at, name, 3 more }`
 
@@ -76,17 +70,23 @@ List organization API keys
 
     The redacted value of the API key
 
-  - `value: optional string`
+  - `last_used_at: optional number`
 
-    The value of the API key. Only shown on create.
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: optional string`
+
+    The name of the API key
+
+- `has_more: boolean`
+
+- `object: "list"`
+
+  - `"list"`
 
 - `first_id: optional string`
 
-- `has_more: optional boolean`
-
 - `last_id: optional string`
-
-- `object: optional string`
 
 ### Example
 
@@ -103,8 +103,6 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
     {
       "id": "key_abc",
       "created_at": 1711471533,
-      "last_used_at": 1711471534,
-      "name": "Administration Key",
       "object": "organization.admin_api_key",
       "owner": {
         "id": "sa_456",
@@ -115,13 +113,14 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
         "type": "user"
       },
       "redacted_value": "sk-admin...def",
-      "value": "sk-admin-1234abcd"
+      "last_used_at": 1711471534,
+      "name": "Administration Key"
     }
   ],
-  "first_id": "key_abc",
   "has_more": false,
-  "last_id": "key_xyz",
-  "object": "list"
+  "object": "list",
+  "first_id": "key_abc",
+  "last_id": "key_xyz"
 }
 ```
 

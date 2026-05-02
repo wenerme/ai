@@ -43,9 +43,9 @@ Chapters
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-4989)
-* [ Windows ](#tab-panel-4990)
-* [ Linux ](#tab-panel-4991)
+* [ macOS ](#tab-panel-4793)
+* [ Windows ](#tab-panel-4794)
+* [ Linux ](#tab-panel-4795)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -91,7 +91,7 @@ Feature availability
 | Android  | ❌            |                        |
 | ChromeOS | ❌            |                        |
 
-You can collect client diagnostic logs remotely from the Zero Trust dashboard by using Digital Experience Monitoring (DEX) [remote captures](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/).
+You can collect client diagnostic logs remotely from the Zero Trust dashboard by using Digital Experience Monitoring (DEX) [remote captures](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/).
 
 Devices must be actively connected to the Internet for remote captures to run.
 
@@ -257,8 +257,8 @@ The Cloudflare One Client does not provide an official method to configure loggi
 
 To view client logs on mobile devices:
 
-* [ iOS ](#tab-panel-4987)
-* [ Android/ChromeOS ](#tab-panel-4988)
+* [ iOS ](#tab-panel-4791)
+* [ Android/ChromeOS ](#tab-panel-4792)
 
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.

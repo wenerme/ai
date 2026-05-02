@@ -34,18 +34,18 @@ A single physical device can have [multiple device registrations](https://develo
 
 ## Review device registration status
 
-* [ Dashboard ](#tab-panel-5001)
-* [ API ](#tab-panel-5002)
+* [ Dashboard ](#tab-panel-4805)
+* [ API ](#tab-panel-4806)
 
 To review how many device registrations are associated with a device:
 
-1. Log into [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Teams & Resources** \> **Devices**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Teams & Resources** \> **Devices**.
 2. Select a device and select **View details**.
 3. Scroll down to **Users** and review users who enrolled on this device.
 
 To review a device registration's status:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Teams & Resources** \> **Devices**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Teams & Resources** \> **Devices**.
 2. Select the device and select **View details**.
 3. Scroll down to **Users** and find the user associated with the device.
 4. Review the status (such as `Active` or `Revoked`) of the device registration under **Status**.
@@ -143,12 +143,12 @@ The following table summarizes the actions available for managing device registr
 
 Devices can have multiple device registrations. Deleting one registration does not affect other registrations on the same device.
 
-* [ Dashboard ](#tab-panel-5003)
-* [ API ](#tab-panel-5004)
+* [ Dashboard ](#tab-panel-4807)
+* [ API ](#tab-panel-4808)
 
 To delete a device registration:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Teams & Resources** \> **Devices**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Teams & Resources** \> **Devices**.
 2. Select the device > **View details**.
 3. Go to **Users** and mark the checkbox next to the device registration you want to delete.
 4. Select **Action** \> _Delete access_.
@@ -200,7 +200,7 @@ Automatic unrevocation
 
 If a user re-authenticates while the device registration is revoked, a new device registration will be created for the user. For long-term, permanent denial of access, you should [remove the user from your device enrollment policies or your IdP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/#remove-user-access) and [remove service token access](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/#remove-service-token-access).
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Teams & Resources** \> **Devices**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Teams & Resources** \> **Devices**.
 2. Select the device and select **View details**.
 3. To revoke access, select **Revoke access**. This revokes access for all associated registrations on the device.
 4. To unrevoke access, scroll down to the **Users** section and select one or more users using the checkbox. Select **Actions** \> **Unrevoke access**.
@@ -261,7 +261,7 @@ Removing a user from your Zero Trust Organization will free up the seat the user
 
 To remove a user from your Zero Trust Organization:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Users**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
 2. Select the checkbox next to a user with an **Active** status in the **Seat usage** column.
 3. Select **Action** \> **Remove users**.
 4. Select **Remove**.

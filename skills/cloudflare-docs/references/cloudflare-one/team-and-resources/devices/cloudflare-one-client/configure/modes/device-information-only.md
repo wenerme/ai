@@ -59,7 +59,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/devices/policy/certifi
 
 ## 2\. Configure the Cloudflare One Client
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Choose a [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) and select **Edit**.
 3. For **Service mode**, select **Posture only mode**.
 4. Select **Save profile**.
@@ -69,12 +69,12 @@ When enrolled in Posture only mode, the Cloudflare One Client (formerly WARP) wi
 ## 3\. (Optional) Verify the client certificate
 
 1. To view the client certificates installed on the device:  
-   * [ Windows ](#tab-panel-4928)  
-   * [ macOS ](#tab-panel-4929)  
-   * [ Linux ](#tab-panel-4930)  
-   * [ iOS ](#tab-panel-4931)  
-   * [ Android ](#tab-panel-4932)  
-   * [ ChromeOS ](#tab-panel-4933)  
+   * [ Windows ](#tab-panel-4732)  
+   * [ macOS ](#tab-panel-4733)  
+   * [ Linux ](#tab-panel-4734)  
+   * [ iOS ](#tab-panel-4735)  
+   * [ Android ](#tab-panel-4736)  
+   * [ ChromeOS ](#tab-panel-4737)  
    1. Open the **Start** menu and select **Run**.  
    2. Enter `certlm.msc`.  
    3. Go to **Personal** \> **Certificates**.  

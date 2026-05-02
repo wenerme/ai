@@ -10,7 +10,7 @@ Modify a certificate. Note that only the name can be modified.
 
 ### Body Parameters
 
-- `name: string`
+- `name: optional string`
 
   The updated name for the certificate
 
@@ -70,9 +70,7 @@ Modify a certificate. Note that only the name can be modified.
 curl https://api.openai.com/v1/organization/certificates/$CERTIFICATE_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "name": "name"
-        }'
+    -d '{}'
 ```
 
 #### Response

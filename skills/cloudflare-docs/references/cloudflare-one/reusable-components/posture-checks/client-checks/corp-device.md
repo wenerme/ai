@@ -26,7 +26,7 @@ Cloudflare One allows you to build Zero Trust rules based on device serial numbe
 
 To create rules based on device serial numbers, you first need to create a [Gateway List](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of numbers.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Lists**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list** or **Upload CSV**. For larger teams, we recommend uploading a CSV or using Cloudflare's [API endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/).
 3. Give your list a descriptive name, as this name will appear when configuring your policies.
 4. Set **List Type** to _Serial numbers_.

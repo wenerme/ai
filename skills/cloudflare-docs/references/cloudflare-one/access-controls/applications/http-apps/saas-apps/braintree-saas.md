@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Braintree
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Braintree ↗](https://developer.paypal.com/braintree/articles/guides/single-sign-on-sso) as a SAML application in Cloudflare One.
 

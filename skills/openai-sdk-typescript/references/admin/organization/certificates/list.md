@@ -1,6 +1,6 @@
 ## List organization certificates
 
-`client.admin.organization.certificates.list(CertificateListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<Certificate>`
+`client.admin.organization.certificates.list(CertificateListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<CertificateListResponse>`
 
 **get** `/organization/certificates`
 
@@ -28,19 +28,19 @@ List uploaded certificates for this organization.
 
 ### Returns
 
-- `Certificate`
+- `CertificateListResponse`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the organization level.
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content?: string`
-
-      The content of the certificate in PEM format.
 
     - `expires_at?: number`
 
@@ -54,27 +54,15 @@ List uploaded certificates for this organization.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
-  - `object: "certificate" | "organization.certificate" | "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
-
-    - `"organization.project.certificate"`
-
-  - `active?: boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -86,8 +74,8 @@ const client = new OpenAI({
 });
 
 // Automatically fetches more pages as needed.
-for await (const certificate of client.admin.organization.certificates.list()) {
-  console.log(certificate.id);
+for await (const certificateListResponse of client.admin.organization.certificates.list()) {
+  console.log(certificateListResponse.id);
 }
 ```
 
@@ -98,20 +86,19 @@ for await (const certificate of client.admin.organization.certificates.list()) {
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
   "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "has_more": true,
+  "last_id": "cert_abc",
+  "object": "list"
 }
 ```

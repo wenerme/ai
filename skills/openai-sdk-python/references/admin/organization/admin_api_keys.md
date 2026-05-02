@@ -40,17 +40,11 @@ List organization API keys
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: Optional[int]`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: str`
-
-    The name of the API key
-
-  - `object: str`
+  - `object: Literal["organization.admin_api_key"]`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: Owner`
 
@@ -82,9 +76,13 @@ List organization API keys
 
     The redacted value of the API key
 
-  - `value: Optional[str]`
+  - `last_used_at: Optional[int]`
 
-    The value of the API key. Only shown on create.
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: Optional[str]`
+
+    The name of the API key
 
 ### Example
 
@@ -108,8 +106,6 @@ print(page.id)
     {
       "id": "key_abc",
       "created_at": 1711471533,
-      "last_used_at": 1711471534,
-      "name": "Administration Key",
       "object": "organization.admin_api_key",
       "owner": {
         "id": "sa_456",
@@ -120,19 +116,20 @@ print(page.id)
         "type": "user"
       },
       "redacted_value": "sk-admin...def",
-      "value": "sk-admin-1234abcd"
+      "last_used_at": 1711471534,
+      "name": "Administration Key"
     }
   ],
-  "first_id": "key_abc",
   "has_more": false,
-  "last_id": "key_xyz",
-  "object": "list"
+  "object": "list",
+  "first_id": "key_abc",
+  "last_id": "key_xyz"
 }
 ```
 
 ## Create admin API key
 
-`admin.organization.admin_api_keys.create(AdminAPIKeyCreateParams**kwargs)  -> AdminAPIKey`
+`admin.organization.admin_api_keys.create(AdminAPIKeyCreateParams**kwargs)  -> AdminAPIKeyCreateResponse`
 
 **post** `/organization/admin_api_keys`
 
@@ -144,61 +141,11 @@ Create an organization admin API key
 
 ### Returns
 
-- `class AdminAPIKey: …`
+- `class AdminAPIKeyCreateResponse: …`
 
   Represents an individual Admin API key in an org.
 
-  - `id: str`
-
-    The identifier, which can be referenced in API endpoints
-
-  - `created_at: int`
-
-    The Unix timestamp (in seconds) of when the API key was created
-
-  - `last_used_at: Optional[int]`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: str`
-
-    The name of the API key
-
-  - `object: str`
-
-    The object type, which is always `organization.admin_api_key`
-
-  - `owner: Owner`
-
-    - `id: Optional[str]`
-
-      The identifier, which can be referenced in API endpoints
-
-    - `created_at: Optional[int]`
-
-      The Unix timestamp (in seconds) of when the user was created
-
-    - `name: Optional[str]`
-
-      The name of the user
-
-    - `object: Optional[str]`
-
-      The object type, which is always organization.user
-
-    - `role: Optional[str]`
-
-      Always `owner`
-
-    - `type: Optional[str]`
-
-      Always `user`
-
-  - `redacted_value: str`
-
-    The redacted value of the API key
-
-  - `value: Optional[str]`
+  - `value: str`
 
     The value of the API key. Only shown on create.
 
@@ -214,7 +161,7 @@ client = OpenAI(
 admin_api_key = client.admin.organization.admin_api_keys.create(
     name="New Admin Key",
 )
-print(admin_api_key.id)
+print(admin_api_key)
 ```
 
 #### Response
@@ -223,8 +170,6 @@ print(admin_api_key.id)
 {
   "id": "key_abc",
   "created_at": 1711471533,
-  "last_used_at": 1711471534,
-  "name": "Administration Key",
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -235,6 +180,8 @@ print(admin_api_key.id)
     "type": "user"
   },
   "redacted_value": "sk-admin...def",
+  "last_used_at": 1711471534,
+  "name": "Administration Key",
   "value": "sk-admin-1234abcd"
 }
 ```
@@ -267,17 +214,11 @@ Retrieve a single organization API key
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: Optional[int]`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: str`
-
-    The name of the API key
-
-  - `object: str`
+  - `object: Literal["organization.admin_api_key"]`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: Owner`
 
@@ -309,9 +250,13 @@ Retrieve a single organization API key
 
     The redacted value of the API key
 
-  - `value: Optional[str]`
+  - `last_used_at: Optional[int]`
 
-    The value of the API key. Only shown on create.
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: Optional[str]`
+
+    The name of the API key
 
 ### Example
 
@@ -334,8 +279,6 @@ print(admin_api_key.id)
 {
   "id": "key_abc",
   "created_at": 1711471533,
-  "last_used_at": 1711471534,
-  "name": "Administration Key",
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -346,7 +289,8 @@ print(admin_api_key.id)
     "type": "user"
   },
   "redacted_value": "sk-admin...def",
-  "value": "sk-admin-1234abcd"
+  "last_used_at": 1711471534,
+  "name": "Administration Key"
 }
 ```
 
@@ -368,11 +312,13 @@ Delete an organization admin API key
 
 - `class AdminAPIKeyDeleteResponse: …`
 
-  - `id: Optional[str]`
+  - `id: str`
 
-  - `deleted: Optional[bool]`
+  - `deleted: bool`
 
-  - `object: Optional[str]`
+  - `object: Literal["organization.admin_api_key.deleted"]`
+
+    - `"organization.admin_api_key.deleted"`
 
 ### Example
 
@@ -415,17 +361,11 @@ print(admin_api_key.id)
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: Optional[int]`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: str`
-
-    The name of the API key
-
-  - `object: str`
+  - `object: Literal["organization.admin_api_key"]`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: Owner`
 
@@ -457,7 +397,21 @@ print(admin_api_key.id)
 
     The redacted value of the API key
 
-  - `value: Optional[str]`
+  - `last_used_at: Optional[int]`
+
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: Optional[str]`
+
+    The name of the API key
+
+### Admin API Key Create Response
+
+- `class AdminAPIKeyCreateResponse: …`
+
+  Represents an individual Admin API key in an org.
+
+  - `value: str`
 
     The value of the API key. Only shown on create.
 
@@ -465,8 +419,10 @@ print(admin_api_key.id)
 
 - `class AdminAPIKeyDeleteResponse: …`
 
-  - `id: Optional[str]`
+  - `id: str`
 
-  - `deleted: Optional[bool]`
+  - `deleted: bool`
 
-  - `object: Optional[str]`
+  - `object: Literal["organization.admin_api_key.deleted"]`
+
+    - `"organization.admin_api_key.deleted"`

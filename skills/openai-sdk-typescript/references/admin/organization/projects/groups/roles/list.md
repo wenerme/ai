@@ -1,6 +1,6 @@
 ## List project group role assignments
 
-`client.admin.organization.projects.groups.roles.list(stringgroupID, RoleListParamsparams, RequestOptionsoptions?): CursorPage<RoleListResponse>`
+`client.admin.organization.projects.groups.roles.list(stringgroupID, RoleListParamsparams, RequestOptionsoptions?): NextCursorPage<RoleListResponse>`
 
 **get** `/projects/{project_id}/groups/{group_id}/roles`
 

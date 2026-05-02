@@ -12,7 +12,7 @@ Creates a new group in the organization.
 
 ### Returns
 
-- `Group object { id, created_at, is_scim_managed, name }`
+- `Group object { id, created_at, group_type, 2 more }`
 
   Details about an organization group.
 
@@ -23,6 +23,10 @@ Creates a new group in the organization.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was created.
+
+  - `group_type: string`
+
+    The type of the group.
 
   - `is_scim_managed: boolean`
 
@@ -49,6 +53,7 @@ curl https://api.openai.com/v1/organization/groups \
 {
   "id": "id",
   "created_at": 0,
+  "group_type": "group_type",
   "is_scim_managed": true,
   "name": "name"
 }

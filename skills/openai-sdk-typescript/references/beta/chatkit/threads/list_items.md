@@ -437,7 +437,7 @@ for await (const thread of client.beta.chatkit.threads.listItems('cthr_123')) {
           "id": "id",
           "mime_type": "mime_type",
           "name": "name",
-          "preview_url": "preview_url",
+          "preview_url": "https://example.com",
           "type": "image"
         }
       ],

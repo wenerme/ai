@@ -2,7 +2,7 @@
 
 ## List group organization role assignments
 
-`admin.organization.groups.roles.list(strgroup_id, RoleListParams**kwargs)  -> SyncCursorPage[RoleListResponse]`
+`admin.organization.groups.roles.list(strgroup_id, RoleListParams**kwargs)  -> SyncNextCursorPage[RoleListResponse]`
 
 **get** `/organization/groups/{group_id}/roles`
 

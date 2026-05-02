@@ -1,6 +1,6 @@
 ## List group users
 
-`admin.organization.groups.users.list(strgroup_id, UserListParams**kwargs)  -> SyncCursorPage[OrganizationUser]`
+`admin.organization.groups.users.list(strgroup_id, UserListParams**kwargs)  -> SyncNextCursorPage[OrganizationGroupUser]`
 
 **get** `/organization/groups/{group_id}/users`
 
@@ -28,39 +28,21 @@ Lists the users assigned to a group.
 
 ### Returns
 
-- `class OrganizationUser: …`
+- `class OrganizationGroupUser: …`
 
-  Represents an individual `user` within an organization.
+  Represents an individual user returned when inspecting group membership.
 
   - `id: str`
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: int`
+  - `email: Optional[str]`
 
-    The Unix timestamp (in seconds) of when the user was added.
-
-  - `email: str`
-
-    The email address of the user
+    The email address of the user.
 
   - `name: str`
 
-    The name of the user
-
-  - `object: Literal["organization.user"]`
-
-    The object type, which is always `organization.user`
-
-    - `"organization.user"`
-
-  - `role: Literal["owner", "reader"]`
-
-    `owner` or `reader`
-
-    - `"owner"`
-
-    - `"reader"`
+    The name of the user.
 
 ### Example
 
@@ -85,11 +67,8 @@ print(page.id)
   "data": [
     {
       "id": "id",
-      "added_at": 0,
       "email": "email",
-      "name": "name",
-      "object": "organization.user",
-      "role": "owner"
+      "name": "name"
     }
   ],
   "has_more": true,

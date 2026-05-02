@@ -168,79 +168,11 @@ List user actions and configuration changes within this organization.
 
 ### Returns
 
-- `data: array of object { id, actor, effective_at, 49 more }`
+- `data: array of object { id, effective_at, type, 49 more }`
 
   - `id: string`
 
     The ID of this log.
-
-  - `actor: object { api_key, session, type }`
-
-    The actor who performed the audit logged action.
-
-    - `api_key: optional object { id, service_account, type, user }`
-
-      The API Key used to perform the audit logged action.
-
-      - `id: optional string`
-
-        The tracking id of the API key.
-
-      - `service_account: optional object { id }`
-
-        The service account that performed the audit logged action.
-
-        - `id: optional string`
-
-          The service account id.
-
-      - `type: optional "user" or "service_account"`
-
-        The type of API key. Can be either `user` or `service_account`.
-
-        - `"user"`
-
-        - `"service_account"`
-
-      - `user: optional object { id, email }`
-
-        The user who performed the audit logged action.
-
-        - `id: optional string`
-
-          The user id.
-
-        - `email: optional string`
-
-          The user email.
-
-    - `session: optional object { ip_address, user }`
-
-      The session in which the audit logged action was performed.
-
-      - `ip_address: optional string`
-
-        The IP address from which the action was performed.
-
-      - `user: optional object { id, email }`
-
-        The user who performed the audit logged action.
-
-        - `id: optional string`
-
-          The user id.
-
-        - `email: optional string`
-
-          The user email.
-
-    - `type: optional "session" or "api_key"`
-
-      The type of actor. Is either `session` or `api_key`.
-
-      - `"session"`
-
-      - `"api_key"`
 
   - `effective_at: number`
 
@@ -351,6 +283,74 @@ List user actions and configuration changes within this organization.
     - `"user.updated"`
 
     - `"user.deleted"`
+
+  - `actor: optional object { api_key, session, type }`
+
+    The actor who performed the audit logged action.
+
+    - `api_key: optional object { id, service_account, type, user }`
+
+      The API Key used to perform the audit logged action.
+
+      - `id: optional string`
+
+        The tracking id of the API key.
+
+      - `service_account: optional object { id }`
+
+        The service account that performed the audit logged action.
+
+        - `id: optional string`
+
+          The service account id.
+
+      - `type: optional "user" or "service_account"`
+
+        The type of API key. Can be either `user` or `service_account`.
+
+        - `"user"`
+
+        - `"service_account"`
+
+      - `user: optional object { id, email }`
+
+        The user who performed the audit logged action.
+
+        - `id: optional string`
+
+          The user id.
+
+        - `email: optional string`
+
+          The user email.
+
+    - `session: optional object { ip_address, user }`
+
+      The session in which the audit logged action was performed.
+
+      - `ip_address: optional string`
+
+        The IP address from which the action was performed.
+
+      - `user: optional object { id, email }`
+
+        The user who performed the audit logged action.
+
+        - `id: optional string`
+
+          The user id.
+
+        - `email: optional string`
+
+          The user email.
+
+    - `type: optional "session" or "api_key"`
+
+      The type of actor. Is either `session` or `api_key`.
+
+      - `"session"`
+
+      - `"api_key"`
 
   - `"api_key.created": optional object { id, data }`
 
@@ -1056,15 +1056,15 @@ List user actions and configuration changes within this organization.
 
         The role of the user. Is either `owner` or `member`.
 
-- `first_id: string`
-
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -1080,6 +1080,8 @@ curl https://api.openai.com/v1/organization/audit_logs \
   "data": [
     {
       "id": "id",
+      "effective_at": 0,
+      "type": "api_key.created",
       "actor": {
         "api_key": {
           "id": "id",
@@ -1101,8 +1103,6 @@ curl https://api.openai.com/v1/organization/audit_logs \
         },
         "type": "session"
       },
-      "effective_at": 0,
-      "type": "api_key.created",
       "api_key.created": {
         "id": "id",
         "data": {
@@ -1371,10 +1371,10 @@ curl https://api.openai.com/v1/organization/audit_logs \
       }
     }
   ],
-  "first_id": "audit_log-defb456h8dks",
   "has_more": true,
-  "last_id": "audit_log-hnbkd8s93s",
-  "object": "list"
+  "object": "list",
+  "first_id": "audit_log-defb456h8dks",
+  "last_id": "audit_log-hnbkd8s93s"
 }
 ```
 
@@ -1454,81 +1454,13 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
 ### Audit Log List Response
 
-- `AuditLogListResponse object { id, actor, effective_at, 49 more }`
+- `AuditLogListResponse object { id, effective_at, type, 49 more }`
 
   A log of a user action or configuration change within this organization.
 
   - `id: string`
 
     The ID of this log.
-
-  - `actor: object { api_key, session, type }`
-
-    The actor who performed the audit logged action.
-
-    - `api_key: optional object { id, service_account, type, user }`
-
-      The API Key used to perform the audit logged action.
-
-      - `id: optional string`
-
-        The tracking id of the API key.
-
-      - `service_account: optional object { id }`
-
-        The service account that performed the audit logged action.
-
-        - `id: optional string`
-
-          The service account id.
-
-      - `type: optional "user" or "service_account"`
-
-        The type of API key. Can be either `user` or `service_account`.
-
-        - `"user"`
-
-        - `"service_account"`
-
-      - `user: optional object { id, email }`
-
-        The user who performed the audit logged action.
-
-        - `id: optional string`
-
-          The user id.
-
-        - `email: optional string`
-
-          The user email.
-
-    - `session: optional object { ip_address, user }`
-
-      The session in which the audit logged action was performed.
-
-      - `ip_address: optional string`
-
-        The IP address from which the action was performed.
-
-      - `user: optional object { id, email }`
-
-        The user who performed the audit logged action.
-
-        - `id: optional string`
-
-          The user id.
-
-        - `email: optional string`
-
-          The user email.
-
-    - `type: optional "session" or "api_key"`
-
-      The type of actor. Is either `session` or `api_key`.
-
-      - `"session"`
-
-      - `"api_key"`
 
   - `effective_at: number`
 
@@ -1639,6 +1571,74 @@ curl https://api.openai.com/v1/organization/audit_logs \
     - `"user.updated"`
 
     - `"user.deleted"`
+
+  - `actor: optional object { api_key, session, type }`
+
+    The actor who performed the audit logged action.
+
+    - `api_key: optional object { id, service_account, type, user }`
+
+      The API Key used to perform the audit logged action.
+
+      - `id: optional string`
+
+        The tracking id of the API key.
+
+      - `service_account: optional object { id }`
+
+        The service account that performed the audit logged action.
+
+        - `id: optional string`
+
+          The service account id.
+
+      - `type: optional "user" or "service_account"`
+
+        The type of API key. Can be either `user` or `service_account`.
+
+        - `"user"`
+
+        - `"service_account"`
+
+      - `user: optional object { id, email }`
+
+        The user who performed the audit logged action.
+
+        - `id: optional string`
+
+          The user id.
+
+        - `email: optional string`
+
+          The user email.
+
+    - `session: optional object { ip_address, user }`
+
+      The session in which the audit logged action was performed.
+
+      - `ip_address: optional string`
+
+        The IP address from which the action was performed.
+
+      - `user: optional object { id, email }`
+
+        The user who performed the audit logged action.
+
+        - `id: optional string`
+
+          The user id.
+
+        - `email: optional string`
+
+          The user email.
+
+    - `type: optional "session" or "api_key"`
+
+      The type of actor. Is either `session` or `api_key`.
+
+      - `"session"`
+
+      - `"api_key"`
 
   - `"api_key.created": optional object { id, data }`
 
@@ -2372,7 +2372,7 @@ List organization API keys
 
 ### Returns
 
-- `data: optional array of AdminAPIKey`
+- `data: array of AdminAPIKey`
 
   - `id: string`
 
@@ -2382,17 +2382,11 @@ List organization API keys
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: object { id, created_at, name, 3 more }`
 
@@ -2424,17 +2418,23 @@ List organization API keys
 
     The redacted value of the API key
 
-  - `value: optional string`
+  - `last_used_at: optional number`
 
-    The value of the API key. Only shown on create.
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: optional string`
+
+    The name of the API key
+
+- `has_more: boolean`
+
+- `object: "list"`
+
+  - `"list"`
 
 - `first_id: optional string`
 
-- `has_more: optional boolean`
-
 - `last_id: optional string`
-
-- `object: optional string`
 
 ### Example
 
@@ -2451,8 +2451,6 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
     {
       "id": "key_abc",
       "created_at": 1711471533,
-      "last_used_at": 1711471534,
-      "name": "Administration Key",
       "object": "organization.admin_api_key",
       "owner": {
         "id": "sa_456",
@@ -2463,13 +2461,14 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
         "type": "user"
       },
       "redacted_value": "sk-admin...def",
-      "value": "sk-admin-1234abcd"
+      "last_used_at": 1711471534,
+      "name": "Administration Key"
     }
   ],
-  "first_id": "key_abc",
   "has_more": false,
-  "last_id": "key_xyz",
-  "object": "list"
+  "object": "list",
+  "first_id": "key_abc",
+  "last_id": "key_xyz"
 }
 ```
 
@@ -2522,63 +2521,9 @@ Create an organization admin API key
 
 ### Returns
 
-- `AdminAPIKey object { id, created_at, last_used_at, 5 more }`
+- `value: string`
 
-  Represents an individual Admin API key in an org.
-
-  - `id: string`
-
-    The identifier, which can be referenced in API endpoints
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) of when the API key was created
-
-  - `last_used_at: number`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
-
-    The object type, which is always `organization.admin_api_key`
-
-  - `owner: object { id, created_at, name, 3 more }`
-
-    - `id: optional string`
-
-      The identifier, which can be referenced in API endpoints
-
-    - `created_at: optional number`
-
-      The Unix timestamp (in seconds) of when the user was created
-
-    - `name: optional string`
-
-      The name of the user
-
-    - `object: optional string`
-
-      The object type, which is always organization.user
-
-    - `role: optional string`
-
-      Always `owner`
-
-    - `type: optional string`
-
-      Always `user`
-
-  - `redacted_value: string`
-
-    The redacted value of the API key
-
-  - `value: optional string`
-
-    The value of the API key. Only shown on create.
+  The value of the API key. Only shown on create.
 
 ### Example
 
@@ -2597,8 +2542,6 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
 {
   "id": "key_abc",
   "created_at": 1711471533,
-  "last_used_at": 1711471534,
-  "name": "Administration Key",
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -2609,6 +2552,8 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
     "type": "user"
   },
   "redacted_value": "sk-admin...def",
+  "last_used_at": 1711471534,
+  "name": "Administration Key",
   "value": "sk-admin-1234abcd"
 }
 ```
@@ -2660,7 +2605,7 @@ Retrieve a single organization API key
 
 ### Returns
 
-- `AdminAPIKey object { id, created_at, last_used_at, 5 more }`
+- `AdminAPIKey object { id, created_at, object, 4 more }`
 
   Represents an individual Admin API key in an org.
 
@@ -2672,17 +2617,11 @@ Retrieve a single organization API key
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: object { id, created_at, name, 3 more }`
 
@@ -2714,9 +2653,13 @@ Retrieve a single organization API key
 
     The redacted value of the API key
 
-  - `value: optional string`
+  - `last_used_at: optional number`
 
-    The value of the API key. Only shown on create.
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: optional string`
+
+    The name of the API key
 
 ### Example
 
@@ -2731,8 +2674,6 @@ curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
 {
   "id": "key_abc",
   "created_at": 1711471533,
-  "last_used_at": 1711471534,
-  "name": "Administration Key",
   "object": "organization.admin_api_key",
   "owner": {
     "id": "sa_456",
@@ -2743,7 +2684,8 @@ curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
     "type": "user"
   },
   "redacted_value": "sk-admin...def",
-  "value": "sk-admin-1234abcd"
+  "last_used_at": 1711471534,
+  "name": "Administration Key"
 }
 ```
 
@@ -2790,11 +2732,13 @@ Delete an organization admin API key
 
 ### Returns
 
-- `id: optional string`
+- `id: string`
 
-- `deleted: optional boolean`
+- `deleted: boolean`
 
-- `object: optional string`
+- `object: "organization.admin_api_key.deleted"`
+
+  - `"organization.admin_api_key.deleted"`
 
 ### Example
 
@@ -2836,7 +2780,7 @@ curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
 ### Admin API Key
 
-- `AdminAPIKey object { id, created_at, last_used_at, 5 more }`
+- `AdminAPIKey object { id, created_at, object, 4 more }`
 
   Represents an individual Admin API key in an org.
 
@@ -2848,17 +2792,11 @@ curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
-
-    The Unix timestamp (in seconds) of when the API key was last used
-
-  - `name: string`
-
-    The name of the API key
-
-  - `object: string`
+  - `object: "organization.admin_api_key"`
 
     The object type, which is always `organization.admin_api_key`
+
+    - `"organization.admin_api_key"`
 
   - `owner: object { id, created_at, name, 3 more }`
 
@@ -2890,7 +2828,21 @@ curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
     The redacted value of the API key
 
-  - `value: optional string`
+  - `last_used_at: optional number`
+
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: optional string`
+
+    The name of the API key
+
+### Admin API Key Create Response
+
+- `AdminAPIKeyCreateResponse = AdminAPIKey`
+
+  Represents an individual Admin API key in an org.
+
+  - `value: string`
 
     The value of the API key. Only shown on create.
 
@@ -2898,11 +2850,13 @@ curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
 - `AdminAPIKeyDeleteResponse object { id, deleted, object }`
 
-  - `id: optional string`
+  - `id: string`
 
-  - `deleted: optional boolean`
+  - `deleted: boolean`
 
-  - `object: optional string`
+  - `object: "organization.admin_api_key.deleted"`
+
+    - `"organization.admin_api_key.deleted"`
 
 # Usage
 
@@ -2974,7 +2928,7 @@ Get audio speeches usage details for the organization.
 
 ### Returns
 
-- `data: array of object { end_time, object, result, start_time }`
+- `data: array of object { end_time, object, results, start_time }`
 
   - `end_time: number`
 
@@ -2982,9 +2936,9 @@ Get audio speeches usage details for the organization.
 
     - `"bucket"`
 
-  - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -3040,7 +2994,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -3072,7 +3026,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -3104,7 +3058,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+    - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -3144,7 +3098,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+    - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -3176,7 +3130,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+    - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -3208,7 +3162,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+    - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -3224,23 +3178,23 @@ Get audio speeches usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+    - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
+
+      - `num_sessions: number`
+
+        The number of code interpreter sessions.
 
       - `object: "organization.usage.code_interpreter_sessions.result"`
 
         - `"organization.usage.code_interpreter_sessions.result"`
 
-      - `num_sessions: optional number`
-
-        The number of code interpreter sessions.
-
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -3297,7 +3251,7 @@ curl https://api.openai.com/v1/organization/usage/audio_speeches \
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -3427,7 +3381,7 @@ Get audio transcriptions usage details for the organization.
 
 ### Returns
 
-- `data: array of object { end_time, object, result, start_time }`
+- `data: array of object { end_time, object, results, start_time }`
 
   - `end_time: number`
 
@@ -3435,9 +3389,9 @@ Get audio transcriptions usage details for the organization.
 
     - `"bucket"`
 
-  - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -3493,7 +3447,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -3525,7 +3479,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -3557,7 +3511,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+    - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -3597,7 +3551,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+    - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -3629,7 +3583,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+    - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -3661,7 +3615,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+    - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -3677,23 +3631,23 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+    - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
+
+      - `num_sessions: number`
+
+        The number of code interpreter sessions.
 
       - `object: "organization.usage.code_interpreter_sessions.result"`
 
         - `"organization.usage.code_interpreter_sessions.result"`
 
-      - `num_sessions: optional number`
-
-        The number of code interpreter sessions.
-
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -3750,7 +3704,7 @@ curl https://api.openai.com/v1/organization/usage/audio_transcriptions \
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -3862,7 +3816,7 @@ Get code interpreter sessions usage details for the organization.
 
 ### Returns
 
-- `data: array of object { end_time, object, result, start_time }`
+- `data: array of object { end_time, object, results, start_time }`
 
   - `end_time: number`
 
@@ -3870,9 +3824,9 @@ Get code interpreter sessions usage details for the organization.
 
     - `"bucket"`
 
-  - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -3928,7 +3882,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -3960,7 +3914,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -3992,7 +3946,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+    - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -4032,7 +3986,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+    - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -4064,7 +4018,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+    - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -4096,7 +4050,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+    - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -4112,23 +4066,23 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+    - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
+
+      - `num_sessions: number`
+
+        The number of code interpreter sessions.
 
       - `object: "organization.usage.code_interpreter_sessions.result"`
 
         - `"organization.usage.code_interpreter_sessions.result"`
 
-      - `num_sessions: optional number`
-
-        The number of code interpreter sessions.
-
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -4185,7 +4139,7 @@ curl https://api.openai.com/v1/organization/usage/code_interpreter_sessions \
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -4319,7 +4273,7 @@ Get completions usage details for the organization.
 
 ### Returns
 
-- `data: array of object { end_time, object, result, start_time }`
+- `data: array of object { end_time, object, results, start_time }`
 
   - `end_time: number`
 
@@ -4327,9 +4281,9 @@ Get completions usage details for the organization.
 
     - `"bucket"`
 
-  - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -4385,7 +4339,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -4417,7 +4371,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -4449,7 +4403,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+    - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -4489,7 +4443,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+    - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -4521,7 +4475,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+    - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -4553,7 +4507,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+    - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -4569,23 +4523,23 @@ Get completions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+    - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
+
+      - `num_sessions: number`
+
+        The number of code interpreter sessions.
 
       - `object: "organization.usage.code_interpreter_sessions.result"`
 
         - `"organization.usage.code_interpreter_sessions.result"`
 
-      - `num_sessions: optional number`
-
-        The number of code interpreter sessions.
-
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -4642,7 +4596,7 @@ curl https://api.openai.com/v1/organization/usage/completions \
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -4778,7 +4732,7 @@ Get embeddings usage details for the organization.
 
 ### Returns
 
-- `data: array of object { end_time, object, result, start_time }`
+- `data: array of object { end_time, object, results, start_time }`
 
   - `end_time: number`
 
@@ -4786,9 +4740,9 @@ Get embeddings usage details for the organization.
 
     - `"bucket"`
 
-  - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -4844,7 +4798,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -4876,7 +4830,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -4908,7 +4862,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+    - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -4948,7 +4902,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+    - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -4980,7 +4934,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+    - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -5012,7 +4966,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+    - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -5028,23 +4982,23 @@ Get embeddings usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+    - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
+
+      - `num_sessions: number`
+
+        The number of code interpreter sessions.
 
       - `object: "organization.usage.code_interpreter_sessions.result"`
 
         - `"organization.usage.code_interpreter_sessions.result"`
 
-      - `num_sessions: optional number`
-
-        The number of code interpreter sessions.
-
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -5101,7 +5055,7 @@ curl https://api.openai.com/v1/organization/usage/embeddings \
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -5259,7 +5213,7 @@ Get images usage details for the organization.
 
 ### Returns
 
-- `data: array of object { end_time, object, result, start_time }`
+- `data: array of object { end_time, object, results, start_time }`
 
   - `end_time: number`
 
@@ -5267,9 +5221,9 @@ Get images usage details for the organization.
 
     - `"bucket"`
 
-  - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -5325,7 +5279,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -5357,7 +5311,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -5389,7 +5343,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+    - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -5429,7 +5383,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+    - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -5461,7 +5415,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+    - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -5493,7 +5447,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+    - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -5509,23 +5463,23 @@ Get images usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+    - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
+
+      - `num_sessions: number`
+
+        The number of code interpreter sessions.
 
       - `object: "organization.usage.code_interpreter_sessions.result"`
 
         - `"organization.usage.code_interpreter_sessions.result"`
 
-      - `num_sessions: optional number`
-
-        The number of code interpreter sessions.
-
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -5582,7 +5536,7 @@ curl https://api.openai.com/v1/organization/usage/images \
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -5714,7 +5668,7 @@ Get moderations usage details for the organization.
 
 ### Returns
 
-- `data: array of object { end_time, object, result, start_time }`
+- `data: array of object { end_time, object, results, start_time }`
 
   - `end_time: number`
 
@@ -5722,9 +5676,9 @@ Get moderations usage details for the organization.
 
     - `"bucket"`
 
-  - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -5780,7 +5734,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -5812,7 +5766,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -5844,7 +5798,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+    - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -5884,7 +5838,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+    - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -5916,7 +5870,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+    - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -5948,7 +5902,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+    - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -5964,23 +5918,23 @@ Get moderations usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+    - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
+
+      - `num_sessions: number`
+
+        The number of code interpreter sessions.
 
       - `object: "organization.usage.code_interpreter_sessions.result"`
 
         - `"organization.usage.code_interpreter_sessions.result"`
 
-      - `num_sessions: optional number`
-
-        The number of code interpreter sessions.
-
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -6037,7 +5991,7 @@ curl https://api.openai.com/v1/organization/usage/moderations \
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -6149,7 +6103,7 @@ Get vector stores usage details for the organization.
 
 ### Returns
 
-- `data: array of object { end_time, object, result, start_time }`
+- `data: array of object { end_time, object, results, start_time }`
 
   - `end_time: number`
 
@@ -6157,9 +6111,9 @@ Get vector stores usage details for the organization.
 
     - `"bucket"`
 
-  - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -6215,7 +6169,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -6247,7 +6201,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -6279,7 +6233,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+    - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -6319,7 +6273,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+    - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -6351,7 +6305,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+    - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -6383,7 +6337,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+    - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -6399,23 +6353,23 @@ Get vector stores usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+    - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
+
+      - `num_sessions: number`
+
+        The number of code interpreter sessions.
 
       - `object: "organization.usage.code_interpreter_sessions.result"`
 
         - `"organization.usage.code_interpreter_sessions.result"`
 
-      - `num_sessions: optional number`
-
-        The number of code interpreter sessions.
-
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -6472,7 +6426,7 @@ curl https://api.openai.com/v1/organization/usage/vector_stores \
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -6580,7 +6534,7 @@ Get costs details for the organization.
 
 ### Returns
 
-- `data: array of object { end_time, object, result, start_time }`
+- `data: array of object { end_time, object, results, start_time }`
 
   - `end_time: number`
 
@@ -6588,9 +6542,9 @@ Get costs details for the organization.
 
     - `"bucket"`
 
-  - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -6646,7 +6600,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -6678,7 +6632,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+    - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -6710,7 +6664,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+    - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -6750,7 +6704,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+    - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -6782,7 +6736,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+    - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -6814,7 +6768,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+    - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -6830,23 +6784,23 @@ Get costs details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+    - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
+
+      - `num_sessions: number`
+
+        The number of code interpreter sessions.
 
       - `object: "organization.usage.code_interpreter_sessions.result"`
 
         - `"organization.usage.code_interpreter_sessions.result"`
 
-      - `num_sessions: optional number`
-
-        The number of code interpreter sessions.
-
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -6903,7 +6857,7 @@ curl https://api.openai.com/v1/organization/costs \
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,
@@ -6972,7 +6926,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
 - `UsageAudioSpeechesResponse object { data, has_more, next_page, object }`
 
-  - `data: array of object { end_time, object, result, start_time }`
+  - `data: array of object { end_time, object, results, start_time }`
 
     - `end_time: number`
 
@@ -6980,9 +6934,9 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -7038,7 +6992,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated embeddings usage details of the specific time bucket.
 
@@ -7070,7 +7024,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated moderations usage details of the specific time bucket.
 
@@ -7102,7 +7056,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+      - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
         The aggregated images usage details of the specific time bucket.
 
@@ -7142,7 +7096,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+      - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
         The aggregated audio speeches usage details of the specific time bucket.
 
@@ -7174,7 +7128,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+      - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
         The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -7206,7 +7160,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+      - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
         The aggregated vector stores usage details of the specific time bucket.
 
@@ -7222,23 +7176,23 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+      - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
 
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
 
-        - `num_sessions: optional number`
-
-          The number of code interpreter sessions.
-
         - `project_id: optional string`
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, api_key_id, 2 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -7284,7 +7238,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
 - `UsageAudioTranscriptionsResponse object { data, has_more, next_page, object }`
 
-  - `data: array of object { end_time, object, result, start_time }`
+  - `data: array of object { end_time, object, results, start_time }`
 
     - `end_time: number`
 
@@ -7292,9 +7246,9 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -7350,7 +7304,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated embeddings usage details of the specific time bucket.
 
@@ -7382,7 +7336,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated moderations usage details of the specific time bucket.
 
@@ -7414,7 +7368,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+      - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
         The aggregated images usage details of the specific time bucket.
 
@@ -7454,7 +7408,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+      - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
         The aggregated audio speeches usage details of the specific time bucket.
 
@@ -7486,7 +7440,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+      - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
         The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -7518,7 +7472,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+      - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
         The aggregated vector stores usage details of the specific time bucket.
 
@@ -7534,23 +7488,23 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+      - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
 
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
 
-        - `num_sessions: optional number`
-
-          The number of code interpreter sessions.
-
         - `project_id: optional string`
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, api_key_id, 2 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -7596,7 +7550,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
 - `UsageCodeInterpreterSessionsResponse object { data, has_more, next_page, object }`
 
-  - `data: array of object { end_time, object, result, start_time }`
+  - `data: array of object { end_time, object, results, start_time }`
 
     - `end_time: number`
 
@@ -7604,9 +7558,9 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -7662,7 +7616,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated embeddings usage details of the specific time bucket.
 
@@ -7694,7 +7648,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated moderations usage details of the specific time bucket.
 
@@ -7726,7 +7680,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+      - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
         The aggregated images usage details of the specific time bucket.
 
@@ -7766,7 +7720,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+      - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
         The aggregated audio speeches usage details of the specific time bucket.
 
@@ -7798,7 +7752,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+      - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
         The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -7830,7 +7784,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+      - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
         The aggregated vector stores usage details of the specific time bucket.
 
@@ -7846,23 +7800,23 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+      - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
 
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
 
-        - `num_sessions: optional number`
-
-          The number of code interpreter sessions.
-
         - `project_id: optional string`
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, api_key_id, 2 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -7908,7 +7862,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
 - `UsageCompletionsResponse object { data, has_more, next_page, object }`
 
-  - `data: array of object { end_time, object, result, start_time }`
+  - `data: array of object { end_time, object, results, start_time }`
 
     - `end_time: number`
 
@@ -7916,9 +7870,9 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -7974,7 +7928,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated embeddings usage details of the specific time bucket.
 
@@ -8006,7 +7960,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated moderations usage details of the specific time bucket.
 
@@ -8038,7 +7992,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+      - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
         The aggregated images usage details of the specific time bucket.
 
@@ -8078,7 +8032,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+      - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
         The aggregated audio speeches usage details of the specific time bucket.
 
@@ -8110,7 +8064,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+      - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
         The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -8142,7 +8096,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+      - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
         The aggregated vector stores usage details of the specific time bucket.
 
@@ -8158,23 +8112,23 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+      - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
 
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
 
-        - `num_sessions: optional number`
-
-          The number of code interpreter sessions.
-
         - `project_id: optional string`
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, api_key_id, 2 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -8220,7 +8174,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
 - `UsageEmbeddingsResponse object { data, has_more, next_page, object }`
 
-  - `data: array of object { end_time, object, result, start_time }`
+  - `data: array of object { end_time, object, results, start_time }`
 
     - `end_time: number`
 
@@ -8228,9 +8182,9 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -8286,7 +8240,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated embeddings usage details of the specific time bucket.
 
@@ -8318,7 +8272,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated moderations usage details of the specific time bucket.
 
@@ -8350,7 +8304,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+      - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
         The aggregated images usage details of the specific time bucket.
 
@@ -8390,7 +8344,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+      - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
         The aggregated audio speeches usage details of the specific time bucket.
 
@@ -8422,7 +8376,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+      - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
         The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -8454,7 +8408,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+      - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
         The aggregated vector stores usage details of the specific time bucket.
 
@@ -8470,23 +8424,23 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+      - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
 
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
 
-        - `num_sessions: optional number`
-
-          The number of code interpreter sessions.
-
         - `project_id: optional string`
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, api_key_id, 2 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -8532,7 +8486,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
 - `UsageImagesResponse object { data, has_more, next_page, object }`
 
-  - `data: array of object { end_time, object, result, start_time }`
+  - `data: array of object { end_time, object, results, start_time }`
 
     - `end_time: number`
 
@@ -8540,9 +8494,9 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -8598,7 +8552,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated embeddings usage details of the specific time bucket.
 
@@ -8630,7 +8584,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated moderations usage details of the specific time bucket.
 
@@ -8662,7 +8616,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+      - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
         The aggregated images usage details of the specific time bucket.
 
@@ -8702,7 +8656,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+      - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
         The aggregated audio speeches usage details of the specific time bucket.
 
@@ -8734,7 +8688,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+      - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
         The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -8766,7 +8720,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+      - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
         The aggregated vector stores usage details of the specific time bucket.
 
@@ -8782,23 +8736,23 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+      - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
 
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
 
-        - `num_sessions: optional number`
-
-          The number of code interpreter sessions.
-
         - `project_id: optional string`
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, api_key_id, 2 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -8844,7 +8798,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
 - `UsageModerationsResponse object { data, has_more, next_page, object }`
 
-  - `data: array of object { end_time, object, result, start_time }`
+  - `data: array of object { end_time, object, results, start_time }`
 
     - `end_time: number`
 
@@ -8852,9 +8806,9 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -8910,7 +8864,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated embeddings usage details of the specific time bucket.
 
@@ -8942,7 +8896,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated moderations usage details of the specific time bucket.
 
@@ -8974,7 +8928,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+      - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
         The aggregated images usage details of the specific time bucket.
 
@@ -9014,7 +8968,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+      - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
         The aggregated audio speeches usage details of the specific time bucket.
 
@@ -9046,7 +9000,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+      - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
         The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -9078,7 +9032,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+      - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
         The aggregated vector stores usage details of the specific time bucket.
 
@@ -9094,23 +9048,23 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+      - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
 
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
 
-        - `num_sessions: optional number`
-
-          The number of code interpreter sessions.
-
         - `project_id: optional string`
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, api_key_id, 2 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -9156,7 +9110,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
 - `UsageVectorStoresResponse object { data, has_more, next_page, object }`
 
-  - `data: array of object { end_time, object, result, start_time }`
+  - `data: array of object { end_time, object, results, start_time }`
 
     - `end_time: number`
 
@@ -9164,9 +9118,9 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -9222,7 +9176,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated embeddings usage details of the specific time bucket.
 
@@ -9254,7 +9208,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated moderations usage details of the specific time bucket.
 
@@ -9286,7 +9240,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+      - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
         The aggregated images usage details of the specific time bucket.
 
@@ -9326,7 +9280,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+      - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
         The aggregated audio speeches usage details of the specific time bucket.
 
@@ -9358,7 +9312,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+      - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
         The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -9390,7 +9344,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+      - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
         The aggregated vector stores usage details of the specific time bucket.
 
@@ -9406,23 +9360,23 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+      - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
 
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
 
-        - `num_sessions: optional number`
-
-          The number of code interpreter sessions.
-
         - `project_id: optional string`
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, api_key_id, 2 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -9468,7 +9422,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
 - `UsageCostsResponse object { data, has_more, next_page, object }`
 
-  - `data: array of object { end_time, object, result, start_time }`
+  - `data: array of object { end_time, object, results, start_time }`
 
     - `end_time: number`
 
@@ -9476,9 +9430,9 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
       - `"bucket"`
 
-    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+    - `results: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -9534,7 +9488,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated embeddings usage details of the specific time bucket.
 
@@ -9566,7 +9520,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+      - `OrganizationUsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
         The aggregated moderations usage details of the specific time bucket.
 
@@ -9598,7 +9552,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+      - `OrganizationUsageImagesResult object { images, num_model_requests, object, 6 more }`
 
         The aggregated images usage details of the specific time bucket.
 
@@ -9638,7 +9592,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+      - `OrganizationUsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
         The aggregated audio speeches usage details of the specific time bucket.
 
@@ -9670,7 +9624,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+      - `OrganizationUsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
         The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -9702,7 +9656,7 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+      - `OrganizationUsageVectorStoresResult object { object, usage_bytes, project_id }`
 
         The aggregated vector stores usage details of the specific time bucket.
 
@@ -9718,23 +9672,23 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+      - `OrganizationUsageCodeInterpreterSessionsResult object { num_sessions, object, project_id }`
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
 
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
 
-        - `num_sessions: optional number`
-
-          The number of code interpreter sessions.
-
         - `project_id: optional string`
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `CostsResult object { object, amount, api_key_id, 2 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -9802,23 +9756,35 @@ Returns a list of invites in the organization.
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: array of object { id, role }`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" or "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" or "reader"`
 
@@ -9842,21 +9808,13 @@ Returns a list of invites in the organization.
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects: optional array of object { id, role }`
+  - `expires_at: optional number`
 
-    The projects that were granted membership upon acceptance of the invite.
+    The Unix timestamp (in seconds) of when the invite expires.
 
-    - `id: optional string`
+- `has_more: boolean`
 
-      Project's public ID
-
-    - `role: optional "member" or "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+  The `has_more` property is used for pagination to indicate there are additional results.
 
 - `object: "list"`
 
@@ -9867,10 +9825,6 @@ Returns a list of invites in the organization.
 - `first_id: optional string`
 
   The first `invite_id` in the retrieved `list`
-
-- `has_more: optional boolean`
-
-  The `has_more` property is used for pagination to indicate there are additional results.
 
 - `last_id: optional string`
 
@@ -9890,24 +9844,24 @@ curl https://api.openai.com/v1/organization/invites \
   "data": [
     {
       "id": "id",
+      "created_at": 0,
       "email": "email",
-      "expires_at": 0,
-      "invited_at": 0,
       "object": "organization.invite",
-      "role": "owner",
-      "status": "accepted",
-      "accepted_at": 0,
       "projects": [
         {
           "id": "id",
           "role": "member"
         }
-      ]
+      ],
+      "role": "owner",
+      "status": "accepted",
+      "accepted_at": 0,
+      "expires_at": 0
     }
   ],
+  "has_more": true,
   "object": "list",
   "first_id": "first_id",
-  "has_more": true,
   "last_id": "last_id"
 }
 ```
@@ -9932,7 +9886,7 @@ curl https://api.openai.com/v1/organization/invites?after=invite-abc&limit=20 \
       "email": "user@example.com",
       "role": "owner",
       "status": "accepted",
-      "invited_at": 1711471533,
+      "created_at": 1711471533,
       "expires_at": 1711471533,
       "accepted_at": 1711471533
     }
@@ -9981,7 +9935,7 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
 ### Returns
 
-- `Invite object { id, email, expires_at, 6 more }`
+- `Invite object { id, created_at, email, 6 more }`
 
   Represents an individual `invite` to the organization.
 
@@ -9989,23 +9943,35 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: array of object { id, role }`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" or "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" or "reader"`
 
@@ -10029,21 +9995,9 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects: optional array of object { id, role }`
+  - `expires_at: optional number`
 
-    The projects that were granted membership upon acceptance of the invite.
-
-    - `id: optional string`
-
-      Project's public ID
-
-    - `role: optional "member" or "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+    The Unix timestamp (in seconds) of when the invite expires.
 
 ### Example
 
@@ -10062,19 +10016,19 @@ curl https://api.openai.com/v1/organization/invites \
 ```json
 {
   "id": "id",
+  "created_at": 0,
   "email": "email",
-  "expires_at": 0,
-  "invited_at": 0,
   "object": "organization.invite",
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
   "projects": [
     {
       "id": "id",
       "role": "member"
     }
-  ]
+  ],
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "expires_at": 0
 }
 ```
 
@@ -10109,7 +10063,7 @@ curl -X POST https://api.openai.com/v1/organization/invites \
   "email": "anotheruser@example.com",
   "role": "reader",
   "status": "pending",
-  "invited_at": 1711471533,
+  "created_at": 1711471533,
   "expires_at": 1711471533,
   "accepted_at": null,
   "projects": [
@@ -10137,7 +10091,7 @@ Retrieves an invite.
 
 ### Returns
 
-- `Invite object { id, email, expires_at, 6 more }`
+- `Invite object { id, created_at, email, 6 more }`
 
   Represents an individual `invite` to the organization.
 
@@ -10145,23 +10099,35 @@ Retrieves an invite.
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: array of object { id, role }`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" or "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" or "reader"`
 
@@ -10185,21 +10151,9 @@ Retrieves an invite.
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects: optional array of object { id, role }`
+  - `expires_at: optional number`
 
-    The projects that were granted membership upon acceptance of the invite.
-
-    - `id: optional string`
-
-      Project's public ID
-
-    - `role: optional "member" or "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+    The Unix timestamp (in seconds) of when the invite expires.
 
 ### Example
 
@@ -10213,19 +10167,19 @@ curl https://api.openai.com/v1/organization/invites/$INVITE_ID \
 ```json
 {
   "id": "id",
+  "created_at": 0,
   "email": "email",
-  "expires_at": 0,
-  "invited_at": 0,
   "object": "organization.invite",
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
   "projects": [
     {
       "id": "id",
       "role": "member"
     }
-  ]
+  ],
+  "role": "owner",
+  "status": "accepted",
+  "accepted_at": 0,
+  "expires_at": 0
 }
 ```
 
@@ -10246,7 +10200,7 @@ curl https://api.openai.com/v1/organization/invites/invite-abc \
     "email": "user@example.com",
     "role": "owner",
     "status": "accepted",
-    "invited_at": 1711471533,
+    "created_at": 1711471533,
     "expires_at": 1711471533,
     "accepted_at": 1711471533
 }
@@ -10314,7 +10268,7 @@ curl -X DELETE https://api.openai.com/v1/organization/invites/invite-abc \
 
 ### Invite
 
-- `Invite object { id, email, expires_at, 6 more }`
+- `Invite object { id, created_at, email, 6 more }`
 
   Represents an individual `invite` to the organization.
 
@@ -10322,23 +10276,35 @@ curl -X DELETE https://api.openai.com/v1/organization/invites/invite-abc \
 
     The identifier, which can be referenced in API endpoints
 
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the invite was sent.
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
-
-  - `expires_at: number`
-
-    The Unix timestamp (in seconds) of when the invite expires.
-
-  - `invited_at: number`
-
-    The Unix timestamp (in seconds) of when the invite was sent.
 
   - `object: "organization.invite"`
 
     The object type, which is always `organization.invite`
 
     - `"organization.invite"`
+
+  - `projects: array of object { id, role }`
+
+    The projects that were granted membership upon acceptance of the invite.
+
+    - `id: string`
+
+      Project's public ID
+
+    - `role: "member" or "owner"`
+
+      Project membership role
+
+      - `"member"`
+
+      - `"owner"`
 
   - `role: "owner" or "reader"`
 
@@ -10362,21 +10328,9 @@ curl -X DELETE https://api.openai.com/v1/organization/invites/invite-abc \
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `projects: optional array of object { id, role }`
+  - `expires_at: optional number`
 
-    The projects that were granted membership upon acceptance of the invite.
-
-    - `id: optional string`
-
-      Project's public ID
-
-    - `role: optional "member" or "owner"`
-
-      Project membership role
-
-      - `"member"`
-
-      - `"owner"`
+    The Unix timestamp (in seconds) of when the invite expires.
 
 ### Invite Delete Response
 
@@ -10426,37 +10380,103 @@ Lists all of the users in the organization.
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" or "reader"`
+  - `api_key_last_used_at: optional number`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created: optional number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona: optional string`
+
+    The developer persona metadata for the user.
+
+  - `email: optional string`
+
+    The email address of the user
+
+  - `is_default: optional boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser: optional boolean`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed: optional boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account: optional boolean`
+
+    Whether the user is a service account.
+
+  - `name: optional string`
+
+    The name of the user
+
+  - `projects: optional object { data, object }`
+
+    Projects associated with the user, if included.
+
+    - `data: array of object { id, name, role }`
+
+      - `id: optional string`
+
+      - `name: optional string`
+
+      - `role: optional string`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role: optional string`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level: optional string`
 
-    - `"reader"`
+    The technical level metadata for the user.
 
-- `first_id: string`
+  - `user: optional object { id, object, banned, 5 more }`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned: optional boolean`
+
+    - `banned_at: optional number`
+
+    - `email: optional string`
+
+    - `enabled: optional boolean`
+
+    - `name: optional string`
+
+    - `picture: optional string`
 
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -10473,16 +10493,44 @@ curl https://api.openai.com/v1/organization/users \
     {
       "id": "id",
       "added_at": 0,
-      "email": "email",
-      "name": "name",
       "object": "organization.user",
-      "role": "owner"
+      "api_key_last_used_at": 0,
+      "created": 0,
+      "developer_persona": "developer_persona",
+      "email": "email",
+      "is_default": true,
+      "is_scale_tier_authorized_purchaser": true,
+      "is_scim_managed": true,
+      "is_service_account": true,
+      "name": "name",
+      "projects": {
+        "data": [
+          {
+            "id": "id",
+            "name": "name",
+            "role": "role"
+          }
+        ],
+        "object": "list"
+      },
+      "role": "role",
+      "technical_level": "technical_level",
+      "user": {
+        "id": "id",
+        "object": "user",
+        "banned": true,
+        "banned_at": 0,
+        "email": "email",
+        "enabled": true,
+        "name": "name",
+        "picture": "picture"
+      }
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -10527,7 +10575,7 @@ Retrieves a user by their identifier.
 
 ### Returns
 
-- `OrganizationUser object { id, added_at, email, 3 more }`
+- `OrganizationUser object { id, added_at, object, 13 more }`
 
   Represents an individual `user` within an organization.
 
@@ -10539,27 +10587,93 @@ Retrieves a user by their identifier.
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" or "reader"`
+  - `api_key_last_used_at: optional number`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created: optional number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona: optional string`
+
+    The developer persona metadata for the user.
+
+  - `email: optional string`
+
+    The email address of the user
+
+  - `is_default: optional boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser: optional boolean`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed: optional boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account: optional boolean`
+
+    Whether the user is a service account.
+
+  - `name: optional string`
+
+    The name of the user
+
+  - `projects: optional object { data, object }`
+
+    Projects associated with the user, if included.
+
+    - `data: array of object { id, name, role }`
+
+      - `id: optional string`
+
+      - `name: optional string`
+
+      - `role: optional string`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role: optional string`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level: optional string`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user: optional object { id, object, banned, 5 more }`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned: optional boolean`
+
+    - `banned_at: optional number`
+
+    - `email: optional string`
+
+    - `enabled: optional boolean`
+
+    - `name: optional string`
+
+    - `picture: optional string`
 
 ### Example
 
@@ -10574,10 +10688,38 @@ curl https://api.openai.com/v1/organization/users/$USER_ID \
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.user",
-  "role": "owner"
+  "api_key_last_used_at": 0,
+  "created": 0,
+  "developer_persona": "developer_persona",
+  "email": "email",
+  "is_default": true,
+  "is_scale_tier_authorized_purchaser": true,
+  "is_scim_managed": true,
+  "is_service_account": true,
+  "name": "name",
+  "projects": {
+    "data": [
+      {
+        "id": "id",
+        "name": "name",
+        "role": "role"
+      }
+    ],
+    "object": "list"
+  },
+  "role": "role",
+  "technical_level": "technical_level",
+  "user": {
+    "id": "id",
+    "object": "user",
+    "banned": true,
+    "banned_at": 0,
+    "email": "email",
+    "enabled": true,
+    "name": "name",
+    "picture": "picture"
+  }
 }
 ```
 
@@ -10614,17 +10756,25 @@ Modifies a user's role in the organization.
 
 ### Body Parameters
 
-- `role: "owner" or "reader"`
+- `developer_persona: optional string`
+
+  Developer persona metadata.
+
+- `role: optional string`
 
   `owner` or `reader`
 
-  - `"owner"`
+- `role_id: optional string`
 
-  - `"reader"`
+  Role ID to assign to the user.
+
+- `technical_level: optional string`
+
+  Technical level metadata.
 
 ### Returns
 
-- `OrganizationUser object { id, added_at, email, 3 more }`
+- `OrganizationUser object { id, added_at, object, 13 more }`
 
   Represents an individual `user` within an organization.
 
@@ -10636,27 +10786,93 @@ Modifies a user's role in the organization.
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" or "reader"`
+  - `api_key_last_used_at: optional number`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created: optional number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona: optional string`
+
+    The developer persona metadata for the user.
+
+  - `email: optional string`
+
+    The email address of the user
+
+  - `is_default: optional boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser: optional boolean`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed: optional boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account: optional boolean`
+
+    Whether the user is a service account.
+
+  - `name: optional string`
+
+    The name of the user
+
+  - `projects: optional object { data, object }`
+
+    Projects associated with the user, if included.
+
+    - `data: array of object { id, name, role }`
+
+      - `id: optional string`
+
+      - `name: optional string`
+
+      - `role: optional string`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role: optional string`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level: optional string`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user: optional object { id, object, banned, 5 more }`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned: optional boolean`
+
+    - `banned_at: optional number`
+
+    - `email: optional string`
+
+    - `enabled: optional boolean`
+
+    - `name: optional string`
+
+    - `picture: optional string`
 
 ### Example
 
@@ -10664,9 +10880,7 @@ Modifies a user's role in the organization.
 curl https://api.openai.com/v1/organization/users/$USER_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "role": "owner"
-        }'
+    -d '{}'
 ```
 
 #### Response
@@ -10675,10 +10889,38 @@ curl https://api.openai.com/v1/organization/users/$USER_ID \
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.user",
-  "role": "owner"
+  "api_key_last_used_at": 0,
+  "created": 0,
+  "developer_persona": "developer_persona",
+  "email": "email",
+  "is_default": true,
+  "is_scale_tier_authorized_purchaser": true,
+  "is_scim_managed": true,
+  "is_service_account": true,
+  "name": "name",
+  "projects": {
+    "data": [
+      {
+        "id": "id",
+        "name": "name",
+        "role": "role"
+      }
+    ],
+    "object": "list"
+  },
+  "role": "role",
+  "technical_level": "technical_level",
+  "user": {
+    "id": "id",
+    "object": "user",
+    "banned": true,
+    "banned_at": 0,
+    "email": "email",
+    "enabled": true,
+    "name": "name",
+    "picture": "picture"
+  }
 }
 ```
 
@@ -10766,7 +11008,7 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc \
 
 ### Organization User
 
-- `OrganizationUser object { id, added_at, email, 3 more }`
+- `OrganizationUser object { id, added_at, object, 13 more }`
 
   Represents an individual `user` within an organization.
 
@@ -10778,27 +11020,93 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc \
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" or "reader"`
+  - `api_key_last_used_at: optional number`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created: optional number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona: optional string`
+
+    The developer persona metadata for the user.
+
+  - `email: optional string`
+
+    The email address of the user
+
+  - `is_default: optional boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser: optional boolean`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed: optional boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account: optional boolean`
+
+    Whether the user is a service account.
+
+  - `name: optional string`
+
+    The name of the user
+
+  - `projects: optional object { data, object }`
+
+    Projects associated with the user, if included.
+
+    - `data: array of object { id, name, role }`
+
+      - `id: optional string`
+
+      - `name: optional string`
+
+      - `role: optional string`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role: optional string`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level: optional string`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user: optional object { id, object, banned, 5 more }`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned: optional boolean`
+
+    - `banned_at: optional number`
+
+    - `email: optional string`
+
+    - `enabled: optional boolean`
+
+    - `name: optional string`
+
+    - `picture: optional string`
 
 ### User Delete Response
 
@@ -11054,27 +11362,93 @@ Assigns an organization role to a user within the organization.
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" or "reader"`
+  - `api_key_last_used_at: optional number`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created: optional number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona: optional string`
+
+    The developer persona metadata for the user.
+
+  - `email: optional string`
+
+    The email address of the user
+
+  - `is_default: optional boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser: optional boolean`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed: optional boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account: optional boolean`
+
+    Whether the user is a service account.
+
+  - `name: optional string`
+
+    The name of the user
+
+  - `projects: optional object { data, object }`
+
+    Projects associated with the user, if included.
+
+    - `data: array of object { id, name, role }`
+
+      - `id: optional string`
+
+      - `name: optional string`
+
+      - `role: optional string`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role: optional string`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level: optional string`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user: optional object { id, object, banned, 5 more }`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned: optional boolean`
+
+    - `banned_at: optional number`
+
+    - `email: optional string`
+
+    - `enabled: optional boolean`
+
+    - `name: optional string`
+
+    - `picture: optional string`
 
 ### Example
 
@@ -11106,10 +11480,38 @@ curl https://api.openai.com/v1/organization/users/$USER_ID/roles \
   "user": {
     "id": "id",
     "added_at": 0,
-    "email": "email",
-    "name": "name",
     "object": "organization.user",
-    "role": "owner"
+    "api_key_last_used_at": 0,
+    "created": 0,
+    "developer_persona": "developer_persona",
+    "email": "email",
+    "is_default": true,
+    "is_scale_tier_authorized_purchaser": true,
+    "is_scim_managed": true,
+    "is_service_account": true,
+    "name": "name",
+    "projects": {
+      "data": [
+        {
+          "id": "id",
+          "name": "name",
+          "role": "role"
+        }
+      ],
+      "object": "list"
+    },
+    "role": "role",
+    "technical_level": "technical_level",
+    "user": {
+      "id": "id",
+      "object": "user",
+      "banned": true,
+      "banned_at": 0,
+      "email": "email",
+      "enabled": true,
+      "name": "name",
+      "picture": "picture"
+    }
   }
 }
 ```
@@ -11319,27 +11721,93 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc123/roles/ro
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: string`
-
-      The email address of the user
-
-    - `name: string`
-
-      The name of the user
-
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: "owner" or "reader"`
+    - `api_key_last_used_at: optional number`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created: optional number`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona: optional string`
+
+      The developer persona metadata for the user.
+
+    - `email: optional string`
+
+      The email address of the user
+
+    - `is_default: optional boolean`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser: optional boolean`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed: optional boolean`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account: optional boolean`
+
+      Whether the user is a service account.
+
+    - `name: optional string`
+
+      The name of the user
+
+    - `projects: optional object { data, object }`
+
+      Projects associated with the user, if included.
+
+      - `data: array of object { id, name, role }`
+
+        - `id: optional string`
+
+        - `name: optional string`
+
+        - `role: optional string`
+
+      - `object: "list"`
+
+        - `"list"`
+
+    - `role: optional string`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level: optional string`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user: optional object { id, object, banned, 5 more }`
+
+      Nested user details.
+
+      - `id: string`
+
+      - `object: "user"`
+
+        - `"user"`
+
+      - `banned: optional boolean`
+
+      - `banned_at: optional number`
+
+      - `email: optional string`
+
+      - `enabled: optional boolean`
+
+      - `name: optional string`
+
+      - `picture: optional string`
 
 ### Role Delete Response
 
@@ -11395,6 +11863,10 @@ Lists all groups in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `is_scim_managed: boolean`
 
     Whether the group is managed through SCIM and controlled by your identity provider.
@@ -11432,6 +11904,7 @@ curl https://api.openai.com/v1/organization/groups \
     {
       "id": "id",
       "created_at": 0,
+      "group_type": "group_type",
       "is_scim_managed": true,
       "name": "name"
     }
@@ -11483,7 +11956,7 @@ Creates a new group in the organization.
 
 ### Returns
 
-- `Group object { id, created_at, is_scim_managed, name }`
+- `Group object { id, created_at, group_type, 2 more }`
 
   Details about an organization group.
 
@@ -11494,6 +11967,10 @@ Creates a new group in the organization.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was created.
+
+  - `group_type: string`
+
+    The type of the group.
 
   - `is_scim_managed: boolean`
 
@@ -11520,6 +11997,7 @@ curl https://api.openai.com/v1/organization/groups \
 {
   "id": "id",
   "created_at": 0,
+  "group_type": "group_type",
   "is_scim_managed": true,
   "name": "name"
 }
@@ -11692,7 +12170,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
 ### Group
 
-- `Group object { id, created_at, is_scim_managed, name }`
+- `Group object { id, created_at, group_type, 2 more }`
 
   Details about an organization group.
 
@@ -11703,6 +12181,10 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was created.
+
+  - `group_type: string`
+
+    The type of the group.
 
   - `is_scim_managed: boolean`
 
@@ -11786,7 +12268,7 @@ Lists the users assigned to a group.
 
 ### Returns
 
-- `data: array of OrganizationUser`
+- `data: array of OrganizationGroupUser`
 
   Users in the current page.
 
@@ -11794,31 +12276,13 @@ Lists the users assigned to a group.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
-
-    The Unix timestamp (in seconds) of when the user was added.
-
   - `email: string`
 
-    The email address of the user
+    The email address of the user.
 
   - `name: string`
 
-    The name of the user
-
-  - `object: "organization.user"`
-
-    The object type, which is always `organization.user`
-
-    - `"organization.user"`
-
-  - `role: "owner" or "reader"`
-
-    `owner` or `reader`
-
-    - `"owner"`
-
-    - `"reader"`
+    The name of the user.
 
 - `has_more: boolean`
 
@@ -11848,11 +12312,8 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
   "data": [
     {
       "id": "id",
-      "added_at": 0,
       "email": "email",
-      "name": "name",
-      "object": "organization.user",
-      "role": "owner"
+      "name": "name"
     }
   ],
   "has_more": true,
@@ -11876,12 +12337,9 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?lim
     "object": "list",
     "data": [
         {
-            "object": "organization.user",
             "id": "user_abc123",
             "name": "Ada Lovelace",
-            "email": "ada@example.com",
-            "role": "owner",
-            "added_at": 1711471533
+            "email": "ada@example.com"
         }
     ],
     "has_more": false,
@@ -12022,6 +12480,24 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 ```
 
 ## Domain Types
+
+### Organization Group User
+
+- `OrganizationGroupUser object { id, email, name }`
+
+  Represents an individual user returned when inspecting group membership.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `email: string`
+
+    The email address of the user.
+
+  - `name: string`
+
+    The name of the user.
 
 ### User Create Response
 
@@ -13107,17 +13583,17 @@ List uploaded certificates for this organization.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the organization level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -13135,33 +13611,21 @@ List uploaded certificates for this organization.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
 
-    - `"organization.project.certificate"`
-
-  - `active: optional boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+- `first_id: string`
 
 - `has_more: boolean`
+
+- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
 
 ### Example
 
@@ -13177,21 +13641,20 @@ curl https://api.openai.com/v1/organization/certificates \
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
   "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "has_more": true,
+  "last_id": "cert_abc",
+  "object": "list"
 }
 ```
 
@@ -13236,7 +13699,7 @@ Organizations can upload up to 50 certificates.
 
 ### Body Parameters
 
-- `content: string`
+- `certificate: string`
 
   The certificate content in PEM format
 
@@ -13301,7 +13764,7 @@ curl https://api.openai.com/v1/organization/certificates \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
     -d '{
-          "content": "content"
+          "certificate": "certificate"
         }'
 ```
 
@@ -13478,7 +13941,7 @@ Modify a certificate. Note that only the name can be modified.
 
 ### Body Parameters
 
-- `name: string`
+- `name: optional string`
 
   The updated name for the certificate
 
@@ -13538,9 +14001,7 @@ Modify a certificate. Note that only the name can be modified.
 curl https://api.openai.com/v1/organization/certificates/$CERTIFICATE_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "name": "name"
-        }'
+    -d '{}'
 ```
 
 #### Response
@@ -13657,17 +14118,17 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the organization level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -13685,33 +14146,17 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
 
-    - `"organization.project.certificate"`
+- `object: "organization.certificate.activation"`
 
-  - `active: optional boolean`
+  The organization certificate activation result type.
 
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
-
-- `has_more: boolean`
-
-- `object: "list"`
-
-  - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
+  - `"organization.certificate.activation"`
 
 ### Example
 
@@ -13733,21 +14178,17 @@ curl https://api.openai.com/v1/organization/certificates/activate \
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.certificate.activation"
 }
 ```
 
@@ -13758,7 +14199,7 @@ curl https://api.openai.com/v1/organization/certificates/activate \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
 -d '{
-  "data": ["cert_abc", "cert_def"]
+  "certificate_ids": ["cert_abc", "cert_def"]
 }'
 ```
 
@@ -13808,17 +14249,17 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the organization level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -13836,33 +14277,17 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
+    The object type, which is always `organization.certificate`.
 
     - `"organization.certificate"`
 
-    - `"organization.project.certificate"`
+- `object: "organization.certificate.deactivation"`
 
-  - `active: optional boolean`
+  The organization certificate deactivation result type.
 
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
-
-- `has_more: boolean`
-
-- `object: "list"`
-
-  - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
+  - `"organization.certificate.deactivation"`
 
 ### Example
 
@@ -13884,21 +14309,17 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.certificate.deactivation"
 }
 ```
 
@@ -13909,7 +14330,7 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
 -d '{
-  "data": ["cert_abc", "cert_def"]
+  "certificate_ids": ["cert_abc", "cert_def"]
 }'
 ```
 
@@ -13997,6 +14418,44 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
 
     Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
+### Certificate List Response
+
+- `CertificateListResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.certificate"`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`
+
 ### Certificate Delete Response
 
 - `CertificateDeleteResponse object { id, object }`
@@ -14010,6 +14469,82 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
     The object type, must be `certificate.deleted`.
 
     - `"certificate.deleted"`
+
+### Certificate Activate Response
+
+- `CertificateActivateResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.certificate"`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`
+
+### Certificate Deactivate Response
+
+- `CertificateDeactivateResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the organization level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.certificate"`
+
+    The object type, which is always `organization.certificate`.
+
+    - `"organization.certificate"`
 
 # Projects
 
@@ -14045,37 +14580,37 @@ Returns a list of projects.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-- `first_id: string`
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -14092,16 +14627,17 @@ curl https://api.openai.com/v1/organization/projects \
     {
       "id": "id",
       "created_at": 0,
-      "name": "name",
       "object": "organization.project",
-      "status": "active",
-      "archived_at": 0
+      "archived_at": 0,
+      "external_key_id": "external_key_id",
+      "name": "name",
+      "status": "status"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -14146,29 +14682,17 @@ Create a new project in the organization. Projects can be created and archived, 
 
   The friendly name of the project, this name appears in reports.
 
-- `geography: optional "US" or "EU" or "JP" or 5 more`
+- `external_key_id: optional string`
+
+  External key ID to associate with the project.
+
+- `geography: optional string`
 
   Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
 
-  - `"US"`
-
-  - `"EU"`
-
-  - `"JP"`
-
-  - `"IN"`
-
-  - `"KR"`
-
-  - `"CA"`
-
-  - `"AU"`
-
-  - `"SG"`
-
 ### Returns
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -14180,27 +14704,27 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 ### Example
 
@@ -14219,10 +14743,11 @@ curl https://api.openai.com/v1/organization/projects \
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -14262,7 +14787,7 @@ Retrieves a project.
 
 ### Returns
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -14274,27 +14799,27 @@ Retrieves a project.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 ### Example
 
@@ -14309,10 +14834,11 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -14349,13 +14875,21 @@ Modifies a project in the organization.
 
 ### Body Parameters
 
-- `name: string`
+- `external_key_id: optional string`
+
+  External key ID to associate with the project.
+
+- `geography: optional string`
+
+  Geography for the project.
+
+- `name: optional string`
 
   The updated name of the project, this name appears in reports.
 
 ### Returns
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -14367,27 +14901,27 @@ Modifies a project in the organization.
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 ### Example
 
@@ -14395,9 +14929,7 @@ Modifies a project in the organization.
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "name": "name"
-        }'
+    -d '{}'
 ```
 
 #### Response
@@ -14406,10 +14938,11 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -14436,7 +14969,7 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
 ### Returns
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -14448,27 +14981,27 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 ### Example
 
@@ -14484,10 +15017,11 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/archive \
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```
 
@@ -14516,7 +15050,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/archive \
 
 ### Project
 
-- `Project object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, object, 4 more }`
 
   Represents an individual project.
 
@@ -14528,27 +15062,27 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/archive \
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: string`
-
-    The name of the project. This appears in reporting.
-
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: "active" or "archived"`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: optional number`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: optional string`
+
+    The external key associated with the project.
+
+  - `name: optional string`
+
+    The name of the project. This appears in reporting.
+
+  - `status: optional string`
+
+    `active` or `archived`
 
 # Users
 
@@ -14584,35 +15118,31 @@ Returns a list of users in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
 
-- `first_id: string`
+  - `name: optional string`
+
+    The name of the user
 
 - `has_more: boolean`
 
-- `last_id: string`
-
 - `object: string`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -14629,16 +15159,16 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
     {
       "id": "id",
       "added_at": 0,
-      "email": "email",
-      "name": "name",
       "object": "organization.project.user",
-      "role": "owner"
+      "role": "role",
+      "email": "email",
+      "name": "name"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "object"
+  "object": "object",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -14683,21 +15213,21 @@ Adds a user to the project. Users must already be members of the organization to
 
 ### Body Parameters
 
-- `role: "owner" or "member"`
+- `role: string`
 
   `owner` or `member`
 
-  - `"owner"`
+- `email: optional string`
 
-  - `"member"`
+  Email of the user to add.
 
-- `user_id: string`
+- `user_id: optional string`
 
   The ID of the user.
 
 ### Returns
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -14709,27 +15239,23 @@ Adds a user to the project. Users must already be members of the organization to
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### Example
 
@@ -14738,8 +15264,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
     -d '{
-          "role": "owner",
-          "user_id": "user_id"
+          "role": "role"
         }'
 ```
 
@@ -14749,10 +15274,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -14794,7 +15319,7 @@ Retrieves a user in the project.
 
 ### Returns
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -14806,27 +15331,23 @@ Retrieves a user in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### Example
 
@@ -14841,10 +15362,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -14883,17 +15404,13 @@ Modifies a user's role in the project.
 
 ### Body Parameters
 
-- `role: "owner" or "member"`
+- `role: optional string`
 
   `owner` or `member`
 
-  - `"owner"`
-
-  - `"member"`
-
 ### Returns
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -14905,27 +15422,23 @@ Modifies a user's role in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### Example
 
@@ -14933,9 +15446,7 @@ Modifies a user's role in the project.
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "role": "owner"
-        }'
+    -d '{}'
 ```
 
 #### Response
@@ -14944,10 +15455,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
 {
   "id": "id",
   "added_at": 0,
-  "email": "email",
-  "name": "name",
   "object": "organization.project.user",
-  "role": "owner"
+  "role": "role",
+  "email": "email",
+  "name": "name"
 }
 ```
 
@@ -15040,7 +15551,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
 
 ### Project User
 
-- `ProjectUser object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, object, 3 more }`
 
   Represents an individual user in a project.
 
@@ -15052,27 +15563,23 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
 
     The Unix timestamp (in seconds) of when the project was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
 
     - `"organization.project.user"`
 
-  - `role: "owner" or "member"`
+  - `role: string`
 
     `owner` or `member`
 
-    - `"owner"`
+  - `email: optional string`
 
-    - `"member"`
+    The email address of the user
+
+  - `name: optional string`
+
+    The name of the user
 
 ### User Delete Response
 
@@ -15332,27 +15839,93 @@ Assigns a project role to a user within a project.
 
     The Unix timestamp (in seconds) of when the user was added.
 
-  - `email: string`
-
-    The email address of the user
-
-  - `name: string`
-
-    The name of the user
-
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
 
     - `"organization.user"`
 
-  - `role: "owner" or "reader"`
+  - `api_key_last_used_at: optional number`
+
+    The Unix timestamp (in seconds) of the user's last API key usage.
+
+  - `created: optional number`
+
+    The Unix timestamp (in seconds) of when the user was created.
+
+  - `developer_persona: optional string`
+
+    The developer persona metadata for the user.
+
+  - `email: optional string`
+
+    The email address of the user
+
+  - `is_default: optional boolean`
+
+    Whether this is the organization's default user.
+
+  - `is_scale_tier_authorized_purchaser: optional boolean`
+
+    Whether the user is an authorized purchaser for Scale Tier.
+
+  - `is_scim_managed: optional boolean`
+
+    Whether the user is managed through SCIM.
+
+  - `is_service_account: optional boolean`
+
+    Whether the user is a service account.
+
+  - `name: optional string`
+
+    The name of the user
+
+  - `projects: optional object { data, object }`
+
+    Projects associated with the user, if included.
+
+    - `data: array of object { id, name, role }`
+
+      - `id: optional string`
+
+      - `name: optional string`
+
+      - `role: optional string`
+
+    - `object: "list"`
+
+      - `"list"`
+
+  - `role: optional string`
 
     `owner` or `reader`
 
-    - `"owner"`
+  - `technical_level: optional string`
 
-    - `"reader"`
+    The technical level metadata for the user.
+
+  - `user: optional object { id, object, banned, 5 more }`
+
+    Nested user details.
+
+    - `id: string`
+
+    - `object: "user"`
+
+      - `"user"`
+
+    - `banned: optional boolean`
+
+    - `banned_at: optional number`
+
+    - `email: optional string`
+
+    - `enabled: optional boolean`
+
+    - `name: optional string`
+
+    - `picture: optional string`
 
 ### Example
 
@@ -15384,10 +15957,38 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles \
   "user": {
     "id": "id",
     "added_at": 0,
-    "email": "email",
-    "name": "name",
     "object": "organization.user",
-    "role": "owner"
+    "api_key_last_used_at": 0,
+    "created": 0,
+    "developer_persona": "developer_persona",
+    "email": "email",
+    "is_default": true,
+    "is_scale_tier_authorized_purchaser": true,
+    "is_scim_managed": true,
+    "is_service_account": true,
+    "name": "name",
+    "projects": {
+      "data": [
+        {
+          "id": "id",
+          "name": "name",
+          "role": "role"
+        }
+      ],
+      "object": "list"
+    },
+    "role": "role",
+    "technical_level": "technical_level",
+    "user": {
+      "id": "id",
+      "object": "user",
+      "banned": true,
+      "banned_at": 0,
+      "email": "email",
+      "enabled": true,
+      "name": "name",
+      "picture": "picture"
+    }
   }
 }
 ```
@@ -15599,27 +16200,93 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: string`
-
-      The email address of the user
-
-    - `name: string`
-
-      The name of the user
-
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: "owner" or "reader"`
+    - `api_key_last_used_at: optional number`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created: optional number`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona: optional string`
+
+      The developer persona metadata for the user.
+
+    - `email: optional string`
+
+      The email address of the user
+
+    - `is_default: optional boolean`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser: optional boolean`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed: optional boolean`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account: optional boolean`
+
+      Whether the user is a service account.
+
+    - `name: optional string`
+
+      The name of the user
+
+    - `projects: optional object { data, object }`
+
+      Projects associated with the user, if included.
+
+      - `data: array of object { id, name, role }`
+
+        - `id: optional string`
+
+        - `name: optional string`
+
+        - `role: optional string`
+
+      - `object: "list"`
+
+        - `"list"`
+
+    - `role: optional string`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level: optional string`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user: optional object { id, object, banned, 5 more }`
+
+      Nested user details.
+
+      - `id: string`
+
+      - `object: "user"`
+
+        - `"user"`
+
+      - `banned: optional boolean`
+
+      - `banned_at: optional number`
+
+      - `email: optional string`
+
+      - `enabled: optional boolean`
+
+      - `name: optional string`
+
+      - `picture: optional string`
 
 ### Role Delete Response
 
@@ -15687,15 +16354,15 @@ Returns a list of service accounts in the project.
 
     - `"member"`
 
-- `first_id: string`
-
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -15717,10 +16384,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
       "role": "owner"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -16138,9 +16805,9 @@ Returns a list of API keys in the project.
 
   - `owner: object { service_account, type, user }`
 
-    - `service_account: optional ProjectServiceAccount`
+    - `service_account: optional object { id, created_at, name, role }`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -16148,25 +16815,15 @@ Returns a list of API keys in the project.
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: optional "user" or "service_account"`
 
@@ -16176,53 +16833,43 @@ Returns a list of API keys in the project.
 
       - `"service_account"`
 
-    - `user: optional ProjectUser`
+    - `user: optional object { id, created_at, email, 2 more }`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
     The redacted value of the API key
 
-- `first_id: string`
-
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -16247,26 +16894,24 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys \
           "id": "id",
           "created_at": 0,
           "name": "name",
-          "object": "organization.project.service_account",
-          "role": "owner"
+          "role": "role"
         },
         "type": "user",
         "user": {
           "id": "id",
-          "added_at": 0,
+          "created_at": 0,
           "email": "email",
           "name": "name",
-          "object": "organization.project.user",
-          "role": "owner"
+          "role": "role"
         }
       },
       "redacted_value": "redacted_value"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -16294,12 +16939,11 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key
             "owner": {
                 "type": "user",
                 "user": {
-                    "object": "organization.project.user",
                     "id": "user_abc",
                     "name": "First Last",
                     "email": "user@example.com",
                     "role": "owner",
-                    "added_at": 1711471533
+                    "created_at": 1711471533
                 }
             }
         }
@@ -16312,7 +16956,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key
 
 ## Retrieve project API key
 
-**get** `/organization/projects/{project_id}/api_keys/{key_id}`
+**get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Retrieves an API key in the project.
 
@@ -16320,7 +16964,7 @@ Retrieves an API key in the project.
 
 - `project_id: string`
 
-- `key_id: string`
+- `api_key_id: string`
 
 ### Returns
 
@@ -16352,9 +16996,9 @@ Retrieves an API key in the project.
 
   - `owner: object { service_account, type, user }`
 
-    - `service_account: optional ProjectServiceAccount`
+    - `service_account: optional object { id, created_at, name, role }`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -16362,25 +17006,15 @@ Retrieves an API key in the project.
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: optional "user" or "service_account"`
 
@@ -16390,39 +17024,29 @@ Retrieves an API key in the project.
 
       - `"service_account"`
 
-    - `user: optional ProjectUser`
+    - `user: optional object { id, created_at, email, 2 more }`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
@@ -16431,7 +17055,7 @@ Retrieves an API key in the project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_ID \
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
@@ -16449,17 +17073,15 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_I
       "id": "id",
       "created_at": 0,
       "name": "name",
-      "object": "organization.project.service_account",
-      "role": "owner"
+      "role": "role"
     },
     "type": "user",
     "user": {
       "id": "id",
-      "added_at": 0,
+      "created_at": 0,
       "email": "email",
       "name": "name",
-      "object": "organization.project.user",
-      "role": "owner"
+      "role": "role"
     }
   },
   "redacted_value": "redacted_value"
@@ -16487,12 +17109,11 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
     "owner": {
         "type": "user",
         "user": {
-            "object": "organization.project.user",
             "id": "user_abc",
             "name": "First Last",
             "email": "user@example.com",
             "role": "owner",
-            "added_at": 1711471533
+            "created_at": 1711471533
         }
     }
 }
@@ -16500,7 +17121,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
 
 ## Delete project API key
 
-**delete** `/organization/projects/{project_id}/api_keys/{key_id}`
+**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Deletes an API key from the project.
 
@@ -16511,7 +17132,7 @@ a service account.
 
 - `project_id: string`
 
-- `key_id: string`
+- `api_key_id: string`
 
 ### Returns
 
@@ -16526,7 +17147,7 @@ a service account.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$KEY_ID \
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
@@ -16591,9 +17212,9 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
   - `owner: object { service_account, type, user }`
 
-    - `service_account: optional ProjectServiceAccount`
+    - `service_account: optional object { id, created_at, name, role }`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: string`
 
@@ -16601,25 +17222,15 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
       - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: string`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: "organization.project.service_account"`
+      - `role: string`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: optional "user" or "service_account"`
 
@@ -16629,39 +17240,29 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
       - `"service_account"`
 
-    - `user: optional ProjectUser`
+    - `user: optional object { id, created_at, email, 2 more }`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: string`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: number`
+      - `created_at: number`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: string`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: string`
 
-        The name of the user
+        The name of the user.
 
-      - `object: "organization.project.user"`
+      - `role: string`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: "owner" or "member"`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: string`
 
@@ -16747,15 +17348,15 @@ Returns the rate limits per model for a project.
 
     The maximum requests per day. Only present for relevant models.
 
-- `first_id: string`
-
 - `has_more: boolean`
-
-- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
+
+- `first_id: optional string`
+
+- `last_id: optional string`
 
 ### Example
 
@@ -16781,10 +17382,10 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits \
       "max_requests_per_1_day": 0
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
@@ -17042,6 +17643,10 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
+  - `group_type: string`
+
+    The type of the group.
+
   - `object: "project.group"`
 
     Always `project.group`.
@@ -17082,6 +17687,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
+      "group_type": "group_type",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -17141,7 +17747,7 @@ Grants a group access to a project.
 
 ### Returns
 
-- `ProjectGroup object { created_at, group_id, group_name, 2 more }`
+- `ProjectGroup object { created_at, group_id, group_name, 3 more }`
 
   Details about a group's membership in a project.
 
@@ -17156,6 +17762,10 @@ Grants a group access to a project.
   - `group_name: string`
 
     Display name of the group.
+
+  - `group_type: string`
+
+    The type of the group.
 
   - `object: "project.group"`
 
@@ -17186,6 +17796,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
+  "group_type": "group_type",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -17277,7 +17888,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/group
 
 ### Project Group
 
-- `ProjectGroup object { created_at, group_id, group_name, 2 more }`
+- `ProjectGroup object { created_at, group_id, group_name, 3 more }`
 
   Details about a group's membership in a project.
 
@@ -17292,6 +17903,10 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/group
   - `group_name: string`
 
     Display name of the group.
+
+  - `group_type: string`
+
+    The type of the group.
 
   - `object: "project.group"`
 
@@ -18353,17 +18968,17 @@ List certificates for this project.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the project level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -18381,33 +18996,21 @@ List certificates for this project.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.project.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
 
-  - `active: optional boolean`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+- `first_id: string`
 
 - `has_more: boolean`
+
+- `last_id: string`
 
 - `object: "list"`
 
   - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
 
 ### Example
 
@@ -18423,21 +19026,20 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates \
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
   "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "has_more": true,
+  "last_id": "cert_abc",
+  "object": "list"
 }
 ```
 
@@ -18490,17 +19092,17 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the project level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -18518,33 +19120,17 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.project.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
 
-  - `active: optional boolean`
+- `object: "organization.project.certificate.activation"`
 
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+  The project certificate activation result type.
 
-- `has_more: boolean`
-
-- `object: "list"`
-
-  - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
+  - `"organization.project.certificate.activation"`
 
 ### Example
 
@@ -18566,21 +19152,17 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/ac
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.project.certificate.activation"
 }
 ```
 
@@ -18591,7 +19173,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/activ
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
 -d '{
-  "data": ["cert_abc", "cert_def"]
+  "certificate_ids": ["cert_abc", "cert_def"]
 }'
 ```
 
@@ -18644,17 +19226,17 @@ idempotently deactivate up to 10 certificates at a time.
 
 ### Returns
 
-- `data: array of Certificate`
+- `data: array of object { id, active, certificate_details, 3 more }`
 
   - `id: string`
 
     The identifier, which can be referenced in API endpoints
 
-  - `certificate_details: object { content, expires_at, valid_at }`
+  - `active: boolean`
 
-    - `content: optional string`
+    Whether the certificate is currently active at the project level.
 
-      The content of the certificate in PEM format.
+  - `certificate_details: object { expires_at, valid_at }`
 
     - `expires_at: optional number`
 
@@ -18672,33 +19254,17 @@ idempotently deactivate up to 10 certificates at a time.
 
     The name of the certificate.
 
-  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+  - `object: "organization.project.certificate"`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
 
-  - `active: optional boolean`
+- `object: "organization.project.certificate.deactivation"`
 
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+  The project certificate deactivation result type.
 
-- `has_more: boolean`
-
-- `object: "list"`
-
-  - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
+  - `"organization.project.certificate.deactivation"`
 
 ### Example
 
@@ -18720,21 +19286,17 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/de
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.project.certificate.deactivation"
 }
 ```
 
@@ -18745,7 +19307,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deact
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
 -d '{
-  "data": ["cert_abc", "cert_def"]
+  "certificate_ids": ["cert_abc", "cert_def"]
 }'
 ```
 
@@ -18780,3 +19342,119 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deact
   ],
 }
 ```
+
+## Domain Types
+
+### Certificate List Response
+
+- `CertificateListResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.project.certificate"`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`
+
+### Certificate Activate Response
+
+- `CertificateActivateResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.project.certificate"`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`
+
+### Certificate Deactivate Response
+
+- `CertificateDeactivateResponse object { id, active, certificate_details, 3 more }`
+
+  Represents an individual certificate configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `active: boolean`
+
+    Whether the certificate is currently active at the project level.
+
+  - `certificate_details: object { expires_at, valid_at }`
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "organization.project.certificate"`
+
+    The object type, which is always `organization.project.certificate`.
+
+    - `"organization.project.certificate"`

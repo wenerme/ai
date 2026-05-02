@@ -62,7 +62,7 @@ Get code interpreter sessions usage details for the organization.
 
       - `"bucket"`
 
-    - `result: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
+    - `results: Array<OrganizationUsageCompletionsResult | OrganizationUsageEmbeddingsResult | OrganizationUsageModerationsResult | 6 more>`
 
       - `OrganizationUsageCompletionsResult`
 
@@ -308,13 +308,13 @@ Get code interpreter sessions usage details for the organization.
 
         The aggregated code interpreter sessions usage details of the specific time bucket.
 
+        - `num_sessions: number`
+
+          The number of code interpreter sessions.
+
         - `object: "organization.usage.code_interpreter_sessions.result"`
 
           - `"organization.usage.code_interpreter_sessions.result"`
-
-        - `num_sessions?: number`
-
-          The number of code interpreter sessions.
 
         - `project_id?: string | null`
 
@@ -356,7 +356,7 @@ Get code interpreter sessions usage details for the organization.
 
   - `has_more: boolean`
 
-  - `next_page: string`
+  - `next_page: string | null`
 
   - `object: "page"`
 
@@ -384,7 +384,7 @@ console.log(response.data);
     {
       "end_time": 0,
       "object": "bucket",
-      "result": [
+      "results": [
         {
           "input_tokens": 0,
           "num_model_requests": 0,

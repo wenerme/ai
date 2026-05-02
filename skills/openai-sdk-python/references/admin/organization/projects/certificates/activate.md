@@ -1,6 +1,6 @@
 ## Activate certificates for project
 
-`admin.organization.projects.certificates.activate(strproject_id, CertificateActivateParams**kwargs)  -> SyncPage[Certificate]`
+`admin.organization.projects.certificates.activate(strproject_id, CertificateActivateParams**kwargs)  -> SyncPage[CertificateActivateResponse]`
 
 **post** `/organization/projects/{project_id}/certificates/activate`
 
@@ -16,19 +16,19 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Returns
 
-- `class Certificate: …`
+- `class CertificateActivateResponse: …`
 
-  Represents an individual `certificate` uploaded to the organization.
+  Represents an individual certificate configured at the project level.
 
   - `id: str`
 
     The identifier, which can be referenced in API endpoints
 
+  - `active: bool`
+
+    Whether the certificate is currently active at the project level.
+
   - `certificate_details: CertificateDetails`
-
-    - `content: Optional[str]`
-
-      The content of the certificate in PEM format.
 
     - `expires_at: Optional[int]`
 
@@ -42,27 +42,15 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: str`
+  - `name: Optional[str]`
 
     The name of the certificate.
 
-  - `object: Literal["certificate", "organization.certificate", "organization.project.certificate"]`
+  - `object: Literal["organization.project.certificate"]`
 
-    The object type.
-
-    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
-    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
-    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
-
-    - `"certificate"`
-
-    - `"organization.certificate"`
+    The object type, which is always `organization.project.certificate`.
 
     - `"organization.project.certificate"`
-
-  - `active: Optional[bool]`
-
-    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
 
 ### Example
 
@@ -88,20 +76,16 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "active": true,
       "certificate_details": {
-        "content": "content",
         "expires_at": 0,
         "valid_at": 0
       },
       "created_at": 0,
       "name": "name",
-      "object": "certificate",
-      "active": true
+      "object": "organization.project.certificate"
     }
   ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "cert_abc",
-  "last_id": "cert_abc"
+  "object": "organization.project.certificate.activation"
 }
 ```

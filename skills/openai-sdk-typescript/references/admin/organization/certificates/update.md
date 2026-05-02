@@ -12,7 +12,7 @@ Modify a certificate. Note that only the name can be modified.
 
 - `body: CertificateUpdateParams`
 
-  - `name: string`
+  - `name?: string`
 
     The updated name for the certificate
 
@@ -44,7 +44,7 @@ Modify a certificate. Note that only the name can be modified.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string | null`
 
     The name of the certificate.
 
@@ -75,9 +75,7 @@ const client = new OpenAI({
   adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
 });
 
-const certificate = await client.admin.organization.certificates.update('certificate_id', {
-  name: 'name',
-});
+const certificate = await client.admin.organization.certificates.update('certificate_id');
 
 console.log(certificate.id);
 ```

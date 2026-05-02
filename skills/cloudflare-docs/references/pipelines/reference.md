@@ -15,6 +15,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 [Pipelines](https://developers.cloudflare.com/pipelines/) reference documentation:
 
 * [ Legacy pipelines ](https://developers.cloudflare.com/pipelines/reference/legacy-pipelines/)
+* [ Terraform ](https://developers.cloudflare.com/pipelines/reference/terraform/)
 * [ Wrangler commands ](https://developers.cloudflare.com/pipelines/reference/wrangler-commands/)
 
 ```json

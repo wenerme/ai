@@ -12,6 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Router
 
+Configuring 1.1.1.1 on your router applies the DNS setting to every device on your network. You do not need to change DNS settings on individual phones, computers, or other devices.
+
 1. Go to the **IP address** used to access your router's admin console in your browser.  
    * Linksys and Asus routers typically use `http://192.168.1.1` or `http://router.asus.com` (for ASUS).  
    * Netgear routers typically use `http://192.168.1.1` or `http://routerlogin.net`.  
@@ -55,13 +57,13 @@ Block malware and adult content with 1.1.1.1 for Families
 ```
 7. Save the updated settings.
 
-## Using DNS-Over-TLS on OpenWrt
+## Use DNS over TLS on OpenWrt
 
-It is possible to encrypt DNS traffic out from your router using DNS-over-TLS if it is running OpenWrt. For more details, see our blog post on the topic: [Adding DNS-Over-TLS support to OpenWrt (LEDE) with Unbound ↗](https://blog.cloudflare.com/dns-over-tls-for-openwrt/).
+If your router runs OpenWrt, you can encrypt DNS traffic using DNS over TLS. For setup instructions, refer to [Adding DNS-Over-TLS support to OpenWrt (LEDE) with Unbound ↗](https://blog.cloudflare.com/dns-over-tls-for-openwrt/).
 
 ## FRITZ!Box
 
-Starting with [FRITZ!OS 7.20 ↗](https://en.avm.de/press/press-releases/2020/07/fritzos-720-more-performance-convenience-security/), DNS over TLS is supported, see [Configuring different DNS servers in the FRITZ!Box ↗](https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-7590/165%5FConfiguring-different-DNS-servers-in-the-FRITZ-Box/).
+Starting with [FRITZ!OS 7.20 ↗](https://en.avm.de/press/press-releases/2020/07/fritzos-720-more-performance-convenience-security/), DNS over TLS is supported. Refer to [Configuring different DNS servers in the FRITZ!Box ↗](https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-7590/165%5FConfiguring-different-DNS-servers-in-the-FRITZ-Box/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/setup/","name":"Set up"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/setup/router/","name":"Router"}}]}

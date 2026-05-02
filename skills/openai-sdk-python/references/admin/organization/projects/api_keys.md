@@ -34,7 +34,7 @@ Returns a list of API keys in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: int`
+  - `last_used_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -50,9 +50,9 @@ Returns a list of API keys in the project.
 
   - `owner: Owner`
 
-    - `service_account: Optional[ProjectServiceAccount]`
+    - `service_account: Optional[OwnerServiceAccount]`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: str`
 
@@ -60,25 +60,15 @@ Returns a list of API keys in the project.
 
       - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: str`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: Literal["organization.project.service_account"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: Optional[Literal["user", "service_account"]]`
 
@@ -88,39 +78,29 @@ Returns a list of API keys in the project.
 
       - `"service_account"`
 
-    - `user: Optional[ProjectUser]`
+    - `user: Optional[OwnerUser]`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: str`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: int`
+      - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: str`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: str`
 
-        The name of the user
+        The name of the user.
 
-      - `object: Literal["organization.project.user"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: str`
 
@@ -158,34 +138,32 @@ print(page.id)
           "id": "id",
           "created_at": 0,
           "name": "name",
-          "object": "organization.project.service_account",
-          "role": "owner"
+          "role": "role"
         },
         "type": "user",
         "user": {
           "id": "id",
-          "added_at": 0,
+          "created_at": 0,
           "email": "email",
           "name": "name",
-          "object": "organization.project.user",
-          "role": "owner"
+          "role": "role"
         }
       },
       "redacted_value": "redacted_value"
     }
   ],
-  "first_id": "first_id",
   "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
 }
 ```
 
 ## Retrieve project API key
 
-`admin.organization.projects.api_keys.retrieve(strkey_id, APIKeyRetrieveParams**kwargs)  -> ProjectAPIKey`
+`admin.organization.projects.api_keys.retrieve(strapi_key_id, APIKeyRetrieveParams**kwargs)  -> ProjectAPIKey`
 
-**get** `/organization/projects/{project_id}/api_keys/{key_id}`
+**get** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Retrieves an API key in the project.
 
@@ -193,7 +171,7 @@ Retrieves an API key in the project.
 
 - `project_id: str`
 
-- `key_id: str`
+- `api_key_id: str`
 
 ### Returns
 
@@ -209,7 +187,7 @@ Retrieves an API key in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: int`
+  - `last_used_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -225,9 +203,9 @@ Retrieves an API key in the project.
 
   - `owner: Owner`
 
-    - `service_account: Optional[ProjectServiceAccount]`
+    - `service_account: Optional[OwnerServiceAccount]`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: str`
 
@@ -235,25 +213,15 @@ Retrieves an API key in the project.
 
       - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: str`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: Literal["organization.project.service_account"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: Optional[Literal["user", "service_account"]]`
 
@@ -263,39 +231,29 @@ Retrieves an API key in the project.
 
       - `"service_account"`
 
-    - `user: Optional[ProjectUser]`
+    - `user: Optional[OwnerUser]`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: str`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: int`
+      - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: str`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: str`
 
-        The name of the user
+        The name of the user.
 
-      - `object: Literal["organization.project.user"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: str`
 
@@ -311,7 +269,7 @@ client = OpenAI(
     admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
 )
 project_api_key = client.admin.organization.projects.api_keys.retrieve(
-    key_id="key_id",
+    api_key_id="api_key_id",
     project_id="project_id",
 )
 print(project_api_key.id)
@@ -331,17 +289,15 @@ print(project_api_key.id)
       "id": "id",
       "created_at": 0,
       "name": "name",
-      "object": "organization.project.service_account",
-      "role": "owner"
+      "role": "role"
     },
     "type": "user",
     "user": {
       "id": "id",
-      "added_at": 0,
+      "created_at": 0,
       "email": "email",
       "name": "name",
-      "object": "organization.project.user",
-      "role": "owner"
+      "role": "role"
     }
   },
   "redacted_value": "redacted_value"
@@ -350,9 +306,9 @@ print(project_api_key.id)
 
 ## Delete project API key
 
-`admin.organization.projects.api_keys.delete(strkey_id, APIKeyDeleteParams**kwargs)  -> APIKeyDeleteResponse`
+`admin.organization.projects.api_keys.delete(strapi_key_id, APIKeyDeleteParams**kwargs)  -> APIKeyDeleteResponse`
 
-**delete** `/organization/projects/{project_id}/api_keys/{key_id}`
+**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
 Deletes an API key from the project.
 
@@ -363,7 +319,7 @@ a service account.
 
 - `project_id: str`
 
-- `key_id: str`
+- `api_key_id: str`
 
 ### Returns
 
@@ -387,7 +343,7 @@ client = OpenAI(
     admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
 )
 api_key = client.admin.organization.projects.api_keys.delete(
-    key_id="key_id",
+    api_key_id="api_key_id",
     project_id="project_id",
 )
 print(api_key.id)
@@ -419,7 +375,7 @@ print(api_key.id)
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: int`
+  - `last_used_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -435,9 +391,9 @@ print(api_key.id)
 
   - `owner: Owner`
 
-    - `service_account: Optional[ProjectServiceAccount]`
+    - `service_account: Optional[OwnerServiceAccount]`
 
-      Represents an individual service account in a project.
+      The service account that owns a project API key.
 
       - `id: str`
 
@@ -445,25 +401,15 @@ print(api_key.id)
 
       - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the service account was created
+        The Unix timestamp (in seconds) of when the service account was created.
 
       - `name: str`
 
-        The name of the service account
+        The name of the service account.
 
-      - `object: Literal["organization.project.service_account"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.service_account`
-
-        - `"organization.project.service_account"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The service account's project role.
 
     - `type: Optional[Literal["user", "service_account"]]`
 
@@ -473,39 +419,29 @@ print(api_key.id)
 
       - `"service_account"`
 
-    - `user: Optional[ProjectUser]`
+    - `user: Optional[OwnerUser]`
 
-      Represents an individual user in a project.
+      The user that owns a project API key.
 
       - `id: str`
 
         The identifier, which can be referenced in API endpoints
 
-      - `added_at: int`
+      - `created_at: int`
 
-        The Unix timestamp (in seconds) of when the project was added.
+        The Unix timestamp (in seconds) of when the user was created.
 
       - `email: str`
 
-        The email address of the user
+        The email address of the user.
 
       - `name: str`
 
-        The name of the user
+        The name of the user.
 
-      - `object: Literal["organization.project.user"]`
+      - `role: str`
 
-        The object type, which is always `organization.project.user`
-
-        - `"organization.project.user"`
-
-      - `role: Literal["owner", "member"]`
-
-        `owner` or `member`
-
-        - `"owner"`
-
-        - `"member"`
+        The user's project role.
 
   - `redacted_value: str`
 

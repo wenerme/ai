@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # DLP profiles
 
-A DLP profile defines what sensitive data looks like so that DLP can detect it in your traffic. Each profile contains one or more [detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/) — patterns such as uploaded datasets, document fingerprints, and AI prompt topic classifiers that match specific types of data.
+A DLP profile defines what sensitive data Cloudflare should detect in your traffic. Profiles can combine [detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) with [Data Classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/) objects such as data classes, sensitivity levels, and data tags.
 
-Cloudflare DLP provides [predefined profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) for common sensitive data types such as credit card numbers and national identifiers. You can also build custom DLP profiles specific to your data, organization, and risk tolerance.
+Cloudflare DLP provides [predefined profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) for common sensitive data types such as credit card numbers and national identifiers. You can also build custom DLP profiles specific to your data, organization, and risk tolerance by using direct detection entries, data classes, and labels.
 
 ## Configure a predefined profile
 
@@ -36,21 +36,26 @@ You can now use this profile in a [DLP policy](https://developers.cloudflare.com
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Profiles**.
 2. Select **Create profile**.
 3. Enter a name and optional description for the profile.
-4. Add custom or existing detection entries.  
+4. Add new or existing detection entries to the profile.  
 Add a custom entry  
-   1. Select **Add custom entry** and give it a name.  
-   2. In **Value**, enter a regular expression (or regex) that defines the text pattern you want to detect. For example, `test\d\d` will detect the word `test` followed by two digits.  
-         * Regular expressions are written in Rust. We recommend validating your regex with [Rustexp ↗](https://rustexp.lpil.uk/).  
-         * DLP detects UTF-8 characters, which can be up to 4 bytes each. Custom text pattern detections are limited to 1024 bytes in length.  
-         * DLP does not support regular expressions with `+` or `*` operators because they are prone to exceeding the length limit. For example, the regex pattern `a+` can detect an infinite number of `a` characters. We recommend using `a{min,max}` instead, such as `a{1,1024}`.  
+   1. Select **Add custom entry**.  
+   2. Choose the type of detection entry you want to create and configure its values.  
+   For information on supported detection entry types, refer to [Configure detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/).  
    3. To save the detection entry, select **Done**.  
 Add existing entries  
-Existing entries include [predefined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) and [user-defined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/) detection entries.  
+Existing entries include [predefined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/) and [user-defined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) detection entries that you manage from the Detection entries section.  
    1. Select **Add existing entries**.  
    2. Choose which entries you want to add, then select **Confirm**.  
    3. To save the detection entry, select **Done**.
-5. (Optional) Configure [**profile settings**](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/) for the profile.
-6. Select **Save profile**.
+5. (Optional) Add data classes to include reusable classification rules.  
+   1. Select **Add data classes**.  
+   2. Choose the data classes you want to add, then select **Confirm**.
+6. (Optional) Use labels as match criteria for the profile.  
+   * Select a sensitivity schema and minimum sensitivity level.  
+   * Select a data tag group and one or more data tags.  
+For more information on labels, templates, and data classes, refer to [Data Classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/).
+7. (Optional) Configure [**profile settings**](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/) for the profile.
+8. Select **Save profile**.
 
 You can now use this profile in a [DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy), [CASB integration](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/casb-dlp/), or [AI Gateway DLP policy](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/).
 

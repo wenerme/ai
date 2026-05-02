@@ -1,6 +1,6 @@
 ## List project user role assignments
 
-`admin.organization.projects.users.roles.list(struser_id, RoleListParams**kwargs)  -> SyncCursorPage[RoleListResponse]`
+`admin.organization.projects.users.roles.list(struser_id, RoleListParams**kwargs)  -> SyncNextCursorPage[RoleListResponse]`
 
 **get** `/projects/{project_id}/users/{user_id}/roles`
 

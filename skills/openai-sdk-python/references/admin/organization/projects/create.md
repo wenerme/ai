@@ -12,25 +12,13 @@ Create a new project in the organization. Projects can be created and archived, 
 
   The friendly name of the project, this name appears in reports.
 
-- `geography: Optional[Literal["US", "EU", "JP", 5 more]]`
+- `external_key_id: Optional[str]`
+
+  External key ID to associate with the project.
+
+- `geography: Optional[str]`
 
   Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](https://platform.openai.com/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
-
-  - `"US"`
-
-  - `"EU"`
-
-  - `"JP"`
-
-  - `"IN"`
-
-  - `"KR"`
-
-  - `"CA"`
-
-  - `"AU"`
-
-  - `"SG"`
 
 ### Returns
 
@@ -46,27 +34,27 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The Unix timestamp (in seconds) of when the project was created.
 
-  - `name: str`
-
-    The name of the project. This appears in reporting.
-
   - `object: Literal["organization.project"]`
 
     The object type, which is always `organization.project`
 
     - `"organization.project"`
 
-  - `status: Literal["active", "archived"]`
-
-    `active` or `archived`
-
-    - `"active"`
-
-    - `"archived"`
-
   - `archived_at: Optional[int]`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+  - `external_key_id: Optional[str]`
+
+    The external key associated with the project.
+
+  - `name: Optional[str]`
+
+    The name of the project. This appears in reporting.
+
+  - `status: Optional[str]`
+
+    `active` or `archived`
 
 ### Example
 
@@ -89,9 +77,10 @@ print(project.id)
 {
   "id": "id",
   "created_at": 0,
-  "name": "name",
   "object": "organization.project",
-  "status": "active",
-  "archived_at": 0
+  "archived_at": 0,
+  "external_key_id": "external_key_id",
+  "name": "name",
+  "status": "status"
 }
 ```

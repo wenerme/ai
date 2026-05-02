@@ -150,7 +150,6 @@ exceptions are noted in the relevant docs.
    If you need more inspiration, explore [Codex use cases](https://developers.openai.com/codex/use-cases).
    If you're new to Codex, read the [best practices guide](https://developers.openai.com/codex/learn/best-practices).
 
-    <CtaPillLink href="/codex/app" label="Learn more about the Codex app" class="mt-8" />
 </WorkflowSteps>
 
 
@@ -425,3 +424,22 @@ Use Codex in the cloud at [chatgpt.com/codex](https://chatgpt.com/codex).
 
   </div>
 </Tabs>
+
+<div class="h-6" aria-hidden="true"></div>
+
+## Next steps
+
+[<IconItem title="Learn more about the Codex app" className="mt-2">
+    <span slot="icon">
+      <OpenBook />
+    </span>
+    Use the Codex app to work with your local projects.
+  </IconItem>](https://developers.openai.com/codex/app)
+
+[<IconItem title="Migrate to Codex" className="mt-2">
+    <span slot="icon">
+      <CompareArrows />
+    </span>
+    Move supported instruction files, MCP server configuration, skills, and
+    subagents into Codex.
+  </IconItem>](https://developers.openai.com/codex/migrate)

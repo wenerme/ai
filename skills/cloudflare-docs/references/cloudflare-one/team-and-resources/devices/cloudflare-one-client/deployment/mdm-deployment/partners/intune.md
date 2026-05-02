@@ -147,7 +147,7 @@ Deploy configuration profiles (steps 1, 2, and 3) before the Cloudflare One Clie
 You must deploy a [user-side certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) so that macOS devices managed by Intune can establish trust with Cloudflare when their traffic is inspected.
 
 1. (Optional) Generate a [Cloudflare root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#generate-a-cloudflare-root-certificate).
-2. In [Cloudflare One ↗](https://one.dash.cloudflare.com), find and [download a root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#download-a-cloudflare-root-certificate) in `.crt` format.
+2. [Download a root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#download-a-cloudflare-root-certificate) in `.crt` format.
 
 #### 1.2 Upload user-side certificate to Intune
 
@@ -279,7 +279,7 @@ Best practice
 
 Complete Step 4 at least one hour after steps 1, 2, and 3 so clients have enough time to check in and update their device configurations.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), [download the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#macos) in `.pkg` format.  
+1. [Download the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#macos) in `.pkg` format.  
 Repeat this step to update the Cloudflare One Client when a new release is available  
 Every time a new Cloudflare One Client version is released, you must repeat this process and get a new `.pkg` file for the new version.
 2. Log in to the [Microsoft Intune admin center ↗](https://intune.microsoft.com), and go to **Apps** \> **macOS**.
@@ -311,7 +311,7 @@ The following steps outline how to deploy the Cloudflare One Agent (Cloudflare O
 You must deploy a [user-side certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) so that iOS devices managed by Intune can establish trust with Cloudflare when their traffic is inspected.
 
 1. (Optional) Generate a [Cloudflare root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#generate-a-cloudflare-root-certificate).
-2. In [Cloudflare One ↗](https://one.dash.cloudflare.com), find and [download a root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#download-a-cloudflare-root-certificate) in `.crt` format.
+2. [Download a root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#download-a-cloudflare-root-certificate) in `.crt` format.
 
 #### 1.2 Upload user-side certificate to Intune
 
@@ -378,7 +378,7 @@ Per-app VPN is supported on Cloudflare One Agent version `1.8` or greater for iO
 
 Before proceeding with per-app VPN configuration, you must make sure [Auto connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect) is disabled in Zero Trust. To disable Auto connect:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select your device profile and select **Edit**.
 3. Turn off **Auto Connect**.
 

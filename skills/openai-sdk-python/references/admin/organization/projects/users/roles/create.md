@@ -74,27 +74,93 @@ Assigns a project role to a user within a project.
 
       The Unix timestamp (in seconds) of when the user was added.
 
-    - `email: str`
-
-      The email address of the user
-
-    - `name: str`
-
-      The name of the user
-
     - `object: Literal["organization.user"]`
 
       The object type, which is always `organization.user`
 
       - `"organization.user"`
 
-    - `role: Literal["owner", "reader"]`
+    - `api_key_last_used_at: Optional[int]`
+
+      The Unix timestamp (in seconds) of the user's last API key usage.
+
+    - `created: Optional[int]`
+
+      The Unix timestamp (in seconds) of when the user was created.
+
+    - `developer_persona: Optional[str]`
+
+      The developer persona metadata for the user.
+
+    - `email: Optional[str]`
+
+      The email address of the user
+
+    - `is_default: Optional[bool]`
+
+      Whether this is the organization's default user.
+
+    - `is_scale_tier_authorized_purchaser: Optional[bool]`
+
+      Whether the user is an authorized purchaser for Scale Tier.
+
+    - `is_scim_managed: Optional[bool]`
+
+      Whether the user is managed through SCIM.
+
+    - `is_service_account: Optional[bool]`
+
+      Whether the user is a service account.
+
+    - `name: Optional[str]`
+
+      The name of the user
+
+    - `projects: Optional[Projects]`
+
+      Projects associated with the user, if included.
+
+      - `data: List[ProjectsData]`
+
+        - `id: Optional[str]`
+
+        - `name: Optional[str]`
+
+        - `role: Optional[str]`
+
+      - `object: Literal["list"]`
+
+        - `"list"`
+
+    - `role: Optional[str]`
 
       `owner` or `reader`
 
-      - `"owner"`
+    - `technical_level: Optional[str]`
 
-      - `"reader"`
+      The technical level metadata for the user.
+
+    - `user: Optional[User]`
+
+      Nested user details.
+
+      - `id: str`
+
+      - `object: Literal["user"]`
+
+        - `"user"`
+
+      - `banned: Optional[bool]`
+
+      - `banned_at: Optional[int]`
+
+      - `email: Optional[str]`
+
+      - `enabled: Optional[bool]`
+
+      - `name: Optional[str]`
+
+      - `picture: Optional[str]`
 
 ### Example
 
@@ -132,10 +198,38 @@ print(role.object)
   "user": {
     "id": "id",
     "added_at": 0,
-    "email": "email",
-    "name": "name",
     "object": "organization.user",
-    "role": "owner"
+    "api_key_last_used_at": 0,
+    "created": 0,
+    "developer_persona": "developer_persona",
+    "email": "email",
+    "is_default": true,
+    "is_scale_tier_authorized_purchaser": true,
+    "is_scim_managed": true,
+    "is_service_account": true,
+    "name": "name",
+    "projects": {
+      "data": [
+        {
+          "id": "id",
+          "name": "name",
+          "role": "role"
+        }
+      ],
+      "object": "list"
+    },
+    "role": "role",
+    "technical_level": "technical_level",
+    "user": {
+      "id": "id",
+      "object": "user",
+      "banned": true,
+      "banned_at": 0,
+      "email": "email",
+      "enabled": true,
+      "name": "name",
+      "picture": "picture"
+    }
   }
 }
 ```

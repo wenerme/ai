@@ -14,6 +14,43 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dlp.xml) 
 
+## 2026-04-30
+
+  
+**Classify sensitive content with Data Classification**   
+
+Cloudflare DLP now includes **Data Classification**, which lets administrators organize and label sensitive content using labels, templates, and reusable data classes.
+
+With Data Classification, administrators can define labels such as sensitivity schemas and levels, and data tag groups and tags. Administrators can also build from Cloudflare-managed templates and create reusable data classes that combine detection entries, other data classes, sensitivity levels, and data tags.
+
+You can then use those classifications in custom DLP profiles to identify the severity of sensitive content, understand where it exists, and apply that logic consistently across DLP profiles.
+
+For more information, refer to [Data Classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/).
+
+## 2026-04-30
+
+  
+**New predefined detection entries are available**   
+
+Cloudflare DLP now includes new predefined detection entries.
+
+The expanded catalog includes detections for specific credential types, webhooks, addresses, tax identifiers, national IDs, financial data, and crypto wallets.
+
+Examples include `GitHub PAT`, `OpenAI API Key`, `Slack Webhook`, `Discord Webhook`, `US Physical Address`, and `Bitcoin Wallet`.
+
+For the full list, refer to [Predefined detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/).
+
+## 2026-04-28
+
+  
+**Create and manage DLP detection entries outside of profiles**   
+
+You can now create, view, and manage DLP detection entries outside of profiles.
+
+Detection entries are no longer hidden inside individual profiles. Administrators can manage detection entries directly from the **Detection entries** section and use them in custom DLP profiles.
+
+For more information, refer to [Configure detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/).
+
 ## 2026-04-28
 
   
@@ -28,10 +65,10 @@ Detection entries included in the profile:
 * AU Passport Number
 * American Express Card Number
 * Diners Club Card Number
-* Driver's License Number
+* US Driver's License Number
 * Email Address
 * Full Name
-* Mailing Address
+* US Mailing Address
 * Mastercard Card Number
 * US Individual Tax Identification Number (ITIN)
 * US Passport Number
@@ -217,7 +254,7 @@ DLP can now natively detect and inspect user prompts submitted to popular AI app
 
 1. **Prompt Analysis and Topic Classification**
 
-Our DLP engine performs deep analysis on each prompt, applying [topic classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#ai-prompt-topics). These topics are grouped into two evaluation categories:
+Our DLP engine performs deep analysis on each prompt, applying [topic classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics). These topics are grouped into two evaluation categories:
 
 * **Content:** PII, Source Code, Credentials and Secrets, Financial Information, and Customer Data.
 * **Intent:** Jailbreak attempts, requests for malicious code, or attempts to extract PII.
@@ -226,20 +263,20 @@ To help you apply these topics quickly, we have also released five new predefine
 
 ![DLP](https://developers.cloudflare.com/_astro/ai-prompt-detection-entry.4QmdkAuv_Z14HtSJ.webp) 
 1. **Granular Guardrails**  
-You can now build guardrails using Gateway HTTP policies with [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls). Apply a DLP profile containing an [AI prompt topic detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#ai-prompt-topics) to individual AI applications (for example, `ChatGPT`) and specific user actions (for example, `SendPrompt`) to block sensitive prompts.  
+You can now build guardrails using Gateway HTTP policies with [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls). Apply a DLP profile containing an [AI prompt topic detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics) to individual AI applications (for example, `ChatGPT`) and specific user actions (for example, `SendPrompt`) to block sensitive prompts.  
 ![DLP](https://developers.cloudflare.com/_astro/ai-prompt-policy.CF3H2rbK_2muoEC.webp)
 2. **Full Prompt Logging**  
 To aid in incident investigation, an optional setting in your Gateway policy allows you to [capture prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content) to store the full interaction of prompts that trigger a policy match. To make investigations easier, logs can be filtered by `conversation_id`, allowing you to reconstruct the full context of an interaction that led to a policy violation.  
 ![DLP](https://developers.cloudflare.com/_astro/ai-prompt-log.ywQDc5qN_2v6nax.webp)
 
-AI prompt protection is now available in open beta. To learn more about it, read the [blog ↗](https://blog.cloudflare.com/ai-prompt-protection/#closing-the-loop-logging) or refer to [AI prompt topics](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#ai-prompt-topics).
+AI prompt protection is now available in open beta. To learn more about it, read the [blog ↗](https://blog.cloudflare.com/ai-prompt-protection/#closing-the-loop-logging) or refer to [AI prompt topics](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics).
 
 ## 2025-07-17
 
   
 **New detection entry type: Document Matching for DLP**   
 
-You can now create [document-based](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#documents) detection entries in DLP by uploading example documents. Cloudflare will encrypt your documents and create a unique fingerprint of the file. This fingerprint is then used to identify similar documents or snippets within your organization's traffic and stored files.
+You can now create [document-based](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#document-entries) detection entries in DLP by uploading example documents. Cloudflare will encrypt your documents and create a unique fingerprint of the file. This fingerprint is then used to identify similar documents or snippets within your organization's traffic and stored files.
 
 ![DLP](https://developers.cloudflare.com/_astro/document-match.CcN8pGgR_Z1e3PDm.webp) 
 
@@ -279,7 +316,7 @@ To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.clo
   
 **Case Sensitive Custom Word Lists**   
 
-You can now configure [custom word lists](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#custom-wordlist) to enforce case sensitivity. This setting supports flexibility where needed and aims to reduce false positives where letter casing is critical.
+You can now configure [custom word lists](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#custom-wordlist-datasets) to enforce case sensitivity. This setting supports flexibility where needed and aims to reduce false positives where letter casing is critical.
 
 ![dlp](https://developers.cloudflare.com/_astro/case-sesitive-cwl.MPuOc_3r_220dca.webp) 
 
@@ -367,7 +404,7 @@ In addition to [logging the payload](https://developers.cloudflare.com/cloudflar
 
 **Exact Data Match multi-entry upload support**
 
-You can now upload files with [multiple columns of data](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#upload-a-new-dataset) as Exact Data Match datasets. DLP can use each column as a separate existing detection entry.
+You can now upload files with [multiple columns of data](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#upload-a-new-exact-data-match-dataset) as Exact Data Match datasets. DLP can use each column as a separate existing detection entry.
 
 ## 2024-05-23
 

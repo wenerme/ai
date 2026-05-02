@@ -1,6 +1,6 @@
 ## List user organization role assignments
 
-`client.admin.organization.users.roles.list(stringuserID, RoleListParamsquery?, RequestOptionsoptions?): CursorPage<RoleListResponse>`
+`client.admin.organization.users.roles.list(stringuserID, RoleListParamsquery?, RequestOptionsoptions?): NextCursorPage<RoleListResponse>`
 
 **get** `/organization/users/{user_id}/roles`
 

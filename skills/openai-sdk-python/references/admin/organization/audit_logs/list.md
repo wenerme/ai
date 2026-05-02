@@ -172,74 +172,6 @@ List user actions and configuration changes within this organization.
 
     The ID of this log.
 
-  - `actor: Actor`
-
-    The actor who performed the audit logged action.
-
-    - `api_key: Optional[ActorAPIKey]`
-
-      The API Key used to perform the audit logged action.
-
-      - `id: Optional[str]`
-
-        The tracking id of the API key.
-
-      - `service_account: Optional[ActorAPIKeyServiceAccount]`
-
-        The service account that performed the audit logged action.
-
-        - `id: Optional[str]`
-
-          The service account id.
-
-      - `type: Optional[Literal["user", "service_account"]]`
-
-        The type of API key. Can be either `user` or `service_account`.
-
-        - `"user"`
-
-        - `"service_account"`
-
-      - `user: Optional[ActorAPIKeyUser]`
-
-        The user who performed the audit logged action.
-
-        - `id: Optional[str]`
-
-          The user id.
-
-        - `email: Optional[str]`
-
-          The user email.
-
-    - `session: Optional[ActorSession]`
-
-      The session in which the audit logged action was performed.
-
-      - `ip_address: Optional[str]`
-
-        The IP address from which the action was performed.
-
-      - `user: Optional[ActorSessionUser]`
-
-        The user who performed the audit logged action.
-
-        - `id: Optional[str]`
-
-          The user id.
-
-        - `email: Optional[str]`
-
-          The user email.
-
-    - `type: Optional[Literal["session", "api_key"]]`
-
-      The type of actor. Is either `session` or `api_key`.
-
-      - `"session"`
-
-      - `"api_key"`
-
   - `effective_at: int`
 
     The Unix timestamp (in seconds) of the event.
@@ -349,6 +281,74 @@ List user actions and configuration changes within this organization.
     - `"user.updated"`
 
     - `"user.deleted"`
+
+  - `actor: Optional[Actor]`
+
+    The actor who performed the audit logged action.
+
+    - `api_key: Optional[ActorAPIKey]`
+
+      The API Key used to perform the audit logged action.
+
+      - `id: Optional[str]`
+
+        The tracking id of the API key.
+
+      - `service_account: Optional[ActorAPIKeyServiceAccount]`
+
+        The service account that performed the audit logged action.
+
+        - `id: Optional[str]`
+
+          The service account id.
+
+      - `type: Optional[Literal["user", "service_account"]]`
+
+        The type of API key. Can be either `user` or `service_account`.
+
+        - `"user"`
+
+        - `"service_account"`
+
+      - `user: Optional[ActorAPIKeyUser]`
+
+        The user who performed the audit logged action.
+
+        - `id: Optional[str]`
+
+          The user id.
+
+        - `email: Optional[str]`
+
+          The user email.
+
+    - `session: Optional[ActorSession]`
+
+      The session in which the audit logged action was performed.
+
+      - `ip_address: Optional[str]`
+
+        The IP address from which the action was performed.
+
+      - `user: Optional[ActorSessionUser]`
+
+        The user who performed the audit logged action.
+
+        - `id: Optional[str]`
+
+          The user id.
+
+        - `email: Optional[str]`
+
+          The user email.
+
+    - `type: Optional[Literal["session", "api_key"]]`
+
+      The type of actor. Is either `session` or `api_key`.
+
+      - `"session"`
+
+      - `"api_key"`
 
   - `api_key_created: Optional[APIKeyCreated]`
 
@@ -1075,6 +1075,8 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "effective_at": 0,
+      "type": "api_key.created",
       "actor": {
         "api_key": {
           "id": "id",
@@ -1096,8 +1098,6 @@ print(page.id)
         },
         "type": "session"
       },
-      "effective_at": 0,
-      "type": "api_key.created",
       "api_key.created": {
         "id": "id",
         "data": {
@@ -1366,9 +1366,9 @@ print(page.id)
       }
     }
   ],
-  "first_id": "audit_log-defb456h8dks",
   "has_more": true,
-  "last_id": "audit_log-hnbkd8s93s",
-  "object": "list"
+  "object": "list",
+  "first_id": "audit_log-defb456h8dks",
+  "last_id": "audit_log-hnbkd8s93s"
 }
 ```

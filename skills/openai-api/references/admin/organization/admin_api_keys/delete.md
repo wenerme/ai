@@ -12,11 +12,13 @@ Delete an organization admin API key
 
 ### Returns
 
-- `id: optional string`
+- `id: string`
 
-- `deleted: optional boolean`
+- `deleted: boolean`
 
-- `object: optional string`
+- `object: "organization.admin_api_key.deleted"`
+
+  - `"organization.admin_api_key.deleted"`
 
 ### Example
 

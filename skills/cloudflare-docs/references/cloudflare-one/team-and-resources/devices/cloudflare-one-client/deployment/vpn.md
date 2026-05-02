@@ -39,7 +39,7 @@ Perform these steps in your third-party VPN software. Refer to your VPN's docume
 
 ### 2\. Configure WARP
 
-Perform these steps in [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+Perform these steps in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 
 1. Set your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) to **Exclude IPs and domains**.
 2. [Add the following entries](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to your Split Tunnel Exclude list:  
@@ -68,7 +68,7 @@ Enable split tunneling in your third-party VPN software. Refer to your VPN's doc
 
 ### 2\. Configure WARP
 
-Perform these steps in [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+Perform these steps in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 
 1. Set your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) to **Exclude IPs and domains**.
 2. [Add the following entries](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to your Split Tunnel Exclude list:  
