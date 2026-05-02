@@ -41,8 +41,9 @@ fonts. You can also share your custom theme with friends.
 <div class="grid gap-5 md:grid-cols-[minmax(0,1fr)_minmax(15rem,50%)] md:items-start xl:grid-cols-[minmax(0,1fr)_minmax(16rem,30%)]">
   <div>
     Codex pets are optional animated companions for the app. In **Settings**,
-    choose **Pets** to select a built-in pet or refresh custom pets from your
-    local Codex home. Type `/pet` in the composer, use **Wake Pet** or **Tuck Away Pet** in Settings, or
+    go to **Appearance** and choose **Pets** to select a built-in pet or
+    refresh custom pets from your local Codex home. Type `/pet` in the
+    composer, use **Wake Pet** or **Tuck Away Pet** in **Settings > Appearance**, or
     press <kbd>Cmd+K</kbd> or <kbd>Ctrl+K</kbd> and run the same commands to
     toggle the floating overlay.
 

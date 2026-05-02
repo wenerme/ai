@@ -1,11 +1,11 @@
 ---
 title: "DigitalOcean | Models"
-description: "Use DigitalOcean models with Mastra. 62 models available."
+description: "Use DigitalOcean models with Mastra. 63 models available."
 ---
 
 # [DigitalOcean logo]DigitalOcean
 
-Access 62 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
+Access 63 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
 
 Learn more in the [DigitalOcean documentation](https://docs.digitalocean.com/products/gradient-ai-platform/details/models/).
 
@@ -230,6 +230,18 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.99,
     "outputCost": 0.99
+  },
+  {
+    "model": "digitalocean/deepseek-v4-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 393216,
+    "inputCost": 1.74,
+    "outputCost": 3.48
   },
   {
     "model": "digitalocean/e5-large-v2",

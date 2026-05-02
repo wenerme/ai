@@ -9130,10 +9130,10 @@
   "codex-docs/app/settings.md": {
     "url": "https://developers.openai.com/codex/app/settings.md",
     "skill": "codex-docs",
-    "etag": "W/\"11d3c4439adc29b1375b13bd5014d709\"",
-    "lastModified": "Fri, 01 May 2026 23:32:47 GMT",
-    "size": 4845,
-    "updatedAt": "2026-05-02T00:34:10.856Z"
+    "etag": "W/\"f340b286420e49e685132c160734fbfd\"",
+    "lastModified": "Sat, 02 May 2026 01:32:04 GMT",
+    "size": 4891,
+    "updatedAt": "2026-05-02T10:29:46.646Z"
   },
   "codex-docs/app/troubleshooting.md": {
     "url": "https://developers.openai.com/codex/app/troubleshooting.md",
