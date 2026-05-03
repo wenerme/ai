@@ -1,11 +1,11 @@
 ---
 title: "Cortecs | Models"
-description: "Use Cortecs models with Mastra. 35 models available."
+description: "Use Cortecs models with Mastra. 36 models available."
 ---
 
 # [Cortecs logo]Cortecs
 
-Access 35 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
+Access 36 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
 
 Learn more in the [Cortecs documentation](https://cortecs.ai).
 
@@ -134,6 +134,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 0.551,
     "outputCost": 1.654
+  },
+  {
+    "model": "cortecs/deepseek-v4-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 384000,
+    "inputCost": 0.133,
+    "outputCost": 0.266
   },
   {
     "model": "cortecs/devstral-2512",
