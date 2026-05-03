@@ -1,11 +1,11 @@
 ---
 title: "Firmware | Models"
-description: "Use Firmware models with Mastra. 25 models available."
+description: "Use Firmware models with Mastra. 26 models available."
 ---
 
 # [Firmware logo]Firmware
 
-Access 25 Firmware models through Mastra's model router. Authentication is handled automatically using the `FIRMWARE_API_KEY` environment variable.
+Access 26 Firmware models through Mastra's model router. Authentication is handled automatically using the `FIRMWARE_API_KEY` environment variable.
 
 Learn more in the [Firmware documentation](https://docs.frogbot.ai).
 
@@ -88,7 +88,7 @@ for await (const chunk of stream) {
     "outputCost": 15
   },
   {
-    "model": "firmware/deepseek-v3-2",
+    "model": "firmware/deepseek-v4-pro",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -96,8 +96,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 8192,
-    "inputCost": 0.58,
-    "outputCost": 1.68
+    "inputCost": 1.74,
+    "outputCost": 3.48
   },
   {
     "model": "firmware/gemini-2.5-flash",
@@ -148,18 +148,6 @@ for await (const chunk of stream) {
     "outputCost": 3
   },
   {
-    "model": "firmware/gemini-3-pro-preview",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 64000,
-    "inputCost": 2,
-    "outputCost": 12
-  },
-  {
     "model": "firmware/gpt-4o",
     "imageInput": true,
     "audioInput": false,
@@ -184,7 +172,31 @@ for await (const chunk of stream) {
     "outputCost": 14
   },
   {
-    "model": "firmware/gpt-5-4",
+    "model": "firmware/gpt-5-4-mini",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 400000,
+    "maxOutput": 128000,
+    "inputCost": 0.75,
+    "outputCost": 4.5
+  },
+  {
+    "model": "firmware/gpt-5-4-nano",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 400000,
+    "maxOutput": 128000,
+    "inputCost": 0.2,
+    "outputCost": 1.25
+  },
+  {
+    "model": "firmware/gpt-5-5",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -194,30 +206,6 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 2.5,
     "outputCost": 15
-  },
-  {
-    "model": "firmware/gpt-5-mini",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 400000,
-    "maxOutput": 128000,
-    "inputCost": 0.25,
-    "outputCost": 2
-  },
-  {
-    "model": "firmware/gpt-5-nano",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 400000,
-    "maxOutput": 128000,
-    "inputCost": 0.05,
-    "outputCost": 0.4
   },
   {
     "model": "firmware/gpt-oss-120b",
@@ -268,6 +256,18 @@ for await (const chunk of stream) {
     "outputCost": 0.5
   },
   {
+    "model": "firmware/grok-4-3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 1.25,
+    "outputCost": 2.5
+  },
+  {
     "model": "firmware/grok-code-fast-1",
     "imageInput": false,
     "audioInput": false,
@@ -305,6 +305,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "firmware/minimax-m2-5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 192000,
+    "maxOutput": 8192,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
+    "model": "firmware/minimax-m2-7",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
