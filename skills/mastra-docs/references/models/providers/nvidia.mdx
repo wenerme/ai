@@ -1,11 +1,11 @@
 ---
 title: "Nvidia | Models"
-description: "Use Nvidia models with Mastra. 81 models available."
+description: "Use Nvidia models with Mastra. 82 models available."
 ---
 
 # [Nvidia logo]Nvidia
 
-Access 81 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
+Access 82 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
 
 Learn more in the [Nvidia documentation](https://docs.api.nvidia.com/nim/).
 
@@ -653,6 +653,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "nvidia/moonshotai/kimi-k2.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/moonshotai/kimi-k2.6",
     "imageInput": true,
     "audioInput": false,
     "videoInput": true,

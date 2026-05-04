@@ -1,11 +1,11 @@
 ---
 title: "Synthetic | Models"
-description: "Use Synthetic models with Mastra. 32 models available."
+description: "Use Synthetic models with Mastra. 33 models available."
 ---
 
 # [Synthetic logo]Synthetic
 
-Access 32 Synthetic models through Mastra's model router. Authentication is handled automatically using the `SYNTHETIC_API_KEY` environment variable.
+Access 33 Synthetic models through Mastra's model router. Authentication is handled automatically using the `SYNTHETIC_API_KEY` environment variable.
 
 Learn more in the [Synthetic documentation](https://synthetic.new/pricing).
 
@@ -266,6 +266,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.55,
     "outputCost": 2.19
+  },
+  {
+    "model": "synthetic/hf:moonshotai/Kimi-K2.6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 0.95,
+    "outputCost": 4
   },
   {
     "model": "synthetic/hf:nvidia/Kimi-K2.5-NVFP4",

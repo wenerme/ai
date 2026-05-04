@@ -181,9 +181,9 @@
   },
   "discover-plugins.md": {
     "url": "https://code.claude.com/docs/en/discover-plugins",
-    "lastModified": "Thu, 16 Apr 2026 21:19:40 GMT",
-    "size": 19668,
-    "updatedAt": "2026-04-17T00:17:45.891Z"
+    "lastModified": "Mon, 04 May 2026 04:40:15 GMT",
+    "size": 19676,
+    "updatedAt": "2026-05-04T10:39:05.917Z"
   },
   "env-vars.md": {
     "url": "https://code.claude.com/docs/en/env-vars",
@@ -253,15 +253,15 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Sat, 02 May 2026 21:03:13 GMT",
-    "size": 165499,
-    "updatedAt": "2026-05-03T00:20:43.664Z"
+    "lastModified": "Mon, 04 May 2026 04:58:34 GMT",
+    "size": 165991,
+    "updatedAt": "2026-05-04T10:39:10.105Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
-    "lastModified": "Sat, 02 May 2026 21:03:28 GMT",
-    "size": 52750,
-    "updatedAt": "2026-05-03T00:20:43.993Z"
+    "lastModified": "Mon, 04 May 2026 05:09:10 GMT",
+    "size": 52892,
+    "updatedAt": "2026-05-04T10:39:10.456Z"
   },
   "how-claude-code-works.md": {
     "url": "https://code.claude.com/docs/en/how-claude-code-works",
@@ -307,9 +307,9 @@
   },
   "memory.md": {
     "url": "https://code.claude.com/docs/en/memory",
-    "lastModified": "Fri, 01 May 2026 00:23:09 GMT",
-    "size": 27885,
-    "updatedAt": "2026-05-01T00:23:09.513Z"
+    "lastModified": "Mon, 04 May 2026 04:43:22 GMT",
+    "size": 28030,
+    "updatedAt": "2026-05-04T10:39:13.264Z"
   },
   "microsoft-foundry.md": {
     "url": "https://code.claude.com/docs/en/microsoft-foundry",

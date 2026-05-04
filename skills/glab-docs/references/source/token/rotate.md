@@ -54,7 +54,7 @@ glab token rotate --user johndoe johns-personal-token --duration 90d
   -E, --expires-at DATE     Sets the token's expiration date and time, in YYYY-MM-DD format. If not specified, --duration is used. (default 0001-01-01)
   -g, --group string        Rotate group access token. Ignored if a user or repository argument is set.
   -F, --output string       Format output as: text, json. 'text' provides the new token value; 'json' outputs the token with metadata. (default "text")
-  -R, --repo OWNER/REPO     Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+  -R, --repo string         Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
   -U, --user string         Rotate personal access token. Use @me for the current user.
 ```
 

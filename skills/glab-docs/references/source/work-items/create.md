@@ -39,7 +39,7 @@ glab work-items create --type epic --group my-group
   -d, --description string   Description of the work item. Set to "-" to open an editor.
   -g, --group string         Create work items for a group or subgroup.
   -F, --output string        Format output as: text, json. (default "text")
-  -R, --repo OWNER/REPO      Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+  -R, --repo string          Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
   -t, --title string         Add a title for the work item.
   -T, --type string          Type of work item (epic, incident, issue, key_result, objective, requirement, task, test_case, ticket).
 ```

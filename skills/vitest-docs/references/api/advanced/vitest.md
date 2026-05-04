@@ -187,7 +187,7 @@ This method resolves every test specification by calling [`project.globTestFiles
 function mergeReports(directory?: string): Promise<TestRunResult>
 ```
 
-Merge reports from multiple runs located in the specified directory (value from `--merge-reports` if not specified). This value can also be set on `config.mergeReports` (by default, it will read `.vitest-reports` folder).
+Merge reports from multiple runs located in the specified directory (value from `--merge-reports` if not specified). This value can also be set on `config.mergeReports` (by default, it will read `.vitest/blob/` folder).
 
 Note that the `directory` will always be resolved relative to the working directory.
 

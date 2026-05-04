@@ -57,7 +57,7 @@ glab mr list --not-draft
   -F, --output string          Format output as: text, json. (default "text")
   -p, --page int               Page number. (default 1)
   -P, --per-page int           Number of items to list per page. (default 30)
-  -R, --repo OWNER/REPO        Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+  -R, --repo string            Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
   -r, --reviewer strings       Get only merge requests with users as reviewer. Multiple users can be comma-separated or specified by repeating the flag.
       --search string          Filter by <string> in title and description.
   -S, --sort string            Sort direction for --order field: asc or desc.

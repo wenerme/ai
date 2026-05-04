@@ -43,7 +43,7 @@ glab repo members add --username=john.doe --role-id=101
 
 ```plaintext
   -e, --expires-at string   Expiration date for the membership (YYYY-MM-DD)
-  -R, --repo OWNER/REPO     Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+  -R, --repo string         Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
   -r, --role string         Role for the user (guest, reporter, developer, maintainer, owner) (default "developer")
       --role-id int         ID of a custom role defined in the project or group.
   -u, --user-id int         User ID instead of username.

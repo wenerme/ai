@@ -14,6 +14,6 @@ glab cluster agent token revoke <agent-id> <token-id> [flags]
 ## Options inherited from parent commands
 
 ```plaintext
-  -h, --help              Show help for this command.
-  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
 ```
