@@ -6,7 +6,8 @@
 
 To save on inference costs, you can enable prompt caching on supported providers and models.
 
-Most providers automatically enable prompt caching, but note that some (see Anthropic below) require you to enable it on a per-message basis.
+Most providers automatically enable prompt caching, but note that some (see
+Alibaba and Anthropic below) require you to enable it on a per-message basis.
 
 When using caching (whether automatically in supported models, or via the `cache_control` property), OpenRouter uses provider sticky routing to maximize cache hits — see [Provider Sticky Routing](#provider-sticky-routing) below for details.
 
@@ -102,6 +103,56 @@ Caching price changes:
 Prompt caching with Groq is automated and does not require any additional configuration. Currently available on Kimi K2 models.
 
 [Click here to view Groq's documentation.](https://console.groq.com/docs/prompt-caching)
+
+## Alibaba Qwen
+
+Caching price changes for explicit caching:
+
+* **Cache writes**: charged at {ALIBABA_CACHE_WRITE_MULTIPLIER}x the price of
+  the original input pricing
+* **Cache reads**: charged at {ALIBABA_CACHE_READ_MULTIPLIER}x the price of
+  the original input pricing
+
+Alibaba prompt caching requires explicit cache breakpoints. Add
+`cache_control: { "type": "ephemeral" }` to content blocks you want to
+cache, using the same syntax as Anthropic explicit caching. Cache writes use a
+5-minute TTL.
+
+Alibaba explicit caching is available on `deepseek/deepseek-v3.2`,
+`qwen/qwen3-max`, `qwen/qwen-plus`, `qwen/qwen3.6-plus`,
+`qwen/qwen3-coder-plus`, and `qwen/qwen3-coder-flash`. Snapshot endpoints,
+including `qwen/qwen3.5-plus-02-15` and `qwen/qwen3.5-flash-02-23`, do not
+support explicit caching.
+
+### Example
+
+```json
+{
+  "model": "qwen/qwen3-coder-plus",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Use the reference below when answering."
+        },
+        {
+          "type": "text",
+          "text": "HUGE TEXT BODY",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Summarize the main implementation details."
+        }
+      ]
+    }
+  ]
+}
+```
 
 ## Anthropic Claude
 

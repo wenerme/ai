@@ -59,6 +59,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-2)
+* [ Raw response ](#tab-panel-3)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-i2v/simple-image-to-video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **High Resolution**  — Generate at 1080P with a longer duration 
@@ -98,6 +124,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-4)
+* [ Raw response ](#tab-panel-5)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-i2v/high-resolution.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  }
+
+}
+
+
+```
+
 **Reproducible Output**  — Use a fixed seed for reproducibility 
 
 TypeScript
@@ -133,6 +185,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-6)
+* [ Raw response ](#tab-panel-7)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-i2v/reproducible-output.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  }
+
+}
 
 
 ```

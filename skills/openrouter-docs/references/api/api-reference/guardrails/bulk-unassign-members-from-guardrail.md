@@ -4,7 +4,7 @@
 
 # Bulk unassign members from a guardrail
 
-POST https://openrouter.ai/api/v1//guardrails/{id}/assignments/members/remove
+POST https://openrouter.ai/api/v1/guardrails/{id}/assignments/members/remove
 Content-Type: application/json
 
 Unassign multiple organization members from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //guardrails/{id}/assignments/members/remove:
+  /guardrails/{id}/assignments/members/remove:
     post:
       operationId: bulk-unassign-members-from-guardrail
       summary: Bulk unassign members from a guardrail
@@ -240,7 +240,7 @@ components:
 ```python Guardrails_bulkUnassignMembersFromGuardrail_example
 import requests
 
-url = "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove"
+url = "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove"
 
 payload = { "member_user_ids": ["user_abc123", "user_def456"] }
 headers = {
@@ -254,7 +254,7 @@ print(response.json())
 ```
 
 ```javascript Guardrails_bulkUnassignMembersFromGuardrail_example
-const url = 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove';
+const url = 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -282,7 +282,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove"
+	url := "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove"
 
 	payload := strings.NewReader("{\n  \"member_user_ids\": [\n    \"user_abc123\",\n    \"user_def456\"\n  ]\n}")
 
@@ -306,7 +306,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove")
+url = URI("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -324,7 +324,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"member_user_ids\": [\n    \"user_abc123\",\n    \"user_def456\"\n  ]\n}")
@@ -337,7 +337,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove', [
   'body' => '{
   "member_user_ids": [
     "user_abc123",
@@ -356,7 +356,7 @@ echo $response->getBody();
 ```csharp Guardrails_bulkUnassignMembersFromGuardrail_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove");
+var client = new RestClient("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -375,7 +375,7 @@ let parameters = ["member_user_ids": ["user_abc123", "user_def456"]] as [String 
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members/remove")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

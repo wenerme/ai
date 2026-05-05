@@ -4,7 +4,7 @@
 
 # Create a guardrail
 
-POST https://openrouter.ai/api/v1//guardrails
+POST https://openrouter.ai/api/v1/guardrails
 Content-Type: application/json
 
 Create a new guardrail for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //guardrails:
+  /guardrails:
     post:
       operationId: create-guardrail
       summary: Create a guardrail
@@ -365,7 +365,7 @@ components:
 ```python Guardrails_createGuardrail_example
 import requests
 
-url = "https://openrouter.ai/api/v1//guardrails"
+url = "https://openrouter.ai/api/v1/guardrails"
 
 payload = {
     "name": "My New Guardrail",
@@ -389,7 +389,7 @@ print(response.json())
 ```
 
 ```javascript Guardrails_createGuardrail_example
-const url = 'https://openrouter.ai/api/v1//guardrails';
+const url = 'https://openrouter.ai/api/v1/guardrails';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -417,7 +417,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//guardrails"
+	url := "https://openrouter.ai/api/v1/guardrails"
 
 	payload := strings.NewReader("{\n  \"name\": \"My New Guardrail\",\n  \"allowed_models\": null,\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr\": false,\n  \"ignored_models\": null,\n  \"ignored_providers\": null,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}")
 
@@ -441,7 +441,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//guardrails")
+url = URI("https://openrouter.ai/api/v1/guardrails")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -459,7 +459,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//guardrails")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/guardrails")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"name\": \"My New Guardrail\",\n  \"allowed_models\": null,\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr\": false,\n  \"ignored_models\": null,\n  \"ignored_providers\": null,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}")
@@ -472,7 +472,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//guardrails', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/guardrails', [
   'body' => '{
   "name": "My New Guardrail",
   "allowed_models": null,
@@ -500,7 +500,7 @@ echo $response->getBody();
 ```csharp Guardrails_createGuardrail_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//guardrails");
+var client = new RestClient("https://openrouter.ai/api/v1/guardrails");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -529,7 +529,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

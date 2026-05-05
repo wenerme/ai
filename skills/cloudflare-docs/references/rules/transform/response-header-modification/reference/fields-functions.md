@@ -15,18 +15,19 @@ image: https://developers.cloudflare.com/core-services-preview.png
 The available fields when setting an HTTP response header value using an expression are the following:
 
 * `cf.bot_management.*`
-* `cf.bot_detection.js_check_score`
 * `cf.client.bot`
-* `cf.threat_score`
 * `cf.verified_bot_category`
 * `cf.edge.server_ip`
 * `cf.edge.server_port`
 * `cf.edge.client_port`
+* `cf.edge.client_tcp`
+* `cf.edge.l4.delivery_rate`
 * `cf.hostname.metadata`
 * `cf.zone.name`
-* `cf.metal.id`
 * `cf.random_seed`
 * `cf.ray_id`
+* `cf.timings.client_quic_rtt_msec`
+* `cf.timings.client_tcp_rtt_msec`
 * `cf.tls_version`
 * `cf.tls_cipher`
 * `cf.tls_client_hello_length`
@@ -35,13 +36,23 @@ The available fields when setting an HTTP response header value using an express
 * `cf.tls_client_extensions_sha1_le`
 * `cf.tls_client_ciphers_sha1`
 * `cf.tls_client_auth.*`
+* `cf.worker.upstream_zone`
+* `cf.fraud.email_risk`
 * `http.cookie`
 * `http.host`
 * `http.referer`
+* `http.request.accepted_languages`
+* `http.request.cookies`
 * `http.request.headers`
 * `http.request.headers.*`
-* `http.request.accepted_languages`
 * `http.request.method`
+* `http.request.body.form`
+* `http.request.body.form.*`
+* `http.request.body.multipart`
+* `http.request.body.multipart.*`
+* `http.request.body.raw`
+* `http.request.body.size`
+* `http.request.body.truncated`
 * `http.request.timestamp.sec`
 * `http.request.timestamp.msec`
 * `http.request.full_uri`
@@ -71,11 +82,16 @@ The available fields when setting an HTTP response header value using an express
 * `ip.src.subdivision_2_iso_code`
 * `ssl`
 * `http.response.code`
+* `http.response.content_type.media_type`
 * `http.response.headers`
 * `http.response.headers.*`
-* `http.response.content_type.media_type`
+* `raw.http.response.headers`
+* `raw.http.response.headers.*`
 * `cf.response.1xxx_code`
 * `cf.response.error_type`
+* `cf.timings.edge_msec`
+* `cf.timings.origin_ttfb_msec`
+* `cf.timings.worker_msec`
 
 Refer to [Fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) for reference information on these fields.
 

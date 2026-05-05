@@ -55,7 +55,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-40)
+* [ Raw response ](#tab-panel-41)
+
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/simple-generation.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/66/20260417/c057796c/32701268-BbftSa6r_189314ac1a36.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -92,7 +118,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-42)
+* [ Raw response ](#tab-panel-43)
+
 ![Custom Dimensions](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/custom-dimensions.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/35/20260417/c057796c/3257252-vy1GbNI6_bc223e38c5b4.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Square Format**  — Square image for social media or product photos 
 
@@ -127,7 +179,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-44)
+* [ Raw response ](#tab-panel-45)
+
 ![Square Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/square-format.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/84/20260417/c057796c/18355039-RFkWcHgG_0dcb1c1d6d95.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Negative Prompt**  — Guide generation away from unwanted elements 
 
@@ -162,7 +240,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-46)
+* [ Raw response ](#tab-panel-47)
+
 ![Negative Prompt](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/negative-prompt.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/53/20260417/c057796c/26097304-eVhNm6uS_edc041cd5e2b.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Portrait Format**  — Tall vertical image for portraits 
 
@@ -197,12 +301,38 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-48)
+* [ Raw response ](#tab-panel-49)
+
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/portrait-format.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/5a/20260417/c057796c/79957405-YTXQsRY6_8d8a6631f1d6.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-8)
-* [ Output ](#tab-panel-9)
+* [ Input ](#tab-panel-50)
+* [ Output ](#tab-panel-51)
 
 prompt
 

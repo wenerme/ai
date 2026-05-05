@@ -4,7 +4,7 @@
 
 # Create a message
 
-POST https://openrouter.ai/api/v1//messages
+POST https://openrouter.ai/api/v1/messages
 Content-Type: application/json
 
 Creates a message using the Anthropic Messages API format. Supports text, images, PDFs, tools, and extended thinking.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //messages:
+  /messages:
     post:
       operationId: create-messages
       summary: Create a message
@@ -3793,7 +3793,7 @@ components:
 ```python Anthropic Messages_createMessages_example
 import requests
 
-url = "https://openrouter.ai/api/v1//messages"
+url = "https://openrouter.ai/api/v1/messages"
 
 payload = {
     "messages": [
@@ -3816,7 +3816,7 @@ print(response.json())
 ```
 
 ```javascript Anthropic Messages_createMessages_example
-const url = 'https://openrouter.ai/api/v1//messages';
+const url = 'https://openrouter.ai/api/v1/messages';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -3844,7 +3844,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//messages"
+	url := "https://openrouter.ai/api/v1/messages"
 
 	payload := strings.NewReader("{\n  \"messages\": [\n    {\n      \"content\": \"Hello, how are you?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"max_tokens\": 1024\n}")
 
@@ -3868,7 +3868,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//messages")
+url = URI("https://openrouter.ai/api/v1/messages")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -3886,7 +3886,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//messages")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/messages")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"messages\": [\n    {\n      \"content\": \"Hello, how are you?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"max_tokens\": 1024\n}")
@@ -3899,7 +3899,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//messages', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/messages', [
   'body' => '{
   "messages": [
     {
@@ -3922,7 +3922,7 @@ echo $response->getBody();
 ```csharp Anthropic Messages_createMessages_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//messages");
+var client = new RestClient("https://openrouter.ai/api/v1/messages");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -3950,7 +3950,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//messages")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/messages")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

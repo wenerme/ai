@@ -4,7 +4,7 @@
 
 # List all endpoints for a model
 
-GET https://openrouter.ai/api/v1//models/{author}/{slug}/endpoints
+GET https://openrouter.ai/api/v1/models/{author}/{slug}/endpoints
 
 Reference: https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints
 
@@ -16,7 +16,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //models/{author}/{slug}/endpoints:
+  /models/{author}/{slug}/endpoints:
     get:
       operationId: list-endpoints
       summary: List all endpoints for a model
@@ -603,7 +603,7 @@ components:
 ```python Endpoints_listEndpoints_example
 import requests
 
-url = "https://openrouter.ai/api/v1//models/openai/gpt-4/endpoints"
+url = "https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -613,7 +613,7 @@ print(response.json())
 ```
 
 ```javascript Endpoints_listEndpoints_example
-const url = 'https://openrouter.ai/api/v1//models/openai/gpt-4/endpoints';
+const url = 'https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -636,7 +636,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//models/openai/gpt-4/endpoints"
+	url := "https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -657,7 +657,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//models/openai/gpt-4/endpoints")
+url = URI("https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -673,7 +673,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//models/openai/gpt-4/endpoints")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -684,7 +684,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//models/openai/gpt-4/endpoints', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -696,7 +696,7 @@ echo $response->getBody();
 ```csharp Endpoints_listEndpoints_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//models/openai/gpt-4/endpoints");
+var client = new RestClient("https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -707,7 +707,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//models/openai/gpt-4/endpoints")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

@@ -61,6 +61,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-330)
+* [ Raw response ](#tab-panel-331)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092034-QxSPMzdbiRxBSbDb.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **With Lyrics**  — Generate a song with custom lyrics 
@@ -102,6 +128,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-332)
+* [ Raw response ](#tab-panel-333)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417091919-YiIxwmvIqXtREDcu.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Instrumental**  — Generate instrumental music without vocals 
 
 TypeScript
@@ -133,6 +185,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-334)
+* [ Raw response ](#tab-panel-335)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092057-LOwvBOOdyGvAyHkQ.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -176,6 +254,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-336)
+* [ Raw response ](#tab-panel-337)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092208-UGTfqDggHaemCDAW.wav"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Auto-Generated Lyrics**  — Let the model generate lyrics from the prompt 
 
 TypeScript
@@ -209,10 +313,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-338)
+* [ Raw response ](#tab-panel-339)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20260417092245-UlqOBbhqSXtRPopt.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-62)
-* [ Output ](#tab-panel-63)
+* [ Input ](#tab-panel-340)
+* [ Output ](#tab-panel-341)
 
 prompt
 

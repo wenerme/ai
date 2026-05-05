@@ -1,11 +1,11 @@
 ---
 title: "Clarifai | Models"
-description: "Use Clarifai models with Mastra. 11 models available."
+description: "Use Clarifai models with Mastra. 12 models available."
 ---
 
 # [Clarifai logo]Clarifai
 
-Access 11 Clarifai models through Mastra's model router. Authentication is handled automatically using the `CLARIFAI_PAT` environment variable.
+Access 12 Clarifai models through Mastra's model router. Authentication is handled automatically using the `CLARIFAI_PAT` environment variable.
 
 Learn more in the [Clarifai documentation](https://docs.clarifai.com).
 
@@ -110,6 +110,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 1.039,
     "outputCost": 0.54825
+  },
+  {
+    "model": "clarifai/moonshotai/chat-completion/models/Kimi-K2_6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.95,
+    "outputCost": 4
   },
   {
     "model": "clarifai/openai/chat-completion/models/gpt-oss-120b-high-throughput",

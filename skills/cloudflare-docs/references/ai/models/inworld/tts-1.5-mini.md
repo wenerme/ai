@@ -63,6 +63,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-294)
+* [ Raw response ](#tab-panel-295)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-mini/simple-speech.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Fast Speech**  — Speed up speech for quick playback 
@@ -100,6 +126,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-296)
+* [ Raw response ](#tab-panel-297)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-mini/fast-speech.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -143,10 +195,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-298)
+* [ Raw response ](#tab-panel-299)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-mini/low-latency.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-54)
-* [ Output ](#tab-panel-55)
+* [ Input ](#tab-panel-300)
+* [ Output ](#tab-panel-301)
 
 text
 

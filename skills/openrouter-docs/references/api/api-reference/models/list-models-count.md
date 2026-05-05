@@ -4,7 +4,7 @@
 
 # Get total count of available models
 
-GET https://openrouter.ai/api/v1//models/count
+GET https://openrouter.ai/api/v1/models/count
 
 Reference: https://openrouter.ai/docs/api/api-reference/models/list-models-count
 
@@ -16,7 +16,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //models/count:
+  /models/count:
     get:
       operationId: list-models-count
       summary: Get total count of available models
@@ -156,7 +156,7 @@ components:
 ```python Models_listModelsCount_example
 import requests
 
-url = "https://openrouter.ai/api/v1//models/count"
+url = "https://openrouter.ai/api/v1/models/count"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -166,7 +166,7 @@ print(response.json())
 ```
 
 ```javascript Models_listModelsCount_example
-const url = 'https://openrouter.ai/api/v1//models/count';
+const url = 'https://openrouter.ai/api/v1/models/count';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -189,7 +189,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//models/count"
+	url := "https://openrouter.ai/api/v1/models/count"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -210,7 +210,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//models/count")
+url = URI("https://openrouter.ai/api/v1/models/count")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -226,7 +226,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//models/count")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/models/count")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -237,7 +237,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//models/count', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/models/count', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -249,7 +249,7 @@ echo $response->getBody();
 ```csharp Models_listModelsCount_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//models/count");
+var client = new RestClient("https://openrouter.ai/api/v1/models/count");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -260,7 +260,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//models/count")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/models/count")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

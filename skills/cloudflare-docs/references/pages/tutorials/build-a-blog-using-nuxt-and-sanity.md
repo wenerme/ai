@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages
 
-**Last reviewed:**  over 3 years ago 
+**Last reviewed:**  almost 4 years ago 
 
 In this tutorial, you will build a blog application using Nuxt.js and Sanity.io and deploy it on Cloudflare Pages. Nuxt.js is a powerful static site generator built on the front-end framework Vue.js. Sanity.io is a headless CMS tool built for managing your application's data without needing to maintain a database.
 

@@ -4,7 +4,7 @@
 
 # Create a response
 
-POST https://openrouter.ai/api/v1//responses
+POST https://openrouter.ai/api/v1/responses
 Content-Type: application/json
 
 Creates a streaming or non-streaming response using OpenResponses API format
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //responses:
+  /responses:
     post:
       operationId: create-responses
       summary: Create a response
@@ -5342,7 +5342,7 @@ components:
 ```python beta.responses_createResponses_example
 import requests
 
-url = "https://openrouter.ai/api/v1//responses"
+url = "https://openrouter.ai/api/v1/responses"
 
 payload = {
     "input": "Tell me a joke",
@@ -5359,7 +5359,7 @@ print(response.json())
 ```
 
 ```javascript beta.responses_createResponses_example
-const url = 'https://openrouter.ai/api/v1//responses';
+const url = 'https://openrouter.ai/api/v1/responses';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -5387,7 +5387,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//responses"
+	url := "https://openrouter.ai/api/v1/responses"
 
 	payload := strings.NewReader("{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}")
 
@@ -5411,7 +5411,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//responses")
+url = URI("https://openrouter.ai/api/v1/responses")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -5429,7 +5429,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//responses")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/responses")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}")
@@ -5442,7 +5442,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//responses', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/responses', [
   'body' => '{
   "input": "Tell me a joke",
   "model": "openai/gpt-4o"
@@ -5459,7 +5459,7 @@ echo $response->getBody();
 ```csharp beta.responses_createResponses_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//responses");
+var client = new RestClient("https://openrouter.ai/api/v1/responses");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -5481,7 +5481,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//responses")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/responses")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

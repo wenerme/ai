@@ -56,6 +56,173 @@ console.log(response)
 
 ```
 
+```
+
+{
+
+  "id": "resp_00272dd8da5b37c90169ebb1aaeb288194a6e5ddeb7bb03dc8",
+
+  "object": "response",
+
+  "created_at": 1777054122,
+
+  "model": "gpt-5.4-pro-2026-03-05",
+
+  "output": [
+
+    {
+
+      "id": "rs_00272dd8da5b37c90169ebb1faf90c81948fd9a67a37b4c209",
+
+      "type": "reasoning",
+
+      "summary": []
+
+    },
+
+    {
+
+      "id": "msg_00272dd8da5b37c90169ebb1fafad0819488ef71fbebf8527a",
+
+      "type": "message",
+
+      "status": "completed",
+
+      "content": [
+
+        {
+
+          "type": "output_text",
+
+          "annotations": [],
+
+          "logprobs": [],
+
+          "text": "The **three laws of thermodynamics** usually mean:\n\n1. **First Law — Conservation of Energy**  \n   Energy cannot be created or destroyed, only transferred or transformed.  \n   - In thermodynamics: the change in a system’s internal energy equals heat added to the system minus work done by the system.\n\n2. **Second Law — Entropy Increases**  \n   In any natural process, the total entropy of an isolated system tends to increase.  \n   - This means energy spontaneously spreads out, and no heat engine can be 100% efficient.\n   - Heat naturally flows from hot objects to cold ones, not the reverse without input of work.\n\n3. **Third Law — Entropy at Absolute Zero**  \n   As temperature approaches **absolute zero** (0 K), the entropy of a perfect crystal approaches zero.  \n   - A consequence is that absolute zero cannot be reached in a finite number of steps.\n\nSmall note: thermodynamics also has a **Zeroth Law**, which is often listed before these:\n- If system A is in thermal equilibrium with B, and B is in thermal equilibrium with C, then A is in thermal equilibrium with C.  \n- This is the basis for the concept of **temperature**.\n\nIf you want, I can also give a **one-line intuitive version** of each law."
+
+        }
+
+      ],
+
+      "phase": "final_answer",
+
+      "role": "assistant"
+
+    }
+
+  ],
+
+  "status": "completed",
+
+  "usage": {
+
+    "input_tokens": 15,
+
+    "output_tokens": 342,
+
+    "total_tokens": 357,
+
+    "input_tokens_details": {
+
+      "cached_tokens": 0
+
+    },
+
+    "output_tokens_details": {
+
+      "reasoning_tokens": 67
+
+    }
+
+  },
+
+  "background": false,
+
+  "billing": {
+
+    "payer": "developer"
+
+  },
+
+  "completed_at": 1777054203,
+
+  "error": null,
+
+  "frequency_penalty": 0,
+
+  "incomplete_details": null,
+
+  "instructions": null,
+
+  "max_output_tokens": null,
+
+  "max_tool_calls": null,
+
+  "moderation": null,
+
+  "parallel_tool_calls": true,
+
+  "presence_penalty": 0,
+
+  "previous_response_id": null,
+
+  "prompt_cache_key": null,
+
+  "prompt_cache_retention": "in_memory",
+
+  "reasoning": {
+
+    "effort": "medium",
+
+    "summary": null
+
+  },
+
+  "safety_identifier": null,
+
+  "service_tier": "default",
+
+  "store": false,
+
+  "temperature": 1,
+
+  "text": {
+
+    "format": {
+
+      "type": "text"
+
+    },
+
+    "verbosity": "medium"
+
+  },
+
+  "tool_choice": "auto",
+
+  "tools": [],
+
+  "top_logprobs": 0,
+
+  "top_p": 0.98,
+
+  "truncation": "disabled",
+
+  "user": null,
+
+  "metadata": {},
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **With Instructions**  — Using instructions to set context 
@@ -85,6 +252,173 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+```
+
+{
+
+  "id": "resp_00e5a81e42bf0bda0169ebb1ab449c8190a0d57802b4aebebd",
+
+  "object": "response",
+
+  "created_at": 1777054123,
+
+  "model": "gpt-5.4-pro-2026-03-05",
+
+  "output": [
+
+    {
+
+      "id": "rs_00e5a81e42bf0bda0169ebb1c0e57881909eaf01efa0557a43",
+
+      "type": "reasoning",
+
+      "summary": []
+
+    },
+
+    {
+
+      "id": "msg_00e5a81e42bf0bda0169ebb1c0e7608190b3928d22f252a21a",
+
+      "type": "message",
+
+      "status": "completed",
+
+      "content": [
+
+        {
+
+          "type": "output_text",
+
+          "annotations": [],
+
+          "logprobs": [],
+
+          "text": "Use Python’s built-in `json` module.\n\n### Read a JSON file into a Python object\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data)\n```\n\n### What you get back\n`json.load()` converts JSON into normal Python types:\n\n- JSON object → `dict`\n- JSON array → `list`\n- JSON string → `str`\n- JSON number → `int` / `float`\n- JSON true/false → `True` / `False`\n- JSON null → `None`\n\n### Example\nIf `data.json` contains:\n```json\n{\n  \"name\": \"Alice\",\n  \"age\": 30,\n  \"skills\": [\"Python\", \"SQL\"]\n}\n```\n\nThen:\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data[\"name\"])    # Alice\nprint(data[\"skills\"])  # ['Python', 'SQL']\n```\n\n### Handle errors safely\n```python\nimport json\n\ntry:\n    with open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\nexcept FileNotFoundError:\n    print(\"File not found.\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON.\")\n```\n\n### If you already have JSON as a string\nUse `json.loads()` instead:\n```python\nimport json\n\ntext = '{\"name\": \"Alice\", \"age\": 30}'\ndata = json.loads(text)\nprint(data)\n```\n\nIf you want, I can also show how to **write JSON back to a file**."
+
+        }
+
+      ],
+
+      "phase": "final_answer",
+
+      "role": "assistant"
+
+    }
+
+  ],
+
+  "status": "completed",
+
+  "usage": {
+
+    "input_tokens": 30,
+
+    "output_tokens": 397,
+
+    "total_tokens": 427,
+
+    "input_tokens_details": {
+
+      "cached_tokens": 0
+
+    },
+
+    "output_tokens_details": {
+
+      "reasoning_tokens": 35
+
+    }
+
+  },
+
+  "background": false,
+
+  "billing": {
+
+    "payer": "developer"
+
+  },
+
+  "completed_at": 1777054145,
+
+  "error": null,
+
+  "frequency_penalty": 0,
+
+  "incomplete_details": null,
+
+  "instructions": "You are a helpful coding assistant specializing in Python.",
+
+  "max_output_tokens": null,
+
+  "max_tool_calls": null,
+
+  "moderation": null,
+
+  "parallel_tool_calls": true,
+
+  "presence_penalty": 0,
+
+  "previous_response_id": null,
+
+  "prompt_cache_key": null,
+
+  "prompt_cache_retention": "in_memory",
+
+  "reasoning": {
+
+    "effort": "medium",
+
+    "summary": null
+
+  },
+
+  "safety_identifier": null,
+
+  "service_tier": "default",
+
+  "store": false,
+
+  "temperature": 1,
+
+  "text": {
+
+    "format": {
+
+      "type": "text"
+
+    },
+
+    "verbosity": "medium"
+
+  },
+
+  "tool_choice": "auto",
+
+  "tools": [],
+
+  "top_logprobs": 0,
+
+  "top_p": 0.98,
+
+  "truncation": "disabled",
+
+  "user": null,
+
+  "metadata": {},
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -150,6 +484,147 @@ console.log(response)
 
 ```
 
+```
+
+{
+
+  "id": "resp_0397b95354e16b7b0169ebb1c23c208195ba8c75dd3c321a8b",
+
+  "object": "response",
+
+  "created_at": 1777054146,
+
+  "model": "gpt-5.4-pro-2026-03-05",
+
+  "output": [
+
+    {
+
+      "id": "rs_0397b95354e16b7b0169ebb1cc0bb08195b0ef5e3a34b7d7aa",
+
+      "type": "reasoning",
+
+      "summary": []
+
+    }
+
+  ],
+
+  "status": "incomplete",
+
+  "usage": {
+
+    "input_tokens": 76,
+
+    "output_tokens": 150,
+
+    "total_tokens": 226,
+
+    "input_tokens_details": {
+
+      "cached_tokens": 0
+
+    },
+
+    "output_tokens_details": {
+
+      "reasoning_tokens": 150
+
+    }
+
+  },
+
+  "background": false,
+
+  "billing": {
+
+    "payer": "developer"
+
+  },
+
+  "completed_at": null,
+
+  "error": null,
+
+  "frequency_penalty": 0,
+
+  "incomplete_details": {
+
+    "reason": "max_output_tokens"
+
+  },
+
+  "instructions": null,
+
+  "max_output_tokens": 150,
+
+  "max_tool_calls": null,
+
+  "moderation": null,
+
+  "parallel_tool_calls": true,
+
+  "presence_penalty": 0,
+
+  "previous_response_id": null,
+
+  "prompt_cache_key": null,
+
+  "prompt_cache_retention": "in_memory",
+
+  "reasoning": {
+
+    "effort": "medium",
+
+    "summary": null
+
+  },
+
+  "safety_identifier": null,
+
+  "service_tier": "default",
+
+  "store": false,
+
+  "temperature": 1,
+
+  "text": {
+
+    "format": {
+
+      "type": "text"
+
+    },
+
+    "verbosity": "medium"
+
+  },
+
+  "tool_choice": "auto",
+
+  "tools": [],
+
+  "top_logprobs": 0,
+
+  "top_p": 0.98,
+
+  "truncation": "disabled",
+
+  "user": null,
+
+  "metadata": {},
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Temperature Control**  — Using temperature for creative responses 
 
 TypeScript
@@ -177,6 +652,173 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+```
+
+{
+
+  "id": "resp_01b04056ffd5d9ac0169ebb1cc85348196a164e1d9e99ac1f5",
+
+  "object": "response",
+
+  "created_at": 1777054156,
+
+  "model": "gpt-5.4-pro-2026-03-05",
+
+  "output": [
+
+    {
+
+      "id": "rs_01b04056ffd5d9ac0169ebb1ee42688196859b0cd089b7924c",
+
+      "type": "reasoning",
+
+      "summary": []
+
+    },
+
+    {
+
+      "id": "msg_01b04056ffd5d9ac0169ebb1ee44248196aa66c63d28c6a59b",
+
+      "type": "message",
+
+      "status": "completed",
+
+      "content": [
+
+        {
+
+          "type": "output_text",
+
+          "annotations": [],
+
+          "logprobs": [],
+
+          "text": "Silent circuits dream  \nLearning patterns in the dark  \nDawn wakes metal minds"
+
+        }
+
+      ],
+
+      "phase": "final_answer",
+
+      "role": "assistant"
+
+    }
+
+  ],
+
+  "status": "completed",
+
+  "usage": {
+
+    "input_tokens": 13,
+
+    "output_tokens": 122,
+
+    "total_tokens": 135,
+
+    "input_tokens_details": {
+
+      "cached_tokens": 0
+
+    },
+
+    "output_tokens_details": {
+
+      "reasoning_tokens": 101
+
+    }
+
+  },
+
+  "background": false,
+
+  "billing": {
+
+    "payer": "developer"
+
+  },
+
+  "completed_at": 1777054190,
+
+  "error": null,
+
+  "frequency_penalty": 0,
+
+  "incomplete_details": null,
+
+  "instructions": null,
+
+  "max_output_tokens": null,
+
+  "max_tool_calls": null,
+
+  "moderation": null,
+
+  "parallel_tool_calls": true,
+
+  "presence_penalty": 0,
+
+  "previous_response_id": null,
+
+  "prompt_cache_key": null,
+
+  "prompt_cache_retention": "in_memory",
+
+  "reasoning": {
+
+    "effort": "medium",
+
+    "summary": null
+
+  },
+
+  "safety_identifier": null,
+
+  "service_tier": "default",
+
+  "store": false,
+
+  "temperature": 1,
+
+  "text": {
+
+    "format": {
+
+      "type": "text"
+
+    },
+
+    "verbosity": "medium"
+
+  },
+
+  "tool_choice": "auto",
+
+  "tools": [],
+
+  "top_logprobs": 0,
+
+  "top_p": 0.98,
+
+  "truncation": "disabled",
+
+  "user": null,
+
+  "metadata": {},
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -218,10 +860,177 @@ console.log(response)
 
 ```
 
+```
+
+{
+
+  "id": "resp_01e1e7671514bf440169ebb1ef8af88190b68b1e60a0cb59ed",
+
+  "object": "response",
+
+  "created_at": 1777054191,
+
+  "model": "gpt-5.4-pro-2026-03-05",
+
+  "output": [
+
+    {
+
+      "id": "rs_01e1e7671514bf440169ebb236f1e88190931dc758c55a4050",
+
+      "type": "reasoning",
+
+      "summary": []
+
+    },
+
+    {
+
+      "id": "msg_01e1e7671514bf440169ebb236f3a88190b6a99b6fc6389fde",
+
+      "type": "message",
+
+      "status": "completed",
+
+      "content": [
+
+        {
+
+          "type": "output_text",
+
+          "annotations": [],
+
+          "logprobs": [],
+
+          "text": "Step 1: Find their combined speed since they are moving toward each other.\n\n- Train from Chicago: **60 mph**\n- Train from New York: **80 mph**\n\nCombined speed:\n\n**60 + 80 = 140 mph**\n\nStep 2: Use the distance formula:\n\n\\[\n\\text{time}=\\frac{\\text{distance}}{\\text{speed}}\n\\]\n\n\\[\n\\text{time}=\\frac{900}{140}\n\\]\n\n\\[\n\\text{time}=6.428571\\text{ hours}\n\\]\n\nStep 3: Convert the decimal part to minutes.\n\n\\[\n0.428571 \\times 60 \\approx 25.7 \\text{ minutes}\n\\]\n\nSo they meet after about:\n\n**6 hours 26 minutes**\n\nFinal answer: **The trains meet about 6 hours 26 minutes after they leave.**"
+
+        }
+
+      ],
+
+      "phase": "final_answer",
+
+      "role": "assistant"
+
+    }
+
+  ],
+
+  "status": "completed",
+
+  "usage": {
+
+    "input_tokens": 48,
+
+    "output_tokens": 272,
+
+    "total_tokens": 320,
+
+    "input_tokens_details": {
+
+      "cached_tokens": 0
+
+    },
+
+    "output_tokens_details": {
+
+      "reasoning_tokens": 88
+
+    }
+
+  },
+
+  "background": false,
+
+  "billing": {
+
+    "payer": "developer"
+
+  },
+
+  "completed_at": 1777054263,
+
+  "error": null,
+
+  "frequency_penalty": 0,
+
+  "incomplete_details": null,
+
+  "instructions": null,
+
+  "max_output_tokens": null,
+
+  "max_tool_calls": null,
+
+  "moderation": null,
+
+  "parallel_tool_calls": true,
+
+  "presence_penalty": 0,
+
+  "previous_response_id": null,
+
+  "prompt_cache_key": null,
+
+  "prompt_cache_retention": "in_memory",
+
+  "reasoning": {
+
+    "effort": "medium",
+
+    "summary": null
+
+  },
+
+  "safety_identifier": null,
+
+  "service_tier": "default",
+
+  "store": false,
+
+  "temperature": 1,
+
+  "text": {
+
+    "format": {
+
+      "type": "text"
+
+    },
+
+    "verbosity": "medium"
+
+  },
+
+  "tool_choice": "auto",
+
+  "tools": [],
+
+  "top_logprobs": 0,
+
+  "top_p": 0.98,
+
+  "truncation": "disabled",
+
+  "user": null,
+
+  "metadata": {},
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-82)
-* [ Output ](#tab-panel-83)
+* [ Input ](#tab-panel-440)
+* [ Output ](#tab-panel-441)
 
 ▶input
 

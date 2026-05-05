@@ -102,8 +102,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-3758)
-* [  TypeScript ](#tab-panel-3759)
+* [  JavaScript ](#tab-panel-4258)
+* [  TypeScript ](#tab-panel-4259)
 
 JavaScript
 
@@ -113,6 +113,7 @@ import { Agent, routeAgentRequest, callable } from "agents";
 
 
 // Define the state shape
+
 
 // Create the agent
 
@@ -262,8 +263,8 @@ export default {
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-3750)
-* [  wrangler.toml ](#tab-panel-3751)
+* [  wrangler.jsonc ](#tab-panel-4250)
+* [  wrangler.toml ](#tab-panel-4251)
 
 JSONC
 
@@ -277,7 +278,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-30",
+  "compatibility_date": "2026-05-04",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -324,7 +325,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-30"
+compatibility_date = "2026-05-04"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -445,8 +446,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-3754)
-* [  TypeScript ](#tab-panel-3755)
+* [  JavaScript ](#tab-panel-4254)
+* [  TypeScript ](#tab-panel-4255)
 
 JavaScript
 
@@ -545,8 +546,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-3752)
-* [  TypeScript ](#tab-panel-3753)
+* [  JavaScript ](#tab-panel-4252)
+* [  TypeScript ](#tab-panel-4253)
 
 JavaScript
 
@@ -596,14 +597,15 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-3756)
-* [  TypeScript ](#tab-panel-3757)
+* [  JavaScript ](#tab-panel-4256)
+* [  TypeScript ](#tab-panel-4257)
 
 JavaScript
 
 ```
 
 import { useAgent } from "agents/react";
+
 
 // Pass the agent and state types to useAgent
 

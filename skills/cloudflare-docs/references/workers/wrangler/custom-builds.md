@@ -31,8 +31,8 @@ Custom builds are configured by adding a `[build]` section in your [Wrangler con
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-9949)
-* [  wrangler.toml ](#tab-panel-9950)
+* [  wrangler.jsonc ](#tab-panel-10355)
+* [  wrangler.toml ](#tab-panel-10356)
 
 JSONC
 

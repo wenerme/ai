@@ -655,6 +655,78 @@
     "size": 12648,
     "updatedAt": "2026-04-25T00:18:09.530Z"
   },
+  "anthropic-api/api/authentication/overview.md": {
+    "url": "https://platform.claude.com/docs/en/api/authentication/overview",
+    "skill": "anthropic-api",
+    "etag": "W/\"1836-19df4da1068\"",
+    "lastModified": "Mon, 04 May 2026 21:17:05 GMT",
+    "size": 6196,
+    "updatedAt": "2026-05-05T00:23:37.696Z"
+  },
+  "anthropic-docs/build-with-claude/workload-identity-federation.md": {
+    "url": "https://platform.claude.com/docs/en/build-with-claude/workload-identity-federation",
+    "skill": "anthropic-docs",
+    "etag": "W/\"5168-19df4da1068\"",
+    "lastModified": "Mon, 04 May 2026 21:17:05 GMT",
+    "size": 20831,
+    "updatedAt": "2026-05-05T00:23:38.012Z"
+  },
+  "anthropic-api/api/authentication/wif-reference.md": {
+    "url": "https://platform.claude.com/docs/en/api/authentication/wif-reference",
+    "skill": "anthropic-api",
+    "etag": "W/\"44fa-19df4da1068\"",
+    "lastModified": "Mon, 04 May 2026 21:17:05 GMT",
+    "size": 17657,
+    "updatedAt": "2026-05-05T00:23:38.350Z"
+  },
+  "anthropic-docs/build-with-claude/wif-providers/aws.md": {
+    "url": "https://platform.claude.com/docs/en/build-with-claude/wif-providers/aws",
+    "skill": "anthropic-docs",
+    "etag": "W/\"77db-19df4da1068\"",
+    "lastModified": "Mon, 04 May 2026 21:17:05 GMT",
+    "size": 30683,
+    "updatedAt": "2026-05-05T00:23:38.682Z"
+  },
+  "anthropic-docs/build-with-claude/wif-providers/gcp.md": {
+    "url": "https://platform.claude.com/docs/en/build-with-claude/wif-providers/gcp",
+    "skill": "anthropic-docs",
+    "etag": "W/\"4d9a-19df4da1068\"",
+    "lastModified": "Mon, 04 May 2026 21:17:05 GMT",
+    "size": 19866,
+    "updatedAt": "2026-05-05T00:23:38.988Z"
+  },
+  "anthropic-docs/build-with-claude/wif-providers/azure.md": {
+    "url": "https://platform.claude.com/docs/en/build-with-claude/wif-providers/azure",
+    "skill": "anthropic-docs",
+    "etag": "W/\"8b08-19df4da1068\"",
+    "lastModified": "Mon, 04 May 2026 21:17:05 GMT",
+    "size": 35586,
+    "updatedAt": "2026-05-05T00:23:39.284Z"
+  },
+  "anthropic-docs/build-with-claude/wif-providers/github-actions.md": {
+    "url": "https://platform.claude.com/docs/en/build-with-claude/wif-providers/github-actions",
+    "skill": "anthropic-docs",
+    "etag": "W/\"3436-19df4da1068\"",
+    "lastModified": "Mon, 04 May 2026 21:17:05 GMT",
+    "size": 13364,
+    "updatedAt": "2026-05-05T00:23:39.599Z"
+  },
+  "anthropic-docs/build-with-claude/wif-providers/kubernetes.md": {
+    "url": "https://platform.claude.com/docs/en/build-with-claude/wif-providers/kubernetes",
+    "skill": "anthropic-docs",
+    "etag": "W/\"3335-19df4da1068\"",
+    "lastModified": "Mon, 04 May 2026 21:17:05 GMT",
+    "size": 13109,
+    "updatedAt": "2026-05-05T00:23:39.981Z"
+  },
+  "anthropic-docs/build-with-claude/wif-providers/okta.md": {
+    "url": "https://platform.claude.com/docs/en/build-with-claude/wif-providers/okta",
+    "skill": "anthropic-docs",
+    "etag": "W/\"51d4-19df4da1068\"",
+    "lastModified": "Mon, 04 May 2026 21:17:05 GMT",
+    "size": 20948,
+    "updatedAt": "2026-05-05T00:23:40.295Z"
+  },
   "anthropic-docs/build-with-claude/usage-cost-api.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/usage-cost-api",
     "skill": "anthropic-docs",

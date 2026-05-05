@@ -10,6 +10,8 @@
 
 Response caching allows you to cache responses for identical API requests. When a cached response is available, OpenRouter returns it immediately from cache with no billing (all billable usage counters are reported as `0`), reducing both latency and cost.
 
+Response caching is **model-agnostic** and works with every model available on OpenRouter across all [supported endpoints](#supported-endpoints), regardless of provider. Caching operates at the OpenRouter layer before the request reaches any provider, so no provider-side support is required.
+
 Both streaming and non-streaming requests are eligible for caching. Only successful (`200 OK`) responses are cached. Error responses, rate limit responses, and partial results are never cached. Responses containing tool calls are cached normally since they are part of a successful completion. For streaming requests, the cached response is replayed through the same streaming pipeline, so the client receives the same content chunks on a cache hit. The `id` field, `created` timestamp, and `X-Generation-Id` response header in each chunk reflect the new cache-hit generation record, not the original.
 
 ## Enabling Caching
@@ -198,6 +200,8 @@ Example preset configuration:
 ## How It Works
 
 Two requests are considered identical when they share the same API key, model, endpoint type, streaming mode, and request body (including all parameters). When caching is enabled, OpenRouter generates a cache key from these inputs. If an identical request has been made before and the cached response has not expired, the cached response is returned immediately. Changing any of these–including the model, endpoint, or switching between streaming and non-streaming–produces a different cache key and a cache miss.
+
+Since caching operates at the OpenRouter layer before the request is forwarded, it works with every model and provider across the [supported endpoint types](#supported-endpoints).
 
 Cache is **scoped to your API key**. Different API keys, even under the same account or organization, do not share cache. Rotating your API key will result in an empty cache for the new key.
 

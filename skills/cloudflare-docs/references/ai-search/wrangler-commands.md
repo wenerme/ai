@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List all AI Search instances
 
-* [  npm ](#tab-panel-4208)
-* [  pnpm ](#tab-panel-4209)
-* [  yarn ](#tab-panel-4210)
+* [  npm ](#tab-panel-4512)
+* [  pnpm ](#tab-panel-4513)
+* [  yarn ](#tab-panel-4514)
 
 Terminal window
 
@@ -47,6 +47,8 @@ yarn wrangler ai-search list
 
 ```
 
+* `--namespace` ` string ` alias: --n default: default  
+The namespace to list instances from.
 * `--json` ` boolean ` default: false  
 Return output as clean JSON
 * `--page` ` number ` default: 1  
@@ -75,9 +77,9 @@ Automatically provision draft bindings with new resources
 
 Create a new AI Search instance
 
-* [  npm ](#tab-panel-4211)
-* [  pnpm ](#tab-panel-4212)
-* [  yarn ](#tab-panel-4213)
+* [  npm ](#tab-panel-4515)
+* [  pnpm ](#tab-panel-4516)
+* [  yarn ](#tab-panel-4517)
 
 Terminal window
 
@@ -107,7 +109,9 @@ yarn wrangler ai-search create [NAME]
 ```
 
 * `[NAME]` ` string ` required  
-The name of the AI Search instance to create (must be unique).
+The name of the AI Search instance to create (must be unique within its namespace).
+* `--namespace` ` string ` alias: --n  
+The namespace to create the instance in.
 * `--source` ` string `  
 Data source identifier (R2 bucket name or web URL).
 * `--type` ` string `  
@@ -162,9 +166,9 @@ Automatically provision draft bindings with new resources
 
 Get details of an AI Search instance
 
-* [  npm ](#tab-panel-4214)
-* [  pnpm ](#tab-panel-4215)
-* [  yarn ](#tab-panel-4216)
+* [  npm ](#tab-panel-4518)
+* [  pnpm ](#tab-panel-4519)
+* [  yarn ](#tab-panel-4520)
 
 Terminal window
 
@@ -195,6 +199,8 @@ yarn wrangler ai-search get [NAME]
 
 * `[NAME]` ` string ` required  
 The name of the AI Search instance.
+* `--namespace` ` string ` alias: --n default: default  
+The namespace the instance belongs to.
 * `--json` ` boolean ` default: false  
 Return output as clean JSON
 
@@ -219,9 +225,9 @@ Automatically provision draft bindings with new resources
 
 Update an AI Search instance configuration
 
-* [  npm ](#tab-panel-4217)
-* [  pnpm ](#tab-panel-4218)
-* [  yarn ](#tab-panel-4219)
+* [  npm ](#tab-panel-4521)
+* [  pnpm ](#tab-panel-4522)
+* [  yarn ](#tab-panel-4523)
 
 Terminal window
 
@@ -252,6 +258,8 @@ yarn wrangler ai-search update [NAME]
 
 * `[NAME]` ` string ` required  
 The name of the AI Search instance to update.
+* `--namespace` ` string ` alias: --n default: default  
+The namespace the instance belongs to.
 * `--embedding-model` ` string `  
 Update the embedding model.
 * `--generation-model` ` string `  
@@ -298,9 +306,9 @@ Automatically provision draft bindings with new resources
 
 Delete an AI Search instance
 
-* [  npm ](#tab-panel-4220)
-* [  pnpm ](#tab-panel-4221)
-* [  yarn ](#tab-panel-4222)
+* [  npm ](#tab-panel-4524)
+* [  pnpm ](#tab-panel-4525)
+* [  yarn ](#tab-panel-4526)
 
 Terminal window
 
@@ -331,6 +339,8 @@ yarn wrangler ai-search delete [NAME]
 
 * `[NAME]` ` string ` required  
 The name of the AI Search instance to delete.
+* `--namespace` ` string ` alias: --n default: default  
+The namespace the instance belongs to.
 * `--force` ` boolean ` alias: --y default: false  
 Skip confirmation
 
@@ -355,9 +365,9 @@ Automatically provision draft bindings with new resources
 
 Get usage statistics for an AI Search instance
 
-* [  npm ](#tab-panel-4223)
-* [  pnpm ](#tab-panel-4224)
-* [  yarn ](#tab-panel-4225)
+* [  npm ](#tab-panel-4527)
+* [  pnpm ](#tab-panel-4528)
+* [  yarn ](#tab-panel-4529)
 
 Terminal window
 
@@ -388,6 +398,8 @@ yarn wrangler ai-search stats [NAME]
 
 * `[NAME]` ` string ` required  
 The name of the AI Search instance.
+* `--namespace` ` string ` alias: --n default: default  
+The namespace the instance belongs to.
 * `--json` ` boolean ` default: false  
 Return output as clean JSON
 
@@ -412,9 +424,9 @@ Automatically provision draft bindings with new resources
 
 Execute a semantic search query against an AI Search instance
 
-* [  npm ](#tab-panel-4226)
-* [  pnpm ](#tab-panel-4227)
-* [  yarn ](#tab-panel-4228)
+* [  npm ](#tab-panel-4530)
+* [  pnpm ](#tab-panel-4531)
+* [  yarn ](#tab-panel-4532)
 
 Terminal window
 
@@ -445,6 +457,8 @@ yarn wrangler ai-search search [NAME]
 
 * `[NAME]` ` string ` required  
 The name of the AI Search instance.
+* `--namespace` ` string ` alias: --n default: default  
+The namespace the instance belongs to.
 * `--query` ` string ` required  
 The search query text.
 * `--max-num-results` ` number `  
@@ -457,6 +471,299 @@ Override reranking setting.
 Metadata filter as key=value (repeatable, e.g. --filter type=docs --filter lang=en).
 * `--json` ` boolean ` default: false  
 Return output as clean JSON
+
+Global flags
+
+* `--v` ` boolean ` alias: --version  
+Show version number
+* `--cwd` ` string `  
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c  
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e  
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `  
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true  
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
+Automatically provision draft bindings with new resources
+
+## `ai-search namespace list`
+
+List all AI Search namespaces
+
+* [  npm ](#tab-panel-4533)
+* [  pnpm ](#tab-panel-4534)
+* [  yarn ](#tab-panel-4535)
+
+Terminal window
+
+```
+
+npx wrangler ai-search namespace list
+
+
+```
+
+Terminal window
+
+```
+
+pnpm wrangler ai-search namespace list
+
+
+```
+
+Terminal window
+
+```
+
+yarn wrangler ai-search namespace list
+
+
+```
+
+* `--json` ` boolean ` default: false  
+Return output as clean JSON
+* `--page` ` number ` default: 1  
+Page number of the results, can configure page size using "per-page"
+* `--per-page` ` number `  
+Number of namespaces to show per page
+* `--search` ` string `  
+Filter namespaces whose name or description contains this string (case-insensitive).
+
+Global flags
+
+* `--v` ` boolean ` alias: --version  
+Show version number
+* `--cwd` ` string `  
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c  
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e  
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `  
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true  
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
+Automatically provision draft bindings with new resources
+
+## `ai-search namespace create`
+
+Create a new AI Search namespace
+
+* [  npm ](#tab-panel-4536)
+* [  pnpm ](#tab-panel-4537)
+* [  yarn ](#tab-panel-4538)
+
+Terminal window
+
+```
+
+npx wrangler ai-search namespace create [NAME]
+
+
+```
+
+Terminal window
+
+```
+
+pnpm wrangler ai-search namespace create [NAME]
+
+
+```
+
+Terminal window
+
+```
+
+yarn wrangler ai-search namespace create [NAME]
+
+
+```
+
+* `[NAME]` ` string ` required  
+The name of the AI Search namespace to create.
+* `--description` ` string `  
+Optional description for the namespace (max 256 chars).
+* `--json` ` boolean ` default: false  
+Return output as clean JSON
+
+Global flags
+
+* `--v` ` boolean ` alias: --version  
+Show version number
+* `--cwd` ` string `  
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c  
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e  
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `  
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true  
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
+Automatically provision draft bindings with new resources
+
+## `ai-search namespace get`
+
+Get details of an AI Search namespace
+
+* [  npm ](#tab-panel-4539)
+* [  pnpm ](#tab-panel-4540)
+* [  yarn ](#tab-panel-4541)
+
+Terminal window
+
+```
+
+npx wrangler ai-search namespace get [NAME]
+
+
+```
+
+Terminal window
+
+```
+
+pnpm wrangler ai-search namespace get [NAME]
+
+
+```
+
+Terminal window
+
+```
+
+yarn wrangler ai-search namespace get [NAME]
+
+
+```
+
+* `[NAME]` ` string ` required  
+The name of the AI Search namespace.
+* `--json` ` boolean ` default: false  
+Return output as clean JSON
+
+Global flags
+
+* `--v` ` boolean ` alias: --version  
+Show version number
+* `--cwd` ` string `  
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c  
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e  
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `  
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true  
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
+Automatically provision draft bindings with new resources
+
+## `ai-search namespace update`
+
+Update an AI Search namespace
+
+* [  npm ](#tab-panel-4542)
+* [  pnpm ](#tab-panel-4543)
+* [  yarn ](#tab-panel-4544)
+
+Terminal window
+
+```
+
+npx wrangler ai-search namespace update [NAME]
+
+
+```
+
+Terminal window
+
+```
+
+pnpm wrangler ai-search namespace update [NAME]
+
+
+```
+
+Terminal window
+
+```
+
+yarn wrangler ai-search namespace update [NAME]
+
+
+```
+
+* `[NAME]` ` string ` required  
+The name of the AI Search namespace to update.
+* `--description` ` string `  
+Updated description for the namespace (max 256 chars).
+* `--json` ` boolean ` default: false  
+Return output as clean JSON
+
+Global flags
+
+* `--v` ` boolean ` alias: --version  
+Show version number
+* `--cwd` ` string `  
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c  
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e  
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `  
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true  
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
+Automatically provision draft bindings with new resources
+
+## `ai-search namespace delete`
+
+Delete an AI Search namespace
+
+* [  npm ](#tab-panel-4545)
+* [  pnpm ](#tab-panel-4546)
+* [  yarn ](#tab-panel-4547)
+
+Terminal window
+
+```
+
+npx wrangler ai-search namespace delete [NAME]
+
+
+```
+
+Terminal window
+
+```
+
+pnpm wrangler ai-search namespace delete [NAME]
+
+
+```
+
+Terminal window
+
+```
+
+yarn wrangler ai-search namespace delete [NAME]
+
+
+```
+
+* `[NAME]` ` string ` required  
+The name of the AI Search namespace to delete.
+* `--force` ` boolean ` alias: --y default: false  
+Skip confirmation
 
 Global flags
 

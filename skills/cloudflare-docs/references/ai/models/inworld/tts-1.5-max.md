@@ -63,6 +63,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-284)
+* [ Raw response ](#tab-panel-285)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/simple-speech.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Slow Narration**  — Slower speech for narration 
@@ -100,6 +126,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-286)
+* [ Raw response ](#tab-panel-287)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/slow-narration.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -143,6 +195,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-288)
+* [ Raw response ](#tab-panel-289)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/high-quality-audio.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **With Text Normalization**  — Expand numbers and abbreviations before synthesis 
 
 TypeScript
@@ -182,10 +260,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-290)
+* [ Raw response ](#tab-panel-291)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/with-text-normalization.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-52)
-* [ Output ](#tab-panel-53)
+* [ Input ](#tab-panel-292)
+* [ Output ](#tab-panel-293)
 
 text
 

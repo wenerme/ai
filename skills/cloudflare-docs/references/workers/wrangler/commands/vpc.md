@@ -18,9 +18,9 @@ Manage [Workers VPC](https://developers.cloudflare.com/workers-vpc/) services us
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-9746)
-* [  pnpm ](#tab-panel-9747)
-* [  yarn ](#tab-panel-9748)
+* [  npm ](#tab-panel-10152)
+* [  pnpm ](#tab-panel-10153)
+* [  yarn ](#tab-panel-10154)
 
 Terminal window
 
@@ -95,9 +95,9 @@ Automatically provision draft bindings with new resources
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-9749)
-* [  pnpm ](#tab-panel-9750)
-* [  yarn ](#tab-panel-9751)
+* [  npm ](#tab-panel-10155)
+* [  pnpm ](#tab-panel-10156)
+* [  yarn ](#tab-panel-10157)
 
 Terminal window
 
@@ -150,9 +150,9 @@ Automatically provision draft bindings with new resources
 
 Get a VPC service
 
-* [  npm ](#tab-panel-9752)
-* [  pnpm ](#tab-panel-9753)
-* [  yarn ](#tab-panel-9754)
+* [  npm ](#tab-panel-10158)
+* [  pnpm ](#tab-panel-10159)
+* [  yarn ](#tab-panel-10160)
 
 Terminal window
 
@@ -205,9 +205,9 @@ Automatically provision draft bindings with new resources
 
 List VPC services
 
-* [  npm ](#tab-panel-9755)
-* [  pnpm ](#tab-panel-9756)
-* [  yarn ](#tab-panel-9757)
+* [  npm ](#tab-panel-10161)
+* [  pnpm ](#tab-panel-10162)
+* [  yarn ](#tab-panel-10163)
 
 Terminal window
 
@@ -257,9 +257,9 @@ Automatically provision draft bindings with new resources
 
 Update a VPC service
 
-* [  npm ](#tab-panel-9758)
-* [  pnpm ](#tab-panel-9759)
-* [  yarn ](#tab-panel-9760)
+* [  npm ](#tab-panel-10164)
+* [  pnpm ](#tab-panel-10165)
+* [  yarn ](#tab-panel-10166)
 
 Terminal window
 

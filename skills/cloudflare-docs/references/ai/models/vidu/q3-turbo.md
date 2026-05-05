@@ -59,6 +59,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-602)
+* [ Raw response ](#tab-panel-603)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video.cf.vidu.com/infer_28/tasks/26/0417/05/942602832110972928/creation-01/video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **High Resolution**  — Generate at 1080p 
@@ -92,6 +118,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-604)
+* [ Raw response ](#tab-panel-605)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video.cf.vidu.com/infer_44/tasks/26/0417/05/942602894400569344/creation-01/video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -133,6 +185,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-606)
+* [ Raw response ](#tab-panel-607)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video.cf.vidu.com/infer_48/tasks/26/0417/05/942603057143758848/creation-01/video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Extended Duration**  — Longer video clip 
 
 TypeScript
@@ -164,6 +242,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-608)
+* [ Raw response ](#tab-panel-609)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video.cf.vidu.com/infer_84/tasks/26/0417/06/942603162785705984/creation-01/video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -201,10 +305,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-610)
+* [ Raw response ](#tab-panel-611)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video.cf.vidu.com/infer_68/tasks/26/0417/06/942603796612128768/creation-01/video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-112)
-* [ Output ](#tab-panel-113)
+* [ Input ](#tab-panel-612)
+* [ Output ](#tab-panel-613)
 
 prompt
 

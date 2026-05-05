@@ -18,9 +18,9 @@ Queues Wrangler commands use REST APIs to interact with the control plane. This 
 
 List queues
 
-* [  npm ](#tab-panel-7005)
-* [  pnpm ](#tab-panel-7006)
-* [  yarn ](#tab-panel-7007)
+* [  npm ](#tab-panel-7342)
+* [  pnpm ](#tab-panel-7343)
+* [  yarn ](#tab-panel-7344)
 
 Terminal window
 
@@ -73,9 +73,9 @@ Automatically provision draft bindings with new resources
 
 Create a queue
 
-* [  npm ](#tab-panel-7008)
-* [  pnpm ](#tab-panel-7009)
-* [  yarn ](#tab-panel-7010)
+* [  npm ](#tab-panel-7345)
+* [  pnpm ](#tab-panel-7346)
+* [  yarn ](#tab-panel-7347)
 
 Terminal window
 
@@ -132,9 +132,9 @@ Automatically provision draft bindings with new resources
 
 Update a queue
 
-* [  npm ](#tab-panel-7011)
-* [  pnpm ](#tab-panel-7012)
-* [  yarn ](#tab-panel-7013)
+* [  npm ](#tab-panel-7348)
+* [  pnpm ](#tab-panel-7349)
+* [  yarn ](#tab-panel-7350)
 
 Terminal window
 
@@ -191,9 +191,9 @@ Automatically provision draft bindings with new resources
 
 Delete a queue
 
-* [  npm ](#tab-panel-7014)
-* [  pnpm ](#tab-panel-7015)
-* [  yarn ](#tab-panel-7016)
+* [  npm ](#tab-panel-7351)
+* [  pnpm ](#tab-panel-7352)
+* [  yarn ](#tab-panel-7353)
 
 Terminal window
 
@@ -246,9 +246,9 @@ Automatically provision draft bindings with new resources
 
 Get queue information
 
-* [  npm ](#tab-panel-7017)
-* [  pnpm ](#tab-panel-7018)
-* [  yarn ](#tab-panel-7019)
+* [  npm ](#tab-panel-7354)
+* [  pnpm ](#tab-panel-7355)
+* [  yarn ](#tab-panel-7356)
 
 Terminal window
 
@@ -301,9 +301,9 @@ Automatically provision draft bindings with new resources
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-7020)
-* [  pnpm ](#tab-panel-7021)
-* [  yarn ](#tab-panel-7022)
+* [  npm ](#tab-panel-7357)
+* [  pnpm ](#tab-panel-7358)
+* [  yarn ](#tab-panel-7359)
 
 Terminal window
 
@@ -370,9 +370,9 @@ Automatically provision draft bindings with new resources
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-7023)
-* [  pnpm ](#tab-panel-7024)
-* [  yarn ](#tab-panel-7025)
+* [  npm ](#tab-panel-7360)
+* [  pnpm ](#tab-panel-7361)
+* [  yarn ](#tab-panel-7362)
 
 Terminal window
 
@@ -423,13 +423,70 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
 
+## `queues consumer list`
+
+List consumers for a queue
+
+* [  npm ](#tab-panel-7363)
+* [  pnpm ](#tab-panel-7364)
+* [  yarn ](#tab-panel-7365)
+
+Terminal window
+
+```
+
+npx wrangler queues consumer list [QUEUE-NAME]
+
+
+```
+
+Terminal window
+
+```
+
+pnpm wrangler queues consumer list [QUEUE-NAME]
+
+
+```
+
+Terminal window
+
+```
+
+yarn wrangler queues consumer list [QUEUE-NAME]
+
+
+```
+
+* `[QUEUE-NAME]` ` string ` required  
+Name of the queue
+* `--json` ` boolean ` default: false  
+Output in JSON format
+
+Global flags
+
+* `--v` ` boolean ` alias: --version  
+Show version number
+* `--cwd` ` string `  
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c  
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e  
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `  
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true  
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
+Automatically provision draft bindings with new resources
+
 ## `queues consumer http add`
 
 Add a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-7026)
-* [  pnpm ](#tab-panel-7027)
-* [  yarn ](#tab-panel-7028)
+* [  npm ](#tab-panel-7366)
+* [  pnpm ](#tab-panel-7367)
+* [  yarn ](#tab-panel-7368)
 
 Terminal window
 
@@ -492,9 +549,9 @@ Automatically provision draft bindings with new resources
 
 Remove a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-7029)
-* [  pnpm ](#tab-panel-7030)
-* [  yarn ](#tab-panel-7031)
+* [  npm ](#tab-panel-7369)
+* [  pnpm ](#tab-panel-7370)
+* [  yarn ](#tab-panel-7371)
 
 Terminal window
 
@@ -543,13 +600,70 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
 
+## `queues consumer http list`
+
+List HTTP pull consumers for a queue
+
+* [  npm ](#tab-panel-7372)
+* [  pnpm ](#tab-panel-7373)
+* [  yarn ](#tab-panel-7374)
+
+Terminal window
+
+```
+
+npx wrangler queues consumer http list [QUEUE-NAME]
+
+
+```
+
+Terminal window
+
+```
+
+pnpm wrangler queues consumer http list [QUEUE-NAME]
+
+
+```
+
+Terminal window
+
+```
+
+yarn wrangler queues consumer http list [QUEUE-NAME]
+
+
+```
+
+* `[QUEUE-NAME]` ` string ` required  
+Name of the queue
+* `--json` ` boolean ` default: false  
+Output in JSON format
+
+Global flags
+
+* `--v` ` boolean ` alias: --version  
+Show version number
+* `--cwd` ` string `  
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c  
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e  
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `  
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true  
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
+Automatically provision draft bindings with new resources
+
 ## `queues consumer worker add`
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-7032)
-* [  pnpm ](#tab-panel-7033)
-* [  yarn ](#tab-panel-7034)
+* [  npm ](#tab-panel-7375)
+* [  pnpm ](#tab-panel-7376)
+* [  yarn ](#tab-panel-7377)
 
 Terminal window
 
@@ -616,9 +730,9 @@ Automatically provision draft bindings with new resources
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-7035)
-* [  pnpm ](#tab-panel-7036)
-* [  yarn ](#tab-panel-7037)
+* [  npm ](#tab-panel-7378)
+* [  pnpm ](#tab-panel-7379)
+* [  yarn ](#tab-panel-7380)
 
 Terminal window
 
@@ -669,13 +783,70 @@ Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
 
+## `queues consumer worker list`
+
+List worker consumers for a queue
+
+* [  npm ](#tab-panel-7381)
+* [  pnpm ](#tab-panel-7382)
+* [  yarn ](#tab-panel-7383)
+
+Terminal window
+
+```
+
+npx wrangler queues consumer worker list [QUEUE-NAME]
+
+
+```
+
+Terminal window
+
+```
+
+pnpm wrangler queues consumer worker list [QUEUE-NAME]
+
+
+```
+
+Terminal window
+
+```
+
+yarn wrangler queues consumer worker list [QUEUE-NAME]
+
+
+```
+
+* `[QUEUE-NAME]` ` string ` required  
+Name of the queue
+* `--json` ` boolean ` default: false  
+Output in JSON format
+
+Global flags
+
+* `--v` ` boolean ` alias: --version  
+Show version number
+* `--cwd` ` string `  
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` ` string ` alias: --c  
+Path to Wrangler configuration file
+* `--env` ` string ` alias: --e  
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` ` string `  
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` ` boolean ` aliases: --x-provision default: true  
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
+Automatically provision draft bindings with new resources
+
 ## `queues pause-delivery`
 
 Pause message delivery for a queue
 
-* [  npm ](#tab-panel-7038)
-* [  pnpm ](#tab-panel-7039)
-* [  yarn ](#tab-panel-7040)
+* [  npm ](#tab-panel-7384)
+* [  pnpm ](#tab-panel-7385)
+* [  yarn ](#tab-panel-7386)
 
 Terminal window
 
@@ -728,9 +899,9 @@ Automatically provision draft bindings with new resources
 
 Resume message delivery for a queue
 
-* [  npm ](#tab-panel-7041)
-* [  pnpm ](#tab-panel-7042)
-* [  yarn ](#tab-panel-7043)
+* [  npm ](#tab-panel-7387)
+* [  pnpm ](#tab-panel-7388)
+* [  yarn ](#tab-panel-7389)
 
 Terminal window
 
@@ -783,9 +954,9 @@ Automatically provision draft bindings with new resources
 
 Purge messages from a queue
 
-* [  npm ](#tab-panel-7044)
-* [  pnpm ](#tab-panel-7045)
-* [  yarn ](#tab-panel-7046)
+* [  npm ](#tab-panel-7390)
+* [  pnpm ](#tab-panel-7391)
+* [  yarn ](#tab-panel-7392)
 
 Terminal window
 
@@ -840,9 +1011,9 @@ Automatically provision draft bindings with new resources
 
 Create a new event subscription for a queue
 
-* [  npm ](#tab-panel-7047)
-* [  pnpm ](#tab-panel-7048)
-* [  yarn ](#tab-panel-7049)
+* [  npm ](#tab-panel-7393)
+* [  pnpm ](#tab-panel-7394)
+* [  yarn ](#tab-panel-7395)
 
 Terminal window
 
@@ -909,9 +1080,9 @@ Automatically provision draft bindings with new resources
 
 List event subscriptions for a queue
 
-* [  npm ](#tab-panel-7050)
-* [  pnpm ](#tab-panel-7051)
-* [  yarn ](#tab-panel-7052)
+* [  npm ](#tab-panel-7396)
+* [  pnpm ](#tab-panel-7397)
+* [  yarn ](#tab-panel-7398)
 
 Terminal window
 
@@ -970,9 +1141,9 @@ Automatically provision draft bindings with new resources
 
 Get details about a specific event subscription
 
-* [  npm ](#tab-panel-7053)
-* [  pnpm ](#tab-panel-7054)
-* [  yarn ](#tab-panel-7055)
+* [  npm ](#tab-panel-7399)
+* [  pnpm ](#tab-panel-7400)
+* [  yarn ](#tab-panel-7401)
 
 Terminal window
 
@@ -1029,9 +1200,9 @@ Automatically provision draft bindings with new resources
 
 Delete an event subscription from a queue
 
-* [  npm ](#tab-panel-7056)
-* [  pnpm ](#tab-panel-7057)
-* [  yarn ](#tab-panel-7058)
+* [  npm ](#tab-panel-7402)
+* [  pnpm ](#tab-panel-7403)
+* [  yarn ](#tab-panel-7404)
 
 Terminal window
 
@@ -1088,9 +1259,9 @@ Automatically provision draft bindings with new resources
 
 Update an existing event subscription
 
-* [  npm ](#tab-panel-7059)
-* [  pnpm ](#tab-panel-7060)
-* [  yarn ](#tab-panel-7061)
+* [  npm ](#tab-panel-7405)
+* [  pnpm ](#tab-panel-7406)
+* [  yarn ](#tab-panel-7407)
 
 Terminal window
 

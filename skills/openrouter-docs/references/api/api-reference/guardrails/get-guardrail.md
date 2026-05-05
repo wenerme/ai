@@ -4,7 +4,7 @@
 
 # Get a guardrail
 
-GET https://openrouter.ai/api/v1//guardrails/{id}
+GET https://openrouter.ai/api/v1/guardrails/{id}
 
 Get a single guardrail by ID. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //guardrails/{id}:
+  /guardrails/{id}:
     get:
       operationId: get-guardrail
       summary: Get a guardrail
@@ -266,7 +266,7 @@ components:
 ```python Guardrails_getGuardrail_example
 import requests
 
-url = "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000"
+url = "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -276,7 +276,7 @@ print(response.json())
 ```
 
 ```javascript Guardrails_getGuardrail_example
-const url = 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000';
+const url = 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -299,7 +299,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000"
+	url := "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -320,7 +320,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000")
+url = URI("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -336,7 +336,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -347,7 +347,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -359,7 +359,7 @@ echo $response->getBody();
 ```csharp Guardrails_getGuardrail_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000");
+var client = new RestClient("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -370,7 +370,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

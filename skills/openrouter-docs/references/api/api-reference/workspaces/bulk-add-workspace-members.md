@@ -4,7 +4,7 @@
 
 # Bulk add members to a workspace
 
-POST https://openrouter.ai/api/v1//workspaces/{id}/members/add
+POST https://openrouter.ai/api/v1/workspaces/{id}/members/add
 Content-Type: application/json
 
 Add multiple organization members to a workspace. Members are assigned the same role they hold in the organization. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //workspaces/{id}/members/add:
+  /workspaces/{id}/members/add:
     post:
       operationId: bulk-add-workspace-members
       summary: Bulk add members to a workspace
@@ -318,7 +318,7 @@ components:
 ```python Workspaces_bulkAddWorkspaceMembers_example
 import requests
 
-url = "https://openrouter.ai/api/v1//workspaces/production/members/add"
+url = "https://openrouter.ai/api/v1/workspaces/production/members/add"
 
 payload = { "user_ids": ["user_abc123", "user_def456"] }
 headers = {
@@ -332,7 +332,7 @@ print(response.json())
 ```
 
 ```javascript Workspaces_bulkAddWorkspaceMembers_example
-const url = 'https://openrouter.ai/api/v1//workspaces/production/members/add';
+const url = 'https://openrouter.ai/api/v1/workspaces/production/members/add';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -360,7 +360,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//workspaces/production/members/add"
+	url := "https://openrouter.ai/api/v1/workspaces/production/members/add"
 
 	payload := strings.NewReader("{\n  \"user_ids\": [\n    \"user_abc123\",\n    \"user_def456\"\n  ]\n}")
 
@@ -384,7 +384,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//workspaces/production/members/add")
+url = URI("https://openrouter.ai/api/v1/workspaces/production/members/add")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -402,7 +402,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//workspaces/production/members/add")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/workspaces/production/members/add")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"user_ids\": [\n    \"user_abc123\",\n    \"user_def456\"\n  ]\n}")
@@ -415,7 +415,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//workspaces/production/members/add', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/workspaces/production/members/add', [
   'body' => '{
   "user_ids": [
     "user_abc123",
@@ -434,7 +434,7 @@ echo $response->getBody();
 ```csharp Workspaces_bulkAddWorkspaceMembers_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//workspaces/production/members/add");
+var client = new RestClient("https://openrouter.ai/api/v1/workspaces/production/members/add");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -453,7 +453,7 @@ let parameters = ["user_ids": ["user_abc123", "user_def456"]] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//workspaces/production/members/add")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/workspaces/production/members/add")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

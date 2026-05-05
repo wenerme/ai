@@ -55,7 +55,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-534)
+* [ Raw response ](#tab-panel-535)
+
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/simple-generation.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/simple-generation.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -90,7 +116,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-536)
+* [ Raw response ](#tab-panel-537)
+
 ![Scene Composition](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/scene-composition.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/scene-composition.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Custom Size**  — Specify output dimensions 
 
@@ -125,7 +177,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-538)
+* [ Raw response ](#tab-panel-539)
+
 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/custom-size.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/custom-size.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **With Color Controls**  — Guide generation with specific brand colors 
 
@@ -178,7 +256,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-540)
+* [ Raw response ](#tab-panel-541)
+
 ![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/with-color-controls.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/with-color-controls.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Background Color**  — Set a specific background color 
 
@@ -221,12 +325,38 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-542)
+* [ Raw response ](#tab-panel-543)
+
 ![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/background-color.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/background-color.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-100)
-* [ Output ](#tab-panel-101)
+* [ Input ](#tab-panel-544)
+* [ Output ](#tab-panel-545)
 
 prompt
 

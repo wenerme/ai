@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Get started
 
-Smart Shield is available to all customers as an opt-in configuration.
+Smart Shield reduces the load on your origin server and improves content delivery by consolidating requests through Cloudflare's caching infrastructure. It is available to all customers as an opt-in configuration.
 
 ## Before you begin
 
-* You should have a Cloudflare account and [onboard your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
-* Also make sure the relevant DNS records are set to [proxied](https://developers.cloudflare.com/dns/proxy-status/).
+* You must have a Cloudflare account and [onboard your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
+* Verify that DNS records for the domain you want to protect are set to [proxied](https://developers.cloudflare.com/dns/proxy-status/). Smart Shield operates within Cloudflare's reverse proxy, so traffic from DNS-only records is not routed through it.
 
 ## Steps
 
@@ -26,30 +26,33 @@ Smart Shield is available to all customers as an opt-in configuration.
 3. (Optional) Explore the different [available packages](#packages-and-availability).
 4. Select **Get started for free** or choose a different package and select **Continue** to proceed to the guided onboarding flow.
 
-Access analytics and get insights through the [Observatory](https://developers.cloudflare.com/speed/observatory/) dashboard.
+After setup, you can monitor origin performance and cache effectiveness through the [Observatory](https://developers.cloudflare.com/speed/observatory/) dashboard.
 
 ## Packages and availability
 
+Pro, Business, and Enterprise customers have access to [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/) for monitoring origin availability across all packages.
+
 ### Smart Shield
 
+The base package for reducing origin load through caching and connection optimization.
+
 * Includes [Smart Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/) and [Connection Reuse](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/).
-* Pro, Business, and Enterprise customers also have access to [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/).
 
 ### Smart Shield + Argo
 
+Adds network path optimization on top of the base package. Use when visitors are geographically distant from the origin server.
+
 * Includes [Smart Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/), [Connection Reuse](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/), and [Argo Smart Routing](https://developers.cloudflare.com/smart-shield/configuration/argo/).
-* Pro, Business, and Enterprise customers also have access to [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/).
 
 ### Smart Shield Advanced
 
-* Includes [Smart Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/), [Connection Reuse](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/), [Argo Smart Routing](https://developers.cloudflare.com/smart-shield/configuration/argo/), and additional caching customization with [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) and [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/).
-* Pro, Business, and Enterprise customers also have access to [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/).
+The full package with additional caching customization through regional and persistent storage options.
+
+* Includes [Smart Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/), [Connection Reuse](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/), [Argo Smart Routing](https://developers.cloudflare.com/smart-shield/configuration/argo/), [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/), and [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/).
 
 Dedicated CDN Egress IPs
 
 Enterprise customers also have the option to configure [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), allowing you to increase origin security by only allowing traffic from a small list of IP addresses. If you are interested, reach out to your account team.
-
-Dedicated CDN Egress IPs will be available for other plans in the future.
 
 ## Further reading
 

@@ -65,6 +65,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-264)
+* [ Raw response ](#tab-panel-265)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3.1/nature-documentary.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Urban Time-lapse**  — City life time-lapse video 
@@ -102,6 +128,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-266)
+* [ Raw response ](#tab-panel-267)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3.1/urban-time-lapse.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -145,6 +197,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-268)
+* [ Raw response ](#tab-panel-269)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3.1/abstract-art.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Food Video**  — Appetizing food footage 
 
 TypeScript
@@ -184,10 +262,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-270)
+* [ Raw response ](#tab-panel-271)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3.1/food-video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-48)
-* [ Output ](#tab-panel-49)
+* [ Input ](#tab-panel-272)
+* [ Output ](#tab-panel-273)
 
 prompt
 

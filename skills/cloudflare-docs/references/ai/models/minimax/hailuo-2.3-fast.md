@@ -67,6 +67,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-312)
+* [ Raw response ](#tab-panel-313)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/eff40703-0339-4d1d-b66a-db050e878038/output.mp4",
+
+    "task_id": "388514752192863",
+
+    "status": "Success"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **High Resolution I2V**  — Animate a photo in 1080P 
@@ -106,6 +136,36 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-314)
+* [ Raw response ](#tab-panel-315)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/2b6251d2-d4ae-4d58-b12f-2609c50fadc2/output.mp4",
+
+    "task_id": "388515984507205",
+
+    "status": "Success"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -151,10 +211,40 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-316)
+* [ Raw response ](#tab-panel-317)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/b64303a0-0227-4d42-983a-dcaec397b6b1/output.mp4",
+
+    "task_id": "388515980755024",
+
+    "status": "Success"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-58)
-* [ Output ](#tab-panel-59)
+* [ Input ](#tab-panel-318)
+* [ Output ](#tab-panel-319)
 
 first\_frame\_image
 

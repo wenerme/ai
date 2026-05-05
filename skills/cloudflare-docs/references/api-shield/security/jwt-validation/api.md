@@ -62,45 +62,45 @@ Example
 
 {
 
-    "title": "Production JWT configuration",
+  "title": "Production JWT configuration",
 
-    "description": "This configuration checks the JWT in the authorization header or cookie.",
+  "description": "This configuration checks the JWT in the authorization header or cookie.",
 
-    "token_sources": [
+  "token_sources": [
 
-        "http.request.headers[\"authorization\"][0]",
+    "http.request.headers[\"authorization\"][0]",
 
-        "http.request.cookies[\"Authorization\"][0]"
+    "http.request.cookies[\"Authorization\"][0]"
 
-    ],
+  ],
 
-    "token_type": "jwt",
+  "token_type": "jwt",
 
-    "credentials": {
+  "credentials": {
 
-        "keys": [
+    "keys": [
 
-            {
+      {
 
-                "kty": "EC",
+        "kty": "EC",
 
-                "use": "sig",
+        "use": "sig",
 
-                "crv": "P-256",
+        "crv": "P-256",
 
-                "kid": "93UrzmNu1mqXs5cZcvCPkTlMHB2Jya30vSTkiBb0vhU",
+        "kid": "93UrzmNu1mqXs5cZcvCPkTlMHB2Jya30vSTkiBb0vhU",
 
-                "x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",
+        "x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",
 
-                "y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",
+        "y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",
 
-                "alg": "ES256"
+        "alg": "ES256"
 
-            }
+      }
 
-        ]
+    ]
 
-    }
+  }
 
 }
 
@@ -174,59 +174,59 @@ Example response
 
 {
 
-    "result": {
+  "result": {
 
-        "id": "d5902294-00c3-4aed-b517-57e752e9cd58",
+    "id": "d5902294-00c3-4aed-b517-57e752e9cd58",
 
-        "token_type": "JWT",
+    "token_type": "JWT",
 
-        "title": "Production JWT configuration",
+    "title": "Production JWT configuration",
 
-        "description": "This configuration checks the JWT in the authorization header or cookie.",
+    "description": "This configuration checks the JWT in the authorization header or cookie.",
 
-        "token_sources": [
+    "token_sources": [
 
-            "http.request.headers[\"authorization\"][0]",
+      "http.request.headers[\"authorization\"][0]",
 
-            "http.request.cookies[\"Authorization\"][0]"
+      "http.request.cookies[\"Authorization\"][0]"
 
-        ],
+    ],
 
-        "credentials": {
+    "credentials": {
 
-            "keys": [
+      "keys": [
 
-                {
+        {
 
-                    "x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",
+          "x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",
 
-                    "y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",
+          "y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",
 
-                    "alg": "ES256",
+          "alg": "ES256",
 
-                    "crv": "P-256",
+          "crv": "P-256",
 
-                    "kid": "93UrzmNu1mqXs5cZcvCPkTlMHB2Jya30vSTkiBb0vhU",
+          "kid": "93UrzmNu1mqXs5cZcvCPkTlMHB2Jya30vSTkiBb0vhU",
 
-                    "kty": "EC"
+          "kty": "EC"
 
-                }
+        }
 
-            ]
-
-        },
-
-        "created_at": "2023-11-08T16:45:17.236841Z",
-
-        "last_updated": "2023-11-08T16:45:17.236841Z"
+      ]
 
     },
 
-    "success": true,
+    "created_at": "2023-11-08T16:45:17.236841Z",
 
-    "errors": [],
+    "last_updated": "2023-11-08T16:45:17.236841Z"
 
-    "messages": []
+  },
+
+  "success": true,
+
+  "errors": [],
+
+  "messages": []
 
 }
 
@@ -279,10 +279,8 @@ Operators such as `or`, `and`, `eq`, and more are usable in expressions in the s
 
 The following functions can be used to interact with JWT Tokens on a request:
 
-| Function                                               | Description                                                                                                      | Notes                                                                                                                                        |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| is\_jwt\_valid(token\_configuration\_id String) bool   | True if the request has a valid token according to the token configuration with the ID token\_configuration\_id. | token\_configuration\_id must be the ID of an existing token configuration. This will return false if the token is missing from the request. |
-| is\_jwt\_present(token\_configuration\_id String) bool | True if the request has a token as configured in the token configuration with the ID token\_configuration\_id.   | token\_configuration\_id must be the ID of an existing token configuration.                                                                  |
+* [is\_jwt\_valid(token\_configuration\_id)](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#is%5Fjwt%5Fvalid) — Returns true if the request has a valid token according to the token configuration with the ID `token_configuration_id`.
+* [is\_jwt\_present(token\_configuration\_id)](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#is%5Fjwt%5Fpresent) — Returns true if the request has a token as configured in the token configuration with the ID `token_configuration_id`.
 
 ### Common use cases
 
@@ -328,37 +326,31 @@ Selector example
 
 {
 
-    "include": [
+  "include": [
 
-        {
+    {
 
-            "host": [
+      "host": ["v1.example.com", "v2.example.com"]
 
-                "v1.example.com",
+    }
 
-                "v2.example.com"
+  ],
 
-            ]
+  "exclude": [
 
-        }
+    {
 
-    ],
+      "operation_ids": [
 
-    "exclude": [
+        "f9c5615e-fe15-48ce-bec6-cfc1946f1bec", // POST v1.example.com/login
 
-        {
+        "56828eae-035a-4396-ba07-51c66d680a04" // POST v2.example.com/login
 
-            "operation_ids": [
+      ]
 
-                "f9c5615e-fe15-48ce-bec6-cfc1946f1bec", // POST v1.example.com/login
+    }
 
-                "56828eae-035a-4396-ba07-51c66d680a04"  // POST v2.example.com/login
-
-            ]
-
-        }
-
-    ]
+  ]
 
 }
 
@@ -428,171 +420,165 @@ Result
 
 {
 
-    "result": {
+  "result": {
 
-        "operations": [
+    "operations": [
 
-            {
+      {
 
-                "operation_id": "ed15fcb6-5a73-41cd-91af-8c61e5bb1cdb",
+        "operation_id": "ed15fcb6-5a73-41cd-91af-8c61e5bb1cdb",
 
-                "method": "GET",
+        "method": "GET",
 
-                "host": "example.com",
+        "host": "example.com",
 
-                "endpoint": "/api/accounts/{var1}",
+        "endpoint": "/api/accounts/{var1}",
 
-                "last_updated": "2023-05-24T14:54:34.806506Z",
+        "last_updated": "2023-05-24T14:54:34.806506Z",
 
-                "state": "ignored"
+        "state": "ignored"
 
-            },
+      },
 
-            {
+      {
 
-                "operation_id": "e7a582cd-3cfb-4061-ab5b-722e6e42f545",
+        "operation_id": "e7a582cd-3cfb-4061-ab5b-722e6e42f545",
 
-                "method": "GET",
+        "method": "GET",
 
-                "host": "v1.example.com",
+        "host": "v1.example.com",
 
-                "endpoint": "/api/accounts/{var1}",
+        "endpoint": "/api/accounts/{var1}",
 
-                "last_updated": "2023-05-24T14:54:34.806506Z",
+        "last_updated": "2023-05-24T14:54:34.806506Z",
 
-                "state": "included"
+        "state": "included"
 
-            },
+      },
 
-            {
+      {
 
-                "operation_id": "ddd5df5a-795c-40ce-b38c-38e9d7ef9ae8",
+        "operation_id": "ddd5df5a-795c-40ce-b38c-38e9d7ef9ae8",
 
-                "method": "GET",
+        "method": "GET",
 
-                "host": "v2.example.com",
+        "host": "v2.example.com",
 
-                "endpoint": "/api/accounts/{var1}",
+        "endpoint": "/api/accounts/{var1}",
 
-                "last_updated": "2023-05-24T14:54:34.806506Z",
+        "last_updated": "2023-05-24T14:54:34.806506Z",
 
-                "state": "included"
+        "state": "included"
 
-            },
+      },
 
-            {
+      {
 
-                "operation_id": "4d20befb-0120-45d5-9b29-5835fd41b44e",
+        "operation_id": "4d20befb-0120-45d5-9b29-5835fd41b44e",
 
-                "method": "GET",
+        "method": "GET",
 
-                "host": "v3.example.com",
+        "host": "v3.example.com",
 
-                "endpoint": "/api/accounts/{var1}",
+        "endpoint": "/api/accounts/{var1}",
 
-                "last_updated": "2023-05-24T14:54:34.806506Z",
+        "last_updated": "2023-05-24T14:54:34.806506Z",
 
-                "state": "ignored"
+        "state": "ignored"
 
-            },
+      },
 
-            {
+      {
 
-                "operation_id": "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+        "operation_id": "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
 
-                "method": "POST",
+        "method": "POST",
 
-                "host": "v1.example.com",
+        "host": "v1.example.com",
 
-                "endpoint": "/login",
+        "endpoint": "/login",
 
-                "last_updated": "2023-05-24T14:54:34.806506Z",
+        "last_updated": "2023-05-24T14:54:34.806506Z",
 
-                "state": "excluded"
+        "state": "excluded"
 
-            },
+      },
 
-            {
+      {
 
-                "operation_id": "56828eae-035a-4396-ba07-51c66d680a04",
+        "operation_id": "56828eae-035a-4396-ba07-51c66d680a04",
 
-                "method": "POST",
+        "method": "POST",
 
-                "host": "v2.example.com",
+        "host": "v2.example.com",
 
-                "endpoint": "/login",
+        "endpoint": "/login",
 
-                "last_updated": "2023-05-24T14:54:34.806506Z",
+        "last_updated": "2023-05-24T14:54:34.806506Z",
 
-                "state": "excluded"
+        "state": "excluded"
 
-            },
+      },
 
-            {
+      {
 
-                "operation_id": "cf86874c-8d0c-4337-ae14-4e2459b541ac",
+        "operation_id": "cf86874c-8d0c-4337-ae14-4e2459b541ac",
 
-                "method": "GET",
+        "method": "GET",
 
-                "host": "v3.example.com",
+        "host": "v3.example.com",
 
-                "endpoint": "login",
+        "endpoint": "login",
 
-                "last_updated": "2023-05-24T14:54:34.806506Z",
+        "last_updated": "2023-05-24T14:54:34.806506Z",
 
-                "state": "ignored"
+        "state": "ignored"
 
-            }
+      }
 
-        ],
+    ],
 
-        "total": 7,
+    "total": 7,
 
-        "included": 2,
+    "included": 2,
 
-        "excluded": 2,
+    "excluded": 2,
 
-        "ignored": 3,
+    "ignored": 3,
 
-        "selected_hosts": [
+    "selected_hosts": ["v1.example.com", "v2.example.com"],
 
-            "v1.example.com",
+    "available_hosts": [
 
-            "v2.example.com"
+      "example.com",
 
-        ],
+      "v1.example.com",
 
-        "available_hosts": [
+      "v1.example.com",
 
-            "example.com",
+      "v3.example.com"
 
-            "v1.example.com",
+    ]
 
-            "v1.example.com",
+  },
 
-            "v3.example.com"
+  "success": true,
 
-        ]
+  "errors": [],
 
-    },
+  "messages": [],
 
-    "success": true,
+  "result_info": {
 
-    "errors": [],
+    "page": 1,
 
-    "messages": [],
+    "per_page": 20,
 
-    "result_info": {
+    "count": 20,
 
-        "page": 1,
+    "total_count": 1631
 
-        "per_page": 20,
-
-        "count": 20,
-
-        "total_count": 1631
-
-    }
+  }
 
 }
 
@@ -632,55 +618,49 @@ Token Validation Rule JSON example
 
 [
 
-    {
+  {
 
-        "title": "JWT Validation on v1 and v2.example.com",
+    "title": "JWT Validation on v1 and v2.example.com",
 
-        "description": "Log requests without a valid authorization header.",
+    "description": "Log requests without a valid authorization header.",
 
-        "action": "log",
+    "action": "log",
 
-        "enabled": true,
+    "enabled": true,
 
-        "expression": "is_jwt_valid(\"00170473-ec24-410e-968a-9905cf0a7d03\")",
+    "expression": "is_jwt_valid(\"00170473-ec24-410e-968a-9905cf0a7d03\")",
 
-        "selector": {
+    "selector": {
 
-            "include": [
+      "include": [
 
-                {
+        {
 
-                    "host": [
-
-                        "v1.example.com",
-
-                        "v2.example.com"
-
-                    ]
-
-                }
-
-            ],
-
-            "exclude": [
-
-                {
-
-                    "operation_ids": [
-
-                        "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
-
-                        "56828eae-035a-4396-ba07-51c66d680a04"
-
-                    ]
-
-                }
-
-            ]
+          "host": ["v1.example.com", "v2.example.com"]
 
         }
 
+      ],
+
+      "exclude": [
+
+        {
+
+          "operation_ids": [
+
+            "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+
+            "56828eae-035a-4396-ba07-51c66d680a04"
+
+          ]
+
+        }
+
+      ]
+
     }
+
+  }
 
 ]
 
@@ -689,7 +669,7 @@ Token Validation Rule JSON example
 
 ## Create a token Validation rule using the Cloudflare API
 
-Use cURL or any other API client tool to send the new configuration to Cloudflare’s API to enable JWT validation. Make sure to replace `{zone_id}` with the relevant zone ID and add your [authentication credentials](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) header.
+Use cURL or any other API client tool to send the new configuration to Cloudflare's API to enable JWT validation. Make sure to replace `{zone_id}` with the relevant zone ID and add your [authentication credentials](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) header.
 
 Replace any token configurations IDs and operation IDs with the IDs that exist in your zone.
 
@@ -768,73 +748,67 @@ Result
 
 {
 
-    "result": [
+  "result": [
 
-        {
+    {
 
-            "id": "5ec7c417-6964-4b24-b82c-a23a7ec8f90c",
+      "id": "5ec7c417-6964-4b24-b82c-a23a7ec8f90c",
 
-            "title": "JWT Validation on v1 and v2.example.com",
+      "title": "JWT Validation on v1 and v2.example.com",
 
-            "description": "Log requests without a valid authorization header.",
+      "description": "Log requests without a valid authorization header.",
 
-            "action": "log",
+      "action": "log",
 
-            "enabled": true,
+      "enabled": true,
 
-            "expression": "is_jwt_valid(\"00170473-ec24-410e-968a-9905cf0a7d03\")",
+      "expression": "is_jwt_valid(\"00170473-ec24-410e-968a-9905cf0a7d03\")",
 
-            "selector": {
+      "selector": {
 
-                "include": [
+        "include": [
 
-                    {
+          {
 
-                        "host": [
+            "host": ["v1.example.com", "v2.example.com"]
 
-                            "v1.example.com",
+          }
 
-                            "v2.example.com"
+        ],
 
-                        ]
+        "exclude": [
 
-                    }
+          {
 
-                ],
+            "operation_ids": [
 
-                "exclude": [
+              "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
 
-                    {
+              "56828eae-035a-4396-ba07-51c66d680a04"
 
-                        "operation_ids": [
+            ]
 
-                            "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+          }
 
-                            "56828eae-035a-4396-ba07-51c66d680a04"
+        ]
 
-                        ]
+      },
 
-                    }
+      "created_at": "2023-10-18T12:08:09.575388Z",
 
-                ]
+      "last_updated": "2023-10-18T12:08:09.575388Z",
 
-            },
+      "modified_by": "user@cloudflare.com"
 
-            "created_at": "2023-10-18T12:08:09.575388Z",
+    }
 
-            "last_updated": "2023-10-18T12:08:09.575388Z",
+  ],
 
-            "modified_by": "user@cloudflare.com"
+  "success": true,
 
-        }
+  "errors": [],
 
-    ],
-
-    "success": true,
-
-    "errors": [],
-
-    "messages": []
+  "messages": []
 
 }
 

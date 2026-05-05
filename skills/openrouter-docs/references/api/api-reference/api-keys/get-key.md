@@ -4,7 +4,7 @@
 
 # Get a single API key
 
-GET https://openrouter.ai/api/v1//keys/{hash}
+GET https://openrouter.ai/api/v1/keys/{hash}
 
 Get a single API key by hash. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //keys/{hash}:
+  /keys/{hash}:
     get:
       operationId: get-key
       summary: Get a single API key
@@ -343,7 +343,7 @@ components:
 ```python API Keys_getKey_example
 import requests
 
-url = "https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
+url = "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -353,7 +353,7 @@ print(response.json())
 ```
 
 ```javascript API Keys_getKey_example
-const url = 'https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943';
+const url = 'https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -376,7 +376,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
+	url := "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -397,7 +397,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
+url = URI("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -413,7 +413,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -424,7 +424,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -436,7 +436,7 @@ echo $response->getBody();
 ```csharp API Keys_getKey_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943");
+var client = new RestClient("https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -447,7 +447,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/keys/f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

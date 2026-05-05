@@ -18,6 +18,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Billing policy ](https://developers.cloudflare.com/billing/understand/billing-policy/)
 * [ Usage-based billing ](https://developers.cloudflare.com/billing/understand/usage-based-billing/)
 * [ Sales tax ](https://developers.cloudflare.com/billing/understand/sales-tax/)
+* [ Billing permissions ](https://developers.cloudflare.com/billing/understand/billing-permissions/)
+* [ Billing FAQ ](https://developers.cloudflare.com/billing/understand/faq/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/understand/","name":"Understand"}}]}

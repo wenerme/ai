@@ -59,7 +59,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-222)
+* [ Raw response ](#tab-panel-223)
+
 ![Futuristic City](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -98,7 +124,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-224)
+* [ Raw response ](#tab-panel-225)
+
 ![Abstract Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **With Google Search**  — Use web search grounding for current events 
 
@@ -135,7 +187,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-226)
+* [ Raw response ](#tab-panel-227)
+
 ![With Google Search](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **High Resolution Portrait**  — 4K portrait with specific aspect ratio 
 
@@ -174,12 +252,38 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-228)
+* [ Raw response ](#tab-panel-229)
+
 ![High Resolution Portrait](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-40)
-* [ Output ](#tab-panel-41)
+* [ Input ](#tab-panel-230)
+* [ Output ](#tab-panel-231)
 
 prompt
 

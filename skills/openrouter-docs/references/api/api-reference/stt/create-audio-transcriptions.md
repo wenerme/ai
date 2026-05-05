@@ -4,10 +4,10 @@
 
 # Create transcription
 
-POST https://openrouter.ai/api/v1//audio/transcriptions
+POST https://openrouter.ai/api/v1/audio/transcriptions
 Content-Type: application/json
 
-Transcribes audio into text
+Transcribes audio into text. Accepts base64-encoded audio input and returns the transcribed text.
 
 Reference: https://openrouter.ai/docs/api/api-reference/stt/create-audio-transcriptions
 
@@ -19,11 +19,13 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //audio/transcriptions:
+  /audio/transcriptions:
     post:
       operationId: create-audio-transcriptions
       summary: Create transcription
-      description: Transcribes audio into text
+      description: >-
+        Transcribes audio into text. Accepts base64-encoded audio input and
+        returns the transcribed text.
       tags:
         - subpackage_stt
       parameters:
@@ -885,7 +887,7 @@ components:
 ```python STT_createAudioTranscriptions_example
 import requests
 
-url = "https://openrouter.ai/api/v1//audio/transcriptions"
+url = "https://openrouter.ai/api/v1/audio/transcriptions"
 
 payload = {
     "input_audio": {
@@ -906,7 +908,7 @@ print(response.json())
 ```
 
 ```javascript STT_createAudioTranscriptions_example
-const url = 'https://openrouter.ai/api/v1//audio/transcriptions';
+const url = 'https://openrouter.ai/api/v1/audio/transcriptions';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -934,7 +936,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//audio/transcriptions"
+	url := "https://openrouter.ai/api/v1/audio/transcriptions"
 
 	payload := strings.NewReader("{\n  \"input_audio\": {\n    \"data\": \"UklGRiQA...\",\n    \"format\": \"wav\"\n  },\n  \"model\": \"openai/whisper-large-v3\",\n  \"language\": \"en\"\n}")
 
@@ -958,7 +960,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//audio/transcriptions")
+url = URI("https://openrouter.ai/api/v1/audio/transcriptions")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -976,7 +978,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//audio/transcriptions")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/audio/transcriptions")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"input_audio\": {\n    \"data\": \"UklGRiQA...\",\n    \"format\": \"wav\"\n  },\n  \"model\": \"openai/whisper-large-v3\",\n  \"language\": \"en\"\n}")
@@ -989,7 +991,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//audio/transcriptions', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/audio/transcriptions', [
   'body' => '{
   "input_audio": {
     "data": "UklGRiQA...",
@@ -1010,7 +1012,7 @@ echo $response->getBody();
 ```csharp STT_createAudioTranscriptions_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//audio/transcriptions");
+var client = new RestClient("https://openrouter.ai/api/v1/audio/transcriptions");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -1036,7 +1038,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//audio/transcriptions")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/audio/transcriptions")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

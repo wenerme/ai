@@ -57,7 +57,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-556)
+* [ Raw response ](#tab-panel-557)
+
 ![Logo Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/logo-design.jpg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/logo-design.jpg"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -94,7 +120,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-558)
+* [ Raw response ](#tab-panel-559)
+
 ![Icon Set](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/icon-set.jpg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/icon-set.jpg"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Print-Ready Vector**  — High-resolution vector for large-format print 
 
@@ -129,7 +181,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-560)
+* [ Raw response ](#tab-panel-561)
+
 ![Print-Ready Vector](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/print-ready-vector.jpg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/print-ready-vector.jpg"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Brand Illustration**  — Vector illustration with brand colors 
 
@@ -188,12 +266,38 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-562)
+* [ Raw response ](#tab-panel-563)
+
 ![Brand Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/brand-illustration.jpg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/brand-illustration.jpg"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-104)
-* [ Output ](#tab-panel-105)
+* [ Input ](#tab-panel-564)
+* [ Output ](#tab-panel-565)
 
 prompt
 

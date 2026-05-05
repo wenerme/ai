@@ -19,7 +19,7 @@ Speech-to-text endpoints
 
 ## CreateTranscription
 
-Transcribes audio into text
+Transcribes audio into text. Accepts base64-encoded audio input and returns the transcribed text.
 
 ### Example Usage
 

@@ -4,7 +4,7 @@
 
 # Bulk assign keys to a guardrail
 
-POST https://openrouter.ai/api/v1//guardrails/{id}/assignments/keys
+POST https://openrouter.ai/api/v1/guardrails/{id}/assignments/keys
 Content-Type: application/json
 
 Assign multiple API keys to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //guardrails/{id}/assignments/keys:
+  /guardrails/{id}/assignments/keys:
     post:
       operationId: bulk-assign-keys-to-guardrail
       summary: Bulk assign keys to a guardrail
@@ -239,7 +239,7 @@ components:
 ```python Guardrails_bulkAssignKeysToGuardrail_example
 import requests
 
-url = "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys"
+url = "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys"
 
 payload = { "key_hashes": ["c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93"] }
 headers = {
@@ -253,7 +253,7 @@ print(response.json())
 ```
 
 ```javascript Guardrails_bulkAssignKeysToGuardrail_example
-const url = 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys';
+const url = 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -281,7 +281,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys"
+	url := "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys"
 
 	payload := strings.NewReader("{\n  \"key_hashes\": [\n    \"c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93\"\n  ]\n}")
 
@@ -305,7 +305,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys")
+url = URI("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -323,7 +323,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"key_hashes\": [\n    \"c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93\"\n  ]\n}")
@@ -336,7 +336,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys', [
   'body' => '{
   "key_hashes": [
     "c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93"
@@ -354,7 +354,7 @@ echo $response->getBody();
 ```csharp Guardrails_bulkAssignKeysToGuardrail_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys");
+var client = new RestClient("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -373,7 +373,7 @@ let parameters = ["key_hashes": ["c56454edb818d6b14bc0d61c46025f1450b0f4012d1230
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/keys")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

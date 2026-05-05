@@ -63,6 +63,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-302)
+* [ Raw response ](#tab-panel-303)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/97d0c2d0-45ab-4ce8-a1f4-177401f43073/output.mp4",
+
+    "task_id": "388507504709991",
+
+    "status": "Success"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **High Resolution**  — 1080P video for higher quality output 
@@ -100,6 +130,36 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-304)
+* [ Raw response ](#tab-panel-305)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/1ee6a770-eb88-4b6a-86ea-61981f01ed65/output.mp4",
+
+    "task_id": "388510158565457",
+
+    "status": "Success"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -147,6 +207,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-306)
+* [ Raw response ](#tab-panel-307)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/a19c7850-6f3b-47dd-b6f1-decb592a11ff/output.mp4",
+
+    "task_id": "388509844320343",
+
+    "status": "Success"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Fast Processing**  — Enable fast pretreatment for quicker results 
 
 TypeScript
@@ -186,10 +276,40 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-308)
+* [ Raw response ](#tab-panel-309)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/438b5433-5d32-4760-9564-c86da3d22aee/output.mp4",
+
+    "task_id": "388509805367378",
+
+    "status": "Success"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-56)
-* [ Output ](#tab-panel-57)
+* [ Input ](#tab-panel-310)
+* [ Output ](#tab-panel-311)
 
 prompt
 

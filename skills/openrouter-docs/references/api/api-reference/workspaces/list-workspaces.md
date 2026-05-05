@@ -4,7 +4,7 @@
 
 # List workspaces
 
-GET https://openrouter.ai/api/v1//workspaces
+GET https://openrouter.ai/api/v1/workspaces
 
 List all workspaces for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //workspaces:
+  /workspaces:
     get:
       operationId: list-workspaces
       summary: List workspaces
@@ -248,7 +248,7 @@ components:
 ```python Workspaces_listWorkspaces_example
 import requests
 
-url = "https://openrouter.ai/api/v1//workspaces"
+url = "https://openrouter.ai/api/v1/workspaces"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -258,7 +258,7 @@ print(response.json())
 ```
 
 ```javascript Workspaces_listWorkspaces_example
-const url = 'https://openrouter.ai/api/v1//workspaces';
+const url = 'https://openrouter.ai/api/v1/workspaces';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -281,7 +281,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//workspaces"
+	url := "https://openrouter.ai/api/v1/workspaces"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -302,7 +302,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//workspaces")
+url = URI("https://openrouter.ai/api/v1/workspaces")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -318,7 +318,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//workspaces")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/workspaces")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -329,7 +329,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//workspaces', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/workspaces', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -341,7 +341,7 @@ echo $response->getBody();
 ```csharp Workspaces_listWorkspaces_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//workspaces");
+var client = new RestClient("https://openrouter.ai/api/v1/workspaces");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -352,7 +352,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//workspaces")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/workspaces")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

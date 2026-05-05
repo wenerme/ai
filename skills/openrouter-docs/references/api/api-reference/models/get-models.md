@@ -4,7 +4,7 @@
 
 # List all models and their properties
 
-GET https://openrouter.ai/api/v1//models
+GET https://openrouter.ai/api/v1/models
 
 Reference: https://openrouter.ai/docs/api/api-reference/models/get-models
 
@@ -16,7 +16,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //models:
+  /models:
     get:
       operationId: get-models
       summary: List all models and their properties
@@ -413,6 +413,15 @@ components:
           items:
             $ref: '#/components/schemas/Parameter'
           description: List of supported parameters for this model
+        supported_voices:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: >-
+            List of supported voice identifiers for TTS models. Null for non-TTS
+            models.
         top_provider:
           $ref: '#/components/schemas/TopProviderInfo'
       required:
@@ -427,6 +436,7 @@ components:
         - per_request_limits
         - pricing
         - supported_parameters
+        - supported_voices
         - top_provider
       description: Information about an AI model available on OpenRouter
       title: Model
@@ -520,7 +530,7 @@ components:
 ```python Models_getModels_example
 import requests
 
-url = "https://openrouter.ai/api/v1//models"
+url = "https://openrouter.ai/api/v1/models"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -530,7 +540,7 @@ print(response.json())
 ```
 
 ```javascript Models_getModels_example
-const url = 'https://openrouter.ai/api/v1//models';
+const url = 'https://openrouter.ai/api/v1/models';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -553,7 +563,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//models"
+	url := "https://openrouter.ai/api/v1/models"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -574,7 +584,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//models")
+url = URI("https://openrouter.ai/api/v1/models")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -590,7 +600,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//models")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/models")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -601,7 +611,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//models', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/models', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -613,7 +623,7 @@ echo $response->getBody();
 ```csharp Models_getModels_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//models");
+var client = new RestClient("https://openrouter.ai/api/v1/models");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -624,7 +634,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//models")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/models")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

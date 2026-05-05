@@ -61,7 +61,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-232)
+* [ Raw response ](#tab-panel-233)
+
 ![Product Photography](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/product-photography.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/product-photography.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -100,7 +126,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-234)
+* [ Raw response ](#tab-panel-235)
+
 ![Fantasy Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/fantasy-illustration.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/fantasy-illustration.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Architectural Visualization**  — Modern architecture render 
 
@@ -139,7 +191,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-236)
+* [ Raw response ](#tab-panel-237)
+
 ![Architectural Visualization](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/architectural-visualization.jpg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/architectural-visualization.jpg"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Character Design**  — Game character concept art 
 
@@ -174,12 +252,38 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-238)
+* [ Raw response ](#tab-panel-239)
+
 ![Character Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/character-design.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/character-design.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-42)
-* [ Output ](#tab-panel-43)
+* [ Input ](#tab-panel-240)
+* [ Output ](#tab-panel-241)
 
 prompt
 

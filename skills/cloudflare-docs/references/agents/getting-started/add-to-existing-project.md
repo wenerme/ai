@@ -65,8 +65,8 @@ bun add agents hono-agents
 
 Create a new file for your agent (for example, `src/agents/counter.ts`):
 
-* [  JavaScript ](#tab-panel-3916)
-* [  TypeScript ](#tab-panel-3917)
+* [  JavaScript ](#tab-panel-4220)
+* [  TypeScript ](#tab-panel-4221)
 
 JavaScript
 
@@ -155,8 +155,8 @@ export class CounterAgent extends Agent<Env, CounterState> {
 
 Add the Durable Object binding and migration:
 
-* [  wrangler.jsonc ](#tab-panel-3906)
-* [  wrangler.toml ](#tab-panel-3907)
+* [  wrangler.jsonc ](#tab-panel-4210)
+* [  wrangler.toml ](#tab-panel-4211)
 
 JSONC
 
@@ -170,7 +170,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-04",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -219,7 +219,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-04"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -285,8 +285,8 @@ If you have an existing `tsconfig.json` with custom settings, you can extend and
 
 **vite.config.ts** — add the `agents()` plugin (handles TC39 decorator transforms for Vite 8):
 
-* [  JavaScript ](#tab-panel-3910)
-* [  TypeScript ](#tab-panel-3911)
+* [  JavaScript ](#tab-panel-4214)
+* [  TypeScript ](#tab-panel-4215)
 
 JavaScript
 
@@ -340,8 +340,8 @@ For more details, refer to the [TypeScript configuration](https://developers.clo
 
 Your agent class must be exported from your main entry point. Update your `src/index.ts`:
 
-* [  JavaScript ](#tab-panel-3914)
-* [  TypeScript ](#tab-panel-3915)
+* [  JavaScript ](#tab-panel-4218)
+* [  TypeScript ](#tab-panel-4219)
 
 JavaScript
 
@@ -389,8 +389,8 @@ Choose the approach that matches your project structure:
 
 ### Plain Workers (fetch handler)
 
-* [  JavaScript ](#tab-panel-3922)
-* [  TypeScript ](#tab-panel-3923)
+* [  JavaScript ](#tab-panel-4226)
+* [  TypeScript ](#tab-panel-4227)
 
 JavaScript
 
@@ -474,8 +474,8 @@ export default {
 
 ### Hono
 
-* [  JavaScript ](#tab-panel-3918)
-* [  TypeScript ](#tab-panel-3919)
+* [  JavaScript ](#tab-panel-4222)
+* [  TypeScript ](#tab-panel-4223)
 
 JavaScript
 
@@ -539,8 +539,8 @@ export default app;
 
 If you are serving static assets alongside agents, static assets are served first by default. Your Worker code only runs for paths that do not match a static asset:
 
-* [  JavaScript ](#tab-panel-3924)
-* [  TypeScript ](#tab-panel-3925)
+* [  JavaScript ](#tab-panel-4228)
+* [  TypeScript ](#tab-panel-4229)
 
 JavaScript
 
@@ -612,8 +612,8 @@ export default {
 
 Configure assets in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-3904)
-* [  wrangler.toml ](#tab-panel-3905)
+* [  wrangler.jsonc ](#tab-panel-4208)
+* [  wrangler.toml ](#tab-panel-4209)
 
 JSONC
 
@@ -666,8 +666,8 @@ Refer to [Configuration](https://developers.cloudflare.com/agents/api-reference/
 
 ### React
 
-* [  JavaScript ](#tab-panel-3932)
-* [  TypeScript ](#tab-panel-3933)
+* [  JavaScript ](#tab-panel-4236)
+* [  TypeScript ](#tab-panel-4237)
 
 JavaScript
 
@@ -676,6 +676,7 @@ JavaScript
 import { useState } from "react";
 
 import { useAgent } from "agents/react";
+
 
 function CounterWidget() {
 
@@ -756,8 +757,8 @@ function CounterWidget() {
 
 ### Vanilla JavaScript
 
-* [  JavaScript ](#tab-panel-3928)
-* [  TypeScript ](#tab-panel-3929)
+* [  JavaScript ](#tab-panel-4232)
+* [  TypeScript ](#tab-panel-4233)
 
 JavaScript
 
@@ -821,8 +822,8 @@ document.getElementById("increment").onclick = () => agent.call("increment");
 
 Add more agents by extending the configuration:
 
-* [  JavaScript ](#tab-panel-3926)
-* [  TypeScript ](#tab-panel-3927)
+* [  JavaScript ](#tab-panel-4230)
+* [  TypeScript ](#tab-panel-4231)
 
 JavaScript
 
@@ -874,8 +875,8 @@ export class Scheduler extends Agent {
 
 Update the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-3912)
-* [  wrangler.toml ](#tab-panel-3913)
+* [  wrangler.jsonc ](#tab-panel-4216)
+* [  wrangler.toml ](#tab-panel-4217)
 
 JSONC
 
@@ -950,8 +951,8 @@ new_sqlite_classes = [ "CounterAgent", "Chat", "Scheduler" ]
 
 Export all agents from your entry point:
 
-* [  JavaScript ](#tab-panel-3920)
-* [  TypeScript ](#tab-panel-3921)
+* [  JavaScript ](#tab-panel-4224)
+* [  TypeScript ](#tab-panel-4225)
 
 JavaScript
 
@@ -985,8 +986,8 @@ export { Scheduler } from "./agents/scheduler";
 
 Check auth before routing to agents:
 
-* [  JavaScript ](#tab-panel-3936)
-* [  TypeScript ](#tab-panel-3937)
+* [  JavaScript ](#tab-panel-4240)
+* [  TypeScript ](#tab-panel-4241)
 
 JavaScript
 
@@ -1066,8 +1067,8 @@ export default {
 
 By default, agents are routed at `/agents/{agent-name}/{instance-name}`. You can customize this:
 
-* [  JavaScript ](#tab-panel-3930)
-* [  TypeScript ](#tab-panel-3931)
+* [  JavaScript ](#tab-panel-4234)
+* [  TypeScript ](#tab-panel-4235)
 
 JavaScript
 
@@ -1107,8 +1108,8 @@ Refer to [Routing](https://developers.cloudflare.com/agents/api-reference/routin
 
 You can interact with agents directly from your Worker code:
 
-* [  JavaScript ](#tab-panel-3938)
-* [  TypeScript ](#tab-panel-3939)
+* [  JavaScript ](#tab-panel-4242)
+* [  TypeScript ](#tab-panel-4243)
 
 JavaScript
 
@@ -1186,8 +1187,8 @@ export default {
 
 Add the migration to the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-3908)
-* [  wrangler.toml ](#tab-panel-3909)
+* [  wrangler.jsonc ](#tab-panel-4212)
+* [  wrangler.toml ](#tab-panel-4213)
 
 JSONC
 
@@ -1229,8 +1230,8 @@ new_sqlite_classes = [ "YourAgentClass" ]
 
 Ensure your routing passes the response unchanged:
 
-* [  JavaScript ](#tab-panel-3934)
-* [  TypeScript ](#tab-panel-3935)
+* [  JavaScript ](#tab-panel-4238)
+* [  TypeScript ](#tab-panel-4239)
 
 JavaScript
 

@@ -45,12 +45,10 @@ Send a `POST` request to `/api/v1/audio/speech` with the text you want to synthe
     });
 
     const stream = await openRouter.tts.createSpeech({
-      speechRequest: {
-        model: '{{MODEL}}',
-        input: 'Hello! This is a text-to-speech test.',
-        voice: 'alloy',
-        responseFormat: 'mp3',
-      },
+      model: '{{MODEL}}',
+      input: 'Hello! This is a text-to-speech test.',
+      voice: 'alloy',
+      responseFormat: 'mp3',
     });
 
     // Collect the audio stream and save to a file

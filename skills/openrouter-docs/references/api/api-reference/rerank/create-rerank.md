@@ -4,7 +4,7 @@
 
 # Submit a rerank request
 
-POST https://openrouter.ai/api/v1//rerank
+POST https://openrouter.ai/api/v1/rerank
 Content-Type: application/json
 
 Submits a rerank request to the rerank router
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //rerank:
+  /rerank:
     post:
       operationId: create-rerank
       summary: Submit a rerank request
@@ -858,7 +858,7 @@ components:
 ```python
 import requests
 
-url = "https://openrouter.ai/api/v1//rerank"
+url = "https://openrouter.ai/api/v1/rerank"
 
 payload = {
     "documents": ["Paris is the capital of France.", "Berlin is the capital of Germany."],
@@ -877,7 +877,7 @@ print(response.json())
 ```
 
 ```javascript
-const url = 'https://openrouter.ai/api/v1//rerank';
+const url = 'https://openrouter.ai/api/v1/rerank';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -905,7 +905,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//rerank"
+	url := "https://openrouter.ai/api/v1/rerank"
 
 	payload := strings.NewReader("{\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"top_n\": 3\n}")
 
@@ -929,7 +929,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//rerank")
+url = URI("https://openrouter.ai/api/v1/rerank")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -947,7 +947,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//rerank")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/rerank")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"top_n\": 3\n}")
@@ -960,7 +960,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//rerank', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/rerank', [
   'body' => '{
   "documents": [
     "Paris is the capital of France.",
@@ -982,7 +982,7 @@ echo $response->getBody();
 ```csharp
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//rerank");
+var client = new RestClient("https://openrouter.ai/api/v1/rerank");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -1006,7 +1006,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//rerank")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/rerank")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

@@ -4,7 +4,7 @@
 
 # Delete a guardrail
 
-DELETE https://openrouter.ai/api/v1//guardrails/{id}
+DELETE https://openrouter.ai/api/v1/guardrails/{id}
 
 Delete an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //guardrails/{id}:
+  /guardrails/{id}:
     delete:
       operationId: delete-guardrail
       summary: Delete a guardrail
@@ -187,7 +187,7 @@ components:
 ```python Guardrails_deleteGuardrail_example
 import requests
 
-url = "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000"
+url = "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000"
 
 payload = {}
 headers = {
@@ -201,7 +201,7 @@ print(response.json())
 ```
 
 ```javascript Guardrails_deleteGuardrail_example
-const url = 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000';
+const url = 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000';
 const options = {
   method: 'DELETE',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -229,7 +229,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000"
+	url := "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000"
 
 	payload := strings.NewReader("{}")
 
@@ -253,7 +253,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000")
+url = URI("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -271,7 +271,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.delete("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000")
+HttpResponse<String> response = Unirest.delete("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{}")
@@ -284,7 +284,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('DELETE', 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000', [
+$response = $client->request('DELETE', 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000', [
   'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -298,7 +298,7 @@ echo $response->getBody();
 ```csharp Guardrails_deleteGuardrail_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000");
+var client = new RestClient("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -317,7 +317,7 @@ let parameters = [] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "DELETE"

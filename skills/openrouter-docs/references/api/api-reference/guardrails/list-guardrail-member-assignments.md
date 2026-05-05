@@ -4,7 +4,7 @@
 
 # List member assignments for a guardrail
 
-GET https://openrouter.ai/api/v1//guardrails/{id}/assignments/members
+GET https://openrouter.ai/api/v1/guardrails/{id}/assignments/members
 
 List all organization member assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //guardrails/{id}/assignments/members:
+  /guardrails/{id}/assignments/members:
     get:
       operationId: list-guardrail-member-assignments
       summary: List member assignments for a guardrail
@@ -237,7 +237,7 @@ components:
 ```python Guardrails_listGuardrailMemberAssignments_example
 import requests
 
-url = "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members"
+url = "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -247,7 +247,7 @@ print(response.json())
 ```
 
 ```javascript Guardrails_listGuardrailMemberAssignments_example
-const url = 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members';
+const url = 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -270,7 +270,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members"
+	url := "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -291,7 +291,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members")
+url = URI("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -307,7 +307,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -318,7 +318,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -330,7 +330,7 @@ echo $response->getBody();
 ```csharp Guardrails_listGuardrailMemberAssignments_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members");
+var client = new RestClient("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -341,7 +341,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000/assignments/members")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

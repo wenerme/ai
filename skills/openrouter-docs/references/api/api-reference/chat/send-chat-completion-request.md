@@ -4,7 +4,7 @@
 
 # Create a chat completion
 
-POST https://openrouter.ai/api/v1//chat/completions
+POST https://openrouter.ai/api/v1/chat/completions
 Content-Type: application/json
 
 Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //chat/completions:
+  /chat/completions:
     post:
       operationId: send-chat-completion-request
       summary: Create a chat completion
@@ -2697,7 +2697,7 @@ components:
 ```python Chat_sendChatCompletionRequest_example
 import requests
 
-url = "https://openrouter.ai/api/v1//chat/completions"
+url = "https://openrouter.ai/api/v1/chat/completions"
 
 payload = {
     "messages": [
@@ -2725,7 +2725,7 @@ print(response.json())
 ```
 
 ```javascript Chat_sendChatCompletionRequest_example
-const url = 'https://openrouter.ai/api/v1//chat/completions';
+const url = 'https://openrouter.ai/api/v1/chat/completions';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -2753,7 +2753,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//chat/completions"
+	url := "https://openrouter.ai/api/v1/chat/completions"
 
 	payload := strings.NewReader("{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the capital of France?\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}")
 
@@ -2777,7 +2777,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//chat/completions")
+url = URI("https://openrouter.ai/api/v1/chat/completions")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -2795,7 +2795,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//chat/completions")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/chat/completions")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the capital of France?\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}")
@@ -2808,7 +2808,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//chat/completions', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/chat/completions', [
   'body' => '{
   "messages": [
     {
@@ -2836,7 +2836,7 @@ echo $response->getBody();
 ```csharp Chat_sendChatCompletionRequest_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//chat/completions");
+var client = new RestClient("https://openrouter.ai/api/v1/chat/completions");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -2869,7 +2869,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//chat/completions")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/chat/completions")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

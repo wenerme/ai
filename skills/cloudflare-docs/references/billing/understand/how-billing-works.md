@@ -139,6 +139,29 @@ The bottom of the invoice shows:
 * **Sales tax**: If applicable based on your billing address (refer to [Sales tax](https://developers.cloudflare.com/billing/understand/sales-tax/))
 * **Total** and **Amount due**: The final amount charged
 
+## The billing dashboard
+
+The Cloudflare dashboard organizes billing information across four tabs under **Manage Account** \> **Billing**:
+
+* **Invoices and documents** — view, download, and pay invoices. Configure your billing email preference and set up billable usage notifications.
+* **Billable usage** — track daily usage-based costs across all products for the current or previous billing period.
+* **Payment** — manage your primary and backup payment methods, billing address, and tax-exempt status.
+* **Subscriptions** — view all active subscriptions with their renewal dates, pricing, and invoice status. Cancel or modify subscriptions from this tab.
+
+### Billable usage dashboard
+
+The billable usage dashboard shows a daily cost breakdown chart and a per-product usage table. Each product row shows total usage, billable usage (above the free tier), and the cumulative cost for the billing period.
+
+![The billable usage dashboard showing a daily cost breakdown chart and per-product usage table](https://developers.cloudflare.com/_astro/billable-usage-dashboard.CQvMdtrp_Z2qynps.webp) 
+
+### Budget alerts
+
+Budget alerts notify you by email when your account-wide usage-based spend crosses a dollar threshold. Set these up under **Manage Account** \> **Notifications**.
+
+![The budget alert creation modal showing threshold and notification configuration](https://developers.cloudflare.com/_astro/budget-alert-modal.BjIzGOLV_Zr8DX5.webp) 
+
+For more detail on monitoring your costs, refer to [Monitor billable usage](https://developers.cloudflare.com/billing/manage/billable-usage/) and [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/).
+
 ## Billing cycles
 
 Your first paid purchase on a Cloudflare account sets the billing date for all future monthly subscriptions. Annual subscriptions follow their own cycle. You can have two different billing cycles on your account — one for monthly and one for annual subscriptions.

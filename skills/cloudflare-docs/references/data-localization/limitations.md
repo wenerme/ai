@@ -39,6 +39,12 @@ The following features and protocols are not supported by Regional Services and 
 
 Since Regional Services leverages Spectrum (Cloudflare's Layer 4 proxy service) in the background, [Spectrum limitations](https://developers.cloudflare.com/spectrum/reference/limitations/) apply.
 
+### Regional hostnames and Spectrum applications
+
+Regional hostnames configured through the dashboard or the Regional Hostnames API only apply to hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare. They do not regionalize [Spectrum](https://developers.cloudflare.com/spectrum/) applications.
+
+If a hostname has both a regional hostname configuration and an active Spectrum application, these are independent systems. The Spectrum application may override the regional hostname's IP steering with its own IP assignment. As a result, traffic may not be processed in the region configured via the Regional Hostnames API. If you need to regionalize a Spectrum application, contact your [Account Team](https://developers.cloudflare.com/support/contacting-cloudflare-support/) about Spectrum-specific regionalization options. Spectrum-specific regionalization only applies to HTTP and HTTPS [application types](https://developers.cloudflare.com/spectrum/reference/configuration-options/#application-type).
+
 Regional Services does not apply to [subrequests](https://developers.cloudflare.com/workers/platform/limits/#subrequests) (secondary HTTP requests that your Cloudflare Workers make to other services). Regional Services operates on your hostname's IPs. We recommend using [DNSSEC](https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/dnssec/) (which cryptographically signs DNS records to prevent tampering) and/or [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/) (which encrypts DNS queries) to ensure that DNS responses are secure and correct.
 
 ## Customer Metadata Boundary

@@ -4,7 +4,7 @@
 
 # Submit an embedding request
 
-POST https://openrouter.ai/api/v1//embeddings
+POST https://openrouter.ai/api/v1/embeddings
 Content-Type: application/json
 
 Submits an embedding request to the embeddings router
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //embeddings:
+  /embeddings:
     post:
       operationId: create-embeddings
       summary: Submit an embedding request
@@ -1004,7 +1004,7 @@ components:
 ```python
 import requests
 
-url = "https://openrouter.ai/api/v1//embeddings"
+url = "https://openrouter.ai/api/v1/embeddings"
 
 payload = {
     "input": "The quick brown fox jumps over the lazy dog",
@@ -1022,7 +1022,7 @@ print(response.json())
 ```
 
 ```javascript
-const url = 'https://openrouter.ai/api/v1//embeddings';
+const url = 'https://openrouter.ai/api/v1/embeddings';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -1050,7 +1050,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//embeddings"
+	url := "https://openrouter.ai/api/v1/embeddings"
 
 	payload := strings.NewReader("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}")
 
@@ -1074,7 +1074,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//embeddings")
+url = URI("https://openrouter.ai/api/v1/embeddings")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -1092,7 +1092,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//embeddings")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/embeddings")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}")
@@ -1105,7 +1105,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//embeddings', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/embeddings', [
   'body' => '{
   "input": "The quick brown fox jumps over the lazy dog",
   "model": "openai/text-embedding-3-small",
@@ -1123,7 +1123,7 @@ echo $response->getBody();
 ```csharp
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//embeddings");
+var client = new RestClient("https://openrouter.ai/api/v1/embeddings");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -1146,7 +1146,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//embeddings")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/embeddings")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

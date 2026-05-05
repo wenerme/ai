@@ -59,6 +59,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-592)
+* [ Raw response ](#tab-panel-593)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video.cf.vidu.com/infer_64/tasks/26/0417/05/942597991691198464/creation-01/video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Portrait Aspect Ratio**  — Vertical video for social media 
@@ -94,6 +120,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-594)
+* [ Raw response ](#tab-panel-595)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video.cf.vidu.com/infer_88/tasks/26/0417/05/942598607041753088/creation-01/video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -135,6 +187,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-596)
+* [ Raw response ](#tab-panel-597)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video.cf.vidu.com/infer_76/tasks/26/0417/05/942599305355595776/creation-01/final_video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Square Format**  — Square video for product demos or social posts 
 
 TypeScript
@@ -172,10 +250,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-598)
+* [ Raw response ](#tab-panel-599)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://video.cf.vidu.com/infer_40/tasks/26/0417/05/942599364482723840/creation-01/video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-110)
-* [ Output ](#tab-panel-111)
+* [ Input ](#tab-panel-600)
+* [ Output ](#tab-panel-601)
 
 prompt
 

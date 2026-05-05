@@ -258,6 +258,46 @@ has_value(http.request.headers.names, http.request.uri.args.names[0])
 
 ```
 
+### `is_jwt_present`
+
+`` is_jwt_present(token_configuration_id: ` String `) ``: ` Boolean `
+
+Returns true if the request has a token as configured in the token configuration with the ID `token_configuration_id`.
+
+`token_configuration_id` must be the ID of an existing [token configuration](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#token-configurations).
+
+Example:
+
+```
+
+is_jwt_present("51231d16-01f1-48e3-93f8-91c99e81288e")
+
+
+```
+
+Note
+
+This function is only available in [API JWT validation rules](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
+
+### `is_jwt_valid`
+
+`` is_jwt_valid(token_configuration_id: ` String `) ``: ` Boolean `
+
+Returns true if the request has a valid token according to the token configuration with the ID `token_configuration_id`.
+
+`token_configuration_id` must be the ID of an existing [token configuration](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#token-configurations). The function returns false if the token is missing from the request.
+
+```
+
+is_jwt_valid("51231d16-01f1-48e3-93f8-91c99e81288e")
+
+
+```
+
+Note
+
+This function is only available in [API JWT validation rules](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
+
 ### `len`
 
 `` len(` String | Bytes | Array `) ``: ` Integer `

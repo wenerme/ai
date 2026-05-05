@@ -19,6 +19,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Learn how to configure a variety of products with Cloudflare Analytics:
 
 * [ Datadog ](https://developers.cloudflare.com/analytics/analytics-integrations/datadog/)
+* [ Prometheus ](https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/)
 * [ Graylog ](https://developers.cloudflare.com/analytics/analytics-integrations/graylog/)
 * [ New Relic ](https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/)
 * [ Splunk ](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/)

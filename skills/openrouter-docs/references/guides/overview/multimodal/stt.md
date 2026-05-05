@@ -48,12 +48,10 @@ Send a `POST` request to `/api/v1/audio/transcriptions` with a JSON body contain
     const base64Audio = audioBuffer.toString('base64');
 
     const result = await openRouter.stt.createTranscription({
-      sttRequest: {
-        model: '{{MODEL}}',
-        inputAudio: {
-          data: base64Audio,
-          format: 'wav',
-        },
+      model: '{{MODEL}}',
+      inputAudio: {
+        data: base64Audio,
+        format: 'wav',
       },
     });
 

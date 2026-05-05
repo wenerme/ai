@@ -61,6 +61,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-504)
+* [ Raw response ](#tab-panel-505)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/simple-speech.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Storytelling**  — HD narration with the Fable voice 
@@ -94,6 +120,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-506)
+* [ Raw response ](#tab-panel-507)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/storytelling.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -133,6 +185,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-508)
+* [ Raw response ](#tab-panel-509)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/podcast-style.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Shimmer Voice**  — Bright and expressive voice 
 
 TypeScript
@@ -168,10 +246,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-510)
+* [ Raw response ](#tab-panel-511)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/shimmer-voice.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-94)
-* [ Output ](#tab-panel-95)
+* [ Input ](#tab-panel-512)
+* [ Output ](#tab-panel-513)
 
 text
 

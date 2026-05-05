@@ -55,7 +55,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-386)
+* [ Raw response ](#tab-panel-387)
+
 Hello
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "text": "Hello"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -90,7 +116,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-388)
+* [ Raw response ](#tab-panel-389)
+
 Hello
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "text": "Hello"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Guided Transcription**  — Use a prompt to guide transcription style and context 
 
@@ -127,7 +179,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-390)
+* [ Raw response ](#tab-panel-391)
+
 This is a technical discussion about Kubernetes and cloud-native architecture.
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "text": "This is a technical discussion about Kubernetes and cloud-native architecture."
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **High Temperature**  — Higher temperature for more varied transcription 
 
@@ -160,12 +238,38 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-392)
+* [ Raw response ](#tab-panel-393)
+
 Hello, world!
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "text": "Hello, world!"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-72)
-* [ Output ](#tab-panel-73)
+* [ Input ](#tab-panel-394)
+* [ Output ](#tab-panel-395)
 
 file
 

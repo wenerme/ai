@@ -54,7 +54,37 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-158)
+* [ Raw response ](#tab-panel-159)
+
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/simple-generation-0.jpeg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "images": [
+
+      "https://ark-acg-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-5-0/021776405291656e8ad6f8fac80a9b78040141fa10ae51dc262e8_0.jpeg"
+
+    ]
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -95,7 +125,37 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-160)
+* [ Raw response ](#tab-panel-161)
+
 ![High Resolution PNG](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/high-resolution-png-0.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "images": [
+
+      "https://ark-acg-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-5-0/021776405293188e8ad6f8fac80a9b78040141fa10ae51d8ac521_0.png"
+
+    ]
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Portrait Photo**  — JPEG output for photographs 
 
@@ -134,7 +194,37 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-162)
+* [ Raw response ](#tab-panel-163)
+
 ![Portrait Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "images": [
+
+      "https://ark-acg-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-5-0/021776405322247e8ad6f8fac80a9b78040141fa10ae51db518ee_0.jpeg"
+
+    ]
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Sequential Comic**  — Generate sequential comic panels 
 
@@ -173,7 +263,37 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-164)
+* [ Raw response ](#tab-panel-165)
+
 ![Sequential Comic](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/sequential-comic-0.jpeg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "images": [
+
+      "https://ark-acg-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-5-0/0217764053440971386b9a8ed856c57501cfa946ce34c987bb335_0.jpeg"
+
+    ]
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Image Variation**  — Create variation from reference 
 
@@ -214,12 +334,42 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-166)
+* [ Raw response ](#tab-panel-167)
+
 ![Image Variation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/image-variation-0.jpeg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "images": [
+
+      "https://ark-acg-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-5-0/0217764053505731386b9a8ed856c57501cfa946ce34c989ba40c_0.jpeg"
+
+    ]
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-28)
-* [ Output ](#tab-panel-29)
+* [ Input ](#tab-panel-168)
+* [ Output ](#tab-panel-169)
 
 prompt
 

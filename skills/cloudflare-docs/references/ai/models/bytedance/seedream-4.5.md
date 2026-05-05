@@ -56,7 +56,37 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-146)
+* [ Raw response ](#tab-panel-147)
+
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/simple-generation-0.jpeg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "images": [
+
+      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052077481386b9a8ed856c57501cfa946ce34c9865285c_0.jpeg"
+
+    ]
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -95,7 +125,37 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-148)
+* [ Raw response ](#tab-panel-149)
+
 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/high-resolution-0.jpeg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "images": [
+
+      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052077581386b9a8ed856c57501cfa946ce34c985dabe3_0.jpeg"
+
+    ]
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Image-to-Image**  — Edit using reference images 
 
@@ -136,7 +196,37 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-150)
+* [ Raw response ](#tab-panel-151)
+
 ![Image-to-Image](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/image-to-image-0.jpeg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "images": [
+
+      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052176861386b9a8ed856c57501cfa946ce34c98846458_0.jpeg"
+
+    ]
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Sequential Generation**  — Generate multiple related images 
 
@@ -175,7 +265,37 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-152)
+* [ Raw response ](#tab-panel-153)
+
 ![Sequential Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/sequential-generation-0.jpeg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "images": [
+
+      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052291261386b9a8ed856c57501cfa946ce34c98481db1_0.jpeg"
+
+    ]
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Multi-Image Edit**  — Combine multiple reference images 
 
@@ -218,12 +338,42 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-154)
+* [ Raw response ](#tab-panel-155)
+
 ![Multi-Image Edit](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/multi-image-edit-0.jpeg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "images": [
+
+      "https://ark-content-generation-v2-ap-southeast-1.tos-ap-southeast-1.volces.com/seedream-4-5/0217764052323791386b9a8ed856c57501cfa946ce34c98b2f132_0.jpeg"
+
+    ]
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-26)
-* [ Output ](#tab-panel-27)
+* [ Input ](#tab-panel-156)
+* [ Output ](#tab-panel-157)
 
 prompt
 

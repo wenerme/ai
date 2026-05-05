@@ -33,8 +33,8 @@ The MCP client uses a built-in `DurableObjectOAuthClientProvider` to manage OAut
 
 When connecting to an OAuth-protected server, check if `authUrl` is returned. If present, redirect your user to complete authorization:
 
-* [  JavaScript ](#tab-panel-4010)
-* [  TypeScript ](#tab-panel-4011)
+* [  JavaScript ](#tab-panel-4314)
+* [  TypeScript ](#tab-panel-4315)
 
 JavaScript
 
@@ -146,8 +146,8 @@ After OAuth completes, the provider redirects back to your Agent's callback URL.
 
 Redirect users back to your application after OAuth completes:
 
-* [  JavaScript ](#tab-panel-4006)
-* [  TypeScript ](#tab-panel-4007)
+* [  JavaScript ](#tab-panel-4310)
+* [  TypeScript ](#tab-panel-4311)
 
 JavaScript
 
@@ -201,8 +201,8 @@ Users return to `/dashboard` on success or `/auth-error?error=<message>` on fail
 
 If you opened OAuth in a popup, close it automatically when complete:
 
-* [  JavaScript ](#tab-panel-4008)
-* [  TypeScript ](#tab-panel-4009)
+* [  JavaScript ](#tab-panel-4312)
+* [  TypeScript ](#tab-panel-4313)
 
 JavaScript
 
@@ -280,8 +280,8 @@ Your main application can detect the popup closing and refresh the connection st
 
 Use the `useAgent` hook for real-time updates via WebSocket:
 
-* [  JavaScript ](#tab-panel-4014)
-* [  TypeScript ](#tab-panel-4015)
+* [  JavaScript ](#tab-panel-4318)
+* [  TypeScript ](#tab-panel-4319)
 
 JavaScript
 
@@ -290,6 +290,7 @@ JavaScript
 import { useAgent } from "agents/react";
 
 import { useState } from "react";
+
 
 function App() {
 
@@ -450,8 +451,8 @@ The `onMcpUpdate` callback fires automatically when MCP state changes — no pol
 
 Poll the connection status via an endpoint:
 
-* [  JavaScript ](#tab-panel-4012)
-* [  TypeScript ](#tab-panel-4013)
+* [  JavaScript ](#tab-panel-4316)
+* [  TypeScript ](#tab-panel-4317)
 
 JavaScript
 
@@ -573,8 +574,8 @@ Connection states flow: `authenticating` (needs OAuth) → `connecting` (complet
 
 When OAuth fails, the connection state becomes `"failed"` and the error message is stored in the `server.error` field. Display this error in your UI and allow users to retry:
 
-* [  JavaScript ](#tab-panel-4016)
-* [  TypeScript ](#tab-panel-4017)
+* [  JavaScript ](#tab-panel-4320)
+* [  TypeScript ](#tab-panel-4321)
 
 JavaScript
 
@@ -583,6 +584,7 @@ JavaScript
 import { useAgent } from "agents/react";
 
 import { useState } from "react";
+
 
 function App() {
 
@@ -814,8 +816,8 @@ Failed connections remain in state until removed with `removeMcpServer(serverId)
 
 This example demonstrates a complete OAuth integration with Cloudflare Observability. Users connect, authorize in a popup window, and the connection becomes available. Errors are automatically stored in the connection state for display in your UI.
 
-* [  JavaScript ](#tab-panel-4018)
-* [  TypeScript ](#tab-panel-4019)
+* [  JavaScript ](#tab-panel-4322)
+* [  TypeScript ](#tab-panel-4323)
 
 JavaScript
 

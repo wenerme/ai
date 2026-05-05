@@ -88,8 +88,8 @@ class Default(WorkerEntrypoint):
 
 You must add both `python_workflows` and `python_workers` compatibility flags to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-9952)
-* [  wrangler.toml ](#tab-panel-9953)
+* [  wrangler.jsonc ](#tab-panel-10491)
+* [  wrangler.toml ](#tab-panel-10492)
 
 JSONC
 
@@ -113,7 +113,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-30",
+  "compatibility_date": "2026-05-04",
 
   "workflows": [
 
@@ -148,7 +148,7 @@ compatibility_flags = [ "python_workers", "python_workflows" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-30"
+compatibility_date = "2026-05-04"
 
 
 [[workflows]]

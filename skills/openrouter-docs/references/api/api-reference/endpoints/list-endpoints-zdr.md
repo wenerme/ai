@@ -4,7 +4,7 @@
 
 # Preview the impact of ZDR on the available endpoints
 
-GET https://openrouter.ai/api/v1//endpoints/zdr
+GET https://openrouter.ai/api/v1/endpoints/zdr
 
 Reference: https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints-zdr
 
@@ -16,7 +16,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //endpoints/zdr:
+  /endpoints/zdr:
     get:
       operationId: list-endpoints-zdr
       summary: Preview the impact of ZDR on the available endpoints
@@ -419,7 +419,7 @@ components:
 ```python Endpoints_listEndpointsZdr_example
 import requests
 
-url = "https://openrouter.ai/api/v1//endpoints/zdr"
+url = "https://openrouter.ai/api/v1/endpoints/zdr"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -429,7 +429,7 @@ print(response.json())
 ```
 
 ```javascript Endpoints_listEndpointsZdr_example
-const url = 'https://openrouter.ai/api/v1//endpoints/zdr';
+const url = 'https://openrouter.ai/api/v1/endpoints/zdr';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -452,7 +452,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//endpoints/zdr"
+	url := "https://openrouter.ai/api/v1/endpoints/zdr"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -473,7 +473,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//endpoints/zdr")
+url = URI("https://openrouter.ai/api/v1/endpoints/zdr")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -489,7 +489,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//endpoints/zdr")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/endpoints/zdr")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -500,7 +500,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//endpoints/zdr', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/endpoints/zdr', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -512,7 +512,7 @@ echo $response->getBody();
 ```csharp Endpoints_listEndpointsZdr_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//endpoints/zdr");
+var client = new RestClient("https://openrouter.ai/api/v1/endpoints/zdr");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -523,7 +523,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//endpoints/zdr")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/endpoints/zdr")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

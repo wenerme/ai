@@ -135,6 +135,14 @@
     "size": 1719,
     "updatedAt": "2026-03-05T06:03:44.471Z"
   },
+  "openai-docs/guides/admin-apis.md": {
+    "url": "https://developers.openai.com/api/docs/guides/admin-apis.md",
+    "skill": "openai-docs",
+    "etag": "W/\"8aa531d11ab8119dec38ded59b1a6df3\"",
+    "lastModified": "Tue, 05 May 2026 00:02:48 GMT",
+    "size": 1889,
+    "updatedAt": "2026-05-05T00:28:24.582Z"
+  },
   "openai-docs/guides/advanced-usage.md": {
     "url": "https://developers.openai.com/api/docs/guides/advanced-usage.md",
     "skill": "openai-docs",

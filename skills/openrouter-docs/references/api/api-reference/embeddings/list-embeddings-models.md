@@ -4,7 +4,7 @@
 
 # List all embeddings models
 
-GET https://openrouter.ai/api/v1//embeddings/models
+GET https://openrouter.ai/api/v1/embeddings/models
 
 Returns a list of all available embeddings models and their properties
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //embeddings/models:
+  /embeddings/models:
     get:
       operationId: list-embeddings-models
       summary: List all embeddings models
@@ -366,6 +366,15 @@ components:
           items:
             $ref: '#/components/schemas/Parameter'
           description: List of supported parameters for this model
+        supported_voices:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: >-
+            List of supported voice identifiers for TTS models. Null for non-TTS
+            models.
         top_provider:
           $ref: '#/components/schemas/TopProviderInfo'
       required:
@@ -380,6 +389,7 @@ components:
         - per_request_limits
         - pricing
         - supported_parameters
+        - supported_voices
         - top_provider
       description: Information about an AI model available on OpenRouter
       title: Model
@@ -473,7 +483,7 @@ components:
 ```python Embeddings_listEmbeddingsModels_example
 import requests
 
-url = "https://openrouter.ai/api/v1//embeddings/models"
+url = "https://openrouter.ai/api/v1/embeddings/models"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -483,7 +493,7 @@ print(response.json())
 ```
 
 ```javascript Embeddings_listEmbeddingsModels_example
-const url = 'https://openrouter.ai/api/v1//embeddings/models';
+const url = 'https://openrouter.ai/api/v1/embeddings/models';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -506,7 +516,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//embeddings/models"
+	url := "https://openrouter.ai/api/v1/embeddings/models"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -527,7 +537,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//embeddings/models")
+url = URI("https://openrouter.ai/api/v1/embeddings/models")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -543,7 +553,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//embeddings/models")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/embeddings/models")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -554,7 +564,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//embeddings/models', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/embeddings/models', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -566,7 +576,7 @@ echo $response->getBody();
 ```csharp Embeddings_listEmbeddingsModels_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//embeddings/models");
+var client = new RestClient("https://openrouter.ai/api/v1/embeddings/models");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -577,7 +587,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//embeddings/models")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/embeddings/models")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

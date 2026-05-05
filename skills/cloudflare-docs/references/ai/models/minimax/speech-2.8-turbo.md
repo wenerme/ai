@@ -65,6 +65,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-352)
+* [ Raw response ](#tab-panel-353)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/simple-speech.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Fast Narration**  — Speed up narration for quick playback 
@@ -102,6 +128,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-354)
+* [ Raw response ](#tab-panel-355)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/fast-narration.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -147,6 +199,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-356)
+* [ Raw response ](#tab-panel-357)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/calm-tone.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Adjusted Pitch**  — Lower the pitch for a deeper voice 
 
 TypeScript
@@ -186,10 +264,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-358)
+* [ Raw response ](#tab-panel-359)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-turbo/adjusted-pitch.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-66)
-* [ Output ](#tab-panel-67)
+* [ Input ](#tab-panel-360)
+* [ Output ](#tab-panel-361)
 
 text
 

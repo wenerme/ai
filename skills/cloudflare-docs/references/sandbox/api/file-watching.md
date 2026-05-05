@@ -40,14 +40,15 @@ const stream = await sandbox.watch(path: string, options?: WatchOptions): Promis
 
 **Returns**: `Promise<ReadableStream<Uint8Array>>` — an SSE stream of `FileWatchSSEEvent` objects
 
-* [  JavaScript ](#tab-panel-7479)
-* [  TypeScript ](#tab-panel-7480)
+* [  JavaScript ](#tab-panel-7827)
+* [  TypeScript ](#tab-panel-7828)
 
 JavaScript
 
 ```
 
 import { parseSSEStream } from "@cloudflare/sandbox";
+
 
 const stream = await sandbox.watch("/workspace/src", {
 

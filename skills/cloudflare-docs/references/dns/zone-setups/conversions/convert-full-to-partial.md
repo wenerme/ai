@@ -12,26 +12,38 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Convert full setup to partial setup
 
-If you initially configured a [primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/), you can later convert your zone to use a CNAME setup (also known as partial setup).
+If you initially configured a [primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/), you can later convert your zone to use a CNAME setup (also known as partial setup). This guide assumes your zone is already in an [active status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/#active).
 
 A CNAME setup allows you to use [Cloudflare's reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) on individual subdomains while using a different authoritative DNS provider.
 
+---
+
 ## Before you begin
 
-Make sure you consider the following:
+### Consider CNAME setup limitations
 
-* This guide assumes your zone is already in an [active status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/#active).
 * A CNAME setup requires a CNAME record for each proxied hostname but, following [RFC 1912 ↗](https://datatracker.ietf.org/doc/html/rfc1912#section-2.4), CNAME records are not allowed on the zone apex (`example.com`). With a CNAME setup, you can only proxy the zone apex if your authoritative DNS provider supports [CNAME flattening ↗](https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/) (or an equivalent like ALIAS/ANAME records), or if you create A/AAAA records pointing the apex directly to Cloudflare [anycast IP addresses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/). Otherwise, you can only proxy subdomains.  
 Warning  
 Cloudflare only recommends the A/AAAA approach if you use [Static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/) or [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/), because standard Cloudflare anycast IPs can change.
 * Once your zone is using CNAME setup, on the dashboard, you will only be able to create A, AAAA, and CNAME records, which are the DNS record types that can be [proxied](https://developers.cloudflare.com/dns/proxy-status/).
-* You should plan for SSL/TLS certificates. If you are only using [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) prior to converting your zone, a certificate will be provisioned for your subdomains only after each of the respective DNS records are proxied. If your domain is sensitive to downtime, instead of using Universal SSL, consider using an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) with [delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/#setup).
+
+### Plan for SSL/TLS certificates
+
+Universal SSL deletion
+
+If you are using [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), converting to a CNAME setup will delete your existing Universal SSL certificates.
+
+New Universal SSL certificates will be [provisioned](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl/#partial-dns-setup) for your proxied subdomains only after each CNAME record pointing to `{your-hostname}.cdn.cloudflare.net` is in place, and domain ownership is verified with the TXT record, as [explained below](#2-convert-the-zone).
+
+To avoid downtime, replace your Universal SSL certificates with an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), which will persist during the transition. After the conversion, you can optionally configure [delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/#setup).
+
+---
 
 ## 1\. Prepare new DNS provider
 
 1. Export a zone file  
-   * [ Dashboard ](#tab-panel-5607)  
-   * [ API ](#tab-panel-5608)  
+   * [ Dashboard ](#tab-panel-5926)  
+   * [ API ](#tab-panel-5927)  
 To export records using the dashboard:  
    1. In the Cloudflare dashboard, go to the **DNS Records** page.  
    [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)  
@@ -58,8 +70,8 @@ www.example.com CNAME www.example.com.cdn.cloudflare.net
 
 ## 2\. Convert the zone
 
-* [ Dashboard ](#tab-panel-5605)
-* [ API ](#tab-panel-5606)
+* [ Dashboard ](#tab-panel-5924)
+* [ API ](#tab-panel-5925)
 
 1. On the Cloudflare dashboard, go to the zone's **Overview** page.
 2. Select **Convert to CNAME DNS Setup** and then **Convert** to confirm.

@@ -39,8 +39,8 @@ curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agent
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-6032)
-* [  TypeScript ](#tab-panel-6033)
+* [  JavaScript ](#tab-panel-6357)
+* [  TypeScript ](#tab-panel-6358)
 
 JavaScript
 
@@ -146,11 +146,90 @@ Note that we include an `x-markdown-tokens` header with the converted response t
 
 By default Markdown for Agents converted responses include the `Content-Signal: ai-train=yes, search=yes, ai-input=yes` header signaling that the content can be used for AI Training, Search results and AI Input, which includes agentic use. Markdown for Agents will provide options to define custom Content Signal policies in the future.
 
+## Output format
+
+Markdown for Agents returns a Markdown document with a consistent, predictable structure so AI systems can rely on it without per-site parsing logic. The response always follows this layout:
+
+1. **YAML frontmatter** with metadata extracted from the page's `<meta>` tags. Only emitted when at least one supported meta tag is present.
+2. **Body Markdown** converted from the document body. Non-content elements (such as headers, footers, navigation, scripts, and styles) are stripped during pre-processing. For the full list of elements that are removed, refer to [HTML pre-processing](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#html) in the Workers AI Markdown Conversion documentation.
+3. **JSON-LD** structured data preserved as a fenced `json` code block at the end of the document. Only emitted when the source HTML contains JSON-LD.
+
+### YAML frontmatter
+
+When the source HTML contains supported `<meta>` tags, Markdown for Agents prepends a YAML frontmatter block to the response. The block uses the following fields:
+
+| Field       | Source <meta> tag                                                            |
+| ----------- | ---------------------------------------------------------------------------- |
+| title       | <meta name="title">, with fallback to <meta property="og:title">             |
+| description | <meta name="description">, with fallback to <meta property="og:description"> |
+| image       | <meta property="og:image">                                                   |
+
+Only fields with a value are emitted. If the source HTML does not contain any of the supported meta tags, the frontmatter block is omitted entirely.
+
+For `title` and `description`, the standard `<meta name="...">` form always takes priority over the Open Graph `<meta property="og:...">` form, regardless of the order they appear in the HTML. Open Graph values are used only as fallbacks when the standard form is missing.
+
+Example output:
+
+```
+
+---
+
+title: My Page Title
+
+description: A short summary of the page.
+
+image: https://example.com/cover.png
+
+---
+
+
+# Page heading
+
+
+...
+
+
+```
+
+### JSON-LD
+
+[JSON-LD ↗](https://json-ld.org/) is a structured-data format used by search engines and AI systems to interpret a page's semantic content. Markdown for Agents preserves any `<script type="application/ld+json">` blocks from the source HTML by appending them at the end of the converted Markdown inside a single fenced `json` code block.
+
+If the source HTML contains multiple JSON-LD scripts, all of them are concatenated within the same code block, each on its own line.
+
+JSON-LD is the only `<script>` content preserved in the output — all other `<script>` and `<style>` content is stripped during [HTML pre-processing](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#html).
+
+Example output:
+
+```
+
+... main markdown content ...
+
+
+```json
+
+{
+
+  "@context": "https://schema.org",
+
+  "@type": "Article",
+
+  "headline": "Article Title",
+
+  "author": { "@type": "Person", "name": "Jane Doe" }
+
+}
+
+```
+
+
+```
+
 ## How to enable
 
-* [ Dashboard ](#tab-panel-6029)
-* [ API ](#tab-panel-6030)
-* [ Custom Hostnames ](#tab-panel-6031)
+* [ Dashboard ](#tab-panel-6354)
+* [ API ](#tab-panel-6355)
+* [ Custom Hostnames ](#tab-panel-6356)
 
 To enable Markdown for Agents for your zone in the dashboard:
 

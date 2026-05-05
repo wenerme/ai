@@ -16,11 +16,11 @@ Use `wrangler browser` commands to manage Browser Run sessions from the command 
 
 ## `browser create`
 
-Create a new browser rendering session
+Create a new Browser Run session
 
-* [  npm ](#tab-panel-4443)
-* [  pnpm ](#tab-panel-4444)
-* [  yarn ](#tab-panel-4445)
+* [  npm ](#tab-panel-4762)
+* [  pnpm ](#tab-panel-4763)
+* [  yarn ](#tab-panel-4764)
 
 Terminal window
 
@@ -77,11 +77,11 @@ Automatically provision draft bindings with new resources
 
 ## `browser close`
 
-Close a browser rendering session
+Close a Browser Run session
 
-* [  npm ](#tab-panel-4446)
-* [  pnpm ](#tab-panel-4447)
-* [  yarn ](#tab-panel-4448)
+* [  npm ](#tab-panel-4765)
+* [  pnpm ](#tab-panel-4766)
+* [  yarn ](#tab-panel-4767)
 
 Terminal window
 
@@ -134,11 +134,11 @@ Automatically provision draft bindings with new resources
 
 ## `browser list`
 
-List active browser rendering sessions
+List active Browser Run sessions
 
-* [  npm ](#tab-panel-4449)
-* [  pnpm ](#tab-panel-4450)
-* [  yarn ](#tab-panel-4451)
+* [  npm ](#tab-panel-4768)
+* [  pnpm ](#tab-panel-4769)
+* [  yarn ](#tab-panel-4770)
 
 Terminal window
 
@@ -191,9 +191,9 @@ Automatically provision draft bindings with new resources
 
 View a live browser session
 
-* [  npm ](#tab-panel-4452)
-* [  pnpm ](#tab-panel-4453)
-* [  yarn ](#tab-panel-4454)
+* [  npm ](#tab-panel-4771)
+* [  pnpm ](#tab-panel-4772)
+* [  yarn ](#tab-panel-4773)
 
 Terminal window
 

@@ -1153,30 +1153,6 @@ Traffic Monitoring alerts are not sent for each individual events, but only when
 
 These thresholds cannot be configured. Service level objectives (SLOs) are used to determine the threshold.
 
-Passive Origin Monitoring
-
-**Who is it for?**
-
-Customers who want to receive a notification when Cloudflare is unable to access their origin. Customers will only receive this notification when their origin is returning a `521` error.
-
-**Other options / filters**
-
-None.
-
-**Included with**
-
-All Cloudflare plans.
-
-**What should you do if you receive one?**
-
-Refer to [Troubleshooting Cloudflare 5XX errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/) to learn how to troubleshoot these errors.
-
-**Limitations**
-
-Traffic Monitoring alerts are not sent for each individual events, but only when a spike in traffic reaches the threshold for an alert to be sent.
-
-For every account with this alert set up, you will not receive duplicate alerts within the same four-hour time frame. The alert received will contain the most recent set of origins returning 521s.
-
 Traffic Anomalies Alert
 
 **Who is it for?**

@@ -12,9 +12,21 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Cloudflare Smart Shield
 
-Safeguard your origin with just a few clicks.
+Protect your origin server, reduce load, and improve content delivery performance.
 
-Smart Shield acts as an intermediate caching layer between Cloudflare's content delivery network and your origin server, consolidating multiple requests from various locations into a single request. Combined with [connection reuse](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/), this approach significantly reduces origin load while improving website and application performance.
+Every request that reaches your origin server costs resources — bandwidth, compute, and connections. When traffic spikes or your content is requested from many locations simultaneously, your origin can become a bottleneck. Smart Shield is a bundle of origin protection and performance features that reduce the number of requests and connections between Cloudflare's network and your origin server.
+
+Smart Shield includes [Smart Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/), which organizes Cloudflare data centers into upper-tier and lower-tier groups so that only upper-tier data centers contact your origin for uncached content. Combined with [connection reuse](https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/), which packages multiple requests into a single connection to your origin, Smart Shield reduces both the volume of origin requests and the number of open connections.
+
+Depending on your [package tier](https://developers.cloudflare.com/smart-shield/get-started/#packages-and-availability), Smart Shield can also include:
+
+* [Argo Smart Routing](https://developers.cloudflare.com/smart-shield/configuration/argo/) — routes traffic through the fastest network paths to reduce latency.
+* [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) — adds a regional cache layer between lower-tier and upper-tier data centers for geographic data locality.
+* [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/) — persistent cache storage that reduces cache misses for infrequently accessed content.
+* [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/) — monitors your origin server availability (Pro plans and above).
+* [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) — reserved IP addresses for origin allowlisting (Enterprise).
+
+For a visual overview of how these features work together, refer to the [network diagram](https://developers.cloudflare.com/smart-shield/concepts/network-diagram/).
 
 Learn how to [get started](https://developers.cloudflare.com/smart-shield/get-started/).
 

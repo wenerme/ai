@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.  
+Configure Zero Trust access policies to protect my internal staging environment.  
 ```
 
 ## Cloudflare platform access

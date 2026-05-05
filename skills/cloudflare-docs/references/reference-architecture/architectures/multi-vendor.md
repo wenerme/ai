@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Multi-vendor Application Security and Performance Reference Architecture
 
-**Last reviewed:**  over 2 years ago 
+**Last reviewed:**  almost 3 years ago 
 
 ## Introduction
 

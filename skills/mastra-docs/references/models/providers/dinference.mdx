@@ -1,11 +1,11 @@
 ---
 title: "DInference | Models"
-description: "Use DInference models with Mastra. 3 models available."
+description: "Use DInference models with Mastra. 5 models available."
 ---
 
 # [DInference logo]DInference
 
-Access 3 DInference models through Mastra's model router. Authentication is handled automatically using the `DINFERENCE_API_KEY` environment variable.
+Access 5 DInference models through Mastra's model router. Authentication is handled automatically using the `DINFERENCE_API_KEY` environment variable.
 
 Learn more in the [DInference documentation](https://dinference.com).
 
@@ -64,6 +64,18 @@ for await (const chunk of stream) {
     "outputCost": 2.4
   },
   {
+    "model": "dinference/glm-5.1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 128000,
+    "inputCost": 1.25,
+    "outputCost": 3.89
+  },
+  {
     "model": "dinference/gpt-oss-120b",
     "imageInput": false,
     "audioInput": false,
@@ -74,6 +86,18 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.0675,
     "outputCost": 0.27
+  },
+  {
+    "model": "dinference/minimax-m2.5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 32000,
+    "inputCost": 0.22,
+    "outputCost": 0.88
   }
 ]}
 />
@@ -106,7 +130,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "dinference/gpt-oss-120b"
+      ? "dinference/minimax-m2.5"
       : "dinference/glm-4.7";
   }
 });

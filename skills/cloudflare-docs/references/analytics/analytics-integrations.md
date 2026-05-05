@@ -17,6 +17,7 @@ Cloudflare Enterprise customers can use Cloudflare integrations with their prefe
 Analyze [Cloudflare Logs](https://developers.cloudflare.com/logs/) data with the following analytics platforms:
 
 * [ Datadog ](https://developers.cloudflare.com/analytics/analytics-integrations/datadog/)
+* [ Prometheus ](https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/)
 * [ Graylog ](https://developers.cloudflare.com/analytics/analytics-integrations/graylog/)
 * [ New Relic ](https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/)
 * [ Splunk ](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/)

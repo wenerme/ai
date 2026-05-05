@@ -46,7 +46,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.  
+Set up rate limiting and WAF rules to block abuse on my public API.  
 ```
 
 ## Cloudflare platform access

@@ -161,7 +161,7 @@ The tables below show whether each Cloudflare product is compatible with each DL
 28. Argo cannot be used with Regional Services. [↩](#user-content-fnref-9)
 29. Argo cannot be used with Customer Metadata Boundary. [↩](#user-content-fnref-10)
 30. Static IP/BYOIP can be used with the legacy Spectrum setup. [↩](#user-content-fnref-26)
-31. Only applies to HTTP/S Spectrum applications. [↩](#user-content-fnref-42)
+31. Only applies to HTTP/S Spectrum applications. Spectrum applications use a separate regionalization mechanism from the Regional Hostnames API. Configuring a regional hostname does not regionalize a Spectrum application on the same hostname. Contact your [Account Team](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for Spectrum-specific regionalization. [↩](#user-content-fnref-42)
 32. Logpull available when using CMB = US only. Logpull is a legacy feature, consider using [Logpush](https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/) or [Log Explorer](https://developers.cloudflare.com/log-explorer/) instead. [↩](#user-content-fnref-12)
 33. Logpush available with Customer Metadata Boundary for [these datasets](https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/). Contact your account team if you need another dataset. [↩](#user-content-fnref-13)
 34. Currently, customers do not have the ability to choose the location of the Cloudflare-managed R2 bucket for Log Explorer. [↩](#user-content-fnref-23)

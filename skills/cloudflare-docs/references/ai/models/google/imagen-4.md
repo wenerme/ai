@@ -55,7 +55,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-198)
+* [ Raw response ](#tab-panel-199)
+
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -92,7 +118,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-200)
+* [ Raw response ](#tab-panel-201)
+
 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Portrait Format**  — Vertical portrait-style image 
 
@@ -127,7 +179,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-202)
+* [ Raw response ](#tab-panel-203)
+
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **With People**  — Allow generation of adult people 
 
@@ -162,7 +240,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-204)
+* [ Raw response ](#tab-panel-205)
+
 ![With People](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Product Photo**  — Square product photography 
 
@@ -197,12 +301,38 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-206)
+* [ Raw response ](#tab-panel-207)
+
 ![Product Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-36)
-* [ Output ](#tab-panel-37)
+* [ Input ](#tab-panel-208)
+* [ Output ](#tab-panel-209)
 
 prompt
 

@@ -63,6 +63,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-254)
+* [ Raw response ](#tab-panel-255)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3-fast/quick-preview.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Social Media Clip**  — Quick vertical video for stories 
@@ -98,6 +124,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-256)
+* [ Raw response ](#tab-panel-257)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3-fast/social-media-clip.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -141,6 +193,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-258)
+* [ Raw response ](#tab-panel-259)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3-fast/animated-loop.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Product Shot**  — Quick product video preview 
 
 TypeScript
@@ -178,10 +256,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-260)
+* [ Raw response ](#tab-panel-261)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3-fast/product-shot.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-46)
-* [ Output ](#tab-panel-47)
+* [ Input ](#tab-panel-262)
+* [ Output ](#tab-panel-263)
 
 prompt
 

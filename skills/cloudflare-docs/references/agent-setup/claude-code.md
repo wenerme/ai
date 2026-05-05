@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.  
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.  
 ```
 
 ## Cloudflare platform access

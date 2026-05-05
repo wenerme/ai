@@ -4,7 +4,7 @@
 
 # List all providers
 
-GET https://openrouter.ai/api/v1//providers
+GET https://openrouter.ai/api/v1/providers
 
 Reference: https://openrouter.ai/docs/api/api-reference/providers/list-providers
 
@@ -16,7 +16,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //providers:
+  /providers:
     get:
       operationId: list-providers
       summary: List all providers
@@ -654,7 +654,7 @@ components:
 ```python Providers_listProviders_example
 import requests
 
-url = "https://openrouter.ai/api/v1//providers"
+url = "https://openrouter.ai/api/v1/providers"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -664,7 +664,7 @@ print(response.json())
 ```
 
 ```javascript Providers_listProviders_example
-const url = 'https://openrouter.ai/api/v1//providers';
+const url = 'https://openrouter.ai/api/v1/providers';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -687,7 +687,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//providers"
+	url := "https://openrouter.ai/api/v1/providers"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -708,7 +708,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//providers")
+url = URI("https://openrouter.ai/api/v1/providers")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -724,7 +724,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//providers")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/providers")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -735,7 +735,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//providers', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/providers', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -747,7 +747,7 @@ echo $response->getBody();
 ```csharp Providers_listProviders_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//providers");
+var client = new RestClient("https://openrouter.ai/api/v1/providers");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -758,7 +758,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//providers")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/providers")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

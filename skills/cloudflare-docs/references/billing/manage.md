@@ -15,6 +15,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Pay an outstanding balance ](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/)
 * [ Change domain plan ](https://developers.cloudflare.com/billing/manage/change-plan/)
 * [ Cancel Cloudflare subscriptions ](https://developers.cloudflare.com/billing/manage/cancel-subscription/)
+* [ Optimize costs ](https://developers.cloudflare.com/billing/manage/optimize-costs/)
 * [ Invoices ](https://developers.cloudflare.com/billing/manage/invoices/)
 * [ Monitor billable usage ](https://developers.cloudflare.com/billing/manage/billable-usage/)
 * [ Budget alerts ](https://developers.cloudflare.com/billing/manage/budget-alerts/)

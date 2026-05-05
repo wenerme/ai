@@ -69,6 +69,29 @@ You can delete or disable existing Notifications via the Cloudflare dashboard.
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On the notification that you want to disable, select the **Enabled** toggle. To delete it, select **Delete**.
 
+### Mute a notification
+
+You can temporarily mute a notification to stop receiving alerts for a set period of time. Muted notifications create a silence that automatically expires after the specified duration.
+
+1. In the Cloudflare dashboard, go to the **Notifications** page.  
+[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+2. On the notification that you want to mute, select **Mute**.
+3. Select a duration preset (**1h**, **12h**, or **24h**), or set a custom time range using the **Start Time** and **End Time** fields.
+4. Select **Save**.
+
+Note
+
+While a notification is muted, alerts that would have triggered it are suppressed and will not be sent. However, silenced alerts still appear in [Notification History](https://developers.cloudflare.com/notifications/notification-history/) and are marked as silenced.
+
+### Manage silences
+
+You can view, edit, or delete existing silences from the **Silences** tab.
+
+1. In the Cloudflare dashboard, go to the **Notifications** page.  
+[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+2. Select the **Silences** tab.
+3. To create a new silence, select **Add**. To modify an existing silence, select **Edit**. To remove a silence before it expires, select **Delete**.
+
 ### Test a notification
 
 To verify that notifications will be sent to the correct location or to view which details are available, you can test a notification by selecting **Test** on any enabled notification.

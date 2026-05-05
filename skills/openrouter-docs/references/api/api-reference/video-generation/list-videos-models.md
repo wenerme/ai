@@ -4,7 +4,7 @@
 
 # List all video generation models
 
-GET https://openrouter.ai/api/v1//videos/models
+GET https://openrouter.ai/api/v1/videos/models
 
 Returns a list of all available video generation models and their properties
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //videos/models:
+  /videos/models:
     get:
       operationId: list-videos-models
       summary: List all video generation models
@@ -299,7 +299,7 @@ components:
 ```python Video Generation_listVideosModels_example
 import requests
 
-url = "https://openrouter.ai/api/v1//videos/models"
+url = "https://openrouter.ai/api/v1/videos/models"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -309,7 +309,7 @@ print(response.json())
 ```
 
 ```javascript Video Generation_listVideosModels_example
-const url = 'https://openrouter.ai/api/v1//videos/models';
+const url = 'https://openrouter.ai/api/v1/videos/models';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -332,7 +332,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//videos/models"
+	url := "https://openrouter.ai/api/v1/videos/models"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -353,7 +353,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//videos/models")
+url = URI("https://openrouter.ai/api/v1/videos/models")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -369,7 +369,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1//videos/models")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/videos/models")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -380,7 +380,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1//videos/models', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/videos/models', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -392,7 +392,7 @@ echo $response->getBody();
 ```csharp Video Generation_listVideosModels_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//videos/models");
+var client = new RestClient("https://openrouter.ai/api/v1/videos/models");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -403,7 +403,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//videos/models")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/videos/models")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

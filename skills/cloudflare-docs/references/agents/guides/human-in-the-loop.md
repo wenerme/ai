@@ -51,8 +51,8 @@ For durable, multi-step processes, use [Cloudflare Workflows](https://developers
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-3998)
-* [  TypeScript ](#tab-panel-3999)
+* [  JavaScript ](#tab-panel-4302)
+* [  TypeScript ](#tab-panel-4303)
 
 JavaScript
 
@@ -61,6 +61,7 @@ JavaScript
 import { Agent } from "agents";
 
 import { AgentWorkflow } from "agents/workflows";
+
 
 export class ExpenseWorkflow extends AgentWorkflow {
 
@@ -228,8 +229,8 @@ export class ExpenseWorkflow extends AgentWorkflow<
 
 The agent provides methods to approve or reject waiting workflows:
 
-* [  JavaScript ](#tab-panel-4002)
-* [  TypeScript ](#tab-panel-4003)
+* [  JavaScript ](#tab-panel-4306)
+* [  TypeScript ](#tab-panel-4307)
 
 JavaScript
 
@@ -501,8 +502,8 @@ export class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Set timeouts to prevent workflows from waiting indefinitely:
 
-* [  JavaScript ](#tab-panel-3992)
-* [  TypeScript ](#tab-panel-3993)
+* [  JavaScript ](#tab-panel-4296)
+* [  TypeScript ](#tab-panel-4297)
 
 JavaScript
 
@@ -556,8 +557,8 @@ if (!approval) {
 
 Use `schedule()` to set up escalation reminders:
 
-* [  JavaScript ](#tab-panel-3994)
-* [  TypeScript ](#tab-panel-3995)
+* [  JavaScript ](#tab-panel-4298)
+* [  TypeScript ](#tab-panel-4299)
 
 JavaScript
 
@@ -713,8 +714,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Use `this.sql` to maintain an immutable audit trail:
 
-* [  JavaScript ](#tab-panel-3996)
-* [  TypeScript ](#tab-panel-3997)
+* [  JavaScript ](#tab-panel-4300)
+* [  TypeScript ](#tab-panel-4301)
 
 JavaScript
 
@@ -862,8 +863,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-3990)
-* [  wrangler.toml ](#tab-panel-3991)
+* [  wrangler.jsonc ](#tab-panel-4294)
+* [  wrangler.toml ](#tab-panel-4295)
 
 JSONC
 
@@ -877,7 +878,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-04",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -918,7 +919,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-04"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -954,8 +955,8 @@ When building MCP servers with `McpAgent`, you can request additional user input
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-4004)
-* [  TypeScript ](#tab-panel-4005)
+* [  JavaScript ](#tab-panel-4308)
+* [  TypeScript ](#tab-panel-4309)
 
 JavaScript
 
@@ -1315,8 +1316,8 @@ function PendingApprovals() {
 
 For sensitive operations requiring multiple approvers:
 
-* [  JavaScript ](#tab-panel-4000)
-* [  TypeScript ](#tab-panel-4001)
+* [  JavaScript ](#tab-panel-4304)
+* [  TypeScript ](#tab-panel-4305)
 
 JavaScript
 

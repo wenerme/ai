@@ -63,6 +63,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-274)
+* [ Raw response ](#tab-panel-275)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3.1-fast/quick-demo.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Social Content**  — Quick vertical video for social media 
@@ -100,6 +126,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-276)
+* [ Raw response ](#tab-panel-277)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3.1-fast/social-content.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -143,6 +195,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-278)
+* [ Raw response ](#tab-panel-279)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3.1-fast/motion-graphics.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Ambient Scene**  — Relaxing background video 
 
 TypeScript
@@ -182,10 +260,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-280)
+* [ Raw response ](#tab-panel-281)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3.1-fast/ambient-scene.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-50)
-* [ Output ](#tab-panel-51)
+* [ Input ](#tab-panel-282)
+* [ Output ](#tab-panel-283)
 
 prompt
 

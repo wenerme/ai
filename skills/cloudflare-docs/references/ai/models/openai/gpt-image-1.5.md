@@ -55,7 +55,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-454)
+* [ Raw response ](#tab-panel-455)
+
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/simple-generation.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/simple-generation.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -92,7 +118,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-456)
+* [ Raw response ](#tab-panel-457)
+
 ![High Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/high-quality.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/high-quality.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Low Quality Draft**  — Fast, rough draft for iteration 
 
@@ -127,7 +179,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-458)
+* [ Raw response ](#tab-panel-459)
+
 ![Low Quality Draft](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/low-quality-draft.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/low-quality-draft.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Medium Quality**  — Balanced quality for most uses 
 
@@ -162,7 +240,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-460)
+* [ Raw response ](#tab-panel-461)
+
 ![Medium Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/medium-quality.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/medium-quality.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Auto Quality**  — Let the model pick an appropriate quality level 
 
@@ -197,12 +301,38 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-462)
+* [ Raw response ](#tab-panel-463)
+
 ![Auto Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/auto-quality.png) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/auto-quality.png"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-86)
-* [ Output ](#tab-panel-87)
+* [ Input ](#tab-panel-464)
+* [ Output ](#tab-panel-465)
 
 prompt
 

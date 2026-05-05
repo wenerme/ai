@@ -55,7 +55,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-566)
+* [ Raw response ](#tab-panel-567)
+
 ![Simple Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/simple-icon.jpg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/simple-icon.jpg"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -92,7 +118,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-568)
+* [ Raw response ](#tab-panel-569)
+
 ![App Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/app-icon.jpg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/app-icon.jpg"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **Illustration**  — Vector illustration for web use 
 
@@ -127,7 +179,33 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-570)
+* [ Raw response ](#tab-panel-571)
+
 ![Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/illustration.jpg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/illustration.jpg"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 **With Brand Colors**  — Vector with specific color palette 
 
@@ -186,12 +264,38 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-572)
+* [ Raw response ](#tab-panel-573)
+
 ![With Brand Colors](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/with-brand-colors.jpg) 
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-vector/with-brand-colors.jpg"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
 
 ## Parameters
 
-* [ Input ](#tab-panel-106)
-* [ Output ](#tab-panel-107)
+* [ Input ](#tab-panel-574)
+* [ Output ](#tab-panel-575)
 
 prompt
 

@@ -65,6 +65,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-242)
+* [ Raw response ](#tab-panel-243)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3/simple-video-generation.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Cinematic Scene**  — Widescreen cinematic video in 1080p 
@@ -102,6 +128,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-244)
+* [ Raw response ](#tab-panel-245)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3/cinematic-scene.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -145,6 +197,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-246)
+* [ Raw response ](#tab-panel-247)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3/vertical-video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Short Format**  — Short video for social media posts 
 
 TypeScript
@@ -178,6 +256,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-248)
+* [ Raw response ](#tab-panel-249)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3/short-format.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -219,10 +323,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-250)
+* [ Raw response ](#tab-panel-251)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__veo-3/silent-video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-44)
-* [ Output ](#tab-panel-45)
+* [ Input ](#tab-panel-252)
+* [ Output ](#tab-panel-253)
 
 prompt
 

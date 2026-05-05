@@ -236,7 +236,7 @@ Firecrawl is a BYOK (bring your own key) search engine. To use it:
 
 1. Go to your [OpenRouter plugin settings](https://openrouter.ai/settings/plugins) and select Firecrawl as the web search engine
 2. Accept the [Firecrawl Terms of Service](https://www.firecrawl.dev/terms-of-service) — this automatically creates a Firecrawl account linked to your email
-3. Your account starts with a **free hobby plan and 100,000 credits**
+3. Your account starts with **10,000 free credits** (credits expire after 3 months)
 
 Once set up, Firecrawl searches use your Firecrawl credits directly — there is no additional charge from OpenRouter.
 

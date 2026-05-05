@@ -65,6 +65,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-342)
+* [ Raw response ](#tab-panel-343)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/simple-speech.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Custom Voice**  — Use a specific voice and adjust speed 
@@ -102,6 +128,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-344)
+* [ Raw response ](#tab-panel-345)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/custom-voice.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -147,6 +199,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-346)
+* [ Raw response ](#tab-panel-347)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/with-emotion.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **High Sample Rate**  — Studio quality at 44.1kHz sample rate 
 
 TypeScript
@@ -188,10 +266,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-348)
+* [ Raw response ](#tab-panel-349)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__speech-2.8-hd/high-sample-rate.mp3"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-64)
-* [ Output ](#tab-panel-65)
+* [ Input ](#tab-panel-350)
+* [ Output ](#tab-panel-351)
 
 text
 

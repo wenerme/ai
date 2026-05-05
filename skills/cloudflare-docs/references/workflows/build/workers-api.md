@@ -129,8 +129,8 @@ After a `ReadableStream<Uint8Array>` object has been persisted within a step, it
 
 :::
 
-* [  JavaScript ](#tab-panel-9936)
-* [  TypeScript ](#tab-panel-9937)
+* [  JavaScript ](#tab-panel-10475)
+* [  TypeScript ](#tab-panel-10476)
 
 JavaScript
 
@@ -227,8 +227,8 @@ More information about the limits imposed on Workflow can be found in the [Workf
 
 * `step.waitForEvent(name: string, options: ): Promise<void>`\-`name` \- the name of the step. - `options` \- an object with properties for`type` (up to 100 characters [1](#user-content-fn-1)), which determines which event type this`waitForEvent` call will match on when calling `instance.sendEvent`, and an optional `timeout` property, which defines how long the `waitForEvent` call will block for before throwing a timeout exception. The default timeout is 24 hours.
 
-* [  JavaScript ](#tab-panel-9932)
-* [  TypeScript ](#tab-panel-9933)
+* [  JavaScript ](#tab-panel-10471)
+* [  TypeScript ](#tab-panel-10472)
 
 JavaScript
 
@@ -352,8 +352,8 @@ Refer to the [step context documentation](https://developers.cloudflare.com/work
 
 Each workflow on Workers Paid supports 10,000 steps by default. You can increase this up to 25,000 steps by configuring `steps` within the `limits` property of your Workflow definition in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9928)
-* [  wrangler.toml ](#tab-panel-9929)
+* [  wrangler.jsonc ](#tab-panel-10467)
+* [  wrangler.toml ](#tab-panel-10468)
 
 JSONC
 
@@ -426,8 +426,8 @@ You can bind to a Workflow by defining a `[[workflows]]` binding within your Wra
 
 For example, to bind to a Workflow called `workflows-starter` and to make it available on the `MY_WORKFLOW` variable to your Worker script, you would configure the following fields within the `[[workflows]]` binding definition:
 
-* [  wrangler.jsonc ](#tab-panel-9930)
-* [  wrangler.toml ](#tab-panel-9931)
+* [  wrangler.jsonc ](#tab-panel-10469)
+* [  wrangler.toml ](#tab-panel-10470)
 
 JSONC
 
@@ -443,7 +443,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-30",
+  "compatibility_date": "2026-05-04",
 
   "workflows": [
 
@@ -482,7 +482,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-30"
+compatibility_date = "2026-05-04"
 
 
 [[workflows]]
@@ -508,8 +508,8 @@ You can also bind to a Workflow that is defined in a different Worker script fro
 
 For example, if your Workflow is defined in a Worker script named `billing-worker`, but you are calling it from your `web-api-worker` script, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-9934)
-* [  wrangler.toml ](#tab-panel-9935)
+* [  wrangler.jsonc ](#tab-panel-10473)
+* [  wrangler.toml ](#tab-panel-10474)
 
 JSONC
 
@@ -525,7 +525,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-30",
+  "compatibility_date": "2026-05-04",
 
   "workflows": [
 
@@ -570,7 +570,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-30"
+compatibility_date = "2026-05-04"
 
 
 [[workflows]]
@@ -825,7 +825,65 @@ interface WorkflowInstanceCreateOptions {
 
   params?: unknown;
 
+  /**
+
+   * The retention policy for the Workflow instance.
+
+   * Defaults to the maximum retention period available for the owner's account.
+
+   */
+
+  retention?: {
+
+    /**
+
+     * How long to retain instance state after the Workflow completes successfully.
+
+     */
+
+    successRetention?: WorkflowRetentionDuration;
+
+    /**
+
+     * How long to retain instance state after the Workflow ends in an errored or terminated state.
+
+     */
+
+    errorRetention?: WorkflowRetentionDuration;
+
+  };
+
 }
+
+
+type WorkflowRetentionDuration = WorkflowSleepDuration;
+
+
+```
+
+If `retention` is not set, instance state is retained for the maximum retention period available on your account (3 days on the Workers Free plan, 30 days on the Workers Paid plan). Refer to the [retention limit](https://developers.cloudflare.com/workflows/reference/limits/) for more information.
+
+The following example creates an instance that retains state for 1 day after success and 7 days after an error:
+
+TypeScript
+
+```
+
+let instance = await env.MY_WORKFLOW.create({
+
+  id: myIdDefinedFromOtherSystem,
+
+  params: { hello: "world" },
+
+  retention: {
+
+    successRetention: "1 day",
+
+    errorRetention: "7 days",
+
+  },
+
+});
 
 
 ```
@@ -931,8 +989,8 @@ Terminate a Workflow instance.
 
 Return `void` on success; throws an exception if the Workflow is not running or is an errored state.
 
-* [  JavaScript ](#tab-panel-9938)
-* [  TypeScript ](#tab-panel-9939)
+* [  JavaScript ](#tab-panel-10477)
+* [  TypeScript ](#tab-panel-10478)
 
 JavaScript
 

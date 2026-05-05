@@ -55,6 +55,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-8)
+* [ Raw response ](#tab-panel-9)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-t2v/simple-text-to-video.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Vertical 1080P**  — Vertical 9:16 output at 1080P for social media 
@@ -90,6 +116,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-10)
+* [ Raw response ](#tab-panel-11)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-t2v/vertical-1080p.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  }
+
+}
 
 
 ```
@@ -131,10 +183,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-12)
+* [ Raw response ](#tab-panel-13)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__hh1-t2v/reproducible-output.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-2)
-* [ Output ](#tab-panel-3)
+* [ Input ](#tab-panel-14)
+* [ Output ](#tab-panel-15)
 
 prompt
 

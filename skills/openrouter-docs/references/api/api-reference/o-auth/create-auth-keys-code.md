@@ -4,7 +4,7 @@
 
 # Create authorization code
 
-POST https://openrouter.ai/api/v1//auth/keys/code
+POST https://openrouter.ai/api/v1/auth/keys/code
 Content-Type: application/json
 
 Create an authorization code for the PKCE flow to generate a user-controlled API key
@@ -19,7 +19,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //auth/keys/code:
+  /auth/keys/code:
     post:
       operationId: create-auth-keys-code
       summary: Create authorization code
@@ -295,7 +295,7 @@ components:
 ```python OAuth_createAuthKeysCode_example
 import requests
 
-url = "https://openrouter.ai/api/v1//auth/keys/code"
+url = "https://openrouter.ai/api/v1/auth/keys/code"
 
 payload = {
     "callback_url": "https://myapp.com/auth/callback",
@@ -314,7 +314,7 @@ print(response.json())
 ```
 
 ```javascript OAuth_createAuthKeysCode_example
-const url = 'https://openrouter.ai/api/v1//auth/keys/code';
+const url = 'https://openrouter.ai/api/v1/auth/keys/code';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -342,7 +342,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//auth/keys/code"
+	url := "https://openrouter.ai/api/v1/auth/keys/code"
 
 	payload := strings.NewReader("{\n  \"callback_url\": \"https://myapp.com/auth/callback\",\n  \"code_challenge\": \"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM\",\n  \"code_challenge_method\": \"S256\",\n  \"limit\": 100\n}")
 
@@ -366,7 +366,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//auth/keys/code")
+url = URI("https://openrouter.ai/api/v1/auth/keys/code")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -384,7 +384,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1//auth/keys/code")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/auth/keys/code")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"callback_url\": \"https://myapp.com/auth/callback\",\n  \"code_challenge\": \"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM\",\n  \"code_challenge_method\": \"S256\",\n  \"limit\": 100\n}")
@@ -397,7 +397,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('POST', 'https://openrouter.ai/api/v1//auth/keys/code', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/auth/keys/code', [
   'body' => '{
   "callback_url": "https://myapp.com/auth/callback",
   "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
@@ -416,7 +416,7 @@ echo $response->getBody();
 ```csharp OAuth_createAuthKeysCode_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//auth/keys/code");
+var client = new RestClient("https://openrouter.ai/api/v1/auth/keys/code");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -440,7 +440,7 @@ let parameters = [
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//auth/keys/code")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/auth/keys/code")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

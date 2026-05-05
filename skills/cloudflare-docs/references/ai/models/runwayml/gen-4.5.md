@@ -61,6 +61,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-576)
+* [ Raw response ](#tab-panel-577)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://dnznrvs05pmza.cloudfront.net/fd840364-360e-4903-8500-d5787fd8ab90.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Examples
 
 **Portrait Video**  — Vertical video for social media 
@@ -94,6 +120,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-578)
+* [ Raw response ](#tab-panel-579)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://dnznrvs05pmza.cloudfront.net/44f43eac-8c12-4084-ace3-6395fa67c13e.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -133,6 +185,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-580)
+* [ Raw response ](#tab-panel-581)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://dnznrvs05pmza.cloudfront.net/e03781eb-2544-45ae-a9a8-6148d556bf2a.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Cinematic Scene**  — Longer duration cinematic video 
 
 TypeScript
@@ -164,6 +242,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-582)
+* [ Raw response ](#tab-panel-583)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://dnznrvs05pmza.cloudfront.net/23ea177e-523d-45b4-9f8c-c4f8d7238ff0.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -205,6 +309,32 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-584)
+* [ Raw response ](#tab-panel-585)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://dnznrvs05pmza.cloudfront.net/ab424367-7431-4a0a-aa39-52604ff9150a.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 **Reproducible Generation**  — Use seed for consistent results 
 
 TypeScript
@@ -236,6 +366,32 @@ const response = await env.AI.run(
 )
 
 console.log(response)
+
+
+```
+
+* [ Output ](#tab-panel-586)
+* [ Raw response ](#tab-panel-587)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://dnznrvs05pmza.cloudfront.net/0bdfbec7-0823-4529-bdb5-d37bb24adb0d.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
 
 
 ```
@@ -279,10 +435,36 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-588)
+* [ Raw response ](#tab-panel-589)
+
+```
+
+{
+
+  "state": "Completed",
+
+  "result": {
+
+    "video": "https://dnznrvs05pmza.cloudfront.net/75c4cb0d-20aa-4824-b1f3-32f33ab9269b.mp4"
+
+  },
+
+  "gatewayMetadata": {
+
+    "keySource": "Unified"
+
+  }
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-108)
-* [ Output ](#tab-panel-109)
+* [ Input ](#tab-panel-590)
+* [ Output ](#tab-panel-591)
 
 prompt
 

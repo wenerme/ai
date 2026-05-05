@@ -34,7 +34,7 @@ To receive advance alerts, configure [CNI maintenance notifications](https://dev
 
 ### Scheduling patterns
 
-* Maintenance on redundant devices (for example, edge router one and edge router two) may occur on consecutive days with a minimum 16-hour gap between windows.
+* Maintenance on redundant devices at the same location may occur on consecutive days with a minimum 16-hour gap between windows.
 * Cloudflare does not coordinate maintenance timing between different PoP locations.
 * Routine maintenance is generally not rescheduled to accommodate customer schedule preferences.
 

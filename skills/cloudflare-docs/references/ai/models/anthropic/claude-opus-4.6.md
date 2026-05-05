@@ -68,6 +68,9 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-64)
+* [ Raw response ](#tab-panel-65)
+
 # The Laws of Thermodynamics
 
 Here are the three main laws (along with the "zeroth" law often included):
@@ -87,6 +90,55 @@ As a system's temperature approaches **absolute zero** (0 Kelvin / −273.15°C)
 ---
 
 Together, these laws govern how energy behaves in all physical and chemical processes, from engines to stars to biological systems.
+
+```
+
+{
+
+  "id": "msg_01Ss13EYxkyh29CJXYkdhHk4",
+
+  "type": "message",
+
+  "role": "assistant",
+
+  "content": [
+
+    {
+
+      "type": "text",
+
+      "text": "# The Laws of Thermodynamics\n\nHere are the three main laws (along with the \"zeroth\" law often included):\n\n## Zeroth Law\nIf two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. (This establishes the concept of temperature.)\n\n## First Law\nEnergy cannot be created or destroyed, only transferred or converted from one form to another. In essence, this is the **conservation of energy**. The change in a system's internal energy equals the heat added minus the work done by the system.\n\n## Second Law\nThe total **entropy** (disorder) of an isolated system can never decrease over time. Heat naturally flows from hotter to cooler objects, not the reverse. This means no process is perfectly efficient, and it establishes the \"arrow of time.\"\n\n## Third Law\nAs a system's temperature approaches **absolute zero** (0 Kelvin / −273.15°C), its entropy approaches a minimum value. It is impossible to reach absolute zero in a finite number of steps.\n\n---\n\nTogether, these laws govern how energy behaves in all physical and chemical processes, from engines to stars to biological systems."
+
+    }
+
+  ],
+
+  "model": "claude-opus-4-6",
+
+  "stop_reason": "end_turn",
+
+  "usage": {
+
+    "input_tokens": 17,
+
+    "output_tokens": 257
+
+  },
+
+  "stop_sequence": null,
+
+  "stop_details": null,
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  }
+
+}
+
+
+```
 
 ## Examples
 
@@ -134,6 +186,9 @@ console.log(response)
 
 
 ```
+
+* [ Output ](#tab-panel-66)
+* [ Raw response ](#tab-panel-67)
 
 # Reading a JSON File in Python
 
@@ -224,6 +279,55 @@ with open('data.json', 'r', encoding='utf-8') as file:
 
 > **Tip:** Always use the `with` statement when opening files — it ensures the file is properly closed, even if an error occurs.
 
+```
+
+{
+
+  "id": "msg_01XBD4XMEahrUEnEVbu4gPwV",
+
+  "type": "message",
+
+  "role": "assistant",
+
+  "content": [
+
+    {
+
+      "type": "text",
+
+      "text": "# Reading a JSON File in Python\n\nPython has a built-in `json` module that makes it easy to read JSON files. Here are the most common approaches:\n\n## Basic Example\n\n```python\nimport json\n\n# Open and read the JSON file\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n\nprint(data)\n```\n\n## Step-by-Step Breakdown\n\n| Step | Code | Description |\n|------|------|-------------|\n| 1 | `import json` | Import the built-in JSON module |\n| 2 | `open('data.json', 'r')` | Open the file in **read** mode |\n| 3 | `json.load(file)` | Parse the JSON into a Python object |\n\n## Common Scenarios\n\n### Reading into a Dictionary\n```python\nimport json\n\nwith open('config.json', 'r') as file:\n    config = json.load(file)\n\n# Access values like a normal dictionary\nprint(config['name'])\nprint(config['settings']['theme'])\n```\n\n### Reading a JSON String (not a file)\n```python\nimport json\n\njson_string = '{\"name\": \"Alice\", \"age\": 30}'\ndata = json.loads(json_string)  # Note: loads() with an 's'\n\nprint(data['name'])  # Output: Alice\n```\n\n### Handling Errors\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"File not found!\")\nexcept json.JSONDecodeError:\n    print(\"Invalid JSON format!\")\n```\n\n### Specifying Encoding\n```python\nimport json\n\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n```\n\n## Key Differences\n\n| Method | Input | Use Case |\n|--------|-------|----------|\n| `json.load(file)` | **File object** | Reading from a `.json` file |\n| `json.loads(string)` | **String** | Parsing a JSON-formatted string |\n\n## JSON → Python Type Mapping\n\n| JSON Type | Python Type |\n|-----------|-------------|\n| `object`  | `dict`      |\n| `array`   | `list`      |\n| `string`  | `str`       |\n| `number`  | `int`/`float` |\n| `true/false` | `True`/`False` |\n| `null`    | `None`      |\n\n> **Tip:** Always use the `with` statement when opening files — it ensures the file is properly closed, even if an error occurs."
+
+    }
+
+  ],
+
+  "model": "claude-opus-4-6",
+
+  "stop_reason": "end_turn",
+
+  "usage": {
+
+    "input_tokens": 29,
+
+    "output_tokens": 643
+
+  },
+
+  "stop_sequence": null,
+
+  "stop_details": null,
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  }
+
+}
+
+
+```
+
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
 TypeScript
@@ -285,6 +389,9 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-68)
+* [ Raw response ](#tab-panel-69)
+
 # Great Stops Between SF & LA
 
 Here are some popular options depending on your route:
@@ -312,6 +419,55 @@ This is the fastest route (~5-6 hours):
 - 🏨 Consider an overnight stop if taking the coastal route
 
 **Which route interests you more – scenic or fast?**
+
+```
+
+{
+
+  "id": "msg_019VVbDba57acjUFWYzMdWQV",
+
+  "type": "message",
+
+  "role": "assistant",
+
+  "content": [
+
+    {
+
+      "type": "text",
+
+      "text": "# Great Stops Between SF & LA\n\nHere are some popular options depending on your route:\n\n## Coastal Route (Highway 1) 🌊\nThis is the scenic route (~8-10 hours with stops):\n- **Half Moon Bay** – Beautiful coastal town, great seafood\n- **Santa Cruz** – Boardwalk, surfing, laid-back vibe\n- **Monterey/Carmel** – Monterey Bay Aquarium, 17-Mile Drive\n- **Big Sur** – Stunning cliffs, Bixby Bridge, McWay Falls\n- **San Simeon** – Hearst Castle, elephant seal colony\n- **San Luis Obispo** – Charming college town, great food\n- **Santa Barbara** – \"American Riviera,\" wine country, beaches\n- **Solvang** – Danish-style village with bakeries & windmills\n\n## Inland Route (I-5) 🚗\nThis is the fastest route (~5-6 hours):\n- **Harris Ranch** – Popular rest stop with a restaurant\n- **Bakersfield** – Buck Owens' Crystal Palace (country music)\n- Not as scenic, but efficient!\n\n## Tips:\n- ⛽ Fill up before Big Sur (limited gas stations)\n- 📸 Start early for the best light on Highway 1\n- 🏨 Consider an overnight stop if taking the coastal route\n\n**Which route interests you more – scenic or fast?**"
+
+    }
+
+  ],
+
+  "model": "claude-opus-4-6",
+
+  "stop_reason": "end_turn",
+
+  "usage": {
+
+    "input_tokens": 76,
+
+    "output_tokens": 340
+
+  },
+
+  "stop_sequence": null,
+
+  "stop_details": null,
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  }
+
+}
+
+
+```
 
 **Creative Writing**  — Higher temperature for creative output 
 
@@ -358,6 +514,9 @@ console.log(response)
 
 ```
 
+* [ Output ](#tab-panel-70)
+* [ Raw response ](#tab-panel-71)
+
 # The Orchid on the Windowsill
 
 Detective Mara Solis had seen her share of crime scenes—enough to know when something didn't belong.
@@ -379,6 +538,55 @@ A single line, handwritten in red ink:
 Mara set the note down. Her hands were steady. Her pulse was not.
 
 She read it again—not because she needed to, but because some part of her recognized the handwriting.
+
+```
+
+{
+
+  "id": "msg_01Q6DJ95CWj3L7QbCZ7onQHq",
+
+  "type": "message",
+
+  "role": "assistant",
+
+  "content": [
+
+    {
+
+      "type": "text",
+
+      "text": "# The Orchid on the Windowsill\n\nDetective Mara Solis had seen her share of crime scenes—enough to know when something didn't belong.\n\nThe apartment was almost aggressively ordinary. Beige carpet, IKEA furniture, a stack of unopened mail on the kitchen counter. The victim, Gerald Pryce, age fifty-two, accountant, had lived the kind of life that left barely a thumbprint on the world. Even in death, slumped against his recliner with a single stab wound beneath the ribs, he seemed to be trying not to make a fuss.\n\nBut there, on the windowsill above the kitchen sink, sat a black orchid.\n\nNot dark purple. Not deep burgundy masquerading as black under bad lighting. Mara leaned closer, pulling on a fresh glove, and tilted the pot toward the gray morning light filtering through the blinds. The petals were the pure, liquid black of a moonless lake—a color that shouldn't exist in nature.\n\nAnd as far as the department's botanist would confirm six hours later, it didn't.\n\n\"No soil,\" Mara murmured, peering into the ceramic pot. The orchid's roots wrapped around nothing but a small, folded piece of vellum paper, yellowed at the edges. She extracted it with tweezers and opened it carefully.\n\nA single line, handwritten in red ink:\n\n*He was not the first, and you already know me.*\n\nMara set the note down. Her hands were steady. Her pulse was not.\n\nShe read it again—not because she needed to, but because some part of her recognized the handwriting."
+
+    }
+
+  ],
+
+  "model": "claude-opus-4-6",
+
+  "stop_reason": "end_turn",
+
+  "usage": {
+
+    "input_tokens": 21,
+
+    "output_tokens": 374
+
+  },
+
+  "stop_sequence": null,
+
+  "stop_details": null,
+
+  "gatewayMetadata": {
+
+    "keySource": "BYOK"
+
+  }
+
+}
+
+
+```
 
 **Streaming Response**  — Enable streaming for real-time output 
 
@@ -422,6 +630,9 @@ console.log(response)
 
 
 ```
+
+* [ Output ](#tab-panel-72)
+* [ Raw response ](#tab-panel-73)
 
 # Understanding Recursion
 
@@ -484,10 +695,485 @@ factorial(5)
 
 > **Rule of thumb:** If a problem can be defined in terms of a *smaller version of itself*, recursion is a natural fit (e.g., tree traversal, searching, sorting, mathematical sequences).
 
+```
+
+[
+
+  {
+
+    "type": "message_start",
+
+    "message": {
+
+      "model": "claude-opus-4-6",
+
+      "id": "msg_01LArxxRsu9fHtfj6gJafVbZ",
+
+      "type": "message",
+
+      "role": "assistant",
+
+      "content": [],
+
+      "stop_reason": null,
+
+      "stop_sequence": null,
+
+      "stop_details": null,
+
+      "usage": {
+
+        "input_tokens": 19,
+
+        "cache_creation_input_tokens": 0,
+
+        "cache_read_input_tokens": 0,
+
+        "cache_creation": {
+
+          "ephemeral_5m_input_tokens": 0,
+
+          "ephemeral_1h_input_tokens": 0
+
+        },
+
+        "output_tokens": 1,
+
+        "service_tier": "standard",
+
+        "inference_geo": "global"
+
+      }
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_start",
+
+    "index": 0,
+
+    "content_block": {
+
+      "type": "text",
+
+      "text": ""
+
+    }
+
+  },
+
+  {
+
+    "type": "ping"
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "#"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " Understanding Recursion\n\n## The Concept\n\n**Recursion** is a programming technique where a **function calls itself** to solve a problem by breaking it down into smaller, sim"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "pler sub-problems. Every recursive function needs:\n\n1. **Base Case** – A condition that stops the recursion ("
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "prevents infinite loops).\n2. **Recursive Case** – The function calling itself with a *smaller* or *simpler* input"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": ".\n\n> **Think of it like Russian nesting dolls** 🪆 "
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "— you keep opening a smaller doll until"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " you reach the tiniest one (the base case).\n\n---\n\n## Simple Example: Factorial\n\nThe factorial of `n` ("
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "written `n!`) is:\n`5! = 5 × 4 × 3 × 2 × 1 = 120"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "`\n\n```python\ndef factorial(n):\n    # Base case: stop when n is 0 or 1\n    if n <= 1:\n        return 1\n\n    # Recursive case: n *"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " factorial of (n-1)\n    return n * factorial(n - 1)\n\nprint(factorial(5))  # Output: 120\n```\n\n---\n\n## How It Works ("
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "Call Stack)\n\n```\nfactorial(5)\n│\n├─ 5 * factorial(4)\n│      ├─ 4 * factorial(3)\n│      │      "
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "├─ 3 * factorial(2)\n│      │      │      ├─ 2 * factorial(1)\n│      │      │      │      └─ returns 1"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "  ← Base case hit!\n│      │      │      └─ returns 2 × 1 = 2\n│      │      └─ returns "
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "3 × 2 = 6\n│      └─ returns 4 × 6 = 24\n└─ returns 5 × 24 = 120 ✅"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "\n```\n\n---\n\n## Key Takeaways\n\n| Aspect | Description |\n|---|---|\n| **Base Case** | `if n <= 1: return "
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "1` — stops the recursion |\n| **Recursive Case** | `n * factorial(n - 1)` — moves toward the base case |\n| **Risk"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "** | Missing a base case → **infinite loop** (stack overflow 💥"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": ") |\n| **Alternative** | Most recursive solutions can also be written as"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " **loops** (iteration) |\n\n> **Rule of thumb:** If a"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " problem can be defined in terms of a *smaller version of itself*, recurs"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": "ion is a natural fit (e.g., tree traversal, searching, sorting, mathematical"
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_delta",
+
+    "index": 0,
+
+    "delta": {
+
+      "type": "text_delta",
+
+      "text": " sequences)."
+
+    }
+
+  },
+
+  {
+
+    "type": "content_block_stop",
+
+    "index": 0
+
+  },
+
+  {
+
+    "type": "message_delta",
+
+    "delta": {
+
+      "stop_reason": "end_turn",
+
+      "stop_sequence": null,
+
+      "stop_details": null
+
+    },
+
+    "usage": {
+
+      "input_tokens": 19,
+
+      "cache_creation_input_tokens": 0,
+
+      "cache_read_input_tokens": 0,
+
+      "output_tokens": 610
+
+    }
+
+  },
+
+  {
+
+    "type": "message_stop"
+
+  }
+
+]
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-12)
-* [ Output ](#tab-panel-13)
+* [ Input ](#tab-panel-74)
+* [ Output ](#tab-panel-75)
 
 ▶messages\[\]
 

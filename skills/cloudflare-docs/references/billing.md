@@ -54,6 +54,10 @@ Pay overdue invoices and resolve outstanding balances on your account.
 
 View, download, and manage your Cloudflare invoices.
 
+[Optimize costs](https://developers.cloudflare.com/billing/manage/optimize-costs/) 
+
+Per-product strategies for reducing usage-based charges.
+
 ## Understand
 
 Learn how Cloudflare billing works.
@@ -81,6 +85,14 @@ Follow a request through Cloudflare and see which products generate charges at e
 [Sales tax](https://developers.cloudflare.com/billing/understand/sales-tax/) 
 
 Understand how Cloudflare collects sales tax based on your billing address.
+
+[Billing permissions](https://developers.cloudflare.com/billing/understand/billing-permissions/) 
+
+Who can view and manage billing settings on your account.
+
+[Billing FAQ](https://developers.cloudflare.com/billing/understand/faq/) 
+
+Quick answers to common billing questions.
 
 ## Troubleshoot
 

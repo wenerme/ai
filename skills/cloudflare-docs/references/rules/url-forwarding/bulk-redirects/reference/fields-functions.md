@@ -17,16 +17,30 @@ The available fields when defining a Bulk Redirect Rule filter expression are th
 * `cf.edge.server_ip`
 * `cf.edge.server_port`
 * `cf.edge.client_port`
+* `cf.edge.client_tcp`
+* `cf.edge.l4.delivery_rate`
+* `cf.hostname.metadata`
 * `cf.zone.name`
-* `cf.metal.id`
+* `cf.random_seed`
 * `cf.ray_id`
+* `cf.timings.client_quic_rtt_msec`
+* `cf.timings.client_tcp_rtt_msec`
+* `cf.tls_version`
+* `cf.tls_cipher`
+* `cf.tls_client_hello_length`
+* `cf.tls_client_random`
+* `cf.tls_client_extensions_sha1`
+* `cf.tls_client_extensions_sha1_le`
+* `cf.tls_client_ciphers_sha1`
 * `cf.tls_client_auth.*`
+* `cf.worker.upstream_zone`
 * `http.cookie`
 * `http.host`
 * `http.referer`
+* `http.request.accepted_languages`
+* `http.request.cookies`
 * `http.request.headers`
 * `http.request.headers.*`
-* `http.request.accepted_languages`
 * `http.request.method`
 * `http.request.timestamp.sec`
 * `http.request.timestamp.msec`
@@ -35,6 +49,8 @@ The available fields when defining a Bulk Redirect Rule filter expression are th
 * `http.request.uri.*`
 * `http.request.version`
 * `raw.http.request.full_uri`
+* `raw.http.request.headers`
+* `raw.http.request.headers.*`
 * `raw.http.request.uri`
 * `raw.http.request.uri.*`
 * `http.user_agent`
@@ -46,10 +62,17 @@ The available fields when defining a Bulk Redirect Rule filter expression are th
 * `ip.src.city`
 * `ip.src.country`
 * `ip.src.continent`
+* `ip.src.metro_code`
+* `ip.src.postal_code`
+* `ip.src.region`
+* `ip.src.region_code`
 * `ip.src.is_in_european_union`
 * `ip.src.subdivision_1_iso_code`
 * `ip.src.subdivision_2_iso_code`
 * `ssl`
+* `cf.sequence.current_op`
+* `cf.sequence.msec_since_op`
+* `cf.sequence.previous_ops`
 
 Refer to [Fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) for reference information on these fields.
 

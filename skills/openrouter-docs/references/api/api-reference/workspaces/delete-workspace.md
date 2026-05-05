@@ -4,7 +4,7 @@
 
 # Delete a workspace
 
-DELETE https://openrouter.ai/api/v1//workspaces/{id}
+DELETE https://openrouter.ai/api/v1/workspaces/{id}
 
 Delete an existing workspace. The default workspace cannot be deleted. Workspaces with active API keys cannot be deleted. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
@@ -18,7 +18,7 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  //workspaces/{id}:
+  /workspaces/{id}:
     delete:
       operationId: delete-workspace
       summary: Delete a workspace
@@ -261,7 +261,7 @@ components:
 ```python Workspaces_deleteWorkspace_example
 import requests
 
-url = "https://openrouter.ai/api/v1//workspaces/production"
+url = "https://openrouter.ai/api/v1/workspaces/production"
 
 payload = {}
 headers = {
@@ -275,7 +275,7 @@ print(response.json())
 ```
 
 ```javascript Workspaces_deleteWorkspace_example
-const url = 'https://openrouter.ai/api/v1//workspaces/production';
+const url = 'https://openrouter.ai/api/v1/workspaces/production';
 const options = {
   method: 'DELETE',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
@@ -303,7 +303,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1//workspaces/production"
+	url := "https://openrouter.ai/api/v1/workspaces/production"
 
 	payload := strings.NewReader("{}")
 
@@ -327,7 +327,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1//workspaces/production")
+url = URI("https://openrouter.ai/api/v1/workspaces/production")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -345,7 +345,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.delete("https://openrouter.ai/api/v1//workspaces/production")
+HttpResponse<String> response = Unirest.delete("https://openrouter.ai/api/v1/workspaces/production")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{}")
@@ -358,7 +358,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('DELETE', 'https://openrouter.ai/api/v1//workspaces/production', [
+$response = $client->request('DELETE', 'https://openrouter.ai/api/v1/workspaces/production', [
   'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -372,7 +372,7 @@ echo $response->getBody();
 ```csharp Workspaces_deleteWorkspace_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1//workspaces/production");
+var client = new RestClient("https://openrouter.ai/api/v1/workspaces/production");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
@@ -391,7 +391,7 @@ let parameters = [] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1//workspaces/production")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/workspaces/production")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "DELETE"
