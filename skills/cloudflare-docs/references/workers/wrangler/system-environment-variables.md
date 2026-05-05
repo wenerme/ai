@@ -59,8 +59,10 @@ Wrangler supports the following environment variables:
    * The [environment](https://developers.cloudflare.com/workers/wrangler/environments/) to use for Wrangler commands. This allows you to select an environment without using the `--env` flag. For example, `CLOUDFLARE_ENV=production wrangler deploy` will deploy to the `production` environment. The `--env` command line argument takes precedence over this environment variable.
 * `NODE_ENV` ` string ` optional  
    * Sets the value of `process.env.NODE_ENV` in your Worker code. Defaults to `"development"` for `wrangler dev` and `"production"` for `wrangler deploy` and `wrangler versions upload`. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/#node%5Fenv) for more information.
-* `WRANGLER_SEND_METRICS` ` string ` optional  
+* `WRANGLER_SEND_METRICS` ` boolean ` optional  
    * Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler can send anonymous usage data to Cloudflare for this project. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
+* `WRANGLER_SEND_ERROR_REPORTS` ` boolean ` optional  
+   * Options for this are `true` and `false`. Defaults to `undefined`. Controls whether Wrangler can send non-user error reports to Cloudflare for this project. If `undefined`, Wrangler will ask the user whether to send an error report each time there is a non-user error.
 * `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_<BINDING_NAME>` ` string ` optional  
    * The [local connection string](https://developers.cloudflare.com/hyperdrive/configuration/local-development/) for your database to use in local development with [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). For example, if the binding for your Hyperdrive is named `PROD_DB`, this would be `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_PROD_DB="postgres://user:password@127.0.0.1:5432/testdb"`. Each Hyperdrive is uniquely distinguished by the binding name.
 * `CLOUDFLARE_API_BASE_URL` ` string ` optional  
@@ -69,6 +71,8 @@ Wrangler supports the following environment variables:
    * Options for Logging levels are `"none"`, `"error"`, `"warn"`, `"info"`, `"log"` and `"debug"`. Levels are case-insensitive and default to `"log"`. If an invalid level is specified, Wrangler will fallback to the default. Logs can include requests to Cloudflare's API, any usage data being collected, and more verbose error logs.
 * `WRANGLER_LOG_PATH` ` string ` optional  
    * A file or directory path where Wrangler will write debug logs. If the path ends in `.log`, Wrangler will consider this the path to a file where all logs will be written. Otherwise, Wrangler will treat the path as a directory where it will write one or more log files using a timestamp for the filenames.
+* `WRANGLER_LOG_SANITIZE` ` boolean ` optional  
+   * Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler will sanitize any sensitive information from logs written to the console or to a log file. Sensitive information includes API tokens, email addresses, account IDs, and more.
 * `FORCE_COLOR` ` string ` optional  
    * By setting this to `0`, you can disable Wrangler's colorised output, which makes it easier to read with some terminal setups. For example, `FORCE_COLOR=0`.
 * `WRANGLER_HTTPS_KEY_PATH` ` string ` optional  

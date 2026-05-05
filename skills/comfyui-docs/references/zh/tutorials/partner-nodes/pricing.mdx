@@ -55,12 +55,12 @@ mode: wide
 | BytePlus Video Generation Product (Per 1M tokens)    | model: seedream-4-5-251128, video_type: text-to-video           | 211 / 1M tokens   | Video    |
 | BytePlus Video Generation With Audio (Per 1M tokens) | generate_audio: false, model: seedance-1-5-pro-251215           | 253.2 / 1M tokens | Video    |
 | BytePlus Video Generation With Audio (Per 1M tokens) | generate_audio: true, model: seedance-1-5-pro-251215            | 506.4 / 1M tokens | Video    |
-| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0, video_type: text-to-video (无视频输入：文本或图片)  | 1.477 / K tokens | Video    |
-| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0, video_type: image-to-video (无视频输入：文本或图片) | 1.477 / K tokens | Video    |
-| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0, video_type: video-to-video (有视频输入)              | 0.907 / K tokens | Video    |
-| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0-fast, video_type: text-to-video (无视频输入：文本或图片)  | 1.182 / K tokens | Video    |
-| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0-fast, video_type: image-to-video (无视频输入：文本或图片) | 1.182 / K tokens | Video    |
-| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0-fast, video_type: video-to-video (有视频输入)              | 0.696 / K tokens | Video    |
+| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0, video_type: text-to-video (无视频输入：文本或图片)  | 2.112 / K tokens | Video    |
+| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0, video_type: image-to-video (无视频输入：文本或图片) | 2.112 / K tokens | Video    |
+| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0, video_type: video-to-video (有视频输入)              | 1.297 / K tokens | Video    |
+| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0-fast, video_type: text-to-video (无视频输入：文本或图片)  | 1.690 / K tokens | Video    |
+| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0-fast, video_type: image-to-video (无视频输入：文本或图片) | 1.690 / K tokens | Video    |
+| BytePlus Video Generation Product (Per K tokens)     | model: dreamina-seedance-2-0-fast, video_type: video-to-video (有视频输入)              | 0.995 / K tokens | Video    |
 
 > **Seedance 2.0 Token 计算方式：** 输出 tokens = (输入视频时长 + 输出视频时长) × 输出视频长边像素 × 输出视频短边像素 × 输出帧率 ÷ 1024。输入为文本、图片或音频时，输入时长计为 0。Seedance 2.0 输出帧率固定为 24fps。有视频输入时存在最低 token 用量限制。
 
@@ -378,13 +378,35 @@ mode: wide
 
 ## Luma
 
-| 产品名称                                        | 配置         | 积分    | 类别 |
-| :--------------------------------------------------- | :--------------------- | :---------- | :-------- |
-| prod-v1-Luma Video Generation Product               | model: ray-1-6        | 0.97 / sec | Video    |
-| prod-v1-Luma Video Generation Product               | model: ray-2          | 1.93 / sec | Video    |
-| prod-v1-Luma Video Generation Product               | model: ray-flash-2    | 0.66 / sec | Video    |
-| Luma Image Generations (millions of pixels) Product | model: photon-1       | 2.2 / run  | Image    |
-| Luma Image Generations (millions of pixels) Product | model: photon-flash-1 | 0.57 / run | Image    |
+| 产品名称                                        | 配置                                                                                              | 积分         | 类别 |
+| :--------------------------------------------------- | :----------------------------------------------------------------------------------------------- | :----------- | :-------- |
+| prod-v1-Luma Video Generation Product               | model: ray-1-6                                                                                   | 0.97 / sec   | Video    |
+| prod-v1-Luma Video Generation Product               | model: ray-2                                                                                     | 1.93 / sec   | Video    |
+| prod-v1-Luma Video Generation Product               | model: ray-flash-2                                                                               | 0.66 / sec   | Video    |
+| Luma Image Generations (millions of pixels) Product | model: photon-1                                                                                  | 2.2 / run    | Image    |
+| Luma Image Generations (millions of pixels) Product | model: photon-flash-1                                                                            | 0.57 / run   | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: text-to-image                                                                | 8.52 / run   | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: image-to-image                                                               | 9.16 / run   | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: image-reference, num_reference_images: 1                                     | 9.16 / run   | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: image-reference, num_reference_images: 2                                     | 9.79 / run   | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: image-reference, num_reference_images: 3                                     | 10.42 / run  | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: image-reference, num_reference_images: 4                                     | 11.06 / run  | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: image-reference, num_reference_images: 5                                     | 11.69 / run  | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: image-reference, num_reference_images: 6                                     | 12.32 / run  | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: image-reference, num_reference_images: 7                                     | 12.96 / run  | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: image-reference, num_reference_images: 8                                     | 13.59 / run  | Image    |
+| Luma Agents uni-1 Image Product                     | model: uni-1, task: image-reference, num_reference_images: 9                                     | 14.22 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: text-to-image                                                            | 21.10 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: image-to-image                                                           | 21.73 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: image-reference, num_reference_images: 1                                 | 21.73 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: image-reference, num_reference_images: 2                                 | 22.37 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: image-reference, num_reference_images: 3                                 | 23.00 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: image-reference, num_reference_images: 4                                 | 23.63 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: image-reference, num_reference_images: 5                                 | 24.27 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: image-reference, num_reference_images: 6                                 | 24.90 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: image-reference, num_reference_images: 7                                 | 25.53 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: image-reference, num_reference_images: 8                                 | 26.16 / run  | Image    |
+| Luma Agents uni-1-max Image Product                 | model: uni-1-max, task: image-reference, num_reference_images: 9                                 | 26.80 / run  | Image    |
 
 ## Meshy
 

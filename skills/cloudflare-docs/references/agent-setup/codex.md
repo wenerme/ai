@@ -46,7 +46,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Set up rate limiting and WAF rules to block abuse on my public API.  
+Add bot protection and rate limiting to my login and checkout endpoints.  
 ```
 
 ## Cloudflare platform access

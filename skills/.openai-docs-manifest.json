@@ -3250,10 +3250,10 @@
   "openai-sdk-python/responses.md": {
     "url": "https://developers.openai.com/api/reference/python/resources/responses/index.md",
     "skill": "openai-sdk-python",
-    "etag": "W/\"2609ee3851b7c98bfc6b550dd7eddb15\"",
-    "lastModified": "Fri, 01 May 2026 00:30:50 GMT",
-    "size": 3017125,
-    "updatedAt": "2026-05-01T00:30:50.219Z"
+    "etag": "W/\"aeff5a7a5cc2536f7ef962d60c5e391d\"",
+    "lastModified": "Tue, 05 May 2026 10:41:09 GMT",
+    "size": 3017212,
+    "updatedAt": "2026-05-05T10:41:09.784Z"
   },
   "openai-sdk-python/responses/cancel.md": {
     "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/cancel/index.md",
@@ -5898,10 +5898,10 @@
   "openai-api/responses.md": {
     "url": "https://developers.openai.com/api/reference/resources/responses/index.md",
     "skill": "openai-api",
-    "etag": "W/\"e978b6689b3131d68c0514eb71fadec5\"",
-    "lastModified": "Wed, 15 Apr 2026 10:35:22 GMT",
-    "size": 3372922,
-    "updatedAt": "2026-04-15T10:35:22.607Z"
+    "etag": "W/\"bc883fe8f9e87f9c10ff26aca4545268\"",
+    "lastModified": "Tue, 05 May 2026 10:43:21 GMT",
+    "size": 3373009,
+    "updatedAt": "2026-05-05T10:43:21.168Z"
   },
   "openai-api/responses/cancel.md": {
     "url": "https://developers.openai.com/api/reference/resources/responses/methods/cancel/index.md",
@@ -8546,10 +8546,10 @@
   "openai-sdk-typescript/responses.md": {
     "url": "https://developers.openai.com/api/reference/typescript/resources/responses/index.md",
     "skill": "openai-sdk-typescript",
-    "etag": "W/\"d92ea8f39aa9e881ea5fe3f13f873a97\"",
-    "lastModified": "Wed, 15 Apr 2026 10:36:57 GMT",
-    "size": 2940492,
-    "updatedAt": "2026-04-15T10:36:57.547Z"
+    "etag": "W/\"a0a91f660e1c562b9fae1339a836f6a9\"",
+    "lastModified": "Tue, 05 May 2026 10:45:30 GMT",
+    "size": 2940579,
+    "updatedAt": "2026-05-05T10:45:30.306Z"
   },
   "openai-sdk-typescript/responses/cancel.md": {
     "url": "https://developers.openai.com/api/reference/typescript/resources/responses/methods/cancel/index.md",
@@ -9482,10 +9482,10 @@
   "codex-docs/migrate.md": {
     "url": "https://developers.openai.com/codex/migrate.md",
     "skill": "codex-docs",
-    "etag": "W/\"71ef961b9a94efc35ef153e396008e5f\"",
-    "lastModified": "Fri, 01 May 2026 23:36:35 GMT",
-    "size": 4482,
-    "updatedAt": "2026-05-02T00:34:20.881Z"
+    "etag": "W/\"99960340af186c9c1b1d30789d543376\"",
+    "lastModified": "Tue, 05 May 2026 10:46:11 GMT",
+    "size": 4490,
+    "updatedAt": "2026-05-05T10:46:11.764Z"
   },
   "codex-docs/models.md": {
     "url": "https://developers.openai.com/codex/models.md",

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Publish to a Queue via HTTP
 
-**Last reviewed:**  9 months ago 
+**Last reviewed:**  10 months ago 
 
 Publish to a Queue directly via HTTP.
 

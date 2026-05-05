@@ -72,7 +72,7 @@ Codex**.
     darkSrc="/images/codex/migrate/additional-setup-dark.png"
     maxHeight="520px"
     class="p-6 sm:p-8"
-    imageClass="rounded-xl"
+    imageClass="!w-auto rounded-xl"
   />
 </div>
 

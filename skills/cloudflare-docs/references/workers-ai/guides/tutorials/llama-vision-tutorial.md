@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI
 
-**Last reviewed:**  about 1 year ago 
+**Last reviewed:**  over 1 year ago 
 
 ## Prerequisites
 
@@ -141,8 +141,8 @@ export default {
 
 1. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add the following configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8450)
-* [  wrangler.toml ](#tab-panel-8451)
+* [  wrangler.jsonc ](#tab-panel-8803)
+* [  wrangler.toml ](#tab-panel-8804)
 
 JSONC
 

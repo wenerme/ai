@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Check my Workers deployment logs for errors and suggest fixes.  
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.  
 ```
 
 ## Cloudflare platform access

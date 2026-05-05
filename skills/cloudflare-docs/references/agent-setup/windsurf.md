@@ -49,7 +49,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Add a cron trigger to my Worker that processes a job queue every hour.  
+Build a serverless AI inference endpoint on Workers AI with streaming responses.  
 ```
 
 ## Cloudflare platform access
