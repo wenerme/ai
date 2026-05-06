@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
+
 # Data Localization Suite
 
  Enterprise-only paid add-on 

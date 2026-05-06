@@ -103,7 +103,8 @@ You can do so for the second service and any additional services you create, how
 _Fig. 6 - Read-write and Read-only services in a warehouse_
 
 > **note**: 1. Read-only services currently support user management operations (CREATE, DROP, etc).
-2. [Refreshable materialized views](/materialized-view/refreshable-materialized-view) run **only** on read-write (RW) services in a warehouse. 
+2. [Refreshable materialized views](/materialized-view/refreshable-materialized-view) run **only** on read-write (RW) services in a warehouse.
+3. A service's type (read-only or read-write) is fixed at creation and cannot be changed from the Cloud Console afterwards. To switch between read-only and read-write access, create a new service in the warehouse with the desired type.
 
 ## Scaling {#scaling}
 

@@ -1479,6 +1479,7 @@ components:
         - OpenInference
         - Parasail
         - Poolside
+        - Perceptron
         - Perplexity
         - Phala
         - Recraft
@@ -2359,9 +2360,9 @@ components:
           items:
             type: string
           description: >-
-            Limit search results to these domains. Supported by Exa, Parallel,
-            and most native providers (Anthropic, OpenAI, xAI). Not supported
-            with Firecrawl or Perplexity.
+            Limit search results to these domains. Supported by Exa, Firecrawl,
+            Parallel, and most native providers (Anthropic, OpenAI, xAI). Not
+            supported with Perplexity. Cannot be used with excluded_domains.
         engine:
           $ref: '#/components/schemas/WebSearchEngineEnum'
         excluded_domains:
@@ -2370,8 +2371,9 @@ components:
             type: string
           description: >-
             Exclude search results from these domains. Supported by Exa,
-            Parallel, Anthropic, and xAI. Not supported with Firecrawl, OpenAI
-            (silently ignored), or Perplexity.
+            Firecrawl, Parallel, Anthropic, and xAI. Not supported with OpenAI
+            (silently ignored) or Perplexity. Cannot be used with
+            allowed_domains.
         max_results:
           type: integer
           description: >-

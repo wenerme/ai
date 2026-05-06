@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
+
 # Create a redirect rule in the dashboard
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.  

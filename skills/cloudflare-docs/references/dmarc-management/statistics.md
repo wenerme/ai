@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
+
 # Statistics and details
 
 DMARC Management (beta) allows you to review whether emails sent on your behalf passed or failed DMARC, SPF, and DKIM authentication checks.

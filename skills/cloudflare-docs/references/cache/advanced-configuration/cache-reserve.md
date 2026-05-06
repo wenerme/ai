@@ -22,9 +22,9 @@ In the same way that Tiered Cache builds a hierarchy of caches between your visi
 
 ![Content served from origin and getting cached in Cache Reserve, and Edge Cache Data Centers \(T1=upper-tier, T2=lower-tier\) on its way back to the client](https://developers.cloudflare.com/_astro/content-being-served.6zIZl3YT_1WqRl0.webp) 
 
-How long content in Cache Reserve will be considered “fresh” is determined by Edge Cache TTL setting or Cache-Control headers at your origin, if [Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/#edge-cache-ttl) is not set. After freshness expires, Cloudflare will attempt to revalidate the asset when a subsequent request arrives in Cache Reserve for the asset. This is the same behavior as in Cloudflare's regular CDN.
+Content in Cache Reserve is considered fresh based on the [Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/#edge-cache-ttl) setting, or your origin's `Cache-Control` headers if Edge Cache TTL is not set. After the freshness period expires, Cloudflare revalidates the asset with your origin the next time it is requested. This is the same behavior as in Cloudflare's regular CDN.
 
-The retention period of an asset is how long we will keep the asset in Cache Reserve before marking it for eviction. Cache Reserve starts with a retention period of 30 days. If an asset is not requested within the retention period, it will be evicted from Cache Reserve. Accessing the asset will refresh the retention period.
+The retention period controls how long an asset stays in Cache Reserve before it is removed. Cache Reserve starts with a retention period of 30 days. If an asset is not requested within the retention period, it is removed from Cache Reserve. Requesting the asset resets the retention period.
 
 Assets must [meet certain criteria](#cache-reserve-asset-eligibility) to use Cache Reserve.
 
@@ -32,10 +32,10 @@ Cache Reserve is a usage-based product and [pricing](#pricing) is detailed below
 
 ## Enable Cache Reserve
 
-A paid Cache Reserve Plan is required for the enablement.
+A paid Cache Reserve plan is required.
 
-* [ Dashboard ](#tab-panel-4473)
-* [ API ](#tab-panel-4474)
+* [ Dashboard ](#tab-panel-4806)
+* [ API ](#tab-panel-4807)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -167,7 +167,7 @@ The billable quantity is rounded up to the nearest million.
 
 ## Tips and best practices
 
-Cache Reserve should be used with [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/) enabled. Cache Reserve is designed for use with Tiered Cache enabled for maximum origin shielding. Using Cache Reserve without Tiered Cache may result in higher storage operation costs. Enabling Cache Reserve via the Cloudflare dashboard will check and provide a warning if you try to use Cache Reserve without Tiered Cache enabled.
+Cache Reserve is designed for use with [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/) enabled for maximum origin shielding. Using Cache Reserve without Tiered Cache may result in higher storage operation costs. The Cloudflare dashboard will warn you if you try to enable Cache Reserve without Tiered Cache.
 
 ## Cache Reserve Analytics
 
@@ -191,8 +191,8 @@ You can remove all data stored in Cache Reserve through the dashboard or via API
 
 Be aware that the deletion may take up to 24 hours to complete.
 
-* [ Dashboard ](#tab-panel-4475)
-* [ API ](#tab-panel-4476)
+* [ Dashboard ](#tab-panel-4808)
+* [ API ](#tab-panel-4809)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)

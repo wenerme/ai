@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics) 
+
 # Analytics
 
 You can view DDoS analytics in different dashboards, depending on your service and plan:

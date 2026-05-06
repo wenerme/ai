@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ### Tags
 
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
+[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ Scraping ](https://developers.cloudflare.com/search/?tags=Scraping) 
 
 # Block AI Bots
 

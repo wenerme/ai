@@ -438,6 +438,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        perceptron:
+          type: object
+          additionalProperties:
+            description: Any type
         perplexity:
           type: object
           additionalProperties:

@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
+
 # Redirect admin area requests to HTTPS
 
 Create a redirect rule to redirect requests for the administration area of `store.example.com` to HTTPS, keeping the original path and query string.

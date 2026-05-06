@@ -568,6 +568,10 @@ GPT-5.5 being a significantly more capable model.
   </ContentSwitcher>
 </div>
 
+Codex usage limits are shared with other agentic features once pricing for
+those features is effective. This currently includes [ChatGPT for
+Excel](https://help.openai.com/articles/20001063) on Plus and Pro.
+
 Speed configurations increase credit consumption for all applicable models, so
 they also use included limits faster. Fast mode consumes credits at a higher
 rate for supported models. See [Speed](https://developers.openai.com/codex/speed) for supported models and
@@ -835,7 +839,7 @@ Fast mode consumes credits at a higher rate for supported models. See
 [Speed](https://developers.openai.com/codex/speed) for supported models and rates.
 
 [Learn more about credits in ChatGPT Plus and
-Pro.](https://help.openai.com/en/articles/12642688-using-credits-for-flexible-usage-in-chatgpt-freegopluspro-sora)
+Pro.](https://help.openai.com/en/articles/12642688)
 
 [Learn more about credits in ChatGPT Business, Enterprise, and
 Edu.](https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-business-plans)

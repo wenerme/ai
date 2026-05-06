@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ Account takeover ](https://developers.cloudflare.com/search/?tags=Account%20takeover)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication)[ Scraping ](https://developers.cloudflare.com/search/?tags=Scraping) 
+
 # Rate limiting best practices
 
 The following sections cover typical rate limiting configurations for common use cases. You can combine the provided example rules and adjust them to your own scenario.

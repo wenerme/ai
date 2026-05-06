@@ -18,17 +18,23 @@ Creates a variation of a given image. This endpoint only supports `dall-e-2`.
 
   - `str`
 
-  - `Literal["gpt-image-1.5", "dall-e-2", "dall-e-3", 2 more]`
-
-    - `"gpt-image-1.5"`
-
-    - `"dall-e-2"`
-
-    - `"dall-e-3"`
+  - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 5 more]`
 
     - `"gpt-image-1"`
 
     - `"gpt-image-1-mini"`
+
+    - `"gpt-image-2"`
+
+    - `"gpt-image-2-2026-04-21"`
+
+    - `"gpt-image-1.5"`
+
+    - `"chatgpt-image-latest"`
+
+    - `"dall-e-2"`
+
+    - `"dall-e-3"`
 
 - `n: Optional[int]`
 

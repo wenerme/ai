@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.  
+Add a cron trigger to my Worker that processes a job queue every hour.  
 ```
 
 ## Cloudflare platform access

@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.  
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.  
 ```
 
 ## Cloudflare platform access

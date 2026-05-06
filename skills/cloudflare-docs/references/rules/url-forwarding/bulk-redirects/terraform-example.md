@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform)[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
+
 # Configure Bulk Redirects using Terraform
 
 Note
@@ -202,8 +206,8 @@ resource "cloudflare_ruleset" "bulk_root_redirect_to_id" {
 
 Your API token must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* [ Dashboard ](#tab-panel-7429)
-* [ API ](#tab-panel-7430)
+* [ Dashboard ](#tab-panel-7819)
+* [ API ](#tab-panel-7820)
 
 * Account Filter Lists > Edit
 * Bulk URL Redirects > Edit

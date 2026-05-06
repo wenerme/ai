@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
+
 # Create Bulk Redirects via API
 
 To create Bulk Redirects via API, you must:
@@ -559,8 +563,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
 
 The API token used in API requests to manage Bulk Redirects objects (lists, list items, and rules) must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* [ Dashboard ](#tab-panel-7427)
-* [ API ](#tab-panel-7428)
+* [ Dashboard ](#tab-panel-7817)
+* [ API ](#tab-panel-7818)
 
 * _Account_ \> _Bulk URL Redirects_ \> _Edit_
 * _Account_ \> _Account Filter Lists_ \> _Edit_

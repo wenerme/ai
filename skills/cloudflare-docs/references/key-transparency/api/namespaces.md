@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API)[ mTLS ](https://developers.cloudflare.com/search/?tags=mTLS) 
+
 # Namespaces
 
 The Cloudflare Key Transparency API is organized in namespaces, each one representing a Log monitored by Cloudflare Auditor. If you want to register a namespace, contact us.

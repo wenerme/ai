@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress) 
+
 # Set WordPress rules to Block
 
 Follow the steps below to create a rule that executes a managed ruleset and defines an override for rules with a specific tag.

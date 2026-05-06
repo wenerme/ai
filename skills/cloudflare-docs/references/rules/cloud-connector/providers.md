@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ AWS ](https://developers.cloudflare.com/search/?tags=AWS)[ Azure ](https://developers.cloudflare.com/search/?tags=Azure)[ GCP ](https://developers.cloudflare.com/search/?tags=GCP) 
+
 # Supported cloud providers in Cloud Connector
 
 Cloud Connector currently supports the following cloud providers and services:

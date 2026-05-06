@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ JSON ](https://developers.cloudflare.com/search/?tags=JSON) 
+
 # Use Ethereum gateway
 
 Once you have an Ethereum gateway — meaning that you [create a new gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/#create-a-gateway) with a `target` of **Ethereum** — you can interact with [different Ethereum networks](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-networks/) by specifying the correct JSON blob for your query.

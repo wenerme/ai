@@ -18,7 +18,7 @@ Enhance your Workers with serverless containers
 
 Run code written in any programming language, built for any runtime, as part of apps built on [Workers](https://developers.cloudflare.com/workers).
 
-Deploy your container image to Region:Earth without worrying about managing infrastructure - just define your Worker and [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy).
+Deploy your container image to `Region:Earth` without worrying about managing infrastructure - just define your Worker and [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy).
 
 With Containers you can run:
 
@@ -28,8 +28,8 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-5278)
-* [ Worker Config ](#tab-panel-5279)
+* [ Worker Code ](#tab-panel-5611)
+* [ Worker Config ](#tab-panel-5612)
 
 JavaScript
 
@@ -68,8 +68,8 @@ export default {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-5276)
-* [  wrangler.toml ](#tab-panel-5277)
+* [  wrangler.jsonc ](#tab-panel-5609)
+* [  wrangler.toml ](#tab-panel-5610)
 
 JSONC
 
@@ -83,7 +83,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-05",
 
   "containers": [
 
@@ -142,7 +142,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-05"
 
 
 [[containers]]

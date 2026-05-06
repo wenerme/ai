@@ -1,11 +1,11 @@
 ---
 title: Review Security Insights
 description: Review, filter, and resolve security insights detected across your domains.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index  
-> Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt  
 > Use this file to discover all available pages before exploring further.
 
 [Skip to content](#%5Ftop) 
@@ -22,7 +22,7 @@ For each detected insight, you can resolve it or archive it, after understanding
 
 ## Resolve an insight
 
-Insights will not be automatically removed from your dashboard when you address them. You must either manually [archive insights](#archive-insights), manually trigger another scan or wait for the automatic scan to run as per [scan frequency](https://developers.cloudflare.com/security-center/security-insights/how-it-works/#scan-frequency).
+Insights will not be automatically removed from your dashboard when you address them. You must either manually [archive insights](#archive-insights), manually trigger another scan or wait for the automatic scan to run as per [scan frequency](https://developers.cloudflare.com/security/security-insights/how-it-works/#scan-frequency).
 
 In the Resolve insights page, if you choose to update a configuration based on the recommendation actions, follow the instructions on the insight details page.
 
@@ -64,7 +64,7 @@ To archive insights:
 
 Alternatively, to archive an insight:
 
-1. Select the insight you want to archive and select **Details**. The dashboard will open a page where you will be able to review [insight properties](https://developers.cloudflare.com/security-center/security-insights/how-it-works/#scan-properties).
+1. Select the insight you want to archive and select **Details**. The dashboard will open a page where you will be able to review [insight properties](https://developers.cloudflare.com/security/security-insights/how-it-works/#scan-properties).
 2. Select **Archive insight**.
 
 ## Enable alerts
@@ -81,5 +81,5 @@ To enable alerts:
 5. Select **Save**.
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/security-insights/","name":"Security Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/security-center/security-insights/review-insights/","name":"Review Security Insights"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/security-insights/","name":"Security Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/security/security-insights/review-insights/","name":"Review Security Insights"}}]}
 ```

@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform) 
+
 # Define a single configuration rule using Terraform
 
 Create a configuration rule using Terraform to turn off Email Obfuscation and Browser Integrity Check for API requests in a given zone.

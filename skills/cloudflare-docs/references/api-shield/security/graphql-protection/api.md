@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL) 
+
 # Configure GraphQL malicious query protection via the API
 
 Use the [Cloudflare GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/getting-started/) to gather data about your GraphQL API’s current usage and configure Cloudflare’s GraphQL malicious query protection to log or block malicious queries.
@@ -104,7 +108,7 @@ query ApiGatewayGraphqlQueryAnalytics(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2BWXnzhsALKjZtxnDBRAwoAE2bsugwXACMkiVJkBfIA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2BWXnzgBGACypRADgnCMFEDCgATZuy6DBcdhOmjZIAL5A)
 
 With the above query, you will get the following response:
 

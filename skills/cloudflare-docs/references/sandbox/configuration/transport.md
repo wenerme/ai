@@ -16,14 +16,15 @@ Configure how the Sandbox SDK communicates with containers using transport modes
 
 ## Overview
 
-The Sandbox SDK supports two transport modes for communication between the Durable Object and the container:
+The Sandbox SDK supports three transport modes for communication between the Durable Object and the container:
 
 * **HTTP transport** (default) - Each SDK operation makes a separate HTTP request to the container.
-* **WebSocket transport** \- All SDK operations are multiplexed over a single persistent WebSocket connection.
+* **NEW: RPC transport** \- All SDK operations are multiplexed over a single persistent WebSocket connection. Will replace HTTP as the default transport in future. Available since 0.9.1.
+* **Deprecated: WebSocket transport** \- All SDK operations are multiplexed over a single persistent WebSocket. Superseded by RPC transport which uses an improved protocol.
 
-## When to use WebSocket transport
+## When to use RPC transport
 
-Use WebSocket transport when your Worker or Durable Object makes many SDK operations per request. This avoids hitting [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests).
+Use the RPC transport when your Worker or Durable Object makes many SDK operations per request. This avoids hitting [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests).
 
 ### Subrequest limits
 
@@ -34,9 +35,9 @@ Cloudflare Workers have subrequest limits that apply when making requests to ext
 
 With HTTP transport (default), each SDK operation (`exec()`, `readFile()`, `writeFile()`, etc.) consumes one subrequest. Applications that perform many sandbox operations in a single request can hit these limits.
 
-### How WebSocket transport helps
+### How RPC transport helps
 
-WebSocket transport establishes a single persistent connection to the container and multiplexes all SDK operations over it. The WebSocket upgrade counts as **one subrequest** regardless of how many operations you perform afterwards.
+RPC transport establishes a single persistent connection to the container and multiplexes all SDK operations over it. The WebSocket upgrade counts as **one subrequest** regardless of how many operations you perform afterwards.
 
 **Example with HTTP transport (4 subrequests):**
 
@@ -55,7 +56,7 @@ const result = await sandbox.readFile("/app/output.txt");
 
 ```
 
-**Same code with WebSocket transport (1 subrequest):**
+**Same code with RPC transport (1 subrequest):**
 
 TypeScript
 
@@ -74,6 +75,19 @@ const result = await sandbox.readFile("/app/output.txt");
 
 ```
 
+RPC transport also removes the [32 MiB limitation](https://developers.cloudflare.com/workers/runtime-apis/rpc/#limitations) that the HTTP transport has. Pass a `ReadableStream` instance to the `writeFile()` method.
+
+JavaScript
+
+```
+
+const req = await fetch("https://example.com/archive.tar.gz");
+
+await sandbox.writeFile("/archive.tar.gz", req.body);
+
+
+```
+
 ## Configuration
 
 Set the `SANDBOX_TRANSPORT` environment variable in your Worker's configuration. The SDK reads this from the Worker environment bindings (not from inside the container).
@@ -82,12 +96,12 @@ Set the `SANDBOX_TRANSPORT` environment variable in your Worker's configuration.
 
 HTTP transport is the default and requires no additional configuration.
 
-### WebSocket transport
+### RPC transport
 
-Enable WebSocket transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
+Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-7583)
-* [  wrangler.toml ](#tab-panel-7584)
+* [  wrangler.jsonc ](#tab-panel-7975)
+* [  wrangler.toml ](#tab-panel-7976)
 
 JSONC
 
@@ -101,11 +115,11 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-05",
 
   "vars": {
 
-    "SANDBOX_TRANSPORT": "websocket"
+    "SANDBOX_TRANSPORT": "rpc"
 
   },
 
@@ -152,12 +166,12 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-05"
 
 
 [vars]
 
-SANDBOX_TRANSPORT = "websocket"
+SANDBOX_TRANSPORT = "rpc"
 
 
 [[containers]]
@@ -188,7 +202,7 @@ No application code changes are needed. The SDK automatically uses the configure
 * No persistent connection
 * Each request is independent and stateless
 
-**WebSocket transport:**
+**RPC transport:**
 
 * Establishes a WebSocket connection on the first SDK operation
 * Maintains the persistent connection for all subsequent operations
@@ -197,16 +211,16 @@ No application code changes are needed. The SDK automatically uses the configure
 
 ### Streaming support
 
-Both transports support streaming operations (like `exec()` with real-time output):
+All transports support streaming operations (like `exec()` with real-time output):
 
 * **HTTP transport** \- Uses Server-Sent Events (SSE)
-* **WebSocket transport** \- Uses WebSocket streaming messages
+* **RPC transport** \- Uses WebSocket streaming messages
 
 Your code remains identical regardless of transport mode.
 
 ### Error handling
 
-Both transports provide identical error handling behavior. The SDK automatically retries on transient errors (like 503 responses) with exponential backoff.
+All transports provide identical error handling behavior. The SDK automatically retries on transient errors (like 503 responses) with exponential backoff.
 
 WebSocket-specific behavior:
 
@@ -216,28 +230,22 @@ WebSocket-specific behavior:
 
 ## Choosing a transport
 
-| Scenario                                    | Recommended transport |
-| ------------------------------------------- | --------------------- |
-| Many SDK operations per request             | WebSocket             |
-| Running inside Workers or Durable Objects   | WebSocket             |
-| Approaching subrequest limits               | WebSocket             |
-| Simple, infrequent sandbox usage            | HTTP (default)        |
-| Debugging or inspecting individual requests | HTTP (default)        |
-
-Default is sufficient for most use cases
-
-HTTP transport works well for most applications. Only switch to WebSocket transport if you are hitting subrequest limits or performing many rapid sandbox operations per request.
+We expect the RPC transport to replace the default HTTP transport in a future release. New functionality may support only the RPC transport. Switching to use it now will avoid migrations in the future.
 
 ## Migration guide
 
 Switching between transports requires no code changes.
 
-### Switch from HTTP to WebSocket
+### Switch from HTTP to RPC
+
+Requires staged deployment
+
+Using the `rpc` transport requires version 0.9.1 or newer. If you are using an older version of the Sandbox SDK upgrade and deploy your application with the newer `@cloudflare/sandbox` and image first. Otherwise there will be issues with newer SDK clients attempting to connect to older sandboxes that do not support the new transport.
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-7579)
-* [  wrangler.toml ](#tab-panel-7580)
+* [  wrangler.jsonc ](#tab-panel-7969)
+* [  wrangler.toml ](#tab-panel-7970)
 
 JSONC
 
@@ -247,7 +255,7 @@ JSONC
 
   "vars": {
 
-    "SANDBOX_TRANSPORT": "websocket"
+    "SANDBOX_TRANSPORT": "rpc"
 
   },
 
@@ -262,7 +270,7 @@ TOML
 
 [vars]
 
-SANDBOX_TRANSPORT = "websocket"
+SANDBOX_TRANSPORT = "rpc"
 
 
 ```
@@ -278,12 +286,12 @@ npx wrangler deploy
 
 ```
 
-### Switch from WebSocket to HTTP
+### Switch from RPC to HTTP
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-7581)
-* [  wrangler.toml ](#tab-panel-7582)
+* [  wrangler.jsonc ](#tab-panel-7971)
+* [  wrangler.toml ](#tab-panel-7972)
 
 JSONC
 
@@ -307,6 +315,45 @@ TOML
 ```
 
 vars = { }
+
+
+```
+
+### Switch from deprecated WebSocket to RPC
+
+Requires staged deployment
+
+Using the `rpc` transport requires version 0.9.1 or newer. If you are using an older version of the Sandbox SDK upgrade and deploy your application with the newer `@cloudflare/sandbox` and image first. Otherwise there will be issues with newer SDK clients attempting to connect to older sandboxes that do not support the new transport.
+
+Set the `SANDBOX_TRANSPORT` variable to `"rpc"`:
+
+* [  wrangler.jsonc ](#tab-panel-7973)
+* [  wrangler.toml ](#tab-panel-7974)
+
+JSONC
+
+```
+
+{
+
+  "vars": {
+
+    "SANDBOX_TRANSPORT": "rpc"
+
+  },
+
+}
+
+
+```
+
+TOML
+
+```
+
+[vars]
+
+SANDBOX_TRANSPORT = "rpc"
 
 
 ```

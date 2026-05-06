@@ -250,10 +250,10 @@
   "anthropic-docs/agents-and-tools/tool-use/code-execution-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"d977-19dd1f04630\"",
-    "lastModified": "Tue, 28 Apr 2026 02:34:38 GMT",
-    "size": 55671,
-    "updatedAt": "2026-04-28T10:39:22.375Z"
+    "etag": "W/\"d965-19dfa8f7598\"",
+    "lastModified": "Tue, 05 May 2026 23:53:19 GMT",
+    "size": 55653,
+    "updatedAt": "2026-05-06T00:23:29.643Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/advisor-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool",
@@ -386,10 +386,10 @@
   "anthropic-docs/build-with-claude/files.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/files",
     "skill": "anthropic-docs",
-    "etag": "W/\"6959-19dbc9d5db8\"",
-    "lastModified": "Thu, 23 Apr 2026 23:12:03 GMT",
-    "size": 26969,
-    "updatedAt": "2026-04-24T00:20:17.641Z"
+    "etag": "W/\"6858-19dfa8f7598\"",
+    "lastModified": "Tue, 05 May 2026 23:53:19 GMT",
+    "size": 26712,
+    "updatedAt": "2026-05-06T00:23:35.080Z"
   },
   "anthropic-docs/build-with-claude/pdf-support.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/pdf-support",
@@ -442,10 +442,10 @@
   "anthropic-docs/build-with-claude/skills-guide.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide",
     "skill": "anthropic-docs",
-    "etag": "W/\"244e0-19dbc9d5db8\"",
-    "lastModified": "Thu, 23 Apr 2026 23:12:03 GMT",
-    "size": 148704,
-    "updatedAt": "2026-04-24T00:20:19.704Z"
+    "etag": "W/\"24168-19dfa8f7598\"",
+    "lastModified": "Tue, 05 May 2026 23:53:19 GMT",
+    "size": 147816,
+    "updatedAt": "2026-05-06T00:23:37.255Z"
   },
   "anthropic-docs/agents-and-tools/remote-mcp-servers.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/remote-mcp-servers",
@@ -594,10 +594,10 @@
   "anthropic-docs/managed-agents/define-outcomes.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/define-outcomes",
     "skill": "anthropic-docs",
-    "etag": "W/\"4d42-19d98b47300\"",
-    "lastModified": "Thu, 16 Apr 2026 23:50:56 GMT",
-    "size": 19760,
-    "updatedAt": "2026-04-17T00:18:32.183Z"
+    "etag": "W/\"4d7c-19dfa8f7598\"",
+    "lastModified": "Tue, 05 May 2026 23:53:19 GMT",
+    "size": 19818,
+    "updatedAt": "2026-05-06T00:23:43.427Z"
   },
   "anthropic-docs/managed-agents/vaults.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/vaults",
@@ -618,10 +618,10 @@
   "anthropic-docs/managed-agents/files.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/files",
     "skill": "anthropic-docs",
-    "etag": "W/\"4a28-19d8e38fe28\"",
-    "lastModified": "Tue, 14 Apr 2026 22:59:53 GMT",
-    "size": 18984,
-    "updatedAt": "2026-04-15T00:20:02.040Z"
+    "etag": "W/\"48f5-19dfa8f7598\"",
+    "lastModified": "Tue, 05 May 2026 23:53:19 GMT",
+    "size": 18677,
+    "updatedAt": "2026-05-06T00:23:44.511Z"
   },
   "anthropic-docs/managed-agents/memory.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/memory",

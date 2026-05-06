@@ -98,7 +98,7 @@ View these risks in [Endpoint Management](https://developers.cloudflare.com/api-
 
 ![A list of endpoint management labels](https://developers.cloudflare.com/_astro/endpoint-management-label.BDmf8Ai1_ZM5mgU.webp) 
 
-...or in [Security Center Insights](https://developers.cloudflare.com/security-center/security-insights/):
+...or in [Security Center Insights](https://developers.cloudflare.com/security/security-insights/):
 
 ![An example security center insight](https://developers.cloudflare.com/_astro/posture-management-insight.7vB7mzGI_Z1HKoUN.webp) 
 

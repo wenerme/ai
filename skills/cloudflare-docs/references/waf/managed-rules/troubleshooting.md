@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
+
 # Troubleshoot managed rules
 
 By default, WAF's managed rulesets are compatible with most websites and web applications. However, false positives and false negatives may occur:

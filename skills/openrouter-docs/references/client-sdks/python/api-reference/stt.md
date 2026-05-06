@@ -2,7 +2,7 @@
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
 
-# Stt - Python SDK
+# Transcriptions - Python SDK
 
 <Warning>
   The Python SDK and docs are currently in beta.

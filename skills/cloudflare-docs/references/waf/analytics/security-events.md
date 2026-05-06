@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Logging ](https://developers.cloudflare.com/search/?tags=Logging)[ SIEM ](https://developers.cloudflare.com/search/?tags=SIEM) 
+
 # Security Events
 
 Security Events allows you to review mitigated requests and helps you tailor your security configurations. Use Security Events to investigate requests that Cloudflare security products acted on or flagged, identify false positives, and fine-tune your security rules.
@@ -42,8 +46,8 @@ Available features vary according to your Cloudflare plan:
 
 To open Security Events for a given zone:
 
-* [  New dashboard ](#tab-panel-8240)
-* [ Old dashboard ](#tab-panel-8241)
+* [  New dashboard ](#tab-panel-8675)
+* [ Old dashboard ](#tab-panel-8676)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -112,7 +116,7 @@ You can adjust the scope of Security Events to one of the listed source values b
 
 Note
 
-A deleted custom rule or rate limiting rule will show as `Rule unavailable` under **Firewall rules** or **Rate limit rules**. To check the changes made within your Cloudflare account, review your [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/).
+A deleted custom rule or rate limiting rule will show as `Rule unavailable` under **Custom rules** or **Rate limiting rules**. To check the changes made within your Cloudflare account, review your [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/).
 
 ## Sampled logs
 

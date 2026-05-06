@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
+
 # Create a redirect rule via API
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create a redirect rule via API.

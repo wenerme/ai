@@ -44,6 +44,28 @@ console.error(response.error?.message);
 * **{HTTPStatus.S502_Bad_Gateway}**: Your chosen model is down or we received an invalid response from it
 * **{HTTPStatus.S503_Service_Unavailable}**: There is no available model provider that meets your routing requirements
 
+## Retry-After Header
+
+On <code>{HTTPStatus.S429_Too_Many_Requests}</code> and <code>{HTTPStatus.S503_Service_Unavailable}</code> responses, OpenRouter may include a standard HTTP `Retry-After` response header indicating how many seconds to wait before retrying.
+
+```http
+HTTP/1.1 429 Too Many Requests
+Retry-After: 60
+```
+
+The OpenAI SDK, Anthropic SDK, Vercel AI SDK, and OpenRouter SDK already respect this header for backoff. If you're using `fetch` directly, honor it before retrying:
+
+```typescript
+const res = await fetch('https://openrouter.ai/api/v1/chat/completions', { ... });
+if (res.status === 429 || res.status === 503) {
+  const retryAfter = Number(res.headers.get('Retry-After'));
+  if (Number.isFinite(retryAfter) && retryAfter > 0) {
+    await new Promise((r) => setTimeout(r, retryAfter * 1000));
+    // retry the request
+  }
+}
+```
+
 ## Moderation Errors
 
 If your input was flagged, the `error.metadata` will contain information about the issue. The shape of the metadata is as follows:

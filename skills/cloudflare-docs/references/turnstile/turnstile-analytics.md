@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics) 
+
 # Turnstile Analytics
 
 Turnstile Analytics provides you with a view of the top widget statistics across different metadata dimensions to understand where your traffic is coming from, which environments have the highest challenge activity, and whether certain sources are disproportionately failing or bypassing challenges, allowing you to fine-tune your security settings, apply more granular mitigations, and proactively respond to evolving threats.

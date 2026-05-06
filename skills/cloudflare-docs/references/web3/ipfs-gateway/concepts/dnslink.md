@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
+
 # DNSLink gateways
 
 When you set up a gateway with a DNSLink record, that gateway is restricted to a particular piece of content — either a specific Content Identifier (CID) or an Interplanetary Name Service (IPNS) hostname. This is called a restricted gateway.

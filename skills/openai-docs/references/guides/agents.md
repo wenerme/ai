@@ -1,10 +1,5 @@
 # Agents SDK
 
-Sandbox agents are now available in the Python Agents SDK. Use them when your
-  agent needs a container-based environment with files, commands, packages,
-  ports, snapshots, and memory. [Read the Sandbox agents
-  guide](https://developers.openai.com/api/docs/guides/agents/sandboxes).
-
 Agents are applications that plan, call tools, collaborate across specialists, and keep enough state to complete multi-step work.
 
 - Use the **OpenAI client libraries** when you want direct API clients for model requests.

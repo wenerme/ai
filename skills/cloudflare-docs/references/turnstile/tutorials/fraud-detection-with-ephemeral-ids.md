@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ### Tags
 
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ Node.js ](https://developers.cloudflare.com/search/?tags=Node.js)[ SQL ](https://developers.cloudflare.com/search/?tags=SQL) 
+[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ Node.js ](https://developers.cloudflare.com/search/?tags=Node.js)[ SQL ](https://developers.cloudflare.com/search/?tags=SQL)[ Account takeover ](https://developers.cloudflare.com/search/?tags=Account%20takeover) 
 
 # Fraud detection with Ephemeral IDs
 

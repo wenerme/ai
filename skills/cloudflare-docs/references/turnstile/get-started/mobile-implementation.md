@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ iOS ](https://developers.cloudflare.com/search/?tags=iOS)[ Android ](https://developers.cloudflare.com/search/?tags=Android) 
+
 # Mobile implementation
 
 Turnstile requires a browser environment because it runs JavaScript challenges in the visitor's browser. On mobile devices, Turnstile works in mobile browsers without additional configuration.

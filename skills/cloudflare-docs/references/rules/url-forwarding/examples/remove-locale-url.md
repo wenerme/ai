@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects)[ Localization ](https://developers.cloudflare.com/search/?tags=Localization) 
+
 # Remove locale from URL path
 
 Create a redirect rule to redirect visitors from an old URL format with locale information to a new URL format.

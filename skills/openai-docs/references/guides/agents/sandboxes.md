@@ -9,7 +9,8 @@ only receives prompt context. Large document sets, generated artifacts,
 commands, previews, and resumable work all need an environment the agent can
 inspect and change.
 
-Sandbox agents are currently only available in the Python Agents SDK.
+Sandbox agents are available in the TypeScript and Python Agents SDKs. They
+  are in beta, so API details, defaults, and supported capabilities may change.
 
 Use sandboxes when the agent needs to manipulate files, run commands, mount a
 data room, produce artifacts, expose a service, or continue stateful work
@@ -71,8 +72,8 @@ filesystem state is part of the product design.
 ## What sandboxes add
 
 `SandboxAgent` is still an `Agent`. It keeps the usual agent surface, including
-`instructions`, `prompt`, `tools`, `handoffs`, `mcp_servers`, `model_settings`,
-`output_type`, guardrails, and hooks. What changes is the execution boundary:
+`instructions`, `prompt`, `tools`, `handoffs`, MCP servers, model settings,
+structured output, guardrails, and hooks. What changes is the execution boundary:
 the runner prepares the agent against a live sandbox session that owns files,
 commands, ports, and provider-specific isolation.
 
@@ -83,11 +84,11 @@ commands, ports, and provider-specific isolation.
 | Capabilities       | Sandbox-native behavior attached to the agent                    | Which sandbox tools, instructions, or runtime behavior does this agent need?                      |
 | Sandbox client     | The provider integration                                         | Where should the live workspace run: Unix-local, Docker, or a hosted provider?                    |
 | Sandbox session    | The live execution environment                                   | Where do commands run, files change, ports open, and provider state live?                         |
-| `SandboxRunConfig` | Per-run sandbox session source, client options, and fresh inputs | Should this run inject, resume, or create the sandbox session?                                    |
-| Saved state        | `RunState`, `session_state`, and snapshots                       | How should later runs reconnect to work or seed a new workspace?                                  |
+| Sandbox run config | Per-run sandbox session source, client options, and fresh inputs | Should this run inject, resume, or create the sandbox session?                                    |
+| Saved state        | `RunState`, serialized session state, and snapshots              | How should later runs reconnect to work or seed a new workspace?                                  |
 
 Sandbox-specific defaults belong on `SandboxAgent`. Per-run sandbox-session
-choices belong in `SandboxRunConfig`.
+choices belong in the run's sandbox configuration.
 
 Sandbox agents also don't change what a turn means. A turn is still a model
 step, not a single shell command or sandbox action. Some work may stay inside
@@ -112,8 +113,8 @@ across local, Docker, and hosted clients.
 | Manifest input                                                                 | Use it for                                                                            |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
 | `File`, `Dir`                                                                  | Small synthetic inputs, helper files, or output directories.                          |
-| `LocalFile`, `LocalDir`                                                        | Host files or directories to materialize into the sandbox.                            |
-| `GitRepo`                                                                      | A repository to fetch into the workspace.                                             |
+| Local file or directory                                                        | Host files or directories to materialize into the sandbox.                            |
+| Git repo                                                                       | A repository to fetch into the workspace.                                             |
 | `S3Mount`, `GCSMount`, `R2Mount`, `AzureBlobMount`, `BoxMount`, `S3FilesMount` | External storage to make available inside the sandbox.                                |
 | `environment`                                                                  | Environment variables the sandbox needs when it starts.                               |
 | `users` and `groups`                                                           | Sandbox-local OS accounts and groups for providers that support account provisioning. |
@@ -178,10 +179,9 @@ handling for that agent.
 | [`Memory`](#persist-memory-across-runs) | Follow-on runs should read or generate memory artifacts.     | Requires `Shell`; live memory updates also require `Filesystem`.                     |
 | `Compaction`                            | Long-running flows need context trimming.                    | Adjusts model behavior and input handling after compaction items.                    |
 
-By default, a `SandboxAgent` uses `Capabilities.default()`, which includes
-`Filesystem()`, `Shell()`, and `Compaction()`. If you pass a `capabilities`
-list, it replaces the default list, so include any default capabilities the
-agent still needs.
+By default, a `SandboxAgent` includes filesystem, shell, and compaction
+capabilities. If you pass a `capabilities` list, it replaces the default list,
+so include any default capabilities the agent still needs.
 
 Prefer built-in capabilities when they fit. Write a custom capability only when
 you need a sandbox-specific tool or instruction surface that the built-ins don't
@@ -192,6 +192,31 @@ cover.
 Some tasks need repeatable instructions, scripts, references, or assets before
 the agent starts. Use the `Skills` capability so the agent can discover that
 working context during the run.
+
+Load skills
+
+```typescript
+import {
+  Capabilities,
+  SandboxAgent,
+  gitRepo,
+  skills,
+} from "@openai/agents/sandbox";
+
+const agent = new SandboxAgent({
+  name: "Tax prep assistant",
+  instructions: "Use the mounted skill before preparing the return.",
+  capabilities: [
+    ...Capabilities.default(),
+    skills({
+      from: gitRepo({
+        repo: "owner/tax-prep-skills",
+        ref: "main",
+      }),
+    }),
+  ],
+});
+```
 
 ```python
 from agents.sandbox import SandboxAgent
@@ -207,11 +232,12 @@ agent = SandboxAgent(
 )
 ```
 
+
 Choose the skill source based on how you want it materialized:
 
-- Use `Skills(lazy_from=LocalDirLazySkillSource(...))` for larger local skill directories when you want the model to discover the index first and load only what it needs.
-- Use `Skills(from_=LocalDir(src=...))` for a small local bundle to stage up front.
-- Use `Skills(from_=GitRepo(repo=..., ref=...))` when the skills bundle has its own release cadence or many sandboxes use it.
+- Use a lazy local directory source for larger local skill directories when you want the model to discover the index first and load only what it needs.
+- Use a local directory source for a small local bundle to stage up front.
+- Use a Git repo source when the skills bundle has its own release cadence or many sandboxes use it.
 
 ### Expose previews and ports
 
@@ -230,12 +256,64 @@ The shortest useful sandbox loop is:
 1. Build a `Manifest` that describes the workspace.
 2. Create a `SandboxAgent` with the capabilities the model needs.
 3. Choose a sandbox client for the environment where work should run.
-4. Run the agent with `RunConfig(sandbox=SandboxRunConfig(...))`.
+4. Run the agent with the per-run sandbox configuration.
 5. Inspect, copy, resume, or snapshot the artifacts that matter to your application.
 
 Start with Unix-local for local development on macOS or Linux. It gives you the
 smallest local loop because the runner can create a temporary workspace from the
-agent's `default_manifest` and clean it up after the run.
+agent's default manifest and clean it up after the run.
+
+Run a Unix-local sandbox agent
+
+```typescript
+import { run } from "@openai/agents";
+import {
+  Manifest,
+  SandboxAgent,
+  file,
+  shell,
+} from "@openai/agents/sandbox";
+import { UnixLocalSandboxClient } from "@openai/agents/sandbox/local";
+
+const manifest = new Manifest({
+  entries: {
+    "account_brief.md": file({
+      content:
+        "# Northwind Health\\n\\n" +
+        "- Segment: Mid-market healthcare analytics provider.\\n" +
+        "- Renewal date: 2026-04-15.\\n",
+    }),
+    "implementation_risks.md": file({
+      content:
+        "# Delivery risks\\n\\n" +
+        "- Security questionnaire is not complete.\\n" +
+        "- Procurement requires final legal language by April 1.\\n",
+    }),
+  },
+});
+
+const agent = new SandboxAgent({
+  name: "Renewal Packet Analyst",
+  model: "gpt-5.5",
+  instructions:
+    "Review the workspace before answering. Keep the response concise, " +
+    "business-focused, and cite the file names that support each conclusion.",
+  defaultManifest: manifest,
+  capabilities: [shell()],
+});
+
+const result = await run(
+  agent,
+  "Summarize the renewal blockers and recommend the next two actions.",
+  {
+    sandbox: {
+      client: new UnixLocalSandboxClient(),
+    },
+  },
+);
+
+console.log(result.finalOutput);
+```
 
 ```python
 import asyncio
@@ -251,16 +329,16 @@ manifest = Manifest(
     entries={
         "account_brief.md": File(
             content=(
-                b"# Northwind Health\n\n"
-                b"- Segment: Mid-market healthcare analytics provider.\n"
-                b"- Renewal date: 2026-04-15.\n"
+                b"# Northwind Health\\n\\n"
+                b"- Segment: Mid-market healthcare analytics provider.\\n"
+                b"- Renewal date: 2026-04-15.\\n"
             )
         ),
         "implementation_risks.md": File(
             content=(
-                b"# Delivery risks\n\n"
-                b"- Security questionnaire is not complete.\n"
-                b"- Procurement requires final legal language by April 1.\n"
+                b"# Delivery risks\\n\\n"
+                b"- Security questionnaire is not complete.\\n"
+                b"- Procurement requires final legal language by April 1.\\n"
             )
         ),
     }
@@ -268,7 +346,7 @@ manifest = Manifest(
 
 agent = SandboxAgent(
     name="Renewal Packet Analyst",
-    model="gpt-5.4",
+    model="gpt-5.5",
     instructions=(
         "Review the workspace before answering. Keep the response concise, "
         "business-focused, and cite the file names that support each conclusion."
@@ -293,7 +371,8 @@ async def main():
 asyncio.run(main())
 ```
 
-For a complete local example, see [`unix_local_runner.py`][sdk-example-unix-local-runner].
+
+For complete local examples, see the TypeScript [sandbox agent quickstart][sdk-js-example-basic] and Python [`unix_local_runner.py`][sdk-example-unix-local-runner].
 
 ### Switch providers
 
@@ -303,6 +382,30 @@ client and provider options for the environment you want.
 
 This example uses Docker for local container isolation. Hosted providers follow
 the same pattern with their own client classes and options.
+
+Switch to Docker
+
+```typescript
+import { run } from "@openai/agents";
+import { SandboxAgent } from "@openai/agents/sandbox";
+import { DockerSandboxClient } from "@openai/agents/sandbox/local";
+
+const agent = new SandboxAgent({
+  name: "Workspace reviewer",
+  model: "gpt-5.5",
+  instructions: "Inspect the sandbox workspace before answering.",
+});
+
+const result = await run(agent, "Inspect the workspace.", {
+  sandbox: {
+    client: new DockerSandboxClient({
+      image: "node:22-bookworm-slim",
+    }),
+  },
+});
+
+console.log(result.finalOutput);
+```
 
 ```python
 from docker import from_env as docker_from_env
@@ -328,10 +431,8 @@ result = await Runner.run(
 )
 ```
 
-For runnable examples, see [`basic.py`][sdk-example-basic] for provider
-selection, [`docker_runner.py`][sdk-example-docker-runner] for Docker, and
-[`main.py`][sdk-example-dataroom-qa] for a data-room flow in the SDK
-repository.
+
+For runnable examples, see the TypeScript [sandbox clients guide][sdk-js-sandbox-clients] and [basic example][sdk-js-example-basic], plus Python [`basic.py`][sdk-example-basic] for provider selection, [`docker_runner.py`][sdk-example-docker-runner] for Docker, and [`main.py`][sdk-example-dataroom-qa] for a data-room flow in the SDK repository.
 
 ### Advanced patterns
 
@@ -356,22 +457,78 @@ step needs approval, or the next step depends on a later event.
 
 Keep three state concepts separate:
 
-| State surface   | Restores                                                                                  | Use when                                                                       |
-| --------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `RunState`      | Harness-side state such as model items, tool state, approvals, and active agent position. | The runner should carry the workflow forward across pauses.                    |
-| `session_state` | A serialized sandbox session that a client can reconnect to.                              | Your app or job system stores provider session state directly.                 |
-| `snapshot`      | Saved workspace contents used to seed a fresh sandbox session.                            | A new run should start from saved files and artifacts, not an empty workspace. |
+| State surface | Restores                                                                                  | Use when                                                                       |
+| ------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `RunState`    | Harness-side state such as model items, tool state, approvals, and active agent position. | The runner should carry the workflow forward across pauses.                    |
+| Session state | A serialized sandbox session that a client can reconnect to.                              | Your app or job system stores provider session state directly.                 |
+| `snapshot`    | Saved workspace contents used to seed a fresh sandbox session.                            | A new run should start from saved files and artifacts, not an empty workspace. |
 
 In practice, the runner resolves the sandbox session in this order:
 
-1. If you pass `run_config.sandbox.session`, the runner reuses that live sandbox session directly.
+1. If you pass a live sandbox session, the runner reuses that session directly.
 2. Otherwise, if the run is resuming from `RunState`, the runner resumes from the stored sandbox session state.
-3. Otherwise, if you pass `run_config.sandbox.session_state`, the runner resumes from that explicit serialized sandbox state.
-4. Otherwise, the runner creates a fresh sandbox session. For that fresh session, it uses `run_config.sandbox.manifest` when provided, or `agent.default_manifest` if not.
+3. Otherwise, if you pass explicit serialized sandbox state, the runner resumes from that state.
+4. Otherwise, the runner creates a fresh sandbox session. For that fresh session, it uses the per-run manifest when provided, or the agent's default manifest if not.
 
 The sandbox resume example serializes the stopped session state, resumes it
 through the same client, and then passes the resumed session back into the next
 run:
+
+Serialize and resume sandbox state
+
+```typescript
+import { run } from "@openai/agents";
+import { Manifest, SandboxAgent } from "@openai/agents/sandbox";
+import { UnixLocalSandboxClient } from "@openai/agents/sandbox/local";
+
+const manifest = new Manifest();
+const client = new UnixLocalSandboxClient({
+  snapshot: { type: "local", baseDir: "/tmp/my-sandbox-snapshots" },
+});
+const agent = new SandboxAgent({
+  name: "Workspace builder",
+  model: "gpt-5.5",
+  instructions: "Inspect the sandbox workspace before answering.",
+});
+
+const session = await client.create({ manifest });
+let conversation: any[] = [];
+let frozenSessionState;
+
+try {
+  const firstResult = await run(agent, "Build the first version of the app.", {
+    maxTurns: 20,
+    sandbox: { session },
+  });
+
+  conversation = firstResult.history;
+  frozenSessionState = await client.serializeSessionState?.(session.state);
+} finally {
+  await session.close?.();
+}
+
+if (!frozenSessionState || !client.deserializeSessionState || !client.resume) {
+  throw new Error("Sandbox client does not support session resume.");
+}
+
+const resumedSession = await client.resume(
+  await client.deserializeSessionState(frozenSessionState),
+);
+
+try {
+  conversation.push({
+    role: "user",
+    content: "Continue from the existing workspace and add tests.",
+  });
+
+  await run(agent, conversation, {
+    maxTurns: 20,
+    sandbox: { session: resumedSession },
+  });
+} finally {
+  await resumedSession.close?.();
+}
+```
 
 ```python
 async with session:
@@ -413,6 +570,7 @@ finally:
     await client.delete(resumed_session)
 ```
 
+
 Fresh-session inputs such as `manifest` and `snapshot` only apply when the
 runner creates a new sandbox session. If you inject a live `session`, capability
 processing can add compatible non-mount entries, but it can't change root,
@@ -421,7 +579,8 @@ add or change mount entries on the already-running sandbox.
 
 This split lets the harness resume the agent loop while the sandbox provider
 restores or recreates the workspace. Current sample code for these paths lives
-in [`main.py`][sdk-example-sandbox-resume],
+in the TypeScript [resume session state example][sdk-js-example-resume] and
+Python [`main.py`][sdk-example-sandbox-resume] and
 [`sandbox_agent_with_remote_snapshot.py`][sdk-example-remote-snapshot].
 
 ## Persist memory across runs
@@ -436,6 +595,28 @@ project-specific lessons, or task summaries without replaying every previous
 turn. Resume and snapshots preserve workspace state; memory preserves reusable
 guidance about work that happened in the workspace.
 
+Enable sandbox memory
+
+```typescript
+import {
+  Manifest,
+  SandboxAgent,
+  filesystem,
+  memory,
+  shell,
+} from "@openai/agents/sandbox";
+
+const manifest = new Manifest();
+
+const agent = new SandboxAgent({
+  name: "Memory-enabled reviewer",
+  instructions:
+    "Inspect the workspace and retain useful lessons for follow-up runs.",
+  defaultManifest: manifest,
+  capabilities: [memory(), filesystem(), shell()],
+});
+```
+
 ```python
 from agents.sandbox.capabilities import Filesystem, Memory, Shell
 
@@ -447,23 +628,24 @@ agent = SandboxAgent(
 )
 ```
 
-`Memory()` enables both reads and generation by default. Memory reads require
-`Shell` so the agent can search and open memory files. By default, live memory
-updates also require `Filesystem`, so the agent can repair stale memory or
+
+Memory enables both reads and generation by default. Memory reads require shell
+access so the agent can search and open memory files. By default, live memory
+updates also require filesystem access, so the agent can repair stale memory or
 update memory when the user asks.
 
 Memory reads use progressive disclosure. The SDK injects `memory_summary.md` at
 the start of a run, the agent searches `MEMORY.md` when prior work looks
 relevant, and it opens rollout summaries only when it needs more detail.
 
-| Memory mode             | Use it when                                                             |
-| ----------------------- | ----------------------------------------------------------------------- |
-| `Memory()`              | The agent should read existing memory and generate new memory.          |
-| `Memory(generate=None)` | The agent should read memory but not generate new memory after the run. |
-| `Memory(read=None)`     | The run should generate memory without using existing memory.           |
-| `MemoryReadConfig`      | You need to disable live updates with `live_update=False`.              |
-| `MemoryGenerateConfig`  | You need to tune generation, such as `extra_prompt`.                    |
-| `MemoryLayoutConfig`    | Agents need isolated memory layouts in the same sandbox workspace.      |
+| Memory mode          | Use it when                                                             |
+| -------------------- | ----------------------------------------------------------------------- |
+| Default read/write   | The agent should read existing memory and generate new memory.          |
+| Read-only memory     | The agent should read memory but not generate new memory after the run. |
+| Generate-only memory | The run should generate memory without using existing memory.           |
+| Read config          | You need to disable live updates.                                       |
+| Generate config      | You need to tune generation, such as the extra prompt.                  |
+| Layout config        | Agents need isolated memory layouts in the same sandbox workspace.      |
 
 By default, memory artifacts live in the sandbox workspace:
 
@@ -491,16 +673,17 @@ memory directories by keeping the same live sandbox session, resuming from
 session state, starting from a snapshot, or mounting persistent storage such as
 S3.
 
-For multi-turn sandbox chats, use a stable SDK `Session` such as
-`SQLiteSession(...)` together with the same live sandbox session. Memory groups
-runs by `conversation_id`, then SDK `Session.session_id`, then
-`RunConfig.group_id`, and finally a generated per-run ID. The sandbox session
-ID identifies the live workspace; it's not the memory conversation ID.
+For multi-turn sandbox chats, use a stable SDK session together with the same
+live sandbox session. Memory groups runs by the explicit conversation ID, then
+the SDK session ID, then the run group ID, and finally a generated per-run ID.
+The sandbox session ID identifies the live workspace; it's not the memory
+conversation ID.
 
-For runnable examples, see [`memory.py`][sdk-example-memory] for a local
-snapshot flow, [`memory_s3.py`][sdk-example-memory-s3] for S3-backed memory
-storage, and [`memory_multi_agent_multiturn.py`][sdk-example-memory-multi-agent]
-for separate memory layouts across agents.
+For runnable examples, see the TypeScript [memory guide][sdk-js-sandbox-memory],
+plus Python [`memory.py`][sdk-example-memory] for a local snapshot flow,
+[`memory_s3.py`][sdk-example-memory-s3] for S3-backed memory storage, and
+[`memory_multi_agent_multiturn.py`][sdk-example-memory-multi-agent] for separate
+memory layouts across agents.
 
 ## Compose sandbox agents
 
@@ -510,10 +693,9 @@ Use a handoff when a non-sandbox intake agent should delegate only the
 workspace-heavy part of a workflow to a sandbox agent. The top-level run
 continues, but the sandbox agent becomes the active agent for the next turn.
 
-Use `agent.as_tool()` when an outer orchestrator should call one or more
-sandbox agents as nested tools. Each sandbox tool-agent can have its own
-`RunConfig(sandbox=SandboxRunConfig(...))`, sandbox client, manifest, and
-provider options.
+Use agents as tools when an outer orchestrator should call one or more sandbox
+agents as nested tools. Each sandbox tool-agent can have its own sandbox run
+configuration, sandbox client, manifest, and provider options.
 
 For examples, see [`handoffs.py`][sdk-example-handoffs] and
 [`sandbox_agents_as_tools.py`][sdk-example-agents-as-tools].
@@ -533,11 +715,11 @@ previews, and persistence behavior.
 | Blaxel     | `BlaxelSandboxClient`     | <a href="https://docs.blaxel.ai/Sandboxes/Overview">Sandbox overview</a>                                                                                                                                                                                                                                                                                                                                                   |
 | Cloudflare | `CloudflareSandboxClient` | <a href="https://developers.cloudflare.com/sandbox/">Sandbox documentation</a><br /><a href="https://docs.cloudflare.com/sandbox/tutorials/openai-agents/">OpenAI Agents tutorial</a><br /><a href="https://github.com/cloudflare/sandbox-sdk/tree/main/bridge/examples">Sandbox Bridge examples</a>                                                                                                                       |
 | Daytona    | `DaytonaSandboxClient`    | <a href="https://www.daytona.io/docs/en/sandboxes/">Sandbox documentation</a><br /><a href="https://www.daytona.io/docs/en/guides/openai-agents/openai-agents-sdk-with-sandboxes">OpenAI Agents SDK guide</a>                                                                                                                                                                                                              |
-| Docker     | `DockerSandboxClient`     | <a href="https://docs.docker.com/">Docker documentation</a><br /><a href="https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/docker/docker_runner.py">Docker SDK example</a>                                                                                                                                                                                                                        |
+| Docker     | `DockerSandboxClient`     | <a href="https://docs.docker.com/">Docker documentation</a><br /><a href="https://github.com/openai/openai-agents-js/blob/main/examples/docs/sandbox-agents/docker-client.ts">TypeScript Docker SDK example</a><br /><a href="https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/docker/docker_runner.py">Python Docker SDK example</a>                                                             |
 | E2B        | `E2BSandboxClient`        | <a href="https://e2b.dev/docs">Sandbox documentation</a><br /><a href="https://e2b.dev/docs/agents/openai-agents-sdk">OpenAI Agents SDK guide</a><br /><a href="https://e2b.dev/blog/e2b-is-now-in-agents-sdk">Launch blog</a>                                                                                                                                                                                             |
 | Modal      | `ModalSandboxClient`      | <a href="https://modal.com/docs/guide/sandboxes">Sandbox guide</a><br /><a href="https://modal.com/blog/building-with-modal-and-the-openai-agent-sdk">Integration blog</a><br /><a href="https://github.com/modal-labs/openai-agents-python-example">Example repo</a><br /><a href="https://github.com/modal-labs/openai-agents-python-example?tab=readme-ov-file#modal-extension-reference">Modal extension reference</a> |
 | Runloop    | `RunloopSandboxClient`    | <a href="https://docs.runloop.ai/docs/devboxes/overview">Devbox overview</a><br /><a href="https://docs.runloop.ai/docs/devboxes/tunnels">Tunnels</a>                                                                                                                                                                                                                                                                      |
-| Unix-local | `UnixLocalSandboxClient`  | <a href="https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/unix_local_runner.py">Local SDK example</a>                                                                                                                                                                                                                                                                                             |
+| Unix-local | `UnixLocalSandboxClient`  | <a href="https://github.com/openai/openai-agents-js/blob/main/examples/docs/sandbox-agents/basic.ts">TypeScript local SDK example</a><br /><a href="https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/unix_local_runner.py">Python local SDK example</a>                                                                                                                                           |
 | Vercel     | `VercelSandboxClient`     | <a href="https://vercel.com/docs/vercel-sandbox">Sandbox documentation</a><br /><a href="https://vercel.com/kb/guide/building-an-agent-with-openai-agents-sdk-and-vercel-sandbox">OpenAI Agents SDK guide</a><br /><a href="https://vercel.com/templates/template/openai-agents-sdk-with-fastapi">FastAPI template</a><br /><a href="https://github.com/vercel-labs/openai-agents-fastapi-starter">Sample app</a>          |
 
 [sdk-example-agents-as-tools]: https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/sandbox_agents_as_tools.py
@@ -554,3 +736,7 @@ previews, and persistence behavior.
 [sdk-example-sandbox-resume]: https://github.com/openai/openai-agents-python/tree/main/examples/sandbox/tutorials/sandbox_resume
 [sdk-example-unix-local-runner]: https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/unix_local_runner.py
 [sdk-example-vision-clone]: https://github.com/openai/openai-agents-python/tree/main/examples/sandbox/tutorials/vision_website_clone
+[sdk-js-example-basic]: https://github.com/openai/openai-agents-js/blob/main/examples/docs/sandbox-agents/basic.ts
+[sdk-js-example-resume]: https://github.com/openai/openai-agents-js/blob/main/examples/docs/sandbox-agents/resume-session-state.ts
+[sdk-js-sandbox-clients]: https://openai.github.io/openai-agents-js/guides/sandbox-agents/clients
+[sdk-js-sandbox-memory]: https://openai.github.io/openai-agents-js/guides/sandbox-agents/memory

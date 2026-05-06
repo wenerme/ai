@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Argo for Packets
 
-Argo for Packets provides IP layer network optimizations to supercharge your Cloudflare network services products like [Magic Transit](https://developers.cloudflare.com/magic-transit/), [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN), and [Cloudflare for Offices ↗](https://blog.cloudflare.com/cloudflare-for-offices/).
+Argo for Packets optimizes IP layer network routing for Cloudflare network services products, including [Magic Transit](https://developers.cloudflare.com/magic-transit/), [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN), and [Cloudflare for Offices ↗](https://blog.cloudflare.com/cloudflare-for-offices/).
 
-Argo for Packets dynamically chooses the best possible path through Cloudflare's network and looks at every path back from every Cloudflare data center back to your origin, down to the individual network path. Argo compares existing Layer 4 traffic and network analytics across all of these unique paths to determine the fastest, most available path.
+Argo for Packets monitors the performance of network paths between every Cloudflare data center and your origin. It uses existing Layer 4 traffic data and network analytics to select the fastest, most available path.
 
-Customers with multiple locations will especially benefit from Argo for Packets because it optimizes complex paths on the Internet and makes them just as fast as the other paths.
+Organizations with multiple origin locations benefit most from Argo for Packets, because it optimizes complex Internet paths that would otherwise route suboptimally.
 
 To begin using Argo for Packets, contact your account manager.
 

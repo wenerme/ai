@@ -1735,8 +1735,19 @@ Create a conversation.
 
           - `background?: "transparent" | "opaque" | "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -1765,19 +1776,25 @@ Create a conversation.
 
               Base64-encoded mask image.
 
-          - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+          - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `(string & {})`
 
-            - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+            - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation?: "auto" | "low"`
 
@@ -1819,18 +1836,9 @@ Create a conversation.
 
             - `"auto"`
 
-          - `size?: "1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+          - `size?: string`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `LocalShell`
 
@@ -5453,8 +5461,19 @@ Create items in a conversation with the given ID.
 
           - `background?: "transparent" | "opaque" | "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -5483,19 +5502,25 @@ Create items in a conversation with the given ID.
 
               Base64-encoded mask image.
 
-          - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+          - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `(string & {})`
 
-            - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+            - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation?: "auto" | "low"`
 
@@ -5537,18 +5562,9 @@ Create items in a conversation with the given ID.
 
             - `"auto"`
 
-          - `size?: "1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+          - `size?: string`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `LocalShell`
 
@@ -8374,8 +8390,19 @@ Create items in a conversation with the given ID.
 
           - `background?: "transparent" | "opaque" | "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -8404,19 +8431,25 @@ Create items in a conversation with the given ID.
 
               Base64-encoded mask image.
 
-          - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+          - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `(string & {})`
 
-            - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+            - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation?: "auto" | "low"`
 
@@ -8458,18 +8491,9 @@ Create items in a conversation with the given ID.
 
             - `"auto"`
 
-          - `size?: "1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+          - `size?: string`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `LocalShell`
 
@@ -11429,8 +11453,19 @@ List all items for a conversation with the given ID.
 
         - `background?: "transparent" | "opaque" | "auto"`
 
-          Background type for the generated image. One of `transparent`,
-          `opaque`, or `auto`. Default: `auto`.
+          Allows to set transparency for the background of the generated image(s).
+          This parameter is only supported for GPT image models that support
+          transparent backgrounds. Must be one of `transparent`, `opaque`, or
+          `auto` (default value). When `auto` is used, the model will
+          automatically determine the best background for the image.
+
+          `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+          transparent backgrounds. Requests with `background` set to
+          `transparent` will return an error for these models; use `opaque` or
+          `auto` instead.
+
+          If `transparent`, the output format needs to support transparency,
+          so it should be set to either `png` (default value) or `webp`.
 
           - `"transparent"`
 
@@ -11459,19 +11494,25 @@ List all items for a conversation with the given ID.
 
             Base64-encoded mask image.
 
-        - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+        - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
           The image generation model to use. Default: `gpt-image-1`.
 
           - `(string & {})`
 
-          - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+          - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
 
+            - `"gpt-image-2"`
+
+            - `"gpt-image-2-2026-04-21"`
+
             - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation?: "auto" | "low"`
 
@@ -11513,18 +11554,9 @@ List all items for a conversation with the given ID.
 
           - `"auto"`
 
-        - `size?: "1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+        - `size?: string`
 
-          The size of the generated image. One of `1024x1024`, `1024x1536`,
-          `1536x1024`, or `auto`. Default: `auto`.
-
-          - `"1024x1024"`
-
-          - `"1024x1536"`
-
-          - `"1536x1024"`
-
-          - `"auto"`
+          The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
       - `LocalShell`
 
@@ -14411,8 +14443,19 @@ Get a single item from a conversation with the given IDs.
 
         - `background?: "transparent" | "opaque" | "auto"`
 
-          Background type for the generated image. One of `transparent`,
-          `opaque`, or `auto`. Default: `auto`.
+          Allows to set transparency for the background of the generated image(s).
+          This parameter is only supported for GPT image models that support
+          transparent backgrounds. Must be one of `transparent`, `opaque`, or
+          `auto` (default value). When `auto` is used, the model will
+          automatically determine the best background for the image.
+
+          `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+          transparent backgrounds. Requests with `background` set to
+          `transparent` will return an error for these models; use `opaque` or
+          `auto` instead.
+
+          If `transparent`, the output format needs to support transparency,
+          so it should be set to either `png` (default value) or `webp`.
 
           - `"transparent"`
 
@@ -14441,19 +14484,25 @@ Get a single item from a conversation with the given IDs.
 
             Base64-encoded mask image.
 
-        - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+        - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
           The image generation model to use. Default: `gpt-image-1`.
 
           - `(string & {})`
 
-          - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+          - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
 
+            - `"gpt-image-2"`
+
+            - `"gpt-image-2-2026-04-21"`
+
             - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation?: "auto" | "low"`
 
@@ -14495,18 +14544,9 @@ Get a single item from a conversation with the given IDs.
 
           - `"auto"`
 
-        - `size?: "1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+        - `size?: string`
 
-          The size of the generated image. One of `1024x1024`, `1024x1536`,
-          `1536x1024`, or `auto`. Default: `auto`.
-
-          - `"1024x1024"`
-
-          - `"1024x1536"`
-
-          - `"1536x1024"`
-
-          - `"auto"`
+          The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
       - `LocalShell`
 
@@ -17436,8 +17476,19 @@ console.log(conversation);
 
         - `background?: "transparent" | "opaque" | "auto"`
 
-          Background type for the generated image. One of `transparent`,
-          `opaque`, or `auto`. Default: `auto`.
+          Allows to set transparency for the background of the generated image(s).
+          This parameter is only supported for GPT image models that support
+          transparent backgrounds. Must be one of `transparent`, `opaque`, or
+          `auto` (default value). When `auto` is used, the model will
+          automatically determine the best background for the image.
+
+          `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+          transparent backgrounds. Requests with `background` set to
+          `transparent` will return an error for these models; use `opaque` or
+          `auto` instead.
+
+          If `transparent`, the output format needs to support transparency,
+          so it should be set to either `png` (default value) or `webp`.
 
           - `"transparent"`
 
@@ -17466,19 +17517,25 @@ console.log(conversation);
 
             Base64-encoded mask image.
 
-        - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+        - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
           The image generation model to use. Default: `gpt-image-1`.
 
           - `(string & {})`
 
-          - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+          - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
 
+            - `"gpt-image-2"`
+
+            - `"gpt-image-2-2026-04-21"`
+
             - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation?: "auto" | "low"`
 
@@ -17520,18 +17577,9 @@ console.log(conversation);
 
           - `"auto"`
 
-        - `size?: "1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+        - `size?: string`
 
-          The size of the generated image. One of `1024x1024`, `1024x1536`,
-          `1536x1024`, or `auto`. Default: `auto`.
-
-          - `"1024x1024"`
-
-          - `"1024x1536"`
-
-          - `"1536x1024"`
-
-          - `"auto"`
+          The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
       - `LocalShell`
 
@@ -20310,8 +20358,19 @@ console.log(conversation);
 
           - `background?: "transparent" | "opaque" | "auto"`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -20340,19 +20399,25 @@ console.log(conversation);
 
               Base64-encoded mask image.
 
-          - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+          - `model?: (string & {}) | "gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `(string & {})`
 
-            - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-1.5"`
+            - `"gpt-image-1" | "gpt-image-1-mini" | "gpt-image-2" | 3 more`
 
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation?: "auto" | "low"`
 
@@ -20394,18 +20459,9 @@ console.log(conversation);
 
             - `"auto"`
 
-          - `size?: "1024x1024" | "1024x1536" | "1536x1024" | "auto"`
+          - `size?: string`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `LocalShell`
 

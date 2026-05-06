@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Add bot protection and rate limiting to my login and checkout endpoints.  
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.  
 ```
 
 ## Cloudflare platform access

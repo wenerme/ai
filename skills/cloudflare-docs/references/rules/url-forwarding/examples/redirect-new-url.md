@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
+
 # Redirect visitors to a new page URL
 
 Create a redirect rule to redirect visitors from `/contact-us/` to the page's new path `/contacts/`.

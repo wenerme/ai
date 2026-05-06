@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
+
 # How it works
 
 O2O is a specific traffic routing configuration where traffic routes through two Cloudflare zones: the first Cloudflare zone is owned by customer 1 and the second Cloudflare zone is owned by customer 2, who is considered a SaaS provider.

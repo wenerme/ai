@@ -1855,8 +1855,19 @@ as input for the model's response.
 
           - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -1885,13 +1896,13 @@ as input for the model's response.
 
               Base64-encoded mask image.
 
-          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `str`
 
-            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -1899,7 +1910,13 @@ as input for the model's response.
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -1941,18 +1958,9 @@ as input for the model's response.
 
             - `"auto"`
 
-          - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+          - `size: Optional[str]`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `class LocalShell: …`
 
@@ -5642,8 +5650,19 @@ as input for the model's response.
 
             - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-              Background type for the generated image. One of `transparent`,
-              `opaque`, or `auto`. Default: `auto`.
+              Allows to set transparency for the background of the generated image(s).
+              This parameter is only supported for GPT image models that support
+              transparent backgrounds. Must be one of `transparent`, `opaque`, or
+              `auto` (default value). When `auto` is used, the model will
+              automatically determine the best background for the image.
+
+              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+              transparent backgrounds. Requests with `background` set to
+              `transparent` will return an error for these models; use `opaque` or
+              `auto` instead.
+
+              If `transparent`, the output format needs to support transparency,
+              so it should be set to either `png` (default value) or `webp`.
 
               - `"transparent"`
 
@@ -5672,13 +5691,13 @@ as input for the model's response.
 
                 Base64-encoded mask image.
 
-            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `str`
 
-              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -5686,7 +5705,13 @@ as input for the model's response.
 
                 - `"gpt-image-1-mini"`
 
+                - `"gpt-image-2"`
+
+                - `"gpt-image-2-2026-04-21"`
+
                 - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -5728,18 +5753,9 @@ as input for the model's response.
 
               - `"auto"`
 
-            - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+            - `size: Optional[str]`
 
-              The size of the generated image. One of `1024x1024`, `1024x1536`,
-              `1536x1024`, or `auto`. Default: `auto`.
-
-              - `"1024x1024"`
-
-              - `"1024x1536"`
-
-              - `"1536x1024"`
-
-              - `"auto"`
+              The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
           - `class LocalShell: …`
 
@@ -11322,8 +11338,19 @@ Retrieves a model response with the given ID.
 
             - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-              Background type for the generated image. One of `transparent`,
-              `opaque`, or `auto`. Default: `auto`.
+              Allows to set transparency for the background of the generated image(s).
+              This parameter is only supported for GPT image models that support
+              transparent backgrounds. Must be one of `transparent`, `opaque`, or
+              `auto` (default value). When `auto` is used, the model will
+              automatically determine the best background for the image.
+
+              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+              transparent backgrounds. Requests with `background` set to
+              `transparent` will return an error for these models; use `opaque` or
+              `auto` instead.
+
+              If `transparent`, the output format needs to support transparency,
+              so it should be set to either `png` (default value) or `webp`.
 
               - `"transparent"`
 
@@ -11352,13 +11379,13 @@ Retrieves a model response with the given ID.
 
                 Base64-encoded mask image.
 
-            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `str`
 
-              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -11366,7 +11393,13 @@ Retrieves a model response with the given ID.
 
                 - `"gpt-image-1-mini"`
 
+                - `"gpt-image-2"`
+
+                - `"gpt-image-2-2026-04-21"`
+
                 - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -11408,18 +11441,9 @@ Retrieves a model response with the given ID.
 
               - `"auto"`
 
-            - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+            - `size: Optional[str]`
 
-              The size of the generated image. One of `1024x1024`, `1024x1536`,
-              `1536x1024`, or `auto`. Default: `auto`.
-
-              - `"1024x1024"`
-
-              - `"1024x1536"`
-
-              - `"1536x1024"`
-
-              - `"auto"`
+              The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
           - `class LocalShell: …`
 
@@ -16304,8 +16328,19 @@ the `background` parameter set to `true` can be cancelled.
 
             - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-              Background type for the generated image. One of `transparent`,
-              `opaque`, or `auto`. Default: `auto`.
+              Allows to set transparency for the background of the generated image(s).
+              This parameter is only supported for GPT image models that support
+              transparent backgrounds. Must be one of `transparent`, `opaque`, or
+              `auto` (default value). When `auto` is used, the model will
+              automatically determine the best background for the image.
+
+              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+              transparent backgrounds. Requests with `background` set to
+              `transparent` will return an error for these models; use `opaque` or
+              `auto` instead.
+
+              If `transparent`, the output format needs to support transparency,
+              so it should be set to either `png` (default value) or `webp`.
 
               - `"transparent"`
 
@@ -16334,13 +16369,13 @@ the `background` parameter set to `true` can be cancelled.
 
                 Base64-encoded mask image.
 
-            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `str`
 
-              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -16348,7 +16383,13 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"gpt-image-1-mini"`
 
+                - `"gpt-image-2"`
+
+                - `"gpt-image-2-2026-04-21"`
+
                 - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -16390,18 +16431,9 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"auto"`
 
-            - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+            - `size: Optional[str]`
 
-              The size of the generated image. One of `1024x1024`, `1024x1536`,
-              `1536x1024`, or `auto`. Default: `auto`.
-
-              - `"1024x1024"`
-
-              - `"1024x1536"`
-
-              - `"1536x1024"`
-
-              - `"auto"`
+              The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
           - `class LocalShell: …`
 
@@ -21345,8 +21377,19 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -21375,13 +21418,13 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               Base64-encoded mask image.
 
-          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `str`
 
-            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -21389,7 +21432,13 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -21431,18 +21480,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"auto"`
 
-          - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+          - `size: Optional[str]`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `class LocalShell: …`
 
@@ -24254,8 +24294,19 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -24284,13 +24335,13 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               Base64-encoded mask image.
 
-          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `str`
 
-            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -24298,7 +24349,13 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -24340,18 +24397,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"auto"`
 
-          - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+          - `size: Optional[str]`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `class LocalShell: …`
 
@@ -27264,8 +27312,19 @@ print(compacted_response)
 
           - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -27294,13 +27353,13 @@ print(compacted_response)
 
               Base64-encoded mask image.
 
-          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `str`
 
-            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -27308,7 +27367,13 @@ print(compacted_response)
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -27350,18 +27415,9 @@ print(compacted_response)
 
             - `"auto"`
 
-          - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+          - `size: Optional[str]`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `class LocalShell: …`
 
@@ -31601,8 +31657,19 @@ print(compacted_response)
 
             - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-              Background type for the generated image. One of `transparent`,
-              `opaque`, or `auto`. Default: `auto`.
+              Allows to set transparency for the background of the generated image(s).
+              This parameter is only supported for GPT image models that support
+              transparent backgrounds. Must be one of `transparent`, `opaque`, or
+              `auto` (default value). When `auto` is used, the model will
+              automatically determine the best background for the image.
+
+              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+              transparent backgrounds. Requests with `background` set to
+              `transparent` will return an error for these models; use `opaque` or
+              `auto` instead.
+
+              If `transparent`, the output format needs to support transparency,
+              so it should be set to either `png` (default value) or `webp`.
 
               - `"transparent"`
 
@@ -31631,13 +31698,13 @@ print(compacted_response)
 
                 Base64-encoded mask image.
 
-            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `str`
 
-              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -31645,7 +31712,13 @@ print(compacted_response)
 
                 - `"gpt-image-1-mini"`
 
+                - `"gpt-image-2"`
+
+                - `"gpt-image-2-2026-04-21"`
+
                 - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -31687,18 +31760,9 @@ print(compacted_response)
 
               - `"auto"`
 
-            - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+            - `size: Optional[str]`
 
-              The size of the generated image. One of `1024x1024`, `1024x1536`,
-              `1536x1024`, or `auto`. Default: `auto`.
-
-              - `"1024x1024"`
-
-              - `"1024x1536"`
-
-              - `"1536x1024"`
-
-              - `"auto"`
+              The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
           - `class LocalShell: …`
 
@@ -36754,8 +36818,19 @@ print(compacted_response)
 
               - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-                Background type for the generated image. One of `transparent`,
-                `opaque`, or `auto`. Default: `auto`.
+                Allows to set transparency for the background of the generated image(s).
+                This parameter is only supported for GPT image models that support
+                transparent backgrounds. Must be one of `transparent`, `opaque`, or
+                `auto` (default value). When `auto` is used, the model will
+                automatically determine the best background for the image.
+
+                `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+                transparent backgrounds. Requests with `background` set to
+                `transparent` will return an error for these models; use `opaque` or
+                `auto` instead.
+
+                If `transparent`, the output format needs to support transparency,
+                so it should be set to either `png` (default value) or `webp`.
 
                 - `"transparent"`
 
@@ -36784,13 +36859,13 @@ print(compacted_response)
 
                   Base64-encoded mask image.
 
-              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
                 - `str`
 
-                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                   The image generation model to use. Default: `gpt-image-1`.
 
@@ -36798,7 +36873,13 @@ print(compacted_response)
 
                   - `"gpt-image-1-mini"`
 
+                  - `"gpt-image-2"`
+
+                  - `"gpt-image-2-2026-04-21"`
+
                   - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -36840,18 +36921,9 @@ print(compacted_response)
 
                 - `"auto"`
 
-              - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+              - `size: Optional[str]`
 
-                The size of the generated image. One of `1024x1024`, `1024x1536`,
-                `1536x1024`, or `auto`. Default: `auto`.
-
-                - `"1024x1024"`
-
-                - `"1024x1536"`
-
-                - `"1536x1024"`
-
-                - `"auto"`
+                The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
             - `class LocalShell: …`
 
@@ -42657,8 +42729,19 @@ print(compacted_response)
 
               - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-                Background type for the generated image. One of `transparent`,
-                `opaque`, or `auto`. Default: `auto`.
+                Allows to set transparency for the background of the generated image(s).
+                This parameter is only supported for GPT image models that support
+                transparent backgrounds. Must be one of `transparent`, `opaque`, or
+                `auto` (default value). When `auto` is used, the model will
+                automatically determine the best background for the image.
+
+                `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+                transparent backgrounds. Requests with `background` set to
+                `transparent` will return an error for these models; use `opaque` or
+                `auto` instead.
+
+                If `transparent`, the output format needs to support transparency,
+                so it should be set to either `png` (default value) or `webp`.
 
                 - `"transparent"`
 
@@ -42687,13 +42770,13 @@ print(compacted_response)
 
                   Base64-encoded mask image.
 
-              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
                 - `str`
 
-                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                   The image generation model to use. Default: `gpt-image-1`.
 
@@ -42701,7 +42784,13 @@ print(compacted_response)
 
                   - `"gpt-image-1-mini"`
 
+                  - `"gpt-image-2"`
+
+                  - `"gpt-image-2-2026-04-21"`
+
                   - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -42743,18 +42832,9 @@ print(compacted_response)
 
                 - `"auto"`
 
-              - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+              - `size: Optional[str]`
 
-                The size of the generated image. One of `1024x1024`, `1024x1536`,
-                `1536x1024`, or `auto`. Default: `auto`.
-
-                - `"1024x1024"`
-
-                - `"1024x1536"`
-
-                - `"1536x1024"`
-
-                - `"auto"`
+                The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
             - `class LocalShell: …`
 
@@ -47710,8 +47790,19 @@ print(compacted_response)
 
               - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-                Background type for the generated image. One of `transparent`,
-                `opaque`, or `auto`. Default: `auto`.
+                Allows to set transparency for the background of the generated image(s).
+                This parameter is only supported for GPT image models that support
+                transparent backgrounds. Must be one of `transparent`, `opaque`, or
+                `auto` (default value). When `auto` is used, the model will
+                automatically determine the best background for the image.
+
+                `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+                transparent backgrounds. Requests with `background` set to
+                `transparent` will return an error for these models; use `opaque` or
+                `auto` instead.
+
+                If `transparent`, the output format needs to support transparency,
+                so it should be set to either `png` (default value) or `webp`.
 
                 - `"transparent"`
 
@@ -47740,13 +47831,13 @@ print(compacted_response)
 
                   Base64-encoded mask image.
 
-              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
                 - `str`
 
-                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                   The image generation model to use. Default: `gpt-image-1`.
 
@@ -47754,7 +47845,13 @@ print(compacted_response)
 
                   - `"gpt-image-1-mini"`
 
+                  - `"gpt-image-2"`
+
+                  - `"gpt-image-2-2026-04-21"`
+
                   - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -47796,18 +47893,9 @@ print(compacted_response)
 
                 - `"auto"`
 
-              - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+              - `size: Optional[str]`
 
-                The size of the generated image. One of `1024x1024`, `1024x1536`,
-                `1536x1024`, or `auto`. Default: `auto`.
-
-                - `"1024x1024"`
-
-                - `"1024x1536"`
-
-                - `"1536x1024"`
-
-                - `"auto"`
+                The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
             - `class LocalShell: …`
 
@@ -53509,8 +53597,19 @@ print(compacted_response)
 
               - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-                Background type for the generated image. One of `transparent`,
-                `opaque`, or `auto`. Default: `auto`.
+                Allows to set transparency for the background of the generated image(s).
+                This parameter is only supported for GPT image models that support
+                transparent backgrounds. Must be one of `transparent`, `opaque`, or
+                `auto` (default value). When `auto` is used, the model will
+                automatically determine the best background for the image.
+
+                `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+                transparent backgrounds. Requests with `background` set to
+                `transparent` will return an error for these models; use `opaque` or
+                `auto` instead.
+
+                If `transparent`, the output format needs to support transparency,
+                so it should be set to either `png` (default value) or `webp`.
 
                 - `"transparent"`
 
@@ -53539,13 +53638,13 @@ print(compacted_response)
 
                   Base64-encoded mask image.
 
-              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
                 - `str`
 
-                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                   The image generation model to use. Default: `gpt-image-1`.
 
@@ -53553,7 +53652,13 @@ print(compacted_response)
 
                   - `"gpt-image-1-mini"`
 
+                  - `"gpt-image-2"`
+
+                  - `"gpt-image-2-2026-04-21"`
+
                   - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -53595,18 +53700,9 @@ print(compacted_response)
 
                 - `"auto"`
 
-              - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+              - `size: Optional[str]`
 
-                The size of the generated image. One of `1024x1024`, `1024x1536`,
-                `1536x1024`, or `auto`. Default: `auto`.
-
-                - `"1024x1024"`
-
-                - `"1024x1536"`
-
-                - `"1536x1024"`
-
-                - `"auto"`
+                The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
             - `class LocalShell: …`
 
@@ -58266,8 +58362,19 @@ print(compacted_response)
 
               - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-                Background type for the generated image. One of `transparent`,
-                `opaque`, or `auto`. Default: `auto`.
+                Allows to set transparency for the background of the generated image(s).
+                This parameter is only supported for GPT image models that support
+                transparent backgrounds. Must be one of `transparent`, `opaque`, or
+                `auto` (default value). When `auto` is used, the model will
+                automatically determine the best background for the image.
+
+                `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+                transparent backgrounds. Requests with `background` set to
+                `transparent` will return an error for these models; use `opaque` or
+                `auto` instead.
+
+                If `transparent`, the output format needs to support transparency,
+                so it should be set to either `png` (default value) or `webp`.
 
                 - `"transparent"`
 
@@ -58296,13 +58403,13 @@ print(compacted_response)
 
                   Base64-encoded mask image.
 
-              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
                 - `str`
 
-                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                   The image generation model to use. Default: `gpt-image-1`.
 
@@ -58310,7 +58417,13 @@ print(compacted_response)
 
                   - `"gpt-image-1-mini"`
 
+                  - `"gpt-image-2"`
+
+                  - `"gpt-image-2-2026-04-21"`
+
                   - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -58352,18 +58465,9 @@ print(compacted_response)
 
                 - `"auto"`
 
-              - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+              - `size: Optional[str]`
 
-                The size of the generated image. One of `1024x1024`, `1024x1536`,
-                `1536x1024`, or `auto`. Default: `auto`.
-
-                - `"1024x1024"`
-
-                - `"1024x1536"`
-
-                - `"1536x1024"`
-
-                - `"auto"`
+                The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
             - `class LocalShell: …`
 
@@ -62903,8 +63007,19 @@ print(compacted_response)
 
         - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-          Background type for the generated image. One of `transparent`,
-          `opaque`, or `auto`. Default: `auto`.
+          Allows to set transparency for the background of the generated image(s).
+          This parameter is only supported for GPT image models that support
+          transparent backgrounds. Must be one of `transparent`, `opaque`, or
+          `auto` (default value). When `auto` is used, the model will
+          automatically determine the best background for the image.
+
+          `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+          transparent backgrounds. Requests with `background` set to
+          `transparent` will return an error for these models; use `opaque` or
+          `auto` instead.
+
+          If `transparent`, the output format needs to support transparency,
+          so it should be set to either `png` (default value) or `webp`.
 
           - `"transparent"`
 
@@ -62933,13 +63048,13 @@ print(compacted_response)
 
             Base64-encoded mask image.
 
-        - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+        - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
           The image generation model to use. Default: `gpt-image-1`.
 
           - `str`
 
-          - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+          - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -62947,7 +63062,13 @@ print(compacted_response)
 
             - `"gpt-image-1-mini"`
 
+            - `"gpt-image-2"`
+
+            - `"gpt-image-2-2026-04-21"`
+
             - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -62989,18 +63110,9 @@ print(compacted_response)
 
           - `"auto"`
 
-        - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+        - `size: Optional[str]`
 
-          The size of the generated image. One of `1024x1024`, `1024x1536`,
-          `1536x1024`, or `auto`. Default: `auto`.
-
-          - `"1024x1024"`
-
-          - `"1024x1536"`
-
-          - `"1536x1024"`
-
-          - `"auto"`
+          The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
       - `class LocalShell: …`
 
@@ -66099,8 +66211,19 @@ print(compacted_response)
 
         - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-          Background type for the generated image. One of `transparent`,
-          `opaque`, or `auto`. Default: `auto`.
+          Allows to set transparency for the background of the generated image(s).
+          This parameter is only supported for GPT image models that support
+          transparent backgrounds. Must be one of `transparent`, `opaque`, or
+          `auto` (default value). When `auto` is used, the model will
+          automatically determine the best background for the image.
+
+          `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+          transparent backgrounds. Requests with `background` set to
+          `transparent` will return an error for these models; use `opaque` or
+          `auto` instead.
+
+          If `transparent`, the output format needs to support transparency,
+          so it should be set to either `png` (default value) or `webp`.
 
           - `"transparent"`
 
@@ -66129,13 +66252,13 @@ print(compacted_response)
 
             Base64-encoded mask image.
 
-        - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+        - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
           The image generation model to use. Default: `gpt-image-1`.
 
           - `str`
 
-          - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+          - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -66143,7 +66266,13 @@ print(compacted_response)
 
             - `"gpt-image-1-mini"`
 
+            - `"gpt-image-2"`
+
+            - `"gpt-image-2-2026-04-21"`
+
             - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -66185,18 +66314,9 @@ print(compacted_response)
 
           - `"auto"`
 
-        - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+        - `size: Optional[str]`
 
-          The size of the generated image. One of `1024x1024`, `1024x1536`,
-          `1536x1024`, or `auto`. Default: `auto`.
-
-          - `"1024x1024"`
-
-          - `"1024x1536"`
-
-          - `"1536x1024"`
-
-          - `"auto"`
+          The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
       - `class LocalShell: …`
 
@@ -69177,8 +69297,19 @@ print(compacted_response)
 
         - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-          Background type for the generated image. One of `transparent`,
-          `opaque`, or `auto`. Default: `auto`.
+          Allows to set transparency for the background of the generated image(s).
+          This parameter is only supported for GPT image models that support
+          transparent backgrounds. Must be one of `transparent`, `opaque`, or
+          `auto` (default value). When `auto` is used, the model will
+          automatically determine the best background for the image.
+
+          `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+          transparent backgrounds. Requests with `background` set to
+          `transparent` will return an error for these models; use `opaque` or
+          `auto` instead.
+
+          If `transparent`, the output format needs to support transparency,
+          so it should be set to either `png` (default value) or `webp`.
 
           - `"transparent"`
 
@@ -69207,13 +69338,13 @@ print(compacted_response)
 
             Base64-encoded mask image.
 
-        - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+        - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
           The image generation model to use. Default: `gpt-image-1`.
 
           - `str`
 
-          - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+          - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -69221,7 +69352,13 @@ print(compacted_response)
 
             - `"gpt-image-1-mini"`
 
+            - `"gpt-image-2"`
+
+            - `"gpt-image-2-2026-04-21"`
+
             - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -69263,18 +69400,9 @@ print(compacted_response)
 
           - `"auto"`
 
-        - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+        - `size: Optional[str]`
 
-          The size of the generated image. One of `1024x1024`, `1024x1536`,
-          `1536x1024`, or `auto`. Default: `auto`.
-
-          - `"1024x1024"`
-
-          - `"1024x1536"`
-
-          - `"1536x1024"`
-
-          - `"auto"`
+          The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
       - `class LocalShell: …`
 
@@ -72258,8 +72386,19 @@ print(compacted_response)
 
         - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-          Background type for the generated image. One of `transparent`,
-          `opaque`, or `auto`. Default: `auto`.
+          Allows to set transparency for the background of the generated image(s).
+          This parameter is only supported for GPT image models that support
+          transparent backgrounds. Must be one of `transparent`, `opaque`, or
+          `auto` (default value). When `auto` is used, the model will
+          automatically determine the best background for the image.
+
+          `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+          transparent backgrounds. Requests with `background` set to
+          `transparent` will return an error for these models; use `opaque` or
+          `auto` instead.
+
+          If `transparent`, the output format needs to support transparency,
+          so it should be set to either `png` (default value) or `webp`.
 
           - `"transparent"`
 
@@ -72288,13 +72427,13 @@ print(compacted_response)
 
             Base64-encoded mask image.
 
-        - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+        - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
           The image generation model to use. Default: `gpt-image-1`.
 
           - `str`
 
-          - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+          - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -72302,7 +72441,13 @@ print(compacted_response)
 
             - `"gpt-image-1-mini"`
 
+            - `"gpt-image-2"`
+
+            - `"gpt-image-2-2026-04-21"`
+
             - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -72344,18 +72489,9 @@ print(compacted_response)
 
           - `"auto"`
 
-        - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+        - `size: Optional[str]`
 
-          The size of the generated image. One of `1024x1024`, `1024x1536`,
-          `1536x1024`, or `auto`. Default: `auto`.
-
-          - `"1024x1024"`
-
-          - `"1024x1536"`
-
-          - `"1536x1024"`
-
-          - `"auto"`
+          The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
       - `class LocalShell: …`
 
@@ -75057,8 +75193,19 @@ print(compacted_response)
 
           - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -75087,13 +75234,13 @@ print(compacted_response)
 
               Base64-encoded mask image.
 
-          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `str`
 
-            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -75101,7 +75248,13 @@ print(compacted_response)
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -75143,18 +75296,9 @@ print(compacted_response)
 
             - `"auto"`
 
-          - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+          - `size: Optional[str]`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `class LocalShell: …`
 
@@ -77870,8 +78014,19 @@ print(compacted_response)
 
           - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -77900,13 +78055,13 @@ print(compacted_response)
 
               Base64-encoded mask image.
 
-          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `str`
 
-            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -77914,7 +78069,13 @@ print(compacted_response)
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -77956,18 +78117,9 @@ print(compacted_response)
 
             - `"auto"`
 
-          - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+          - `size: Optional[str]`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `class LocalShell: …`
 
@@ -81318,8 +81470,19 @@ print(compacted_response)
 
               - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-                Background type for the generated image. One of `transparent`,
-                `opaque`, or `auto`. Default: `auto`.
+                Allows to set transparency for the background of the generated image(s).
+                This parameter is only supported for GPT image models that support
+                transparent backgrounds. Must be one of `transparent`, `opaque`, or
+                `auto` (default value). When `auto` is used, the model will
+                automatically determine the best background for the image.
+
+                `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+                transparent backgrounds. Requests with `background` set to
+                `transparent` will return an error for these models; use `opaque` or
+                `auto` instead.
+
+                If `transparent`, the output format needs to support transparency,
+                so it should be set to either `png` (default value) or `webp`.
 
                 - `"transparent"`
 
@@ -81348,13 +81511,13 @@ print(compacted_response)
 
                   Base64-encoded mask image.
 
-              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+              - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
                 - `str`
 
-                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+                - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                   The image generation model to use. Default: `gpt-image-1`.
 
@@ -81362,7 +81525,13 @@ print(compacted_response)
 
                   - `"gpt-image-1-mini"`
 
+                  - `"gpt-image-2"`
+
+                  - `"gpt-image-2-2026-04-21"`
+
                   - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -81404,18 +81573,9 @@ print(compacted_response)
 
                 - `"auto"`
 
-              - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+              - `size: Optional[str]`
 
-                The size of the generated image. One of `1024x1024`, `1024x1536`,
-                `1536x1024`, or `auto`. Default: `auto`.
-
-                - `"1024x1024"`
-
-                - `"1024x1536"`
-
-                - `"1536x1024"`
-
-                - `"auto"`
+                The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
             - `class LocalShell: …`
 
@@ -86588,8 +86748,19 @@ print(compacted_response)
 
                 - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-                  Background type for the generated image. One of `transparent`,
-                  `opaque`, or `auto`. Default: `auto`.
+                  Allows to set transparency for the background of the generated image(s).
+                  This parameter is only supported for GPT image models that support
+                  transparent backgrounds. Must be one of `transparent`, `opaque`, or
+                  `auto` (default value). When `auto` is used, the model will
+                  automatically determine the best background for the image.
+
+                  `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+                  transparent backgrounds. Requests with `background` set to
+                  `transparent` will return an error for these models; use `opaque` or
+                  `auto` instead.
+
+                  If `transparent`, the output format needs to support transparency,
+                  so it should be set to either `png` (default value) or `webp`.
 
                   - `"transparent"`
 
@@ -86618,13 +86789,13 @@ print(compacted_response)
 
                     Base64-encoded mask image.
 
-                - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+                - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
                   The image generation model to use. Default: `gpt-image-1`.
 
                   - `str`
 
-                  - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+                  - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                     The image generation model to use. Default: `gpt-image-1`.
 
@@ -86632,7 +86803,13 @@ print(compacted_response)
 
                     - `"gpt-image-1-mini"`
 
+                    - `"gpt-image-2"`
+
+                    - `"gpt-image-2-2026-04-21"`
+
                     - `"gpt-image-1.5"`
+
+                    - `"chatgpt-image-latest"`
 
                 - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -86674,18 +86851,9 @@ print(compacted_response)
 
                   - `"auto"`
 
-                - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+                - `size: Optional[str]`
 
-                  The size of the generated image. One of `1024x1024`, `1024x1536`,
-                  `1536x1024`, or `auto`. Default: `auto`.
-
-                  - `"1024x1024"`
-
-                  - `"1024x1536"`
-
-                  - `"1536x1024"`
-
-                  - `"auto"`
+                  The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
               - `class LocalShell: …`
 
@@ -91555,8 +91723,19 @@ print(compacted_response)
 
       - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-        Background type for the generated image. One of `transparent`,
-        `opaque`, or `auto`. Default: `auto`.
+        Allows to set transparency for the background of the generated image(s).
+        This parameter is only supported for GPT image models that support
+        transparent backgrounds. Must be one of `transparent`, `opaque`, or
+        `auto` (default value). When `auto` is used, the model will
+        automatically determine the best background for the image.
+
+        `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+        transparent backgrounds. Requests with `background` set to
+        `transparent` will return an error for these models; use `opaque` or
+        `auto` instead.
+
+        If `transparent`, the output format needs to support transparency,
+        so it should be set to either `png` (default value) or `webp`.
 
         - `"transparent"`
 
@@ -91585,13 +91764,13 @@ print(compacted_response)
 
           Base64-encoded mask image.
 
-      - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+      - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
         The image generation model to use. Default: `gpt-image-1`.
 
         - `str`
 
-        - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+        - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
           The image generation model to use. Default: `gpt-image-1`.
 
@@ -91599,7 +91778,13 @@ print(compacted_response)
 
           - `"gpt-image-1-mini"`
 
+          - `"gpt-image-2"`
+
+          - `"gpt-image-2-2026-04-21"`
+
           - `"gpt-image-1.5"`
+
+          - `"chatgpt-image-latest"`
 
       - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -91641,18 +91826,9 @@ print(compacted_response)
 
         - `"auto"`
 
-      - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+      - `size: Optional[str]`
 
-        The size of the generated image. One of `1024x1024`, `1024x1536`,
-        `1536x1024`, or `auto`. Default: `auto`.
-
-        - `"1024x1024"`
-
-        - `"1024x1536"`
-
-        - `"1536x1024"`
-
-        - `"auto"`
+        The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
     - `class LocalShell: …`
 
@@ -92517,8 +92693,19 @@ print(compacted_response)
 
       - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-        Background type for the generated image. One of `transparent`,
-        `opaque`, or `auto`. Default: `auto`.
+        Allows to set transparency for the background of the generated image(s).
+        This parameter is only supported for GPT image models that support
+        transparent backgrounds. Must be one of `transparent`, `opaque`, or
+        `auto` (default value). When `auto` is used, the model will
+        automatically determine the best background for the image.
+
+        `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+        transparent backgrounds. Requests with `background` set to
+        `transparent` will return an error for these models; use `opaque` or
+        `auto` instead.
+
+        If `transparent`, the output format needs to support transparency,
+        so it should be set to either `png` (default value) or `webp`.
 
         - `"transparent"`
 
@@ -92547,13 +92734,13 @@ print(compacted_response)
 
           Base64-encoded mask image.
 
-      - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+      - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
         The image generation model to use. Default: `gpt-image-1`.
 
         - `str`
 
-        - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+        - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
           The image generation model to use. Default: `gpt-image-1`.
 
@@ -92561,7 +92748,13 @@ print(compacted_response)
 
           - `"gpt-image-1-mini"`
 
+          - `"gpt-image-2"`
+
+          - `"gpt-image-2-2026-04-21"`
+
           - `"gpt-image-1.5"`
+
+          - `"chatgpt-image-latest"`
 
       - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -92603,18 +92796,9 @@ print(compacted_response)
 
         - `"auto"`
 
-      - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+      - `size: Optional[str]`
 
-        The size of the generated image. One of `1024x1024`, `1024x1536`,
-        `1536x1024`, or `auto`. Default: `auto`.
-
-        - `"1024x1024"`
-
-        - `"1024x1536"`
-
-        - `"1536x1024"`
-
-        - `"auto"`
+        The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
     - `class LocalShell: …`
 
@@ -94923,8 +95107,19 @@ print(compacted_response)
 
             - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-              Background type for the generated image. One of `transparent`,
-              `opaque`, or `auto`. Default: `auto`.
+              Allows to set transparency for the background of the generated image(s).
+              This parameter is only supported for GPT image models that support
+              transparent backgrounds. Must be one of `transparent`, `opaque`, or
+              `auto` (default value). When `auto` is used, the model will
+              automatically determine the best background for the image.
+
+              `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+              transparent backgrounds. Requests with `background` set to
+              `transparent` will return an error for these models; use `opaque` or
+              `auto` instead.
+
+              If `transparent`, the output format needs to support transparency,
+              so it should be set to either `png` (default value) or `webp`.
 
               - `"transparent"`
 
@@ -94953,13 +95148,13 @@ print(compacted_response)
 
                 Base64-encoded mask image.
 
-            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+            - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
               - `str`
 
-              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+              - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                 The image generation model to use. Default: `gpt-image-1`.
 
@@ -94967,7 +95162,13 @@ print(compacted_response)
 
                 - `"gpt-image-1-mini"`
 
+                - `"gpt-image-2"`
+
+                - `"gpt-image-2-2026-04-21"`
+
                 - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -95009,18 +95210,9 @@ print(compacted_response)
 
               - `"auto"`
 
-            - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+            - `size: Optional[str]`
 
-              The size of the generated image. One of `1024x1024`, `1024x1536`,
-              `1536x1024`, or `auto`. Default: `auto`.
-
-              - `"1024x1024"`
-
-              - `"1024x1536"`
-
-              - `"1536x1024"`
-
-              - `"auto"`
+              The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
           - `class LocalShell: …`
 
@@ -98900,8 +99092,19 @@ print(compacted_response)
 
                 - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-                  Background type for the generated image. One of `transparent`,
-                  `opaque`, or `auto`. Default: `auto`.
+                  Allows to set transparency for the background of the generated image(s).
+                  This parameter is only supported for GPT image models that support
+                  transparent backgrounds. Must be one of `transparent`, `opaque`, or
+                  `auto` (default value). When `auto` is used, the model will
+                  automatically determine the best background for the image.
+
+                  `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+                  transparent backgrounds. Requests with `background` set to
+                  `transparent` will return an error for these models; use `opaque` or
+                  `auto` instead.
+
+                  If `transparent`, the output format needs to support transparency,
+                  so it should be set to either `png` (default value) or `webp`.
 
                   - `"transparent"`
 
@@ -98930,13 +99133,13 @@ print(compacted_response)
 
                     Base64-encoded mask image.
 
-                - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+                - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
                   The image generation model to use. Default: `gpt-image-1`.
 
                   - `str`
 
-                  - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+                  - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
                     The image generation model to use. Default: `gpt-image-1`.
 
@@ -98944,7 +99147,13 @@ print(compacted_response)
 
                     - `"gpt-image-1-mini"`
 
+                    - `"gpt-image-2"`
+
+                    - `"gpt-image-2-2026-04-21"`
+
                     - `"gpt-image-1.5"`
+
+                    - `"chatgpt-image-latest"`
 
                 - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -98986,18 +99195,9 @@ print(compacted_response)
 
                   - `"auto"`
 
-                - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+                - `size: Optional[str]`
 
-                  The size of the generated image. One of `1024x1024`, `1024x1536`,
-                  `1536x1024`, or `auto`. Default: `auto`.
-
-                  - `"1024x1024"`
-
-                  - `"1024x1536"`
-
-                  - `"1536x1024"`
-
-                  - `"auto"`
+                  The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
               - `class LocalShell: …`
 
@@ -103606,8 +103806,19 @@ print(compacted_response)
 
     - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-      Background type for the generated image. One of `transparent`,
-      `opaque`, or `auto`. Default: `auto`.
+      Allows to set transparency for the background of the generated image(s).
+      This parameter is only supported for GPT image models that support
+      transparent backgrounds. Must be one of `transparent`, `opaque`, or
+      `auto` (default value). When `auto` is used, the model will
+      automatically determine the best background for the image.
+
+      `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+      transparent backgrounds. Requests with `background` set to
+      `transparent` will return an error for these models; use `opaque` or
+      `auto` instead.
+
+      If `transparent`, the output format needs to support transparency,
+      so it should be set to either `png` (default value) or `webp`.
 
       - `"transparent"`
 
@@ -103636,13 +103847,13 @@ print(compacted_response)
 
         Base64-encoded mask image.
 
-    - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+    - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
       The image generation model to use. Default: `gpt-image-1`.
 
       - `str`
 
-      - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+      - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
         The image generation model to use. Default: `gpt-image-1`.
 
@@ -103650,7 +103861,13 @@ print(compacted_response)
 
         - `"gpt-image-1-mini"`
 
+        - `"gpt-image-2"`
+
+        - `"gpt-image-2-2026-04-21"`
+
         - `"gpt-image-1.5"`
+
+        - `"chatgpt-image-latest"`
 
     - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -103692,18 +103909,9 @@ print(compacted_response)
 
       - `"auto"`
 
-    - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+    - `size: Optional[str]`
 
-      The size of the generated image. One of `1024x1024`, `1024x1536`,
-      `1536x1024`, or `auto`. Default: `auto`.
-
-      - `"1024x1024"`
-
-      - `"1024x1536"`
-
-      - `"1536x1024"`
-
-      - `"auto"`
+      The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
   - `class LocalShell: …`
 
@@ -106058,8 +106266,19 @@ Returns a list of input items for a given response.
 
         - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-          Background type for the generated image. One of `transparent`,
-          `opaque`, or `auto`. Default: `auto`.
+          Allows to set transparency for the background of the generated image(s).
+          This parameter is only supported for GPT image models that support
+          transparent backgrounds. Must be one of `transparent`, `opaque`, or
+          `auto` (default value). When `auto` is used, the model will
+          automatically determine the best background for the image.
+
+          `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+          transparent backgrounds. Requests with `background` set to
+          `transparent` will return an error for these models; use `opaque` or
+          `auto` instead.
+
+          If `transparent`, the output format needs to support transparency,
+          so it should be set to either `png` (default value) or `webp`.
 
           - `"transparent"`
 
@@ -106088,13 +106307,13 @@ Returns a list of input items for a given response.
 
             Base64-encoded mask image.
 
-        - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+        - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
           The image generation model to use. Default: `gpt-image-1`.
 
           - `str`
 
-          - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+          - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
@@ -106102,7 +106321,13 @@ Returns a list of input items for a given response.
 
             - `"gpt-image-1-mini"`
 
+            - `"gpt-image-2"`
+
+            - `"gpt-image-2-2026-04-21"`
+
             - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -106144,18 +106369,9 @@ Returns a list of input items for a given response.
 
           - `"auto"`
 
-        - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+        - `size: Optional[str]`
 
-          The size of the generated image. One of `1024x1024`, `1024x1536`,
-          `1536x1024`, or `auto`. Default: `auto`.
-
-          - `"1024x1024"`
-
-          - `"1024x1536"`
-
-          - `"1536x1024"`
-
-          - `"auto"`
+          The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
       - `class LocalShell: …`
 
@@ -108959,8 +109175,19 @@ print(response.data)
 
           - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -108989,13 +109216,13 @@ print(response.data)
 
               Base64-encoded mask image.
 
-          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `str`
 
-            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -109003,7 +109230,13 @@ print(response.data)
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -109045,18 +109278,9 @@ print(response.data)
 
             - `"auto"`
 
-          - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+          - `size: Optional[str]`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `class LocalShell: …`
 
@@ -111936,8 +112160,19 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
+            Allows to set transparency for the background of the generated image(s).
+            This parameter is only supported for GPT image models that support
+            transparent backgrounds. Must be one of `transparent`, `opaque`, or
+            `auto` (default value). When `auto` is used, the model will
+            automatically determine the best background for the image.
+
+            `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+            transparent backgrounds. Requests with `background` set to
+            `transparent` will return an error for these models; use `opaque` or
+            `auto` instead.
+
+            If `transparent`, the output format needs to support transparency,
+            so it should be set to either `png` (default value) or `webp`.
 
             - `"transparent"`
 
@@ -111966,13 +112201,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               Base64-encoded mask image.
 
-          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"], null]]`
+          - `model: Optional[Union[str, Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more], null]]`
 
             The image generation model to use. Default: `gpt-image-1`.
 
             - `str`
 
-            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-1.5"]`
+            - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 3 more]`
 
               The image generation model to use. Default: `gpt-image-1`.
 
@@ -111980,7 +112215,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"gpt-image-1-mini"`
 
+              - `"gpt-image-2"`
+
+              - `"gpt-image-2-2026-04-21"`
+
               - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: Optional[Literal["auto", "low"]]`
 
@@ -112022,18 +112263,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"auto"`
 
-          - `size: Optional[Literal["1024x1024", "1024x1536", "1536x1024", "auto"]]`
+          - `size: Optional[str]`
 
-            The size of the generated image. One of `1024x1024`, `1024x1536`,
-            `1536x1024`, or `auto`. Default: `auto`.
-
-            - `"1024x1024"`
-
-            - `"1024x1536"`
-
-            - `"1536x1024"`
-
-            - `"auto"`
+            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `class LocalShell: …`
 

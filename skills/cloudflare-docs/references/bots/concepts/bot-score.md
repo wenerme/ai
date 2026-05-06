@@ -48,7 +48,7 @@ Catches automated traffic through pattern matching against a database of known m
 
 The **Heuristics** engine processes all requests. Cloudflare conducts a number of heuristic checks to identify automated traffic, and requests are matched against a growing database of malicious fingerprints.
 
-The Heuristics engine immediately gives automated requests a score of 1.
+The Heuristics engine gives automated requests a score of 1 for high-confidence, deterministic detections. Occasionally, heuristics will set a score of 29 in cases where Cloudflare has identified automated traffic and is still assessing traffic overlap.
 
 ### Machine learning
 
@@ -68,6 +68,10 @@ We constantly train the ML engine on a periodic basis using vast, anonymized dat
 ### Anomaly detection
 
 Detects outlier requests by comparing traffic against a learned baseline for your specific site.
+
+Deprecation notice
+
+Cloudflare is deprecating the Anomaly Detection engine and is not onboarding new customers. Future behavioral detections will cover the same detection areas.
 
 The **Anomaly Detection (AD)** engine is an optional detection engine that uses a form of unsupervised learning. Cloudflare records a baseline of your domain's traffic and uses the baseline to intelligently detect outlier requests. This approach is user agent-agnostic and can be turned on or off by your account team.
 
@@ -91,7 +95,7 @@ A bot score of 0 means Bot Management did not evaluate the request. This applies
 
 ### Notes on detection
 
-Cloudflare uses the `__cf_bm cookie` to smooth out the bot score and reduce false positives for actual user sessions.
+Cloudflare uses the `__cf_bm` cookie to smooth out the bot score and reduce false positives for actual user sessions.
 
 The Bot Management cookie measures a single user's request pattern and applies it to the machine learning data to generate a reliable bot score for all of that user's requests.
 

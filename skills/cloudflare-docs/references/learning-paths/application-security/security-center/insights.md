@@ -16,7 +16,7 @@ Security Insights provides you with a list of insights, covering different areas
 
 ## Dashboard analytics
 
-Security Insights focuses on your Cloudflare environment by running [security scans](https://developers.cloudflare.com/security-center/security-insights/how-it-works/#scan-frequency) at regular intervals. Instead of navigating through each of your domains to review their security issues, the Security Center aggregates all of them into a single dashboard.
+Security Insights focuses on your Cloudflare environment by running [security scans](https://developers.cloudflare.com/security/security-insights/how-it-works/#scan-frequency) at regular intervals. Instead of navigating through each of your domains to review their security issues, the Security Center aggregates all of them into a single dashboard.
 
 ![Security Insights Overview](https://developers.cloudflare.com/_astro/security-insights-overview.lQDBpBkp_1nGdoq.webp) 
 

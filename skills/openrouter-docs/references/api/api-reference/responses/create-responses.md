@@ -1942,6 +1942,7 @@ components:
         - OpenInference
         - Parasail
         - Poolside
+        - Perceptron
         - Perplexity
         - Phala
         - Recraft
@@ -3372,21 +3373,86 @@ components:
         OpenRouter built-in server tool: fetches full content from a URL (web
         page or PDF)
       title: WebFetchServerTool
-    WebSearchServerToolOpenRouterParameters:
+    SearchQualityLevel:
+      type: string
+      enum:
+        - low
+        - medium
+        - high
+      description: >-
+        How much context to retrieve per result. Defaults to medium (15000
+        chars). Applies to Exa and Parallel engines; ignored with native
+        provider search and Firecrawl.
+      title: SearchQualityLevel
+    WebSearchUserLocationServerToolType:
+      type: string
+      enum:
+        - approximate
+      title: WebSearchUserLocationServerToolType
+    WebSearchUserLocationServerTool:
       type: object
       properties:
+        city:
+          type:
+            - string
+            - 'null'
+        country:
+          type:
+            - string
+            - 'null'
+        region:
+          type:
+            - string
+            - 'null'
+        timezone:
+          type:
+            - string
+            - 'null'
+        type:
+          $ref: '#/components/schemas/WebSearchUserLocationServerToolType'
+      description: Approximate user location for location-biased results.
+      title: WebSearchUserLocationServerTool
+    WebSearchServerToolConfig:
+      type: object
+      properties:
+        allowed_domains:
+          type: array
+          items:
+            type: string
+          description: >-
+            Limit search results to these domains. Supported by Exa, Firecrawl,
+            Parallel, and most native providers (Anthropic, OpenAI, xAI). Not
+            supported with Perplexity. Cannot be used with excluded_domains.
+        engine:
+          $ref: '#/components/schemas/WebSearchEngineEnum'
+        excluded_domains:
+          type: array
+          items:
+            type: string
+          description: >-
+            Exclude search results from these domains. Supported by Exa,
+            Firecrawl, Parallel, Anthropic, and xAI. Not supported with OpenAI
+            (silently ignored) or Perplexity. Cannot be used with
+            allowed_domains.
         max_results:
           type: integer
           description: >-
             Maximum number of search results to return per search call. Defaults
-            to 5.
+            to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
+            native provider search.
         max_total_results:
           type: integer
           description: >-
             Maximum total number of search results across all search calls in a
             single request. Once this limit is reached, the tool will stop
-            returning new results.
-      title: WebSearchServerToolOpenRouterParameters
+            returning new results. Useful for controlling cost and context size
+            in agentic loops.
+        search_context_size:
+          $ref: '#/components/schemas/SearchQualityLevel'
+        user_location:
+          $ref: '#/components/schemas/WebSearchUserLocationServerTool'
+      description: Configuration for the openrouter:web_search server tool
+      title: WebSearchServerToolConfig
     WebSearchServerToolOpenRouterType:
       type: string
       enum:
@@ -3396,7 +3462,7 @@ components:
       type: object
       properties:
         parameters:
-          $ref: '#/components/schemas/WebSearchServerToolOpenRouterParameters'
+          $ref: '#/components/schemas/WebSearchServerToolConfig'
         type:
           $ref: '#/components/schemas/WebSearchServerToolOpenRouterType'
       required:

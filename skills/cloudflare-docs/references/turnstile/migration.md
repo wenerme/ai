@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Migration ](https://developers.cloudflare.com/search/?tags=Migration) 
+
 # Migration
 
 If you are using alternative CAPTCHA services, you can switch to Cloudflare Turnstile using the guides below to assist with the upgrade process.

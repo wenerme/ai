@@ -16,7 +16,7 @@ Versioned storage that speaks Git.
 
 Note
 
-Artifacts is in beta. Refer to [How Artifacts works](https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/) for the architecture overview.
+Artifacts is currently in closed beta. To request access, fill out [this form ↗](https://forms.gle/DwBoPRa3CWQ8ajFp7).
 
 Artifacts stores versioned file trees behind a Git-compatible interface. Create repositories programmatically, import existing repositories, and hand off a URL to any standard Git client.
 

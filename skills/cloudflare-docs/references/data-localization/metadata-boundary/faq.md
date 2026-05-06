@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance)[ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
+
 # FAQs
 
 ## What data is covered by the Customer Metadata Boundary?

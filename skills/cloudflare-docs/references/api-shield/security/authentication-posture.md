@@ -10,13 +10,17 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
+
 # Authentication Posture
 
 Authentication Posture detects API endpoints with missing or inconsistent authentication and alerts you to potential misconfigurations.
 
 For example, a security team member may expect that their API endpoints `/api/v1/users` and `/api/v1/orders` require authentication. However, bugs in origin API authentication policies can create broken authentication vulnerabilities — allowing unauthenticated access to protected resources. Authentication Posture details the authentication status of successful requests to your API endpoints, alerting to potential misconfigurations.
 
-Consider a typical e-commerce application. Users can browse items and prices without logging in. However, to retrieve order details via `GET /api/v1/orders/{order_id}`, users must log in and pass an Authorization HTTP header with all requests. Cloudflare alerts you via [Security Center Insights](https://developers.cloudflare.com/security-center/security-insights/) and [Endpoint labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) if successful requests reach this endpoint or any other endpoint without authentication when session identifiers are configured.
+Consider a typical e-commerce application. Users can browse items and prices without logging in. However, to retrieve order details via `GET /api/v1/orders/{order_id}`, users must log in and pass an Authorization HTTP header with all requests. Cloudflare alerts you via [Security Center Insights](https://developers.cloudflare.com/security/security-insights/) and [Endpoint labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) if successful requests reach this endpoint or any other endpoint without authentication when session identifiers are configured.
 
 ## Process
 
@@ -29,8 +33,8 @@ After configuring [session identifiers](https://developers.cloudflare.com/api-sh
 
 ### Examine an endpoint's authentication details
 
-* [  New dashboard ](#tab-panel-4265)
-* [ Old dashboard ](#tab-panel-4266)
+* [  New dashboard ](#tab-panel-4598)
+* [ Old dashboard ](#tab-panel-4599)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

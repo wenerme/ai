@@ -16,10 +16,10 @@ Smart Shield
 
 This functionality is now offered as part of Cloudflare's origin server safeguard, Smart Shield. [Learn more](https://developers.cloudflare.com/smart-shield/).
 
-Argo Smart Routing is a one-click solution to speed up your global traffic.
+Argo Smart Routing speeds up your global traffic by routing requests across the fastest network paths available.
 
-* [ Dashboard ](#tab-panel-4295)
-* [ API ](#tab-panel-4296)
+* [ Dashboard ](#tab-panel-4628)
+* [ API ](#tab-panel-4629)
 
 To enable [Argo Smart Routing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic) in the dashboard:
 
@@ -60,9 +60,9 @@ Some plans also have access to alerts through [PagerDuty](https://developers.clo
 
 ## Enable Tiered Cache
 
-[Cache](https://developers.cloudflare.com/cache/) works by storing a copy of website content at Cloudflare's data centers. [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/) divides these data centers into a hierarchy based on location. This behavior allows Cloudflare to deliver content from data centers closest to your visitor.
+[Cache](https://developers.cloudflare.com/cache/) works by storing a copy of website content at Cloudflare's data centers. [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/) organizes these data centers into a hierarchy based on location. This behavior allows Cloudflare to deliver content from data centers closest to your visitor.
 
-Argo Smart Routing and Tiered Cache work together to provide the most efficient connection for visitors to your site. For more information, go to [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/).
+When used together, Argo Smart Routing optimizes the network path between Cloudflare data centers and your origin, while Tiered Cache reduces the number of requests that reach your origin. For more information, refer to [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/argo-smart-routing/","name":"Argo Smart Routing"}},{"@type":"ListItem","position":3,"item":{"@id":"/argo-smart-routing/get-started/","name":"Get started"}}]}

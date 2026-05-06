@@ -96,7 +96,7 @@ Rules
 
 Security Insights
 
-* [Security Insights](https://developers.cloudflare.com/security-center/security-insights/) are not shown when Zone Versioning is enabled and the first version is deployed to production.
+* [Security Insights](https://developers.cloudflare.com/security/security-insights/) are not shown when Zone Versioning is enabled and the first version is deployed to production.
 
 Terraform
 

@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ CLI ](https://developers.cloudflare.com/search/?tags=CLI) 
+
 # Useful commands
 
 This page lists the most commonly used commands for managing local tunnels.

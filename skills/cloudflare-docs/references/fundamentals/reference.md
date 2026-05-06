@@ -21,6 +21,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Cloudy AI agent (beta) ](https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/)
 * [ Connection limits ](https://developers.cloudflare.com/fundamentals/reference/connection-limits/)
 * [ Cryptographic Attestation of Personhood ](https://developers.cloudflare.com/fundamentals/reference/cryptographic-personhood/)
+* [ Error responses ](https://developers.cloudflare.com/fundamentals/reference/error-responses/)
 * [ Glossary ](https://developers.cloudflare.com/fundamentals/reference/glossary/)
 * [ Markdown for Agents ](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/)
 * [ Migration guides ](https://developers.cloudflare.com/fundamentals/reference/migration-guides/)

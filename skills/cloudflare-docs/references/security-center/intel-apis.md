@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
+
 # Threat Intelligence APIs
 
 Cloudflare provides a series of endpoints covering various areas of internet security and insights. Based on your Cloudflare plan type, the [limit](https://developers.cloudflare.com/security-center/intel-apis/limits/) of API calls will vary per month.

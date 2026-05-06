@@ -36,8 +36,8 @@ await sandbox.writeFile(path: string, content: string, options?: WriteFileOption
 * `options` (optional):  
    * `encoding` \- File encoding (`"utf-8"` or `"base64"`, default: `"utf-8"`)
 
-* [  JavaScript ](#tab-panel-7481)
-* [  TypeScript ](#tab-panel-7482)
+* [  JavaScript ](#tab-panel-7871)
+* [  TypeScript ](#tab-panel-7872)
 
 JavaScript
 
@@ -71,6 +71,23 @@ Base64 validation
 
 When using `encoding: 'base64'`, content must contain only valid base64 characters (A-Z, a-z, 0-9, +, /, =). Invalid base64 content returns a validation error.
 
+#### Large files and binary data
+
+When using the [rpc transport](https://developers.cloudflare.com/sandbox/configuration/transport/) the `writeFile()` method supports passing a `ReadableStream` as the `content` parameter. This allows binary data and files greater than [32 MiB](https://developers.cloudflare.com/workers/runtime-apis/rpc/#limitations) to be written to the sandbox. It replaces the `"base64"` encoding option.
+
+JavaScript
+
+```
+
+// Requires SANDBOX_TRANSPORT to be "rpc" in wrangler.jsonc
+
+const req = await fetch("https://example.com/archive.tar.gz");
+
+await sandbox.writeFile('/workspace/archive.tar.gz', req.body);
+
+
+```
+
 ### `readFile()`
 
 Read a file from the sandbox.
@@ -92,8 +109,8 @@ const file = await sandbox.readFile(path: string, options?: ReadFileOptions): Pr
 
 **Returns**: `Promise<FileInfo>` with `content` and `encoding`
 
-* [  JavaScript ](#tab-panel-7489)
-* [  TypeScript ](#tab-panel-7490)
+* [  JavaScript ](#tab-panel-7879)
+* [  TypeScript ](#tab-panel-7880)
 
 JavaScript
 
@@ -164,8 +181,8 @@ const result = await sandbox.exists(path: string): Promise<FileExistsResult>
 
 **Returns**: `Promise<FileExistsResult>` with `exists` boolean
 
-* [  JavaScript ](#tab-panel-7493)
-* [  TypeScript ](#tab-panel-7494)
+* [  JavaScript ](#tab-panel-7883)
+* [  TypeScript ](#tab-panel-7884)
 
 JavaScript
 
@@ -246,8 +263,8 @@ await sandbox.mkdir(path: string, options?: MkdirOptions): Promise<void>
 * `options` (optional):  
    * `recursive` \- Create parent directories if needed (default: `false`)
 
-* [  JavaScript ](#tab-panel-7485)
-* [  TypeScript ](#tab-panel-7486)
+* [  JavaScript ](#tab-panel-7875)
+* [  TypeScript ](#tab-panel-7876)
 
 JavaScript
 
@@ -294,8 +311,8 @@ await sandbox.deleteFile(path: string): Promise<void>
 
 * `path` \- Absolute path to the file
 
-* [  JavaScript ](#tab-panel-7483)
-* [  TypeScript ](#tab-panel-7484)
+* [  JavaScript ](#tab-panel-7873)
+* [  TypeScript ](#tab-panel-7874)
 
 JavaScript
 
@@ -333,8 +350,8 @@ await sandbox.renameFile(oldPath: string, newPath: string): Promise<void>
 * `oldPath` \- Current file path
 * `newPath` \- New file path
 
-* [  JavaScript ](#tab-panel-7487)
-* [  TypeScript ](#tab-panel-7488)
+* [  JavaScript ](#tab-panel-7877)
+* [  TypeScript ](#tab-panel-7878)
 
 JavaScript
 
@@ -372,8 +389,8 @@ await sandbox.moveFile(sourcePath: string, destinationPath: string): Promise<voi
 * `sourcePath` \- Current file path
 * `destinationPath` \- Destination path
 
-* [  JavaScript ](#tab-panel-7491)
-* [  TypeScript ](#tab-panel-7492)
+* [  JavaScript ](#tab-panel-7881)
+* [  TypeScript ](#tab-panel-7882)
 
 JavaScript
 
@@ -414,8 +431,8 @@ await sandbox.gitCheckout(repoUrl: string, options?: GitCheckoutOptions): Promis
    * `targetDir` \- Directory to clone into (default: `/workspace/{repoName}`)  
    * `depth` \- Clone depth for shallow clones (e.g., `1` for latest commit only)
 
-* [  JavaScript ](#tab-panel-7495)
-* [  TypeScript ](#tab-panel-7496)
+* [  JavaScript ](#tab-panel-7885)
+* [  TypeScript ](#tab-panel-7886)
 
 JavaScript
 

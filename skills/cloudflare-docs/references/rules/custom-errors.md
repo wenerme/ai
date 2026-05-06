@@ -32,7 +32,7 @@ When an error of a [specific type](https://developers.cloudflare.com/rules/custo
 3. Search for a matching custom error rule at the account level. The rule will have priority over [500 class and 1000 class](https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/) Error Pages at the account or zone level.
 4. Search for a matching custom error rule at the zone level. The rule will have priority over [500 class and 1000 class](https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/) Error Pages at the account or zone level and over custom error rules at the account level.
 5. If a security rule like a [WAF custom rule](https://developers.cloudflare.com/waf/custom-rules/) or a [rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) triggers a custom block response instead of a default Cloudflare WAF block page, the rule-specific block response will have priority over Error Pages or a matching custom error rule.
-6. If any of the previous configurations apply, serve the custom error content to the visitor. If not, serve the default error page for the specific error type.
+6. If any of the previous configurations apply, serve the custom error content to the visitor. If not, serve the default error page for the specific error type in the format the client requested (JSON, Markdown, or HTML). For more details on structured error responses (JSON or Markdown), refer to [Error responses](https://developers.cloudflare.com/fundamentals/reference/error-responses/).
 
 Note
 

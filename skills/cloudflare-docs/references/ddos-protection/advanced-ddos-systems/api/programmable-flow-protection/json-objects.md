@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ JSON ](https://developers.cloudflare.com/search/?tags=JSON) 
+
 # JSON objects
 
 This page contains examples of the JSON objects used in the Programmable Flow Protection API.

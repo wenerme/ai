@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
+
 # Public DNS
 
 If you cannot use a [Cloudflare Tunnel setup](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/), you can also create a public DNS record for your key server.
@@ -59,8 +63,8 @@ Upload certificates to Cloudflare with only SANs that you wish to use with Cloud
 
 You will have to upload each certificate used with Keyless SSL.
 
-* [ Dashboard ](#tab-panel-7953)
-* [ API ](#tab-panel-7954)
+* [ Dashboard ](#tab-panel-8348)
+* [ API ](#tab-panel-8349)
 
 To create a Keyless certificate in the dashboard:
 
@@ -95,12 +99,12 @@ These steps are also at the [Cloudflare package repository ↗](https://pkg.clou
 
 #### Debian/Ubuntu packages
 
-* [ Debian 13 (Trixie) ](#tab-panel-7955)
-* [ Debian 12 (Bookworm) ](#tab-panel-7956)
-* [ Debian 11 (Bullseye) ](#tab-panel-7957)
-* [ Ubuntu 24.04 (Noble) ](#tab-panel-7958)
-* [ Ubuntu 22.04 (Jammy) ](#tab-panel-7959)
-* [ Ubuntu 20.04 (Focal) ](#tab-panel-7960)
+* [ Debian 13 (Trixie) ](#tab-panel-8350)
+* [ Debian 12 (Bookworm) ](#tab-panel-8351)
+* [ Debian 11 (Bullseye) ](#tab-panel-8352)
+* [ Ubuntu 24.04 (Noble) ](#tab-panel-8353)
+* [ Ubuntu 22.04 (Jammy) ](#tab-panel-8354)
+* [ Ubuntu 20.04 (Focal) ](#tab-panel-8355)
 
 Terminal window
 
@@ -208,10 +212,10 @@ sudo apt-get update && sudo apt-get install gokeyless
 
 Gokeyless uses CGO for PKCS#11/HSM support, which creates glibc dependencies. Use the repository that matches your distribution.
 
-* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-7961)
-* [ Amazon Linux 2023 ](#tab-panel-7962)
-* [ RHEL 8 / CentOS 8 ](#tab-panel-7963)
-* [ Amazon Linux 2 ](#tab-panel-7964)
+* [ RHEL 9 / CentOS Stream 9 ](#tab-panel-8356)
+* [ Amazon Linux 2023 ](#tab-panel-8357)
+* [ RHEL 8 / CentOS 8 ](#tab-panel-8358)
+* [ Amazon Linux 2 ](#tab-panel-8359)
 
 Terminal window
 

@@ -41,8 +41,8 @@ In order for a Worker to be able to create Dynamic Workers, it needs a Worker Lo
 
 Configure it like so, in your Worker's `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-5890)
-* [  wrangler.toml ](#tab-panel-5891)
+* [  wrangler.jsonc ](#tab-panel-6237)
+* [  wrangler.toml ](#tab-panel-6238)
 
 JSONC
 
@@ -82,8 +82,8 @@ Your Worker will then have access to the Worker Loader API via `env.LOADER`.
 
 Use `env.LOADER.load()` to create a Dynamic Worker and run it:
 
-* [  JavaScript ](#tab-panel-5894)
-* [  TypeScript ](#tab-panel-5895)
+* [  JavaScript ](#tab-panel-6245)
+* [  TypeScript ](#tab-panel-6246)
 
 JavaScript
 
@@ -97,7 +97,7 @@ export default {
 
     const worker = env.LOADER.load({
 
-      compatibilityDate: "2026-04-29",
+      compatibilityDate: "2026-05-05",
 
 
       mainModule: "src/index.js",
@@ -158,7 +158,7 @@ export default {
 
     const worker = env.LOADER.load({
 
-      compatibilityDate: "2026-04-29",
+      compatibilityDate: "2026-05-05",
 
 
       mainModule: "src/index.js",
@@ -217,8 +217,8 @@ If you expect to load the exact same Worker more than once, use [get(id, callbac
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
-* [  JavaScript ](#tab-panel-5892)
-* [  TypeScript ](#tab-panel-5893)
+* [  JavaScript ](#tab-panel-6239)
+* [  TypeScript ](#tab-panel-6240)
 
 JavaScript
 
@@ -240,7 +240,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
   return {
 
-    compatibilityDate: "2026-04-29",
+    compatibilityDate: "2026-05-05",
 
     mainModule: "index.js",
 
@@ -275,7 +275,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
   return {
 
-    compatibilityDate: "2026-04-29",
+    compatibilityDate: "2026-05-05",
 
     mainModule: "index.js",
 
@@ -296,11 +296,128 @@ Dynamic Workers support JavaScript (ES modules and CommonJS) and Python. The cod
 
 For the full list of supported module types, refer to the [API reference](https://developers.cloudflare.com/dynamic-workers/api-reference/#modules).
 
+### Python Workers
+
+To run Python code in a Dynamic Worker, you must include the `python_workers` compatibility flag. Without this flag, the Dynamic Worker will fail to load the Python runtime.
+
+* [  JavaScript ](#tab-panel-6241)
+* [  TypeScript ](#tab-panel-6242)
+
+JavaScript
+
+```
+
+const worker = env.LOADER.load({
+
+  compatibilityDate: "2026-05-05",
+
+  compatibilityFlags: ["python_workers"],
+
+  mainModule: "worker.py",
+
+  modules: {
+
+    "worker.py": `
+
+      from workers import Response
+
+
+      def on_fetch(request):
+
+          return Response("Hello from Python!")
+
+    `,
+
+  },
+
+});
+
+
+```
+
+TypeScript
+
+```
+
+const worker = env.LOADER.load({
+
+  compatibilityDate: "2026-05-05",
+
+  compatibilityFlags: ["python_workers"],
+
+  mainModule: "worker.py",
+
+  modules: {
+
+    "worker.py": `
+
+      from workers import Response
+
+
+      def on_fetch(request):
+
+          return Response("Hello from Python!")
+
+    `,
+
+  },
+
+});
+
+
+```
+
 ### Using TypeScript and npm dependencies
 
 If your Dynamic Worker needs TypeScript compilation or npm dependencies, the code must be transpiled and bundled before passing to the Worker Loader.
 
 [@cloudflare/worker-bundler ↗](https://www.npmjs.com/package/@cloudflare/worker-bundler) is a library that handles this for you. Use it to bundle source files into a format that `load()` and `get()` accept:
+
+* [  JavaScript ](#tab-panel-6243)
+* [  TypeScript ](#tab-panel-6244)
+
+JavaScript
+
+```
+
+import { createWorker } from "@cloudflare/worker-bundler";
+
+
+const worker = env.LOADER.get("my-worker", async () => {
+
+  const { mainModule, modules } = await createWorker({
+
+    files: {
+
+      "src/index.ts": `
+
+        import { Hono } from 'hono';
+
+        const app = new Hono();
+
+        app.get('/', (c) => c.text('Hello from Hono!'));
+
+        export default app;
+
+      `,
+
+      "package.json": JSON.stringify({
+
+        dependencies: { hono: "^4.0.0" },
+
+      }),
+
+    },
+
+  });
+
+
+  return { mainModule, modules, compatibilityDate: "2026-05-05" };
+
+});
+
+
+```
 
 TypeScript
 
@@ -338,7 +455,7 @@ const worker = env.LOADER.get("my-worker", async () => {
   });
 
 
-  return { mainModule, modules, compatibilityDate: "2026-01-01" };
+  return { mainModule, modules, compatibilityDate: "2026-05-05" };
 
 });
 

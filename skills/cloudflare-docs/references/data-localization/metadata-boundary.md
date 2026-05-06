@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance)[ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
+
 # Customer Metadata Boundary
 
 As part of the Data Localization Suite, the Customer Metadata Boundary (CMB) ensures that Customer Logs stay in the region you select.

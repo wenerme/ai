@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies)[ Caching ](https://developers.cloudflare.com/search/?tags=Caching) 
+
 # Additional reference for Page Rules
 
 Note

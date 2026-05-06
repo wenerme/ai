@@ -38,6 +38,10 @@ Cloudflare's [bot products](https://developers.cloudflare.com/bots/) identify an
 
 This cookie expires after 30 minutes of continuous inactivity by the end user. The cookie contains information related to the calculation of Cloudflare's proprietary bot score and, when Anomaly Detection is enabled on Bot Management, a session identifier. The information in the cookie (other than time-related information) is encrypted and can only be decrypted by Cloudflare.
 
+Note
+
+The `Set-Cookie` header attributes for the `__cf_bm` cookie may use different casing depending on infrastructure version. For example, the expiration attribute may appear as `expires` or `Expires`. If you parse cookie headers programmatically, use case-insensitive matching for attribute names.
+
 A separate `__cf_bm` cookie is generated for each site that an end user visits, as Cloudflare does not track users from site to site or from session to session. The `__cf_bm` cookie is generated independently by Cloudflare, and does not correspond to any user ID or other identifiers in a customer's web application.
 
 Note

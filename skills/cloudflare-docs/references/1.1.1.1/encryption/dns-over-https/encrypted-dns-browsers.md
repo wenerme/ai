@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Configure DoH on your browser
 
-Several browsers support DNS over HTTPS (DoH), a protocol that encrypts your connection to 1.1.1.1 to protect your DNS queries from privacy intrusions and tampering.
+Several browsers support DNS over HTTPS (DoH), which encrypts your DNS queries to protect them from monitoring and tampering.
 
 Some browsers might already have this setting enabled.
 
 Note
 
-To use 1.1.1.1 For Families, follow the steps below but, instead of choosing the default 1.1.1.1 option, refer to [Set up](https://developers.cloudflare.com/1.1.1.1/setup/#dns-over-https-doh) and specify the URL you want to use.
+[1.1.1.1 for Families](https://developers.cloudflare.com/1.1.1.1/setup/#1111-for-families) provides additional filtering to block malware, phishing, or adult content. To use it, follow the steps below but, instead of choosing the default 1.1.1.1 option, refer to [Set up](https://developers.cloudflare.com/1.1.1.1/setup/#dns-over-https-doh) and specify the URL you want to use.
 
 ## Mozilla Firefox
 

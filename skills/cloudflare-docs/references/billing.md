@@ -58,6 +58,14 @@ View, download, and manage your Cloudflare invoices.
 
 Per-product strategies for reducing usage-based charges.
 
+## Payment methods
+
+Learn about payment methods available for Cloudflare services.
+
+[Instant Bank Payments via Link](https://developers.cloudflare.com/billing/payment-methods/instant-bank-payments-link/) 
+
+Pay for Cloudflare services directly from your bank account through Link.
+
 ## Understand
 
 Learn how Cloudflare billing works.

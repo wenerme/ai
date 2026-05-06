@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
+
 # TXT
 
 TXT record validation requires the creation of a TXT record in the hostname's authoritative DNS.
@@ -45,8 +49,8 @@ Once you [create a new hostname](https://developers.cloudflare.com/cloudflare-fo
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-* [ API ](#tab-panel-4537)
-* [ Dashboard ](#tab-panel-4538)
+* [ API ](#tab-panel-4870)
+* [ Dashboard ](#tab-panel-4871)
 
 You can access these tokens using the API with the [GET custom hostnames endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/list/).
 

@@ -16,6 +16,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 * [ Amazon AWS Transit Gateway ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/aws/)
 * [ Aruba EdgeConnect Enterprise ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/aruba-edgeconnect/)
 * [ Cisco IOS XE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-ios-xe/)
+* [ Cisco Meraki MX (static routing) ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/)
 * [ Cisco SD-WAN ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/viptela/)
 * [ Fortinet ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/fortinet/)
 * [ Furukawa Electric FITELnet ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/fitelnet/)

@@ -18,7 +18,7 @@ Only Super Admin users with edit permissions can start scans, turn scans off, or
 
 The **Infrastructure** tab provides an overview of the IT assets associated with your Cloudflare account, including domains, IP addresses, and related configurations.
 
-Infrastructure data is populated by [Security Insights](https://developers.cloudflare.com/security-center/security-insights/) scans. To view data in this tab, first [enable Security Insights](https://developers.cloudflare.com/security-center/get-started/) and wait for the initial scan to complete. Initial scan time depends on the number of IT assets across the domains in your account.
+Infrastructure data is populated by [Security Insights](https://developers.cloudflare.com/security/security-insights/) scans. To view data in this tab, first [enable Security Insights](https://developers.cloudflare.com/security-center/get-started/) and wait for the initial scan to complete. Initial scan time depends on the number of IT assets across the domains in your account.
 
 To open the **Infrastructure** tab, go to Account Home > **Security Center** \> **Infrastructure**.
 

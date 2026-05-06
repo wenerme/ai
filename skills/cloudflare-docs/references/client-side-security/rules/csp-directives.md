@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ CSP ](https://developers.cloudflare.com/search/?tags=CSP) 
+
 # Supported CSP directives
 
 [Content security rules](https://developers.cloudflare.com/client-side-security/rules/) support most Content Security Policy (CSP) directives, covering both monitored and unmonitored resources. You can use a content security rule to control other types of resources besides scripts and their connections, even though Cloudflare is not monitoring these resources.

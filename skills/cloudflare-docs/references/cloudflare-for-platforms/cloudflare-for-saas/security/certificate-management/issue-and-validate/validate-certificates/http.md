@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
+
 # HTTP
 
 HTTP validation involves adding a DCV token to your customer's origin.

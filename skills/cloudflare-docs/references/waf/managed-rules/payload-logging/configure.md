@@ -10,14 +10,18 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
+
 # Configure payload logging in the dashboard
 
 Note
 
 Only users with the [Super Administrator role](https://developers.cloudflare.com/fundamentals/manage-members/roles/) can configure payload logging and decrypt payloads in the Cloudflare dashboard. Other users can decrypt payloads if they have access to the logs and to the private key.
 
-* [  New dashboard ](#tab-panel-8309)
-* [ Old dashboard ](#tab-panel-8310)
+* [  New dashboard ](#tab-panel-8744)
+* [ Old dashboard ](#tab-panel-8745)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

@@ -15,7 +15,6 @@ The following tables are created for each data type in the `default` database. Y
 CREATE TABLE IF NOT EXISTS ${DATABASE}.otel_logs
 (
   `Timestamp` DateTime64(9) CODEC(Delta(8), ZSTD(1)),
-  `TimestampTime` DateTime DEFAULT toDateTime(Timestamp),
   `TraceId` String CODEC(ZSTD(1)),
   `SpanId` String CODEC(ZSTD(1)),
   `TraceFlags` UInt8,
@@ -30,6 +29,7 @@ CREATE TABLE IF NOT EXISTS ${DATABASE}.otel_logs
   `ScopeVersion` LowCardinality(String) CODEC(ZSTD(1)),
   `ScopeAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
   `LogAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
+  `EventName` String CODEC(ZSTD(1)),
   `__hdx_materialized_k8s.cluster.name` LowCardinality(String) MATERIALIZED ResourceAttributes['k8s.cluster.name'] CODEC(ZSTD(1)),
   `__hdx_materialized_k8s.container.name` LowCardinality(String) MATERIALIZED ResourceAttributes['k8s.container.name'] CODEC(ZSTD(1)),
   `__hdx_materialized_k8s.deployment.name` LowCardinality(String) MATERIALIZED ResourceAttributes['k8s.deployment.name'] CODEC(ZSTD(1)),
@@ -38,21 +38,20 @@ CREATE TABLE IF NOT EXISTS ${DATABASE}.otel_logs
   `__hdx_materialized_k8s.pod.name` LowCardinality(String) MATERIALIZED ResourceAttributes['k8s.pod.name'] CODEC(ZSTD(1)),
   `__hdx_materialized_k8s.pod.uid` LowCardinality(String) MATERIALIZED ResourceAttributes['k8s.pod.uid'] CODEC(ZSTD(1)),
   `__hdx_materialized_deployment.environment.name` LowCardinality(String) MATERIALIZED ResourceAttributes['deployment.environment.name'] CODEC(ZSTD(1)),
-  INDEX idx_trace_id TraceId TYPE bloom_filter(0.001) GRANULARITY 1,
-  INDEX idx_res_attr_key mapKeys(ResourceAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-  INDEX idx_res_attr_value mapValues(ResourceAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-  INDEX idx_scope_attr_key mapKeys(ScopeAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-  INDEX idx_scope_attr_value mapValues(ScopeAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-  INDEX idx_log_attr_key mapKeys(LogAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-  INDEX idx_log_attr_value mapValues(LogAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-  INDEX idx_lower_body lower(Body) TYPE tokenbf_v1(32768, 3, 0) GRANULARITY 8
+  INDEX idx_trace_id TraceId TYPE text(tokenizer = 'array'),
+  INDEX idx_res_attr_key mapKeys(ResourceAttributes) TYPE text(tokenizer = 'array'),
+  INDEX idx_res_attr_value mapValues(ResourceAttributes) TYPE text(tokenizer = 'array'),
+  INDEX idx_scope_attr_key mapKeys(ScopeAttributes) TYPE text(tokenizer = 'array'),
+  INDEX idx_scope_attr_value mapValues(ScopeAttributes) TYPE text(tokenizer = 'array'),
+  INDEX idx_log_attr_key mapKeys(LogAttributes) TYPE text(tokenizer = 'array'),
+  INDEX idx_log_attr_value mapValues(LogAttributes) TYPE text(tokenizer = 'array'),
+  INDEX idx_lower_body lower(Body) TYPE text(tokenizer = 'splitByNonAlpha')
 )
 ENGINE = MergeTree
-PARTITION BY toDate(TimestampTime)
-PRIMARY KEY (ServiceName, TimestampTime)
-ORDER BY (ServiceName, TimestampTime, Timestamp)
-TTL TimestampTime + toIntervalDay(30)
-SETTINGS index_granularity = 8192, ttl_only_drop_parts = 1;
+PARTITION BY toDate(Timestamp)
+ORDER BY (toStartOfFiveMinutes(Timestamp), ServiceName, Timestamp)
+TTL toDateTime(Timestamp) + ${TABLES_TTL}
+SETTINGS index_granularity = 8192, ttl_only_drop_parts = 1, enable_block_number_column = 1, enable_block_offset_column = 1;
 ```
 
 ## Traces {#traces}
@@ -83,6 +82,7 @@ CREATE TABLE IF NOT EXISTS ${DATABASE}.otel_traces
     `Links.TraceState` Array(String) CODEC(ZSTD(1)),
     `Links.Attributes` Array(Map(LowCardinality(String), String)) CODEC(ZSTD(1)),
     `__hdx_materialized_rum.sessionId` String MATERIALIZED ResourceAttributes['rum.sessionId'] CODEC(ZSTD(1)),
+    `SampleRate` UInt64 MATERIALIZED greatest(toUInt64OrZero(SpanAttributes['SampleRate']), 1) CODEC(T64, ZSTD(1)),
     INDEX idx_trace_id TraceId TYPE bloom_filter(0.001) GRANULARITY 1,
     INDEX idx_rum_session_id __hdx_materialized_rum.sessionId TYPE bloom_filter(0.001) GRANULARITY 1,
     INDEX idx_res_attr_key mapKeys(ResourceAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS ${DATABASE}.otel_traces
 ENGINE = MergeTree
 PARTITION BY toDate(Timestamp)
 ORDER BY (ServiceName, SpanName, toDateTime(Timestamp))
-TTL toDate(Timestamp) + toIntervalDay(30)
+TTL toDate(Timestamp) + ${TABLES_TTL}
 SETTINGS index_granularity = 8192, ttl_only_drop_parts = 1;
 ```
 
@@ -104,7 +104,7 @@ SETTINGS index_granularity = 8192, ttl_only_drop_parts = 1;
 ### Gauge metrics {#gauge}
 
 ```sql
-CREATE TABLE otel_metrics_gauge
+CREATE TABLE IF NOT EXISTS ${DATABASE}.otel_metrics_gauge
 (
     `ResourceAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
     `ResourceSchemaUrl` String CODEC(ZSTD(1)),
@@ -137,12 +137,14 @@ CREATE TABLE otel_metrics_gauge
 ENGINE = MergeTree
 PARTITION BY toDate(TimeUnix)
 ORDER BY (ServiceName, MetricName, Attributes, toUnixTimestamp64Nano(TimeUnix))
+TTL toDateTime(TimeUnix) + ${TABLES_TTL}
+SETTINGS ttl_only_drop_parts = 1;
 ```
 
 ### Sum metrics {#sum}
 
 ```sql
-CREATE TABLE otel_metrics_sum
+CREATE TABLE IF NOT EXISTS ${DATABASE}.otel_metrics_sum
 (
     `ResourceAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
     `ResourceSchemaUrl` String CODEC(ZSTD(1)),
@@ -166,7 +168,7 @@ CREATE TABLE otel_metrics_sum
     `Exemplars.SpanId` Array(String) CODEC(ZSTD(1)),
     `Exemplars.TraceId` Array(String) CODEC(ZSTD(1)),
     `AggregationTemporality` Int32 CODEC(ZSTD(1)),
-    `IsMonotonic` Bool CODEC(Delta(1), ZSTD(1)),
+    `IsMonotonic` Bool CODEC(ZSTD(1)),
     INDEX idx_res_attr_key mapKeys(ResourceAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
     INDEX idx_res_attr_value mapValues(ResourceAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
     INDEX idx_scope_attr_key mapKeys(ScopeAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
@@ -177,12 +179,14 @@ CREATE TABLE otel_metrics_sum
 ENGINE = MergeTree
 PARTITION BY toDate(TimeUnix)
 ORDER BY (ServiceName, MetricName, Attributes, toUnixTimestamp64Nano(TimeUnix))
+TTL toDateTime(TimeUnix) + ${TABLES_TTL}
+SETTINGS ttl_only_drop_parts = 1;
 ```
 
 ### Histogram metrics {#histogram}
 
 ```sql
-CREATE TABLE otel_metrics_histogram
+CREATE TABLE IF NOT EXISTS ${DATABASE}.otel_metrics_histogram
 (
     `ResourceAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
     `ResourceSchemaUrl` String CODEC(ZSTD(1)),
@@ -221,13 +225,16 @@ CREATE TABLE otel_metrics_histogram
 ENGINE = MergeTree
 PARTITION BY toDate(TimeUnix)
 ORDER BY (ServiceName, MetricName, Attributes, toUnixTimestamp64Nano(TimeUnix))
+TTL toDateTime(TimeUnix) + ${TABLES_TTL}
+SETTINGS ttl_only_drop_parts = 1;
 ```
 
 ### Exponential histograms {#exponential-histograms}
 
 > **note**: HyperDX doesn't support fetching/displaying exponential histogram metrics yet. You may configure them in the metrics source but future support is forthcoming.
+
 ```sql
-CREATE TABLE otel_metrics_exponentialhistogram
+CREATE TABLE IF NOT EXISTS ${DATABASE}.otel_metrics_exponential_histogram
 (
     `ResourceAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
     `ResourceSchemaUrl` String CODEC(ZSTD(1)),
@@ -270,12 +277,14 @@ CREATE TABLE otel_metrics_exponentialhistogram
 ENGINE = MergeTree
 PARTITION BY toDate(TimeUnix)
 ORDER BY (ServiceName, MetricName, Attributes, toUnixTimestamp64Nano(TimeUnix))
+TTL toDateTime(TimeUnix) + ${TABLES_TTL}
+SETTINGS ttl_only_drop_parts = 1;
 ```
 
 ### Summary table {#summary-table}
 
 ```sql
-CREATE TABLE otel_metrics_summary
+CREATE TABLE IF NOT EXISTS ${DATABASE}.otel_metrics_summary
 (
     `ResourceAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
     `ResourceSchemaUrl` String CODEC(ZSTD(1)),
@@ -306,40 +315,44 @@ CREATE TABLE otel_metrics_summary
 ENGINE = MergeTree
 PARTITION BY toDate(TimeUnix)
 ORDER BY (ServiceName, MetricName, Attributes, toUnixTimestamp64Nano(TimeUnix))
+TTL toDateTime(TimeUnix) + ${TABLES_TTL}
+SETTINGS ttl_only_drop_parts = 1;
 ```
 
 ## Sessions {#sessions}
 
 ```sql
-CREATE TABLE default.hyperdx_sessions
+CREATE TABLE IF NOT EXISTS ${DATABASE}.hyperdx_sessions
 (
-    `Timestamp` DateTime64(9) CODEC(Delta(8), ZSTD(1)),
-    `TimestampTime` DateTime DEFAULT toDateTime(Timestamp),
-    `TraceId` String CODEC(ZSTD(1)),
-    `SpanId` String CODEC(ZSTD(1)),
-    `TraceFlags` UInt8,
-    `SeverityText` LowCardinality(String) CODEC(ZSTD(1)),
-    `SeverityNumber` UInt8,
-    `ServiceName` LowCardinality(String) CODEC(ZSTD(1)),
-    `Body` String CODEC(ZSTD(1)),
-    `ResourceSchemaUrl` LowCardinality(String) CODEC(ZSTD(1)),
-    `ResourceAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
-    `ScopeSchemaUrl` LowCardinality(String) CODEC(ZSTD(1)),
-    `ScopeName` String CODEC(ZSTD(1)),
-    `ScopeVersion` LowCardinality(String) CODEC(ZSTD(1)),
-    `ScopeAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
-    `LogAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
-    INDEX idx_trace_id TraceId TYPE bloom_filter(0.001) GRANULARITY 1,
-    INDEX idx_res_attr_key mapKeys(ResourceAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-    INDEX idx_res_attr_value mapValues(ResourceAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-    INDEX idx_scope_attr_key mapKeys(ScopeAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-    INDEX idx_scope_attr_value mapValues(ScopeAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-    INDEX idx_log_attr_key mapKeys(LogAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-    INDEX idx_log_attr_value mapValues(LogAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
-    INDEX idx_body Body TYPE tokenbf_v1(32768, 3, 0) GRANULARITY 8
+  `Timestamp` DateTime64(9) CODEC(Delta(8), ZSTD(1)),
+  `TimestampTime` DateTime DEFAULT toDateTime(Timestamp),
+  `TraceId` String CODEC(ZSTD(1)),
+  `SpanId` String CODEC(ZSTD(1)),
+  `TraceFlags` UInt8,
+  `SeverityText` LowCardinality(String) CODEC(ZSTD(1)),
+  `SeverityNumber` UInt8,
+  `ServiceName` LowCardinality(String) CODEC(ZSTD(1)),
+  `Body` String CODEC(ZSTD(1)),
+  `ResourceSchemaUrl` LowCardinality(String) CODEC(ZSTD(1)),
+  `ResourceAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
+  `ScopeSchemaUrl` LowCardinality(String) CODEC(ZSTD(1)),
+  `ScopeName` String CODEC(ZSTD(1)),
+  `ScopeVersion` LowCardinality(String) CODEC(ZSTD(1)),
+  `ScopeAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
+  `LogAttributes` Map(LowCardinality(String), String) CODEC(ZSTD(1)),
+  INDEX idx_trace_id TraceId TYPE bloom_filter(0.001) GRANULARITY 1,
+  INDEX idx_res_attr_key mapKeys(ResourceAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
+  INDEX idx_res_attr_value mapValues(ResourceAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
+  INDEX idx_scope_attr_key mapKeys(ScopeAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
+  INDEX idx_scope_attr_value mapValues(ScopeAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
+  INDEX idx_log_attr_key mapKeys(LogAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
+  INDEX idx_log_attr_value mapValues(LogAttributes) TYPE bloom_filter(0.01) GRANULARITY 1,
+  INDEX idx_lower_body lower(Body) TYPE tokenbf_v1(32768, 3, 0) GRANULARITY 8
 )
 ENGINE = MergeTree
 PARTITION BY toDate(TimestampTime)
 PRIMARY KEY (ServiceName, TimestampTime)
 ORDER BY (ServiceName, TimestampTime, Timestamp)
+TTL TimestampTime + ${TABLES_TTL}
+SETTINGS index_granularity = 8192, ttl_only_drop_parts = 1;
 ```

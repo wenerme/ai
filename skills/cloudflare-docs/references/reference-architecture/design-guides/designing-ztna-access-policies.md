@@ -230,7 +230,7 @@ For example, you can define "Employees" once as an Access Group, and then use th
 
 Below is a diagram featuring an Access Group named "Secure Administrators," which uses a range of attributes to define the characteristics of secure administrators. The diagram shows the addition of two other Access Groups within "Secure Administrators". The groups include devices running on either the latest Windows or macOS, along with the requirement that the device must have either File
 
-![Figure 6 - An access group that matches to IT administrators on secure systems.](https://developers.cloudflare.com/_astro/figure6.aWooHqll_22Jt0n.svg "Figure 6 - An access group that matches to IT administrators on secure systems.")
+![Figure 6 - An access group that matches to IT administrators on secure systems.](https://developers.cloudflare.com/_astro/cf1-ref-arch-24.aWooHqll_22Jt0n.svg "Figure 6 - An access group that matches to IT administrators on secure systems.")
 
 Figure 6 - An access group that matches to IT administrators on secure systems.
 

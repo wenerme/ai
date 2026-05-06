@@ -304,6 +304,7 @@ components:
         - OpenInference
         - Parasail
         - Poolside
+        - Perceptron
         - Perplexity
         - Phala
         - Recraft

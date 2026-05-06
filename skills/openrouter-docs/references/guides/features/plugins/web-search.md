@@ -125,7 +125,7 @@ Both fields accept an array of domain strings. You can use wildcards (`*.substac
 | **Exa**       |        Yes        |        Yes        | Both can be used simultaneously                 |
 | **Parallel**  |        Yes        |        Yes        | Either can be used, they are mutually exclusive |
 | **Native**    |       Varies      |       Varies      | See provider notes below                        |
-| **Firecrawl** |         No        |         No        | Returns 400 if domain filters are set           |
+| **Firecrawl** |        Yes        |        Yes        | Mutually exclusive (cannot use both at once)    |
 
 ### Native Provider Behavior
 
@@ -254,7 +254,7 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 ```
 
 <Note>
-  Firecrawl does not support domain filters (`include_domains` / `exclude_domains`). If you need domain filtering, use `exa` or `parallel` instead.
+  Firecrawl supports `include_domains` and `exclude_domains`, but they are mutually exclusive — you cannot use both in the same request.
 </Note>
 
 ### Parallel

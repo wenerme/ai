@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Caching ](https://developers.cloudflare.com/search/?tags=Caching) 
+
 # DNS Firewall
 
 Speed up and protect entire authoritative nameservers

@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Azure ](https://developers.cloudflare.com/search/?tags=Azure) 
+
 # Serve /static-assets from Azure Blob Storage
 
 Route requests with a URI path starting with `/static-assets` to an Azure Blob Storage container using Cloud Connector.

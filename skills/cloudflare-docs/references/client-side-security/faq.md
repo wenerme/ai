@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ CSP ](https://developers.cloudflare.com/search/?tags=CSP) 
+
 # Client-side security FAQ
 
 ## What happens to CSP HTTP headers set by the origin server when I create a content security rule?

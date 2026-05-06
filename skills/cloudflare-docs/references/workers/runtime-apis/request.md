@@ -164,8 +164,8 @@ If the response is a redirect and the redirect mode is set to `follow` (see belo
    * The redirect mode to use: `follow`, `error`, or `manual`. The `fetch` method will automatically follow redirects if the redirect mode is set to `follow`. If set to `manual`, the `3xx` redirect response will be returned to the caller as-is. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
 * `signal` AbortSignal read-only  
    * The `AbortSignal` corresponding to this request. If you use the [enable\_request\_signal](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag, you can attach an event listener to the signal. This allows you to perform cleanup tasks or write to logs before your Worker's invocation ends. For example, if you run the Worker below, and then abort the request from the client, a log will be written:  
-         * [  JavaScript ](#tab-panel-9111)  
-         * [  TypeScript ](#tab-panel-9112)  
+         * [  JavaScript ](#tab-panel-9514)  
+         * [  TypeScript ](#tab-panel-9515)  
    index.js  
    ```  
    export default {  
@@ -230,7 +230,7 @@ All plans have access to:
 * `asOrganization` string  
    * The organization which owns the ASN of the incoming request, for example, `Google Cloud`.
 * `botManagement` Object | null  
-   * Only set when using Cloudflare Bot Management. Object with the following properties: `score`, `verifiedBot`, `staticResource`, `ja3Hash`, `ja4`, and `detectionIds`. Refer to [Bot Management Variables](https://developers.cloudflare.com/bots/reference/bot-management-variables/) for more details.
+   * Only set when using Cloudflare Bot Management. Object with the following properties: `score`, `verifiedBot`, `signedAgent`, `staticResource`, `ja3Hash`, `ja4`, and `detectionIds`. Refer to [Bot Management Variables](https://developers.cloudflare.com/bots/reference/bot-management-variables/) for more details.
 * `clientAcceptEncoding` string | null  
    * If Cloudflare replaces the value of the `Accept-Encoding` header, the original value is stored in the `clientAcceptEncoding` property, for example, `"gzip, deflate, br"`.
 * `clientQuicRtt` number | undefined  

@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform) 
+
 # Configure Snippets using Terraform
 
 You can create Snippets using the [Terraform Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest).

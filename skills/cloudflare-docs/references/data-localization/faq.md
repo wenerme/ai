@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
+
 # FAQs
 
 ## Are DLP and DLS the same?

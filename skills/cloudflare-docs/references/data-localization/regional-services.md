@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
+
 # Regional Services
 
 Regional Services gives you the ability to accommodate regional restrictions by choosing which subset of data centers decrypt and service HTTPS traffic.

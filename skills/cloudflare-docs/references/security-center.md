@@ -21,7 +21,7 @@ Cloudflare Security Center brings together your Cloudflare security products, th
 
 ## Main features
 
-* **[Security Insights](https://developers.cloudflare.com/security-center/security-insights/)**: Review and manage potential security risks and vulnerabilities associated with your IT infrastructure. Security Insights scans your Cloudflare account settings — including DNS records, SSL/TLS certificates, WAF configurations, and Access configurations — and reports findings with severity levels.
+* **[Security Insights](https://developers.cloudflare.com/security/security-insights/)**: Review and manage potential security risks and vulnerabilities associated with your IT infrastructure. Security Insights scans your Cloudflare account settings — including DNS records, SSL/TLS certificates, WAF configurations, and Access configurations — and reports findings with severity levels.
 * **[Infrastructure](https://developers.cloudflare.com/security-center/infrastructure/)**: Review and manage your IT infrastructure. The Infrastructure tab displays the domains, IP addresses, and other assets associated with your Cloudflare account.
 * **[Investigate](https://developers.cloudflare.com/security-center/investigate/)**: Investigate threats using data from Cloudflare's global network. Look up any IP address, domain, or hostname to view its category, country of origin, and passive DNS records.
 * **[Security Reports](https://developers.cloudflare.com/security-center/app-security-reports/)** (beta): Gain visibility into requests blocked or challenged by Cloudflare application security products, including [HTTP DDoS Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/), [WAF](https://developers.cloudflare.com/waf/), and [Bot Management](https://developers.cloudflare.com/bots/).
@@ -34,7 +34,7 @@ Cloudflare Security Center brings together your Cloudflare security products, th
 
 Cloudflare Security Center is available to customers on all plans.
 
-The frequency of automatic security scans depends on your Cloudflare plan, ranging from every 7 days on Free, Pro, and Business plans to every 3 days on Enterprise plans. Refer to [Scan frequency](https://developers.cloudflare.com/security-center/security-insights/how-it-works/#scan-frequency) for more information.
+The frequency of automatic security scans depends on your Cloudflare plan, ranging from every 7 days on Free, Pro, and Business plans to every 3 days on Enterprise plans. Refer to [Scan frequency](https://developers.cloudflare.com/security/security-insights/how-it-works/#scan-frequency) for more information.
 
 If you have any comments, questions, or bugs to report, create a post in the [Cloudflare Community forum ↗](https://community.cloudflare.com/c/security/security-center/65).
 

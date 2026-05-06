@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ AWS ](https://developers.cloudflare.com/search/?tags=AWS)[ Azure ](https://developers.cloudflare.com/search/?tags=Azure)[ GCP ](https://developers.cloudflare.com/search/?tags=GCP) 
+
 # Cloud Connector
 
 Cloud Connector (Beta) allows you to route matching incoming traffic from your website to a public cloud provider that you define: [Cloudflare R2](https://developers.cloudflare.com/r2/) object storage or an external provider such as AWS, Google Cloud, and Azure. With Cloud Connector, you can manage traffic to cloud-hosted content through the same Cloudflare dashboard you use for the rest of your website, without having to configure additional rules.

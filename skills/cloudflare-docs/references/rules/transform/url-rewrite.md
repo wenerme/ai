@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ URL rewrite ](https://developers.cloudflare.com/search/?tags=URL%20rewrite) 
+
 # URL Rewrite Rules
 
 You can manipulate the URL of a request through different operations, namely rewrites and redirects:

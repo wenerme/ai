@@ -10,14 +10,18 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ CSP ](https://developers.cloudflare.com/search/?tags=CSP) 
+
 # Create a content security rule in the dashboard
 
 Note
 
 Only available to customers with Client-Side Security Advanced.
 
-* [  New dashboard ](#tab-panel-4515)
-* [ Old dashboard ](#tab-panel-4516)
+* [  New dashboard ](#tab-panel-4848)
+* [ Old dashboard ](#tab-panel-4849)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

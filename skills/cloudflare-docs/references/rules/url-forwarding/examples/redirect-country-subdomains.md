@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation) 
+
 # Redirect local visitors to specific subdomains
 
 Create a redirect rule to redirect United Kingdom and France visitors from the `example.com` website's root path (`/`) to their localized subdomains `https://gb.example.com` and `https://fr.example.com`, respectively.

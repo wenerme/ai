@@ -124,8 +124,8 @@ The web search tool accepts optional `parameters` to customize search behavior:
 | `max_total_results`   | integer   | —        | Maximum total results across all search calls in a single request. Useful for controlling cost and context size in agentic loops                                                                                 |
 | `search_context_size` | string    | `medium` | How much context to retrieve: `low`, `medium`, or `high`. For Exa, controls characters per result; for Parallel, controls total characters across all results. Ignored with native provider search and Firecrawl |
 | `user_location`       | object    | —        | Approximate user location for location-biased results. Currently only supported by native provider search; ignored with Exa, Firecrawl, and Parallel (see below)                                                 |
-| `allowed_domains`     | string\[] | —        | Limit results to these domains. Supported by Exa, Parallel, and most native providers (see [domain filtering](#domain-filtering))                                                                                |
-| `excluded_domains`    | string\[] | —        | Exclude results from these domains. Supported by Exa, Parallel, and some native providers (see [domain filtering](#domain-filtering))                                                                            |
+| `allowed_domains`     | string\[] | —        | Limit results to these domains. Supported by Exa, Firecrawl, Parallel, and most native providers (see [domain filtering](#domain-filtering))                                                                     |
+| `excluded_domains`    | string\[] | —        | Exclude results from these domains. Supported by Exa, Firecrawl, Parallel, and some native providers (see [domain filtering](#domain-filtering))                                                                 |
 
 ### User Location
 
@@ -162,7 +162,7 @@ The web search server tool supports multiple search engines:
 
 | Feature                  | Exa         | Firecrawl       | Parallel    | Native             |
 | ------------------------ | ----------- | --------------- | ----------- | ------------------ |
-| **Domain filtering**     | Yes         | No              | Yes         | Varies by provider |
+| **Domain filtering**     | Yes         | Yes             | Yes         | Varies by provider |
 | **Context size control** | Yes\*       | No              | Yes\*\*     | No                 |
 | **API key**              | Server-side | BYOK (your key) | Server-side | Provider-handled   |
 
@@ -180,7 +180,7 @@ Firecrawl uses your own API key. To set it up:
 2. Accept the [Firecrawl Terms of Service](https://www.firecrawl.dev/terms-of-service) — this creates a Firecrawl account linked to your email
 3. Your account starts with **10,000 free credits** (credits expire after 3 months)
 
-Firecrawl searches use your Firecrawl credits directly — no additional charge from OpenRouter. Domain filtering is not supported with Firecrawl.
+Firecrawl searches use your Firecrawl credits directly — no additional charge from OpenRouter. Firecrawl supports domain filtering (`allowed_domains` / `excluded_domains`), but they are mutually exclusive — you cannot use both in the same request.
 
 ### Parallel
 
@@ -200,15 +200,15 @@ Restrict which domains appear in search results using `allowed_domains` and `exc
 }
 ```
 
-| Engine                  | `allowed_domains` | `excluded_domains` | Notes                                                                  |
-| ----------------------- | :---------------: | :----------------: | ---------------------------------------------------------------------- |
-| **Exa**                 |        Yes        |         Yes        | Both can be used simultaneously                                        |
-| **Parallel**            |        Yes        |         Yes        | Mutually exclusive                                                     |
-| **Firecrawl**           |         No        |         No         | Returns an error if domain filters are set                             |
-| **Native (Anthropic)**  |        Yes        |         Yes        | Mutually exclusive (`allowed_domains` or `excluded_domains`, not both) |
-| **Native (OpenAI)**     |        Yes        |         No         | `excluded_domains` silently ignored                                    |
-| **Native (xAI)**        |        Yes        |         Yes        | Mutually exclusive                                                     |
-| **Native (Perplexity)** |         No        |         No         | Not supported via server tool path                                     |
+| Engine                  | `allowed_domains` | `excluded_domains` | Notes                               |
+| ----------------------- | :---------------: | :----------------: | ----------------------------------- |
+| **Exa**                 |        Yes        |         Yes        | Both can be used simultaneously     |
+| **Parallel**            |        Yes        |         Yes        | Mutually exclusive                  |
+| **Firecrawl**           |        Yes        |         Yes        | Mutually exclusive                  |
+| **Native (Anthropic)**  |        Yes        |         Yes        | Mutually exclusive                  |
+| **Native (OpenAI)**     |        Yes        |         No         | `excluded_domains` silently ignored |
+| **Native (xAI)**        |        Yes        |         Yes        | Mutually exclusive                  |
+| **Native (Perplexity)** |         No        |         No         | Not supported via server tool path  |
 
 ## Controlling Total Results
 

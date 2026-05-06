@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies) 
+
 # Monitor resources and cookies
 
 Once you [activate client-side security's resource monitoring](https://developers.cloudflare.com/client-side-security/get-started/), the main client-side resources dashboard will show which resources (scripts and connections) are running on your domain, as well as the cookies recently detected in HTTP traffic.
@@ -26,8 +30,8 @@ Notes
 To review the resources detected by Cloudflare:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-4483)  
-   * [ Old dashboard ](#tab-panel-4484)  
+   * [  New dashboard ](#tab-panel-4816)  
+   * [ Old dashboard ](#tab-panel-4817)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -49,8 +53,8 @@ Available filters
 The All Reported Connections and All Reported Scripts dashboards show all the detected resources including infrequent or inactive ones, reported in the last 30 days. After 30 days without any report, Cloudflare will delete information about a previously reported resource, and it will no longer appear in any of the dashboards.
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-4485)  
-   * [ Old dashboard ](#tab-panel-4486)  
+   * [  New dashboard ](#tab-panel-4818)  
+   * [ Old dashboard ](#tab-panel-4819)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -69,8 +73,8 @@ Note
 Only available to customers on Business and Enterprise plans.
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-4487)  
-   * [ Old dashboard ](#tab-panel-4488)  
+   * [  New dashboard ](#tab-panel-4820)  
+   * [ Old dashboard ](#tab-panel-4821)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -117,8 +121,8 @@ Use this feature to extract data for review and annotation. The data in the expo
 To export script, connection, or cookie information in CSV format:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-4489)  
-   * [ Old dashboard ](#tab-panel-4490)  
+   * [  New dashboard ](#tab-panel-4822)  
+   * [ Old dashboard ](#tab-panel-4823)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  

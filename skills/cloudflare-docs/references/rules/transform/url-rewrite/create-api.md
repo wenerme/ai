@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ URL rewrite ](https://developers.cloudflare.com/search/?tags=URL%20rewrite) 
+
 # Create a URL rewrite rule via API
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create URL Rewrite Rules via API. Refer to the [Rules examples gallery](https://developers.cloudflare.com/rules/transform/examples/?operation=Rewrite+URL) for common use cases.

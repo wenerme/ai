@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform) 
+
 # Terraform configuration examples
 
 The following Terraform configuration examples address common scenarios for managing, configuring, and using WAF content scanning.

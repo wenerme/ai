@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
+
 # Configure token authentication
 
 Token authentication allows you to restrict access to documents, files, and media to select users without requiring them to register. This helps protect paid/restricted content from leeching and unauthorized sharing.
@@ -104,10 +108,10 @@ Then the token is valid and the `is_timed_hmac_valid_v0()` function returns `tru
 
 The following examples show how you could generate tokens at your origin server for the path validated using the custom rule described in the previous section:
 
-* [  Python 3.8 ](#tab-panel-8285)
-* [  Python 2.7 ](#tab-panel-8286)
-* [  PHP ](#tab-panel-8287)
-* [ Workers ](#tab-panel-8288)
+* [  Python 3.8 ](#tab-panel-8682)
+* [  Python 2.7 ](#tab-panel-8683)
+* [  PHP ](#tab-panel-8684)
+* [ Workers ](#tab-panel-8685)
 
 Python
 

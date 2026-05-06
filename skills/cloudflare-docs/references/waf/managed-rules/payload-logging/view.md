@@ -10,13 +10,17 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
+
 # View the payload content in the dashboard
 
 View the content of the matched rule payload in the dashboard by entering your private key.
 
 1. Open [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/):  
-   * [  New dashboard ](#tab-panel-8311)  
-   * [ Old dashboard ](#tab-panel-8312)  
+   * [  New dashboard ](#tab-panel-8746)  
+   * [ Old dashboard ](#tab-panel-8747)  
    1. In the Cloudflare dashboard, go to the **Analytics** page.  
    [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)  
    2. Select the **Events** tab.  

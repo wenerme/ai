@@ -572,7 +572,7 @@ Consider an Access Group designed to manage access to critical server infrastruc
 
 Below is a diagram featuring an Access Group named "Secure Administrators," which uses a range of attributes to define the characteristics of secure administrators. The diagram shows the addition of two other Access Groups within "Secure Administrators". The groups include devices running on either the latest Windows or macOS, along with the requirement that the device must have either File Vault or Bitlocker enabled.
 
-![An example of using Access Groups can be for grouping up many device, network or user attributes into a single policy that can be reused across applications.](https://developers.cloudflare.com/_astro/figure6.aWooHqll_22Jt0n.svg) 
+![An example of using Access Groups can be for grouping up many device, network or user attributes into a single policy that can be reused across applications.](https://developers.cloudflare.com/_astro/cf1-ref-arch-24.aWooHqll_22Jt0n.svg) 
 
 Consistent with Cloudflare's overarching flexibility, Access Groups can be created, updated, and applied to policies through Cloudflare API or using Terraform. This allows a seamless integration with existing IT systems and processes, ensuring a cohesive approach to access management.
 

@@ -12,12 +12,13 @@ Creates an edited or extended image given one or more source images and a prompt
 
   The image(s) to edit. Must be a supported image file or an array of images.
 
-  For the GPT image models (`gpt-image-1`, `gpt-image-1-mini`, and `gpt-image-1.5`), each image should be a `png`, `webp`, or `jpg`
-  file less than 50MB. You can provide up to 16 images.
-  `chatgpt-image-latest` follows the same input constraints as GPT image models.
+  For the GPT image models (`gpt-image-1`, `gpt-image-1-mini`,
+  `gpt-image-1.5`, `gpt-image-2`, `gpt-image-2-2026-04-21`, and
+  `chatgpt-image-latest`), each image should be a `png`, `webp`, or
+  `jpg` file less than 50MB. You can provide up to 16 images.
 
-  For `dall-e-2`, you can only provide one image, and it should be a square
-  `png` file less than 4MB.
+  For `dall-e-2`, you can only provide one image, and it should be a
+  square `png` file less than 4MB.
 
   - `FileTypes`
 
@@ -30,12 +31,18 @@ Creates an edited or extended image given one or more source images and a prompt
 - `background: Optional[Literal["transparent", "opaque", "auto"]]`
 
   Allows to set transparency for the background of the generated image(s).
-  This parameter is only supported for the GPT image models. Must be one of
-  `transparent`, `opaque` or `auto` (default value). When `auto` is used, the
-  model will automatically determine the best background for the image.
+  This parameter is only supported for GPT image models that support
+  transparent backgrounds. Must be one of `transparent`, `opaque`, or
+  `auto` (default value). When `auto` is used, the model will
+  automatically determine the best background for the image.
 
-  If `transparent`, the output format needs to support transparency, so it
-  should be set to either `png` (default value) or `webp`.
+  `gpt-image-2` and `gpt-image-2-2026-04-21` do not support
+  transparent backgrounds. Requests with `background` set to
+  `transparent` will return an error for these models; use `opaque` or
+  `auto` instead.
+
+  If `transparent`, the output format needs to support transparency,
+  so it should be set to either `png` (default value) or `webp`.
 
   - `"transparent"`
 
@@ -57,21 +64,27 @@ Creates an edited or extended image given one or more source images and a prompt
 
 - `model: Optional[Union[str, ImageModel, null]]`
 
-  The model to use for image generation. Defaults to `gpt-image-1.5`.
+  The model to use for image generation. One of `dall-e-2` or a GPT image model (`gpt-image-1`, `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`, `gpt-image-2-2026-04-21`, or `chatgpt-image-latest`). Defaults to `gpt-image-1.5`.
 
   - `str`
 
-  - `Literal["gpt-image-1.5", "dall-e-2", "dall-e-3", 2 more]`
-
-    - `"gpt-image-1.5"`
-
-    - `"dall-e-2"`
-
-    - `"dall-e-3"`
+  - `Literal["gpt-image-1", "gpt-image-1-mini", "gpt-image-2", 5 more]`
 
     - `"gpt-image-1"`
 
     - `"gpt-image-1-mini"`
+
+    - `"gpt-image-2"`
+
+    - `"gpt-image-2-2026-04-21"`
+
+    - `"gpt-image-1.5"`
+
+    - `"chatgpt-image-latest"`
+
+    - `"dall-e-2"`
+
+    - `"dall-e-3"`
 
 - `n: Optional[int]`
 
@@ -126,21 +139,9 @@ Creates an edited or extended image given one or more source images and a prompt
 
   - `"b64_json"`
 
-- `size: Optional[Literal["256x256", "512x512", "1024x1024", 3 more]]`
+- `size: Optional[str]`
 
-  The size of the generated images. Must be one of `1024x1024`, `1536x1024` (landscape), `1024x1536` (portrait), or `auto` (default value) for the GPT image models, and one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`.
-
-  - `"256x256"`
-
-  - `"512x512"`
-
-  - `"1024x1024"`
-
-  - `"1536x1024"`
-
-  - `"1024x1536"`
-
-  - `"auto"`
+  The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
 - `stream: Optional[Literal[false]]`
 

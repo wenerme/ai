@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform) 
+
 # Configure exposed credentials checks using Terraform
 
 Deprecation notice

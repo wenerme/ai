@@ -21,9 +21,9 @@ Security Center scans your Cloudflare account configuration and identifies poten
 
 ## Enable Security Insights and start initial scan
 
-Security Insights scans are enabled by default. The scan reviews your Cloudflare account settings and product configurations across all your domains, then reports any issues it finds as [insights](https://developers.cloudflare.com/security-center/security-insights/) — potential security risks, misconfigurations, or vulnerabilities.
+Security Insights scans are enabled by default. The scan reviews your Cloudflare account settings and product configurations across all your domains, then reports any issues it finds as [insights](https://developers.cloudflare.com/security/security-insights/) — potential security risks, misconfigurations, or vulnerabilities.
 
-Security Insights start scans by default. Security Insights will scan your Cloudflare environment and provide you with a list of detected [insights](https://developers.cloudflare.com/security-center/security-insights/). Refer to [How it works](https://developers.cloudflare.com/security-center/security-insights/how-it-works/) to learn more about how Security Insights perform a scan.
+Security Insights start scans by default. Security Insights will scan your Cloudflare environment and provide you with a list of detected [insights](https://developers.cloudflare.com/security/security-insights/). Refer to [How it works](https://developers.cloudflare.com/security/security-insights/how-it-works/) to learn more about how Security Insights perform a scan.
 
 The initial scan time depends on the number of IT assets in all the domains of your Cloudflare account. When the scan is complete, the status of the page will change from **Scan in Progress** to **Last scan performed on: `<DATE_TIME>`**.
 
@@ -62,7 +62,7 @@ After you enable Security Insights, Cloudflare performs scans automatically on a
 | Free, Pro, or Business | Every 7 days   | Yes             |
 | Enterprise             | Every 3 days   | Yes             |
 
-For more details, refer to [How it works](https://developers.cloudflare.com/security-center/security-insights/how-it-works/#scan-frequency).
+For more details, refer to [How it works](https://developers.cloudflare.com/security/security-insights/how-it-works/#scan-frequency).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/get-started/","name":"Get started"}}]}

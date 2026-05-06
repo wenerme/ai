@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
+
 # Machine Learning models
 
 ## Enable auto-updates to the Machine Learning models
@@ -18,8 +22,8 @@ Cloudflare encourages Enterprise customers to enable auto-updates to its Machine
 
 To enable auto-updates:
 
-* [  New dashboard ](#tab-panel-4385)
-* [ Old dashboard ](#tab-panel-4386)
+* [  New dashboard ](#tab-panel-4718)
+* [ Old dashboard ](#tab-panel-4719)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

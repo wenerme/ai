@@ -1,6 +1,6 @@
 ---
 title: Custom limits
-description: Limit resource usage of dynamic Workers.
+description: Limit resource usage of Dynamic Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -12,7 +12,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Custom limits
 
-Custom limits allow you to programmatically enforce limits on the dynamic Worker's resource usage. You can set limits for the maximum CPU time and number of subrequests per invocation. If a dynamic Worker hits either of these limits, it will immediately throw an exception.
+By default, each Dynamic Worker invocation uses your Workers plan [limits](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) for CPU time and subrequests. Custom limits allow you to programmatically enforce limits on the Dynamic Worker's resource usage.
+
+You can set limits for the maximum CPU time and number of subrequests per invocation. If a Dynamic Worker hits either of these limits, it will immediately throw an exception.
 
 ## Set custom limits
 

@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform) 
+
 # Create and manage widgets using Terraform
 
 Manage Turnstile widgets as code using Terraform for version control and automated deployments.

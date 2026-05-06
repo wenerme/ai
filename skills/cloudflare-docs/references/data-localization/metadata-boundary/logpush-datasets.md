@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
+
 # Logpush datasets
 
 [Logpush](https://developers.cloudflare.com/logs/logpush/) is a service that automatically streams your Cloudflare log data to a storage destination you control (such as a cloud storage bucket or SIEM).

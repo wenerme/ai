@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
+
 # Redirects
 
 URL forwarding, also known as URL redirection, navigates the user from a source URL to a target URL with a specific HTTP status code.

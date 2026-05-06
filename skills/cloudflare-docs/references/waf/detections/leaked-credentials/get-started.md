@@ -10,16 +10,20 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Account takeover ](https://developers.cloudflare.com/search/?tags=Account%20takeover)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
+
 # Get started
 
 ## 1\. Turn on the detection
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-8271)
-* [ Old dashboard ](#tab-panel-8272)
-* [ API ](#tab-panel-8273)
-* [ Terraform ](#tab-panel-8274)
+* [  New dashboard ](#tab-panel-8706)
+* [ Old dashboard ](#tab-panel-8707)
+* [ API ](#tab-panel-8708)
+* [ Terraform ](#tab-panel-8709)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -148,10 +152,10 @@ Only available for Enterprise customers.
 
 To check for leaked credentials in a way that is not covered by the default configuration, add a [custom detection location](https://developers.cloudflare.com/waf/detections/leaked-credentials/#custom-detection-locations).
 
-* [  New dashboard ](#tab-panel-8267)
-* [ Old dashboard ](#tab-panel-8268)
-* [ API ](#tab-panel-8269)
-* [ Terraform ](#tab-panel-8270)
+* [  New dashboard ](#tab-panel-8702)
+* [ Old dashboard ](#tab-panel-8703)
+* [ API ](#tab-panel-8704)
+* [ Terraform ](#tab-panel-8705)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
+
 # Default HTTP Privacy
 
 Cloudflare runs one of the largest global anycast networks in the world — a network architecture where traffic is automatically routed to the nearest available data center. All current data center locations are accessible on the [network map ↗](https://www.cloudflare.com/network/).

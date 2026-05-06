@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
+
 # Validate the token
 
 Learn how to securely validate Turnstile tokens on your server using the Siteverify API.
@@ -71,11 +75,11 @@ To ensure a successful validation, the visitor must initiate the request and sub
 
 ## Basic validation examples
 
-* [  JavaScript ](#tab-panel-8161)
-* [  PHP ](#tab-panel-8162)
-* [  Python ](#tab-panel-8163)
-* [  Java ](#tab-panel-8164)
-* [  C# ](#tab-panel-8165)
+* [  JavaScript ](#tab-panel-8556)
+* [  PHP ](#tab-panel-8557)
+* [  Python ](#tab-panel-8558)
+* [  Java ](#tab-panel-8559)
+* [  C# ](#tab-panel-8560)
 
 #### JSON
 
@@ -902,8 +906,8 @@ if (result.valid) {
 
 ## API response format
 
-* [ Successful response ](#tab-panel-8166)
-* [ Failed response ](#tab-panel-8167)
+* [ Successful response ](#tab-panel-8561)
+* [ Failed response ](#tab-panel-8562)
 
 Example
 

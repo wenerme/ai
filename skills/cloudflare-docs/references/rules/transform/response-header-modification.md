@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification) 
+
 # Response Header Transform Rules
 
 Use Response Header Transform Rules to manipulate the headers of HTTP responses sent to website visitors.

@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation)[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
+
 # Supported options
 
 ## Available regions

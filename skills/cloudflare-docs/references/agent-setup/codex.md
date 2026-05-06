@@ -26,6 +26,9 @@ TerminalStandaloneCloudExtensionOpen Source
 
 ## Quick start
 
+* [ Terminal ](#tab-panel-3178)
+* [ Standalone ](#tab-panel-3179)
+
 1. **Install Codex**  
 Install the Codex CLI. macOS and Linux are fully supported; use WSL2 on Windows. For Homebrew or other install methods, see the [Codex CLI setup guide ↗](https://developers.openai.com/codex/cli/).  
 Terminal window  
@@ -46,8 +49,14 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Add bot protection and rate limiting to my login and checkout endpoints.  
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.  
 ```
+
+1. **Download Codex**  
+Follow the download instructions for your operating system at [developers.openai.com/codex/app ↗](https://developers.openai.com/codex/app).
+2. **Install the Cloudflare plugin**  
+In the Codex app, go to **Plugins** and install **Cloudflare**.  
+![Install the Cloudflare plugin in the Codex standalone app.](https://developers.cloudflare.com/_astro/codex-standalone.6tRb7-2M_1dsfkE.webp)
 
 ## Cloudflare platform access
 

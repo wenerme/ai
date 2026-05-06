@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Logging ](https://developers.cloudflare.com/search/?tags=Logging)[ SIEM ](https://developers.cloudflare.com/search/?tags=SIEM) 
+
 # Store decrypted matched payloads in logs
 
 You can include the encrypted matched payload in your [Logpush](https://developers.cloudflare.com/logs/logpush/) jobs by adding the **General** \> [**Metadata**](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall%5Fevents/#metadata) field from the Firewall Events dataset to your job.

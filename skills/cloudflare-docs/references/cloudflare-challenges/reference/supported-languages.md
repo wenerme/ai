@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Localization ](https://developers.cloudflare.com/search/?tags=Localization) 
+
 # Supported languages
 
 ## Multi-language support

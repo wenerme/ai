@@ -15,6 +15,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 This section covers the main runtime controls for Dynamic Workers.
 
 * [ Bindings ](https://developers.cloudflare.com/dynamic-workers/usage/bindings/)
+* [ Static assets ](https://developers.cloudflare.com/dynamic-workers/usage/static-assets/)
 * [ Egress control ](https://developers.cloudflare.com/dynamic-workers/usage/egress-control/)
 * [ Observability ](https://developers.cloudflare.com/dynamic-workers/usage/observability/)
 * [ Durable Object Facets ](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/)

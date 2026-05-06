@@ -199,9 +199,9 @@ Custom voices enable you to create a unique voice for your agent or application.
 
 To create a custom voice, you’ll provide a short sample audio reference that the model will seek to replicate.
 
-Custom voices are limited to eligible customers. Contact sales at
-  [sales@openai.com](mailto:sales@openai.com) to learn more. Once enabled for
-  your organization, you’ll have access to the
+Custom voices are limited to eligible customers. Contact our [sales
+  team](https://openai.com/contact-sales/) to learn more. Once enabled for your
+  organization, you’ll have access to the
   [Voices](https://platform.openai.com/audio/voices) tab under Audio.
 
 #### Creating a voice

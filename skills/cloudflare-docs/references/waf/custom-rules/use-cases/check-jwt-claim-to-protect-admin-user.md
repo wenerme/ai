@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ JSON web token (JWT) ](https://developers.cloudflare.com/search/?tags=JSON%20web%20token%20%28JWT%29) 
+
 # Issue challenge for admin user in JWT claim based on attack score
 
 Note

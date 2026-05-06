@@ -26,8 +26,8 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-8551)
-* [  wrangler.toml ](#tab-panel-8552)
+* [  wrangler.jsonc ](#tab-panel-8954)
+* [  wrangler.toml ](#tab-panel-8955)
 
 JSONC
 
@@ -83,8 +83,8 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-8555)
-* [  wrangler.toml ](#tab-panel-8556)
+* [  wrangler.jsonc ](#tab-panel-8958)
+* [  wrangler.toml ](#tab-panel-8959)
 
 JSONC
 
@@ -100,7 +100,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29"
+  "compatibility_date": "2026-05-05"
 
 }
 
@@ -115,13 +115,13 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-05"
 
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-8549)
-* [  wrangler.toml ](#tab-panel-8550)
+* [  wrangler.jsonc ](#tab-panel-8952)
+* [  wrangler.toml ](#tab-panel-8953)
 
 JSONC
 
@@ -153,8 +153,8 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-8553)
-* [  wrangler.toml ](#tab-panel-8554)
+* [  wrangler.jsonc ](#tab-panel-8956)
+* [  wrangler.toml ](#tab-panel-8957)
 
 JSONC
 
@@ -207,6 +207,19 @@ This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is e
 When `remove_nodejs_compat_eol_v22` is enabled, APIs that reached end-of-life in Node.js 22.x are removed.
 
 This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is enabled after 2027-04-30.
+
+### Process .pth files for Python Workers
+
+| **Default as of**   | 2026-05-26                           |
+| ------------------- | ------------------------------------ |
+| **Flag to enable**  | python\_process\_pth\_files          |
+| **Flag to disable** | disable\_python\_process\_pth\_files |
+
+When the `python_process_pth_files` flag is set, Python Workers process `.pth`files in the `python_modules/` directory during startup by calling[site.addsitedir() ↗](https://docs.python.org/3/library/site.html#site.addsitedir)on it. This lets packages extend `sys.path` declaratively, for example to add subdirectories or register import hooks. Without this flag, `.pth` files in`python_modules/` are ignored.
+
+This flag also moves the top-level entropy context managers required by some packages out of the runtime and into[workers-py ↗](https://github.com/cloudflare/workers-py).
+
+You must use `workers-py` version `1.1.3` or later when this flag is set.
 
 ### Workflows preserve `NonRetryableError` message
 

@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress) 
+
 # Super Bot Fight Mode for WordPress
 
 When users attempt to run diagnostics in the Site Status page for WordPress installations, loopback issues arise when our bot detection services block them.
@@ -22,8 +26,8 @@ Loopback requests may also be blocked by [I’m Under Attack mode](https://devel
 
 ## Enable Optimize for WordPress
 
-* [  New dashboard ](#tab-panel-4387)
-* [ Old dashboard ](#tab-panel-4388)
+* [  New dashboard ](#tab-panel-4720)
+* [ Old dashboard ](#tab-panel-4721)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

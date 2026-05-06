@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Bot detection engines
 
-Cloudflare uses multiple detection engines because different bot types require different detection strategies. Simple bots can be caught by pattern matching against known signatures, while sophisticated bots require machine learning and behavioral anomaly detection.
+Cloudflare uses multiple detection engines because different bot types require different detection strategies. Simple bots can be caught by pattern matching against known signatures, while sophisticated bots require machine learning and behavioral analysis.
 
 The engines available to your domain depend on your plan.
 
@@ -43,13 +43,17 @@ The ML engine identifies _likely automated_ traffic.
 
 ## Anomaly detection (Enterprise)
 
+Deprecation notice
+
+Cloudflare is deprecating the Anomaly Detection engine and is not onboarding new customers. Future behavioral detections will cover the same detection areas.
+
 The **Anomaly Detection (AD)** engine is an optional detection engine that uses a form of unsupervised learning. Cloudflare records a baseline of your domain's traffic and uses the baseline to intelligently detect outlier requests. This approach is user agent-agnostic and can be turned on or off by your account team.
 
 Cloudflare does not recommend AD for domains that use [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/) or expect large amounts of API traffic. The AD engine immediately gives automated requests a score of one.
 
 ## Notes on detection
 
-Cloudflare uses the `__cf_bm cookie` to smooth out the bot score and reduce false positives for actual user sessions.
+Cloudflare uses the `__cf_bm` cookie to smooth out the bot score and reduce false positives for actual user sessions.
 
 The Bot Management cookie measures a single user's request pattern and applies it to the machine learning data to generate a reliable bot score for all of that user's requests.
 

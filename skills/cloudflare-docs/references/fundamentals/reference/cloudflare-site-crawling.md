@@ -33,7 +33,7 @@ Cloudflare will crawl your site when you have specific products enabled:
 * [**SSL/TLS recommender**](https://developers.cloudflare.com/ssl/origin-configuration/ssl-tls-recommender/)  
    * _User-Agent_: `Cloudflare-SSLDetector`  
    * This crawler ignores your `robots.txt` file unless there are rules explicitly targeting the user agent.
-* [**Security Insights**](https://developers.cloudflare.com/security-center/security-insights/review-insights/)  
+* [**Security Insights**](https://developers.cloudflare.com/security/security-insights/review-insights/)  
    * _User-Agent_: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)`
 
 ### Other situations

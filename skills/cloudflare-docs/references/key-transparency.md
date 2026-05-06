@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
+
 # Key Transparency Auditor
 
 Secure the distribution of public keys in your end-to-end encrypted (E2EE) messaging systems

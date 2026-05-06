@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics) 
+
 # GraphQL datasets
 
 The [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) allows you to programmatically query your Cloudflare analytics data (such as request counts, security events, and performance metrics). When Customer Metadata Boundary (CMB) is enabled, not all analytics data fields are available in every region.

@@ -1,11 +1,11 @@
 ---
 title: Security Insights
 description: Scan your account for misconfigurations and potential security risks across all domains.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index  
-> Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt  
 > Use this file to discover all available pages before exploring further.
 
 [Skip to content](#%5Ftop) 
@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 User permission
 
-Ensure your user has one of the necessary roles to access Security Insights. Refer to [Roles and permissions](https://developers.cloudflare.com/security-center/security-insights/roles-and-permissions/) for more information.
+Ensure your user has one of the necessary roles to access Security Insights. Refer to [Roles and permissions](https://developers.cloudflare.com/security/security-insights/roles-and-permissions/) for more information.
 
 Security Insights provides you with a list of insights, covering different areas of your Cloudflare environment, such as: Cloudflare account settings, DNS record configurations, SSL/TLS certificates configurations, Cloudflare Access configurations and Cloudflare WAF configurations.
 
@@ -61,15 +61,15 @@ Listed below are the specific insights currently available:
 
 Security Insights scans run periodically and use heuristics to detect potential issues. In some cases, an insight may not accurately reflect your current configuration:
 
-* **_Managed Rules not deployed_ on zones with account-level managed rules**: If you deploy managed rules at the account level rather than the zone level, Security Center may not detect them and may report that managed rules are not deployed. If your account-level configuration is correct, you can [archive the insight](https://developers.cloudflare.com/security-center/security-insights/review-insights/#archive-insights) to dismiss it.
+* **_Managed Rules not deployed_ on zones with account-level managed rules**: If you deploy managed rules at the account level rather than the zone level, Security Center may not detect them and may report that managed rules are not deployed. If your account-level configuration is correct, you can [archive the insight](https://developers.cloudflare.com/security/security-insights/review-insights/#archive-insights) to dismiss it.
 * **Vulnerability insights for rules in log mode**: If you configure a managed rule with a _Log_ action (for example, to monitor traffic before enforcing), Security Center may still generate a vulnerability insight because the rule is not actively blocking traffic. This is expected behavior. You can archive the insight if you are intentionally using log mode.
 
-To remove a resolved or inaccurate insight from your dashboard, [archive the insight](https://developers.cloudflare.com/security-center/security-insights/review-insights/#archive-insights) or wait for the next automatic scan.
+To remove a resolved or inaccurate insight from your dashboard, [archive the insight](https://developers.cloudflare.com/security/security-insights/review-insights/#archive-insights) or wait for the next automatic scan.
 
 ## More resources
 
-For more information on available operations for Security Insights, refer to [Review Security Insights](https://developers.cloudflare.com/security-center/security-insights/review-insights/).
+For more information on available operations for Security Insights, refer to [Review Security Insights](https://developers.cloudflare.com/security/security-insights/review-insights/).
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/security-insights/","name":"Security Insights"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/security-insights/","name":"Security Insights"}}]}
 ```

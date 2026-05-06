@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ### Tags
 
-[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics)[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL) 
+[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics)[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
 
 # Analytics and logs
 

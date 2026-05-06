@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform)[ Integration ](https://developers.cloudflare.com/search/?tags=Integration) 
+
 # Terraform
 
 [Terraform ↗](https://www.terraform.io/) is an infrastructure as code tool that lets you define and manage your tunnels alongside other infrastructure. This guide deploys:
@@ -147,8 +151,8 @@ Terminal window
 touch providers.tf  
 ```
 2. Add the following providers to `providers.tf`. The `random` provider is used to generate a tunnel secret.  
-   * [ Terraform (v5) ](#tab-panel-8123)  
-   * [ Terraform (v4) ](#tab-panel-8124)  
+   * [ Terraform (v5) ](#tab-panel-8518)  
+   * [ Terraform (v4) ](#tab-panel-8519)  
 ```  
 terraform {  
   required_providers {  
@@ -209,8 +213,8 @@ Terminal window
 touch Cloudflare-config.tf  
 ```
 2. Add the following resources to `Cloudflare-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-8119)  
-   * [ Terraform (v4) ](#tab-panel-8120)  
+   * [ Terraform (v5) ](#tab-panel-8514)  
+   * [ Terraform (v4) ](#tab-panel-8515)  
 ```  
 # Creates a new remotely-managed tunnel for the GCP VM.  
 resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {  
@@ -358,8 +362,8 @@ Terminal window
 touch GCP-config.tf  
 ```
 2. Add the following content to `GCP-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-8121)  
-   * [ Terraform (v4) ](#tab-panel-8122)  
+   * [ Terraform (v5) ](#tab-panel-8516)  
+   * [ Terraform (v4) ](#tab-panel-8517)  
 ```  
 # OS the server will use  
 data "google_compute_image" "image" {  

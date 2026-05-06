@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
+
 # Secure with Cloudflare Access
 
 Cloudflare Access provides visibility and control over who has access to your [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/). You can allow or block users based on identity, device posture, and other [Access rules](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).

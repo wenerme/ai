@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
+
 # Geo Key Manager
 
 Geo Key Manager offers enhanced control over the storage location of your private SSL/TLS keys — the cryptographic keys that Cloudflare uses to decrypt your HTTPS traffic. By restricting where these keys are stored, you can ensure compliance with regional data regulations and security requirements.

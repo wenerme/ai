@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Request modification ](https://developers.cloudflare.com/search/?tags=Request%20modification) 
+
 # API parameter reference
 
 To set an HTTP request header via API, set the following parameters in the `action_parameters` field:

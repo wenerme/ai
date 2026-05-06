@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Account takeover ](https://developers.cloudflare.com/search/?tags=Account%20takeover) 
+
 # Account Abuse Protection (Early Access)
 
 Identify and mitigate attacks on your customer and user accounts.
@@ -63,6 +67,10 @@ Refer to [Fraud detection with ephemeral IDs](https://developers.cloudflare.com/
 Cloudflare Bot Management includes dedicated detection IDs for account takeover attacks.
 
 Refer to [Account takeover detections](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/) for more information.
+
+Note
+
+Account takeover (ATO) detections are not available for accounts using the [Data Localization Suite](https://developers.cloudflare.com/data-localization/) with [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) in the EU region. ATO detections rely on zone logs to identify suspicious activity, and Cloudflare does not ingest logs for these accounts to comply with General Data Protection (GDPR).
 
 ---
 
