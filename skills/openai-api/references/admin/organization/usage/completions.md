@@ -340,7 +340,7 @@ Get completions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -371,6 +371,10 @@ Get completions usage details for the organization.
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+      - `quantity: optional number`
+
+        When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
   - `start_time: number`
 

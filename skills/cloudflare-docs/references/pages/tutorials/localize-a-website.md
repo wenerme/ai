@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Localize a website with HTMLRewriter
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 In this tutorial, you will build an example internationalization and localization engine (commonly referred to as **i18n** and **l10n**) for your application, serve the content of your site, and automatically translate the content based on your visitors’ location in the world.
 
@@ -442,8 +442,8 @@ Your i18n tool built on Cloudflare Pages is complete and it is time to deploy it
 
 To deploy your application to a `*.pages.dev` subdomain, you need to specify a directory of static assets to serve, configure the `pages_build_output_dir` in your project’s Wrangler file and set the value to `./public`:
 
-* [  wrangler.jsonc ](#tab-panel-6821)
-* [  wrangler.toml ](#tab-panel-6822)
+* [  wrangler.jsonc ](#tab-panel-7050)
+* [  wrangler.toml ](#tab-panel-7051)
 
 JSONC
 
@@ -459,7 +459,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29"
+  "compatibility_date": "2026-05-06"
 
 }
 
@@ -478,7 +478,7 @@ pages_build_output_dir = "./public"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-06"
 
 
 ```

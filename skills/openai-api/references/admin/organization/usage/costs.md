@@ -314,7 +314,7 @@ Get costs details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 2 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -345,6 +345,10 @@ Get costs details for the organization.
       - `project_id: optional string`
 
         When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+      - `quantity: optional number`
+
+        When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
   - `start_time: number`
 
@@ -424,7 +428,8 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
                     },
                     "line_item": null,
                     "project_id": null,
-                    "api_key_id": null
+                    "api_key_id": null,
+                    "quantity": null
                 }
             ]
         }

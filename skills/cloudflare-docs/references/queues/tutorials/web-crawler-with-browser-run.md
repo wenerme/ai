@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build a web crawler with Queues and Browser Run
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 Example of how to use Queues and Browser Run to power a web crawler.
 
@@ -138,8 +138,8 @@ id = "<GENERATED_NAMESPACE_ID>"
 
 Then, in your Wrangler file, add the following with the values generated in the terminal:
 
-* [  wrangler.jsonc ](#tab-panel-7066)
-* [  wrangler.toml ](#tab-panel-7067)
+* [  wrangler.jsonc ](#tab-panel-7304)
+* [  wrangler.toml ](#tab-panel-7305)
 
 JSONC
 
@@ -236,8 +236,8 @@ bun add robots-parser
 
 Then, add a Browser Run binding. Adding a Browser Run binding gives the Worker access to a headless Chromium instance you will control with Puppeteer.
 
-* [  wrangler.jsonc ](#tab-panel-7064)
-* [  wrangler.toml ](#tab-panel-7065)
+* [  wrangler.jsonc ](#tab-panel-7302)
+* [  wrangler.toml ](#tab-panel-7303)
 
 JSONC
 
@@ -300,8 +300,8 @@ Created queue queues-web-crawler.
 
 Then, in your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-7068)
-* [  wrangler.toml ](#tab-panel-7069)
+* [  wrangler.jsonc ](#tab-panel-7306)
+* [  wrangler.toml ](#tab-panel-7307)
 
 JSONC
 
@@ -366,8 +366,8 @@ Adding the `max_batch_timeout` of 60 seconds to the consumer queue is important 
 
 Your final Wrangler file should look similar to the one below.
 
-* [  wrangler.jsonc ](#tab-panel-7070)
-* [  wrangler.toml ](#tab-panel-7071)
+* [  wrangler.jsonc ](#tab-panel-7308)
+* [  wrangler.toml ](#tab-panel-7309)
 
 JSONC
 
@@ -383,7 +383,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-06",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -458,7 +458,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-06"
 
 compatibility_flags = [ "nodejs_compat" ]
 

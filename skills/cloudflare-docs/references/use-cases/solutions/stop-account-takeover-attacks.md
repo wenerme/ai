@@ -26,8 +26,8 @@ Credentials sent over plain HTTP are visible to anyone on the network path betwe
 
 Always Use HTTPS redirects all visitor requests from `http` to `https` for all subdomains and hosts.
 
-* [ Dashboard ](#tab-panel-8021)
-* [ API ](#tab-panel-8022)
+* [ Dashboard ](#tab-panel-8443)
+* [ API ](#tab-panel-8444)
 
 To enable **Always Use HTTPS** in the dashboard:
 
@@ -58,8 +58,8 @@ Cloudflare provides bot protection on all plans, with features that vary by plan
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to all traffic on your domain and cannot be customized with exceptions or path-specific rules.
 
-* [  New dashboard ](#tab-panel-8023)
-* [ Old dashboard ](#tab-panel-8024)
+* [  New dashboard ](#tab-panel-8445)
+* [ Old dashboard ](#tab-panel-8446)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -86,8 +86,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
-* [  New dashboard ](#tab-panel-8025)
-* [ Old dashboard ](#tab-panel-8026)
+* [  New dashboard ](#tab-panel-8447)
+* [ Old dashboard ](#tab-panel-8448)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -325,10 +325,10 @@ The `cf.waf.credential_check.username_and_password_leaked` field requires a Pro 
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-8027)
-* [ Old dashboard ](#tab-panel-8028)
-* [ API ](#tab-panel-8029)
-* [ Terraform ](#tab-panel-8030)
+* [  New dashboard ](#tab-panel-8449)
+* [ Old dashboard ](#tab-panel-8450)
+* [ API ](#tab-panel-8451)
+* [ Terraform ](#tab-panel-8452)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -372,7 +372,7 @@ Use the `cloudflare_leaked_credential_check` resource to enable leaked credentia
 
 resource "cloudflare_leaked_credential_check" "zone_lcc_example" {
 
-  zone_id = "<ZONE_ID>"
+  zone_id = var.cloudflare_zone_id
 
   enabled = true
 

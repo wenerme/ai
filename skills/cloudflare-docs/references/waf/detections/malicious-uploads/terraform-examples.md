@@ -30,7 +30,7 @@ Use the `cloudflare_content_scanning` resource to enable content scanning for a 
 
 resource "cloudflare_content_scanning" "zone_content_scanning_example" {
 
-  zone_id = "<ZONE_ID>"
+  zone_id = var.cloudflare_zone_id
 
   enabled = true
 
@@ -47,7 +47,7 @@ Use the `cloudflare_content_scanning_expression` resource to add a custom scan e
 
 resource "cloudflare_content_scanning_expression" "my_custom_scan_expression" {
 
-  zone_id = <ZONE_ID>
+  zone_id = var.cloudflare_zone_id
 
   payload = "lookup_json_string(http.request.body.raw, \"file\")"
 
@@ -64,15 +64,54 @@ This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-r
 
 To use the [cf.waf.content\_scan.has\_malicious\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.has%5Fmalicious%5Fobj/) field you must [enable content scanning](#enable-waf-content-scanning).
 
-Note
+* [ Terraform (v5) ](#tab-panel-8568)
+* [ Terraform (v4) ](#tab-panel-8569)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+
+* `Zone WAF Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```
 
 resource "cloudflare_ruleset" "zone_custom_firewall_malicious_uploads" {
 
-  zone_id     = "<ZONE_ID>"
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "Phase entry point ruleset for custom rules in my zone"
+
+  description = ""
+
+  kind        = "zone"
+
+  phase       = "http_request_firewall_custom"
+
+
+  rules = [{
+
+    ref         = "block_malicious_uploads"
+
+    description = "Block requests uploading malicious content objects"
+
+    expression  = "(cf.waf.content_scan.has_malicious_obj and http.request.uri.path eq \"/upload.php\")"
+
+    action      = "block"
+
+  }]
+
+}
+
+
+```
+
+```
+
+resource "cloudflare_ruleset" "zone_custom_firewall_malicious_uploads" {
+
+  zone_id     = var.cloudflare_zone_id
 
   name        = "Phase entry point ruleset for custom rules in my zone"
 

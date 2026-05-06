@@ -3776,8 +3776,10 @@ as input for the model's response.
 
     - `top_logprobs?: number | null`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `top_p?: number | null`
 
@@ -8463,8 +8465,10 @@ as input for the model's response.
 
   - `top_logprobs?: number | null`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation?: "auto" | "disabled" | null`
 
@@ -14152,8 +14156,10 @@ Retrieves a model response with the given ID.
 
   - `top_logprobs?: number | null`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation?: "auto" | "disabled" | null`
 
@@ -19113,8 +19119,10 @@ the `background` parameter set to `true` can be cancelled.
 
   - `top_logprobs?: number | null`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation?: "auto" | "disabled" | null`
 
@@ -34360,8 +34368,10 @@ console.log(compactedResponse);
 
   - `top_logprobs?: number | null`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation?: "auto" | "disabled" | null`
 
@@ -39495,8 +39505,10 @@ console.log(compactedResponse);
 
     - `top_logprobs?: number | null`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation?: "auto" | "disabled" | null`
 
@@ -45380,8 +45392,10 @@ console.log(compactedResponse);
 
     - `top_logprobs?: number | null`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation?: "auto" | "disabled" | null`
 
@@ -50411,8 +50425,10 @@ console.log(compactedResponse);
 
     - `top_logprobs?: number | null`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation?: "auto" | "disabled" | null`
 
@@ -56188,8 +56204,10 @@ console.log(compactedResponse);
 
     - `top_logprobs?: number | null`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation?: "auto" | "disabled" | null`
 
@@ -60927,8 +60945,10 @@ console.log(compactedResponse);
 
     - `top_logprobs?: number | null`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation?: "auto" | "disabled" | null`
 
@@ -83903,8 +83923,10 @@ console.log(compactedResponse);
 
     - `top_logprobs?: number | null`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation?: "auto" | "disabled" | null`
 
@@ -89155,8 +89177,10 @@ console.log(compactedResponse);
 
       - `top_logprobs?: number | null`
 
-        An integer between 0 and 20 specifying the number of most likely tokens to
-        return at each token position, each with an associated log probability.
+        An integer between 0 and 20 specifying the maximum number of most likely
+        tokens to return at each token position, each with an associated log
+        probability. In some cases, the number of returned tokens may be fewer than
+        requested.
 
       - `truncation?: "auto" | "disabled" | null`
 
@@ -89977,7 +90001,7 @@ console.log(compactedResponse);
 
       - `top_logprobs?: Array<TopLogprob>`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token?: string`
 
@@ -90027,7 +90051,7 @@ console.log(compactedResponse);
 
       - `top_logprobs?: Array<TopLogprob>`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token?: string`
 
@@ -90632,7 +90656,7 @@ console.log(compactedResponse);
 
     - `top_logprobs?: Array<TopLogprob>`
 
-      The log probability of the top 20 most likely tokens.
+      The log probabilities of up to 20 of the most likely tokens.
 
       - `token?: string`
 
@@ -90684,7 +90708,7 @@ console.log(compactedResponse);
 
     - `top_logprobs?: Array<TopLogprob>`
 
-      The log probability of the top 20 most likely tokens.
+      The log probabilities of up to 20 of the most likely tokens.
 
       - `token?: string`
 
@@ -96576,8 +96600,10 @@ console.log(compactedResponse);
 
   - `top_logprobs?: number | null`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `top_p?: number | null`
 
@@ -101435,8 +101461,10 @@ console.log(compactedResponse);
 
       - `top_logprobs?: number | null`
 
-        An integer between 0 and 20 specifying the number of most likely tokens to
-        return at each token position, each with an associated log probability.
+        An integer between 0 and 20 specifying the maximum number of most likely
+        tokens to return at each token position, each with an associated log
+        probability. In some cases, the number of returned tokens may be fewer than
+        requested.
 
       - `truncation?: "auto" | "disabled" | null`
 
@@ -102257,7 +102285,7 @@ console.log(compactedResponse);
 
       - `top_logprobs?: Array<TopLogprob>`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token?: string`
 
@@ -102307,7 +102335,7 @@ console.log(compactedResponse);
 
       - `top_logprobs?: Array<TopLogprob>`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token?: string`
 

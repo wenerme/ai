@@ -30,7 +30,7 @@ Use the `cloudflare_leaked_credential_check` resource to enable leaked credentia
 
 resource "cloudflare_leaked_credential_check" "zone_lcc_example" {
 
-  zone_id = "<ZONE_ID>"
+  zone_id = var.cloudflare_zone_id
 
   enabled = true
 
@@ -47,7 +47,7 @@ Use the `cloudflare_leaked_credential_check_rule` resource to add a custom detec
 
 resource "cloudflare_leaked_credential_check_rule" "custom_location_example" {
 
-  zone_id = "<ZONE_ID>"
+  zone_id = var.cloudflare_zone_id
 
   username = "lookup_json_string(http.request.body.raw, \"user\")"
 
@@ -66,15 +66,54 @@ This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-r
 
 To use the [cf.waf.credential\_check.username\_and\_password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fand%5Fpassword%5Fleaked/) field you must [enable leaked credentials detection](#enable-leaked-credentials-detection).
 
-Note
+* [ Terraform (v5) ](#tab-panel-8558)
+* [ Terraform (v4) ](#tab-panel-8559)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+
+* `Zone WAF Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```
 
 resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
 
-  zone_id     = "<ZONE_ID>"
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "Phase entry point ruleset for custom rules in my zone"
+
+  description = ""
+
+  kind        = "zone"
+
+  phase       = "http_request_firewall_custom"
+
+
+  rules = [{
+
+    ref         = "challenge_leaked_username_password"
+
+    description = "Challenge requests with a leaked username and password"
+
+    expression  = "(cf.waf.credential_check.username_and_password_leaked)"
+
+    action      = "managed_challenge"
+
+  }]
+
+}
+
+
+```
+
+```
+
+resource "cloudflare_ruleset" "zone_custom_firewall_leaked_creds" {
+
+  zone_id     = var.cloudflare_zone_id
 
   name        = "Phase entry point ruleset for custom rules in my zone"
 

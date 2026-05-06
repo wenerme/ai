@@ -16,6 +16,7 @@ Visit the following pages to learn more about account and zone analytics:
 
 * [ Account analytics (beta) ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/account-analytics/)
 * [ Cloudflare analytics with Workers ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/)
+* [ Security reports ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/)
 * [ Status codes ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/status-codes/)
 * [ Threat types ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/threat-types/)
 * [ Total threats stopped ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/total-threats-stopped/)

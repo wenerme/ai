@@ -89,6 +89,7 @@ in the main README.
 - [`glab milestone`](milestone/_index.md)
 - [`glab mr`](mr/_index.md)
 - [`glab opentofu`](opentofu/_index.md)
+- [`glab orbit`](orbit/_index.md)
 - [`glab release`](release/_index.md)
 - [`glab repo`](repo/_index.md)
 - [`glab runner`](runner/_index.md)

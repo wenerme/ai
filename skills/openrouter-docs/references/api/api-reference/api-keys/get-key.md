@@ -229,6 +229,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -260,6 +266,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -291,6 +303,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -322,6 +340,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string

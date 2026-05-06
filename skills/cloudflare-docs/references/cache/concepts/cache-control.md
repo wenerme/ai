@@ -24,7 +24,7 @@ With the Origin Cache Control feature enabled, `Cache-Control` directives presen
 
 Cloudflare's [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) allows users to either augment or override an origin server's `Cache-Control` headers or [default policies](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) set by Cloudflare.
 
-In the following sections, we will provide more details regarding:
+The following sections cover:
 
 * The most common `Cache-Control` directives.
 * How to enable Origin Cache Control.
@@ -206,7 +206,7 @@ This configuration indicates the asset is fresh for 600 seconds. The asset can b
 
 ## Interaction with other Cloudflare features
 
-In this section, we provide details regarding how other Cloudflare features interact with `Cache-Control` directives.
+This section covers how other Cloudflare features interact with `Cache-Control` directives.
 
 ### Edge Cache TTL
 

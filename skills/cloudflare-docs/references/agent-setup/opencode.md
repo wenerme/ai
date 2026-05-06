@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Add a cron trigger to my Worker that processes a job queue every hour.  
+Build an image upload and transformation service using R2 and Cloudflare Images.  
 ```
 
 ## Cloudflare platform access

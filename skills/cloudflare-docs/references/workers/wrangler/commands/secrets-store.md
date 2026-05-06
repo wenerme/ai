@@ -26,9 +26,9 @@ In order to interact with Secrets Store in production, you should append `--remo
 
 Create a secret within a store
 
-* [  npm ](#tab-panel-10083)
-* [  pnpm ](#tab-panel-10084)
-* [  yarn ](#tab-panel-10085)
+* [  npm ](#tab-panel-9981)
+* [  pnpm ](#tab-panel-9982)
+* [  yarn ](#tab-panel-9983)
 
 Terminal window
 
@@ -118,9 +118,9 @@ npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name
 
 Update a secret within a store
 
-* [  npm ](#tab-panel-10086)
-* [  pnpm ](#tab-panel-10087)
-* [  yarn ](#tab-panel-10088)
+* [  npm ](#tab-panel-9984)
+* [  pnpm ](#tab-panel-9985)
+* [  yarn ](#tab-panel-9986)
 
 Terminal window
 
@@ -185,9 +185,9 @@ Automatically provision draft bindings with new resources
 
 Duplicate a secret within a store
 
-* [  npm ](#tab-panel-10089)
-* [  pnpm ](#tab-panel-10090)
-* [  yarn ](#tab-panel-10091)
+* [  npm ](#tab-panel-9987)
+* [  pnpm ](#tab-panel-9988)
+* [  yarn ](#tab-panel-9989)
 
 Terminal window
 
@@ -252,9 +252,9 @@ Automatically provision draft bindings with new resources
 
 Get a secret within a store
 
-* [  npm ](#tab-panel-10092)
-* [  pnpm ](#tab-panel-10093)
-* [  yarn ](#tab-panel-10094)
+* [  npm ](#tab-panel-9990)
+* [  pnpm ](#tab-panel-9991)
+* [  yarn ](#tab-panel-9992)
 
 Terminal window
 
@@ -339,9 +339,9 @@ npx wrangler secrets-store secret get 8f7a1cdced6342c18d223ece462fd88d --secret-
 
 Delete a secret within a store
 
-* [  npm ](#tab-panel-10095)
-* [  pnpm ](#tab-panel-10096)
-* [  yarn ](#tab-panel-10097)
+* [  npm ](#tab-panel-9993)
+* [  pnpm ](#tab-panel-9994)
+* [  yarn ](#tab-panel-9995)
 
 Terminal window
 
@@ -400,9 +400,9 @@ Automatically provision draft bindings with new resources
 
 List secrets within a store
 
-* [  npm ](#tab-panel-10098)
-* [  pnpm ](#tab-panel-10099)
-* [  yarn ](#tab-panel-10100)
+* [  npm ](#tab-panel-9996)
+* [  pnpm ](#tab-panel-9997)
+* [  yarn ](#tab-panel-9998)
 
 Terminal window
 
@@ -471,9 +471,9 @@ Store limitation
 
 Create a store within an account
 
-* [  npm ](#tab-panel-10101)
-* [  pnpm ](#tab-panel-10102)
-* [  yarn ](#tab-panel-10103)
+* [  npm ](#tab-panel-9999)
+* [  pnpm ](#tab-panel-10000)
+* [  yarn ](#tab-panel-10001)
 
 Terminal window
 
@@ -548,9 +548,9 @@ npx wrangler secrets-store store create default --remote
 
 Delete a store within an account
 
-* [  npm ](#tab-panel-10104)
-* [  pnpm ](#tab-panel-10105)
-* [  yarn ](#tab-panel-10106)
+* [  npm ](#tab-panel-10002)
+* [  pnpm ](#tab-panel-10003)
+* [  yarn ](#tab-panel-10004)
 
 Terminal window
 
@@ -625,9 +625,9 @@ npx wrangler secrets-store store delete d2dafaeac9434de2b6d08b292ce08211 --remot
 
 List stores within an account
 
-* [  npm ](#tab-panel-10107)
-* [  pnpm ](#tab-panel-10108)
-* [  yarn ](#tab-panel-10109)
+* [  npm ](#tab-panel-10005)
+* [  pnpm ](#tab-panel-10006)
+* [  yarn ](#tab-panel-10007)
 
 Terminal window
 

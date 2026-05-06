@@ -18,10 +18,10 @@ WAF content scanning is available to customers on an Enterprise plan with a paid
 
 ## 1\. Turn on the detection
 
-* [  New dashboard ](#tab-panel-8275)
-* [ Old dashboard ](#tab-panel-8276)
-* [ API ](#tab-panel-8277)
-* [ Terraform ](#tab-panel-8278)
+* [  New dashboard ](#tab-panel-8560)
+* [ Old dashboard ](#tab-panel-8561)
+* [ API ](#tab-panel-8562)
+* [ Terraform ](#tab-panel-8563)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -59,7 +59,7 @@ Use the `cloudflare_content_scanning` resource to enable content scanning for a 
 
 resource "cloudflare_content_scanning" "zone_content_scanning_example" {
 
-  zone_id = "<ZONE_ID>"
+  zone_id = var.cloudflare_zone_id
 
   enabled = true
 
@@ -132,10 +132,10 @@ For additional examples, refer to [Example rules](https://developers.cloudflare.
 
 To check uploaded content in a way that is not covered by the default configuration, add a [custom scan expression](https://developers.cloudflare.com/waf/detections/malicious-uploads/#custom-scan-expressions).
 
-* [  New dashboard ](#tab-panel-8279)
-* [ Old dashboard ](#tab-panel-8280)
-* [ API ](#tab-panel-8281)
-* [ Terraform ](#tab-panel-8282)
+* [  New dashboard ](#tab-panel-8564)
+* [ Old dashboard ](#tab-panel-8565)
+* [ API ](#tab-panel-8566)
+* [ Terraform ](#tab-panel-8567)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -204,7 +204,7 @@ Use the `cloudflare_content_scanning_expression` resource to add a custom scan e
 
 resource "cloudflare_content_scanning_expression" "my_custom_scan_expression" {
 
-  zone_id = <ZONE_ID>
+  zone_id = var.cloudflare_zone_id
 
   payload = "lookup_json_string(http.request.body.raw, \"file\")"
 

@@ -624,3 +624,67 @@ The API will return a response in the following format:
   }
 }
 ```
+
+## Error Responses with Parsed Annotations
+
+If OpenRouter successfully parses your PDF but every inference provider then fails to generate a completion, the error response still includes the parsed annotations under `error.metadata.file_annotations`. The shape matches the success-path `FileAnnotation` documented above, so you can hand the same array straight back to OpenRouter on a retry to skip re-parsing.
+
+This applies for both billable parsing engines (<code>"{PDFParserEngine.MistralOCR}"</code> and <code>"{PDFParserEngine.CloudflareAI}"</code>); the <code>"{PDFParserEngine.Native}"</code> engine never produces annotations because the file is forwarded directly to the model. The annotations also survive the standard 500-error masking — only `file_annotations` is preserved across the mask; other diagnostic metadata is still stripped.
+
+```json
+{
+  "error": {
+    "code": 502,
+    "message": "Provider returned an error",
+    "metadata": {
+      "file_annotations": [
+        {
+          "type": "file",
+          "file": {
+            "hash": "abc123...",
+            "name": "document.pdf",
+            "content": [
+              { "type": "text", "text": "Parsed text content..." }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+When you read annotations from both the success and error paths, dedupe by `file.hash` — the hash is stable across both shapes for the same parsed file:
+
+```typescript
+function isFileAnnotation(value: unknown): value is FileAnnotation {
+  if (typeof value !== 'object' || value === null) return false;
+  const candidate = value as { type?: unknown; file?: { hash?: unknown } };
+  return (
+    candidate.type === 'file' &&
+    typeof candidate.file?.hash === 'string'
+  );
+}
+
+function extractFileAnnotations(response: unknown): FileAnnotation[] {
+  if (typeof response !== 'object' || response === null) return [];
+
+  const root = response as {
+    choices?: Array<{ message?: { annotations?: unknown[] } }>;
+    error?: { metadata?: { file_annotations?: unknown[] } };
+  };
+
+  const fromMessage = root.choices?.[0]?.message?.annotations ?? [];
+  const fromError = root.error?.metadata?.file_annotations ?? [];
+
+  const seen = new Set<string>();
+  const out: FileAnnotation[] = [];
+  for (const a of [...fromMessage, ...fromError]) {
+    if (isFileAnnotation(a) && !seen.has(a.file.hash)) {
+      seen.add(a.file.hash);
+      out.push(a);
+    }
+  }
+  return out;
+}
+```

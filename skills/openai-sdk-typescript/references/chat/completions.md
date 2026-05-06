@@ -1156,8 +1156,10 @@ chunk objects if the request is streamed.
 
     - `top_logprobs?: number | null`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
       `logprobs` must be set to `true` if this parameter is used.
 
     - `top_p?: number | null`
@@ -1315,7 +1317,7 @@ chunk objects if the request is streamed.
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: string`
 
@@ -1347,7 +1349,7 @@ chunk objects if the request is streamed.
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 
@@ -2272,7 +2274,7 @@ with the `store` parameter set to `true` will be returned.
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: string`
 
@@ -2304,7 +2306,7 @@ with the `store` parameter set to `true` will be returned.
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 
@@ -2742,7 +2744,7 @@ with the `store` parameter set to `true` will be returned.
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: string`
 
@@ -2774,7 +2776,7 @@ with the `store` parameter set to `true` will be returned.
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 
@@ -3215,7 +3217,7 @@ the only supported modification is to update the `metadata` field.
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: string`
 
@@ -3247,7 +3249,7 @@ the only supported modification is to update the `metadata` field.
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 
@@ -3722,7 +3724,7 @@ console.log(chatCompletionDeleted.id);
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: string`
 
@@ -3754,7 +3756,7 @@ console.log(chatCompletionDeleted.id);
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 
@@ -4375,7 +4377,7 @@ console.log(chatCompletionDeleted.id);
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: string`
 
@@ -4407,7 +4409,7 @@ console.log(chatCompletionDeleted.id);
 
         - `top_logprobs: Array<TopLogprob>`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
   - `created: number`
 
@@ -5704,7 +5706,7 @@ console.log(chatCompletionDeleted.id);
 
   - `top_logprobs: Array<TopLogprob>`
 
-    List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+    List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `token: string`
 

@@ -16,7 +16,9 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Get started
 
-Cloudflare makes customer websites faster by storing a copy of the website's content on the servers of our globally distributed data centers. Content can be either static or dynamic: static content is “[cacheable](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions)” or eligible for caching, and dynamic content is “uncacheable” or ineligible for caching. The cached copies of content are stored physically closer to users, optimized to be fast, and do not require recomputing.
+Cloudflare speeds up your website by caching content across globally distributed data centers.
+
+Content can be static or dynamic. Static content — such as images, CSS, and JavaScript files — is [cacheable](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions) by default. Dynamic content, such as HTML pages, is not cached by default, but you can use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) to cache it.
 
 Cloudflare caches static content based on the following factors:
 
@@ -27,7 +29,7 @@ Cloudflare caches static content based on the following factors:
 * Origin headers that indicate dynamic content
 * Cache rules that bypass cache on cookie
 
-Cloudflare only caches resources within the Cloudflare data center that serve the request. Cloudflare does not cache off-site or third-party resources, such as Facebook or Flickr, or content hosted on [unproxied (grey-clouded)](https://developers.cloudflare.com/dns/proxy-status/) DNS records.
+Cloudflare only caches resources within the Cloudflare data center that serve the request. Cloudflare does not cache off-site or third-party resources, or content hosted on [DNS-only (unproxied)](https://developers.cloudflare.com/dns/proxy-status/) DNS records.
 
 ## Learn the basics
 
@@ -57,19 +59,15 @@ Include or exclude query strings, optimize cache keys, or enable [Tiered Cache](
 
 ## Secure your cache configuration
 
-Control resources a client is allowed to load and set access permissions to allow different origins to access your origin’s resources. Protect your site from web cache deception attacks while still caching static assets.
+Control resources a client is allowed to load and set access permissions to allow different origins to access your origin's resources. Protect your site from web cache deception attacks while still caching static assets.
 
 * [Avoid web cache poisoning attacks](https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/)
 * [Configure Cross-Origin Resource Sharing (CORS)](https://developers.cloudflare.com/cache/cache-security/cors/)
 * [Enable Cache Deception Armor](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/#enable-cache-deception-armor)
 
-## Cloudflare features that can alter your HTML and cacheable objects
+## Features that alter cached content
 
-To provide Cloudflare services to our customers, we may need to alter your HTML or cached objects to enable the feature or provide optimization.
-
-These code alterations only occur on the cacheable objects found at Cloudflare's edge and do not affect the original source. The changes will also be removed if the specific feature is disabled and the cache is purged.
-
-Review the list of Cloudflare features that function in this manner:
+Some Cloudflare features modify your HTML or cached objects at the edge to enable optimizations or security protections. These alterations only affect cached copies at Cloudflare's edge and do not change your original source files. Cloudflare removes the changes when you disable the feature and purge the cache. These alterations only affect cached copies at Cloudflare's edge and do not change your original source files. The changes are removed if the feature is disabled and the cache is purged.
 
 * [Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/)
 * [Polish](https://developers.cloudflare.com/images/polish/)

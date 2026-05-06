@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Head Requests and Set-Cookie Headers
 
-In this page, we document how Cloudflare's cache system behaves in interaction with:
+This page describes how Cloudflare's cache system behaves in interaction with:
 
 * `HEAD` requests
 * `Set-Cookie` response headers
@@ -25,7 +25,7 @@ In this page, we document how Cloudflare's cache system behaves in interaction w
 
 Cloudflare converts `HEAD` requests to `GET` requests for [cacheable requests](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).
 
-When you make a `HEAD` request for a cacheable resource and Cloudflare does not have that resource in the edge cache, a cache miss happens. Cloudflare will send a `GET` request to your origin, cache the full response and return the response headers only. Make sure the origin server is setup to handle `GET` requests, even if only `HEAD` requests are expected, so that compatibility with this behavior is ensured.
+When you make a `HEAD` request for a cacheable resource and Cloudflare does not have that resource in the edge cache, a cache miss happens. Cloudflare will send a `GET` request to your origin, cache the full response and return the response headers only. Make sure the origin server is set up to handle `GET` requests, even if only `HEAD` requests are expected, so that compatibility with this behavior is ensured.
 
 ## Interaction of `Set-Cookie` response header with Cache
 

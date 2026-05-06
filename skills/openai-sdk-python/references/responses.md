@@ -3790,8 +3790,10 @@ as input for the model's response.
 
 - `top_logprobs: Optional[int]`
 
-  An integer between 0 and 20 specifying the number of most likely tokens to
-  return at each token position, each with an associated log probability.
+  An integer between 0 and 20 specifying the maximum number of most likely
+  tokens to return at each token position, each with an associated log
+  probability. In some cases, the number of returned tokens may be fewer than
+  requested.
 
 - `top_p: Optional[float]`
 
@@ -8483,8 +8485,10 @@ as input for the model's response.
 
   - `top_logprobs: Optional[int]`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -14171,8 +14175,10 @@ Retrieves a model response with the given ID.
 
   - `top_logprobs: Optional[int]`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -19161,8 +19167,10 @@ the `background` parameter set to `true` can be cancelled.
 
   - `top_logprobs: Optional[int]`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -34490,8 +34498,10 @@ print(compacted_response)
 
   - `top_logprobs: Optional[int]`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -39651,8 +39661,10 @@ print(compacted_response)
 
     - `top_logprobs: Optional[int]`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -45562,8 +45574,10 @@ print(compacted_response)
 
     - `top_logprobs: Optional[int]`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -50623,8 +50637,10 @@ print(compacted_response)
 
     - `top_logprobs: Optional[int]`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -56430,8 +56446,10 @@ print(compacted_response)
 
     - `top_logprobs: Optional[int]`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -61195,8 +61213,10 @@ print(compacted_response)
 
     - `top_logprobs: Optional[int]`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -84303,8 +84323,10 @@ print(compacted_response)
 
     - `top_logprobs: Optional[int]`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -89581,8 +89603,10 @@ print(compacted_response)
 
       - `top_logprobs: Optional[int]`
 
-        An integer between 0 and 20 specifying the number of most likely tokens to
-        return at each token position, each with an associated log probability.
+        An integer between 0 and 20 specifying the maximum number of most likely
+        tokens to return at each token position, each with an associated log
+        probability. In some cases, the number of returned tokens may be fewer than
+        requested.
 
       - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -90403,7 +90427,7 @@ print(compacted_response)
 
       - `top_logprobs: Optional[List[LogprobTopLogprob]]`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token: Optional[str]`
 
@@ -90453,7 +90477,7 @@ print(compacted_response)
 
       - `top_logprobs: Optional[List[LogprobTopLogprob]]`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token: Optional[str]`
 
@@ -91058,7 +91082,7 @@ print(compacted_response)
 
     - `top_logprobs: Optional[List[LogprobTopLogprob]]`
 
-      The log probability of the top 20 most likely tokens.
+      The log probabilities of up to 20 of the most likely tokens.
 
       - `token: Optional[str]`
 
@@ -91110,7 +91134,7 @@ print(compacted_response)
 
     - `top_logprobs: Optional[List[LogprobTopLogprob]]`
 
-      The log probability of the top 20 most likely tokens.
+      The log probabilities of up to 20 of the most likely tokens.
 
       - `token: Optional[str]`
 
@@ -97040,8 +97064,10 @@ print(compacted_response)
 
   - `top_logprobs: Optional[int]`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `top_p: Optional[float]`
 
@@ -101925,8 +101951,10 @@ print(compacted_response)
 
       - `top_logprobs: Optional[int]`
 
-        An integer between 0 and 20 specifying the number of most likely tokens to
-        return at each token position, each with an associated log probability.
+        An integer between 0 and 20 specifying the maximum number of most likely
+        tokens to return at each token position, each with an associated log
+        probability. In some cases, the number of returned tokens may be fewer than
+        requested.
 
       - `truncation: Optional[Literal["auto", "disabled"]]`
 
@@ -102747,7 +102775,7 @@ print(compacted_response)
 
       - `top_logprobs: Optional[List[LogprobTopLogprob]]`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token: Optional[str]`
 
@@ -102797,7 +102825,7 @@ print(compacted_response)
 
       - `top_logprobs: Optional[List[LogprobTopLogprob]]`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token: Optional[str]`
 

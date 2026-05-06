@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.  
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.  
 ```
 
 ## Cloudflare platform access

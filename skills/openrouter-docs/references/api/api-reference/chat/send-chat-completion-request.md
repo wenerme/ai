@@ -35,6 +35,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: X-OpenRouter-Experimental-Metadata
+          in: header
+          description: >-
+            Opt-in to surface routing metadata on the response under
+            `openrouter_metadata`. Defaults to `disabled`.
+          required: false
+          schema:
+            $ref: '#/components/schemas/MetadataLevel'
       responses:
         '200':
           description: Successful chat completion response
@@ -117,6 +125,15 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
+    MetadataLevel:
+      type: string
+      enum:
+        - disabled
+        - enabled
+      description: >-
+        Opt-in level for surfacing routing metadata on the response under
+        `openrouter_metadata`.
+      title: MetadataLevel
     AnthropicCacheControlTtl:
       type: string
       enum:
@@ -2204,6 +2221,167 @@ components:
       enum:
         - chat.completion
       title: ChatResultObject
+    RouterAttempt:
+      type: object
+      properties:
+        model:
+          type: string
+        provider:
+          type: string
+        status:
+          type: integer
+      required:
+        - model
+        - provider
+        - status
+      title: RouterAttempt
+    EndpointInfo:
+      type: object
+      properties:
+        model:
+          type: string
+        provider:
+          type: string
+        selected:
+          type: boolean
+        sort_rank:
+          type: integer
+        sort_value:
+          type:
+            - number
+            - 'null'
+          format: double
+      required:
+        - model
+        - provider
+        - selected
+        - sort_rank
+        - sort_value
+      title: EndpointInfo
+    EndpointsMetadata:
+      type: object
+      properties:
+        available:
+          type: array
+          items:
+            $ref: '#/components/schemas/EndpointInfo'
+        sort:
+          type: string
+        sort_value:
+          type:
+            - number
+            - 'null'
+          format: double
+        total:
+          type: integer
+      required:
+        - available
+        - sort
+        - total
+      title: EndpointsMetadata
+    RouterParams:
+      type: object
+      properties:
+        quality_floor:
+          type: number
+          format: double
+        sort:
+          type: string
+        throughput_floor:
+          type: number
+          format: double
+        version_group:
+          type: string
+      title: RouterParams
+    PipelineStageType:
+      type: string
+      enum:
+        - router
+        - guardrail
+        - web_search
+        - file_parser
+        - server_tools
+        - response_healing
+        - context_compression
+      description: >-
+        Categorical kind of a pipeline stage. Multiple plugins can share a type
+        (e.g. all guardrail-level plugins emit `guardrail`); the `name` field
+        disambiguates which plugin emitted it.
+      title: PipelineStageType
+    PipelineStage:
+      type: object
+      properties:
+        cost_usd:
+          type:
+            - number
+            - 'null'
+          format: double
+        data:
+          type: object
+          additionalProperties:
+            description: Any type
+        guardrail_id:
+          type: string
+        guardrail_scope:
+          type: string
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/PipelineStageType'
+      required:
+        - name
+        - type
+      title: PipelineStage
+    RoutingStrategy:
+      type: string
+      enum:
+        - direct
+        - auto
+        - free
+        - latest
+        - alias
+        - fallback
+        - pareto
+        - bodybuilder
+      title: RoutingStrategy
+    OpenRouterMetadata:
+      type: object
+      properties:
+        attempt:
+          type: integer
+        attempts:
+          type: array
+          items:
+            $ref: '#/components/schemas/RouterAttempt'
+        endpoints:
+          $ref: '#/components/schemas/EndpointsMetadata'
+        is_byok:
+          type: boolean
+        params:
+          $ref: '#/components/schemas/RouterParams'
+        pipeline:
+          type: array
+          items:
+            $ref: '#/components/schemas/PipelineStage'
+        region:
+          type:
+            - string
+            - 'null'
+        requested:
+          type: string
+        strategy:
+          $ref: '#/components/schemas/RoutingStrategy'
+        summary:
+          type: string
+      required:
+        - attempt
+        - endpoints
+        - is_byok
+        - region
+        - requested
+        - strategy
+        - summary
+      title: OpenRouterMetadata
     ChatUsageCompletionTokensDetails:
       type: object
       properties:
@@ -2325,6 +2503,8 @@ components:
           description: Model used for completion
         object:
           $ref: '#/components/schemas/ChatResultObject'
+        openrouter_metadata:
+          $ref: '#/components/schemas/OpenRouterMetadata'
         service_tier:
           type:
             - string
@@ -2369,6 +2549,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/BadRequestResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2400,6 +2586,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2431,6 +2623,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/PaymentRequiredResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2462,6 +2660,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2493,6 +2697,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/RequestTimeoutResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2524,6 +2734,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/PayloadTooLargeResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2555,6 +2771,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/UnprocessableEntityResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2586,6 +2808,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/TooManyRequestsResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2617,6 +2845,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/InternalServerResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2648,6 +2882,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/BadGatewayResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2679,6 +2919,12 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/ServiceUnavailableResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
         user_id:
           type:
             - string
@@ -2718,6 +2964,7 @@ payload = {
     "temperature": 0.7
 }
 headers = {
+    "X-OpenRouter-Experimental-Metadata": "enabled",
     "Authorization": "Bearer <token>",
     "Content-Type": "application/json"
 }
@@ -2731,7 +2978,11 @@ print(response.json())
 const url = 'https://openrouter.ai/api/v1/chat/completions';
 const options = {
   method: 'POST',
-  headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
+  headers: {
+    'X-OpenRouter-Experimental-Metadata': 'enabled',
+    Authorization: 'Bearer <token>',
+    'Content-Type': 'application/json'
+  },
   body: '{"messages":[{"role":"system","content":"You are a helpful assistant."},{"role":"user","content":"What is the capital of France?"}],"max_tokens":150,"model":"openai/gpt-4","temperature":0.7}'
 };
 
@@ -2762,6 +3013,7 @@ func main() {
 
 	req, _ := http.NewRequest("POST", url, payload)
 
+	req.Header.Add("X-OpenRouter-Experimental-Metadata", "enabled")
 	req.Header.Add("Authorization", "Bearer <token>")
 	req.Header.Add("Content-Type", "application/json")
 
@@ -2786,6 +3038,7 @@ http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
 request = Net::HTTP::Post.new(url)
+request["X-OpenRouter-Experimental-Metadata"] = 'enabled'
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
 request.body = "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the capital of France?\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}"
@@ -2799,6 +3052,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/chat/completions")
+  .header("X-OpenRouter-Experimental-Metadata", "enabled")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
   .body("{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the capital of France?\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}")
@@ -2830,6 +3084,7 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/chat/completi
   'headers' => [
     'Authorization' => 'Bearer <token>',
     'Content-Type' => 'application/json',
+    'X-OpenRouter-Experimental-Metadata' => 'enabled',
   ],
 ]);
 
@@ -2841,6 +3096,7 @@ using RestSharp;
 
 var client = new RestClient("https://openrouter.ai/api/v1/chat/completions");
 var request = new RestRequest(Method.POST);
+request.AddHeader("X-OpenRouter-Experimental-Metadata", "enabled");
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the capital of France?\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"model\": \"openai/gpt-4\",\n  \"temperature\": 0.7\n}", ParameterType.RequestBody);
@@ -2851,6 +3107,7 @@ IRestResponse response = client.Execute(request);
 import Foundation
 
 let headers = [
+  "X-OpenRouter-Experimental-Metadata": "enabled",
   "Authorization": "Bearer <token>",
   "Content-Type": "application/json"
 ]

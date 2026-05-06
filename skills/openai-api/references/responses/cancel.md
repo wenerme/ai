@@ -6059,11 +6059,11 @@ the `background` parameter set to `true` can be cancelled.
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](/docs/guides/prompt-caching).
 
-  - `prompt_cache_retention: optional "in-memory" or "24h"`
+  - `prompt_cache_retention: optional "in_memory" or "24h"`
 
     The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](/docs/guides/prompt-caching#prompt-cache-retention).
 
-    - `"in-memory"`
+    - `"in_memory"`
 
     - `"24h"`
 
@@ -6265,8 +6265,10 @@ the `background` parameter set to `true` can be cancelled.
 
   - `top_logprobs: optional number`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation: optional "auto" or "disabled"`
 
@@ -6423,7 +6425,7 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/cancel \
     "version": "version"
   },
   "prompt_cache_key": "prompt-cache-key-1234",
-  "prompt_cache_retention": "in-memory",
+  "prompt_cache_retention": "in_memory",
   "reasoning": {
     "effort": "none",
     "generate_summary": "auto",

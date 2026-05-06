@@ -253,7 +253,7 @@ The reports also include an industry benchmark, comparing your cyber security la
 
 ![Application Security report mock data](https://developers.cloudflare.com/_astro/2025-10-17-application-security-report-mock-data.Cz0-WuoX_15MbLt.webp) 
 
-Learn more about the reports by referring to the [Security Reports documentation](https://developers.cloudflare.com/security-center/app-security-reports/).
+Learn more about the reports by referring to the [Security Reports documentation](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/).
 
 Use the feedback survey link at the top of the page to help us improve the reports.
 

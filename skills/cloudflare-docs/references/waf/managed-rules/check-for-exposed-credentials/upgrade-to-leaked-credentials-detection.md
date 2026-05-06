@@ -32,8 +32,8 @@ This upgrade guide applies to customers changing from Exposed Credentials Check 
 
 If you had deployed the Cloudflare Exposed Credentials Check managed ruleset:
 
-* [  New dashboard ](#tab-panel-8726)
-* [ Old dashboard ](#tab-panel-8727)
+* [  New dashboard ](#tab-panel-8578)
+* [ Old dashboard ](#tab-panel-8579)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -52,10 +52,10 @@ While Exposed Credentials Check and leaked credentials detection can work side b
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-8728)
-* [ Old dashboard ](#tab-panel-8729)
-* [ API ](#tab-panel-8730)
-* [ Terraform ](#tab-panel-8731)
+* [  New dashboard ](#tab-panel-8580)
+* [ Old dashboard ](#tab-panel-8581)
+* [ API ](#tab-panel-8582)
+* [ Terraform ](#tab-panel-8583)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -99,7 +99,7 @@ Use the `cloudflare_leaked_credential_check` resource to enable leaked credentia
 
 resource "cloudflare_leaked_credential_check" "zone_lcc_example" {
 
-  zone_id = "<ZONE_ID>"
+  zone_id = var.cloudflare_zone_id
 
   enabled = true
 

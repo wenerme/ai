@@ -62,15 +62,15 @@ func main() {
         },
         Model: openrouter.Pointer("openai/gpt-4"),
         Temperature: optionalnullable.From(openrouter.Pointer[float64](0.7)),
-    })
+    }, components.MetadataLevelEnabled.ToPointer())
     if err != nil {
         log.Fatal(err)
     }
     if res != nil {
-        defer res.Object.Close()
+        defer res.ChatStreamingResponse.Close()
 
-        for res.Object.Next() {
-            event := res.Object.Value()
+        for res.ChatStreamingResponse.Next() {
+            event := res.ChatStreamingResponse.Value()
             log.Print(event)
             // Handle the event
 	      }
@@ -80,11 +80,12 @@ func main() {
 
 ### Parameters
 
-| Parameter | Type                                                                     | Required             | Description                                |
-| --------- | ------------------------------------------------------------------------ | -------------------- | ------------------------------------------ |
-| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy\_check\_mark: | The context to use for the request.        |
-| `request` | [components.ChatRequest](/docs/sdks/go/api-reference/models/chatrequest) | :heavy\_check\_mark: | The request object to use for the request. |
-| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)    | :heavy\_minus\_sign: | The options for this request.              |
+| Parameter                         | Type                                                                           | Required             | Description                                                                                             | Example                                                                                                                                                                                                                                  |
+| --------------------------------- | ------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                             | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy\_check\_mark: | The context to use for the request.                                                                     |                                                                                                                                                                                                                                          |
+| `chatRequest`                     | [components.ChatRequest](/docs/sdks/go/api-reference/models/chatrequest)       | :heavy\_check\_mark: | N/A                                                                                                     | `{"max_tokens": 150,"messages": [{"content": "You are a helpful assistant.","role": "system"}`,<br />`{"content": "What is the capital of France?","role": "user"}`<br />],<br />"model": "openai/gpt-4",<br />"temperature": 0.7<br />} |
+| `xOpenRouterExperimentalMetadata` | [\*components.MetadataLevel](/docs/sdks/go/api-reference/models/metadatalevel) | :heavy\_minus\_sign: | Opt-in to surface routing metadata on the response under `openrouter_metadata`. Defaults to `disabled`. | enabled                                                                                                                                                                                                                                  |
+| `opts`                            | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)          | :heavy\_minus\_sign: | The options for this request.                                                                           |                                                                                                                                                                                                                                          |
 
 ### Response
 

@@ -370,6 +370,10 @@ Get audio transcriptions usage details for the organization.
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity?: number | null`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: number`
 
   - `has_more: boolean`

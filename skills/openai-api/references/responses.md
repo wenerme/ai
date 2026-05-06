@@ -4285,8 +4285,10 @@ as input for the model's response.
 
 - `top_logprobs: optional number`
 
-  An integer between 0 and 20 specifying the number of most likely tokens to
-  return at each token position, each with an associated log probability.
+  An integer between 0 and 20 specifying the maximum number of most likely
+  tokens to return at each token position, each with an associated log
+  probability. In some cases, the number of returned tokens may be fewer than
+  requested.
 
 - `top_p: optional number`
 
@@ -10572,8 +10574,10 @@ as input for the model's response.
 
   - `top_logprobs: optional number`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation: optional "auto" or "disabled"`
 
@@ -17834,8 +17838,10 @@ Retrieves a model response with the given ID.
 
   - `top_logprobs: optional number`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation: optional "auto" or "disabled"`
 
@@ -24396,8 +24402,10 @@ the `background` parameter set to `true` can be cancelled.
 
   - `top_logprobs: optional number`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation: optional "auto" or "disabled"`
 
@@ -40517,8 +40525,10 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
   - `top_logprobs: optional number`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `truncation: optional "auto" or "disabled"`
 
@@ -47035,8 +47045,10 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
     - `top_logprobs: optional number`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: optional "auto" or "disabled"`
 
@@ -54030,8 +54042,10 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
     - `top_logprobs: optional number`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: optional "auto" or "disabled"`
 
@@ -60492,8 +60506,10 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
     - `top_logprobs: optional number`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: optional "auto" or "disabled"`
 
@@ -67207,8 +67223,10 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
     - `top_logprobs: optional number`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: optional "auto" or "disabled"`
 
@@ -73566,8 +73584,10 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
     - `top_logprobs: optional number`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: optional "auto" or "disabled"`
 
@@ -89205,8 +89225,10 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
     - `top_logprobs: optional number`
 
-      An integer between 0 and 20 specifying the number of most likely tokens to
-      return at each token position, each with an associated log probability.
+      An integer between 0 and 20 specifying the maximum number of most likely
+      tokens to return at each token position, each with an associated log
+      probability. In some cases, the number of returned tokens may be fewer than
+      requested.
 
     - `truncation: optional "auto" or "disabled"`
 
@@ -96014,8 +96036,10 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `top_logprobs: optional number`
 
-        An integer between 0 and 20 specifying the number of most likely tokens to
-        return at each token position, each with an associated log probability.
+        An integer between 0 and 20 specifying the maximum number of most likely
+        tokens to return at each token position, each with an associated log
+        probability. In some cases, the number of returned tokens may be fewer than
+        requested.
 
       - `truncation: optional "auto" or "disabled"`
 
@@ -96834,7 +96858,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `top_logprobs: optional array of object { token, logprob }`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token: optional string`
 
@@ -96884,7 +96908,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `top_logprobs: optional array of object { token, logprob }`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token: optional string`
 
@@ -97489,7 +97513,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
     - `top_logprobs: optional array of object { token, logprob }`
 
-      The log probability of the top 20 most likely tokens.
+      The log probabilities of up to 20 of the most likely tokens.
 
       - `token: optional string`
 
@@ -97541,7 +97565,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
     - `top_logprobs: optional array of object { token, logprob }`
 
-      The log probability of the top 20 most likely tokens.
+      The log probabilities of up to 20 of the most likely tokens.
 
       - `token: optional string`
 
@@ -101958,8 +101982,10 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
   - `top_logprobs: optional number`
 
-    An integer between 0 and 20 specifying the number of most likely tokens to
-    return at each token position, each with an associated log probability.
+    An integer between 0 and 20 specifying the maximum number of most likely
+    tokens to return at each token position, each with an associated log
+    probability. In some cases, the number of returned tokens may be fewer than
+    requested.
 
   - `top_p: optional number`
 
@@ -108437,8 +108463,10 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `top_logprobs: optional number`
 
-        An integer between 0 and 20 specifying the number of most likely tokens to
-        return at each token position, each with an associated log probability.
+        An integer between 0 and 20 specifying the maximum number of most likely
+        tokens to return at each token position, each with an associated log
+        probability. In some cases, the number of returned tokens may be fewer than
+        requested.
 
       - `truncation: optional "auto" or "disabled"`
 
@@ -109257,7 +109285,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `top_logprobs: optional array of object { token, logprob }`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token: optional string`
 
@@ -109307,7 +109335,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
 
       - `top_logprobs: optional array of object { token, logprob }`
 
-        The log probability of the top 20 most likely tokens.
+        The log probabilities of up to 20 of the most likely tokens.
 
         - `token: optional string`
 

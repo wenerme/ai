@@ -68,7 +68,7 @@ with the `store` parameter set to `true` will be returned.
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: str`
 
@@ -100,7 +100,7 @@ with the `store` parameter set to `true` will be returned.
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 

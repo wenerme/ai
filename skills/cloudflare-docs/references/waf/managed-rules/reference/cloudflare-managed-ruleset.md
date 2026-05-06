@@ -26,8 +26,8 @@ It is not recommended that you enable all the available rules using overrides, s
 
 ## Deploy the Cloudflare Managed Ruleset
 
-* [  New dashboard ](#tab-panel-8351)
-* [ Old dashboard ](#tab-panel-8352)
+* [  New dashboard ](#tab-panel-8602)
+* [ Old dashboard ](#tab-panel-8603)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -65,8 +65,8 @@ When you enable all the rules in the ruleset, you will affect rules that are dis
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-8353)
-* [ Old dashboard ](#tab-panel-8354)
+* [  New dashboard ](#tab-panel-8604)
+* [ Old dashboard ](#tab-panel-8605)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -105,8 +105,8 @@ Setting any of these configurations for specific tags affects all current and fu
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-8357)
-* [ Old dashboard ](#tab-panel-8358)
+* [  New dashboard ](#tab-panel-8608)
+* [ Old dashboard ](#tab-panel-8609)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -149,8 +149,8 @@ You can configure (or override) the following Cloudflare Managed Ruleset setting
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-8355)
-* [ Old dashboard ](#tab-panel-8356)
+* [  New dashboard ](#tab-panel-8606)
+* [ Old dashboard ](#tab-panel-8607)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -300,9 +300,16 @@ For more information on working with managed rulesets via API, refer to [Work wi
 
 The following example deploys the Cloudflare Managed Ruleset for a zone and overrides the action and status of a specific rule.
 
-Note
+* [ Terraform (v5) ](#tab-panel-8600)
+* [ Terraform (v4) ](#tab-panel-8601)
 
-Terraform code snippets below refer to the v4 SDK only.
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+
+* `Zone WAF Write`
+
+Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```
 
@@ -310,7 +317,63 @@ Terraform code snippets below refer to the v4 SDK only.
 
 resource "cloudflare_ruleset" "zone_level_managed_waf" {
 
-  zone_id     = "<ZONE_ID>"
+  zone_id     = var.cloudflare_zone_id
+
+  name        = "Managed WAF entry point ruleset"
+
+  description = "Zone-level WAF Managed Rules config"
+
+  kind        = "zone"
+
+  phase       = "http_request_firewall_managed"
+
+
+  # Execute Cloudflare Managed Ruleset
+
+  rules = [{
+
+    ref         = "execute_cloudflare_managed_ruleset"
+
+    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
+
+    expression  = "true"
+
+    action      = "execute"
+
+    action_parameters = {
+
+      id = "efb7b8c949ac4650a09736fc376e9aee"
+
+      overrides = {
+
+        rules = [{
+
+          id      = "5de7edfa648c4d6891dc3e7f84534ffa"
+
+          action  = "log"
+
+          enabled = true
+
+        }]
+
+      }
+
+    }
+
+  }]
+
+}
+
+
+```
+
+```
+
+# Configure a ruleset at the zone level for the "http_request_firewall_managed" phase
+
+resource "cloudflare_ruleset" "zone_level_managed_waf" {
+
+  zone_id     = var.cloudflare_zone_id
 
   name        = "Managed WAF entry point ruleset"
 

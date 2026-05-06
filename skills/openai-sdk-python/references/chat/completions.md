@@ -1181,8 +1181,10 @@ chunk objects if the request is streamed.
 
 - `top_logprobs: Optional[int]`
 
-  An integer between 0 and 20 specifying the number of most likely tokens to
-  return at each token position, each with an associated log probability.
+  An integer between 0 and 20 specifying the maximum number of most likely
+  tokens to return at each token position, each with an associated log
+  probability. In some cases, the number of returned tokens may be fewer than
+  requested.
   `logprobs` must be set to `true` if this parameter is used.
 
 - `top_p: Optional[float]`
@@ -1318,7 +1320,7 @@ chunk objects if the request is streamed.
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: str`
 
@@ -1350,7 +1352,7 @@ chunk objects if the request is streamed.
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 
@@ -2257,7 +2259,7 @@ with the `store` parameter set to `true` will be returned.
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: str`
 
@@ -2289,7 +2291,7 @@ with the `store` parameter set to `true` will be returned.
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 
@@ -2786,7 +2788,7 @@ with the `store` parameter set to `true` will be returned.
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: str`
 
@@ -2818,7 +2820,7 @@ with the `store` parameter set to `true` will be returned.
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 
@@ -3312,7 +3314,7 @@ the only supported modification is to update the `metadata` field.
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: str`
 
@@ -3344,7 +3346,7 @@ the only supported modification is to update the `metadata` field.
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 
@@ -3900,7 +3902,7 @@ print(delete_response)
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: str`
 
@@ -3932,7 +3934,7 @@ print(delete_response)
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `message: ChatCompletionMessage`
 
@@ -4557,7 +4559,7 @@ print(delete_response)
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
           - `token: str`
 
@@ -4589,7 +4591,7 @@ print(delete_response)
 
         - `top_logprobs: List[TopLogprob]`
 
-          List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+          List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
   - `created: int`
 
@@ -5919,7 +5921,7 @@ print(delete_response)
 
   - `top_logprobs: List[TopLogprob]`
 
-    List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
+    List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
     - `token: str`
 

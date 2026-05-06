@@ -3074,6 +3074,10 @@ Get audio speeches usage details for the organization.
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -3503,6 +3507,10 @@ Get audio transcriptions usage details for the organization.
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -3913,6 +3921,10 @@ Get code interpreter sessions usage details for the organization.
         - `project_id: Optional[str]`
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
     - `start_time: int`
 
@@ -4351,6 +4363,10 @@ Get completions usage details for the organization.
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -4779,6 +4795,10 @@ Get embeddings usage details for the organization.
         - `project_id: Optional[str]`
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
     - `start_time: int`
 
@@ -5237,6 +5257,10 @@ Get images usage details for the organization.
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -5666,6 +5690,10 @@ Get moderations usage details for the organization.
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -6076,6 +6104,10 @@ Get vector stores usage details for the organization.
         - `project_id: Optional[str]`
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
     - `start_time: int`
 
@@ -6488,6 +6520,10 @@ Get costs details for the organization.
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -6851,6 +6887,10 @@ print(response.data)
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -7162,6 +7202,10 @@ print(response.data)
         - `project_id: Optional[str]`
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
     - `start_time: int`
 
@@ -7475,6 +7519,10 @@ print(response.data)
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -7786,6 +7834,10 @@ print(response.data)
         - `project_id: Optional[str]`
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
     - `start_time: int`
 
@@ -8099,6 +8151,10 @@ print(response.data)
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -8410,6 +8466,10 @@ print(response.data)
         - `project_id: Optional[str]`
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
     - `start_time: int`
 
@@ -8723,6 +8783,10 @@ print(response.data)
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -9035,6 +9099,10 @@ print(response.data)
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
     - `start_time: int`
 
   - `has_more: bool`
@@ -9346,6 +9414,10 @@ print(response.data)
         - `project_id: Optional[str]`
 
           When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+        - `quantity: Optional[float]`
+
+          When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
     - `start_time: int`
 
