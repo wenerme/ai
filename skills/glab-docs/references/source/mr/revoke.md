@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Revoke approval on a merge request.
 
+## Synopsis
+
+Defaults to the currently checked-out branch.
+
 ```plaintext
 glab mr revoke [<id> | <branch>] [flags]
 ```

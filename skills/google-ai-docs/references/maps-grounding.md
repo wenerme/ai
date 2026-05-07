@@ -1,4 +1,4 @@
-# Grounding with Google Maps connects the generative capabilities of Gemini with
+Grounding with Google Maps connects the generative capabilities of Gemini with
 the rich, factual, and up-to-date data of Google Maps. This feature enables
 developers to easily incorporate location-aware functionality into their
 applications. When a user query has a context related to Maps data, the Gemini
@@ -706,21 +706,8 @@ Grounding with Google Maps has additional restrictions for certain content and
 activities to maintain a safe and reliable platform. In addition to the usage
 restrictions in the [Terms](https://ai.google.dev/gemini-api/terms#grounding-with-google-maps):
 
-- You will not use Grounding with Google Maps for high risk activities including emergency response services.
-- You will not distribute or market your application that offers Grounding with
-  Google Maps in a Prohibited Territory. The current Prohibited Territories are:
-
-  - China
-  - Crimea
-  - Cuba
-  - Donetsk People's Republic
-  - Iran
-  - Luhansk People's Republic
-  - North Korea
-  - Syria
-  - Vietnam
-
-  This list may be updated from time to time.
+- You won't use Grounding with Google Maps for high risk activities including emergency response services.
+- You won't distribute or market your application that offers Grounding with Google Maps in a Prohibited Territory. For more information, see [Google Maps Platform Prohibited Territories](https://cloud.google.com/maps-platform/terms/maps-prohibited-territories). The list of Prohibited Territories may be updated from time to time.
 
 ## Best practices
 

@@ -1,11 +1,5 @@
 # Codex Pricing
 
-Teams can now get started with Codex with no fixed monthly costs. For a
-  limited time, eligible ChatGPT Business workspaces can earn up to $500 in
-  credits when their team members start using Codex. [View
-  terms](https://help.openai.com/en/articles/20001150-codex-for-business-promotion-earn-up-to-500-in-credits)
-  or [get started](https://chatgpt.com/codex/team/start).
-
 <h2 class="sr-only">Pricing options</h2>
 
 <ContentSwitcher

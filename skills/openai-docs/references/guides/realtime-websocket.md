@@ -8,7 +8,7 @@ In a server-to-server integration with Realtime, your backend system will connec
 
 ## Connect via WebSocket
 
-Below are several examples of connecting via WebSocket to the Realtime API. In addition to using the WebSocket URL below, you will also need to pass an authentication header using your OpenAI API key.
+Below are several examples of connecting via WebSocket to the Realtime API. In addition to using the WebSocket URL below, you will also need to pass an authentication header using your OpenAI API key. If your application assigns [safety identifiers](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers), pass the stable, privacy-preserving identifier for the end user in the `OpenAI-Safety-Identifier` header.
 
 It is possible to use WebSocket in browsers with an ephemeral API token as shown in the [WebRTC connection guide](https://developers.openai.com/api/docs/guides/realtime-webrtc), but if you are connecting from a client like a browser or mobile app, WebRTC will be a more robust solution in most cases.
 
@@ -25,6 +25,7 @@ const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime";
 const ws = new WebSocket(url, {
   headers: {
     Authorization: "Bearer " + process.env.OPENAI_API_KEY,
+    "OpenAI-Safety-Identifier": "hashed-user-id",
   },
 });
 
@@ -53,7 +54,10 @@ import websocket
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 url = "wss://api.openai.com/v1/realtime?model=gpt-realtime"
-headers = ["Authorization: Bearer " + OPENAI_API_KEY]
+headers = [
+    "Authorization: Bearer " + OPENAI_API_KEY,
+    "OpenAI-Safety-Identifier: hashed-user-id",
+]
 
 
 def on_open(ws):
@@ -126,6 +130,7 @@ const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime";
 const ws = new WebSocket(url, {
   headers: {
     Authorization: "Bearer " + process.env.OPENAI_API_KEY,
+    "OpenAI-Safety-Identifier": "hashed-user-id",
   },
 });
 

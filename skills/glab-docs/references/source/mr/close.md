@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Close a merge request.
 
+## Synopsis
+
+Defaults to the currently checked-out branch. You can close
+multiple merge requests by passing multiple IDs or branch names.
+
 ```plaintext
 glab mr close [<id> | <branch>] [flags]
 ```

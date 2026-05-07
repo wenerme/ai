@@ -14,6 +14,22 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/security-center.xml) 
 
+## 2026-05-07
+
+  
+**CSV export and adjustable page density for RFIs**   
+
+You can now export your Requests for Information (RFI) history to a **CSV document** and customize your dashboard view by choosing how many RFI records to load per page.
+
+#### Why this matters
+
+These quality-of-life updates focus on data portability and dashboard performance, allowing power users to manage high volumes of requests more efficiently:
+
+* The new **CSV export** allows you to move RFI data into external tools for custom reporting, internal auditing, or cross-referencing with other security projects without manual data entry
+* With **adjustable page density**, you can now choose to load more records at once (10, 25 or 50) to scan through history faster
+
+Cloudforce One subscribers can find these new options in [Cloudflare Dashboard > Application Security > Threat Intelligence > Requests for Information ↗](https://dash.cloudflare.com/?to=/:account/application-security/threat-intelligence/requests).
+
 ## 2026-05-06
 
   

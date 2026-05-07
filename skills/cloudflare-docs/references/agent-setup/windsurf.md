@@ -49,7 +49,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Add bot protection and rate limiting to my login and checkout endpoints.  
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
 ```
 
 ## Cloudflare platform access

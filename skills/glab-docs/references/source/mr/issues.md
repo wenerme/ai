@@ -5,7 +5,12 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Get issues related to a particular merge request.
+Get issues that close when a merge request is merged.
+
+## Synopsis
+
+Lists issues linked to the merge request through closing patterns
+in the description or commits.
 
 ```plaintext
 glab mr issues [<id> | <branch>] [flags]

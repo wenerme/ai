@@ -46,8 +46,6 @@ See ["Configure backup schedules"](/cloud/manage/backups/configurable-backups) f
 
 ## Bring Your Own Bucket (BYOB) Backups {#byob}
 
-<EnterprisePlanFeatureBadge/>
-
 ClickHouse Cloud allows exporting backups to your own cloud service provider (CSP) account storage (AWS S3, Google Cloud Storage, or Azure Blob Storage).
 If you configure backups to your own bucket, ClickHouse Cloud will still take daily backups to its own bucket.
 This is to ensure that we have at least one copy of the data to restore from in case the backups in your bucket get corrupted.

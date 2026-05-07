@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Unsubscribe from a merge request.
 
+## Synopsis
+
+You no longer receive notifications after unsubscribing.
+
 ```plaintext
 glab mr unsubscribe [<id> | <branch>] [flags]
 ```

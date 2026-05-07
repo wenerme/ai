@@ -110,25 +110,31 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
   - `"b64_json"`
 
-- `size: optional "auto" or "1024x1024" or "1536x1024" or 5 more`
+- `size: optional string or "auto" or "1024x1024" or "1536x1024" or 5 more`
 
-  The size of the generated images. Must be one of `1024x1024`, `1536x1024` (landscape), `1024x1536` (portrait), or `auto` (default value) for the GPT image models, one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`, and one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3`.
+  The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
-  - `"auto"`
+  - `string`
 
-  - `"1024x1024"`
+  - `"auto" or "1024x1024" or "1536x1024" or 5 more`
 
-  - `"1536x1024"`
+    The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
-  - `"1024x1536"`
+    - `"auto"`
 
-  - `"256x256"`
+    - `"1024x1024"`
 
-  - `"512x512"`
+    - `"1536x1024"`
 
-  - `"1792x1024"`
+    - `"1024x1536"`
 
-  - `"1024x1792"`
+    - `"256x256"`
+
+    - `"512x512"`
+
+    - `"1792x1024"`
+
+    - `"1024x1792"`
 
 - `stream: optional boolean`
 
@@ -268,7 +274,6 @@ curl https://api.openai.com/v1/images/generations \
           "partial_images": 1,
           "quality": "medium",
           "response_format": "url",
-          "size": "1024x1024",
           "style": "vivid",
           "user": "user-1234"
         }'

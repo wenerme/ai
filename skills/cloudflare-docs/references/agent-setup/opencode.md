@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.  
+Add mTLS authentication and schema validation to protect my API endpoints.  
 ```
 
 ## Cloudflare platform access

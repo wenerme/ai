@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Subscribe to a merge request.
 
+## Synopsis
+
+You receive notifications for updates when subscribed.
+
 ```plaintext
 glab mr subscribe [<id> | <branch>] [flags]
 ```

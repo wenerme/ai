@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Approve merge requests.
 
+## Synopsis
+
+Defaults to the currently checked-out branch.
+
 ```plaintext
 glab mr approve [<id | branch>] [flags]
 ```

@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 View changes in a merge request.
 
+## Synopsis
+
+Defaults to the currently checked-out branch. Use `--color=never`
+to disable color output.
+
 ```plaintext
 glab mr diff [<id> | <branch>] [flags]
 ```

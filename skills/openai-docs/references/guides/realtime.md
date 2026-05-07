@@ -77,6 +77,12 @@ There are three primary supported interfaces for the Realtime API:
 
 Depending on how you'd like to connect to a Realtime model, check out one of the connection guides above to get started. You'll learn how to initialize a Realtime session, and how to interact with a Realtime model using client and server events.
 
+## Safety identifiers
+
+If your application identifies individual end users, include a [safety identifier](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) with Realtime API requests. Safety identifiers help OpenAI monitor and detect abuse while allowing enforcement to target an individual user rather than your entire organization. Use a stable, privacy-preserving value, such as a hashed internal user ID.
+
+For Realtime API requests, send the identifier in the `OpenAI-Safety-Identifier` header. When using ephemeral tokens, set the header on the server-side request that creates the client secret so the identifier is bound to that session. When connecting from a trusted backend with WebSocket or the unified WebRTC interface, set the header on the connection request.
+
 ## API Usage
 
 Once connected to a realtime model using one of the methods above, learn how to interact with the model in these usage guides.

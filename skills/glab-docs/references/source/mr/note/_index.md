@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage comments and discussions on a merge request.
 
+## Synopsis
+
+Creates a comment by default. Use `--resolve` or
+`--unresolve` to manage existing discussion threads.
+
 ```plaintext
 glab mr note [<id> | <branch>] [flags]
 ```

@@ -7,7 +7,7 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-<ExperimentalBadge/>
+<BetaBadge/>
 
 > **note**: Integration with the Lakekeeper Catalog works with Iceberg tables only.
 This integration supports both AWS S3 and other cloud storage providers.

@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 List eligible approvers for merge requests in any state.
 
+## Synopsis
+
+Lists users and groups eligible to approve, based on the approval
+rules configured for the project.
+
 ```plaintext
 glab mr approvers [<id> | <branch>] [flags]
 ```

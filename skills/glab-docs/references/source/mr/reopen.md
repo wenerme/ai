@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Reopen a merge request.
 
+## Synopsis
+
+You can reopen multiple merge requests by passing multiple IDs
+or branch names.
+
 ```plaintext
 glab mr reopen [<id>... | <branch>...] [flags]
 ```
