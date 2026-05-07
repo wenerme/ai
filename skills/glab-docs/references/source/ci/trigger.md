@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Trigger a manual CI/CD job.
 
+## Synopsis
+
+Without a job argument, you can select one interactively.
+You can trigger only jobs with manual status.
+
 ```plaintext
 glab ci trigger <job-id> [flags]
 ```

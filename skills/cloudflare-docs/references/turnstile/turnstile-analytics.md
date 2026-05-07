@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Turnstile Analytics
 
-Turnstile Analytics provides you with a view of the top widget statistics across different metadata dimensions to understand where your traffic is coming from, which environments have the highest challenge activity, and whether certain sources are disproportionately failing or bypassing challenges, allowing you to fine-tune your security settings, apply more granular mitigations, and proactively respond to evolving threats.
+Turnstile Analytics shows widget statistics across traffic dimensions like hostname, country, browser, and IP address. Use these metrics to identify where challenge activity is highest and whether specific sources are failing or bypassing challenges.
 
 ## Available statistics
 

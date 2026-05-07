@@ -9106,10 +9106,10 @@
   "codex-docs/app/computer-use.md": {
     "url": "https://developers.openai.com/codex/app/computer-use.md",
     "skill": "codex-docs",
-    "etag": "W/\"bc1f10c8c0c730a1799bd571eff00e1c\"",
-    "lastModified": "Sun, 19 Apr 2026 07:38:19 GMT",
-    "size": 5896,
-    "updatedAt": "2026-04-19T10:24:59.514Z"
+    "etag": "W/\"c658409cc45c08e1c6fd08baf837c708\"",
+    "lastModified": "Wed, 06 May 2026 20:02:08 GMT",
+    "size": 5892,
+    "updatedAt": "2026-05-07T00:35:49.816Z"
   },
   "codex-docs/app/features.md": {
     "url": "https://developers.openai.com/codex/app/features.md",
@@ -9738,10 +9738,10 @@
   "codex-docs/use-cases/complete-tasks-from-messages.md": {
     "url": "https://developers.openai.com/codex/use-cases/complete-tasks-from-messages.md",
     "skill": "codex-docs",
-    "etag": "W/\"23e57740b11e36d96fd3defc7e59b232\"",
-    "lastModified": "Fri, 17 Apr 2026 00:29:35 GMT",
-    "size": 2908,
-    "updatedAt": "2026-04-17T00:29:35.196Z"
+    "etag": "W/\"c39950a12c59afe8ff3f426cea7d0d08\"",
+    "lastModified": "Thu, 07 May 2026 00:36:13 GMT",
+    "size": 2900,
+    "updatedAt": "2026-05-07T00:36:13.669Z"
   },
   "codex-docs/use-cases/datasets-and-reports.md": {
     "url": "https://developers.openai.com/codex/use-cases/datasets-and-reports.md",
@@ -9914,10 +9914,10 @@
   "codex-docs/use-cases/qa-your-app-with-computer-use.md": {
     "url": "https://developers.openai.com/codex/use-cases/qa-your-app-with-computer-use.md",
     "skill": "codex-docs",
-    "etag": "W/\"0f0e795d2d26c6354f662bc5668ddbfe\"",
-    "lastModified": "Fri, 17 Apr 2026 00:29:42 GMT",
-    "size": 2922,
-    "updatedAt": "2026-04-17T00:29:42.018Z"
+    "etag": "W/\"f2fc38946e617f9a370d3c6d65e400ae\"",
+    "lastModified": "Thu, 07 May 2026 00:36:21 GMT",
+    "size": 2910,
+    "updatedAt": "2026-05-07T00:36:21.842Z"
   },
   "codex-docs/use-cases/refactor-your-codebase.md": {
     "url": "https://developers.openai.com/codex/use-cases/refactor-your-codebase.md",
@@ -9946,10 +9946,10 @@
   "codex-docs/use-cases/use-your-computer-with-codex.md": {
     "url": "https://developers.openai.com/codex/use-cases/use-your-computer-with-codex.md",
     "skill": "codex-docs",
-    "etag": "W/\"5881731ea7aa92d360859462ccf49adb\"",
-    "lastModified": "Fri, 17 Apr 2026 00:29:43 GMT",
-    "size": 3480,
-    "updatedAt": "2026-04-17T00:29:43.557Z"
+    "etag": "W/\"0b6cbcc59c59ad941bafd35247c5ece7\"",
+    "lastModified": "Thu, 07 May 2026 00:36:23 GMT",
+    "size": 3460,
+    "updatedAt": "2026-05-07T00:36:23.656Z"
   },
   "codex-docs/windows.md": {
     "url": "https://developers.openai.com/codex/windows.md",

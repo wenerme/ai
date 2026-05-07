@@ -62,7 +62,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
         contents="Please summarize this transcript",
         config=types.GenerateContentConfig(cached_content=cache.name),
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L25-L46
+    print(response.text)
 
 ### Node.js
 
@@ -95,7 +95,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       contents: "Please summarize this transcript",
       config: { cachedContent: cache.name },
     });
-    console.log("Response text:", response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L33-L62
+    console.log("Response text:", response.text);
 
 ### Go
 
@@ -149,7 +149,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L16-L66
+    printResponse(response)
 
 ### Shell
 
@@ -198,7 +198,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
             },
           ],
           "cachedContent": "'$CACHE_NAME'"
-        }'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/cache.sh#L10-L59
+        }'
 
 ### From name
 
@@ -227,7 +227,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
         contents="Find a lighthearted moment from this transcript",
         config=types.GenerateContentConfig(cached_content=cache.name),
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L52-L75
+    print(response.text)
 
 ### Node.js
 
@@ -262,7 +262,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       contents: "Find a lighthearted moment from this transcript",
       config: { cachedContent: retrievedCache.name },
     });
-    console.log("Response text:", response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L71-L102
+    console.log("Response text:", response.text);
 
 ### Go
 
@@ -321,7 +321,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     	log.Fatal(err)
     }
     fmt.Println("Response from cache (create from name):")
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L76-L131
+    printResponse(response)
 
 ### From chat
 
@@ -366,7 +366,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     response = chat.send_message(
         message="I didn't understand that last part, could you explain it in simpler language?"
     )
-    print("\n\nmodel:  ", response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L81-L120
+    print("\n\nmodel:  ", response.text)
 
 ### Node.js
 
@@ -420,7 +420,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       message:
         "I didn't understand that last part, could you explain it in simpler language?",
     });
-    console.log("\n\nmodel:", response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L111-L161
+    console.log("\n\nmodel:", response.text);
 
 ### Go
 
@@ -509,7 +509,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println("\n\nmodel: ", resp.Text())https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L140-L225
+    fmt.Println("\n\nmodel: ", resp.Text())
 
 ### Response body
 
@@ -594,7 +594,7 @@ The request body must be empty.
             "system_instruction": "You are an expert analyzing transcripts.",
         },
     )
-    print(client.caches.get(name=cache.name))https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L144-L157
+    print(client.caches.get(name=cache.name))
 
 ### Node.js
 
@@ -621,7 +621,7 @@ The request body must be empty.
       },
     });
     const retrievedCache = await ai.caches.get({ name: cache.name });
-    console.log("Retrieved Cache:", retrievedCache);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L199-L222
+    console.log("Retrieved Cache:", retrievedCache);
 
 ### Go
 
@@ -667,11 +667,11 @@ The request body must be empty.
     	log.Fatal(err)
     }
     fmt.Println("Retrieved cache:")
-    fmt.Println(cache)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L285-L327
+    fmt.Println(cache)
 
 ### Shell
 
-    curl "https://generativelanguage.googleapis.com/v1beta/$CACHE_NAME?key=$GEMINI_API_KEY"https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/cache.sh#L69-L70
+    curl "https://generativelanguage.googleapis.com/v1beta/$CACHE_NAME?key=$GEMINI_API_KEY"
 
 ### Response body
 
@@ -755,7 +755,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     client.caches.update(
         name=cache.name,
         config=types.UpdateCachedContentConfig(expire_time=expire_time),
-    )https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L184-L220
+    )
 
 ### Node.js
 
@@ -798,7 +798,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       name: cache.name,
       config: { expireTime: expireTime },
     });
-    console.log("After update (expire_time):", cache);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L272-L311
+    console.log("After update (expire_time):", cache);
 
 ### Go
 
@@ -843,13 +843,13 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println("Cache deleted:", cache.Name)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L237-L278
+    fmt.Println("Cache deleted:", cache.Name)
 
 ### Shell
 
     curl -X PATCH "https://generativelanguage.googleapis.com/v1beta/$CACHE_NAME?key=$GEMINI_API_KEY" \
      -H 'Content-Type: application/json' \
-     -d '{"ttl": "600s"}'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/cache.sh#L74-L77
+     -d '{"ttl": "600s"}'
 
 ### Response body
 
@@ -896,7 +896,7 @@ The request body must be empty.
             "system_instruction": "You are an expert analyzing transcripts.",
         },
     )
-    client.caches.delete(name=cache.name)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L126-L139
+    client.caches.delete(name=cache.name)
 
 ### Node.js
 
@@ -923,7 +923,7 @@ The request body must be empty.
       },
     });
     await ai.caches.delete({ name: cache.name });
-    console.log("Cache deleted:", cache.name);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L170-L193
+    console.log("Cache deleted:", cache.name);
 
 ### Go
 
@@ -968,11 +968,11 @@ The request body must be empty.
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println("Cache deleted:", cache.Name)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L237-L278
+    fmt.Println("Cache deleted:", cache.Name)
 
 ### Shell
 
-    curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/$CACHE_NAME?key=$GEMINI_API_KEY"https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/cache.sh#L81-L82
+    curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/$CACHE_NAME?key=$GEMINI_API_KEY"
 
 ### Response body
 

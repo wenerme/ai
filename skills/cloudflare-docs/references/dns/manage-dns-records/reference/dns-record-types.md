@@ -37,15 +37,19 @@ These records include the following fields:
    * DNS labels can contain any octet (byte value). However, for compatibility with hostnames and TLS certificates, it is recommended to use only letters, digits, and hyphens (LDH rule). This is not a DNS protocol requirement, meaning DNS will work even if you do not follow these conventions.  
    * There is no requirement to start with a letter or end with a letter or digit.  
    * Underscores are valid in DNS and commonly used for service records.
-* **IPv4/IPv6 address**: Your origin server address (cannot be a [Cloudflare IP ↗](https://www.cloudflare.com/ips))  
-Note  
-Cloudflare uses the [canonical notation ↗](https://www.rfc-editor.org/rfc/rfc5952.html#section-4.2) to store DNS records. This means that an AAAA record with content `fe80::0:0:1` is stored and returned as `fe80::1`, for example.  
+* **IPv4/IPv6 address**: Your origin server address (cannot be a [Cloudflare IP ↗](https://www.cloudflare.com/ips))
+
+Note
+
+Cloudflare uses the [canonical notation ↗](https://www.rfc-editor.org/rfc/rfc5952.html#section-4.2) to store DNS records. This means that an AAAA record with content `fe80::0:0:1` is stored and returned as `fe80::1`, for example.
+
 Alternative notations of IPv4 addresses (`1.1` for `1.0.0.1`, for example) are not supported for A records.
+
 * **TTL**: Time to live, which controls how long DNS resolvers should cache a response before revalidating it.  
    * If the **Proxy Status** is **Proxied**, this value defaults to **Auto**, which is 300 seconds.  
    * If the **Proxy Status** is **DNS Only**, you can customize the value.
 * **Proxy status**: For more details, refer to [Proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/).
-* **Private network routing**: Some Enterprise customers also have access to [private network routing](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-origins/private-network-routing/). For `A` and `AAAA` records, this feature allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network.
+* **Private network routing**: Some Enterprise customers also have access to [private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/). For `A` and `AAAA` records, this feature allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network.
 
 #### Example API call
 
@@ -154,11 +158,9 @@ These records include the following fields:
    * DNS labels can contain any octet (byte value). However, for compatibility with hostnames and TLS certificates, it is recommended to use only letters, digits, and hyphens (LDH rule). This is not a DNS protocol requirement, meaning DNS will work even if you do not follow these conventions.  
    * There is no requirement to start with a letter or end with a letter or digit.  
    * Underscores are valid in DNS and commonly used for service records.
-* **Target**: The hostname where traffic should be directed (`example.com`).
-* **TTL**: Time to live, which controls how long DNS resolvers should cache a response before revalidating it.  
-   * If the **Proxy Status** is **Proxied**, this value defaults to **Auto**, which is 300 seconds.  
-   * If the **Proxy Status** is **DNS Only**, you can customize the value.
-* **Proxy status**: For more details, refer to [Proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/).
+\- **Target**: The hostname where traffic should be directed (`example.com`). - **TTL**: Time to live, which controls how long DNS resolvers should cache a response before revalidating it.
+
+* If the **Proxy Status** is **Proxied**, this value defaults to **Auto**, which is 300 seconds. - If the **Proxy Status** is **DNS Only**, you can customize the value. - **Proxy status**: For more details, refer to [Proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/).
 
 #### Proxied CNAME records
 

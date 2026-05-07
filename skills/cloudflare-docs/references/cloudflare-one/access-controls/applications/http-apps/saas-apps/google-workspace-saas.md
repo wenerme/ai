@@ -32,8 +32,8 @@ The integration of Access as a single sign-on provider for your Google Workspace
 ## 1\. Create an application in Cloudflare One
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application**.
-3. Select **SaaS**.
+2. Select **Create new application**.
+3. Select **SaaS application**.
 4. Fill in the following information:  
    * **Application**: _Google_.  
    * **Entity ID**: Use the value provided to you by Google when [configuring your SAML SSO provider ↗](https://saml-doc.okta.com/SAML%5FDocs/How-to-Enable-SAML-2.0-in-Google-Apps.html).  

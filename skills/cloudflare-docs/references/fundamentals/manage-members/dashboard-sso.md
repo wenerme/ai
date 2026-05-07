@@ -46,8 +46,8 @@ Warning
 
 You must create an [Account API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the role `SSO Connector Edit` and store it securely. This acts as a backup plan, allowing you to disable SSO via the API if you are accidentally locked out, such as due to changes in your IdP configuration later.
 
-* [ Dashboard ](#tab-panel-5815)
-* [ API ](#tab-panel-5816)
+* [ Dashboard ](#tab-panel-6226)
+* [ API ](#tab-panel-6227)
 
 1. Once you have configured an IdP in Cloudflare One, go to the **Members** page to manage SSO connectors.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -115,8 +115,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors"
 
 ## 3\. Verify domain ownership
 
-* [ Dashboard ](#tab-panel-5817)
-* [ API ](#tab-panel-5818)
+* [ Dashboard ](#tab-panel-6228)
+* [ API ](#tab-panel-6229)
 
 If you are unable to change your DNS records right away, the option to verify later is available. The verification process can be manually triggered from the actions menu for that connector in the list.
 
@@ -175,8 +175,8 @@ Once the verification process has completed and successfully verified domain own
 
 Domains that are associated with an already enabled connector belonging to a different account may not be enabled on a new account until disabled on the old account.
 
-* [ Dashboard ](#tab-panel-5819)
-* [ API ](#tab-panel-5820)
+* [ Dashboard ](#tab-panel-6230)
+* [ API ](#tab-panel-6231)
 
 Enable the connector by selecting **Enable** in the Actions menu for that connector in the list.
 
@@ -254,14 +254,14 @@ Configure an identity provider (IdP)-initiated single sign-on (SSO) session usin
 9. Select **Next** \> **Finish** to save the integration.
 10. Test the integration by going to your Okta User Dashboard, locating the new app tile, and selecting it to verify the SSO flow.
 
-**(Optional) Enforce single IdP login with Instant Auth**
+**(Optional) Enforce single IdP login with instant authentication**
 
 If you use only one IdP (for example, Okta) for Cloudflare SSO and want users to skip the identity provider selection prompt:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications** \> select your **SSO App**.
-2. Go to **Login methods**.
+2. Go to **Authentication**.
 3. Disable **Accept all available identity providers** and ensure only Okta is selected as the login method.
-4. Enable **Instant Auth** to allow users to skip identity provider selection.
+4. Enable **Apply instant authentication** to allow users to skip identity provider selection.
 
 ## Bypass dashboard SSO
 
@@ -338,8 +338,8 @@ Warning
 
 Before disabling SSO, make sure you have access to your Cloudflare user email. This will allow you to reset your password in case you get logged out of the Cloudflare dashboard.
 
-* [ Dashboard ](#tab-panel-5811)
-* [ API ](#tab-panel-5812)
+* [ Dashboard ](#tab-panel-6222)
+* [ API ](#tab-panel-6223)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -436,8 +436,8 @@ Users can now log in using their Cloudflare account email and password. If a use
 
 Cloudflare does not allow you to change your team name while a SSO connector is created. To change your team name, you must disable and delete your SSO connector(s).
 
-* [ Dashboard ](#tab-panel-5813)
-* [ API ](#tab-panel-5814)
+* [ Dashboard ](#tab-panel-6224)
+* [ API ](#tab-panel-6225)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)

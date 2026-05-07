@@ -54,9 +54,9 @@ To skip the Terms and Conditions screens that are usually presented to users, se
 
 ```
 
-## Turn on Instant Auth
+## Turn on instant authentication
 
-If you are only using one identity provider for device enrollment, turn on **Instant Auth** in your [device enrollment permissions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions). This allow users to skip the Cloudflare Access login page and go directly to your SSO login event.
+If you are only using one identity provider for device enrollment, turn on **Apply instant authentication** in your [device enrollment permissions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions). This allow users to skip the Cloudflare Access login page and go directly to your SSO login event.
 
 ## Allow browser to launch the Cloudflare One Client
 
@@ -70,8 +70,8 @@ _Note: Labels in this image may reflect a previous product name._
 
 Chromium-based browsers such as Google Chrome and Microsoft Edge have a policy setting called [AutoLaunchProtocolsFromOrigins ↗](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#autolaunchprotocolsfromorigins). This setting takes in two parameters: a protocol for the browser to launch and the origins that are allowed to launch it. For the browser to launch the Cloudflare One Client, you need to set the protocol to `com.cloudflare.warp` and the origin to your Cloudflare Zero Trust team domain (`https://<your-team-name>.cloudflareaccess.com`).
 
-* [ Windows ](#tab-panel-4974)
-* [ macOS ](#tab-panel-4975)
+* [ Windows ](#tab-panel-5155)
+* [ macOS ](#tab-panel-5156)
 
 On Windows, you can configure `AutoLaunchProtocolsFromOrigins` by adding a new registry key.
 

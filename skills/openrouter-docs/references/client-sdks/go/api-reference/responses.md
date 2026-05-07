@@ -46,15 +46,15 @@ func main() {
             "Tell me a joke",
         )),
         Model: openrouter.Pointer("openai/gpt-4o"),
-    })
+    }, components.MetadataLevelEnabled.ToPointer())
     if err != nil {
         log.Fatal(err)
     }
     if res != nil {
-        defer res.Object.Close()
+        defer res.ResponsesStreamingResponse.Close()
 
-        for res.Object.Next() {
-            event := res.Object.Value()
+        for res.ResponsesStreamingResponse.Next() {
+            event := res.ResponsesStreamingResponse.Value()
             log.Print(event)
             // Handle the event
 	      }
@@ -64,11 +64,12 @@ func main() {
 
 ### Parameters
 
-| Parameter | Type                                                                               | Required             | Description                                |
-| --------- | ---------------------------------------------------------------------------------- | -------------------- | ------------------------------------------ |
-| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy\_check\_mark: | The context to use for the request.        |
-| `request` | [components.ResponsesRequest](/docs/sdks/go/api-reference/models/responsesrequest) | :heavy\_check\_mark: | The request object to use for the request. |
-| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)              | :heavy\_minus\_sign: | The options for this request.              |
+| Parameter                         | Type                                                                               | Required             | Description                                                                                             | Example                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| --------------------------------- | ---------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                             | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy\_check\_mark: | The context to use for the request.                                                                     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `responsesRequest`                | [components.ResponsesRequest](/docs/sdks/go/api-reference/models/responsesrequest) | :heavy\_check\_mark: | N/A                                                                                                     | `{"input": [{"content": "Hello, how are you?","role": "user","type": "message"}`<br />],<br />"model": "anthropic/claude-4.5-sonnet-20250929",<br />"temperature": 0.7,<br />"tools": \[<br />`{"description": "Get the current weather in a given location","name": "get_current_weather","parameters": {"properties": {"location": {"type": "string"}`<br />},<br />"type": "object"<br />},<br />"type": "function"<br />}<br />],<br />"top\_p": 0.9<br />} |
+| `xOpenRouterExperimentalMetadata` | [\*components.MetadataLevel](/docs/sdks/go/api-reference/models/metadatalevel)     | :heavy\_minus\_sign: | Opt-in to surface routing metadata on the response under `openrouter_metadata`. Defaults to `disabled`. | enabled                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `opts`                            | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)              | :heavy\_minus\_sign: | The options for this request.                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 ### Response
 

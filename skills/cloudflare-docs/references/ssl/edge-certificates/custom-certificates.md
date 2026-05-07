@@ -15,11 +15,13 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Custom certificates are meant for Business and Enterprise customers who want to use their own SSL certificates.
 
   
-Unlike [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) or [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), Cloudflare does not manage issuance and renewal for custom certificates. When you use custom certificates, the following actions should be considered and accomplished by you:
+Use custom certificates when you need control over the certificate authority (CA) or require Organization Validated (OV) or Extended Validation (EV) certificates that Cloudflare-managed options do not support.
+
+Unlike [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) or [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), Cloudflare does not manage issuance and renewal for custom certificates. You are responsible for the following:
 
 * [Upload the certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#upload-a-custom-certificate).
-* [Update the certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-an-existing-custom-certificate).
-* [Observe the certificate expiration date to avoid downtime](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/).
+* [Update the certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-an-existing-custom-certificate) before it expires.
+* [Monitor the certificate expiration date](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/) to avoid downtime.
 
 Note
 
@@ -56,7 +58,7 @@ You cannot delete the primary certificate if secondary certificates are present 
 
 ### Certificate Signing Requests (CSRs)
 
-As part of the custom certificate process, you can leverage Cloudflare to generate your [Certificate Signing Request (CSR)](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-signing-requests/). This additional option means that Cloudflare will safely generate and store the private key associated with the CSR.
+You can use Cloudflare to generate a [Certificate Signing Request (CSR)](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-signing-requests/) for your custom certificate. When you do, Cloudflare generates and securely stores the private key associated with the CSR.
 
 ### Geo Key Manager (private key restriction)
 

@@ -12,13 +12,11 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # API Gateway
 
-Cloudflare API Shield empowers you to use Cloudflare as your API Gateway, providing robust security features, streamlined management tools, and integration with the Cloudflare Developer Platform for building new APIs.​
+Cloudflare API Shield provides API security, management tools, and integration with the Cloudflare Developer Platform for building new APIs.
 
-APIs are fundamental to modern applications but are increasingly targeted by malicious actors. Cloudflare API Shield offers a comprehensive solution to protect, manage, and build your APIs.
-
-* **Enhanced security**: Implement robust runtime protection such as JWT validation, mutual TLS (mTLS) authentication, Schema validation, and protection against the [OWASP Top 10 API Security risks ↗](https://owasp.org/www-project-api-security/).
-* **Efficient management and monitoring**: Utilize tools for endpoint management, analytics, and routing to streamline API operations. Highlight risks with Posture Management, and gain visibility with Security Analytics and Security Center Insights.
-* **Integrated development**: Leverage the Cloudflare Developer Platform to build and deploy new APIs with ease, taking advantage of scalable infrastructure and a suite of developer tools.
+* **Security**: Protect APIs with JWT validation, mutual TLS (mTLS) authentication, schema validation, and defenses against the [OWASP Top 10 API Security risks ↗](https://owasp.org/www-project-api-security/).
+* **Management and monitoring**: Use endpoint management, analytics, and routing tools to streamline API operations. Monitor risks with Posture Management and gain visibility through Security Analytics.
+* **Development**: Build and deploy APIs using the Cloudflare Developer Platform with its serverless infrastructure and developer tools.
 
 ## Cloudflare as your API Gateway
 
@@ -37,17 +35,15 @@ APIs are fundamental to modern applications but are increasingly targeted by mal
 
 The [Cloudflare Developer Platform ↗](https://www.cloudflare.com/developer-platform/) offers a serverless execution environment, allowing you to build and deploy new APIs without the need to manage infrastructure. Its benefits include:
 
-* **Global scalability**: Deploy your APIs across Cloudflare's extensive global network, ensuring low latency and high availability. ​
-* **Integrated services**: Access a suite of services, including storage, databases, and AI tools, to enhance your API functionality.
-* **Developer-friendly tools**: Utilize modern development tools and frameworks to streamline the API development process. ​
+* **Global scalability**: Deploy APIs across Cloudflare's global network for low latency and high availability.
+* **Integrated services**: Use storage, databases, and AI tools alongside your APIs.
+* **Developer tools**: Build with frameworks and tools that support the API development workflow.
 
 ## Get started
 
 To begin using Cloudflare API Shield, refer to our [Get started](https://developers.cloudflare.com/api-shield/get-started/) guide.
 
-For detailed instructions and additional resources, refer to the Cloudflare [API Shield documentation](https://developers.cloudflare.com/api-shield/).
-
-By integrating API security, management, and development into a single platform, Cloudflare API Shield provides a comprehensive solution to protect, manage, and build APIs.
+For detailed instructions and additional resources, refer to the [API Shield documentation](https://developers.cloudflare.com/api-shield/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/api-gateway/","name":"API Gateway"}}]}

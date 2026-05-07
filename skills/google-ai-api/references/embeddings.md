@@ -51,7 +51,7 @@ Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embe
         contents=text,
         config=types.EmbedContentConfig(output_dimensionality=10),
     )
-    print(result.embeddings)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/embed.py#L22-L32
+    print(result.embeddings)
 
 ### Node.js
 
@@ -64,7 +64,7 @@ Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embe
       contents: text,
       config: { outputDimensionality: 10 },
     });
-    console.log(result.embeddings);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/embed.js#L22-L31
+    console.log(result.embeddings);
 
 ### Go
 
@@ -94,7 +94,7 @@ Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embe
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(string(embeddings))https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/embed.go#L15-L41
+    fmt.Println(string(embeddings))
 
 ### Shell
 
@@ -105,7 +105,7 @@ Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embe
          "content": {
          "parts":[{
          "text": "What is the meaning of life?"}]}
-        }'https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/rest/embed.sh#L4-L12
+        }'
 
 ### Response body
 
@@ -160,7 +160,7 @@ Fields `requests[]` ``object (`https://ai.google.dev/api/batch-api#EmbedContentR
         contents=texts,
         config=types.EmbedContentConfig(output_dimensionality=10),
     )
-    print(result.embeddings)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/embed.py#L37-L51
+    print(result.embeddings)
 
 ### Node.js
 
@@ -177,7 +177,7 @@ Fields `requests[]` ``object (`https://ai.google.dev/api/batch-api#EmbedContentR
       contents: texts,
       config: { outputDimensionality: 10 },
     });
-    console.log(result.embeddings);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/embed.js#L38-L51
+    console.log(result.embeddings);
 
 ### Go
 
@@ -208,7 +208,7 @@ Fields `requests[]` ``object (`https://ai.google.dev/api/batch-api#EmbedContentR
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(string(embeddings))https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/embed.go#L48-L75
+    fmt.Println(string(embeddings))
 
 ### Shell
 
@@ -229,7 +229,7 @@ Fields `requests[]` ``object (`https://ai.google.dev/api/batch-api#EmbedContentR
           "model": "models/gemini-embedding-001",
           "content": {
           "parts":[{
-            "text": "How does the brain work?"}]}, }, ]}' 2> /dev/null | grep -C 5 valueshttps://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/rest/embed.sh#L16-L34
+            "text": "How does the brain work?"}]}, }, ]}' 2> /dev/null | grep -C 5 values
 
 ### Response body
 

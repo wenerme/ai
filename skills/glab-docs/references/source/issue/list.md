@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 List project issues.
 
+## Synopsis
+
+Defaults to open items. Use `--group` to list for a group
+instead of the current project.
+
 ```plaintext
 glab issue list [flags]
 ```

@@ -20,7 +20,7 @@ This guide walks you through proxying public hostnames to origins on a private n
 
 Closed beta
 
-Private Origins for Application Services is in closed beta. To request access, contact your Cloudflare account team.
+This feature is in closed beta. To request access, contact your Cloudflare account team.
 
 ## Before you begin
 
@@ -44,7 +44,7 @@ Go to [Configure Cloudflare source IPs](https://developers.cloudflare.com/cloudf
 
 Create an `A` or `AAAA` record that points to the private IP address of your origin, with proxy status enabled and **Use private network routing** turned on. This tells Cloudflare to send traffic for the hostname through your Cloudflare WAN tunnel instead of over the public Internet.
 
-For the dashboard and API steps, refer to [Private network routing](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-origins/private-network-routing/).
+For the dashboard and API steps, refer to [Private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/).
 
 ## 3\. Verify end-to-end connectivity
 
@@ -96,9 +96,9 @@ Replace `100.64.0.0/12` with the Source IP range configured for your account, an
 ## Next steps
 
 * [Configure tunnel health alerts](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/) to get notified when a tunnel goes down.
-* Review the [Private network routing](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-origins/private-network-routing/) reference for dashboard and API details.
+* Review the [Private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/) reference for dashboard and API details.
 * If you run into tunnel issues, refer to [Tunnel health troubleshooting](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/) and [IPsec troubleshooting](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/ipsec-troubleshoot/).
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/private-origins/","name":"Private origins"}},{"@type":"ListItem","position":6,"item":{"@id":"/dns/manage-dns-records/how-to/private-origins/private-origin-via-cloudflare-wan/","name":"Set up a private origin via Cloudflare WAN"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/private-origins/","name":"Private origins (beta)"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/private-origins/set-up-via-cloudflare-wan/","name":"Set up a private origin via Cloudflare WAN"}}]}
 ```

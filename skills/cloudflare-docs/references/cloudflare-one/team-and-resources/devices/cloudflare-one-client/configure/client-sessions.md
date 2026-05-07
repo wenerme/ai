@@ -38,8 +38,8 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-* [ Dashboard ](#tab-panel-4718)
-* [ Terraform (v5) ](#tab-panel-4719)
+* [ Dashboard ](#tab-panel-5095)
+* [ Terraform (v5) ](#tab-panel-5096)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
 2. Add a policy and select the _Allow_ action. Alternatively, choose any existing _Allow_ policy.
@@ -79,20 +79,20 @@ To enforce a global reauthentication event, set each of your Network or HTTP pol
 
 ## Configure client sessions in Access Beta
 
-You can allow users to log in to Access applications using their device client session. Device authentication identity is only supported for Access applications protected by Allow or Block policies.
+You can allow users to log in to Access applications using their device client session. **Authenticate with Cloudflare One Client** is only supported for Access applications protected by Allow or Block policies.
 
 To configure device client sessions for Access applications:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Management**.
 2. In **Device enrollment permissions**, select **Manage**.
-3. Go to the **Login methods** tab and enable **Device authentication identity**.
-4. Under **Session duration**, choose a session timeout value. This timeout will apply to all Access applications that have **Device authentication identity** enabled.
+3. Go to **Authentication** and enable **Authenticate with Cloudflare One Client**.
+4. Under **Session duration**, choose a session timeout value. This timeout will apply to all Access applications that have **Authenticate with Cloudflare One Client** enabled.
 
 Note
 
 This timeout value does not apply to [device client session checks in Gateway policies](#configure-warp-sessions-in-gateway).
 
-1. (Optional) To enable **Device authentication identity** by default for all existing and new applications, select **Apply to all Access applications**. You can override this default setting on a per-application basis when you [create](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) or modify an Access application.
+1. (Optional) To enable **Authenticate with Cloudflare One Client** by default for all existing and new applications, select **Apply to all Access applications**. You can override this default setting on a per-application basis when you [create](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) or modify an Access application.
 2. Select **Save**.
 
 Users can now authenticate once with the Cloudflare One Client and have access to your Access applications for the configured period of time. The session timer resets when the user re-authenticates with the IdP used to enroll in the Cloudflare One Client.
@@ -117,7 +117,7 @@ Reauthenticating resets your [session duration](https://developers.cloudflare.co
 
 * **Only one user per device** — If a device is already registered with User A, User B will not be able to log in on that device through the re-authentication flow. To switch the device registration to a different user, User A must first log out from Zero Trust (if [Allow device to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) is enabled), or an admin can revoke the registration from **Team & Resources** \> **Devices**. User B can then properly [enroll](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/).
 * **Active connections are not terminated** — Active sessions such as SSH and RDP will remain connected beyond the timeout limit.
-* **Binding Cookie is not supported** \- Device authentication identity will not work for Access applications that have the [Binding Cookie](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#binding-cookie) enabled.
+* **Binding Cookie is not supported** \- **Authenticate with Cloudflare One Client** will not work for Access applications that have the [Binding Cookie](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#binding-cookie) enabled.
 
 ## Related resources
 

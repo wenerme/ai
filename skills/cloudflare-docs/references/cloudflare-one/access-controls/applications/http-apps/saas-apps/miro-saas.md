@@ -29,7 +29,7 @@ This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/
 ## 1\. Add a SaaS application to Cloudflare One
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application** \> **SaaS**.
+2. Select **Create new application** \> **SaaS application**.
 3. For **Application**, enter `Miro` and select the corresponding textbox that appears.
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
@@ -43,8 +43,8 @@ This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/
 
 ## 2\. Add a SAML SSO provider to Miro
 
-* [ business plan ](#tab-panel-4425)
-* [ enterprise plan ](#tab-panel-4426)
+* [ business plan ](#tab-panel-4802)
+* [ enterprise plan ](#tab-panel-4803)
 
 1. In Miro, select your profile picture > **Settings** \> **\*\*Security\*\***.
 2. Turn on **SSO/SAML**.

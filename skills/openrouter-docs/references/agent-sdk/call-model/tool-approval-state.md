@@ -134,27 +134,28 @@ For production use, implement `StateAccessor` with a persistent backend like Red
 
 The state object tracks everything needed to resume a conversation:
 
-| Field                | Type                      | Description                                                  |
-| -------------------- | ------------------------- | ------------------------------------------------------------ |
-| `id`                 | `string`                  | Unique conversation identifier                               |
-| `messages`           | `OpenResponsesInputUnion` | Full message history                                         |
-| `previousResponseId` | `string?`                 | Previous response ID for server-side chaining                |
-| `pendingToolCalls`   | `ParsedToolCall[]?`       | Tool calls awaiting human approval                           |
-| `unsentToolResults`  | `UnsentToolResult[]?`     | Executed results not yet sent to model                       |
-| `partialResponse`    | `PartialResponse?`        | Data captured during interruption                            |
-| `interruptedBy`      | `string?`                 | Signal from a new request that interrupted this conversation |
-| `status`             | `ConversationStatus`      | Current state of the conversation                            |
-| `createdAt`          | `number`                  | Creation timestamp (Unix ms)                                 |
-| `updatedAt`          | `number`                  | Last update timestamp (Unix ms)                              |
+| Field                | Type                      | Description                                                                |
+| -------------------- | ------------------------- | -------------------------------------------------------------------------- |
+| `id`                 | `string`                  | Unique conversation identifier                                             |
+| `messages`           | `OpenResponsesInputUnion` | Full message history                                                       |
+| `previousResponseId` | `string?`                 | Previous response ID for server-side chaining                              |
+| `pendingToolCalls`   | `ParsedToolCall[]?`       | Tool calls awaiting human input, such as approval/rejection or HITL output |
+| `unsentToolResults`  | `UnsentToolResult[]?`     | Executed results not yet sent to model                                     |
+| `partialResponse`    | `PartialResponse?`        | Data captured during interruption                                          |
+| `interruptedBy`      | `string?`                 | Signal from a new request that interrupted this conversation               |
+| `status`             | `ConversationStatus`      | Current state of the conversation                                          |
+| `createdAt`          | `number`                  | Creation timestamp (Unix ms)                                               |
+| `updatedAt`          | `number`                  | Last update timestamp (Unix ms)                                            |
 
 ### Status Values
 
-| Status                | Meaning                                          |
-| --------------------- | ------------------------------------------------ |
-| `'in_progress'`       | Conversation is actively processing              |
-| `'awaiting_approval'` | Paused, waiting for tool call approval/rejection |
-| `'complete'`          | Conversation finished normally                   |
-| `'interrupted'`       | Conversation was interrupted and can be resumed  |
+| Status                | Meaning                                                                                                                                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `'in_progress'`       | Conversation is actively processing                                                                                                                                                                       |
+| `'awaiting_approval'` | Paused, waiting for tool call approval/rejection                                                                                                                                                          |
+| `'awaiting_hitl'`     | Paused by a [HITL tool](/docs/sdks/typescript/call-model/tools#human-in-the-loop-hitl-tools) whose `onToolCalled` hook returned `null`; resume by supplying a `function_call_output` for each paused call |
+| `'complete'`          | Conversation finished normally                                                                                                                                                                            |
+| `'interrupted'`       | Conversation was interrupted and can be resumed                                                                                                                                                           |
 
 ## Complete Example
 

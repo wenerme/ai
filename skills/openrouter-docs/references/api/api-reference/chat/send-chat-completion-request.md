@@ -68,6 +68,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaymentRequiredResponse'
+        '403':
+          description: Forbidden - Authentication successful but insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
         '404':
           description: Not Found - Resource does not exist
           content:
@@ -2244,19 +2250,10 @@ components:
           type: string
         selected:
           type: boolean
-        sort_rank:
-          type: integer
-        sort_value:
-          type:
-            - number
-            - 'null'
-          format: double
       required:
         - model
         - provider
         - selected
-        - sort_rank
-        - sort_value
       title: EndpointInfo
     EndpointsMetadata:
       type: object
@@ -2265,18 +2262,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EndpointInfo'
-        sort:
-          type: string
-        sort_value:
-          type:
-            - number
-            - 'null'
-          format: double
         total:
           type: integer
       required:
         - available
-        - sort
         - total
       title: EndpointsMetadata
     RouterParams:
@@ -2285,8 +2274,6 @@ components:
         quality_floor:
           type: number
           format: double
-        sort:
-          type: string
         throughput_floor:
           type: number
           format: double
@@ -2296,10 +2283,8 @@ components:
     PipelineStageType:
       type: string
       enum:
-        - router
         - guardrail
-        - web_search
-        - file_parser
+        - plugin
         - server_tools
         - response_healing
         - context_compression
@@ -2637,6 +2622,43 @@ components:
         - error
       description: Payment Required - Insufficient credits or quota to complete request
       title: PaymentRequiredResponse
+    ForbiddenResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for ForbiddenResponse
+      title: ForbiddenResponseErrorData
+    ForbiddenResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Forbidden - Authentication successful but insufficient permissions
+      title: ForbiddenResponse
     NotFoundResponseErrorData:
       type: object
       properties:

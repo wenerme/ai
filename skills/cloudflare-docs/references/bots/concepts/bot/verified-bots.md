@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Verified bots
 
-A verified bot is a bot which has been added to Cloudflare's list of verified bots.
+A verified bot is a bot that Cloudflare has confirmed as legitimate, such as search engine crawlers and monitoring services.
 
 You can request for your bot to be added to Cloudflare's bots and agents directory by filling out an [online application ↗](https://dash.cloudflare.com/?to=/:account/configurations/verified-bots) in the Cloudflare dashboard.
 

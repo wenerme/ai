@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Retry a CI/CD job.
 
+## Synopsis
+
+Without a job argument, you can select one interactively.
+
 ```plaintext
 glab ci retry <job-id> [flags]
 ```

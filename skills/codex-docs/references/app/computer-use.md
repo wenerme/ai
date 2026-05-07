@@ -49,7 +49,7 @@ For web apps you are building locally, use the
 
 ## Start a computer use task
 
-Mention `@Computer Use` or `@AppName` in your prompt, or ask Codex to use
+Mention `@Computer` or `@AppName` in your prompt, or ask Codex to use
 computer use. Describe the exact app, window, or flow Codex should operate.
 
 ```text

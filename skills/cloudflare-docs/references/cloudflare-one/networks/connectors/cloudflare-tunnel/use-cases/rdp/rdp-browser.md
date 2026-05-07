@@ -43,9 +43,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-4607)
-* [ API ](#tab-panel-4608)
-* [ Terraform ](#tab-panel-4609)
+* [ Dashboard ](#tab-panel-4984)
+* [ API ](#tab-panel-4985)
+* [ Terraform ](#tab-panel-4986)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -171,44 +171,41 @@ The DNS record does not need to point to an active destination IP address or hos
 ## 4\. Create an Access application
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application**.
-3. Select **Self-hosted**.
-4. Enter any name for the application.
-5. In **Session Duration**, choose how often the user's [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) should expire.  
-Cloudflare checks every HTTP request to your application for a valid application token. If the user's application token (and global token) has expired, they will be prompted to reauthenticate with the IdP. For more information, refer to [Session management](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/).
-1. Select **Add public hostname**.  
+2. Select **Create new application**.
+3. Select **Self-hosted and private**.
+4. Select **Add public hostname**.  
 Note  
 Browser-based RDP is only compatible with public hostnames. If you add a private hostname or IP, RDP functionality will not be available in this application.
-2. In the **Domain** dropdown, select the domain that will represent the application. Domains must belong to an active zone in your Cloudflare account. You can use [wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/) to protect multiple parts of an application that share a root path.  
-Alternatively, to use a [Cloudflare for SaaS custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/secure-with-access/), set **Input method** to _Custom_ and enter your custom hostname.  
+5. In the **Domain** dropdown, select the domain that will represent the application. Domains must belong to an active zone in your Cloudflare account. You can use [wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/) to protect multiple parts of an application that share a root path.  
+Alternatively, to use a [Cloudflare for SaaS custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/secure-with-access/), select **Switch to custom input** and enter your custom hostname.  
 Note  
 You can only enable browser-based RDP on domains and subdomains, not for specific paths. The selected domain and subdomain must also have a corresponding DNS record (refer to [Step 3](#3-create-a-dns-record)).
-3. Expand **Browser rendering settings**. In the **Browser rendering** dropdown, select _RDP_.
-4. In **Target criteria**, select the [target hostname(s)](#2-add-a-target) that define your RDP servers. The application definition will apply to all targets that share the selected target hostname, including any targets added in the future.
-5. In **Port**, enter the [RDP listening port ↗](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/change-listening-port) of your server. It will likely be port `3389`.
-6. (Optional) If you run RDP on more than one port, select **Add new target criteria** and reconfigure the same target hostname(s) with the different port number.
-7. Add [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.  
+6. Turn on **Allow access through browser-based RDP, SSH, or VNC sessions**, then select _RDP_ from the dropdown menu.
+7. In **Target criteria**, select the [target hostname(s)](#2-add-a-target) that define your RDP servers. The application definition will apply to all targets that share the selected target hostname, including any targets added in the future.
+8. In **Port**, enter the [RDP listening port ↗](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/change-listening-port) of your server. It will likely be port `3389`.
+9. (Optional) If you run RDP on more than one port, select **Add new target criteria** and reconfigure the same target hostname(s) with the different port number.
+10. Under **Access policies**, add an existing policy or [create a new policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.  
 Note  
 Ensure that only **Allow** or **Block** policies are present. **Bypass** and **Service Auth** are not supported for browser-rendered applications.
-8. (Optional) In your Access policy, configure [clipboard controls](#clipboard-controls) to restrict copy and paste actions between the user's local machine and the browser-based RDP session.
-9. Configure how users will authenticate:  
-   1. Select the [**Identity providers**](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.  
-   2. (Recommended) If you plan to only allow access via a single IdP, turn on **Instant Auth**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.  
-   3. **Device authentication identity** is not supported for browser-based RDP and should remain turned off.
-10. Select **Next**.
-11. (Recommended) Turn on **Show application in App Launcher** and configure [App Launcher settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) for the application. The App Launcher allows users to view the Windows servers that they can access using browser-based RDP. Without the App Launcher, users will need to know each target's direct URL.  
-Note  
-Ensure that users match an Allow rule in your [App Launcher policies](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/#enable-the-app-launcher).
-12. Under **Block page**, choose what end users will see when they are denied access to the application:  
-   * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.  
-   * **Redirect URL**: Redirect to the specified website.  
-   * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
-13. Select **Next**.
-14. (Optional) Configure advanced settings:  
+11. (Optional) In your Access policy, configure [clipboard controls](#clipboard-controls) to restrict copy and paste actions between the user's local machine and the browser-based RDP session.
+12. Configure how users will authenticate:  
+   1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.  
+   2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.  
+   3. **Authenticate with Cloudflare One Client** is not supported for browser-based RDP and should remain turned off.
+13. In **Session Duration**, choose how often the user's [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) should expire.  
+Cloudflare checks every HTTP request to your application for a valid application token. If the user's application token (and global token) has expired, they will be prompted to reauthenticate with the IdP. For more information, refer to [Session management](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/).
+14. (Optional) Go to the **Additional settings** tab to customize the application experience:  
+   * **App Launcher customization**: The [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) allows users to view the Windows servers that they can access using browser-based RDP. Cloudflare recommends keeping **Show application in App Launcher** turned on. Without the App Launcher, users will need to know each target's direct URL.  
+   Note  
+   Ensure that users match an Allow rule in your [App Launcher policies](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/#enable-the-app-launcher).  
+   * **Custom block pages**: Choose what users will see when they are denied access to the application.  
+         * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.  
+         * **Redirect URL**: Redirect to the specified website.  
+         * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.  
    * [**Cross-Origin Resource Sharing (CORS) settings**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/)  
    * [**Cookie settings**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#cookie-settings)  
    * **401 Response for Service Auth policies**: Return a `401` response code when a user (or machine) makes a request to the application without the correct [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).
-15. Select **Save**.
+15. Select **Create**.
 
 ## 5\. (Recommended) Modify order of precedence in Gateway
 
@@ -275,9 +272,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-4604)
-* [ API ](#tab-panel-4605)
-* [ Terraform ](#tab-panel-4606)
+* [ Dashboard ](#tab-panel-4981)
+* [ API ](#tab-panel-4982)
+* [ Terraform ](#tab-panel-4983)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.

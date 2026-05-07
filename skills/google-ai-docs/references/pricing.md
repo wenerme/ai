@@ -1,3 +1,5 @@
+# Gemini Developer API pricing
+
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -927,35 +929,6 @@ physical world.
 |---|---|---|
 | Input price | Not available | $0.50 (text / image / video) $1.00 (audio) |
 | Output price (including thinking tokens) | Not available | $2.50 |
-| Grounding with Google Search | Not available | Not available |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-## Gemini Robotics-ER 1.5 Preview
-
-*`gemini-robotics-er-1.5-preview`*
-
-
-[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-robotics-er-1.5-preview)
-
-Gemini Robotics-ER, short for Gemini Robotics-Embodied Reasoning, is a thinking
-model that enhances robots' abilities to understand and interact with the
-physical world.
-
-### Standard
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Free of charge | $0.30 (text / image / video) $1.00 (audio) |
-| Output price (including thinking tokens) | Free of charge | $2.50 |
-| Grounding with Google Search | Free of charge, up to 500 RPD (limit shared with Flash-Lite RPD) | 1,500 RPD (free, limit shared with Flash-Lite RPD), then $35 / 1,000 grounded prompts |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-### Batch
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Not available | Not available |
-| Output price (including thinking tokens) | Not available | Not available |
 | Grounding with Google Search | Not available | Not available |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 

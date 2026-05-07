@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Update a merge request.
 
+## Synopsis
+
+Defaults to the currently checked-out branch. Use `--fill` to
+automatically fill the title and description from the commit history.
+
 ```plaintext
 glab mr update [<id> | <branch>] [flags]
 ```

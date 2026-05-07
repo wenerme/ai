@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Download the given state and output as JSON to stdout.
 
+## Synopsis
+
+Downloads the latest serial version if no serial is specified.
+
 ```plaintext
 glab opentofu state download <state> [<serial>] [flags]
 ```

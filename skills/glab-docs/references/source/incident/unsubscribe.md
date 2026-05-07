@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Unsubscribe from an incident.
 
+## Synopsis
+
+You no longer receive notifications about updates to the incident.
+
 ```plaintext
 glab incident unsubscribe <id> [flags]
 ```

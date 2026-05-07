@@ -88,8 +88,8 @@ Warning
 
 All devices you add to the proxy endpoint can access your Cloudflare Tunnel applications and services. If you only want to proxy web traffic, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/common-policies/#restrict-private-network-access-to-proxy-endpoint-users) that restricts proxy endpoint traffic from connecting to your internal resources.
 
-* [ Dashboard ](#tab-panel-4880)
-* [ API ](#tab-panel-4881)
+* [ Dashboard ](#tab-panel-5061)
+* [ API ](#tab-panel-5062)
 
 Authorization endpoint
 
@@ -101,7 +101,7 @@ To add an [authorization endpoint](#authorization-endpoint):
 4. Name your endpoint.
 5. Add [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to control who can access your applications. You can select existing policies or create new policies.
 6. Choose which login methods to support. To accept all login methods, turn on **Accept all available identity providers**.
-7. (Optional) If only one identity provider is configured, turn on **Instant Auth** to skip identity provider selection when your users reach the proxy endpoint.
+7. (Optional) If only one identity provider is configured, turn on **Apply instant authentication** to skip identity provider selection when your users reach the proxy endpoint.
 8. Select **Create**.
 
 Source IP endpoint
@@ -324,8 +324,8 @@ You may need to configure your organization's firewall to allow your users to co
 
 To get the domain of a proxy endpoint:
 
-* [ Dashboard ](#tab-panel-4878)
-* [ API ](#tab-panel-4879)
+* [ Dashboard ](#tab-panel-5059)
+* [ API ](#tab-panel-5060)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Resolvers & Proxies** \> **Proxy endpoints**.
 2. Choose the proxy endpoint. Select **Edit**.
@@ -356,8 +356,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_en
 
 Using your proxy endpoint's domain, you can get the IP addresses assigned to the proxy endpoint:
 
-* [ macOS and Linux ](#tab-panel-4876)
-* [ Windows ](#tab-panel-4877)
+* [ macOS and Linux ](#tab-panel-5057)
+* [ Windows ](#tab-panel-5058)
 
 1. Open a terminal.
 2. Run `dig` on your proxy endpoint's A records to get its IPv4 addresses. For example:  

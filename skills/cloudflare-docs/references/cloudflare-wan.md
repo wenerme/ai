@@ -47,7 +47,7 @@ For more information about Cloudflare One, refer to the [Cloudflare One document
 
 ###  Connect your network automatically 
 
-Use Cloudflare One Appliance to automatically connect, steer, and shape any IP traffic.
+Use Cloudflare One Appliance to automatically connect and steer any IP traffic.
 
 [ Use Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) 
 

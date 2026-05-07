@@ -29,7 +29,7 @@ This guide covers how to configure [Digicert ↗](https://docs.digicert.com/en/c
 ## 1\. Add a SaaS application to Cloudflare One
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application** \> **SaaS** \> **Select**.
+2. Select **Create new application** \> **SaaS application**.
 3. For **Application**, enter `Digicert` and select the corresponding textbox that appears.
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.

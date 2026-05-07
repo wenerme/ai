@@ -1,3 +1,9 @@
+# Batch API
+
+> [!WARNING]
+> **Ongoing incident:** The Batch API is currently experiencing an issue causing batch jobs to randomly fail. Our team is actively investigating. Please check the [Gemini API status
+> page](https://aistudio.google.com/status) for the latest updates.
+
 The Gemini Batch API is designed to process large volumes of requests
 asynchronously at [50% of the standard cost](https://ai.google.dev/gemini-api/docs/pricing).
 The target turnaround time is 24 hours, but in majority of cases, it is much
@@ -737,6 +743,59 @@ You can poll the job status periodically to check for completion.
     } catch (error) {
         console.error(`An error occurred while polling job ${batchJob.name}:`, error);
     }
+
+### Polling and webhooks
+
+**Tired of polling?** Gemini now supports
+[Webhooks](https://ai.google.dev/gemini-api/docs/webhooks) for processing completions asynchronously.
+Instead of continuously calling `GET / operations`, subscribe to
+`batch.succeeded` directly to allow the Gemini API to push real-time
+notifications to your server when asynchronous or long-running operations
+complete.
+
+### Python
+
+    from google import genai
+
+    client = genai.Client()
+
+    webhook = client.webhooks.create(
+        name="MyBatchWebhook",
+        subscribed_events=["batch.succeeded", "batch.failed"],
+        uri="https://my-api.com/gemini-callback",
+    )
+
+    print(f"Created webhook: {webhook.name}")
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const client = new GoogleGenAI();
+
+    async function createWebhook() {
+      const webhook = await client.webhooks.create({
+        name: "MyBatchWebhook",
+        subscribed_events: ["batch.succeeded", "batch.failed"],
+        uri: "https://my-api.com/gemini-callback",
+      });
+
+      console.log(`Created webhook: ${webhook.name}`);
+    }
+
+    createWebhook();
+
+### REST
+
+    curl -X POST \
+      "https://generativelanguage.googleapis.com/v1/webhooks?webhook_id=my-example-webhook-123" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GOOGLE_API_KEY" \
+      -d '{
+        "name": "My Example Webhook",
+        "uri": "https://my-api.com/gemini-callback",
+        "subscribed_events": ["batch.succeeded", "batch.failed"]
+      }'
 
 ## Retrieving results
 

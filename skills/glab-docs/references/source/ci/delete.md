@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Delete CI/CD pipelines.
 
+## Synopsis
+
+You can delete by ID, or filter by status, source, or age. Use `--dry-run` to preview
+the pipelines that would be deleted.
+
 ```plaintext
 glab ci delete <id> [flags]
 ```

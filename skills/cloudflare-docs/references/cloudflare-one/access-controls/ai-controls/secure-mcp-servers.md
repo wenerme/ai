@@ -36,8 +36,8 @@ The following guide deploys a remote MCP server on [Cloudflare Workers](https://
 
 To deploy our [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access-self-hosted) to your Cloudflare account:
 
-* [ Dashboard ](#tab-panel-4405)
-* [ CLI ](#tab-panel-4406)
+* [ Dashboard ](#tab-panel-4782)
+* [ CLI ](#tab-panel-4783)
 
 1. Select the following button to launch the quickstart flow:  
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access-self-hosted)
@@ -79,21 +79,20 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-access-sel
 
 ### 2\. Create a self-hosted Access application
 
-* [ Dashboard ](#tab-panel-4413)
-* [ API ](#tab-panel-4414)
+* [ Dashboard ](#tab-panel-4790)
+* [ API ](#tab-panel-4791)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application**.
-3. Select **Self-hosted**.
-4. Enter a name for your application (for example, `MCP server`).
-5. In **Application domain**, enter your Worker URL (for example, `mcp-access-self-hosted.<YOUR_SUBDOMAIN>.workers.dev`).
-6. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to define the users who can access the MCP server (for example, allow emails ending in `@yourcompany.com`).
-7. Configure how users will authenticate:  
-   1. Select the [**Identity providers**](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.  
-   2. (Recommended) If you plan to only allow access via a single IdP, turn on **Instant Auth**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.  
-   3. (Optional) Under **Device authentication identity**, allow users to authenticate to the application using their [ Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
-8. Save the application.
-9. On the application details page, copy the **AUD tag** value from **Basic information**. You will need this value to configure your MCP server.
+2. Select **Create new application**.
+3. Select **Self-hosted and private**.
+4. Select **Add public hostname** and enter your Worker URL (for example, `mcp-access-self-hosted.<YOUR_SUBDOMAIN>.workers.dev`).
+5. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to define the users who can access the MCP server (for example, allow emails ending in `@yourcompany.com`).
+6. Configure how users will authenticate:  
+   1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.  
+   2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.  
+   3. (Optional) Turn on **Authenticate with Cloudflare One Client** to allow users to authenticate to the application using their [ Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
+7. Select **Create**.
+8. On the application details page, go to **Additional settings** \> **AUD tag** and copy the value. You will need this value to configure your MCP server.
 
 1. Make a `POST` request to the [Access applications](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/) endpoint:  
 Required API token permissions  
@@ -122,8 +121,8 @@ The MCP server validates the `Cf-Access-Jwt-Assertion` header on each request by
 
 To configure the environment variables for our [example MCP server](#1-deploy-an-example-mcp-server):
 
-* [ Dashboard ](#tab-panel-4409)
-* [ CLI ](#tab-panel-4410)
+* [ Dashboard ](#tab-panel-4786)
+* [ CLI ](#tab-panel-4787)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.  
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
@@ -177,8 +176,8 @@ The following guide walks through the Access for SaaS approach. It deploys a rem
 
 To deploy our [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access) to your Cloudflare account:
 
-* [ Dashboard ](#tab-panel-4407)
-* [ CLI ](#tab-panel-4408)
+* [ Dashboard ](#tab-panel-4784)
+* [ CLI ](#tab-panel-4785)
 
 1. Select the following button to launch the quickstart flow:  
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access)
@@ -248,12 +247,12 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-server-cf-
 
 ### 2\. Create an Access for SaaS app
 
-* [ Dashboard ](#tab-panel-4415)
-* [ API ](#tab-panel-4416)
+* [ Dashboard ](#tab-panel-4792)
+* [ API ](#tab-panel-4793)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application**.
-3. Select **SaaS**.
+2. Select **Create new application**.
+3. Select **SaaS application**.
 4. In **Application**, enter a custom name (for example, `MCP server`) and select the textbox that appears below.
 5. Select **OIDC** as the authentication protocol.
 6. Select **Add application**.
@@ -267,10 +266,10 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-server-cf-
 9. (Optional) Under **Advanced settings**, turn on [**Refresh tokens**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/generic-oidc-saas/#advanced-settings) if you want to reduce the number of times a user needs to log in to the identity provider.
 10. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to define the users who can access the MCP server.
 11. Configure how users will authenticate:  
-   1. Select the [**Identity providers**](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.  
-   2. (Recommended) If you plan to only allow access via a single IdP, turn on **Instant Auth**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.  
-   3. (Optional) Under **Device authentication identity**, allow users to authenticate to the application using their [ Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
-12. Save the application.
+   1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.  
+   2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.  
+   3. (Optional) Turn on **Authenticate with Cloudflare One Client** to allow users to authenticate to the application using their [ Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
+12. Select **Create**.
 
 1. Make a `POST` request to the [Access applications](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/) endpoint:  
 Required API token permissions  
@@ -317,8 +316,8 @@ Your MCP server needs to perform an OAuth 2.0 authorization flow to get an `acce
 
 To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-example-mcp-server-1):
 
-* [ Dashboard ](#tab-panel-4411)
-* [ CLI ](#tab-panel-4412)
+* [ Dashboard ](#tab-panel-4788)
+* [ CLI ](#tab-panel-4789)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.  
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)

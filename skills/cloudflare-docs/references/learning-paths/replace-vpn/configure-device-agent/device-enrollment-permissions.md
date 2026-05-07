@@ -16,8 +16,8 @@ Device enrollment permissions determine which users can connect new devices to y
 
 ## Set device enrollment permissions
 
-* [ Dashboard ](#tab-panel-6311)
-* [ Terraform (v5) ](#tab-panel-6312)
+* [ Dashboard ](#tab-panel-6716)
+* [ Terraform (v5) ](#tab-panel-6717)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **Management**.
 2. In **Device enrollment** \> **Device enrollment permissions**, select **Manage**.
@@ -32,7 +32,7 @@ Device posture checks are not supported in device enrollment policies. The Cloud
 
 1. In the **Login methods** tab:  
 a. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) users can authenticate with. If you have not integrated an identity provider, you can use the [one-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/).  
-b. (Optional) If you plan to only allow access via a single IdP, turn on **Instant Auth**. End users will not be shown the Cloudflare Access login page. Instead, Cloudflare will redirect users directly to your SSO login event.
+b. (Optional) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the Cloudflare Access login page. Instead, Cloudflare will redirect users directly to your SSO login event.
 2. Select **Save**.
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
@@ -95,8 +95,8 @@ Allowed signature algorithms
 
 To check for an mTLS certificate:
 
-* [ Dashboard ](#tab-panel-6313)
-* [ Terraform (v5) ](#tab-panel-6314)
+* [ Dashboard ](#tab-panel-6718)
+* [ Terraform (v5) ](#tab-panel-6719)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Mutual TLS**.
 2. Select **Add mTLS Certificate**.

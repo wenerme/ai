@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Get JSON of a running CI/CD pipeline on the current or other specified branch.
 
+## Synopsis
+
+Defaults to the current branch. Use `--pipeline-id` to specify a pipeline
+instead of fetching the latest for a branch.
+
 ```plaintext
 glab ci get [flags]
 ```

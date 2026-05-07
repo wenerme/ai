@@ -35,7 +35,7 @@ const weatherTool = tool({
 
 ## Tool Types
 
-The SDK supports three types of tools, automatically detected from your configuration:
+The SDK supports four types of tools, automatically detected from your configuration:
 
 ### Regular Tools
 
@@ -121,6 +121,48 @@ const manualTool = tool({
 ```
 
 Use `getToolCalls()` to retrieve manual tool calls for processing.
+
+### Human-in-the-Loop (HITL) Tools
+
+HITL tools extend manual-tool semantics with two sync-or-async hooks that let you decide per call whether to respond programmatically or pause for a human:
+
+* `onToolCalled` — fires when the model invokes the tool. Return a value to feed the model directly (like a regular `execute`), or return `null` to pause the loop like a manual tool. The caller resumes later by supplying a `function_call_output` item.
+* `onResponseReceived` — optional. Fires on a later turn when an incoming `function_call_output` matches a prior call of this tool (by `callId → function_call.name`). It receives the caller-supplied raw result and returns the value sent to the model. Throwing surfaces as a tool error to the model.
+
+An `outputSchema` is required for HITL tools — it validates both the `onToolCalled` return value (when non-null) and the value delivered via `function_call_output` (whether transformed by `onResponseReceived` or passed through directly).
+
+```typescript
+const approvePaymentTool = tool({
+  name: 'approve_payment',
+  description: 'Approve a payment, escalating large amounts to a human',
+  inputSchema: z.object({
+    amount: z.number(),
+    recipient: z.string(),
+  }),
+  outputSchema: z.object({
+    ok: z.boolean(),
+    reviewedAt: z.number().optional(),
+  }),
+  onToolCalled: async (input) => {
+    // Auto-approve small amounts
+    if (input.amount < 100) {
+      return { ok: true };
+    }
+    // Escalate to a human — pauses the loop
+    return null;
+  },
+  onResponseReceived: async (raw) => {
+    // Post-process the caller-supplied result before the model sees it
+    return { ...(raw as object), reviewedAt: Date.now() };
+  },
+});
+```
+
+When `onToolCalled` returns `null`, the conversation state moves to `status: 'awaiting_hitl'` and the paused call surfaces via `getToolCalls()` / `getPendingToolCalls()`. Resume by calling `callModel` again with a `function_call_output` item for each paused call in the input.
+
+<Note>
+  HITL tools differ from `requireApproval`: approval gates pause *before* execution for a yes/no decision, while HITL tools let `onToolCalled` run arbitrary logic first and only pause when it returns `null`. Use HITL when the decision is data-driven (e.g., amount thresholds, risk scoring); use `requireApproval` when you always want explicit human consent. See [Tool Approval & State](/docs/sdks/typescript/call-model/approval-and-state).
+</Note>
 
 ## Schema Definition
 

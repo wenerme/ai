@@ -552,6 +552,11 @@ components:
           type: string
         name:
           type: string
+        namespace:
+          type: string
+          description: >-
+            Namespace qualifier for tools registered as part of a namespace tool
+            group (e.g. an MCP server)
         status:
           $ref: '#/components/schemas/ToolCallStatus'
         type:
@@ -900,6 +905,11 @@ components:
           type: string
         name:
           type: string
+        namespace:
+          type: string
+          description: >-
+            Namespace qualifier for tools registered as part of a namespace tool
+            group (e.g. an MCP server)
         status:
           $ref: '#/components/schemas/OutputFunctionCallItemStatus'
         type:
@@ -4087,6 +4097,11 @@ components:
           type: string
         name:
           type: string
+        namespace:
+          type: string
+          description: >-
+            Namespace qualifier for tools registered as part of a namespace tool
+            group (e.g. an MCP server)
         status:
           $ref: '#/components/schemas/ToolCallStatus'
         type:
@@ -4406,6 +4421,11 @@ components:
               type: string
             name:
               type: string
+            namespace:
+              type: string
+              description: >-
+                Namespace qualifier for tools registered as part of a namespace
+                tool group (e.g. an MCP server)
             status:
               $ref: '#/components/schemas/OutputFunctionCallItemStatus'
           required:
@@ -4968,19 +4988,10 @@ components:
           type: string
         selected:
           type: boolean
-        sort_rank:
-          type: integer
-        sort_value:
-          type:
-            - number
-            - 'null'
-          format: double
       required:
         - model
         - provider
         - selected
-        - sort_rank
-        - sort_value
       title: EndpointInfo
     EndpointsMetadata:
       type: object
@@ -4989,18 +5000,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EndpointInfo'
-        sort:
-          type: string
-        sort_value:
-          type:
-            - number
-            - 'null'
-          format: double
         total:
           type: integer
       required:
         - available
-        - sort
         - total
       title: EndpointsMetadata
     RouterParams:
@@ -5009,8 +5012,6 @@ components:
         quality_floor:
           type: number
           format: double
-        sort:
-          type: string
         throughput_floor:
           type: number
           format: double
@@ -5020,10 +5021,8 @@ components:
     PipelineStageType:
       type: string
       enum:
-        - router
         - guardrail
-        - web_search
-        - file_parser
+        - plugin
         - server_tools
         - response_healing
         - context_compression

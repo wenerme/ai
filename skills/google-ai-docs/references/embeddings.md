@@ -1,3 +1,5 @@
+# Embeddings
+
 <br />
 
 > [!IMPORTANT]
@@ -614,21 +616,19 @@ through the [Files API](https://ai.google.dev/gemini-api/docs/files).
 When working with multimodal content, how you structure your input affects the
 embedding output:
 
-- **Single content entry:** Submitting multiple parts (for example, text and an image) within a single content entry produces one aggregated embedding for all modalities within that entry.
-- **Multiple entries:** Sending multiple entries in the `contents` array returns separate embeddings for each entry.
+- **Multiple parts (aggregated):** Adding multiple inputs directly to the `contents` parameter produces one aggregated embedding for all inputs.
+- **Multiple `Content` objects (separate):** Wrapping each input in a `Content` object and passing them in the `contents` parameter returns separate embeddings for each entry.
 - **Post-level representation:** For complex objects like social media posts with multiple media items, we recommend aggregating separate embeddings (for example, by averaging) to create a coherent post-level representation.
 
-To generate an aggregated embedding, provide multiple input types within the
-same request. The following example demonstrates how to create a single
-multimodal embedding from text and image data.
-
-> [!NOTE]
-> **Note:** Ensure you are using the latest SDK version to support correct multimodal aggregation.
+The following example shows how to create one aggregated embedding for text and
+image input. Simply add multiple inputs to the `contents` parameter:
 
 ### Python
 
     from google import genai
     from google.genai import types
+
+    client = genai.Client()
 
     with open('dog.png', 'rb') as f:
         image_bytes = f.read()
@@ -644,7 +644,9 @@ multimodal embedding from text and image data.
         ]
     )
 
-    print(result.embeddings)
+    # This produces one embedding
+    for embedding in result.embeddings:
+        print(embedding.values)
 
 ### JavaScript
 
@@ -669,7 +671,10 @@ multimodal embedding from text and image data.
             ],
         });
 
-        console.log(response.embeddings);
+        // This produces one embedding
+        for (const embedding of response.embeddings) {
+            console.log(embedding.values);
+        }
     }
 
     main();
@@ -694,6 +699,93 @@ multimodal embedding from text and image data.
                     }
                 ]
             }
+        }'
+
+On the other hand, if you use `Content` objects inside the `contents` parameter,
+it returns separate embeddings. This example creates multiple embeddings in one
+embedding call:
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    client = genai.Client()
+
+    with open('dog.png', 'rb') as f:
+        image_bytes = f.read()
+
+    result = client.models.embed_content(
+        model="gemini-embedding-2",
+        contents=[
+            types.Content(parts=[types.Part.from_text(text="An image of a dog")]),
+            types.Content(
+                parts=[
+                    types.Part.from_bytes(
+                        data=image_bytes,
+                        mime_type="image/png",
+                    ),
+                ]
+            ),
+        ],
+    )
+
+    # This produces two embeddings
+    for embedding in result.embeddings:
+        print(embedding.values)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+    import * as fs from "node:fs";
+
+    async function main() {
+        const ai = new GoogleGenAI({});
+
+        const imgBase64 = fs.readFileSync("dog.png", { encoding: "base64" });
+
+        const response = await ai.models.embedContent({
+            model: 'gemini-embedding-2',
+            contents: [
+                { parts: [{ text: 'An image of a dog' }] },
+                {
+                    parts: [{
+                        inlineData: {
+                            mimeType: 'image/png',
+                            data: imgBase64,
+                        },
+                    }],
+                },
+            ],
+        });
+
+        // This produces two embeddings
+        for (const embedding of response.embeddings) {
+            console.log(embedding.values);
+        }
+    }
+
+    main();
+
+### REST
+
+    IMG_PATH="/path/to/your/dog.png"
+    IMG_BASE64=$(base64 -w0 "${IMG_PATH}")
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents" \
+        -H "Content-Type: application/json" \
+        -H "x-goog-api-key: ${GEMINI_API_KEY}" \
+        -d '{
+            "requests": [
+                {
+                    "model": "models/gemini-embedding-2",
+                    "content": {"parts": [{"text": "An image of a dog"}]}
+                },
+                {
+                    "model": "models/gemini-embedding-2",
+                    "content": {"parts": [{"inline_data": {"mime_type": "image/png", "data": "'"${IMG_BASE64}"'"}}]}
+                }
+            ]
         }'
 
 ### Embedding audio
@@ -1012,9 +1104,9 @@ the two models:
 - **Embedding aggregation:** `gemini-embedding-001` generates individual
   embeddings for each string in a list of inputs. In contrast,
   `gemini-embedding-2` produces a single, aggregated embedding when multiple
-  inputs (like text and images) are provided in one request. If you need to
-  generate multiple embeddings for separate inputs at once with
-  `gemini-embedding-2`, use the
+  inputs (like text and images) are provided directly in one request. To
+  generate separate embeddings for individual inputs, wrap each input in a
+  `Content` object, or use the
   [Batch API](https://ai.google.dev/gemini-api/docs/batch-api#batch-embedding). See
   [Embedding aggregation](https://ai.google.dev/gemini-api/docs/embeddings#embedding-aggregation) for more information.
 

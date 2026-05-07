@@ -1,19 +1,25 @@
+# File Search
+
 The Gemini API enables Retrieval Augmented Generation ("RAG") through the File
 Search tool. File Search imports, chunks, and indexes your data to
 enable fast retrieval of relevant information based on a provided prompt. This
-information is then used as context for the model, allowing the model to
-provide more accurate and relevant answers.
+retrieved information is then used as context for the model, allowing it to
+provide more accurate and relevant answers. File search is also able to
+provide multimodal capabilities with text embeddings supported by
+`gemini-embedding-001`, and image/multimodal embedding supported by `gemini-embedding-2`.
 
-To make File Search simple and affordable for developers, we're making file storage
-and embedding generation at query time free of charge. You only pay for creating
-embeddings when you first index your files (at the applicable embedding model cost)
-and the normal Gemini model input / output tokens cost. This new billing paradigm
-makes the File Search Tool both easier and more cost-effective to build and scale
-with.
+> [!NOTE]
+> **Note:** Audio and video formats are not currently supported.
+
+File storage and embedding generation at query time is free, and you'll only pay
+for creating embeddings when you first index your files and the normal Gemini
+model input / output tokens cost. This new billing paradigm makes the File
+Search Tool both easier and more cost-effective to build and scale with. See
+[pricing](https://ai.google.dev/gemini-api/docs/file-search#pricing) section for details.
 
 ## Directly upload to File Search store
 
-This examples shows how to directly upload a file to the [file search store](https://ai.google.dev/api/file-search/file-search-stores#method:-media.uploadtofilesearchstore):
+This example shows how to directly upload a file to the [file search store](https://ai.google.dev/api/file-search/file-search-stores#method:-media.uploadtofilesearchstore):
 
 ### Python
 
@@ -24,7 +30,12 @@ This examples shows how to directly upload a file to the [file search store](htt
     client = genai.Client()
 
     # File name will be visible in citations
-    file_search_store = client.file_search_stores.create(config={'display_name': 'your-fileSearchStore-name'})
+    file_search_store = client.file_search_stores.create(
+        config={
+            'display_name': 'your-fileSearchStore-name',
+            'embedding_model': 'models/gemini-embedding-2'
+        }
+    )
 
     operation = client.file_search_stores.upload_to_file_search_store(
       file='sample.txt',
@@ -63,7 +74,10 @@ This examples shows how to directly upload a file to the [file search store](htt
     async function run() {
       // File name will be visible in citations
       const fileSearchStore = await ai.fileSearchStores.create({
-        config: { displayName: 'your-fileSearchStore-name' }
+        config: {
+          displayName: 'your-fileSearchStore-name',
+          embeddingModel: 'models/gemini-embedding-2'
+        }
       });
 
       let operation = await ai.fileSearchStores.uploadToFileSearchStore({
@@ -115,7 +129,12 @@ Alternatively, you can upload an existing file and [import it to your file searc
     # File name will be visible in citations
     sample_file = client.files.upload(file='sample.txt', config={'name': 'display_file_name'})
 
-    file_search_store = client.file_search_stores.create(config={'display_name': 'your-fileSearchStore-name'})
+    file_search_store = client.file_search_stores.create(
+        config={
+            'display_name': 'your-fileSearchStore-name',
+            'embedding_model': 'models/gemini-embedding-2'
+        }
+    )
 
     operation = client.file_search_stores.import_file(
         file_search_store_name=file_search_store.name,
@@ -156,7 +175,10 @@ Alternatively, you can upload an existing file and [import it to your file searc
       });
 
       const fileSearchStore = await ai.fileSearchStores.create({
-        config: { displayName: 'your-fileSearchStore-name' }
+        config: {
+          displayName: 'your-fileSearchStore-name',
+          embeddingModel: 'models/gemini-embedding-2'
+        }
       });
 
       let operation = await ai.fileSearchStores.importFile({
@@ -263,13 +285,14 @@ understands the meaning and context of your query.
 
 When you import a file, it's converted into numerical representations called
 [embeddings](https://ai.google.dev/gemini-api/docs/embeddings), which capture the semantic meaning of
-the text. These embeddings are stored in a specialized File Search database.
+the uploaded content. These embeddings are stored in a specialized File Search database.
 When you make a query, it's also converted into an embedding. Then the system
 performs a File Search to find the most similar and relevant document chunks
 from the File Search store.
 
-There is no Time To Live (TTL) for embeddings and files;
-they persist until manually deleted, or when the model is deprecated.
+There is no Time To Live (TTL) for embeddings;
+they persist until manually deleted, or when the model is deprecated. Files,
+however, are deleted after 48 hours.
 
 Here's a breakdown of the process for using the File Search
 `uploadToFileSearchStore` API:
@@ -293,7 +316,7 @@ Here's a breakdown of the process for using the File Search
 
 ![The indexing and querying process of File Search](https://ai.google.dev/static/gemini-api/docs/images/File-search.png) The indexing and querying process of File Search
 
-In this diagram, the dotted line from from *Documents* to *Embedding model*
+In this diagram, the dotted line from *Documents* to *Embedding model*
 (using [`gemini-embedding-001`](https://ai.google.dev/gemini-api/docs/embeddings))
 represents the `uploadToFileSearchStore` API (bypassing *File storage* ).
 Otherwise, using the [Files API](https://ai.google.dev/gemini-api/docs/files) to separately create
@@ -313,7 +336,12 @@ Here are some examples of how to manage your File Search stores:
 
 ### Python
 
-    file_search_store = client.file_search_stores.create(config={'display_name': 'my-file_search-store-123'})
+    file_search_store = client.file_search_stores.create(
+        config={
+            'display_name': 'my-file_search-store-123',
+            'embedding_model': 'models/gemini-embedding-2'
+        }
+    )
 
     for file_search_store in client.file_search_stores.list():
         print(file_search_store)
@@ -325,7 +353,10 @@ Here are some examples of how to manage your File Search stores:
 ### JavaScript
 
     const fileSearchStore = await ai.fileSearchStores.create({
-      config: { displayName: 'my-file_search-store-123' }
+      config: {
+        displayName: 'my-file_search-store-123',
+        embeddingModel: 'models/gemini-embedding-2'
+      }
     });
 
     const fileSearchStores = await ai.fileSearchStores.list();
@@ -345,8 +376,8 @@ Here are some examples of how to manage your File Search stores:
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/fileSearchStores?key=${GEMINI_API_KEY}" \
-        -H "Content-Type: application/json"
-        -d '{ "displayName": "My Store" }'
+        -H "Content-Type: application/json" \
+        -d '{ "displayName": "My Store", "embedding_model": "models/gemini-embedding-2" }'
 
     curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores?key=${GEMINI_API_KEY}" \
 
@@ -354,7 +385,7 @@ Here are some examples of how to manage your File Search stores:
 
     curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/my-file_search-store-123?key=${GEMINI_API_KEY}"
 
-## File search documents
+## File Search documents
 
 You can manage individual documents in your file stores with the
 [File Search Documents](https://ai.google.dev/api/file-search/documents) API to `list` each document
@@ -381,7 +412,7 @@ document by name.
     }
 
     const fileSearchDocument = await ai.fileSearchStores.documents.get({
-      name: 'fileSearchStores/my-file_search-store-123/documents/my_doc'
+      name: 'fileSearchStores/my-file_search-store-123/documents/my_doc',
     });
 
     await ai.fileSearchStores.documents.delete({
@@ -488,6 +519,56 @@ to search only a subset of them.
 Guidance on implementing list filter syntax for `metadata_filter` can be found
 at [google.aip.dev/160](https://google.aip.dev/160)
 
+## Multimodal File Search
+
+Multimodal File Search lets you to natively embed and search through images,
+enabling rich, multimodal RAG applications.
+
+### Configure the embedding model
+
+When you create a `FileSearchStore`, you must override the default text-only
+embedding model to use a multimodal model. Use `models/gemini-embedding-2` to
+process both text and images.
+
+### Python
+
+    store = client.file_search_stores.create(
+        config={
+            "display_name": "Multimodal Catalog",
+            "embedding_model": "models/gemini-embedding-2",
+        }
+    )
+
+### JavaScript
+
+    const fileSearchStore = await ai.fileSearchStores.create({
+      config: {
+        displayName: "Multimodal Catalog",
+        embeddingModel: "models/gemini-embedding-2",
+      },
+    });
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/fileSearchStores?key=$GEMINI_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "display_name": "Multimodal Catalog",
+          "embedding_model": "models/gemini-embedding-2"
+        }'
+
+### Upload images
+
+After you create the store with a multimodal embedding model, you can upload
+image files directly using the same upload APIs described in
+[Directly upload to File Search store](https://ai.google.dev/gemini-api/docs/file-search#upload) or [Importing files](https://ai.google.dev/gemini-api/docs/file-search#importing-files).
+
+**Image file requirements:**
+
+- Image files must be at most 4K x 4K pixels in resolution.
+- Maximum of 6 images per request.
+- Supported formats are PNG, JPEG.
+
 ## Citations
 
 When you use File Search, the model's response may include citations that
@@ -511,6 +592,80 @@ cookbook](https://github.com/google-gemini/cookbook/blob/main/quickstarts/File_S
 or [the grounding section of the Grounding with Google
 Search](https://ai.google.dev/gemini-api/docs/google-search#attributing_sources_with_inline_citations)
 docs.
+
+### Page numbers
+
+When you use File Search with documents that have pages (such as PDFs), the
+model's response may include the page number where the information was found.
+You can access this information through the `page_number` attribute of the
+`retrieved_context`.
+
+### Python
+
+    # Iterate through citations and check for page numbers
+    for chunk in response.grounding_metadata.grounding_chunks:
+       if chunk.retrieved_context and chunk.retrieved_context.page_number:
+           print(f"Cited Page: {chunk.retrieved_context.page_number}")
+
+### JavaScript
+
+    const groundingMetadata = response.candidates[0].groundingMetadata;
+    for (const chunk of groundingMetadata.groundingChunks) {
+      if (chunk.retrievedContext && chunk.retrievedContext.pageNumber) {
+        console.log(`Cited Page: ${chunk.retrievedContext.pageNumber}`);
+      }
+    }
+
+### Media citations
+
+When the model references an image chunk during generation, the API returns a
+citation in the grounding metadata that includes a `media_id`. You can use this
+ID to download the exact image chunk the model referenced.
+
+The following snippet is an example REST response:
+
+    "groundingMetadata": {
+      "groundingChunks": [
+        {
+          "retrievedContext": {
+            "title": "product_image",
+            "fileSearchStore": "fileSearchStores/my-store-123",
+            "media_id": "fileSearchStores/my-store-123/blobs/BlobId-456"
+          }
+        }
+      ]
+    }
+
+The following code snippets demonstrate how to retrieve the `media_id` and
+download the media:
+
+### Python
+
+    # Iterate through citations and download media if present
+    for chunk in response.grounding_metadata.grounding_chunks:
+       if chunk.retrieved_context and chunk.retrieved_context.media_id:
+           print(f"Cited Media ID: {chunk.retrieved_context.media_id}")
+           # Download the blob using the SDK
+           blob_content = client.file_search_stores.download_media(
+               media_id=chunk.retrieved_context.media_id
+           )
+           # Save blob_content to file...
+
+### JavaScript
+
+    const groundingMetadata = response.candidates[0].groundingMetadata;
+    for (const chunk of groundingMetadata.groundingChunks) {
+      if (chunk.retrievedContext && chunk.retrievedContext.mediaId) {
+        console.log(`Cited Media ID: ${chunk.retrievedContext.mediaId}`);
+        const blobContent = await ai.fileSearchStores.downloadMedia(chunk.retrievedContext.mediaId);
+        // Save blobContent to file...
+      }
+    }
+
+### REST
+
+    curl -X GET "https://generativelanguage.googleapis.com/v1/fileSearchStores/my-store-123/blobs/BlobId-456" \
+      -H "x-goog-api-key: $GEMINI_API_KEY"
 
 ## Custom metadata in grounding data
 
@@ -935,7 +1090,7 @@ The File Search API has the following limits to enforce service stability:
 
 ## Pricing
 
-- Developers are charged for embeddings at indexing time based on existing [embeddings pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-embedding) ($0.15 per 1M tokens).
+- You are charged for embeddings at indexing time based on existing [embeddings pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-embedding-2).
 - Storage is free of charge.
 - Query time embeddings are free of charge.
 - Retrieved document tokens are charged as regular [context tokens](https://ai.google.dev/gemini-api/docs/tokens).

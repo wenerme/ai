@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Display the title, body, and other information about an incident.
 
+## Synopsis
+
+You can use a full GitLab URL instead of an ID. Use `--web`
+to open in a browser.
+
 ```plaintext
 glab incident view <id> [flags]
 ```

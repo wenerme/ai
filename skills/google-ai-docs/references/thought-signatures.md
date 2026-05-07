@@ -1,3 +1,5 @@
+# Thought Signatures
+
 > [!IMPORTANT]
 > **Important:** **Thought signatures are handled automatically** when you use the official [Google Gen AI SDKs](https://ai.google.dev/gemini-api/docs/libraries) and append the full model response object directly to history. **You
 > only need to work with thought signatures directly when using the REST API** , or if you are *manually extracting and returning parts history in multi-turn
@@ -295,8 +297,8 @@ Let's walk through a parallel function calling example where the users asks
 
 | **Turn** | **Step** | **User Request** | **Model Response** | **FunctionResponse** |
 |---|---|---|---|---|
-| 1 | 1 | request1="Check the weather in Paris and London" | FC1 ("Paris") + signature FC2 ("London") | FR1 |
-| 1 | 2 | request 2 **=** request1 **+** FC1 ("Paris") + signature + FC2 ("London") | text_output (no FCs) | None |
+| 1 | 1 | `request1="Check the weather in Paris and London"` | FC1 ("Paris") + signature FC2 ("London") | FR1 |
+| 1 | 2 | `request 2 = request1 + FC1 ("Paris") + signature + FC2 ("London")` | text_output (no FCs) | None |
 
 The following code illustrates the sequence in the above table.
 
@@ -475,8 +477,9 @@ happens when the user asks a complex question requiring multiple tasks.
 
 |---|---|---|---|---|
 | **Turn** | **Step** | **User Request** | **Model Response** | **FunctionResponse** |
-| 1 | 1 | `request1="Check the weather in Paris and London"` | `FC1 ("Paris") + signature <br /> ` `FC2 ("London")` | `FR1` |
-| 1 | 2 | `request 2 = request1 + FC1 ("Paris") + signature + FC2 ("London")` | `text_output <br /> ` `(no FCs)` | `None` |
+| 1 | 1 | `request1 = "Check flight status for AA100 and book a taxi 2 hours before if delayed."` | `FC1 ("check_flight") + signature` | `FR1` |
+| 1 | 2 | `request2 = request1 + FC1 ("check_flight") + signature + FR1` | `FC2("book_taxi") + signature` | `FR2` |
+| 1 | 3 | `request3 = request2 + FC2 ("book_taxi") + signature + FR2` | `text_output <br /> ` `(no FCs)` | `None` |
 
 The following code walks through the given sequence.
 

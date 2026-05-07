@@ -112,29 +112,24 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) will be used to verify that requests to the tunnel originate from Hyperdrive using the service token created above.
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application**.
-3. Select **Self-hosted**.
-4. Enter any name for the application.
-5. In **Session Duration**, select `No duration, expires immediately`.
-6. Select **Add public hostname**. and enter the subdomain and domain that was previously set for the tunnel application.
-7. Select **Create new policy**.
-8. Enter a **Policy name** and set the **Action** to _Service Auth_.
-9. Create an **Include** rule. Specify a **Selector** of _Service Token_ and the **Value** of the service token you created in step [2\. Create a service token](#21-manual-create-a-service-token).
-10. Save the policy.
-11. Go back to the application configuration and add the newly created Access policy.
-12. In **Login methods**, turn off _Accept all available identity providers_ and clear all identity providers.
-13. Select **Next**.
-14. In **Application Appearance**, turn off **Show application in App Launcher**.
-15. Select **Next**.
-16. Select **Next**.
-17. Save the application.
+2. Select **Create new application**.
+3. Select **Self-hosted and private**.
+4. Select **Add public hostname** and enter the subdomain and domain that was previously set for the tunnel application.
+5. Select **Create new policy**.
+6. Enter a **Policy name** and set the **Action** to _Service Auth_.
+7. Create an **Include** rule. Specify a **Selector** of _Service Token_ and the **Value** of the service token you created in step [2\. Create a service token](#21-manual-create-a-service-token).
+8. Save the policy.
+9. In **Identity providers**, turn off _Accept all available identity providers_ and clear all identity providers.
+10. In **Session Duration**, select `No duration, expires immediately`.
+11. (Optional) Go to **Additional settings**. Turn off **Show application in App Launcher**.
+12. Select **Create**.
 
 ### 2.3\. (Manual) Create a Hyperdrive configuration
 
 To create a Hyperdrive configuration for your private database, you'll need to specify the Access application and Cloudflare Tunnel information upon creation.
 
-* [ Wrangler ](#tab-panel-5854)
-* [ Terraform ](#tab-panel-5855)
+* [ Wrangler ](#tab-panel-6265)
+* [ Terraform ](#tab-panel-6266)
 
 Terminal window
 
@@ -202,8 +197,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-5856)
-* [  wrangler.toml ](#tab-panel-5857)
+* [  wrangler.jsonc ](#tab-panel-6267)
+* [  wrangler.toml ](#tab-panel-6268)
 
 JSONC
 
@@ -249,8 +244,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-5858)
-* [  wrangler.toml ](#tab-panel-5859)
+* [  wrangler.jsonc ](#tab-panel-6269)
+* [  wrangler.toml ](#tab-panel-6270)
 
 JSONC
 
@@ -300,8 +295,8 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 Validate that you can connect to your database from Workers and make queries.
 
-* [ PostgreSQL ](#tab-panel-5864)
-* [ MySQL ](#tab-panel-5865)
+* [ PostgreSQL ](#tab-panel-6275)
+* [ MySQL ](#tab-panel-6276)
 
 Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query to validate that the connection has been successful.
 
@@ -351,8 +346,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-5860)
-* [  wrangler.toml ](#tab-panel-5861)
+* [  wrangler.jsonc ](#tab-panel-6271)
+* [  wrangler.toml ](#tab-panel-6272)
 
 JSONC
 
@@ -370,7 +365,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-30",
+  "compatibility_date": "2026-05-06",
 
   "hyperdrive": [
 
@@ -397,7 +392,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-30"
+compatibility_date = "2026-05-06"
 
 
 [[hyperdrive]]
@@ -520,8 +515,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-5862)
-* [  wrangler.toml ](#tab-panel-5863)
+* [  wrangler.jsonc ](#tab-panel-6273)
+* [  wrangler.toml ](#tab-panel-6274)
 
 JSONC
 
@@ -539,7 +534,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-30",
+  "compatibility_date": "2026-05-06",
 
   "hyperdrive": [
 
@@ -566,7 +561,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-30"
+compatibility_date = "2026-05-06"
 
 
 [[hyperdrive]]

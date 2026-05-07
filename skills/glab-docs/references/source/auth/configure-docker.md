@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Register glab as a Docker credential helper.
 
+## Synopsis
+
+Configures Docker to use glab for authentication with GitLab
+container registries. Runs on Linux and macOS only.
+
 ```plaintext
 glab auth configure-docker [flags]
 ```

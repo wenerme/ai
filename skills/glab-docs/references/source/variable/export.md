@@ -7,6 +7,13 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Export variables from a project or group.
 
+## Synopsis
+
+Defaults to the current project. Use `--group` to export
+variables for a group. Use `--output` to set the format:
+`json` (default), `env` (KEY=VALUE pairs), or
+`export` (shell export statements).
+
 ```plaintext
 glab variable export [flags]
 ```

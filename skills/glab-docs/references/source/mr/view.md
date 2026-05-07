@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Display the title, body, and other information about a merge request.
 
+## Synopsis
+
+You can use a branch name or ID. Use `--web` to open in a browser.
+
 ```plaintext
 glab mr view [<id | branch>] [flags]
 ```

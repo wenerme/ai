@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Comment on an issue in GitLab.
 
+## Synopsis
+
+Opens an editor for the comment if you don't use `--message`.
+
 ```plaintext
 glab issue note <issue-id> [flags]
 ```

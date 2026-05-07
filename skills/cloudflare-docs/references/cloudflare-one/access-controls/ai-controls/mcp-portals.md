@@ -114,16 +114,16 @@ Cloudflare Access automatically creates an Access application for each MCP serve
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the portal that you want to configure, then select the three dots > **Edit**.
 3. To configure identity providers for the portal:  
-   1. Go to the **Login methods** tab.  
+   1. Go to **Authentication**.  
    2. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) that you want to enable for your application.  
-   3. (Recommended) If you plan to only allow access via a single identity provider, turn on **Instant Auth**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.
+   3. (Recommended) If you plan to only allow access via a single identity provider, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.
 4. To customize the block page:  
-   1. Go to the **Experience settings** tab.  
-   2. Under **Block page**, choose what end users will see when they are denied access to the application:  
+   1. Go to **Additional settings**.  
+   2. **Custom block pages**: Choose what users will see when they are denied access to the application.  
          * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.  
          * **Redirect URL**: Redirect to the specified website.  
          * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
-5. Select **Save application**.
+5. Select **Save**.
 
 ## Code mode
 
@@ -187,8 +187,8 @@ For more information on building with code mode, refer to the [code mode SDK ref
 
 To turn off code mode for a portal:
 
-* [ Dashboard ](#tab-panel-4403)
-* [ API ](#tab-panel-4404)
+* [ Dashboard ](#tab-panel-4780)
+* [ API ](#tab-panel-4781)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.

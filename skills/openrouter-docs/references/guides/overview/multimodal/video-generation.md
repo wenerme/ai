@@ -6,6 +6,17 @@
 
 OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/models?output_modalities=video).
 
+<Tip>
+  Adding video generation to an app? The
+  [Video Generation Cookbook](/docs/cookbook/video-generation/choose-video-model)
+  breaks this workflow into step-by-step recipes for choosing a model,
+  submitting text-to-video jobs, using images, passing provider options, and
+  handling webhooks.
+
+  For reusable agent knowledge across projects, install the
+  [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
+</Tip>
+
 ## Model Discovery
 
 You can find video generation models in several ways:

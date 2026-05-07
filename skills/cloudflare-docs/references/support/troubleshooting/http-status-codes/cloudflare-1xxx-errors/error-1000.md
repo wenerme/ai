@@ -26,11 +26,13 @@ Cloudflare halted the request for one of the following reasons:
 * The request includes two `X-Forwarded-For` headers.
 * The request includes a `CF-Connecting-IP` header.
 * A Server Name Indication (SNI) issue or mismatch at the origin.
+* Your DNS record points to a SaaS provider that uses [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) with [BYOIP](https://developers.cloudflare.com/byoip/) (Bring Your Own IP). Because the provider's IP addresses are advertised through Cloudflare's network, requests resolve to Cloudflare infrastructure. If the provider has not configured a [custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/) for your domain, this error is returned.
 
 ### Resolution
 
 * If an A record within your Cloudflare DNS app points to a [Cloudflare IP address ↗](https://www.cloudflare.com/ips/), update the IP address to your origin web server IP address. Reach out to your hosting provider if you need help obtaining the origin IP address.
 * There is a reverse-proxy at your origin that sends the request back through the Cloudflare proxy. Instead of using a reverse-proxy, contact your hosting provider or site administrator to configure an HTTP redirect at your origin.
+* If your domain points to a SaaS provider that uses Cloudflare, contact the SaaS provider to verify that a custom hostname is properly configured for your domain. The error originates from the provider's Cloudflare account, not yours.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/","name":"Cloudflare 1xxx errors"}},{"@type":"ListItem","position":6,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1000/","name":"Error 1000"}}]}

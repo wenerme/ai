@@ -59,7 +59,7 @@ If you would like to enable [Cloudflare Access ↗](https://www.cloudflare.com/t
 4. Select **Manage** on the Access policy created for your preview deployments.
 5. Under **Access** \> **Applications**, select your project.
 6. Select **Configure**.
-7. Under **Public hostname**, in the **Subdomain** field, delete the wildcard (`*`) and select **Save application**. You may need to change the **Application name** at this step to avoid an error.
+7. Under **Public hostname**, in the **Subdomain** field, delete the wildcard (`*`) and select **Save**. You may need to change the **Application name** at this step to avoid an error.
 
 At this step, your `*.pages.dev` domain has been secured behind Access. To resecure your preview deployments:
 
@@ -68,10 +68,10 @@ At this step, your `*.pages.dev` domain has been secured behind Access. To resec
 
 If you have a custom domain and protected your `*.pages.dev` domain behind Access, you must:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**. Select **Add an application** \> **Self hosted**.
-2. Input an **Application name** and select your custom domain from the _Domain_ dropdown menu.
-3. Select **Next** and configure your access rules to define who can reach the Access authentication page.
-4. Select **Add application**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**. Select **Create new application** \> **Self-hosted and private**.
+2. Select **Add public hostname** and select your custom domain from the _Domain_ dropdown menu.
+3. Configure your access rules to define who can reach the Access authentication page.
+4. Select **Create**.
 
 Warning
 

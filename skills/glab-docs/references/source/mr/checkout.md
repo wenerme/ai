@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Check out an open merge request.
 
+## Synopsis
+
+Defaults to the currently checked-out branch. Use `--branch` to
+override the local branch name used for the checkout.
+
 ```plaintext
 glab mr checkout [<id> | <branch> | <url>] [flags]
 ```

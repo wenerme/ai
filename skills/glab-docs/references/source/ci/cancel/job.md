@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Cancel CI/CD jobs.
 
+## Synopsis
+
+Use `--dry-run` to list jobs that would be canceled without making changes.
+
 ```plaintext
 glab ci cancel job <id> [flags]
 ```

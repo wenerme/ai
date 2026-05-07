@@ -7,6 +7,15 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Update a runner controller. (EXPERIMENTAL)
 
+## Synopsis
+
+You must specify at least one of `--description` or `--state`.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
 ```plaintext
 glab runner-controller update <id> [flags]
 ```

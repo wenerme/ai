@@ -5,7 +5,7 @@
 # Router Metadata
 
 <Note title="Experimental">
-  Router metadata is currently experimental. The opt-in header is stable, but the response shape is **additive**: new optional fields may appear without a major version bump. Field semantics will not change once stable.
+  Router metadata is **experimental**. The `openrouter_metadata` response shape is unstable: fields and pipeline stage types may be **added, renamed, removed, or change semantics at any time**, without a deprecation cycle. Do not pin production tooling to specific field names or values yet.
 </Note>
 
 OpenRouter's router runs every request through a multi-stage pipeline: it picks a provider, may compress context, may run guardrails, may invoke server-side tools, and may retry against fallbacks. By default, none of that is visible on the response.
@@ -99,23 +99,19 @@ When opted in, successful responses include an `openrouter_metadata` object alon
     "requested": "openai/gpt-4o-mini",
     "strategy": "direct",
     "region": "iad",
-    "summary": "sort=price, available=1, selected=OpenAI",
+    "summary": "available=1, selected=OpenAI",
     "attempt": 1,
     "is_byok": false,
     "endpoints": {
       "total": 1,
-      "sort": "price",
       "available": [
         {
           "provider": "OpenAI",
           "model": "openai/gpt-4o-mini",
-          "selected": true,
-          "sort_rank": 0,
-          "sort_value": 0.0001
+          "selected": true
         }
       ]
     },
-    "params": { "sort": "price" },
     "attempts": [
       { "provider": "OpenAI", "model": "openai/gpt-4o-mini", "status": 200 }
     ],
@@ -142,11 +138,11 @@ When opted in, successful responses include an `openrouter_metadata` object alon
 | `requested` | `string`            | The model slug (or alias) the client sent. May differ from the provider/model that actually served the request.           |
 | `strategy`  | `string`            | Routing strategy used: `direct`, `auto`, `free`, `latest`, `alias`, `fallback`, `pareto`, `bodybuilder`.                  |
 | `region`    | `string \| null`    | Edge region that handled the request, when available.                                                                     |
-| `summary`   | `string`            | Human-readable one-liner describing the routing decision (e.g. sort key, candidate count, selected provider).             |
+| `summary`   | `string`            | Human-readable one-liner describing the routing decision (e.g. candidate count, selected provider).                       |
 | `attempt`   | `integer`           | 1-indexed attempt number that succeeded. Greater than 1 means earlier attempts failed and fell back.                      |
 | `is_byok`   | `boolean`           | Whether the request used a Bring-Your-Own-Key provider key.                                                               |
-| `endpoints` | `EndpointsMetadata` | Snapshot of endpoint candidates considered, the sort key, and which one was selected.                                     |
-| `params`    | `RouterParams`      | Optional. Router-level parameters that influenced selection (e.g. `quality_floor`, `throughput_floor`, `sort`).           |
+| `endpoints` | `EndpointsMetadata` | Snapshot of endpoint candidates considered, and which one was selected.                                                   |
+| `params`    | `RouterParams`      | Optional. Router-level parameters that influenced selection (e.g. `quality_floor`, `throughput_floor`).                   |
 | `attempts`  | `Attempt[]`         | Optional. Per-attempt provider/model/status when the router retried against fallbacks.                                    |
 | `pipeline`  | `PipelineStage[]`   | Optional. Plugins that materially altered the request or response (compression, guardrails, healing, server tools, etc.). |
 
@@ -156,15 +152,13 @@ The full schema is documented under [`OpenRouterMetadata`](/docs/api-reference) 
 
 The `pipeline` array records every plugin that materially affected the request. A plugin only emits a stage when it actually ran; a no-op plugin (e.g. context compression that found the input already fit the budget) is omitted. Today's stage types include:
 
-| `type`                | `name` values                                                                 | What it tells you                                                                                             |
-| --------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `router`              | `auto-router`, `latest-router`, `free-router`, `pareto-router`, `bodybuilder` | Routing decision: `resolved_to`, fallbacks, and any router-specific state (e.g. `tier_actual`).               |
-| `guardrail`           | `content-filter`, `moderation`, `lakera`, `model-armor`                       | `flagged: bool`, plus engine-specific verdict (`decision`, `confidence_level`, `matched_entity_types`, etc.). |
-| `web_search`          | `web`, `web-search`                                                           | Result counts and configured maxima.                                                                          |
-| `file_parser`         | `file-parser`                                                                 | Engine used, page count, file count.                                                                          |
-| `server_tools`        | `server-tools`                                                                | Mode (`native` / `sdk`) and the list of tools invoked.                                                        |
-| `response_healing`    | `response-healing`                                                            | Mode (`json_schema` / `json_object`), whether healing improved the response, lengths.                         |
-| `context_compression` | `context-compression`                                                         | Engine used, input type (`messages` / `prompt`), original vs. compressed counts.                              |
+| `type`                | `name` values                                           | What it tells you                                                                                             |
+| --------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `guardrail`           | `content-filter`, `moderation`, `lakera`, `model-armor` | `flagged: bool`, plus engine-specific verdict (`decision`, `confidence_level`, `matched_entity_types`, etc.). |
+| `plugin`              | `web-search`, `file-parser`                             | Plugin-specific telemetry (e.g. result counts for web search, page count for file parsing).                   |
+| `server_tools`        | `server-tools`                                          | Mode (`native` / `sdk`) and the list of tools invoked.                                                        |
+| `response_healing`    | `response-healing`                                      | Mode (`json_schema` / `json_object`), whether healing improved the response, lengths.                         |
+| `context_compression` | `context-compression`                                   | Engine used, input type (`messages` / `prompt`), original vs. compressed counts.                              |
 
 Multiple plugins can share a `type`. To find a specific guardrail (say, the content filter), iterate the array and match on both `type === 'guardrail'` and `name === 'content-filter'`. The full set of guardrail-level plugins emits `type: 'guardrail'` so you can filter all of them together (`pipeline.filter(s => s.type === 'guardrail')`) without enumerating individual plugins.
 
@@ -190,14 +184,11 @@ Opt-in error responses surface `openrouter_metadata` at the **top level** of the
     "attempt": 0,
     "endpoints": {
       "total": 1,
-      "sort": "default",
       "available": [
         {
           "provider": "OpenAI",
           "model": "openai/gpt-4o-mini",
-          "selected": false,
-          "sort_rank": 0,
-          "sort_value": null
+          "selected": false
         }
       ]
     }
@@ -214,6 +205,8 @@ A few things to know:
 
 ## Stability
 
-The `X-OpenRouter-Experimental-Metadata` opt-in header is stable. The `openrouter_metadata` response shape is **additive**: new optional fields and new pipeline stage types may appear at any time. Existing fields will not be removed or change semantics without a deprecation cycle.
+Router metadata is **experimental**. The `openrouter_metadata` response shape is unstable — fields and pipeline stage types may be added, renamed, removed, or change semantics at any time, without a deprecation cycle. Treat the payload as best-effort debugging telemetry, not as a stable contract.
 
-If you need a stricter contract for production tooling, pin to the [`OpenRouterMetadata` SDK type](/docs/sdks/typescript) and treat unknown fields permissively.
+The `X-OpenRouter-Experimental-Metadata` opt-in header is the supported way to enable the feature, but the header name and accepted values may also change while the feature is experimental.
+
+If you consume the field in code, decode it permissively (treat unknown fields and stage types as opaque) and be prepared to update on every release.

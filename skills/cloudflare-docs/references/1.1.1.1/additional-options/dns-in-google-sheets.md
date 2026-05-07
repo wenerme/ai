@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ JSON ](https://developers.cloudflare.com/search/?tags=JSON)[ Integration ](https://developers.cloudflare.com/search/?tags=Integration) 
+
 # DNS in Google Sheets
 
 ## Create a function

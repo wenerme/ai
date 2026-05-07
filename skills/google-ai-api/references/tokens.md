@@ -65,7 +65,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
 
     # The usage_metadata provides detailed token counts.
     print(response.usage_metadata)
-    # ( e.g., prompt_token_count: 11, candidates_token_count: 73, total_token_count: 84 )https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L36-L54
+    # ( e.g., prompt_token_count: 11, candidates_token_count: 73, total_token_count: 84 )
 
 ### Node.js
 
@@ -83,7 +83,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
       model: "gemini-2.0-flash",
       contents: prompt,
     });
-    console.log(generateResponse.usageMetadata);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/count_tokens.js#L38-L52
+    console.log(generateResponse.usageMetadata);
 
 ### Go
 
@@ -115,7 +115,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(string(usageMetadata))https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/count_tokens.go#L38-L66
+    fmt.Println(string(usageMetadata))
 
 ### Shell
 
@@ -128,7 +128,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
               "text": "The quick brown fox jumps over the lazy dog."
               }],
             }],
-          }'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L28-L38
+          }'
 
 ### Chat
 
@@ -173,7 +173,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     history = chat.get_history()
     history.append(extra)
     print(client.models.count_tokens(model="gemini-2.0-flash", contents=history))
-    # ( e.g., total_tokens: 56 )https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L59-L98
+    # ( e.g., total_tokens: 56 )
 
 ### Node.js
 
@@ -216,7 +216,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     console.log(
       "Combined history token count:",
       combinedCountTokensResponse.totalTokens,
-    );https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/count_tokens.js#L62-L101
+    );
 
 ### Go
 
@@ -262,7 +262,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(secondTokenResp.TotalTokens)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/count_tokens.go#L73-L115
+    fmt.Println(secondTokenResp.TotalTokens)
 
 ### Shell
 
@@ -278,7 +278,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
              "parts":[{"text": "Hi Bob"}],
             },
           ],
-          }'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L42-L55
+          }'
 
 ### Inline media
 
@@ -303,7 +303,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
         model="gemini-2.0-flash", contents=[prompt, your_image_file]
     )
     print(response.usage_metadata)
-    # ( e.g., prompt_token_count: 264, candidates_token_count: 80, total_token_count: 345 )https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L103-L122
+    # ( e.g., prompt_token_count: 264, candidates_token_count: 80, total_token_count: 345 )
 
 ### Node.js
 
@@ -332,7 +332,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
       model: "gemini-2.0-flash",
       contents: contents,
     });
-    console.log(generateResponse.usageMetadata);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/count_tokens.js#L112-L137
+    console.log(generateResponse.usageMetadata);
 
 ### Go
 
@@ -361,7 +361,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     fmt.Println("prompt_token_count:", resp.UsageMetadata.PromptTokenCount)
     fmt.Println("candidates_token_count:", resp.UsageMetadata.CandidatesTokenCount)
     fmt.Println("total_token_count:", resp.UsageMetadata.TotalTokenCount)
-    // ( prompt_token_count: 264, candidates_token_count: 100, total_token_count: 364 )https://github.com/google/generative-ai-go/blob/b1a1f5eba2c10785895c91f4189f1ef7940c4764/genai/internal/samples/docs-snippets_test.go#L682-L707
+    // ( prompt_token_count: 264, candidates_token_count: 100, total_token_count: 364 )
 
 ### Shell
 
@@ -380,7 +380,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
                 }
             ]
             }]
-           }' 2> /dev/nullhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L59-L75
+           }' 2> /dev/null
 
 ### Video
 
@@ -411,7 +411,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
         model="gemini-2.0-flash", contents=[prompt, your_file]
     )
     print(response.usage_metadata)
-    # ( e.g., prompt_token_count: 301, candidates_token_count: 60, total_token_count: 361 )https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L149-L174
+    # ( e.g., prompt_token_count: 301, candidates_token_count: 60, total_token_count: 361 )
 
 ### Node.js
 
@@ -448,7 +448,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
         createPartFromUri(videoFile.uri, videoFile.mimeType),
       ]),
     });
-    console.log(generateResponse.usageMetadata);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/count_tokens.js#L183-L216
+    console.log(generateResponse.usageMetadata);
 
 ### Go
 
@@ -505,7 +505,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(string(usageMetadata))https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/count_tokens.go#L171-L224
+    fmt.Println(string(usageMetadata))
 
 ### Shell
 
@@ -559,7 +559,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
               {"text": "Describe this video clip"},
               {"file_data":{"mime_type": "video/mp4", "file_uri": '$file_uri'}}]
             }]
-           }'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L125-L176
+           }'
 
 ### PDF
 
@@ -579,7 +579,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
         model="gemini-2.0-flash",
         contents=["Give me a summary of this document.", sample_pdf],
     )
-    print(response.usage_metadata)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L179-L193
+    print(response.usage_metadata)
 
 ### Cache
 
@@ -617,7 +617,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     )
     print(response.usage_metadata)
     # ( e.g., prompt_token_count: ..., cached_content_token_count: ..., candidates_token_count: ... )
-    client.caches.delete(name=cache.name)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L198-L230
+    client.caches.delete(name=cache.name)
 
 ### Node.js
 
@@ -661,7 +661,6 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
         usage: generateResponse.usageMetadata,
       };
     }
-    https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/count_tokens.js#L261-L-1
 
 ### Go
 
@@ -723,7 +722,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     }
     // Returns `nil` for some reason
     fmt.Println(string(usageMetadata))
-    _, err = client.Caches.Delete(ctx, cache.Name, &genai.DeleteCachedContentConfig{})https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/count_tokens.go#L278-L336
+    _, err = client.Caches.Delete(ctx, cache.Name, &genai.DeleteCachedContentConfig{})
 
 ### System Instruction
 
@@ -752,7 +751,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/system_instruction.go#L13-L36
+    printResponse(response)
 
 ### Tools
 
@@ -805,7 +804,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
             t.printStackTrace();
           }
         },
-        executor);https://github.com/google-gemini/generative-ai-android/blob/a77dc5e4dc07d7aa710f59fde1908fbfff2e0e70/samples/src/main/java/com/google/ai/client/generative/samples/java/count_tokens.java#L239-L286
+        executor);
 
 ### Response body
 

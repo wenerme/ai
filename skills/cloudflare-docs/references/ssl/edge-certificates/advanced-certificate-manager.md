@@ -15,9 +15,9 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Use advanced certificates when you want something more customizable than [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) but still want the convenience of SSL certificate issuance and renewal.
 
   
-To order advanced certificates you must purchase the Advanced Certificate Manager add-on, which also includes other features.
+To order advanced certificates, you must purchase the Advanced Certificate Manager add-on. This add-on also unlocks the features listed below.
 
-## Advanced Certificate Manager
+## What the add-on includes
 
 Advanced Certificate Manager allows you to:
 
@@ -27,7 +27,7 @@ Advanced Certificate Manager allows you to:
    * Be issued by the certificate authority (CA) you choose.  
    * Use your preferred validation method.  
    * Have the validity period you choose.
-* Use [delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/) to delegate the DCV process of your partial zones ([CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)) to Cloudflare.
+* Automate domain control validation (DCV) for zones on a [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) using [delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/).
 * Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) to automatically protect proxied hostnames.
 * Select a [custom trust store](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/) for origin authentication.
 * Control [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) and [per-hostname minimum TLS version](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/#per-hostname).
@@ -48,11 +48,11 @@ Eligible enterprise customers can preview this product as a [non-contract servic
 
 ## Limitations
 
-Advanced certificates are not used with [Cloudflare Pages](https://developers.cloudflare.com/pages/) nor [R2](https://developers.cloudflare.com/r2/) due to [certificate prioritization](https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/). Both Pages and R2 custom domains use Cloudflare for SaaS certificates.
+Advanced certificates do not apply to [Cloudflare Pages](https://developers.cloudflare.com/pages/) or [R2](https://developers.cloudflare.com/r2/) custom domains. Due to [certificate prioritization](https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/), these products use Cloudflare for SaaS certificates instead.
 
 Advanced certificates are [Domain Validated (DV)](https://developers.cloudflare.com/ssl/concepts/#validation-level). If your organization needs Organization Validated (OV) or Extended Validation (EV) certificates, refer to [Custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/).   
 
-Advanced certificates do not cover multiple different domains. For multi-domain certificate (MDC), consider the [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) product. You can also find further guidance in [Leveraging Cloudflare for your SaaS applications](https://developers.cloudflare.com/reference-architecture/design-guides/leveraging-cloudflare-for-your-saas-applications/).
+Advanced certificates cover hostnames within a single domain. If you need a certificate that spans multiple domains (a multi-domain certificate), use [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/). For architecture guidance, refer to [Leveraging Cloudflare for your SaaS applications](https://developers.cloudflare.com/reference-architecture/design-guides/leveraging-cloudflare-for-your-saas-applications/).
 
 Note
 

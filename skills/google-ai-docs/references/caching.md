@@ -1,3 +1,5 @@
+# Context caching
+
 In a typical AI workflow, you might pass the same input tokens over and over to
 a model. The Gemini API offers two different caching mechanisms:
 

@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Fork a GitLab repository.
 
+## Synopsis
+
+Defaults to the current repository if no repository is specified.
+Use `--clone` and `--remote` to skip the interactive prompts.
+
 ```plaintext
 glab repo fork <repo> [flags]
 ```

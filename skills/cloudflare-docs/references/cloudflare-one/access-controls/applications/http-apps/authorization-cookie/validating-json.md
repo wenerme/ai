@@ -137,7 +137,7 @@ To get the AUD tag:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Configure** for your application.
-3. From the **Additional settings** tab, copy the **Application Audience (AUD) Tag**.
+3. From **Additional settings**, copy the **Application Audience (AUD) Tag**.
 
 You can now paste the AUD tag into your token validation script. The AUD tag will never change unless you delete or recreate the Access application.
 
@@ -147,8 +147,8 @@ When Cloudflare Access is in front of your [Worker](https://developers.cloudflar
 
 The following code will validate the JWT using the [jose NPM package ↗](https://www.npmjs.com/package/jose):
 
-* [  JavaScript ](#tab-panel-4417)
-* [  TypeScript ](#tab-panel-4418)
+* [  JavaScript ](#tab-panel-4794)
+* [  TypeScript ](#tab-panel-4795)
 
 JavaScript
 

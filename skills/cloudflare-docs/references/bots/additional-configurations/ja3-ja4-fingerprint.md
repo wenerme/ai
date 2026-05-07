@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # JA3/JA4 fingerprint
 
-[**JA3** ↗](https://github.com/salesforce/ja3) and [**JA4** ↗](https://github.com/FoxIO-LLC/ja4) **fingerprints** help you profile specific SSL/TLS clients across different destination IPs, Ports, and X509 certificates.
+[**JA3** ↗](https://github.com/salesforce/ja3) and [**JA4** ↗](https://github.com/FoxIO-LLC/ja4) **fingerprints** identify TLS clients based on how they initiate connections. Each client type (browser, bot, or application) has distinct connection characteristics, so the resulting fingerprint acts as a stable identifier across different destination IPs, ports, and certificates.
 
-JA4 fingerprint adds new functionality by sorting ClientHello extensions and reducing the total number of unique fingerprints for modern browsers.
+JA4 improves on JA3 by sorting ClientHello extensions, which reduces the number of unique fingerprints for modern browsers and makes grouping easier.
 
 Note
 

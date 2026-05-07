@@ -1,3 +1,5 @@
+# URL context
+
 The URL context tool lets you provide additional context to the models in the
 form of URLs. By including URLs in your request, the model will access
 the content from those pages (as long as it's not a URL type listed in the

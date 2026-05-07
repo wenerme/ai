@@ -33,7 +33,7 @@ This guide covers how to configure [Hubspot ↗](https://knowledge.hubspot.com/a
 
 ## 2\. Configure Cloudflare Access
 
-1. In Cloudflare One, go to **Access controls** \> **Applications** and create a SaaS application.
+1. In Cloudflare One, go to **Access controls** \> **Applications**, select **Create new application**, and select **SaaS application**.
 2. Set the **Application type** to _Hubspot_.
 3. Use the following Hubspot field mappings:  
 | Hubspot values | Cloudflare values              |  

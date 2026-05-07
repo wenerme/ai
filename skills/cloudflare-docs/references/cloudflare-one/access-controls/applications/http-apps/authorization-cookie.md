@@ -90,7 +90,7 @@ To enable these settings:
 2. Locate the application you would like to configure and select **Configure**.
 3. Select **Advanced settings** and scroll down to **Cookie settings**.
 4. Configure the desired cookie settings.
-5. Select **Save application**.
+5. Select **Save**.
 
 ### SameSite Attribute
 
@@ -135,7 +135,7 @@ Do not enable Binding Cookie if:
 
 * You are using the Access application for non-browser based tools (such as SSH or RDP).
 * You have enabled [incompatible Cloudflare products](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/#product-compatibility) on the application domain, such as [Zaraz](https://developers.cloudflare.com/zaraz) or [Google tag gateway](https://developers.cloudflare.com/google-tag-gateway/). Enabling Binding Cookie alongside these products can cause an authentication redirect loop (`ERR_TOO_MANY_REDIRECTS`).
-* You have turned on [Device authentication identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/) for the application.
+* You have turned on [Authenticate with Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/) for the application.
 
 ### Cookie Path Attribute
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Get started
 
-Follow the steps below to enable SSL/TLS protection for your application.
+Set up encrypted connections for your domain by choosing a certificate, selecting an encryption mode, and enforcing HTTPS.
 
 ## Before you begin
 
@@ -20,9 +20,7 @@ Follow the steps below to enable SSL/TLS protection for your application.
 
 ## Choose an edge certificate
 
-As explained in the [concepts page](https://developers.cloudflare.com/ssl/concepts/#ssltls-certificate), edge certificates are the SSL/TLS certificates that Cloudflare presents to your visitors.
-
-Cloudflare offers a variety of options for your application's edge certificates:
+[Edge certificates](https://developers.cloudflare.com/ssl/concepts/#edge-certificate) are the SSL/TLS certificates that Cloudflare presents to visitors connecting to your domain. Cloudflare offers several types:
 
 * [**Universal certificates**](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/):  
 By default, Cloudflare issues — and [renews](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl) — free, unshared, publicly trusted SSL certificates to all domains [added to](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and [activated on](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) Cloudflare.
@@ -33,7 +31,7 @@ Custom certificates are meant for Business and Enterprise customers who want to 
 * [**Keyless certificates**](https://developers.cloudflare.com/ssl/keyless-ssl/) (Enterprise only):  
 Keyless SSL allows security-conscious clients to upload their own custom certificates and benefit from Cloudflare, but without exposing their TLS private keys.
 
-Refer to [Edge certificates](https://developers.cloudflare.com/ssl/edge-certificates/) for more information on how different certificate types can respond to common use cases.
+For help deciding which certificate type fits your use case, refer to [Edge certificates](https://developers.cloudflare.com/ssl/edge-certificates/).
 
 For SaaS providers
 
@@ -45,9 +43,9 @@ For more details, refer to [Cloudflare for SaaS (managed hostnames)](https://dev
 
 Once you have chosen your edge certificate, [choose an encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/).
 
-Encryption modes specify how Cloudflare encrypts connections between (a) visitors and Cloudflare, and (b) Cloudflare and your origin server. For more context about this two-part process refer to the [concepts page](https://developers.cloudflare.com/ssl/concepts/#ssltls-certificate).
+Encryption modes control how Cloudflare manages two separate connections: one between visitors and Cloudflare, and another between Cloudflare and your origin server. Modes range from no encryption to strict validation of your origin certificate. For more context, refer to the [concepts page](https://developers.cloudflare.com/ssl/concepts/#ssltls-certificate).
 
-Note that some encryption modes will require you to have a valid [origin certificate](https://developers.cloudflare.com/ssl/concepts/#origin-certificate), which is managed on your origin server. Each encryption mode setup page lists out this and other requirements and you can also [consider other Cloudflare options to use with your origin server](https://developers.cloudflare.com/ssl/origin-configuration/), such as [Origin CA certificates](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/).
+[Full (strict)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) mode — the most secure option — requires a valid, unexpired certificate on your origin server. You can use a certificate from a publicly trusted certificate authority (CA), or generate a free [Origin CA certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/) from Cloudflare. Each encryption mode page lists its specific requirements.
 
 ## Enforce HTTPS connections
 

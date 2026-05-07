@@ -48,9 +48,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-4433)
-* [ API ](#tab-panel-4434)
-* [ Terraform ](#tab-panel-4435)
+* [ Dashboard ](#tab-panel-4810)
+* [ API ](#tab-panel-4811)
+* [ Terraform ](#tab-panel-4812)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -138,12 +138,12 @@ Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-4436)
-* [ API ](#tab-panel-4437)
-* [ Terraform (v4) ](#tab-panel-4438)
+* [ Dashboard ](#tab-panel-4813)
+* [ API ](#tab-panel-4814)
+* [ Terraform (v4) ](#tab-panel-4815)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application**.
+2. Select **Create new application**.
 3. Select **Infrastructure**.
 4. Enter any name for the application.
 5. In **Target criteria**, select the target hostname(s) that you want to secure. This application definition will apply to all targets that share the selected hostname, including any targets added in the future. Similarly, if you later decide to change the hostname for a target, the renamed target will no longer be covered by this application.

@@ -95,7 +95,7 @@ Cloudflare does not control the length of an active SSH, VNC, or RDP session. [A
 
 ### Cloudflare One Client session duration
 
-When [Device authentication identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/#configure-client-sessions-in-access) is enabled for an Access application, the Cloudflare One Client session duration takes precedence over all other session durations (application, policy, and global). As long as the Cloudflare One Client session is valid and the user is running the Cloudflare One Client, the user will not be prompted to re-authenticate with the IdP — even if the global session has expired.
+When [Authenticate with Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/#configure-client-sessions-in-access) is enabled for an Access application, the Cloudflare One Client session duration takes precedence over all other session durations (application, policy, and global). As long as the Cloudflare One Client session is valid and the user is running the Cloudflare One Client, the user will not be prompted to re-authenticate with the IdP — even if the global session has expired.
 
 ### MFA session duration
 
@@ -112,8 +112,8 @@ flowchart TB
 
     %% In with user traffic
     start["User goes to Access application"]
-    start--"Device authentication identity enabled" -->warpsession[Device client session expired?]
-    start-- "Device authentication identity disabled" --> policysession[Policy session expired?]
+    start--"Authenticate with Cloudflare One Client enabled" -->warpsession[Device client session expired?]
+    start-- "Authenticate with Cloudflare One Client disabled" --> policysession[Policy session expired?]
 
 		warpsession--"Yes"-->idp[Prompt to log in to IdP]
 		warpsession--"No"-->accessgranted[Access granted]

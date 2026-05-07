@@ -36,11 +36,11 @@ Create an organization
 
 **--description, -d**="": 
 
+**--full-name, -n**="": 
+
 **--location, -L**="": 
 
 **--login, -l**="": Use a different Gitea Login. Optional
-
-**--name, -n**="": 
 
 **--repo-admins-can-change-team-access**: 
 

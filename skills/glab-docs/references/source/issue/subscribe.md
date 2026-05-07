@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Subscribe to an issue.
 
+## Synopsis
+
+You receive notifications when the issue is updated, commented on,
+or has its state changed.
+
 ```plaintext
 glab issue subscribe <id> [flags]
 ```

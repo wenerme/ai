@@ -16,8 +16,8 @@ You can implement a Challenge Page to your website or application by creating a 
 
 Challenges are triggered by a rule in the [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), [Bot Management](https://developers.cloudflare.com/bots/), or [Rate limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/).
 
-* **Bot Management**: You can set the custom rule to challenge a visitor based on the [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) or [detection ID](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/).
-* **Rate limiting**: You can challenge visitors based on your defined rate limits.
+* **Bot Management**: Challenge visitors that appear automated based on their [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) or a specific [detection ID](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/).
+* **Rate limiting**: Challenge visitors who exceed your configured [rate limits](https://developers.cloudflare.com/waf/rate-limiting-rules/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/challenge-types/","name":"Available Challenges"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/challenge-types/challenge-pages/","name":"Interstitial Challenge Pages"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-challenges/challenge-types/challenge-pages/create-custom-rule/","name":"Implement a Challenge Page via WAF custom rules"}}]}

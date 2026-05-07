@@ -14,6 +14,19 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-05-06
+
+[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
+
+  
+**IPv6 CIDR routes for Cloudflare Mesh**   
+
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes now support IPv6 CIDR routes. You can advertise both IPv4 and IPv6 subnets through your Mesh nodes, making IPv6-only or dual-stack private networks reachable from any enrolled device.
+
+![IPv6 CIDR routes on a Mesh node in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/mesh-ipv6-routes.CC-jlZkw_Z16Puzf.webp) 
+
+To add an IPv6 route, follow the same steps as [adding an IPv4 route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#add-a-route) — enter the IPv6 CIDR (for example, `fd00::/64`) when configuring the route in the [dashboard ↗](https://dash.cloudflare.com/?to=/:account/mesh) or via the API.
+
 ## 2026-04-30
 
 [ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
@@ -4280,8 +4293,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-4490)
-* [ Core Dashboard ](#tab-panel-4491)
+* [ Zero Trust Dashboard ](#tab-panel-4867)
+* [ Core Dashboard ](#tab-panel-4868)
 
 To update your view preference in the Zero Trust dashboard:
 

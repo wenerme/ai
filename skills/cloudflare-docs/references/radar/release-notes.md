@@ -14,6 +14,15 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/radar/release-notes/index.xml)
 
+## 2026-05-04
+
+**Add new routing widgets to Cloudflare Radar**
+* Added a **Top ASes by announced IP space** chart to country [routing pages](https://radar.cloudflare.com/routing), breaking down the IPv4 and IPv6 address space announced from a country across the top originating autonomous systems.
+* Added an **RPKI ROA deployment** timeseries widget to the [RPKI sub-page](https://radar.cloudflare.com/routing/rpki), tracking the share of announced BGP space covered by a valid Route Origin Authorization (ROA) over time, with a toggle between covered prefixes and covered IP address space. Available on global, country, and AS views.
+* Added two new endpoints to the [BGP](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/) API:  
+   * [/bgp/ips/top/ases](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/ips/subresources/top/methods/ases/) \- Returns the top autonomous systems by announced IPv4 or IPv6 address space, globally or filtered by country.  
+   * [/bgp/rpki/roas/timeseries](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/rpki/subresources/roas/methods/timeseries/) \- Returns RPKI ROA validation coverage over time, by share of prefixes or share of IP address space, split by IP version, with optional ASN or location filters.
+
 ## 2026-04-24
 
 **Add signature agent URL to bot details**

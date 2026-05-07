@@ -5,7 +5,12 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Delete the given state or if the serial is provided only that version of the given state.
+Delete a state or a specific version of a state.
+
+## Synopsis
+
+Prompts for confirmation before deletion. Use `--force` to skip
+the confirmation prompt.
 
 ```plaintext
 glab opentofu state delete <state> [<serial>] [flags]

@@ -97,6 +97,7 @@ in the main README.
 - [`glab schedule`](schedule/_index.md)
 - [`glab search`](search/_index.md)
 - [`glab securefile`](securefile/_index.md)
+- [`glab skills`](skills/_index.md)
 - [`glab snippet`](snippet/_index.md)
 - [`glab ssh-key`](ssh-key/_index.md)
 - [`glab stack`](stack/_index.md)

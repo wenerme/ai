@@ -22,9 +22,11 @@ While API Shield is not required to use mTLS, many teams may use mTLS to protect
 
 [Mutual TLS (mTLS)](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) authentication is a common security practice that uses client certificates to ensure traffic between client and server is bidirectionally secure and trusted. mTLS also allows requests that do not authenticate via an identity provider — such as Internet-of-things (IoT) devices — to demonstrate they can reach a given resource.
 
+Use mTLS when you need to verify the identity of API clients, such as mobile applications, IoT devices, or services that connect to your API.
+
 ![mTLS sequence diagram](https://developers.cloudflare.com/_astro/api-shield-call-sequence.DjXyNgan_CJbMD.webp) 
 
-Support includes [gRPC ↗](https://grpc.io/docs/what-is-grpc/introduction/)\-based APIs, which use binary formats such as protocol buffers rather than JSON.
+mTLS also supports [gRPC ↗](https://grpc.io/docs/what-is-grpc/introduction/)\-based APIs, which use binary formats such as protocol buffers rather than JSON.
 
 ## Setup
 

@@ -170,15 +170,14 @@ Your VNC server is now ready to accept inbound requests from Cloudflare.
 Create a Cloudflare Access application that users can access through their browser:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application**.
-3. Select **Self-hosted**.
-4. Enter any name for the application.
-5. Select **Add public hostname** and enter your published application hostname (`vnc.example.com`).
-6. In **Browser rendering settings**, set **Browser rendering** to _VNC_.
-7. Add [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.  
+2. Select **Create new application**.
+3. Select **Self-hosted and private**.
+4. Select **Add public hostname** and enter your published application hostname (`vnc.example.com`).
+5. Turn on **Allow access through browser-based RDP, SSH, or VNC sessions**, then select _VNC_.
+6. Under **Access policies**, add an existing policy or [create a new policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.  
 Note  
 Ensure that only **Allow** or **Block** policies are present. **Bypass** and **Service Auth** are not supported for browser-rendered applications.
-8. Save the application.
+7. Select **Create**.
 
 ## 4\. Connect as a user
 

@@ -258,5 +258,6 @@ You pay the standard rate for whichever model is selected. There is no additiona
 ## Related
 
 * [Body Builder](/docs/guides/routing/routers/body-builder) - Generate multiple parallel API requests
+* [Latest Model Resolution](/docs/guides/routing/routers/latest-resolution) - Always target the newest version of a model family
 * [Model Fallbacks](/docs/guides/routing/model-fallbacks) - Configure fallback models
 * [Provider Selection](/docs/guides/routing/provider-selection) - Control which providers are used

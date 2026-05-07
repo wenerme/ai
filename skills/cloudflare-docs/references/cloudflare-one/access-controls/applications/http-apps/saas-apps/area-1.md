@@ -33,8 +33,8 @@ Beginning October 1, 2025, access and support for Email Security (formerly Area 
 ## 1\. Add Area 1 to Cloudflare One
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application**.
-3. Select **SaaS**.
+2. Select **Create new application**.
+3. Select **SaaS application**.
 4. In the **Application** field, enter `Area 1` and select **Area 1**. (Area 1 is not currently listed in the default drop-down menu.)
 5. Enter the following values for your application configuration:  
 | **Entity ID**                      | https://horizon.area1security.com                |  

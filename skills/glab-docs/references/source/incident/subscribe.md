@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Subscribe to an incident.
 
+## Synopsis
+
+You receive notifications when the incident is updated, commented on,
+or has its state changed.
+
 ```plaintext
 glab incident subscribe <id> [flags]
 ```

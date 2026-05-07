@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 View the fully expanded CI/CD configuration.
 
+## Synopsis
+
+Defaults to the `.gitlab-ci.yml` file in the current directory.
+You must run this command from a GitLab project repository.
+
 ```plaintext
 glab ci config compile [flags]
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Configure with Connector
 
-Cloudflare One Appliance is a lightweight appliance you can install in corporate network locations to automatically connect, steer, and shape any IP traffic through [secure IPsec tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#security-and-other-information). Cloudflare One Appliance is the easiest way to onboard your network locations to Cloudflare One. It is managed remotely through the Cloudflare dashboard, so you do not require an onsite IT team.
+Cloudflare One Appliance is a lightweight appliance you can install in corporate network locations to automatically connect and steer any IP traffic through [secure IPsec tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#security-and-other-information). Cloudflare One Appliance is the easiest way to onboard your network locations to Cloudflare One. It is managed remotely through the Cloudflare dashboard, so you do not require an onsite IT team.
 
 You can [purchase Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/) software pre-installed on a Cloudflare-certified device, or download and deploy [Virtual Appliance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-virtual-appliance/) in your own infrastructure.
 

@@ -18,7 +18,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 API Shield's labeling service will help you organize your endpoints and address vulnerabilities in your API. The labeling service comes with managed and user-defined labels.
 
-Today, managed labels are useful for organizing endpoints by use case. In a future release, managed labels will automatically label endpoints by use case and those with informative or security risks, alerting you on endpoints that need attention.
+Managed labels help you organize endpoints by use case. Managed labels will also automatically identify endpoints with informative or security risks, alerting you on endpoints that need attention.
 
 User-defined labels can also be added to endpoints in API Shield by creating a label and adding it to an individual endpoint or multiple endpoints. User-defined labels will be useful for organizing your endpoints by owner, version, or type.
 
@@ -183,8 +183,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-4576)
-* [ Old dashboard ](#tab-panel-4577)
+* [  New dashboard ](#tab-panel-4424)
+* [ Old dashboard ](#tab-panel-4425)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -224,8 +224,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-4578)
-* [ Old dashboard ](#tab-panel-4579)
+* [  New dashboard ](#tab-panel-4426)
+* [ Old dashboard ](#tab-panel-4427)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -243,8 +243,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-4574)
-* [ Old dashboard ](#tab-panel-4575)
+* [  New dashboard ](#tab-panel-4422)
+* [ Old dashboard ](#tab-panel-4423)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

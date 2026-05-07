@@ -18,7 +18,7 @@ Leverage Cloudflare's global network to deliver excellent performance and reliab
 
 Cloudflare DNS is a fast, resilient, and easy-to-manage authoritative DNS service. It delivers excellent performance and reliability to your domain while also protecting your business from [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) and [route leaks and hijacking ↗](https://www.cloudflare.com/learning/security/glossary/bgp-hijacking/). To know where to begin, refer to [Get started](https://developers.cloudflare.com/dns/get-started/).
 
-Enterprise customers can also use Cloudflare DNS for their private network with [Internal DNS (Beta)](https://developers.cloudflare.com/dns/internal-dns/).
+Enterprise customers can also use Cloudflare DNS for their private network with [Internal DNS (Beta)](https://developers.cloudflare.com/dns/internal-dns/) and proxy public hostnames to [private origins (Beta)](https://developers.cloudflare.com/dns/private-origins/).
 
 ---
 

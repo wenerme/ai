@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Create a new merge request.
 
+## Synopsis
+
+Defaults to the current branch as the source branch. Use `--fill`
+to automatically fill the title and description from the commit history. Use
+`--draft` to create a draft merge request.
+
 ```plaintext
 glab mr create [flags]
 ```

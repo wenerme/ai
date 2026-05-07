@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 List variables for a project or group.
 
+## Synopsis
+
+Defaults to the current project. Use `--group` to list variables
+for a group, or `--instance` to list instance variables.
+
 ```plaintext
 glab variable list [flags]
 ```

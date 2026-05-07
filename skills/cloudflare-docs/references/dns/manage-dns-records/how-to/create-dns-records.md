@@ -26,8 +26,8 @@ If your domain is added to Cloudflare by a hosting partner, manage your DNS reco
 
 ### Create DNS records
 
-* [ Dashboard ](#tab-panel-5579)
-* [ API ](#tab-panel-5580)
+* [ Dashboard ](#tab-panel-5760)
+* [ API ](#tab-panel-5761)
 
 To create a DNS record in the dashboard:
 
@@ -39,7 +39,7 @@ To create a DNS record in the dashboard:
    * **Proxy status**: For `A`, `AAAA`, and `CNAME` records, decide whether hostname traffic is [proxied through Cloudflare](https://developers.cloudflare.com/dns/proxy-status/).  
    * **TTL**: Short for [_Time to Live_](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/), this field controls how long each record is valid and — as a result — how long it takes for record updates to reach your end users.  
    * **Comment** and **Tag**: [Record attributes](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/) meant for your reference.  
-   * **Private network routing**: Some Enterprise customers also have access to [private network routing](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-origins/private-network-routing/). For `A` and `AAAA` records, this feature allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network.
+   * **Private network routing**: Some Enterprise customers also have access to [private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/). For `A` and `AAAA` records, this feature allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network.
 5. Select **Save**.
 
 To create records with the API, use a [POST request](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/). For field definitions, select a record type under the request body specification.
@@ -48,8 +48,8 @@ For specific API examples, refer to [DNS record types](https://developers.cloudf
 
 ### Edit DNS records
 
-* [ Dashboard ](#tab-panel-5575)
-* [ API ](#tab-panel-5576)
+* [ Dashboard ](#tab-panel-5756)
+* [ API ](#tab-panel-5757)
 
 To edit DNS records in the dashboard:
 
@@ -63,8 +63,8 @@ To update part of a record with the API, use a [PATCH request](https://developer
 
 ### Delete DNS records
 
-* [ Dashboard ](#tab-panel-5577)
-* [ API ](#tab-panel-5578)
+* [ Dashboard ](#tab-panel-5758)
+* [ API ](#tab-panel-5759)
 
 To delete DNS records in the dashboard:
 
@@ -104,7 +104,6 @@ The address `192.0.2.0` comes from an IPv4 range reserved for documentation ([RF
 * [ Create zone apex record ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)
 * [ Create subdomain records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)
 * [ Set up email records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
-* [ Private origins ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-origins/)
 * [ Import and export records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/)
 * [ Batch record changes ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/)
 * [ Dynamically update DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses/)

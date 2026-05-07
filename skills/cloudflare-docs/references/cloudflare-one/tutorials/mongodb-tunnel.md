@@ -40,12 +40,11 @@ In this tutorial, a client running `cloudflared` connects over SSH to a MongoDB 
 You can build a rule in Cloudflare Access to control who can connect to your MongoDB deployment. Cloudflare Access rules are built around a hostname; even though this deployment will be accessible over SSH, the resource will be represented in Cloudflare as a hostname. For example, if you have the website `app.com` in your Cloudflare account, you can build a rule to secure `mongodb.app.com`.
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application**.
-3. Select **Self-hosted**.
-4. Enter any name for the application.
-5. Select **Add public hostname** and enter the subdomain where users will connect to your deployment (for example, `mongodb.app.com`).
-6. Add [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to control who can reach the deployment. You can build a policy that allows anyone in your organization to connect or you can build more granular policies based on signals like identity provider groups, [multifactor method](https://developers.cloudflare.com/cloudflare-one/tutorials/okta-u2f/), or [country](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/).
-7. Follow the remaining [self-hosted application creation steps](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) to publish the application.
+2. Select **Create new application**.
+3. Select **Self-hosted and private**.
+4. Select **Add public hostname** and enter the subdomain where users will connect to your deployment (for example, `mongodb.app.com`).
+5. Add [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to control who can reach the deployment. You can build a policy that allows anyone in your organization to connect or you can build more granular policies based on signals like identity provider groups, [multifactor method](https://developers.cloudflare.com/cloudflare-one/tutorials/okta-u2f/), or [country](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/).
+6. Follow the remaining [self-hosted application creation steps](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) to publish the application.
 
 ## Configure the Kubernetes deployment
 

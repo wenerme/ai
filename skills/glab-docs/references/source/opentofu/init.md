@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Initialize OpenTofu or Terraform.
 
+## Synopsis
+
+Configures the GitLab HTTP backend for OpenTofu or Terraform state
+and runs `tofu init`. You must run this command from a GitLab
+project repository.
+
 ```plaintext
 glab opentofu init <state> [flags]
 ```

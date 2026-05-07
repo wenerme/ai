@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Signed agents
 
-A signed agent is controlled by an end user and a verified signature-agent from their Web Bot Auth implementation.
+A signed agent is a bot controlled by an end user and verified through [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/) cryptographic signatures.
 
 You can request for your agent to be added to Cloudflare's bots and agents directory by filling out an [online application ↗](https://dash.cloudflare.com/?to=/:account/configurations/verified-bots) in the Cloudflare dashboard.
 

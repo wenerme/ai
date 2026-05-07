@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Create a new variable for a project or group.
 
+## Synopsis
+
+You can pass the variable value from standard input. Use `--group`
+to set a variable for a group instead of the current project.
+
 ```plaintext
 glab variable set <key> <value> [flags]
 ```

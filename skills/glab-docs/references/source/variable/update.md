@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Update an existing variable for a project or group.
 
+## Synopsis
+
+You can pass the variable value from standard input. Use `--group`
+to update a variable for a group instead of the current project.
+The `--scope` flag does not apply to group variables.
+
 ```plaintext
 glab variable update <key> <value> [flags]
 ```

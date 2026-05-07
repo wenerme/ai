@@ -14,11 +14,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 By default, Cloudflare issues — and [renews](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl) — free, unshared, publicly trusted SSL certificates to all domains [added to](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and [activated on](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) Cloudflare.
 
-Universal certificates are [Domain Validated (DV)](https://developers.cloudflare.com/ssl/concepts/#validation-level). For setup details, refer to [Enable Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl/).
+On a [full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/), Universal SSL certificates cover your root domain (for example, `example.com`) and first-level subdomains (for example, `www.example.com`). On a [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), each proxied subdomain receives its own certificate regardless of depth. Cloudflare handles issuance, renewal, and deployment automatically.
+
+For full setup zones that need coverage beyond first-level subdomains, use [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) or [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/).
+
+Universal certificates are [Domain Validated (DV)](https://developers.cloudflare.com/ssl/concepts/#validation-level), which means the certificate authority verifies domain ownership but does not validate organization identity. For setup details, refer to [Enable Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl/).
 
 Note
 
-If your website or application requires an SSL certificate prior to migrating traffic to Cloudflare, or if you need to [customize cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/), refer to [Advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) or [Custom](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) certificates.
+Universal SSL certificates are issued after your domain is active on Cloudflare. If you need an SSL certificate before migrating traffic, or if you need to [customize cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/), use [Advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) or [Custom](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) certificates.
 
 ## Availability
 
@@ -28,6 +32,7 @@ If your website or application requires an SSL certificate prior to migrating tr
 
 ## Related resources
 
+* [Limitations](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/)
 * [Backup certificates](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/)
 * [Validity period and renewal](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl)
 

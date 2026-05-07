@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Get the list of CI/CD pipelines.
 
+## Synopsis
+
+Defaults to the current project. Use `--status` to filter pipelines by status.
+
 ```plaintext
 glab ci list [flags]
 ```

@@ -2427,6 +2427,14 @@ components:
         OpenRouter built-in server tool: searches the web for current
         information
       title: OpenRouterWebSearchServerTool
+    MessagesRequestToolsItems10:
+      type: object
+      properties:
+        type:
+          type: string
+      required:
+        - type
+      title: MessagesRequestToolsItems10
     MessagesRequestToolsItems:
       oneOf:
         - $ref: '#/components/schemas/MessagesRequestToolsItems0'
@@ -2439,6 +2447,7 @@ components:
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'
         - $ref: '#/components/schemas/WebFetchServerTool'
         - $ref: '#/components/schemas/OpenRouterWebSearchServerTool'
+        - $ref: '#/components/schemas/MessagesRequestToolsItems10'
       title: MessagesRequestToolsItems
     TraceConfig:
       type: object
@@ -3747,19 +3756,10 @@ components:
           type: string
         selected:
           type: boolean
-        sort_rank:
-          type: integer
-        sort_value:
-          type:
-            - number
-            - 'null'
-          format: double
       required:
         - model
         - provider
         - selected
-        - sort_rank
-        - sort_value
       title: EndpointInfo
     EndpointsMetadata:
       type: object
@@ -3768,18 +3768,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EndpointInfo'
-        sort:
-          type: string
-        sort_value:
-          type:
-            - number
-            - 'null'
-          format: double
         total:
           type: integer
       required:
         - available
-        - sort
         - total
       title: EndpointsMetadata
     RouterParams:
@@ -3788,8 +3780,6 @@ components:
         quality_floor:
           type: number
           format: double
-        sort:
-          type: string
         throughput_floor:
           type: number
           format: double
@@ -3799,10 +3789,8 @@ components:
     PipelineStageType:
       type: string
       enum:
-        - router
         - guardrail
-        - web_search
-        - file_parser
+        - plugin
         - server_tools
         - response_healing
         - context_compression

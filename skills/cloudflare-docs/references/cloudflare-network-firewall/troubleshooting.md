@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
+
 # Troubleshooting
 
 * [ Diagnose traffic decisions ](https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/)

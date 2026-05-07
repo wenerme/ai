@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Logging ](https://developers.cloudflare.com/search/?tags=Logging)[ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
+
 # 1.1.1.1 Public DNS Resolver
 
 _Last updated March 27, 2024_

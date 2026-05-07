@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ AWS ](https://developers.cloudflare.com/search/?tags=AWS)[ Azure ](https://developers.cloudflare.com/search/?tags=Azure)[ GCP ](https://developers.cloudflare.com/search/?tags=GCP)[ Integration ](https://developers.cloudflare.com/search/?tags=Integration) 
+
 # Get started
 
 To get started with Cloudflare One Multi-Cloud Networking (formerly Magic Cloud Networking) (beta) you need to give Cloudflare permission to interact with cloud providers on your behalf. You might have multiple provider accounts for the same cloud provider — for example, you might want Cloudflare to manage virtual private clouds (VPCs) belonging to two different AWS accounts.

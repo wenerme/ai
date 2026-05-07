@@ -28,7 +28,7 @@ This guide covers how to configure [Slack ↗](https://slack.com/help/articles/2
 ## 1\. Add a SaaS application to Cloudflare One
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Add an application** \> **SaaS**.
+2. Select **Create new application** \> **SaaS application**.
 3. For **Application**, select _Slack_.
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
@@ -47,8 +47,8 @@ This guide covers how to configure [Slack ↗](https://slack.com/help/articles/2
 
 ## 3\. Add a SAML SSO provider to Slack
 
-* [ business+ plan ](#tab-panel-4427)
-* [ enterprise grid plan ](#tab-panel-4428)
+* [ business+ plan ](#tab-panel-4804)
+* [ enterprise grid plan ](#tab-panel-4805)
 
 1. In Slack, go to **Settings & administrations** \> **Workspace settings** \> **Authentication**.
 2. Select **Configure**.

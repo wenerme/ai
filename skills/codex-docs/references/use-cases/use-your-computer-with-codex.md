@@ -10,7 +10,7 @@ bestFor:
 starterPrompt:
   title: Hand Off One Computer Task
   body: >-
-    @Computer Use [do the task you want completed across your Mac]
+    @Computer [do the task you want completed across your Mac]
 
 
     For example:
@@ -40,7 +40,7 @@ This works especially well for tasks that jump between apps or windows, such as 
 ## How to use
 
 1. Install the [Computer Use plugin](https://developers.openai.com/codex/app/computer-use).
-2. Start your request with `@Computer Use`, or mention a specific app such as `@Slack` or `@Messages`.
+2. Start your request with `@Computer`, or mention a specific app such as `@Slack` or `@Messages`.
 3. Describe the task and the outcome you want.
 4. Approve access when Codex needs it, then let it continue the task in the background.
 
@@ -48,9 +48,9 @@ If you mention a specific app and a plugin exists for that app, Codex may prefer
 
 For example:
 
-- `@Computer Use Play some music to help me focus.`
-- `@Computer Use Help me add my interview notes from Notes to Ashby.`
-- `@Computer Use Go through my Slack and add reminders for everything I need to do by end of day.`
+- `@Computer Play some music to help me focus.`
+- `@Computer Help me add my interview notes from Notes to Ashby.`
+- `@Computer Go through my Slack and add reminders for everything I need to do by end of day.`
 
 ## Practical tips
 

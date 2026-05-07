@@ -20,6 +20,8 @@ By default, a Mesh node is reachable only by its own [Mesh IP](https://developer
 
 When you add a route, the Mesh node acts as a gateway: traffic destined for the advertised CIDR is forwarded to the node, which delivers it to the appropriate host on the local network.
 
+Both IPv4 and IPv6 CIDR routes are supported.
+
 ## When to use routes
 
 * **Without routes** — Devices on your Mesh can only reach the node itself by its Mesh IP. Services running directly on the node are reachable this way.
@@ -41,8 +43,8 @@ Use CIDR routes to forward traffic from your mesh node to devices on your local 
 
 ### Add a route
 
-* [ Dashboard ](#tab-panel-4741)
-* [ API ](#tab-panel-4742)
+* [ Dashboard ](#tab-panel-4922)
+* [ API ](#tab-panel-4923)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -84,8 +86,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" 
 
 ### Edit a route
 
-* [ Dashboard ](#tab-panel-4743)
-* [ API ](#tab-panel-4744)
+* [ Dashboard ](#tab-panel-4924)
+* [ API ](#tab-panel-4925)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the edit icon next to the route you want to modify.
@@ -121,8 +123,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$
 
 ### Delete a route
 
-* [ Dashboard ](#tab-panel-4739)
-* [ API ](#tab-panel-4740)
+* [ Dashboard ](#tab-panel-4920)
+* [ API ](#tab-panel-4921)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the delete icon next to the route.

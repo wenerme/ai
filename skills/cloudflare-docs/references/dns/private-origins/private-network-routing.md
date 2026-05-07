@@ -16,17 +16,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Private network routing
 
- Enterprise-only 
-
 Private network routing allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network. When you enable this setting on a DNS record, Cloudflare routes traffic through your configured tunnel instead of over the public Internet.
 
-For an end-to-end setup walkthrough using Cloudflare WAN (formerly Magic WAN) IPsec, refer to [Set up a private origin via Cloudflare WAN](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-origins/private-origin-via-cloudflare-wan/).
+For an end-to-end setup walkthrough using Cloudflare WAN (formerly Magic WAN) IPsec, refer to [Set up a private origin via Cloudflare WAN](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/).
 
 Closed beta
 
 This feature is in closed beta. Contact your account team to request access.
 
-## Before you begin
+## Aspects to consider
 
 Before you enable private network routing, consider the following:
 
@@ -34,7 +32,7 @@ Before you enable private network routing, consider the following:
 * Private network routing is available for `A` (IPv4) and `AAAA` (IPv6) records only. Records must be [proxied](https://developers.cloudflare.com/dns/proxy-status/).
 * If you have multiple `A` or `AAAA` records on the same name, and at least one of them has private network routing enabled, all records on that name will use private network routing. This is consistent with the [proxy status behavior](https://developers.cloudflare.com/dns/proxy-status/#mix-proxied-and-unproxied) in these cases.
 
-### IP ranges
+## IP ranges
 
 The following private address ranges are automatically detected:
 
@@ -54,8 +52,8 @@ Virtual networks
 
 Traffic routes through your default virtual network. Selecting a specific virtual network is not supported.
 
-* [ Dashboard ](#tab-panel-5589)
-* [ API ](#tab-panel-5590)
+* [ Dashboard ](#tab-panel-5784)
+* [ API ](#tab-panel-5785)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -138,27 +136,6 @@ If you use the API to create or edit DNS records with private network routing, c
 
 Also, if you manually set `private_routing: false` on a proxied `A`/`AAAA` record with private IP, the API will return an error.
 
-## Troubleshooting
-
-### Error 1002: DNS points to prohibited IP
-
-This error occurs when you proxy a private IP address without the necessary entitlement. Contact your account team to request access.
-
-### Setting seems off but traffic routes through tunnel
-
-Check for other records on the same name.
-
-Private network routing applies per name, not per record. If you have multiple `A` or `AAAA` records on the same name and at least one of them has private network routing enabled, all records on that name will use private network routing.
-
-### Traffic not reaching origin
-
-If traffic is not reaching your private origin:
-
-1. Verify your tunnel is active and healthy in the Cloudflare dashboard.
-2. Confirm the origin IP is routable within your private network.
-3. Check that `private_routing` is set to `true` on the DNS record.
-4. Verify the record has proxy status enabled.
-
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/private-origins/","name":"Private origins"}},{"@type":"ListItem","position":6,"item":{"@id":"/dns/manage-dns-records/how-to/private-origins/private-network-routing/","name":"Private network routing"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/private-origins/","name":"Private origins (beta)"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/private-origins/private-network-routing/","name":"Private network routing"}}]}
 ```

@@ -1,3 +1,5 @@
+# Understand and count tokens
+
 Gemini and other generative AI models process input and output at a granularity
 called a *token*.
 

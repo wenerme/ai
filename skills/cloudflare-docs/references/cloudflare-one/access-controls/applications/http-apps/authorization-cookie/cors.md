@@ -83,7 +83,7 @@ headers: {
 }  
 ```  
 then go to `api.mysite.com` in Access and configure **Access-Control-Allow-Origin**, **Access-Control-Allow-Credentials**, **Access-Control-Allow-Methods**, and **Access-Control-Allow-Headers**.![Example CORS settings configuration in Cloudflare One](https://developers.cloudflare.com/_astro/CORS-settings.C9-43Ja__Zwvcyt.webp)
-5. Select **Save application**.
+5. Select **Save**.
 6. (Optional) You can check your configuration by sending an OPTIONS request to the origin with `curl`. For example,  
 Terminal window  
 ```  

@@ -30,7 +30,7 @@ Refer to [WAN transformation](https://developers.cloudflare.com/cloudflare-one/n
 
 ###  Connect your network automatically 
 
-Use Cloudflare One Appliance to automatically connect, steer, and shape any IP traffic.
+Use Cloudflare One Appliance to automatically connect and steer any IP traffic.
 
 [ Use Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/) 
 

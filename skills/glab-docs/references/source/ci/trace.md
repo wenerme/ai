@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Trace a CI/CD job log in real time.
 
+## Synopsis
+
+Streams the job log to the terminal. The output updates in real time
+while the job runs. Without a job argument, you can select one
+interactively.
+
 ```plaintext
 glab ci trace [<job-id>|<job-name>] [flags]
 ```

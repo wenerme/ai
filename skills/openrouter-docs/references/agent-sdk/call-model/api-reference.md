@@ -184,16 +184,20 @@ Create a typed tool with Zod schema validation.
 
 ### ToolConfig
 
-| Parameter        | Type                      | Required | Description                            |
-| ---------------- | ------------------------- | -------- | -------------------------------------- |
-| `name`           | `string`                  | Yes      | Tool name                              |
-| `description`    | `string`                  | No       | Tool description                       |
-| `inputSchema`    | `ZodObject`               | Yes      | Input parameter schema                 |
-| `outputSchema`   | `ZodType`                 | No       | Output schema                          |
-| `eventSchema`    | `ZodType`                 | No       | Event schema (triggers generator mode) |
-| `contextSchema`  | `ZodObject`               | No       | Context data this tool needs           |
-| `execute`        | `function \| false`       | Yes      | Execute function or false for manual   |
-| `nextTurnParams` | `NextTurnParamsFunctions` | No       | Parameters to modify next turn         |
+| Parameter            | Type                      | Required | Description                                                 |
+| -------------------- | ------------------------- | -------- | ----------------------------------------------------------- |
+| `name`               | `string`                  | Yes      | Tool name                                                   |
+| `description`        | `string`                  | No       | Tool description                                            |
+| `inputSchema`        | `ZodObject`               | Yes      | Input parameter schema                                      |
+| `outputSchema`       | `ZodType`                 | No       | Output schema                                               |
+| `eventSchema`        | `ZodType`                 | No       | Event schema (triggers generator mode)                      |
+| `contextSchema`      | `ZodObject`               | No       | Context data this tool needs                                |
+| `execute`            | `function \| false`       | Yes\*    | Execute function, or `false` for manual                     |
+| `onToolCalled`       | `function`                | Yes\*    | HITL hook — return value to auto-respond, `null` to pause   |
+| `onResponseReceived` | `function`                | No       | HITL hook — post-process caller-supplied result (HITL only) |
+| `nextTurnParams`     | `NextTurnParamsFunctions` | No       | Parameters to modify next turn                              |
+
+\* Provide exactly one of `execute` or `onToolCalled`. Omitting both (with `execute: false`) makes the tool a manual tool.
 
 ### Tool
 
@@ -203,7 +207,8 @@ Union type of all tool types:
 type Tool =
   | ToolWithExecute<ZodObject, ZodType>
   | ToolWithGenerator<ZodObject, ZodType, ZodType>
-  | ManualTool<ZodObject, ZodType>;
+  | ManualTool<ZodObject, ZodType>
+  | HITLTool<ZodObject, ZodType>;
 ```
 
 ### ToolWithExecute
@@ -268,6 +273,57 @@ interface ManualTool<TInput, TOutput> {
   };
 }
 ```
+
+### HITLTool
+
+Human-in-the-loop tool with `onToolCalled` and optional `onResponseReceived` hooks. `outputSchema` is required — it validates both the hook's non-null return value and the caller-supplied response delivered via `function_call_output`.
+
+```typescript
+interface HITLToolFunction<
+  TInput, TOutput, TContext, TName
+> {
+  name: TName;
+  description?: string;
+  inputSchema: TInput;
+  outputSchema: TOutput;
+  contextSchema?: ZodObject;
+  onToolCalled: (
+    params: z.infer<TInput>,
+    context?: ToolExecuteContext<TName, TContext>,
+  ) => Promise<z.infer<TOutput> | null> | z.infer<TOutput> | null;
+  onResponseReceived?: (
+    rawResult: unknown,
+    context?: ToolExecuteContext<TName, TContext>,
+  ) => Promise<z.infer<TOutput>> | z.infer<TOutput>;
+  toModelOutput?: ToModelOutputFunction<
+    z.infer<TInput>,
+    z.infer<TOutput>
+  >;
+}
+
+type HITLTool<TInput, TOutput, TContext> = {
+  type: ToolType.Function;
+  function: HITLToolFunction<TInput, TOutput, TContext>;
+};
+```
+
+Returning `null` from `onToolCalled` pauses the loop and sets the conversation status to `'awaiting_hitl'`. Throwing from `onToolCalled` is surfaced as a tool error of the form `{ error: ... }`. Throwing from `onResponseReceived` is surfaced as an error payload that includes the caller's original output of the form `{ error: ..., originalOutput: ... }`.
+
+***
+
+## Tool Type Guards
+
+```typescript
+function isManualTool(tool: Tool): tool is ManualTool;
+function isHITLTool(tool: Tool): tool is HITLTool;
+function isAutoResolvableTool(
+  tool: Tool,
+): tool is ToolWithExecute | ToolWithGenerator | HITLTool;
+```
+
+* `isManualTool` — no `execute` and no `onToolCalled`. Always pauses the loop.
+* `isHITLTool` — has an `onToolCalled` function.
+* `isAutoResolvableTool` — either has an `execute` function (regular/generator) or is a HITL tool. Returns `false` for manual and server tools.
 
 ***
 
@@ -523,7 +579,13 @@ type TypedToolCall<T extends Tool> = {
 export { OpenRouter } from '@openrouter/agent';
 
 // Tool helpers
-export { tool, ToolType } from '@openrouter/agent';
+export {
+  tool,
+  ToolType,
+  isManualTool,
+  isHITLTool,
+  isAutoResolvableTool,
+} from '@openrouter/agent';
 
 // Format helpers
 export { fromChatMessages, toChatMessage, fromClaudeMessages, toClaudeMessage } from '@openrouter/agent';
@@ -545,6 +607,8 @@ export type {
   ToolWithExecute,
   ToolWithGenerator,
   ManualTool,
+  HITLTool,
+  HITLToolFunction,
   ToolExecuteContext,
   ToolContextMap,
   TurnContext,

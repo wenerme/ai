@@ -82,6 +82,73 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
+    ContentFilterBuiltinAction:
+      type: string
+      enum:
+        - redact
+        - block
+        - flag
+      description: Action taken when the builtin filter triggers
+      title: ContentFilterBuiltinAction
+    ContentFilterBuiltinSlug:
+      type: string
+      enum:
+        - email
+        - phone
+        - ssn
+        - credit-card
+        - ip-address
+        - person-name
+        - address
+        - regex-prompt-injection
+      description: The builtin filter identifier
+      title: ContentFilterBuiltinSlug
+    ContentFilterBuiltinEntry:
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/ContentFilterBuiltinAction'
+        label:
+          type: string
+          description: >-
+            Optional label used in redaction placeholders (e.g.
+            "[PROMPT_INJECTION]")
+        slug:
+          $ref: '#/components/schemas/ContentFilterBuiltinSlug'
+      required:
+        - action
+        - slug
+      description: >-
+        A builtin content filter entry. Builtin filters include PII detectors
+        and the regex-based prompt injection detector.
+      title: ContentFilterBuiltinEntry
+    ContentFilterAction:
+      type: string
+      enum:
+        - redact
+        - block
+      description: Action taken when the pattern matches
+      title: ContentFilterAction
+    ContentFilterEntry:
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/ContentFilterAction'
+        label:
+          type:
+            - string
+            - 'null'
+          description: Optional label used in redaction placeholders or error messages
+        pattern:
+          type: string
+          description: A regex pattern to match against request content
+      required:
+        - action
+        - pattern
+      description: >-
+        A custom regex content filter that scans request messages for matching
+        patterns.
+      title: ContentFilterEntry
     GuardrailInterval:
       type: string
       enum:
@@ -107,6 +174,23 @@ components:
           items:
             type: string
           description: New list of allowed provider IDs
+        content_filter_builtins:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ContentFilterBuiltinEntry'
+          description: >-
+            Builtin content filters to apply. Set to null to remove. Use slug
+            "regex-prompt-injection" with action "block", "flag", or "redact" to
+            enable heuristic prompt injection detection.
+        content_filters:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ContentFilterEntry'
+          description: Custom regex content filters to apply. Set to null to remove.
         description:
           type:
             - string
@@ -162,6 +246,22 @@ components:
           items:
             type: string
           description: List of allowed provider IDs
+        content_filter_builtins:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ContentFilterBuiltinEntry'
+          description: >-
+            Builtin content filters applied to requests. Includes PII detectors
+            and the regex-based prompt injection detector.
+        content_filters:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ContentFilterEntry'
+          description: Custom regex content filters applied to request messages
         created_at:
           type: string
           description: ISO 8601 timestamp of when the guardrail was created

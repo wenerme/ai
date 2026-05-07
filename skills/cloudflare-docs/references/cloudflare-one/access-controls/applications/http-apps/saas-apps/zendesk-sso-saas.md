@@ -29,7 +29,7 @@ This guide covers how to configure [Zendesk ↗](https://support.zendesk.com/hc/
 
 1. Go to your Zendesk administrator dashboard, typically available at `<yourdomain>.zendesk.com/admin/security/sso`.
 2. In a separate tab or window, open the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select your account, and go to **Zero Trust** \> **Access controls** \> **Applications**.
-3. Select **Add an application**, then choose _SaaS_.
+3. Select **Create new application**, then choose **SaaS application**.
 4. Input the following values in the Cloudflare One application configuration:  
 | Cloudflare One field               | Value                                           |  
 | ---------------------------------- | ----------------------------------------------- |  

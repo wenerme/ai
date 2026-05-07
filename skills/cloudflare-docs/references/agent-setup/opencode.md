@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Build an image upload and transformation service using R2 and Cloudflare Images.  
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.  
 ```
 
 ## Cloudflare platform access

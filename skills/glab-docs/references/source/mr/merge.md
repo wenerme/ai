@@ -7,6 +7,14 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Merge or accept a merge request.
 
+## Synopsis
+
+Defaults to the currently checked-out branch. When a pipeline is running,
+auto-merge is enabled by default. Pass `--auto-merge=false` to
+merge immediately. Use `--squash` or `--rebase` to control
+the merge strategy, or `--remove-source-branch` to delete the
+source branch after merging.
+
 ```plaintext
 glab mr merge [<id | branch>] [flags]
 ```

@@ -10,7 +10,7 @@ bestFor:
 starterPrompt:
   title: Run a Structured QA Pass
   body: |-
-    @Computer Use Test my app in [environment].
+    @Computer Test my app in [environment].
 
     Test these flows:
     - [hero use case 1]
@@ -46,11 +46,11 @@ The key is to tell Codex what environment to test, which flows matter most, and 
 
 You can keep this broad:
 
-- `@Computer Use Test my app. Find any major issues and give me a report.`
+- `@Computer Test my app. Find any major issues and give me a report.`
 
 Or make it more explicit:
 
-- `@Computer Use Test my app in staging. Cover signup, invite a teammate, and upgrade billing. Log every bug with repro steps, expected result, actual result, and severity.`
+- `@Computer Test my app in staging. Cover signup, invite a teammate, and upgrade billing. Log every bug with repro steps, expected result, actual result, and severity.`
 
 If you already maintain a test-plan file in the repo, attach it to the thread or point Codex at it so the QA pass follows your existing flows.
 

@@ -217,21 +217,19 @@ For GitLab, start by building two policies. Users will connect to GitLab in a co
 
 Before you build the rule, you'll need to follow [these instructions](https://developers.cloudflare.com/cloudflare-one/setup/) to set up Cloudflare Access in your account.
 
-Once enabled, go to the **Applications** page in Zero Trust. Select **Add an application**.
+Once enabled, go to the **Applications** page in Zero Trust. Select **Create new application**.
 
-Choose self-hosted from the options presented.
+Select **Self-hosted and private**.
 
 ![Self Hosted](https://developers.cloudflare.com/_astro/policy.V6-L7e37_Z1O2Ag1.webp) 
 
-In the policy builder, you will be prompted to add a subdomain that will represent the resource. This must be a subdomain of a domain in your Cloudflare account. You will need separate subdomains for the web application and SSH flows.
+You will be prompted to add a subdomain that will represent the resource. This must be a subdomain of a domain in your Cloudflare account. You will need separate subdomains for the web application and SSH flows.
 
 This example uses `gitlab.widgetcorp.tech` for the web application and `gitlab-ssh.widgetcorp.tech` for SSH connectivity.
 
-While on this page, you can decide which identity providers will be allowed to authenticate. By default, all configured providers are allowed. Select **Next** to build rules to determine who can reach the application.
+You can decide which identity providers will be allowed to authenticate. By default, all configured providers are allowed. Add rules to determine who can reach the site.
 
-You can then add rules to determine who can reach the site.
-
-Select **Next** and **Next** again on the **Setup** page - this example does not require advanced CORS configuration. Repeat these steps for the second application, `gitlab-ssh.widgetcorp.tech`.
+Select **Create** to publish the application. Repeat these steps for the second application, `gitlab-ssh.widgetcorp.tech`.
 
 ## Cloudflare Tunnel
 

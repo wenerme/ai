@@ -79,7 +79,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     response = client.models.generate_content(
         model="gemini-2.0-flash", contents="Write a story about a magic backpack."
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L26-L32
+    print(response.text)
 
 ### Node.js
 
@@ -91,7 +91,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       model: "gemini-2.0-flash",
       contents: "Write a story about a magic backpack.",
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L36-L44
+    console.log(response.text);
 
 ### Go
 
@@ -110,7 +110,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L16-L31
+    printResponse(response)
 
 ### Shell
 
@@ -121,7 +121,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
           "contents": [{
             "parts":[{"text": "Write a story about a magic backpack."}]
             }]
-           }' 2> /dev/nullhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L21-L29
+           }' 2> /dev/null
 
 ### Java
 
@@ -133,7 +133,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                     "Write a story about a magic backpack.",
                     null);
 
-    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/TextGeneration.java#L34-L42
+    System.out.println(response.text());
 
 ### Image
 
@@ -147,7 +147,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     response = client.models.generate_content(
         model="gemini-2.0-flash", contents=["Tell me about this instrument", organ]
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L50-L58
+    print(response.text)
 
 ### Node.js
 
@@ -168,7 +168,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         ]),
       ],
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L70-L87
+    console.log(response.text);
 
 ### Go
 
@@ -203,7 +203,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L66-L97
+    printResponse(response)
 
 ### Shell
 
@@ -235,7 +235,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
-        -d "@$TEMP_JSON" 2> /dev/nullhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L41-L70
+        -d "@$TEMP_JSON" 2> /dev/null
 
 ### Java
 
@@ -251,7 +251,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response = client.models.generateContent("gemini-2.0-flash", content, null);
 
-    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/TextGeneration.java#L70-L82
+    System.out.println(response.text());
 
 ### Audio
 
@@ -265,7 +265,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         model="gemini-2.0-flash",
         contents=["Give me a summary of this audio file.", sample_audio],
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L118-L126
+    print(response.text)
 
 ### Node.js
 
@@ -286,7 +286,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         ]),
       ],
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L185-L202
+    console.log(response.text);
 
 ### Go
 
@@ -323,7 +323,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L256-L289
+    printResponse(response)
 
 ### Shell
 
@@ -372,7 +372,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     cat response.json
     echo
 
-    jq ".candidates[].content.parts[].text" response.jsonhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L174-L220
+    jq ".candidates[].content.parts[].text" response.json
 
 ### Video
 
@@ -396,7 +396,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     response = client.models.generate_content(
         model="gemini-2.0-flash", contents=[myfile, "Describe this video clip"]
     )
-    print(f"{response.text=}")https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L146-L164
+    print(f"{response.text=}")
 
 ### Node.js
 
@@ -425,7 +425,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         ]),
       ],
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L237-L262
+    console.log(response.text);
 
 ### Go
 
@@ -474,7 +474,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L342-L387
+    printResponse(response)
 
 ### Shell
 
@@ -536,7 +536,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     cat response.json
     echo
 
-    jq ".candidates[].content.parts[].text" response.jsonhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L272-L331
+    jq ".candidates[].content.parts[].text" response.json
 
 ### PDF
 
@@ -550,7 +550,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         model="gemini-2.0-flash",
         contents=["Give me a summary of this document:", sample_pdf],
     )
-    print(f"{response.text=}")https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L194-L202
+    print(f"{response.text=}")
 
 ### Go
 
@@ -587,7 +587,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L452-L485
+    printResponse(response)
 
 ### Shell
 
@@ -638,7 +638,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     cat response.json
     echo
 
-    jq ".candidates[].content.parts[].text" response.jsonhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L393-L441
+    jq ".candidates[].content.parts[].text" response.json
 
 ### Chat
 
@@ -666,7 +666,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     response = chat.send_message(message="I have 2 dogs in my house.")
     print(response.text)
     response = chat.send_message(message="How many paws are in my house?")
-    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/chat.py#L25-L47
+    print(response.text)
 
 ### Node.js
 
@@ -695,7 +695,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const response2 = await chat.sendMessage({
       message: "How many paws are in my house?",
     });
-    console.log("Chat response 2:", response2.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/chat.js#L33-L58
+    console.log("Chat response 2:", response2.text);
 
 ### Go
 
@@ -729,7 +729,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(secondResp.Text())https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/chat.go#L16-L46
+    fmt.Println(secondResp.Text())
 
 ### Shell
 
@@ -748,7 +748,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
              "parts":[{
                "text": "I have two dogs in my house. How many paws are in my house?"}]},
           ]
-        }' 2> /dev/null | grep "text"https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/chat.sh#L7-L23
+        }' 2> /dev/null | grep "text"
 
 ### Java
 
@@ -777,7 +777,6 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response2 = chat.sendMessage("How many paws are in my house?");
     System.out.println(response2.text());
-    https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/ChatSession.java#L32-L57
 
 ### Cache
 
@@ -804,7 +803,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         contents="Please summarize this transcript",
         config=types.GenerateContentConfig(cached_content=cache.name),
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L25-L46
+    print(response.text)
 
 ### Node.js
 
@@ -837,7 +836,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       contents: "Please summarize this transcript",
       config: { cachedContent: cache.name },
     });
-    console.log("Response text:", response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L33-L62
+    console.log("Response text:", response.text);
 
 ### Go
 
@@ -891,14 +890,14 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L16-L66
+    printResponse(response)
 
 ### Tuned Model
 
 ### Python
 
     # With Gemini 2 we're launching a new SDK. See the following doc for details.
-    # https://ai.google.dev/gemini-api/docs/migratehttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/README.md#L23-L24
+    # https://ai.google.dev/gemini-api/docs/migrate
 
 ### JSON Mode
 
@@ -920,7 +919,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
             response_mime_type="application/json", response_schema=list[Recipe]
         ),
     )
-    print(result)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/controlled_generation.py#L25-L41
+    print(result)
 
 ### Node.js
 
@@ -945,7 +944,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         },
       },
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/controlled_generation.js#L33-L54
+    console.log(response.text);
 
 ### Go
 
@@ -987,7 +986,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/controlled_generation.go#L14-L52
+    printResponse(response)
 
 ### Shell
 
@@ -1011,7 +1010,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
               }
             }
         }
-    }' 2> /dev/null | headhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/controlled_generation.sh#L5-L25
+    }' 2> /dev/null | head
 
 ### Java
 
@@ -1048,7 +1047,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                     "List a few popular cookie recipes.",
                     config);
 
-    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/ControlledGeneration.java#L39-L72
+    System.out.println(response.text());
 
 ### Code execution
 
@@ -1071,7 +1070,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     print("-" * 80)
     # The .text accessor concatenates the parts into a markdown-formatted text.
-    print("\n", response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/code_execution.py#L22-L39
+    print("\n", response.text)
 
 ### Go
 
@@ -1101,7 +1100,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     printResponse(response)
 
     fmt.Println("---")
-    fmt.Println(response.Text())https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/code_execution.go#L14-L40
+    fmt.Println(response.Text())
 
 ### Java
 
@@ -1123,7 +1122,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
 
     System.out.println("-".repeat(80));
-    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/CodeExecution.java#L32-L50
+    System.out.println(response.text());
 
 ### Function Calling
 
@@ -1158,7 +1157,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     response = chat.send_message(
         message="I have 57 cats, each owns 44 mittens, how many mittens is that in total?"
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/function_calling.py#L22-L51
+    print(response.text)
 
 ### Go
 
@@ -1260,7 +1259,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	log.Fatal(err)
     }
 
-    printResponse(finalResponse)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/function_calling.go#L63-L161
+    printResponse(finalResponse)
 
 ### Node.js
 
@@ -1446,7 +1445,6 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       console.log(chatResponse.text);
       return chatResponse;
     }
-    https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/function_calling.js#L22-L-1
 
 ### Shell
 
@@ -1504,7 +1502,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
           }
         }
       }
-    ') 2>/dev/null |sed -n '/"content"/,/"finishReason"/p'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/function_calling.sh#L4-L59
+    ') 2>/dev/null |sed -n '/"content"/,/"finishReason"/p'
 
 ### Java
 
@@ -1609,7 +1607,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     Number secondParam = (Number) arguments.get().get("secondParam");
     Double result = function.apply(firstParam.doubleValue(), secondParam.doubleValue());
 
-    System.out.println(result);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/FunctionCalling.java#L38-L139
+    System.out.println(result);
 
 ### Generation config
 
@@ -1629,7 +1627,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
             temperature=1.0,
         ),
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/configure_model_parameters.py#L22-L36
+    print(response.text)
 
 ### Node.js
 
@@ -1648,7 +1646,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       },
     });
 
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/configure_model_parameters.js#L22-L37
+    console.log(response.text);
 
 ### Go
 
@@ -1681,7 +1679,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	log.Fatal(err)
     }
 
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/configure_model_parameters.go#L13-L42
+    printResponse(response)
 
 ### Shell
 
@@ -1703,7 +1701,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                 "topP": 0.8,
                 "topK": 10
             }
-        }'  2> /dev/null | grep "text"https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/configure_model_parameters.sh#L4-L23
+        }'  2> /dev/null | grep "text"
 
 ### Java
 
@@ -1723,7 +1721,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                     "Tell me a story about a magic backpack.",
                     config);
 
-    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/ConfigureModelParameters.java#L29-L45
+    System.out.println(response.text());
 
 ### Safety Settings
 
@@ -1757,7 +1755,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     except Exception:
         print("No information generated by the model.")
 
-    print(response.candidates[0].safety_ratings)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/safety_settings.py#L48-L76
+    print(response.candidates[0].safety_ratings)
 
 ### Node.js
 
@@ -1792,7 +1790,6 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       console.log("Safety ratings:", response.candidates[0].safetyRatings);
       return response;
     }
-    https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/safety_settings.js#L49-L-1
 
 ### Go
 
@@ -1842,7 +1839,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	fmt.Println("Safety ratings:", string(safetyRatings))
     } else {
     	fmt.Println("No candidate returned.")
-    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/safety_settings.go#L60-L106
+    }
 
 ### Shell
 
@@ -1858,7 +1855,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
-        -d @request.json 2> /dev/nullhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/safety_settings.sh#L20-L33
+        -d @request.json 2> /dev/null
 
 ### Java
 
@@ -1894,7 +1891,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         System.out.println("No information generated by the model");
     }
 
-    System.out.println(response.candidates().get().getFirst().safetyRatings());https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/SafetySettings.java#L60-L92
+    System.out.println(response.candidates().get().getFirst().safetyRatings());
 
 ### System Instruction
 
@@ -1911,7 +1908,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
             system_instruction="You are a cat. Your name is Neko."
         ),
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/system_instruction.py#L22-L33
+    print(response.text)
 
 ### Node.js
 
@@ -1925,7 +1922,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         systemInstruction: "You are a cat. Your name is Neko.",
       },
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/system_instruction.js#L22-L32
+    console.log(response.text);
 
 ### Go
 
@@ -1952,7 +1949,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/system_instruction.go#L13-L36
+    printResponse(response)
 
 ### Shell
 
@@ -1963,7 +1960,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
           { "text": "You are a cat. Your name is Neko."}},
         "contents": {
           "parts": {
-            "text": "Hello there"}}}'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/system_instruction.sh#L4-L12
+            "text": "Hello there"}}}'
 
 ### Java
 
@@ -1983,7 +1980,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                     "Good morning! How are you?",
                     config);
 
-    System.out.println(response.text());https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/SystemInstruction.java#L30-L46
+    System.out.println(response.text());
 
 ### Response body
 
@@ -2050,7 +2047,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L37-L45
+        print("_" * 80)
 
 ### Node.js
 
@@ -2066,7 +2063,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
-    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L51-L63
+    }
 
 ### Go
 
@@ -2091,14 +2088,14 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     		log.Fatal(err)
     	}
     	fmt.Print(response.Candidates[0].Content.Parts[0].Text)
-    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L38-L59
+    }
 
 ### Shell
 
     curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=${GEMINI_API_KEY}" \
             -H 'Content-Type: application/json' \
             --no-buffer \
-            -d '{ "contents":[{"parts":[{"text": "Write a story about a magic backpack."}]}]}'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L33-L37
+            -d '{ "contents":[{"parts":[{"text": "Write a story about a magic backpack."}]}]}'
 
 ### Java
 
@@ -2116,7 +2113,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         response.append(res.text());
     }
 
-    responseStream.close();https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/TextGeneration.java#L49-L63
+    responseStream.close();
 
 ### Image
 
@@ -2132,7 +2129,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L63-L73
+        print("_" * 80)
 
 ### Node.js
 
@@ -2157,7 +2154,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
-    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L94-L115
+    }
 
 ### Go
 
@@ -2196,7 +2193,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     		log.Fatal(err)
     	}
     	fmt.Print(response.Candidates[0].Content.Parts[0].Text)
-    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L104-L139
+    }
 
 ### Shell
 
@@ -2219,7 +2216,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=$GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
-        -d "@$TEMP_JSON" 2> /dev/nullhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L74-L94
+        -d "@$TEMP_JSON" 2> /dev/null
 
 ### Java
 
@@ -2246,7 +2243,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         response.append(res.text());
     }
 
-    responseStream.close();https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/java/src/main/java/com/example/gemini/TextGeneration.java#L89-L112
+    responseStream.close();
 
 ### Audio
 
@@ -2262,7 +2259,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L131-L141
+        print("_" * 80)
 
 ### Go
 
@@ -2305,7 +2302,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     		log.Fatal(err)
     	}
     	fmt.Print(result.Candidates[0].Content.Parts[0].Text)
-    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L296-L335
+    }
 
 ### Shell
 
@@ -2352,7 +2349,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
            }' 2> /dev/null > response.json
 
     cat response.json
-    echohttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L224-L268
+    echo
 
 ### Video
 
@@ -2378,7 +2375,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L169-L189
+        print("_" * 80)
 
 ### Node.js
 
@@ -2411,7 +2408,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
-    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L269-L298
+    }
 
 ### Go
 
@@ -2466,7 +2463,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     		log.Fatal(err)
     	}
     	fmt.Print(result.Candidates[0].Content.Parts[0].Text)
-    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L394-L445
+    }
 
 ### Shell
 
@@ -2523,7 +2520,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
            }' 2> /dev/null > response.json
 
     cat response.json
-    echohttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L335-L389
+    echo
 
 ### PDF
 
@@ -2540,7 +2537,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L207-L218
+        print("_" * 80)
 
 ### Go
 
@@ -2583,7 +2580,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     		log.Fatal(err)
     	}
     	fmt.Print(result.Candidates[0].Content.Parts[0].Text)
-    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L492-L531
+    }
 
 ### Shell
 
@@ -2632,7 +2629,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
            }' 2> /dev/null > response.json
 
     cat response.json
-    echohttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/text_generation.sh#L445-L491
+    echo
 
 ### Chat
 
@@ -2665,7 +2662,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         print(chunk.text)
         print("_" * 80)
 
-    print(chat.get_history())https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/chat.py#L52-L79
+    print(chat.get_history())
 
 ### Node.js
 
@@ -2704,7 +2701,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       console.log("_".repeat(80));
     }
 
-    console.log(chat.getHistory());https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/chat.js#L66-L101
+    console.log(chat.getHistory());
 
 ### Go
 
@@ -2742,7 +2739,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	fmt.Println(strings.Repeat("_", 64))
     }
 
-    fmt.Println(chat.History(false))https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/chat.go#L54-L88
+    fmt.Println(chat.History(false))
 
 ### Shell
 
@@ -2761,7 +2758,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
              "parts":[{
                "text": "I have two dogs in my house. How many paws are in my house?"}]},
           ]
-        }' 2> /dev/null | grep "text"https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/chat.sh#L27-L43
+        }' 2> /dev/null | grep "text"
 
 ### Response body
 

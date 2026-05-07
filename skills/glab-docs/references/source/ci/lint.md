@@ -7,6 +7,13 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Checks if your `.gitlab-ci.yml` file is valid.
 
+## Synopsis
+
+Defaults to the `.gitlab-ci.yml` file in the current directory.
+You can also pass a URL to validate a remote file. Use `--dry-run`
+to simulate pipeline creation, and `--ref` to set the branch or
+tag context for the simulation.
+
 ```plaintext
 glab ci lint [flags]
 ```

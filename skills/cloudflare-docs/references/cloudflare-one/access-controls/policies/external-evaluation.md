@@ -61,8 +61,8 @@ The command will output the binding name and KV namespace ID, for example
    * `[[kv_namespaces]]`: Add the output generated in the previous step.  
    * `<TEAM_NAME>`: your Cloudflare One team name.
 
-* [  wrangler.jsonc ](#tab-panel-4483)
-* [  wrangler.toml ](#tab-panel-4484)
+* [  wrangler.jsonc ](#tab-panel-4860)
+* [  wrangler.toml ](#tab-panel-4861)
 
 JSONC
 
@@ -78,7 +78,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-30",
+  "compatibility_date": "2026-05-06",
 
   "main": "index.js",
 
@@ -119,7 +119,7 @@ workers_dev = true
 
 # Set this to today's date
 
-compatibility_date = "2026-04-30"
+compatibility_date = "2026-05-06"
 
 main = "index.js"
 
@@ -181,7 +181,7 @@ Other key formats (such as DSA) are not supported at this time.
 1. Save the policy.
 2. Go to **Access controls** \> **Applications** and edit the application for which you want to apply the External Evaluation rule.
 3. In the **Policies** tab, add the policy that contains the External Evaluation rule.
-4. Select **Save application**.
+4. Select **Save**.
 
 When a user logs in to your application, Access will now check their email, device, location, and other identity-based data against your business logic.
 

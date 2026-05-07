@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
+
 # Extended DNS error codes
 
 [Extended DNS Error Codes ↗](https://www.rfc-editor.org/rfc/rfc8914.html) (defined in RFC 8914) is a method to return additional information about the cause of DNS errors. When a DNS query fails, the standard response code (such as `SERVFAIL`) often does not explain _why_ it failed. Extended DNS Error Codes solve this by attaching a more specific error code and descriptive text to the response, so you can identify the exact cause without guesswork.

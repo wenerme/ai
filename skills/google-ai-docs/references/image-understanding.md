@@ -1,10 +1,12 @@
+# Image understanding
+
 Gemini models are built to be multimodal from the ground up, unlocking a wide
 range of image processing and computer vision tasks including but not limited to
 image captioning, classification, and visual question answering without having
 to train specialized ML models.
 
 In addition to their general multimodal capabilities, Gemini models offer
-**enhanced accuracy** for specific use cases like [object detection](https://ai.google.dev/gemini-api/docs/image-understanding#object-detection) and [segmentation](https://ai.google.dev/gemini-api/docs/image-understanding#segmentation), through additional
+**enhanced accuracy** for specific use cases like [object detection](https://ai.google.dev/gemini-api/docs/image-understanding#object-detection), through additional
 training.
 
 ## Passing images to Gemini
@@ -632,133 +634,6 @@ For more examples, check following notebooks in the [Gemini Cookbook](https://gi
 - [2D spatial understanding notebook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Spatial_understanding.ipynb)
 - [Experimental 3D pointing notebook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/examples/Spatial_understanding_3d.ipynb)
 
-## Segmentation
-
-Starting with Gemini 2.5, models not only detect items but also segment them
-and provide their contour masks.
-
-The model predicts a JSON list, where each item represents a segmentation mask.
-Each item has a bounding box ("`box_2d`") in the format `[y0, x0, y1, x1]` with
-normalized coordinates between 0 and 1000, a label ("`label`") that identifies
-the object, and finally the segmentation mask inside the bounding box, as base64
-encoded png that is a probability map with values between 0 and 255.
-The mask needs to be resized to match the bounding box dimensions, then
-binarized at your confidence threshold (127 for the midpoint).
-
-> [!NOTE]
-> **Note:** For better results, disable [thinking](https://ai.google.dev/gemini-api/docs/thinking) by setting the thinking budget to 0. See code sample below for an example.
-
-### Python
-
-    from google import genai
-    from google.genai import types
-    from PIL import Image, ImageDraw
-    import io
-    import base64
-    import json
-    import numpy as np
-    import os
-
-    client = genai.Client()
-
-    def parse_json(json_output: str):
-      # Parsing out the markdown fencing
-      lines = json_output.splitlines()
-      for i, line in enumerate(lines):
-        if line == "```json":
-          json_output = "\n".join(lines[i+1:])  # Remove everything before "```json"
-          output = json_output.split("```")[0]  # Remove everything after the closing "```"
-          break  # Exit the loop once "```json" is found
-      return json_output
-
-    def extract_segmentation_masks(image_path: str, output_dir: str = "segmentation_outputs"):
-      # Load and resize image
-      im = Image.open(image_path)
-      im.thumbnail([1024, 1024], Image.Resampling.LANCZOS)
-
-      prompt = """
-      Give the segmentation masks for the wooden and glass items.
-      Output a JSON list of segmentation masks where each entry contains the 2D
-      bounding box in the key "box_2d", the segmentation mask in key "mask", and
-      the text label in the key "label". Use descriptive labels.
-      """
-
-      config = types.GenerateContentConfig(
-        thinking_config=types.ThinkingConfig(thinking_budget=0) # set thinking_budget to 0 for better results in object detection
-      )
-
-      response = client.models.generate_content(
-        model="gemini-3-flash-preview",
-        contents=[prompt, im], # Pillow images can be directly passed as inputs (which will be converted by the SDK)
-        config=config
-      )
-
-      # Parse JSON response
-      items = json.loads(parse_json(response.text))
-
-      # Create output directory
-      os.makedirs(output_dir, exist_ok=True)
-
-      # Process each mask
-      for i, item in enumerate(items):
-          # Get bounding box coordinates
-          box = item["box_2d"]
-          y0 = int(box[0] / 1000 * im.size[1])
-          x0 = int(box[1] / 1000 * im.size[0])
-          y1 = int(box[2] / 1000 * im.size[1])
-          x1 = int(box[3] / 1000 * im.size[0])
-
-          # Skip invalid boxes
-          if y0 >= y1 or x0 >= x1:
-              continue
-
-          # Process mask
-          png_str = item["mask"]
-          if not png_str.startswith("data:image/png;base64,"):
-              continue
-
-          # Remove prefix
-          png_str = png_str.removeprefix("data:image/png;base64,")
-          mask_data = base64.b64decode(png_str)
-          mask = Image.open(io.BytesIO(mask_data))
-
-          # Resize mask to match bounding box
-          mask = mask.resize((x1 - x0, y1 - y0), Image.Resampling.BILINEAR)
-
-          # Convert mask to numpy array for processing
-          mask_array = np.array(mask)
-
-          # Create overlay for this mask
-          overlay = Image.new('RGBA', im.size, (0, 0, 0, 0))
-          overlay_draw = ImageDraw.Draw(overlay)
-
-          # Create overlay for the mask
-          color = (255, 255, 255, 200)
-          for y in range(y0, y1):
-              for x in range(x0, x1):
-                  if mask_array[y - y0, x - x0] > 128:  # Threshold for mask
-                      overlay_draw.point((x, y), fill=color)
-
-          # Save individual mask and its overlay
-          mask_filename = f"{item['label']}_{i}_mask.png"
-          overlay_filename = f"{item['label']}_{i}_overlay.png"
-
-          mask.save(os.path.join(output_dir, mask_filename))
-
-          # Create and save overlay
-          composite = Image.alpha_composite(im.convert('RGBA'), overlay)
-          composite.save(os.path.join(output_dir, overlay_filename))
-          print(f"Saved mask and overlay for {item['label']} to {output_dir}")
-
-    # Example usage
-    if __name__ == "__main__":
-      extract_segmentation_masks("path/to/image.png")
-
-Check the
-[segmentation example](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Spatial_understanding.ipynb#scrollTo=WQJTJ8wdGOKx)
-in the cookbook guide for a more detailed example.
-![A table with cupcakes, with the wooden and glass objects highlighted](https://ai.google.dev/static/gemini-api/docs/images/segmentation.jpg) An example segmentation output with objects and segmentation masks
-
 ## Supported image formats
 
 Gemini supports the following image format MIME types:
@@ -776,13 +651,13 @@ To learn about other file input methods, see the
 
 All Gemini model versions are multimodal and can be utilized in a wide range of
 image processing and computer vision tasks including but not limited to image captioning,
-visual question and answering, image classification, object detection and segmentation.
+visual question and answering, image classification, and object detection.
 
 Gemini can reduce the need to use specialized ML models depending on your quality and performance requirements.
 
 The latest model versions are specifically trained improve accuracy of
 specialized tasks in addition to generic capabilities, like enhanced
-[object detection](https://ai.google.dev/gemini-api/docs/image-understanding#object-detection) and [segmentation](https://ai.google.dev/gemini-api/docs/image-understanding#segmentation).
+[object detection](https://ai.google.dev/gemini-api/docs/image-understanding#object-detection).
 
 ## Limitations and key technical information
 

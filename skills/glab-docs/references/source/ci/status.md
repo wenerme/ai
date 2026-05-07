@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 View a running CI/CD pipeline on current or other branch specified.
 
+## Synopsis
+
+Use `--live` for real-time updates. Use `--compact` for a condensed view.
+
 ```plaintext
 glab ci status [flags]
 ```

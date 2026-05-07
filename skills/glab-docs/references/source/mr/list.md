@@ -7,6 +7,12 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 List merge requests.
 
+## Synopsis
+
+Defaults to open merge requests. Use `--all` to include closed
+and merged requests. Use `--group` to list for a group instead
+of the current project.
+
 ```plaintext
 glab mr list [flags]
 ```

@@ -1,3 +1,5 @@
+# Migrate to the Google GenAI SDK
+
 Starting with the Gemini 2.0 release in late 2024, we introduced a new set of
 libraries called the [Google GenAI SDK](https://ai.google.dev/gemini-api/docs/libraries). It offers
 an improved developer experience through
@@ -11,11 +13,13 @@ migrate.
 
 This guide provides before-and-after examples of migrated code to help you get
 started.
-| **Note:** The Go examples omit imports and other boilerplate code to improve readability.
+
+> [!NOTE]
+> **Note:** The Go examples omit imports and other boilerplate code to improve readability.
 
 ## Installation
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -29,7 +33,7 @@ started.
 
     go get github.com/google/generative-ai-go
 
-**After**  
+**After**
 
 ### Python
 
@@ -52,13 +56,13 @@ as a single entry point for various API services (e.g., `models`, `chats`,
 `files`, `tunings`), promoting consistency and simplifying credential and
 configuration management across different API calls.
 
-**Before (Less Centralized API Access)**  
+**Before (Less Centralized API Access)**
 
 ### Python
 
 The old SDK didn't explicitly use a top-level client object for most API
 calls. You would directly instantiate and interact with `GenerativeModel`
-objects.  
+objects.
 
     import google.generativeai as genai
 
@@ -71,7 +75,7 @@ objects.
 
 While `GoogleGenerativeAI` was a central point for models and chat, other
 functionalities like file and cache management often required importing and
-instantiating entirely separate client classes.  
+instantiating entirely separate client classes.
 
     import { GoogleGenerativeAI } from "@google/generative-ai";
     import { GoogleAIFileManager, GoogleAICacheManager } from "@google/generative-ai/server"; // For files/caching
@@ -94,7 +98,7 @@ instantiating entirely separate client classes.
 The `genai.NewClient` function created a client, but generative model
 operations were typically called on a separate `GenerativeModel` instance
 obtained from this client. Other services might have been accessed via
-distinct packages or patterns.  
+distinct packages or patterns.
 
     import (
           "github.com/google/generative-ai-go/genai"
@@ -113,7 +117,7 @@ distinct packages or patterns.
     // Call methods on separate client objects for other services
     uploadedFile, err := fileClient.UploadFile(...)
 
-**After (Centralized Client Object)**  
+**After (Centralized Client Object)**
 
 ### Python
 
@@ -160,11 +164,11 @@ Both legacy and new libraries authenticate using API keys. You can
 [create](https://aistudio.google.com/app/apikey) your API key in Google AI
 Studio.
 
-**Before**  
+**Before**
 
 ### Python
 
-The old SDK handled the API client object implicitly.  
+The old SDK handled the API client object implicitly.
 
     import google.generativeai as genai
 
@@ -178,25 +182,25 @@ The old SDK handled the API client object implicitly.
 
 ### Go
 
-Import the Google libraries:  
+Import the Google libraries:
 
     import (
           "github.com/google/generative-ai-go/genai"
           "google.golang.org/api/option"
     )
 
-Create the client:  
+Create the client:
 
     client, err := genai.NewClient(ctx, option.WithAPIKey("GEMINI_API_KEY"))
 
-**After**  
+**After**
 
 ### Python
 
 With Google GenAI SDK, you create an API client first, which is used to call
 the API.
 The new SDK will pick up your API key from the `GEMINI_API_KEY` environment
-variables, if you don't pass one to the client.  
+variables, if you don't pass one to the client.
 
     export GEMINI_API_KEY="YOUR_API_KEY"
 
@@ -214,11 +218,11 @@ variables, if you don't pass one to the client.
 
 ### Go
 
-Import the GenAI library:  
+Import the GenAI library:
 
     import "google.golang.org/genai"
 
-Create the client:  
+Create the client:
 
     client, err := genai.NewClient(ctx, &genai.ClientConfig{
             Backend:  genai.BackendGeminiAPI,
@@ -228,12 +232,12 @@ Create the client:
 
 ### Text
 
-**Before**  
+**Before**
 
 ### Python
 
 Previously, there were no client objects, you accessed APIs directly through
-`GenerativeModel` objects.  
+`GenerativeModel` objects.
 
     import google.generativeai as genai
 
@@ -271,14 +275,14 @@ Previously, there were no client objects, you accessed APIs directly through
 
     printResponse(resp) // utility for printing response parts
 
-**After**  
+**After**
 
 ### Python
 
 The new Google GenAI SDK provides access to all the API methods through the
 `Client` object. Except for a few stateful special cases (`chat` and
 live-api `session`s), these are all stateless functions. For utility and
-uniformity, objects returned are `pydantic` classes.  
+uniformity, objects returned are `pydantic` classes.
 
     from google import genai
     client = genai.Client()
@@ -320,7 +324,7 @@ uniformity, objects returned are `pydantic` classes.
 
 ### Image
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -384,12 +388,12 @@ uniformity, objects returned are `pydantic` classes.
 
     printResponse(resp) // utility for printing response
 
-**After**  
+**After**
 
 ### Python
 
 Many of the same convenience features exist in the new SDK. For
-example, `PIL.Image` objects are automatically converted.  
+example, `PIL.Image` objects are automatically converted.
 
     from google import genai
     from PIL import Image
@@ -455,7 +459,7 @@ example, `PIL.Image` objects are automatically converted.
 
 ### Streaming
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -506,7 +510,7 @@ example, `PIL.Image` objects are automatically converted.
         printResponse(resp) // utility for printing the response
     }
 
-**After**  
+**After**
 
 ### Python
 
@@ -558,7 +562,7 @@ example, `PIL.Image` objects are automatically converted.
 
 ## Configuration
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -619,7 +623,7 @@ example, `PIL.Image` objects are automatically converted.
     }
     printResponse(resp) // utility for printing response
 
-**After**  
+**After**
 
 ### Python
 
@@ -628,7 +632,7 @@ keyword arguments. All optional inputs are provided in the `config`
 argument. Config arguments can be specified as either Python dictionaries or
 `Config` classes in the `google.genai.types` namespace. For utility and
 uniformity, all definitions within the `types` module are `pydantic`
-classes.  
+classes.
 
     from google import genai
     from google.genai import types
@@ -702,7 +706,7 @@ classes.
 
 Generate a response with safety settings:
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -746,7 +750,7 @@ Generate a response with safety settings:
       console.log(result.response.candidates[0].safetyRatings);
     }
 
-**After**  
+**After**
 
 ### Python
 
@@ -796,7 +800,7 @@ Generate a response with safety settings:
 
 ## Async
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -807,12 +811,12 @@ Generate a response with safety settings:
         'tell me a story in 100 words'
     )
 
-**After**  
+**After**
 
 ### Python
 
 To use the new SDK with `asyncio`, there is a separate `async`
-implementation of every method under `client.aio`.  
+implementation of every method under `client.aio`.
 
     from google import genai
 
@@ -827,7 +831,7 @@ implementation of every method under `client.aio`.
 
 Start a chat and send a message to the model:
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -897,7 +901,7 @@ Start a chat and send a message to the model:
     }
     printResponse(res) // utility for printing the response
 
-**After**  
+**After**
 
 ### Python
 
@@ -968,7 +972,7 @@ Start a chat and send a message to the model:
 
 ## Function calling
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -993,12 +997,12 @@ Start a chat and send a message to the model:
     response = model.generate_content("What is the weather in San Francisco?")
     function_call = response.candidates[0].parts[0].function_call
 
-**After**  
+**After**
 
 ### Python
 
 In the new SDK, automatic function calling is the default. Here, you disable
-it.  
+it.
 
     from google import genai
     from google.genai import types
@@ -1028,12 +1032,12 @@ it.
 
 ### Automatic function calling
 
-**Before**  
+**Before**
 
 ### Python
 
 The old SDK only supports automatic function calling in chat. In the new SDK
-this is the default behavior in `generate_content`.  
+this is the default behavior in `generate_content`.
 
     import google.generativeai as genai
 
@@ -1049,7 +1053,7 @@ this is the default behavior in `generate_content`.
         enable_automatic_function_calling=True)
     result = chat.send_message("What is the weather in San Francisco?")
 
-**After**  
+**After**
 
 ### Python
 
@@ -1073,7 +1077,7 @@ this is the default behavior in `generate_content`.
 Code execution is a tool that allows the model to generate Python code, run it,
 and return the result.
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -1106,7 +1110,7 @@ and return the result.
 
     console.log(result.response.text());
 
-**After**  
+**After**
 
 ### Python
 
@@ -1152,7 +1156,7 @@ and return the result.
 tools that allow the model to retrieve public web data for grounding, powered by
 Google.
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -1164,7 +1168,7 @@ Google.
         tools='google_search_retrieval'
     )
 
-**After**  
+**After**
 
 ### Python
 
@@ -1189,13 +1193,13 @@ Google.
 
 Generate answers in JSON format.
 
-**Before**  
+**Before**
 
 ### Python
 
 By specifying a `response_schema` and setting
 `response_mime_type="application/json"` users can constrain the model to
-produce a `JSON` response following a given structure.  
+produce a `JSON` response following a given structure.
 
     import google.generativeai as genai
     import typing_extensions as typing
@@ -1254,7 +1258,7 @@ produce a `JSON` response following a given structure.
     );
     console.log(result.response.text());
 
-**After**  
+**After**
 
 ### Python
 
@@ -1263,7 +1267,7 @@ The new SDK uses
 `genai.types.Schema`, or equivalent `dict`). When possible, the SDK will
 parse the returned JSON, and return the result in `response.parsed`. If you
 provided a `pydantic` class as the schema the SDK will convert that `JSON`
-to an instance of the class.  
+to an instance of the class.
 
     from google import genai
     from pydantic import BaseModel
@@ -1322,7 +1326,7 @@ to an instance of the class.
 
 Upload a file:
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -1344,7 +1348,7 @@ Upload a file:
     ])
     print(response.text)
 
-**After**  
+**After**
 
 ### Python
 
@@ -1374,7 +1378,7 @@ Upload a file:
 
 List uploaded files and get an uploaded file with a filename:
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -1385,7 +1389,7 @@ List uploaded files and get an uploaded file with a filename:
 
     file = genai.get_file(name=file.name)
 
-**After**  
+**After**
 
 ### Python
 
@@ -1401,7 +1405,7 @@ List uploaded files and get an uploaded file with a filename:
 
 Delete a file:
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -1413,7 +1417,7 @@ Delete a file:
 
     file = genai.delete_file(name=dummy_file.name)
 
-**After**  
+**After**
 
 ### Python
 
@@ -1433,7 +1437,7 @@ Context caching allows the user to pass the content to the model once, cache the
 input tokens, and then refer to the cached tokens in subsequent calls to lower
 the cost.
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -1501,7 +1505,7 @@ the cost.
     );
     console.log(result.response.text());
 
-**After**  
+**After**
 
 ### Python
 
@@ -1583,7 +1587,7 @@ the cost.
 
 Count the number of tokens in a request.
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -1621,7 +1625,7 @@ Count the number of tokens in a request.
      // candidatesTokenCount and totalTokenCount depend on response, may vary
      // { promptTokenCount: 11, candidatesTokenCount: 124, totalTokenCount: 135 }
 
-**After**  
+**After**
 
 ### Python
 
@@ -1656,7 +1660,7 @@ Count the number of tokens in a request.
 
 Generate images:
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -1673,7 +1677,7 @@ Generate images:
         aspect_ratio="3:4",
     )
 
-**After**  
+**After**
 
 ### Python
 
@@ -1700,7 +1704,7 @@ Generate images:
 
 Generate content embeddings.
 
-**Before**  
+**Before**
 
 ### Python
 
@@ -1724,7 +1728,7 @@ Generate content embeddings.
 
     console.log(result.embedding);
 
-**After**  
+**After**
 
 ### Python
 

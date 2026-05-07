@@ -16,7 +16,6 @@ API Shield sequence custom rules use the configured API Shield session identifie
 
 These rules are similar to [cookie sequence rules](https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/) but have a different set of prerequisites:
 
-* They also need the `fraud_acct_ent` entitlement on a Cloudflare account.
 * They require [session identifiers](https://developers.cloudflare.com/api-shield/get-started/#session-identifiers) to be set in API Shield.
 * Because they require session identifiers, they can only be used on traffic that can be clearly attributed to individual users through session identifiers (authenticated traffic).
 * Because Cloudflare stores the user state in memory and not in a cookie, a session's sequence lifetime is limited to 10 minutes.
@@ -45,8 +44,8 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule
 
-* [  New dashboard ](#tab-panel-4291)
-* [ Old dashboard ](#tab-panel-4292)
+* [  New dashboard ](#tab-panel-4472)
+* [ Old dashboard ](#tab-panel-4473)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

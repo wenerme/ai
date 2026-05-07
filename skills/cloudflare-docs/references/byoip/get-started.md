@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
+
 # Get started
 
 To use your own IP addresses with Cloudflare, please check with your account team to confirm your contract covers this functionality. You will need to configure settings specific to the services you want to use, as well as meet some standard requirements for all BYOIP customers.
@@ -129,8 +133,8 @@ The process described on this page leverages automated [LOA](https://developers.
 ### Validate prefix ownership
 
 1. Validate prefix ownership using one of the following methods:  
-   * [ IRR record ](#tab-panel-4463)  
-   * [ Reverse DNS zone and TXT record ](#tab-panel-4464)  
+   * [ IRR record ](#tab-panel-4644)  
+   * [ Reverse DNS zone and TXT record ](#tab-panel-4645)  
    1. Copy the `ownership_validation_token` returned by the API call.  
    2. On the IRR record of the prefix you are onboarding, add the following string in either a `description` or `remarks` field. Replace `<OWNERSHIP_VALIDATION_TOKEN>` by the actual token you copied in the previous step.  
 ```  

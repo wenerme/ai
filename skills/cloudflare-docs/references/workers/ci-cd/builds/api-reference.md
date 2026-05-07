@@ -293,7 +293,7 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
 ## Manage build environment variables
 
-Environment variables are set per trigger, meaning you can have different values for production and preview builds. For example, you might set `NODE_ENV=production` on your production trigger and `NODE_ENV=development` on your preview trigger. Refer to the [environment variables API reference](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/environment%5Fvariables/) for full endpoint details.
+Environment variables are set per trigger, meaning you can have different values for production and preview builds. For example, you might set `NODE_ENV=production` on your production trigger and `NODE_ENV=development` on your preview trigger. Refer to the [environment variables API reference](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/triggers/subresources/environment%5Fvariables/) for full endpoint details.
 
 Note 
 
@@ -332,13 +332,9 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
   --data '{
 
-    "variables": [
+    "NODE_ENV": {"value": "production", "is_secret": false},
 
-      {"key": "NODE_ENV", "value": "production", "type": "text"},
-
-      {"key": "API_KEY", "value": "prod-secret-key", "type": "secret"}
-
-    ]
+    "API_KEY": {"value": "prod-secret-key", "is_secret": true}
 
   }'
 
@@ -361,20 +357,16 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
   --data '{
 
-    "variables": [
+    "NODE_ENV": {"value": "development", "is_secret": false},
 
-      {"key": "NODE_ENV", "value": "development", "type": "text"},
-
-      {"key": "API_KEY", "value": "dev-secret-key", "type": "secret"}
-
-    ]
+    "API_KEY": {"value": "dev-secret-key", "is_secret": true}
 
   }'
 
 
 ```
 
-Use `type: "text"` for plain values and `type: "secret"` for sensitive values that should be masked in logs.
+Set `is_secret` to `false` for plain values and `true` for sensitive values that should be masked in logs.
 
 ### Delete an environment variable
 
@@ -648,11 +640,7 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
   --data '{
 
-    "variables": [
-
-      {"key": "NODE_ENV", "value": "production", "type": "text"}
-
-    ]
+    "NODE_ENV": {"value": "production", "is_secret": false}
 
   }'
 
@@ -675,11 +663,7 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
   --data '{
 
-    "variables": [
-
-      {"key": "NODE_ENV", "value": "development", "type": "text"}
-
-    ]
+    "NODE_ENV": {"value": "development", "is_secret": false}
 
   }'
 

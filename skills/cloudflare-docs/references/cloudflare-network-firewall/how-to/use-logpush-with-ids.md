@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
+
 # Use Logpush with IDS
 
 You can use Logpush with Cloudflare Network Firewall (formerly Magic Firewall) IDS to log detected risks:

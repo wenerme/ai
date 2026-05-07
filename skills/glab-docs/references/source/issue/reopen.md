@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Reopen a closed issue.
 
+## Synopsis
+
+You can use a full GitLab URL instead of an ID.
+
 ```plaintext
 glab issue reopen [<id> | <url>] [flags]
 ```

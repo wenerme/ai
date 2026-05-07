@@ -1,6 +1,6 @@
 ---
 title: Cloudflare SSL/TLS
-description: Cloudflare SSL/TLS offers free Universal SSL alongside advanced and enterprise features to meet your encryption and certificate management needs.
+description: Manage SSL/TLS certificates for encrypted connections between visitors, Cloudflare, and your origin server.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,7 +16,9 @@ Encrypt your web traffic to prevent data theft and other tampering.
 
  Available on all plans 
 
-Through [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), Cloudflare is the first Internet performance and security company to offer free SSL/TLS protection. Cloudflare SSL/TLS also provides a number of other features to meet your encryption requirements and certificate management needs. Refer to [Get started](https://developers.cloudflare.com/ssl/get-started/) for more.
+SSL/TLS certificates encrypt traffic between visitors and your website, preventing eavesdropping and data tampering. Because Cloudflare sits between your visitors and your origin server, two certificates can be involved in a single request: an [edge certificate](https://developers.cloudflare.com/ssl/concepts/#edge-certificate) (visitor to Cloudflare) and an [origin certificate](https://developers.cloudflare.com/ssl/concepts/#origin-certificate) (Cloudflare to your server).
+
+Cloudflare automatically issues free certificates through [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) and offers additional options for custom certificate management. Refer to [Get started](https://developers.cloudflare.com/ssl/get-started/) to set up SSL/TLS for your domain.
 
 ---
 
@@ -24,24 +26,24 @@ Through [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/
 
 ###  Total TLS 
 
-Extending the protection offered by Universal SSL, Total TLS is an easy way to automatically issue certificates for all levels of subdomains that you have.
+Universal SSL covers your apex domain and first-level subdomains. Total TLS extends that coverage by automatically issuing certificates for proxied hostnames at any subdomain level.
 
 [ Use Total TLS ](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) 
 
 ###  Delegated DCV 
 
-Even if you use a different provider for authoritative DNS, you can delegate domain control validation (DCV) to Cloudflare, reducing the need of manual intervention.
+Before issuing a certificate, a certificate authority (CA) must verify you control the domain. If you manage DNS outside of Cloudflare, you can delegate this verification to Cloudflare so certificate renewals happen automatically.
 
 [ Use Delegated DCV ](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/) 
 
 ###  Custom TLS settings 
 
-Cloudflare also allows you to specify the minimum TLS version that visitors must use to connect to your website or application, and [restrict cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) according to your security requirements.
+Specify the minimum TLS version that visitors must use to connect to your website or application, and [restrict cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/)to meet compliance or security requirements.
 
 [ Use Custom TLS settings ](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/) 
 
   
-Refer to [features and availability](https://developers.cloudflare.com/ssl/reference/all-features/) for a complete list of SSL/TLS features and their availability according to different Cloudflare plans.
+For a complete list of SSL/TLS features and their availability by plan, refer to [features and availability](https://developers.cloudflare.com/ssl/reference/all-features/).
 
 ---
 

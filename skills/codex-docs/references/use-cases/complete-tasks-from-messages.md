@@ -9,7 +9,7 @@ bestFor:
 starterPrompt:
   title: Finish One Task From a Message Thread
   body: >-
-    @Computer Use Look at my messages from [person].
+    @Computer Look at my messages from [person].
 
 
     Then:
@@ -45,7 +45,7 @@ This is a good fit when the message contains a concrete request and you want Cod
 
 For example:
 
-- `@Computer Use Look at my messages from [person]. Check my availability, find 2 dinner options in Hayes Valley, and draft a reply in the same thread. Check in with me before completing booking.`
+- `@Computer Look at my messages from [person]. Check my availability, find 2 dinner options in Hayes Valley, and draft a reply in the same thread. Check in with me before completing booking.`
 
 ## Practical tips
 
