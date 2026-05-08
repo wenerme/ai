@@ -1389,7 +1389,7 @@ Streams the rendered video content for the specified video job.
 
 ### Returns
 
-- `unnamed_schema_5 = Response`
+- `unnamed_schema_12 = Response`
 
 ### Example
 

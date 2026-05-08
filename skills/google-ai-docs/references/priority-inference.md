@@ -1,5 +1,3 @@
-# Priority inference
-
 > [!WARNING]
 > **Preview:** The Gemini Priority API is in [Preview](https://cloud.google.com/products#product-launch-stages).
 
@@ -176,6 +174,7 @@ The following models support Priority inference:
 
 | Model | Priority inference |
 |---|---|
+| [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
 | [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview) | ✔️ |
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ |
 | [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ✔️ |

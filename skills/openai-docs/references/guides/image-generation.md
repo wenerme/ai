@@ -70,7 +70,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.4",
+    model: "gpt-5.5",
     input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools: [{type: "image_generation"}],
 });
@@ -94,7 +94,7 @@ import base64
 client = OpenAI() 
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -171,6 +171,14 @@ curl -X POST "https://api.openai.com/v1/images/generations" \\
     }' | jq -r '.data[0].b64_json' | base64 --decode > otter.png
 ```
 
+```cli
+openai images generate \\
+  --model gpt-image-2 \\
+  --prompt "A childrens book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter." \\
+  --raw-output \\
+  --transform 'data.0.b64_json' | base64 --decode > otter.png
+```
+
   </div>
 
 
@@ -189,7 +197,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.4",
+    model: "gpt-5.5",
     input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools: [{type: "image_generation", action: "generate"}],
 });
@@ -213,7 +221,7 @@ import base64
 client = OpenAI() 
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation", "action": "generate"}],
 )
@@ -245,7 +253,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input:
     "Generate an image of gray tabby cat hugging an otter with an orange scarf",
   tools: [{ type: "image_generation" }],
@@ -264,7 +272,7 @@ if (imageData.length > 0) {
 // Follow up
 
 const response_fwup = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   previous_response_id: response.id,
   input: "Now make it look realistic",
   tools: [{ type: "image_generation" }],
@@ -291,7 +299,7 @@ import base64
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -312,7 +320,7 @@ if image_data:
 # Follow up
 
 response_fwup = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     previous_response_id=response.id,
     input="Now make it look realistic",
     tools=[{"type": "image_generation"}],
@@ -340,7 +348,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input:
     "Generate an image of gray tabby cat hugging an otter with an orange scarf",
   tools: [{ type: "image_generation" }],
@@ -361,7 +369,7 @@ if (imageData.length > 0) {
 // Follow up
 
 const response_fwup = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input: [
     {
       role: "user",
@@ -394,7 +402,7 @@ import openai
 import base64
 
 response = openai.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -417,7 +425,7 @@ if image_data:
 # Follow up
 
 response_fwup = openai.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input=[
         {
             "role": "user",
@@ -506,7 +514,7 @@ import fs from "fs";
 const openai = new OpenAI();
 
 const stream = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input:
     "Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
   stream: true,
@@ -530,7 +538,7 @@ import base64
 client = OpenAI()
 
 stream = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input="Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
     stream=True,
     tools=[{"type": "image_generation", "partial_images": 2}],
@@ -618,7 +626,7 @@ for event in stream:
 
 ### Revised prompt
 
-When using the image generation tool in the Responses API, the mainline model (for example, `gpt-5.4`) will automatically revise your prompt for improved performance.
+When using the image generation tool in the Responses API, the mainline model (for example, `gpt-5.5`) will automatically revise your prompt for improved performance.
 
 You can access the revised prompt in the `revised_prompt` field of the image generation call:
 
@@ -738,6 +746,18 @@ curl -s -D >(grep -i x-request-id >&2) \\
   -F 'prompt=Generate a photorealistic image of a gift basket on a white background labeled "Relax & Unwind" with a ribbon and handwriting-like font, containing all the items in the reference pictures'
 ```
 
+```cli
+openai images edit \\
+  --model gpt-image-2 \\
+  --image body-lotion.png \\
+  --image bath-bomb.png \\
+  --image incense-kit.png \\
+  --image soap.png \\
+  --prompt 'Generate a photorealistic image of a gift basket on a white background labeled "Relax & Unwind" with a ribbon and handwriting-like font, containing all the items in the reference pictures' \\
+  --raw-output \\
+  --transform 'data.0.b64_json' | base64 --decode > gift-basket.png
+```
+
   </div>
 
 
@@ -767,7 +787,7 @@ fileId = create_file("sunlit_lounge.png")
 maskId = create_file("mask.png")
 
 response = client.responses.create(
-    model="gpt-5.4",
+    model="gpt-5.5",
     input=[
         {
             "role": "user",
@@ -814,7 +834,7 @@ const fileId = await createFile("sunlit_lounge.png");
 const maskId = await createFile("mask.png");
 
 const response = await openai.responses.create({
-  model: "gpt-5.4",
+  model: "gpt-5.5",
   input: [
     {
       role: "user",
@@ -908,6 +928,16 @@ curl -s -D >(grep -i x-request-id >&2) \\
   -F "mask=@mask.png" \\
   -F "image[]=@sunlit_lounge.png" \\
   -F 'prompt=A sunlit indoor lounge area with a pool containing a flamingo'
+```
+
+```cli
+openai images edit \\
+  --model gpt-image-2 \\
+  --image sunlit_lounge.png \\
+  --mask mask.png \\
+  --prompt "A sunlit indoor lounge area with a pool containing a flamingo" \\
+  --raw-output \\
+  --transform 'data.0.b64_json' | base64 --decode > out.png
 ```
 
   </div>

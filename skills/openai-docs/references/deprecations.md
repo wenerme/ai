@@ -14,9 +14,21 @@ We use the terms "sunset" and "shut down" interchangeably to mean a model or end
 
 We use the term "legacy" to refer to models and endpoints that no longer receive updates. We tag endpoints and models as legacy to signal to developers where we're moving as a platform and that they should likely migrate to newer models or endpoints. You can expect that a legacy model or endpoint will be deprecated at some point in the future.
 
-## Deprecation history
+## Upcoming deprecations
 
-All deprecations are listed below, with the most recent announcements at the top.
+Upcoming deprecations are listed below, with the most recent announcements at the top.
+
+### Update to OpenAI’s self-serve fine-tuning
+
+On May 7th, 2026, we notified developers using OpenAI’s self-serve fine-tuning platform of updates to availability.
+
+Inference on fine-tuned models will continue to be available until the base models are deprecated.
+
+| Date         | Update                                                                                                                                                                                           |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| May 7, 2026  | Creating fine-tuning jobs or training is not available to organizations that have not previously run fine-tuning.                                                                                |
+| July 2, 2026 | Creating fine-tuning jobs is no longer available to organizations that have not run inference on a fine-tuned model in the past 60 days.                                                         |
+| Jan 6, 2027  | Active existing customers will no longer be able to create new fine-tuning jobs on this date. Inference on fine-tuned models will be disabled only when the underlying base model is deprecated. |
 
 ### 2026-04-22: Legacy GPT model snapshots
 
@@ -78,22 +90,6 @@ On March 24th, 2026, we notified developers using the Videos API and Sora 2 vide
 | 2026-09-24    | `sora-2-2025-12-08`     | ---                     |
 | 2026-09-24    | `sora-2-pro-2025-10-06` | ---                     |
 
-### 2025-11-18: chatgpt-4o-latest snapshot
-
-On November 18th, 2025, we notified developers using `chatgpt-4o-latest` model snapshot of its deprecation and removal from the API on February 17, 2026.
-
-| Shutdown date | Model / system      | Recommended replacement |
-| ------------- | ------------------- | ----------------------- |
-| 2026-02-17    | `chatgpt-4o-latest` | `gpt-5.1-chat-latest`   |
-
-### 2025-11-17: codex-mini-latest model snapshot
-
-On November 17th, 2025, we notified developers using `codex-mini-latest` model of its deprecation and removal from the API on February 12, 2026. As part of this deprecation, we will no longer support our legacy local shell tool, which is only available for use with `codex-mini-latest`. For new use cases, please use our latest shell tool.
-
-| Shutdown date | Model / system      | Recommended replacement |
-| ------------- | ------------------- | ----------------------- |
-| 2026-02-12    | `codex-mini-latest` | `gpt-5-codex-mini`      |
-
 ### 2025-11-14: DALL·E model snapshots
 
 On November 14th, 2025, we notified developers using DALL·E model snapshots of their deprecation and removal from the API on May 12, 2026.
@@ -153,6 +149,26 @@ In September, 2025, we notified developers using gpt-4o-realtime-preview models 
 | 2026-05-07    | gpt-4o-mini-realtime-preview       | gpt-realtime-mini       |
 | 2026-05-07    | gpt-4o-audio-preview               | gpt-audio-1.5           |
 | 2026-05-07    | gpt-4o-mini-audio-preview          | gpt-audio-mini          |
+
+## Past deprecations
+
+Past deprecations are listed below, with the most recent announcements at the top.
+
+### 2025-11-18: chatgpt-4o-latest snapshot
+
+On November 18th, 2025, we notified developers using `chatgpt-4o-latest` model snapshot of its deprecation and removal from the API on February 17, 2026.
+
+| Shutdown date | Model / system      | Recommended replacement |
+| ------------- | ------------------- | ----------------------- |
+| 2026-02-17    | `chatgpt-4o-latest` | `gpt-5.1-chat-latest`   |
+
+### 2025-11-17: codex-mini-latest model snapshot
+
+On November 17th, 2025, we notified developers using `codex-mini-latest` model of its deprecation and removal from the API on February 12, 2026. As part of this deprecation, we will no longer support our legacy local shell tool, which is only available for use with `codex-mini-latest`. For new use cases, please use our latest shell tool.
+
+| Shutdown date | Model / system      | Recommended replacement |
+| ------------- | ------------------- | ----------------------- |
+| 2026-02-12    | `codex-mini-latest` | `gpt-5-codex-mini`      |
 
 ### 2025-06-10: gpt-4o-realtime-preview-2024-10-01
 

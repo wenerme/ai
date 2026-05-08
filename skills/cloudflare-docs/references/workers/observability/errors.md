@@ -34,8 +34,6 @@ When a Worker running in production has an error that prevents it from returning
 
 Other `11xx` errors generally indicate a problem with the Workers runtime itself. Refer to the [status page ↗](https://www.cloudflarestatus.com) if you are experiencing an error.
 
-Errors in the `11xx` range can also be related with [Snippets](https://developers.cloudflare.com/rules/snippets/).
-
 ### Loop limit
 
 A Worker cannot call itself or another Worker more than 16 times. In order to prevent infinite loops between Workers, the [CF-EW-Via](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ew-via) header's value is an integer that indicates how many invocations are left. Every time a Worker is invoked, the integer will decrement by 1\. If the count reaches zero, a [1019](#error-pages-generated-by-workers) error is returned.
@@ -377,8 +375,8 @@ A Worker can make HTTP requests to any HTTP service on the public Internet. You 
 
 When using an external logging strategy, remember that outstanding asynchronous tasks are canceled as soon as a Worker finishes sending its main response body to the client. To ensure that a logging subrequest completes, pass the request promise to [event.waitUntil() ↗](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil). For example:
 
-* [  Module Worker ](#tab-panel-8949)
-* [  Service Worker ](#tab-panel-8950)
+* [  Module Worker ](#tab-panel-9461)
+* [  Service Worker ](#tab-panel-9462)
 
 JavaScript
 
@@ -466,8 +464,8 @@ Configure the [Wasm Coredump Service ↗](https://github.com/cloudflare/wasm-cor
 
 By using [event.passThroughOnException](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception), a Workers application will forward requests to your origin if an exception is thrown during the Worker's execution. This allows you to add logging, tracking, or other features with Workers, without degrading your application's functionality.
 
-* [  Module Worker ](#tab-panel-8951)
-* [  Service Worker ](#tab-panel-8952)
+* [  Module Worker ](#tab-panel-9463)
+* [  Service Worker ](#tab-panel-9464)
 
 JavaScript
 

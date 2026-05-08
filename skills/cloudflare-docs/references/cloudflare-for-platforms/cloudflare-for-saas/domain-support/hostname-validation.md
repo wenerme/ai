@@ -24,6 +24,15 @@ If minimizing downtime is more important to you, refer to our [pre-validation me
 
 If ease of use for your customers is more important, review our [real-time validation methods](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/realtime-validation/).
 
+## Hostname validation and certificate validation
+
+Hostname validation and certificate validation use different tokens and API fields.
+
+* `ownership_verification` and `ownership_verification_http` validate hostname ownership and affect the custom hostname `status`.
+* `ssl.validation_records` validates certificate issuance and affects `ssl.status`.
+
+For production traffic, the hostname should have `status: active`, `ssl.status: active`, and DNS that points to your SaaS target.
+
 ## Limitations
 
 Custom hostnames using another CDN are not compatible with Cloudflare for SaaS. Since Cloudflare must be able to validate your customer's ownership of the hostname you add, if their usage of another CDN obfuscates their DNS records, hostname validation will fail.

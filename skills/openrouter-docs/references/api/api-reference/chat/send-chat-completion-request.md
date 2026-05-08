@@ -2311,6 +2311,8 @@ components:
           type: string
         name:
           type: string
+        summary:
+          type: string
         type:
           $ref: '#/components/schemas/PipelineStageType'
       required:

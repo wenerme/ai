@@ -14,6 +14,19 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/magic-transit.xml) 
 
+## 2026-04-21
+
+  
+**Country rules supported in Unified Routing**   
+
+[Cloudflare Advanced Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) Country rules are now supported for accounts using [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta) mode. This feature requires a Cloudflare Advanced Network Firewall subscription.
+
+You can create firewall rules that match traffic based on source or destination country to enforce geographic access policies across your network.
+
+This is the first of the Cloudflare Advanced Network Firewall features to become available in Unified Routing. Support for additional features - IP Lists, ASN Lists, Threat Intel Lists, IDS, Rate Limiting, SIP, and Managed Rulesets - is planned.
+
+For the full list of current beta limitations, refer to [Traffic steering beta limitations](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#beta-limitations).
+
 ## 2026-01-30
 
   

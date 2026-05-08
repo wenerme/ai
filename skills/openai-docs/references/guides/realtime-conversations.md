@@ -1,6 +1,6 @@
 # Realtime conversations
 
-Once you have connected to the Realtime API through either [WebRTC](https://developers.openai.com/api/docs/guides/realtime-webrtc) or [WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket), you can call a Realtime model (such as [gpt-realtime](https://developers.openai.com/api/docs/models/gpt-realtime)) to have speech-to-speech conversations. Doing so will require you to **send client events** to initiate actions, and **listen for server events** to respond to actions taken by the Realtime API.
+Once you have connected to the Realtime API through either [WebRTC](https://developers.openai.com/api/docs/guides/realtime-webrtc) or [WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket), you can call a Realtime model (such as [gpt-realtime-2](https://developers.openai.com/api/docs/models/gpt-realtime-2)) to have speech-to-speech conversations. Doing so will require you to **send client events** to initiate actions, and **listen for server events** to respond to actions taken by the Realtime API.
 
 This guide will walk through the event flows required to use model capabilities like audio and text generation, image input, and function calling, and how to think about the state of a Realtime Session.
 
@@ -40,7 +40,7 @@ const event = {
   type: "session.update",
   session: {
       type: "realtime",
-      model: "gpt-realtime",
+      model: "gpt-realtime-2",
       // Lock the output to audio (set to ["text"] if you want text without audio)
       output_modalities: ["audio"],
       audio: {
@@ -82,7 +82,7 @@ event = {
     "type": "session.update",
     session: {
       type: "realtime",
-      model: "gpt-realtime",
+      model: "gpt-realtime-2",
       # Lock the output to audio (add "text" if you also want text)
       output_modalities: ["audio"],
       audio: {
@@ -602,7 +602,7 @@ def on_message(ws, message):
 
 ## Image inputs
 
-`gpt-realtime` and `gpt-realtime-mini` also support image input. You can attach an image as a content part in a user message, and the model can incorporate what’s in the image when it responds.
+`gpt-realtime-2` and `gpt-realtime` also support image input. You can attach an image as a content part in a user message, and the model can incorporate what’s in the image when it responds.
 
 Add an image to the conversation
 

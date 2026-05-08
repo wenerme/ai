@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Integration ](https://developers.cloudflare.com/search/?tags=Integration)[ TCP ](https://developers.cloudflare.com/search/?tags=TCP)[ UDP ](https://developers.cloudflare.com/search/?tags=UDP) 
+
 # Use with other Cloudflare products
 
 Use Dedicated CDN Egress IPs in combination with different Cloudflare products.

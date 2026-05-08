@@ -19,15 +19,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 TXT record validation requires the creation of a TXT record in the hostname's authoritative DNS.
 
   
+You choose one certificate validation method when you [create a custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/). The API accepts one `ssl.method` value: `http`, `txt`, or `email`.
+
 ## When to use
 
-Generally, you should use TXT-based DCV when you cannot use [HTTP validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/) or [Delegated DCV](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/delegated-dcv/).
+Generally, you should use TXT-based DCV when you cannot use [HTTP validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/) or [Delegated DCV](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/delegated-dcv/), or when you need the certificate active before your customer changes DNS.
 
 ### Non-wildcard custom hostnames
 
-If your custom hostname does not include a wildcard, Cloudflare will always and automatically attempt to complete DCV through [HTTP validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/#http-automatic), even if you have selected **TXT** for your validation method.
+If your custom hostname does not include a wildcard, Cloudflare always attempts to complete DCV through [HTTP validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/#http-automatic) after the hostname points to your SaaS target, even if you have selected **TXT** for your validation method.
 
-This HTTP validation should succeed as long as your customer is pointing to your custom hostname and they do not have any [CAA records](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/troubleshooting/#certificate-authority-authorization-caa-records) blocking your chosen certificate authority.
+This HTTP validation should succeed as long as your customer's hostname points to your SaaS target and they do not have any [CAA records](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/troubleshooting/#certificate-authority-authorization-caa-records) blocking your chosen certificate authority.
+
+This automatic HTTP attempt does not mean that the Create Custom Hostname API accepts both HTTP and TXT validation methods in one request. The `ssl.method` field accepts one value.
 
 ### Wildcard custom hostnames
 
@@ -49,8 +53,8 @@ Once you [create a new hostname](https://developers.cloudflare.com/cloudflare-fo
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-* [ API ](#tab-panel-4870)
-* [ Dashboard ](#tab-panel-4871)
+* [ API ](#tab-panel-4790)
+* [ Dashboard ](#tab-panel-4791)
 
 You can access these tokens using the API with the [GET custom hostnames endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/list/).
 

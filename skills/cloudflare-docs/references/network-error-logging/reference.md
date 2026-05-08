@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ TCP ](https://developers.cloudflare.com/search/?tags=TCP) 
+
 # Reference
 
 If a user is able to connect to Cloudflare and the site they connect to has NEL enabled, Cloudflare passes back two headers to the browser indicating that they should report any network failures to an endpoint specified in the headers. The browser will operate as usual, and if something happens that prevents the browser from connecting to the site, the browser will log the failure as a report and send it to the endpoint.

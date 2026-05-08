@@ -42,6 +42,7 @@ completion still works before you queue the command.
 | [`/model`](#set-the-active-model-with-model)                                    | Choose the active model (and reasoning effort, when available). | Switch between general-purpose models (`gpt-4.1-mini`) and deeper reasoning models before running a task.  |
 | [`/fast`](#toggle-fast-mode-with-fast)                                          | Toggle Fast mode for supported models.                          | Turn Fast mode on or off, or check whether the current thread is using it.                                 |
 | [`/plan`](#switch-to-plan-mode-with-plan)                                       | Switch to plan mode and optionally send a prompt.               | Ask Codex to propose an execution plan before implementation work starts.                                  |
+| [`/goal`](#set-or-view-an-experimental-task-goal-with-goal)                     | Set or view an experimental goal for a long-running task.       | Give Codex a persistent target to track while a larger task runs. Requires `features.goals`.               |
 | [`/personality`](#set-a-communication-style-with-personality)                   | Choose a communication style for responses.                     | Make Codex more concise, more explanatory, or more collaborative without changing your instructions.       |
 | [`/ps`](#check-background-terminals-with-ps)                                    | Show experimental background terminals and their recent output. | Check long-running commands without leaving the main transcript.                                           |
 | [`/stop`](#stop-background-terminals-with-stop)                                 | Stop all background terminals.                                  | Cancel background terminal work started by the current session.                                            |
@@ -107,6 +108,16 @@ migration plan for this service`).
 Expected: Codex enters plan mode and uses your optional inline prompt as the first planning request.
 
 While a task is already running, `/plan` is temporarily unavailable.
+
+### Set an experimental goal with `/goal`
+
+`/goal` is experimental and only available when `features.goals` is enabled. To enable it, open `/experimental` or add `goals = true` under `[features]` in `config.toml`.
+
+1. Type `/goal <objective>` to set the goal, for example `/goal Finish the migration and keep tests green`.
+2. Type `/goal` to view the current goal.
+3. Use `/goal pause`, `/goal resume`, or `/goal clear` to pause, resume, or remove it.
+
+Expected: Codex keeps the goal attached to the active thread while work continues.
 
 ### Toggle experimental features with `/experimental`
 

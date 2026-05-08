@@ -30,17 +30,13 @@ You can enable downloads for an uploaded video once it is ready to view by makin
 
 To get notified when a video is ready to view, refer to [Using webhooks](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/#notifications).
 
-## Generate downloadable M4A files
+* [ REST API ](#tab-panel-8475)
+* [ Workers Binding API ](#tab-panel-8476)
 
-To enable M4A support on a per video basis, follow steps similar to that of generating an MP4 download, but instead send a POST request to the `/downloads/audio` endpoint.
+* [ cURL ](#tab-panel-8459)
+* [ TypeScript ](#tab-panel-8460)
 
-## Examples
-
-The downloads API response will include download type for the video, the download URL, and the processing status of the download file.
-
-Separate requests would be needed to generate a downloadable MP4 and M4A file, respectively. For example:
-
-Request MP4
+Terminal window
 
 ```
 
@@ -53,7 +49,31 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/do
 
 ```
 
-Response MP4
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+const download = await client.stream.downloads.create({
+
+  account_id: '<ACCOUNT_ID>',
+
+  identifier: '<VIDEO_UID>',
+
+});
+
+
+```
+
+The response includes the download type, URL, and processing status:
 
 ```
 
@@ -84,9 +104,74 @@ Response MP4
 
 ```
 
-And for an M4A file:
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-Request M4A
+* [ index.ts ](#tab-panel-8461)
+* [ wrangler.jsonc ](#tab-panel-8462)
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const videoHandle = env.STREAM.video("VIDEO_ID");
+
+    const downloads = await videoHandle.downloads.generate();
+
+    return Response.json(downloads);
+
+  },
+
+};
+
+
+```
+
+```
+
+{
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  "name": "<ENTER_WORKER_NAME>",
+
+  "main": "src/index.ts",
+
+  "compatibility_date": "$today",
+
+  "observability": {
+
+    "enabled": true
+
+  },
+
+  "stream": {
+
+    "binding": "STREAM"
+
+  }
+
+}
+
+
+```
+
+See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
+
+## Generate downloadable M4A files
+
+To enable M4A support on a per video basis, follow steps similar to that of generating an MP4 download, but instead send a POST request to the `/downloads/audio` endpoint.
+
+* [ REST API ](#tab-panel-8477)
+* [ Workers Binding API ](#tab-panel-8478)
+
+* [ cURL ](#tab-panel-8463)
+* [ TypeScript ](#tab-panel-8464)
+
+Terminal window
 
 ```
 
@@ -99,7 +184,31 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/do
 
 ```
 
-Response M4A
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+const download = await client.stream.downloads.audio.create({
+
+  account_id: '<ACCOUNT_ID>',
+
+  identifier: '<VIDEO_UID>',
+
+});
+
+
+```
+
+The response includes the download type, URL, and processing status:
 
 ```
 
@@ -130,11 +239,74 @@ Response M4A
 
 ```
 
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
+
+* [ index.ts ](#tab-panel-8465)
+* [ wrangler.jsonc ](#tab-panel-8466)
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const videoHandle = env.STREAM.video("VIDEO_ID");
+
+    const downloads = await videoHandle.downloads.generate("audio");
+
+    return Response.json(downloads);
+
+  },
+
+};
+
+
+```
+
+```
+
+{
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  "name": "<ENTER_WORKER_NAME>",
+
+  "main": "src/index.ts",
+
+  "compatibility_date": "$today",
+
+  "observability": {
+
+    "enabled": true
+
+  },
+
+  "stream": {
+
+    "binding": "STREAM"
+
+  }
+
+}
+
+
+```
+
+See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
+
 ## Get download links
 
 You can view all available downloads for a video by making a `GET` HTTP request to the downloads API.
 
-Request
+* [ REST API ](#tab-panel-8479)
+* [ Workers Binding API ](#tab-panel-8480)
+
+* [ cURL ](#tab-panel-8467)
+* [ TypeScript ](#tab-panel-8468)
+
+Terminal window
 
 ```
 
@@ -143,6 +315,30 @@ curl -X GET \
 -H "Authorization: Bearer <API_TOKEN>" \
 
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/downloads
+
+
+```
+
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+const downloads = await client.stream.downloads.get({
+
+  account_id: '<ACCOUNT_ID>',
+
+  identifier: '<VIDEO_UID>',
+
+});
 
 
 ```
@@ -188,6 +384,63 @@ Response
 
 ```
 
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
+
+* [ index.ts ](#tab-panel-8469)
+* [ wrangler.jsonc ](#tab-panel-8470)
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const videoHandle = env.STREAM.video("VIDEO_ID");
+
+    const downloads = await videoHandle.downloads.get();
+
+    return Response.json(downloads);
+
+  },
+
+};
+
+
+```
+
+```
+
+{
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  "name": "<ENTER_WORKER_NAME>",
+
+  "main": "src/index.ts",
+
+  "compatibility_date": "$today",
+
+  "observability": {
+
+    "enabled": true
+
+  },
+
+  "stream": {
+
+    "binding": "STREAM"
+
+  }
+
+}
+
+
+```
+
+See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
+
 ## Customize download file name
 
 You can customize the name of downloadable files by adding the `filename` query string parameter at the end of the URL.
@@ -211,9 +464,134 @@ curl -L https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/defau
 
 ```
 
+## Delete downloads
+
+You can delete a download for a video. Available types are `default` and `audio`. Defaults to `default` when omitted.
+
+* [ REST API ](#tab-panel-8481)
+* [ Workers Binding API ](#tab-panel-8482)
+
+* [ cURL ](#tab-panel-8471)
+* [ TypeScript ](#tab-panel-8472)
+
+Terminal window
+
+```
+
+curl -X DELETE \
+
+-H "Authorization: Bearer <API_TOKEN>" \
+
+https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/downloads/default
+
+
+```
+
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+await client.stream.downloads.default.delete({
+
+  account_id: '<ACCOUNT_ID>',
+
+  identifier: '<VIDEO_UID>',
+
+});
+
+
+```
+
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
+
+* [ index.ts ](#tab-panel-8473)
+* [ wrangler.jsonc ](#tab-panel-8474)
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const videoHandle = env.STREAM.video("VIDEO_ID");
+
+    await videoHandle.downloads.delete();
+
+    return new Response("Download deleted", { status: 200 });
+
+  },
+
+};
+
+
+```
+
+```
+
+{
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  "name": "<ENTER_WORKER_NAME>",
+
+  "main": "src/index.ts",
+
+  "compatibility_date": "$today",
+
+  "observability": {
+
+    "enabled": true
+
+  },
+
+  "stream": {
+
+    "binding": "STREAM"
+
+  }
+
+}
+
+
+```
+
+See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
+
 ## Secure video downloads
 
 If your video is public, the MP4 will also be publicly accessible. If your video is private and requires a signed URL for viewing, the MP4 will not be publicly accessible. To access the MP4 for a private video, you can generate a signed URL just as you would for regular viewing with an additional flag called `downloadable` set to `true`.
+
+You can generate a signed token using the Stream binding:
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const token = await env.STREAM.video("VIDEO_ID").generateToken();
+
+    return Response.json({ token });
+
+  },
+
+};
+
+
+```
 
 Download links will not work for videos which already require signed URLs if the `downloadable` flag is not present in the token.
 

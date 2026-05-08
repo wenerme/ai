@@ -26,6 +26,12 @@ Ask Codex to turn repo-specific workflows or checklists into a skill, so that al
 
 - https://developers.openai.com/codex/use-cases/reusable-codex-skills
 
+## Keep documentation current
+
+Ask Codex to compare source changes with existing docs, update the smallest useful docs surface, and verify the changes.
+
+- https://developers.openai.com/codex/use-cases/update-documentation
+
 ## Maintain system health
 
 Let Codex pick up feature requests and bug fixes automatically by using it from Slack and connecting it to your alerting, issue tracking, and daily bug sweeps.

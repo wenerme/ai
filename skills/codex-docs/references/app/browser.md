@@ -6,7 +6,8 @@ preview pages and attach visual comments.
 
 Use it for local development servers, file-backed previews, and public pages
 that don't require sign-in. For anything that depends on login state or browser
-extensions, use your regular browser.
+extensions, use your regular browser or the
+[Codex Chrome extension](https://developers.openai.com/codex/app/chrome-extension).
 
 Open the in-app browser from the toolbar, by clicking a URL, by navigating
 manually in the browser, or by pressing <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>
@@ -47,6 +48,9 @@ bug, and fix only the overflowing controls.
 Codex asks before using a website unless you've allowed it. Removing a site from
 the allowed list means Codex asks again before using it; removing a site from the
 blocked list means Codex can ask again instead of treating it as blocked.
+
+For signed-in websites in Chrome, see
+[Codex Chrome extension](https://developers.openai.com/codex/app/chrome-extension).
 
 ## Preview a page
 

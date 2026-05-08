@@ -8,7 +8,7 @@ Thank you for your interest in contributing to Gitea! This guide will help you u
 
 ## Getting Started
 
-Before you start contributing, please read our [Hacking on Gitea](../development/hacking-on-gitea.md) guide to set up your development environment.
+Before you start contributing, please read our [Hacking on Gitea](../development/hacking-on-gitea) guide to set up your development environment.
 
 ## Contribution Guidelines
 
@@ -16,7 +16,7 @@ We have specific guidelines for different types of contributions:
 
 ### Backend Development
 
-If you're working on backend code (Go), please follow our [Guidelines for Backend Development](guidelines-backend.md). This includes:
+If you're working on backend code (Go), please follow our [Guidelines for Backend Development](./guidelines-backend). This includes:
 
 - Package design and dependencies
 - Database operations and migrations
@@ -25,7 +25,7 @@ If you're working on backend code (Go), please follow our [Guidelines for Backen
 
 ### Frontend Development
 
-For frontend contributions (JavaScript, CSS, Vue), refer to our [Guidelines for Frontend Development](guidelines-frontend.md). This covers:
+For frontend contributions (JavaScript, CSS, Vue), refer to our [Guidelines for Frontend Development](./guidelines-frontend). This covers:
 
 - Framework usage (Vue3, Fomantic-UI)
 - Code style and best practices
@@ -34,7 +34,7 @@ For frontend contributions (JavaScript, CSS, Vue), refer to our [Guidelines for 
 
 ### Refactoring
 
-When refactoring existing code, follow our [Guidelines for Refactoring](guidelines-refactoring.md) to ensure:
+When refactoring existing code, follow our [Guidelines for Refactoring](./guidelines-refactoring) to ensure:
 
 - Clear refactoring objectives
 - Proper review process
@@ -43,7 +43,7 @@ When refactoring existing code, follow our [Guidelines for Refactoring](guidelin
 
 ### Localization
 
-To contribute translations or localization improvements, see our [Localization Guide](localization.md) which explains:
+To contribute translations or localization improvements, see our [Localization Guide](./localization) which explains:
 
 - How to contribute translations via Crowdin
 - Supported languages

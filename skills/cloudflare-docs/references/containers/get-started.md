@@ -74,7 +74,7 @@ After you deploy your Worker for the first time, you will need to wait several m
 
 ### Check deployment status
 
-After deploying, run the following command to show a list of containers containers in your Cloudflare account, and their deployment status:
+After deploying, run the following command to show a list of containers in your Cloudflare account, and their deployment status:
 
  npm  yarn  pnpm 
 
@@ -138,8 +138,8 @@ See the [documentation for Durable Object container methods](https://developers.
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
 
-* [  wrangler.jsonc ](#tab-panel-5328)
-* [  wrangler.toml ](#tab-panel-5329)
+* [  wrangler.jsonc ](#tab-panel-5581)
+* [  wrangler.toml ](#tab-panel-5582)
 
 JSONC
 

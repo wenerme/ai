@@ -1,6 +1,6 @@
 ---
 title: Domain control validation (DCV)
-description: Learn when and how to perform Domain Control Validation when using Cloudflare SSL/TLS.
+description: Understand when domain control validation is required and when Cloudflare handles it automatically.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -14,13 +14,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Before a certificate authority (CA) will issue a certificate for a domain, the requester must prove they have control over that domain. This process is known as domain control validation (DCV).
 
+If DCV is not completed, the CA cannot issue or renew the certificate, and visitors to your site will see SSL/TLS errors.
+
 Note
 
 Refer to [Domain control validation flow](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/) to learn more about the steps and parties involved in the DCV process.
 
-For [custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/), DCV will always be handled by you, when you request the certificate from the CA.
+For [custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/), you handle DCV directly with the CA when requesting or renewing the certificate.
 
-For certificates issued through Cloudflare, this process may be done automatically or it may require you to take action, as described in the following sections.
+For certificates issued through Cloudflare, whether DCV is automatic depends on your DNS setup.
 
 ---
 

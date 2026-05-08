@@ -1,4 +1,6 @@
-# Grounding with Google Search connects the Gemini model to real-time web content
+# Grounding with Google Search
+
+Grounding with Google Search connects the Gemini model to real-time web content
 and works with all available languages. This allows
 Gemini to provide more accurate answers and cite verifiable sources beyond its
 knowledge cutoff.
@@ -251,10 +253,12 @@ overview](https://ai.google.dev/gemini-api/docs/models) page.
 
 | Model | Grounding with Google Search |
 |---|---|
+| Gemini 3.1 Flash-Lite | ✔️ |
 | Gemini 3.1 Flash Image Preview | ✔️ |
 | Gemini 3.1 Pro Preview | ✔️ |
 | Gemini 3 Pro Image Preview | ✔️ |
 | Gemini 3 Flash Preview | ✔️ |
+| Gemini 3.1 Flash-Lite Preview | ✔️ |
 | Gemini 2.5 Pro | ✔️ |
 | Gemini 2.5 Flash | ✔️ |
 | Gemini 2.5 Flash-Lite | ✔️ |

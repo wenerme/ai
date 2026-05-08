@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ NetFlow ](https://developers.cloudflare.com/search/?tags=NetFlow)[ UDP ](https://developers.cloudflare.com/search/?tags=UDP) 
+
 # Netflow/IPFIX configuration
 
 Configure your router to export flow data to Cloudflare's network for analysis in Network Flow (formerly Magic Network Monitoring). Network Flow supports the NetFlow v5, NetFlow v9, and IPFIX formats.

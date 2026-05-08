@@ -135,6 +135,12 @@ curl https://api.openai.com/v1/files \\
   -F file="@batchinput.jsonl"
 ```
 
+```cli
+openai files create \\
+  --file batchinput.jsonl \\
+  --purpose batch
+```
+
 
 ### 3. Create the batch
 
@@ -179,6 +185,13 @@ curl https://api.openai.com/v1/batches \\
     "endpoint": "/v1/chat/completions",
     "completion_window": "24h"
   }'
+```
+
+```cli
+openai batches create \\
+  --input-file-id file-abc123 \\
+  --endpoint /v1/chat/completions \\
+  --completion-window 24h
 ```
 
 
@@ -238,6 +251,11 @@ curl https://api.openai.com/v1/batches/batch_abc123 \\
   -H "Content-Type: application/json"
 ```
 
+```cli
+openai batches retrieve \\
+  --batch-id batch_abc123
+```
+
 
 The status of a given Batch object can be any of the following:
 
@@ -279,6 +297,12 @@ print(file_response.text)
 ```bash
 curl https://api.openai.com/v1/files/file-xyz123/content \\
   -H "Authorization: Bearer $OPENAI_API_KEY" > batch_output.jsonl
+```
+
+```cli
+openai files content \\
+  --file-id file-xyz123 \\
+  --output batch_output.jsonl
 ```
 
 
@@ -326,6 +350,11 @@ curl https://api.openai.com/v1/batches/batch_abc123/cancel \\
   -X POST
 ```
 
+```cli
+openai batches cancel \\
+  --batch-id batch_abc123
+```
+
 
 ### 7. Get a list of all batches
 
@@ -355,6 +384,11 @@ client.batches.list(limit=10)
 curl https://api.openai.com/v1/batches?limit=10 \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -H "Content-Type: application/json"
+```
+
+```cli
+openai batches list \\
+  --limit 10
 ```
 
 

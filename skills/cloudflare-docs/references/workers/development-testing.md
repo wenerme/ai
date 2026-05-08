@@ -72,6 +72,7 @@ By default, running `wrangler dev` / `vite dev` (when using the [Vite plugin](ht
 
 * Your Worker code runs on your local machine.
 * All resources your Worker is bound to in your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/) are simulated locally.
+* The local `workerd` runtime runs with `TZ=UTC` so that `Date` and `Intl` APIs inside your Worker observe UTC, matching the production Cloudflare runtime regardless of your machine's timezone.
 
 ### Bindings during local development
 
@@ -89,8 +90,8 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-8660)
-* [  wrangler.toml ](#tab-panel-8661)
+* [  wrangler.jsonc ](#tab-panel-9172)
+* [  wrangler.toml ](#tab-panel-9173)
 
 JSONC
 
@@ -102,7 +103,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-07",
 
 
   "r2_buckets": [
@@ -132,7 +133,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-07"
 
 
 [[r2_buckets]]
@@ -154,8 +155,8 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-8672)
-* [  wrangler.toml ](#tab-panel-8673)
+* [  wrangler.jsonc ](#tab-panel-9184)
+* [  wrangler.toml ](#tab-panel-9185)
 
 JSONC
 
@@ -167,7 +168,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-07",
 
 
   "env": {
@@ -221,7 +222,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-07"
 
 
 [[env.production.r2_buckets]]
@@ -257,8 +258,8 @@ The following bindings are recommended to have `remote: true` in your Wrangler c
 
 To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-8658)
-* [  wrangler.toml ](#tab-panel-8659)
+* [  wrangler.jsonc ](#tab-panel-9170)
+* [  wrangler.toml ](#tab-panel-9171)
 
 JSONC
 
@@ -296,8 +297,8 @@ remote = true
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-8662)
-* [  wrangler.toml ](#tab-panel-8663)
+* [  wrangler.jsonc ](#tab-panel-9174)
+* [  wrangler.toml ](#tab-panel-9175)
 
 JSONC
 
@@ -335,8 +336,8 @@ remote = true
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-8664)
-* [  wrangler.toml ](#tab-panel-8665)
+* [  wrangler.jsonc ](#tab-panel-9176)
+* [  wrangler.toml ](#tab-panel-9177)
 
 JSONC
 
@@ -382,8 +383,8 @@ remote = true
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-8668)
-* [  wrangler.toml ](#tab-panel-8669)
+* [  wrangler.jsonc ](#tab-panel-9180)
+* [  wrangler.toml ](#tab-panel-9181)
 
 JSONC
 
@@ -429,8 +430,8 @@ remote = true
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/optimization/transformations/bindings/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-8666)
-* [  wrangler.toml ](#tab-panel-8667)
+* [  wrangler.jsonc ](#tab-panel-9178)
+* [  wrangler.toml ](#tab-panel-9179)
 
 JSONC
 
@@ -474,8 +475,8 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-8670)
-* [  wrangler.toml ](#tab-panel-8671)
+* [  wrangler.jsonc ](#tab-panel-9182)
+* [  wrangler.toml ](#tab-panel-9183)
 
 JSONC
 
@@ -610,8 +611,8 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-8674)
-* [  TypeScript ](#tab-panel-8675)
+* [  JavaScript ](#tab-panel-9186)
+* [  TypeScript ](#tab-panel-9187)
 
 JavaScript
 

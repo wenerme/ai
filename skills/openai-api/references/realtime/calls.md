@@ -83,21 +83,37 @@ handle it.
 
       Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
+      - `delay: optional "minimal" or "low" or "medium" or 2 more`
+
+        Controls how long the model waits before emitting transcription text.
+        Higher values can improve transcription accuracy at the cost of latency.
+        Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
+
+        - `"minimal"`
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+        - `"xhigh"`
+
       - `language: optional string`
 
         The language of the input audio. Supplying the input language in
         [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
         will improve accuracy and latency.
 
-      - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+      - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-        The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+        The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
         - `string`
 
-        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
           - `"whisper-1"`
 
@@ -109,12 +125,15 @@ handle it.
 
           - `"gpt-4o-transcribe-diarize"`
 
+          - `"gpt-realtime-whisper"`
+
       - `prompt: optional string`
 
         An optional text to guide the model's style or continue a previous audio
         segment.
         For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
         For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+        Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
     - `turn_detection: optional RealtimeAudioInputTurnDetection`
 
@@ -123,6 +142,9 @@ handle it.
       Server VAD means that the model will detect the start and end of speech based on audio volume and respond at the end of user speech.
 
       Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
+
+      For `gpt-realtime-whisper` transcription sessions, turn detection must be
+      set to `null`; VAD is not supported.
 
       - `ServerVad object { type, create_response, idle_timeout_ms, 4 more }`
 
@@ -291,19 +313,21 @@ handle it.
 
     - `"inf"`
 
-- `model: optional string or "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+- `model: optional string or "gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2" or 14 more`
 
   The Realtime model used for this session.
 
   - `string`
 
-  - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2025-08-28" or 13 more`
+  - `"gpt-realtime" or "gpt-realtime-1.5" or "gpt-realtime-2" or 14 more`
 
     The Realtime model used for this session.
 
     - `"gpt-realtime"`
 
     - `"gpt-realtime-1.5"`
+
+    - `"gpt-realtime-2"`
 
     - `"gpt-realtime-2025-08-28"`
 
@@ -342,6 +366,11 @@ handle it.
   - `"text"`
 
   - `"audio"`
+
+- `parallel_tool_calls: optional boolean`
+
+  Whether the model may call multiple tools in parallel. Only supported by
+  reasoning Realtime models such as `gpt-realtime-2`.
 
 - `prompt: optional ResponsePrompt`
 
@@ -441,6 +470,25 @@ handle it.
   - `version: optional string`
 
     Optional version of the prompt template.
+
+- `reasoning: optional RealtimeReasoning`
+
+  Configuration for reasoning-capable Realtime models such as `gpt-realtime-2`.
+
+  - `effort: optional RealtimeReasoningEffort`
+
+    Constrains effort on reasoning for reasoning-capable Realtime models such as
+    `gpt-realtime-2`.
+
+    - `"minimal"`
+
+    - `"low"`
+
+    - `"medium"`
+
+    - `"high"`
+
+    - `"xhigh"`
 
 - `tool_choice: optional RealtimeToolChoiceConfig`
 

@@ -72,6 +72,15 @@ curl https://api.openai.com/v1/audio/speech \\
   --output speech.mp3
 ```
 
+```cli
+openai audio:speech create \\
+  --model gpt-4o-mini-tts \\
+  --voice coral \\
+  --instructions "Speak in a cheerful and positive tone." \\
+  --input "Today is a wonderful day to build something people love!" \\
+  --output speech.mp3
+```
+
 
 By default, the endpoint outputs an MP3 of the spoken audio, but you can configure it to output any [supported format](#supported-output-formats).
 
@@ -309,7 +318,7 @@ curl https://api.openai.com/v1/audio/speech \
 const sessionConfig = JSON.stringify({
   session: {
     type: "realtime",
-    model: "gpt-realtime",
+    model: "gpt-realtime-2",
     audio: {
       output: {
         voice: { id: "voice_123abc" },
@@ -318,3 +327,26 @@ const sessionConfig = JSON.stringify({
   },
 });
 ```
+
+## Related guides
+
+<a href="/api/docs/guides/realtime">
+  
+
+<span slot="icon">
+      </span>
+    Choose the right path for voice agents, translation, transcription, and
+    speech generation.
+
+
+</a>
+
+<a href="/api/docs/guides/audio">
+  
+
+<span slot="icon">
+      </span>
+    Review audio modalities, speech tasks, streaming, and request-based APIs.
+
+
+</a>

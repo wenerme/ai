@@ -50,6 +50,21 @@ curl https://api.openai.com/v1/responses \\
 `.trim(),
 };
 
+export const snippetExampleProvidingUserIdentifierRealtime = {
+  curl: `
+curl https://api.openai.com/v1/realtime/client_secrets \\
+-H "Content-Type: application/json" \\
+-H "Authorization: Bearer $OPENAI_API_KEY" \\
+-H "OpenAI-Safety-Identifier: user_123456" \\
+-d '{
+"session": {
+"type": "realtime",
+"model": "gpt-realtime-2"
+}
+}'
+`.trim(),
+};
+
 We run several types of evaluations on our models and how they're being used. This guide covers how we test for safety and what you can do to avoid violations.
 
 ## Safety classifiers for GPT-5 and forward
@@ -66,7 +81,7 @@ With the introduction of [GPT-5](https://developers.openai.com/api/docs/models/g
 
 If your org engages in suspicious activity that violates our safety policies, we may return an error, limit model access, or even block your account. The following safety measures help us identify where high-risk requests are coming from and block individual end users, rather than blocking your entire org.
 
-- [Implement safety identifiers](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) using the `safety_identifier` parameter in your API requests.
+- [Implement safety identifiers](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) for products where individual users interact with a model. Safety identifiers are recommended but not required.
 - If your use case depends on accessing a less restricted version of our services in order to engage in beneficial applications across the life sciences, read about our [special access program](https://help.openai.com/en/articles/11826767-life-science-research-special-access-program) to see if you meet criteria.
 
 You likely don't need to provide a safety identifier if access to your product
@@ -77,6 +92,8 @@ You likely don't need to provide a safety identifier if access to your product
 
 The `safety_identifier` parameter is available in both the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create) and older [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create). The Realtime API supports the same concept through the `OpenAI-Safety-Identifier` header. To use safety identifiers, provide a stable ID for your end user on each request. Hash user email or internal user IDs to avoid passing any personal information.
 
+Safety identifiers do not carry over between APIs or sessions. If your application already sends `safety_identifier` with Responses API requests, pass the same stable value separately when you create or connect each Realtime session.
+
 
 
 <div data-content-switcher-pane data-value="responses">
@@ -84,6 +101,9 @@ The `safety_identifier` parameter is available in both the [Responses API](https
     </div>
   <div data-content-switcher-pane data-value="chat" hidden>
     <div class="hidden">Chat Completions API</div>
+    </div>
+  <div data-content-switcher-pane data-value="realtime" hidden>
+    <div class="hidden">Realtime API</div>
     </div>
 
 

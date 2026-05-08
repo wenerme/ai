@@ -15,6 +15,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 Before a certificate authority (CA) will issue a certificate for a domain, the requester must prove they have control over that domain. This process is known as domain control validation (DCV).
 
   
+When you [create a custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/), choose one certificate validation method. The API accepts one `ssl.method` value: `http`, `txt`, or `email`.
+
 ## DCV situations
 
 ### Non-wildcard certificates
@@ -45,6 +47,8 @@ If you want to minimize downtime, explore one of the following methods to issue 
 ### Minimize customer effort
 
 If you value simplicity and your customers can handle a few minutes of downtime, you can rely on Cloudflare [automatic HTTP validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/#http-automatic).
+
+Automatic HTTP validation requires the hostname to point to your SaaS target before the CA can fetch the validation token. During that period, the hostname may route to Cloudflare before the certificate reaches `ssl.status: active`.
 
 ## Potential issues
 

@@ -79,6 +79,17 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
+```cli
+openai responses create \\
+  --model gpt-5.5 \\
+  --raw-output \\
+  --transform 'output.#(type=="image_generation_call").result' <<'YAML' | base64 --decode > cat_and_otter.png
+tools:
+  - type: image_generation
+input: Generate an image of a gray tabby cat hugging an otter with an orange scarf.
+YAML
+```
+
 
 
 You can learn more about image generation in our [Image
@@ -196,6 +207,21 @@ curl https://api.openai.com/v1/responses \\
       }
     ]
   }'
+```
+
+```cli
+openai responses create \\
+  --model gpt-5.5 \\
+  --raw-output \\
+  --transform 'output.#(type=="message").content.0.text' <<'YAML'
+input:
+  - role: user
+    content:
+      - type: input_text
+        text: What is in this image?
+      - type: input_image
+        image_url: https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg
+YAML
 ```
 
   </div>

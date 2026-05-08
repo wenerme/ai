@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ IPsec ](https://developers.cloudflare.com/search/?tags=IPsec) 
+
 # Traffic steering
 
 ## Magic Transit Virtual Network routing table
@@ -146,15 +150,15 @@ For Magic Transit customers, the primary reason to consider Unified Routing is t
 
 The following limitations apply to accounts using Unified Routing mode. This list will get shorter as Cloudflare adds support for additional features.
 
-| Current beta limitations                                                                                                                               | Details                                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Performance                                                                                                                                            | Typically around 150 Mbps for each onramp                                                                                                     |
-| Network analytics                                                                                                                                      | Not yet fully supported                                                                                                                       |
-| Basic packet captures                                                                                                                                  | Captures exclude Automatic Return Routing or BGP-over-tunnels traffic                                                                         |
-| Full packet captures                                                                                                                                   | Not yet supported                                                                                                                             |
-| Advanced Cloudflare Network Firewall features: GeoIP/Country rules, IP Lists, ASN Lists, Threat Intel Lists, IDS, Rate Limiting, SIP, Managed Rulesets | Not yet supported                                                                                                                             |
-| Gateway filtering rules                                                                                                                                | Not supported on traffic where both the onramp and offramp is IPsec/GRE/CNI                                                                   |
-| Load Balancer                                                                                                                                          | Public-to-private use case is supported to IPsec/GRE/CNI destinations. Private-to-private use case does not yet support Cloudflare Source IPs |
+| Current beta limitations                                                                                                          | Details                                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Performance                                                                                                                       | Typically around 150 Mbps for each onramp                                                                                                     |
+| Network analytics                                                                                                                 | Not yet fully supported                                                                                                                       |
+| Basic packet captures                                                                                                             | Captures exclude Automatic Return Routing or BGP-over-tunnels traffic                                                                         |
+| Full packet captures                                                                                                              | Not yet supported                                                                                                                             |
+| Cloudflare Advanced Network Firewall features: IP Lists, ASN Lists, Threat Intel Lists, IDS, Rate Limiting, SIP, Managed Rulesets | Not yet supported                                                                                                                             |
+| Gateway filtering rules                                                                                                           | Not supported on traffic where both the onramp and offramp is IPsec/GRE/CNI                                                                   |
+| Load Balancer                                                                                                                     | Public-to-private use case is supported to IPsec/GRE/CNI destinations. Private-to-private use case does not yet support Cloudflare Source IPs |
 
 ### Enroll in the Unified Routing beta
 

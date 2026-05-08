@@ -23,10 +23,10 @@ If you want to learn more or encounter any problems while configuring it, please
 
 ### Set up runner
 
-Gitea Actions requires [act runner](https://gitea.com/gitea/act_runner) to run the jobs.
+Gitea Actions requires [Gitea Runner](https://gitea.com/gitea/runner) to run the jobs.
 In order to avoid consuming too many resources and affecting the Gitea instance, it is recommended to start runners on separate machines from the Gitea instance.
 
-You can use the [pre-built binaries](http://dl.gitea.com/act_runner) or the [docker images](https://hub.docker.com/r/gitea/act_runner/tags) to set up the runner.
+You can use the [pre-built binaries](http://dl.gitea.com/gitea-runner) or the [docker images](https://hub.docker.com/r/gitea/runner/tags) to set up the runner.
 
 Before proceeding any further, we suggest running it as a command line with pre-built binaries to ensure that it works with your environment, especially if you are running a runner on your localhost.
 And it could be easier to debug if something goes wrong.
@@ -38,7 +38,7 @@ However, it is recommended to use Docker to run the jobs, because it is more sec
 Before running a runner, you should first register it to your Gitea instance using the following command:
 
 ```bash
-./act_runner register --no-interactive --instance <instance> --token <token>
+./runner register --no-interactive --instance <instance> --token <token>
 ```
 
 There are two arguments required, `instance` and `token`.
@@ -67,14 +67,14 @@ If this file is missing or corrupted, you can simply remove it and register agai
 Finally, it's time to start the runner:
 
 ```bash
-./act_runner daemon
+./runner daemon
 ```
 
 And you can see the new runner in the management page:
 
 [view runner]
 
-You can find more information by visiting [Act runner](act-runner.mdxc).
+You can find more information by visiting [Gitea Runner](runner.mdx).
 
 ### Use Actions
 

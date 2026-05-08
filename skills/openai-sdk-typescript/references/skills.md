@@ -503,7 +503,7 @@ Download a skill zip bundle by its ID.
 
 ### Returns
 
-- `unnamed_schema_3 = Response`
+- `unnamed_schema_10 = Response`
 
 ### Example
 
@@ -990,7 +990,7 @@ Download a skill version zip bundle.
 
 ### Returns
 
-- `unnamed_schema_4 = Response`
+- `unnamed_schema_11 = Response`
 
 ### Example
 

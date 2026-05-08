@@ -18,6 +18,11 @@ All endpoints can be used to:
 
 File uploads are currently limited to 25 MB, and the following input file types are supported: `mp3`, `mp4`, `mpeg`, `mpga`, `m4a`, `wav`, and `webm`. Known speaker reference clips for diarization accept the same formats when provided as data URLs.
 
+Use this guide for file uploads and bounded audio requests. If your
+  application needs live transcript deltas from a microphone, call, or media
+  stream, use [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription)
+  instead.
+
 ## Quickstart
 
 ### Transcriptions
@@ -56,6 +61,14 @@ transcription = client.audio.transcriptions.create(
 )
 
 print(transcription.text)
+```
+
+```cli
+openai audio:transcriptions create \\
+  --model gpt-4o-transcribe \\
+  --file /path/to/file/audio.mp3 \\
+  --raw-output \\
+  --transform text
 ```
 
 ```bash

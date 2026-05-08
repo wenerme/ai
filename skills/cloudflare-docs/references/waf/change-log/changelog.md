@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: This week's release focuses on new detections to expand coverage across command injection, SQL injection, PHP object injection, remote code execution, and XSS attack vectors.
+description: Multiple security vulnerabilities were disclosed by the React team and Vercel affecting React Server Components and Next.js. These include denial of service, middleware and proxy bypass, server-side request forgery, cross-site scripting, and cache poisoning issues across a range of severity levels.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -13,6 +13,74 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
+
+## 2026-05-07
+
+  
+**WAF and framework adapter mitigations for React and Next.js vulnerabilities**   
+
+Multiple security vulnerabilities were disclosed by the React team and Vercel affecting React Server Components and Next.js. These include denial of service, middleware and proxy bypass, server-side request forgery, cross-site scripting, and cache poisoning issues across a range of severity levels.
+
+**We strongly recommend updating your application and its dependencies immediately.** Patched versions are available for React (`react-server-dom-webpack`, `react-server-dom-parcel`, and `react-server-dom-turbopack` `19.0.6`, `19.1.7`, and `19.2.6`) and Next.js (`15.5.16` and `16.2.5`). If you use a React-based server framework, such as [Vinext ↗](https://github.com/cloudflare/vinext), [OpenNext ↗](https://opennext.js.org/cloudflare), or [TanStack Start ↗](https://tanstack.com/start), update to the latest version of that framework as well.
+
+#### WAF protections
+
+Cloudflare WAF rules deployed in response to prior React Server Component CVEs ([CVE-2025-55184 ↗](https://github.com/facebook/react/security/advisories/GHSA-2m3v-v2m8-q956) and [CVE-2026-23864 ↗](https://github.com/facebook/react/security/advisories/GHSA-83fc-fqcc-2hmg)) already provide coverage for the newly disclosed denial-of-service vulnerabilities. These rules are enabled by default with a Block action for all customers using the Cloudflare Managed Ruleset, including Free plan customers using the Free Managed Ruleset.
+
+| Ruleset                    | Rule description                                                                                            | Rule ID                          | Default action |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------- | -------------- |
+| Cloudflare Managed Ruleset | React - DoS - [CVE-2025-55184 ↗](https://github.com/facebook/react/security/advisories/GHSA-2m3v-v2m8-q956) | 2694f1610c0b471393b21aef102ec699 | Block          |
+| Cloudflare Managed Ruleset | React - DoS - [CVE-2026-23864 ↗](https://github.com/facebook/react/security/advisories/GHSA-83fc-fqcc-2hmg) | aaede80b4d414dc89c443cea61680354 | Block          |
+
+The existing rules detect the underlying attack patterns generically. As a result, they apply to the new [CVE-2026-23870 ↗](https://github.com/facebook/react/security/advisories/GHSA-rv78-f8rc-xrxh) denial-of-service vulnerability in Server Components and the corresponding Next.js advisory [GHSA-8h8q-6873-q5fj ↗](https://github.com/vercel/next.js/security/advisories/GHSA-8h8q-6873-q5fj).
+
+Cloudflare is investigating whether WAF rules can be safely and effectively deployed for three of the high-severity advisories: [CVE-2026-23870 ↗](https://github.com/facebook/react/security/advisories/GHSA-rv78-f8rc-xrxh) / [GHSA-8h8q-6873-q5fj ↗](https://github.com/vercel/next.js/security/advisories/GHSA-8h8q-6873-q5fj), [GHSA-267c-6grr-h53f ↗](https://github.com/vercel/next.js/security/advisories/GHSA-267c-6grr-h53f), and [GHSA-mg66-mrh9-m8jx ↗](https://github.com/vercel/next.js/security/advisories/GHSA-mg66-mrh9-m8jx). If it is possible to create a managed WAF rule that mitigates these CVEs and does not potentially break application behavior, Cloudflare will add additional managed WAF rules. These rules will be announced through the [WAF changelog](https://developers.cloudflare.com/waf/change-log/changelog/). Because these vulnerabilities were shared with Cloudflare with minimal advance notice, we are still investigating what WAF mitigations are possible.
+
+Several of the disclosed vulnerabilities are not possible to block in WAF. We strongly recommend updating your applications so they are not purely reliant on WAF mitigations.
+
+Customers on Pro, Business, or Enterprise plans should ensure that [Managed Rules are enabled](https://developers.cloudflare.com/waf/get-started/#1-deploy-the-cloudflare-managed-ruleset).
+
+#### Next.js adapters
+
+**Vinext:** [Vinext ↗](https://github.com/cloudflare/vinext) is a Vite plugin that reimplements the Next.js API surface. Vinext's latest release is not vulnerable to any of the disclosed CVEs. Vinext's architecture differs from stock Next.js in ways that sidestep the affected code paths. For example, it does not implement the PPR resume protocol, does not expose Pages Router data-route endpoints, and strips internal headers such as `x-nextjs-data` at request boundaries. As an extra layer of defense, we added a React `19.2.6` or later requirement when running `vinext init` ([PR #1118 ↗](https://github.com/cloudflare/vinext/pull/1118), [PR #1112 ↗](https://github.com/cloudflare/vinext/pull/1112)) to prevent accidentally running a vulnerable version of React with Vinext.
+
+**OpenNext on Cloudflare:** OpenNext is an adapter that lets you deploy Next.js apps to the Cloudflare Workers platform. OpenNext itself is not directly vulnerable to the React denial-of-service CVE, but users must update the Next.js version in their application. The OpenNext team has updated the adapter to further harden against these vectors and released a new version of the Cloudflare adapter. Test fixtures and examples have been updated to use patched versions ([PR #1255 ↗](https://github.com/opennextjs/opennextjs-cloudflare/pull/1255)).
+
+#### Summary of disclosed vulnerabilities
+
+| Advisory                                                                                                                                                                                           | Severity | Issue                                                           | WAF status                                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [CVE-2026-23870 ↗](https://github.com/facebook/react/security/advisories/GHSA-rv78-f8rc-xrxh) / [GHSA-8h8q-6873-q5fj ↗](https://github.com/vercel/next.js/security/advisories/GHSA-8h8q-6873-q5fj) | High     | Denial of service in Server Components                          | **WAF rules in place:** 2694f1610c0b471393b21aef102ec699, aaede80b4d414dc89c443cea61680354Cloudflare is investigating additional managed WAF coverage |
+| [GHSA-267c-6grr-h53f ↗](https://github.com/vercel/next.js/security/advisories/GHSA-267c-6grr-h53f)                                                                                                 | High     | Middleware bypass via segment-prefetch routes                   | Cloudflare is investigating if this can be safely and effectively mitigated by a managed WAF rule                                                     |
+| [GHSA-mg66-mrh9-m8jx ↗](https://github.com/vercel/next.js/security/advisories/GHSA-mg66-mrh9-m8jx)                                                                                                 | High     | Denial of service via connection exhaustion in Cache Components | Cloudflare is investigating if this can be safely and effectively mitigated by a managed WAF rule                                                     |
+| [GHSA-492v-c6pp-mqqv ↗](https://github.com/vercel/next.js/security/advisories/GHSA-492v-c6pp-mqqv)                                                                                                 | High     | Middleware bypass via dynamic route parameter injection         | Not possible to safely enable a managed WAF rule without potentially breaking application behavior                                                    |
+| [GHSA-c4j6-fc7j-m34r ↗](https://github.com/vercel/next.js/security/advisories/GHSA-c4j6-fc7j-m34r)                                                                                                 | High     | SSRF via WebSocket upgrades                                     | Not possible to safely enable a managed WAF rule without potentially breaking application behavior                                                    |
+| [GHSA-36qx-fr4f-26g5 ↗](https://github.com/vercel/next.js/security/advisories/GHSA-36qx-fr4f-26g5)                                                                                                 | High     | Middleware bypass in Pages Router i18n                          | Custom WAF rule possible; global managed rule could potentially break application behavior                                                            |
+| [GHSA-ffhc-5mcf-pf4q ↗](https://github.com/vercel/next.js/security/advisories/GHSA-ffhc-5mcf-pf4q)                                                                                                 | Moderate | XSS via CSP nonces                                              | Custom WAF rule possible; global managed rule could potentially break application behavior                                                            |
+| [GHSA-gx5p-jg67-6x7h ↗](https://github.com/vercel/next.js/security/advisories/GHSA-gx5p-jg67-6x7h)                                                                                                 | Moderate | XSS in beforeInteractive scripts                                | Not possible to safely enable a managed WAF rule without potentially breaking application behavior                                                    |
+| [GHSA-h64f-5h5j-jqjh ↗](https://github.com/vercel/next.js/security/advisories/GHSA-h64f-5h5j-jqjh)                                                                                                 | Moderate | Denial of service in Image Optimization API                     | Custom WAF rule possible; global managed rule could potentially break application behavior                                                            |
+| [GHSA-wfc6-r584-vfw7 ↗](https://github.com/vercel/next.js/security/advisories/GHSA-wfc6-r584-vfw7)                                                                                                 | Moderate | Cache poisoning in RSC responses                                | Custom WAF rule possible; global managed rule could potentially break application behavior                                                            |
+| [GHSA-vfv6-92ff-j949 ↗](https://github.com/vercel/next.js/security/advisories/GHSA-vfv6-92ff-j949)                                                                                                 | Low      | Cache poisoning via RSC cache-busting collisions                | Not possible to safely enable a managed WAF rule without potentially breaking application behavior                                                    |
+| [GHSA-3g8h-86w9-wvmq ↗](https://github.com/vercel/next.js/security/advisories/GHSA-3g8h-86w9-wvmq)                                                                                                 | Low      | Middleware redirect cache poisoning                             | Custom WAF rule possible; global managed rule could potentially break application behavior                                                            |
+
+## 2026-05-07
+
+  
+**WAF Release - 2026-05-07 - Emergency**   
+
+This emergency release introduces a new rule to detect Next.js App Router middleware and proxy bypass attempts via segment-prefetch routes (CVE-2026-44575).
+
+**Key Findings**
+
+CVE-2026-44575: Next.js Middleware / Proxy Bypass in App Router Applications via Segment-Prefetch Routes
+
+Successful exploitation allows unauthenticated attackers to bypass middleware or proxy-based authorization checks in affected Next.js App Router applications. This leads to unauthorized access to protected content, potential exposure of sensitive application data, and compromise of application security boundaries.
+
+We strongly recommend upgrading to Next.js 15.5.16 or 16.2.5 (or later) immediately to address the underlying vulnerability. If you cannot upgrade immediately, enforce authorization in the underlying route or page logic instead of relying solely on middleware.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                             | Previous Action | New Action | Comments                 |
+| -------------------------- | ----------- | -------------- | ----------------------------------------------------------------------- | --------------- | ---------- | ------------------------ |
+| Cloudflare Managed Ruleset | ...e77e4a53 | N/A            | Next.js - Middleware Bypass via Invalid RSC Header - CVE:CVE-2026-44575 | N/A             | Disabled   | This is a new detection. |
 
 ## 2026-05-04
 
@@ -531,46 +599,6 @@ This issue was particularly notable within the Cloudflare Managed Ruleset and th
 **Impact**
 
 Customers on paid plans can increase the limit to 1 MB for any of their zones by contacting Cloudflare Support. Free zones are already protected up to 1 MB and do not require any action.
-
-## 2025-12-03
-
-  
-**WAF Release - 2025-12-03 - Emergency**   
-
-The WAF rule deployed yesterday to block unsafe deserialization-based RCE has been updated. The rule description now reads “React – RCE – CVE-2025-55182”, explicitly mapping to the recently disclosed React Server Components vulnerability. Detection logic remains unchanged.
-
-**Key Findings**
-
-Rule description updated to reference React – RCE – CVE-2025-55182 while retaining existing unsafe-deserialization detection.
-
-**Impact**
-
-Improved classification and traceability with no change to coverage against remote code execution attempts.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                      | Previous Action | New Action | Comments                                                |
-| -------------------------- | ----------- | -------------- | -------------------------------- | --------------- | ---------- | ------------------------------------------------------- |
-| Cloudflare Managed Ruleset | ...5fb92fba | N/A            | React - RCE - CVE:CVE-2025-55182 | N/A             | Block      | Rule metadata description changed. Detection unchanged. |
-| Cloudflare Free Ruleset    | ...99702280 | N/A            | React - RCE - CVE:CVE-2025-55182 | N/A             | Block      | Rule metadata description changed. Detection unchanged. |
-
-## 2025-12-02
-
-  
-**WAF Release - 2025-12-02 - Emergency**   
-
-This week's emergency release introduces a new rule to block a critical RCE vulnerability in widely-used web frameworks through unsafe deserialization patterns.
-
-**Key Findings**
-
-New WAF rule deployed for RCE Generic Framework to block malicious POST requests containing unsafe deserialization patterns. If successfully exploited, this vulnerability allows attackers with network access via HTTP to execute arbitrary code remotely.
-
-**Impact**
-
-* Successful exploitation allows unauthenticated attackers to execute arbitrary code remotely through crafted serialization payloads, enabling complete system compromise, data exfiltration, and potential lateral movement within affected environments.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description             | Previous Action | New Action | Comments                 |
-| -------------------------- | ----------- | -------------- | ----------------------- | --------------- | ---------- | ------------------------ |
-| Cloudflare Managed Ruleset | ...5fb92fba | N/A            | RCE Generic - Framework | N/A             | Block      | This is a new detection. |
-| Cloudflare Free Ruleset    | ...99702280 | N/A            | RCE Generic - Framework | N/A             | Block      | This is a new detection. |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}

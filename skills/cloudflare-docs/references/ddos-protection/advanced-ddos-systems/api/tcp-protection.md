@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TCP ](https://developers.cloudflare.com/search/?tags=TCP) 
+
 # Advanced TCP Protection
 
 You can configure Advanced TCP Protection using the Advanced TCP Protection API.

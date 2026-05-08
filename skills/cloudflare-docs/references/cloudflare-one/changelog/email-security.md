@@ -14,6 +14,19 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/email-security-cf1.xml) 
 
+## 2026-05-06
+
+  
+**Cloudy Summaries in PhishNet O365**   
+
+PhishNet users can now access **Cloudy summaries** directly within the email investigation experience. When reviewing a message in PhishNet, users will see an AI-generated summary that provides additional context and key details about the email.
+
+These summaries help users quickly understand the nature of a message without needing to manually parse through headers, body content, and detection signals. Cloudy surfaces the most relevant information so users can make faster, more informed decisions about suspicious emails.
+
+**These summaries are not trained on customer data.** They are generated using the outputs of our existing detection models and analysis systems.
+
+This feature is available for PhishNet with Office 365\. Support for Gmail will be available by the end of the quarter.
+
 ## 2026-04-07
 
   

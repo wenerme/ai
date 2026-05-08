@@ -1,5 +1,13 @@
 # Voice agents
 
+import {
+  Bolt,
+  Cube,
+  Desktop,
+  Phone,
+} from "@components/react/oai/platform/ui/Icon.react";
+
+
 Voice agents turn the same agent concepts into spoken, low-latency interactions. The key design choice is deciding whether the model should work directly with live audio or whether your application should explicitly chain speech-to-text, text reasoning, and text-to-speech.
 
 ## Choose the right architecture
@@ -13,80 +21,29 @@ Agent Builder doesn't currently support voice workflows, so voice stays an SDK-f
 
 ## Recommended starting points
 
-The two supported languages expose different strengths today:
+The examples below are intentionally different architectures, not matching language tabs. The TypeScript and Python libraries expose different voice helpers today:
 
 - In TypeScript, the fastest path to a browser-based voice assistant is a `RealtimeAgent` and `RealtimeSession`.
 - In Python, the simplest path to extending an existing text agent into voice is a chained `VoicePipeline`.
-
-Two common voice starting points
-
-```typescript
-import { RealtimeAgent, RealtimeSession } from "@openai/agents/realtime";
-
-const agent = new RealtimeAgent({
-  name: "Assistant",
-  instructions: "You are a helpful voice assistant.",
-});
-
-const session = new RealtimeSession(agent, {
-  model: "gpt-realtime-1.5",
-});
-
-await session.connect({
-  apiKey: "ek_...(ephemeral key from your server)",
-});
-```
-
-```python
-import asyncio
-import numpy as np
-
-from agents import Agent, function_tool
-from agents.voice import AudioInput, SingleAgentVoiceWorkflow, VoicePipeline
-
-
-@function_tool
-def get_weather(city: str) -> str:
-    """Get the weather for a given city."""
-    return f"The weather in {city} is sunny."
-
-
-agent = Agent(
-    name="Assistant",
-    instructions="You are a helpful voice assistant.",
-    model="gpt-5.4",
-    tools=[get_weather],
-)
-
-
-async def main() -> None:
-    pipeline = VoicePipeline(workflow=SingleAgentVoiceWorkflow(agent))
-    audio_input = AudioInput(buffer=np.zeros(24000 * 3, dtype=np.int16))
-    result = await pipeline.run(audio_input)
-    async for event in result.stream():
-        if event.type == "voice_stream_event_audio":
-            print("Received audio bytes", len(event.data))
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
-
 
 <span id="speech-to-speech-realtime-architecture"></span>
 
 ## Build a speech-to-speech voice agent
 
-Use the live audio API path when the interaction should feel conversational and immediate. The usual browser flow is:
+Use the live audio API path when the interaction should feel conversational and immediate. This is the best starting point for voice agents that need barge-in, low first-audio latency, natural turn taking, and realtime tool use.
+
+The usual browser flow is:
 
 1. Your application server creates an ephemeral client secret for the live audio session.
 2. Your frontend creates a `RealtimeSession`.
 3. The session connects over WebRTC in the browser or WebSocket on the server.
 4. The agent handles audio turns, tools, interruptions, and handoffs inside that session.
 
+From there, attach tools, handoffs, and guardrails to the `RealtimeAgent` the same way you would attach them to a text agent. Keep audio transport concerns in the session layer, and keep business logic in the agent definition.
+
 Start with the transport docs when you need lower-level control:
 
-- [Live audio API overview](https://developers.openai.com/api/docs/guides/realtime)
+- [Realtime and audio overview](https://developers.openai.com/api/docs/guides/realtime)
 - [Live audio API with WebRTC](https://developers.openai.com/api/docs/guides/realtime-webrtc)
 - [Live audio API with WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket)
 
@@ -100,6 +57,8 @@ Use the chained path when you want stronger control over intermediate text, exis
 
 This is often the better fit for support flows, approval-heavy flows, or cases where you want durable transcripts and deterministic logic between each stage.
 
+Use this path when each stage needs to be visible or replaceable. For example, you might store the transcript, run policy checks before the text agent responds, call internal systems, then generate speech only after the workflow reaches an approved answer.
+
 ## Voice agents still use the same core agent building blocks
 
 The voice surface changes the transport and audio loop, but the core workflow decisions are the same:
@@ -111,3 +70,45 @@ The voice surface changes the transport and audio loop, but the core workflow de
 - Use [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability) when you need MCP-backed capabilities or want to inspect how the voice workflow behaved.
 
 The practical rule is: choose the audio architecture first, then design the rest of the agent workflow the same way you would for text.
+
+## Next steps
+
+<a href="/api/docs/guides/realtime">
+  
+
+<span slot="icon">
+      </span>
+    Choose the right realtime or audio guide for your use case.
+
+
+</a>
+
+<a href="/api/docs/guides/realtime-conversations">
+  
+
+<span slot="icon">
+      </span>
+    Work with the Realtime session lifecycle and event model.
+
+
+</a>
+
+<a href="/api/docs/guides/realtime-webrtc">
+  
+
+<span slot="icon">
+      </span>
+    Connect browser and mobile audio directly to a Realtime session.
+
+
+</a>
+
+<a href="/api/docs/guides/realtime-models-prompting">
+  
+
+<span slot="icon">
+      </span>
+    Tune reasoning, preambles, tools, entity capture, and voice behavior.
+
+
+</a>

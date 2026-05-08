@@ -2,6 +2,14 @@
 
 Vision fine-tuning uses image inputs for [supervised fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning) to improve the model's understanding of image inputs. This guide will take you through this subset of SFT, and outline some of the important considerations for fine-tuning with image inputs.
 
+OpenAI is winding down the fine-tuning platform. The platform is no longer
+  accessible to new users, but existing users of the fine-tuning platform will
+  be able to create training jobs for the coming months.
+  <br />
+  All fine-tuned models will remain available for inference until their base
+  models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
+  [here](https://developers.openai.com/api/docs/deprecations).
+
 <br />
 
 <table>

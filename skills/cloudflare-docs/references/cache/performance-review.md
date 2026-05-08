@@ -1,6 +1,6 @@
 ---
 title: Performance review
-description: Review cache performance metrics and analytics.
+description: Understand cache hit rates and optimize caching for your site.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Performance review
 
-Review the following content to learn more about cache performance.
+Use Cache Analytics to understand how effectively Cloudflare caches your content, and apply optimization techniques to improve your cache hit ratio and reduce origin server load.
 
 * [ Cache Analytics ](https://developers.cloudflare.com/cache/performance-review/cache-analytics/)
 * [ Cache performance ](https://developers.cloudflare.com/cache/performance-review/cache-performance/)

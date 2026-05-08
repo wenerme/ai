@@ -18,6 +18,12 @@ For basic uploads, you will need to add the Creator ID after you upload the vide
 
 ## Upload from URL
 
+* [ REST API ](#tab-panel-8439)
+* [ Workers Binding API ](#tab-panel-8440)
+
+* [ cURL ](#tab-panel-8421)
+* [ TypeScript ](#tab-panel-8422)
+
 Terminal window
 
 ```
@@ -29,6 +35,40 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/copy" \
 --header "Content-Type: application/json" \
 
 --data '{"url":"https://example.com/myvideo.mp4","creator": "<CREATOR_ID>","thumbnailTimestampPct":0.529241,"allowedOrigins":["example.com"],"requireSignedURLs":true,"watermark":{"uid":"ea95132c15732412d22c1476fa83f27a"}}'
+
+
+```
+
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+const video = await client.stream.copy.create({
+
+  account_id: '<ACCOUNT_ID>',
+
+  url: 'https://example.com/myvideo.mp4',
+
+  creator: '<CREATOR_ID>',
+
+  thumbnailTimestampPct: 0.529241,
+
+  allowedOrigins: ['example.com'],
+
+  requireSignedURLs: true,
+
+  watermark: { uid: 'ea95132c15732412d22c1476fa83f27a' },
+
+});
 
 
 ```
@@ -142,9 +182,81 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/copy" \
 
 ```
 
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
+
+* [ index.ts ](#tab-panel-8423)
+* [ wrangler.jsonc ](#tab-panel-8424)
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const video = await env.STREAM.upload("https://example.com/myvideo.mp4", {
+
+      creator: "<CREATOR_ID>",
+
+      thumbnailTimestampPct: 0.529241,
+
+      allowedOrigins: ["example.com"],
+
+      requireSignedURLs: true,
+
+      watermarkId: "ea95132c15732412d22c1476fa83f27a",
+
+    });
+
+    return Response.json(video);
+
+  },
+
+};
+
+
+```
+
+```
+
+{
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  "name": "<ENTER_WORKER_NAME>",
+
+  "main": "src/index.ts",
+
+  "compatibility_date": "$today",
+
+  "observability": {
+
+    "enabled": true
+
+  },
+
+  "stream": {
+
+    "binding": "STREAM"
+
+  }
+
+}
+
+
+```
+
+See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
+
 ## Set default creators for videos
 
 You can associate videos with a single creator by setting a default creator ID value, which you can later use for searching for videos by creator ID or for analytics data.
+
+* [ REST API ](#tab-panel-8437)
+
+* [ cURL ](#tab-panel-8425)
+* [ TypeScript ](#tab-panel-8426)
 
 Terminal window
 
@@ -156,18 +268,54 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inp
 
 --header "Content-Type: application/json" \
 
---data '{"DefaultCreator":"1234"}'
+--data '{"defaultCreator":"1234"}'
 
 
 ```
+
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+const liveInput = await client.stream.liveInputs.create({
+
+  account_id: '<ACCOUNT_ID>',
+
+  defaultCreator: '1234',
+
+});
+
+
+```
+
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
 If you have multiple creators who start live streams, [create a live input](https://developers.cloudflare.com/stream/get-started/#step-1-create-a-live-input) for each creator who will live stream and then set a `DefaultCreator` value per input. Setting the default creator ID for each input ensures that any recorded videos streamed from the creator's input will inherit the `DefaultCreator` value.
 
 At this time, you can only manage the default creator ID values via the API.
 
+Note
+
+Setting default creator IDs for live inputs is only available via the API. The Stream binding does not currently support live input operations.
+
 ## Update creator in existing videos
 
 To update the creator property in existing videos, make a `POST` request to the video object endpoint with a JSON payload specifying the creator property as show in the example below.
+
+* [ REST API ](#tab-panel-8441)
+* [ Workers Binding API ](#tab-panel-8442)
+
+* [ cURL ](#tab-panel-8427)
+* [ TypeScript ](#tab-panel-8428)
 
 Terminal window
 
@@ -184,7 +332,98 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/<VIDEO_U
 
 ```
 
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+const video = await client.stream.edit({
+
+  account_id: '<ACCOUNT_ID>',
+
+  identifier: '<VIDEO_UID>',
+
+  creator: 'test123',
+
+});
+
+
+```
+
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
+
+* [ index.ts ](#tab-panel-8429)
+* [ wrangler.jsonc ](#tab-panel-8430)
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const video = await env.STREAM.video("<VIDEO_UID>").update({
+
+      creator: "test123",
+
+    });
+
+    return Response.json(video);
+
+  },
+
+};
+
+
+```
+
+```
+
+{
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  "name": "<ENTER_WORKER_NAME>",
+
+  "main": "src/index.ts",
+
+  "compatibility_date": "$today",
+
+  "observability": {
+
+    "enabled": true
+
+  },
+
+  "stream": {
+
+    "binding": "STREAM"
+
+  }
+
+}
+
+
+```
+
+See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
+
 ## Direct creator upload
+
+* [ REST API ](#tab-panel-8443)
+* [ Workers Binding API ](#tab-panel-8444)
+
+* [ cURL ](#tab-panel-8431)
+* [ TypeScript ](#tab-panel-8432)
 
 Terminal window
 
@@ -197,6 +436,42 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/direct_u
 --header "Content-Type: application/json" \
 
 --data '{"maxDurationSeconds":300,"expiry":"2021-01-02T02:20:00Z","creator": "<CREATOR_ID>", "thumbnailTimestampPct":0.529241,"allowedOrigins":["example.com"],"requireSignedURLs":true,"watermark":{"uid":"ea95132c15732412d22c1476fa83f27a"}}'
+
+
+```
+
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+const directUpload = await client.stream.directUpload.create({
+
+  account_id: '<ACCOUNT_ID>',
+
+  maxDurationSeconds: 300,
+
+  expiry: '2021-01-02T02:20:00Z',
+
+  creator: '<CREATOR_ID>',
+
+  thumbnailTimestampPct: 0.529241,
+
+  allowedOrigins: ['example.com'],
+
+  requireSignedURLs: true,
+
+  watermark: { uid: 'ea95132c15732412d22c1476fa83f27a' },
+
+});
 
 
 ```
@@ -254,7 +529,87 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/direct_u
 
 ```
 
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
+
+* [ index.ts ](#tab-panel-8433)
+* [ wrangler.jsonc ](#tab-panel-8434)
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const directUpload = await env.STREAM.createDirectUpload({
+
+      maxDurationSeconds: 300,
+
+      expiry: "2021-01-02T02:20:00Z",
+
+      creator: "<CREATOR_ID>",
+
+      thumbnailTimestampPct: 0.529241,
+
+      allowedOrigins: ["example.com"],
+
+      requireSignedURLs: true,
+
+      watermark: {
+
+        id: "ea95132c15732412d22c1476fa83f27a",
+
+      },
+
+    });
+
+    return Response.json(directUpload);
+
+  },
+
+};
+
+
+```
+
+```
+
+{
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  "name": "<ENTER_WORKER_NAME>",
+
+  "main": "src/index.ts",
+
+  "compatibility_date": "$today",
+
+  "observability": {
+
+    "enabled": true
+
+  },
+
+  "stream": {
+
+    "binding": "STREAM"
+
+  }
+
+}
+
+
+```
+
+See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
+
 ## Get videos by Creator ID
+
+* [ REST API ](#tab-panel-8438)
+
+* [ cURL ](#tab-panel-8435)
+* [ TypeScript ](#tab-panel-8436)
 
 Terminal window
 
@@ -263,6 +618,30 @@ Terminal window
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream?after=2014-01-02T02:20:00Z&before=2014-01-02T02:20:00Z&include_counts=false&creator=<CREATOR_ID>&limit=undefined&asc=false&status=downloading,queued,inprogress,ready,error" \
 
 --header "Authorization: Bearer <API_TOKEN>"
+
+
+```
+
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+const videos = await client.stream.list({
+
+  account_id: '<ACCOUNT_ID>',
+
+  creator: '<CREATOR_ID>',
+
+});
 
 
 ```
@@ -383,6 +762,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream?after=20
 
 
 ```
+
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
+
+Note
+
+Filtering videos by creator ID is only available via the API. The Stream binding's `videos.list()` method does not currently support filtering by creator.
 
 ## tus
 

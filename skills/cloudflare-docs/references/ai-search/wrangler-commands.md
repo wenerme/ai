@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List all AI Search instances
 
-* [  npm ](#tab-panel-4512)
-* [  pnpm ](#tab-panel-4513)
-* [  yarn ](#tab-panel-4514)
+* [  npm ](#tab-panel-4446)
+* [  pnpm ](#tab-panel-4447)
+* [  yarn ](#tab-panel-4448)
 
 Terminal window
 
@@ -77,9 +77,9 @@ Automatically provision draft bindings with new resources
 
 Create a new AI Search instance
 
-* [  npm ](#tab-panel-4515)
-* [  pnpm ](#tab-panel-4516)
-* [  yarn ](#tab-panel-4517)
+* [  npm ](#tab-panel-4449)
+* [  pnpm ](#tab-panel-4450)
+* [  yarn ](#tab-panel-4451)
 
 Terminal window
 
@@ -142,6 +142,10 @@ R2 key prefix to scope indexing.
 Glob patterns for items to include.
 * `--exclude-items` ` array `  
 Glob patterns for items to exclude.
+* `--custom-metadata` ` array `  
+Custom metadata fields, formatted as 'field\_name:data\_type'. data\_type must be one of: text, number, boolean, datetime. Repeat the flag for multiple fields (e.g. --custom-metadata title:text --custom-metadata views:number).
+* `--custom-metadata-schema` ` string `  
+Path to a JSON file describing custom metadata fields. The file must contain an array of { "field\_name", "data\_type" } objects. Mutually exclusive with --custom-metadata.
 * `--json` ` boolean ` default: false  
 Return output as clean JSON
 
@@ -166,9 +170,9 @@ Automatically provision draft bindings with new resources
 
 Get details of an AI Search instance
 
-* [  npm ](#tab-panel-4518)
-* [  pnpm ](#tab-panel-4519)
-* [  yarn ](#tab-panel-4520)
+* [  npm ](#tab-panel-4452)
+* [  pnpm ](#tab-panel-4453)
+* [  yarn ](#tab-panel-4454)
 
 Terminal window
 
@@ -225,9 +229,9 @@ Automatically provision draft bindings with new resources
 
 Update an AI Search instance configuration
 
-* [  npm ](#tab-panel-4521)
-* [  pnpm ](#tab-panel-4522)
-* [  yarn ](#tab-panel-4523)
+* [  npm ](#tab-panel-4455)
+* [  pnpm ](#tab-panel-4456)
+* [  yarn ](#tab-panel-4457)
 
 Terminal window
 
@@ -306,9 +310,9 @@ Automatically provision draft bindings with new resources
 
 Delete an AI Search instance
 
-* [  npm ](#tab-panel-4524)
-* [  pnpm ](#tab-panel-4525)
-* [  yarn ](#tab-panel-4526)
+* [  npm ](#tab-panel-4458)
+* [  pnpm ](#tab-panel-4459)
+* [  yarn ](#tab-panel-4460)
 
 Terminal window
 
@@ -365,9 +369,9 @@ Automatically provision draft bindings with new resources
 
 Get usage statistics for an AI Search instance
 
-* [  npm ](#tab-panel-4527)
-* [  pnpm ](#tab-panel-4528)
-* [  yarn ](#tab-panel-4529)
+* [  npm ](#tab-panel-4461)
+* [  pnpm ](#tab-panel-4462)
+* [  yarn ](#tab-panel-4463)
 
 Terminal window
 
@@ -424,9 +428,9 @@ Automatically provision draft bindings with new resources
 
 Execute a semantic search query against an AI Search instance
 
-* [  npm ](#tab-panel-4530)
-* [  pnpm ](#tab-panel-4531)
-* [  yarn ](#tab-panel-4532)
+* [  npm ](#tab-panel-4464)
+* [  pnpm ](#tab-panel-4465)
+* [  yarn ](#tab-panel-4466)
 
 Terminal window
 
@@ -493,9 +497,9 @@ Automatically provision draft bindings with new resources
 
 List all AI Search namespaces
 
-* [  npm ](#tab-panel-4533)
-* [  pnpm ](#tab-panel-4534)
-* [  yarn ](#tab-panel-4535)
+* [  npm ](#tab-panel-4467)
+* [  pnpm ](#tab-panel-4468)
+* [  yarn ](#tab-panel-4469)
 
 Terminal window
 
@@ -554,9 +558,9 @@ Automatically provision draft bindings with new resources
 
 Create a new AI Search namespace
 
-* [  npm ](#tab-panel-4536)
-* [  pnpm ](#tab-panel-4537)
-* [  yarn ](#tab-panel-4538)
+* [  npm ](#tab-panel-4470)
+* [  pnpm ](#tab-panel-4471)
+* [  yarn ](#tab-panel-4472)
 
 Terminal window
 
@@ -613,9 +617,9 @@ Automatically provision draft bindings with new resources
 
 Get details of an AI Search namespace
 
-* [  npm ](#tab-panel-4539)
-* [  pnpm ](#tab-panel-4540)
-* [  yarn ](#tab-panel-4541)
+* [  npm ](#tab-panel-4473)
+* [  pnpm ](#tab-panel-4474)
+* [  yarn ](#tab-panel-4475)
 
 Terminal window
 
@@ -670,9 +674,9 @@ Automatically provision draft bindings with new resources
 
 Update an AI Search namespace
 
-* [  npm ](#tab-panel-4542)
-* [  pnpm ](#tab-panel-4543)
-* [  yarn ](#tab-panel-4544)
+* [  npm ](#tab-panel-4476)
+* [  pnpm ](#tab-panel-4477)
+* [  yarn ](#tab-panel-4478)
 
 Terminal window
 
@@ -729,9 +733,9 @@ Automatically provision draft bindings with new resources
 
 Delete an AI Search namespace
 
-* [  npm ](#tab-panel-4545)
-* [  pnpm ](#tab-panel-4546)
-* [  yarn ](#tab-panel-4547)
+* [  npm ](#tab-panel-4479)
+* [  pnpm ](#tab-panel-4480)
+* [  yarn ](#tab-panel-4481)
 
 Terminal window
 

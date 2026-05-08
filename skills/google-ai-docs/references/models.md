@@ -1,5 +1,3 @@
-# Models
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -12,6 +10,8 @@ Advanced intelligence, complex problem-solving skills, and powerful agentic and 
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) [### Gemini 3 Flash
 Frontier-class performance rivaling larger models at a fraction of the cost.
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) [### Gemini 3.1 Flash-Lite
+Frontier-class performance rivaling larger models at a fraction of the cost.
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [### Gemini 3.1 Flash-Lite
 Frontier-class performance rivaling larger models at a fraction of the cost.
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview) [### Nano Banana 2
 Powerful, high-efficiency image generation and editing, optimized for speed and high-volume use cases.

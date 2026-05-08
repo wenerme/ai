@@ -53,7 +53,7 @@ If you want to give more permissions to the runner, allowing it to access more p
 Refined permission control to Actions is a complicated job.
 In the future, we will add more options to Gitea to make it more configurable, such as allowing more write access to repositories or read access to all repositories in the same organization.
 
-## Which operating systems are supported by act runner?
+## Which operating systems are supported by Gitea Runner?
 
 We released official binaries for Linux, macOS, and Windows.
 While other operating systems are theoretically supported if it is supported by golang and docker(docker mode enabled).
@@ -98,7 +98,7 @@ It is exciting to be able to reuse them.
 
 This is valid syntax.
 It means that it should run on runners that have both the `label_a` **and** `label_b` labels, see [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idruns-on).
-Unfortunately, act runner does not work this way until v0.2.11.
+Unfortunately, the runner does not work this way until v0.2.11.
 As mentioned, we map labels to environments:
 
 - `ubuntu` → `ubuntu:22.04`
@@ -114,9 +114,9 @@ We also need to re-design how tasks are assigned to runners.
 A runner with `ubuntu`, `centos`, or `with-gpu` does not necessarily indicate that it can accept jobs with `[centos, with-gpu]`.
 Therefore, the runner should inform the Gitea instance that it can only accept jobs with `[ubuntu]`, `[centos]`, `[with-gpu]`, and `[ubuntu, with-gpu]`.
 This is not a technical problem, it was just overlooked in the early design.
-See [runtime.go#L65](https://gitea.com/gitea/act_runner/src/commit/90b8cc6a7a48f45cc28b5ef9660ebf4061fcb336/runtime/runtime.go#L65).
+See [runtime.go#L65](https://gitea.com/gitea/runner/src/commit/90b8cc6a7a48f45cc28b5ef9660ebf4061fcb336/runtime/runtime.go#L65).
 
-Currently, the act runner attempts to match everyone in the labels and uses the first match it finds.
+Currently, the runner attempts to match everyone in the labels and uses the first match it finds.
 
 ## What is the difference between agent labels and custom labels for a runner?
 
@@ -129,17 +129,17 @@ However, the design here needs improvement, as it currently has some rough edges
 You can add a custom label such as `centos` to a registered runner, which means the runner will receive jobs with `runs-on: centos`.
 However, the runner may not know which environment to use for this label, resulting in it using a default image or leading to a logical dead end.
 This default may not match user expectations.
-See [runtime.go#L71](https://gitea.com/gitea/act_runner/src/commit/90b8cc6a7a48f45cc28b5ef9660ebf4061fcb336/runtime/runtime.go#L71).
+See [runtime.go#L71](https://gitea.com/gitea/runner/src/commit/90b8cc6a7a48f45cc28b5ef9660ebf4061fcb336/runtime/runtime.go#L71).
 
 In the meantime, we suggest that you re-register your runner if you want to change its labels.
 
 ## Will there be more implementations for Gitea Actions runner?
 
-Although we would like to provide more options, our limited manpower means that act runner will be the only officially supported runner at the moment.
+Although we would like to provide more options, our limited manpower means that Gitea Runner will be the only officially supported runner at the moment.
 
-However, both Gitea and act runner are completely open source under MIT License, so anyone can modify the code to satisfy their requirements.
+However, both Gitea and Gitea Runner are completely open source under MIT License, so anyone can modify the code to satisfy their requirements.
 
-In case you fork act runner to create your own version: Please contribute the changes back if you can and if you think your changes will help others as well.
+In case you fork Gitea Runner to create your own version: Please contribute the changes back if you can and if you think your changes will help others as well.
 
 ## What workflow trigger events does Gitea support?
 

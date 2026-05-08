@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ AWS ](https://developers.cloudflare.com/search/?tags=AWS)[ GCP ](https://developers.cloudflare.com/search/?tags=GCP) 
+
 # Get started
 
 BGP architecture and resiliency
@@ -95,7 +99,7 @@ Consider the following service levels when planning your deployment:
 
 ### Available locations
 
-Direct connections are available at any Cloudflare data center where you are also located. Make sure to check whether the location of interest has the right dataplane version and diversity requirements for your use case. Refer to [available locations](https://developers.cloudflare.com/network-interconnect/static/cni-locations-31-mar-2026.pdf) (PDF) for details.
+Direct connections are available at any Cloudflare data center where you are also located. Make sure to check whether the location of interest has the right dataplane version and diversity requirements for your use case. Refer to [available locations](https://developers.cloudflare.com/network-interconnect/static/cni-locations-05-may-2026.pdf) (PDF) for details.
 
 ### Connectivity partners
 

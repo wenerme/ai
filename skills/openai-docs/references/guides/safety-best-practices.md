@@ -77,7 +77,9 @@ Sending safety identifiers in your requests can be a useful tool to help OpenAI 
 
 A safety identifier should be a string that uniquely identifies each user. Hash the username or email address in order to avoid sending us any identifying information. If you offer a preview of your product to non-logged in users, you can send a session ID instead.
 
-Include safety identifiers in your API requests with the `safety_identifier` parameter:
+Safety identifiers are recommended for products where individual users interact
+with a model, but they are not required. Include safety identifiers in your API
+requests with the `safety_identifier` parameter:
 
 For Realtime API requests, provide the same stable, privacy-preserving identifier
 with the `OpenAI-Safety-Identifier` header. When you create an ephemeral Realtime
@@ -85,3 +87,8 @@ client secret, include the header on the server-side request that creates the
 secret so the identifier is bound to that session. For direct WebSocket or WebRTC
 connection requests made from a trusted backend, include the header on the
 connection request.
+
+Safety identifiers do not carry over between APIs or sessions. If your
+application already sends `safety_identifier` with Responses API requests, pass
+the same stable value separately when you create or connect each Realtime
+session.

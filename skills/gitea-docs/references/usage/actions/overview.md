@@ -19,8 +19,8 @@ To avoid confusion, we have clarified the spelling here:
 ## Runners
 
 Just like other CI/CD solutions, Gitea doesn't run the jobs itself, but delegates the jobs to runners.
-The runner of Gitea Actions is called [act runner](https://gitea.com/gitea/act_runner), it is a standalone program and also written in Go.
-An important part of the application comes from a [fork](https://gitea.com/gitea/act) of [nektos/act](http://github.com/nektos/act).
+The runner of Gitea Actions is called [Gitea Runner](https://gitea.com/gitea/runner), it is a standalone program and also written in Go.
+An important part of the application comes from a hard fork of [nektos/act](http://github.com/nektos/act).
 
 Because the runner is deployed independently, there could be potential security issues.
 To avoid them, please follow two simple rules:

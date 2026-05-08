@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Interaction with Cloudflare products
 
-Review the following topics to learn more about how Cache interacts with other Cloudflare products.
+Cloudflare caches content at data centers close to your visitors so your origin server handles fewer requests. The pages below explain how caching works when you also use Workers, R2 storage, or WAF security rules, and what to watch out for when combining them.
 
 * [ Customize cache behavior with Workers ](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/)
 * [ How Workers interact with Cache Rules ](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers-cache-rules/)

@@ -1,11 +1,11 @@
 ---
 title: "Wafer | Models"
-description: "Use Wafer models with Mastra. 3 models available."
+description: "Use Wafer models with Mastra. 4 models available."
 ---
 
 # [Wafer logo]Wafer
 
-Access 3 Wafer models through Mastra's model router. Authentication is handled automatically using the `WAFER_API_KEY` environment variable.
+Access 4 Wafer models through Mastra's model router. Authentication is handled automatically using the `WAFER_API_KEY` environment variable.
 
 Learn more in the [Wafer documentation](https://docs.wafer.ai/wafer-pass).
 
@@ -59,6 +59,18 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 202752,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "wafer.ai/MiniMax-M2.7",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 204800,
     "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null

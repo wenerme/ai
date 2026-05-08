@@ -56,8 +56,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
         model="gemini-3-flash-preview",
         contents=prompt,
         config={
-            "response_mime_type": "application/json",
-            "response_json_schema": Recipe.model_json_schema(),
+            "response_format": {"text": {"mime_type": "application/json", "schema": Recipe.model_json_schema()}},
         },
     )
 
@@ -102,8 +101,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
-        responseMimeType: "application/json",
-        responseJsonSchema: zodToJsonSchema(recipeSchema),
+        responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(recipeSchema) } },
       },
     });
 
@@ -206,8 +204,10 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
             ]
           }],
           "generationConfig": {
-            "responseMimeType": "application/json",
-            "responseJsonSchema": {
+            "responseFormat": {
+              "text": {
+                "mimeType": "application/json",
+                "schema": {
               "type": "object",
               "properties": {
                 "recipe_name": {
@@ -225,7 +225,9 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
                     "properties": {
                       "name": { "type": "string", "description": "Name of the ingredient."},
                       "quantity": { "type": "string", "description": "Quantity of the ingredient, including units."}
-                    },
+              }
+            }
+          },
                     "required": ["name", "quantity"]
                   }
                 },
@@ -318,8 +320,7 @@ concatenated to form the final, complete JSON object.
         model="gemini-3-flash-preview",
         contents=prompt,
         config={
-            "response_mime_type": "application/json",
-            "response_json_schema": Feedback.model_json_schema(),
+            "response_format": {"text": {"mime_type": "application/json", "schema": Feedback.model_json_schema()}},
         },
     )
 
@@ -344,8 +345,7 @@ concatenated to form the final, complete JSON object.
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
-        responseMimeType: "application/json",
-        responseJsonSchema: zodToJsonSchema(feedbackSchema),
+        responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(feedbackSchema) } },
       },
     });
 
@@ -386,8 +386,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
                 {"google_search": {}},
                 {"url_context": {}}
             ],
-            "response_mime_type": "application/json",
-            "response_json_schema": MatchResult.model_json_schema(),
+            "response_format": {"text": {"mime_type": "application/json", "schema": MatchResult.model_json_schema()}},
         },  
     )
 
@@ -417,8 +416,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
             { googleSearch: {} },
             { urlContext: {} }
           ],
-          responseMimeType: "application/json",
-          responseJsonSchema: zodToJsonSchema(matchSchema),
+          responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(matchSchema) } },
         },
       });
 
@@ -443,8 +441,10 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
           {"urlContext": {}}
         ],
         "generationConfig": {
-            "responseMimeType": "application/json",
-            "responseJsonSchema": {
+            "responseFormat": {
+              "text": {
+                "mimeType": "application/json",
+                "schema": {
                 "type": "object",
                 "properties": {
                     "winner": {"type": "string", "description": "The name of the winner."},
@@ -454,7 +454,9 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
                         "items": {"type": "string"},
                         "description": "The name of the scorer."
                     }
-                },
+              }
+            }
+          },
                 "required": ["winner", "final_match_score", "scorers"]
             }
         }
@@ -462,7 +464,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
 
 ## JSON schema support
 
-To generate a JSON object, set the `response_mime_type` in the generation configuration to `application/json` and provide a `response_json_schema`. The schema must be a valid [JSON Schema](https://json-schema.org/) that describes the desired output format.
+To generate a JSON object, set the `response_format` in the generation configuration. The schema must be a valid [JSON Schema](https://json-schema.org/) that describes the desired output format.
 
 The model will then generate a response that is a syntactically valid JSON string matching the provided schema. When using structured outputs, the model will produce outputs in the same order as the keys in the schema.
 
@@ -515,8 +517,10 @@ The following models support structured output:
 
 | Model | Structured Outputs |
 |---|---|
+| Gemini 3.1 Flash-Lite | ✔️ |
 | Gemini 3.1 Pro Preview | ✔️ |
 | Gemini 3 Flash Preview | ✔️ |
+| Gemini 3.1 Flash-Lite Preview | ✔️ |
 | Gemini 2.5 Pro | ✔️ |
 | Gemini 2.5 Flash | ✔️ |
 | Gemini 2.5 Flash-Lite | ✔️ |

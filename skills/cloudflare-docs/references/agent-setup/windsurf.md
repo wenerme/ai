@@ -49,7 +49,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.  
 ```
 
 ## Cloudflare platform access

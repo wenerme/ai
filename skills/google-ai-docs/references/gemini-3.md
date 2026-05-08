@@ -8,7 +8,7 @@ state-of-the-art reasoning. It is designed to bring any idea to life by
 mastering agentic workflows, autonomous coding, and complex multimodal tasks.
 This guide covers key features of the Gemini 3 model family and how to get the
 most out of it.
-[Try Gemini 3.1 Pro Preview](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-pro-preview) [Try Gemini 3 Flash](https://aistudio.google.com/prompts/new_chat?model=gemini-3-flash-preview) [Try Nano Banana 2](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-image-preview)
+[Try Gemini 3.1 Pro Preview](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-pro-preview) [Try Gemini 3 Flash Preview](https://aistudio.google.com/prompts/new_chat?model=gemini-3-flash-preview) [Try Gemini 3.1 Flash-Lite](https://aistudio.google.com/prompts/new_chat?model=gemini-3-flash-lite) [Try Nano Banana 2](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-image-preview)
 
 Explore our [collection of Gemini 3 apps](https://aistudio.google.com/app/apps?source=showcase&showcaseTag=gemini-3) to
 see how the model handles advanced reasoning, autonomous coding, and complex
@@ -73,10 +73,9 @@ the high-volume, high-efficiency, lower price-point equivalent.
 Gemini 3.1 Flash-Lite is our workhorse model built for cost-efficiency model and
 high-volume tasks.
 
-All Gemini 3 models are currently in preview.
-
 | Model ID | Context Window (In / Out) | Knowledge Cutoff | Pricing (Input / Output)\* |
 |---|---|---|---|
+| **gemini-3.1-flash-lite** | 1M / 64k | Jan 2025 | $0.25 (text, image, video), $0.50 (audio) / $1.50 |
 | **gemini-3.1-flash-lite-preview** | 1M / 64k | Jan 2025 | $0.25 (text, image, video), $0.50 (audio) / $1.50 |
 | **gemini-3.1-flash-image-preview** | 128k / 32k | Jan 2025 | $0.25 (Text Input) / $0.067 (Image Output)\*\* |
 | **gemini-3.1-pro-preview** | 1M / 64k | Jan 2025 | $2 / $12 (\<200k tokens) $4 / $18 (\>200k tokens) |
@@ -579,8 +578,7 @@ Gemini 3 models allow you to combine [Structured Outputs](https://ai.google.dev/
                 {"google_search": {}},
                 {"url_context": {}}
             ],
-            "response_mime_type": "application/json",
-            "response_json_schema": MatchResult.model_json_schema(),
+            "response_format": {"text": {"mime_type": "application/json", "schema": MatchResult.model_json_schema()}},
         },  
     )
 
@@ -610,8 +608,7 @@ Gemini 3 models allow you to combine [Structured Outputs](https://ai.google.dev/
             { googleSearch: {} },
             { urlContext: {} }
           ],
-          responseMimeType: "application/json",
-          responseJsonSchema: zodToJsonSchema(matchSchema),
+          responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(matchSchema) } },
         },
       });
 
@@ -636,8 +633,10 @@ Gemini 3 models allow you to combine [Structured Outputs](https://ai.google.dev/
           {"urlContext": {}}
         ],
         "generationConfig": {
-            "responseMimeType": "application/json",
-            "responseJsonSchema": {
+    "responseFormat": {
+      "text": {
+        "mimeType": "application/json",
+        "schema": {
                 "type": "object",
                 "properties": {
                     "winner": {"type": "string", "description": "The name of the winner."},
@@ -647,7 +646,9 @@ Gemini 3 models allow you to combine [Structured Outputs](https://ai.google.dev/
                         "items": {"type": "string"},
                         "description": "The name of the scorer."
                     }
-                },
+      }
+    }
+    },
                 "required": ["winner", "final_match_score", "scorers"]
             }
         }
@@ -682,10 +683,7 @@ options, see the [Image Generation guide](https://ai.google.dev/gemini-api/docs/
         contents="Generate an infographic of the current weather in Tokyo.",
         config=types.GenerateContentConfig(
             tools=[{"google_search": {}}],
-            image_config=types.ImageConfig(
-                aspect_ratio="16:9",
-                image_size="4K"
-            )
+            response_format={"image": {"aspect_ratio": "16:9", "image_size": "4K"}}
         )
     )
 
@@ -709,10 +707,12 @@ options, see the [Image Generation guide](https://ai.google.dev/gemini-api/docs/
         contents: "Generate a visualization of the current weather in Tokyo.",
         config: {
           tools: [{ googleSearch: {} }],
-          imageConfig: {
+          responseFormat: {
+        image: {
             aspectRatio: "16:9",
             imageSize: "4K"
           }
+      }
         }
       });
 
@@ -739,10 +739,12 @@ options, see the [Image Generation guide](https://ai.google.dev/gemini-api/docs/
         }],
         "tools": [{"googleSearch": {}}],
         "generationConfig": {
-            "imageConfig": {
+            "responseFormat": {
+        "image": {
               "aspectRatio": "16:9",
               "imageSize": "4K"
           }
+      }
         }
       }'
 
@@ -1309,7 +1311,7 @@ Learn more about prompt design strategies in the [prompt engineering guide](http
    token input context window and up to 64k tokens of output.
 
 3. **Is there a free tier for Gemini 3?** Gemini 3 Flash
-   `gemini-3-flash-preview` and 3.1 Flash-Lite `gemini-3.1-flash-lite-preview` have
+   `gemini-3-flash-preview` and 3.1 Flash-Lite `gemini-3.1-flash-lite` have
    free tiers in the Gemini API. You can try Gemini 3.1 Pro and 3 Flash for free in
    Google AI Studio, but there is no free tier available for
    `gemini-3.1-pro-preview` in the Gemini API.

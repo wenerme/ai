@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ IPsec ](https://developers.cloudflare.com/search/?tags=IPsec)[ ICMP ](https://developers.cloudflare.com/search/?tags=ICMP) 
+
 # Troubleshoot tunnel health
 
 This guide helps you diagnose and resolve common tunnel health issues with Magic Transit. Tunnel health checks monitor your GRE and IPsec tunnel endpoints (also called connectors in the Cloudflare dashboard) and steer traffic to the best available routes.

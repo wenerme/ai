@@ -259,7 +259,7 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 
 ### Parallel
 
-[Parallel](https://parallel.ai) is a search engine that supports domain filtering and uses OpenRouter credits at the same rate as Exa (\$4 per 1000 results).
+[Parallel](https://parallel.ai) is a search engine that supports domain filtering and uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result.
 
 ```json
 {
@@ -279,7 +279,7 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 
 * **Native search**: Pricing is passed through directly from the provider (see provider-specific pricing info below)
 * **Exa search**: Uses OpenRouter credits at \$4 per 1000 results (default 5 results = \$0.02 per request)
-* **Parallel search**: Uses OpenRouter credits at \$4 per 1000 results (same as Exa)
+* **Parallel search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result
 * **Firecrawl search**: Uses your Firecrawl credits directly, refill at [Firecrawl.dev](https://www.firecrawl.dev)
 
 ## Pricing

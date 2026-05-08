@@ -363,6 +363,64 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
+## Retention and query window
+
+The `firewallEventsAdaptive` dataset, which powers [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/), has different data retention limits from the datasets used in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/#limits). Queries that exceed the data retention window return an error similar to the following:
+
+```
+
+cannot request data older than 2678400s
+
+
+```
+
+For more information on the limits per plan for the `firewallEventsAdaptive` dataset, refer to [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/#availability).
+
+To discover the exact limits for your zone programmatically, query the `settings` node:
+
+```
+
+{
+
+  viewer {
+
+    zones(filter: { zoneTag: "<CLOUDFLARE_ZONE_TAG>" }) {
+
+      settings {
+
+        firewallEventsAdaptive {
+
+          maxDuration
+
+          maxPageSize
+
+          notOlderThan
+
+        }
+
+        httpRequestsAdaptive {
+
+          maxDuration
+
+          maxPageSize
+
+          notOlderThan
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+```
+
+For more on the `settings` node, refer to [Settings node](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/settings/).
+
 ## Footnotes
 
 1. Refer to [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/) for more information on configuration and permissions. [↩](#user-content-fnref-1)

@@ -85,10 +85,11 @@ also apply to the Codex CLI and IDE extension because the MCP configuration live
 
 ## Browser use
 
-Use these settings to install or enable the bundled Browser plugin and manage
-allowed and blocked websites. Codex asks before using a website unless you've
-allowed it. Removing a site from the blocked list lets Codex ask
-again before using it in the browser.
+Use these settings to install or enable the bundled Browser plugin, set up the
+[Codex Chrome extension](https://developers.openai.com/codex/app/chrome-extension), and manage allowlisted
+and blocklisted websites. Codex asks before using a website unless you've
+allowlisted it. Removing a site from the blocklist lets Codex ask again before
+using it in the browser.
 
 See [In-app browser](https://developers.openai.com/codex/app/browser) for browser preview, comment, and
 browser use workflows.

@@ -1,6 +1,6 @@
 ---
 title: Cipher suites
-description: Consider information about supported cipher suites, how to meet your security requirements, and how to troubleshoot compatibility and other issues.
+description: Control which encryption algorithms are used in TLS connections to your domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -19,7 +19,9 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Cipher suites are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/) (and therefore separate from the [SSL/TLS protocol](https://developers.cloudflare.com/ssl/reference/protocols/)).
 
   
-This section covers cipher suites used in connections between clients — such as your visitor's browser — and the Cloudflare network. For information about cipher suites used between Cloudflare and your origin server, refer to [Origin server > Cipher suites](https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/).
+This section covers cipher suites used in connections between visitors and the Cloudflare network. Cipher suites used between Cloudflare and your origin server are configured separately — refer to [Origin server > Cipher suites](https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/).
+
+[Compliance standards](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/) such as PCI DSS may require specific cipher suites or prohibit older ones, and security testing tools like Qualys SSL Labs may flag Cloudflare's [default configuration](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/#legacy-default).
 
 Note
 
@@ -29,11 +31,11 @@ Cloudflare maintains a [public repository of our SSL/TLS configurations ↗](htt
 
 ## Cipher suites and edge certificates
 
-While the cipher suites used by default for all Cloudflare domains/zones are meant to balance security and compatibility, some of them might be considered weak by third-party testing tools, such as the Qualys SSL Labs test.
+Cloudflare's default cipher suites ([Legacy](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/)) balance security and compatibility, which means they include older algorithms that security testing tools may flag.
 
-If the default option ([Legacy](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/)) does not meet your business requirements, you can [purchase the Advanced Certificate Manager add-on ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/acm/) to be able to [specify more secure cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/).
+If the default configuration does not meet your requirements, you can [purchase the Advanced Certificate Manager add-on ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/acm/) to [specify more secure cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/).
 
-Custom cipher suites is a hostname-level setting. Once specified, the configuration is applicable to all edge certificates used to connect to the hostname(s), regardless of [certificate type](https://developers.cloudflare.com/ssl/edge-certificates/) (universal, advanced, or custom).
+Cipher suite customization is a hostname-level setting. Once specified, the configuration applies to all edge certificates serving that hostname, regardless of [certificate type](https://developers.cloudflare.com/ssl/edge-certificates/) (universal, advanced, or custom).
 
 ## Related SSL/TLS settings
 
@@ -45,9 +47,9 @@ You can specify a [minimum TLS version](https://developers.cloudflare.com/ssl/ed
 
 For example, if TLS 1.1 is selected as the minimum, visitors attempting to connect using TLS 1.0 will be rejected while visitors attempting to connect using TLS 1.1, 1.2, or 1.3 (if enabled) will be allowed.
 
-Each cipher suite relates to a specific minimum protocol that it supports. This means that if you use a [higher security level](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/) for your cipher suites and stop supporting TLS 1.0, you should also adjust your minimum TLS version accordingly.
+Certain cipher suites are only available in specific TLS versions. If you restrict cipher suites to a [higher security level](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/) that excludes older algorithms, you should also adjust your minimum TLS version to match.
 
-[Compliance standards](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/) can also require you to up the minimum TLS version accepted in connections to your website or application.
+[Compliance standards](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/) may also require you to increase the minimum TLS version accepted in connections to your website or application.
 
 ### TLS 1.3
 

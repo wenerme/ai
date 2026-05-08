@@ -1,73 +1,80 @@
 # Audio and speech
 
-The OpenAI API provides a range of audio capabilities. If you know what you want to build, find your use case below to get started. If you're not sure where to start, read this page as an overview.
+Audio models can understand spoken input, generate spoken output, or do both in the same interaction. This guide explains the vocabulary used across OpenAI's audio docs. When you're ready to choose an implementation path, start with the [Realtime and audio overview](https://developers.openai.com/api/docs/guides/realtime).
 
-## Build with audio
+## Audio modalities
 
-<div className="w-full max-w-full overflow-hidden">
-  </div>
+An audio application combines one or more of these modalities:
 
-## A tour of audio use cases
+| Modality        | Meaning                                      | Common use cases                                  |
+| --------------- | -------------------------------------------- | ------------------------------------------------- |
+| Audio input     | The model receives sound from a user or app. | Voice agents, transcription, translation.         |
+| Audio output    | The model or API returns spoken audio.       | Voice agents, text to speech, spoken responses.   |
+| Text transcript | Speech becomes text.                         | Captions, call analysis, search, records.         |
+| Text prompt     | Text controls what the model says or does.   | Speech generation, scripted voice flows, prompts. |
 
-LLMs can process audio by using sound as input, creating sound as output, or both. OpenAI has several API endpoints that help you build audio applications or voice agents.
+## Common speech tasks
 
-### Voice agents
+**Speech to text** converts speech into text. Use it for captions, notes, transcripts, analytics, search, and accessibility. Transcription can be request-based for files or streaming for live audio.
 
-Voice agents understand audio to handle tasks and respond back in natural language. There are two main ways to approach voice agents: either with speech-to-speech models and the [Realtime API](https://developers.openai.com/api/docs/guides/realtime), or by chaining together a speech-to-text model, a text language model to process the request, and a text-to-speech model to respond. Speech-to-speech is lower latency and more natural, but chaining together a voice agent is a reliable way to extend a text-based agent into a voice agent. If you are already using the [Agents SDK](https://developers.openai.com/api/docs/guides/agents), you can [extend your existing agents with voice capabilities](https://developers.openai.com/api/docs/guides/voice-agents) using the chained approach.
+**Text to speech** converts text into spoken audio. Use it for narration, assistants, accessibility, and generated voice responses. Speech generation can stream audio back as the model produces it.
 
-### Streaming audio
+**Speech to speech** lets a model listen, reason, and speak in one low-latency session. Use it for conversational voice agents when the assistant needs to respond, call tools, or maintain session state.
 
-Process audio in real time to build voice agents and other low-latency applications, including transcription use cases. You can stream audio in and out of a model with the [Realtime API](https://developers.openai.com/api/docs/guides/realtime). Our advanced speech models provide automatic speech recognition for improved accuracy, low-latency interactions, and multilingual support.
+**Speech translation** listens to speech in one language and returns translated speech or transcript output in another language. Use a dedicated realtime translation session when translation should begin continuously as audio arrives.
 
-### Text to speech
+## Streaming and latency
 
-For turning text into speech, use the [Audio API](https://developers.openai.com/api/docs/api-reference/audio/) `audio/speech` endpoint. Models compatible with this endpoint are `gpt-4o-mini-tts`, `tts-1`, and `tts-1-hd`. With `gpt-4o-mini-tts`, you can ask the model to speak a certain way or with a certain tone of voice.
+Streaming means the client and service exchange partial input or output while the interaction is still active. Streaming is useful when users expect immediate feedback, such as live captions, calls, voice agents, and translation.
 
-### Speech to text
+Lower latency requires a realtime connection, more careful audio handling, and a session model that can emit partial events. Request-based APIs are simpler for file uploads and non-interactive work, but they don't support the same live interaction patterns.
 
-For speech to text, use the [Audio API](https://developers.openai.com/api/docs/api-reference/audio/) `audio/transcriptions` endpoint. Models compatible with this endpoint are `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`, `whisper-1`, and `gpt-4o-transcribe-diarize`. `gpt-4o-transcribe-diarize` adds speaker labels and timestamps for HTTP requests and is intended for non-latency-sensitive workloads, while the other models focus on transcription only. With streaming, you can continuously pass in audio and get a continuous stream of text back.
+## Request-based APIs and realtime sessions
 
-## Choosing the right API
+OpenAI supports two broad audio architectures:
 
-There are multiple APIs for transcribing or generating audio:
+| Architecture                | Use when                                             | Examples                                                                                                                                                       |
+| --------------------------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Request-based audio APIs    | You have a file, a text input, or a bounded request. | [Speech to text](https://developers.openai.com/api/docs/guides/speech-to-text), [text to speech](https://developers.openai.com/api/docs/guides/text-to-speech).                                                          |
+| Realtime sessions           | Audio is live and the app needs low-latency events.  | [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents), [translation](https://developers.openai.com/api/docs/guides/realtime-translation), [transcription](https://developers.openai.com/api/docs/guides/realtime-transcription). |
+| Multimodal chat completions | You are extending an existing chat flow with audio.  | [Audio input or output](#add-audio-to-your-existing-application).                                                                                              |
 
-| API                                                  | Supported modalities              | Streaming support                                |
-| ---------------------------------------------------- | --------------------------------- | ------------------------------------------------ |
-| [Realtime API](https://developers.openai.com/api/docs/api-reference/realtime)     | Audio and text inputs and outputs | Audio streaming in, audio and text streaming out |
-| [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat) | Audio and text inputs and outputs | Audio and text streaming out                     |
-| [Transcription API](https://developers.openai.com/api/docs/api-reference/audio)   | Audio inputs                      | Text streaming out                               |
-| [Speech API](https://developers.openai.com/api/docs/api-reference/audio)          | Text inputs and audio outputs     | Audio streaming out                              |
-
-### General use APIs vs. specialized APIs
-
-The main distinction is general use APIs vs. specialized APIs. With the Realtime and Chat Completions APIs, you can use our latest models' native audio understanding and generation capabilities and combine them with other features like function calling. These APIs can be used for a wide range of use cases, and you can select the model you want to use.
-
-On the other hand, the Transcription, Translation and Speech APIs are specialized to work with specific models and only meant for one purpose.
-
-### Talking with a model vs. controlling the script
-
-Another way to select the right API is asking yourself how much control you need. To design conversational interactions, where the model thinks and responds in speech, use the Realtime or Chat Completions API, depending if you need low-latency or not.
-
-You won't know exactly what the model will say ahead of time, as it will generate audio responses directly, but the conversation will feel natural.
-
-For more control and predictability, you can use the Speech-to-text / LLM / Text-to-speech pattern, so you know exactly what the model will say and can control the response. Please note that with this method, there will be added latency.
-
-This is what the Audio APIs are for: pair an LLM with the `audio/transcriptions` and `audio/speech` endpoints to take spoken user input, process and generate a text response, and then convert that to speech that the user can hear.
-
-### Recommendations
-
-- If you need [real-time interactions](https://developers.openai.com/api/docs/guides/realtime-conversations) or [transcription](https://developers.openai.com/api/docs/guides/realtime-transcription), use the Realtime API.
-- If realtime is not a requirement but you're looking to build a [voice agent](https://developers.openai.com/api/docs/guides/voice-agents) or an audio-based application that requires features such as [function calling](https://developers.openai.com/api/docs/guides/function-calling), use the Chat Completions API.
-- For use cases with one specific purpose, use the Transcription, Translation, or Speech APIs.
+For build-path guidance, see the [Realtime and audio overview](https://developers.openai.com/api/docs/guides/realtime).
 
 ## Add audio to your existing application
 
-Models such as `gpt-realtime` and `gpt-audio` are natively multimodal, meaning they can understand and generate multiple modalities as input and output.
+Models such as `gpt-realtime` and `gpt-audio` are natively multimodal, meaning they can understand and generate audio and text as input and output.
 
-If you already have a text-based LLM application with the [Chat Completions endpoint](https://developers.openai.com/api/docs/api-reference/chat/), you may want to add audio capabilities. For example, if your chat application supports text input, you can add audio input and output—just include `audio` in the `modalities` array and use an audio model, like `gpt-audio`.
+For live browser speech-to-speech interactions, start with a realtime session in the JavaScript SDK:
 
-Audio is not yet supported in the [Responses
-  API](https://developers.openai.com/api/docs/api-reference/chat/completions/responses).
+Start a realtime voice session
+
+```javascript
+import { RealtimeAgent, RealtimeSession } from "@openai/agents/realtime";
+
+const agent = new RealtimeAgent({
+  name: "Assistant",
+  instructions: "You are a helpful voice assistant.",
+});
+
+const session = new RealtimeSession(agent, {
+  model: "gpt-realtime-2",
+});
+
+await session.connect({
+  apiKey: "ek_...(ephemeral key from your server)",
+});
+```
+
+
+This example uses JavaScript because browser voice agents connect with WebRTC from the client. For Python voice workflows, use the [Voice agents guide](https://developers.openai.com/api/docs/guides/voice-agents), which covers chained voice pipelines.
+
+If you already have a text-based LLM application with the [Chat Completions endpoint](https://developers.openai.com/api/docs/api-reference/chat/), you may want to add audio capabilities. For example, if your chat application supports text input, you can add audio input and output: include `audio` in the `modalities` array and use an audio model, like `gpt-audio`.
+
+The [Responses API](https://developers.openai.com/api/docs/api-reference/responses) docs currently describe
+  text and image inputs with text outputs. For this audio-chat pattern, use Chat
+  Completions with an audio-capable model.
+
 
 
 <div data-content-switcher-pane data-value="audio-out">

@@ -1,6 +1,6 @@
-# Libraries
+# SDKs and CLI
 
-This page covers setting up your local development environment to use the [OpenAI API](https://developers.openai.com/api/docs/api-reference). You can use one of our officially supported SDKs, a community library, or your own preferred HTTP client.
+This page covers the main ways to build with the [OpenAI API](https://developers.openai.com/api/docs/api-reference): official SDKs for application code, the OpenAI CLI for shell-native workflows, the Agents SDK for orchestration, or your own preferred HTTP client.
 
 ## Create and export an API key
 
@@ -50,16 +50,31 @@ OpenAI SDKs are configured to automatically read your API key from the system en
   <div data-content-switcher-pane data-value="golang" hidden>
     <div class="hidden">Go</div>
     </div>
+  <div data-content-switcher-pane data-value="ruby" hidden>
+    <div class="hidden">Ruby</div>
+    </div>
+  <div data-content-switcher-pane data-value="cli" hidden>
+    <div class="hidden">CLI</div>
+    </div>
 
 
 
-## Install the Agents SDK
+## Use the Agents SDK
 
-Use the official OpenAI libraries above for direct API requests. Use the OpenAI
-Agents SDK when your application needs code-first orchestration for agents,
-tools, handoffs, guardrails, tracing, or sandbox execution.
+Use the official OpenAI SDKs above for direct API requests. Use the Agents SDK
+when your application needs code-first orchestration for agents, tools,
+handoffs, guardrails, tracing, or sandbox execution.
 
-- [Agents SDK quickstart](https://developers.openai.com/api/docs/guides/agents/quickstart)
+<a href="/api/docs/guides/agents/quickstart">
+  
+
+<span slot="icon">
+      </span>
+    Build your first agent with the Agents SDK.
+
+
+</a>
+
 - [OpenAI Agents SDK for TypeScript](https://github.com/openai/openai-agents-js)
 - [OpenAI Agents SDK for Python](https://github.com/openai/openai-agents-python)
 
@@ -80,23 +95,9 @@ The libraries below are built and maintained by the broader developer community.
 
 Please note that OpenAI does not verify the correctness or security of these projects. **Use them at your own risk!**
 
-### C# / .NET
-
-- [Betalgo.OpenAI](https://github.com/betalgo/openai) by [Betalgo](https://github.com/betalgo)
-- [OpenAI-API-dotnet](https://github.com/OkGoDoIt/OpenAI-API-dotnet) by [OkGoDoIt](https://github.com/OkGoDoIt)
-- [OpenAI-DotNet](https://github.com/RageAgainstThePixel/OpenAI-DotNet) by [RageAgainstThePixel](https://github.com/RageAgainstThePixel)
-
-### C++
-
-- [liboai](https://github.com/D7EAD/liboai) by [D7EAD](https://github.com/D7EAD)
-
 ### Clojure
 
 - [openai-clojure](https://github.com/wkok/openai-clojure) by [wkok](https://github.com/wkok)
-
-### Crystal
-
-- [openai-crystal](https://github.com/sferik/openai-crystal) by [sferik](https://github.com/sferik)
 
 ### Dart/Flutter
 
@@ -110,56 +111,18 @@ Please note that OpenAI does not verify the correctness or security of these pro
 
 - [openai.ex](https://github.com/mgallo/openai.ex) by [mgallo](https://github.com/mgallo)
 
-### Go
-
-- [go-gpt3](https://github.com/sashabaranov/go-gpt3) by [sashabaranov](https://github.com/sashabaranov)
-
-### Java
-
-- [simple-openai](https://github.com/sashirestela/simple-openai) by [Sashir Estela](https://github.com/sashirestela)
-- [Spring AI](https://spring.io/projects/spring-ai)
-
-### Julia
-
-- [OpenAI.jl](https://github.com/rory-linehan/OpenAI.jl) by [rory-linehan](https://github.com/rory-linehan)
-
 ### Kotlin
 
 - [openai-kotlin](https://github.com/Aallam/openai-kotlin) by [Mouaad Aallam](https://github.com/Aallam)
 
-### Node.js
-
-- [openai-api](https://www.npmjs.com/package/openai-api) by [Njerschow](https://github.com/Njerschow)
-- [openai-api-node](https://www.npmjs.com/package/openai-api-node) by [erlapso](https://github.com/erlapso)
-- [gpt-x](https://www.npmjs.com/package/gpt-x) by [ceifa](https://github.com/ceifa)
-- [gpt3](https://www.npmjs.com/package/gpt3) by [poteat](https://github.com/poteat)
-- [gpts](https://www.npmjs.com/package/gpts) by [thencc](https://github.com/thencc)
-- [@dalenguyen/openai](https://www.npmjs.com/package/@dalenguyen/openai) by [dalenguyen](https://github.com/dalenguyen)
-- [tectalic/openai](https://github.com/tectalichq/public-openai-client-js) by [tectalic](https://tectalic.com/)
-
 ### PHP
 
 - [orhanerday/open-ai](https://packagist.org/packages/orhanerday/open-ai) by [orhanerday](https://github.com/orhanerday)
-- [tectalic/openai](https://github.com/tectalichq/public-openai-client-php) by [tectalic](https://tectalic.com/)
 - [openai-php client](https://github.com/openai-php/client) by [openai-php](https://github.com/openai-php)
-
-### Python
-
-- [chronology](https://github.com/OthersideAI/chronology) by [OthersideAI](https://www.othersideai.com/)
-
-### R
-
-- [rgpt3](https://github.com/ben-aaron188/rgpt3) by [ben-aaron188](https://github.com/ben-aaron188)
-
-### Ruby
-
-- [openai](https://github.com/nileshtrivedi/openai/) by [nileshtrivedi](https://github.com/nileshtrivedi)
-- [ruby-openai](https://github.com/alexrudall/ruby-openai) by [alexrudall](https://github.com/alexrudall)
 
 ### Rust
 
 - [async-openai](https://github.com/64bit/async-openai) by [64bit](https://github.com/64bit)
-- [fieri](https://github.com/lbkolev/fieri) by [lbkolev](https://github.com/lbkolev)
 
 ### Scala
 
@@ -173,7 +136,6 @@ Please note that OpenAI does not verify the correctness or security of these pro
 
 ### Unity
 
-- [OpenAi-Api-Unity](https://github.com/hexthedev/OpenAi-Api-Unity) by [hexthedev](https://github.com/hexthedev)
 - [com.openai.unity](https://github.com/RageAgainstThePixel/com.openai.unity) by [RageAgainstThePixel](https://github.com/RageAgainstThePixel)
 
 ### Unreal Engine

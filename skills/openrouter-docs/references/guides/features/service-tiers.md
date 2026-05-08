@@ -28,6 +28,13 @@ Learn more in OpenAI's [Chat Completions](https://developers.openai.com/api/refe
 
 Learn more in Google's [Flex](https://cloud.google.com/vertex-ai/generative-ai/docs/flex-paygo) and [Priority](https://cloud.google.com/vertex-ai/generative-ai/docs/priority-paygo) documentation.
 
+**Google (AI Studio)**
+
+* Accepted request values: `standard`, `flex`, `priority` (default if omitted: `standard`)
+* Possible response values: `standard`, `flex`, `priority`
+
+Learn more in Google's [Flex](https://ai.google.dev/gemini-api/docs/flex-inference) and [Priority](https://ai.google.dev/gemini-api/docs/priority-inference) documentation.
+
 ### API Response Differences
 
 The API response includes a `service_tier` field that indicates which capacity tier was actually used to serve your request. The placement of this field varies by API format:

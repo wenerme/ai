@@ -24,9 +24,9 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-6977)
-* [  TypeScript ](#tab-panel-6978)
-* [  Python ](#tab-panel-6979)
+* [  JavaScript ](#tab-panel-7278)
+* [  TypeScript ](#tab-panel-7279)
+* [  Python ](#tab-panel-7280)
 
 index.js
 
@@ -119,9 +119,9 @@ class Default(WorkerEntrypoint):
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-6974)
-* [  TypeScript ](#tab-panel-6975)
-* [  Python ](#tab-panel-6976)
+* [  JavaScript ](#tab-panel-7275)
+* [  TypeScript ](#tab-panel-7276)
+* [  Python ](#tab-panel-7277)
 
 index.js
 
@@ -364,9 +364,9 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-6980)
-* [  TypeScript ](#tab-panel-6981)
-* [  Python ](#tab-panel-6982)
+* [  JavaScript ](#tab-panel-7281)
+* [  TypeScript ](#tab-panel-7282)
+* [  Python ](#tab-panel-7283)
 
 index.js
 
@@ -436,6 +436,47 @@ class Default(WorkerEntrypoint):
 ```
 
 The `env` and `ctx` fields are as [documented in the Workers documentation](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/).
+
+### TypeScript message types
+
+You can type queue messages with `Queue<T>` on the producer and `ExportedHandler<Env, T>` on the consumer.
+
+TypeScript
+
+```
+
+type MyMessage = {
+
+  id: string;
+
+};
+
+
+interface Env {
+
+  MY_QUEUE: Queue<MyMessage>;
+
+}
+
+
+export default {
+
+  async queue(batch) {
+
+    for (const message of batch.messages) {
+
+      console.log(message.body.id);
+
+    }
+
+  },
+
+} satisfies ExportedHandler<Env, MyMessage>;
+
+
+```
+
+For primitive messages, use `Queue<number>` or `satisfies ExportedHandler<Env, number>`. If you do not specify a type, `message.body` is `unknown`.
 
 Or alternatively, a queue consumer can be written using the (deprecated) service worker syntax:
 

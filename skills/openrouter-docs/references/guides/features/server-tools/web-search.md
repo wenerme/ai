@@ -184,7 +184,7 @@ Firecrawl searches use your Firecrawl credits directly — no additional charge 
 
 ### Parallel
 
-[Parallel](https://parallel.ai) supports domain filtering and context size control (`search_context_size`), and uses OpenRouter credits at the same rate as Exa (\$4 per 1,000 results).
+[Parallel](https://parallel.ai) supports domain filtering and context size control (`search_context_size`), and uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result.
 
 ## Domain Filtering
 
@@ -304,7 +304,7 @@ The `web_search_requests` field counts the total number of search queries the mo
 | Engine        | Pricing                                                                                                                                                                                                                                                                                                                                      |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Exa**       | \$4 per 1,000 results using OpenRouter credits (default 5 results = max \$0.02 per search)                                                                                                                                                                                                                                                   |
-| **Parallel**  | \$4 per 1,000 results using OpenRouter credits (same as Exa)                                                                                                                                                                                                                                                                                 |
+| **Parallel**  | \$0.005 per request using OpenRouter credits. Includes up to 10 results in a request, then \$0.001 per additional result                                                                                                                                                                                                                     |
 | **Firecrawl** | Uses your Firecrawl credits directly — no OpenRouter charge                                                                                                                                                                                                                                                                                  |
 | **Native**    | Passed through from the provider ([OpenAI](https://platform.openai.com/docs/pricing#built-in-tools), [Anthropic](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing), [Perplexity](https://docs.perplexity.ai/getting-started/pricing), [xAI](https://docs.x.ai/docs/models#tool-invocation-costs)) |
 

@@ -168,6 +168,13 @@ Run commands in each thread and launch repeatable project actions.
 Open rendered pages, leave comments, or let Codex operate local browser flows.
 
   </BentoContent>
+  <BentoContent href="/codex/app/chrome-extension">
+
+### Chrome extension
+
+Add the Chrome plugin so Codex can use Chrome for signed-in browser tasks while you manage website approvals.
+
+  </BentoContent>
   <BentoContent href="/codex/app/features#image-generation">
 
 ### Image generation

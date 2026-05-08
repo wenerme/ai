@@ -35,11 +35,11 @@ Security Analytics shows all traffic, whether or not Cloudflare acted on it. If 
 
 Zone/domain-level analytics are included with all plans, though the retention period, query window, displayed statistics, and filter options vary by plan. Account-level analytics are only available to customers on Business and Enterprise domain plans.
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
-| Retention    | 7   | 7        | 31         | 90  |
-| Query window | 1   | 7        | 31         | 31  |
+| Free                             | Pro                   | Business              | Enterprise             |                        |
+| -------------------------------- | --------------------- | --------------------- | ---------------------- | ---------------------- |
+| Availability                     | Yes                   | Yes                   | Yes                    | Yes                    |
+| Historical time (data retention) | Up to the last 7 days | Up to the last 7 days | Up to the last 31 days | Up to the last 90 days |
+| Max query window                 | 24 hours              | 7 days                | 31 days                | 31 days                |
 
 ## Access
 
@@ -205,7 +205,27 @@ Currently, changing the time frame or the applied filters while showing raw logs
 
 ## Sampling
 
-The Security Analytics dashboard uses [sampled data](https://developers.cloudflare.com/analytics/graphql-api/sampling/), except when showing raw logs. If you query Security Analytics data through the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/), the primary underlying datasets are `httpRequestsAdaptiveGroups` and `httpRequestsAdaptive`. For more information, refer to [Datasets (tables)](https://developers.cloudflare.com/analytics/graphql-api/features/data-sets/).
+The Security Analytics dashboard uses [sampled data](https://developers.cloudflare.com/analytics/graphql-api/sampling/), except when showing raw logs.
+
+## Query using GraphQL
+
+If you query Security Analytics data through the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/), the primary underlying datasets are `httpRequestsAdaptiveGroups` and `httpRequestsAdaptive`. For more information, refer to [Datasets (tables)](https://developers.cloudflare.com/analytics/graphql-api/features/data-sets/).
+
+## Limits
+
+The data retention (historical time) and maximum query window of the datasets supporting Security Analytics differ from the dataset that powers [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/#query-using-graphql).
+
+The following tables show the different limits per Cloudflare plan:
+
+| Data retention (historical time) for...   | Free     | Pro      | Business | Enterprise |
+| ----------------------------------------- | -------- | -------- | -------- | ---------- |
+| Security Events (firewallEventsAdaptive)  | 24 hours | 24 hours | 3 days   | 30 days    |
+| Security Analytics (httpRequestsAdaptive) | 7 days   | 7 days   | 31 days  | 90 days    |
+
+| Maximum query window for...               | Free     | Pro      | Business | Enterprise |
+| ----------------------------------------- | -------- | -------- | -------- | ---------- |
+| Security Events (firewallEventsAdaptive)  | 24 hours | 24 hours | 3 days   | 31 days    |
+| Security Analytics (httpRequestsAdaptive) | 24 hours | 7 days   | 31 days  | 31 days    |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/analytics/security-analytics/","name":"Security Analytics"}}]}

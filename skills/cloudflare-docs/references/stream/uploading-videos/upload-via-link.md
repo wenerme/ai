@@ -14,7 +14,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 If you have videos stored in a cloud storage bucket, you can pass a HTTP link for the file, and Stream will fetch the file on your behalf.
 
-## Make an HTTP request
+* [ REST API ](#tab-panel-8457)
+* [ Workers Binding API ](#tab-panel-8458)
+
+* [ cURL ](#tab-panel-8453)
+* [ TypeScript ](#tab-panel-8454)
 
 Make a `POST` request to the Stream API using the link to your video.
 
@@ -22,16 +26,115 @@ Terminal window
 
 ```
 
-curl \
+    curl \
 
---data '{"url":"https://storage.googleapis.com/zaid-test/Watermarks%20Demo/cf-ad-original.mp4","meta":{"name":"My First Stream Video"}}' \
+    --data '{"url":"https://storage.googleapis.com/zaid-test/Watermarks%20Demo/cf-ad-original.mp4","meta":{"name":"My First Stream Video"}}' \
 
---header "Authorization: Bearer <API_TOKEN>" \
+    --header "Authorization: Bearer <API_TOKEN>" \
 
-https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/copy
+    https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/copy
 
 
 ```
+
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'], // This is the default and can be omitted
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'], // This is the default and can be omitted
+
+});
+
+
+const video = await client.stream.copy.create({
+
+  account_id: '<ACCOUNT_ID>',
+
+  url: 'https://storage.googleapis.com/zaid-test/Watermarks%20Demo/cf-ad-original.mp4',
+
+});
+
+
+```
+
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
+
+* [ index.ts ](#tab-panel-8455)
+* [ wrangler.jsonc ](#tab-panel-8456)
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request, env, ctx): Promise<Response> {
+
+    // upload a video with a link
+
+    const videoDetails = await env.STREAM.upload(
+
+      "https://storage.googleapis.com/zaid-test/Watermarks%20Demo/cf-ad-original.mp4",
+
+      // (optional) attach metadata
+
+      { meta: { name: "My First Stream Video" } }
+
+    );
+
+
+    // return a Workers response
+
+    return new Response(
+
+      JSON.stringify(videoDetails),
+
+    );
+
+  },
+
+
+} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
+
+
+```
+
+```
+
+{
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  "name": "<ENTER_WORKER_NAME>",
+
+  "main": "src/index.ts",
+
+  "compatibility_date": "2026-04-14",
+
+  "observability": {
+
+    "enabled": true
+
+  },
+
+  "stream": {
+
+    "binding": "STREAM"
+
+  }
+
+}
+
+
+```
+
+See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
+
+If you have videos stored in a cloud storage bucket, you can pass a HTTP link for the file, and Stream will fetch the file on your behalf.
 
 ## Check video status
 

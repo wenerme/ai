@@ -1,11 +1,11 @@
 ---
 title: "Kilo Gateway | Models"
-description: "Use Kilo Gateway models with Mastra. 355 models available."
+description: "Use Kilo Gateway models with Mastra. 357 models available."
 ---
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 355 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 357 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -230,18 +230,6 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.15,
     "outputCost": 0.5
-  },
-  {
-    "model": "kilo/allenai/olmo-3.1-32b-instruct",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 65536,
-    "maxOutput": 32768,
-    "inputCost": 0.2,
-    "outputCost": 0.6
   },
   {
     "model": "kilo/alpindale/goliath-120b",
@@ -578,6 +566,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 0.75,
     "outputCost": 1.2
+  },
+  {
+    "model": "kilo/baidu/cobuddy:free",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 65536,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "kilo/baidu/ernie-4.5-21b-a3b",
@@ -1564,6 +1564,18 @@ for await (const chunk of stream) {
     "outputCost": 0.14
   },
   {
+    "model": "kilo/microsoft/phi-4-mini-instruct",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 128000,
+    "maxOutput": 128000,
+    "inputCost": 0.08,
+    "outputCost": 0.35
+  },
+  {
     "model": "kilo/microsoft/wizardlm-2-8x22b",
     "imageInput": false,
     "audioInput": false,
@@ -1814,6 +1826,18 @@ for await (const chunk of stream) {
     "maxOutput": 26215,
     "inputCost": 0.4,
     "outputCost": 2
+  },
+  {
+    "model": "kilo/mistralai/mistral-medium-3-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 1.5,
+    "outputCost": 7.5
   },
   {
     "model": "kilo/mistralai/mistral-medium-3.1",
@@ -2174,18 +2198,6 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": null,
     "outputCost": null
-  },
-  {
-    "model": "kilo/nvidia/nemotron-nano-12b-v2-vl",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": false,
-    "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 26215,
-    "inputCost": 0.2,
-    "outputCost": 0.6
   },
   {
     "model": "kilo/nvidia/nemotron-nano-9b-v2",
@@ -2786,6 +2798,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.6,
     "outputCost": 2.4
+  },
+  {
+    "model": "kilo/openai/gpt-chat-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 400000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 30
   },
   {
     "model": "kilo/openai/gpt-oss-120b",

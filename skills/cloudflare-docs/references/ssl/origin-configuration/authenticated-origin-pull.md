@@ -22,7 +22,7 @@ Check your encryption mode
 
 Authenticated Origin Pulls does not apply when your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) is set to **Off** or **Flexible**.
 
-This authentication becomes particularly important with the [Cloudflare Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/). Together with the WAF, you can make sure that **all traffic** is evaluated before receiving a response from your origin server.
+Without AOP, anyone who discovers your origin server's IP address can send requests directly, bypassing Cloudflare and all its protections. When you combine AOP with the [Cloudflare Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), your origin only accepts requests that have passed through Cloudflare, which means every request is evaluated by the WAF before reaching your server.
 
 ## Availability
 
@@ -32,7 +32,7 @@ This authentication becomes particularly important with the [Cloudflare Web Appl
 
 ## Configuration levels
 
-There are three independent AOP configurations. Each has its own certificate and enablement setting. All of them require that you also set up your origin server - refer to each of the specific guides to learn more.
+AOP has three independent configuration levels. Each uses its own certificate and enablement setting, and each requires configuration on your origin server. Refer to the specific setup guides for details.
 
 * [Global](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/): Uses a Cloudflare-provided certificate that is shared across all Cloudflare accounts. Applies to all proxied traffic on the zone. This is the simplest setup but only guarantees that a request is coming from the Cloudflare network.
 * [Zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/): Uses a certificate that you upload. Applies to all proxied traffic on the zone. Provides stricter security because the certificate is exclusive to your account. Zone-level certificates take precedence over global certificates.
@@ -42,11 +42,11 @@ Note
 
 [Global AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/), [zone-level AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/), and [per-hostname AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) are three independent configurations. Enabling or disabling one does not affect the others.
 
-## Aspects to consider
+## When to use your own certificate
 
-If you need to guarantee that requests come from your specific Cloudflare account (not just from the Cloudflare network), set up [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) or [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) AOP with your own certificate. You should also consider [additional security measures for your origin](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
+Global AOP uses a Cloudflare-provided certificate shared across all accounts, so it only proves a request came from the Cloudflare network — not from your account specifically. If you need to guarantee requests come from your account, set up [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) or [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) AOP with your own certificate.
 
-Using a custom certificate is required if you need your domain to be [FIPS ↗](https://en.wikipedia.org/wiki/Federal%5FInformation%5FProcessing%5FStandards) compliant.
+Using your own certificate is also required for [FIPS ↗](https://en.wikipedia.org/wiki/Federal%5FInformation%5FProcessing%5FStandards) compliance. For broader origin protection guidance, refer to [Protect your origin server](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
 
 ## Related topics
 

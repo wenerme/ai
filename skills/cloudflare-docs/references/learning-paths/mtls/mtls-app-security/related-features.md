@@ -56,7 +56,7 @@ You can associate your uploaded CAs with specific hostnames via the dashboard or
 
 Note
 
-Each Enterprise account can upload up to five CAs, though this can be increased. Contact your account team if you require more.
+Each Enterprise account can upload up to five CAs. This quota is shared across [API Shield](https://developers.cloudflare.com/api-shield/security/mtls/configure/), [Workers mTLS](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/), and [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/). Contact your account team to request an increase.
 
 ## Client Certificate Deployment
 

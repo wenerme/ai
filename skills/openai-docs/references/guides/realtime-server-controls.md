@@ -69,10 +69,10 @@ ws.on("message", function incoming(message) {
 
 In this way, you are able to add tools, monitor sessions, and carry out business logic on the server instead of needing to configure those actions on the client.
 
-### With SIP
+## With SIP
 
 1. A user connects to OpenAI via phone over SIP.
-2. OpenAI sends a webhook to your application’s backend webhook URL, notifying your app of the state of the session. The webhook will look something like:
+2. OpenAI sends a webhook to your application’s server webhook URL, notifying your app of the state of the session. The webhook will look something like:
 
 ```json
 POST https://my_website.com/webhook_endpoint

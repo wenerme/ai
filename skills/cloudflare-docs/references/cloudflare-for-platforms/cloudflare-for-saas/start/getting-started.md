@@ -50,8 +50,8 @@ To create your fallback origin:
 
 1. Designate that record as your fallback origin.
 
-* [ Dashboard ](#tab-panel-4543)
-* [ API ](#tab-panel-4544)
+* [ Dashboard ](#tab-panel-4796)
+* [ API ](#tab-panel-4797)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -107,8 +107,8 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-* [ Dashboard ](#tab-panel-4545)
-* [ API ](#tab-panel-4546)
+* [ Dashboard ](#tab-panel-4798)
+* [ API ](#tab-panel-4799)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -148,15 +148,34 @@ For each custom hostname, Cloudflare issues two certificates bundled in chains t
 
 The primary certificate uses a `P-256` key, is `SHA-2/ECDSA` signed, and will be presented to browsers that support elliptic curve cryptography (ECC). The secondary or fallback certificate uses an `RSA 2048-bit` key, is `SHA-2/RSA` signed, and will be presented to browsers that do not support ECC.
 
+### Check when a custom hostname is ready
+
+A custom hostname uses separate validation flows for hostname activation and certificate issuance.
+
+| API field         | What it means                                                        | Ready value |
+| ----------------- | -------------------------------------------------------------------- | ----------- |
+| result.status     | Cloudflare has validated the hostname and can proxy traffic for it.  | active      |
+| result.ssl.status | Cloudflare has issued and deployed the certificate for the hostname. | active      |
+
+Treat a custom hostname as ready for production traffic when:
+
+* `result.status` is `active`.
+* `result.ssl.status` is `active`.
+* The hostname's DNS record points to your SaaS target.
+
+A successful TLS handshake can happen before `result.ssl.status` changes to `active` if Cloudflare can present another matching certificate. Use the [Custom hostname details endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/get/) as the source of truth for onboarding state. For more information, refer to [Certificate and hostname priority](https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/).
+
 ### 3\. Have customer create CNAME record
 
 To finish the custom hostname setup, your customer needs to set up a CNAME record at their authoritative DNS that points to your [CNAME target](#2-optional-create-cname-target) [1](#user-content-fn-1).
 
 Warning
 
-Before your customer does this step, confirm that the hostname's **Certificate status** and **Hostname status** are both **Active**.
+Before your customer points DNS to your SaaS target, decide whether hostname validation and certificate validation should happen before or after DNS cutover.
 
-If not, confirm that you are using a method of [certificate](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/#http-automatic) or [hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/realtime-validation/) validation that occurs after your customer adds their DNS record.
+If you need the hostname to be active before DNS cutover, use [hostname pre-validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/) and wait until **Hostname status** is **Active**. If you need the certificate to be active before DNS cutover, use [TXT validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/txt/) or [Delegated DCV](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/delegated-dcv/) and wait until **Certificate status** is **Active**.
+
+If you use [automatic HTTP certificate validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/#http-automatic) or [real-time hostname validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/realtime-validation/), validation happens after your customer adds their DNS record. This can create a short downtime window while the hostname activates or the certificate moves to **Active**.
 
 Your customer's CNAME record might look like the following:
 

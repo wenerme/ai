@@ -23,6 +23,10 @@ When you [validate a custom hostname](https://developers.cloudflare.com/cloudfla
 | Moved               | Custom hostname is not active after **Pending** for the entirety of the [Validation Backoff Schedule](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/backoff-schedule/) or it no longer points to the fallback origin.                                                                                        |
 | Deleted             | Custom hostname was deleted from the zone. Occurs when status is **Moved** for more than seven days.                                                                                                                                                                                                                                                                             |
 
+The custom hostname validation status is separate from the certificate status. In the [Custom hostname details endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/get/) response, `result.status` tracks hostname activation and `result.ssl.status` tracks certificate issuance and deployment.
+
+A custom hostname is ready for production traffic when `result.status` is `active`, `result.ssl.status` is `active`, and DNS points to your SaaS target. If `result.status` is `active` but `result.ssl.status` is not `active`, Cloudflare has validated the hostname, but the certificate has not completed issuance and deployment.
+
 ## Refresh validation
 
 To run the custom hostname validation check again, select **Refresh** on the dashboard or send a `PATCH` request to the [Edit custom hostname endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/). If using the API, make sure that the `--data` field contains an `ssl` object with the same `method` and `type` as the original request.

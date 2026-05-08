@@ -18,17 +18,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 HTTP validation involves adding a DCV token to your customer's origin.
 
+You choose one certificate validation method when you [create a custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/). The API accepts one `ssl.method` value: `http`, `txt`, or `email`.
+
 ---
 
 ## Non-wildcard custom hostnames
 
-If your custom hostname does not include a wildcard, Cloudflare will always and automatically attempt to complete DCV through [HTTP validation](#http-automatic), even if you have selected **TXT** for your validation method.
+If your custom hostname does not include a wildcard, Cloudflare always attempts to complete DCV through [HTTP validation](#http-automatic) after the hostname points to your SaaS target, even if you have selected **TXT** for your validation method.
 
-This HTTP validation should succeed as long as your customer is pointing to your custom hostname and they do not have any [CAA records](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/troubleshooting/#certificate-authority-authorization-caa-records) blocking your chosen certificate authority.
+This HTTP validation should succeed as long as your customer's hostname points to your SaaS target and they do not have any [CAA records](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/troubleshooting/#certificate-authority-authorization-caa-records) blocking your chosen certificate authority.
 
 ## Wildcard custom hostnames
 
-HTTP DCV validation is not allowed for wildcard certificates. You must use [TXT validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/txt/) instead.
+HTTP DCV validation is not allowed for wildcard certificates. Use [TXT validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/txt/) instead. You can also configure [Delegated DCV](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/delegated-dcv/) to automate TXT-based validation.
 
 ---
 
@@ -39,6 +41,10 @@ HTTP DCV validation is not allowed for wildcard certificates. You must use [TXT 
 If you value simplicity and your customers can handle a few minutes of downtime, you can rely on Cloudflare automatic HTTP validation.
 
 Once you [create a new hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/issue-certificates/) and choose the `http` validation method, all your customers have to do is add a CNAME to your `$CNAME_TARGET` and Cloudflare will take care of the rest.
+
+Automatic HTTP validation works on the fly. After your customer points the hostname to your SaaS target, Cloudflare can serve the CA's HTTP DCV token from the edge and complete certificate validation.
+
+During that period, the hostname may route to Cloudflare before the certificate reaches `ssl.status: active`. If you need the certificate active before your customer changes DNS, use [TXT validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/txt/) or [Delegated DCV](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/delegated-dcv/) instead.
 
 What happens after you create the custom hostname
 
@@ -83,7 +89,12 @@ Terminal window
 
 ```
 
-$ curl "http://http-preval.example.com/.well-known/pki-validation/ca3-0052344e54074d9693e89e27486692d6.txt"
+curl "http://http-preval.example.com/.well-known/pki-validation/ca3-0052344e54074d9693e89e27486692d6.txt"
+
+
+```
+
+```
 
 ca3-be794c5f757b468eba805d1a705e44f6
 

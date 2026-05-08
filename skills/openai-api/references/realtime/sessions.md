@@ -420,25 +420,23 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"far_field"`
 
-    - `transcription: optional AudioTranscription`
+    - `transcription: optional object { language, model, prompt }`
 
       Configuration for input audio transcription.
 
       - `language: optional string`
 
-        The language of the input audio. Supplying the input language in
-        [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-        will improve accuracy and latency.
+        The language of the input audio.
 
-      - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+      - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-        The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+        The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
         - `string`
 
-        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
           - `"whisper-1"`
 
@@ -450,12 +448,11 @@ Returns the created Realtime session object, plus an ephemeral key.
 
           - `"gpt-4o-transcribe-diarize"`
 
+          - `"gpt-realtime-whisper"`
+
       - `prompt: optional string`
 
-        An optional text to guide the model's style or continue a previous audio
-        segment.
-        For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
-        For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+        The prompt configured for input audio transcription, when present.
 
     - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
 
@@ -842,25 +839,23 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
           - `"far_field"`
 
-      - `transcription: optional AudioTranscription`
+      - `transcription: optional object { language, model, prompt }`
 
         Configuration for input audio transcription.
 
         - `language: optional string`
 
-          The language of the input audio. Supplying the input language in
-          [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-          will improve accuracy and latency.
+          The language of the input audio.
 
-        - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+        - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
           - `string`
 
-          - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
+          - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
 
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
             - `"whisper-1"`
 
@@ -872,12 +867,11 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
             - `"gpt-4o-transcribe-diarize"`
 
+            - `"gpt-realtime-whisper"`
+
         - `prompt: optional string`
 
-          An optional text to guide the model's style or continue a previous audio
-          segment.
-          For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
-          For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+          The prompt configured for input audio transcription, when present.
 
       - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
 

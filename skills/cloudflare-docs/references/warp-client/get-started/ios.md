@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ iOS ](https://developers.cloudflare.com/search/?tags=iOS) 
+
 # iOS
 
 Looking for Zero Trust?

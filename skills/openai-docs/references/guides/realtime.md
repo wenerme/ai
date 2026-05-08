@@ -1,60 +1,170 @@
-# Realtime API
+# Realtime and audio
 
 import {
-  Bolt,
-  Phone,
   Cube,
   Desktop,
+  Phone,
 } from "@components/react/oai/platform/ui/Icon.react";
 
+Start with the outcome you want to build. Realtime sessions are best for live audio that needs low latency. Request-based audio APIs are best for files, bounded requests, or generated speech that doesn't need a live session.
 
+## Common use cases
 
-The OpenAI Realtime API enables low-latency communication with [models](https://developers.openai.com/api/docs/models) that natively support speech-to-speech interactions as well as multimodal inputs (audio, images, and text) and outputs (audio and text). These APIs can also be used for [realtime audio transcription](https://developers.openai.com/api/docs/guides/realtime-transcription).
+<div className="w-full max-w-full overflow-hidden">
+  </div>
 
-## Voice agents
+## Understand different architectures
 
-One of the most common use cases for the Realtime API is building voice agents for speech-to-speech model interactions in the browser. Our recommended starting point for these applications is the on-site [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents) guide, which uses a [WebRTC connection](https://developers.openai.com/api/docs/guides/realtime-webrtc) to the Realtime model in the browser, and [WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket) when used on the server.
+<table>
+  <thead>
+    <tr>
+      <th>Goal</th>
+      <th>Model or API</th>
+      <th>Start here</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Build a low-latency voice agent</td>
+      <td className="whitespace-nowrap">
+        <a href="/api/docs/models/gpt-realtime-2">
+          <code>gpt-realtime-2</code>
+        </a>
+      </td>
+      <td>
+        <a href="/api/docs/guides/voice-agents">Voice agents</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Translate live speech into another language</td>
+      <td className="whitespace-nowrap">
+        <a href="/api/docs/models/gpt-realtime-translate">
+          <code>gpt-realtime-translate</code>
+        </a>
+      </td>
+      <td>
+        <a href="/api/docs/guides/realtime-translation">Realtime translation</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Transcribe live audio into streaming text</td>
+      <td className="whitespace-nowrap">
+        <a href="/api/docs/models/gpt-realtime-whisper">
+          <code>gpt-realtime-whisper</code>
+        </a>
+      </td>
+      <td>
+        <a href="/api/docs/guides/realtime-transcription">
+          Realtime transcription
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Transcribe files or bounded audio requests</td>
+      <td>Audio transcription models</td>
+      <td>
+        <a href="/api/docs/guides/speech-to-text">Speech to text</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Generate speech from text</td>
+      <td>Speech generation models</td>
+      <td>
+        <a href="/api/docs/guides/text-to-speech">Text to speech</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Add audio to an existing Chat Completions app</td>
+      <td>Audio-capable chat models</td>
+      <td>
+        <a href="/api/docs/guides/audio#add-audio-to-your-existing-application">
+          Audio and speech
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-```js
+## Choose a realtime session
 
+Realtime sessions keep a connection open while your application sends audio, receives events, and updates session state.
 
-const agent = new RealtimeAgent({
-  name: "Assistant",
-  instructions: "You are a helpful assistant.",
-});
+<table>
+  <thead>
+    <tr>
+      <th>Session type</th>
+      <th>Use when</th>
+      <th>Endpoint or pattern</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Voice-agent session</td>
+      <td>
+        The model should respond to the user, call tools, and manage
+        conversation state.
+      </td>
+      <td>
+        Conversation session on <code>/v1/realtime</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Translation session</td>
+      <td>The app should continuously translate speech as it arrives.</td>
+      <td>
+        Continuous translation session on <code>/v1/realtime/translations</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Transcription session</td>
+      <td>
+        The app needs streaming transcript deltas without model-generated spoken
+        responses.
+      </td>
+      <td>Transcription session that emits transcript deltas</td>
+    </tr>
+  </tbody>
+</table>
 
-const session = new RealtimeSession(agent);
+Use a voice-agent session when your application needs an assistant that responds to the user. Use a translation session when your application needs an interpreter that translates the speaker. Use a transcription session when your application needs text from audio without model-generated responses.
 
-// Automatically connects your microphone and audio output
-await session.connect({
-  apiKey: "<client-api-key>",
-});
-```
+### Voice-agent sessions
 
-<a href="/api/docs/guides/voice-agents#speech-to-speech-realtime-architecture">
-  
+Voice-agent sessions use the standard Realtime API conversation lifecycle. The client connects to `/v1/realtime`, sends audio or text, and listens for model responses, tool calls, and session events.
 
-<span slot="icon">
-      </span>
-    See the speech-to-speech path for building Realtime voice agents in the
-    browser.
+For most browser voice agents, start with the [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents) guide. It uses the Agents SDK with WebRTC for browser audio and can connect to server-side tools.
 
+Realtime 2 adds reasoning to speech-to-speech workflows. Start with
+  `reasoning.effort` set to `low` for most production voice agents, then adjust
+  based on latency tolerance and task complexity. Use the [Realtime prompting
+  guide](https://developers.openai.com/api/docs/guides/realtime-models-prompting) to tune reasoning,
+  preambles, tool use, unclear audio, and exact entity capture.
 
-</a>
+### Translation sessions
 
-To use the Realtime API directly outside the context of voice agents, check out the other connection options below.
+Realtime translation uses a dedicated translation endpoint instead of the standard voice-agent endpoint. Translation sessions are continuous: the client streams audio into the session, and the service streams translated audio and transcript deltas out.
 
-## Connection methods
+Translation sessions don't use the normal assistant turn lifecycle. Don't call `response.create`, and don't wait for the client to commit a user turn before translation begins. For browser media, use WebRTC. For server media pipelines such as phone calls or broadcast ingest, use WebSockets.
 
-While building [voice agents with the Agents SDK](https://developers.openai.com/api/docs/guides/voice-agents) is the fastest path to one specific type of application, the Realtime API provides an entire suite of flexible tools for a variety of use cases.
+See [Realtime translation](https://developers.openai.com/api/docs/guides/realtime-translation) for the dedicated endpoint, session configuration, and architecture patterns.
 
-There are three primary supported interfaces for the Realtime API:
+### Transcription sessions
+
+You can transcribe audio in more than one way. Use a realtime transcription session when your application needs live transcript deltas from streaming audio. Use the [Speech to text](https://developers.openai.com/api/docs/guides/speech-to-text) guide for file uploads, request-based transcription, or diarization-focused workflows.
+
+For realtime transcription, `gpt-realtime-whisper` gives you controllable latency. Lower delay settings produce earlier partial text, while higher delay settings can improve transcript quality. Test with your real audio conditions, target languages, accents, and domain vocabulary before choosing a production default.
+
+See [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription) for session configuration and event handling.
+
+## Choose a connection method
+
+Choose the transport based on where your application captures and plays audio:
 
 [
 
 <span slot="icon">
       </span>
-    Ideal for browser and client-side interactions with a Realtime model.
+    Use for browser and mobile clients that capture or play audio directly.
 
 ](https://developers.openai.com/api/docs/guides/realtime-webrtc)
 
@@ -62,8 +172,8 @@ There are three primary supported interfaces for the Realtime API:
 
 <span slot="icon">
       </span>
-    Ideal for middle tier server-side applications with consistent low-latency
-    network connections.
+    Use when your server already receives raw audio from a media pipeline, call
+    system, or worker.
 
 ](https://developers.openai.com/api/docs/guides/realtime-websocket)
 
@@ -71,210 +181,30 @@ There are three primary supported interfaces for the Realtime API:
 
 <span slot="icon">
       </span>
-    Ideal for VoIP telephony connections.
+    Use for telephony voice agents. Confirm model support before using SIP for
+    translation or transcription.
 
 ](https://developers.openai.com/api/docs/guides/realtime-sip)
 
-Depending on how you'd like to connect to a Realtime model, check out one of the connection guides above to get started. You'll learn how to initialize a Realtime session, and how to interact with a Realtime model using client and server events.
-
 ## Safety identifiers
 
-If your application identifies individual end users, include a [safety identifier](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) with Realtime API requests. Safety identifiers help OpenAI monitor and detect abuse while allowing enforcement to target an individual user rather than your entire organization. Use a stable, privacy-preserving value, such as a hashed internal user ID.
+If your application identifies individual end users, include a [safety identifier](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) with Realtime API requests. Safety identifiers are recommended but not required. They help OpenAI monitor and detect abuse while allowing enforcement to target an individual user rather than your entire organization. Use a stable, privacy-preserving value, such as a hashed internal user ID.
 
-For Realtime API requests, send the identifier in the `OpenAI-Safety-Identifier` header. When using ephemeral tokens, set the header on the server-side request that creates the client secret so the identifier is bound to that session. When connecting from a trusted backend with WebSocket or the unified WebRTC interface, set the header on the connection request.
+For Realtime API requests, send the identifier in the `OpenAI-Safety-Identifier` header. When using ephemeral tokens, set the header on the server-side request that creates the client secret so the identifier is bound to that session. When connecting from a trusted server with WebSocket or the unified WebRTC interface, set the header on the connection request.
 
-## API Usage
+Safety identifiers do not carry over from Responses API requests or from other sessions. If you use the Responses API `safety_identifier` parameter elsewhere in your application, pass the same stable value separately when you create or connect each Realtime session.
 
-Once connected to a realtime model using one of the methods above, learn how to interact with the model in these usage guides.
+## Related guides
 
-- **[Prompting guide](https://developers.openai.com/api/docs/guides/realtime-models-prompting):** learn tips and best practices for prompting and steering Realtime models.
-- **[Managing conversations](https://developers.openai.com/api/docs/guides/realtime-conversations):** Learn about the Realtime session lifecycle and the key events that happen during a conversation.
-- **[MCP servers](https://developers.openai.com/api/docs/guides/realtime-mcp):** Connect remote MCP servers or connectors to a Realtime session and handle their event flow.
-- **[Webhooks and server-side controls](https://developers.openai.com/api/docs/guides/realtime-server-controls):** Learn how you can control a Realtime session on the server to call tools and implement guardrails.
-- **[Managing costs](https://developers.openai.com/api/docs/guides/realtime-costs):** Learn how to monitor and optimize your usage of the Realtime API.
-- **[Realtime audio transcription](https://developers.openai.com/api/docs/guides/realtime-transcription):** Transcribe audio streams in real time over a WebSocket connection.
+- [Realtime prompting guide](https://developers.openai.com/api/docs/guides/realtime-models-prompting): Prompt and tune Realtime voice models.
+- [Managing conversations](https://developers.openai.com/api/docs/guides/realtime-conversations): Work with the Realtime session lifecycle.
+- [Realtime translation](https://developers.openai.com/api/docs/guides/realtime-translation): Translate live speech with a dedicated translation session.
+- [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription): Stream live transcript deltas from audio.
+- [Realtime with tools](https://developers.openai.com/api/docs/guides/realtime-mcp): Connect function tools, MCP servers, and connectors to a Realtime session.
+- [Webhooks and server-side controls](https://developers.openai.com/api/docs/guides/realtime-server-controls): Control Realtime sessions from your server.
+- [Managing costs](https://developers.openai.com/api/docs/guides/realtime-costs): Track and optimize Realtime API usage.
 
-## Beta to GA migration
-
-There are a few key differences between the interfaces in the Realtime beta API and the recently released GA API. Expand the topics below for more information about migrating from the beta interface to GA.
-
-Beta header
-
-For REST API requests, WebSocket connections, and other interfaces with the Realtime API, beta users had to include the following header with each request:
-
-```
-OpenAI-Beta: realtime=v1
-```
-
-This header should be removed for requests to the GA interface. To retain the behavior of the beta API, you should continue to include this header.
-
-Generating ephemeral API keys
-
-In the beta interface, there were multiple endpoints for generating ephemeral keys for either Realtime sessions or transcription sessions. In the GA interface, there is only one REST API endpoint used to generate keys - [`POST /v1/realtime/client_secrets`](https://developers.openai.com/api/docs/api-reference/realtime-sessions/create-realtime-client-secret).
-
-To create a session and receive a client secret you can use to initialize a WebRTC or WebSocket connection on a client, you can request one like this using the appropriate session configuration:
-
-```javascript
-const sessionConfig = JSON.stringify({
-  session: {
-    type: "realtime",
-    model: "gpt-realtime",
-    audio: {
-      output: { voice: "marin" },
-    },
-  },
-});
-
-const response = await fetch(
-  "https://api.openai.com/v1/realtime/client_secrets",
-  {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: sessionConfig,
-  }
-);
-
-const data = await response.json();
-console.log(data.value); // e.g. ek_68af296e8e408191a1120ab6383263c2
-```
-
-These tokens can safely be used in client environments like browsers and mobile applications.
-
-New URL for WebRTC SDP data
-
-When initializing a WebRTC session in the browser, the URL for obtaining remote session information via SDP is now `/v1/realtime/calls`:
-
-```javascript
-const baseUrl = "https://api.openai.com/v1/realtime/calls";
-const model = "gpt-realtime";
-const sdpResponse = await fetch(baseUrl, {
-  method: "POST",
-  body: offer.sdp,
-  headers: {
-    Authorization: `Bearer YOUR_EPHEMERAL_KEY_HERE`,
-    "Content-Type": "application/sdp",
-  },
-});
-
-const sdp = await sdpResponse.text();
-const answer = { type: "answer", sdp };
-await pc.setRemoteDescription(answer);
-```
-
-New event names and shapes
-
-When creating or [updating](https://developers.openai.com/api/docs/api-reference/realtime_client_events/session/update) a Realtime session in the GA interface, you must now specify a session type, since now the same client event is used to create both speech-to-speech and transcription sessions. The options for the session type are:
-
-- `realtime` for speech-to-speech
-- `transcription` for realtime audio transcription
-
-```javascript
-
-
-const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime";
-const ws = new WebSocket(url, {
-  headers: {
-    Authorization: "Bearer " + process.env.OPENAI_API_KEY,
-  },
-});
-
-ws.on("open", function open() {
-  console.log("Connected to server.");
-
-  // Send client events over the WebSocket once connected
-  ws.send(
-    JSON.stringify({
-      type: "session.update",
-      session: {
-        type: "realtime",
-        instructions: "Be extra nice today!",
-      },
-    })
-  );
-});
-```
-
-Configuration for input modalities and other properties have moved as well,
-notably output audio configuration like model voice. [Check the API reference](https://developers.openai.com/api/docs/api-reference/realtime_client_events) for the latest event shapes.
-
-```javascript
-ws.on("open", function open() {
-  ws.send(
-    JSON.stringify({
-      type: "session.update",
-      session: {
-        type: "realtime",
-        model: "gpt-realtime",
-        audio: {
-          output: { voice: "marin" },
-        },
-      },
-    })
-  );
-});
-```
-
-Finally, some event names have changed to reflect their new position in the event data model:
-
-- **`response.text.delta` → `response.output_text.delta`**
-- **`response.audio.delta` → `response.output_audio.delta`**
-- **`response.audio_transcript.delta` → `response.output_audio_transcript.delta`**
-
-New conversation item events
-
-For `response.output_item`, the API has always had both `.added` and `.done` events, but for conversation level items the API previously only had `.created`, which by convention is emitted at the start when the item added.
-
-We have added a `.added` and `.done` event to allow better ergonomics for developers when receiving events that need some loading time (such as MCP tool listing or input audio transcriptions if these were to be modeled as items in the future).
-
-Current event shape for conversation items added:
-
-```javascript
-{
-    "event_id": "event_1920",
-    "type": "conversation.item.created",
-    "previous_item_id": "msg_002",
-    "item": Item
-}
-```
-
-New events to replace the above:
-
-```javascript
-{
-    "event_id": "event_1920",
-    "type": "conversation.item.added",
-    "previous_item_id": "msg_002",
-    "item": Item
-}
-```
-
-```javascript
-{
-    "event_id": "event_1920",
-    "type": "conversation.item.done",
-    "previous_item_id": "msg_002",
-    "item": Item
-}
-```
-
-Input and output item changes
-
-### All Items
-
-Realtime API sets an `object=realtime.item` param on all items in the GA interface.
-
-### Function Call Output
-
-`status` : Realtime now accepts a no-op `status` field for the function call output item param. This aligns with the Responses API implementation.
-
-### Message
-
-**Assistant Message Content**
-
-The `type` properties of output assistant messages now align with the Responses API:
-
-- `type=text` → `type=output_text` (no change to `text` field name)
-- `type=audio` → `type=output_audio` (no change to `audio` field name)
+Use [Audio and speech](https://developers.openai.com/api/docs/guides/audio) for the core concepts behind
+  audio input, audio output, streaming, latency, transcripts, and speech
+  generation. Use this overview when you are ready to choose an implementation
+  path.

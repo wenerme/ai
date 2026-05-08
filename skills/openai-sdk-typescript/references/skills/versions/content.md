@@ -22,7 +22,7 @@ Download a skill version zip bundle.
 
 ### Returns
 
-- `unnamed_schema_4 = Response`
+- `unnamed_schema_11 = Response`
 
 ### Example
 

@@ -1,5 +1,3 @@
-# Rate limits
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -88,6 +86,7 @@ limits, separate from the non-batch API calls.
 | Text-out models |||||
 |---|---|---|---|---|
 | Gemini 3.1 Pro Preview | 5,000,000 |
+| Gemini 3.1 Flash-Lite | 10,000,000 |
 | Gemini 3.1 Flash-Lite Preview | 10,000,000 |
 | Gemini 3 Flash Preview | 3,000,000 |
 | Gemini 2.5 Pro | 5,000,000 |
@@ -111,6 +110,7 @@ limits, separate from the non-batch API calls.
 | Text-out models |||||
 |---|---|---|---|---|
 | Gemini 3.1 Pro Preview | 500,000,000 |
+| Gemini 3.1 Flash-Lite | 500,000,000 |
 | Gemini 3.1 Flash-Lite Preview | 500,000,000 |
 | Gemini 3.1 Flash Preview | 400,000,000 |
 | Gemini 2.5 Pro | 500,000,000 |
@@ -134,6 +134,7 @@ limits, separate from the non-batch API calls.
 | Text-out models |||||
 |---|---|---|---|---|
 | Gemini 3.1 Pro Preview | 1,000,000,000 |
+| Gemini 3.1 Flash-Lite | 1,000,000,000 |
 | Gemini 3.1 Flash-Lite Preview | 1,000,000,000 |
 | Gemini 3.1 Flash Preview | 1,000,000,000 |
 | Gemini 2.5 Pro | 1,000,000,000 |

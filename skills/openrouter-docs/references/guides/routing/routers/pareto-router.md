@@ -10,7 +10,7 @@ The [Pareto Router](https://openrouter.ai/openrouter/pareto-code) (`openrouter/p
 
 The name comes from [Pareto efficiency](https://en.wikipedia.org/wiki/Pareto_efficiency): at any given cost or capability point, we route to a coding model that sits on the quality/cost frontier we maintain for OpenRouter-hosted models.
 
-The Pareto Router is tuned for coding use cases. It maintains a curated shortlist of strong coding models currently available on OpenRouter, ranked by widely-used external coding benchmarks. Your `min_coding_score` picks out how capable the selected model needs to be — higher scores route to stronger (and typically more expensive) models. The exact shortlist and selection logic evolve over time as new models land and benchmarks shift.
+The Pareto Router is tuned for coding use cases. It maintains a curated shortlist of strong coding models currently available on OpenRouter, ranked by [Artificial Analysis](https://artificialanalysis.ai/) coding scores. Your `min_coding_score` picks out how capable the selected model needs to be — higher scores route to stronger (and typically more expensive) models. The exact shortlist and selection logic evolve over time as new models land and benchmarks shift.
 
 ## Usage
 

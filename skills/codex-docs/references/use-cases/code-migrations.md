@@ -55,13 +55,15 @@ starterPrompt:
 relatedLinks:
   - label: Modernizing your Codebase with Codex
     url: /cookbook/examples/codex/code_modernization
+  - label: Follow a goal
+    url: /codex/use-cases/follow-goals
   - label: Worktrees in the Codex app
     url: /codex/app/worktrees
 ---
 
 ## Introduction
 
-When you are moving from one stack to another, you can leverage codex to map and execute a controlled migration: routing, data models, configuration, auth, background jobs, build tooling, deployment, tests, or even the language and framework conventions themselves.
+When you are moving from one stack to another, you can leverage Codex to map and execute a controlled migration: routing, data models, configuration, auth, background jobs, build tooling, deployment, tests, or even the language and framework conventions themselves.
 
 Codex is useful here because it can inventory the legacy system, map old concepts to new ones, and land the change in checkpoints instead of one giant rewrite. That matters when you are moving off a legacy framework, porting to a new runtime, or incrementally replacing one stack with another while the product still has to keep working.
 
@@ -82,3 +84,7 @@ Codex is useful here because it can inventory the legacy system, map old concept
 
 In our [code modernization cookbook](https://developers.openai.com/cookbook/examples/codex/code_modernization), we introduce ExecPlans: documents that let Codex keep an overview of the cleanup, spell out the intended end state, and log validation after each pass.
 When you ask Codex to run a complex migration, ask it to create an ExecPlan for each part of the system to make sure every decision and tech stack choice is recorded and can be reviewed later.
+
+## Combine with a goal
+
+For long-running migration slices, use a [goal](https://developers.openai.com/codex/use-cases/follow-goals) to guide Codex through the work. Set the goal with a clear end state, parity checks, rollback expectations, and a stopping condition.

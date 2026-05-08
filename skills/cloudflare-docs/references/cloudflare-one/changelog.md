@@ -16,6 +16,21 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 ## 2026-05-06
 
+[ Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/) 
+
+  
+**Cloudy Summaries in PhishNet O365**   
+
+PhishNet users can now access **Cloudy summaries** directly within the email investigation experience. When reviewing a message in PhishNet, users will see an AI-generated summary that provides additional context and key details about the email.
+
+These summaries help users quickly understand the nature of a message without needing to manually parse through headers, body content, and detection signals. Cloudy surfaces the most relevant information so users can make faster, more informed decisions about suspicious emails.
+
+**These summaries are not trained on customer data.** They are generated using the outputs of our existing detection models and analysis systems.
+
+This feature is available for PhishNet with Office 365\. Support for Gmail will be available by the end of the quarter.
+
+## 2026-05-06
+
 [ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
 
   
@@ -211,6 +226,21 @@ For field definitions, refer to [Zero Trust Network Session Logs](https://develo
 * **[AMR matching](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#use-identity-provider-mfa)** — Skip the independent MFA prompt when the identity provider has already performed an equivalent MFA. Access reads the `amr` claim defined in [RFC 8176 ↗](https://datatracker.ietf.org/doc/html/rfc8176) and matches supported values such as `hwk`, `otp`, and `fpt` to the authenticator types allowed on the application or policy. This prevents users from having to complete MFA twice when their identity provider already enforces it.
 
 To get started, refer to [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/).
+
+## 2026-04-21
+
+[ Cloudflare Network Firewall ](https://developers.cloudflare.com/cloudflare-network-firewall/)[ Magic Transit ](https://developers.cloudflare.com/magic-transit/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+
+  
+**Country rules supported in Unified Routing**   
+
+[Cloudflare Advanced Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) Country rules are now supported for accounts using [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta) mode. This feature requires a Cloudflare Advanced Network Firewall subscription.
+
+You can create firewall rules that match traffic based on source or destination country to enforce geographic access policies across your network.
+
+This is the first of the Cloudflare Advanced Network Firewall features to become available in Unified Routing. Support for additional features - IP Lists, ASN Lists, Threat Intel Lists, IDS, Rate Limiting, SIP, and Managed Rulesets - is planned.
+
+For the full list of current beta limitations, refer to [Traffic steering beta limitations](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#beta-limitations).
 
 ## 2026-04-20
 
@@ -4293,8 +4323,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-4867)
-* [ Core Dashboard ](#tab-panel-4868)
+* [ Zero Trust Dashboard ](#tab-panel-4939)
+* [ Core Dashboard ](#tab-panel-4940)
 
 To update your view preference in the Zero Trust dashboard:
 

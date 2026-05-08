@@ -56,6 +56,14 @@ OpenRouter provides several PDF processing engines:
 
 If you don't explicitly specify an engine, OpenRouter will default first to the model's native file processing capabilities, and if that's not available, we will use the <code>"{DEFAULT_PDF_ENGINE}"</code> engine.
 
+## OCR Image Limits
+
+When the <code>"{PDFParserEngine.MistralOCR}"</code> engine extracts images from a PDF, OpenRouter requests at most **8 images per PDF** from Mistral via the OCR API's `image_limit` parameter, and forwards no more than 8 images per request to the downstream model. Surplus images are dropped while all extracted text is preserved in full.
+
+This cap exists because per-prompt image limits vary significantly across providers — some reject requests with more than 8 images outright, and even providers with higher caps often fail with context-length errors when a long PDF emits one image per page. Capping at 8 keeps requests within the limits of every supported provider.
+
+If your downstream model does not accept image input at all, OCR-extracted images are stripped entirely and only the parsed text is forwarded.
+
 ## Using PDF URLs
 
 For publicly accessible PDFs, you can send the URL directly without needing to download and encode the file:
@@ -629,7 +637,7 @@ The API will return a response in the following format:
 
 If OpenRouter successfully parses your PDF but every inference provider then fails to generate a completion, the error response still includes the parsed annotations under `error.metadata.file_annotations`. The shape matches the success-path `FileAnnotation` documented above, so you can hand the same array straight back to OpenRouter on a retry to skip re-parsing.
 
-This applies for both billable parsing engines (<code>"{PDFParserEngine.MistralOCR}"</code> and <code>"{PDFParserEngine.CloudflareAI}"</code>); the <code>"{PDFParserEngine.Native}"</code> engine never produces annotations because the file is forwarded directly to the model. The annotations also survive the standard 500-error masking — only `file_annotations` is preserved across the mask; other diagnostic metadata is still stripped.
+This applies to the <code>"{PDFParserEngine.MistralOCR}"</code> and <code>"{PDFParserEngine.CloudflareAI}"</code> engines, which parse the PDF before sending it to a model. The <code>"{PDFParserEngine.Native}"</code> engine doesn't produce annotations because the file is forwarded directly to the model.
 
 ```json
 {

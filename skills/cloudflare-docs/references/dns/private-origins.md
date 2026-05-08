@@ -20,7 +20,9 @@ Proxy HTTP/HTTPS traffic from public hostnames to origins in your private networ
 
  Enterprise-only 
 
-Use [private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/) and secure connections such as [Cloudflare WAN IPSec tunnels](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/) to connect Cloudflare's application services to your private network. The CDN, WAF, Cache, and other proxied features apply to this traffic the same way they apply to traffic destined for public origins.
+Connect Cloudflare's application services to your private network through secure tunnels. The CDN, WAF, Cache, and other proxied features apply to this traffic the same way they apply to traffic destined for public origins.
+
+Getting started takes three steps. Follow the [setup guide](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/) to configure a tunnel, create a DNS record with [private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/), and verify end-to-end connectivity.
 
 Closed beta
 
@@ -30,8 +32,8 @@ This feature is in closed beta. Contact your account team to request access.
 
 ## Resources
 
-* [ Private network routing ](https://developers.cloudflare.com/dns/private-origins/private-network-routing/)
 * [ Set up a private origin via Cloudflare WAN ](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/)
+* [ Private network routing ](https://developers.cloudflare.com/dns/private-origins/private-network-routing/)
 * [ Troubleshooting ](https://developers.cloudflare.com/dns/private-origins/troubleshooting/)
 
 ---

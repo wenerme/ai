@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ ICMP ](https://developers.cloudflare.com/search/?tags=ICMP) 
+
 # Run endpoint health checks (beta)
 
 Magic Transit uses endpoint health checks to determine the overall health of your [inter-network connections](https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/). Probes originate from Cloudflare infrastructure, outside customer network namespaces, and target IP addresses deep within your network, beyond the tunnel-terminating border router. These "long distance" probes are purely diagnostic.

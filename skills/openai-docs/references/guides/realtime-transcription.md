@@ -1,162 +1,76 @@
 # Realtime transcription
 
-You can use the Realtime API for transcription-only use cases, either with input from a microphone or from a file. For example, you can use it to generate subtitles or transcripts in real-time.
-With the transcription-only mode, the model will not generate responses.
+import {
+  Bolt,
+  Cube,
+  Desktop,
+  Phone,
+} from "@components/react/oai/platform/ui/Icon.react";
 
-If you want the model to produce responses, you can use the Realtime API in
-  [speech-to-speech conversation mode](https://developers.openai.com/api/docs/guides/realtime-conversations).
+Use realtime transcription when your application needs live speech-to-text without a spoken assistant response. Realtime transcription sessions stream transcript deltas as audio arrives, so users can see text before the full utterance is complete.
 
-## Realtime transcription sessions
+For the lowest-latency streaming transcription path, use [`gpt-realtime-whisper`](https://developers.openai.com/api/docs/models/gpt-realtime-whisper). For offline files or workflows that don't need streaming deltas, use the standard speech-to-text models in the Audio API.
 
-To use the Realtime API for transcription, you need to create a transcription session, connecting via [WebSockets](https://developers.openai.com/api/docs/guides/realtime?use-case=transcription#connect-with-websockets) or [WebRTC](https://developers.openai.com/api/docs/guides/realtime?use-case=transcription#connect-with-webrtc).
+## Choose a transcription model
 
-Unlike the regular Realtime API sessions for conversations, the transcription sessions typically don't contain responses from the model.
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Best for</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="whitespace-nowrap">
+        <a href="/api/docs/models/gpt-realtime-whisper">
+          gpt-realtime-whisper
+        </a>
+      </td>
+      <td>Live audio, transcript deltas, tunable latency.</td>
+      <td>Natively streaming and designed for realtime sessions.</td>
+    </tr>
+    <tr>
+      <td className="whitespace-nowrap">
+        <a href="/api/docs/models/gpt-4o-transcribe">gpt-4o-transcribe</a>
+      </td>
+      <td>Higher-accuracy speech-to-text where streaming isn't required.</td>
+      <td>Use for file and request-response transcription workflows.</td>
+    </tr>
+    <tr>
+      <td className="whitespace-nowrap">
+        <a href="/api/docs/models/gpt-4o-mini-transcribe">
+          gpt-4o-mini-transcribe
+        </a>
+      </td>
+      <td>Lower-cost transcription.</td>
+      <td>Use when cost matters more than top accuracy.</td>
+    </tr>
+    <tr>
+      <td className="whitespace-nowrap">
+        <a href="/api/docs/models/whisper-1">whisper-1</a>
+      </td>
+      <td>Existing Whisper integrations.</td>
+      <td>
+        Not natively streaming in the same way as{" "}
+        <code>gpt-realtime-whisper</code>.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-The transcription session object uses the same base session shape, but it always has a `type` of `"transcription"`:
+`gpt-realtime-whisper` is an alternative for live transcription, not a blanket replacement for every transcription model. Test it against your audio, languages, vocabulary, and latency requirements before switching production traffic.
 
-```json
-{
-  "object": "realtime.session",
-  "type": "transcription",
-  "id": "session_abc123",
-  "audio": {
-    "input": {
-      "format": {
-        "type": "audio/pcm",
-        "rate": 24000
-      },
-      "noise_reduction": {
-        "type": "near_field"
-      },
-      "transcription": {
-        "model": "gpt-4o-transcribe",
-        "prompt": "",
-        "language": "en"
-      },
-      "turn_detection": {
-        "type": "server_vad",
-        "threshold": 0.5,
-        "prefix_padding_ms": 300,
-        "silence_duration_ms": 500
-      }
-    }
-  },
-  "include": ["item.input_audio_transcription.logprobs"]
-}
-```
+## Create a transcription session
 
-### Session fields
-
-- `type`: Always `transcription` for realtime transcription sessions.
-- `audio.input.format`: Input encoding for audio that you append to the buffer. Supported types are:
-  - `audio/pcm` (24 kHz mono PCM; only a `rate` of `24000` is supported).
-  - `audio/pcmu` (G.711 μ-law).
-  - `audio/pcma` (G.711 A-law).
-- `audio.input.noise_reduction`: Optional noise reduction that runs before VAD and turn detection. Use `{ "type": "near_field" }`, `{ "type": "far_field" }`, or `null` to disable.
-- `audio.input.transcription`: Optional asynchronous transcription of input audio. Supply:
-  - `model`: One of `whisper-1`, `gpt-4o-transcribe-latest`, `gpt-4o-mini-transcribe`, or `gpt-4o-transcribe`.
-  - `language`: ISO-639-1 code such as `en`.
-  - `prompt`: Prompt text or keyword list (model-dependent) that guides the transcription output.
-- `audio.input.turn_detection`: Optional automatic voice activity detection (VAD). Set to `null` to manage turn boundaries manually. For `server_vad`, you can tune `threshold`, `prefix_padding_ms`, `silence_duration_ms`, `interrupt_response`, `create_response`, and `idle_timeout_ms`. For `semantic_vad`, configure `eagerness`, `interrupt_response`, and `create_response`.
-- `include`: Optional list of additional fields to stream back on events (for example `item.input_audio_transcription.logprobs`).
-
-You can find more information about the transcription session object in the [API reference](https://developers.openai.com/api/docs/api-reference/realtime-sessions/transcription_session_object).
-
-## Handling transcriptions
-
-When using the Realtime API for transcription, you can listen for the `conversation.item.input_audio_transcription.delta` and `conversation.item.input_audio_transcription.completed` events.
-
-For `whisper-1` the `delta` event will contain full turn transcript, same as `completed` event. For `gpt-4o-transcribe` and `gpt-4o-mini-transcribe` the `delta` event will contain incremental transcripts as they are streamed out from the model.
-
-Here is an example transcription delta event:
-
-```json
-{
-  "event_id": "event_2122",
-  "type": "conversation.item.input_audio_transcription.delta",
-  "item_id": "item_003",
-  "content_index": 0,
-  "delta": "Hello,"
-}
-```
-
-Here is an example transcription completion event:
-
-```json
-{
-  "event_id": "event_2122",
-  "type": "conversation.item.input_audio_transcription.completed",
-  "item_id": "item_003",
-  "content_index": 0,
-  "transcript": "Hello, how are you?"
-}
-```
-
-Note that ordering between completion events from different speech turns is not guaranteed. You should use `item_id` to match these events to the `input_audio_buffer.committed` events and use `input_audio_buffer.committed.previous_item_id` to handle the ordering.
-
-To send audio data to the transcription session, you can use the `input_audio_buffer.append` event.
-
-You have 2 options:
-
-- Use a streaming microphone input
-- Stream data from a wav file
-
-{/*
-
-### Using microphone input
-
-
-
-<div data-content-switcher-pane data-value="js">
-    <div class="hidden">ws module (Node.js)</div>
-    </div>
-  <div data-content-switcher-pane data-value="python" hidden>
-    <div class="hidden">websocket-client (Python)</div>
-    </div>
-
-
-
-### Using file input
-
-
-
-<div data-content-switcher-pane data-value="js">
-    <div class="hidden">ws module (Node.js)</div>
-    </div>
-  <div data-content-switcher-pane data-value="python" hidden>
-    <div class="hidden">websocket-client (Python)</div>
-    </div>
-
-
-*/}
-## Voice activity detection
-
-The Realtime API supports automatic voice activity detection (VAD). Enabled by default, VAD will control when the input audio buffer is committed, therefore when transcription begins.
-
-Read more about configuring VAD in our [Voice Activity Detection](https://developers.openai.com/api/docs/guides/realtime-vad) guide.
-
-You can also disable VAD by setting the `audio.input.turn_detection` property to `null`, and control when to commit the input audio on your end.
-
-## Additional configurations
-
-### Noise reduction
-
-Use the `audio.input.noise_reduction` property to configure how to handle noise reduction in the audio stream.
-
-- `{ "type": "near_field" }`: Use near-field noise reduction (default).
-- `{ "type": "far_field" }`: Use far-field noise reduction.
-- `null`: Disable noise reduction.
-
-### Using logprobs
-
-You can use the `include` property to include logprobs in the transcription events, using `item.input_audio_transcription.logprobs`.
-
-Those logprobs can be used to calculate the confidence score of the transcription.
+Realtime transcription uses a session with `type: "transcription"`. You can connect with [WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket) for server-side audio pipelines or [WebRTC](https://developers.openai.com/api/docs/guides/realtime-webrtc) for browser audio.
 
 ```json
 {
   "type": "session.update",
   "session": {
+    "type": "transcription",
     "audio": {
       "input": {
         "format": {
@@ -164,7 +78,8 @@ Those logprobs can be used to calculate the confidence score of the transcriptio
           "rate": 24000
         },
         "transcription": {
-          "model": "gpt-4o-transcribe"
+          "model": "gpt-realtime-whisper",
+          "language": "en"
         },
         "turn_detection": {
           "type": "server_vad",
@@ -173,8 +88,183 @@ Those logprobs can be used to calculate the confidence score of the transcriptio
           "silence_duration_ms": 500
         }
       }
+    }
+  }
+}
+```
+
+### Session fields
+
+- `type`: Set to `transcription` for transcription-only sessions.
+- `audio.input.format`: Input encoding for audio appended to the buffer. Use 24 kHz mono PCM when sending `audio/pcm`.
+- `audio.input.transcription.model`: Use `gpt-realtime-whisper` for streaming transcription.
+- `audio.input.transcription.language`: Optional language hint such as `en`.
+- `audio.input.turn_detection`: Optional voice activity detection. Set it to `null` if you want to commit audio manually.
+
+## Stream audio
+
+Send audio chunks with `input_audio_buffer.append`:
+
+```javascript
+ws.send(
+  JSON.stringify({
+    type: "input_audio_buffer.append",
+    audio: base64Pcm16,
+  })
+);
+```
+
+If you disable turn detection, commit the buffer when you want transcription to begin:
+
+```javascript
+ws.send(
+  JSON.stringify({
+    type: "input_audio_buffer.commit",
+  })
+);
+```
+
+With server VAD enabled, the session commits audio automatically when it detects a turn boundary.
+
+## Handle transcript events
+
+Listen for incremental transcript deltas and completion events:
+
+```javascript
+ws.on("message", (data) => {
+  const event = JSON.parse(data);
+
+  if (event.type === "conversation.item.input_audio_transcription.delta") {
+    process.stdout.write(event.delta);
+  }
+
+  if (event.type === "conversation.item.input_audio_transcription.completed") {
+    console.log("\nFinal transcript:", event.transcript);
+  }
+});
+```
+
+A delta event contains newly available transcript text:
+
+```json
+{
+  "type": "conversation.item.input_audio_transcription.delta",
+  "item_id": "item_003",
+  "content_index": 0,
+  "delta": "Hello,"
+}
+```
+
+A completion event contains the final transcript for the committed item:
+
+```json
+{
+  "type": "conversation.item.input_audio_transcription.completed",
+  "item_id": "item_003",
+  "content_index": 0,
+  "transcript": "Hello, how are you?"
+}
+```
+
+Ordering between completion events from different speech turns isn't guaranteed. Use `item_id` to match transcription events to committed input items.
+
+## Tune latency and accuracy
+
+Streaming transcription trades latency for transcript quality. Lower delay settings can produce earlier partial text. Higher delay settings give the model more audio context before emitting text and can improve word error rate.
+
+Start by testing a few delay targets against your real audio. Useful evaluation points are:
+
+- 0.4 seconds for the most latency-sensitive interactions;
+- 0.8 to 1.2 seconds for balanced live captions;
+- 1.5 to 2.0 seconds when accuracy matters more than immediate display;
+- 3.0 seconds for workflows that can tolerate more delay.
+
+Don't choose a setting from synthetic audio alone. Test with representative microphones, telephony audio, accents, background noise, code-switching, domain vocabulary, and long sessions.
+
+## Guide vocabulary and domain terms
+
+If your application depends on exact domain vocabulary, include a language hint and test whether your model and endpoint support prompt or keyword steering before relying on it. Where supported, use short keyword lists rather than long instructions.
+
+Example keyword style:
+
+```text
+Keywords: metoprolol, atorvastatin, A1C, systolic, diastolic
+```
+
+For production, treat keyword steering as an aid rather than a guarantee. Continue to evaluate names, numbers, dates, medication names, product names, artist names, and other high-value entities manually.
+
+## Handle confidence, timestamps, and diarization
+
+Only request optional fields that your selected model and endpoint support. If your application needs confidence scoring, timestamps, or diarization, verify support before launch and add fallbacks for fields that aren't available.
+
+When log probabilities are available, request them with `include`:
+
+```json
+{
+  "type": "session.update",
+  "session": {
+    "type": "transcription",
+    "audio": {
+      "input": {
+        "transcription": {
+          "model": "gpt-realtime-whisper"
+        }
+      }
     },
     "include": ["item.input_audio_transcription.logprobs"]
   }
 }
 ```
+
+## Production checklist
+
+- Pick a target latency and accuracy threshold before tuning.
+- Test against real production audio, not only clean samples.
+- Test each target language.
+- Include numbers, dates, currency, email addresses, product names, and domain terms in your eval set.
+- Track empty, truncated, and delayed transcripts apart from word error rate.
+- Decide how your UI should revise partial text when later deltas correct earlier text.
+- Use `item_id` to order and reconcile final transcripts.
+- Keep a fallback path for unsupported timestamps, diarization, or confidence fields.
+
+## Related guides
+
+<a href="/api/docs/guides/realtime">
+  
+
+<span slot="icon">
+      </span>
+    Compare voice-agent, translation, and transcription sessions.
+
+
+</a>
+
+<a href="/api/docs/guides/realtime-translation">
+  
+
+<span slot="icon">
+      </span>
+    Translate live speech with a dedicated translation session.
+
+
+</a>
+
+<a href="/api/docs/guides/realtime-websocket">
+  
+
+<span slot="icon">
+      </span>
+    Stream raw audio through a server-side media pipeline.
+
+
+</a>
+
+<a href="/api/docs/guides/realtime-vad">
+  
+
+<span slot="icon">
+      </span>
+    Configure turn detection for live audio streams.
+
+
+</a>

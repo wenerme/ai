@@ -1,8 +1,5 @@
-# Batch API
-
 > [!WARNING]
-> **Ongoing incident:** The Batch API is currently experiencing an issue causing batch jobs to randomly fail. Our team is actively investigating. Please check the [Gemini API status
-> page](https://aistudio.google.com/status) for the latest updates.
+> **Ongoing incident:** The Batch API is currently experiencing an issue causing batch jobs to randomly fail. Our team is actively investigating.
 
 The Gemini Batch API is designed to process large volumes of requests
 asynchronously at [50% of the standard cost](https://ai.google.dev/gemini-api/docs/pricing).

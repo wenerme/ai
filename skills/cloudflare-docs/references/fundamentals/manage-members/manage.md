@@ -30,8 +30,8 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6017)
-* [ API ](#tab-panel-6018)
+* [ Dashboard ](#tab-panel-6304)
+* [ API ](#tab-panel-6305)
 
 To view members using the dashboard:
 
@@ -45,8 +45,8 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6019)
-* [ API ](#tab-panel-6020)
+* [ Dashboard ](#tab-panel-6306)
+* [ API ](#tab-panel-6307)
 
 To add a member to your account:
 
@@ -62,7 +62,7 @@ To add a member to your account:
 
 Note
 
-If a user already has an account with Cloudflare and you have an Enterprise account, you can also select **Direct Add** to add them to your account without sending an email invitation.
+If a user already has an account with Cloudflare and you have an Enterprise account, you can also select **Skip email confirmation** to add them to your account without sending an email invitation.
 
 To add a member using the API, send a [POST request](https://developers.cloudflare.com/api/resources/accounts/subresources/members/methods/create/).
 
@@ -70,8 +70,8 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6021)
-* [ API ](#tab-panel-6022)
+* [ Dashboard ](#tab-panel-6308)
+* [ API ](#tab-panel-6309)
 
 To edit member permissions using the dashboard:
 
@@ -139,8 +139,8 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-6023)
-* [ API ](#tab-panel-6024)
+* [ Dashboard ](#tab-panel-6310)
+* [ API ](#tab-panel-6311)
 
 To revoke a member's access to your account:
 

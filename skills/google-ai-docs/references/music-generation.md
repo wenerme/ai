@@ -1,5 +1,3 @@
-# Generate music with Lyria 3
-
 Lyria 3 is Google's family of music generation models, available
 through the Gemini API. With Lyria 3, you can generate high-quality, 44.1 kHz
 stereo audio from text prompts or from images. These models deliver structural
@@ -268,7 +266,7 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
 
 By default, the Lyria 3 models generate audio in **MP3** format. For
 Lyria 3 Pro, you can also request the output in **WAV** format by setting
-the `response_mime_type` in the `generationConfig`.
+the `response_format` in the `generationConfig`.
 
 ### Python
 
@@ -277,7 +275,7 @@ the `response_mime_type` in the `generationConfig`.
         contents="An atmospheric ambient track.",
         config=types.GenerateContentConfig(
             response_modalities=["AUDIO", "TEXT"],
-            response_mime_type="audio/wav",
+            response_format={"audio": {"mime_type": "audio/wav"}},
         ),
     )
 
@@ -288,7 +286,7 @@ the `response_mime_type` in the `generationConfig`.
       contents: "An atmospheric ambient track.",
       config: {
         responseModalities: ["AUDIO", "TEXT"],
-        responseMimeType: "audio/wav",
+        responseFormat: { audio: { mimeType: "audio/wav" } },
       },
     });
 
@@ -310,7 +308,7 @@ the `response_mime_type` in the `generationConfig`.
 
     GenerateContentConfig config = GenerateContentConfig.builder()
         .responseModalities("AUDIO", "TEXT")
-        .responseMimeType("audio/wav")
+        .responseFormat(ResponseFormat.builder().audio(AudioFormat.builder().mimeType("audio/wav").build()).build())
         .build();
 
     GenerateContentResponse response = client.models.generateContent(
@@ -345,7 +343,7 @@ the `response_mime_type` in the `generationConfig`.
         }],
         "generationConfig": {
           "responseModalities": ["AUDIO", "TEXT"],
-          "responseMimeType": "audio/wav"
+          "responseFormat": { "audio": { "mimeType": "audio/wav" } }
         }
       }'
 

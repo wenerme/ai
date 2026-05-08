@@ -152,6 +152,10 @@ The following global flags work on every command:
 
 `wrangler dev` is a way to [locally test](https://developers.cloudflare.com/workers/development-testing/) your Worker while developing. With `wrangler dev` running, send HTTP requests to `localhost:8787` and your Worker should execute as expected. You will also see `console.log` messages and exceptions appearing in your terminal.
 
+Note
+
+`wrangler dev` runs the local `workerd` runtime with `TZ=UTC` to match the production Cloudflare runtime. `Date` and `Intl` APIs inside your Worker observe UTC during local development, regardless of your machine's timezone.
+
 ---
 
 ## `deploy`
@@ -298,9 +302,9 @@ The following global flags work on every command:
 
 🪄 Setup a project to work on Cloudflare
 
-* [  npm ](#tab-panel-10167)
-* [  pnpm ](#tab-panel-10168)
-* [  yarn ](#tab-panel-10169)
+* [  npm ](#tab-panel-10320)
+* [  pnpm ](#tab-panel-10321)
+* [  yarn ](#tab-panel-10322)
 
 Terminal window
 
@@ -367,9 +371,9 @@ This action creates a new [version](https://developers.cloudflare.com/workers/co
 
 Create or update a secret for a Worker
 
-* [  npm ](#tab-panel-10170)
-* [  pnpm ](#tab-panel-10171)
-* [  yarn ](#tab-panel-10172)
+* [  npm ](#tab-panel-10323)
+* [  pnpm ](#tab-panel-10324)
+* [  yarn ](#tab-panel-10325)
 
 Terminal window
 
@@ -457,9 +461,9 @@ echo "-----BEGIN PRIVATE KEY-----\nM...==\n-----END PRIVATE KEY-----\n" | wrangl
 
 Delete a secret from a Worker
 
-* [  npm ](#tab-panel-10173)
-* [  pnpm ](#tab-panel-10174)
-* [  yarn ](#tab-panel-10175)
+* [  npm ](#tab-panel-10326)
+* [  pnpm ](#tab-panel-10327)
+* [  yarn ](#tab-panel-10328)
 
 Terminal window
 
@@ -514,9 +518,9 @@ Automatically provision draft bindings with new resources
 
 List all secrets for a Worker
 
-* [  npm ](#tab-panel-10176)
-* [  pnpm ](#tab-panel-10177)
-* [  yarn ](#tab-panel-10178)
+* [  npm ](#tab-panel-10329)
+* [  pnpm ](#tab-panel-10330)
+* [  yarn ](#tab-panel-10331)
 
 Terminal window
 
@@ -601,9 +605,9 @@ npx wrangler secret list
 
 Upload multiple secrets for a Worker at once
 
-* [  npm ](#tab-panel-10179)
-* [  pnpm ](#tab-panel-10180)
-* [  yarn ](#tab-panel-10181)
+* [  npm ](#tab-panel-10332)
+* [  pnpm ](#tab-panel-10333)
+* [  yarn ](#tab-panel-10334)
 
 Terminal window
 
@@ -706,9 +710,9 @@ Finished processing secrets JSON file:
 
 🦚 Start a log tailing session for a Worker
 
-* [  npm ](#tab-panel-10182)
-* [  pnpm ](#tab-panel-10183)
-* [  yarn ](#tab-panel-10184)
+* [  npm ](#tab-panel-10335)
+* [  pnpm ](#tab-panel-10336)
+* [  yarn ](#tab-panel-10337)
 
 Terminal window
 
@@ -795,9 +799,9 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Upload a new [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker that is not deployed immediately.
 
-* [  npm ](#tab-panel-10185)
-* [  pnpm ](#tab-panel-10186)
-* [  yarn ](#tab-panel-10187)
+* [  npm ](#tab-panel-10338)
+* [  pnpm ](#tab-panel-10339)
+* [  yarn ](#tab-panel-10340)
 
 Terminal window
 
@@ -892,9 +896,9 @@ Automatically provision draft bindings with new resources
 
 Deploy a previously created [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker all at once or create a [gradual deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) to incrementally shift traffic to a new version by following an interactive prompt.
 
-* [  npm ](#tab-panel-10188)
-* [  pnpm ](#tab-panel-10189)
-* [  yarn ](#tab-panel-10190)
+* [  npm ](#tab-panel-10341)
+* [  pnpm ](#tab-panel-10342)
+* [  yarn ](#tab-panel-10343)
 
 Terminal window
 
@@ -930,7 +934,7 @@ Worker Version ID(s) to deploy
 * `--percentage` ` number `  
 Percentage of traffic to split between Worker Version(s) (0-100)
 * `[VERSION-SPECS]` ` string `  
-Shorthand notation to deploy Worker Version(s) \[<version-id>@<percentage>..\]
+Shorthand notation to deploy Worker Version(s) \[<version-id>@<percentage>..\]. Omitted percentages share the remaining traffic.
 * `--message` ` string `  
 Description of this deployment (optional)
 * `--yes` ` boolean ` alias: --y default: false  
@@ -965,9 +969,9 @@ For example:`wrangler versions deploy 095f00a7-23a7-43b7-a227-e4c97cab5f22@10% 1
 
 Retrieve details for the 10 most recent versions. Details include `Version ID`, `Created on`, `Author`, `Source`, and optionally, `Tag` or `Message`.
 
-* [  npm ](#tab-panel-10191)
-* [  pnpm ](#tab-panel-10192)
-* [  yarn ](#tab-panel-10193)
+* [  npm ](#tab-panel-10344)
+* [  pnpm ](#tab-panel-10345)
+* [  yarn ](#tab-panel-10346)
 
 Terminal window
 
@@ -1022,9 +1026,9 @@ Automatically provision draft bindings with new resources
 
 View the details of a specific version of your Worker
 
-* [  npm ](#tab-panel-10194)
-* [  pnpm ](#tab-panel-10195)
-* [  yarn ](#tab-panel-10196)
+* [  npm ](#tab-panel-10347)
+* [  pnpm ](#tab-panel-10348)
+* [  yarn ](#tab-panel-10349)
 
 Terminal window
 
@@ -1081,9 +1085,9 @@ Automatically provision draft bindings with new resources
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-10197)
-* [  pnpm ](#tab-panel-10198)
-* [  yarn ](#tab-panel-10199)
+* [  npm ](#tab-panel-10350)
+* [  pnpm ](#tab-panel-10351)
+* [  yarn ](#tab-panel-10352)
 
 Terminal window
 
@@ -1142,9 +1146,9 @@ Automatically provision draft bindings with new resources
 
 Delete a secret variable from a Worker
 
-* [  npm ](#tab-panel-10200)
-* [  pnpm ](#tab-panel-10201)
-* [  yarn ](#tab-panel-10202)
+* [  npm ](#tab-panel-10353)
+* [  pnpm ](#tab-panel-10354)
+* [  yarn ](#tab-panel-10355)
 
 Terminal window
 
@@ -1203,9 +1207,9 @@ Automatically provision draft bindings with new resources
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-10203)
-* [  pnpm ](#tab-panel-10204)
-* [  yarn ](#tab-panel-10205)
+* [  npm ](#tab-panel-10356)
+* [  pnpm ](#tab-panel-10357)
+* [  yarn ](#tab-panel-10358)
 
 Terminal window
 
@@ -1275,9 +1279,9 @@ Experimental
 
 Apply changes to triggers (Routes or domains and Cron Triggers) when using `wrangler versions upload`
 
-* [  npm ](#tab-panel-10206)
-* [  pnpm ](#tab-panel-10207)
-* [  yarn ](#tab-panel-10208)
+* [  npm ](#tab-panel-10359)
+* [  pnpm ](#tab-panel-10360)
+* [  yarn ](#tab-panel-10361)
 
 Terminal window
 
@@ -1346,9 +1350,9 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Displays the 10 most recent deployments of your Worker
 
-* [  npm ](#tab-panel-10209)
-* [  pnpm ](#tab-panel-10210)
-* [  yarn ](#tab-panel-10211)
+* [  npm ](#tab-panel-10362)
+* [  pnpm ](#tab-panel-10363)
+* [  yarn ](#tab-panel-10364)
 
 Terminal window
 
@@ -1403,9 +1407,9 @@ Automatically provision draft bindings with new resources
 
 View the current state of your production
 
-* [  npm ](#tab-panel-10212)
-* [  pnpm ](#tab-panel-10213)
-* [  yarn ](#tab-panel-10214)
+* [  npm ](#tab-panel-10365)
+* [  pnpm ](#tab-panel-10366)
+* [  yarn ](#tab-panel-10367)
 
 Terminal window
 

@@ -50,7 +50,7 @@ Note
 
 Scoped alerts only fire if the zone has at least one enabled content security rule.
 
-For unscoped alerts, you will receive alerts for resources detected in all your zones, and you may receive alerts about resources that violate your configured content security rules.
+For unscoped alerts, you will receive notifications for all resources detected across your zones. Some of these resources may also violate your configured content security rules.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/alerts/","name":"Alerts"}}]}

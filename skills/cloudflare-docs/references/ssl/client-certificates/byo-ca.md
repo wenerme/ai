@@ -24,6 +24,12 @@ Bring your own CA (BYOCA) is especially useful if you already have mTLS implemen
 
 * This feature is only available on Enterprise accounts.
 * Each Enterprise account can upload up to five CAs. This quota does not apply to CAs uploaded through [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/).
+* The CA certificate quota is shared across [API Shield](https://developers.cloudflare.com/api-shield/security/mtls/configure/), [Workers mTLS](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/), and [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+* To increase this quota, contact your account team.
+
+Note
+
+If you exceed the CA certificate quota, the API returns error `1489` with the message "Hit maximum CA cert allocation." Contact your account team to request a quota increase.
 
 ## CA certificate requirements
 
@@ -48,8 +54,8 @@ Uploading the CA private key is only required if you wish to use [Zero Trust's b
 
 ## Set up mTLS with your CA
 
-* [ Dashboard ](#tab-panel-7895)
-* [ API ](#tab-panel-7896)
+* [ Dashboard ](#tab-panel-8210)
+* [ API ](#tab-panel-8211)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -102,8 +108,8 @@ There can be multiple CAs (Cloudflare-managed or BYOCA) associated with the same
 
 If you wish to remove the association from the Cloudflare-managed certificate and only use your BYOCA certificate(s):
 
-* [ Dashboard ](#tab-panel-7901)
-* [ API ](#tab-panel-7902)
+* [ Dashboard ](#tab-panel-8216)
+* [ API ](#tab-panel-8217)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -167,8 +173,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authoritie
 
 If you want to remove a CA that you have previously uploaded, you must first remove any hostname associations that it has.
 
-* [ Dashboard ](#tab-panel-7897)
-* [ API ](#tab-panel-7898)
+* [ Dashboard ](#tab-panel-8212)
+* [ API ](#tab-panel-8213)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -192,8 +198,8 @@ If you want to remove a CA that you have previously uploaded, you must first rem
 
 ## List CA hostname associations
 
-* [ Dashboard ](#tab-panel-7899)
-* [ API ](#tab-panel-7900)
+* [ Dashboard ](#tab-panel-8214)
+* [ API ](#tab-panel-8215)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)

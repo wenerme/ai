@@ -198,7 +198,7 @@ using [structured outputs](https://ai.google.dev/gemini-api/docs/structured-outp
           )
         ],
         config=types.GenerateContentConfig(
-          response_mime_type="application/json",
+          response_format={"text": {"mime_type": "application/json"}},
           response_schema=types.Schema(
             type=types.Type.OBJECT,
             properties={
@@ -281,7 +281,7 @@ using [structured outputs](https://ai.google.dev/gemini-api/docs/structured-outp
           ],
         },
         config: {
-          responseMimeType: "application/json",
+          responseFormat: { text: { mimeType: "application/json" } },
           responseSchema: {
             type: Type.OBJECT,
             properties: {
@@ -342,7 +342,7 @@ using [structured outputs](https://ai.google.dev/gemini-api/docs/structured-outp
             }
           ],
           "generation_config": {
-            "response_mime_type": "application/json",
+            "response_format": {"text": {"mime_type": "application/json"}},
             "response_schema": {
               "type": "OBJECT",
               "properties": {

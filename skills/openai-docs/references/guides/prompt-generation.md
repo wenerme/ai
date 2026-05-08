@@ -216,7 +216,8 @@ After generating a schema, we perform the following steps:
 1. **For structured output schemas**, wrap them in [`json_schema`](https://developers.openai.com/api/docs/guides/structured-outputs#how-to-use?context=without_parse) object.
 1. **For functions**, wrap them in a [`function`](https://developers.openai.com/api/docs/guides/function-calling#step-3-pass-your-function-definitions-as-available-tools-to-the-model-along-with-the-messages) object.
 
-The Realtime API [function](https://developers.openai.com/api/docs/guides/realtime#function-calls) object
+The Realtime API
+  [function](https://developers.openai.com/api/docs/guides/realtime-conversations#function-calling) object
   differs slightly from the Chat Completions API, but uses the same schema.
 
 ### Meta-schemas

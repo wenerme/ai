@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Configure Zero Trust access policies to protect my internal staging environment.  
+Add a cron trigger to my Worker that processes a job queue every hour.  
 ```
 
 ## Cloudflare platform access

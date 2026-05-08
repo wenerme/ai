@@ -566,7 +566,6 @@ image files directly using the same upload APIs described in
 **Image file requirements:**
 
 - Image files must be at most 4K x 4K pixels in resolution.
-- Maximum of 6 images per request.
 - Supported formats are PNG, JPEG.
 
 ## Citations
@@ -784,8 +783,7 @@ Starting with Gemini 3 models, you can combine file search tool with
                             )
                         )
                     ],
-                    response_mime_type="application/json",
-                    response_schema=Money.model_json_schema()
+                    response_format={"text": {"mime_type": "application/json", "schema": Money.model_json_schema()}}
           )
     )
     result = Money.model_validate_json(response.text)
@@ -812,8 +810,7 @@ Starting with Gemini 3 models, you can combine file search tool with
               },
             },
           ],
-          responseMimeType: "application/json",
-          responseJsonSchema: z.toJSONSchema(moneySchema),
+          responseFormat: { text: { mimeType: "application/json", schema: z.toJSONSchema(moneySchema) } },
         },
       });
 
@@ -841,13 +838,17 @@ Starting with Gemini 3 models, you can combine file search tool with
           }
         ],
         "generationConfig": {
-            "responseMimeType": "application/json",
-            "responseJsonSchema": {
+    "responseFormat": {
+      "text": {
+        "mimeType": "application/json",
+        "schema": {
                 "type": "object",
                 "properties": {
                     "amount": {"type": "string", "description": "The numerical part of the amount."},
                     "currency": {"type": "string", "description": "The currency of amount."}
-                },
+      }
+    }
+    },
                 "required": ["amount", "currency"]
             }
         }
@@ -860,7 +861,8 @@ The following models support File Search:
 | Model | File Search |
 |---|---|
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/gemini-3.1-pro-preview) | ✔️ |
-| [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/gemini-3.1-flash-lite-preview) | ✔️ |
+| [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
+| [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview) | ✔️ |
 | [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ✔️ |
 | [Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro) | ✔️ |
 | [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite) | ✔️ |

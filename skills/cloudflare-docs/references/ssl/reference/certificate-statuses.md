@@ -74,6 +74,10 @@ For more details on certificate validation, refer to [Domain Control Validation]
 
 Monitor a certificate's status on the [**Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames) page or by using the [Custom Hostname Details endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/get/).
 
+The Custom Hostname Details endpoint returns separate status fields for hostname activation and certificate status. Use the top-level `status` field to monitor hostname activation. Use the nested `ssl.status` field to monitor certificate issuance and deployment.
+
+For production HTTPS, treat a custom hostname as ready when both status fields are `active` and the customer's DNS points to your Cloudflare for SaaS target.
+
 For more details on certificate validation, refer to [Issue and validate certificates](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/).
 
 ### Via the command line

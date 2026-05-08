@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TCP ](https://developers.cloudflare.com/search/?tags=TCP) 
+
 # General settings
 
 The Advanced DDoS Protection system includes [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/), [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/), and [Programmable Flow Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/). These systems are configured using the general settings, but also comprise of their own dedicated settings. Advanced DDoS Protection systems is available to [Magic Transit](https://developers.cloudflare.com/magic-transit/) customers.

@@ -118,21 +118,37 @@ Returns the created client secret and the effective session object. The client s
 
           Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
+          - `delay: Optional[Literal["minimal", "low", "medium", 2 more]]`
+
+            Controls how long the model waits before emitting transcription text.
+            Higher values can improve transcription accuracy at the cost of latency.
+            Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
+
+            - `"minimal"`
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"xhigh"`
+
           - `language: Optional[str]`
 
             The language of the input audio. Supplying the input language in
             [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
             will improve accuracy and latency.
 
-          - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more], null]]`
+          - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 3 more], null]]`
 
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
             - `str`
 
-            - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more]`
+            - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 3 more]`
 
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
               - `"whisper-1"`
 
@@ -144,12 +160,15 @@ Returns the created client secret and the effective session object. The client s
 
               - `"gpt-4o-transcribe-diarize"`
 
+              - `"gpt-realtime-whisper"`
+
           - `prompt: Optional[str]`
 
             An optional text to guide the model's style or continue a previous audio
             segment.
             For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
             For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+            Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
         - `turn_detection: Optional[RealtimeAudioInputTurnDetection]`
 
@@ -158,6 +177,9 @@ Returns the created client secret and the effective session object. The client s
           Server VAD means that the model will detect the start and end of speech based on audio volume and respond at the end of user speech.
 
           Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
+
+          For `gpt-realtime-whisper` transcription sessions, turn detection must be
+          set to `null`; VAD is not supported.
 
           - `class ServerVad: …`
 
@@ -326,19 +348,21 @@ Returns the created client secret and the effective session object. The client s
 
         - `"inf"`
 
-    - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2025-08-28", 13 more], null]]`
+    - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more], null]]`
 
       The Realtime model used for this session.
 
       - `str`
 
-      - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2025-08-28", 13 more]`
+      - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more]`
 
         The Realtime model used for this session.
 
         - `"gpt-realtime"`
 
         - `"gpt-realtime-1.5"`
+
+        - `"gpt-realtime-2"`
 
         - `"gpt-realtime-2025-08-28"`
 
@@ -377,6 +401,11 @@ Returns the created client secret and the effective session object. The client s
       - `"text"`
 
       - `"audio"`
+
+    - `parallel_tool_calls: Optional[bool]`
+
+      Whether the model may call multiple tools in parallel. Only supported by
+      reasoning Realtime models such as `gpt-realtime-2`.
 
     - `prompt: Optional[ResponsePrompt]`
 
@@ -476,6 +505,25 @@ Returns the created client secret and the effective session object. The client s
       - `version: Optional[str]`
 
         Optional version of the prompt template.
+
+    - `reasoning: Optional[RealtimeReasoning]`
+
+      Configuration for reasoning-capable Realtime models such as `gpt-realtime-2`.
+
+      - `effort: Optional[RealtimeReasoningEffort]`
+
+        Constrains effort on reasoning for reasoning-capable Realtime models such as
+        `gpt-realtime-2`.
+
+        - `"minimal"`
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+        - `"xhigh"`
 
     - `tool_choice: Optional[RealtimeToolChoiceConfig]`
 
@@ -805,6 +853,9 @@ Returns the created client secret and the effective session object. The client s
 
           Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
 
+          For `gpt-realtime-whisper` transcription sessions, turn detection must be
+          set to `null`; VAD is not supported.
+
           - `class ServerVad: …`
 
             Server-side voice activity detection (VAD) which flips on when user speech is detected and off after a period of silence.
@@ -914,21 +965,17 @@ Returns the created client secret and the effective session object. The client s
 
     - `class RealtimeSessionCreateResponse: …`
 
-      A new Realtime session configuration, with an ephemeral key. Default TTL
-      for keys is one minute.
+      A Realtime session configuration object.
 
-      - `client_secret: RealtimeSessionClientSecret`
+      - `id: str`
 
-        Ephemeral key returned by the API.
+        Unique identifier for the session that looks like `sess_1234567890abcdef`.
 
-        - `expires_at: int`
+      - `object: Literal["realtime.session"]`
 
-          Timestamp for when the token expires. Currently, all tokens expire
-          after one minute.
+        The object type. Always `realtime.session`.
 
-        - `value: str`
-
-          Ephemeral key usable in client environments to authenticate connections to the Realtime API. Use this in client-side environments rather than a standard API token, which should only be used server-side.
+        - `"realtime.session"`
 
       - `type: Literal["realtime"]`
 
@@ -998,7 +1045,21 @@ Returns the created client secret and the effective session object. The client s
 
           - `transcription: Optional[AudioTranscription]`
 
-            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+            - `delay: Optional[Literal["minimal", "low", "medium", 2 more]]`
+
+              Controls how long the model waits before emitting transcription text.
+              Higher values can improve transcription accuracy at the cost of latency.
+              Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
 
             - `language: Optional[str]`
 
@@ -1006,15 +1067,15 @@ Returns the created client secret and the effective session object. The client s
               [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
               will improve accuracy and latency.
 
-            - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more], null]]`
+            - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 3 more], null]]`
 
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
               - `str`
 
-              - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more]`
+              - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 3 more]`
 
-                The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+                The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
                 - `"whisper-1"`
 
@@ -1026,12 +1087,15 @@ Returns the created client secret and the effective session object. The client s
 
                 - `"gpt-4o-transcribe-diarize"`
 
+                - `"gpt-realtime-whisper"`
+
             - `prompt: Optional[str]`
 
               An optional text to guide the model's style or continue a previous audio
               segment.
               For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
               For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+              Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
           - `turn_detection: Optional[AudioInputTurnDetection]`
 
@@ -1040,6 +1104,9 @@ Returns the created client secret and the effective session object. The client s
             Server VAD means that the model will detect the start and end of speech based on audio volume and respond at the end of user speech.
 
             Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
+
+            For `gpt-realtime-whisper` transcription sessions, turn detection must be
+            set to `null`; VAD is not supported.
 
             - `class AudioInputTurnDetectionServerVad: …`
 
@@ -1178,6 +1245,10 @@ Returns the created client secret and the effective session object. The client s
 
               - `"cedar"`
 
+      - `expires_at: Optional[int]`
+
+        Expiration timestamp for the session, in seconds since epoch.
+
       - `include: Optional[List[Literal["item.input_audio_transcription.logprobs"]]]`
 
         Additional fields to include in server outputs.
@@ -1205,19 +1276,21 @@ Returns the created client secret and the effective session object. The client s
 
           - `"inf"`
 
-      - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2025-08-28", 13 more], null]]`
+      - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more], null]]`
 
         The Realtime model used for this session.
 
         - `str`
 
-        - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2025-08-28", 13 more]`
+        - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more]`
 
           The Realtime model used for this session.
 
           - `"gpt-realtime"`
 
           - `"gpt-realtime-1.5"`
+
+          - `"gpt-realtime-2"`
 
           - `"gpt-realtime-2025-08-28"`
 
@@ -1355,6 +1428,25 @@ Returns the created client secret and the effective session object. The client s
         - `version: Optional[str]`
 
           Optional version of the prompt template.
+
+      - `reasoning: Optional[RealtimeReasoning]`
+
+        Configuration for reasoning-capable Realtime models such as `gpt-realtime-2`.
+
+        - `effort: Optional[RealtimeReasoningEffort]`
+
+          Constrains effort on reasoning for reasoning-capable Realtime models such as
+          `gpt-realtime-2`.
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
 
       - `tool_choice: Optional[ToolChoice]`
 
@@ -1680,13 +1772,11 @@ Returns the created client secret and the effective session object. The client s
 
           - `transcription: Optional[AudioTranscription]`
 
-            Configuration of the transcription model.
-
           - `turn_detection: Optional[RealtimeTranscriptionSessionTurnDetection]`
 
             Configuration for turn detection. Can be set to `null` to turn off. Server
             VAD means that the model will detect the start and end of speech based on
-            audio volume and respond at the end of user speech.
+            audio volume and respond at the end of user speech. For `gpt-realtime-whisper`, this must be `null`; VAD is not supported.
 
             - `prefix_padding_ms: Optional[int]`
 
@@ -1744,10 +1834,8 @@ print(client_secret.expires_at)
 {
   "expires_at": 0,
   "session": {
-    "client_secret": {
-      "expires_at": 0,
-      "value": "value"
-    },
+    "id": "id",
+    "object": "realtime.session",
     "type": "realtime",
     "audio": {
       "input": {
@@ -1759,6 +1847,7 @@ print(client_secret.expires_at)
           "type": "near_field"
         },
         "transcription": {
+          "delay": "minimal",
           "language": "language",
           "model": "string",
           "prompt": "prompt"
@@ -1782,6 +1871,7 @@ print(client_secret.expires_at)
         "voice": "ash"
       }
     },
+    "expires_at": 0,
     "include": [
       "item.input_audio_transcription.logprobs"
     ],
@@ -1797,6 +1887,9 @@ print(client_secret.expires_at)
         "foo": "string"
       },
       "version": "version"
+    },
+    "reasoning": {
+      "effort": "minimal"
     },
     "tool_choice": "none",
     "tools": [
@@ -1816,40 +1909,21 @@ print(client_secret.expires_at)
 
 ## Domain Types
 
-### Realtime Session Client Secret
-
-- `class RealtimeSessionClientSecret: …`
-
-  Ephemeral key returned by the API.
-
-  - `expires_at: int`
-
-    Timestamp for when the token expires. Currently, all tokens expire
-    after one minute.
-
-  - `value: str`
-
-    Ephemeral key usable in client environments to authenticate connections to the Realtime API. Use this in client-side environments rather than a standard API token, which should only be used server-side.
-
 ### Realtime Session Create Response
 
 - `class RealtimeSessionCreateResponse: …`
 
-  A new Realtime session configuration, with an ephemeral key. Default TTL
-  for keys is one minute.
+  A Realtime session configuration object.
 
-  - `client_secret: RealtimeSessionClientSecret`
+  - `id: str`
 
-    Ephemeral key returned by the API.
+    Unique identifier for the session that looks like `sess_1234567890abcdef`.
 
-    - `expires_at: int`
+  - `object: Literal["realtime.session"]`
 
-      Timestamp for when the token expires. Currently, all tokens expire
-      after one minute.
+    The object type. Always `realtime.session`.
 
-    - `value: str`
-
-      Ephemeral key usable in client environments to authenticate connections to the Realtime API. Use this in client-side environments rather than a standard API token, which should only be used server-side.
+    - `"realtime.session"`
 
   - `type: Literal["realtime"]`
 
@@ -1919,7 +1993,21 @@ print(client_secret.expires_at)
 
       - `transcription: Optional[AudioTranscription]`
 
-        Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+        - `delay: Optional[Literal["minimal", "low", "medium", 2 more]]`
+
+          Controls how long the model waits before emitting transcription text.
+          Higher values can improve transcription accuracy at the cost of latency.
+          Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
 
         - `language: Optional[str]`
 
@@ -1927,15 +2015,15 @@ print(client_secret.expires_at)
           [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
           will improve accuracy and latency.
 
-        - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more], null]]`
+        - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 3 more], null]]`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
           - `str`
 
-          - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more]`
+          - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 3 more]`
 
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
             - `"whisper-1"`
 
@@ -1947,12 +2035,15 @@ print(client_secret.expires_at)
 
             - `"gpt-4o-transcribe-diarize"`
 
+            - `"gpt-realtime-whisper"`
+
         - `prompt: Optional[str]`
 
           An optional text to guide the model's style or continue a previous audio
           segment.
           For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
           For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+          Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
       - `turn_detection: Optional[AudioInputTurnDetection]`
 
@@ -1961,6 +2052,9 @@ print(client_secret.expires_at)
         Server VAD means that the model will detect the start and end of speech based on audio volume and respond at the end of user speech.
 
         Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
+
+        For `gpt-realtime-whisper` transcription sessions, turn detection must be
+        set to `null`; VAD is not supported.
 
         - `class AudioInputTurnDetectionServerVad: …`
 
@@ -2099,6 +2193,10 @@ print(client_secret.expires_at)
 
           - `"cedar"`
 
+  - `expires_at: Optional[int]`
+
+    Expiration timestamp for the session, in seconds since epoch.
+
   - `include: Optional[List[Literal["item.input_audio_transcription.logprobs"]]]`
 
     Additional fields to include in server outputs.
@@ -2126,19 +2224,21 @@ print(client_secret.expires_at)
 
       - `"inf"`
 
-  - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2025-08-28", 13 more], null]]`
+  - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more], null]]`
 
     The Realtime model used for this session.
 
     - `str`
 
-    - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2025-08-28", 13 more]`
+    - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more]`
 
       The Realtime model used for this session.
 
       - `"gpt-realtime"`
 
       - `"gpt-realtime-1.5"`
+
+      - `"gpt-realtime-2"`
 
       - `"gpt-realtime-2025-08-28"`
 
@@ -2276,6 +2376,25 @@ print(client_secret.expires_at)
     - `version: Optional[str]`
 
       Optional version of the prompt template.
+
+  - `reasoning: Optional[RealtimeReasoning]`
+
+    Configuration for reasoning-capable Realtime models such as `gpt-realtime-2`.
+
+    - `effort: Optional[RealtimeReasoningEffort]`
+
+      Constrains effort on reasoning for reasoning-capable Realtime models such as
+      `gpt-realtime-2`.
+
+      - `"minimal"`
+
+      - `"low"`
+
+      - `"medium"`
+
+      - `"high"`
+
+      - `"xhigh"`
 
   - `tool_choice: Optional[ToolChoice]`
 
@@ -2643,7 +2762,21 @@ print(client_secret.expires_at)
 
       - `transcription: Optional[AudioTranscription]`
 
-        Configuration of the transcription model.
+        - `delay: Optional[Literal["minimal", "low", "medium", 2 more]]`
+
+          Controls how long the model waits before emitting transcription text.
+          Higher values can improve transcription accuracy at the cost of latency.
+          Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
 
         - `language: Optional[str]`
 
@@ -2651,15 +2784,15 @@ print(client_secret.expires_at)
           [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
           will improve accuracy and latency.
 
-        - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more], null]]`
+        - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 3 more], null]]`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
           - `str`
 
-          - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more]`
+          - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 3 more]`
 
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
             - `"whisper-1"`
 
@@ -2671,18 +2804,21 @@ print(client_secret.expires_at)
 
             - `"gpt-4o-transcribe-diarize"`
 
+            - `"gpt-realtime-whisper"`
+
         - `prompt: Optional[str]`
 
           An optional text to guide the model's style or continue a previous audio
           segment.
           For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
           For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+          Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
       - `turn_detection: Optional[RealtimeTranscriptionSessionTurnDetection]`
 
         Configuration for turn detection. Can be set to `null` to turn off. Server
         VAD means that the model will detect the start and end of speech based on
-        audio volume and respond at the end of user speech.
+        audio volume and respond at the end of user speech. For `gpt-realtime-whisper`, this must be `null`; VAD is not supported.
 
         - `prefix_padding_ms: Optional[int]`
 
@@ -2723,7 +2859,7 @@ print(client_secret.expires_at)
 
   Configuration for turn detection. Can be set to `null` to turn off. Server
   VAD means that the model will detect the start and end of speech based on
-  audio volume and respond at the end of user speech.
+  audio volume and respond at the end of user speech. For `gpt-realtime-whisper`, this must be `null`; VAD is not supported.
 
   - `prefix_padding_ms: Optional[int]`
 
@@ -2762,21 +2898,17 @@ print(client_secret.expires_at)
 
     - `class RealtimeSessionCreateResponse: …`
 
-      A new Realtime session configuration, with an ephemeral key. Default TTL
-      for keys is one minute.
+      A Realtime session configuration object.
 
-      - `client_secret: RealtimeSessionClientSecret`
+      - `id: str`
 
-        Ephemeral key returned by the API.
+        Unique identifier for the session that looks like `sess_1234567890abcdef`.
 
-        - `expires_at: int`
+      - `object: Literal["realtime.session"]`
 
-          Timestamp for when the token expires. Currently, all tokens expire
-          after one minute.
+        The object type. Always `realtime.session`.
 
-        - `value: str`
-
-          Ephemeral key usable in client environments to authenticate connections to the Realtime API. Use this in client-side environments rather than a standard API token, which should only be used server-side.
+        - `"realtime.session"`
 
       - `type: Literal["realtime"]`
 
@@ -2846,7 +2978,21 @@ print(client_secret.expires_at)
 
           - `transcription: Optional[AudioTranscription]`
 
-            Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+            - `delay: Optional[Literal["minimal", "low", "medium", 2 more]]`
+
+              Controls how long the model waits before emitting transcription text.
+              Higher values can improve transcription accuracy at the cost of latency.
+              Only supported with `gpt-realtime-whisper` in GA Realtime sessions.
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
 
             - `language: Optional[str]`
 
@@ -2854,15 +3000,15 @@ print(client_secret.expires_at)
               [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
               will improve accuracy and latency.
 
-            - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more], null]]`
+            - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 3 more], null]]`
 
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
               - `str`
 
-              - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more]`
+              - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 3 more]`
 
-                The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+                The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
                 - `"whisper-1"`
 
@@ -2874,12 +3020,15 @@ print(client_secret.expires_at)
 
                 - `"gpt-4o-transcribe-diarize"`
 
+                - `"gpt-realtime-whisper"`
+
             - `prompt: Optional[str]`
 
               An optional text to guide the model's style or continue a previous audio
               segment.
               For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
               For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
+              Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
           - `turn_detection: Optional[AudioInputTurnDetection]`
 
@@ -2888,6 +3037,9 @@ print(client_secret.expires_at)
             Server VAD means that the model will detect the start and end of speech based on audio volume and respond at the end of user speech.
 
             Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
+
+            For `gpt-realtime-whisper` transcription sessions, turn detection must be
+            set to `null`; VAD is not supported.
 
             - `class AudioInputTurnDetectionServerVad: …`
 
@@ -3026,6 +3178,10 @@ print(client_secret.expires_at)
 
               - `"cedar"`
 
+      - `expires_at: Optional[int]`
+
+        Expiration timestamp for the session, in seconds since epoch.
+
       - `include: Optional[List[Literal["item.input_audio_transcription.logprobs"]]]`
 
         Additional fields to include in server outputs.
@@ -3053,19 +3209,21 @@ print(client_secret.expires_at)
 
           - `"inf"`
 
-      - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2025-08-28", 13 more], null]]`
+      - `model: Optional[Union[str, Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more], null]]`
 
         The Realtime model used for this session.
 
         - `str`
 
-        - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2025-08-28", 13 more]`
+        - `Literal["gpt-realtime", "gpt-realtime-1.5", "gpt-realtime-2", 14 more]`
 
           The Realtime model used for this session.
 
           - `"gpt-realtime"`
 
           - `"gpt-realtime-1.5"`
+
+          - `"gpt-realtime-2"`
 
           - `"gpt-realtime-2025-08-28"`
 
@@ -3203,6 +3361,25 @@ print(client_secret.expires_at)
         - `version: Optional[str]`
 
           Optional version of the prompt template.
+
+      - `reasoning: Optional[RealtimeReasoning]`
+
+        Configuration for reasoning-capable Realtime models such as `gpt-realtime-2`.
+
+        - `effort: Optional[RealtimeReasoningEffort]`
+
+          Constrains effort on reasoning for reasoning-capable Realtime models such as
+          `gpt-realtime-2`.
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
 
       - `tool_choice: Optional[ToolChoice]`
 
@@ -3528,13 +3705,11 @@ print(client_secret.expires_at)
 
           - `transcription: Optional[AudioTranscription]`
 
-            Configuration of the transcription model.
-
           - `turn_detection: Optional[RealtimeTranscriptionSessionTurnDetection]`
 
             Configuration for turn detection. Can be set to `null` to turn off. Server
             VAD means that the model will detect the start and end of speech based on
-            audio volume and respond at the end of user speech.
+            audio volume and respond at the end of user speech. For `gpt-realtime-whisper`, this must be `null`; VAD is not supported.
 
             - `prefix_padding_ms: Optional[int]`
 

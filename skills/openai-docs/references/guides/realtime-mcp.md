@@ -1,15 +1,135 @@
-# Realtime API with MCP
+# Realtime with tools
 
-You can attach MCP tools directly to a Realtime session so the model can discover and call remote tools during a live conversation. For MCP, the control flow is the same whether your client is using a [WebRTC data channel](https://developers.openai.com/api/docs/guides/realtime-webrtc) or a [WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket).
+You can attach tools to a Realtime session so the model can look up data, take actions, or call services during a live conversation. Tool configuration uses the same event surface whether your client is using a [WebRTC data channel](https://developers.openai.com/api/docs/guides/realtime-webrtc) or a [WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket).
 
-This page covers the Realtime-specific setup and event flow. For broader MCP concepts, auth patterns, connectors, and safety guidance, see [MCP and Connectors](https://developers.openai.com/api/docs/guides/tools-connectors-mcp).
+Use function tools when your application should execute the tool and return the result. Use MCP tools or built-in connectors when the Realtime API should connect to a remote tool server for you.
+
+## Choose a tool type
+
+| Tool type                 | Use when                                                                             | Who executes it                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| `function`                | Your application owns the business logic, approval checks, or private system access. | Your client or server receives a function call and returns `function_call_output`. |
+| `mcp` with `server_url`   | You want the model to call tools exposed by a remote MCP server.                     | The Realtime API calls the remote MCP server.                                      |
+| `mcp` with `connector_id` | You want to use a built-in connector such as Google Calendar.                        | The Realtime API calls the connector with the authorization you provide.           |
+
+Add tools in **one of two places**:
+
+- At the **session level** with `session.tools` in [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update), if you want the tool available for the full session.
+- At the **response level** with `response.tools` in [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create), if you only need the tool for one turn.
+
+## Configure a function tool
+
+Function tools are the right default when the tool should run in your application. The model emits function call arguments, your code executes the action, and your code sends the result back with a `function_call_output` item.
+
+Configure a function tool with session.update
+
+```javascript
+const event = {
+  type: "session.update",
+  session: {
+    type: "realtime",
+    model: "gpt-realtime-2",
+    tools: [
+      {
+        type: "function",
+        name: "lookup_order",
+        description: "Look up an order by its order number.",
+        parameters: {
+          type: "object",
+          properties: {
+            order_number: {
+              type: "string",
+              description: "The customer-facing order number.",
+            },
+          },
+          required: ["order_number"],
+        },
+      },
+    ],
+    tool_choice: "auto",
+  },
+};
+
+ws.send(JSON.stringify(event));
+```
+
+```python
+event = {
+    "type": "session.update",
+    "session": {
+        "type": "realtime",
+        "model": "gpt-realtime-2",
+        "tools": [
+            {
+                "type": "function",
+                "name": "lookup_order",
+                "description": "Look up an order by its order number.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "order_number": {
+                            "type": "string",
+                            "description": "The customer-facing order number.",
+                        }
+                    },
+                    "required": ["order_number"],
+                },
+            }
+        ],
+        "tool_choice": "auto",
+    },
+}
+
+ws.send(json.dumps(event))
+```
+
+
+When the model calls the function, listen for the function call item, run your application logic, then send the output back:
+
+Send function call output
+
+```javascript
+const event = {
+  type: "conversation.item.create",
+  item: {
+    type: "function_call_output",
+    call_id: functionCall.call_id,
+    output: JSON.stringify({
+      status: "shipped",
+      delivery_date: "2026-05-09",
+    }),
+  },
+};
+
+ws.send(JSON.stringify(event));
+ws.send(JSON.stringify({ type: "response.create" }));
+```
+
+```python
+event = {
+    "type": "conversation.item.create",
+    "item": {
+        "type": "function_call_output",
+        "call_id": function_call["call_id"],
+        "output": json.dumps(
+            {
+                "status": "shipped",
+                "delivery_date": "2026-05-09",
+            }
+        ),
+    },
+}
+
+ws.send(json.dumps(event))
+ws.send(json.dumps({"type": "response.create"}))
+```
+
+
+For a full event-by-event walkthrough of function calling, see [Managing conversations](https://developers.openai.com/api/docs/guides/realtime-conversations#function-calling).
 
 ## Configure an MCP tool
 
-Add MCP tools in **one of two places**:
-
-- At the **session level** with `session.tools` in [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update), if you want the server available for the full session.
-- At the **response level** with `response.tools` in [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create), if you only need MCP for one turn.
+MCP tools are useful when the tool already exists behind a remote MCP server, or when you want to use an OpenAI-managed connector. Unlike function tools, MCP tools are executed by the Realtime API itself.
 
 In Realtime, the MCP tool shape is:
 
@@ -30,7 +150,7 @@ const event = {
   type: "session.update",
   session: {
     type: "realtime",
-    model: "gpt-realtime-1.5",
+    model: "gpt-realtime-2",
     output_modalities: ["text"],
     tools: [
       {
@@ -52,7 +172,7 @@ event = {
     "type": "session.update",
     "session": {
         "type": "realtime",
-        "model": "gpt-realtime-1.5",
+        "model": "gpt-realtime-2",
         "output_modalities": ["text"],
         "tools": [
             {
@@ -84,7 +204,7 @@ const event = {
   type: "session.update",
   session: {
     type: "realtime",
-    model: "gpt-realtime-1.5",
+    model: "gpt-realtime-2",
     output_modalities: ["text"],
     tools: [
       {
@@ -107,7 +227,7 @@ event = {
     "type": "session.update",
     "session": {
         "type": "realtime",
-        "model": "gpt-realtime-1.5",
+        "model": "gpt-realtime-2",
         "output_modalities": ["text"],
         "tools": [
             {
@@ -127,20 +247,20 @@ ws.send(json.dumps(event))
 
 
 Remote MCP servers{" "}
-  <strong>do not automatically receive the full conversation context</strong>,
+  <strong>don't automatically receive the full conversation context</strong>,
   but <strong>they can see any data the model sends in a tool call</strong>.
   <strong>Keep the tool surface narrow</strong> with <code>allowed_tools</code>,
   and require approval for any action you would not auto-run.
 
 ## Realtime MCP flow
 
-Unlike Realtime `function` tools, remote MCP tools are **executed by the Realtime API itself**. **Your client does not run the remote tool** and return a `function_call_output`. Instead, your client configures access, listens for MCP lifecycle events, and optionally sends an approval response if the server asks for one.
+Unlike Realtime `function` tools, remote MCP tools are **executed by the Realtime API itself**. **Your client doesn't run the remote tool** and return a `function_call_output`. Instead, your client configures access, listens for MCP lifecycle events, and optionally sends an approval response if the server asks for one.
 
 A typical flow looks like this:
 
 1. You send `session.update` or `response.create` with a `tools` entry whose `type` is `mcp`.
 1. The server begins importing tools and emits `mcp_list_tools.in_progress`.
-1. While listing is still in progress, the model cannot call a tool that has not been loaded yet. If you want to wait before starting a turn that depends on those tools, listen for [`mcp_list_tools.completed`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/mcp_list_tools/completed). The [`conversation.item.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/conversation/item/done) event whose `item.type` is `mcp_list_tools` shows which tool names were actually imported. If import fails, you will receive [`mcp_list_tools.failed`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/mcp_list_tools/failed).
+1. While listing is still in progress, the model can't call a tool that hasn't loaded yet. If you want to wait before starting a turn that depends on those tools, listen for [`mcp_list_tools.completed`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/mcp_list_tools/completed). The [`conversation.item.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/conversation/item/done) event whose `item.type` is `mcp_list_tools` shows which tool names were actually imported. If import fails, you will receive [`mcp_list_tools.failed`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/mcp_list_tools/failed).
 1. The user speaks or sends text, and a response is created, either by your client or automatically by the session configuration.
 1. If the model chooses an MCP tool, you will see `response.mcp_call_arguments.delta` and `response.mcp_call_arguments.done`.
 1. **If approval is required**, the server adds a conversation item whose `item.type` is `mcp_approval_request`. Your client must answer it with an `mcp_approval_response` item.
@@ -298,12 +418,12 @@ def on_message(ws, message):
 
 ## Common failures
 
-- [`mcp_list_tools.failed`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/mcp_list_tools/failed): the Realtime API could not import tools from the remote server or connector. Check `server_url` or `connector_id`, authentication, server reachability, and any `allowed_tools` names you specified.
-- [`response.mcp_call.failed`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/mcp_call/failed): the model selected a tool, but the tool call did not complete. Inspect the event payload and the later `mcp_call` item for MCP protocol, execution, or transport errors.
-- `mcp_approval_request` with no matching `mcp_approval_response`: the tool call cannot continue until your client explicitly approves or rejects it.
+- [`mcp_list_tools.failed`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/mcp_list_tools/failed): the Realtime API couldn't import tools from the remote server or connector. Check `server_url` or `connector_id`, authentication, server connectivity, and any `allowed_tools` names you specified.
+- [`response.mcp_call.failed`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/mcp_call/failed): the model selected a tool, but the tool call didn't complete. Inspect the event payload and the later `mcp_call` item for MCP protocol, execution, or transport errors.
+- `mcp_approval_request` with no matching `mcp_approval_response`: the tool call can't continue until your client explicitly approves or rejects it.
 - A turn starts while `mcp_list_tools.in_progress` is still active: only tools that have already finished loading are eligible for that turn.
-- A response uses `tool_choice: "required"` but no tools are currently available: the model has nothing eligible to call. Wait for `mcp_list_tools.completed`, confirm that at least one tool was imported, or use a different `tool_choice` for turns that do not require a tool.
-- MCP tool definition validation fails before import starts: common causes are a duplicate `server_label` in the same `tools` array, setting both `server_url` and `connector_id`, omitting both of them on the initial session creation request, using an invalid `connector_id`, or sending both `authorization` and `headers.Authorization`. For connectors, do not send `headers.Authorization` at all.
+- A response uses `tool_choice: "required"` but no tools are currently available: the model has nothing eligible to call. Wait for `mcp_list_tools.completed`, confirm that at least one tool was imported, or use a different `tool_choice` for turns that don't require a tool.
+- MCP tool definition validation fails before import starts: common causes are a duplicate `server_label` in the same `tools` array, setting both `server_url` and `connector_id`, omitting both of them on the initial session creation request, using an invalid `connector_id`, or sending both `authorization` and `headers.Authorization`. For connectors, don't send `headers.Authorization` at all.
 
 ## Approve or reject MCP tool calls
 

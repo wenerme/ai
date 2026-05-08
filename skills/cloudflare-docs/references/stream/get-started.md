@@ -31,7 +31,13 @@ For a list of accepted file types, refer to [Supported video formats](https://de
 
 To use the API, replace the `API_TOKEN` and `ACCOUNT_ID` values with your credentials in the example below.
 
-Upload a video using the API
+* [ REST API ](#tab-panel-8389)
+* [ Workers Binding API ](#tab-panel-8390)
+
+* [ cURL ](#tab-panel-8382)
+* [ TypeScript ](#tab-panel-8383)
+
+Terminal window
 
 ```
 
@@ -47,6 +53,93 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/copy
 
 
 ```
+
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+const video = await client.stream.copy.create({
+
+  account_id: '<ACCOUNT_ID>',
+
+  url: 'https://storage.googleapis.com/stream-example-bucket/video.mp4',
+
+  meta: { name: 'My First Stream Video' },
+
+});
+
+
+```
+
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
+
+* [ index.ts ](#tab-panel-8384)
+* [ wrangler.jsonc ](#tab-panel-8385)
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request, env, ctx): Promise<Response> {
+
+    const videoDetails = await env.STREAM.upload(
+
+      "https://storage.googleapis.com/stream-example-bucket/video.mp4",
+
+      { meta: { name: "My First Stream Video" } }
+
+    );
+
+    return new Response(JSON.stringify(videoDetails));
+
+  },
+
+} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
+
+
+```
+
+```
+
+{
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  "name": "<ENTER_WORKER_NAME>",
+
+  "main": "src/index.ts",
+
+  "compatibility_date": "$today",
+
+  "observability": {
+
+    "enabled": true
+
+  },
+
+  "stream": {
+
+    "binding": "STREAM"
+
+  }
+
+}
+
+
+```
+
+See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
 
 ### Step 2: Wait until the video is ready to stream
 
@@ -162,7 +255,12 @@ You can create a live input using the API or the **Live inputs** page of the Clo
 
 To use the API, replace the `API_TOKEN` and `ACCOUNT_ID` values with your credentials in the example below.
 
-Request
+* [ REST API ](#tab-panel-8388)
+
+* [ cURL ](#tab-panel-8386)
+* [ TypeScript ](#tab-panel-8387)
+
+Terminal window
 
 ```
 
@@ -173,6 +271,32 @@ curl -X POST \
 -D '{"meta": {"name":"test stream"},"recording": { "mode": "automatic" }}' \
 
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/live_inputs
+
+
+```
+
+TypeScript
+
+```
+
+const client = new Cloudflare({
+
+  apiEmail: process.env['CLOUDFLARE_EMAIL'],
+
+  apiKey: process.env['CLOUDFLARE_API_KEY'],
+
+});
+
+
+const liveInput = await client.stream.liveInputs.create({
+
+  account_id: '<ACCOUNT_ID>',
+
+  meta: { name: 'test stream' },
+
+  recording: { mode: 'automatic' },
+
+});
 
 
 ```
@@ -219,6 +343,8 @@ Response
 
 
 ```
+
+See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
 ### Step 2: Copy the RTMPS URL and key, and use them with your live streaming application.
 

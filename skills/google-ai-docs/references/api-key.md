@@ -1,5 +1,3 @@
-# Using Gemini API keys
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -306,6 +304,52 @@ private data, such as files.
 
 For some general best practices, you can also review this
 [support article](https://support.google.com/googleapi/answer/6310037).
+
+## Secure unrestricted API keys
+
+API keys that are unrestricted are vulnerable to bad actors and unauthorized
+use. Starting June 19, 2026, to improve security, the Gemini API will
+discontinue support for unrestricted traffic keys.
+
+**This means that your Gemini API requests will fail if you don't take action.**
+
+To continue using the Gemini API without interruption, secure your traffic keys
+by adding restrictions in
+[AI Studio](https://aistudio.google.com/api-keys).
+
+In [aistudio.google.com/api-keys](https://aistudio.google.com/api-keys), you
+will see a banner to notify you when API keys are unrestricted. You can see
+which keys are unrestricted, and service usage in the past 90 days.
+
+> [!NOTE]
+> **Note:** If you don't see keys, you may need to import your Cloud projects into AI Studio. Refer to the [import projects](https://ai.google.dev/gemini-api/docs/api-key#import-projects) section for instructions.
+
+For unrestricted keys, you need to choose one of the following:
+
+- Use the key for Gemini API only.
+- Use the key for non-Gemini API use.
+
+### Restrict the key to Gemini API only
+
+If you want to restrict the key to Gemini API only, secure your key in
+[AI Studio](https://aistudio.google.com/api-keys) by clicking the
+**Restrict to Gemini API** button.
+
+### Restrict the key for non-Gemini API use
+
+If you want to restrict the key for non-Gemini API use:
+
+1. Visit the [Google Cloud Console credentials page](https://console.cloud.google.com/apis/credentials).
+2. Ensure the project is selected correctly.
+3. Select an API key.
+4. Expand the **API restrictions** dropdown, and apply service restrictions to the API key.
+
+> [!IMPORTANT]
+> **Important:** Using this key for the Gemini API will fail after restrictions are applied. You will need to create a new key and replace it in your production code to continue using the Gemini API.
+
+If you'd like to modify keys with existing or newly added restrictions, visit
+the
+[Google Cloud Console](https://console.cloud.google.com/apis/credentials).
 
 ## Troubleshooting API key creation
 

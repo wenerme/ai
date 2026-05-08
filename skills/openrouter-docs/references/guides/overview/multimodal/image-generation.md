@@ -269,6 +269,110 @@ You can combine both `aspect_ratio` and `image_size` in the same request:
   </CodeGroup>
 </Template>
 
+#### Strength (Recraft only)
+
+Set `image_config.strength` to control how much the output image differs from the input image during image-to-image generation. This parameter only applies when input images are provided in `messages`. It is only supported by Recraft models.
+
+* **Range**: `0.0` to `1.0`
+* **Default**: `0.5`
+* Lower values produce outputs closer to the input image; higher values allow more creative deviation.
+
+**Example:**
+
+```json
+{
+  "image_config": {
+    "strength": 0.7
+  }
+}
+```
+
+#### Text Layout (Recraft V3 only)
+
+Use `image_config.text_layout` to place text at specific positions on the generated image. Each entry specifies the text to render and a bounding box defined by four corner points in normalized coordinates (0 to 1). This parameter is only supported by Recraft V3 (`recraft/recraft-v3`) for both text-to-image and image-to-image requests. Recraft V4 and V4 Pro do not support `text_layout`.
+
+Each text layout entry is an object with:
+
+* `text` (required): The text string to render
+* `bbox` (required): Array of 4 `[x, y]` coordinate pairs defining the bounding box corners (top-left, top-right, bottom-right, bottom-left), with values from 0 to 1
+
+**Example:**
+
+```json
+{
+  "image_config": {
+    "text_layout": [
+      {
+        "text": "Hello",
+        "bbox": [[0.3, 0.45], [0.6, 0.45], [0.6, 0.55], [0.3, 0.55]]
+      },
+      {
+        "text": "World",
+        "bbox": [[0.35, 0.6], [0.65, 0.6], [0.65, 0.7], [0.35, 0.7]]
+      }
+    ]
+  }
+}
+```
+
+#### Style (Recraft V3 only)
+
+Use `image_config.style` to apply a specific artistic style to the generated image. This parameter is only supported by Recraft V3 (`recraft/recraft-v3`). Recraft V4 and V4 Pro do not support styles.
+
+See the [full list of available styles](https://www.recraft.ai/docs/api-reference/styles#list-of-styles) in Recraft's documentation. Note that vector styles are not supported.
+
+**Example:**
+
+```json
+{
+  "image_config": {
+    "style": "Photorealism"
+  }
+}
+```
+
+#### RGB Colors (Recraft only)
+
+Use `image_config.rgb_colors` to specify a color palette that influences the generated image. Each color is a `[r, g, b]` array of three integers (0 to 255). This parameter is supported by Recraft models for both text-to-image and image-to-image requests.
+
+**Example:**
+
+```json
+{
+  "image_config": {
+    "rgb_colors": [
+      [255, 0, 0],
+      [0, 128, 0]
+    ]
+  }
+}
+```
+
+#### Background RGB Color (Recraft only)
+
+Use `image_config.background_rgb_color` to set a specific background color for the generated image. The value is a `[r, g, b]` array of three integers (0 to 255). This parameter is supported by Recraft models for both text-to-image and image-to-image requests.
+
+**Example:**
+
+```json
+{
+  "image_config": {
+    "background_rgb_color": [0, 0, 255]
+  }
+}
+```
+
+You can combine `rgb_colors` and `background_rgb_color` in the same request:
+
+```json
+{
+  "image_config": {
+    "rgb_colors": [[255, 0, 0]],
+    "background_rgb_color": [255, 255, 255]
+  }
+}
+```
+
 #### Font Inputs (Sourceful only)
 
 Use `image_config.font_inputs` to render custom text with specific fonts in generated images. The text you want to render must also be included in your prompt for best results. This parameter is only supported by Sourceful models (`sourceful/riverflow-v2-fast` and `sourceful/riverflow-v2-pro`).

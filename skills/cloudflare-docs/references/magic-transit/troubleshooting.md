@@ -10,6 +10,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
+
 # Troubleshooting
 
 * [ Troubleshoot IPsec tunnels ](https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/)

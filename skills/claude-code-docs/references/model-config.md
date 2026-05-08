@@ -17,6 +17,10 @@ For the `model` setting in Claude Code, you can configure either:
   * Foundry: a deployment name
   * Vertex: a version name
 
+<Note>
+  `ANTHROPIC_BASE_URL` changes where requests are sent, not which model answers them. To route Claude through an LLM gateway, see [LLM gateway configuration](/en/llm-gateway).
+</Note>
+
 ### Model aliases
 
 Model aliases provide a convenient way to select model settings without
@@ -222,7 +226,7 @@ Extended thinking is the reasoning Claude emits before responding. On models tha
 
 | Control                        | How to set it                                                                                                                                       |
 | :----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Toggle for the current session | Press `Option+T` on macOS or `Alt+T` on Windows and Linux. May require [terminal configuration](/en/terminal-config) for Option-key shortcuts       |
+| Toggle for the current session | Press `Option+T` on macOS or `Alt+T` on Windows and Linux                                                                                           |
 | Set the global default         | Run `/config` and toggle thinking mode. Saved as `alwaysThinkingEnabled` in `~/.claude/settings.json`                                               |
 | Disable regardless of effort   | Set [`MAX_THINKING_TOKENS=0`](/en/env-vars). Other values apply only with a [fixed thinking budget](#adaptive-reasoning-and-fixed-thinking-budgets) |
 

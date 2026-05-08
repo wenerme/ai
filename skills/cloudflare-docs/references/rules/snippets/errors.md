@@ -77,12 +77,6 @@ The name you define when creating a Snippet will be used as the Snippet ID and c
 
 To change the name of your Snippet, create a new Snippet and delete the old one.
 
----
-
-## Other runtime errors
-
-Snippets share some error codes with Workers, namely errors in the `11xx` range. For more information on these errors, refer to [Errors and exceptions](https://developers.cloudflare.com/workers/observability/errors/).
-
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/snippets/errors/","name":"Troubleshoot Snippets"}}]}
 ```

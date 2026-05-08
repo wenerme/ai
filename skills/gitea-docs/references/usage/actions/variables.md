@@ -82,7 +82,7 @@ These environment variables are set automatically in every workflow run and can 
 |---|---|---|
 | `CI` | Always set to `true`. | `true` |
 | `GITEA_ACTIONS` | Always set to `true`. Useful to distinguish Gitea Actions from other CI systems. | `true` |
-| `GITEA_ACTIONS_RUNNER_VERSION` | The version of the act runner executing the workflow. | `0.2.11` |
+| `GITEA_ACTIONS_RUNNER_VERSION` | The version of the runner executing the workflow. | `0.2.11` |
 | `GITEA_ENV``GITHUB_ENV` | Path to the file that sets environment variables for subsequent steps. | `/home/runner/work/_temp/_runner_file_commands/set_env_***` |
 | `GITEA_OUTPUT``GITHUB_OUTPUT` | Path to the file that sets step output parameters. | `/home/runner/work/_temp/_runner_file_commands/set_output_***` |
 | `GITEA_PATH``GITHUB_PATH` | Path to the file that adds system `PATH` entries for subsequent steps. | `/home/runner/work/_temp/_runner_file_commands/add_path_***` |

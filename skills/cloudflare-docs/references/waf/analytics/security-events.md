@@ -33,21 +33,22 @@ Security Events displays information about requests actioned or flagged by Cloud
 
 Available features vary according to your Cloudflare plan:
 
-| Free                    | Pro                     | Business                | Enterprise            |                        |
-| ----------------------- | ----------------------- | ----------------------- | --------------------- | ---------------------- |
-| Availability            | Yes                     | Yes                     | Yes                   | Yes                    |
-| Dashboard features      | Sampled logs only       | All                     | All                   | All                    |
-| Account-level dashboard | No                      | No                      | No                    | Yes                    |
-| Historical time         | Up to the last 24 hours | Up to the last 24 hours | Up to the last 3 days | Up to the last 30 days |
-| Export report           | No                      | No                      | Up to 500 events      | Up to 500 events       |
-| Print report            | No                      | Yes                     | Yes                   | Yes                    |
+| Free                             | Pro                     | Business                | Enterprise            |                        |
+| -------------------------------- | ----------------------- | ----------------------- | --------------------- | ---------------------- |
+| Availability                     | Yes                     | Yes                     | Yes                   | Yes                    |
+| Dashboard features               | Sampled logs only       | All                     | All                   | All                    |
+| Account-level dashboard          | No                      | No                      | No                    | Yes                    |
+| Historical time (data retention) | Up to the last 24 hours | Up to the last 24 hours | Up to the last 3 days | Up to the last 30 days |
+| Max query window                 | 24 hours                | 24 hours                | 3 days                | 31 days                |
+| Export report                    | No                      | No                      | Up to 500 events      | Up to 500 events       |
+| Print report                     | No                      | Yes                     | Yes                   | Yes                    |
 
 ## Location in the dashboard
 
 To open Security Events for a given zone:
 
-* [  New dashboard ](#tab-panel-8675)
-* [ Old dashboard ](#tab-panel-8676)
+* [  New dashboard ](#tab-panel-8778)
+* [ Old dashboard ](#tab-panel-8779)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -176,9 +177,35 @@ The generated report will reflect all applied filters.
 
 Security Events currently has these limitations:
 
-* Security Events may use sampled data to improve performance. If your search uses sampled data, Security Events might not display all events and filters might not return the expected results. To display more events, select a smaller time frame (a narrower time range reduces the volume of data, which reduces or eliminates sampling).
+* Security Events may use sampled data to improve performance. Refer to [Sampling](#sampling) for more information.
 * The Cloudflare dashboard may show an inaccurate number of events per page. Data queries are highly optimized, but this means that pagination may not always work because the source data may have been sampled. The GraphQL Analytics API does not have this pagination issue.
 * Triggered [OWASP rules](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) appear in the Security Events page under **Additional logs**, but they are not included in exported JSON files.
+
+## Sampling
+
+Security Events may use [sampled data](https://developers.cloudflare.com/analytics/graphql-api/sampling/). If your search uses sampled data, Security Events might not display all events and filters might not return the expected results. To display more events, select a smaller time frame (a narrower time range reduces the volume of data, which reduces or eliminates sampling).
+
+## Query using GraphQL
+
+If you query Security Events data through the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/), the underlying dataset is `firewallEventsAdaptive`. For more information, refer to [Datasets (tables)](https://developers.cloudflare.com/analytics/graphql-api/features/data-sets/).
+
+For more information on querying the `firewallEventsAdaptive` dataset, refer to [Querying Firewall Events with GraphQL](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-firewall-events/).
+
+## Limits
+
+The retention and query window for the `firewallEventsAdaptive` dataset differ from the datasets that power [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/#sampling).
+
+The following tables show the different limits per Cloudflare plan:
+
+| Data retention (historical time) for...   | Free     | Pro      | Business | Enterprise |
+| ----------------------------------------- | -------- | -------- | -------- | ---------- |
+| Security Events (firewallEventsAdaptive)  | 24 hours | 24 hours | 3 days   | 30 days    |
+| Security Analytics (httpRequestsAdaptive) | 7 days   | 7 days   | 31 days  | 90 days    |
+
+| Maximum query window for...               | Free     | Pro      | Business | Enterprise |
+| ----------------------------------------- | -------- | -------- | -------- | ---------- |
+| Security Events (firewallEventsAdaptive)  | 24 hours | 24 hours | 3 days   | 31 days    |
+| Security Analytics (httpRequestsAdaptive) | 24 hours | 7 days   | 31 days  | 31 days    |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/analytics/security-events/","name":"Security Events"}}]}

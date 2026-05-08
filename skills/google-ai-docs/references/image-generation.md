@@ -573,10 +573,7 @@ You can then use the same chat to change the language on the graphic to Spanish.
 
     response = chat.send_message(message,
         config=types.GenerateContentConfig(
-            image_config=types.ImageConfig(
-                aspect_ratio=aspect_ratio,
-                image_size=resolution
-            ),
+            response_format={"image": {aspect_ratio: aspect_ratio,                 image_size: resolution}},
         ))
 
     for part in response.parts:
@@ -595,10 +592,12 @@ You can then use the same chat to change the language on the graphic to Spanish.
       message,
       config: {
         responseModalities: ['TEXT', 'IMAGE'],
-        imageConfig: {
+        responseFormat: {
+        image: {
           aspectRatio: aspectRatio,
           imageSize: resolution,
-        },
+        }
+      },
         tools: [{googleSearch: {}}],
       },
     });
@@ -694,10 +693,12 @@ You can then use the same chat to change the language on the graphic to Spanish.
         "tools": [{"google_search": {}}],
         "generationConfig": {
           "responseModalities": ["TEXT", "IMAGE"],
-          "imageConfig": {
+          "responseFormat": {
+        "image": {
             "aspectRatio": "16:9",
             "imageSize": "2K"
           }
+      }
         }
       }'
 
@@ -754,10 +755,7 @@ can include the following:
         ],
         config=types.GenerateContentConfig(
             response_modalities=['TEXT', 'IMAGE'],
-            image_config=types.ImageConfig(
-                aspect_ratio=aspect_ratio,
-                image_size=resolution
-            ),
+            response_format={"image": {aspect_ratio: aspect_ratio,                 image_size: resolution}},
         )
     )
 
@@ -820,10 +818,12 @@ can include the following:
         contents: contents,
         config: {
           responseModalities: ['TEXT', 'IMAGE'],
-          imageConfig: {
+          responseFormat: {
+        image: {
             aspectRatio: aspectRatio,
             imageSize: resolution,
-          },
+          }
+      },
         },
       });
 
@@ -979,10 +979,12 @@ can include the following:
           }],
           \"generationConfig\": {
             \"responseModalities\": [\"TEXT\", \"IMAGE\"],
-            \"imageConfig\": {
+            \"responseFormat\": {
+            \"image\": {
               \"aspectRatio\": \"5:4\",
               \"imageSize\": \"2K\"
             }
+          }
           }
         }"
 
@@ -1011,9 +1013,7 @@ excluded from the response (see [Grounding with Google Search for images](https:
         contents=prompt,
         config=types.GenerateContentConfig(
             response_modalities=['Text', 'Image'],
-            image_config=types.ImageConfig(
-                aspect_ratio=aspect_ratio,
-            ),
+            response_format={"image": {aspect_ratio: aspect_ratio,}},
             tools=[{"google_search": {}}]
         )
     )
@@ -1042,10 +1042,12 @@ excluded from the response (see [Grounding with Google Search for images](https:
         contents: prompt,
         config: {
           responseModalities: ['TEXT', 'IMAGE'],
-          imageConfig: {
+          responseFormat: {
+        image: {
             aspectRatio: aspectRatio,
             imageSize: resolution,
-          },
+          }
+      },
         tools: [{ googleSearch: {} }]
         },
       });
@@ -1126,7 +1128,9 @@ excluded from the response (see [Grounding with Google Search for images](https:
         "tools": [{"google_search": {}}],
         "generationConfig": {
           "responseModalities": ["TEXT", "IMAGE"],
-          "imageConfig": {"aspectRatio": "16:9"}
+          "responseFormat": {
+        "image": {"aspectRatio": "16:9"}
+      }
         }
       }'
 
@@ -1330,10 +1334,7 @@ parameters (e.g., 1k) will be rejected.
         contents=prompt,
         config=types.GenerateContentConfig(
             response_modalities=['TEXT', 'IMAGE'],
-            image_config=types.ImageConfig(
-                aspect_ratio=aspect_ratio,
-                image_size=resolution
-            ),
+            response_format={"image": {aspect_ratio: aspect_ratio,                 image_size: resolution}},
         )
     )
 
@@ -1362,10 +1363,12 @@ parameters (e.g., 1k) will be rejected.
         contents: prompt,
         config: {
           responseModalities: ['TEXT', 'IMAGE'],
-          imageConfig: {
+          responseFormat: {
+        image: {
             aspectRatio: aspectRatio,
             imageSize: resolution,
-          },
+          }
+      },
         },
       });
 
@@ -1491,7 +1494,9 @@ parameters (e.g., 1k) will be rejected.
         "tools": [{"google_search": {}}],
         "generationConfig": {
           "responseModalities": ["TEXT", "IMAGE"],
-          "imageConfig": {"aspectRatio": "1:1", "imageSize": "1K"}
+          "responseFormat": {
+        "image": {"aspectRatio": "1:1", "imageSize": "1K"}
+      }
         }
       }'
 
@@ -2025,7 +2030,7 @@ You can configure the response to return only images without text using
 The model defaults to matching the output image size to that of your input
 image, or otherwise generates 1:1 squares.
 You can control the aspect ratio of the output image using the `aspect_ratio`
-field under `image_config` in the response request, shown here:
+field under `response_format` in the response request, shown here:
 
 ### Python
 
@@ -2034,9 +2039,7 @@ field under `image_config` in the response request, shown here:
         model="gemini-2.5-flash-image",
         contents=[prompt],
         config=types.GenerateContentConfig(
-            image_config=types.ImageConfig(
-                aspect_ratio="16:9",
-            )
+            response_format={"image": {aspect_ratio: "16:9",}}
         )
     )
 
@@ -2045,10 +2048,7 @@ field under `image_config` in the response request, shown here:
         model="gemini-3.1-flash-image-preview",
         contents=[prompt],
         config=types.GenerateContentConfig(
-            image_config=types.ImageConfig(
-                aspect_ratio="16:9",
-                image_size="2K",
-            )
+            response_format={"image": {aspect_ratio: "16:9",                 image_size: "2K",}}
         )
     )
 
@@ -2059,9 +2059,11 @@ field under `image_config` in the response request, shown here:
         model: "gemini-2.5-flash-image",
         contents: prompt,
         config: {
-          imageConfig: {
+          responseFormat: {
+        image: {
             aspectRatio: "16:9",
-          },
+          }
+      },
         }
       });
 
@@ -2070,10 +2072,12 @@ field under `image_config` in the response request, shown here:
         model: "gemini-3.1-flash-image-preview",
         contents: prompt,
         config: {
-          imageConfig: {
+          responseFormat: {
+        image: {
             aspectRatio: "16:9",
             imageSize: "2K",
-          },
+          }
+      },
         }
       });
 
@@ -2143,9 +2147,11 @@ field under `image_config` in the response request, shown here:
           ]
         }],
         "generationConfig": {
-          "imageConfig": {
+          "responseFormat": {
+        "image": {
             "aspectRatio": "16:9"
           }
+      }
         }
       }'
 
@@ -2161,10 +2167,12 @@ field under `image_config` in the response request, shown here:
           ]
         }],
         "generationConfig": {
-          "imageConfig": {
+          "responseFormat": {
+        "image": {
             "aspectRatio": "16:9",
             "imageSize": "2K"
           }
+      }
         }
       }'
 

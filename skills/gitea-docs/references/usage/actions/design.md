@@ -6,33 +6,9 @@ date: "2023-04-27T15:00:00+08:00"
 
 Gitea Actions has multiple components. This document describes them individually.
 
-## Act
+## Gitea Runner
 
-The [nektos/act](https://github.com/nektos/act) project is an excellent tool that allows you to run your GitHub Actions locally.
-We were inspired by this and wondered if it would be possible to run actions for Gitea.
-
-However, while [nektos/act](https://github.com/nektos/act) is designed as a command line tool, what we actually needed was a Go library with modifications specifically for Gitea.
-So we forked it as [gitea/act](https://gitea.com/gitea/act).
-
-This is a soft fork that will periodically follow the upstream.
-Although some custom commits have been added, we will try our best to avoid changing too much of the original code.
-
-The forked act is just a shim or adapter for Gitea's specific usage.
-There are some additional commits that have been made, such as:
-
-- Outputting execution logs to logger hook so they can be reported to Gitea
-- Disabling the GraphQL URL, since Gitea doesn't support it
-- Starting a new container for every job instead of reusing to ensure isolation.
-
-These modifications have no reason to be merged into the upstream.
-They don't make sense if the user just wants to run trusted actions locally.
-
-However, there may be overlaps in the future, such as a required bug fix or new feature needed by both projects.
-In these cases, we will contribute the changes back to the upstream repository.
-
-## Act runner
-
-Gitea's runner is called act runner because it's based on act.
+Gitea Runner is based on a hard fork of [nektos/act](https://github.com/nektos/act).
 
 Like other CI runners, we designed it as an external part of Gitea, which means it should run on a different server than Gitea.
 
@@ -45,7 +21,7 @@ That's why when you add custom labels during registration, you will need to inpu
 This means that the runner can take the job which needs to run on `my_custom_label`, and it will run it via a docker container with the image `centos:7`.
 
 Docker isn't the only option, though.
-The act also supports running jobs directly on the host.
+The runner also supports running jobs directly on the host.
 This is achieved through labels like `linux_arm:host`.
 This label indicates that the runner can take a job that needs to run on `linux_arm` and run it directly on the host.
 
@@ -60,7 +36,7 @@ So,
 
 ## Communication protocol
 
-As act runner is an independent part of Gitea, we needed a protocol for runners to communicate with the Gitea instance.
+As the runner is an independent part of Gitea, we needed a protocol for runners to communicate with the Gitea instance.
 However, we did not think it was a good idea to have Gitea listen on a new port.
 Instead, we wanted to reuse the HTTP port, which means we needed a protocol that is compatible with HTTP.
 We chose to use gRPC over HTTP.
@@ -77,9 +53,9 @@ This will help you troubleshoot some problems and explain why it's a bad idea to
 
 There are four network connections marked in the picture, and the direction of the arrows indicates the direction of establishing the connections.
 
-### Connection 1, act runner to Gitea instance
+### Connection 1, runner to Gitea instance
 
-The act runner must be able to connect to Gitea to receive tasks and send back the execution results.
+The runner must be able to connect to Gitea to receive tasks and send back the execution results.
 
 ### Connection 2, job containers to Gitea instance
 
@@ -90,9 +66,9 @@ Fetching code is not always necessary to run some jobs, but it is required in mo
 If you use a loopback address to register a runner, the runner can connect to Gitea when it is on the same machine.
 However, if a job container tries to fetch code from localhost, it will fail because Gitea is not in the same container.
 
-### Connection 3, act runner to internet
+### Connection 3, runner to internet
 
-When you use some actions like `actions/checkout@v4`, the act runner downloads the scripts, not the job containers.
+When you use some actions like `actions/checkout@v4`, the runner downloads the scripts, not the job containers.
 By default, it downloads from [github.com](http://github.com/), so it requires access to the internet. If you configure the `DEFAULT_ACTIONS_URL` to `self`, then it will download from your Gitea instance by default. Then it will not connect to internet when downloading the action itself.
 It also downloads some docker images from Docker Hub by default, which also requires internet access.
 

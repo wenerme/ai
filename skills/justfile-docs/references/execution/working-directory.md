@@ -63,5 +63,6 @@ $ just foo
 ```
 
 The argument to the `working-directory` setting or `working-directory`
-attribute may be absolute or relative. If it is relative it is interpreted
-relative to the default working directory.
+attribute may be an expression<sup>master</sup> whose value is absolute or
+relative. If it is relative it is interpreted relative to the default working
+directory.

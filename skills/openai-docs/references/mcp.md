@@ -28,6 +28,10 @@ Note that there are a number of other MCP server frameworks you can use in a var
 
 To work with ChatGPT deep research and company knowledge (and deep research via API), your MCP server should implement two read-only tools: `search` and `fetch`, using the compatibility schema in [Company knowledge compatibility](https://developers.openai.com/apps-sdk/build/mcp-server#company-knowledge-compatibility).
 
+Declare an output schema for each tool so clients can validate the result shape.
+In FastMCP, typed return models can generate this schema automatically; the
+example below passes `output_schema` explicitly from the same models.
+
 ### `search` tool
 
 The `search` tool is responsible for returning a list of relevant search results from your MCP server's data source, given a user's query.
@@ -44,17 +48,17 @@ An object with a single key, `results`, whose value is an array of result object
 - `title` - human-readable title.
 - `url` - canonical URL for citation.
 
-In MCP, tool results must be returned as [a content array](https://modelcontextprotocol.io/docs/learn/architecture#understanding-the-tool-execution-response) containing one or more "content items." Each content item has a type (such as `text`, `image`, or `resource`) and a payload.
-
-For the `search` tool, you should return **exactly one** content item with:
-
-- `type: "text"`
-- `text`: a JSON-encoded string matching the results array schema above.
+In MCP, return this object as `structuredContent` and include the same value as
+a JSON-encoded string in the [content array](https://modelcontextprotocol.io/docs/learn/architecture#understanding-the-tool-execution-response)
+for compatibility.
 
 The final tool response should look like:
 
 ```json
 {
+  "structuredContent": {
+    "results": [{ "id": "doc-1", "title": "...", "url": "..." }]
+  },
   "content": [
     {
       "type": "text",
@@ -83,14 +87,20 @@ A single object with the following properties:
   specific resources in research.
 - `metadata` - an optional key/value pairing of data about the result
 
-In MCP, tool results must be returned as [a content array](https://modelcontextprotocol.io/docs/learn/architecture#understanding-the-tool-execution-response) containing one or more "content items." Each content item has a `type` (such as `text`, `image`, or `resource`) and a payload.
-
-In this case, the `fetch` tool must return exactly [one content item with `type: "text"`](https://modelcontextprotocol.io/specification/2025-06-18/server/tools#tool-result). The `text` field should be a JSON-encoded string of the document object following the schema above.
+In MCP, return this object as `structuredContent` and include the same value as
+a JSON-encoded string in the content array for compatibility.
 
 The final tool response should look like:
 
 ```json
 {
+  "structuredContent": {
+    "id": "doc-1",
+    "title": "...",
+    "text": "full text...",
+    "url": "https://example.com/doc",
+    "metadata": { "source": "vector_store" }
+  },
   "content": [
     {
       "type": "text",
@@ -128,10 +138,29 @@ capabilities designed to work with ChatGPT's chat and deep research features.
 
 import logging
 import os
-from typing import Dict, List, Any
+from typing import Any
 
 from fastmcp import FastMCP
 from openai import OpenAI
+from pydantic import BaseModel
+
+
+class SearchResult(BaseModel):
+    id: str
+    title: str
+    url: str
+
+
+class SearchOutput(BaseModel):
+    results: list[SearchResult]
+
+
+class FetchOutput(BaseModel):
+    id: str
+    title: str
+    text: str
+    url: str
+    metadata: dict[str, Any] | None = None
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -159,8 +188,8 @@ def create_server():
     mcp = FastMCP(name="Sample MCP Server",
                   instructions=server_instructions)
 
-    @mcp.tool()
-    async def search(query: str) -> Dict[str, List[Dict[str, Any]]]:
+    @mcp.tool(output_schema=SearchOutput.model_json_schema())
+    async def search(query: str) -> SearchOutput:
         """
         Search for documents using OpenAI Vector Store search.
 
@@ -173,10 +202,10 @@ def create_server():
 
         Returns:
             Dictionary with 'results' key containing list of matching documents.
-            Each result includes id, title, text snippet, and optional URL.
+            Each result includes id, title, and URL.
         """
         if not query or not query.strip():
-            return {"results": []}
+            return SearchOutput(results=[])
 
         if not openai_client:
             logger.error("OpenAI client not initialized - API key missing")
@@ -198,39 +227,19 @@ def create_server():
                 item_id = getattr(item, 'file_id', f"vs_{i}")
                 item_filename = getattr(item, 'filename', f"Document {i+1}")
 
-                # Extract text content from the content array
-                content_list = getattr(item, 'content', [])
-                text_content = ""
-                if content_list and len(content_list) > 0:
-                    # Get text from the first content item
-                    first_content = content_list[0]
-                    if hasattr(first_content, 'text'):
-                        text_content = first_content.text
-                    elif isinstance(first_content, dict):
-                        text_content = first_content.get('text', '')
-
-                if not text_content:
-                    text_content = "No content available"
-
-                # Create a snippet from content
-                text_snippet = text_content[:200] + "..." if len(
-                    text_content) > 200 else text_content
-
-                result = {
-                    "id": item_id,
-                    "title": item_filename,
-                    "text": text_snippet,
-                    "url":
-                    f"https://platform.openai.com/storage/files/{item_id}"
-                }
+                result = SearchResult(
+                    id=item_id,
+                    title=item_filename,
+                    url=f"https://platform.openai.com/storage/files/{item_id}",
+                )
 
                 results.append(result)
 
         logger.info(f"Vector store search returned {len(results)} results")
-        return {"results": results}
+        return SearchOutput(results=results)
 
-    @mcp.tool()
-    async def fetch(id: str) -> Dict[str, Any]:
+    @mcp.tool(output_schema=FetchOutput.model_json_schema())
+    async def fetch(id: str) -> FetchOutput:
         """
         Retrieve complete document content by ID for detailed
         analysis and citation. This tool fetches the full document
@@ -281,17 +290,16 @@ def create_server():
         # Use filename as title and create proper URL for citations
         filename = getattr(file_info, 'filename', f"Document {id}")
 
-        result = {
-            "id": id,
-            "title": filename,
-            "text": file_content,
-            "url": f"https://platform.openai.com/storage/files/{id}",
-            "metadata": None
-        }
+        result = FetchOutput(
+            id=id,
+            title=filename,
+            text=file_content,
+            url=f"https://platform.openai.com/storage/files/{id}",
+        )
 
         # Add metadata if available from file info
         if hasattr(file_info, 'attributes') and file_info.attributes:
-            result["metadata"] = file_info.attributes
+            result.metadata = dict(file_info.attributes)
 
         logger.info(f"Fetched vector store file: {id}")
         return result
