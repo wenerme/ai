@@ -14,6 +14,7 @@ import {
 
 
 
+
 LLM output is non-deterministic, and model behavior changes between model snapshots and families. Developers must constantly measure and tune the performance of LLM applications to ensure they're getting the best results. In this guide, we explore the techniques and OpenAI platform tools you can use to ensure high quality outputs from the model.
 
 <div className="my-4 w-full max-w-full overflow-hidden">
@@ -63,6 +64,14 @@ With evals in place, you can effectively iterate on [prompts](https://developers
 ](https://developers.openai.com/api/docs/guides/text)
 
 ## Fine-tune a model
+
+OpenAI is winding down the fine-tuning platform. The platform is no longer
+  accessible to new users, but existing users of the fine-tuning platform will
+  be able to create training jobs for the coming months.
+  <br />
+  All fine-tuned models will remain available for inference until their base
+  models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
+  [here](https://developers.openai.com/api/docs/deprecations).
 
 OpenAI models are already pre-trained to perform across a broad range of subjects and tasks. Fine-tuning lets you take an OpenAI base model, provide the kinds of inputs and outputs you expect in your application, and get a model that excels in the tasks you'll use it for.
 

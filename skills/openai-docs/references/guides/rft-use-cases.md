@@ -2,6 +2,14 @@
 
 [Reinforcement fine-tuning](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning) (RFT) provides a way to improve your model's performance at specific tasks. The task must be clear and have verifiable answers.
 
+OpenAI is winding down the fine-tuning platform. The platform is no longer
+  accessible to new users, but existing users of the fine-tuning platform will
+  be able to create training jobs for the coming months.
+  <br />
+  All fine-tuned models will remain available for inference until their base
+  models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
+  [here](https://developers.openai.com/api/docs/deprecations).
+
 ## When to use reinforcement fine-tuning
 
 Agentic workflows are designed to make decisions that are both correct and verifiable. RFT can help by providing explicit rubrics and using code‑based or LLM‑based graders to measure functional success, factual accuracy, or policy compliance.

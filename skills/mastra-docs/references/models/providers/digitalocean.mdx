@@ -1,11 +1,11 @@
 ---
 title: "DigitalOcean | Models"
-description: "Use DigitalOcean models with Mastra. 64 models available."
+description: "Use DigitalOcean models with Mastra. 71 models available."
 ---
 
 # [DigitalOcean logo]DigitalOcean
 
-Access 64 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
+Access 71 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
 
 Learn more in the [DigitalOcean documentation](https://docs.digitalocean.com/products/gradient-ai-platform/details/models/).
 
@@ -74,6 +74,18 @@ for await (const chunk of stream) {
     "maxOutput": 32000,
     "inputCost": 15,
     "outputCost": 75
+  },
+  {
+    "model": "digitalocean/anthropic-claude-4.5-haiku",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 64000,
+    "inputCost": 1,
+    "outputCost": 5
   },
   {
     "model": "digitalocean/anthropic-claude-4.5-sonnet",
@@ -232,6 +244,18 @@ for await (const chunk of stream) {
     "outputCost": 0.99
   },
   {
+    "model": "digitalocean/deepseek-v3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 163840,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "digitalocean/deepseek-v4-pro",
     "imageInput": false,
     "audioInput": false,
@@ -376,16 +400,16 @@ for await (const chunk of stream) {
     "outputCost": 0.87
   },
   {
-    "model": "digitalocean/llama-guard-4-12b",
-    "imageInput": true,
+    "model": "digitalocean/llama3-8b-instruct",
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": null,
-    "outputCost": null
+    "contextWindow": 131072,
+    "maxOutput": 131072,
+    "inputCost": 0.198,
+    "outputCost": 0.198
   },
   {
     "model": "digitalocean/llama3.3-70b-instruct",
@@ -412,6 +436,18 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
+    "model": "digitalocean/ministral-3-8b-instruct-2512",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "digitalocean/mistral-3-14B",
     "imageInput": false,
     "audioInput": false,
@@ -424,6 +460,18 @@ for await (const chunk of stream) {
     "outputCost": 0.2
   },
   {
+    "model": "digitalocean/mistral-7b-instruct-v0.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 32768,
+    "maxOutput": 32768,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "digitalocean/multi-qa-mpnet-base-dot-v1",
     "imageInput": false,
     "audioInput": false,
@@ -433,6 +481,18 @@ for await (const chunk of stream) {
     "contextWindow": 512,
     "maxOutput": 768,
     "inputCost": 0.009,
+    "outputCost": null
+  },
+  {
+    "model": "digitalocean/nemotron-3-nano-30b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": null,
     "outputCost": null
   },
   {
@@ -676,6 +736,18 @@ for await (const chunk of stream) {
     "outputCost": 10
   },
   {
+    "model": "digitalocean/openai-gpt-image-2",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "digitalocean/openai-gpt-oss-120b",
     "imageInput": false,
     "audioInput": false,
@@ -734,6 +806,18 @@ for await (const chunk of stream) {
     "maxOutput": 100000,
     "inputCost": 1.1,
     "outputCost": 4.4
+  },
+  {
+    "model": "digitalocean/qwen-2.5-14b-instruct",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 131072,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "digitalocean/qwen3-coder-flash",

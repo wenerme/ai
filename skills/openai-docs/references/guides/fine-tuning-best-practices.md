@@ -2,6 +2,14 @@
 
 If you're not getting strong results with a fine-tuned model, consider the following iterations on your process.
 
+OpenAI is winding down the fine-tuning platform. The platform is no longer
+  accessible to new users, but existing users of the fine-tuning platform will
+  be able to create training jobs for the coming months.
+  <br />
+  All fine-tuned models will remain available for inference until their base
+  models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
+  [here](https://developers.openai.com/api/docs/deprecations).
+
 ### Iterating on data quality
 
 Below are a few ways to consider improving the quality of your training data set:

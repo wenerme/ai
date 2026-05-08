@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.  
 ```
 
 1. **Download Codex**  

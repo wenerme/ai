@@ -458,10 +458,10 @@
   "openai-docs/guides/fine-tuning-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/fine-tuning-best-practices.md",
     "skill": "openai-docs",
-    "etag": "\"2c0cc2f33a50548946a55e064420651c\"",
-    "lastModified": "Thu, 05 Mar 2026 06:03:57 GMT",
-    "size": 9357,
-    "updatedAt": "2026-03-05T06:03:57.936Z"
+    "etag": "W/\"a018633e0cb70a8f979627282095e05e\"",
+    "lastModified": "Fri, 08 May 2026 04:50:58 GMT",
+    "size": 9819,
+    "updatedAt": "2026-05-08T10:36:23.627Z"
   },
   "openai-docs/guides/flex-processing.md": {
     "url": "https://developers.openai.com/api/docs/guides/flex-processing.md",
@@ -538,10 +538,10 @@
   "openai-docs/guides/model-optimization.md": {
     "url": "https://developers.openai.com/api/docs/guides/model-optimization.md",
     "skill": "openai-docs",
-    "etag": "\"fe4f49d387fcd6499308c72ba8e084eb\"",
-    "lastModified": "Thu, 05 Mar 2026 06:04:02 GMT",
-    "size": 7690,
-    "updatedAt": "2026-03-05T06:04:02.975Z"
+    "etag": "W/\"dfdd40f6b8da59646d571df945a49d18\"",
+    "lastModified": "Fri, 08 May 2026 04:43:54 GMT",
+    "size": 8153,
+    "updatedAt": "2026-05-08T10:36:26.169Z"
   },
   "openai-docs/guides/model-selection.md": {
     "url": "https://developers.openai.com/api/docs/guides/model-selection.md",
@@ -778,10 +778,10 @@
   "openai-docs/guides/reinforcement-fine-tuning.md": {
     "url": "https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning.md",
     "skill": "openai-docs",
-    "etag": "\"ab412bb019530f57b22856b05c048f62\"",
-    "lastModified": "Thu, 05 Mar 2026 06:04:18 GMT",
-    "size": 50307,
-    "updatedAt": "2026-03-05T06:04:18.965Z"
+    "etag": "W/\"6c33f7a0b1e1b59958b6c6e6f30ff6a3\"",
+    "lastModified": "Fri, 08 May 2026 04:50:25 GMT",
+    "size": 50769,
+    "updatedAt": "2026-05-08T10:36:33.212Z"
   },
   "openai-docs/guides/retrieval.md": {
     "url": "https://developers.openai.com/api/docs/guides/retrieval.md",
@@ -794,10 +794,10 @@
   "openai-docs/guides/rft-use-cases.md": {
     "url": "https://developers.openai.com/api/docs/guides/rft-use-cases.md",
     "skill": "openai-docs",
-    "etag": "\"3242c71cfa585ca280a3d764ef08ff81\"",
-    "lastModified": "Thu, 05 Mar 2026 06:04:20 GMT",
-    "size": 9430,
-    "updatedAt": "2026-03-05T06:04:20.140Z"
+    "etag": "W/\"9cc544c9f275cf4d1cfe88081dd8e203\"",
+    "lastModified": "Fri, 08 May 2026 04:50:41 GMT",
+    "size": 9892,
+    "updatedAt": "2026-05-08T10:36:33.713Z"
   },
   "openai-docs/guides/safety-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-best-practices.md",

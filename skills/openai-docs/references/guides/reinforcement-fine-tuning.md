@@ -2,6 +2,14 @@
 
 Reinforcement fine-tuning (RFT) adapts an OpenAI reasoning model with a feedback signal you define. Like [supervised fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning), it tailors the model to your task. The difference is that instead of training on fixed “correct” answers, it relies on a programmable grader that scores every candidate response. The training algorithm then shifts the model’s weights, so high-scoring outputs become more likely and low-scoring ones fade.
 
+OpenAI is winding down the fine-tuning platform. The platform is no longer
+  accessible to new users, but existing users of the fine-tuning platform will
+  be able to create training jobs for the coming months.
+  <br />
+  All fine-tuned models will remain available for inference until their base
+  models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
+  [here](https://developers.openai.com/api/docs/deprecations).
+
 <br />
 
 <table>
