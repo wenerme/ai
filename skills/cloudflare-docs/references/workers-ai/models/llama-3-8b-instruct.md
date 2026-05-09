@@ -22,6 +22,7 @@ Generation over generation, Meta Llama 3 demonstrates state-of-the-art performan
 
 | Model Info                                                                 |                                                     |
 | -------------------------------------------------------------------------- | --------------------------------------------------- |
+| Planned Deprecation                                                        | 5/30/2026                                           |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 7,968 tokens                                        |
 | Terms and License                                                          | [link ↗](https://llama.meta.com/llama3/license/#)   |
 | More information                                                           | [link ↗](https://llama.meta.com)                    |
@@ -35,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2651)
-* [  TypeScript ](#tab-panel-2652)
-* [  Python ](#tab-panel-2653)
-* [  curl ](#tab-panel-2654)
+* [  Worker (Streaming) ](#tab-panel-2913)
+* [  TypeScript ](#tab-panel-2914)
+* [  Python ](#tab-panel-2915)
+* [  curl ](#tab-panel-2916)
 
 TypeScript
 

@@ -83,4 +83,4 @@ ClickHouse chooses the join algorithm adaptively: it starts with fast hash joins
 ## Superior query performance {#superior-query-performance}
 
 ClickHouse is well known for having extremely fast query performance.
-To learn why ClickHouse is so fast, see the [Why is ClickHouse fast?](/concepts/why-clickhouse-is-so-fast.mdx) guide.
+To learn why ClickHouse is so fast, see the [Why is ClickHouse fast?](/concepts/why-clickhouse-is-so-fast) guide.

@@ -22,6 +22,7 @@ Instruct fine-tuned version of the Mistral-7b generative text model with 7 billi
 
 | Model Info                                                                 |                                                          |
 | -------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Planned Deprecation                                                        | 5/30/2026                                                |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,824 tokens                                             |
 | More information                                                           | [link ↗](https://mistral.ai/news/announcing-mistral-7b/) |
 | LoRA                                                                       | Yes                                                      |
@@ -35,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2739)
-* [  TypeScript ](#tab-panel-2740)
-* [  Python ](#tab-panel-2741)
-* [  curl ](#tab-panel-2742)
+* [  Worker (Streaming) ](#tab-panel-2997)
+* [  TypeScript ](#tab-panel-2998)
+* [  Python ](#tab-panel-2999)
+* [  curl ](#tab-panel-3000)
 
 TypeScript
 

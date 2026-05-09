@@ -386,10 +386,10 @@
   "openai-docs/guides/developer-mode.md": {
     "url": "https://developers.openai.com/api/docs/guides/developer-mode.md",
     "skill": "openai-docs",
-    "etag": "\"2e5c2d0e7b93d3fb3a14cdf5b6a3a74c\"",
-    "lastModified": "Thu, 05 Mar 2026 06:03:52 GMT",
-    "size": 5945,
-    "updatedAt": "2026-03-05T06:03:52.623Z"
+    "etag": "W/\"e8f76f15dd5cd53b4df943395644006b\"",
+    "lastModified": "Fri, 08 May 2026 23:59:58 GMT",
+    "size": 6161,
+    "updatedAt": "2026-05-09T00:30:23.398Z"
   },
   "openai-docs/guides/direct-preference-optimization.md": {
     "url": "https://developers.openai.com/api/docs/guides/direct-preference-optimization.md",
@@ -690,10 +690,10 @@
   "openai-docs/guides/realtime-models-prompting.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-models-prompting.md",
     "skill": "openai-docs",
-    "etag": "W/\"f40ef3af480cd27368bfac9e11756d67\"",
-    "lastModified": "Thu, 07 May 2026 22:42:38 GMT",
-    "size": 84561,
-    "updatedAt": "2026-05-08T00:28:32.872Z"
+    "etag": "W/\"c928de6e8a7cfa20c6220cfdb23a4e3b\"",
+    "lastModified": "Fri, 08 May 2026 23:47:54 GMT",
+    "size": 84703,
+    "updatedAt": "2026-05-09T00:30:32.782Z"
   },
   "openai-docs/guides/realtime-server-controls.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-server-controls.md",
@@ -1074,10 +1074,10 @@
   "openai-docs/mcp.md": {
     "url": "https://developers.openai.com/api/docs/mcp.md",
     "skill": "openai-docs",
-    "etag": "W/\"aa1eb7a7df2f48b6c82c569e8df359a0\"",
-    "lastModified": "Fri, 08 May 2026 00:28:47 GMT",
-    "size": 29946,
-    "updatedAt": "2026-05-08T00:28:47.285Z"
+    "etag": "W/\"73b8ed272f4fedf45f9f2565bdb3dfad\"",
+    "lastModified": "Sat, 09 May 2026 00:01:55 GMT",
+    "size": 30242,
+    "updatedAt": "2026-05-09T00:30:44.619Z"
   },
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
@@ -9418,10 +9418,10 @@
   "codex-docs/enterprise/governance.md": {
     "url": "https://developers.openai.com/codex/enterprise/governance.md",
     "skill": "codex-docs",
-    "etag": "\"29431d651f903e943eb99fa891f81ad7\"",
-    "lastModified": "Mon, 09 Mar 2026 03:50:43 GMT",
-    "size": 5144,
-    "updatedAt": "2026-03-09T03:50:43.489Z"
+    "etag": "W/\"d06a7cab696542ca68e48c60ce30a3c5\"",
+    "lastModified": "Sat, 09 May 2026 00:19:31 GMT",
+    "size": 6372,
+    "updatedAt": "2026-05-09T00:37:36.560Z"
   },
   "codex-docs/enterprise/managed-configuration.md": {
     "url": "https://developers.openai.com/codex/enterprise/managed-configuration.md",

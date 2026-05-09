@@ -7,9 +7,9 @@
   },
   "agent-teams.md": {
     "url": "https://code.claude.com/docs/en/agent-teams",
-    "lastModified": "Sat, 02 May 2026 21:03:49 GMT",
-    "size": 26690,
-    "updatedAt": "2026-05-03T00:20:29.872Z"
+    "lastModified": "Sat, 09 May 2026 00:21:31 GMT",
+    "size": 26678,
+    "updatedAt": "2026-05-09T00:23:45.903Z"
   },
   "amazon-bedrock.md": {
     "url": "https://code.claude.com/docs/en/amazon-bedrock",
@@ -49,9 +49,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"ca4707dac46050256258a7d4e945feda9bc322b2f4a4d9d1cf359300fc380d61\"",
-    "size": 281974,
-    "updatedAt": "2026-05-08T00:23:05.993Z"
+    "etag": "W/\"8349c0359bee09553e2e8def68f8e92dce9050d4fb47c2919758a5f582e5471c\"",
+    "size": 287451,
+    "updatedAt": "2026-05-09T00:24:19.207Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -103,9 +103,9 @@
   },
   "commands.md": {
     "url": "https://code.claude.com/docs/en/commands",
-    "lastModified": "Fri, 01 May 2026 07:02:22 GMT",
-    "size": 66878,
-    "updatedAt": "2026-05-01T10:30:15.728Z"
+    "lastModified": "Sat, 09 May 2026 00:21:31 GMT",
+    "size": 68308,
+    "updatedAt": "2026-05-09T00:23:51.660Z"
   },
   "common-workflows.md": {
     "url": "https://code.claude.com/docs/en/common-workflows",
@@ -253,9 +253,9 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Fri, 08 May 2026 06:32:17 GMT",
-    "size": 170472,
-    "updatedAt": "2026-05-08T10:31:00.211Z"
+    "lastModified": "Sat, 09 May 2026 00:16:28 GMT",
+    "size": 170551,
+    "updatedAt": "2026-05-09T00:24:00.609Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
@@ -325,9 +325,9 @@
   },
   "monitoring-usage.md": {
     "url": "https://code.claude.com/docs/en/monitoring-usage",
-    "lastModified": "Thu, 07 May 2026 00:22:32 GMT",
-    "size": 74654,
-    "updatedAt": "2026-05-07T00:22:32.311Z"
+    "lastModified": "Sat, 09 May 2026 00:21:35 GMT",
+    "size": 75304,
+    "updatedAt": "2026-05-09T00:24:04.855Z"
   },
   "network-config.md": {
     "url": "https://code.claude.com/docs/en/network-config",
@@ -403,9 +403,9 @@
   },
   "routines.md": {
     "url": "https://code.claude.com/docs/en/routines",
-    "lastModified": "Fri, 08 May 2026 00:20:01 GMT",
-    "size": 26142,
-    "updatedAt": "2026-05-08T00:22:57.105Z"
+    "lastModified": "Sat, 09 May 2026 00:24:09 GMT",
+    "size": 26403,
+    "updatedAt": "2026-05-09T00:24:09.467Z"
   },
   "sandboxing.md": {
     "url": "https://code.claude.com/docs/en/sandboxing",
@@ -439,9 +439,9 @@
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",
-    "lastModified": "Thu, 07 May 2026 00:22:39 GMT",
-    "size": 24980,
-    "updatedAt": "2026-05-07T00:22:39.437Z"
+    "lastModified": "Sat, 09 May 2026 00:21:34 GMT",
+    "size": 25193,
+    "updatedAt": "2026-05-09T00:24:11.548Z"
   },
   "slack.md": {
     "url": "https://code.claude.com/docs/en/slack",
@@ -463,9 +463,9 @@
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",
-    "lastModified": "Thu, 07 May 2026 10:20:11 GMT",
-    "size": 19993,
-    "updatedAt": "2026-05-07T10:44:35.031Z"
+    "lastModified": "Sat, 09 May 2026 00:21:34 GMT",
+    "size": 19986,
+    "updatedAt": "2026-05-09T00:24:13.282Z"
   },
   "third-party-integrations.md": {
     "url": "https://code.claude.com/docs/en/third-party-integrations",

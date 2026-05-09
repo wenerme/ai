@@ -112,7 +112,7 @@
 
   <Accordion title="I am an inference provider, how can I get listed on OpenRouter?">
     You can read our requirements at the [Providers
-    page](/docs/guides/get-started/for-providers). If you would like to contact us, the best
+    page](/docs/guides/community/for-providers). If you would like to contact us, the best
     place to reach us is over email.
   </Accordion>
 
@@ -266,7 +266,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
     and are usually not suitable for production use. If you have purchased at least {FREE_MODEL_CREDITS_THRESHOLD} credits,
     the free models will be limited to {FREE_MODEL_HAS_CREDITS_RPD} requests per day.
 
-    You can also use the [Free Models Router](/docs/guides/get-started/free-models-router-playground) (`openrouter/free`) to automatically select a free model for your requests.
+    You can also use the [Free Models Router](/docs/cookbook/get-started/free-models-router-playground) (`openrouter/free`) to automatically select a free model for your requests.
   </Accordion>
 
   <Accordion title="How do volume discounts work?">
@@ -298,7 +298,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
   </Accordion>
 
   <Accordion title="How does team access work?">
-    Organization management information can be found in our [organization management documentation](/docs/guides/administration/organization-management).
+    Organization management information can be found in our [organization management documentation](/docs/cookbook/administration/organization-management).
   </Accordion>
 
   <Accordion title="What analytics are available?">

@@ -22,6 +22,7 @@ The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a 
 
 | Model Info                                                                 |                                                                                          |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Planned Deprecation                                                        | 5/30/2026                                                                                |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 24,000 tokens                                                                            |
 | Terms and License                                                          | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
 
@@ -33,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2659)
-* [  TypeScript ](#tab-panel-2660)
-* [  Python ](#tab-panel-2661)
-* [  curl ](#tab-panel-2662)
+* [  Worker (Streaming) ](#tab-panel-2921)
+* [  TypeScript ](#tab-panel-2922)
+* [  Python ](#tab-panel-2923)
+* [  curl ](#tab-panel-2924)
 
 TypeScript
 

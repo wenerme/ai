@@ -1,11 +1,11 @@
 ---
 title: "Nebius Token Factory | Models"
-description: "Use Nebius Token Factory models with Mastra. 30 models available."
+description: "Use Nebius Token Factory models with Mastra. 31 models available."
 ---
 
 # [Nebius Token Factory logo]Nebius Token Factory
 
-Access 30 Nebius Token Factory models through Mastra's model router. Authentication is handled automatically using the `NEBIUS_API_KEY` environment variable.
+Access 31 Nebius Token Factory models through Mastra's model router. Authentication is handled automatically using the `NEBIUS_API_KEY` environment variable.
 
 Learn more in the [Nebius Token Factory documentation](https://docs.tokenfactory.nebius.com/).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 8192,
     "inputCost": 0.4,
     "outputCost": 2
+  },
+  {
+    "model": "nebius/deepseek-ai/DeepSeek-V4-Pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 1.75,
+    "outputCost": 3.5
   },
   {
     "model": "nebius/google/gemma-2-2b-it",

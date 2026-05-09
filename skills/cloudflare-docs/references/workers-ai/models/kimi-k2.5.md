@@ -22,6 +22,7 @@ Kimi K2.5 is a frontier-scale open-source model with a 256k context window, mult
 
 | Model Info                                                                           |                                                                                      |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| Planned Deprecation                                                                  | 5/30/2026                                                                            |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 256,000 tokens                                                                       |
 | Terms and License                                                                    | [link ↗](https://github.com/MoonshotAI/Kimi-K2.5/blob/master/LICENSE)                |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                                  |
@@ -38,10 +39,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2615)
-* [  TypeScript ](#tab-panel-2616)
-* [  Python ](#tab-panel-2617)
-* [  curl ](#tab-panel-2618)
+* [  Worker (Streaming) ](#tab-panel-2881)
+* [  TypeScript ](#tab-panel-2882)
+* [  Python ](#tab-panel-2883)
+* [  curl ](#tab-panel-2884)
 
 TypeScript
 
@@ -200,8 +201,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2619)
-* [ Output ](#tab-panel-2620)
+* [ Input ](#tab-panel-2885)
+* [ Output ](#tab-panel-2886)
 
 Input format
 
@@ -375,8 +376,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-2621)
-* [ Output ](#tab-panel-2622)
+* [ Input ](#tab-panel-2887)
+* [ Output ](#tab-panel-2888)
 
 Input format
 
@@ -530,8 +531,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-2623)
-* [ Output ](#tab-panel-2624)
+* [ Input ](#tab-panel-2889)
+* [ Output ](#tab-panel-2890)
 
 ▶requests\[\]
 

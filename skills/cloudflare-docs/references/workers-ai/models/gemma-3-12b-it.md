@@ -22,6 +22,7 @@ Gemma 3 models are well-suited for a variety of text generation and image unders
 
 | Model Info                                                                 |                                                     |
 | -------------------------------------------------------------------------- | --------------------------------------------------- |
+| Planned Deprecation                                                        | 5/30/2026                                           |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 80,000 tokens                                       |
 | LoRA                                                                       | Yes                                                 |
 | Unit Pricing                                                               | $0.35 per M input tokens, $0.56 per M output tokens |
@@ -34,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2548)
-* [  TypeScript ](#tab-panel-2549)
-* [  Python ](#tab-panel-2550)
-* [  curl ](#tab-panel-2551)
+* [  Worker (Streaming) ](#tab-panel-2814)
+* [  TypeScript ](#tab-panel-2815)
+* [  Python ](#tab-panel-2816)
+* [  curl ](#tab-panel-2817)
 
 TypeScript
 

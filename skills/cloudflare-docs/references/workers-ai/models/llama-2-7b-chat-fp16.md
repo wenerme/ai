@@ -22,6 +22,7 @@ Full precision (fp16) generative text model with 7 billion parameters from Meta
 
 | Model Info                                                                 |                                                                               |
 | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Planned Deprecation                                                        | 5/30/2026                                                                     |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 4,096 tokens                                                                  |
 | Terms and License                                                          | [link ↗](https://ai.meta.com/resources/models-and-libraries/llama-downloads/) |
 | More information                                                           | [link ↗](https://ai.meta.com/llama/)                                          |
@@ -35,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2639)
-* [  TypeScript ](#tab-panel-2640)
-* [  Python ](#tab-panel-2641)
-* [  curl ](#tab-panel-2642)
+* [  Worker (Streaming) ](#tab-panel-2901)
+* [  TypeScript ](#tab-panel-2902)
+* [  Python ](#tab-panel-2903)
+* [  curl ](#tab-panel-2904)
 
 TypeScript
 

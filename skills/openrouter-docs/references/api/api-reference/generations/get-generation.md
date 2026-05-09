@@ -398,6 +398,13 @@ components:
             - string
             - 'null'
           description: Router used for the request (e.g., openrouter/auto)
+        service_tier:
+          type:
+            - string
+            - 'null'
+          description: >-
+            Service tier the upstream provider reported running this request on,
+            or null if it did not report one.
         session_id:
           type:
             - string
@@ -479,6 +486,7 @@ components:
         - provider_name
         - provider_responses
         - router
+        - service_tier
         - streamed
         - tokens_completion
         - tokens_prompt

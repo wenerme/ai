@@ -28,8 +28,8 @@ ChatGPT developer mode is a beta feature that provides full Model Context Protoc
   - Click on "Create app" next to **Advanced settings** and create an app for your remote MCP server. It will appear in the composer's "Developer Mode" tool later during conversations. The "Create app" button will only show if you are in Developer mode.
     - Supported MCP protocols: SSE and streaming HTTP.
     - Authentication supported: OAuth, No Authentication, and Mixed Authentication
-      - For OAuth, if static credentials are provided, then they will be used. Otherwise, dynamic client registration will be used to create the credentials.
-      - Mixed authentication is supporting Oauth and No Authentication. This means the initialize and list tools APIs are no auth, and tools will be Oauth or Noauth based on the security schemes set on their tool metadata.
+      - For OAuth, if static credentials are provided, then they will be used. Otherwise, ChatGPT can use Client ID Metadata Documents when the authorization server advertises support and the connector creator chooses CIMD. CIMD supports public-client token exchange (`none`) and signed client assertion token exchange (`private_key_jwt`). ChatGPT can also use DCR when configured.
+      - Mixed authentication supports OAuth and No Authentication. This means the initialize and list tools APIs use no auth, and tools use OAuth or no auth based on the security schemes set on their tool metadata.
   - Created apps will show under "Drafts" in the app settings.
 - **Manage tools:** In app settings there is a details page per app. Use that to toggle tools on or off and refresh apps to pull new tools and descriptions from the MCP server.
 - **Use apps in conversations:** Choose **Developer mode** from the Plus menu and select the apps for the conversation. You may need to explore different prompting techniques to call the correct tools. For example:

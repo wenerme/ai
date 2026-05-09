@@ -190,7 +190,40 @@ components:
           type:
             - boolean
             - 'null'
-          description: Whether to enforce zero data retention
+          description: >-
+            Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai,
+            enforce_zdr_google, and enforce_zdr_other instead. When provided,
+            its value is copied into any of those per-provider fields that are
+            not explicitly specified on the request.
+        enforce_zdr_anthropic:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for Anthropic models. Falls
+            back to enforce_zdr when not provided.
+        enforce_zdr_google:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for Google models. Falls back
+            to enforce_zdr when not provided.
+        enforce_zdr_openai:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for OpenAI models. Falls back
+            to enforce_zdr when not provided.
+        enforce_zdr_other:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for models that are not from
+            Anthropic, OpenAI, or Google. Falls back to enforce_zdr when not
+            provided.
         id:
           type: string
           format: uuid

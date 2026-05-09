@@ -33,7 +33,7 @@ To see how much caching saved on each generation, you can:
 
 1. Click the detail button on the [Activity](/activity) page
 2. Use the `/api/v1/generation` API, [documented here](/docs/api/api-reference/generations/get-generation)
-3. Check the `prompt_tokens_details` object in the [usage response](/docs/guides/administration/usage-accounting) included with every API response
+3. Check the `prompt_tokens_details` object in the [usage response](/docs/cookbook/administration/usage-accounting) included with every API response
 
 The `cache_discount` field in the response body will tell you how much the response saved on cache usage. Some providers, like Anthropic, will have a negative discount on cache writes, but a positive discount (which reduces total cost) on cache reads.
 

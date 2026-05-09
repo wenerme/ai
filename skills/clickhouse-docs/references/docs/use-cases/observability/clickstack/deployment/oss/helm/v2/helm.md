@@ -271,8 +271,6 @@ helm uninstall clickstack-operators     # Remove operators + CRDs
 **Note:** PersistentVolumeClaims created by the MongoDB and ClickHouse operators are **not** removed by `helm uninstall`. This is by design to prevent accidental data loss. To clean up PVCs, refer to:
 
 - [MongoDB Kubernetes Operator docs](https://github.com/mongodb/mongodb-kubernetes/tree/master/docs/mongodbcommunity)
-- [ClickHouse Operator cleanup docs](https://clickhouse.com/docs/clickhouse-operator/managing-clusters/cleanup)
-
 ## Troubleshooting {#troubleshooting}
 
 ### Checking logs {#checking-logs}
@@ -296,22 +294,6 @@ For ingress-specific issues, TLS problems, or cloud deployment troubleshooting, 
 - [Cloud Deployments](/docs/use-cases/observability/clickstack/deployment/helm-cloud#loadbalancer-dns-resolution-issue) - GKE OpAMP issues and cloud-specific problems
 
 <JSONSupport/>
-
-You can set these environment variables via `hyperdx.config` in your `values.yaml`:
-
-```yaml
-hyperdx:
-  config:
-    BETA_CH_OTEL_JSON_SCHEMA_ENABLED: "true"
-    OTEL_AGENT_FEATURE_GATE_ARG: "--feature-gates=clickhouse.json"
-```
-
-or via `--set`:
-```shell
-helm install my-clickstack clickstack/clickstack \
-  --set "hyperdx.config.BETA_CH_OTEL_JSON_SCHEMA_ENABLED=true" \
-  --set "hyperdx.config.OTEL_AGENT_FEATURE_GATE_ARG=--feature-gates=clickhouse.json"
-```
 
 ## Related documentation {#related-documentation}
 

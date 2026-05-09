@@ -120,6 +120,7 @@ Start with `low` for most production voice agents. Tune up or down based on task
 | `low`     | You need responsiveness plus basic reasoning.       | Customer support, order lookup, simple policy questions.                |
 | `medium`  | The assistant must reason through multi-step tasks. | Technical support, diagnostics, complex routing.                        |
 | `high`    | Deeper reasoning materially improves success.       | High-precision workflows, escalation decisions, tasks with constraints. |
+| `xhigh`   | Maximum reasoning is worth added latency and cost.  | Complex planning, critical triage, high-stakes tool orchestration.      |
 
 Beyond the API setting, steer the model on when and how much to reason.
 

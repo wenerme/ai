@@ -68,8 +68,7 @@ Yes. ClickPipes expects you to include the port number for the Kafka surface, wh
 
 Are ClickPipes IPs still relevant for Azure Event Hubs?
 
-Yes. To restrict traffic to your Event Hubs instance, please add the [documented static NAT IPs](../
-/index.md#list-of-static-ips) to .
+Yes. To restrict traffic to your Event Hubs instance, please add the [documented static NAT IPs](/integrations/clickpipes#list-of-static-ips) to .
 
 Is the connection string for the Event Hub, or is it for the Event Hub namespace?
 

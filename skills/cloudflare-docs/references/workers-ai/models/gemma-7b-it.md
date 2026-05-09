@@ -22,6 +22,7 @@ Gemma is a family of lightweight, state-of-the-art open models from Google, buil
 
 | Model Info                                                                 |                                             |
 | -------------------------------------------------------------------------- | ------------------------------------------- |
+| Planned Deprecation                                                        | 5/30/2026                                   |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens                                |
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemma/terms) |
 | More information                                                           | [link ↗](https://ai.google.dev/gemma/docs)  |
@@ -36,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2562)
-* [  TypeScript ](#tab-panel-2563)
-* [  Python ](#tab-panel-2564)
-* [  curl ](#tab-panel-2565)
+* [  Worker (Streaming) ](#tab-panel-2828)
+* [  TypeScript ](#tab-panel-2829)
+* [  Python ](#tab-panel-2830)
+* [  curl ](#tab-panel-2831)
 
 TypeScript
 

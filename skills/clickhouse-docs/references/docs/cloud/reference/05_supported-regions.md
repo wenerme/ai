@@ -29,6 +29,7 @@ doc_type: 'reference'
 - sa-east-1 (South America)
 - ap-southeast-3 (Jakarta)
 - ap-east-1 (Hong Kong)
+- mx-central-1 (Mexico)
  
 ## Google Cloud regions {#google-cloud-regions}
 
@@ -57,6 +58,7 @@ doc_type: 'reference'
 
 - Japan East (Tokyo, Saitama)
 - UAE North (Dubai)
+- Australia East (New South Wales)
 
 > **note**: Need to deploy to a region not currently listed? [Submit a request](https://clickhouse.com/pricing?modal=open). 
 

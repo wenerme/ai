@@ -22,6 +22,7 @@ Quantized (int4) generative text model with 8 billion parameters from Meta.
 
 | Model Info                                                                 |                                                     |
 | -------------------------------------------------------------------------- | --------------------------------------------------- |
+| Planned Deprecation                                                        | 5/30/2026                                           |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens                                        |
 | Terms and License                                                          | [link ↗](https://llama.meta.com/llama3/license/#)   |
 | More information                                                           | [link ↗](https://llama.meta.com)                    |
@@ -35,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2655)
-* [  TypeScript ](#tab-panel-2656)
-* [  Python ](#tab-panel-2657)
-* [  curl ](#tab-panel-2658)
+* [  Worker (Streaming) ](#tab-panel-2917)
+* [  TypeScript ](#tab-panel-2918)
+* [  Python ](#tab-panel-2919)
+* [  curl ](#tab-panel-2920)
 
 TypeScript
 

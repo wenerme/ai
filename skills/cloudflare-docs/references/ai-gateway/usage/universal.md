@@ -1,5 +1,5 @@
 ---
-title: Universal Endpoint
+title: Universal Endpoint (Deprecated)
 description: Route requests to any AI provider through a single AI Gateway endpoint with support for fallbacks and retries.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -10,13 +10,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-# Universal Endpoint
+# Universal Endpoint (Deprecated)
 
-Note
+Deprecated
 
-It is recommended to use the Dynamic Routes to implement model fallback feature
+The Universal Endpoint is deprecated. Use the [OpenAI-compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) for new integrations, and [Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) for fallbacks, retries, and conditional routing. The Universal Endpoint will continue to work for existing integrations.
 
-You can use the Universal Endpoint to contact every provider.
+The Universal Endpoint allows you to contact every provider through a single endpoint.
 
 ```
 
@@ -25,13 +25,11 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}
 
 ```
 
-AI Gateway offers multiple endpoints for each Gateway you create - one endpoint per provider, and one Universal Endpoint. The Universal Endpoint requires some adjusting to your schema, but supports additional features. Some of these features are, for example, retrying a request if it fails the first time, or configuring a [fallback model/provider](https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/).
+The payload expects an array of messages. Each message is an object with the following parameters:
 
-You can use the Universal endpoint to contact every provider. The payload is expecting an array of message, and each message is an object with the following parameters:
-
-* `provider` : the name of the provider you would like to direct this message to. Can be OpenAI, workers-ai, or any of our supported providers.
-* `endpoint`: the pathname of the provider API you’re trying to reach. For example, on OpenAI it can be `chat/completions`, and for Workers AI this might be [@cf/meta/llama-3.1-8b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct/). See more in the sections that are specific to [each provider](https://developers.cloudflare.com/ai-gateway/usage/providers/).
-* `authorization`: the content of the Authorization HTTP Header that should be used when contacting this provider. This usually starts with 'Token' or 'Bearer'.
+* `provider`: the name of the provider you would like to direct this message to. Can be OpenAI, workers-ai, or any of our supported providers.
+* `endpoint`: the pathname of the provider API you are trying to reach. For example, on OpenAI it can be `chat/completions`, and for Workers AI this might be [@cf/meta/llama-3.1-8b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct/). Refer to the sections that are specific to [each provider](https://developers.cloudflare.com/ai-gateway/usage/providers/).
+* `authorization`: the content of the Authorization HTTP Header that should be used when contacting this provider. This usually starts with `Token` or `Bearer`.
 * `query`: the payload as the provider expects it in their official API.
 
 ## cURL example
@@ -127,13 +125,291 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
 
 ```
 
-The above will send a request to Workers AI Inference API, if it fails it will proceed to OpenAI. You can add as many fallbacks as you need, just by adding another JSON in the array.
+The above will send a request to Workers AI Inference API. If it fails, it will proceed to OpenAI. You can add as many fallbacks as you need by adding another object in the array.
+
+## Fallbacks
+
+You can specify model or provider fallbacks to handle request failures and ensure reliability. The payload array defines the fallback sequence — if the first provider fails, the request falls to the next entry in the array. For more details, refer to [Fallbacks](https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/).
+
+By default, Cloudflare triggers your fallback if a model request returns an error. You can also configure [request timeouts](#request-timeouts) to trigger fallbacks when a provider takes too long to respond.
+
+### Response header (`cf-aig-step`)
+
+When using fallbacks, the response header `cf-aig-step` indicates which model successfully processed the request by returning the step number:
+
+* `cf-aig-step:0` — The first (primary) model was used successfully.
+* `cf-aig-step:1` — The request fell back to the second model.
+* `cf-aig-step:2` — The request fell back to the third model.
+* Subsequent steps — Each fallback increments the step number by 1.
+
+## Request timeouts
+
+A request timeout triggers a fallback if a provider takes too long to respond.
+
+Configure the timeout by setting a `requestTimeout` property (in milliseconds) within the provider-specific `config` object. Each provider can have a different `requestTimeout` value.
+
+The timeout is based on when the first part of the response comes back. As long as the first part of the response returns within the specified timeframe — such as when streaming a response — your gateway will wait for the response.
+
+Request timeout example
+
+```
+
+curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
+
+  --header 'Content-Type: application/json' \
+
+  --data '[
+
+    {
+
+        "provider": "workers-ai",
+
+        "endpoint": "@cf/meta/llama-3.1-8b-instruct",
+
+        "headers": {
+
+            "Authorization": "Bearer {cloudflare_token}",
+
+            "Content-Type": "application/json"
+
+        },
+
+        "config": {
+
+            "requestTimeout": 1000
+
+        },
+
+        "query": {
+
+34 collapsed lines
+
+            "messages": [
+
+                {
+
+                    "role": "system",
+
+                    "content": "You are a friendly assistant"
+
+                },
+
+                {
+
+                    "role": "user",
+
+                    "content": "What is Cloudflare?"
+
+                }
+
+            ]
+
+        }
+
+    },
+
+    {
+
+        "provider": "workers-ai",
+
+        "endpoint": "@cf/meta/llama-3.1-8b-instruct-fast",
+
+        "headers": {
+
+            "Authorization": "Bearer {cloudflare_token}",
+
+            "Content-Type": "application/json"
+
+        },
+
+        "query": {
+
+            "messages": [
+
+                {
+
+                    "role": "system",
+
+                    "content": "You are a friendly assistant"
+
+                },
+
+                {
+
+                    "role": "user",
+
+                    "content": "What is Cloudflare?"
+
+                }
+
+            ]
+
+        },
+
+        "config": {
+
+            "requestTimeout": 3000
+
+        },
+
+    }
+
+]'
+
+
+```
+
+## Request retries
+
+The Universal Endpoint supports automatic retries for failed requests, with a maximum of five retry attempts. Retries are attempted before triggering any configured fallbacks.
+
+Configure the retry settings with the following properties in the provider-specific `config`:
+
+TypeScript
+
+```
+
+config:{
+
+  maxAttempts?: number;
+
+  retryDelay?: number;
+
+  backoff?: "constant" | "linear" | "exponential";
+
+}
+
+
+```
+
+* `maxAttempts`: Maximum number of retry attempts (up to 5).
+* `retryDelay`: Delay before retrying, in milliseconds (maximum of 5 seconds).
+* `backoff`: Backoff method — `constant`, `linear`, or `exponential`.
+
+On the final retry attempt, your gateway will wait until the request completes, regardless of how long it takes. Each provider can have different retry settings.
+
+Request retry example
+
+```
+
+curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
+
+  --header 'Content-Type: application/json' \
+
+  --data '[
+
+    {
+
+        "provider": "workers-ai",
+
+        "endpoint": "@cf/meta/llama-3.1-8b-instruct",
+
+        "headers": {
+
+            "Authorization": "Bearer {cloudflare_token}",
+
+            "Content-Type": "application/json"
+
+        },
+
+        "config": {
+
+            "maxAttempts": 2,
+
+            "retryDelay": 1000,
+
+            "backoff": "constant"
+
+        },
+
+39 collapsed lines
+
+        "query": {
+
+            "messages": [
+
+                {
+
+                    "role": "system",
+
+                    "content": "You are a friendly assistant"
+
+                },
+
+                {
+
+                    "role": "user",
+
+                    "content": "What is Cloudflare?"
+
+                }
+
+            ]
+
+        }
+
+    },
+
+    {
+
+        "provider": "workers-ai",
+
+        "endpoint": "@cf/meta/llama-3.1-8b-instruct-fast",
+
+        "headers": {
+
+            "Authorization": "Bearer {cloudflare_token}",
+
+            "Content-Type": "application/json"
+
+        },
+
+        "query": {
+
+            "messages": [
+
+                {
+
+                    "role": "system",
+
+                    "content": "You are a friendly assistant"
+
+                },
+
+                {
+
+                    "role": "user",
+
+                    "content": "What is Cloudflare?"
+
+                }
+
+            ]
+
+        },
+
+        "config": {
+
+            "maxAttempts": 4,
+
+            "retryDelay": 1000,
+
+            "backoff": "exponential"
+
+        },
+
+    }
+
+]'
+
+
+```
 
 ## WebSockets API beta
 
 The Universal Endpoint can also be accessed via a [WebSockets API](https://developers.cloudflare.com/ai-gateway/usage/websockets-api/) which provides a single persistent connection, enabling continuous communication. This API supports all AI providers connected to AI Gateway, including those that do not natively support WebSockets.
 
-## WebSockets example
+### WebSockets example
 
 JavaScript
 
@@ -204,8 +480,8 @@ ws.on("message", function incoming(message) {
 
 ## Workers Binding example
 
-* [  wrangler.jsonc ](#tab-panel-4169)
-* [  wrangler.toml ](#tab-panel-4170)
+* [  wrangler.jsonc ](#tab-panel-4407)
+* [  wrangler.toml ](#tab-panel-4408)
 
 JSONC
 
@@ -293,7 +569,7 @@ Since the same settings can be configured in multiple locations, AI Gateway appl
 
 This hierarchy ensures consistent behavior, prioritizing the most specific configurations. Use provider-level and request-level headers for fine-tuned control, and gateway settings for general defaults.
 
-## Hierarchy example
+### Hierarchy example
 
 This example demonstrates how headers set at different levels impact caching behavior:
 
@@ -398,5 +674,5 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/universal/","name":"Universal Endpoint"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/universal/","name":"Universal Endpoint (Deprecated)"}}]}
 ```

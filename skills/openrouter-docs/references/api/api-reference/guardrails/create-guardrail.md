@@ -193,7 +193,40 @@ components:
           type:
             - boolean
             - 'null'
-          description: Whether to enforce zero data retention
+          description: >-
+            Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai,
+            enforce_zdr_google, and enforce_zdr_other instead. When provided,
+            its value is copied into any of those per-provider fields that are
+            not explicitly specified on the request.
+        enforce_zdr_anthropic:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for Anthropic models. Falls
+            back to enforce_zdr when not provided.
+        enforce_zdr_google:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for Google models. Falls back
+            to enforce_zdr when not provided.
+        enforce_zdr_openai:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for OpenAI models. Falls back
+            to enforce_zdr when not provided.
+        enforce_zdr_other:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for models that are not from
+            Anthropic, OpenAI, or Google. Falls back to enforce_zdr when not
+            provided.
         ignored_models:
           type:
             - array
@@ -275,7 +308,40 @@ components:
           type:
             - boolean
             - 'null'
-          description: Whether to enforce zero data retention
+          description: >-
+            Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai,
+            enforce_zdr_google, and enforce_zdr_other instead. When provided,
+            its value is copied into any of those per-provider fields that are
+            not explicitly specified on the request.
+        enforce_zdr_anthropic:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for Anthropic models. Falls
+            back to enforce_zdr when not provided.
+        enforce_zdr_google:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for Google models. Falls back
+            to enforce_zdr when not provided.
+        enforce_zdr_openai:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for OpenAI models. Falls back
+            to enforce_zdr when not provided.
+        enforce_zdr_other:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to enforce zero data retention for models that are not from
+            Anthropic, OpenAI, or Google. Falls back to enforce_zdr when not
+            provided.
         id:
           type: string
           format: uuid
@@ -496,7 +562,10 @@ payload = {
     "allowed_models": None,
     "allowed_providers": ["openai", "anthropic", "deepseek"],
     "description": "A guardrail for limiting API usage",
-    "enforce_zdr": False,
+    "enforce_zdr_anthropic": True,
+    "enforce_zdr_google": False,
+    "enforce_zdr_openai": True,
+    "enforce_zdr_other": False,
     "ignored_models": None,
     "ignored_providers": None,
     "limit_usd": 50,
@@ -517,7 +586,7 @@ const url = 'https://openrouter.ai/api/v1/guardrails';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"name":"My New Guardrail","allowed_models":null,"allowed_providers":["openai","anthropic","deepseek"],"description":"A guardrail for limiting API usage","enforce_zdr":false,"ignored_models":null,"ignored_providers":null,"limit_usd":50,"reset_interval":"monthly"}'
+  body: '{"name":"My New Guardrail","allowed_models":null,"allowed_providers":["openai","anthropic","deepseek"],"description":"A guardrail for limiting API usage","enforce_zdr_anthropic":true,"enforce_zdr_google":false,"enforce_zdr_openai":true,"enforce_zdr_other":false,"ignored_models":null,"ignored_providers":null,"limit_usd":50,"reset_interval":"monthly"}'
 };
 
 try {
@@ -543,7 +612,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/guardrails"
 
-	payload := strings.NewReader("{\n  \"name\": \"My New Guardrail\",\n  \"allowed_models\": null,\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr\": false,\n  \"ignored_models\": null,\n  \"ignored_providers\": null,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}")
+	payload := strings.NewReader("{\n  \"name\": \"My New Guardrail\",\n  \"allowed_models\": null,\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr_anthropic\": true,\n  \"enforce_zdr_google\": false,\n  \"enforce_zdr_openai\": true,\n  \"enforce_zdr_other\": false,\n  \"ignored_models\": null,\n  \"ignored_providers\": null,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -573,7 +642,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"name\": \"My New Guardrail\",\n  \"allowed_models\": null,\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr\": false,\n  \"ignored_models\": null,\n  \"ignored_providers\": null,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}"
+request.body = "{\n  \"name\": \"My New Guardrail\",\n  \"allowed_models\": null,\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr_anthropic\": true,\n  \"enforce_zdr_google\": false,\n  \"enforce_zdr_openai\": true,\n  \"enforce_zdr_other\": false,\n  \"ignored_models\": null,\n  \"ignored_providers\": null,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -586,7 +655,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/guardrails")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"name\": \"My New Guardrail\",\n  \"allowed_models\": null,\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr\": false,\n  \"ignored_models\": null,\n  \"ignored_providers\": null,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}")
+  .body("{\n  \"name\": \"My New Guardrail\",\n  \"allowed_models\": null,\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr_anthropic\": true,\n  \"enforce_zdr_google\": false,\n  \"enforce_zdr_openai\": true,\n  \"enforce_zdr_other\": false,\n  \"ignored_models\": null,\n  \"ignored_providers\": null,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}")
   .asString();
 ```
 
@@ -606,7 +675,10 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/guardrails', 
     "deepseek"
   ],
   "description": "A guardrail for limiting API usage",
-  "enforce_zdr": false,
+  "enforce_zdr_anthropic": true,
+  "enforce_zdr_google": false,
+  "enforce_zdr_openai": true,
+  "enforce_zdr_other": false,
   "ignored_models": null,
   "ignored_providers": null,
   "limit_usd": 50,
@@ -628,7 +700,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/guardrails");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"name\": \"My New Guardrail\",\n  \"allowed_models\": null,\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr\": false,\n  \"ignored_models\": null,\n  \"ignored_providers\": null,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"name\": \"My New Guardrail\",\n  \"allowed_models\": null,\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr_anthropic\": true,\n  \"enforce_zdr_google\": false,\n  \"enforce_zdr_openai\": true,\n  \"enforce_zdr_other\": false,\n  \"ignored_models\": null,\n  \"ignored_providers\": null,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -644,7 +716,10 @@ let parameters = [
   "allowed_models": ,
   "allowed_providers": ["openai", "anthropic", "deepseek"],
   "description": "A guardrail for limiting API usage",
-  "enforce_zdr": false,
+  "enforce_zdr_anthropic": true,
+  "enforce_zdr_google": false,
+  "enforce_zdr_openai": true,
+  "enforce_zdr_other": false,
   "ignored_models": ,
   "ignored_providers": ,
   "limit_usd": 50,

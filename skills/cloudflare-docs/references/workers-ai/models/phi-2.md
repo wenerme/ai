@@ -22,6 +22,7 @@ Phi-2 is a Transformer-based model with a next-word prediction objective, traine
 
 | Model Info                                                                 |                                                  |
 | -------------------------------------------------------------------------- | ------------------------------------------------ |
+| Planned Deprecation                                                        | 5/30/2026                                        |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,048 tokens                                     |
 | More information                                                           | [link ↗](https://huggingface.co/microsoft/phi-2) |
 | Beta                                                                       | Yes                                              |
@@ -34,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2779)
-* [  TypeScript ](#tab-panel-2780)
-* [  Python ](#tab-panel-2781)
-* [  curl ](#tab-panel-2782)
+* [  Worker (Streaming) ](#tab-panel-3021)
+* [  TypeScript ](#tab-panel-3022)
+* [  Python ](#tab-panel-3023)
+* [  curl ](#tab-panel-3024)
 
 TypeScript
 

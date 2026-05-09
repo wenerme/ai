@@ -1,6 +1,6 @@
 ---
 title: Workers Bindings
-description: Reference for the AI binding with AI Gateway. Call Workers AI and third-party models with env.AI.run(), access log IDs, and use gateway methods for feedback, logging, URLs, and universal requests.
+description: Reference for the AI binding with AI Gateway. Call Workers AI and third-party models with env.AI.run(), access log IDs, and use gateway methods for feedback, logging, and URLs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -24,8 +24,8 @@ For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](htt
 
 Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-4137)
-* [  wrangler.toml ](#tab-panel-4138)
+* [  wrangler.jsonc ](#tab-panel-4375)
+* [  wrangler.toml ](#tab-panel-4376)
 
 JSONC
 
@@ -65,8 +65,8 @@ Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` 
 
 **Workers AI model:**
 
-* [  JavaScript ](#tab-panel-4139)
-* [  TypeScript ](#tab-panel-4140)
+* [  JavaScript ](#tab-panel-4377)
+* [  TypeScript ](#tab-panel-4378)
 
 JavaScript
 
@@ -128,8 +128,8 @@ const resp = await env.AI.run(
 
 **Third-party model:**
 
-* [  JavaScript ](#tab-panel-4141)
-* [  TypeScript ](#tab-panel-4142)
+* [  JavaScript ](#tab-panel-4379)
+* [  TypeScript ](#tab-panel-4380)
 
 JavaScript
 
@@ -361,39 +361,6 @@ const anthropic = createAnthropic({
 
 
 ```
-
-### `run()`
-
-Executes a [universal request](https://developers.cloudflare.com/ai-gateway/usage/universal/) to any supported provider. Accepts a single request object or an array.
-
-TypeScript
-
-```
-
-const resp = await gateway.run({
-
-  provider: "workers-ai",
-
-  endpoint: "@cf/meta/llama-3.1-8b-instruct",
-
-  headers: {
-
-    authorization: "Bearer my-api-token",
-
-  },
-
-  query: {
-
-    prompt: "tell me a joke",
-
-  },
-
-});
-
-
-```
-
-**Returns:** `Promise<Response>`
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/worker-binding-methods/","name":"Workers Bindings"}}]}

@@ -22,6 +22,7 @@ This model is intended to be used by non-technical users to understand data insi
 
 | Model Info                                                                 |                                                                  |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Planned Deprecation                                                        | 5/30/2026                                                        |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 10,000 tokens                                                    |
 | Terms and License                                                          | [link ↗](https://creativecommons.org/licenses/by-sa/4.0/deed.en) |
 | More information                                                           | [link ↗](https://huggingface.co/defog/sqlcoder-7b-2)             |
@@ -35,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2837)
-* [  TypeScript ](#tab-panel-2838)
-* [  Python ](#tab-panel-2839)
-* [  curl ](#tab-panel-2840)
+* [  Worker (Streaming) ](#tab-panel-3063)
+* [  TypeScript ](#tab-panel-3064)
+* [  Python ](#tab-panel-3065)
+* [  curl ](#tab-panel-3066)
 
 TypeScript
 

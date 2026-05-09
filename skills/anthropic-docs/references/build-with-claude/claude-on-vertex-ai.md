@@ -45,14 +45,14 @@ go get github.com/anthropics/anthropic-sdk-go
 <Tab title="Java">
 <CodeGroup>
 ```groovy Gradle
-implementation("com.anthropic:anthropic-java-vertex:2.20.0")
+implementation("com.anthropic:anthropic-java-vertex:2.30.0")
 ```
 
 ```xml Maven
 <dependency>
     <groupId>com.anthropic</groupId>
     <artifactId>anthropic-java-vertex</artifactId>
-    <version>2.20.0</version>
+    <version>2.30.0</version>
 </dependency>
 ```
 
@@ -350,7 +350,7 @@ Turning on this service does not give Google or Anthropic any access to your con
 </Note>
 
 ## Feature support
-For all currently supported features on Vertex AI, see [API features overview](/docs/en/api/overview).
+For all currently supported features on Vertex AI, see [API features overview](/docs/en/build-with-claude/overview).
 
 ### Context window
 

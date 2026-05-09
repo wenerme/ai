@@ -10,7 +10,7 @@ The [Free Models Router](https://openrouter.ai/openrouter/free) (`openrouter/fre
 
 Instead of manually choosing a specific free model, let the Free Models Router handle model selection for you. This is ideal for experimentation, learning, and low-volume use cases where you want zero-cost inference without worrying about which specific model to use.
 
-To try the Free Models Router without writing any code, see the [Chat Playground guide](/docs/guides/get-started/free-models-router-playground).
+To try the Free Models Router without writing any code, see the [Chat Playground guide](/docs/cookbook/get-started/free-models-router-playground).
 
 ## Usage
 
@@ -182,7 +182,7 @@ If you prefer to use a specific free model rather than random selection, you can
 
 ## Related
 
-* [Free Models Router in Chat Playground](/docs/guides/get-started/free-models-router-playground) - Try the router without writing code
+* [Free Models Router in Chat Playground](/docs/cookbook/get-started/free-models-router-playground) - Try the router without writing code
 * [Free Variant](/docs/guides/routing/model-variants/free) - Use the `:free` suffix for specific models
 * [Auto Router](/docs/guides/routing/routers/auto-router) - Intelligent model selection (paid models)
 * [Latest Model Resolution](/docs/guides/routing/routers/latest-resolution) - Always target the newest version of a model family

@@ -22,6 +22,7 @@ Quantized (int8) generative text model with 7 billion parameters from Meta
 
 | Model Info                                                                 |              |
 | -------------------------------------------------------------------------- | ------------ |
+| Planned Deprecation                                                        | 5/30/2026    |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens |
 
 ## Playground
@@ -32,10 +33,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2647)
-* [  TypeScript ](#tab-panel-2648)
-* [  Python ](#tab-panel-2649)
-* [  curl ](#tab-panel-2650)
+* [  Worker (Streaming) ](#tab-panel-2909)
+* [  TypeScript ](#tab-panel-2910)
+* [  Python ](#tab-panel-2911)
+* [  curl ](#tab-panel-2912)
 
 TypeScript
 

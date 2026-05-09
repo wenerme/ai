@@ -22,6 +22,7 @@ The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tune
 
 | Model Info                                                                 |                                                                     |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Planned Deprecation                                                        | 5/30/2026                                                           |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 3,072 tokens                                                        |
 | More information                                                           | [link ↗](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) |
 | LoRA                                                                       | Yes                                                                 |
@@ -35,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2747)
-* [  TypeScript ](#tab-panel-2748)
-* [  Python ](#tab-panel-2749)
-* [  curl ](#tab-panel-2750)
+* [  Worker (Streaming) ](#tab-panel-3001)
+* [  TypeScript ](#tab-panel-3002)
+* [  Python ](#tab-panel-3003)
+* [  curl ](#tab-panel-3004)
 
 TypeScript
 

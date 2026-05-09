@@ -80,28 +80,34 @@ If you have multiple BYOK keys configured for the same provider, all of them wil
 
 ### Azure API Keys
 
-To use Azure AI Services with OpenRouter, you'll need to provide your Azure API key configuration in JSON format. Each key configuration requires the following fields:
+Azure has two resource types, each using a different domain:
+
+* **Azure AI Foundry** — resources at `*.services.ai.azure.com`. Uses the model catalog and does not require per-model deployments.
+* **Azure OpenAI** — resources at `*.openai.azure.com`. Requires explicit per-model deployments.
+
+#### Foundry Configuration (Recommended)
+
+The simplest way to configure Azure BYOK is with a Foundry configuration. Provide your API key, resource name, and resource type:
 
 ```json
-{
-  "model_slug": "the-openrouter-model-slug",
-  "endpoint_url": "https://<resource>.services.ai.azure.com/deployments/<model-id>/chat/completions?api-version=<api-version>",
-  "api_key": "your-azure-api-key",
-  "model_id": "the-azure-model-id"
-}
+[
+  {
+    "api_key": "your-azure-api-key",
+    "resource_name": "your-resource-name",
+    "resource_type": "ai_foundry"
+  }
+]
 ```
 
-You can find these values in your Azure AI Services resource:
+* **`api_key`**: Your Azure API key, found under "Keys and Endpoint" in the Azure portal.
+* **`resource_name`**: The name of your Azure resource (the subdomain portion of your endpoint URL).
+* **`resource_type`**: Either `"ai_foundry"` for Azure AI Foundry resources (`*.services.ai.azure.com`) or `"openai"` for Azure OpenAI resources (`*.openai.azure.com`). Defaults to `"openai"` if omitted.
 
-1. **endpoint\_url**: Navigate to your Azure AI Services resource in the Azure portal. In the "Overview" section, you'll find your endpoint URL. Make sure to append `/chat/completions` to the base URL. You can read more in the [Azure Foundry documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/concepts/endpoints?tabs=python).
+This configuration works for all models available in your Azure resource — no per-model setup required.
 
-2. **api\_key**: In the same "Overview" section of your Azure AI Services resource, you can find your API key under "Keys and Endpoint".
+#### Per-Deployment Configuration (Legacy)
 
-3. **model\_id**: This is the name of your model deployment in Azure AI Services.
-
-4. **model\_slug**: This is the OpenRouter model identifier you want to use this key for.
-
-Since Azure supports multiple model deployments, you can provide an array of configurations for different models:
+For more control, you can specify individual deployments with full endpoint URLs:
 
 ```json
 [
@@ -120,7 +126,14 @@ Since Azure supports multiple model deployments, you can provide an array of con
 ]
 ```
 
-Make sure to replace the url with your own project url. Also the url should end with /chat/completions with the api version that you would like to use.
+Each per-deployment configuration requires:
+
+1. **`endpoint_url`**: The full deployment endpoint URL including `/chat/completions` and the API version. See the [Azure Foundry documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/concepts/endpoints?tabs=python) for details.
+2. **`api_key`**: Your Azure API key.
+3. **`model_id`**: The name of your model deployment in Azure.
+4. **`model_slug`**: The OpenRouter model identifier you want to use this key for.
+
+You can mix Foundry and per-deployment configurations in the same array. Per-deployment configs take priority when a matching model slug is found.
 
 ### AWS Bedrock API Keys
 
