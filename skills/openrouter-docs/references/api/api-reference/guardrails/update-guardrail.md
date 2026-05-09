@@ -181,9 +181,10 @@ components:
           items:
             $ref: '#/components/schemas/ContentFilterBuiltinEntry'
           description: >-
-            Builtin content filters to apply. Set to null to remove. Use slug
-            "regex-prompt-injection" with action "block", "flag", or "redact" to
-            enable heuristic prompt injection detection.
+            Builtin content filters to apply. Set to null to remove. The "flag"
+            action is only supported for "regex-prompt-injection"; PII slugs
+            (email, phone, ssn, credit-card, ip-address, person-name, address)
+            accept "block" or "redact" only.
         content_filters:
           type:
             - array

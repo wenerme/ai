@@ -920,6 +920,31 @@ components:
         - name
         - type
       title: OutputFunctionCallItem
+    OutputCustomToolCallItem:
+      type: object
+      properties:
+        call_id:
+          type: string
+        id:
+          type: string
+        input:
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+          description: >-
+            Namespace qualifier for tools registered as part of a namespace tool
+            group (e.g. an MCP server)
+      required:
+        - call_id
+        - input
+        - name
+      description: >-
+        A call to a custom (freeform-grammar) tool created by the model —
+        distinct from `function_call`. Used for tools like Codex CLI's
+        `apply_patch` whose payload is opaque text rather than JSON arguments.
+      title: OutputCustomToolCallItem
     WebSearchSourceType:
       type: string
       enum:
@@ -1567,6 +1592,130 @@ components:
         - type
       description: An openrouter:experimental__search_models server tool output item
       title: OutputSearchModelsServerToolItem
+    CustomToolCallItemType:
+      type: string
+      enum:
+        - custom_tool_call
+      title: CustomToolCallItemType
+    CustomToolCallItem:
+      type: object
+      properties:
+        call_id:
+          type: string
+        id:
+          type: string
+        input:
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+          description: >-
+            Namespace qualifier for tools registered as part of a namespace tool
+            group (e.g. an MCP server)
+        type:
+          $ref: '#/components/schemas/CustomToolCallItemType'
+      required:
+        - call_id
+        - input
+        - name
+        - type
+      description: >-
+        A call to a custom (freeform-grammar) tool created by the model —
+        distinct from `function_call`. Used for tools like Codex CLI's
+        `apply_patch` whose payload is opaque text rather than JSON arguments.
+      title: CustomToolCallItem
+    CustomToolCallOutputItemOutputOneOf1Items:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - input_file
+              description: 'Discriminator value: input_file'
+            file_data:
+              type: string
+            file_id:
+              type:
+                - string
+                - 'null'
+            file_url:
+              type: string
+            filename:
+              type: string
+          required:
+            - type
+          description: File input content item
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - input_image
+              description: 'Discriminator value: input_image'
+            detail:
+              $ref: >-
+                #/components/schemas/OpenAiResponseInputMessageItemContentItemsDiscriminatorMappingInputImageDetail
+            image_url:
+              type:
+                - string
+                - 'null'
+          required:
+            - type
+            - detail
+          description: Image input content item
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - input_text
+              description: 'Discriminator value: input_text'
+            text:
+              type: string
+          required:
+            - type
+            - text
+          description: Text input content item
+      discriminator:
+        propertyName: type
+      title: CustomToolCallOutputItemOutputOneOf1Items
+    CustomToolCallOutputItemOutput1:
+      type: array
+      items:
+        $ref: '#/components/schemas/CustomToolCallOutputItemOutputOneOf1Items'
+      title: CustomToolCallOutputItemOutput1
+    CustomToolCallOutputItemOutput:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/CustomToolCallOutputItemOutput1'
+      title: CustomToolCallOutputItemOutput
+    CustomToolCallOutputItemType:
+      type: string
+      enum:
+        - custom_tool_call_output
+      title: CustomToolCallOutputItemType
+    CustomToolCallOutputItem:
+      type: object
+      properties:
+        call_id:
+          type: string
+        id:
+          type: string
+        output:
+          $ref: '#/components/schemas/CustomToolCallOutputItemOutput'
+        type:
+          $ref: '#/components/schemas/CustomToolCallOutputItemType'
+      required:
+        - call_id
+        - output
+        - type
+      description: >-
+        The output from a custom (freeform-grammar) tool call execution. Mirrors
+        `function_call_output` but is matched to a `custom_tool_call` rather
+        than a `function_call`.
+      title: CustomToolCallOutputItem
     InputsOneOf1Items:
       oneOf:
         - $ref: '#/components/schemas/ReasoningItem'
@@ -1577,6 +1726,7 @@ components:
         - $ref: '#/components/schemas/InputsOneOf1Items5'
         - $ref: '#/components/schemas/InputsOneOf1Items6'
         - $ref: '#/components/schemas/OutputFunctionCallItem'
+        - $ref: '#/components/schemas/OutputCustomToolCallItem'
         - $ref: '#/components/schemas/OutputWebSearchCallItem'
         - $ref: '#/components/schemas/OutputFileSearchCallItem'
         - $ref: '#/components/schemas/OutputImageGenerationCallItem'
@@ -1596,6 +1746,8 @@ components:
         - $ref: '#/components/schemas/OutputMemoryServerToolItem'
         - $ref: '#/components/schemas/OutputMcpServerToolItem'
         - $ref: '#/components/schemas/OutputSearchModelsServerToolItem'
+        - $ref: '#/components/schemas/CustomToolCallItem'
+        - $ref: '#/components/schemas/CustomToolCallOutputItem'
       title: InputsOneOf1Items
     Inputs1:
       type: array
@@ -4223,6 +4375,123 @@ components:
         - role
         - type
       title: OutputMessage
+    OpenAiResponseCustomToolCallType:
+      type: string
+      enum:
+        - custom_tool_call
+      title: OpenAiResponseCustomToolCallType
+    OpenAIResponseCustomToolCall:
+      type: object
+      properties:
+        call_id:
+          type: string
+        id:
+          type: string
+        input:
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+          description: >-
+            Namespace qualifier for tools registered as part of a namespace tool
+            group (e.g. an MCP server)
+        type:
+          $ref: '#/components/schemas/OpenAiResponseCustomToolCallType'
+      required:
+        - call_id
+        - input
+        - name
+        - type
+      title: OpenAIResponseCustomToolCall
+    OpenAiResponseCustomToolCallOutputOutputOneOf1Items:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - input_file
+              description: 'Discriminator value: input_file'
+            file_data:
+              type: string
+            file_id:
+              type:
+                - string
+                - 'null'
+            file_url:
+              type: string
+            filename:
+              type: string
+          required:
+            - type
+          description: File input content item
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - input_image
+              description: 'Discriminator value: input_image'
+            detail:
+              $ref: >-
+                #/components/schemas/OpenAiResponseInputMessageItemContentItemsDiscriminatorMappingInputImageDetail
+            image_url:
+              type:
+                - string
+                - 'null'
+          required:
+            - type
+            - detail
+          description: Image input content item
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - input_text
+              description: 'Discriminator value: input_text'
+            text:
+              type: string
+          required:
+            - type
+            - text
+          description: Text input content item
+      discriminator:
+        propertyName: type
+      title: OpenAiResponseCustomToolCallOutputOutputOneOf1Items
+    OpenAiResponseCustomToolCallOutputOutput1:
+      type: array
+      items:
+        $ref: >-
+          #/components/schemas/OpenAiResponseCustomToolCallOutputOutputOneOf1Items
+      title: OpenAiResponseCustomToolCallOutputOutput1
+    OpenAiResponseCustomToolCallOutputOutput:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/OpenAiResponseCustomToolCallOutputOutput1'
+      title: OpenAiResponseCustomToolCallOutputOutput
+    OpenAiResponseCustomToolCallOutputType:
+      type: string
+      enum:
+        - custom_tool_call_output
+      title: OpenAiResponseCustomToolCallOutputType
+    OpenAIResponseCustomToolCallOutput:
+      type: object
+      properties:
+        call_id:
+          type: string
+        id:
+          type: string
+        output:
+          $ref: '#/components/schemas/OpenAiResponseCustomToolCallOutputOutput'
+        type:
+          $ref: '#/components/schemas/OpenAiResponseCustomToolCallOutputType'
+      required:
+        - call_id
+        - output
+        - type
+      title: OpenAIResponseCustomToolCallOutput
     BaseInputsOneOf1Items:
       oneOf:
         - $ref: '#/components/schemas/BaseInputsOneOf1Items0'
@@ -4231,6 +4500,8 @@ components:
         - $ref: '#/components/schemas/OpenAIResponseFunctionToolCall'
         - $ref: '#/components/schemas/OutputItemImageGenerationCall'
         - $ref: '#/components/schemas/OutputMessage'
+        - $ref: '#/components/schemas/OpenAIResponseCustomToolCall'
+        - $ref: '#/components/schemas/OpenAIResponseCustomToolCallOutput'
       title: BaseInputsOneOf1Items
     BaseInputs1:
       type: array
@@ -4391,6 +4662,36 @@ components:
             - pending_safety_checks
             - status
           description: computer_call variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - custom_tool_call
+              description: 'Discriminator value: custom_tool_call'
+            call_id:
+              type: string
+            id:
+              type: string
+            input:
+              type: string
+            name:
+              type: string
+            namespace:
+              type: string
+              description: >-
+                Namespace qualifier for tools registered as part of a namespace
+                tool group (e.g. an MCP server)
+          required:
+            - type
+            - call_id
+            - input
+            - name
+          description: >-
+            A call to a custom (freeform-grammar) tool created by the model —
+            distinct from `function_call`. Used for tools like Codex CLI's
+            `apply_patch` whose payload is opaque text rather than JSON
+            arguments.
         - type: object
           properties:
             type:

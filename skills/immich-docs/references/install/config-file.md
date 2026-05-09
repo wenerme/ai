@@ -258,5 +258,3 @@ It is recommended to reuse this variable in your `docker-compose.yml`:
 volumes:
   - ./configuration.yml:${IMMICH_CONFIG_FILE}
 ```
-
-::

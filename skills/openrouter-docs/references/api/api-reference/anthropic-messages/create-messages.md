@@ -1820,12 +1820,6 @@ components:
         When multiple model providers are available, optionally indicate your
         routing preference.
       title: ProviderPreferences
-    MessagesRequestServiceTier:
-      type: string
-      enum:
-        - auto
-        - standard_only
-      title: MessagesRequestServiceTier
     AnthropicSpeed:
       type: string
       enum:
@@ -2507,7 +2501,7 @@ components:
         route:
           description: Any type
         service_tier:
-          $ref: '#/components/schemas/MessagesRequestServiceTier'
+          type: string
         session_id:
           type: string
           description: >-

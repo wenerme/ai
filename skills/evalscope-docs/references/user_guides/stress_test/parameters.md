@@ -36,6 +36,7 @@ Execute `evalscope perf --help` to get a full parameter description.
 | `--stream` | `bool` | Whether to use SSE stream outputMust be enabled to measure TTFT (Time to First Token) metric | `True` |
 | `--sleep-interval` | `int` | Sleep time between each performance test (seconds)Helps avoid overloading the server | `5` |
 | `--open-loop` | `bool` | Enable open-loop mode: dispatch requests following a Poisson arrival schedule without semaphore backpressure.Requests are fired at the rate set by `--rate` regardless of whether the server has finished processing previous requests.• `--rate` becomes the sweep variable (accepts multiple values), replacing `--parallel` to drive multi-run iterations• `--number` must have the same length as `--rate`; each pair `(rate, number)` corresponds to one independent run• `--parallel` is ignored in this mode (internally set to -1 / INF)See [Usage Example](./examples.md#open-loop-mode) | `False` |
+| `--warmup-num` | `float` | Number or ratio of warmup requests:• `0`: disabled (default)• `>= 1`: absolute count, e.g. `--warmup-num 10` sends 10 warmup requests• `0 < value < 1`: ratio mode, e.g. `--warmup-num 0.1` = 10% of `--number`Warmup requests are sent with the same concurrency/rate as the benchmark but **excluded from performance metrics**Useful for eliminating cold-start effects (KV-cache filling, JIT compilation, etc.)See [Usage Example](./examples.md#warmup-benchmarking) | `0` |
 
 ```{tip}
 **Closed-loop (default)** vs **Open-loop** (`--open-loop`) — parameter behaviour comparison:
