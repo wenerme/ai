@@ -25,7 +25,7 @@ Each preset can manage:
 ## Quick Start
 
 1. [Create a preset](/settings/presets). For example, select a model and restrict provider routing to just a few providers.
-   ![Creating a new preset](file:2f12e209-e65e-4176-8228-7b03c696b6e5 "A new preset")
+   ![Creating a new preset](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/97a7df1a610c25007f695f0390f51f942c4666b001b0d069b067b52a0b1aee2a/content/assets/preset-example.png "A new preset")
 
 2. Make an API request to the preset:
 
