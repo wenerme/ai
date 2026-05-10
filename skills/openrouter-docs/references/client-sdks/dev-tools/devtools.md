@@ -32,7 +32,7 @@ Launch a web-based interface to visualize your SDK telemetry:
 * **Multi-run comparison** - Compare different SDK runs side-by-side
 * **Dark/Light mode** - Full theme support with automatic system preference detection
 
-![DevTools Interface](file:dca690ba-76e9-42c2-a4f7-b76d6186ed65)
+![DevTools Interface](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/c42509db3b19a615dbca8c54a76514ef70ad33ee9f814a0546c2188b90bbfc54/content/assets/sdk-devtools-dark.png)
 
 ### SDK Telemetry Hooks
 

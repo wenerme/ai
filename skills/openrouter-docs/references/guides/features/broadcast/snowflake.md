@@ -10,19 +10,19 @@
 
 Before connecting OpenRouter, create the `OPENROUTER_TRACES` table in your Snowflake database. You can find the exact SQL in the OpenRouter dashboard when configuring the destination:
 
-![Snowflake Table Setup](file:3b120b5b-180c-4ffa-b9e8-00eb00a079aa)
+![Snowflake Table Setup](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/db3ff2b0530882403aeb9f9eaba5ca71e222c9b8c10f525c6177e677fa576c56/content/pages/features/broadcast/snowflake-table-setup.png)
 
 ## Step 2: Create access credentials
 
 Generate a [Programmatic Access Token](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens) with `ACCOUNTADMIN` permissions in the Snowflake UI under **Settings > Authentication**.
 
-![Snowflake PAT](file:ffe0e0a4-2fdc-4188-a8b0-ff922019f06a)
+![Snowflake PAT](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/eead64d1e537b198567e1ce337babdb22cfa6c0f102856b4dd69355f10e74ed6/content/pages/features/broadcast/snowflake-pat.png)
 
 ## Step 3: Enable Broadcast in OpenRouter
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](file:41371193-08dd-4956-864e-46662edd7d4a)
+![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
 
 ## Step 4: Configure Snowflake
 
@@ -43,7 +43,7 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 
 Make an API request through OpenRouter and query your Snowflake table to verify the trace was received.
 
-![Snowflake Test Trace](file:4f9f6907-d157-430c-9c15-49c7d5bd9e7d)
+![Snowflake Test Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/d6fd2cb5005ff249fbc228889402a09c81ee584bbd9cd00aa5fc59ccfa4a4fa5/content/pages/features/broadcast/snowflake-test-trace.png)
 
 ## Example queries
 

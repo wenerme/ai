@@ -43,13 +43,13 @@ OpenRouter exposes an API that is compatible with the Anthropic Messages API.
 
 Launch Claude Desktop — you do not need to sign in. Open **Help > Troubleshooting** and click **Enable Developer Mode**. This adds a **Developer** menu to your menu bar.
 
-![Claude Desktop Help menu showing Troubleshooting submenu with Enable Developer Mode highlighted](file:7d61bb2e-1a1e-494a-9e54-2026ac1db45e)
+![Claude Desktop Help menu showing Troubleshooting submenu with Enable Developer Mode highlighted](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/d07be11e2b515a9575dc4667a7f3c6e4e19cc9491e2bfaf6fc50eaa0f54863fd/content/pages/guides/claude-desktop-enable-developer-mode.png)
 
 ### Step 2: Open the Third-Party Inference Panel
 
 Click **Developer > Configure Third-Party Inference…** in the menu bar.
 
-![Claude Desktop Developer menu with Configure Third-Party Inference highlighted](file:f4a0a265-6bfe-440b-a200-83cef50f42a5)
+![Claude Desktop Developer menu with Configure Third-Party Inference highlighted](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/93b45d112cba582a417b1d1798d5a57ad56eac712774d06131123c30250627fa/content/pages/guides/claude-desktop-configure-third-party.png)
 
 ### Step 3: Enter Gateway Credentials
 
@@ -61,7 +61,7 @@ Set the backend to **Gateway (Anthropic-compatible)** and enter your OpenRouter 
 | **Gateway API key**     | Your OpenRouter API key (e.g. `sk-or-v1-...`) |
 | **Gateway auth scheme** | `bearer`                                      |
 
-![Claude Desktop third-party inference configuration panel showing Gateway selected with OpenRouter credentials](file:785920d2-5112-4fba-b4f5-4712061e6660)
+![Claude Desktop third-party inference configuration panel showing Gateway selected with OpenRouter credentials](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ae05b883473a13b42e19a1894a4bb64f108562b8566818ddd113bfb49009156f/content/pages/guides/claude-desktop-gateway-credentials.png)
 
 Click **Apply locally** to save your settings.
 

@@ -10,13 +10,13 @@
 
 In Braintrust, go to your [Account Settings](https://www.braintrust.dev/app/settings) to create an API key, and find your Project ID in your project's settings.
 
-![Braintrust Project ID](file:6dea7049-20bc-4397-be94-0f903230bac2)
+![Braintrust Project ID](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ae8543a6d27222b8f750e4e9510f7205c32f1a999073400ef14fd0a88ba649b1/content/pages/features/broadcast/braintrust-project-id-example.png)
 
 ## Step 2: Enable Broadcast in OpenRouter
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](file:41371193-08dd-4956-864e-46662edd7d4a)
+![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
 
 ## Step 3: Configure Braintrust
 
@@ -26,19 +26,19 @@ Click the edit icon next to **Braintrust** and enter:
 * **Project Id**: Your Braintrust project ID
 * **Base Url** (optional): Default is `https://api.braintrust.dev`
 
-![Braintrust Configuration](file:fefb525b-b0e8-45dc-a84c-da337cfa87fc)
+![Braintrust Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2e424e28cce938fe94f28acee1c34fc83695c7c0085d98bcbc2cc9434f695cd9/content/pages/features/broadcast/broadcast-braintrust-config.png)
 
 ## Step 4: Test and save
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
 
-![Braintrust Configured](file:0c592ac4-d24b-43bf-8b3b-d245bdee0832)
+![Braintrust Configured](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/447023a4f5241b7d572d70b210fadd341824c4ee7a97d6e0a87bd8d45692457d/content/pages/features/broadcast/broadcast-braintrust-configured.png)
 
 ## Step 5: Send a test trace
 
 Make an API request through OpenRouter and view the trace in Braintrust.
 
-![Braintrust Trace](file:bc908da8-b633-40dd-80ae-5a23534d94b0)
+![Braintrust Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/0ef5e7f7e6f1632eac10774e85b4570829e4a4236592049b3b8d0e7dbc745c19/content/pages/features/broadcast/broadcast-braintrust-trace.png)
 
 ## Custom Metadata
 

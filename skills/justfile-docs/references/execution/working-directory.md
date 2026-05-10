@@ -23,7 +23,7 @@ $ just bar
 /subdir
 ```
 
-Use `set no-cd`<sup>master</sup> to make all recipes in the current module
+Use `set no-cd`<sup>1.51.0</sup> to make all recipes in the current module
 default to the same behavior.
 
 `set no-cd` and `set working-directory` can be overridden on a per-recipe basis
@@ -63,6 +63,6 @@ $ just foo
 ```
 
 The argument to the `working-directory` setting or `working-directory`
-attribute may be an expression<sup>master</sup> whose value is absolute or
+attribute may be an expression<sup>1.51.0</sup> whose value is absolute or
 relative. If it is relative it is interpreted relative to the default working
 directory.

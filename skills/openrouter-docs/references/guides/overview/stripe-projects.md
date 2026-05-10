@@ -6,7 +6,7 @@
 
 [Stripe Projects](https://projects.dev) is a CLI-based developer tool marketplace that lets you provision production-grade services -- hosting, databases, auth, analytics, AI, and more -- directly from your terminal. OpenRouter is a launch partner, so you can add AI model access to any project with a single command. Browse the full catalog at [projects.dev/providers](https://projects.dev/providers) and read Stripe's docs at [docs.stripe.com/stripe-projects](https://docs.stripe.com/stripe-projects).
 
-![Stripe Projects home page at projects.dev showing stripe projects add openrouter/api provisioning, syncing credentials, and writing env vars to .env](file:b32f0d4d-5144-416e-aced-af90874e1533)
+![Stripe Projects home page at projects.dev showing stripe projects add openrouter/api provisioning, syncing credentials, and writing env vars to .env](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/e8d4ac778168f53c8c53da474ac12c29bb83093b4cd391e2ac1c0760c9afb0b8/content/assets/stripe-projects/projects-dev-home.png)
 
 ## Why Use Stripe Projects with OpenRouter?
 
