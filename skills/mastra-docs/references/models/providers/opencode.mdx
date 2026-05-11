@@ -1,11 +1,11 @@
 ---
 title: "OpenCode Zen | Models"
-description: "Use OpenCode Zen models with Mastra. 38 models available."
+description: "Use OpenCode Zen models with Mastra. 39 models available."
 ---
 
 # [OpenCode Zen logo]OpenCode Zen
 
-Access 38 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 39 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Zen documentation](https://opencode.ai/docs/zen).
 
@@ -494,6 +494,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.5,
     "outputCost": 3
+  },
+  {
+    "model": "opencode/ring-2.6-1t-free",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262000,
+    "maxOutput": 66000,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -526,7 +538,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "opencode/qwen3.6-plus"
+      ? "opencode/ring-2.6-1t-free"
       : "opencode/big-pickle";
   }
 });

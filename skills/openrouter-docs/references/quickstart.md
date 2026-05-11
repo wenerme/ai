@@ -33,7 +33,7 @@ In the examples below, the OpenRouter-specific headers are optional. Setting the
 The most direct way to use OpenRouter. Send standard HTTP requests to the `/api/v1/chat/completions` endpoint — compatible with any language or framework.
 
 <Tip>
-  You can use the interactive [Request Builder](/request-builder) to generate OpenRouter API requests in the language of your choice.
+  You can use the interactive [Request Builder](https://openrouter.ai/request-builder) to generate OpenRouter API requests in the language of your choice.
 </Tip>
 
 <CodeGroup>

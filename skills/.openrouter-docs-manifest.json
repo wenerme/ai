@@ -1,8 +1,8 @@
 {
   "quickstart.md": {
     "url": "https://openrouter.ai/docs/quickstart.md",
-    "size": 9226,
-    "updatedAt": "2026-04-25T00:30:49.203Z"
+    "size": 9247,
+    "updatedAt": "2026-05-11T00:33:57.410Z"
   },
   "guides/overview/principles.md": {
     "url": "https://openrouter.ai/docs/guides/overview/principles.md",
@@ -311,8 +311,8 @@
   },
   "guides/features/broadcast/langfuse.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/langfuse.md",
-    "size": 4436,
-    "updatedAt": "2026-05-10T10:38:16.639Z"
+    "size": 5815,
+    "updatedAt": "2026-05-11T00:34:31.850Z"
   },
   "guides/features/broadcast/langsmith.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/langsmith.md",

@@ -46,13 +46,15 @@ Langfuse supports rich trace hierarchies and metadata. Use the `trace` field to 
 
 ### Supported Metadata Keys
 
-| Key               | Langfuse Mapping      | Description                                      |
-| ----------------- | --------------------- | ------------------------------------------------ |
-| `trace_id`        | Trace ID              | Group multiple requests into a single trace      |
-| `trace_name`      | Trace Name            | Custom name displayed in the Langfuse trace list |
-| `span_name`       | Span Name             | Name for intermediate spans in the hierarchy     |
-| `generation_name` | Generation Name       | Name for the LLM generation observation          |
-| `parent_span_id`  | Parent Observation ID | Link to an existing span in your trace hierarchy |
+| Key               | Langfuse Mapping      | Description                                                                                                                                                                       |
+| ----------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `trace_id`        | Trace ID              | Group multiple requests into a single trace                                                                                                                                       |
+| `trace_name`      | Trace Name            | Custom name displayed in the Langfuse trace list                                                                                                                                  |
+| `span_name`       | Span Name             | Name for intermediate spans in the hierarchy                                                                                                                                      |
+| `generation_name` | Generation Name       | Name for the LLM generation observation                                                                                                                                           |
+| `parent_span_id`  | Parent Observation ID | Link to an existing span in your trace hierarchy                                                                                                                                  |
+| `environment`     | Environment           | Populates the first-class `Environment` field used by the Langfuse project filter (e.g. `production`, `staging`). Emitted as both a resource attribute and observation attribute. |
+| `release`         | Release               | Application release/version associated with the trace. Emitted as both a resource attribute and observation attribute.                                                            |
 
 ### Example
 
@@ -68,6 +70,7 @@ Langfuse supports rich trace hierarchies and metadata. Use the `trace` field to 
     "span_name": "Summarization Step",
     "generation_name": "Generate Summary",
     "environment": "production",
+    "release": "2.1.0",
     "pipeline_version": "2.1.0"
   }
 }
