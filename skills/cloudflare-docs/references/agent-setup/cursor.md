@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.  
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.  
 ```
 
 ## Cloudflare platform access

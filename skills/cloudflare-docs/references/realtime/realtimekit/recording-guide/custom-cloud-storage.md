@@ -69,7 +69,9 @@ curl --request POST \
 
     "bucket": "your-bucket-name",
 
-    "path": "/"
+    "path": "/",
+
+    "account_id": "your-account-id"
 
   }
 

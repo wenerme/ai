@@ -14,6 +14,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-ui-kit/index.xml)
 
+## 2026-05-11
+
+**RealtimeKit Android UI Kit 1.1.0**
+
+**Features**
+
+* Added chat message pin/unpin support: long-press any message to open an actions sheet with Pin and Unpin options, with an expandable banner showing pinned messages
+* Added a "Deny All" button to the waiting room participant list and webinar stage access requests so hosts can reject all pending requests at once
+* Upgraded to [RealtimeKit Core v2.1.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-05-08)
+
 ## 2026-04-20
 
 **RealtimeKit Android UI Kit 1.0.0**

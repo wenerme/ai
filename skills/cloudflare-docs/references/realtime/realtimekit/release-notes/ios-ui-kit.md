@@ -14,6 +14,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-ui-kit/index.xml)
 
+## 2026-05-11
+
+**RealtimeKit iOS UI Kit 1.1.0**
+
+**Breaking changes**
+
+* Minimum deployment target raised to iOS 16.0
+
+**Features**
+
+* Added a "Deny All" button to the waiting room participant list so hosts can reject all pending join requests at once, in both group call and webinar meetings
+* Upgraded to [RealtimeKit Core v2.1.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-core/#2026-05-08)
+
 ## 2026-04-20
 
 **RealtimeKit iOS UI Kit 1.0.0**

@@ -14,9 +14,15 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A collection of UI Kit addons that extend RealtimeKit's prebuilt UI Kit capabilities with additional interactive components and controls for enhanced meeting experiences.
 
+This page is not available for the **iOS, Android, Flutter, React Native**platform.
+
 WebMobile
 
 ReactWeb ComponentsAngular
+
+Note
+
+UI Kit Addons are currently only available for web platforms (React, Web Components, and Angular). Mobile platform support (iOS, Android, Flutter, and React Native) is not available at this time.
 
 The UI Kit addons library provides the following categories of components:
 

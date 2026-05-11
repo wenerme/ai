@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Designing a distributed web performance architecture
 
-**Last reviewed:**  about 2 months ago 
+**Last reviewed:**  2 months ago 
 
 ## Introduction
 
