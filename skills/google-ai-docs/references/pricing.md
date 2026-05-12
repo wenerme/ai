@@ -976,7 +976,7 @@ physical world.
 |---|---|---|
 | Input price | Free of charge | $1.00 (text / image / video) $2.00 (audio) |
 | Output price (including thinking tokens) | Free of charge | $5.00 |
-| Grounding with Google Search | Free of charge, up to 1500 RPD (limit shared with Flash RPD) | 5,000 RPD (free, limit shared with Flash RPD), then $14 / 1,000 search queries for text and image-based grounding. |
+| Grounding with Google Search | Not available | 5,000 prompts per month (free, limit shared with Flash), then $14 / 1,000 search queries for text and image-based grounding. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ### Batch

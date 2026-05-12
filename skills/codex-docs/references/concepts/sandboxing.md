@@ -126,12 +126,7 @@ In the Codex app and IDE, you choose a mode from the permissions selector under
 the composer or chat input. That selector lets you rely on Codex's default
 permissions, switch to full access, or use your custom configuration.
 
-<div class="not-prose max-w-[22rem] mr-auto mb-6">
-  <img src="https://developers.openai.com/images/codex/app/permissions-selector-light.webp"
-    alt="Codex app permissions selector showing Default permissions, Full access, and Custom (config.toml)"
-    class="block h-auto w-full mx-0!"
-  />
-</div>
+<PermissionModeSelectorDemo client:load />
 
 In the CLI, use [`/permissions`](https://developers.openai.com/codex/cli/slash-commands#update-permissions-with-permissions)
 to switch modes during a session.
@@ -142,10 +137,10 @@ If you want Codex to start with the same behavior every time, use a custom
 configuration. Codex stores those defaults in `config.toml`, its local settings
 file. [Config basics](https://developers.openai.com/codex/config-basic) explains how it works, and the
 [Configuration reference](https://developers.openai.com/codex/config-reference) documents the exact keys for
-`sandbox_mode`, `approval_policy`, and
+`sandbox_mode`, `approval_policy`, `approvals_reviewer`, and
 `sandbox_workspace_write.writable_roots`. Use those settings to decide how much
-autonomy Codex gets by default, which directories it can write to, and when it
-should pause for approval.
+autonomy Codex gets by default, which directories it can write to, when it
+should pause for approval, and who reviews eligible approval requests.
 
 At a high level, the common sandbox modes are:
 
@@ -166,11 +161,20 @@ The common approval policies are:
   needs to go beyond that boundary.
 - `never`: Codex doesn't stop for approval prompts.
 
+When approvals are interactive, you can also choose who reviews them with
+`approvals_reviewer`:
+
+- `user`: approval prompts surface to the user. This is the default.
+- `auto_review`: eligible approval prompts go to a reviewer agent (see
+  [Auto-review](https://developers.openai.com/codex/concepts/sandboxing/auto-review)).
+
 Full access means using `sandbox_mode = "danger-full-access"` together with
 `approval_policy = "never"`. By contrast, the lower-risk local automation
 preset is `sandbox_mode = "workspace-write"` together with
 `approval_policy = "on-request"`, or the matching CLI flags
-`--sandbox workspace-write --ask-for-approval on-request`.
+`--sandbox workspace-write --ask-for-approval on-request`. You can then keep
+`approvals_reviewer = "user"` for manual approvals or set
+`approvals_reviewer = "auto_review"` for automatic approval review.
 
 If you need Codex to work across more than one directory, writable roots let
 you extend the places it can modify without removing the sandbox entirely. If
@@ -193,11 +197,13 @@ of approvals and sandbox behavior in the app, see
 [Codex app features](https://developers.openai.com/codex/app/features#approvals-and-sandboxing), and for the
 IDE-specific settings entry points, see [Codex IDE extension settings](https://developers.openai.com/codex/ide/settings).
 
-Automatic review, when available, doesn't change the sandbox boundary. It
-reviews approval requests, such as sandbox escalations or network access, while
-actions already allowed inside the sandbox run without extra review. See
-[Automatic approval reviews](https://developers.openai.com/codex/agent-approvals-security#automatic-approval-reviews)
-for the policy behavior.
+Automatic review, when available, does not change the sandbox boundary. It is
+one possible `approvals_reviewer` for approval requests at that boundary, such
+as sandbox escalations, blocked network access, or side-effecting tool calls
+that still need approval. Actions already allowed inside the sandbox run
+without extra review. For the reviewer lifecycle, trigger types, denial
+semantics, and configuration details, see
+[Auto-review](https://developers.openai.com/codex/concepts/sandboxing/auto-review).
 
 Platform details live in the platform-specific docs. For native Windows setup,
 behavior, and troubleshooting, see [Windows](https://developers.openai.com/codex/windows). For admin

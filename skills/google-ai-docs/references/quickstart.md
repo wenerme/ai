@@ -6,7 +6,9 @@ and make your first Gemini API request.
 
 ## Before you begin
 
-Using the Gemini API requires an API key, you can create one for free to get started.
+To use the Gemini API, you need to have an API key to authenticate your requests, enforce security limits, and track usage to your account.
+
+Create one on AI Studio for free to get started:
 
 [Create a Gemini API Key](https://aistudio.google.com/app/apikey)
 
@@ -76,7 +78,12 @@ your module directory using the [dotnet add command](https://learn.microsoft.com
 
 ## Make your first request
 
-Here is an example that uses the
+There are two ways you can use to send a request to the Gemini API:
+
+- ***(Recommended)*** [Interactions API](https://ai.google.dev/api/interactions-api) is a new primitive with native support for multi-step tool use, orchestration, and complex reasoning flows through typed execution steps. Going forward, new models beyond the core mainline family, along with new agentic capabilities and tools, will launch exclusively on the Interactions API.
+- [`generateContent`](https://ai.google.dev/api/generate-content#method:-models.generatecontent) provides a way to generate a simple, stateless response from a model. While we recommend using Interactions API, `generateContent` is fully supported.
+
+This example that uses the
 [`generateContent`](https://ai.google.dev/api/generate-content#method:-models.generatecontent) method
 to send a request to the Gemini API using the Gemini 2.5 Flash model.
 

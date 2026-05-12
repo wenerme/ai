@@ -137,7 +137,9 @@ components:
           description: New name for the workspace
         slug:
           type: string
-          description: New URL-friendly slug
+          description: >-
+            New URL-friendly slug (lowercase alphanumeric segments separated by
+            single hyphens, no leading/trailing hyphens)
       title: UpdateWorkspaceRequest
     UpdateWorkspaceResponseData:
       type: object

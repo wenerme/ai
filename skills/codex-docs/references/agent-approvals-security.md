@@ -121,16 +121,21 @@ approval_policy = "on-request"
 approvals_reviewer = "auto_review"
 ```
 
+For the full reviewer lifecycle, trigger conditions, configuration precedence,
+and failure behavior, see
+[Auto-review](https://developers.openai.com/codex/concepts/sandboxing/auto-review).
+
 The reviewer evaluates only actions that already need approval, such as sandbox
-escalations, network requests, `request_permissions` prompts, or side-effecting
-app and MCP tool calls. Actions that stay inside the sandbox continue without an
-extra review step.
+escalations, blocked network requests, `request_permissions` prompts, or
+side-effecting app and MCP tool calls. Actions that stay inside the sandbox
+continue without an extra review step.
 
 The reviewer policy checks for data exfiltration, credential probing, persistent
 security weakening, and destructive actions. Low-risk and medium-risk actions
 can proceed when policy allows them. The policy denies critical-risk actions.
 High-risk actions require enough user authorization and no matching deny rule.
-Timeouts, parse failures, and review errors fail closed.
+Prompt-build, review-session, and parse failures fail closed. Timeouts are
+surfaced separately, but the action still does not run.
 
 The [default reviewer policy](https://github.com/openai/codex/blob/main/codex-rs/core/src/guardian/policy.md)
 is in the open-source Codex repository. Enterprises can replace its
@@ -139,22 +144,24 @@ Local `[auto_review].policy` text is also supported, but managed requirements
 take precedence. For setup details, see
 [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration#configure-automatic-review-policy).
 
-In the Codex app, these reviews appear as automatic review items with a status such
-as Reviewing, Approved, Denied, Stopped, or Timed out. They can also include a
-risk level for the reviewed request.
+In the Codex app, these reviews appear as automatic review items with a status
+such as Reviewing, Approved, Denied, Aborted, or Timed out. They can also
+include a risk level and user-authorization assessment for the reviewed
+request.
 
 Automatic review uses extra model calls, so it can add to Codex usage. Admins
 can constrain it with `allowed_approvals_reviewers`.
 
 ### Common sandbox and approval combinations
 
-| Intent                                                            | Flags                                                                          | Effect                                                                                                                                           |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Auto (preset)                                                     | _no flags needed_ or `--sandbox workspace-write --ask-for-approval on-request` | Codex can read files, make edits, and run commands in the workspace. Codex requires approval to edit outside the workspace or to access network. |
-| Safe read-only browsing                                           | `--sandbox read-only --ask-for-approval on-request`                            | Codex can read files and answer questions. Codex requires approval to make edits, run commands, or access network.                               |
-| Read-only non-interactive (CI)                                    | `--sandbox read-only --ask-for-approval never`                                 | Codex can only read files; never asks for approval.                                                                                              |
-| Automatically edit but ask for approval to run untrusted commands | `--sandbox workspace-write --ask-for-approval untrusted`                       | Codex can read and edit files but asks for approval before running untrusted commands.                                                           |
-| Dangerous full access                                             | `--dangerously-bypass-approvals-and-sandbox` (alias: `--yolo`)                 | <ElevatedRiskBadge /> No sandbox; no approvals _(not recommended)_                                                                               |
+| Intent                                                            | Flags / config                                                                                                                      | Effect                                                                                                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Auto (preset)                                                     | _no flags needed_ or `--sandbox workspace-write --ask-for-approval on-request`                                                      | Codex can read files, make edits, and run commands in the workspace. Codex requires approval to edit outside the workspace or to access network. |
+| Safe read-only browsing                                           | `--sandbox read-only --ask-for-approval on-request`                                                                                 | Codex can read files and answer questions. Codex requires approval to make edits, run commands, or access network.                               |
+| Read-only non-interactive (CI)                                    | `--sandbox read-only --ask-for-approval never`                                                                                      | Codex can only read files; never asks for approval.                                                                                              |
+| Automatically edit but ask for approval to run untrusted commands | `--sandbox workspace-write --ask-for-approval untrusted`                                                                            | Codex can read and edit files but asks for approval before running untrusted commands.                                                           |
+| Auto-review mode                                                  | `--sandbox workspace-write --ask-for-approval on-request -c approvals_reviewer=auto_review` or `approvals_reviewer = "auto_review"` | Same sandbox boundary as standard on-request mode, but eligible approval requests are reviewed by Auto-review instead of surfacing to the user.  |
+| Dangerous full access                                             | `--dangerously-bypass-approvals-and-sandbox` (alias: `--yolo`)                                                                      | <ElevatedRiskBadge /> No sandbox; no approvals _(not recommended)_                                                                               |
 
 For non-interactive runs, use `codex exec --sandbox workspace-write`; Codex keeps older `codex exec --full-auto` invocations as a deprecated compatibility path and prints a warning.
 

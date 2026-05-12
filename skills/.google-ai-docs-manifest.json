@@ -62,8 +62,8 @@
   "google-ai-docs/quickstart.md": {
     "url": "https://ai.google.dev/gemini-api/docs/quickstart",
     "skill": "google-ai-docs",
-    "size": 8118,
-    "updatedAt": "2026-05-08T00:44:34.199Z"
+    "size": 8912,
+    "updatedAt": "2026-05-12T11:04:43.066Z"
   },
   "google-ai-docs/api-versions.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-versions",
@@ -152,8 +152,8 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 54752,
-    "updatedAt": "2026-05-08T00:44:43.136Z"
+    "size": 54715,
+    "updatedAt": "2026-05-12T11:04:51.057Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -245,6 +245,12 @@
     "size": 5192,
     "updatedAt": "2026-05-07T00:44:49.834Z"
   },
+  "google-ai-api/interactions-api.md": {
+    "url": "https://ai.google.dev/api/interactions-api",
+    "skill": "google-ai-api",
+    "size": 76466,
+    "updatedAt": "2026-05-12T11:05:03.139Z"
+  },
   "google-ai-docs/image-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/image-generation",
     "skill": "google-ai-docs",
@@ -260,8 +266,8 @@
   "google-ai-docs/thought-signatures.md": {
     "url": "https://ai.google.dev/gemini-api/docs/thought-signatures",
     "skill": "google-ai-docs",
-    "size": 28968,
-    "updatedAt": "2026-05-07T00:44:51.179Z"
+    "size": 28946,
+    "updatedAt": "2026-05-12T11:05:04.374Z"
   },
   "google-ai-docs/video-understanding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/video-understanding",

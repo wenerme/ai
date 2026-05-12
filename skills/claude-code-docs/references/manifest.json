@@ -97,9 +97,9 @@
   },
   "claude-directory.md": {
     "url": "https://code.claude.com/docs/en/claude-directory",
-    "lastModified": "Mon, 11 May 2026 23:43:30 GMT",
-    "size": 80335,
-    "updatedAt": "2026-05-12T00:24:40.325Z"
+    "lastModified": "Tue, 12 May 2026 01:32:10 GMT",
+    "size": 80500,
+    "updatedAt": "2026-05-12T10:48:18.501Z"
   },
   "claude-platform-on-aws.md": {
     "url": "https://code.claude.com/docs/en/claude-platform-on-aws",
@@ -277,15 +277,15 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Mon, 11 May 2026 23:46:12 GMT",
-    "size": 178872,
-    "updatedAt": "2026-05-12T00:24:50.894Z"
+    "lastModified": "Tue, 12 May 2026 09:14:49 GMT",
+    "size": 179048,
+    "updatedAt": "2026-05-12T10:48:28.952Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
-    "lastModified": "Mon, 11 May 2026 23:42:34 GMT",
-    "size": 54446,
-    "updatedAt": "2026-05-12T00:24:51.253Z"
+    "lastModified": "Tue, 12 May 2026 01:32:15 GMT",
+    "size": 54610,
+    "updatedAt": "2026-05-12T10:48:29.298Z"
   },
   "how-claude-code-works.md": {
     "url": "https://code.claude.com/docs/en/how-claude-code-works",
@@ -373,9 +373,9 @@
   },
   "permission-modes.md": {
     "url": "https://code.claude.com/docs/en/permission-modes",
-    "lastModified": "Mon, 11 May 2026 23:46:54 GMT",
-    "size": 20769,
-    "updatedAt": "2026-05-12T00:24:56.437Z"
+    "lastModified": "Tue, 12 May 2026 01:20:07 GMT",
+    "size": 21190,
+    "updatedAt": "2026-05-12T10:48:34.515Z"
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
@@ -409,9 +409,9 @@
   },
   "plugins-reference.md": {
     "url": "https://code.claude.com/docs/en/plugins-reference",
-    "lastModified": "Mon, 11 May 2026 23:49:54 GMT",
-    "size": 64527,
-    "updatedAt": "2026-05-12T00:24:58.541Z"
+    "lastModified": "Tue, 12 May 2026 05:41:44 GMT",
+    "size": 64594,
+    "updatedAt": "2026-05-12T10:48:36.623Z"
   },
   "quickstart.md": {
     "url": "https://code.claude.com/docs/en/quickstart",

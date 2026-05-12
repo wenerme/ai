@@ -1,5 +1,5 @@
 ---
-description: 'Frequently asked questions about ClickPipes for Kafka'
+description: 'Frequently asked questions about ClickPipes for Kafka.'
 title: 'Kafka ClickPipes FAQ'
 doc_type: 'guide'
 keywords: ['kafka faq', 'clickpipes', 'upstash', 'azure event hubs', 'private link']

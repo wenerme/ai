@@ -9146,10 +9146,10 @@
   "codex-docs/agent-approvals-security.md": {
     "url": "https://developers.openai.com/codex/agent-approvals-security.md",
     "skill": "codex-docs",
-    "etag": "W/\"6d67db6057cf91c49e2212fd2165f8b6\"",
-    "lastModified": "Thu, 30 Apr 2026 21:39:49 GMT",
-    "size": 23351,
-    "updatedAt": "2026-05-01T00:35:02.613Z"
+    "etag": "W/\"108affed0258a1b930fe562af60f29f3\"",
+    "lastModified": "Tue, 12 May 2026 03:00:18 GMT",
+    "size": 24379,
+    "updatedAt": "2026-05-12T11:01:04.630Z"
   },
   "codex-docs/app-server.md": {
     "url": "https://developers.openai.com/codex/app-server.md",
@@ -9354,10 +9354,18 @@
   "codex-docs/concepts/sandboxing.md": {
     "url": "https://developers.openai.com/codex/concepts/sandboxing.md",
     "skill": "codex-docs",
-    "etag": "W/\"a3d6d9f8c30649526092e49fbd322771\"",
-    "lastModified": "Thu, 30 Apr 2026 21:13:07 GMT",
-    "size": 8909,
-    "updatedAt": "2026-05-01T00:35:08.711Z"
+    "etag": "W/\"6f3e8e2cdb7287611210759ff5526e0b\"",
+    "lastModified": "Tue, 12 May 2026 03:00:22 GMT",
+    "size": 9317,
+    "updatedAt": "2026-05-12T11:01:11.498Z"
+  },
+  "codex-docs/concepts/sandboxing/auto-review.md": {
+    "url": "https://developers.openai.com/codex/concepts/sandboxing/auto-review.md",
+    "skill": "codex-docs",
+    "etag": "W/\"2cf41030f4b33dcb684b695ceafaaef5\"",
+    "lastModified": "Tue, 12 May 2026 03:00:22 GMT",
+    "size": 7668,
+    "updatedAt": "2026-05-12T11:01:11.736Z"
   },
   "codex-docs/concepts/subagents.md": {
     "url": "https://developers.openai.com/codex/concepts/subagents.md",

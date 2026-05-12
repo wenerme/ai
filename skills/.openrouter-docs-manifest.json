@@ -771,8 +771,8 @@
   },
   "api/api-reference/workspaces/create-workspace.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/workspaces/create-workspace.md",
-    "size": 16845,
-    "updatedAt": "2026-05-06T10:57:34.300Z"
+    "size": 16921,
+    "updatedAt": "2026-05-12T11:03:27.568Z"
   },
   "api/api-reference/workspaces/get-workspace.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/workspaces/get-workspace.md",
@@ -786,8 +786,8 @@
   },
   "api/api-reference/workspaces/update-workspace.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/workspaces/update-workspace.md",
-    "size": 16787,
-    "updatedAt": "2026-05-06T10:57:41.903Z"
+    "size": 16905,
+    "updatedAt": "2026-05-12T11:03:29.256Z"
   },
   "api/api-reference/workspaces/bulk-add-workspace-members.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/workspaces/bulk-add-workspace-members.md",

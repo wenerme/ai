@@ -125,7 +125,9 @@ components:
           description: Name for the new workspace
         slug:
           type: string
-          description: URL-friendly slug (lowercase alphanumeric and hyphens only)
+          description: >-
+            URL-friendly slug (lowercase alphanumeric segments separated by
+            single hyphens, no leading/trailing hyphens)
       required:
         - name
         - slug
