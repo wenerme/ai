@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.  
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.  
 ```
 
 ## Cloudflare platform access

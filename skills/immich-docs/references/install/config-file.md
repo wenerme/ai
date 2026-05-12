@@ -25,7 +25,7 @@ immich.json
   },
   "ffmpeg": {
     "accel": "disabled",
-    "accelDecode": false,
+    "accelDecode": true,
     "acceptedAudioCodecs": ["aac", "mp3", "opus"],
     "acceptedContainers": ["mov", "ogg", "webm"],
     "acceptedVideoCodecs": ["h264"],

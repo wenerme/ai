@@ -170,6 +170,7 @@ shell_snapshot = true           # Speed up repeated commands
 | Key                  |        Default        | Maturity     | Description                                                                              |
 | -------------------- | :-------------------: | ------------ | ---------------------------------------------------------------------------------------- |
 | `apps`               |         false         | Experimental | Enable ChatGPT Apps/connectors support                                                   |
+| `codex_git_commit`   |         false         | Experimental | Enable Codex-generated git commits and commit attribution trailers                       |
 | `codex_hooks`        |         true          | Stable       | Enable lifecycle hooks from `hooks.json` or inline `[hooks]`. See [Hooks](https://developers.openai.com/codex/hooks). |
 | `fast_mode`          |         true          | Stable       | Enable Fast mode selection and the `service_tier = "fast"` path                          |
 | `memories`           |         false         | Stable       | Enable [Memories](https://developers.openai.com/codex/memories)                                                       |

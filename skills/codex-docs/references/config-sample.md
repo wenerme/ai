@@ -83,7 +83,9 @@ model_provider = "openai"
 # Inline override for the history compaction prompt. Default: unset.
 # compact_prompt = ""
 
-# Override the default commit co-author trailer. Set to "" to disable it.
+# Override the default commit co-author trailer. This only takes effect when
+# [features].codex_git_commit is enabled. When enabled and unset, Codex uses
+# "Codex <noreply@openai.com>". Set to "" to disable it.
 # commit_attribution = "Jane Doe <jane@example.com>"
 
 # Override built-in base instructions with a file path. Default: unset.
@@ -398,6 +400,7 @@ enabled = true
 # Leave this table empty to accept defaults. Set explicit booleans to opt in/out.
 # shell_tool = true
 # apps = false
+# codex_git_commit = false
 # codex_hooks = false
 # unified_exec = true
 # shell_snapshot = true

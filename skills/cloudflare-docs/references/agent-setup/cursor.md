@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.  
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.  
 ```
 
 ## Cloudflare platform access

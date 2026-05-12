@@ -472,6 +472,10 @@ For models that only return raw reasoning strings, you can use the simpler `reas
     </li>
 
     <li>
+      Arcee AI: Trinity Large Thinking and newer
+    </li>
+
+    <li>
       MiniMax: MiniMax M2 and newer
     </li>
 

@@ -286,19 +286,13 @@ If the fetch fails, the response includes an error:
 
 | Engine         | Pricing                                                     |
 | -------------- | ----------------------------------------------------------- |
-| **Exa**        | \$1 per 1,000 fetches (free with BYOK)                      |
+| **Exa**        | \$1 per 1,000 fetches                                       |
 | **Firecrawl**  | Uses your Firecrawl credits directly — no OpenRouter charge |
 | **OpenRouter** | Free                                                        |
 | **Native**     | Passed through from the provider                            |
 
 All pricing is in addition to standard LLM token costs for processing the
 fetched content.
-
-### Exa BYOK
-
-If you configure your own Exa API key in your
-[provider settings](https://openrouter.ai/settings/plugins), web fetches using
-the Exa engine are free through OpenRouter — you pay Exa directly.
 
 ## Next Steps
 

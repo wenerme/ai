@@ -12,8 +12,8 @@ Add `--continuous-batching` to enable it.
 
 ```sh
 transformers serve \
-  --continuous-batching
-  --attn_implementation "sdpa"
+  --continuous-batching \
+  --attn-implementation "sdpa"
 ```
 
 Monitor continuous batching performance with [OpenTelemetry](https://opentelemetry.io). It collects traces and metrics, but you'll need a backend to visualize them.
@@ -53,8 +53,8 @@ An optimized [attention backend](../attention_interface) improves memory efficie
 
 ```sh
 transformers serve \
-  --continuous_batching \
-  --attn_implementation "flash_attention_2"
+  --continuous-batching \
+  --attn-implementation "flash_attention_2"
 ```
 
 ## Compile
@@ -75,6 +75,6 @@ The `"bfloat16"` or `"float16"` [data types](../models#model-data-type) save mem
 
 ```sh
 transformers serve \
-  --continuous_batching \
+  --continuous-batching \
   --dtype "bfloat16"
 ```

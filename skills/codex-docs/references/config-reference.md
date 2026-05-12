@@ -208,7 +208,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "commit_attribution",
       type: "string",
       description:
-        "Override the commit co-author trailer text. Set an empty string to disable automatic attribution.",
+        'Commit co-author trailer used when `[features].codex_git_commit` is enabled. Defaults to `Codex <noreply@openai.com>`; set `""` to disable.',
     },
     {
       key: "model_instructions_file",
@@ -329,6 +329,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "boolean",
       description:
         "Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config.",
+    },
+    {
+      key: "features.codex_git_commit",
+      type: "boolean",
+      description:
+        "Enable Codex-generated git commits. When enabled, Codex uses `commit_attribution` to append a `Co-authored-by:` trailer to generated commit messages.",
     },
     {
       key: "hooks",

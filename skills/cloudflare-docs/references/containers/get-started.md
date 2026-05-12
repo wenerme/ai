@@ -112,7 +112,7 @@ Now, open the URL for your Worker. It should look something like `https://hello-
 
 If you make requests to the paths `/container/1` or `/container/2`, your Worker routes requests to specific containers. Each different path after "/container/" routes to a unique container.
 
-If you make requests to `/lb`, you will load balanace requests to one of 3 containers chosen at random.
+If you make requests to `/lb`, you will load balance requests to one of 3 containers chosen at random.
 
 You can confirm this behavior by reading the output of each request.
 
@@ -138,8 +138,8 @@ See the [documentation for Durable Object container methods](https://developers.
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
 
-* [  wrangler.jsonc ](#tab-panel-5581)
-* [  wrangler.toml ](#tab-panel-5582)
+* [  wrangler.jsonc ](#tab-panel-5583)
+* [  wrangler.toml ](#tab-panel-5584)
 
 JSONC
 

@@ -24,8 +24,8 @@ For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](htt
 
 Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-4375)
-* [  wrangler.toml ](#tab-panel-4376)
+* [  wrangler.jsonc ](#tab-panel-4377)
+* [  wrangler.toml ](#tab-panel-4378)
 
 JSONC
 
@@ -65,8 +65,8 @@ Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` 
 
 **Workers AI model:**
 
-* [  JavaScript ](#tab-panel-4377)
-* [  TypeScript ](#tab-panel-4378)
+* [  JavaScript ](#tab-panel-4379)
+* [  TypeScript ](#tab-panel-4380)
 
 JavaScript
 
@@ -86,7 +86,7 @@ const resp = await env.AI.run(
 
     gateway: {
 
-      id: "my-gateway",
+      id: "default", // or use a specific gateway name
 
     },
 
@@ -115,7 +115,7 @@ const resp = await env.AI.run(
 
     gateway: {
 
-      id: "my-gateway",
+      id: "default", // or use a specific gateway name
 
     },
 
@@ -128,8 +128,8 @@ const resp = await env.AI.run(
 
 **Third-party model:**
 
-* [  JavaScript ](#tab-panel-4379)
-* [  TypeScript ](#tab-panel-4380)
+* [  JavaScript ](#tab-panel-4381)
+* [  TypeScript ](#tab-panel-4382)
 
 JavaScript
 
@@ -149,7 +149,7 @@ const resp = await env.AI.run(
 
     gateway: {
 
-      id: "my-gateway",
+      id: "default", // or use a specific gateway name
 
     },
 
@@ -178,7 +178,7 @@ const resp = await env.AI.run(
 
     gateway: {
 
-      id: "my-gateway",
+      id: "default", // or use a specific gateway name
 
     },
 
@@ -201,14 +201,14 @@ Browse available models in the [model catalog](https://developers.cloudflare.com
 
 The third argument to `env.AI.run()` accepts a `gateway` object with the following parameters:
 
-| Parameter  | Type    | Default    | Description                                                                                                                       |
-| ---------- | ------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| id         | string  | _required_ | Name of your [AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/). Must be in the same account as your Worker. |
-| skipCache  | boolean | false      | Skip the [cache](https://developers.cloudflare.com/ai-gateway/features/caching/) for this request.                                |
-| cacheTtl   | number  | —          | [Cache TTL](https://developers.cloudflare.com/ai-gateway/features/caching/) in seconds.                                           |
-| cacheKey   | string  | —          | Custom [cache key](https://developers.cloudflare.com/ai-gateway/features/caching/) for this request.                              |
-| collectLog | boolean | —          | Whether to [collect logs](https://developers.cloudflare.com/ai-gateway/observability/logging/) for this request.                  |
-| metadata   | object  | —          | [Custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) to attach to the log entry.        |
+| Parameter  | Type    | Default    | Description                                                                                                                                                                                                                                                                                                                                               |
+| ---------- | ------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id         | string  | _required_ | Name of your [AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/). Must be in the same account as your Worker. Use "default" to automatically create a gateway on the first authenticated request. Refer to [Default gateway](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#default-gateway) for details. |
+| skipCache  | boolean | false      | Skip the [cache](https://developers.cloudflare.com/ai-gateway/features/caching/) for this request.                                                                                                                                                                                                                                                        |
+| cacheTtl   | number  | —          | [Cache TTL](https://developers.cloudflare.com/ai-gateway/features/caching/) in seconds.                                                                                                                                                                                                                                                                   |
+| cacheKey   | string  | —          | Custom [cache key](https://developers.cloudflare.com/ai-gateway/features/caching/) for this request.                                                                                                                                                                                                                                                      |
+| collectLog | boolean | —          | Whether to [collect logs](https://developers.cloudflare.com/ai-gateway/observability/logging/) for this request.                                                                                                                                                                                                                                          |
+| metadata   | object  | —          | [Custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) to attach to the log entry.                                                                                                                                                                                                                                |
 
 ## `env.AI.aiGatewayLogId`
 

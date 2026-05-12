@@ -26,8 +26,8 @@ TerminalStandaloneCloudExtensionOpen Source
 
 ## Quick start
 
-* [ Terminal ](#tab-panel-3098)
-* [ Standalone ](#tab-panel-3099)
+* [ Terminal ](#tab-panel-3100)
+* [ Standalone ](#tab-panel-3101)
 
 1. **Install Codex**  
 Install the Codex CLI. macOS and Linux are fully supported; use WSL2 on Windows. For Homebrew or other install methods, see the [Codex CLI setup guide ↗](https://developers.openai.com/codex/cli/).  
@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.  
+Add a cron trigger to my Worker that processes a job queue every hour.  
 ```
 
 1. **Download Codex**  

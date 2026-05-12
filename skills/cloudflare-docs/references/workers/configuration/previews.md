@@ -29,7 +29,7 @@ Preview URLs can be:
 * Used for collaboration between teams to test code changes in a live environment and verify updates.
 * Used to test new API endpoints, validate data formats, and ensure backward compatibility with existing services.
 
-When testing zone level performance or security features for a version, we recommend using [version overrides](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#version-overrides) so that your zone's performance and security settings apply.
+When testing zone level performance or security features for a version, we recommend using [version overrides](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/version-overrides/) so that your zone's performance and security settings apply.
 
 Note
 
@@ -140,8 +140,8 @@ Older Wrangler versions will default to Preview URLs being enabled.
 
 To toggle Preview URLs for a Worker, include any of the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8552)
-* [  wrangler.toml ](#tab-panel-8553)
+* [  wrangler.jsonc ](#tab-panel-9104)
+* [  wrangler.toml ](#tab-panel-9105)
 
 JSONC
 
@@ -165,8 +165,8 @@ preview_urls = true
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-8554)
-* [  wrangler.toml ](#tab-panel-8555)
+* [  wrangler.jsonc ](#tab-panel-9106)
+* [  wrangler.toml ](#tab-panel-9107)
 
 JSONC
 

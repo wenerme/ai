@@ -14,6 +14,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Mount S3-compatible object storage buckets as local filesystem paths. Access object storage using standard file operations.
 
+Mounting `/workspace`
+
+Mounting a bucket at `/workspace` or a subpath under it can be confusing in app or project setups. In production, the mount overlays that path instead of merging with files already in the image or template. If you want `/workspace` itself to persist over time, [Backup and restore](https://developers.cloudflare.com/sandbox/guides/backup-restore/) is often a better fit.
+
 S3-compatible providers
 
 The SDK works with any S3-compatible object storage provider. Examples include Cloudflare R2, Amazon S3, Google Cloud Storage, Backblaze B2, MinIO, and [many others ↗](https://github.com/s3fs-fuse/s3fs-fuse/wiki/Non-Amazon-S3). The SDK automatically detects and optimizes for R2, S3, and GCS.
@@ -29,8 +33,8 @@ Mount S3-compatible buckets when you need:
 
 ## Mount an R2 bucket
 
-* [  JavaScript ](#tab-panel-7793)
-* [  TypeScript ](#tab-panel-7794)
+* [  JavaScript ](#tab-panel-8107)
+* [  TypeScript ](#tab-panel-8108)
 
 JavaScript
 
@@ -149,8 +153,8 @@ R2 credentials
 
 We also automatically detect `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for compatibility with other S3-compatible providers.
 
-* [  JavaScript ](#tab-panel-7779)
-* [  TypeScript ](#tab-panel-7780)
+* [  JavaScript ](#tab-panel-8093)
+* [  TypeScript ](#tab-panel-8094)
 
 JavaScript
 
@@ -186,8 +190,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Pass credentials directly when needed:
 
-* [  JavaScript ](#tab-panel-7781)
-* [  TypeScript ](#tab-panel-7782)
+* [  JavaScript ](#tab-panel-8095)
+* [  TypeScript ](#tab-panel-8096)
 
 JavaScript
 
@@ -235,8 +239,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Mount a specific subdirectory within a bucket using the `prefix` option. Only contents under the prefix are visible at the mount point:
 
-* [  JavaScript ](#tab-panel-7803)
-* [  TypeScript ](#tab-panel-7804)
+* [  JavaScript ](#tab-panel-8117)
+* [  TypeScript ](#tab-panel-8118)
 
 JavaScript
 
@@ -352,8 +356,8 @@ The `prefix` must start and end with `/` (e.g., `/data/`, `/logs/2024/`). This i
 
 Protect data by mounting buckets in read-only mode:
 
-* [  JavaScript ](#tab-panel-7785)
-* [  TypeScript ](#tab-panel-7786)
+* [  JavaScript ](#tab-panel-8099)
+* [  TypeScript ](#tab-panel-8100)
 
 JavaScript
 
@@ -413,8 +417,8 @@ You can mount R2 buckets during local development with `wrangler dev` by passing
 
 Add an R2 bucket binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7777)
-* [  wrangler.toml ](#tab-panel-7778)
+* [  wrangler.jsonc ](#tab-panel-8091)
+* [  wrangler.toml ](#tab-panel-8092)
 
 JSONC
 
@@ -456,8 +460,8 @@ bucket_name = "my-test-bucket"
 
 Pass `localBucket: true` in the options to mount the bucket locally:
 
-* [  JavaScript ](#tab-panel-7783)
-* [  TypeScript ](#tab-panel-7784)
+* [  JavaScript ](#tab-panel-8097)
+* [  TypeScript ](#tab-panel-8098)
 
 JavaScript
 
@@ -522,8 +526,8 @@ When `localBucket` is `true`, the `endpoint` is ignored and the SDK uses the R2 
 
 The `readOnly` and `prefix` options work the same way in local mode:
 
-* [  JavaScript ](#tab-panel-7789)
-* [  TypeScript ](#tab-panel-7790)
+* [  JavaScript ](#tab-panel-8103)
+* [  TypeScript ](#tab-panel-8104)
 
 JavaScript
 
@@ -591,12 +595,12 @@ During local development, files are synchronized between R2 and the container us
 
 Note
 
-These considerations apply to local development with `wrangler dev` only. In production, bucket mounts use a direct filesystem mount with no synchronization delay.
+These considerations apply to local development with `wrangler dev` only. In production, bucket mounts use a direct filesystem mount with no synchronization delay. Local sync-style behavior may not fully reflect how a production mount overlays the target path.
 
 ## Unmount buckets
 
-* [  JavaScript ](#tab-panel-7787)
-* [  TypeScript ](#tab-panel-7788)
+* [  JavaScript ](#tab-panel-8101)
+* [  TypeScript ](#tab-panel-8102)
 
 JavaScript
 
@@ -650,8 +654,8 @@ The SDK supports any S3-compatible object storage. Here are examples for common 
 
 ### Amazon S3
 
-* [  JavaScript ](#tab-panel-7791)
-* [  TypeScript ](#tab-panel-7792)
+* [  JavaScript ](#tab-panel-8105)
+* [  TypeScript ](#tab-panel-8106)
 
 JavaScript
 
@@ -697,8 +701,8 @@ await sandbox.mountBucket('my-s3-bucket', '/data', {
 
 ### Google Cloud Storage
 
-* [  JavaScript ](#tab-panel-7795)
-* [  TypeScript ](#tab-panel-7796)
+* [  JavaScript ](#tab-panel-8109)
+* [  TypeScript ](#tab-panel-8110)
 
 JavaScript
 
@@ -750,8 +754,8 @@ Generate HMAC keys in GCS console under Settings → Interoperability.
 
 For providers like Backblaze B2, MinIO, Wasabi, or others, use the standard mount pattern:
 
-* [  JavaScript ](#tab-panel-7797)
-* [  TypeScript ](#tab-panel-7798)
+* [  JavaScript ](#tab-panel-8111)
+* [  TypeScript ](#tab-panel-8112)
 
 JavaScript
 
@@ -842,8 +846,8 @@ npx wrangler secret put AWS_SECRET_ACCESS_KEY
 
 Verify your endpoint format and credentials:
 
-* [  JavaScript ](#tab-panel-7801)
-* [  TypeScript ](#tab-panel-7802)
+* [  JavaScript ](#tab-panel-8115)
+* [  TypeScript ](#tab-panel-8116)
 
 JavaScript
 
@@ -897,8 +901,8 @@ try {
 
 **Solution**: Unmount first or use a different path:
 
-* [  JavaScript ](#tab-panel-7799)
-* [  TypeScript ](#tab-panel-7800)
+* [  JavaScript ](#tab-panel-8113)
+* [  TypeScript ](#tab-panel-8114)
 
 JavaScript
 
@@ -938,8 +942,8 @@ File operations on mounted buckets are slower than local filesystem due to netwo
 
 **Solution**: Copy frequently accessed files locally:
 
-* [  JavaScript ](#tab-panel-7805)
-* [  TypeScript ](#tab-panel-7806)
+* [  JavaScript ](#tab-panel-8119)
+* [  TypeScript ](#tab-panel-8120)
 
 JavaScript
 
@@ -1002,7 +1006,7 @@ await sandbox.exec('cp', { args: ['/workspace/results.json', '/data/results/outp
 * **Secure credentials** \- Always use Worker secrets, never hardcode
 * **Read-only when possible** \- Protect data with read-only mounts
 * **Use prefixes for isolation** \- Mount subdirectories when working with specific datasets
-* **Mount paths** \- Use `/data`, `/storage`, or `/mnt/*` (avoid `/workspace`, `/tmp`)
+* **Mount paths** \- Prefer `/data`, `/storage`, or `/mnt/*`; if you mount under `/workspace`, account for the mount overlaying that path in production
 * **Handle errors** \- Wrap mount operations in `try...catch` blocks
 * **Optimize access** \- Copy frequently accessed files locally
 

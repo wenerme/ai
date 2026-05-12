@@ -17,4 +17,3 @@ For usage examples, see the [Continuous batching](../continuous_batching) guide 
 ## Continuous batching config
 
 [[autodoc]] ContinuousBatchingConfig
-    - __call__

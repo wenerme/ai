@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.  
+Add a cron trigger to my Worker that processes a job queue every hour.  
 ```
 
 ## Cloudflare platform access

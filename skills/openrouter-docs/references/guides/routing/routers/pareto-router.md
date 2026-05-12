@@ -67,10 +67,17 @@ Set your model to `openrouter/pareto-code` and optionally pass the `pareto-route
 
 `min_coding_score` is an optional number between `0` and `1`, where `1` is best. It sets a floor on how capable the selected model needs to be for your request. Higher scores route to stronger coders at the top of the shortlist; lower scores open up cheaper, faster options.
 
+| `min_coding_score`  | Tier           |
+| ------------------- | -------------- |
+| `>= 0.66`           | high           |
+| `>= 0.33`, `< 0.66` | medium         |
+| `< 0.33`            | low            |
+| omitted             | high (default) |
+
 If you omit `min_coding_score`, the router defaults to the strongest available coders.
 
 <Callout intent="info">
-  A model is drawn from the matching shortlist on each request. If every model in the matching set is temporarily unavailable, the router falls back to the next-closest set rather than failing the request. The response `model` field always reports the concrete model that handled the request.
+  The router resolves a primary coding model plus up to two fallbacks from your chosen tier. On transient provider errors or rate limits, the request cascades through that sibling chain before failing. If the entire tier has no models currently published on OpenRouter, the router steps into a neighboring tier instead. The response `model` field always reports the concrete model that handled the request.
 </Callout>
 
 ## Response
@@ -101,8 +108,8 @@ The response includes the `model` field showing which coding model was actually 
 
 1. **Shortlist resolution**: Your `min_coding_score` value is used to pick the set of coding models that meet your quality bar.
 2. **Candidate filtering**: The router filters the shortlist to models that are currently published on OpenRouter.
-3. **Selection**: A single model is selected from the filtered candidates.
-4. **Fallback**: If every candidate is unavailable, the router steps through neighboring sets to find a coding-capable model.
+3. **Selection**: An ordered list of candidates is drawn from the filtered shortlist, a primary model plus up to two in-tier fallbacks, sorted by price (or by p50 throughput when you request the `:nitro` variant).
+4. **Runtime fallback**: If the primary endpoints are unavailable due to transient provider errors or rate limits, the request cascades through the sibling chain. Only when the entire tier is missing from the catalog does the router step into a neighboring tier.
 5. **Request forwarding**: Your request is forwarded to the selected model.
 
 ## Pricing

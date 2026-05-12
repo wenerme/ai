@@ -27751,6 +27751,18 @@ Learn when and how to compact long-running conversations in the [conversation st
 
   - `"24h"`
 
+- `service_tier: optional "auto" or "default" or "flex" or "priority"`
+
+  The service tier to use for this request.
+
+  - `"auto"`
+
+  - `"default"`
+
+  - `"flex"`
+
+  - `"priority"`
+
 ### Returns
 
 - `CompactedResponse object { id, created_at, object, 2 more }`

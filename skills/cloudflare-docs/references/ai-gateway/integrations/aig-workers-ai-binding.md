@@ -75,8 +75,8 @@ You must create an AI binding for your Worker to connect to Workers AI. Bindings
 
 To bind Workers AI to your Worker, add the following to the end of your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-4133)
-* [  wrangler.toml ](#tab-panel-4134)
+* [  wrangler.jsonc ](#tab-panel-4373)
+* [  wrangler.toml ](#tab-panel-4374)
 
 JSONC
 
@@ -108,11 +108,11 @@ binding = "AI"
 
 Your binding is [available in your Worker code](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#bindings-in-es-modules-format) on [env.AI](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
 
-You will need to have your `gateway id` for the next step. You can learn [how to create an AI Gateway in this tutorial](https://developers.cloudflare.com/ai-gateway/get-started/).
+You can use `"default"` as the gateway ID in the next step. AI Gateway automatically creates a default gateway on the first authenticated request. Alternatively, you can [create a gateway manually](https://developers.cloudflare.com/ai-gateway/get-started/) and use its ID.
 
 ## 3\. Run an inference task containing AI Gateway in your Worker
 
-You are now ready to run an inference task in your Worker. In this case, you will use an LLM, [llama-3.1-8b-instruct-fast](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/), to answer a question. Your gateway ID is found on the dashboard.
+You are now ready to run an inference task in your Worker. In this case, you will use an LLM, [llama-3.1-8b-instruct-fast](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/), to answer a question.
 
 Update the `index.ts` file in your `hello-ai` application directory with the following code:
 
@@ -151,7 +151,7 @@ export default {
 
         gateway: {
 
-          id: "GATEWAYID", // Use your gateway label here
+          id: "default", // Uses the default gateway, or replace with your gateway ID
 
           skipCache: true, // Optional: Skip cache if needed
 
