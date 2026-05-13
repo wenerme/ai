@@ -5,8 +5,6 @@ keywords: ['quantilesTiming', 'if', 'combinator', 'examples', 'quantilesTimingIf
 doc_type: 'reference'
 ---
 
-# quantilesTimingIf {#quantilestimingif}
-
 ## Description {#description}
 
 The [`If`](/sql-reference/aggregate-functions/combinators#-if) combinator can be applied to the [`quantilesTiming`](/sql-reference/aggregate-functions/reference/quantiletiming)

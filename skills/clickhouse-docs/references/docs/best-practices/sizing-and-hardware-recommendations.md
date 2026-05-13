@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['sizing', 'hardware', 'capacity planning', 'best practices', 'performance']
 ---
 
-# Sizing and hardware recommendations
-
 This guide discusses our general recommendations regarding hardware, compute, memory, and disk configurations for open-source users. If you would like to simplify your setup, we recommend using [ClickHouse Cloud](https://clickhouse.com/cloud) as it automatically scales and adapts to your workloads while minimizing costs pertaining to infrastructure management.
 
 The configuration of your ClickHouse cluster is highly dependent on your application's use case and workload patterns. When planning your architecture, you must consider the following factors:

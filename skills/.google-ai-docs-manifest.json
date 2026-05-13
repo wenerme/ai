@@ -194,8 +194,8 @@
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",
     "skill": "google-ai-docs",
-    "size": 14252,
-    "updatedAt": "2026-05-08T00:44:47.906Z"
+    "size": 14628,
+    "updatedAt": "2026-05-13T00:45:40.519Z"
   },
   "google-ai-docs/music-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/music-generation",
@@ -308,8 +308,8 @@
   "google-ai-docs/file-search.md": {
     "url": "https://ai.google.dev/gemini-api/docs/file-search",
     "skill": "google-ai-docs",
-    "size": 35502,
-    "updatedAt": "2026-05-08T00:45:02.402Z"
+    "size": 35636,
+    "updatedAt": "2026-05-13T00:45:55.481Z"
   },
   "google-ai-docs/tool-combination.md": {
     "url": "https://ai.google.dev/gemini-api/docs/tool-combination",

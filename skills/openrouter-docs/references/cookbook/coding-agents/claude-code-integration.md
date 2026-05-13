@@ -169,12 +169,12 @@ Claude Code is optimized for Anthropic models and may not work correctly with ot
 
 ## Fast Mode
 
-Anthropic's fast mode provides up to 2.5x faster output at premium pricing. **Fast mode is only available on Claude Opus 4.6** — no other Anthropic model supports it.
+Anthropic's fast mode provides up to 2.5x faster output at premium pricing. **Fast mode is only available on Claude Opus 4.6 and Claude Opus 4.7** — no other Anthropic model supports it.
 
-There are two equivalent ways to request fast mode on OpenRouter:
+For each supported Opus version, there are two equivalent ways to request fast mode on OpenRouter:
 
-1. Send `speed: "fast"` with [`anthropic/claude-opus-4.6`](https://openrouter.ai/anthropic/claude-opus-4.6) — OpenRouter reroutes the request to [`anthropic/claude-opus-4.6-fast`](https://openrouter.ai/anthropic/claude-opus-4.6-fast).
-2. Call [`anthropic/claude-opus-4.6-fast`](https://openrouter.ai/anthropic/claude-opus-4.6-fast) directly.
+1. Send `speed: "fast"` with [`anthropic/claude-opus-4.7`](https://openrouter.ai/anthropic/claude-opus-4.7) or [`anthropic/claude-opus-4.6`](https://openrouter.ai/anthropic/claude-opus-4.6) — OpenRouter reroutes the request to the matching `*-fast` model (for example, `anthropic/claude-opus-4.6` → [`anthropic/claude-opus-4.6-fast`](https://openrouter.ai/anthropic/claude-opus-4.6-fast)).
+2. Call the `*-fast` model directly — [`anthropic/claude-opus-4.7-fast`](https://openrouter.ai/anthropic/claude-opus-4.7-fast) or [`anthropic/claude-opus-4.6-fast`](https://openrouter.ai/anthropic/claude-opus-4.6-fast).
 
 Both options route through the Anthropic first-party provider, and the required beta header is injected automatically.
 
@@ -192,7 +192,7 @@ export CLAUDE_CODE_SKIP_FAST_MODE_ORG_CHECK=1
 
 ### Pricing
 
-Fast mode is priced at 6x the standard token rates for Claude Opus 4.6. See [Anthropic's fast mode pricing](https://platform.claude.com/docs/en/build-with-claude/fast-mode#pricing) for current rates. When fast mode is active, the response's `usage` object includes `"speed": "fast"` to confirm the request was processed at the higher speed tier.
+Fast mode is priced at 6x the standard token rates for the underlying Claude Opus model (4.6 or 4.7). See [Anthropic's fast mode pricing](https://platform.claude.com/docs/en/build-with-claude/fast-mode#pricing) for current rates. When fast mode is active, the response's `usage` object includes `"speed": "fast"` to confirm the request was processed at the higher speed tier.
 
 <Note>
   If `speed: "fast"` is sent for a model that does not support fast mode, OpenRouter silently drops the parameter and the request proceeds at standard speed with standard pricing.

@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# Resyncing specific tables {#resync-tables}
-
 There are scenarios where it would be useful to have specific tables of a pipe be re-synced. Some sample use-cases could be major schema changes on Postgres, or maybe some data re-modelling on the ClickHouse.
 
 While resyncing individual tables with a button click is a work-in-progress, this guide will share steps on how you can achieve this today in the Postgres ClickPipe.

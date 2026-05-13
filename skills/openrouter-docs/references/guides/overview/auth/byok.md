@@ -14,7 +14,7 @@ Using provider keys enables direct control over rate limits and costs via your p
 
 Your provider keys are securely encrypted and used for all requests routed through the specified provider.
 
-Manage keys in your [account settings](/settings/integrations).
+Manage keys in your [workspace BYOK settings](/workspaces/default/byok).
 
 The cost of using custom provider keys on OpenRouter is **{bn(openRouterBYOKFee.fraction).times(100).toString()}% of what the same model/provider would cost normally on OpenRouter** and will be deducted from your OpenRouter credits.
 This fee is waived for the first {toHumanNumber(BYOK_FEE_MONTHLY_REQUEST_THRESHOLD)} BYOK requests per-month.
@@ -23,7 +23,9 @@ This fee is waived for the first {toHumanNumber(BYOK_FEE_MONTHLY_REQUEST_THRESHO
 
 OpenRouter always prioritizes using your provider keys when available. By default, if your key encounters a rate limit or failure, OpenRouter will fall back to using shared OpenRouter credits.
 
-You can configure individual keys with "Always use this key" to prevent any fallback to OpenRouter credits. When this option is enabled, OpenRouter will only use your key for requests to that provider, which may result in rate limit errors if your key is exhausted, but ensures all requests go through your account.
+You can toggle **"Always use for this provider"** on individual keys to prevent any fallback to OpenRouter credits. When enabled, OpenRouter will only use your keys for requests to that provider, which may result in rate limit errors if your keys are exhausted, but ensures all requests go through your account.
+
+When you have multiple keys for the same provider, OpenRouter tries them in priority order (see [Multiple BYOK Keys](#multiple-byok-keys-for-the-same-provider)). If the first key fails, it falls through to the next matching key before falling back to shared capacity.
 
 ### BYOK with Provider Ordering
 
@@ -72,11 +74,48 @@ The routing order will be:
 
 Note that even though Amazon Bedrock is listed first in the `order` array, the Google Vertex AI BYOK endpoint takes priority.
 
-If you want to prevent fallback to OpenRouter's shared capacity entirely, configure your API key with "Always use this key" in your [account settings](/settings/integrations).
+If you want to prevent fallback to OpenRouter's shared capacity entirely, enable **"Always use for this provider"** on your BYOK keys in your [workspace BYOK settings](/workspaces/default/byok).
 
 ### Multiple BYOK Keys for the Same Provider
 
-If you have multiple BYOK keys configured for the same provider, all of them will be used for routing. However, the order in which multiple keys for the same provider are tried is not guaranteed. If deterministic ordering between keys matters for your use case, consider using separate provider accounts or contacting support.
+You can configure multiple BYOK keys for the same provider. All matching keys are used for routing, and each key produces its own endpoint copy that is pinned to that specific key throughout the request lifecycle.
+
+#### Priority Order
+
+Keys are tried in the priority order you define. You can reorder keys via drag-and-drop on the provider detail page (e.g. [/workspaces/default/byok/openai](/workspaces/default/byok/openai)) — the key at the top of the list is tried first. When a key fails (e.g. rate limit or error), OpenRouter falls through to the next matching key before falling back to shared capacity.
+
+For example, if you have two OpenAI keys ordered as:
+
+1. **Production key** (priority 1)
+2. **Backup key** (priority 2)
+
+OpenRouter will try the production key first, then the backup key, and finally shared capacity (unless "Always use for this provider" is enabled).
+
+#### Key Filters
+
+Each BYOK key supports optional filters to control when it is used:
+
+* **Model filter** — Restrict the key to specific models (e.g. only use this key for `openai/gpt-4o`). When set, the key is only used for requests to the listed models. Other models for the same provider will skip this key.
+* **API key filter** — Restrict which of your OpenRouter API keys can use this BYOK key. Useful for isolating BYOK usage to specific applications or environments.
+* **Member filter** — Restrict which workspace members can use this BYOK key. Useful for giving different team members access to different provider accounts.
+
+Filters are evaluated before routing. A key is only used when all of its active filters match the current request. If no filters are set, the key is available to all models, API keys, and members.
+
+#### Combining Filters with Multiple Keys
+
+Filters and multiple keys work together to enable flexible routing strategies. For example:
+
+* **Key A**: OpenAI, model filter = `[openai/gpt-4o]`, "Always use for this provider" enabled
+* **Key B**: OpenAI, no model filter (matches all models)
+
+In this setup:
+
+* Requests for `openai/gpt-4o` try **Key A** first, then **Key B** if Key A fails (shared capacity is skipped because "Always use for this provider" is enabled on Key A)
+* Requests for other OpenAI models (e.g. `openai/gpt-4o-mini`) use **Key B** only, with shared capacity as fallback
+
+#### Key Names
+
+Each key can be given an optional name (e.g. "Production", "Team A", "GPT-4 only") to help organize keys when you have multiple keys for the same provider.
 
 ### Azure API Keys
 

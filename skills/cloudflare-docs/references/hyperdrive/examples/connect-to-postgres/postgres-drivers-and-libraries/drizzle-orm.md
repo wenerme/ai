@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Drizzle ORM
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 [Drizzle ORM ↗](https://orm.drizzle.team/) is a lightweight TypeScript ORM with a focus on type safety. This example demonstrates how to use Drizzle ORM with PostgreSQL via Cloudflare Hyperdrive in a Workers application.
 
@@ -39,8 +39,8 @@ npm i -D drizzle-kit tsx @types/pg @types/node
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6205)
-* [  wrangler.toml ](#tab-panel-6206)
+* [  wrangler.jsonc ](#tab-panel-6540)
+* [  wrangler.toml ](#tab-panel-6541)
 
 JSONC
 
@@ -58,7 +58,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-12",
 
   "hyperdrive": [
 
@@ -85,7 +85,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-12"
 
 
 [[hyperdrive]]

@@ -5,8 +5,6 @@ keywords: ['chdb', 'datastore', 'function', 'config', 'Dtype', 'correction']
 doc_type: 'reference'
 ---
 
-# Function-Level Configuration
-
 DataStore allows fine-grained control over execution at the function level, including engine selection and Dtype correction.
 
 ## Function Engine Configuration {#function-engine}

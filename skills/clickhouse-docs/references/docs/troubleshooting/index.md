@@ -18,8 +18,6 @@ title: 'Troubleshooting common issues'
 description: 'Find solutions to the most common ClickHouse problems including slow queries, memory errors, connection issues, and configuration problems.'
 ---
 
-# Troubleshooting common issues {#troubleshooting-common-issues}
-
 Having problems with ClickHouse? Find the solutions to common issues here.
 
 ## Performance and errors {#performance-and-errors}

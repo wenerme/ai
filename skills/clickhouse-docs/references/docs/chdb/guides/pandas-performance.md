@@ -5,8 +5,6 @@ keywords: ['chdb', 'datastore', 'pandas', 'performance', 'benchmark', 'optimizat
 doc_type: 'guide'
 ---
 
-# Performance Guide
-
 DataStore delivers significant performance improvements over pandas for many operations. This guide explains why and how to optimize your workloads.
 
 ## Why DataStore Is Faster {#why-faster}

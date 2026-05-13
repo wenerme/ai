@@ -5,8 +5,6 @@ keywords: ['groupArray', 'Distinct', 'combinator', 'examples', 'groupArrayDistin
 doc_type: 'reference'
 ---
 
-# groupArrayDistinct {#sumdistinct}
-
 ## Description {#description}
 
 The [`groupArrayDistinct`](/sql-reference/aggregate-functions/combinators#-foreach) combinator

@@ -6,8 +6,6 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# Customize ClickHouse Assistant chat with a semantic layer
-
 The ClickHouse Assistant chat agent can be customized to understand your specific business logic, data structures, and domain knowledge through **AGENTS.md**—a special saved query that acts as a semantic layer over the agent's system prompt.
 
 By creating an AGENTS.md file, you can provide custom instructions that are injected at the start of every conversation to guide SQL query generation and data analysis based on your organization's unique requirements, calculations, and conventions.

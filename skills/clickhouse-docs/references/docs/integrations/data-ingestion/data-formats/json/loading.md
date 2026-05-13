@@ -6,8 +6,6 @@ score: 15
 doc_type: 'guide'
 ---
 
-# Loading JSON {#loading-json}
-
 The following examples provide a very simple example of loading structured and semi-structured JSON data. For more complex JSON, including nested structures, see the guide [**Designing JSON schema**](/integrations/data-formats/json/schema).
 
 ## Loading structured JSON {#loading-structured-json}

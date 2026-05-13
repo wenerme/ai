@@ -4,8 +4,6 @@ title: 'Prometheus protocols'
 doc_type: 'reference'
 ---
 
-# Prometheus protocols
-
 ## Exposing metrics {#expose}
 
 > **note**: If you're using ClickHouse Cloud, you can expose metrics to Prometheus using the [Prometheus Integration](/integrations/prometheus).

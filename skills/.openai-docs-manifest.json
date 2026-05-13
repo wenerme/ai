@@ -9370,10 +9370,10 @@
   "codex-docs/concepts/subagents.md": {
     "url": "https://developers.openai.com/codex/concepts/subagents.md",
     "skill": "codex-docs",
-    "etag": "W/\"da63ad8a8fa3f648517d2757d2a6dd11\"",
-    "lastModified": "Fri, 24 Apr 2026 00:12:19 GMT",
-    "size": 5431,
-    "updatedAt": "2026-04-24T00:30:52.852Z"
+    "etag": "W/\"53050ce64e3e94277df7d511419fd887\"",
+    "lastModified": "Wed, 13 May 2026 00:17:52 GMT",
+    "size": 5240,
+    "updatedAt": "2026-05-13T00:40:52.700Z"
   },
   "codex-docs/config-advanced.md": {
     "url": "https://developers.openai.com/codex/config-advanced.md",
@@ -9594,10 +9594,10 @@
   "codex-docs/models.md": {
     "url": "https://developers.openai.com/codex/models.md",
     "skill": "codex-docs",
-    "etag": "W/\"b91a47e333a1391ba44a8e4110597c4c\"",
-    "lastModified": "Thu, 23 Apr 2026 19:27:04 GMT",
-    "size": 8181,
-    "updatedAt": "2026-04-24T00:30:58.975Z"
+    "etag": "W/\"3f9a21fbce21ee8e804a29e2b0fbdbcc\"",
+    "lastModified": "Wed, 13 May 2026 00:17:58 GMT",
+    "size": 8074,
+    "updatedAt": "2026-05-13T00:40:59.355Z"
   },
   "codex-docs/noninteractive.md": {
     "url": "https://developers.openai.com/codex/noninteractive.md",

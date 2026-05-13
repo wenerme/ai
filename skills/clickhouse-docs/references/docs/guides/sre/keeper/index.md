@@ -6,8 +6,6 @@ title: 'ClickHouse Keeper'
 doc_type: 'guide'
 ---
 
-# ClickHouse Keeper (clickhouse-keeper)
-
 <SelfManaged />
 
 ClickHouse Keeper provides the coordination system for data [replication](/engines/table-engines/mergetree-family/replication.md) and [distributed DDL](/sql-reference/distributed-ddl.md) queries execution. ClickHouse Keeper is compatible with ZooKeeper.

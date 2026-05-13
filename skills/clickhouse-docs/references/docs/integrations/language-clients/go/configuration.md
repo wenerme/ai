@@ -5,8 +5,6 @@ title: 'Configuration'
 doc_type: 'reference'
 ---
 
-# Configuration {#configuration}
-
 ## Connection settings {#connection-settings}
 
 When opening a connection, an Options struct can be used to control client behavior. The following settings are available:

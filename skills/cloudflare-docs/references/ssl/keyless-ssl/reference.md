@@ -16,6 +16,7 @@ For more information on Keyless SSL, refer to the following resources:
 
 * [ High availability ](https://developers.cloudflare.com/ssl/keyless-ssl/reference/high-availability/)
 * [ Scaling and benchmarking ](https://developers.cloudflare.com/ssl/keyless-ssl/reference/scaling-and-benchmarking/)
+* [ Key server metrics ](https://developers.cloudflare.com/ssl/keyless-ssl/reference/metrics/)
 * [ Keyless delegation ](https://developers.cloudflare.com/ssl/keyless-ssl/reference/keyless-delegation/)
 
 ```json

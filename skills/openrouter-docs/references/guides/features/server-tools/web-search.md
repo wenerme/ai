@@ -154,7 +154,7 @@ The web search server tool supports multiple search engines:
 
 * **`auto`** (default): Uses native search if the provider supports it, otherwise falls back to Exa
 * **`native`**: Forces the provider's built-in web search (falls back to Exa with a warning if the provider doesn't support it)
-* **`exa`**: Uses [Exa](https://exa.ai)'s search API, which combines keyword and embeddings-based search
+* **`exa`**: Uses [Exa](https://exa.ai)'s search API, which combines keyword and embeddings-based search. Returns Exa [highlights](https://docs.exa.ai/reference/contents-retrieval-with-exa-api#highlights) — excerpts drawn from each page that are most relevant to the search query — rather than truncated page text. See the [Exa](#exa) section below.
 * **`firecrawl`**: Uses [Firecrawl](https://firecrawl.dev)'s search API (BYOK — bring your own key)
 * **`parallel`**: Uses [Parallel](https://parallel.ai)'s search API
 
@@ -171,6 +171,26 @@ The web search server tool supports multiple search engines:
 
   *\*\* Parallel: limit applies as a **total across all results***
 </small>
+
+### Exa
+
+OpenRouter requests Exa [highlights](https://docs.exa.ai/reference/contents-retrieval-with-exa-api#highlights) for each result rather than the `text` content option. Highlights are extractive excerpts drawn directly from the page that Exa selects as most relevant to the search query, typically yielding higher-quality context per token than truncated page text for agentic web tooling.
+
+Use `search_context_size` to cap the highlight length per result via Exa's `contents.highlights.maxCharacters` parameter:
+
+* `low` — 5,000 characters per result
+* `medium` (default) — 15,000 characters per result
+* `high` — 30,000 characters per result
+
+The selected excerpts are returned to the model on each result and surfaced to API callers via `url_citation` annotations. Within a single result, excerpts that come from different parts of the page are separated by Exa's `[...]` markers, so the `content` field of a `url_citation` annotation may look like:
+
+```
+First excerpt drawn from the page.
+[...]
+Second excerpt drawn from elsewhere in the same page.
+[...]
+Third excerpt.
+```
 
 ### Firecrawl (BYOK)
 

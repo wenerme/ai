@@ -14,6 +14,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 * [ DHCP relay ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/)
 * [ DHCP server ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/)
+* [ DHCP server options ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/)
 * [ DHCP static address reservation ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-static-address-reservation/)
 
 ```json

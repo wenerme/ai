@@ -7,8 +7,6 @@ doc_type: 'reference'
 keywords: ['federated', 'hybrid', 'postgres', 'mysql', 'sqlite', 'odbc', 'jdbc']
 ---
 
-# Does ClickHouse support federated queries?
-
 ClickHouse has the most comprehensive support for federated queries and hybrid query execution among analytical databases.
 
 It supports querying external databases:

@@ -8,8 +8,6 @@ integration:
 keywords: ['s3', 'minio', 'object storage', 'data loading', 'compatible storage']
 ---
 
-# Using MinIO
-
 <SelfManaged />
 
 All S3 functions and tables and compatible with [MinIO](https://min.io/). You may experience superior throughput on self-hosted MinIO stores, especially in the event of optimal network locality.

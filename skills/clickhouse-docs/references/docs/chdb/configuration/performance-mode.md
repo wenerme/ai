@@ -5,8 +5,6 @@ keywords: ['chdb', 'datastore', 'performance', 'mode', 'compat', 'sql-first', 'o
 doc_type: 'guide'
 ---
 
-# Performance Mode
-
 DataStore has two compatibility modes that control whether output is shaped for pandas compatibility or optimized for raw SQL performance.
 
 ## Overview {#overview}

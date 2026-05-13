@@ -5,8 +5,6 @@ doc_type: 'reference'
 keywords: ['CityHash', 'native protocol hash', 'hash function', 'Google CityHash', 'protocol hashing']
 ---
 
-# CityHash
-
 ClickHouse uses **one of the previous** versions of [CityHash from Google](https://github.com/google/cityhash).
 
 > **info**: CityHash has changed the algorithm after we have added it into ClickHouse.

@@ -351,6 +351,14 @@ If you'd like to modify keys with existing or newly added restrictions, visit
 the
 [Google Cloud Console](https://console.cloud.google.com/apis/credentials).
 
+## Blocked keys
+
+Starting May 7, 2026, the Gemini API will block unrestricted API keys
+that have been dormant for an extended period of time. These users will see an
+**Blocked** tag for their key on
+[aistudio.google.com/api-keys](https://aistudio.google.com/api-keys) and will
+need to generate a new key or use an alternative restricted key to continue using the Gemini API.
+
 ## Troubleshooting API key creation
 
 In Google AI Studio, the **Create API key** button may appear unavailable, with

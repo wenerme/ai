@@ -5,8 +5,6 @@ doc_type: 'reference'
 keywords: ['security', 'cloud security', 'access control', 'compliance', 'data protection']
 ---
 
-# ClickHouse Cloud Security
-
 This document details the security options and best practices available for ClickHouse organization and service protection.
 ClickHouse is dedicated to providing secure analytical database solutions; therefore, safeguarding data and service integrity is a priority.
 The information herein covers various methods designed to assist users in securing their ClickHouse environments.

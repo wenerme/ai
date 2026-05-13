@@ -32,8 +32,8 @@ If you use Secondary DNS override and keep other nameservers at your registrar, 
 
 ## Set up Secondary DNS override
 
-* [ Dashboard ](#tab-panel-5643)
-* [ API ](#tab-panel-5644)
+* [ Dashboard ](#tab-panel-5930)
+* [ API ](#tab-panel-5931)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -69,6 +69,10 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
 
 1. For specific A, AAAA, or CNAME records, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) request with the `proxied` status as `true`.  
    * Make sure the added record has the same name as the transferred record you intend to proxy. Cloudflare only looks at the name and the proxy status, so the record content does not matter.
+
+Zone transfers interaction
+
+Zone transfers from the primary (including content or TTL changes) do not change the proxy status of records you set to proxied. The override persists until the record is deleted on the primary.
 
 ## Proxied A and AAAA records
 

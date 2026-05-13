@@ -5,8 +5,6 @@ keywords: ['min', 'map', 'combinator', 'examples', 'minMap']
 doc_type: 'reference'
 ---
 
-# minMap {#minmap}
-
 ## Description {#description}
 
 The [`Map`](/sql-reference/aggregate-functions/combinators#-map) combinator can be applied to the [`min`](/sql-reference/aggregate-functions/reference/min)

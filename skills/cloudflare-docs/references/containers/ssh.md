@@ -12,20 +12,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # SSH
 
-Anyone with write access to a Container can SSH into it with Wrangler as long as SSH is enabled.
+Anyone with write access to a Container can SSH into it with Wrangler as long as a matching public key is listed in `authorized_keys`.
+
+SSH does not expose a publicly accessible port on the Container. The only way to connect is through Wrangler with [wrangler containers ssh](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-ssh), which authenticates against your Cloudflare account.
 
 ## Configure SSH
 
 SSH can be configured in your [Container's configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) with the `ssh` and `authorized_keys` properties. Only the `ssh-ed25519` key type is supported.
 
-The `ssh.enabled` property only controls whether you can SSH into a Container through Wrangler. If `ssh.enabled` is false but keys are still present in `authorized_keys`, the SSH service will still be started on the Container.
+The `ssh.enabled` property only controls whether you can SSH into a Container through Wrangler. It defaults to `true`. Set it to `false` to disable SSH access completely.
 
 ## Connect with Wrangler
 
-To SSH into a Container with Wrangler, you must first enable SSH in your Container configuration. The following example shows a basic configuration:
+To SSH into a Container with Wrangler, add an `ssh-ed25519` public key to `authorized_keys` in your Container configuration. The following example shows a basic configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5150)
-* [  wrangler.toml ](#tab-panel-5151)
+* [  wrangler.jsonc ](#tab-panel-5633)
+* [  wrangler.toml ](#tab-panel-5634)
 
 JSONC
 
@@ -38,12 +40,6 @@ JSONC
     {
 
       // other options here...
-
-      "ssh": {
-
-        "enabled": true
-
-      },
 
       "authorized_keys": [
 
@@ -71,11 +67,6 @@ TOML
 ```
 
 [[containers]]
-
-[containers.ssh]
-
-enabled = true
-
 
 [[containers.authorized_keys]]
 

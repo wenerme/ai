@@ -5,8 +5,6 @@ title: 'Advanced usage'
 doc_type: 'reference'
 ---
 
-# Advanced usage {#advanced-usage}
-
 ## Raw API {#raw-api}
 
 For use cases which don't require transformation between ClickHouse data and native or third party data types and structures, the ClickHouse Connect client provides methods for direct usage of the ClickHouse connection.

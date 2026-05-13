@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Multiple security vulnerabilities were disclosed by the React team and Vercel affecting React Server Components and Next.js. These include denial of service, middleware and proxy bypass, server-side request forgery, cross-site scripting, and cache poisoning issues across a range of severity levels.
+description: Key Findings
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -13,6 +13,23 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
+
+## 2026-05-11
+
+  
+**WAF Release - 2026-05-11**   
+
+**Key Findings**
+
+* Existing rule enhancements have been deployed to improve detection resilience against broad classes of web attacks and strengthen behavioral coverage.
+
+**Continuous Rule Improvements**
+
+We are continuously refining our managed rules to provide more resilient protection and deeper insights into attack patterns. To ensure an optimal security posture, we recommend consistently monitoring the Security Events dashboard and adjusting rule actions as these enhancements are deployed.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                | Previous Action | New Action | Comments                                                                                                                                |
+| -------------------------- | ----------- | -------------- | ---------------------------------------------------------- | --------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Cloudflare Managed Ruleset | ...68b3c389 | N/A            | Remote Code Execution - Java Deserialization - Body - Beta | Block           | Disabled   | This is a new detection. This rule is merged into the original rule "Remote Code Execution - Java Deserialization" (ID: ...744305c4  ). |
 
 ## 2026-05-07
 
@@ -582,23 +599,6 @@ Cloudflare WAF now inspects request-payload size of up to 1 MB across all plans 
 React payloads commonly have a default maximum size of 1 MB. Cloudflare WAF previously inspected up to 128 KB on Enterprise plans, with even lower limits on other plans.
 
 **Update:** We later reinstated the maximum request-payload size the Cloudflare WAF inspects. Refer to [Updating the WAF maximum payload values](https://developers.cloudflare.com/changelog/2025-12-05-waf-max-payload-size-change/) for details.
-
-## 2025-12-05
-
-  
-**Updating the WAF maximum payload values**   
-
-We are reinstating the maximum request-payload size the Cloudflare WAF inspects, with WAF on Enterprise zones inspecting up to 128 KB.
-
-**Key Findings**
-
-On [December 5, 2025](https://developers.cloudflare.com/changelog/2025-12-05-rcs-vuln/), we initially attempted to increase the maximum WAF payload limit to 1 MB across all plans. However, an automatic rollout for all customers proved impractical because the increase led to a surge in false positives for existing managed rules.
-
-This issue was particularly notable within the Cloudflare Managed Ruleset and the Cloudflare OWASP Core Ruleset, impacting customer traffic.
-
-**Impact**
-
-Customers on paid plans can increase the limit to 1 MB for any of their zones by contacting Cloudflare Support. Free zones are already protected up to 1 MB and do not require any action.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}

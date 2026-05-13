@@ -4,8 +4,6 @@ title: 'Arrow Flight interface'
 doc_type: 'reference'
 ---
 
-# Apache Arrow Flight Interface
-
 ## Overview {#overview}
 
 ClickHouse supports the [Apache Arrow Flight](https://arrow.apache.org/docs/format/Flight.html) protocol — a high-performance RPC framework for efficient columnar data transport using the [Arrow IPC](https://arrow.apache.org/docs/format/Columnar.html#serialization-and-interprocess-communication-ipc) format over [gRPC](https://grpc.io/).

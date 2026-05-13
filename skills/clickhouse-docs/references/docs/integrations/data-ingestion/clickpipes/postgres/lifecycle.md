@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# Lifecycle of a Postgres ClickPipe {#lifecycle}
-
 This is a document on the various phases of a Postgres ClickPipe, the different statuses it can have, and what they mean.
 
 ## Provisioning {#provisioning}

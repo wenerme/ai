@@ -5,8 +5,6 @@ keywords: ['max', 'state', 'simple', 'combinator', 'examples', 'maxSimpleState']
 doc_type: 'reference'
 ---
 
-# maxSimpleState {#maxsimplestate}
-
 ## Description {#description}
 
 The [`SimpleState`](/sql-reference/aggregate-functions/combinators#-simplestate) combinator can be applied to the [`max`](/sql-reference/aggregate-functions/reference/max)

@@ -5,8 +5,6 @@ keywords: ['data masking']
 doc_type: 'guide'
 ---
 
-# Data masking in ClickHouse
-
 Data masking is a technique used for data protection, in which the original data is replaced with a version of the data which maintains its format and structure while removing any personally identifiable information (PII) or sensitive information.
 
 This guide shows you how you can mask data in ClickHouse using several approaches:

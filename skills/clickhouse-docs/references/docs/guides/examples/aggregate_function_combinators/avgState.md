@@ -5,8 +5,6 @@ keywords: ['avg', 'state', 'combinator', 'examples', 'avgState']
 doc_type: 'reference'
 ---
 
-# avgState {#avgState}
-
 ## Description {#description}
 
 The [`State`](/sql-reference/aggregate-functions/combinators#-state) combinator 

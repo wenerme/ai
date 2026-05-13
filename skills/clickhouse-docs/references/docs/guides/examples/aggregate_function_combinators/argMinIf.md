@@ -5,8 +5,6 @@ keywords: ['argMin', 'if', 'combinator', 'examples', 'argMinIf']
 doc_type: 'reference'
 ---
 
-# argMinIf {#argminif}
-
 ## Description {#description}
 
 The [`If`](/sql-reference/aggregate-functions/combinators#-if) combinator can be applied to the [`argMin`](/sql-reference/aggregate-functions/reference/argmin)

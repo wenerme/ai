@@ -7,8 +7,6 @@ title: 'Drivers and interfaces'
 doc_type: 'reference'
 ---
 
-# Drivers and Interfaces
-
 ClickHouse provides two network interfaces (they can be optionally wrapped in TLS for additional security):
 
 - [HTTP](http.md), which is documented and easy to use directly.

@@ -7,8 +7,6 @@ doc_type: 'reference'
 keywords: ['distributed', 'join']
 ---
 
-# Does ClickHouse support distributed joins?
-
 Yes, ClickHouse supports distributed joins on a cluster.
 
 When the data is co-located on the cluster (e.g., the join is performed by the user identifier, which is also a sharding key), ClickHouse provides a way to perform the join without data movement on the network.

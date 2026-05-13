@@ -5,8 +5,6 @@ keywords: ['groupArray', 'Resample', 'combinator', 'examples', 'groupArrayResamp
 doc_type: 'reference'
 ---
 
-# groupArrayResample {#grouparrayresample}
-
 ## Description {#description}
 
 The [`Resample`](/sql-reference/aggregate-functions/combinators#-resample) 

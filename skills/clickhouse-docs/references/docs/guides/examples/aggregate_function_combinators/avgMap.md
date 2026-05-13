@@ -5,8 +5,6 @@ keywords: ['avg', 'map', 'combinator', 'examples', 'avgMap']
 doc_type: 'reference'
 ---
 
-# avgMap {#avgmap}
-
 ## Description {#description}
 
 The [`Map`](/sql-reference/aggregate-functions/combinators#-map) combinator can be applied to the [`avg`](/sql-reference/aggregate-functions/reference/avg)

@@ -4,8 +4,6 @@ title: 'gRPC interface'
 doc_type: 'reference'
 ---
 
-# gRPC Interface
-
 ## Introduction {#grpc-interface-introduction}
 
 ClickHouse supports [gRPC](https://grpc.io/) interface. It is an open source remote procedure call system that uses HTTP/2 and [Protocol Buffers](https://en.wikipedia.org/wiki/Protocol_Buffers). The implementation of gRPC in ClickHouse supports:

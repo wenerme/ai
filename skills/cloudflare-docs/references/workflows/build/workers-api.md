@@ -129,8 +129,8 @@ After a `ReadableStream<Uint8Array>` object has been persisted within a step, it
 
 :::
 
-* [  JavaScript ](#tab-panel-10475)
-* [  TypeScript ](#tab-panel-10476)
+* [  JavaScript ](#tab-panel-10668)
+* [  TypeScript ](#tab-panel-10669)
 
 JavaScript
 
@@ -227,8 +227,8 @@ More information about the limits imposed on Workflow can be found in the [Workf
 
 * `step.waitForEvent(name: string, options: ): Promise<void>`\-`name` \- the name of the step. - `options` \- an object with properties for`type` (up to 100 characters [1](#user-content-fn-1)), which determines which event type this`waitForEvent` call will match on when calling `instance.sendEvent`, and an optional `timeout` property, which defines how long the `waitForEvent` call will block for before throwing a timeout exception. The default timeout is 24 hours.
 
-* [  JavaScript ](#tab-panel-10471)
-* [  TypeScript ](#tab-panel-10472)
+* [  JavaScript ](#tab-panel-10664)
+* [  TypeScript ](#tab-panel-10665)
 
 JavaScript
 
@@ -352,8 +352,8 @@ Refer to the [step context documentation](https://developers.cloudflare.com/work
 
 Each workflow on Workers Paid supports 10,000 steps by default. You can increase this up to 25,000 steps by configuring `steps` within the `limits` property of your Workflow definition in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10467)
-* [  wrangler.toml ](#tab-panel-10468)
+* [  wrangler.jsonc ](#tab-panel-10660)
+* [  wrangler.toml ](#tab-panel-10661)
 
 JSONC
 
@@ -426,8 +426,8 @@ You can bind to a Workflow by defining a `[[workflows]]` binding within your Wra
 
 For example, to bind to a Workflow called `workflows-starter` and to make it available on the `MY_WORKFLOW` variable to your Worker script, you would configure the following fields within the `[[workflows]]` binding definition:
 
-* [  wrangler.jsonc ](#tab-panel-10469)
-* [  wrangler.toml ](#tab-panel-10470)
+* [  wrangler.jsonc ](#tab-panel-10662)
+* [  wrangler.toml ](#tab-panel-10663)
 
 JSONC
 
@@ -443,7 +443,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-04",
+  "compatibility_date": "2026-05-12",
 
   "workflows": [
 
@@ -482,7 +482,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-04"
+compatibility_date = "2026-05-12"
 
 
 [[workflows]]
@@ -508,8 +508,8 @@ You can also bind to a Workflow that is defined in a different Worker script fro
 
 For example, if your Workflow is defined in a Worker script named `billing-worker`, but you are calling it from your `web-api-worker` script, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-10473)
-* [  wrangler.toml ](#tab-panel-10474)
+* [  wrangler.jsonc ](#tab-panel-10666)
+* [  wrangler.toml ](#tab-panel-10667)
 
 JSONC
 
@@ -525,7 +525,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-04",
+  "compatibility_date": "2026-05-12",
 
   "workflows": [
 
@@ -570,7 +570,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-04"
+compatibility_date = "2026-05-12"
 
 
 [[workflows]]
@@ -926,11 +926,11 @@ declare abstract class WorkflowInstance {
 
   /**
 
-   * Restart the instance.
+   * Restart the instance from the beginning, or from a specific step.
 
    */
 
-  public restart(): Promise<void>;
+  public restart(options?: WorkflowInstanceRestartOptions): Promise<void>;
 
   /**
 
@@ -971,9 +971,91 @@ Resume a paused Workflow instance.
 
 ### restart
 
-Restart a Workflow instance.
+Restart a Workflow instance from the beginning, or from a specific step.
 
-* `restart(): Promise<void>`
+* `restart(options?: WorkflowInstanceRestartOptions): Promise<void>`  
+   * `options` \- optional properties that control from where the instance restarts.
+
+TypeScript
+
+```
+
+let instance = await env.MY_WORKFLOW.get("abc-123");
+
+
+// Restart the instance from the beginning.
+
+await instance.restart();
+
+
+// Restart the instance from the step named "aggregate".
+
+await instance.restart({ from: { name: "aggregate" } });
+
+
+// Restart the instance from the third call to a step named "process".
+
+await instance.restart({ from: { name: "process", count: 3 } });
+
+
+```
+
+When restarting from a specific step, the cached results of every earlier step are reused, while the target step and any steps that follow it run again. The call throws an error if no step matching `from` is found in the instance's execution history.
+
+#### WorkflowInstanceRestartOptions
+
+TypeScript
+
+```
+
+interface WorkflowInstanceRestartOptions {
+
+  /**
+
+   * The step to restart the instance from.
+
+   * If omitted, the instance restarts from the beginning.
+
+   */
+
+  from?: {
+
+    /**
+
+     * The name of the step.
+
+     */
+
+    name: string;
+
+    /**
+
+     * The 1-based index of the step, used when multiple steps share the same name and type. Defaults to 1 (the first occurrence).
+
+     */
+
+    count?: number;
+
+    /**
+
+     * The step type. Use this to disambiguate when the same name is shared across step types. Defaults to "do".
+
+     */
+
+    type?: "do" | "sleep" | "waitForEvent";
+
+  };
+
+}
+
+
+```
+
+The `from` object identifies the step to restart from. Only `name` is required; `count` and `type` are only needed when the same step name appears more than once in the run.
+
+* `name` \- the name of the step.
+* `count` \- the 1-based index of the step, used when multiple steps share the same name and type (for example, inside a loop). Defaults to `1` (the first occurrence). Corresponds to `step.count` in the [step context](https://developers.cloudflare.com/workflows/build/step-context/).
+* `type` \- the step type (`"do"`, `"sleep"`, or `"waitForEvent"`). Defaults to `"do"`. Use this when the same name is shared across different step types.
 
 ### terminate
 
@@ -989,8 +1071,8 @@ Terminate a Workflow instance.
 
 Return `void` on success; throws an exception if the Workflow is not running or is an errored state.
 
-* [  JavaScript ](#tab-panel-10477)
-* [  TypeScript ](#tab-panel-10478)
+* [  JavaScript ](#tab-panel-10670)
+* [  TypeScript ](#tab-panel-10671)
 
 JavaScript
 

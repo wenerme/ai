@@ -5,8 +5,6 @@ keywords: ['native protocol columns', 'column types', 'data types', 'protocol da
 doc_type: 'reference'
 ---
 
-# Native protocol column types
-
 See [Data Types](/sql-reference/data-types/) for general reference.
 
 > **tip**: Numeric types encoding matches memory layout of little endian CPUs like AMD64 or ARM64, allowing very efficient encoding and decoding.

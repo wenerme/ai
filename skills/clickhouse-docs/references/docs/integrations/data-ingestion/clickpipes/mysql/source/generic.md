@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# Generic MySQL source setup guide
-
 > **info**: If you use one of the supported providers (in the sidebar), please refer to the specific guide for that provider.
 
 ## Enable binary log retention {#enable-binlog-retention}

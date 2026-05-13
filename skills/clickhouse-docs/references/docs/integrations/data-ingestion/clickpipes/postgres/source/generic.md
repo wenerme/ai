@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# Generic Postgres source setup guide
-
 > **info**: If you use one of the supported providers (in the sidebar), please refer to the specific guide for that provider.
 
 ClickPipes supports Postgres version 12 and later.

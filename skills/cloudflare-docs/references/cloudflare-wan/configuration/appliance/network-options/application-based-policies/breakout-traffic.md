@@ -105,8 +105,8 @@ You can now add this new app to the Breakout traffic list in your Cloudflare One
 
 You need to configure Breakout traffic applications for each of your existing sites, as this is a per-site configuration.
 
-* [ Dashboard ](#tab-panel-5242)
-* [ API ](#tab-panel-5243)
+* [ Dashboard ](#tab-panel-5529)
+* [ API ](#tab-panel-5530)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -183,8 +183,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ### Delete an application from Cloudflare One Appliance
 
-* [ Dashboard ](#tab-panel-5240)
-* [ API ](#tab-panel-5241)
+* [ Dashboard ](#tab-panel-5527)
+* [ API ](#tab-panel-5528)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -342,6 +342,23 @@ You may need to configure your firewall to allow this new traffic. Make sure to 
 * **Destination ports**: `443`, `500`, `1701`, `2408`, `4443`, `4500`, `8095`, `8443`
 
 Refer to [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) for more information on this topic.
+
+## Breakout by source
+
+In addition to matching by destination application, you can define breakout rules that match by **source** — by source LAN interface, source VLAN, or source IP address / CIDR block. This is useful for breaking out an entire guest VLAN or a specific subnet to the local Internet without enumerating destination applications.
+
+Source-based breakout is configured via the API and Terraform.
+
+### Match criteria
+
+| Criterion              | Behavior                                                                                                            |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Source LAN interface   | All traffic originating on the selected LAN is broken out. Any VLAN attached to that LAN is included automatically. |
+| Source CIDR / IP range | All traffic with a source IP in the specified range is broken out. Accepts a single IP, a range, or a CIDR block.   |
+
+The same criteria can be used to mark traffic as **prioritized** instead of broken out. Refer to [Prioritized traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/) for details.
+
+Source-based and destination-based (managed app or custom app) rules can co-exist on the same appliance and are evaluated independently. If a flow matches both a source-based breakout rule and a destination-based breakout rule, the appliance breaks it out.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/","name":"Network options"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/application-based-policies/","name":"Application-aware policies"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/","name":"Breakout traffic"}}]}

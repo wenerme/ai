@@ -7,8 +7,6 @@ doc_type: 'reference'
 keywords: ['SQL syntax', 'ANSI SQL']
 ---
 
-# What SQL syntax does ClickHouse support?
-
 ClickHouse has complete support for SQL syntax, including features such as:
 - SQL/JSON and JSON data type (SQL-2023)
 - Window functions (SQL-2003)

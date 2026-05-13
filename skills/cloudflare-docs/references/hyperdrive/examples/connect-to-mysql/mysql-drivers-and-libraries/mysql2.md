@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # mysql2
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 The [mysql2 ↗](https://github.com/sidorares/node-mysql2) package is a modern MySQL driver for Node.js with better performance and built-in Promise support. This example demonstrates how to use it with Cloudflare Workers and Hyperdrive.
 
@@ -42,8 +42,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6103)
-* [  wrangler.toml ](#tab-panel-6104)
+* [  wrangler.jsonc ](#tab-panel-6438)
+* [  wrangler.toml ](#tab-panel-6439)
 
 JSONC
 
@@ -61,7 +61,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-12",
 
   "hyperdrive": [
 
@@ -88,7 +88,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-12"
 
 
 [[hyperdrive]]

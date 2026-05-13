@@ -5,8 +5,6 @@ keywords: ['max', 'map', 'combinator', 'examples', 'maxMap']
 doc_type: 'reference'
 ---
 
-# maxMap {#maxmap}
-
 ## Description {#description}
 
 The [`Map`](/sql-reference/aggregate-functions/combinators#-map) combinator can be applied to the [`max`](/sql-reference/aggregate-functions/reference/max)

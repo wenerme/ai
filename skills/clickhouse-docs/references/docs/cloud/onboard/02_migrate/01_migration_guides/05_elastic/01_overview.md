@@ -6,6 +6,4 @@ show_related_blogs: true
 doc_type: 'landing-page'
 ---
 
-# Elasticsearch to ClickHouse migration
-
 For observability use cases, see the [Elasticsearch to ClickStack](/use-cases/observability/clickstack/migration/elastic) migration docs.

@@ -5,8 +5,6 @@ doc_type: 'reference'
 keywords: ['PostgreSQL', 'Postgres', 'FDW', 'foreign data wrapper', 'pg_clickhouse', 'extension']
 ---
 
-# pg_clickhouse Reference documentation
-
 ## Description {#description}
 
 pg_clickhouse is a PostgreSQL extension that enables remote query execution

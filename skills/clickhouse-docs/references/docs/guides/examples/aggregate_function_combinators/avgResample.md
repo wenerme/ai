@@ -5,8 +5,6 @@ keywords: ['avg', 'Resample', 'combinator', 'examples', 'avgResample']
 doc_type: 'reference'
 ---
 
-# countResample {#countResample}
-
 ## Description {#description}
 
 The [`Resample`](/sql-reference/aggregate-functions/combinators#-resample) 

@@ -14,6 +14,25 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-05-12
+
+[ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) 
+
+  
+**Create Gateway firewall policies with natural language**   
+
+Cloudflare Gateway now supports natural language policy creation for [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) firewall policies. Administrators can describe the outcome they want in plain language, and Cloudflare will generate a complete policy rule that populates the policy builder form.
+
+![Create with AI button on the Gateway firewall policies page](https://developers.cloudflare.com/_astro/gateway-create-with-ai.BYG07coh_1T38Vz.webp) 
+
+To create a policy with natural language, select **Create with AI** on any Gateway firewall policy tab. Choose a policy type, describe what the policy should do, and a fully configured rule will appear in the policy builder for review. You can edit any field before saving, or re-generate with a different prompt.
+
+The generated policy incorporates your account context - including lists, DLP profiles, applications, and device posture checks - so that references to your existing resources resolve automatically.
+
+A built-in feedback mechanism allows you to rate each generated policy and provide optional comments, which Cloudflare uses to improve output quality over time.
+
+For more information, refer to [Gateway firewall policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+
 ## 2026-05-11
 
 [ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
@@ -91,6 +110,52 @@ This release introduces the new Cloudflare One Client UI for Linux! You can expe
 
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+
+## 2026-05-07
+
+[ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+
+  
+**Custom DHCP options on Cloudflare One Appliance**   
+
+When the Cloudflare One Appliance is acting as the DHCP server for a LAN, you can now configure custom DHCP options on the leases it issues. This unlocks workflows such as PXE / iPXE boot, VoIP phone provisioning, and vendor-specific client configuration.
+
+Each option is defined by `option_number`, `value`, and one of four value types: `text`, `integer`, `hex`, or `ip`. Configurations are validated on the appliance before being applied — invalid configurations are rejected and the underlying error is returned to the API caller, so a bad option will not disrupt the live DHCP service.
+
+For details, refer to [DHCP server options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/).
+
+## 2026-05-07
+
+[ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+
+  
+**Source-based breakout and prioritization on Cloudflare One Appliance**   
+
+Breakout and traffic prioritization rules on the Cloudflare One Appliance can now match by **source** in addition to destination application. You can pin breakout or priority behavior to:
+
+* A source LAN interface — VLANs attached to that LAN are included automatically.
+* A source IP address, range, or CIDR block.
+
+This is the natural way to break out a guest VLAN to the local Internet, or to prioritize traffic from a specific subnet, without enumerating destination applications.
+
+For details, refer to [Breakout traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#breakout-by-source).
+
+## 2026-05-07
+
+[ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+
+  
+**Self-serve provisioning of Cloudflare One Virtual Appliance via API**   
+
+You can now create, rotate, and delete Cloudflare One Virtual Appliance instances and their license keys directly via the API and Terraform.
+
+* Create a virtual appliance and receive a license key: `POST /accounts/{account_id}/magic/connectors` with `device.provision_license: true`.
+* Rotate the license key for an existing virtual appliance: `PATCH /accounts/{account_id}/magic/connectors/{connector_id}` with `provision_license: true`. The previous key is immediately and irrevocably revoked.
+* Delete a virtual appliance to release the associated licensed device.
+
+The license key is returned in the response only once, at create or rotate time. Copy and store it securely.
+
+For details, refer to [Configure a Cloudflare One Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/).
 
 ## 2026-05-06
 
@@ -720,7 +785,7 @@ This applies to all Email security packages:
 
 ## 2026-04-07
 
-[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+[ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
 
   
 **Link aggregation (LACP) support for Cloudflare One Appliance**   
@@ -1566,7 +1631,7 @@ For more information, refer to [Configure tunnel endpoints](https://developers.c
 
 ## 2026-02-11
 
-[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+[ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
 
   
 **Post-quantum encryption support for Cloudflare One Appliance**   
@@ -1899,7 +1964,7 @@ These logs can be viewed from the [Cloudflare One dashboard ↗](https://one.das
 
 ## 2025-12-31
 
-[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+[ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
 
   
 **Breakout traffic visibility via NetFlow**   
@@ -2235,7 +2300,7 @@ For configuration details, refer to [Configure Automatic Return Routing](https:/
 
 ## 2025-11-06
 
-[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+[ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
 
   
 **Designate WAN link for breakout traffic**   
@@ -3550,7 +3615,7 @@ The **Google Bard** application (ID: 1198) has been deprecated and fully removed
 
 ## 2025-07-21
 
-[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+[ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
 
   
 **Virtual Cloudflare One Appliance with KVM support (open beta)**   
@@ -4401,8 +4466,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-4941)
-* [ Core Dashboard ](#tab-panel-4942)
+* [ Zero Trust Dashboard ](#tab-panel-4973)
+* [ Core Dashboard ](#tab-panel-4974)
 
 To update your view preference in the Zero Trust dashboard:
 
@@ -4418,7 +4483,7 @@ To update your view preference in the Core dashboard:
 
 ## 2025-04-30
 
-[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+[ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
 
   
 **Cloudflare One Appliance supports multiple DNS server IPs**   
@@ -4748,7 +4813,7 @@ This feature is available across these Email security packages:
 
 ## 2025-02-14
 
-[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+[ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
 
   
 **Configure your Magic WAN Connector to connect via static IP assignment**   

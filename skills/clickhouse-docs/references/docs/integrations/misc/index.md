@@ -5,8 +5,6 @@ description: 'Landing page for the Tools section'
 doc_type: 'landing-page'
 ---
 
-# Tools
-
 | Page              |
 |-------------------|
 | [Visual Interfaces](/interfaces/third-party/gui) |

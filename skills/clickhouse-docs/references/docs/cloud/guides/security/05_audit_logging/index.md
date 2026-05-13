@@ -6,8 +6,6 @@ doc_type: 'landing-page'
 keywords: ['audit logging', 'compliance', 'security', 'logging', 'monitoring']
 ---
 
-# Audit logging
-
 | Page                                                                | Description                                                                        |
 |---------------------------------------------------------------------|------------------------------------------------------------------------------------|
 | [Console audit log](/cloud/security/audit-logging/console-audit-log)    | Accessing and reviewing audited events in the ClickHouse Cloud console             | 

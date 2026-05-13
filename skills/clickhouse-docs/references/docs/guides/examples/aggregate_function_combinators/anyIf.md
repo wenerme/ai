@@ -5,8 +5,6 @@ keywords: ['any', 'if', 'combinator', 'examples', 'anyIf']
 doc_type: 'reference'
 ---
 
-# anyIf {#avgif}
-
 ## Description {#description}
 
 The [`If`](/sql-reference/aggregate-functions/combinators#-if) combinator can be applied to the [`any`](/sql-reference/aggregate-functions/reference/any)

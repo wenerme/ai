@@ -5,8 +5,6 @@ keywords: ['avg', 'merge', 'combinator', 'examples', 'avgMerge']
 doc_type: 'reference'
 ---
 
-# avgMerge {#avgMerge}
-
 ## Description {#description}
 
 The [`Merge`](/sql-reference/aggregate-functions/combinators#-state) combinator

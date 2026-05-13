@@ -6,8 +6,6 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# Advanced Tutorial
-
 ## Overview {#overview}
 
 Learn how to ingest and query data in ClickHouse using the New York City taxi example dataset. 

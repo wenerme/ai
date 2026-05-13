@@ -5,8 +5,6 @@ keywords: ['min', 'state', 'simple', 'combinator', 'examples', 'minSimpleState']
 doc_type: 'reference'
 ---
 
-# minSimpleState {#minsimplestate}
-
 ## Description {#description}
 
 The [`SimpleState`](/sql-reference/aggregate-functions/combinators#-simplestate) combinator can be applied to the [`min`](/sql-reference/aggregate-functions/reference/min)

@@ -5,8 +5,6 @@ title: 'ClickHouse API'
 doc_type: 'reference'
 ---
 
-# ClickHouse API {#clickhouse-api}
-
 All code examples for the ClickHouse API can be found [here](https://github.com/ClickHouse/clickhouse-go/tree/main/examples/clickhouse_api).
 
 For connection configuration, see [Configuration](/integrations/language-clients/go/configuration).

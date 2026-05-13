@@ -5,8 +5,6 @@ title: 'Data types'
 doc_type: 'reference'
 ---
 
-# Data Types {#data-types}
-
 ## Type conversions {#type-conversions}
 
 The client aims to be as flexible as possible concerning accepting variable types for both insertion and marshaling of responses. In most cases, an equivalent Golang type exists for a ClickHouse column type, e.g., [UInt64](/sql-reference/data-types/int-uint/) to [uint64](https://pkg.go.dev/builtin#uint64). These logical mappings should always be supported. You may wish to utilize variable types that can be inserted into columns or used to receive a response if the conversion of either the variable or received data takes place first. The client aims to support these conversions transparently, so users don't need to convert their data to align precisely before insertion and to provide flexible marshaling at query time. This transparent conversion doesn't allow for precision loss. For example, a uint32 can't be used to receive data from a UInt64 column. Conversely, a string can be inserted into a datetime64 field provided it meets the format requirements.

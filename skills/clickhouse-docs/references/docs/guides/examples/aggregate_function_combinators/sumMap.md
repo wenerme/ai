@@ -5,8 +5,6 @@ keywords: ['sum', 'map', 'combinator', 'examples', 'sumMap']
 doc_type: 'reference'
 ---
 
-# sumMap {#summap}
-
 ## Description {#description}
 
 The [`Map`](/sql-reference/aggregate-functions/combinators#-map) combinator can be applied to the [`sum`](/sql-reference/aggregate-functions/reference/sum)

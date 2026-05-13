@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# Best practices {#best-practices}
-
 ## Message Compression {#compression}
 
 We strongly recommend using compression for your Kafka topics. Compression can result in a significant saving in data transfer costs with virtually no performance hit.

@@ -7,8 +7,6 @@ keywords: ['Yandex']
 doc_type: 'reference'
 ---
 
-# What does "Не тормозит" mean? {#what-does-ne-tormozit-mean}
-
 We often get this question when people see vintage (limited production) ClickHouse t-shirts. They have the words **"ClickHouse не тормозит"** written in big bold text on the front.
 
 Before ClickHouse became open-source, it was developed as an in-house storage system by a large European IT company, [Yandex](https://yandex.com/company/). That's why it initially got its slogan in Cyrillic, which is "не тормозит" (pronounced as "ne tormozit"). After the open-source release, we first produced some of those t-shirts for local events, and it was a no-brainer to use the slogan as-is.

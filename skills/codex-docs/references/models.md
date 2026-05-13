@@ -37,7 +37,7 @@
           value: false,
         },
         { title: "ChatGPT Credits", value: true },
-        { title: "API Access", value: false },
+        { title: "API Access", value: true },
       ],
     }}
   />
@@ -205,12 +205,10 @@
 For most tasks in Codex, start with `gpt-5.5` when it appears in your model
   picker. It is strongest for complex coding, computer use, knowledge work, and
   research workflows. GPT-5.5 is currently available in Codex when you sign in
-  with ChatGPT; it isn't available with API-key authentication. During the
-  rollout, continue using `gpt-5.4` if `gpt-5.5` is not yet available. Use
-  `gpt-5.4-mini` when you want a faster, lower-cost option for lighter coding
-  tasks or subagents. The `gpt-5.3-codex-spark` model is available in research
-  preview for ChatGPT Pro subscribers and is optimized for near-instant,
-  real-time coding iteration.
+  with ChatGPT or API-key authentication. Use `gpt-5.4-mini` when you want a
+  faster, lower-cost option for lighter coding tasks or subagents. The
+  `gpt-5.3-codex-spark` model is available in research preview for ChatGPT Pro
+  subscribers and is optimized for near-instant, real-time coding iteration.
 
 ## Alternative models
 

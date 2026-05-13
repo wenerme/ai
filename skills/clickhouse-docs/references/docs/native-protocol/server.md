@@ -5,8 +5,6 @@ doc_type: 'reference'
 keywords: ['native protocol', 'tcp protocol', 'client-server', 'protocol specification', 'networking']
 ---
 
-# Server packets
-
 | value | name                             | description                                                     |
 |-------|----------------------------------|-----------------------------------------------------------------|
 | 0     | [Hello](#hello)                  | Server handshake response                                       |

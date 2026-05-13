@@ -30,6 +30,16 @@ Auto TTL for proxied records
 
 Due to DNS caching by recursive resolvers, the transitions from proxied to DNS-only and back may not be instantaneous. Since all proxied records have a TTL of **Auto**, this value (five minutes by default) determines how long resolvers may continue to serve Cloudflare's anycast IPs or your origin IP addresses.
 
+## Zone types
+
+Enforce DNS-only works across all zone setup types:
+
+* [Full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/): Proxied records in the zone are generally affected, considering a few [exceptions](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/#excluded).
+* [Partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/): Proxied records in the zone are generally affected, considering a few [exceptions](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/#excluded).
+* [Secondary zones](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/): If Secondary DNS Overrides is enabled and you have manually set a record's proxy status to proxied, that record will be affected. This also applies to any other `A` or `AAAA` records on the same name. Refer to [Secondary DNS Overrides](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/) for details.  
+Zone transfers interaction  
+While enforce DNS-only is active, zone transfers from the primary (including content or TTL changes) do not change the proxy status of affected records. When you [disable enforce DNS-only](#disable-enforce-dns-only), the records return to proxied.
+
 ## Preparation
 
 Before relying on enforce DNS-only as part of your incident response plan, you should:

@@ -5,8 +5,6 @@ keywords: ['quantilesTiming', 'array', 'if', 'combinator', 'examples', 'quantile
 doc_type: 'reference'
 ---
 
-# quantilesTimingArrayIf {#quantilestimingarrayif}
-
 ## Description {#description}
 
 The [`Array`](/sql-reference/aggregate-functions/combinators#-array) and [`If`](/sql-reference/aggregate-functions/combinators#-if) 

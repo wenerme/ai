@@ -7,8 +7,6 @@ doc_type: 'reference'
 keywords: ['data lake', 'lakehouse']
 ---
 
-# Does ClickHouse support data lakes?
-
 ClickHouse supports data lakes, including Iceberg, Delta Lake, Apache Hudi, Apache Paimon, Hive.
 
 It provides support for **reading** and **writing**, full compatibility with partition pruning, statistics-based pruning, schema evolution, positional deletes, equality deletes, time travel, and introspection.

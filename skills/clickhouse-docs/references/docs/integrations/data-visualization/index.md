@@ -5,8 +5,6 @@ description: 'Learn about Visualizing Data in ClickHouse'
 doc_type: 'guide'
 ---
 
-# Visualizing data in ClickHouse
-
 <div class='vimeo-container'>
 <iframe
    src="https://player.vimeo.com/video/754460217?h=3dcae2e1ca"

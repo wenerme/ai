@@ -5,8 +5,6 @@ keywords: ['uniq', 'array', 'if', 'combinator', 'examples', 'uniqArrayIf']
 doc_type: 'reference'
 ---
 
-# uniqArrayIf {#uniqarrayif}
-
 ## Description {#description}
 
 The [`Array`](/sql-reference/aggregate-functions/combinators#-array) and [`If`](/sql-reference/aggregate-functions/combinators#-if) combinators can be applied to the [`uniq`](/sql-reference/aggregate-functions/reference/uniq)

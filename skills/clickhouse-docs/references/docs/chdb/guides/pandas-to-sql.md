@@ -5,8 +5,6 @@ keywords: ['chdb', 'datastore', 'pandas', 'sql', 'mapping', 'query']
 doc_type: 'guide'
 ---
 
-# SQL for pandas Users
-
 DataStore compiles pandas-style operations into optimized SQL. This guide helps pandas users understand the SQL behind their operations.
 
 ## Viewing Generated SQL {#viewing-sql}

@@ -89,6 +89,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-network-firewall.xml)
 * [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
+* [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)  
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one-appliance.xml)
 * [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one-client.xml)
 * [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)  

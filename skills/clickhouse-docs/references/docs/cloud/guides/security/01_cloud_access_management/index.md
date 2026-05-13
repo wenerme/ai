@@ -5,8 +5,6 @@ doc_type: 'landing-page'
 keywords: ['access management', 'security', 'user management', 'permissions', 'authentication']
 ---
 
-# Cloud access management
-
 This section contains detailed guides for managing access in ClickHouse Cloud
 
 | Page                                                   | Description                                           |

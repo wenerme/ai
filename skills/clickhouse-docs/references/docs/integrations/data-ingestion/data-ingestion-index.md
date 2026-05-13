@@ -5,8 +5,6 @@ description: 'Landing page for the data ingestion section'
 doc_type: 'landing-page'
 ---
 
-# Data Ingestion
-
 ClickHouse integrates with a number of solutions for data integration and transformation.
 For more information check out the pages below:
 

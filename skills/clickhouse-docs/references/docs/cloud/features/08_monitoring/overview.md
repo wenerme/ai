@@ -5,8 +5,6 @@ keywords: ['cloud', 'monitoring', 'observability', 'metrics']
 doc_type: 'guide'
 ---
 
-# Monitoring your ClickHouse Cloud deployment
-
 ## Overview {#overview}
 
 This guide provides enterprise teams with information on monitoring and observability capabilities for production deployments of ClickHouse Cloud. Enterprise customers frequently ask about out-of-the-box monitoring features, integration with existing observability stacks including tools like Datadog and AWS CloudWatch, and how ClickHouse's monitoring compares to self-hosted deployments.

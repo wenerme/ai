@@ -5,8 +5,6 @@ title: 'Amazon Redshift SQL translation guide'
 doc_type: 'reference'
 ---
 
-# Amazon Redshift SQL translation guide
-
 ## Data types {#data-types}
 
 Users moving data between ClickHouse and Redshift will immediately notice

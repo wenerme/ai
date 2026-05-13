@@ -6,8 +6,6 @@ doc_type: 'guide'
 keywords: ['onboarding', 'getting started', 'cloud setup', 'quickstart', 'introduction']
 ---
 
-# Get started with ClickHouse Cloud
-
 New to ClickHouse Cloud and not sure where to begin? In this section of the docs,
 we'll walk you through everything you need to get up and running quickly. We've 
 arranged this getting started section into three subsections to help guide 

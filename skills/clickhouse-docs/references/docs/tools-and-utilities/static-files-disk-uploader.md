@@ -5,8 +5,6 @@ description: 'Provides a description of the clickhouse-static-files-disk-uploade
 doc_type: 'guide'
 ---
 
-# clickhouse-static-files-disk-uploader
-
 Outputs a data directory containing metadata for a specified ClickHouse table. This metadata can be used to create a ClickHouse table on a different server containing a read-only dataset backed by a `web` disk.
 
 Don't use this tool to migrate data. Instead, use the [`BACKUP` and `RESTORE` commands](/operations/backup/overview).

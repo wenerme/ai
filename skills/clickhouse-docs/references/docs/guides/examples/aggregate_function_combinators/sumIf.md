@@ -5,8 +5,6 @@ keywords: ['sum', 'if', 'combinator', 'examples', 'sumIf']
 doc_type: 'reference'
 ---
 
-# sumIf {#sumif}
-
 ## Description {#description}
 
 The [`If`](/sql-reference/aggregate-functions/combinators#-if) combinator can be applied to the [`sum`](/sql-reference/aggregate-functions/reference/sum)

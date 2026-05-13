@@ -4,8 +4,6 @@ description: 'Description of the ClickHouse Assistant chat functionality in Clic
 doc_type: 'reference'
 ---
 
-# ClickHouse Assistant agent in Cloud
-
 The “ClickHouse Assistant” agent is a turn-key experience that allows users to trigger complex analysis tasks on top of the data hosted in their ClickHouse Cloud service.
 Instead of writing SQL or navigating dashboards, users can describe what they're looking for in natural language.
 The assistant responds with generated queries, visualizations, or summaries, and can incorporate context like active tabs, saved queries, schema details, and dashboards to improve accuracy.

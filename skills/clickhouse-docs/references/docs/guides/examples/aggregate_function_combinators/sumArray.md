@@ -5,8 +5,6 @@ keywords: ['sum', 'array', 'combinator', 'examples', 'sumArray']
 doc_type: 'reference'
 ---
 
-# sumArray {#sumarray}
-
 ## Description {#description}
 
 The [`Array`](/sql-reference/aggregate-functions/combinators#-array) combinator 

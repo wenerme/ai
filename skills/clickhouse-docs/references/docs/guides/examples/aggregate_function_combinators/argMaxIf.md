@@ -5,8 +5,6 @@ keywords: ['argMax', 'if', 'combinator', 'examples', 'argMaxIf']
 doc_type: 'reference'
 ---
 
-# argMaxIf {#argmaxif}
-
 ## Description {#description}
 
 The [`If`](/sql-reference/aggregate-functions/combinators#-if) combinator can be applied to the [`argMax`](/sql-reference/aggregate-functions/reference/argmax)

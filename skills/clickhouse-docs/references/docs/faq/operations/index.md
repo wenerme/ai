@@ -5,8 +5,6 @@ doc_type: 'landing-page'
 keywords: ['operations', 'administration', 'deployment', 'cluster management', 'faq']
 ---
 
-# Question about operating ClickHouse servers and clusters
-
 - [Which ClickHouse version should I use in production?](/faq/operations/production.md)
 - [Is it possible to deploy ClickHouse with separate storage and compute?](/faq/operations/separate_storage.md)
 - [Is it possible to delete old records from a ClickHouse table?](/faq/operations/delete-old-data.md)

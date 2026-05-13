@@ -7,8 +7,6 @@ doc_type: 'guide'
 keywords: ['production', 'deployment', 'versions', 'best practices', 'upgrade strategy']
 ---
 
-# Which ClickHouse version to use in production? {#which-clickhouse-version-to-use-in-production}
-
 First of all, let's discuss why people ask this question in the first place. There are two key reasons:
 
 1.  ClickHouse is developed with pretty high velocity, and usually there are 10+ stable releases per year. That makes a wide range of releases to choose from, which isn't so trivial of a choice.

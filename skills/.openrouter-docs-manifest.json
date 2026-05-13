@@ -71,8 +71,8 @@
   },
   "guides/overview/auth/byok.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/byok.md",
-    "size": 13199,
-    "updatedAt": "2026-05-09T00:38:22.053Z"
+    "size": 15640,
+    "updatedAt": "2026-05-13T00:41:47.700Z"
   },
   "guides/overview/stripe-projects.md": {
     "url": "https://openrouter.ai/docs/guides/overview/stripe-projects.md",
@@ -101,8 +101,8 @@
   },
   "guides/routing/auto-exacto.md": {
     "url": "https://openrouter.ai/docs/guides/routing/auto-exacto.md",
-    "size": 2703,
-    "updatedAt": "2026-04-29T00:35:53.153Z"
+    "size": 5313,
+    "updatedAt": "2026-05-13T00:41:52.919Z"
   },
   "guides/routing/model-variants/free.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/free.md",
@@ -116,8 +116,8 @@
   },
   "guides/routing/model-variants/exacto.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/exacto.md",
-    "size": 4759,
-    "updatedAt": "2026-04-29T00:35:54.593Z"
+    "size": 4917,
+    "updatedAt": "2026-05-13T00:41:55.217Z"
   },
   "guides/routing/model-variants/thinking.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/thinking.md",
@@ -176,8 +176,8 @@
   },
   "guides/features/tool-calling.md": {
     "url": "https://openrouter.ai/docs/guides/features/tool-calling.md",
-    "size": 24531,
-    "updatedAt": "2026-04-29T00:35:59.735Z"
+    "size": 25053,
+    "updatedAt": "2026-05-13T00:42:04.534Z"
   },
   "guides/features/server-tools/overview.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/overview.md",
@@ -186,8 +186,8 @@
   },
   "guides/features/server-tools/web-search.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/web-search.md",
-    "size": 16662,
-    "updatedAt": "2026-05-08T00:36:46.528Z"
+    "size": 17992,
+    "updatedAt": "2026-05-13T00:42:06.083Z"
   },
   "guides/features/server-tools/web-fetch.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/web-fetch.md",
@@ -211,8 +211,8 @@
   },
   "guides/features/plugins/web-search.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/web-search.md",
-    "size": 12028,
-    "updatedAt": "2026-05-08T00:36:55.524Z"
+    "size": 12426,
+    "updatedAt": "2026-05-13T00:42:09.869Z"
   },
   "guides/features/plugins/response-healing.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/response-healing.md",
@@ -1196,8 +1196,8 @@
   },
   "cookbook/coding-agents/claude-code-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/claude-code-integration.md",
-    "size": 11567,
-    "updatedAt": "2026-05-12T00:41:39.422Z"
+    "size": 11918,
+    "updatedAt": "2026-05-13T00:44:55.702Z"
   },
   "cookbook/coding-agents/claude-desktop-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/claude-desktop-integration.md",

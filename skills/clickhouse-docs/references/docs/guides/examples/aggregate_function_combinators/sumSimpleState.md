@@ -5,8 +5,6 @@ keywords: ['sum', 'state', 'simple', 'combinator', 'examples', 'sumSimpleState']
 doc_type: 'reference'
 ---
 
-# sumSimpleState {#sumsimplestate}
-
 ## Description {#description}
 
 The [`SimpleState`](/sql-reference/aggregate-functions/combinators#-simplestate) combinator can be applied to the [`sum`](/sql-reference/aggregate-functions/reference/sum)

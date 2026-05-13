@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# ClickPipes for MongoDB FAQ
-
 ### Can I query for individual fields in the JSON datatype? {#can-i-query-for-individual-fields-in-the-json-datatype}
 
 For direct field access, such as `{"user_id": 123}`, you can use **dot notation**:

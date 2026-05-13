@@ -22,8 +22,8 @@ Learn how to:
 
 Enabling the catalog on a bucket turns on the REST catalog interface and provides a **Catalog URI** and **Warehouse name** required by Iceberg clients. Once enabled, you can create and manage Iceberg tables in that bucket.
 
-* [ Dashboard ](#tab-panel-7114)
-* [ Wrangler CLI ](#tab-panel-7115)
+* [ Dashboard ](#tab-panel-7458)
+* [ Wrangler CLI ](#tab-panel-7459)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -48,8 +48,8 @@ After enabling, Wrangler will return your catalog URI and warehouse name.
 
 When you disable the catalog on a bucket, it immediately stops serving requests from the catalog interface. Any Iceberg table references stored in that catalog become inaccessible until you re-enable it.
 
-* [ Dashboard ](#tab-panel-7116)
-* [ Wrangler CLI ](#tab-panel-7117)
+* [ Dashboard ](#tab-panel-7460)
+* [ Wrangler CLI ](#tab-panel-7461)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -77,8 +77,8 @@ Table maintenance operations such as compaction and snapshot expiration requires
 
 Refer to [Authenticate your Iceberg engine](#authenticate-your-iceberg-engine) for details on creating a token with the required permissions.
 
-* [ Dashboard ](#tab-panel-7118)
-* [ Wrangler CLI ](#tab-panel-7119)
+* [ Dashboard ](#tab-panel-7462)
+* [ Wrangler CLI ](#tab-panel-7463)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -117,8 +117,8 @@ Once enabled, compaction applies retroactively to all existing tables (for catal
 
 Disabling compaction will prevent the process from running for all tables (catalog level) or a specific table (table level). You can re-enable it at any time.
 
-* [ Dashboard ](#tab-panel-7120)
-* [ Wrangler CLI ](#tab-panel-7121)
+* [ Dashboard ](#tab-panel-7464)
+* [ Wrangler CLI ](#tab-panel-7465)
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -207,10 +207,10 @@ To connect your Iceberg engine to R2 Data Catalog, you must provide a Cloudflare
 
 ### Create API token in the dashboard
 
-Create an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/#permissions) with **Admin Read & Write** or **Admin Read only** permissions. These permissions include both:
+Create an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/#permissions) with **Admin Read & Write** permissions. These permissions include both:
 
-* Access to R2 Data Catalog (read-only or read/write, depending on chosen permission)
-* Access to R2 storage (read-only or read/write, depending on chosen permission)
+* Access to R2 Data Catalog (read/write)
+* Access to R2 storage (read/write)
 
 Providing the resulting token value to your Iceberg engine gives it the ability to manage catalog metadata and handle data operations (reads or writes to R2).
 

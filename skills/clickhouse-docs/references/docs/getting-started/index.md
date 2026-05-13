@@ -5,8 +5,6 @@ title: 'Tutorials and example datasets'
 doc_type: 'landing-page'
 ---
 
-# Tutorials and example datasets
-
 > **tip**: These tutorials work with any ClickHouse deployment, including [ClickHouse Cloud](/getting-started/quick-start/cloud).
 
 We have a lot of resources for helping you get started and learn how ClickHouse works:

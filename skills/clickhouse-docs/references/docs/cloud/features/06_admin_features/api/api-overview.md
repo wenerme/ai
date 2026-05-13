@@ -5,8 +5,6 @@ doc_type: 'reference'
 keywords: ['ClickHouse Cloud', 'API overview', 'cloud API', 'REST API', 'programmatic access']
 ---
 
-# ClickHouse Cloud API
-
 ## Overview {#overview}
 
 The ClickHouse Cloud API is a REST API designed for developers to easily manage 

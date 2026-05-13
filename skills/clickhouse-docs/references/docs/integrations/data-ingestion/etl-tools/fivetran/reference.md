@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['fivetran', 'clickhouse destination', 'technical reference']
 ---
 
-# Technical reference
-
 ## Setup details {#setup-details}
 
 ### User and role management {#user-and-role-management}

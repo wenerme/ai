@@ -6,8 +6,6 @@ title: 'Anonymized web analytics'
 doc_type: 'guide'
 ---
 
-# Anonymized web analytics data
-
 This dataset consists of two tables containing anonymized web analytics data with hits (`hits_v1`) and visits (`visits_v1`).
 
 The tables can be downloaded as compressed `tsv.xz` files. In addition to the sample worked with in this document, an extended (7.5GB) version of the `hits` table containing 100 million rows is available as TSV at [https://datasets.clickhouse.com/hits/tsv/hits_100m_obfuscated_v1.tsv.xz](https://datasets.clickhouse.com/hits/tsv/hits_100m_obfuscated_v1.tsv.xz).

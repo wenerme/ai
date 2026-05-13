@@ -14,16 +14,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
 
-## 2026-05-04
+## 2026-05-11
 
   
-**WAF Release - Scheduled changes for 2026-05-11**   
+**WAF Release - Scheduled changes for 2026-05-18**   
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                | Comments                                                                                                                                    |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-05-04        | 2026-05-11   | Disabled         | N/A            | ...68b3c389 | Remote Code Execution - Java Deserialization - Body - Beta | This is a new detection. This rule will be merged into the original rule "Remote Code Execution - Java Deserialization" (ID: ...744305c4  ) |
-| 2026-05-04        | 2026-05-11   | Disabled         | N/A            | ...519e9982 | Remote Code Execution - Java Deserialization - Headers     | This is a new detection.                                                                                                                    |
-| 2026-05-04        | 2026-05-11   | Disabled         | N/A            | ...7fe726a2 | Remote Code Execution - Java Deserialization - URI         | This is a new detection.                                                                                                                    |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                     | Comments                                                                                                                                    |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-05-11        | 2026-05-18   | Disabled         | N/A            | ...9e9c068d | Sitecore - Cache Poisoning - CVE:CVE-2025-53693 | This is a new detection. This rule will be merged into the original rule "Remote Code Execution - Java Deserialization" (ID: ...7c5b669c  ) |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

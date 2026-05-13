@@ -4,8 +4,6 @@ description: 'Overview of what AI/ML features are offered in ClickHouse Cloud'
 doc_type: 'reference'
 ---
 
-# AI/ML in ClickHouse Cloud
-
 Traditional analytics workflows often involve multiple hand offs between data engineers writing queries, analysts building dashboards, and business users interpreting results.
 Each step introduces latency measured in hours or days.
 ClickHouse Cloud offers the following agentic capabilities to collapse that timeline to seconds or minutes,

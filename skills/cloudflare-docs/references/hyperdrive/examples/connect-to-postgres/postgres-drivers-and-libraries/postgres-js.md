@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Postgres.js
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 [Postgres.js ↗](https://github.com/porsager/postgres) is a modern, fully-featured PostgreSQL driver for Node.js. This example demonstrates how to use Postgres.js with Cloudflare Hyperdrive in a Workers application.
 
@@ -46,8 +46,8 @@ The minimum version of `postgres-js` required for Hyperdrive is `3.4.5`.
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6209)
-* [  wrangler.toml ](#tab-panel-6210)
+* [  wrangler.jsonc ](#tab-panel-6544)
+* [  wrangler.toml ](#tab-panel-6545)
 
 JSONC
 
@@ -65,7 +65,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-12",
 
   "hyperdrive": [
 
@@ -92,7 +92,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-12"
 
 
 [[hyperdrive]]

@@ -12,6 +12,14 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Configure Virtual Appliance
 
+Self-serve provisioning via API 
+
+You can create, rotate, and delete Cloudflare One Virtual Appliance instances directly via the API or Terraform. Each request returns a license key that you use to activate the deployed VM.
+
+* Create a virtual appliance: `POST /accounts/{account_id}/magic/connectors` with `device.provision_license: true`. The response includes `result.license_key` — copy and store it securely, as it is shown only once.
+* Rotate the license key: `PATCH /accounts/{account_id}/magic/connectors/{connector_id}` with `provision_license: true`. The previous key is immediately and irrevocably revoked.
+* Delete a virtual appliance: deletes the associated licensed device in the same operation.
+
 Cloudflare One Virtual Appliance is a virtual device alternative to the hardware based Cloudflare One Appliance. These two versions of Cloudflare One Appliance are identical otherwise.
 
 Currently, you can set up Cloudflare One Virtual Appliance on VMWare ESXi and Proxmox Virtual Environment. Support for Proxmox is in beta.
@@ -71,8 +79,8 @@ Cloudflare One Virtual Appliance uses a DHCP connection at first boot to downloa
 
 Select the appropriate tab to configure Cloudflare One Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment.
 
-* [ VMWare ESXi ](#tab-panel-5238)
-* [ Proxmox Virtual Environment (beta) ](#tab-panel-5239)
+* [ VMWare ESXi ](#tab-panel-5525)
+* [ Proxmox Virtual Environment (beta) ](#tab-panel-5526)
 
 **1\. Obtain the VMWare image**
 
@@ -210,8 +218,8 @@ For details, refer to [Configure a virtual machine](#configure-a-virtual-machine
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-5234)
-* [ API ](#tab-panel-5235)
+* [ Dashboard ](#tab-panel-5521)
+* [ API ](#tab-panel-5522)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -267,8 +275,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-5236)
-* [ API ](#tab-panel-5237)
+* [ Dashboard ](#tab-panel-5523)
+* [ API ](#tab-panel-5524)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.

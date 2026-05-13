@@ -19,6 +19,7 @@ For more on Cloudflare SSL/TLS, refer to these articles:
 * [ Certificate authorities ](https://developers.cloudflare.com/ssl/reference/certificate-authorities/)
 * [ Browser compatibility ](https://developers.cloudflare.com/ssl/reference/browser-compatibility/)
 * [ Migration guides ](https://developers.cloudflare.com/ssl/reference/migration-guides/)
+* [ Rotate ACM certificate packs ](https://developers.cloudflare.com/ssl/reference/certificate-rotation/)
 * [ Certificate pinning ](https://developers.cloudflare.com/ssl/reference/certificate-pinning/)
 * [ Certificate statuses ](https://developers.cloudflare.com/ssl/reference/certificate-statuses/)
 * [ Validity periods and renewal ](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/)

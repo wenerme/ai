@@ -5,8 +5,6 @@ keywords: ['ClickHouse', 'Agno', 'Chainlit', 'MCP', 'DSPy', 'LangChain', 'LlamaI
 doc_type: 'guide'
 ---
 
-# Guides for integrating AI agent libraries with ClickHouse MCP server
-
 | Page | Description |
 |-----|-----|
 | [How to build a ClickHouse-backed AI Agent with Streamlit](/use-cases/AI/MCP/ai-agent-libraries/streamlit-agent) | Learn how to build a web-based AI Agent with Streamlit and the ClickHouse MCP server |

@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['fivetran', 'clickhouse destination', 'troubleshooting', 'best practices', 'debugging']
 ---
 
-# Troubleshooting & best practices
-
 ## Common errors {#common-errors}
 
 ### Grants test failed or operations are failing related to permissions {#grants-test-failed}

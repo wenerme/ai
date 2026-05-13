@@ -5,8 +5,6 @@ keywords: ['avg', 'if', 'combinator', 'examples', 'avgIf']
 doc_type: 'reference'
 ---
 
-# avgIf {#avgif}
-
 ## Description {#description}
 
 The [`If`](/sql-reference/aggregate-functions/combinators#-if) combinator can be applied to the [`avg`](/sql-reference/aggregate-functions/reference/avg)

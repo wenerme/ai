@@ -74,10 +74,10 @@
   "anthropic-docs/build-with-claude/fast-mode.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/fast-mode",
     "skill": "anthropic-docs",
-    "etag": "W/\"6110-19e1979f2f8\"",
-    "lastModified": "Mon, 11 May 2026 23:58:03 GMT",
-    "size": 24848,
-    "updatedAt": "2026-05-12T00:25:16.801Z"
+    "etag": "W/\"617e-19e1e709050\"",
+    "lastModified": "Tue, 12 May 2026 23:05:54 GMT",
+    "size": 24958,
+    "updatedAt": "2026-05-13T00:27:03.902Z"
   },
   "anthropic-docs/build-with-claude/structured-outputs.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
@@ -530,10 +530,10 @@
   "anthropic-docs/managed-agents/agent-setup.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/agent-setup",
     "skill": "anthropic-docs",
-    "etag": "W/\"368b-19e1979f6e0\"",
-    "lastModified": "Mon, 11 May 2026 23:58:04 GMT",
-    "size": 13963,
-    "updatedAt": "2026-05-12T00:25:39.932Z"
+    "etag": "W/\"369e-19e1e709050\"",
+    "lastModified": "Tue, 12 May 2026 23:05:54 GMT",
+    "size": 13982,
+    "updatedAt": "2026-05-13T00:27:23.835Z"
   },
   "anthropic-docs/managed-agents/tools.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/tools",

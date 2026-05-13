@@ -5,8 +5,6 @@ keywords: ['sum', 'ForEach', 'combinator', 'examples', 'sumForEach']
 doc_type: 'reference'
 ---
 
-# sumForEach {#sumforeach}
-
 ## Description {#description}
 
 The [`ForEach`](/sql-reference/aggregate-functions/combinators#-foreach) combinator

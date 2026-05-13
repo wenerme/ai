@@ -5,8 +5,6 @@ keywords: ['chdb', 'datastore', 'logging', 'debug', 'log', 'level']
 doc_type: 'reference'
 ---
 
-# DataStore Logging
-
 DataStore uses Python's standard logging module. This guide shows how to configure logging for debugging.
 
 ## Quick Start {#quick-start}

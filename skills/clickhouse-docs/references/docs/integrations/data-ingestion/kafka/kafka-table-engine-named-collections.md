@@ -5,8 +5,6 @@ keywords: ['named collection', 'how to', 'kafka']
 doc_type: 'guide'
 ---
 
-# Integrating ClickHouse with Kafka using named collections
-
 ## Introduction {#introduction}
 
 In this guide, we will explore how to connect ClickHouse to Kafka using named collections. Using the configuration file for named collections offers several advantages:

@@ -5,8 +5,6 @@ title: 'Data sources'
 doc_type: 'landing-page'
 ---
 
-# Data sources
-
 ClickHouse allows you to easily ingest data into your database from a variety of sources.
 For further information see the pages listed below:
 

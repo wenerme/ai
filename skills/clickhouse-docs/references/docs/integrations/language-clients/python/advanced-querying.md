@@ -5,8 +5,6 @@ title: 'Advanced querying'
 doc_type: 'reference'
 ---
 
-# Querying data with ClickHouse Connect: Advanced usage {#querying-data-with-clickhouse-connect--advanced-usage}
-
 ## QueryContexts {#querycontexts}
 
 ClickHouse Connect executes standard queries within a `QueryContext`. The `QueryContext` contains the key structures that are used to build queries against the ClickHouse database, and the configuration used to process the result into a `QueryResult` or other response data structure. That includes the query itself, parameters, settings, read formats, and other properties.

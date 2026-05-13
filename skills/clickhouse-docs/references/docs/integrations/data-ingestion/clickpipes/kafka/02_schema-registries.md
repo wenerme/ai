@@ -8,8 +8,6 @@ integration:
    - category: 'clickpipes'
 ---
 
-# Schema registries {#schema-registries}
-
 ClickPipes supports integrating with a schema registry to decode Avro- and Protobuf-encoded topics.
 
 ## Supported registries for Kafka ClickPipes {#supported-schema-registries}

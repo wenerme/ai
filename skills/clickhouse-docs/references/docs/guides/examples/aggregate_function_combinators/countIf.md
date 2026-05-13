@@ -5,8 +5,6 @@ keywords: ['count', 'if', 'combinator', 'examples', 'countIf']
 doc_type: 'reference'
 ---
 
-# countIf {#countif}
-
 ## Description {#description}
 
 The [`If`](/sql-reference/aggregate-functions/combinators#-if) combinator can be applied to the [`count`](/sql-reference/aggregate-functions/reference/count)

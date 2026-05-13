@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # StarRocks
 
-**Last reviewed:**  9 months ago 
+**Last reviewed:**  10 months ago 
 
 Below is an example of using [StarRocks ↗](https://docs.starrocks.io/docs/data%5Fsource/catalog/iceberg/iceberg%5Fcatalog/#rest) to connect, query, modify data from R2 Data Catalog (read-write).
 

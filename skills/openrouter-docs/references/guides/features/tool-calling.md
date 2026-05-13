@@ -849,4 +849,8 @@ Design tools that work well together:
 
 This allows the model to naturally chain operations: search → get details → check inventory.
 
+### Reliability Tracking
+
+OpenRouter tracks how reliably each provider completes tool calls and surfaces this as the **Tool Call Error Rate** on the Performance tab of every model page. The same signal drives [Auto Exacto](/docs/guides/routing/auto-exacto) provider ordering on tool-calling requests. For the exact validator, JSON Schema draft, regex semantics, and per-tool-call classification, see [How Tool-Calling Success Rate Is Measured](/docs/guides/routing/auto-exacto#how-tool-calling-success-rate-is-measured).
+
 For more details on OpenRouter's message format and tool parameters, see the [API Reference](https://openrouter.ai/docs/api-reference/overview).

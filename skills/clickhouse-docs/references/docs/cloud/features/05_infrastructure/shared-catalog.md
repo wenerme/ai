@@ -5,8 +5,6 @@ description: 'Describes the Shared Catalog component and the Shared database eng
 doc_type: 'reference'
 ---
 
-# Shared catalog and shared database engine {#shared-catalog-and-shared-database-engine}
-
 **Available exclusively in ClickHouse Cloud (and first party partner cloud services)**
 
 Shared Catalog is a cloud-native component responsible for replicating metadata and DDL operations of databases and tables that use stateless engines across replicas in ClickHouse Cloud. It enables consistent and centralized state management for these objects, ensuring metadata consistency even in dynamic or partially offline environments.

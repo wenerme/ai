@@ -5,8 +5,6 @@ description: 'Landing page for the tools section'
 doc_type: 'landing-page'
 ---
 
-# Tools
-
 | Page      | Description                                                                                                                     |
 |-----------|---------------------------------------------------------------------------------------------------------------------------------|
 | [SQL Client](/integrations/sql-clients) | How to integrate ClickHouse with various common database management, analysis and visualization tools                                                                   |

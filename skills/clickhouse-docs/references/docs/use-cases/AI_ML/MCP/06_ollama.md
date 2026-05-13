@@ -6,8 +6,6 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# Using ClickHouse MCP server with Ollama
-
 > This guide explains how to use the ClickHouse MCP server with Ollama.
 
 <VerticalStepper headerLevel="h2">

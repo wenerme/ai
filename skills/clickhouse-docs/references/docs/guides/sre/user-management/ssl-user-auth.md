@@ -5,8 +5,6 @@ doc_type: 'guide'
 keywords: ['ssl', 'authentication', 'security', 'certificates', 'user management']
 ---
 
-# Configuring SSL user certificate for authentication
-
 <SelfManaged />
 
 This guide provides simple and minimal settings to configure authentication with SSL user certificates. The tutorial builds on the [Configuring TLS user guide](../tls/configuring-tls.md).

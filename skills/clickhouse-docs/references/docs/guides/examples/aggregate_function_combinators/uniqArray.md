@@ -5,8 +5,6 @@ keywords: ['uniq', 'array', 'combinator', 'examples', 'uniqArray']
 doc_type: 'reference'
 ---
 
-# uniqArray {#uniqarray}
-
 ## Description {#description}
 
 The [`Array`](/sql-reference/aggregate-functions/combinators#-array) combinator 

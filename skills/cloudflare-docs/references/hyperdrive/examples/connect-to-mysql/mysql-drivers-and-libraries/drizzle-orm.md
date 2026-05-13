@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Drizzle ORM
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 [Drizzle ORM ↗](https://orm.drizzle.team/) is a lightweight TypeScript ORM with a focus on type safety. This example demonstrates how to use Drizzle ORM with MySQL via Cloudflare Hyperdrive in a Workers application.
 
@@ -41,8 +41,8 @@ npm i -D drizzle-kit tsx @types/node
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-6099)
-* [  wrangler.toml ](#tab-panel-6100)
+* [  wrangler.jsonc ](#tab-panel-6434)
+* [  wrangler.toml ](#tab-panel-6435)
 
 JSONC
 
@@ -60,7 +60,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-12",
 
   "hyperdrive": [
 
@@ -87,7 +87,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-12"
 
 
 [[hyperdrive]]

@@ -619,7 +619,9 @@ You can access this information through the `page_number` attribute of the
 
 When the model references an image chunk during generation, the API returns a
 citation in the grounding metadata that includes a `media_id`. You can use this
-ID to download the exact image chunk the model referenced.
+ID to download the exact image chunk the model referenced. This `media_id` is
+persistent across multiple search calls, which lets you reliably retrieve
+the same image or cache it using the ID.
 
 The following snippet is an example REST response:
 
@@ -629,7 +631,7 @@ The following snippet is an example REST response:
           "retrievedContext": {
             "title": "product_image",
             "fileSearchStore": "fileSearchStores/my-store-123",
-            "media_id": "fileSearchStores/my-store-123/blobs/BlobId-456"
+            "media_id": "fileSearchStores/my-store-123/media/BlobId-456"
           }
         }
       ]
@@ -663,7 +665,7 @@ download the media:
 
 ### REST
 
-    curl -X GET "https://generativelanguage.googleapis.com/v1/fileSearchStores/my-store-123/blobs/BlobId-456" \
+    curl -X GET "https://generativelanguage.googleapis.com/v1/fileSearchStores/my-store-123/media/BlobId-456" \
       -H "x-goog-api-key: $GEMINI_API_KEY"
 
 ## Custom metadata in grounding data

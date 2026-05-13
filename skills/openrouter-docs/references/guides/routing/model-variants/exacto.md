@@ -94,7 +94,7 @@ Exacto uses the same provider-ranking signals as [Auto Exacto](/docs/guides/rout
 
 We use three classes of signals:
 
-* Tool-calling success and reliability from real traffic
+* Tool-calling success and reliability from real traffic -- see [How Tool-Calling Success Rate Is Measured](/docs/guides/routing/auto-exacto#how-tool-calling-success-rate-is-measured) for the underlying methodology
 * Provider performance metrics such as throughput and latency
 * Benchmark and evaluation data as it becomes available
 

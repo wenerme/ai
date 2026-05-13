@@ -5,8 +5,6 @@ keywords: ['chdb', 'datastore', 'profiling', 'performance', 'timing', 'benchmark
 doc_type: 'guide'
 ---
 
-# DataStore Profiling
-
 The DataStore profiler helps you measure execution time and identify performance bottlenecks.
 
 ## Quick Start {#quick-start}

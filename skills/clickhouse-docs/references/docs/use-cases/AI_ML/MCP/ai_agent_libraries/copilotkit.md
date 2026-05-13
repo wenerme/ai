@@ -6,8 +6,6 @@ show_related_blogs: true
 doc_type: 'guide'
 ---
 
-# How to build an AI agent with CopilotKit and the ClickHouse MCP server
-
 This is an example of how to build an agentic application using data stored in 
 ClickHouse. It uses the [ClickHouse MCP server](https://github.com/ClickHouse/mcp-clickhouse) 
 to query data from ClickHouse and generate charts based on the data.

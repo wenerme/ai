@@ -5,8 +5,6 @@ keywords: ['ClickHouse advanced guides', 'developer guides', 'query optimization
 doc_type: 'guide'
 ---
 
-# Advanced guides
-
 This section contains the following advanced guides:
 
 | Guide                                                                                                                  | Description                                                                                                                                                                                                                                                                                                                                    |

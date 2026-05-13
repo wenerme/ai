@@ -8,8 +8,6 @@ integration:
   - category: 'clickpipes'
 ---
 
-# Generic MongoDB source setup guide
-
 > **info**: If you use MongoDB Atlas, please refer to the specific guide [here](./atlas).
 
 ## Enable oplog retention {#enable-oplog-retention}
