@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # HTTP API reference
 
-**Last reviewed:**  17 days ago 
+**Last reviewed:**  about 1 month ago 
 
 This page documents every route exposed by the [sandbox bridge](https://developers.cloudflare.com/sandbox/bridge/).
 
@@ -195,8 +195,8 @@ The WebSocket carries binary frames for terminal I/O and JSON text frames for co
 
 The warm pool pre-starts sandbox containers so new sessions boot instantly. Configure it with environment variables in `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-7561)
-* [  wrangler.toml ](#tab-panel-7562)
+* [  wrangler.jsonc ](#tab-panel-7905)
+* [  wrangler.toml ](#tab-panel-7906)
 
 JSONC
 

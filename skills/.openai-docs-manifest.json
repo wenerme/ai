@@ -122,10 +122,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"d52f3257e76f92bdaebfb78fc5dc136e\"",
-    "lastModified": "Thu, 07 May 2026 22:42:37 GMT",
-    "size": 28393,
-    "updatedAt": "2026-05-08T00:28:16.537Z"
+    "etag": "W/\"1254658d51d4493851b8090733261176\"",
+    "lastModified": "Wed, 13 May 2026 02:49:03 GMT",
+    "size": 28902,
+    "updatedAt": "2026-05-13T10:55:55.047Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",
@@ -9186,10 +9186,10 @@
   "codex-docs/app/chrome-extension.md": {
     "url": "https://developers.openai.com/codex/app/chrome-extension.md",
     "skill": "codex-docs",
-    "etag": "W/\"8fa0fc6eb9b700f4a9ef305bc7d3b96b\"",
-    "lastModified": "Fri, 08 May 2026 00:34:52 GMT",
-    "size": 6901,
-    "updatedAt": "2026-05-08T00:34:52.512Z"
+    "etag": "W/\"2810a4b87916cf49cde2ffd52a8dcd4e\"",
+    "lastModified": "Wed, 13 May 2026 02:59:03 GMT",
+    "size": 6979,
+    "updatedAt": "2026-05-13T11:01:15.869Z"
   },
   "codex-docs/app/commands.md": {
     "url": "https://developers.openai.com/codex/app/commands.md",

@@ -223,7 +223,7 @@ Unlike text or image generation, video generation is **asynchronous** because ge
 | `prompt`           | string  | Yes      | Text description of the video to generate                                                                                              |
 | `duration`         | integer | No       | Duration of the generated video in seconds                                                                                             |
 | `resolution`       | string  | No       | Resolution of the output video (e.g., `720p`, `1080p`)                                                                                 |
-| `aspect_ratio`     | string  | No       | Aspect ratio of the output video (e.g., `16:9`, `9:16`)                                                                                |
+| `aspect_ratio`     | string  | No       | Aspect ratio of the output video (e.g., `16:9`, `9:16`, `3:2`)                                                                         |
 | `size`             | string  | No       | Exact pixel dimensions in `WIDTHxHEIGHT` format (e.g., `1280x720`). Interchangeable with `resolution` + `aspect_ratio`                 |
 | `frame_images`     | array   | No       | Images for first/last frames (image-to-video)                                                                                          |
 | `input_references` | array   | No       | Reference images for style guidance (reference-to-video)                                                                               |
@@ -248,6 +248,8 @@ Unlike text or image generation, video generation is **asynchronous** because ge
 * `1:1` — Square
 * `4:3` — Standard landscape
 * `3:4` — Standard portrait
+* `3:2` — Photography landscape
+* `2:3` — Photography portrait
 * `21:9` — Ultra-wide
 * `9:21` — Ultra-tall
 

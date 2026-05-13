@@ -28,8 +28,9 @@ Set up the extension from Codex:
 
 1. Open Codex and go to **Plugins**.
 2. Add the **Chrome** plugin.
-3. Follow the setup flow. It guides you through installing or connecting the
-   Chrome extension and approving Chrome's permission prompts.
+3. Follow the setup flow. It guides you through installing the [Codex Chrome
+   extension](https://chromewebstore.google.com/detail/codex/hehggadaopoacecdllhhajmbjkdcmajg)
+   and approving Chrome's permission prompts.
 4. Open Chrome and confirm the Codex extension shows **Connected**.
 
 After the plugin setup is complete, start a new Codex thread. Codex can suggest

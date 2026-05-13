@@ -871,6 +871,38 @@ components:
             id:
               type: string
               enum:
+                - fusion
+              description: 'Discriminator value: fusion'
+            analysis_models:
+              type: array
+              items:
+                type: string
+              description: >-
+                Slugs of models to run in parallel as the "expert panel" the
+                judge analyzes. Each model receives the same user prompt with
+                web_search + web_fetch enabled. Capped at 8 models to bound cost
+                amplification. When omitted, defaults to the Quality preset from
+                the /labs/fusion UI (~anthropic/claude-opus-latest,
+                ~openai/gpt-latest).
+            enabled:
+              type: boolean
+              description: >-
+                Set to false to disable the fusion plugin for this request.
+                Defaults to true.
+            model:
+              type: string
+              description: >-
+                Slug of the model that performs both the judge step (with
+                web_search + web_fetch) and the final synthesis. When omitted,
+                defaults to the first model in the Quality preset.
+          required:
+            - id
+          description: fusion variant
+        - type: object
+          properties:
+            id:
+              type: string
+              enum:
                 - moderation
               description: 'Discriminator value: moderation'
           required:
@@ -1761,9 +1793,13 @@ components:
         - medium
         - high
       description: >-
-        How much context to retrieve per result. Defaults to medium (15000
-        chars). Applies to Exa and Parallel engines; ignored with native
-        provider search and Firecrawl.
+        How much context to retrieve per result. Applies to Exa and Parallel
+        engines; ignored with native provider search and Firecrawl. For Exa,
+        pins a fixed per-result character cap (low=5,000, medium=15,000,
+        high=30,000); when omitted, Exa picks an adaptive size per query and
+        document (typically ~2,000–4,000 characters per result). For Parallel,
+        controls the total characters across all results; when omitted, Parallel
+        uses its own default size.
       title: SearchQualityLevel
     WebSearchUserLocationServerToolType:
       type: string
@@ -2330,6 +2366,7 @@ components:
         - fallback
         - pareto
         - bodybuilder
+        - fusion
       title: RoutingStrategy
     OpenRouterMetadata:
       type: object

@@ -11,7 +11,7 @@ GitLab Knowledge Graph commands. (EXPERIMENTAL)
 
 Access the GitLab Knowledge Graph (product name: Orbit) from the
 CLI. Use `glab orbit remote` to query the remote API, or
-`glab orbit local` (coming soon) for local operations.
+`glab orbit local` to run the Orbit local CLI binary.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.
@@ -32,6 +32,9 @@ $ glab orbit remote query ./query.json
 # Inspect indexing progress for a namespace or project
 $ glab orbit remote graph-status --full-path gitlab-org/gitlab
 
+# Run the Orbit local CLI (downloads the binary on first use)
+$ glab orbit local
+
 ```
 
 ## Options inherited from parent commands
@@ -42,4 +45,5 @@ $ glab orbit remote graph-status --full-path gitlab-org/gitlab
 
 ## Subcommands
 
+- [`local`](local.md)
 - [`remote`](remote/_index.md)

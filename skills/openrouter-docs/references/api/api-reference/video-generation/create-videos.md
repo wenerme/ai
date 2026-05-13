@@ -95,6 +95,8 @@ components:
         - '1:1'
         - '4:3'
         - '3:4'
+        - '3:2'
+        - '2:3'
         - '21:9'
         - '9:21'
       description: Aspect ratio of the generated video

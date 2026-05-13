@@ -470,7 +470,7 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 
-Previous version history (11)
+Previous version history (10)
 
 macOS 2026.3.846.0
 
@@ -682,38 +682,6 @@ This release contains a hotfix for [managed networks](https://developers.cloudfl
 
 * macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
 
-macOS 2025.4.929.0
-
-**Version:**  macOS 2025.4.929.0 **Date:**  2025-05-12 **Size:** 96.4 MB 
-
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.4.929.0) 
-
-#### Release notes
-
-This release contains two significant changes all customers should be aware of:
-
-1. All DNS traffic now flows inside the WARP tunnel. Customers are no longer required to configure their local firewall rules to allow our [DoH IP addresses and domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#doh-ip).
-2. When using MASQUE, the connection will fall back to HTTP/2 (TCP) when we detect that HTTP/3 traffic is blocked. This allows for a much more reliable connection on some public WiFi networks.
-
-**Changes and improvements**
-
-* Fixed an issue where the managed network policies could incorrectly report network location beacons as missing.
-* Improved DEX test error reporting.
-* Fixed an issue causing client notifications to fail in IPv6 only environments which prevented the client from receiving configuration changes to settings like device profile.
-* Improved captive portal detection.
-* Added a TCP fallback for the MASQUE tunnel protocol to improve connectivity on networks that block UDP or HTTP/3 specifically.
-* Added new IP addresses for [tunnel connectivity checks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#connectivity-checks). If your organization uses a firewall or other policies you will need to exempt these IPs.
-* DNS over HTTPS traffic is now included in the WARP tunnel by default.
-* Improved the error message displayed in the client GUI when the rate limit for entering an incorrect admin override code is met.
-* Improved handling of non-SLAAC IPv6 interface addresses for better connectivity in IPv6 only environments.
-* Fixed an issue where frequent network changes could cause WARP to become unresponsive.
-* Improvement for WARP to check if tunnel connectivity fails or times out at device wake before attempting to reconnect.
-* Fixed an issue causing WARP connection disruptions after network changes.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-
 ## Linux
 
 Support for Cloudflare Mesh on RHEL 9
@@ -757,7 +725,7 @@ This release introduces the new Cloudflare One Client UI for Linux! You can expe
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 
-Previous version history (11)
+Previous version history (10)
 
 Linux 2026.3.846.0
 
@@ -958,35 +926,6 @@ This release contains a hotfix for [managed networks](https://developers.cloudfl
 **Changes and improvements**
 
 * Fixed an issue where it could take up to 3 minutes for the correct device profile to be applied in some circumstances. In the worst case, it should now only take up to 40 seconds. This will be improved further in a future release.
-
-**Known issues**
-
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
-Linux 2025.4.929.0
-
-**Version:**  Linux 2025.4.929.0 **Date:**  2025-05-12 **Size:** 45.5 MB 
-
- buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.4.929.0) 
-
-#### Release notes
-
-This release contains two significant changes all customers should be aware of:
-
-1. All DNS traffic now flows inside the WARP tunnel. Customers are no longer required to configure their local firewall rules to allow our [DoH IP addresses and domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#doh-ip).
-2. When using MASQUE, the connection will fall back to HTTP/2 (TCP) when we detect that HTTP/3 traffic is blocked. This allows for a much more reliable connection on some public WiFi networks.
-
-**Changes and improvements**
-
-* Fixed an issue where the managed network policies could incorrectly report network location beacons as missing.
-* Improved DEX test error reporting.
-* Fixed an issue causing client notifications to fail in IPv6 only environments which prevented the client from receiving configuration changes to settings like device profile.
-* Added a TCP fallback for the MASQUE tunnel protocol to improve connectivity on networks that block UDP or HTTP/3 specifically.
-* Added new IP addresses for [tunnel connectivity checks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#connectivity-checks). If your organization uses a firewall or other policies you will need to exempt these IPs.
-* Fixed an issue where frequent network changes could cause WARP to become unresponsive.
-* DNS over HTTPS traffic is now included in the WARP tunnel by default.
-* Improvement for WARP to check if tunnel connectivity fails or times out at device wake before attempting to reconnect.
-* Fixed an issue causing WARP connection disruptions after network changes.
 
 **Known issues**
 

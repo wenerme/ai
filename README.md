@@ -62,7 +62,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `llamacpp-docs` | Use when working with llama.cpp: building from source, installation, GGUF model loading, quantization, speculative... | [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp) |
 | `llamafactory-docs` | USE THIS SKILL WHEN working with LLaMA Factory: fine-tuning LLMs (SFT/DPO/PPO/KTO/ORPO), LoRA/QLoRA training, dataset... | [hiyouga/LlamaFactory](https://github.com/hiyouga/LlamaFactory) |
 | `luanti-docs` | Luanti (formerly Minetest) documentation — open-source voxel game engine. Covers Lua modding API, server hosting... | [luanti-org/luanti](https://github.com/luanti-org/luanti) |
-| `mastra` | Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
+| `mastra` | Comprehensive Mastra framework guide for building agents, workflows, tools, memory, workspaces, and storage with current... | [mastra-ai/skills](https://github.com/mastra-ai/skills) |
 | `mastra-docs` | USE THIS SKILL WHEN working with Mastra (TypeScript AI agent framework): building agents, workflows, RAG pipelines,... | [mastra-ai/mastra](https://github.com/mastra-ai/mastra) |
 | `mihomo-docs` | mihomo (Clash Meta) 文档 — 高性能代理内核，支持 VMess/VLESS/Trojan/Hysteria2/Shadowsocks/WireGuard/TUIC/SSH/MASQUE/AnyTLS 等协议。覆盖完整... | [MetaCubeX/Meta-Docs](https://github.com/MetaCubeX/Meta-Docs) |
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
@@ -590,7 +590,7 @@ Luanti (formerly Minetest) documentation — open-source voxel game engine. Cove
 npx skills add wenerme/ai --skill mastra
 ```
 
-Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents and workflows. Covers documentation lookup strategies (embedded docs, remote docs), core concepts (agents vs workflows, tools, memory, RAG), TypeScript requirements, and common patterns. Use this skill for all Mastra development to ensure you're using current APIs from the installed version or latest documentation.
+Comprehensive Mastra framework guide for building agents, workflows, tools, memory, workspaces, and storage with current APIs. Use for documentation lookup, API verification, TypeScript setup, common errors, migrations, and `mastra api` CLI tasks: inspect or call resources on local, Mastra platform, or remote servers.
 
 </details>
 <details>

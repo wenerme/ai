@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Add mTLS authentication and schema validation to protect my API endpoints.  
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.  
 ```
 
 ## Cloudflare platform access

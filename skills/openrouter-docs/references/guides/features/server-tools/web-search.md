@@ -117,15 +117,15 @@ The web search tool accepts optional `parameters` to customize search behavior:
 }
 ```
 
-| Parameter             | Type      | Default  | Description                                                                                                                                                                                                      |
-| --------------------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `engine`              | string    | `auto`   | Search engine to use: `auto`, `native`, `exa`, `firecrawl`, or `parallel`                                                                                                                                        |
-| `max_results`         | integer   | 5        | Maximum results per search call (1–25). Applies to Exa, Firecrawl, and Parallel engines; ignored with native provider search                                                                                     |
-| `max_total_results`   | integer   | —        | Maximum total results across all search calls in a single request. Useful for controlling cost and context size in agentic loops                                                                                 |
-| `search_context_size` | string    | `medium` | How much context to retrieve: `low`, `medium`, or `high`. For Exa, controls characters per result; for Parallel, controls total characters across all results. Ignored with native provider search and Firecrawl |
-| `user_location`       | object    | —        | Approximate user location for location-biased results. Currently only supported by native provider search; ignored with Exa, Firecrawl, and Parallel (see below)                                                 |
-| `allowed_domains`     | string\[] | —        | Limit results to these domains. Supported by Exa, Firecrawl, Parallel, and most native providers (see [domain filtering](#domain-filtering))                                                                     |
-| `excluded_domains`    | string\[] | —        | Exclude results from these domains. Supported by Exa, Firecrawl, Parallel, and some native providers (see [domain filtering](#domain-filtering))                                                                 |
+| Parameter             | Type      | Default | Description                                                                                                                                                                                                                                                                                                         |
+| --------------------- | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `engine`              | string    | `auto`  | Search engine to use: `auto`, `native`, `exa`, `firecrawl`, or `parallel`                                                                                                                                                                                                                                           |
+| `max_results`         | integer   | 5       | Maximum results per search call (1–25). Applies to Exa, Firecrawl, and Parallel engines; ignored with native provider search                                                                                                                                                                                        |
+| `max_total_results`   | integer   | —       | Maximum total results across all search calls in a single request. Useful for controlling cost and context size in agentic loops                                                                                                                                                                                    |
+| `search_context_size` | string    | —       | How much context to retrieve: `low`, `medium`, or `high`. For Exa, pins a fixed per-result character cap (5K/15K/30K); when omitted, Exa picks adaptively (\~2-4K per result). For Parallel, controls total characters across all results (defaults to `medium`). Ignored with native provider search and Firecrawl |
+| `user_location`       | object    | —       | Approximate user location for location-biased results. Currently only supported by native provider search; ignored with Exa, Firecrawl, and Parallel (see below)                                                                                                                                                    |
+| `allowed_domains`     | string\[] | —       | Limit results to these domains. Supported by Exa, Firecrawl, Parallel, and most native providers (see [domain filtering](#domain-filtering))                                                                                                                                                                        |
+| `excluded_domains`    | string\[] | —       | Exclude results from these domains. Supported by Exa, Firecrawl, Parallel, and some native providers (see [domain filtering](#domain-filtering))                                                                                                                                                                    |
 
 ### User Location
 
@@ -176,13 +176,13 @@ The web search server tool supports multiple search engines:
 
 OpenRouter requests Exa [highlights](https://docs.exa.ai/reference/contents-retrieval-with-exa-api#highlights) for each result rather than the `text` content option. Highlights are extractive excerpts drawn directly from the page that Exa selects as most relevant to the search query, typically yielding higher-quality context per token than truncated page text for agentic web tooling.
 
-Use `search_context_size` to cap the highlight length per result via Exa's `contents.highlights.maxCharacters` parameter:
+By default, Exa selects an adaptive highlight size per query and document — typically \~2,000–4,000 characters per result. To pin a larger fixed per-result budget, set `search_context_size`, which maps to Exa's `contents.highlights.maxCharacters` parameter:
 
 * `low` — 5,000 characters per result
-* `medium` (default) — 15,000 characters per result
+* `medium` — 15,000 characters per result
 * `high` — 30,000 characters per result
 
-The selected excerpts are returned to the model on each result and surfaced to API callers via `url_citation` annotations. Within a single result, excerpts that come from different parts of the page are separated by Exa's `[...]` markers, so the `content` field of a `url_citation` annotation may look like:
+When `search_context_size` is omitted, OpenRouter lets Exa pick the highlight size adaptively. The selected excerpts are returned to the model on each result and surfaced to API callers via `url_citation` annotations. Within a single result, excerpts that come from different parts of the page are separated by Exa's `[...]` markers, so the `content` field of a `url_citation` annotation may look like:
 
 ```
 First excerpt drawn from the page.

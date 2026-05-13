@@ -28,11 +28,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 ## Redirect all requests to one URL
 
-* [  JavaScript ](#tab-panel-9353)
-* [  TypeScript ](#tab-panel-9354)
-* [  Python ](#tab-panel-9355)
-* [  Rust ](#tab-panel-9356)
-* [  Hono ](#tab-panel-9357)
+* [  JavaScript ](#tab-panel-9391)
+* [  TypeScript ](#tab-panel-9392)
+* [  Python ](#tab-panel-9393)
+* [  Rust ](#tab-panel-9394)
+* [  Hono ](#tab-panel-9395)
 
 JavaScript
 
@@ -55,7 +55,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWAOwBOAIwiALJNEAmGQC4WLNsA5wuNPgJETpwuYpkBYAFABhdFQgBTO9gAiUAM4x0bqNFvKSGngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ387fQYb5UAKoAJQAMiQGCQoscIBAYG5lMhkAlwk17Ik3sB0s8tm8qB87gQQG4bAtQSQAMyCSRETEkC4QEAIKgkAG3Tw4lEXHgXXgQU4LO6xVq2QFAgA0JDxdMJY3s9ypWwAviKLPKiJY1MwNFodDx+EIxFJZPIlCVbA4nK4PF4fG0qP5AlpSGEItEIoQtOkAlkcs6omQwOgyMVrKbylUanVto1mrxBVQOm5bFMLGsosA4LEAPqjcbZKLKfILQppeVq9Wa4LavR6wyG0zMSxAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCATCIDsATgBskyQGYALPIBcLFm2Ac4XGnwHCxU2QuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ387fQYb5UAKoAJQAMiQGCQoscIBAYG4VMhkAlwk17Ik3sB0s8tm8qB87gQQG4bAtQSR5IIAIxETEkC4QEAIKgkAG3Tw4lEXHgXXgQU4LO6xVq2QFAgA0JDxdMJY3s9ypWwAviKLPKiJZ1MxNNpdDx+EJRBIZHIlPISrYHE5XB4vD42lR-IFtKQwhFohFCNp0gEsjkXVEyGB0GRitYzeUqjU6ttGs1eIKqB03LYphY1lFgHBYgB9UbjbJRFT5BaFNLytXqzXBbX6PVGQ2meTMSxAA)
 
 TypeScript
 
@@ -146,11 +146,11 @@ export default app;
 
 ## Redirect requests from one domain to another
 
-* [  JavaScript ](#tab-panel-9348)
-* [  TypeScript ](#tab-panel-9349)
-* [  Python ](#tab-panel-9350)
-* [  Rust ](#tab-panel-9351)
-* [  Hono ](#tab-panel-9352)
+* [  JavaScript ](#tab-panel-9386)
+* [  TypeScript ](#tab-panel-9387)
+* [  Python ](#tab-panel-9388)
+* [  Rust ](#tab-panel-9389)
+* [  Hono ](#tab-panel-9390)
 
 JavaScript
 

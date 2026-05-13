@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Migrating from Workers Sites to Pages
 
-**Last reviewed:**  over 5 years ago 
+**Last reviewed:**  almost 6 years ago 
 
 In this tutorial, you will learn how to migrate an existing [Cloudflare Workers Sites](https://developers.cloudflare.com/workers/configuration/sites/) application to Cloudflare Pages.
 
