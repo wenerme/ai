@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.  
+Set up rate limiting and WAF rules to block abuse on my public API.  
 ```
 
 ## Cloudflare platform access

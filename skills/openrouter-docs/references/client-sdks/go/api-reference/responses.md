@@ -21,7 +21,7 @@ beta.responses endpoints
 
 Creates a streaming or non-streaming response using OpenResponses API format
 
-### Example Usage
+### Example Usage: guardrail-blocked
 
 ```go
 package main
@@ -41,12 +41,43 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Beta.Responses.Send(ctx, components.ResponsesRequest{
-        Input: openrouter.Pointer(components.CreateInputsUnionStr(
-            "Tell me a joke",
-        )),
-        Model: openrouter.Pointer("openai/gpt-4o"),
-    }, components.MetadataLevelEnabled.ToPointer())
+    res, err := s.Beta.Responses.Send(ctx, components.ResponsesRequest{}, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        defer res.ResponsesStreamingResponse.Close()
+
+        for res.ResponsesStreamingResponse.Next() {
+            event := res.ResponsesStreamingResponse.Value()
+            log.Print(event)
+            // Handle the event
+	      }
+    }
+}
+```
+
+### Example Usage: insufficient-permissions
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Beta.Responses.Send(ctx, components.ResponsesRequest{}, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -82,6 +113,7 @@ func main() {
 | sdkerrors.BadRequestResponseError          | 400         | application/json |
 | sdkerrors.UnauthorizedResponseError        | 401         | application/json |
 | sdkerrors.PaymentRequiredResponseError     | 402         | application/json |
+| sdkerrors.ForbiddenResponseError           | 403         | application/json |
 | sdkerrors.NotFoundResponseError            | 404         | application/json |
 | sdkerrors.RequestTimeoutResponseError      | 408         | application/json |
 | sdkerrors.PayloadTooLargeResponseError     | 413         | application/json |

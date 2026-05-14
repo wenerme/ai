@@ -103,10 +103,10 @@ On March 24th, 2026, we notified developers using the Videos API and Sora 2 vide
 
 On November 14th, 2025, we notified developers using DALL·E model snapshots of their deprecation and removal from the API on May 12, 2026.
 
-| Shutdown date | Model / system | Recommended replacement             |
-| ------------- | -------------- | ----------------------------------- |
-| 2026-05-12    | `dall-e-2`     | `gpt-image-1` or `gpt-image-1-mini` |
-| 2026-05-12    | `dall-e-3`     | `gpt-image-1` or `gpt-image-1-mini` |
+| Shutdown date | Model / system | Recommended replacement                             |
+| ------------- | -------------- | --------------------------------------------------- |
+| 2026-05-12    | `dall-e-2`     | `gpt-image-2`, `gpt-image-1`, or `gpt-image-1-mini` |
+| 2026-05-12    | `dall-e-3`     | `gpt-image-2`, `gpt-image-1`, or `gpt-image-1-mini` |
 
 ### 2025-09-26: Legacy GPT model snapshots
 
@@ -126,13 +126,13 @@ To improve reliability and make it easier for developers to choose the right mod
 
 ### 2025-09-15: Realtime API Beta
 
-The Realtime API Beta will be deprecated and removed from the API on May 7, 2026.
+The Realtime API Beta was deprecated and removed from the API on May 12, 2026.
 
-There are a few key differences between the interfaces in the Realtime beta API and the released GA API. See [the migration guide](https://developers.openai.com/api/docs/guides/realtime#beta-to-ga-migration) to learn more about how to migrate your current beta integration.
+There are a few key differences between the interfaces in the Realtime beta API and the released GA API. See [the migration guide](https://developers.openai.com/api/docs/guides/realtime#beta-to-ga-migration) for the current GA interface and related Realtime docs.
 
 | Shutdown date | Model / system           | Recommended replacement |
 | ------------- | ------------------------ | ----------------------- |
-| 2026‑05‑07    | OpenAI-Beta: realtime=v1 | Realtime API            |
+| 2026‑05‑12    | OpenAI-Beta: realtime=v1 | Realtime API            |
 
 ### 2025-08-20: Assistants API
 

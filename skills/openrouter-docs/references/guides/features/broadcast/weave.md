@@ -14,7 +14,7 @@ In W\&B, go to your [User Settings](https://wandb.ai/settings) and copy your API
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](file:60768b0c-c773-4881-ac51-8c9df159fcd6)
+![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
 
 ## Step 3: Configure W\&B Weave
 
@@ -25,19 +25,19 @@ Click the edit icon next to **W\&B Weave** and enter:
 * **Project**: The project name where traces will be logged
 * **Base Url** (optional): Default is `https://trace.wandb.ai`
 
-![W\&B Weave Configuration](file:b6fcffe9-fc55-4a29-806a-6e23c2183db8)
+![W\&B Weave Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/8c4641a48f3473f905b4d002f888f3a3b678fd7d3b08123d28bf18e38b99567a/content/pages/features/broadcast/broadcast-weave-config.png)
 
 ## Step 4: Test and save
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
 
-![W\&B Weave Configured](file:ebdf7389-6ed5-4cfc-86b5-95db4682bab6)
+![W\&B Weave Configured](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/7c23542342bffc7801e184bcd62f793991109b9ba4d68415e657de7584500c46/content/pages/features/broadcast/broadcast-weave-configured.png)
 
 ## Step 5: Send a test trace
 
 Make an API request through OpenRouter and view the trace in W\&B Weave.
 
-![W\&B Weave Trace](file:7894dffb-4ac5-4ab4-8b72-3c648d9a8f90)
+![W\&B Weave Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/5d0b78b2857428ab3e847836b9081d0eb7e6eb55e5d82ad9e32f21014c3ffc5f/content/pages/features/broadcast/broadcast-weave-trace.png)
 
 ## Custom Metadata
 

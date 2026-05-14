@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
+Add bot protection and rate limiting to my login and checkout endpoints.  
 ```
 
 ## Cloudflare platform access

@@ -20,6 +20,25 @@ Subscribe to all API deprecation posts via [RSS](https://developers.cloudflare.c
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.xml)
 
+## 2026-05-13
+
+**Gateway Audit SSH rules**
+
+Deprecation date: November 3, 2025
+
+End of life date: July 1, 2026
+
+The Gateway Audit SSH action for [network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) is deprecated and will be fully removed on July 1, 2026\. [SSH with Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/) is the replacement for managing and auditing SSH access.
+
+Creating new Gateway rules with `action: "audit_ssh"` via the dashboard was disabled in December 2024\. Creating new rules via the API and Terraform was disabled on November 3, 2025\. Editing existing rules via the dashboard, API, and Terraform was disabled on January 15, 2026\. On July 1, 2026, all remaining Audit SSH rules will stop working.
+
+Deprecated APIs:
+
+* `POST /accounts/{account_id}/gateway/rules` — creating rules with `action: "audit_ssh"` is no longer accepted
+* `PUT /accounts/{account_id}/gateway/rules/{rule_id}` — editing rules with `action: "audit_ssh"` is no longer accepted
+
+Replacement: [SSH with Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/)
+
 ## 2026-03-19
 
 **Service Key Authentication**

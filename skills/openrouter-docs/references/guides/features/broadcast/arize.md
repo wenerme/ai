@@ -19,7 +19,7 @@ In Arize, navigate to your space settings to find your API key and space key:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](file:60768b0c-c773-4881-ac51-8c9df159fcd6)
+![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
 
 ## Step 3: Configure Arize AI
 
@@ -39,7 +39,7 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 Make an API request through OpenRouter and view the trace in your Arize
 dashboard under the specified model.
 
-![Arize Trace View](file:1af0e275-9cc8-4a47-a479-e4383d85c143)
+![Arize Trace View](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/a917bd16b2036c129bd72451d4650953812a85f8c7585dd39804fceef83857d9/content/pages/features/broadcast/broadcast-arize-trace.png)
 
 ## Custom Metadata
 

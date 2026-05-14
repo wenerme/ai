@@ -172,6 +172,8 @@ Cache hits never include `openrouter_metadata`. Both streaming and non-streaming
 
 Opt-in error responses surface `openrouter_metadata` at the **top level** of the error envelope, mirroring the success-path placement (sibling of `error` rather than nested inside it). This applies to all four routes — Chat Completions, Messages, Responses, and legacy Completions — and to both streaming and non-streaming requests. The same opt-in rules apply: send `X-OpenRouter-Experimental-Metadata: enabled` and the snapshot is included on failure; omit it and it isn't.
 
+### No Providers Available (404)
+
 ```json
 {
   "error": {
@@ -195,6 +197,53 @@ Opt-in error responses surface `openrouter_metadata` at the **top level** of the
   }
 }
 ```
+
+### Guardrail Blocked (403)
+
+When a request is blocked before reaching a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/docs/guides/features/guardrails) — the response includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran, including the one that blocked:
+
+```json
+{
+  "error": {
+    "code": 403,
+    "message": "Request blocked: prompt injection patterns detected",
+    "metadata": {
+      "patterns": ["ignore all previous instructions"]
+    }
+  },
+  "openrouter_metadata": {
+    "requested": "openai/gpt-4o",
+    "strategy": "direct",
+    "region": "iad",
+    "summary": "available=1",
+    "attempt": 1,
+    "is_byok": false,
+    "endpoints": {
+      "total": 1,
+      "available": [
+        { "provider": "OpenAI", "model": "openai/gpt-4o", "selected": false }
+      ]
+    },
+    "pipeline": [
+      {
+        "type": "guardrail",
+        "name": "regex_pi_detection",
+        "guardrail_id": "grd_abc123",
+        "guardrail_scope": "api-key",
+        "summary": "Blocked: prompt injection detected (1 pattern matched)",
+        "data": {
+          "action": "blocked",
+          "detected": true,
+          "engines": ["regex"],
+          "patterns": ["ignore all previous instructions"]
+        }
+      }
+    ]
+  }
+}
+```
+
+Because guardrail blocks happen before a provider call completes, no endpoint is marked `selected` and the optional `attempts` array is absent.
 
 A few things to know:
 

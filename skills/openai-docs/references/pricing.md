@@ -515,6 +515,13 @@ Finetuning
 
 
     <small className="pricing-switcher-meta">Prices per 1M tokens.</small>
+    OpenAI is winding down the fine-tuning platform. The platform is no longer
+      accessible to new users, but existing users of the fine-tuning platform
+      will be able to create training jobs for the coming months.
+      <br />
+      All fine-tuned models will remain available for inference until their base
+      models are deprecated. The full timeline is
+      [here](https://developers.openai.com/api/docs/deprecations#update-to-openais-self-serve-fine-tuning).
   </div>
 
   

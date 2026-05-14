@@ -14,7 +14,7 @@ Before setting up API key rotation, you'll need an OpenRouter Management API key
 
 Navigate to [OpenRouter Settings](https://openrouter.ai/settings/management-keys) and go to the Management API Keys section. Click Create New Key, complete the key creation flow, and copy the generated Management API key. Store it securely as you'll need it when creating the Infisical connection.
 
-![OpenRouter Management Keys page showing the Create Management Key button](file:dedee038-fc50-437a-9ea4-7bdea9408221)
+![OpenRouter Management Keys page showing the Create Management Key button](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/336ed359fefab25c78a656b2fac4c282c1c2da28c8273f9c5fd553b55b6cb56f/content/pages/community/infisical-provisioning-keys.png)
 
 For more details on Management API keys and key management, see [OpenRouter's Management Keys documentation](/docs/guides/overview/auth/management-api-keys).
 
@@ -38,7 +38,7 @@ Once your connection is set up, you can configure automatic API key rotation.
 
 Navigate to your Secret Manager Project's Dashboard in Infisical and select Add Secret Rotation from the actions dropdown. Choose the OpenRouter API Key option.
 
-![Infisical dashboard showing the Add Secret Rotation option](file:2de021cb-ca0f-4c52-841a-23eee5050498)
+![Infisical dashboard showing the Add Secret Rotation option](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/12dc63362a6752b8df7bedf6ba430399ca4ec391cbfaa2341ae7e76366ee7473/content/pages/community/infisical-add-rotation.png)
 
 ### Configure Rotation Behavior
 

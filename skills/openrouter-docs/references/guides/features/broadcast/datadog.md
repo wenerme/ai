@@ -14,7 +14,7 @@ In Datadog, go to **Organization Settings > API Keys** and create a new key.
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](file:60768b0c-c773-4881-ac51-8c9df159fcd6)
+![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
 
 ## Step 3: Configure Datadog
 
@@ -24,19 +24,19 @@ Click the edit icon next to **Datadog** and enter:
 * **Ml App**: A name for your application (e.g., "production-app")
 * **Url** (optional): Default is `https://api.us5.datadoghq.com`. Change for other regions
 
-![Datadog Configuration](file:d2a40b7c-f03c-4ba7-a714-01e62b3dbf32)
+![Datadog Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/bd0388077ffa2902197f1d1fa6119f5ce77bf529fe0d8c7c4c95f9fb46059daf/content/pages/features/broadcast/broadcast-datadog-config.png)
 
 ## Step 4: Test and save
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
 
-![Datadog Configured](file:c2888f95-454d-4635-9255-9a5f67219311)
+![Datadog Configured](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/755c64c80cd8210cb44151d7d67c6937a16c70eb7cc3abe752c788bf72b5dc20/content/pages/features/broadcast/broadcast-datadog-configured.png)
 
 ## Step 5: Send a test trace
 
 Make an API request through OpenRouter and view the trace in Datadog.
 
-![Datadog Trace](file:2a466b91-cbe6-4fc5-bd12-0d0463786139)
+![Datadog Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2bf9b44fd78abdb48c8a14645b5113b0f0ce1b754828a17fc07d1fe7cdcbe1e0/content/pages/features/broadcast/broadcast-datadog-trace.png)
 
 ## Custom Metadata
 

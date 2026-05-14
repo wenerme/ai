@@ -38,7 +38,7 @@ console.error(response.error?.message);
 * **{HTTPStatus.S400_Bad_Request}**: Bad Request (invalid or missing params, CORS)
 * **{HTTPStatus.S401_Unauthorized}**: Invalid credentials (OAuth session expired, disabled/invalid API key)
 * **{HTTPStatus.S402_Payment_Required}**: Your account or API key has insufficient credits. Add more credits and retry the request.
-* **{HTTPStatus.S403_Forbidden}**: Your chosen model requires moderation and your input was flagged
+* **{HTTPStatus.S403_Forbidden}**: Forbidden (insufficient permissions, guardrail block, or moderation flag)
 * **{HTTPStatus.S408_Request_Timeout}**: Your request timed out
 * **{HTTPStatus.S429_Too_Many_Requests}**: You are being rate limited
 * **{HTTPStatus.S502_Bad_Gateway}**: Your chosen model is down or we received an invalid response from it
@@ -78,6 +78,67 @@ type ModerationErrorMetadata = {
   model_slug: string;
 };
 ```
+
+## Guardrail Errors
+
+On inference endpoints (`/chat/completions`, `/responses`, `/messages`), a request can be blocked before it reaches a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/docs/guides/features/guardrails). When this happens, the response is a `403` with a message describing the block reason:
+
+```json
+{
+  "error": {
+    "code": 403,
+    "message": "Request blocked: prompt injection patterns detected",
+    "metadata": {
+      "patterns": ["ignore all previous instructions"]
+    }
+  }
+}
+```
+
+When you opt in to [router metadata](/docs/features/router-metadata) via the `X-OpenRouter-Experimental-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array detailing the guardrail stages that ran:
+
+```json
+{
+  "error": {
+    "code": 403,
+    "message": "Request blocked: prompt injection patterns detected",
+    "metadata": {
+      "patterns": ["ignore all previous instructions"]
+    }
+  },
+  "openrouter_metadata": {
+    "requested": "openai/gpt-4o",
+    "strategy": "direct",
+    "region": "iad",
+    "summary": "available=1",
+    "attempt": 1,
+    "is_byok": false,
+    "endpoints": {
+      "total": 1,
+      "available": [
+        { "provider": "OpenAI", "model": "openai/gpt-4o", "selected": false }
+      ]
+    },
+    "pipeline": [
+      {
+        "type": "guardrail",
+        "name": "regex_pi_detection",
+        "guardrail_id": "grd_abc123",
+        "guardrail_scope": "api-key",
+        "summary": "Blocked: prompt injection detected (1 pattern matched)",
+        "data": {
+          "action": "blocked",
+          "detected": true,
+          "engines": ["regex"],
+          "patterns": ["ignore all previous instructions"]
+        }
+      }
+    ]
+  }
+}
+```
+
+The `openrouter_metadata` object follows the same shape as on successful responses — see [Pipeline Stages](/docs/features/router-metadata#pipeline-stages) for the full stage type and field reference.
 
 ## Provider Errors
 

@@ -194,6 +194,18 @@ For Realtime API requests, send the identifier in the `OpenAI-Safety-Identifier`
 
 Safety identifiers do not carry over from Responses API requests or from other sessions. If you use the Responses API `safety_identifier` parameter elsewhere in your application, pass the same stable value separately when you create or connect each Realtime session.
 
+## Beta to GA migration
+
+If you still have a beta Realtime integration, migrate it to the GA interface before moving forward with new work. The most important changes are:
+
+- Remove the `OpenAI-Beta: realtime=v1` header when calling the GA interface.
+- Use [`POST /v1/realtime/client_secrets`](https://developers.openai.com/api/docs/api-reference/realtime-sessions/create-realtime-client-secret) to create ephemeral credentials for browser or mobile clients.
+- Use `/v1/realtime/calls` when establishing WebRTC sessions.
+- Update session and event shapes for the GA interface. In particular, set `session.type`, move output audio configuration under `session.audio.output`, and use the newer response event names like `response.output_text.delta`, `response.output_audio.delta`, and `response.output_audio_transcript.delta`.
+- If you are moving a speech-to-speech app forward, start from the [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents) guide. If you are moving a transcription workflow forward, use [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription).
+
+See the [Realtime client events reference](https://developers.openai.com/api/docs/api-reference/realtime_client_events), [Realtime sessions reference](https://developers.openai.com/api/docs/api-reference/realtime-sessions), and [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents) guide for the current GA flow.
+
 ## Related guides
 
 - [Realtime prompting guide](https://developers.openai.com/api/docs/guides/realtime-models-prompting): Prompt and tune Realtime voice models.

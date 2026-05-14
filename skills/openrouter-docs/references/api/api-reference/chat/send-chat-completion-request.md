@@ -69,7 +69,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaymentRequiredResponse'
         '403':
-          description: Forbidden - Authentication successful but insufficient permissions
+          description: >-
+            Forbidden - Authentication successful but insufficient permissions,
+            or a guardrail blocked the request. When guardrails block and the
+            `X-OpenRouter-Experimental-Metadata: enabled` header is present, the
+            response includes `openrouter_metadata` with full routing context
+            and a `pipeline` array containing guardrail stage details.
           content:
             application/json:
               schema:
@@ -146,25 +151,25 @@ components:
         - 5m
         - 1h
       title: AnthropicCacheControlTtl
-    ChatRequestCacheControlType:
+    AnthropicCacheControlDirectiveType:
       type: string
       enum:
         - ephemeral
-      title: ChatRequestCacheControlType
-    ChatRequestCacheControl:
+      title: AnthropicCacheControlDirectiveType
+    AnthropicCacheControlDirective:
       type: object
       properties:
         ttl:
           $ref: '#/components/schemas/AnthropicCacheControlTtl'
         type:
-          $ref: '#/components/schemas/ChatRequestCacheControlType'
+          $ref: '#/components/schemas/AnthropicCacheControlDirectiveType'
       required:
         - type
       description: >-
-        Enable automatic prompt caching. When set, the system automatically
-        applies cache breakpoints to the last cacheable block in the request.
-        Currently supported for Anthropic Claude models.
-      title: ChatRequestCacheControl
+        Enable automatic prompt caching. When set at the top level, the system
+        automatically applies cache breakpoints to the last cacheable block in
+        the request. Currently supported for Anthropic Claude models.
+      title: AnthropicCacheControlDirective
     ChatDebugOptions:
       type: object
       properties:
@@ -1981,7 +1986,7 @@ components:
       type: object
       properties:
         cache_control:
-          $ref: '#/components/schemas/ChatRequestCacheControl'
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
         debug:
           $ref: '#/components/schemas/ChatDebugOptions'
         frequency_penalty:

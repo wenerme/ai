@@ -122,10 +122,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"1254658d51d4493851b8090733261176\"",
-    "lastModified": "Wed, 13 May 2026 02:49:03 GMT",
-    "size": 28902,
-    "updatedAt": "2026-05-13T10:55:55.047Z"
+    "etag": "W/\"108b42caa9749a0b3f2729c37a9fb28a\"",
+    "lastModified": "Thu, 14 May 2026 08:11:21 GMT",
+    "size": 28953,
+    "updatedAt": "2026-05-14T10:53:10.130Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",
@@ -754,10 +754,10 @@
   "openai-docs/guides/realtime.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime.md",
     "skill": "openai-docs",
-    "etag": "W/\"aef28440f3c822f236da926365d50895\"",
-    "lastModified": "Thu, 07 May 2026 22:01:29 GMT",
-    "size": 9217,
-    "updatedAt": "2026-05-08T00:28:34.759Z"
+    "etag": "W/\"8906c7ec1b700b0656dbdc2dd9f32b1b\"",
+    "lastModified": "Thu, 14 May 2026 08:11:35 GMT",
+    "size": 10679,
+    "updatedAt": "2026-05-14T10:53:28.018Z"
   },
   "openai-docs/guides/reasoning-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/reasoning-best-practices.md",
@@ -1082,10 +1082,10 @@
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
     "skill": "openai-docs",
-    "etag": "W/\"3325c481fef2a5eb3c2a7d0b8a3466cf\"",
-    "lastModified": "Sat, 25 Apr 2026 00:23:37 GMT",
-    "size": 17316,
-    "updatedAt": "2026-04-25T00:23:37.116Z"
+    "etag": "W/\"c3a4d3300388e986555fed3adc702ab1\"",
+    "lastModified": "Thu, 14 May 2026 08:11:31 GMT",
+    "size": 17791,
+    "updatedAt": "2026-05-14T10:53:38.321Z"
   },
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",

@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
+Create a Logpush job to stream Workers analytics to my data warehouse.  
 ```
 
 ## Cloudflare platform access

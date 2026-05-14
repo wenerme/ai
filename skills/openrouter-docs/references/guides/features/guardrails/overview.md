@@ -120,6 +120,67 @@ on create and on update.
 * Up to **100,000 characters** per pattern.
 * Multiple patterns per guardrail; each is evaluated independently.
 
+## When a Request Is Blocked
+
+When a guardrail's runtime checks block a request — for example a content filter or prompt-injection detector — OpenRouter returns an HTTP **403 Forbidden** response. Note that budget limits and allowlist restrictions also produce 403 responses, but only runtime content checks include `openrouter_metadata` stage details.
+
+```json
+{
+  "error": {
+    "code": 403,
+    "message": "Request blocked: prompt injection patterns detected",
+    "metadata": {
+      "patterns": ["ignore all previous instructions"]
+    }
+  }
+}
+```
+
+If you opt in to [router metadata](/docs/features/router-metadata) via the `X-OpenRouter-Experimental-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran:
+
+```json
+{
+  "error": {
+    "code": 403,
+    "message": "Request blocked: prompt injection patterns detected",
+    "metadata": {
+      "patterns": ["ignore all previous instructions"]
+    }
+  },
+  "openrouter_metadata": {
+    "requested": "openai/gpt-4o",
+    "strategy": "direct",
+    "region": "iad",
+    "summary": "available=1",
+    "attempt": 1,
+    "is_byok": false,
+    "endpoints": {
+      "total": 1,
+      "available": [
+        { "provider": "OpenAI", "model": "openai/gpt-4o", "selected": false }
+      ]
+    },
+    "pipeline": [
+      {
+        "type": "guardrail",
+        "name": "regex_pi_detection",
+        "guardrail_id": "grd_abc123",
+        "guardrail_scope": "api-key",
+        "summary": "Blocked: prompt injection detected (1 pattern matched)",
+        "data": {
+          "action": "blocked",
+          "detected": true,
+          "engines": ["regex"],
+          "patterns": ["ignore all previous instructions"]
+        }
+      }
+    ]
+  }
+}
+```
+
+See [Router Metadata — Error Responses](/docs/features/router-metadata#error-responses) and [Errors — Guardrail Errors](/docs/api/reference/errors#guardrail-errors) for the full response shapes and pipeline stage reference.
+
 ## API Access
 
 You can manage guardrails programmatically using the OpenRouter API. This allows you to create, update, delete, and assign guardrails to API keys and organization members directly from your code.

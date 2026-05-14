@@ -19,7 +19,7 @@
 
 Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.
 
-### Example Usage
+### Example Usage: guardrail-blocked
 
 ```go
 package main
@@ -28,7 +28,6 @@ import(
 	"context"
 	"os"
 	openrouter "github.com/OpenRouterTeam/go-sdk"
-	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
 	"github.com/OpenRouterTeam/go-sdk/models/components"
 	"log"
 )
@@ -41,7 +40,6 @@ func main() {
     )
 
     res, err := s.Chat.Send(ctx, components.ChatRequest{
-        MaxTokens: optionalnullable.From(openrouter.Pointer[int64](150)),
         Messages: []components.ChatMessages{
             components.CreateChatMessagesSystem(
                 components.ChatSystemMessage{
@@ -60,9 +58,62 @@ func main() {
                 },
             ),
         },
-        Model: openrouter.Pointer("openai/gpt-4"),
-        Temperature: optionalnullable.From(openrouter.Pointer[float64](0.7)),
-    }, components.MetadataLevelEnabled.ToPointer())
+    }, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        defer res.ChatStreamingResponse.Close()
+
+        for res.ChatStreamingResponse.Next() {
+            event := res.ChatStreamingResponse.Value()
+            log.Print(event)
+            // Handle the event
+	      }
+    }
+}
+```
+
+### Example Usage: insufficient-permissions
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Chat.Send(ctx, components.ChatRequest{
+        Messages: []components.ChatMessages{
+            components.CreateChatMessagesSystem(
+                components.ChatSystemMessage{
+                    Content: components.CreateChatSystemMessageContentStr(
+                        "You are a helpful assistant.",
+                    ),
+                    Role: components.ChatSystemMessageRoleSystem,
+                },
+            ),
+            components.CreateChatMessagesUser(
+                components.ChatUserMessage{
+                    Content: components.CreateChatUserMessageContentStr(
+                        "What is the capital of France?",
+                    ),
+                    Role: components.ChatUserMessageRoleUser,
+                },
+            ),
+        },
+    }, nil)
     if err != nil {
         log.Fatal(err)
     }

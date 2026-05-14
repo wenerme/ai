@@ -68,6 +68,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaymentRequiredResponse'
+        '403':
+          description: >-
+            Forbidden - Authentication successful but insufficient permissions,
+            or a guardrail blocked the request. When guardrails block and the
+            `X-OpenRouter-Experimental-Metadata: enabled` header is present, the
+            response includes `openrouter_metadata` with full routing context
+            and a `pipeline` array containing guardrail stage details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
         '404':
           description: Not Found - Resource does not exist
           content:
@@ -134,6 +145,31 @@ components:
         Opt-in level for surfacing routing metadata on the response under
         `openrouter_metadata`.
       title: MetadataLevel
+    AnthropicCacheControlTtl:
+      type: string
+      enum:
+        - 5m
+        - 1h
+      title: AnthropicCacheControlTtl
+    AnthropicCacheControlDirectiveType:
+      type: string
+      enum:
+        - ephemeral
+      title: AnthropicCacheControlDirectiveType
+    AnthropicCacheControlDirective:
+      type: object
+      properties:
+        ttl:
+          $ref: '#/components/schemas/AnthropicCacheControlTtl'
+        type:
+          $ref: '#/components/schemas/AnthropicCacheControlDirectiveType'
+      required:
+        - type
+      description: >-
+        Enable automatic prompt caching. When set at the top level, the system
+        automatically applies cache breakpoints to the last cacheable block in
+        the request. Currently supported for Anthropic Claude models.
+      title: AnthropicCacheControlDirective
     ImageConfig:
       oneOf:
         - type: string
@@ -4294,6 +4330,8 @@ components:
           type:
             - boolean
             - 'null'
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
         frequency_penalty:
           type:
             - number
@@ -6365,6 +6403,43 @@ components:
         - error
       description: Payment Required - Insufficient credits or quota to complete request
       title: PaymentRequiredResponse
+    ForbiddenResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for ForbiddenResponse
+      title: ForbiddenResponseErrorData
+    ForbiddenResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Forbidden - Authentication successful but insufficient permissions
+      title: ForbiddenResponse
     NotFoundResponseErrorData:
       type: object
       properties:

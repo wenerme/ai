@@ -63,11 +63,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/MessagesErrorResponse'
         '403':
-          description: Permission denied error
+          description: >-
+            Forbidden - Authentication successful but insufficient permissions,
+            or a guardrail blocked the request. When guardrails block and the
+            `X-OpenRouter-Experimental-Metadata: enabled` header is present, the
+            response includes `openrouter_metadata` with full routing context
+            and a `pipeline` array containing guardrail stage details.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MessagesErrorResponse'
+                $ref: '#/components/schemas/ForbiddenResponse'
         '404':
           description: Not found error
           content:
@@ -130,6 +135,10 @@ components:
           $ref: '#/components/schemas/AnthropicCacheControlDirectiveType'
       required:
         - type
+      description: >-
+        Enable automatic prompt caching. When set at the top level, the system
+        automatically applies cache breakpoints to the last cacheable block in
+        the request. Currently supported for Anthropic Claude models.
       title: AnthropicCacheControlDirective
     AnthropicInputTokensClearAtLeastType:
       type: string
@@ -3984,6 +3993,43 @@ components:
         - error
         - type
       title: MessagesErrorResponse
+    ForbiddenResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for ForbiddenResponse
+      title: ForbiddenResponseErrorData
+    ForbiddenResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Forbidden - Authentication successful but insufficient permissions
+      title: ForbiddenResponse
   securitySchemes:
     apiKey:
       type: http
