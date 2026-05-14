@@ -14,6 +14,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 This release notes section covers regular updates and minor fixes. For major feature releases or significant updates, see the [changelog](https://developers.cloudflare.com/changelog).
 
+## 2026-05-12
+
+**Automatic migration to managed infrastructure on June 3, 2026**
+
+Instances created before April 16, 2026 will be automatically migrated to managed infrastructure on **June 3, 2026**. The migration may take up to three days with no service downtime expected. No action is required. After migration, instances will include built-in storage, a built-in vector index, and built-in web crawling, and [new limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#new-instances) will apply. For full migration details, refer to [Limits & pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#previous-instances).
+
 ## 2026-04-16
 
 **Hybrid search**

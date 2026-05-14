@@ -18,9 +18,9 @@ General Wrangler commands for authentication, telemetry, and shell completions.
 
 Open the Cloudflare developer documentation in your default browser.
 
-* [  npm ](#tab-panel-9362)
-* [  pnpm ](#tab-panel-9363)
-* [  yarn ](#tab-panel-9364)
+* [  npm ](#tab-panel-10064)
+* [  pnpm ](#tab-panel-10065)
+* [  yarn ](#tab-panel-10066)
 
 Terminal window
 
@@ -290,9 +290,9 @@ The following global flags work on every command:
 
 🕵️ Retrieve your user information
 
-* [  npm ](#tab-panel-9365)
-* [  pnpm ](#tab-panel-9366)
-* [  yarn ](#tab-panel-9367)
+* [  npm ](#tab-panel-10067)
+* [  pnpm ](#tab-panel-10068)
+* [  yarn ](#tab-panel-10069)
 
 Terminal window
 
@@ -415,10 +415,10 @@ wrangler complete <SHELL>
 
 Generate and add the completion script to your shell configuration file:
 
-* [ Bash ](#tab-panel-9358)
-* [ Zsh ](#tab-panel-9359)
-* [ Fish ](#tab-panel-9360)
-* [ PowerShell ](#tab-panel-9361)
+* [ Bash ](#tab-panel-10060)
+* [ Zsh ](#tab-panel-10061)
+* [ Fish ](#tab-panel-10062)
+* [ PowerShell ](#tab-panel-10063)
 
 Terminal window
 

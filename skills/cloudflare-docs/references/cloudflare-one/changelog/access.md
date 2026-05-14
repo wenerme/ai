@@ -14,6 +14,28 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/access.xml) 
 
+## 2026-05-12
+
+  
+**Refreshed Access login page**   
+
+The [Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and [one-time password (OTP)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) page now feature a refreshed design that improves visual consistency, user trust, and mobile responsiveness.
+
+**Before:**
+
+![Screenshot of the previous Access login page](https://developers.cloudflare.com/_astro/access-login-old.Cv5Cxv8S_Z1P5C13.webp) 
+
+**After:**
+
+![Screenshot of the updated Access login page](https://developers.cloudflare.com/_astro/access-login-new.BqqGV8fX_ZKWWdW.webp) 
+
+The updated login experience includes:
+
+* **Unified authentication card** \- All sign-in options (identity provider buttons, email input, OTP) now appear in a single card with consistent styling, replacing the previous multi-section layout.
+* **Consistent button styling** \- Identity provider buttons use a uniform size and layout for easier scanning and selection.
+* **Better mobile experience** \- Responsive layout improvements ensure the login page renders correctly on phones and tablets.
+* **Dark mode support** \- The login page now supports dark mode.
+
 ## 2026-04-23
 
   

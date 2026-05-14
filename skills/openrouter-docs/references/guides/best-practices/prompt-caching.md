@@ -171,6 +171,10 @@ There are two ways to enable prompt caching with Anthropic:
   **Automatic caching** (top-level `cache_control`) is only supported when requests are routed to the **Anthropic** provider directly. Amazon Bedrock and Google Vertex AI currently do not support top-level `cache_control` — when it is present, OpenRouter will only route to the Anthropic provider and exclude Bedrock and Vertex endpoints. Explicit per-block `cache_control` breakpoints work across all Anthropic-compatible providers including Bedrock and Vertex.
 </Note>
 
+<Note>
+  **Responses API support:** The [Responses API](/docs/api-reference/responses/create-a-model-response) only supports **automatic caching** via top-level `cache_control`. Explicit per-block cache breakpoints inside `input` items are **not** exposed through the Responses API — use the [Chat Completions](/docs/api-reference/chat/create-a-chat-completion) or [Anthropic Messages](/docs/api-reference/messages/create-a-message) API if you need fine-grained breakpoints.
+</Note>
+
 By default, the cache expires after 5 minutes, but you can extend this to 1 hour by specifying `"ttl": "1h"` in the `cache_control` object.
 
 [Click here to read more about Anthropic prompt caching and its limitation.](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)

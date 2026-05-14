@@ -20,9 +20,9 @@ To manage mTLS client certificates and CA chain certificates used by Hyperdrive,
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-9368)
-* [  pnpm ](#tab-panel-9369)
-* [  yarn ](#tab-panel-9370)
+* [  npm ](#tab-panel-10070)
+* [  pnpm ](#tab-panel-10071)
+* [  yarn ](#tab-panel-10072)
 
 Terminal window
 
@@ -113,9 +113,9 @@ Automatically provision draft bindings with new resources
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-9371)
-* [  pnpm ](#tab-panel-9372)
-* [  yarn ](#tab-panel-9373)
+* [  npm ](#tab-panel-10073)
+* [  pnpm ](#tab-panel-10074)
+* [  yarn ](#tab-panel-10075)
 
 Terminal window
 
@@ -168,9 +168,9 @@ Automatically provision draft bindings with new resources
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-9374)
-* [  pnpm ](#tab-panel-9375)
-* [  yarn ](#tab-panel-9376)
+* [  npm ](#tab-panel-10076)
+* [  pnpm ](#tab-panel-10077)
+* [  yarn ](#tab-panel-10078)
 
 Terminal window
 
@@ -223,9 +223,9 @@ Automatically provision draft bindings with new resources
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-9377)
-* [  pnpm ](#tab-panel-9378)
-* [  yarn ](#tab-panel-9379)
+* [  npm ](#tab-panel-10079)
+* [  pnpm ](#tab-panel-10080)
+* [  yarn ](#tab-panel-10081)
 
 Terminal window
 
@@ -275,9 +275,9 @@ Automatically provision draft bindings with new resources
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-9380)
-* [  pnpm ](#tab-panel-9381)
-* [  yarn ](#tab-panel-9382)
+* [  npm ](#tab-panel-10082)
+* [  pnpm ](#tab-panel-10083)
+* [  yarn ](#tab-panel-10084)
 
 Terminal window
 

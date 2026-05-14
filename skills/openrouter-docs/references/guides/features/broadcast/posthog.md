@@ -18,7 +18,7 @@ In PostHog, navigate to your project settings:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+![Enable Broadcast](file:60768b0c-c773-4881-ac51-8c9df159fcd6)
 
 ## Step 3: Configure PostHog
 
@@ -36,7 +36,7 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 Make an API request through OpenRouter and view the LLM analytics in your
 PostHog dashboard.
 
-![PostHog LLM Analytics](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/c4b6f05846279a1425ed82450ff599981a7770f8ef5a80c560cc91d56e5e1b39/content/pages/features/broadcast/broadcast-posthog-analytics.png)
+![PostHog LLM Analytics](file:c9b6685d-1caf-4be6-91e7-627ae1066600)
 
 ## Custom Metadata
 

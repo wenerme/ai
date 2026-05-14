@@ -65,8 +65,8 @@ npm install ai zod
 
 Use the standard AI SDK `tool()` function:
 
-* [  JavaScript ](#tab-panel-3108)
-* [  TypeScript ](#tab-panel-3109)
+* [  JavaScript ](#tab-panel-3456)
+* [  TypeScript ](#tab-panel-3457)
 
 JavaScript
 
@@ -160,8 +160,8 @@ const tools = {
 
 `createCodeTool` takes your tools and an executor, and returns a single AI SDK tool:
 
-* [  JavaScript ](#tab-panel-3098)
-* [  TypeScript ](#tab-panel-3099)
+* [  JavaScript ](#tab-panel-3448)
+* [  TypeScript ](#tab-panel-3449)
 
 JavaScript
 
@@ -209,8 +209,8 @@ const codemode = createCodeTool({ tools, executor });
 
 Pass the codemode tool to `streamText` or `generateText` like any other tool. You choose the model:
 
-* [  JavaScript ](#tab-panel-3102)
-* [  TypeScript ](#tab-panel-3103)
+* [  JavaScript ](#tab-panel-3452)
+* [  TypeScript ](#tab-panel-3453)
 
 JavaScript
 
@@ -295,8 +295,8 @@ The code runs in an isolated Worker sandbox, tool calls are dispatched back to t
 
 Add a `worker_loaders` binding to your `wrangler.jsonc`. This is the only binding required:
 
-* [  wrangler.jsonc ](#tab-panel-3096)
-* [  wrangler.toml ](#tab-panel-3097)
+* [  wrangler.jsonc ](#tab-panel-3446)
+* [  wrangler.toml ](#tab-panel-3447)
 
 JSONC
 
@@ -353,8 +353,8 @@ External `fetch()` and `connect()` are blocked by default — enforced at the Wo
 
 To allow controlled outbound access, pass a `Fetcher`:
 
-* [  JavaScript ](#tab-panel-3100)
-* [  TypeScript ](#tab-panel-3101)
+* [  JavaScript ](#tab-panel-3450)
+* [  TypeScript ](#tab-panel-3451)
 
 JavaScript
 
@@ -394,8 +394,8 @@ const executor = new DynamicWorkerExecutor({
 
 The typical pattern is to create the executor and codemode tool inside an Agent's message handler:
 
-* [  JavaScript ](#tab-panel-3118)
-* [  TypeScript ](#tab-panel-3119)
+* [  JavaScript ](#tab-panel-3468)
+* [  TypeScript ](#tab-panel-3469)
 
 JavaScript
 
@@ -515,8 +515,8 @@ export class MyAgent extends Agent<Env, State> {
 
 MCP tools work the same way — merge them into the tool set:
 
-* [  JavaScript ](#tab-panel-3104)
-* [  TypeScript ](#tab-panel-3105)
+* [  JavaScript ](#tab-panel-3454)
+* [  TypeScript ](#tab-panel-3455)
 
 JavaScript
 
@@ -562,6 +562,214 @@ const codemode = createCodeTool({
 
 Tool names with hyphens or dots (common in MCP) are automatically sanitized to valid JavaScript identifiers (for example, `my-server.list-items` becomes `my_server_list_items`).
 
+### Browser executor with dynamic client tools
+
+If your tools live in the browser instead of the Agent, build codemode from those browser-side functions and register it with your client tool layer. This keeps the server generic while running generated code in an iframe sandbox on the page.
+
+**Server:**
+
+* [  JavaScript ](#tab-panel-3462)
+* [  TypeScript ](#tab-panel-3463)
+
+JavaScript
+
+```
+
+import { AIChatAgent, createToolsFromClientSchemas } from "@cloudflare/ai-chat";
+
+import { convertToModelMessages, stepCountIs, streamText } from "ai";
+
+
+export class BrowserCodemodeAgent extends AIChatAgent {
+
+  async onChatMessage(_onFinish, options) {
+
+    const result = streamText({
+
+      model: this.env.MODEL,
+
+      messages: await convertToModelMessages(this.messages),
+
+      tools: createToolsFromClientSchemas(options?.clientTools),
+
+      stopWhen: stepCountIs(10),
+
+    });
+
+
+    return result.toUIMessageStreamResponse();
+
+  }
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+import { AIChatAgent, createToolsFromClientSchemas } from "@cloudflare/ai-chat";
+
+import { convertToModelMessages, stepCountIs, streamText } from "ai";
+
+
+export class BrowserCodemodeAgent extends AIChatAgent<Env> {
+
+  async onChatMessage(_onFinish, options) {
+
+    const result = streamText({
+
+      model: this.env.MODEL,
+
+      messages: await convertToModelMessages(this.messages),
+
+      tools: createToolsFromClientSchemas(options?.clientTools),
+
+      stopWhen: stepCountIs(10),
+
+    });
+
+
+    return result.toUIMessageStreamResponse();
+
+  }
+
+}
+
+
+```
+
+**Client:**
+
+* [  JavaScript ](#tab-panel-3472)
+* [  TypeScript ](#tab-panel-3473)
+
+JavaScript
+
+```
+
+import { useAgent } from "agents/react";
+
+import { useAgentChat } from "@cloudflare/ai-chat/react";
+
+import {
+
+  IframeSandboxExecutor,
+
+  createBrowserCodeTool,
+
+} from "@cloudflare/codemode/browser";
+
+
+const codemode = createBrowserCodeTool({
+
+  tools: {
+
+    getPageTitle: {
+
+      description: "Get the current page title",
+
+      inputSchema: { type: "object", properties: {}, required: [] },
+
+      execute: async () => ({ title: document.title }),
+
+    },
+
+  },
+
+  executor: new IframeSandboxExecutor(),
+
+});
+
+
+const agent = useAgent({ agent: "BrowserCodemodeAgent" });
+
+const tools = {
+
+  codemode: {
+
+    description: codemode.description,
+
+    parameters: codemode.inputSchema,
+
+    execute: codemode.execute,
+
+  },
+
+};
+
+
+const { messages, sendMessage } = useAgentChat({ agent, tools });
+
+
+```
+
+TypeScript
+
+```
+
+import { useAgent } from "agents/react";
+
+import { useAgentChat, type AITool } from "@cloudflare/ai-chat/react";
+
+import {
+
+  IframeSandboxExecutor,
+
+  createBrowserCodeTool,
+
+} from "@cloudflare/codemode/browser";
+
+
+const codemode = createBrowserCodeTool({
+
+  tools: {
+
+    getPageTitle: {
+
+      description: "Get the current page title",
+
+      inputSchema: { type: "object", properties: {}, required: [] },
+
+      execute: async () => ({ title: document.title }),
+
+    },
+
+  },
+
+  executor: new IframeSandboxExecutor(),
+
+});
+
+
+const agent = useAgent({ agent: "BrowserCodemodeAgent" });
+
+const tools: Record<string, AITool> = {
+
+  codemode: {
+
+    description: codemode.description,
+
+    parameters: codemode.inputSchema,
+
+    execute: codemode.execute,
+
+  },
+
+};
+
+
+const { messages, sendMessage } = useAgentChat({ agent, tools });
+
+
+```
+
+This pattern is useful when the browser owns the tool surface at runtime, the page exposes client-side capabilities that only the browser can run, or you want codemode's typed code-generation prompt without routing tool execution through the server.
+
+If you need approval-gated tools, use the standard `needsApproval` and `useAgentChat` approval flow described in [Human in the Loop](https://developers.cloudflare.com/agents/concepts/human-in-the-loop/). Codemode excludes tools with `needsApproval` instead of pausing execution for approval.
+
 ## MCP server wrappers
 
 The `@cloudflare/codemode/mcp` export provides two functions that wrap MCP servers with Code Mode.
@@ -570,8 +778,8 @@ The `@cloudflare/codemode/mcp` export provides two functions that wrap MCP serve
 
 Wraps an existing MCP server with a single `code` tool. Each upstream tool becomes a typed `codemode.*` method inside the sandbox:
 
-* [  JavaScript ](#tab-panel-3106)
-* [  TypeScript ](#tab-panel-3107)
+* [  JavaScript ](#tab-panel-3458)
+* [  TypeScript ](#tab-panel-3459)
 
 JavaScript
 
@@ -609,8 +817,8 @@ const server = await codeMcpServer({ server: upstreamMcp, executor });
 
 Creates an MCP server with `search` and `execute` tools from an OpenAPI spec. All `$ref` pointers are resolved before being passed to the sandbox, and the host-side `request` handler keeps authentication out of the sandbox:
 
-* [  JavaScript ](#tab-panel-3116)
-* [  TypeScript ](#tab-panel-3117)
+* [  JavaScript ](#tab-panel-3470)
+* [  TypeScript ](#tab-panel-3471)
 
 JavaScript
 
@@ -753,12 +961,21 @@ Executes code in an isolated Cloudflare Worker via `WorkerLoader`.
 
 Code and tool names are normalized and sanitized internally — you do not need to call `normalizeCode()` or `sanitizeToolName()` before passing them to `execute()`.
 
+### `IframeSandboxExecutor`
+
+Executes code in a sandboxed browser iframe. Import it from `@cloudflare/codemode/browser`.
+
+| Option  | Type   | Default                                                       | Description                                                              |
+| ------- | ------ | ------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| timeout | number | 30000                                                         | Execution timeout in ms. Cannot preempt tight synchronous browser loops. |
+| csp     | string | default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'; | Content Security Policy applied to the sandbox iframe document.          |
+
 ### `generateTypes(tools)`
 
 Generates TypeScript type definitions from your tools. Used internally by `createCodeTool` but exported for custom use (for example, displaying types in a frontend).
 
-* [  JavaScript ](#tab-panel-3112)
-* [  TypeScript ](#tab-panel-3113)
+* [  JavaScript ](#tab-panel-3464)
+* [  TypeScript ](#tab-panel-3465)
 
 JavaScript
 
@@ -806,8 +1023,8 @@ const types = generateTypes(myTools);
 
 For JSON Schema inputs that do not depend on the AI SDK, use the main entry point:
 
-* [  JavaScript ](#tab-panel-3110)
-* [  TypeScript ](#tab-panel-3111)
+* [  JavaScript ](#tab-panel-3460)
+* [  TypeScript ](#tab-panel-3461)
 
 JavaScript
 
@@ -837,8 +1054,8 @@ const types = generateTypesFromJsonSchema(jsonSchemaToolDescriptors);
 
 Converts tool names into valid JavaScript identifiers.
 
-* [  JavaScript ](#tab-panel-3114)
-* [  TypeScript ](#tab-panel-3115)
+* [  JavaScript ](#tab-panel-3466)
+* [  TypeScript ](#tab-panel-3467)
 
 JavaScript
 
@@ -879,10 +1096,11 @@ sanitizeToolName("delete"); // "delete_"
 * Tool calls are dispatched via Workers RPC, not network requests.
 * Execution has a configurable **timeout** (default 30 seconds).
 * Console output is captured separately and does not leak to the host.
+* Browser iframe execution runs in a sandboxed iframe with a restrictive CSP by default. It uses nonce-scoped internal messages, but its timeout cannot preempt tight synchronous loops like `while (true) {}` because those block the browser event loop.
 
 ## Current limitations
 
-* **Tool approval (`needsApproval`) is not supported yet.** Tools with `needsApproval: true` execute immediately inside the sandbox without pausing for approval. Support for approval flows within codemode is planned. For now, do not pass approval-required tools to `createCodeTool` — use them through standard AI SDK tool calling instead.
+* **Tool approval (`needsApproval`) is not supported yet.** Codemode excludes approval-required tools instead of pausing execution for approval. Use those tools through standard AI SDK tool calling instead.
 * Requires Cloudflare Workers environment for `DynamicWorkerExecutor`.
 * Limited to JavaScript execution.
 * LLM code quality depends on prompt engineering and model capability.

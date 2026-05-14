@@ -1341,7 +1341,7 @@ components:
                 web_search + web_fetch enabled. Capped at 8 models to bound cost
                 amplification. When omitted, defaults to the Quality preset from
                 the /labs/fusion UI (~anthropic/claude-opus-latest,
-                ~openai/gpt-latest).
+                ~openai/gpt-latest, ~google/gemini-pro-latest).
             enabled:
               type: boolean
               description: >-
@@ -1490,6 +1490,7 @@ components:
         - Clarifai
         - Cloudflare
         - Cohere
+        - Crucible
         - Crusoe
         - DeepInfra
         - DeepSeek

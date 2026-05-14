@@ -26,11 +26,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9399)
-* [  TypeScript ](#tab-panel-9400)
-* [  Python ](#tab-panel-9401)
-* [  Rust ](#tab-panel-9402)
-* [  Hono ](#tab-panel-9403)
+* [  JavaScript ](#tab-panel-9511)
+* [  TypeScript ](#tab-panel-9512)
+* [  Python ](#tab-panel-9513)
+* [  Rust ](#tab-panel-9514)
+* [  Hono ](#tab-panel-9515)
 
 JavaScript
 
@@ -68,7 +68,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2AMwAOACwBWaQE5JANkGSAXCxZtgHOFxp8BIiTPlKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e5ITiGAwEgYSAADAA8AEIXAB5axVACaAAUAKJfH5gAB8L22wIouDo6Ner2BJwAjKiABIOMBgdAkADqmDAuGByGJePxJGBMFRVROHhIwEQAGsQDASAB3PokADmTgcCAIDlw5DoOxI1ipIFwqDAiActMwAtlSSZnIx7OQ2NxgKIllNlwgIAQVDCDlFJAASncvFR3A4zt9fgAaZ5sr4OOCLBDuAKbEPbaLvcrOCC1BzRALRRwJFD+sBEU6IH0QBgAVSqADFsOJogHTdsAL41-F1h7W+s1utEKwaZhaHR6Hj8IRiKSyBTKSSlOyOZxuTzeXztKgBII6UjhSIxSKEHQZQLZXIb6JkKlkEo2KcVaophpNFq8NodNJ2aaWdbRflxAD6YwmOTTBUWIp0jrLtu17EJ+wMIdjFHMxJGYKwgA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCAbAE4ALAGZp0sWIBcLFm2Ac4XGnwHDxsmVPkBYAFABhdFQgBTK9gAiUAM4x0TqNEsKSqvAWIkVHDA1gwARFA01gAeAHQAVk5hpKhQYLbBoRFRcYlhphZWthDYACp0MNbecDAwYHwEUJbI8XAAbnBOvAiwEADUwOi44NampjGuSCS41qhw4BAkAN4mJCSddFS8PtYQvAAWABQI1gCOINZOEACUy6trJLyWVyT7EMBgJAwkAAYAPABCewAeTMpQAmgAFACir3eYAAfPc1n8KLg6EiHg8-vsAIwIgAS1jAYHQJAA6pgwLg-sg8ZisSQ-jAEaV9s4SMBEABrEAwEgAd06JAA5rZrAgCNZcOQ6OsSGZSSBcKgwIhrBTMNyJbFaSzkUzkGiMT8iCYDScICAEFRAtYBSQAEqXVxUJzWQ5vD4AGjujNe1jgMwQTm8K39azCTyKdggFWsYW8YRs0RQXrARAOiHdEAYAFVSgAxbAADjC3oNawAvhWsVXrmbqxWq0RTMpmKp1JoePwhKJJAY5GICpYbHZHC43B4mlRvL51KQgiFwiFCOpkj40hll2EyKSyPlzKPimV49VavVeI1molLGMTEswlzIgB9QbDdKJ7IzXJJKtt9tO38bttD7PRB0MMRmFMIA)
 
 TypeScript
 

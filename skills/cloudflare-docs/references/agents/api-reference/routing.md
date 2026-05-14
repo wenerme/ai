@@ -59,8 +59,8 @@ The router matches both the original name and kebab-case version, so you can use
 
 The `routeAgentRequest()` function is the main entry point for agent routing:
 
-* [  JavaScript ](#tab-panel-3440)
-* [  TypeScript ](#tab-panel-3441)
+* [  JavaScript ](#tab-panel-3794)
+* [  TypeScript ](#tab-panel-3795)
 
 JavaScript
 
@@ -138,8 +138,8 @@ The instance name (the last part of the URL) determines which agent instance han
 
 Each user gets their own agent instance:
 
-* [  JavaScript ](#tab-panel-3434)
-* [  TypeScript ](#tab-panel-3435)
+* [  JavaScript ](#tab-panel-3788)
+* [  TypeScript ](#tab-panel-3789)
 
 JavaScript
 
@@ -188,8 +188,8 @@ const agent = useAgent({
 
 Multiple users share the same agent instance:
 
-* [  JavaScript ](#tab-panel-3436)
-* [  TypeScript ](#tab-panel-3437)
+* [  JavaScript ](#tab-panel-3790)
+* [  TypeScript ](#tab-panel-3791)
 
 JavaScript
 
@@ -236,8 +236,8 @@ const agent = useAgent({
 
 A single instance for the entire application:
 
-* [  JavaScript ](#tab-panel-3438)
-* [  TypeScript ](#tab-panel-3439)
+* [  JavaScript ](#tab-panel-3792)
+* [  TypeScript ](#tab-panel-3793)
 
 JavaScript
 
@@ -277,8 +277,8 @@ const agent = useAgent({
 
 Generate instance names based on context:
 
-* [  JavaScript ](#tab-panel-3444)
-* [  TypeScript ](#tab-panel-3445)
+* [  JavaScript ](#tab-panel-3798)
+* [  TypeScript ](#tab-panel-3799)
 
 JavaScript
 
@@ -366,8 +366,8 @@ For advanced use cases where you need control over the URL structure, you can by
 
 The `basePath` option lets clients connect to any URL path:
 
-* [  JavaScript ](#tab-panel-3442)
-* [  TypeScript ](#tab-panel-3443)
+* [  JavaScript ](#tab-panel-3796)
+* [  TypeScript ](#tab-panel-3797)
 
 JavaScript
 
@@ -413,8 +413,8 @@ This is useful when:
 
 When using `basePath`, the server must handle routing. Use `getAgentByName()` to get the agent instance, then forward the request with `fetch()`:
 
-* [  JavaScript ](#tab-panel-3454)
-* [  TypeScript ](#tab-panel-3455)
+* [  JavaScript ](#tab-panel-3808)
+* [  TypeScript ](#tab-panel-3809)
 
 JavaScript
 
@@ -502,8 +502,8 @@ export default {
 
 Route different paths to different instances:
 
-* [  JavaScript ](#tab-panel-3448)
-* [  TypeScript ](#tab-panel-3449)
+* [  JavaScript ](#tab-panel-3802)
+* [  TypeScript ](#tab-panel-3803)
 
 JavaScript
 
@@ -573,8 +573,8 @@ if (url.pathname.startsWith("/doc/")) {
 
 When using `basePath`, the client does not know which instance it connected to until the server returns this information. The agent automatically sends its identity on connection:
 
-* [  JavaScript ](#tab-panel-3456)
-* [  TypeScript ](#tab-panel-3457)
+* [  JavaScript ](#tab-panel-3810)
+* [  TypeScript ](#tab-panel-3811)
 
 JavaScript
 
@@ -650,8 +650,8 @@ return (
 
 For `AgentClient`:
 
-* [  JavaScript ](#tab-panel-3458)
-* [  TypeScript ](#tab-panel-3459)
+* [  JavaScript ](#tab-panel-3812)
+* [  TypeScript ](#tab-panel-3813)
 
 JavaScript
 
@@ -721,8 +721,8 @@ console.log(agent.name); // Now has the server-determined name
 
 If the identity changes on reconnect (for example, session expired and user logs in as someone else), you can handle it with `onIdentityChange`:
 
-* [  JavaScript ](#tab-panel-3452)
-* [  TypeScript ](#tab-panel-3453)
+* [  JavaScript ](#tab-panel-3806)
+* [  TypeScript ](#tab-panel-3807)
 
 JavaScript
 
@@ -776,8 +776,8 @@ If `onIdentityChange` is not provided and identity changes, a warning is logged 
 
 If your instance names contain sensitive data (session IDs, internal user IDs), you can disable identity sending:
 
-* [  JavaScript ](#tab-panel-3446)
-* [  TypeScript ](#tab-panel-3447)
+* [  JavaScript ](#tab-panel-3800)
+* [  TypeScript ](#tab-panel-3801)
 
 JavaScript
 
@@ -833,8 +833,8 @@ Both `routeAgentRequest()` and `getAgentByName()` accept options for customizing
 
 For cross-origin requests (common when your frontend is on a different domain):
 
-* [  JavaScript ](#tab-panel-3450)
-* [  TypeScript ](#tab-panel-3451)
+* [  JavaScript ](#tab-panel-3804)
+* [  TypeScript ](#tab-panel-3805)
 
 JavaScript
 
@@ -864,8 +864,8 @@ const response = await routeAgentRequest(request, env, {
 
 Or with custom CORS headers:
 
-* [  JavaScript ](#tab-panel-3460)
-* [  TypeScript ](#tab-panel-3461)
+* [  JavaScript ](#tab-panel-3814)
+* [  TypeScript ](#tab-panel-3815)
 
 JavaScript
 
@@ -913,8 +913,8 @@ const response = await routeAgentRequest(request, env, {
 
 For latency-sensitive applications, hint where the agent should run:
 
-* [  JavaScript ](#tab-panel-3462)
-* [  TypeScript ](#tab-panel-3463)
+* [  JavaScript ](#tab-panel-3816)
+* [  TypeScript ](#tab-panel-3817)
 
 JavaScript
 
@@ -970,8 +970,8 @@ Available location hints: `wnam`, `enam`, `sam`, `weur`, `eeur`, `apac`, `oc`, `
 
 For data residency requirements:
 
-* [  JavaScript ](#tab-panel-3466)
-* [  TypeScript ](#tab-panel-3467)
+* [  JavaScript ](#tab-panel-3820)
+* [  TypeScript ](#tab-panel-3821)
 
 JavaScript
 
@@ -1025,8 +1025,8 @@ const response = await routeAgentRequest(request, env, {
 
 Since agents are instantiated by the runtime rather than constructed directly, `props` provides a way to pass initialization arguments:
 
-* [  JavaScript ](#tab-panel-3464)
-* [  TypeScript ](#tab-panel-3465)
+* [  JavaScript ](#tab-panel-3818)
+* [  TypeScript ](#tab-panel-3819)
 
 JavaScript
 
@@ -1068,8 +1068,8 @@ const agent = await getAgentByName(env.MyAgent, "instance-name", {
 
 Props are passed to the agent's `onStart` lifecycle method:
 
-* [  JavaScript ](#tab-panel-3468)
-* [  TypeScript ](#tab-panel-3469)
+* [  JavaScript ](#tab-panel-3822)
+* [  TypeScript ](#tab-panel-3823)
 
 JavaScript
 
@@ -1121,8 +1121,8 @@ class MyAgent extends Agent<Env, State> {
 
 When using `props` with `routeAgentRequest`, the same props are passed to whichever agent matches the URL. This works well for universal context like authentication:
 
-* [  JavaScript ](#tab-panel-3470)
-* [  TypeScript ](#tab-panel-3471)
+* [  JavaScript ](#tab-panel-3826)
+* [  TypeScript ](#tab-panel-3827)
 
 JavaScript
 
@@ -1176,12 +1176,55 @@ Note
 
 For `McpAgent`, props are automatically stored and accessible via `this.props`. Refer to [MCP servers](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/) for details.
 
+### Routing retry
+
+Use `routingRetry` with `getAgentByName()` when server-side code should retry transient Durable Object routing failures:
+
+* [  JavaScript ](#tab-panel-3824)
+* [  TypeScript ](#tab-panel-3825)
+
+JavaScript
+
+```
+
+const agent = await getAgentByName(env.MyAgent, "instance-name", {
+
+  routingRetry: {
+
+    maxAttempts: 3,
+
+  },
+
+});
+
+
+```
+
+TypeScript
+
+```
+
+const agent = await getAgentByName(env.MyAgent, "instance-name", {
+
+  routingRetry: {
+
+    maxAttempts: 3,
+
+  },
+
+});
+
+
+```
+
+This option is useful for request forwarding and RPC paths where a short-lived routing failure should be retried before returning an error to the caller.
+
 ### Hooks
 
 `routeAgentRequest` supports hooks for intercepting requests before they reach agents:
 
-* [  JavaScript ](#tab-panel-3472)
-* [  TypeScript ](#tab-panel-3473)
+* [  JavaScript ](#tab-panel-3828)
+* [  TypeScript ](#tab-panel-3829)
 
 JavaScript
 
@@ -1243,8 +1286,8 @@ These hooks are useful for authentication and validation. Refer to [Cross-domain
 
 You can access agents from your Worker code using `getAgentByName()` for RPC calls:
 
-* [  JavaScript ](#tab-panel-3478)
-* [  TypeScript ](#tab-panel-3479)
+* [  JavaScript ](#tab-panel-3834)
+* [  TypeScript ](#tab-panel-3835)
 
 JavaScript
 
@@ -1351,8 +1394,8 @@ Requests can include sub-paths after the instance name. These are passed to your
 
 Handle sub-paths in your agent:
 
-* [  JavaScript ](#tab-panel-3480)
-* [  TypeScript ](#tab-panel-3481)
+* [  JavaScript ](#tab-panel-3836)
+* [  TypeScript ](#tab-panel-3837)
 
 JavaScript
 
@@ -1444,8 +1487,8 @@ export class API extends Agent {
 
 You can have multiple agent classes in one project. Each gets its own namespace:
 
-* [  JavaScript ](#tab-panel-3476)
-* [  TypeScript ](#tab-panel-3477)
+* [  JavaScript ](#tab-panel-3832)
+* [  TypeScript ](#tab-panel-3833)
 
 JavaScript
 
@@ -1511,8 +1554,8 @@ export default {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-3432)
-* [  wrangler.toml ](#tab-panel-3433)
+* [  wrangler.jsonc ](#tab-panel-3786)
+* [  wrangler.toml ](#tab-panel-3787)
 
 JSONC
 
@@ -1619,8 +1662,8 @@ There are several ways to authenticate requests before they reach your agent.
 
 The `routeAgentRequest()` function provides `onBeforeConnect` and `onBeforeRequest` hooks for authentication:
 
-* [  JavaScript ](#tab-panel-3486)
-* [  TypeScript ](#tab-panel-3487)
+* [  JavaScript ](#tab-panel-3842)
+* [  TypeScript ](#tab-panel-3843)
 
 JavaScript
 
@@ -1750,8 +1793,8 @@ export default {
 
 Check authentication before calling `routeAgentRequest()`:
 
-* [  JavaScript ](#tab-panel-3482)
-* [  TypeScript ](#tab-panel-3483)
+* [  JavaScript ](#tab-panel-3838)
+* [  TypeScript ](#tab-panel-3839)
 
 JavaScript
 
@@ -1861,8 +1904,8 @@ export default {
 
 If you are using a framework like [Hono ↗](https://hono.dev/), authenticate in middleware before calling the agent:
 
-* [  JavaScript ](#tab-panel-3484)
-* [  TypeScript ](#tab-panel-3485)
+* [  JavaScript ](#tab-panel-3840)
+* [  TypeScript ](#tab-panel-3841)
 
 JavaScript
 
@@ -2012,13 +2055,14 @@ Routes a request to the appropriate agent.
 
 Get an agent instance by name for server-side RPC or request forwarding.
 
-| Parameter            | Type                      | Description                           |
-| -------------------- | ------------------------- | ------------------------------------- |
-| namespace            | DurableObjectNamespace<T> | Agent binding from env                |
-| name                 | string                    | Instance name                         |
-| options.locationHint | string                    | Preferred location                    |
-| options.jurisdiction | string                    | Data jurisdiction                     |
-| options.props        | Record<string, unknown>   | Initialization properties for onStart |
+| Parameter            | Type                      | Description                                                       |
+| -------------------- | ------------------------- | ----------------------------------------------------------------- |
+| namespace            | DurableObjectNamespace<T> | Agent binding from env                                            |
+| name                 | string                    | Instance name                                                     |
+| options.locationHint | string                    | Preferred location                                                |
+| options.jurisdiction | string                    | Data jurisdiction                                                 |
+| options.props        | Record<string, unknown>   | Initialization properties for onStart                             |
+| options.routingRetry | object                    | Retry configuration for transient Durable Object routing failures |
 
 **Returns:** `Promise<DurableObjectStub<T>>` \- Typed stub for calling agent methods or forwarding requests.
 
@@ -2054,8 +2098,8 @@ Static options for agent configuration:
 | sendIdentityOnConnect      | boolean | true    | Whether to send identity to clients on connect       |
 | hungScheduleTimeoutSeconds | number  | 30      | Timeout before a running schedule is considered hung |
 
-* [  JavaScript ](#tab-panel-3474)
-* [  TypeScript ](#tab-panel-3475)
+* [  JavaScript ](#tab-panel-3830)
+* [  TypeScript ](#tab-panel-3831)
 
 JavaScript
 

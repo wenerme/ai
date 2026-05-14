@@ -14,7 +14,7 @@ In LangSmith, go to **Settings > API Keys** to create a new API key. Then naviga
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+![Enable Broadcast](file:60768b0c-c773-4881-ac51-8c9df159fcd6)
 
 ## Step 3: Configure LangSmith
 

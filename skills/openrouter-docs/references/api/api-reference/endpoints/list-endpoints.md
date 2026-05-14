@@ -264,6 +264,7 @@ components:
         - Clarifai
         - Cloudflare
         - Cohere
+        - Crucible
         - Crusoe
         - DeepInfra
         - DeepSeek

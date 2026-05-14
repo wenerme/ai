@@ -16,12 +16,18 @@ Agent tools let one chat agent dispatch another chat-capable sub-agent as part o
 
 Agent tools support `@cloudflare/think` agents and `AIChatAgent` subclasses. `AIChatAgent` children run headlessly through `saveMessages()`, so they should use server-side tools. Browser-provided client tools are not available during an agent-tool turn unless you model that interaction as server-side state or a separate parent-mediated workflow.
 
+## Agent tools vs sub-agent RPC
+
+Use `subAgent(...).chat()` when parent code needs direct streaming RPC to a specific child and your code owns forwarding, cancellation, and replay policy.
+
+Use `agentTool()` or `runAgentTool()` when a parent model or workflow delegates work to a child agent and you want retained child runs, event replay, abort bridging, and UI drill-in. For Think-specific turn choices, refer to [Choose a turn API](https://developers.cloudflare.com/agents/api-reference/think/#choose-a-turn-api).
+
 ## Use an agent as an AI SDK tool
 
 Use `agentTool()` when the parent model should decide when to call the helper.
 
-* [  JavaScript ](#tab-panel-2678)
-* [  TypeScript ](#tab-panel-2679)
+* [  JavaScript ](#tab-panel-3234)
+* [  TypeScript ](#tab-panel-3235)
 
 JavaScript
 
@@ -127,8 +133,8 @@ export class Assistant extends Think<Env> {
 
 The child can also be an `AIChatAgent`:
 
-* [  JavaScript ](#tab-panel-2680)
-* [  TypeScript ](#tab-panel-2681)
+* [  JavaScript ](#tab-panel-3238)
+* [  TypeScript ](#tab-panel-3239)
 
 JavaScript
 
@@ -298,12 +304,79 @@ export class Assistant extends AIChatAgent<Env> {
 
 The generated tool calls `this.runAgentTool(ChildAgent, ...)`, streams `agent-tool-event` frames on the parent WebSocket, and returns the child summary to the parent model. If the run fails, aborts, or is interrupted, the tool returns a structured failure instead of an empty success value.
 
+For Think children that do workflow-style work without user-facing assistant text, override `getAgentToolOutput()` and, if needed, `getAgentToolSummary()`. Assistant text remains the default summary when present, but a Think agent-tool run can complete successfully without emitting text chunks.
+
+Persist any structured output before the child turn finishes, because `getAgentToolOutput()` is read as soon as `saveMessages()` resolves. Keep `getAgentToolSummary()` concise for display; the full structured value is stored separately as the tool output.
+
+* [  JavaScript ](#tab-panel-3228)
+* [  TypeScript ](#tab-panel-3229)
+
+JavaScript
+
+```
+
+export class Extractor extends Think {
+
+  getAgentToolOutput(runId) {
+
+    const rows = this.sql`
+
+      SELECT result_json FROM extraction_runs WHERE id = ${runId}
+
+    `;
+
+    return rows[0] ? JSON.parse(rows[0].result_json) : undefined;
+
+  }
+
+
+  getAgentToolSummary(_runId, output) {
+
+    return output ? "Extraction complete" : "";
+
+  }
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+export class Extractor extends Think<Env> {
+
+  protected override getAgentToolOutput(runId: string) {
+
+    const rows = this.sql<{ result_json: string }>`
+
+      SELECT result_json FROM extraction_runs WHERE id = ${runId}
+
+    `;
+
+    return rows[0] ? JSON.parse(rows[0].result_json) : undefined;
+
+  }
+
+
+  protected override getAgentToolSummary(_runId: string, output: unknown) {
+
+    return output ? "Extraction complete" : "";
+
+  }
+
+}
+
+
+```
+
 ## Run an agent tool imperatively
 
 Use `runAgentTool()` for deterministic workflows, scheduled work, HTTP handlers, or fan-out code.
 
-* [  JavaScript ](#tab-panel-2674)
-* [  TypeScript ](#tab-panel-2675)
+* [  JavaScript ](#tab-panel-3232)
+* [  TypeScript ](#tab-panel-3233)
 
 JavaScript
 
@@ -373,8 +446,8 @@ const [a, b] = await Promise.allSettled([
 
 `useAgentToolEvents()` is a headless hook. It subscribes to the existing parent connection, deduplicates replay/live races, applies child `UIMessageChunk` bodies to message parts, and groups sibling runs by parent tool call ID.
 
-* [  JavaScript ](#tab-panel-2676)
-* [  TypeScript ](#tab-panel-2677)
+* [  JavaScript ](#tab-panel-3236)
+* [  TypeScript ](#tab-panel-3237)
 
 JavaScript
 
@@ -452,8 +525,8 @@ Imperative runs without a parent tool call are available as `agentTools.unboundR
 
 Agent tools are normal sub-agents. Connect to a retained child through the parent route:
 
-* [  JavaScript ](#tab-panel-2670)
-* [  TypeScript ](#tab-panel-2671)
+* [  JavaScript ](#tab-panel-3226)
+* [  TypeScript ](#tab-panel-3227)
 
 JavaScript
 
@@ -512,8 +585,8 @@ override async onBeforeSubAgent(_request, child) {
 
 Runs and child facets are retained by default for refresh, drill-in, and later inspection. Delete them explicitly when clearing chat history or applying your own retention policy:
 
-* [  JavaScript ](#tab-panel-2672)
-* [  TypeScript ](#tab-panel-2673)
+* [  JavaScript ](#tab-panel-3230)
+* [  TypeScript ](#tab-panel-3231)
 
 JavaScript
 

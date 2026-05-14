@@ -10,13 +10,13 @@
 
 In Langfuse, go to your project's **Settings > API Keys** and create a new key pair. Copy both the Secret Key and Public Key.
 
-![Langfuse API Keys](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2fda0df2def9f2d969130c4704f72937461f4cbb8bb9435aa2245bb07391a35e/content/pages/features/broadcast/broadcast-langfuse-keys.png)
+![Langfuse API Keys](file:de0330c8-a2e1-4ad3-9a5c-b2bebca14c78)
 
 ## Step 2: Enable Broadcast in OpenRouter
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+![Enable Broadcast](file:60768b0c-c773-4881-ac51-8c9df159fcd6)
 
 ## Step 3: Configure Langfuse
 
@@ -26,19 +26,19 @@ Click the edit icon next to **Langfuse** and enter:
 * **Public Key**: Your Langfuse Public Key
 * **Base URL** (optional): Default is `https://us.cloud.langfuse.com`. Change for other regions or self-hosted instances
 
-![Langfuse Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/10178cb9915dae07364910b865f4dbdbfc18936d91ca39ab0a9f9f1d9892ad79/content/pages/features/broadcast/broadcast-langfuse-config.png)
+![Langfuse Configuration](file:06f3406b-2adc-4557-8b9d-fb2c5431c09c)
 
 ## Step 4: Test and save
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
 
-![Langfuse Configured](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/77277ddb0cd573d0efe91338a32735d6b710c4c7ecfdcd610f0750d0262b4202/content/pages/features/broadcast/broadcast-langfuse-configured.png)
+![Langfuse Configured](file:7eb150d0-8490-44b5-b6ee-b3e629ee6872)
 
 ## Step 5: Send a test trace
 
 Make an API request through OpenRouter and view the trace in Langfuse.
 
-![Langfuse Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/cbd93fc215244ec3906102bdfb3a46c4938c7dd92b076c6a3f3510cc701a9487/content/pages/features/broadcast/broadcast-langfuse-trace.png)
+![Langfuse Trace](file:ebc4edf0-ca18-4936-8314-ab4ba73a4c06)
 
 ## Custom Metadata
 

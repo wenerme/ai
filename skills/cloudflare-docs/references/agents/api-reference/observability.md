@@ -45,16 +45,16 @@ TypeScript
 
 Events are routed to eight named channels based on their type:
 
-| Channel          | Event types                                                                                                                                      | Description                         |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- |
-| agents:state     | state:update                                                                                                                                     | State sync events                   |
-| agents:rpc       | rpc, rpc:error                                                                                                                                   | RPC method calls and failures       |
-| agents:message   | message:request, message:response, message:clear, message:cancel, message:error, tool:result, tool:approval                                      | Chat message and tool lifecycle     |
-| agents:schedule  | schedule:create, schedule:execute, schedule:cancel, schedule:retry, schedule:error, queue:create, queue:retry, queue:error                       | Scheduled and queued task lifecycle |
-| agents:lifecycle | connect, disconnect, destroy                                                                                                                     | Agent connection and teardown       |
-| agents:workflow  | workflow:start, workflow:event, workflow:approved, workflow:rejected, workflow:terminated, workflow:paused, workflow:resumed, workflow:restarted | Workflow state transitions          |
-| agents:mcp       | mcp:client:preconnect, mcp:client:connect, mcp:client:authorize, mcp:client:discover                                                             | MCP client operations               |
-| agents:email     | email:receive, email:reply                                                                                                                       | Email processing                    |
+| Channel          | Event types                                                                                                                                                         | Description                                        |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| agents:state     | state:update                                                                                                                                                        | State sync events                                  |
+| agents:rpc       | rpc, rpc:error                                                                                                                                                      | RPC method calls and failures                      |
+| agents:message   | message:request, message:response, message:clear, message:cancel, message:error, tool:result, tool:approval, submission:create, submission:status, submission:error | Chat message, tool, and Think submission lifecycle |
+| agents:schedule  | schedule:create, schedule:execute, schedule:cancel, schedule:retry, schedule:error, schedule:duplicate\_warning, queue:create, queue:retry, queue:error             | Scheduled and queued task lifecycle                |
+| agents:lifecycle | connect, disconnect, destroy                                                                                                                                        | Agent connection and teardown                      |
+| agents:workflow  | workflow:start, workflow:event, workflow:approved, workflow:rejected, workflow:terminated, workflow:paused, workflow:resumed, workflow:restarted                    | Workflow state transitions                         |
+| agents:mcp       | mcp:client:preconnect, mcp:client:connect, mcp:client:authorize, mcp:client:discover                                                                                | MCP client operations                              |
+| agents:email     | email:receive, email:reply, email:send                                                                                                                              | Email processing                                   |
 
 ## Subscribing to events
 
@@ -62,8 +62,8 @@ Events are routed to eight named channels based on their type:
 
 The `subscribe()` function from `agents/observability` provides type-safe access to events on a specific channel:
 
-* [  JavaScript ](#tab-panel-3616)
-* [  TypeScript ](#tab-panel-3617)
+* [  JavaScript ](#tab-panel-3682)
+* [  TypeScript ](#tab-panel-3683)
 
 JavaScript
 
@@ -141,8 +141,8 @@ The callback is fully typed — `event` is narrowed to only the event types that
 
 You can also subscribe directly using the Node.js API:
 
-* [  JavaScript ](#tab-panel-3612)
-* [  TypeScript ](#tab-panel-3613)
+* [  JavaScript ](#tab-panel-3678)
+* [  TypeScript ](#tab-panel-3679)
 
 JavaScript
 
@@ -180,8 +180,8 @@ subscribe("agents:schedule", (event) => {
 
 In production, all diagnostics channel messages are automatically forwarded to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/). No subscription code is needed in the agent itself — attach a Tail Worker and access events via `event.diagnosticsChannelEvents`:
 
-* [  JavaScript ](#tab-panel-3618)
-* [  TypeScript ](#tab-panel-3619)
+* [  JavaScript ](#tab-panel-3684)
+* [  TypeScript ](#tab-panel-3685)
 
 JavaScript
 
@@ -247,8 +247,8 @@ This gives you structured, filterable observability in production with zero over
 
 You can override the default implementation by providing your own `Observability` interface:
 
-* [  JavaScript ](#tab-panel-3620)
-* [  TypeScript ](#tab-panel-3621)
+* [  JavaScript ](#tab-panel-3686)
+* [  TypeScript ](#tab-panel-3687)
 
 JavaScript
 
@@ -320,8 +320,8 @@ class MyAgent extends Agent {
 
 Set `observability` to `undefined` to disable all event emission:
 
-* [  JavaScript ](#tab-panel-3614)
-* [  TypeScript ](#tab-panel-3615)
+* [  JavaScript ](#tab-panel-3680)
+* [  TypeScript ](#tab-panel-3681)
 
 JavaScript
 
@@ -370,32 +370,36 @@ class MyAgent extends Agent {
 | ------------ | ------- | -------------------- |
 | state:update | {}      | setState() is called |
 
-### Message and tool events (AIChatAgent)
+### Message, tool, and submission events
 
-These events are emitted by `AIChatAgent` from `@cloudflare/ai-chat`. They track the chat message lifecycle, including client-side tool interactions.
+These events track chat message lifecycle, client-side tool interactions, and Think durable submissions.
 
-| Type             | Payload                  | When                                |
-| ---------------- | ------------------------ | ----------------------------------- |
-| message:request  | {}                       | A chat message is received          |
-| message:response | {}                       | A chat response stream completes    |
-| message:clear    | {}                       | Chat history is cleared             |
-| message:cancel   | { requestId }            | A streaming request is cancelled    |
-| message:error    | { error }                | A chat stream fails                 |
-| tool:result      | { toolCallId, toolName } | A client tool result is received    |
-| tool:approval    | { toolCallId, approved } | A tool call is approved or rejected |
+| Type              | Payload                  | When                                |
+| ----------------- | ------------------------ | ----------------------------------- |
+| message:request   | {}                       | A chat message is received          |
+| message:response  | {}                       | A chat response stream completes    |
+| message:clear     | {}                       | Chat history is cleared             |
+| message:cancel    | { requestId }            | A streaming request is cancelled    |
+| message:error     | { error }                | A chat stream fails                 |
+| tool:result       | { toolCallId, toolName } | A client tool result is received    |
+| tool:approval     | { toolCallId, approved } | A tool call is approved or rejected |
+| submission:create | { submissionId }         | A Think submission is accepted      |
+| submission:status | { submissionId, status } | A Think submission status changes   |
+| submission:error  | { submissionId, error }  | A Think submission fails            |
 
 ### Schedule and queue events
 
-| Type             | Payload                                | When                                         |
-| ---------------- | -------------------------------------- | -------------------------------------------- |
-| schedule:create  | { callback, id }                       | A schedule is created                        |
-| schedule:execute | { callback, id }                       | A scheduled callback starts                  |
-| schedule:cancel  | { callback, id }                       | A schedule is cancelled                      |
-| schedule:retry   | { callback, id, attempt, maxAttempts } | A scheduled callback is retried              |
-| schedule:error   | { callback, id, error, attempts }      | A scheduled callback fails after all retries |
-| queue:create     | { callback, id }                       | A task is enqueued                           |
-| queue:retry      | { callback, id, attempt, maxAttempts } | A queued callback is retried                 |
-| queue:error      | { callback, id, error, attempts }      | A queued callback fails after all retries    |
+| Type                        | Payload                                | When                                         |
+| --------------------------- | -------------------------------------- | -------------------------------------------- |
+| schedule:create             | { callback, id }                       | A schedule is created                        |
+| schedule:execute            | { callback, id }                       | A scheduled callback starts                  |
+| schedule:cancel             | { callback, id }                       | A schedule is cancelled                      |
+| schedule:retry              | { callback, id, attempt, maxAttempts } | A scheduled callback is retried              |
+| schedule:error              | { callback, id, error, attempts }      | A scheduled callback fails after all retries |
+| schedule:duplicate\_warning | { callback }                           | A non-idempotent schedule may duplicate work |
+| queue:create                | { callback, id }                       | A task is enqueued                           |
+| queue:retry                 | { callback, id, attempt, maxAttempts } | A queued callback is retried                 |
+| queue:error                 | { callback, id, error, attempts }      | A queued callback fails after all retries    |
 
 ### Lifecycle events
 
@@ -433,6 +437,7 @@ These events are emitted by `AIChatAgent` from `@cloudflare/ai-chat`. They track
 | ------------- | ---------------------- | --------------------- |
 | email:receive | { from, to, subject? } | An email is received  |
 | email:reply   | { from, to, subject? } | A reply email is sent |
+| email:send    | { from, to, subject? } | An email is sent      |
 
 ## Next steps
 

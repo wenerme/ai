@@ -2443,7 +2443,7 @@ components:
                 web_search + web_fetch enabled. Capped at 8 models to bound cost
                 amplification. When omitted, defaults to the Quality preset from
                 the /labs/fusion UI (~anthropic/claude-opus-latest,
-                ~openai/gpt-latest).
+                ~openai/gpt-latest, ~google/gemini-pro-latest).
             enabled:
               type: boolean
               description: >-
@@ -2627,6 +2627,7 @@ components:
         - Clarifai
         - Cloudflare
         - Cohere
+        - Crucible
         - Crusoe
         - DeepInfra
         - DeepSeek
@@ -3980,6 +3981,46 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
+    FusionServerToolConfig:
+      type: object
+      properties:
+        analysis_models:
+          type: array
+          items:
+            type: string
+          description: >-
+            Slugs of models to run in parallel as the analysis panel. Each model
+            receives the user prompt with openrouter:web_search and
+            openrouter:web_fetch enabled, then a judge model summarizes the
+            collective output into structured analysis JSON. Capped at 8 models
+            to bound cost amplification. Defaults to the Quality preset from
+            /labs/fusion.
+        model:
+          type: string
+          description: >-
+            Slug of the judge model that produces the structured analysis JSON.
+            Defaults to the model used in the outer API request.
+      description: Configuration for the openrouter:fusion server tool.
+      title: FusionServerToolConfig
+    FusionServerToolOpenRouterType:
+      type: string
+      enum:
+        - openrouter:fusion
+      title: FusionServerToolOpenRouterType
+    FusionServerTool_OpenRouter:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/FusionServerToolConfig'
+        type:
+          $ref: '#/components/schemas/FusionServerToolOpenRouterType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: fans out the user prompt to a panel of
+        analysis models, then asks a judge model to summarize their collective
+        output as structured JSON the outer model can synthesize from.
+      title: FusionServerTool_OpenRouter
     ImageGenerationServerToolConfig:
       type: object
       properties:
@@ -4215,6 +4256,7 @@ components:
         - $ref: '#/components/schemas/ApplyPatchServerTool'
         - $ref: '#/components/schemas/CustomTool'
         - $ref: '#/components/schemas/DatetimeServerTool'
+        - $ref: '#/components/schemas/FusionServerTool_OpenRouter'
         - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'
         - $ref: '#/components/schemas/WebFetchServerTool'

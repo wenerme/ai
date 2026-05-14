@@ -1,5 +1,3 @@
-# OpenAI compatibility
-
 <br />
 
 Gemini models are accessible using the OpenAI libraries (Python and TypeScript /

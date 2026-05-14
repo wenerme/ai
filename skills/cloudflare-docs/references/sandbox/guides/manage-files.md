@@ -22,8 +22,8 @@ File operations support both absolute and relative paths:
 * `/tmp` \- Temporary files (may be cleared)
 * `/home` \- User home directory
 
-* [  JavaScript ](#tab-panel-7759)
-* [  TypeScript ](#tab-panel-7760)
+* [  JavaScript ](#tab-panel-8215)
+* [  TypeScript ](#tab-panel-8216)
 
 JavaScript
 
@@ -71,8 +71,8 @@ await session.writeFile('src/index.js', code);  // Writes to /workspace/my-proje
 
 ## Write files
 
-* [  JavaScript ](#tab-panel-7767)
-* [  TypeScript ](#tab-panel-7768)
+* [  JavaScript ](#tab-panel-8227)
+* [  TypeScript ](#tab-panel-8228)
 
 JavaScript
 
@@ -154,8 +154,8 @@ await sandbox.writeFile('/workspace/image.png', base64, { encoding: 'base64' });
 
 ## Read files
 
-* [  JavaScript ](#tab-panel-7773)
-* [  TypeScript ](#tab-panel-7774)
+* [  JavaScript ](#tab-panel-8221)
+* [  TypeScript ](#tab-panel-8222)
 
 JavaScript
 
@@ -175,30 +175,19 @@ const configFile = await sandbox.readFile("/workspace/config.json");
 const config = JSON.parse(configFile.content);
 
 
-// Read binary file
+// Read binary file (v0.10.1 with `rpc` transport)
 
 const imageFile = await sandbox.readFile("/workspace/image.png", {
 
-  encoding: "base64",
+  encoding: "none",
 
 });
 
-return new Response(atob(imageFile.content), {
+return new Response(imageFile.content, {
 
-  headers: { "Content-Type": "image/png" },
-
-});
-
-
-// Force encoding for transmission (text → base64)
-
-const textAsBase64 = await sandbox.readFile("/workspace/data.txt", {
-
-  encoding: "base64",
+  headers: { "Content-Type": imageFile.mimeType },
 
 });
-
-// Useful for transmitting text files without encoding issues
 
 
 ```
@@ -221,30 +210,27 @@ const configFile = await sandbox.readFile('/workspace/config.json');
 const config = JSON.parse(configFile.content);
 
 
-// Read binary file
+// Read binary file (v0.10.1 with `rpc` transport)
 
-const imageFile = await sandbox.readFile('/workspace/image.png', { encoding: 'base64' });
+const imageFile = await sandbox.readFile('/workspace/image.png', { encoding: 'none' });
 
-return new Response(atob(imageFile.content), {
+return new Response(imageFile.content, {
 
-  headers: { 'Content-Type': 'image/png' }
+  headers: { 'Content-Type': imageFile.mimeType }
 
 });
 
 
-// Force encoding for transmission (text → base64)
-
-const textAsBase64 = await sandbox.readFile('/workspace/data.txt', { encoding: 'base64' });
-
-// Useful for transmitting text files without encoding issues
-
-
 ```
+
+Note
+
+For more details on the `rpc` transport please see the [Transport](https://developers.cloudflare.com/sandbox/configuration/transport/) docs.
 
 ## Organize files
 
-* [  JavaScript ](#tab-panel-7763)
-* [  TypeScript ](#tab-panel-7764)
+* [  JavaScript ](#tab-panel-8219)
+* [  TypeScript ](#tab-panel-8220)
 
 JavaScript
 
@@ -306,8 +292,8 @@ await sandbox.deleteFile('/workspace/temp.txt');
 
 Write multiple files in parallel:
 
-* [  JavaScript ](#tab-panel-7765)
-* [  TypeScript ](#tab-panel-7766)
+* [  JavaScript ](#tab-panel-8223)
+* [  TypeScript ](#tab-panel-8224)
 
 JavaScript
 
@@ -367,8 +353,8 @@ await Promise.all(
 
 ## Check if file exists
 
-* [  JavaScript ](#tab-panel-7771)
-* [  TypeScript ](#tab-panel-7772)
+* [  JavaScript ](#tab-panel-8229)
+* [  TypeScript ](#tab-panel-8230)
 
 JavaScript
 
@@ -450,8 +436,8 @@ const sessionResult = await session.exists('/workspace/temp.txt');
 
 Create parent directories first:
 
-* [  JavaScript ](#tab-panel-7761)
-* [  TypeScript ](#tab-panel-7762)
+* [  JavaScript ](#tab-panel-8217)
+* [  TypeScript ](#tab-panel-8218)
 
 JavaScript
 
@@ -481,10 +467,10 @@ await sandbox.writeFile('/workspace/data/file.txt', content);
 
 ### Binary file encoding
 
-Use base64 for binary files:
+Use `encoding: "none"` (with `rpc` transport) for binary files:
 
-* [  JavaScript ](#tab-panel-7769)
-* [  TypeScript ](#tab-panel-7770)
+* [  JavaScript ](#tab-panel-8225)
+* [  TypeScript ](#tab-panel-8226)
 
 JavaScript
 
@@ -492,7 +478,52 @@ JavaScript
 
 // Write binary
 
-await sandbox.writeFile("/workspace/image.png", base64Data, {
+await sandbox.writeFile("/workspace/image.png", readableStream);
+
+
+// Read binary
+
+const file = await sandbox.readFile("/workspace/image.png", {
+
+  encoding: "none",
+
+});
+
+
+```
+
+TypeScript
+
+```
+
+// Write binary
+
+await sandbox.writeFile('/workspace/image.png', readableStream);
+
+
+// Read binary
+
+const file = await sandbox.readFile('/workspace/image.png', {
+
+  encoding: 'none'
+
+});
+
+
+```
+
+For older SDK versions or `http` transport:
+
+* [  JavaScript ](#tab-panel-8231)
+* [  TypeScript ](#tab-panel-8232)
+
+JavaScript
+
+```
+
+// Write binary
+
+await sandbox.writeFile("/workspace/image.png", base64data, {
 
   encoding: "base64",
 
@@ -516,11 +547,7 @@ TypeScript
 
 // Write binary
 
-await sandbox.writeFile('/workspace/image.png', base64Data, {
-
-  encoding: 'base64'
-
-});
+await sandbox.writeFile('/workspace/image.png', base64data, { encoding: "base64" });
 
 
 // Read binary
@@ -538,8 +565,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 When writing with `encoding: 'base64'`, content must contain only valid base64 characters:
 
-* [  JavaScript ](#tab-panel-7775)
-* [  TypeScript ](#tab-panel-7776)
+* [  JavaScript ](#tab-panel-8233)
+* [  TypeScript ](#tab-panel-8234)
 
 JavaScript
 

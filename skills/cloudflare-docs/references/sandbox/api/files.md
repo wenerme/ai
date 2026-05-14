@@ -36,8 +36,8 @@ await sandbox.writeFile(path: string, content: string, options?: WriteFileOption
 * `options` (optional):  
    * `encoding` \- File encoding (`"utf-8"` or `"base64"`, default: `"utf-8"`)
 
-* [  JavaScript ](#tab-panel-7871)
-* [  TypeScript ](#tab-panel-7872)
+* [  JavaScript ](#tab-panel-7935)
+* [  TypeScript ](#tab-panel-7936)
 
 JavaScript
 
@@ -90,13 +90,13 @@ await sandbox.writeFile('/workspace/archive.tar.gz', req.body);
 
 ### `readFile()`
 
-Read a file from the sandbox.
+Read a file from the sandbox. By default returns the content as a string. This is useful for small text files. For larger files and binary data use `encoding: "none"` to get back a `ReadableStream` with the file data.
 
 TypeScript
 
 ```
 
-const file = await sandbox.readFile(path: string, options?: ReadFileOptions): Promise<FileInfo>
+const file = await sandbox.readFile(path: string, options?: ReadFileOptions): Promise<ReadFileResult | ReadFileStreamResult>
 
 
 ```
@@ -105,12 +105,16 @@ const file = await sandbox.readFile(path: string, options?: ReadFileOptions): Pr
 
 * `path` \- Absolute path to the file
 * `options` (optional):  
-   * `encoding` \- File encoding (`"utf-8"` or `"base64"`, default: auto-detected from MIME type)
+   * `encoding` \- File encoding (`"utf-8"`, `"base64"` or `"none"`, default: auto-detected from MIME type)
 
-**Returns**: `Promise<FileInfo>` with `content` and `encoding`
+**Returns**: `Promise<ReadFileResult | ReadFileStreamResult>`.
 
-* [  JavaScript ](#tab-panel-7879)
-* [  TypeScript ](#tab-panel-7880)
+Encoding
+
+The `"none"` encoding property was added in 0.10.1 and aims to improve support for streaming binary data. When `encoding: "none"` is provided the `content` field will be a `ReadableStream<Uint8Array>`. It is only supported with the [RPC transport](https://developers.cloudflare.com/sandbox/configuration/transport/).
+
+* [  JavaScript ](#tab-panel-7949)
+* [  TypeScript ](#tab-panel-7950)
 
 JavaScript
 
@@ -121,18 +125,46 @@ const file = await sandbox.readFile("/workspace/package.json");
 const pkg = JSON.parse(file.content);
 
 
-// Binary data (auto-detected or forced)
+// Binary data (since 0.10.1 using `rpc` transport)
 
-const image = await sandbox.readFile("/tmp/image.png", { encoding: "base64" });
+const { content, size, mimeType } = await sandbox.readFile(
+
+  "/workspace/archive.tar.gz",
+
+  {
+
+    encoding: "none",
+
+  },
+
+);
 
 
-// Force encoding (override MIME detection)
+// Example 1: Store on R2:
 
-const textAsBase64 = await sandbox.readFile("/workspace/data.txt", {
+const stream = request.body.pipeThrough(new FixedLengthStream(size));
+
+await env.MY_BUCKET.put("/bucket/archive.tar.gz", stream, {
+
+  httpMetadata: { contentType: mimeType },
+
+});
+
+
+// Example 2: Stream an HTTP response:
+
+return new Response(content, { headers: { "Content-Type": mimeType } });
+
+
+// Older versions/transports used the base64 encoding for binary data:
+
+const archive = await sandbox.readFile("/workspace/archive.tar.gz", {
 
   encoding: "base64",
 
 });
+
+console.log(archive.content); // => "<base64 encoded string>";
 
 
 ```
@@ -146,14 +178,40 @@ const file = await sandbox.readFile('/workspace/package.json');
 const pkg = JSON.parse(file.content);
 
 
-// Binary data (auto-detected or forced)
+// Binary data (since 0.10.1 using `rpc` transport)
 
-const image = await sandbox.readFile('/tmp/image.png', { encoding: 'base64' });
+const { content, size, mimeType } = await sandbox.readFile("/workspace/archive.tar.gz", {
+
+  encoding: "none"
+
+});
 
 
-// Force encoding (override MIME detection)
+// Example 1: Store on R2:
 
-const textAsBase64 = await sandbox.readFile('/workspace/data.txt', { encoding: 'base64' });
+const stream = request.body.pipeThrough(new FixedLengthStream(size));
+
+await env.MY_BUCKET.put('/bucket/archive.tar.gz', stream, {
+
+  httpMetadata: { contentType: mimeType }
+
+});
+
+
+// Example 2: Stream an HTTP response:
+
+return new Response(content, { headers: { "Content-Type": mimeType } });
+
+
+// Older versions/transports used the base64 encoding for binary data:
+
+const archive = await sandbox.readFile("/workspace/archive.tar.gz", {
+
+  encoding: "base64"
+
+});
+
+console.log(archive.content); // => "<base64 encoded string>";
 
 
 ```
@@ -181,8 +239,8 @@ const result = await sandbox.exists(path: string): Promise<FileExistsResult>
 
 **Returns**: `Promise<FileExistsResult>` with `exists` boolean
 
-* [  JavaScript ](#tab-panel-7883)
-* [  TypeScript ](#tab-panel-7884)
+* [  JavaScript ](#tab-panel-7945)
+* [  TypeScript ](#tab-panel-7946)
 
 JavaScript
 
@@ -263,8 +321,8 @@ await sandbox.mkdir(path: string, options?: MkdirOptions): Promise<void>
 * `options` (optional):  
    * `recursive` \- Create parent directories if needed (default: `false`)
 
-* [  JavaScript ](#tab-panel-7875)
-* [  TypeScript ](#tab-panel-7876)
+* [  JavaScript ](#tab-panel-7939)
+* [  TypeScript ](#tab-panel-7940)
 
 JavaScript
 
@@ -311,8 +369,8 @@ await sandbox.deleteFile(path: string): Promise<void>
 
 * `path` \- Absolute path to the file
 
-* [  JavaScript ](#tab-panel-7873)
-* [  TypeScript ](#tab-panel-7874)
+* [  JavaScript ](#tab-panel-7937)
+* [  TypeScript ](#tab-panel-7938)
 
 JavaScript
 
@@ -350,8 +408,8 @@ await sandbox.renameFile(oldPath: string, newPath: string): Promise<void>
 * `oldPath` \- Current file path
 * `newPath` \- New file path
 
-* [  JavaScript ](#tab-panel-7877)
-* [  TypeScript ](#tab-panel-7878)
+* [  JavaScript ](#tab-panel-7941)
+* [  TypeScript ](#tab-panel-7942)
 
 JavaScript
 
@@ -389,8 +447,8 @@ await sandbox.moveFile(sourcePath: string, destinationPath: string): Promise<voi
 * `sourcePath` \- Current file path
 * `destinationPath` \- Destination path
 
-* [  JavaScript ](#tab-panel-7881)
-* [  TypeScript ](#tab-panel-7882)
+* [  JavaScript ](#tab-panel-7943)
+* [  TypeScript ](#tab-panel-7944)
 
 JavaScript
 
@@ -431,8 +489,8 @@ await sandbox.gitCheckout(repoUrl: string, options?: GitCheckoutOptions): Promis
    * `targetDir` \- Directory to clone into (default: `/workspace/{repoName}`)  
    * `depth` \- Clone depth for shallow clones (e.g., `1` for latest commit only)
 
-* [  JavaScript ](#tab-panel-7885)
-* [  TypeScript ](#tab-panel-7886)
+* [  JavaScript ](#tab-panel-7947)
+* [  TypeScript ](#tab-panel-7948)
 
 JavaScript
 

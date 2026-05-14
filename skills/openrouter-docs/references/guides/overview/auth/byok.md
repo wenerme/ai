@@ -6,9 +6,11 @@
 
 ## Bring your own API Keys
 
-OpenRouter supports both OpenRouter credits and the option to bring your own provider keys (BYOK).
+OpenRouter supports both OpenRouter credits and the
+option to bring your own provider keys (BYOK).
 
-When you use OpenRouter credits, your rate limits for each provider are managed by OpenRouter.
+When you use OpenRouter credits, your rate limits for
+each provider are managed by OpenRouter.
 
 Using provider keys enables direct control over rate limits and costs via your provider account.
 
@@ -16,16 +18,44 @@ Your provider keys are securely encrypted and used for all requests routed throu
 
 Manage keys in your [workspace BYOK settings](/workspaces/default/byok).
 
-The cost of using custom provider keys on OpenRouter is **{bn(openRouterBYOKFee.fraction).times(100).toString()}% of what the same model/provider would cost normally on OpenRouter** and will be deducted from your OpenRouter credits.
+The cost of using custom provider keys on OpenRouter is
+**{bn(openRouterBYOKFee.fraction).times(100).toString()}%
+of what the same model/provider would cost normally on
+OpenRouter** and will be deducted from your OpenRouter
+credits.
 This fee is waived for the first {toHumanNumber(BYOK_FEE_MONTHLY_REQUEST_THRESHOLD)} BYOK requests per-month.
 
 ### Key Priority and Fallback
 
-OpenRouter always prioritizes using your provider keys when available. By default, if your key encounters a rate limit or failure, OpenRouter will fall back to using shared OpenRouter credits.
+Each BYOK key belongs to one of two sections:
 
-You can toggle **"Always use for this provider"** on individual keys to prevent any fallback to OpenRouter credits. When enabled, OpenRouter will only use your keys for requests to that provider, which may result in rate limit errors if your keys are exhausted, but ensures all requests go through your account.
+* **Prioritized** — Attempted in order, before falling
+  back to OpenRouter endpoints. Use this section for your
+  primary provider keys.
+* **Fallback** — Tried only after OpenRouter endpoints
+  have been attempted, in order. Use this section for
+  backup keys you only want used as a last resort.
 
-When you have multiple keys for the same provider, OpenRouter tries them in priority order (see [Multiple BYOK Keys](#multiple-byok-keys-for-the-same-provider)). If the first key fails, it falls through to the next matching key before falling back to shared capacity.
+You can drag keys between sections on the provider
+detail page (e.g.
+[/workspaces/default/byok/openai](/workspaces/default/byok/openai)).
+
+By default, if all keys in both sections encounter a
+rate limit or failure, OpenRouter will fall back to
+using shared OpenRouter endpoints.
+
+You can toggle **"Always use for this provider"** on
+individual prioritized keys to prevent any fallback to
+OpenRouter endpoints. When enabled, OpenRouter will only
+use your keys for requests to that provider, which may
+result in rate limit errors if your keys are exhausted,
+but ensures all requests go through your account.
+
+When you have multiple keys for the same provider,
+OpenRouter tries them in priority order (see
+[Multiple BYOK Keys](#multiple-byok-keys-for-the-same-provider)).
+If the first key fails, it falls through to the next
+matching key before falling back to shared capacity.
 
 ### BYOK with Provider Ordering
 
@@ -74,7 +104,10 @@ The routing order will be:
 
 Note that even though Amazon Bedrock is listed first in the `order` array, the Google Vertex AI BYOK endpoint takes priority.
 
-If you want to prevent fallback to OpenRouter's shared capacity entirely, enable **"Always use for this provider"** on your BYOK keys in your [workspace BYOK settings](/workspaces/default/byok).
+If you want to prevent fallback to OpenRouter endpoints
+entirely, enable **"Always use for this provider"** on
+your BYOK keys in your
+[workspace BYOK settings](/workspaces/default/byok).
 
 ### Multiple BYOK Keys for the Same Provider
 
@@ -82,14 +115,22 @@ You can configure multiple BYOK keys for the same provider. All matching keys ar
 
 #### Priority Order
 
-Keys are tried in the priority order you define. You can reorder keys via drag-and-drop on the provider detail page (e.g. [/workspaces/default/byok/openai](/workspaces/default/byok/openai)) — the key at the top of the list is tried first. When a key fails (e.g. rate limit or error), OpenRouter falls through to the next matching key before falling back to shared capacity.
+Keys are tried in the order you define, within their
+section. Prioritized keys are tried first, then
+OpenRouter endpoints, then Fallback keys. You can
+reorder keys via drag-and-drop on the provider detail
+page (e.g.
+[/workspaces/default/byok/openai](/workspaces/default/byok/openai)).
+When a key fails (e.g. rate limit or error), OpenRouter
+falls through to the next matching key.
 
-For example, if you have two OpenAI keys ordered as:
+For example, if you have three OpenAI keys:
 
-1. **Production key** (priority 1)
-2. **Backup key** (priority 2)
+* **Prioritized section**: First key, Second key
+* **Fallback section**: Backup key
 
-OpenRouter will try the production key first, then the backup key, and finally shared capacity (unless "Always use for this provider" is enabled).
+OpenRouter will try: First key, then Second key,
+then OpenRouter endpoints, then Backup key.
 
 #### Key Filters
 

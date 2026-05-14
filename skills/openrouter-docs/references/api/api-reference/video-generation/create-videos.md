@@ -271,6 +271,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        crucible:
+          type: object
+          additionalProperties:
+            description: Any type
         crusoe:
           type: object
           additionalProperties:

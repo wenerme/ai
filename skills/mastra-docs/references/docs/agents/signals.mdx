@@ -8,9 +8,9 @@ packages:
 
 # Signals
 
-> **note**: Experimental
+> **warning**: Experimental
 
-Agent signals are experimental. The API may change in a future release.
+Agent signals are experimental. Breaking changes may occur without a major version bump until the API is stable.
 
 Signals are a way to interact with an agent through a thread. Instead of starting every interaction with `agent.stream()`, subscribe to a thread and send signals. Mastra either wakes the agent when the thread is idle or drops the signal into the running agent loop.
 

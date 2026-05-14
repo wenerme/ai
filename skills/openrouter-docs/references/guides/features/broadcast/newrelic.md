@@ -18,7 +18,7 @@ In New Relic, navigate to your API keys:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+![Enable Broadcast](file:60768b0c-c773-4881-ac51-8c9df159fcd6)
 
 ## Step 3: Configure New Relic
 
@@ -36,7 +36,7 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 Make an API request through OpenRouter and view the trace in New Relic's
 distributed tracing view.
 
-![New Relic Trace View](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2adbb2978a900052552bdbf3d13e6a1a58f5205f4439ae5a57b0d7d4d2b07939/content/pages/features/broadcast/broadcast-newrelic-trace.png)
+![New Relic Trace View](file:6b480f7e-849e-4d8b-8e08-c8fbb6e54d91)
 
 ## Custom Metadata
 

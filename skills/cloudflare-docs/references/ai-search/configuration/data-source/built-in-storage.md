@@ -22,7 +22,7 @@ Instances created before this date do not include built-in storage and do not su
 
 [ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search) 
 
-All instances will be migrated to managed infrastructure. Migration details are coming soon.
+All instances created before this date will be automatically migrated to managed infrastructure on **June 3, 2026**. For details, refer to [Limits & pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#previous-instances).
 
 ## Upload and manage files
 

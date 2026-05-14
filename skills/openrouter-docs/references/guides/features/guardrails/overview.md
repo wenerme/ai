@@ -29,6 +29,7 @@ Each guardrail can include any combination of:
 * **Provider allowlist** - Restrict to specific providers. Leave empty to allow all.
 * **Zero Data Retention** - Require ZDR-compatible providers for all requests.
 * **Security** - Protect against prompt injection and jailbreak attacks with [regex-based detection](/docs/guides/features/guardrails/prompt-injection) and Google Cloud Model Armor.
+* **Custom content filters** - Define your own regex patterns to [redact or block](#custom-content-filters) matching content in incoming requests.
 
 <Note>
   Individual API key budgets still apply. The lower limit wins.
@@ -73,6 +74,51 @@ Alice creates two API keys, both assigned a guardrail with a \$20/day limit. Key
 **Example 3: Layered guardrails**
 
 Bob has a member guardrail with a \$100/day limit. His API key has a separate guardrail with a \$30/day limit. The key can only spend \$30/day (its own limit), but Bob's total usage across all his keys cannot exceed \$100/day. Both limits are checked independently on each request.
+
+## Custom Content Filters
+
+Each guardrail can carry a list of **custom content filter patterns**.
+Every pattern is a regular expression with an associated action:
+
+* **Redact** - Matched spans are replaced with a placeholder before the
+  request is forwarded to the model.
+* **Block** - The request is rejected with a `403` before it reaches the
+  model.
+
+Patterns are evaluated locally against every user message, so they add
+negligible latency to requests.
+
+### Supported regex features
+
+Patterns are JavaScript-flavoured regular expressions. The following common
+constructs are all supported:
+
+* Character classes (`[a-z]`, `\d`, `\w`, `\s`, …)
+* Quantifiers (`*`, `+`, `?`, `{n,m}`)
+* Alternation (`foo|bar`)
+* Non-capturing groups (`(?:…)`)
+* Named capture groups (`(?<name>…)`)
+* Anchors (`^`, `$`, `\b`)
+* Escape sequences (`\.`, `\(`, `\\`, …)
+
+### Unsupported regex features
+
+To keep evaluation fast and predictable across all requests, the following
+features are **not allowed** in new or edited patterns:
+
+* **Lookaheads** - `(?=…)` and `(?!…)`
+* **Lookbehinds** - `(?<=…)` and `(?<!…)`
+* **Backreferences** - numeric (`\1`, `\2`, …) and named (`\k<name>`)
+* **Excessive backtracking** - patterns with nested quantifiers like
+  `(a+)+`
+
+The API rejects offending patterns with an `invalid_regex_pattern` error
+on create and on update.
+
+### Limits
+
+* Up to **100,000 characters** per pattern.
+* Multiple patterns per guardrail; each is evaluated independently.
 
 ## API Access
 

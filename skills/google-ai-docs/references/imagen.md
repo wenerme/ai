@@ -1,5 +1,3 @@
-# Generate images using Imagen
-
 <br />
 
 > [!IMPORTANT]
