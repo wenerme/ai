@@ -1043,6 +1043,7 @@ consumption and usage of the tools.
 
 ## Notes
 
+- **Document token billing:** Tokens for the `DOCUMENT` modality (for example, PDFs) are billed at the image token rate. In API responses, these tokens appear under the `DOCUMENT` modality within `promptTokensDetails`.
 - Google AI Studio usage is free of charge in all [available regions](https://ai.google.dev/gemini-api/docs/available-regions). See [Billing FAQs](https://ai.google.dev/gemini-api/docs/billing) for details.
 - Prices may differ from the prices listed here and the prices offered on Gemini Enterprise Agent Platform. For Gemini Enterprise Agent Platform prices, see the [Gemini Enterprise Agent Platform pricing page](https://cloud.google.com/products/gemini-enterprise-agent-platform).
 - If you are using [dynamic retrieval](https://ai.google.dev/gemini-api/docs/grounding) to optimize costs, only requests that contain at least one grounding support URL from the web in their response are charged for Grounding with Google Search. Costs for Gemini always apply. Rate limits are subject to change.

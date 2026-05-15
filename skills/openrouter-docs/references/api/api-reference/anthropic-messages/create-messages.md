@@ -909,17 +909,6 @@ components:
         - data
         - type
       title: MessagesMessageParamContentOneOf1Items6
-    AnthropicServerToolName:
-      type: string
-      enum:
-        - web_search
-        - web_fetch
-        - code_execution
-        - bash_code_execution
-        - text_editor_code_execution
-        - tool_search_tool_regex
-        - tool_search_tool_bm25
-      title: AnthropicServerToolName
     MessagesMessageParamContentOneOf1ItemsOneOf7Type:
       type: string
       enum:
@@ -937,7 +926,7 @@ components:
             - description: Any type
             - type: 'null'
         name:
-          $ref: '#/components/schemas/AnthropicServerToolName'
+          type: string
         type:
           $ref: >-
             #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7Type
@@ -1055,6 +1044,31 @@ components:
         - content
         - type
       title: MessagesMessageParamContentOneOf1Items10
+    MessagesAdvisorToolResultBlockType:
+      type: string
+      enum:
+        - advisor_tool_result
+      title: MessagesAdvisorToolResultBlockType
+    MessagesAdvisorToolResultBlock:
+      type: object
+      properties:
+        content:
+          type: object
+          additionalProperties:
+            description: Any type
+        tool_use_id:
+          type: string
+        type:
+          $ref: '#/components/schemas/MessagesAdvisorToolResultBlockType'
+      required:
+        - content
+        - tool_use_id
+        - type
+      description: >-
+        Advisor tool result from a prior assistant turn, replayed back to the
+        model on the next turn. Mirrors the block Anthropic returns in assistant
+        content when the `advisor_20260301` tool runs.
+      title: MessagesAdvisorToolResultBlock
     MessagesMessageParamContentOneOf1Items:
       oneOf:
         - $ref: '#/components/schemas/AnthropicTextBlockParam'
@@ -1068,6 +1082,7 @@ components:
         - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items8'
         - $ref: '#/components/schemas/AnthropicSearchResultBlockParam'
         - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items10'
+        - $ref: '#/components/schemas/MessagesAdvisorToolResultBlock'
       title: MessagesMessageParamContentOneOf1Items
     MessagesMessageParamContent1:
       type: array
@@ -1356,6 +1371,14 @@ components:
               description: >-
                 Set to false to disable the fusion plugin for this request.
                 Defaults to true.
+            max_tool_calls:
+              type: integer
+              description: >-
+                Maximum number of tool-calling steps each panelist (analysis
+                model) and the judge model may take during their agentic
+                web-research loop. Models with web_search/web_fetch enabled
+                iterate until they produce a text response or hit this ceiling.
+                Defaults to 8. Capped at 16.
             model:
               type: string
               description: >-
@@ -2159,13 +2182,18 @@ components:
         - name
         - type
       title: MessagesRequestToolsItems3
-    MessagesRequestToolsItemsOneOf4AllowedCallersItems:
+    AnthropicAllowedCallersItems:
       type: string
       enum:
         - direct
         - code_execution_20250825
         - code_execution_20260120
-      title: MessagesRequestToolsItemsOneOf4AllowedCallersItems
+      title: AnthropicAllowedCallersItems
+    AnthropicAllowedCallers:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnthropicAllowedCallersItems'
+      title: AnthropicAllowedCallers
     MessagesRequestToolsItemsOneOf4Name:
       type: string
       enum:
@@ -2180,10 +2208,7 @@ components:
       type: object
       properties:
         allowed_callers:
-          type: array
-          items:
-            $ref: >-
-              #/components/schemas/MessagesRequestToolsItemsOneOf4AllowedCallersItems
+          $ref: '#/components/schemas/AnthropicAllowedCallers'
         allowed_domains:
           type:
             - array
@@ -2212,6 +2237,59 @@ components:
         - name
         - type
       title: MessagesRequestToolsItems4
+    MessagesRequestToolsItemsOneOf5CachingType:
+      type: string
+      enum:
+        - ephemeral
+      title: MessagesRequestToolsItemsOneOf5CachingType
+    MessagesRequestToolsItemsOneOf5Caching:
+      type: object
+      properties:
+        ttl:
+          $ref: '#/components/schemas/AnthropicCacheControlTtl'
+        type:
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf5CachingType'
+      required:
+        - type
+      description: >-
+        Enable automatic prompt caching. When set at the top level, the system
+        automatically applies cache breakpoints to the last cacheable block in
+        the request. Currently supported for Anthropic Claude models.
+      title: MessagesRequestToolsItemsOneOf5Caching
+    MessagesRequestToolsItemsOneOf5Name:
+      type: string
+      enum:
+        - advisor
+      title: MessagesRequestToolsItemsOneOf5Name
+    MessagesRequestToolsItemsOneOf5Type:
+      type: string
+      enum:
+        - advisor_20260301
+      title: MessagesRequestToolsItemsOneOf5Type
+    MessagesRequestToolsItems5:
+      type: object
+      properties:
+        allowed_callers:
+          $ref: '#/components/schemas/AnthropicAllowedCallers'
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+        caching:
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf5Caching'
+        defer_loading:
+          type: boolean
+        max_uses:
+          type: integer
+        model:
+          type: string
+        name:
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf5Name'
+        type:
+          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf5Type'
+      required:
+        - model
+        - name
+        - type
+      title: MessagesRequestToolsItems5
     DatetimeServerToolConfig:
       type: object
       properties:
@@ -2467,14 +2545,14 @@ components:
         OpenRouter built-in server tool: searches the web for current
         information
       title: OpenRouterWebSearchServerTool
-    MessagesRequestToolsItems10:
+    MessagesRequestToolsItems11:
       type: object
       properties:
         type:
           type: string
       required:
         - type
-      title: MessagesRequestToolsItems10
+      title: MessagesRequestToolsItems11
     MessagesRequestToolsItems:
       oneOf:
         - $ref: '#/components/schemas/MessagesRequestToolsItems0'
@@ -2482,12 +2560,13 @@ components:
         - $ref: '#/components/schemas/MessagesRequestToolsItems2'
         - $ref: '#/components/schemas/MessagesRequestToolsItems3'
         - $ref: '#/components/schemas/MessagesRequestToolsItems4'
+        - $ref: '#/components/schemas/MessagesRequestToolsItems5'
         - $ref: '#/components/schemas/DatetimeServerTool'
         - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'
         - $ref: '#/components/schemas/WebFetchServerTool'
         - $ref: '#/components/schemas/OpenRouterWebSearchServerTool'
-        - $ref: '#/components/schemas/MessagesRequestToolsItems10'
+        - $ref: '#/components/schemas/MessagesRequestToolsItems11'
       title: MessagesRequestToolsItems
     TraceConfig:
       type: object
@@ -2776,27 +2855,15 @@ components:
       discriminator:
         propertyName: type
       title: AnthropicCodeExecutionContent
-    AnthropicCodeExecution20250825CallerType:
-      type: string
-      enum:
-        - code_execution_20250825
-      title: AnthropicCodeExecution20250825CallerType
-    AnthropicCodeExecution20260120CallerType:
-      type: string
-      enum:
-        - code_execution_20260120
-      title: AnthropicCodeExecution20260120CallerType
-    AnthropicDirectCallerType:
-      type: string
-      enum:
-        - direct
-      title: AnthropicDirectCallerType
-    AnthropicCaller:
+    ORAnthropicNullableCaller:
       oneOf:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/AnthropicCodeExecution20250825CallerType'
+              type: string
+              enum:
+                - code_execution_20250825
+              description: 'Discriminator value: code_execution_20250825'
             tool_id:
               type: string
           required:
@@ -2806,7 +2873,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/AnthropicCodeExecution20260120CallerType'
+              type: string
+              enum:
+                - code_execution_20260120
+              description: 'Discriminator value: code_execution_20260120'
             tool_id:
               type: string
           required:
@@ -2816,13 +2886,21 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/AnthropicDirectCallerType'
+              type: string
+              enum:
+                - direct
+              description: 'Discriminator value: direct'
           required:
             - type
           description: direct variant
       discriminator:
         propertyName: type
-      title: AnthropicCaller
+      title: ORAnthropicNullableCaller
+    OrAnthropicServerToolUseBlockType:
+      type: string
+      enum:
+        - server_tool_use
+      title: OrAnthropicServerToolUseBlockType
     AnthropicTextCitation:
       oneOf:
         - type: object
@@ -3170,6 +3248,47 @@ components:
       discriminator:
         propertyName: type
       title: AnthropicToolSearchContent
+    AnthropicCaller:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - code_execution_20250825
+              description: 'Discriminator value: code_execution_20250825'
+            tool_id:
+              type: string
+          required:
+            - type
+            - tool_id
+          description: code_execution_20250825 variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - code_execution_20260120
+              description: 'Discriminator value: code_execution_20260120'
+            tool_id:
+              type: string
+          required:
+            - type
+            - tool_id
+          description: code_execution_20260120 variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - direct
+              description: 'Discriminator value: direct'
+          required:
+            - type
+          description: direct variant
+      discriminator:
+        propertyName: type
+      title: AnthropicCaller
     AnthropicCitationsConfig:
       type: object
       properties:
@@ -3331,6 +3450,24 @@ components:
             type:
               type: string
               enum:
+                - advisor_tool_result
+              description: 'Discriminator value: advisor_tool_result'
+            content:
+              type: object
+              additionalProperties:
+                description: Any type
+            tool_use_id:
+              type: string
+          required:
+            - type
+            - content
+            - tool_use_id
+          description: advisor_tool_result variant
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
                 - bash_code_execution_tool_result
               description: 'Discriminator value: bash_code_execution_tool_result'
             content:
@@ -3402,12 +3539,9 @@ components:
         - type: object
           properties:
             type:
-              type: string
-              enum:
-                - server_tool_use
-              description: 'Discriminator value: server_tool_use'
+              $ref: '#/components/schemas/OrAnthropicServerToolUseBlockType'
             caller:
-              $ref: '#/components/schemas/AnthropicCaller'
+              $ref: '#/components/schemas/ORAnthropicNullableCaller'
             id:
               type: string
             input:
@@ -3415,10 +3549,9 @@ components:
                 - description: Any type
                 - type: 'null'
             name:
-              $ref: '#/components/schemas/AnthropicServerToolName'
+              type: string
           required:
             - type
-            - caller
             - id
             - name
           description: server_tool_use variant
@@ -3689,6 +3822,32 @@ components:
       required:
         - type
       title: AnthropicMessageUsageIteration
+    AnthropicAdvisorMessageUsageIterationType:
+      type: string
+      enum:
+        - advisor_message
+      title: AnthropicAdvisorMessageUsageIterationType
+    AnthropicAdvisorMessageUsageIteration:
+      type: object
+      properties:
+        cache_creation:
+          $ref: '#/components/schemas/AnthropicIterationCacheCreation'
+        cache_creation_input_tokens:
+          type: integer
+        cache_read_input_tokens:
+          type: integer
+        input_tokens:
+          type: integer
+        output_tokens:
+          type: integer
+        model:
+          type: string
+        type:
+          $ref: '#/components/schemas/AnthropicAdvisorMessageUsageIterationType'
+      required:
+        - model
+        - type
+      title: AnthropicAdvisorMessageUsageIteration
     AnthropicUnknownUsageIteration:
       type: object
       properties:
@@ -3711,6 +3870,7 @@ components:
       oneOf:
         - $ref: '#/components/schemas/AnthropicCompactionUsageIteration'
         - $ref: '#/components/schemas/AnthropicMessageUsageIteration'
+        - $ref: '#/components/schemas/AnthropicAdvisorMessageUsageIteration'
         - $ref: '#/components/schemas/AnthropicUnknownUsageIteration'
       title: AnthropicUsageIteration
     MessagesResultUsage:

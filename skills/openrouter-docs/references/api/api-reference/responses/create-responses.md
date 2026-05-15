@@ -306,6 +306,7 @@ components:
         - auto
         - high
         - low
+        - original
       title: EasyInputMessageContentOneOf0ItemsOneOf1Detail
     EasyInputMessageContentOneOf0ItemsOneOf1Type:
       type: string
@@ -491,6 +492,7 @@ components:
         - auto
         - high
         - low
+        - original
       title: InputMessageItemContentItemsOneOf1Detail
     InputMessageItemContentItemsOneOf1Type:
       type: string
@@ -611,6 +613,7 @@ components:
         - auto
         - high
         - low
+        - original
       title: >-
         OpenAiResponseInputMessageItemContentItemsDiscriminatorMappingInputImageDetail
     FunctionCallOutputItemOutputOneOf1Items:
@@ -2485,6 +2488,14 @@ components:
               description: >-
                 Set to false to disable the fusion plugin for this request.
                 Defaults to true.
+            max_tool_calls:
+              type: integer
+              description: >-
+                Maximum number of tool-calling steps each panelist (analysis
+                model) and the judge model may take during their agentic
+                web-research loop. Models with web_search/web_fetch enabled
+                iterate until they produce a text response or hit this ceiling.
+                Defaults to 8. Capped at 16.
             model:
               type: string
               description: >-
@@ -4031,6 +4042,13 @@ components:
             collective output into structured analysis JSON. Capped at 8 models
             to bound cost amplification. Defaults to the Quality preset from
             /labs/fusion.
+        max_tool_calls:
+          type: integer
+          description: >-
+            Maximum number of tool-calling steps each panelist (analysis model)
+            and the judge model may take during their agentic web-research loop.
+            Models with web_search/web_fetch enabled iterate until they produce
+            a text response or hit this ceiling. Defaults to 8. Capped at 16.
         model:
           type: string
           description: >-

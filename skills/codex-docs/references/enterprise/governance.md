@@ -32,7 +32,7 @@ Codex provides date-range controls for daily and weekly views. Key charts includ
 - Product activity for threads and turns by client
 - User ranking table, with filters for client and sort options such as credits, threads, turns, text tokens, and current streak
 - Code Review activity, including PRs reviewed, issues by priority, comments, replies, reactions, and feedback sentiment
-- Skill invocations and agent identity usage when your workspace has those features
+- Skill invocations, agent identity usage, and access token usage when your workspace has those features
 
 ### Data export
 
@@ -115,6 +115,7 @@ For Codex usage authenticated through ChatGPT, Compliance API exports provide au
 Use record metadata to answer questions like:
 
 - Who ran a task
+- Who created or revoked an access token
 - When it ran
 - Which model was used
 - How much content was processed

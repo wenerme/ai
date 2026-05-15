@@ -167,22 +167,23 @@ shell_snapshot = true           # Speed up repeated commands
 
 ### Supported features
 
-| Key                  |        Default        | Maturity     | Description                                                                              |
-| -------------------- | :-------------------: | ------------ | ---------------------------------------------------------------------------------------- |
-| `apps`               |         false         | Experimental | Enable ChatGPT Apps/connectors support                                                   |
-| `codex_git_commit`   |         false         | Experimental | Enable Codex-generated git commits and commit attribution trailers                       |
-| `codex_hooks`        |         true          | Stable       | Enable lifecycle hooks from `hooks.json` or inline `[hooks]`. See [Hooks](https://developers.openai.com/codex/hooks). |
-| `fast_mode`          |         true          | Stable       | Enable Fast mode selection and the `service_tier = "fast"` path                          |
-| `memories`           |         false         | Stable       | Enable [Memories](https://developers.openai.com/codex/memories)                                                       |
-| `multi_agent`        |         true          | Stable       | Enable subagent collaboration tools                                                      |
-| `personality`        |         true          | Stable       | Enable personality selection controls                                                    |
-| `shell_snapshot`     |         true          | Stable       | Snapshot your shell environment to speed up repeated commands                            |
-| `shell_tool`         |         true          | Stable       | Enable the default `shell` tool                                                          |
-| `unified_exec`       | `true` except Windows | Stable       | Use the unified PTY-backed exec tool                                                     |
-| `undo`               |         false         | Stable       | Enable undo via per-turn git ghost snapshots                                             |
-| `web_search`         |         true          | Deprecated   | Legacy toggle; prefer the top-level `web_search` setting                                 |
-| `web_search_cached`  |         false         | Deprecated   | Legacy toggle that maps to `web_search = "cached"` when unset                            |
-| `web_search_request` |         false         | Deprecated   | Legacy toggle that maps to `web_search = "live"` when unset                              |
+| Key                  |        Default        | Maturity          | Description                                                                                    |
+| -------------------- | :-------------------: | ----------------- | ---------------------------------------------------------------------------------------------- |
+| `apps`               |         false         | Experimental      | Enable ChatGPT Apps/connectors support                                                         |
+| `codex_git_commit`   |         false         | Experimental      | Enable Codex-generated git commits and commit attribution trailers                             |
+| `hooks`              |         true          | Stable            | Enable lifecycle hooks from `hooks.json` or inline `[hooks]`. See [Hooks](https://developers.openai.com/codex/hooks).       |
+| `plugin_hooks`       |         false         | Under development | Opt into lifecycle hooks bundled with plugins. See [Hooks](https://developers.openai.com/codex/hooks#plugin-bundled-hooks). |
+| `fast_mode`          |         true          | Stable            | Enable Fast mode selection and the `service_tier = "fast"` path                                |
+| `memories`           |         false         | Stable            | Enable [Memories](https://developers.openai.com/codex/memories)                                                             |
+| `multi_agent`        |         true          | Stable            | Enable subagent collaboration tools                                                            |
+| `personality`        |         true          | Stable            | Enable personality selection controls                                                          |
+| `shell_snapshot`     |         true          | Stable            | Snapshot your shell environment to speed up repeated commands                                  |
+| `shell_tool`         |         true          | Stable            | Enable the default `shell` tool                                                                |
+| `unified_exec`       | `true` except Windows | Stable            | Use the unified PTY-backed exec tool                                                           |
+| `undo`               |         false         | Stable            | Enable undo via per-turn git ghost snapshots                                                   |
+| `web_search`         |         true          | Deprecated        | Legacy toggle; prefer the top-level `web_search` setting                                       |
+| `web_search_cached`  |         false         | Deprecated        | Legacy toggle that maps to `web_search = "cached"` when unset                                  |
+| `web_search_request` |         false         | Deprecated        | Legacy toggle that maps to `web_search = "live"` when unset                                    |
 
 The Maturity column uses feature maturity labels such as Experimental, Beta,
   and Stable. See [Feature Maturity](https://developers.openai.com/codex/feature-maturity) for how to
@@ -190,7 +191,7 @@ The Maturity column uses feature maturity labels such as Experimental, Beta,
 
 Omit feature keys to keep their defaults.
 
-For the current lifecycle hooks MVP, see [Hooks](https://developers.openai.com/codex/hooks).
+For lifecycle hook configuration, see [Hooks](https://developers.openai.com/codex/hooks).
 
 ### Enabling features
 

@@ -566,8 +566,8 @@
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
-    "size": 205314,
-    "updatedAt": "2026-05-14T11:02:00.927Z"
+    "size": 206201,
+    "updatedAt": "2026-05-15T00:39:32.648Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",
@@ -596,8 +596,8 @@
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
-    "size": 98922,
-    "updatedAt": "2026-05-14T11:02:25.590Z"
+    "size": 99359,
+    "updatedAt": "2026-05-15T00:39:36.874Z"
   },
   "api/api-reference/credits/get-credits.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/credits/get-credits.md",
@@ -731,8 +731,8 @@
   },
   "api/api-reference/anthropic-messages/create-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-messages.md",
-    "size": 130417,
-    "updatedAt": "2026-05-14T11:03:05.069Z"
+    "size": 135638,
+    "updatedAt": "2026-05-15T00:39:59.346Z"
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
@@ -1248,6 +1248,11 @@
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/openclaw-integration.md",
     "size": 8917,
     "updatedAt": "2026-05-09T00:40:25.500Z"
+  },
+  "cookbook/coding-agents/opencode-integration.md": {
+    "url": "https://openrouter.ai/docs/cookbook/coding-agents/opencode-integration.md",
+    "size": 4438,
+    "updatedAt": "2026-05-15T00:41:15.550Z"
   },
   "cookbook/building-agents/hitl-tools.md": {
     "url": "https://openrouter.ai/docs/cookbook/building-agents/hitl-tools.md",

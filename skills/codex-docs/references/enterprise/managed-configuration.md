@@ -187,9 +187,12 @@ Use `[hooks]` for the hook configuration itself, and point `managed_dir` at the
 directory where your MDM or endpoint-management tooling installs the referenced
 scripts.
 
+To enforce managed hooks even for users who disabled hooks locally, pin
+`[features].hooks = true` alongside `[hooks]`.
+
 ```toml
 [features]
-codex_hooks = true
+hooks = true
 
 [hooks]
 managed_dir = "/enterprise/hooks"

@@ -4,7 +4,7 @@ This page is for plugin authors. If you want to browse, install, and use
 plugins in Codex, see [Plugins](https://developers.openai.com/codex/plugins). If you are still iterating on
 one repo or one personal workflow, start with a local skill. Build a plugin
 when you want to share that workflow across teams, bundle app integrations or
-MCP config, or publish a stable package.
+MCP config, package lifecycle hooks, or publish a stable package.
 
 ## Create a plugin with `$plugin-creator`
 
@@ -320,7 +320,7 @@ Codex can read marketplace files from:
 
 - the curated marketplace that powers the official Plugin Directory
 - a repo marketplace at `$REPO_ROOT/.agents/plugins/marketplace.json`
-- a Claude-style marketplace at `$REPO_ROOT/.claude-plugin/marketplace.json`
+- a legacy-compatible marketplace at `$REPO_ROOT/.claude-plugin/marketplace.json`
 - a personal marketplace at `~/.agents/plugins/marketplace.json`
 
 You can install any plugin exposed through a marketplace. Codex installs
@@ -337,9 +337,10 @@ on or off state in `~/.codex/config.toml`.
 ### Plugin structure
 
 Every plugin has a manifest at `.codex-plugin/plugin.json`. It can also include
-a `skills/` directory, an `.app.json` file that points at one or more apps or
-connectors, an `.mcp.json` file that configures MCP servers, lifecycle config,
-and assets used to present the plugin across supported surfaces.
+a `skills/` directory, a `hooks/` directory for lifecycle hooks, an `.app.json`
+file that points at one or more apps or connectors, an `.mcp.json` file that
+configures MCP servers, and assets used to present the plugin across supported
+surfaces.
 
 <FileTree
   class="mt-4"
@@ -375,22 +376,22 @@ and assets used to present the plugin across supported surfaces.
           ],
         },
         {
+          name: "hooks/",
+          open: true,
+          children: [
+            {
+              name: "hooks.json",
+              comment: "Optional: lifecycle hooks",
+            },
+          ],
+        },
+        {
           name: ".app.json",
           comment: "Optional: app or connector mappings",
         },
         {
           name: ".mcp.json",
           comment: "Optional: MCP server configuration",
-        },
-        {
-          name: "hooks/",
-          open: true,
-          children: [
-            {
-              name: "hooks.json",
-              comment: "Optional: lifecycle configuration",
-            },
-          ],
         },
         {
           name: "assets/",
@@ -401,14 +402,14 @@ and assets used to present the plugin across supported surfaces.
   ]}
 />
 
-Only `plugin.json` belongs in `.codex-plugin/`. Keep `skills/`, `assets/`,
-`.mcp.json`, `.app.json`, and lifecycle config files at the plugin root.
+Only `plugin.json` belongs in `.codex-plugin/`. Keep `skills/`, `hooks/`,
+`assets/`, `.mcp.json`, and `.app.json` at the plugin root.
 
 Published plugins typically use a richer manifest than the minimal example that
 appears in quick-start scaffolds. The manifest has three jobs:
 
 - Identify the plugin.
-- Point to bundled components such as skills, apps, or MCP servers.
+- Point to bundled components such as skills, apps, MCP servers, or hooks.
 - Provide install-surface metadata such as descriptions, icons, and legal
   links.
 
@@ -486,11 +487,13 @@ Use the `interface` object for install-surface metadata:
 - Store visual assets such as `composerIcon`, `logo`, and `screenshots` under
   `./assets/` when possible.
 - Use `skills` for bundled skill folders, `apps` for `.app.json`,
-  `mcpServers` for `.mcp.json`, and `hooks` for lifecycle config.
-- If you omit `hooks` and the plugin includes `./hooks/hooks.json`, Codex loads
-  that default lifecycle config automatically.
+  `mcpServers` for `.mcp.json`, and `hooks` for lifecycle hooks.
+- Plugin hooks are off by default in this release; bundled hooks won't run
+  unless `[features].plugin_hooks = true`.
+- When plugin hooks are enabled, omit `hooks` to use the default
+  `./hooks/hooks.json` file when present.
 
-### Bundled MCP servers and lifecycle config
+### Bundled MCP servers and lifecycle hooks
 
 `mcpServers` can point to an `.mcp.json` file that contains either a direct
 server map or a wrapped `mcp_servers` object.
@@ -519,10 +522,60 @@ Wrapped server map:
 }
 ```
 
-`hooks` can point to one lifecycle JSON file, an array of lifecycle JSON files,
-an inline lifecycle object, or an array of inline lifecycle objects. File paths
-must follow the same `./`-prefixed plugin-root path rules as other manifest
-paths. If you omit the manifest field, Codex still checks `./hooks/hooks.json`.
+Plugin hooks are off by default in this release. When
+`[features].plugin_hooks = true` and your plugin is enabled, Codex can load
+lifecycle hooks from your plugin alongside user, project, and managed hooks.
+
+```toml
+[features]
+plugin_hooks = true
+```
+
+The default plugin hook file is `hooks/hooks.json`:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${PLUGIN_ROOT}/hooks/session_start.py",
+            "statusMessage": "Loading plugin context"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+If you define `hooks` in `.codex-plugin/plugin.json`, Codex uses that manifest
+entry instead of the default `hooks/hooks.json`. The manifest field can be a
+single path, an array of paths, an inline hooks object, or an array of inline
+hooks objects.
+
+```json
+{
+  "name": "repo-policy",
+  "hooks": ["./hooks/session.json", "./hooks/tools.json"]
+}
+```
+
+Hook paths follow the same manifest path rules as `skills`, `apps`, and
+`mcpServers`: start with `./`, resolve relative to the plugin root, and stay
+inside the plugin root.
+
+Plugin hook commands receive the Codex-specific environment variables
+`PLUGIN_ROOT` and `PLUGIN_DATA`. `PLUGIN_ROOT` points to the installed plugin
+root, and `PLUGIN_DATA` points to the plugin's writable data directory. Codex
+also sets `CLAUDE_PLUGIN_ROOT` and `CLAUDE_PLUGIN_DATA` for compatibility with
+existing plugin hooks.
+
+Plugin hooks use the same event schema as regular hooks. See
+[Hooks](https://developers.openai.com/codex/hooks) for supported events, inputs, outputs, trust review, and
+current limitations.
 
 ### Publish official public plugins
 

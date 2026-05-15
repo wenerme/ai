@@ -400,8 +400,9 @@ enabled = true
 # Leave this table empty to accept defaults. Set explicit booleans to opt in/out.
 # shell_tool = true
 # apps = false
+# hooks = false
+# plugin_hooks = false  # Default off; set true to opt into plugin-bundled hooks.
 # codex_git_commit = false
-# codex_hooks = false
 # unified_exec = true
 # shell_snapshot = true
 # multi_agent = true

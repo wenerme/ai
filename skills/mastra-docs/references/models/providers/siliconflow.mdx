@@ -1,11 +1,11 @@
 ---
 title: "SiliconFlow | Models"
-description: "Use SiliconFlow models with Mastra. 74 models available."
+description: "Use SiliconFlow models with Mastra. 76 models available."
 ---
 
 # [SiliconFlow logo]SiliconFlow
 
-Access 74 SiliconFlow models through Mastra's model router. Authentication is handled automatically using the `SILICONFLOW_API_KEY` environment variable.
+Access 76 SiliconFlow models through Mastra's model router. Authentication is handled automatically using the `SILICONFLOW_API_KEY` environment variable.
 
 Learn more in the [SiliconFlow documentation](https://cloud.siliconflow.com/models).
 
@@ -158,6 +158,30 @@ for await (const chunk of stream) {
     "maxOutput": 164000,
     "inputCost": 0.27,
     "outputCost": 0.41
+  },
+  {
+    "model": "siliconflow/deepseek-ai/deepseek-v4-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.14,
+    "outputCost": 0.28
+  },
+  {
+    "model": "siliconflow/deepseek-ai/deepseek-v4-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 1.74,
+    "outputCost": 3.48
   },
   {
     "model": "siliconflow/deepseek-ai/deepseek-vl2",

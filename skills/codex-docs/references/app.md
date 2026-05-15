@@ -140,6 +140,14 @@ Run project threads side by side and switch between them quickly.
 Keep parallel code changes isolated with built-in Git worktree support.
 
   </BentoContent>
+  <BentoContent href="/codex/remote-connections">
+
+### Remote connections
+
+Use the ChatGPT mobile app to start, steer, approve, and review Codex work on a
+connected host.
+
+  </BentoContent>
   <BentoContent href="/codex/app/computer-use">
 
 ### Computer use

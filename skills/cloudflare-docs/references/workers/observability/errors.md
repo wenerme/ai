@@ -23,7 +23,6 @@ When a Worker running in production has an error that prevents it from returning
 | 1101       | Worker threw a JavaScript exception.                                                                                                                                                                                                                                                                                                   |
 | 1102       | Worker exceeded [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).                                                                                                                                                                                                                                 |
 | 1103       | The owner of this worker needs to contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/)                                                                                                                                                                                               |
-| 1015       | Worker hit the [burst rate limit](https://developers.cloudflare.com/workers/platform/limits/#daily-requests).                                                                                                                                                                                                                          |
 | 1019       | Worker hit [loop limit](#loop-limit).                                                                                                                                                                                                                                                                                                  |
 | 1021       | Worker has requested a host it cannot access.                                                                                                                                                                                                                                                                                          |
 | 1022       | Cloudflare has failed to route the request to the Worker.                                                                                                                                                                                                                                                                              |
@@ -375,8 +374,8 @@ A Worker can make HTTP requests to any HTTP service on the public Internet. You 
 
 When using an external logging strategy, remember that outstanding asynchronous tasks are canceled as soon as a Worker finishes sending its main response body to the client. To ensure that a logging subrequest completes, pass the request promise to [event.waitUntil() ↗](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil). For example:
 
-* [  Module Worker ](#tab-panel-9461)
-* [  Service Worker ](#tab-panel-9462)
+* [  Module Worker ](#tab-panel-9613)
+* [  Service Worker ](#tab-panel-9614)
 
 JavaScript
 
@@ -464,8 +463,8 @@ Configure the [Wasm Coredump Service ↗](https://github.com/cloudflare/wasm-cor
 
 By using [event.passThroughOnException](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception), a Workers application will forward requests to your origin if an exception is thrown during the Worker's execution. This allows you to add logging, tracking, or other features with Workers, without degrading your application's functionality.
 
-* [  Module Worker ](#tab-panel-9463)
-* [  Service Worker ](#tab-panel-9464)
+* [  Module Worker ](#tab-panel-9615)
+* [  Service Worker ](#tab-panel-9616)
 
 JavaScript
 

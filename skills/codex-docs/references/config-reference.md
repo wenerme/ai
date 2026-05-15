@@ -325,10 +325,10 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       description: "Enable ChatGPT Apps/connectors support (experimental).",
     },
     {
-      key: "features.codex_hooks",
+      key: "features.hooks",
       type: "boolean",
       description:
-        "Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config.",
+        "Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config. `features.codex_hooks` is a deprecated alias.",
     },
     {
       key: "features.codex_git_commit",
@@ -341,6 +341,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "table",
       description:
         "Lifecycle hooks configured inline in `config.toml`. Uses the same event schema as `hooks.json`; see the Hooks guide for examples and supported events.",
+    },
+    {
+      key: "features.plugin_hooks",
+      type: "boolean",
+      description:
+        "Opt into lifecycle hooks bundled with enabled plugins. Off by default in this release; set to `true` to opt in.",
     },
     {
       key: "features.memories",
@@ -1457,7 +1463,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
       key: "hooks.<Event>",
       type: "array<table>",
       description:
-        "Matcher groups for a hook event such as `PreToolUse`, `PostToolUse`, `PermissionRequest`, `SessionStart`, `UserPromptSubmit`, or `Stop`.",
+        "Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `SessionStart`, `UserPromptSubmit`, or `Stop`.",
     },
     {
       key: "hooks.<Event>[].hooks",

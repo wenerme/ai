@@ -34,10 +34,6 @@ The website owner has configured rate limiting rules that restrict how many requ
 
 Note
 
-If you expect a new Cloudflare Worker to exceed rate limits, refer to the [Workers documentation](https://developers.cloudflare.com/workers/platform/limits/) for guidance.
-
-Note
-
 _Unable to purge_ is another `1015` error code relating to [Cloudflare cache purge](https://developers.cloudflare.com/cache/how-to/purge-cache). Retry the cache purge and contact [Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if errors persist.
 
 ```json

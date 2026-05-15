@@ -894,6 +894,14 @@ components:
               description: >-
                 Set to false to disable the fusion plugin for this request.
                 Defaults to true.
+            max_tool_calls:
+              type: integer
+              description: >-
+                Maximum number of tool-calling steps each panelist (analysis
+                model) and the judge model may take during their agentic
+                web-research loop. Models with web_search/web_fetch enabled
+                iterate until they produce a text response or hit this ceiling.
+                Defaults to 8. Capped at 16.
             model:
               type: string
               description: >-

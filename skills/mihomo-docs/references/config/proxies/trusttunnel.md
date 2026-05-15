@@ -31,11 +31,11 @@ proxies:
 
 ## quic
 
-是否开启QUIC协议，默认为false。
+是否开启 QUIC 协议，默认为 false。
 
 ## congestion-controller
 
-设置QUIC拥塞控制算法。
+设置 QUIC 拥塞控制算法。
 
 ### max-connections
 

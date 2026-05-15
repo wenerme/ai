@@ -11,7 +11,7 @@
 
 This guide is for ChatGPT Enterprise admins who want to set up Codex for their workspace.
 
-Use this page as the step-by-step rollout guide. For detailed policy, configuration, and monitoring details, use the linked pages: [Authentication](https://developers.openai.com/codex/auth), [Agent approvals & security](https://developers.openai.com/codex/agent-approvals-security), [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration), and [Governance](https://developers.openai.com/codex/enterprise/governance).
+Use this page as the step-by-step rollout guide. For detailed policy, configuration, automation, and monitoring details, use the linked pages: [Authentication](https://developers.openai.com/codex/auth), [Agent approvals & security](https://developers.openai.com/codex/agent-approvals-security), [Access tokens](https://developers.openai.com/codex/enterprise/access-tokens), [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration), and [Governance](https://developers.openai.com/codex/enterprise/governance).
 
 ## Enterprise-grade security and privacy
 
@@ -59,7 +59,9 @@ Turn on **Allow members to use Codex Local**.
 
 This enables use of the Codex app, CLI, and IDE extension for allowed users.
 
-If this toggle is off, users who attempt to use the Codex app, CLI, or IDE will see the following error: “403 - Unauthorized. Contact your ChatGPT administrator for access.”
+If members need programmatic Codex local workflows, also turn on **Allow members to use Codex access tokens** or grant the access token permission through a custom role. For setup and permission details, see [Access tokens](https://developers.openai.com/codex/enterprise/access-tokens).
+
+If the Codex Local toggle is off, users who attempt to use the Codex app, CLI, or IDE will see the following error: “403 - Unauthorized. Contact your ChatGPT administrator for access.”
 
 #### Enable device code authentication for Codex CLI
 
