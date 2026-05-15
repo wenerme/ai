@@ -13,9 +13,9 @@
   },
   "agent-view.md": {
     "url": "https://code.claude.com/docs/en/agent-view",
-    "lastModified": "Fri, 15 May 2026 00:23:23 GMT",
-    "size": 34564,
-    "updatedAt": "2026-05-15T00:24:43.184Z"
+    "lastModified": "Fri, 15 May 2026 02:00:36 GMT",
+    "size": 34776,
+    "updatedAt": "2026-05-15T10:47:13.753Z"
   },
   "agents.md": {
     "url": "https://code.claude.com/docs/en/agents",
@@ -211,9 +211,9 @@
   },
   "env-vars.md": {
     "url": "https://code.claude.com/docs/en/env-vars",
-    "lastModified": "Fri, 15 May 2026 00:14:33 GMT",
-    "size": 170169,
-    "updatedAt": "2026-05-15T00:24:54.410Z"
+    "lastModified": "Fri, 15 May 2026 01:41:51 GMT",
+    "size": 170867,
+    "updatedAt": "2026-05-15T10:47:25.143Z"
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
@@ -265,9 +265,9 @@
   },
   "goal.md": {
     "url": "https://code.claude.com/docs/en/goal",
-    "lastModified": "Fri, 15 May 2026 00:23:46 GMT",
-    "size": 8710,
-    "updatedAt": "2026-05-15T00:24:57.435Z"
+    "lastModified": "Fri, 15 May 2026 02:11:21 GMT",
+    "size": 8776,
+    "updatedAt": "2026-05-15T10:47:28.330Z"
   },
   "google-vertex-ai.md": {
     "url": "https://code.claude.com/docs/en/google-vertex-ai",
@@ -283,9 +283,9 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Fri, 15 May 2026 00:20:54 GMT",
-    "size": 183711,
-    "updatedAt": "2026-05-15T00:24:58.451Z"
+    "lastModified": "Fri, 15 May 2026 01:59:30 GMT",
+    "size": 185996,
+    "updatedAt": "2026-05-15T10:47:29.371Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
@@ -463,9 +463,9 @@
   },
   "settings.md": {
     "url": "https://code.claude.com/docs/en/settings",
-    "lastModified": "Wed, 13 May 2026 23:28:28 GMT",
-    "size": 123875,
-    "updatedAt": "2026-05-14T00:27:47.584Z"
+    "lastModified": "Fri, 15 May 2026 01:21:52 GMT",
+    "size": 124406,
+    "updatedAt": "2026-05-15T10:47:39.762Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",
