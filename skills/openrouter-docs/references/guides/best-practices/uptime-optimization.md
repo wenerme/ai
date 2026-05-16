@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Uptime Optimization
 
@@ -12,11 +13,7 @@ OpenRouter tracks response times, error rates, and availability across all provi
 
 ## Uptime Example: Claude 4 Sonnet
 
-<UptimeChart permaslug="anthropic/claude-4-sonnet-20250522" />
-
 ## Uptime Example: Llama 3.3 70B Instruct
-
-<UptimeChart permaslug="meta-llama/llama-3.3-70b-instruct" />
 
 ## Customizing Provider Selection
 

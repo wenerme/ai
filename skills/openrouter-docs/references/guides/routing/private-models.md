@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Private Models
 
-<Note>
-  Private Models are currently in **invite-only beta** for Enterprise Plan customers. To request access, email [product@openrouter.ai](mailto:product@openrouter.ai) or contact your OpenRouter account representative.
-</Note>
+Private Models are currently in **invite-only beta** for Enterprise Plan customers. To request access, email [product@openrouter.ai](mailto:product@openrouter.ai) or contact your OpenRouter account representative.
 
 Private Models let you route to your own custom, fine-tuned, or dedicated model deployments through OpenRouter, alongside the public models you already use. Think of it as "bring your own model" to OpenRouter, with the same API surface your team already uses.
 

@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Activity Export
 
@@ -16,9 +17,7 @@ The Activity page shows three metrics:
 
 Filter by time period (1 Hour, 1 Day, 1 Month, 1 Year) and group by Model, API Key, or Creator (org member). Each time period is sub-grouped by minute, hour, day, and month, respectively.
 
-<Note title="Estimated BYOK Spend">
-  Dollars spent for external BYOK usage is estimated based on market rates for that provider, and don't reflect any discounts you might have from them.
-</Note>
+Dollars spent for external BYOK usage is estimated based on market rates for that provider, and don't reflect any discounts you might have from them.
 
 ## How to Export
 
@@ -44,6 +43,4 @@ For example, a detailed "Tokens by API Key" export to pdf for the last year. It 
 
 ![PDF Token Report](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/6ced925f2c31c3c628524d263b24b005a5fe984cc931b92c5581c408fc7f5b13/content/assets/activity-export-pdf-tokens.png)
 
-<Note title="Reasoning Tokens">
-  Reasoning tokens are included in completion tokens for billing. This shows how many of the completion tokens were used thinking before responding.
-</Note>
+Reasoning tokens are included in completion tokens for billing. This shows how many of the completion tokens were used thinking before responding.

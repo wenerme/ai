@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # OpenCode
 
@@ -12,25 +13,17 @@
 
 ### Step 1: Install OpenCode
 
-<Tabs>
-  <Tab title="Install Script">
-    ```bash
-    curl -fsSL https://opencode.ai/install | bash
-    ```
-  </Tab>
+```bash
+curl -fsSL https://opencode.ai/install | bash
+```
 
-  <Tab title="npm">
-    ```bash
-    npm install -g opencode-ai
-    ```
-  </Tab>
+```bash
+npm install -g opencode-ai
+```
 
-  <Tab title="Homebrew">
-    ```bash
-    brew install anomalyco/tap/opencode
-    ```
-  </Tab>
-</Tabs>
+```bash
+brew install anomalyco/tap/opencode
+```
 
 For additional installation methods (Bun, pnpm, Yarn, Arch Linux, Windows), see the [OpenCode installation docs](https://opencode.ai/docs).
 

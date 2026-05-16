@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Codex CLI
 
@@ -46,9 +47,7 @@ Export your OpenRouter API key in your shell profile:
 export OPENROUTER_API_KEY="sk-or-..."
 ```
 
-<Note>
-  Codex reads the API key from the environment variable specified in `env_key` (default: `OPENROUTER_API_KEY`). Ensure this is set before starting Codex.
-</Note>
+Codex reads the API key from the environment variable specified in `env_key` (default: `OPENROUTER_API_KEY`). Ensure this is set before starting Codex.
 
 ### Step 5: Start Codex
 

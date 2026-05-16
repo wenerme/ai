@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # LangChain
 
@@ -13,35 +14,33 @@ LangChain provides a standard interface for working with chat models. You can us
 * [LangChain Python integration](https://docs.langchain.com/oss/python/integrations/chat/openrouter): [langchain-openrouter on PyPI](https://pypi.org/project/langchain-openrouter/)
 * [LangChain JavaScript integration](https://docs.langchain.com/oss/javascript/integrations/chat/openrouter): [@langchain/openrouter on npm](https://www.npmjs.com/package/@langchain/openrouter)
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  import { ChatOpenRouter } from "@langchain/openrouter";
+```typescript title="TypeScript"
+import { ChatOpenRouter } from "@langchain/openrouter";
 
-  const model = new ChatOpenRouter(
-    "anthropic/claude-sonnet-4.6",
-    { temperature: 0.8 }
-  );
+const model = new ChatOpenRouter(
+  "anthropic/claude-sonnet-4.6",
+  { temperature: 0.8 }
+);
 
-  // Example usage
-  const response = await model.invoke([
-    { role: "system", content: "You are a helpful assistant." },
-    { role: "user", content: "Hello, how are you?" },
-  ]);
-  ```
+// Example usage
+const response = await model.invoke([
+  { role: "system", content: "You are a helpful assistant." },
+  { role: "user", content: "Hello, how are you?" },
+]);
+```
 
-  ```python title="Python"
-  from langchain_openrouter import ChatOpenRouter
+```python title="Python"
+from langchain_openrouter import ChatOpenRouter
 
-  model = ChatOpenRouter(
-      model="anthropic/claude-sonnet-4.6",
-      temperature=0.8,
-  )
+model = ChatOpenRouter(
+    model="anthropic/claude-sonnet-4.6",
+    temperature=0.8,
+)
 
-  # Example usage
-  response = model.invoke("What NFL team won the Super Bowl in the year Justin Bieber was born?")
-  print(response.content)
-  ```
-</CodeGroup>
+# Example usage
+response = model.invoke("What NFL team won the Super Bowl in the year Justin Bieber was born?")
+print(response.content)
+```
 
 For full documentation — including streaming, tool calling, structured output, reasoning, multimodal inputs, provider routing, and more — see the LangChain integration guides:
 

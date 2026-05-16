@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Image Generation
 
-<Note title="Beta">
-  Server tools are currently in beta. The API and behavior may change.
-</Note>
+Server tools are currently in beta. The API and behavior may change.
 
 The `openrouter:image_generation` server tool enables any model to generate images from text prompts. When the model determines it needs to create an image, it calls the tool with a description. OpenRouter executes the image generation and returns the result to the model.
 
@@ -20,84 +19,75 @@ The `openrouter:image_generation` server tool enables any model to generate imag
 
 ## Quick Start
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/gpt-5.2'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'Create an image of a futuristic city at sunset'
-          }
-        ],
-        tools: [
-          { type: 'openrouter:image_generation' }
-        ]
-      }),
-    });
-
-    const data = await response.json();
-    console.log(data.choices[0].message.content);
-    ```
-
-    ```python title="Python"
-    import requests
-
-    response = requests.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "Create an image of a futuristic city at sunset"
-          }
-        ],
-        "tools": [
-          {"type": "openrouter:image_generation"}
-        ]
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: 'Create an image of a futuristic city at sunset'
       }
-    )
+    ],
+    tools: [
+      { type: 'openrouter:image_generation' }
+    ]
+  }),
+});
 
-    data = response.json()
-    print(data["choices"][0]["message"]["content"])
-    ```
+const data = await response.json();
+console.log(data.choices[0].message.content);
+```
 
-    ```bash title="cURL"
-    curl https://openrouter.ai/api/v1/chat/completions \
-      -H "Authorization: Bearer {{API_KEY_REF}}" \
-      -H "Content-Type: application/json" \
-      -d '{
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "Create an image of a futuristic city at sunset"
-          }
-        ],
-        "tools": [
-          {"type": "openrouter:image_generation"}
-        ]
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```python title="Python"
+import requests
+
+response = requests.post(
+  "https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create an image of a futuristic city at sunset"
+      }
+    ],
+    "tools": [
+      {"type": "openrouter:image_generation"}
+    ]
+  }
+)
+
+data = response.json()
+print(data["choices"][0]["message"]["content"])
+```
+
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer {{API_KEY_REF}}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create an image of a futuristic city at sunset"
+      }
+    ],
+    "tools": [
+      {"type": "openrouter:image_generation"}
+    ]
+  }'
+```
 
 ## Configuration
 
@@ -154,62 +144,53 @@ If generation fails, the response includes an error:
 
 The image generation server tool also works with the Responses API:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/gpt-5.2'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/responses', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        input: 'Generate an image of a mountain landscape',
-        tools: [
-          {
-            type: 'openrouter:image_generation',
-            parameters: { quality: 'high' }
-          }
-        ]
-      }),
-    });
-
-    const data = await response.json();
-    console.log(data);
-    ```
-
-    ```python title="Python"
-    import requests
-
-    response = requests.post(
-      "https://openrouter.ai/api/v1/responses",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "input": "Generate an image of a mountain landscape",
-        "tools": [
-          {
-            "type": "openrouter:image_generation",
-            "parameters": {"quality": "high"}
-          }
-        ]
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    input: 'Generate an image of a mountain landscape',
+    tools: [
+      {
+        type: 'openrouter:image_generation',
+        parameters: { quality: 'high' }
       }
-    )
+    ]
+  }),
+});
 
-    data = response.json()
-    print(data)
-    ```
-  </CodeGroup>
-</Template>
+const data = await response.json();
+console.log(data);
+```
+
+```python title="Python"
+import requests
+
+response = requests.post(
+  "https://openrouter.ai/api/v1/responses",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "input": "Generate an image of a mountain landscape",
+    "tools": [
+      {
+        "type": "openrouter:image_generation",
+        "parameters": {"quality": "high"}
+      }
+    ]
+  }
+)
+
+data = response.json()
+print(data)
+```
 
 ## Pricing
 

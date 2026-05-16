@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Migrate from Netlify to Workers
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 In this tutorial, you will learn how to migrate your Netlify application to Cloudflare Workers.
 
@@ -38,8 +38,8 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-9175)
-* [  wrangler.toml ](#tab-panel-9176)
+* [  wrangler.jsonc ](#tab-panel-9877)
+* [  wrangler.toml ](#tab-panel-9878)
 
 JSONC
 
@@ -51,7 +51,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-16",
 
   "assets": {
 
@@ -72,7 +72,7 @@ name = "<your-project-name>"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-16"
 
 
 [assets]
@@ -84,8 +84,8 @@ directory = "<your-build-directory>"
 
 For a **Single Page Application**, you will need to add the following to your Wrangler configuration file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-9177)
-* [  wrangler.toml ](#tab-panel-9178)
+* [  wrangler.jsonc ](#tab-panel-9879)
+* [  wrangler.toml ](#tab-panel-9880)
 
 JSONC
 
@@ -97,7 +97,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-16",
 
   "assets": {
 
@@ -120,7 +120,7 @@ name = "<your-project-name>"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-16"
 
 
 [assets]

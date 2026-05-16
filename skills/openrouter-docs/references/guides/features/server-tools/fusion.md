@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Fusion
 
-<Note title="Beta">
-  Server tools are currently in beta. The API and behavior may change.
-</Note>
+Server tools are currently in beta. The API and behavior may change.
 
 The `openrouter:fusion` server tool exposes the [Fusion pipeline](/docs/guides/features/plugins/fusion) as a callable tool. When the calling model decides a prompt needs particular thoughtfulness — research, expert critique, or multiple perspectives — it can invoke `openrouter:fusion`, receive structured analysis JSON from a panel of expert models, and use it to write the final answer.
 
@@ -14,64 +13,55 @@ The tool is a strict superset of the [`fusion` plugin](/docs/guides/features/plu
 
 ## Quick start
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: '~anthropic/claude-opus-latest',
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: 'Survey the strongest arguments for and against a carbon tax. Where do experts disagree?',
       },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'Survey the strongest arguments for and against a carbon tax. Where do experts disagree?',
-          },
-        ],
-        tools: [
-          { type: 'openrouter:fusion' },
-        ],
-      }),
-    });
+    ],
+    tools: [
+      { type: 'openrouter:fusion' },
+    ],
+  }),
+});
 
-    const data = await response.json();
-    console.log(data.choices[0].message.content);
-    ```
+const data = await response.json();
+console.log(data.choices[0].message.content);
+```
 
-    ```python title="Python"
-    import requests
+```python title="Python"
+import requests
 
-    response = requests.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
+response = requests.post(
+  "https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Survey the strongest arguments for and against a carbon tax. Where do experts disagree?",
       },
-      json={
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "Survey the strongest arguments for and against a carbon tax. Where do experts disagree?",
-          },
-        ],
-        "tools": [
-          {"type": "openrouter:fusion"},
-        ],
-      },
-    )
-    print(response.json()["choices"][0]["message"]["content"])
-    ```
-  </CodeGroup>
-</Template>
+    ],
+    "tools": [
+      {"type": "openrouter:fusion"},
+    ],
+  },
+)
+print(response.json()["choices"][0]["message"]["content"])
+```
 
 ## When the model invokes the tool
 

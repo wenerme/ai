@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Fusion
 
@@ -62,102 +63,92 @@ When you pass `model: "openrouter/fusion"` without a plugin config, the defaults
 
 `openrouter/fusion` is exactly equivalent to enabling the `openrouter:fusion` server tool on the configured judge model. The model below behaves identically:
 
-<CodeGroup>
-  ```json title="Model alias"
-  {
-    "model": "openrouter/fusion",
-    "messages": [
-      { "role": "user", "content": "What are the strongest arguments for and against carbon taxes?" }
-    ]
-  }
-  ```
+```json title="Model alias"
+{
+  "model": "openrouter/fusion",
+  "messages": [
+    { "role": "user", "content": "What are the strongest arguments for and against carbon taxes?" }
+  ]
+}
+```
 
-  ```json title="Server tool"
-  {
-    "model": "~anthropic/claude-opus-latest",
-    "messages": [
-      { "role": "user", "content": "What are the strongest arguments for and against carbon taxes?" }
-    ],
-    "tools": [
-      { "type": "openrouter:fusion" }
-    ]
-  }
-  ```
-</CodeGroup>
+```json title="Server tool"
+{
+  "model": "~anthropic/claude-opus-latest",
+  "messages": [
+    { "role": "user", "content": "What are the strongest arguments for and against carbon taxes?" }
+  ],
+  "tools": [
+    { "type": "openrouter:fusion" }
+  ]
+}
+```
 
 The model decides when to call `openrouter:fusion`. For tasks that don't need deliberation, it can answer directly — including invoking any other tools you've defined.
 
 ## Complete example
 
-<Template
-  data={{
-  API_KEY_REF,
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openrouter/fusion',
+    messages: [
+      {
+        role: 'user',
+        content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
       },
-      body: JSON.stringify({
-        model: 'openrouter/fusion',
-        messages: [
-          {
-            role: 'user',
-            content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
-          },
-        ],
-        plugins: [
-          {
-            id: 'fusion',
-            analysis_models: [
-              '~anthropic/claude-opus-latest',
-              '~openai/gpt-latest',
-            ],
-          },
-        ],
-      }),
-    });
-
-    const data = await response.json();
-    console.log(data.choices[0].message.content);
-    ```
-
-    ```python title="Python"
-    import requests
-
-    response = requests.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "openrouter/fusion",
-        "messages": [
-          {
-            "role": "user",
-            "content": "Compare ridge, lasso, and elastic-net regression. Where does each shine?",
-          },
-        ],
-        "plugins": [
-          {
-            "id": "fusion",
-            "analysis_models": [
-              "~anthropic/claude-opus-latest",
-              "~openai/gpt-latest",
-            ],
-          },
+    ],
+    plugins: [
+      {
+        id: 'fusion',
+        analysis_models: [
+          '~anthropic/claude-opus-latest',
+          '~openai/gpt-latest',
         ],
       },
-    )
-    print(response.json()["choices"][0]["message"]["content"])
-    ```
-  </CodeGroup>
-</Template>
+    ],
+  }),
+});
+
+const data = await response.json();
+console.log(data.choices[0].message.content);
+```
+
+```python title="Python"
+import requests
+
+response = requests.post(
+  "https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "openrouter/fusion",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Compare ridge, lasso, and elastic-net regression. Where does each shine?",
+      },
+    ],
+    "plugins": [
+      {
+        "id": "fusion",
+        "analysis_models": [
+          "~anthropic/claude-opus-latest",
+          "~openai/gpt-latest",
+        ],
+      },
+    ],
+  },
+)
+print(response.json()["choices"][0]["message"]["content"])
+```
 
 ## Recursion protection
 

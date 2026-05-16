@@ -17,6 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Legacy pipelines ](https://developers.cloudflare.com/pipelines/reference/legacy-pipelines/)
 * [ Terraform ](https://developers.cloudflare.com/pipelines/reference/terraform/)
 * [ Wrangler commands ](https://developers.cloudflare.com/pipelines/reference/wrangler-commands/)
+* [ REST API ](https://developers.cloudflare.com/api/resources/pipelines/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/reference/","name":"Reference"}}]}

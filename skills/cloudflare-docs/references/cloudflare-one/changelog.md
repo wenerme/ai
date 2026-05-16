@@ -135,6 +135,31 @@ This release introduces the new Cloudflare One Client UI for Linux! You can expe
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 
+## 2026-05-11
+
+[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[ Magic Transit ](https://developers.cloudflare.com/magic-transit/) 
+
+  
+**NAT-T support for IKE on UDP port 500**   
+
+Cloudflare IPsec now supports the standard NAT traversal (NAT-T) flow, where IKE begins on UDP port `500` and switches to UDP port `4500` after NAT is detected.
+
+Previously, devices behind NAT had to be configured to initiate IKE on UDP port `4500` directly. Devices that started on UDP port `500` could not complete the IKE handshake when NAT was in the path. This required custom configuration on devices such as VeloCloud SD-WAN edges, Cisco IOS-XE routers, and Juniper SRX firewalls, and was not possible on every platform.
+
+What changed:
+
+* Devices behind NAT can now initiate IKE on either UDP port `500` or UDP port `4500`.
+* Devices that start IKE on UDP port `500` and switch to UDP port `4500` after NAT detection now complete the handshake successfully.
+* No configuration change is required on Cloudflare. The change is available for all IPsec tunnels on Cloudflare WAN and Magic Transit.
+
+This change does not affect existing tunnels:
+
+* Tunnels using UDP port `500` with no NAT detected continue to operate as before.
+* Tunnels configured to start IKE on UDP port `4500` continue to operate as before.
+* NAT detection logic is unchanged.
+
+For configuration details, refer to [GRE and IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/).
+
 ## 2026-05-07
 
 [ Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
@@ -4245,47 +4270,6 @@ This feature is available across these Email security packages:
 * **Advantage**
 * **Enterprise**
 * **Enterprise + PhishGuard**
-
-## 2025-05-14
-
-[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
-
-  
-**WARP client for Windows (version 2025.4.929.0)**   
-
-A new GA release for the Windows WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains two significant changes all customers should be aware of:
-
-1. All DNS traffic now flows inside the WARP tunnel. Customers are no longer required to configure their local firewall rules to allow our [DoH IP addresses and domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#doh-ip).
-2. When using MASQUE, the connection will fall back to HTTP/2 (TCP) when we detect that HTTP/3 traffic is blocked. This allows for a much more reliable connection on some public WiFi networks.
-
-**Changes and improvements**
-
-* Fixed an issue causing reconnection loops when captive portals are detected.
-* Fixed an issue that caused WARP client disk encryption posture checks to fail due to missing drive names.
-* Fixed an issue where managed network policies could incorrectly report network location beacons as missing.
-* Improved DEX test error reporting.
-* Fixed an issue where some parts of the WARP Client UI were missing in high contrast mode.
-* Fixed an issue causing client notifications to fail in IPv6 only environments which prevented the client from receiving configuration changes to settings like device profile.
-* Added a TCP fallback for the MASQUE tunnel protocol to improve connectivity on networks that block UDP or HTTP/3 specifically.
-* Added new IP addresses for [tunnel connectivity checks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#connectivity-checks). If your organization uses a firewall or other policies you will need to exempt these IPs.
-* DNS over HTTPS traffic is now included in the WARP tunnel by default.
-* Improved the error message displayed in the client GUI when the rate limit for entering an incorrect admin override code is met.
-* Improved handling of non-SLAAC IPv6 interface addresses for better connectivity in IPv6 only environments.
-* Fixed an issue where frequent network changes could cause WARP to become unresponsive.
-* Improvement for WARP to check if tunnel connectivity fails or times out at device wake before attempting to reconnect.
-* Fixed an issue causing WARP connection disruptions after network changes.
-
-**Known issues**
-
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
-To work around this issue, reconnect the WARP client by toggling off and back on.
-* Microsoft has confirmed a regression with Windows 11 starting around 24H2 that may cause performance issues for some users. These performance issues could manifest as mouse lag, audio cracking, or other slowdowns. A fix from Microsoft is expected in early July.
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
 
 ## 2025-05-14
 

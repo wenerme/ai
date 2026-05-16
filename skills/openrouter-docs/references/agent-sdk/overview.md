@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Agent SDK
 
@@ -19,25 +20,21 @@ Choose the Agent SDK when you need **agentic behavior** — multi-step reasoning
 * **Streaming** — real-time token output within each agent step
 * **Dynamic parameters** — change model, temperature, or tools between turns based on context
 
-<Tip>
-  If you only need simple request/response calls to a model without agent loops, the [Client SDKs](/docs/client-sdks/overview) are a lighter-weight option.
-</Tip>
+If you only need simple request/response calls to a model without agent loops, the [Client SDKs](/docs/client-sdks/overview) are a lighter-weight option.
 
 ## Installation
 
-<CodeGroup>
-  ```bash title="npm"
-  npm install @openrouter/agent
-  ```
+```bash title="npm"
+npm install @openrouter/agent
+```
 
-  ```bash title="pnpm"
-  pnpm add @openrouter/agent
-  ```
+```bash title="pnpm"
+pnpm add @openrouter/agent
+```
 
-  ```bash title="yarn"
-  yarn add @openrouter/agent
-  ```
-</CodeGroup>
+```bash title="yarn"
+yarn add @openrouter/agent
+```
 
 ## Quick example
 

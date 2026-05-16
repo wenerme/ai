@@ -1,60 +1,55 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Limits
 
-<Tip>
-  Making additional accounts or API keys will not affect your rate limits, as we
-  govern capacity globally. We do however have different rate limits for
-  different models, so you can share the load that way if you do run into
-  issues.
-</Tip>
+Making additional accounts or API keys will not affect your rate limits, as we
+govern capacity globally. We do however have different rate limits for
+different models, so you can share the load that way if you do run into
+issues.
 
 ## Rate Limits and Credits Remaining
 
 To check the rate limit or credits left on an API key, make a GET request to `https://openrouter.ai/api/v1/key`.
 
-<Template data={{ API_KEY_REF }}>
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    const keyInfo = await openRouter.apiKeys.getCurrent();
-    console.log(keyInfo);
-    ```
+const keyInfo = await openRouter.apiKeys.getCurrent();
+console.log(keyInfo);
+```
 
-    ```python title="Python"
-    import requests
-    import json
+```python title="Python"
+import requests
+import json
 
-    response = requests.get(
-      url="https://openrouter.ai/api/v1/key",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}"
-      }
-    )
+response = requests.get(
+  url="https://openrouter.ai/api/v1/key",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}"
+  }
+)
 
-    print(json.dumps(response.json(), indent=2))
-    ```
+print(json.dumps(response.json(), indent=2))
+```
 
-    ```typescript title="TypeScript (Raw API)"
-    const response = await fetch('https://openrouter.ai/api/v1/key', {
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-      },
-    });
+```typescript title="TypeScript (Raw API)"
+const response = await fetch('https://openrouter.ai/api/v1/key', {
+  method: 'GET',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+  },
+});
 
-    const keyInfo = await response.json();
-    console.log(keyInfo);
-    ```
-  </CodeGroup>
-</Template>
+const keyInfo = await response.json();
+console.log(keyInfo);
+```
 
 If you submit a valid API key, you should get a response of the form:
 

@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Set up a KV namespace for edge-cached session storage in my Worker.  
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.  
 ```
 
 ## Cloudflare platform access

@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Image Generation
 
@@ -41,111 +42,102 @@ To generate images, send a request to the `/api/v1/chat/completions` endpoint wi
 
 ### Basic Image Generation
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-2.5-flash-image'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
+
+const result = await openRouter.chat.send({
+  model: '{{MODEL}}',
+  messages: [
+    {
+      role: 'user',
+      content: 'Generate a beautiful sunset over mountains',
+    },
+  ],
+  modalities: ['image', 'text'],
+  stream: false,
+});
+
+// The generated image will be in the assistant message
+if (result.choices) {
+  const message = result.choices[0].message;
+  if (message.images) {
+    message.images.forEach((image, index) => {
+      const imageUrl = image.imageUrl.url; // Base64 data URL
+      console.log(`Generated image ${index + 1}: ${imageUrl.substring(0, 50)}...`);
     });
+  }
+}
+```
 
-    const result = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
+```python
+import requests
+import json
+
+url = "https://openrouter.ai/api/v1/chat/completions"
+headers = {
+    "Authorization": f"Bearer {API_KEY_REF}",
+    "Content-Type": "application/json"
+}
+
+payload = {
+    "model": "{{MODEL}}",
+    "messages": [
         {
-          role: 'user',
-          content: 'Generate a beautiful sunset over mountains',
-        },
-      ],
-      modalities: ['image', 'text'],
-      stream: false,
-    });
+            "role": "user",
+            "content": "Generate a beautiful sunset over mountains"
+        }
+    ],
+    "modalities": ["image", "text"]
+}
 
-    // The generated image will be in the assistant message
-    if (result.choices) {
-      const message = result.choices[0].message;
-      if (message.images) {
-        message.images.forEach((image, index) => {
-          const imageUrl = image.imageUrl.url; // Base64 data URL
-          console.log(`Generated image ${index + 1}: ${imageUrl.substring(0, 50)}...`);
-        });
-      }
-    }
-    ```
+response = requests.post(url, headers=headers, json=payload)
+result = response.json()
 
-    ```python
-    import requests
-    import json
+# The generated image will be in the assistant message
+if result.get("choices"):
+    message = result["choices"][0]["message"]
+    if message.get("images"):
+        for image in message["images"]:
+            image_url = image["image_url"]["url"]  # Base64 data URL
+            print(f"Generated image: {image_url[:50]}...")
+```
 
-    url = "https://openrouter.ai/api/v1/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {API_KEY_REF}",
-        "Content-Type": "application/json"
-    }
-
-    payload = {
-        "model": "{{MODEL}}",
-        "messages": [
-            {
-                "role": "user",
-                "content": "Generate a beautiful sunset over mountains"
-            }
-        ],
-        "modalities": ["image", "text"]
-    }
-
-    response = requests.post(url, headers=headers, json=payload)
-    result = response.json()
-
-    # The generated image will be in the assistant message
-    if result.get("choices"):
-        message = result["choices"][0]["message"]
-        if message.get("images"):
-            for image in message["images"]:
-                image_url = image["image_url"]["url"]  # Base64 data URL
-                print(f"Generated image: {image_url[:50]}...")
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${API_KEY_REF}`,
-        'Content-Type': 'application/json',
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${API_KEY_REF}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: 'Generate a beautiful sunset over mountains',
       },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'Generate a beautiful sunset over mountains',
-          },
-        ],
-        modalities: ['image', 'text'],
-      }),
+    ],
+    modalities: ['image', 'text'],
+  }),
+});
+
+const result = await response.json();
+
+// The generated image will be in the assistant message
+if (result.choices) {
+  const message = result.choices[0].message;
+  if (message.images) {
+    message.images.forEach((image, index) => {
+      const imageUrl = image.image_url.url; // Base64 data URL
+      console.log(`Generated image ${index + 1}: ${imageUrl.substring(0, 50)}...`);
     });
-
-    const result = await response.json();
-
-    // The generated image will be in the assistant message
-    if (result.choices) {
-      const message = result.choices[0].message;
-      if (message.images) {
-        message.images.forEach((image, index) => {
-          const imageUrl = image.image_url.url; // Base64 data URL
-          console.log(`Generated image ${index + 1}: ${imageUrl.substring(0, 50)}...`);
-        });
-      }
-    }
-    ```
-  </CodeGroup>
-</Template>
+  }
+}
+```
 
 ### Image Configuration Options
 
@@ -188,93 +180,84 @@ Set `image_config.image_size` to control the resolution of generated images.
 
 You can combine both `aspect_ratio` and `image_size` in the same request:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-3-pro-image-preview'
-}}
->
-  <CodeGroup>
-    ```python
-    import requests
-    import json
+```python
+import requests
+import json
 
-    url = "https://openrouter.ai/api/v1/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {API_KEY_REF}",
-        "Content-Type": "application/json"
-    }
+url = "https://openrouter.ai/api/v1/chat/completions"
+headers = {
+    "Authorization": f"Bearer {API_KEY_REF}",
+    "Content-Type": "application/json"
+}
 
-    payload = {
-        "model": "{{MODEL}}",
-        "messages": [
-            {
-                "role": "user",
-                "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
-            }
-        ],
-        "modalities": ["image", "text"],
-        "image_config": {
-            "aspect_ratio": "16:9",
-            "image_size": "4K"
+payload = {
+    "model": "{{MODEL}}",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
         }
+    ],
+    "modalities": ["image", "text"],
+    "image_config": {
+        "aspect_ratio": "16:9",
+        "image_size": "4K"
     }
+}
 
-    response = requests.post(url, headers=headers, json=payload)
-    result = response.json()
+response = requests.post(url, headers=headers, json=payload)
+result = response.json()
 
-    if result.get("choices"):
-        message = result["choices"][0]["message"]
-        if message.get("images"):
-            for image in message["images"]:
-                image_url = image["image_url"]["url"]
-                print(f"Generated image: {image_url[:50]}...")
-    ```
+if result.get("choices"):
+    message = result["choices"][0]["message"]
+    if message.get("images"):
+        for image in message["images"]:
+            image_url = image["image_url"]["url"]
+            print(f"Generated image: {image_url[:50]}...")
+```
 
-    ```typescript
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${API_KEY_REF}`,
-        'Content-Type': 'application/json',
+```typescript
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${API_KEY_REF}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: 'Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme',
       },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme',
-          },
-        ],
-        modalities: ['image', 'text'],
-        image_config: {
-          aspect_ratio: '16:9',
-          image_size: '4K',
-        },
-      }),
+    ],
+    modalities: ['image', 'text'],
+    image_config: {
+      aspect_ratio: '16:9',
+      image_size: '4K',
+    },
+  }),
+});
+
+const result = await response.json();
+
+if (result.choices) {
+  const message = result.choices[0].message;
+  if (message.images) {
+    message.images.forEach((image, index) => {
+      const imageUrl = image.image_url.url;
+      console.log(`Generated image ${index + 1}: ${imageUrl.substring(0, 50)}...`);
     });
-
-    const result = await response.json();
-
-    if (result.choices) {
-      const message = result.choices[0].message;
-      if (message.images) {
-        message.images.forEach((image, index) => {
-          const imageUrl = image.image_url.url;
-          console.log(`Generated image ${index + 1}: ${imageUrl.substring(0, 50)}...`);
-        });
-      }
-    }
-    ```
-  </CodeGroup>
-</Template>
+  }
+}
+```
 
 #### Strength (Recraft only)
 
 Set `image_config.strength` to control how much the output image differs from the input image during image-to-image generation. This parameter only applies when input images are provided in `messages`. It is only supported by Recraft models.
 
 * **Range**: `0.0` to `1.0`
-* **Default**: `0.5`
+* **Default**: `0.2`
 * Lower values produce outputs closer to the input image; higher values allow more creative deviation.
 
 **Example:**
@@ -442,108 +425,99 @@ Use `image_config.super_resolution_references` to enhance low-quality elements i
 
 Image generation also works with streaming responses:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-2.5-flash-image'
-}}
->
-  <CodeGroup>
-    ```python
-    import requests
-    import json
+```python
+import requests
+import json
 
-    url = "https://openrouter.ai/api/v1/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {API_KEY_REF}",
-        "Content-Type": "application/json"
-    }
+url = "https://openrouter.ai/api/v1/chat/completions"
+headers = {
+    "Authorization": f"Bearer {API_KEY_REF}",
+    "Content-Type": "application/json"
+}
 
-    payload = {
-        "model": "{{MODEL}}",
-        "messages": [
-            {
-                "role": "user",
-                "content": "Create an image of a futuristic city"
-            }
-        ],
-        "modalities": ["image", "text"],
-        "stream": True
-    }
+payload = {
+    "model": "{{MODEL}}",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Create an image of a futuristic city"
+        }
+    ],
+    "modalities": ["image", "text"],
+    "stream": True
+}
 
-    response = requests.post(url, headers=headers, json=payload, stream=True)
+response = requests.post(url, headers=headers, json=payload, stream=True)
 
-    for line in response.iter_lines():
-        if line:
-            line = line.decode('utf-8')
-            if line.startswith('data: '):
-                data = line[6:]
-                if data != '[DONE]':
-                    try:
-                        chunk = json.loads(data)
-                        if chunk.get("choices"):
-                            delta = chunk["choices"][0].get("delta", {})
-                            if delta.get("images"):
-                                for image in delta["images"]:
-                                    print(f"Generated image: {image['image_url']['url'][:50]}...")
-                    except json.JSONDecodeError:
-                        continue
-    ```
+for line in response.iter_lines():
+    if line:
+        line = line.decode('utf-8')
+        if line.startswith('data: '):
+            data = line[6:]
+            if data != '[DONE]':
+                try:
+                    chunk = json.loads(data)
+                    if chunk.get("choices"):
+                        delta = chunk["choices"][0].get("delta", {})
+                        if delta.get("images"):
+                            for image in delta["images"]:
+                                print(f"Generated image: {image['image_url']['url'][:50]}...")
+                except json.JSONDecodeError:
+                    continue
+```
 
-    ```typescript
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${API_KEY_REF}`,
-        'Content-Type': 'application/json',
+```typescript
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${API_KEY_REF}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: 'Create an image of a futuristic city',
       },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'Create an image of a futuristic city',
-          },
-        ],
-        modalities: ['image', 'text'],
-        stream: true,
-      }),
-    });
+    ],
+    modalities: ['image', 'text'],
+    stream: true,
+  }),
+});
 
-    const reader = response.body?.getReader();
-    const decoder = new TextDecoder();
+const reader = response.body?.getReader();
+const decoder = new TextDecoder();
 
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
 
-      const chunk = decoder.decode(value);
-      const lines = chunk.split('\n');
+  const chunk = decoder.decode(value);
+  const lines = chunk.split('\n');
 
-      for (const line of lines) {
-        if (line.startsWith('data: ')) {
-          const data = line.slice(6);
-          if (data !== '[DONE]') {
-            try {
-              const parsed = JSON.parse(data);
-              if (parsed.choices) {
-                const delta = parsed.choices[0].delta;
-                if (delta?.images) {
-                  delta.images.forEach((image, index) => {
-                    console.log(`Generated image ${index + 1}: ${image.image_url.url.substring(0, 50)}...`);
-                  });
-                }
-              }
-            } catch (e) {
-              // Skip invalid JSON
+  for (const line of lines) {
+    if (line.startsWith('data: ')) {
+      const data = line.slice(6);
+      if (data !== '[DONE]') {
+        try {
+          const parsed = JSON.parse(data);
+          if (parsed.choices) {
+            const delta = parsed.choices[0].delta;
+            if (delta?.images) {
+              delta.images.forEach((image, index) => {
+                console.log(`Generated image ${index + 1}: ${image.image_url.url.substring(0, 50)}...`);
+              });
             }
           }
+        } catch (e) {
+          // Skip invalid JSON
         }
       }
     }
-    ```
-  </CodeGroup>
-</Template>
+  }
+}
+```
 
 ## Response Format
 

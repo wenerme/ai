@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Claude 4.6 Migration Guide
 
@@ -55,9 +56,7 @@ A new `'max'` effort level is available for Claude 4.6 Opus and 4.6 Sonnet via t
 }
 ```
 
-<Note>
-  `'max'` is only supported on Claude 4.6 Opus and 4.6 Sonnet. For other models, it automatically falls back to `'high'`.
-</Note>
+`'max'` is only supported on Claude 4.6 Opus and 4.6 Sonnet. For other models, it automatically falls back to `'high'`.
 
 ## Verbosity vs Reasoning Effort
 

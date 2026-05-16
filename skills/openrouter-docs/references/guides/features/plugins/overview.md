@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Plugins
 
@@ -21,84 +22,75 @@ OpenRouter currently supports the following plugins:
 
 Plugins are enabled by adding a `plugins` array to your chat completions request. Each plugin is identified by its `id` and can include optional configuration parameters.
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/gpt-5.2'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'What are the latest developments in AI?'
-          }
-        ],
-        plugins: [
-          { id: 'web' }
-        ]
-      }),
-    });
-
-    const data = await response.json();
-    console.log(data.choices[0].message.content);
-    ```
-
-    ```python title="Python"
-    import requests
-
-    response = requests.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "What are the latest developments in AI?"
-          }
-        ],
-        "plugins": [
-          {"id": "web"}
-        ]
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: 'What are the latest developments in AI?'
       }
-    )
+    ],
+    plugins: [
+      { id: 'web' }
+    ]
+  }),
+});
 
-    data = response.json()
-    print(data["choices"][0]["message"]["content"])
-    ```
+const data = await response.json();
+console.log(data.choices[0].message.content);
+```
 
-    ```bash title="cURL"
-    curl https://openrouter.ai/api/v1/chat/completions \
-      -H "Authorization: Bearer {{API_KEY_REF}}" \
-      -H "Content-Type: application/json" \
-      -d '{
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "What are the latest developments in AI?"
-          }
-        ],
-        "plugins": [
-          {"id": "web"}
-        ]
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```python title="Python"
+import requests
+
+response = requests.post(
+  "https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the latest developments in AI?"
+      }
+    ],
+    "plugins": [
+      {"id": "web"}
+    ]
+  }
+)
+
+data = response.json()
+print(data["choices"][0]["message"]["content"])
+```
+
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer {{API_KEY_REF}}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the latest developments in AI?"
+      }
+    ],
+    "plugins": [
+      {"id": "web"}
+    ]
+  }'
+```
 
 ## Using Multiple Plugins
 
@@ -134,13 +126,9 @@ To configure default plugin settings:
 3. Click the configure button to customize plugin settings
 4. Optionally enable "Prevent overrides" to enforce settings across all requests
 
-<Warning>
-  In organizations, the Plugins settings page is only accessible to admins.
-</Warning>
+In organizations, the Plugins settings page is only accessible to admins.
 
-<Note>
-  When "Prevent overrides" is enabled for a plugin, individual API requests cannot disable or modify that plugin's configuration. This is useful for enforcing organization-wide policies.
-</Note>
+When "Prevent overrides" is enabled for a plugin, individual API requests cannot disable or modify that plugin's configuration. This is useful for enforcing organization-wide policies.
 
 ### Plugin precedence
 
@@ -171,9 +159,7 @@ This will turn off the web search plugin for that particular request, even if it
 
 ## Model Variants as Plugin Shortcuts
 
-<Warning title="Deprecated">
-  The `:online` variant and the web search plugin are deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead.
-</Warning>
+The `:online` variant and the web search plugin are deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead.
 
 Some plugins have convenient model variant shortcuts. For example, appending `:online` to any model ID enables web search:
 

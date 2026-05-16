@@ -1,20 +1,19 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Automatic Code Review
 
-<Callout intent="info">
-  A reference implementation is available at
-  [**redline**](https://github.com/alexanderatallah/redline).
-  Key features:
+A reference implementation is available at
+[**redline**](https://github.com/alexanderatallah/redline).
+Key features:
 
-  * Claude (or you) decides when a review is necessary
-  * Claude Code is in full control of the reviewer agent — it runs as an async background process
-  * Both agents are observable, customizable, and cost-monitored on [OpenRouter](https://openrouter.ai)
-  * Log into both agents with one command: `redline login`
-  * Implemented as a single Claude Code stop hook, providing transparency and customizability on the agent and model(s) used
-</Callout>
+* Claude (or you) decides when a review is necessary
+* Claude Code is in full control of the reviewer agent — it runs as an async background process
+* Both agents are observable, customizable, and cost-monitored on [OpenRouter](https://openrouter.ai)
+* Log into both agents with one command: `redline login`
+* Implemented as a single Claude Code stop hook, providing transparency and customizability on the agent and model(s) used
 
 ## What This Achieves
 
@@ -73,15 +72,13 @@ export ANTHROPIC_AUTH_TOKEN="sk-or-..."
 export ANTHROPIC_API_KEY=""
 ```
 
-<Callout intent="warn">
-  The base URL is `https://openrouter.ai/api` — **no
-  `/v1` suffix**. This is OpenRouter's Anthropic Skin,
-  which speaks the native Anthropic protocol. Using
-  `/v1` causes model-not-found errors.
-  `ANTHROPIC_API_KEY` must be explicitly empty to
-  prevent Claude Code from authenticating directly
-  with Anthropic.
-</Callout>
+The base URL is `https://openrouter.ai/api` — **no
+`/v1` suffix**. This is OpenRouter's Anthropic Skin,
+which speaks the native Anthropic protocol. Using
+`/v1` causes model-not-found errors.
+`ANTHROPIC_API_KEY` must be explicitly empty to
+prevent Claude Code from authenticating directly
+with Anthropic.
 
 Verify by running `/status` in a Claude Code session.
 See the full
@@ -109,18 +106,16 @@ At runtime, pass
 `-c 'model_provider="openrouter"'` to select the
 OpenRouter provider.
 
-<Callout intent="warn">
-  Common pitfalls:
+Common pitfalls:
 
-  * Codex CLI does **not** have a `--provider` flag —
-    use `-c` for all runtime config overrides
-  * The TOML section is `[model_providers.openrouter]`,
-    **not** `[provider.openrouter]`
-  * Codex uses `https://openrouter.ai/api/v1` (with
-    `/v1`), while Claude uses
-    `https://openrouter.ai/api` (without `/v1`) —
-    they use different protocol skins
-</Callout>
+* Codex CLI does **not** have a `--provider` flag —
+  use `-c` for all runtime config overrides
+* The TOML section is `[model_providers.openrouter]`,
+  **not** `[provider.openrouter]`
+* Codex uses `https://openrouter.ai/api/v1` (with
+  `/v1`), while Claude uses
+  `https://openrouter.ai/api` (without `/v1`) —
+  they use different protocol skins
 
 See the full
 [Codex CLI integration guide](/docs/cookbook/coding-agents/codex-cli)

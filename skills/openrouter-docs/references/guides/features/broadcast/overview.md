@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Broadcast
 
@@ -14,9 +15,7 @@ To enable broadcast for your account or organization:
 2. Toggle the "Enable Broadcast" switch to turn on the feature
 3. Add one or more destinations where you want to send your traces
 
-<Tip>
-  If you're using an organization account, you must be an organization admin to edit broadcast settings.
-</Tip>
+If you're using an organization account, you must be an organization admin to edit broadcast settings.
 
 Once enabled, OpenRouter will automatically send trace data for all your API requests to your configured destinations.
 
@@ -136,9 +135,7 @@ For advanced observability workflows, you can pass arbitrary metadata to your tr
 }
 ```
 
-<Tip>
-  The `trace` field is flexible and accepts any key-value pairs. Certain keys have special meaning depending on your observability destination. See the destination-specific documentation for details on which keys each platform recognizes.
-</Tip>
+The `trace` field is flexible and accepts any key-value pairs. Certain keys have special meaning depending on your observability destination. See the destination-specific documentation for details on which keys each platform recognizes.
 
 #### Common Metadata Keys
 
@@ -227,11 +224,9 @@ When adding or editing a destination, you can select one or more API keys from y
 
 Each destination can be configured with a sampling rate to control what percentage of traces are sent. This is useful for high-volume applications where you want to reduce costs or data volume while still maintaining visibility into your LLM usage. A sampling rate of 1.0 sends all traces, while 0.5 would send approximately 50% of traces.
 
-<Tip>
-  Sampling is deterministic: when you provide a `session_id`, all traces within that session will be consistently included or excluded together. This ensures you always see complete sessions in your observability platform rather than fragmented data.
+Sampling is deterministic: when you provide a `session_id`, all traces within that session will be consistently included or excluded together. This ensures you always see complete sessions in your observability platform rather than fragmented data.
 
-  You’ll see full sessions per destination, but not necessarily the same sessions across all destinations.
-</Tip>
+You’ll see full sessions per destination, but not necessarily the same sessions across all destinations.
 
 ## Privacy Mode
 
@@ -246,9 +241,7 @@ This is useful when you want to monitor LLM usage metrics and costs without expo
 
 To enable Privacy Mode, toggle the **Privacy Mode** checkbox in the **Privacy** section when configuring a destination.
 
-<Tip>
-  Privacy Mode is configured per destination. You can send full traces to one destination for debugging while sending privacy-redacted traces to another for cost monitoring.
-</Tip>
+Privacy Mode is configured per destination. You can send full traces to one destination for debugging while sending privacy-redacted traces to another for cost monitoring.
 
 ## Security
 

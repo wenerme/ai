@@ -6,7 +6,7 @@ Create a conversation.
 
 ### Body Parameters
 
-- `items: optional array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 25 more`
+- `items: optional array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 26 more`
 
   Initial items to include in the conversation context. You may add up to 20 items at a time.
 
@@ -2799,6 +2799,16 @@ Create a conversation.
     - `namespace: optional string`
 
       The namespace of the custom tool being called.
+
+  - `CompactionTrigger object { type }`
+
+    Compacts the current context. Must be the final input item.
+
+    - `type: "compaction_trigger"`
+
+      The type of the item. Always `compaction_trigger`.
+
+      - `"compaction_trigger"`
 
   - `ItemReference object { id, type }`
 

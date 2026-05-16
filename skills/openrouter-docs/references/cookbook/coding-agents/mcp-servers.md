@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Using MCP Servers with OpenRouter
 
@@ -10,11 +11,9 @@ By converting MCP (Anthropic) tool definitions to OpenAI-compatible tool definit
 
 In this example, we'll use [Anthropic's MCP client SDK](https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#writing-mcp-clients) to interact with the File System MCP, all with OpenRouter under the hood.
 
-<Warning>
-  Note that interacting with MCP servers is more complex than calling a REST
-  endpoint. The MCP protocol is stateful and requires session management. The
-  example below uses the MCP client SDK, but is still somewhat complex.
-</Warning>
+Note that interacting with MCP servers is more complex than calling a REST
+endpoint. The MCP protocol is stateful and requires session management. The
+example below uses the MCP client SDK, but is still somewhat complex.
 
 First, some setup. In order to run this you will need to pip install the packages, and create a `.env` file with OPENAI\_API\_KEY set. This example also assumes the directory `/Applications` exists.
 

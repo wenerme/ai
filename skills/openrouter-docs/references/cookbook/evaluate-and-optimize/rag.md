@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # RAG with Embeddings & Rerank
 
@@ -35,31 +36,113 @@ User Query
 
 Split your documents into chunks and generate embeddings for each chunk. Store the embeddings in a vector database (or in-memory for prototyping).
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/text-embedding-3-small'
-}}
->
-  <CodeGroup>
-    ```python title="Python"
-    import requests
-    import json
+```python title="Python"
+import requests
+import json
 
-    OPENROUTER_API_KEY = "{{API_KEY_REF}}"
+OPENROUTER_API_KEY = "{{API_KEY_REF}}"
 
-    # Your documents, split into chunks
-    chunks = [
-        "OpenRouter is a unified API gateway for LLMs. It aggregates models from multiple providers.",
-        "RAG stands for Retrieval-Augmented Generation. It grounds LLM answers in external data.",
-        "Embeddings convert text into numerical vectors that capture semantic meaning.",
-        "Reranking uses a cross-encoder to re-score documents for a given query, improving precision.",
-        "Vector databases like Pinecone, Weaviate, and Qdrant store embeddings for fast similarity search.",
-        "Prompt caching can reduce costs by reusing previous computations for repeated prefixes.",
-        "OpenRouter supports provider routing to control which providers serve your requests.",
+# Your documents, split into chunks
+chunks = [
+    "OpenRouter is a unified API gateway for LLMs. It aggregates models from multiple providers.",
+    "RAG stands for Retrieval-Augmented Generation. It grounds LLM answers in external data.",
+    "Embeddings convert text into numerical vectors that capture semantic meaning.",
+    "Reranking uses a cross-encoder to re-score documents for a given query, improving precision.",
+    "Vector databases like Pinecone, Weaviate, and Qdrant store embeddings for fast similarity search.",
+    "Prompt caching can reduce costs by reusing previous computations for repeated prefixes.",
+    "OpenRouter supports provider routing to control which providers serve your requests.",
+]
+
+# Generate embeddings for all chunks in one batch request
+response = requests.post(
+    "https://openrouter.ai/api/v1/embeddings",
+    headers={
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Content-Type": "application/json",
+    },
+    json={
+        "model": "{{MODEL}}",
+        "input": chunks,
+    },
+)
+
+data = response.json()
+# Each item in data["data"] contains an "embedding" vector
+# Store these alongside your chunks in a vector database
+document_embeddings = [
+    {"text": chunks[item["index"]], "embedding": item["embedding"]}
+    for item in data["data"]
+]
+
+print(f"Indexed {len(document_embeddings)} chunks with {len(document_embeddings[0]['embedding'])}-dim embeddings")
+```
+
+```typescript title="TypeScript (fetch)"
+const OPENROUTER_API_KEY = '{{API_KEY_REF}}';
+
+// Your documents, split into chunks
+const chunks = [
+  'OpenRouter is a unified API gateway for LLMs. It aggregates models from multiple providers.',
+  'RAG stands for Retrieval-Augmented Generation. It grounds LLM answers in external data.',
+  'Embeddings convert text into numerical vectors that capture semantic meaning.',
+  'Reranking uses a cross-encoder to re-score documents for a given query, improving precision.',
+  'Vector databases like Pinecone, Weaviate, and Qdrant store embeddings for fast similarity search.',
+  'Prompt caching can reduce costs by reusing previous computations for repeated prefixes.',
+  'OpenRouter supports provider routing to control which providers serve your requests.',
+];
+
+// Generate embeddings for all chunks in one batch request
+const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    input: chunks,
+  }),
+});
+
+const data = await response.json();
+// Each item in data.data contains an "embedding" vector
+// Store these alongside your chunks in a vector database
+const documentEmbeddings = data.data.map((item: { index: number; embedding: number[] }) => ({
+  text: chunks[item.index],
+  embedding: item.embedding,
+}));
+
+console.log(`Indexed ${documentEmbeddings.length} chunks with ${documentEmbeddings[0].embedding.length}-dim embeddings`);
+```
+
+```shell title="Shell"
+curl https://openrouter.ai/api/v1/embeddings \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -d '{
+    "model": "{{MODEL}}",
+    "input": [
+      "OpenRouter is a unified API gateway for LLMs.",
+      "RAG stands for Retrieval-Augmented Generation.",
+      "Embeddings convert text into numerical vectors."
     ]
+  }'
+```
 
-    # Generate embeddings for all chunks in one batch request
+In production, use a vector database (Pinecone, Weaviate, Qdrant, pgvector, etc.) to store and query embeddings efficiently. The in-memory approach shown here is for illustration only.
+
+## Step 2: Retrieve Relevant Documents
+
+When a user asks a question, embed the query and find the most similar document chunks using cosine similarity.
+
+```python title="Python"
+import numpy as np
+
+def cosine_similarity(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+def retrieve(query, document_embeddings, top_n=5):
+    # Embed the query
     response = requests.post(
         "https://openrouter.ai/api/v1/embeddings",
         headers={
@@ -68,603 +151,472 @@ Split your documents into chunks and generate embeddings for each chunk. Store t
         },
         json={
             "model": "{{MODEL}}",
-            "input": chunks,
+            "input": query,
         },
     )
 
-    data = response.json()
-    # Each item in data["data"] contains an "embedding" vector
-    # Store these alongside your chunks in a vector database
-    document_embeddings = [
-        {"text": chunks[item["index"]], "embedding": item["embedding"]}
-        for item in data["data"]
-    ]
+    query_embedding = np.array(response.json()["data"][0]["embedding"])
 
-    print(f"Indexed {len(document_embeddings)} chunks with {len(document_embeddings[0]['embedding'])}-dim embeddings")
-    ```
+    # Score each document by cosine similarity
+    scored = []
+    for doc in document_embeddings:
+        score = cosine_similarity(query_embedding, np.array(doc["embedding"]))
+        scored.append({"text": doc["text"], "score": float(score)})
 
-    ```typescript title="TypeScript (fetch)"
-    const OPENROUTER_API_KEY = '{{API_KEY_REF}}';
+    # Return the top N most similar chunks
+    scored.sort(key=lambda x: x["score"], reverse=True)
+    return scored[:top_n]
 
-    // Your documents, split into chunks
-    const chunks = [
-      'OpenRouter is a unified API gateway for LLMs. It aggregates models from multiple providers.',
-      'RAG stands for Retrieval-Augmented Generation. It grounds LLM answers in external data.',
-      'Embeddings convert text into numerical vectors that capture semantic meaning.',
-      'Reranking uses a cross-encoder to re-score documents for a given query, improving precision.',
-      'Vector databases like Pinecone, Weaviate, and Qdrant store embeddings for fast similarity search.',
-      'Prompt caching can reduce costs by reusing previous computations for repeated prefixes.',
-      'OpenRouter supports provider routing to control which providers serve your requests.',
-    ];
+query = "What is RAG and how does it work?"
+results = retrieve(query, document_embeddings, top_n=5)
 
-    // Generate embeddings for all chunks in one batch request
-    const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        input: chunks,
-      }),
-    });
+print("Retrieved documents:")
+for i, r in enumerate(results):
+    print(f"  {i+1}. (score: {r['score']:.4f}) {r['text']}")
+```
 
-    const data = await response.json();
-    // Each item in data.data contains an "embedding" vector
-    // Store these alongside your chunks in a vector database
-    const documentEmbeddings = data.data.map((item: { index: number; embedding: number[] }) => ({
-      text: chunks[item.index],
-      embedding: item.embedding,
-    }));
+```typescript title="TypeScript (fetch)"
+function cosineSimilarity(a: number[], b: number[]): number {
+  const dot = a.reduce((sum, val, i) => sum + val * b[i], 0);
+  const magA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
+  const magB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
+  return dot / (magA * magB);
+}
 
-    console.log(`Indexed ${documentEmbeddings.length} chunks with ${documentEmbeddings[0].embedding.length}-dim embeddings`);
-    ```
+async function retrieve(
+  query: string,
+  documentEmbeddings: { text: string; embedding: number[] }[],
+  topN = 5,
+) {
+  // Embed the query
+  const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: '{{MODEL}}',
+      input: query,
+    }),
+  });
 
-    ```shell title="Shell"
-    curl https://openrouter.ai/api/v1/embeddings \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-      -d '{
-        "model": "{{MODEL}}",
-        "input": [
-          "OpenRouter is a unified API gateway for LLMs.",
-          "RAG stands for Retrieval-Augmented Generation.",
-          "Embeddings convert text into numerical vectors."
-        ]
-      }'
-    ```
-  </CodeGroup>
-</Template>
+  const data = await response.json();
+  const queryEmbedding: number[] = data.data[0].embedding;
 
-<Tip>
-  In production, use a vector database (Pinecone, Weaviate, Qdrant, pgvector, etc.) to store and query embeddings efficiently. The in-memory approach shown here is for illustration only.
-</Tip>
+  // Score each document by cosine similarity
+  const scored = documentEmbeddings.map((doc) => ({
+    text: doc.text,
+    score: cosineSimilarity(queryEmbedding, doc.embedding),
+  }));
 
-## Step 2: Retrieve Relevant Documents
+  // Return the top N most similar chunks
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, topN);
+}
 
-When a user asks a question, embed the query and find the most similar document chunks using cosine similarity.
+const query = 'What is RAG and how does it work?';
+const results = await retrieve(query, documentEmbeddings, 5);
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/text-embedding-3-small'
-}}
->
-  <CodeGroup>
-    ```python title="Python"
-    import numpy as np
-
-    def cosine_similarity(a, b):
-        return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
-
-    def retrieve(query, document_embeddings, top_n=5):
-        # Embed the query
-        response = requests.post(
-            "https://openrouter.ai/api/v1/embeddings",
-            headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": "{{MODEL}}",
-                "input": query,
-            },
-        )
-
-        query_embedding = np.array(response.json()["data"][0]["embedding"])
-
-        # Score each document by cosine similarity
-        scored = []
-        for doc in document_embeddings:
-            score = cosine_similarity(query_embedding, np.array(doc["embedding"]))
-            scored.append({"text": doc["text"], "score": float(score)})
-
-        # Return the top N most similar chunks
-        scored.sort(key=lambda x: x["score"], reverse=True)
-        return scored[:top_n]
-
-    query = "What is RAG and how does it work?"
-    results = retrieve(query, document_embeddings, top_n=5)
-
-    print("Retrieved documents:")
-    for i, r in enumerate(results):
-        print(f"  {i+1}. (score: {r['score']:.4f}) {r['text']}")
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    function cosineSimilarity(a: number[], b: number[]): number {
-      const dot = a.reduce((sum, val, i) => sum + val * b[i], 0);
-      const magA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
-      const magB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
-      return dot / (magA * magB);
-    }
-
-    async function retrieve(
-      query: string,
-      documentEmbeddings: { text: string; embedding: number[] }[],
-      topN = 5,
-    ) {
-      // Embed the query
-      const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: '{{MODEL}}',
-          input: query,
-        }),
-      });
-
-      const data = await response.json();
-      const queryEmbedding: number[] = data.data[0].embedding;
-
-      // Score each document by cosine similarity
-      const scored = documentEmbeddings.map((doc) => ({
-        text: doc.text,
-        score: cosineSimilarity(queryEmbedding, doc.embedding),
-      }));
-
-      // Return the top N most similar chunks
-      scored.sort((a, b) => b.score - a.score);
-      return scored.slice(0, topN);
-    }
-
-    const query = 'What is RAG and how does it work?';
-    const results = await retrieve(query, documentEmbeddings, 5);
-
-    console.log('Retrieved documents:');
-    results.forEach((r, i) => {
-      console.log(`  ${i + 1}. (score: ${r.score.toFixed(4)}) ${r.text}`);
-    });
-    ```
-  </CodeGroup>
-</Template>
+console.log('Retrieved documents:');
+results.forEach((r, i) => {
+  console.log(`  ${i + 1}. (score: ${r.score.toFixed(4)}) ${r.text}`);
+});
+```
 
 ## Step 3: Rerank for Better Precision
 
 Embedding-based retrieval is fast but approximate. A rerank model uses a cross-encoder to compare each document directly against the query, producing more accurate relevance scores. This is especially valuable when you retrieve many candidates (e.g., 20) and want to narrow down to the best few (e.g., 3).
 
-<Template
-  data={{
-  API_KEY_REF,
-  RERANK_MODEL: 'cohere/rerank-v3.5'
-}}
->
-  <CodeGroup>
-    ```python title="Python"
-    def rerank(query, documents, top_n=3):
-        response = requests.post(
-            "https://openrouter.ai/api/v1/rerank",
-            headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": "{{RERANK_MODEL}}",
-                "query": query,
-                "documents": documents,
-                "top_n": top_n,
-            },
-        )
-
-        data = response.json()
-        return data["results"]
-
-    # Use the texts from the retrieval step
-    retrieved_texts = [r["text"] for r in results]
-
-    reranked = rerank(query, retrieved_texts, top_n=3)
-
-    print("Reranked documents:")
-    for r in reranked:
-        print(f"  Score: {r['relevance_score']:.4f} | {r['document']['text']}")
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    async function rerank(query: string, documents: string[], topN = 3) {
-      const response = await fetch('https://openrouter.ai/api/v1/rerank', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'Content-Type': 'application/json',
+```python title="Python"
+def rerank(query, documents, top_n=3):
+    response = requests.post(
+        "https://openrouter.ai/api/v1/rerank",
+        headers={
+            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          model: '{{RERANK_MODEL}}',
-          query,
-          documents,
-          top_n: topN,
-        }),
-      });
+        json={
+            "model": "{{RERANK_MODEL}}",
+            "query": query,
+            "documents": documents,
+            "top_n": top_n,
+        },
+    )
 
-      const data = await response.json();
-      return data.results;
-    }
+    data = response.json()
+    return data["results"]
 
-    // Use the texts from the retrieval step
-    const retrievedTexts = results.map((r) => r.text);
+# Use the texts from the retrieval step
+retrieved_texts = [r["text"] for r in results]
 
-    const reranked = await rerank(query, retrievedTexts, 3);
+reranked = rerank(query, retrieved_texts, top_n=3)
 
-    console.log('Reranked documents:');
-    for (const r of reranked) {
-      console.log(`  Score: ${r.relevance_score.toFixed(4)} | ${r.document.text}`);
-    }
-    ```
+print("Reranked documents:")
+for r in reranked:
+    print(f"  Score: {r['relevance_score']:.4f} | {r['document']['text']}")
+```
 
-    ```shell title="Shell"
-    curl https://openrouter.ai/api/v1/rerank \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-      -d '{
-        "model": "{{RERANK_MODEL}}",
-        "query": "What is RAG and how does it work?",
-        "documents": [
-          "RAG stands for Retrieval-Augmented Generation. It grounds LLM answers in external data.",
-          "Embeddings convert text into numerical vectors that capture semantic meaning.",
-          "Reranking uses a cross-encoder to re-score documents for a given query, improving precision.",
-          "OpenRouter is a unified API gateway for LLMs. It aggregates models from multiple providers.",
-          "Vector databases like Pinecone, Weaviate, and Qdrant store embeddings for fast similarity search."
-        ],
-        "top_n": 3
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```typescript title="TypeScript (fetch)"
+async function rerank(query: string, documents: string[], topN = 3) {
+  const response = await fetch('https://openrouter.ai/api/v1/rerank', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: '{{RERANK_MODEL}}',
+      query,
+      documents,
+      top_n: topN,
+    }),
+  });
+
+  const data = await response.json();
+  return data.results;
+}
+
+// Use the texts from the retrieval step
+const retrievedTexts = results.map((r) => r.text);
+
+const reranked = await rerank(query, retrievedTexts, 3);
+
+console.log('Reranked documents:');
+for (const r of reranked) {
+  console.log(`  Score: ${r.relevance_score.toFixed(4)} | ${r.document.text}`);
+}
+```
+
+```shell title="Shell"
+curl https://openrouter.ai/api/v1/rerank \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -d '{
+    "model": "{{RERANK_MODEL}}",
+    "query": "What is RAG and how does it work?",
+    "documents": [
+      "RAG stands for Retrieval-Augmented Generation. It grounds LLM answers in external data.",
+      "Embeddings convert text into numerical vectors that capture semantic meaning.",
+      "Reranking uses a cross-encoder to re-score documents for a given query, improving precision.",
+      "OpenRouter is a unified API gateway for LLMs. It aggregates models from multiple providers.",
+      "Vector databases like Pinecone, Weaviate, and Qdrant store embeddings for fast similarity search."
+    ],
+    "top_n": 3
+  }'
+```
 
 ## Step 4: Generate an Answer with Context
 
 Pass the top-ranked documents as context to a chat model. The LLM generates a grounded answer based on the retrieved information.
 
-<Template
-  data={{
-  API_KEY_REF,
-  CHAT_MODEL: 'openai/gpt-4.1-mini'
-}}
->
-  <CodeGroup>
-    ```python title="Python"
-    def generate_answer(query, context_docs):
-        # Build a context string from the reranked documents
-        context = "\n\n".join(
-            f"[{i+1}] {doc['document']['text']}"
-            for i, doc in enumerate(context_docs)
-        )
+```python title="Python"
+def generate_answer(query, context_docs):
+    # Build a context string from the reranked documents
+    context = "\n\n".join(
+        f"[{i+1}] {doc['document']['text']}"
+        for i, doc in enumerate(context_docs)
+    )
 
-        response = requests.post(
-            "https://openrouter.ai/api/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": "{{CHAT_MODEL}}",
-                "messages": [
-                    {
-                        "role": "system",
-                        "content": "Answer the user's question based on the provided context. "
-                                   "Cite the relevant source numbers in brackets. "
-                                   "If the context doesn't contain enough information, say so.",
-                    },
-                    {
-                        "role": "user",
-                        "content": f"Context:\n{context}\n\nQuestion: {query}",
-                    },
-                ],
-            },
-        )
-
-        return response.json()["choices"][0]["message"]["content"]
-
-    answer = generate_answer(query, reranked)
-    print(f"Question: {query}")
-    print(f"Answer: {answer}")
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    async function generateAnswer(
-      query: string,
-      contextDocs: { document: { text: string } }[],
-    ) {
-      // Build a context string from the reranked documents
-      const context = contextDocs
-        .map((doc, i) => `[${i + 1}] ${doc.document.text}`)
-        .join('\n\n');
-
-      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'Content-Type': 'application/json',
+    response = requests.post(
+        "https://openrouter.ai/api/v1/chat/completions",
+        headers={
+            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          model: '{{CHAT_MODEL}}',
-          messages: [
-            {
-              role: 'system',
-              content:
-                "Answer the user's question based on the provided context. " +
-                'Cite the relevant source numbers in brackets. ' +
-                "If the context doesn't contain enough information, say so.",
-            },
-            {
-              role: 'user',
-              content: `Context:\n${context}\n\nQuestion: ${query}`,
-            },
-          ],
-        }),
-      });
+        json={
+            "model": "{{CHAT_MODEL}}",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "Answer the user's question based on the provided context. "
+                               "Cite the relevant source numbers in brackets. "
+                               "If the context doesn't contain enough information, say so.",
+                },
+                {
+                    "role": "user",
+                    "content": f"Context:\n{context}\n\nQuestion: {query}",
+                },
+            ],
+        },
+    )
 
-      const data = await response.json();
-      return data.choices[0].message.content;
-    }
+    return response.json()["choices"][0]["message"]["content"]
 
-    const answer = await generateAnswer(query, reranked);
-    console.log(`Question: ${query}`);
-    console.log(`Answer: ${answer}`);
-    ```
-  </CodeGroup>
-</Template>
+answer = generate_answer(query, reranked)
+print(f"Question: {query}")
+print(f"Answer: {answer}")
+```
+
+```typescript title="TypeScript (fetch)"
+async function generateAnswer(
+  query: string,
+  contextDocs: { document: { text: string } }[],
+) {
+  // Build a context string from the reranked documents
+  const context = contextDocs
+    .map((doc, i) => `[${i + 1}] ${doc.document.text}`)
+    .join('\n\n');
+
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: '{{CHAT_MODEL}}',
+      messages: [
+        {
+          role: 'system',
+          content:
+            "Answer the user's question based on the provided context. " +
+            'Cite the relevant source numbers in brackets. ' +
+            "If the context doesn't contain enough information, say so.",
+        },
+        {
+          role: 'user',
+          content: `Context:\n${context}\n\nQuestion: ${query}`,
+        },
+      ],
+    }),
+  });
+
+  const data = await response.json();
+  return data.choices[0].message.content;
+}
+
+const answer = await generateAnswer(query, reranked);
+console.log(`Question: ${query}`);
+console.log(`Answer: ${answer}`);
+```
 
 ## Complete Example
 
 Here is a full end-to-end RAG pipeline combining all four steps:
 
-<Template
-  data={{
-  API_KEY_REF,
-  EMBEDDING_MODEL: 'openai/text-embedding-3-small',
-  RERANK_MODEL: 'cohere/rerank-v3.5',
-  CHAT_MODEL: 'openai/gpt-4.1-mini'
-}}
->
-  <CodeGroup>
-    ```python title="Python"
-    import requests
-    import numpy as np
+```python title="Python"
+import requests
+import numpy as np
 
-    OPENROUTER_API_KEY = "{{API_KEY_REF}}"
-    EMBEDDING_MODEL = "{{EMBEDDING_MODEL}}"
-    RERANK_MODEL = "{{RERANK_MODEL}}"
-    CHAT_MODEL = "{{CHAT_MODEL}}"
-    BASE_URL = "https://openrouter.ai/api/v1"
+OPENROUTER_API_KEY = "{{API_KEY_REF}}"
+EMBEDDING_MODEL = "{{EMBEDDING_MODEL}}"
+RERANK_MODEL = "{{RERANK_MODEL}}"
+CHAT_MODEL = "{{CHAT_MODEL}}"
+BASE_URL = "https://openrouter.ai/api/v1"
 
-    def get_headers():
-        return {
-            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-            "Content-Type": "application/json",
-        }
+def get_headers():
+    return {
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Content-Type": "application/json",
+    }
 
-    def embed(texts):
-        """Generate embeddings for a list of texts."""
-        response = requests.post(
-            f"{BASE_URL}/embeddings",
-            headers=get_headers(),
-            json={"model": EMBEDDING_MODEL, "input": texts},
-        )
-        return [item["embedding"] for item in response.json()["data"]]
+def embed(texts):
+    """Generate embeddings for a list of texts."""
+    response = requests.post(
+        f"{BASE_URL}/embeddings",
+        headers=get_headers(),
+        json={"model": EMBEDDING_MODEL, "input": texts},
+    )
+    return [item["embedding"] for item in response.json()["data"]]
 
-    def cosine_similarity(a, b):
-        return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+def cosine_similarity(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
-    def retrieve(query_embedding, doc_embeddings, top_n=10):
-        """Find the top N most similar documents by cosine similarity."""
-        scored = [
-            (i, cosine_similarity(query_embedding, emb))
-            for i, emb in enumerate(doc_embeddings)
-        ]
-        scored.sort(key=lambda x: x[1], reverse=True)
-        return scored[:top_n]
-
-    def rerank(query, documents, top_n=3):
-        """Rerank documents using a cross-encoder model."""
-        response = requests.post(
-            f"{BASE_URL}/rerank",
-            headers=get_headers(),
-            json={
-                "model": RERANK_MODEL,
-                "query": query,
-                "documents": documents,
-                "top_n": top_n,
-            },
-        )
-        return response.json()["results"]
-
-    def generate(query, context_docs):
-        """Generate an answer grounded in the provided context."""
-        context = "\n\n".join(
-            f"[{i+1}] {doc}"
-            for i, doc in enumerate(context_docs)
-        )
-        response = requests.post(
-            f"{BASE_URL}/chat/completions",
-            headers=get_headers(),
-            json={
-                "model": CHAT_MODEL,
-                "messages": [
-                    {
-                        "role": "system",
-                        "content": (
-                            "Answer the user's question using only the provided context. "
-                            "Cite sources with [n]. If the context is insufficient, say so."
-                        ),
-                    },
-                    {
-                        "role": "user",
-                        "content": f"Context:\n{context}\n\nQuestion: {query}",
-                    },
-                ],
-            },
-        )
-        return response.json()["choices"][0]["message"]["content"]
-
-    # --- Pipeline ---
-
-    # 1. Index: chunk your knowledge base and embed
-    chunks = [
-        "OpenRouter is a unified API gateway for LLMs. It aggregates models from multiple providers into a single OpenAI-compatible interface.",
-        "RAG stands for Retrieval-Augmented Generation. It retrieves relevant documents and uses them as context for LLM generation.",
-        "Embeddings convert text into high-dimensional vectors where semantically similar texts are closer together.",
-        "Reranking uses a cross-encoder to compare each document directly against the query, producing more accurate relevance scores than embedding similarity alone.",
-        "Vector databases like Pinecone, Weaviate, and Qdrant are optimized for storing and querying embedding vectors at scale.",
-        "Prompt caching reduces costs by reusing computations for repeated prompt prefixes across requests.",
-        "OpenRouter supports provider routing to control which upstream providers serve your requests based on cost, latency, or privacy preferences.",
+def retrieve(query_embedding, doc_embeddings, top_n=10):
+    """Find the top N most similar documents by cosine similarity."""
+    scored = [
+        (i, cosine_similarity(query_embedding, emb))
+        for i, emb in enumerate(doc_embeddings)
     ]
-    doc_embeddings = embed(chunks)
+    scored.sort(key=lambda x: x[1], reverse=True)
+    return scored[:top_n]
 
-    # 2. Retrieve: embed the query and find similar chunks
-    query = "How does RAG improve LLM responses?"
-    query_embedding = embed([query])[0]
-    top_matches = retrieve(query_embedding, doc_embeddings, top_n=5)
-    retrieved_texts = [chunks[i] for i, _ in top_matches]
+def rerank(query, documents, top_n=3):
+    """Rerank documents using a cross-encoder model."""
+    response = requests.post(
+        f"{BASE_URL}/rerank",
+        headers=get_headers(),
+        json={
+            "model": RERANK_MODEL,
+            "query": query,
+            "documents": documents,
+            "top_n": top_n,
+        },
+    )
+    return response.json()["results"]
 
-    # 3. Rerank: re-score with a cross-encoder for better precision
-    reranked = rerank(query, retrieved_texts, top_n=3)
-    context_texts = [r["document"]["text"] for r in reranked]
+def generate(query, context_docs):
+    """Generate an answer grounded in the provided context."""
+    context = "\n\n".join(
+        f"[{i+1}] {doc}"
+        for i, doc in enumerate(context_docs)
+    )
+    response = requests.post(
+        f"{BASE_URL}/chat/completions",
+        headers=get_headers(),
+        json={
+            "model": CHAT_MODEL,
+            "messages": [
+                {
+                    "role": "system",
+                    "content": (
+                        "Answer the user's question using only the provided context. "
+                        "Cite sources with [n]. If the context is insufficient, say so."
+                    ),
+                },
+                {
+                    "role": "user",
+                    "content": f"Context:\n{context}\n\nQuestion: {query}",
+                },
+            ],
+        },
+    )
+    return response.json()["choices"][0]["message"]["content"]
 
-    # 4. Generate: produce a grounded answer
-    answer = generate(query, context_texts)
-    print(f"Q: {query}\nA: {answer}")
-    ```
+# --- Pipeline ---
 
-    ```typescript title="TypeScript (fetch)"
-    const OPENROUTER_API_KEY = '{{API_KEY_REF}}';
-    const EMBEDDING_MODEL = '{{EMBEDDING_MODEL}}';
-    const RERANK_MODEL = '{{RERANK_MODEL}}';
-    const CHAT_MODEL = '{{CHAT_MODEL}}';
-    const BASE_URL = 'https://openrouter.ai/api/v1';
+# 1. Index: chunk your knowledge base and embed
+chunks = [
+    "OpenRouter is a unified API gateway for LLMs. It aggregates models from multiple providers into a single OpenAI-compatible interface.",
+    "RAG stands for Retrieval-Augmented Generation. It retrieves relevant documents and uses them as context for LLM generation.",
+    "Embeddings convert text into high-dimensional vectors where semantically similar texts are closer together.",
+    "Reranking uses a cross-encoder to compare each document directly against the query, producing more accurate relevance scores than embedding similarity alone.",
+    "Vector databases like Pinecone, Weaviate, and Qdrant are optimized for storing and querying embedding vectors at scale.",
+    "Prompt caching reduces costs by reusing computations for repeated prompt prefixes across requests.",
+    "OpenRouter supports provider routing to control which upstream providers serve your requests based on cost, latency, or privacy preferences.",
+]
+doc_embeddings = embed(chunks)
 
-    function getHeaders() {
-      return {
-        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json',
-      };
-    }
+# 2. Retrieve: embed the query and find similar chunks
+query = "How does RAG improve LLM responses?"
+query_embedding = embed([query])[0]
+top_matches = retrieve(query_embedding, doc_embeddings, top_n=5)
+retrieved_texts = [chunks[i] for i, _ in top_matches]
 
-    async function embed(texts: string[]): Promise<number[][]> {
-      const response = await fetch(`${BASE_URL}/embeddings`, {
-        method: 'POST',
-        headers: getHeaders(),
-        body: JSON.stringify({ model: EMBEDDING_MODEL, input: texts }),
-      });
-      const data = await response.json();
-      return data.data.map((item: { embedding: number[] }) => item.embedding);
-    }
+# 3. Rerank: re-score with a cross-encoder for better precision
+reranked = rerank(query, retrieved_texts, top_n=3)
+context_texts = [r["document"]["text"] for r in reranked]
 
-    function cosineSimilarity(a: number[], b: number[]): number {
-      const dot = a.reduce((sum, val, i) => sum + val * b[i], 0);
-      const magA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
-      const magB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
-      return dot / (magA * magB);
-    }
+# 4. Generate: produce a grounded answer
+answer = generate(query, context_texts)
+print(f"Q: {query}\nA: {answer}")
+```
 
-    function retrieve(
-      queryEmbedding: number[],
-      docEmbeddings: number[][],
-      topN = 10,
-    ): { index: number; score: number }[] {
-      const scored = docEmbeddings.map((emb, i) => ({
-        index: i,
-        score: cosineSimilarity(queryEmbedding, emb),
-      }));
-      scored.sort((a, b) => b.score - a.score);
-      return scored.slice(0, topN);
-    }
+```typescript title="TypeScript (fetch)"
+const OPENROUTER_API_KEY = '{{API_KEY_REF}}';
+const EMBEDDING_MODEL = '{{EMBEDDING_MODEL}}';
+const RERANK_MODEL = '{{RERANK_MODEL}}';
+const CHAT_MODEL = '{{CHAT_MODEL}}';
+const BASE_URL = 'https://openrouter.ai/api/v1';
 
-    async function rerank(query: string, documents: string[], topN = 3) {
-      const response = await fetch(`${BASE_URL}/rerank`, {
-        method: 'POST',
-        headers: getHeaders(),
-        body: JSON.stringify({
-          model: RERANK_MODEL,
-          query,
-          documents,
-          top_n: topN,
-        }),
-      });
-      const data = await response.json();
-      return data.results as { index: number; relevance_score: number; document: { text: string } }[];
-    }
+function getHeaders() {
+  return {
+    'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+    'Content-Type': 'application/json',
+  };
+}
 
-    async function generate(query: string, contextDocs: string[]): Promise<string> {
-      const context = contextDocs
-        .map((doc, i) => `[${i + 1}] ${doc}`)
-        .join('\n\n');
-      const response = await fetch(`${BASE_URL}/chat/completions`, {
-        method: 'POST',
-        headers: getHeaders(),
-        body: JSON.stringify({
-          model: CHAT_MODEL,
-          messages: [
-            {
-              role: 'system',
-              content:
-                "Answer the user's question using only the provided context. " +
-                'Cite sources with [n]. If the context is insufficient, say so.',
-            },
-            {
-              role: 'user',
-              content: `Context:\n${context}\n\nQuestion: ${query}`,
-            },
-          ],
-        }),
-      });
-      const data = await response.json();
-      return data.choices[0].message.content;
-    }
+async function embed(texts: string[]): Promise<number[][]> {
+  const response = await fetch(`${BASE_URL}/embeddings`, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify({ model: EMBEDDING_MODEL, input: texts }),
+  });
+  const data = await response.json();
+  return data.data.map((item: { embedding: number[] }) => item.embedding);
+}
 
-    // --- Pipeline ---
+function cosineSimilarity(a: number[], b: number[]): number {
+  const dot = a.reduce((sum, val, i) => sum + val * b[i], 0);
+  const magA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
+  const magB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
+  return dot / (magA * magB);
+}
 
-    // 1. Index: chunk your knowledge base and embed
-    const chunks = [
-      'OpenRouter is a unified API gateway for LLMs. It aggregates models from multiple providers into a single OpenAI-compatible interface.',
-      'RAG stands for Retrieval-Augmented Generation. It retrieves relevant documents and uses them as context for LLM generation.',
-      'Embeddings convert text into high-dimensional vectors where semantically similar texts are closer together.',
-      'Reranking uses a cross-encoder to compare each document directly against the query, producing more accurate relevance scores than embedding similarity alone.',
-      'Vector databases like Pinecone, Weaviate, and Qdrant are optimized for storing and querying embedding vectors at scale.',
-      'Prompt caching reduces costs by reusing computations for repeated prompt prefixes across requests.',
-      'OpenRouter supports provider routing to control which upstream providers serve your requests based on cost, latency, or privacy preferences.',
-    ];
-    const docEmbeddings = await embed(chunks);
+function retrieve(
+  queryEmbedding: number[],
+  docEmbeddings: number[][],
+  topN = 10,
+): { index: number; score: number }[] {
+  const scored = docEmbeddings.map((emb, i) => ({
+    index: i,
+    score: cosineSimilarity(queryEmbedding, emb),
+  }));
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, topN);
+}
 
-    // 2. Retrieve: embed the query and find similar chunks
-    const query = 'How does RAG improve LLM responses?';
-    const queryEmbedding = (await embed([query]))[0];
-    const topMatches = retrieve(queryEmbedding, docEmbeddings, 5);
-    const retrievedTexts = topMatches.map((m) => chunks[m.index]);
+async function rerank(query: string, documents: string[], topN = 3) {
+  const response = await fetch(`${BASE_URL}/rerank`, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify({
+      model: RERANK_MODEL,
+      query,
+      documents,
+      top_n: topN,
+    }),
+  });
+  const data = await response.json();
+  return data.results as { index: number; relevance_score: number; document: { text: string } }[];
+}
 
-    // 3. Rerank: re-score with a cross-encoder for better precision
-    const reranked = await rerank(query, retrievedTexts, 3);
-    const contextTexts = reranked.map((r) => r.document.text);
+async function generate(query: string, contextDocs: string[]): Promise<string> {
+  const context = contextDocs
+    .map((doc, i) => `[${i + 1}] ${doc}`)
+    .join('\n\n');
+  const response = await fetch(`${BASE_URL}/chat/completions`, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify({
+      model: CHAT_MODEL,
+      messages: [
+        {
+          role: 'system',
+          content:
+            "Answer the user's question using only the provided context. " +
+            'Cite sources with [n]. If the context is insufficient, say so.',
+        },
+        {
+          role: 'user',
+          content: `Context:\n${context}\n\nQuestion: ${query}`,
+        },
+      ],
+    }),
+  });
+  const data = await response.json();
+  return data.choices[0].message.content;
+}
 
-    // 4. Generate: produce a grounded answer
-    const answer = await generate(query, contextTexts);
-    console.log(`Q: ${query}\nA: ${answer}`);
-    ```
-  </CodeGroup>
-</Template>
+// --- Pipeline ---
+
+// 1. Index: chunk your knowledge base and embed
+const chunks = [
+  'OpenRouter is a unified API gateway for LLMs. It aggregates models from multiple providers into a single OpenAI-compatible interface.',
+  'RAG stands for Retrieval-Augmented Generation. It retrieves relevant documents and uses them as context for LLM generation.',
+  'Embeddings convert text into high-dimensional vectors where semantically similar texts are closer together.',
+  'Reranking uses a cross-encoder to compare each document directly against the query, producing more accurate relevance scores than embedding similarity alone.',
+  'Vector databases like Pinecone, Weaviate, and Qdrant are optimized for storing and querying embedding vectors at scale.',
+  'Prompt caching reduces costs by reusing computations for repeated prompt prefixes across requests.',
+  'OpenRouter supports provider routing to control which upstream providers serve your requests based on cost, latency, or privacy preferences.',
+];
+const docEmbeddings = await embed(chunks);
+
+// 2. Retrieve: embed the query and find similar chunks
+const query = 'How does RAG improve LLM responses?';
+const queryEmbedding = (await embed([query]))[0];
+const topMatches = retrieve(queryEmbedding, docEmbeddings, 5);
+const retrievedTexts = topMatches.map((m) => chunks[m.index]);
+
+// 3. Rerank: re-score with a cross-encoder for better precision
+const reranked = await rerank(query, retrievedTexts, 3);
+const contextTexts = reranked.map((r) => r.document.text);
+
+// 4. Generate: produce a grounded answer
+const answer = await generate(query, contextTexts);
+console.log(`Q: ${query}\nA: ${answer}`);
+```
 
 ## When to Use Rerank
 
@@ -690,9 +642,7 @@ How you split documents significantly affects retrieval quality:
 * **Fixed-size with overlap** — split into chunks of \~200-500 tokens with \~50-token overlap to avoid losing context at boundaries
 * **By semantic boundary** — use headings, section breaks, or sentence boundaries to create natural chunks
 
-<Tip>
-  Smaller chunks (200-300 tokens) tend to produce more precise retrieval but may lose surrounding context. Larger chunks (500-1000 tokens) preserve more context but may dilute relevance signals. Experiment with your specific data to find the right balance.
-</Tip>
+Smaller chunks (200-300 tokens) tend to produce more precise retrieval but may lose surrounding context. Larger chunks (500-1000 tokens) preserve more context but may dilute relevance signals. Experiment with your specific data to find the right balance.
 
 ## Best Practices
 

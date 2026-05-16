@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Pareto Router
 
@@ -16,52 +17,50 @@ The name comes from [Pareto efficiency](https://en.wikipedia.org/wiki/Pareto_eff
 
 Set your model to `openrouter/pareto-code` and optionally pass the `pareto-router` plugin to control the minimum coding score:
 
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
+const openRouter = new OpenRouter({
+  apiKey: '<OPENROUTER_API_KEY>',
+});
 
-  const completion = await openRouter.chat.send({
-    model: 'openrouter/pareto-code',
-    plugins: [
+const completion = await openRouter.chat.send({
+  model: 'openrouter/pareto-code',
+  plugins: [
+    {
+      id: 'pareto-router',
+      min_coding_score: 0.8,
+    },
+  ],
+  messages: [
+    {
+      role: 'user',
+      content: 'Write a Python function that merges two sorted lists.',
+    },
+  ],
+});
+
+console.log(completion.choices[0].message.content);
+console.log('Model used:', completion.model);
+```
+
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openrouter/pareto-code",
+    "plugins": [
       {
-        id: 'pareto-router',
-        min_coding_score: 0.8,
-      },
+        "id": "pareto-router",
+        "min_coding_score": 0.8
+      }
     ],
-    messages: [
-      {
-        role: 'user',
-        content: 'Write a Python function that merges two sorted lists.',
-      },
-    ],
-  });
-
-  console.log(completion.choices[0].message.content);
-  console.log('Model used:', completion.model);
-  ```
-
-  ```bash title="cURL"
-  curl https://openrouter.ai/api/v1/chat/completions \
-    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "model": "openrouter/pareto-code",
-      "plugins": [
-        {
-          "id": "pareto-router",
-          "min_coding_score": 0.8
-        }
-      ],
-      "messages": [
-        {"role": "user", "content": "Write a Python function that merges two sorted lists."}
-      ]
-    }'
-  ```
-</CodeGroup>
+    "messages": [
+      {"role": "user", "content": "Write a Python function that merges two sorted lists."}
+    ]
+  }'
+```
 
 ## The `min_coding_score` parameter
 
@@ -76,13 +75,9 @@ Set your model to `openrouter/pareto-code` and optionally pass the `pareto-route
 
 If you omit `min_coding_score`, the router defaults to the strongest available coders. Within a tier, the router picks the cheapest available model, or the fastest by p50 throughput when you request the `:nitro` variant.
 
-<Callout intent="info">
-  The router resolves a primary coding model plus up to two same-tier fallbacks. The primary is what serves your request. The fallbacks only fire on transient provider errors or rate limits, they do not load-balance traffic. If the entire tier has no models currently published on OpenRouter, the router steps into a neighboring tier instead. The response `model` field always reports the concrete model that handled the request.
-</Callout>
+The router resolves a primary coding model plus up to two same-tier fallbacks. The primary is what serves your request. The fallbacks only fire on transient provider errors or rate limits, they do not load-balance traffic. If the entire tier has no models currently published on OpenRouter, the router steps into a neighboring tier instead. The response `model` field always reports the concrete model that handled the request.
 
-<Callout intent="note">
-  Because the scoring axis is a *percentile* within AA's benchmarked coding field, the capability bar implied by a given `min_coding_score` shifts as the frontier moves. A new strong release can push existing models down a percentile band, so `min_coding_score=0.66` always means "top of the current field" rather than "above an absolute capability score".
-</Callout>
+Because the scoring axis is a *percentile* within AA's benchmarked coding field, the capability bar implied by a given `min_coding_score` shifts as the frontier moves. A new strong release can push existing models down a percentile band, so `min_coding_score=0.66` always means "top of the current field" rather than "above an absolute capability score".
 
 ## Response
 

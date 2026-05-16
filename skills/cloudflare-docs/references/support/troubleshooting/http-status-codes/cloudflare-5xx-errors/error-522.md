@@ -25,7 +25,7 @@ Two different timeouts cause HTTP error `522` depending on when they occur betwe
 
 ### Resolution
 
-* Contact your hosting provider and share the necessary [error details](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to assist in troubleshooting these common causes:  
+* Contact your hosting provider and share the [error details](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to assist in troubleshooting these common causes:  
    * [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/) are rate limited or blocked in .htaccess, iptables, or firewalls. Confirm your hosting provider allows **all Cloudflare IP ranges** (most common cause). You can use a [Cloudflare WAF Custom Rule](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-by-geographical-location/) if you need to restrict traffic from geographical locations.  
    * An overloaded or offline origin web server drops incoming requests.  
    * [Keepalives ↗](http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/overview.html) are disabled at the origin web server.  

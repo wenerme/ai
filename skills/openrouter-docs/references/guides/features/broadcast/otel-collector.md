@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # OpenTelemetry Collector
 
@@ -73,9 +74,7 @@ The OpenTelemetry Collector destination works with any backend that supports OTL
 * **Lightstep** - Cloud-native observability platform
 * **Self-hosted OpenTelemetry Collector** - Route traces to multiple backends
 
-<Tip>
-  OpenRouter sends traces using the OTLP/HTTP protocol with JSON encoding. Ensure your collector or backend is configured to accept OTLP over HTTP on the `/v1/traces` path.
-</Tip>
+OpenRouter sends traces using the OTLP/HTTP protocol with JSON encoding. Ensure your collector or backend is configured to accept OTLP over HTTP on the `/v1/traces` path.
 
 ## Custom Metadata
 

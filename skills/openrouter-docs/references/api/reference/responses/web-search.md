@@ -1,76 +1,71 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Web Search
 
-<Warning title="Beta API">
-  This API is in **beta stage** and may have breaking changes.
-</Warning>
+This API is in **beta stage** and may have breaking changes.
 
 The Responses API Beta supports web search integration, allowing models to access real-time information from the internet and provide responses with proper citations and annotations.
 
-<Warning title="Deprecated Plugin Approach">
-  The web search plugin (`plugins: [{ id: "web" }]`) shown below is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead, which works with both the Chat Completions and Responses APIs via the `tools` array.
-</Warning>
+The web search plugin (`plugins: [{ id: "web" }]`) shown below is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead, which works with both the Chat Completions and Responses APIs via the `tools` array.
 
 ## Web Search Plugin
 
 Enable web search using the `plugins` parameter:
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  const response = await fetch('https://openrouter.ai/api/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-      'Content-Type': 'application/json',
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openai/o4-mini',
+    input: 'What is OpenRouter?',
+    plugins: [{ id: 'web', max_results: 3 }],
+    max_output_tokens: 9000,
+  }),
+});
+
+const result = await response.json();
+console.log(result);
+```
+
+```python title="Python"
+import requests
+
+response = requests.post(
+    'https://openrouter.ai/api/v1/responses',
+    headers={
+        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+        'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      model: 'openai/o4-mini',
-      input: 'What is OpenRouter?',
-      plugins: [{ id: 'web', max_results: 3 }],
-      max_output_tokens: 9000,
-    }),
-  });
+    json={
+        'model': 'openai/o4-mini',
+        'input': 'What is OpenRouter?',
+        'plugins': [{'id': 'web', 'max_results': 3}],
+        'max_output_tokens': 9000,
+    }
+)
 
-  const result = await response.json();
-  console.log(result);
-  ```
+result = response.json()
+print(result)
+```
 
-  ```python title="Python"
-  import requests
-
-  response = requests.post(
-      'https://openrouter.ai/api/v1/responses',
-      headers={
-          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-          'Content-Type': 'application/json',
-      },
-      json={
-          'model': 'openai/o4-mini',
-          'input': 'What is OpenRouter?',
-          'plugins': [{'id': 'web', 'max_results': 3}],
-          'max_output_tokens': 9000,
-      }
-  )
-
-  result = response.json()
-  print(result)
-  ```
-
-  ```bash title="cURL"
-  curl -X POST https://openrouter.ai/api/v1/responses \
-    -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "model": "openai/o4-mini",
-      "input": "What is OpenRouter?",
-      "plugins": [{"id": "web", "max_results": 3}],
-      "max_output_tokens": 9000
-    }'
-  ```
-</CodeGroup>
+```bash title="cURL"
+curl -X POST https://openrouter.ai/api/v1/responses \
+  -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/o4-mini",
+    "input": "What is OpenRouter?",
+    "plugins": [{"id": "web", "max_results": 3}],
+    "max_output_tokens": 9000
+  }'
+```
 
 ## Plugin Configuration
 
@@ -115,128 +110,120 @@ results:
 | `enable_image_understanding` | boolean   | Analyze images in posts                        |
 | `enable_video_understanding` | boolean   | Analyze videos in posts                        |
 
-<Warning>
-  `allowed_x_handles` and `excluded_x_handles` are
-  mutually exclusive. See the
-  [Web Search plugin docs](/docs/guides/features/plugins/web-search#x-search-filters-xai-only)
-  for full details.
-</Warning>
+`allowed_x_handles` and `excluded_x_handles` are
+mutually exclusive. See the
+[Web Search plugin docs](/docs/guides/features/plugins/web-search#x-search-filters-xai-only)
+for full details.
 
 ## Structured Message with Web Search
 
 Use structured messages for more complex queries:
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  const response = await fetch('https://openrouter.ai/api/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'openai/o4-mini',
-      input: [
-        {
-          type: 'message',
-          role: 'user',
-          content: [
-            {
-              type: 'input_text',
-              text: 'What was a positive news story from today?',
-            },
-          ],
-        },
-      ],
-      plugins: [{ id: 'web', max_results: 2 }],
-      max_output_tokens: 9000,
-    }),
-  });
-
-  const result = await response.json();
-  console.log(result);
-  ```
-
-  ```python title="Python"
-  import requests
-
-  response = requests.post(
-      'https://openrouter.ai/api/v1/responses',
-      headers={
-          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-          'Content-Type': 'application/json',
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openai/o4-mini',
+    input: [
+      {
+        type: 'message',
+        role: 'user',
+        content: [
+          {
+            type: 'input_text',
+            text: 'What was a positive news story from today?',
+          },
+        ],
       },
-      json={
-          'model': 'openai/o4-mini',
-          'input': [
-              {
-                  'type': 'message',
-                  'role': 'user',
-                  'content': [
-                      {
-                          'type': 'input_text',
-                          'text': 'What was a positive news story from today?',
-                      },
-                  ],
-              },
-          ],
-          'plugins': [{'id': 'web', 'max_results': 2}],
-          'max_output_tokens': 9000,
-      }
-  )
+    ],
+    plugins: [{ id: 'web', max_results: 2 }],
+    max_output_tokens: 9000,
+  }),
+});
 
-  result = response.json()
-  print(result)
-  ```
-</CodeGroup>
+const result = await response.json();
+console.log(result);
+```
+
+```python title="Python"
+import requests
+
+response = requests.post(
+    'https://openrouter.ai/api/v1/responses',
+    headers={
+        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+        'Content-Type': 'application/json',
+    },
+    json={
+        'model': 'openai/o4-mini',
+        'input': [
+            {
+                'type': 'message',
+                'role': 'user',
+                'content': [
+                    {
+                        'type': 'input_text',
+                        'text': 'What was a positive news story from today?',
+                    },
+                ],
+            },
+        ],
+        'plugins': [{'id': 'web', 'max_results': 2}],
+        'max_output_tokens': 9000,
+    }
+)
+
+result = response.json()
+print(result)
+```
 
 ## Online Model Variants
 
-<Warning title="Deprecated">
-  The `:online` variant is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead.
-</Warning>
+The `:online` variant is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead.
 
 Some models have built-in web search capabilities using the `:online` variant:
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  const response = await fetch('https://openrouter.ai/api/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-      'Content-Type': 'application/json',
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openai/o4-mini:online',
+    input: 'What was a positive news story from today?',
+    max_output_tokens: 9000,
+  }),
+});
+
+const result = await response.json();
+console.log(result);
+```
+
+```python title="Python"
+import requests
+
+response = requests.post(
+    'https://openrouter.ai/api/v1/responses',
+    headers={
+        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+        'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      model: 'openai/o4-mini:online',
-      input: 'What was a positive news story from today?',
-      max_output_tokens: 9000,
-    }),
-  });
+    json={
+        'model': 'openai/o4-mini:online',
+        'input': 'What was a positive news story from today?',
+        'max_output_tokens': 9000,
+    }
+)
 
-  const result = await response.json();
-  console.log(result);
-  ```
-
-  ```python title="Python"
-  import requests
-
-  response = requests.post(
-      'https://openrouter.ai/api/v1/responses',
-      headers={
-          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-          'Content-Type': 'application/json',
-      },
-      json={
-          'model': 'openai/o4-mini:online',
-          'input': 'What was a positive news story from today?',
-          'max_output_tokens': 9000,
-      }
-  )
-
-  result = response.json()
-  print(result)
-  ```
-</CodeGroup>
+result = response.json()
+print(result)
+```
 
 ## Response with Annotations
 
@@ -304,359 +291,351 @@ Web search responses can include different annotation types:
 
 Handle multi-part search queries:
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  const response = await fetch('https://openrouter.ai/api/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'openai/o4-mini',
-      input: [
-        {
-          type: 'message',
-          role: 'user',
-          content: [
-            {
-              type: 'input_text',
-              text: 'Compare OpenAI and Anthropic latest models',
-            },
-          ],
-        },
-      ],
-      plugins: [{ id: 'web', max_results: 5 }],
-      max_output_tokens: 9000,
-    }),
-  });
-
-  const result = await response.json();
-  console.log(result);
-  ```
-
-  ```python title="Python"
-  import requests
-
-  response = requests.post(
-      'https://openrouter.ai/api/v1/responses',
-      headers={
-          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-          'Content-Type': 'application/json',
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openai/o4-mini',
+    input: [
+      {
+        type: 'message',
+        role: 'user',
+        content: [
+          {
+            type: 'input_text',
+            text: 'Compare OpenAI and Anthropic latest models',
+          },
+        ],
       },
-      json={
-          'model': 'openai/o4-mini',
-          'input': [
-              {
-                  'type': 'message',
-                  'role': 'user',
-                  'content': [
-                      {
-                          'type': 'input_text',
-                          'text': 'Compare OpenAI and Anthropic latest models',
-                      },
-                  ],
-              },
-          ],
-          'plugins': [{'id': 'web', 'max_results': 5}],
-          'max_output_tokens': 9000,
-      }
-  )
+    ],
+    plugins: [{ id: 'web', max_results: 5 }],
+    max_output_tokens: 9000,
+  }),
+});
 
-  result = response.json()
-  print(result)
-  ```
-</CodeGroup>
+const result = await response.json();
+console.log(result);
+```
+
+```python title="Python"
+import requests
+
+response = requests.post(
+    'https://openrouter.ai/api/v1/responses',
+    headers={
+        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+        'Content-Type': 'application/json',
+    },
+    json={
+        'model': 'openai/o4-mini',
+        'input': [
+            {
+                'type': 'message',
+                'role': 'user',
+                'content': [
+                    {
+                        'type': 'input_text',
+                        'text': 'Compare OpenAI and Anthropic latest models',
+                    },
+                ],
+            },
+        ],
+        'plugins': [{'id': 'web', 'max_results': 5}],
+        'max_output_tokens': 9000,
+    }
+)
+
+result = response.json()
+print(result)
+```
 
 ## Web Search in Conversation
 
 Include web search in multi-turn conversations:
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  const response = await fetch('https://openrouter.ai/api/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'openai/o4-mini',
-      input: [
-        {
-          type: 'message',
-          role: 'user',
-          content: [
-            {
-              type: 'input_text',
-              text: 'What is the latest version of React?',
-            },
-          ],
-        },
-        {
-          type: 'message',
-          id: 'msg_1',
-          status: 'in_progress',
-          role: 'assistant',
-          content: [
-            {
-              type: 'output_text',
-              text: 'Let me search for the latest React version.',
-              annotations: [],
-            },
-          ],
-        },
-        {
-          type: 'message',
-          role: 'user',
-          content: [
-            {
-              type: 'input_text',
-              text: 'Yes, please find the most recent information',
-            },
-          ],
-        },
-      ],
-      plugins: [{ id: 'web', max_results: 2 }],
-      max_output_tokens: 9000,
-    }),
-  });
-
-  const result = await response.json();
-  console.log(result);
-  ```
-
-  ```python title="Python"
-  import requests
-
-  response = requests.post(
-      'https://openrouter.ai/api/v1/responses',
-      headers={
-          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-          'Content-Type': 'application/json',
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openai/o4-mini',
+    input: [
+      {
+        type: 'message',
+        role: 'user',
+        content: [
+          {
+            type: 'input_text',
+            text: 'What is the latest version of React?',
+          },
+        ],
       },
-      json={
-          'model': 'openai/o4-mini',
-          'input': [
-              {
-                  'type': 'message',
-                  'role': 'user',
-                  'content': [
-                      {
-                          'type': 'input_text',
-                          'text': 'What is the latest version of React?',
-                      },
-                  ],
-              },
-              {
-                  'type': 'message',
-                  'id': 'msg_1',
-                  'status': 'in_progress',
-                  'role': 'assistant',
-                  'content': [
-                      {
-                          'type': 'output_text',
-                          'text': 'Let me search for the latest React version.',
-                          'annotations': [],
-                      },
-                  ],
-              },
-              {
-                  'type': 'message',
-                  'role': 'user',
-                  'content': [
-                      {
-                          'type': 'input_text',
-                          'text': 'Yes, please find the most recent information',
-                      },
-                  ],
-              },
-          ],
-          'plugins': [{'id': 'web', 'max_results': 2}],
-          'max_output_tokens': 9000,
-      }
-  )
+      {
+        type: 'message',
+        id: 'msg_1',
+        status: 'in_progress',
+        role: 'assistant',
+        content: [
+          {
+            type: 'output_text',
+            text: 'Let me search for the latest React version.',
+            annotations: [],
+          },
+        ],
+      },
+      {
+        type: 'message',
+        role: 'user',
+        content: [
+          {
+            type: 'input_text',
+            text: 'Yes, please find the most recent information',
+          },
+        ],
+      },
+    ],
+    plugins: [{ id: 'web', max_results: 2 }],
+    max_output_tokens: 9000,
+  }),
+});
 
-  result = response.json()
-  print(result)
-  ```
-</CodeGroup>
+const result = await response.json();
+console.log(result);
+```
+
+```python title="Python"
+import requests
+
+response = requests.post(
+    'https://openrouter.ai/api/v1/responses',
+    headers={
+        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+        'Content-Type': 'application/json',
+    },
+    json={
+        'model': 'openai/o4-mini',
+        'input': [
+            {
+                'type': 'message',
+                'role': 'user',
+                'content': [
+                    {
+                        'type': 'input_text',
+                        'text': 'What is the latest version of React?',
+                    },
+                ],
+            },
+            {
+                'type': 'message',
+                'id': 'msg_1',
+                'status': 'in_progress',
+                'role': 'assistant',
+                'content': [
+                    {
+                        'type': 'output_text',
+                        'text': 'Let me search for the latest React version.',
+                        'annotations': [],
+                    },
+                ],
+            },
+            {
+                'type': 'message',
+                'role': 'user',
+                'content': [
+                    {
+                        'type': 'input_text',
+                        'text': 'Yes, please find the most recent information',
+                    },
+                ],
+            },
+        ],
+        'plugins': [{'id': 'web', 'max_results': 2}],
+        'max_output_tokens': 9000,
+    }
+)
+
+result = response.json()
+print(result)
+```
 
 ## Streaming Web Search
 
 Monitor web search progress with streaming:
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  const response = await fetch('https://openrouter.ai/api/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'openai/o4-mini',
-      input: [
-        {
-          type: 'message',
-          role: 'user',
-          content: [
-            {
-              type: 'input_text',
-              text: 'What is the latest news about AI?',
-            },
-          ],
-        },
-      ],
-      plugins: [{ id: 'web', max_results: 2 }],
-      stream: true,
-      max_output_tokens: 9000,
-    }),
-  });
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openai/o4-mini',
+    input: [
+      {
+        type: 'message',
+        role: 'user',
+        content: [
+          {
+            type: 'input_text',
+            text: 'What is the latest news about AI?',
+          },
+        ],
+      },
+    ],
+    plugins: [{ id: 'web', max_results: 2 }],
+    stream: true,
+    max_output_tokens: 9000,
+  }),
+});
 
-  const reader = response.body?.getReader();
-  const decoder = new TextDecoder();
+const reader = response.body?.getReader();
+const decoder = new TextDecoder();
 
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
 
-    const chunk = decoder.decode(value);
-    const lines = chunk.split('\n');
+  const chunk = decoder.decode(value);
+  const lines = chunk.split('\n');
 
-    for (const line of lines) {
-      if (line.startsWith('data: ')) {
-        const data = line.slice(6);
-        if (data === '[DONE]') return;
+  for (const line of lines) {
+    if (line.startsWith('data: ')) {
+      const data = line.slice(6);
+      if (data === '[DONE]') return;
 
-        try {
-          const parsed = JSON.parse(data);
-          if (parsed.type === 'response.output_item.added' &&
-              parsed.item?.type === 'message') {
-            console.log('Message added');
-          }
-          if (parsed.type === 'response.completed') {
-            const annotations = parsed.response?.output
-              ?.find(o => o.type === 'message')
-              ?.content?.find(c => c.type === 'output_text')
-              ?.annotations || [];
-            console.log('Citations:', annotations.length);
-          }
-        } catch (e) {
-          // Skip invalid JSON
+      try {
+        const parsed = JSON.parse(data);
+        if (parsed.type === 'response.output_item.added' &&
+            parsed.item?.type === 'message') {
+          console.log('Message added');
         }
+        if (parsed.type === 'response.completed') {
+          const annotations = parsed.response?.output
+            ?.find(o => o.type === 'message')
+            ?.content?.find(c => c.type === 'output_text')
+            ?.annotations || [];
+          console.log('Citations:', annotations.length);
+        }
+      } catch (e) {
+        // Skip invalid JSON
       }
     }
   }
-  ```
+}
+```
 
-  ```python title="Python"
-  import requests
-  import json
+```python title="Python"
+import requests
+import json
 
-  response = requests.post(
-      'https://openrouter.ai/api/v1/responses',
-      headers={
-          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-          'Content-Type': 'application/json',
-      },
-      json={
-          'model': 'openai/o4-mini',
-          'input': [
-              {
-                  'type': 'message',
-                  'role': 'user',
-                  'content': [
-                      {
-                          'type': 'input_text',
-                          'text': 'What is the latest news about AI?',
-                      },
-                  ],
-              },
-          ],
-          'plugins': [{'id': 'web', 'max_results': 2}],
-          'stream': True,
-          'max_output_tokens': 9000,
-      },
-      stream=True
-  )
+response = requests.post(
+    'https://openrouter.ai/api/v1/responses',
+    headers={
+        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+        'Content-Type': 'application/json',
+    },
+    json={
+        'model': 'openai/o4-mini',
+        'input': [
+            {
+                'type': 'message',
+                'role': 'user',
+                'content': [
+                    {
+                        'type': 'input_text',
+                        'text': 'What is the latest news about AI?',
+                    },
+                ],
+            },
+        ],
+        'plugins': [{'id': 'web', 'max_results': 2}],
+        'stream': True,
+        'max_output_tokens': 9000,
+    },
+    stream=True
+)
 
-  for line in response.iter_lines():
-      if line:
-          line_str = line.decode('utf-8')
-          if line_str.startswith('data: '):
-              data = line_str[6:]
-              if data == '[DONE]':
-                  break
-              try:
-                  parsed = json.loads(data)
-                  if (parsed.get('type') == 'response.output_item.added' and
-                      parsed.get('item', {}).get('type') == 'message'):
-                      print('Message added')
-                  if parsed.get('type') == 'response.completed':
-                      output = parsed.get('response', {}).get('output', [])
-                      message = next((o for o in output if o.get('type') == 'message'), {})
-                      content = message.get('content', [])
-                      text_content = next((c for c in content if c.get('type') == 'output_text'), {})
-                      annotations = text_content.get('annotations', [])
-                      print(f'Citations: {len(annotations)}')
-              except json.JSONDecodeError:
-                  continue
-  ```
-</CodeGroup>
+for line in response.iter_lines():
+    if line:
+        line_str = line.decode('utf-8')
+        if line_str.startswith('data: '):
+            data = line_str[6:]
+            if data == '[DONE]':
+                break
+            try:
+                parsed = json.loads(data)
+                if (parsed.get('type') == 'response.output_item.added' and
+                    parsed.get('item', {}).get('type') == 'message'):
+                    print('Message added')
+                if parsed.get('type') == 'response.completed':
+                    output = parsed.get('response', {}).get('output', [])
+                    message = next((o for o in output if o.get('type') == 'message'), {})
+                    content = message.get('content', [])
+                    text_content = next((c for c in content if c.get('type') == 'output_text'), {})
+                    annotations = text_content.get('annotations', [])
+                    print(f'Citations: {len(annotations)}')
+            except json.JSONDecodeError:
+                continue
+```
 
 ## Annotation Processing
 
 Extract and process citation information:
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  function extractCitations(response: any) {
-    const messageOutput = response.output?.find((o: any) => o.type === 'message');
-    const textContent = messageOutput?.content?.find((c: any) => c.type === 'output_text');
-    const annotations = textContent?.annotations || [];
+```typescript title="TypeScript"
+function extractCitations(response: any) {
+  const messageOutput = response.output?.find((o: any) => o.type === 'message');
+  const textContent = messageOutput?.content?.find((c: any) => c.type === 'output_text');
+  const annotations = textContent?.annotations || [];
 
-    return annotations
-      .filter((annotation: any) => annotation.type === 'url_citation')
-      .map((annotation: any) => ({
-        url: annotation.url,
-        text: textContent.text.slice(annotation.start_index, annotation.end_index),
-        startIndex: annotation.start_index,
-        endIndex: annotation.end_index,
-      }));
-  }
+  return annotations
+    .filter((annotation: any) => annotation.type === 'url_citation')
+    .map((annotation: any) => ({
+      url: annotation.url,
+      text: textContent.text.slice(annotation.start_index, annotation.end_index),
+      startIndex: annotation.start_index,
+      endIndex: annotation.end_index,
+    }));
+}
 
-  const result = await response.json();
-  const citations = extractCitations(result);
-  console.log('Found citations:', citations);
-  ```
+const result = await response.json();
+const citations = extractCitations(result);
+console.log('Found citations:', citations);
+```
 
-  ```python title="Python"
-  def extract_citations(response_data):
-      output = response_data.get('output', [])
-      message_output = next((o for o in output if o.get('type') == 'message'), {})
-      content = message_output.get('content', [])
-      text_content = next((c for c in content if c.get('type') == 'output_text'), {})
-      annotations = text_content.get('annotations', [])
-      text = text_content.get('text', '')
+```python title="Python"
+def extract_citations(response_data):
+    output = response_data.get('output', [])
+    message_output = next((o for o in output if o.get('type') == 'message'), {})
+    content = message_output.get('content', [])
+    text_content = next((c for c in content if c.get('type') == 'output_text'), {})
+    annotations = text_content.get('annotations', [])
+    text = text_content.get('text', '')
 
-      citations = []
-      for annotation in annotations:
-          if annotation.get('type') == 'url_citation':
-              citations.append({
-                  'url': annotation.get('url'),
-                  'text': text[annotation.get('start_index', 0):annotation.get('end_index', 0)],
-                  'start_index': annotation.get('start_index'),
-                  'end_index': annotation.get('end_index'),
-              })
+    citations = []
+    for annotation in annotations:
+        if annotation.get('type') == 'url_citation':
+            citations.append({
+                'url': annotation.get('url'),
+                'text': text[annotation.get('start_index', 0):annotation.get('end_index', 0)],
+                'start_index': annotation.get('start_index'),
+                'end_index': annotation.get('end_index'),
+            })
 
-      return citations
+    return citations
 
-  result = response.json()
-  citations = extract_citations(result)
-  print(f'Found citations: {citations}')
-  ```
-</CodeGroup>
+result = response.json()
+citations = extract_citations(result)
+print(f'Found citations: {citations}')
+```
 
 ## Best Practices
 

@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Server Tools
 
-<Note title="Beta">
-  Server tools are currently in beta. The API and behavior may change.
-</Note>
+Server tools are currently in beta. The API and behavior may change.
 
 Server tools are specialized tools operated by OpenRouter that any model can call during a request. When a model decides to use a server tool, OpenRouter executes it server-side and returns the result to the model — no client-side implementation needed.
 
@@ -48,87 +47,78 @@ Server tools work alongside your own user-defined tools — you can include both
 
 Add server tools to the `tools` array using the `openrouter:` type prefix:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/gpt-5.2'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'What are the latest developments in AI?'
-          }
-        ],
-        tools: [
-          { type: 'openrouter:web_search' },
-          { type: 'openrouter:datetime' }
-        ]
-      }),
-    });
-
-    const data = await response.json();
-    console.log(data.choices[0].message.content);
-    ```
-
-    ```python title="Python"
-    import requests
-
-    response = requests.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "What are the latest developments in AI?"
-          }
-        ],
-        "tools": [
-          {"type": "openrouter:web_search"},
-          {"type": "openrouter:datetime"}
-        ]
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: 'What are the latest developments in AI?'
       }
-    )
+    ],
+    tools: [
+      { type: 'openrouter:web_search' },
+      { type: 'openrouter:datetime' }
+    ]
+  }),
+});
 
-    data = response.json()
-    print(data["choices"][0]["message"]["content"])
-    ```
+const data = await response.json();
+console.log(data.choices[0].message.content);
+```
 
-    ```bash title="cURL"
-    curl https://openrouter.ai/api/v1/chat/completions \
-      -H "Authorization: Bearer {{API_KEY_REF}}" \
-      -H "Content-Type: application/json" \
-      -d '{
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "What are the latest developments in AI?"
-          }
-        ],
-        "tools": [
-          {"type": "openrouter:web_search"},
-          {"type": "openrouter:datetime"}
-        ]
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```python title="Python"
+import requests
+
+response = requests.post(
+  "https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the latest developments in AI?"
+      }
+    ],
+    "tools": [
+      {"type": "openrouter:web_search"},
+      {"type": "openrouter:datetime"}
+    ]
+  }
+)
+
+data = response.json()
+print(data["choices"][0]["message"]["content"])
+```
+
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer {{API_KEY_REF}}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the latest developments in AI?"
+      }
+    ],
+    "tools": [
+      {"type": "openrouter:web_search"},
+      {"type": "openrouter:datetime"}
+    ]
+  }'
+```
 
 ## Combining with User-Defined Tools
 

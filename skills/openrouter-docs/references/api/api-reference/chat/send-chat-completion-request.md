@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Create a chat completion
 
@@ -1877,7 +1878,7 @@ components:
             Maximum total number of search results across all search calls in a
             single request. Once this limit is reached, the tool will stop
             returning new results. Useful for controlling cost and context size
-            in agentic loops.
+            in agentic loops. Defaults to 50 when not specified.
         search_context_size:
           $ref: '#/components/schemas/SearchQualityLevel'
         user_location:
@@ -1943,7 +1944,7 @@ components:
             Maximum total number of search results across all search calls in a
             single request. Once this limit is reached, the tool will stop
             returning new results. Useful for controlling cost and context size
-            in agentic loops.
+            in agentic loops. Defaults to 50 when not specified.
         parameters:
           $ref: '#/components/schemas/WebSearchConfig'
         search_context_size:

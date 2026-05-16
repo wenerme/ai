@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Guide a Video with Reference Images
 
@@ -10,10 +11,8 @@ influence the output without forcing exact first or last frames.
 By the end, your implementation should submit a reference-to-video job with
 `input_references`.
 
-<Tip>
-  For reusable agent knowledge across projects, install the
-  [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
-</Tip>
+For reusable agent knowledge across projects, install the
+[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
 
 ## Before you start
 
@@ -25,12 +24,10 @@ You need:
 * A model that supports reference-to-video, confirmed from the current
   OpenRouter video docs or model description
 
-<Tip>
-  If you have not chosen a model yet, read
-  [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-  so you can select one based on your clip duration, output shape, input type,
-  audio, provider controls, and cost requirements.
-</Tip>
+If you have not chosen a model yet, read
+[Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
+so you can select one based on your clip duration, output shape, input type,
+audio, provider controls, and cost requirements.
 
 Use the API reference pages as the source of truth for exact fields:
 
@@ -42,10 +39,8 @@ Use `input_references` for visual guidance. Use `frame_images` only when you nee
 
 Use stable, directly downloadable image URLs. Some providers cannot fetch image URLs that require cookies, redirects through HTML pages, bot checks, or unusual headers.
 
-<Warning>
-  Submitting `POST /api/v1/videos` starts a real video generation job and may
-  spend OpenRouter credits.
-</Warning>
+Submitting `POST /api/v1/videos` starts a real video generation job and may
+spend OpenRouter credits.
 
 The video models endpoint does not expose a dedicated structured reference-image
 field for every provider. Confirm reference support from the model description

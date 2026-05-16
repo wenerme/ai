@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Model Fallbacks
 
@@ -10,15 +11,34 @@ The `models` parameter lets you automatically try other models if the primary mo
 
 Provide an array of model IDs in priority order. If the first model returns an error, OpenRouter will automatically try the next model in the list.
 
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
+const openRouter = new OpenRouter({
+  apiKey: '<OPENROUTER_API_KEY>',
+});
 
-  const completion = await openRouter.chat.send({
+const completion = await openRouter.chat.send({
+  models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
+  messages: [
+    {
+      role: 'user',
+      content: 'What is the meaning of life?',
+    },
+  ],
+});
+
+console.log(completion.choices[0].message.content);
+```
+
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
     models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
     messages: [
       {
@@ -26,58 +46,37 @@ Provide an array of model IDs in priority order. If the first model returns an e
         content: 'What is the meaning of life?',
       },
     ],
-  });
+  }),
+});
 
-  console.log(completion.choices[0].message.content);
-  ```
+const data = await response.json();
+console.log(data.choices[0].message.content);
+```
 
-  ```typescript title="TypeScript (fetch)"
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
-      messages: [
-        {
-          role: 'user',
-          content: 'What is the meaning of life?',
-        },
-      ],
-    }),
-  });
+```python title="Python"
+import requests
+import json
 
-  const data = await response.json();
-  console.log(data.choices[0].message.content);
-  ```
+response = requests.post(
+  url="https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "Content-Type": "application/json",
+  },
+  data=json.dumps({
+    "models": ["anthropic/claude-sonnet-4.6", "gryphe/mythomax-l2-13b"],
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the meaning of life?"
+      }
+    ]
+  })
+)
 
-  ```python title="Python"
-  import requests
-  import json
-
-  response = requests.post(
-    url="https://openrouter.ai/api/v1/chat/completions",
-    headers={
-      "Authorization": "Bearer <OPENROUTER_API_KEY>",
-      "Content-Type": "application/json",
-    },
-    data=json.dumps({
-      "models": ["anthropic/claude-sonnet-4.6", "gryphe/mythomax-l2-13b"],
-      "messages": [
-        {
-          "role": "user",
-          "content": "What is the meaning of life?"
-        }
-      ]
-    })
-  )
-
-  data = response.json()
-  print(data['choices'][0]['message']['content'])
-  ```
-</CodeGroup>
+data = response.json()
+print(data['choices'][0]['message']['content'])
+```
 
 ## Fallback Behavior
 
@@ -98,60 +97,52 @@ Requests are priced using the model that was ultimately used, which will be retu
 
 To use the `models` array with the OpenAI SDK, include it in the `extra_body` parameter. In the example below, gpt-4o will be tried first, and the `models` array will be tried in order as fallbacks.
 
-<Template
-  data={{
-  API_KEY_REF,
-}}
->
-  <CodeGroup>
-    ```python
-    from openai import OpenAI
+```python
+from openai import OpenAI
 
-    openai_client = OpenAI(
-      base_url="https://openrouter.ai/api/v1",
-      api_key={{API_KEY_REF}},
-    )
+openai_client = OpenAI(
+  base_url="https://openrouter.ai/api/v1",
+  api_key={{API_KEY_REF}},
+)
 
-    completion = openai_client.chat.completions.create(
-        model="openai/gpt-4o",
-        extra_body={
-            "models": ["anthropic/claude-sonnet-4.6", "gryphe/mythomax-l2-13b"],
-        },
-        messages=[
-            {
-                "role": "user",
-                "content": "What is the meaning of life?"
-            }
-        ]
-    )
+completion = openai_client.chat.completions.create(
+    model="openai/gpt-4o",
+    extra_body={
+        "models": ["anthropic/claude-sonnet-4.6", "gryphe/mythomax-l2-13b"],
+    },
+    messages=[
+        {
+            "role": "user",
+            "content": "What is the meaning of life?"
+        }
+    ]
+)
 
-    print(completion.choices[0].message.content)
-    ```
+print(completion.choices[0].message.content)
+```
 
-    ```typescript
-    import OpenAI from 'openai';
+```typescript
+import OpenAI from 'openai';
 
-    const openrouterClient = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openrouterClient = new OpenAI({
+  baseURL: 'https://openrouter.ai/api/v1',
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    async function main() {
-      // @ts-expect-error
-      const completion = await openrouterClient.chat.completions.create({
-        model: 'openai/gpt-4o',
-        models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
-        messages: [
-          {
-            role: 'user',
-            content: 'What is the meaning of life?',
-          },
-        ],
-      });
-      console.log(completion.choices[0].message);
-    }
+async function main() {
+  // @ts-expect-error
+  const completion = await openrouterClient.chat.completions.create({
+    model: 'openai/gpt-4o',
+    models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
+    messages: [
+      {
+        role: 'user',
+        content: 'What is the meaning of life?',
+      },
+    ],
+  });
+  console.log(completion.choices[0].message);
+}
 
-    main();
-    ```
-  </CodeGroup>
-</Template>
+main();
+```

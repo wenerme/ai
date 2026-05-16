@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # DevTools
 
-<Warning>
-  The DevTools SDK and CLI are currently in pre-release status. DevTools is designed for development use only and should never be deployed in production environments.
-</Warning>
+The DevTools SDK and CLI are currently in pre-release status. DevTools is designed for development use only and should never be deployed in production environments.
 
 The OpenRouter DevTools provide a comprehensive solution for SDK telemetry capture and visualization during development. Monitor your AI application's requests, responses, token usage, and errors in real-time with a beautiful web interface.
 

@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Prompt Caching
 
@@ -167,13 +168,9 @@ There are two ways to enable prompt caching with Anthropic:
 * **Automatic caching**: Add a single `cache_control` field at the top level of your request. The system automatically applies the cache breakpoint to the last cacheable block and advances it forward as conversations grow. Best for multi-turn conversations.
 * **Explicit cache breakpoints**: Place `cache_control` directly on individual content blocks for fine-grained control over exactly what gets cached. There is a limit of four explicit breakpoints. It is recommended to reserve the cache breakpoints for large bodies of text, such as character cards, CSV data, RAG data, book chapters, etc.
 
-<Note>
-  **Automatic caching** (top-level `cache_control`) is only supported when requests are routed to the **Anthropic** provider directly. Amazon Bedrock and Google Vertex AI currently do not support top-level `cache_control` — when it is present, OpenRouter will only route to the Anthropic provider and exclude Bedrock and Vertex endpoints. Explicit per-block `cache_control` breakpoints work across all Anthropic-compatible providers including Bedrock and Vertex.
-</Note>
+**Automatic caching** (top-level `cache_control`) is only supported when requests are routed to the **Anthropic** provider directly. Amazon Bedrock and Google Vertex AI currently do not support top-level `cache_control` — when it is present, OpenRouter will only route to the Anthropic provider and exclude Bedrock and Vertex endpoints. Explicit per-block `cache_control` breakpoints work across all Anthropic-compatible providers including Bedrock and Vertex.
 
-<Note>
-  **Responses API support:** The [Responses API](/docs/api-reference/responses/create-a-model-response) only supports **automatic caching** via top-level `cache_control`. Explicit per-block cache breakpoints inside `input` items are **not** exposed through the Responses API — use the [Chat Completions](/docs/api-reference/chat/create-a-chat-completion) or [Anthropic Messages](/docs/api-reference/messages/create-a-message) API if you need fine-grained breakpoints.
-</Note>
+**Responses API support:** The [Responses API](/docs/api-reference/responses/create-a-model-response) only supports **automatic caching** via top-level `cache_control`. Explicit per-block cache breakpoints inside `input` items are **not** exposed through the Responses API — use the [Chat Completions](/docs/api-reference/chat/create-a-chat-completion) or [Anthropic Messages](/docs/api-reference/messages/create-a-message) API if you need fine-grained breakpoints.
 
 By default, the cache expires after 5 minutes, but you can extend this to 1 hour by specifying `"ttl": "1h"` in the `cache_control` object.
 
@@ -348,11 +345,9 @@ Note that the TTL is on average 3-5 minutes, but will vary. There is a minimum o
 
 [Official announcement from Google](https://developers.googleblog.com/en/gemini-2-5-models-now-support-implicit-caching/)
 
-<Tip>
-  To maximize implicit cache hits, keep the initial portion of your message
-  arrays consistent between requests. Push variations (such as user questions or
-  dynamic context elements) toward the end of your prompt/requests.
-</Tip>
+To maximize implicit cache hits, keep the initial portion of your message
+arrays consistent between requests. Push variations (such as user questions or
+dynamic context elements) toward the end of your prompt/requests.
 
 ### Pricing Changes for Cached Requests:
 
@@ -383,23 +378,19 @@ OpenRouter simplifies Gemini cache management, abstracting away complexities:
 
 Gemini caching in OpenRouter requires you to insert `cache_control` breakpoints explicitly within message content, similar to Anthropic. We recommend using caching primarily for large content pieces (such as CSV files, lengthy character cards, retrieval augmented generation (RAG) data, or extensive textual sources).
 
-<Tip>
-  There is not a limit on the number of `cache_control` breakpoints you can
-  include in your request. OpenRouter will use only the last breakpoint for
-  Gemini caching across normal message content. Including multiple breakpoints
-  is safe and can help maintain compatibility with Anthropic, but only the
-  final one will be used for Gemini.
-</Tip>
+There is not a limit on the number of `cache_control` breakpoints you can
+include in your request. OpenRouter will use only the last breakpoint for
+Gemini caching across normal message content. Including multiple breakpoints
+is safe and can help maintain compatibility with Anthropic, but only the
+final one will be used for Gemini.
 
-<Note>
-  Gemini has a single `systemInstruction` field, and cached Gemini content
-  treats that `systemInstruction` as immutable. On OpenRouter, this means
-  `cache_control` inside the first `system` or `developer` message can cache
-  the normalized system prompt, but it cannot preserve an uncached dynamic tail
-  inside that same message. If you need part of your prompt to stay dynamic,
-  move that dynamic content into a later `user` message instead of appending it
-  after a cached block in the first `system` message.
-</Note>
+Gemini has a single `systemInstruction` field, and cached Gemini content
+treats that `systemInstruction` as immutable. On OpenRouter, this means
+`cache_control` inside the first `system` or `developer` message can cache
+the normalized system prompt, but it cannot preserve an uncached dynamic tail
+inside that same message. If you need part of your prompt to stay dynamic,
+move that dynamic content into a later `user` message instead of appending it
+after a cached block in the first `system` message.
 
 ### Examples:
 

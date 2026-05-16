@@ -1,13 +1,12 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Chat - Python SDK
 
-<Warning>
-  The Python SDK and docs are currently in beta.
-  Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
-</Warning>
+The Python SDK and docs are currently in beta.
+Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 
 ## Overview
 
@@ -59,7 +58,7 @@ with OpenRouter(
 | `x_open_router_title`                 | *Optional\[str]*                                                                                            | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                                                                                                            |                                                                                                                    |
 | `x_open_router_categories`            | *Optional\[str]*                                                                                            | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                                                                                                   |                                                                                                                    |
 | `x_open_router_experimental_metadata` | [Optional\[components.MetadataLevel\]](../../components/metadatalevel.md)                                   | :heavy\_minus\_sign: | Opt-in to surface routing metadata on the response under `openrouter_metadata`. Defaults to `disabled`.                                                                                                                                                       | enabled                                                                                                            |
-| `cache_control`                       | [Optional\[components.AnthropicCacheControlDirective\]](../../components/anthropiccachecontroldirective.md) | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                           | `{"type": "ephemeral"}`                                                                                            |
+| `cache_control`                       | [Optional\[components.AnthropicCacheControlDirective\]](../../components/anthropiccachecontroldirective.md) | :heavy\_minus\_sign: | Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. Currently supported for Anthropic Claude models.                                                   | `{"type": "ephemeral"}`                                                                                            |
 | `debug`                               | [Optional\[components.ChatDebugOptions\]](../../components/chatdebugoptions.md)                             | :heavy\_minus\_sign: | Debug options for inspecting request transformations (streaming only)                                                                                                                                                                                         | `{"echo_upstream_body": true}`                                                                                     |
 | `frequency_penalty`                   | *OptionalNullable\[float]*                                                                                  | :heavy\_minus\_sign: | Frequency penalty (-2.0 to 2.0)                                                                                                                                                                                                                               | 0                                                                                                                  |
 | `image_config`                        | Dict\[str, [components.ImageConfig](/docs/sdks/python/api-reference/components/imageconfig)]                | :heavy\_minus\_sign: | Provider-specific image configuration options. Keys and values vary by model/provider. See [https://openrouter.ai/docs/guides/overview/multimodal/image-generation](https://openrouter.ai/docs/guides/overview/multimodal/image-generation) for more details. | `{"aspect_ratio": "16:9","quality": "high"}`                                                                       |

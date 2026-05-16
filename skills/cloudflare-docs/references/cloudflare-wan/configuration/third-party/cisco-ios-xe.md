@@ -198,7 +198,11 @@ interface GigabitEthernet2
 
 ```
 
-### Establish IPsec behind a NAT or CGNAT with port `4500`
+### Establish IPsec behind a NAT
+
+Note
+
+This configuration is no longer required. Cloudflare now supports NAT-T starting on UDP port `500`, so devices can negotiate the standard NAT-T flow without forcing port `4500`. Refer to the [changelog entry](https://developers.cloudflare.com/changelog/2026-05-11-nat-t-port-500/) for details. This guide has not been re-tested since the change.
 
 If your Cisco router is behind a Network Address Translation (NAT) or Carrier-Grade NAT (CGNAT) and you need to establish a connection on port `4500`, you can use the `nat force-encap` command.
 

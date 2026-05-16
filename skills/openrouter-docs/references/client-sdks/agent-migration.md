@@ -1,14 +1,13 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Migrating to @openrouter/agent
 
-<Tip>
-  Using an AI coding assistant? Install the migration skill
-  to let your agent handle the import updates for you:
-  `gh skill install OpenRouterTeam/skills openrouter-agent-migration`
-</Tip>
+Using an AI coding assistant? Install the migration skill
+to let your agent handle the import updates for you:
+`gh skill install OpenRouterTeam/skills openrouter-agent-migration`
 
 The agent toolkit (`callModel`, `tool`, stop conditions, etc.)
 has moved from `@openrouter/sdk` to a standalone
@@ -35,23 +34,21 @@ If you only use the REST API client for non-agent features
 
 ## Step 1: Install the new package
 
-<CodeGroup>
-  ```bash npm
-  npm install @openrouter/agent
-  ```
+```bash npm
+npm install @openrouter/agent
+```
 
-  ```bash pnpm
-  pnpm add @openrouter/agent
-  ```
+```bash pnpm
+pnpm add @openrouter/agent
+```
 
-  ```bash yarn
-  yarn add @openrouter/agent
-  ```
+```bash yarn
+yarn add @openrouter/agent
+```
 
-  ```bash bun
-  bun add @openrouter/agent
-  ```
-</CodeGroup>
+```bash bun
+bun add @openrouter/agent
+```
 
 ## Step 2: Update imports
 
@@ -217,13 +214,11 @@ find src -name '*.ts' -o -name '*.tsx' | xargs sed -i \
   -e "s|@openrouter/sdk/lib/async-params|@openrouter/agent/async-params|g"
 ```
 
-<Note>
-  The `tool-types` replacement runs before `tool` to avoid
-  partial matches. After running the script, search your
-  codebase for any remaining `from '@openrouter/sdk'` (without
-  a `/` subpath) to find barrel and client imports that need
-  manual updates.
-</Note>
+The `tool-types` replacement runs before `tool` to avoid
+partial matches. After running the script, search your
+codebase for any remaining `from '@openrouter/sdk'` (without
+a `/` subpath) to find barrel and client imports that need
+manual updates.
 
 ## FAQ
 

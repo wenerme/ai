@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Use Provider-Specific Video Options
 
@@ -10,10 +11,8 @@ OpenRouter's normalized video schema.
 By the end, your implementation should inspect a model's allowed passthrough
 parameters and send one through `provider.options`.
 
-<Tip>
-  For reusable agent knowledge across projects, install the
-  [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
-</Tip>
+For reusable agent knowledge across projects, install the
+[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
 
 ## Before you start
 
@@ -24,12 +23,10 @@ You need:
   the video job
 * A target video model for the provider-specific options you want to send
 
-<Tip>
-  If you are not already targeting a specific provider model, read
-  [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-  so you can select one based on your clip duration, output shape, input type,
-  audio, provider controls, and cost requirements.
-</Tip>
+If you are not already targeting a specific provider model, read
+[Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
+so you can select one based on your clip duration, output shape, input type,
+audio, provider controls, and cost requirements.
 
 Use the API reference pages as the source of truth for exact fields:
 
@@ -39,10 +36,8 @@ Use the API reference pages as the source of truth for exact fields:
 
 Provider-specific options can change by model and provider. Always check `allowed_passthrough_parameters` before relying on one.
 
-<Warning>
-  Submitting `POST /api/v1/videos` starts a real video generation job and may
-  spend OpenRouter credits.
-</Warning>
+Submitting `POST /api/v1/videos` starts a real video generation job and may
+spend OpenRouter credits.
 
 ## Step 1: Inspect allowed passthrough parameters
 

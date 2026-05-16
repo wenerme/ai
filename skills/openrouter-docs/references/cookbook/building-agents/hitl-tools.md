@@ -1,15 +1,14 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Add Human-in-the-Loop Controls to an Agent SDK Agent
 
-<Tip>
-  This recipe assumes you already have an agent built with the OpenRouter Agent
-  SDK and `callModel`. If you are starting from scratch, first read the
-  [callModel overview](/docs/sdks/typescript/call-model/overview) to learn
-  about the Agent SDK.
-</Tip>
+This recipe assumes you already have an agent built with the OpenRouter Agent
+SDK and `callModel`. If you are starting from scratch, first read the
+[callModel overview](/docs/sdks/typescript/call-model/overview) to learn
+about the Agent SDK.
 
 **Goal:** Add human-in-the-loop (HITL) controls to an existing Agent SDK agent
 so one of its tools can auto-resolve routine decisions and pause for human

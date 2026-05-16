@@ -1,14 +1,13 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Prompt Injection Detection
 
 OpenRouter's regex-based prompt injection detection scans incoming requests for common injection techniques using pattern matching. This feature is **free** and adds **minimal latency** to requests since the patterns are evaluated locally before the request is forwarded to the model provider.
 
-<Note>
-  To enable prompt injection detection, navigate to your [workspace guardrails](https://openrouter.ai/workspaces), open or create a guardrail, and configure the **Security** section.
-</Note>
+To enable prompt injection detection, navigate to your [workspace guardrails](https://openrouter.ai/workspaces), open or create a guardrail, and configure the **Security** section.
 
 ## How It Works
 
@@ -18,15 +17,11 @@ When regex-based detection is enabled on a guardrail, every incoming message is 
 * **Redact** — Matched spans are replaced with `[PROMPT_INJECTION]` and the sanitized request is forwarded to the model.
 * **Block** — The entire request is rejected with a `403` before it reaches the model.
 
-<Note>
-  When multiple guardrails apply to the same request (for example, a workspace default plus an API key–scoped guardrail), the most restrictive action wins. Priority is `block` > `redact` > `flag`.
-</Note>
+When multiple guardrails apply to the same request (for example, a workspace default plus an API key–scoped guardrail), the most restrictive action wins. Priority is `block` > `redact` > `flag`.
 
 ## Detection Patterns
 
 The following regex patterns are checked against all user-supplied message content. Patterns are case-insensitive unless noted otherwise.
-
-<PromptInjectionPatternsTables />
 
 ## Evasion Detection
 
@@ -36,15 +31,11 @@ In addition to the regex patterns above, the detection system includes technique
 
 Attackers may scramble the middle letters of keywords while keeping the first and last letters intact (e.g., "ignroe" instead of "ignore"). The system checks for typoglycemia variants of these target words:
 
-<PromptInjectionFuzzyTargets />
-
 ### Encoding-Based Evasion
 
 The system decodes Base64 and hex-encoded content (including space-separated hex pairs like `69 67 6e 6f 72 65`), then checks the decoded text for injection keywords:
 
-<PromptInjectionEvasionKeywords />
-
-This catches attempts to hide malicious instructions behind encoding layers. Two encoding detectors run: <PromptInjectionEncodingDetectors />.
+This catches attempts to hide malicious instructions behind encoding layers. Two encoding detectors run: .
 
 ### Character-Spaced Evasion
 

@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Image Inputs
 
@@ -15,263 +16,245 @@ OpenRouter supports both **direct URLs** and **base64-encoded data** for images:
 
 Here's how to send an image using a URL:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-3-flash-preview'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    const result = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
+const result = await openRouter.chat.send({
+  model: '{{MODEL}}',
+  messages: [
+    {
+      role: 'user',
+      content: [
         {
-          role: 'user',
-          content: [
-            {
-              type: 'text',
-              text: "What's in this image?",
-            },
-            {
-              type: 'image_url',
-              imageUrl: {
-                url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg',
-              },
-            },
-          ],
+          type: 'text',
+          text: "What's in this image?",
+        },
+        {
+          type: 'image_url',
+          imageUrl: {
+            url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg',
+          },
         },
       ],
-      stream: false,
-    });
+    },
+  ],
+  stream: false,
+});
 
-    console.log(result);
-    ```
+console.log(result);
+```
 
-    ```python
-    import requests
-    import json
+```python
+import requests
+import json
 
-    url = "https://openrouter.ai/api/v1/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {API_KEY_REF}",
-        "Content-Type": "application/json"
-    }
+url = "https://openrouter.ai/api/v1/chat/completions"
+headers = {
+    "Authorization": f"Bearer {API_KEY_REF}",
+    "Content-Type": "application/json"
+}
 
-    messages = [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "text",
-                    "text": "What's in this image?"
-                },
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
-                    }
+messages = [
+    {
+        "role": "user",
+        "content": [
+            {
+                "type": "text",
+                "text": "What's in this image?"
+            },
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
                 }
-            ]
-        }
-    ]
-
-    payload = {
-        "model": "{{MODEL}}",
-        "messages": messages
+            }
+        ]
     }
+]
 
-    response = requests.post(url, headers=headers, json=payload)
-    print(response.json())
-    ```
+payload = {
+    "model": "{{MODEL}}",
+    "messages": messages
+}
 
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${API_KEY_REF}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
+response = requests.post(url, headers=headers, json=payload)
+print(response.json())
+```
+
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${API_KEY_REF}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: [
           {
-            role: 'user',
-            content: [
-              {
-                type: 'text',
-                text: "What's in this image?",
-              },
-              {
-                type: 'image_url',
-                image_url: {
-                  url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg',
-                },
-              },
-            ],
+            type: 'text',
+            text: "What's in this image?",
+          },
+          {
+            type: 'image_url',
+            image_url: {
+              url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg',
+            },
           },
         ],
-      }),
-    });
+      },
+    ],
+  }),
+});
 
-    const data = await response.json();
-    console.log(data);
-    ```
-  </CodeGroup>
-</Template>
+const data = await response.json();
+console.log(data);
+```
 
 ### Using Base64 Encoded Images
 
 For locally stored images, you can send them using base64 encoding. Here's how to do it:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-3-flash-preview'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
-    import * as fs from 'fs';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
+import * as fs from 'fs';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    async function encodeImageToBase64(imagePath: string): Promise<string> {
-      const imageBuffer = await fs.promises.readFile(imagePath);
-      const base64Image = imageBuffer.toString('base64');
-      return `data:image/jpeg;base64,${base64Image}`;
-    }
+async function encodeImageToBase64(imagePath: string): Promise<string> {
+  const imageBuffer = await fs.promises.readFile(imagePath);
+  const base64Image = imageBuffer.toString('base64');
+  return `data:image/jpeg;base64,${base64Image}`;
+}
 
-    // Read and encode the image
-    const imagePath = 'path/to/your/image.jpg';
-    const base64Image = await encodeImageToBase64(imagePath);
+// Read and encode the image
+const imagePath = 'path/to/your/image.jpg';
+const base64Image = await encodeImageToBase64(imagePath);
 
-    const result = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
+const result = await openRouter.chat.send({
+  model: '{{MODEL}}',
+  messages: [
+    {
+      role: 'user',
+      content: [
         {
-          role: 'user',
-          content: [
-            {
-              type: 'text',
-              text: "What's in this image?",
-            },
-            {
-              type: 'image_url',
-              imageUrl: {
-                url: base64Image,
-              },
-            },
-          ],
+          type: 'text',
+          text: "What's in this image?",
+        },
+        {
+          type: 'image_url',
+          imageUrl: {
+            url: base64Image,
+          },
         },
       ],
-      stream: false,
-    });
+    },
+  ],
+  stream: false,
+});
 
-    console.log(result);
-    ```
+console.log(result);
+```
 
-    ```python
-    import requests
-    import json
-    import base64
-    from pathlib import Path
+```python
+import requests
+import json
+import base64
+from pathlib import Path
 
-    def encode_image_to_base64(image_path):
-        with open(image_path, "rb") as image_file:
-            return base64.b64encode(image_file.read()).decode('utf-8')
+def encode_image_to_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode('utf-8')
 
-    url = "https://openrouter.ai/api/v1/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {API_KEY_REF}",
-        "Content-Type": "application/json"
-    }
+url = "https://openrouter.ai/api/v1/chat/completions"
+headers = {
+    "Authorization": f"Bearer {API_KEY_REF}",
+    "Content-Type": "application/json"
+}
 
-    # Read and encode the image
-    image_path = "path/to/your/image.jpg"
-    base64_image = encode_image_to_base64(image_path)
-    data_url = f"data:image/jpeg;base64,{base64_image}"
+# Read and encode the image
+image_path = "path/to/your/image.jpg"
+base64_image = encode_image_to_base64(image_path)
+data_url = f"data:image/jpeg;base64,{base64_image}"
 
-    messages = [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "text",
-                    "text": "What's in this image?"
-                },
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": data_url
-                    }
+messages = [
+    {
+        "role": "user",
+        "content": [
+            {
+                "type": "text",
+                "text": "What's in this image?"
+            },
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": data_url
                 }
-            ]
-        }
-    ]
-
-    payload = {
-        "model": "{{MODEL}}",
-        "messages": messages
+            }
+        ]
     }
+]
 
-    response = requests.post(url, headers=headers, json=payload)
-    print(response.json())
-    ```
+payload = {
+    "model": "{{MODEL}}",
+    "messages": messages
+}
 
-    ```typescript title="TypeScript (fetch)"
-    async function encodeImageToBase64(imagePath: string): Promise<string> {
-      const imageBuffer = await fs.promises.readFile(imagePath);
-      const base64Image = imageBuffer.toString('base64');
-      return `data:image/jpeg;base64,${base64Image}`;
-    }
+response = requests.post(url, headers=headers, json=payload)
+print(response.json())
+```
 
-    // Read and encode the image
-    const imagePath = 'path/to/your/image.jpg';
-    const base64Image = await encodeImageToBase64(imagePath);
+```typescript title="TypeScript (fetch)"
+async function encodeImageToBase64(imagePath: string): Promise<string> {
+  const imageBuffer = await fs.promises.readFile(imagePath);
+  const base64Image = imageBuffer.toString('base64');
+  return `data:image/jpeg;base64,${base64Image}`;
+}
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${API_KEY_REF}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
+// Read and encode the image
+const imagePath = 'path/to/your/image.jpg';
+const base64Image = await encodeImageToBase64(imagePath);
+
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${API_KEY_REF}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: [
           {
-            role: 'user',
-            content: [
-              {
-                type: 'text',
-                text: "What's in this image?",
-              },
-              {
-                type: 'image_url',
-                image_url: {
-                  url: base64Image,
-                },
-              },
-            ],
+            type: 'text',
+            text: "What's in this image?",
+          },
+          {
+            type: 'image_url',
+            image_url: {
+              url: base64Image,
+            },
           },
         ],
-      }),
-    });
+      },
+    ],
+  }),
+});
 
-    const data = await response.json();
-    console.log(data);
-    ```
-  </CodeGroup>
-</Template>
+const data = await response.json();
+console.log(data);
+```
 
 Supported image content types are:
 

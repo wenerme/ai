@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Message Transforms
 
@@ -22,10 +23,8 @@ When context compression is enabled, OpenRouter will first try to find models wh
 
 The compression will then attempt to fit your content within the chosen model's context window by removing or truncating content from the middle of the prompt. If context compression is disabled and your total tokens exceed the model's context length, the request will fail with an error message suggesting you either reduce the length or enable context compression.
 
-<Note>
-  [All OpenRouter endpoints](/models) with 8k (8,192 tokens) or less context
-  length will default to using context compression. To disable this, pass
-  `plugins: [{"id": "context-compression", "enabled": false}]` in the request body.
-</Note>
+[All OpenRouter endpoints](/models) with 8k (8,192 tokens) or less context
+length will default to using context compression. To disable this, pass
+`plugins: [{"id": "context-compression", "enabled": false}]` in the request body.
 
 The middle of the prompt is compressed because [LLMs pay less attention](https://arxiv.org/abs/2307.03172) to the middle of sequences.

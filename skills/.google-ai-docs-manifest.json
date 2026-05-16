@@ -374,8 +374,8 @@
   "google-ai-docs/billing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/billing",
     "skill": "google-ai-docs",
-    "size": 32866,
-    "updatedAt": "2026-05-07T00:45:01.338Z"
+    "size": 33308,
+    "updatedAt": "2026-05-16T00:44:08.475Z"
   },
   "google-ai-docs/priority-inference.md": {
     "url": "https://ai.google.dev/gemini-api/docs/priority-inference",

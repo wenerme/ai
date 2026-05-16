@@ -1,13 +1,12 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Workspaces - Python SDK
 
-<Warning>
-  The Python SDK and docs are currently in beta.
-  Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
-</Warning>
+The Python SDK and docs are currently in beta.
+Report issues on [GitHub](https://github.com/OpenRouterTeam/python-sdk/issues).
 
 ## Overview
 
@@ -101,7 +100,7 @@ with OpenRouter(
 | Parameter                             | Type                                                               | Required             | Description                                                                                                                                                 | Example                          |
 | ------------------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | `name`                                | *str*                                                              | :heavy\_check\_mark: | Name for the new workspace                                                                                                                                  | Production                       |
-| `slug`                                | *str*                                                              | :heavy\_check\_mark: | URL-friendly slug (lowercase alphanumeric and hyphens only)                                                                                                 | production                       |
+| `slug`                                | *str*                                                              | :heavy\_check\_mark: | URL-friendly slug (lowercase alphanumeric segments separated by single hyphens, no leading/trailing hyphens)                                                | production                       |
 | `http_referer`                        | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                  |
 | `x_open_router_title`                 | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                  |
 | `x_open_router_categories`            | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                  |
@@ -268,7 +267,7 @@ with OpenRouter(
 | `is_observability_broadcast_enabled`  | *Optional\[bool]*                                                  | :heavy\_minus\_sign: | Whether broadcast is enabled                                                                                                                                | false               |
 | `is_observability_io_logging_enabled` | *Optional\[bool]*                                                  | :heavy\_minus\_sign: | Whether private logging is enabled                                                                                                                          | false               |
 | `name`                                | *Optional\[str]*                                                   | :heavy\_minus\_sign: | New name for the workspace                                                                                                                                  | Updated Workspace   |
-| `slug`                                | *Optional\[str]*                                                   | :heavy\_minus\_sign: | New URL-friendly slug                                                                                                                                       | updated-workspace   |
+| `slug`                                | *Optional\[str]*                                                   | :heavy\_minus\_sign: | New URL-friendly slug (lowercase alphanumeric segments separated by single hyphens, no leading/trailing hyphens)                                            | updated-workspace   |
 | `retries`                             | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                     |
 
 ### Response

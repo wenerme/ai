@@ -1,21 +1,20 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Video Generation
 
 OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/models?output_modalities=video).
 
-<Tip>
-  Adding video generation to an app? The
-  [Video Generation Cookbook](/docs/cookbook/video-generation/choose-video-model)
-  breaks this workflow into step-by-step recipes for choosing a model,
-  submitting text-to-video jobs, using images, passing provider options, and
-  handling webhooks.
+Adding video generation to an app? The
+[Video Generation Cookbook](/docs/cookbook/video-generation/choose-video-model)
+breaks this workflow into step-by-step recipes for choosing a model,
+submitting text-to-video jobs, using images, passing provider options, and
+handling webhooks.
 
-  For reusable agent knowledge across projects, install the
-  [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
-</Tip>
+For reusable agent knowledge across projects, install the
+[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
 
 ## Model Discovery
 
@@ -91,129 +90,120 @@ Unlike text or image generation, video generation is **asynchronous** because ge
 
 ### Submitting a Video Generation Request
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/veo-3.1'
-}}
->
-  <CodeGroup>
-    ```python
-    import requests
-    import json
-    import time
+```python
+import requests
+import json
+import time
 
-    url = "https://openrouter.ai/api/v1/videos"
-    headers = {
-        "Authorization": f"Bearer {API_KEY_REF}",
-        "Content-Type": "application/json"
-    }
+url = "https://openrouter.ai/api/v1/videos"
+headers = {
+    "Authorization": f"Bearer {API_KEY_REF}",
+    "Content-Type": "application/json"
+}
 
-    payload = {
-        "model": "{{MODEL}}",
-        "prompt": "A golden retriever playing fetch on a sunny beach with waves crashing in the background"
-    }
+payload = {
+    "model": "{{MODEL}}",
+    "prompt": "A golden retriever playing fetch on a sunny beach with waves crashing in the background"
+}
 
-    # Step 1: Submit the generation request
-    response = requests.post(url, headers=headers, json=payload)
-    result = response.json()
+# Step 1: Submit the generation request
+response = requests.post(url, headers=headers, json=payload)
+result = response.json()
 
-    job_id = result["id"]
-    polling_url = result["polling_url"]
-    print(f"Job submitted: {job_id}")
-    print(f"Status: {result['status']}")
+job_id = result["id"]
+polling_url = result["polling_url"]
+print(f"Job submitted: {job_id}")
+print(f"Status: {result['status']}")
 
-    # Step 2: Poll until completion
-    while True:
-        time.sleep(30)  # Wait 30 seconds between polls
-        poll_response = requests.get(polling_url, headers=headers)
-        status = poll_response.json()
+# Step 2: Poll until completion
+while True:
+    time.sleep(30)  # Wait 30 seconds between polls
+    poll_response = requests.get(polling_url, headers=headers)
+    status = poll_response.json()
 
-        print(f"Status: {status['status']}")
+    print(f"Status: {status['status']}")
 
-        if status["status"] == "completed":
-            # Step 3: Download the video
-            content_url = status["unsigned_urls"][0]
-            video_response = requests.get(content_url)
-            with open("output.mp4", "wb") as f:
-                f.write(video_response.content)
-            print("Video saved to output.mp4")
-            break
-        elif status["status"] == "failed":
-            print(f"Generation failed: {status.get('error', 'Unknown error')}")
-            break
-    ```
+    if status["status"] == "completed":
+        # Step 3: Download the video
+        content_url = status["unsigned_urls"][0]
+        video_response = requests.get(content_url)
+        with open("output.mp4", "wb") as f:
+            f.write(video_response.content)
+        print("Video saved to output.mp4")
+        break
+    elif status["status"] == "failed":
+        print(f"Generation failed: {status.get('error', 'Unknown error')}")
+        break
+```
 
-    ```typescript title="TypeScript (fetch)"
-    const headers = {
-      Authorization: `Bearer ${API_KEY_REF}`,
-      'Content-Type': 'application/json',
-    };
+```typescript title="TypeScript (fetch)"
+const headers = {
+  Authorization: `Bearer ${API_KEY_REF}`,
+  'Content-Type': 'application/json',
+};
 
-    // Step 1: Submit the generation request
-    const response = await fetch('https://openrouter.ai/api/v1/videos', {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        prompt: 'A golden retriever playing fetch on a sunny beach with waves crashing in the background',
-      }),
-    });
+// Step 1: Submit the generation request
+const response = await fetch('https://openrouter.ai/api/v1/videos', {
+  method: 'POST',
+  headers,
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    prompt: 'A golden retriever playing fetch on a sunny beach with waves crashing in the background',
+  }),
+});
 
-    const result = await response.json();
-    const jobId = result.id;
-    const pollingUrl = result.polling_url;
-    console.log(`Job submitted: ${jobId}`);
-    console.log(`Status: ${result.status}`);
+const result = await response.json();
+const jobId = result.id;
+const pollingUrl = result.polling_url;
+console.log(`Job submitted: ${jobId}`);
+console.log(`Status: ${result.status}`);
 
-    // Step 2: Poll until completion
-    while (true) {
-      await new Promise((resolve) => setTimeout(resolve, 30000)); // Wait 30 seconds
-      const pollResponse = await fetch(pollingUrl, { headers });
-      const status = await pollResponse.json();
+// Step 2: Poll until completion
+while (true) {
+  await new Promise((resolve) => setTimeout(resolve, 30000)); // Wait 30 seconds
+  const pollResponse = await fetch(pollingUrl, { headers });
+  const status = await pollResponse.json();
 
-      console.log(`Status: ${status.status}`);
+  console.log(`Status: ${status.status}`);
 
-      if (status.status === 'completed') {
-        // Step 3: Download the video
-        const contentUrl = status.unsigned_urls[0];
-        const videoResponse = await fetch(contentUrl);
-        const videoBuffer = await videoResponse.arrayBuffer();
-        // Save or process the video buffer
-        console.log(`Video ready: ${contentUrl}`);
-        break;
-      } else if (status.status === 'failed') {
-        console.error(`Generation failed: ${status.error ?? 'Unknown error'}`);
-        break;
-      }
-    }
-    ```
+  if (status.status === 'completed') {
+    // Step 3: Download the video
+    const contentUrl = status.unsigned_urls[0];
+    const videoResponse = await fetch(contentUrl);
+    const videoBuffer = await videoResponse.arrayBuffer();
+    // Save or process the video buffer
+    console.log(`Video ready: ${contentUrl}`);
+    break;
+  } else if (status.status === 'failed') {
+    console.error(`Generation failed: ${status.error ?? 'Unknown error'}`);
+    break;
+  }
+}
+```
 
-    ```bash title="cURL"
-    # Step 1: Submit the generation request
-    curl -X POST "https://openrouter.ai/api/v1/videos" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-      -H "Content-Type: application/json" \
-      -d '{
-        "model": "{{MODEL}}",
-        "prompt": "A golden retriever playing fetch on a sunny beach with waves crashing in the background"
-      }'
+```bash title="cURL"
+# Step 1: Submit the generation request
+curl -X POST "https://openrouter.ai/api/v1/videos" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "{{MODEL}}",
+    "prompt": "A golden retriever playing fetch on a sunny beach with waves crashing in the background"
+  }'
 
-    # Response:
-    # {
-    #   "id": "<job_id>",
-    #   "polling_url": "https://openrouter.ai/api/v1/videos/<job_id>",
-    #   "status": "pending"
-    # }
+# Response:
+# {
+#   "id": "<job_id>",
+#   "polling_url": "https://openrouter.ai/api/v1/videos/<job_id>",
+#   "status": "pending"
+# }
 
-    # Step 2: Poll for status
-    curl "https://openrouter.ai/api/v1/videos/<job_id>" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY"
+# Step 2: Poll for status
+curl "https://openrouter.ai/api/v1/videos/<job_id>" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY"
 
-    # Step 3: Once status is "completed", download from unsigned_urls[0]
-    ```
-  </CodeGroup>
-</Template>
+# Step 3: Once status is "completed", download from unsigned_urls[0]
+```
 
 ### Request Parameters
 
@@ -533,9 +523,7 @@ function verifyWebhookSignature(
 }
 ```
 
-<Warning>
-  Use the **raw request body** (the exact bytes received) for verification. Parsing and re-serializing JSON may change key ordering or number formatting, which will cause verification to fail.
-</Warning>
+Use the **raw request body** (the exact bytes received) for verification. Parsing and re-serializing JSON may change key ordering or number formatting, which will cause verification to fail.
 
 ## Best Practices
 

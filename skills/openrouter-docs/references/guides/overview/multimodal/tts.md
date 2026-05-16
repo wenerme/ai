@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Text-to-Speech
 
@@ -29,129 +30,120 @@ Send a `POST` request to `/api/v1/audio/speech` with the text you want to synthe
 
 ### Basic Example
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/gpt-4o-mini-tts-2025-12-15'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
-    import fs from 'fs';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
+import fs from 'fs';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    const stream = await openRouter.tts.createSpeech({
-      model: '{{MODEL}}',
-      input: 'Hello! This is a text-to-speech test.',
-      voice: 'alloy',
-      responseFormat: 'mp3',
-    });
+const stream = await openRouter.tts.createSpeech({
+  model: '{{MODEL}}',
+  input: 'Hello! This is a text-to-speech test.',
+  voice: 'alloy',
+  responseFormat: 'mp3',
+});
 
-    // Collect the audio stream and save to a file
-    const reader = stream.getReader();
-    const chunks: Uint8Array[] = [];
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      chunks.push(value);
-    }
-    const totalLength = chunks.reduce((sum, c) => sum + c.length, 0);
-    const buffer = new Uint8Array(totalLength);
-    let offset = 0;
-    for (const chunk of chunks) {
-      buffer.set(chunk, offset);
-      offset += chunk.length;
-    }
-    await fs.promises.writeFile('output.mp3', buffer);
-    console.log('Audio saved to output.mp3');
-    ```
+// Collect the audio stream and save to a file
+const reader = stream.getReader();
+const chunks: Uint8Array[] = [];
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  chunks.push(value);
+}
+const totalLength = chunks.reduce((sum, c) => sum + c.length, 0);
+const buffer = new Uint8Array(totalLength);
+let offset = 0;
+for (const chunk of chunks) {
+  buffer.set(chunk, offset);
+  offset += chunk.length;
+}
+await fs.promises.writeFile('output.mp3', buffer);
+console.log('Audio saved to output.mp3');
+```
 
-    ```python title="OpenAI Python"
-    from openai import OpenAI
+```python title="OpenAI Python"
+from openai import OpenAI
 
-    client = OpenAI(
-      base_url="https://openrouter.ai/api/v1",
-      api_key="{{API_KEY_REF}}",
-    )
+client = OpenAI(
+  base_url="https://openrouter.ai/api/v1",
+  api_key="{{API_KEY_REF}}",
+)
 
-    with client.audio.speech.with_streaming_response.create(
-      model="{{MODEL}}",
-      input="Hello! This is a text-to-speech test.",
-      voice="alloy",
-      response_format="mp3"
-    ) as response:
-      response.stream_to_file("output.mp3")
-    ```
+with client.audio.speech.with_streaming_response.create(
+  model="{{MODEL}}",
+  input="Hello! This is a text-to-speech test.",
+  voice="alloy",
+  response_format="mp3"
+) as response:
+  response.stream_to_file("output.mp3")
+```
 
-    ```python
-    import requests
+```python
+import requests
 
-    response = requests.post(
-      url="https://openrouter.ai/api/v1/audio/speech",
-      headers={
-        "Authorization": f"Bearer {API_KEY_REF}",
-        "Content-Type": "application/json"
-      },
-      json={
-        "model": "{{MODEL}}",
-        "input": "Hello! This is a text-to-speech test.",
-        "voice": "alloy",
-        "response_format": "mp3"
-      }
-    )
-    response.raise_for_status()
+response = requests.post(
+  url="https://openrouter.ai/api/v1/audio/speech",
+  headers={
+    "Authorization": f"Bearer {API_KEY_REF}",
+    "Content-Type": "application/json"
+  },
+  json={
+    "model": "{{MODEL}}",
+    "input": "Hello! This is a text-to-speech test.",
+    "voice": "alloy",
+    "response_format": "mp3"
+  }
+)
+response.raise_for_status()
 
-    with open("output.mp3", "wb") as f:
-      f.write(response.content)
+with open("output.mp3", "wb") as f:
+  f.write(response.content)
 
-    generation_id = response.headers.get("X-Generation-Id")
-    print(f"Audio saved. Generation ID: {generation_id}")
-    ```
+generation_id = response.headers.get("X-Generation-Id")
+print(f"Audio saved. Generation ID: {generation_id}")
+```
 
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/audio/speech', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${API_KEY_REF}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        input: 'Hello! This is a text-to-speech test.',
-        voice: 'alloy',
-        response_format: 'mp3',
-      }),
-    });
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/audio/speech', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${API_KEY_REF}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    input: 'Hello! This is a text-to-speech test.',
+    voice: 'alloy',
+    response_format: 'mp3',
+  }),
+});
 
-    if (!response.ok) {
-      const err = await response.json();
-      throw new Error(`TTS error ${response.status}: ${JSON.stringify(err)}`);
-    }
+if (!response.ok) {
+  const err = await response.json();
+  throw new Error(`TTS error ${response.status}: ${JSON.stringify(err)}`);
+}
 
-    const audioBuffer = await response.arrayBuffer();
-    const generationId = response.headers.get('X-Generation-Id');
-    console.log(`Generation ID: ${generationId}`);
-    // Save audioBuffer to a file or play it directly
-    ```
+const audioBuffer = await response.arrayBuffer();
+const generationId = response.headers.get('X-Generation-Id');
+console.log(`Generation ID: ${generationId}`);
+// Save audioBuffer to a file or play it directly
+```
 
-    ```bash title="cURL"
-    curl https://openrouter.ai/api/v1/audio/speech \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-      --output output.mp3 \
-      -d '{
-        "model": "{{MODEL}}",
-        "input": "Hello! This is a text-to-speech test.",
-        "voice": "alloy",
-        "response_format": "mp3"
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/audio/speech \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  --output output.mp3 \
+  -d '{
+    "model": "{{MODEL}}",
+    "input": "Hello! This is a text-to-speech test.",
+    "voice": "alloy",
+    "response_format": "mp3"
+  }'
+```
 
 ### Request Parameters
 
@@ -207,61 +199,53 @@ TTS models are priced **per character** of input text. Pricing varies by model a
 
 The TTS endpoint is fully compatible with the OpenAI SDK. You can use the OpenAI client libraries by pointing them at OpenRouter's base URL:
 
-<Template
-  data={{
-  API_KEY_REF,
-}}
->
-  <CodeGroup>
-    ```python title="OpenAI Python SDK"
-    from openai import OpenAI
+```python title="OpenAI Python SDK"
+from openai import OpenAI
 
-    client = OpenAI(
-      base_url="https://openrouter.ai/api/v1",
-      api_key="{{API_KEY_REF}}",
-    )
+client = OpenAI(
+  base_url="https://openrouter.ai/api/v1",
+  api_key="{{API_KEY_REF}}",
+)
 
-    # Non-streaming: get the full audio response
-    response = client.audio.speech.create(
-      model="openai/gpt-4o-mini-tts-2025-12-15",
-      input="The quick brown fox jumps over the lazy dog.",
-      voice="nova",
-      response_format="mp3"
-    )
-    response.write_to_file("output.mp3")
+# Non-streaming: get the full audio response
+response = client.audio.speech.create(
+  model="openai/gpt-4o-mini-tts-2025-12-15",
+  input="The quick brown fox jumps over the lazy dog.",
+  voice="nova",
+  response_format="mp3"
+)
+response.write_to_file("output.mp3")
 
-    # Streaming: process audio chunks as they arrive
-    with client.audio.speech.with_streaming_response.create(
-      model="openai/gpt-4o-mini-tts-2025-12-15",
-      input="The quick brown fox jumps over the lazy dog.",
-      voice="nova",
-      response_format="mp3"
-    ) as response:
-      response.stream_to_file("output.mp3")
-    ```
+# Streaming: process audio chunks as they arrive
+with client.audio.speech.with_streaming_response.create(
+  model="openai/gpt-4o-mini-tts-2025-12-15",
+  input="The quick brown fox jumps over the lazy dog.",
+  voice="nova",
+  response_format="mp3"
+) as response:
+  response.stream_to_file("output.mp3")
+```
 
-    ```typescript title="OpenAI TypeScript SDK"
-    import OpenAI from 'openai';
-    import fs from 'fs';
+```typescript title="OpenAI TypeScript SDK"
+import OpenAI from 'openai';
+import fs from 'fs';
 
-    const client = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
+const client = new OpenAI({
+  baseURL: 'https://openrouter.ai/api/v1',
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    const response = await client.audio.speech.create({
-      model: 'openai/gpt-4o-mini-tts-2025-12-15',
-      input: 'The quick brown fox jumps over the lazy dog.',
-      voice: 'nova',
-      response_format: 'mp3',
-    });
+const response = await client.audio.speech.create({
+  model: 'openai/gpt-4o-mini-tts-2025-12-15',
+  input: 'The quick brown fox jumps over the lazy dog.',
+  voice: 'nova',
+  response_format: 'mp3',
+});
 
-    const buffer = Buffer.from(await response.arrayBuffer());
-    await fs.promises.writeFile('output.mp3', buffer);
-    console.log('Audio saved to output.mp3');
-    ```
-  </CodeGroup>
-</Template>
+const buffer = Buffer.from(await response.arrayBuffer());
+await fs.promises.writeFile('output.mp3', buffer);
+console.log('Audio saved to output.mp3');
+```
 
 ## Best Practices
 

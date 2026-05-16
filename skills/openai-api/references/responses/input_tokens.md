@@ -27,7 +27,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       The unique ID of the conversation.
 
-- `input: optional string or array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 25 more`
+- `input: optional string or array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 26 more`
 
   Text, image, or file inputs to the model, used to generate a response
 
@@ -35,7 +35,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     A text input to the model, equivalent to a text input with the `user` role.
 
-  - `array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 25 more`
+  - `array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 26 more`
 
     A list of one or many input items to the model, containing different content types.
 
@@ -2828,6 +2828,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `namespace: optional string`
 
         The namespace of the custom tool being called.
+
+    - `CompactionTrigger object { type }`
+
+      Compacts the current context. Must be the final input item.
+
+      - `type: "compaction_trigger"`
+
+        The type of the item. Always `compaction_trigger`.
+
+        - `"compaction_trigger"`
 
     - `ItemReference object { id, type }`
 

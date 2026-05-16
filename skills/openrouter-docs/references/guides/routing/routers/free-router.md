@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Free Models Router
 
@@ -16,15 +17,36 @@ To try the Free Models Router without writing any code, see the [Chat Playground
 
 Set your model to `openrouter/free`:
 
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
+const openRouter = new OpenRouter({
+  apiKey: '<OPENROUTER_API_KEY>',
+});
 
-  const completion = await openRouter.chat.send({
+const completion = await openRouter.chat.send({
+  model: 'openrouter/free',
+  messages: [
+    {
+      role: 'user',
+      content: 'Hello! What can you help me with today?',
+    },
+  ],
+});
+
+console.log(completion.choices[0].message.content);
+// Check which model was selected
+console.log('Model used:', completion.model);
+```
+
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
     model: 'openrouter/free',
     messages: [
       {
@@ -32,74 +54,51 @@ Set your model to `openrouter/free`:
         content: 'Hello! What can you help me with today?',
       },
     ],
-  });
+  }),
+});
 
-  console.log(completion.choices[0].message.content);
-  // Check which model was selected
-  console.log('Model used:', completion.model);
-  ```
+const data = await response.json();
+console.log(data.choices[0].message.content);
+// Check which model was selected
+console.log('Model used:', data.model);
+```
 
-  ```typescript title="TypeScript (fetch)"
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'openrouter/free',
-      messages: [
-        {
-          role: 'user',
-          content: 'Hello! What can you help me with today?',
-        },
-      ],
-    }),
-  });
+```python title="Python"
+import requests
+import json
 
-  const data = await response.json();
-  console.log(data.choices[0].message.content);
-  // Check which model was selected
-  console.log('Model used:', data.model);
-  ```
+response = requests.post(
+  url="https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "Content-Type": "application/json",
+  },
+  data=json.dumps({
+    "model": "openrouter/free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hello! What can you help me with today?"
+      }
+    ]
+  })
+)
 
-  ```python title="Python"
-  import requests
-  import json
+data = response.json()
+print(data['choices'][0]['message']['content'])
+# Check which model was selected
+print('Model used:', data['model'])
+```
 
-  response = requests.post(
-    url="https://openrouter.ai/api/v1/chat/completions",
-    headers={
-      "Authorization": "Bearer <OPENROUTER_API_KEY>",
-      "Content-Type": "application/json",
-    },
-    data=json.dumps({
-      "model": "openrouter/free",
-      "messages": [
-        {
-          "role": "user",
-          "content": "Hello! What can you help me with today?"
-        }
-      ]
-    })
-  )
-
-  data = response.json()
-  print(data['choices'][0]['message']['content'])
-  # Check which model was selected
-  print('Model used:', data['model'])
-  ```
-
-  ```bash title="cURL"
-  curl https://openrouter.ai/api/v1/chat/completions \
-    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "model": "openrouter/free",
-      "messages": [{"role": "user", "content": "Hello!"}]
-    }'
-  ```
-</CodeGroup>
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openrouter/free",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'
+```
 
 ## Response
 
@@ -137,9 +136,7 @@ The response includes the `model` field showing which free model was actually us
 
 The Free Models Router selects from all currently available free models on OpenRouter. Some popular options include:
 
-<Callout intent="warning">
-  Free model availability changes frequently. Check the [models page](https://openrouter.ai/models?pricing=free) for the current list of free models.
-</Callout>
+Free model availability changes frequently. Check the [models page](https://openrouter.ai/models?pricing=free) for the current list of free models.
 
 * **DeepSeek R1 (free)** - DeepSeek's reasoning model
 * **Llama models (free)** - Various Meta Llama models

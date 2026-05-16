@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # OpenClaw 🦞
 
@@ -39,9 +40,7 @@ This automatically configures OpenClaw to use OpenRouter with the recommended mo
 
 ## Manual Configuration
 
-<Warning>
-  **Advanced users only:** The following manual configuration is for users who need to edit their config file directly. For most users, we recommend using the setup wizard above.
-</Warning>
+**Advanced users only:** The following manual configuration is for users who need to edit their config file directly. For most users, we recommend using the setup wizard above.
 
 If you need to manually edit your OpenClaw configuration file, follow these steps:
 
@@ -80,9 +79,7 @@ Or set it as an environment variable in your shell profile:
 export OPENROUTER_API_KEY="sk-or-..."
 ```
 
-<Note>
-  That's it! OpenClaw has built-in support for OpenRouter. You don't need to configure `models.providers` - just set your API key and reference models with the `openrouter/<author>/<slug>` format.
-</Note>
+That's it! OpenClaw has built-in support for OpenRouter. You don't need to configure `models.providers` - just set your API key and reference models with the `openrouter/<author>/<slug>` format.
 
 ### Step 3: Choose Your Model
 

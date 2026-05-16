@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Client SDKs
 
@@ -28,45 +29,41 @@ Choose the Client SDKs when you need **direct, efficient access to model inferen
 
 The Client SDKs are intentionally lean. It mirrors the OpenRouter API surface 1:1 with full type safety, so there is no abstraction to fight when you need fine-grained control.
 
-<Tip>
-  If you want higher-level primitives for building agents — multi-turn loops, tool definitions, stop conditions, and conversation state management — see the [Agent SDK](/docs/agent-sdk/overview) instead.
-</Tip>
+If you want higher-level primitives for building agents — multi-turn loops, tool definitions, stop conditions, and conversation state management — see the [Agent SDK](/docs/agent-sdk/overview) instead.
 
 ## Quick example
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  import OpenRouter from '@openrouter/sdk';
+```typescript title="TypeScript"
+import OpenRouter from '@openrouter/sdk';
 
-  const client = new OpenRouter({
-    apiKey: process.env.OPENROUTER_API_KEY,
-  });
+const client = new OpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
 
-  const response = await client.chat.send({
-    model: 'openai/gpt-5.2',
-    messages: [
-      { role: 'user', content: 'Explain quantum computing in one sentence.' },
-    ],
-  });
+const response = await client.chat.send({
+  model: 'openai/gpt-5.2',
+  messages: [
+    { role: 'user', content: 'Explain quantum computing in one sentence.' },
+  ],
+});
 
-  console.log(response.choices[0].message.content);
-  ```
+console.log(response.choices[0].message.content);
+```
 
-  ```python title="Python"
-  from openrouter import OpenRouter
-  import os
+```python title="Python"
+from openrouter import OpenRouter
+import os
 
-  with OpenRouter(api_key=os.getenv("OPENROUTER_API_KEY")) as client:
-      response = client.chat.send(
-          model="openai/gpt-5.2",
-          messages=[
-              {"role": "user", "content": "Explain quantum computing in one sentence."}
-          ],
-      )
+with OpenRouter(api_key=os.getenv("OPENROUTER_API_KEY")) as client:
+    response = client.chat.send(
+        model="openai/gpt-5.2",
+        messages=[
+            {"role": "user", "content": "Explain quantum computing in one sentence."}
+        ],
+    )
 
-      print(response.choices[0].message.content)
-  ```
-</CodeGroup>
+    print(response.choices[0].message.content)
+```
 
 ## Client SDKs vs Agent SDK
 

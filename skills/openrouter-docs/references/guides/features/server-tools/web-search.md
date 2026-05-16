@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Web Search
 
-<Note title="Beta">
-  Server tools are currently in beta. The API and behavior may change.
-</Note>
+Server tools are currently in beta. The API and behavior may change.
 
 The `openrouter:web_search` server tool gives any model on OpenRouter access to real-time web information. When the model determines it needs current information, it calls the tool with a search query. OpenRouter executes the search and returns results that the model uses to formulate a grounded, cited response.
 
@@ -20,84 +19,75 @@ The `openrouter:web_search` server tool gives any model on OpenRouter access to 
 
 ## Quick Start
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/gpt-5.2'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'What were the major AI announcements this week?'
-          }
-        ],
-        tools: [
-          { type: 'openrouter:web_search' }
-        ]
-      }),
-    });
-
-    const data = await response.json();
-    console.log(data.choices[0].message.content);
-    ```
-
-    ```python title="Python"
-    import requests
-
-    response = requests.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "What were the major AI announcements this week?"
-          }
-        ],
-        "tools": [
-          {"type": "openrouter:web_search"}
-        ]
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: 'What were the major AI announcements this week?'
       }
-    )
+    ],
+    tools: [
+      { type: 'openrouter:web_search' }
+    ]
+  }),
+});
 
-    data = response.json()
-    print(data["choices"][0]["message"]["content"])
-    ```
+const data = await response.json();
+console.log(data.choices[0].message.content);
+```
 
-    ```bash title="cURL"
-    curl https://openrouter.ai/api/v1/chat/completions \
-      -H "Authorization: Bearer {{API_KEY_REF}}" \
-      -H "Content-Type: application/json" \
-      -d '{
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "What were the major AI announcements this week?"
-          }
-        ],
-        "tools": [
-          {"type": "openrouter:web_search"}
-        ]
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```python title="Python"
+import requests
+
+response = requests.post(
+  "https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What were the major AI announcements this week?"
+      }
+    ],
+    "tools": [
+      {"type": "openrouter:web_search"}
+    ]
+  }
+)
+
+data = response.json()
+print(data["choices"][0]["message"]["content"])
+```
+
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer {{API_KEY_REF}}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What were the major AI announcements this week?"
+      }
+    ],
+    "tools": [
+      {"type": "openrouter:web_search"}
+    ]
+  }'
+```
 
 ## Configuration
 
@@ -250,56 +240,47 @@ Once the limit is reached, subsequent search calls return a message telling the 
 
 The web search server tool also works with the Responses API:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/gpt-5.2'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/responses', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        input: 'What is the current price of Bitcoin?',
-        tools: [
-          { type: 'openrouter:web_search', parameters: { max_results: 3 } }
-        ]
-      }),
-    });
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    input: 'What is the current price of Bitcoin?',
+    tools: [
+      { type: 'openrouter:web_search', parameters: { max_results: 3 } }
+    ]
+  }),
+});
 
-    const data = await response.json();
-    console.log(data);
-    ```
+const data = await response.json();
+console.log(data);
+```
 
-    ```python title="Python"
-    import requests
+```python title="Python"
+import requests
 
-    response = requests.post(
-      "https://openrouter.ai/api/v1/responses",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "input": "What is the current price of Bitcoin?",
-        "tools": [
-          {"type": "openrouter:web_search", "parameters": {"max_results": 3}}
-        ]
-      }
-    )
+response = requests.post(
+  "https://openrouter.ai/api/v1/responses",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "input": "What is the current price of Bitcoin?",
+    "tools": [
+      {"type": "openrouter:web_search", "parameters": {"max_results": 3}}
+    ]
+  }
+)
 
-    data = response.json()
-    print(data)
-    ```
-  </CodeGroup>
-</Template>
+data = response.json()
+print(data)
+```
 
 ## Usage Tracking
 
@@ -323,7 +304,7 @@ The `web_search_requests` field counts the total number of search queries the mo
 
 | Engine        | Pricing                                                                                                                                                                                                                                                                                                                                      |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Exa**       | \$4 per 1,000 results using OpenRouter credits (default 5 results = max \$0.02 per search)                                                                                                                                                                                                                                                   |
+| **Exa**       | \$0.005 per request using OpenRouter credits. Includes up to 10 results, then \$0.001 per additional result                                                                                                                                                                                                                                  |
 | **Parallel**  | \$0.005 per request using OpenRouter credits. Includes up to 10 results in a request, then \$0.001 per additional result                                                                                                                                                                                                                     |
 | **Firecrawl** | Uses your Firecrawl credits directly — no OpenRouter charge                                                                                                                                                                                                                                                                                  |
 | **Native**    | Passed through from the provider ([OpenAI](https://platform.openai.com/docs/pricing#built-in-tools), [Anthropic](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing), [Perplexity](https://docs.perplexity.ai/getting-started/pricing), [xAI](https://docs.x.ai/docs/models#tool-invocation-costs)) |
@@ -332,9 +313,7 @@ All pricing is in addition to standard LLM token costs for processing the search
 
 ## Migrating from the Web Search Plugin
 
-<Note>
-  The [web search plugin](/docs/guides/features/plugins/web-search) (`plugins: [{ id: "web" }]`) and the [`:online` variant](/docs/guides/routing/model-variants/online) are deprecated. Use the `openrouter:web_search` server tool instead.
-</Note>
+The [web search plugin](/docs/guides/features/plugins/web-search) (`plugins: [{ id: "web" }]`) and the [`:online` variant](/docs/guides/routing/model-variants/online) are deprecated. Use the `openrouter:web_search` server tool instead.
 
 The key differences:
 

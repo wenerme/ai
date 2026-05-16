@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # API Key Rotation
 
@@ -14,9 +15,7 @@ Rotating API keys regularly helps protect your applications by limiting the wind
 
 A zero-downtime key rotation follows three steps: create a new key, update your applications to use the new key, and delete the old key once all systems have migrated.
 
-<Note>
-  Always verify your new key is working in production before deleting the old one. This prevents accidental service disruption.
-</Note>
+Always verify your new key is working in production before deleting the old one. This prevents accidental service disruption.
 
 ## Rotating Keys with the Management API
 
@@ -24,71 +23,67 @@ First, you'll need a [Management API key](https://openrouter.ai/settings/managem
 
 ### Step 1: Create a New Key
 
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-  const openRouter = new OpenRouter({
-    apiKey: 'your-management-key',
-  });
+const openRouter = new OpenRouter({
+  apiKey: 'your-management-key',
+});
 
-  const newKey = await openRouter.apiKeys.create({
+const newKey = await openRouter.apiKeys.create({
+  name: 'Production Key - Rotated 2025-01',
+  limit: 1000,
+});
+
+console.log('New key created:', newKey.data.key);
+console.log('Key hash:', newKey.data.hash);
+```
+
+```python title="Python"
+import requests
+
+MANAGEMENT_API_KEY = "your-management-key"
+BASE_URL = "https://openrouter.ai/api/v1/keys"
+
+response = requests.post(
+    f"{BASE_URL}/",
+    headers={
+        "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
+        "Content-Type": "application/json"
+    },
+    json={
+        "name": "Production Key - Rotated 2025-01",
+        "limit": 1000
+    }
+)
+
+data = response.json()
+print(f"New key created: {data['data']['key']}")
+print(f"Key hash: {data['data']['hash']}")
+```
+
+```typescript title="TypeScript (fetch)"
+const MANAGEMENT_API_KEY = 'your-management-key';
+const BASE_URL = 'https://openrouter.ai/api/v1/keys';
+
+const response = await fetch(BASE_URL, {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
     name: 'Production Key - Rotated 2025-01',
     limit: 1000,
-  });
+  }),
+});
 
-  console.log('New key created:', newKey.data.key);
-  console.log('Key hash:', newKey.data.hash);
-  ```
+const { data } = await response.json();
+console.log('New key created:', data.key);
+console.log('Key hash:', data.hash);
+```
 
-  ```python title="Python"
-  import requests
-
-  MANAGEMENT_API_KEY = "your-management-key"
-  BASE_URL = "https://openrouter.ai/api/v1/keys"
-
-  response = requests.post(
-      f"{BASE_URL}/",
-      headers={
-          "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
-          "Content-Type": "application/json"
-      },
-      json={
-          "name": "Production Key - Rotated 2025-01",
-          "limit": 1000
-      }
-  )
-
-  data = response.json()
-  print(f"New key created: {data['data']['key']}")
-  print(f"Key hash: {data['data']['hash']}")
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  const MANAGEMENT_API_KEY = 'your-management-key';
-  const BASE_URL = 'https://openrouter.ai/api/v1/keys';
-
-  const response = await fetch(BASE_URL, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      name: 'Production Key - Rotated 2025-01',
-      limit: 1000,
-    }),
-  });
-
-  const { data } = await response.json();
-  console.log('New key created:', data.key);
-  console.log('Key hash:', data.hash);
-  ```
-</CodeGroup>
-
-<Tip>
-  Store the key hash returned in the response. You'll need it to delete the old key later.
-</Tip>
+Store the key hash returned in the response. You'll need it to delete the old key later.
 
 ### Step 2: Update Your Applications
 
@@ -100,54 +95,52 @@ Both keys remain valid during this transition period, so you can roll out change
 
 Once all your applications are using the new key, delete the old one:
 
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-  const openRouter = new OpenRouter({
-    apiKey: 'your-management-key',
-  });
+const openRouter = new OpenRouter({
+  apiKey: 'your-management-key',
+});
 
-  const oldKeyHash = 'hash-of-old-key';
-  await openRouter.apiKeys.delete(oldKeyHash);
+const oldKeyHash = 'hash-of-old-key';
+await openRouter.apiKeys.delete(oldKeyHash);
 
-  console.log('Old key deleted successfully');
-  ```
+console.log('Old key deleted successfully');
+```
 
-  ```python title="Python"
-  import requests
+```python title="Python"
+import requests
 
-  MANAGEMENT_API_KEY = "your-management-key"
-  BASE_URL = "https://openrouter.ai/api/v1/keys"
+MANAGEMENT_API_KEY = "your-management-key"
+BASE_URL = "https://openrouter.ai/api/v1/keys"
 
-  old_key_hash = "hash-of-old-key"
-  response = requests.delete(
-      f"{BASE_URL}/{old_key_hash}",
-      headers={
-          "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
-          "Content-Type": "application/json"
-      }
-  )
+old_key_hash = "hash-of-old-key"
+response = requests.delete(
+    f"{BASE_URL}/{old_key_hash}",
+    headers={
+        "Authorization": f"Bearer {MANAGEMENT_API_KEY}",
+        "Content-Type": "application/json"
+    }
+)
 
-  print("Old key deleted successfully")
-  ```
+print("Old key deleted successfully")
+```
 
-  ```typescript title="TypeScript (fetch)"
-  const MANAGEMENT_API_KEY = 'your-management-key';
-  const BASE_URL = 'https://openrouter.ai/api/v1/keys';
+```typescript title="TypeScript (fetch)"
+const MANAGEMENT_API_KEY = 'your-management-key';
+const BASE_URL = 'https://openrouter.ai/api/v1/keys';
 
-  const oldKeyHash = 'hash-of-old-key';
-  await fetch(`${BASE_URL}/${oldKeyHash}`, {
-    method: 'DELETE',
-    headers: {
-      Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-  });
+const oldKeyHash = 'hash-of-old-key';
+await fetch(`${BASE_URL}/${oldKeyHash}`, {
+  method: 'DELETE',
+  headers: {
+    Authorization: `Bearer ${MANAGEMENT_API_KEY}`,
+    'Content-Type': 'application/json',
+  },
+});
 
-  console.log('Old key deleted successfully');
-  ```
-</CodeGroup>
+console.log('Old key deleted successfully');
+```
 
 ## BYOK Advantage: Simplified Key Rotation
 
@@ -161,9 +154,7 @@ When you configure BYOK, your provider API keys (OpenAI, Anthropic, Google, etc.
 
 This separation of concerns makes BYOK particularly valuable for organizations with strict key rotation policies. You get the security benefits of regular key rotation for your application credentials while maintaining stable, long-lived connections to your AI providers.
 
-<Tip>
-  With BYOK, your provider keys are tied to your OpenRouter account, not to individual API keys. Rotate your OpenRouter keys as often as needed without any changes to your provider configuration.
-</Tip>
+With BYOK, your provider keys are tied to your OpenRouter account, not to individual API keys. Rotate your OpenRouter keys as often as needed without any changes to your provider configuration.
 
 ## Best Practices
 

@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Multimodal Capabilities
 
@@ -100,40 +101,24 @@ OpenRouter supports both **direct URLs** and **base64-encoded data** for multimo
 * **Audio**: Raw base64 string with format specification
 * **Video**: `data:video/mp4;base64,{base64_data}`
 
-<Info>
-  URLs are more efficient for large files as they don't require local encoding and reduce request payload size. Base64 encoding is required for local files or when the content is not publicly accessible.
+URLs are more efficient for large files as they don't require local encoding and reduce request payload size. Base64 encoding is required for local files or when the content is not publicly accessible.
 
-  **Note for video URLs**: Video URL support varies by provider. For example, Google Gemini on AI Studio only supports YouTube links. See the [video inputs documentation](/docs/features/multimodal/videos) for provider-specific details.
-</Info>
+**Note for video URLs**: Video URL support varies by provider. For example, Google Gemini on AI Studio only supports YouTube links. See the [video inputs documentation](/docs/features/multimodal/videos) for provider-specific details.
 
 ## Frequently Asked Questions
 
-<AccordionGroup>
-  <Accordion title="Can I mix different modalities in one request?">
-    Yes! You can send text, images, PDFs, audio, and video in the same request. The model will process all inputs together.
-  </Accordion>
+Yes! You can send text, images, PDFs, audio, and video in the same request. The model will process all inputs together.
 
-  <Accordion title="How is multimodal content priced?">
-    * **Images**: Typically priced per image or as input tokens
-    * **PDFs**: Free text extraction, paid OCR processing, or native model pricing
-    * **Audio input**: Priced as input tokens based on duration
-    * **Audio output**: Priced as completion tokens
-    * **Video**: Priced as input tokens based on duration and resolution
-  </Accordion>
+* **Images**: Typically priced per image or as input tokens
+* **PDFs**: Free text extraction, paid OCR processing, or native model pricing
+* **Audio input**: Priced as input tokens based on duration
+* **Audio output**: Priced as completion tokens
+* **Video**: Priced as input tokens based on duration and resolution
 
-  <Accordion title="Which models support video input?">
-    Video support varies by model. Use the [Models page](/models?fmt=cards\&input_modalities=video) to filter for video-capable models. Check each model's documentation for specific video format and duration limits.
-  </Accordion>
+Video support varies by model. Use the [Models page](/models?fmt=cards\&input_modalities=video) to filter for video-capable models. Check each model's documentation for specific video format and duration limits.
 
-  <Accordion title="How does video generation work?">
-    Video generation uses an asynchronous API at `/api/v1/videos`. You submit a prompt, receive a job ID, then poll until the video is ready to download. See the [video generation documentation](/docs/features/multimodal/video-generation) for details.
-  </Accordion>
+Video generation uses an asynchronous API at `/api/v1/videos`. You submit a prompt, receive a job ID, then poll until the video is ready to download. See the [video generation documentation](/docs/features/multimodal/video-generation) for details.
 
-  <Accordion title="How does text-to-speech work?">
-    Text-to-speech uses a dedicated endpoint at `/api/v1/audio/speech`. Send text and receive a raw audio byte stream. The endpoint is compatible with the OpenAI Audio Speech API, so you can use OpenAI client libraries. See the [TTS documentation](/docs/features/multimodal/tts) for details.
-  </Accordion>
+Text-to-speech uses a dedicated endpoint at `/api/v1/audio/speech`. Send text and receive a raw audio byte stream. The endpoint is compatible with the OpenAI Audio Speech API, so you can use OpenAI client libraries. See the [TTS documentation](/docs/features/multimodal/tts) for details.
 
-  <Accordion title="How does speech-to-text work?">
-    Speech-to-text uses a dedicated endpoint at `/api/v1/audio/transcriptions`. Send base64-encoded audio and receive a JSON response with the transcribed text and usage statistics. See the [STT documentation](/docs/features/multimodal/stt) for details.
-  </Accordion>
-</AccordionGroup>
+Speech-to-text uses a dedicated endpoint at `/api/v1/audio/transcriptions`. Send base64-encoded audio and receive a JSON response with the transcribed text and usage statistics. See the [STT documentation](/docs/features/multimodal/stt) for details.

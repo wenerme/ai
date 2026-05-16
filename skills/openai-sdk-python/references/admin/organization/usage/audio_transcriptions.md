@@ -336,6 +336,70 @@ Get audio transcriptions usage details for the organization.
 
           When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
+      - `class DataResultOrganizationUsageFileSearchesResult: …`
+
+        The aggregated file search calls usage details of the specific time bucket.
+
+        - `num_requests: int`
+
+          The count of file search calls.
+
+        - `object: Literal["organization.usage.file_searches.result"]`
+
+          - `"organization.usage.file_searches.result"`
+
+        - `api_key_id: Optional[str]`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `project_id: Optional[str]`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: Optional[str]`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+        - `vector_store_id: Optional[str]`
+
+          When `group_by=vector_store_id`, this field provides the vector store ID of the grouped usage result.
+
+      - `class DataResultOrganizationUsageWebSearchesResult: …`
+
+        The aggregated web search calls usage details of the specific time bucket.
+
+        - `num_model_requests: int`
+
+          The count of model requests.
+
+        - `num_requests: int`
+
+          The count of web search calls.
+
+        - `object: Literal["organization.usage.web_searches.result"]`
+
+          - `"organization.usage.web_searches.result"`
+
+        - `api_key_id: Optional[str]`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `context_level: Optional[str]`
+
+          When `group_by=context_level`, this field provides the search context size of the grouped usage result.
+
+        - `model: Optional[str]`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: Optional[str]`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: Optional[str]`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
       - `class DataResultOrganizationCostsResult: …`
 
         The aggregated costs details of the specific time bucket.

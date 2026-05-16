@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Submit an embedding request
 
@@ -180,12 +181,73 @@ components:
         - type
       title: >-
         EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItems1
+    MultimodalMedia:
+      type: object
+      properties:
+        data:
+          type: string
+        format:
+          type: string
+      required:
+        - data
+      title: MultimodalMedia
+    ContentPartInputAudioType:
+      type: string
+      enum:
+        - input_audio
+      title: ContentPartInputAudioType
+    ContentPartInputAudio:
+      type: object
+      properties:
+        input_audio:
+          $ref: '#/components/schemas/MultimodalMedia'
+        type:
+          $ref: '#/components/schemas/ContentPartInputAudioType'
+      required:
+        - input_audio
+        - type
+      title: ContentPartInputAudio
+    ContentPartInputVideoType:
+      type: string
+      enum:
+        - input_video
+      title: ContentPartInputVideoType
+    ContentPartInputVideo:
+      type: object
+      properties:
+        input_video:
+          $ref: '#/components/schemas/MultimodalMedia'
+        type:
+          $ref: '#/components/schemas/ContentPartInputVideoType'
+      required:
+        - input_video
+        - type
+      title: ContentPartInputVideo
+    ContentPartInputFileType:
+      type: string
+      enum:
+        - input_file
+      title: ContentPartInputFileType
+    ContentPartInputFile:
+      type: object
+      properties:
+        input_file:
+          $ref: '#/components/schemas/MultimodalMedia'
+        type:
+          $ref: '#/components/schemas/ContentPartInputFileType'
+      required:
+        - input_file
+        - type
+      title: ContentPartInputFile
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItems:
       oneOf:
         - $ref: >-
             #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItems0
         - $ref: >-
             #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItems1
+        - $ref: '#/components/schemas/ContentPartInputAudio'
+        - $ref: '#/components/schemas/ContentPartInputVideo'
+        - $ref: '#/components/schemas/ContentPartInputFile'
       title: >-
         EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItems
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4Items:
@@ -676,6 +738,9 @@ components:
         audio_tokens:
           type: integer
           description: Number of audio tokens in the input
+        file_tokens:
+          type: integer
+          description: Number of file/document tokens in the input
         image_tokens:
           type: integer
           description: Number of image tokens in the input

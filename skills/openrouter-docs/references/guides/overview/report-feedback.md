@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Report Feedback
 
@@ -58,9 +59,7 @@ For reporting issues when you have a generation ID handy:
 4. Select a category and add your comment
 5. Click **Submit**
 
-<Note title="Finding Your Generation ID">
-  The generation ID is returned in the API response under the `id` field. You can also find it by clicking on a row in the Activity page to view the generation details.
-</Note>
+The generation ID is returned in the API response under the `id` field. You can also find it by clicking on a row in the Activity page to view the generation details.
 
 ## What Happens After You Submit
 

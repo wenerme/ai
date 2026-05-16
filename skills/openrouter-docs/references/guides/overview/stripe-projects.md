@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Stripe Projects
 
@@ -201,17 +202,15 @@ Example prompts for your agent:
 * *"Rotate my OpenRouter API key."*
 * *"What AI services are available in the Stripe Projects catalog?"*
 
-<Tip>
-  To avoid browser pop-ups during agent-driven provisioning, complete the following flow manually **before** starting your agent session:
+To avoid browser pop-ups during agent-driven provisioning, complete the following flow manually **before** starting your agent session:
 
-  ```bash
-  stripe login
-  stripe projects link openrouter
-  stripe projects billing add   # only if you plan to use pay-as-you-go
-  ```
+```bash
+stripe login
+stripe projects link openrouter
+stripe projects billing add   # only if you plan to use pay-as-you-go
+```
 
-  Then let the agent call `stripe projects add openrouter/api`.
-</Tip>
+Then let the agent call `stripe projects add openrouter/api`.
 
 For fully non-interactive provisioning (CI, scripts, agents), pass `--json --yes`:
 

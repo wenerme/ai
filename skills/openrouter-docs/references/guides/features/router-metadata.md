@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Router Metadata
 
-<Note title="Experimental">
-  Router metadata is **experimental**. The `openrouter_metadata` response shape is unstable: fields and pipeline stage types may be **added, renamed, removed, or change semantics at any time**, without a deprecation cycle. Do not pin production tooling to specific field names or values yet.
-</Note>
+Router metadata is **experimental**. The `openrouter_metadata` response shape is unstable: fields and pipeline stage types may be **added, renamed, removed, or change semantics at any time**, without a deprecation cycle. Do not pin production tooling to specific field names or values yet.
 
 OpenRouter's router runs every request through a multi-stage pipeline: it picks a provider, may compress context, may run guardrails, may invoke server-side tools, and may retry against fallbacks. By default, none of that is visible on the response.
 
@@ -16,52 +15,48 @@ Router metadata is a **per-request opt-in** that adds an `openrouter_metadata` f
 
 Opt in by sending the `X-OpenRouter-Experimental-Metadata` request header with the value `enabled`:
 
-<Template data={{ API_KEY_REF }}>
-  <CodeGroup>
-    ```bash title="cURL"
-    curl https://openrouter.ai/api/v1/chat/completions \
-      -H "Authorization: Bearer {{API_KEY_REF}}" \
-      -H "Content-Type: application/json" \
-      -H "X-OpenRouter-Experimental-Metadata: enabled" \
-      -d '{
-        "model": "openai/gpt-4o-mini",
-        "messages": [{ "role": "user", "content": "Hello" }]
-      }'
-    ```
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer {{API_KEY_REF}}" \
+  -H "Content-Type: application/json" \
+  -H "X-OpenRouter-Experimental-Metadata: enabled" \
+  -d '{
+    "model": "openai/gpt-4o-mini",
+    "messages": [{ "role": "user", "content": "Hello" }]
+  }'
+```
 
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer {{API_KEY_REF}}`,
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer {{API_KEY_REF}}`,
+    'Content-Type': 'application/json',
+    'X-OpenRouter-Experimental-Metadata': 'enabled',
+  },
+  body: JSON.stringify({
+    model: 'openai/gpt-4o-mini',
+    messages: [{ role: 'user', content: 'Hello' }],
+  }),
+});
+```
+
+```python title="Python"
+import requests
+
+response = requests.post(
+    'https://openrouter.ai/api/v1/chat/completions',
+    headers={
+        'Authorization': f'Bearer {{API_KEY_REF}}',
         'Content-Type': 'application/json',
         'X-OpenRouter-Experimental-Metadata': 'enabled',
-      },
-      body: JSON.stringify({
-        model: 'openai/gpt-4o-mini',
-        messages: [{ role: 'user', content: 'Hello' }],
-      }),
-    });
-    ```
-
-    ```python title="Python"
-    import requests
-
-    response = requests.post(
-        'https://openrouter.ai/api/v1/chat/completions',
-        headers={
-            'Authorization': f'Bearer {{API_KEY_REF}}',
-            'Content-Type': 'application/json',
-            'X-OpenRouter-Experimental-Metadata': 'enabled',
-        },
-        json={
-            'model': 'openai/gpt-4o-mini',
-            'messages': [{'role': 'user', 'content': 'Hello'}],
-        },
-    )
-    ```
-  </CodeGroup>
-</Template>
+    },
+    json={
+        'model': 'openai/gpt-4o-mini',
+        'messages': [{'role': 'user', 'content': 'Hello'}],
+    },
+)
+```
 
 ### Accepted Values
 

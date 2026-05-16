@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Web Search
 
-<Warning title="Deprecated">
-  The web search plugin is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. Server tools give the model control over when and how often to search, rather than always running once per request.
-</Warning>
+The web search plugin is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. Server tools give the model control over when and how often to search, rather than always running once per request.
 
 You can incorporate relevant web search results for *any* model on OpenRouter by activating and customizing the `web` plugin, or by appending `:online` to the model slug:
 
@@ -24,9 +23,7 @@ You can also append `:online` to `:free` model variants like so:
 }
 ```
 
-<Note>
-  Using web search will incur extra costs, even with free models. See the [pricing section](#pricing) below for details.
-</Note>
+Using web search will incur extra costs, even with free models. See the [pricing section](#pricing) below for details.
 
 `:online` is a shortcut for using the `web` plugin, and is exactly equivalent to:
 
@@ -39,9 +36,7 @@ You can also append `:online` to `:free` model variants like so:
 
 The web search plugin is powered by native search for Anthropic, OpenAI, Perplexity, and xAI models.
 
-<Note>
-  For xAI models, the web search plugin enables both Web Search and X Search.
-</Note>
+For xAI models, the web search plugin enables both Web Search and X Search.
 
 For other models, the web search plugin is powered by [Exa](https://exa.ai). It uses their ["auto"](https://docs.exa.ai/reference/how-exa-search-works#combining-neural-and-keyword-the-best-of-both-worlds-through-exa-auto-search) method (a combination of keyword search and embeddings-based web search) to find the most relevant results and augment/ground your prompt. For each result, OpenRouter requests Exa [highlights](https://docs.exa.ai/reference/contents-retrieval-with-exa-api#highlights) — extractive excerpts drawn from the page that Exa selects as most relevant to the search query, sized adaptively (typically \~2,000–4,000 characters per result). These are returned to the model and surfaced via `url_citation` annotations, with Exa's `[...]` markers separating excerpts that come from different parts of the same page.
 
@@ -172,13 +167,11 @@ using the top-level `x_search_filter` parameter:
 | `enable_image_understanding` | boolean   | Enable analysis of images within posts                      |
 | `enable_video_understanding` | boolean   | Enable analysis of videos within posts                      |
 
-<Warning>
-  `allowed_x_handles` and `excluded_x_handles` are
-  mutually exclusive — you cannot use both in the
-  same request. If validation fails, the filter is
-  silently dropped and a basic `x_search` tool is
-  used instead.
-</Warning>
+`allowed_x_handles` and `excluded_x_handles` are
+mutually exclusive — you cannot use both in the
+same request. If validation fails, the filter is
+silently dropped and a basic `x_search` tool is
+used instead.
 
 ## Engine Selection
 
@@ -253,9 +246,7 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 }
 ```
 
-<Note>
-  Firecrawl supports `include_domains` and `exclude_domains`, but they are mutually exclusive — you cannot use both in the same request.
-</Note>
+Firecrawl supports `include_domains` and `exclude_domains`, but they are mutually exclusive — you cannot use both in the same request.
 
 ### Parallel
 
@@ -278,7 +269,7 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 ### Engine-Specific Pricing
 
 * **Native search**: Pricing is passed through directly from the provider (see provider-specific pricing info below)
-* **Exa search**: Uses OpenRouter credits at \$4 per 1000 results (default 5 results = \$0.02 per request)
+* **Exa search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results, then \$0.001 per additional result
 * **Parallel search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results in a request, then \$0.001 per additional result
 * **Firecrawl search**: Uses your Firecrawl credits directly, refill at [Firecrawl.dev](https://www.firecrawl.dev)
 
@@ -286,7 +277,7 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 
 ### Exa Search Pricing
 
-When using Exa search (either explicitly via `"engine": "exa"` or as fallback), the web plugin uses your OpenRouter credits and charges *\$4 per 1000 results*. By default, `max_results` set to 5, this comes out to a maximum of \$0.02 per request, in addition to the LLM usage for the search result prompt tokens.
+When using Exa search (either explicitly via `"engine": "exa"` or as fallback), the web plugin uses your OpenRouter credits and charges *\$0.005 per request*. This includes up to 10 results; additional results are charged at \$0.001 each, in addition to the LLM usage for the search result prompt tokens.
 
 ### Native Search Pricing (Provider Passthrough)
 
@@ -319,13 +310,11 @@ You can specify the search context size in your API request using the `web_searc
 }
 ```
 
-<Note title="Native Web Search Pricing">
-  Refer to each provider's documentation for their native web search pricing info:
+Refer to each provider's documentation for their native web search pricing info:
 
-  * [OpenAI Pricing](https://platform.openai.com/docs/pricing#built-in-tools)
-  * [Anthropic Pricing](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing)
-  * [Perplexity Pricing](https://docs.perplexity.ai/getting-started/pricing)
-  * [xAI Pricing](https://docs.x.ai/docs/models#tool-invocation-costs)
+* [OpenAI Pricing](https://platform.openai.com/docs/pricing#built-in-tools)
+* [Anthropic Pricing](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing)
+* [Perplexity Pricing](https://docs.perplexity.ai/getting-started/pricing)
+* [xAI Pricing](https://docs.x.ai/docs/models#tool-invocation-costs)
 
-  Native web search pricing only applies when using `"engine": "native"` or when native search is used by default for supported models. When using `"engine": "exa"`, the Exa search pricing applies instead.
-</Note>
+Native web search pricing only applies when using `"engine": "native"` or when native search is used by default for supported models. When using `"engine": "exa"`, the Exa search pricing applies instead.

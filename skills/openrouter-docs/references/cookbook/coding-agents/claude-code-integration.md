@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Claude Code
 
-<Warning>
-  Claude Code with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/guides/routing/provider-selection) when using Claude Code.
-</Warning>
+Claude Code with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/guides/routing/provider-selection) when using Claude Code.
 
 ## Why Use OpenRouter with Claude Code?
 
@@ -30,29 +29,23 @@ This guide will get you running [Claude Code](https://code.claude.com/docs/en/ov
 
 ### Step 1: Install Claude Code
 
-<Tabs>
-  <Tab title="Native Install (Recommended)">
-    **macOS, Linux, WSL:**
+**macOS, Linux, WSL:**
 
-    ```bash
-    curl -fsSL https://claude.ai/install.sh | bash
-    ```
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
 
-    **Windows PowerShell:**
+**Windows PowerShell:**
 
-    ```powershell
-    irm https://claude.ai/install.ps1 | iex
-    ```
-  </Tab>
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
 
-  <Tab title="npm">
-    Requires [Node.js 18 or newer](https://nodejs.org/en/download/).
+Requires [Node.js 18 or newer](https://nodejs.org/en/download/).
 
-    ```bash
-    npm install -g @anthropic-ai/claude-code
-    ```
-  </Tab>
-</Tabs>
+```bash
+npm install -g @anthropic-ai/claude-code
+```
 
 ### Step 2: Connect Claude to OpenRouter
 
@@ -65,54 +58,42 @@ Requirements:
 2. Provide your [OpenRouter API key](https://openrouter.ai/settings/keys) as the auth token
 3. **Important:** Explicitly blank out the Anthropic API key to prevent conflicts
 
-<Tabs>
-  <Tab title="Shell Profile">
-    Add these environment variables to your shell profile:
+Add these environment variables to your shell profile:
 
-    ```bash
-    # Open your shell profile in nano
-    nano ~/.zshrc  # or ~/.bashrc for Bash users
+```bash
+# Open your shell profile in nano
+nano ~/.zshrc  # or ~/.bashrc for Bash users
 
-    # Add these lines to the file:
-    export OPENROUTER_API_KEY="<your-openrouter-api-key>"
-    export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
-    export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
-    export ANTHROPIC_API_KEY="" # Important: Must be explicitly empty
+# Add these lines to the file:
+export OPENROUTER_API_KEY="<your-openrouter-api-key>"
+export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
+export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
+export ANTHROPIC_API_KEY="" # Important: Must be explicitly empty
 
-    # After saving, restart your terminal for changes to take effect
-    ```
+# After saving, restart your terminal for changes to take effect
+```
 
-    <Note>
-      **Persistence:** We recommend adding these lines to your shell profile (`~/.bashrc`, `~/.zshrc`, or `~/.config/fish/config.fish`).
-    </Note>
-  </Tab>
+**Persistence:** We recommend adding these lines to your shell profile (`~/.bashrc`, `~/.zshrc`, or `~/.config/fish/config.fish`).
 
-  <Tab title="Project Settings File">
-    Alternatively, you can configure Claude Code using a project-level settings file at `.claude/settings.local.json` in your project root:
+Alternatively, you can configure Claude Code using a project-level settings file at `.claude/settings.local.json` in your project root:
 
-    ```json
-    {
-      "env": {
-        "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
-        "ANTHROPIC_AUTH_TOKEN": "<your-openrouter-api-key>",
-        "ANTHROPIC_API_KEY": ""
-      }
-    }
-    ```
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
+    "ANTHROPIC_AUTH_TOKEN": "<your-openrouter-api-key>",
+    "ANTHROPIC_API_KEY": ""
+  }
+}
+```
 
-    Replace `<your-openrouter-api-key>` with your actual OpenRouter API key.
+Replace `<your-openrouter-api-key>` with your actual OpenRouter API key.
 
-    <Note>
-      **Note:** This method keeps your configuration scoped to the project, making it easy to share OpenRouter settings with your team via version control (just be careful not to commit your API key).
-    </Note>
-  </Tab>
-</Tabs>
+**Note:** This method keeps your configuration scoped to the project, making it easy to share OpenRouter settings with your team via version control (just be careful not to commit your API key).
 
-<Warning>
-  **Variable Location:** Do not put these in a project-level `.env` file. The native Claude Code installer does not read standard `.env` files.
+**Variable Location:** Do not put these in a project-level `.env` file. The native Claude Code installer does not read standard `.env` files.
 
-  **Previous Login:** If you were previously logged in to Claude Code with Anthropic, run `/logout` in a Claude Code session to clear cached credentials before the OpenRouter configuration takes effect.
-</Warning>
+**Previous Login:** If you were previously logged in to Claude Code with Anthropic, run `/logout` in a Claude Code session to clear cached credentials before the OpenRouter configuration takes effect.
 
 ### Step 3: Start your session
 
@@ -186,17 +167,13 @@ Claude Code has a built-in `/fast` command that toggles fast mode. When enabled,
 export CLAUDE_CODE_SKIP_FAST_MODE_ORG_CHECK=1
 ```
 
-<Note>
-  Requires Claude Code v2.1.96 or newer.
-</Note>
+Requires Claude Code v2.1.96 or newer.
 
 ### Pricing
 
 Fast mode is priced at 6x the standard token rates for the underlying Claude Opus model (4.6 or 4.7). See [Anthropic's fast mode pricing](https://platform.claude.com/docs/en/build-with-claude/fast-mode#pricing) for current rates. When fast mode is active, the response's `usage` object includes `"speed": "fast"` to confirm the request was processed at the higher speed tier.
 
-<Note>
-  If `speed: "fast"` is sent for a model that does not support fast mode, OpenRouter silently drops the parameter and the request proceeds at standard speed with standard pricing.
-</Note>
+If `speed: "fast"` is sent for a model that does not support fast mode, OpenRouter silently drops the parameter and the request proceeds at standard speed with standard pricing.
 
 ### Routing behavior
 

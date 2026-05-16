@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Grafana Cloud
 
@@ -21,9 +22,7 @@ You'll need three values from your Grafana Cloud portal:
 3. Search for **OpenTelemetry (OTLP)** and select it
 4. On the configuration page, you'll find your **OTLP endpoint URL**
 
-<Tip>
-  The base URL should be the OTLP gateway endpoint, not your main Grafana dashboard URL. The format is `https://otlp-gateway-prod-{region}.grafana.net`.
-</Tip>
+The base URL should be the OTLP gateway endpoint, not your main Grafana dashboard URL. The format is `https://otlp-gateway-prod-{region}.grafana.net`.
 
 ### Finding your Instance ID
 

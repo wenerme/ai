@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Enterprise Quickstart
 
@@ -44,11 +45,11 @@ See [Guardrails](/docs/guides/features/guardrails) for configuration details and
 
 ### Zero Data Retention (ZDR)
 
-Zero Data Retention ensures providers do not store your prompts or responses. Enable ZDR globally in your [privacy settings](https://openrouter.ai/settings/privacy) or per-request using the `zdr` parameter.
+Zero Data Retention ensures providers do not store your prompts or responses. ZDR can be enforced per model group (Anthropic, OpenAI, Google, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/docs/guides/features/guardrails), or per-request using the `zdr` parameter.
 
 OpenRouter itself has a ZDR policy and does not retain your prompts unless you explicitly opt in to prompt logging.
 
-See [Zero Data Retention](/docs/guides/features/zdr) for the full list of ZDR-compatible endpoints and configuration options.
+See [Zero Data Retention](/docs/guides/features/zdr) for the full list of ZDR-compatible endpoints, per-model-group configuration, and request-level options.
 
 ### Data Privacy
 

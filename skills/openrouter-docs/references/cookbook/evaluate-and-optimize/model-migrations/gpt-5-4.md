@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # GPT-5.4 Migration Guide
 
@@ -15,12 +16,10 @@ message is intermediate commentary or the final answer.
 OpenRouter supports `phase` in the
 [Responses API](/docs/api/api-reference/responses/create-responses).
 
-<Note>
-  `phase` is **not available** in the Chat Completions API.
-  The Chat Completions format cannot represent multiple
-  output items with distinct phases in a single response.
-  Use the Responses API for full `phase` support.
-</Note>
+`phase` is **not available** in the Chat Completions API.
+The Chat Completions format cannot represent multiple
+output items with distinct phases in a single response.
+Use the Responses API for full `phase` support.
 
 ## The `phase` Field
 
@@ -33,10 +32,8 @@ possible values:
 | `"commentary"`   | Intermediate assistant message |
 | `"final_answer"` | The final closeout message     |
 
-<Note>
-  `phase` is only valid on **assistant** messages.
-  Do not add `phase` to user or system messages.
-</Note>
+`phase` is only valid on **assistant** messages.
+Do not add `phase` to user or system messages.
 
 ## Why It Matters
 
@@ -203,12 +200,10 @@ on assistant messages:
 | Other OpenAI models    | Silently ignored (safe to pass) |
 | Non-OpenAI models      | Not applicable                  |
 
-<Note>
-  Passing `phase` to OpenAI models that don't support it
-  (like `gpt-4o`) is safe — OpenAI silently ignores the
-  field. You do not need to filter `phase` based on the
-  model.
-</Note>
+Passing `phase` to OpenAI models that don't support it
+(like `gpt-4o`) is safe — OpenAI silently ignores the
+field. You do not need to filter `phase` based on the
+model.
 
 ## Breaking Changes
 

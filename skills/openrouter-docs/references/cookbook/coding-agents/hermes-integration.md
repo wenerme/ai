@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Hermes Agent
 
@@ -38,9 +39,7 @@ hermes chat --provider openrouter --model anthropic/claude-sonnet-4
 
 ## Manual Configuration
 
-<Warning>
-  **Advanced users only:** The following manual configuration is for users who need to edit config files directly. For most users, we recommend using `hermes model` above.
-</Warning>
+**Advanced users only:** The following manual configuration is for users who need to edit config files directly. For most users, we recommend using `hermes model` above.
 
 ### Step 1: Get Your OpenRouter API Key
 
@@ -57,9 +56,7 @@ Add your OpenRouter API key to `~/.hermes/.env`:
 OPENROUTER_API_KEY=sk-or-...
 ```
 
-<Note>
-  Hermes separates secrets from non-secret settings. API keys go in `~/.hermes/.env`, while model and provider configuration goes in `~/.hermes/config.yaml`.
-</Note>
+Hermes separates secrets from non-secret settings. API keys go in `~/.hermes/.env`, while model and provider configuration goes in `~/.hermes/config.yaml`.
 
 ### Step 3: Configure Your Model
 
@@ -158,9 +155,7 @@ openrouter:
 
 This is useful for cost optimization on coding tasks — the router picks the cheapest model that meets your quality bar.
 
-<Note>
-  Hermes uses its own `openrouter:` config key to set `min_coding_score`. This maps to the `plugins` array in the [OpenRouter API](/docs/guides/routing/routers/pareto-router) — you don't need to construct the plugins payload yourself.
-</Note>
+Hermes uses its own `openrouter:` config key to set `min_coding_score`. This maps to the `plugins` array in the [OpenRouter API](/docs/guides/routing/routers/pareto-router) — you don't need to construct the plugins payload yourself.
 
 ## Monitoring Usage
 

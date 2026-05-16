@@ -1210,45 +1210,6 @@ This release contains a hotfix for [managed networks](https://developers.cloudfl
 
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 
-## 2025-05-14
-
-  
-**WARP client for Windows (version 2025.4.929.0)**   
-
-A new GA release for the Windows WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains two significant changes all customers should be aware of:
-
-1. All DNS traffic now flows inside the WARP tunnel. Customers are no longer required to configure their local firewall rules to allow our [DoH IP addresses and domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#doh-ip).
-2. When using MASQUE, the connection will fall back to HTTP/2 (TCP) when we detect that HTTP/3 traffic is blocked. This allows for a much more reliable connection on some public WiFi networks.
-
-**Changes and improvements**
-
-* Fixed an issue causing reconnection loops when captive portals are detected.
-* Fixed an issue that caused WARP client disk encryption posture checks to fail due to missing drive names.
-* Fixed an issue where managed network policies could incorrectly report network location beacons as missing.
-* Improved DEX test error reporting.
-* Fixed an issue where some parts of the WARP Client UI were missing in high contrast mode.
-* Fixed an issue causing client notifications to fail in IPv6 only environments which prevented the client from receiving configuration changes to settings like device profile.
-* Added a TCP fallback for the MASQUE tunnel protocol to improve connectivity on networks that block UDP or HTTP/3 specifically.
-* Added new IP addresses for [tunnel connectivity checks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#connectivity-checks). If your organization uses a firewall or other policies you will need to exempt these IPs.
-* DNS over HTTPS traffic is now included in the WARP tunnel by default.
-* Improved the error message displayed in the client GUI when the rate limit for entering an incorrect admin override code is met.
-* Improved handling of non-SLAAC IPv6 interface addresses for better connectivity in IPv6 only environments.
-* Fixed an issue where frequent network changes could cause WARP to become unresponsive.
-* Improvement for WARP to check if tunnel connectivity fails or times out at device wake before attempting to reconnect.
-* Fixed an issue causing WARP connection disruptions after network changes.
-
-**Known issues**
-
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
-To work around this issue, reconnect the WARP client by toggling off and back on.
-* Microsoft has confirmed a regression with Windows 11 starting around 24H2 that may cause performance issues for some users. These performance issues could manifest as mouse lag, audio cracking, or other slowdowns. A fix from Microsoft is expected in early July.
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-
 ## 2025-03-17
 
   

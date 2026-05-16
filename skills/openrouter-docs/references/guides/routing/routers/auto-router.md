@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Auto Router
 
@@ -14,15 +15,36 @@ Instead of manually choosing a model, let the Auto Router analyze your prompt an
 
 Set your model to `openrouter/auto`:
 
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
+const openRouter = new OpenRouter({
+  apiKey: '<OPENROUTER_API_KEY>',
+});
 
-  const completion = await openRouter.chat.send({
+const completion = await openRouter.chat.send({
+  model: 'openrouter/auto',
+  messages: [
+    {
+      role: 'user',
+      content: 'Explain quantum entanglement in simple terms',
+    },
+  ],
+});
+
+console.log(completion.choices[0].message.content);
+// Check which model was selected
+console.log('Model used:', completion.model);
+```
+
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
     model: 'openrouter/auto',
     messages: [
       {
@@ -30,64 +52,41 @@ Set your model to `openrouter/auto`:
         content: 'Explain quantum entanglement in simple terms',
       },
     ],
-  });
+  }),
+});
 
-  console.log(completion.choices[0].message.content);
-  // Check which model was selected
-  console.log('Model used:', completion.model);
-  ```
+const data = await response.json();
+console.log(data.choices[0].message.content);
+// Check which model was selected
+console.log('Model used:', data.model);
+```
 
-  ```typescript title="TypeScript (fetch)"
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'openrouter/auto',
-      messages: [
-        {
-          role: 'user',
-          content: 'Explain quantum entanglement in simple terms',
-        },
-      ],
-    }),
-  });
+```python title="Python"
+import requests
+import json
 
-  const data = await response.json();
-  console.log(data.choices[0].message.content);
-  // Check which model was selected
-  console.log('Model used:', data.model);
-  ```
+response = requests.post(
+  url="https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "Content-Type": "application/json",
+  },
+  data=json.dumps({
+    "model": "openrouter/auto",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Explain quantum entanglement in simple terms"
+      }
+    ]
+  })
+)
 
-  ```python title="Python"
-  import requests
-  import json
-
-  response = requests.post(
-    url="https://openrouter.ai/api/v1/chat/completions",
-    headers={
-      "Authorization": "Bearer <OPENROUTER_API_KEY>",
-      "Content-Type": "application/json",
-    },
-    data=json.dumps({
-      "model": "openrouter/auto",
-      "messages": [
-        {
-          "role": "user",
-          "content": "Explain quantum entanglement in simple terms"
-        }
-      ]
-    })
-  )
-
-  data = response.json()
-  print(data['choices'][0]['message']['content'])
-  # Check which model was selected
-  print('Model used:', data['model'])
-  ```
-</CodeGroup>
+data = response.json()
+print(data['choices'][0]['message']['content'])
+# Check which model was selected
+print('Model used:', data['model'])
+```
 
 ## Response
 
@@ -124,9 +123,7 @@ The response includes the `model` field showing which model was actually used:
 
 The Auto Router selects from a curated set of high-quality models including:
 
-<Callout intent="warning">
-  Model slugs change as new versions are released. The examples below are current as of December 4, 2025. Check the [models page](https://openrouter.ai/models) for the latest available models.
-</Callout>
+Model slugs change as new versions are released. The examples below are current as of December 4, 2025. Check the [models page](https://openrouter.ai/models) for the latest available models.
 
 * Claude Sonnet 4.5 (`anthropic/claude-sonnet-4.5`)
 * Claude Opus 4.5 (`anthropic/claude-opus-4.5`)
@@ -145,9 +142,32 @@ You can restrict which models the Auto Router can select from using the `plugins
 
 Use wildcard patterns to filter models. For example, `anthropic/*` matches all Anthropic models:
 
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  const completion = await openRouter.chat.send({
+```typescript title="TypeScript SDK"
+const completion = await openRouter.chat.send({
+  model: 'openrouter/auto',
+  messages: [
+    {
+      role: 'user',
+      content: 'Explain quantum entanglement',
+    },
+  ],
+  plugins: [
+    {
+      id: 'auto-router',
+      allowed_models: ['anthropic/*', 'openai/gpt-5.1'],
+    },
+  ],
+});
+```
+
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer <OPENROUTER_API_KEY>',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
     model: 'openrouter/auto',
     messages: [
       {
@@ -161,59 +181,34 @@ Use wildcard patterns to filter models. For example, `anthropic/*` matches all A
         allowed_models: ['anthropic/*', 'openai/gpt-5.1'],
       },
     ],
-  });
-  ```
+  }),
+});
+```
 
-  ```typescript title="TypeScript (fetch)"
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      Authorization: 'Bearer <OPENROUTER_API_KEY>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'openrouter/auto',
-      messages: [
-        {
-          role: 'user',
-          content: 'Explain quantum entanglement',
-        },
-      ],
-      plugins: [
-        {
-          id: 'auto-router',
-          allowed_models: ['anthropic/*', 'openai/gpt-5.1'],
-        },
-      ],
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  response = requests.post(
-    url="https://openrouter.ai/api/v1/chat/completions",
-    headers={
-      "Authorization": "Bearer <OPENROUTER_API_KEY>",
-      "Content-Type": "application/json",
-    },
-    data=json.dumps({
-      "model": "openrouter/auto",
-      "messages": [
-        {
-          "role": "user",
-          "content": "Explain quantum entanglement"
-        }
-      ],
-      "plugins": [
-        {
-          "id": "auto-router",
-          "allowed_models": ["anthropic/*", "openai/gpt-5.1"]
-        }
-      ]
-    })
-  )
-  ```
-</CodeGroup>
+```python title="Python"
+response = requests.post(
+  url="https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "Content-Type": "application/json",
+  },
+  data=json.dumps({
+    "model": "openrouter/auto",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Explain quantum entanglement"
+      }
+    ],
+    "plugins": [
+      {
+        "id": "auto-router",
+        "allowed_models": ["anthropic/*", "openai/gpt-5.1"]
+      }
+    ]
+  })
+)
+```
 
 ### Via Settings UI
 

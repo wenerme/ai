@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Red Teaming
 
@@ -35,6 +36,4 @@ To request red teaming approval, email [safety@openrouter.ai](mailto:safety@open
 * The types of adversarial techniques you plan to use
 * Your expected timeline
 
-<Note>
-  Approval generally takes **5 business days**. Approval is not guaranteed and is granted at OpenRouter's discretion based on the details of your use case.
-</Note>
+Approval generally takes **5 business days**. Approval is not guaranteed and is granted at OpenRouter's discretion based on the details of your use case.

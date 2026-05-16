@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Embeddings
 
@@ -34,173 +35,155 @@ Embeddings are used in a wide variety of applications:
 
 To generate embeddings, send a POST request to `/embeddings` with your text input and chosen model:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/text-embedding-3-small'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    const response = await openRouter.embeddings.generate({
-      model: '{{MODEL}}',
-      input: 'The quick brown fox jumps over the lazy dog',
-    });
+const response = await openRouter.embeddings.generate({
+  model: '{{MODEL}}',
+  input: 'The quick brown fox jumps over the lazy dog',
+});
 
-    console.log(response.data[0].embedding);
-    ```
+console.log(response.data[0].embedding);
+```
 
-    ```python title="Python"
-    import requests
+```python title="Python"
+import requests
 
-    response = requests.post(
-      "https://openrouter.ai/api/v1/embeddings",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "input": "The quick brown fox jumps over the lazy dog"
-      }
-    )
+response = requests.post(
+  "https://openrouter.ai/api/v1/embeddings",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "input": "The quick brown fox jumps over the lazy dog"
+  }
+)
 
-    data = response.json()
-    embedding = data["data"][0]["embedding"]
-    print(f"Embedding dimension: {len(embedding)}")
-    ```
+data = response.json()
+embedding = data["data"][0]["embedding"]
+print(f"Embedding dimension: {len(embedding)}")
+```
 
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        input: 'The quick brown fox jumps over the lazy dog',
-      }),
-    });
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    input: 'The quick brown fox jumps over the lazy dog',
+  }),
+});
 
-    const data = await response.json();
-    const embedding = data.data[0].embedding;
-    console.log(`Embedding dimension: ${embedding.length}`);
-    ```
+const data = await response.json();
+const embedding = data.data[0].embedding;
+console.log(`Embedding dimension: ${embedding.length}`);
+```
 
-    ```shell title="Shell"
-    curl https://openrouter.ai/api/v1/embeddings \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-      -d '{
-        "model": "{{MODEL}}",
-        "input": "The quick brown fox jumps over the lazy dog"
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```shell title="Shell"
+curl https://openrouter.ai/api/v1/embeddings \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -d '{
+    "model": "{{MODEL}}",
+    "input": "The quick brown fox jumps over the lazy dog"
+  }'
+```
 
 ### Batch Processing
 
 You can generate embeddings for multiple texts in a single request by passing an array of strings:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/text-embedding-3-small'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    const response = await openRouter.embeddings.generate({
-      model: '{{MODEL}}',
-      input: [
-        'Machine learning is a subset of artificial intelligence',
-        'Deep learning uses neural networks with multiple layers',
-        'Natural language processing enables computers to understand text'
-      ],
-    });
+const response = await openRouter.embeddings.generate({
+  model: '{{MODEL}}',
+  input: [
+    'Machine learning is a subset of artificial intelligence',
+    'Deep learning uses neural networks with multiple layers',
+    'Natural language processing enables computers to understand text'
+  ],
+});
 
-    // Process each embedding
-    response.data.forEach((item, index) => {
-      console.log(`Embedding ${index}: ${item.embedding.length} dimensions`);
-    });
-    ```
+// Process each embedding
+response.data.forEach((item, index) => {
+  console.log(`Embedding ${index}: ${item.embedding.length} dimensions`);
+});
+```
 
-    ```python title="Python"
-    import requests
+```python title="Python"
+import requests
 
-    response = requests.post(
-      "https://openrouter.ai/api/v1/embeddings",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "input": [
-          "Machine learning is a subset of artificial intelligence",
-          "Deep learning uses neural networks with multiple layers",
-          "Natural language processing enables computers to understand text"
-        ]
-      }
-    )
+response = requests.post(
+  "https://openrouter.ai/api/v1/embeddings",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "input": [
+      "Machine learning is a subset of artificial intelligence",
+      "Deep learning uses neural networks with multiple layers",
+      "Natural language processing enables computers to understand text"
+    ]
+  }
+)
 
-    data = response.json()
-    for i, item in enumerate(data["data"]):
-      print(f"Embedding {i}: {len(item['embedding'])} dimensions")
-    ```
+data = response.json()
+for i, item in enumerate(data["data"]):
+  print(f"Embedding {i}: {len(item['embedding'])} dimensions")
+```
 
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        input: [
-          'Machine learning is a subset of artificial intelligence',
-          'Deep learning uses neural networks with multiple layers',
-          'Natural language processing enables computers to understand text'
-        ],
-      }),
-    });
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    input: [
+      'Machine learning is a subset of artificial intelligence',
+      'Deep learning uses neural networks with multiple layers',
+      'Natural language processing enables computers to understand text'
+    ],
+  }),
+});
 
-    const data = await response.json();
-    data.data.forEach((item, index) => {
-      console.log(`Embedding ${index}: ${item.embedding.length} dimensions`);
-    });
-    ```
+const data = await response.json();
+data.data.forEach((item, index) => {
+  console.log(`Embedding ${index}: ${item.embedding.length} dimensions`);
+});
+```
 
-    ```shell title="Shell"
-    curl https://openrouter.ai/api/v1/embeddings \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-      -d '{
-        "model": "{{MODEL}}",
-        "input": [
-          "Machine learning is a subset of artificial intelligence",
-          "Deep learning uses neural networks with multiple layers",
-          "Natural language processing enables computers to understand text"
-        ]
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```shell title="Shell"
+curl https://openrouter.ai/api/v1/embeddings \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -d '{
+    "model": "{{MODEL}}",
+    "input": [
+      "Machine learning is a subset of artificial intelligence",
+      "Deep learning uses neural networks with multiple layers",
+      "Natural language processing enables computers to understand text"
+    ]
+  }'
+```
 
 ### Image Input
 
@@ -208,166 +191,148 @@ Some embedding models support image inputs, enabling multimodal embeddings that 
 
 To send an image, wrap your input in the multimodal format with a `content` array containing `image_url` objects. You can also combine text and images in a single input block.
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'nvidia/llama-nemotron-embed-vl-1b-v2'
-}}
->
-  <CodeGroup>
-    ```python title="Python"
-    import requests
+```python title="Python"
+import requests
 
-    response = requests.post(
-      "https://openrouter.ai/api/v1/embeddings",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "input": [
-          {
-            "content": [
-              {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}
-            ]
-          }
-        ],
-        "encoding_format": "float",
+response = requests.post(
+  "https://openrouter.ai/api/v1/embeddings",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "input": [
+      {
+        "content": [
+          {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}
+        ]
       }
-    )
+    ],
+    "encoding_format": "float",
+  }
+)
 
-    data = response.json()
-    embedding = data["data"][0]["embedding"]
-    print(f"Embedding dimension: {len(embedding)}")
-    ```
+data = response.json()
+embedding = data["data"][0]["embedding"]
+print(f"Embedding dimension: {len(embedding)}")
+```
 
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        input: [
-          {
-            content: [
-              { type: 'image_url', image_url: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg' } }
-            ]
-          }
-        ],
-        encoding_format: 'float',
-      }),
-    });
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    input: [
+      {
+        content: [
+          { type: 'image_url', image_url: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg' } }
+        ]
+      }
+    ],
+    encoding_format: 'float',
+  }),
+});
 
-    const data = await response.json();
-    const embedding = data.data[0].embedding;
-    console.log(`Embedding dimension: ${embedding.length}`);
-    ```
+const data = await response.json();
+const embedding = data.data[0].embedding;
+console.log(`Embedding dimension: ${embedding.length}`);
+```
 
-    ```shell title="Shell"
-    curl https://openrouter.ai/api/v1/embeddings \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-      -d '{
-        "model": "{{MODEL}}",
-        "input": [
-          {
-            "content": [
-              {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}
-            ]
-          }
-        ],
-        "encoding_format": "float"
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```shell title="Shell"
+curl https://openrouter.ai/api/v1/embeddings \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -d '{
+    "model": "{{MODEL}}",
+    "input": [
+      {
+        "content": [
+          {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}
+        ]
+      }
+    ],
+    "encoding_format": "float"
+  }'
+```
 
 You can also combine text and images in a single input to generate a joint embedding:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'nvidia/llama-nemotron-embed-vl-1b-v2'
-}}
->
-  <CodeGroup>
-    ```python title="Python"
-    import requests
+```python title="Python"
+import requests
 
-    response = requests.post(
-      "https://openrouter.ai/api/v1/embeddings",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "input": [
-          {
-            "content": [
-              {"type": "text", "text": "A scenic boardwalk through a green meadow"},
-              {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}
-            ]
-          }
-        ],
-        "encoding_format": "float",
+response = requests.post(
+  "https://openrouter.ai/api/v1/embeddings",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "input": [
+      {
+        "content": [
+          {"type": "text", "text": "A scenic boardwalk through a green meadow"},
+          {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}
+        ]
       }
-    )
+    ],
+    "encoding_format": "float",
+  }
+)
 
-    data = response.json()
-    embedding = data["data"][0]["embedding"]
-    print(f"Embedding dimension: {len(embedding)}")
-    ```
+data = response.json()
+embedding = data["data"][0]["embedding"]
+print(f"Embedding dimension: {len(embedding)}")
+```
 
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        input: [
-          {
-            content: [
-              { type: 'text', text: 'A scenic boardwalk through a green meadow' },
-              { type: 'image_url', image_url: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg' } }
-            ]
-          }
-        ],
-        encoding_format: 'float',
-      }),
-    });
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/embeddings', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    input: [
+      {
+        content: [
+          { type: 'text', text: 'A scenic boardwalk through a green meadow' },
+          { type: 'image_url', image_url: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg' } }
+        ]
+      }
+    ],
+    encoding_format: 'float',
+  }),
+});
 
-    const data = await response.json();
-    const embedding = data.data[0].embedding;
-    console.log(`Embedding dimension: ${embedding.length}`);
-    ```
+const data = await response.json();
+const embedding = data.data[0].embedding;
+console.log(`Embedding dimension: ${embedding.length}`);
+```
 
-    ```shell title="Shell"
-    curl https://openrouter.ai/api/v1/embeddings \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-      -d '{
-        "model": "{{MODEL}}",
-        "input": [
-          {
-            "content": [
-              {"type": "text", "text": "A scenic boardwalk through a green meadow"},
-              {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}
-            ]
-          }
-        ],
-        "encoding_format": "float"
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```shell title="Shell"
+curl https://openrouter.ai/api/v1/embeddings \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -d '{
+    "model": "{{MODEL}}",
+    "input": [
+      {
+        "content": [
+          {"type": "text", "text": "A scenic boardwalk through a green meadow"},
+          {"type": "image_url", "image_url": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/640px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"}}
+        ]
+      }
+    ],
+    "encoding_format": "float"
+  }'
+```
 
 ## API Reference
 
@@ -381,184 +346,167 @@ OpenRouter provides access to various embedding models from different providers.
 
 To list all available embedding models programmatically:
 
-<Template
-  data={{
-  API_KEY_REF
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    const models = await openRouter.embeddings.listModels();
-    console.log(models.data);
-    ```
+const models = await openRouter.embeddings.listModels();
+console.log(models.data);
+```
 
-    ```python title="Python"
-    import requests
+```python title="Python"
+import requests
 
-    response = requests.get(
-      "https://openrouter.ai/api/v1/embeddings/models",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-      }
-    )
+response = requests.get(
+  "https://openrouter.ai/api/v1/embeddings/models",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+  }
+)
 
-    models = response.json()
-    for model in models["data"]:
-      print(f"{model['id']}: {model.get('context_length', 'N/A')} tokens")
-    ```
+models = response.json()
+for model in models["data"]:
+  print(f"{model['id']}: {model.get('context_length', 'N/A')} tokens")
+```
 
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/embeddings/models', {
-      headers: {
-        'Authorization': 'Bearer {{API_KEY_REF}}',
-      },
-    });
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/embeddings/models', {
+  headers: {
+    'Authorization': 'Bearer {{API_KEY_REF}}',
+  },
+});
 
-    const models = await response.json();
-    console.log(models.data);
-    ```
+const models = await response.json();
+console.log(models.data);
+```
 
-    ```shell title="Shell"
-    curl https://openrouter.ai/api/v1/embeddings/models \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY"
-    ```
-  </CodeGroup>
-</Template>
+```shell title="Shell"
+curl https://openrouter.ai/api/v1/embeddings/models \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY"
+```
 
 ## Practical Example: Semantic Search
 
 Here's a complete example of building a semantic search system using embeddings:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/text-embedding-3-small'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    // Sample documents
-    const documents = [
-      "The cat sat on the mat",
-      "Dogs are loyal companions",
-      "Python is a programming language",
-      "Machine learning models require training data",
-      "The weather is sunny today"
-    ];
+// Sample documents
+const documents = [
+  "The cat sat on the mat",
+  "Dogs are loyal companions",
+  "Python is a programming language",
+  "Machine learning models require training data",
+  "The weather is sunny today"
+];
 
-    // Function to calculate cosine similarity
-    function cosineSimilarity(a: number[], b: number[]): number {
-      const dotProduct = a.reduce((sum, val, i) => sum + val * b[i], 0);
-      const magnitudeA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
-      const magnitudeB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
-      return dotProduct / (magnitudeA * magnitudeB);
+// Function to calculate cosine similarity
+function cosineSimilarity(a: number[], b: number[]): number {
+  const dotProduct = a.reduce((sum, val, i) => sum + val * b[i], 0);
+  const magnitudeA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
+  const magnitudeB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
+  return dotProduct / (magnitudeA * magnitudeB);
+}
+
+async function semanticSearch(query: string, documents: string[]) {
+  // Generate embeddings for all documents and the query
+  const response = await openRouter.embeddings.generate({
+    model: '{{MODEL}}',
+    input: [query, ...documents],
+  });
+
+  const queryEmbedding = response.data[0].embedding;
+  const docEmbeddings = response.data.slice(1);
+
+  // Calculate similarity scores
+  const results = documents.map((doc, i) => ({
+    document: doc,
+    similarity: cosineSimilarity(
+      queryEmbedding as number[],
+      docEmbeddings[i].embedding as number[]
+    ),
+  }));
+
+  // Sort by similarity (highest first)
+  results.sort((a, b) => b.similarity - a.similarity);
+
+  return results;
+}
+
+// Search for documents related to pets
+const results = await semanticSearch("pets and animals", documents);
+console.log("Search results:");
+results.forEach((result, i) => {
+  console.log(`${i + 1}. ${result.document} (similarity: ${result.similarity.toFixed(4)})`);
+});
+```
+
+```python title="Python"
+import requests
+import numpy as np
+
+OPENROUTER_API_KEY = "{{API_KEY_REF}}"
+
+# Sample documents
+documents = [
+  "The cat sat on the mat",
+  "Dogs are loyal companions",
+  "Python is a programming language",
+  "Machine learning models require training data",
+  "The weather is sunny today"
+]
+
+def cosine_similarity(a, b):
+  """Calculate cosine similarity between two vectors"""
+  dot_product = np.dot(a, b)
+  magnitude_a = np.linalg.norm(a)
+  magnitude_b = np.linalg.norm(b)
+  return dot_product / (magnitude_a * magnitude_b)
+
+def semantic_search(query, documents):
+  """Perform semantic search using embeddings"""
+  # Generate embeddings for query and all documents
+  response = requests.post(
+    "https://openrouter.ai/api/v1/embeddings",
+    headers={
+      "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+      "Content-Type": "application/json",
+    },
+    json={
+      "model": "{{MODEL}}",
+      "input": [query] + documents
     }
+  )
+  
+  data = response.json()
+  query_embedding = np.array(data["data"][0]["embedding"])
+  doc_embeddings = [np.array(item["embedding"]) for item in data["data"][1:]]
+  
+  # Calculate similarity scores
+  results = []
+  for i, doc in enumerate(documents):
+    similarity = cosine_similarity(query_embedding, doc_embeddings[i])
+    results.append({"document": doc, "similarity": similarity})
+  
+  # Sort by similarity (highest first)
+  results.sort(key=lambda x: x["similarity"], reverse=True)
+  
+  return results
 
-    async function semanticSearch(query: string, documents: string[]) {
-      // Generate embeddings for all documents and the query
-      const response = await openRouter.embeddings.generate({
-        model: '{{MODEL}}',
-        input: [query, ...documents],
-      });
-
-      const queryEmbedding = response.data[0].embedding;
-      const docEmbeddings = response.data.slice(1);
-
-      // Calculate similarity scores
-      const results = documents.map((doc, i) => ({
-        document: doc,
-        similarity: cosineSimilarity(
-          queryEmbedding as number[],
-          docEmbeddings[i].embedding as number[]
-        ),
-      }));
-
-      // Sort by similarity (highest first)
-      results.sort((a, b) => b.similarity - a.similarity);
-
-      return results;
-    }
-
-    // Search for documents related to pets
-    const results = await semanticSearch("pets and animals", documents);
-    console.log("Search results:");
-    results.forEach((result, i) => {
-      console.log(`${i + 1}. ${result.document} (similarity: ${result.similarity.toFixed(4)})`);
-    });
-    ```
-
-    ```python title="Python"
-    import requests
-    import numpy as np
-
-    OPENROUTER_API_KEY = "{{API_KEY_REF}}"
-
-    # Sample documents
-    documents = [
-      "The cat sat on the mat",
-      "Dogs are loyal companions",
-      "Python is a programming language",
-      "Machine learning models require training data",
-      "The weather is sunny today"
-    ]
-
-    def cosine_similarity(a, b):
-      """Calculate cosine similarity between two vectors"""
-      dot_product = np.dot(a, b)
-      magnitude_a = np.linalg.norm(a)
-      magnitude_b = np.linalg.norm(b)
-      return dot_product / (magnitude_a * magnitude_b)
-
-    def semantic_search(query, documents):
-      """Perform semantic search using embeddings"""
-      # Generate embeddings for query and all documents
-      response = requests.post(
-        "https://openrouter.ai/api/v1/embeddings",
-        headers={
-          "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-          "Content-Type": "application/json",
-        },
-        json={
-          "model": "{{MODEL}}",
-          "input": [query] + documents
-        }
-      )
-      
-      data = response.json()
-      query_embedding = np.array(data["data"][0]["embedding"])
-      doc_embeddings = [np.array(item["embedding"]) for item in data["data"][1:]]
-      
-      # Calculate similarity scores
-      results = []
-      for i, doc in enumerate(documents):
-        similarity = cosine_similarity(query_embedding, doc_embeddings[i])
-        results.append({"document": doc, "similarity": similarity})
-      
-      # Sort by similarity (highest first)
-      results.sort(key=lambda x: x["similarity"], reverse=True)
-      
-      return results
-
-    # Search for documents related to pets
-    results = semantic_search("pets and animals", documents)
-    print("Search results:")
-    for i, result in enumerate(results):
-      print(f"{i + 1}. {result['document']} (similarity: {result['similarity']:.4f})")
-    ```
-  </CodeGroup>
-</Template>
+# Search for documents related to pets
+results = semantic_search("pets and animals", documents)
+print("Search results:")
+for i, result in enumerate(results):
+  print(f"{i + 1}. {result['document']} (similarity: {result['similarity']:.4f})")
+```
 
 Expected output:
 

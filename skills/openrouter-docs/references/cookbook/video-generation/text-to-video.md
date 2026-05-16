@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Generate and Download a Video from Text
 
@@ -9,10 +10,8 @@ Use this guide when you need to add text-to-video generation to an app with Open
 By the end, your implementation should submit a video job, poll for completion,
 and download the generated MP4.
 
-<Tip>
-  For reusable agent knowledge across projects, install the
-  [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
-</Tip>
+For reusable agent knowledge across projects, install the
+[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
 
 ## Before you start
 
@@ -22,12 +21,10 @@ You need:
 * Node.js 20 or newer
 * A video model slug, such as `google/veo-3.1-lite`
 
-<Tip>
-  If you have not chosen a model yet, read
-  [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-  so you can select one based on your clip duration, output shape, input type,
-  audio, provider controls, and cost requirements.
-</Tip>
+If you have not chosen a model yet, read
+[Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
+so you can select one based on your clip duration, output shape, input type,
+audio, provider controls, and cost requirements.
 
 Use the API reference pages as the source of truth for exact fields:
 
@@ -70,10 +67,8 @@ Model metadata output:
 }
 ```
 
-<Warning>
-  Submitting `POST /api/v1/videos` starts a real video generation job and may
-  spend OpenRouter credits.
-</Warning>
+Submitting `POST /api/v1/videos` starts a real video generation job and may
+spend OpenRouter credits.
 
 ## Step 1: Submit the video job
 

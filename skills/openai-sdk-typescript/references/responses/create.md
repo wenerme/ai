@@ -3017,6 +3017,16 @@ as input for the model's response.
 
             The namespace of the custom tool being called.
 
+        - `CompactionTrigger`
+
+          Compacts the current context. Must be the final input item.
+
+          - `type: "compaction_trigger"`
+
+            The type of the item. Always `compaction_trigger`.
+
+            - `"compaction_trigger"`
+
         - `ItemReference`
 
           An internal identifier for an item to reference.
@@ -6823,6 +6833,16 @@ as input for the model's response.
         - `namespace?: string`
 
           The namespace of the custom tool being called.
+
+      - `CompactionTrigger`
+
+        Compacts the current context. Must be the final input item.
+
+        - `type: "compaction_trigger"`
+
+          The type of the item. Always `compaction_trigger`.
+
+          - `"compaction_trigger"`
 
       - `ItemReference`
 

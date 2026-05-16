@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Tools
 
@@ -160,9 +161,7 @@ const approvePaymentTool = tool({
 
 When `onToolCalled` returns `null`, the conversation state moves to `status: 'awaiting_hitl'` and the paused call surfaces via `getToolCalls()` / `getPendingToolCalls()`. Resume by calling `callModel` again with a `function_call_output` item for each paused call in the input.
 
-<Note>
-  HITL tools differ from `requireApproval`: approval gates pause *before* execution for a yes/no decision, while HITL tools let `onToolCalled` run arbitrary logic first and only pause when it returns `null`. Use HITL when the decision is data-driven (e.g., amount thresholds, risk scoring); use `requireApproval` when you always want explicit human consent. See [Tool Approval & State](/docs/sdks/typescript/call-model/approval-and-state).
-</Note>
+HITL tools differ from `requireApproval`: approval gates pause *before* execution for a yes/no decision, while HITL tools let `onToolCalled` run arbitrary logic first and only pause when it returns `null`. Use HITL when the decision is data-driven (e.g., amount thresholds, risk scoring); use `requireApproval` when you always want explicit human consent. See [Tool Approval & State](/docs/sdks/typescript/call-model/approval-and-state).
 
 ## Schema Definition
 
@@ -406,11 +405,9 @@ const result = openrouter.callModel({
 });
 ```
 
-<Note>
-  `resolveContext` runs once at turn 0 to seed the
-  context store. For per-turn mutations, use
-  `setContext()` inside your tool's `execute` function.
-</Note>
+`resolveContext` runs once at turn 0 to seed the
+context store. For per-turn mutations, use
+`setContext()` inside your tool's `execute` function.
 
 ### Mutating Context with setContext
 
@@ -502,13 +499,11 @@ const result = openrouter.callModel({
 });
 ```
 
-<Note>
-  `context.local` is scoped to one tool.
-  `context.shared` is visible to all tools and persists
-  across turns. Pass the same `sharedSchema` to each tool
-  for typed access, and `sharedContextSchema` to
-  `callModel` for runtime validation.
-</Note>
+`context.local` is scoped to one tool.
+`context.shared` is visible to all tools and persists
+across turns. Pass the same `sharedSchema` to each tool
+for typed access, and `sharedContextSchema` to
+`callModel` for runtime validation.
 
 ## Tool Execution
 

@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Sentry
 
@@ -40,10 +41,8 @@ Performance or Traces view.
 
 ![Sentry Trace View](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/56b7ddbbef77c96471b25b6e468e6327816ffacd355d4671ec2d20a5b0564a8e/content/pages/features/broadcast/broadcast-sentry-trace.png)
 
-<Tip>
-  Sentry uses OpenTelemetry for trace ingestion. The OTLP endpoint and DSN
-  are both required for proper authentication and trace routing.
-</Tip>
+Sentry uses OpenTelemetry for trace ingestion. The OTLP endpoint and DSN
+are both required for proper authentication and trace routing.
 
 ## Custom Metadata
 

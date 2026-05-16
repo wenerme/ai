@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Key Findings
+description: This emergency release introduces two new rules to detect nginx heap buffer overflow and heap spray exploitation attempts targeting the rewrite module's is_args stale-state bug (CVE-2026-42945).
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -13,6 +13,26 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
+
+## 2026-05-15
+
+  
+**WAF Release - 2026-05-15 - Emergency**   
+
+This emergency release introduces two new rules to detect nginx heap buffer overflow and heap spray exploitation attempts targeting the rewrite module's `is_args` stale-state bug (CVE-2026-42945).
+
+**Key Findings**
+
+CVE-2026-42945: nginx Heap Buffer Overflow via Stale `is_args` in Rewrite Module
+
+Successful exploitation allows remote attackers to trigger a heap buffer overflow in nginx's rewrite module by sending crafted URIs containing escapable characters. A length/copy pass mismatch in `ngx_http_script_copy_capture_code()` causes the copy pass to write escaped data into an undersized buffer, leading to heap corruption. This enables denial of service (worker process crash) and, with heap feng shui techniques, potential remote code execution.
+
+We strongly recommend upgrading to nginx 1.30.1 (or later) immediately to address the underlying vulnerability. If you cannot upgrade immediately, avoid `rewrite` directives with `?` in the replacement string followed by `set` or `if` referencing capture groups.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                          | Previous Action | New Action | Comments                 |
+| -------------------------- | ----------- | -------------- | -------------------------------------------------------------------- | --------------- | ---------- | ------------------------ |
+| Cloudflare Managed Ruleset | ...7e52be73 | N/A            | nginx - Remote Code Execution - Buffer Overread - CVE:CVE-2026-42945 | N/A             | Block      | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9df0ee6c | N/A            | nginx - Remote Code Execution - Heap Spray - CVE:CVE-2026-42945      | N/A             | Block      | This is a new detection. |
 
 ## 2026-05-11
 
@@ -586,19 +606,6 @@ These updates strengthen protection against React RCE exploitation attempts and 
 | Cloudflare Managed Ruleset | ...fefb4e9b | N/A            | Generic - Server Function Source Code Exposure         | N/A             | Block      | This is a new detection.       |
 | Cloudflare Free Ruleset    | ...251e86aa | N/A            | Generic - Server Function Source Code Exposure         | N/A             | Block      | This is a new detection.       |
 | Cloudflare Managed Ruleset | ...102ec699 | N/A            | Generic - Server Function Resource Exhaustion          | N/A             | Disabled   | This is a new detection.       |
-
-## 2025-12-05
-
-  
-**Increased WAF payload limit for all plans**   
-
-Cloudflare WAF now inspects request-payload size of up to 1 MB across all plans to enhance our detection capabilities for React RCE (CVE-2025-55182).
-
-**Key Findings**
-
-React payloads commonly have a default maximum size of 1 MB. Cloudflare WAF previously inspected up to 128 KB on Enterprise plans, with even lower limits on other plans.
-
-**Update:** We later reinstated the maximum request-payload size the Cloudflare WAF inspects. Refer to [Updating the WAF maximum payload values](https://developers.cloudflare.com/changelog/2025-12-05-waf-max-payload-size-change/) for details.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}

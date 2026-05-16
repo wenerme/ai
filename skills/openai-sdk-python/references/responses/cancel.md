@@ -3049,6 +3049,16 @@ the `background` parameter set to `true` can be cancelled.
 
           The namespace of the custom tool being called.
 
+      - `class CompactionTrigger: …`
+
+        Compacts the current context. Must be the final input item.
+
+        - `type: Literal["compaction_trigger"]`
+
+          The type of the item. Always `compaction_trigger`.
+
+          - `"compaction_trigger"`
+
       - `class ItemReference: …`
 
         An internal identifier for an item to reference.

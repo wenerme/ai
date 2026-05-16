@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Response Healing
 
@@ -96,126 +97,113 @@ Here's the data you requested:
 
 ## Complete Example
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-2.5-flash'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'Generate a product listing with name, price, and description'
-          }
-        ],
-        response_format: {
-          type: 'json_schema',
-          json_schema: {
-            name: 'Product',
-            schema: {
-              type: 'object',
-              properties: {
-                name: {
-                  type: 'string',
-                  description: 'Product name'
-                },
-                price: {
-                  type: 'number',
-                  description: 'Price in USD'
-                },
-                description: {
-                  type: 'string',
-                  description: 'Product description'
-                }
-              },
-              required: ['name', 'price']
-            }
-          }
-        },
-        plugins: [
-          { id: 'response-healing' }
-        ]
-      }),
-    });
-
-    const data = await response.json();
-    const product = JSON.parse(data.choices[0].message.content);
-    // The plugin attempts to repair malformed JSON syntax
-    console.log(product.name, product.price);
-    ```
-
-    ```python title="Python"
-    import requests
-    import json
-
-    response = requests.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "Generate a product listing with name, price, and description"
-          }
-        ],
-        "response_format": {
-          "type": "json_schema",
-          "json_schema": {
-            "name": "Product",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "description": "Product name"
-                },
-                "price": {
-                  "type": "number",
-                  "description": "Price in USD"
-                },
-                "description": {
-                  "type": "string",
-                  "description": "Product description"
-                }
-              },
-              "required": ["name", "price"]
-            }
-          }
-        },
-        "plugins": [
-          {"id": "response-healing"}
-        ]
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: 'Generate a product listing with name, price, and description'
       }
-    )
+    ],
+    response_format: {
+      type: 'json_schema',
+      json_schema: {
+        name: 'Product',
+        schema: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string',
+              description: 'Product name'
+            },
+            price: {
+              type: 'number',
+              description: 'Price in USD'
+            },
+            description: {
+              type: 'string',
+              description: 'Product description'
+            }
+          },
+          required: ['name', 'price']
+        }
+      }
+    },
+    plugins: [
+      { id: 'response-healing' }
+    ]
+  }),
+});
 
-    data = response.json()
-    product = json.loads(data["choices"][0]["message"]["content"])
-    # The plugin attempts to repair malformed JSON syntax
-    print(product["name"], product["price"])
-    ```
-  </CodeGroup>
-</Template>
+const data = await response.json();
+const product = JSON.parse(data.choices[0].message.content);
+// The plugin attempts to repair malformed JSON syntax
+console.log(product.name, product.price);
+```
+
+```python title="Python"
+import requests
+import json
+
+response = requests.post(
+  "https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Generate a product listing with name, price, and description"
+      }
+    ],
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "Product",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Product name"
+            },
+            "price": {
+              "type": "number",
+              "description": "Price in USD"
+            },
+            "description": {
+              "type": "string",
+              "description": "Product description"
+            }
+          },
+          "required": ["name", "price"]
+        }
+      }
+    },
+    "plugins": [
+      {"id": "response-healing"}
+    ]
+  }
+)
+
+data = response.json()
+product = json.loads(data["choices"][0]["message"]["content"])
+# The plugin attempts to repair malformed JSON syntax
+print(product["name"], product["price"])
+```
 
 ## Limitations
 
-<Warning title="Non-Streaming Requests Only">
-  Response Healing only applies to non-streaming requests.
-</Warning>
+Response Healing only applies to non-streaming requests.
 
-<Warning title="Will not repair all JSON">
-  Some malformed JSON responses may still be unrepairable. In particular, if the response is truncated by `max_tokens`, the plugin will not be able to repair it.
-</Warning>
+Some malformed JSON responses may still be unrepairable. In particular, if the response is truncated by `max_tokens`, the plugin will not be able to repair it.

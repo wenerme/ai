@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Web Fetch
 
-<Note title="Beta">
-  Server tools are currently in beta. The API and behavior may change.
-</Note>
+Server tools are currently in beta. The API and behavior may change.
 
 The `openrouter:web_fetch` server tool gives any model the ability to fetch
 content from a specific URL. When the model needs to read a web page or PDF
@@ -27,84 +26,75 @@ content, returning text that the model can use in its response.
 
 ## Quick Start
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/gpt-5.2'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'Summarize the content at https://example.com/article'
-          }
-        ],
-        tools: [
-          { type: 'openrouter:web_fetch' }
-        ]
-      }),
-    });
-
-    const data = await response.json();
-    console.log(data.choices[0].message.content);
-    ```
-
-    ```python title="Python"
-    import requests
-
-    response = requests.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "Summarize the content at https://example.com/article"
-          }
-        ],
-        "tools": [
-          {"type": "openrouter:web_fetch"}
-        ]
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [
+      {
+        role: 'user',
+        content: 'Summarize the content at https://example.com/article'
       }
-    )
+    ],
+    tools: [
+      { type: 'openrouter:web_fetch' }
+    ]
+  }),
+});
 
-    data = response.json()
-    print(data["choices"][0]["message"]["content"])
-    ```
+const data = await response.json();
+console.log(data.choices[0].message.content);
+```
 
-    ```bash title="cURL"
-    curl https://openrouter.ai/api/v1/chat/completions \
-      -H "Authorization: Bearer {{API_KEY_REF}}" \
-      -H "Content-Type: application/json" \
-      -d '{
-        "model": "{{MODEL}}",
-        "messages": [
-          {
-            "role": "user",
-            "content": "Summarize the content at https://example.com/article"
-          }
-        ],
-        "tools": [
-          {"type": "openrouter:web_fetch"}
-        ]
-      }'
-    ```
-  </CodeGroup>
-</Template>
+```python title="Python"
+import requests
+
+response = requests.post(
+  "https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Summarize the content at https://example.com/article"
+      }
+    ],
+    "tools": [
+      {"type": "openrouter:web_fetch"}
+    ]
+  }
+)
+
+data = response.json()
+print(data["choices"][0]["message"]["content"])
+```
+
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer {{API_KEY_REF}}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "{{MODEL}}",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Summarize the content at https://example.com/article"
+      }
+    ],
+    "tools": [
+      {"type": "openrouter:web_fetch"}
+    ]
+  }'
+```
 
 ## Configuration
 
@@ -207,56 +197,47 @@ context window usage when fetching large pages.
 
 The web fetch server tool also works with the Responses API:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/gpt-5.2'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript"
-    const response = await fetch('https://openrouter.ai/api/v1/responses', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        input: 'What does the documentation at https://example.com/docs say?',
-        tools: [
-          { type: 'openrouter:web_fetch', parameters: { max_content_tokens: 50000 } }
-        ]
-      }),
-    });
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer {{API_KEY_REF}}',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    input: 'What does the documentation at https://example.com/docs say?',
+    tools: [
+      { type: 'openrouter:web_fetch', parameters: { max_content_tokens: 50000 } }
+    ]
+  }),
+});
 
-    const data = await response.json();
-    console.log(data);
-    ```
+const data = await response.json();
+console.log(data);
+```
 
-    ```python title="Python"
-    import requests
+```python title="Python"
+import requests
 
-    response = requests.post(
-      "https://openrouter.ai/api/v1/responses",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-      json={
-        "model": "{{MODEL}}",
-        "input": "What does the documentation at https://example.com/docs say?",
-        "tools": [
-          {"type": "openrouter:web_fetch", "parameters": {"max_content_tokens": 50000}}
-        ]
-      }
-    )
+response = requests.post(
+  "https://openrouter.ai/api/v1/responses",
+  headers={
+    "Authorization": f"Bearer {{API_KEY_REF}}",
+    "Content-Type": "application/json",
+  },
+  json={
+    "model": "{{MODEL}}",
+    "input": "What does the documentation at https://example.com/docs say?",
+    "tools": [
+      {"type": "openrouter:web_fetch", "parameters": {"max_content_tokens": 50000}}
+    ]
+  }
+)
 
-    data = response.json()
-    print(data)
-    ```
-  </CodeGroup>
-</Template>
+data = response.json()
+print(data)
+```
 
 ## Response Format
 

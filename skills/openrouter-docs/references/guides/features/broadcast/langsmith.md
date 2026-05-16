@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # LangSmith
 
@@ -46,9 +47,7 @@ OpenRouter sends traces to LangSmith using the OpenTelemetry (OTEL) protocol wit
 * **LangSmith-specific attributes**: Trace name, span kind, user ID, and custom metadata
 * **Error handling**: Exception events with error types and messages when requests fail
 
-<Tip>
-  LangSmith uses the OTEL endpoint at `/otel/v1/traces` for receiving trace data. This ensures compatibility with LangSmith's native tracing infrastructure.
-</Tip>
+LangSmith uses the OTEL endpoint at `/otel/v1/traces` for receiving trace data. This ensures compatibility with LangSmith's native tracing infrastructure.
 
 ## Custom Metadata
 

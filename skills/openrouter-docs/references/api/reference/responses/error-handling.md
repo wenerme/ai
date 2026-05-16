@@ -1,16 +1,13 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Error Handling
 
-<Warning title="Beta API">
-  This API is in **beta stage** and may have breaking changes. Use with caution in production environments.
-</Warning>
+This API is in **beta stage** and may have breaking changes. Use with caution in production environments.
 
-<Info title="Stateless Only">
-  This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request.
-</Info>
+This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request.
 
 The Responses API Beta returns structured error responses that follow a consistent format.
 

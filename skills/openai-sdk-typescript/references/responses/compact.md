@@ -3132,6 +3132,16 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The namespace of the custom tool being called.
 
+      - `CompactionTrigger`
+
+        Compacts the current context. Must be the final input item.
+
+        - `type: "compaction_trigger"`
+
+          The type of the item. Always `compaction_trigger`.
+
+          - `"compaction_trigger"`
+
       - `ItemReference`
 
         An internal identifier for an item to reference.

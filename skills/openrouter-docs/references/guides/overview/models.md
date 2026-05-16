@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Models
 
@@ -142,14 +143,12 @@ The `supported_parameters` array indicates which OpenAI-compatible parameters wo
 * `presence_penalty` - Topic diversity
 * `seed` - Deterministic outputs
 
-<Note title="Different models tokenize text in different ways">
-  Some models break up text into chunks of multiple characters (GPT, Claude,
-  Llama, etc), while others tokenize by character (PaLM). This means that token
-  counts (and therefore costs) will vary between models, even when inputs and
-  outputs are the same. Costs are displayed and billed according to the
-  tokenizer for the model in use. You can use the `usage` field in the response
-  to get the token counts for the input and output.
-</Note>
+Some models break up text into chunks of multiple characters (GPT, Claude,
+Llama, etc), while others tokenize by character (PaLM). This means that token
+counts (and therefore costs) will vary between models, even when inputs and
+outputs are the same. Costs are displayed and billed according to the
+tokenizer for the model in use. You can use the `usage` field in the response
+to get the token counts for the input and output.
 
 If there are models or providers you are interested in that OpenRouter doesn't have, please tell us about them in our [Discord channel](https://openrouter.ai/discord).
 

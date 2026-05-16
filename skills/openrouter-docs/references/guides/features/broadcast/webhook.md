@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Webhook
 
@@ -43,9 +44,7 @@ Example headers for authenticated endpoints:
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes. During the test, OpenRouter sends an empty OTLP payload with an `X-Test-Connection: true` header to your endpoint.
 
-<Tip>
-  Your endpoint should return a 2xx status code for the test to pass. A 400 status code is also accepted, as some endpoints reject empty payloads.
-</Tip>
+Your endpoint should return a 2xx status code for the test to pass. A 400 status code is also accepted, as some endpoints reject empty payloads.
 
 ## Step 5: Send a test trace
 
@@ -105,9 +104,7 @@ The Webhook destination is ideal for:
 * **Compliance logging**: Store traces in systems that meet specific regulatory requirements
 * **Development and testing**: Use services like [webhook.site](https://webhook.site) to inspect trace payloads
 
-<Tip>
-  For production use, ensure your webhook endpoint is highly available and can handle the expected volume of traces. Consider implementing retry logic on your end for any failed deliveries.
-</Tip>
+For production use, ensure your webhook endpoint is highly available and can handle the expected volume of traces. Consider implementing retry logic on your end for any failed deliveries.
 
 ## Custom Metadata
 

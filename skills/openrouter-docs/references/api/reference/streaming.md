@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Streaming
 
@@ -10,150 +11,141 @@ To enable streaming, you can set the `stream` parameter to `true` in your reques
 
 Here is an example of how to stream a response, and process it:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: Model.GPT_4_Omni
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    const question = 'How would you build the tallest building ever?';
+const question = 'How would you build the tallest building ever?';
 
-    const stream = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [{ role: 'user', content: question }],
-      stream: true,
-    });
+const stream = await openRouter.chat.send({
+  model: '{{MODEL}}',
+  messages: [{ role: 'user', content: question }],
+  stream: true,
+});
 
-    for await (const chunk of stream) {
-      const content = chunk.choices?.[0]?.delta?.content;
-      if (content) {
-        console.log(content);
-      }
+for await (const chunk of stream) {
+  const content = chunk.choices?.[0]?.delta?.content;
+  if (content) {
+    console.log(content);
+  }
 
-      // Final chunk includes usage stats
-      if (chunk.usage) {
-        console.log('Usage:', chunk.usage);
-      }
-    }
-    ```
+  // Final chunk includes usage stats
+  if (chunk.usage) {
+    console.log('Usage:', chunk.usage);
+  }
+}
+```
 
-    ```python Python
-    import requests
-    import json
+```python Python
+import requests
+import json
 
-    question = "How would you build the tallest building ever?"
+question = "How would you build the tallest building ever?"
 
-    url = "https://openrouter.ai/api/v1/chat/completions"
-    headers = {
-      "Authorization": f"Bearer {{API_KEY_REF}}",
-      "Content-Type": "application/json"
-    }
+url = "https://openrouter.ai/api/v1/chat/completions"
+headers = {
+  "Authorization": f"Bearer {{API_KEY_REF}}",
+  "Content-Type": "application/json"
+}
 
-    payload = {
-      "model": "{{MODEL}}",
-      "messages": [{"role": "user", "content": question}],
-      "stream": True
-    }
+payload = {
+  "model": "{{MODEL}}",
+  "messages": [{"role": "user", "content": question}],
+  "stream": True
+}
 
-    buffer = ""
-    with requests.post(url, headers=headers, json=payload, stream=True) as r:
-      for chunk in r.iter_content(chunk_size=1024, decode_unicode=True):
-        buffer += chunk
-        while True:
-          try:
-            # Find the next complete SSE line
-            line_end = buffer.find('\n')
-            if line_end == -1:
-              break
+buffer = ""
+with requests.post(url, headers=headers, json=payload, stream=True) as r:
+  for chunk in r.iter_content(chunk_size=1024, decode_unicode=True):
+    buffer += chunk
+    while True:
+      try:
+        # Find the next complete SSE line
+        line_end = buffer.find('\n')
+        if line_end == -1:
+          break
 
-            line = buffer[:line_end].strip()
-            buffer = buffer[line_end + 1:]
+        line = buffer[:line_end].strip()
+        buffer = buffer[line_end + 1:]
 
-            if line.startswith('data: '):
-              data = line[6:]
-              if data == '[DONE]':
-                break
-
-              try:
-                data_obj = json.loads(data)
-                content = data_obj["choices"][0]["delta"].get("content")
-                if content:
-                  print(content, end="", flush=True)
-              except json.JSONDecodeError:
-                pass
-          except Exception:
+        if line.startswith('data: '):
+          data = line[6:]
+          if data == '[DONE]':
             break
-    ```
 
-    ```typescript title="TypeScript (fetch)"
-    const question = 'How would you build the tallest building ever?';
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${API_KEY_REF}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [{ role: 'user', content: question }],
-        stream: true,
-      }),
-    });
+          try:
+            data_obj = json.loads(data)
+            content = data_obj["choices"][0]["delta"].get("content")
+            if content:
+              print(content, end="", flush=True)
+          except json.JSONDecodeError:
+            pass
+      except Exception:
+        break
+```
 
-    const reader = response.body?.getReader();
-    if (!reader) {
-      throw new Error('Response body is not readable');
-    }
+```typescript title="TypeScript (fetch)"
+const question = 'How would you build the tallest building ever?';
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${API_KEY_REF}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: '{{MODEL}}',
+    messages: [{ role: 'user', content: question }],
+    stream: true,
+  }),
+});
 
-    const decoder = new TextDecoder();
-    let buffer = '';
+const reader = response.body?.getReader();
+if (!reader) {
+  throw new Error('Response body is not readable');
+}
 
-    try {
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+const decoder = new TextDecoder();
+let buffer = '';
 
-        // Append new chunk to buffer
-        buffer += decoder.decode(value, { stream: true });
+try {
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
 
-        // Process complete lines from buffer
-        while (true) {
-          const lineEnd = buffer.indexOf('\n');
-          if (lineEnd === -1) break;
+    // Append new chunk to buffer
+    buffer += decoder.decode(value, { stream: true });
 
-          const line = buffer.slice(0, lineEnd).trim();
-          buffer = buffer.slice(lineEnd + 1);
+    // Process complete lines from buffer
+    while (true) {
+      const lineEnd = buffer.indexOf('\n');
+      if (lineEnd === -1) break;
 
-          if (line.startsWith('data: ')) {
-            const data = line.slice(6);
-            if (data === '[DONE]') break;
+      const line = buffer.slice(0, lineEnd).trim();
+      buffer = buffer.slice(lineEnd + 1);
 
-            try {
-              const parsed = JSON.parse(data);
-              const content = parsed.choices[0].delta.content;
-              if (content) {
-                console.log(content);
-              }
-            } catch (e) {
-              // Ignore invalid JSON
-            }
+      if (line.startsWith('data: ')) {
+        const data = line.slice(6);
+        if (data === '[DONE]') break;
+
+        try {
+          const parsed = JSON.parse(data);
+          const content = parsed.choices[0].delta.content;
+          if (content) {
+            console.log(content);
           }
+        } catch (e) {
+          // Ignore invalid JSON
         }
       }
-    } finally {
-      reader.cancel();
     }
-    ```
-  </CodeGroup>
-</Template>
+  }
+} finally {
+  reader.cancel();
+}
+```
 
 ### Additional Information
 
@@ -177,148 +169,135 @@ Some SSE client implementations might not parse the payload according to spec, w
 
 Streaming requests can be cancelled by aborting the connection. For supported providers, this immediately stops model processing and billing.
 
-<Accordion title="Provider Support">
-  **Supported**
+**Supported**
 
-  * OpenAI, Azure, Anthropic
-  * Fireworks, Mancer, Recursal
-  * AnyScale, Lepton, OctoAI
-  * Novita, DeepInfra, Together
-  * Cohere, Hyperbolic, Infermatic
-  * Avian, XAI, Cloudflare
-  * SFCompute, Nineteen, Liquid
-  * Friendli, Chutes, DeepSeek
+* OpenAI, Azure, Anthropic
+* Fireworks, Mancer, Recursal
+* AnyScale, Lepton, OctoAI
+* Novita, DeepInfra, Together
+* Cohere, Hyperbolic, Infermatic
+* Avian, XAI, Cloudflare
+* SFCompute, Nineteen, Liquid
+* Friendli, Chutes, DeepSeek
 
-  **Not Currently Supported**
+**Not Currently Supported**
 
-  * AWS Bedrock, Groq, Modal
-  * Google, Google AI Studio, Minimax
-  * HuggingFace, Replicate, Perplexity
-  * Mistral, AI21, Featherless
-  * Lynn, Lambda, Reflection
-  * SambaNova, Inflection, ZeroOneAI
-  * AionLabs, Alibaba, Nebius
-  * Kluster, Targon, InferenceNet
-</Accordion>
+* AWS Bedrock, Groq, Modal
+* Google, Google AI Studio, Minimax
+* HuggingFace, Replicate, Perplexity
+* Mistral, AI21, Featherless
+* Lynn, Lambda, Reflection
+* SambaNova, Inflection, ZeroOneAI
+* AionLabs, Alibaba, Nebius
+* Kluster, Targon, InferenceNet
 
 To implement stream cancellation:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: Model.GPT_4_Omni
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
 
-    const controller = new AbortController();
+const controller = new AbortController();
 
-    try {
-      const stream = await openRouter.chat.send({
+try {
+  const stream = await openRouter.chat.send({
+    model: '{{MODEL}}',
+    messages: [{ role: 'user', content: 'Write a story' }],
+    stream: true,
+  }, {
+    signal: controller.signal,
+  });
+
+  for await (const chunk of stream) {
+    const content = chunk.choices?.[0]?.delta?.content;
+    if (content) {
+      console.log(content);
+    }
+  }
+} catch (error) {
+  if (error.name === 'AbortError') {
+    console.log('Stream cancelled');
+  } else {
+    throw error;
+  }
+}
+
+// To cancel the stream:
+controller.abort();
+```
+
+```python Python
+import requests
+from threading import Event, Thread
+
+def stream_with_cancellation(prompt: str, cancel_event: Event):
+    with requests.Session() as session:
+        response = session.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={"Authorization": f"Bearer {{API_KEY_REF}}"},
+            json={"model": "{{MODEL}}", "messages": [{"role": "user", "content": prompt}], "stream": True},
+            stream=True
+        )
+
+        try:
+            for line in response.iter_lines():
+                if cancel_event.is_set():
+                    response.close()
+                    return
+                if line:
+                    print(line.decode(), end="", flush=True)
+        finally:
+            response.close()
+
+# Example usage:
+cancel_event = Event()
+stream_thread = Thread(target=lambda: stream_with_cancellation("Write a story", cancel_event))
+stream_thread.start()
+
+# To cancel the stream:
+cancel_event.set()
+```
+
+```typescript title="TypeScript (fetch)"
+const controller = new AbortController();
+
+try {
+  const response = await fetch(
+    'https://openrouter.ai/api/v1/chat/completions',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${{{API_KEY_REF}}}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
         model: '{{MODEL}}',
         messages: [{ role: 'user', content: 'Write a story' }],
         stream: true,
-      }, {
-        signal: controller.signal,
-      });
+      }),
+      signal: controller.signal,
+    },
+  );
 
-      for await (const chunk of stream) {
-        const content = chunk.choices?.[0]?.delta?.content;
-        if (content) {
-          console.log(content);
-        }
-      }
-    } catch (error) {
-      if (error.name === 'AbortError') {
-        console.log('Stream cancelled');
-      } else {
-        throw error;
-      }
-    }
+  // Process the stream...
+} catch (error) {
+  if (error.name === 'AbortError') {
+    console.log('Stream cancelled');
+  } else {
+    throw error;
+  }
+}
 
-    // To cancel the stream:
-    controller.abort();
-    ```
+// To cancel the stream:
+controller.abort();
+```
 
-    ```python Python
-    import requests
-    from threading import Event, Thread
-
-    def stream_with_cancellation(prompt: str, cancel_event: Event):
-        with requests.Session() as session:
-            response = session.post(
-                "https://openrouter.ai/api/v1/chat/completions",
-                headers={"Authorization": f"Bearer {{API_KEY_REF}}"},
-                json={"model": "{{MODEL}}", "messages": [{"role": "user", "content": prompt}], "stream": True},
-                stream=True
-            )
-
-            try:
-                for line in response.iter_lines():
-                    if cancel_event.is_set():
-                        response.close()
-                        return
-                    if line:
-                        print(line.decode(), end="", flush=True)
-            finally:
-                response.close()
-
-    # Example usage:
-    cancel_event = Event()
-    stream_thread = Thread(target=lambda: stream_with_cancellation("Write a story", cancel_event))
-    stream_thread.start()
-
-    # To cancel the stream:
-    cancel_event.set()
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    const controller = new AbortController();
-
-    try {
-      const response = await fetch(
-        'https://openrouter.ai/api/v1/chat/completions',
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${{{API_KEY_REF}}}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            model: '{{MODEL}}',
-            messages: [{ role: 'user', content: 'Write a story' }],
-            stream: true,
-          }),
-          signal: controller.signal,
-        },
-      );
-
-      // Process the stream...
-    } catch (error) {
-      if (error.name === 'AbortError') {
-        console.log('Stream cancelled');
-      } else {
-        throw error;
-      }
-    }
-
-    // To cancel the stream:
-    controller.abort();
-    ```
-  </CodeGroup>
-</Template>
-
-<Warning>
-  Cancellation only works for streaming requests with supported providers. For
-  non-streaming requests or unsupported providers, the model will continue
-  processing and you will be billed for the complete response.
-</Warning>
+Cancellation only works for streaming requests with supported providers. For
+non-streaming requests or unsupported providers, the model will continue
+processing and you will be billed for the complete response.
 
 ### Handling Errors During Streaming
 
@@ -365,182 +344,173 @@ Key characteristics of mid-stream errors:
 
 Here's how to properly handle both types of errors in your streaming implementation:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: Model.GPT_4_Omni
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
+const openRouter = new OpenRouter({
+  apiKey: '{{API_KEY_REF}}',
+});
+
+async function streamWithErrorHandling(prompt: string) {
+  try {
+    const stream = await openRouter.chat.send({
+      model: '{{MODEL}}',
+      messages: [{ role: 'user', content: prompt }],
+      stream: true,
     });
 
-    async function streamWithErrorHandling(prompt: string) {
-      try {
-        const stream = await openRouter.chat.send({
-          model: '{{MODEL}}',
-          messages: [{ role: 'user', content: prompt }],
-          stream: true,
-        });
-
-        for await (const chunk of stream) {
-          // Check for errors in chunk
-          if ('error' in chunk) {
-            console.error(`Stream error: ${chunk.error.message}`);
-            if (chunk.choices?.[0]?.finish_reason === 'error') {
-              console.log('Stream terminated due to error');
-            }
-            return;
-          }
-
-          // Process normal content
-          const content = chunk.choices?.[0]?.delta?.content;
-          if (content) {
-            console.log(content);
-          }
+    for await (const chunk of stream) {
+      // Check for errors in chunk
+      if ('error' in chunk) {
+        console.error(`Stream error: ${chunk.error.message}`);
+        if (chunk.choices?.[0]?.finish_reason === 'error') {
+          console.log('Stream terminated due to error');
         }
-      } catch (error) {
-        // Handle pre-stream errors
-        console.error(`Error: ${error.message}`);
-      }
-    }
-    ```
-
-    ```python Python
-    import requests
-    import json
-
-    async def stream_with_error_handling(prompt):
-        response = requests.post(
-            'https://openrouter.ai/api/v1/chat/completions',
-            headers={'Authorization': f'Bearer {{API_KEY_REF}}'},
-            json={
-                'model': '{{MODEL}}',
-                'messages': [{'role': 'user', 'content': prompt}],
-                'stream': True
-            },
-            stream=True
-        )
-
-        # Check initial HTTP status for pre-stream errors
-        if response.status_code != 200:
-            error_data = response.json()
-            print(f"Error: {error_data['error']['message']}")
-            return
-
-        # Process stream and handle mid-stream errors
-        for line in response.iter_lines():
-            if line:
-                line_text = line.decode('utf-8')
-                if line_text.startswith('data: '):
-                    data = line_text[6:]
-                    if data == '[DONE]':
-                        break
-
-                    try:
-                        parsed = json.loads(data)
-
-                        # Check for mid-stream error
-                        if 'error' in parsed:
-                            print(f"Stream error: {parsed['error']['message']}")
-                            # Check finish_reason if needed
-                            if parsed.get('choices', [{}])[0].get('finish_reason') == 'error':
-                                print("Stream terminated due to error")
-                            break
-
-                        # Process normal content
-                        content = parsed['choices'][0]['delta'].get('content')
-                        if content:
-                            print(content, end='', flush=True)
-
-                    except json.JSONDecodeError:
-                        pass
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    async function streamWithErrorHandling(prompt: string) {
-      const response = await fetch(
-        'https://openrouter.ai/api/v1/chat/completions',
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${{{API_KEY_REF}}}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            model: '{{MODEL}}',
-            messages: [{ role: 'user', content: prompt }],
-            stream: true,
-          }),
-        }
-      );
-
-      // Check initial HTTP status for pre-stream errors
-      if (!response.ok) {
-        const error = await response.json();
-        console.error(`Error: ${error.error.message}`);
         return;
       }
 
-      const reader = response.body?.getReader();
-      if (!reader) throw new Error('No response body');
-
-      const decoder = new TextDecoder();
-      let buffer = '';
-
-      try {
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-
-          buffer += decoder.decode(value, { stream: true });
-
-          while (true) {
-            const lineEnd = buffer.indexOf('\n');
-            if (lineEnd === -1) break;
-
-            const line = buffer.slice(0, lineEnd).trim();
-            buffer = buffer.slice(lineEnd + 1);
-
-            if (line.startsWith('data: ')) {
-              const data = line.slice(6);
-              if (data === '[DONE]') return;
-
-              try {
-                const parsed = JSON.parse(data);
-
-                // Check for mid-stream error
-                if (parsed.error) {
-                  console.error(`Stream error: ${parsed.error.message}`);
-                  // Check finish_reason if needed
-                  if (parsed.choices?.[0]?.finish_reason === 'error') {
-                    console.log('Stream terminated due to error');
-                  }
-                  return;
-                }
-
-                // Process normal content
-                const content = parsed.choices[0].delta.content;
-                if (content) {
-                  console.log(content);
-                }
-              } catch (e) {
-                // Ignore parsing errors
-              }
-            }
-          }
-        }
-      } finally {
-        reader.cancel();
+      // Process normal content
+      const content = chunk.choices?.[0]?.delta?.content;
+      if (content) {
+        console.log(content);
       }
     }
-    ```
-  </CodeGroup>
-</Template>
+  } catch (error) {
+    // Handle pre-stream errors
+    console.error(`Error: ${error.message}`);
+  }
+}
+```
+
+```python Python
+import requests
+import json
+
+async def stream_with_error_handling(prompt):
+    response = requests.post(
+        'https://openrouter.ai/api/v1/chat/completions',
+        headers={'Authorization': f'Bearer {{API_KEY_REF}}'},
+        json={
+            'model': '{{MODEL}}',
+            'messages': [{'role': 'user', 'content': prompt}],
+            'stream': True
+        },
+        stream=True
+    )
+
+    # Check initial HTTP status for pre-stream errors
+    if response.status_code != 200:
+        error_data = response.json()
+        print(f"Error: {error_data['error']['message']}")
+        return
+
+    # Process stream and handle mid-stream errors
+    for line in response.iter_lines():
+        if line:
+            line_text = line.decode('utf-8')
+            if line_text.startswith('data: '):
+                data = line_text[6:]
+                if data == '[DONE]':
+                    break
+
+                try:
+                    parsed = json.loads(data)
+
+                    # Check for mid-stream error
+                    if 'error' in parsed:
+                        print(f"Stream error: {parsed['error']['message']}")
+                        # Check finish_reason if needed
+                        if parsed.get('choices', [{}])[0].get('finish_reason') == 'error':
+                            print("Stream terminated due to error")
+                        break
+
+                    # Process normal content
+                    content = parsed['choices'][0]['delta'].get('content')
+                    if content:
+                        print(content, end='', flush=True)
+
+                except json.JSONDecodeError:
+                    pass
+```
+
+```typescript title="TypeScript (fetch)"
+async function streamWithErrorHandling(prompt: string) {
+  const response = await fetch(
+    'https://openrouter.ai/api/v1/chat/completions',
+    {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${{{API_KEY_REF}}}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages: [{ role: 'user', content: prompt }],
+        stream: true,
+      }),
+    }
+  );
+
+  // Check initial HTTP status for pre-stream errors
+  if (!response.ok) {
+    const error = await response.json();
+    console.error(`Error: ${error.error.message}`);
+    return;
+  }
+
+  const reader = response.body?.getReader();
+  if (!reader) throw new Error('No response body');
+
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+
+      while (true) {
+        const lineEnd = buffer.indexOf('\n');
+        if (lineEnd === -1) break;
+
+        const line = buffer.slice(0, lineEnd).trim();
+        buffer = buffer.slice(lineEnd + 1);
+
+        if (line.startsWith('data: ')) {
+          const data = line.slice(6);
+          if (data === '[DONE]') return;
+
+          try {
+            const parsed = JSON.parse(data);
+
+            // Check for mid-stream error
+            if (parsed.error) {
+              console.error(`Stream error: ${parsed.error.message}`);
+              // Check finish_reason if needed
+              if (parsed.choices?.[0]?.finish_reason === 'error') {
+                console.log('Stream terminated due to error');
+              }
+              return;
+            }
+
+            // Process normal content
+            const content = parsed.choices[0].delta.content;
+            if (content) {
+              console.log(content);
+            }
+          } catch (e) {
+            // Ignore parsing errors
+          }
+        }
+      }
+    }
+  } finally {
+    reader.cancel();
+  }
+}
+```
 
 #### API-Specific Behavior
 

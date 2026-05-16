@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Errors and Debugging
 
@@ -342,76 +343,74 @@ type DebugOptions = {
 
 To enable debug output, include the `debug` parameter in your request:
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      Authorization: 'Bearer <OPENROUTER_API_KEY>',
-      'Content-Type': 'application/json',
+```typescript title="TypeScript"
+fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer <OPENROUTER_API_KEY>',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'anthropic/claude-haiku-4.5',
+    stream: true, // Debug only works with streaming
+    messages: [
+      { role: 'system', content: 'You are a helpful assistant.' },
+      { role: 'user', content: 'Hello!' },
+    ],
+    debug: {
+      echo_upstream_body: true,
     },
-    body: JSON.stringify({
-      model: 'anthropic/claude-haiku-4.5',
-      stream: true, // Debug only works with streaming
-      messages: [
-        { role: 'system', content: 'You are a helpful assistant.' },
-        { role: 'user', content: 'Hello!' },
-      ],
-      debug: {
-        echo_upstream_body: true,
-      },
-    }),
-  });
+  }),
+});
 
-  const text = await response.text();
+const text = await response.text();
 
-  for (const line of text.split('\n')) {
-    if (!line.startsWith('data: ')) continue;
+for (const line of text.split('\n')) {
+  if (!line.startsWith('data: ')) continue;
 
-    const data = line.slice(6);
-    if (data === '[DONE]') break;
+  const data = line.slice(6);
+  if (data === '[DONE]') break;
 
-    const parsed = JSON.parse(data);
+  const parsed = JSON.parse(data);
 
-    if (parsed.debug?.echo_upstream_body) {
-      console.log('\nDebug:', JSON.stringify(parsed.debug.echo_upstream_body, null, 2));
-    }
-
-    process.stdout.write(parsed.choices?.[0]?.delta?.content ?? '');
+  if (parsed.debug?.echo_upstream_body) {
+    console.log('\nDebug:', JSON.stringify(parsed.debug.echo_upstream_body, null, 2));
   }
-  ```
 
-  ```python title="Python"
-  import requests
-  import json
+  process.stdout.write(parsed.choices?.[0]?.delta?.content ?? '');
+}
+```
 
-  response = requests.post(
-    url="https://openrouter.ai/api/v1/chat/completions",
-    headers={
-      "Authorization": "Bearer <OPENROUTER_API_KEY>",
-      "Content-Type": "application/json",
-    },
-    data=json.dumps({
-      "model": "anthropic/claude-haiku-4.5",
-      "stream": True,
-      "messages": [
-        { "role": "system", "content": "You are a helpful assistant." },
-        { "role": "user", "content": "Hello!" }
-      ],
-      "debug": {
-        "echo_upstream_body": True
-      }
-    }),
-    stream=True
-  )
+```python title="Python"
+import requests
+import json
 
-  for line in response.iter_lines():
-    if line:
-      text = line.decode('utf-8')
-      if 'echo_upstream_body' in text:
-        print(text)
-  ```
-</CodeGroup>
+response = requests.post(
+  url="https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "Content-Type": "application/json",
+  },
+  data=json.dumps({
+    "model": "anthropic/claude-haiku-4.5",
+    "stream": True,
+    "messages": [
+      { "role": "system", "content": "You are a helpful assistant." },
+      { "role": "user", "content": "Hello!" }
+    ],
+    "debug": {
+      "echo_upstream_body": True
+    }
+  }),
+  stream=True
+)
+
+for line in response.iter_lines():
+  if line:
+    text = line.decode('utf-8')
+    if 'echo_upstream_body' in text:
+      print(text)
+```
 
 ### Debug Response Format
 
@@ -444,13 +443,9 @@ When `debug.echo_upstream_body` is set to `true`, OpenRouter will send a debug c
 
 ### Important Notes
 
-<Warning title="Streaming Chat Completions Only">
-  The debug option **only works with streaming mode** (`stream: true`) for the Chat Completions API. Non-streaming requests and Responses API requests will ignore the debug parameter.
-</Warning>
+The debug option **only works with streaming mode** (`stream: true`) for the Chat Completions API. Non-streaming requests and Responses API requests will ignore the debug parameter.
 
-<Warning title="Not for Production">
-  The debug flag should **not be used in production environments**. It is intended for development and debugging purposes only, as it may potentially return sensitive information included in the request that was not intended to be visible elsewhere.
-</Warning>
+The debug flag should **not be used in production environments**. It is intended for development and debugging purposes only, as it may potentially return sensitive information included in the request that was not intended to be visible elsewhere.
 
 ### Use Cases
 

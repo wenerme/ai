@@ -1,16 +1,13 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Responses API Beta
 
-<Warning title="Beta API">
-  This API is in **beta stage** and may have breaking changes. Use with caution in production environments.
-</Warning>
+This API is in **beta stage** and may have breaking changes. Use with caution in production environments.
 
-<Info title="Stateless Only">
-  This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request.
-</Info>
+This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request.
 
 OpenRouter's Responses API Beta provides OpenAI-compatible access to multiple AI models through a unified interface, designed to be a drop-in replacement for OpenAI's Responses API. This stateless API offers enhanced capabilities including reasoning, tool calling, and web search integration, with each request being independent and no server-side state persisted.
 
@@ -24,47 +21,45 @@ https://openrouter.ai/api/v1/responses
 
 All requests require authentication using your OpenRouter API key:
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  const response = await fetch('https://openrouter.ai/api/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-      'Content-Type': 'application/json',
+```typescript title="TypeScript"
+const response = await fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openai/o4-mini',
+    input: 'Hello, world!',
+  }),
+});
+```
+
+```python title="Python"
+import requests
+
+response = requests.post(
+    'https://openrouter.ai/api/v1/responses',
+    headers={
+        'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+        'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      model: 'openai/o4-mini',
-      input: 'Hello, world!',
-    }),
-  });
-  ```
+    json={
+        'model': 'openai/o4-mini',
+        'input': 'Hello, world!',
+    }
+)
+```
 
-  ```python title="Python"
-  import requests
-
-  response = requests.post(
-      'https://openrouter.ai/api/v1/responses',
-      headers={
-          'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
-          'Content-Type': 'application/json',
-      },
-      json={
-          'model': 'openai/o4-mini',
-          'input': 'Hello, world!',
-      }
-  )
-  ```
-
-  ```bash title="cURL"
-  curl -X POST https://openrouter.ai/api/v1/responses \
-    -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "model": "openai/o4-mini",
-      "input": "Hello, world!"
-    }'
-  ```
-</CodeGroup>
+```bash title="cURL"
+curl -X POST https://openrouter.ai/api/v1/responses \
+  -H "Authorization: Bearer YOUR_OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/o4-mini",
+    "input": "Hello, world!"
+  }'
+```
 
 ## Core Features
 

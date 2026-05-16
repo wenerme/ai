@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Turn an Image into a Video
 
@@ -10,10 +11,8 @@ becomes the first or last frame of a generated video.
 By the end, your implementation should submit an image-to-video job with
 `frame_images` and download the finished clip.
 
-<Tip>
-  For reusable agent knowledge across projects, install the
-  [openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
-</Tip>
+For reusable agent knowledge across projects, install the
+[openrouter-video skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-video).
 
 ## Before you start
 
@@ -24,12 +23,10 @@ You need:
 * A public HTTPS image URL available as `FIRST_FRAME_URL`
 * A model that supports `frame_images`, confirmed with `GET /api/v1/videos/models`
 
-<Tip>
-  If you have not chosen a model yet, read
-  [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-  so you can select one based on your clip duration, output shape, input type,
-  audio, provider controls, and cost requirements.
-</Tip>
+If you have not chosen a model yet, read
+[Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
+so you can select one based on your clip duration, output shape, input type,
+audio, provider controls, and cost requirements.
 
 Use the API reference pages as the source of truth for exact fields:
 
@@ -37,10 +34,8 @@ Use the API reference pages as the source of truth for exact fields:
 * [List video generation models](/docs/api/api-reference/video-generation/list-videos-models)
 * [TypeScript SDK video generation reference](/docs/client-sdks/typescript/api-reference/videogeneration)
 
-<Warning>
-  Submitting `POST /api/v1/videos` starts a real video generation job and may
-  spend OpenRouter credits.
-</Warning>
+Submitting `POST /api/v1/videos` starts a real video generation job and may
+spend OpenRouter credits.
 
 `frame_images` is for exact frame control. If you provide both `frame_images` and `input_references`, OpenRouter treats the request as image-to-video.
 

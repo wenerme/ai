@@ -3039,6 +3039,16 @@ as input for the model's response.
 
             The namespace of the custom tool being called.
 
+        - `CompactionTrigger`
+
+          Compacts the current context. Must be the final input item.
+
+          - `type: "compaction_trigger"`
+
+            The type of the item. Always `compaction_trigger`.
+
+            - `"compaction_trigger"`
+
         - `ItemReference`
 
           An internal identifier for an item to reference.
@@ -6845,6 +6855,16 @@ as input for the model's response.
         - `namespace?: string`
 
           The namespace of the custom tool being called.
+
+      - `CompactionTrigger`
+
+        Compacts the current context. Must be the final input item.
+
+        - `type: "compaction_trigger"`
+
+          The type of the item. Always `compaction_trigger`.
+
+          - `"compaction_trigger"`
 
       - `ItemReference`
 
@@ -12549,6 +12569,16 @@ Retrieves a model response with the given ID.
 
           The namespace of the custom tool being called.
 
+      - `CompactionTrigger`
+
+        Compacts the current context. Must be the final input item.
+
+        - `type: "compaction_trigger"`
+
+          The type of the item. Always `compaction_trigger`.
+
+          - `"compaction_trigger"`
+
       - `ItemReference`
 
         An internal identifier for an item to reference.
@@ -17523,6 +17553,16 @@ the `background` parameter set to `true` can be cancelled.
         - `namespace?: string`
 
           The namespace of the custom tool being called.
+
+      - `CompactionTrigger`
+
+        Compacts the current context. Must be the final input item.
+
+        - `type: "compaction_trigger"`
+
+          The type of the item. Always `compaction_trigger`.
+
+          - `"compaction_trigger"`
 
       - `ItemReference`
 
@@ -22561,6 +22601,16 @@ Learn when and how to compact long-running conversations in the [conversation st
         - `namespace?: string`
 
           The namespace of the custom tool being called.
+
+      - `CompactionTrigger`
+
+        Compacts the current context. Must be the final input item.
+
+        - `type: "compaction_trigger"`
+
+          The type of the item. Always `compaction_trigger`.
+
+          - `"compaction_trigger"`
 
       - `ItemReference`
 
@@ -32833,6 +32883,16 @@ console.log(compactedResponse);
 
           The namespace of the custom tool being called.
 
+      - `CompactionTrigger`
+
+        Compacts the current context. Must be the final input item.
+
+        - `type: "compaction_trigger"`
+
+          The type of the item. Always `compaction_trigger`.
+
+          - `"compaction_trigger"`
+
       - `ItemReference`
 
         An internal identifier for an item to reference.
@@ -37981,6 +38041,16 @@ console.log(compactedResponse);
           - `namespace?: string`
 
             The namespace of the custom tool being called.
+
+        - `CompactionTrigger`
+
+          Compacts the current context. Must be the final input item.
+
+          - `type: "compaction_trigger"`
+
+            The type of the item. Always `compaction_trigger`.
+
+            - `"compaction_trigger"`
 
         - `ItemReference`
 
@@ -43881,6 +43951,16 @@ console.log(compactedResponse);
 
             The namespace of the custom tool being called.
 
+        - `CompactionTrigger`
+
+          Compacts the current context. Must be the final input item.
+
+          - `type: "compaction_trigger"`
+
+            The type of the item. Always `compaction_trigger`.
+
+            - `"compaction_trigger"`
+
         - `ItemReference`
 
           An internal identifier for an item to reference.
@@ -48925,6 +49005,16 @@ console.log(compactedResponse);
           - `namespace?: string`
 
             The namespace of the custom tool being called.
+
+        - `CompactionTrigger`
+
+          Compacts the current context. Must be the final input item.
+
+          - `type: "compaction_trigger"`
+
+            The type of the item. Always `compaction_trigger`.
+
+            - `"compaction_trigger"`
 
         - `ItemReference`
 
@@ -54717,6 +54807,16 @@ console.log(compactedResponse);
 
             The namespace of the custom tool being called.
 
+        - `CompactionTrigger`
+
+          Compacts the current context. Must be the final input item.
+
+          - `type: "compaction_trigger"`
+
+            The type of the item. Always `compaction_trigger`.
+
+            - `"compaction_trigger"`
+
         - `ItemReference`
 
           An internal identifier for an item to reference.
@@ -59470,6 +59570,16 @@ console.log(compactedResponse);
 
             The namespace of the custom tool being called.
 
+        - `CompactionTrigger`
+
+          Compacts the current context. Must be the final input item.
+
+          - `type: "compaction_trigger"`
+
+            The type of the item. Always `compaction_trigger`.
+
+            - `"compaction_trigger"`
+
         - `ItemReference`
 
           An internal identifier for an item to reference.
@@ -64109,6 +64219,16 @@ console.log(compactedResponse);
 
       The namespace of the custom tool being called.
 
+  - `CompactionTrigger`
+
+    Compacts the current context. Must be the final input item.
+
+    - `type: "compaction_trigger"`
+
+      The type of the item. Always `compaction_trigger`.
+
+      - `"compaction_trigger"`
+
   - `ItemReference`
 
     An internal identifier for an item to reference.
@@ -64372,7 +64492,7 @@ console.log(compactedResponse);
 
 ### Response Input Item
 
-- `ResponseInputItem = EasyInputMessage | Message | ResponseOutputMessage | 25 more`
+- `ResponseInputItem = EasyInputMessage | Message | ResponseOutputMessage | 26 more`
 
   A message input to the model with a role indicating instruction following
   hierarchy. Instructions given with the `developer` or `system` role take
@@ -67299,6 +67419,16 @@ console.log(compactedResponse);
     - `namespace?: string`
 
       The namespace of the custom tool being called.
+
+  - `CompactionTrigger`
+
+    Compacts the current context. Must be the final input item.
+
+    - `type: "compaction_trigger"`
+
+      The type of the item. Always `compaction_trigger`.
+
+      - `"compaction_trigger"`
 
   - `ItemReference`
 
@@ -82532,6 +82662,16 @@ console.log(compactedResponse);
 
             The namespace of the custom tool being called.
 
+        - `CompactionTrigger`
+
+          Compacts the current context. Must be the final input item.
+
+          - `type: "compaction_trigger"`
+
+            The type of the item. Always `compaction_trigger`.
+
+            - `"compaction_trigger"`
+
         - `ItemReference`
 
           An internal identifier for an item to reference.
@@ -87797,6 +87937,16 @@ console.log(compactedResponse);
             - `namespace?: string`
 
               The namespace of the custom tool being called.
+
+          - `CompactionTrigger`
+
+            Compacts the current context. Must be the final input item.
+
+            - `type: "compaction_trigger"`
+
+              The type of the item. Always `compaction_trigger`.
+
+              - `"compaction_trigger"`
 
           - `ItemReference`
 
@@ -96153,6 +96303,16 @@ console.log(compactedResponse);
 
           The namespace of the custom tool being called.
 
+      - `CompactionTrigger`
+
+        Compacts the current context. Must be the final input item.
+
+        - `type: "compaction_trigger"`
+
+          The type of the item. Always `compaction_trigger`.
+
+          - `"compaction_trigger"`
+
       - `ItemReference`
 
         An internal identifier for an item to reference.
@@ -100129,6 +100289,16 @@ console.log(compactedResponse);
             - `namespace?: string`
 
               The namespace of the custom tool being called.
+
+          - `CompactionTrigger`
+
+            Compacts the current context. Must be the final input item.
+
+            - `type: "compaction_trigger"`
+
+              The type of the item. Always `compaction_trigger`.
+
+              - `"compaction_trigger"`
 
           - `ItemReference`
 
@@ -113186,6 +113356,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `namespace?: string`
 
           The namespace of the custom tool being called.
+
+      - `CompactionTrigger`
+
+        Compacts the current context. Must be the final input item.
+
+        - `type: "compaction_trigger"`
+
+          The type of the item. Always `compaction_trigger`.
+
+          - `"compaction_trigger"`
 
       - `ItemReference`
 

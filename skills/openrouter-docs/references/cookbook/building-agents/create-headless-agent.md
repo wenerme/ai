@@ -1,12 +1,11 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Build Your Own Headless Agent
 
-<Info>
-  Looking to build an interactive terminal agent with a customizable UI instead? See the [Build Your Own Agent TUI](/docs/cookbook/building-agents/create-agent-harness-tui) guide.
-</Info>
+Looking to build an interactive terminal agent with a customizable UI instead? See the [Build Your Own Agent TUI](/docs/cookbook/building-agents/create-agent-harness-tui) guide.
 
 The [create-headless-agent](https://github.com/OpenRouterTeam/skills/tree/main/skills/create-headless-agent) skill scaffolds a headless agent in TypeScript + Bun — no terminal UI, just structured input and output. It's designed for CLI tools, API servers, queue workers, and automation pipelines where you need an agent that runs programmatically.
 
@@ -29,26 +28,18 @@ If you need an interactive terminal experience, use the [Agent TUI skill](/docs/
 
 The create-headless-agent skill is part of the [OpenRouter Skills](https://github.com/OpenRouterTeam/skills) collection. Install it with your AI coding agent of choice:
 
-<Tabs>
-  <Tab title="GitHub CLI">
-    Requires [GitHub CLI](https://cli.github.com/) v2.90.0+. Works with Claude Code, Cursor, OpenCode, Codex, Gemini CLI, Windsurf, and [many more agents](https://cli.github.com/manual/gh_skill_install):
+Requires [GitHub CLI](https://cli.github.com/) v2.90.0+. Works with Claude Code, Cursor, OpenCode, Codex, Gemini CLI, Windsurf, and [many more agents](https://cli.github.com/manual/gh_skill_install):
 
-    ```bash
-    gh skill install OpenRouterTeam/skills create-headless-agent
-    ```
-  </Tab>
+```bash
+gh skill install OpenRouterTeam/skills create-headless-agent
+```
 
-  <Tab title="Claude Code">
-    ```
-    /plugin marketplace add OpenRouterTeam/skills
-    /plugin install openrouter@openrouter
-    ```
-  </Tab>
+```
+/plugin marketplace add OpenRouterTeam/skills
+/plugin install openrouter@openrouter
+```
 
-  <Tab title="Cursor">
-    Add via **Settings > Rules > Add Rule > Remote Rule (Github)** with `OpenRouterTeam/skills`.
-  </Tab>
-</Tabs>
+Add via **Settings > Rules > Add Rule > Remote Rule (Github)** with `OpenRouterTeam/skills`.
 
 Once installed, ask your agent something like *"scaffold a headless agent"* or *"build me a CLI agent"* and the skill activates automatically.
 

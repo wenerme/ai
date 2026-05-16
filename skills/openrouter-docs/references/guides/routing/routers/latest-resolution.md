@@ -1,6 +1,7 @@
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
 # Latest Model Resolution
 
@@ -20,15 +21,36 @@ This is ideal for:
 
 Send a chat completion request with a `~author/family-latest` slug as the model:
 
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
+```typescript title="TypeScript SDK"
+import { OpenRouter } from '@openrouter/sdk';
 
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
+const openRouter = new OpenRouter({
+  apiKey: '<OPENROUTER_API_KEY>',
+});
 
-  const completion = await openRouter.chat.send({
+const completion = await openRouter.chat.send({
+  model: '~anthropic/claude-opus-latest',
+  messages: [
+    {
+      role: 'user',
+      content: 'Summarize this in one sentence: ...',
+    },
+  ],
+});
+
+console.log(completion.choices[0].message.content);
+// The `model` field reflects the concrete version that served the request.
+console.log('Resolved to:', completion.model);
+```
+
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
     model: '~anthropic/claude-opus-latest',
     messages: [
       {
@@ -36,70 +58,47 @@ Send a chat completion request with a `~author/family-latest` slug as the model:
         content: 'Summarize this in one sentence: ...',
       },
     ],
-  });
+  }),
+});
 
-  console.log(completion.choices[0].message.content);
-  // The `model` field reflects the concrete version that served the request.
-  console.log('Resolved to:', completion.model);
-  ```
+const data = await response.json();
+console.log('Resolved to:', data.model);
+```
 
-  ```typescript title="TypeScript (fetch)"
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: '~anthropic/claude-opus-latest',
-      messages: [
-        {
-          role: 'user',
-          content: 'Summarize this in one sentence: ...',
-        },
-      ],
-    }),
-  });
+```python title="Python"
+import requests
+import json
 
-  const data = await response.json();
-  console.log('Resolved to:', data.model);
-  ```
+response = requests.post(
+  url="https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "Content-Type": "application/json",
+  },
+  data=json.dumps({
+    "model": "~anthropic/claude-opus-latest",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Summarize this in one sentence: ..."
+      }
+    ]
+  })
+)
 
-  ```python title="Python"
-  import requests
-  import json
+data = response.json()
+print('Resolved to:', data['model'])
+```
 
-  response = requests.post(
-    url="https://openrouter.ai/api/v1/chat/completions",
-    headers={
-      "Authorization": "Bearer <OPENROUTER_API_KEY>",
-      "Content-Type": "application/json",
-    },
-    data=json.dumps({
-      "model": "~anthropic/claude-opus-latest",
-      "messages": [
-        {
-          "role": "user",
-          "content": "Summarize this in one sentence: ..."
-        }
-      ]
-    })
-  )
-
-  data = response.json()
-  print('Resolved to:', data['model'])
-  ```
-
-  ```bash title="cURL"
-  curl https://openrouter.ai/api/v1/chat/completions \
-    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "model": "~anthropic/claude-opus-latest",
-      "messages": [{"role": "user", "content": "Hello!"}]
-    }'
-  ```
-</CodeGroup>
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "~anthropic/claude-opus-latest",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'
+```
 
 ## Response
 
