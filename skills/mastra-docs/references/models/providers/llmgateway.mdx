@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 195 models available."
+description: "Use LLM Gateway models with Mastra. 188 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 195 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 188 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1132,30 +1132,6 @@ for await (const chunk of stream) {
     "outputCost": 0.5
   },
   {
-    "model": "llmgateway/grok-3",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 8192,
-    "inputCost": 3,
-    "outputCost": 15
-  },
-  {
-    "model": "llmgateway/grok-4",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 64000,
-    "inputCost": 3,
-    "outputCost": 15
-  },
-  {
     "model": "llmgateway/grok-4-0709",
     "imageInput": false,
     "audioInput": false,
@@ -1166,30 +1142,6 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 3,
     "outputCost": 15
-  },
-  {
-    "model": "llmgateway/grok-4-1-fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 2000000,
-    "maxOutput": 30000,
-    "inputCost": 0.2,
-    "outputCost": 0.5
-  },
-  {
-    "model": "llmgateway/grok-4-1-fast-non-reasoning",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 2000000,
-    "maxOutput": 30000,
-    "inputCost": 0.2,
-    "outputCost": 0.5
   },
   {
     "model": "llmgateway/grok-4-1-fast-reasoning",
@@ -1240,30 +1192,6 @@ for await (const chunk of stream) {
     "outputCost": 2.5
   },
   {
-    "model": "llmgateway/grok-4-fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 2000000,
-    "maxOutput": 30000,
-    "inputCost": 0.2,
-    "outputCost": 0.5
-  },
-  {
-    "model": "llmgateway/grok-4-fast-non-reasoning",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 2000000,
-    "maxOutput": 30000,
-    "inputCost": 0.2,
-    "outputCost": 0.5
-  },
-  {
     "model": "llmgateway/grok-4-fast-reasoning",
     "imageInput": true,
     "audioInput": false,
@@ -1274,18 +1202,6 @@ for await (const chunk of stream) {
     "maxOutput": 30000,
     "inputCost": 0.2,
     "outputCost": 0.5
-  },
-  {
-    "model": "llmgateway/grok-code-fast-1",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 10000,
-    "inputCost": 0.2,
-    "outputCost": 1.5
   },
   {
     "model": "llmgateway/hermes-2-pro-llama-3-8b",

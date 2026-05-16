@@ -10,10 +10,10 @@
   "anthropic-docs/get-started.md": {
     "url": "https://platform.claude.com/docs/en/get-started",
     "skill": "anthropic-docs",
-    "etag": "W/\"3c7f-19e09a55250\"",
-    "lastModified": "Fri, 08 May 2026 22:11:30 GMT",
-    "size": 15487,
-    "updatedAt": "2026-05-09T00:24:20.014Z"
+    "etag": "W/\"3d8a-19e2e99bd80\"",
+    "lastModified": "Sat, 16 May 2026 02:24:48 GMT",
+    "size": 15754,
+    "updatedAt": "2026-05-16T10:27:45.116Z"
   },
   "anthropic-docs/build-with-claude/overview.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/overview",
@@ -186,18 +186,18 @@
   "anthropic-docs/agents-and-tools/tool-use/parallel-tool-use.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/parallel-tool-use",
     "skill": "anthropic-docs",
-    "etag": "W/\"7726-19e1979f6e0\"",
-    "lastModified": "Mon, 11 May 2026 23:58:04 GMT",
-    "size": 30412,
-    "updatedAt": "2026-05-12T00:25:21.119Z"
+    "etag": "W/\"7c64-19e2e99bd80\"",
+    "lastModified": "Sat, 16 May 2026 02:24:48 GMT",
+    "size": 31754,
+    "updatedAt": "2026-05-16T10:27:51.344Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/tool-runner.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner",
     "skill": "anthropic-docs",
-    "etag": "W/\"69e9-19e0a7f9168\"",
-    "lastModified": "Sat, 09 May 2026 02:09:53 GMT",
-    "size": 27105,
-    "updatedAt": "2026-05-09T10:21:33.389Z"
+    "etag": "W/\"11065-19e2e99bd80\"",
+    "lastModified": "Sat, 16 May 2026 02:24:48 GMT",
+    "size": 69718,
+    "updatedAt": "2026-05-16T10:27:51.618Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/strict-tool-use.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use",
@@ -258,10 +258,10 @@
   "anthropic-docs/agents-and-tools/tool-use/advisor-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"72c7-19e1979f6e0\"",
-    "lastModified": "Mon, 11 May 2026 23:58:04 GMT",
-    "size": 29371,
-    "updatedAt": "2026-05-12T00:25:24.327Z"
+    "etag": "W/\"751d-19e2e99bd80\"",
+    "lastModified": "Sat, 16 May 2026 02:24:48 GMT",
+    "size": 29967,
+    "updatedAt": "2026-05-16T10:27:53.769Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/memory-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool",

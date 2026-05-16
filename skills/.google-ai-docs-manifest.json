@@ -248,8 +248,8 @@
   "google-ai-api/interactions-api.md": {
     "url": "https://ai.google.dev/api/interactions-api",
     "skill": "google-ai-api",
-    "size": 76466,
-    "updatedAt": "2026-05-12T11:05:03.139Z"
+    "size": 82488,
+    "updatedAt": "2026-05-16T10:44:15.402Z"
   },
   "google-ai-docs/image-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/image-generation",
