@@ -1,0 +1,180 @@
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
+> For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
+
+# Observability - Go SDK
+
+The Go SDK and docs are currently in beta.
+Report issues on [GitHub](https://github.com/OpenRouterTeam/go-sdk/issues).
+
+## Overview
+
+Observability endpoints
+
+### Available Operations
+
+* [List](#list) - List observability destinations
+* [Get](#get) - Get an observability destination
+
+## List
+
+List the observability destinations configured for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Observability.List(ctx, optionalnullable.From[int64](nil), nil, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter     | Type                                                                  | Required             | Description                                                                                   | Example                              |
+| ------------- | --------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.                                                           |                                      |
+| `offset`      | optionalnullable.OptionalNullable\[`int64`]                           | :heavy\_minus\_sign: | Number of records to skip for pagination                                                      | 0                                    |
+| `limit`       | `*int64`                                                              | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                 | 50                                   |
+| `workspaceID` | `*string`                                                             | :heavy\_minus\_sign: | Optional workspace ID to filter by. Defaults to the authenticated entity's default workspace. | 550e8400-e29b-41d4-a716-446655440000 |
+| `opts`        | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.                                                                 |                                      |
+
+### Response
+
+**[\*operations.ListObservabilityDestinationsResponse](/docs/sdks/go/api-reference/operations/listobservabilitydestinationsresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## Get
+
+Fetch a single observability destination by its UUID. Defaults to the authenticated entity's default workspace — use `workspace_id` to override. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Observability.Get(ctx, "99999999-aaaa-bbbb-cccc-dddddddddddd", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        switch res.Data.Type {
+            case components.ObservabilityDestinationTypeArize:
+                // res.Data.ObservabilityArizeDestination is populated
+            case components.ObservabilityDestinationTypeBraintrust:
+                // res.Data.ObservabilityBraintrustDestination is populated
+            case components.ObservabilityDestinationTypeClickhouse:
+                // res.Data.ObservabilityClickhouseDestination is populated
+            case components.ObservabilityDestinationTypeDatadog:
+                // res.Data.ObservabilityDatadogDestination is populated
+            case components.ObservabilityDestinationTypeGrafana:
+                // res.Data.ObservabilityGrafanaDestination is populated
+            case components.ObservabilityDestinationTypeLangfuse:
+                // res.Data.ObservabilityLangfuseDestination is populated
+            case components.ObservabilityDestinationTypeLangsmith:
+                // res.Data.ObservabilityLangsmithDestination is populated
+            case components.ObservabilityDestinationTypeNewrelic:
+                // res.Data.ObservabilityNewrelicDestination is populated
+            case components.ObservabilityDestinationTypeOpik:
+                // res.Data.ObservabilityOpikDestination is populated
+            case components.ObservabilityDestinationTypeOtelCollector:
+                // res.Data.ObservabilityOtelCollectorDestination is populated
+            case components.ObservabilityDestinationTypePosthog:
+                // res.Data.ObservabilityPosthogDestination is populated
+            case components.ObservabilityDestinationTypeRamp:
+                // res.Data.ObservabilityRampDestination is populated
+            case components.ObservabilityDestinationTypeS3:
+                // res.Data.ObservabilityS3Destination is populated
+            case components.ObservabilityDestinationTypeSentry:
+                // res.Data.ObservabilitySentryDestination is populated
+            case components.ObservabilityDestinationTypeSnowflake:
+                // res.Data.ObservabilitySnowflakeDestination is populated
+            case components.ObservabilityDestinationTypeWeave:
+                // res.Data.ObservabilityWeaveDestination is populated
+            case components.ObservabilityDestinationTypeWebhook:
+                // res.Data.ObservabilityWebhookDestination is populated
+            default:
+                // Unknown type - use res.Data.GetUnknownRaw() for raw JSON
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter     | Type                                                                  | Required             | Description                                                                      | Example                              |
+| ------------- | --------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------------- | ------------------------------------ |
+| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.                                              |                                      |
+| `id`          | `string`                                                              | :heavy\_check\_mark: | The destination ID (UUID).                                                       | 99999999-aaaa-bbbb-cccc-dddddddddddd |
+| `workspaceID` | `*string`                                                             | :heavy\_minus\_sign: | Optional workspace ID. Defaults to the authenticated entity's default workspace. | 550e8400-e29b-41d4-a716-446655440000 |
+| `opts`        | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.                                                    |                                      |
+
+### Response
+
+**[\*components.GetObservabilityDestinationResponse](/docs/sdks/go/api-reference/models/getobservabilitydestinationresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.NotFoundResponseError       | 404         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |

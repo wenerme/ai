@@ -1,11 +1,11 @@
 ---
 title: "Berget.AI | Models"
-description: "Use Berget.AI models with Mastra. 6 models available."
+description: "Use Berget.AI models with Mastra. 7 models available."
 ---
 
 # [Berget.AI logo]Berget.AI
 
-Access 6 Berget.AI models through Mastra's model router. Authentication is handled automatically using the `BERGET_API_KEY` environment variable.
+Access 7 Berget.AI models through Mastra's model router. Authentication is handled automatically using the `BERGET_API_KEY` environment variable.
 
 Learn more in the [Berget.AI documentation](https://api.berget.ai).
 
@@ -86,6 +86,18 @@ for await (const chunk of stream) {
     "maxOutput": 8192,
     "inputCost": 0.33,
     "outputCost": 0.33
+  },
+  {
+    "model": "berget/moonshotai/Kimi-K2.6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.83,
+    "outputCost": 3.85
   },
   {
     "model": "berget/openai/gpt-oss-120b",

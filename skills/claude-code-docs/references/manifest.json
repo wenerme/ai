@@ -343,15 +343,15 @@
   },
   "microsoft-foundry.md": {
     "url": "https://code.claude.com/docs/en/microsoft-foundry",
-    "lastModified": "Fri, 15 May 2026 22:38:48 GMT",
-    "size": 8363,
-    "updatedAt": "2026-05-16T00:22:41.352Z"
+    "lastModified": "Sun, 17 May 2026 00:17:50 GMT",
+    "size": 8809,
+    "updatedAt": "2026-05-17T00:24:04.456Z"
   },
   "model-config.md": {
     "url": "https://code.claude.com/docs/en/model-config",
-    "lastModified": "Wed, 13 May 2026 01:03:43 GMT",
-    "size": 31446,
-    "updatedAt": "2026-05-13T10:50:32.440Z"
+    "lastModified": "Sun, 17 May 2026 00:17:50 GMT",
+    "size": 31557,
+    "updatedAt": "2026-05-17T00:24:04.803Z"
   },
   "monitoring-usage.md": {
     "url": "https://code.claude.com/docs/en/monitoring-usage",

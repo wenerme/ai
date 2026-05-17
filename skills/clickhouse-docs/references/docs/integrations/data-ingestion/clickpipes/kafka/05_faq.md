@@ -44,6 +44,10 @@ Yes, ClickPipes for streaming can be scaled both horizontally and vertically.
 Horizontal scaling adds more replicas to increase throughput, while vertical scaling increases the resources (CPU and RAM) allocated to each replica to handle more intensive workloads.
 This can be configured during ClickPipe creation, or at any other point under **Settings** -> **Advanced Settings** -> **Scaling**.
 
+I can't find some of my Kafka topics in the ClickPipes setup UI. Why?
+
+The ClickPipes topic discovery UI lists up to 1,500 topics by default. If your Kafka cluster has more than 1,500 topics, some topics may not appear in the dropdown. To verify your topic exists, check directly using a Kafka client with the same credentials. If confirmed and you need to raise the listing limit beyond 1,500, reach out to ClickHouse Support.
+
 ### Azure Event Hubs {#azure-eventhubs}
 
 Does the Azure Event Hubs ClickPipe work without the Kafka surface?
