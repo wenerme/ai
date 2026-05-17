@@ -53,13 +53,35 @@ mcp-cli call <cls-server>/log_context '{"topic":"my-topic","time":"...","pkgId":
 mcp-cli call <cls-server>/histogram '{"topic":"my-topic","from":"-24h","buckets":24}'
 ```
 
-## SQL 分析
+## SQL 分析案例
 
+### 1. 时序图分析（PV & UV 每分钟）
+用于展示业务流量随时间的变化。
 ```sql
--- 格式: <CQL过滤> | SELECT ...
-* | SELECT count(*) as total, count(distinct remote_addr) as uv
-  GROUP BY date_trunc('minute', __TIMESTAMP__)
-  ORDER BY time LIMIT 10000
+* | SELECT histogram(cast(__TIMESTAMP__ as timestamp), interval 1 minute) as time, 
+    count(*) as pv, 
+    count(distinct remote_addr) as uv 
+  GROUP BY time ORDER BY time DESC LIMIT 10000
+```
+
+### 2. 多维度时序分析（各协议类型 PV）
+分析不同协议（如 HTTP, HTTPS）的流量分布。
+```sql
+* | SELECT histogram(cast(__TIMESTAMP__ as timestamp), interval 1 minute) as time, 
+    protocol_type, 
+    count(*) as pv 
+  GROUP BY time, protocol_type ORDER BY time DESC LIMIT 10000
+```
+
+### 3. 请求失败率分析 (%)
+计算不同 HTTP 状态码分布及其比例，监控服务质量。
+```sql
+* | SELECT date_trunc('minute', __TIMESTAMP__) as time, 
+    round(sum(case when status = 404 then 1.00 else 0.00 end) / cast(count(*) as double) * 100, 3) as "404比例", 
+    round(sum(case when status >= 500 then 1.00 else 0.00 end) / cast(count(*) as double) * 100, 3) as "5XX比例", 
+    round(sum(case when status >= 400 and status < 500 then 1.00 else 0.00 end) / cast(count(*) as double) * 100, 3) as "4XX比例", 
+    round(sum(case when status >= 400 then 1.00 else 0.00 end) / cast(count(*) as double) * 100, 3) as "总失败率" 
+  GROUP BY time ORDER BY time LIMIT 10000
 ```
 
 ## References

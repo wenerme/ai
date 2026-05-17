@@ -1,6 +1,8 @@
 # Local overrides
 local.*
 *.local.md
+local/
+.agents/
 .idea
 .mcp.json
 # Logs

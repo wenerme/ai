@@ -78,7 +78,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `orpc-docs` | Use when working with oRPC (OpenAPI Remote Procedure Call): defining type-safe RPC procedures, routers, middleware,... | [unnoq/orpc](https://github.com/unnoq/orpc) |
 | `orpc-implementation-sops` | Use when building, updating, or refactoring oRPC contracts, server handlers, clients, or React Query integration |  |
 | `papermc-docs` | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... | [PaperMC/docs](https://github.com/PaperMC/docs) |
-| `peekaboo` | Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing... | [steipete/peekaboo](https://github.com/steipete/peekaboo) |
+| `peekaboo` | Use when using Peekaboo as an installed macOS automation CLI or MCP server: screenshots, UI inspection, clicking,... | [steipete/peekaboo](https://github.com/steipete/peekaboo) |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
@@ -750,7 +750,7 @@ PaperMC documentation — high-performance Minecraft Java server (Paper), Veloci
 npx skills add wenerme/ai --skill peekaboo
 ```
 
-Use when automating macOS UI via peekaboo CLI: capturing screenshots, clicking UI elements, typing text, managing apps/windows/menus, scrolling, dragging, or scripting any desktop interaction. Triggers on peekaboo, macOS automation, UI automation, screen capture, accessibility.
+Use when using Peekaboo as an installed macOS automation CLI or MCP server: screenshots, UI inspection, clicking, typing, app/window/menu/dialog/Dock/clipboard/Spaces control, AI agent runs, permissions, or automation troubleshooting.
 
 </details>
 <details>

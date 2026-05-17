@@ -244,6 +244,7 @@ wait
 - **等待完成**：优先用 `--block-until-exit*`（同步）或 `subscribe` + `grep`（异步）
 - **标记输出**：让 agent 命令输出唯一标记（如 `echo "DONE:task-A"`），方便 subscribe/grep 定位
 - **独占写入**：避免多 process 同时向同一 pane 写入（会乱序）
+- **卡住时主动补火**：如果 pane 长时间没有新进展，且最后一条可见消息还是你发出的指令，直接再发一条轻量 follow-up（例如 `continue` / `继续`）而不是静默等待；这通常能把 agent 从“看起来没响应”状态拉回到下一轮处理
 
 ---
 
