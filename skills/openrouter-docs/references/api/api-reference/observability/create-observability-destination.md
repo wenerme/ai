@@ -3,13 +3,14 @@
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
 > For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
-# List observability destinations
+# Create an observability destination
 
-GET https://openrouter.ai/api/v1/observability/destinations
+POST https://openrouter.ai/api/v1/observability/destinations
+Content-Type: application/json
 
-List the observability destinations configured for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity's default workspace; use the `workspace_id` body field to scope to a different workspace. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
-Reference: https://openrouter.ai/docs/api/api-reference/observability/list-observability-destinations
+Reference: https://openrouter.ai/docs/api/api-reference/observability/create-observability-destination
 
 ## OpenAPI Specification
 
@@ -20,40 +21,18 @@ info:
   version: 1.0.0
 paths:
   /observability/destinations:
-    get:
-      operationId: list-observability-destinations
-      summary: List observability destinations
+    post:
+      operationId: create-observability-destination
+      summary: Create an observability destination
       description: >-
-        List the observability destinations configured for the authenticated
-        entity's default workspace. Use the `workspace_id` query parameter to
-        scope the result to a different workspace. Only destinations with stable
-        release status are surfaced — destinations of other types are excluded.
-        [Management key](/docs/guides/overview/auth/management-api-keys)
-        required.
+        Create a new observability destination. A maximum of 5 destinations per
+        type is allowed. Defaults to the authenticated entity's default
+        workspace; use the `workspace_id` body field to scope to a different
+        workspace. [Management
+        key](/docs/guides/overview/auth/management-api-keys) required.
       tags:
         - subpackage_observability
       parameters:
-        - name: offset
-          in: query
-          description: Number of records to skip for pagination
-          required: false
-          schema:
-            type: integer
-        - name: limit
-          in: query
-          description: Maximum number of records to return (max 100)
-          required: false
-          schema:
-            type: integer
-        - name: workspace_id
-          in: query
-          description: >-
-            Optional workspace ID to filter by. Defaults to the authenticated
-            entity's default workspace.
-          required: false
-          schema:
-            type: string
-            format: uuid
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header
@@ -61,51 +40,51 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          description: List of observability destinations
+        '201':
+          description: Destination created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListObservabilityDestinationsResponse'
+                $ref: '#/components/schemas/CreateObservabilityDestinationResponse'
+        '400':
+          description: Bad Request - Invalid request parameters or malformed input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+        '403':
+          description: Forbidden - Authentication successful but insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
+        '409':
+          description: Conflict - Resource conflict or concurrent modification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictResponse'
         '500':
           description: Internal Server Error - Unexpected server error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateObservabilityDestinationRequest'
 servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig:
-      type: object
-      properties:
-        apiKey:
-          type: string
-        baseUrl:
-          type: string
-          default: https://otlp.arize.com
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in requests to this destination.
-        modelId:
-          type: string
-        spaceKey:
-          type: string
-      required:
-        - apiKey
-        - modelId
-        - spaceKey
-      title: >-
-        UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig
     ObservabilityFilterRulesConfigGroupsItemsLogic:
       type: string
       enum:
@@ -195,6 +174,104 @@ components:
         - groups
       description: Optional structured filter rules controlling which events are forwarded.
       title: ObservabilityFilterRulesConfig
+    CreateObservabilityDestinationRequestType:
+      type: string
+      enum:
+        - arize
+        - braintrust
+        - clickhouse
+        - datadog
+        - grafana
+        - langfuse
+        - langsmith
+        - newrelic
+        - opik
+        - otel-collector
+        - posthog
+        - ramp
+        - s3
+        - sentry
+        - snowflake
+        - weave
+        - webhook
+      description: The destination type. Only stable destination types are accepted.
+      title: CreateObservabilityDestinationRequestType
+    CreateObservabilityDestinationRequest:
+      type: object
+      properties:
+        api_key_hashes:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: >-
+            Optional allowlist of OpenRouter API key hashes whose traffic is
+            forwarded. `null` or omitted means all keys. Must contain at least
+            one hash if provided.
+        config:
+          type: object
+          additionalProperties:
+            description: Any type
+          description: >-
+            Provider-specific configuration. The shape depends on `type` and is
+            validated server-side.
+        enabled:
+          type: boolean
+          default: true
+          description: Whether this destination should be enabled immediately.
+        filter_rules:
+          $ref: '#/components/schemas/ObservabilityFilterRulesConfig'
+        name:
+          type: string
+          description: Human-readable name for the destination.
+        privacy_mode:
+          type: boolean
+          default: false
+          description: >-
+            When true, request/response bodies are not forwarded — only
+            metadata.
+        sampling_rate:
+          type: number
+          format: double
+          description: Sampling rate between 0 and 1 (1 = 100%).
+        type:
+          $ref: '#/components/schemas/CreateObservabilityDestinationRequestType'
+          description: The destination type. Only stable destination types are accepted.
+        workspace_id:
+          type: string
+          format: uuid
+          description: >-
+            Optional workspace ID. Defaults to the authenticated entity's
+            default workspace.
+      required:
+        - config
+        - name
+        - type
+      title: CreateObservabilityDestinationRequest
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig:
+      type: object
+      properties:
+        apiKey:
+          type: string
+        baseUrl:
+          type: string
+          default: https://otlp.arize.com
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Custom HTTP headers to include in requests to this destination.
+        modelId:
+          type: string
+        spaceKey:
+          type: string
+      required:
+        - apiKey
+        - modelId
+        - spaceKey
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig
     UpdateObservabilityDestinationResponseDataDiscriminatorMappingBraintrustConfig:
       type: object
       properties:
@@ -565,7 +642,7 @@ components:
         - url
       title: >-
         UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfig
-    ObservabilityDestination:
+    CreateObservabilityDestinationResponseData:
       oneOf:
         - type: object
           properties:
@@ -1742,22 +1819,53 @@ components:
           description: webhook variant
       discriminator:
         propertyName: type
-      title: ObservabilityDestination
-    ListObservabilityDestinationsResponse:
+      description: The newly created observability destination.
+      title: CreateObservabilityDestinationResponseData
+    CreateObservabilityDestinationResponse:
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObservabilityDestination'
-          description: List of observability destinations.
-        total_count:
-          type: integer
-          description: Total number of destinations matching the filters.
+          $ref: '#/components/schemas/CreateObservabilityDestinationResponseData'
       required:
         - data
-        - total_count
-      title: ListObservabilityDestinationsResponse
+      title: CreateObservabilityDestinationResponse
+    BadRequestResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for BadRequestResponse
+      title: BadRequestResponseErrorData
+    BadRequestResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/BadRequestResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Bad Request - Invalid request parameters or malformed input
+      title: BadRequestResponse
     UnauthorizedResponseErrorData:
       type: object
       properties:
@@ -1795,6 +1903,80 @@ components:
         - error
       description: Unauthorized - Authentication required or invalid credentials
       title: UnauthorizedResponse
+    ForbiddenResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for ForbiddenResponse
+      title: ForbiddenResponseErrorData
+    ForbiddenResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Forbidden - Authentication successful but insufficient permissions
+      title: ForbiddenResponse
+    ConflictResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for ConflictResponse
+      title: ConflictResponseErrorData
+    ConflictResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ConflictResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Conflict - Resource conflict or concurrent modification
+      title: ConflictResponse
     InternalServerResponseErrorData:
       type: object
       properties:
@@ -1842,21 +2024,37 @@ components:
 
 ## SDK Code Examples
 
-```python Observability_listObservabilityDestinations_example
+```python Observability_createObservabilityDestination_example
 import requests
 
 url = "https://openrouter.ai/api/v1/observability/destinations"
 
-headers = {"Authorization": "Bearer <token>"}
+payload = {
+    "config": {
+        "baseUrl": "https://us.cloud.langfuse.com",
+        "publicKey": "pk-l...EfGh",
+        "secretKey": "sk-l...AbCd"
+    },
+    "name": "Production Langfuse",
+    "type": "langfuse"
+}
+headers = {
+    "Authorization": "Bearer <token>",
+    "Content-Type": "application/json"
+}
 
-response = requests.get(url, headers=headers)
+response = requests.post(url, json=payload, headers=headers)
 
 print(response.json())
 ```
 
-```javascript Observability_listObservabilityDestinations_example
+```javascript Observability_createObservabilityDestination_example
 const url = 'https://openrouter.ai/api/v1/observability/destinations';
-const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
+const options = {
+  method: 'POST',
+  headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
+  body: '{"config":{"baseUrl":"https://us.cloud.langfuse.com","publicKey":"pk-l...EfGh","secretKey":"sk-l...AbCd"},"name":"Production Langfuse","type":"langfuse"}'
+};
 
 try {
   const response = await fetch(url, options);
@@ -1867,11 +2065,12 @@ try {
 }
 ```
 
-```go Observability_listObservabilityDestinations_example
+```go Observability_createObservabilityDestination_example
 package main
 
 import (
 	"fmt"
+	"strings"
 	"net/http"
 	"io"
 )
@@ -1880,9 +2079,12 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/observability/destinations"
 
-	req, _ := http.NewRequest("GET", url, nil)
+	payload := strings.NewReader("{\n  \"config\": {\n    \"baseUrl\": \"https://us.cloud.langfuse.com\",\n    \"publicKey\": \"pk-l...EfGh\",\n    \"secretKey\": \"sk-l...AbCd\"\n  },\n  \"name\": \"Production Langfuse\",\n  \"type\": \"langfuse\"\n}")
+
+	req, _ := http.NewRequest("POST", url, payload)
 
 	req.Header.Add("Authorization", "Bearer <token>")
+	req.Header.Add("Content-Type", "application/json")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -1895,7 +2097,7 @@ func main() {
 }
 ```
 
-```ruby Observability_listObservabilityDestinations_example
+```ruby Observability_createObservabilityDestination_example
 require 'uri'
 require 'net/http'
 
@@ -1904,56 +2106,87 @@ url = URI("https://openrouter.ai/api/v1/observability/destinations")
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
-request = Net::HTTP::Get.new(url)
+request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{\n  \"config\": {\n    \"baseUrl\": \"https://us.cloud.langfuse.com\",\n    \"publicKey\": \"pk-l...EfGh\",\n    \"secretKey\": \"sk-l...AbCd\"\n  },\n  \"name\": \"Production Langfuse\",\n  \"type\": \"langfuse\"\n}"
 
 response = http.request(request)
 puts response.read_body
 ```
 
-```java Observability_listObservabilityDestinations_example
+```java Observability_createObservabilityDestination_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/observability/destinations")
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/observability/destinations")
   .header("Authorization", "Bearer <token>")
+  .header("Content-Type", "application/json")
+  .body("{\n  \"config\": {\n    \"baseUrl\": \"https://us.cloud.langfuse.com\",\n    \"publicKey\": \"pk-l...EfGh\",\n    \"secretKey\": \"sk-l...AbCd\"\n  },\n  \"name\": \"Production Langfuse\",\n  \"type\": \"langfuse\"\n}")
   .asString();
 ```
 
-```php Observability_listObservabilityDestinations_example
+```php Observability_createObservabilityDestination_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/observability/destinations', [
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/observability/destinations', [
+  'body' => '{
+  "config": {
+    "baseUrl": "https://us.cloud.langfuse.com",
+    "publicKey": "pk-l...EfGh",
+    "secretKey": "sk-l...AbCd"
+  },
+  "name": "Production Langfuse",
+  "type": "langfuse"
+}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
   ],
 ]);
 
 echo $response->getBody();
 ```
 
-```csharp Observability_listObservabilityDestinations_example
+```csharp Observability_createObservabilityDestination_example
 using RestSharp;
 
 var client = new RestClient("https://openrouter.ai/api/v1/observability/destinations");
-var request = new RestRequest(Method.GET);
+var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{\n  \"config\": {\n    \"baseUrl\": \"https://us.cloud.langfuse.com\",\n    \"publicKey\": \"pk-l...EfGh\",\n    \"secretKey\": \"sk-l...AbCd\"\n  },\n  \"name\": \"Production Langfuse\",\n  \"type\": \"langfuse\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
-```swift Observability_listObservabilityDestinations_example
+```swift Observability_createObservabilityDestination_example
 import Foundation
 
-let headers = ["Authorization": "Bearer <token>"]
+let headers = [
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
+]
+let parameters = [
+  "config": [
+    "baseUrl": "https://us.cloud.langfuse.com",
+    "publicKey": "pk-l...EfGh",
+    "secretKey": "sk-l...AbCd"
+  ],
+  "name": "Production Langfuse",
+  "type": "langfuse"
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/observability/destinations")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
-request.httpMethod = "GET"
+request.httpMethod = "POST"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in

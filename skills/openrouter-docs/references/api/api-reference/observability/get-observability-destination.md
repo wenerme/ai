@@ -71,7 +71,7 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    ObservabilityDestinationDiscriminatorMappingArizeConfig:
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig:
       type: object
       properties:
         apiKey:
@@ -92,7 +92,8 @@ components:
         - apiKey
         - modelId
         - spaceKey
-      title: ObservabilityDestinationDiscriminatorMappingArizeConfig
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig
     ObservabilityFilterRulesConfigGroupsItemsLogic:
       type: string
       enum:
@@ -182,7 +183,7 @@ components:
         - groups
       description: Optional structured filter rules controlling which events are forwarded.
       title: ObservabilityFilterRulesConfig
-    ObservabilityDestinationDiscriminatorMappingBraintrustConfig:
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingBraintrustConfig:
       type: object
       properties:
         apiKey:
@@ -200,8 +201,9 @@ components:
       required:
         - apiKey
         - projectId
-      title: ObservabilityDestinationDiscriminatorMappingBraintrustConfig
-    ObservabilityDestinationDiscriminatorMappingClickhouseConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingBraintrustConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingClickhouseConfig:
       type: object
       properties:
         database:
@@ -228,8 +230,9 @@ components:
         - host
         - password
         - username
-      title: ObservabilityDestinationDiscriminatorMappingClickhouseConfig
-    ObservabilityDestinationDiscriminatorMappingDatadogConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingClickhouseConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingDatadogConfig:
       type: object
       properties:
         apiKey:
@@ -252,8 +255,9 @@ components:
       required:
         - apiKey
         - mlApp
-      title: ObservabilityDestinationDiscriminatorMappingDatadogConfig
-    ObservabilityGrafanaDestinationConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingDatadogConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingGrafanaConfig:
       type: object
       properties:
         apiKey:
@@ -271,13 +275,9 @@ components:
       required:
         - apiKey
         - instanceId
-      title: ObservabilityGrafanaDestinationConfig
-    ObservabilityGrafanaDestinationType:
-      type: string
-      enum:
-        - grafana
-      title: ObservabilityGrafanaDestinationType
-    ObservabilityLangfuseDestinationConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingGrafanaConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangfuseConfig:
       type: object
       properties:
         baseUrl:
@@ -295,13 +295,9 @@ components:
       required:
         - publicKey
         - secretKey
-      title: ObservabilityLangfuseDestinationConfig
-    ObservabilityLangfuseDestinationType:
-      type: string
-      enum:
-        - langfuse
-      title: ObservabilityLangfuseDestinationType
-    ObservabilityLangsmithDestinationConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangfuseConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangsmithConfig:
       type: object
       properties:
         apiKey:
@@ -327,20 +323,17 @@ components:
             workspace settings.
       required:
         - apiKey
-      title: ObservabilityLangsmithDestinationConfig
-    ObservabilityLangsmithDestinationType:
-      type: string
-      enum:
-        - langsmith
-      title: ObservabilityLangsmithDestinationType
-    ObservabilityNewrelicDestinationConfigRegion:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangsmithConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfigRegion:
       type: string
       enum:
         - us
         - eu
       default: us
-      title: ObservabilityNewrelicDestinationConfigRegion
-    ObservabilityNewrelicDestinationConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfigRegion
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfig:
       type: object
       properties:
         headers:
@@ -351,16 +344,13 @@ components:
         licenseKey:
           type: string
         region:
-          $ref: '#/components/schemas/ObservabilityNewrelicDestinationConfigRegion'
+          $ref: >-
+            #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfigRegion
       required:
         - licenseKey
-      title: ObservabilityNewrelicDestinationConfig
-    ObservabilityNewrelicDestinationType:
-      type: string
-      enum:
-        - newrelic
-      title: ObservabilityNewrelicDestinationType
-    ObservabilityOpikDestinationConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingOpikConfig:
       type: object
       properties:
         apiKey:
@@ -378,13 +368,8 @@ components:
         - apiKey
         - projectName
         - workspace
-      title: ObservabilityOpikDestinationConfig
-    ObservabilityOpikDestinationType:
-      type: string
-      enum:
-        - opik
-      title: ObservabilityOpikDestinationType
-    ObservabilityOtelCollectorDestinationConfig:
+      title: UpdateObservabilityDestinationResponseDataDiscriminatorMappingOpikConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingOtelCollectorConfig:
       type: object
       properties:
         endpoint:
@@ -399,13 +384,9 @@ components:
             "your-dataset"}
       required:
         - endpoint
-      title: ObservabilityOtelCollectorDestinationConfig
-    ObservabilityOtelCollectorDestinationType:
-      type: string
-      enum:
-        - otel-collector
-      title: ObservabilityOtelCollectorDestinationType
-    ObservabilityPosthogDestinationConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingOtelCollectorConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingPosthogConfig:
       type: object
       properties:
         apiKey:
@@ -420,13 +401,9 @@ components:
           description: Custom HTTP headers to include in requests to this destination.
       required:
         - apiKey
-      title: ObservabilityPosthogDestinationConfig
-    ObservabilityPosthogDestinationType:
-      type: string
-      enum:
-        - posthog
-      title: ObservabilityPosthogDestinationType
-    ObservabilityRampDestinationConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingPosthogConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingRampConfig:
       type: object
       properties:
         apiKey:
@@ -442,13 +419,8 @@ components:
           description: Custom HTTP headers to include in requests to Ramp.
       required:
         - apiKey
-      title: ObservabilityRampDestinationConfig
-    ObservabilityRampDestinationType:
-      type: string
-      enum:
-        - ramp
-      title: ObservabilityRampDestinationType
-    ObservabilityS3DestinationConfig:
+      title: UpdateObservabilityDestinationResponseDataDiscriminatorMappingRampConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingS3Config:
       type: object
       properties:
         accessKeyId:
@@ -487,13 +459,8 @@ components:
         - accessKeyId
         - bucketName
         - secretAccessKey
-      title: ObservabilityS3DestinationConfig
-    ObservabilityS3DestinationType:
-      type: string
-      enum:
-        - s3
-      title: ObservabilityS3DestinationType
-    ObservabilitySentryDestinationConfig:
+      title: UpdateObservabilityDestinationResponseDataDiscriminatorMappingS3Config
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingSentryConfig:
       type: object
       properties:
         dsn:
@@ -508,13 +475,9 @@ components:
       required:
         - dsn
         - otlpEndpoint
-      title: ObservabilitySentryDestinationConfig
-    ObservabilitySentryDestinationType:
-      type: string
-      enum:
-        - sentry
-      title: ObservabilitySentryDestinationType
-    ObservabilitySnowflakeDestinationConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingSentryConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingSnowflakeConfig:
       type: object
       properties:
         account:
@@ -541,13 +504,9 @@ components:
       required:
         - account
         - token
-      title: ObservabilitySnowflakeDestinationConfig
-    ObservabilitySnowflakeDestinationType:
-      type: string
-      enum:
-        - snowflake
-      title: ObservabilitySnowflakeDestinationType
-    ObservabilityWeaveDestinationConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingSnowflakeConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingWeaveConfig:
       type: object
       properties:
         apiKey:
@@ -568,20 +527,17 @@ components:
         - apiKey
         - entity
         - project
-      title: ObservabilityWeaveDestinationConfig
-    ObservabilityWeaveDestinationType:
-      type: string
-      enum:
-        - weave
-      title: ObservabilityWeaveDestinationType
-    ObservabilityWebhookDestinationConfigMethod:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingWeaveConfig
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfigMethod:
       type: string
       enum:
         - POST
         - PUT
       default: POST
-      title: ObservabilityWebhookDestinationConfigMethod
-    ObservabilityWebhookDestinationConfig:
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfigMethod
+    UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfig:
       type: object
       properties:
         headers:
@@ -589,17 +545,14 @@ components:
           additionalProperties:
             type: string
         method:
-          $ref: '#/components/schemas/ObservabilityWebhookDestinationConfigMethod'
+          $ref: >-
+            #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfigMethod
         url:
           type: string
       required:
         - url
-      title: ObservabilityWebhookDestinationConfig
-    ObservabilityWebhookDestinationType:
-      type: string
-      enum:
-        - webhook
-      title: ObservabilityWebhookDestinationType
+      title: >-
+        UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfig
     GetObservabilityDestinationResponseData:
       oneOf:
         - type: object
@@ -621,7 +574,7 @@ components:
                 destination. `null` means all keys.
             config:
               $ref: >-
-                #/components/schemas/ObservabilityDestinationDiscriminatorMappingArizeConfig
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -690,7 +643,7 @@ components:
                 destination. `null` means all keys.
             config:
               $ref: >-
-                #/components/schemas/ObservabilityDestinationDiscriminatorMappingBraintrustConfig
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingBraintrustConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -759,7 +712,7 @@ components:
                 destination. `null` means all keys.
             config:
               $ref: >-
-                #/components/schemas/ObservabilityDestinationDiscriminatorMappingClickhouseConfig
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingClickhouseConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -828,7 +781,7 @@ components:
                 destination. `null` means all keys.
             config:
               $ref: >-
-                #/components/schemas/ObservabilityDestinationDiscriminatorMappingDatadogConfig
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingDatadogConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -881,7 +834,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityGrafanaDestinationType'
+              type: string
+              enum:
+                - grafana
+              description: 'Discriminator value: grafana'
             api_key_hashes:
               type:
                 - array
@@ -893,7 +849,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityGrafanaDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingGrafanaConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -946,7 +903,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityLangfuseDestinationType'
+              type: string
+              enum:
+                - langfuse
+              description: 'Discriminator value: langfuse'
             api_key_hashes:
               type:
                 - array
@@ -958,7 +918,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityLangfuseDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangfuseConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1011,7 +972,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityLangsmithDestinationType'
+              type: string
+              enum:
+                - langsmith
+              description: 'Discriminator value: langsmith'
             api_key_hashes:
               type:
                 - array
@@ -1023,7 +987,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityLangsmithDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingLangsmithConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1076,7 +1041,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityNewrelicDestinationType'
+              type: string
+              enum:
+                - newrelic
+              description: 'Discriminator value: newrelic'
             api_key_hashes:
               type:
                 - array
@@ -1088,7 +1056,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityNewrelicDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingNewrelicConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1141,7 +1110,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityOpikDestinationType'
+              type: string
+              enum:
+                - opik
+              description: 'Discriminator value: opik'
             api_key_hashes:
               type:
                 - array
@@ -1153,7 +1125,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityOpikDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingOpikConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1206,7 +1179,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityOtelCollectorDestinationType'
+              type: string
+              enum:
+                - otel-collector
+              description: 'Discriminator value: otel-collector'
             api_key_hashes:
               type:
                 - array
@@ -1218,7 +1194,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityOtelCollectorDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingOtelCollectorConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1271,7 +1248,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityPosthogDestinationType'
+              type: string
+              enum:
+                - posthog
+              description: 'Discriminator value: posthog'
             api_key_hashes:
               type:
                 - array
@@ -1283,7 +1263,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityPosthogDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingPosthogConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1336,7 +1317,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityRampDestinationType'
+              type: string
+              enum:
+                - ramp
+              description: 'Discriminator value: ramp'
             api_key_hashes:
               type:
                 - array
@@ -1348,7 +1332,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityRampDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingRampConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1401,7 +1386,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityS3DestinationType'
+              type: string
+              enum:
+                - s3
+              description: 'Discriminator value: s3'
             api_key_hashes:
               type:
                 - array
@@ -1413,7 +1401,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityS3DestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingS3Config
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1466,7 +1455,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilitySentryDestinationType'
+              type: string
+              enum:
+                - sentry
+              description: 'Discriminator value: sentry'
             api_key_hashes:
               type:
                 - array
@@ -1478,7 +1470,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilitySentryDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingSentryConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1531,7 +1524,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilitySnowflakeDestinationType'
+              type: string
+              enum:
+                - snowflake
+              description: 'Discriminator value: snowflake'
             api_key_hashes:
               type:
                 - array
@@ -1543,7 +1539,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilitySnowflakeDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingSnowflakeConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1596,7 +1593,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityWeaveDestinationType'
+              type: string
+              enum:
+                - weave
+              description: 'Discriminator value: weave'
             api_key_hashes:
               type:
                 - array
@@ -1608,7 +1608,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityWeaveDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingWeaveConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.
@@ -1661,7 +1662,10 @@ components:
         - type: object
           properties:
             type:
-              $ref: '#/components/schemas/ObservabilityWebhookDestinationType'
+              type: string
+              enum:
+                - webhook
+              description: 'Discriminator value: webhook'
             api_key_hashes:
               type:
                 - array
@@ -1673,7 +1677,8 @@ components:
                 (`api_keys.hash`) whose traffic is forwarded to this
                 destination. `null` means all keys.
             config:
-              $ref: '#/components/schemas/ObservabilityWebhookDestinationConfig'
+              $ref: >-
+                #/components/schemas/UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfig
             created_at:
               type: string
               description: ISO timestamp of when the destination was created.

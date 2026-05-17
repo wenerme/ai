@@ -3,13 +3,14 @@
 > For full documentation content, see https://openrouter.ai/docs/llms-full.txt.
 > For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
-# List observability destinations
+# Update an observability destination
 
-GET https://openrouter.ai/api/v1/observability/destinations
+PATCH https://openrouter.ai/api/v1/observability/destinations/{id}
+Content-Type: application/json
 
-List the observability destinations configured for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+Update an existing observability destination. Only the fields provided in the request body are updated. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
-Reference: https://openrouter.ai/docs/api/api-reference/observability/list-observability-destinations
+Reference: https://openrouter.ai/docs/api/api-reference/observability/update-observability-destination
 
 ## OpenAPI Specification
 
@@ -19,38 +20,21 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /observability/destinations:
-    get:
-      operationId: list-observability-destinations
-      summary: List observability destinations
+  /observability/destinations/{id}:
+    patch:
+      operationId: update-observability-destination
+      summary: Update an observability destination
       description: >-
-        List the observability destinations configured for the authenticated
-        entity's default workspace. Use the `workspace_id` query parameter to
-        scope the result to a different workspace. Only destinations with stable
-        release status are surfaced — destinations of other types are excluded.
-        [Management key](/docs/guides/overview/auth/management-api-keys)
-        required.
+        Update an existing observability destination. Only the fields provided
+        in the request body are updated. [Management
+        key](/docs/guides/overview/auth/management-api-keys) required.
       tags:
         - subpackage_observability
       parameters:
-        - name: offset
-          in: query
-          description: Number of records to skip for pagination
-          required: false
-          schema:
-            type: integer
-        - name: limit
-          in: query
-          description: Maximum number of records to return (max 100)
-          required: false
-          schema:
-            type: integer
-        - name: workspace_id
-          in: query
-          description: >-
-            Optional workspace ID to filter by. Defaults to the authenticated
-            entity's default workspace.
-          required: false
+        - name: id
+          in: path
+          description: The destination ID (UUID).
+          required: true
           schema:
             type: string
             format: uuid
@@ -62,27 +46,185 @@ paths:
             type: string
       responses:
         '200':
-          description: List of observability destinations
+          description: Destination updated successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListObservabilityDestinationsResponse'
+                $ref: '#/components/schemas/UpdateObservabilityDestinationResponse'
+        '400':
+          description: Bad Request - Invalid request parameters or malformed input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: Not Found - Resource does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '409':
+          description: Conflict - Resource conflict or concurrent modification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictResponse'
         '500':
           description: Internal Server Error - Unexpected server error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateObservabilityDestinationRequest'
 servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
+    UpdateObservabilityDestinationRequestFilterRulesGroupsItemsLogic:
+      type: string
+      enum:
+        - and
+        - or
+      default: and
+      title: UpdateObservabilityDestinationRequestFilterRulesGroupsItemsLogic
+    UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItemsField:
+      type: string
+      enum:
+        - model
+        - provider
+        - session_id
+        - user_id
+        - api_key_name
+        - finish_reason
+        - input
+        - output
+        - total_cost
+        - total_tokens
+        - prompt_tokens
+        - completion_tokens
+      title: >-
+        UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItemsField
+    UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItemsOperator:
+      type: string
+      enum:
+        - equals
+        - not_equals
+        - contains
+        - not_contains
+        - regex
+        - starts_with
+        - ends_with
+        - gt
+        - lt
+        - gte
+        - lte
+        - exists
+        - not_exists
+      title: >-
+        UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItemsOperator
+    UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItemsValue:
+      oneOf:
+        - type: string
+        - type: number
+          format: double
+      title: >-
+        UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItemsValue
+    UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItems:
+      type: object
+      properties:
+        field:
+          $ref: >-
+            #/components/schemas/UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItemsField
+        operator:
+          $ref: >-
+            #/components/schemas/UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItemsOperator
+        value:
+          $ref: >-
+            #/components/schemas/UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItemsValue
+      required:
+        - field
+        - operator
+      title: UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItems
+    UpdateObservabilityDestinationRequestFilterRulesGroupsItems:
+      type: object
+      properties:
+        logic:
+          $ref: >-
+            #/components/schemas/UpdateObservabilityDestinationRequestFilterRulesGroupsItemsLogic
+        rules:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/UpdateObservabilityDestinationRequestFilterRulesGroupsItemsRulesItems
+      required:
+        - rules
+      title: UpdateObservabilityDestinationRequestFilterRulesGroupsItems
+    UpdateObservabilityDestinationRequestFilterRules:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          default: true
+        groups:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/UpdateObservabilityDestinationRequestFilterRulesGroupsItems
+      required:
+        - groups
+      description: >-
+        Optional structured filter rules. `null` clears the rules. Omitting
+        keeps the current value.
+      title: UpdateObservabilityDestinationRequestFilterRules
+    UpdateObservabilityDestinationRequest:
+      type: object
+      properties:
+        api_key_hashes:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: >-
+            Optional allowlist of OpenRouter API key hashes. `null` clears the
+            filter (all keys). Omitting leaves the current value. Must contain
+            at least one hash if provided.
+        config:
+          type: object
+          additionalProperties:
+            description: Any type
+          description: >-
+            Provider-specific configuration fields to update. Masked values are
+            ignored; unset fields keep their current value.
+        enabled:
+          type: boolean
+          description: Whether the destination is enabled.
+        filter_rules:
+          $ref: >-
+            #/components/schemas/UpdateObservabilityDestinationRequestFilterRules
+        name:
+          type: string
+          description: Human-readable name for the destination.
+        privacy_mode:
+          type: boolean
+          description: >-
+            When true, request/response bodies are not forwarded — only
+            metadata.
+        sampling_rate:
+          type: number
+          format: double
+          description: Sampling rate between 0 and 1 (1 = 100%).
+      title: UpdateObservabilityDestinationRequest
     UpdateObservabilityDestinationResponseDataDiscriminatorMappingArizeConfig:
       type: object
       properties:
@@ -565,7 +707,7 @@ components:
         - url
       title: >-
         UpdateObservabilityDestinationResponseDataDiscriminatorMappingWebhookConfig
-    ObservabilityDestination:
+    UpdateObservabilityDestinationResponseData:
       oneOf:
         - type: object
           properties:
@@ -1742,22 +1884,53 @@ components:
           description: webhook variant
       discriminator:
         propertyName: type
-      title: ObservabilityDestination
-    ListObservabilityDestinationsResponse:
+      description: The updated observability destination.
+      title: UpdateObservabilityDestinationResponseData
+    UpdateObservabilityDestinationResponse:
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObservabilityDestination'
-          description: List of observability destinations.
-        total_count:
-          type: integer
-          description: Total number of destinations matching the filters.
+          $ref: '#/components/schemas/UpdateObservabilityDestinationResponseData'
       required:
         - data
-        - total_count
-      title: ListObservabilityDestinationsResponse
+      title: UpdateObservabilityDestinationResponse
+    BadRequestResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for BadRequestResponse
+      title: BadRequestResponseErrorData
+    BadRequestResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/BadRequestResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Bad Request - Invalid request parameters or malformed input
+      title: BadRequestResponse
     UnauthorizedResponseErrorData:
       type: object
       properties:
@@ -1795,6 +1968,80 @@ components:
         - error
       description: Unauthorized - Authentication required or invalid credentials
       title: UnauthorizedResponse
+    NotFoundResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for NotFoundResponse
+      title: NotFoundResponseErrorData
+    NotFoundResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/NotFoundResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Not Found - Resource does not exist
+      title: NotFoundResponse
+    ConflictResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for ConflictResponse
+      title: ConflictResponseErrorData
+    ConflictResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ConflictResponseErrorData'
+        openrouter_metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Conflict - Resource conflict or concurrent modification
+      title: ConflictResponse
     InternalServerResponseErrorData:
       type: object
       properties:
@@ -1842,21 +2089,32 @@ components:
 
 ## SDK Code Examples
 
-```python Observability_listObservabilityDestinations_example
+```python Observability_updateObservabilityDestination_example
 import requests
 
-url = "https://openrouter.ai/api/v1/observability/destinations"
+url = "https://openrouter.ai/api/v1/observability/destinations/99999999-aaaa-bbbb-cccc-dddddddddddd"
 
-headers = {"Authorization": "Bearer <token>"}
+payload = {
+    "enabled": False,
+    "name": "Updated Langfuse"
+}
+headers = {
+    "Authorization": "Bearer <token>",
+    "Content-Type": "application/json"
+}
 
-response = requests.get(url, headers=headers)
+response = requests.patch(url, json=payload, headers=headers)
 
 print(response.json())
 ```
 
-```javascript Observability_listObservabilityDestinations_example
-const url = 'https://openrouter.ai/api/v1/observability/destinations';
-const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
+```javascript Observability_updateObservabilityDestination_example
+const url = 'https://openrouter.ai/api/v1/observability/destinations/99999999-aaaa-bbbb-cccc-dddddddddddd';
+const options = {
+  method: 'PATCH',
+  headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
+  body: '{"enabled":false,"name":"Updated Langfuse"}'
+};
 
 try {
   const response = await fetch(url, options);
@@ -1867,22 +2125,26 @@ try {
 }
 ```
 
-```go Observability_listObservabilityDestinations_example
+```go Observability_updateObservabilityDestination_example
 package main
 
 import (
 	"fmt"
+	"strings"
 	"net/http"
 	"io"
 )
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/observability/destinations"
+	url := "https://openrouter.ai/api/v1/observability/destinations/99999999-aaaa-bbbb-cccc-dddddddddddd"
 
-	req, _ := http.NewRequest("GET", url, nil)
+	payload := strings.NewReader("{\n  \"enabled\": false,\n  \"name\": \"Updated Langfuse\"\n}")
+
+	req, _ := http.NewRequest("PATCH", url, payload)
 
 	req.Header.Add("Authorization", "Bearer <token>")
+	req.Header.Add("Content-Type", "application/json")
 
 	res, _ := http.DefaultClient.Do(req)
 
@@ -1895,65 +2157,86 @@ func main() {
 }
 ```
 
-```ruby Observability_listObservabilityDestinations_example
+```ruby Observability_updateObservabilityDestination_example
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/observability/destinations")
+url = URI("https://openrouter.ai/api/v1/observability/destinations/99999999-aaaa-bbbb-cccc-dddddddddddd")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
-request = Net::HTTP::Get.new(url)
+request = Net::HTTP::Patch.new(url)
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{\n  \"enabled\": false,\n  \"name\": \"Updated Langfuse\"\n}"
 
 response = http.request(request)
 puts response.read_body
 ```
 
-```java Observability_listObservabilityDestinations_example
+```java Observability_updateObservabilityDestination_example
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/observability/destinations")
+HttpResponse<String> response = Unirest.patch("https://openrouter.ai/api/v1/observability/destinations/99999999-aaaa-bbbb-cccc-dddddddddddd")
   .header("Authorization", "Bearer <token>")
+  .header("Content-Type", "application/json")
+  .body("{\n  \"enabled\": false,\n  \"name\": \"Updated Langfuse\"\n}")
   .asString();
 ```
 
-```php Observability_listObservabilityDestinations_example
+```php Observability_updateObservabilityDestination_example
 <?php
 require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/observability/destinations', [
+$response = $client->request('PATCH', 'https://openrouter.ai/api/v1/observability/destinations/99999999-aaaa-bbbb-cccc-dddddddddddd', [
+  'body' => '{
+  "enabled": false,
+  "name": "Updated Langfuse"
+}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
   ],
 ]);
 
 echo $response->getBody();
 ```
 
-```csharp Observability_listObservabilityDestinations_example
+```csharp Observability_updateObservabilityDestination_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/observability/destinations");
-var request = new RestRequest(Method.GET);
+var client = new RestClient("https://openrouter.ai/api/v1/observability/destinations/99999999-aaaa-bbbb-cccc-dddddddddddd");
+var request = new RestRequest(Method.PATCH);
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{\n  \"enabled\": false,\n  \"name\": \"Updated Langfuse\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
-```swift Observability_listObservabilityDestinations_example
+```swift Observability_updateObservabilityDestination_example
 import Foundation
 
-let headers = ["Authorization": "Bearer <token>"]
+let headers = [
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
+]
+let parameters = [
+  "enabled": false,
+  "name": "Updated Langfuse"
+] as [String : Any]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/observability/destinations")! as URL,
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/observability/destinations/99999999-aaaa-bbbb-cccc-dddddddddddd")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
-request.httpMethod = "GET"
+request.httpMethod = "PATCH"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in

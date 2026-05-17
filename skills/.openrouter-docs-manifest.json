@@ -599,10 +599,25 @@
     "size": 14630,
     "updatedAt": "2026-05-17T00:39:47.571Z"
   },
+  "api/api-reference/byok/create-byok-key.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/byok/create-byok-key.md",
+    "size": 17563,
+    "updatedAt": "2026-05-17T10:40:39.061Z"
+  },
   "api/api-reference/byok/get-byok-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/byok/get-byok-key.md",
     "size": 13003,
     "updatedAt": "2026-05-17T00:39:48.680Z"
+  },
+  "api/api-reference/byok/delete-byok-key.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/byok/delete-byok-key.md",
+    "size": 9789,
+    "updatedAt": "2026-05-17T10:40:40.144Z"
+  },
+  "api/api-reference/byok/update-byok-key.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/byok/update-byok-key.md",
+    "size": 17289,
+    "updatedAt": "2026-05-17T10:40:40.725Z"
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
@@ -761,13 +776,28 @@
   },
   "api/api-reference/observability/list-observability-destinations.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/observability/list-observability-destinations.md",
-    "size": 64698,
-    "updatedAt": "2026-05-17T00:40:11.545Z"
+    "size": 65921,
+    "updatedAt": "2026-05-17T10:40:59.028Z"
+  },
+  "api/api-reference/observability/create-observability-destination.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/observability/create-observability-destination.md",
+    "size": 73442,
+    "updatedAt": "2026-05-17T10:40:59.543Z"
   },
   "api/api-reference/observability/get-observability-destination.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/observability/get-observability-destination.md",
-    "size": 64991,
-    "updatedAt": "2026-05-17T00:40:12.219Z"
+    "size": 66214,
+    "updatedAt": "2026-05-17T10:41:00.070Z"
+  },
+  "api/api-reference/observability/delete-observability-destination.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/observability/delete-observability-destination.md",
+    "size": 10123,
+    "updatedAt": "2026-05-17T10:41:00.595Z"
+  },
+  "api/api-reference/observability/update-observability-destination.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/observability/update-observability-destination.md",
+    "size": 74638,
+    "updatedAt": "2026-05-17T10:41:01.160Z"
   },
   "api/api-reference/organization/list-organization-members.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/organization/list-organization-members.md",
@@ -866,8 +896,8 @@
   },
   "client-sdks/typescript/api-reference/byok.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/byok.md",
-    "size": 8684,
-    "updatedAt": "2026-05-17T00:40:26.412Z"
+    "size": 21424,
+    "updatedAt": "2026-05-17T10:41:11.428Z"
   },
   "client-sdks/typescript/api-reference/chat.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/chat.md",
@@ -911,8 +941,8 @@
   },
   "client-sdks/typescript/api-reference/observability.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/observability.md",
-    "size": 9239,
-    "updatedAt": "2026-05-17T00:40:32.233Z"
+    "size": 23100,
+    "updatedAt": "2026-05-17T10:41:17.528Z"
   },
   "client-sdks/typescript/api-reference/organization.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/organization.md",
@@ -971,8 +1001,8 @@
   },
   "client-sdks/python/api-reference/byok.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/byok.md",
-    "size": 8880,
-    "updatedAt": "2026-05-17T00:40:41.707Z"
+    "size": 24295,
+    "updatedAt": "2026-05-17T10:41:23.027Z"
   },
   "client-sdks/python/api-reference/chat.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/chat.md",
@@ -1016,8 +1046,8 @@
   },
   "client-sdks/python/api-reference/observability.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/observability.md",
-    "size": 8635,
-    "updatedAt": "2026-05-17T00:40:47.746Z"
+    "size": 27881,
+    "updatedAt": "2026-05-17T10:41:27.410Z"
   },
   "client-sdks/python/api-reference/organization.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/organization.md",
@@ -1071,8 +1101,8 @@
   },
   "client-sdks/go/api-reference/byok.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/byok.md",
-    "size": 6969,
-    "updatedAt": "2026-05-17T00:40:54.536Z"
+    "size": 14442,
+    "updatedAt": "2026-05-17T10:41:32.247Z"
   },
   "client-sdks/go/api-reference/chat.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/chat.md",
@@ -1116,8 +1146,8 @@
   },
   "client-sdks/go/api-reference/observability.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/observability.md",
-    "size": 9283,
-    "updatedAt": "2026-05-17T00:41:00.136Z"
+    "size": 22282,
+    "updatedAt": "2026-05-17T10:41:36.532Z"
   },
   "client-sdks/go/api-reference/organization.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/organization.md",
