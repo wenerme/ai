@@ -19,7 +19,7 @@ const openRouter = new OpenRouter({
 });
 
 const completion = await openRouter.chat.send({
-  models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
+  models: ['~anthropic/claude-sonnet-latest', 'gryphe/mythomax-l2-13b'],
   messages: [
     {
       role: 'user',
@@ -39,7 +39,7 @@ const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
+    models: ['~anthropic/claude-sonnet-latest', 'gryphe/mythomax-l2-13b'],
     messages: [
       {
         role: 'user',
@@ -64,7 +64,7 @@ response = requests.post(
     "Content-Type": "application/json",
   },
   data=json.dumps({
-    "models": ["anthropic/claude-sonnet-4.6", "gryphe/mythomax-l2-13b"],
+    "models": ["~anthropic/claude-sonnet-latest", "gryphe/mythomax-l2-13b"],
     "messages": [
       {
         "role": "user",
@@ -95,7 +95,7 @@ Requests are priced using the model that was ultimately used, which will be retu
 
 ## Using with OpenAI SDK
 
-To use the `models` array with the OpenAI SDK, include it in the `extra_body` parameter. In the example below, gpt-4o will be tried first, and the `models` array will be tried in order as fallbacks.
+To use the `models` array with the OpenAI SDK, include it in the `extra_body` parameter. In the example below, `~openai/gpt-latest` will be tried first, and the `models` array will be tried in order as fallbacks.
 
 ```python
 from openai import OpenAI
@@ -106,9 +106,9 @@ openai_client = OpenAI(
 )
 
 completion = openai_client.chat.completions.create(
-    model="openai/gpt-4o",
+    model="~openai/gpt-latest",
     extra_body={
-        "models": ["anthropic/claude-sonnet-4.6", "gryphe/mythomax-l2-13b"],
+        "models": ["~anthropic/claude-sonnet-latest", "gryphe/mythomax-l2-13b"],
     },
     messages=[
         {
@@ -132,8 +132,8 @@ const openrouterClient = new OpenAI({
 async function main() {
   // @ts-expect-error
   const completion = await openrouterClient.chat.completions.create({
-    model: 'openai/gpt-4o',
-    models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
+    model: '~openai/gpt-latest',
+    models: ['~anthropic/claude-sonnet-latest', 'gryphe/mythomax-l2-13b'],
     messages: [
       {
         role: 'user',

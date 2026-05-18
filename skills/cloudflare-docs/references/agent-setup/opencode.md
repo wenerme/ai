@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.  
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.  
 ```
 
 ## Cloudflare platform access

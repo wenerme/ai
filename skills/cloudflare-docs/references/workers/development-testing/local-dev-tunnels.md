@@ -12,15 +12,35 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Share a local dev server
 
-You can expose your local dev server over a [Cloudflare Quick Tunnel](https://developers.cloudflare.com/tunnel/setup/#quick-tunnels-development) when you need to share a preview, test a webhook, or access your app from another device. This provides a random `*.trycloudflare.com` hostname for the current dev session.
+You can expose your local dev server over a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) when you need to share a preview, test a webhook, or access your app from another device.
 
 This page covers tunnel support in [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 
 ## Start a tunnel
 
+You can start a tunnel with Wrangler or the Cloudflare Vite plugin for the current session. This gives you either a random `*.trycloudflare.com` hostname via a [Quick tunnel](https://developers.cloudflare.com/tunnel/setup/#quick-tunnels-development), or a stable hostname via a [named tunnel](https://developers.cloudflare.com/tunnel/setup/#create-a-tunnel).
+
 **Wrangler**
 
-Run `wrangler dev --tunnel`:
+Run `wrangler dev`, then press `[t]` to start or close the tunnel. Wrangler will print the public tunnel URL or URLs for the current session.
+
+To use a named tunnel, run:
+
+ npm  yarn  pnpm 
+
+```
+npx wrangler dev --tunnel-name=my-tunnel
+```
+
+```
+yarn wrangler dev --tunnel-name=my-tunnel
+```
+
+```
+pnpm wrangler dev --tunnel-name=my-tunnel
+```
+
+Use `--tunnel` if you want the tunnel to open automatically when Wrangler starts.
 
  npm  yarn  pnpm 
 
@@ -36,14 +56,14 @@ yarn wrangler dev --tunnel
 pnpm wrangler dev --tunnel
 ```
 
-Wrangler will print the public tunnel URL for the current dev session.
-
 **Cloudflare Vite plugin**
 
-Enable `tunnel` conditionally in the plugin config:
+Run `vite dev`, then press `t + Enter` to start or close the tunnel. Add `tunnel` to the plugin config if you want to configure a named tunnel or have the tunnel open automatically when Vite starts.
 
-* [  JavaScript ](#tab-panel-8676)
-* [  TypeScript ](#tab-panel-8677)
+To use a named tunnel with stable hostnames:
+
+* [  JavaScript ](#tab-panel-9340)
+* [  TypeScript ](#tab-panel-9341)
 
 vite.config.js
 
@@ -60,7 +80,7 @@ export default defineConfig({
 
     cloudflare({
 
-      tunnel: process.env.ENABLE_DEV_TUNNEL === "true",
+      tunnel: { name: "my-tunnel" },
 
     }),
 
@@ -86,7 +106,7 @@ export default defineConfig({
 
     cloudflare({
 
-      tunnel: process.env.ENABLE_DEV_TUNNEL === "true",
+      tunnel: { name: "my-tunnel" },
 
     }),
 
@@ -97,24 +117,101 @@ export default defineConfig({
 
 ```
 
-Then enable the tunnel only for the sessions where you want a public URL:
+If you want the tunnel to open automatically when Vite starts, set `tunnel.autoStart` to `true`.
 
-Terminal window
+When using `vite preview`, Vite's preview host validation still applies:
+
+* For Quick tunnel, add `.trycloudflare.com` to `preview.allowedHosts`.
+* For named tunnel, add the resolved hostnames or a matching domain suffix such as `.my-domain.com` to `preview.allowedHosts`.
+
+For example:
+
+* [  JavaScript ](#tab-panel-9342)
+* [  TypeScript ](#tab-panel-9343)
+
+vite.config.js
 
 ```
 
-ENABLE_DEV_TUNNEL=true vite dev # or "vite preview"
+import { defineConfig } from "vite";
+
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+export default defineConfig({
+
+  preview: {
+
+    allowedHosts: [
+
+      // For Quick tunnels:
+
+      ".trycloudflare.com",
+
+      // For named tunnels:
+
+      ".my-domain.com",
+
+    ],
+
+  },
+
+  plugins: [
+
+    cloudflare({
+
+      tunnel: { name: "my-tunnel" },
+
+    }),
+
+  ],
+
+});
 
 
 ```
 
-Once the tunnel opens:
+vite.config.ts
 
-* The public tunnel URL is printed in the terminal for the current dev session.
-* The session expires after 1 hour by default.
-* A reminder is logged every 10 minutes while the tunnel is open.
-* You can extend the tunnel by 1 hour at a time, either by pressing `t` for Wrangler or `t + Enter` for Vite.
-* The tunnel can be extended up to 3 hours of remaining time.
+```
+
+import { defineConfig } from "vite";
+
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+export default defineConfig({
+
+  preview: {
+
+    allowedHosts: [
+
+      // For Quick tunnels:
+
+      ".trycloudflare.com",
+
+      // For named tunnels:
+
+      ".my-domain.com"
+
+    ],
+
+  },
+
+  plugins: [
+
+    cloudflare({
+
+      tunnel: { name: "my-tunnel" },
+
+    }),
+
+  ],
+
+});
+
+
+```
 
 ## Security considerations
 

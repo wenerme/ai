@@ -131,10 +131,10 @@ OpenRouter exposes an input that is compatible with the Anthropic Messages API.
 Claude Code uses several environment variables to determine which models to use for different tasks. You can override these to route each role through a specific model:
 
 ```bash
-export ANTHROPIC_DEFAULT_OPUS_MODEL="anthropic/claude-opus-4.7"
-export ANTHROPIC_DEFAULT_SONNET_MODEL="anthropic/claude-sonnet-4.6"
-export ANTHROPIC_DEFAULT_HAIKU_MODEL="anthropic/claude-haiku-4.5"
-export CLAUDE_CODE_SUBAGENT_MODEL="anthropic/claude-opus-4.7"
+export ANTHROPIC_DEFAULT_OPUS_MODEL="~anthropic/claude-opus-latest"
+export ANTHROPIC_DEFAULT_SONNET_MODEL="~anthropic/claude-sonnet-latest"
+export ANTHROPIC_DEFAULT_HAIKU_MODEL="~anthropic/claude-haiku-latest"
+export CLAUDE_CODE_SUBAGENT_MODEL="~anthropic/claude-opus-latest"
 ```
 
 | Variable                         | Description                                                   |
@@ -205,7 +205,7 @@ You can use OpenRouter with the official [Claude Code GitHub Action](https://git
 
 You can add a custom statusline to Claude Code that tracks your OpenRouter API costs in real-time. The statusline displays the provider, model, cumulative cost, and cache discounts for your session.
 
-![Claude Code statusline showing OpenRouter cost tracking](file:2d155f92-6025-40ae-b83b-2b056722cbd8)
+![Claude Code statusline showing OpenRouter cost tracking](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/5bc3af530c4a0111317cbdcee893be444718c676f3f80bf0860141cffcb5ee1b/content/pages/guides/claude-code-statusline.png)
 
 Download the statusline scripts from the [openrouter-examples repository](https://github.com/OpenRouterTeam/openrouter-examples/tree/main/claude-code), make them executable, and add the following to your `~/.claude/settings.json`:
 

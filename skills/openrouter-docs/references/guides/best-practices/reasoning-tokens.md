@@ -343,12 +343,12 @@ reasoning_response = do_req("deepseek/deepseek-r1", content)
 reasoning = getattr(reasoning_response.choices[0].message, "reasoning", "")
 
 # Let's test! Here's the naive response:
-simple_response = do_req("openai/gpt-4o-mini", question)
+simple_response = do_req("~openai/gpt-mini-latest", question)
 print(getattr(simple_response.choices[0].message, "content", None))
 
 # Here's the response with the reasoning token injected:
 content = f"{question}. Here is some context to help you: {reasoning}"
-smart_response = do_req("openai/gpt-4o-mini", content)
+smart_response = do_req("~openai/gpt-mini-latest", content)
 print(getattr(smart_response.choices[0].message, "content", None))
 ```
 
@@ -380,12 +380,12 @@ async function getResponseWithReasoning() {
   const reasoning = reasoningResponse.choices[0].message.reasoning;
 
   // Let's test! Here's the naive response:
-  const simpleResponse = await doReq('openai/gpt-4o-mini', question);
+  const simpleResponse = await doReq('~openai/gpt-mini-latest', question);
   console.log(simpleResponse.choices[0].message.content);
 
   // Here's the response with the reasoning token injected:
   const content = `${question}. Here is some context to help you: ${reasoning}`;
-  const smartResponse = await doReq('openai/gpt-4o-mini', content);
+  const smartResponse = await doReq('~openai/gpt-mini-latest', content);
   console.log(smartResponse.choices[0].message.content);
 }
 
@@ -461,7 +461,7 @@ And these open source models:
 
 Note: standard interleaved thinking only. The <a href="https://docs.z.ai/guides/capabilities/thinking-mode#preserved-thinking">preserved thinking</a> feature for Z.ai models is currently not supported.
 
-The `reasoning_details` functionality works identically across all supported reasoning models. You can easily switch between OpenAI reasoning models (like `openai/gpt-5.2`) and Anthropic reasoning models (like `anthropic/claude-sonnet-4.5`) without changing your code structure.
+The `reasoning_details` functionality works identically across all supported reasoning models. You can easily switch between OpenAI reasoning models (like `~openai/gpt-latest`) and Anthropic reasoning models (like `~anthropic/claude-sonnet-latest`) without changing your code structure.
 
 Preserving reasoning blocks is useful specifically for tool calling. When models like Claude invoke tools, it is pausing its construction of a response to await external information. When tool results are returned, the model will continue building that existing response. This necessitates preserving reasoning blocks during tool use, for a couple of reasons:
 
@@ -500,7 +500,7 @@ tools = [{
 }]
 
 # First API call with tools
-# Note: You can use 'openai/gpt-5.2' instead of 'anthropic/claude-sonnet-4.5' - they're completely interchangeable
+# Note: You can use '~openai/gpt-latest' instead of '~anthropic/claude-sonnet-latest' - they're completely interchangeable
 response = client.chat.completions.create(
     model="{{MODEL}}",
     messages=[
@@ -564,7 +564,7 @@ const tools = [
 ] as const;
 
 // First API call with tools
-// Note: You can use 'openai/gpt-5.2' instead of 'anthropic/claude-sonnet-4.5' - they're completely interchangeable
+// Note: You can use '~openai/gpt-latest' instead of '~anthropic/claude-sonnet-latest' - they're completely interchangeable
 const response = await client.chat.completions.create({
   model: '{{MODEL}}',
   messages: [
@@ -770,7 +770,7 @@ However, we recommend using the new unified `reasoning` parameter for better con
 
 ### Anthropic Models with Reasoning Tokens
 
-The latest Claude models, such as [anthropic/claude-3.7-sonnet](https://openrouter.ai/anthropic/claude-3.7-sonnet), support working with and returning reasoning tokens.
+The latest Claude models, such as [`~anthropic/claude-sonnet-latest`](https://openrouter.ai/~anthropic/claude-sonnet-latest), support working with and returning reasoning tokens.
 
 You can enable reasoning on Anthropic models **only** using the unified `reasoning` parameter with either `effort` or `max_tokens`.
 

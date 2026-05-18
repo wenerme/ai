@@ -59,8 +59,35 @@ An optional override for state persistence. By default, state is persisted to `.
 * `inspectorPort` ` number | false ` optional  
 An optional override for debugging your Workers. By default, the debugging inspector is enabled and listens on port `9229`. A custom port can be provided or, alternatively, setting this to `false` will disable the debugging inspector.  
 See [Debugging](https://developers.cloudflare.com/workers/vite-plugin/reference/debugging/) for more information.
-* `tunnel` ` boolean ` optional  
-Open a publicly reachable Cloudflare Quick Tunnel for sharing a preview, testing webhooks, or accessing the app from another device.  
+* `tunnel` ` boolean | { name?: string; autoStart?: boolean } ` optional  
+Expose your local dev server over a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/).  
+Provide an object to configure a named tunnel or control whether the tunnel starts automatically. Press `t + Enter` to start or close the tunnel. Set `tunnel.autoStart` to `true` if you want the tunnel to open when Vite starts.  
+   * [  JavaScript ](#tab-panel-9967)  
+   * [  TypeScript ](#tab-panel-9968)  
+vite.config.js  
+```  
+import { defineConfig } from "vite";  
+import { cloudflare } from "@cloudflare/vite-plugin";  
+export default defineConfig({  
+  plugins: [  
+    cloudflare({  
+      tunnel: { name: "my-tunnel" },  
+    }),  
+  ],  
+});  
+```  
+vite.config.ts  
+```  
+import { defineConfig } from "vite";  
+import { cloudflare } from "@cloudflare/vite-plugin";  
+export default defineConfig({  
+  plugins: [  
+    cloudflare({  
+      tunnel: { name: "my-tunnel" },  
+    }),  
+  ],  
+});  
+```  
 See [Share a local dev server](https://developers.cloudflare.com/workers/development-testing/local-dev-tunnels/) for more information.
 * `auxiliaryWorkers` ` Array<AuxiliaryWorkerConfig> ` optional  
 An optional array of auxiliary Workers. Auxiliary Workers are additional Workers that are used as part of your application. You can use [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) to call auxiliary Workers from your main (entry) Worker. All requests are routed through your entry Worker. During the build, each Worker is output to a separate subdirectory of `dist`.  

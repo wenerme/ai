@@ -1051,7 +1051,7 @@ await expect.element(queryByTestId('prev')).not.toHaveSelection()
 await expect.element(queryByTestId('next')).toHaveSelection('ne')
 ```
 
-## toMatchScreenshot <Badge type="warning">experimental</Badge> {#tomatchscreenshot}
+## toMatchScreenshot <Experimental /> {#tomatchscreenshot}
 
 ```ts
 function toMatchScreenshot(

@@ -21,7 +21,7 @@ The endpoint will receive traces in [OpenTelemetry Protocol (OTLP)](https://open
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](file:7f3cd5fa-0103-49bc-ba12-07d5199ff215)
+![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
 
 ## Step 3: Configure Webhook
 

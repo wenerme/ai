@@ -31,3 +31,4 @@ For more information, see
 - [`create`](create.md)
 - [`delete`](delete.md)
 - [`list`](list.md)
+- [`update`](update.md)

@@ -1,0 +1,55 @@
+---
+title: '`glab work-items update`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Update work items in a project or group. (EXPERIMENTAL)
+
+## Synopsis
+
+The command uses your repository context to detect scope automatically.
+
+Use `--group` to target a group or subgroup. `--group` and `--repo` are mutually exclusive.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab work-items update <iid> [flags]
+```
+
+## Examples
+
+```console
+# Update a work item in current project
+glab work-items update 42 --description "this issue tracks a new feature"
+
+# Update a work item in a group
+glab work-items update 40 --group MYGROUP --description "this epic tracks a new feature"
+
+```
+
+## Options
+
+```plaintext
+  -a, --assignee strings     Update the work item assignee with the supplied GitLab usernames.
+  -d, --description string   Update the description for the work item.
+      --duedate string       Update the due date for the work item.
+  -g, --group string         Update work items for a group or subgroup.
+  -m, --milestone string     Update the work item milestone with the title or ID.
+  -F, --output string        Format output as: text, json. (default "text")
+  -R, --repo string          Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+      --startdate string     Update the start date for the work item.
+  -t, --title string         Update the title for the work item.
+  -w, --weight int           Update the weight value for the work item.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

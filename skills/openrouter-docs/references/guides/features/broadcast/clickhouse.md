@@ -11,7 +11,7 @@
 
 Before connecting OpenRouter, create the `OPENROUTER_TRACES` table in your ClickHouse database. You can find the exact SQL in the OpenRouter dashboard when configuring the destination:
 
-![ClickHouse Setup Instructions](file:4ae7b0a6-4e00-4c6f-8f4d-41e8bdd828d4)
+![ClickHouse Setup Instructions](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/5c24c1cafb5b6b4fade072d9624cb8f997a997de69f01dbe26e097d90938f488/content/pages/features/broadcast/broadcast-clickhouse-setup.png)
 
 ## Step 2: Set up permissions
 
@@ -25,13 +25,13 @@ GRANT CREATE TABLE ON your_database.* TO your_database_user;
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](file:7f3cd5fa-0103-49bc-ba12-07d5199ff215)
+![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
 
 ## Step 4: Configure ClickHouse
 
 Click the edit icon next to **ClickHouse** and enter:
 
-![ClickHouse Configuration](file:b79505f9-f114-412a-b791-638c5508ec1d)
+![ClickHouse Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/7cb1f2b37ea07e292bcce47af9c7667b44e4fa45becf4795e0d73ac0d98da03f/content/pages/features/broadcast/broadcast-clickhouse-config.png)
 
 * **Host**: Your ClickHouse HTTP endpoint (e.g., `https://clickhouse.example.com:8123`)
 * **Database**: Target database name (default: `default`)

@@ -17,7 +17,7 @@ Simply include a `user` parameter in your API requests with any string identifie
 
 ```json
 {
-  "model": "openai/gpt-4o",
+  "model": "~openai/gpt-latest",
   "messages": [
     {"role": "user", "content": "Hello, how are you?"}
   ],

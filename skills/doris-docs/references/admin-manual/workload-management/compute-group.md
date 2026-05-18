@@ -1,129 +1,142 @@
 ---
 {
-    "title": "Compute Group",
+    "title": "Compute Group Management: Creation, Authorization, and Scaling",
+    "sidebar_label": "Compute Group",
     "language": "en",
-    "description": "Compute Group is a mechanism for physical isolation between different workloads in a storage-compute separation architecture."
+    "description": "In the storage-compute separation architecture, Compute Group provides physical workload isolation and supports creation, authorization, switching, and elastic scaling.",
+    "keywords": ["Compute Group", "storage-compute separation", "compute cluster", "workload isolation", "elastic scaling", "workload management", "Compute Cluster", "BE management", "default compute group"]
 }
 ---
 
-Compute Group is a mechanism for physical isolation between different workloads in a storage-compute separation architecture. The basic principle of Compute Group is illustrated in the diagram below:
+**Compute Group** (called "Compute Cluster" in versions before 3.0.2) is the mechanism for physically isolating different workloads in the storage-compute separation architecture. One or more BE nodes form a Compute Group, and multiple Compute Groups access the same data through a shared storage layer.
 
-[Compute Group workloads management in a storage-compute separation architecture]
+[compute_group]
 
-- One or more BE nodes can form a Compute Group.
+**Key characteristics**:
 
-- BE nodes are stateless locally, with data stored on shared storage.
+- BE nodes are locally stateless, and data is stored on shared storage.
+- Multiple Compute Groups share the same data without additional replicas.
+- Adding or removing a Compute Group requires no data migration, only cache warm-up at query time.
 
-- Multiple Compute Groups access data through shared storage.
+Compared with Resource Group, Compute Group has the following advantages:
 
-While maintaining the strong isolation benefits like Resource Group, Compute Group offer the following advantages:
+| Dimension | Compute Group | Resource Group |
+|------|--------------|----------------|
+| Storage cost | Data resides in shared storage. The number of Compute Groups is not limited by replica count, and cost does not increase with the number of groups. | Adding replicas means storage cost grows linearly. |
+| Scaling flexibility | Adding a new Compute Group requires only cache warm-up, no data migration. | Adding a replica requires migrating a large amount of data. |
+| Isolation completeness | The shared storage layer guarantees multiple replicas. A BE outage within a single Compute Group does not affect data loading. | A BE outage may cause data loading to fail. |
 
-- Lower costs: Due to the storage-compute separation architecture, data resides in shared storage, so the number of Compute Groups is no longer limited by the number of replicas. Users can create as many Compute Groups as needed without increasing storage costs.
+> **caution**: Note
+In versions before 3.0.2, Compute Group is called Compute Cluster.
 
-- More flexibility: In a storage-compute separation architecture, data on BE nodes is cached, so adding a Compute Group does not require a cumbersome data migration process. The new Compute Group only needs to warm up its cache during queries.
+## View Compute Groups
 
-- Better isolation: Data availability is handled by the shared storage layer, so the failure of a BE node within any Compute Group will not cause data loading failures as it would in a Resource Group.
-
-> **caution**: Caution
-Before 3.0.2, it was called Compute Cluster.
-
-## Viewing All Compute Groups
-
-Use the `SHOW COMPUTE GROUPS` command to view all compute groups in the current repository. The returned results will display different content based on the user's permission level:
-
-- Users with `ADMIN` privileges can view all compute groups
-- Regular users can only view compute groups for which they have usage permissions (USAGE_PRIV)
-- If a user doesn't have usage permissions for any compute groups, an empty result will be returned
+View all Compute Groups under the current warehouse:
 
 ```sql
 SHOW COMPUTE GROUPS;
 ```
 
-## Adding Compute Groups
+## Add a Compute Group
 
-Managing compute groups requires `OPERATOR` privilege, which controls node management permissions. For more details, please refer to [Privilege Management](../../sql-manual/sql-statements/account-management/GRANT-TO). By default, only the root account has the `OPERATOR` privilege, but it can be granted to other accounts using the `GRANT` command.
-To add a BE and assign it to a compute group, use the [Add BE](../../sql-manual/sql-statements/cluster-management/instance-management/ADD-BACKEND) command. For example:
+Use the [ADD BACKEND](../../sql-manual/sql-statements/cluster-management/instance-management/ADD-BACKEND) command to add a BE node and specify the Compute Group it belongs to.
+
+**Specify a Compute Group**:
 
 ```sql
 ALTER SYSTEM ADD BACKEND 'host:9050' PROPERTIES ("tag.compute_group_name" = "new_group");
 ```
 
-The above sql will add `host:9050` to compute group `new_group`. The BE will be added to compute group `default_compute_group` if you omit PROPERTIES statement, for example:
+**Without specifying a Compute Group** (joins `default_compute_group` by default):
 
 ```sql
 ALTER SYSTEM ADD BACKEND 'host:9050';
 ```
 
-## Granting Compute Group Access
-Prerequisite: The current operating user has' ADMIN 'permission, or the current user belongs to the admin role.
+## Manage Compute Group Access Permissions
+
+### Grant access permission
+
+Grant the usage permission of a specified Compute Group to a user:
 
 ```sql
-GRANT USAGE_PRIV ON COMPUTE GROUP {compute_group_name} TO {user}
+GRANT USAGE_PRIV ON COMPUTE GROUP {compute_group_name} TO {user};
 ```
 
-## Revoking Compute Group Access
-Prerequisite: The current operating user has' ADMIN 'permission, or the current user belongs to the admin role.
+### Revoke access permission
+
+Revoke a user's usage permission on a specified Compute Group:
 
 ```sql
-REVOKE USAGE_PRIV ON COMPUTE GROUP {compute_group_name} FROM {user}
+REVOKE USAGE_PRIV ON COMPUTE GROUP {compute_group_name} FROM {user};
 ```
 
-## Setting Default Compute Group 
+## Set the Default Compute Group
 
-To set the default compute group for the current user(This operation requires the current user to already have permission to use the computing group):
+### Set and view the default Compute Group
 
-```sql
-SET PROPERTY 'default_compute_group' = '{clusterName}';
-```
+| Operation | Command | Permission requirement |
+|------|------|---------|
+| Set the default Compute Group for the current user | `SET PROPERTY 'default_compute_group' = '{clusterName}';` | No additional permission required |
+| Set the default Compute Group for another user | `SET PROPERTY FOR {user} 'default_compute_group' = '{clusterName}';` | Requires Admin permission |
+| View the default Compute Group of the current user | `SHOW PROPERTY;` | No additional permission required |
+| View the default Compute Group of another user | `SHOW PROPERTY FOR {user};` | Requires the relevant view permission |
 
-To set the default compute group for other users (this operation requires Admin privileges):
+The value of the `default_compute_group` field in the returned result is the current default Compute Group.
 
-```sql
-SET PROPERTY FOR {user} 'default_compute_group' = '{clusterName}';
-```
+### Permission description
 
-To view the current user's default compute group, the value of `default_compute_group` in the returned result is the default compute group:
+**Admin user** (for example, `CREATE USER jack IDENTIFIED BY '123456' DEFAULT ROLE "admin"`):
 
-```sql
-SHOW PROPERTY;
-```
+- Can set the default Compute Group for themselves and for other users.
+- Can view the `PROPERTY` of themselves and of other users.
 
-To view the default compute group of other users, This operation requires the current user to have admin privileges, and the value of `default_compute_group` in the returned result is the default compute group:
+**Regular user** (for example, `CREATE USER jack1 IDENTIFIED BY '123456'`):
 
-```sql
-SHOW PROPERTY FOR {user};
-```
+- Can only set the default Compute Group for themselves.
+- Can only view their own `PROPERTY`.
+- Cannot execute `SHOW COMPUTE GROUPS` (the operation requires the `GRANT ADMIN` permission).
 
-To view all available compute groups in the current repository:
+### FAQ
 
-```sql
-SHOW COMPUTE GROUPS;
-```
+#### Q: An error occurs when performing data reads or writes**
 
-> **info**: Note
+The current user has not configured a default Compute Group. Execute `use @cluster` to specify the Compute Group for the current session, or use `SET PROPERTY` to set a default value.
 
-- If the current user has an Admin role, for example: `CREATE USER jack IDENTIFIED BY '123456' DEFAULT ROLE "admin"`, then:
-  - They can set the default compute group for themselves and other users;
-  - They can view their own and other users' `PROPERTY`.
-- If the current user does not have an Admin role, for example: `CREATE USER jack1 IDENTIFIED BY '123456'`, then:
-  - They can set the default compute group for themselves;
-  - They can view their own `PROPERTY`;
-  - They cannot view all compute groups, as this operation requires `GRANT ADMIN` privileges.
-- If the current user has not configured a default compute group, the existing system will trigger an error when performing data read/write operations. To resolve this issue, the user can execute the `use @cluster` command to specify the compute group used by the current context, or use the `SET PROPERTY` statement to set the default compute group.
-- If the current user has configured a default compute group, but that cluster is subsequently deleted, an error will also be triggered during data read/write operations. The user can execute the `use @cluster` command to re-specify the compute group used by the current context, or use the `SET PROPERTY` statement to update the default cluster settings.
+#### Q: A default Compute Group has been set, but reads and writes still report errors**
 
-## Switching Compute Groups
+The previously specified Compute Group has been deleted. Execute `use @cluster` to specify it again, or use `SET PROPERTY` to update the default setting.
 
-Users can specify the database and compute group to use in a compute-storage decoupled architecture.
+## Automatic Selection of the Default Compute Group
 
-**Syntax**
+When a user has not explicitly set a default Compute Group, the system automatically selects one that meets the following conditions:
+
+- Has Active BE nodes.
+- The current user has usage permission on it.
+
+Within the same session, the default Compute Group remains unchanged. Across sessions, the following situations cause the system to re-select automatically:
+
+| Trigger condition | Always changes |
+|----------|------------|
+| The user loses usage permission on the previously selected Compute Group | Always changes |
+| A Compute Group is added or removed | Always changes |
+| The previously selected Compute Group no longer has Active BE nodes | May change |
+
+## Switch Compute Groups
+
+In the storage-compute separation architecture, you can specify the database and the Compute Group in the same statement:
 
 ```sql
 USE { [catalog_name.]database_name[@compute_group_name] | @compute_group_name }
 ```
 
-If the database or compute group name contains reserved keywords, the corresponding name must be enclosed in backticks ```.
- 
-## Scaling Compute Groups
+If a database name or Compute Group name contains a reserved keyword, enclose the corresponding name with backticks (`` ` ``).
 
-You can scale compute groups by adding or removing BE using `ALTER SYSTEM ADD BACKEND` and `ALTER SYSTEM DECOMMISION BACKEND`.
+## Compute Group Scaling
+
+Use the addition or removal of BE nodes to elastically scale a Compute Group:
+
+- **Scale out**: `ALTER SYSTEM ADD BACKEND` adds a new BE to the specified Compute Group.
+- **Scale in**: `ALTER SYSTEM DECOMMISSION BACKEND` decommissions a BE from the Compute Group.
+
+For detailed operations, see [Storage-compute separation operations](../../install/choosing-deployment-mode).

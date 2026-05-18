@@ -29,7 +29,7 @@ Codex uses a `config.toml` file, typically located at `~/.codex/config.toml`. Cr
 ```toml
 model_provider = "openrouter"
 model_reasoning_effort = "high"
-model="openai/gpt-5.3-codex"
+model="~openai/gpt-latest"
 
 [model_providers.openrouter]
 name = "openrouter"
@@ -67,7 +67,7 @@ Your requests will now be routed through OpenRouter.
 | Setting                    | Description                                   | Example                                  |
 | -------------------------- | --------------------------------------------- | ---------------------------------------- |
 | `model_provider`           | Provider to use for model requests            | `"openrouter"`                           |
-| `model`                    | OpenRouter model ID                           | `"openai/gpt-5.3-codex"`                 |
+| `model`                    | OpenRouter model ID                           | `"~openai/gpt-latest"`                   |
 | `model_reasoning_effort`   | Reasoning effort level for Codex models       | `"low"`, `"medium"`, `"high"`, `"xhigh"` |
 | `show_raw_agent_reasoning` | Whether to display reasoning tokens in the UI | `true` or `false`                        |
 | `personality`              | Agent personality preset                      | `"pragmatic"`, `"helpful"`, etc.         |
@@ -115,12 +115,12 @@ Track Codex usage in real-time via the [OpenRouter Activity Dashboard](https://o
 
 ### Model Flexibility
 
-Switch between Codex models (e.g., `gpt-5.2-codex`, `gpt-5.3-codex`) or try other OpenRouter models without changing your Codex installation—just update `config.toml`.
+Point `model` at any OpenRouter slug (e.g. `~openai/gpt-latest`, `~anthropic/claude-sonnet-latest`) or a pinned version to switch models without changing your Codex installation—just update `config.toml`.
 
 ## Troubleshooting
 
 * **Auth Errors:** Ensure `OPENROUTER_API_KEY` is set and valid. Check at [openrouter.ai/keys](https://openrouter.ai/keys).
-* **Model Not Found:** Verify the model ID on [openrouter.ai/models](https://openrouter.ai/models). Use the exact format (e.g., `openai/gpt-5.3-codex`).
+* **Model Not Found:** Verify the model ID on [openrouter.ai/models](https://openrouter.ai/models). Use the exact format (e.g., `~openai/gpt-latest`).
 * **Privacy:** OpenRouter does not log your source code prompts unless you opt-in to prompt logging. See our [Privacy Policy](/privacy) for details.
 
 ## Resources

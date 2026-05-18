@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.  
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.  
 ```
 
 1. **Download Codex**  

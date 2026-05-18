@@ -219,7 +219,7 @@ With automatic caching, add `cache_control` at the top level of the request. The
 
 ```json
 {
-  "model": "anthropic/claude-sonnet-4.6",
+  "model": "~anthropic/claude-sonnet-latest",
   "cache_control": { "type": "ephemeral" },
   "messages": [
     {
@@ -240,7 +240,7 @@ Automatic caching with 1-hour TTL:
 
 ```json
 {
-  "model": "anthropic/claude-sonnet-4.6",
+  "model": "~anthropic/claude-sonnet-latest",
   "cache_control": { "type": "ephemeral", "ttl": "1h" },
   "messages": [
     {

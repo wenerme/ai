@@ -81,15 +81,15 @@ Choose how tool calls appear during agent execution. Set `display.toolDisplay` i
 
 **Grouped** — bold action labels with tree-branch output:
 
-![Grouped tool display](file:9270ede7-b4c1-495a-bcec-2f8d48fe8dff)
+![Grouped tool display](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ffc6a75bed6e7af737e21fdd93908ca60bc384a2c99761c61ecbfd365bca2cfb/content/pages/guides/tool-display-grouped.png)
 
 **Emoji** — per-call markers with tool name, arguments, and timing:
 
-![Emoji tool display](file:79c15ec4-4fa9-4ca9-894c-e2003539b8d0)
+![Emoji tool display](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/9c54edb558ae000fae8fcac16696be013e3e83e422b985aff307164e7aa9c1ee/content/pages/guides/tool-display-emoji.png)
 
 **Minimal** — aggregated one-liner summaries:
 
-![Minimal tool display](file:24281e11-0efe-406d-90df-0e396b238765)
+![Minimal tool display](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/67b4c45480c37d0fee1247d2d3e0e50fe6ccdbe116e8bf774b47318bfaade8ed/content/pages/guides/tool-display-minimal.png)
 
 You can also describe a completely custom tool display style and the skill will implement it for you.
 
@@ -106,15 +106,15 @@ Three input styles are available via `display.inputStyle` or `--input`.
 
 **Block** — full-width background input box that adapts to your terminal theme:
 
-![Block input style](file:3e5bf645-8443-4897-9bf7-c4c952dc59ed)
+![Block input style](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/34d02afe904cd002836999f17c8604cdbd285a9d336d371fa7c2c0b6c5f42440/content/pages/guides/input-style-block.png)
 
 **Bordered** — horizontal line frame that works on any terminal:
 
-![Bordered input style](file:9ac24615-1f21-476f-8be4-e71031c6d493)
+![Bordered input style](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/48e27c84cb32a7805f05a060726e848d9f33c7f5feb4068d5ec4cbe61a73e336/content/pages/guides/input-style-bordered.png)
 
 **Plain** — simple readline prompt, no escape sequences:
 
-![Plain input style](file:12fb7d4b-ec1a-43c5-9920-a7b931885e46)
+![Plain input style](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/c6c86308616d92986bca9b2c0cbfe1bf819ceb558f48a9de89d0d3c8f01c7735/content/pages/guides/input-style-plain.png)
 
 You can also describe a completely custom input style and the skill will implement it for you.
 
@@ -131,15 +131,15 @@ Three loader styles shown while waiting for the model response. Set `display.loa
 
 **Gradient** — scrolling color shimmer:
 
-![Gradient loader](file:3b27c7b2-3b3d-4512-9cc5-a3865a1f45c4)
+![Gradient loader](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ffc6a75bed6e7af737e21fdd93908ca60bc384a2c99761c61ecbfd365bca2cfb/content/pages/guides/loader-gradient.png)
 
 **Spinner** — braille dot animation:
 
-![Spinner loader](file:6eefdb5b-7fa0-4630-807b-4d61eb460e77)
+![Spinner loader](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ffc6a75bed6e7af737e21fdd93908ca60bc384a2c99761c61ecbfd365bca2cfb/content/pages/guides/loader-spinner.png)
 
 **Minimal** — trailing dots:
 
-![Minimal loader](file:9cf9a91e-1f46-440d-87e2-06ea834d138f)
+![Minimal loader](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ffc6a75bed6e7af737e21fdd93908ca60bc384a2c99761c61ecbfd365bca2cfb/content/pages/guides/loader-minimal.png)
 
 You can also describe a completely custom loader animation and the skill will implement it for you.
 
@@ -147,7 +147,7 @@ You can also describe a completely custom loader animation and the skill will im
 
 Enable `showBanner` or pass `--banner "Your Agent Name"` to display a custom ASCII art logo on startup. The skill generates block-letter art for your project name using the `█` character, colored and sized to fit a 60-column terminal.
 
-![ASCII banner on startup](file:14a3f8f7-14f1-495f-b561-7ddd267f18ff)
+![ASCII banner on startup](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/8db8219e896387700a03ff3487cd69848a13e858d5026fc75fb5324e4f40c2ca/content/pages/guides/banner.png)
 
 ## Generated project structure
 
@@ -188,10 +188,10 @@ npm start
 Override visual styles at launch:
 
 ```bash
-npm start -- --banner "Acme Bot" --model anthropic/claude-sonnet-4 --input bordered --tool-display emoji
+npm start -- --banner "Acme Bot" --model '~anthropic/claude-sonnet-latest' --input bordered --tool-display emoji
 ```
 
-![Agent TUI running in the terminal](file:64416d52-6d06-4d6c-abb0-6d131d88f2f9)
+![Agent TUI running in the terminal](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/1ad9193b995bc66fa0a8746e2f7a9028234eef3e19d7b5d9a1d6557ec02b2c6d/content/pages/guides/agent-harness-tui.png)
 
 ## Customization options
 
@@ -268,7 +268,7 @@ The skill generates a CLI REPL by default, but you can also ask for:
 
 Here's a demo app built entirely by the agent TUI skill — a GitHub trending repos viewer, scaffolded and running from a single prompt:
 
-![A demo app built by the agent TUI](file:89f7a95c-56a4-48d4-9542-afcdc195737d)
+![A demo app built by the agent TUI](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ce54b0ae0482180b6f6f14f16c860facd71331dccfb7cfb07cb9e27103472ace/content/pages/guides/agent-harness-demo.png)
 
 ## Resources
 

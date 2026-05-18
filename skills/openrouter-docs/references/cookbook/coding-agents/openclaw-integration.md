@@ -63,10 +63,10 @@ Add your OpenRouter API key to your `~/.openclaw/openclaw.json`:
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/anthropic/claude-sonnet-4.5"
+        "primary": "openrouter/~anthropic/claude-sonnet-latest"
       },
       "models": {
-        "openrouter/anthropic/claude-sonnet-4.5": {}
+        "openrouter/~anthropic/claude-sonnet-latest": {}
       }
     }
   }
@@ -89,10 +89,10 @@ Update the `primary` model and add it to the `models` list. Here are some popula
 
 ```json
 "model": {
-  "primary": "openrouter/anthropic/claude-sonnet-4.5"
+  "primary": "openrouter/~anthropic/claude-sonnet-latest"
 },
 "models": {
-  "openrouter/anthropic/claude-sonnet-4.5": {}
+  "openrouter/~anthropic/claude-sonnet-latest": {}
 }
 ```
 
@@ -100,10 +100,10 @@ Update the `primary` model and add it to the `models` list. Here are some popula
 
 ```json
 "model": {
-  "primary": "openrouter/google/gemini-pro-1.5"
+  "primary": "openrouter/~google/gemini-pro-latest"
 },
 "models": {
-  "openrouter/google/gemini-pro-1.5": {}
+  "openrouter/~google/gemini-pro-latest": {}
 }
 ```
 
@@ -122,10 +122,10 @@ Update the `primary` model and add it to the `models` list. Here are some popula
 
 ```json
 "model": {
-  "primary": "openrouter/moonshotai/kimi-k2.5"
+  "primary": "openrouter/~moonshotai/kimi-latest"
 },
 "models": {
-  "openrouter/moonshotai/kimi-k2.5": {}
+  "openrouter/~moonshotai/kimi-latest": {}
 }
 ```
 
@@ -143,11 +143,11 @@ Your agents will now use OpenRouter to route requests to your chosen model.
 
 ## Model Format
 
-OpenClaw uses the format `openrouter/<author>/<slug>` for OpenRouter models. For example:
+OpenClaw uses the format `openrouter/<author>/<slug>` for OpenRouter models (prefix the author with `~` to track the latest version in a family). For example:
 
-* `openrouter/anthropic/claude-sonnet-4.5`
-* `openrouter/google/gemini-pro-1.5`
-* `openrouter/moonshotai/kimi-k2.5`
+* `openrouter/~anthropic/claude-sonnet-latest`
+* `openrouter/~google/gemini-pro-latest`
+* `openrouter/~moonshotai/kimi-latest`
 * `openrouter/openrouter/auto` (Auto router that picks the most cost effective model for your prompt)
 
 You can find the exact format for each model on the [OpenRouter models page](https://openrouter.ai/models).
@@ -161,14 +161,14 @@ OpenClaw supports model fallbacks. If the primary model is unavailable, it will 
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/anthropic/claude-sonnet-4.5",
+        "primary": "openrouter/~anthropic/claude-sonnet-latest",
         "fallbacks": [
-          "openrouter/anthropic/claude-haiku-3.5"
+          "openrouter/~anthropic/claude-haiku-latest"
         ]
       },
       "models": {
-        "openrouter/anthropic/claude-sonnet-4.5": {},
-        "openrouter/anthropic/claude-haiku-3.5": {}
+        "openrouter/~anthropic/claude-sonnet-latest": {},
+        "openrouter/~anthropic/claude-haiku-latest": {}
       }
     }
   }
@@ -209,12 +209,12 @@ You can also combine Auto Model with fallbacks for maximum reliability:
       "model": {
         "primary": "openrouter/openrouter/auto",
         "fallbacks": [
-          "openrouter/anthropic/claude-haiku-3.5"
+          "openrouter/~anthropic/claude-haiku-latest"
         ]
       },
       "models": {
         "openrouter/openrouter/auto": {},
-        "openrouter/anthropic/claude-haiku-3.5": {}
+        "openrouter/~anthropic/claude-haiku-latest": {}
       }
     }
   }
@@ -288,7 +288,7 @@ If a specific model isn't working:
 **Fix:**
 
 1. Verify the model ID is correct on the [OpenRouter models page](https://openrouter.ai/models)
-2. Use the format `openrouter/<author>/<slug>` (e.g., `openrouter/anthropic/claude-sonnet-4.5`)
+2. Use the format `openrouter/<author>/<slug>`, optionally prefixing the author with `~` for the latest version in a family (e.g., `openrouter/~anthropic/claude-sonnet-latest`)
 3. Add the model to `agents.defaults.models` in your config
 
 ## Advanced Configuration
@@ -303,7 +303,7 @@ Configure different models for different messaging channels:
     "agents": {
       "defaults": {
         "model": {
-          "primary": "openrouter/anthropic/claude-haiku-3.5"
+          "primary": "openrouter/~anthropic/claude-haiku-latest"
         }
       }
     }
@@ -312,7 +312,7 @@ Configure different models for different messaging channels:
     "agents": {
       "defaults": {
         "model": {
-          "primary": "openrouter/anthropic/claude-sonnet-4.5"
+          "primary": "openrouter/~anthropic/claude-sonnet-latest"
         }
       }
     }

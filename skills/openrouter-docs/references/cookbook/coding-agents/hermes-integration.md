@@ -34,7 +34,7 @@ hermes config set OPENROUTER_API_KEY sk-or-...
 Then start a chat:
 
 ```bash
-hermes chat --provider openrouter --model anthropic/claude-sonnet-4
+hermes chat --provider openrouter --model '~anthropic/claude-sonnet-latest'
 ```
 
 ## Manual Configuration
@@ -65,7 +65,7 @@ Edit `~/.hermes/config.yaml`:
 ```yaml
 model:
   provider: openrouter
-  default: anthropic/claude-sonnet-4
+  default: ~anthropic/claude-sonnet-latest
 ```
 
 Browse all available models at [openrouter.ai/models](https://openrouter.ai/models).
@@ -81,10 +81,10 @@ Your agent will now route all requests through OpenRouter to your chosen model.
 
 ## Model Format
 
-When using OpenRouter as a provider, Hermes uses the standard OpenRouter model format `<author>/<slug>`:
+When using OpenRouter as a provider, Hermes uses the standard OpenRouter model format `<author>/<slug>` (optionally prefixed with `~` for the latest version in a family):
 
-* `anthropic/claude-sonnet-4`
-* `google/gemini-3-flash-preview`
+* `~anthropic/claude-sonnet-latest`
+* `~google/gemini-flash-latest`
 * `deepseek/deepseek-chat`
 * `openrouter/auto` (auto-routes to an optimal/best-fit model for your prompt)
 
@@ -103,7 +103,7 @@ provider_routing:
   # data_collection: "deny"  # Exclude providers that may store/train on data
 ```
 
-**Shortcuts:** Append `:nitro` to any model name for throughput sorting (e.g., `anthropic/claude-sonnet-4:nitro`), or `:floor` for price sorting.
+**Shortcuts:** Append `:nitro` to any model name for throughput sorting (e.g., `~anthropic/claude-sonnet-latest:nitro`), or `:floor` for price sorting.
 
 For a full breakdown of routing options, see the [Provider Routing docs](/docs/guides/routing/provider-selection).
 
@@ -114,9 +114,9 @@ Configure a chain of backup providers Hermes tries when the primary model fails:
 ```yaml
 fallback_providers:
   - provider: openrouter
-    model: anthropic/claude-sonnet-4
+    model: ~anthropic/claude-sonnet-latest
   - provider: openrouter
-    model: google/gemini-2.5-flash
+    model: ~google/gemini-flash-latest
 ```
 
 This provides an additional layer of reliability. When activated, the fallback swaps the model mid-session without losing your conversation.
@@ -129,13 +129,13 @@ Hermes uses "auxiliary models" for side tasks like context compression, vision a
 auxiliary:
   title:
     provider: openrouter
-    model: google/gemini-2.5-flash
+    model: ~google/gemini-flash-latest
   vision:
     provider: openrouter
-    model: google/gemini-2.5-flash
+    model: ~google/gemini-flash-latest
   compression:
     provider: openrouter
-    model: google/gemini-2.5-flash
+    model: ~google/gemini-flash-latest
 ```
 
 This keeps your main model focused on complex reasoning while cheaper models handle lightweight tasks.
@@ -190,7 +190,7 @@ Hermes can't find your OpenRouter API key.
 **Fix:**
 
 1. Verify the model ID on the [OpenRouter models page](https://openrouter.ai/models)
-2. Use the format `<author>/<slug>` (e.g., `anthropic/claude-sonnet-4`)
+2. Use the format `<author>/<slug>`, optionally prefixed with `~` for the latest version in a family (e.g., `~anthropic/claude-sonnet-latest`)
 3. Ensure the model is available and not deprecated
 
 ### Context length errors

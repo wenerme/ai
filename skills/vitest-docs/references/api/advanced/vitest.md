@@ -7,7 +7,7 @@ title: Vitest API
 Vitest instance requires the current test mode. It can be either:
 
 - `test` when running runtime tests
-- `benchmark` when running benchmarks <Badge type="warning">experimental</Badge>
+- `benchmark` when running benchmarks <Experimental />
 
 > **details**: New in Vitest 4
 Vitest 4 added several new APIs (they are marked with a "4.0.0+" badge) and removed deprecated APIs:
@@ -29,7 +29,7 @@ Vitest 4 added several new APIs (they are marked with a "4.0.0+" badge) and remo
 
 Test mode will only call functions inside `test` or `it`, and throws an error when `bench` is encountered. This mode uses `include` and `exclude` options in the config to find test files.
 
-### benchmark <Badge type="warning">experimental</Badge>
+### benchmark <Experimental /> {#benchmark}
 
 Benchmark mode calls `bench` functions and throws an error, when it encounters `test` or `it`. This mode uses `benchmark.include` and `benchmark.exclude` options in the config to find benchmark files.
 
@@ -43,7 +43,7 @@ The root (or global) config. If projects are defined, they will reference this a
 
 This is a global [`ViteDevServer`](https://vite.dev/guide/api-javascript#vitedevserver).
 
-## state <Badge type="warning">experimental</Badge>
+## state <Experimental /> {#state}
 
 > **warning**: Public `state` is an experimental API (except `vitest.state.getReportedEntity`). Breaking changes might not follow SemVer, please pin Vitest's version when using it.
 
