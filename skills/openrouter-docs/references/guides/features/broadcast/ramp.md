@@ -14,21 +14,21 @@ In Ramp, navigate to your integration settings and generate an API key:
 1. Log in to your Ramp account
 2. Go to **Settings > Integrations** and search for "OpenRouter"
 
-![Search for OpenRouter integration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ccdc62c6816e55cb3c301e2f2ebc35b630862086d73731d4359ea39fad6a2c52/content/pages/features/broadcast/ramp-search-integration.png)
+![Search for OpenRouter integration](file:aa52cf7b-2d10-4faf-b7c2-82e40e030481)
 
 3. Click the **OpenRouter** integration to view the details, then click **Connect**
 
-![OpenRouter integration detail](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/2856fe0d21fbb9636525b0fffbbe78a25ea9c287e7f1d94134cf92f40f7cd874/content/pages/features/broadcast/ramp-integration-detail.png)
+![OpenRouter integration detail](file:f34ce031-1eaa-4ea8-89bf-30d7ad022711)
 
 4. Click **Generate API Key** and copy the token
 
-![Generate API Key](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/643f487dd7d098ec75222115dafde9e5db1fd05123cc03fb3cfa4a8ba8d91868/content/pages/features/broadcast/ramp-generate-api-key.png)
+![Generate API Key](file:c60cbfde-5689-4aaa-85a0-9cb56201bdf4)
 
 ## Step 2: Enable Broadcast in OpenRouter
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+![Enable Broadcast](file:7f3cd5fa-0103-49bc-ba12-07d5199ff215)
 
 ## Step 3: Configure Ramp
 
@@ -38,7 +38,7 @@ Click the edit icon next to **Ramp** and enter:
 * **Base URL** (optional): Default is `https://api.ramp.com/developer/v1/ai-usage/openrouter`. Only change if directed by Ramp
 * **Headers** (optional): Custom HTTP headers as a JSON object to include in requests to Ramp
 
-![Ramp Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/16ee7940ffd833aacb7d95ee09a8a181a2e8cbeff6d8b61336198c47f3020334/content/pages/features/broadcast/broadcast-ramp-config.png)
+![Ramp Configuration](file:969b4f78-aad7-45e7-8ca7-6562e86ace4b)
 
 ## Step 4: Test and save
 
@@ -48,7 +48,7 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 
 Make an API request through OpenRouter and verify that the AI usage data appears in your Ramp dashboard.
 
-![Ramp AI Spend Dashboard](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/281142c61157a8e3494b1e7ed3b4cfa02094ee35045df0268f2f4270c4d58ed6/content/pages/features/broadcast/ramp-ai-spend-dashboard.png)
+![Ramp AI Spend Dashboard](file:10a117c9-7010-4858-8055-4e64fdd4949d)
 
 ## Trace Data
 

@@ -19,7 +19,7 @@ Navigate to [openrouter.ai/chat](https://openrouter.ai/chat) to access the Chat 
 
 Click the **Add Model** button (or press `Cmd+K` / `Ctrl+K`) to open the model selector. Type "free" in the search box to filter for free models.
 
-![Searching for free models in the model selector](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/279ff80044cd9fe63c0bbd22776b2ff5bac6c31578d0110d6bf66ee559d44b92/content/pages/guides/free-models-search.png)
+![Searching for free models in the model selector](file:65fcb932-48e5-4f13-b9c6-ca93a80f4ce4)
 
 You'll see a list of available free models, including the **Free Models Router** option.
 
@@ -27,13 +27,13 @@ You'll see a list of available free models, including the **Free Models Router**
 
 Click on **Free Models Router** to select it. This router will automatically choose a free model for each request based on your needs.
 
-![Free Models Router selected in the chat playground](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/98bfb39b5b0c0e4d907e5be1adf502d7b87d50ca21bf656a28e86a5ea7785752/content/pages/guides/free-router-selected.png)
+![Free Models Router selected in the chat playground](file:8d365bf3-1ad0-480d-b9fe-0ab134376cca)
 
 ### Step 4: Start Chatting
 
 Once selected, you can start sending messages. The Free Models Router will route your request to an appropriate free model, and you'll see which model responded in the chat.
 
-![A response from a free model showing the model name](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/ea10ad8718aa5c1190c32eabe34d6fe7a1c79124771f619c3160e6e6620bd3a4/content/pages/guides/free-router-response.png)
+![A response from a free model showing the model name](file:a63c8392-ee13-426c-a626-a3147aa2b40f)
 
 In this example, the Free Models Router selected Solar Pro 3 (free) to respond to the message.
 

@@ -41,7 +41,7 @@ The base URL should be the OTLP gateway endpoint, not your main Grafana dashboar
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+![Enable Broadcast](file:7f3cd5fa-0103-49bc-ba12-07d5199ff215)
 
 ## Step 3: Configure Grafana Cloud
 
@@ -51,19 +51,19 @@ Click the edit icon next to **Grafana Cloud** and enter:
 * **Instance ID**: Your numeric Grafana Cloud instance ID
 * **API Key**: Your Grafana Cloud API token with write permissions
 
-![Grafana Cloud Configuration](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/fa14bcff103da58aff86580b2b1688d8b3063c8ce569a49e895817879d3ea04b/content/pages/features/broadcast/broadcast-grafana-config.png)
+![Grafana Cloud Configuration](file:e58c29fa-459b-409c-b476-62484695cbb8)
 
 ## Step 4: Test and save
 
 Click **Test Connection** to verify the setup. The configuration only saves if the test passes.
 
-![Grafana Cloud Configured](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/f7f2a36e64d3fd307cc64d9a24df2adefb2d84f966610318aff853369fc75652/content/pages/features/broadcast/broadcast-grafana-configured.png)
+![Grafana Cloud Configured](file:85c3f93c-2517-4ab1-9f54-3957729521b9)
 
 ## Step 5: Send a test trace
 
 Make an API request through OpenRouter and view the trace in Grafana Cloud.
 
-![Grafana Cloud Trace](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/f8e17b78a38b87ffb5b6a8c0adacc196271797dff3486747e84b685eaf5f4715/content/pages/features/broadcast/broadcast-grafana-trace.png)
+![Grafana Cloud Trace](file:7d298328-8633-4153-a9a6-6d8271a6821d)
 
 ## Viewing your traces
 

@@ -23,6 +23,9 @@ npm install @mikro-orm/core @mikro-orm/mariadb
 # for postgresql (works with cockroachdb too)
 npm install @mikro-orm/core @mikro-orm/postgresql
 
+# for pglite (embedded PostgreSQL in WASM)
+npm install @mikro-orm/core @mikro-orm/pglite
+
 # for sqlite
 npm install @mikro-orm/core @mikro-orm/sqlite
 
@@ -76,6 +79,8 @@ const orm = await MikroORM.init({
 If you are experiencing problems with folder-based discovery, try using `mikro-orm debug` CLI command to check what paths are actually being used.
 
 For detailed information about using decorators (legacy and ES spec) and metadata providers, see the [Using Decorators guide](./using-decorators.md). For glob-based entity discovery, see [Folder-based Discovery](./folder-based-discovery.md).
+
+> For larger projects, you can use `npx mikro-orm discovery:export` to auto-generate a barrel file with all your entity imports. See [Folder-based Discovery](./folder-based-discovery.md#generating-a-barrel-file-with-discoveryexport) for details.
 
 ## Synchronous initialization
 

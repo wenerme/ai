@@ -45,6 +45,7 @@ The `core` and driver packages are required, the rest of this list is optional a
 - `@mikro-orm/mysql`
 - `@mikro-orm/mariadb`
 - `@mikro-orm/postgresql`
+- `@mikro-orm/pglite`
 - `@mikro-orm/sqlite`
 - `@mikro-orm/libsql`
 - `@mikro-orm/mssql`
