@@ -60,7 +60,7 @@ parent workflow.
 
 Codex also reapplies the parent turn's live runtime overrides when it spawns a
 child. That includes sandbox and approval choices you set interactively during
-the session, such as `/approvals` changes or `--yolo`, even if the selected
+the session, such as `/permissions` changes or `--yolo`, even if the selected
 custom agent file sets different defaults.
 
 You can also override the sandbox configuration for individual [custom agents](#custom-agents), such as explicitly marking one to work in read-only mode.

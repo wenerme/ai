@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics)[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL) 
-
 # Waiting Room Analytics
 
 Waiting Room Analytics gives you historical insights into the traffic going through your waiting room compared to your waiting room settings. Data is stored for the past 30 days.

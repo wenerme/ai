@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Proxying ](https://developers.cloudflare.com/search/?tags=Proxying) 
-
 # Proxy status
 
 While your [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/) contain information about your domain, the proxy status controls whether HTTP/HTTPS traffic for that record routes through Cloudflare's network or goes directly to your origin server.

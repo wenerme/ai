@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # Connection request details
 
 When forwarding connections to your origin server, Cloudflare will set request parameters according to the following:

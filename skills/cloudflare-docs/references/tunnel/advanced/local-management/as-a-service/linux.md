@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Linux ](https://developers.cloudflare.com/search/?tags=Linux) 
-
 # Linux
 
 You can install `cloudflared` as a system service on Linux.

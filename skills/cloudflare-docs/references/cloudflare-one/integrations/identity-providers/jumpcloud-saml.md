@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SAML ](https://developers.cloudflare.com/search/?tags=SAML)[ SCIM ](https://developers.cloudflare.com/search/?tags=SCIM) 
-
 # JumpCloud (SAML)
 
 [JumpCloud ↗](https://jumpcloud.com/#platform) provides SSO identity management. Cloudflare Access integrates with JumpCloud as a SAML identity provider.

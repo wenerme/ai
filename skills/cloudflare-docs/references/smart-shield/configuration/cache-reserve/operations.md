@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Caching ](https://developers.cloudflare.com/search/?tags=Caching) 
-
 # Cache Reserve operations
 
 Operations are performed by Cache Reserve on behalf of the user to write data from the origin to Cache Reserve and to pass that data downstream to other parts of Cloudflare’s network. These operations are managed internally by Cloudflare.

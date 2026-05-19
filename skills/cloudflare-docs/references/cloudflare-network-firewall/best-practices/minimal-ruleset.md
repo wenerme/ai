@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TCP ](https://developers.cloudflare.com/search/?tags=TCP)[ UDP ](https://developers.cloudflare.com/search/?tags=UDP) 
-
 # Minimal ruleset
 
 The suggested minimal ruleset blocks some known common vectors for DDoS attacks and permits all other ESP, TCP, UDP, GRE and ICMP traffic.

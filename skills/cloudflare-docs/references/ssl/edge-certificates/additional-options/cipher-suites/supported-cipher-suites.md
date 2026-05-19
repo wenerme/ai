@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # Supported cipher suites
 
 Cloudflare supports the following cipher suites by default. If needed, you can [restrict your website or application](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) to only use specific cipher suites.

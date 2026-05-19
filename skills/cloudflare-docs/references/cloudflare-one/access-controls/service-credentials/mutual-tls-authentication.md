@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ mTLS ](https://developers.cloudflare.com/search/?tags=mTLS) 
-
 # Mutual TLS
 
 [Mutual TLS (mTLS) authentication ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) requires both the client and the server to present certificates during the TLS handshake. In the Cloudflare Access implementation, the CA you upload is used to verify the client certificate (server certificate verification is handled by standard TLS). Access mTLS serves two purposes:

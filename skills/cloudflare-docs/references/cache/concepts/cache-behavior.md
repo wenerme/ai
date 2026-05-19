@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies) 
-
 # Head Requests and Set-Cookie Headers
 
 This page describes how Cloudflare's cache system behaves in interaction with:

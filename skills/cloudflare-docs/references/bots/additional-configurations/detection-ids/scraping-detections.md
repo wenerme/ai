@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Scraping ](https://developers.cloudflare.com/search/?tags=Scraping) 
-
 # Scraping detections
 
 Scraping behavioral detection IDs allow you to better protect your website from volumetric scraping attacks by identifying anomalous behavior. The detection IDs below are specifically designed to catch suspicious scraping activity at the zone level.
@@ -29,8 +25,8 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 
 To access scraping detections:
 
-* [  New dashboard ](#tab-panel-4696)
-* [ Old dashboard ](#tab-panel-4697)
+* [  New dashboard ](#tab-panel-4783)
+* [ Old dashboard ](#tab-panel-4784)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

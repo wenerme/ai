@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ ICMP ](https://developers.cloudflare.com/search/?tags=ICMP) 
-
 # Tunnel health checks
 
 Cloudflare continuously monitors whether each tunnel connecting your network to Cloudflare is reachable and performing well. When a tunnel becomes unhealthy, Cloudflare automatically steers traffic to an alternate path — without requiring manual intervention. This monitoring relies on tunnel health check probes.

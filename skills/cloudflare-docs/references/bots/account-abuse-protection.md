@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Account takeover ](https://developers.cloudflare.com/search/?tags=Account%20takeover) 
-
 # Account Abuse Protection (Early Access)
 
 Identify and mitigate attacks on your customer and user accounts.

@@ -12,36 +12,36 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Authenticated Gateway
 
-Using an Authenticated Gateway in AI Gateway adds security by requiring a valid authorization token for each request. This feature is especially useful when storing logs, as it prevents unauthorized access and protects against invalid requests that can inflate log storage usage and make it harder to find the data you need. With Authenticated Gateway enabled, only requests with the correct token are processed.
+AI Gateway requires a valid Cloudflare API token for each request. This prevents unauthorized access and protects against invalid requests that can inflate log storage usage.
+
+When using the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), pass your Cloudflare API token in the standard `Authorization` header. When using [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) at `gateway.ai.cloudflare.com`, use the `cf-aig-authorization` header instead.
 
 Note
 
-We recommend enabling Authenticated Gateway when opting to store logs with AI Gateway.
+The `cf-aig-authorization` header is used with the `gateway.ai.cloudflare.com` endpoints, which continue to work. For new integrations, we recommend using the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) at `api.cloudflare.com`, which uses the standard `Authorization` header.
 
-If Authenticated Gateway is enabled but a request does not include the required `cf-aig-authorization` header, the request will fail. This setting ensures that only verified requests pass through the gateway. To bypass the need for the `cf-aig-authorization` header, make sure to disable Authenticated Gateway.
-
-## Setting up Authenticated Gateway using the Dashboard
+## Setting up Authenticated Gateway using the dashboard
 
 1. Go to the Settings for the specific gateway you want to enable authentication for.
 2. Select **Create authentication token** to generate a custom token with the required `Run` permissions. Be sure to securely save this token, as it will not be displayed again.
-3. Include the `cf-aig-authorization` header with your API token in each request for this gateway.
+3. Include the API token in each request:  
+   * If using the REST API (`/ai/run`), include your Cloudflare API token in the standard `Authorization` header.  
+   * If using [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) at `gateway.ai.cloudflare.com`, use the `cf-aig-authorization` header.
 4. Return to the settings page and toggle on Authenticated Gateway.
 
-## Example requests with OpenAI
+## Example requests
 
 Terminal window
 
 ```
 
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
-  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header 'Authorization: Bearer OPENAI_TOKEN' \
+  --header "Content-Type: application/json" \
 
-  --header 'Content-Type: application/json' \
-
-  --data '{"model": "gpt-5-mini", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'
+  --data '{"model": "openai/gpt-4.1-mini", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'
 
 
 ```
@@ -57,22 +57,25 @@ import OpenAI from "openai";
 
 const openai = new OpenAI({
 
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: CLOUDFLARE_API_TOKEN,
 
-  baseURL: "https://gateway.ai.cloudflare.com/v1/account-id/gateway/openai",
+  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
 
-  defaultHeaders: {
+});
 
-    "cf-aig-authorization": `Bearer {token}`,
 
-  },
+const response = await openai.chat.completions.create({
+
+  model: "openai/gpt-4.1-mini",
+
+  messages: [{ role: "user", content: "What is Cloudflare?" }],
 
 });
 
 
 ```
 
-## Example requests with the Vercel AI SDK
+Using the Vercel AI SDK:
 
 JavaScript
 
@@ -83,13 +86,9 @@ import { createOpenAI } from "@ai-sdk/openai";
 
 const openai = createOpenAI({
 
-  baseURL: "https://gateway.ai.cloudflare.com/v1/account-id/gateway/openai",
+  apiKey: CLOUDFLARE_API_TOKEN,
 
-  headers: {
-
-    "cf-aig-authorization": `Bearer {token}`,
-
-  },
+  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
 
 });
 

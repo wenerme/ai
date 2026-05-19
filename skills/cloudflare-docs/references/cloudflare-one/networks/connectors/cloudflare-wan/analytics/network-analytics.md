@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics) 
-
 # Network analytics
 
 You can access real-time and historical network data in Network Analytics. Explore Cloudflare WAN traffic (in packets or bytes) over time in a time series, and filter the data by different [packet](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) characteristics.

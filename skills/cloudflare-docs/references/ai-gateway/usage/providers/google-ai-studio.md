@@ -35,8 +35,8 @@ So your final URL will come together as: `https://gateway.ai.cloudflare.com/v1/{
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-4157)
-* [ Unauthenticated Gateway ](#tab-panel-4158)
+* [ With Authenticated Gateway ](#tab-panel-4541)
+* [ Unauthenticated Gateway ](#tab-panel-4542)
 
 Terminal window
 
@@ -147,8 +147,8 @@ If you are using the `@google/genai` package, you can set your endpoint like thi
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-4159)
-* [ Unauthenticated Gateway ](#tab-panel-4160)
+* [ With Authenticated Gateway ](#tab-panel-4543)
+* [ Unauthenticated Gateway ](#tab-panel-4544)
 
 ```
 
@@ -256,11 +256,11 @@ console.log(response.text);
 
 ## OpenAI-Compatible Endpoint
 
-You can also use the [OpenAI-compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) (`/ai-gateway/usage/chat-completion/`) to access Google AI Studio models using the OpenAI API schema. To do so, send your requests to:
+You can also access Google AI Studio models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
 ```
 
-https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions
+https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
 
 
 ```

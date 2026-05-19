@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
-
 # Create and manage widgets using Cloudflare API
 
 Use the [Cloudflare API](https://developers.cloudflare.com/api/resources/turnstile/) for programmatic widget management and automation.

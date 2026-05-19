@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Packet captures
 
 Packet captures record network traffic flowing through Cloudflare's network so you can analyze individual packets for troubleshooting or security investigations. The output is contained within one or more files in PCAP format, which you can open in tools like [Wireshark ↗](https://www.wireshark.org/).
@@ -46,8 +42,8 @@ For help determining which data center to select for a packet capture, go to [ht
 
 * `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes (1 GB).
 
-* [ Dashboard ](#tab-panel-4706)
-* [ API ](#tab-panel-4707)
+* [ Dashboard ](#tab-panel-5126)
+* [ API ](#tab-panel-5127)
 
 1. In the Cloudflare dashboard, go to the **Network health** page.  
 [ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
@@ -254,8 +250,8 @@ Sample PCAP example response
 
 ## Check packet capture status
 
-* [ Dashboard ](#tab-panel-4702)
-* [ API ](#tab-panel-4703)
+* [ Dashboard ](#tab-panel-5122)
+* [ API ](#tab-panel-5123)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Go to the **Diagnostics** tab.
@@ -337,8 +333,8 @@ The capture status displays one of the following options:
 
 After your request finishes processing, you can download your packet captures.
 
-* [ Dashboard ](#tab-panel-4704)
-* [ API ](#tab-panel-4705)
+* [ Dashboard ](#tab-panel-5124)
+* [ API ](#tab-panel-5125)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** \> **Diagnostics**.
 2. In **Packet captures**, select **Start a capture**.
@@ -373,8 +369,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 
 ## List packet captures
 
-* [ Dashboard ](#tab-panel-4708)
-* [ API ](#tab-panel-4709)
+* [ Dashboard ](#tab-panel-5128)
+* [ API ](#tab-panel-5129)
 
 1. In the Cloudflare dashboard, go to the **Network health** page.  
 [ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
-
 # Common policies
 
 The following DLP policies are commonly used to secure sensitive data in uploaded and downloaded files. They are built as [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using the [DLP Profile](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector.
@@ -35,8 +31,8 @@ The following example logs any upload or download that matches your enabled [Fin
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-4690)
-* [ API ](#tab-panel-4691)
+* [ Dashboard ](#tab-panel-5110)
+* [ API ](#tab-panel-5111)
 
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |

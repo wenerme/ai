@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # Origin Rules settings
 
 The following sections describe the available settings in Origin Rules.

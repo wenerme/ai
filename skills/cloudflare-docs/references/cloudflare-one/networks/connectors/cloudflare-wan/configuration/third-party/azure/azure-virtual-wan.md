@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Azure ](https://developers.cloudflare.com/search/?tags=Azure) 
-
 # Microsoft Azure Virtual WAN
 
 This tutorial provides information on how to connect Cloudflare WAN (formerly Magic WAN) to a Microsoft Azure Virtual WAN hub.

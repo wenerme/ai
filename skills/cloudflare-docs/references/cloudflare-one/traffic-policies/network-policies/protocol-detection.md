@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSH ](https://developers.cloudflare.com/search/?tags=SSH) 
-
 # Protocol detection
 
 Gateway supports the detection, logging, and filtering of network protocols using packet attributes.

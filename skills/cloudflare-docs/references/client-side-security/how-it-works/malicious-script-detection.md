@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ LLM ](https://developers.cloudflare.com/search/?tags=LLM) 
-
 # Malicious script and connection detection
 
 Note

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Create custom headers for Cloudflare Access-protected origins with Workers
 
 **Last reviewed:**  over 2 years ago 
@@ -37,8 +33,8 @@ Some applications and networking implementations require specific custom headers
 4. Select **Edit code**.
 5. Input the following Worker:
 
-* [  JavaScript ](#tab-panel-5199)
-* [  TypeScript ](#tab-panel-5200)
+* [  JavaScript ](#tab-panel-5619)
+* [  TypeScript ](#tab-panel-5620)
 
 JavaScript
 

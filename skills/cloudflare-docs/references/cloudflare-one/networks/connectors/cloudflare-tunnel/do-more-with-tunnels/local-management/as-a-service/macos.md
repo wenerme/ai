@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MacOS ](https://developers.cloudflare.com/search/?tags=MacOS) 
-
 # macOS
 
 You can install `cloudflared` as a system service on macOS.

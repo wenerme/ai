@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Salesforce ](https://developers.cloudflare.com/search/?tags=Salesforce) 
-
 # Salesforce (OIDC)
 
 **Last reviewed:**  almost 2 years ago 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Private web application
 
 Connect a self-hosted web application to Cloudflare so authorized users can access it from a browser without a VPN. This is useful when you need to give employees or contractors secure access to applications like company intranets, internal wikis, or admin panels.

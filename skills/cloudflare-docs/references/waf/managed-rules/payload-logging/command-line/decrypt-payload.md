@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ CLI ](https://developers.cloudflare.com/search/?tags=CLI)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
-
 # Decrypt the payload content
 
 Use the `matched-data-cli` tool to decrypt a payload in the command line.

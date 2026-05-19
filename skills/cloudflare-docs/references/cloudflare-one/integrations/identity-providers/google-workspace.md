@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Google ](https://developers.cloudflare.com/search/?tags=Google) 
-
 # Google Workspace
 
 Note

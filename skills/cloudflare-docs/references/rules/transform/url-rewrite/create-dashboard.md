@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ URL rewrite ](https://developers.cloudflare.com/search/?tags=URL%20rewrite) 
-
 # Create a URL rewrite rule in the dashboard
 
 Refer to the [Rules examples gallery](https://developers.cloudflare.com/rules/transform/examples/?operation=Rewrite+URL) for examples of rule definitions.

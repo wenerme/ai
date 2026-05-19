@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ OIDC ](https://developers.cloudflare.com/search/?tags=OIDC)[ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
-
 # PingOne
 
 The PingOne cloud platform from PingIdentity provides SSO identity management. Cloudflare Access supports PingOne as an OIDC identity provider.

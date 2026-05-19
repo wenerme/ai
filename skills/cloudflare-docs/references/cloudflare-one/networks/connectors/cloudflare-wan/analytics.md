@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics) 
-
 # Analytics
 
 Use Cloudflare WAN (formerly Magic WAN) analytics to monitor site performance and troubleshoot issues.

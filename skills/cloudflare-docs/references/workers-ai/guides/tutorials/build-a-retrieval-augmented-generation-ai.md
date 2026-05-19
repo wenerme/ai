@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ Hono ](https://developers.cloudflare.com/search/?tags=Hono)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Build a Retrieval Augmented Generation (RAG) AI
 
 **Last reviewed:**  over 1 year ago 
@@ -113,8 +109,8 @@ If you have issues with this step or you do not have access to a browser interfa
 
 This example features the [@cf/meta/llama-3-8b-instruct model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
 
-* [  wrangler.jsonc ](#tab-panel-8438)
-* [  wrangler.toml ](#tab-panel-8439)
+* [  wrangler.jsonc ](#tab-panel-9116)
+* [  wrangler.toml ](#tab-panel-9117)
 
 JSONC
 
@@ -222,8 +218,8 @@ npx wrangler vectorize create vector-index --dimensions=768 --metric=cosine
 
 Then, add the configuration details for your new Vectorize index to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8440)
-* [  wrangler.toml ](#tab-panel-8441)
+* [  wrangler.jsonc ](#tab-panel-9118)
+* [  wrangler.toml ](#tab-panel-9119)
 
 JSONC
 
@@ -280,8 +276,8 @@ npx wrangler d1 create database
 
 Then, paste the configuration details output from the previous command into the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8442)
-* [  wrangler.toml ](#tab-panel-8443)
+* [  wrangler.jsonc ](#tab-panel-9120)
+* [  wrangler.toml ](#tab-panel-9121)
 
 JSONC
 
@@ -353,8 +349,8 @@ Before we begin creating notes, we will introduce a [Cloudflare Workflow](https:
 
 To begin, add a new `[[workflows]]` block to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8444)
-* [  wrangler.toml ](#tab-panel-8445)
+* [  wrangler.jsonc ](#tab-panel-9122)
+* [  wrangler.toml ](#tab-panel-9123)
 
 JSONC
 

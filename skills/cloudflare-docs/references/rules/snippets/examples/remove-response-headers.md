@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification) 
-
 # Remove response headers
 
 Remove from response all headers that start with a certain name.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Python ](https://developers.cloudflare.com/search/?tags=Python)[ Node.js ](https://developers.cloudflare.com/search/?tags=Node.js)[ Docker ](https://developers.cloudflare.com/search/?tags=Docker) 
-
 # Sandbox bridge
 
 **Last reviewed:**  about 1 month ago 
@@ -103,9 +99,9 @@ export SANDBOX_API_KEY=<your-token>
 
 ### Create a sandbox and run a command
 
-* [ curl ](#tab-panel-7899)
-* [ Node.js ](#tab-panel-7900)
-* [ Python ](#tab-panel-7901)
+* [ curl ](#tab-panel-8032)
+* [ Node.js ](#tab-panel-8033)
+* [ Python ](#tab-panel-8034)
 
 Terminal window
 
@@ -290,9 +286,9 @@ httpx.delete(f"{API_URL}/v1/sandbox/{sandbox_id}", headers=headers)
 
 ### Write and read files
 
-* [ curl ](#tab-panel-7902)
-* [ Node.js ](#tab-panel-7903)
-* [ Python ](#tab-panel-7904)
+* [ curl ](#tab-panel-8035)
+* [ Node.js ](#tab-panel-8036)
+* [ Python ](#tab-panel-8037)
 
 Terminal window
 

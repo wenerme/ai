@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation) 
-
 # IP geolocation
 
 IP geolocation adds the [CF-IPCountry header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ipcountry) to all requests to your origin server.
@@ -32,8 +28,8 @@ The recommended procedure to enable IP geolocation information is to [enable the
 
 If you only want the request header for the visitor's country, you can enable **IP Geolocation**.
 
-* [ Dashboard ](#tab-panel-6752)
-* [ API ](#tab-panel-6753)
+* [ Dashboard ](#tab-panel-7218)
+* [ API ](#tab-panel-7219)
 
 To enable **IP Geolocation** in the dashboard:
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Kubernetes ](https://developers.cloudflare.com/search/?tags=Kubernetes) 
-
 # Use Cloudflare Tunnels with Kubernetes client-go credential plugins
 
 **Last reviewed:**  over 1 year ago 

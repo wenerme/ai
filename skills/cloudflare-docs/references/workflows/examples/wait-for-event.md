@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Human-in-the-Loop Image Tagging with waitForEvent
 
 **Last reviewed:**  about 1 year ago 
@@ -49,8 +45,8 @@ The `index.ts` file defines the core logic of the Cloudflare Workflow responsibl
 
 For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
 
-* [  JavaScript ](#tab-panel-10485)
-* [  TypeScript ](#tab-panel-10486)
+* [  JavaScript ](#tab-panel-10835)
+* [  TypeScript ](#tab-panel-10836)
 
 JavaScript
 
@@ -224,8 +220,8 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, WorkflowParams> {
 
 The Workflow configuration is defined in the `wrangler.jsonc` file. This file includes bindings for the R2 bucket, D1 database, Workers AI, and the Workflow itself. Ensure that all necessary bindings and environment variables are correctly set up to match your Cloudflare account and services.
 
-* [  wrangler.jsonc ](#tab-panel-10483)
-* [  wrangler.toml ](#tab-panel-10484)
+* [  wrangler.jsonc ](#tab-panel-10833)
+* [  wrangler.toml ](#tab-panel-10834)
 
 JSONC
 
@@ -241,7 +237,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-04",
+  "compatibility_date": "2026-05-18",
 
   "observability": {
 
@@ -314,7 +310,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-04"
+compatibility_date = "2026-05-18"
 
 
 [observability]

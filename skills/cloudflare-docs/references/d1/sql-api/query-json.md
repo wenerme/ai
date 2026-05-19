@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JSON ](https://developers.cloudflare.com/search/?tags=JSON) 
-
 # Query JSON
 
 D1 has built-in support for querying and parsing JSON data stored within a database. This enables you to:

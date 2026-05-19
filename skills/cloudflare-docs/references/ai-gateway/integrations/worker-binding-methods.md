@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ Bindings ](https://developers.cloudflare.com/search/?tags=Bindings) 
-
 # Workers Bindings
 
 The AI binding (`env.AI`) lets you call AI models and access AI Gateway features directly from your Worker.
@@ -24,8 +20,8 @@ For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](htt
 
 Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-4377)
-* [  wrangler.toml ](#tab-panel-4378)
+* [  wrangler.jsonc ](#tab-panel-4519)
+* [  wrangler.toml ](#tab-panel-4520)
 
 JSONC
 
@@ -65,8 +61,8 @@ Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` 
 
 **Workers AI model:**
 
-* [  JavaScript ](#tab-panel-4379)
-* [  TypeScript ](#tab-panel-4380)
+* [  JavaScript ](#tab-panel-4521)
+* [  TypeScript ](#tab-panel-4522)
 
 JavaScript
 
@@ -128,8 +124,8 @@ const resp = await env.AI.run(
 
 **Third-party model:**
 
-* [  JavaScript ](#tab-panel-4381)
-* [  TypeScript ](#tab-panel-4382)
+* [  JavaScript ](#tab-panel-4523)
+* [  TypeScript ](#tab-panel-4524)
 
 JavaScript
 
@@ -193,7 +189,7 @@ Third-party models require an AI Gateway and use [Unified Billing](https://devel
 
 Note
 
-[BYOK (Bring Your Own Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) is not supported for third-party models called through the AI binding. To use your own provider keys, use the [AI Gateway REST API](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the [chat completions endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) instead.
+[BYOK (Bring Your Own Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) is not supported for third-party models called through the AI binding. To use your own provider keys, use the [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) instead.
 
 Browse available models in the [model catalog](https://developers.cloudflare.com/ai/models/).
 

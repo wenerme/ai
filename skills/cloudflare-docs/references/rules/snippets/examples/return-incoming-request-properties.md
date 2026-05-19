@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Logging ](https://developers.cloudflare.com/search/?tags=Logging)[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification) 
-
 # Return information about the incoming request
 
 Respond with information about the incoming request provided by Cloudflare’s global network.

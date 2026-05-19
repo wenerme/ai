@@ -10,20 +10,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Bulk redirects
 
 **Last reviewed:**  about 4 years ago 
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.
 
-* [  JavaScript ](#tab-panel-8718)
-* [  TypeScript ](#tab-panel-8719)
-* [  Python ](#tab-panel-8720)
-* [  Hono ](#tab-panel-8721)
+* [  JavaScript ](#tab-panel-9404)
+* [  TypeScript ](#tab-panel-9405)
+* [  Python ](#tab-panel-9406)
+* [  Hono ](#tab-panel-9407)
 
 JavaScript
 

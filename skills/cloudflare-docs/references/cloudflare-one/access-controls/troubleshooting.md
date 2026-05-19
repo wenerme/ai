@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ SAML ](https://developers.cloudflare.com/search/?tags=SAML)[ CORS ](https://developers.cloudflare.com/search/?tags=CORS)[ SSH ](https://developers.cloudflare.com/search/?tags=SSH) 
-
 # Troubleshoot Access
 
 Review common troubleshooting scenarios for Cloudflare Access.

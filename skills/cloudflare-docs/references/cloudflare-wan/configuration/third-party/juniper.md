@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ IPsec ](https://developers.cloudflare.com/search/?tags=IPsec) 
-
 # HPE Juniper Networking SRX Series Firewalls
 
 ## Overview

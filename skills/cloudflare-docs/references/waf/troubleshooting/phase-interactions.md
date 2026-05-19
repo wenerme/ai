@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Rule phase interactions
 
 Cloudflare evaluates request processing features in [phases](https://developers.cloudflare.com/ruleset-engine/about/phases/). A rule that appears correct in isolation can behave differently when another product has already modified or terminated the request.

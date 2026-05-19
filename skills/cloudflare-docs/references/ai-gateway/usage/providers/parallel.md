@@ -116,11 +116,11 @@ The [Chat API ↗](https://docs.parallel.ai/chat-api/chat-quickstart) is support
 
 ## OpenAI-Compatible Endpoint
 
-You can also use the [OpenAI-compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) (`/ai-gateway/usage/chat-completion/`) to access Parallel models using the OpenAI API schema. To do so, send your requests to:
+You can also access Parallel models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
 ```
 
-https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions
+https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
 
 
 ```

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
-
 # Apex proxying
 
 Apex proxying allows your customers to use their apex domains (`example.com`) with your SaaS application.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform)[ AWS ](https://developers.cloudflare.com/search/?tags=AWS)[ Azure ](https://developers.cloudflare.com/search/?tags=Azure) 
-
 # Configure Cloud Connector rules using Terraform
 
 You can create Cloud Connector rules using the [Terraform Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest).

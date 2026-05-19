@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # Custom origin server
 
 A **custom origin server** lets you send traffic from one or more custom hostnames to somewhere besides your default proxy fallback, such as:

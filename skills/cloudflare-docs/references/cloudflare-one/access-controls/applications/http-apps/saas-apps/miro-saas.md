@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SAML ](https://developers.cloudflare.com/search/?tags=SAML) 
-
 # Miro
 
 **Last reviewed:**  almost 2 years ago 
@@ -43,8 +39,8 @@ This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/
 
 ## 2\. Add a SAML SSO provider to Miro
 
-* [ business plan ](#tab-panel-4802)
-* [ enterprise plan ](#tab-panel-4803)
+* [ business plan ](#tab-panel-5041)
+* [ enterprise plan ](#tab-panel-5042)
 
 1. In Miro, select your profile picture > **Settings** \> **\*\*Security\*\***.
 2. Turn on **SSO/SAML**.

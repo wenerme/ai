@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Multiple Cron Triggers
 
 **Last reviewed:**  over 4 years ago 
@@ -26,9 +22,9 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8817)
-* [  TypeScript ](#tab-panel-8818)
-* [  Hono ](#tab-panel-8819)
+* [  JavaScript ](#tab-panel-9503)
+* [  TypeScript ](#tab-panel-9504)
+* [  Hono ](#tab-panel-9505)
 
 JavaScript
 

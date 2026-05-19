@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # Application Granular Controls
 
 With Application Granular Controls, you can create [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) to control specific user actions within supported SaaS applications. This allows you to give users access to an application while restricting the actions that they can take within the application.
@@ -32,8 +28,8 @@ To use Application Granular Controls, you must:
 
 To create a Gateway HTTP policy with Application Granular Controls:
 
-* [ Dashboard ](#tab-panel-5138)
-* [ API ](#tab-panel-5139)
+* [ Dashboard ](#tab-panel-5558)
+* [ API ](#tab-panel-5559)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.
@@ -126,17 +122,17 @@ Artificial Intelligence
 
 * ChatGPT
 * Google Gemini
-* Claude
 * Perplexity
+* Claude
 
 File Sharing
 
-* Hightail
-* Dropbox
-* WeTransfer
-* Google Drive
-* ShareFile
 * Box
+* Dropbox
+* Google Drive
+* WeTransfer
+* Hightail
+* ShareFile
 * Smash
 
 ```json

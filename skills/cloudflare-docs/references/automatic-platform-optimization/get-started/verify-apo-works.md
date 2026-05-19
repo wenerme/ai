@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
-
 # Verify APO works
 
 You can check whether or not APO is working by verifying APO headers are present. When APO is working, three headers are present: `CF-Cache-Status`, `cf-apo-via`, `cf-edge-cache`.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TCP ](https://developers.cloudflare.com/search/?tags=TCP) 
-
 # Advanced TCP Protection
 
 Cloudflare's Advanced TCP Protection, powered by [flowtrackd ↗](https://blog.cloudflare.com/announcing-flowtrackd/), is a stateful TCP inspection engine used to detect and mitigate sophisticated out-of-state TCP attacks such as randomized and spoofed ACK floods or SYN and SYN-ACK floods.

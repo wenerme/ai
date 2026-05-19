@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Request modification ](https://developers.cloudflare.com/search/?tags=Request%20modification) 
-
 # Add request header with a static value
 
 Create a request header transform rule to add an `X-Source` HTTP header to the request with a static value (`Cloudflare`).

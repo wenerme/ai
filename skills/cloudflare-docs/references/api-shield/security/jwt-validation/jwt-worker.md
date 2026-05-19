@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JSON web token (JWT) ](https://developers.cloudflare.com/search/?tags=JSON%20web%20token%20%28JWT%29)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Configure the Worker
 
 Use a Worker to automatically keep your identity provider’s latest public key in the JWT validation configuration.

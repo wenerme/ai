@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSH ](https://developers.cloudflare.com/search/?tags=SSH)[ RDP ](https://developers.cloudflare.com/search/?tags=RDP) 
-
 # Network filtering
 
 Secure Web Gateway allows you to apply policies at the network level to control which websites and non-HTTP applications users can access. This is useful when you need to control traffic that is not web browsing — for example, blocking remote desktop connections or restricting file-transfer tools across your organization.
@@ -50,8 +46,8 @@ To verify your device is connected to Cloudflare One:
 3. On your Cloudflare One Client device, open a browser and visit any website. This generates traffic that should appear in the logs.
 4. Determine the **Source IP** for your device (the public-facing address Cloudflare sees for your connection):
 
-* [ Version 2026.2+ ](#tab-panel-5098)
-* [ Version 2026.1 and earlier ](#tab-panel-5099)
+* [ Version 2026.2+ ](#tab-panel-5518)
+* [ Version 2026.1 and earlier ](#tab-panel-5519)
 
 1. Open the Cloudflare One Client.
 2. Go to **Profile**.
@@ -71,8 +67,8 @@ A network policy has two parts: a matcher that selects which traffic to act on (
 
 To create a new network policy:
 
-* [ Dashboard ](#tab-panel-5100)
-* [ API ](#tab-panel-5101)
+* [ Dashboard ](#tab-panel-5520)
+* [ API ](#tab-panel-5521)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **Network** tab, select **Add a network policy**.

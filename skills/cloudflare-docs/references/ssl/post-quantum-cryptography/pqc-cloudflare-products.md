@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Post-quantum ](https://developers.cloudflare.com/search/?tags=Post-quantum) 
-
 # PQC in Cloudflare products
 
 Cloudflare is [targeting 2029 ↗](https://blog.cloudflare.com/post-quantum-roadmap/) to be fully post-quantum secure across its entire product suite.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ OIDC ](https://developers.cloudflare.com/search/?tags=OIDC)[ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
-
 # Centrify
 
 Centrify secures access to infrastructure, DevOps, cloud, and other modern enterprise so you can prevent the number one cause of breaches: privileged access abuse.

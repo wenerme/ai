@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TCP ](https://developers.cloudflare.com/search/?tags=TCP)[ SSH ](https://developers.cloudflare.com/search/?tags=SSH) 
-
 # Arbitrary TCP
 
 Cloudflare Access provides a mechanism for end users to authenticate with their single sign-on (SSO) provider and connect to resources over arbitrary TCP without being on a virtual private network (VPN).

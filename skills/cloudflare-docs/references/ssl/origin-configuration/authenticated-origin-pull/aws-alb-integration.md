@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AWS ](https://developers.cloudflare.com/search/?tags=AWS) 
-
 # AWS integration
 
 This guide will walk you through how to set up [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) authenticated origin pulls to securely connect to an AWS Application Load Balancer using [mutual TLS verify ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html).

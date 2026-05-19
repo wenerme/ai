@@ -522,6 +522,20 @@ Wrapped server map:
 }
 ```
 
+After installation, users can enable or disable a bundled MCP server and tune
+tool approval policy from their Codex config without editing the plugin. Use
+`plugins.<plugin>.mcp_servers.<server>` for plugin-scoped MCP server policy:
+
+```toml
+[plugins."my-plugin".mcp_servers.docs]
+enabled = true
+default_tools_approval_mode = "prompt"
+enabled_tools = ["search"]
+
+[plugins."my-plugin".mcp_servers.docs.tools.search]
+approval_mode = "approve"
+```
+
 Plugin hooks are off by default in this release. When
 `[features].plugin_hooks = true` and your plugin is enabled, Codex can load
 lifecycle hooks from your plugin alongside user, project, and managed hooks.

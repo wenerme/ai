@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication)[ Web Crypto ](https://developers.cloudflare.com/search/?tags=Web%20Crypto)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Auth with headers
 
 **Last reviewed:**  over 5 years ago 
@@ -24,10 +20,10 @@ Caution when using in production
 
 The example code contains a generic header key and value of `X-Custom-PSK` and `mypresharedkey`. To best protect your resources, change the header key and value in the Workers editor before saving your code.
 
-* [  JavaScript ](#tab-panel-8702)
-* [  TypeScript ](#tab-panel-8703)
-* [  Python ](#tab-panel-8704)
-* [  Hono ](#tab-panel-8705)
+* [  JavaScript ](#tab-panel-9388)
+* [  TypeScript ](#tab-panel-9389)
+* [  Python ](#tab-panel-9390)
+* [  Hono ](#tab-panel-9391)
 
 JavaScript
 

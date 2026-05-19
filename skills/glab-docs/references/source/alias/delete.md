@@ -7,8 +7,21 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Delete an alias.
 
+## Synopsis
+
+Delete an alias by name. The deletion is permanent. To restore the
+alias, run `glab alias set` with the original expansion.
+
 ```plaintext
 glab alias delete <alias name> [flags]
+```
+
+## Examples
+
+```console
+# Delete the alias named "mrv"
+glab alias delete mrv
+
 ```
 
 ## Options inherited from parent commands

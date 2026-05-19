@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ QUIC ](https://developers.cloudflare.com/search/?tags=QUIC)[ UDP ](https://developers.cloudflare.com/search/?tags=UDP) 
-
 # HTTP/3 inspection
 
 HTTP/3 uses the QUIC protocol over UDP instead of TCP. Because Gateway's default proxy only handles TCP traffic, HTTP/3 inspection requires turning on the UDP proxy. Without it, HTTP/3 traffic bypasses HTTP inspection. [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) still apply to the underlying UDP traffic.

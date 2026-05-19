@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Security ](https://developers.cloudflare.com/search/?tags=Security) 
-
 # FAQs
 
 ## Do I still need to create "Edge Cache TTL" page rules with "Cache Level: Cache Everything"?

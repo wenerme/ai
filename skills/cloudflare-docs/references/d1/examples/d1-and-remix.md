@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Remix ](https://developers.cloudflare.com/search/?tags=Remix) 
-
 # Query D1 from Remix
 
 **Last reviewed:**  almost 3 years ago 
@@ -37,7 +33,7 @@ The following example shows you how to define a Remix [loader ↗](https://remix
 * Bindings are passed through on the `context.cloudflare.env` parameter passed to a `LoaderFunction`.
 * If you configured a [binding](https://developers.cloudflare.com/pages/functions/bindings/#d1-databases) named `DB`, then you would access [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) methods via `context.cloudflare.env.DB`.
 
-* [  TypeScript ](#tab-panel-5372)
+* [  TypeScript ](#tab-panel-5792)
 
 TypeScript
 

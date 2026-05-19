@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Google ](https://developers.cloudflare.com/search/?tags=Google) 
-
 # PhishNet for Google Workspace
 
 To set up PhishNet with Google Workspace you need admin access to your Google Workspace account.

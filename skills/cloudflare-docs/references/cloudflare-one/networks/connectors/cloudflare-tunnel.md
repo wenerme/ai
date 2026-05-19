@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Video ](https://developers.cloudflare.com/search/?tags=Video)[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Cloudflare Tunnel
 
 Looking to expose public applications?

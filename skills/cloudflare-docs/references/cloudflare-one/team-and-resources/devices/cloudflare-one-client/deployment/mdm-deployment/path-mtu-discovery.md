@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MASQUE ](https://developers.cloudflare.com/search/?tags=MASQUE)[ IPv6 ](https://developers.cloudflare.com/search/?tags=IPv6) 
-
 # Path MTU Discovery (PMTUD)
 
 Feature availability

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Logging ](https://developers.cloudflare.com/search/?tags=Logging)[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification) 
-
 # Debugging logs
 
 Send debugging information in an errored response to a logging service.

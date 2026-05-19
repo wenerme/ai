@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Speed test
 
 Speed tests allow administrators to remotely measure network performance from end-user devices running the [Cloudflare One client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/). Each test runs from the client to Cloudflare's network edge and reports metrics for internet speed, latency, and network quality.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Bindings ](https://developers.cloudflare.com/search/?tags=Bindings) 
-
 # Service bindings
 
 ## About Service bindings
@@ -39,8 +35,8 @@ You add a Service binding by modifying the [Wrangler configuration file](https:/
 
 For example, if you want Worker A to be able to call Worker B — you'd add the following to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for Worker A:
 
-* [  wrangler.jsonc ](#tab-panel-9045)
-* [  wrangler.toml ](#tab-panel-9046)
+* [  wrangler.jsonc ](#tab-panel-9731)
+* [  wrangler.toml ](#tab-panel-9732)
 
 JSONC
 
@@ -92,8 +88,8 @@ Worker A that declares a Service binding to Worker B can call Worker B in two di
 
 This example [extends the WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#the-workerentrypoint-class) to support RPC-based Service bindings. First, create the Worker that you want to communicate with. Let's call this "Worker B". Worker B exposes the public method, `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-9043)
-* [  wrangler.toml ](#tab-panel-9044)
+* [  wrangler.jsonc ](#tab-panel-9729)
+* [  wrangler.toml ](#tab-panel-9730)
 
 JSONC
 
@@ -156,8 +152,8 @@ export default class WorkerB extends WorkerEntrypoint {
 
 Next, create the Worker that will call Worker B. Let's call this "Worker A". Worker A declares a binding to Worker B. This is what gives it permission to call public methods on Worker B.
 
-* [  wrangler.jsonc ](#tab-panel-9047)
-* [  wrangler.toml ](#tab-panel-9048)
+* [  wrangler.jsonc ](#tab-panel-9733)
+* [  wrangler.toml ](#tab-panel-9734)
 
 JSONC
 

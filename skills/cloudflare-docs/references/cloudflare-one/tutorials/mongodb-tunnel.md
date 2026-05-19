@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MongoDB ](https://developers.cloudflare.com/search/?tags=MongoDB)[ SSH ](https://developers.cloudflare.com/search/?tags=SSH)[ Kubernetes ](https://developers.cloudflare.com/search/?tags=Kubernetes) 
-
 # MongoDB SSH
 
 **Last reviewed:**  over 5 years ago 

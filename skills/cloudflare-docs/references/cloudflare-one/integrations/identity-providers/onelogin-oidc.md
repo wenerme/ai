@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ OIDC ](https://developers.cloudflare.com/search/?tags=OIDC)[ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
-
 # OneLogin
 
 OneLogin provides SSO identity management. Cloudflare Access supports OneLogin as an OIDC identity provider.

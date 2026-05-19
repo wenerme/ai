@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform) 
-
 # Terraform configuration examples
 
 The following Terraform configuration examples address common scenarios for managing, configuring, and using WAF content scanning.
@@ -64,8 +60,8 @@ This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-r
 
 To use the [cf.waf.content\_scan.has\_malicious\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.has%5Fmalicious%5Fobj/) field you must [enable content scanning](#enable-waf-content-scanning).
 
-* [ Terraform (v5) ](#tab-panel-8568)
-* [ Terraform (v4) ](#tab-panel-8569)
+* [ Terraform (v5) ](#tab-panel-8995)
+* [ Terraform (v4) ](#tab-panel-8996)
 
 Required API token permissions
 

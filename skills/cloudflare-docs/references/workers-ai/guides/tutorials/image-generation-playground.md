@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # How to Build an Image Generator using Workers AI
 
 **Last reviewed:**  over 1 year ago 

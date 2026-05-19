@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Example mitigation rules
 
 ## Return a custom error when a user asks about violent or hateful content

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Add New AI Models to your Playground (Part 2)
 
 **Last reviewed:**  over 1 year ago 

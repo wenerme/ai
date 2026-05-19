@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ JSON web token (JWT) ](https://developers.cloudflare.com/search/?tags=JSON%20web%20token%20%28JWT%29) 
-
 # External Evaluation rules
 
 With Cloudflare Access, you can create Allow or Block policies which evaluate the user based on custom criteria. This is done by adding an **External Evaluation** rule to your policy. The **External Evaluation** selector requires two values:
@@ -61,8 +57,8 @@ The command will output the binding name and KV namespace ID, for example
    * `[[kv_namespaces]]`: Add the output generated in the previous step.  
    * `<TEAM_NAME>`: your Cloudflare One team name.
 
-* [  wrangler.jsonc ](#tab-panel-4860)
-* [  wrangler.toml ](#tab-panel-4861)
+* [  wrangler.jsonc ](#tab-panel-5099)
+* [  wrangler.toml ](#tab-panel-5100)
 
 JSONC
 
@@ -78,7 +74,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-06",
+  "compatibility_date": "2026-05-18",
 
   "main": "index.js",
 
@@ -119,7 +115,7 @@ workers_dev = true
 
 # Set this to today's date
 
-compatibility_date = "2026-05-06"
+compatibility_date = "2026-05-18"
 
 main = "index.js"
 

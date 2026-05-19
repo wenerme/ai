@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ URL rewrite ](https://developers.cloudflare.com/search/?tags=URL%20rewrite) 
-
 # Rewrite page path for visitors in specific countries
 
 Create two URL rewrite rules (part of Transform Rules) to rewrite the path of the welcome page for visitors in specific countries.

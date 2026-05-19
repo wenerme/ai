@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Use KV API
 
 Interact with persistent storage to retrieve or store information enables for powerful use cases.

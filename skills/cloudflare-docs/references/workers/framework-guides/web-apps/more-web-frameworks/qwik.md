@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack) 
-
 # Qwik
 
 In this guide, you will create a new [Qwik ↗](https://qwik.dev/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).

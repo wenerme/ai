@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
-
 # MX/Inline deployment
 
 With pre-delivery deployment, also known as Inline deployment, Email security evaluates email messages before they reach a user's inbox.

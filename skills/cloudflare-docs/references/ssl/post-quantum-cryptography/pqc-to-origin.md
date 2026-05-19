@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Post-quantum ](https://developers.cloudflare.com/search/?tags=Post-quantum) 
-
 # Post-quantum between Cloudflare and origin servers
 
 As explained in [About PQC](https://developers.cloudflare.com/ssl/post-quantum-cryptography/), Cloudflare has deployed support for hybrid key agreements, which includes both the most common key agreement for TLS 1.3, X25519, and the post-quantum secure ML-KEM.

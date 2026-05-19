@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Dynamic Workers Starter
 
 A [starter template ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers) for deploying a Worker that loads and runs [Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/).
@@ -30,8 +26,8 @@ Use this pattern for AI agents that need to execute a snippet of code to complet
 
 Add a `worker_loaders` binding to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6233)
-* [  wrangler.toml ](#tab-panel-6234)
+* [  wrangler.jsonc ](#tab-panel-6320)
+* [  wrangler.toml ](#tab-panel-6321)
 
 JSONC
 
@@ -72,8 +68,8 @@ In this example:
 * `env.LOADER.load()` creates a one-off dynamic isolate
 * `globalOutbound: null` blocks all outbound network access from the Dynamic Worker
 
-* [  JavaScript ](#tab-panel-6235)
-* [  TypeScript ](#tab-panel-6236)
+* [  JavaScript ](#tab-panel-6322)
+* [  TypeScript ](#tab-panel-6323)
 
 JavaScript
 

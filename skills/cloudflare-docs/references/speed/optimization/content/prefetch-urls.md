@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Caching ](https://developers.cloudflare.com/search/?tags=Caching) 
-
 # Prefetch URLs
 
 URL prefetching means that Cloudflare pre-populates the cache with content a visitor is likely to request next. This setting — when combined with [additional setup](#setup) — leads to a higher cache hit rate and thus a faster experience for the user.
@@ -34,8 +30,8 @@ For Cloudflare to start prefetching URLs, you will need to [enable the feature](
 
 ### Enable Prefetch URLs
 
-* [ Dashboard ](#tab-panel-7880)
-* [ API ](#tab-panel-7881)
+* [ Dashboard ](#tab-panel-8361)
+* [ API ](#tab-panel-8362)
 
 To enable **Prefetch URLs** in the dashboard:
 

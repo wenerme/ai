@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Hono ](https://developers.cloudflare.com/search/?tags=Hono) 
-
 # Query D1 from Hono
 
 **Last reviewed:**  almost 3 years ago 
@@ -36,8 +32,8 @@ If you are using [Pages Functions](https://developers.cloudflare.com/pages/funct
 
 The following examples show how to access a D1 database bound to `DB` from both a Workers script and a Pages Function:
 
-* [ workers ](#tab-panel-5370)
-* [ pages ](#tab-panel-5371)
+* [ workers ](#tab-panel-5790)
+* [ pages ](#tab-panel-5791)
 
 TypeScript
 

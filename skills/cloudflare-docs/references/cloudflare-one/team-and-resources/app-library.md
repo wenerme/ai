@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Application Library
 
 The Application Library allows users to manage their SaaS applications in Cloudflare One by consolidating views across all relevant products: [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and [Cloud Access Security Broker (CASB)](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/). The App Library provides visibility and control for available applications, as well as the ability to view categorized hostnames and manage configuration for Access for SaaS and Gateway policies. For example, you can use the App Library to review how Gateway uses specific hostnames to match against application traffic.

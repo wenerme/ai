@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
-
 # Cloudflare Gateway
 
 [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), our comprehensive Secure Web Gateway, allows you to set up policies to inspect DNS, network, HTTP, and egress traffic.

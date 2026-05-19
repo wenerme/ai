@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ Shell ](https://developers.cloudflare.com/search/?tags=Shell) 
-
 # Query Magic Transit tunnel health check results with GraphQL
 
 This example uses the GraphQL Analytics API to query Magic Transit tunnel health check results. These results are aggregated from individual health checks that Cloudflare servers perform against the tunnels you configured in your account. You can query up to one week of data for dates up to three months in the past.

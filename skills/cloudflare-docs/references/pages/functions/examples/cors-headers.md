@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
-
 # Adding CORS headers
 
 A Pages Functions for appending CORS headers.

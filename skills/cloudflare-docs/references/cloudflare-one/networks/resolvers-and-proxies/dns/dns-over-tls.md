@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # DNS over TLS (DoT)
 
 By default, DNS is sent over a plaintext connection. DNS over TLS (DoT) is a standard for encrypting DNS queries to keep them secure and private. DoT uses the same security protocol, TLS, that HTTPS websites use to encrypt and authenticate communications.

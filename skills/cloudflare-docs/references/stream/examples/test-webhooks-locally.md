@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Test webhooks locally
 
 Test Cloudflare Stream webhook notifications locally using a Cloudflare Worker and Cloudflare Tunnel.

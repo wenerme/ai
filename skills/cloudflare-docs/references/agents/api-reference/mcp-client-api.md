@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
-
 # McpClient
 
 Connect your agent to external [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) servers to use their tools, resources, and prompts. This enables your agent to interact with GitHub, Slack, databases, and other services through a standardized protocol.
@@ -33,8 +29,8 @@ This page covers connecting to MCP servers as a client. To create your own MCP s
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-3546)
-* [  TypeScript ](#tab-panel-3547)
+* [  JavaScript ](#tab-panel-3612)
+* [  TypeScript ](#tab-panel-3613)
 
 JavaScript
 
@@ -136,8 +132,8 @@ Connections persist in the agent's [SQL storage](https://developers.cloudflare.c
 
 Use `addMcpServer()` to connect to an MCP server. For non-OAuth servers, no options are needed:
 
-* [  JavaScript ](#tab-panel-3542)
-* [  TypeScript ](#tab-panel-3543)
+* [  JavaScript ](#tab-panel-3608)
+* [  TypeScript ](#tab-panel-3609)
 
 JavaScript
 
@@ -187,8 +183,8 @@ await this.addMcpServer("github", "https://mcp.github.com/mcp", {
 
 MCP supports multiple transport types:
 
-* [  JavaScript ](#tab-panel-3540)
-* [  TypeScript ](#tab-panel-3541)
+* [  JavaScript ](#tab-panel-3606)
+* [  TypeScript ](#tab-panel-3607)
 
 JavaScript
 
@@ -234,8 +230,8 @@ await this.addMcpServer("server", "https://mcp.example.com/mcp", {
 
 For servers behind authentication (like Cloudflare Access) or using bearer tokens:
 
-* [  JavaScript ](#tab-panel-3544)
-* [  TypeScript ](#tab-panel-3545)
+* [  JavaScript ](#tab-panel-3610)
+* [  TypeScript ](#tab-panel-3611)
 
 JavaScript
 
@@ -331,8 +327,8 @@ sequenceDiagram
 
 ### Handling OAuth in your agent
 
-* [  JavaScript ](#tab-panel-3548)
-* [  TypeScript ](#tab-panel-3549)
+* [  JavaScript ](#tab-panel-3614)
+* [  TypeScript ](#tab-panel-3615)
 
 JavaScript
 
@@ -423,8 +419,8 @@ OAuth tokens are securely stored in SQLite, and persist across agent restarts.
 
 When using `sendIdentityOnConnect: false` to hide sensitive instance names (like session IDs or user IDs), the default OAuth callback URL would expose the instance name. To prevent this security issue, you must provide a custom `callbackPath`.
 
-* [  JavaScript ](#tab-panel-3572)
-* [  TypeScript ](#tab-panel-3573)
+* [  JavaScript ](#tab-panel-3638)
+* [  TypeScript ](#tab-panel-3639)
 
 JavaScript
 
@@ -608,8 +604,8 @@ OAuth callbacks are matched by the `state` query parameter (format: `{serverId}:
 
 Configure how OAuth completion is handled. By default, successful authentication redirects to your application origin, while failed authentication displays an HTML error page.
 
-* [  JavaScript ](#tab-panel-3560)
-* [  TypeScript ](#tab-panel-3561)
+* [  JavaScript ](#tab-panel-3626)
+* [  TypeScript ](#tab-panel-3627)
 
 JavaScript
 
@@ -703,8 +699,8 @@ Once connected, access the server's capabilities:
 
 ### Getting available tools
 
-* [  JavaScript ](#tab-panel-3550)
-* [  TypeScript ](#tab-panel-3551)
+* [  JavaScript ](#tab-panel-3616)
+* [  TypeScript ](#tab-panel-3617)
 
 JavaScript
 
@@ -756,8 +752,8 @@ for (const tool of state.tools) {
 
 ### Resources and prompts
 
-* [  JavaScript ](#tab-panel-3556)
-* [  TypeScript ](#tab-panel-3557)
+* [  JavaScript ](#tab-panel-3622)
+* [  TypeScript ](#tab-panel-3623)
 
 JavaScript
 
@@ -815,8 +811,8 @@ for (const prompt of state.prompts) {
 
 ### Server status
 
-* [  JavaScript ](#tab-panel-3554)
-* [  TypeScript ](#tab-panel-3555)
+* [  JavaScript ](#tab-panel-3620)
+* [  TypeScript ](#tab-panel-3621)
 
 JavaScript
 
@@ -858,8 +854,8 @@ for (const [id, server] of Object.entries(state.servers)) {
 
 To use MCP tools with the AI SDK, use `this.mcp.getAITools()` which converts MCP tools to AI SDK format:
 
-* [  JavaScript ](#tab-panel-3562)
-* [  TypeScript ](#tab-panel-3563)
+* [  JavaScript ](#tab-panel-3628)
+* [  TypeScript ](#tab-panel-3629)
 
 JavaScript
 
@@ -939,8 +935,8 @@ Note
 
 ### Removing a server
 
-* [  JavaScript ](#tab-panel-3552)
-* [  TypeScript ](#tab-panel-3553)
+* [  JavaScript ](#tab-panel-3618)
+* [  TypeScript ](#tab-panel-3619)
 
 JavaScript
 
@@ -972,8 +968,8 @@ MCP servers persist across agent restarts:
 
 ### Listing all servers
 
-* [  JavaScript ](#tab-panel-3558)
-* [  TypeScript ](#tab-panel-3559)
+* [  JavaScript ](#tab-panel-3624)
+* [  TypeScript ](#tab-panel-3625)
 
 JavaScript
 
@@ -1011,8 +1007,8 @@ for (const [id, server] of Object.entries(state.servers)) {
 
 Connected clients receive real-time MCP updates via WebSocket:
 
-* [  JavaScript ](#tab-panel-3578)
-* [  TypeScript ](#tab-panel-3579)
+* [  JavaScript ](#tab-panel-3644)
+* [  TypeScript ](#tab-panel-3645)
 
 JavaScript
 
@@ -1398,8 +1394,8 @@ If OAuth fails, the connection state becomes `"failed"` and the error message is
 
 Configure in `onStart()` before any OAuth flows begin:
 
-* [  JavaScript ](#tab-panel-3568)
-* [  TypeScript ](#tab-panel-3569)
+* [  JavaScript ](#tab-panel-3634)
+* [  TypeScript ](#tab-panel-3635)
 
 JavaScript
 
@@ -1491,8 +1487,8 @@ Override the default OAuth provider used when connecting to MCP servers by imple
 
 The override is used for both new connections (`addMcpServer`) and restored connections after a Durable Object restart.
 
-* [  JavaScript ](#tab-panel-3574)
-* [  TypeScript ](#tab-panel-3575)
+* [  JavaScript ](#tab-panel-3640)
+* [  TypeScript ](#tab-panel-3641)
 
 JavaScript
 
@@ -1614,8 +1610,8 @@ If you do not override this method, the agent uses the default provider which pe
 
 To keep the built-in OAuth logic (CSRF state, PKCE, nonce generation, token management) but route token storage to a different backend, import `DurableObjectOAuthClientProvider` and pass your own storage adapter:
 
-* [  JavaScript ](#tab-panel-3564)
-* [  TypeScript ](#tab-panel-3565)
+* [  JavaScript ](#tab-panel-3630)
+* [  TypeScript ](#tab-panel-3631)
 
 JavaScript
 
@@ -1681,8 +1677,8 @@ For fine-grained control, use `this.mcp` directly:
 
 ### Step-by-step connection
 
-* [  JavaScript ](#tab-panel-3580)
-* [  TypeScript ](#tab-panel-3581)
+* [  JavaScript ](#tab-panel-3646)
+* [  TypeScript ](#tab-panel-3647)
 
 JavaScript
 
@@ -1810,8 +1806,8 @@ if (connectResult.state === "connected") {
 
 ### Event subscription
 
-* [  JavaScript ](#tab-panel-3566)
-* [  TypeScript ](#tab-panel-3567)
+* [  JavaScript ](#tab-panel-3632)
+* [  TypeScript ](#tab-panel-3633)
 
 JavaScript
 
@@ -2013,8 +2009,8 @@ Tools are automatically namespaced by server ID to prevent conflicts when multip
 
 Pass an `MCPServerFilter` to scope the returned tools to a subset of connected servers:
 
-* [  JavaScript ](#tab-panel-3570)
-* [  TypeScript ](#tab-panel-3571)
+* [  JavaScript ](#tab-panel-3636)
+* [  TypeScript ](#tab-panel-3637)
 
 JavaScript
 
@@ -2096,8 +2092,8 @@ All specified filter criteria are AND'd together. The same filter parameter is a
 
 Use error detection utilities to handle connection errors:
 
-* [  JavaScript ](#tab-panel-3576)
-* [  TypeScript ](#tab-panel-3577)
+* [  JavaScript ](#tab-panel-3642)
+* [  TypeScript ](#tab-panel-3643)
 
 JavaScript
 

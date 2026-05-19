@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSH ](https://developers.cloudflare.com/search/?tags=SSH) 
-
 # SSH proxy and command logs (legacy)
 
 Legacy feature — not recommended for new deployments
@@ -150,8 +146,8 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Gateway SSH proxy CA and get its public key:
 
-* [ Dashboard ](#tab-panel-5176)
-* [ API ](#tab-panel-5177)
+* [ Dashboard ](#tab-panel-5596)
+* [ API ](#tab-panel-5597)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
@@ -266,8 +262,8 @@ cat /etc/ssh/sshd_config
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-5174)
-* [ CentOS/RHEL ](#tab-panel-5175)
+* [ Debian/Ubuntu ](#tab-panel-5594)
+* [ CentOS/RHEL ](#tab-panel-5595)
 
 For Debian/Ubuntu:
 

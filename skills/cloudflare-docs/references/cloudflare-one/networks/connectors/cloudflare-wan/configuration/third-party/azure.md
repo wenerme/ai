@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Azure ](https://developers.cloudflare.com/search/?tags=Azure) 
-
 # Microsoft Azure
 
 Microsoft Azure integration guides currently available:

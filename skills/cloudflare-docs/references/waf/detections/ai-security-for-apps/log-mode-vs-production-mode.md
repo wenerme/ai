@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Log mode versus production mode
 
 AI Security for Apps can operate in two distinct modes. Understanding the trade-offs between them helps you choose the right approach for your stage of deployment.
@@ -63,8 +59,8 @@ In log mode:
 
 ### Enable log mode
 
-* [ Dashboard ](#tab-panel-8301)
-* [ API ](#tab-panel-8302)
+* [ Dashboard ](#tab-panel-8973)
+* [ API ](#tab-panel-8974)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

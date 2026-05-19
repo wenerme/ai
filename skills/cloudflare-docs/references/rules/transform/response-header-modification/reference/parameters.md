@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification) 
-
 # API parameter reference
 
 To set an HTTP response header, overwriting any headers with the same name, use the following parameters in the `action_parameters` field:

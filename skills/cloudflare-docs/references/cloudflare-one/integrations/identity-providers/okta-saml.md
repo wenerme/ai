@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Okta ](https://developers.cloudflare.com/search/?tags=Okta)[ SAML ](https://developers.cloudflare.com/search/?tags=SAML) 
-
 # Okta (SAML)
 
 Cloudflare One can integrate SAML with Okta as an identity provider.

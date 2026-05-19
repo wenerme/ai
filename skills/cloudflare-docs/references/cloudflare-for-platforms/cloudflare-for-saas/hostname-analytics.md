@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics)[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL) 
-
 # Analytics
 
 You can use custom hostname analytics for two general purposes: exploring how your customers use your product and sharing the benefits provided by Cloudflare with your customers.

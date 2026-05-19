@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # Compliance standards
 
 Consider the following recommendations on custom [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/) for when your organization needs to comply with regulatory standards.

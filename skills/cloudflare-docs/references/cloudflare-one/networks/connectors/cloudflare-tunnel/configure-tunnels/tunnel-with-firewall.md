@@ -11,10 +11,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ QUIC ](https://developers.cloudflare.com/search/?tags=QUIC)[ PowerShell ](https://developers.cloudflare.com/search/?tags=PowerShell)[ Linux ](https://developers.cloudflare.com/search/?tags=Linux) 
-
 # Tunnel with firewall
 
 You can implement a positive security model with Cloudflare Tunnel by blocking all ingress traffic and allowing only egress traffic from `cloudflared`. Only the services specified in your tunnel configuration will be exposed to the outside world.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ URL rewrite ](https://developers.cloudflare.com/search/?tags=URL%20rewrite) 
-
 # Change origin and modify paths
 
 Reroute a request to a different origin and modify the URL path.

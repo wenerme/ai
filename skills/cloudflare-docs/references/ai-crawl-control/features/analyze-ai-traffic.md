@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Analyze AI traffic
 
 AI Crawl Control metrics provide you with insight on how AI crawlers are interacting with your website ([Cloudflare zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones)).

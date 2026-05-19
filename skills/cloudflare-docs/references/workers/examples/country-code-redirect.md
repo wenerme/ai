@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Country code redirect
 
 **Last reviewed:**  over 5 years ago 
@@ -26,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8753)
-* [  TypeScript ](#tab-panel-8754)
-* [  Python ](#tab-panel-8755)
-* [  Hono ](#tab-panel-8756)
+* [  JavaScript ](#tab-panel-9439)
+* [  TypeScript ](#tab-panel-9440)
+* [  Python ](#tab-panel-9441)
+* [  Hono ](#tab-panel-9442)
 
 JavaScript
 

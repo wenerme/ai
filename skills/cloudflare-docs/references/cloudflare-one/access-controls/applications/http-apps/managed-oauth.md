@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication)[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
-
 # Managed OAuth
 
 When you protect an application with Cloudflare Access, by default non-browser clients — such as CLIs, AI agents, SDKs, and scripts — cannot complete the browser-based login redirect. They receive a `302` redirect with no usable token or authorization endpoint.
@@ -31,8 +27,8 @@ If you run your own OAuth server behind an Access application and rely on your o
 
 ## Enable managed OAuth on a self-hosted application
 
-* [ Dashboard ](#tab-panel-4796)
-* [ API ](#tab-panel-4797)
+* [ Dashboard ](#tab-panel-5035)
+* [ API ](#tab-panel-5036)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the application you want to configure, then select the three dots on the right > **Edit**.
@@ -73,8 +69,8 @@ To test, open an RFC 8707-compliant OAuth client and make a request to your appl
 
 Managed OAuth is available on [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) and is the mechanism that allows MCP clients to authenticate users through the portal without a browser cookie flow.
 
-* [ Dashboard ](#tab-panel-4798)
-* [ API ](#tab-panel-4799)
+* [ Dashboard ](#tab-panel-5037)
+* [ API ](#tab-panel-5038)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots on the right > **Edit**.
@@ -113,8 +109,8 @@ To test, open an MCP client and [connect to the MCP portal](https://developers.c
 
 ## Managed OAuth settings
 
-* [ Dashboard ](#tab-panel-4800)
-* [ API ](#tab-panel-4801)
+* [ Dashboard ](#tab-panel-5039)
+* [ API ](#tab-panel-5040)
 
 Configure these settings in the **Advanced settings** tab of your [self-hosted app](#enable-managed-oauth-on-a-self-hosted-application) or [MCP server portal](#enable-managed-oauth-on-an-mcp-server-portal).
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ RDP ](https://developers.cloudflare.com/search/?tags=RDP) 
-
 # Connect to RDP in a browser
 
 Users can connect to an RDP server without installing an RDP client or the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on their device. Browser-based RDP leverages [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), which creates a secure, outbound-only connection from your RDP server to Cloudflare's global network. Setup involves running the `cloudflared` daemon on the RDP server (or any other host machine within the private network) and routing RDP traffic over a public hostname.
@@ -43,9 +39,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-4984)
-* [ API ](#tab-panel-4985)
-* [ Terraform ](#tab-panel-4986)
+* [ Dashboard ](#tab-panel-5223)
+* [ API ](#tab-panel-5224)
+* [ Terraform ](#tab-panel-5225)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -272,9 +268,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-4981)
-* [ API ](#tab-panel-4982)
-* [ Terraform ](#tab-panel-4983)
+* [ Dashboard ](#tab-panel-5220)
+* [ API ](#tab-panel-5221)
+* [ Terraform ](#tab-panel-5222)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.

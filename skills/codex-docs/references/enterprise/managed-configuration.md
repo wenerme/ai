@@ -76,7 +76,7 @@ allowed_sandbox_modes = ["read-only", "workspace-write"]
 
 Use `[[remote_sandbox_config]]` when one managed policy should apply different
 sandbox requirements on different hosts. For example, you can keep a stricter
-default for laptops while allowing workspace writes on matching devboxes or CI
+default for laptops while allowing workspace writes on matching dev boxes or CI
 runners. Host-specific entries currently override `allowed_sandbox_modes` only:
 
 ```toml
@@ -94,7 +94,7 @@ sequence of characters, and `?` matches one character.
 
 The first matching `[[remote_sandbox_config]]` entry wins within the same
 requirements source. If no entry matches, Codex keeps the top-level
-`allowed_sandbox_modes`. Hostname matching is for policy selection only; don't
+`allowed_sandbox_modes`. Host name matching is for policy selection only; don't
 treat it as authenticated device proof.
 
 You can also constrain web search mode:
@@ -105,6 +105,37 @@ allowed_web_search_modes = ["cached"] # "disabled" remains implicitly allowed
 
 `allowed_web_search_modes = []` allows only `"disabled"`.
 For example, `allowed_web_search_modes = ["cached"]` prevents live web search even in `danger-full-access` sessions.
+
+### Configure network access requirements
+
+Use `[experimental_network]` in `requirements.toml` when administrators should
+define network access requirements centrally. These requirements are separate
+from the user `features.network_proxy` toggle: they can configure sandboxed
+networking without that feature flag, but they do not grant command network
+access when the active sandbox keeps networking off.
+
+```toml
+experimental_network.enabled = true
+experimental_network.dangerously_allow_all_unix_sockets = true
+experimental_network.allow_local_binding = true
+experimental_network.allowed_domains = [
+  "api.openai.com",
+  "*.example.com",
+]
+experimental_network.denied_domains = [
+  "blocked.example.com",
+  "*.exfil.example.com",
+]
+```
+
+Use `experimental_network.managed_allowed_domains_only = true` only when you
+also define administrator-owned `allowed_domains` and want that allowlist to be
+exclusive. If it is `true` without managed allow rules, user-added domain allow
+rules do not remain effective.
+
+The domain syntax, local/private destination rules, deny-over-allow behavior,
+and DNS rebinding limitations are the same as the sandboxed networking behavior
+described in [Agent approvals & security](https://developers.openai.com/codex/agent-approvals-security#network-isolation).
 
 ### Pin feature flags
 
@@ -129,7 +160,7 @@ Use the canonical feature keys from `config.toml`'s `[features]` table. Codex no
 - `in_app_browser = false` disables the in-app browser pane.
 - `browser_use = false` disables Browser Use and Browser Agent availability.
 - `computer_use = false` disables Computer Use availability and related
-  install or enablement flows.
+  install or setup flows.
 
 If omitted, these features are allowed by policy, subject to normal client,
 platform, and rollout availability.

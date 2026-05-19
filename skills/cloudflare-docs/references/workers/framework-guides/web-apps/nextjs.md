@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack) 
-
 # Next.js
 
 **Start from CLI** \- scaffold a Next.js project on Workers.
@@ -205,8 +201,8 @@ bun add -d wrangler@latest
 ```
 3. **Add a Wrangler configuration file**  
 In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-8909)  
-   * [  wrangler.toml ](#tab-panel-8910)  
+   * [  wrangler.jsonc ](#tab-panel-9595)  
+   * [  wrangler.toml ](#tab-panel-9596)  
 JSONC  
 ```  
 {  
@@ -214,7 +210,7 @@ JSONC
   "main": ".open-next/worker.js",  
   "name": "my-app",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-29",  
+  "compatibility_date": "2026-05-18",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -230,7 +226,7 @@ TOML
 main = ".open-next/worker.js"  
 name = "my-app"  
 # Set this to today's date  
-compatibility_date = "2026-04-29"  
+compatibility_date = "2026-05-18"  
 compatibility_flags = [ "nodejs_compat" ]  
 [assets]  
 directory = ".open-next/assets"  

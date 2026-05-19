@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation) 
-
 # Geo
 
 **Geo steering** directs traffic to pools tied to specific countries, regions, or — for Enterprise customers only — data centers.
@@ -36,8 +32,8 @@ Warning
 
 If you add a pool to a region, you cannot [delete this pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#delete-a-pool) until you remove it from the **Geo steering** configuration. The configuration is **not** automatically removed when you change to a different **Traffic Steering** method.
 
-* [ Dashboard ](#tab-panel-6715)
-* [ API ](#tab-panel-6716)
+* [ Dashboard ](#tab-panel-7183)
+* [ API ](#tab-panel-7184)
 
 When [creating or editing a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/):
 
@@ -116,8 +112,8 @@ If you only define `WNAM`, then traffic from the East Coast will be routed to th
 
 ### Country steering
 
-* [ Dashboard ](#tab-panel-6717)
-* [ API ](#tab-panel-6718)
+* [ Dashboard ](#tab-panel-7185)
+* [ API ](#tab-panel-7186)
 
 When [creating or editing a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/):
 

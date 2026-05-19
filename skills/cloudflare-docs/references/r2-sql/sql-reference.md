@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SQL ](https://developers.cloudflare.com/search/?tags=SQL) 
-
 # SQL reference
 
 Note

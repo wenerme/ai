@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
-
 # Securing MCP servers
 
 MCP servers, like any web application, need to be secured so they can be used by trusted users without abuse. The MCP specification uses OAuth 2.1 for authentication between MCP clients and servers.
@@ -24,8 +20,8 @@ This guide covers security best practices for MCP servers that act as OAuth prox
 
 Cloudflare's [workers-oauth-provider ↗](https://github.com/cloudflare/workers-oauth-provider) handles token management, client registration, and access token validation:
 
-* [  JavaScript ](#tab-panel-4030)
-* [  TypeScript ](#tab-panel-4031)
+* [  JavaScript ](#tab-panel-4412)
+* [  TypeScript ](#tab-panel-4413)
 
 JavaScript
 
@@ -91,8 +87,8 @@ When your MCP server proxies to third-party OAuth providers, you must implement 
 
 Without CSRF protection, attackers can trick users into approving malicious OAuth clients. Use a random token stored in a secure cookie:
 
-* [  JavaScript ](#tab-panel-4034)
-* [  TypeScript ](#tab-panel-4035)
+* [  JavaScript ](#tab-panel-4416)
+* [  TypeScript ](#tab-panel-4417)
 
 JavaScript
 
@@ -215,8 +211,8 @@ Include the token as a hidden field in your consent form:
 
 User-controlled content (client names, logos, URIs) can execute malicious scripts if not sanitized:
 
-* [  JavaScript ](#tab-panel-4038)
-* [  TypeScript ](#tab-panel-4039)
+* [  JavaScript ](#tab-panel-4420)
+* [  TypeScript ](#tab-panel-4421)
 
 JavaScript
 
@@ -336,8 +332,8 @@ const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
 
 CSP headers instruct browsers to block dangerous content:
 
-* [  JavaScript ](#tab-panel-4036)
-* [  TypeScript ](#tab-panel-4037)
+* [  JavaScript ](#tab-panel-4418)
+* [  TypeScript ](#tab-panel-4419)
 
 JavaScript
 
@@ -439,8 +435,8 @@ function buildSecurityHeaders(setCookie: string, nonce?: string): HeadersInit {
 
 Between the consent dialog and the OAuth callback, you need to ensure it is the same user. Use a state token stored in KV with a short expiration:
 
-* [  JavaScript ](#tab-panel-4040)
-* [  TypeScript ](#tab-panel-4041)
+* [  JavaScript ](#tab-panel-4422)
+* [  TypeScript ](#tab-panel-4423)
 
 JavaScript
 
@@ -659,8 +655,8 @@ __Host-APPROVED_CLIENTS_GOOGLE
 
 Maintain a registry of approved client IDs per user to avoid showing the consent dialog repeatedly:
 
-* [  JavaScript ](#tab-panel-4032)
-* [  TypeScript ](#tab-panel-4033)
+* [  JavaScript ](#tab-panel-4414)
+* [  TypeScript ](#tab-panel-4415)
 
 JavaScript
 

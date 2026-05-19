@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
-
 # Yandex
 
 Yandex is a web search engine that also offers identity provider (IdP) services.

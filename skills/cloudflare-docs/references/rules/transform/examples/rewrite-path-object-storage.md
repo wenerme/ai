@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ URL rewrite ](https://developers.cloudflare.com/search/?tags=URL%20rewrite) 
-
 # Rewrite path for object storage bucket
 
 Create a URL rewrite rule (part of Transform Rules) to remove `/files/` from URI paths before routing request to your object storage bucket.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
-
 # Create Bulk Redirects in the dashboard
 
 To create Bulk Redirects in the Cloudflare dashboard you must:

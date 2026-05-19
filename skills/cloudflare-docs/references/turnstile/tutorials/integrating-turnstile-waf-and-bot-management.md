@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
-
 # Integrate Turnstile, WAF, & Bot Management
 
 **Last reviewed:**  over 1 year ago 

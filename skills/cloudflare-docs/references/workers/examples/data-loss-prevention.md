@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Security ](https://developers.cloudflare.com/search/?tags=Security)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Data loss prevention
 
 **Last reviewed:**  over 5 years ago 
@@ -26,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8765)
-* [  TypeScript ](#tab-panel-8766)
-* [  Python ](#tab-panel-8767)
-* [  Hono ](#tab-panel-8768)
+* [  JavaScript ](#tab-panel-9451)
+* [  TypeScript ](#tab-panel-9452)
+* [  Python ](#tab-panel-9453)
+* [  Hono ](#tab-panel-9454)
 
 JavaScript
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ S3 ](https://developers.cloudflare.com/search/?tags=S3) 
-
 # Protect access to Amazon S3 buckets with Cloudflare Zero Trust
 
 **Last reviewed:**  over 2 years ago 

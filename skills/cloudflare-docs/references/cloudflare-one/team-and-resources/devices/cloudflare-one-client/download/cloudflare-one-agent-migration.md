@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Migration ](https://developers.cloudflare.com/search/?tags=Migration) 
-
 # Migrate 1.1.1.1 app
 
 Users can connect to Cloudflare Zero Trust services through an agent that runs on their device. Cloudflare previously bundled that functionality into the [WARP Client](https://developers.cloudflare.com/warp-client/), an application that also provides privacy-focused DNS and VPN services for consumers (known as 1.1.1.1 w/ WARP). Supporting both enterprise and consumer functionality in the same application allowed us to build Zero Trust upon the same foundation used by millions of consumers across the globe, but has limited the pace at which changes could be released. As a result, we are launching a dedicated Cloudflare One Agent that replaces the Cloudflare One Client for Zero Trust deployments.
@@ -34,8 +30,8 @@ Organizations can migrate their teams with minimal disruption in one of two mode
 
 If you downloaded and installed the 1.1.1.1 app manually, here are the recommended migration steps:
 
-* [ android ](#tab-panel-4981)
-* [ ios ](#tab-panel-4982)
+* [ android ](#tab-panel-5401)
+* [ ios ](#tab-panel-5402)
 
 1. Update the **1.1.1.1** app to version 6.29 or above. The update ensures that 1.1.1.1 can [co-exist](#what-to-do-with-the-old-app) with the new Cloudflare One Agent app.
 2. If you have enabled [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/), ensure that you have a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) in place for the following applications:  
@@ -68,8 +64,8 @@ If you do not wish to use the old 1.1.1.1 app for personal browsing, you may [un
 
 If you deployed the 1.1.1.1 app with an [MDM provider](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/), perform the migration as follows:
 
-* [ android ](#tab-panel-4983)
-* [ ios ](#tab-panel-4984)
+* [ android ](#tab-panel-5403)
+* [ ios ](#tab-panel-5404)
 
 1. Using your MDM tool, update the **1.1.1.1** app to version 6.29 or above. The update ensures that 1.1.1.1 can co-exist with the new Cloudflare One Agent app during the migration.
 2. Add the **Cloudflare One Agent** app from the Google Play store. Its application ID is `com.cloudflare.cloudflareoneagent`.

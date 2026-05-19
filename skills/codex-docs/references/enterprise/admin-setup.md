@@ -163,7 +163,7 @@ This separation makes it easier to roll out Codex while keeping analytics, envir
 
 Codex Admins can deploy admin-enforced `requirements.toml` policies from the Codex [Policies page](https://chatgpt.com/codex/settings/policies).
 
-Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, MCP server allowlists, feature pins, and restrictive command rules. To disable Browser Use, the in-app browser, or Computer Use, see [Pin feature flags](https://developers.openai.com/codex/enterprise/managed-configuration#pin-feature-flags).
+Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, network access requirements, MCP server allowlists, feature pins, and restrictive command rules. To disable Browser Use, the in-app browser, or Computer Use, see [Pin feature flags](https://developers.openai.com/codex/enterprise/managed-configuration#pin-feature-flags).
 
 <div class="max-w-1xl mx-auto py-1">
   <img src="https://developers.openai.com/images/codex/enterprise/policies_and_configurations_page.png"
@@ -209,6 +209,22 @@ in_app_browser = false
 computer_use = false
 ```
 
+Example: define administrator-owned network requirements:
+
+```toml
+experimental_network.enabled = true
+experimental_network.dangerously_allow_all_unix_sockets = true
+experimental_network.allow_local_binding = true
+experimental_network.allowed_domains = [
+  "api.openai.com",
+  "*.example.com",
+]
+experimental_network.denied_domains = [
+  "blocked.example.com",
+  "*.exfil.example.com",
+]
+```
+
 Example: add a restrictive command rule when you want admins to block or gate specific commands:
 
 ```toml
@@ -218,7 +234,7 @@ prefix_rules = [
 ]
 ```
 
-You can use either example on its own or combine them in a single managed policy for a group. For exact keys, precedence, and more examples, see [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration) and [Agent approvals & security](https://developers.openai.com/codex/agent-approvals-security).
+You can use any example on its own or combine them in a single managed policy for a group. For exact keys, precedence, and more examples, see [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration) and [Agent approvals & security](https://developers.openai.com/codex/agent-approvals-security).
 
 ### Checking user policies
 

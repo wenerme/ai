@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ XML ](https://developers.cloudflare.com/search/?tags=XML) 
-
 # Switch between Zero Trust organizations
 
 Feature availability
@@ -122,8 +118,8 @@ mdm.xml
 
 To switch to a different organization as a user:
 
-* [ Windows, macOS, and Linux ](#tab-panel-4976)
-* [ iOS and Android ](#tab-panel-4977)
+* [ Windows, macOS, and Linux ](#tab-panel-5396)
+* [ iOS and Android ](#tab-panel-5397)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Home**. The **Configuration** dropdown will show the organizations that the admin has configured for your device.

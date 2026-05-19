@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ IPsec ](https://developers.cloudflare.com/search/?tags=IPsec) 
-
 # Velocloud
 
 This document is intended to provide Arista VeloCloud customers with the steps to provision non SD-WAN destinations through Edge for connectivity with Cloudflare WAN (formerly Magic WAN).

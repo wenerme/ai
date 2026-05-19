@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Think
 
 `@cloudflare/think` is an opinionated chat agent base class for Cloudflare Workers. It handles the full chat lifecycle — agentic loop, message persistence, streaming, tool execution, client tools, stream resumption, and extensions — all backed by Durable Object SQLite.
@@ -290,7 +286,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-13",
+  "compatibility_date": "2026-05-18",
 
   "compatibility_flags": [
 
@@ -347,7 +343,7 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-05-13"
+compatibility_date = "2026-05-18"
 
 compatibility_flags = ["nodejs_compat"]
 

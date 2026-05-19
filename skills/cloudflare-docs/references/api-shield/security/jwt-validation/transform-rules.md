@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JSON web token (JWT) ](https://developers.cloudflare.com/search/?tags=JSON%20web%20token%20%28JWT%29) 
-
 # Enhance Transform Rules
 
 You can forward information from a [JSON Web Token (JWT)](https://developers.cloudflare.com/api-shield/security/jwt-validation/) to the origin in a header by creating [Transform Rules](https://developers.cloudflare.com/rules/transform/) using claims that Cloudflare has verified via the JSON Web Token.

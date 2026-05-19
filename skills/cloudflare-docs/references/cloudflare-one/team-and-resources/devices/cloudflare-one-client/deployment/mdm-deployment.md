@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ XML ](https://developers.cloudflare.com/search/?tags=XML) 
-
 # Managed deployment
 
 Organizations can deploy the Cloudflare One Client (formerly WARP) automatically to their fleet of devices in a single operation. The Cloudflare One Client is compatible with the vast majority of managed deployment workflows, including [mobility management solutions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/) such as Intune or JAMF, or by executing an `.msi` file on desktop machines.

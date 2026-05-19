@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics) 
-
 # Security reports
 
 Application Security reports provide cyber attack insights and trends for all of the Enterprise zones in your Cloudflare account.

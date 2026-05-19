@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Posture ](https://developers.cloudflare.com/search/?tags=Posture) 
-
 # Disk encryption
 
 The Disk Encryption device posture attribute ensures that disks are encrypted on a device.

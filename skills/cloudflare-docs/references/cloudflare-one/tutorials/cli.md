@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ CLI ](https://developers.cloudflare.com/search/?tags=CLI) 
-
 # Connect through Cloudflare Access using a CLI
 
 **Last reviewed:**  about 5 years ago 

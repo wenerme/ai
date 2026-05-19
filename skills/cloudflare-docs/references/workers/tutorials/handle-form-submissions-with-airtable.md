@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Forms ](https://developers.cloudflare.com/search/?tags=Forms)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Handle form submissions with Airtable
 
 **Last reviewed:**  almost 3 years ago 
@@ -383,8 +379,8 @@ To make an authenticated request to Airtable, you need to provide four constants
 
 Add a `vars` table at the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9281)
-* [  wrangler.toml ](#tab-panel-9282)
+* [  wrangler.jsonc ](#tab-panel-9967)
+* [  wrangler.toml ](#tab-panel-9968)
 
 JSONC
 
@@ -400,7 +396,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-18",
 
   "vars": {
 
@@ -427,7 +423,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-18"
 
 
 [vars]

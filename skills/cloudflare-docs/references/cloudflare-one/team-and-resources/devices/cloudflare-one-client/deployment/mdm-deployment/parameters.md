@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ XML ](https://developers.cloudflare.com/search/?tags=XML)[ Post-quantum ](https://developers.cloudflare.com/search/?tags=Post-quantum) 
-
 # Parameters
 
 Each Cloudflare One Client (formerly WARP) supports the following set of parameters as part of their deployment, regardless of the deployment mechanism.

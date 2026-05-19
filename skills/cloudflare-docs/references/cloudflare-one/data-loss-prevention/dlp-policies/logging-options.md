@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
-
 # Logging options
 
 Data Loss Prevention allows you to capture, store, and view the data that triggered a specific DLP policy for use as forensic evidence. DLP offers three logging approaches, each suited to different needs:

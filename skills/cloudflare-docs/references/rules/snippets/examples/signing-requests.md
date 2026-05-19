@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication)[ Request modification ](https://developers.cloudflare.com/search/?tags=Request%20modification) 
-
 # Sign requests
 
 Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ A/B testing ](https://developers.cloudflare.com/search/?tags=A/B%20testing)[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies) 
-
 # Append dates to cookies to use with A/B testing
 
 Dynamically set a cookie expiration and test group.

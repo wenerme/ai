@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Logging ](https://developers.cloudflare.com/search/?tags=Logging)[ SSH ](https://developers.cloudflare.com/search/?tags=SSH) 
-
 # Zero Trust
 
 The following sections describe how to configure Zero Trust products with the Data Localization Suite, including which features support Regional Services and Customer Metadata Boundary.

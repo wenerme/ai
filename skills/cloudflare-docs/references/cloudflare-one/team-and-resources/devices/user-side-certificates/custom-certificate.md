@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Deploy custom certificate
 
 Note
@@ -103,8 +99,8 @@ When preparing your certificate and private key for upload, be sure to remove an
 
 You can upload a single root certificate or a full certificate chain. When uploading a certificate chain via the dashboard, API, or Terraform, concatenate the root certificate and any intermediate certificates in PEM format, with the root certificate first.
 
-* [ Dashboard ](#tab-panel-4815)
-* [ API ](#tab-panel-4816)
+* [ Dashboard ](#tab-panel-5431)
+* [ API ](#tab-panel-5432)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings** \> **Certificates**.
 2. Select **Upload certificate**.

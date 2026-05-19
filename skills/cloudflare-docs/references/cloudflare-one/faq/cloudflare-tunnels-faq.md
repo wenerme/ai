@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ WebSockets ](https://developers.cloudflare.com/search/?tags=WebSockets)[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
-
 # Tunnels FAQ
 
 [❮ Back to FAQ](https://developers.cloudflare.com/cloudflare-one/faq/)

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Post-quantum ](https://developers.cloudflare.com/search/?tags=Post-quantum) 
-
 # WARP modes
 
 The WARP client has several modes to better suit different connection needs.

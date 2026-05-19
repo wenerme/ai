@@ -86,6 +86,10 @@ remote MCP stdio.
 - `required` (optional): Set `true` to make startup fail if this enabled server can't initialize.
 - `enabled_tools` (optional): Tool allow list.
 - `disabled_tools` (optional): Tool deny list (applied after `enabled_tools`).
+- `default_tools_approval_mode` (optional): Default approval behavior for
+  tools from this server. Supported values are `auto`, `prompt`, and
+  `approve`.
+- `tools.<tool>.approval_mode` (optional): Per-tool approval behavior override.
 
 If your OAuth provider requires a fixed callback port, set the top-level `mcp_oauth_callback_port` in `config.toml`. If unset, Codex binds to an ephemeral port.
 
@@ -125,9 +129,30 @@ http_headers = { "X-Figma-Region" = "us-east-1" }
 url = "http://localhost:3000/mcp"
 enabled_tools = ["open", "screenshot"]
 disabled_tools = ["screenshot"] # applied after enabled_tools
+default_tools_approval_mode = "prompt"
 startup_timeout_sec = 20
 tool_timeout_sec = 45
 enabled = true
+
+[mcp_servers.chrome_devtools.tools.open]
+approval_mode = "approve"
+```
+
+### Plugin-provided MCP servers
+
+Installed plugins can bundle MCP servers in their plugin manifest. Those
+servers are launched from the plugin, so user config doesn't set their
+transport command. User config can still control on/off state and tool policy
+under `plugins.<plugin>.mcp_servers.<server>`.
+
+```toml
+[plugins."sample@test".mcp_servers.sample]
+enabled = true
+default_tools_approval_mode = "prompt"
+enabled_tools = ["read", "search"]
+
+[plugins."sample@test".mcp_servers.sample.tools.search]
+approval_mode = "approve"
 ```
 
 ## Examples of useful MCP servers

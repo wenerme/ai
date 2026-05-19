@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
-
 # Always Use HTTPS
 
 Always Use HTTPS redirects all your visitor requests from `http` to `https`, for all subdomains and hosts in your application.
@@ -38,8 +34,8 @@ Note
 
 If only some parts of your application can support HTTPS traffic, do not enable **Always Use HTTPS** and use a [single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) to selectively perform the redirect to HTTPS. Refer to [Redirect admin area requests to HTTPS](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/) for an example.
 
-* [ Dashboard ](#tab-panel-7903)
-* [ API ](#tab-panel-7904)
+* [ Dashboard ](#tab-panel-8387)
+* [ API ](#tab-panel-8388)
 
 To enable **Always Use HTTPS** in the dashboard:
 

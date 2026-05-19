@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ OIDC ](https://developers.cloudflare.com/search/?tags=OIDC)[ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
-
 # LinkedIn
 
 Cloudflare Access allows your users to use LinkedIn as their identity provider (IdP).

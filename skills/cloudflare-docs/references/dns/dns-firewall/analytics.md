@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics)[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
-
 # Analytics and logs
 
 Consider the sections below to learn how to access analytics and logs for your DNS Firewall.

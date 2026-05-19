@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft) 
-
 # 5 - Junk email folder and administrative quarantine
 
 In this tutorial, you will learn to deliver `BULK` messages to the user's junk email folder, and `MALICIOUS`, `SPAM`, and `SPOOF` messages to the Administrative Quarantine (this requires an administrator to release the emails).

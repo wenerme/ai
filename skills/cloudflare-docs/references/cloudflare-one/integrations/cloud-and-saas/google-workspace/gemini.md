@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Google ](https://developers.cloudflare.com/search/?tags=Google)[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Gemini for Google Workspace
 
 The Gemini for Google Workspace integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Google Workspace account that could leave you and your organization vulnerable.

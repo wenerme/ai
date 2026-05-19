@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Postgres ](https://developers.cloudflare.com/search/?tags=Postgres)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ SQL ](https://developers.cloudflare.com/search/?tags=SQL) 
-
 # Create a serverless, globally distributed time-series API with Timescale
 
 **Last reviewed:**  over 2 years ago 
@@ -178,8 +174,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs your Hyperdrive ID. You can now bind your Hyperdrive configuration to your Worker in your Wrangler configuration by replacing the content with the following:
 
-* [  wrangler.jsonc ](#tab-panel-6240)
-* [  wrangler.toml ](#tab-panel-6241)
+* [  wrangler.jsonc ](#tab-panel-6708)
+* [  wrangler.toml ](#tab-panel-6709)
 
 JSONC
 
@@ -195,7 +191,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-18",
 
   "compatibility_flags": [
 
@@ -232,7 +228,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-18"
 
 compatibility_flags = [ "nodejs_compat" ]
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform)[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
-
 # API and Terraform
 
 You can manage your Cloudflare Zero Trust configuration using the API or Terraform. For more information, refer to the following links:

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SAML ](https://developers.cloudflare.com/search/?tags=SAML) 
-
 # Keycloak (SAML)
 
 Keycloak is an open source identity and access management solution built by JBoss. If you need a Keycloak lab environment for testing, refer to [this example ↗](https://github.com/mw866/tunnel-keycloak).

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
-
 # Set up dashboard SSO
 
 Cloudflare offers single sign-on (SSO) for all customers who log in with a custom email domain. By creating a Cloudflare SSO connector, you can enforce SSO to the Cloudflare dashboard with the identity provider (IdP) of your choice. SSO will be enforced for every user in your email domain.
@@ -46,8 +42,8 @@ Warning
 
 You must create an [Account API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the role `SSO Connector Edit` and store it securely. This acts as a backup plan, allowing you to disable SSO via the API if you are accidentally locked out, such as due to changes in your IdP configuration later.
 
-* [ Dashboard ](#tab-panel-6226)
-* [ API ](#tab-panel-6227)
+* [ Dashboard ](#tab-panel-6465)
+* [ API ](#tab-panel-6466)
 
 1. Once you have configured an IdP in Cloudflare One, go to the **Members** page to manage SSO connectors.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -115,8 +111,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors"
 
 ## 3\. Verify domain ownership
 
-* [ Dashboard ](#tab-panel-6228)
-* [ API ](#tab-panel-6229)
+* [ Dashboard ](#tab-panel-6467)
+* [ API ](#tab-panel-6468)
 
 If you are unable to change your DNS records right away, the option to verify later is available. The verification process can be manually triggered from the actions menu for that connector in the list.
 
@@ -175,8 +171,8 @@ Once the verification process has completed and successfully verified domain own
 
 Domains that are associated with an already enabled connector belonging to a different account may not be enabled on a new account until disabled on the old account.
 
-* [ Dashboard ](#tab-panel-6230)
-* [ API ](#tab-panel-6231)
+* [ Dashboard ](#tab-panel-6469)
+* [ API ](#tab-panel-6470)
 
 Enable the connector by selecting **Enable** in the Actions menu for that connector in the list.
 
@@ -338,8 +334,8 @@ Warning
 
 Before disabling SSO, make sure you have access to your Cloudflare user email. This will allow you to reset your password in case you get logged out of the Cloudflare dashboard.
 
-* [ Dashboard ](#tab-panel-6222)
-* [ API ](#tab-panel-6223)
+* [ Dashboard ](#tab-panel-6461)
+* [ API ](#tab-panel-6462)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -436,8 +432,8 @@ Users can now log in using their Cloudflare account email and password. If a use
 
 Cloudflare does not allow you to change your team name while a SSO connector is created. To change your team name, you must disable and delete your SSO connector(s).
 
-* [ Dashboard ](#tab-panel-6224)
-* [ API ](#tab-panel-6225)
+* [ Dashboard ](#tab-panel-6463)
+* [ API ](#tab-panel-6464)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)

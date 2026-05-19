@@ -10,13 +10,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ SPA ](https://developers.cloudflare.com/search/?tags=SPA) 
-
 # Single Page App (SPA) shell with bootstrap data
 
-**Last reviewed:**  2 months ago 
+**Last reviewed:**  3 months ago 
 
 Use HTMLRewriter to inject bootstrap data into an SPA shell — whether the shell is served from Workers Static Assets or fetched from an external origin.
 
@@ -41,8 +37,8 @@ Use this variant when your SPA build output is deployed as part of your Worker u
 
 Set `not_found_handling` to `"single-page-application"` so that every route returns `index.html`. Use `run_worker_first` to route all requests through your Worker except hashed assets under `/assets/*`, which are served directly.
 
-* [  wrangler.jsonc ](#tab-panel-8870)
-* [  wrangler.toml ](#tab-panel-8871)
+* [  wrangler.jsonc ](#tab-panel-9556)
+* [  wrangler.toml ](#tab-panel-9557)
 
 JSONC
 
@@ -56,7 +52,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-18",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -87,7 +83,7 @@ main = "src/worker.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-18"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -113,8 +109,8 @@ The Worker starts fetching API data immediately, then fetches the SPA shell from
 
 If the API call fails, the shell still loads and the SPA falls back to client-side data fetching.
 
-* [  JavaScript ](#tab-panel-8874)
-* [  TypeScript ](#tab-panel-8875)
+* [  JavaScript ](#tab-panel-9560)
+* [  TypeScript ](#tab-panel-9561)
 
 JavaScript
 
@@ -352,8 +348,8 @@ Use this variant when your HTML, CSS, and JavaScript are deployed outside Cloudf
 
 Because the SPA is not in Workers Static Assets, you do not need an `assets` block. Instead, store the external origin URL as an environment variable. Attach the Worker to your domain with a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or a [Route](https://developers.cloudflare.com/workers/configuration/routing/routes/).
 
-* [  wrangler.jsonc ](#tab-panel-8872)
-* [  wrangler.toml ](#tab-panel-8873)
+* [  wrangler.jsonc ](#tab-panel-9558)
+* [  wrangler.toml ](#tab-panel-9559)
 
 JSONC
 
@@ -367,7 +363,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-18",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -394,7 +390,7 @@ main = "src/worker.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-18"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -412,8 +408,8 @@ API_BASE_URL = "https://api.example.com"
 
 The Worker fetches both the SPA shell and API data in parallel. When the SPA origin responds, HTMLRewriter streams the HTML while injecting bootstrap data into `<body>`. Static assets (CSS, JS, images) are passed through to the external origin without modification.
 
-* [  JavaScript ](#tab-panel-8876)
-* [  TypeScript ](#tab-panel-8877)
+* [  JavaScript ](#tab-panel-9562)
+* [  TypeScript ](#tab-panel-9563)
 
 JavaScript
 

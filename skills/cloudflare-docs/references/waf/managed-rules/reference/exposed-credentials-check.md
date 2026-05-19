@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
-
 # Cloudflare Exposed Credentials Check Managed Ruleset
 
 Deprecation notice

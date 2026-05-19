@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Wireguard ](https://developers.cloudflare.com/search/?tags=Wireguard) 
-
 # Client architecture
 
 This guide explains how the Cloudflare One Client (formerly WARP) interacts with a device's operating system to route traffic in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default) mode.
@@ -88,9 +84,9 @@ R -- No --> G[Cloudflare Gateway]
 
 You can verify that the operating system is using the Cloudflare One Client's local DNS proxy:
 
-* [ macOS ](#tab-panel-4934)
-* [ Windows ](#tab-panel-4935)
-* [ Linux ](#tab-panel-4936)
+* [ macOS ](#tab-panel-5354)
+* [ Windows ](#tab-panel-5355)
+* [ Linux ](#tab-panel-5356)
 
 On macOS, open a terminal window and run `scutil --dns`. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
@@ -239,9 +235,9 @@ Virtual interfaces allow the operating system to logically subdivide a physical 
 
 To view a list of all network interfaces on the operating system:
 
-* [ Windows ](#tab-panel-4940)
-* [ macOS ](#tab-panel-4941)
-* [ Linux ](#tab-panel-4942)
+* [ Windows ](#tab-panel-5360)
+* [ macOS ](#tab-panel-5361)
+* [ Linux ](#tab-panel-5362)
 
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
 
@@ -361,9 +357,9 @@ The Cloudflare One Client edits the system routing table to control what IP traf
 
 You can verify that the routing table matches your Split Tunnel rules:
 
-* [ macOS ](#tab-panel-4937)
-* [ Windows ](#tab-panel-4938)
-* [ Linux ](#tab-panel-4939)
+* [ macOS ](#tab-panel-5357)
+* [ Windows ](#tab-panel-5358)
+* [ Linux ](#tab-panel-5359)
 
 To view the entire routing table on macOS, run `netstat -r`.
 

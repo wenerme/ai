@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ SQL ](https://developers.cloudflare.com/search/?tags=SQL)[ Prisma ORM ](https://developers.cloudflare.com/search/?tags=Prisma%20ORM)[ Postgres ](https://developers.cloudflare.com/search/?tags=Postgres) 
-
 # Set up and use a Prisma Postgres database
 
 **Last reviewed:**  over 1 year ago 

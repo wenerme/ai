@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Troubleshoot Gateway
 
 This guide helps you troubleshoot common issues with Cloudflare Gateway policies. The issues are ordered by the most frequent problems.
@@ -81,8 +77,8 @@ These applications do not use the operating system's trust store and therefore d
 
 To resolve this issue:
 
-* [ Recommended ](#tab-panel-5182)
-* [ Workaround ](#tab-panel-5183)
+* [ Recommended ](#tab-panel-5602)
+* [ Workaround ](#tab-panel-5603)
 
 Create a targeted HTTP policy to bypass decryption for the specific domains these tools need to access. Place this policy at a higher precedence (lower order number) than your main TLS decryption policy.
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Node.js ](https://developers.cloudflare.com/search/?tags=Node.js)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Conditionally enforce Turnstile
 
 **Last reviewed:**  about 1 year ago 

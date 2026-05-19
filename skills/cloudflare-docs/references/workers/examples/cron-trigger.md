@@ -10,20 +10,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Setting Cron Triggers
 
 **Last reviewed:**  almost 5 years ago 
 
 Set a Cron Trigger for your Worker.
 
-* [  JavaScript ](#tab-panel-9269)
-* [  TypeScript ](#tab-panel-9270)
-* [  Python ](#tab-panel-9271)
-* [  Hono ](#tab-panel-9272)
+* [  JavaScript ](#tab-panel-9443)
+* [  TypeScript ](#tab-panel-9444)
+* [  Python ](#tab-panel-9445)
+* [  Hono ](#tab-panel-9446)
 
 JavaScript
 
@@ -152,8 +148,8 @@ Refer to [Cron Triggers](https://developers.cloudflare.com/workers/configuration
 
 If you are deploying with Wrangler, set the cron syntax (once per hour as shown below) by adding this to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9273)
-* [  wrangler.toml ](#tab-panel-9274)
+* [  wrangler.jsonc ](#tab-panel-9447)
+* [  wrangler.toml ](#tab-panel-9448)
 
 JSONC
 
@@ -200,8 +196,8 @@ crons = [ "0 * * * *" ]
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `[triggers]` table under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-9275)
-* [  wrangler.toml ](#tab-panel-9276)
+* [  wrangler.jsonc ](#tab-panel-9449)
+* [  wrangler.toml ](#tab-panel-9450)
 
 JSONC
 

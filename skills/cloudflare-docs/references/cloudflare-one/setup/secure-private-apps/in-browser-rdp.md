@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks)[ Windows ](https://developers.cloudflare.com/search/?tags=Windows) 
-
 # In-browser remote desktop
 
 Provide secure, in-browser remote desktop access to Windows hosts without Remote Desktop Protocol (RDP) client software on the user's device. This is useful when you need to give IT staff or support teams remote access to Windows machines for administration or troubleshooting from any browser.

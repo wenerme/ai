@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ A/B testing ](https://developers.cloudflare.com/search/?tags=A/B%20testing)[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies)[ URL rewrite ](https://developers.cloudflare.com/search/?tags=URL%20rewrite) 
-
 # A/B testing with same-URL direct access
 
 Set up an A/B test by controlling what response is served based on cookies.

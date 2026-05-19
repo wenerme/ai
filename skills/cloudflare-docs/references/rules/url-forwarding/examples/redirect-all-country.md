@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation) 
-
 # Redirect requests from one country to a domain
 
 Create a redirect rule to redirect all website visitors from the United Kingdom to a different domain, maintaining the current functionality in the same paths.

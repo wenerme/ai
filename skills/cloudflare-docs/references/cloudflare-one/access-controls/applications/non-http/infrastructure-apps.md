@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSH ](https://developers.cloudflare.com/search/?tags=SSH)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
-
 # Add an infrastructure application
 
 Feature availability
@@ -48,9 +44,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-4810)
-* [ API ](#tab-panel-4811)
-* [ Terraform ](#tab-panel-4812)
+* [ Dashboard ](#tab-panel-5049)
+* [ API ](#tab-panel-5050)
+* [ Terraform ](#tab-panel-5051)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -138,9 +134,9 @@ Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-4813)
-* [ API ](#tab-panel-4814)
-* [ Terraform (v4) ](#tab-panel-4815)
+* [ Dashboard ](#tab-panel-5052)
+* [ API ](#tab-panel-5053)
+* [ Terraform (v4) ](#tab-panel-5054)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Create new application**.

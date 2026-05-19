@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft) 
-
 # Microsoft 365 as MX Record
 
 ![A schematic showing where Email security is in the life cycle of an email received](https://developers.cloudflare.com/_astro/Email_security_M365_MX_Inline.BeUQoQiv_Z2khods.webp) 

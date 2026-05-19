@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ GCP ](https://developers.cloudflare.com/search/?tags=GCP)[ IPsec ](https://developers.cloudflare.com/search/?tags=IPsec) 
-
 # Google Cloud VPN
 
 This tutorial explains how to configure IPsec VPN between Cloudflare WAN (formerly Magic WAN) and a Google Cloud Platform (GCP) Cloud VPN.

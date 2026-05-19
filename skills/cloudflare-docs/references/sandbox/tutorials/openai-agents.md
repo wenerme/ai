@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Python ](https://developers.cloudflare.com/search/?tags=Python)[ OpenAI ](https://developers.cloudflare.com/search/?tags=OpenAI) 
-
 # Build an AI coding agent with OpenAI Agents SDK
 
 **Last reviewed:**  about 1 month ago 

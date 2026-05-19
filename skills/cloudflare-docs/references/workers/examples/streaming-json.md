@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JSON ](https://developers.cloudflare.com/search/?tags=JSON)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Stream large JSON
 
 **Last reviewed:**  5 months ago 
@@ -39,8 +35,8 @@ npm install @streamparser/json-whatwg
 
 This example parses a large JSON request body and extracts specific fields without loading the entire payload into memory.
 
-* [  TypeScript ](#tab-panel-8878)
-* [  JavaScript ](#tab-panel-8879)
+* [  TypeScript ](#tab-panel-9564)
+* [  JavaScript ](#tab-panel-9565)
 
 TypeScript
 
@@ -154,8 +150,8 @@ export default {
 
 This example fetches a large JSON response from an upstream API, transforms specific fields, and streams the modified response to the client.
 
-* [  TypeScript ](#tab-panel-8880)
-* [  JavaScript ](#tab-panel-8881)
+* [  TypeScript ](#tab-panel-9566)
+* [  JavaScript ](#tab-panel-9567)
 
 TypeScript
 

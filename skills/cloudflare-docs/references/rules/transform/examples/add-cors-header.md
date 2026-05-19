@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification) 
-
 # Add a wildcard CORS response header
 
 Create a response header transform rule to add an `Access-Control-Allow-Origin` CORS HTTP header to the response with a static wildcard value.

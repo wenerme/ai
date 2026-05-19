@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics) 
-
 # Data security analytics
 
 The Data security analytics dashboard reports security issues and sensitive data found within your SaaS applications, cloud environments, and HTTP traffic. It visualizes security findings and sensitive data detections collected from your Data Loss Prevention (DLP) and Cloud Access Security Broker (CASB) policies. If neither DLP nor CASB is configured in your account, the dashboard appears empty.

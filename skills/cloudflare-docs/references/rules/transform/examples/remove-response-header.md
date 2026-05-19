@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification) 
-
 # Remove a response header
 
 Create a response header transform rule (part of Transform Rules) to remove the `cf-connecting-ip` HTTP header from the response.

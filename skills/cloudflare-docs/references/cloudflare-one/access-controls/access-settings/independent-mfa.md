@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
-
 # Independent MFA
 
 Independent multi-factor authentication (MFA) allows you to enforce MFA requirements directly in Access without relying on your identity provider (IdP). Users authenticate with their IdP as usual, and Access prompts for an additional authentication method before granting access to the application.
@@ -32,8 +28,8 @@ Because you can [configure MFA at the application and policy level](https://deve
 
 Before you can [enforce independent MFA on applications and policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), you must turn on independent MFA at the organization level.
 
-* [ Dashboard ](#tab-panel-4587)
-* [ API ](#tab-panel-4588)
+* [ Dashboard ](#tab-panel-5007)
+* [ API ](#tab-panel-5008)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, select the [MFA methods](#supported-mfa-methods) you want to allow in your organization.
@@ -106,8 +102,8 @@ Users cannot enroll these authenticators when AAGUID restrictions are turned on.
 
 AAGUIDs are managed using [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Create a list of type **AAGUID**, then reference the list in your organization's MFA configuration.
 
-* [ Dashboard ](#tab-panel-4585)
-* [ API ](#tab-panel-4586)
+* [ Dashboard ](#tab-panel-5005)
+* [ API ](#tab-panel-5006)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Resources** \> **Lists**.
 2. Select **Create new list**.
@@ -165,8 +161,8 @@ You can look up AAGUIDs for common authenticators in the [FIDO Alliance Metadata
 
 ### 2\. Assign an AAGUID list to your organization
 
-* [ Dashboard ](#tab-panel-4591)
-* [ API ](#tab-panel-4592)
+* [ Dashboard ](#tab-panel-5011)
+* [ API ](#tab-panel-5012)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, go to **Limit MFA to specific authentication methods**.
@@ -237,8 +233,8 @@ Access ignores AMR values that do not map to a supported authenticator type (for
 
 ### Turn on AMR matching
 
-* [ Dashboard ](#tab-panel-4593)
-* [ API ](#tab-panel-4594)
+* [ Dashboard ](#tab-panel-5013)
+* [ API ](#tab-panel-5014)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn on **Use identity provider MFA**.
@@ -305,8 +301,8 @@ Turning off independent MFA removes MFA protection on all Access applications. B
 
 To turn off independent MFA for the organization:
 
-* [ Dashboard ](#tab-panel-4589)
-* [ API ](#tab-panel-4590)
+* [ Dashboard ](#tab-panel-5009)
+* [ API ](#tab-panel-5010)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn off **Apply global MFA settings by default**.
@@ -416,8 +412,8 @@ To view a user's enrolled authenticators:
 
 If a user is locked out or you need to revoke an authenticator for security reasons, you can delete it from the dashboard or API.
 
-* [ Dashboard ](#tab-panel-4583)
-* [ API ](#tab-panel-4584)
+* [ Dashboard ](#tab-panel-5003)
+* [ API ](#tab-panel-5004)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
 2. Select the user whose authenticator you want to delete.

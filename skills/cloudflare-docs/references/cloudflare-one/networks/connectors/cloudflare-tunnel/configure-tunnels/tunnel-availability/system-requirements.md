@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TCP ](https://developers.cloudflare.com/search/?tags=TCP)[ UDP ](https://developers.cloudflare.com/search/?tags=UDP) 
-
 # System requirements
 
 Our connector, `cloudflared`, was designed to be lightweight and flexible enough to be effectively deployed on Raspberry Pi, your laptop or a server in a data center. 
@@ -37,8 +33,8 @@ When `cloudflared` receives a request from a device, it uses the ports on the ho
 * `cloudflared` should be deployed on a dedicated host machine. This model is typically appropriate, but there may be serverless or clustered workflows where a dedicated host is not possible.
 * The host machine should allocate 50,000 ports to be available for use by the `cloudflared` service. The remaining ports are reserved for system administrative processes.
 
-* [ Linux ](#tab-panel-4756)
-* [ Windows ](#tab-panel-4757)
+* [ Linux ](#tab-panel-5176)
+* [ Windows ](#tab-panel-5177)
 
 To increase the number of ports available to `cloudflared` on Linux:
 

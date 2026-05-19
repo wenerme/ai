@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # User-side certificates
 
 Advanced security features such as [HTTPS traffic inspection](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/), [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/), [anti-virus scanning](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/), [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/), and [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) require users to install and trust a root certificate on their device. You can either install the certificate provided by Cloudflare (default option), or generate your own custom certificate and upload it to Cloudflare.
@@ -41,8 +37,8 @@ Zero Trust will indicate if a certificate is ready for use in inspection based o
 
 To generate a new Cloudflare root certificate for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-4809)
-* [ API ](#tab-panel-4810)
+* [ Dashboard ](#tab-panel-5425)
+* [ API ](#tab-panel-5426)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -81,8 +77,8 @@ Once a certificate is generated in or uploaded to Zero Trust, you need to activa
 
 To activate your root certificate:
 
-* [ Dashboard ](#tab-panel-4811)
-* [ API ](#tab-panel-4812)
+* [ Dashboard ](#tab-panel-5427)
+* [ API ](#tab-panel-5428)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -108,8 +104,8 @@ The status of the certificate will change to **Pending** while it deploys. Once 
 
 Once you deploy and install your certificate, you can turn it on for use in inspection:
 
-* [ Dashboard ](#tab-panel-4813)
-* [ API ](#tab-panel-4814)
+* [ Dashboard ](#tab-panel-5429)
+* [ API ](#tab-panel-5430)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.

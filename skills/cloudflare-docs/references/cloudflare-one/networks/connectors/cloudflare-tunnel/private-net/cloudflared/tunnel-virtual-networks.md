@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Virtual networks
 
 Feature availability
@@ -56,9 +52,9 @@ Here are a few scenarios where virtual networks may prove useful:
 
 In this example, "private network" refers to a distinct environment (such as staging or production) that has its own overlapping IP address space (`10.128.0.1/32` staging and `10.128.0.1/32` production). If your environments use non-overlapping IPs, you do not need a separate tunnel for each. Instead, you can add multiple routes to a single tunnel.
 
-* [ Dashboard ](#tab-panel-4592)
-* [ Terraform (v5) ](#tab-panel-4593)
-* [ Locally-managed tunnels ](#tab-panel-4594)
+* [ Dashboard ](#tab-panel-5208)
+* [ Terraform (v5) ](#tab-panel-5209)
+* [ Locally-managed tunnels ](#tab-panel-5210)
 
 To route overlapping IPs over virtual networks:
 
@@ -204,8 +200,8 @@ You can use now the Cloudflare One Client to [switch between virtual networks](#
 
 ## Delete a virtual network
 
-* [ Dashboard ](#tab-panel-4588)
-* [ Locally-managed tunnels ](#tab-panel-4589)
+* [ Dashboard ](#tab-panel-5204)
+* [ Locally-managed tunnels ](#tab-panel-5205)
 
 To delete a virtual network:
 
@@ -240,8 +236,8 @@ You can verify that the virtual network was successfully deleted by typing `clou
 
 ### Windows, macOS, and Linux
 
-* [ Version 2026.2+ ](#tab-panel-4590)
-* [ Version 2026.1 and earlier ](#tab-panel-4591)
+* [ Version 2026.2+ ](#tab-panel-5206)
+* [ Version 2026.1 and earlier ](#tab-panel-5207)
 
 1. Open the Cloudflare One Client.
 2. Go to **Home**.

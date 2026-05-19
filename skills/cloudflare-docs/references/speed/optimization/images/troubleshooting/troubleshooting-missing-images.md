@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Troubleshoot missing images
 
 If images are missing from your website, other Cloudflare features may be interfering with those images.

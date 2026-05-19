@@ -9,10 +9,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ URL rewrite ](https://developers.cloudflare.com/search/?tags=URL%20rewrite) 
-
 # Rewrite path of moved section of a website
 
 Create a URL rewrite rule (part of Transform Rules) to rewrite everything under `/blog/<PATH>` to `/marketing/<PATH>`.

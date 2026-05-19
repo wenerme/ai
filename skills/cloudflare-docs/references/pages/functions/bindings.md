@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Bindings ](https://developers.cloudflare.com/search/?tags=Bindings) 
-
 # Bindings
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) enables your Pages Functions to interact with resources on the Cloudflare developer platform. Use bindings to integrate your Pages Functions with Cloudflare resources like [KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), and [D1](https://developers.cloudflare.com/d1/). You can set bindings for both production and preview environments.
@@ -42,8 +38,8 @@ To configure a KV namespace binding via the Cloudflare dashboard:
 
 Below is an example of how to use KV in your Function. In the following example, your KV namespace binding is called `TODO_LIST` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-6776)
-* [  TypeScript ](#tab-panel-6777)
+* [  JavaScript ](#tab-panel-7244)
+* [  TypeScript ](#tab-panel-7245)
 
 JavaScript
 
@@ -124,8 +120,8 @@ To configure a Durable Object binding via the Cloudflare dashboard:
 
 Below is an example of how to use Durable Objects in your Function. In the following example, your DO binding is called `DURABLE_OBJECT` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-6778)
-* [  TypeScript ](#tab-panel-6779)
+* [  JavaScript ](#tab-panel-7246)
+* [  TypeScript ](#tab-panel-7247)
 
 JavaScript
 
@@ -209,8 +205,8 @@ To configure a R2 bucket binding via the Cloudflare dashboard:
 
 Below is an example of how to use R2 buckets in your Function. In the following example, your R2 bucket binding is called `BUCKET` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-6780)
-* [  TypeScript ](#tab-panel-6781)
+* [  JavaScript ](#tab-panel-7248)
+* [  TypeScript ](#tab-panel-7249)
 
 JavaScript
 
@@ -307,8 +303,8 @@ To configure a D1 database binding via the Cloudflare dashboard:
 
 Below is an example of how to use D1 in your Function. In the following example, your D1 database binding is `NORTHWIND_DB` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-6782)
-* [  TypeScript ](#tab-panel-6783)
+* [  JavaScript ](#tab-panel-7250)
+* [  TypeScript ](#tab-panel-7251)
 
 JavaScript
 
@@ -410,8 +406,8 @@ To configure a Vectorize index binding via the Cloudflare dashboard:
 
 To use Vectorize index in your Pages Function, you can access your Vectorize index binding in your Pages Function code. In the following example, your Vectorize index binding is called `VECTORIZE_INDEX` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-6784)
-* [  TypeScript ](#tab-panel-6785)
+* [  JavaScript ](#tab-panel-7252)
+* [  TypeScript ](#tab-panel-7253)
 
 JavaScript
 
@@ -649,8 +645,8 @@ To configure a Workers AI binding via the Cloudflare dashboard:
 
 To use Workers AI in your Pages Function, you can access your Workers AI binding in your Pages Function code. In the following example, your Workers AI binding is called `AI` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-6786)
-* [  TypeScript ](#tab-panel-6787)
+* [  JavaScript ](#tab-panel-7254)
+* [  TypeScript ](#tab-panel-7255)
 
 JavaScript
 
@@ -753,8 +749,8 @@ To configure a Service binding via the Cloudflare dashboard:
 
 Below is an example of how to use Service bindings in your Function. In the following example, your Service binding is called `SERVICE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-6788)
-* [  TypeScript ](#tab-panel-6789)
+* [  JavaScript ](#tab-panel-7256)
+* [  TypeScript ](#tab-panel-7257)
 
 JavaScript
 
@@ -830,8 +826,8 @@ To configure a queue producer binding via the Cloudflare dashboard:
 
 Below is an example of how to use a queue producer binding in your Function. In this example, the binding is named `MY_QUEUE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-6790)
-* [  TypeScript ](#tab-panel-6791)
+* [  JavaScript ](#tab-panel-7258)
+* [  TypeScript ](#tab-panel-7259)
 
 JavaScript
 
@@ -898,8 +894,8 @@ Note
 
 PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) depend on Node.js APIs. Pages Functions with Hyperdrive bindings must be [deployed with Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs).
 
-* [  wrangler.jsonc ](#tab-panel-6798)
-* [  wrangler.toml ](#tab-panel-6799)
+* [  wrangler.jsonc ](#tab-panel-7266)
+* [  wrangler.toml ](#tab-panel-7267)
 
 JSONC
 
@@ -915,7 +911,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29"
+  "compatibility_date": "2026-05-18"
 
 }
 
@@ -930,7 +926,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-18"
 
 
 ```
@@ -951,8 +947,8 @@ To configure a Hyperdrive binding via the Cloudflare dashboard:
 
 Below is an example of how to use Hyperdrive in your Function. In the following example, your Hyperdrive config is named `HYPERDRIVE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-6792)
-* [  TypeScript ](#tab-panel-6793)
+* [  JavaScript ](#tab-panel-7260)
+* [  TypeScript ](#tab-panel-7261)
 
 JavaScript
 
@@ -1058,8 +1054,8 @@ To configure an Analytics Engine binding via the Cloudflare dashboard:
 
 Below is an example of how to use an Analytics Engine binding in your Function. In the following example, the binding is called `ANALYTICS_ENGINE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-6794)
-* [  TypeScript ](#tab-panel-6795)
+* [  JavaScript ](#tab-panel-7262)
+* [  TypeScript ](#tab-panel-7263)
 
 JavaScript
 
@@ -1142,8 +1138,8 @@ To configure an environment variable via the Cloudflare dashboard:
 
 Below is an example of how to use environment variables in your Function. The environment variable in this example is `ENVIRONMENT` and you can access the environment variable on `context.env`:
 
-* [  JavaScript ](#tab-panel-6796)
-* [  TypeScript ](#tab-panel-6797)
+* [  JavaScript ](#tab-panel-7264)
+* [  TypeScript ](#tab-panel-7265)
 
 JavaScript
 

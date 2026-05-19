@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ S3 ](https://developers.cloudflare.com/search/?tags=S3) 
-
 # Buckets
 
 Before you can begin a full packet capture, you must configure a cloud storage bucket where Cloudflare can write the captured traffic data. Setting up a bucket is not required for sample packet captures, which complete immediately and can be downloaded directly from the API.
@@ -24,8 +20,8 @@ You can configure an Amazon S3 or Google Cloud Platform bucket to use as a targe
 
 Learn how to set up a bucket for use with full packet captures.
 
-* [ Dashboard ](#tab-panel-4696)
-* [ API ](#tab-panel-4697)
+* [ Dashboard ](#tab-panel-5116)
+* [ API ](#tab-panel-5117)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** \> **Diagnostics**.
 2. Select the **Buckets** tab > **Add a bucket**.
@@ -45,8 +41,8 @@ Next, validate the bucket and confirm ownership.
 
 After the initial bucket setup, you need to confirm you have access to the bucket via an ownership challenge. This verification prevents Cloudflare from writing capture data to a bucket you do not control. After you validate your bucket, you can begin using it to collect full packet captures.
 
-* [ Dashboard ](#tab-panel-4698)
-* [ API ](#tab-panel-4699)
+* [ Dashboard ](#tab-panel-5118)
+* [ API ](#tab-panel-5119)
 
 1. From the **Prove ownership** step of the **Bucket configuration**, locate the **Ownership token** field.
 2. Find the ownership challenge file that Cloudflare placed in your bucket, copy its contents, and enter them in the **Ownership token** field.
@@ -182,8 +178,8 @@ The bucket status displays one of the following options:
 
 View a list of all buckets configured on your account.
 
-* [ Dashboard ](#tab-panel-4700)
-* [ API ](#tab-panel-4701)
+* [ Dashboard ](#tab-panel-5120)
+* [ API ](#tab-panel-5121)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to _**Insights** \> Network visibility_ \> **Diagnostics**.
 2. Select the **Buckets** tab.

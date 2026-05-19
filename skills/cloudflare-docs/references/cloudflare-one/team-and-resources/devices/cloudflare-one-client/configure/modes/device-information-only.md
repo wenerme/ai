@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Posture ](https://developers.cloudflare.com/search/?tags=Posture)[ mTLS ](https://developers.cloudflare.com/search/?tags=mTLS) 
-
 # Enable Posture only mode
 
 Feature availability
@@ -69,12 +65,12 @@ When enrolled in Posture only mode, the Cloudflare One Client (formerly WARP) wi
 ## 3\. (Optional) Verify the client certificate
 
 1. To view the client certificates installed on the device:  
-   * [ Windows ](#tab-panel-4732)  
-   * [ macOS ](#tab-panel-4733)  
-   * [ Linux ](#tab-panel-4734)  
-   * [ iOS ](#tab-panel-4735)  
-   * [ Android ](#tab-panel-4736)  
-   * [ ChromeOS ](#tab-panel-4737)  
+   * [ Windows ](#tab-panel-5348)  
+   * [ macOS ](#tab-panel-5349)  
+   * [ Linux ](#tab-panel-5350)  
+   * [ iOS ](#tab-panel-5351)  
+   * [ Android ](#tab-panel-5352)  
+   * [ ChromeOS ](#tab-panel-5353)  
    1. Open the **Start** menu and select **Run**.  
    2. Enter `certlm.msc`.  
    3. Go to **Personal** \> **Certificates**.  

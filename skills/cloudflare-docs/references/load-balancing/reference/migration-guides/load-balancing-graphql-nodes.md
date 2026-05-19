@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ Migration ](https://developers.cloudflare.com/search/?tags=Migration) 
-
 # Migrate to new GraphQL nodes
 
 After 30 September 2021, Cloudflare will make the following changes to the Load Balancing GraphQL schema:

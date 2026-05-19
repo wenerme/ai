@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Nuxt ](https://developers.cloudflare.com/search/?tags=Nuxt)[ Vue.js ](https://developers.cloudflare.com/search/?tags=Vue.js)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages
 
 **Last reviewed:**  almost 4 years ago 

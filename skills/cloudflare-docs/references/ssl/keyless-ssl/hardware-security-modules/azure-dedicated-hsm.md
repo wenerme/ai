@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Azure ](https://developers.cloudflare.com/search/?tags=Azure) 
-
 # Azure Dedicated HSM
 
 This tutorial uses [Azure Dedicated HSM ↗](https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/) — a FIPS 140-2 Level 3 certified implementation based on the Gemalto SafeNet Luna a790.

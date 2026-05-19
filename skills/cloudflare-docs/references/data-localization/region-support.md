@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
-
 # Region support
 
 The Data Localization Suite allows you to restrict where your data is processed and stored. The table below shows which regions are available for each DLS feature:

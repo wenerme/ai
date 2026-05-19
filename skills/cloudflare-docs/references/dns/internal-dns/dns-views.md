@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Manage DNS views
 
 Internal DNS views are logical groupings of [internal DNS zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/). As explained in the [architecture overview](https://developers.cloudflare.com/dns/internal-dns/#architecture-overview), DNS views are referenced by [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) to define how a specific query should be resolved.
@@ -33,8 +29,8 @@ When setting up DNS views, observe the following conditions:
 
 ## Create a view
 
-* [ Dashboard ](#tab-panel-5365)
-* [ API ](#tab-panel-5366)
+* [ Dashboard ](#tab-panel-5981)
+* [ API ](#tab-panel-5982)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -52,8 +48,8 @@ DNS views can be deleted even if they still have internal zones linked to them. 
 
 It is also possible to delete a DNS view that is being referenced by a Gateway resolver policy. In this case, queries matching the policy will return SERVFAIL.
 
-* [ Dashboard ](#tab-panel-5363)
-* [ API ](#tab-panel-5364)
+* [ Dashboard ](#tab-panel-5979)
+* [ API ](#tab-panel-5980)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

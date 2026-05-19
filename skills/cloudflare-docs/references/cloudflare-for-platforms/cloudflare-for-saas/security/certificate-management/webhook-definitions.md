@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JSON ](https://developers.cloudflare.com/search/?tags=JSON) 
-
 # Webhook definitions
 
 When you [create a webhook notification](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/) for **SSL for SaaS Custom Hostnames**, you may want to automate responses to specific events (certificate issuance, failed validation, etc.).

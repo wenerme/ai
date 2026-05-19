@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Request modification ](https://developers.cloudflare.com/search/?tags=Request%20modification) 
-
 # Request Header Transform Rules
 
 Use Request Header Transform Rules to manipulate the headers of HTTP requests sent to your origin server (the server where your website or application is hosted).

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ Phishing ](https://developers.cloudflare.com/search/?tags=Phishing) 
-
 # Cloudflare DMARC Management
 
 Stop brand impersonation.

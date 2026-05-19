@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Fake bot detection blocking legitimate requests
 
 The Cloudflare Managed Ruleset includes rules that detect requests impersonating well-known bots such as Googlebot and Bingbot. These rules compare the request's `User-Agent` header against known bot patterns and then verify the source using methods like reverse DNS lookup or IP validation. If the `User-Agent` matches a known bot but the source cannot be verified, the rule flags the request as a fake bot.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
-
 # Rule groups
 
 A rule group is a collection of Access rules that can be configured once and then quickly applied across many Access policies. Rule groups use the same [rule types](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#rule-types) and [selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) shown in the Access policy builder.
@@ -26,8 +22,8 @@ Rule groups are distinct from groups in your identity provider, like Okta groups
 
 To create an Access rule group:
 
-* [ Dashboard ](#tab-panel-4485)
-* [ API ](#tab-panel-4486)
+* [ Dashboard ](#tab-panel-5101)
+* [ API ](#tab-panel-5102)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**, and select the **Rule groups** tab.
 2. Select **Add a group**.

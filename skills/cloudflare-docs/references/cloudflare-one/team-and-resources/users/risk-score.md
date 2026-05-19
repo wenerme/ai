@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Okta ](https://developers.cloudflare.com/search/?tags=Okta)[ SentinelOne ](https://developers.cloudflare.com/search/?tags=SentinelOne) 
-
 # Risk score
 
 Note

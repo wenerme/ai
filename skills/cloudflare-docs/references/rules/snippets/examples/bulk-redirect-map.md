@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
-
 # Bulk redirect based on a map object
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.

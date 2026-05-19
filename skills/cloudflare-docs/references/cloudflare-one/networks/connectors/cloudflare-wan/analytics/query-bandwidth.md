@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ IPsec ](https://developers.cloudflare.com/search/?tags=IPsec) 
-
 # Querying Cloudflare WAN IPsec/GRE tunnel bandwidth analytics with GraphQL
 
 This example uses the GraphQL Analytics API to query Cloudflare WAN ingress tunnel traffic over a specified time period.

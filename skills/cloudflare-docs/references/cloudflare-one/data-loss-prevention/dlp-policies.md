@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
-
 # Scan HTTP traffic
 
 You can scan HTTP traffic for sensitive data through [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policies. Setting up DLP is a two-step process: first, configure a **DLP profile** that defines what sensitive data patterns to detect, and then build a **Gateway HTTP policy** that defines what action to take (allow, block, or log) when Gateway finds matching data. Gateway will parse and scan your HTTP traffic for strings matching the keywords or regular expressions (regexes) specified in the DLP profile.

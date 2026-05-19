@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ CSP ](https://developers.cloudflare.com/search/?tags=CSP)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
-
 # Content Security Policy
 
 If your website uses a [Content Security Policy (CSP) ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) header, you must configure it to allow Turnstile's scripts and iframes. Without the correct CSP directives, Turnstile may fail to load.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ Scraping ](https://developers.cloudflare.com/search/?tags=Scraping) 
-
 # Block AI Bots
 
 Block AI bots availability

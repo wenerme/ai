@@ -18,9 +18,11 @@ You have several different options for managing an AI Gateway.
 
 ### Default gateway
 
-AI Gateway can automatically create a gateway for you. When you use `default` as a gateway ID and no gateway with that ID exists in your account, AI Gateway creates it on the first authenticated request.
+AI Gateway can automatically create a gateway for you. If you omit the gateway ID from your request entirely, AI Gateway defaults to using `default` as the gateway ID. When no gateway named `default` exists in your account, AI Gateway creates it on the first authenticated request.
 
-The request that triggers auto-creation must include a valid `cf-aig-authorization` header. An unauthenticated request to a `default` gateway that does not yet exist does not create the gateway.
+This means you can start sending requests without creating a gateway first — AI Gateway handles gateway creation for you.
+
+The request that triggers auto-creation must be authenticated. When using the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), the standard `Authorization` header is sufficient. When using [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) at `gateway.ai.cloudflare.com`, include a valid `cf-aig-authorization` header. For Workers AI bindings, the account identity from the binding is used instead of a header.
 
 The auto-created default gateway uses the following settings:
 
@@ -39,8 +41,8 @@ Auto-creation only applies to the gateway ID `default`. Using any other gateway 
 
 ### Create a gateway manually
 
-* [ Dashboard ](#tab-panel-4123)
-* [ API ](#tab-panel-4124)
+* [ Dashboard ](#tab-panel-4505)
+* [ API ](#tab-panel-4506)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -59,8 +61,8 @@ To set up an AI Gateway using the API:
 
 ## Edit gateway
 
-* [ Dashboard ](#tab-panel-4119)
-* [ API ](#tab-panel-4120)
+* [ Dashboard ](#tab-panel-4501)
+* [ API ](#tab-panel-4502)
 
 To edit an AI Gateway in the dashboard:
 
@@ -100,8 +102,8 @@ For more complex failover scenarios where you need to fail across different prov
 
 Deleting your gateway is permanent and can not be undone.
 
-* [ Dashboard ](#tab-panel-4121)
-* [ API ](#tab-panel-4122)
+* [ Dashboard ](#tab-panel-4503)
+* [ API ](#tab-panel-4504)
 
 To delete an AI Gateway in the dashboard:
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification) 
-
 # Rewrite links on HTML pages
 
 Dynamically rewrite links in HTML responses.

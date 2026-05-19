@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JSON web token (JWT) ](https://developers.cloudflare.com/search/?tags=JSON%20web%20token%20%28JWT%29) 
-
 # Configure JWT validation via the API
 
 Use the Cloudflare API to configure [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/), which requires token configurations and token validation rules.

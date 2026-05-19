@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Posture ](https://developers.cloudflare.com/search/?tags=Posture) 
-
 # Carbon Black
 
 Cloudflare One can check if [Carbon Black ↗](https://www.carbonblack.com/) is running on a device to determine if a request should be allowed to reach a protected resource.

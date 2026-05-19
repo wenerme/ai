@@ -88,6 +88,14 @@ For security, Codex loads project-scoped config files only when the project is t
 
 Relative paths inside a project config (for example, `model_instructions_file`) are resolved relative to the `.codex/` folder that contains the `config.toml`.
 
+Project config files can't override settings that redirect credentials, change
+provider auth, or run machine-local notification/telemetry commands.
+Codex ignores the following keys in project-local `.codex/config.toml` and
+prints a startup warning when it sees them: `openai_base_url`,
+`chatgpt_base_url`, `model_provider`, `model_providers`, `notify`, `profile`,
+`profiles`, `experimental_realtime_ws_base_url`, and `otel`. Set those keys in
+your user-level `~/.codex/config.toml` instead.
+
 ## Hooks
 
 Codex can also load lifecycle hooks from either `hooks.json` files or inline
@@ -462,8 +470,8 @@ If a metric includes the `tool` field, it reflects the internal tool used (for e
 | `websocket.request.duration_ms`                 | histogram | `success`            | WebSocket request duration in milliseconds.                  |
 | `websocket.event`                               | counter   | `kind`, `success`    | WebSocket message/event count by type and success/failure.   |
 | `websocket.event.duration_ms`                   | histogram | `kind`, `success`    | WebSocket message/event processing duration in milliseconds. |
-| `responses_api_overhead.duration_ms`            | histogram |                      | Responses API overhead timing from websocket responses.      |
-| `responses_api_inference_time.duration_ms`      | histogram |                      | Responses API inference timing from websocket responses.     |
+| `responses_api_overhead.duration_ms`            | histogram |                      | Responses API overhead timing from WebSocket responses.      |
+| `responses_api_inference_time.duration_ms`      | histogram |                      | Responses API inference timing from WebSocket responses.     |
 | `responses_api_engine_iapi_ttft.duration_ms`    | histogram |                      | Responses API engine IAPI time-to-first-token timing.        |
 | `responses_api_engine_service_ttft.duration_ms` | histogram |                      | Responses API engine service time-to-first-token timing.     |
 | `responses_api_engine_iapi_tbt.duration_ms`     | histogram |                      | Responses API engine IAPI time-between-token timing.         |
@@ -498,7 +506,7 @@ The `cloud_requirements.fetch_attempt` metric includes `trigger`, `attempt`, `ou
 | `mcp.call`                             | counter   | See note                                                                  | MCP tool invocation result.                                                                                      |
 | `mcp.call.duration_ms`                 | histogram | See note                                                                  | MCP tool invocation duration.                                                                                    |
 | `mcp.tools.list.duration_ms`           | histogram | `cache`                                                                   | MCP tool-list duration, including cache hit/miss state.                                                          |
-| `mcp.tools.fetch_uncached.duration_ms` | histogram |                                                                           | Duration of uncached MCP tool fetches.                                                                           |
+| `mcp.tools.fetch_uncached.duration_ms` | histogram |                                                                           | Duration of MCP tool fetches that miss the cache.                                                                |
 | `mcp.tools.cache_write.duration_ms`    | histogram |                                                                           | Duration of Codex Apps MCP tool-cache writes.                                                                    |
 | `hooks.run`                            | counter   | `hook_name`, `source`, `status`                                           | Hook run count by hook name, source, and status.                                                                 |
 | `hooks.run.duration_ms`                | histogram | `hook_name`, `source`, `status`                                           | Hook run duration in milliseconds.                                                                               |

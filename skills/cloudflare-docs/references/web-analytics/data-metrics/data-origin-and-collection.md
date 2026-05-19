@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
-
 # Data origin and collection
 
 Web Analytics relies on the `performance.getEntriesByType('navigation')` object to collect metrics about page load performance. If Navigation Timing Level 2 is not supported, then [performance.timing (Level 1) ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance/timing) is used.

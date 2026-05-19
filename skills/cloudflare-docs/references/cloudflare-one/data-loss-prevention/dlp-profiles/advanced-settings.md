@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
-
 # Profile settings
 
 This page lists the profile settings available when configuring a [predefined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) or [custom](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile) DLP profile. You can configure profile settings when you create a custom profile or [edit profile settings](#edit-profile-settings) for an existing predefined or custom profile.

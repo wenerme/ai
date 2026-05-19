@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Kubernetes ](https://developers.cloudflare.com/search/?tags=Kubernetes)[ TCP ](https://developers.cloudflare.com/search/?tags=TCP) 
-
 # Connect through Cloudflare Access using kubectl
 
 **Last reviewed:**  almost 4 years ago 

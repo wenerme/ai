@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Salesforce ](https://developers.cloudflare.com/search/?tags=Salesforce) 
-
 # Salesforce Commerce Cloud
 
 Cloudflare partners with Salesforce Commerce Cloud to provide Salesforce Commerce Cloud customers’ websites with Cloudflare’s performance and security benefits.

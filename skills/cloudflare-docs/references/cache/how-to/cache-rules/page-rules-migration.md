@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Migration ](https://developers.cloudflare.com/search/?tags=Migration) 
-
 # Migration from Page Rules
 
 If you are migrating from Page Rules, there is a behavior change between Page Rules and Cache Rules.
@@ -26,8 +22,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 1
 
-* [ Dashboard ](#tab-panel-4477)
-* [ visual guide ](#tab-panel-4478)
+* [ Dashboard ](#tab-panel-4897)
+* [ visual guide ](#tab-panel-4898)
 
 1. Enter a rule name, for instance `bypass everything`.
 2. In **When incoming requests match**, select **All incoming requests**.
@@ -37,8 +33,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 2
 
-* [ Dashboard ](#tab-panel-4479)
-* [ visual guide ](#tab-panel-4480)
+* [ Dashboard ](#tab-panel-4899)
+* [ visual guide ](#tab-panel-4900)
 
 1. Enter a rule name, for instance `cache all default cacheable extensions`.
 2. In **When incoming requests match**, select **Custom filter expression**.

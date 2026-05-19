@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MacOS ](https://developers.cloudflare.com/search/?tags=MacOS) 
-
 # Jamf
 
 This guide covers how to deploy the Cloudflare One Client (formerly WARP) using Jamf.

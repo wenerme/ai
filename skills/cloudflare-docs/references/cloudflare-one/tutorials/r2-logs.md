@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
-
 # Use Cloudflare R2 as a Zero Trust log destination
 
 **Last reviewed:**  over 2 years ago 

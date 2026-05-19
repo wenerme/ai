@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Geolocation: Weather application
 
 **Last reviewed:**  about 5 years ago 
@@ -26,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8785)
-* [  TypeScript ](#tab-panel-8786)
-* [  Hono ](#tab-panel-8787)
-* [  Python ](#tab-panel-8788)
+* [  JavaScript ](#tab-panel-9471)
+* [  TypeScript ](#tab-panel-9472)
+* [  Hono ](#tab-panel-9473)
+* [  Python ](#tab-panel-9474)
 
 JavaScript
 

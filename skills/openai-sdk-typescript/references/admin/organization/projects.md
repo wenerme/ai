@@ -2712,6 +2712,527 @@ console.log(projectRateLimit.id);
 
     The maximum requests per day. Only present for relevant models.
 
+# Model Permissions
+
+## Retrieve project model permissions
+
+`client.admin.organization.projects.modelPermissions.retrieve(stringprojectID, RequestOptionsoptions?): ProjectModelPermissions`
+
+**get** `/organization/projects/{project_id}/model_permissions`
+
+Returns model permissions for a project.
+
+### Parameters
+
+- `projectID: string`
+
+### Returns
+
+- `ProjectModelPermissions`
+
+  Represents the model allowlist or denylist policy for a project.
+
+  - `mode: "allow_list" | "deny_list"`
+
+    Whether the project uses an allowlist or a denylist.
+
+    - `"allow_list"`
+
+    - `"deny_list"`
+
+  - `model_ids: Array<string>`
+
+    The model IDs included in the model permissions policy.
+
+  - `object: "project.model_permissions"`
+
+    The object type, which is always `project.model_permissions`.
+
+    - `"project.model_permissions"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectModelPermissions = await client.admin.organization.projects.modelPermissions.retrieve(
+  'project_id',
+);
+
+console.log(projectModelPermissions.model_ids);
+```
+
+#### Response
+
+```json
+{
+  "mode": "allow_list",
+  "model_ids": [
+    "string"
+  ],
+  "object": "project.model_permissions"
+}
+```
+
+## Modify project model permissions
+
+`client.admin.organization.projects.modelPermissions.update(stringprojectID, ModelPermissionUpdateParamsbody, RequestOptionsoptions?): ProjectModelPermissions`
+
+**post** `/organization/projects/{project_id}/model_permissions`
+
+Updates model permissions for a project.
+
+### Parameters
+
+- `projectID: string`
+
+- `body: ModelPermissionUpdateParams`
+
+  - `mode: "allow_list" | "deny_list"`
+
+    The model permissions mode to apply.
+
+    - `"allow_list"`
+
+    - `"deny_list"`
+
+  - `model_ids: Array<string>`
+
+    The model IDs included in this permissions policy.
+
+### Returns
+
+- `ProjectModelPermissions`
+
+  Represents the model allowlist or denylist policy for a project.
+
+  - `mode: "allow_list" | "deny_list"`
+
+    Whether the project uses an allowlist or a denylist.
+
+    - `"allow_list"`
+
+    - `"deny_list"`
+
+  - `model_ids: Array<string>`
+
+    The model IDs included in the model permissions policy.
+
+  - `object: "project.model_permissions"`
+
+    The object type, which is always `project.model_permissions`.
+
+    - `"project.model_permissions"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectModelPermissions = await client.admin.organization.projects.modelPermissions.update(
+  'project_id',
+  { mode: 'allow_list', model_ids: ['string'] },
+);
+
+console.log(projectModelPermissions.model_ids);
+```
+
+#### Response
+
+```json
+{
+  "mode": "allow_list",
+  "model_ids": [
+    "string"
+  ],
+  "object": "project.model_permissions"
+}
+```
+
+## Delete project model permissions
+
+`client.admin.organization.projects.modelPermissions.delete(stringprojectID, RequestOptionsoptions?): ProjectModelPermissionsDeleted`
+
+**delete** `/organization/projects/{project_id}/model_permissions`
+
+Deletes model permissions for a project.
+
+### Parameters
+
+- `projectID: string`
+
+### Returns
+
+- `ProjectModelPermissionsDeleted`
+
+  Confirmation payload returned after deleting project model permissions.
+
+  - `deleted: boolean`
+
+    Whether the project model permissions were deleted.
+
+  - `object: "project.model_permissions.deleted"`
+
+    The object type, which is always `project.model_permissions.deleted`.
+
+    - `"project.model_permissions.deleted"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectModelPermissionsDeleted =
+  await client.admin.organization.projects.modelPermissions.delete('project_id');
+
+console.log(projectModelPermissionsDeleted.deleted);
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "project.model_permissions.deleted"
+}
+```
+
+## Domain Types
+
+### Project Model Permissions
+
+- `ProjectModelPermissions`
+
+  Represents the model allowlist or denylist policy for a project.
+
+  - `mode: "allow_list" | "deny_list"`
+
+    Whether the project uses an allowlist or a denylist.
+
+    - `"allow_list"`
+
+    - `"deny_list"`
+
+  - `model_ids: Array<string>`
+
+    The model IDs included in the model permissions policy.
+
+  - `object: "project.model_permissions"`
+
+    The object type, which is always `project.model_permissions`.
+
+    - `"project.model_permissions"`
+
+### Project Model Permissions Deleted
+
+- `ProjectModelPermissionsDeleted`
+
+  Confirmation payload returned after deleting project model permissions.
+
+  - `deleted: boolean`
+
+    Whether the project model permissions were deleted.
+
+  - `object: "project.model_permissions.deleted"`
+
+    The object type, which is always `project.model_permissions.deleted`.
+
+    - `"project.model_permissions.deleted"`
+
+# Hosted Tool Permissions
+
+## Retrieve project hosted tool permissions
+
+`client.admin.organization.projects.hostedToolPermissions.retrieve(stringprojectID, RequestOptionsoptions?): ProjectHostedToolPermissions`
+
+**get** `/organization/projects/{project_id}/hosted_tool_permissions`
+
+Returns hosted tool permissions for a project.
+
+### Parameters
+
+- `projectID: string`
+
+### Returns
+
+- `ProjectHostedToolPermissions`
+
+  Represents hosted tool permissions for a project.
+
+  - `code_interpreter: CodeInterpreter`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `file_search: FileSearch`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `image_generation: ImageGeneration`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `mcp: Mcp`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `web_search: WebSearch`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectHostedToolPermissions =
+  await client.admin.organization.projects.hostedToolPermissions.retrieve('project_id');
+
+console.log(projectHostedToolPermissions.code_interpreter);
+```
+
+#### Response
+
+```json
+{
+  "code_interpreter": {
+    "enabled": true
+  },
+  "file_search": {
+    "enabled": true
+  },
+  "image_generation": {
+    "enabled": true
+  },
+  "mcp": {
+    "enabled": true
+  },
+  "web_search": {
+    "enabled": true
+  }
+}
+```
+
+## Modify project hosted tool permissions
+
+`client.admin.organization.projects.hostedToolPermissions.update(stringprojectID, HostedToolPermissionUpdateParamsbody, RequestOptionsoptions?): ProjectHostedToolPermissions`
+
+**post** `/organization/projects/{project_id}/hosted_tool_permissions`
+
+Updates hosted tool permissions for a project.
+
+### Parameters
+
+- `projectID: string`
+
+- `body: HostedToolPermissionUpdateParams`
+
+  - `code_interpreter?: CodeInterpreter | null`
+
+    The code interpreter permission update.
+
+    - `enabled: boolean`
+
+      Whether to enable the hosted tool for the project.
+
+  - `file_search?: FileSearch | null`
+
+    The file search permission update.
+
+    - `enabled: boolean`
+
+      Whether to enable the hosted tool for the project.
+
+  - `image_generation?: ImageGeneration | null`
+
+    The image generation permission update.
+
+    - `enabled: boolean`
+
+      Whether to enable the hosted tool for the project.
+
+  - `mcp?: Mcp | null`
+
+    The MCP permission update.
+
+    - `enabled: boolean`
+
+      Whether to enable the hosted tool for the project.
+
+  - `web_search?: WebSearch | null`
+
+    The web search permission update.
+
+    - `enabled: boolean`
+
+      Whether to enable the hosted tool for the project.
+
+### Returns
+
+- `ProjectHostedToolPermissions`
+
+  Represents hosted tool permissions for a project.
+
+  - `code_interpreter: CodeInterpreter`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `file_search: FileSearch`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `image_generation: ImageGeneration`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `mcp: Mcp`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `web_search: WebSearch`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectHostedToolPermissions =
+  await client.admin.organization.projects.hostedToolPermissions.update('project_id');
+
+console.log(projectHostedToolPermissions.code_interpreter);
+```
+
+#### Response
+
+```json
+{
+  "code_interpreter": {
+    "enabled": true
+  },
+  "file_search": {
+    "enabled": true
+  },
+  "image_generation": {
+    "enabled": true
+  },
+  "mcp": {
+    "enabled": true
+  },
+  "web_search": {
+    "enabled": true
+  }
+}
+```
+
+## Domain Types
+
+### Project Hosted Tool Permissions
+
+- `ProjectHostedToolPermissions`
+
+  Represents hosted tool permissions for a project.
+
+  - `code_interpreter: CodeInterpreter`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `file_search: FileSearch`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `image_generation: ImageGeneration`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `mcp: Mcp`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
+  - `web_search: WebSearch`
+
+    Permission state for a single hosted tool on a project.
+
+    - `enabled: boolean`
+
+      Whether the hosted tool is enabled for the project.
+
 # Groups
 
 ## List project groups

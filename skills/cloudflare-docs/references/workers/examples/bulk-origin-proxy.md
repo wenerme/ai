@@ -10,20 +10,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Bulk origin override
 
 **Last reviewed:**  over 5 years ago 
 
 Resolve requests to your domain to a set of proxy third-party origin URLs.
 
-* [  JavaScript ](#tab-panel-8714)
-* [  TypeScript ](#tab-panel-8715)
-* [  Hono ](#tab-panel-8716)
-* [  Python ](#tab-panel-8717)
+* [  JavaScript ](#tab-panel-9400)
+* [  TypeScript ](#tab-panel-9401)
+* [  Hono ](#tab-panel-9402)
+* [  Python ](#tab-panel-9403)
 
 JavaScript
 

@@ -16,12 +16,11 @@ View tutorials to help you get started with AI Gateway.
 
 ## Docs
 
-| Name                                                                                                                                | Last Updated       | Difficulty |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------- |
-| [Set up Workers AI with AI Gateway](https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/)              |                    |            |
-| [Create your first AI Gateway using Workers AI](https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/)   | almost 2 years ago | Beginner   |
-| [Deploy a Worker that connects to OpenAI via AI Gateway](https://developers.cloudflare.com/ai-gateway/tutorials/deploy-aig-worker/) | over 2 years ago   | Beginner   |
-| [Use Pruna P-video through AI Gateway](https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/)                       | Beginner           |            |
+| Name                                                                                                                              | Last Updated       | Difficulty |
+| --------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------- |
+| [Set up Workers AI with AI Gateway](https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/)            | Beginner           |            |
+| [Create your first AI Gateway using Workers AI](https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/) | almost 2 years ago | Beginner   |
+| [Use Pruna P-video through AI Gateway](https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/)                     | Beginner           |            |
 
 ## Videos
 

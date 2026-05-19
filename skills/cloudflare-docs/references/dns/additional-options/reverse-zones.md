@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ IPv4 ](https://developers.cloudflare.com/search/?tags=IPv4)[ IPv6 ](https://developers.cloudflare.com/search/?tags=IPv6) 
-
 # Reverse zones and PTR records
 
 If you control your own IP prefix(es), you can set up reverse zones with PTR records to allow reverse DNS lookups.

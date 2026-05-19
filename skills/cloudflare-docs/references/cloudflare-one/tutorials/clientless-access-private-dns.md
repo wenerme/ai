@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Access a web application via its private hostname without the Cloudflare One Client
 
 **Last reviewed:**  about 2 years ago 

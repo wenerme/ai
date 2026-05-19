@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Validate the Access token with FastAPI
 
 **Last reviewed:**  almost 3 years ago 

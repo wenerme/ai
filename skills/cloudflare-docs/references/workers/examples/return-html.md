@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python)[ Rust ](https://developers.cloudflare.com/search/?tags=Rust) 
-
 # Return small HTML page
 
 **Last reviewed:**  over 2 years ago 
@@ -26,11 +22,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9513)
-* [  TypeScript ](#tab-panel-9514)
-* [  Python ](#tab-panel-9515)
-* [  Rust ](#tab-panel-9516)
-* [  Hono ](#tab-panel-9517)
+* [  JavaScript ](#tab-panel-9533)
+* [  TypeScript ](#tab-panel-9534)
+* [  Python ](#tab-panel-9535)
+* [  Rust ](#tab-panel-9536)
+* [  Hono ](#tab-panel-9537)
 
 JavaScript
 
@@ -68,7 +64,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWAOwBmAEyThk8QDYRALhYs2wDnC40+AkROmyFIgLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2SXmsbkkOIYDASBhIAAwAPABCRwAeQs5QAmgAFACi70+YAAfI8NgCKLg6Cink8AYcAIxIgAStjAYHQJAA6pgwLgAcgCdicSQATAkeVDq4SMBEABrEAwEgAd26JAA5vZbAgCLZcOQ6JsSBZySBcKgwIhbFTMLypfF6WzUSzkBisX8iGYjWcICAEFRgrYhSQAErXdxUFy2Y4fL4AGgezPetjgcwQLl8a0DGwiLxKDggVVsEV8ETssRQPrARCOiE9EAYAFVygAxbAADgivqNGwAvlWcTXbhba1Wa0RzKpmOpNNoePwhGIpDI5IphEVrHYHM43B4vC0qL5-JpSCEwpEwoRNKk-BksmuImRyWRCpYJ6UKonavVGrxmq1ktYJmYVhEedEAPrDUaZZO5Ob5FIaw7Ttu0CXtdAHAxh2MYRmHMIA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGAOzCArBIDM0gJzSZALhYs2wDnC40+AkeKmyFMgLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2SXmsbkkOIYDASBhIAAwAPABCRwAeQs5QAmgAFACi70+YAAfI8NgCKLg6Cink8AYdhEiABK2MBgdAkADqmDAuAByHx2JxJABMCR5UOrhIwEQAGsQDASAB3bokADm9lsCAItlw5DomxIFjJIFwqDAiFslMwPMl8TprNRzOQGKxfyIZkNZwgIAQVGCtkFJAAStd3FQXLZjh8vgAaB5M962OBzBAuXxrAMbCIvEoOCBVWwRXwROyxFDesBEI6ID0QBgAVXKADFsAAOCI+w0bAC+lZx1du5prlerRHMqmY6k02h4-CEYkkMnkimkRWsdgczjcHi8LSovn8mlIITCkTChE0qT8GSyq4iZDJZEKlnHpQqCdq9UavGarWS1gmZhWEW50QA+sNRpkk7k5vkUtW7Ydl2gQ9ro-YGEOxjSMw5hAA)
 
 TypeScript
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Conditional response
 
 **Last reviewed:**  about 4 years ago 
@@ -26,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8744)
-* [  TypeScript ](#tab-panel-8745)
-* [  Python ](#tab-panel-8746)
-* [  Hono ](#tab-panel-8747)
+* [  JavaScript ](#tab-panel-9430)
+* [  TypeScript ](#tab-panel-9431)
+* [  Python ](#tab-panel-9432)
+* [  Hono ](#tab-panel-9433)
 
 JavaScript
 

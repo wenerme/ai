@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack) 
-
 # Vike
 
 You can deploy your [Vike ↗](https://vike.dev) app to Cloudflare using the Vike extension [vike-photon ↗](https://vike.dev/vike-photon).

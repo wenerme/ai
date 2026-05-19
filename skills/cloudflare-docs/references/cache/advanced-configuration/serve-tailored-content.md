@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ A/B testing ](https://developers.cloudflare.com/search/?tags=A/B%20testing)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation)[ Next.js ](https://developers.cloudflare.com/search/?tags=Next.js) 
-
 # Serving tailored content with Cloudflare
 
 Content negotiation is the practice of serving different versions of a resource from a single URL, tailoring the experience to the end user. Common examples include delivering content in a specific language (`Accept-Language`), optimizing for a device (`User-Agent`), or serving modern image formats (`Accept`).

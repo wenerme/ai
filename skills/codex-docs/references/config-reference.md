@@ -6,6 +6,13 @@ Use this page as a searchable reference for Codex configuration files. For conce
 
 User-level configuration lives in `~/.codex/config.toml`. You can also add project-scoped overrides in `.codex/config.toml` files. Codex loads project-scoped config files only when you trust the project.
 
+Project-scoped config can't override machine-local provider, auth,
+notification, profile, or telemetry routing keys. Codex ignores
+`openai_base_url`, `chatgpt_base_url`, `model_provider`, `model_providers`,
+`notify`, `profile`, `profiles`, `experimental_realtime_ws_base_url`, and
+`otel` when they appear in a project-local `.codex/config.toml`; put those in
+user-level config instead.
+
 For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_workspace_write.*`), pair this reference with [Sandbox and approvals](https://developers.openai.com/codex/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](https://developers.openai.com/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](https://developers.openai.com/codex/agent-approvals-security#network-access).
 
 <ConfigTable
@@ -224,8 +231,9 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     },
     {
       key: "service_tier",
-      type: "flex | fast",
-      description: "Preferred service tier for new turns.",
+      type: "string",
+      description:
+        "Preferred service tier for new turns. Built-in values include `flex` and `fast`; legacy `fast` config maps to the request value `priority`, and catalog-provided tier IDs can also be stored.",
     },
     {
       key: "experimental_compact_prompt_file",
@@ -441,6 +449,18 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Deny list applied after `enabled_tools` for the MCP server.",
     },
     {
+      key: "mcp_servers.<id>.default_tools_approval_mode",
+      type: "auto | prompt | approve",
+      description:
+        "Default approval behavior for MCP tools on this server unless a per-tool override exists.",
+    },
+    {
+      key: "mcp_servers.<id>.tools.<tool>.approval_mode",
+      type: "auto | prompt | approve",
+      description:
+        "Per-tool approval behavior override for one MCP tool on this server.",
+    },
+    {
       key: "mcp_servers.<id>.scopes",
       type: "array<string>",
       description:
@@ -588,6 +608,75 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Enable personality selection controls (stable; on by default).",
     },
     {
+      key: "features.network_proxy",
+      type: "boolean | table",
+      description:
+        "Enable sandboxed networking. Use a table form when setting network policy options such as `domains` (experimental; off by default).",
+    },
+    {
+      key: "features.network_proxy.enabled",
+      type: "boolean",
+      description: "Enable sandboxed networking. Defaults to `false`.",
+    },
+    {
+      key: "features.network_proxy.domains",
+      type: "map<string, allow | deny>",
+      description:
+        "Domain policy for sandboxed networking. Unset by default, which means no external destinations are allowed until you add `allow` rules. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules; prefer scoped rules because `*` broadly opens public outbound access. Add `deny` rules for blocked destinations; `deny` wins on conflicts.",
+    },
+    {
+      key: "features.network_proxy.unix_sockets",
+      type: "map<string, allow | none>",
+      description:
+        "Unix socket policy for sandboxed networking. Unset by default; add `allow` entries for permitted sockets.",
+    },
+    {
+      key: "features.network_proxy.allow_local_binding",
+      type: "boolean",
+      description:
+        "Allow broader local/private-network access. Defaults to `false`; exact local IP literal or `localhost` allow rules can still permit specific local targets.",
+    },
+    {
+      key: "features.network_proxy.enable_socks5",
+      type: "boolean",
+      description: "Expose SOCKS5 support. Defaults to `true`.",
+    },
+    {
+      key: "features.network_proxy.enable_socks5_udp",
+      type: "boolean",
+      description: "Allow UDP over SOCKS5. Defaults to `true`.",
+    },
+    {
+      key: "features.network_proxy.allow_upstream_proxy",
+      type: "boolean",
+      description:
+        "Allow chaining through an upstream proxy from the environment. Defaults to `true`.",
+    },
+    {
+      key: "features.network_proxy.dangerously_allow_non_loopback_proxy",
+      type: "boolean",
+      description:
+        "Permit non-loopback listener addresses. Defaults to `false`; enabling it can expose proxy listeners beyond localhost.",
+    },
+    {
+      key: "features.network_proxy.dangerously_allow_all_unix_sockets",
+      type: "boolean",
+      description:
+        "Permit arbitrary Unix socket destinations instead of allowlist-only access. Defaults to `false`; use only in tightly controlled environments.",
+    },
+    {
+      key: "features.network_proxy.proxy_url",
+      type: "string",
+      description:
+        'HTTP listener URL for sandboxed networking. Defaults to `"http://127.0.0.1:3128"`.',
+    },
+    {
+      key: "features.network_proxy.socks_url",
+      type: "string",
+      description:
+        'SOCKS5 listener URL. Defaults to `"http://127.0.0.1:8081"`.',
+    },
+    {
       key: "features.web_search",
       type: "boolean",
       description:
@@ -627,7 +716,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "features.fast_mode",
       type: "boolean",
       description:
-        'Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default).',
+        "Enable model-catalog service tier selection in the TUI, including Fast-tier commands when the active model advertises them (stable; on by default).",
     },
     {
       key: "features.prevent_idle_sleep",
@@ -864,7 +953,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     },
     {
       key: "profiles.<name>.service_tier",
-      type: "flex | fast",
+      type: "string",
       description: "Profile-scoped service tier preference for new turns.",
     },
     {
@@ -1079,6 +1168,18 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Control alternate screen usage for the TUI (default: auto; auto skips it in Zellij to preserve scrollback).",
     },
     {
+      key: "tui.vim_mode_default",
+      type: "boolean",
+      description:
+        "Start the composer in Vim normal mode instead of insert mode (default: false). You can still toggle it per session with `/vim`.",
+    },
+    {
+      key: "tui.raw_output_mode",
+      type: "boolean",
+      description:
+        "Start the TUI in raw scrollback mode for copy-friendly terminal selection (default: false). You can toggle it with `/raw` or the default `alt-r` key binding.",
+    },
+    {
       key: "tui.show_tooltips",
       type: "boolean",
       description:
@@ -1112,7 +1213,37 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "tui.keymap.<context>.<action> = []",
       type: "empty array",
       description:
-        "Unbind the action in that keymap context. Key names use normalized strings such as `ctrl-a`, `shift-enter`, or `page-down`.",
+        "Unbind the action in that keymap context. Key names use normalized strings such as `ctrl-a`, `shift-enter`, `page-down`, or `minus`.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.enabled",
+      type: "boolean",
+      description:
+        "Enable or disable an MCP server bundled by an installed plugin without changing the plugin manifest.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.default_tools_approval_mode",
+      type: "auto | prompt | approve",
+      description:
+        "Default approval behavior for tools on a plugin-provided MCP server.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.enabled_tools",
+      type: "array<string>",
+      description:
+        "Allow list of tools exposed from a plugin-provided MCP server.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.disabled_tools",
+      type: "array<string>",
+      description:
+        "Deny list applied after `enabled_tools` for a plugin-provided MCP server.",
+    },
+    {
+      key: "plugins.<plugin>.mcp_servers.<server>.tools.<tool>.approval_mode",
+      type: "auto | prompt | approve",
+      description:
+        "Per-tool approval behavior override for a plugin-provided MCP tool.",
     },
     {
       key: "tui.model_availability_nux.<model>",
@@ -1231,13 +1362,13 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "permissions.<name>.network.proxy_url",
       type: "string",
       description:
-        "HTTP proxy endpoint used when this permissions profile enables the managed network proxy.",
+        "HTTP listener URL used when this permissions profile enables sandboxed networking.",
     },
     {
       key: "permissions.<name>.network.enable_socks5",
       type: "boolean",
       description:
-        "Expose a SOCKS5 listener when this permissions profile enables the managed network proxy.",
+        "Expose SOCKS5 support when this permissions profile enables sandboxed networking.",
     },
     {
       key: "permissions.<name>.network.socks_url",
@@ -1253,42 +1384,37 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "permissions.<name>.network.allow_upstream_proxy",
       type: "boolean",
       description:
-        "Allow the managed proxy to chain to another upstream proxy.",
+        "Allow sandboxed networking to chain through another upstream proxy.",
     },
     {
       key: "permissions.<name>.network.dangerously_allow_non_loopback_proxy",
       type: "boolean",
       description:
-        "Permit non-loopback bind addresses for the managed proxy listener.",
+        "Permit non-loopback bind addresses for sandboxed networking listeners. Enabling it can expose listeners beyond localhost.",
     },
     {
       key: "permissions.<name>.network.dangerously_allow_all_unix_sockets",
       type: "boolean",
       description:
-        "Allow the proxy to use arbitrary Unix sockets instead of the default restricted set.",
-    },
-    {
-      key: "permissions.<name>.network.mode",
-      type: "limited | full",
-      description: "Network proxy mode used for subprocess traffic.",
+        "Allow arbitrary Unix socket destinations instead of the default restricted set. Use only in tightly controlled environments.",
     },
     {
       key: "permissions.<name>.network.domains",
       type: "map<string, allow | deny>",
       description:
-        "Domain rules for the managed proxy. Use domain names or wildcard patterns as keys, with `allow` or `deny` values.",
+        "Domain rules for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules. `deny` wins on conflicts.",
     },
     {
       key: "permissions.<name>.network.unix_sockets",
       type: "map<string, allow | none>",
       description:
-        "Unix socket rules for the managed proxy. Use socket paths as keys, with `allow` or `none` values.",
+        "Unix socket rules for sandboxed networking. Use socket paths as keys, with `allow` or `none` values.",
     },
     {
       key: "permissions.<name>.network.allow_local_binding",
       type: "boolean",
       description:
-        "Permit local bind/listen operations through the managed proxy.",
+        "Permit broader local/private-network access through sandboxed networking. Exact local IP literal or `localhost` allow rules can still permit specific local targets when this stays `false`.",
     },
     {
       key: "projects.<path>.trust_level",
@@ -1440,6 +1566,84 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
       type: "boolean",
       description:
         "Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows.",
+    },
+    {
+      key: "experimental_network",
+      type: "table",
+      description:
+        "Network access requirements enforced from `requirements.toml`. These constraints are separate from `features.network_proxy` and can configure sandboxed networking without the user feature flag.",
+    },
+    {
+      key: "experimental_network.enabled",
+      type: "boolean",
+      description:
+        "Enable sandboxed networking requirements. This does not grant network access when the active sandbox keeps command networking off.",
+    },
+    {
+      key: "experimental_network.http_port",
+      type: "integer",
+      description:
+        "Loopback HTTP listener port to use for `[experimental_network]` requirements.",
+    },
+    {
+      key: "experimental_network.socks_port",
+      type: "integer",
+      description:
+        "Loopback SOCKS5 listener port to use for `[experimental_network]` requirements.",
+    },
+    {
+      key: "experimental_network.allow_upstream_proxy",
+      type: "boolean",
+      description:
+        "Allow sandboxed networking to chain through an upstream proxy from the environment.",
+    },
+    {
+      key: "experimental_network.dangerously_allow_non_loopback_proxy",
+      type: "boolean",
+      description:
+        "Permit non-loopback listener addresses for `[experimental_network]` requirements. Enabling it can expose listeners beyond localhost.",
+    },
+    {
+      key: "experimental_network.dangerously_allow_all_unix_sockets",
+      type: "boolean",
+      description:
+        "Permit arbitrary Unix socket destinations instead of allowlist-only access. Use only in tightly controlled environments.",
+    },
+    {
+      key: "experimental_network.domains",
+      type: "map<string, allow | deny>",
+      description:
+        "Map-shaped administrator domain policy for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules; prefer scoped rules because `*` broadly opens public outbound access. `deny` wins on conflicts. Do not combine this with `experimental_network.allowed_domains` or `experimental_network.denied_domains`.",
+    },
+    {
+      key: "experimental_network.allowed_domains",
+      type: "array<string>",
+      description:
+        "List-shaped administrator allow rules for sandboxed networking. Do not combine this with `experimental_network.domains`.",
+    },
+    {
+      key: "experimental_network.denied_domains",
+      type: "array<string>",
+      description:
+        "List-shaped administrator deny rules for sandboxed networking. Do not combine this with `experimental_network.domains`.",
+    },
+    {
+      key: "experimental_network.managed_allowed_domains_only",
+      type: "boolean",
+      description:
+        "When `true`, only administrator-managed allow rules remain effective while sandboxed networking requirements are active; user allowlist additions are ignored. Without managed allow rules, user-added domain allow rules do not remain effective.",
+    },
+    {
+      key: "experimental_network.unix_sockets",
+      type: "map<string, allow | none>",
+      description:
+        "Administrator-managed Unix socket policy for sandboxed networking.",
+    },
+    {
+      key: "experimental_network.allow_local_binding",
+      type: "boolean",
+      description:
+        "Permit broader local/private-network access for sandboxed networking. Exact local IP literal or `localhost` allow rules can still permit specific local targets when this stays `false`.",
     },
     {
       key: "hooks",

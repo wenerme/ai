@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform) 
-
 # Terraform
 
 This example shows how to configure [Pipelines](https://developers.cloudflare.com/pipelines/) and [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/) with Terraform using the [Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (v5.19.0+).

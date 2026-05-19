@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Prompt injection detection
 
 AI Security for Apps (formerly Firewall for AI) detects prompt injection attacks — prompts intentionally designed to subvert the intended behavior of your LLM as specified by the developer.

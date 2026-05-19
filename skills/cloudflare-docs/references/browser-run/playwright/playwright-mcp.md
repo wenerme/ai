@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
-
 # Playwright MCP
 
 [@cloudflare/playwright-mcp ↗](https://github.com/cloudflare/playwright-mcp) is a [Playwright MCP ↗](https://github.com/microsoft/playwright-mcp) server fork that provides browser automation capabilities using Playwright and Browser Run.
@@ -68,8 +64,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-4421)
-* [  wrangler.toml ](#tab-panel-4422)
+* [  wrangler.jsonc ](#tab-panel-4841)
+* [  wrangler.toml ](#tab-panel-4842)
 
 JSONC
 
@@ -85,7 +81,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-18",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -140,7 +136,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-18"
 
 compatibility_flags = [ "nodejs_compat" ]
 

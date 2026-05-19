@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft) 
-
 # Integrate Microsoft MCAS with Cloudflare Zero Trust
 
 **Last reviewed:**  over 4 years ago 

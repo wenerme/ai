@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Grafana ](https://developers.cloudflare.com/search/?tags=Grafana) 
-
 # Monitor Cloudflare Tunnel with Grafana
 
 **Last reviewed:**  over 2 years ago 

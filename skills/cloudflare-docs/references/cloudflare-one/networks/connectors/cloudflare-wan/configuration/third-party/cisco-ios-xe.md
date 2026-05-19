@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ IPsec ](https://developers.cloudflare.com/search/?tags=IPsec) 
-
 # Cisco IOS XE
 
 This tutorial contains a configuration example for setting up an Internet Protocol Security (IPsec) tunnel between Cisco IOS XE and Cloudflare. For this tutorial, the tested Cisco IOS XE software was version 17.03.07.

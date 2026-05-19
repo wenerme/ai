@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Post-quantum ](https://developers.cloudflare.com/search/?tags=Post-quantum) 
-
 # Cloudflare Tunnel
 
 Securely connect your origin servers, APIs, and services to Cloudflare with post-quantum encrypted tunnels — no public IPs required.

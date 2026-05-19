@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
-
 # Dynamic Workers Playground
 
 Try the Dynamic Workers [playground ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground) to write or import code from GitHub, bundle it at runtime, execute it in a Dynamic Worker, and view real-time logs.
@@ -35,8 +31,8 @@ The playground uses [@cloudflare/worker-bundler ↗](https://www.npmjs.com/packa
 
 Pass source files and a `package.json` to `createWorker()`, which resolves dependencies and returns bundled modules ready to load as a Dynamic Worker:
 
-* [  JavaScript ](#tab-panel-6229)
-* [  TypeScript ](#tab-panel-6230)
+* [  JavaScript ](#tab-panel-6316)
+* [  TypeScript ](#tab-panel-6317)
 
 JavaScript
 
@@ -102,8 +98,8 @@ const { mainModule, modules, warnings } = await createWorker({
 
 `env.LOADER.load()` creates a new Dynamic Worker on every call. To avoid re-bundling unchanged code, use `env.LOADER.get(id, callback)` instead. The runtime returns an existing Worker on a cache hit, or calls your callback to build one on a miss:
 
-* [  JavaScript ](#tab-panel-6231)
-* [  TypeScript ](#tab-panel-6232)
+* [  JavaScript ](#tab-panel-6318)
+* [  TypeScript ](#tab-panel-6319)
 
 JavaScript
 
@@ -183,8 +179,8 @@ When you run code in the playground, console output from the Dynamic Worker stre
 
 To wire this up, include the Tail Worker in the `tails` array when creating the Dynamic Worker:
 
-* [  JavaScript ](#tab-panel-6227)
-* [  TypeScript ](#tab-panel-6228)
+* [  JavaScript ](#tab-panel-6314)
+* [  TypeScript ](#tab-panel-6315)
 
 JavaScript
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Cookie parsing
 
 **Last reviewed:**  about 4 years ago 
@@ -26,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8773)
-* [  TypeScript ](#tab-panel-8774)
-* [  Python ](#tab-panel-8775)
-* [  Hono ](#tab-panel-8776)
+* [  JavaScript ](#tab-panel-9459)
+* [  TypeScript ](#tab-panel-9460)
+* [  Python ](#tab-panel-9461)
+* [  Hono ](#tab-panel-9462)
 
 JavaScript
 

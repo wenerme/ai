@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Subdomains and subdirectories
 
 ## Run APO on a subdomain

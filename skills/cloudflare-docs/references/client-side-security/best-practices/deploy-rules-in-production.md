@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ CSP ](https://developers.cloudflare.com/search/?tags=CSP) 
-
 # Deploy content security rules in production
 
 Note

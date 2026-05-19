@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JSON ](https://developers.cloudflare.com/search/?tags=JSON) 
-
 # /json - Capture structured data using AI
 
 The `/json` endpoint extracts structured data from a webpage. You can specify the expected output using either a `prompt` or a `response_format` parameter which accepts a JSON schema. The endpoint returns the extracted data in JSON format.
@@ -55,8 +51,8 @@ And at least one of:
 
 ### With a Prompt and JSON schema
 
-* [ curl ](#tab-panel-4427)
-* [ TypeScript SDK ](#tab-panel-4428)
+* [ curl ](#tab-panel-4847)
+* [ TypeScript SDK ](#tab-panel-4848)
 
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation) 
-
 # Network policies
 
 Note

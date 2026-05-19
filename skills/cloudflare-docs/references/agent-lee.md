@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Agent Lee
 
 An AI co-pilot built into the Cloudflare dashboard. Ask questions about your account, take actions, and run diagnostics, all in plain language.

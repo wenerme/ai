@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Migration ](https://developers.cloudflare.com/search/?tags=Migration) 
-
 # Migrate an existing zone with DNSSEC enabled
 
 Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.

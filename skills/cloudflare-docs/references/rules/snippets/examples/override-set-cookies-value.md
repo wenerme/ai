@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies)[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification) 
-
 # Override a Set-Cookie header with a certain value
 
 Get a specific `Set-Cookie` header and update it with a certain value.

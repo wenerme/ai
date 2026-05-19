@@ -10,20 +10,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Turnstile with Workers
 
 **Last reviewed:**  about 3 years ago 
 
 Inject [Turnstile](https://developers.cloudflare.com/turnstile/) implicitly into HTML elements using the HTMLRewriter runtime API.
 
-* [  JavaScript ](#tab-panel-8882)
-* [  TypeScript ](#tab-panel-8883)
-* [  Hono ](#tab-panel-8884)
-* [  Python ](#tab-panel-8885)
+* [  JavaScript ](#tab-panel-9568)
+* [  TypeScript ](#tab-panel-9569)
+* [  Hono ](#tab-panel-9570)
+* [  Python ](#tab-panel-9571)
 
 JavaScript
 

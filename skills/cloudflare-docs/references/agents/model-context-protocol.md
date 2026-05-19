@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
-
 # Model Context Protocol (MCP)
 
 You can build and deploy [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io/) servers on Cloudflare.
@@ -33,7 +29,7 @@ You can build and deploy [Model Context Protocol (MCP) ↗](https://modelcontext
 The MCP standard supports two modes of operation:
 
 * **Remote MCP connections**: MCP clients connect to MCP servers over the Internet, establishing a connection using [Streamable HTTP](https://developers.cloudflare.com/agents/model-context-protocol/transport/), and authorizing the MCP client access to resources on the user's account using [OAuth](https://developers.cloudflare.com/agents/model-context-protocol/authorization/).
-* **Local MCP connections**: MCP clients connect to MCP servers on the same machine, using [stdio ↗](https://spec.modelcontextprotocol.io/specification/draft/basic/transports/#stdio) as a local transport method.
+* **Local MCP connections**: MCP clients connect to MCP servers on the same machine, using [stdio ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports#stdio) as a local transport method.
 
 ### Best Practices
 

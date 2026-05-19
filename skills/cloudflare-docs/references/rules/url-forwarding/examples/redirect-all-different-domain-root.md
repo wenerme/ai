@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
-
 # Redirect requests for a domain to a new domain
 
 Create a redirect rule to redirect all URLs for a domain to point to the root of a new domain, including any subdomains of the old domain.

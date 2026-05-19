@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # Cipher suites
 
 Refer to the following list to know what cipher suites Cloudflare presents to origin servers during an SSL/TLS handshake.

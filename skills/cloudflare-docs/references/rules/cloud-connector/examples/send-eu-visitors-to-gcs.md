@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ GCP ](https://developers.cloudflare.com/search/?tags=GCP)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation) 
-
 # Send EU visitors to a Google Cloud Storage bucket
 
 Route all traffic from EU visitors to a Google Cloud Storage bucket using Cloud Connector.

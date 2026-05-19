@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ SQL ](https://developers.cloudflare.com/search/?tags=SQL) 
-
 # Connect to and query your Turso database using Workers
 
 **Last reviewed:**  about 3 years ago 
@@ -226,8 +222,8 @@ libsql://my-db-<your-github-username>.turso.io
 
 Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in your editor and at the bottom of the file, create a new `[vars]` section representing the [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) for your project:
 
-* [  wrangler.jsonc ](#tab-panel-9261)
-* [  wrangler.toml ](#tab-panel-9262)
+* [  wrangler.jsonc ](#tab-panel-9947)
+* [  wrangler.toml ](#tab-panel-9948)
 
 JSONC
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SAML ](https://developers.cloudflare.com/search/?tags=SAML) 
-
 # OneLogin (SAML)
 
 OneLogin provides SSO identity management. Cloudflare Access supports OneLogin as an SAML identity provider.

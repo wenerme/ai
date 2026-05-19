@@ -10,18 +10,20 @@ Make an authenticated request to the GitLab API.
 ## Synopsis
 
 Makes an authenticated HTTP request to the GitLab API, and prints the response.
-The endpoint argument should either be a path of a GitLab API v4 endpoint, or
-`graphql` to access the GitLab GraphQL API.
+Specify either a path to a GitLab API v4 endpoint, or `graphql` to access the
+GitLab GraphQL API.
+
+For more information, see:
 
 - [GitLab REST API documentation](https://docs.gitlab.com/api/)
 - [GitLab GraphQL documentation](https://docs.gitlab.com/api/graphql/)
 
-If the current directory is a Git directory, uses the GitLab authenticated host in the current
-directory. Otherwise, `gitlab.com` will be used.
+If the current directory is a Git directory, this command uses the GitLab
+authenticated host in the current directory. Otherwise, `gitlab.com` is used.
 To override the GitLab hostname, use `--hostname`.
 
-These placeholder values, when used in the endpoint argument, are
-replaced with values from the repository of the current directory:
+When used in the endpoint argument, these placeholder values are replaced
+with values from the repository of the current directory:
 
 - `:branch`
 - `:fullpath`
@@ -32,17 +34,17 @@ replaced with values from the repository of the current directory:
 - `:user`
 - `:username`
 
-Methods: the default HTTP request method is `GET`, if no parameters are added,
-and `POST` otherwise. Override the method with `--method`.
+The default HTTP request method is `GET` when no parameters are added,
+and `POST` otherwise. To override the method, use `--method`.
 
 Pass one or more `--raw-field` values in `key=value` format to add
 JSON-encoded string parameters to the `POST` body.
 
-The `--field` flag behaves like `--raw-field` with magic type conversion based
-on the format of the value:
+The `--field` flag behaves like `--raw-field` but converts values
+based on their format:
 
 - Literal values `true`, `false`, `null`, and integer numbers are converted to
-  appropriate JSON types.
+  the matching JSON types.
 - Placeholder values `:namespace`, `:repo`, and `:branch` are populated with values
   from the repository of the current directory.
 - If the value starts with `@`, the rest of the value is interpreted as a
@@ -51,15 +53,15 @@ on the format of the value:
 For GraphQL requests, all fields other than `query` and `operationName` are
 interpreted as GraphQL variables.
 
-Use `--form` to send data as `multipart/form-data` instead of JSON. This is
+To send data as `multipart/form-data` instead of JSON, use `--form`. This is
 required for API endpoints that accept file uploads, such as wiki attachments.
 Pass one or more `--form` values in `key=value` format. To upload a file,
 prefix the value with `@` followed by the file path. Pass `-` to read from
-standard input. Cannot be combined with `--field`, `--raw-field`, or `--input`.
+standard input. Do not combine `--form` with `--field`, `--raw-field`, or `--input`.
 
-Raw request body can be passed from the outside via a file specified by `--input`.
-Pass `-` to read from standard input. In this mode, parameters specified with
-`--field` flags are serialized into URL query parameters.
+To pass a raw request body, use `--input` with a file path. Pass `-` to
+read from standard input. In this mode, parameters specified with `--field`
+flags are serialized into URL query parameters.
 
 In `--paginate` mode, all pages of results are requested sequentially until
 no more pages of results remain. For GraphQL requests:
@@ -70,10 +72,12 @@ no more pages of results remain. For GraphQL requests:
 The `--output` flag controls the output format:
 
 - `json` (default): Pretty-printed JSON. Arrays are output as a single JSON array.
-- `ndjson`: Newline-delimited JSON (also known as JSONL or JSON Lines). Each array element
-  or object is output on a separate line. This format is more memory-efficient for large datasets
-  and works well with tools like `jq`. See <https://github.com/ndjson/ndjson-spec> and
-  <https://jsonlines.org/> for format specifications.
+- `ndjson`: Newline-delimited JSON, also known as JSON Lines. Each array element
+  or object is output on a separate line. This format is more memory-efficient for
+  large datasets and works well with tools like `jq`.
+
+For ndjson format specifications, see the
+[ndjson spec](https://github.com/ndjson/ndjson-spec) and [JSON Lines](https://jsonlines.org/).
 
 ```plaintext
 glab api <endpoint> [flags]
@@ -82,14 +86,29 @@ glab api <endpoint> [flags]
 ## Examples
 
 ```console
-$ glab api projects/:fullpath/releases
-$ glab api projects/gitlab-com%2Fwww-gitlab-com/issues
-$ glab api --method POST projects/:fullpath/wikis/attachments --form "file=@./image.png" --form "branch=main"
-$ glab api issues --paginate
-$ glab api issues --paginate --output ndjson
-$ glab api issues --paginate --output ndjson | jq 'select(.state == "opened")'
-$ glab api graphql -f query="query { currentUser { username } }"
-$ glab api graphql -f query='
+# List releases for the current project, expanding the :fullpath placeholder
+glab api projects/:fullpath/releases
+
+# List issues for a project by URL-encoded path
+glab api projects/gitlab-com%2Fwww-gitlab-com/issues
+
+# Upload a file to a project wiki
+glab api --method POST projects/:fullpath/wikis/attachments --form "file=@./image.png" --form "branch=main"
+
+# Fetch all pages of issues
+glab api issues --paginate
+
+# Fetch all pages of issues as newline-delimited JSON
+glab api issues --paginate --output ndjson
+
+# Pipe paginated output to jq to filter open issues
+glab api issues --paginate --output ndjson | jq 'select(.state == "opened")'
+
+# Run a simple GraphQL query
+glab api graphql -f query="query { currentUser { username } }"
+
+# Run a multi-line GraphQL query for project metadata
+glab api graphql -f query='
   query {
     project(fullPath: "gitlab-org/gitlab-docs") {
       name
@@ -108,7 +127,8 @@ $ glab api graphql -f query='
   }
 '
 
-$ glab api graphql --paginate -f query='
+# Run a paginated GraphQL query using an endCursor variable
+glab api graphql --paginate -f query='
   query($endCursor: String) {
     project(fullPath: "gitlab-org/graphql-sandbox") {
       name
@@ -131,10 +151,10 @@ $ glab api graphql --paginate -f query='
 ## Options
 
 ```plaintext
-  -F, --field stringArray       Add a parameter of inferred type. Changes the default HTTP method to "POST".
-      --form stringArray        Add a multipart form field. Use @filepath to upload a file, or @- to read from standard input (at most once). Changes the default HTTP method to "POST".
+  -F, --field stringArray       Add a parameter of inferred type. Using this flag changes the default HTTP method to POST.
+      --form stringArray        Add a multipart form field. To upload a file, prefix the value with @ followed by the file path. To read from standard input, use @- (at most once). Using this flag changes the default HTTP method to POST.
   -H, --header stringArray      Add an additional HTTP request header.
-      --hostname string         The GitLab hostname for the request. Defaults to 'gitlab.com', or the authenticated host in the current Git directory.
+      --hostname string         The GitLab hostname for the request. Defaults to gitlab.com, or the authenticated host in the current Git directory.
   -i, --include                 Include HTTP response headers in the output.
       --input string            The file to use as the body for the HTTP request.
   -X, --method string           The HTTP method for the request. (default "GET")

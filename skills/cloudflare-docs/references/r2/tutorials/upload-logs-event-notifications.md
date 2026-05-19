@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Log and store upload events in R2 with event notifications
 
 **Last reviewed:**  about 2 years ago 
@@ -102,8 +98,8 @@ cd consumer-worker
 
 In your Worker project's \[[Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)\](/workers/wrangler/configuration/), add a [queue consumer](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) and [R2 bucket binding](https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets). The queues consumer bindings will register your Worker as a consumer of your future event notifications and the R2 bucket bindings will allow your Worker to access your R2 bucket.
 
-* [  wrangler.jsonc ](#tab-panel-7297)
-* [  wrangler.toml ](#tab-panel-7298)
+* [  wrangler.jsonc ](#tab-panel-7774)
+* [  wrangler.toml ](#tab-panel-7775)
 
 JSONC
 
@@ -119,7 +115,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-18",
 
   "compatibility_flags": [
 
@@ -174,7 +170,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-18"
 
 compatibility_flags = [ "nodejs_compat" ]
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft)[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Microsoft 365 Copilot
 
 The Microsoft 365 Copilot integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Microsoft 365 account that could leave you and your organization vulnerable.

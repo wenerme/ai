@@ -31,8 +31,8 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-4153)
-* [ Unauthenticated Gateway ](#tab-panel-4154)
+* [ With Authenticated Gateway ](#tab-panel-4537)
+* [ Unauthenticated Gateway ](#tab-panel-4538)
 
 Terminal window
 
@@ -129,8 +129,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-4155)
-* [ Unauthenticated Gateway ](#tab-panel-4156)
+* [ With Authenticated Gateway ](#tab-panel-4539)
+* [ Unauthenticated Gateway ](#tab-panel-4540)
 
 ```
 
@@ -236,11 +236,11 @@ const message = await anthropic.messages.create({
 
 ## OpenAI-Compatible Endpoint
 
-You can also use the [OpenAI-compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) (`/ai-gateway/usage/chat-completion/`) to access Anthropic models using the OpenAI API schema. To do so, send your requests to:
+You can also access Anthropic models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
 ```
 
-https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions
+https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
 
 
 ```

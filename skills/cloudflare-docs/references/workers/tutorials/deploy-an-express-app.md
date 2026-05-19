@@ -10,13 +10,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Deploy an Express.js application on Cloudflare Workers
 
-**Last reviewed:**  6 months ago 
+**Last reviewed:**  7 months ago 
 
 In this tutorial, you will learn how to deploy an [Express.js ↗](https://expressjs.com/) application on Cloudflare Workers using the [Cloudflare Workers platform](https://developers.cloudflare.com/workers/) and [D1 database](https://developers.cloudflare.com/d1/). You will build a Members Registry API with basic Create, Read, Update, and Delete (CRUD) operations. You will use D1 as the database for storing and retrieving member data.
 
@@ -93,8 +89,8 @@ bun add express @types/express
 
 Express.js on Cloudflare Workers requires the `nodejs_compat` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/). This flag enables Node.js APIs and allows Express to run on the Workers runtime. Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9271)
-* [  wrangler.toml ](#tab-panel-9272)
+* [  wrangler.jsonc ](#tab-panel-9957)
+* [  wrangler.toml ](#tab-panel-9958)
 
 JSONC
 
@@ -181,8 +177,8 @@ To access your new D1 Database in your Worker, add the following snippet to your
 
 The binding will be added to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-9273)
-* [  wrangler.toml ](#tab-panel-9274)
+* [  wrangler.jsonc ](#tab-panel-9959)
+* [  wrangler.toml ](#tab-panel-9960)
 
 JSONC
 

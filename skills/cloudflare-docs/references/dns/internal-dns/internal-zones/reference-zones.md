@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Reference zones
 
 During an [internal DNS query resolution](https://developers.cloudflare.com/dns/internal-dns/#architecture-overview), if no internal record is found within a matching internal zone, Cloudflare will check if the matching internal zone is referencing another internal zone. Successive references can be followed with a maximum of five references in a chain.
@@ -31,8 +27,8 @@ A wildcard record (`*.example.local`) in the matching internal zone will take pr
 
 ## Set up
 
-* [ Dashboard ](#tab-panel-5571)
-* [ API ](#tab-panel-5572)
+* [ Dashboard ](#tab-panel-5991)
+* [ API ](#tab-panel-5992)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

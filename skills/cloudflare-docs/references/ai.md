@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # AI
 
 Run AI models on Cloudflare's global network.
@@ -68,7 +64,7 @@ An AI-powered assistant that helps you navigate, configure, and manage Cloudflar
 
 Spin up isolated Workers on demand to execute code.
 
-**[Sandbox SDK](https://developers.cloudflare.com/sandbox-sdk/)** 
+**[Sandbox SDK](https://developers.cloudflare.com/sandbox/)** 
 
 Build secure, isolated code execution environments.
 

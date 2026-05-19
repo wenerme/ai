@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Caching ](https://developers.cloudflare.com/search/?tags=Caching) 
-
 # Smart Tiered Cache
 
 Availability

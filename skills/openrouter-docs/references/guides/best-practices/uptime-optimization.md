@@ -11,9 +11,9 @@ OpenRouter continuously monitors the health and availability of AI providers to 
 
 OpenRouter tracks response times, error rates, and availability across all providers in real-time. This data helps us make intelligent routing decisions and provides transparency about service reliability.
 
-## Uptime Example: Claude 4 Sonnet
+## Uptime Example: Claude Sonnet 4.6
 
-## Uptime Example: Llama 3.3 70B Instruct
+## Uptime Example: GLM 5.1
 
 ## Customizing Provider Selection
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Playback ](https://developers.cloudflare.com/search/?tags=Playback) 
-
 # RTMPS playback
 
 **Last reviewed:**  over 3 years ago 

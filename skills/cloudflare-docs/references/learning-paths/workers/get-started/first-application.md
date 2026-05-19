@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Hono ](https://developers.cloudflare.com/search/?tags=Hono) 
-
 # First application
 
 ## Build an AI application with Hono and Workers

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Ruby ](https://developers.cloudflare.com/search/?tags=Ruby) 
-
 # Migrating a Jekyll-based site from GitHub Pages
 
 **Last reviewed:**  almost 5 years ago 

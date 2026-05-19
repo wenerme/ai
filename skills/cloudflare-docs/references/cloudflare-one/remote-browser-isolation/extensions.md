@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
-
 # Extensions
 
 Browser Isolation supports running native Chromium Web Extensions in the remote browser.

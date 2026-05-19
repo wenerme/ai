@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Troubleshoot connectivity
 
 This guide helps you determine whether a tunnel health alert is actually affecting your traffic. A degraded or down tunnel only matters if your traffic is currently routing through the Cloudflare data center where that tunnel is unhealthy.

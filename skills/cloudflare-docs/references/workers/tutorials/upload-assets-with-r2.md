@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Securely access and upload assets with Cloudflare R2
 
 **Last reviewed:**  almost 3 years ago 
@@ -95,8 +91,8 @@ After your new R2 bucket is ready, use it inside your Worker application.
 
 Use your R2 bucket inside your Worker project by modifying the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to include an R2 bucket [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Add the following R2 bucket binding to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9295)
-* [  wrangler.toml ](#tab-panel-9296)
+* [  wrangler.jsonc ](#tab-panel-9981)
+* [  wrangler.toml ](#tab-panel-9982)
 
 JSONC
 

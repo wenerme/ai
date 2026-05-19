@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AWS ](https://developers.cloudflare.com/search/?tags=AWS)[ GCP ](https://developers.cloudflare.com/search/?tags=GCP)[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Troubleshoot compute accounts
 
 Cloudflare CASB detects when compute accounts are unhealthy or outdated. Common compute account issues include security or functionality updates and API token misconfigurations.

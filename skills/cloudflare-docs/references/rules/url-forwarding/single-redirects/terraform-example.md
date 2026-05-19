@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform)[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
-
 # Create a redirect rule using Terraform
 
 Note

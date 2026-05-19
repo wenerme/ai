@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ GCP ](https://developers.cloudflare.com/search/?tags=GCP) 
-
 # Google Cloud HSM
 
 This tutorial uses [Google Cloud HSM ↗](https://cloud.google.com/kms/docs/hsm) — a FIPS 140-2 Level 3 certified implementation.

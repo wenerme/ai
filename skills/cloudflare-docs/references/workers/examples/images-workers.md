@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Custom Domain with Images
 
 **Last reviewed:**  over 3 years ago 
@@ -33,10 +29,10 @@ To serve images from a custom domain:
 2. Select **Create application** \> **Workers** \> **Create Worker** and create your Worker.
 3. In your Worker, select **Quick edit** and paste the following code.
 
-* [  JavaScript ](#tab-panel-8800)
-* [  TypeScript ](#tab-panel-8801)
-* [  Hono ](#tab-panel-8802)
-* [  Python ](#tab-panel-8803)
+* [  JavaScript ](#tab-panel-9486)
+* [  TypeScript ](#tab-panel-9487)
+* [  Hono ](#tab-panel-9488)
+* [  Python ](#tab-panel-9489)
 
 JavaScript
 

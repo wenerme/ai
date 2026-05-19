@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ Rust ](https://developers.cloudflare.com/search/?tags=Rust)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Logging headers to console
 
 **Last reviewed:**  over 5 years ago 
@@ -26,11 +22,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8804)
-* [  TypeScript ](#tab-panel-8805)
-* [  Python ](#tab-panel-8806)
-* [  Rust ](#tab-panel-8807)
-* [  Hono ](#tab-panel-8808)
+* [  JavaScript ](#tab-panel-9490)
+* [  TypeScript ](#tab-panel-9491)
+* [  Python ](#tab-panel-9492)
+* [  Rust ](#tab-panel-9493)
+* [  Hono ](#tab-panel-9494)
 
 JavaScript
 

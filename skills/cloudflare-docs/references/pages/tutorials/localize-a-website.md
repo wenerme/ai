@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Localize a website with HTMLRewriter
 
 **Last reviewed:**  about 2 years ago 
@@ -442,8 +438,8 @@ Your i18n tool built on Cloudflare Pages is complete and it is time to deploy it
 
 To deploy your application to a `*.pages.dev` subdomain, you need to specify a directory of static assets to serve, configure the `pages_build_output_dir` in your project’s Wrangler file and set the value to `./public`:
 
-* [  wrangler.jsonc ](#tab-panel-7050)
-* [  wrangler.toml ](#tab-panel-7051)
+* [  wrangler.jsonc ](#tab-panel-7289)
+* [  wrangler.toml ](#tab-panel-7290)
 
 JSONC
 
@@ -459,7 +455,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-06"
+  "compatibility_date": "2026-05-18"
 
 }
 
@@ -478,7 +474,7 @@ pages_build_output_dir = "./public"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-06"
+compatibility_date = "2026-05-18"
 
 
 ```

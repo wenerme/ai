@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ OIDC ](https://developers.cloudflare.com/search/?tags=OIDC)[ SAML ](https://developers.cloudflare.com/search/?tags=SAML)[ SCIM ](https://developers.cloudflare.com/search/?tags=SCIM) 
-
 # Identity-based policies
 
 With Cloudflare One, you can create Secure Web Gateway policies that filter outbound traffic down to the user identity level. To do that, you can build DNS, HTTP or Network policies using a set of [identity-based selectors](#identity-based-selectors). These selectors require you to deploy the Cloudflare One Client in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/).

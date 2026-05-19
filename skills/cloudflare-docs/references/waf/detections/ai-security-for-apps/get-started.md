@@ -10,16 +10,12 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Get started with AI Security for Apps
 
 ## 1\. Turn on AI Security for Apps
 
-* [  New dashboard ](#tab-panel-8259)
-* [ API ](#tab-panel-8260)
+* [  New dashboard ](#tab-panel-8969)
+* [ API ](#tab-panel-8970)
 
 Note
 
@@ -53,8 +49,8 @@ Once you have [onboarded your domain](https://developers.cloudflare.com/fundamen
 
 Save the relevant endpoint receiving LLM-related traffic to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/) once it has been discovered, or add the endpoint manually.
 
-* [  New dashboard ](#tab-panel-8257)
-* [ Old dashboard ](#tab-panel-8258)
+* [  New dashboard ](#tab-panel-8967)
+* [ Old dashboard ](#tab-panel-8968)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -68,8 +64,8 @@ Save the relevant endpoint receiving LLM-related traffic to [Endpoint Management
 
 If you did not find the endpoint in the **Discovery** tab, you can add it manually:
 
-* [  New dashboard ](#tab-panel-8255)
-* [ Old dashboard ](#tab-panel-8256)
+* [  New dashboard ](#tab-panel-8965)
+* [ Old dashboard ](#tab-panel-8966)
 
 1. Go to the **Endpoints** tab.
 2. Select **Add endpoints** \> **Manually add**.
@@ -93,8 +89,8 @@ You must [label endpoints](https://developers.cloudflare.com/api-shield/manageme
 
 Add the `cf-llm` label to the endpoint you added:
 
-* [  New dashboard ](#tab-panel-8261)
-* [ Old dashboard ](#tab-panel-8262)
+* [  New dashboard ](#tab-panel-8971)
+* [ Old dashboard ](#tab-panel-8972)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

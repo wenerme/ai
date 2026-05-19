@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ Integration ](https://developers.cloudflare.com/search/?tags=Integration) 
-
 # Use BYOIP with Magic Transit and CDN
 
 [Magic Transit](https://developers.cloudflare.com/magic-transit/) customers using BYOIP can also benefit from the performance, reliability, and security that Cloudflare offers for HTTP-based applications. [Service bindings](https://developers.cloudflare.com/byoip/service-bindings/) allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline (which includes [Cache](https://developers.cloudflare.com/cache/), [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), and more).
@@ -169,8 +165,8 @@ Tip
 
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a zone on [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
-* [ Dashboard ](#tab-panel-4650)
-* [ API ](#tab-panel-4651)
+* [ Dashboard ](#tab-panel-4889)
+* [ API ](#tab-panel-4890)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -186,8 +182,8 @@ Make sure you have the correct Key/Token and permissions.
 
 ## 4\. Create DNS records
 
-* [ Dashboard ](#tab-panel-4652)
-* [ API ](#tab-panel-4653)
+* [ Dashboard ](#tab-panel-4891)
+* [ API ](#tab-panel-4892)
 
 To create a DNS record in the dashboard:
 

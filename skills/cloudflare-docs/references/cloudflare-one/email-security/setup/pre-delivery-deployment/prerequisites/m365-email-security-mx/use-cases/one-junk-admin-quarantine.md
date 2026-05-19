@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft) 
-
 # 1 - Junk email and Email security Admin Quarantine
 
 In this tutorial, you will learn how to deliver emails to the Microsoft 365 junk email folder and the Admin Quarantine in Email security.

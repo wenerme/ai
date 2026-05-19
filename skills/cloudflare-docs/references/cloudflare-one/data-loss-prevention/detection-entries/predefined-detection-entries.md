@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
-
 # Predefined detection entries
 
 Predefined detection entries are Cloudflare-managed detections for specific types of sensitive content. You can review these entries from the **Predefined** view in **Detection entries**.

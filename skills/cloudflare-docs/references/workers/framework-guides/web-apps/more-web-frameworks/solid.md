@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack) 
-
 # Solid
 
 Note

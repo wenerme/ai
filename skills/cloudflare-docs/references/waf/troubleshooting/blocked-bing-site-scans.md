@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft)[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Bing's Site Scan blocked by a managed rule
 
 Microsoft [Bing Webmaster Tools ↗](https://www.bing.com/webmaster/tools) provides a Site Scan feature that crawls your website searching for possible SEO improvements.

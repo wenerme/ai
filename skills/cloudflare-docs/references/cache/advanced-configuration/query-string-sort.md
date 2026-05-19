@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress) 
-
 # Query String Sort
 
 **Query String Sort** increases cache-hit rates by first sorting query strings into a consistent order before checking the Cloudflare cache.

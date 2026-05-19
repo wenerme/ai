@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft) 
-
 # PhishNet Microsoft 365
 
 PhishNet is an add-in button that helps users to submit directly to Email security phish samples missed by Email security's detection.

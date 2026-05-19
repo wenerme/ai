@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Posture ](https://developers.cloudflare.com/search/?tags=Posture)[ SentinelOne ](https://developers.cloudflare.com/search/?tags=SentinelOne) 
-
 # SentinelOne
 
 Cloudflare One can check if [SentinelOne ↗](https://www.sentinelone.com/) is running on a device to determine if a request should be allowed to reach a protected resource.

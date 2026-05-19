@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ IPsec ](https://developers.cloudflare.com/search/?tags=IPsec) 
-
 # FAQ
 
 If you cannot find your answer here, refer to the [community page ↗](https://community.cloudflare.com/) for more resources.

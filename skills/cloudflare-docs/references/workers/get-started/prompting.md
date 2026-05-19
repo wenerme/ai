@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ LLM ](https://developers.cloudflare.com/search/?tags=LLM) 
-
 # Prompting
 
 You can create Workers applications from simple prompts in your favorite agent or editor, including Cursor, Windsurf, VS Code, Claude Code, Codex, and OpenCode.

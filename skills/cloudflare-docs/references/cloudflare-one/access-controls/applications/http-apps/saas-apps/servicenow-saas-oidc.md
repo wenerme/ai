@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ ServiceNow ](https://developers.cloudflare.com/search/?tags=ServiceNow) 
-
 # ServiceNow (OIDC)
 
 **Last reviewed:**  almost 2 years ago 

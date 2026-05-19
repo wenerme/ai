@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
-
 # Format of HTTP response header names and values
 
 The **name** of the HTTP response header you want to set or remove can only contain:

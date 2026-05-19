@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SPA ](https://developers.cloudflare.com/search/?tags=SPA) 
-
 # Vue
 
 In this guide, you will create a new [Vue ↗](https://vuejs.org/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).

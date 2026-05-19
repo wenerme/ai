@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
-
 # Cloudflare's own MCP servers
 
 Cloudflare runs a catalog of managed remote MCP servers which you can connect to using OAuth on clients like [Claude ↗](https://modelcontextprotocol.io/quickstart/user), [Windsurf ↗](https://docs.windsurf.com/windsurf/cascade/mcp), our own [AI Playground ↗](https://playground.ai.cloudflare.com/) or any [SDK that supports MCP ↗](https://github.com/cloudflare/agents/tree/main/packages/agents/src/mcp).

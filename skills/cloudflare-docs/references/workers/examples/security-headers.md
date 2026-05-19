@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python)[ Rust ](https://developers.cloudflare.com/search/?tags=Rust) 
-
 # Set security headers
 
 **Last reviewed:**  about 4 years ago 
@@ -28,11 +24,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 To inject CSP nonces into inline `<script>` tags using HTMLRewriter, refer to this [CSP nonce example](https://developers.cloudflare.com/workers/examples/spa-shell/#add-csp-nonces).
 
-* [  JavaScript ](#tab-panel-8861)
-* [  TypeScript ](#tab-panel-8862)
-* [  Python ](#tab-panel-8863)
-* [  Rust ](#tab-panel-8864)
-* [  Hono ](#tab-panel-8865)
+* [  JavaScript ](#tab-panel-9547)
+* [  TypeScript ](#tab-panel-9548)
+* [  Python ](#tab-panel-9549)
+* [  Rust ](#tab-panel-9550)
+* [  Hono ](#tab-panel-9551)
 
 JavaScript
 

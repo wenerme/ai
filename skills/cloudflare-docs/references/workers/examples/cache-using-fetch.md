@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Caching ](https://developers.cloudflare.com/search/?tags=Caching)[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python)[ Rust ](https://developers.cloudflare.com/search/?tags=Rust) 
-
 # Cache using fetch
 
 **Last reviewed:**  over 5 years ago 
@@ -26,11 +22,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8734)
-* [  TypeScript ](#tab-panel-8735)
-* [  Hono ](#tab-panel-8736)
-* [  Python ](#tab-panel-8737)
-* [  Rust ](#tab-panel-8738)
+* [  JavaScript ](#tab-panel-9420)
+* [  TypeScript ](#tab-panel-9421)
+* [  Hono ](#tab-panel-9422)
+* [  Python ](#tab-panel-9423)
+* [  Rust ](#tab-panel-9424)
 
 JavaScript
 
@@ -386,9 +382,9 @@ fetch(event.request, { cf: { cacheKey: "some-string" } });
 
 Normally, Cloudflare computes the cache key for a request based on the request's URL. Sometimes, though, you may like different URLs to be treated as if they were the same for caching purposes. For example, if your website content is hosted from both Amazon S3 and Google Cloud Storage - you have the same content in both places, and you can use a Worker to randomly balance between the two. However, you do not want to end up caching two copies of your content. You could utilize custom cache keys to cache based on the original request URL rather than the subrequest URL:
 
-* [  JavaScript ](#tab-panel-8739)
-* [  TypeScript ](#tab-panel-8740)
-* [  Hono ](#tab-panel-8741)
+* [  JavaScript ](#tab-panel-9425)
+* [  TypeScript ](#tab-panel-9426)
+* [  Hono ](#tab-panel-9427)
 
 JavaScript
 
@@ -547,8 +543,8 @@ Using custom cache keys and overrides based on response code, you can write a Wo
 
 The following example demonstrates how you might use this to cache requests for streaming media assets:
 
-* [  Module Worker ](#tab-panel-8742)
-* [  Service Worker ](#tab-panel-8743)
+* [  Module Worker ](#tab-panel-9428)
+* [  Service Worker ](#tab-panel-9429)
 
 index.js
 

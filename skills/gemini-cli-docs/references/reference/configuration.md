@@ -1036,12 +1036,6 @@ their corresponding top-level category object in your `settings.json` file.
         "contexts": [
           {
             "condition": {
-              "releaseChannel": "stable"
-            },
-            "target": "gemini-2.5-pro"
-          },
-          {
-            "condition": {
               "hasAccessToPreview": false
             },
             "target": "gemini-2.5-pro"
@@ -1180,13 +1174,6 @@ their corresponding top-level category object in your `settings.json` file.
           {
             "condition": {
               "hasAccessToPreview": false
-            },
-            "target": "gemini-2.5-pro"
-          },
-          {
-            "condition": {
-              "releaseChannel": "stable",
-              "requestedModels": ["auto"]
             },
             "target": "gemini-2.5-pro"
           },

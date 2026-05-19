@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft) 
-
 # Microsoft 365 journaling setup
 
 Microsoft 365 journaling is a post-delivery setup method that ensures a copy of every incoming and outgoing email is forwarded to Cloudflare for analysis. When you create a [journal rule ↗](https://learn.microsoft.com/en-us/exchange/security-and-compliance/journaling/journaling#journal-rules) in the Microsoft Purview compliance portal, Cloudflare can scan messages that have already landed in your inbox.

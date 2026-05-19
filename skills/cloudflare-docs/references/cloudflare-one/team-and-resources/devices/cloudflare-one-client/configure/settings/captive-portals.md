@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Captive portal detection
 
 Captive portals are used by public Wi-Fi networks (such as airports, coffee shops, and hotels) to make a user agree to their Terms of Service or provide payment before allowing access to the Internet. When a user connects to the Wi-Fi, the captive portal blocks all HTTPS traffic until the user completes a captive portal login flow in their browser. This prevents the Cloudflare One Client (formerly WARP) from connecting to Cloudflare. At the same time, the Cloudflare One Client creates [firewall rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic) on the device to send all traffic to Cloudflare. The user is therefore unable to access the captive portal login screen unless they temporarily disconnect the Cloudflare One Client.
@@ -75,8 +71,8 @@ Captive portal logs are used by Cloudflare Support to troubleshoot Cloudflare On
 
 To get captive portal logs:
 
-* [ Version 2026.2+ ](#tab-panel-4956)
-* [ Version 2026.1 and earlier ](#tab-panel-4957)
+* [ Version 2026.2+ ](#tab-panel-5376)
+* [ Version 2026.1 and earlier ](#tab-panel-5377)
 
 1. Open a terminal window.
 2. Run the following command:  

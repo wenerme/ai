@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # High availability
 
 For production deployments, you can run multiple replicas of a Mesh node in active-passive mode. All replicas share the same node identity and advertise the same [routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/). If the active replica goes down, Cloudflare automatically promotes a standby replica.
@@ -46,8 +42,8 @@ flowchart LR
 
 ## Create a node with high availability
 
-* [ Dashboard ](#tab-panel-4731)
-* [ API ](#tab-panel-4732)
+* [ Dashboard ](#tab-panel-5151)
+* [ API ](#tab-panel-5152)
 
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
@@ -86,8 +82,8 @@ The response includes a `token` field. Use this token to register replicas.
 
 To add a replica to an existing high-availability node, install the Cloudflare One Client on a new Linux host and register it using the same node token.
 
-* [ Dashboard ](#tab-panel-4737)
-* [ API ](#tab-panel-4738)
+* [ Dashboard ](#tab-panel-5157)
+* [ API ](#tab-panel-5158)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -98,8 +94,8 @@ To add a replica to an existing high-availability node, install the Cloudflare O
 
 Installation commands
 
-* [ Debian / Ubuntu ](#tab-panel-4733)
-* [ RedHat / CentOS ](#tab-panel-4734)
+* [ Debian / Ubuntu ](#tab-panel-5153)
+* [ RedHat / CentOS ](#tab-panel-5154)
 
 Terminal window
 
@@ -159,8 +155,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/
 ```  
 The response contains the token string.
 2. Install the client and register on a new Linux host:  
-   * [ Debian / Ubuntu ](#tab-panel-4735)  
-   * [ RedHat / CentOS ](#tab-panel-4736)  
+   * [ Debian / Ubuntu ](#tab-panel-5155)  
+   * [ RedHat / CentOS ](#tab-panel-5156)  
 Terminal window  
 ```  
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  

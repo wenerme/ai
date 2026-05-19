@@ -5,7 +5,16 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Manage glab's authentication state.
+Manage authentication for glab.
+
+## Synopsis
+
+Manages authentication for glab against one or more GitLab instances. Use
+these commands to log in, log out, check your authentication status,
+and configure glab as a credential helper for Git and Docker.
+
+glab can authenticate with a personal access token, an OAuth token from
+a web flow, or a CI job token when running in a GitLab CI/CD job.
 
 ## Options inherited from parent commands
 

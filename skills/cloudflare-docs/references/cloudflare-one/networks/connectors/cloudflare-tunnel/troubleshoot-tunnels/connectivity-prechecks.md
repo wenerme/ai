@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ QUIC ](https://developers.cloudflare.com/search/?tags=QUIC)[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
-
 # Connectivity pre-checks
 
 This guide helps you validate connectivity between your environment and [Cloudflare Tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/) before deploying [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/). You will run DNS and network checks from the same host machine that will run `cloudflared` to help you identify issues that may prevent `cloudflared` from connecting to Cloudflare Tunnel endpoints.
@@ -61,9 +57,9 @@ First, you need to verify that your DNS resolver returns the expected IP address
 
 Depending on whether you are testing a global region or the US region, run one of the following commands:
 
-* [ Global region ](#tab-panel-4793)
-* [ US region ](#tab-panel-4794)
-* [ FedRAMP High region ](#tab-panel-4795)
+* [ Global region ](#tab-panel-5213)
+* [ US region ](#tab-panel-5214)
+* [ FedRAMP High region ](#tab-panel-5215)
 
 Terminal window
 

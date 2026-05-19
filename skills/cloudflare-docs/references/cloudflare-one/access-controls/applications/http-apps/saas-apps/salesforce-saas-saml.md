@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SAML ](https://developers.cloudflare.com/search/?tags=SAML)[ Salesforce ](https://developers.cloudflare.com/search/?tags=Salesforce) 
-
 # Salesforce (SAML)
 
 **Last reviewed:**  almost 2 years ago 

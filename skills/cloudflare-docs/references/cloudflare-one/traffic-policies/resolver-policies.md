@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ IPv4 ](https://developers.cloudflare.com/search/?tags=IPv4)[ IPv6 ](https://developers.cloudflare.com/search/?tags=IPv6)[ QUIC ](https://developers.cloudflare.com/search/?tags=QUIC) 
-
 # Resolver policies
 
 Note
@@ -97,8 +93,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-5180)
-* [ Terraform (v5) ](#tab-panel-5181)
+* [ Dashboard ](#tab-panel-5600)
+* [ Terraform (v5) ](#tab-panel-5601)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.

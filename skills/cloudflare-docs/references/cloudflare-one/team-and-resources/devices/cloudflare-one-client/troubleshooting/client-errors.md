@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Client errors
 
 This page lists the error codes that can appear in the Cloudflare One Client (formerly WARP) GUI. If you do not see your error below, refer to [common issues](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/common-issues/) or [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
@@ -276,8 +272,8 @@ The device is not authenticated to an [organization](https://developers.cloudfla
 
 ### Resolution
 
-* [ Version 2026.2+ ](#tab-panel-4985)
-* [ Version 2026.1 and earlier ](#tab-panel-4986)
+* [ Version 2026.2+ ](#tab-panel-5405)
+* [ Version 2026.1 and earlier ](#tab-panel-5406)
 
 1. Launch the Cloudflare One Client.
 2. Go to **Profile** \> **Account information**.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Using BigQuery with Workers AI
 
 **Last reviewed:**  over 1 year ago 
@@ -772,8 +768,8 @@ formattedResults = formattedResults?.map((formattedResult, i) => {
 
 Uncomment the following lines from the Wrangler file in your project:
 
-* [  wrangler.jsonc ](#tab-panel-8452)
-* [  wrangler.toml ](#tab-panel-8453)
+* [  wrangler.jsonc ](#tab-panel-9130)
+* [  wrangler.toml ](#tab-panel-9131)
 
 JSONC
 

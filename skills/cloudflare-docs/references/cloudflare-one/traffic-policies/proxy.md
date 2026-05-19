@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TCP ](https://developers.cloudflare.com/search/?tags=TCP)[ UDP ](https://developers.cloudflare.com/search/?tags=UDP)[ ICMP ](https://developers.cloudflare.com/search/?tags=ICMP) 
-
 # Proxy
 
 You can forward [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) and [network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/network/) traffic to Gateway for logging and filtering. Gateway can proxy both outbound traffic and traffic directed to resources connected via a Cloudflare Tunnel, Generic Routing Encapsulation (GRE) tunnel, or IPsec tunnel. When a user connects to the Gateway proxy, Gateway will accept the connection and establish a new, separate connection to the origin server.
@@ -77,8 +73,8 @@ Gateway cannot log or filter ICMP traffic.
 
 To use the ICMP proxy with Cloudflare Tunnel, you may need to configure the `cloudflared` host to allow ICMP traffic through `cloudflared`.
 
-* [  Linux ](#tab-panel-5178)
-* [  Docker ](#tab-panel-5179)
+* [  Linux ](#tab-panel-5598)
+* [  Docker ](#tab-panel-5599)
 
 1. Ensure that `ping_group_range` includes the Group ID (GID) of the user running `cloudflared`:  
 a. Find the user that owns the `cloudflared` process:  

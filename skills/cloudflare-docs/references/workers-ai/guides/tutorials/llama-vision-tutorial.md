@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI
 
 **Last reviewed:**  over 1 year ago 
@@ -141,8 +137,8 @@ export default {
 
 1. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add the following configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8803)
-* [  wrangler.toml ](#tab-panel-8804)
+* [  wrangler.jsonc ](#tab-panel-9128)
+* [  wrangler.toml ](#tab-panel-9129)
 
 JSONC
 

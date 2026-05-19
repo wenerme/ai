@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
-
 # Isolation policies
 
 With Browser Isolation, you can define policies to dynamically isolate websites based on identity, security threats, or content.
@@ -142,8 +138,8 @@ Custom block dialogs are still in beta. Contact your account team to start using
 
 Isolate security threats such as malware and phishing.
 
-* [ Dashboard ](#tab-panel-4888)
-* [ API ](#tab-panel-4889)
+* [ Dashboard ](#tab-panel-5308)
+* [ API ](#tab-panel-5309)
 
 | Selector            | Operator | Value                | Action  |
 | ------------------- | -------- | -------------------- | ------- |
@@ -190,8 +186,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate high risk content categories such as newly registered domains.
 
-* [ Dashboard ](#tab-panel-4890)
-* [ API ](#tab-panel-4891)
+* [ Dashboard ](#tab-panel-5310)
+* [ API ](#tab-panel-5311)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -238,8 +234,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate news and media sites, which are targets for malvertising attacks.
 
-* [ Dashboard ](#tab-panel-4892)
-* [ API ](#tab-panel-4893)
+* [ Dashboard ](#tab-panel-5312)
+* [ API ](#tab-panel-5313)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -286,8 +282,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
 
-* [ Dashboard ](#tab-panel-4894)
-* [ API ](#tab-panel-4895)
+* [ Dashboard ](#tab-panel-5314)
+* [ API ](#tab-panel-5315)
 
 | Selector           | Operator | Value                    | Action  |
 | ------------------ | -------- | ------------------------ | ------- |
@@ -334,8 +330,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate the use of ChatGPT.
 
-* [ Dashboard ](#tab-panel-4896)
-* [ API ](#tab-panel-4897)
+* [ Dashboard ](#tab-panel-5316)
+* [ API ](#tab-panel-5317)
 
 | Selector    | Operator | Value     | Action  |
 | ----------- | -------- | --------- | ------- |

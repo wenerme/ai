@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ GCP ](https://developers.cloudflare.com/search/?tags=GCP) 
-
 # Google Cloud
 
 Google Cloud lets you configure custom DNS servers at the Virtual Private Cloud (VPC) network level using [outbound server policies ↗](https://cloud.google.com/dns/docs/server-policies-overview#dns-server-policy-out) in Cloud DNS. When you create an outbound server policy, all resources in that VPC network — including existing virtual machines — use the specified DNS servers.

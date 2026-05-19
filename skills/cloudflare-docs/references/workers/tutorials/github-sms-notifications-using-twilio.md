@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # GitHub SMS notifications using Twilio
 
 **Last reviewed:**  over 2 years ago 
@@ -229,8 +225,8 @@ npx wrangler secret put GITHUB_SECRET_TOKEN
 
 Add the nodejs\_compat flag to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9279)
-* [  wrangler.toml ](#tab-panel-9280)
+* [  wrangler.jsonc ](#tab-panel-9965)
+* [  wrangler.toml ](#tab-panel-9966)
 
 JSONC
 

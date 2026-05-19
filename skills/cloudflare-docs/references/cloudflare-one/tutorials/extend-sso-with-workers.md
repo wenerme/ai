@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
-
 # Send SSO attributes to Access-protected origins with Workers
 
 **Last reviewed:**  over 1 year ago 
@@ -260,8 +256,8 @@ Example user identity
 
 In the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), [set up a route](https://developers.cloudflare.com/workers/configuration/routing/routes/) that maps the Worker to your Access application domain:
 
-* [  wrangler.jsonc ](#tab-panel-5222)
-* [  wrangler.toml ](#tab-panel-5223)
+* [  wrangler.jsonc ](#tab-panel-5642)
+* [  wrangler.toml ](#tab-panel-5643)
 
 JSONC
 

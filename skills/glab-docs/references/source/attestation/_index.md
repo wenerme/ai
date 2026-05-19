@@ -7,13 +7,27 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage software attestations. (EXPERIMENTAL)
 
+## Synopsis
+
+Manage software attestations for artifacts built in GitLab CI/CD pipelines.
+An attestation is a signed statement about an artifact, such as a provenance
+statement that records how the artifact was built.
+
+Use this command to verify that an artifact was built by the expected
+GitLab project and pipeline.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
 ## Examples
 
 ```console
-# Verify attestation for the filename.txt file in the gitlab-org/gitlab project.
+# Verify attestation for filename.txt in the gitlab-org/gitlab project
 glab attestation verify gitlab-org/gitlab filename.txt
 
-# Verify attestation for the filename.txt file in the project with ID 123.
+# Verify attestation for filename.txt in the project with ID 123
 glab attestation verify 123 filename.txt
 ```
 

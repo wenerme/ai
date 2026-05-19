@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ GCP ](https://developers.cloudflare.com/search/?tags=GCP) 
-
 # Google Cloud Platform (GCP) Cloud Storage
 
 The Google Cloud Platform (GCP) Cloud Storage integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated GCP account that could leave you and your organization vulnerable.

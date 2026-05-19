@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ QUIC ](https://developers.cloudflare.com/search/?tags=QUIC) 
-
 # HTTP/3 (with QUIC)
 
 HTTP/3 uses QUIC, which is a secure-by-default transport protocol. HTTP/3 improves page load times in a similar way to HTTP/2\. However, the QUIC transport protocol solves TCP's head-of-line blocking problem, meaning that performance over lossy networks can be better.
@@ -36,8 +32,8 @@ This setting is for connection between the user and Cloudflare. HTTP/3 connectio
 
 HTTP/3 is available to all plans (though it does require an [SSL certificate at Cloudflare’s edge network](https://developers.cloudflare.com/ssl/get-started/)).
 
-* [ Dashboard ](#tab-panel-7893)
-* [ API ](#tab-panel-7894)
+* [ Dashboard ](#tab-panel-8377)
+* [ API ](#tab-panel-8378)
 
 To enable **HTTP/3** in the dashboard:
 

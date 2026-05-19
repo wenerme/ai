@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Phishing ](https://developers.cloudflare.com/search/?tags=Phishing) 
-
 # Set up
 
 By default, your devices use a [DNS server ↗](https://www.cloudflare.com/learning/dns/what-is-dns/) provided by your Internet service provider (ISP). You can change this to use 1.1.1.1 instead, which gives you faster and more private DNS resolution. Some [ISPs and network equipment providers](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/) already partner with Cloudflare to offer this.

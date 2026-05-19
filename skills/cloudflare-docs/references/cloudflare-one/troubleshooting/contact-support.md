@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Contact Cloudflare Support
 
 If you cannot resolve an issue using our troubleshooting guides, you can [open a support case](https://developers.cloudflare.com/support/contacting-cloudflare-support/).

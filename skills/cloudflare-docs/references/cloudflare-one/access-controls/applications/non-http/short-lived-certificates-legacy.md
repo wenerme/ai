@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSH ](https://developers.cloudflare.com/search/?tags=SSH) 
-
 # Short-lived certificates (legacy)
 
 Note
@@ -203,8 +199,8 @@ If there are any include statements below these lines, the configurations in tho
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-4439)
-* [ CentOS/RHEL ](#tab-panel-4440)
+* [ Debian/Ubuntu ](#tab-panel-5055)
+* [ CentOS/RHEL ](#tab-panel-5056)
 
 For Debian/Ubuntu:
 

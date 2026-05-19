@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Request modification ](https://developers.cloudflare.com/search/?tags=Request%20modification) 
-
 # Remove a request header
 
 Create a request header transform rule (part of Transform Rules) to remove the `cf-connecting-ip` HTTP header from the request.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Build Agents on Cloudflare
 
 Most AI applications today are stateless — they process a request, return a response, and forget everything. Real agents need more. They need to remember conversations, act on schedules, call tools, coordinate with other agents, and stay connected to users in real-time. The Agents SDK gives you all of this as a TypeScript class.
@@ -61,8 +57,8 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 
 An agent is a TypeScript class. Methods marked with `@callable()` become typed RPC that clients can call directly over WebSocket.
 
-* [  JavaScript ](#tab-panel-2666)
-* [  TypeScript ](#tab-panel-2667)
+* [  JavaScript ](#tab-panel-3222)
+* [  TypeScript ](#tab-panel-3223)
 
 JavaScript
 
@@ -145,8 +141,8 @@ function Counter() {
 
 For AI chat, extend `AIChatAgent` instead. Messages are persisted automatically, streams resume on disconnect, and the React hook handles the UI.
 
-* [  JavaScript ](#tab-panel-2668)
-* [  TypeScript ](#tab-panel-2669)
+* [  JavaScript ](#tab-panel-3224)
+* [  TypeScript ](#tab-panel-3225)
 
 JavaScript
 

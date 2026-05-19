@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
-
 # Client-side security and PCI DSS compliance
 
 You can use Cloudflare's client-side security for PCI DSS v4's client-side security requirements (items 6.4.3 and 11.6.1).

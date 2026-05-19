@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack) 
-
 # React Router (formerly Remix)
 
 **Start from CLI**: Scaffold a full-stack app with [React Router v7 ↗](https://reactrouter.com/) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for lightning-fast development.
@@ -261,8 +257,8 @@ export default {
 
 Configure it in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8911)
-* [  wrangler.toml ](#tab-panel-8912)
+* [  wrangler.jsonc ](#tab-panel-9597)
+* [  wrangler.toml ](#tab-panel-9598)
 
 JSONC
 

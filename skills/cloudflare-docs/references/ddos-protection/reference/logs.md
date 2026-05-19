@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
-
 # Logs
 
 Retrieve HTTP events using [Cloudflare Logs](https://developers.cloudflare.com/logs/) to integrate them into your SIEM systems.

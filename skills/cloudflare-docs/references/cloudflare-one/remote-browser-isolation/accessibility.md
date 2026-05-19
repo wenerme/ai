@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ A11y ](https://developers.cloudflare.com/search/?tags=A11y) 
-
 # Accessibility
 
 Browser Isolation offers features to support users who have visual impairments or non-English language requirements.

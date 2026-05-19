@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress) 
-
 # Deploy a static WordPress site
 
 **Last reviewed:**  about 3 years ago 

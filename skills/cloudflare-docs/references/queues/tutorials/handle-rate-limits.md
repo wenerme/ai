@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Handle rate limits of external APIs
 
 **Last reviewed:**  over 1 year ago 
@@ -107,8 +103,8 @@ Created queue rate-limit-queue.
 
 In your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-7060)
-* [  wrangler.toml ](#tab-panel-7061)
+* [  wrangler.jsonc ](#tab-panel-7537)
+* [  wrangler.toml ](#tab-panel-7538)
 
 JSONC
 
@@ -181,8 +177,8 @@ It is important to include the `max_batch_size` of two to the consumer queue is 
 
 Your final Wrangler file should look similar to the example below.
 
-* [  wrangler.jsonc ](#tab-panel-7062)
-* [  wrangler.toml ](#tab-panel-7063)
+* [  wrangler.jsonc ](#tab-panel-7539)
+* [  wrangler.toml ](#tab-panel-7540)
 
 JSONC
 
@@ -198,7 +194,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-18",
 
   "compatibility_flags": [
 
@@ -255,7 +251,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-18"
 
 compatibility_flags = [ "nodejs_compat" ]
 

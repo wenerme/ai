@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies) 
-
 # Cookies
 
 A waiting room only uses the `__cfwaitingroom` cookie when a visitor requests access to a host and path combination with an enabled and associated waiting room. When the waiting room is suspended, traffic goes to the origin and the `__cfwaitingroom` cookie is not created. The `__cfwaitingroom` cookie is encrypted to prevent modification by users. You may append a [custom suffix](#customize-cookie-name) to your waiting room cookie to customize the name of your waiting room cookie.

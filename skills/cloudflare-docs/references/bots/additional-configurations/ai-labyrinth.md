@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # AI Labyrinth
 
 The AI Labyrinth adds invisible links on your webpage with specific `Nofollow` tags to block AI crawlers that do not adhere to the recommended guidelines and crawl without permission. AI crawlers that scrape your website content without permission will be stuck in a maze of never-ending links, and their details are recorded and used by all Cloudflare customers who choose to block [AI bots](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots).
@@ -22,8 +18,8 @@ These links do not impact your search engine optimization (SEO) or your website'
 
 To enable AI Labyrinth:
 
-* [  New dashboard ](#tab-panel-4353)
-* [ Old dashboard ](#tab-panel-4354)
+* [  New dashboard ](#tab-panel-4773)
+* [ Old dashboard ](#tab-panel-4774)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

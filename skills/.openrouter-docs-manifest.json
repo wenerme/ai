@@ -401,8 +401,8 @@
   },
   "guides/best-practices/uptime-optimization.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/uptime-optimization.md",
-    "size": 1340,
-    "updatedAt": "2026-05-16T00:36:54.162Z"
+    "size": 1327,
+    "updatedAt": "2026-05-19T00:42:41.162Z"
   },
   "guides/best-practices/reasoning-tokens.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens.md",
@@ -1343,6 +1343,11 @@
     "url": "https://openrouter.ai/docs/cookbook/building-agents/hitl-tools.md",
     "size": 10347,
     "updatedAt": "2026-05-18T11:32:45.796Z"
+  },
+  "cookbook/building-agents/long-horizon-agents.md": {
+    "url": "https://openrouter.ai/docs/cookbook/building-agents/long-horizon-agents.md",
+    "size": 13496,
+    "updatedAt": "2026-05-19T00:44:55.341Z"
   },
   "cookbook/building-agents/create-agent-harness-tui.md": {
     "url": "https://openrouter.ai/docs/cookbook/building-agents/create-agent-harness-tui.md",

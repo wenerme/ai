@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Query D1 from Python Workers
 
 **Last reviewed:**  about 2 years ago 
@@ -83,8 +79,8 @@ npx wrangler d1 info some-existing-db
 
 In your Wrangler file, create a new `[[d1_databases]]` configuration block and set `database_name` and `database_id` to the name and id (respectively) of the D1 database you want to query:
 
-* [  wrangler.jsonc ](#tab-panel-5374)
-* [  wrangler.toml ](#tab-panel-5375)
+* [  wrangler.jsonc ](#tab-panel-5794)
+* [  wrangler.toml ](#tab-panel-5795)
 
 JSONC
 
@@ -106,7 +102,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-18",
 
   "d1_databases": [
 
@@ -141,7 +137,7 @@ compatibility_flags = [ "python_workers" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-18"
 
 
 [[d1_databases]]

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JSON web token (JWT) ](https://developers.cloudflare.com/search/?tags=JSON%20web%20token%20%28JWT%29)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
-
 # Session management
 
 A user session determines how long a user can access an Access application without re-authenticating.

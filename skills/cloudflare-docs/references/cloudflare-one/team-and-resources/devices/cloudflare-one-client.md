@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Wireguard ](https://developers.cloudflare.com/search/?tags=Wireguard)[ MASQUE ](https://developers.cloudflare.com/search/?tags=MASQUE)[ Video ](https://developers.cloudflare.com/search/?tags=Video) 
-
 # Cloudflare One Client
 
 ## About the Cloudflare One Client

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Migration ](https://developers.cloudflare.com/search/?tags=Migration) 
-
 # Entrust distrust by major browsers
 
 Google Chrome and Mozilla have announced they will no longer trust certificates issued from Entrust's root CAs.

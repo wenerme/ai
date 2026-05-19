@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ AI Agents ](https://developers.cloudflare.com/search/?tags=AI%20Agents) 
-
 # Cloudforce One
 
 Note

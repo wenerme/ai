@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack) 
-
 # RedwoodSDK
 
 In this guide, you will create a new [RedwoodSDK ↗](https://rwsdk.com/) application and deploy it to Cloudflare Workers.

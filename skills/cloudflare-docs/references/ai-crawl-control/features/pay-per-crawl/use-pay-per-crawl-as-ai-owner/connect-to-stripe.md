@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Stripe ](https://developers.cloudflare.com/search/?tags=Stripe) 
-
 # Connect Stripe
 
 graph LR

@@ -45,33 +45,31 @@ Terminal window
 
 ```
 
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
-  --header "Authorization: Bearer $TOKEN" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header 'Content-Type: application/json' \
+  --header "Content-Type: application/json" \
 
-  --header 'cf-aig-collect-log: false' \
+  --header "cf-aig-collect-log: false" \
 
-  --data ' {
+  --data '{
 
-        "model": "gpt-4o-mini",
+    "model": "openai/gpt-4.1-mini",
 
-        "messages": [
+    "messages": [
 
-          {
+      {
 
-            "role": "user",
+        "role": "user",
 
-            "content": "What is the email address and phone number of user123?"
-
-          }
-
-        ]
+        "content": "What is the email address and phone number of user123?"
 
       }
 
-'
+    ]
+
+  }'
 
 
 ```
@@ -93,33 +91,31 @@ Terminal window
 
 ```
 
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
-  --header "Authorization: Bearer $TOKEN" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header 'Content-Type: application/json' \
+  --header "Content-Type: application/json" \
 
-  --header 'cf-aig-collect-log-payload: false' \
+  --header "cf-aig-collect-log-payload: false" \
 
-  --data ' {
+  --data '{
 
-        "model": "gpt-4o-mini",
+    "model": "openai/gpt-4.1-mini",
 
-        "messages": [
+    "messages": [
 
-          {
+      {
 
-            "role": "user",
+        "role": "user",
 
-            "content": "What is the email address and phone number of user123?"
-
-          }
-
-        ]
+        "content": "What is the email address and phone number of user123?"
 
       }
 
-'
+    ]
+
+  }'
 
 
 ```
@@ -170,7 +166,7 @@ See full list of available filters and their descriptions below:
 | Provider        | specific providers                                           | the selected AI provider.                 |
 | AI Models       | specific models                                              | the selected AI model.                    |
 | Cost            | less than, greater than                                      | cost, specifying a threshold.             |
-| Request type    | Universal, Workers AI Binding, WebSockets                    | the type of request.                      |
+| Request type    | Workers AI Binding, WebSockets                               | the type of request.                      |
 | Tokens          | Total tokens, Tokens In, Tokens Out                          | token count (less than or greater than).  |
 | Duration        | less than, greater than                                      | request duration.                         |
 | Feedback        | equals, does not equal (thumbs up, thumbs down, no feedback) | feedback type.                            |

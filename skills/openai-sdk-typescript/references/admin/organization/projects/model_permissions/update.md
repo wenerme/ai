@@ -1,0 +1,78 @@
+## Modify project model permissions
+
+`client.admin.organization.projects.modelPermissions.update(stringprojectID, ModelPermissionUpdateParamsbody, RequestOptionsoptions?): ProjectModelPermissions`
+
+**post** `/organization/projects/{project_id}/model_permissions`
+
+Updates model permissions for a project.
+
+### Parameters
+
+- `projectID: string`
+
+- `body: ModelPermissionUpdateParams`
+
+  - `mode: "allow_list" | "deny_list"`
+
+    The model permissions mode to apply.
+
+    - `"allow_list"`
+
+    - `"deny_list"`
+
+  - `model_ids: Array<string>`
+
+    The model IDs included in this permissions policy.
+
+### Returns
+
+- `ProjectModelPermissions`
+
+  Represents the model allowlist or denylist policy for a project.
+
+  - `mode: "allow_list" | "deny_list"`
+
+    Whether the project uses an allowlist or a denylist.
+
+    - `"allow_list"`
+
+    - `"deny_list"`
+
+  - `model_ids: Array<string>`
+
+    The model IDs included in the model permissions policy.
+
+  - `object: "project.model_permissions"`
+
+    The object type, which is always `project.model_permissions`.
+
+    - `"project.model_permissions"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectModelPermissions = await client.admin.organization.projects.modelPermissions.update(
+  'project_id',
+  { mode: 'allow_list', model_ids: ['string'] },
+);
+
+console.log(projectModelPermissions.model_ids);
+```
+
+#### Response
+
+```json
+{
+  "mode": "allow_list",
+  "model_ids": [
+    "string"
+  ],
+  "object": "project.model_permissions"
+}
+```

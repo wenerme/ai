@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ JSON ](https://developers.cloudflare.com/search/?tags=JSON) 
-
 # Supported API methods
 
 The full list of API methods that are supported by an Ethereum Gateway is given below. The gateway returns a `403` if a method is specified that is not supported.

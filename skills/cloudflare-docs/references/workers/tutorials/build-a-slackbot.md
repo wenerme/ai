@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Hono ](https://developers.cloudflare.com/search/?tags=Hono)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Build a Slackbot
 
 **Last reviewed:**  almost 2 years ago 

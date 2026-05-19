@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ IPsec ](https://developers.cloudflare.com/search/?tags=IPsec)[ ICMP ](https://developers.cloudflare.com/search/?tags=ICMP)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
-
 # Troubleshoot IPsec tunnels
 
 This guide helps you diagnose IPsec tunnel issues (also called connectors in the Cloudflare dashboard), from initial establishment through ongoing operation. Use the following sections to identify your symptom and find the appropriate solution.

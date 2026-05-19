@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ Caching ](https://developers.cloudflare.com/search/?tags=Caching)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Cache POST requests
 
 **Last reviewed:**  about 4 years ago 
@@ -26,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8726)
-* [  TypeScript ](#tab-panel-8727)
-* [  Python ](#tab-panel-8728)
-* [  Hono ](#tab-panel-8729)
+* [  JavaScript ](#tab-panel-9412)
+* [  TypeScript ](#tab-panel-9413)
+* [  Python ](#tab-panel-9414)
+* [  Hono ](#tab-panel-9415)
 
 JavaScript
 

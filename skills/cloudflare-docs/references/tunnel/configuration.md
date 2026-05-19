@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Post-quantum ](https://developers.cloudflare.com/search/?tags=Post-quantum)[ QUIC ](https://developers.cloudflare.com/search/?tags=QUIC) 
-
 # Configuration
 
 This page covers the most common configuration options for `cloudflared` tunnels, including high availability, firewall rules, and runtime parameters.
@@ -44,8 +40,8 @@ graph LR
 
 ### Deploy a replica
 
-* [ Dashboard ](#tab-panel-8615)
-* [ CLI ](#tab-panel-8616)
+* [ Dashboard ](#tab-panel-8787)
+* [ CLI ](#tab-panel-8788)
 
 To deploy a replica for a remotely-managed tunnel:
 

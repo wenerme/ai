@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Stream OpenAI API Responses
 
 **Last reviewed:**  almost 3 years ago 
@@ -32,8 +28,8 @@ Note
 
 For analytics, caching, rate limiting, and more, you can also send requests like this through Cloudflare's [AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/).
 
-* [  TypeScript ](#tab-panel-9484)
-* [  Hono ](#tab-panel-9485)
+* [  TypeScript ](#tab-panel-9506)
+* [  Hono ](#tab-panel-9507)
 
 TypeScript
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
-
 # DLP profiles
 
 A DLP profile defines what sensitive data Cloudflare should detect in your traffic. Profiles can combine [detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) with [Data Classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/) objects such as data classes, sensitivity levels, and data tags.

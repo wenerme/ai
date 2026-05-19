@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
-
 # Define a single origin rule using Terraform
 
 Create an origin rule using Terraform to override the `Host` header, the resolved hostname, and the destination port of API requests.

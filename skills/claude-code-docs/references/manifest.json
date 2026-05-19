@@ -13,9 +13,9 @@
   },
   "agent-view.md": {
     "url": "https://code.claude.com/docs/en/agent-view",
-    "lastModified": "Fri, 15 May 2026 02:00:36 GMT",
-    "size": 34776,
-    "updatedAt": "2026-05-15T10:47:13.753Z"
+    "lastModified": "Mon, 18 May 2026 23:24:49 GMT",
+    "size": 40831,
+    "updatedAt": "2026-05-19T00:28:08.281Z"
   },
   "agents.md": {
     "url": "https://code.claude.com/docs/en/agents",
@@ -109,15 +109,15 @@
   },
   "cli-reference.md": {
     "url": "https://code.claude.com/docs/en/cli-reference",
-    "lastModified": "Tue, 12 May 2026 23:49:09 GMT",
-    "size": 55220,
-    "updatedAt": "2026-05-13T00:26:26.631Z"
+    "lastModified": "Mon, 18 May 2026 23:24:52 GMT",
+    "size": 56383,
+    "updatedAt": "2026-05-19T00:28:13.567Z"
   },
   "code-review.md": {
     "url": "https://code.claude.com/docs/en/code-review",
-    "lastModified": "Sat, 02 May 2026 21:02:30 GMT",
-    "size": 21440,
-    "updatedAt": "2026-05-03T00:20:34.973Z"
+    "lastModified": "Mon, 18 May 2026 23:33:47 GMT",
+    "size": 21529,
+    "updatedAt": "2026-05-19T00:28:13.892Z"
   },
   "commands.md": {
     "url": "https://code.claude.com/docs/en/commands",
@@ -163,9 +163,9 @@
   },
   "debug-your-config.md": {
     "url": "https://code.claude.com/docs/en/debug-your-config",
-    "lastModified": "Mon, 11 May 2026 23:47:35 GMT",
-    "size": 17355,
-    "updatedAt": "2026-05-12T00:24:44.184Z"
+    "lastModified": "Tue, 19 May 2026 00:09:29 GMT",
+    "size": 17661,
+    "updatedAt": "2026-05-19T00:28:16.569Z"
   },
   "deep-links.md": {
     "url": "https://code.claude.com/docs/en/deep-links",
@@ -175,9 +175,9 @@
   },
   "desktop.md": {
     "url": "https://code.claude.com/docs/en/desktop",
-    "lastModified": "Fri, 15 May 2026 00:16:11 GMT",
-    "size": 67567,
-    "updatedAt": "2026-05-15T00:24:52.390Z"
+    "lastModified": "Mon, 18 May 2026 23:24:59 GMT",
+    "size": 67945,
+    "updatedAt": "2026-05-19T00:28:17.235Z"
   },
   "desktop-changelog.md": {
     "url": "https://code.claude.com/docs/en/desktop-changelog",
@@ -205,33 +205,33 @@
   },
   "discover-plugins.md": {
     "url": "https://code.claude.com/docs/en/discover-plugins",
-    "lastModified": "Tue, 12 May 2026 23:49:44 GMT",
-    "size": 20066,
-    "updatedAt": "2026-05-13T00:26:32.666Z"
+    "lastModified": "Mon, 18 May 2026 23:24:06 GMT",
+    "size": 20341,
+    "updatedAt": "2026-05-19T00:28:18.876Z"
   },
   "env-vars.md": {
     "url": "https://code.claude.com/docs/en/env-vars",
-    "lastModified": "Fri, 15 May 2026 01:41:51 GMT",
-    "size": 170867,
-    "updatedAt": "2026-05-15T10:47:25.143Z"
+    "lastModified": "Mon, 18 May 2026 23:21:38 GMT",
+    "size": 172961,
+    "updatedAt": "2026-05-19T00:28:19.204Z"
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
-    "lastModified": "Fri, 15 May 2026 22:38:47 GMT",
-    "size": 38981,
-    "updatedAt": "2026-05-16T00:22:34.145Z"
+    "lastModified": "Mon, 18 May 2026 23:25:11 GMT",
+    "size": 39221,
+    "updatedAt": "2026-05-19T00:28:19.530Z"
   },
   "fast-mode.md": {
     "url": "https://code.claude.com/docs/en/fast-mode",
-    "lastModified": "Tue, 12 May 2026 23:54:02 GMT",
-    "size": 10313,
-    "updatedAt": "2026-05-13T00:26:33.758Z"
+    "lastModified": "Mon, 18 May 2026 23:25:14 GMT",
+    "size": 8606,
+    "updatedAt": "2026-05-19T00:28:19.856Z"
   },
   "features-overview.md": {
     "url": "https://code.claude.com/docs/en/features-overview",
-    "lastModified": "Fri, 08 May 2026 06:31:41 GMT",
-    "size": 28191,
-    "updatedAt": "2026-05-08T10:30:57.501Z"
+    "lastModified": "Mon, 18 May 2026 23:42:29 GMT",
+    "size": 28272,
+    "updatedAt": "2026-05-19T00:28:20.187Z"
   },
   "fullscreen.md": {
     "url": "https://code.claude.com/docs/en/fullscreen",
@@ -283,15 +283,15 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Fri, 15 May 2026 01:59:30 GMT",
-    "size": 185996,
-    "updatedAt": "2026-05-15T10:47:29.371Z"
+    "lastModified": "Mon, 18 May 2026 23:21:38 GMT",
+    "size": 186087,
+    "updatedAt": "2026-05-19T00:28:23.135Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
-    "lastModified": "Fri, 15 May 2026 00:23:48 GMT",
-    "size": 54817,
-    "updatedAt": "2026-05-15T00:24:58.811Z"
+    "lastModified": "Mon, 18 May 2026 23:22:27 GMT",
+    "size": 55115,
+    "updatedAt": "2026-05-19T00:28:23.478Z"
   },
   "how-claude-code-works.md": {
     "url": "https://code.claude.com/docs/en/how-claude-code-works",
@@ -307,9 +307,9 @@
   },
   "jetbrains.md": {
     "url": "https://code.claude.com/docs/en/jetbrains",
-    "lastModified": "Wed, 29 Apr 2026 00:23:12 GMT",
-    "size": 7170,
-    "updatedAt": "2026-04-29T00:23:12.396Z"
+    "lastModified": "Mon, 18 May 2026 23:33:13 GMT",
+    "size": 7260,
+    "updatedAt": "2026-05-19T00:28:24.464Z"
   },
   "keybindings.md": {
     "url": "https://code.claude.com/docs/en/keybindings",
@@ -331,9 +331,9 @@
   },
   "mcp.md": {
     "url": "https://code.claude.com/docs/en/mcp",
-    "lastModified": "Fri, 15 May 2026 22:35:38 GMT",
-    "size": 54918,
-    "updatedAt": "2026-05-16T00:22:40.679Z"
+    "lastModified": "Mon, 18 May 2026 23:21:29 GMT",
+    "size": 55340,
+    "updatedAt": "2026-05-19T00:28:25.777Z"
   },
   "memory.md": {
     "url": "https://code.claude.com/docs/en/memory",
@@ -349,9 +349,9 @@
   },
   "model-config.md": {
     "url": "https://code.claude.com/docs/en/model-config",
-    "lastModified": "Sun, 17 May 2026 00:17:50 GMT",
-    "size": 31557,
-    "updatedAt": "2026-05-17T00:24:04.803Z"
+    "lastModified": "Mon, 18 May 2026 23:27:12 GMT",
+    "size": 32320,
+    "updatedAt": "2026-05-19T00:28:26.760Z"
   },
   "monitoring-usage.md": {
     "url": "https://code.claude.com/docs/en/monitoring-usage",
@@ -373,21 +373,21 @@
   },
   "overview.md": {
     "url": "https://code.claude.com/docs/en/overview",
-    "lastModified": "Mon, 11 May 2026 23:43:07 GMT",
-    "size": 15045,
-    "updatedAt": "2026-05-12T00:24:56.102Z"
+    "lastModified": "Mon, 18 May 2026 23:24:29 GMT",
+    "size": 15033,
+    "updatedAt": "2026-05-19T00:28:28.076Z"
   },
   "permission-modes.md": {
     "url": "https://code.claude.com/docs/en/permission-modes",
-    "lastModified": "Tue, 12 May 2026 01:20:07 GMT",
-    "size": 21190,
-    "updatedAt": "2026-05-12T10:48:34.515Z"
+    "lastModified": "Mon, 18 May 2026 23:24:59 GMT",
+    "size": 21598,
+    "updatedAt": "2026-05-19T00:28:28.405Z"
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
-    "lastModified": "Wed, 13 May 2026 23:29:20 GMT",
-    "size": 31680,
-    "updatedAt": "2026-05-14T00:27:42.817Z"
+    "lastModified": "Mon, 18 May 2026 23:25:55 GMT",
+    "size": 31844,
+    "updatedAt": "2026-05-19T00:28:28.731Z"
   },
   "platforms.md": {
     "url": "https://code.claude.com/docs/en/platforms",
@@ -397,15 +397,15 @@
   },
   "plugin-dependencies.md": {
     "url": "https://code.claude.com/docs/en/plugin-dependencies",
-    "lastModified": "Tue, 28 Apr 2026 05:42:11 GMT",
-    "size": 15547,
-    "updatedAt": "2026-04-28T10:39:01.756Z"
+    "lastModified": "Mon, 18 May 2026 23:27:19 GMT",
+    "size": 18208,
+    "updatedAt": "2026-05-19T00:28:29.393Z"
   },
   "plugin-marketplaces.md": {
     "url": "https://code.claude.com/docs/en/plugin-marketplaces",
-    "lastModified": "Tue, 05 May 2026 21:48:28 GMT",
-    "size": 54320,
-    "updatedAt": "2026-05-06T00:23:07.738Z"
+    "lastModified": "Mon, 18 May 2026 23:22:16 GMT",
+    "size": 54623,
+    "updatedAt": "2026-05-19T00:28:29.726Z"
   },
   "plugins.md": {
     "url": "https://code.claude.com/docs/en/plugins",
@@ -415,9 +415,9 @@
   },
   "plugins-reference.md": {
     "url": "https://code.claude.com/docs/en/plugins-reference",
-    "lastModified": "Tue, 12 May 2026 23:54:10 GMT",
-    "size": 65081,
-    "updatedAt": "2026-05-13T00:26:45.942Z"
+    "lastModified": "Mon, 18 May 2026 23:22:13 GMT",
+    "size": 66454,
+    "updatedAt": "2026-05-19T00:28:30.394Z"
   },
   "quickstart.md": {
     "url": "https://code.claude.com/docs/en/quickstart",
@@ -427,15 +427,15 @@
   },
   "remote-control.md": {
     "url": "https://code.claude.com/docs/en/remote-control",
-    "lastModified": "Fri, 15 May 2026 00:16:13 GMT",
-    "size": 23747,
-    "updatedAt": "2026-05-15T00:25:06.673Z"
+    "lastModified": "Mon, 18 May 2026 23:34:58 GMT",
+    "size": 23749,
+    "updatedAt": "2026-05-19T00:28:31.053Z"
   },
   "routines.md": {
     "url": "https://code.claude.com/docs/en/routines",
-    "lastModified": "Tue, 12 May 2026 23:54:10 GMT",
-    "size": 27349,
-    "updatedAt": "2026-05-13T00:26:47.051Z"
+    "lastModified": "Mon, 18 May 2026 23:22:42 GMT",
+    "size": 27358,
+    "updatedAt": "2026-05-19T00:28:31.378Z"
   },
   "sandboxing.md": {
     "url": "https://code.claude.com/docs/en/sandboxing",
@@ -445,9 +445,9 @@
   },
   "scheduled-tasks.md": {
     "url": "https://code.claude.com/docs/en/scheduled-tasks",
-    "lastModified": "Mon, 11 May 2026 23:54:11 GMT",
-    "size": 15237,
-    "updatedAt": "2026-05-12T00:25:00.268Z"
+    "lastModified": "Mon, 18 May 2026 23:22:42 GMT",
+    "size": 15305,
+    "updatedAt": "2026-05-19T00:28:32.032Z"
   },
   "security.md": {
     "url": "https://code.claude.com/docs/en/security",
@@ -463,9 +463,9 @@
   },
   "settings.md": {
     "url": "https://code.claude.com/docs/en/settings",
-    "lastModified": "Fri, 15 May 2026 01:21:52 GMT",
-    "size": 124406,
-    "updatedAt": "2026-05-15T10:47:39.762Z"
+    "lastModified": "Mon, 18 May 2026 23:22:04 GMT",
+    "size": 126804,
+    "updatedAt": "2026-05-19T00:28:33.020Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",
@@ -481,15 +481,15 @@
   },
   "statusline.md": {
     "url": "https://code.claude.com/docs/en/statusline",
-    "lastModified": "Thu, 07 May 2026 10:20:11 GMT",
-    "size": 55248,
-    "updatedAt": "2026-05-07T10:44:34.377Z"
+    "lastModified": "Mon, 18 May 2026 23:42:41 GMT",
+    "size": 55922,
+    "updatedAt": "2026-05-19T00:28:34.335Z"
   },
   "sub-agents.md": {
     "url": "https://code.claude.com/docs/en/sub-agents",
-    "lastModified": "Fri, 15 May 2026 00:14:23 GMT",
-    "size": 61340,
-    "updatedAt": "2026-05-15T00:25:10.445Z"
+    "lastModified": "Mon, 18 May 2026 23:21:59 GMT",
+    "size": 63786,
+    "updatedAt": "2026-05-19T00:28:34.663Z"
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",
@@ -505,9 +505,9 @@
   },
   "tools-reference.md": {
     "url": "https://code.claude.com/docs/en/tools-reference",
-    "lastModified": "Tue, 12 May 2026 00:04:44 GMT",
-    "size": 40303,
-    "updatedAt": "2026-05-12T00:25:04.225Z"
+    "lastModified": "Mon, 18 May 2026 23:29:09 GMT",
+    "size": 40772,
+    "updatedAt": "2026-05-19T00:28:35.657Z"
   },
   "troubleshoot-install.md": {
     "url": "https://code.claude.com/docs/en/troubleshoot-install",
@@ -529,9 +529,9 @@
   },
   "ultrareview.md": {
     "url": "https://code.claude.com/docs/en/ultrareview",
-    "lastModified": "Wed, 13 May 2026 23:29:36 GMT",
-    "size": 8600,
-    "updatedAt": "2026-05-14T00:27:51.607Z"
+    "lastModified": "Mon, 18 May 2026 23:28:41 GMT",
+    "size": 8647,
+    "updatedAt": "2026-05-19T00:28:36.964Z"
   },
   "voice-dictation.md": {
     "url": "https://code.claude.com/docs/en/voice-dictation",
@@ -541,9 +541,9 @@
   },
   "vs-code.md": {
     "url": "https://code.claude.com/docs/en/vs-code",
-    "lastModified": "Mon, 11 May 2026 23:47:53 GMT",
-    "size": 42569,
-    "updatedAt": "2026-05-12T00:25:06.563Z"
+    "lastModified": "Mon, 18 May 2026 23:33:12 GMT",
+    "size": 43047,
+    "updatedAt": "2026-05-19T00:28:37.621Z"
   },
   "web-quickstart.md": {
     "url": "https://code.claude.com/docs/en/web-quickstart",

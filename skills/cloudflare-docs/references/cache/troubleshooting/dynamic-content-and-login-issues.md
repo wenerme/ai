@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies)[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Dynamic content and login issues
 
 Dynamic pages such as login forms, checkout flows, and authenticated application routes can break when they are cached too aggressively.

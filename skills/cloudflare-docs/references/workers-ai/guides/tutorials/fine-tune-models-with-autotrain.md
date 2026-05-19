@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ LLM ](https://developers.cloudflare.com/search/?tags=LLM) 
-
 # Fine Tune Models With AutoTrain from HuggingFace
 
 **Last reviewed:**  about 2 years ago 

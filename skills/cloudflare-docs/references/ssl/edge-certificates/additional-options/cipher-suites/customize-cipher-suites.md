@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # Customize cipher suites
 
 With an [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) subscription, you can restrict connections between Cloudflare and clients — such as your visitor's browser — to specific [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/).

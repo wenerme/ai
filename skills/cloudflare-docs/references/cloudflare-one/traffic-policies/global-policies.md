@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
-
 # Global policies
 
 Cloudflare Zero Trust applies a set of global policies to all accounts. These policies prevent you from accidentally blocking Cloudflare services that Zero Trust depends on, such as the dashboard, API, and client registration.

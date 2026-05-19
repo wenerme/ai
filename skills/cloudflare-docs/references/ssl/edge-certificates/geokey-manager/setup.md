@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation) 
-
 # Setup
 
 ## Geo Key Manager v2 Beta
@@ -110,8 +106,8 @@ For more information on the `policy` field, refer to [Supported options](https:/
 
 The first version of Geo Key Manager supports 3 regions: U.S., E.U., and a set of High Security Data Centers. If you would like to restrict your private key to another country or region, [apply for the closed beta ↗](https://www.cloudflare.com/lp/geo-key-manager/) of the new version.
 
-* [ Dashboard ](#tab-panel-8332)
-* [ API ](#tab-panel-8333)
+* [ Dashboard ](#tab-panel-8421)
+* [ API ](#tab-panel-8422)
 
 To use Geo Key Manager in the dashboard:
 

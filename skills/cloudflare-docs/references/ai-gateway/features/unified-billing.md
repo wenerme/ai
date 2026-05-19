@@ -84,42 +84,40 @@ Refer to the [binding reference](https://developers.cloudflare.com/ai-gateway/in
 
 ### HTTP API
 
-Call a supported provider through the AI Gateway REST API without passing a provider API key. Use the `cf-aig-authorization` header to authenticate with your Cloudflare API token.
+Call a supported provider through the AI Gateway REST API without passing a provider API key.
+
+#### REST API
+
+Use the Cloudflare API to call third-party models. Pass your Cloudflare API token in the `Authorization` header:
 
 Terminal window
 
 ```
 
-curl -X POST https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/default/compat/chat/completions \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
-  --header "cf-aig-authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header 'Content-Type: application/json' \
+  --header "Content-Type: application/json" \
 
   --data '{
 
-    "model": "google-ai-studio/gemini-2.5-pro",
+    "model": "openai/gpt-4.1-mini",
 
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "What is Cloudflare?"
-
-      }
-
-    ]
+    "messages": [{"role": "user", "content": "What is Cloudflare?"}]
 
   }'
 
 
 ```
 
-The `default` gateway is created automatically on your first request. Replace `default` with a specific gateway ID if you have already created one.
+Refer to [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) for more details on all available endpoints.
 
-The HTTP API supports the following providers through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) and the [Unified API (chat completions)](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/):
+#### AI Gateway provider-native endpoints
+
+You can also call providers directly through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) using the `cf-aig-authorization` header to authenticate:
+
+The HTTP API supports the following providers:
 
 * [OpenAI](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/)
 * [Anthropic](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/)
@@ -147,8 +145,8 @@ If ZDR is enabled for a provider that does not support it, AI Gateway falls back
 
 #### Default configuration
 
-* [ Dashboard ](#tab-panel-4129)
-* [ API ](#tab-panel-4130)
+* [ Dashboard ](#tab-panel-4511)
+* [ API ](#tab-panel-4512)
 
 To set ZDR as the default for Unified Billing in the dashboard:
 
@@ -173,17 +171,17 @@ Unified Billing request with ZDR
 
 ```
 
-curl -X POST https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/{gateway_id}/openai/chat/completions \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
-  --header "cf-aig-authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header 'Content-Type: application/json' \
+  --header "Content-Type: application/json" \
 
-  --header 'cf-aig-zdr: true' \
+  --header "cf-aig-zdr: true" \
 
   --data '{
 
-    "model": "gpt-4o-mini",
+    "model": "openai/gpt-4.1-mini",
 
     "messages": [
 

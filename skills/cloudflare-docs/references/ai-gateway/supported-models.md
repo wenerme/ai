@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Supported models
 
-The following models are supported for [unified billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) when using the AI Gateway REST API, including the [OpenAI-compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) and [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/).
+The following models are supported for [unified billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) when using the [OpenAI-compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) or [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/).
 
 For models available through the AI binding (`env.AI.run()`), refer to the [model catalog](https://developers.cloudflare.com/ai/models/).
 

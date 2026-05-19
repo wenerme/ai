@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Grafana ](https://developers.cloudflare.com/search/?tags=Grafana)[ Integration ](https://developers.cloudflare.com/search/?tags=Integration) 
-
 # Monitor Cloudflare Tunnel with Grafana
 
 **Last reviewed:**  over 2 years ago 

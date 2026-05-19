@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ Hono ](https://developers.cloudflare.com/search/?tags=Hono)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Create a fine-tuned OpenAI model with R2
 
 **Last reviewed:**  almost 2 years ago 
@@ -114,8 +110,8 @@ A binding is how your Worker interacts with external resources such as the R2 bu
 
 To bind the R2 bucket to your Worker, add the following to your Wrangler file. Update the binding property to a valid JavaScript variable identifier. Replace `<YOUR_BUCKET_NAME>` with the name of the bucket you created in [step 2](#2-upload-a-fine-tune-document-to-r2):
 
-* [  wrangler.jsonc ](#tab-panel-9263)
-* [  wrangler.toml ](#tab-panel-9264)
+* [  wrangler.jsonc ](#tab-panel-9949)
+* [  wrangler.toml ](#tab-panel-9950)
 
 JSONC
 

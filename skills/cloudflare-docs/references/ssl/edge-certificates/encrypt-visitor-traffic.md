@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
-
 # Enforce HTTPS connections
 
 Even with an active SSL/TLS certificate, visitors can still access resources over unsecured HTTP connections.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ CORS ](https://developers.cloudflare.com/search/?tags=CORS) 
-
 # Get started
 
 Cloudflare speeds up your website by caching content across globally distributed data centers.

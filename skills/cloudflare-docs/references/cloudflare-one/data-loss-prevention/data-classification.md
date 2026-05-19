@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
-
 # Data classification
 
 Data Classification extends Cloudflare DLP with a reusable layer for identifying, organizing, and labeling sensitive content. Instead of building all detection logic directly inside a DLP profile, you can define labels and reusable classification rules, then apply them in custom DLP profiles.

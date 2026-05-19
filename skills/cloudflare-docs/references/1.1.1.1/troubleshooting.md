@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ CLI ](https://developers.cloudflare.com/search/?tags=CLI) 
-
 # Troubleshooting
 
 This guide helps you diagnose and resolve common issues with Cloudflare's DNS Resolver. Before proceeding with manual troubleshooting steps, [verify your connection](https://developers.cloudflare.com/1.1.1.1/check/) to automatically gather relevant information.

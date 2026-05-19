@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Internal zones
 
 Internal DNS zones are groupings of internal DNS records. While [public DNS records](https://developers.cloudflare.com/dns/manage-dns-records/) contain information about resources that you want to make available to the public Internet, [internal DNS records](https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/) allow you to manage resources that should only be available within your private network.

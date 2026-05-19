@@ -10,16 +10,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
-
 # McpAgent
 
 When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp.ts), from the Agents SDK:
 
-* [  JavaScript ](#tab-panel-3242)
-* [  TypeScript ](#tab-panel-3243)
+* [  JavaScript ](#tab-panel-3596)
+* [  TypeScript ](#tab-panel-3597)
 
 JavaScript
 
@@ -130,8 +126,8 @@ You can use the APIs below in order to do so.
 
 The `McpAgent.serve()` static method creates a Worker handler that routes requests to your MCP server:
 
-* [  JavaScript ](#tab-panel-3244)
-* [  TypeScript ](#tab-panel-3245)
+* [  JavaScript ](#tab-panel-3598)
+* [  TypeScript ](#tab-panel-3599)
 
 JavaScript
 
@@ -211,8 +207,8 @@ This is the simplest way to deploy an MCP server — about 15 lines of code. The
 
 When using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
 
-* [  JavaScript ](#tab-panel-3238)
-* [  TypeScript ](#tab-panel-3239)
+* [  JavaScript ](#tab-panel-3592)
+* [  TypeScript ](#tab-panel-3593)
 
 JavaScript
 
@@ -266,8 +262,8 @@ export default new OAuthProvider({
 
 For GDPR and data residency compliance, specify a jurisdiction to ensure your MCP server instances run in specific regions:
 
-* [  JavaScript ](#tab-panel-3236)
-* [  TypeScript ](#tab-panel-3237)
+* [  JavaScript ](#tab-panel-3590)
+* [  TypeScript ](#tab-panel-3591)
 
 JavaScript
 
@@ -293,8 +289,8 @@ export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 
 With OAuth:
 
-* [  JavaScript ](#tab-panel-3240)
-* [  TypeScript ](#tab-panel-3241)
+* [  JavaScript ](#tab-panel-3594)
+* [  TypeScript ](#tab-panel-3595)
 
 JavaScript
 
@@ -375,8 +371,8 @@ Currently, each client session is backed by an instance of the `McpAgent` class.
 
 For example, the following code implements an MCP server that remembers a counter value, and updates the counter when the `add` tool is called:
 
-* [  JavaScript ](#tab-panel-3248)
-* [  TypeScript ](#tab-panel-3249)
+* [  JavaScript ](#tab-panel-3602)
+* [  TypeScript ](#tab-panel-3603)
 
 JavaScript
 
@@ -583,8 +579,8 @@ Request structured input from the user during tool execution.
 
 **Returns:** `Promise<{ action: "accept" | "decline", content?: object }>`
 
-* [  JavaScript ](#tab-panel-3250)
-* [  TypeScript ](#tab-panel-3251)
+* [  JavaScript ](#tab-panel-3604)
+* [  TypeScript ](#tab-panel-3605)
 
 JavaScript
 
@@ -922,8 +918,8 @@ const schema = {
 
 ### Handling responses
 
-* [  JavaScript ](#tab-panel-3246)
-* [  TypeScript ](#tab-panel-3247)
+* [  JavaScript ](#tab-panel-3600)
+* [  TypeScript ](#tab-panel-3601)
 
 JavaScript
 

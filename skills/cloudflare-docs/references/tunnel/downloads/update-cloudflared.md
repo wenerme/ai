@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Docker ](https://developers.cloudflare.com/search/?tags=Docker) 
-
 # Update cloudflared
 
 Updates will cause `cloudflared` to restart which will impact traffic currently being served. You can perform zero-downtime upgrades by using Cloudflare's [Load Balancer product](#update-with-cloudflare-load-balancer) or by using [multiple cloudflared instances](#update-with-multiple-cloudflared-instances).
@@ -22,12 +18,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-8625)
-* [ macOS ](#tab-panel-8626)
-* [ Debian ](#tab-panel-8627)
-* [ Red Hat ](#tab-panel-8628)
-* [ Docker ](#tab-panel-8629)
-* [ Other ](#tab-panel-8630)
+* [ Windows ](#tab-panel-8797)
+* [ macOS ](#tab-panel-8798)
+* [ Debian ](#tab-panel-8799)
+* [ Red Hat ](#tab-panel-8800)
+* [ Docker ](#tab-panel-8801)
+* [ Other ](#tab-panel-8802)
 
 Run the following command:
 

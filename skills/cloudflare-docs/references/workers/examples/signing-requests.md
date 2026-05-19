@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Web Crypto ](https://developers.cloudflare.com/search/?tags=Web%20Crypto)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Sign requests
 
 **Last reviewed:**  over 2 years ago 
@@ -37,10 +33,10 @@ The following Worker will:
 * For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.
 * For all other request URLs, verify the signed URL and allow the request through.
 
-* [  JavaScript ](#tab-panel-8866)
-* [  TypeScript ](#tab-panel-8867)
-* [  Hono ](#tab-panel-8868)
-* [  Python ](#tab-panel-8869)
+* [  JavaScript ](#tab-panel-9552)
+* [  TypeScript ](#tab-panel-9553)
+* [  Hono ](#tab-panel-9554)
+* [  Python ](#tab-panel-9555)
 
 JavaScript
 

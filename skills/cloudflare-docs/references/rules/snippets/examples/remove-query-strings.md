@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Request modification ](https://developers.cloudflare.com/search/?tags=Request%20modification) 
-
 # Remove query strings before sending request to origin
 
 Remove certain query strings from a request before passing to the origin.

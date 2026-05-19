@@ -25,8 +25,8 @@ This tutorial guides you through creating your first AI Gateway using Workers AI
 
 Then, create a new AI Gateway.
 
-* [ Dashboard ](#tab-panel-3953)
-* [ API ](#tab-panel-3954)
+* [ Dashboard ](#tab-panel-4533)
+* [ API ](#tab-panel-4534)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -48,17 +48,21 @@ To set up an AI Gateway using the API:
 1. In the AI Gateway section, select the gateway you created.
 2. Select **Workers AI** as your provider to set up an endpoint specific to Workers AI. You will receive an endpoint URL for sending requests.
 
-## Configure Your Workers AI
+## Send your first request
 
 1. Go to **AI** \> **Workers AI** in the Cloudflare dashboard.
 2. Select **Use REST API** and follow the steps to create and copy the API token and Account ID.
-3. **Send Requests to Workers AI**: Use the provided API endpoint. For example, you can run a model via the API using a curl command. Replace `{account_id}`, `{gateway_id}` and `{cf_api_token}` with your actual account ID and API token:  
+3. Send a request using the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Replace `$CLOUDFLARE_ACCOUNT_ID` and `$CLOUDFLARE_API_TOKEN` with your actual account ID and API token:  
 Terminal window  
 ```  
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/workers-ai/@cf/meta/llama-3.1-8b-instruct \  
---header 'Authorization: Bearer {cf_api_token}' \  
---header 'Content-Type: application/json' \  
---data '{"prompt": "What is Cloudflare?"}'  
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
+  --header "Content-Type: application/json" \  
+  --data '{  
+    "model": "moonshotai/kimi-k2.6",  
+    "provider": "cloudflare",  
+    "messages": [{"role": "user", "content": "What is Cloudflare?"}]  
+  }'  
 ```
 
 The expected output would be similar to :

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Rust ](https://developers.cloudflare.com/search/?tags=Rust) 
-
 # HTTP Basic Authentication
 
 **Last reviewed:**  over 2 years ago 
@@ -28,10 +24,10 @@ Caution when using in production
 
 This code is provided as a sample, and is not suitable for production use. Basic Authentication sends credentials unencrypted, and must be used with an HTTPS connection to be considered secure. For a production-ready authentication system, consider using [Cloudflare Access ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 
-* [  JavaScript ](#tab-panel-8706)
-* [  TypeScript ](#tab-panel-8707)
-* [  Rust ](#tab-panel-8708)
-* [  Hono ](#tab-panel-8709)
+* [  JavaScript ](#tab-panel-9392)
+* [  TypeScript ](#tab-panel-9393)
+* [  Rust ](#tab-panel-9394)
+* [  Hono ](#tab-panel-9395)
 
 JavaScript
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ PowerShell ](https://developers.cloudflare.com/search/?tags=PowerShell) 
-
 # Register the Cloudflare One Client with minimal user interaction
 
 Administrators can automate Cloudflare One Client (formerly WARP) registration on managed devices and minimize the number of clicks required from an end user.
@@ -70,8 +66,8 @@ _Note: Labels in this image may reflect a previous product name._
 
 Chromium-based browsers such as Google Chrome and Microsoft Edge have a policy setting called [AutoLaunchProtocolsFromOrigins ↗](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#autolaunchprotocolsfromorigins). This setting takes in two parameters: a protocol for the browser to launch and the origins that are allowed to launch it. For the browser to launch the Cloudflare One Client, you need to set the protocol to `com.cloudflare.warp` and the origin to your Cloudflare Zero Trust team domain (`https://<your-team-name>.cloudflareaccess.com`).
 
-* [ Windows ](#tab-panel-5155)
-* [ macOS ](#tab-panel-5156)
+* [ Windows ](#tab-panel-5394)
+* [ macOS ](#tab-panel-5395)
 
 On Windows, you can configure `AutoLaunchProtocolsFromOrigins` by adding a new registry key.
 

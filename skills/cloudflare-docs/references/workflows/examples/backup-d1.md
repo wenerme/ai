@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Export and save D1 database
 
 **Last reviewed:**  over 1 year ago 
@@ -224,8 +220,8 @@ Here is a minimal package.json:
 
 Here is a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10479)
-* [  wrangler.toml ](#tab-panel-10480)
+* [  wrangler.jsonc ](#tab-panel-10829)
+* [  wrangler.toml ](#tab-panel-10830)
 
 JSONC
 
@@ -241,7 +237,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-04",
+  "compatibility_date": "2026-05-18",
 
   "compatibility_flags": [
 
@@ -302,7 +298,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-04"
+compatibility_date = "2026-05-18"
 
 compatibility_flags = [ "nodejs_compat" ]
 

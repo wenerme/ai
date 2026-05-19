@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ NetFlow ](https://developers.cloudflare.com/search/?tags=NetFlow) 
-
 # Supported routers
 
 The majority of enterprise-grade routers are capable of exporting NetFlow or sFlow, and popular router brands that support either NetFlow or sFlow are listed below.

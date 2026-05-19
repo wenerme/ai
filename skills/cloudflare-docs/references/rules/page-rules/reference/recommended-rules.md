@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Caching ](https://developers.cloudflare.com/search/?tags=Caching)[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
-
 # Recommended page rules
 
 Use Cloudflare Page Rules to improve the user experience of your domain with hardened security and enhanced site performance, while increasing reliability and minimizing bandwidth usage for your origin server.

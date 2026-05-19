@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Request modification ](https://developers.cloudflare.com/search/?tags=Request%20modification) 
-
 # Add a request header with the current bot score
 
 Create a request header transform rule to add a `X-Bot-Score` HTTP header to the request with the current bot score.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
-
 # Enable automatic cloudflared authentication
 
 When users connect to an Access application through `cloudflared`, the browser prompts them to allow access by displaying this page:

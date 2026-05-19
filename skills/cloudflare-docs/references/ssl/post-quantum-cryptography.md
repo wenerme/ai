@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Post-quantum ](https://developers.cloudflare.com/search/?tags=Post-quantum) 
-
 # Post-quantum cryptography (PQC)
 
 Post-quantum cryptography (PQC) refers to cryptographic algorithms that have been designed to resist attacks from [quantum computers ↗](https://www.cloudflare.com/learning/ssl/quantum/what-is-quantum-computing/). Cloudflare has been researching and [writing about post-quantum ↗](https://blog.cloudflare.com/tag/post-quantum/) since 2017, and is targeting 2029 to be fully post-quantum secure across its entire product suite — refer to [Cloudflare targets 2029 for full post-quantum security ↗](https://blog.cloudflare.com/post-quantum-roadmap/) for the full roadmap.

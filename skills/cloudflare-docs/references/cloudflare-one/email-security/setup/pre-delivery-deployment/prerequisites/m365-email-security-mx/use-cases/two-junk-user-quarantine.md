@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft) 
-
 # 2 - Junk email and user managed quarantine
 
 In this tutorial, you will learn how to deliver `BULK` messages to the user's junk folder, and `SPAM` and `SPOOF` messages to the user managed quarantine.

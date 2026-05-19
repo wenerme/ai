@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Wireguard ](https://developers.cloudflare.com/search/?tags=Wireguard)[ MASQUE ](https://developers.cloudflare.com/search/?tags=MASQUE) 
-
 # Cloudflare One Client with firewall
 
 If your organization uses a firewall or other policies to restrict or intercept Internet traffic, you may need to exempt the following IP addresses and domains to allow the Cloudflare One Client (formerly WARP) to connect.

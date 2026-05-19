@@ -28,8 +28,8 @@ This configuration benefits use cases with limited prompt options. For example, 
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-4125)
-* [ API ](#tab-panel-4126)
+* [ Dashboard ](#tab-panel-4507)
+* [ API ](#tab-panel-4508)
 
 To set the default caching configuration in the dashboard:
 
@@ -91,33 +91,31 @@ Request skipping the cache
 
 ```
 
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
-  --header "Authorization: Bearer $TOKEN" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header 'Content-Type: application/json' \
+  --header "Content-Type: application/json" \
 
-  --header 'cf-aig-skip-cache: true' \
+  --header "cf-aig-skip-cache: true" \
 
-  --data ' {
+  --data '{
 
-        "model": "gpt-4o-mini",
+    "model": "openai/gpt-4.1-mini",
 
-        "messages": [
+    "messages": [
 
-          {
+      {
 
-            "role": "user",
+        "role": "user",
 
-            "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"
-
-          }
-
-        ]
+        "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"
 
       }
 
-'
+    ]
+
+  }'
 
 
 ```
@@ -134,33 +132,31 @@ Request to be cached for an hour
 
 ```
 
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
-  --header "Authorization: Bearer $TOKEN" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header 'Content-Type: application/json' \
+  --header "Content-Type: application/json" \
 
-  --header 'cf-aig-cache-ttl: 3600' \
+  --header "cf-aig-cache-ttl: 3600" \
 
-  --data ' {
+  --data '{
 
-        "model": "gpt-4o-mini",
+    "model": "openai/gpt-4.1-mini",
 
-        "messages": [
+    "messages": [
 
-          {
+      {
 
-            "role": "user",
+        "role": "user",
 
-            "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"
-
-          }
-
-        ]
+        "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"
 
       }
 
-'
+    ]
+
+  }'
 
 
 ```
@@ -177,33 +173,31 @@ Request with custom cache key
 
 ```
 
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
-  --header 'Authorization: Bearer {openai_token}' \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header 'Content-Type: application/json' \
+  --header "Content-Type: application/json" \
 
-  --header 'cf-aig-cache-key: responseA' \
+  --header "cf-aig-cache-key: responseA" \
 
-  --data ' {
+  --data '{
 
-        "model": "gpt-4o-mini",
+    "model": "openai/gpt-4.1-mini",
 
-        "messages": [
+    "messages": [
 
-          {
+      {
 
-            "role": "user",
+        "role": "user",
 
-            "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"
-
-          }
-
-        ]
+        "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"
 
       }
 
-'
+    ]
+
+  }'
 
 
 ```

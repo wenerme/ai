@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Caching ](https://developers.cloudflare.com/search/?tags=Caching)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Cache Tags using Workers
 
 **Last reviewed:**  almost 4 years ago 
@@ -26,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8730)
-* [  TypeScript ](#tab-panel-8731)
-* [  Hono ](#tab-panel-8732)
-* [  Python ](#tab-panel-8733)
+* [  JavaScript ](#tab-panel-9416)
+* [  TypeScript ](#tab-panel-9417)
+* [  Hono ](#tab-panel-9418)
+* [  Python ](#tab-panel-9419)
 
 JavaScript
 

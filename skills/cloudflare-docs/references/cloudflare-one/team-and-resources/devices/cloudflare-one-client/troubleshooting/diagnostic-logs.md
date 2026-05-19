@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ Video ](https://developers.cloudflare.com/search/?tags=Video) 
-
 # Diagnostic logs
 
 The Cloudflare One Client (formerly WARP) provides diagnostic logs that you can use to troubleshoot connectivity issues on a device.
@@ -43,9 +39,9 @@ Chapters
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-4793)
-* [ Windows ](#tab-panel-4794)
-* [ Linux ](#tab-panel-4795)
+* [ macOS ](#tab-panel-5409)
+* [ Windows ](#tab-panel-5410)
+* [ Linux ](#tab-panel-5411)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -257,8 +253,8 @@ The Cloudflare One Client does not provide an official method to configure loggi
 
 To view client logs on mobile devices:
 
-* [ iOS ](#tab-panel-4791)
-* [ Android/ChromeOS ](#tab-panel-4792)
+* [ iOS ](#tab-panel-5407)
+* [ Android/ChromeOS ](#tab-panel-5408)
 
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.

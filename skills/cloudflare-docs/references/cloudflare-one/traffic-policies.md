@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ Video ](https://developers.cloudflare.com/search/?tags=Video) 
-
 # Traffic policies
 
 A Secure Web Gateway (SWG) is a security service that sits between an organization's users and the Internet. It inspects outbound traffic to enforce security policies, block threats, and prevent data loss. Core SWG capabilities include:

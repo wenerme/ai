@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MySQL ](https://developers.cloudflare.com/search/?tags=MySQL)[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Access and secure a MySQL database using Cloudflare Tunnel and network policies
 
 **Last reviewed:**  about 2 years ago 

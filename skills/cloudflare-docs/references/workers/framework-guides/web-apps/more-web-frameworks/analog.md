@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack)[ Angular ](https://developers.cloudflare.com/search/?tags=Angular) 
-
 # Analog
 
 In this guide, you will create a new [Analog ↗](https://analogjs.org/) application and deploy to Cloudflare Workers.

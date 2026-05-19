@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ AI Agents ](https://developers.cloudflare.com/search/?tags=AI%20Agents)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Code Mode Example
 
 This example shows how to use the [@cloudflare/codemode ↗](https://www.npmjs.com/package/@cloudflare/codemode) library with the [Agents SDK ↗](https://www.npmjs.com/package/agents) to build an agent where the LLM writes code to orchestrate tool calls, instead of calling them one at a time. This approach, called [Code Mode ↗](https://blog.cloudflare.com/code-mode/), reduces tokens spent by up to 80%, returns better results, and avoids bloating the context window.
@@ -53,8 +49,8 @@ The flow:
 * `console.log` output is captured and returned alongside the result
 * Each execution gets its own Worker instance with a 30-second timeout
 
-* [  JavaScript ](#tab-panel-6223)
-* [  TypeScript ](#tab-panel-6224)
+* [  JavaScript ](#tab-panel-6310)
+* [  TypeScript ](#tab-panel-6311)
 
 JavaScript
 
@@ -104,8 +100,8 @@ const executor = new DynamicWorkerExecutor({
 * Puts those types in the tool's description, so the LLM sees a single tool with parameter `{ code: string }` and a description that includes the full typed API surface.
 * On execution, normalizes the LLM's code (strips markdown fences, wraps bare statements in async functions, auto-returns the last expression), then passes it to the executor.
 
-* [  JavaScript ](#tab-panel-6225)
-* [  TypeScript ](#tab-panel-6226)
+* [  JavaScript ](#tab-panel-6312)
+* [  TypeScript ](#tab-panel-6313)
 
 JavaScript
 

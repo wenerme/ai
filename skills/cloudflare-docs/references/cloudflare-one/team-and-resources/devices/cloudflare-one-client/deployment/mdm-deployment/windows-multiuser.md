@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Windows ](https://developers.cloudflare.com/search/?tags=Windows) 
-
 # Multiple users on a Windows device
 
 Feature availability

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Secure a private IP or hostname
 
 You can configure a self-hosted Access application to manage access to specific IPs or hostnames on your private network.

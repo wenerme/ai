@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Request modification ](https://developers.cloudflare.com/search/?tags=Request%20modification) 
-
 # Slow down suspicious requests
 
 Define a delay to be used when incoming requests match a rule you consider suspicious based on the bot score.

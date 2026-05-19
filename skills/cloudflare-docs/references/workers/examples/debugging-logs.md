@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Debugging logs
 
 **Last reviewed:**  over 5 years ago 
@@ -26,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8769)
-* [  TypeScript ](#tab-panel-8770)
-* [  Python ](#tab-panel-8771)
-* [  Hono ](#tab-panel-8772)
+* [  JavaScript ](#tab-panel-9455)
+* [  TypeScript ](#tab-panel-9456)
+* [  Python ](#tab-panel-9457)
+* [  Hono ](#tab-panel-9458)
 
 JavaScript
 

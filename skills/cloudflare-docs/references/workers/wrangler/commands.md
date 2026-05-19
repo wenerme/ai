@@ -20,6 +20,7 @@ The core Wrangler commands for creating, developing, and deploying Workers are o
 
 ## All commands
 
+* [ Artifacts ](https://developers.cloudflare.com/workers/wrangler/commands/artifacts/)
 * [ Browser ](https://developers.cloudflare.com/workers/wrangler/commands/browser/)
 * [ Certificates ](https://developers.cloudflare.com/workers/wrangler/commands/certificates/)
 * [ Containers ](https://developers.cloudflare.com/workers/wrangler/commands/containers/)

@@ -282,10 +282,10 @@
   "anthropic-docs/agents-and-tools/tool-use/computer-use-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"9ec6-19e2376e518\"",
-    "lastModified": "Wed, 13 May 2026 22:30:55 GMT",
-    "size": 40646,
-    "updatedAt": "2026-05-14T00:28:06.962Z"
+    "etag": "W/\"ac90-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 44174,
+    "updatedAt": "2026-05-19T00:28:52.825Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/text-editor-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/text-editor-tool",
@@ -354,10 +354,10 @@
   "anthropic-docs/build-with-claude/compaction.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/compaction",
     "skill": "anthropic-docs",
-    "etag": "W/\"186d5-19e1979f2f8\"",
-    "lastModified": "Mon, 11 May 2026 23:58:03 GMT",
-    "size": 100053,
-    "updatedAt": "2026-05-12T00:25:27.948Z"
+    "etag": "W/\"18976-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 100726,
+    "updatedAt": "2026-05-19T00:28:55.484Z"
   },
   "anthropic-docs/build-with-claude/context-editing.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/context-editing",
@@ -370,10 +370,18 @@
   "anthropic-docs/build-with-claude/prompt-caching.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
     "skill": "anthropic-docs",
-    "etag": "W/\"1f91e-19e2376e518\"",
-    "lastModified": "Wed, 13 May 2026 22:30:55 GMT",
-    "size": 129246,
-    "updatedAt": "2026-05-14T00:28:10.330Z"
+    "etag": "W/\"1fab1-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 129649,
+    "updatedAt": "2026-05-19T00:28:56.076Z"
+  },
+  "anthropic-docs/build-with-claude/cache-diagnostics.md": {
+    "url": "https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics",
+    "skill": "anthropic-docs",
+    "etag": "W/\"c54b-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 50507,
+    "updatedAt": "2026-05-19T00:28:56.361Z"
   },
   "anthropic-docs/build-with-claude/token-counting.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/token-counting",
@@ -482,10 +490,10 @@
   "anthropic-docs/build-with-claude/claude-platform-on-aws.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws",
     "skill": "anthropic-docs",
-    "etag": "W/\"d100-19e1979f2f8\"",
-    "lastModified": "Mon, 11 May 2026 23:58:03 GMT",
-    "size": 53490,
-    "updatedAt": "2026-05-12T00:25:37.958Z"
+    "etag": "W/\"d0f5-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 53479,
+    "updatedAt": "2026-05-19T00:29:01.006Z"
   },
   "anthropic-docs/build-with-claude/claude-in-microsoft-foundry.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry",
@@ -786,82 +794,82 @@
   "anthropic-docs/manage-claude/data-residency.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/data-residency",
     "skill": "anthropic-docs",
-    "etag": "W/\"2600-19e1979f2f8\"",
-    "lastModified": "Mon, 11 May 2026 23:58:03 GMT",
-    "size": 9728,
-    "updatedAt": "2026-05-12T00:25:49.933Z"
+    "etag": "W/\"2526-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 9510,
+    "updatedAt": "2026-05-19T00:29:12.649Z"
   },
   "anthropic-docs/manage-claude/api-and-data-retention.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
     "skill": "anthropic-docs",
-    "etag": "W/\"5bd5-19e1979f2f8\"",
-    "lastModified": "Mon, 11 May 2026 23:58:03 GMT",
-    "size": 23509,
-    "updatedAt": "2026-05-12T00:25:50.227Z"
+    "etag": "W/\"5ddc-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 24028,
+    "updatedAt": "2026-05-19T00:29:12.934Z"
   },
   "anthropic-docs/manage-claude/compliance-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-api",
     "skill": "anthropic-docs",
-    "etag": "W/\"196b-19e09a55250\"",
-    "lastModified": "Fri, 08 May 2026 22:11:30 GMT",
-    "size": 6507,
-    "updatedAt": "2026-05-09T00:24:52.505Z"
+    "etag": "W/\"1a67-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 6759,
+    "updatedAt": "2026-05-19T00:29:13.206Z"
   },
   "anthropic-docs/manage-claude/compliance-api-access.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-api-access",
     "skill": "anthropic-docs",
-    "etag": "W/\"2f9f-19e09a55250\"",
-    "lastModified": "Fri, 08 May 2026 22:11:30 GMT",
-    "size": 12191,
-    "updatedAt": "2026-05-09T00:24:52.793Z"
+    "etag": "W/\"326c-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 12908,
+    "updatedAt": "2026-05-19T00:29:13.480Z"
   },
   "anthropic-docs/manage-claude/compliance-activity-feed.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-activity-feed",
     "skill": "anthropic-docs",
-    "etag": "W/\"2706-19e09a55250\"",
-    "lastModified": "Fri, 08 May 2026 22:11:30 GMT",
-    "size": 9990,
-    "updatedAt": "2026-05-09T00:24:53.187Z"
+    "etag": "W/\"2954-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 10580,
+    "updatedAt": "2026-05-19T00:29:13.792Z"
   },
   "anthropic-docs/manage-claude/compliance-content-data.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-content-data",
     "skill": "anthropic-docs",
-    "etag": "W/\"4235-19e09a55250\"",
-    "lastModified": "Fri, 08 May 2026 22:11:30 GMT",
-    "size": 16949,
-    "updatedAt": "2026-05-09T00:24:53.549Z"
+    "etag": "W/\"43f4-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 17396,
+    "updatedAt": "2026-05-19T00:29:14.104Z"
   },
   "anthropic-docs/manage-claude/compliance-org-data.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-org-data",
     "skill": "anthropic-docs",
-    "etag": "W/\"2e19-19e09a55250\"",
-    "lastModified": "Fri, 08 May 2026 22:11:30 GMT",
-    "size": 11801,
-    "updatedAt": "2026-05-09T00:24:53.821Z"
+    "etag": "W/\"2ee8-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 12008,
+    "updatedAt": "2026-05-19T00:29:14.398Z"
   },
   "anthropic-docs/manage-claude/compliance-integration-patterns.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-integration-patterns",
     "skill": "anthropic-docs",
-    "etag": "W/\"272b-19e09a55250\"",
-    "lastModified": "Fri, 08 May 2026 22:11:30 GMT",
-    "size": 10027,
-    "updatedAt": "2026-05-09T00:24:54.097Z"
+    "etag": "W/\"297d-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 10621,
+    "updatedAt": "2026-05-19T00:29:14.697Z"
   },
   "anthropic-docs/manage-claude/compliance-errors.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-errors",
     "skill": "anthropic-docs",
-    "etag": "W/\"4422-19e09a55250\"",
-    "lastModified": "Fri, 08 May 2026 22:11:30 GMT",
-    "size": 17442,
-    "updatedAt": "2026-05-09T00:24:54.465Z"
+    "etag": "W/\"4e0d-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 19981,
+    "updatedAt": "2026-05-19T00:29:15.018Z"
   },
   "anthropic-docs/manage-claude/compliance-faq.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-faq",
     "skill": "anthropic-docs",
-    "etag": "W/\"21cd-19e09a55250\"",
-    "lastModified": "Fri, 08 May 2026 22:11:30 GMT",
-    "size": 8653,
-    "updatedAt": "2026-05-09T00:24:54.737Z"
+    "etag": "W/\"226c-19e3d402ec8\"",
+    "lastModified": "Mon, 18 May 2026 22:41:17 GMT",
+    "size": 8812,
+    "updatedAt": "2026-05-19T00:29:15.314Z"
   },
   "anthropic-api/api/completions.md": {
     "url": "https://platform.claude.com/docs/en/api/completions",

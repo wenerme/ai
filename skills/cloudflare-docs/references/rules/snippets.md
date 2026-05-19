@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Request modification ](https://developers.cloudflare.com/search/?tags=Request%20modification)[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification)[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware) 
-
 # Cloudflare Snippets
 
 Cloudflare Snippets allow you to run short pieces of JavaScript code on Cloudflare's network to customize how requests and responses are handled for your website or application. With Snippets, you can modify HTTP response headers, implement JWT validation, perform complex redirects, and more.

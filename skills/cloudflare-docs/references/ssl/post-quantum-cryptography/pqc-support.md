@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Post-quantum ](https://developers.cloudflare.com/search/?tags=Post-quantum) 
-
 # PQC support
 
 The sections below summarize third-party software support for the post-quantum algorithms Cloudflare has deployed, organized by software category. [Contributions](https://developers.cloudflare.com/style-guide/contributions/) to keep the listing up-to-date are welcome.

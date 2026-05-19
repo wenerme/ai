@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Google ](https://developers.cloudflare.com/search/?tags=Google) 
-
 # Google Workspace as MX Record
 
 ![A schematic showing where Email security is in the life cycle of an email received](https://developers.cloudflare.com/_astro/Email_Security_Gmail_MX_Inline.BySaw74N_r7mj1.webp) 

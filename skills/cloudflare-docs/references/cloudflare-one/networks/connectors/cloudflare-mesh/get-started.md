@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Get started
 
 Set up Cloudflare Mesh so your devices and servers can reach each other by private IP.
@@ -47,8 +43,8 @@ The setup wizard [configures your account for Mesh networking](#what-the-wizard-
 4. Select **Create node**.
 5. (Optional) If you have a Linux server, run the install commands shown in the dashboard to bring the node online. If you do not have a server ready, select **I'll connect later** — you can install the node at any time from the node detail page.  
 Installation commands  
-   * [ Debian / Ubuntu ](#tab-panel-4727)  
-   * [ RedHat / CentOS ](#tab-panel-4728)  
+   * [ Debian / Ubuntu ](#tab-panel-5147)  
+   * [ RedHat / CentOS ](#tab-panel-5148)  
 Terminal window  
 ```  
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  
@@ -84,8 +80,8 @@ Connect a laptop or phone to your Mesh network:
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-4729)
-* [ Version 2026.1 and earlier ](#tab-panel-4730)
+* [ Version 2026.2+ ](#tab-panel-5149)
+* [ Version 2026.1 and earlier ](#tab-panel-5150)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.

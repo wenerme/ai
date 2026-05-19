@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Store and Catalog AI Generated Images with R2 (Part 3)
 
 **Last reviewed:**  over 1 year ago 

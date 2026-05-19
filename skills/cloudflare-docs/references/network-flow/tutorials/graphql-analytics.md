@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL) 
-
 # GraphQL Analytics
 
 **Last reviewed:**  over 3 years ago 
@@ -79,7 +75,7 @@ query MagicNetworkMonitoring($accountTag: string!, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwOYEsDGA5MAXA7gewgGs58A7FbQlMpACgBIE018QzsAVZALhgGdsEGkgCEAGhgNBCCNj6cUAWzCSGYMgBMFysAEoYAbwBQMGADcUYXJCOmzMZq3bZ+dAGYoANtkh9DjixsHNxIfExBLqEwAL4GJg4OSmRKAGJe+LgAIgjYCACCmggADtgo5mAA4hBsxW72iWaePn5GMEW+ZSoA+kjyUjJykh04ut1eYMDhGpqxDY1eypR8AIwADPOJhJqQAEJQfADaI11gqeVgcDQgvvzdWQCiAMoAwgC6mzDxn2b8IEp2RqNABGlH4PwcxWYRBw4KBZhiEM0ujI-BQ5H4gPhZhOunOFSuZBuYDh8MRQPJDkpiJiQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgFYhARgAcyXgBZMo7pl4BmAFoMQAU3gATLn0Ejx05BN6LlazQF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwOYEsDGA5MAXA7gewgGs58A7FbQlMpACgBIE018QzsAVZALhgGdsEGkgCEAGhgNBCCNj6cUAWzCSGYMgBMFysAEoYAbwBQMGADcUYXJCOmzMZq3bZ+dAGYoANtkh9DjixsHNxIfExBLqEwAL4GJg4OSmRKAGJe+LgAIgjYCACCmggADtgo5mAA4hBsxW72iWaePn5GMEW+ZSoA+kjyUjJykh04ut1eYMDhGpqxDY1eypR8AIwADPOJhJqQAEJQfADaI11gqeVgcDQgvvzdWQCiAMoAwgC6mzDxn2b8IEp2RqNABGlH4PwcxWYRBw4KBZhiEM0ujI-BQ5H4gPhZhOunOFSuZBuYDh8MRQPJDkpiJiQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgFYhARgAcyCQHZMAFl6YAzIoBaDEAFN4AEy59BI8dOTdVSleq0BfIA)
 
 Note
 

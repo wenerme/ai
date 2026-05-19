@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
-
 # Device registration
 
 A device registration represents an individual session of the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on a physical device, linking a user (or service token) and the device to your [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization). It is created the first time the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) authenticates on that device.
@@ -34,8 +30,8 @@ A single physical device can have [multiple device registrations](https://develo
 
 ## Review device registration status
 
-* [ Dashboard ](#tab-panel-4805)
-* [ API ](#tab-panel-4806)
+* [ Dashboard ](#tab-panel-5421)
+* [ API ](#tab-panel-5422)
 
 To review how many device registrations are associated with a device:
 
@@ -143,8 +139,8 @@ The following table summarizes the actions available for managing device registr
 
 Devices can have multiple device registrations. Deleting one registration does not affect other registrations on the same device.
 
-* [ Dashboard ](#tab-panel-4807)
-* [ API ](#tab-panel-4808)
+* [ Dashboard ](#tab-panel-5423)
+* [ API ](#tab-panel-5424)
 
 To delete a device registration:
 

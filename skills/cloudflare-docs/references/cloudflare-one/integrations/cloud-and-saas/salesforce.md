@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Salesforce ](https://developers.cloudflare.com/search/?tags=Salesforce) 
-
 # Salesforce
 
 The Salesforce integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Salesforce environment that could leave you and your organization vulnerable.

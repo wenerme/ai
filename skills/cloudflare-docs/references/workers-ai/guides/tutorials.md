@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Tutorials
 
 View tutorials to help you get started with Workers AI.
@@ -22,9 +18,9 @@ View tutorials to help you get started with Workers AI.
 
 | Name                                                                                                                                                                                   | Last Updated       | Difficulty   |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------ |
-| [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/)                                                                   | 3 months ago       |              |
+| [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/)                                                                   | 4 months ago       | Intermediate |
 | [Whisper-large-v3-turbo with Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/)                           | about 1 year ago   | Beginner     |
-| [Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/)                                   | about 1 year ago   | Beginner     |
+| [Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/)                                   | over 1 year ago    | Beginner     |
 | [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | over 1 year ago    | Beginner     |
 | [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/)                            | over 1 year ago    | Beginner     |
 | [Using BigQuery with Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/)                                                        | over 1 year ago    | Beginner     |
@@ -34,8 +30,8 @@ View tutorials to help you get started with Workers AI.
 | [Use event notification to summarize PDF files on upload](https://developers.cloudflare.com/r2/tutorials/summarize-pdf/)                                                               | over 1 year ago    | Intermediate |
 | [Explore Workers AI Models Using a Jupyter Notebook](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/)                | almost 2 years ago | Beginner     |
 | [Fine Tune Models With AutoTrain from HuggingFace](https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/)                                     | about 2 years ago  | Beginner     |
-| [Explore Code Generation Using DeepSeek Coder Models](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-code-generation-using-deepseek-coder-models/)              | about 2 years ago  | Beginner     |
-| [Choose the Right Text Generation Model](https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/)                                 | about 2 years ago  | Beginner     |
+| [Explore Code Generation Using DeepSeek Coder Models](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-code-generation-using-deepseek-coder-models/)              | over 2 years ago   | Beginner     |
+| [Choose the Right Text Generation Model](https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/)                                 | over 2 years ago   | Beginner     |
 
 ## Videos
 

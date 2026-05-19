@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Shell ](https://developers.cloudflare.com/search/?tags=Shell)[ CLI ](https://developers.cloudflare.com/search/?tags=CLI) 
-
 # Encrypt network flow data
 
 **Last reviewed:**  over 1 year ago 

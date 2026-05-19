@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft Entra ID ](https://developers.cloudflare.com/search/?tags=Microsoft%20Entra%20ID)[ SCIM ](https://developers.cloudflare.com/search/?tags=SCIM) 
-
 # Microsoft Entra ID
 
 You can integrate Microsoft Entra ID (formerly Azure Active Directory) with Cloudflare One and build policies based on user identity and group membership. Users will authenticate to Cloudflare One using their Entra ID credentials.
@@ -76,9 +72,9 @@ More narrow permissions may be used, however this is the set of permissions that
 
 ### 3\. Add Entra ID as an identity provider
 
-* [ Dashboard ](#tab-panel-4518)
-* [ API ](#tab-panel-4519)
-* [ Terraform ](#tab-panel-4520)
+* [ Dashboard ](#tab-panel-5134)
+* [ API ](#tab-panel-5135)
+* [ Terraform ](#tab-panel-5136)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.

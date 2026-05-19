@@ -10,13 +10,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
-
 # Connect to an MCP server
 
-**Last reviewed:**  6 months ago 
+**Last reviewed:**  7 months ago 
 
 Your Agent can connect to external [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io) servers to access their tools and extend your Agent's capabilities. In this tutorial, you'll create an Agent that connects to an MCP server and uses one of its tools.
 
@@ -51,8 +47,8 @@ Terminal window
 cd my-mcp-client  
 ```  
 Your Agent is ready! The template includes a minimal Agent in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-3972)  
-   * [  TypeScript ](#tab-panel-3973)  
+   * [  JavaScript ](#tab-panel-4354)  
+   * [  TypeScript ](#tab-panel-4355)  
 JavaScript  
 ```  
 import { Agent, routeAgentRequest } from "agents";  
@@ -94,8 +90,8 @@ export default {
 ## 2\. Add MCP connection endpoint
 
 1. Add an endpoint to connect to MCP servers. Update your Agent class in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-3976)  
-   * [  TypeScript ](#tab-panel-3977)  
+   * [  JavaScript ](#tab-panel-4358)  
+   * [  TypeScript ](#tab-panel-4359)  
 JavaScript  
 ```  
 export class HelloAgent extends Agent {  
@@ -179,8 +175,8 @@ You should see a response with the server ID:
 ## 4\. List available tools
 
 1. Add an endpoint to see which tools are available from connected servers:  
-   * [  JavaScript ](#tab-panel-3974)  
-   * [  TypeScript ](#tab-panel-3975)  
+   * [  JavaScript ](#tab-panel-4356)  
+   * [  TypeScript ](#tab-panel-4357)  
 JavaScript  
 ```  
 export class HelloAgent extends Agent {  

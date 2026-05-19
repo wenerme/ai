@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Proxying ](https://developers.cloudflare.com/search/?tags=Proxying) 
-
 # Exposed IP addresses
 
 When your DNS records are [proxied](https://developers.cloudflare.com/dns/proxy-status/), Cloudflare speeds up and protects your site.

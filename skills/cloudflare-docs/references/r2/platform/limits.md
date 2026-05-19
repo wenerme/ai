@@ -41,6 +41,12 @@ Managed public bucket access through an `r2.dev` subdomain is not intended for p
 
 For production use cases, connect a [custom domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#custom-domains) to your bucket. Custom domains allow you to serve content from a domain you control (for example, `assets.example.com`), configure fine-grained caching, set up redirect and rewrite rules, mutate content via [Cloudflare Workers](https://developers.cloudflare.com/workers/), and get detailed URL-level analytics for content served from your R2 bucket.
 
+## Cloudflare REST API
+
+The [Cloudflare REST API](https://developers.cloudflare.com/api/resources/r2/) is rate limited to 1,200 requests per five minutes across all R2 REST API operations on your account.
+
+For high-throughput object operations, use the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or [Workers API](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead. The Cloudflare REST API is best suited for lower-volume management and configuration operations.
+
 ## Footnotes
 
 1. Bucket management operations include creating, deleting, listing, and configuring buckets. This limit does _not_ apply to reading or writing objects to a bucket. [↩](#user-content-fnref-1)

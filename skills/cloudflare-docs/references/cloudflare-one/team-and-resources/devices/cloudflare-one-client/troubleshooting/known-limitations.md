@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
-
 # Known limitations
 
 Below, you will find information on devices, software, and configurations that are incompatible with the Cloudflare One Client (formerly WARP).

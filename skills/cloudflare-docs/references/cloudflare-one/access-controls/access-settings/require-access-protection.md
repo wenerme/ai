@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Security ](https://developers.cloudflare.com/search/?tags=Security) 
-
 # Require Access protection
 
 Cloudflare Access allows you to require Access protection for all hostnames in your account. When this setting is turned on, traffic to any hostname without a matching [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/) is automatically blocked.

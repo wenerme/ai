@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
-
 # Tenant control
 
 Tenant control allows your users to access corporate SaaS applications while blocking access to personal accounts on the same service. For example, you can allow access to your company's Google Workspace while blocking personal Gmail logins.
@@ -82,7 +78,7 @@ For more information, refer to the [Microsoft Entra ID documentation ↗](https:
 
 | Custom header name         | Custom header value        |
 | -------------------------- | -------------------------- |
-| X-GooGApps-Allowed-Domains | Your organization's domain |
+| X-GoogApps-Allowed-Domains | Your organization's domain |
 
 For more information, refer to the [Google Workspace documentation ↗](https://support.google.com/a/answer/1668854).
 

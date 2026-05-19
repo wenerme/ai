@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Bindings ](https://developers.cloudflare.com/search/?tags=Bindings) 
-
 # Bindings (env)
 
 Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform. Bindings provide better performance and less restrictions when accessing resources from Workers than the [REST APIs](https://developers.cloudflare.com/api/) which are intended for non-Workers applications.
@@ -49,8 +45,8 @@ The following bindings are available today:
 
 When you declare a binding on your Worker, you grant it a specific capability, such as being able to read and write files to an [R2](https://developers.cloudflare.com/r2/) bucket. For example:
 
-* [  wrangler.jsonc ](#tab-panel-9541)
-* [  wrangler.toml ](#tab-panel-9542)
+* [  wrangler.jsonc ](#tab-panel-9715)
+* [  wrangler.toml ](#tab-panel-9716)
 
 JSONC
 
@@ -93,8 +89,8 @@ bucket_name = "<MY_BUCKET_NAME>"
 
 ```
 
-* [  JavaScript ](#tab-panel-9527)
-* [  Python ](#tab-panel-9528)
+* [  JavaScript ](#tab-panel-9701)
+* [  Python ](#tab-panel-9702)
 
 JavaScript
 
@@ -214,8 +210,8 @@ export default {
 };  
 ```
 * It is as class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env),[DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):  
-   * [  JavaScript ](#tab-panel-9529)  
-   * [  Python ](#tab-panel-9530)  
+   * [  JavaScript ](#tab-panel-9703)  
+   * [  Python ](#tab-panel-9704)  
 JavaScript  
 ```  
 export class MyDurableObject extends DurableObject {  
@@ -232,8 +228,8 @@ class Default(WorkerEntrypoint):
     return Response(f"Hi {self.env.NAME}")  
 ```
 * It can be imported from `cloudflare:workers`:  
-   * [  JavaScript ](#tab-panel-9531)  
-   * [  Python ](#tab-panel-9532)  
+   * [  JavaScript ](#tab-panel-9705)  
+   * [  Python ](#tab-panel-9706)  
 JavaScript  
 ```  
 import { env } from "cloudflare:workers";  
@@ -250,8 +246,8 @@ print(f"Hi, {env.NAME}")
 
 Importing `env` from `cloudflare:workers` is useful when you need to access a binding such as [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) or [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/)in top-level global scope. For example, to initialize an API client:
 
-* [  JavaScript ](#tab-panel-9533)
-* [  Python ](#tab-panel-9534)
+* [  JavaScript ](#tab-panel-9707)
+* [  Python ](#tab-panel-9708)
 
 JavaScript
 
@@ -309,8 +305,8 @@ Workers do not allow I/O from outside a request context. This means that even th
 
 For instance, environment variables and secrets are accessible, and you are able to call `env.NAMESPACE.get` to get a [Durable Object stub](https://developers.cloudflare.com/durable-objects/api/stub/) in the top-level context. However, calling methods on the Durable Object stub, making [calls to a KV store](https://developers.cloudflare.com/kv/api/), and [calling to other Workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) will not work.
 
-* [  JavaScript ](#tab-panel-9535)
-* [  Python ](#tab-panel-9536)
+* [  JavaScript ](#tab-panel-9709)
+* [  Python ](#tab-panel-9710)
 
 JavaScript
 
@@ -368,8 +364,8 @@ class Default(WorkerEntrypoint):
 
 Additionally, importing `env` from `cloudflare:workers` lets you avoid passing `env`as an argument through many function calls if you need to access a binding from a deeply-nested function. This can be helpful in a complex codebase.
 
-* [  JavaScript ](#tab-panel-9537)
-* [  Python ](#tab-panel-9538)
+* [  JavaScript ](#tab-panel-9711)
+* [  Python ](#tab-panel-9712)
 
 JavaScript
 
@@ -453,8 +449,8 @@ The `withEnv` function provides a mechanism for overriding values of `env`.
 
 Imagine a user has defined the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/)"NAME" to be "Alice" in their Wrangler configuration file and deployed a Worker. By default, logging`env.NAME` would print "Alice". Using the `withEnv` function, you can override the value of "NAME".
 
-* [  JavaScript ](#tab-panel-9539)
-* [  Python ](#tab-panel-9540)
+* [  JavaScript ](#tab-panel-9713)
+* [  Python ](#tab-panel-9714)
 
 JavaScript
 

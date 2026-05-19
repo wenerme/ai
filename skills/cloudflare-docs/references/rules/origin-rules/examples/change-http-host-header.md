@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
-
 # Change the HTTP Host header and DNS record
 
 Create an origin rule to change the HTTP `Host` header and DNS record.
@@ -22,8 +18,8 @@ The following origin rule overrides the HTTP `Host` header to `hr-server.example
 
 The `Host` header override only updates the header value; the DNS record override will handle the rerouting of incoming requests. For more information on these overrides, refer to [Origin Rules settings](https://developers.cloudflare.com/rules/origin-rules/features/).
 
-* [ Dashboard ](#tab-panel-7739)
-* [ API ](#tab-panel-7740)
+* [ Dashboard ](#tab-panel-7826)
+* [ API ](#tab-panel-7827)
 
 Expression when using the Expression Builder:
 

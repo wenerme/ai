@@ -52,7 +52,7 @@ In practice, the four most useful locations are:
 - `<repo>/.codex/config.toml`
 
 If more than one hook source exists, Codex loads all matching hooks.
-Higher-precedence config layers do not replace lower-precedence hooks.
+Higher-precedence config layers don't replace lower-precedence hooks.
 If a single layer contains both `hooks.json` and inline `[hooks]`, Codex
 merges them and warns at startup. Prefer one representation per layer.
 
@@ -224,7 +224,7 @@ Notes for managed hooks:
 
 - `managed_dir` is used on macOS and Linux.
 - `windows_managed_dir` is used on Windows.
-- Codex does not distribute the scripts in `managed_dir`; your enterprise
+- Codex doesn't distribute the scripts in `managed_dir`; your enterprise
   tooling must install and update them separately.
 - Managed hook commands should use absolute script paths under the configured
   managed directory.
@@ -286,7 +286,7 @@ Only some current Codex events honor `matcher`:
 | `UserPromptSubmit`  | not supported          | Any configured `matcher` is ignored for this event           |
 | `Stop`              | not supported          | Any configured `matcher` is ignored for this event           |
 
-\*For `apply_patch`, matchers can also use `Edit` or `Write`.
+\*For `apply_patch`, `matcher` values can also use `Edit` or `Write`.
 
 Examples:
 
@@ -384,7 +384,7 @@ That `additionalContext` text is added as extra developer context.
 ### PreToolUse
 
 `PreToolUse` can intercept Bash, file edits performed through `apply_patch`,
-and MCP tool calls. It is still a guardrail rather than a complete enforcement
+and MCP tool calls. It's still a guardrail rather than a complete enforcement
 boundary because Codex can often perform equivalent work through another
 supported tool path.
 
@@ -394,17 +394,17 @@ This doesn't intercept all shell calls yet, only the simple ones. The newer
   `WebSearch` or other non-shell, non-MCP tool calls.
 
 `matcher` is applied to `tool_name` and matcher aliases. For file edits through
-`apply_patch`, matchers can use `apply_patch`, `Edit`, or `Write`; hook input
+`apply_patch`, `matcher` values can use `apply_patch`, `Edit`, or `Write`; hook input
 still reports `tool_name: "apply_patch"`.
 
 Fields in addition to [Common input fields](#common-input-fields):
 
-| Field         | Type         | Meaning                                                                                                   |
-| ------------- | ------------ | --------------------------------------------------------------------------------------------------------- |
-| `turn_id`     | `string`     | Codex-specific extension. Active Codex turn id                                                            |
-| `tool_name`   | `string`     | Canonical hook tool name, such as `Bash`, `apply_patch`, or an MCP name like `mcp__fs__read`              |
-| `tool_use_id` | `string`     | Tool-call id for this invocation                                                                          |
-| `tool_input`  | `JSON value` | Tool-specific input. `Bash` and `apply_patch` use `tool_input.command` while MCP tools send all the args. |
+| Field         | Type         | Meaning                                                                                                    |
+| ------------- | ------------ | ---------------------------------------------------------------------------------------------------------- |
+| `turn_id`     | `string`     | Codex-specific extension. Active Codex turn id                                                             |
+| `tool_name`   | `string`     | Canonical hook tool name, such as `Bash`, `apply_patch`, or an MCP name like `mcp__fs__read`               |
+| `tool_use_id` | `string`     | Tool-call id for this invocation                                                                           |
+| `tool_input`  | `JSON value` | Tool-specific input. `Bash` and `apply_patch` use `tool_input.command` while MCP tools send all arguments. |
 
 Plain text on `stdout` is ignored.
 
@@ -461,11 +461,12 @@ values include `Bash`, `apply_patch`, and MCP tool names such as
 
 Fields in addition to [Common input fields](#common-input-fields):
 
-| Field        | Type         | Meaning                                                                                                   |
-| ------------ | ------------ | --------------------------------------------------------------------------------------------------------- |
-| `turn_id`    | `string`     | Codex-specific extension. Active Codex turn id                                                            |
-| `tool_name`  | `string`     | Canonical hook tool name, such as `Bash`, `apply_patch`, or an MCP name like `mcp__fs__read`              |
-| `tool_input` | `JSON value` | Tool-specific input. `Bash` and `apply_patch` use `tool_input.command` while MCP tools send all the args. |
+| Field                    | Type             | Meaning                                                                                                   |
+| ------------------------ | ---------------- | --------------------------------------------------------------------------------------------------------- |
+| `turn_id`                | `string`         | Codex-specific extension. Active Codex turn id                                                            |
+| `tool_name`              | `string`         | Canonical hook tool name, such as `Bash`, `apply_patch`, or an MCP name like `mcp__fs__read`              |
+| `tool_input`             | `JSON value`     | Tool-specific input. `Bash` and `apply_patch` use `tool_input.command` while MCP tools send all the args. |
+| `tool_input.description` | `string \| null` | Human-readable approval reason, when Codex has one                                                        |
 
 Plain text on `stdout` is ignored.
 
@@ -520,18 +521,18 @@ This doesn't intercept all shell calls yet, only the simple ones. The newer
   `WebSearch` or other non-shell, non-MCP tool calls.
 
 `matcher` is applied to `tool_name` and matcher aliases. For file edits through
-`apply_patch`, matchers can use `apply_patch`, `Edit`, or `Write`; hook input
+`apply_patch`, `matcher` values can use `apply_patch`, `Edit`, or `Write`; hook input
 still reports `tool_name: "apply_patch"`.
 
 Fields in addition to [Common input fields](#common-input-fields):
 
-| Field           | Type         | Meaning                                                                                                   |
-| --------------- | ------------ | --------------------------------------------------------------------------------------------------------- |
-| `turn_id`       | `string`     | Codex-specific extension. Active Codex turn id                                                            |
-| `tool_name`     | `string`     | Canonical hook tool name, such as `Bash`, `apply_patch`, or an MCP name like `mcp__fs__read`              |
-| `tool_use_id`   | `string`     | Tool-call id for this invocation                                                                          |
-| `tool_input`    | `JSON value` | Tool-specific input. `Bash` and `apply_patch` use `tool_input.command` while MCP tools send all the args. |
-| `tool_response` | `JSON value` | Tool-specific output. For MCP tools, this is the MCP call result.                                         |
+| Field           | Type         | Meaning                                                                                                    |
+| --------------- | ------------ | ---------------------------------------------------------------------------------------------------------- |
+| `turn_id`       | `string`     | Codex-specific extension. Active Codex turn id                                                             |
+| `tool_name`     | `string`     | Canonical hook tool name, such as `Bash`, `apply_patch`, or an MCP name like `mcp__fs__read`               |
+| `tool_use_id`   | `string`     | Tool-call id for this invocation                                                                           |
+| `tool_input`    | `JSON value` | Tool-specific input. `Bash` and `apply_patch` use `tool_input.command` while MCP tools send all arguments. |
+| `tool_response` | `JSON value` | Tool-specific output. For MCP tools, this is the MCP call result.                                          |
 
 Plain text on `stdout` is ignored.
 

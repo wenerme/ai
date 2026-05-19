@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
-
 # Domain categories
 
 Cloudflare Gateway allows you to block known and potential security risks on the public Internet, as well as specific categories of content. Domains are categorized by [Cloudforce One](https://developers.cloudflare.com/security-center/cloudforce-one/), Cloudflare's threat intelligence solution. To review the categories for a specific domain, use [Cloudflare Radar](https://developers.cloudflare.com/radar/glossary/#content-categories).

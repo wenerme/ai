@@ -10,18 +10,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Delay action
 
 Customers with a Bot Management and a [Workers](https://developers.cloudflare.com/workers/) subscription can use the template below to introduce a delay to requests that are likely from bots.
 
 The template sets a minimum and maximum delay, and delays requests where the bot score is less than 30 and the URI path starts with `/exampleURI`.
 
-* [  JavaScript ](#tab-panel-4722)
-* [  TypeScript ](#tab-panel-4723)
+* [  JavaScript ](#tab-panel-4809)
+* [  TypeScript ](#tab-panel-4810)
 
 JavaScript
 

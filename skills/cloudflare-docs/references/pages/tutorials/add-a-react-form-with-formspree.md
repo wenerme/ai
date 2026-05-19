@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Forms ](https://developers.cloudflare.com/search/?tags=Forms)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # Add a React form with Formspree
 
 **Last reviewed:**  over 4 years ago 

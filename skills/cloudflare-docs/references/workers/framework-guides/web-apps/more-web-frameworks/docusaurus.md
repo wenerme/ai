@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSG ](https://developers.cloudflare.com/search/?tags=SSG) 
-
 # Docusaurus
 
 **Start from CLI**: Scaffold a Docusaurus project on Workers, and pick your template.
@@ -91,15 +87,15 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
 
 1. **Add a Wrangler configuration file.**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-8869)  
-   * [  wrangler.toml ](#tab-panel-8870)  
+   * [  wrangler.jsonc ](#tab-panel-9593)  
+   * [  wrangler.toml ](#tab-panel-9594)  
 JSONC  
 ```  
   {  
     "name": "my-docusaurus-app",  
     // Update to today's date  
     // Set this to today's date  
-    "compatibility_date": "2026-04-29",  
+    "compatibility_date": "2026-05-18",  
     "assets": {  
       "directory": "./build"  
     }  
@@ -109,7 +105,7 @@ TOML
 ```  
 name = "my-docusaurus-app"  
 # Set this to today's date  
-compatibility_date = "2026-04-29"  
+compatibility_date = "2026-05-18"  
 [assets]  
 directory = "./build"  
 ```  

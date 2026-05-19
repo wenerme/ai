@@ -14,6 +14,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/artifacts.xml) 
 
+## 2026-05-18
+
+  
+**Manage Artifacts namespaces and repos with Wrangler CLI**   
+
+You can now manage [Artifacts](https://developers.cloudflare.com/artifacts/) namespaces, repos, and repo-scoped tokens directly from Wrangler CLI.
+
+Available commands:
+
+* `wrangler artifacts namespaces list` — List Artifacts namespaces in your account.
+* `wrangler artifacts namespaces get` — Get metadata for a namespace.
+* `wrangler artifacts repos create` — Create a repo in a namespace.
+* `wrangler artifacts repos list` — List repos in a namespace.
+* `wrangler artifacts repos get` — Get metadata for a repo.
+* `wrangler artifacts repos delete` — Delete a repo.
+* `wrangler artifacts repos issue-token` — Issue a repo-scoped token for Git access.
+
+To get started, refer to the [Wrangler Artifacts commands documentation](https://developers.cloudflare.com/workers/wrangler/commands/artifacts/).
+
 ## 2026-04-16
 
   

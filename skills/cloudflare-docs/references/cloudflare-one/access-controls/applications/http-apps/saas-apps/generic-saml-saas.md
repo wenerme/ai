@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SAML ](https://developers.cloudflare.com/search/?tags=SAML) 
-
 # Generic SAML application
 
 This page provides generic instructions for setting up a SaaS application in Cloudflare Access using the SAML authentication protocol.

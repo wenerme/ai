@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft)[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
-
 # Microsoft 365 Copilot (FedRAMP)
 
 Availability

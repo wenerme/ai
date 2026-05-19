@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ IPv6 ](https://developers.cloudflare.com/search/?tags=IPv6) 
-
 # Securing guest wireless networks
 
 **Last reviewed:**  over 1 year ago 

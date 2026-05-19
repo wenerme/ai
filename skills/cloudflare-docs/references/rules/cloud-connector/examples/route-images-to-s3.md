@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AWS ](https://developers.cloudflare.com/search/?tags=AWS)[ S3 ](https://developers.cloudflare.com/search/?tags=S3) 
-
 # Route /images to an S3 Bucket
 
 Route requests with a URI path starting with `/images` to a specific AWS S3 bucket using Cloud Connector.

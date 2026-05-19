@@ -44,15 +44,15 @@ Terminal window
 
 ```
 
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
 
-  --header 'Authorization: Bearer {api_token}' \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
-  --header 'Content-Type: application/json' \
+  --header "Content-Type: application/json" \
 
   --header 'cf-aig-metadata: {"team": "AI", "user": 12345, "test":true}' \
 
-  --data '{"model": "gpt-4o", "messages": [{"role": "user", "content": "What should I eat for lunch?"}]}'
+  --data '{"model": "openai/gpt-4.1", "messages": [{"role": "user", "content": "What should I eat for lunch?"}]}'
 
 
 ```
@@ -60,6 +60,9 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/
 ### Using SDK
 
 To include custom metadata in your request using the OpenAI SDK:
+
+* [  JavaScript ](#tab-panel-4527)
+* [  TypeScript ](#tab-panel-4528)
 
 JavaScript
 
@@ -70,65 +73,139 @@ import OpenAI from "openai";
 
 export default {
 
- async fetch(request, env, ctx) {
+  async fetch(request, env, ctx) {
 
-   const openai = new OpenAI({
+    const openai = new OpenAI({
 
-     apiKey: env.OPENAI_API_KEY,
+      apiKey: env.CLOUDFLARE_API_TOKEN,
 
-     baseURL: "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai",
+      baseURL: `https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`,
 
-   });
-
-
-   try {
-
-     const chatCompletion = await openai.chat.completions.create(
-
-       {
-
-         model: "gpt-4o",
-
-         messages: [{ role: "user", content: "What should I eat for lunch?" }],
-
-         max_tokens: 50,
-
-       },
-
-       {
-
-         headers: {
-
-           "cf-aig-metadata": JSON.stringify({
-
-             user: "JaneDoe",
-
-             team: 12345,
-
-             test: true
-
-           }),
-
-         },
-
-       }
-
-     );
+    });
 
 
-     const response = chatCompletion.choices[0].message;
+    try {
 
-     return new Response(JSON.stringify(response));
+      const chatCompletion = await openai.chat.completions.create(
 
-   } catch (e) {
+        {
 
-     console.log(e);
+          model: "openai/gpt-4.1",
 
-     return new Response(e);
+          messages: [{ role: "user", content: "What should I eat for lunch?" }],
 
-   }
+          max_tokens: 50,
 
- },
+        },
+
+        {
+
+          headers: {
+
+            "cf-aig-metadata": JSON.stringify({
+
+              user: "JaneDoe",
+
+              team: 12345,
+
+              test: true,
+
+            }),
+
+          },
+
+        },
+
+      );
+
+
+      const response = chatCompletion.choices[0].message;
+
+      return new Response(JSON.stringify(response));
+
+    } catch (e) {
+
+      console.log(e);
+
+      return new Response(e);
+
+    }
+
+  },
+
+};
+
+
+```
+
+TypeScript
+
+```
+
+import OpenAI from "openai";
+
+
+export default {
+
+  async fetch(request, env, ctx) {
+
+    const openai = new OpenAI({
+
+      apiKey: env.CLOUDFLARE_API_TOKEN,
+
+      baseURL: `https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`,
+
+    });
+
+
+    try {
+
+      const chatCompletion = await openai.chat.completions.create(
+
+        {
+
+          model: "openai/gpt-4.1",
+
+          messages: [{ role: "user", content: "What should I eat for lunch?" }],
+
+          max_tokens: 50,
+
+        },
+
+        {
+
+          headers: {
+
+            "cf-aig-metadata": JSON.stringify({
+
+              user: "JaneDoe",
+
+              team: 12345,
+
+              test: true,
+
+            }),
+
+          },
+
+        },
+
+      );
+
+
+      const response = chatCompletion.choices[0].message;
+
+      return new Response(JSON.stringify(response));
+
+    } catch (e) {
+
+      console.log(e);
+
+      return new Response(e);
+
+    }
+
+  },
 
 };
 

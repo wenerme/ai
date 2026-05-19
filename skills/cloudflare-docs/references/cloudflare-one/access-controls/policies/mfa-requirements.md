@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SAML ](https://developers.cloudflare.com/search/?tags=SAML)[ JSON web token (JWT) ](https://developers.cloudflare.com/search/?tags=JSON%20web%20token%20%28JWT%29)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
-
 # Enforce MFA
 
 Cloudflare Access supports two methods of enforcing multi-factor authentication (MFA):

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
-
 # Applications and app types
 
 Gateway allows you to create DNS, Network, and HTTP policies based on applications and application types. Because a single application often spans multiple hostnames, selecting an application by name is easier than writing separate rules for each hostname. You can select individual applications or application types to filter specific traffic on your network.
@@ -89,17 +85,17 @@ Artificial Intelligence
 
 * ChatGPT
 * Google Gemini
-* Claude
 * Perplexity
+* Claude
 
 File Sharing
 
-* Hightail
-* Dropbox
-* WeTransfer
-* Google Drive
-* ShareFile
 * Box
+* Dropbox
+* Google Drive
+* WeTransfer
+* Hightail
+* ShareFile
 * Smash
 
 For more information, refer to [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/).

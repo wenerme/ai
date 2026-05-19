@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ Shell ](https://developers.cloudflare.com/search/?tags=Shell) 
-
 # Query Magic Transit tunnel bandwidth analytics with GraphQL
 
 This example uses the GraphQL Analytics API to query Magic Transit ingress tunnel traffic over a specified time period.

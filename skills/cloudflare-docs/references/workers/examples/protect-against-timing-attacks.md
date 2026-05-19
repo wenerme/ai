@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Web Crypto ](https://developers.cloudflare.com/search/?tags=Web%20Crypto)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Using timingSafeEqual
 
 **Last reviewed:**  almost 3 years ago 
@@ -38,9 +34,9 @@ Do not return early when the input and secret have different lengths. An early r
 
 In order to compare two strings, you must use the [TextEncoder](https://developers.cloudflare.com/workers/runtime-apis/encoding/#textencoder) API.
 
-* [  TypeScript ](#tab-panel-9185)
-* [  Python ](#tab-panel-9186)
-* [  Hono ](#tab-panel-9187)
+* [  TypeScript ](#tab-panel-9512)
+* [  Python ](#tab-panel-9513)
+* [  Hono ](#tab-panel-9514)
 
 TypeScript
 

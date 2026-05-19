@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Set up Private Network Load Balancing with Cloudflare WAN
 
 Consider the following steps to learn how to configure Private Network Load Balancing solution, using [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) as the on-ramp and off-ramp to securely connect to your private or internal services.

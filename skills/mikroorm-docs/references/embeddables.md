@@ -788,7 +788,7 @@ const AnimalSchema = defineEntity({
   name: 'Animal',
   embeddable: true,
   abstract: true,
-  discriminatorColumn: 'type',
+  discriminator: 'type',
   properties: {
     type: p.enum(() => AnimalType),
     name: p.string(),
@@ -853,7 +853,7 @@ export const Animal = defineEntity({
   name: 'Animal',
   embeddable: true,
   abstract: true,
-  discriminatorColumn: 'type',
+  discriminator: 'type',
   properties: {
     type: p.enum(() => AnimalType),
     name: p.string(),
@@ -905,7 +905,7 @@ export enum AnimalType {
   DOG,
 }
 
-@Embeddable({ abstract: true, discriminatorColumn: 'type' })
+@Embeddable({ abstract: true, discriminator: 'type' })
 export abstract class Animal {
 
   @Enum(() => AnimalType)
@@ -970,7 +970,7 @@ export enum AnimalType {
   DOG,
 }
 
-@Embeddable({ abstract: true, discriminatorColumn: 'type' })
+@Embeddable({ abstract: true, discriminator: 'type' })
 export abstract class Animal {
 
   @Enum()

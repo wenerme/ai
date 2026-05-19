@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSG ](https://developers.cloudflare.com/search/?tags=SSG)[ Full stack ](https://developers.cloudflare.com/search/?tags=Full%20stack)[ Astro ](https://developers.cloudflare.com/search/?tags=Astro) 
-
 # Astro
 
 **Start from CLI**: Scaffold an Astro project on Workers, and pick your template.
@@ -146,14 +142,14 @@ If your Astro project is entirely pre-rendered, follow these steps:
 
 1. **Add a Wrangler configuration file**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-8897)  
-   * [  wrangler.toml ](#tab-panel-8898)  
+   * [  wrangler.jsonc ](#tab-panel-9583)  
+   * [  wrangler.toml ](#tab-panel-9584)  
 JSONC  
 ```  
 {  
   "name": "my-astro-app",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-29",  
+  "compatibility_date": "2026-05-18",  
   "assets": {  
     "directory": "./dist"  
   }  
@@ -163,7 +159,7 @@ TOML
 ```  
 name = "my-astro-app"  
 # Set this to today's date  
-compatibility_date = "2026-04-29"  
+compatibility_date = "2026-05-18"  
 [assets]  
 directory = "./dist"  
 ```  
@@ -218,8 +214,8 @@ _routes.json
 ```
 3. **Add a Wrangler configuration file**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-8901)  
-   * [  wrangler.toml ](#tab-panel-8902)  
+   * [  wrangler.jsonc ](#tab-panel-9587)  
+   * [  wrangler.toml ](#tab-panel-9588)  
 JSONC  
 ```  
 {  
@@ -227,7 +223,7 @@ JSONC
   "main": "./dist/_worker.js/index.js",  
   // Update to today's date  
   // Set this to today's date  
-  "compatibility_date": "2026-04-29",  
+  "compatibility_date": "2026-05-18",  
   "compatibility_flags": ["nodejs_compat"],  
   "assets": {  
     "binding": "ASSETS",  
@@ -243,7 +239,7 @@ TOML
 name = "my-astro-app"  
 main = "./dist/_worker.js/index.js"  
 # Set this to today's date  
-compatibility_date = "2026-04-29"  
+compatibility_date = "2026-05-18"  
 compatibility_flags = [ "nodejs_compat" ]  
 [assets]  
 binding = "ASSETS"  
@@ -317,8 +313,8 @@ You can customize the KV binding name with the [sessionKVBindingName ↗](https:
 
 To serve a custom 404 page for your Astro site, add `not_found_handling` to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8899)
-* [  wrangler.toml ](#tab-panel-8900)
+* [  wrangler.jsonc ](#tab-panel-9585)
+* [  wrangler.toml ](#tab-panel-9586)
 
 JSONC
 

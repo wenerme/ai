@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Choose the Right Text Generation Model
 
 **Last reviewed:**  over 2 years ago 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ SSO ](https://developers.cloudflare.com/search/?tags=SSO)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
-
 # Application Access Report
 
 The Application Access Report provides a high-level summary of [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) usage across your organization. This dashboard helps administrators monitor authentication patterns, identity provider usage, and Access configuration metrics. If Access is not configured in your account, the dashboard appears empty.

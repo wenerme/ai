@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Remix ](https://developers.cloudflare.com/search/?tags=Remix) 
-
 # Remix
 
 [Remix ↗](https://remix.run/) is a framework that focused on web standard. The framework is no longer recommended for new projects by the authors and its successor React Router should be used instead.

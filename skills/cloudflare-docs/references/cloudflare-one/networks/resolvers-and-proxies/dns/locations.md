@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ IPv6 ](https://developers.cloudflare.com/search/?tags=IPv6) 
-
 # Locations
 
 DNS locations are a collection of DNS endpoints which can be mapped to physical entities such as offices, homes, or data centers.

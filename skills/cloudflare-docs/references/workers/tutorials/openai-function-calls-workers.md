@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
-
 # OpenAI GPT function calling with JavaScript and Cloudflare Workers
 
 **Last reviewed:**  almost 3 years ago 

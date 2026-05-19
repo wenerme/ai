@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Windows ](https://developers.cloudflare.com/search/?tags=Windows) 
-
 # Connect the Cloudflare One Client before Windows login
 
 Feature availability
@@ -39,9 +35,9 @@ With Cloudflare Zero Trust, you can use an on-premise Active Directory (or simil
 
 ## 1\. Create a service token
 
-* [ Dashboard ](#tab-panel-4782)
-* [ API ](#tab-panel-4783)
-* [ Terraform (v5) ](#tab-panel-4784)
+* [ Dashboard ](#tab-panel-5398)
+* [ API ](#tab-panel-5399)
+* [ Terraform (v5) ](#tab-panel-5400)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ mTLS ](https://developers.cloudflare.com/search/?tags=mTLS)[ iOS ](https://developers.cloudflare.com/search/?tags=iOS)[ Android ](https://developers.cloudflare.com/search/?tags=Android) 
-
 # Configure your mobile app or IoT device
 
 This tutorial demonstrates how to configure your Internet-of-things (IoT) device and mobile application to use client certificates with [API Shield](https://developers.cloudflare.com/api-shield/).

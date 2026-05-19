@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Okta ](https://developers.cloudflare.com/search/?tags=Okta) 
-
 # Require U2F with Okta
 
 **Last reviewed:**  over 5 years ago 

@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.  
+Set up a KV namespace for edge-cached session storage in my Worker.  
 ```
 
 1. **Download Codex**  

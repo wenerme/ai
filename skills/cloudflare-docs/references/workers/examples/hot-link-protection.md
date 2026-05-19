@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Hot-link protection
 
 **Last reviewed:**  over 5 years ago 
@@ -26,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-8796)
-* [  TypeScript ](#tab-panel-8797)
-* [  Python ](#tab-panel-8798)
-* [  Hono ](#tab-panel-8799)
+* [  JavaScript ](#tab-panel-9482)
+* [  TypeScript ](#tab-panel-9483)
+* [  Python ](#tab-panel-9484)
+* [  Hono ](#tab-panel-9485)
 
 JavaScript
 

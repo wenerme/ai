@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Microsoft Entra ID ](https://developers.cloudflare.com/search/?tags=Microsoft%20Entra%20ID) 
-
 # Use Microsoft Entra ID Conditional Access policies in Cloudflare Access
 
 **Last reviewed:**  over 2 years ago 

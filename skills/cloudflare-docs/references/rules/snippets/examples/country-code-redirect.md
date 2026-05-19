@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Localization ](https://developers.cloudflare.com/search/?tags=Localization)[ Redirects ](https://developers.cloudflare.com/search/?tags=Redirects) 
-
 # Country code redirect
 
 Redirect a response based on the country code in the header of a visitor.

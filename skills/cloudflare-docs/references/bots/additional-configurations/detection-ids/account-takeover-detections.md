@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Account takeover ](https://developers.cloudflare.com/search/?tags=Account%20takeover) 
-
 # Account takeover detections
 
 Using the detection IDs below, you can detect and mitigate account takeover attacks. You can monitor the number of login requests for a given software and network combination, as well as the percentage of login errors. When it reaches a suspicious level, you can prevent these attacks by using [custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), and [Workers](https://developers.cloudflare.com/workers/).
@@ -38,8 +34,8 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 
 To access account takeover detections:
 
-* [  New dashboard ](#tab-panel-4692)
-* [ Old dashboard ](#tab-panel-4693)
+* [  New dashboard ](#tab-panel-4779)
+* [ Old dashboard ](#tab-panel-4780)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -68,8 +64,8 @@ Rate limiting rules can limit the number of logins from a particular IP, JA4 fin
 
 To use rate limiting rules with account takeover detections:
 
-* [  New dashboard ](#tab-panel-4694)
-* [ Old dashboard ](#tab-panel-4695)
+* [  New dashboard ](#tab-panel-4781)
+* [ Old dashboard ](#tab-panel-4782)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

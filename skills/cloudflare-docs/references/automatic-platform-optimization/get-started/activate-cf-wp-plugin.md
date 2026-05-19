@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress) 
-
 # Activate the Cloudflare WordPress plugin
 
 After you [change your nameservers](https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/), activate the Cloudflare WordPress plugin.

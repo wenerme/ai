@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy)[ Proxying ](https://developers.cloudflare.com/search/?tags=Proxying) 
-
 # DNS over Tor
 
 Warning

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
-
 # Common errors
 
 This section covers the most common errors you might encounter when connecting resources with Cloudflare Tunnel. If you do not see your issue listed below, refer to [Troubleshooting Cloudflare One](https://developers.cloudflare.com/cloudflare-one/troubleshooting/), view your [Tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/), or [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).

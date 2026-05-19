@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
-
 # Tenant API
 
 Note

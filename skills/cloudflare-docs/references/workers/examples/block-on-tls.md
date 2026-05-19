@@ -10,20 +10,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Security ](https://developers.cloudflare.com/search/?tags=Security)[ Middleware ](https://developers.cloudflare.com/search/?tags=Middleware)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript)[ Python ](https://developers.cloudflare.com/search/?tags=Python) 
-
 # Block on TLS
 
 **Last reviewed:**  about 4 years ago 
 
 Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 
-* [  JavaScript ](#tab-panel-8710)
-* [  TypeScript ](#tab-panel-8711)
-* [  Hono ](#tab-panel-8712)
-* [  Python ](#tab-panel-8713)
+* [  JavaScript ](#tab-panel-9396)
+* [  TypeScript ](#tab-panel-9397)
+* [  Hono ](#tab-panel-9398)
+* [  Python ](#tab-panel-9399)
 
 JavaScript
 

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Clientless SSH
 
 Provide secure, in-browser command line access to an internal server without SSH client software on the user's device. This is useful when you need to give developers or IT staff remote access to servers for administration or troubleshooting from any browser.

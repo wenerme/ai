@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Response modification ](https://developers.cloudflare.com/search/?tags=Response%20modification) 
-
 # Set security headers
 
 Set common security headers such as X-XSS-Protection, X-Frame-Options, and X-Content-Type-Options.

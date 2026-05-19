@@ -310,10 +310,12 @@ export class Employee extends Person {
 
 The `discriminatorColumn` specifies the name of a special column that will be used to define what type of class a given row should be represented with. It will be defined automatically for us, and it will stay hidden (it won't be hydrated as a regular property).
 
-On the other hand, it is perfectly fine to define the column explicitly. Doing so, you will be able to:
+On the other hand, it is perfectly fine to define the column explicitly. When you do so, use the `discriminator` option (which refers to the property name on the entity) instead — the column name is derived from the property via the naming strategy. Defining it explicitly lets you:
 
-- querying by the type, e.g. `em.find(Person, { type: { $ne: 'employee' } }`
-- the column will be part of the serialized response
+- query by the type, e.g. `em.find(Person, { type: { $ne: 'employee' } }`
+- include the column in the serialized response
+
+> `discriminator` is the property name on the entity; `discriminatorColumn` is an optional override for the underlying column name. When `discriminator` is omitted, `discriminatorColumn` is used as the property name too (legacy behavior). The same applies to `@Embeddable`.
 
 Following example shows how you can define the discriminator explicitly, as well as a version where root entity is abstract class.
 
@@ -323,7 +325,7 @@ Following example shows how you can define the discriminator explicitly, as well
 const BasePersonSchema = defineEntity({
   name: 'BasePerson',
   abstract: true,
-  discriminatorColumn: 'type',
+  discriminator: 'type',
   discriminatorMap: { person: 'Person', employee: 'Employee' },
   properties: {
     type: p.enum(['person', 'employee'] as const),
@@ -358,7 +360,7 @@ BasePersonSchema.setClass(BasePerson);
 export const BasePerson = defineEntity({
   name: 'BasePerson',
   abstract: true,
-  discriminatorColumn: 'type',
+  discriminator: 'type',
   discriminatorMap: { person: 'Person', employee: 'Employee' },
   properties: {
     type: p.enum(['person', 'employee'] as const),
@@ -387,7 +389,7 @@ export const Employee = defineEntity({
 
 ```ts
 @Entity({
-  discriminatorColumn: 'type',
+  discriminator: 'type',
   discriminatorMap: { person: 'Person', employee: 'Employee' },
 })
 export abstract class BasePerson {
@@ -418,7 +420,7 @@ If you want to use `discriminatorValue` with abstract entities, you need to mark
 const BasePersonSchema = defineEntity({
   name: 'BasePerson',
   abstract: true,
-  discriminatorColumn: 'type',
+  discriminator: 'type',
   properties: {
     type: p.enum(['person', 'employee'] as const),
   },
@@ -454,7 +456,7 @@ BasePersonSchema.setClass(BasePerson);
 export const BasePerson = defineEntity({
   name: 'BasePerson',
   abstract: true,
-  discriminatorColumn: 'type',
+  discriminator: 'type',
   properties: {
     type: p.enum(['person', 'employee'] as const),
   },
@@ -484,7 +486,7 @@ export const Employee = defineEntity({
 
 ```ts
 @Entity({
-  discriminatorColumn: 'type',
+  discriminator: 'type',
   abstract: true,
 })
 export abstract class BasePerson {

@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Linux ](https://developers.cloudflare.com/search/?tags=Linux)[ CLI ](https://developers.cloudflare.com/search/?tags=CLI) 
-
 # Linux
 
 Looking for Zero Trust?

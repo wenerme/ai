@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Build a web crawler with Queues and Browser Run
 
 **Last reviewed:**  almost 2 years ago 
@@ -138,8 +134,8 @@ id = "<GENERATED_NAMESPACE_ID>"
 
 Then, in your Wrangler file, add the following with the values generated in the terminal:
 
-* [  wrangler.jsonc ](#tab-panel-7304)
-* [  wrangler.toml ](#tab-panel-7305)
+* [  wrangler.jsonc ](#tab-panel-7543)
+* [  wrangler.toml ](#tab-panel-7544)
 
 JSONC
 
@@ -236,8 +232,8 @@ bun add robots-parser
 
 Then, add a Browser Run binding. Adding a Browser Run binding gives the Worker access to a headless Chromium instance you will control with Puppeteer.
 
-* [  wrangler.jsonc ](#tab-panel-7302)
-* [  wrangler.toml ](#tab-panel-7303)
+* [  wrangler.jsonc ](#tab-panel-7541)
+* [  wrangler.toml ](#tab-panel-7542)
 
 JSONC
 
@@ -300,8 +296,8 @@ Created queue queues-web-crawler.
 
 Then, in your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-7306)
-* [  wrangler.toml ](#tab-panel-7307)
+* [  wrangler.jsonc ](#tab-panel-7545)
+* [  wrangler.toml ](#tab-panel-7546)
 
 JSONC
 
@@ -366,8 +362,8 @@ Adding the `max_batch_timeout` of 60 seconds to the consumer queue is important 
 
 Your final Wrangler file should look similar to the one below.
 
-* [  wrangler.jsonc ](#tab-panel-7308)
-* [  wrangler.toml ](#tab-panel-7309)
+* [  wrangler.jsonc ](#tab-panel-7547)
+* [  wrangler.toml ](#tab-panel-7548)
 
 JSONC
 
@@ -383,7 +379,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-06",
+  "compatibility_date": "2026-05-18",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -458,7 +454,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-06"
+compatibility_date = "2026-05-18"
 
 compatibility_flags = [ "nodejs_compat" ]
 

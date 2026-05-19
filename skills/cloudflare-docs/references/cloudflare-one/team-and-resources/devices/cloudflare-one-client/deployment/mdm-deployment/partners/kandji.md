@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ MacOS ](https://developers.cloudflare.com/search/?tags=MacOS) 
-
 # Kandji
 
 Kandji deploys the Cloudflare One Client (formerly WARP) as a custom app. For an overview of how Kandji deploys custom apps, refer to their [knowledge base article ↗](https://support.kandji.io/custom-apps-overview).

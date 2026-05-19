@@ -20,6 +20,13 @@ For the CLI, Sign in with ChatGPT is the default authentication path when no val
 
 When you sign in with ChatGPT from the Codex app, CLI, or IDE Extension, Codex opens a browser window for you to complete the login flow. After you sign in, the browser returns an access token to the CLI or IDE extension.
 
+If your environment already provides a ChatGPT access token, the CLI can read
+it from stdin:
+
+```shell
+printenv CODEX_ACCESS_TOKEN | codex login --with-access-token
+```
+
 ### Sign in with an API key
 
 You can also sign in to the Codex app, CLI, or IDE Extension with an API key. Get your API key from the [OpenAI dashboard](https://platform.openai.com/api-keys).
@@ -116,7 +123,7 @@ device-code failures, or when support asks for login-specific logs.
 If your network uses a corporate TLS proxy or private root CA, set
 `CODEX_CA_CERTIFICATE` to a PEM bundle before logging in. When
 `CODEX_CA_CERTIFICATE` is unset, Codex falls back to `SSL_CERT_FILE`. The same
-custom CA settings apply to login, normal HTTPS requests, and secure websocket
+custom CA settings apply to login, normal HTTPS requests, and secure WebSocket
 connections.
 
 ```shell

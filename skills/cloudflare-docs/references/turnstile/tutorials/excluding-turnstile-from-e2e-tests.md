@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ Node.js ](https://developers.cloudflare.com/search/?tags=Node.js)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
-
 # Exclude Turnstile from E2E tests
 
 **Last reviewed:**  over 1 year ago 

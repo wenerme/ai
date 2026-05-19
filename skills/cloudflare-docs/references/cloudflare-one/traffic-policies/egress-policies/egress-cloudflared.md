@@ -10,10 +10,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
-### Tags
-
-[ AWS ](https://developers.cloudflare.com/search/?tags=AWS)[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
-
 # Egress through Cloudflare Tunnel
 
 Feature availability
