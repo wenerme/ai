@@ -17,11 +17,11 @@
 
 ## What is ChatGPT developer mode
 
-ChatGPT developer mode is a beta feature that provides full Model Context Protocol (MCP) client support for all tools, both read and write. It's powerful but dangerous, and is intended for developers who understand how to safely configure and test apps. When using developer mode, watch for [prompt injections and other risks](https://developers.openai.com/api/docs/mcp), model mistakes on write actions that could destroy data, and malicious MCPs that attempt to steal information.
+ChatGPT developer mode provides full Model Context Protocol (MCP) client support for all tools, both read and write. It's powerful but dangerous, and is intended for developers who understand how to safely configure and test apps. When using developer mode, watch for [prompt injections and other risks](https://developers.openai.com/api/docs/mcp), model mistakes on write actions that could destroy data, and malicious MCPs that attempt to steal information.
 
 ## How to use
 
-- **Eligibility:** Available in beta to Pro, Plus, Business, Enterprise and Education accounts on the web.
+- **Eligibility:** Available to Pro, Plus, Business, Enterprise, and Education accounts on the web.
 - **Enable developer mode:** Go to [**Settings → Apps**](https://chatgpt.com/#settings/Connectors) → [**Advanced settings → Developer mode**](https://chatgpt.com/#settings/Connectors/Advanced).
 - **Create Apps from MCPs:**
   - Open [ChatGPT Apps settings](https://chatgpt.com/#settings/Connectors).

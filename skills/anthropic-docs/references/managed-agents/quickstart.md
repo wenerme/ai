@@ -15,7 +15,7 @@ This guide walks you through creating an agent, setting up an environment, start
 | Concept | Description |
 |---------|-------------|
 | **Agent** | The model, system prompt, tools, MCP servers, and skills |
-| **Environment** | A configured container template (packages, network access) |
+| **Environment** | Configuration for where sessions run: an Anthropic-managed cloud container, or a self-hosted sandbox on your own infrastructure |
 | **Session** | A running agent instance within an environment, performing a specific task and generating outputs |
 | **Events** | Messages exchanged between your application and the agent (user turns, tool results, status updates) |
 
@@ -39,7 +39,7 @@ brew install anthropics/tap/ant
 For Linux environments, download the release binary directly.
 
 ```bash nocheck
-VERSION=1.7.0
+VERSION=1.8.0
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m | sed -e 's/x86_64/amd64/' -e 's/aarch64/arm64/')
 curl -fsSL "https://github.com/anthropics/anthropic-cli/releases/download/v${VERSION}/ant_${VERSION}_${OS}_${ARCH}.tar.gz" \
@@ -87,7 +87,7 @@ ant --version
   </Tab>
   <Tab title="Java">
     ```groovy Gradle
-    implementation("com.anthropic:anthropic-java:2.30.0")
+    implementation("com.anthropic:anthropic-java:2.32.0")
     ```
   </Tab>
   <Tab title="Go">
@@ -460,6 +460,8 @@ puts "Environment ID: #{environment.id}"
     </CodeGroup>
 
     Save the returned `environment.id`. You'll reference it in every session you create.
+
+    <Tip>To run the sandbox on your own infrastructure instead of a cloud container, see [Self-hosted sandboxes](/docs/en/managed-agents/self-hosted-sandboxes).</Tip>
   </Step>
 
   <Step title="Start a session">

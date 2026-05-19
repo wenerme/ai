@@ -178,6 +178,88 @@ while True:
 ```
 
 
+## Close a WebSocket session
+
+When your source stream ends, send a [`session.close`](https://developers.openai.com/api/reference/resources/realtime/translation-client-events#session-close) event before closing the WebSocket. The event tells the service to flush pending input audio, emit any remaining translated audio and transcript output, and then send a `session.closed` event. The `session.close` event is only supported for translation sessions.
+
+After you send `session.close`, stop appending audio and continue reading events in your normal receive loop until you receive `session.closed`. Closing the socket immediately can drop translated output still draining from the session.
+
+Close a translation session
+
+```javascript
+let translationSessionClosing = false;
+
+function closeTranslationSession() {
+  if (translationSessionClosing) {
+    return;
+  }
+
+  translationSessionClosing = true;
+  ws.send(
+    JSON.stringify({
+      type: "session.close",
+    })
+  );
+}
+
+ws.on("message", (data) => {
+  const event = JSON.parse(data);
+
+  if (event.type === "session.output_audio.delta") {
+    playPcm16(event.delta);
+  }
+
+  if (event.type === "session.output_transcript.delta") {
+    process.stdout.write(event.delta);
+  }
+
+  if (event.type === "session.input_transcript.delta") {
+    updateSourceTranscript(event.delta);
+  }
+
+  if (event.type === "session.closed") {
+    ws.close();
+  }
+});
+
+// Call this when the source stream ends.
+closeTranslationSession();
+```
+
+```python
+translation_session_closing = False
+
+
+def close_translation_session():
+    global translation_session_closing
+    if translation_session_closing:
+        return
+
+    translation_session_closing = True
+    ws.send(json.dumps({"type": "session.close"}))
+
+
+# Call this when the source stream ends.
+close_translation_session()
+
+while True:
+    event = json.loads(ws.recv())
+
+    if event["type"] == "session.output_audio.delta":
+        play_pcm16(event["delta"])
+
+    if event["type"] == "session.output_transcript.delta":
+        print(event["delta"], end="", flush=True)
+
+    if event["type"] == "session.input_transcript.delta":
+        update_source_transcript(event["delta"])
+
+    if event["type"] == "session.closed":
+        ws.close()
+        break
+```
+
+
 ## Build listen-along translation
 
 Use listen-along translation when one source speaker or stream needs translated audio for an audience. Examples include livestreams, conference talks, webinars, earnings calls, lectures, and videos.
@@ -237,6 +319,7 @@ If your use case depends on exact names or domain terms, build a golden set befo
 - Choose WebRTC for browser media and WebSockets for server media.
 - Use the dedicated `/v1/realtime/translations` endpoint.
 - Stream audio continuously, including silence between phrases.
+- Use `session.close` and wait for `session.closed` before closing a WebSocket session.
 - Keep speaker tracks separate for conversational translation.
 - Use one session per output language.
 - Render both source and target transcripts when useful.

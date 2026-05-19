@@ -566,8 +566,8 @@
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
-    "size": 210252,
-    "updatedAt": "2026-05-16T00:38:06.855Z"
+    "size": 216551,
+    "updatedAt": "2026-05-19T11:18:36.969Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",
@@ -621,8 +621,8 @@
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
-    "size": 99555,
-    "updatedAt": "2026-05-16T00:38:17.097Z"
+    "size": 103796,
+    "updatedAt": "2026-05-19T11:18:45.505Z"
   },
   "api/api-reference/credits/get-credits.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/credits/get-credits.md",
@@ -756,8 +756,8 @@
   },
   "api/api-reference/anthropic-messages/create-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-messages.md",
-    "size": 135799,
-    "updatedAt": "2026-05-16T00:39:05.158Z"
+    "size": 140040,
+    "updatedAt": "2026-05-19T11:19:07.438Z"
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
@@ -803,6 +803,11 @@
     "url": "https://openrouter.ai/docs/api/api-reference/organization/list-organization-members.md",
     "size": 10589,
     "updatedAt": "2026-05-16T00:39:11.106Z"
+  },
+  "api/api-reference/presets/create-presets-chat-completions.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/presets/create-presets-chat-completions.md",
+    "size": 86867,
+    "updatedAt": "2026-05-19T11:19:15.460Z"
   },
   "api/api-reference/providers/list-providers.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/providers/list-providers.md",
@@ -949,6 +954,11 @@
     "size": 4786,
     "updatedAt": "2026-05-16T00:40:11.953Z"
   },
+  "client-sdks/typescript/api-reference/presets.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/presets.md",
+    "size": 5781,
+    "updatedAt": "2026-05-19T11:19:36.707Z"
+  },
   "client-sdks/typescript/api-reference/providers.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/providers.md",
     "size": 4204,
@@ -1006,8 +1016,8 @@
   },
   "client-sdks/python/api-reference/chat.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/chat.md",
-    "size": 24338,
-    "updatedAt": "2026-05-16T00:40:37.375Z"
+    "size": 25446,
+    "updatedAt": "2026-05-19T11:19:44.272Z"
   },
   "client-sdks/python/api-reference/credits.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/credits.md",
@@ -1054,6 +1064,11 @@
     "size": 4134,
     "updatedAt": "2026-05-16T00:40:55.357Z"
   },
+  "client-sdks/python/api-reference/presets.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/presets.md",
+    "size": 24456,
+    "updatedAt": "2026-05-19T11:19:52.041Z"
+  },
   "client-sdks/python/api-reference/providers.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/providers.md",
     "size": 3107,
@@ -1066,8 +1081,8 @@
   },
   "client-sdks/python/api-reference/responses.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/responses.md",
-    "size": 25994,
-    "updatedAt": "2026-05-16T00:41:01.853Z"
+    "size": 28569,
+    "updatedAt": "2026-05-19T11:19:58.376Z"
   },
   "client-sdks/python/api-reference/stt.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/stt.md",
@@ -1153,6 +1168,11 @@
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/organization.md",
     "size": 3135,
     "updatedAt": "2026-05-16T00:41:31.423Z"
+  },
+  "client-sdks/go/api-reference/presets.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/presets.md",
+    "size": 5735,
+    "updatedAt": "2026-05-19T11:20:15.596Z"
   },
   "client-sdks/go/api-reference/providers.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/providers.md",

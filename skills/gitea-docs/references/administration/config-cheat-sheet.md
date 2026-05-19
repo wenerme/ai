@@ -165,7 +165,7 @@ In addition, there is _`StaticRootPath`_ which can be set as a built-in at build
 - `ADD_CO_COMMITTER_TRAILERS`: **true**: Add co-authored-by and co-committed-by trailers to merge commit messages if committer does not match author.
 - `RETARGET_CHILDREN_ON_MERGE`: **true**: Retarget child pull requests to the parent pull request branch target on merge of parent pull request. It only works on merged PRs where the head and base branch target the same repo.
 - `DEFAULT_DELETE_BRANCH_AFTER_MERGE`: **false**: Set the default value for "Delete pull request branch after merge by default" for new repositories.
-- `DEFAULT_TITLE_SOURCE`: **first-commit**: Default source for the pull request title when opening a new PR. Valid options:
+- `DEFAULT_TITLE_SOURCE`: **auto**: Default source for the pull request title when opening a new PR. Valid options:
   - `first-commit`: Uses the oldest commit's summary as the title. If there are multiple commits, still uses the first commit's message.
   - `auto`: Uses the commit's summary when the PR contains a single commit; when there are multiple commits, converts the branch name into a human-readable title by normalizing separators and casing.
 

@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Set up rate limiting and WAF rules to block abuse on my public API.  
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.  
 ```
 
 ## Cloudflare platform access

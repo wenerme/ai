@@ -61,9 +61,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"b2802de0c3b73ecbae2510abe0f95d2bfc4455036b30b4e03eb6dfc3a9143c25\"",
-    "size": 309795,
-    "updatedAt": "2026-05-16T00:22:56.933Z"
+    "etag": "W/\"7041afbdc31de99d6565492bf2af78dd87e761d1fd5904e7917c5119b97b1c29\"",
+    "size": 316477,
+    "updatedAt": "2026-05-19T11:03:16.719Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -217,9 +217,9 @@
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
-    "lastModified": "Mon, 18 May 2026 23:25:11 GMT",
-    "size": 39221,
-    "updatedAt": "2026-05-19T00:28:19.530Z"
+    "lastModified": "Tue, 19 May 2026 04:32:11 GMT",
+    "size": 42395,
+    "updatedAt": "2026-05-19T11:02:55.023Z"
   },
   "fast-mode.md": {
     "url": "https://code.claude.com/docs/en/fast-mode",
@@ -259,9 +259,9 @@
   },
   "glossary.md": {
     "url": "https://code.claude.com/docs/en/glossary",
-    "lastModified": "Fri, 15 May 2026 00:23:45 GMT",
-    "size": 18994,
-    "updatedAt": "2026-05-15T00:24:57.100Z"
+    "lastModified": "Tue, 19 May 2026 04:24:00 GMT",
+    "size": 19146,
+    "updatedAt": "2026-05-19T11:02:57.312Z"
   },
   "goal.md": {
     "url": "https://code.claude.com/docs/en/goal",
@@ -451,9 +451,9 @@
   },
   "security.md": {
     "url": "https://code.claude.com/docs/en/security",
-    "lastModified": "Tue, 12 May 2026 23:54:11 GMT",
-    "size": 9950,
-    "updatedAt": "2026-05-13T00:26:48.129Z"
+    "lastModified": "Tue, 19 May 2026 04:24:20 GMT",
+    "size": 10278,
+    "updatedAt": "2026-05-19T11:03:07.767Z"
   },
   "server-managed-settings.md": {
     "url": "https://code.claude.com/docs/en/server-managed-settings",
@@ -535,9 +535,9 @@
   },
   "voice-dictation.md": {
     "url": "https://code.claude.com/docs/en/voice-dictation",
-    "lastModified": "Fri, 15 May 2026 00:24:12 GMT",
-    "size": 14040,
-    "updatedAt": "2026-05-15T00:25:13.144Z"
+    "lastModified": "Tue, 19 May 2026 04:32:41 GMT",
+    "size": 14213,
+    "updatedAt": "2026-05-19T11:03:12.690Z"
   },
   "vs-code.md": {
     "url": "https://code.claude.com/docs/en/vs-code",

@@ -30,13 +30,13 @@ glab mr note reopen [<id> | <branch>] <discussion-id> [flags]
 ## Examples
 
 ```console
-# Reopen a discussion on MR 123 by prefix
+# Reopen a discussion on merge request 123 by prefix
 glab mr note reopen 123 abc12345
 
 # Reopen a discussion by note ID
 glab mr note reopen 3107030349
 
-# Reopen a discussion by prefix (8+ chars, auto-detects MR from branch)
+# Reopen a discussion by prefix (8+ chars, auto-detects merge request from branch)
 glab mr note reopen abc12345
 
 # Reopen a discussion by full ID

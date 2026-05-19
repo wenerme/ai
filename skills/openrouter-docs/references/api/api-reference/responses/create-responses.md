@@ -2401,6 +2401,11 @@ components:
         Approximate user location for location-biased search results. Passed
         through to native providers that support it (e.g. Anthropic).
       title: WebSearchPluginUserLocation
+    WebFetchPluginId:
+      type: string
+      enum:
+        - web-fetch
+      title: WebFetchPluginId
     ResponsesRequestPluginsItems:
       oneOf:
         - type: object
@@ -2592,6 +2597,33 @@ components:
           required:
             - id
           description: web variant
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/WebFetchPluginId'
+            allowed_domains:
+              type: array
+              items:
+                type: string
+              description: Only fetch from these domains.
+            blocked_domains:
+              type: array
+              items:
+                type: string
+              description: Never fetch from these domains.
+            max_content_tokens:
+              type: integer
+              description: >-
+                Maximum content length in approximate tokens. Content exceeding
+                this limit is truncated.
+            max_uses:
+              type: integer
+              description: >-
+                Maximum number of web fetches per request. Once exceeded, the
+                tool returns an error.
+          required:
+            - id
+          description: web-fetch variant
       discriminator:
         propertyName: id
       title: ResponsesRequestPluginsItems
@@ -3077,6 +3109,102 @@ components:
         - scale
       default: auto
       title: ResponsesRequestServiceTier
+    StopServerToolsWhenFinishReasonIsType:
+      type: string
+      enum:
+        - finish_reason_is
+      title: StopServerToolsWhenFinishReasonIsType
+    StopServerToolsWhenHasToolCallType:
+      type: string
+      enum:
+        - has_tool_call
+      title: StopServerToolsWhenHasToolCallType
+    StopServerToolsWhenMaxCostType:
+      type: string
+      enum:
+        - max_cost
+      title: StopServerToolsWhenMaxCostType
+    StopServerToolsWhenMaxTokensUsedType:
+      type: string
+      enum:
+        - max_tokens_used
+      title: StopServerToolsWhenMaxTokensUsedType
+    StopServerToolsWhenStepCountIsType:
+      type: string
+      enum:
+        - step_count_is
+      title: StopServerToolsWhenStepCountIsType
+    StopServerToolsWhenCondition:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/StopServerToolsWhenFinishReasonIsType'
+            reason:
+              type: string
+          required:
+            - type
+            - reason
+          description: >-
+            Stop when the upstream model emits this finish reason (e.g.
+            `length`).
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/StopServerToolsWhenHasToolCallType'
+            tool_name:
+              type: string
+          required:
+            - type
+            - tool_name
+          description: Stop after a tool with this name has been called.
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/StopServerToolsWhenMaxCostType'
+            max_cost_in_dollars:
+              type: number
+              format: double
+          required:
+            - type
+            - max_cost_in_dollars
+          description: >-
+            Stop once cumulative cost across the loop exceeds this dollar
+            threshold.
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/StopServerToolsWhenMaxTokensUsedType'
+            max_tokens:
+              type: integer
+          required:
+            - type
+            - max_tokens
+          description: >-
+            Stop once cumulative token usage across the loop exceeds this
+            threshold.
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/StopServerToolsWhenStepCountIsType'
+            step_count:
+              type: integer
+          required:
+            - type
+            - step_count
+          description: Stop after the agent loop has executed this many steps.
+      discriminator:
+        propertyName: type
+      description: A single condition that, when met, halts the server-tool agent loop.
+      title: StopServerToolsWhenCondition
+    StopServerToolsWhen:
+      type: array
+      items:
+        $ref: '#/components/schemas/StopServerToolsWhenCondition'
+      description: >-
+        Stop conditions for the server-tool agent loop. Any condition firing
+        halts the loop (OR logic). When set, this overrides `max_tool_calls`.
+      title: StopServerToolsWhen
     FormatTextConfigType:
       type: string
       enum:
@@ -4052,6 +4180,34 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
+    FusionServerToolConfigReasoningEffort:
+      type: string
+      enum:
+        - xhigh
+        - high
+        - medium
+        - low
+        - minimal
+        - none
+      description: Reasoning effort level for panelist and judge inner calls.
+      title: FusionServerToolConfigReasoningEffort
+    FusionServerToolConfigReasoning:
+      type: object
+      properties:
+        effort:
+          $ref: '#/components/schemas/FusionServerToolConfigReasoningEffort'
+          description: Reasoning effort level for panelist and judge inner calls.
+        max_tokens:
+          type: integer
+          description: >-
+            Maximum number of reasoning tokens each panelist and judge model may
+            use. Helps bound cost when models allocate too much budget to
+            chain-of-thought.
+      description: >-
+        Reasoning configuration forwarded to panelist and judge inner calls. Use
+        this to control reasoning effort and token budget for models that
+        support extended thinking.
+      title: FusionServerToolConfigReasoning
     FusionServerToolConfig:
       type: object
       properties:
@@ -4066,6 +4222,14 @@ components:
             collective output into structured analysis JSON. Capped at 8 models
             to bound cost amplification. Defaults to the Quality preset from
             /labs/fusion.
+        max_completion_tokens:
+          type: integer
+          description: >-
+            Maximum number of output tokens (including reasoning tokens) each
+            panelist and the judge model may produce per inner call. Controls
+            the total output budget so reasoning-heavy models like GPT-5.5 do
+            not exhaust their token allowance before producing visible text.
+            When omitted, the provider's default applies.
         max_tool_calls:
           type: integer
           description: >-
@@ -4078,6 +4242,18 @@ components:
           description: >-
             Slug of the judge model that produces the structured analysis JSON.
             Defaults to the model used in the outer API request.
+        reasoning:
+          $ref: '#/components/schemas/FusionServerToolConfigReasoning'
+          description: >-
+            Reasoning configuration forwarded to panelist and judge inner calls.
+            Use this to control reasoning effort and token budget for models
+            that support extended thinking.
+        temperature:
+          type: number
+          format: double
+          description: >-
+            Sampling temperature forwarded to panelist and judge inner calls.
+            When omitted, the provider's default applies.
       description: Configuration for the openrouter:fusion server tool.
       title: FusionServerToolConfig
     FusionServerToolOpenRouterType:
@@ -4487,6 +4663,8 @@ components:
             conversation or agent workflow) for observability. If provided in
             both the request body and the x-session-id header, the body value
             takes precedence. Maximum of 256 characters.
+        stop_server_tools_when:
+          $ref: '#/components/schemas/StopServerToolsWhen'
         store:
           type: boolean
           enum:

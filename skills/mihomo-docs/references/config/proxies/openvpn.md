@@ -72,7 +72,7 @@ proxies:
 
 ## tls-crypt
 
-可选，TLS 加密密钥。从 `.ovpn` 文件的 `<tls-crypt>` 标签中复制，不需要保留标签。
+**必须**，TLS 加密密钥。从 `.ovpn` 文件的 `<tls-crypt>` 标签中复制，不需要保留标签。
 
 ## dev
 
@@ -80,7 +80,7 @@ proxies:
 
 ## cipher
 
-可选，加密方式，支持 `AES-128-GCM` / `AES-256-GCM`，默认 `AES-128-GCM`。
+可选，加密方式，支持 `AES-128-GCM` / `AES-256-GCM`/ `CHACHA20-POLY1305`默认 `AES-128-GCM`。
 
 ## auth
 

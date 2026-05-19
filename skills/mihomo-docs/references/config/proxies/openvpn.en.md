@@ -72,7 +72,7 @@ Optional, protocol type. Supports `udp` or `tcp`. Defaults to `udp`.
 
 ## tls-crypt
 
-Optional, TLS encryption key. Copy this from the `<tls-crypt>` tag in your `.ovpn` file; do not include the tags themselves.
+**Required**, TLS encryption key. Copy this from the `<tls-crypt>` tag in your `.ovpn` file; do not include the tags themselves.
 
 ## dev
 
@@ -80,7 +80,7 @@ Optional, virtual network interface type. Currently only `tun` is supported. Def
 
 ## cipher
 
-Optional, encryption method. Supports `AES-128-GCM` / `AES-256-GCM`. Defaults to `AES-128-GCM`.
+Optional, encryption method. Supports `AES-128-GCM` / `AES-256-GCM`./ `CHACHA20-POLY1305`Defaults to `AES-128-GCM`.
 
 ## auth
 

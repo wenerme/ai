@@ -30,3 +30,4 @@ For more information, see
 ## Subcommands
 
 - [`install`](install.md)
+- [`list`](list.md)

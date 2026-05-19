@@ -32,6 +32,8 @@ comment
 ## Subcommands
 
 - [`create`](create.md)
+- [`delete`](delete.md)
 - [`list`](list.md)
 - [`reopen`](reopen.md)
 - [`resolve`](resolve.md)
+- [`update`](update.md)

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Integrate Microsoft MCAS with Cloudflare Zero Trust
 
-**Last reviewed:**  over 4 years ago 
+**Last reviewed:**  almost 5 years ago 
 
 Many security teams rely on Microsoft MCAS (Microsoft Cloud App Security), Microsoft's CASB solution, to identify and block threats on the Internet, as well as allow or block access to cloud applications. This tutorial covers how to integrate MCAS with Cloudflare Zero Trust, and create Gateway HTTP policies to ensure visibility and control over data.
 

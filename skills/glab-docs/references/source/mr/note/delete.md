@@ -1,0 +1,57 @@
+---
+title: '`glab mr note delete`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Delete a note from a merge request. (EXPERIMENTAL)
+
+## Synopsis
+
+Permanently delete a note from a merge request.
+
+`<note-id>` is a numeric note ID, not a hex discussion ID.
+You can find note IDs with:
+
+- `glab mr note list -F json` (the `.id` field)
+- Note URLs: `.../merge_requests/1#note_12345`
+
+Deletion is permanent and cannot be undone. Unless you pass `--yes`,
+the command prompts you to confirm.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab mr note delete [<id> | <branch>] <note-id> [flags]
+```
+
+## Examples
+
+```console
+# Delete note 12345 from merge request 1
+glab mr note delete 1 12345
+
+# Delete without confirmation
+glab mr note delete 1 12345 --yes
+
+# Delete a note on the current branch's merge request
+glab mr note delete 12345
+
+```
+
+## Options
+
+```plaintext
+  -y, --yes   Skip confirmation prompt.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
