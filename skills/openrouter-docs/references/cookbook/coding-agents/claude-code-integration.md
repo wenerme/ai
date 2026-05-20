@@ -93,9 +93,19 @@ Replace `<your-openrouter-api-key>` with your actual OpenRouter API key.
 
 **Variable Location:** Do not put these in a project-level `.env` file. The native Claude Code installer does not read standard `.env` files.
 
-**Previous Login:** If you were previously logged in to Claude Code with Anthropic, run `/logout` in a Claude Code session to clear cached credentials before the OpenRouter configuration takes effect.
+### Step 3: Clear any cached Anthropic login
 
-### Step 3: Start your session
+If you were previously logged in to Claude Code with an Anthropic account, you must run `/logout` once to remove the cached session. Claude Code warns about auth conflicts when both a cached login and `ANTHROPIC_AUTH_TOKEN` are present, and the conflict can cause unexpected behaviour on startup — typically surfacing as confusing model-not-found errors (e.g. for `openrouter/auto`, `openrouter/pareto-code`, or any other OpenRouter-only model).
+
+```text
+> /logout
+```
+
+Then quit and re-launch `claude` so it picks up the new environment variables.
+
+If you have never logged in to Claude Code with Anthropic, you can skip this step.
+
+### Step 4: Start your session
 
 Navigate to your project directory and start Claude Code:
 
@@ -106,7 +116,7 @@ claude
 
 You are now connected! Any prompt you send will be routed through OpenRouter.
 
-### Step 4: Verify
+### Step 5: Verify
 
 You can confirm your connection by running the `/status` command inside Claude Code.
 
@@ -205,7 +215,7 @@ You can use OpenRouter with the official [Claude Code GitHub Action](https://git
 
 You can add a custom statusline to Claude Code that tracks your OpenRouter API costs in real-time. The statusline displays the provider, model, cumulative cost, and cache discounts for your session.
 
-![Claude Code statusline showing OpenRouter cost tracking](file:89b2f371-d072-4389-a9d3-92f107bec2e2)
+![Claude Code statusline showing OpenRouter cost tracking](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/5bc3af530c4a0111317cbdcee893be444718c676f3f80bf0860141cffcb5ee1b/content/pages/guides/claude-code-statusline.png)
 
 Download the statusline scripts from the [openrouter-examples repository](https://github.com/OpenRouterTeam/openrouter-examples/tree/main/claude-code), make them executable, and add the following to your `~/.claude/settings.json`:
 
@@ -222,6 +232,7 @@ The script uses your `ANTHROPIC_AUTH_TOKEN` environment variable, which should a
 
 ## Troubleshooting
 
-* **Auth Errors:** Ensure `ANTHROPIC_API_KEY` is set to an empty string (`""`). If it is unset (null), Claude Code might fall back to its default behavior and try to authenticate with Anthropic servers.
+* **Model-not-found errors for OpenRouter models** (e.g. `openrouter/auto`, `openrouter/pareto-code`): Usually caused by a credential conflict that surfaces as auth-conflict warnings on startup. There are two distinct scenarios. (1) If you have a cached Anthropic OAuth login from before switching to OpenRouter, run `/logout` inside Claude Code, then quit and re-launch `claude` to clear the cached session. (2) If your shell profile still has a real `ANTHROPIC_API_KEY` set (e.g. an old Anthropic console key), `/logout` will not help — it only clears the cached OAuth session, not shell environment variables. Instead, ensure `ANTHROPIC_API_KEY=""` is set in your shell profile per Step 2, then restart your terminal. Verify with `/status` that the auth token is `ANTHROPIC_AUTH_TOKEN` and the base URL is `https://openrouter.ai/api`.
+* **Auth Errors:** Ensure `ANTHROPIC_API_KEY` is set to an empty string (`""`). If it is unset (null), Claude Code might fall back to its default behavior and try to authenticate with Anthropic servers. If you still see auth errors after setting it, run `/logout` (see above).
 * **Context Length Errors:** If you hit context limits, consider breaking your task into smaller chunks or starting a new session.
 * **Privacy:** OpenRouter does not log your source code prompts unless you explicitly opt-in to prompt logging in your account settings. See our [Privacy Policy](/privacy) for details.

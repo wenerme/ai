@@ -65,9 +65,9 @@ To use WebSockets with Durable Objects:
 
 If an event occurs for a hibernated Durable Object, the runtime re-initializes it by calling the constructor. Minimize work in the constructor when using hibernation.
 
-* [  JavaScript ](#tab-panel-6089)
-* [  TypeScript ](#tab-panel-6090)
-* [  Python ](#tab-panel-6091)
+* [  JavaScript ](#tab-panel-6190)
+* [  TypeScript ](#tab-panel-6191)
+* [  Python ](#tab-panel-6192)
 
 JavaScript
 
@@ -300,8 +300,8 @@ self.ctx = state
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-6098)
-* [  wrangler.toml ](#tab-panel-6099)
+* [  wrangler.jsonc ](#tab-panel-6199)
+* [  wrangler.toml ](#tab-panel-6200)
 
 JSONC
 
@@ -397,8 +397,8 @@ To maximize throughput:
 * **Use a simple envelope format** to pack and unpack batched messages
 * **Target fewer, larger messages** rather than many small ones
 
-* [  JavaScript ](#tab-panel-6102)
-* [  TypeScript ](#tab-panel-6103)
+* [  JavaScript ](#tab-panel-6203)
+* [  TypeScript ](#tab-panel-6204)
 
 JavaScript
 
@@ -570,7 +570,7 @@ Key behaviors:
 * If either side closes the connection, attachments are lost
 * Modifications to `value` after calling this method are not retained unless you call it again
 * The `value` can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm)
-* Maximum serialized size is 2,048 bytes
+* Maximum serialized size is 16,384 bytes
 
 For larger values or data that must persist beyond WebSocket lifetime, use the [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) and store the corresponding key as an attachment.
 
@@ -584,8 +584,8 @@ Retrieves the most recent value passed to `serializeAttachment()`, or `null` if 
 
 Use `serializeAttachment` and `deserializeAttachment` to persist per-connection state across hibernation:
 
-* [  JavaScript ](#tab-panel-6104)
-* [  TypeScript ](#tab-panel-6105)
+* [  JavaScript ](#tab-panel-6205)
+* [  TypeScript ](#tab-panel-6206)
 
 JavaScript
 
@@ -756,9 +756,9 @@ Validate requests in a Worker
 
 Both Workers and Durable Objects are billed based on the number of requests. Validate requests in your Worker to avoid billing for invalid requests against a Durable Object.
 
-* [  JavaScript ](#tab-panel-6092)
-* [  TypeScript ](#tab-panel-6093)
-* [  Python ](#tab-panel-6094)
+* [  JavaScript ](#tab-panel-6193)
+* [  TypeScript ](#tab-panel-6194)
+* [  Python ](#tab-panel-6195)
 
 JavaScript
 
@@ -980,9 +980,9 @@ headers={
 
 The following Durable Object creates a WebSocket connection and responds to messages with the total number of connections:
 
-* [  JavaScript ](#tab-panel-6095)
-* [  TypeScript ](#tab-panel-6096)
-* [  Python ](#tab-panel-6097)
+* [  JavaScript ](#tab-panel-6196)
+* [  TypeScript ](#tab-panel-6197)
+* [  Python ](#tab-panel-6198)
 
 JavaScript
 
@@ -1233,8 +1233,8 @@ self.currently_connected_websockets = 0
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-6100)
-* [  wrangler.toml ](#tab-panel-6101)
+* [  wrangler.jsonc ](#tab-panel-6201)
+* [  wrangler.toml ](#tab-panel-6202)
 
 JSONC
 

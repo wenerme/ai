@@ -17,6 +17,10 @@ In addition to tools you make available to the model with [function calling](htt
 
 This guide will show how to use both remote MCP servers and connectors to give the model access to new capabilities.
 
+## Secure MCP Tunnel
+
+If your MCP server is private, use [Secure MCP Tunnel](https://developers.openai.com/api/docs/guides/secure-mcp-tunnels) to connect it to supported OpenAI products without exposing the server to the public internet. Download the latest public release from [openai/tunnel-client](https://github.com/openai/tunnel-client/releases/latest).
+
 ## Quickstart
 
 Check out the examples below to see how remote MCP servers and connectors work through the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create). Both connectors and remote MCP servers can be used with the `mcp` built-in tool type.

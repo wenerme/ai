@@ -13,7 +13,7 @@ notification, profile, or telemetry routing keys. Codex ignores
 `otel` when they appear in a project-local `.codex/config.toml`; put those in
 user-level config instead.
 
-For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_workspace_write.*`), pair this reference with [Sandbox and approvals](https://developers.openai.com/codex/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](https://developers.openai.com/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](https://developers.openai.com/codex/agent-approvals-security#network-access).
+For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_workspace_write.*`), pair this reference with [Sandbox and approvals](https://developers.openai.com/codex/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](https://developers.openai.com/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](https://developers.openai.com/codex/agent-approvals-security#network-access). For beta permission profiles, see [Permissions](https://developers.openai.com/codex/permissions).
 
 <ConfigTable
   options={[
@@ -1327,13 +1327,25 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "default_permissions",
       type: "string",
       description:
-        "Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-no-sandbox`; custom profile names require matching `[permissions.<name>]` tables.",
+        "Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-full-access`; custom profile names require matching `[permissions.<name>]` tables.",
+    },
+    {
+      key: "permissions.<name>.workspace_roots",
+      type: "table",
+      description:
+        "Profile-defined workspace roots that receive `:workspace_roots` filesystem rules alongside the session's runtime workspace roots.",
+    },
+    {
+      key: "permissions.<name>.workspace_roots.<path>",
+      type: "boolean",
+      description:
+        "Opt a path into the profile's workspace root set when `true`. Disabled entries remain inactive.",
     },
     {
       key: "permissions.<name>.filesystem",
       type: "table",
       description:
-        "Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:project_roots`.",
+        "Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:workspace_roots`.",
     },
     {
       key: "permissions.<name>.filesystem.glob_scan_max_depth",
@@ -1343,20 +1355,21 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     },
     {
       key: "permissions.<name>.filesystem.<path-or-glob>",
-      type: '"read" | "write" | "none" | table',
+      type: '"read" | "write" | "deny" | table',
       description:
-        'Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"none"` to deny reads for matching paths.',
+        'Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"deny"` to deny reads for matching paths.',
     },
     {
-      key: 'permissions.<name>.filesystem.":project_roots".<subpath-or-glob>',
-      type: '"read" | "write" | "none"',
+      key: 'permissions.<name>.filesystem.":workspace_roots".<subpath-or-glob>',
+      type: '"read" | "write" | "deny"',
       description:
-        'Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"none"`.',
+        'Scoped filesystem access relative to each effective workspace root. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"deny"`.',
     },
     {
       key: "permissions.<name>.network.enabled",
       type: "boolean",
-      description: "Enable network access for this named permissions profile.",
+      description:
+        "Enable network access for this named permissions profile. This changes the sandbox network policy; it does not start the network proxy by itself.",
     },
     {
       key: "permissions.<name>.network.proxy_url",
@@ -1399,16 +1412,33 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Allow arbitrary Unix socket destinations instead of the default restricted set. Use only in tightly controlled environments.",
     },
     {
+      key: "permissions.<name>.network.mode",
+      type: "limited | full",
+      description: "Network proxy mode used for subprocess traffic.",
+    },
+    {
       key: "permissions.<name>.network.domains",
-      type: "map<string, allow | deny>",
+      type: "table",
       description:
         "Domain rules for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules. `deny` wins on conflicts.",
     },
     {
-      key: "permissions.<name>.network.unix_sockets",
-      type: "map<string, allow | none>",
+      key: "permissions.<name>.network.domains.<pattern>",
+      type: "allow | deny",
       description:
-        "Unix socket rules for sandboxed networking. Use socket paths as keys, with `allow` or `none` values.",
+        "Allow or deny an exact host or scoped wildcard pattern such as `*.example.com` or `**.example.com`.",
+    },
+    {
+      key: "permissions.<name>.network.unix_sockets",
+      type: "table",
+      description:
+        "Unix socket allowlist overrides for sandboxed networking. Use socket paths as keys; `allow` adds a path, and `none` clears an inherited allow entry.",
+    },
+    {
+      key: "permissions.<name>.network.unix_sockets.<path>",
+      type: "allow | none",
+      description:
+        "Add an absolute Unix socket path to the effective allowlist with `allow`, or clear an inherited allow entry with `none`. `none` is not a separate deny-list decision.",
     },
     {
       key: "permissions.<name>.network.allow_local_binding",

@@ -71,13 +71,10 @@ For mode-by-mode behavior (including protected `.git`/`.codex` paths and network
 
 #### Permission profiles
 
-Use a named permission profile when you want one reusable filesystem or network policy across sessions:
-
-```toml
-default_permissions = ":workspace"
-```
-
-Built-in profiles include `:read-only`, `:workspace`, and `:danger-no-sandbox`. For custom filesystem or network rules, define `[permissions.<name>]` tables and set `default_permissions` to that name.
+Codex also supports named permission profiles for reusable filesystem and
+network policies. Built-in profiles are `:read-only`, `:workspace`, and
+`:danger-full-access`. Custom profiles use `[permissions.<name>]` tables and a
+matching `default_permissions` value. See [Permissions](https://developers.openai.com/codex/permissions).
 
 #### Windows sandbox mode
 

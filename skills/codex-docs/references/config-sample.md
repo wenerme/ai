@@ -133,17 +133,9 @@ allow_login_shell = true
 # - danger-full-access (no sandbox; extremely risky)
 sandbox_mode = "read-only"
 # Named permissions profile to apply by default. Built-ins:
-# :read-only | :workspace | :danger-no-sandbox
+# :read-only | :workspace | :danger-full-access
 # Use a custom name such as "workspace" only when you also define [permissions.workspace].
 # default_permissions = ":workspace"
-
-# Example filesystem profile. Use `"none"` to deny reads for exact paths or
-# glob patterns. On platforms that need pre-expanded glob matches, set
-# glob_scan_max_depth when using unbounded patterns such as `**`.
-# [permissions.workspace.filesystem]
-# glob_scan_max_depth = 3
-# ":project_roots" = { "." = "write", "**/*.env" = "none" }
-# "/absolute/path/to/secrets" = "none"
 
 ################################################################################
 # Authentication & Login
@@ -303,6 +295,20 @@ experimental_use_profile = false
 # Add an exact local IP literal or `localhost` allow rule for one target, or set it to true only when broader local access is required.
 #
 # Set `default_permissions = "workspace"` before enabling this profile.
+# Example additional workspace roots that inherit this profile's
+# `:workspace_roots` filesystem rules.
+# [permissions.workspace.workspace_roots]
+# "~/code/app" = true
+# "~/code/shared-lib" = true
+#
+# Example filesystem profile. Use `"deny"` to deny reads for exact paths or
+# glob patterns. On platforms that need pre-expanded glob matches, set
+# glob_scan_max_depth when using unbounded patterns such as `**`.
+# [permissions.workspace.filesystem]
+# glob_scan_max_depth = 3
+# ":workspace_roots" = { "." = "write", "**/*.env" = "deny" }
+# "/absolute/path/to/secrets" = "deny"
+#
 # [permissions.workspace.network]
 # enabled = true
 # proxy_url = "http://127.0.0.1:43128"
@@ -314,6 +320,7 @@ experimental_use_profile = false
 # dangerously_allow_non_loopback_proxy = false
 # dangerously_allow_non_loopback_admin = false
 # dangerously_allow_all_unix_sockets = false
+# mode = "limited"                           # limited | full
 # allow_local_binding = false
 #
 # [permissions.workspace.network.domains]

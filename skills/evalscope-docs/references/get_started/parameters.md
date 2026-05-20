@@ -19,7 +19,7 @@ The following environment variables can be set before launch to control global d
 |-----------|------|-------------|---------|
 | `--model` | `str` | Name of the model to be evaluated• ModelScope model ID (e.g., `Qwen/Qwen2.5-0.5B-Instruct`)• Local model path (e.g., `/path/to/model`)• Model ID for API service (e.g., `Qwen2.5-0.5B-Instruct`) | - |
 | `--model-id` | `str` | Alias for the evaluated model, used in reports | Last part of `model` |
-| `--api-url` | `str` | Model API endpoint, supports OpenAI-compatible formatExample: `http://127.0.0.1:8000/v1` | `None` |
+| `--api-url` | `str` | Model API endpoint, supports OpenAI-compatible and OpenAI Responses API rootsExample: `http://127.0.0.1:8000/v1` or `https://api.openai.com/v1` | `None` |
 | `--api-key` | `str` | Model API endpoint key | `EMPTY` |
 | `--model-args` | `str` | Model loading parameters, comma-separated `key=value` or JSON string• `revision`: Model revision• `precision`: Model precision• `device_map`: Device allocation | `revision=master``precision=torch.float16``device_map=auto` |
 | `--model-task` | `str` | Model task type | `text_generation`(Options: `image_generation`) |
@@ -144,7 +144,7 @@ The `--generation-config` parameter supports the following options (comma-separa
 
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
-| `--eval-type` | `str` | Evaluation type• `llm_ckpt`: Local model inference (transformers)• `openai_api`: OpenAI-compatible API service• `anthropic_api`: Anthropic Claude API service• `litellm`: LiteLLM multi-provider routing (supports 100+ LLM providers)• `text2image`: Text-to-image model (diffusers)• `image_editing`: Image editing model• `mock_llm`: Simulated inference (for verification)• `custom`: Custom evaluation type | `None` (auto-detect) |
+| `--eval-type` | `str` | Evaluation type• `llm_ckpt`: Local model inference (transformers)• `openai_api`: OpenAI-compatible Chat Completions API service• `openai_responses_api`: OpenAI official Responses API service• `anthropic_api`: Anthropic Claude API service• `litellm`: LiteLLM multi-provider routing (supports 100+ LLM providers)• `text2image`: Text-to-image model (diffusers)• `image_editing`: Image editing model• `mock_llm`: Simulated inference (for verification)• `custom`: Custom evaluation type | `None` (auto-detect) |
 | `--eval-batch-size` | `int` | Evaluation batch size, applies to the following stages:• Inference: concurrent requests (service mode) or batch size (checkpoint mode)• LLM-judge review: number of concurrent threads• `batch_calculate_metrics`: number of samples per batch window | `1` (service mode: `8`) |
 | `--eval-backend` | `str` | Evaluation backend• `Native`: Default backend• `OpenCompass`: LLM evaluation• `VLMEvalKit`: Multimodal model evaluation• `RAGEval`: RAG/Embedding/Reranker/CLIP evaluation• `ThirdParty`: Special task evaluation | `Native` |
 | `--eval-config` | `str` | Configuration file path for non-Native backends | - |

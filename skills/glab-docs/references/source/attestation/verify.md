@@ -22,7 +22,7 @@ For more information about attestations, see:
 
 - [Attestations API](https://docs.gitlab.com/api/attestations/)
 - [SLSA provenance specification](https://docs.gitlab.com/ci/pipeline_security/slsa/provenance_v1/)
-- [SLSA software attestations](https://slsa.dev/attestation-model)
+- [SLSA software attestations](https://slsa.dev/spec/v1.2/attestation-model)
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

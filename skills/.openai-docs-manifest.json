@@ -122,10 +122,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"160a53b73df27a3f799dc63770bfdea4\"",
-    "lastModified": "Sat, 16 May 2026 00:28:18 GMT",
-    "size": 29241,
-    "updatedAt": "2026-05-16T00:28:18.531Z"
+    "etag": "W/\"bcf0d4e9be6fe48b1664eb435a0ad9d7\"",
+    "lastModified": "Wed, 20 May 2026 06:10:28 GMT",
+    "size": 28875,
+    "updatedAt": "2026-05-20T11:07:56.839Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",
@@ -831,6 +831,14 @@
     "size": 2445,
     "updatedAt": "2026-03-05T06:04:22.482Z"
   },
+  "openai-docs/guides/secure-mcp-tunnels.md": {
+    "url": "https://developers.openai.com/api/docs/guides/secure-mcp-tunnels.md",
+    "skill": "openai-docs",
+    "etag": "W/\"2e221a6ba985e855c7beecb1753dd4d8\"",
+    "lastModified": "Wed, 20 May 2026 06:54:24 GMT",
+    "size": 8287,
+    "updatedAt": "2026-05-20T11:08:18.516Z"
+  },
   "openai-docs/guides/speech-to-text.md": {
     "url": "https://developers.openai.com/api/docs/guides/speech-to-text.md",
     "skill": "openai-docs",
@@ -914,10 +922,10 @@
   "openai-docs/guides/tools-connectors-mcp.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-connectors-mcp.md",
     "skill": "openai-docs",
-    "etag": "W/\"7872de095fe580c52e0e6b1a97713534\"",
-    "lastModified": "Sat, 25 Apr 2026 00:23:28 GMT",
-    "size": 42699,
-    "updatedAt": "2026-04-25T00:23:28.458Z"
+    "etag": "W/\"2d7d97a487b4e755b3d3403095f192c7\"",
+    "lastModified": "Wed, 20 May 2026 06:04:44 GMT",
+    "size": 43059,
+    "updatedAt": "2026-05-20T11:08:21.244Z"
   },
   "openai-docs/guides/tools-file-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-file-search.md",
@@ -9362,10 +9370,10 @@
   "codex-docs/agent-approvals-security.md": {
     "url": "https://developers.openai.com/codex/agent-approvals-security.md",
     "skill": "codex-docs",
-    "etag": "W/\"a2087a9b34cbcccc7ef348de6671158d\"",
-    "lastModified": "Mon, 18 May 2026 21:50:49 GMT",
-    "size": 30882,
-    "updatedAt": "2026-05-19T00:41:00.852Z"
+    "etag": "W/\"ef7e3c9c6a37e4c98d2b539ac44fc48e\"",
+    "lastModified": "Wed, 20 May 2026 06:12:26 GMT",
+    "size": 30124,
+    "updatedAt": "2026-05-20T11:15:21.939Z"
   },
   "codex-docs/app-server.md": {
     "url": "https://developers.openai.com/codex/app-server.md",
@@ -9562,10 +9570,10 @@
   "codex-docs/concepts/sandboxing.md": {
     "url": "https://developers.openai.com/codex/concepts/sandboxing.md",
     "skill": "codex-docs",
-    "etag": "W/\"6f3e8e2cdb7287611210759ff5526e0b\"",
-    "lastModified": "Tue, 12 May 2026 03:00:22 GMT",
-    "size": 9317,
-    "updatedAt": "2026-05-12T11:01:11.498Z"
+    "etag": "W/\"9939dc462f630b7528517827be6c6a07\"",
+    "lastModified": "Wed, 20 May 2026 06:11:24 GMT",
+    "size": 8789,
+    "updatedAt": "2026-05-20T11:15:28.507Z"
   },
   "codex-docs/concepts/sandboxing/auto-review.md": {
     "url": "https://developers.openai.com/codex/concepts/sandboxing/auto-review.md",
@@ -9586,34 +9594,34 @@
   "codex-docs/config-advanced.md": {
     "url": "https://developers.openai.com/codex/config-advanced.md",
     "skill": "codex-docs",
-    "etag": "W/\"848ff16f911a2dd07ef7631b102f2478\"",
-    "lastModified": "Mon, 18 May 2026 21:46:01 GMT",
-    "size": 45238,
-    "updatedAt": "2026-05-19T00:41:07.704Z"
+    "etag": "W/\"ac88c3367535ff1d8c52a1098f950a92\"",
+    "lastModified": "Wed, 20 May 2026 06:12:47 GMT",
+    "size": 44834,
+    "updatedAt": "2026-05-20T11:15:29.366Z"
   },
   "codex-docs/config-basic.md": {
     "url": "https://developers.openai.com/codex/config-basic.md",
     "skill": "codex-docs",
-    "etag": "W/\"c196f40d4ed29abcb1bb286ba0e0c01a\"",
-    "lastModified": "Thu, 14 May 2026 22:50:20 GMT",
-    "size": 10303,
-    "updatedAt": "2026-05-15T00:37:35.177Z"
+    "etag": "W/\"982bbe1fdeebd2284ccddb0a0e7a3983\"",
+    "lastModified": "Wed, 20 May 2026 06:03:18 GMT",
+    "size": 10280,
+    "updatedAt": "2026-05-20T11:15:29.614Z"
   },
   "codex-docs/config-reference.md": {
     "url": "https://developers.openai.com/codex/config-reference.md",
     "skill": "codex-docs",
-    "etag": "W/\"f0cc3ff656611f86a51452bfc2ecfd2d\"",
-    "lastModified": "Mon, 18 May 2026 21:45:47 GMT",
-    "size": 63422,
-    "updatedAt": "2026-05-19T00:41:08.134Z"
+    "etag": "W/\"1a398dd0033eddf6fb8fef1795484164\"",
+    "lastModified": "Wed, 20 May 2026 06:03:04 GMT",
+    "size": 64780,
+    "updatedAt": "2026-05-20T11:15:29.859Z"
   },
   "codex-docs/config-sample.md": {
     "url": "https://developers.openai.com/codex/config-sample.md",
     "skill": "codex-docs",
-    "etag": "W/\"6fdd49a75b7175d85723b58bc3a85174\"",
-    "lastModified": "Mon, 18 May 2026 21:50:27 GMT",
-    "size": 27237,
-    "updatedAt": "2026-05-19T00:41:08.359Z"
+    "etag": "W/\"39a2a86cc9b249d112f0465bce29cea0\"",
+    "lastModified": "Wed, 20 May 2026 06:12:48 GMT",
+    "size": 27502,
+    "updatedAt": "2026-05-20T11:15:30.099Z"
   },
   "codex-docs/custom-prompts.md": {
     "url": "https://developers.openai.com/codex/custom-prompts.md",
@@ -9822,6 +9830,14 @@
     "lastModified": "Thu, 30 Apr 2026 21:30:44 GMT",
     "size": 11867,
     "updatedAt": "2026-05-01T00:35:15.514Z"
+  },
+  "codex-docs/permissions.md": {
+    "url": "https://developers.openai.com/codex/permissions.md",
+    "skill": "codex-docs",
+    "etag": "W/\"70dc00380d38a31e25ec347eb281cf90\"",
+    "lastModified": "Wed, 20 May 2026 06:13:03 GMT",
+    "size": 26483,
+    "updatedAt": "2026-05-20T11:15:36.666Z"
   },
   "codex-docs/plugins.md": {
     "url": "https://developers.openai.com/codex/plugins.md",

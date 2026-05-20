@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Set up a KV namespace for edge-cached session storage in my Worker.  
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.  
 ```
 
 ## Cloudflare platform access

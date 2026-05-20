@@ -16,6 +16,10 @@ Cloudflare occasionally updates the `beacon.min.js` file to improve Web Analytic
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/web-analytics/changelog/index.xml)
 
+## 2026-05-15
+
+Updated Google's web-vitals library to version 4.2.4 and captured Interaction to Next Paint (INP) sub-part metrics (Input Delay, Processing Duration, Presentation Delay)
+
 ## 2024-06-11
 
 Enhanced to include reporting of Server-Timing headers.

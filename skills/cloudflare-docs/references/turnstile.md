@@ -44,7 +44,7 @@ Turnstile [widget types](https://developers.cloudflare.com/turnstile/concepts/wi
 
 ## Accessibility
 
-Turnstile is WCAG 2.2 AAA compliant.
+Turnstile is WCAG 2.2 AA compliant.
 
 ---
 

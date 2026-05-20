@@ -153,7 +153,7 @@ The differences between each clause and MySQL are as follows:
 | Parameter | Differences from MySQL |
 | --- | --- |
 | column_definition_list | - Defines the column list. The basic syntax is similar to MySQL.- Doris additionally supports an aggregation type operation, primarily for the Aggregate Key data model.- MySQL allows constraints such as Index, Primary Key, and Unique Key to be added after the column list definition; Doris implements support for these constraints and computations through data models. |
-| index_definition_list | - Defines the index list. The basic syntax is similar to MySQL.- MySQL supports bitmap indexes, inverted indexes, and N-Gram indexes, and can also enable Bloom filter indexes through properties.- MySQL supports B+Tree indexes and Hash indexes. |
+| index_definition_list | - Defines the index list. The basic syntax is similar to MySQL.- Doris supports bitmap indexes, inverted indexes, and N-Gram indexes, and can also enable Bloom filter indexes through properties.- MySQL supports B+Tree indexes and Hash indexes. |
 | engine_type | - Specifies the table engine type. Optional.- The currently supported table engine is mainly the OLAP native engine.- MySQL supports storage engines such as InnoDB and MyISAM. |
 | keys_type | - Specifies the data model. Optional.- Supported types include:&nbsp;&nbsp;1) DUPLICATE KEY (default): the columns specified after it are sort columns;&nbsp;&nbsp;2) AGGREGATE KEY: the columns specified after it are dimension columns;&nbsp;&nbsp;3) UNIQUE KEY: the columns specified after it are primary key columns.- MySQL has no concept of a data model. |
 | table_comment | Table comment. |

@@ -506,18 +506,18 @@
   "anthropic-docs/agents-and-tools/mcp-tunnels/deploy-compose.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/deploy-compose",
     "skill": "anthropic-docs",
-    "etag": "W/\"4969-19e3f2d6098\"",
-    "lastModified": "Tue, 19 May 2026 07:39:59 GMT",
-    "size": 18793,
-    "updatedAt": "2026-05-19T11:03:35.812Z"
+    "etag": "W/\"4996-19e4338d2d0\"",
+    "lastModified": "Wed, 20 May 2026 02:30:58 GMT",
+    "size": 18838,
+    "updatedAt": "2026-05-20T11:01:40.969Z"
   },
   "anthropic-docs/agents-and-tools/mcp-tunnels/security.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/security",
     "skill": "anthropic-docs",
-    "etag": "W/\"1289-19e3f2d6098\"",
-    "lastModified": "Tue, 19 May 2026 07:39:59 GMT",
-    "size": 4745,
-    "updatedAt": "2026-05-19T11:03:36.105Z"
+    "etag": "W/\"129a-19e4338d2d0\"",
+    "lastModified": "Wed, 20 May 2026 02:30:58 GMT",
+    "size": 4762,
+    "updatedAt": "2026-05-20T11:01:41.302Z"
   },
   "anthropic-docs/agents-and-tools/mcp-tunnels/troubleshooting.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/troubleshooting",
@@ -546,10 +546,10 @@
   "anthropic-docs/build-with-claude/claude-on-amazon-bedrock-legacy.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy",
     "skill": "anthropic-docs",
-    "etag": "W/\"754f-19e2376e518\"",
-    "lastModified": "Wed, 13 May 2026 22:30:55 GMT",
-    "size": 30031,
-    "updatedAt": "2026-05-14T00:28:14.147Z"
+    "etag": "W/\"7540-19e4338d2d0\"",
+    "lastModified": "Wed, 20 May 2026 02:30:58 GMT",
+    "size": 30016,
+    "updatedAt": "2026-05-20T11:01:42.756Z"
   },
   "anthropic-docs/build-with-claude/claude-platform-on-aws.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws",
@@ -658,10 +658,10 @@
   "anthropic-docs/managed-agents/self-hosted-sandboxes.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes",
     "skill": "anthropic-docs",
-    "etag": "W/\"b3d0-19e4269f5c8\"",
-    "lastModified": "Tue, 19 May 2026 22:45:01 GMT",
-    "size": 46032,
-    "updatedAt": "2026-05-20T00:30:30.274Z"
+    "etag": "W/\"b3e5-19e4338d2d0\"",
+    "lastModified": "Wed, 20 May 2026 02:30:58 GMT",
+    "size": 46053,
+    "updatedAt": "2026-05-20T11:01:47.484Z"
   },
   "anthropic-docs/managed-agents/self-hosted-sandboxes-security.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-security",

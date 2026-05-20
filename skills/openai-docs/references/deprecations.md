@@ -46,9 +46,6 @@ To improve reliability and make it easier for developers to choose the right mod
 | Shutdown date | Model snapshot                                                         | Substitute model             |
 | ------------- | ---------------------------------------------------------------------- | ---------------------------- |
 | 2026-07-23    | `computer-use-preview-2025-03-11` \| `computer-use-preview`            | `gpt-5.4-mini`               |
-| 2026-07-23    | `gpt-4o-audio-preview-2024-12-17`                                      | `gpt-audio-1.5`              |
-| 2026-07-23    | `gpt-4o-mini-audio-preview-2024-12-17`                                 | `gpt-audio-mini`             |
-| 2026-07-23    | `gpt-4o-mini-realtime-preview-2024-12-17`                              | `gpt-realtime-mini`          |
 | 2026-07-23    | `gpt-4o-mini-search-preview-2025-03-11`                                | `gpt-5.4-mini`               |
 | 2026-07-23    | `gpt-4o-mini-tts-2025-03-20`                                           | `gpt-4o-mini-tts-2025-12-15` |
 | 2026-07-23    | `gpt-4o-search-preview-2025-03-11`                                     | `gpt-5.4-mini`               |

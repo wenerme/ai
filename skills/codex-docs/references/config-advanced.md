@@ -268,6 +268,8 @@ Pick approval strictness (affects when Codex pauses) and sandbox level (affects 
 
 For operational details to keep in mind while editing `config.toml`, see [Common sandbox and approval combinations](https://developers.openai.com/codex/agent-approvals-security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](https://developers.openai.com/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](https://developers.openai.com/codex/agent-approvals-security#network-access).
 
+For beta permission profiles that configure filesystem and network access together, see [Permissions](https://developers.openai.com/codex/permissions).
+
 You can also use a granular approval policy (`approval_policy = { granular = { ... } }`) to allow or auto-reject individual prompt categories. This is useful when you want normal interactive approvals for some cases but want others, such as `request_permissions` or skill-script prompts, to fail closed automatically.
 
 Set `approvals_reviewer = "auto_review"` to route eligible interactive approval
@@ -306,35 +308,12 @@ Use your organization's automatic review policy.
 
 ### Named permission profiles
 
-Set `default_permissions` to reuse a sandbox profile by name. Codex includes
-the built-in profiles `:read-only`, `:workspace`, and `:danger-no-sandbox`:
+For built-in profiles, custom profile syntax, and the full filesystem and
+network configuration model, see [Permissions](https://developers.openai.com/codex/permissions).
 
-```toml
-default_permissions = ":workspace"
-```
-
-For custom profiles, point `default_permissions` at a name you define under
-`[permissions.<name>]`:
-
-```toml
-default_permissions = "workspace"
-
-[permissions.workspace.filesystem]
-":project_roots" = { "." = "write", "**/*.env" = "none" }
-glob_scan_max_depth = 3
-
-[permissions.workspace.network]
-enabled = true
-mode = "limited"
-
-[permissions.workspace.network.domains]
-"api.openai.com" = "allow"
-```
-
-Use built-in names with a leading colon. Custom names don't use a leading
-colon and must have matching `permissions` tables.
-
-Need the complete key list (including profile-scoped overrides and requirements constraints)? See [Configuration Reference](https://developers.openai.com/codex/config-reference) and [Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration).
+For the complete key list, including profile-scoped overrides and requirements
+constraints, see [Configuration Reference](https://developers.openai.com/codex/config-reference) and
+[Managed configuration](https://developers.openai.com/codex/enterprise/managed-configuration).
 
 In workspace-write mode, some environments keep `.git/` and `.codex/`
   read-only even when the rest of the workspace is writable. This is why
