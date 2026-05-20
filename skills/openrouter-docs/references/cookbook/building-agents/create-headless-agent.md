@@ -209,6 +209,6 @@ The skill generates a CLI entry point by default, but you can also ask for:
 * [Create Headless Agent skill README](https://github.com/OpenRouterTeam/skills/tree/main/skills/create-headless-agent)
 * [OpenRouter Skills repository](https://github.com/OpenRouterTeam/skills)
 * [`@openrouter/agent` on npm](https://www.npmjs.com/package/@openrouter/agent)
-* [OpenRouter TypeScript SDK](/docs/sdks/typescript)
+* [OpenRouter TypeScript SDK](/docs/client-sdks/typescript)
 * [Server Tools documentation](/docs/guides/features/server-tools)
 * [OpenRouter API keys](https://openrouter.ai/settings/keys)

@@ -25,19 +25,6 @@ To simulate how read replication can improve a worst case latency scenario, sele
 
 You can find this in the **Database location hint** dropdown.
 
-## Demos
-
-Explore the following demo applications for D1.
-
-* [Starter code for D1 Sessions API: ↗](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template) An introduction to D1 Sessions API. This demo simulates purchase orders administration.
-* [Jobs At Conf: ↗](https://github.com/harshil1712/jobs-at-conf-demo) A job lisiting website to add jobs you find at in-person conferences. Built with Cloudflare Pages, R2, D1, Queues, and Workers AI.
-* [Remix Authentication Starter: ↗](https://github.com/harshil1712/remix-d1-auth-template) Implement authenticating to a Remix app and store user data in Cloudflare D1.
-* [JavaScript-native RPC on Cloudflare Workers <> Named Entrypoints: ↗](https://github.com/cloudflare/js-rpc-and-entrypoints-demo) This is a collection of examples of communicating between multiple Cloudflare Workers using the remote-procedure call (RPC) system that is built into the Workers runtime.
-* [Workers for Platforms Example Project: ↗](https://github.com/cloudflare/workers-for-platforms-example) Explore how you could manage thousands of Workers with a single Cloudflare Workers account.
-* [Staff Directory demo: ↗](https://github.com/lauragift21/staff-directory) Built using the powerful combination of HonoX for backend logic, Cloudflare Pages for fast and secure hosting, and Cloudflare D1 for seamless database management.
-* [Wildebeest: ↗](https://github.com/cloudflare/wildebeest) Wildebeest is an ActivityPub and Mastodon-compatible server whose goal is to allow anyone to operate their Fediverse server and identity on their domain without needing to keep infrastructure, with minimal setup and maintenance, and running in minutes.
-* [D1 Northwind Demo: ↗](https://github.com/cloudflare/d1-northwind) This is a demo of the Northwind dataset, running on Cloudflare Workers, and D1 - Cloudflare's SQL database, running on SQLite.
-
 ## Reference architectures
 
 Explore the following reference architectures that use D1:

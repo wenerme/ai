@@ -1070,7 +1070,7 @@ the `background` parameter set to `true` can be cancelled.
 
             - `type: "open_page"`
 
-              The action type.
+              The action type. Always `open_page`.
 
               - `"open_page"`
 

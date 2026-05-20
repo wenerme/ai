@@ -26,10 +26,8 @@ import { OpenRouter } from '@openrouter/sdk';
 
 const openRouter = new OpenRouter({
   apiKey: '<OPENROUTER_API_KEY>',
-  defaultHeaders: {
-    'HTTP-Referer': '<YOUR_SITE_URL>', // Optional. Site URL for rankings on openrouter.ai.
-    'X-OpenRouter-Title': '<YOUR_SITE_NAME>', // Optional. Site title for rankings on openrouter.ai.
-  },
+  httpReferer: '<YOUR_SITE_URL>', // Optional. Site URL for rankings on openrouter.ai.
+  appTitle: '<YOUR_SITE_NAME>', // Optional. Site title for rankings on openrouter.ai.
 });
 
 const completion = await openRouter.chat.send({

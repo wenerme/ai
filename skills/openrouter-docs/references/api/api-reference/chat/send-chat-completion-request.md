@@ -1725,12 +1725,28 @@ components:
         - type
       description: Named tool choice for specific function
       title: ChatNamedToolChoice
+    ChatServerToolChoice:
+      type: object
+      properties:
+        type:
+          type: string
+          description: >-
+            OpenRouter server-tool type to force (e.g. `openrouter:web_search`,
+            `web_search`, `web_search_preview`).
+      required:
+        - type
+      description: >-
+        OpenRouter extension: force a specific server tool by naming it directly
+        in `tool_choice.type` instead of wrapping it in `{ type: "function",
+        function: { name } }`.
+      title: ChatServerToolChoice
     ChatToolChoice:
       oneOf:
         - $ref: '#/components/schemas/ChatToolChoice0'
         - $ref: '#/components/schemas/ChatToolChoice1'
         - $ref: '#/components/schemas/ChatToolChoice2'
         - $ref: '#/components/schemas/ChatNamedToolChoice'
+        - $ref: '#/components/schemas/ChatServerToolChoice'
       description: Tool choice configuration
       title: ChatToolChoice
     ChatFunctionToolOneOf0Function:
@@ -1864,11 +1880,13 @@ components:
         - openrouter
         - firecrawl
         - exa
+        - parallel
       description: >-
         Which fetch engine to use. "auto" (default) uses native if the provider
         supports it, otherwise Exa. "native" forces the provider's built-in
         fetch. "exa" uses Exa Contents API. "openrouter" uses direct HTTP fetch.
-        "firecrawl" uses Firecrawl scrape (requires BYOK).
+        "firecrawl" uses Firecrawl scrape (requires BYOK). "parallel" uses the
+        Parallel extract API.
       title: WebFetchEngineEnum
     WebFetchServerToolConfig:
       type: object

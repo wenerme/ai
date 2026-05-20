@@ -1,6 +1,6 @@
 # Native development
 
-Build for iOS and macOS, refactor native UI, expose app actions, and verify your work with the right loop.
+Build and debug iOS and macOS apps.
 
 Codex works great on Apple platform projects when each pass has a build, run, or simulator loop attached to it.
 These use cases are helpful when you are building new or existing iOS and macOS apps and need to iterate on the UI and debug issues.

@@ -5,7 +5,22 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Generate a changelog for the repository or project.
+Generate a changelog for the current project.
+
+## Synopsis
+
+Generates a changelog from the commits in your project's Git
+repository. If you do not pass `--version`, glab determines
+the version by running `git describe` against your local tags.
+
+By default, GitLab reads the changelog configuration from
+`.gitlab/changelog_config.yml` in the project. To use a
+different file, pass `--config-file`.
+
+To limit the range of commits, use `--from` and `--to`.
+glab excludes the `--from` commit from the range and includes
+the `--to` commit. The `--to` commit defaults to
+`HEAD` of the project's default branch.
 
 ```plaintext
 glab changelog generate [flags]
@@ -14,19 +29,26 @@ glab changelog generate [flags]
 ## Examples
 
 ```console
-# Generate a changelog
+# Generate a changelog for the version detected by 'git describe'
 glab changelog generate
+
+# Generate a changelog for a specific version
+glab changelog generate --version 1.2.0
+
+# Generate a changelog for commits between two SHAs
+glab changelog generate --from abc123 --to def456
+
 ```
 
 ## Options
 
 ```plaintext
-      --config-file string          Path of the changelog configuration file in the project's Git repository. Defaults to '.gitlab/changelog_config.yml'. For more information, see <https://docs.gitlab.com/user/project/changelogs/>.
-      --date 2016-03-11T03:45:40Z   Date and time of the release. Uses ISO 8601 (2016-03-11T03:45:40Z) format. Defaults to the current time.
-      --from string                 Start of the range of commits (as a SHA) to use when generating the changelog. This commit itself isn't included in the list.
-      --to string                   End of the range of commits (as a SHA) to use when generating the changelog. This commit is included in the list. Defaults to the HEAD of the project's default branch.
-      --trailer string              The Git trailer to use for including commits. Defaults to 'Changelog'.
-  -v, --version string              Version to generate the changelog for. Must follow semantic versioning. Defaults to the version of the local checkout, like using 'git describe'.
+      --config-file string   Path to the changelog configuration file in the project's Git repository. Defaults to '.gitlab/changelog_config.yml'.
+      --date string          Date and time of the release, in ISO 8601 format (2016-03-11T03:45:40Z). Defaults to the current time.
+      --from string          Start of the range of commits to use when generating the changelog, as a SHA. This commit is not included in the range.
+      --to string            End of the range of commits to use when generating the changelog, as a SHA. This commit is included in the range. Defaults to the HEAD of the project's default branch.
+      --trailer string       The Git trailer to use to include commits. Defaults to 'Changelog'.
+  -v, --version string       Version to generate the changelog for. Must follow semantic versioning. Defaults to the version detected by 'git describe'.
 ```
 
 ## Options inherited from parent commands

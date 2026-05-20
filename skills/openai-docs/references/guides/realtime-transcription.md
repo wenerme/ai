@@ -80,12 +80,6 @@ Realtime transcription uses a session with `type: "transcription"`. You can conn
         "transcription": {
           "model": "gpt-realtime-whisper",
           "language": "en"
-        },
-        "turn_detection": {
-          "type": "server_vad",
-          "threshold": 0.5,
-          "prefix_padding_ms": 300,
-          "silence_duration_ms": 500
         }
       }
     }
@@ -99,7 +93,8 @@ Realtime transcription uses a session with `type: "transcription"`. You can conn
 - `audio.input.format`: Input encoding for audio appended to the buffer. Use 24 kHz mono PCM when sending `audio/pcm`.
 - `audio.input.transcription.model`: Use `gpt-realtime-whisper` for streaming transcription.
 - `audio.input.transcription.language`: Optional language hint such as `en`.
-- `audio.input.turn_detection`: Optional voice activity detection. Set it to `null` if you want to commit audio manually.
+- `audio.input.transcription.delay`: Optional latency/accuracy tradeoff for `gpt-realtime-whisper`. Supported values are `minimal`, `low`, `medium`, `high`, and `xhigh`.
+- `audio.input.turn_detection`: Optional voice activity detection for models that support it. For `gpt-realtime-whisper`, omit this field or set it to `null`, then commit audio manually.
 
 ## Stream audio
 
@@ -124,7 +119,7 @@ ws.send(
 );
 ```
 
-With server VAD enabled, the session commits audio automatically when it detects a turn boundary.
+For models that support server VAD, the session commits audio automatically when it detects a turn boundary.
 
 ## Handle transcript events
 
@@ -172,18 +167,23 @@ Ordering between completion events from different speech turns isn't guaranteed.
 
 Streaming transcription trades latency for transcript quality. Lower delay settings can produce earlier partial text. Higher delay settings give the model more audio context before emitting text and can improve word error rate.
 
-Start by testing a few delay targets against your real audio. Useful evaluation points are:
+Start by setting `audio.input.transcription.delay` and testing against your real audio. Useful starting points are:
 
-- 0.4 seconds for the most latency-sensitive interactions;
-- 0.8 to 1.2 seconds for balanced live captions;
-- 1.5 to 2.0 seconds when accuracy matters more than immediate display;
-- 3.0 seconds for workflows that can tolerate more delay.
+- `minimal` for the most latency-sensitive interactions;
+- `low` for low-latency live captions;
+- `medium` for a balanced latency/accuracy tradeoff;
+- `high` when accuracy matters more than immediate display;
+- `xhigh` when your workflow can tolerate the most delay for additional context.
+
+The exact delay in milliseconds can vary by model configuration, so benchmark with representative audio instead of assuming a fixed timing per level.
 
 Don't choose a setting from synthetic audio alone. Test with representative microphones, telephony audio, accents, background noise, code-switching, domain vocabulary, and long sessions.
 
 ## Guide vocabulary and domain terms
 
-If your application depends on exact domain vocabulary, include a language hint and test whether your model and endpoint support prompt or keyword steering before relying on it. Where supported, use short keyword lists rather than long instructions.
+If your application depends on exact domain vocabulary, include a language hint and use prompt or keyword steering only when your selected model supports it. For `gpt-realtime-whisper` in GA Realtime sessions, `prompt` is not supported.
+
+Where prompt steering is available, use short keyword lists rather than long instructions. The model is already instructed to transcribe, so focus prompts on domain vocabulary, spelling, or style rather than re-stating the transcription task.
 
 Example keyword style:
 

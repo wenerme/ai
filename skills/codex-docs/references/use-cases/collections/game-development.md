@@ -1,6 +1,6 @@
 # Game development
 
-Develop games with Codex, from the first playable loop to production quality.
+Prototype loops, UI, and gameplay faster.
 
 Codex, combined with image generation, is particularly powerful to create browser-based and other types of games.
 These use cases will help you turn ideas into live games.

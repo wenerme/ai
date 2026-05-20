@@ -12,7 +12,7 @@ Here's a basic example:
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="How does AI work?"
     )
     print(response.text)
@@ -25,7 +25,7 @@ Here's a basic example:
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "How does AI work?",
       });
       console.log(response.text);
@@ -54,7 +54,7 @@ Here's a basic example:
 
       result, _ := client.Models.GenerateContent(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           genai.Text("Explain how AI works in a few words"),
           nil,
       )
@@ -73,7 +73,7 @@ Here's a basic example:
         Client client = new Client();
 
         GenerateContentResponse response =
-            client.models.generateContent("gemini-3-flash-preview", "How does AI work?", null);
+            client.models.generateContent("gemini-3.5-flash", "How does AI work?", null);
 
         System.out.println(response.text());
       }
@@ -81,7 +81,7 @@ Here's a basic example:
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -114,7 +114,7 @@ Here's a basic example:
         ],
       };
 
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent';
+      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent';
       const options = {
         method: 'POST',
         contentType: 'application/json',
@@ -147,7 +147,7 @@ over cost, latency, and intelligence. For more details, see the
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="How does AI work?",
         config=types.GenerateContentConfig(
             thinking_config=types.ThinkingConfig(thinking_level="low")
@@ -163,7 +163,7 @@ over cost, latency, and intelligence. For more details, see the
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "How does AI work?",
         config: {
           thinkingConfig: {
@@ -199,7 +199,7 @@ over cost, latency, and intelligence. For more details, see the
 
       result, _ := client.Models.GenerateContent(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           genai.Text("How does AI work?"),
           &genai.GenerateContentConfig{
             ThinkingConfig: &genai.ThinkingConfig{
@@ -230,7 +230,7 @@ over cost, latency, and intelligence. For more details, see the
                 .build();
 
         GenerateContentResponse response =
-            client.models.generateContent("gemini-3-flash-preview", "How does AI work?", config);
+            client.models.generateContent("gemini-3.5-flash", "How does AI work?", config);
 
         System.out.println(response.text());
       }
@@ -238,7 +238,7 @@ over cost, latency, and intelligence. For more details, see the
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -281,7 +281,7 @@ over cost, latency, and intelligence. For more details, see the
         }
       };
 
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent';
+      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent';
       const options = {
         method: 'POST',
         contentType: 'application/json',
@@ -311,7 +311,7 @@ object.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         config=types.GenerateContentConfig(
             system_instruction="You are a cat. Your name is Neko."),
         contents="Hello there"
@@ -327,7 +327,7 @@ object.
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "Hello there",
         config: {
           systemInstruction: "You are a cat. Your name is Neko.",
@@ -363,7 +363,7 @@ object.
 
       result, _ := client.Models.GenerateContent(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           genai.Text("Hello there"),
           config,
       )
@@ -391,7 +391,7 @@ object.
                 .build();
 
         GenerateContentResponse response =
-            client.models.generateContent("gemini-3-flash-preview", "Hello there", config);
+            client.models.generateContent("gemini-3.5-flash", "Hello there", config);
 
         System.out.println(response.text());
       }
@@ -399,7 +399,7 @@ object.
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
@@ -445,7 +445,7 @@ object.
         ],
       };
 
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent';
+      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent';
       const options = {
         method: 'POST',
         contentType: 'application/json',
@@ -476,7 +476,7 @@ object also lets you override default generation parameters, such as
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=["Explain how AI works"],
         config=types.GenerateContentConfig(
             temperature=0.1
@@ -492,7 +492,7 @@ object also lets you override default generation parameters, such as
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "Explain how AI works",
         config: {
           temperature: 0.1,
@@ -535,7 +535,7 @@ object also lets you override default generation parameters, such as
 
       result, _ := client.Models.GenerateContent(
         ctx,
-        "gemini-3-flash-preview",
+        "gemini-3.5-flash",
         genai.Text("What is the average size of a swallow?"),
         config,
       )
@@ -557,7 +557,7 @@ object also lets you override default generation parameters, such as
         GenerateContentConfig config = GenerateContentConfig.builder().temperature(0.1f).build();
 
         GenerateContentResponse response =
-            client.models.generateContent("gemini-3-flash-preview", "Explain how AI works", config);
+            client.models.generateContent("gemini-3.5-flash", "Explain how AI works", config);
 
         System.out.println(response.text());
       }
@@ -565,7 +565,7 @@ object also lets you override default generation parameters, such as
 
 ### REST
 
-    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent \
+    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -614,7 +614,7 @@ object also lets you override default generation parameters, such as
         ],
       };
 
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent';
+      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent';
       const options = {
         method: 'POST',
         contentType: 'application/json',
@@ -648,7 +648,7 @@ media files. The following example demonstrates providing an image:
 
     image = Image.open("/path/to/organ.png")
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=[image, "Tell me about this instrument"]
     )
     print(response.text)
@@ -668,7 +668,7 @@ media files. The following example demonstrates providing an image:
         file: "/path/to/organ.png",
       });
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: [
           createUserContent([
             "Tell me about this instrument",
@@ -719,7 +719,7 @@ media files. The following example demonstrates providing an image:
 
       result, _ := client.Models.GenerateContent(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           contents,
           nil,
       )
@@ -745,7 +745,7 @@ media files. The following example demonstrates providing an image:
               Part.fromUri("/path/to/organ.jpg", "image/jpeg"));
 
         GenerateContentResponse response =
-            client.models.generateContent("gemini-3-flash-preview", content, null);
+            client.models.generateContent("gemini-3.5-flash", content, null);
 
         System.out.println(response.text());
       }
@@ -782,7 +782,7 @@ media files. The following example demonstrates providing an image:
     }
     EOF
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -808,7 +808,7 @@ media files. The following example demonstrates providing an image:
         ],
       };
 
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent';
+      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent';
       const options = {
         method: 'POST',
         contentType: 'application/json',
@@ -853,7 +853,7 @@ as they're generated.
     client = genai.Client()
 
     response = client.models.generate_content_stream(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=["Explain how AI works"]
     )
     for chunk in response:
@@ -867,7 +867,7 @@ as they're generated.
 
     async function main() {
       const response = await ai.models.generateContentStream({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "Explain how AI works",
       });
 
@@ -899,7 +899,7 @@ as they're generated.
 
       stream := client.Models.GenerateContentStream(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           genai.Text("Write a story about a magic backpack."),
           nil,
       )
@@ -923,7 +923,7 @@ as they're generated.
 
         ResponseStream<GenerateContentResponse> responseStream =
           client.models.generateContentStream(
-              "gemini-3-flash-preview", "Write a story about a magic backpack.", null);
+              "gemini-3.5-flash", "Write a story about a magic backpack.", null);
 
         for (GenerateContentResponse res : responseStream) {
           System.out.print(res.text());
@@ -937,7 +937,7 @@ as they're generated.
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:streamGenerateContent?alt=sse" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:streamGenerateContent?alt=sse" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       --no-buffer \
@@ -970,7 +970,7 @@ as they're generated.
         ],
       };
 
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:streamGenerateContent';
+      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:streamGenerateContent';
       const options = {
         method: 'POST',
         contentType: 'application/json',
@@ -1000,7 +1000,7 @@ history.
     from google import genai
 
     client = genai.Client()
-    chat = client.chats.create(model="gemini-3-flash-preview")
+    chat = client.chats.create(model="gemini-3.5-flash")
 
     response = chat.send_message("I have 2 dogs in my house.")
     print(response.text)
@@ -1020,7 +1020,7 @@ history.
 
     async function main() {
       const chat = ai.chats.create({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         history: [
           {
             role: "user",
@@ -1070,7 +1070,7 @@ history.
           genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
       }
 
-      chat, _ := client.Chats.Create(ctx, "gemini-3-flash-preview", nil, history)
+      chat, _ := client.Chats.Create(ctx, "gemini-3.5-flash", nil, history)
       res, _ := chat.SendMessage(ctx, genai.Part{Text: "How many paws are in my house?"})
 
       if len(res.Candidates) > 0 {
@@ -1089,7 +1089,7 @@ history.
       public static void main(String[] args) {
 
         Client client = new Client();
-        Chat chatSession = client.chats.create("gemini-3-flash-preview");
+        Chat chatSession = client.chats.create("gemini-3.5-flash");
 
         GenerateContentResponse response =
             chatSession.sendMessage("I have 2 dogs in my house.");
@@ -1110,7 +1110,7 @@ history.
 
 ### REST
 
-    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent \
+    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -1173,7 +1173,7 @@ history.
         ],
       };
 
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent';
+      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent';
       const options = {
         method: 'POST',
         contentType: 'application/json',
@@ -1196,7 +1196,7 @@ Streaming can also be used for multi-turn conversations.
     from google import genai
 
     client = genai.Client()
-    chat = client.chats.create(model="gemini-3-flash-preview")
+    chat = client.chats.create(model="gemini-3.5-flash")
 
     response = chat.send_message_stream("I have 2 dogs in my house.")
     for chunk in response:
@@ -1218,7 +1218,7 @@ Streaming can also be used for multi-turn conversations.
 
     async function main() {
       const chat = ai.chats.create({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         history: [
           {
             role: "user",
@@ -1274,7 +1274,7 @@ Streaming can also be used for multi-turn conversations.
           genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
       }
 
-      chat, _ := client.Chats.Create(ctx, "gemini-3-flash-preview", nil, history)
+      chat, _ := client.Chats.Create(ctx, "gemini-3.5-flash", nil, history)
       stream := chat.SendMessageStream(ctx, genai.Part{Text: "How many paws are in my house?"})
 
       for chunk, _ := range stream {
@@ -1294,7 +1294,7 @@ Streaming can also be used for multi-turn conversations.
       public static void main(String[] args) {
 
         Client client = new Client();
-        Chat chatSession = client.chats.create("gemini-3-flash-preview");
+        Chat chatSession = client.chats.create("gemini-3.5-flash");
 
         ResponseStream<GenerateContentResponse> responseStream =
             chatSession.sendMessageStream("I have 2 dogs in my house.", null);
@@ -1317,7 +1317,7 @@ Streaming can also be used for multi-turn conversations.
 
 ### REST
 
-    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:streamGenerateContent?alt=sse \
+    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:streamGenerateContent?alt=sse \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -1380,7 +1380,7 @@ Streaming can also be used for multi-turn conversations.
         ],
       };
 
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:streamGenerateContent';
+      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:streamGenerateContent';
       const options = {
         method: 'POST',
         contentType: 'application/json',

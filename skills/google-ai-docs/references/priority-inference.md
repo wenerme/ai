@@ -22,7 +22,7 @@ To use the Priority tier, set the `service_tier` field in the request body to
 
     try:
         response = client.models.generate_content(
-            model="gemini-3-flash-preview",
+            model="gemini-3.5-flash",
             contents="Triage this critical customer support ticket immediately.",
             config={"service_tier": "priority"},
         )
@@ -46,7 +46,7 @@ To use the Priority tier, set the `service_tier` field in the request body to
     async function main() {
       try {
           const result = await ai.models.generateContent({
-              model: "gemini-3-flash-preview",
+              model: "gemini-3.5-flash",
               contents: "Triage this critical customer support ticket immediately.",
               config: {serviceTier: "priority"},
           });
@@ -86,7 +86,7 @@ To use the Priority tier, set the `service_tier` field in the request body to
 
         resp, err := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             genai.Text("Triage this critical customer support ticket immediately."),
             &genai.GenerateContentConfig{
                 ServiceTier: "priority",
@@ -106,7 +106,7 @@ To use the Priority tier, set the `service_tier` field in the request body to
 
 ### REST
 
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=$GEMINI_API_KEY" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
       "contents": [{
@@ -174,6 +174,7 @@ The following models support Priority inference:
 
 | Model | Priority inference |
 |---|---|
+| [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ✔️ |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
 | [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview) | ✔️ |
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ |

@@ -21,7 +21,7 @@ In Sentry, navigate to your project's SDK setup:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+![Enable Broadcast](file:32dead6f-003d-492a-b50b-e3dd1fdd3a37)
 
 ## Step 3: Configure Sentry
 
@@ -39,7 +39,7 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 Make an API request through OpenRouter and view the trace in Sentry's
 Performance or Traces view.
 
-![Sentry Trace View](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/56b7ddbbef77c96471b25b6e468e6327816ffacd355d4671ec2d20a5b0564a8e/content/pages/features/broadcast/broadcast-sentry-trace.png)
+![Sentry Trace View](file:68b53fcf-5cf5-49c2-b074-03670dd86d22)
 
 Sentry uses OpenTelemetry for trace ingestion. The OTLP endpoint and DSN
 are both required for proper authentication and trace routing.

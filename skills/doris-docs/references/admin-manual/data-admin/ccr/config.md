@@ -53,7 +53,7 @@ This document is for operators and developers who use Doris **CCR (Cross-Cluster
 Configure in `fe.conf`, for example:
 
 ```shell
-restore_reset_index_id = true
+restore_reset_index_id = false
 ```
 
 | Name | Description | Default value | Version |

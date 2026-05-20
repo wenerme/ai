@@ -1,8 +1,13 @@
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
-This quickstart shows you how to install our [libraries](https://ai.google.dev/gemini-api/docs/libraries)
-and make your first Gemini API request.
+> [!NOTE]
+> This page covers the `generateContent` API. For new projects, we recommend the new **Interactions API** (Beta), which offers server-side history, built-in support for agentic workflows, and future new Gemini capabilities. Use the **API switcher toggle** at the top of the page to switch to the Interactions API quickstart.
+
+This quickstart shows you how to install our
+[libraries](https://ai.google.dev/gemini-api/docs/libraries) and make your first request, stream
+responses, build multi-turn conversations, and use tools using the standard
+`generateContent` method.
 
 ## Before you begin
 
@@ -33,203 +38,44 @@ using the following
 
     npm install @google/genai
 
-### Go
+## Generate text
 
-Install
-[google.golang.org/genai](https://pkg.go.dev/google.golang.org/genai) in
-your module directory using the [go get command](https://go.dev/doc/code):
-
-    go get google.golang.org/genai
-
-### Java
-
-If you're using Maven, you can install
-[google-genai](https://github.com/googleapis/java-genai) by adding the
-following to your dependencies:
-
-    <dependencies>
-      <dependency>
-        <groupId>com.google.genai</groupId>
-        <artifactId>google-genai</artifactId>
-        <version>1.0.0</version>
-      </dependency>
-    </dependencies>
-
-### C#
-
-Install
-[googleapis/go-genai](https://googleapis.github.io/dotnet-genai/) in
-your module directory using the [dotnet add command](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-package-add)
-
-    dotnet add package Google.GenAI
-
-### Apps Script
-
-1. To create a new Apps Script project, go to [script.new](https://script.google.com/u/0/home/projects/create).
-2. Click **Untitled project**.
-3. Rename the Apps Script project **AI Studio** and click **Rename**.
-4. Set your [API key](https://developers.google.com/apps-script/guides/properties#manage_script_properties_manually)
-   1. At the left, click **Project Settings** ![The icon for project settings](https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/settings/default/24px.svg).
-   2. Under **Script Properties** click **Add script property**.
-   3. For **Property** , enter the key name: `GEMINI_API_KEY`.
-   4. For **Value**, enter the value for the API key.
-   5. Click **Save script properties**.
-5. Replace the `Code.gs` file contents with the following code:
-
-## Make your first request
-
-There are two ways you can use to send a request to the Gemini API:
-
-- ***(Recommended)*** [Interactions API](https://ai.google.dev/api/interactions-api) is a new primitive with native support for multi-step tool use, orchestration, and complex reasoning flows through typed execution steps. Going forward, new models beyond the core mainline family, along with new agentic capabilities and tools, will launch exclusively on the Interactions API.
-- [`generateContent`](https://ai.google.dev/api/generate-content#method:-models.generatecontent) provides a way to generate a simple, stateless response from a model. While we recommend using Interactions API, `generateContent` is fully supported.
-
-This example that uses the
-[`generateContent`](https://ai.google.dev/api/generate-content#method:-models.generatecontent) method
-to send a request to the Gemini API using the Gemini 2.5 Flash model.
-
-If you [set your API key](https://ai.google.dev/gemini-api/docs/api-key#set-api-env-var) as the
-environment variable `GEMINI_API_KEY`, it will be picked up automatically by the
-client when using the [Gemini API libraries](https://ai.google.dev/gemini-api/docs/libraries).
-Otherwise you will need to [pass your API key](https://ai.google.dev/gemini-api/docs/api-key#provide-api-key-explicitly) as
-an argument when initializing the client.
-
-Note that all code samples in the Gemini API docs assume that you have set the
-environment variable `GEMINI_API_KEY`.
+Use the `models.generate_content` method to
+[generate a text response](https://ai.google.dev/gemini-api/docs/text-generation).
 
 ### Python
 
     from google import genai
 
-    # The client gets the API key from the environment variable `GEMINI_API_KEY`.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents="Explain how AI works in a few words"
+        model="gemini-3.5-flash",
+        contents="Explain how AI works in a few words"
     )
+
     print(response.text)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
 
-    // The client gets the API key from the environment variable `GEMINI_API_KEY`.
     const ai = new GoogleGenAI({});
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "Explain how AI works in a few words",
       });
+
       console.log(response.text);
     }
 
     main();
 
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "log"
-        "google.golang.org/genai"
-    )
-
-    func main() {
-        ctx := context.Background()
-        // The client gets the API key from the environment variable `GEMINI_API_KEY`.
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        result, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3-flash-preview",
-            genai.Text("Explain how AI works in a few words"),
-            nil,
-        )
-        if err != nil {
-            log.Fatal(err)
-        }
-        fmt.Println(result.Text())
-    }
-
-### Java
-
-    package com.example;
-
-    import com.google.genai.Client;
-    import com.google.genai.types.GenerateContentResponse;
-
-    public class GenerateTextFromTextInput {
-      public static void main(String[] args) {
-        // The client gets the API key from the environment variable `GEMINI_API_KEY`.
-        Client client = new Client();
-
-        GenerateContentResponse response =
-            client.models.generateContent(
-                "gemini-3-flash-preview",
-                "Explain how AI works in a few words",
-                null);
-
-        System.out.println(response.text());
-      }
-    }
-
-### C#
-
-    using System.Threading.Tasks;
-    using Google.GenAI;
-    using Google.GenAI.Types;
-
-    public class GenerateContentSimpleText {
-      public static async Task main() {
-        // The client gets the API key from the environment variable `GOOGLE_API_KEY`.
-        var client = new Client();
-        var response = await client.Models.GenerateContentAsync(
-          model: "gemini-3-flash-preview", contents: "Explain how AI works in a few words"
-        );
-        Console.WriteLine(response.Candidates[0].Content.Parts[0].Text);
-      }
-    }
-
-### Apps Script
-
-    // See https://developers.google.com/apps-script/guides/properties
-    // for instructions on how to set the API key.
-    const apiKey = PropertiesService.getScriptProperties().getProperty('GEMINI_API_KEY');
-    function main() {
-      const payload = {
-        contents: [
-          {
-            parts: [
-              { text: 'Explain how AI works in a few words' },
-            ],
-          },
-        ],
-      };
-
-      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent';
-      const options = {
-        method: 'POST',
-        contentType: 'application/json',
-        headers: {
-          'x-goog-api-key': apiKey,
-        },
-        payload: JSON.stringify(payload)
-      };
-
-      const response = UrlFetchApp.fetch(url, options);
-      const data = JSON.parse(response);
-      const content = data['candidates'][0]['content']['parts'][0]['text'];
-      console.log(content);
-    }
-
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -245,15 +91,379 @@ environment variable `GEMINI_API_KEY`.
         ]
       }'
 
+## Stream responses
+
+By default, the model returns a response only after the entire generation
+process is complete. For a faster, more interactive experience, you can
+[stream the response](https://ai.google.dev/gemini-api/docs/text-generation#stream) chunks as they
+are generated.
+
+### Python
+
+    response = client.models.generate_content_stream(
+        model="gemini-3.5-flash",
+        contents="Explain how AI works in detail"
+    )
+
+    for chunk in response:
+        print(chunk.text, end="", flush=True)
+
+### JavaScript
+
+    async function main() {
+      const responseStream = await ai.models.generateContentStream({
+        model: "gemini-3.5-flash",
+        contents: "Explain how AI works in detail",
+      });
+
+      for await (const chunk of responseStream) {
+        process.stdout.write(chunk.text);
+      }
+    }
+
+    main();
+
+### REST
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:streamGenerateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      --no-buffer \
+      -X POST \
+      -d '{
+        "contents": [
+          {
+            "parts": [
+              {
+                "text": "Explain how AI works in detail"
+              }
+            ]
+          }
+        ]
+      }'
+
+## Multi-turn conversations
+
+For multi-turn conversations, the SDKs provide a stateful `chats` helper to
+build a [multi-turn chat experience](https://ai.google.dev/gemini-api/docs/text-generation#chat)
+that automatically manages conversation history.
+
+### Python
+
+    chat = client.chats.create(model="gemini-3.5-flash")
+
+    response1 = chat.send_message("I have 2 dogs in my house.")
+    print("Response 1:", response1.text)
+
+    response2 = chat.send_message("How many paws are in my house?")
+    print("Response 2:", response2.text)
+
+### JavaScript
+
+    async function main() {
+      const chat = ai.chats.create({ model: "gemini-3.5-flash" });
+
+      let response = await chat.sendMessage({ message: "I have 2 dogs in my house." });
+      console.log("Response 1:", response.text);
+
+      response = await chat.sendMessage({ message: "How many paws are in my house?" });
+      console.log("Response 2:", response.text);
+    }
+
+    main();
+
+### REST
+
+    # REST is stateless. You must pass the full conversation history in the request.
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -X POST \
+      -d '{
+        "contents": [
+          {
+            "role": "user",
+            "parts": [{"text": "I have 2 dogs in my house."}]
+          },
+          {
+            "role": "model",
+            "parts": [{"text": "That is nice! Two dogs mean you have plenty of company."}]
+          },
+          {
+            "role": "user",
+            "parts": [{"text": "How many paws are in my house?"}]
+          }
+        ]
+      }'
+
+## Use tools
+
+Extend the model's capabilities by
+[grounding responses with Google Search](https://ai.google.dev/gemini-api/docs/google-search)
+to access real-time web content. The model automatically decides when to
+search, executes queries, and synthesizes a response.
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    config = types.GenerateContentConfig(
+        tools=[types.Tool(google_search=types.GoogleSearch())]
+    )
+
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents="Who won the euro 2024?",
+        config=config
+    )
+
+    print(response.text)
+
+    metadata = response.candidates[0].grounding_metadata
+    if metadata.web_search_queries:
+        print("\nSearch queries executed:")
+        for query in metadata.web_search_queries:
+            print(f" - {query}")
+
+    if metadata.grounding_chunks:
+        print("\nSources:")
+        for chunk in metadata.grounding_chunks:
+            print(f" - [{chunk.web.title}]({chunk.web.uri})")
+
+### JavaScript
+
+    async function main() {
+      const response = await ai.models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: "Who won the euro 2024?",
+        config: {
+          tools: [{ googleSearch: {} }]
+        }
+      });
+
+      console.log(response.text);
+
+      const metadata = response.candidates[0]?.groundingMetadata;
+      if (metadata?.webSearchQueries) {
+        console.log("\nSearch queries executed:");
+        for (const query of metadata.webSearchQueries) {
+          console.log(` - ${query}`);
+        }
+      }
+      if (metadata?.groundingChunks) {
+        console.log("\nSources:");
+        for (const chunk of metadata.groundingChunks) {
+          console.log(` - [${chunk.web.title}](${chunk.web.uri})`);
+        }
+      }
+    }
+
+    main();
+
+### REST
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -X POST \
+      -d '{
+        "contents": [
+          {
+            "parts": [
+              {"text": "Who won the euro 2024?"}
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "google_search": {}
+          }
+        ]
+      }'
+
+The Gemini API also supports other built-in tools:
+
+- **[Code execution](https://ai.google.dev/gemini-api/docs/code-execution)**: Lets the model write and run Python code to solve complex math problems.
+- **[URL context](https://ai.google.dev/gemini-api/docs/url-context)**: Lets you ground responses in specific web page URLs you provide.
+- **[File search](https://ai.google.dev/gemini-api/docs/file-search)**: Lets you upload files and ground responses in their content using semantic search.
+- **[Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding)**: Lets you ground responses in location data and search for places, directions, and maps.
+- **[Computer use](https://ai.google.dev/gemini-api/docs/computer-use)**: Lets the model interact with a virtual computer screen, keyboard, and mouse to perform tasks.
+
+## Call custom functions
+
+Use **[function calling](https://ai.google.dev/gemini-api/docs/function-calling)** to connect
+models to your custom tools and APIs. The model determines when to call your
+function and returns a `functionCall` in the response for your application
+to execute.
+
+This example declares a mock temperature function and checks if the model
+wants to call it.
+
+### Python
+
+    from google import genai
+    from google.genai import types
+
+    weather_function = {
+        "name": "get_current_temperature",
+        "description": "Gets the current temperature for a given location.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "The city name, e.g. San Francisco",
+                },
+            },
+            "required": ["location"],
+        },
+    }
+
+    tools = types.Tool(function_declarations=[weather_function])
+    config = types.GenerateContentConfig(tools=[tools])
+
+    contents = ["What's the temperature in London?"]
+
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents=contents,
+        config=config,
+    )
+
+    part = response.candidates[0].content.parts[0]
+    if part.function_call:
+        fc = part.function_call
+        print(f"Model requested function: {fc.name} with args {fc.args}")
+
+        mock_result = {"temperature": "15C", "condition": "Cloudy"}
+
+        contents.append(response.candidates[0].content)
+
+        fn_response_part = types.Part.from_function_response(
+            name=fc.name,
+            response=mock_result,
+            id=fc.id
+        )
+        contents.append(types.Content(role="user", parts=[fn_response_part]))
+
+        final_response = client.models.generate_content(
+            model="gemini-3.5-flash",
+            contents=contents,
+            config=config,
+        )
+        print("Final Response:", final_response.text)
+
+### JavaScript
+
+    import { GoogleGenAI, Type } from '@google/genai';
+
+    async function main() {
+      const weatherFunction = {
+        name: 'get_current_temperature',
+        description: 'Gets the current temperature for a given location.',
+        parameters: {
+          type: Type.OBJECT,
+          properties: {
+            location: {
+              type: Type.STRING,
+              description: 'The city name, e.g. San Francisco',
+            },
+          },
+          required: ['location'],
+        },
+      };
+
+      const contents = [{
+        role: 'user',
+        parts: [{ text: "What's the temperature in London?" }]
+      }];
+
+      const response = await ai.models.generateContent({
+        model: 'gemini-3.5-flash',
+        contents: contents,
+        config: {
+          tools: [{ functionDeclarations: [weatherFunction] }],
+        },
+      });
+
+      if (response.functionCalls && response.functionCalls.length > 0) {
+        const fc = response.functionCalls[0];
+        console.log(`Model requested function: ${fc.name}`);
+
+        const mockResult = { temperature: "15C", condition: "Cloudy" };
+
+        contents.push(response.candidates[0].content);
+
+        contents.push({
+          role: 'user',
+          parts: [{
+            functionResponse: {
+              name: fc.name,
+              response: mockResult,
+              id: fc.id
+            }
+          }]
+        });
+
+        const finalResponse = await ai.models.generateContent({
+          model: 'gemini-3.5-flash',
+          contents: contents,
+          config: {
+            tools: [{ functionDeclarations: [weatherFunction] }],
+          },
+        });
+        console.log("Final Response:", finalResponse.text);
+      }
+    }
+
+    main();
+
+### REST
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -X POST \
+      -d '{
+        "contents": [
+          {
+            "role": "user",
+            "parts": [{"text": "What'\''s the temperature in London?"}]
+          }
+        ],
+        "tools": [
+          {
+            "functionDeclarations": [
+              {
+                "name": "get_current_temperature",
+                "description": "Gets the current temperature for a given location.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "string",
+                      "description": "The city name, e.g. San Francisco"
+                    }
+                  },
+                  "required": ["location"]
+                }
+              }
+            ]
+          }
+        ]
+      }'
+
 ## What's next
 
-Now that you made your first API request, you might want to explore the
-following guides that show Gemini in action:
+Now that you've got started with the Gemini API, explore the following
+guides to build more advanced applications:
 
 - [Text generation](https://ai.google.dev/gemini-api/docs/text-generation)
 - [Image generation](https://ai.google.dev/gemini-api/docs/image-generation)
 - [Image understanding](https://ai.google.dev/gemini-api/docs/image-understanding)
 - [Thinking](https://ai.google.dev/gemini-api/docs/thinking)
 - [Function calling](https://ai.google.dev/gemini-api/docs/function-calling)
+- [Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search)
 - [Long context](https://ai.google.dev/gemini-api/docs/long-context)
 - [Embeddings](https://ai.google.dev/gemini-api/docs/embeddings)

@@ -129,12 +129,6 @@ For more tutorials involving Hono and Cloudflare Pages, refer to the following r
 
 [Build a Staff Directory ApplicationBuild a staff directory using D1\. Users access employee info; admins add new employees within the app.](https://developers.cloudflare.com/d1/tutorials/build-a-staff-directory-app/)
 
-### Demo apps
-
-For demo applications using Hono and Cloudflare Pages, refer to the following resources:
-
-* [Staff Directory demo: ↗](https://github.com/lauragift21/staff-directory) Built using the powerful combination of HonoX for backend logic, Cloudflare Pages for fast and secure hosting, and Cloudflare D1 for seamless database management.
-
 ### Creator Interview
 
 ```json

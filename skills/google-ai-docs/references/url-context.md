@@ -21,7 +21,7 @@ The following example shows how to compare two recipes from different websites.
     from google.genai.types import Tool, GenerateContentConfig
 
     client = genai.Client()
-    model_id = "gemini-3-flash-preview"
+    model_id = "gemini-3.5-flash"
 
     tools = [
       {"url_context": {}},
@@ -52,7 +52,7 @@ The following example shows how to compare two recipes from different websites.
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: [
             "Compare the ingredients and cooking times from the recipes at https://www.foodnetwork.com/recipes/ina-garten/perfect-roast-chicken-recipe-1940592 and https://www.allrecipes.com/recipe/21151/simple-whole-roast-chicken/",
         ],
@@ -70,7 +70,7 @@ The following example shows how to compare two recipes from different websites.
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -123,7 +123,7 @@ prompts that require both broad searching and deep analysis of specific pages.
     from google.genai.types import Tool, GenerateContentConfig, GoogleSearch, UrlContext
 
     client = genai.Client()
-    model_id = "gemini-3-flash-preview"
+    model_id = "gemini-3.5-flash"
 
     tools = [
           {"url_context": {}},
@@ -151,7 +151,7 @@ prompts that require both broad searching and deep analysis of specific pages.
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: [
             "Give me three day events schedule based on YOUR_URL. Also let me know what needs to taken care of considering weather and commute.",
         ],
@@ -171,7 +171,7 @@ prompts that require both broad searching and deep analysis of specific pages.
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -267,6 +267,7 @@ Price per token depends on the model used, see the
 
 | Model | URL Context |
 |---|---|
+| [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ✔️ |
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/gemini-3.1-pro-preview) | ✔️ |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
 | [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/gemini-3.1-flash-lite-preview) | ✔️ |

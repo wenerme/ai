@@ -35,7 +35,7 @@ it to `generateContent` API for processing.
 
       client = genai.Client()
       response = client.models.generate_content(
-        model='gemini-3-flash-preview',
+        model='gemini-3.5-flash',
         contents=[
           types.Part.from_bytes(
             data=image_bytes,
@@ -68,7 +68,7 @@ it to `generateContent` API for processing.
     ];
 
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: contents,
     });
     console.log(response.text);
@@ -88,7 +88,7 @@ it to `generateContent` API for processing.
 
     result, _ := client.Models.GenerateContent(
       ctx,
-      "gemini-3-flash-preview",
+      "gemini-3.5-flash",
       contents,
       nil,
     )
@@ -105,7 +105,7 @@ it to `generateContent` API for processing.
     B64FLAGS="-w0"
     fi
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
@@ -142,7 +142,7 @@ You can also fetch an image from a URL, convert it to bytes, and pass it to
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=["What is this image?", image],
     )
 
@@ -162,7 +162,7 @@ You can also fetch an image from a URL, convert it to bytes, and pass it to
       const base64ImageData = Buffer.from(imageArrayBuffer).toString('base64');
 
       const result = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: [
         {
           inlineData: {
@@ -214,7 +214,7 @@ You can also fetch an image from a URL, convert it to bytes, and pass it to
 
       result, _ := client.Models.GenerateContent(
         ctx,
-        "gemini-3-flash-preview",
+        "gemini-3.5-flash",
         contents,
         nil,
       )
@@ -240,7 +240,7 @@ You can also fetch an image from a URL, convert it to bytes, and pass it to
       IMAGE_B64=$(curl -sL "$IMG_URL" | base64 -w0)
     fi
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -277,7 +277,7 @@ more information and examples.
     my_file = client.files.upload(file="path/to/sample.jpg")
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=[my_file, "Caption this image."],
     )
 
@@ -300,7 +300,7 @@ more information and examples.
       });
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           createPartFromUri(myfile.uri, myfile.mimeType),
           "Caption this image.",
@@ -342,7 +342,7 @@ more information and examples.
 
       result, _ := client.Models.GenerateContent(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           contents,
           nil,
       )
@@ -386,7 +386,7 @@ more information and examples.
     echo file_uri=$file_uri
 
     # Now generate content using that file
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -428,7 +428,7 @@ You can provide multiple images in a single prompt by including multiple image
     # Create the prompt with text and multiple images
     response = client.models.generate_content(
 
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=[
             "What is different between these two images?",
             uploaded_file,  # Use the uploaded file reference
@@ -470,7 +470,7 @@ You can provide multiple images in a single prompt by including multiple image
 
       const response = await ai.models.generateContent({
 
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           "What is different between these two images?",
           createPartFromUri(uploadedFile.uri, uploadedFile.mimeType),
@@ -509,7 +509,7 @@ You can provide multiple images in a single prompt by including multiple image
 
     result, _ := client.Models.GenerateContent(
       ctx,
-      "gemini-3-flash-preview",
+      "gemini-3.5-flash",
       contents,
       nil,
     )
@@ -560,7 +560,7 @@ You can provide multiple images in a single prompt by including multiple image
     IMAGE2_BASE64=$(base64 $B64FLAGS $IMAGE2_PATH)
 
     # Now generate content using both images
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -607,7 +607,7 @@ your original image size.
       response_mime_type="application/json"
       )
 
-    response = client.models.generate_content(model="gemini-3-flash-preview",
+    response = client.models.generate_content(model="gemini-3.5-flash",
                                               contents=[image, prompt],
                                               config=config
                                               )

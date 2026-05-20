@@ -1,6 +1,9 @@
+<br />
+
 # Computer Use
 
-<br />
+> [!NOTE]
+> **Note:** Computer use is not currently supported by the Gemini 3.5 Flash model. See [Model versions](https://ai.google.dev/gemini-api/docs/computer-use#model-versions) section for a list of supported models.
 
 Computer Use enables you to build browser control agents that interact
 with and automate tasks. Using screenshots, the model can "see" a computer

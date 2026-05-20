@@ -38,7 +38,7 @@ summarize the video.
     myfile = client.files.upload(file="path/to/sample.mp4")
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents=[myfile, "Summarize this video. Then create a quiz with an answer key based on the information in this video."]
+        model="gemini-3.5-flash", contents=[myfile, "Summarize this video. Then create a quiz with an answer key based on the information in this video."]
     )
 
     print(response.text)
@@ -60,7 +60,7 @@ summarize the video.
       });
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           createPartFromUri(myfile.uri, myfile.mimeType),
           "Summarize this video. Then create a quiz with an answer key based on the information in this video.",
@@ -86,7 +86,7 @@ summarize the video.
 
     result, _ := client.Models.GenerateContent(
         ctx,
-        "gemini-3-flash-preview",
+        "gemini-3.5-flash",
         contents,
         nil,
     )
@@ -130,7 +130,7 @@ summarize the video.
 
     # --- 3. Generate content using the uploaded video file ---
     echo "Generating content from video..."
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -171,7 +171,7 @@ Here's an example of providing inline video data:
 
     client = genai.Client()
     response = client.models.generate_content(
-        model='gemini-3-flash-preview',
+        model='gemini-3.5-flash',
         contents=types.Content(
             parts=[
                 types.Part(
@@ -204,7 +204,7 @@ Here's an example of providing inline video data:
     ];
 
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: contents,
     });
     console.log(response.text);
@@ -222,7 +222,7 @@ Here's an example of providing inline video data:
       B64FLAGS="-w0"
     fi
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -254,7 +254,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
 
     client = genai.Client()
     response = client.models.generate_content(
-        model='gemini-3-flash-preview',
+        model='gemini-3.5-flash',
         contents=types.Content(
             parts=[
                 types.Part(
@@ -282,7 +282,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
     ];
 
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: contents,
     });
     console.log(response.text);
@@ -316,7 +316,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
 
       result, _ := client.Models.GenerateContent(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           contents,
           nil,
       )
@@ -326,7 +326,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -435,7 +435,7 @@ You can clip video by specifying `videoMetadata` with start and end offsets.
 
     client = genai.Client()
     response = client.models.generate_content(
-        model='models/gemini-3-flash-preview',
+        model='models/gemini-3.5-flash',
         contents=types.Content(
             parts=[
                 types.Part(
@@ -454,7 +454,7 @@ You can clip video by specifying `videoMetadata` with start and end offsets.
 
     import { GoogleGenAI } from '@google/genai';
     const ai = new GoogleGenAI({});
-    const model = 'gemini-3-flash-preview';
+    const model = 'gemini-3.5-flash';
 
     async function main() {
     const contents = [
@@ -508,7 +508,7 @@ You can set custom frame rate sampling by passing an `fps` argument to
 
     client = genai.Client()
     response = client.models.generate_content(
-        model='models/gemini-3-flash-preview',
+        model='models/gemini-3.5-flash',
         contents=types.Content(
             parts=[
                 types.Part(

@@ -40,6 +40,64 @@ For large-scale deployments with custom needs for security, support, and complia
 
 [Contact Sales](https://cloud.google.com/contact)
 
+## Gemini 3.5 Flash
+
+*`gemini-3.5-flash`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-3.5-flash)
+
+Our most intelligent model built for speed, combining frontier intelligence with
+superior search and grounding.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $1.50 |
+| Output price (including thinking tokens) | Free of charge | $9.00 |
+| Context caching price | Free of charge | $0.15 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.75 |
+| Output price (including thinking tokens) | Not available | $4.50 |
+| Context caching price | Not available | $0.075 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Flex
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.75 |
+| Output price (including thinking tokens) | Not available | $4.50 |
+| Context caching price | Not available | $0.08 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Priority
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $2.70 |
+| Output price (including thinking tokens) | Free of charge | $16.20 |
+| Context caching price | Free of charge | $0.27 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ A customer-submitted request to Gemini may result in one or more
+queries to Google Search. You will be charged for each individual search query
+performed.
+
 ## Gemini 3.1 Flash-Lite
 
 *`gemini-3.1-flash-lite`*
@@ -1040,6 +1098,8 @@ consumption and usage of the tools.
 |   | Model | Tools |
 |---|---|---|
 | [Gemini Deep Research Agent](https://ai.google.dev/gemini-api/docs/deep-research) | All model inference is charged at standard Gemini list rates, including input, output, and intermediate input / reasoning tokens generated during agentic loops. | Tool usage fees apply per existing pricing structure, maintaining standard distinctions for Search Grounding (retrieved tokens excluded) versus Url_context / File Search (retrieved tokens included in all other tools). |
+| [Managed agents in Gemini API](https://ai.google.dev/gemini-api/docs/agents) | All model inference is charged at standard Gemini list rates, including input, output, and intermediate input / reasoning tokens generated during agentic loops. (See [pricing details](https://ai.google.dev/gemini-api/docs/agents#pricing)). | Environment compute (CPU, memory, sandbox execution) is not billed during the preview period. |
+| [Antigravity Agent](https://ai.google.dev/gemini-api/docs/antigravity-agent) | All model inference is charged at standard Gemini list rates, including input, output, and intermediate input / reasoning tokens generated during agentic loops. (See [pricing details](https://ai.google.dev/gemini-api/docs/agents#pricing)). | Environment compute (CPU, memory, sandbox execution) is not billed during the preview period. |
 
 ## Notes
 

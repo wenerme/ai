@@ -1,6 +1,6 @@
-# Productivity and collaboration
+# Productivity & Collaboration
 
-Work with Codex to analyze data and complex source material, combine multiple apps and services, and turn insights into action.
+Coordinate work across apps, data, and teams.
 
 Codex can help you manage all of your work across multiple apps and files and help collaborate with your team.
 The use cases in this collection cover common workflows when the work starts in files, messages, docs, spreadsheets, and when you need shareable artifacts.

@@ -14,12 +14,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Learn how you can use Hyperdrive within your existing application and architecture.
 
-## Demos
-
-Explore the following demo applications for Hyperdrive.
-
-* [Hyperdrive demo: ↗](https://github.com/cloudflare/hyperdrive-demo) A Remix app that connects to a database behind Cloudflare's Hyperdrive, making regional databases feel like they're globally distributed.
-
 ## Reference architectures
 
 Explore the following reference architectures that use Hyperdrive:

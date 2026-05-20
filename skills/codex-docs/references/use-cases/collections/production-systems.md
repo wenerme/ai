@@ -1,6 +1,6 @@
 # Production systems
 
-Use Codex to navigate real codebases, make controlled changes, codify repeatable work, and keep production quality high.
+Navigate, refactor, and review real codebases.
 
 The use cases in this collection are useful when Codex is working in a repo that already has history, tests, owners, and production constraints.
 Codex is particularly good at navigating complex codebases, including sprawling monorepos with lots of different services and dependencies.

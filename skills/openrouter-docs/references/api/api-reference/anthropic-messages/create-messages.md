@@ -2508,11 +2508,13 @@ components:
         - openrouter
         - firecrawl
         - exa
+        - parallel
       description: >-
         Which fetch engine to use. "auto" (default) uses native if the provider
         supports it, otherwise Exa. "native" forces the provider's built-in
         fetch. "exa" uses Exa Contents API. "openrouter" uses direct HTTP fetch.
-        "firecrawl" uses Firecrawl scrape (requires BYOK).
+        "firecrawl" uses Firecrawl scrape (requires BYOK). "parallel" uses the
+        Parallel extract API.
       title: WebFetchEngineEnum
     WebFetchServerToolConfig:
       type: object
@@ -3452,7 +3454,6 @@ components:
         type:
           $ref: '#/components/schemas/AnthropicDocumentBlockType'
       required:
-        - citations
         - source
         - title
         - type

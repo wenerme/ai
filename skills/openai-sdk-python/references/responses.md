@@ -1102,7 +1102,7 @@ as input for the model's response.
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -4923,7 +4923,7 @@ as input for the model's response.
 
             - `type: Literal["open_page"]`
 
-              The action type.
+              The action type. Always `open_page`.
 
               - `"open_page"`
 
@@ -10637,7 +10637,7 @@ Retrieves a model response with the given ID.
 
             - `type: Literal["open_page"]`
 
-              The action type.
+              The action type. Always `open_page`.
 
               - `"open_page"`
 
@@ -15653,7 +15653,7 @@ the `background` parameter set to `true` can be cancelled.
 
             - `type: Literal["open_page"]`
 
-              The action type.
+              The action type. Always `open_page`.
 
               - `"open_page"`
 
@@ -20728,7 +20728,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -23242,7 +23242,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -26274,7 +26274,7 @@ print(compacted_response)
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -31072,7 +31072,7 @@ print(compacted_response)
 
             - `type: Literal["open_page"]`
 
-              The action type.
+              The action type. Always `open_page`.
 
               - `"open_page"`
 
@@ -36259,7 +36259,7 @@ print(compacted_response)
 
               - `type: Literal["open_page"]`
 
-                The action type.
+                The action type. Always `open_page`.
 
                 - `"open_page"`
 
@@ -42196,7 +42196,7 @@ print(compacted_response)
 
               - `type: Literal["open_page"]`
 
-                The action type.
+                The action type. Always `open_page`.
 
                 - `"open_page"`
 
@@ -47283,7 +47283,7 @@ print(compacted_response)
 
               - `type: Literal["open_page"]`
 
-                The action type.
+                The action type. Always `open_page`.
 
                 - `"open_page"`
 
@@ -51887,7 +51887,7 @@ print(compacted_response)
 
       - `type: Literal["open_page"]`
 
-        The action type.
+        The action type. Always `open_page`.
 
         - `"open_page"`
 
@@ -53116,7 +53116,7 @@ print(compacted_response)
 
               - `type: Literal["open_page"]`
 
-                The action type.
+                The action type. Always `open_page`.
 
                 - `"open_page"`
 
@@ -57907,7 +57907,7 @@ print(compacted_response)
 
               - `type: Literal["open_page"]`
 
-                The action type.
+                The action type. Always `open_page`.
 
                 - `"open_page"`
 
@@ -62578,7 +62578,7 @@ print(compacted_response)
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -65806,7 +65806,7 @@ print(compacted_response)
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -68964,7 +68964,7 @@ print(compacted_response)
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -71580,7 +71580,7 @@ print(compacted_response)
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -74401,7 +74401,7 @@ print(compacted_response)
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -77236,7 +77236,7 @@ print(compacted_response)
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -81145,7 +81145,7 @@ print(compacted_response)
 
               - `type: Literal["open_page"]`
 
-                The action type.
+                The action type. Always `open_page`.
 
                 - `"open_page"`
 
@@ -86449,7 +86449,7 @@ print(compacted_response)
 
                 - `type: Literal["open_page"]`
 
-                  The action type.
+                  The action type. Always `open_page`.
 
                   - `"open_page"`
 
@@ -94862,7 +94862,7 @@ print(compacted_response)
 
             - `type: Literal["open_page"]`
 
-              The action type.
+              The action type. Always `open_page`.
 
               - `"open_page"`
 
@@ -98873,7 +98873,7 @@ print(compacted_response)
 
                 - `type: Literal["open_page"]`
 
-                  The action type.
+                  The action type. Always `open_page`.
 
                   - `"open_page"`
 
@@ -106135,7 +106135,7 @@ Returns a list of input items for a given response.
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -109058,7 +109058,7 @@ print(response.data)
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -112009,7 +112009,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 

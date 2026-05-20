@@ -1,11 +1,11 @@
 ---
 title: "routing.run | Models"
-description: "Use routing.run models with Mastra. 37 models available."
+description: "Use routing.run models with Mastra. 24 models available."
 ---
 
 # [routing.run logo]routing.run
 
-Access 37 routing.run models through Mastra's model router. Authentication is handled automatically using the `ROUTING_RUN_API_KEY` environment variable.
+Access 24 routing.run models through Mastra's model router. Authentication is handled automatically using the `ROUTING_RUN_API_KEY` environment variable.
 
 Learn more in the [routing.run documentation](https://docs.routing.run).
 
@@ -41,9 +41,9 @@ for await (const chunk of stream) {
   models={[
   {
     "model": "routing-run/route/deepseek-v3.2",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 163840,
@@ -64,7 +64,7 @@ for await (const chunk of stream) {
     "outputCost": 0.7392
   },
   {
-    "model": "routing-run/route/deepseek-v4-flash-full",
+    "model": "routing-run/route/deepseek-v4-flash-6bit",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -88,7 +88,7 @@ for await (const chunk of stream) {
     "outputCost": 0.7392
   },
   {
-    "model": "routing-run/route/deepseek-v4-pro-precision",
+    "model": "routing-run/route/deepseek-v4-pro-6bit",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -96,68 +96,20 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": 0.7392,
-    "outputCost": 1.1088
+    "inputCost": 0.4928,
+    "outputCost": 0.7392
   },
   {
     "model": "routing-run/route/gemma-4-31b-it",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
-    "reasoning": true,
+    "reasoning": false,
     "contextWindow": 131072,
     "maxOutput": 65536,
     "inputCost": 0.1,
     "outputCost": 0.3
-  },
-  {
-    "model": "routing-run/route/glm-4.7",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 128000,
-    "inputCost": 1.32,
-    "outputCost": 4.4
-  },
-  {
-    "model": "routing-run/route/glm-4.7-flash",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 128000,
-    "inputCost": 1.32,
-    "outputCost": 4.4
-  },
-  {
-    "model": "routing-run/route/glm-5",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 202752,
-    "inputCost": 0.792,
-    "outputCost": 2.53
-  },
-  {
-    "model": "routing-run/route/glm-5-highspeed",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 202752,
-    "inputCost": 1.1088,
-    "outputCost": 3.542
   },
   {
     "model": "routing-run/route/glm-5.1",
@@ -172,7 +124,7 @@ for await (const chunk of stream) {
     "outputCost": 3
   },
   {
-    "model": "routing-run/route/glm-5.1-fp16",
+    "model": "routing-run/route/glm-5.1-6bit",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -180,32 +132,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 202752,
     "maxOutput": 202752,
-    "inputCost": 1.2,
-    "outputCost": 3.5
-  },
-  {
-    "model": "routing-run/route/glm-5.1-full",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 202752,
-    "inputCost": 1.2,
-    "outputCost": 3.5
-  },
-  {
-    "model": "routing-run/route/glm-5.1-precision",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 202752,
-    "inputCost": 1.2,
-    "outputCost": 3.5
+    "inputCost": 1,
+    "outputCost": 3
   },
   {
     "model": "routing-run/route/kimi-k2.5",
@@ -213,23 +141,11 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": true,
     "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.462,
-    "outputCost": 2.42
-  },
-  {
-    "model": "routing-run/route/kimi-k2.5-highspeed",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
+    "reasoning": false,
     "contextWindow": 131072,
     "maxOutput": 32768,
-    "inputCost": 0.6468,
-    "outputCost": 3.388
+    "inputCost": 0.462,
+    "outputCost": 2.42
   },
   {
     "model": "routing-run/route/kimi-k2.6",
@@ -244,7 +160,7 @@ for await (const chunk of stream) {
     "outputCost": 2.42
   },
   {
-    "model": "routing-run/route/kimi-k2.6-full",
+    "model": "routing-run/route/kimi-k2.6-6bit",
     "imageInput": true,
     "audioInput": false,
     "videoInput": true,
@@ -256,34 +172,10 @@ for await (const chunk of stream) {
     "outputCost": 2.42
   },
   {
-    "model": "routing-run/route/kimi-k2.6-precision",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.6468,
-    "outputCost": 3.388
-  },
-  {
-    "model": "routing-run/route/mimo-v2.5",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 65536,
-    "inputCost": 0.4,
-    "outputCost": 2
-  },
-  {
     "model": "routing-run/route/mimo-v2.5-pro",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1000000,
@@ -292,14 +184,14 @@ for await (const chunk of stream) {
     "outputCost": 1.35
   },
   {
-    "model": "routing-run/route/mimo-v2.5-pro-precision",
-    "imageInput": false,
+    "model": "routing-run/route/mimo-v2.5-pro-6bit",
+    "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1000000,
-    "maxOutput": 131072,
+    "maxOutput": 262144,
     "inputCost": 0.45,
     "outputCost": 1.35
   },
@@ -309,7 +201,7 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": true,
+    "reasoning": false,
     "contextWindow": 100000,
     "maxOutput": 131072,
     "inputCost": 0.193,
@@ -321,7 +213,7 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": true,
+    "reasoning": false,
     "contextWindow": 100000,
     "maxOutput": 131072,
     "inputCost": 0.193,
@@ -353,7 +245,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "routing-run/route/mistral-large-3",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -367,7 +259,7 @@ for await (const chunk of stream) {
     "model": "routing-run/route/mistral-medium-2505",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
@@ -379,57 +271,21 @@ for await (const chunk of stream) {
     "model": "routing-run/route/mistral-small-2503",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
-    "reasoning": true,
+    "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 32768,
     "inputCost": 0.15,
     "outputCost": 0.6
   },
   {
-    "model": "routing-run/route/qwen3.5-397b-a17b",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 1.1,
-    "outputCost": 3.3
-  },
-  {
-    "model": "routing-run/route/qwen3.5-9b",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.2,
-    "outputCost": 0.6
-  },
-  {
-    "model": "routing-run/route/qwen3.5-9b-chat",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.2,
-    "outputCost": 0.6
-  },
-  {
     "model": "routing-run/route/qwen3.6-27b",
     "imageInput": true,
-    "audioInput": true,
+    "audioInput": false,
     "videoInput": true,
     "toolUsage": true,
-    "reasoning": true,
+    "reasoning": false,
     "contextWindow": 262144,
     "maxOutput": 262144,
     "inputCost": 1.1,
@@ -458,18 +314,6 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.1,
     "outputCost": 0.3
-  },
-  {
-    "model": "routing-run/route/step-3.5-flash-full",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 65536,
-    "inputCost": 0.096,
-    "outputCost": 0.288
   },
   {
     "model": "routing-run/route/stepfun-3.5-flash",

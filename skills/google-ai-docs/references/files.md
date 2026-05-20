@@ -27,7 +27,7 @@ The following code uploads a file and then uses the file in a call to
     myfile = client.files.upload(file="path/to/sample.mp3")
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents=["Describe this audio clip", myfile]
+        model="gemini-3.5-flash", contents=["Describe this audio clip", myfile]
     )
 
     print(response.text)
@@ -49,7 +49,7 @@ The following code uploads a file and then uses the file in a call to
       });
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           createPartFromUri(myfile.uri, myfile.mimeType),
           "Describe this audio clip",
@@ -68,7 +68,7 @@ The following code uploads a file and then uses the file in a call to
     }
     defer client.Files.Delete(ctx, file.Name)
 
-    resp, err := client.Models.GenerateContent(ctx, "gemini-3-flash-preview", []*genai.Content{
+    resp, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", []*genai.Content{
       {
         Parts: []*genai.Part{
           genai.NewPartFromFile(*file),
@@ -118,7 +118,7 @@ The following code uploads a file and then uses the file in a call to
     echo file_uri=$file_uri
 
     # Now generate content using that file
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \

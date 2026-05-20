@@ -31,7 +31,7 @@ The `code_challenge` parameter is optional but recommended.
 
 Your user will be prompted to log in to OpenRouter and authorize your app. After authorization, they will be redirected back to your site with a `code` parameter in the URL:
 
-![Alt text](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/5c315bc747b843ac0f3c7fd78ef45b58e9b00397e0685020ff6ac837884c8a71/content/pages/auth/auth-request.png)
+![Alt text](file:b205f73d-566a-4402-8b6e-1eb8476079f7)
 
 For maximum security, set `code_challenge_method` to `S256`, and set `code_challenge` to the base64 encoding of the sha256 hash of `code_verifier`.
 
@@ -65,7 +65,7 @@ When moving to production, replace the localhost/private referrer URL with a pub
 
 After the user logs in with OpenRouter, they are redirected back to your site with a `code` parameter in the URL:
 
-![Alt text](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/7c5e0e22334f718612a4a2e88168d104d9a4a3f97c40cb344aa27bb4e335188a/content/pages/auth/code-challenge.png)
+![Alt text](file:633290bb-2660-481d-9858-eac74fb8185a)
 
 Extract this code using the browser API:
 

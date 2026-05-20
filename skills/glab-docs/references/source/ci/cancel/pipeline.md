@@ -9,25 +9,38 @@ Cancel CI/CD pipelines.
 
 ## Synopsis
 
-Use `--dry-run` to list pipelines that would be canceled without making changes.
+Cancels one or more running CI/CD pipelines by ID. You can pass
+multiple pipeline IDs as separate arguments, in a comma-separated
+list, or in a quoted space-separated list.
+
+To preview which pipelines would be canceled without making changes,
+use `--dry-run`.
 
 ```plaintext
-glab ci cancel pipeline <id> [flags]
+glab ci cancel pipeline <id> [<id>...] [flags]
 ```
 
 ## Examples
 
 ```console
+# Cancel a single pipeline
 glab ci cancel pipeline 1504182795
+
+# Cancel multiple pipelines, comma-separated
 glab ci cancel pipeline 1504182795,1504182796
+
+# Cancel multiple pipelines, space-separated in quotes
 glab ci cancel pipeline "1504182795 1504182796"
+
+# Preview which pipelines would be canceled
 glab ci cancel pipeline 1504182795,1504182796 --dry-run
+
 ```
 
 ## Options
 
 ```plaintext
-      --dry-run   Simulates process, but does not cancel anything.
+      --dry-run   Show which pipelines would be canceled, without canceling them.
 ```
 
 ## Options inherited from parent commands

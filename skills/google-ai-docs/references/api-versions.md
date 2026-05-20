@@ -25,7 +25,7 @@ and `v1beta` versions of the Gemini API.
 
 ## Configure API version in an SDK
 
-The Gemini API SDK's default to `v1beta`, but you can opt to use other versions
+The Gemini API SDKs default to `v1beta`, but you can explicitly specify versions
 by setting the API version as shown in the following code sample:
 
 ### Python
@@ -35,7 +35,7 @@ by setting the API version as shown in the following code sample:
     client = genai.Client(http_options={'api_version': 'v1'})
 
     response = client.models.generate_content(
-        model='gemini-3-flash-preview',
+        model='gemini-3.5-flash',
         contents="Explain how AI works",
     )
 
@@ -51,7 +51,7 @@ by setting the API version as shown in the following code sample:
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "Explain how AI works",
       });
       console.log(response.text);
@@ -61,7 +61,7 @@ by setting the API version as shown in the following code sample:
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \

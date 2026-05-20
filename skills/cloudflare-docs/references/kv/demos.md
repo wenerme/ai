@@ -14,12 +14,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Learn how you can use KV within your existing application and architecture.
 
-## Demo applications
-
-Explore the following demo applications for KV.
-
-* [Queues Web Crawler: ↗](https://github.com/cloudflare/queues-web-crawler) An example use-case for Queues, a web crawler built on Browser Run and Puppeteer. The crawler finds the number of links to Cloudflare.com on the site, and archives a screenshot to Workers KV.
-
 ## Reference architectures
 
 Explore the following reference architectures that use KV:

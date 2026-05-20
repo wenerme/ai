@@ -42,6 +42,8 @@ For example:
 
 Professional plans or higher.
 
+**Note:** Usage-based billing notifications are available to Pay-as-you-go accounts only. Most Enterprise contract accounts are not supported.
+
 **What should you do if you receive one?**
 
 Review your product usage and adjust the configuration and/or increase the alerting threshold.

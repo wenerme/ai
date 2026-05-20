@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Set up rate limiting and WAF rules to block abuse on my public API.  
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.  
 ```
 
 ## Cloudflare platform access

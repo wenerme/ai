@@ -14,14 +14,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Learn how you can use a Durable Object within your existing application and architecture.
 
-## Demos
-
-Explore the following demo applications for Durable Objects.
-
-* [Cloudflare Workers Chat Demo: ↗](https://github.com/cloudflare/workers-chat-demo) This is a demo app written on Cloudflare Workers utilizing Durable Objects to implement real-time chat with stored history.
-* [Wildebeest: ↗](https://github.com/cloudflare/wildebeest) Wildebeest is an ActivityPub and Mastodon-compatible server whose goal is to allow anyone to operate their Fediverse server and identity on their domain without needing to keep infrastructure, with minimal setup and maintenance, and running in minutes.
-* [Multiplayer Doom Workers: ↗](https://github.com/cloudflare/doom-workers) A WebAssembly Doom port with multiplayer support running on top of Cloudflare's global network using Workers, WebSockets, Pages, and Durable Objects.
-
 ## Reference architectures
 
 Explore the following reference architectures that use Durable Objects:

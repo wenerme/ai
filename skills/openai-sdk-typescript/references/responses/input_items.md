@@ -992,7 +992,7 @@ Returns a list of input items for a given response.
 
         - `type: "open_page"`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -3898,7 +3898,7 @@ console.log(response.data);
 
           - `type: "open_page"`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 

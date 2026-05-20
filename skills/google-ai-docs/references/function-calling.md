@@ -56,7 +56,7 @@ actions and data. Function calling has 3 primary use cases:
 
     # Send request with function declarations
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="Schedule a meeting with Bob and Alice for 03/14/2025 at 10:00 AM about the Q3 planning.",
         config=config,
     )
@@ -111,7 +111,7 @@ actions and data. Function calling has 3 primary use cases:
 
     // Send request with function declarations
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-3.5-flash',
       contents: 'Schedule a meeting with Bob and Alice for 03/27/2025 at 10:00 AM about the Q3 planning.',
       config: {
         tools: [{
@@ -135,7 +135,7 @@ actions and data. Function calling has 3 primary use cases:
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -317,7 +317,7 @@ object will contain a function call suggestion.
 
     # Send request with function declarations
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=contents,
         config=config,
     )
@@ -348,7 +348,7 @@ object will contain a function call suggestion.
 
     // Send request with function declarations
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-3.5-flash',
       contents: contents,
       config: config
     });
@@ -419,7 +419,7 @@ incorporate this information into its final response to the user.
 
     client = genai.Client()
     final_response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         config=config,
         contents=contents,
     )
@@ -441,7 +441,7 @@ incorporate this information into its final response to the user.
 
     // Get the final response from the model
     const final_response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-3.5-flash',
       contents: contents,
       config: config
     });
@@ -693,7 +693,7 @@ To learn more, you can read about
         ),
     )
 
-    chat = client.chats.create(model="gemini-3-flash-preview", config=config)
+    chat = client.chats.create(model="gemini-3.5-flash", config=config)
     response = chat.send_message("Turn this place into a party!")
 
     # Print out each of the function calls requested from this single call
@@ -726,7 +726,7 @@ To learn more, you can read about
 
     // Create a chat session
     const chat = ai.chats.create({
-        model: 'gemini-3-flash-preview',
+        model: 'gemini-3.5-flash',
         config: config
     });
     const response = await chat.sendMessage({message: 'Turn this place into a party!'});
@@ -802,7 +802,7 @@ the disco use case.
 
     # Make the request
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="Do everything you need to this place into party!",
         config=config,
     )
@@ -856,7 +856,7 @@ by the model, and sends the results back to the model to complete the task.
 
     # Make the request
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="If it's warmer than 20°C in London, set the thermostat to 20°C, otherwise set it to 18°C.",
         config=config,
     )
@@ -958,7 +958,7 @@ function calling using a manual execution loop.
     // Loop until the model has no more function calls to make
     while (true) {
       const result = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents,
         config: { tools },
       });
@@ -1150,7 +1150,7 @@ entire docstring as the top-level function description.
 
     # Make the request
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="What's the temperature in Boston?",
         config=config,
     )
@@ -1231,7 +1231,7 @@ thanks to the tool context circulation feature. Read the page on
     }
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="What is the northernmost city in the United States? What's the weather like there today?",
         config=types.GenerateContentConfig(
           tools=[
@@ -1263,7 +1263,7 @@ thanks to the tool context circulation feature. Read the page on
     ]
 
     response_2 = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=history,
         config=types.GenerateContentConfig(
           tools=[
@@ -1299,7 +1299,7 @@ thanks to the tool context circulation feature. Read the page on
 
     async function run() {
         const model = client.models.generateContent({
-            model: "gemini-3-flash-preview",
+            model: "gemini-3.5-flash",
         });
 
         const tools = [
@@ -1408,7 +1408,7 @@ references this image part:
     # 2. Send a message that triggers the tool
     prompt = "Show me the instrument I ordered last month."
     response_1 = client.models.generate_content(
-      model="gemini-3-flash-preview",
+      model="gemini-3.5-flash",
       contents=[prompt],
       config=types.GenerateContentConfig(
           tools=[tool_config],
@@ -1456,7 +1456,7 @@ references this image part:
     ]
 
     response_2 = client.models.generate_content(
-      model="gemini-3-flash-preview",
+      model="gemini-3.5-flash",
       contents=history,
       config=types.GenerateContentConfig(
           tools=[tool_config],
@@ -1496,7 +1496,7 @@ references this image part:
     // 2. Send a message that triggers the tool
     const prompt = 'Show me the instrument I ordered last month.';
     const response1 = await client.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-3.5-flash',
       contents: prompt,
       config: {
         tools: [toolConfig],
@@ -1550,7 +1550,7 @@ references this image part:
     ];
 
     const response2 = await client.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-3.5-flash',
       contents: history,
       config: {
         tools: [toolConfig],
@@ -1578,7 +1578,7 @@ references this image part:
       IMAGE_B64=$(curl -sL "$IMG_URL" | base64 -w0)
     fi
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -1680,7 +1680,7 @@ your platform of choice.
 
                 # Send request to the model with MCP function declarations
                 response = await client.aio.models.generate_content(
-                    model="gemini-3-flash-preview",
+                    model="gemini-3.5-flash",
                     contents=prompt,
                     config=genai.types.GenerateContentConfig(
                         temperature=0,
@@ -1731,7 +1731,7 @@ of choice.
 
     // Send request to the model with MCP tools
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: `What is the weather in London in ${new Date().toLocaleDateString()}?`,
       config: {
         tools: [mcpToTool(client)],  // uses the session, will automatically call the tool
@@ -1769,7 +1769,7 @@ the [model overview](https://ai.google.dev/gemini-api/docs/models) page.
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ | ✔️ | ✔️ |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ | ✔️ | ✔️ |
 | [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview) | ✔️ | ✔️ | ✔️ |
-| [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ✔️ | ✔️ | ✔️ |
+| [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ✔️ | ✔️ | ✔️ |
 | [Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro) | ✔️ | ✔️ | ✔️ |
 | [Gemini 2.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash) | ✔️ | ✔️ | ✔️ |
 | [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite) | ✔️ | ✔️ | ✔️ |

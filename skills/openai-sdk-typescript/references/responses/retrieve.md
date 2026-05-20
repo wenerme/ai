@@ -1136,7 +1136,7 @@ Retrieves a model response with the given ID.
 
             - `type: "open_page"`
 
-              The action type.
+              The action type. Always `open_page`.
 
               - `"open_page"`
 

@@ -1,9 +1,8 @@
 ---
-name: Codex code review for GitHub pull requests
+name: Review GitHub pull requests
 tagline: Catch regressions and potential issues before human review.
 summary: Use Codex code review in GitHub to automatically surface regressions,
   missing tests, and documentation issues directly on a pull request.
-coverImage: /codex/use-cases/gh-pr-use-case.png
 skills:
   - token: $security-best-practices
     url: https://github.com/openai/skills/tree/main/skills/.curated/security-best-practices

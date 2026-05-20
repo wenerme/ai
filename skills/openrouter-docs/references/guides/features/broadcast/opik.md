@@ -20,7 +20,7 @@ In Comet, set up your Opik workspace and project:
 
 Go to [Settings > Observability](https://openrouter.ai/settings/observability) and toggle **Enable Broadcast**.
 
-![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
+![Enable Broadcast](file:32dead6f-003d-492a-b50b-e3dd1fdd3a37)
 
 ## Step 3: Configure Comet Opik
 
@@ -39,7 +39,7 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 Make an API request through OpenRouter and view the trace in your Opik
 project dashboard.
 
-![Opik Trace View](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/bd71a7fd9d80d09e76d05ea52e654e94dd15e68914669145afe6416e832a0103/content/pages/features/broadcast/broadcast-opik-trace.png)
+![Opik Trace View](file:e0b8d438-d260-460c-b7e4-cce5a621f8ae)
 
 ## Custom Metadata
 

@@ -78,11 +78,9 @@ import { OpenRouter } from '@openrouter/sdk';
 
 const openRouter = new OpenRouter({
   apiKey: '<OPENROUTER_API_KEY>',
-  defaultHeaders: {
-    'HTTP-Referer': 'https://myapp.com', // Your app's URL
-    'X-OpenRouter-Title': 'My AI Assistant', // Your app's display name
-    'X-OpenRouter-Categories': 'cli-agent,cloud-agent', // Optional categories
-  },
+  httpReferer: 'https://myapp.com', // Your app's URL
+  appTitle: 'My AI Assistant', // Your app's display name
+  appCategories: 'cli-agent,cloud-agent', // Optional categories
 });
 
 const completion = await openRouter.chat.send({

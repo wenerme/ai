@@ -37,7 +37,7 @@ Here's an example that enables built-in and custom tool combinations with
 
     # Turn 1: Initial request with Google Search (built-in) and getWeather (custom) tools enabled
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="What is the northernmost city in the United States? What's the weather like there today?",
         config=types.GenerateContentConfig(
           tools=[
@@ -80,7 +80,7 @@ Here's an example that enables built-in and custom tool combinations with
     ]
 
     response_2 = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=history,
         config=types.GenerateContentConfig(
           tools=[
@@ -121,7 +121,7 @@ Here's an example that enables built-in and custom tool combinations with
 
     async function run() {
         const model = client.getGenerativeModel({
-            model: "gemini-3-flash-preview",
+            model: "gemini-3.5-flash",
         });
 
         const tools = [
@@ -227,7 +227,7 @@ Here's an example that enables built-in and custom tool combinations with
             },
         }
 
-        model := client.GenerativeModel("gemini-3-flash-preview")
+        model := client.GenerativeModel("gemini-3.5-flash")
         model.Tools = []*genai.Tool{
             {GoogleSearch: &genai.GoogleSearch{}}, // Built-in tool
             {FunctionDeclarations: []*genai.FunctionDeclaration{getWeather}}, // Custom tool
@@ -298,7 +298,7 @@ Here's an example that enables built-in and custom tool combinations with
 ### REST
 
     # Turn 1: Initial request with Google Search (built-in) and getWeather (custom) tools enabled
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
@@ -335,7 +335,7 @@ Here's an example that enables built-in and custom tool combinations with
     # The following request assumes you have captured candidates[0].content from Turn 1 response,
     # and extracted function_call.id for getWeather.
     # Replace FUNCTION_CALL_ID and insert candidate content from turn 1.
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
@@ -443,7 +443,7 @@ today?". It combines three tools: the built-in Gemini tools `google_search`
 and `code_execution`, and a custom function `get_weather`.
 
     {
-      "model": "models/gemini-3-flash-preview",
+      "model": "models/gemini-3.5-flash",
       "contents": [{
         "parts": [{
           "text": "What is the northernmost city in the United States? What's the weather like there today?"

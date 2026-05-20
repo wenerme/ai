@@ -28,6 +28,7 @@ Each guardrail can include any combination of:
 * **Provider allowlist** - Restrict to specific providers. Leave empty to allow all.
 * **Zero Data Retention** - Enforce ZDR per model group (Anthropic, OpenAI, Google, and non-frontier). See [Zero Data Retention](/docs/guides/features/zdr#per-model-group-zdr-enforcement) for details.
 * **Security** - Protect against prompt injection and jailbreak attacks with [regex-based detection](/docs/guides/features/guardrails/prompt-injection) and Google Cloud Model Armor.
+* **[Sensitive Info](/docs/guides/features/guardrails/sensitive-info)** - Detect and redact or block sensitive information (PII) in API requests using built-in presets and NLP-based detection.
 * **Custom content filters** - Define your own regex patterns to [redact or block](#custom-content-filters) matching content in incoming requests.
 
 Individual API key budgets still apply. The lower limit wins.
@@ -48,6 +49,7 @@ Account-wide privacy and provider settings are always enforced as a default guar
 * **Provider allowlists**: Intersection across all guardrails (only providers allowed by all guardrails are available)
 * **Model allowlists**: Intersection across all guardrails (only models allowed by all guardrails are available)
 * **Zero Data Retention**: OR logic per model group (if any guardrail enforces ZDR for a given scope — Anthropic, OpenAI, Google, or non-frontier — it is enforced for that scope)
+* **Sensitive Info**: Union across all guardrails (filters from all applicable guardrails are combined). If the same entity type or pattern appears with different actions, block takes precedence over redact.
 * **Budget limits**: Each guardrail's budget is checked independently. See [Budget Enforcement](#budget-enforcement) for details.
 
 This means stricter rules always win when multiple guardrails apply. For example, if a member guardrail allows providers A, B, and C, but an API key guardrail only allows providers A and B, only providers A and B will be available for that key.

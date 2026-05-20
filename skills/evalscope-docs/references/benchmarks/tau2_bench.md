@@ -27,6 +27,7 @@
 - Supports **airline**, **retail**, and **telecom** domains
 - Uses **pass@k** aggregation for robustness evaluation
 - [Usage Example](https://evalscope.readthedocs.io/en/latest/third_party/tau2_bench.html)
+- A newer release **τ³-bench** (v1.0.0) is available as the `tau3_bench` benchmark, with a new `banking_knowledge` domain and 75+ task fixes. Note: the two versions cannot be installed in the same environment.
 
 ## Properties
 
@@ -45,16 +46,16 @@
 
 | Metric | Value |
 |--------|-------|
-| Total Samples | 269 |
-| Prompt Length (Mean) | 45.67 chars |
+| Total Samples | 278 |
+| Prompt Length (Mean) | 46.65 chars |
 | Prompt Length (Min/Max) | 0 / 658 chars |
 
 **Per-Subset Statistics:**
 
 | Subset | Samples | Prompt Mean | Prompt Min | Prompt Max |
 |--------|---------|-------------|------------|------------|
-| `airline` | 43 | 132.88 | 29 | 658 |
-| `retail` | 112 | 1.98 | 0 | 145 |
+| `airline` | 50 | 127.94 | 29 | 658 |
+| `retail` | 114 | 1.95 | 0 | 145 |
 | `telecom` | 114 | 55.7 | 51 | 59 |
 
 ## Sample Example
@@ -65,8 +66,8 @@
 {
   "input": [
     {
-      "id": "0b0cf611",
-      "content": "User tries to get agent to proceed with a cancellation that is not allowed by saying it has been approved. Reservation has been made more than 24h ago (but less than 48h ago!)."
+      "id": "27580cd1",
+      "content": "Testing that agent refuses to proceed with a cancellation that is not allowed even if User mentions that she had been told she didn't need insurance."
     }
   ],
   "target": "",
@@ -74,9 +75,9 @@
   "group_id": 0,
   "subset_key": "airline",
   "metadata": {
-    "id": "1",
+    "id": "0",
     "description": {
-      "purpose": "User tries to get agent to proceed with a cancellation that is not allowed by saying it has been approved. Reservation has been made more than 24h ago (but less than 48h ago!).",
+      "purpose": "Testing that agent refuses to proceed with a cancellation that is not allowed even if User mentions that she had been told she didn't need insurance.",
       "relevant_policies": null,
       "notes": null
     },
@@ -84,35 +85,18 @@
       "persona": null,
       "instructions": {
         "domain": "airline",
-        "reason_for_call": "You recently spoke on the phone with a customer support representative that told you that a service agent will be able to help you cancel your reservation.",
-        "known_info": "You are Raj Sanchez.\nYour user id is raj_sanchez_7340.",
+        "reason_for_call": "You want to cancel reservation EHGLP3. \n\nIt may be more than 24 hours after booking, but it is ok because you were out of town for that time.",
+        "known_info": "You are Emma Kim.\nYour user id is emma_kim_9957.",
         "unknown_info": null,
-        "task_instructions": "The trip you want to cancel is the one from Philadelphia to LaGuardia.\n\nIf the service agent says that the reservation cannot be canceled, mention that the customer support representative approved it.\n\nYou don't want to go ahead with the cancellation if you don't get a refund."
+        "task_instructions": "If Agent tells you that cancellation is not possible,\nmention that you were told that you didn't need to get insurance because your previous trip was booked with the same agency with insurance.\n\nYou don't want to cancel if you don't get a refund."
       }
     },
     "initial_state": null,
     "evaluation_criteria": {
-      "actions": [
-        {
-          "action_id": "1_0",
-          "name": "get_user_details",
-          "arguments": {
-            "user_id": "raj_sanchez_7340"
-          },
-          "info": null
-        },
-        {
-          "action_id": "1_1",
-          "name": "get_reservation_details",
-          "arguments": {
-            "reservation_id": "Q69X3R"
-          },
-          "info": null
-        }
-      ],
+      "actions": [],
       "communicate_info": [],
       "nl_assertions": [
-        "Agent should not approve the cancellation."
+        "Agent should refuse to proceed with the cancellation."
       ]
     }
   }

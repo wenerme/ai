@@ -999,7 +999,7 @@ Create a conversation.
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -4775,7 +4775,7 @@ Create items in a conversation with the given ID.
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -7338,7 +7338,7 @@ Create items in a conversation with the given ID.
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -10427,7 +10427,7 @@ List all items for a conversation with the given ID.
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -13446,7 +13446,7 @@ Get a single item from a conversation with the given IDs.
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -16501,7 +16501,7 @@ print(conversation)
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -19415,7 +19415,7 @@ print(conversation)
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 

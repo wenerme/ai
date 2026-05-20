@@ -14,22 +14,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Learn how you can use Workers within your existing application and architecture.
 
-## Demos
-
-Explore the following demo applications for Workers.
-
-* [Starter code for D1 Sessions API: ↗](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template) An introduction to D1 Sessions API. This demo simulates purchase orders administration.
-* [JavaScript-native RPC on Cloudflare Workers <> Named Entrypoints: ↗](https://github.com/cloudflare/js-rpc-and-entrypoints-demo) This is a collection of examples of communicating between multiple Cloudflare Workers using the remote-procedure call (RPC) system that is built into the Workers runtime.
-* [Workers for Platforms Example Project: ↗](https://github.com/cloudflare/workers-for-platforms-example) Explore how you could manage thousands of Workers with a single Cloudflare Workers account.
-* [Cloudflare Workers Chat Demo: ↗](https://github.com/cloudflare/workers-chat-demo) This is a demo app written on Cloudflare Workers utilizing Durable Objects to implement real-time chat with stored history.
-* [Turnstile Demo: ↗](https://github.com/cloudflare/turnstile-demo-workers) A simple demo with a Turnstile-protected form, using Cloudflare Workers. With the code in this repository, we demonstrate implicit rendering and explicit rendering.
-* [Wildebeest: ↗](https://github.com/cloudflare/wildebeest) Wildebeest is an ActivityPub and Mastodon-compatible server whose goal is to allow anyone to operate their Fediverse server and identity on their domain without needing to keep infrastructure, with minimal setup and maintenance, and running in minutes.
-* [D1 Northwind Demo: ↗](https://github.com/cloudflare/d1-northwind) This is a demo of the Northwind dataset, running on Cloudflare Workers, and D1 - Cloudflare's SQL database, running on SQLite.
-* [Multiplayer Doom Workers: ↗](https://github.com/cloudflare/doom-workers) A WebAssembly Doom port with multiplayer support running on top of Cloudflare's global network using Workers, WebSockets, Pages, and Durable Objects.
-* [Queues Web Crawler: ↗](https://github.com/cloudflare/queues-web-crawler) An example use-case for Queues, a web crawler built on Browser Run and Puppeteer. The crawler finds the number of links to Cloudflare.com on the site, and archives a screenshot to Workers KV.
-* [DMARC Email Worker: ↗](https://github.com/cloudflare/dmarc-email-worker) A Cloudflare worker script to process incoming DMARC reports, store them, and produce analytics.
-* [Access External Auth Rule Example Worker: ↗](https://github.com/cloudflare/workers-access-external-auth-example) This is a worker that allows you to quickly setup an external evalutation rule in Cloudflare Access.
-
 ## Reference architectures
 
 Explore the following reference architectures that use Workers:

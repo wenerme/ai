@@ -1,7 +1,8 @@
 # Voice activity detection (VAD)
 
 Voice activity detection (VAD) is a feature available in the Realtime API allowing to automatically detect when the user has started or stopped speaking.
-It is enabled by default in [speech-to-speech](https://developers.openai.com/api/docs/guides/realtime-conversations) or [transcription](https://developers.openai.com/api/docs/guides/realtime-transcription) Realtime sessions, but is optional and can be turned off.
+It is enabled by default in [speech-to-speech](https://developers.openai.com/api/docs/guides/realtime-conversations) Realtime sessions, but is optional and can be turned off.
+In [transcription](https://developers.openai.com/api/docs/guides/realtime-transcription) Realtime sessions, turn detection support depends on the transcription model. Models that support VAD default to `server_vad`, while `gpt-realtime-whisper` requires turn detection to be omitted or set to `null`.
 
 ## Overview
 
@@ -12,20 +13,20 @@ When VAD is enabled, the audio is chunked automatically and the Realtime API sen
 
 You can use these events to handle speech turns in your application. For example, you can use them to manage conversation state or process transcripts in chunks.
 
-You can use the `turn_detection` property of the `session.update` event to configure how audio is chunked within each speech-to-text sample.
+You can configure VAD with the [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update) client event by setting `session.audio.input.turn_detection`.
 
 There are two modes for VAD:
 
 - `server_vad`: Automatically chunks the audio based on periods of silence.
 - `semantic_vad`: Chunks the audio when the model believes based on the words said by the user that they have completed their utterance.
 
-The default value is `server_vad`.
+For sessions and models that support VAD, the default value is `server_vad`.
 
 Read below to learn more about the different modes.
 
 ## Server VAD
 
-Server VAD is the default mode for Realtime sessions, and uses periods of silence to automatically chunk the audio.
+Server VAD is the default mode for speech-to-speech sessions, and for transcription sessions on models that support turn detection. It uses periods of silence to automatically chunk the audio.
 
 You can adjust the following properties to fine-tune the VAD settings:
 
@@ -39,17 +40,26 @@ Here is an example VAD configuration:
 {
   "type": "session.update",
   "session": {
-    "turn_detection": {
-      "type": "server_vad",
-      "threshold": 0.5,
-      "prefix_padding_ms": 300,
-      "silence_duration_ms": 500,
-      "create_response": true, // only in conversation mode
-      "interrupt_response": true // only in conversation mode
+    "type": "realtime",
+    "audio": {
+      "input": {
+        "turn_detection": {
+          "type": "server_vad",
+          "threshold": 0.5,
+          "prefix_padding_ms": 300,
+          "silence_duration_ms": 500,
+          "create_response": true, // only in conversation mode
+          "interrupt_response": true // only in conversation mode
+        }
+      }
     }
   }
 }
 ```
+
+Use the same `session.audio.input.turn_detection` field in transcription sessions. For `gpt-realtime-whisper`, omit turn detection or set it to `null`.
+
+The `create_response` and `interrupt_response` fields are only used in speech-to-speech conversations. In transcription sessions, VAD only controls how audio is chunked.
 
 ## Semantic VAD
 
@@ -59,7 +69,7 @@ For example, user audio that trails off with an "ummm..." would result in a long
 
 With this mode, the model is less likely to interrupt the user during a speech-to-speech conversation, or chunk a transcript before the user is done speaking.
 
-Semantic VAD can be activated by setting `turn_detection.type` to `semantic_vad` in a [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update) event.
+Semantic VAD can be activated by setting `session.audio.input.turn_detection.type` to `semantic_vad`.
 
 It can be configured like this:
 
@@ -67,15 +77,22 @@ It can be configured like this:
 {
   "type": "session.update",
   "session": {
-    "turn_detection": {
-      "type": "semantic_vad",
-      "eagerness": "low" | "medium" | "high" | "auto", // optional
-      "create_response": true, // only in conversation mode
-      "interrupt_response": true, // only in conversation mode
+    "type": "realtime",
+    "audio": {
+      "input": {
+        "turn_detection": {
+          "type": "semantic_vad",
+          "eagerness": "low" | "medium" | "high" | "auto", // optional
+          "create_response": true, // only in conversation mode
+          "interrupt_response": true, // only in conversation mode
+        }
+      }
     }
   }
 }
 ```
+
+The same `session.audio.input.turn_detection` field applies in transcription sessions. The `create_response` and `interrupt_response` fields are conversation-only.
 
 The optional `eagerness` property is a way to control how eager the model is to interrupt the user, tuning the maximum wait timeout. In transcription mode, even if the model doesn't reply, it affects how the audio is chunked.
 

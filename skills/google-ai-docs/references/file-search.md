@@ -50,7 +50,7 @@ This example shows how to directly upload a file to the [file search store](http
         operation = client.operations.get(operation)
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="""Can you tell me about [insert question]""",
         config=types.GenerateContentConfig(
             tools=[
@@ -94,7 +94,7 @@ This example shows how to directly upload a file to the [file search store](http
       }
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "Can you tell me about [insert question]",
         config: {
           tools: [
@@ -146,7 +146,7 @@ Alternatively, you can upload an existing file and [import it to your file searc
         operation = client.operations.get(operation)
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="""Can you tell me about [insert question]""",
         config=types.GenerateContentConfig(
             tools=[
@@ -192,7 +192,7 @@ Alternatively, you can upload an existing file and [import it to your file searc
       }
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "Can you tell me about [insert question]",
         config: {
           tools: [
@@ -462,7 +462,7 @@ to search only a subset of them.
 ### Python
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="Tell me about the book 'I, Claudius'",
         config=types.GenerateContentConfig(
             tools=[
@@ -481,7 +481,7 @@ to search only a subset of them.
 ### JavaScript
 
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: "Tell me about the book 'I, Claudius'",
       config: {
         tools: [
@@ -499,7 +499,7 @@ to search only a subset of them.
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY}" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${GEMINI_API_KEY}" \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
@@ -679,7 +679,7 @@ documents to your application logic. Each `grounding_chunk` in the
 ### Python
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="Tell me about [insert question]",
         config=types.GenerateContentConfig(
             tools=[
@@ -703,7 +703,7 @@ documents to your application logic. Each `grounding_chunk` in the
 ### JavaScript
 
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: "Tell me about [insert question]",
       config: {
         tools: [
@@ -775,7 +775,7 @@ Starting with Gemini 3 models, you can combine file search tool with
         currency: str = Field(description="The currency of amount.")
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="What is the minimum hourly wage in Tokyo right now?",
         config=types.GenerateContentConfig(
                     tools=[
@@ -802,7 +802,7 @@ Starting with Gemini 3 models, you can combine file search tool with
 
     async function run() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "What is the minimum hourly wage in Tokyo right now?",
         config: {
           tools: [
@@ -824,7 +824,7 @@ Starting with Gemini 3 models, you can combine file search tool with
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -862,6 +862,7 @@ The following models support File Search:
 
 | Model | File Search |
 |---|---|
+| [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ✔️ |
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/gemini-3.1-pro-preview) | ✔️ |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
 | [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview) | ✔️ |

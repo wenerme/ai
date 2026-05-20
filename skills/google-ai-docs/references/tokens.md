@@ -72,12 +72,12 @@ attribute on the `response` object to get the following:
     prompt = "The quick brown fox jumps over the lazy dog."
 
     total_tokens = client.models.count_tokens(
-        model="gemini-3-flash-preview", contents=prompt
+        model="gemini-3.5-flash", contents=prompt
     )
     print("total_tokens: ", total_tokens)
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents=prompt
+        model="gemini-3.5-flash", contents=prompt
     )
 
     print(response.usage_metadata)
@@ -91,13 +91,13 @@ attribute on the `response` object to get the following:
 
     async function main() {
       const countTokensResponse = await ai.models.countTokens({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: prompt,
       });
       console.log(countTokensResponse.totalTokens);
 
       const generateResponse = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: prompt,
       });
       console.log(generateResponse.usageMetadata);
@@ -114,13 +114,13 @@ attribute on the `response` object to get the following:
     contents := []*genai.Content{
       genai.NewContentFromText(prompt, genai.RoleUser),
     }
-    countResp, err := client.Models.CountTokens(ctx, "gemini-3-flash-preview", contents, nil)
+    countResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
       return err
     }
     fmt.Println("total_tokens:", countResp.TotalTokens)
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3-flash-preview", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
       log.Fatal(err)
     }
@@ -154,7 +154,7 @@ it to the history when you call `count_tokens`.
     client = genai.Client()
 
     chat = client.chats.create(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         history=[
             types.Content(
                 role="user", parts=[types.Part(text="Hi my name is Bob")]
@@ -165,7 +165,7 @@ it to the history when you call `count_tokens`.
 
     print(
         client.models.count_tokens(
-            model="gemini-3-flash-preview", contents=chat.get_history()
+            model="gemini-3.5-flash", contents=chat.get_history()
         )
     )
 
@@ -182,7 +182,7 @@ it to the history when you call `count_tokens`.
         ]
     )
     history = [*chat.get_history(), extra]
-    print(client.models.count_tokens(model="gemini-3-flash-preview", contents=history))
+    print(client.models.count_tokens(model="gemini-3.5-flash", contents=history))
 
 ### JavaScript
 
@@ -196,12 +196,12 @@ it to the history when you call `count_tokens`.
         { role: "model", parts: [{ text: "Hi Bob!" }] },
       ];
       const chat = ai.chats.create({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         history: history,
       });
 
       const countTokensResponse = await ai.models.countTokens({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: chat.getHistory(),
       });
       console.log(countTokensResponse.totalTokens);
@@ -217,7 +217,7 @@ it to the history when you call `count_tokens`.
       };
       const combinedHistory = [...chat.getHistory(), extraMessage];
       const combinedCountTokensResponse = await ai.models.countTokens({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: combinedHistory,
       });
       console.log(
@@ -237,12 +237,12 @@ it to the history when you call `count_tokens`.
       {Role: genai.RoleUser, Parts: []*genai.Part({Text: "Hi my name is Bob"})},
       {Role: genai.RoleModel, Parts: []*genai.Part({Text: "Hi Bob!"})},
     }
-    chat, err := client.Chats.Create(ctx, "gemini-3-flash-preview", nil, history)
+    chat, err := client.Chats.Create(ctx, "gemini-3.5-flash", nil, history)
     if err != nil {
       log.Fatal(err)
     }
 
-    firstTokenResp, err := client.Models.CountTokens(ctx, "gemini-3-flash-preview", chat.History(false), nil)
+    firstTokenResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", chat.History(false), nil)
     if err != nil {
       log.Fatal(err)
     }
@@ -258,7 +258,7 @@ it to the history when you call `count_tokens`.
     hist := chat.History(false)
     hist = append(hist, extra)
 
-    secondTokenResp, err := client.Models.CountTokens(ctx, "gemini-3-flash-preview", hist, nil)
+    secondTokenResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", hist, nil)
     if err != nil {
       log.Fatal(err)
     }
@@ -316,12 +316,12 @@ Example that uses an uploaded image from the File API:
 
     print(
         client.models.count_tokens(
-            model="gemini-3-flash-preview", contents=[prompt, your_image_file]
+            model="gemini-3.5-flash", contents=[prompt, your_image_file]
         )
     )
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents=[prompt, your_image_file]
+        model="gemini-3.5-flash", contents=[prompt, your_image_file]
     )
     print(response.usage_metadata)
 
@@ -339,7 +339,7 @@ Example that uses an uploaded image from the File API:
       });
 
       const countTokensResponse = await ai.models.countTokens({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           prompt,
           createPartFromUri(organ.uri, organ.mimeType),
@@ -348,7 +348,7 @@ Example that uses an uploaded image from the File API:
       console.log(countTokensResponse.totalTokens);
 
       const generateResponse = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           prompt,
           createPartFromUri(organ.uri, organ.mimeType),
@@ -382,13 +382,13 @@ Example that uses an uploaded image from the File API:
       genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    tokenResp, err := client.Models.CountTokens(ctx, "gemini-3-flash-preview", contents, nil)
+    tokenResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
       log.Fatal(err)
     }
     fmt.Println("Multimodal image token count:", tokenResp.TotalTokens)
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3-flash-preview", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
       log.Fatal(err)
     }
@@ -411,12 +411,12 @@ Example that provides the image as inline data:
 
     print(
         client.models.count_tokens(
-            model="gemini-3-flash-preview", contents=[prompt, your_image_file]
+            model="gemini-3.5-flash", contents=[prompt, your_image_file]
         )
     )
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents=[prompt, your_image_file]
+        model="gemini-3.5-flash", contents=[prompt, your_image_file]
     )
     print(response.usage_metadata)
 
@@ -437,13 +437,13 @@ Example that provides the image as inline data:
 
     async function main() {
       const countTokensResponse = await ai.models.countTokens({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: contents,
       });
       console.log(countTokensResponse.totalTokens);
 
       const generateResponse = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: contents,
       });
       console.log(generateResponse.usageMetadata);
@@ -473,13 +473,13 @@ Example that provides the image as inline data:
       genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    tokenResp, err := client.Models.CountTokens(ctx, "gemini-3-flash-preview", contents, nil)
+    tokenResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
       log.Fatal(err)
     }
     fmt.Println("Multimodal image token count:", tokenResp.TotalTokens)
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3-flash-preview", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
       log.Fatal(err)
     }
@@ -527,12 +527,12 @@ attribute on the `response` object to get the following:
 
     print(
         client.models.count_tokens(
-            model="gemini-3-flash-preview", contents=[prompt, your_file]
+            model="gemini-3.5-flash", contents=[prompt, your_file]
         )
     )
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents=[prompt, your_file]
+        model="gemini-3.5-flash", contents=[prompt, your_file]
     )
     print(response.usage_metadata)
 
@@ -557,7 +557,7 @@ attribute on the `response` object to get the following:
       }
 
       const countTokensResponse = await ai.models.countTokens({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           prompt,
           createPartFromUri(videoFile.uri, videoFile.mimeType),
@@ -566,7 +566,7 @@ attribute on the `response` object to get the following:
       console.log(countTokensResponse.totalTokens);
 
       const generateResponse = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           prompt,
           createPartFromUri(videoFile.uri, videoFile.mimeType),
@@ -612,12 +612,12 @@ attribute on the `response` object to get the following:
       genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    tokenResp, err := client.Models.CountTokens(ctx, "gemini-3-flash-preview", contents, nil)
+    tokenResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
       log.Fatal(err)
     }
     fmt.Println("Multimodal video/audio token count:", tokenResp.TotalTokens)
-    response, err := client.Models.GenerateContent(ctx, "gemini-3-flash-preview", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
       log.Fatal(err)
     }
@@ -640,7 +640,7 @@ or by looking in the [models documentation](https://ai.google.dev/gemini-api/doc
     from google import genai
 
     client = genai.Client()
-    model_info = client.models.get(model="gemini-3-flash-preview")
+    model_info = client.models.get(model="gemini-3.5-flash")
     print(f"{model_info.input_token_limit=}")
     print(f"{model_info.output_token_limit=}")
 
@@ -651,7 +651,7 @@ or by looking in the [models documentation](https://ai.google.dev/gemini-api/doc
     const ai = new GoogleGenAI({});
 
     async function main() {
-      const modelInfo = await ai.models.get({model: 'gemini-3-flash-preview'});
+      const modelInfo = await ai.models.get({model: 'gemini-3.5-flash'});
       console.log(modelInfo.inputTokenLimit);
       console.log(modelInfo.outputTokenLimit);
     }
@@ -665,7 +665,7 @@ or by looking in the [models documentation](https://ai.google.dev/gemini-api/doc
     if err != nil {
       log.Fatal(err)
     }
-    modelInfo, err := client.ModelInfo(ctx, "models/gemini-3-flash-preview")
+    modelInfo, err := client.ModelInfo(ctx, "models/gemini-3.5-flash")
     if err != nil {
       log.Fatal(err)
     }

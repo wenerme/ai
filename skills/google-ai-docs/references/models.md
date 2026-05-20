@@ -7,7 +7,9 @@
 
 [### Gemini 3.1 Pro
 Advanced intelligence, complex problem-solving skills, and powerful agentic and vibe coding capabilities.
-Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) [### Gemini 3 Flash
+Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) [### Gemini 3.5 Flash
+Most intelligent model for sustained frontier performance on agentic and coding tasks.
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) [### Gemini 3 Flash
 Frontier-class performance rivaling larger models at a fraction of the cost.
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) [### Gemini 3.1 Flash-Lite
 Frontier-class performance rivaling larger models at a fraction of the cost.
@@ -155,6 +157,10 @@ An agentic model that autonomously plans and executes multi-step research across
 ### [Gemini Deep Research Max Preview](https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026)
 
 Maximum comprehensiveness for automated context gathering and synthesis across hundreds of sources.
+
+### [Antigravity Agent Preview](https://ai.google.dev/gemini-api/docs/models/antigravity-preview-05-2026)
+
+A general-purpose managed agent that autonomously plans, reasons, runs code, manages files, and browses the web inside a secure, isolated Linux sandbox.
 
 *** ** * ** ***
 

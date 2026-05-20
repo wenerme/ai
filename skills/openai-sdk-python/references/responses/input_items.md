@@ -990,7 +990,7 @@ Returns a list of input items for a given response.
 
         - `type: Literal["open_page"]`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -3913,7 +3913,7 @@ print(response.data)
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 

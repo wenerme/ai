@@ -7,6 +7,15 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Work with GitLab CI/CD pipelines and jobs.
 
+## Synopsis
+
+Manages CI/CD pipelines and jobs in your GitLab project.
+
+Use these commands to manage CI/CD pipelines and jobs. You can also
+lint and compile CI/CD configuration files.
+
+The `pipe` and `pipeline` aliases are deprecated. Use `ci` instead.
+
 ```plaintext
 glab ci <command> [flags]
 ```

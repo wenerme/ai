@@ -22,7 +22,7 @@ demonstrated in the following [text generation](https://ai.google.dev/gemini-api
     client = genai.Client()
     prompt = "Explain the concept of Occam's Razor and provide a simple, everyday example."
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=prompt
     )
 
@@ -38,7 +38,7 @@ demonstrated in the following [text generation](https://ai.google.dev/gemini-api
       const prompt = "Explain the concept of Occam's Razor and provide a simple, everyday example.";
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: prompt,
       });
 
@@ -67,7 +67,7 @@ demonstrated in the following [text generation](https://ai.google.dev/gemini-api
       }
 
       prompt := "Explain the concept of Occam's Razor and provide a simple, everyday example."
-      model := "gemini-3-flash-preview"
+      model := "gemini-3.5-flash"
 
       resp, _ := client.Models.GenerateContent(ctx, model, genai.Text(prompt), nil)
 
@@ -76,7 +76,7 @@ demonstrated in the following [text generation](https://ai.google.dev/gemini-api
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
      -H "x-goog-api-key: $GEMINI_API_KEY" \
      -H 'Content-Type: application/json' \
      -X POST \
@@ -116,7 +116,7 @@ response:
     client = genai.Client()
     prompt = "What is the sum of the first 50 prime numbers?"
     response = client.models.generate_content(
-      model="gemini-3-flash-preview",
+      model="gemini-3.5-flash",
       contents=prompt,
       config=types.GenerateContentConfig(
         thinking_config=types.ThinkingConfig(
@@ -145,7 +145,7 @@ response:
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "What is the sum of the first 50 prime numbers?",
         config: {
           thinkingConfig: {
@@ -190,7 +190,7 @@ response:
       }
 
       contents := genai.Text("What is the sum of the first 50 prime numbers?")
-      model := "gemini-3-flash-preview"
+      model := "gemini-3.5-flash"
       resp, _ := client.Models.GenerateContent(ctx, model, contents, &genai.GenerateContentConfig{
         ThinkingConfig: &genai.ThinkingConfig{
           IncludeThoughts: true,
@@ -234,7 +234,7 @@ incremental summaries during generation:
     answer = ""
 
     for chunk in client.models.generate_content_stream(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
           thinking_config=types.ThinkingConfig(
@@ -273,7 +273,7 @@ incremental summaries during generation:
 
     async function main() {
       const response = await ai.models.generateContentStream({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: prompt,
         config: {
           thinkingConfig: {
@@ -335,7 +335,7 @@ incremental summaries during generation:
       }
 
       contents := genai.Text(prompt)
-      model := "gemini-3-flash-preview"
+      model := "gemini-3.5-flash"
 
       resp := client.Models.GenerateContentStream(ctx, model, contents, &genai.GenerateContentConfig{
         ThinkingConfig: &genai.ThinkingConfig{
@@ -373,12 +373,12 @@ lets you control reasoning behavior.
 
 The following table details the `thinkingLevel` settings for each model type:
 
-| Thinking Level | Gemini 3.1 Pro | Gemini 3.1 Flash-Lite | Gemini 3 Flash | Description |
-|---|---|---|---|---|
-| **`minimal`** | Not supported | Supported (Default) | Supported | Matches the "no thinking" setting for most queries. The model may think very minimally for complex coding tasks. Minimizes latency for chat or high throughput applications. Note, `minimal` does not guarantee that thinking is off. |
-| **`low`** | Supported | Supported | Supported | Minimizes latency and cost. Best for simple instruction following, chat, or high-throughput applications. |
-| **`medium`** | Supported | Supported | Supported | Balanced thinking for most tasks. |
-| **`high`** | Supported (Default, Dynamic) | Supported (Dynamic) | Supported (Default, Dynamic) | Maximizes reasoning depth. The model may take significantly longer to reach a first (non thinking) output token, but the output will be more carefully reasoned. |
+| Thinking Level | Gemini 3.1 Pro | Gemini 3.1 Flash-Lite | Gemini 3 Flash | Gemini 3.5 Flash | Description |
+|---|---|---|---|---|---|
+| **`minimal`** | Not supported | Supported (Default) | Supported | Supported | Matches the "no thinking" setting for most queries. The model may think very minimally for complex coding tasks. Minimizes latency for chat or high throughput applications. Note, `minimal` does not guarantee that thinking is off. |
+| **`low`** | Supported | Supported | Supported | Supported | Minimizes latency and cost. Best for simple instruction following, chat, or high-throughput applications. |
+| **`medium`** | Supported | Supported | Supported | Supported (Default) | Balanced thinking for most tasks. |
+| **`high`** | Supported (Default, Dynamic) | Supported (Dynamic) | Supported (Default, Dynamic) | Supported (Dynamic) | Maximizes reasoning depth. The model may take significantly longer to reach a first (non thinking) output token, but the output will be more carefully reasoned. |
 
 The following example shows how to set the thinking level.
 
@@ -390,7 +390,7 @@ The following example shows how to set the thinking level.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="Provide a list of 3 famous physicists and their key contributions",
         config=types.GenerateContentConfig(
             thinking_config=types.ThinkingConfig(thinking_level="low")
@@ -407,7 +407,7 @@ The following example shows how to set the thinking level.
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "Provide a list of 3 famous physicists and their key contributions",
         config: {
           thinkingConfig: {
@@ -442,7 +442,7 @@ The following example shows how to set the thinking level.
       thinkingLevelVal := "low"
 
       contents := genai.Text("Provide a list of 3 famous physicists and their key contributions")
-      model := "gemini-3-flash-preview"
+      model := "gemini-3.5-flash"
       resp, _ := client.Models.GenerateContent(ctx, model, contents, &genai.GenerateContentConfig{
         ThinkingConfig: &genai.ThinkingConfig{
           ThinkingLevel: &thinkingLevelVal,
@@ -454,7 +454,7 @@ The following example shows how to set the thinking level.
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
@@ -479,7 +479,7 @@ You cannot disable thinking for Gemini 3.1 Pro. Gemini 3 Flash and Flash-Lite
 also do not support full thinking-off, but the `minimal`
 setting means the model likely will not think (though it still potentially can).
 If you don't specify a thinking level, Gemini will use the Gemini 3 models'
-default dynamic thinking level, `"high"`.
+default thinking level (e.g., `"high"` for Gemini 3.1 Pro, and `"medium"` for Gemini 3.5 Flash).
 
 Gemini 2.5 series models don't support `thinkingLevel`; use `thinkingBudget`
 instead.

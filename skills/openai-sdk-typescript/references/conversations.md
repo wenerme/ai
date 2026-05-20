@@ -990,7 +990,7 @@ Create a conversation.
 
           - `type: "open_page"`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -4738,7 +4738,7 @@ Create items in a conversation with the given ID.
 
           - `type: "open_page"`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -7281,7 +7281,7 @@ Create items in a conversation with the given ID.
 
           - `type: "open_page"`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -10356,7 +10356,7 @@ List all items for a conversation with the given ID.
 
         - `type: "open_page"`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -13358,7 +13358,7 @@ Get a single item from a conversation with the given IDs.
 
         - `type: "open_page"`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -16403,7 +16403,7 @@ console.log(conversation);
 
         - `type: "open_page"`
 
-          The action type.
+          The action type. Always `open_page`.
 
           - `"open_page"`
 
@@ -19297,7 +19297,7 @@ console.log(conversation);
 
           - `type: "open_page"`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 

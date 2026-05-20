@@ -142,7 +142,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="Some potentially unsafe prompt",
         config=types.GenerateContentConfig(
           safety_settings=[
@@ -185,7 +185,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
 
         response, err := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             genai.Text("Some potentially unsafe prompt."),
             config,
         )
@@ -210,7 +210,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "Some potentially unsafe prompt.",
         config: {
           safetySettings: safetySettings,
@@ -227,7 +227,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
         BlockThreshold.LOW_AND_ABOVE);
 
     GenerativeModel gm = new GenerativeModel(
-        "gemini-3-flash-preview",
+        "gemini-3.5-flash",
         BuildConfig.apiKey,
         null, // generation config is optional
         Arrays.asList(hateSpeechSafety)
@@ -237,7 +237,7 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -X POST \

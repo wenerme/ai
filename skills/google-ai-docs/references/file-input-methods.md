@@ -25,7 +25,7 @@ input types and limits.
 
     prompt = "Summarize this document"
     response = client.models.generate_content(
-      model="gemini-3-flash-preview",
+      model="gemini-3.5-flash",
       contents=[
           types.Part.from_bytes(
             data=filepath.read_bytes(),
@@ -58,7 +58,7 @@ input types and limits.
         ];
 
         const response = await ai.models.generateContent({
-            model: "gemini-3-flash-preview",
+            model: "gemini-3.5-flash",
             contents: contents
         });
         console.log(response.text);
@@ -71,7 +71,7 @@ input types and limits.
     # Encode the local file to base64
     B64_CONTENT=$(base64 -w 0 my_local_file.pdf)
 
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
@@ -136,7 +136,7 @@ input.
     prompt = "Summarize this document"
 
     response = client.models.generate_content(
-      model="gemini-3-flash-preview",
+      model="gemini-3.5-flash",
       contents=[
           types.Part.from_bytes(
             data=doc_data,
@@ -170,7 +170,7 @@ input.
         ];
 
         const response = await ai.models.generateContent({
-            model: "gemini-3-flash-preview",
+            model: "gemini-3.5-flash",
             contents: contents
         });
         console.log(response.text);
@@ -198,7 +198,7 @@ input.
     ENCODED_PDF=$(base64 $B64FLAGS "${DISPLAY_NAME}.pdf")
 
     # Generate content using the base64 encoded PDF
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -237,7 +237,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
 
     # Use the uploaded file in a prompt
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=[prompt, audio_file]
     )
     print(response.text)
@@ -262,7 +262,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
       });
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           prompt,
           createPartFromUri(myfile.uri, myfile.mimeType),
@@ -308,7 +308,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
     echo file_uri=$file_uri
 
     # Now generate content using that file
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -485,7 +485,7 @@ download and re-upload it. You can register it directly with the File API.
        for f in registered_gcs_files.files:
          print(f.name)
          response = client.models.generate_content(
-           model="gemini-3-flash-preview",
+           model="gemini-3.5-flash",
            contents=[Part.from_uri(
              file_uri=f.uri,
              mime_type=f.mime_type,
@@ -530,7 +530,7 @@ You can use public or signed URLs as input by using the URLs in the
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=[
             Part.from_uri(
                 file_uri=uri,
@@ -551,7 +551,7 @@ You can use public or signed URLs as input by using the URLs in the
 
     async function main() {
       const response = await client.models.generateContent({
-        model: 'gemini-3-flash-preview',
+        model: 'gemini-3.5-flash',
         contents: [
           // equivalent to Part.from_uri(file_uri=uri, mime_type="...")
           createPartFromUri(uri, "application/pdf"),
@@ -566,7 +566,7 @@ You can use public or signed URLs as input by using the URLs in the
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent \
           -H 'x-goog-api-key: $GEMINI_API_KEY' \
           -H 'Content-Type: application/json' \
           -d '{

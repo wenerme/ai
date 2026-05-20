@@ -14,14 +14,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Learn how you can use R2 within your existing application and architecture.
 
-## Demos
-
-Explore the following demo applications for R2.
-
-* [Jobs At Conf: ↗](https://github.com/harshil1712/jobs-at-conf-demo) A job lisiting website to add jobs you find at in-person conferences. Built with Cloudflare Pages, R2, D1, Queues, and Workers AI.
-* [Upload Image to R2 starter: ↗](https://github.com/harshil1712/nextjs-r2-demo) Upload images to Cloudflare R2 from a Next.js application.
-* [DMARC Email Worker: ↗](https://github.com/cloudflare/dmarc-email-worker) A Cloudflare worker script to process incoming DMARC reports, store them, and produce analytics.
-
 ## Reference architectures
 
 Explore the following reference architectures that use R2:

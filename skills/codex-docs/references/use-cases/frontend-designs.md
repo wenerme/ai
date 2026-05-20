@@ -6,7 +6,6 @@ summary: Use Codex to translate screenshots and design briefs into code that
   implementation to your references for different screen sizes and iterate until
   it looks right.
 featured: true
-coverImage: /codex/use-cases/frontend-designs-use-case.png
 skills:
   - token: $playwright
     url: https://github.com/openai/skills/tree/main/skills/.curated/playwright-interactive

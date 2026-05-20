@@ -26,7 +26,7 @@ the Gemini model to use Google Maps data.
     prompt = "What are the best Italian restaurants within a 15-minute walk from here?"
 
     response = client.models.generate_content(
-        model='gemini-3-flash-preview',
+        model='gemini-3.5-flash',
         contents=prompt,
         config=types.GenerateContentConfig(
             # Turn on grounding with Google Maps
@@ -56,7 +56,7 @@ the Gemini model to use Google Maps data.
 
     async function generateContentWithMapsGrounding() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "What are the best Italian restaurants within a 15-minute walk from here?",
         config: {
           // Turn on grounding with Google Maps
@@ -92,7 +92,7 @@ the Gemini model to use Google Maps data.
 
 ### REST
 
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent' \
+    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent' \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: ${GEMINI_API_KEY}" \
       -d '{
@@ -292,7 +292,7 @@ user reviews and other Maps data.
     prompt = "Is there a cafe near the corner of 1st and Main that has outdoor seating?"
 
     response = client.models.generate_content(
-        model='gemini-3-flash-preview',
+        model='gemini-3.5-flash',
         contents=prompt,
         config=types.GenerateContentConfig(
             # Turn on the Maps tool
@@ -326,7 +326,7 @@ user reviews and other Maps data.
       const prompt = "Is there a cafe near the corner of 1st and Main that has outdoor seating?";
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
+        model: 'gemini-3.5-flash',
         contents: prompt,
         config: {
           // Turn on the Maps tool
@@ -362,7 +362,7 @@ user reviews and other Maps data.
 
 ### REST
 
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent' \
+    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent' \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: ${GEMINI_API_KEY}" \
       -d '{
@@ -395,7 +395,7 @@ area.
     prompt = "Which family-friendly restaurants near here have the best playground reviews?"
 
     response = client.models.generate_content(
-        model='gemini-3-flash-preview',
+        model='gemini-3.5-flash',
         contents=prompt,
         config=types.GenerateContentConfig(
           tools=[types.Tool(google_maps=types.GoogleMaps())],
@@ -426,7 +426,7 @@ area.
       const prompt = "Which family-friendly restaurants near here have the best playground reviews?";
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
+        model: 'gemini-3.5-flash',
         contents: prompt,
         config: {
           tools: [{googleMaps: {}}],
@@ -461,7 +461,7 @@ area.
 
 ### REST
 
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent' \
+    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent' \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: ${GEMINI_API_KEY}" \
       -d '{
@@ -500,7 +500,7 @@ from the Google Maps JavaScript API.
     prompt = "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner."
 
     response = client.models.generate_content(
-        model='gemini-3-flash-preview',
+        model='gemini-3.5-flash',
         contents=prompt,
         config=types.GenerateContentConfig(
           tools=[types.Tool(google_maps=types.GoogleMaps(enable_widget=True))],
@@ -535,7 +535,7 @@ from the Google Maps JavaScript API.
       const prompt = "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner.";
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
+        model: 'gemini-3.5-flash',
         contents: prompt,
         config: {
           tools: [{googleMaps: {enableWidget: true}}],
@@ -577,7 +577,7 @@ from the Google Maps JavaScript API.
 
 ### REST
 
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent' \
+    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent' \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: ${GEMINI_API_KEY}" \
       -d '{
@@ -746,6 +746,7 @@ The following models support Grounding with Google Maps:
 
 | Model | Grounding with Google Maps |
 |---|---|
+| [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ✔️ |
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
 | [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview) | ✔️ |

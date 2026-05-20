@@ -14,12 +14,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Workers AI can be used to build dynamic and performant services. The following demo applications and reference architectures showcase how to use Workers AI optimally within your architecture.
 
-## Demos
-
-Explore the following demo applications for Workers AI.
-
-* [Jobs At Conf: ↗](https://github.com/harshil1712/jobs-at-conf-demo) A job lisiting website to add jobs you find at in-person conferences. Built with Cloudflare Pages, R2, D1, Queues, and Workers AI.
-
 ## Reference architectures
 
 Explore the following reference architectures that use Workers AI:

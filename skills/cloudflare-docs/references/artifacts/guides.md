@@ -17,6 +17,7 @@ In-depth guides for using Artifacts in production, including how Artifacts authe
 * [ Authentication ](https://developers.cloudflare.com/artifacts/guides/authentication/)
 * [ Import repositories ](https://developers.cloudflare.com/artifacts/guides/import-repositories/)
 * [ ArtifactFS ](https://developers.cloudflare.com/artifacts/guides/artifact-fs/)
+* [ Event subscriptions ](https://developers.cloudflare.com/artifacts/guides/event-subscriptions/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/guides/","name":"Guides"}}]}

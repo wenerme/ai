@@ -7,6 +7,13 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Cancel a running pipeline or job.
 
+## Synopsis
+
+Cancel one or more running CI/CD pipelines or jobs.
+
+Use the `pipeline` subcommand to cancel pipelines, or the `job`
+subcommand to cancel individual jobs.
+
 ## Options inherited from parent commands
 
 ```plaintext

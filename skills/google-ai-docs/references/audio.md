@@ -11,7 +11,7 @@ Gemini can analyze audio input and generate text responses.
     myfile = client.files.upload(file="path/to/sample.mp3")
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents=["Describe this audio clip", myfile]
+        model="gemini-3.5-flash", contents=["Describe this audio clip", myfile]
     )
 
     print(response.text)
@@ -33,7 +33,7 @@ Gemini can analyze audio input and generate text responses.
       });
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           createPartFromUri(myfile.uri, myfile.mimeType),
           "Describe this audio clip",
@@ -79,7 +79,7 @@ Gemini can analyze audio input and generate text responses.
 
         result, _ := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             contents,
             nil,
         )
@@ -122,7 +122,7 @@ Gemini can analyze audio input and generate text responses.
     echo file_uri=$file_uri
 
     # Now generate content using that file
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -182,7 +182,7 @@ using [structured outputs](https://ai.google.dev/gemini-api/docs/structured-outp
       """
 
       response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=[
           types.Content(
             parts=[
@@ -267,7 +267,7 @@ using [structured outputs](https://ai.google.dev/gemini-api/docs/structured-outp
       };
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: {
           parts: [
             {
@@ -321,7 +321,7 @@ using [structured outputs](https://ai.google.dev/gemini-api/docs/structured-outp
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -415,7 +415,7 @@ The following code uploads an audio file and then uses the file in a call to
     myfile = client.files.upload(file="path/to/sample.mp3")
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents=["Describe this audio clip", myfile]
+        model="gemini-3.5-flash", contents=["Describe this audio clip", myfile]
     )
 
     print(response.text)
@@ -437,7 +437,7 @@ The following code uploads an audio file and then uses the file in a call to
       });
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: createUserContent([
           createPartFromUri(myfile.uri, myfile.mimeType),
           "Describe this audio clip",
@@ -483,7 +483,7 @@ The following code uploads an audio file and then uses the file in a call to
 
       result, _ := client.Models.GenerateContent(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           contents,
           nil,
       )
@@ -526,7 +526,7 @@ The following code uploads an audio file and then uses the file in a call to
     echo file_uri=$file_uri
 
     # Now generate content using that file
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -561,7 +561,7 @@ request to `generateContent`:
 
     client = genai.Client()
     response = client.models.generate_content(
-      model='gemini-3-flash-preview',
+      model='gemini-3.5-flash',
       contents=[
         'Describe this audio clip',
         types.Part.from_bytes(
@@ -594,7 +594,7 @@ request to `generateContent`:
     ];
 
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: contents,
     });
     console.log(response.text);
@@ -634,7 +634,7 @@ request to `generateContent`:
 
       result, _ := client.Models.GenerateContent(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           contents,
           nil,
       )
@@ -660,7 +660,7 @@ To get a transcript of audio data, just ask for it in the prompt:
     prompt = 'Generate a transcript of the speech.'
 
     response = client.models.generate_content(
-      model='gemini-3-flash-preview',
+      model='gemini-3.5-flash',
       contents=[prompt, myfile]
     )
 
@@ -681,7 +681,7 @@ To get a transcript of audio data, just ask for it in the prompt:
     });
 
     const result = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
         "Generate a transcript of the speech.",
@@ -724,7 +724,7 @@ To get a transcript of audio data, just ask for it in the prompt:
 
       result, _ := client.Models.GenerateContent(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           contents,
           nil,
       )
@@ -786,7 +786,7 @@ You can refer to specific sections of an audio file using timestamps of the form
 
       result, _ := client.Models.GenerateContent(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           contents,
           nil,
       )
@@ -805,7 +805,7 @@ audio file. For example:
 
     client = genai.Client()
     response = client.models.count_tokens(
-      model='gemini-3-flash-preview',
+      model='gemini-3.5-flash',
       contents=[myfile]
     )
 
@@ -826,7 +826,7 @@ audio file. For example:
     });
 
     const countTokensResponse = await ai.models.countTokens({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
       ]),
@@ -867,7 +867,7 @@ audio file. For example:
 
       tokens, _ := client.Models.CountTokens(
           ctx,
-          "gemini-3-flash-preview",
+          "gemini-3.5-flash",
           contents,
           nil,
       )

@@ -9,25 +9,38 @@ Cancel CI/CD jobs.
 
 ## Synopsis
 
-Use `--dry-run` to list jobs that would be canceled without making changes.
+Cancels one or more running CI/CD jobs by ID. You can pass multiple
+job IDs as separate arguments, in a comma-separated list, or in a
+quoted space-separated list.
+
+To preview which jobs would be canceled without making changes, use
+`--dry-run`.
 
 ```plaintext
-glab ci cancel job <id> [flags]
+glab ci cancel job <id> [<id>...] [flags]
 ```
 
 ## Examples
 
 ```console
+# Cancel a single job
 glab ci cancel job 1504182795
-glab ci cancel job 1504182795,1504182795
-glab ci cancel job "1504182795 1504182795"
-glab ci cancel job 1504182795,1504182795 --dry-run
+
+# Cancel multiple jobs, comma-separated
+glab ci cancel job 1504182795,1504182796
+
+# Cancel multiple jobs, space-separated in quotes
+glab ci cancel job "1504182795 1504182796"
+
+# Preview which jobs would be canceled
+glab ci cancel job 1504182795,1504182796 --dry-run
+
 ```
 
 ## Options
 
 ```plaintext
-      --dry-run   Simulates process, but does not cancel anything.
+      --dry-run   Show which jobs would be canceled, without canceling them.
 ```
 
 ## Options inherited from parent commands

@@ -19,13 +19,14 @@ Already-shutdown models are indicated with gray backgrounds.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
+| `gemini-3.5-flash` | May 19, 2026 | No shutdown date announced |   |
 | `gemini-3.1-flash-lite` | May 7, 2026 | May 7, 2027 |   |
 | Preview models ||||
 | `gemini-3.1-flash-lite-preview` | March 3, 2026 | May 25, 2026 | `gemini-3.1-flash-lite` |
 | `gemini-3.1-flash-image-preview` | February 26, 2026 | No shutdown date announced |   |
 | `gemini-3.1-pro-preview` | February 19, 2026 | No shutdown date announced |   |
 | `gemini-3-pro-image-preview` | November 20, 2025 | No shutdown date announced |   |
-| `gemini-3-flash-preview` | December 17, 2025 | No shutdown date announced |   |
+| `gemini-3-flash-preview` | December 17, 2025 | No shutdown date announced | `gemini-3.5-flash` |
 | `gemini-3-pro-preview` | November 18, 2025 | March 9, 2026 | `gemini-3.1-pro-preview` |
 
 ## Gemini 2.5 Pro models
@@ -42,14 +43,14 @@ Already-shutdown models are indicated with gray backgrounds.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
-| `gemini-2.5-flash` | June 17, 2025 | October 16, 2026 | `gemini-3-flash-preview` |
+| `gemini-2.5-flash` | June 17, 2025 | October 16, 2026 | `gemini-3.5-flash` |
 | `gemini-2.5-flash-image` | October 2, 2025 | October 2, 2026 | `gemini-3.1-flash-image-preview` |
 | `gemini-2.5-flash-lite` | July 22, 2025 | October 16, 2026 | `gemini-3.1-flash-lite` |
 | Preview models ||||
 | `gemini-2.5-flash-lite-preview-09-2025` | September 25, 2025 | March 31, 2026 | `gemini-3.1-flash-lite` |
-| `gemini-2.5-flash-preview-05-20` | May 20, 2025 | November 18, 2025 | `gemini-3-flash-preview` |
+| `gemini-2.5-flash-preview-05-20` | May 20, 2025 | November 18, 2025 | `gemini-3.5-flash` |
 | `gemini-2.5-flash-image-preview` | May 7, 2025 | January 15, 2026 | `gemini-2.5-flash-image` |
-| `gemini-2.5-flash-preview-09-25` | September 25, 2025 | February 17, 2026 | `gemini-3-flash-preview` |
+| `gemini-2.5-flash-preview-09-25` | September 25, 2025 | February 17, 2026 | `gemini-3.5-flash` |
 
 ## Gemini 2.0 models
 

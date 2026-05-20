@@ -198,8 +198,8 @@ In Nuxt, add server-side code via [Server Routes and Middleware ↗](https://nux
 
 The following code block shows an example of accessing a KV namespace in Nuxt.
 
-* [  JavaScript ](#tab-panel-6772)
-* [  TypeScript ](#tab-panel-6773)
+* [  JavaScript ](#tab-panel-7240)
+* [  TypeScript ](#tab-panel-7241)
 
 JavaScript
 
@@ -244,18 +244,6 @@ export default defineEventHandler(({ context }) => {
 ## Learn more
 
 By completing this guide, you have successfully deployed your Nuxt site to Cloudflare Pages. To get started with other frameworks, [refer to the list of Framework guides](https://developers.cloudflare.com/pages/framework-guides/).
-
-## Related resources
-
-### Tutorials
-
-For more tutorials involving Nuxt, refer to the following resources:
-
-[Build a blog using Nuxt.js and Sanity.io on Cloudflare PagesBuild a blog application using Nuxt.js and Sanity.io and deploy it on Cloudflare Pages.](https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/)
-
-### Demo apps
-
-For demo applications using Nuxt, refer to the following resources:
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/framework-guides/deploy-a-nuxt-site/","name":"Nuxt"}}]}

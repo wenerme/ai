@@ -22,7 +22,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Set up Access policies for your tunnel ](https://developers.cloudflare.com/videos/set-up-access-policies/) Set up access policies using Cloudflare Access to verify the identity of every user. 
 
-[ Set up Cloudflare Tunnel ](https://developers.cloudflare.com/videos/set-up-cf-tunnel) Set up Cloudflare Tunnel to create a secure link between your private environment and the Cloudflare edge. 
+[ Set up Cloudflare Tunnel ](https://developers.cloudflare.com/videos/set-up-cf-tunnel/) Set up Cloudflare Tunnel to create a secure link between your private environment and the Cloudflare edge. 
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/video-tutorials/","name":"Videos"}}]}

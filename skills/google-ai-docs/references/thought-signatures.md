@@ -459,6 +459,27 @@ in non-function-call parts.
       { "role": "user", "parts": [{ "text": "Summarize it." }] }
     ]
 
+## Thought preservation and token usage
+
+**Beginning with Gemini 3.5 Flash**, the model uses the reasoning context
+from all previous turns when thought signatures are present in the
+conversation history.
+
+To enable thought preservation, **pass the full, unmodified conversation history** (including the `thought_signature` fields returned in previous model turns) in the `contents` array of your request.
+
+### Managing token consumption
+
+Preserving intermediate thoughts across multiple turns increases the input
+token count in subsequent turns, as the model must parse the thought
+signatures from previous turns.
+
+If your application performs simple queries or you want to minimize costs in
+long conversations, you can clear previous thought signatures from the
+conversation history.
+
+> [!NOTE]
+> **Note:** **Do not clear thought signatures within the current turn.** Omitting thought signatures for function calling parts within the active, incomplete turn will result in a `400` validation error (see [Signatures in function calling parts](https://ai.google.dev/gemini-api/docs/thought-signatures#function-calling)).
+
 ## Signatures for OpenAI compatibility
 
 The following examples shows how to handle thought signatures for a chat
@@ -834,12 +855,15 @@ You must preserve `<Signature_A>` on the first part exactly as received.
 ## Thought signatures for different models
 
 [Gemini 3 models](https://ai.google.dev/gemini-api/docs/models#gemini-3) and Gemini 2.5 models
-behave differently with thought signatures in function calls:
+behave differently with thought signatures:
 
-- If there are function calls in a response,
+- **Thought preservation** :
+  - **Beginning with Gemini 3.5 Flash**, the model uses reasoning context from all previous turns when thought signatures are present in the conversation history.
+  - Earlier models do not use reasoning context from previous turns in the same manner.
+- **If there are function calls in a response** :
   - Gemini 3 will always have the signature on the first function call part. It is **mandatory** to return that part.
   - Gemini 2.5 will have the signature in the first part (regardless of type). It is **optional** to return that part.
-- If there are no function calls in a response,
+- **If there are no function calls in a response** :
   - Gemini 3 will have the signature on the last part if the model generates a thought.
   - Gemini 2.5 won't have a signature in any part.
 

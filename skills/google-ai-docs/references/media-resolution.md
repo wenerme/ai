@@ -134,7 +134,7 @@ includes both global and [per-part settings](https://ai.google.dev/gemini-api/do
     )
 
     response = client.models.generate_content(
-        model='gemini-3-flash-preview',
+        model='gemini-3.5-flash',
         contents=["Describe this image:", image_part],
         config=config
     )
@@ -151,7 +151,7 @@ includes both global and [per-part settings](https://ai.google.dev/gemini-api/do
        // ... (Image loading logic) ...
 
        const response = await ai.models.generateContent({
-          model: 'gemini-3-flash-preview',
+          model: 'gemini-3.5-flash',
           contents: ["Describe this image:", imagePart],
           config: {
              mediaResolution: MediaResolution.MEDIA_RESOLUTION_HIGH
@@ -166,7 +166,7 @@ includes both global and [per-part settings](https://ai.google.dev/gemini-api/do
     # ... (Base64 encoding logic) ...
 
     curl -s -X POST \
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{

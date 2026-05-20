@@ -28,7 +28,7 @@ allows the model to generate and run code.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents="What is the sum of the first 50 prime numbers? "
         "Generate and run code for the calculation, and make sure you get all 50.",
         config=types.GenerateContentConfig(
@@ -51,7 +51,7 @@ allows the model to generate and run code.
     const ai = new GoogleGenAI({});
 
     let response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: [
         "What is the sum of the first 50 prime numbers? " +
           "Generate and run code for the calculation, and make sure you get all 50.",
@@ -103,7 +103,7 @@ allows the model to generate and run code.
 
         result, _ := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             genai.Text("What is the sum of the first 50 prime numbers? " +
                       "Generate and run code for the calculation, and make sure you get all 50."),
             config,
@@ -116,7 +116,7 @@ allows the model to generate and run code.
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d ' {"tools": [{"code_execution": {}}],
@@ -225,7 +225,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
     client = genai.Client()
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=[image, "Zoom into the expression pedals and tell me how many pedals are there?"],
         config=types.GenerateContentConfig(
             tools=[types.Tool(code_execution=types.ToolCodeExecution)]
@@ -256,7 +256,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
 
       // 2. Call the API with Code Execution enabled
       const result = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: [
           {
             inlineData: {
@@ -335,7 +335,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
         // 3. Generate Content
         result, err := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             []*genai.Content{
                 {
                     Parts: []*genai.Part{
@@ -374,7 +374,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
 ### REST
 
     IMG_URL="https://goo.gle/instrument-img"
-    MODEL="gemini-3-flash-preview"
+    MODEL="gemini-3.5-flash"
 
     MIME_TYPE=$(curl -sIL "$IMG_URL" | grep -i '^content-type:' | awk -F ': ' '{print $2}' | sed 's/\r$//' | head -n 1)
     if [[ -z "$MIME_TYPE" || ! "$MIME_TYPE" == image/* ]]; then
@@ -424,7 +424,7 @@ You can also use code execution as part of a chat.
     client = genai.Client()
 
     chat = client.chats.create(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         config=types.GenerateContentConfig(
             tools=[types.Tool(code_execution=types.ToolCodeExecution)]
         ),
@@ -453,7 +453,7 @@ You can also use code execution as part of a chat.
     const ai = new GoogleGenAI({});
 
     const chat = ai.chats.create({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       history: [
         {
           role: "user",
@@ -502,7 +502,7 @@ You can also use code execution as part of a chat.
 
         chat, _ := client.Chats.Create(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             config,
             nil,
         )
@@ -522,7 +522,7 @@ You can also use code execution as part of a chat.
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d '{"tools": [{"code_execution": {}}],

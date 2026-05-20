@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Configure Zero Trust access policies to protect my internal staging environment.  
+Add mTLS authentication and schema validation to protect my API endpoints.  
 ```
 
 ## Cloudflare platform access

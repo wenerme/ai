@@ -53,7 +53,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
     """
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=prompt,
         config={
             "response_format": {"text": {"mime_type": "application/json", "schema": Recipe.model_json_schema()}},
@@ -98,7 +98,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
     `;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: prompt,
       config: {
         responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(recipeSchema) } },
@@ -181,7 +181,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
 
         result, err := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             genai.Text(prompt),
             config,
         )
@@ -193,7 +193,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
@@ -317,7 +317,7 @@ concatenated to form the final, complete JSON object.
     prompt = "The new UI is incredibly intuitive and visually appealing. Great job. Add a very long summary to test streaming!"
 
     response_stream = client.models.generate_content_stream(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=prompt,
         config={
             "response_format": {"text": {"mime_type": "application/json", "schema": Feedback.model_json_schema()}},
@@ -342,7 +342,7 @@ concatenated to form the final, complete JSON object.
     });
 
     const stream = await ai.models.generateContentStream({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.5-flash",
       contents: prompt,
       config: {
         responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(feedbackSchema) } },
@@ -356,7 +356,7 @@ concatenated to form the final, complete JSON object.
 ## Structured outputs with tools
 
 > [!WARNING]
-> **Preview:** This feature is available only to Gemini 3 series models, `gemini-3.1-pro-preview` and `gemini-3-flash-preview`.
+> **Preview:** This feature is available only to Gemini 3 series models, `gemini-3.1-pro-preview` and `gemini-3.5-flash`.
 
 Gemini 3 lets you combine Structured Outputs with built-in tools, including
 [Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search),
@@ -519,7 +519,7 @@ The following models support structured output:
 |---|---|
 | Gemini 3.1 Flash-Lite | ✔️ |
 | Gemini 3.1 Pro Preview | ✔️ |
-| Gemini 3 Flash Preview | ✔️ |
+| Gemini 3.5 Flash | ✔️ |
 | Gemini 3.1 Flash-Lite Preview | ✔️ |
 | Gemini 2.5 Pro | ✔️ |
 | Gemini 2.5 Flash | ✔️ |

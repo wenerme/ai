@@ -38,7 +38,7 @@ bytes for processing:
 
     prompt = "Summarize this document"
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=[
             types.Part.from_bytes(
                 data=doc_data,
@@ -71,7 +71,7 @@ bytes for processing:
         ];
 
         const response = await ai.models.generateContent({
-            model: "gemini-3-flash-preview",
+            model: "gemini-3.5-flash",
             contents: contents
         });
         console.log(response.text);
@@ -123,7 +123,7 @@ bytes for processing:
 
         result, _ := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             contents,
             nil,
         )
@@ -151,7 +151,7 @@ bytes for processing:
     ENCODED_PDF=$(base64 $B64FLAGS "${DISPLAY_NAME}.pdf")
 
     # Generate content using the base64 encoded PDF
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=$GOOGLE_API_KEY" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GOOGLE_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
@@ -186,7 +186,7 @@ You can also read a PDF from a local file for processing:
 
     prompt = "Summarize this document"
     response = client.models.generate_content(
-      model="gemini-3-flash-preview",
+      model="gemini-3.5-flash",
       contents=[
           types.Part.from_bytes(
             data=filepath.read_bytes(),
@@ -214,7 +214,7 @@ You can also read a PDF from a local file for processing:
         ];
 
         const response = await ai.models.generateContent({
-            model: "gemini-3-flash-preview",
+            model: "gemini-3.5-flash",
             contents: contents
         });
         console.log(response.text);
@@ -258,7 +258,7 @@ You can also read a PDF from a local file for processing:
 
         result, _ := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             contents,
             nil,
         )
@@ -303,7 +303,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     prompt = "Summarize this document"
 
     response = client.models.generate_content(
-      model="gemini-3-flash-preview",
+      model="gemini-3.5-flash",
       contents=[sample_doc, prompt])
     print(response.text)
 
@@ -353,7 +353,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         }
 
         const response = await ai.models.generateContent({
-            model: 'gemini-3-flash-preview',
+            model: 'gemini-3.5-flash',
             contents: content,
         });
 
@@ -408,7 +408,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
         result, _ := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             contents,
             nil,
         )
@@ -458,7 +458,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     echo "file_uri: ${file_uri}"
 
     # Now generate content using that file
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=$GOOGLE_API_KEY" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GOOGLE_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
@@ -499,7 +499,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     prompt="Summarize this document"
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=[sample_file, "Summarize this document"])
     print(response.text)
 
@@ -543,7 +543,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         }
 
         const response = await ai.models.generateContent({
-            model: 'gemini-3-flash-preview',
+            model: 'gemini-3.5-flash',
             contents: content,
         });
 
@@ -586,7 +586,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
         result, _ := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             contents,
             nil,
         )
@@ -625,7 +625,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     echo file_uri=$file_uri
 
     # Now generate content using that file
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=$GOOGLE_API_KEY" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GOOGLE_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
@@ -704,7 +704,7 @@ prompt stays within the model's context window.
     prompt = "What is the difference between each of the main benchmarks between these two papers? Output these in a table."
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-3.5-flash",
         contents=[sample_pdf_1, sample_pdf_2, prompt]
     )
 
@@ -764,7 +764,7 @@ prompt stays within the model's context window.
         }
 
         const response = await ai.models.generateContent({
-            model: 'gemini-3-flash-preview',
+            model: 'gemini-3.5-flash',
             contents: content,
         });
 
@@ -830,7 +830,7 @@ prompt stays within the model's context window.
             genai.NewContentFromParts(promptParts, genai.RoleUser),
         }
 
-        modelName := "gemini-3-flash-preview"
+        modelName := "gemini-3.5-flash"
         result, _ := client.Models.GenerateContent(
             ctx,
             modelName,
@@ -901,7 +901,7 @@ prompt stays within the model's context window.
     file_uri_2=$(upload_pdf "${DOC_URL_2}" "${DISPLAY_NAME_2}")
 
     # Now generate content using both files
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=$GOOGLE_API_KEY" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GOOGLE_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{

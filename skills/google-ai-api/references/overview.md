@@ -1,5 +1,3 @@
-# Gemini API reference
-
 <br />
 
 > [!IMPORTANT]
@@ -33,7 +31,7 @@ Studio](https://aistudio.google.com/app/apikey).
 
 The following is an example request with the API key included in the header:
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -81,7 +79,7 @@ objects.
 
 The following shows a typical `generateContent` request body:
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -125,7 +123,7 @@ A simple text prompt consists of a `contents` array with a single `Content`
 object. That object's `parts` array, in turn, contains a single `Part` object
 with a `text` field.
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -146,7 +144,7 @@ with a `text` field.
 To provide both text and an image in a prompt, the `parts` array should contain
 two `Part` objects: one for the text, and one for the image `inline_data`.
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
@@ -174,7 +172,7 @@ between `user` and `model`.
 > [!NOTE]
 > **Note:** The client SDKs provide a chat interface that manages this list for you automatically. When using the REST API, you are responsible for maintaining the conversation history.
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -259,7 +257,7 @@ The following is series of **streaming** responses. Each response contains a
       "usageMetadata": {
         "promptTokenCount": ...
       },
-      "modelVersion": "gemini-2.5-flash-lite",
+      "modelVersion": "gemini-3.5-flash",
       "responseId": "mAitaLmkHPPlz7IPvtfUqQ4"
     }
 
@@ -282,7 +280,7 @@ The following is series of **streaming** responses. Each response contains a
       "usageMetadata": {
         "promptTokenCount": ...
       }
-      "modelVersion": "gemini-2.5-flash-lite",
+      "modelVersion": "gemini-3.5-flash",
       "responseId": "mAitaLmkHPPlz7IPvtfUqQ4"
     }
 

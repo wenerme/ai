@@ -1201,7 +1201,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 
@@ -3715,7 +3715,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `type: Literal["open_page"]`
 
-            The action type.
+            The action type. Always `open_page`.
 
             - `"open_page"`
 

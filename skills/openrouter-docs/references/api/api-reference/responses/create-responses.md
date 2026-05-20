@@ -709,65 +709,61 @@ components:
         - type
       description: The output from a function call execution
       title: FunctionCallOutputItem
-    ApplyPatchCallOperationOneOf0Type:
-      type: string
-      enum:
-        - create_file
-      title: ApplyPatchCallOperationOneOf0Type
-    ApplyPatchCallOperation0:
-      type: object
-      properties:
-        diff:
-          type: string
-        path:
-          type: string
-        type:
-          $ref: '#/components/schemas/ApplyPatchCallOperationOneOf0Type'
-      required:
-        - diff
-        - path
-        - type
-      title: ApplyPatchCallOperation0
-    ApplyPatchCallOperationOneOf1Type:
-      type: string
-      enum:
-        - update_file
-      title: ApplyPatchCallOperationOneOf1Type
-    ApplyPatchCallOperation1:
-      type: object
-      properties:
-        diff:
-          type: string
-        path:
-          type: string
-        type:
-          $ref: '#/components/schemas/ApplyPatchCallOperationOneOf1Type'
-      required:
-        - diff
-        - path
-        - type
-      title: ApplyPatchCallOperation1
-    ApplyPatchCallOperationOneOf2Type:
-      type: string
-      enum:
-        - delete_file
-      title: ApplyPatchCallOperationOneOf2Type
-    ApplyPatchCallOperation2:
-      type: object
-      properties:
-        path:
-          type: string
-        type:
-          $ref: '#/components/schemas/ApplyPatchCallOperationOneOf2Type'
-      required:
-        - path
-        - type
-      title: ApplyPatchCallOperation2
     ApplyPatchCallOperation:
       oneOf:
-        - $ref: '#/components/schemas/ApplyPatchCallOperation0'
-        - $ref: '#/components/schemas/ApplyPatchCallOperation1'
-        - $ref: '#/components/schemas/ApplyPatchCallOperation2'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - create_file
+              description: 'Discriminator value: create_file'
+            diff:
+              type: string
+            path:
+              type: string
+          required:
+            - type
+            - diff
+            - path
+          description: >-
+            The `create_file` variant of an `apply_patch_call.operation`.
+            Carries a V4A diff describing the new file contents.
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - delete_file
+              description: 'Discriminator value: delete_file'
+            path:
+              type: string
+          required:
+            - type
+            - path
+          description: >-
+            The `delete_file` variant of an `apply_patch_call.operation`.
+            Identifies the file to remove; no diff is required.
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - update_file
+              description: 'Discriminator value: update_file'
+            diff:
+              type: string
+            path:
+              type: string
+          required:
+            - type
+            - diff
+            - path
+          description: >-
+            The `update_file` variant of an `apply_patch_call.operation`.
+            Carries a V4A diff describing edits to an existing file.
+      discriminator:
+        propertyName: type
       description: >-
         The patch operation requested by an `apply_patch_call`. `create_file`
         and `update_file` carry a V4A diff; `delete_file` omits it.
@@ -4340,11 +4336,13 @@ components:
         - openrouter
         - firecrawl
         - exa
+        - parallel
       description: >-
         Which fetch engine to use. "auto" (default) uses native if the provider
         supports it, otherwise Exa. "native" forces the provider's built-in
         fetch. "exa" uses Exa Contents API. "openrouter" uses direct HTTP fetch.
-        "firecrawl" uses Firecrawl scrape (requires BYOK).
+        "firecrawl" uses Firecrawl scrape (requires BYOK). "parallel" uses the
+        Parallel extract API.
       title: WebFetchEngineEnum
     WebFetchServerToolConfig:
       type: object
@@ -4493,9 +4491,27 @@ components:
         OpenRouter built-in server tool: searches the web for current
         information
       title: WebSearchServerTool_OpenRouter
+    ApplyPatchEngineEnum:
+      type: string
+      enum:
+        - auto
+        - native
+        - openrouter
+      description: >-
+        Which apply_patch engine to use. "auto" (default) uses native
+        passthrough when the endpoint advertises native apply_patch support,
+        otherwise falls back to OpenRouter's HITL validator. "native" forces
+        native passthrough — when the endpoint does not support native, the
+        request falls back to HITL. "openrouter" always runs the HITL validator.
+        Native passthrough streams the diff incrementally via
+        `apply_patch_call_operation_diff.delta` events; HITL buffers the diff
+        for atomic delivery as a single delta.
+      title: ApplyPatchEngineEnum
     ApplyPatchServerToolConfig:
       type: object
-      properties: {}
+      properties:
+        engine:
+          $ref: '#/components/schemas/ApplyPatchEngineEnum'
       description: Configuration for the openrouter:apply_patch server tool
       title: ApplyPatchServerToolConfig
     ApplyPatchServerToolOpenRouterType:

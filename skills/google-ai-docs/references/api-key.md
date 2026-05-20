@@ -168,7 +168,7 @@ Below are examples for how you can provide an API key explicitly:
     client = genai.Client(api_key="YOUR_API_KEY")
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents="Explain how AI works in a few words"
+        model="gemini-3.5-flash", contents="Explain how AI works in a few words"
     )
     print(response.text)
 
@@ -180,7 +180,7 @@ Below are examples for how you can provide an API key explicitly:
 
     async function main() {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: "Explain how AI works in a few words",
       });
       console.log(response.text);
@@ -211,7 +211,7 @@ Below are examples for how you can provide an API key explicitly:
 
         result, err := client.Models.GenerateContent(
             ctx,
-            "gemini-3-flash-preview",
+            "gemini-3.5-flash",
             genai.Text("Explain how AI works in a few words"),
             nil,
         )
@@ -234,7 +234,7 @@ Below are examples for how you can provide an API key explicitly:
 
         GenerateContentResponse response =
             client.models.generateContent(
-                "gemini-3-flash-preview",
+                "gemini-3.5-flash",
                 "Explain how AI works in a few words",
                 null);
 
@@ -244,7 +244,7 @@ Below are examples for how you can provide an API key explicitly:
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: YOUR_API_KEY" \
       -X POST \

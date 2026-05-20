@@ -205,7 +205,7 @@ You can use OpenRouter with the official [Claude Code GitHub Action](https://git
 
 You can add a custom statusline to Claude Code that tracks your OpenRouter API costs in real-time. The statusline displays the provider, model, cumulative cost, and cache discounts for your session.
 
-![Claude Code statusline showing OpenRouter cost tracking](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/5bc3af530c4a0111317cbdcee893be444718c676f3f80bf0860141cffcb5ee1b/content/pages/guides/claude-code-statusline.png)
+![Claude Code statusline showing OpenRouter cost tracking](file:89b2f371-d072-4389-a9d3-92f107bec2e2)
 
 Download the statusline scripts from the [openrouter-examples repository](https://github.com/OpenRouterTeam/openrouter-examples/tree/main/claude-code), make them executable, and add the following to your `~/.claude/settings.json`:
 
