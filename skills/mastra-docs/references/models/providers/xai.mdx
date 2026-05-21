@@ -1,11 +1,11 @@
 ---
 title: "xAI | Models"
-description: "Use xAI models with Mastra. 16 models available."
+description: "Use xAI models with Mastra. 8 models available."
 ---
 
 # [xAI logo]xAI
 
-Access 16 xAI models through Mastra's model router. Authentication is handled automatically using the `XAI_API_KEY` environment variable.
+Access 8 xAI models through Mastra's model router. Authentication is handled automatically using the `XAI_API_KEY` environment variable.
 
 Learn more in the [xAI documentation](https://docs.x.ai/docs/models).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "xai/grok-2"
+  model: "xai/grok-4.20-0309-non-reasoning"
 });
 
 // Generate a response
@@ -38,78 +38,6 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "xai/grok-2",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 8192,
-    "inputCost": 2,
-    "outputCost": 10
-  },
-  {
-    "model": "xai/grok-2-1212",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 8192,
-    "inputCost": 2,
-    "outputCost": 10
-  },
-  {
-    "model": "xai/grok-2-latest",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 8192,
-    "inputCost": 2,
-    "outputCost": 10
-  },
-  {
-    "model": "xai/grok-2-vision",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 8192,
-    "maxOutput": 4096,
-    "inputCost": 2,
-    "outputCost": 10
-  },
-  {
-    "model": "xai/grok-2-vision-1212",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 8192,
-    "maxOutput": 4096,
-    "inputCost": 2,
-    "outputCost": 10
-  },
-  {
-    "model": "xai/grok-2-vision-latest",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 8192,
-    "maxOutput": 4096,
-    "inputCost": 2,
-    "outputCost": 10
-  },
-  {
     "model": "xai/grok-4.20-0309-non-reasoning",
     "imageInput": true,
     "audioInput": false,
@@ -118,8 +46,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 2000000,
     "maxOutput": 30000,
-    "inputCost": 2,
-    "outputCost": 6
+    "inputCost": 1.25,
+    "outputCost": 2.5
   },
   {
     "model": "xai/grok-4.20-0309-reasoning",
@@ -130,8 +58,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 2000000,
     "maxOutput": 30000,
-    "inputCost": 2,
-    "outputCost": 6
+    "inputCost": 1.25,
+    "outputCost": 2.5
   },
   {
     "model": "xai/grok-4.20-multi-agent-0309",
@@ -142,8 +70,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 2000000,
     "maxOutput": 30000,
-    "inputCost": 2,
-    "outputCost": 6
+    "inputCost": 1.25,
+    "outputCost": 2.5
   },
   {
     "model": "xai/grok-4.3",
@@ -156,18 +84,6 @@ for await (const chunk of stream) {
     "maxOutput": 30000,
     "inputCost": 1.25,
     "outputCost": 2.5
-  },
-  {
-    "model": "xai/grok-beta",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 4096,
-    "inputCost": 5,
-    "outputCost": 15
   },
   {
     "model": "xai/grok-build-0.1",
@@ -188,7 +104,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 1024,
+    "contextWindow": 8000,
     "maxOutput": null,
     "inputCost": null,
     "outputCost": null
@@ -200,7 +116,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 1024,
+    "contextWindow": 8000,
     "maxOutput": null,
     "inputCost": null,
     "outputCost": null
@@ -209,25 +125,13 @@ for await (const chunk of stream) {
     "model": "xai/grok-imagine-video",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": true,
+    "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 1024,
     "maxOutput": null,
     "inputCost": null,
     "outputCost": null
-  },
-  {
-    "model": "xai/grok-vision-beta",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 8192,
-    "maxOutput": 4096,
-    "inputCost": 5,
-    "outputCost": 15
   }
 ]}
 />
@@ -241,7 +145,7 @@ const agent = new Agent({
   id: "custom-agent",
   name: "custom-agent",
   model: {
-    id: "xai/grok-2",
+    id: "xai/grok-4.20-0309-non-reasoning",
     apiKey: process.env.XAI_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -259,8 +163,8 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "xai/grok-vision-beta"
-      : "xai/grok-2";
+      ? "xai/grok-imagine-video"
+      : "xai/grok-4.20-0309-non-reasoning";
   }
 });
 ```

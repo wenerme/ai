@@ -83,9 +83,3 @@ FROM db_name.table_name
 CANCEL ALTER TABLE ROLLUP
 FROM db_name.table_name (jobid,...)
 ```
-
-4. Cancel ALTER CLUSTER operation
-
-```sql
-(To be implemented...)
-```

@@ -228,15 +228,17 @@ If you are still running into concurrency limits you can [request a higher limit
 
 ### Does Cloudflare store or retain the HTML content I submit for rendering?
 
-No. Cloudflare processes content ephemerally and does not retain customer-submitted HTML or generated output (such as PDFs or screenshots) beyond what is required to perform the rendering operation. Once the response is returned, the content is immediately discarded from the rendering environment.
+For [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) (except the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)), [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), and [CDP](https://developers.cloudflare.com/browser-run/cdp/), Cloudflare processes content ephemerally and does not retain customer-submitted HTML or generated output (such as PDFs or screenshots) beyond what is required to perform the rendering operation. Once the response is returned, the content is immediately discarded from the rendering environment.
 
-This applies to all integration methods, including [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/), [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), and [CDP](https://developers.cloudflare.com/browser-run/cdp/).
+The [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) is an exception. Because crawl jobs run asynchronously, job results (including crawled page content in HTML, Markdown, or JSON format) are stored for 14 days after the job completes, after which the data is deleted. Crawl jobs have a maximum run time of seven days.
 
 ### Is there any temporary caching of submitted content?
 
-For [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/), generated content is cached by default for five seconds (configurable up to one day via the `cacheTTL` parameter, or set to `0` to disable caching). This cache protects against repeated requests for the same URL by the same account. Customer-submitted HTML content itself is not cached.
+For [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) (except the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)), generated content is cached by default for five seconds (configurable up to one day via the `cacheTTL` parameter, or set to `0` to disable caching). This cache protects against repeated requests for the same URL by the same account. Customer-submitted HTML content itself is not cached.
 
 For [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), and [CDP](https://developers.cloudflare.com/browser-run/cdp/), no caching is used. Content exists only in memory for the duration of the rendering operation and is discarded immediately after the response is returned.
+
+For the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/), all crawl job results are stored in R2 for 14 days after completion.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/faq/","name":"FAQ"}}]}

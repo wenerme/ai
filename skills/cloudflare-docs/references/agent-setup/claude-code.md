@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.  
 ```
 
 ## Cloudflare platform access

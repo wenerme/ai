@@ -97,3 +97,4 @@ DESC test_table;
 | name    | varchar(20) | Yes  | false | NULL    | NONE  |
 | age     | int         | Yes  | false | NULL    | NONE  |
 +---------+-------------+------+-------+---------+-------+
+```

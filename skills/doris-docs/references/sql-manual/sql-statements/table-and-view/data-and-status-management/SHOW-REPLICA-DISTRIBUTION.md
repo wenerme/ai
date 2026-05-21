@@ -86,7 +86,7 @@ The user executing this SQL command must have at least the following privileges:
 
 ## Examples
 
-- 查看表的副本分布
+- View the replica distribution of a table
 
   ```sql
   SHOW REPLICA DISTRIBUTION FROM sell_user;
@@ -103,7 +103,7 @@ The user executing this SQL command must have at least the following privileges:
   SizePercent: 100.00%
   ```
 
-- 查看表的分区的副本分布
+- View the replica distribution of a table's partitions
 
   ```sql
   SHOW REPLICA DISTRIBUTION FROM db1.tbl1 PARTITION(p1, p2);

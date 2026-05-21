@@ -338,10 +338,10 @@
   "anthropic-docs/agents-and-tools/tool-use/fine-grained-tool-streaming.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/fine-grained-tool-streaming",
     "skill": "anthropic-docs",
-    "etag": "W/\"2dd3-19e1979f6e0\"",
-    "lastModified": "Mon, 11 May 2026 23:58:04 GMT",
-    "size": 11731,
-    "updatedAt": "2026-05-12T00:25:27.340Z"
+    "etag": "W/\"758b-19e482b0f10\"",
+    "lastModified": "Thu, 21 May 2026 01:34:02 GMT",
+    "size": 30091,
+    "updatedAt": "2026-05-21T11:04:31.176Z"
   },
   "anthropic-docs/build-with-claude/context-windows.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
@@ -682,10 +682,10 @@
   "anthropic-docs/managed-agents/events-and-streaming.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/events-and-streaming",
     "skill": "anthropic-docs",
-    "etag": "W/\"dc3b-19e475008c0\"",
-    "lastModified": "Wed, 20 May 2026 21:34:48 GMT",
-    "size": 56379,
-    "updatedAt": "2026-05-21T00:30:07.036Z"
+    "etag": "W/\"db3b-19e482b0f10\"",
+    "lastModified": "Thu, 21 May 2026 01:34:02 GMT",
+    "size": 56123,
+    "updatedAt": "2026-05-21T11:04:45.153Z"
   },
   "anthropic-docs/managed-agents/webhooks.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/webhooks",

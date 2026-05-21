@@ -1,3 +1,5 @@
+# Batch API
+
 The Gemini API supports batch APIs, which let you process multiple requests in a single call. For more details, see the [Batch API guide](https://ai.google.dev/gemini-api/docs/batch-api).
 
 ## Method: models.batchGenerateContent
@@ -339,34 +341,15 @@ This name should match a model name returned by the `ListModels` method.
 
 Format: `models/{model}`
 `content` ``object (`https://ai.google.dev/api/caching#Content`)`` Required. The content to embed. Only the `parts.text` fields will be counted.
-`taskType
-(deprecated)` ``enum (`https://ai.google.dev/api/embeddings#v1beta.TaskType`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-Optional. Deprecated: Please use EmbedContentConfig.task_type instead. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
-`title
-(deprecated)` `string`
-
-> [!WARNING]
-> This item is deprecated!
-
-Optional. Deprecated: Please use EmbedContentConfig.title instead. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`.
+`taskType` ``enum (`https://ai.google.dev/api/embeddings#v1beta.TaskType`)`` Optional. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
+`title` `string` Optional. An optional title for the text. Only applicable when TaskType is `RETRIEVAL_DOCUMENT`.
 
 Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embeddings for retrieval.
-`outputDimensionality
-(deprecated)` `integer`
-
-> [!WARNING]
-> This item is deprecated!
-
-Optional. Deprecated: Please use EmbedContentConfig.output_dimensionality instead. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
-`embedContentConfig` ``object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentConfig`)`` Optional. Configuration for the EmbedContent request.
+`outputDimensionality` `integer` Optional. Optional reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end. Supported by newer models since 2024 only. You cannot set this value if using the earlier model (`models/embedding-001`).
 
 | JSON representation |
 |---|
-| ``` { "model": string, "content": { object (`https://ai.google.dev/api/caching#Content`) }, "taskType": enum (`https://ai.google.dev/api/embeddings#v1beta.TaskType`), "title": string, "outputDimensionality": integer, "embedContentConfig": { object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentConfig`) } } ``` |
+| ``` { "model": string, "content": { object (`https://ai.google.dev/api/caching#Content`) }, "taskType": enum (`https://ai.google.dev/api/embeddings#v1beta.TaskType`), "title": string, "outputDimensionality": integer } ``` |
 
 ## REST Resource: batches
 

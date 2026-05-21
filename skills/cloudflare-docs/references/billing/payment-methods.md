@@ -13,7 +13,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Payment methods
 
 * [ Instant Bank Payments via Link ](https://developers.cloudflare.com/billing/payment-methods/instant-bank-payments-link/)
-* [ Backup payment method auto-retry ](https://developers.cloudflare.com/billing/payment-methods/backup-payment-method-auto-retry/)
+* [ Additional payment method auto-retry ](https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/payment-methods/","name":"Payment methods"}}]}

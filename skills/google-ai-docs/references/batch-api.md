@@ -1,3 +1,5 @@
+# Batch API
+
 > [!WARNING]
 > **Ongoing incident:** The Batch API is currently experiencing an issue causing batch jobs to randomly fail. Our team is actively investigating.
 

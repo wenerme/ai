@@ -1,11 +1,11 @@
 ---
 title: "Scaleway | Models"
-description: "Use Scaleway models with Mastra. 16 models available."
+description: "Use Scaleway models with Mastra. 17 models available."
 ---
 
 # [Scaleway logo]Scaleway
 
-Access 16 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
+Access 17 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
 
 Learn more in the [Scaleway documentation](https://www.scaleway.com/en/docs/generative-apis/).
 
@@ -122,6 +122,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.9,
     "outputCost": 0.9
+  },
+  {
+    "model": "scaleway/mistral-medium-3.5-128b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 16384,
+    "inputCost": 1.5,
+    "outputCost": 7.5
   },
   {
     "model": "scaleway/mistral-nemo-instruct-2407",

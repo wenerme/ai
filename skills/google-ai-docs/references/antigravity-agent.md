@@ -1,3 +1,5 @@
+# Antigravity Agent
+
 The Antigravity agent is a general-purpose managed agent on the Gemini API. A single API call gives you an agent that reasons, executes code, manages files, and browses the web inside your own secure Linux sandbox, hosted by Google.
 
 It is powered by Gemini 3.5 Flash and uses the same harness as the Antigravity IDE. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions) and [Google AI Studio](https://aistudio.google.com).

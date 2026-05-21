@@ -9658,10 +9658,10 @@
   "codex-docs/enterprise/managed-configuration.md": {
     "url": "https://developers.openai.com/codex/enterprise/managed-configuration.md",
     "skill": "codex-docs",
-    "etag": "W/\"90e71d142e6ddd82be0065a95d4871e3\"",
-    "lastModified": "Mon, 18 May 2026 21:50:49 GMT",
-    "size": 15970,
-    "updatedAt": "2026-05-19T00:41:09.490Z"
+    "etag": "W/\"f10c2df71e20f2e255822344eec64bb7\"",
+    "lastModified": "Thu, 21 May 2026 11:18:27 GMT",
+    "size": 16098,
+    "updatedAt": "2026-05-21T11:18:27.973Z"
   },
   "codex-docs/feature-maturity.md": {
     "url": "https://developers.openai.com/codex/feature-maturity.md",

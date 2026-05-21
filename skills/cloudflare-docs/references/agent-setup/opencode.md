@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Check my Workers deployment logs for errors and suggest fixes.  
+Build a serverless AI inference endpoint on Workers AI with streaming responses.  
 ```
 
 ## Cloudflare platform access

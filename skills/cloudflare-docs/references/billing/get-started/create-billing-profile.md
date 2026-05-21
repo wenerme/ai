@@ -22,16 +22,19 @@ Customers on an [Enterprise plan ↗](https://www.cloudflare.com/plans/enterpris
 
 1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
-2. Select **Payment**. If no payment method is on file, the **Payment methods** dialog opens automatically.
-3. Select **Manage** next to your current payment method. The **Manage payment methods** dialog opens.
-4. Enter the required information based on the payment options below:**Credit card**:  
-   1. Enter the required information under the **Credit Card Details** form.  
-   2. If applicable, add your business information to your invoice, including your **Company** and **VAT/GST Number**.  
-**PayPal** (Your credit card will be charged if you have insufficient funds in your PayPal account):  
-   1. Select the **PayPal**.  
-   2. Follow the online instructions until PayPal returns you to the Cloudflare **Payment Method** to continue your set-up.  
+2. Go to the **Subscriptions** page and open the **Payment methods** panel.
+3. Select **Add Payment Method**. If no payment method is on file, the dialog opens automatically.
+4. Choose a payment option and enter the required details:  
+**Card** (Visa, Mastercard, American Express, Discover, UnionPay):  
+   1. Enter your card details.  
+   2. Complete 3D Secure authentication if your card issuer requires it.  
+   3. If applicable, add your business information for your invoice, including your **Company** and **VAT/GST Number**.  
+**PayPal** (your linked card or bank is charged if you have insufficient funds in your PayPal account):  
+   1. Select **PayPal**.  
+   2. Follow the online instructions until PayPal returns you to the Cloudflare **Payment Method** form to continue setup.  
    3. Verify your **PayPal username** now appears next to the PayPal logo.  
-   4. Add your account contact information as well as **Company** and **VAT/GST Number**, if applicable.
+   4. Add your account contact information as well as **Company** and **VAT/GST Number**, if applicable.  
+**Wallets**: Apple Pay, Google Pay, Link, and [Instant Bank Payments via Link](https://developers.cloudflare.com/billing/payment-methods/instant-bank-payments-link/) (US-based self-serve accounts) are also available.
 
 Note
 
@@ -39,13 +42,13 @@ Because some countries tax goods and services on personal accounts, you may be a
 
 1. Review the payment method and contact information to ensure it is accurate.
 2. To finish, select **Confirm**.
-3. Ensure your new payment method appears in the **Payment Method** section.
+3. Ensure your new payment method appears in the **Payment methods** panel.
 
 Enterprise customers must email [ar@cloudflare.com](mailto:ar@cloudflare.com) with the last four digits of the credit card and its expiration date.
 
-## Add a backup payment method
+## Add an additional payment method
 
-Optionally, add a backup payment method to use if the primary payment method fails.
+Optionally, add an additional payment method. Cloudflare automatically retries the charge on the additional method if the primary method fails. Refer to [Additional payment method auto-retry](https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/) for details.
 
 Note
 
@@ -55,11 +58,11 @@ If you are unable to add or edit a payment method, [delete a payment method](htt
 
 1. In the Cloudflare dashboard, go to the **Billing** page.  
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
-2. Select **Payment**.
-3. From **Payment methods**, select **Manage**.
-4. From **Backup**, select **Add** to enter a backup payment method.
-5. Enter the required information based on your preferred payment method (credit card or PayPal) and select **Confirm**.
-6. To make the backup payment method the primary method, select **Make primary payment method**.
+2. Go to the **Subscriptions** page and open the **Payment methods** panel.
+3. Select **Add Payment Method**.
+4. Enter card details or select a supported wallet. Complete 3D Secure authentication if your card issuer requires it.
+5. Confirm the billing address and select **Save**.
+6. To make the additional payment method the primary method, select **Make primary payment method**.
 
 ## Payment options
 

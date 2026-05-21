@@ -1,9 +1,9 @@
 {
   "admin-setup.md": {
     "url": "https://code.claude.com/docs/en/admin-setup",
-    "lastModified": "Wed, 13 May 2026 23:29:07 GMT",
-    "size": 16247,
-    "updatedAt": "2026-05-14T00:27:11.581Z"
+    "lastModified": "Thu, 21 May 2026 04:49:40 GMT",
+    "size": 17134,
+    "updatedAt": "2026-05-21T11:03:28.295Z"
   },
   "agent-teams.md": {
     "url": "https://code.claude.com/docs/en/agent-teams",
@@ -61,9 +61,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"2b8bd49c544f6b60ea570f4d1fd52123f6693c8ceec367645d32491b85254df8\"",
-    "size": 318677,
-    "updatedAt": "2026-05-20T00:30:05.681Z"
+    "etag": "W/\"1d90d94c3001e27eeffbd680995d74b7441b23e9ede1caf646f341ffd43b9fb1\"",
+    "size": 320379,
+    "updatedAt": "2026-05-21T11:04:17.127Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -283,15 +283,15 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Wed, 20 May 2026 23:46:21 GMT",
-    "size": 191462,
-    "updatedAt": "2026-05-21T00:29:17.548Z"
+    "lastModified": "Thu, 21 May 2026 04:48:59 GMT",
+    "size": 194074,
+    "updatedAt": "2026-05-21T11:03:55.698Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
-    "lastModified": "Tue, 19 May 2026 22:04:32 GMT",
-    "size": 55457,
-    "updatedAt": "2026-05-20T00:29:46.948Z"
+    "lastModified": "Thu, 21 May 2026 04:50:10 GMT",
+    "size": 55651,
+    "updatedAt": "2026-05-21T11:03:56.053Z"
   },
   "how-claude-code-works.md": {
     "url": "https://code.claude.com/docs/en/how-claude-code-works",
@@ -385,9 +385,9 @@
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
-    "lastModified": "Tue, 19 May 2026 22:04:41 GMT",
-    "size": 32224,
-    "updatedAt": "2026-05-20T00:29:52.289Z"
+    "lastModified": "Thu, 21 May 2026 04:50:14 GMT",
+    "size": 33555,
+    "updatedAt": "2026-05-21T11:04:01.753Z"
   },
   "platforms.md": {
     "url": "https://code.claude.com/docs/en/platforms",
@@ -487,9 +487,9 @@
   },
   "settings.md": {
     "url": "https://code.claude.com/docs/en/settings",
-    "lastModified": "Tue, 19 May 2026 21:57:45 GMT",
-    "size": 127481,
-    "updatedAt": "2026-05-20T00:29:56.957Z"
+    "lastModified": "Thu, 21 May 2026 04:53:12 GMT",
+    "size": 130289,
+    "updatedAt": "2026-05-21T11:04:07.801Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",

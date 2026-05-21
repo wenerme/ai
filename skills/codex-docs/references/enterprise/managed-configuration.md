@@ -201,8 +201,11 @@ configuration.
 ```toml
 [permissions.filesystem]
 deny_read = [
-  "/Users/alice/.ssh",
-  "./private/**/*.txt",
+  # values can be absolute paths...
+  "/**/*.env",
+  # ...or relative to $HOME/%USERPROFILE% using `~`.
+  "~/.ssh",
+  # But relative paths starting with `./` are not allowed.
 ]
 ```
 
