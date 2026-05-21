@@ -77,6 +77,7 @@ openai responses create \
   --input "Say hello in one sentence."
 ```
 
+
 Output:
 
 ```json
@@ -130,6 +131,7 @@ $(cat ./note.md)
   --transform 'output.#(type=="message").content.0.text'
 ```
 
+
 Output:
 
 ```text
@@ -181,6 +183,7 @@ When the prompt itself needs shell assembly, build a YAML body and pipe it into 
   --transform 'output.#(type=="message").content.0.text'
 ```
 
+
 ### Write structured data to JSON
 
 Use structured outputs when downstream scripts need stable JSON. Save reusable schemas to disk:
@@ -215,6 +218,7 @@ openai responses create \
   --format yaml \
   --transform 'output.#(type=="message").content.0.text'
 ```
+
 
 Output:
 
@@ -301,6 +305,7 @@ input: |
   Return three concise bullets and cite sources in the text.
 YAML
 ```
+
 
 Output:
 

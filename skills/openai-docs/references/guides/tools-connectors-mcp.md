@@ -19,7 +19,7 @@ This guide will show how to use both remote MCP servers and connectors to give t
 
 ## Secure MCP Tunnel
 
-If your MCP server is private, use [Secure MCP Tunnel](https://developers.openai.com/api/docs/guides/secure-mcp-tunnels) to connect it to supported OpenAI products without exposing the server to the public internet. Download the latest public release from [openai/tunnel-client](https://github.com/openai/tunnel-client/releases/latest).
+If your MCP server is private, on-premises, or behind a firewall, use [Secure MCP Tunnel](https://developers.openai.com/api/docs/guides/secure-mcp-tunnels) to connect it to supported OpenAI products without exposing the server to the public internet. Download the latest public release from [openai/tunnel-client](https://github.com/openai/tunnel-client/releases/latest).
 
 ## Quickstart
 
@@ -124,7 +124,7 @@ Console.WriteLine(response.GetOutputText());
 
     It is very important that developers trust any remote MCP server they use with
         the Responses API. A malicious server can exfiltrate sensitive data from
-        anything that enters the model's context. Carefully review the{" "}
+        anything that enters the model's context. Carefully review the 
         <strong>Risks and Safety</strong> section below before using this tool.
 
   </div>
@@ -1183,6 +1183,20 @@ If you are using [tool search](https://developers.openai.com/api/docs/guides/too
 
 When you defer loading an MCP server, the model can still use the MCP server's label and description to decide when to search it, but the individual function definitions are loaded only when needed. This can help reduce overall token usage, and it is most useful for MCP servers that expose large numbers of functions.
 
+```json
+{
+    "type": "mcp",
+    "server_label": "dmcp",
+    "server_description": "A Dungeons and Dragons MCP server to assist with dice rolling.",
+    "server_url": "https://dmcp-server.deno.dev/sse",
+// highlight-start:subtle
+    "defer_loading": true,
+// highlight-end
+    "require_approval": "never"
+}
+```
+
+
 ## Risks and safety
 
 The MCP tool permits you to connect OpenAI models to external services. This is a powerful feature that comes with some risks.
@@ -1232,7 +1246,7 @@ In other words, if you're an organization with Data Residency in Europe, OpenAI 
 <table>
   <tbody>
 
-{" "}
+ 
 
 <tr>
   <th>API Availability</th>

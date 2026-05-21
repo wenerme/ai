@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Check my Workers deployment logs for errors and suggest fixes.  
+Build an image upload and transformation service using R2 and Cloudflare Images.  
 ```
 
 1. **Download Codex**  

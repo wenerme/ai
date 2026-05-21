@@ -1,7 +1,7 @@
 # Key concepts
 
 At OpenAI, protecting user data is fundamental to our mission. We do not train
-  our models on inputs and outputs through our API. Learn more on our{" "}
+  our models on inputs and outputs through our API. Learn more on our 
   <a href="https://openai.com/api-data-privacy">API data privacy page</a>.
 
 ## Text generation models

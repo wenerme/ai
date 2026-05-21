@@ -28,6 +28,42 @@ At the start of a request, the model still sees the name and description of what
 
 For maximum token savings, we recommend grouping deferred functions into namespaces or MCP servers with clear, high-level descriptions that give the model a strong overview of what is contained within them, so it can effectively search and load only the relevant functions. As a best practice, aim to keep each namespace to fewer than 10 functions for better token efficiency and model performance.
 
+```json
+{
+    "tools": [
+      {
+// highlight-start:subtle
+        "type": "namespace",
+// highlight-end
+        "name": "crm",
+        "description": "CRM tools for customer lookup and order management.",
+        "tools": [
+          {
+            "type": "function",
+            "name": "list_open_orders",
+            "description": "List open orders for a customer ID.",
+// highlight-start:subtle
+            "defer_loading": true,
+// highlight-end
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "customer_id": { "type": "string" }
+              },
+              "required": ["customer_id"],
+              "additionalProperties": false
+            }
+          }
+        ]
+      },
+      {
+        "type": "tool_search"
+      }
+    ]
+  }
+```
+
+
 Namespaces can have a mix of tools that are deferred and not deferred. Tools without `defer_loading: true` are callable immediately, while deferred tools in the same namespace are loaded through tool search.
 
 ### Tool search types

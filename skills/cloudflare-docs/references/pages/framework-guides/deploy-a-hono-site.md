@@ -123,14 +123,6 @@ After deploying your site, you will receive a unique subdomain for your project 
 
 ## Related resources
 
-### Tutorials
-
-For more tutorials involving Hono and Cloudflare Pages, refer to the following resources:
-
-[Build a Staff Directory ApplicationBuild a staff directory using D1\. Users access employee info; admins add new employees within the app.](https://developers.cloudflare.com/d1/tutorials/build-a-staff-directory-app/)
-
-### Creator Interview
-
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/framework-guides/deploy-a-hono-site/","name":"Hono"}}]}
 ```

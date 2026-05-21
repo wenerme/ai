@@ -389,9 +389,8 @@ There are several concepts involved in building an app with the Assistants API, 
 
 ## Creating assistants
 
-We recommend using OpenAI's{" "}
-  <a href="/api/docs/models#gpt-4-turbo-and-gpt-4">latest models</a> with the
-  Assistants API for best results and maximum compatibility with tools.
+We recommend using OpenAI's <a href="/api/docs/models">latest models</a> with
+  the Assistants API for best results and maximum compatibility with tools.
 
 To get started, creating an Assistant only requires specifying the `model` to use. But you can further customize the behavior of the Assistant:
 

@@ -30,16 +30,16 @@ You can also employ inference optimizations like our [**Predicted outputs**](htt
 
 
 
-Other factors that affect inference speed are the amount of{" "}
-  <strong>compute</strong> you have available and any additional{" "}
+Other factors that affect inference speed are the amount of 
+  <strong>compute</strong> you have available and any additional 
   <strong>inference optimizations</strong> you employ. <br /> <br />
   Most people can't influence these factors directly, but if you're curious, and
-  have some control over your infra, <strong>faster hardware</strong> or{" "}
+  have some control over your infra, <strong>faster hardware</strong> or 
   <strong>running engines at a lower saturation</strong> may give you a modest
-  TPM boost. And if you're down in the trenches, there's a myriad of other{" "}
+  TPM boost. And if you're down in the trenches, there's a myriad of other 
   <a href="https://lilianweng.github.io/posts/2023-01-10-inference-optimization/">
     inference optimizations
-  </a>{" "}
+  </a> 
   that are a bit beyond the scope of this guide.
 
 

@@ -13,7 +13,7 @@ Determines whether two geometric shapes are completely disjoint (i.e., have no c
 > **info**: Note
 Supported since Apache Doris 3.0.6.
 
-## Sytax
+## Syntax
 
 ```sql
 ST_DISJOINT( <shape1>, <shape2> )
@@ -75,6 +75,7 @@ mysql> SELECT ST_Disjoint(ST_Linefromtext("LINESTRING (0 0, 10 10)"), ST_Point(1
 | ST_Disjoint(ST_Linefromtext("LINESTRING (0 0, 10 10)"), ST_Point(1, 2)) |
 +-------------------------------------------------------------------------+
 |                                                                       1 |
++-------------------------------------------------------------------------+
 ```
 
 Point and line intersect (point is on the line)

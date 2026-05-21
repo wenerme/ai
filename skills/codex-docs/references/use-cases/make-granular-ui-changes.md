@@ -61,7 +61,7 @@ You can use the [Codex Spark model](https://developers.openai.com/codex/models#g
 
 ## Pick your model
 
-For fast UI iteration, start with `gpt-5.3-codex-spark` if you have access to it. It is less capable that our general-purpose models, but is designed for real-time coding iteration. If you don't have access to it, use our latest model with `medium` or `low` reasoning effort.
+For fast UI iteration, start with `gpt-5.3-codex-spark` if you have access to it. It is less capable that our general-purpose models, but is designed for real-time coding iteration. If you don't have access to it, use `gpt-5.5` with `medium` or `low` reasoning effort.
 
 That tradeoff is useful for granular UI work. You usually do not need the deepest model to move a button, tune a breakpoint, or adjust a component state. You need a model that responds quickly, understands the local code, edits the right file, and can repeat the loop without making the iteration feel heavy.
 

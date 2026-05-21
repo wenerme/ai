@@ -16,6 +16,7 @@ OpenRouter currently supports the following plugins:
 | **Web Search** (deprecated) | Augment LLM responses with real-time web search results. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. | [Web Search](/docs/guides/features/plugins/web-search)             |
 | **PDF Inputs**              | Parse and extract content from uploaded PDF files                                                                                                              | [PDF Inputs](/docs/guides/overview/multimodal/pdfs)                |
 | **Response Healing**        | Automatically fix malformed JSON responses from LLMs                                                                                                           | [Response Healing](/docs/guides/features/plugins/response-healing) |
+| **Pareto Router**           | Set a default coding quality tier for the Pareto code router                                                                                                   | [Pareto Router](/docs/guides/routing/routers/pareto-router)        |
 | **Context Compression**     | Compress prompts that exceed a model's context window using middle-out truncation                                                                              | [Message Transforms](/docs/guides/features/message-transforms)     |
 
 ## Enabling Plugins via API

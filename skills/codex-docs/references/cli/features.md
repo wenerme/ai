@@ -101,11 +101,9 @@ remote-control support enabled.
 
 ## Models and reasoning
 
-For most tasks in Codex, `gpt-5.5` is the recommended model when it's
-available. It's OpenAI's newest frontier model for complex coding, computer
+For most tasks in Codex, `gpt-5.5` is the recommended model. It is OpenAI's newest frontier model for complex coding, computer
 use, knowledge work, and research workflows, with stronger planning, tool use,
-and follow-through on multi-step tasks. If `gpt-5.5` isn't yet available,
-continue using `gpt-5.4`. For extra fast tasks, ChatGPT Pro subscribers have
+and follow-through on multi-step tasks. For extra fast tasks, ChatGPT Pro subscribers have
 access to the GPT-5.3-Codex-Spark model in research preview.
 
 Switch models mid-session with the `/model` command, or specify one when launching the CLI.
@@ -113,6 +111,7 @@ Switch models mid-session with the `/model` command, or specify one when launchi
 ```bash
 codex --model gpt-5.5
 ```
+
 
 [Learn more about the models available in Codex](https://developers.openai.com/codex/models).
 

@@ -1,6 +1,6 @@
 # Prompt optimizer
 
-The [prompt optimizer](https://platform.openai.com/chat/edit?models=gpt-5&optimize=true) is a chat interface in the dashboard, where you enter a prompt, and we optimize it according to current best practices before returning it to you. Pairing the prompt optimizer with [datasets](https://developers.openai.com/api/docs/guides/evaluation-getting-started) is a powerful way to automatically improve prompts.
+The [prompt optimizer](https://platform.openai.com/chat/edit?optimize=true) is a chat interface in the dashboard, where you enter a prompt, and we optimize it according to current best practices before returning it to you. Pairing the prompt optimizer with [datasets](https://developers.openai.com/api/docs/guides/evaluation-getting-started) is a powerful way to automatically improve prompts.
 
 ## Prepare your data
 

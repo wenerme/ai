@@ -31,6 +31,7 @@ project
 - [`members`](members/_index.md)
 - [`mirror`](mirror.md)
 - [`publish`](publish/_index.md)
+- [`remote`](remote/_index.md)
 - [`search`](search.md)
 - [`transfer`](transfer.md)
 - [`update`](update.md)

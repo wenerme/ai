@@ -113,13 +113,13 @@ The web fetch tool accepts optional `parameters` to customize behavior:
 }
 ```
 
-| Parameter            | Type      | Default | Description                                                                       |
-| -------------------- | --------- | ------- | --------------------------------------------------------------------------------- |
-| `engine`             | string    | `auto`  | Fetch engine to use: `auto`, `native`, `exa`, `openrouter`, or `firecrawl`        |
-| `max_uses`           | integer   | —       | Maximum fetches per request. Once exceeded, the tool returns an error             |
-| `max_content_tokens` | integer   | —       | Maximum content length in approximate tokens. Content exceeding this is truncated |
-| `allowed_domains`    | string\[] | —       | Only fetch from these domains                                                     |
-| `blocked_domains`    | string\[] | —       | Never fetch from these domains                                                    |
+| Parameter            | Type      | Default | Description                                                                            |
+| -------------------- | --------- | ------- | -------------------------------------------------------------------------------------- |
+| `engine`             | string    | `auto`  | Fetch engine to use: `auto`, `native`, `exa`, `openrouter`, `firecrawl`, or `parallel` |
+| `max_uses`           | integer   | —       | Maximum fetches per request. Once exceeded, the tool returns an error                  |
+| `max_content_tokens` | integer   | —       | Maximum content length in approximate tokens. Content exceeding this is truncated      |
+| `allowed_domains`    | string\[] | —       | Only fetch from these domains                                                          |
+| `blocked_domains`    | string\[] | —       | Never fetch from these domains                                                         |
 
 ## Engine Selection
 
@@ -133,15 +133,17 @@ The web fetch server tool supports multiple fetch engines:
 * **`openrouter`**: Uses direct HTTP fetch with content extraction
 * **`firecrawl`**: Uses [Firecrawl](https://firecrawl.dev)'s scrape API
   (BYOK — bring your own key)
+* **`parallel`**: Uses [Parallel](https://parallel.ai)'s extract API for
+  high-quality content extraction
 
 ### Engine Capabilities
 
-| Feature              | Exa                 | Firecrawl       | OpenRouter  | Native           |
-| -------------------- | ------------------- | --------------- | ----------- | ---------------- |
-| **Domain filtering** | Yes                 | Yes             | Yes         | Varies           |
-| **Token truncation** | Yes                 | Yes             | Yes         | No               |
-| **API key**          | Server-side or BYOK | BYOK (your key) | Server-side | Provider-handled |
-| **Hard limit**       | None                | None            | 50/request  | 50/request       |
+| Feature              | Exa                 | Parallel    | Firecrawl       | OpenRouter  | Native           |
+| -------------------- | ------------------- | ----------- | --------------- | ----------- | ---------------- |
+| **Domain filtering** | Yes                 | Yes         | Yes             | Yes         | Varies           |
+| **Token truncation** | Yes                 | Yes         | Yes             | Yes         | No               |
+| **API key**          | Server-side or BYOK | Server-side | BYOK (your key) | Server-side | Provider-handled |
+| **Hard limit**       | None                | None        | None            | 50/request  | 50/request       |
 
 ### Firecrawl (BYOK)
 
@@ -156,6 +158,7 @@ Firecrawl uses your own API key. To set it up:
 To prevent runaway costs:
 
 * **Exa engine**: No hard limit (billed via API credits)
+* **Parallel engine**: No hard limit (billed via API credits)
 * **Firecrawl engine**: No hard limit (uses your Firecrawl credits)
 * **OpenRouter/native engines**: Hard limit of 50 fetches per request
 
@@ -268,6 +271,7 @@ If the fetch fails, the response includes an error:
 | Engine         | Pricing                                                     |
 | -------------- | ----------------------------------------------------------- |
 | **Exa**        | \$1 per 1,000 fetches                                       |
+| **Parallel**   | \$1 per 1,000 fetches                                       |
 | **Firecrawl**  | Uses your Firecrawl credits directly — no OpenRouter charge |
 | **OpenRouter** | Free                                                        |
 | **Native**     | Passed through from the provider                            |

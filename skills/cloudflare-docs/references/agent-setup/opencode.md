@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.  
+Check my Workers deployment logs for errors and suggest fixes.  
 ```
 
 ## Cloudflare platform access

@@ -15,6 +15,7 @@ the left navigation under **SDK references**.
 
 The Gemini API is organized around the following major endpoints:
 
+- **Interactions ([`CreateInteraction`](https://ai.google.dev/api/interactions-api#CreateInteraction)) (Recommended):** The recommended standard primitive for building with Gemini, optimized for agentic workflows, server-side state management, and complex multi-modal, multi-turn conversations.
 - **Standard content generation ([`generateContent`](https://ai.google.dev/api/generate-content#method:-models.generatecontent)):** A standard REST endpoint that processes your request and returns the model's full response in a single package. This is best for non-interactive tasks where you can wait for the entire result.
 - **Streaming content generation ([`streamGenerateContent`](https://ai.google.dev/api/generate-content#method:-models.streamgeneratecontent)):** Uses Server-Sent Events (SSE) to push chunks of the response to you as they are generated. This provides a faster, more interactive experience for applications like chatbots.
 - **Live API ([`BidiGenerateContent`](https://ai.google.dev/api/live#send-messages)):** A stateful WebSocket-based API for bi-directional streaming, designed for real-time conversational use cases.

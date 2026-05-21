@@ -1058,7 +1058,7 @@ You can configure the following output options:
       <td>
         <ul>
           <li>
-            Maximum edge length must be less than or equal to{" "}
+            Maximum edge length must be less than or equal to 
             <code>3840px</code>
           </li>
           <li>
@@ -1068,7 +1068,7 @@ You can configure the following output options:
             Long edge to short edge ratio must not exceed <code>3:1</code>
           </li>
           <li>
-            Total pixels must be at least <code>655,360</code> and no more than{" "}
+            Total pixels must be at least <code>655,360</code> and no more than 
             <code>8,294,400</code>
           </li>
         </ul>

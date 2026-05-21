@@ -62,6 +62,20 @@ curl https://openrouter.ai/api/v1/chat/completions \
   }'
 ```
 
+## Default Settings
+
+Instead of passing the `pareto-router` plugin on every API request, you can configure a default `min_coding_score` in the dashboard:
+
+1. Navigate to [Settings > Plugins](https://openrouter.ai/settings/plugins)
+2. Find the **Pareto Router** row and click the configure (gear) icon
+3. Select a quality tier — **High**, **Medium**, or **Low** — or choose **Custom score** to enter a specific value between `0` and `1`
+4. Click **Save**
+5. Toggle the plugin **on** to apply it to all requests using `openrouter/pareto-code`
+
+Once enabled, the configured `min_coding_score` is automatically applied to every request that uses `openrouter/pareto-code`, without needing to include the `plugins` array in your API calls.
+
+You can still override the default on a per-request basis by passing the `pareto-router` plugin in your request's `plugins` array. To prevent per-request overrides, enable "Prevent overrides" in the plugin configuration.
+
 ## The `min_coding_score` parameter
 
 `min_coding_score` is an optional number between `0` and `1`, where `1` is best. The router maps it to one of three quality tiers, and each tier corresponds to a percentile band on [Artificial Analysis](https://artificialanalysis.ai/) coding scores.

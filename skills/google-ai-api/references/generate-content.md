@@ -1,5 +1,3 @@
-# Generating content
-
 The Gemini API supports content generation with images, audio, code, tools, and more. For details on each of these features, read on and check out the task-focused sample code, or read the comprehensive guides.
 
 - [Text generation](https://ai.google.dev/gemini-api/docs/text-generation)
@@ -77,7 +75,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents="Write a story about a magic backpack."
+        model="gemini-3.5-flash", contents="Write a story about a magic backpack."
     )
     print(response.text)
 
@@ -88,7 +86,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: "Write a story about a magic backpack.",
     });
     console.log(response.text);
@@ -106,7 +104,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     contents := []*genai.Content{
     	genai.NewContentFromText("Write a story about a magic backpack.", genai.RoleUser),
     }
-    response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -129,7 +127,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-2.0-flash",
+                    "gemini-3.5-flash",
                     "Write a story about a magic backpack.",
                     null);
 
@@ -145,7 +143,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     organ = PIL.Image.open(media / "organ.jpg")
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents=["Tell me about this instrument", organ]
+        model="gemini-3.5-flash", contents=["Tell me about this instrument", organ]
     )
     print(response.text)
 
@@ -160,7 +158,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: [
         createUserContent([
           "Tell me about this instrument", 
@@ -199,7 +197,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -249,7 +247,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                     Part.fromText("Tell me about this instrument."),
                     Part.fromBytes(imageData, "image/jpeg"));
 
-    GenerateContentResponse response = client.models.generateContent("gemini-2.0-flash", content, null);
+    GenerateContentResponse response = client.models.generateContent("gemini-3.5-flash", content, null);
 
     System.out.println(response.text());
 
@@ -262,7 +260,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_audio = client.files.upload(file=media / "sample.mp3")
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         contents=["Give me a summary of this audio file.", sample_audio],
     )
     print(response.text)
@@ -278,7 +276,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: [
         createUserContent([
           "Give me a summary of this audio file.",
@@ -319,7 +317,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -394,7 +392,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         myfile = client.files.get(name=myfile.name)
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents=[myfile, "Describe this video clip"]
+        model="gemini-3.5-flash", contents=[myfile, "Describe this video clip"]
     )
     print(f"{response.text=}")
 
@@ -417,7 +415,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: [
         createUserContent([
           "Describe this video clip",
@@ -470,7 +468,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -547,7 +545,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_pdf = client.files.upload(file=media / "test.pdf")
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         contents=["Give me a summary of this document:", sample_pdf],
     )
     print(f"{response.text=}")
@@ -583,7 +581,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -650,7 +648,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     # Pass initial history using the "history" argument
     chat = client.chats.create(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         history=[
             types.Content(role="user", parts=[types.Part(text="Hello")]),
             types.Content(
@@ -674,7 +672,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const chat = ai.chats.create({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       history: [
         {
           role: "user",
@@ -714,7 +712,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
     }
 
-    chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
+    chat, err := client.Chats.Create(ctx, "gemini-3.5-flash", nil, history)
     if err != nil {
     	log.Fatal(err)
     }
@@ -765,7 +763,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                     ).build();
 
     Chat chat = client.chats.create(
-            "gemini-2.0-flash",
+            "gemini-3.5-flash",
             GenerateContentConfig.builder()
                     .systemInstruction(userContent)
                     .systemInstruction(modelContent)
@@ -787,7 +785,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-1.5-flash-001"
+    model_name = "gemini-3.5-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -816,7 +814,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-1.5-flash-001";
+    const modelName = "gemini-3.5-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -849,7 +847,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	log.Fatal(err)
     }
 
-    modelName := "gemini-1.5-flash-001"
+    modelName := "gemini-3.5-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -913,7 +911,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     result = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         contents="List a few popular cookie recipes.",
         config=types.GenerateContentConfig(
             response_mime_type="application/json", response_schema=list[Recipe]
@@ -927,7 +925,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: "List a few popular cookie recipes.",
       config: {
         responseMimeType: "application/json",
@@ -979,7 +977,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     response, err := client.Models.GenerateContent(
     	ctx,
-    	"gemini-2.0-flash",
+    	"gemini-3.5-flash",
     	genai.Text("List a few popular cookie recipes."),
     	config,
     )
@@ -1043,7 +1041,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-2.0-flash",
+                    "gemini-3.5-flash",
                     "List a few popular cookie recipes.",
                     config);
 
@@ -1058,7 +1056,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-2.0-pro-exp-02-05",
+        model="gemini-3.5-flash",
         contents=(
             "Write and execute code that calculates the sum of the first 50 prime numbers. "
             "Ensure that only the executable code and its resulting output are generated."
@@ -1085,7 +1083,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     response, err := client.Models.GenerateContent(
     	ctx,
-    	"gemini-2.0-pro-exp-02-05",
+    	"gemini-3.5-flash",
     	genai.Text(
     		`Write and execute code that calculates the sum of the first 50 prime numbers.
     		 Ensure that only the executable code and its resulting output are generated.`,
@@ -1113,7 +1111,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-2.0-pro-exp-02-05",
+                    "gemini-3.5-flash",
                     prompt,
                     null);
 
@@ -1151,7 +1149,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     # Create a chat session; function calling (via tools) is enabled in the config.
     chat = client.chats.create(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         config=types.GenerateContentConfig(tools=[add, subtract, multiply, divide]),
     )
     response = chat.send_message(
@@ -1169,7 +1167,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    modelName := "gemini-2.0-flash"
+    modelName := "gemini-3.5-flash"
 
     // Create the function declarations for arithmetic operations.
     addDeclaration := createArithmeticToolDeclaration("addNumbers", "Return the result of adding two numbers.")
@@ -1389,7 +1387,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
       // Step 1: Call generateContent with function calling enabled.
       const generateContentResponse = await ai.models.generateContent({
-        model: "gemini-2.0-flash",
+        model: "gemini-3.5-flash",
         contents:
           "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
         config: {
@@ -1438,7 +1436,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       console.log("Function result:", resultValue);
 
       // Step 4: Use the chat API to send the result as the final answer.
-      const chat = ai.chats.create({ model: "gemini-2.0-flash" });
+      const chat = ai.chats.create({ model: "gemini-3.5-flash" });
       const chatResponse = await chat.sendMessage({
         message: "The final result is " + resultValue,
       });
@@ -1581,7 +1579,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-2.0-flash",
+                    "gemini-3.5-flash",
                     "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
                     config);
 
@@ -1618,7 +1616,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         contents="Tell me a story about a magic backpack.",
         config=types.GenerateContentConfig(
             candidate_count=1,
@@ -1636,7 +1634,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: "Tell me a story about a magic backpack.",
       config: {
         candidateCount: 1,
@@ -1666,7 +1664,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     response, err := client.Models.GenerateContent(
     	ctx,
-    	"gemini-2.0-flash",
+    	"gemini-3.5-flash",
     	genai.Text("Tell me a story about a magic backpack."),
     	&genai.GenerateContentConfig{
     		CandidateCount:  candidateCount,
@@ -1717,7 +1715,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-2.0-flash",
+                    "gemini-3.5-flash",
                     "Tell me a story about a magic backpack.",
                     config);
 
@@ -1736,7 +1734,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         "Write a ironic phrase about them including expletives."
     )
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         contents=unsafe_prompt,
         config=types.GenerateContentConfig(
             safety_settings=[
@@ -1766,7 +1764,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         "I support Martians Soccer Club and I think Jupiterians Football Club sucks! Write a ironic phrase about them including expletives.";
 
       const response = await ai.models.generateContent({
-        model: "gemini-2.0-flash",
+        model: "gemini-3.5-flash",
         contents: unsafePrompt,
         config: {
           safetySettings: [
@@ -1820,7 +1818,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     contents := []*genai.Content{
     	genai.NewContentFromText(unsafePrompt, genai.RoleUser),
     }
-    response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, config)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, config)
     if err != nil {
     	log.Fatal(err)
     }
@@ -1881,7 +1879,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-2.0-flash",
+                    "gemini-3.5-flash",
                     unsafePrompt,
                     config);
 
@@ -1902,7 +1900,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         contents="Good morning! How are you?",
         config=types.GenerateContentConfig(
             system_instruction="You are a cat. Your name is Neko."
@@ -1916,7 +1914,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: "Good morning! How are you?",
       config: {
         systemInstruction: "You are a cat. Your name is Neko.",
@@ -1945,7 +1943,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	SystemInstruction: genai.NewContentFromText("You are a cat. Your name is Neko.", genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, config)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, config)
     if err != nil {
     	log.Fatal(err)
     }
@@ -1976,7 +1974,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-2.0-flash",
+                    "gemini-3.5-flash",
                     "Good morning! How are you?",
                     config);
 
@@ -2043,7 +2041,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content_stream(
-        model="gemini-2.0-flash", contents="Write a story about a magic backpack."
+        model="gemini-3.5-flash", contents="Write a story about a magic backpack."
     )
     for chunk in response:
         print(chunk.text)
@@ -2056,7 +2054,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: "Write a story about a magic backpack.",
     });
     let text = "";
@@ -2080,7 +2078,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
     for response, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-2.0-flash",
+    	"gemini-3.5-flash",
     	contents,
     	nil,
     ) {
@@ -2103,7 +2101,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     ResponseStream<GenerateContentResponse> responseStream =
             client.models.generateContentStream(
-                    "gemini-2.0-flash",
+                    "gemini-3.5-flash",
                     "Write a story about a magic backpack.",
                     null);
 
@@ -2125,7 +2123,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     organ = PIL.Image.open(media / "organ.jpg")
     response = client.models.generate_content_stream(
-        model="gemini-2.0-flash", contents=["Tell me about this instrument", organ]
+        model="gemini-3.5-flash", contents=["Tell me about this instrument", organ]
     )
     for chunk in response:
         print(chunk.text)
@@ -2142,7 +2140,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     });
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: [
         createUserContent([
           "Tell me about this instrument", 
@@ -2185,7 +2183,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
     for response, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-2.0-flash",
+    	"gemini-3.5-flash",
     	contents,
     	nil,
     ) {
@@ -2233,7 +2231,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     ResponseStream<GenerateContentResponse> responseStream =
             client.models.generateContentStream(
-                    "gemini-2.0-flash",
+                    "gemini-3.5-flash",
                     content,
                     null);
 
@@ -2254,7 +2252,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_audio = client.files.upload(file=media / "sample.mp3")
     response = client.models.generate_content_stream(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         contents=["Give me a summary of this audio file.", sample_audio],
     )
     for chunk in response:
@@ -2294,7 +2292,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for result, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-2.0-flash",
+    	"gemini-3.5-flash",
     	contents,
     	nil,
     ) {
@@ -2371,7 +2369,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         myfile = client.files.get(name=myfile.name)
 
     response = client.models.generate_content_stream(
-        model="gemini-2.0-flash", contents=[myfile, "Describe this video clip"]
+        model="gemini-3.5-flash", contents=[myfile, "Describe this video clip"]
     )
     for chunk in response:
         print(chunk.text)
@@ -2396,7 +2394,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: [
         createUserContent([
           "Describe this video clip",
@@ -2455,7 +2453,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for result, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-2.0-flash",
+    	"gemini-3.5-flash",
     	contents,
     	nil,
     ) {
@@ -2531,7 +2529,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_pdf = client.files.upload(file=media / "test.pdf")
     response = client.models.generate_content_stream(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         contents=["Give me a summary of this document:", sample_pdf],
     )
 
@@ -2572,7 +2570,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for result, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-2.0-flash",
+    	"gemini-3.5-flash",
     	contents,
     	nil,
     ) {
@@ -2640,7 +2638,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     chat = client.chats.create(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         history=[
             types.Content(role="user", parts=[types.Part(text="Hello")]),
             types.Content(
@@ -2670,7 +2668,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const chat = ai.chats.create({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       history: [
         {
           role: "user",
@@ -2718,7 +2716,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromText("Hello", genai.RoleUser),
     	genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
     }
-    chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
+    chat, err := client.Chats.Create(ctx, "gemini-3.5-flash", nil, history)
     if err != nil {
     	log.Fatal(err)
     }
@@ -2821,15 +2819,16 @@ Fields `promptTokenCount` `integer` Number of tokens in the prompt. When `cached
 `candidatesTokenCount` `integer` Total number of tokens across all the generated response candidates.
 `toolUsePromptTokenCount` `integer` Output only. Number of tokens present in tool-use prompt(s).
 `thoughtsTokenCount` `integer` Output only. Number of tokens of thoughts for thinking models.
-`totalTokenCount` `integer` Total token count for the generation request (prompt + response candidates).
+`totalTokenCount` `integer` Total token count for the generation request (prompt + thoughts + response candidates).
 `promptTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were processed in the request input.
 `cacheTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities of the cached content in the request input.
 `candidatesTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were returned in the response.
 `toolUsePromptTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were processed for tool-use request inputs.
+`serviceTier` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`)`` Output only. Service tier of the request.
 
 | JSON representation |
 |---|
-| ``` { "promptTokenCount": integer, "cachedContentTokenCount": integer, "candidatesTokenCount": integer, "toolUsePromptTokenCount": integer, "thoughtsTokenCount": integer, "totalTokenCount": integer, "promptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "cacheTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "candidatesTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "toolUsePromptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ] } ``` |
+| ``` { "promptTokenCount": integer, "cachedContentTokenCount": integer, "candidatesTokenCount": integer, "toolUsePromptTokenCount": integer, "thoughtsTokenCount": integer, "totalTokenCount": integer, "promptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "cacheTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "candidatesTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "toolUsePromptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "serviceTier": enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`) } ``` |
 
 ## ModelStatus
 
@@ -3075,10 +3074,12 @@ Fields `customMetadata[]` ``object (`https://ai.google.dev/api/generate-content#
 `title` `string` Optional. Title of the document.
 `text` `string` Optional. Text of the chunk.
 `fileSearchStore` `string` Optional. Name of the `FileSearchStore` containing the document. Example: `fileSearchStores/123`
+`pageNumber` `integer` Optional. Page number of the retrieved context, if applicable.
+`mediaId` `string` Optional. The media blob resource name for multimodal file search results. Format: fileSearchStores/{file_search_store_id}/media/{blobId}
 
 | JSON representation |
 |---|
-| ``` { "customMetadata": [ { object (`https://ai.google.dev/api/generate-content#CustomMetadata`) } ], "uri": string, "title": string, "text": string, "fileSearchStore": string } ``` |
+| ``` { "customMetadata": [ { object (`https://ai.google.dev/api/generate-content#CustomMetadata`) } ], "uri": string, "title": string, "text": string, "fileSearchStore": string, "pageNumber": integer, "mediaId": string } ``` |
 
 ## CustomMetadata
 
@@ -3278,6 +3279,21 @@ License info is required for code citations.
 - [ImageConfig](https://ai.google.dev/api/generate-content#ImageConfig)
   - [JSON representation](https://ai.google.dev/api/generate-content#ImageConfig.SCHEMA_REPRESENTATION)
 - [MediaResolution](https://ai.google.dev/api/generate-content#MediaResolution)
+- [ResponseFormatConfig](https://ai.google.dev/api/generate-content#ResponseFormatConfig)
+  - [JSON representation](https://ai.google.dev/api/generate-content#ResponseFormatConfig.SCHEMA_REPRESENTATION)
+- [TextResponseFormat](https://ai.google.dev/api/generate-content#TextResponseFormat)
+  - [JSON representation](https://ai.google.dev/api/generate-content#TextResponseFormat.SCHEMA_REPRESENTATION)
+- [MimeType](https://ai.google.dev/api/generate-content#MimeType)
+- [AudioResponseFormat](https://ai.google.dev/api/generate-content#AudioResponseFormat)
+  - [JSON representation](https://ai.google.dev/api/generate-content#AudioResponseFormat.SCHEMA_REPRESENTATION)
+- [MimeType](https://ai.google.dev/api/generate-content#MimeType_1)
+- [Delivery](https://ai.google.dev/api/generate-content#Delivery)
+- [ImageResponseFormat](https://ai.google.dev/api/generate-content#ImageResponseFormat)
+  - [JSON representation](https://ai.google.dev/api/generate-content#ImageResponseFormat.SCHEMA_REPRESENTATION)
+- [MimeType](https://ai.google.dev/api/generate-content#MimeType_2)
+- [Delivery](https://ai.google.dev/api/generate-content#Delivery_1)
+- [AspectRatio](https://ai.google.dev/api/generate-content#AspectRatio)
+- [ImageSize](https://ai.google.dev/api/generate-content#ImageSize)
 
 Configuration options for model generation and outputs. Not all parameters are configurable for every model.
 Fields `stopSequences[]` `string` Optional. The set of character sequences (up to 5) that will stop output generation. If specified, the API will stop at the first appearance of a `stop_sequence`. The stop sequence will not be included as part of the response.
@@ -3362,10 +3378,11 @@ Caution: A *negative* penalty will encourage the model to reuse tokens proportio
 `thinkingConfig` ``object (`https://ai.google.dev/api/generate-content#ThinkingConfig`)`` Optional. Config for thinking features. An error will be returned if this field is set for models that don't support thinking.
 `imageConfig` ``object (`https://ai.google.dev/api/generate-content#ImageConfig`)`` Optional. Config for image generation. An error will be returned if this field is set for models that don't support these config options.
 `mediaResolution` ``enum (`https://ai.google.dev/api/generate-content#MediaResolution`)`` Optional. If specified, the media resolution specified will be used.
+`responseFormat` ``object (`https://ai.google.dev/api/generate-content#ResponseFormatConfig`)`` Optional. Configuration for the response output format. Allows specifying output configuration per modality (text, audio, image) in a flat structure.
 
 | JSON representation |
 |---|
-| ``` { "stopSequences": [ string ], "responseMimeType": string, "responseSchema": { object (`https://ai.google.dev/api/caching#Schema`) }, "_responseJsonSchema": value, "responseJsonSchema": value, "responseModalities": [ enum (`https://ai.google.dev/api/generate-content#Modality`) ], "candidateCount": integer, "maxOutputTokens": integer, "temperature": number, "topP": number, "topK": integer, "seed": integer, "presencePenalty": number, "frequencyPenalty": number, "responseLogprobs": boolean, "logprobs": integer, "enableEnhancedCivicAnswers": boolean, "speechConfig": { object (`https://ai.google.dev/api/generate-content#SpeechConfig`) }, "thinkingConfig": { object (`https://ai.google.dev/api/generate-content#ThinkingConfig`) }, "imageConfig": { object (`https://ai.google.dev/api/generate-content#ImageConfig`) }, "mediaResolution": enum (`https://ai.google.dev/api/generate-content#MediaResolution`) } ``` |
+| ``` { "stopSequences": [ string ], "responseMimeType": string, "responseSchema": { object (`https://ai.google.dev/api/caching#Schema`) }, "_responseJsonSchema": value, "responseJsonSchema": value, "responseModalities": [ enum (`https://ai.google.dev/api/generate-content#Modality`) ], "candidateCount": integer, "maxOutputTokens": integer, "temperature": number, "topP": number, "topK": integer, "seed": integer, "presencePenalty": number, "frequencyPenalty": number, "responseLogprobs": boolean, "logprobs": integer, "enableEnhancedCivicAnswers": boolean, "speechConfig": { object (`https://ai.google.dev/api/generate-content#SpeechConfig`) }, "thinkingConfig": { object (`https://ai.google.dev/api/generate-content#ThinkingConfig`) }, "imageConfig": { object (`https://ai.google.dev/api/generate-content#ImageConfig`) }, "mediaResolution": enum (`https://ai.google.dev/api/generate-content#MediaResolution`), "responseFormat": { object (`https://ai.google.dev/api/generate-content#ResponseFormatConfig`) } } ``` |
 
 ## Modality
 
@@ -3433,7 +3450,7 @@ Fields `speaker` `string` Required. The name of the speaker to use. Should be th
 Config for thinking features.
 Fields `includeThoughts` `boolean` Indicates whether to include thoughts in the response. If true, thoughts are returned only when available.
 `thinkingBudget` `integer` The number of thoughts tokens that the model should generate.
-`thinkingLevel` ``enum (`https://ai.google.dev/api/generate-content#ThinkingLevel`)`` Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. If not specified, the default is HIGH. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
+`thinkingLevel` ``enum (`https://ai.google.dev/api/generate-content#ThinkingLevel`)`` Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. The default value is model-dependent. Refer to the [Thinking levels guide](https://ai.google.dev/gemini-api/docs/thinking#thinking-levels) for more details. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
 
 | JSON representation |
 |---|
@@ -3473,6 +3490,138 @@ Media resolution for the input media.
 | `MEDIA_RESOLUTION_LOW` | Media resolution set to low (64 tokens). |
 | `MEDIA_RESOLUTION_MEDIUM` | Media resolution set to medium (256 tokens). |
 | `MEDIA_RESOLUTION_HIGH` | Media resolution set to high (zoomed reframing with 256 tokens). |
+
+## ResponseFormatConfig
+
+Configuration for the response output format. This is a flat object where each optional sub-field configures a specific output modality.
+Fields `text` ``object (`https://ai.google.dev/api/generate-content#TextResponseFormat`)`` Optional. Text output format configuration.
+`audio` ``object (`https://ai.google.dev/api/generate-content#AudioResponseFormat`)`` Optional. Audio output format configuration.
+`image` ``object (`https://ai.google.dev/api/generate-content#ImageResponseFormat`)`` Optional. Image output format configuration.
+
+| JSON representation |
+|---|
+| ``` { "text": { object (`https://ai.google.dev/api/generate-content#TextResponseFormat`) }, "audio": { object (`https://ai.google.dev/api/generate-content#AudioResponseFormat`) }, "image": { object (`https://ai.google.dev/api/generate-content#ImageResponseFormat`) } } ``` |
+
+## TextResponseFormat
+
+Configuration for text output format.
+Fields `mimeType` ``enum (`https://ai.google.dev/api/generate-content#MimeType`)`` Optional. The MIME type of the text output.
+`schema` ``value (`https://protobuf.dev/reference/protobuf/google.protobuf#value` format)`` Optional. The JSON schema that the output should conform to. Only applicable when mimeType is APPLICATION_JSON.
+
+| JSON representation |
+|---|
+| ``` { "mimeType": enum (`https://ai.google.dev/api/generate-content#MimeType`), "schema": value } ``` |
+
+## MimeType
+
+Supported MIME types for text output.
+
+| Enums ||
+|---|---|
+| `MIME_TYPE_UNSPECIFIED` | Default value. This value is unused. |
+| `APPLICATION_JSON` | JSON output format. |
+| `TEXT_PLAIN` | Plain text output format. |
+
+## AudioResponseFormat
+
+Configuration for audio output format.
+Fields `mimeType` ``enum (`https://ai.google.dev/api/generate-content#MimeType_1`)`` Optional. The MIME type of the audio output.
+`delivery` ``enum (`https://ai.google.dev/api/generate-content#Delivery`)`` Optional. The delivery mode for the audio output.
+`sampleRate` `integer` Optional. Sample rate in Hz.
+`bitRate` `integer` Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+
+| JSON representation |
+|---|
+| ``` { "mimeType": enum (`https://ai.google.dev/api/generate-content#MimeType_1`), "delivery": enum (`https://ai.google.dev/api/generate-content#Delivery`), "sampleRate": integer, "bitRate": integer } ``` |
+
+## MimeType
+
+Supported MIME types for audio output.
+
+| Enums ||
+|---|---|
+| `MIME_TYPE_UNSPECIFIED` | Default value. This value is unused. |
+| `AUDIO_MP3` | MP3 audio format. |
+| `AUDIO_OGG_OPUS` | OGG Opus audio format. |
+| `AUDIO_L16` | Raw PCM (L16) audio format. |
+| `AUDIO_WAV` | WAV audio format. |
+| `AUDIO_ALAW` | A-law audio format. |
+| `AUDIO_MULAW` | Mu-law audio format. |
+
+## Delivery
+
+Delivery mode for audio output.
+
+| Enums ||
+|---|---|
+| `DELIVERY_UNSPECIFIED` | Default value. This value is unused. |
+| `INLINE` | Audio data is returned inline in the response. |
+| `URI` | Audio data is returned as a URI. |
+
+## ImageResponseFormat
+
+Configuration for image output format.
+Fields `mimeType` ``enum (`https://ai.google.dev/api/generate-content#MimeType_2`)`` Optional. The MIME type of the image output.
+`delivery` ``enum (`https://ai.google.dev/api/generate-content#Delivery_1`)`` Optional. The delivery mode for the image output.
+`aspectRatio` ``enum (`https://ai.google.dev/api/generate-content#AspectRatio`)`` Optional. The aspect ratio for the image output.
+`imageSize` ``enum (`https://ai.google.dev/api/generate-content#ImageSize`)`` Optional. The size of the image output.
+
+| JSON representation |
+|---|
+| ``` { "mimeType": enum (`https://ai.google.dev/api/generate-content#MimeType_2`), "delivery": enum (`https://ai.google.dev/api/generate-content#Delivery_1`), "aspectRatio": enum (`https://ai.google.dev/api/generate-content#AspectRatio`), "imageSize": enum (`https://ai.google.dev/api/generate-content#ImageSize`) } ``` |
+
+## MimeType
+
+Supported MIME types for image output.
+
+| Enums ||
+|---|---|
+| `MIME_TYPE_UNSPECIFIED` | Default value. This value is unused. |
+| `IMAGE_JPEG` | JPEG image format. |
+
+## Delivery
+
+Delivery mode for image output.
+
+| Enums ||
+|---|---|
+| `DELIVERY_UNSPECIFIED` | Default value. This value is unused. |
+| `INLINE` | Image data is returned inline in the response. |
+| `URI` | Image data is returned as a URI. |
+
+## AspectRatio
+
+Supported aspect ratios for image output.
+
+| Enums ||
+|---|---|
+| `ASPECT_RATIO_UNSPECIFIED` | Default value. This value is unused. |
+| `ASPECT_RATIO_ONE_BY_ONE` | 1:1 aspect ratio. |
+| `ASPECT_RATIO_TWO_BY_THREE` | 2:3 aspect ratio. |
+| `ASPECT_RATIO_THREE_BY_TWO` | 3:2 aspect ratio. |
+| `ASPECT_RATIO_THREE_BY_FOUR` | 3:4 aspect ratio. |
+| `ASPECT_RATIO_FOUR_BY_THREE` | 4:3 aspect ratio. |
+| `ASPECT_RATIO_FOUR_BY_FIVE` | 4:5 aspect ratio. |
+| `ASPECT_RATIO_FIVE_BY_FOUR` | 5:4 aspect ratio. |
+| `ASPECT_RATIO_NINE_BY_SIXTEEN` | 9:16 aspect ratio. |
+| `ASPECT_RATIO_SIXTEEN_BY_NINE` | 16:9 aspect ratio. |
+| `ASPECT_RATIO_TWENTY_ONE_BY_NINE` | 21:9 aspect ratio. |
+| `ASPECT_RATIO_ONE_BY_EIGHT` | 1:8 aspect ratio. |
+| `ASPECT_RATIO_EIGHT_BY_ONE` | 8:1 aspect ratio. |
+| `ASPECT_RATIO_ONE_BY_FOUR` | 1:4 aspect ratio. |
+| `ASPECT_RATIO_FOUR_BY_ONE` | 4:1 aspect ratio. |
+
+## ImageSize
+
+Supported image sizes for image output.
+
+| Enums ||
+|---|---|
+| `IMAGE_SIZE_UNSPECIFIED` | Default value. This value is unused. |
+| `IMAGE_SIZE_FIVE_TWELVE` | 512px image size. |
+| `IMAGE_SIZE_ONE_K` | 1K image size. |
+| `IMAGE_SIZE_TWO_K` | 2K image size. |
+| `IMAGE_SIZE_FOUR_K` | 4K image size. |
 
 ## HarmCategory
 

@@ -51,7 +51,7 @@ dotnet add package Anthropic.Foundry
 <Tabs>
 <Tab title="Gradle">
 ```kotlin
-implementation("com.anthropic:anthropic-java-foundry:2.32.0")
+implementation("com.anthropic:anthropic-java-foundry:2.33.0")
 ```
 </Tab>
 <Tab title="Maven">
@@ -59,7 +59,7 @@ implementation("com.anthropic:anthropic-java-foundry:2.32.0")
 <dependency>
     <groupId>com.anthropic</groupId>
     <artifactId>anthropic-java-foundry</artifactId>
-    <version>2.32.0</version>
+    <version>2.33.0</version>
 </dependency>
 ```
 </Tab>
@@ -500,10 +500,10 @@ Claude Opus 4.7, Claude Opus 4.6, and Claude Sonnet 4.6 have a [1M-token context
 
 ### Features not supported
 
-- Admin API (`/v1/organizations/*` endpoints)
-- Compliance API (`/v1/compliance/*` endpoints)
-- Models API (`/v1/models`)
-- Message Batches API (`/v1/messages/batches`)
+- Admin API
+- Compliance API
+- Models API
+- Message Batches API
 
 ## API responses
 

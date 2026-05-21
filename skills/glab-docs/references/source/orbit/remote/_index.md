@@ -21,7 +21,8 @@ ontology and query DSL schema:
 glab orbit remote status                         # Is the service up?
 glab orbit remote schema                         # What entities and edges exist?
 glab orbit remote schema MergeRequest Project    # Show details for specific nodes
-glab orbit remote tools                          # Full DSL JSON Schema
+glab orbit remote dsl                            # Full query DSL JSON Schema
+glab orbit remote tools                          # MCP tool manifest
 ```
 
 After you know the shape of the graph, run a query:
@@ -64,6 +65,7 @@ r
 $ glab orbit remote status
 $ glab orbit remote schema
 $ glab orbit remote schema User Project MergeRequest
+$ glab orbit remote dsl
 $ glab orbit remote tools
 
 # Run a query from a file
@@ -86,6 +88,7 @@ $ glab orbit remote graph-status --full-path gitlab-org/gitlab
 
 ## Subcommands
 
+- [`dsl`](dsl.md)
 - [`graph-status`](graph-status.md)
 - [`query`](query.md)
 - [`schema`](schema.md)

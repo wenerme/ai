@@ -542,7 +542,7 @@ Different models use different resizing rules before image tokenization:
       <code>gpt-5-mini</code>, <code>gpt-5-nano</code>, <code>gpt-5.2</code>,
       <code>gpt-5.3-codex</code>, <code>gpt-5-codex-mini</code>,
       <code>gpt-5.1-codex-mini</code>, <code>gpt-5.2-codex</code>,
-      <code>gpt-5.2-chat-latest</code>, <code>o4-mini</code>, and the{" "}
+      <code>gpt-5.2-chat-latest</code>, <code>o4-mini</code>, and the 
       <code>gpt-4.1-mini</code> and <code>gpt-4.1-nano</code> 2025-04-14
       snapshot variants
     </td>
@@ -566,7 +566,7 @@ Different models use different resizing rules before image tokenization:
       <code>low</code>, <code>high</code>, <code>auto</code>
     </td>
     <td>
-      Use tile-based resizing behavior. See{" "}
+      Use tile-based resizing behavior. See 
       <a href="#gpt-4o-gpt-41-gpt-4o-mini-cua-and-o-series-except-o4-mini">
         the detailed behavior below
       </a>

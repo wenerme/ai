@@ -45,7 +45,7 @@ The [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-action
 
 Need higher limits?
 
-If you are on a Workers Paid plan and you want to increase your limits beyond those listed here, Cloudflare will grant [requests for higher limits ↗](https://forms.gle/CdueDKvb26mTaepa9) on a case-by-case basis.
+The limits below are defaults for Workers Paid users. If you need to scale beyond them, Cloudflare can increase your account limits. [Request higher limits ↗](https://forms.gle/CdueDKvb26mTaepa9).
 
 | Feature                                                                         | Limit                                                                                   |
 | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
@@ -104,8 +104,8 @@ When you make too many requests in a short period of time, Browser Run will resp
 
 The example below demonstrates how to handle rate limiting gracefully by reading the `Retry-After` value and retrying the request after that delay.
 
-* [ Quick Actions ](#tab-panel-4415)
-* [ Puppeteer ](#tab-panel-4416)
+* [ Quick Actions ](#tab-panel-4835)
+* [ Puppeteer ](#tab-panel-4836)
 
 JavaScript
 

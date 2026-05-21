@@ -13,15 +13,15 @@ Manage key/value strings.
 
 Current respected settings:
 
-- browser: If unset, uses the default browser. Override with environment variable $BROWSER.
-- check_update: If true, notifies of new versions of glab. Defaults to true. Override with environment variable $GLAB_CHECK_UPDATE.
-- display_hyperlinks: If true, and using a TTY, outputs hyperlinks for issues and merge request lists. Defaults to false.
-- editor: If unset, uses the default editor. Override with environment variable $EDITOR.
-- glab_pager: Your desired pager command to use, such as 'less -R'.
-- glamour_style: Your desired Markdown renderer style. Options are dark, light, notty. Custom styles are available using [glamour](https://github.com/charmbracelet/glamour#styles).
-- host: If unset, defaults to `https://gitlab.com`.
-- token: Your GitLab access token. Defaults to environment variables.
-- visual: Takes precedence over 'editor'. If unset, uses the default editor. Override with environment variable $VISUAL.
+- `browser`: If unset, uses the default browser. Override with environment variable `$BROWSER`.
+- `check_update`: If true, notifies of new versions of glab. Defaults to `true`. Override with environment variable `$GLAB_CHECK_UPDATE`.
+- `display_hyperlinks`: If `false`, disables hyperlinks in terminal output. Defaults to `true`. Override with environment variable `$FORCE_HYPERLINKS`.
+- `editor`: If unset, uses the default editor. Override with environment variable `$EDITOR`.
+- `glab_pager`: Your desired pager command to use, such as `less -R`.
+- `glamour_style`: Your desired Markdown renderer style. Options are dark, light, notty. Custom styles are available using [glamour](https://github.com/charmbracelet/glamour#styles).
+- `host`: If unset, defaults to `https://gitlab.com`.
+- `token`: Your GitLab access token. Defaults to environment variables.
+- `visual`: Takes precedence over `editor`. If unset, uses the default editor. Override with environment variable `$VISUAL`.
 
 ## Aliases
 

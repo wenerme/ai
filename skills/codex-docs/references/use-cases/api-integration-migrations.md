@@ -61,7 +61,7 @@ When migrating to a new model, you should make sure to not only make the necessa
 
 All the specifics about the new API features and model behavior are documented in our docs, in the [latest model](https://developers.openai.com/api/docs/guides/latest-model) and [prompt guidance](https://developers.openai.com/api/docs/guides/prompt-guidance) guides.
 
-The OpenAI Docs skill also includes [specific guidance](https://github.com/openai/codex/blob/6323f0104d17d211029faab149231ba787f7da37/codex-rs/skills/src/assets/samples/openai-docs/references/upgrading-to-gpt-5p4.md) as reference, codifying how to upgrade to the latest model–currently [GPT-5.4](https://developers.openai.com/api/docs/models/gpt-5.4).
+The OpenAI Docs skill also includes [specific guidance](https://github.com/openai/codex/blob/6323f0104d17d211029faab149231ba787f7da37/codex-rs/skills/src/assets/samples/openai-docs/references/upgrading-to-gpt-5p4.md) as a concrete migration reference. For the current upgrade target, use the [latest model](https://developers.openai.com/api/docs/guides/latest-model) guide.
 
 Codex now automatically comes with the OpenAI Docs skill, so make sure to mention it in your prompt to access all the latest documentation and guidance when building with the OpenAI API.
 

@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 188 models available."
+description: "Use LLM Gateway models with Mastra. 183 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 188 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 183 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -388,18 +388,6 @@ for await (const chunk of stream) {
     "outputCost": 0.4
   },
   {
-    "model": "llmgateway/gemini-2.5-flash-lite-preview-09-2025",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": 0.1,
-    "outputCost": 0.4
-  },
-  {
     "model": "llmgateway/gemini-2.5-pro",
     "imageInput": true,
     "audioInput": true,
@@ -484,18 +472,6 @@ for await (const chunk of stream) {
     "outputCost": 0.08
   },
   {
-    "model": "llmgateway/gemma-3-12b-it",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "llmgateway/gemma-3-1b-it",
     "imageInput": false,
     "audioInput": false,
@@ -518,42 +494,6 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.27,
     "outputCost": 0.27
-  },
-  {
-    "model": "llmgateway/gemma-3-4b-it",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "llmgateway/gemma-3n-e2b-it",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 8192,
-    "maxOutput": 2000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "llmgateway/gemma-3n-e4b-it",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 8192,
-    "maxOutput": 2000,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "llmgateway/glm-4-32b-0414-128k",

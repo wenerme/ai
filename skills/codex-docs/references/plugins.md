@@ -101,7 +101,7 @@ After you install a plugin, you can use it directly in the prompt window:
     </p>
     <p class="mt-3 text-sm text-secondary">
       Use this when you want to be specific about which plugin or skill Codex
-      should use. See <a href="/codex/app/commands">Codex app commands</a> and{" "}
+      should use. See <a href="/codex/app/commands">Codex app commands</a> and 
       <a href="/codex/skills">Skills</a>.
     </p>
   </div>

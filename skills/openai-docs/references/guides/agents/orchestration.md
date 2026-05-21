@@ -142,8 +142,7 @@ Once the ownership pattern is clear, continue with the guide that covers the adj
 
 <span slot="icon">
         </span>
-      See how{" "}
-      {" "}
+      See how 
       and resumable state affect the next turn.
 
 

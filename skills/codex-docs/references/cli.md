@@ -18,7 +18,7 @@ ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more
 
 The Codex CLI is available on macOS, Windows, and Linux. On Windows, run Codex
   natively in PowerShell with the Windows sandbox, or use WSL2 when you need a
-  Linux-native environment. For setup details, see the{" "}
+  Linux-native environment. For setup details, see the 
   <a href="/codex/windows">Windows setup guide</a>.
 
 If you're new to Codex, read the [best practices guide](https://developers.openai.com/codex/learn/best-practices).

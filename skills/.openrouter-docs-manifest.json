@@ -11,8 +11,8 @@
   },
   "guides/overview/models.md": {
     "url": "https://openrouter.ai/docs/guides/overview/models.md",
-    "size": 7809,
-    "updatedAt": "2026-05-16T00:34:40.500Z"
+    "size": 7854,
+    "updatedAt": "2026-05-21T00:46:40.868Z"
   },
   "guides/overview/multimodal/overview.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/overview.md",
@@ -161,8 +161,8 @@
   },
   "guides/routing/routers/pareto-router.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/pareto-router.md",
-    "size": 7214,
-    "updatedAt": "2026-05-16T00:35:37.147Z"
+    "size": 8171,
+    "updatedAt": "2026-05-21T00:54:59.897Z"
   },
   "guides/features/workspaces.md": {
     "url": "https://openrouter.ai/docs/guides/features/workspaces.md",
@@ -196,8 +196,8 @@
   },
   "guides/features/server-tools/web-fetch.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/web-fetch.md",
-    "size": 9013,
-    "updatedAt": "2026-05-16T00:35:48.519Z"
+    "size": 9382,
+    "updatedAt": "2026-05-21T00:55:09.512Z"
   },
   "guides/features/server-tools/datetime.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/datetime.md",
@@ -216,8 +216,8 @@
   },
   "guides/features/plugins/overview.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/overview.md",
-    "size": 7100,
-    "updatedAt": "2026-05-16T00:35:57.489Z"
+    "size": 7362,
+    "updatedAt": "2026-05-21T00:55:18.125Z"
   },
   "guides/features/plugins/web-search.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/web-search.md",

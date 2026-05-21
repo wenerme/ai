@@ -27,9 +27,7 @@ Start with the outcome you want to build. Realtime sessions are best for live au
     <tr>
       <td>Build a low-latency voice agent</td>
       <td className="whitespace-nowrap">
-        <a href="/api/docs/models/gpt-realtime-2">
-          <code>gpt-realtime-2</code>
-        </a>
+        [`gpt-realtime-2`](https://developers.openai.com/api/docs/models/gpt-realtime-2)
       </td>
       <td>
         <a href="/api/docs/guides/voice-agents">Voice agents</a>
@@ -38,9 +36,7 @@ Start with the outcome you want to build. Realtime sessions are best for live au
     <tr>
       <td>Translate live speech into another language</td>
       <td className="whitespace-nowrap">
-        <a href="/api/docs/models/gpt-realtime-translate">
-          <code>gpt-realtime-translate</code>
-        </a>
+        [`gpt-realtime-translate`](https://developers.openai.com/api/docs/models/gpt-realtime-translate)
       </td>
       <td>
         <a href="/api/docs/guides/realtime-translation">Realtime translation</a>
@@ -49,9 +45,7 @@ Start with the outcome you want to build. Realtime sessions are best for live au
     <tr>
       <td>Transcribe live audio into streaming text</td>
       <td className="whitespace-nowrap">
-        <a href="/api/docs/models/gpt-realtime-whisper">
-          <code>gpt-realtime-whisper</code>
-        </a>
+        [`gpt-realtime-whisper`](https://developers.openai.com/api/docs/models/gpt-realtime-whisper)
       </td>
       <td>
         <a href="/api/docs/guides/realtime-transcription">
@@ -152,7 +146,7 @@ See [Realtime translation](https://developers.openai.com/api/docs/guides/realtim
 
 You can transcribe audio in more than one way. Use a realtime transcription session when your application needs live transcript deltas from streaming audio. Use the [Speech to text](https://developers.openai.com/api/docs/guides/speech-to-text) guide for file uploads, request-based transcription, or diarization-focused workflows.
 
-For realtime transcription, `gpt-realtime-whisper` gives you controllable latency. Lower delay settings produce earlier partial text, while higher delay settings can improve transcript quality. Test with your real audio conditions, target languages, accents, and domain vocabulary before choosing a production default.
+For realtime transcription, [`gpt-realtime-whisper`](https://developers.openai.com/api/docs/models/gpt-realtime-whisper) gives you controllable latency. Lower delay settings produce earlier partial text, while higher delay settings can improve transcript quality. Test with your real audio conditions, target languages, accents, and domain vocabulary before choosing a production default.
 
 See [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription) for session configuration and event handling.
 

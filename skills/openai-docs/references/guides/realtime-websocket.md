@@ -126,7 +126,7 @@ Over a WebSocket, you will both send and receive JSON-serialized events as strin
 ```javascript
 
 
-const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime";
+const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2";
 const ws = new WebSocket(url, {
   headers: {
     Authorization: "Bearer " + process.env.OPENAI_API_KEY,

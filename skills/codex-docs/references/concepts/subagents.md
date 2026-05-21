@@ -64,16 +64,14 @@ Review this branch with parallel subagents. Spawn one subagent for security risk
 Different agents need different model and reasoning settings.
 
 If you don't pin a model or `model_reasoning_effort`, Codex can choose a setup
-that balances intelligence, speed, and price for the task. It may favor
-`gpt-5.4-mini` for fast scans or a higher-effort `gpt-5.5` configuration for
-more demanding reasoning. When you want finer control, steer that choice in
-your prompt or set `model` and
-`model_reasoning_effort` directly in the agent file.
+that balances intelligence, speed, and price for the task. It may favor `gpt-5.4-mini` for fast scans or a higher-effort `gpt-5.5` configuration for more demanding reasoning. When you want finer control, steer that choice in your prompt or set `model` and `model_reasoning_effort` directly in the agent file.
 
-For most tasks in Codex, start with `gpt-5.5`. Use `gpt-5.4-mini` when you
-  want a faster, lower-cost option for lighter subagent work. If you have
-  ChatGPT Pro and want near-instant text-only iteration, `gpt-5.3-codex-spark`
-  remains available in research preview.
+For most tasks in Codex, start with 
+  `gpt-5.5`. Use 
+  `gpt-5.4-mini` when you want
+  a faster, lower-cost option for lighter subagent work. If you have ChatGPT Pro
+  and want near-instant text-only iteration, `gpt-5.3-codex-spark` remains
+  available in research preview.
 
 ### Model choice
 

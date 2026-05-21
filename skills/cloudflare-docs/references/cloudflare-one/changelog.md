@@ -14,6 +14,24 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-05-19
+
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
+
+  
+**Cloudflare as identity provider and account membership selector**   
+
+Cloudflare Access now supports using Cloudflare itself as an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/). If you publish an Access application and select Cloudflare as the login method, users can sign in with their existing Cloudflare account — no one-time PINs, no third-party IdP configuration, and no shared email inboxes. Authentication is backed by Cloudflare's own account security (including multi-factor authentication), making it both simpler to set up and more secure than OTP-based login for most use cases.
+
+Cloudflare is now the **default identity provider for all newly created Zero Trust accounts**, replacing One-time PIN.
+
+This also enables two new capabilities:
+
+* **Cloudflare Account Member selector** — A new [policy selector](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#cloudflare-access-selectors) that matches users based on their membership in a Cloudflare account. You can target the current account or specify a different account ID for cross-account access scenarios.
+* **Restrict to account members** — An identity provider configuration option that limits authentication to users who are members of your Cloudflare account.
+
+To get started, add Cloudflare as an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) in your Zero Trust settings.
+
 ## 2026-05-12
 
 [ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
@@ -4411,8 +4429,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-5083)
-* [ Core Dashboard ](#tab-panel-5084)
+* [ Zero Trust Dashboard ](#tab-panel-5106)
+* [ Core Dashboard ](#tab-panel-5107)
 
 To update your view preference in the Zero Trust dashboard:
 

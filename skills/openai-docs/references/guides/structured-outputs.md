@@ -232,7 +232,7 @@ Structured Outputs is available in our [latest large language models](https://de
 
   
 
-When to use Structured Outputs via function calling vs via{" "}
+When to use Structured Outputs via function calling vs via 
     <span className="monospace">text.format</span>
 
 
@@ -267,8 +267,8 @@ Put simply:
 
   The remainder of this guide will focus on non-function calling use cases in
     the Responses API. To learn more about how to use Structured Outputs with
-    function calling, check out the{" "}
-    [Function Calling](https://developers.openai.com/api/docs/guides/function-calling#function-calling-with-structured-outputs){" "}
+    function calling, check out the 
+    [Function Calling](https://developers.openai.com/api/docs/guides/function-calling#function-calling-with-structured-outputs) 
     guide.
 
 

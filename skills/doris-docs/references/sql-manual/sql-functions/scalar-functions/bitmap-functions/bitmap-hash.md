@@ -66,7 +66,7 @@ The result will be:
 ```
 
 ```sql
-select bitmap_to_string(bitmap_hash(NULL));
+select bitmap_to_string(bitmap_hash(NULL)) AS res;
 ```
 
 The result will be:

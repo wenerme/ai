@@ -8,9 +8,9 @@
 
 ## Description
 
-Calculates the area of a closed region on the Earth's surface in square kilometers. The input parameter is a geometric object (such as a Geopolygon,GeoCircle,GeoMuitiPolygon ) representing a region on the Earth's surface.
+Calculates the area of a closed region on the Earth's surface in square kilometers. The input parameter is a geometric object (such as a GeoPolygon, GeoCircle, GeoMultiPolygon) representing a region on the Earth's surface.
 
-## Sytax
+## Syntax
 
 ```sql
 ST_AREA_SQUARE_KM( <geo>)
@@ -19,9 +19,9 @@ ST_AREA_SQUARE_KM( <geo>)
 
 | Parameters | Description     |
 | -- |--------|
-| `<geo>` | A geometric object on the Earth's surface, of type GeoPolygon,GeoCircle,GeoMultiCircle, must form a closed region.|
+| `<geo>` | A geometric object on the Earth's surface, of type GeoPolygon, GeoCircle, GeoMultiPolygon, must form a closed region.|
 
-## Retuen value
+## Return Value
 
 Returns the area of the region in square kilometers, as a DOUBLE type.
 
@@ -146,7 +146,7 @@ SELECT ST_Area_Square_Km(ST_Point(0, 1));
 
 ```text
 +-------------------------------------------+
-| st_area_square_Km(st_point(0.0, 1.0)) |
+| st_area_square_km(st_point(0.0, 1.0)) |
 +-------------------------------------------+
 |                                         0 |
 +-------------------------------------------+
@@ -160,7 +160,7 @@ SELECT ST_Area_Square_Km(ST_LineFromText("LINESTRING (1 1, 2 2)"));
 
 ```text
 +-----------------------------------------------------------------+
-| st_area_square_Km(st_linefromtext('LINESTRING (1 1, 2 2)')) |
+| st_area_square_km(st_linefromtext('LINESTRING (1 1, 2 2)')) |
 +-----------------------------------------------------------------+
 |                                                               0 |
 +-----------------------------------------------------------------+

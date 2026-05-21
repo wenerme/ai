@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: This emergency release introduces two new rules to detect nginx heap buffer overflow and heap spray exploitation attempts targeting the rewrite module's is_args stale-state bug (CVE-2026-42945).
+description: Key Findings
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -13,6 +13,23 @@ image: https://developers.cloudflare.com/core-services-preview.png
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
+
+## 2026-05-20
+
+  
+**WAF Release - 2026-05-20**   
+
+**Key Findings**
+
+* Existing rule enhancements have been deployed to improve detection resilience against broad classes of web attacks and strengthen behavioral coverage.
+
+**Continuous Rule Improvements**
+
+We are continuously refining our managed rules to provide more resilient protection and deeper insights into attack patterns. To ensure an optimal security posture, we recommend consistently monitoring the Security Events dashboard and adjusting rule actions as these enhancements are deployed.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                          | Previous Action | New Action | Comments                                                                                                          |
+| -------------------------- | ----------- | -------------- | ---------------------------------------------------- | --------------- | ---------- | ----------------------------------------------------------------------------------------------------------------- |
+| Cloudflare Managed Ruleset | ...9e9c068d | N/A            | Sitecore - Cache Poisoning - CVE:CVE-2025-53693 Beta | N/A             | Block      | This rule is merged into the original rule "Sitecore - Cache Poisoning - CVE:CVE-2025-53693" (ID: ...7c5b669c  ). |
 
 ## 2026-05-15
 
@@ -583,29 +600,6 @@ These updates strengthen protection for server-function abuse techniques (CVE-20
 | Cloudflare Managed Ruleset | ...fefb4e9b | N/A            | React - Leaking Server Functions - CVE:CVE-2025-55183 | N/A             | Block      | This was labeled as Generic - Server Function Source Code Exposure. |
 | Cloudflare Free Ruleset    | ...251e86aa | N/A            | React - Leaking Server Functions - CVE:CVE-2025-55183 | N/A             | Block      | This was labeled as Generic - Server Function Source Code Exposure. |
 | Cloudflare Managed Ruleset | ...102ec699 | N/A            | React - DoS - CVE:CVE-2025-55184                      | N/A             | Disabled   | This was labeled as Generic – Server Function Resource Exhaustion.  |
-
-## 2025-12-10
-
-  
-**WAF Release - 2025-12-10 - Emergency**   
-
-This additional week's emergency release introduces improvements to our existing rule for React – Remote Code Execution – CVE-2025-55182 - 2, along with two new generic detections covering server-side function exposure and resource-exhaustion patterns.
-
-**Key Findings**
-
-Enhanced detection logic for React – RCE – CVE-2025-55182, added Generic – Server Function Source Code Exposure, and added Generic – Server Function Resource Exhaustion.
-
-**Impact**
-
-These updates strengthen protection against React RCE exploitation attempts and broaden coverage for common server-function abuse techniques that may expose internal logic or disrupt application availability.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                            | Previous Action | New Action | Comments                       |
-| -------------------------- | ----------- | -------------- | ------------------------------------------------------ | --------------- | ---------- | ------------------------------ |
-| Cloudflare Managed Ruleset | ...15fce168 | N/A            | React - Remote Code Execution - CVE:CVE-2025-55182 - 2 | N/A             | Block      | This is an improved detection. |
-| Cloudflare Free Ruleset    | ...74746aff | N/A            | React - Remote Code Execution - CVE:CVE-2025-55182 - 2 | N/A             | Block      | This is an improved detection. |
-| Cloudflare Managed Ruleset | ...fefb4e9b | N/A            | Generic - Server Function Source Code Exposure         | N/A             | Block      | This is a new detection.       |
-| Cloudflare Free Ruleset    | ...251e86aa | N/A            | Generic - Server Function Source Code Exposure         | N/A             | Block      | This is a new detection.       |
-| Cloudflare Managed Ruleset | ...102ec699 | N/A            | Generic - Server Function Resource Exhaustion          | N/A             | Disabled   | This is a new detection.       |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}

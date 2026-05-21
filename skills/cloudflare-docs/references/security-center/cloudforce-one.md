@@ -75,7 +75,7 @@ Search across global datasets for specific indicators, including:
 * [JA3 fingerprints](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/) — TLS client fingerprints used to profile specific SSL/TLS clients across different destinations
 * Threat insights — Link events to specific campaigns or threat actor names (for example, APT28).
 
-### Receive alerts
+### Create WAF Rules and receive notifications
 
 * **Saved views** — Save custom filters for recurring threat event investigations.
 * **Automated rules** — Generate security rules from threat data and push them to your Cloudflare [WAF](https://developers.cloudflare.com/waf/) or firewall.

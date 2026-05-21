@@ -182,15 +182,11 @@ FROM menu_item
 
 ## Validate the data {#validate-data}
 
-Query:
-
-```sql
+```sql title="Query"
 SELECT count() FROM menu_item_denorm;
 ```
 
-Result:
-
-```text
+```text title="Response"
 ┌─count()─┐
 │ 1329175 │
 └─────────┘
@@ -200,9 +196,7 @@ Result:
 
 ### Averaged historical prices of dishes {#query-averaged-historical-prices}
 
-Query:
-
-```sql
+```sql title="Query"
 SELECT
     round(toUInt32OrZero(extract(menu_date, '^\\d{4}')), -1) AS d,
     count(),
@@ -214,9 +208,7 @@ GROUP BY d
 ORDER BY d ASC;
 ```
 
-Result:
-
-```text
+```text title="Response"
 ┌────d─┬─count()─┬─round(avg(price), 2)─┬─bar(avg(price), 0, 100, 100)─┐
 │ 1850 │     618 │                  1.5 │ █▍                           │
 │ 1860 │    1634 │                 1.29 │ █▎                           │
@@ -242,9 +234,7 @@ Take it with a grain of salt.
 
 ### Burger prices {#query-burger-prices}
 
-Query:
-
-```sql
+```sql title="Query"
 SELECT
     round(toUInt32OrZero(extract(menu_date, '^\\d{4}')), -1) AS d,
     count(),
@@ -256,9 +246,7 @@ GROUP BY d
 ORDER BY d ASC;
 ```
 
-Result:
-
-```text
+```text title="Response"
 ┌────d─┬─count()─┬─round(avg(price), 2)─┬─bar(avg(price), 0, 50, 100)───────────┐
 │ 1880 │       2 │                 0.42 │ ▋                                     │
 │ 1890 │       7 │                 0.85 │ █▋                                    │
@@ -279,9 +267,7 @@ Result:
 
 ### Vodka {#query-vodka}
 
-Query:
-
-```sql
+```sql title="Query"
 SELECT
     round(toUInt32OrZero(extract(menu_date, '^\\d{4}')), -1) AS d,
     count(),
@@ -293,9 +279,7 @@ GROUP BY d
 ORDER BY d ASC;
 ```
 
-Result:
-
-```text
+```text title="Response"
 ┌────d─┬─count()─┬─round(avg(price), 2)─┬─bar(avg(price), 0, 50, 100)─┐
 │ 1910 │       2 │                    0 │                             │
 │ 1920 │       1 │                  0.3 │ ▌                           │
@@ -315,9 +299,7 @@ To get vodka we have to write `ILIKE '%vodka%'` and this definitely makes a stat
 
 Let's print caviar prices. Also let's print a name of any dish with caviar.
 
-Query:
-
-```sql
+```sql title="Query"
 SELECT
     round(toUInt32OrZero(extract(menu_date, '^\\d{4}')), -1) AS d,
     count(),
@@ -330,9 +312,7 @@ GROUP BY d
 ORDER BY d ASC;
 ```
 
-Result:
-
-```text
+```text title="Response"
 ┌────d─┬─count()─┬─round(avg(price), 2)─┬─bar(avg(price), 0, 50, 100)──────┬─any(dish_name)──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ 1090 │       1 │                    0 │                                  │ Caviar                                                                                                                              │
 │ 1880 │       3 │                    0 │                                  │ Caviar                                                                                                                              │

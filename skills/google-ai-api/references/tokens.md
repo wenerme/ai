@@ -1,5 +1,3 @@
-# Counting tokens
-
 For a detailed guide on counting tokens using the Gemini API, including how images, audio and video are counted, see the [Token counting guide](https://ai.google.dev/gemini-api/docs/tokens) and accompanying [Cookbook recipe](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Counting_Tokens.ipynb).
 
 ## Method: models.countTokens
@@ -54,13 +52,13 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
 
     # Count tokens using the new client method.
     total_tokens = client.models.count_tokens(
-        model="gemini-2.0-flash", contents=prompt
+        model="gemini-3.5-flash", contents=prompt
     )
     print("total_tokens: ", total_tokens)
     # ( e.g., total_tokens: 10 )
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents=prompt
+        model="gemini-3.5-flash", contents=prompt
     )
 
     # The usage_metadata provides detailed token counts.
@@ -74,13 +72,13 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const prompt = "The quick brown fox jumps over the lazy dog.";
     const countTokensResponse = await ai.models.countTokens({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: prompt,
     });
     console.log(countTokensResponse.totalTokens);
 
     const generateResponse = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: prompt,
     });
     console.log(generateResponse.usageMetadata);
@@ -101,13 +99,13 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     contents := []*genai.Content{
     	genai.NewContentFromText(prompt, genai.RoleUser),
     }
-    countResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
+    countResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
     	return err
     }
     fmt.Println("total_tokens:", countResp.TotalTokens)
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -140,7 +138,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     client = genai.Client()
 
     chat = client.chats.create(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         history=[
             types.Content(
                 role="user", parts=[types.Part(text="Hi my name is Bob")]
@@ -151,7 +149,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     # Count tokens for the chat history.
     print(
         client.models.count_tokens(
-            model="gemini-2.0-flash", contents=chat.get_history()
+            model="gemini-3.5-flash", contents=chat.get_history()
         )
     )
     # ( e.g., total_tokens: 10 )
@@ -172,7 +170,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     )
     history = chat.get_history()
     history.append(extra)
-    print(client.models.count_tokens(model="gemini-2.0-flash", contents=history))
+    print(client.models.count_tokens(model="gemini-3.5-flash", contents=history))
     # ( e.g., total_tokens: 56 )
 
 ### Node.js
@@ -186,13 +184,13 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
       { role: "model", parts: [{ text: "Hi Bob!" }] },
     ];
     const chat = ai.chats.create({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       history: history,
     });
 
     // Count tokens for the current chat history.
     const countTokensResponse = await ai.models.countTokens({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: chat.getHistory(),
     });
     console.log(countTokensResponse.totalTokens);
@@ -210,7 +208,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     const combinedHistory = chat.getHistory();
     combinedHistory.push(extraMessage);
     const combinedCountTokensResponse = await ai.models.countTokens({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: combinedHistory,
     });
     console.log(
@@ -234,12 +232,12 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     	{Role: genai.RoleUser, Parts: []*genai.Part{{Text: "Hi my name is Bob"}}},
     	{Role: genai.RoleModel, Parts: []*genai.Part{{Text: "Hi Bob!"}}},
     }
-    chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
+    chat, err := client.Chats.Create(ctx, "gemini-3.5-flash", nil, history)
     if err != nil {
     	log.Fatal(err)
     }
 
-    firstTokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", chat.History(false), nil)
+    firstTokenResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", chat.History(false), nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -258,7 +256,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     hist := chat.History(false)
     hist = append(hist, extra)
 
-    secondTokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", hist, nil)
+    secondTokenResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", hist, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -294,13 +292,13 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     # Count tokens for combined text and inline image.
     print(
         client.models.count_tokens(
-            model="gemini-2.0-flash", contents=[prompt, your_image_file]
+            model="gemini-3.5-flash", contents=[prompt, your_image_file]
         )
     )
     # ( e.g., total_tokens: 263 )
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents=[prompt, your_image_file]
+        model="gemini-3.5-flash", contents=[prompt, your_image_file]
     )
     print(response.usage_metadata)
     # ( e.g., prompt_token_count: 264, candidates_token_count: 80, total_token_count: 345 )
@@ -323,13 +321,13 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     ]);
 
     const countTokensResponse = await ai.models.countTokens({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: contents,
     });
     console.log(countTokensResponse.totalTokens);
 
     const generateResponse = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: contents,
     });
     console.log(generateResponse.usageMetadata);
@@ -402,13 +400,13 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
 
     print(
         client.models.count_tokens(
-            model="gemini-2.0-flash", contents=[prompt, your_file]
+            model="gemini-3.5-flash", contents=[prompt, your_file]
         )
     )
     # ( e.g., total_tokens: 300 )
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents=[prompt, your_file]
+        model="gemini-3.5-flash", contents=[prompt, your_file]
     )
     print(response.usage_metadata)
     # ( e.g., prompt_token_count: 301, candidates_token_count: 60, total_token_count: 361 )
@@ -433,7 +431,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     }
 
     const countTokensResponse = await ai.models.countTokens({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: createUserContent([
         prompt,
         createPartFromUri(videoFile.uri, videoFile.mimeType),
@@ -442,7 +440,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     console.log(countTokensResponse.totalTokens);
 
     const generateResponse = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: createUserContent([
         prompt,
         createPartFromUri(videoFile.uri, videoFile.mimeType),
@@ -492,12 +490,12 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
+    tokenResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
     fmt.Println("Multimodal video/audio token count:", tokenResp.TotalTokens)
-    response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -570,13 +568,13 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     client = genai.Client()
     sample_pdf = client.files.upload(file=media / "test.pdf")
     token_count = client.models.count_tokens(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         contents=["Give me a summary of this document.", sample_pdf],
     )
     print(f"{token_count=}")
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-3.5-flash",
         contents=["Give me a summary of this document.", sample_pdf],
     )
     print(response.usage_metadata)
@@ -593,7 +591,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     your_file = client.files.upload(file=media / "a11.txt")
 
     cache = client.caches.create(
-        model="gemini-1.5-flash-001",
+        model="gemini-3.5-flash",
         config={
             "contents": ["Here the Apollo 11 transcript:", your_file],
             "system_instruction": None,
@@ -605,11 +603,11 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     prompt = "Please give a short summary of this file."
 
     # Count tokens for the prompt (the cached content is not passed here).
-    print(client.models.count_tokens(model="gemini-2.0-flash", contents=prompt))
+    print(client.models.count_tokens(model="gemini-3.5-flash", contents=prompt))
     # ( e.g., total_tokens: 9 )
 
     response = client.models.generate_content(
-        model="gemini-1.5-flash-001",
+        model="gemini-3.5-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             cached_content=cache.name,
@@ -630,7 +628,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
       });
 
       const cache = await ai.caches.create({
-        model: "gemini-1.5-flash-001",
+        model: "gemini-3.5-flash",
         config: {
           contents: createUserContent([
             "Here the Apollo 11 transcript:",
@@ -643,13 +641,13 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
 
       const prompt = "Please give a short summary of this file.";
       const countTokensResponse = await ai.models.countTokens({
-        model: "gemini-2.0-flash",
+        model: "gemini-3.5-flash",
         contents: prompt,
       });
       console.log(countTokensResponse.totalTokens);
 
       const generateResponse = await ai.models.generateContent({
-        model: "gemini-1.5-flash-001",
+        model: "gemini-3.5-flash",
         contents: prompt,
         config: { cachedContent: cache.name },
       });
@@ -692,7 +690,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     }
 
     // Create cached content using a simple slice with text and a file.
-    cache, err := client.Caches.Create(ctx, "gemini-1.5-flash-001", &genai.CreateCachedContentConfig{
+    cache, err := client.Caches.Create(ctx, "gemini-3.5-flash", &genai.CreateCachedContentConfig{
     	Contents: contents,
     })
     if err != nil {
@@ -700,14 +698,14 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     }
 
     prompt := "Please give a short summary of this file."
-    countResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", []*genai.Content{
+    countResp, err := client.Models.CountTokens(ctx, "gemini-3.5-flash", []*genai.Content{
     	genai.NewContentFromText(prompt, genai.RoleUser),
     }, nil)
     if err != nil {
     	log.Fatal(err)
     }
     fmt.Printf("%d", countResp.TotalTokens)
-    response, err := client.Models.GenerateContent(ctx, "gemini-1.5-flash-001", []*genai.Content{
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", []*genai.Content{
     	genai.NewContentFromText(prompt, genai.RoleUser),
     }, &genai.GenerateContentConfig{
     	CachedContent: cache.Name,
@@ -747,7 +745,7 @@ Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Opt
     	SystemInstruction: genai.NewContentFromText("You are a cat. Your name is Neko.", genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, config)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, config)
     if err != nil {
     	log.Fatal(err)
     }

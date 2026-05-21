@@ -53,7 +53,7 @@ For the lowest-latency streaming transcription path, use [`gpt-realtime-whisper`
       </td>
       <td>Existing Whisper integrations.</td>
       <td>
-        Not natively streaming in the same way as{" "}
+        Not natively streaming in the same way as 
         <code>gpt-realtime-whisper</code>.
       </td>
     </tr>

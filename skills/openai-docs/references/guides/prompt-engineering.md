@@ -43,7 +43,7 @@ A key choice to make when generating content through the API is which model you 
 - **GPT models** are fast, cost-efficient, and highly intelligent, but benefit from more explicit instructions around how to accomplish tasks.
 - **Large and small (mini or nano) models** offer trade-offs for speed, cost, and intelligence. Large models are more effective at understanding prompts and solving problems across domains, while small models are generally faster and cheaper to use.
 
-When in doubt, [`gpt-4.1`](https://developers.openai.com/api/docs/models/gpt-4.1) offers a solid combination of intelligence, speed, and cost effectiveness.
+When in doubt, [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) offers a strong default for general-purpose text generation and prompt iteration.
 
 ## Prompt engineering
 
@@ -497,35 +497,30 @@ Models can only handle so much data within the context they consider during a ge
 
 Models have different context window sizes from the low 100k range up to one million tokens for newer GPT-4.1 models. [Refer to the model docs](https://developers.openai.com/api/docs/models) for specific context window sizes per model.
 
-## Prompting GPT-5 models
+## Prompting current GPT-5 series models
 
-GPT models like [`gpt-5`](https://developers.openai.com/api/docs/models/gpt-5) benefit from precise instructions that explicitly provide the logic and data required to complete the task in the prompt. GPT-5 in particular is highly steerable and responsive to well-specified prompts. To get the most out of GPT-5, refer to the prompting guide in the cookbook.
+GPT models like [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) benefit from precise instructions that explicitly provide the logic and data required to complete the task in the prompt. To get the most out of the latest GPT-5 series model, start with the current prompting guide.
 
-<a
-  href="https://cookbook.openai.com/examples/gpt-5/gpt-5_prompting_guide"
-  target="_blank"
-  rel="noreferrer"
->
+<a href="/api/docs/guides/prompt-guidance">
   
 
 <span slot="icon">
       </span>
-    Get the most out of prompting GPT-5 with the tips and tricks in this
-    prompting guide, extracted from real-world use cases and practical
-    experience.
+    Get the most out of prompting the latest GPT-5 series model with current
+    guidance, practical examples, and migration notes.
 
 
 </a>
 
-### GPT-5 prompting best practices
+### Prompting best practices for the latest GPT-5 series model
 
-While the [cookbook](https://developers.openai.com/cookbook/examples/gpt-5/gpt-5_prompting_guide) has the best and most comprehensive guidance for prompting this model, here are a few best practices to keep in mind.
+For the full current treatment, use the [prompt guidance](https://developers.openai.com/api/docs/guides/prompt-guidance) guide. The practical reminders below still apply.
 
 Coding
 
 #### Coding
 
-Prompting GPT-5 for coding tasks is most effective when following a few best practices: define the agent's role, enforce structured tool use with examples, require thorough testing for correctness, and set Markdown standards for clean output.
+Prompting `gpt-5.5` for coding tasks is most effective when following a few best practices: define the agent's role, enforce structured tool use with examples, require thorough testing for correctness, and set Markdown standards for clean output.
 
 **Explicit role and workflow guidance**
 Frame the model as a software engineering agent with well-defined responsibilities. Provide clear instructions for using tools like `functions.run` for code tasks, and specify when not to use certain modes—for example, avoid interactive execution unless necessary.
@@ -539,11 +534,14 @@ Include concrete examples of how to invoke commands with the provided functions,
 **Markdown standards**
 Guide the model to generate clean, semantically correct markdown using inline code, code fences, lists, and tables where appropriate—and to format file paths, functions, and classes with backticks.
 
-For detailed guidance and prompt samples specific to coding, see our [GPT-5 prompting guide](https://developers.openai.com/cookbook/examples/gpt-5/gpt-5_prompting_guide).
+For detailed guidance and prompt samples specific to coding, see our [prompt guidance](https://developers.openai.com/api/docs/guides/prompt-guidance) guide.
 
 Front-end engineering
 
-[GPT-5](https://developers.openai.com/api/docs/guides/latest-model) performs well at building front ends from scratch as well as contributing to large, established codebases. To get the best results, we recommend using the following libraries:
+[GPT-5.5](https://developers.openai.com/api/docs/models/gpt-5.5)
+performs well at building front ends from scratch as well as contributing to
+large, established codebases. To get the best results, we recommend using the
+following libraries:
 
 - **Styling / UI:** Tailwind CSS, shadcn/ui, Radix Themes
 - **Icons:** Lucide, Material Symbols, Heroicons
@@ -573,11 +571,11 @@ For front-end engineering work in larger codebases, we've found that adding thes
 - **Pages:** Provide templates for common layouts.
 - **Agent Instructions:** Ask the model to confirm design assumptions, scaffold projects, enforce standards, integrate APIs, test states, and document code.
 
-For detailed guidance and prompt samples specific to frontend development, see our [frontend engineering cookbook.](https://developers.openai.com/cookbook/examples/gpt-5/gpt-5_frontend)
+For detailed guidance and prompt samples specific to frontend development, see our [prompt guidance](https://developers.openai.com/api/docs/guides/prompt-guidance) guide.
 
 Agentic tasks
 
-For agentic and long-running rollouts with GPT-5, focus your prompts on three core practices: plan tasks thoroughly to ensure complete resolution, provide clear preambles for major tool usage decisions, and use a TODO tool to track workflow and progress in an organized manner.
+For agentic and long-running rollouts with `gpt-5.5`, focus your prompts on three core practices: plan tasks thoroughly to ensure complete resolution, provide clear preambles for major tool usage decisions, and use a TODO tool to track workflow and progress in an organized manner.
 
 **Planning and persistence**
 Instruct the model to resolve the full query before yielding control, decomposing it into sub-tasks and reflecting after each tool call to confirm completeness.
@@ -611,7 +609,7 @@ Before you call a tool explain why you are calling it
 
 Use a TODO list tool or rubric to enforce structured planning and avoid missed steps.
 
-For detailed guidance and prompt samples specific to building agents with GPT-5 , see the [GPT-5 prompting guide.](https://developers.openai.com/cookbook/examples/gpt-5/gpt-5_prompting_guide)
+For detailed guidance and prompt samples specific to building agents, see the [prompt guidance](https://developers.openai.com/api/docs/guides/prompt-guidance) guide.
 
 ## Prompting reasoning models
 

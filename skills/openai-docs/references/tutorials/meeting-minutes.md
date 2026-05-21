@@ -25,17 +25,17 @@ pip install python-docx
   <div className="preview-info">
     <div className="description">
       The first step in transcribing the audio from a meeting is to pass the
-      audio file of the meeting into our{" "}
+      audio file of the meeting into our 
       <a href="/api/docs/api-reference/audio">/v1/audio API</a>. Whisper, the
       model that powers the audio API, is capable of converting spoken language
-      into written text. To start, we will avoid passing a{" "}
+      into written text. To start, we will avoid passing a 
       <a href="/api/docs/api-reference/audio/createTranscription#audio/createTranscription-prompt">
         prompt
-      </a>{" "}
-      or{" "}
+      </a> 
+      or 
       <a href="/api/docs/api-reference/audio/createTranscription#audio/createTranscription-temperature-4">
         temperature
-      </a>{" "}
+      </a> 
       (optional parameters to control the model's output) and stick with the
       default values.
     </div>

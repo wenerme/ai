@@ -244,7 +244,7 @@ Updated: 2026-03-01
 
 <strong>Source IDs vs. locators:</strong> A source ID is a stable,
   model-generated identifier such as <code>block1</code>. A locator is the
-  precise UI-rendered highlight, such as <code>lines L8-L13</code> or{" "}
+  precise UI-rendered highlight, such as <code>lines L8-L13</code> or 
   <code>Paragraph 21</code>. In general, the model should emit the source ID,
   while your system resolves or renders the locator. Mixing the two too early
   tends to increase formatting errors.
@@ -271,7 +271,7 @@ our models are trained on. If you choose different marker values, keep the overa
 For tool calls, <code>turnN</code> increments once per tool invocation, not
   once per individual result. Within a single invocation, sources are
   distinguished by suffixes such as <code>file0</code>, <code>file1</code>, and
-  so on. In a single-response system, all references will be{" "}
+  so on. In a single-response system, all references will be 
   <code>turn0...</code> only if the model makes exactly one tool call before
   answering. If it makes multiple tool calls, you may instead see references
   like <code>turn0fileX</code>, <code>turn1fileX</code>, and so on.
@@ -537,7 +537,7 @@ The Court held that the District Court lacked personal jurisdiction over the pet
 ```
 
 <strong>Note:</strong> OpenAI-hosted tools such as web search provide
-  automatic inline citations. If you want to use hosted tools instead, see the{" "}
-  <a href="/api/docs/guides/tools">tools overview</a>,{" "}
-  <a href="/api/docs/guides/tools-web-search">web search guide</a>, and{" "}
+  automatic inline citations. If you want to use hosted tools instead, see the 
+  <a href="/api/docs/guides/tools">tools overview</a>, 
+  <a href="/api/docs/guides/tools-web-search">web search guide</a>, and 
   <a href="/api/docs/guides/tools-file-search">file search guide</a>.

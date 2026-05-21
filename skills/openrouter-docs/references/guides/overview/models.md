@@ -5,7 +5,7 @@
 
 # Models
 
-Explore and browse 300+ models and providers [on our website](/models), or [with our API](/docs/api-reference/models/get-models). You can also subscribe to our [RSS feed](/api/v1/models?use_rss=true) to stay updated on new models.
+Explore and browse 300+ models and providers [on our website](https://openrouter.ai/models), or [with our API](/docs/api/api-reference/models/get-models). You can also subscribe to our [RSS feed](/api/v1/models?use_rss=true) to stay updated on new models.
 
 ## Query Parameters
 
@@ -39,7 +39,7 @@ curl "https://openrouter.ai/api/v1/models?output_modalities=text,image"
 curl "https://openrouter.ai/api/v1/models?output_modalities=all"
 ```
 
-The same parameter is available on the [`/v1/models/count`](/docs/api-reference/models/count) endpoint so that counts stay consistent with list results.
+The same parameter is available on the [`/v1/models/count`](/docs/api/api-reference/models/list-models-count) endpoint so that counts stay consistent with list results.
 
 ### `supported_parameters`
 
@@ -51,7 +51,7 @@ curl "https://openrouter.ai/api/v1/models?supported_parameters=tools"
 
 ## Models API Standard
 
-Our [Models API](/docs/api-reference/models/get-models) makes the most important information about all LLMs freely available as soon as we confirm it.
+Our [Models API](/docs/api/api-reference/models/get-models) makes the most important information about all LLMs freely available as soon as we confirm it.
 
 ### API Response Schema
 

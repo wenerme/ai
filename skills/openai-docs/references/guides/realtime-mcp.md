@@ -246,7 +246,7 @@ ws.send(json.dumps(event))
 ```
 
 
-Remote MCP servers{" "}
+Remote MCP servers 
   <strong>don't automatically receive the full conversation context</strong>,
   but <strong>they can see any data the model sends in a tool call</strong>.
   <strong>Keep the tool surface narrow</strong> with <code>allowed_tools</code>,

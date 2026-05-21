@@ -17,7 +17,7 @@ See the [Codex docs](https://developers.openai.com/codex) for setup guides, refe
 
 ## Integrate with coding models
 
-For most API-based code generation, start with **`gpt-5.5`**. It handles both general-purpose work and coding, which makes it a strong default when your application needs to write code, reason about requirements, inspect docs, and handle broader workflows in one place.
+For most API-based code generation, start with <strong>`gpt-5.5`</strong>. It handles both general-purpose work and coding, which makes it a strong default when your application needs to write code, reason about requirements, inspect docs, and handle broader workflows in one place.
 
 This example shows how you can use the [Responses API](https://developers.openai.com/api/docs/api-reference/responses) for a code generation use case:
 
@@ -28,7 +28,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const result = await openai.responses.create({
-  model: "gpt-5.5",
+  model: "${latestMainlineModelSlug}",
   input: "Find the null pointer exception: ...your code here...",
   reasoning: { effort: "high" },
 });
@@ -41,7 +41,7 @@ from openai import OpenAI
 client = OpenAI()
 
 result = client.responses.create(
-    model="gpt-5.5",
+    model="${latestMainlineModelSlug}",
     input="Find the null pointer exception: ...your code here...",
     reasoning={ "effort": "high" },
 )
@@ -54,7 +54,7 @@ curl https://api.openai.com/v1/responses \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
   -d '{
-    "model": "gpt-5.5",
+    "model": "${latestMainlineModelSlug}",
     "input": "Find the null pointer exception: ...your code here...",
     "reasoning": { "effort": "high" }
   }'
@@ -70,6 +70,6 @@ The demo applications below were one shot generations, i.e. generated from a sin
 ## Next steps
 
 - Visit the [Codex docs](https://developers.openai.com/codex) to learn what you can do with Codex, set up Codex in whichever interface you choose, or find more details.
-- Read [Using GPT-5.5](https://developers.openai.com/api/docs/guides/latest-model) for model selection, features, and migration guidance.
-- See [Prompt guidance for GPT-5.5](https://developers.openai.com/api/docs/guides/prompt-guidance) for prompting patterns that work well on coding and agentic tasks.
+- Read <a href="/api/docs/guides/latest-model">Using GPT-5.5</a> for model selection, features, and migration guidance.
+- See <a href="/api/docs/guides/prompt-guidance">Prompt guidance for GPT-5.5</a> for prompting patterns that work well on coding and agentic tasks.
 - Compare [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5) and [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex) on the model pages.

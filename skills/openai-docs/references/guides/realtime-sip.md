@@ -67,7 +67,7 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/accept" \
   -H "Content-Type: application/json" \
   -d '{
         "type": "realtime",
-        "model": "gpt-realtime",
+        "model": "gpt-realtime-2",
         "instructions": "You are Alex, a friendly concierge for Example Corp."
       }'
 ```

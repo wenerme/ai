@@ -33,14 +33,14 @@ Language models read and write text in chunks called tokens. In English, a token
 
 As a rough rule of thumb, 1 token is approximately 4 characters or 0.75 words for English text.
 
-Check out our{" "}
+Check out our 
   <a
     href="https://platform.openai.com/tokenizer"
     target="_blank"
     rel="noreferrer"
   >
     Tokenizer tool
-  </a>{" "}
+  </a> 
   to test specific strings and see how they are translated into tokens.
 
 For example, the string `"ChatGPT is great!"` is encoded into six tokens: `["Chat", "G", "PT", " is", " great", "!"]`.
