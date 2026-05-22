@@ -33,8 +33,8 @@ A monitor issues health monitor requests at regular intervals to evaluate the he
 
 When a pool [becomes unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/), your load balancer takes that pool out of the endpoint rotation.
 
-* [ Dashboard ](#tab-panel-6687)
-* [ API ](#tab-panel-6688)
+* [ Dashboard ](#tab-panel-7193)
+* [ API ](#tab-panel-7194)
 
 **Set up the monitor**
 
@@ -61,7 +61,7 @@ You can create a monitor within the [load balancer workflow](https://developers.
          * Make sure that the value is relatively static and within the first 10 KB of the HTML page.  
    * **Simulate Zone**:  
          * It is recommended to use the same zone in which the Load Balancer exists.  
-         * Changes the egress zone settings of a health monitor request to ensure compatibility with features like [authenticated origin pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), and [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/).  
+         * Changes the egress zone settings of a health monitor request to ensure compatibility with features like [Authenticated Origin Pulls (mTLS)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), [Bring your own CA (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), and [HTTP/2 to Origin](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/).  
    * **Follow Redirects**:  
          * Instead of reporting a `301` or `302` code as unhealthy, the health monitor request follows redirects to the final endpoint.  
    * **Configure Request Header(s)**:  
@@ -262,8 +262,8 @@ Within Cloudflare, pools represent your endpoints and how they are organized. As
 
 If you are familiar with DNS terminology, think of a pool as a “record set,” except Cloudflare only returns addresses that are considered healthy. You can attach health monitors to individual pools for customized monitoring. A pool can have either a single monitor or a monitor group attached — but not both.
 
-* [ Dashboard ](#tab-panel-6691)
-* [ API ](#tab-panel-6692)
+* [ Dashboard ](#tab-panel-7197)
+* [ API ](#tab-panel-7198)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 
@@ -535,8 +535,8 @@ After creating the pool, you would also want to [create a new notification](http
 
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
 
-* [ Dashboard ](#tab-panel-6685)
-* [ API ](#tab-panel-6686)
+* [ Dashboard ](#tab-panel-7191)
+* [ API ](#tab-panel-7192)
 
 To confirm pool health using the dashboard:
 
@@ -563,8 +563,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-6689)
-* [ API ](#tab-panel-6690)
+* [ Dashboard ](#tab-panel-7195)
+* [ API ](#tab-panel-7196)
 
 To create a Public or a Private load balancer in the dashboard:
 

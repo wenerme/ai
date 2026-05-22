@@ -14,6 +14,29 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/casb.xml) 
 
+## 2026-05-19
+
+  
+**CASB adds support for Claude Compliance API**   
+
+[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/) now integrates with the [Claude Compliance API ↗](https://support.claude.com/en/articles/13015708-access-the-compliance-api). This enhancement gives security teams visibility into Claude usage patterns, admin activity, and compliance-relevant events across their organization.
+
+The Claude Compliance API provides structured access to audit logs and administrative actions within Claude Enterprise and Claude Platform. Cloudflare CASB ingests this data to surface security findings that help organizations enhance their security posture and enforce AI governance.
+
+#### Key capabilities
+
+Starting today, security teams can scan for security findings across the following assets:
+
+* **Public projects** — Projects set to public visibility
+* **Project attachment** — Files and documents added to projects that violate DLP policies
+* **Chat files** — User-uploaded and provider-generated files that violate DLP policies
+* **Chat messages** — User prompts and provider responses that violate DLP policies
+* **Artifacts** — Provider-generated documents and files that violate DLP policies
+
+#### Learn more
+
+This [integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/) is available to all Cloudflare One customers. New Cloudflare customers can sign up and start with their first two integrations for free. Existing customers can enable the integration directly in the dashboard. The integration begins scanning immediately and surfaces findings in the dashboard within minutes.
+
 ## 2026-04-09
 
   

@@ -19,10 +19,12 @@ A plugin can contain:
   or helper scripts for a task.
 - **Apps:** connections to tools like GitHub, Slack, or Google Drive, so
   Codex can read information from those tools and take actions in them.
-- **MCP servers:** services that give Codex access to additional tools or
-  shared information, often from systems outside your local project.
+- **MCP servers:** services that give Codex access to more tools or shared
+  information, often from systems outside your local project.
 
-More plugin capabilities are coming soon.
+You can share plugins by publishing them through a marketplace source, such as a
+repo marketplace for a project or team. See [Build plugins](https://developers.openai.com/codex/plugins/build)
+for marketplace setup, packaging, and distribution guidance.
 
 ## Use and install plugins
 
@@ -32,9 +34,16 @@ Open **Plugins** in the Codex app to browse and install curated plugins.
 
 <CodexScreenshot
   alt="Codex Plugins page"
-  lightSrc="/images/codex/plugins/directory.png"
-  darkSrc="/images/codex/plugins/directory_dark.png"
+  lightSrc="/images/codex/plugins/directory.webp"
+  darkSrc="/images/codex/plugins/directory-dark.webp"
 />
+
+The plugin directory groups plugins into categories:
+
+- **Curated by OpenAI:** highlighted plugins available to all Codex users.
+- **Shared with you:** plugins shared by other members of your ChatGPT
+  workspace.
+- **Created by you:** plugins you created or added to your own workspace.
 
 ### Plugin directory in the CLI
 
@@ -117,7 +126,7 @@ privacy, and data-sharing policies.
 - Bundled skills are available as soon as you install the plugin.
 - If a plugin includes apps, Codex may prompt you to install or sign in to
   those apps in ChatGPT during setup or the first time you use them.
-- If a plugin includes MCP servers, they may require additional setup or
+- If a plugin includes MCP servers, they may require extra setup or
   authentication before you can use them.
 - When Codex sends data through a bundled app, that app's terms and privacy
   policy apply.
@@ -142,4 +151,5 @@ enabled = false
 
 If you want to create, test, or distribute your own plugin, see
 [Build plugins](https://developers.openai.com/codex/plugins/build). That page covers local scaffolding,
-manual marketplace setup, plugin manifests, and packaging guidance.
+manual marketplace setup, workspace sharing, plugin manifests, and packaging
+guidance.

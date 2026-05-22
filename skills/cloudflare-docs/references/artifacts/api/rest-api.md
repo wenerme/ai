@@ -834,7 +834,7 @@ Request body:
 
 * `repo` ` RepoName ` required
 * `scope` ` "read" | "write" ` optional (default: "write")
-* `ttl` ` number ` optional (seconds, default: 86400)
+* `ttl` ` number ` optional — Token time-to-live in seconds. Minimum 60 (1 minute), maximum 31,536,000 (1 year). Defaults to 86,400 (24 hours).
 
 Response type:
 

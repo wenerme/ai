@@ -36,6 +36,14 @@ Lists the organization roles assigned to a user within the organization.
 
     Identifier for the role.
 
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
   - `created_at: Optional[int]`
 
     When the role was created.
@@ -99,6 +107,12 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {

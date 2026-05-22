@@ -18,6 +18,7 @@ Use the Artifacts API reference to understand the interfaces exposed across Work
 * [ REST API ](https://developers.cloudflare.com/artifacts/api/rest-api/)
 * [ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/)
 * [ Wrangler commands ](https://developers.cloudflare.com/artifacts/api/wrangler/)
+* [ Errors ](https://developers.cloudflare.com/artifacts/api/errors/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/api/","name":"API"}}]}

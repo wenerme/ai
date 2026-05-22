@@ -93,6 +93,42 @@ If Codex can't see or control an app, open **System Settings > Privacy &
 Security** and check **Screen Recording** and **Accessibility** for the Codex
 app.
 
+## Locked use
+
+Locked computer use lets Codex use Computer Use after your Mac locks, but only
+after you enable it. Use it when a Codex task needs to use desktop apps from a
+connected device after the Mac locks.
+
+When you enable locked computer use, Codex installs an Apple
+[authorization plug-in](https://developer.apple.com/documentation/security/authorization-plug-ins)
+that participates in the macOS unlock flow.
+
+Locked use is intentionally narrow. It's not a general-purpose remote-unlock
+path for your Mac, and it doesn't let other apps or local processes unlock the
+computer.
+
+To use locked computer use:
+
+1. Open **Codex settings > Computer Use**.
+2. Enable locked computer use.
+3. Start a task that uses computer use from a connected device after your Mac's
+   screen has locked.
+
+When a Codex task accesses an app via Computer Use after your Mac locks, Codex
+temporarily unlocks the Mac while blocking local use and preserving the locked
+screen protections. Before unlocking, Codex checks whether the unlock attempt is
+for an active, trusted computer use turn. Outside that short-lived window, Codex
+denies the unlock and asks you to unlock manually if needed.
+
+Locked use includes safeguards:
+
+- The authorization window is short-lived and scoped to the current unlock
+  attempt.
+- Automatic unlock is available only to Codex during active computer use turns.
+- Codex covers every display while the desktop is temporarily unlocked.
+- If Codex detects local keyboard or pointer input, it relocks the Mac and
+  pauses automatic unlock until you unlock it manually.
+
 ## Safety guidance
 
 With computer use, Codex can view screen content, take screenshots, and interact

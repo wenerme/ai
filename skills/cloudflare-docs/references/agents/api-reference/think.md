@@ -31,8 +31,8 @@ npm install @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zo
 
 ### Server
 
-* [  JavaScript ](#tab-panel-4086)
-* [  TypeScript ](#tab-panel-4087)
+* [  JavaScript ](#tab-panel-4120)
+* [  TypeScript ](#tab-panel-4121)
 
 JavaScript
 
@@ -128,8 +128,8 @@ That is it. Think handles the WebSocket chat protocol, message persistence, the 
 
 ### Client
 
-* [  JavaScript ](#tab-panel-4102)
-* [  TypeScript ](#tab-panel-4103)
+* [  JavaScript ](#tab-panel-4136)
+* [  TypeScript ](#tab-panel-4137)
 
 JavaScript
 
@@ -273,8 +273,8 @@ function Chat() {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-4076)
-* [  wrangler.toml ](#tab-panel-4077)
+* [  wrangler.jsonc ](#tab-panel-4110)
+* [  wrangler.toml ](#tab-panel-4111)
 
 JSONC
 
@@ -286,7 +286,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-18",
+  "compatibility_date": "2026-05-21",
 
   "compatibility_flags": [
 
@@ -343,7 +343,7 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-05-18"
+compatibility_date = "2026-05-21"
 
 compatibility_flags = ["nodejs_compat"]
 
@@ -408,19 +408,23 @@ Both Think and [AIChatAgent](https://developers.cloudflare.com/agents/api-refere
 
 Think has several ways to start or continue a turn. Choose based on who starts the work and what the caller needs back.
 
-| Use case                                                   | API                                           |
-| ---------------------------------------------------------- | --------------------------------------------- |
-| A browser user sends chat messages                         | useAgentChat over the WebSocket chat protocol |
-| Server code can wait for the model response                | saveMessages()                                |
-| Server code needs fast durable acceptance and later status | submitMessages()                              |
-| Parent code needs direct streaming RPC to a child          | subAgent(...).chat()                          |
-| A parent delegates work to a retained child agent          | agentTool() or runAgentTool()                 |
-| Add context without starting a model turn                  | persistMessages()                             |
-| Continue after the latest assistant message                | continueLastTurn()                            |
+| Use case                                                       | API                                           |
+| -------------------------------------------------------------- | --------------------------------------------- |
+| A browser user sends chat messages                             | useAgentChat over the WebSocket chat protocol |
+| Server code can wait for the model response                    | saveMessages()                                |
+| Server code needs fast durable acceptance and later status     | submitMessages()                              |
+| Parent code needs direct streaming RPC to a specific child     | subAgent(...).chat()                          |
+| A parent delegates work to a retained child agent              | agentTool() or runAgentTool()                 |
+| Surround a turn with idempotent app-owned side effects         | startFiber()                                  |
+| Coordinate multi-step durable orchestration                    | Workflows                                     |
+| Add context or messages without starting a model turn          | persistMessages()                             |
+| Advanced subclass or recovery code continues an assistant turn | continueLastTurn()                            |
 
 Use `saveMessages()` when the caller owns the trigger and can wait for the turn to finish. Use [submitMessages()](#submitmessages) when timeout ambiguity would make retries unsafe.
 
 Use `chat()` for low-level parent-to-child streaming when your code owns forwarding, cancellation, and replay policy. Use [Agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/) when a parent model or workflow delegates to a child agent and you want retained child runs, event replay, abort bridging, and UI drill-in.
+
+Use [startFiber()](https://developers.cloudflare.com/agents/api-reference/durable-execution/#startfiber) outside Think when the durable unit is an application job around a turn: accepting a webhook once, restoring a serialized channel or thread target, posting a visible reply, or recording app-level recovery policy. Think submissions own conversation admission and turn serialization; managed fibers own external job acceptance, idempotent side effects, and application recovery.
 
 ## Configuration overrides
 
@@ -434,14 +438,14 @@ Use `chat()` for low-level parent-to-child streaming when your code owns forward
 | configureSession()    | identity                       | Add context blocks, compaction, search, skills — refer to [Sessions](https://developers.cloudflare.com/agents/api-reference/sessions/) |
 | messageConcurrency    | "queue"                        | How overlapping submits behave — refer to [Message concurrency](#message-concurrency)                                                  |
 | waitForMcpConnections | false                          | Wait for MCP servers before inference                                                                                                  |
-| chatRecovery          | true                           | Wrap WebSocket, programmatic, and continuation turns in runFiber for durable execution                                                 |
+| chatRecovery          | true                           | Wrap WebSocket, sub-agent, programmatic, and continuation turns in runFiber for durable execution                                      |
 
 ## Dynamic configuration
 
 Think's class generics match `Agent<Env, State, Props>`. Persisted runtime configuration is typed at the `configure<T>()` and `getConfig<T>()` call sites, stored in SQLite, and survives hibernation and restarts.
 
-* [  JavaScript ](#tab-panel-4082)
-* [  TypeScript ](#tab-panel-4083)
+* [  JavaScript ](#tab-panel-4116)
+* [  TypeScript ](#tab-panel-4117)
 
 JavaScript
 
@@ -507,8 +511,8 @@ export class MyAgent extends Think<Env> {
 
 Expose configuration to the client via `@callable`:
 
-* [  JavaScript ](#tab-panel-4084)
-* [  TypeScript ](#tab-panel-4085)
+* [  JavaScript ](#tab-panel-4118)
+* [  TypeScript ](#tab-panel-4119)
 
 JavaScript
 
@@ -572,8 +576,8 @@ export class MyAgent extends Think<Env> {
 
 Think uses [Session](https://developers.cloudflare.com/agents/api-reference/sessions/) for conversation storage. Override `configureSession` to add persistent memory, compaction, search, and skills:
 
-* [  JavaScript ](#tab-panel-4092)
-* [  TypeScript ](#tab-panel-4093)
+* [  JavaScript ](#tab-panel-4126)
+* [  TypeScript ](#tab-panel-4127)
 
 JavaScript
 
@@ -700,8 +704,8 @@ Every Think agent gets `this.workspace` — a virtual filesystem backed by Durab
 
 By default, the workspace stores everything in SQLite. For large files, override `workspace` to add R2 spillover:
 
-* [  JavaScript ](#tab-panel-4090)
-* [  TypeScript ](#tab-panel-4091)
+* [  JavaScript ](#tab-panel-4124)
+* [  TypeScript ](#tab-panel-4125)
 
 JavaScript
 
@@ -771,8 +775,8 @@ export class MyAgent extends Think<Env> {
 
 This requires an R2 bucket binding:
 
-* [  wrangler.jsonc ](#tab-panel-4074)
-* [  wrangler.toml ](#tab-panel-4075)
+* [  wrangler.jsonc ](#tab-panel-4108)
+* [  wrangler.toml ](#tab-panel-4109)
 
 JSONC
 
@@ -816,8 +820,8 @@ bucket_name = "agent-files"
 
 Override `getTools()` to add your own tools. These are standard AI SDK `tool()` definitions with Zod schemas:
 
-* [  JavaScript ](#tab-panel-4106)
-* [  TypeScript ](#tab-panel-4107)
+* [  JavaScript ](#tab-panel-4140)
+* [  TypeScript ](#tab-panel-4141)
 
 JavaScript
 
@@ -1008,8 +1012,8 @@ Think inherits MCP client support from the `Agent` base class. MCP tools from co
 
 Set `waitForMcpConnections` to ensure MCP servers are connected before inference runs:
 
-* [  JavaScript ](#tab-panel-4088)
-* [  TypeScript ](#tab-panel-4089)
+* [  JavaScript ](#tab-panel-4122)
+* [  TypeScript ](#tab-panel-4123)
 
 JavaScript
 
@@ -1057,8 +1061,8 @@ export class MyAgent extends Think<Env> {
 
 Add MCP servers programmatically or via `@callable` methods:
 
-* [  JavaScript ](#tab-panel-4098)
-* [  TypeScript ](#tab-panel-4099)
+* [  JavaScript ](#tab-panel-4132)
+* [  TypeScript ](#tab-panel-4133)
 
 JavaScript
 
@@ -1149,8 +1153,8 @@ npm install @cloudflare/codemode
 
 ```
 
-* [  JavaScript ](#tab-panel-4104)
-* [  TypeScript ](#tab-panel-4105)
+* [  JavaScript ](#tab-panel-4138)
+* [  TypeScript ](#tab-panel-4139)
 
 JavaScript
 
@@ -1234,8 +1238,8 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-4078)
-* [  wrangler.toml ](#tab-panel-4079)
+* [  wrangler.jsonc ](#tab-panel-4112)
+* [  wrangler.toml ](#tab-panel-4113)
 
 JSONC
 
@@ -1273,8 +1277,8 @@ binding = "LOADER"
 
 For richer filesystem access, pass a `state` backend:
 
-* [  JavaScript ](#tab-panel-4094)
-* [  TypeScript ](#tab-panel-4095)
+* [  JavaScript ](#tab-panel-4128)
+* [  TypeScript ](#tab-panel-4129)
 
 JavaScript
 
@@ -1320,8 +1324,8 @@ createExecuteTool({
 
 Give your agent access to the Chrome DevTools Protocol (CDP) for web page inspection, scraping, screenshots, and debugging. Requires `@cloudflare/codemode` and a Browser Run binding.
 
-* [  JavaScript ](#tab-panel-4108)
-* [  TypeScript ](#tab-panel-4109)
+* [  JavaScript ](#tab-panel-4142)
+* [  TypeScript ](#tab-panel-4143)
 
 JavaScript
 
@@ -1401,8 +1405,8 @@ export class MyAgent extends Think<Env> {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-4080)
-* [  wrangler.toml ](#tab-panel-4081)
+* [  wrangler.jsonc ](#tab-panel-4114)
+* [  wrangler.toml ](#tab-panel-4115)
 
 JSONC
 
@@ -1458,8 +1462,8 @@ This adds two tools:
 
 For a custom Chrome endpoint, pass `cdpUrl` instead of `browser`:
 
-* [  JavaScript ](#tab-panel-4096)
-* [  TypeScript ](#tab-panel-4097)
+* [  JavaScript ](#tab-panel-4130)
+* [  TypeScript ](#tab-panel-4131)
 
 JavaScript
 
@@ -1499,8 +1503,8 @@ Extensions are dynamically loaded sandboxed Workers that add tools at runtime. T
 
 Extensions require a `worker_loaders` binding:
 
-* [  JavaScript ](#tab-panel-4100)
-* [  TypeScript ](#tab-panel-4101)
+* [  JavaScript ](#tab-panel-4134)
+* [  TypeScript ](#tab-panel-4135)
 
 JavaScript
 
@@ -1552,8 +1556,8 @@ export class MyAgent extends Think<Env> {
 
 Define extensions that load at startup:
 
-* [  JavaScript ](#tab-panel-4126)
-* [  TypeScript ](#tab-panel-4127)
+* [  JavaScript ](#tab-panel-4160)
+* [  TypeScript ](#tab-panel-4161)
 
 JavaScript
 
@@ -1683,8 +1687,8 @@ Extension tools are namespaced — a `math` extension with an `add` tool becomes
 
 Give the model `createExtensionTools` so it can load extensions dynamically:
 
-* [  JavaScript ](#tab-panel-4114)
-* [  TypeScript ](#tab-panel-4115)
+* [  JavaScript ](#tab-panel-4148)
+* [  TypeScript ](#tab-panel-4149)
 
 JavaScript
 
@@ -1806,8 +1810,8 @@ The context block is registered as `notes_scratchpad` (namespaced by extension n
 
 The individual tool factories are exported for use with custom storage backends:
 
-* [  JavaScript ](#tab-panel-4110)
-* [  TypeScript ](#tab-panel-4111)
+* [  JavaScript ](#tab-panel-4144)
+* [  TypeScript ](#tab-panel-4145)
 
 JavaScript
 
@@ -1865,8 +1869,8 @@ import {
 
 Implement the operations interface for your storage backend:
 
-* [  JavaScript ](#tab-panel-4112)
-* [  TypeScript ](#tab-panel-4113)
+* [  JavaScript ](#tab-panel-4146)
+* [  TypeScript ](#tab-panel-4147)
 
 JavaScript
 
@@ -2346,8 +2350,8 @@ Think supports tools that execute in the browser. The client sends serializable 
 
 For dynamic client-side tools, pass `tools` to `useAgentChat`. Tools with an `execute` function are registered with the server as client-executed tools:
 
-* [  JavaScript ](#tab-panel-4124)
-* [  TypeScript ](#tab-panel-4125)
+* [  JavaScript ](#tab-panel-4156)
+* [  TypeScript ](#tab-panel-4157)
 
 JavaScript
 
@@ -2447,8 +2451,8 @@ For most apps, prefer defining tools on the server and using `onToolCall` for br
 
 Handle browser-side tool execution on the client with `onToolCall`:
 
-* [  JavaScript ](#tab-panel-4118)
-* [  TypeScript ](#tab-panel-4119)
+* [  JavaScript ](#tab-panel-4152)
+* [  TypeScript ](#tab-panel-4153)
 
 JavaScript
 
@@ -2528,8 +2532,8 @@ The `messageConcurrency` property controls how overlapping user submits behave w
 | "drop"                                        | Ignore overlapping submits entirely. Messages are not persisted.                                                                    |
 | { strategy: "debounce", debounceMs?: number } | Trailing-edge latest with a quiet window (default 750ms).                                                                           |
 
-* [  JavaScript ](#tab-panel-4116)
-* [  TypeScript ](#tab-panel-4117)
+* [  JavaScript ](#tab-panel-4150)
+* [  TypeScript ](#tab-panel-4151)
 
 JavaScript
 
@@ -2581,6 +2585,8 @@ export class SearchAgent extends Think<Env> {
 
 Think broadcasts streaming responses to all connected WebSocket clients. When multiple browser tabs are connected to the same agent, all tabs see the streamed response in real time. Tool call states (pending, result, approval) are broadcast to all tabs.
 
+Programmatic `chat()` turns and `clearMessages()` also broadcast message updates to connected `useAgentChat` clients, so browser clients stay in sync without reconnecting.
+
 ## Agent tools
 
 Use [Agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/) when a parent chat agent should run a Think sub-agent as a retained, streaming tool. The parent uses `agentTool()` or `runAgentTool()` from `agents/agent-tools`; the child Think instance keeps its own messages, tools, resumable stream, and storage.
@@ -2612,6 +2618,7 @@ async chat(
 
 | Method           | When it fires                                                   |
 | ---------------- | --------------------------------------------------------------- |
+| onStart(event)   | Before work starts; exposes the request ID for cancellation     |
 | onEvent(json)    | For each streaming chunk (JSON-serialized UIMessageChunk)       |
 | onDone()         | After the turn completes and the assistant message is persisted |
 | onError(message) | On error during the turn (if not provided, the error is thrown) |
@@ -2622,10 +2629,12 @@ async chat(
 | ------ | ----------------------------------------- |
 | signal | AbortSignal to cancel the turn mid-stream |
 
+Tools belong to the child agent. Define durable capabilities with the child's `getTools()`, extensions, MCP tools, or client tool schemas. Legacy callers that pass `options.tools` to `chat()` receive a warning and the value is ignored.
+
 #### Example: parent calling a child
 
-* [  JavaScript ](#tab-panel-4144)
-* [  TypeScript ](#tab-panel-4145)
+* [  JavaScript ](#tab-panel-4178)
+* [  TypeScript ](#tab-panel-4179)
 
 JavaScript
 
@@ -2706,6 +2715,8 @@ TypeScript
 
 import { Think } from "@cloudflare/think";
 
+import type { StreamCallback } from "@cloudflare/think";
+
 
 export class ParentAgent extends Think<Env> {
 
@@ -2773,12 +2784,115 @@ export class ChildAgent extends Think<Env> {
 
 ```
 
-#### Aborting a sub-agent turn
+#### Cancelling a sub-agent turn
 
-Pass an `AbortSignal` to cancel mid-stream. When aborted, the partial assistant message is still persisted.
+Use `onStart` and `cancelChat()` for RPC-safe cancellation across a sub-agent boundary:
 
-* [  JavaScript ](#tab-panel-4120)
-* [  TypeScript ](#tab-panel-4121)
+* [  JavaScript ](#tab-panel-4166)
+* [  TypeScript ](#tab-panel-4167)
+
+JavaScript
+
+```
+
+let requestId;
+
+
+const callback = {
+
+  onStart(event) {
+
+    requestId = event.requestId;
+
+  },
+
+  onEvent(json) {
+
+    // Forward stream chunks.
+
+  },
+
+  onDone() {},
+
+  onError(error) {
+
+    console.error(error);
+
+  },
+
+};
+
+
+const turn = child.chat("Long analysis task", callback);
+
+
+// Later, from another RPC call or failure handler:
+
+if (requestId) {
+
+  await child.cancelChat(requestId, "client disconnected");
+
+}
+
+
+await turn;
+
+
+```
+
+TypeScript
+
+```
+
+let requestId: string | undefined;
+
+
+const callback: StreamCallback = {
+
+  onStart(event) {
+
+    requestId = event.requestId;
+
+  },
+
+  onEvent(json) {
+
+    // Forward stream chunks.
+
+  },
+
+  onDone() {},
+
+  onError(error) {
+
+    console.error(error);
+
+  },
+
+};
+
+
+const turn = child.chat("Long analysis task", callback);
+
+
+// Later, from another RPC call or failure handler:
+
+if (requestId) {
+
+  await child.cancelChat(requestId, "client disconnected");
+
+}
+
+
+await turn;
+
+
+```
+
+If the caller and callee are not separated by Workers RPC, you can also pass an `AbortSignal` to cancel mid-stream:
+
+* [  JavaScript ](#tab-panel-4154)
+* [  TypeScript ](#tab-panel-4155)
 
 JavaScript
 
@@ -2816,6 +2930,8 @@ await child.chat("Long analysis task", callback, {
 
 ```
 
+`cancelChat(requestId, reason?)` is a no-op if the turn already completed or the request ID is unknown. When aborted, the partial assistant message is still persisted.
+
 ### saveMessages
 
 Inject messages and trigger a model turn without a WebSocket connection. Use for scheduled responses, webhook-triggered turns, proactive agents, or chaining from `onChatResponse`.
@@ -2845,8 +2961,8 @@ Pass `options.signal` to cancel a programmatic turn from the Durable Object that
 
 #### Static messages
 
-* [  JavaScript ](#tab-panel-4122)
-* [  TypeScript ](#tab-panel-4123)
+* [  JavaScript ](#tab-panel-4158)
+* [  TypeScript ](#tab-panel-4159)
 
 JavaScript
 
@@ -2894,8 +3010,8 @@ await this.saveMessages([
 
 When multiple `saveMessages` calls queue up, the function form runs with the latest messages when the turn actually starts:
 
-* [  JavaScript ](#tab-panel-4128)
-* [  TypeScript ](#tab-panel-4129)
+* [  JavaScript ](#tab-panel-4162)
+* [  TypeScript ](#tab-panel-4163)
 
 JavaScript
 
@@ -2947,8 +3063,8 @@ await this.saveMessages((current) => [
 
 Trigger a turn from a cron schedule:
 
-* [  JavaScript ](#tab-panel-4132)
-* [  TypeScript ](#tab-panel-4133)
+* [  JavaScript ](#tab-panel-4168)
+* [  TypeScript ](#tab-panel-4169)
 
 JavaScript
 
@@ -3080,8 +3196,8 @@ async submitMessages(
 
 `submitMessages()` accepts serializable `UIMessage[]` values. It does not accept the function form supported by `saveMessages((messages) => ...)`, because durable submissions persist work before execution and cannot store closures. The array must contain at least one message.
 
-* [  JavaScript ](#tab-panel-4136)
-* [  TypeScript ](#tab-panel-4137)
+* [  JavaScript ](#tab-panel-4172)
+* [  TypeScript ](#tab-panel-4173)
 
 JavaScript
 
@@ -3174,8 +3290,8 @@ return Response.json({
 
 Pass an `idempotencyKey` from your external system. Retrying with the same key returns the existing submission with `accepted: false` instead of inserting duplicate messages:
 
-* [  JavaScript ](#tab-panel-4130)
-* [  TypeScript ](#tab-panel-4131)
+* [  JavaScript ](#tab-panel-4164)
+* [  TypeScript ](#tab-panel-4165)
 
 JavaScript
 
@@ -3233,8 +3349,8 @@ If you pass both `submissionId` and `idempotencyKey`, they must identify the sam
 
 Use the submission APIs to inspect active work, cancel a durable submission, and clean up terminal records:
 
-* [  JavaScript ](#tab-panel-4138)
-* [  TypeScript ](#tab-panel-4139)
+* [  JavaScript ](#tab-panel-4174)
+* [  TypeScript ](#tab-panel-4175)
 
 JavaScript
 
@@ -3342,8 +3458,8 @@ Use `abortRequest()` when you know the request ID. Use `abortAllRequests()` for 
 
 Think can wrap chat turns in Durable Object fibers for durable execution. When a DO is evicted mid-turn, the turn can be recovered on restart.
 
-* [  JavaScript ](#tab-panel-4134)
-* [  TypeScript ](#tab-panel-4135)
+* [  JavaScript ](#tab-panel-4170)
+* [  TypeScript ](#tab-panel-4171)
 
 JavaScript
 
@@ -3391,8 +3507,8 @@ When `chatRecovery` is `true`, WebSocket turns, sub-agent `chat()` turns, durabl
 
 When an interrupted chat fiber is detected after DO restart, Think calls `onChatRecovery`:
 
-* [  JavaScript ](#tab-panel-4142)
-* [  TypeScript ](#tab-panel-4143)
+* [  JavaScript ](#tab-panel-4180)
+* [  TypeScript ](#tab-panel-4181)
 
 JavaScript
 
@@ -3518,8 +3634,8 @@ protected hasPendingInteraction(): boolean
 
 Returns a promise that resolves to `true` when the agent reaches a stable state, or `false` if the timeout is exceeded.
 
-* [  JavaScript ](#tab-panel-4140)
-* [  TypeScript ](#tab-panel-4141)
+* [  JavaScript ](#tab-panel-4176)
+* [  TypeScript ](#tab-panel-4177)
 
 JavaScript
 

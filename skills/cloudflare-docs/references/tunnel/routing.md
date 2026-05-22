@@ -45,6 +45,20 @@ The table below lists the service types you can route to a public hostname. Non-
 | BASTION      | Allows cloudflared to act as a jump host, providing access to any local address.                                                                                                                                                                                                                                                                                                                                               | bastion                             |
 | HELLO\_WORLD | Test server for validating your Cloudflare Tunnel connection (for [locally managed tunnels](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/configuration-file/#file-structure-for-published-applications) only).                                                                                                                                                                                 | hello\_world                        |
 
+## IPv6 service addresses
+
+When the service value is an IPv6 literal, wrap the address in square brackets as defined by [RFC 3986 ↗](https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2). The brackets are required so that the `:` characters in the address are not confused with the port separator.
+
+| Service type | Example service value       |
+| ------------ | --------------------------- |
+| HTTP         | http://\[2001:db8::1\]:8000 |
+| HTTPS        | https://\[2001:db8::1\]:443 |
+| TCP          | tcp://\[2001:db8::1\]:2222  |
+| SSH          | ssh://\[2001:db8::1\]:22    |
+| RDP          | rdp://\[2001:db8::1\]:3389  |
+
+Hostnames and IPv4 addresses do not need brackets — `http://localhost:8000` and `http://192.0.2.1:8000` are valid as-is.
+
 ## DNS records
 
 When you create a tunnel, Cloudflare generates a subdomain at `<UUID>.cfargotunnel.com`. You point a CNAME record at this subdomain to route traffic from your hostname to the tunnel.
@@ -55,8 +69,8 @@ The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the sam
 
 To create a DNS record for a Cloudflare Tunnel:
 
-* [ Dashboard ](#tab-panel-8805)
-* [ CLI ](#tab-panel-8806)
+* [ Dashboard ](#tab-panel-8843)
+* [ CLI ](#tab-panel-8844)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

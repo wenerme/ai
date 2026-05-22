@@ -62,8 +62,8 @@ See [Debugging](https://developers.cloudflare.com/workers/vite-plugin/reference/
 * `tunnel` ` boolean | { name?: string; autoStart?: boolean } ` optional  
 Expose your local dev server over a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/).  
 Provide an object to configure a named tunnel or control whether the tunnel starts automatically. Press `t + Enter` to start or close the tunnel. Set `tunnel.autoStart` to `true` if you want the tunnel to open when Vite starts.  
-   * [  JavaScript ](#tab-panel-9967)  
-   * [  TypeScript ](#tab-panel-9968)  
+   * [  JavaScript ](#tab-panel-10025)  
+   * [  TypeScript ](#tab-panel-10026)  
 vite.config.js  
 ```  
 import { defineConfig } from "vite";  

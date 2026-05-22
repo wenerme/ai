@@ -49,7 +49,7 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 * **Use and serve tools** — Define server-side tools, client-side tools that run in the browser, and [human-in-the-loop](https://developers.cloudflare.com/agents/concepts/human-in-the-loop/) approval flows. Expose your agent's tools to other agents and LLMs via [MCP](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/).
 * **Act on their own** — [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) on a delay, at a specific time, or on a cron. Agents can wake themselves up, do work, and go back to sleep — without a user present.
 * **Browse the web** — Give your agents [browser tools](https://developers.cloudflare.com/agents/api-reference/browse-the-web/) powered by the Chrome DevTools Protocol to scrape, screenshot, debug, and interact with web pages.
-* **Talk to users** — Build real-time [voice agents](https://developers.cloudflare.com/agents/api-reference/voice/) with speech-to-text, text-to-speech, and conversation persistence — audio streams over WebSocket.
+* **Talk to users** — Build real-time [voice agents](https://developers.cloudflare.com/agents/api-reference/voice/) with speech-to-text, text-to-speech, and conversation persistence, or connect messenger platforms with [Chat SDK](https://developers.cloudflare.com/agents/api-reference/chat-sdk/) and store conversation state in Agents sub-agents.
 * **Orchestrate work** — Run multi-step [workflows](https://developers.cloudflare.com/agents/api-reference/run-workflows/) with automatic retries, coordinate across [sub-agents](https://developers.cloudflare.com/agents/api-reference/sub-agents/), or run chat-capable [agent tools](https://developers.cloudflare.com/agents/api-reference/agent-tools/) with retained streaming timelines.
 * **React to events** — Handle [inbound email](https://developers.cloudflare.com/agents/api-reference/email/) (see the [email agent example ↗](https://github.com/cloudflare/agents/tree/main/examples/email-agent)), HTTP requests, WebSocket messages, and state changes — all from the same class.
 
@@ -57,8 +57,8 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 
 An agent is a TypeScript class. Methods marked with `@callable()` become typed RPC that clients can call directly over WebSocket.
 
-* [  JavaScript ](#tab-panel-3222)
-* [  TypeScript ](#tab-panel-3223)
+* [  JavaScript ](#tab-panel-3238)
+* [  TypeScript ](#tab-panel-3239)
 
 JavaScript
 
@@ -141,8 +141,8 @@ function Counter() {
 
 For AI chat, extend `AIChatAgent` instead. Messages are persisted automatically, streams resume on disconnect, and the React hook handles the UI.
 
-* [  JavaScript ](#tab-panel-3224)
-* [  TypeScript ](#tab-panel-3225)
+* [  JavaScript ](#tab-panel-3240)
+* [  TypeScript ](#tab-panel-3241)
 
 JavaScript
 

@@ -988,7 +988,7 @@ Returns a list of input items for a given response.
 
         - `type: Literal["open_page"]`
 
-          The action type. Always `open_page`.
+          The action type.
 
           - `"open_page"`
 

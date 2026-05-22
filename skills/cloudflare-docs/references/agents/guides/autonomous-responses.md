@@ -24,6 +24,7 @@ The key primitives:
 | ----------------- | -------------------------------------------------------------------------------- |
 | saveMessages      | Inject a message and trigger the LLM — the server-side equivalent of sendMessage |
 | submitMessages    | Durably accept a Think turn for async execution and inspect it later             |
+| startFiber        | Durably accept application-owned side effects around a turn                      |
 | persistMessages   | Store messages without triggering a response — for injecting context silently    |
 | onChatResponse    | React when any response completes, including ones you did not initiate           |
 | isServerStreaming | Client-side flag: true when a server-initiated stream is active                  |
@@ -40,8 +41,8 @@ Use `saveMessages()` when the caller can wait for the model turn to finish.
 
 Use `submitMessages()` with Think when the caller needs a fast durable receipt, idempotent retry, and later status inspection. This is useful for webhook handlers, RPC callers, and parent Workers with strict timeout limits:
 
-* [  JavaScript ](#tab-panel-4336)
-* [  TypeScript ](#tab-panel-4337)
+* [  JavaScript ](#tab-panel-4372)
+* [  TypeScript ](#tab-panel-4373)
 
 JavaScript
 
@@ -129,6 +130,8 @@ return Response.json({
 
 `submitMessages()` stores pending work first and appends the messages to the conversation Session only when the submission starts executing. It accepts serializable `UIMessage[]` values, not the function form supported by `saveMessages((messages) => ...)`.
 
+Use [startFiber()](https://developers.cloudflare.com/agents/api-reference/durable-execution/#startfiber) outside Think when the durable unit is a surrounding application job, such as accepting a webhook once, restoring provider state, posting a visible reply, and recording recovery policy. `submitMessages()` owns Think's conversation admission; managed fibers own external side effects around that turn.
+
 For the full Think API, refer to [submitMessages()](https://developers.cloudflare.com/agents/api-reference/think/#submitmessages).
 
 ### When to use `saveMessages` vs `onChatResponse`
@@ -149,8 +152,8 @@ Always call `waitUntilStable()` before reading `this.messages` or calling `saveM
 
 It returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves. If nothing is pending, it returns immediately.
 
-* [  JavaScript ](#tab-panel-4334)
-* [  TypeScript ](#tab-panel-4335)
+* [  JavaScript ](#tab-panel-4370)
+* [  TypeScript ](#tab-panel-4371)
 
 JavaScript
 
@@ -206,8 +209,8 @@ Without this guard, you risk reading stale messages or overlapping with an in-fl
 
 A daily digest agent that summarizes activity every morning. Cron schedules are idempotent by default, so calling `schedule()` in `onStart` is safe — it does not create duplicates across Durable Object restarts.
 
-* [  JavaScript ](#tab-panel-4342)
-* [  TypeScript ](#tab-panel-4343)
+* [  JavaScript ](#tab-panel-4378)
+* [  TypeScript ](#tab-panel-4379)
 
 JavaScript
 
@@ -641,8 +644,8 @@ async addBackgroundContext(data: string) {
 
 ### Broadcasting state
 
-* [  JavaScript ](#tab-panel-4338)
-* [  TypeScript ](#tab-panel-4339)
+* [  JavaScript ](#tab-panel-4374)
+* [  TypeScript ](#tab-panel-4375)
 
 JavaScript
 
@@ -940,6 +943,7 @@ The `messageConcurrency` setting on `AIChatAgent` controls how overlapping user 
 | ---------------- | ----------------------------------------------------------------------------------------------------------- |
 | schedule()       | Schedule a callback that calls saveMessages — see the cron example above                                    |
 | queue()          | Queue a method that calls saveMessages for deferred processing                                              |
+| startFiber()     | Durably accept and inspect application-owned work around a message turn                                     |
 | runWorkflow()    | Start a Workflow; use AgentWorkflow.agent RPC to call a method that triggers saveMessages or submitMessages |
 | onEmail()        | Convert email content to a chat message and call saveMessages                                               |
 | onRequest()      | Handle webhooks and call saveMessages or submitMessages                                                     |
@@ -949,8 +953,8 @@ The `messageConcurrency` setting on `AIChatAgent` controls how overlapping user 
 
 Pass an `AbortSignal` when the same Durable Object starts and controls the turn:
 
-* [  JavaScript ](#tab-panel-4340)
-* [  TypeScript ](#tab-panel-4341)
+* [  JavaScript ](#tab-panel-4376)
+* [  TypeScript ](#tab-panel-4377)
 
 JavaScript
 
@@ -1027,6 +1031,8 @@ if (result.status === "aborted") {
 `continueLastTurn()` accepts the same `options.signal` argument. `AbortSignal` objects cannot cross Durable Object RPC boundaries, and the signal is in memory only. If the Durable Object hibernates mid-turn and chat recovery is enabled, the recovered turn runs without the original signal.
 
 Use `cancelSubmission(submissionId)` for durable cancellation when work was accepted with `submitMessages()` or when cancellation must cross Worker and Durable Object RPC boundaries.
+
+Use `cancelFiber(fiberId)` when the durable unit was accepted with `startFiber()` and the cancellation should apply to the surrounding application job rather than a Think turn.
 
 ## Important notes
 

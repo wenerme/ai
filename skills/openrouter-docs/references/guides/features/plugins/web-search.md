@@ -5,7 +5,7 @@
 
 # Web Search
 
-The web search plugin is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. Server tools give the model control over when and how often to search, rather than always running once per request.
+For improved quality results, try the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search). Server tools give the model control over when and how often to search, rather than always running once per request.
 
 You can incorporate relevant web search results for *any* model on OpenRouter by activating and customizing the `web` plugin, or by appending `:online` to the model slug:
 

@@ -49,7 +49,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.  
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.  
 ```
 
 ## Cloudflare platform access

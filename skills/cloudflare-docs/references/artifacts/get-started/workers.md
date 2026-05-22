@@ -64,8 +64,8 @@ cd artifacts-worker
 
 Open your Wrangler config file and add the Artifacts binding:
 
-* [  wrangler.jsonc ](#tab-panel-4343)
-* [  wrangler.toml ](#tab-panel-4344)
+* [  wrangler.jsonc ](#tab-panel-4799)
+* [  wrangler.toml ](#tab-panel-4800)
 
 JSONC
 
@@ -81,7 +81,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-21",
 
   "artifacts": [
 
@@ -110,7 +110,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-21"
 
 
 [[artifacts]]
@@ -148,8 +148,8 @@ Wrangler adds an `Artifacts` type to your generated `worker-configuration.d.ts` 
 
 Replace `src/index.ts` with the following code:
 
-* [  JavaScript ](#tab-panel-4345)
-* [  TypeScript ](#tab-panel-4346)
+* [  JavaScript ](#tab-panel-4801)
+* [  TypeScript ](#tab-panel-4802)
 
 src/index.js
 
@@ -209,16 +209,9 @@ src/index.ts
 
 ```
 
-interface Env {
-
-  ARTIFACTS: Artifacts;
-
-}
-
-
 export default {
 
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request, env) {
 
     const url = new URL(request.url);
 
@@ -227,11 +220,8 @@ export default {
 
       // Read the repo name from the request body so the route is reusable.
 
-      const body = (await request.json().catch(() => ({}))) as {
+      const body = await request.json().catch(() => ({}));
 
-        name?: string;
-
-      };
 
       const repoName = body.name ?? "starter-repo";
 
@@ -264,12 +254,12 @@ export default {
 
   },
 
-} satisfies ExportedHandler<Env>;
+};
 
 
 ```
 
-This Worker does one job: create an Artifacts repo and return the values your Git client needs next.
+This Worker creates an Artifacts repo and returns the remote URL and token your Git client needs to push and pull.
 
 Protect token-issuing routes
 
@@ -295,12 +285,10 @@ yarn wrangler dev
 pnpm wrangler dev
 ```
 
-In a second terminal, choose one of the following ways to create a repo through your Worker.
+Then, open a second terminal and send a request to your Worker to create a new Artifacts repo:
 
-If you rerun this guide, use a different repo name in the request body.
-
-* [ Manual ](#tab-panel-4341)
-* [ jq ](#tab-panel-4342)
+* [ Manual ](#tab-panel-4797)
+* [ jq ](#tab-panel-4798)
 
 Terminal window
 
@@ -319,7 +307,7 @@ curl http://localhost:8787/repos \
 
 ```
 
-The response resembles the following:
+Your Worker will call `env.ARTIFACTS.create()` and return three values you will need for Git operations:
 
 ```
 
@@ -336,9 +324,9 @@ The response resembles the following:
 
 ```
 
-Use the exact `remote` value from the response. The example above uses `<ACCOUNT_ID>` as a placeholder for your Cloudflare account ID.
-
-The returned token encodes its expiry directly in the `?expires=` suffix.
+* `name`: the repo name. Must be unique within the namespace.
+* `remote`: the Git remote URL for this repo. `<ACCOUNT_ID>` will be your actual Cloudflare account ID.
+* `token`: a short-lived credential for Git operations. The token encodes its expiry directly in the `?expires=` suffix as a Unix timestamp.
 
 Copy the `remote` and `token` values into local shell variables:
 
@@ -373,7 +361,7 @@ export ARTIFACTS_TOKEN=$(printf '%s' "$RESPONSE" | jq -r '.token')
 
 ## 5\. Push your first commit with git
 
-Create a local repository and push it to Artifacts:
+In the previous step, your Worker created an empty Artifacts repo. Now you will create a local Git repo, add a file, and push it to Artifacts — the same way you would push to any Git remote.
 
 Terminal window
 
@@ -398,7 +386,7 @@ git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" push -u origin 
 
 ```
 
-This uses the recommended header-based form and keeps the token out of the remote URL.
+The `-c http.extraHeader` flag passes the token as a request header, which keeps it out of your Git config and shell history.
 
 If you need a self-contained remote URL for a short-lived command, build one from the token secret instead:
 
@@ -446,6 +434,17 @@ git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
 ```
 
 ## 7\. Deploy your Worker
+
+Switch back to your Worker project directory:
+
+Terminal window
+
+```
+
+cd artifacts-worker
+
+
+```
 
 Deploy the Worker so you can create repos without running `wrangler dev`:
 

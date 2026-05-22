@@ -12,11 +12,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Namespaces
 
-Artifacts uses namespaces as top-level containers for repositories. Use them to separate repositories by environment, such as `prod`, `staging`, and `dev`, or by tenant and shard.
+Artifacts uses namespaces as top-level containers for repositories. Use them to separate repositories by environment, such as `prod`, `staging`, and `dev`, by tenant, or shard.
 
-You do not create namespaces separately.
-
-Choose a namespace name, then use that name in your Wrangler config or REST API path when you create the first repo. Artifacts creates the namespace implicitly at that point.
+Namespaces are created implicitly — there is no separate step to create one. You choose a namespace name, then reference it in your Wrangler config or REST API path. The first time you create a repository under that name, Artifacts creates the namespace for you automatically.
 
 ## Use namespaces as containers
 
@@ -42,8 +40,8 @@ If you have not chosen a namespace strategy yet, use `default` in the examples t
 
 Use the same namespace name in your Wrangler binding:
 
-* [  wrangler.jsonc ](#tab-panel-4327)
-* [  wrangler.toml ](#tab-panel-4328)
+* [  wrangler.jsonc ](#tab-panel-4783)
+* [  wrangler.toml ](#tab-panel-4784)
 
 JSONC
 

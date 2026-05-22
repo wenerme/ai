@@ -20,12 +20,14 @@ Workers VPC allows you to connect your Workers to your private APIs, services, a
 
 With Workers VPC, you can configure a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to establish secure, private connections from your private networks to Cloudflare. Then, you can configure a [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) for each service in the external private network you need to connect to, and use [VPC Service bindings](https://developers.cloudflare.com/workers-vpc/api/) to connect from Workers. VPC Services support both HTTP and TCP service types, allowing you to connect to web APIs and databases (through [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)).
 
+You can also use [VPC Network bindings](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) to give Workers broader access to your private infrastructure — services behind [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/), subnet and hostname routes announced through Cloudflare Tunnel or Mesh, and destinations connected through [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramps (GRE, IPsec, and CNI).
+
 Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
 
-* [ index.ts ](#tab-panel-8277)
-* [ wrangler.jsonc ](#tab-panel-8278)
+* [ index.ts ](#tab-panel-9170)
+* [ wrangler.jsonc ](#tab-panel-9171)
 
 TypeScript
 

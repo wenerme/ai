@@ -20,8 +20,8 @@ Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespa
 
 Add the Artifacts binding to your Wrangler config file:
 
-* [  wrangler.jsonc ](#tab-panel-4297)
-* [  wrangler.toml ](#tab-panel-4298)
+* [  wrangler.jsonc ](#tab-panel-4734)
+* [  wrangler.toml ](#tab-panel-4735)
 
 JSONC
 
@@ -96,8 +96,10 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or de
 * `opts.setDefaultBranch` ` string ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-4303)
-* [  TypeScript ](#tab-panel-4304)
+`create()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save these values if you need them later.
+
+* [  JavaScript ](#tab-panel-4740)
+* [  TypeScript ](#tab-panel-4741)
 
 JavaScript
 
@@ -167,16 +169,16 @@ async function createRepo(artifacts: Artifacts) {
 
 ```
 
-The returned token encodes its expiry directly in the `?expires=` suffix.
-
 ### `get(name)`
 
 * `name` ` RepoName ` required
 * Returns ` Promise<ArtifactsRepo> `
 * Throws if the repo does not exist or is not ready yet.
 
-* [  JavaScript ](#tab-panel-4299)
-* [  TypeScript ](#tab-panel-4300)
+`get()` returns a handle to an existing repo. Use the handle to call async methods on the repo, such as `createToken()`, `listTokens()`, `revokeToken()`, and `fork()`.
+
+* [  JavaScript ](#tab-panel-4736)
+* [  TypeScript ](#tab-panel-4737)
 
 JavaScript
 
@@ -186,7 +188,9 @@ async function getRepoHandle(artifacts) {
 
   const repo = await artifacts.get("starter-repo");
 
-  return repo;
+  const token = await repo.createToken("read", 3600);
+
+  return token;
 
 }
 
@@ -201,7 +205,9 @@ async function getRepoHandle(artifacts: Artifacts) {
 
   const repo = await artifacts.get("starter-repo");
 
-  return repo;
+  const token = await repo.createToken("read", 3600);
+
+  return token;
 
 }
 
@@ -214,8 +220,8 @@ async function getRepoHandle(artifacts: Artifacts) {
 * `opts.cursor` ` Cursor ` optional
 * Returns ` Promise<ArtifactsRepoListResult> `
 
-* [  JavaScript ](#tab-panel-4307)
-* [  TypeScript ](#tab-panel-4308)
+* [  JavaScript ](#tab-panel-4744)
+* [  TypeScript ](#tab-panel-4745)
 
 JavaScript
 
@@ -287,8 +293,10 @@ Import a repository from an external git remote.
 * `params.target.opts.readOnly` ` boolean ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-4315)
-* [  TypeScript ](#tab-panel-4316)
+`import()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save the `remote` and `name` values if you need them later.
+
+* [  JavaScript ](#tab-panel-4750)
+* [  TypeScript ](#tab-panel-4751)
 
 JavaScript
 
@@ -370,15 +378,13 @@ async function importFromGitHub(artifacts: Artifacts) {
 
 ```
 
-Imported repos return the same create-style token format. The token encodes its expiry directly in the `?expires=` suffix.
-
 ### `delete(name)`
 
 * `name` ` RepoName ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-4301)
-* [  TypeScript ](#tab-panel-4302)
+* [  JavaScript ](#tab-panel-4738)
+* [  TypeScript ](#tab-panel-4739)
 
 JavaScript
 
@@ -408,40 +414,7 @@ async function deleteRepo(artifacts: Artifacts) {
 
 ## Repo handle methods
 
-Call `await artifacts.get(name)` to get a repo handle. The handle extends `ArtifactsRepoInfo`, so repo metadata (`id`, `name`, `remote`, `defaultBranch`, etc.) is available directly as properties.
-
-* [  JavaScript ](#tab-panel-4305)
-* [  TypeScript ](#tab-panel-4306)
-
-JavaScript
-
-```
-
-async function getRemoteUrl(artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  return repo.remote;
-
-}
-
-
-```
-
-TypeScript
-
-```
-
-async function getRemoteUrl(artifacts: Artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  return repo.remote;
-
-}
-
-
-```
+Call `await artifacts.get(name)` to get a repo handle. Use the handle to call async methods on the repo.
 
 ### `createToken(scope?, ttl?)`
 
@@ -449,8 +422,8 @@ async function getRemoteUrl(artifacts: Artifacts) {
 * `ttl` ` number ` optional (seconds)
 * Returns ` Promise<ArtifactsCreateTokenResult> `
 
-* [  JavaScript ](#tab-panel-4309)
-* [  TypeScript ](#tab-panel-4310)
+* [  JavaScript ](#tab-panel-4742)
+* [  TypeScript ](#tab-panel-4743)
 
 JavaScript
 
@@ -488,8 +461,8 @@ Unlike `create()` and `import()`, `repo.createToken()` returns a structured resu
 
 * Returns ` Promise<ArtifactsTokenListResult> `
 
-* [  JavaScript ](#tab-panel-4313)
-* [  TypeScript ](#tab-panel-4314)
+* [  JavaScript ](#tab-panel-4748)
+* [  TypeScript ](#tab-panel-4749)
 
 JavaScript
 
@@ -542,8 +515,8 @@ async function listRepoTokens(artifacts: Artifacts) {
 * `tokenOrId` ` string ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-4311)
-* [  TypeScript ](#tab-panel-4312)
+* [  JavaScript ](#tab-panel-4746)
+* [  TypeScript ](#tab-panel-4747)
 
 JavaScript
 
@@ -583,8 +556,10 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 * `opts.defaultBranchOnly` ` boolean ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-4317)
-* [  TypeScript ](#tab-panel-4318)
+`fork()` returns metadata for the new repo. Save the `remote` and `name` values if you need them later.
+
+* [  JavaScript ](#tab-panel-4752)
+* [  TypeScript ](#tab-panel-4753)
 
 JavaScript
 
@@ -642,8 +617,8 @@ async function forkRepo(artifacts: Artifacts) {
 
 This example combines the binding methods in one Worker route.
 
-* [  JavaScript ](#tab-panel-4319)
-* [  TypeScript ](#tab-panel-4320)
+* [  JavaScript ](#tab-panel-4754)
+* [  TypeScript ](#tab-panel-4755)
 
 src/index.js
 
@@ -671,25 +646,6 @@ export default {
     }
 
 
-    if (request.method === "GET" && url.pathname === "/repos/starter-repo") {
-
-      const repo = await env.ARTIFACTS.get("starter-repo");
-
-      return Response.json({
-
-        id: repo.id,
-
-        name: repo.name,
-
-        remote: repo.remote,
-
-        defaultBranch: repo.defaultBranch,
-
-      });
-
-    }
-
-
     if (request.method === "POST" && url.pathname === "/tokens") {
 
       const repo = await env.ARTIFACTS.get("starter-repo");
@@ -703,7 +659,7 @@ export default {
 
     return Response.json(
 
-      { message: "Use POST /repos, GET /repos/starter-repo, or POST /tokens." },
+      { message: "Use POST /repos or POST /tokens." },
 
       { status: 404 },
 
@@ -749,25 +705,6 @@ export default {
     }
 
 
-    if (request.method === "GET" && url.pathname === "/repos/starter-repo") {
-
-      const repo = await env.ARTIFACTS.get("starter-repo");
-
-      return Response.json({
-
-        id: repo.id,
-
-        name: repo.name,
-
-        remote: repo.remote,
-
-        defaultBranch: repo.defaultBranch,
-
-      });
-
-    }
-
-
     if (request.method === "POST" && url.pathname === "/tokens") {
 
       const repo = await env.ARTIFACTS.get("starter-repo");
@@ -781,7 +718,7 @@ export default {
 
     return Response.json(
 
-      { message: "Use POST /repos, GET /repos/starter-repo, or POST /tokens." },
+      { message: "Use POST /repos or POST /tokens." },
 
       { status: 404 },
 

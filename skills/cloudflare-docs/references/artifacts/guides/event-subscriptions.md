@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Event subscriptions
 
-Artifacts emits structured events for repository lifecycle changes — creates, deletes, forks, imports, and clones. By subscribing to these events through [event subscriptions](https://developers.cloudflare.com/queues/event-subscriptions/), you can consume them from a Worker to build commit-driven automation.
+Artifacts emits structured events for repository lifecycle changes — creates, deletes, forks, imports, pushes, clones, fetches, and token changes. By subscribing to these events through [event subscriptions](https://developers.cloudflare.com/queues/event-subscriptions/), you can consume them from a Worker to build commit-driven automation.
 
 For example:
 
@@ -427,6 +427,100 @@ Triggered when updates are fetched from a repository.
     "eventSchemaVersion": 1,
 
     "eventTimestamp": "2026-05-18T15:53:51.358Z"
+
+  }
+
+}
+
+
+```
+
+#### `token.created`
+
+Triggered when a repo-scoped token is created. Includes the token ID, scope, and expiration time.
+
+**Example:**
+
+```
+
+{
+
+  "type": "cf.artifacts.repo.token.created",
+
+  "source": {
+
+    "type": "artifacts.repo",
+
+    "namespace": "default",
+
+    "repoName": "token-evt-repo"
+
+  },
+
+  "payload": {
+
+    "tokenId": "7ngdf3ww3u84t33x",
+
+    "scope": "read",
+
+    "expiresAt": "2026-05-20T16:58:14.548Z"
+
+  },
+
+  "metadata": {
+
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+
+    "eventSubscriptionId": "0ab4c7b45a39491ba5da2973f3d093a6",
+
+    "eventSchemaVersion": 1,
+
+    "eventTimestamp": "2026-05-20T16:58:14.548Z"
+
+  }
+
+}
+
+
+```
+
+#### `token.revoked`
+
+Triggered when a repo-scoped token is revoked. Includes the token ID.
+
+**Example:**
+
+```
+
+{
+
+  "type": "cf.artifacts.repo.token.revoked",
+
+  "source": {
+
+    "type": "artifacts.repo",
+
+    "namespace": "default",
+
+    "repoName": "token-evt-repo"
+
+  },
+
+  "payload": {
+
+    "tokenId": "7ngdf3ww3u84t33x"
+
+  },
+
+  "metadata": {
+
+    "accountId": "f9f79265f388666de8122cfb508d7776",
+
+    "eventSubscriptionId": "0ab4c7b45a39491ba5da2973f3d093a6",
+
+    "eventSchemaVersion": 1,
+
+    "eventTimestamp": "2026-05-20T16:58:14.548Z"
 
   }
 

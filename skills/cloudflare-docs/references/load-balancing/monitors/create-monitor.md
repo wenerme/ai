@@ -22,8 +22,8 @@ For more details about monitors, refer to [Monitors](https://developers.cloudfla
 
 ## Create a monitor
 
-* [ Dashboard ](#tab-panel-6703)
-* [ API ](#tab-panel-6704)
+* [ Dashboard ](#tab-panel-7209)
+* [ API ](#tab-panel-7210)
 
 **Set up the monitor**
 
@@ -50,7 +50,7 @@ You can create a monitor within the [load balancer workflow](https://developers.
          * Make sure that the value is relatively static and within the first 10 KB of the HTML page.  
    * **Simulate Zone**:  
          * It is recommended to use the same zone in which the Load Balancer exists.  
-         * Changes the egress zone settings of a health monitor request to ensure compatibility with features like [authenticated origin pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), and [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/).  
+         * Changes the egress zone settings of a health monitor request to ensure compatibility with features like [Authenticated Origin Pulls (mTLS)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), [Bring your own CA (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), and [HTTP/2 to Origin](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/).  
    * **Follow Redirects**:  
          * Instead of reporting a `301` or `302` code as unhealthy, the health monitor request follows redirects to the final endpoint.  
    * **Configure Request Header(s)**:  
@@ -253,8 +253,8 @@ Once your monitor is created, save its `id` property. Include this value in the 
 
 ## Edit a monitor
 
-* [ Dashboard ](#tab-panel-6699)
-* [ API ](#tab-panel-6700)
+* [ Dashboard ](#tab-panel-7205)
+* [ API ](#tab-panel-7206)
 
 To edit a monitor in the dashboard:
 
@@ -272,8 +272,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 ## Delete a monitor
 
-* [ Dashboard ](#tab-panel-6701)
-* [ API ](#tab-panel-6702)
+* [ Dashboard ](#tab-panel-7207)
+* [ API ](#tab-panel-7208)
 
 To delete a monitor in the dashboard:
 

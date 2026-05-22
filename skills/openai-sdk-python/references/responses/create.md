@@ -1080,7 +1080,7 @@ as input for the model's response.
 
           - `type: Literal["open_page"]`
 
-            The action type. Always `open_page`.
+            The action type.
 
             - `"open_page"`
 
@@ -4901,7 +4901,7 @@ as input for the model's response.
 
             - `type: Literal["open_page"]`
 
-              The action type. Always `open_page`.
+              The action type.
 
               - `"open_page"`
 

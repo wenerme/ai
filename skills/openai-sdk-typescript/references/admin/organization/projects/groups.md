@@ -48,9 +48,13 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" | "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -86,7 +90,7 @@ for await (const projectGroup of client.admin.organization.projects.groups.list(
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
-      "group_type": "group_type",
+      "group_type": "group",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -137,9 +141,13 @@ Grants a group access to a project.
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" | "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -175,7 +183,98 @@ console.log(projectGroup.group_id);
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
-  "group_type": "group_type",
+  "group_type": "group",
+  "object": "project.group",
+  "project_id": "project_id"
+}
+```
+
+## Retrieve project group
+
+`client.admin.organization.projects.groups.retrieve(stringgroupID, GroupRetrieveParamsparams, RequestOptionsoptions?): ProjectGroup`
+
+**get** `/organization/projects/{project_id}/groups/{group_id}`
+
+Retrieves a project's group.
+
+### Parameters
+
+- `groupID: string`
+
+- `params: GroupRetrieveParams`
+
+  - `project_id: string`
+
+    Path param: The ID of the project to inspect.
+
+  - `group_type?: "group" | "tenant_group"`
+
+    Query param: The type of group to retrieve.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+### Returns
+
+- `ProjectGroup`
+
+  Details about a group's membership in a project.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was granted project access.
+
+  - `group_id: string`
+
+    Identifier of the group that has access to the project.
+
+  - `group_name: string`
+
+    Display name of the group.
+
+  - `group_type: "group" | "tenant_group"`
+
+    The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+  - `object: "project.group"`
+
+    Always `project.group`.
+
+    - `"project.group"`
+
+  - `project_id: string`
+
+    Identifier of the project.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectGroup = await client.admin.organization.projects.groups.retrieve('group_id', {
+  project_id: 'project_id',
+});
+
+console.log(projectGroup.group_id);
+```
+
+#### Response
+
+```json
+{
+  "created_at": 0,
+  "group_id": "group_id",
+  "group_name": "group_name",
+  "group_type": "group",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -260,9 +359,13 @@ console.log(group.deleted);
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" | "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -336,6 +439,14 @@ Lists the project roles assigned to a group within a project.
 
     Identifier for the role.
 
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
   - `created_at: number | null`
 
     When the role was created.
@@ -401,6 +512,12 @@ for await (const roleListResponse of client.admin.organization.projects.groups.r
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -562,6 +679,133 @@ console.log(role.group);
 }
 ```
 
+## Retrieve project group role
+
+`client.admin.organization.projects.groups.roles.retrieve(stringroleID, RoleRetrieveParamsparams, RequestOptionsoptions?): RoleRetrieveResponse`
+
+**get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
+
+Retrieves a project role assigned to a group.
+
+### Parameters
+
+- `roleID: string`
+
+- `params: RoleRetrieveParams`
+
+  - `project_id: string`
+
+    The ID of the project to inspect.
+
+  - `group_id: string`
+
+    The ID of the group to inspect.
+
+### Returns
+
+- `RoleRetrieveResponse`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number | null`
+
+    When the role was created.
+
+  - `created_by: string | null`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Record<string, unknown> | null`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string | null`
+
+    Description of the role.
+
+  - `metadata: Record<string, unknown> | null`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: Array<string>`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number | null`
+
+    When the role was last updated.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const role = await client.admin.organization.projects.groups.roles.retrieve('role_id', {
+  project_id: 'project_id',
+  group_id: 'group_id',
+});
+
+console.log(role.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
 ## Unassign project role from group
 
 `client.admin.organization.projects.groups.roles.delete(stringroleID, RoleDeleteParamsparams, RequestOptionsoptions?): RoleDeleteResponse`
@@ -635,6 +879,14 @@ console.log(role.deleted);
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number | null`
 
@@ -747,6 +999,64 @@ console.log(role.deleted);
     - `resource_type: string`
 
       Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Retrieve Response
+
+- `RoleRetrieveResponse`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number | null`
+
+    When the role was created.
+
+  - `created_by: string | null`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Record<string, unknown> | null`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string | null`
+
+    Description of the role.
+
+  - `metadata: Record<string, unknown> | null`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: Array<string>`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number | null`
+
+    When the role was last updated.
 
 ### Role Delete Response
 

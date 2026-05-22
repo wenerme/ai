@@ -19,7 +19,7 @@ The short version:
 * Agents are durable identities, not always-on processes.
 * State, SQL data, schedules, and fiber checkpoints survive hibernation and restarts.
 * In-memory variables, timers, open fetches, and local closures do not survive eviction.
-* Use `keepAlive()` for active work measured in minutes, `runFiber()` when work needs recovery, and Workflows for heavyweight multi-step jobs.
+* Use `keepAlive()` for active work measured in minutes, `runFiber()` when work needs recovery, `startFiber()` when callers need durable acceptance and status, and Workflows for heavyweight multi-step jobs.
 * Use sub-agents when one parent coordinates many long-lived child contexts.
 
 ## Why Cloudflare for long-running agents
@@ -69,7 +69,7 @@ State persists in SQLite. Agent restarts on next event.
 * **`this.sql` data** — all SQLite tables you create
 * **Scheduled tasks** — stored in SQLite, trigger alarms to wake the agent
 * **Connection state** — `connection.setState()` data for each WebSocket client
-* **Fiber checkpoints** — `stash()` data from `runFiber()`
+* **Fiber checkpoints and ledgers** — `stash()` data from `runFiber()` and retained `startFiber()` status rows
 
 Any higher-level abstractions built on SQLite also survive, since they share the same durable storage.
 
@@ -324,6 +324,7 @@ try {
 | ---------------- | ------------------------------------------------------------------------- |
 | Seconds          | Normal request handling                                                   |
 | Minutes          | keepAlive() / keepAliveWhile()                                            |
+| Minutes          | startFiber() when retryable acceptance matters                            |
 | Minutes to hours | [Workflows](https://developers.cloudflare.com/agents/concepts/workflows/) |
 | Hours to days    | Async pattern: start job, hibernate, wake on completion                   |
 
@@ -332,6 +333,8 @@ try {
 An agent can be evicted at any time — a deploy, a platform restart, or hitting resource limits. If the agent was mid-task, that work is lost unless it was checkpointed.
 
 [runFiber()](https://developers.cloudflare.com/agents/api-reference/durable-execution/) provides crash-recoverable execution. It persists a row in SQLite for the duration of the work, and lets you `stash()` intermediate state. If the agent is evicted, the fiber row survives, and `onFiberRecovered()` is called on the next activation.
+
+Use [startFiber()](https://developers.cloudflare.com/agents/api-reference/durable-execution/#startfiber) when the important boundary is durable acceptance. It adds an idempotency key, retained status records, inspection, cancellation, and cleanup on top of the same fiber machinery. By default it returns after acceptance; pass `waitForCompletion: true` when the request should stay open until the accepted job reaches a terminal status. This is a good fit for webhooks where the provider may retry delivery and the agent must avoid starting duplicate visible side effects.
 
 TypeScript
 
@@ -1066,6 +1069,7 @@ Long-running agents on Cloudflare are not long-running processes. They are durab
 | **schedule() / scheduleEvery()**   | Wake the agent at future times               |
 | **keepAlive() / keepAliveWhile()** | Prevent eviction during active work          |
 | **runFiber() / stash()**           | Checkpoint and recover long tasks            |
+| **startFiber()**                   | Durably accept, inspect, and cancel jobs     |
 | **chatRecovery**                   | Recover interrupted LLM streams              |
 | **onRequest() / onEmail() / RPC**  | Wake on external events                      |
 | **runWorkflow()**                  | Delegate heavyweight multi-step work         |
@@ -1086,7 +1090,7 @@ The agent does not need to run continuously to do any of this. It just needs to 
 
 ## Related
 
-* [Durable Execution](https://developers.cloudflare.com/agents/api-reference/durable-execution/) — `runFiber()`, `stash()`, and crash recovery
+* [Durable Execution](https://developers.cloudflare.com/agents/api-reference/durable-execution/) — `runFiber()`, `startFiber()`, `stash()`, and crash recovery
 * [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) — delayed, cron, and interval tasks
 * [Retries](https://developers.cloudflare.com/agents/api-reference/retries/) — retry options and patterns
 * [Workflows](https://developers.cloudflare.com/agents/concepts/workflows/) — durable multi-step processing

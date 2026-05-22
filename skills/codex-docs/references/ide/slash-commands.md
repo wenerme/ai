@@ -16,6 +16,17 @@ Slash commands let you control Codex without leaving the chat input. Use them to
 | `/cloud`             | Switch to cloud mode to run the task remotely (requires cloud access).                 |
 | `/cloud-environment` | Choose the cloud environment to use (available only in cloud mode).                    |
 | `/feedback`          | Open the feedback dialog to submit feedback and optionally include logs.               |
+| `/goal`              | Set a persistent goal for Codex to work toward.                                        |
 | `/local`             | Switch to local mode to run the task in your workspace.                                |
 | `/review`            | Start code review mode to review uncommitted changes or compare against a base branch. |
 | `/status`            | Show the thread ID, context usage, and rate limits.                                    |
+
+If `/goal` doesn't appear in the slash command list, enable `features.goals`
+in `config.toml`:
+
+```toml
+[features]
+goals = true
+```
+
+You can also run `codex features enable goals` from the CLI or ask Codex to run it.

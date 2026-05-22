@@ -1568,6 +1568,12 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
         "Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`.",
     },
     {
+      key: "plugin_sharing",
+      type: "boolean",
+      description:
+        "Set to `false` in cloud-managed `requirements.toml` to disable workspace sharing for locally built plugins.",
+    },
+    {
       key: "features",
       type: "table",
       description:

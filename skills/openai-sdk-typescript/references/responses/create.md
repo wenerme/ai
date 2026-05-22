@@ -1071,7 +1071,7 @@ as input for the model's response.
 
               - `type: "open_page"`
 
-                The action type. Always `open_page`.
+                The action type.
 
                 - `"open_page"`
 
@@ -4888,7 +4888,7 @@ as input for the model's response.
 
             - `type: "open_page"`
 
-              The action type. Always `open_page`.
+              The action type.
 
               - `"open_page"`
 

@@ -155,6 +155,13 @@ connected host.
 Let Codex use macOS apps for GUI tasks, browser flows, and native app testing.
 
   </BentoContent>
+  <BentoContent href="/codex/appshots">
+
+### Appshots
+
+Send the frontmost Mac app window to Codex with a screenshot and available text.
+
+  </BentoContent>
   <BentoContent href="/codex/app/review">
 
 ### Review and ship changes

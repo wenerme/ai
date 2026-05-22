@@ -38,6 +38,14 @@ Lists the organization roles assigned to a group within the organization.
 
     Identifier for the role.
 
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
   - `created_at: number | null`
 
     When the role was created.
@@ -100,6 +108,12 @@ for await (const roleListResponse of client.admin.organization.groups.roles.list
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {

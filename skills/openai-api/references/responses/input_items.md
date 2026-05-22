@@ -839,7 +839,7 @@ Returns a list of input items for a given response.
 
           - `type: "open_page"`
 
-            The action type. Always `open_page`.
+            The action type.
 
             - `"open_page"`
 
@@ -3691,7 +3691,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           - `type: "open_page"`
 
-            The action type. Always `open_page`.
+            The action type.
 
             - `"open_page"`
 

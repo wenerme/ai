@@ -28,11 +28,11 @@ You need:
 * A local `git` client.
 * `jq`, if you want to extract response fields automatically.
 
-For Workers-based access instead of direct HTTP calls, use the [Workers get started guide](https://developers.cloudflare.com/artifacts/get-started/workers/).
+If you want to create and manage repos directly from a Worker (instead of calling the REST API), use the [Workers get started guide](https://developers.cloudflare.com/artifacts/get-started/workers/).
 
 ## 1\. Export your environment variables
 
-Set the variables used in the examples:
+Set the following variables using your Cloudflare account ID and Artifacts API token:
 
 Terminal window
 
@@ -53,7 +53,7 @@ export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUN
 
 Use a unique repo name each time you run this guide.
 
-Artifacts uses Bearer authentication for control-plane requests:
+Artifacts uses Bearer authentication for API requests:
 
 ```
 
@@ -66,8 +66,8 @@ Authorization: Bearer $CLOUDFLARE_API_TOKEN
 
 Choose one of the following ways to create a repo inside that namespace:
 
-* [ Manual ](#tab-panel-4339)
-* [ jq ](#tab-panel-4340)
+* [ Manual ](#tab-panel-4795)
+* [ jq ](#tab-panel-4796)
 
 Terminal window
 
@@ -117,9 +117,10 @@ The response resembles the following:
 
 ```
 
-The REST control-plane base URL and the returned Git remote use different hosts. Use the exact `result.remote` value for Git operations. The example above uses `<ACCOUNT_ID>` as a placeholder for your Cloudflare account ID.
+The response includes two values which you will need for Git operations:
 
-The returned token encodes its expiry directly in the `?expires=` suffix.
+* `remote`: the Git remote URL for this repo. `<ACCOUNT_ID>` will be your actual Cloudflare account ID. Use this URL for all Git commands (git push, git clone). Note that this uses a different URL than the REST API you used to create the repo.
+* `token`: a short-lived credential for Git operations. The token encodes its expiry directly in the `?expires=` suffix as a Unix timestamp.
 
 Copy the `remote` and `token` values from `result` into local shell variables:
 

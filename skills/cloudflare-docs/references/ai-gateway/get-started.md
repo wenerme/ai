@@ -21,11 +21,11 @@ In this guide, you will learn how to set up and use your first AI Gateway.
 Before making requests, you need two things:
 
 1. Your **Account ID** — find it in the [Cloudflare dashboard](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-2. A **Cloudflare API token** — [create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `AI Gateway - Read` and `AI Gateway - Edit` permissions. The example below also uses Workers AI, so add `Workers AI - Read` as well.
+2. A **Cloudflare API token** — [create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `AI Gateway - Read`, `AI Gateway - Edit`, and `Workers AI - Read` permissions.
 
 ## Send your first request
 
-Run the following command to make your first request through AI Gateway:
+Run the following command to make your first request through AI Gateway. This example calls a Workers AI model, which requires the `@cf/` model prefix and the `cf-aig-gateway-id` header.
 
 Terminal window
 
@@ -35,13 +35,13 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
+  --header "cf-aig-gateway-id: my-gateway" \
+
   --header "Content-Type: application/json" \
 
   --data '{
 
-    "model": "moonshotai/kimi-k2.6",
-
-    "provider": "cloudflare",
+    "model": "@cf/moonshotai/kimi-k2.6",
 
     "messages": [
 
@@ -62,14 +62,14 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 Note
 
-You do not need to create a gateway before sending requests. When no gateway ID is specified, AI Gateway uses `default` as the gateway ID and automatically creates it on the first authenticated request. To use a specific gateway, add the `cf-aig-gateway-id` header to your request. For more details, refer to [Default gateway](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#default-gateway).
+For third-party models, you do not need to specify a gateway — AI Gateway uses `default` as the gateway ID and automatically creates it on the first authenticated request. Workers AI requests always require the `cf-aig-gateway-id` header. For more details, refer to [Default gateway](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#default-gateway).
 
 Create a gateway manually
 
 You can also create gateways manually with a custom name and configuration through the dashboard or API.
 
-* [ Dashboard ](#tab-panel-4513)
-* [ API ](#tab-panel-4514)
+* [ Dashboard ](#tab-panel-4551)
+* [ API ](#tab-panel-4552)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.

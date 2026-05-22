@@ -957,6 +957,14 @@ Lists the project roles assigned to a user within a project.
 
     Identifier for the role.
 
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
   - `created_at: number | null`
 
     When the role was created.
@@ -1022,6 +1030,12 @@ for await (const roleListResponse of client.admin.organization.projects.users.ro
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -1286,6 +1300,133 @@ console.log(role.object);
 }
 ```
 
+## Retrieve project user role
+
+`client.admin.organization.projects.users.roles.retrieve(stringroleID, RoleRetrieveParamsparams, RequestOptionsoptions?): RoleRetrieveResponse`
+
+**get** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
+
+Retrieves a project role assigned to a user.
+
+### Parameters
+
+- `roleID: string`
+
+- `params: RoleRetrieveParams`
+
+  - `project_id: string`
+
+    The ID of the project to inspect.
+
+  - `user_id: string`
+
+    The ID of the user to inspect.
+
+### Returns
+
+- `RoleRetrieveResponse`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number | null`
+
+    When the role was created.
+
+  - `created_by: string | null`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Record<string, unknown> | null`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string | null`
+
+    Description of the role.
+
+  - `metadata: Record<string, unknown> | null`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: Array<string>`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number | null`
+
+    When the role was last updated.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const role = await client.admin.organization.projects.users.roles.retrieve('role_id', {
+  project_id: 'project_id',
+  user_id: 'user_id',
+});
+
+console.log(role.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
 ## Unassign project role from user
 
 `client.admin.organization.projects.users.roles.delete(stringroleID, RoleDeleteParamsparams, RequestOptionsoptions?): RoleDeleteResponse`
@@ -1359,6 +1500,14 @@ console.log(role.deleted);
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number | null`
 
@@ -1545,6 +1694,64 @@ console.log(role.deleted);
       - `name?: string | null`
 
       - `picture?: string | null`
+
+### Role Retrieve Response
+
+- `RoleRetrieveResponse`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number | null`
+
+    When the role was created.
+
+  - `created_by: string | null`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Record<string, unknown> | null`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string | null`
+
+    Description of the role.
+
+  - `metadata: Record<string, unknown> | null`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: Array<string>`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number | null`
+
+    When the role was last updated.
 
 ### Role Delete Response
 
@@ -1803,6 +2010,97 @@ const client = new OpenAI({
 });
 
 const projectServiceAccount = await client.admin.organization.projects.serviceAccounts.retrieve(
+  'service_account_id',
+  { project_id: 'project_id' },
+);
+
+console.log(projectServiceAccount.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project.service_account",
+  "role": "owner"
+}
+```
+
+## Update project service account
+
+`client.admin.organization.projects.serviceAccounts.update(stringserviceAccountID, ServiceAccountUpdateParamsparams, RequestOptionsoptions?): ProjectServiceAccount`
+
+**post** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
+
+Updates a service account in the project.
+
+### Parameters
+
+- `serviceAccountID: string`
+
+- `params: ServiceAccountUpdateParams`
+
+  - `project_id: string`
+
+    Path param: The ID of the project.
+
+  - `name?: string`
+
+    Body param: The updated service account name.
+
+  - `role?: "member" | "owner"`
+
+    Body param: The updated service account role.
+
+    - `"member"`
+
+    - `"owner"`
+
+### Returns
+
+- `ProjectServiceAccount`
+
+  Represents an individual service account in a project.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the service account was created
+
+  - `name: string`
+
+    The name of the service account
+
+  - `object: "organization.project.service_account"`
+
+    The object type, which is always `organization.project.service_account`
+
+    - `"organization.project.service_account"`
+
+  - `role: "owner" | "member"`
+
+    `owner` or `member`
+
+    - `"owner"`
+
+    - `"member"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectServiceAccount = await client.admin.organization.projects.serviceAccounts.update(
   'service_account_id',
   { project_id: 'project_id' },
 );
@@ -3283,9 +3581,13 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" | "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -3321,7 +3623,7 @@ for await (const projectGroup of client.admin.organization.projects.groups.list(
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
-      "group_type": "group_type",
+      "group_type": "group",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -3372,9 +3674,13 @@ Grants a group access to a project.
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" | "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -3410,7 +3716,98 @@ console.log(projectGroup.group_id);
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
-  "group_type": "group_type",
+  "group_type": "group",
+  "object": "project.group",
+  "project_id": "project_id"
+}
+```
+
+## Retrieve project group
+
+`client.admin.organization.projects.groups.retrieve(stringgroupID, GroupRetrieveParamsparams, RequestOptionsoptions?): ProjectGroup`
+
+**get** `/organization/projects/{project_id}/groups/{group_id}`
+
+Retrieves a project's group.
+
+### Parameters
+
+- `groupID: string`
+
+- `params: GroupRetrieveParams`
+
+  - `project_id: string`
+
+    Path param: The ID of the project to inspect.
+
+  - `group_type?: "group" | "tenant_group"`
+
+    Query param: The type of group to retrieve.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+### Returns
+
+- `ProjectGroup`
+
+  Details about a group's membership in a project.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was granted project access.
+
+  - `group_id: string`
+
+    Identifier of the group that has access to the project.
+
+  - `group_name: string`
+
+    Display name of the group.
+
+  - `group_type: "group" | "tenant_group"`
+
+    The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+  - `object: "project.group"`
+
+    Always `project.group`.
+
+    - `"project.group"`
+
+  - `project_id: string`
+
+    Identifier of the project.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectGroup = await client.admin.organization.projects.groups.retrieve('group_id', {
+  project_id: 'project_id',
+});
+
+console.log(projectGroup.group_id);
+```
+
+#### Response
+
+```json
+{
+  "created_at": 0,
+  "group_id": "group_id",
+  "group_name": "group_name",
+  "group_type": "group",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -3495,9 +3892,13 @@ console.log(group.deleted);
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" | "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -3571,6 +3972,14 @@ Lists the project roles assigned to a group within a project.
 
     Identifier for the role.
 
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
   - `created_at: number | null`
 
     When the role was created.
@@ -3636,6 +4045,12 @@ for await (const roleListResponse of client.admin.organization.projects.groups.r
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -3797,6 +4212,133 @@ console.log(role.group);
 }
 ```
 
+## Retrieve project group role
+
+`client.admin.organization.projects.groups.roles.retrieve(stringroleID, RoleRetrieveParamsparams, RequestOptionsoptions?): RoleRetrieveResponse`
+
+**get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
+
+Retrieves a project role assigned to a group.
+
+### Parameters
+
+- `roleID: string`
+
+- `params: RoleRetrieveParams`
+
+  - `project_id: string`
+
+    The ID of the project to inspect.
+
+  - `group_id: string`
+
+    The ID of the group to inspect.
+
+### Returns
+
+- `RoleRetrieveResponse`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number | null`
+
+    When the role was created.
+
+  - `created_by: string | null`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Record<string, unknown> | null`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string | null`
+
+    Description of the role.
+
+  - `metadata: Record<string, unknown> | null`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: Array<string>`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number | null`
+
+    When the role was last updated.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const role = await client.admin.organization.projects.groups.roles.retrieve('role_id', {
+  project_id: 'project_id',
+  group_id: 'group_id',
+});
+
+console.log(role.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
 ## Unassign project role from group
 
 `client.admin.organization.projects.groups.roles.delete(stringroleID, RoleDeleteParamsparams, RequestOptionsoptions?): RoleDeleteResponse`
@@ -3870,6 +4412,14 @@ console.log(role.deleted);
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number | null`
 
@@ -3982,6 +4532,64 @@ console.log(role.deleted);
     - `resource_type: string`
 
       Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Retrieve Response
+
+- `RoleRetrieveResponse`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: Array<AssignmentSource> | null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number | null`
+
+    When the role was created.
+
+  - `created_by: string | null`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Record<string, unknown> | null`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string | null`
+
+    Description of the role.
+
+  - `metadata: Record<string, unknown> | null`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: Array<string>`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number | null`
+
+    When the role was last updated.
 
 ### Role Delete Response
 
@@ -4198,6 +4806,92 @@ console.log(role.id);
 }
 ```
 
+## Retrieve project role
+
+`client.admin.organization.projects.roles.retrieve(stringroleID, RoleRetrieveParamsparams, RequestOptionsoptions?): Role`
+
+**get** `/projects/{project_id}/roles/{role_id}`
+
+Retrieves a project role.
+
+### Parameters
+
+- `roleID: string`
+
+- `params: RoleRetrieveParams`
+
+  - `project_id: string`
+
+    The ID of the project.
+
+### Returns
+
+- `Role`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string | null`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: Array<string>`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const role = await client.admin.organization.projects.roles.retrieve('role_id', {
+  project_id: 'project_id',
+});
+
+console.log(role.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "description": "description",
+  "name": "name",
+  "object": "role",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type"
+}
+```
+
 ## Update project role
 
 `client.admin.organization.projects.roles.update(stringroleID, RoleUpdateParamsparams, RequestOptionsoptions?): Role`
@@ -4381,6 +5075,734 @@ console.log(role.id);
     Always `role.deleted`.
 
     - `"role.deleted"`
+
+# Data Retention
+
+## Retrieve project data retention
+
+`client.admin.organization.projects.dataRetention.retrieve(stringprojectID, RequestOptionsoptions?): ProjectDataRetention`
+
+**get** `/organization/projects/{project_id}/data_retention`
+
+Retrieves project data retention controls.
+
+### Parameters
+
+- `projectID: string`
+
+### Returns
+
+- `ProjectDataRetention`
+
+  Represents a project's data retention control setting.
+
+  - `object: "project.data_retention"`
+
+    The object type, which is always `project.data_retention`.
+
+    - `"project.data_retention"`
+
+  - `type: "organization_default" | "none" | "zero_data_retention" | 3 more`
+
+    The configured project data retention type.
+
+    - `"organization_default"`
+
+    - `"none"`
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectDataRetention = await client.admin.organization.projects.dataRetention.retrieve(
+  'project_id',
+);
+
+console.log(projectDataRetention.object);
+```
+
+#### Response
+
+```json
+{
+  "object": "project.data_retention",
+  "type": "organization_default"
+}
+```
+
+## Update project data retention
+
+`client.admin.organization.projects.dataRetention.update(stringprojectID, DataRetentionUpdateParamsbody, RequestOptionsoptions?): ProjectDataRetention`
+
+**post** `/organization/projects/{project_id}/data_retention`
+
+Updates project data retention controls.
+
+### Parameters
+
+- `projectID: string`
+
+- `body: DataRetentionUpdateParams`
+
+  - `retention_type: "organization_default" | "none" | "zero_data_retention" | 3 more`
+
+    The desired project data retention type.
+
+    - `"organization_default"`
+
+    - `"none"`
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Returns
+
+- `ProjectDataRetention`
+
+  Represents a project's data retention control setting.
+
+  - `object: "project.data_retention"`
+
+    The object type, which is always `project.data_retention`.
+
+    - `"project.data_retention"`
+
+  - `type: "organization_default" | "none" | "zero_data_retention" | 3 more`
+
+    The configured project data retention type.
+
+    - `"organization_default"`
+
+    - `"none"`
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectDataRetention = await client.admin.organization.projects.dataRetention.update(
+  'project_id',
+  { retention_type: 'organization_default' },
+);
+
+console.log(projectDataRetention.object);
+```
+
+#### Response
+
+```json
+{
+  "object": "project.data_retention",
+  "type": "organization_default"
+}
+```
+
+## Domain Types
+
+### Project Data Retention
+
+- `ProjectDataRetention`
+
+  Represents a project's data retention control setting.
+
+  - `object: "project.data_retention"`
+
+    The object type, which is always `project.data_retention`.
+
+    - `"project.data_retention"`
+
+  - `type: "organization_default" | "none" | "zero_data_retention" | 3 more`
+
+    The configured project data retention type.
+
+    - `"organization_default"`
+
+    - `"none"`
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+# Spend Alerts
+
+## List project spend alerts
+
+`client.admin.organization.projects.spendAlerts.list(stringprojectID, SpendAlertListParamsquery?, RequestOptionsoptions?): ConversationCursorPage<ProjectSpendAlert>`
+
+**get** `/organization/projects/{project_id}/spend_alerts`
+
+Lists project spend alerts.
+
+### Parameters
+
+- `projectID: string`
+
+- `query: SpendAlertListParams`
+
+  - `after?: string`
+
+    Cursor for pagination. Provide the ID of the last spend alert from the previous response to fetch the next page.
+
+  - `before?: string`
+
+    Cursor for pagination. Provide the ID of the first spend alert from the previous response to fetch the previous page.
+
+  - `limit?: number`
+
+    A limit on the number of spend alerts to return. Defaults to 20.
+
+  - `order?: "asc" | "desc"`
+
+    Sort order for the returned spend alerts.
+
+    - `"asc"`
+
+    - `"desc"`
+
+### Returns
+
+- `ProjectSpendAlert`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: Array<string>`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix?: string | null`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "project.spend_alert"`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+// Automatically fetches more pages as needed.
+for await (const projectSpendAlert of client.admin.organization.projects.spendAlerts.list(
+  'project_id',
+)) {
+  console.log(projectSpendAlert.id);
+}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "currency": "USD",
+      "interval": "month",
+      "notification_channel": {
+        "recipients": [
+          "string"
+        ],
+        "type": "email",
+        "subject_prefix": "subject_prefix"
+      },
+      "object": "project.spend_alert",
+      "threshold_amount": 0
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Create project spend alert
+
+`client.admin.organization.projects.spendAlerts.create(stringprojectID, SpendAlertCreateParamsbody, RequestOptionsoptions?): ProjectSpendAlert`
+
+**post** `/organization/projects/{project_id}/spend_alerts`
+
+Creates a project spend alert.
+
+### Parameters
+
+- `projectID: string`
+
+- `body: SpendAlertCreateParams`
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: Array<string>`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix?: string | null`
+
+      Optional subject prefix for alert emails.
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Returns
+
+- `ProjectSpendAlert`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: Array<string>`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix?: string | null`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "project.spend_alert"`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectSpendAlert = await client.admin.organization.projects.spendAlerts.create(
+  'project_id',
+  {
+    currency: 'USD',
+    interval: 'month',
+    notification_channel: { recipients: ['string'], type: 'email' },
+    threshold_amount: 0,
+  },
+);
+
+console.log(projectSpendAlert.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "project.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+## Update project spend alert
+
+`client.admin.organization.projects.spendAlerts.update(stringalertID, SpendAlertUpdateParamsparams, RequestOptionsoptions?): ProjectSpendAlert`
+
+**post** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
+
+Updates a project spend alert.
+
+### Parameters
+
+- `alertID: string`
+
+- `params: SpendAlertUpdateParams`
+
+  - `project_id: string`
+
+    Path param: The ID of the project to update.
+
+  - `currency: "USD"`
+
+    Body param: The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    Body param: The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Body param: Email notification settings for a spend alert.
+
+    - `recipients: Array<string>`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix?: string | null`
+
+      Optional subject prefix for alert emails.
+
+  - `threshold_amount: number`
+
+    Body param: The alert threshold amount, in cents.
+
+### Returns
+
+- `ProjectSpendAlert`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: Array<string>`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix?: string | null`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "project.spend_alert"`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectSpendAlert = await client.admin.organization.projects.spendAlerts.update('alert_id', {
+  project_id: 'project_id',
+  currency: 'USD',
+  interval: 'month',
+  notification_channel: { recipients: ['string'], type: 'email' },
+  threshold_amount: 0,
+});
+
+console.log(projectSpendAlert.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "project.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+## Delete project spend alert
+
+`client.admin.organization.projects.spendAlerts.delete(stringalertID, SpendAlertDeleteParamsparams, RequestOptionsoptions?): ProjectSpendAlertDeleted`
+
+**delete** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
+
+Deletes a project spend alert.
+
+### Parameters
+
+- `alertID: string`
+
+- `params: SpendAlertDeleteParams`
+
+  - `project_id: string`
+
+    The ID of the project to update.
+
+### Returns
+
+- `ProjectSpendAlertDeleted`
+
+  Confirmation payload returned after deleting a project spend alert.
+
+  - `id: string`
+
+    The deleted spend alert ID.
+
+  - `deleted: boolean`
+
+    Whether the spend alert was deleted.
+
+  - `object: "project.spend_alert.deleted"`
+
+    Always `project.spend_alert.deleted`.
+
+    - `"project.spend_alert.deleted"`
+
+### Example
+
+```typescript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  adminAPIKey: process.env['OPENAI_ADMIN_KEY'], // This is the default and can be omitted
+});
+
+const projectSpendAlertDeleted = await client.admin.organization.projects.spendAlerts.delete(
+  'alert_id',
+  { project_id: 'project_id' },
+);
+
+console.log(projectSpendAlertDeleted.id);
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "project.spend_alert.deleted"
+}
+```
+
+## Domain Types
+
+### Project Spend Alert
+
+- `ProjectSpendAlert`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: Array<string>`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix?: string | null`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "project.spend_alert"`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Project Spend Alert Deleted
+
+- `ProjectSpendAlertDeleted`
+
+  Confirmation payload returned after deleting a project spend alert.
+
+  - `id: string`
+
+    The deleted spend alert ID.
+
+  - `deleted: boolean`
+
+    Whether the spend alert was deleted.
+
+  - `object: "project.spend_alert.deleted"`
+
+    Always `project.spend_alert.deleted`.
+
+    - `"project.spend_alert.deleted"`
 
 # Certificates
 

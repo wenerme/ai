@@ -42,8 +42,8 @@ flowchart LR
 
 ## Create a node with high availability
 
-* [ Dashboard ](#tab-panel-5151)
-* [ API ](#tab-panel-5152)
+* [ Dashboard ](#tab-panel-5189)
+* [ API ](#tab-panel-5190)
 
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
@@ -82,8 +82,8 @@ The response includes a `token` field. Use this token to register replicas.
 
 To add a replica to an existing high-availability node, install the Cloudflare One Client on a new Linux host and register it using the same node token.
 
-* [ Dashboard ](#tab-panel-5157)
-* [ API ](#tab-panel-5158)
+* [ Dashboard ](#tab-panel-5195)
+* [ API ](#tab-panel-5196)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -94,8 +94,8 @@ To add a replica to an existing high-availability node, install the Cloudflare O
 
 Installation commands
 
-* [ Debian / Ubuntu ](#tab-panel-5153)
-* [ RedHat / CentOS ](#tab-panel-5154)
+* [ Debian / Ubuntu ](#tab-panel-5191)
+* [ RedHat / CentOS ](#tab-panel-5192)
 
 Terminal window
 
@@ -122,6 +122,19 @@ sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
 
 
 ```
+
+On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the Cloudflare One Client UI:
+
+Terminal window
+
+```
+
+sudo dnf install -y epel-release
+
+
+```
+
+Then install the package:
 
 Terminal window
 
@@ -155,8 +168,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/
 ```  
 The response contains the token string.
 2. Install the client and register on a new Linux host:  
-   * [ Debian / Ubuntu ](#tab-panel-5155)  
-   * [ RedHat / CentOS ](#tab-panel-5156)  
+   * [ Debian / Ubuntu ](#tab-panel-5193)  
+   * [ RedHat / CentOS ](#tab-panel-5194)  
 Terminal window  
 ```  
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  
@@ -169,6 +182,12 @@ Terminal window
 ```  
 sudo warp-cli connector new <TOKEN> && sudo warp-cli connect  
 ```  
+On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the Cloudflare One Client UI:  
+Terminal window  
+```  
+sudo dnf install -y epel-release  
+```  
+Then install the package:  
 Terminal window  
 ```  
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&  

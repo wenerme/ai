@@ -860,7 +860,7 @@ Create items in a conversation with the given ID.
 
         - `type: "open_page"`
 
-          The action type. Always `open_page`.
+          The action type.
 
           - `"open_page"`
 
@@ -3428,7 +3428,7 @@ Create items in a conversation with the given ID.
 
           - `type: "open_page"`
 
-            The action type. Always `open_page`.
+            The action type.
 
             - `"open_page"`
 
@@ -6387,7 +6387,7 @@ List all items for a conversation with the given ID.
 
           - `type: "open_page"`
 
-            The action type. Always `open_page`.
+            The action type.
 
             - `"open_page"`
 
@@ -9279,7 +9279,7 @@ Get a single item from a conversation with the given IDs.
 
         - `type: "open_page"`
 
-          The action type. Always `open_page`.
+          The action type.
 
           - `"open_page"`
 
@@ -12176,7 +12176,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `type: "open_page"`
 
-          The action type. Always `open_page`.
+          The action type.
 
           - `"open_page"`
 
@@ -14957,7 +14957,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `type: "open_page"`
 
-            The action type. Always `open_page`.
+            The action type.
 
             - `"open_page"`
 

@@ -30,6 +30,20 @@ The table below lists the service types you can route to a public hostname. Non-
 | BASTION      | Allows cloudflared to act as a jump host, providing access to any local address.                                                                                                                                                                                                                                                                                                                                               | bastion                             |
 | HELLO\_WORLD | Test server for validating your Cloudflare Tunnel connection (for [locally managed tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/#file-structure-for-published-applications) only).                                                                                                                                 | hello\_world                        |
 
+## IPv6 service addresses
+
+When the service value is an IPv6 literal, wrap the address in square brackets as defined by [RFC 3986 ↗](https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2). The brackets are required so that the `:` characters in the address are not confused with the port separator.
+
+| Service type | Example service value       |
+| ------------ | --------------------------- |
+| HTTP         | http://\[2001:db8::1\]:8000 |
+| HTTPS        | https://\[2001:db8::1\]:443 |
+| TCP          | tcp://\[2001:db8::1\]:2222  |
+| SSH          | ssh://\[2001:db8::1\]:22    |
+| RDP          | rdp://\[2001:db8::1\]:3389  |
+
+Hostnames and IPv4 addresses do not need brackets — `http://localhost:8000` and `http://192.0.2.1:8000` are valid as-is.
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/","name":"Published applications"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/","name":"Protocols for published applications"}}]}
 ```

@@ -40,9 +40,13 @@ Lists all groups in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: string`
+  - `group_type: "group" | "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: boolean`
 
@@ -75,7 +79,7 @@ for await (const group of client.admin.organization.groups.list()) {
     {
       "id": "id",
       "created_at": 0,
-      "group_type": "group_type",
+      "group_type": "group",
       "is_scim_managed": true,
       "name": "name"
     }

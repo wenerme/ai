@@ -46,9 +46,13 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" | "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -84,7 +88,7 @@ for await (const projectGroup of client.admin.organization.projects.groups.list(
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
-      "group_type": "group_type",
+      "group_type": "group",
       "object": "project.group",
       "project_id": "project_id"
     }

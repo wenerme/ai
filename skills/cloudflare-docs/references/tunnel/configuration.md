@@ -40,8 +40,8 @@ graph LR
 
 ### Deploy a replica
 
-* [ Dashboard ](#tab-panel-8787)
-* [ CLI ](#tab-panel-8788)
+* [ Dashboard ](#tab-panel-8825)
+* [ CLI ](#tab-panel-8826)
 
 To deploy a replica for a remotely-managed tunnel:
 
@@ -176,6 +176,12 @@ The most commonly used parameters:
 | [connectTimeout](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#connecttimeout)     | 30s     | TCP connection timeout to origin          |
 
 For the complete list of origin parameters and setup instructions, refer to [Origin parameters](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/).
+
+## Permissions
+
+You can scope Cloudflare member permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances instead of granting account-wide access. This lets you delegate management of specific Tunnels — for example, letting an application team manage one Tunnel without exposing the rest of your account.
+
+Refer to [Granular permissions](https://developers.cloudflare.com/tunnel/advanced/granular-permissions/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/configuration/","name":"Configuration"}}]}

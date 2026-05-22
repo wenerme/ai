@@ -1,6 +1,6 @@
 ---
 title: VPC Networks
-description: Bind Workers to an entire tunnel or Cloudflare Mesh without pre-registering hosts.
+description: Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # VPC Networks
 
-VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to reach any Mesh node, client device, or IP route in your account.
+VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to reach any Mesh node, client device, subnet route or hostname route announced through Cloudflare Tunnel or Mesh, or destination reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
 
-At runtime, the URL you pass to `fetch()` determines the destination — any hostname or IP address reachable through the bound tunnel or Mesh network. This differs from [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), which require you to create a separate binding for each target host and port combination.
+At runtime, the URL you pass to `fetch()` determines the destination — any hostname or IP address reachable through the bound Cloudflare Tunnel or through Cloudflare Mesh. This differs from [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), which require you to create a separate binding for each target host and port combination.
 
 Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
 
-## Bind to a tunnel
+## Bind to a Cloudflare Tunnel
 
 Note
 
-Binding directly to a tunnel through a VPC Network binding requires the **Connectivity Directory Admin** role.
+Binding directly to a Cloudflare Tunnel through a VPC Network binding requires the **Connectivity Directory Admin** role.
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-8456)
-* [  wrangler.toml ](#tab-panel-8457)
+* [  wrangler.jsonc ](#tab-panel-9172)
+* [  wrangler.toml ](#tab-panel-9173)
 
 JSONC
 
@@ -75,22 +75,30 @@ The `remote` flag must be set to `true` to enable remote bindings during local d
 
 ## Bind to Cloudflare Mesh
 
-[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) connects your services, devices, and Workers through Cloudflare's global network. When you bind a Worker to Cloudflare Mesh using `network_id: "cf1:network"`, your Worker can reach any Mesh node, client device, or IP route in your account — without specifying a particular tunnel UUID.
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) connects your services, devices, and Workers through Cloudflare's global network. When you bind a Worker to Cloudflare Mesh using `network_id: "cf1:network"`, your Worker can reach:
 
-Use Cloudflare Mesh when:
+* Any Mesh node or client device in your account
+* Subnet routes and hostname routes announced through Cloudflare Tunnel or Cloudflare Mesh
+* Destinations reachable through [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramps (GRE, IPsec, and CNI)
 
-* Your Workers need to reach private services across multiple tunnels or Mesh nodes
-* You want to access your entire private network from a Worker without managing individual tunnel bindings
-* Your private network topology may change (new tunnels, new nodes) and you do not want to update Worker configuration each time
+All of this without specifying a particular Cloudflare Tunnel UUID.
+
+Use `cf1:network` when:
+
+* Your Workers need to reach private services across multiple Cloudflare Tunnels, Mesh nodes, or Cloudflare WAN on-ramps
+* You want to access your entire private network from a Worker without managing individual Cloudflare Tunnel bindings
+* Your private network topology may change (new connections, new nodes, new routes) and you do not want to update Worker configuration each time
 
 Note
 
-Your account must have at least one active [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or [Mesh node](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) that can reach the target services.
+Your account must have at least one active [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node, or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp that can reach the target services.
+
+For destinations behind Cloudflare WAN on-ramps (GRE, IPsec, or CNI), your network must also route the [Cloudflare source IP range](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/) (`100.64.0.0/12` by default) back through the on-ramp so reply traffic returns to Cloudflare. This is part of standard Cloudflare WAN onboarding. If you have already configured this for Gateway, Load Balancing, or other Cloudflare services that reach your private network through Cloudflare WAN, no additional setup is required.
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-8458)
-* [  wrangler.toml ](#tab-panel-8459)
+* [  wrangler.jsonc ](#tab-panel-9174)
+* [  wrangler.toml ](#tab-panel-9175)
 
 JSONC
 
@@ -170,14 +178,14 @@ When a VPC Network cannot establish a connection to your target service, `fetch(
 VPC Networks and [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) both connect Workers to private infrastructure, but they make different trade-offs.
 
 * **Use VPC Services** when you have a known set of targets and want each binding scoped to a specific host and port.
-* **Use VPC Networks** when you need broader access — an entire tunnel or your full Mesh network — and want the URL in your `fetch()` call to control routing at runtime.
+* **Use VPC Networks** when you need broader access — an entire Cloudflare Tunnel or all of Cloudflare Mesh — and want the URL in your `fetch()` call to control routing at runtime.
 
 The following table summarizes the differences:
 
 | Feature              | VPC Networks                                                                  | VPC Services              |
 | -------------------- | ----------------------------------------------------------------------------- | ------------------------- |
-| Scope                | Entire tunnel or full Mesh network                                            | Specific host + port      |
-| Configuration        | tunnel\_id (single tunnel) or cf1:network (all tunnels and Mesh nodes)        | service\_id               |
+| Scope                | A single Cloudflare Tunnel, or Cloudflare Mesh and Cloudflare WAN routes      | Specific host + port      |
+| Configuration        | tunnel\_id (single Cloudflare Tunnel) or cf1:network (account-wide)           | service\_id               |
 | Service registration | Not required                                                                  | Required for each target  |
 | Use when             | Dynamic discovery, network-wide access, reaching services across your account | Fixed, cataloged services |
 
@@ -185,6 +193,7 @@ The following table summarizes the differences:
 
 * Set up [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/)
 * [Set up Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/)
+* [Set up Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/get-started/)
 * Try the [Connect Workers to Cloudflare Mesh](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/) example
 * Learn about the [Workers Binding API](https://developers.cloudflare.com/workers-vpc/api/)
 

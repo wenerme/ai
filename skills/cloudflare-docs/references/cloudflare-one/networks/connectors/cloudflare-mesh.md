@@ -105,6 +105,7 @@ Key differences:
 3. [**Add routes**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) (optional) — Make subnets behind a Mesh node reachable from any device.
 4. [**Enable high availability**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) (optional) — Run multiple replicas of a node for failover.
 5. [**Connect from Workers**](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/) (optional) — Use VPC Network bindings to reach private services from Cloudflare Workers.
+6. [**Delegate access**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/) (optional) — Scope member permissions to specific Mesh nodes instead of granting account-wide control.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/","name":"Cloudflare Mesh"}}]}

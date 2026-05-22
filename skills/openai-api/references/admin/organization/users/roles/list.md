@@ -28,13 +28,21 @@ Lists the organization roles assigned to a user within the organization.
 
 ### Returns
 
-- `data: array of object { id, created_at, created_by, 8 more }`
+- `data: array of object { id, assignment_sources, created_at, 9 more }`
 
   Role assignments returned in the current page.
 
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number`
 
@@ -104,6 +112,12 @@ curl https://api.openai.com/v1/organization/users/$USER_ID/roles \
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {

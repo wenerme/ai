@@ -16,8 +16,8 @@ Receive webhook events from external services and route them to dedicated agent 
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-4072)
-* [  TypeScript ](#tab-panel-4073)
+* [  JavaScript ](#tab-panel-4492)
+* [  TypeScript ](#tab-panel-4493)
 
 JavaScript
 
@@ -363,8 +363,8 @@ The key pattern is extracting an entity identifier from the webhook and using `g
 
 Most webhooks include an identifier in the payload:
 
-* [  JavaScript ](#tab-panel-4048)
-* [  TypeScript ](#tab-panel-4049)
+* [  JavaScript ](#tab-panel-4466)
+* [  TypeScript ](#tab-panel-4467)
 
 JavaScript
 
@@ -458,8 +458,8 @@ export default {
 
 Alternatively, include the entity ID in the webhook URL:
 
-* [  JavaScript ](#tab-panel-4044)
-* [  TypeScript ](#tab-panel-4045)
+* [  JavaScript ](#tab-panel-4462)
+* [  TypeScript ](#tab-panel-4463)
 
 JavaScript
 
@@ -503,8 +503,8 @@ if (url.pathname.startsWith("/webhooks/stripe/")) {
 
 Some services include identifiers in headers:
 
-* [  JavaScript ](#tab-panel-4046)
-* [  TypeScript ](#tab-panel-4047)
+* [  JavaScript ](#tab-panel-4464)
+* [  TypeScript ](#tab-panel-4465)
 
 JavaScript
 
@@ -550,8 +550,8 @@ Always verify webhook signatures to ensure requests are authentic. Most provider
 
 ### HMAC-SHA256 pattern
 
-* [  JavaScript ](#tab-panel-4058)
-* [  TypeScript ](#tab-panel-4059)
+* [  JavaScript ](#tab-panel-4478)
+* [  TypeScript ](#tab-panel-4479)
 
 JavaScript
 
@@ -683,8 +683,8 @@ async function verifySignature(
 
 Use `onRequest()` to handle incoming webhooks in your agent:
 
-* [  JavaScript ](#tab-panel-4066)
-* [  TypeScript ](#tab-panel-4067)
+* [  JavaScript ](#tab-panel-4486)
+* [  TypeScript ](#tab-panel-4487)
 
 JavaScript
 
@@ -848,8 +848,8 @@ Use SQLite to persist webhook events for history and replay.
 
 ### Event table schema
 
-* [  JavaScript ](#tab-panel-4056)
-* [  TypeScript ](#tab-panel-4057)
+* [  JavaScript ](#tab-panel-4474)
+* [  TypeScript ](#tab-panel-4475)
 
 JavaScript
 
@@ -955,8 +955,8 @@ class WebhookAgent extends Agent {
 
 Prevent unbounded growth by keeping only recent events:
 
-* [  JavaScript ](#tab-panel-4050)
-* [  TypeScript ](#tab-panel-4051)
+* [  JavaScript ](#tab-panel-4468)
+* [  TypeScript ](#tab-panel-4469)
 
 JavaScript
 
@@ -1020,8 +1020,8 @@ this.sql`
 
 ### Query events
 
-* [  JavaScript ](#tab-panel-4062)
-* [  TypeScript ](#tab-panel-4063)
+* [  JavaScript ](#tab-panel-4482)
+* [  TypeScript ](#tab-panel-4483)
 
 JavaScript
 
@@ -1141,8 +1141,8 @@ class WebhookAgent extends Agent {
 
 When a webhook arrives, update agent state to automatically broadcast to connected WebSocket clients.
 
-* [  JavaScript ](#tab-panel-4052)
-* [  TypeScript ](#tab-panel-4053)
+* [  JavaScript ](#tab-panel-4470)
+* [  TypeScript ](#tab-panel-4471)
 
 JavaScript
 
@@ -1250,8 +1250,8 @@ function Dashboard() {
 
 Prevent processing duplicate events using event IDs:
 
-* [  JavaScript ](#tab-panel-4060)
-* [  TypeScript ](#tab-panel-4061)
+* [  JavaScript ](#tab-panel-4480)
+* [  TypeScript ](#tab-panel-4481)
 
 JavaScript
 
@@ -1343,8 +1343,8 @@ class WebhookAgent extends Agent {
 
 Webhook providers expect fast responses. Use the queue for heavy processing:
 
-* [  JavaScript ](#tab-panel-4064)
-* [  TypeScript ](#tab-panel-4065)
+* [  JavaScript ](#tab-panel-4484)
+* [  TypeScript ](#tab-panel-4485)
 
 JavaScript
 
@@ -1444,12 +1444,63 @@ class WebhookAgent extends Agent {
 
 ```
 
+If the asynchronous work is a single Think chat turn, use `submitMessages()` instead. It returns a durable submission ID immediately and lets retries use an idempotency key instead of duplicating the message turn:
+
+* [  JavaScript ](#tab-panel-4472)
+* [  TypeScript ](#tab-panel-4473)
+
+JavaScript
+
+```
+
+const submission = await this.submitMessages(messages, {
+
+  idempotencyKey: payload.id,
+
+});
+
+
+return Response.json(
+
+  { submissionId: submission.submissionId },
+
+  { status: 202 },
+
+);
+
+
+```
+
+TypeScript
+
+```
+
+const submission = await this.submitMessages(messages, {
+
+  idempotencyKey: payload.id,
+
+});
+
+
+return Response.json(
+
+  { submissionId: submission.submissionId },
+
+  { status: 202 },
+
+);
+
+
+```
+
+If the webhook owns application side effects around a turn, such as restoring a provider thread and posting a visible reply, use [startFiber()](https://developers.cloudflare.com/agents/api-reference/durable-execution/#startfiber) around that job. Managed fibers retain status, dedupe provider retries, and let `onFiberRecovered()` or `resolveFiber()` record the app-level recovery outcome.
+
 ### Multi-provider routing
 
 Handle webhooks from multiple services in one Worker:
 
-* [  JavaScript ](#tab-panel-4070)
-* [  TypeScript ](#tab-panel-4071)
+* [  JavaScript ](#tab-panel-4490)
+* [  TypeScript ](#tab-panel-4491)
 
 JavaScript
 
@@ -1601,8 +1652,8 @@ export default {
 
 Agents can also send webhooks to external services:
 
-* [  JavaScript ](#tab-panel-4068)
-* [  TypeScript ](#tab-panel-4069)
+* [  JavaScript ](#tab-panel-4488)
+* [  TypeScript ](#tab-panel-4489)
 
 JavaScript
 
@@ -1729,8 +1780,8 @@ export class NotificationAgent extends Agent {
 5. **Log rejections** \- Track invalid signatures for security monitoring.
 6. **Use HTTPS** \- Webhook URLs should always use TLS.
 
-* [  JavaScript ](#tab-panel-4054)
-* [  TypeScript ](#tab-panel-4055)
+* [  JavaScript ](#tab-panel-4476)
+* [  TypeScript ](#tab-panel-4477)
 
 JavaScript
 

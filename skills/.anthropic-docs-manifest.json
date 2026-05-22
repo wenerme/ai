@@ -482,10 +482,10 @@
   "anthropic-docs/agents-and-tools/mcp-tunnels/quickstart.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/quickstart",
     "skill": "anthropic-docs",
-    "etag": "W/\"2693-19e3f2d6098\"",
-    "lastModified": "Tue, 19 May 2026 07:39:59 GMT",
-    "size": 9875,
-    "updatedAt": "2026-05-19T11:03:34.938Z"
+    "etag": "W/\"267f-19e4cf2d820\"",
+    "lastModified": "Thu, 21 May 2026 23:50:44 GMT",
+    "size": 9855,
+    "updatedAt": "2026-05-22T00:27:52.688Z"
   },
   "anthropic-docs/agents-and-tools/mcp-tunnels/console.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/console",
@@ -506,10 +506,10 @@
   "anthropic-docs/agents-and-tools/mcp-tunnels/deploy-compose.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/deploy-compose",
     "skill": "anthropic-docs",
-    "etag": "W/\"4996-19e4338d2d0\"",
-    "lastModified": "Wed, 20 May 2026 02:30:58 GMT",
-    "size": 18838,
-    "updatedAt": "2026-05-20T11:01:40.969Z"
+    "etag": "W/\"4986-19e4cf2d820\"",
+    "lastModified": "Thu, 21 May 2026 23:50:44 GMT",
+    "size": 18822,
+    "updatedAt": "2026-05-22T00:27:53.572Z"
   },
   "anthropic-docs/agents-and-tools/mcp-tunnels/security.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/security",
@@ -522,18 +522,18 @@
   "anthropic-docs/agents-and-tools/mcp-tunnels/troubleshooting.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/troubleshooting",
     "skill": "anthropic-docs",
-    "etag": "W/\"1b5c-19e3f2d6098\"",
-    "lastModified": "Tue, 19 May 2026 07:39:59 GMT",
-    "size": 7004,
-    "updatedAt": "2026-05-19T11:03:36.420Z"
+    "etag": "W/\"1b54-19e4cf2d820\"",
+    "lastModified": "Thu, 21 May 2026 23:50:44 GMT",
+    "size": 6996,
+    "updatedAt": "2026-05-22T00:27:54.147Z"
   },
   "anthropic-docs/agents-and-tools/mcp-tunnels/reference.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/reference",
     "skill": "anthropic-docs",
-    "etag": "W/\"1954-19e3f2d6098\"",
-    "lastModified": "Tue, 19 May 2026 07:39:59 GMT",
-    "size": 6484,
-    "updatedAt": "2026-05-19T11:03:36.724Z"
+    "etag": "W/\"1952-19e4cf2d820\"",
+    "lastModified": "Thu, 21 May 2026 23:50:44 GMT",
+    "size": 6482,
+    "updatedAt": "2026-05-22T00:27:54.438Z"
   },
   "anthropic-docs/build-with-claude/claude-in-amazon-bedrock.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock",

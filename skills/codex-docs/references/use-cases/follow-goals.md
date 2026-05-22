@@ -13,7 +13,7 @@ starterPrompt:
   body: /goal Complete [objective] without stopping until [verifiable end state].
 relatedLinks:
   - label: "`/goal` in CLI slash commands"
-    url: /codex/cli/slash-commands#set-an-experimental-goal-with-goal
+    url: /codex/cli/slash-commands#set-a-goal-with-goal
   - label: Codex workflows
     url: /codex/workflows
   - label: Run code migrations
@@ -26,11 +26,17 @@ relatedLinks:
 
 Use `/goal` when you want Codex to keep working toward one durable objective instead of stopping after one normal turn. It's useful for work that has a clear target, a validation loop, and enough room for Codex to make progress without asking you to steer every step. When you use `/goal`, Codex can work independently for multiple hours without needing your input.
 
-`/goal` is an experimental Codex CLI feature. Enable it from `/experimental`, or add `goals = true` under `[features]` in `config.toml`. Then set a goal with `/goal <objective>`, check the current goal with `/goal`, and use `/goal pause`, `/goal resume`, or `/goal clear` when you need to control the run.
+Set a goal with `/goal <objective>`, check the current goal with `/goal`, and use `/goal pause`, `/goal resume`, or `/goal clear` when you need to control the run.
 
-Goals are in preview and are not yet fully supported in the Codex app, but you
-  can still run goals from the app. Consider the behavior in the app
-  experimental.
+If `/goal` doesn't appear in the slash command list, enable `features.goals`
+in `config.toml`:
+
+```toml
+[features]
+goals = true
+```
+
+You can also run `codex features enable goals` from the CLI or ask Codex to run it.
 
 ## Choose the right work
 

@@ -52,7 +52,7 @@ If you know that your endpoint is healthy but load balancing is reporting it as 
 * If your endpoint responds with a `301` or `302` status code, make sure **Follow Redirects** is selected.
 * Try increasing the **Timeout** value.
 * Review the **Host Header** for the health monitor.
-* If you are using [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), make sure that you entered a zone value for **Simulate Zone**.
+* If you are using [Authenticated Origin Pulls (mTLS)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), [Bring your own CA (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), or require [HTTP/2 to Origin](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/), make sure that you entered a zone value for **Simulate Zone** corresponding to the zone with these features configured.
 
 ---
 

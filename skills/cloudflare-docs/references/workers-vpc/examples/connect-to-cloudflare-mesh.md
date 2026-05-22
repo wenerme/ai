@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Connect Workers to Cloudflare Mesh
 
-This example demonstrates how to use a VPC Network binding with [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) to connect to any private service in your account from a Worker — without pre-registering individual hosts or specifying a tunnel UUID.
+This example demonstrates how to use a VPC Network binding with [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) to connect to any private service in your account from a Worker — without pre-registering individual hosts or specifying a Cloudflare Tunnel UUID.
 
-When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) using `network_id: "cf1:network"`, your Worker can reach any Mesh node, client device, or subnet route in your account.
+When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) using `network_id: "cf1:network"`, your Worker can reach any Mesh node, client device, subnet or hostname route announced through Cloudflare Tunnel or Cloudflare Mesh, or destination connected through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
 
 ## Prerequisites
 
@@ -25,8 +25,8 @@ When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-
 
 Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8464)
-* [  wrangler.toml ](#tab-panel-8465)
+* [  wrangler.jsonc ](#tab-panel-9180)
+* [  wrangler.toml ](#tab-panel-9181)
 
 JSONC
 
@@ -42,7 +42,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-21",
 
   "vpc_networks": [
 
@@ -75,7 +75,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-21"
 
 
 [[vpc_networks]]
@@ -89,7 +89,7 @@ remote = true
 
 ```
 
-With this single binding, your Worker can reach any service across all tunnels and Mesh nodes in your account.
+With this single binding, your Worker can reach any service across all Cloudflare Tunnels, Mesh nodes, and Cloudflare WAN on-ramps in your account.
 
 ## 2\. Implement the Worker
 

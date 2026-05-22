@@ -475,6 +475,36 @@ Service Binding (SVCB) and HTTPS Service (HTTPS) records allow you to provide a 
 
 If your domain has [HTTP/2 or HTTP/3 enabled](https://developers.cloudflare.com/speed/optimization/protocol/), [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/), and is also using [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), Cloudflare automatically generates HTTPS records on the fly, to advertise to clients how they should connect to your server.
 
+#### Proxied vs DNS-only names
+
+For [proxied (orange cloud)](https://developers.cloudflare.com/dns/proxy-status/) names, Cloudflare synthesizes HTTPS records automatically when Universal SSL is enabled. Manually-added HTTPS records on proxied names are not served — Cloudflare uses the auto-generated records instead.
+
+If you have disabled Universal SSL (for example, because you use [Advanced Certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) exclusively), Cloudflare will not generate HTTPS records for proxied names.
+
+For [DNS-only (grey cloud)](https://developers.cloudflare.com/dns/proxy-status/) names, you can manually add HTTPS records and Cloudflare will serve them. However, **all records with the same name must be DNS-only** for the manual HTTPS record to be served.
+
+Example: Manual HTTPS records and proxy status
+
+For Cloudflare to serve a manually-added HTTPS record, every record with the same name must be DNS-only (grey cloud).
+
+**Will work** — All records with the same name are DNS-only:
+
+| Type  | Name        | Content       | Proxy status |
+| ----- | ----------- | ------------- | ------------ |
+| A     | example.com | 192.0.2.1     | DNS only     |
+| HTTPS | example.com | 1 . alpn="h3" | \-           |
+
+The HTTPS record will be served because the A record is DNS-only.
+
+**Will not work** — Mixed proxy status for the same name:
+
+| Type  | Name        | Content       | Proxy status |
+| ----- | ----------- | ------------- | ------------ |
+| AAAA  | example.com | 2001:db8::1   | Proxied      |
+| HTTPS | example.com | 1 . alpn="h3" | \-           |
+
+The HTTPS record will **not** be served because the AAAA record with the same name is proxied.
+
 For more details and context, refer to the [announcement blog post ↗](https://blog.cloudflare.com/speeding-up-https-and-http-3-negotiation-with-dns/) and [RFC 9460 ↗](https://www.rfc-editor.org/rfc/rfc9460.html).
 
 For field definitions, refer to the [API documentation](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) (visible once you select the record type under the request body specification).

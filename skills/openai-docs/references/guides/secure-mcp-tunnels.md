@@ -75,6 +75,14 @@ For an HTTP MCP server, use `--mcp-server-url https://mcp.internal.example.com/m
 
 Keep `tunnel-client run ...` healthy while you create or test the connector. Connector discovery and MCP tool calls depend on the running client.
 
+<figure className="not-prose my-8">
+  <figcaption className="mt-3 text-sm text-gray-600 dark:text-gray-400">
+    The local admin UI at <code>/ui</code> shows whether the running client is
+    healthy, ready, and connected before you test from ChatGPT, Codex, or an API
+    flow.
+  </figcaption>
+</figure>
+
 ## Choose where to run tunnel-client
 
 Run `tunnel-client` in the same trust boundary that can already reach the private MCP server. Common deployment patterns are:

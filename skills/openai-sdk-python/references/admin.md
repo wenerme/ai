@@ -13614,6 +13614,14 @@ Lists the organization roles assigned to a user within the organization.
 
     Identifier for the role.
 
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
   - `created_at: Optional[int]`
 
     When the role was created.
@@ -13677,6 +13685,12 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -13934,6 +13948,124 @@ print(role.object)
 }
 ```
 
+## Retrieve user organization role
+
+`admin.organization.users.roles.retrieve(strrole_id, RoleRetrieveParams**kwargs)  -> RoleRetrieveResponse`
+
+**get** `/organization/users/{user_id}/roles/{role_id}`
+
+Retrieves an organization role assigned to a user.
+
+### Parameters
+
+- `user_id: str`
+
+- `role_id: str`
+
+### Returns
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+role = client.admin.organization.users.roles.retrieve(
+    role_id="role_id",
+    user_id="user_id",
+)
+print(role.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
 ## Unassign organization role from user
 
 `admin.organization.users.roles.delete(strrole_id, RoleDeleteParams**kwargs)  -> RoleDeleteResponse`
@@ -13998,6 +14130,14 @@ print(role.deleted)
   - `id: str`
 
     Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
 
   - `created_at: Optional[int]`
 
@@ -14185,6 +14325,64 @@ print(role.deleted)
 
       - `picture: Optional[str]`
 
+### Role Retrieve Response
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
+
 ### Role Delete Response
 
 - `class RoleDeleteResponse: …`
@@ -14241,9 +14439,13 @@ Lists all groups in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: bool`
 
@@ -14275,7 +14477,7 @@ print(page.id)
     {
       "id": "id",
       "created_at": 0,
-      "group_type": "group_type",
+      "group_type": "group",
       "is_scim_managed": true,
       "name": "name"
     }
@@ -14314,9 +14516,13 @@ Creates a new group in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: bool`
 
@@ -14347,7 +14553,76 @@ print(group.id)
 {
   "id": "id",
   "created_at": 0,
-  "group_type": "group_type",
+  "group_type": "group",
+  "is_scim_managed": true,
+  "name": "name"
+}
+```
+
+## Retrieve group
+
+`admin.organization.groups.retrieve(strgroup_id)  -> Group`
+
+**get** `/organization/groups/{group_id}`
+
+Retrieves a group.
+
+### Parameters
+
+- `group_id: str`
+
+### Returns
+
+- `class Group: …`
+
+  Details about an organization group.
+
+  - `id: str`
+
+    Identifier for the group.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the group was created.
+
+  - `group_type: Literal["group", "tenant_group"]`
+
+    The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+  - `is_scim_managed: bool`
+
+    Whether the group is managed through SCIM and controlled by your identity provider.
+
+  - `name: str`
+
+    Display name of the group.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+group = client.admin.organization.groups.retrieve(
+    "group_id",
+)
+print(group.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "group_type": "group",
   "is_scim_managed": true,
   "name": "name"
 }
@@ -14491,9 +14766,13 @@ print(group.id)
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: bool`
 
@@ -14688,6 +14967,83 @@ print(user.group_id)
 }
 ```
 
+## Retrieve group user
+
+`admin.organization.groups.users.retrieve(struser_id, UserRetrieveParams**kwargs)  -> UserRetrieveResponse`
+
+**get** `/organization/groups/{group_id}/users/{user_id}`
+
+Retrieves a user in a group.
+
+### Parameters
+
+- `group_id: str`
+
+- `user_id: str`
+
+### Returns
+
+- `class UserRetrieveResponse: …`
+
+  Details about a user returned from an organization group membership lookup.
+
+  - `id: str`
+
+    Identifier for the user.
+
+  - `email: Optional[str]`
+
+    Email address of the user, or `null` for users without an email.
+
+  - `is_service_account: Optional[bool]`
+
+    Whether the user is a service account.
+
+  - `name: str`
+
+    Display name of the user.
+
+  - `picture: Optional[str]`
+
+    URL of the user's profile picture, if available.
+
+  - `user_type: Literal["user", "tenant_user"]`
+
+    The type of user.
+
+    - `"user"`
+
+    - `"tenant_user"`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+user = client.admin.organization.groups.users.retrieve(
+    user_id="user_id",
+    group_id="group_id",
+)
+print(user.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "email": "email",
+  "is_service_account": true,
+  "name": "name",
+  "picture": "picture",
+  "user_type": "user"
+}
+```
+
 ## Remove group user
 
 `admin.organization.groups.users.delete(struser_id, UserDeleteParams**kwargs)  -> UserDeleteResponse`
@@ -14783,6 +15139,40 @@ print(user.deleted)
 
     Identifier of the user that was added.
 
+### User Retrieve Response
+
+- `class UserRetrieveResponse: …`
+
+  Details about a user returned from an organization group membership lookup.
+
+  - `id: str`
+
+    Identifier for the user.
+
+  - `email: Optional[str]`
+
+    Email address of the user, or `null` for users without an email.
+
+  - `is_service_account: Optional[bool]`
+
+    Whether the user is a service account.
+
+  - `name: str`
+
+    Display name of the user.
+
+  - `picture: Optional[str]`
+
+    URL of the user's profile picture, if available.
+
+  - `user_type: Literal["user", "tenant_user"]`
+
+    The type of user.
+
+    - `"user"`
+
+    - `"tenant_user"`
+
 ### User Delete Response
 
 - `class UserDeleteResponse: …`
@@ -14838,6 +15228,14 @@ Lists the organization roles assigned to a group within the organization.
   - `id: str`
 
     Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
 
   - `created_at: Optional[int]`
 
@@ -14902,6 +15300,12 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -15056,6 +15460,124 @@ print(role.group)
 }
 ```
 
+## Retrieve group organization role
+
+`admin.organization.groups.roles.retrieve(strrole_id, RoleRetrieveParams**kwargs)  -> RoleRetrieveResponse`
+
+**get** `/organization/groups/{group_id}/roles/{role_id}`
+
+Retrieves an organization role assigned to a group.
+
+### Parameters
+
+- `group_id: str`
+
+- `role_id: str`
+
+### Returns
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+role = client.admin.organization.groups.roles.retrieve(
+    role_id="role_id",
+    group_id="group_id",
+)
+print(role.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
 ## Unassign organization role from group
 
 `admin.organization.groups.roles.delete(strrole_id, RoleDeleteParams**kwargs)  -> RoleDeleteResponse`
@@ -15120,6 +15642,14 @@ print(role.deleted)
   - `id: str`
 
     Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
 
   - `created_at: Optional[int]`
 
@@ -15232,6 +15762,64 @@ print(role.deleted)
     - `resource_type: str`
 
       Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Retrieve Response
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
 
 ### Role Delete Response
 
@@ -15418,6 +16006,85 @@ client = OpenAI(
 role = client.admin.organization.roles.create(
     permissions=["string"],
     role_name="role_name",
+)
+print(role.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "description": "description",
+  "name": "name",
+  "object": "role",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type"
+}
+```
+
+## Retrieve organization role
+
+`admin.organization.roles.retrieve(strrole_id)  -> Role`
+
+**get** `/organization/roles/{role_id}`
+
+Retrieves an organization role.
+
+### Parameters
+
+- `role_id: str`
+
+### Returns
+
+- `class Role: …`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `description: Optional[str]`
+
+    Optional description of the role.
+
+  - `name: str`
+
+    Unique name for the role.
+
+  - `object: Literal["role"]`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: List[str]`
+
+    Permissions granted by the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+role = client.admin.organization.roles.retrieve(
+    "role_id",
 )
 print(role.id)
 ```
@@ -15643,6 +16310,681 @@ print(role.id)
     Always `role.deleted`.
 
     - `"role.deleted"`
+
+# Data Retention
+
+## Retrieve organization data retention
+
+`admin.organization.data_retention.retrieve()  -> OrganizationDataRetention`
+
+**get** `/organization/data_retention`
+
+Retrieves organization data retention controls.
+
+### Returns
+
+- `class OrganizationDataRetention: …`
+
+  Represents the organization's data retention control setting.
+
+  - `object: Literal["organization.data_retention"]`
+
+    The object type, which is always `organization.data_retention`.
+
+    - `"organization.data_retention"`
+
+  - `type: Literal["zero_data_retention", "modified_abuse_monitoring", "enhanced_zero_data_retention", "enhanced_modified_abuse_monitoring"]`
+
+    The configured organization data retention type.
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+organization_data_retention = client.admin.organization.data_retention.retrieve()
+print(organization_data_retention.object)
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.data_retention",
+  "type": "zero_data_retention"
+}
+```
+
+## Update organization data retention
+
+`admin.organization.data_retention.update(DataRetentionUpdateParams**kwargs)  -> OrganizationDataRetention`
+
+**post** `/organization/data_retention`
+
+Updates organization data retention controls.
+
+### Parameters
+
+- `retention_type: Literal["zero_data_retention", "modified_abuse_monitoring", "enhanced_zero_data_retention", "enhanced_modified_abuse_monitoring"]`
+
+  The desired organization data retention type.
+
+  - `"zero_data_retention"`
+
+  - `"modified_abuse_monitoring"`
+
+  - `"enhanced_zero_data_retention"`
+
+  - `"enhanced_modified_abuse_monitoring"`
+
+### Returns
+
+- `class OrganizationDataRetention: …`
+
+  Represents the organization's data retention control setting.
+
+  - `object: Literal["organization.data_retention"]`
+
+    The object type, which is always `organization.data_retention`.
+
+    - `"organization.data_retention"`
+
+  - `type: Literal["zero_data_retention", "modified_abuse_monitoring", "enhanced_zero_data_retention", "enhanced_modified_abuse_monitoring"]`
+
+    The configured organization data retention type.
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+organization_data_retention = client.admin.organization.data_retention.update(
+    retention_type="zero_data_retention",
+)
+print(organization_data_retention.object)
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.data_retention",
+  "type": "zero_data_retention"
+}
+```
+
+## Domain Types
+
+### Organization Data Retention
+
+- `class OrganizationDataRetention: …`
+
+  Represents the organization's data retention control setting.
+
+  - `object: Literal["organization.data_retention"]`
+
+    The object type, which is always `organization.data_retention`.
+
+    - `"organization.data_retention"`
+
+  - `type: Literal["zero_data_retention", "modified_abuse_monitoring", "enhanced_zero_data_retention", "enhanced_modified_abuse_monitoring"]`
+
+    The configured organization data retention type.
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+# Spend Alerts
+
+## List organization spend alerts
+
+`admin.organization.spend_alerts.list(SpendAlertListParams**kwargs)  -> SyncConversationCursorPage[OrganizationSpendAlert]`
+
+**get** `/organization/spend_alerts`
+
+Lists organization spend alerts.
+
+### Parameters
+
+- `after: Optional[str]`
+
+  Cursor for pagination. Provide the ID of the last spend alert from the previous response to fetch the next page.
+
+- `before: Optional[str]`
+
+  Cursor for pagination. Provide the ID of the first spend alert from the previous response to fetch the previous page.
+
+- `limit: Optional[int]`
+
+  A limit on the number of spend alerts to return. Defaults to 20.
+
+- `order: Optional[Literal["asc", "desc"]]`
+
+  Sort order for the returned spend alerts.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `class OrganizationSpendAlert: …`
+
+  Represents a spend alert configured at the organization level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: Literal["USD"]`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: Literal["month"]`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: List[str]`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: Literal["email"]`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: Optional[str]`
+
+      Optional subject prefix for alert emails.
+
+  - `object: Literal["organization.spend_alert"]`
+
+    The object type, which is always `organization.spend_alert`.
+
+    - `"organization.spend_alert"`
+
+  - `threshold_amount: int`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+page = client.admin.organization.spend_alerts.list()
+page = page.data[0]
+print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "currency": "USD",
+      "interval": "month",
+      "notification_channel": {
+        "recipients": [
+          "string"
+        ],
+        "type": "email",
+        "subject_prefix": "subject_prefix"
+      },
+      "object": "organization.spend_alert",
+      "threshold_amount": 0
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Create organization spend alert
+
+`admin.organization.spend_alerts.create(SpendAlertCreateParams**kwargs)  -> OrganizationSpendAlert`
+
+**post** `/organization/spend_alerts`
+
+Creates an organization spend alert.
+
+### Parameters
+
+- `currency: Literal["USD"]`
+
+  The currency for the threshold amount.
+
+  - `"USD"`
+
+- `interval: Literal["month"]`
+
+  The time interval for evaluating spend against the threshold.
+
+  - `"month"`
+
+- `notification_channel: NotificationChannel`
+
+  Email notification settings for a spend alert.
+
+  - `recipients: Sequence[str]`
+
+    Email addresses that receive the spend alert notification.
+
+  - `type: Literal["email"]`
+
+    The notification channel type. Currently only `email` is supported.
+
+    - `"email"`
+
+  - `subject_prefix: Optional[str]`
+
+    Optional subject prefix for alert emails.
+
+- `threshold_amount: int`
+
+  The alert threshold amount, in cents.
+
+### Returns
+
+- `class OrganizationSpendAlert: …`
+
+  Represents a spend alert configured at the organization level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: Literal["USD"]`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: Literal["month"]`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: List[str]`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: Literal["email"]`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: Optional[str]`
+
+      Optional subject prefix for alert emails.
+
+  - `object: Literal["organization.spend_alert"]`
+
+    The object type, which is always `organization.spend_alert`.
+
+    - `"organization.spend_alert"`
+
+  - `threshold_amount: int`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+organization_spend_alert = client.admin.organization.spend_alerts.create(
+    currency="USD",
+    interval="month",
+    notification_channel={
+        "recipients": ["string"],
+        "type": "email",
+    },
+    threshold_amount=0,
+)
+print(organization_spend_alert.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "organization.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+## Update organization spend alert
+
+`admin.organization.spend_alerts.update(stralert_id, SpendAlertUpdateParams**kwargs)  -> OrganizationSpendAlert`
+
+**post** `/organization/spend_alerts/{alert_id}`
+
+Updates an organization spend alert.
+
+### Parameters
+
+- `alert_id: str`
+
+- `currency: Literal["USD"]`
+
+  The currency for the threshold amount.
+
+  - `"USD"`
+
+- `interval: Literal["month"]`
+
+  The time interval for evaluating spend against the threshold.
+
+  - `"month"`
+
+- `notification_channel: NotificationChannel`
+
+  Email notification settings for a spend alert.
+
+  - `recipients: Sequence[str]`
+
+    Email addresses that receive the spend alert notification.
+
+  - `type: Literal["email"]`
+
+    The notification channel type. Currently only `email` is supported.
+
+    - `"email"`
+
+  - `subject_prefix: Optional[str]`
+
+    Optional subject prefix for alert emails.
+
+- `threshold_amount: int`
+
+  The alert threshold amount, in cents.
+
+### Returns
+
+- `class OrganizationSpendAlert: …`
+
+  Represents a spend alert configured at the organization level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: Literal["USD"]`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: Literal["month"]`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: List[str]`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: Literal["email"]`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: Optional[str]`
+
+      Optional subject prefix for alert emails.
+
+  - `object: Literal["organization.spend_alert"]`
+
+    The object type, which is always `organization.spend_alert`.
+
+    - `"organization.spend_alert"`
+
+  - `threshold_amount: int`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+organization_spend_alert = client.admin.organization.spend_alerts.update(
+    alert_id="alert_id",
+    currency="USD",
+    interval="month",
+    notification_channel={
+        "recipients": ["string"],
+        "type": "email",
+    },
+    threshold_amount=0,
+)
+print(organization_spend_alert.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "organization.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+## Delete organization spend alert
+
+`admin.organization.spend_alerts.delete(stralert_id)  -> OrganizationSpendAlertDeleted`
+
+**delete** `/organization/spend_alerts/{alert_id}`
+
+Deletes an organization spend alert.
+
+### Parameters
+
+- `alert_id: str`
+
+### Returns
+
+- `class OrganizationSpendAlertDeleted: …`
+
+  Confirmation payload returned after deleting an organization spend alert.
+
+  - `id: str`
+
+    The deleted spend alert ID.
+
+  - `deleted: bool`
+
+    Whether the spend alert was deleted.
+
+  - `object: Literal["organization.spend_alert.deleted"]`
+
+    Always `organization.spend_alert.deleted`.
+
+    - `"organization.spend_alert.deleted"`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+organization_spend_alert_deleted = client.admin.organization.spend_alerts.delete(
+    "alert_id",
+)
+print(organization_spend_alert_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "organization.spend_alert.deleted"
+}
+```
+
+## Domain Types
+
+### Organization Spend Alert
+
+- `class OrganizationSpendAlert: …`
+
+  Represents a spend alert configured at the organization level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: Literal["USD"]`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: Literal["month"]`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: List[str]`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: Literal["email"]`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: Optional[str]`
+
+      Optional subject prefix for alert emails.
+
+  - `object: Literal["organization.spend_alert"]`
+
+    The object type, which is always `organization.spend_alert`.
+
+    - `"organization.spend_alert"`
+
+  - `threshold_amount: int`
+
+    The alert threshold amount, in cents.
+
+### Organization Spend Alert Deleted
+
+- `class OrganizationSpendAlertDeleted: …`
+
+  Confirmation payload returned after deleting an organization spend alert.
+
+  - `id: str`
+
+    The deleted spend alert ID.
+
+  - `deleted: bool`
+
+    Whether the spend alert was deleted.
+
+  - `object: Literal["organization.spend_alert.deleted"]`
+
+    Always `organization.spend_alert.deleted`.
+
+    - `"organization.spend_alert.deleted"`
 
 # Certificates
 
@@ -17397,6 +18739,14 @@ Lists the project roles assigned to a user within a project.
 
     Identifier for the role.
 
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
   - `created_at: Optional[int]`
 
     When the role was created.
@@ -17461,6 +18811,12 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -17721,6 +19077,127 @@ print(role.object)
 }
 ```
 
+## Retrieve project user role
+
+`admin.organization.projects.users.roles.retrieve(strrole_id, RoleRetrieveParams**kwargs)  -> RoleRetrieveResponse`
+
+**get** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
+
+Retrieves a project role assigned to a user.
+
+### Parameters
+
+- `project_id: str`
+
+- `user_id: str`
+
+- `role_id: str`
+
+### Returns
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+role = client.admin.organization.projects.users.roles.retrieve(
+    role_id="role_id",
+    project_id="project_id",
+    user_id="user_id",
+)
+print(role.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
 ## Unassign project role from user
 
 `admin.organization.projects.users.roles.delete(strrole_id, RoleDeleteParams**kwargs)  -> RoleDeleteResponse`
@@ -17788,6 +19265,14 @@ print(role.deleted)
   - `id: str`
 
     Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
 
   - `created_at: Optional[int]`
 
@@ -17974,6 +19459,64 @@ print(role.deleted)
       - `name: Optional[str]`
 
       - `picture: Optional[str]`
+
+### Role Retrieve Response
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
 
 ### Role Delete Response
 
@@ -18222,6 +19765,92 @@ client = OpenAI(
     admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
 )
 project_service_account = client.admin.organization.projects.service_accounts.retrieve(
+    service_account_id="service_account_id",
+    project_id="project_id",
+)
+print(project_service_account.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project.service_account",
+  "role": "owner"
+}
+```
+
+## Update project service account
+
+`admin.organization.projects.service_accounts.update(strservice_account_id, ServiceAccountUpdateParams**kwargs)  -> ProjectServiceAccount`
+
+**post** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
+
+Updates a service account in the project.
+
+### Parameters
+
+- `project_id: str`
+
+- `service_account_id: str`
+
+- `name: Optional[str]`
+
+  The updated service account name.
+
+- `role: Optional[Literal["member", "owner"]]`
+
+  The updated service account role.
+
+  - `"member"`
+
+  - `"owner"`
+
+### Returns
+
+- `class ProjectServiceAccount: …`
+
+  Represents an individual service account in a project.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) of when the service account was created
+
+  - `name: str`
+
+    The name of the service account
+
+  - `object: Literal["organization.project.service_account"]`
+
+    The object type, which is always `organization.project.service_account`
+
+    - `"organization.project.service_account"`
+
+  - `role: Literal["owner", "member"]`
+
+    `owner` or `member`
+
+    - `"owner"`
+
+    - `"member"`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+project_service_account = client.admin.organization.projects.service_accounts.update(
     service_account_id="service_account_id",
     project_id="project_id",
 )
@@ -19672,9 +21301,13 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: Literal["project.group"]`
 
@@ -19711,7 +21344,7 @@ print(page.group_id)
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
-      "group_type": "group_type",
+      "group_type": "group",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -19760,9 +21393,13 @@ Grants a group access to a project.
 
     Display name of the group.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: Literal["project.group"]`
 
@@ -19798,7 +21435,94 @@ print(project_group.group_id)
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
-  "group_type": "group_type",
+  "group_type": "group",
+  "object": "project.group",
+  "project_id": "project_id"
+}
+```
+
+## Retrieve project group
+
+`admin.organization.projects.groups.retrieve(strgroup_id, GroupRetrieveParams**kwargs)  -> ProjectGroup`
+
+**get** `/organization/projects/{project_id}/groups/{group_id}`
+
+Retrieves a project's group.
+
+### Parameters
+
+- `project_id: str`
+
+- `group_id: str`
+
+- `group_type: Optional[Literal["group", "tenant_group"]]`
+
+  The type of group to retrieve.
+
+  - `"group"`
+
+  - `"tenant_group"`
+
+### Returns
+
+- `class ProjectGroup: …`
+
+  Details about a group's membership in a project.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the group was granted project access.
+
+  - `group_id: str`
+
+    Identifier of the group that has access to the project.
+
+  - `group_name: str`
+
+    Display name of the group.
+
+  - `group_type: Literal["group", "tenant_group"]`
+
+    The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+  - `object: Literal["project.group"]`
+
+    Always `project.group`.
+
+    - `"project.group"`
+
+  - `project_id: str`
+
+    Identifier of the project.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+project_group = client.admin.organization.projects.groups.retrieve(
+    group_id="group_id",
+    project_id="project_id",
+)
+print(project_group.group_id)
+```
+
+#### Response
+
+```json
+{
+  "created_at": 0,
+  "group_id": "group_id",
+  "group_name": "group_name",
+  "group_type": "group",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -19879,9 +21603,13 @@ print(group.deleted)
 
     Display name of the group.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: Literal["project.group"]`
 
@@ -19951,6 +21679,14 @@ Lists the project roles assigned to a group within a project.
 
     Identifier for the role.
 
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
   - `created_at: Optional[int]`
 
     When the role was created.
@@ -20015,6 +21751,12 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -20172,6 +21914,127 @@ print(role.group)
 }
 ```
 
+## Retrieve project group role
+
+`admin.organization.projects.groups.roles.retrieve(strrole_id, RoleRetrieveParams**kwargs)  -> RoleRetrieveResponse`
+
+**get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
+
+Retrieves a project role assigned to a group.
+
+### Parameters
+
+- `project_id: str`
+
+- `group_id: str`
+
+- `role_id: str`
+
+### Returns
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+role = client.admin.organization.projects.groups.roles.retrieve(
+    role_id="role_id",
+    project_id="project_id",
+    group_id="group_id",
+)
+print(role.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
 ## Unassign project role from group
 
 `admin.organization.projects.groups.roles.delete(strrole_id, RoleDeleteParams**kwargs)  -> RoleDeleteResponse`
@@ -20239,6 +22102,14 @@ print(role.deleted)
   - `id: str`
 
     Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
 
   - `created_at: Optional[int]`
 
@@ -20351,6 +22222,64 @@ print(role.deleted)
     - `resource_type: str`
 
       Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Retrieve Response
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
 
 ### Role Delete Response
 
@@ -20564,6 +22493,88 @@ print(role.id)
 }
 ```
 
+## Retrieve project role
+
+`admin.organization.projects.roles.retrieve(strrole_id, RoleRetrieveParams**kwargs)  -> Role`
+
+**get** `/projects/{project_id}/roles/{role_id}`
+
+Retrieves a project role.
+
+### Parameters
+
+- `project_id: str`
+
+- `role_id: str`
+
+### Returns
+
+- `class Role: …`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `description: Optional[str]`
+
+    Optional description of the role.
+
+  - `name: str`
+
+    Unique name for the role.
+
+  - `object: Literal["role"]`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: List[str]`
+
+    Permissions granted by the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+role = client.admin.organization.projects.roles.retrieve(
+    role_id="role_id",
+    project_id="project_id",
+)
+print(role.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "description": "description",
+  "name": "name",
+  "object": "role",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type"
+}
+```
+
 ## Update project role
 
 `admin.organization.projects.roles.update(strrole_id, RoleUpdateParams**kwargs)  -> Role`
@@ -20739,6 +22750,719 @@ print(role.id)
     Always `role.deleted`.
 
     - `"role.deleted"`
+
+# Data Retention
+
+## Retrieve project data retention
+
+`admin.organization.projects.data_retention.retrieve(strproject_id)  -> ProjectDataRetention`
+
+**get** `/organization/projects/{project_id}/data_retention`
+
+Retrieves project data retention controls.
+
+### Parameters
+
+- `project_id: str`
+
+### Returns
+
+- `class ProjectDataRetention: …`
+
+  Represents a project's data retention control setting.
+
+  - `object: Literal["project.data_retention"]`
+
+    The object type, which is always `project.data_retention`.
+
+    - `"project.data_retention"`
+
+  - `type: Literal["organization_default", "none", "zero_data_retention", 3 more]`
+
+    The configured project data retention type.
+
+    - `"organization_default"`
+
+    - `"none"`
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+project_data_retention = client.admin.organization.projects.data_retention.retrieve(
+    "project_id",
+)
+print(project_data_retention.object)
+```
+
+#### Response
+
+```json
+{
+  "object": "project.data_retention",
+  "type": "organization_default"
+}
+```
+
+## Update project data retention
+
+`admin.organization.projects.data_retention.update(strproject_id, DataRetentionUpdateParams**kwargs)  -> ProjectDataRetention`
+
+**post** `/organization/projects/{project_id}/data_retention`
+
+Updates project data retention controls.
+
+### Parameters
+
+- `project_id: str`
+
+- `retention_type: Literal["organization_default", "none", "zero_data_retention", 3 more]`
+
+  The desired project data retention type.
+
+  - `"organization_default"`
+
+  - `"none"`
+
+  - `"zero_data_retention"`
+
+  - `"modified_abuse_monitoring"`
+
+  - `"enhanced_zero_data_retention"`
+
+  - `"enhanced_modified_abuse_monitoring"`
+
+### Returns
+
+- `class ProjectDataRetention: …`
+
+  Represents a project's data retention control setting.
+
+  - `object: Literal["project.data_retention"]`
+
+    The object type, which is always `project.data_retention`.
+
+    - `"project.data_retention"`
+
+  - `type: Literal["organization_default", "none", "zero_data_retention", 3 more]`
+
+    The configured project data retention type.
+
+    - `"organization_default"`
+
+    - `"none"`
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+project_data_retention = client.admin.organization.projects.data_retention.update(
+    project_id="project_id",
+    retention_type="organization_default",
+)
+print(project_data_retention.object)
+```
+
+#### Response
+
+```json
+{
+  "object": "project.data_retention",
+  "type": "organization_default"
+}
+```
+
+## Domain Types
+
+### Project Data Retention
+
+- `class ProjectDataRetention: …`
+
+  Represents a project's data retention control setting.
+
+  - `object: Literal["project.data_retention"]`
+
+    The object type, which is always `project.data_retention`.
+
+    - `"project.data_retention"`
+
+  - `type: Literal["organization_default", "none", "zero_data_retention", 3 more]`
+
+    The configured project data retention type.
+
+    - `"organization_default"`
+
+    - `"none"`
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+# Spend Alerts
+
+## List project spend alerts
+
+`admin.organization.projects.spend_alerts.list(strproject_id, SpendAlertListParams**kwargs)  -> SyncConversationCursorPage[ProjectSpendAlert]`
+
+**get** `/organization/projects/{project_id}/spend_alerts`
+
+Lists project spend alerts.
+
+### Parameters
+
+- `project_id: str`
+
+- `after: Optional[str]`
+
+  Cursor for pagination. Provide the ID of the last spend alert from the previous response to fetch the next page.
+
+- `before: Optional[str]`
+
+  Cursor for pagination. Provide the ID of the first spend alert from the previous response to fetch the previous page.
+
+- `limit: Optional[int]`
+
+  A limit on the number of spend alerts to return. Defaults to 20.
+
+- `order: Optional[Literal["asc", "desc"]]`
+
+  Sort order for the returned spend alerts.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `class ProjectSpendAlert: …`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: Literal["USD"]`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: Literal["month"]`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: List[str]`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: Literal["email"]`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: Optional[str]`
+
+      Optional subject prefix for alert emails.
+
+  - `object: Literal["project.spend_alert"]`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: int`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+page = client.admin.organization.projects.spend_alerts.list(
+    project_id="project_id",
+)
+page = page.data[0]
+print(page.id)
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "currency": "USD",
+      "interval": "month",
+      "notification_channel": {
+        "recipients": [
+          "string"
+        ],
+        "type": "email",
+        "subject_prefix": "subject_prefix"
+      },
+      "object": "project.spend_alert",
+      "threshold_amount": 0
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+## Create project spend alert
+
+`admin.organization.projects.spend_alerts.create(strproject_id, SpendAlertCreateParams**kwargs)  -> ProjectSpendAlert`
+
+**post** `/organization/projects/{project_id}/spend_alerts`
+
+Creates a project spend alert.
+
+### Parameters
+
+- `project_id: str`
+
+- `currency: Literal["USD"]`
+
+  The currency for the threshold amount.
+
+  - `"USD"`
+
+- `interval: Literal["month"]`
+
+  The time interval for evaluating spend against the threshold.
+
+  - `"month"`
+
+- `notification_channel: NotificationChannel`
+
+  Email notification settings for a spend alert.
+
+  - `recipients: Sequence[str]`
+
+    Email addresses that receive the spend alert notification.
+
+  - `type: Literal["email"]`
+
+    The notification channel type. Currently only `email` is supported.
+
+    - `"email"`
+
+  - `subject_prefix: Optional[str]`
+
+    Optional subject prefix for alert emails.
+
+- `threshold_amount: int`
+
+  The alert threshold amount, in cents.
+
+### Returns
+
+- `class ProjectSpendAlert: …`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: Literal["USD"]`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: Literal["month"]`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: List[str]`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: Literal["email"]`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: Optional[str]`
+
+      Optional subject prefix for alert emails.
+
+  - `object: Literal["project.spend_alert"]`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: int`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+project_spend_alert = client.admin.organization.projects.spend_alerts.create(
+    project_id="project_id",
+    currency="USD",
+    interval="month",
+    notification_channel={
+        "recipients": ["string"],
+        "type": "email",
+    },
+    threshold_amount=0,
+)
+print(project_spend_alert.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "project.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+## Update project spend alert
+
+`admin.organization.projects.spend_alerts.update(stralert_id, SpendAlertUpdateParams**kwargs)  -> ProjectSpendAlert`
+
+**post** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
+
+Updates a project spend alert.
+
+### Parameters
+
+- `project_id: str`
+
+- `alert_id: str`
+
+- `currency: Literal["USD"]`
+
+  The currency for the threshold amount.
+
+  - `"USD"`
+
+- `interval: Literal["month"]`
+
+  The time interval for evaluating spend against the threshold.
+
+  - `"month"`
+
+- `notification_channel: NotificationChannel`
+
+  Email notification settings for a spend alert.
+
+  - `recipients: Sequence[str]`
+
+    Email addresses that receive the spend alert notification.
+
+  - `type: Literal["email"]`
+
+    The notification channel type. Currently only `email` is supported.
+
+    - `"email"`
+
+  - `subject_prefix: Optional[str]`
+
+    Optional subject prefix for alert emails.
+
+- `threshold_amount: int`
+
+  The alert threshold amount, in cents.
+
+### Returns
+
+- `class ProjectSpendAlert: …`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: Literal["USD"]`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: Literal["month"]`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: List[str]`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: Literal["email"]`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: Optional[str]`
+
+      Optional subject prefix for alert emails.
+
+  - `object: Literal["project.spend_alert"]`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: int`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+project_spend_alert = client.admin.organization.projects.spend_alerts.update(
+    alert_id="alert_id",
+    project_id="project_id",
+    currency="USD",
+    interval="month",
+    notification_channel={
+        "recipients": ["string"],
+        "type": "email",
+    },
+    threshold_amount=0,
+)
+print(project_spend_alert.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "project.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+## Delete project spend alert
+
+`admin.organization.projects.spend_alerts.delete(stralert_id, SpendAlertDeleteParams**kwargs)  -> ProjectSpendAlertDeleted`
+
+**delete** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
+
+Deletes a project spend alert.
+
+### Parameters
+
+- `project_id: str`
+
+- `alert_id: str`
+
+### Returns
+
+- `class ProjectSpendAlertDeleted: …`
+
+  Confirmation payload returned after deleting a project spend alert.
+
+  - `id: str`
+
+    The deleted spend alert ID.
+
+  - `deleted: bool`
+
+    Whether the spend alert was deleted.
+
+  - `object: Literal["project.spend_alert.deleted"]`
+
+    Always `project.spend_alert.deleted`.
+
+    - `"project.spend_alert.deleted"`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+project_spend_alert_deleted = client.admin.organization.projects.spend_alerts.delete(
+    alert_id="alert_id",
+    project_id="project_id",
+)
+print(project_spend_alert_deleted.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "project.spend_alert.deleted"
+}
+```
+
+## Domain Types
+
+### Project Spend Alert
+
+- `class ProjectSpendAlert: …`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: str`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: Literal["USD"]`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: Literal["month"]`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: NotificationChannel`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: List[str]`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: Literal["email"]`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: Optional[str]`
+
+      Optional subject prefix for alert emails.
+
+  - `object: Literal["project.spend_alert"]`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: int`
+
+    The alert threshold amount, in cents.
+
+### Project Spend Alert Deleted
+
+- `class ProjectSpendAlertDeleted: …`
+
+  Confirmation payload returned after deleting a project spend alert.
+
+  - `id: str`
+
+    The deleted spend alert ID.
+
+  - `deleted: bool`
+
+    Whether the spend alert was deleted.
+
+  - `object: Literal["project.spend_alert.deleted"]`
+
+    Always `project.spend_alert.deleted`.
+
+    - `"project.spend_alert.deleted"`
 
 # Certificates
 

@@ -40,9 +40,13 @@ Lists all groups in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: bool`
 
@@ -74,7 +78,7 @@ print(page.id)
     {
       "id": "id",
       "created_at": 0,
-      "group_type": "group_type",
+      "group_type": "group",
       "is_scim_managed": true,
       "name": "name"
     }
@@ -113,9 +117,13 @@ Creates a new group in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: bool`
 
@@ -146,7 +154,76 @@ print(group.id)
 {
   "id": "id",
   "created_at": 0,
-  "group_type": "group_type",
+  "group_type": "group",
+  "is_scim_managed": true,
+  "name": "name"
+}
+```
+
+## Retrieve group
+
+`admin.organization.groups.retrieve(strgroup_id)  -> Group`
+
+**get** `/organization/groups/{group_id}`
+
+Retrieves a group.
+
+### Parameters
+
+- `group_id: str`
+
+### Returns
+
+- `class Group: …`
+
+  Details about an organization group.
+
+  - `id: str`
+
+    Identifier for the group.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the group was created.
+
+  - `group_type: Literal["group", "tenant_group"]`
+
+    The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+  - `is_scim_managed: bool`
+
+    Whether the group is managed through SCIM and controlled by your identity provider.
+
+  - `name: str`
+
+    Display name of the group.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+group = client.admin.organization.groups.retrieve(
+    "group_id",
+)
+print(group.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "group_type": "group",
   "is_scim_managed": true,
   "name": "name"
 }
@@ -290,9 +367,13 @@ print(group.id)
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: bool`
 
@@ -487,6 +568,83 @@ print(user.group_id)
 }
 ```
 
+## Retrieve group user
+
+`admin.organization.groups.users.retrieve(struser_id, UserRetrieveParams**kwargs)  -> UserRetrieveResponse`
+
+**get** `/organization/groups/{group_id}/users/{user_id}`
+
+Retrieves a user in a group.
+
+### Parameters
+
+- `group_id: str`
+
+- `user_id: str`
+
+### Returns
+
+- `class UserRetrieveResponse: …`
+
+  Details about a user returned from an organization group membership lookup.
+
+  - `id: str`
+
+    Identifier for the user.
+
+  - `email: Optional[str]`
+
+    Email address of the user, or `null` for users without an email.
+
+  - `is_service_account: Optional[bool]`
+
+    Whether the user is a service account.
+
+  - `name: str`
+
+    Display name of the user.
+
+  - `picture: Optional[str]`
+
+    URL of the user's profile picture, if available.
+
+  - `user_type: Literal["user", "tenant_user"]`
+
+    The type of user.
+
+    - `"user"`
+
+    - `"tenant_user"`
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+user = client.admin.organization.groups.users.retrieve(
+    user_id="user_id",
+    group_id="group_id",
+)
+print(user.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "email": "email",
+  "is_service_account": true,
+  "name": "name",
+  "picture": "picture",
+  "user_type": "user"
+}
+```
+
 ## Remove group user
 
 `admin.organization.groups.users.delete(struser_id, UserDeleteParams**kwargs)  -> UserDeleteResponse`
@@ -582,6 +740,40 @@ print(user.deleted)
 
     Identifier of the user that was added.
 
+### User Retrieve Response
+
+- `class UserRetrieveResponse: …`
+
+  Details about a user returned from an organization group membership lookup.
+
+  - `id: str`
+
+    Identifier for the user.
+
+  - `email: Optional[str]`
+
+    Email address of the user, or `null` for users without an email.
+
+  - `is_service_account: Optional[bool]`
+
+    Whether the user is a service account.
+
+  - `name: str`
+
+    Display name of the user.
+
+  - `picture: Optional[str]`
+
+    URL of the user's profile picture, if available.
+
+  - `user_type: Literal["user", "tenant_user"]`
+
+    The type of user.
+
+    - `"user"`
+
+    - `"tenant_user"`
+
 ### User Delete Response
 
 - `class UserDeleteResponse: …`
@@ -637,6 +829,14 @@ Lists the organization roles assigned to a group within the organization.
   - `id: str`
 
     Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
 
   - `created_at: Optional[int]`
 
@@ -701,6 +901,12 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -855,6 +1061,124 @@ print(role.group)
 }
 ```
 
+## Retrieve group organization role
+
+`admin.organization.groups.roles.retrieve(strrole_id, RoleRetrieveParams**kwargs)  -> RoleRetrieveResponse`
+
+**get** `/organization/groups/{group_id}/roles/{role_id}`
+
+Retrieves an organization role assigned to a group.
+
+### Parameters
+
+- `group_id: str`
+
+- `role_id: str`
+
+### Returns
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+role = client.admin.organization.groups.roles.retrieve(
+    role_id="role_id",
+    group_id="group_id",
+)
+print(role.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
 ## Unassign organization role from group
 
 `admin.organization.groups.roles.delete(strrole_id, RoleDeleteParams**kwargs)  -> RoleDeleteResponse`
@@ -919,6 +1243,14 @@ print(role.deleted)
   - `id: str`
 
     Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
 
   - `created_at: Optional[int]`
 
@@ -1031,6 +1363,64 @@ print(role.deleted)
     - `resource_type: str`
 
       Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Retrieve Response
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
 
 ### Role Delete Response
 

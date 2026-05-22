@@ -70,7 +70,7 @@ Follow @radar.cloudflare.com on Bluesky to learn about Internet trends, as seen 
 
 Read articles about the latest trends and updates on Cloudflare Radar.
 
-[MCP Server](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/radar#cloudflare-radar-mcp-server-) 
+[MCP Server](https://github.com/cloudflare/mcp#cloudflare-mcp-server) 
 
 Enable any MCP client to access and explore trends and insights on Cloudflare Radar.
 

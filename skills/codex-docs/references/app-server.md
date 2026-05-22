@@ -244,9 +244,9 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/turns/items/list` - reserved for paged turn-item loading; currently returns unsupported.
 - `thread/loaded/list` - list the thread ids currently loaded in memory.
 - `thread/name/set` - set or update a thread's user-facing name for a loaded thread or a persisted rollout; emits `thread/name/updated`.
-- `thread/goal/set` - set the goal for a loaded thread (experimental; requires `capabilities.experimentalApi`); emits `thread/goal/updated`.
-- `thread/goal/get` - read the current goal for a loaded thread (experimental; requires `capabilities.experimentalApi`).
-- `thread/goal/clear` - clear the goal for a loaded thread (experimental; requires `capabilities.experimentalApi`); emits `thread/goal/cleared`.
+- `thread/goal/set` - set the goal for a thread; emits `thread/goal/updated`.
+- `thread/goal/get` - read the current goal for a thread.
+- `thread/goal/clear` - clear the goal for a thread; emits `thread/goal/cleared`.
 - `thread/metadata/update` - patch SQLite-backed stored thread metadata; currently supports persisted `gitInfo`.
 - `thread/archive` - move a thread's log file into the archived directory; returns `{}` on success and emits `thread/archived`.
 - `thread/unsubscribe` - unsubscribe this connection from thread turn/item events. If this was the last subscriber, the server unloads the thread after a no-subscriber inactivity grace period and emits `thread/closed`.
@@ -444,9 +444,8 @@ If you resume with a different model than the one recorded in the rollout, Codex
 
 ### Manage a thread goal
 
-`thread/goal/set`, `thread/goal/get`, and `thread/goal/clear` are experimental
-and require `capabilities.experimentalApi = true` plus the `goals` feature. Use
-them for the same persisted goal state surfaced by `/goal` in the TUI.
+Use `thread/goal/set`, `thread/goal/get`, and `thread/goal/clear` to manage the
+same persisted goal state surfaced by `/goal` in the TUI.
 
 ```json
 { "method": "thread/goal/set", "id": 13, "params": {

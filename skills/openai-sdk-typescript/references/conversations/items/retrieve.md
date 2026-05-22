@@ -585,7 +585,7 @@ Get a single item from a conversation with the given IDs.
 
         - `type: "open_page"`
 
-          The action type. Always `open_page`.
+          The action type.
 
           - `"open_page"`
 

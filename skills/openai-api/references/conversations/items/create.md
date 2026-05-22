@@ -858,7 +858,7 @@ Create items in a conversation with the given ID.
 
         - `type: "open_page"`
 
-          The action type. Always `open_page`.
+          The action type.
 
           - `"open_page"`
 
@@ -3426,7 +3426,7 @@ Create items in a conversation with the given ID.
 
           - `type: "open_page"`
 
-            The action type. Always `open_page`.
+            The action type.
 
             - `"open_page"`
 

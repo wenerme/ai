@@ -106,6 +106,8 @@ You can assign the following resource-specific scopes to members:
 | Individual Access policies                  | Grant access to manage a specific [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).                                                     |
 | Individual Access service tokens            | Grant access to manage a specific [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).                    |
 | Individual Access infrastructure targets    | Grant access to manage a specific [Access for Infrastructure target](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/). |
+| Individual Cloudflare Tunnel instances      | Grant access to manage a specific [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instance.                                                                         |
+| Individual Cloudflare Mesh nodes            | Grant access to manage a specific [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node.                                   |
 
 Note
 

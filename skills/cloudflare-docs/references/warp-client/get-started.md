@@ -34,17 +34,18 @@ Before installing and setting up the WARP client, ensure that your device meets 
 
 ## Linux
 
-| **OS version**             | CentOS 8, RHEL 8, Debian 12, Debian 13, Fedora 34, Fedora 35, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS |
-| -------------------------- | ------------------------------------------------------------------------------------------------ |
-| **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                                                |
-| **HD space**               | 75 MB                                                                                            |
-| **Memory**                 | 35 MB                                                                                            |
-| **Network interface type** | Wi-Fi or LAN                                                                                     |
-| **MTU**                    | 1381 bytes recommended [1](#user-content-fn-1)                                                   |
+| **OS version**             | CentOS 8, RHEL 8, RHEL 9 [1](#user-content-fn-1), Debian 12, Debian 13, Fedora 34, Fedora 35, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                                                                                |
+| **HD space**               | 75 MB                                                                                                                            |
+| **Memory**                 | 35 MB                                                                                                                            |
+| **Network interface type** | Wi-Fi or LAN                                                                                                                     |
+| **MTU**                    | 1381 bytes recommended [2](#user-content-fn-2)                                                                                   |
 
 ## Footnotes
 
-1. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-1)
+1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗](https://docs.fedoraproject.org/en-US/epel/) repository (`sudo dnf install epel-release`) before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. [↩](#user-content-fnref-1)
+2. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-2)
 
 [Download for Linux ↗](https://pkg.cloudflareclient.com/)
 

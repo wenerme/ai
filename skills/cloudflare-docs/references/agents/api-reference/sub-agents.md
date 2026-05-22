@@ -20,8 +20,8 @@ If you want a parent chat agent to dispatch another chat-capable agent during a 
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-4046)
-* [  TypeScript ](#tab-panel-4047)
+* [  JavaScript ](#tab-panel-4080)
+* [  TypeScript ](#tab-panel-4081)
 
 JavaScript
 
@@ -97,10 +97,10 @@ export class Researcher extends Agent {
 
 ```
 
-Both classes must be exported from the worker entry point. No separate Durable Object bindings are needed — child classes are discovered automatically via `ctx.exports`.
+Both classes must be exported from the worker entry point. No separate Durable Object bindings are needed for child-only classes — child classes are discovered automatically via `ctx.exports`.
 
-* [  wrangler.jsonc ](#tab-panel-4034)
-* [  wrangler.toml ](#tab-panel-4035)
+* [  wrangler.jsonc ](#tab-panel-4068)
+* [  wrangler.toml ](#tab-panel-4069)
 
 JSONC
 
@@ -112,7 +112,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-18",
+  "compatibility_date": "2026-05-21",
 
   "compatibility_flags": [
 
@@ -163,7 +163,7 @@ TOML
 
 # Set this to today's date
 
-compatibility_date = "2026-05-18"
+compatibility_date = "2026-05-21"
 
 compatibility_flags = ["nodejs_compat"]
 
@@ -184,14 +184,14 @@ tag = "v1"
 
 ```
 
-Only the parent agent needs a Durable Object binding and migration. Child agents are created as facets of the parent — they share the same machine but have fully isolated SQLite storage.
+Only the top-level parent agent needs a Durable Object binding and migration. Child agents are created as facets of the parent — they share the same machine but have fully isolated SQLite storage.
 
 ## subAgent
 
 Get or create a named sub-agent. The first call for a given name triggers the child's `onStart()`. Subsequent calls return the existing instance.
 
-* [  JavaScript ](#tab-panel-4036)
-* [  TypeScript ](#tab-panel-4037)
+* [  JavaScript ](#tab-panel-4070)
+* [  TypeScript ](#tab-panel-4071)
 
 JavaScript
 
@@ -234,8 +234,8 @@ The stub exposes all public instance methods you define on the child class. Meth
 
 Return types are automatically wrapped in `Promise` if they are not already:
 
-* [  JavaScript ](#tab-panel-4048)
-* [  TypeScript ](#tab-panel-4049)
+* [  JavaScript ](#tab-panel-4082)
+* [  TypeScript ](#tab-panel-4083)
 
 JavaScript
 
@@ -302,15 +302,21 @@ class MyChild extends Agent {
 * The child class must extend `Agent`
 * The child class must be exported from the worker entry point (`export class MyChild extends Agent`)
 * The export name must match the class name — `export { Foo as Bar }` is not supported
-* The parent class must be bound as a Durable Object namespace in `wrangler.jsonc`
+* The top-level parent class must be bound as a Durable Object namespace in `wrangler.jsonc`
+* A facet-only child class does not need to be registered under `new_sqlite_classes` unless the same class is also bound as a top-level Durable Object elsewhere
+* Nested facet parents do not need their own top-level Durable Object bindings; the runtime resolves nested children through the root parent namespace
 * The child class name cannot be `Sub`, because `/sub/` is reserved as the URL separator for nested routes
+
+### Notes for testing
+
+Tests that use `@cloudflare/vitest-pool-workers` may need to list facet classes as test-only Durable Object bindings so `ctx.exports` provides a facet-compatible class value. Keep those facet classes out of `new_sqlite_classes`; the extra binding belongs only in test `wrangler.jsonc` files and is not a production Worker requirement.
 
 ## abortSubAgent
 
 Forcefully stop a running sub-agent. The child stops executing immediately and restarts on the next `subAgent()` call. Storage is preserved — only the running instance is killed.
 
-* [  JavaScript ](#tab-panel-4038)
-* [  TypeScript ](#tab-panel-4039)
+* [  JavaScript ](#tab-panel-4072)
+* [  TypeScript ](#tab-panel-4073)
 
 JavaScript
 
@@ -346,8 +352,8 @@ Abort is transitive — if the child has its own sub-agents, they are also abort
 
 Abort the child (if running) and permanently wipe its storage. The next `subAgent()` call creates a fresh instance with empty SQLite.
 
-* [  JavaScript ](#tab-panel-4040)
-* [  TypeScript ](#tab-panel-4041)
+* [  JavaScript ](#tab-panel-4074)
+* [  TypeScript ](#tab-panel-4075)
 
 JavaScript
 
@@ -384,8 +390,8 @@ Deletion is transitive — the child's own sub-agents are also deleted.
 
 Check whether a child has been spawned and not deleted. This is backed by a framework-maintained SQLite registry.
 
-* [  JavaScript ](#tab-panel-4042)
-* [  TypeScript ](#tab-panel-4043)
+* [  JavaScript ](#tab-panel-4076)
+* [  TypeScript ](#tab-panel-4077)
 
 JavaScript
 
@@ -417,8 +423,8 @@ if (!this.hasSubAgent(Chat, id)) {
 
 List spawned sub-agents, optionally filtered by class. Rows are returned in creation order.
 
-* [  JavaScript ](#tab-panel-4044)
-* [  TypeScript ](#tab-panel-4045)
+* [  JavaScript ](#tab-panel-4078)
+* [  TypeScript ](#tab-panel-4079)
 
 JavaScript
 
@@ -454,8 +460,8 @@ The hook can return:
 | Request      | Forward a modified request                |
 | Response     | Short-circuit and do not wake the child   |
 
-* [  JavaScript ](#tab-panel-4052)
-* [  TypeScript ](#tab-panel-4053)
+* [  JavaScript ](#tab-panel-4086)
+* [  TypeScript ](#tab-panel-4087)
 
 JavaScript
 
@@ -517,8 +523,8 @@ WebSocket upgrade requests flow through this hook the same way as plain HTTP req
 
 Sub-agents know who their parent is through `this.parentPath` and `this.selfPath`.
 
-* [  JavaScript ](#tab-panel-4054)
-* [  TypeScript ](#tab-panel-4055)
+* [  JavaScript ](#tab-panel-4088)
+* [  TypeScript ](#tab-panel-4089)
 
 JavaScript
 
@@ -572,8 +578,8 @@ this.selfPath;
 
 Use `parentAgent(Cls)` from a sub-agent to get a typed RPC stub to its immediate parent:
 
-* [  JavaScript ](#tab-panel-4050)
-* [  TypeScript ](#tab-panel-4051)
+* [  JavaScript ](#tab-panel-4084)
+* [  TypeScript ](#tab-panel-4085)
 
 JavaScript
 
@@ -597,6 +603,8 @@ await inbox.recordTurn(this.name, "...");
 
 ```
 
+`parentAgent()` resolves the direct parent even when that parent is itself a facet-only sub-agent, using a root-side RPC bridge under the hood. This gives you typed method calls to the immediate parent without requiring every nested parent class to be bound as a top-level Durable Object.
+
 For grandparents and further ancestors, iterate `this.parentPath` and call `getAgentByName()` directly. If the binding name does not match the class name, call `getAgentByName(env.MY_BINDING, this.parentPath.at(-1)!.name)` instead of `parentAgent()`.
 
 ## Client routing
@@ -605,8 +613,8 @@ For grandparents and further ancestors, iterate `this.parentPath` and call `getA
 
 Extend any `useAgent` call with a `sub` chain to connect to a descendant facet:
 
-* [  JavaScript ](#tab-panel-4056)
-* [  TypeScript ](#tab-panel-4057)
+* [  JavaScript ](#tab-panel-4090)
+* [  TypeScript ](#tab-panel-4091)
 
 JavaScript
 
@@ -648,8 +656,8 @@ The hook builds a URL like `/agents/inbox/user-123/sub/chat/chat-abc` and opens 
 
 For fetch handlers that do their own top-level URL parsing, use `routeSubAgentRequest()` to dispatch a request into a sub-agent from an already-resolved parent stub:
 
-* [  JavaScript ](#tab-panel-4062)
-* [  TypeScript ](#tab-panel-4063)
+* [  JavaScript ](#tab-panel-4096)
+* [  TypeScript ](#tab-panel-4097)
 
 JavaScript
 
@@ -719,8 +727,8 @@ export default {
 
 From inside the parent Durable Object, `this.subAgent(Cls, name)` returns a typed stub. From outside the parent, use `getSubAgentByName()`:
 
-* [  JavaScript ](#tab-panel-4058)
-* [  TypeScript ](#tab-panel-4059)
+* [  JavaScript ](#tab-panel-4092)
+* [  TypeScript ](#tab-panel-4093)
 
 JavaScript
 
@@ -762,8 +770,8 @@ await chat.addMessage({ role: "user", content: "hello" });
 
 Each sub-agent has its own SQLite database, completely isolated from the parent and from other sub-agents. A parent writing to `this.sql` and a child writing to `this.sql` operate on different databases:
 
-* [  JavaScript ](#tab-panel-4068)
-* [  TypeScript ](#tab-panel-4069)
+* [  JavaScript ](#tab-panel-4102)
+* [  TypeScript ](#tab-panel-4103)
 
 JavaScript
 
@@ -865,8 +873,8 @@ export class Child extends Agent {
 
 Two different classes can share the same user-facing name — they are resolved independently. The internal key is a composite of class name and facet name:
 
-* [  JavaScript ](#tab-panel-4060)
-* [  TypeScript ](#tab-panel-4061)
+* [  JavaScript ](#tab-panel-4094)
+* [  TypeScript ](#tab-panel-4095)
 
 JavaScript
 
@@ -896,8 +904,8 @@ const logger = await this.subAgent(Logger, "shared-name");
 
 The child's `this.name` property returns the facet name (not the parent's name):
 
-* [  JavaScript ](#tab-panel-4064)
-* [  TypeScript ](#tab-panel-4065)
+* [  JavaScript ](#tab-panel-4098)
+* [  TypeScript ](#tab-panel-4099)
 
 JavaScript
 
@@ -939,8 +947,8 @@ export class Child extends Agent {
 
 Run multiple sub-agents concurrently:
 
-* [  JavaScript ](#tab-panel-4066)
-* [  TypeScript ](#tab-panel-4067)
+* [  JavaScript ](#tab-panel-4100)
+* [  TypeScript ](#tab-panel-4101)
 
 JavaScript
 
@@ -1004,8 +1012,8 @@ export class Orchestrator extends Agent {
 
 Sub-agents can spawn their own sub-agents, forming a tree:
 
-* [  JavaScript ](#tab-panel-4070)
-* [  TypeScript ](#tab-panel-4071)
+* [  JavaScript ](#tab-panel-4104)
+* [  TypeScript ](#tab-panel-4105)
 
 JavaScript
 
@@ -1097,8 +1105,8 @@ export class Worker extends Agent {
 
 Pass an `RpcTarget` callback to stream results from a sub-agent back to the parent:
 
-* [  JavaScript ](#tab-panel-4072)
-* [  TypeScript ](#tab-panel-4073)
+* [  JavaScript ](#tab-panel-4106)
+* [  TypeScript ](#tab-panel-4107)
 
 JavaScript
 

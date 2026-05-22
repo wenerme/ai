@@ -49,6 +49,10 @@ OpenRouter provides several PDF processing engines:
 The `"pdf-text"` engine is deprecated and automatically redirected to
 `"cloudflare-ai"`. Existing requests using `"pdf-text"` will continue to work.
 
+OCR costs apply to all requests, including BYOK. OpenRouter uses its own Mistral
+key for OCR (not your BYOK key), so the per-page fee is always billed to your
+OpenRouter account.
+
 If you don't explicitly specify an engine, OpenRouter will default first to the model's native file processing capabilities, and if that's not available, we will use the <code>"{DEFAULT_PDF_ENGINE}"</code> engine.
 
 ## OCR Image Limits

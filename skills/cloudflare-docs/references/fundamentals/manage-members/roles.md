@@ -131,6 +131,8 @@ Note
 
 Resource-scoped roles is currently in Beta.
 
+You can also scope permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes. Refer to [Granular permissions for Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/advanced/granular-permissions/) and [Granular permissions for Cloudflare Tunnel and Cloudflare Mesh in Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/).
+
 | Role                                      | Description                                                                                                                                                                        |
 | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cloudflare Access App Admin               | Can edit a specific [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/) in an account.                                            |

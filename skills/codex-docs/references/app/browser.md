@@ -31,7 +31,8 @@ Treat page content as untrusted context. Don't paste secrets into browser flows.
 
 Browser use lets Codex operate the in-app browser directly. Use it for local
 development servers and file-backed previews when Codex needs to click, type,
-inspect rendered state, take screenshots, or verify a fix in the page.
+inspect rendered state, take screenshots, download page assets, run read-only
+page inspection JavaScript, or verify a fix in the page.
 
 To use it, install and enable the Browser plugin. Then ask Codex to use the
 browser in your task, or reference it directly with `@Browser`. The app keeps
@@ -73,8 +74,8 @@ layout issues and keep the card structure unchanged.
 When a bug is visible only in the rendered page, use browser comments to give
 Codex precise feedback on the page.
 
-- Turn on comment mode, select an element or area, and submit a comment.
-- In comment mode, hold <kbd>Shift</kbd> and click to select an area.
+- Turn on Annotation mode, select an element or area, and submit a comment.
+- In Annotation mode, hold <kbd>Shift</kbd> and click to select an area.
 - Hold <kbd>Cmd</kbd> while clicking to send a comment immediately.
 
 After you leave comments, send a message in the thread asking Codex to address
@@ -91,6 +92,28 @@ otherwise wrap it without changing the card height.
 This tooltip covers the data point under the cursor. Reposition the tooltip so
 it stays inside the chart bounds.
 ```
+
+<section class="feature-grid">
+
+<div>
+
+### Styling feedback
+
+When you add an annotation to a section on the page, press the config icon next
+to the text input to give Codex more granular style feedback. You can change
+values like font, text, spacing, and color, preview the result directly on the
+page, and then send the annotation so Codex has a clearer target for the change.
+
+</div>
+
+<CodexScreenshot
+  alt="Codex app showing in-app browser annotation style controls"
+  lightSrc="/images/codex/app/iab-annotations-light.webp"
+  darkSrc="/images/codex/app/iab-annotations-dark.webp"
+  maxHeight="420px"
+/>
+
+</section>
 
 ## Keep browser tasks scoped
 

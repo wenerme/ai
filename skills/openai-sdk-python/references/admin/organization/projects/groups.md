@@ -46,9 +46,13 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: Literal["project.group"]`
 
@@ -85,7 +89,7 @@ print(page.group_id)
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
-      "group_type": "group_type",
+      "group_type": "group",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -134,9 +138,13 @@ Grants a group access to a project.
 
     Display name of the group.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: Literal["project.group"]`
 
@@ -172,7 +180,94 @@ print(project_group.group_id)
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
-  "group_type": "group_type",
+  "group_type": "group",
+  "object": "project.group",
+  "project_id": "project_id"
+}
+```
+
+## Retrieve project group
+
+`admin.organization.projects.groups.retrieve(strgroup_id, GroupRetrieveParams**kwargs)  -> ProjectGroup`
+
+**get** `/organization/projects/{project_id}/groups/{group_id}`
+
+Retrieves a project's group.
+
+### Parameters
+
+- `project_id: str`
+
+- `group_id: str`
+
+- `group_type: Optional[Literal["group", "tenant_group"]]`
+
+  The type of group to retrieve.
+
+  - `"group"`
+
+  - `"tenant_group"`
+
+### Returns
+
+- `class ProjectGroup: …`
+
+  Details about a group's membership in a project.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the group was granted project access.
+
+  - `group_id: str`
+
+    Identifier of the group that has access to the project.
+
+  - `group_name: str`
+
+    Display name of the group.
+
+  - `group_type: Literal["group", "tenant_group"]`
+
+    The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+  - `object: Literal["project.group"]`
+
+    Always `project.group`.
+
+    - `"project.group"`
+
+  - `project_id: str`
+
+    Identifier of the project.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+project_group = client.admin.organization.projects.groups.retrieve(
+    group_id="group_id",
+    project_id="project_id",
+)
+print(project_group.group_id)
+```
+
+#### Response
+
+```json
+{
+  "created_at": 0,
+  "group_id": "group_id",
+  "group_name": "group_name",
+  "group_type": "group",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -253,9 +348,13 @@ print(group.deleted)
 
     Display name of the group.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: Literal["project.group"]`
 
@@ -325,6 +424,14 @@ Lists the project roles assigned to a group within a project.
 
     Identifier for the role.
 
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
   - `created_at: Optional[int]`
 
     When the role was created.
@@ -389,6 +496,12 @@ print(page.id)
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -546,6 +659,127 @@ print(role.group)
 }
 ```
 
+## Retrieve project group role
+
+`admin.organization.projects.groups.roles.retrieve(strrole_id, RoleRetrieveParams**kwargs)  -> RoleRetrieveResponse`
+
+**get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
+
+Retrieves a project role assigned to a group.
+
+### Parameters
+
+- `project_id: str`
+
+- `group_id: str`
+
+- `role_id: str`
+
+### Returns
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+role = client.admin.organization.projects.groups.roles.retrieve(
+    role_id="role_id",
+    project_id="project_id",
+    group_id="group_id",
+)
+print(role.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
 ## Unassign project role from group
 
 `admin.organization.projects.groups.roles.delete(strrole_id, RoleDeleteParams**kwargs)  -> RoleDeleteResponse`
@@ -613,6 +847,14 @@ print(role.deleted)
   - `id: str`
 
     Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
 
   - `created_at: Optional[int]`
 
@@ -725,6 +967,64 @@ print(role.deleted)
     - `resource_type: str`
 
       Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Retrieve Response
+
+- `class RoleRetrieveResponse: …`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: str`
+
+    Identifier for the role.
+
+  - `assignment_sources: Optional[List[AssignmentSource]]`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: str`
+
+    - `principal_type: str`
+
+  - `created_at: Optional[int]`
+
+    When the role was created.
+
+  - `created_by: Optional[str]`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: Optional[Dict[str, object]]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: Optional[str]`
+
+    Description of the role.
+
+  - `metadata: Optional[Dict[str, object]]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: str`
+
+    Name of the role.
+
+  - `permissions: List[str]`
+
+    Permissions associated with the role.
+
+  - `predefined_role: bool`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: str`
+
+    Resource type the role applies to.
+
+  - `updated_at: Optional[int]`
+
+    When the role was last updated.
 
 ### Role Delete Response
 

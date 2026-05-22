@@ -105,6 +105,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/email-security-cf1.xml)
 * [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/gateway.xml)
+* [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)  
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/mesh.xml)
 * [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/multi-cloud-networking.xml)
 * [Risk Score](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)  

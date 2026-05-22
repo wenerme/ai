@@ -38,9 +38,13 @@ Lists all groups in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: str`
+  - `group_type: Literal["group", "tenant_group"]`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: bool`
 
@@ -72,7 +76,7 @@ print(page.id)
     {
       "id": "id",
       "created_at": 0,
-      "group_type": "group_type",
+      "group_type": "group",
       "is_scim_managed": true,
       "name": "name"
     }

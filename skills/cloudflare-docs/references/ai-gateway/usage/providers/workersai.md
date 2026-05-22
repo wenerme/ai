@@ -16,7 +16,7 @@ Use AI Gateway for analytics, caching, and security on requests to [Workers AI](
 
 ## REST API
 
-Use the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) to call Workers AI models. Requests are automatically routed through your account's default AI Gateway.
+Use the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) to call Workers AI models. Workers AI models use the `@cf/` prefix in the model name and require the `cf-aig-gateway-id` header to specify which gateway to route through.
 
 Request to Workers AI Kimi model
 
@@ -26,13 +26,13 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
+  --header "cf-aig-gateway-id: my-gateway" \
+
   --header "Content-Type: application/json" \
 
   --data '{
 
-    "model": "moonshotai/kimi-k2.6",
-
-    "provider": "cloudflare",
+    "model": "@cf/moonshotai/kimi-k2.6",
 
     "messages": [
 
@@ -51,14 +51,12 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 ```
 
-To use a specific gateway, add the `cf-aig-gateway-id` header to your request.
-
 ## Workers binding
 
 You can integrate Workers AI with AI Gateway using an environment binding. To include an AI Gateway within your Worker, add the gateway as an object in your Workers AI request.
 
-* [  JavaScript ](#tab-panel-4551)
-* [  TypeScript ](#tab-panel-4552)
+* [  JavaScript ](#tab-panel-4589)
+* [  TypeScript ](#tab-panel-4590)
 
 JavaScript
 

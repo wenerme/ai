@@ -36,9 +36,13 @@ Grants a group access to a project.
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" or "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -69,7 +73,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
-  "group_type": "group_type",
+  "group_type": "group",
   "object": "project.group",
   "project_id": "project_id"
 }

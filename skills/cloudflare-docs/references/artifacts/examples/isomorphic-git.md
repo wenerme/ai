@@ -12,11 +12,17 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # isomorphic-git
 
-Use [isomorphic-git ↗](https://isomorphic-git.org/) in a Cloudflare Worker when you need Git operations without a Git binary.
+Use [isomorphic-git ↗](https://isomorphic-git.org/) to run Git operations on Artifacts repos directly from a Cloudflare Worker.
 
-This works with Artifacts because Artifacts exposes standard Git smart HTTP remotes. In Workers, pair `isomorphic-git/http/web` with a small in-memory filesystem because the runtime does not expose a local disk.
+The Artifacts binding creates and manages repos, but it cannot read or write files inside them — for that, you need Git. Since Workers do not have a git binary or a local filesystem, `isomorphic-git` fills that gap. It provides Git operations like init, commit, and push as JavaScript function calls, using an in-memory filesystem in place of a real disk.
 
-## Install the dependency
+Use this when your Worker needs to programmatically build and push file trees to an Artifacts repo — for example, an AI agent that generates code and commits it, or an automation that clones a repo, modifies files, and pushes changes back.
+
+## Prerequisites
+
+Follow the [Artifacts Workers setup guide](https://developers.cloudflare.com/artifacts/get-started/workers/) to set up a Worker with an Artifacts binding.
+
+### Install the dependency
 
 Install `isomorphic-git` in your Worker project:
 
@@ -48,8 +54,8 @@ Protect write-capable routes
 
 This example omits authentication so it can focus on the Git flow. In production, authorize the caller before creating repos or granting write capability.
 
-* [  JavaScript ](#tab-panel-4329)
-* [  TypeScript ](#tab-panel-4330)
+* [  JavaScript ](#tab-panel-4785)
+* [  TypeScript ](#tab-panel-4786)
 
 src/index.js
 
@@ -66,24 +72,30 @@ export default {
 
   async fetch(_request, env) {
 
+    // Create a new Artifacts repo
+
     const repoName = `worker-demo-${crypto.randomUUID().slice(0, 8)}`;
 
     const created = await env.ARTIFACTS.create(repoName);
 
 
-    // Artifacts returns art_v1_<secret>?expires=<unix_seconds>.
+    // Artifacts tokens include expiry metadata: art_v1_<secret>?expires=<unix_seconds>
 
-    // For Git Basic auth, pass only the secret as the password.
+    // Git Basic auth expects only the token secret as the password
 
     const tokenSecret = created.token.split("?expires=")[0];
+
+
+    // Set up an in-memory filesystem and initialize a Git repo
 
     const dir = "/workspace";
 
     const fs = new MemoryFS();
 
-
     await git.init({ fs, dir, defaultBranch: "main" });
 
+
+    // Write files
 
     await fs.promises.writeFile(
 
@@ -101,6 +113,8 @@ export default {
 
     );
 
+
+    // Stage and commit
 
     await git.add({ fs, dir, filepath: "README.md" });
 
@@ -125,6 +139,8 @@ export default {
 
     });
 
+
+    // Push to the Artifacts remote
 
     const push = await git.push({
 
@@ -190,24 +206,30 @@ export default {
 
   async fetch(_request: Request, env: Env) {
 
+    // Create a new Artifacts repo
+
     const repoName = `worker-demo-${crypto.randomUUID().slice(0, 8)}`;
 
     const created = await env.ARTIFACTS.create(repoName);
 
 
-    // Artifacts returns art_v1_<secret>?expires=<unix_seconds>.
+    // Artifacts tokens include expiry metadata: art_v1_<secret>?expires=<unix_seconds>
 
-    // For Git Basic auth, pass only the secret as the password.
+    // Git Basic auth expects only the token secret as the password
 
     const tokenSecret = created.token.split("?expires=")[0];
+
+
+    // Set up an in-memory filesystem and initialize a Git repo
 
     const dir = "/workspace";
 
     const fs = new MemoryFS();
 
-
     await git.init({ fs, dir, defaultBranch: "main" });
 
+
+    // Write files
 
     await fs.promises.writeFile(
 
@@ -225,6 +247,8 @@ export default {
 
     );
 
+
+    // Stage and commit
 
     await git.add({ fs, dir, filepath: "README.md" });
 
@@ -249,6 +273,8 @@ export default {
 
     });
 
+
+    // Push to the Artifacts remote
 
     const push = await git.push({
 
@@ -296,8 +322,8 @@ In-memory filesystem helper
 
 Use this helper with `isomorphic-git` in Workers when you need a short-lived working tree in memory.
 
-* [  JavaScript ](#tab-panel-4331)
-* [  TypeScript ](#tab-panel-4332)
+* [  JavaScript ](#tab-panel-4787)
+* [  TypeScript ](#tab-panel-4788)
 
 src/memory-fs.js
 

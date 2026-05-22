@@ -14189,13 +14189,21 @@ Lists the organization roles assigned to a user within the organization.
 
 ### Returns
 
-- `data: array of object { id, created_at, created_by, 8 more }`
+- `data: array of object { id, assignment_sources, created_at, 9 more }`
 
   Role assignments returned in the current page.
 
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number`
 
@@ -14265,6 +14273,12 @@ curl https://api.openai.com/v1/organization/users/$USER_ID/roles \
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -14592,6 +14606,139 @@ curl -X POST https://api.openai.com/v1/organization/users/user_abc123/roles \
 }
 ```
 
+## Retrieve user organization role
+
+**get** `/organization/users/{user_id}/roles/{role_id}`
+
+Retrieves an organization role assigned to a user.
+
+### Path Parameters
+
+- `user_id: string`
+
+- `role_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier for the role.
+
+- `assignment_sources: array of object { principal_id, principal_type }`
+
+  Principals from which the role assignment is inherited, when available.
+
+  - `principal_id: string`
+
+  - `principal_type: string`
+
+- `created_at: number`
+
+  When the role was created.
+
+- `created_by: string`
+
+  Identifier of the actor who created the role.
+
+- `created_by_user_obj: map[unknown]`
+
+  User details for the actor that created the role, when available.
+
+- `description: string`
+
+  Description of the role.
+
+- `metadata: map[unknown]`
+
+  Arbitrary metadata stored on the role.
+
+- `name: string`
+
+  Name of the role.
+
+- `permissions: array of string`
+
+  Permissions associated with the role.
+
+- `predefined_role: boolean`
+
+  Whether the role is predefined by OpenAI.
+
+- `resource_type: string`
+
+  Resource type the role applies to.
+
+- `updated_at: number`
+
+  When the role was last updated.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/users/$USER_ID/roles/$ROLE_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8ROLE01 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "role_01J1F8ROLE01",
+    "name": "API Group Manager",
+    "permissions": [
+        "api.groups.read",
+        "api.groups.write"
+    ],
+    "resource_type": "api.organization",
+    "predefined_role": false,
+    "description": "Allows managing organization groups",
+    "created_at": 1711471533,
+    "updated_at": 1711472599,
+    "created_by": "user_abc123",
+    "created_by_user_obj": null,
+    "metadata": {},
+    "assignment_sources": null
+}
+```
+
 ## Unassign organization role from user
 
 **delete** `/organization/users/{user_id}/roles/{role_id}`
@@ -14652,13 +14799,21 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc123/roles/ro
 
 ### Role List Response
 
-- `RoleListResponse object { id, created_at, created_by, 8 more }`
+- `RoleListResponse object { id, assignment_sources, created_at, 9 more }`
 
   Detailed information about a role assignment entry returned when listing assignments.
 
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number`
 
@@ -14846,6 +15001,64 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc123/roles/ro
 
       - `picture: optional string`
 
+### Role Retrieve Response
+
+- `RoleRetrieveResponse object { id, assignment_sources, created_at, 9 more }`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
+
 ### Role Delete Response
 
 - `RoleDeleteResponse object { deleted, object }`
@@ -14900,9 +15113,13 @@ Lists all groups in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: string`
+  - `group_type: "group" or "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: boolean`
 
@@ -14941,7 +15158,7 @@ curl https://api.openai.com/v1/organization/groups \
     {
       "id": "id",
       "created_at": 0,
-      "group_type": "group_type",
+      "group_type": "group",
       "is_scim_managed": true,
       "name": "name"
     }
@@ -15005,9 +15222,13 @@ Creates a new group in the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: string`
+  - `group_type: "group" or "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: boolean`
 
@@ -15034,7 +15255,7 @@ curl https://api.openai.com/v1/organization/groups \
 {
   "id": "id",
   "created_at": 0,
-  "group_type": "group_type",
+  "group_type": "group",
   "is_scim_managed": true,
   "name": "name"
 }
@@ -15060,6 +15281,85 @@ curl -X POST https://api.openai.com/v1/organization/groups \
     "name": "Support Team",
     "created_at": 1711471533,
     "is_scim_managed": false
+}
+```
+
+## Retrieve group
+
+**get** `/organization/groups/{group_id}`
+
+Retrieves a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+### Returns
+
+- `Group object { id, created_at, group_type, 2 more }`
+
+  Details about an organization group.
+
+  - `id: string`
+
+    Identifier for the group.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was created.
+
+  - `group_type: "group" or "tenant_group"`
+
+    The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+  - `is_scim_managed: boolean`
+
+    Whether the group is managed through SCIM and controlled by your identity provider.
+
+  - `name: string`
+
+    Display name of the group.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "group_type": "group",
+  "is_scim_managed": true,
+  "name": "name"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "group_01J1F8ABCDXYZ",
+    "name": "Support Team",
+    "created_at": 1711471533,
+    "is_scim_managed": false,
+    "group_type": "group"
 }
 ```
 
@@ -15219,9 +15519,13 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
     Unix timestamp (in seconds) when the group was created.
 
-  - `group_type: string`
+  - `group_type: "group" or "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `is_scim_managed: boolean`
 
@@ -15458,6 +15762,89 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/u
 }
 ```
 
+## Retrieve group user
+
+**get** `/organization/groups/{group_id}/users/{user_id}`
+
+Retrieves a user in a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+- `user_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier for the user.
+
+- `email: string`
+
+  Email address of the user, or `null` for users without an email.
+
+- `is_service_account: boolean`
+
+  Whether the user is a service account.
+
+- `name: string`
+
+  Display name of the user.
+
+- `picture: string`
+
+  URL of the user's profile picture, if available.
+
+- `user_type: "user" or "tenant_user"`
+
+  The type of user.
+
+  - `"user"`
+
+  - `"tenant_user"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "email": "email",
+  "is_service_account": true,
+  "name": "name",
+  "picture": "picture",
+  "user_type": "user"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/user_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "user_abc123",
+    "name": "Ada Lovelace",
+    "email": "ada@example.com",
+    "picture": null,
+    "is_service_account": false,
+    "user_type": "user"
+}
+```
+
 ## Remove group user
 
 **delete** `/organization/groups/{group_id}/users/{user_id}`
@@ -15556,6 +15943,40 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
     Identifier of the user that was added.
 
+### User Retrieve Response
+
+- `UserRetrieveResponse object { id, email, is_service_account, 3 more }`
+
+  Details about a user returned from an organization group membership lookup.
+
+  - `id: string`
+
+    Identifier for the user.
+
+  - `email: string`
+
+    Email address of the user, or `null` for users without an email.
+
+  - `is_service_account: boolean`
+
+    Whether the user is a service account.
+
+  - `name: string`
+
+    Display name of the user.
+
+  - `picture: string`
+
+    URL of the user's profile picture, if available.
+
+  - `user_type: "user" or "tenant_user"`
+
+    The type of user.
+
+    - `"user"`
+
+    - `"tenant_user"`
+
 ### User Delete Response
 
 - `UserDeleteResponse object { deleted, object }`
@@ -15604,13 +16025,21 @@ Lists the organization roles assigned to a group within the organization.
 
 ### Returns
 
-- `data: array of object { id, created_at, created_by, 8 more }`
+- `data: array of object { id, assignment_sources, created_at, 9 more }`
 
   Role assignments returned in the current page.
 
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number`
 
@@ -15680,6 +16109,12 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -15903,6 +16338,139 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/r
 }
 ```
 
+## Retrieve group organization role
+
+**get** `/organization/groups/{group_id}/roles/{role_id}`
+
+Retrieves an organization role assigned to a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+- `role_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier for the role.
+
+- `assignment_sources: array of object { principal_id, principal_type }`
+
+  Principals from which the role assignment is inherited, when available.
+
+  - `principal_id: string`
+
+  - `principal_type: string`
+
+- `created_at: number`
+
+  When the role was created.
+
+- `created_by: string`
+
+  Identifier of the actor who created the role.
+
+- `created_by_user_obj: map[unknown]`
+
+  User details for the actor that created the role, when available.
+
+- `description: string`
+
+  Description of the role.
+
+- `metadata: map[unknown]`
+
+  Arbitrary metadata stored on the role.
+
+- `name: string`
+
+  Name of the role.
+
+- `permissions: array of string`
+
+  Permissions associated with the role.
+
+- `predefined_role: boolean`
+
+  Whether the role is predefined by OpenAI.
+
+- `resource_type: string`
+
+  Resource type the role applies to.
+
+- `updated_at: number`
+
+  When the role was last updated.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles/$ROLE_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/role_01J1F8ROLE01 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "role_01J1F8ROLE01",
+    "name": "API Group Manager",
+    "permissions": [
+        "api.groups.read",
+        "api.groups.write"
+    ],
+    "resource_type": "api.organization",
+    "predefined_role": false,
+    "description": "Allows managing organization groups",
+    "created_at": 1711471533,
+    "updated_at": 1711472599,
+    "created_by": "user_abc123",
+    "created_by_user_obj": null,
+    "metadata": {},
+    "assignment_sources": null
+}
+```
+
 ## Unassign organization role from group
 
 **delete** `/organization/groups/{group_id}/roles/{role_id}`
@@ -15963,13 +16531,21 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
 ### Role List Response
 
-- `RoleListResponse object { id, created_at, created_by, 8 more }`
+- `RoleListResponse object { id, assignment_sources, created_at, 9 more }`
 
   Detailed information about a role assignment entry returned when listing assignments.
 
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number`
 
@@ -16082,6 +16658,64 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
     - `resource_type: string`
 
       Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Retrieve Response
+
+- `RoleRetrieveResponse object { id, assignment_sources, created_at, 9 more }`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
 
 ### Role Delete Response
 
@@ -16354,6 +16988,100 @@ curl -X POST https://api.openai.com/v1/organization/roles \
 }
 ```
 
+## Retrieve organization role
+
+**get** `/organization/roles/{role_id}`
+
+Retrieves an organization role.
+
+### Path Parameters
+
+- `role_id: string`
+
+### Returns
+
+- `Role object { id, description, name, 4 more }`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/roles/$ROLE_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "description": "description",
+  "name": "name",
+  "object": "role",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "role",
+    "id": "role_01J1F8ROLE01",
+    "name": "API Group Manager",
+    "description": "Allows managing organization groups",
+    "permissions": [
+        "api.groups.read",
+        "api.groups.write"
+    ],
+    "resource_type": "api.organization",
+    "predefined_role": false
+}
+```
+
 ## Update organization role
 
 **post** `/organization/roles/{role_id}`
@@ -16591,6 +17319,818 @@ curl -X DELETE https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
     Always `role.deleted`.
 
     - `"role.deleted"`
+
+# Data Retention
+
+## Retrieve organization data retention
+
+**get** `/organization/data_retention`
+
+Retrieves organization data retention controls.
+
+### Returns
+
+- `OrganizationDataRetention object { object, type }`
+
+  Represents the organization's data retention control setting.
+
+  - `object: "organization.data_retention"`
+
+    The object type, which is always `organization.data_retention`.
+
+    - `"organization.data_retention"`
+
+  - `type: "zero_data_retention" or "modified_abuse_monitoring" or "enhanced_zero_data_retention" or "enhanced_modified_abuse_monitoring"`
+
+    The configured organization data retention type.
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/data_retention \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.data_retention",
+  "type": "zero_data_retention"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/data_retention \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.data_retention",
+    "type": "modified_abuse_monitoring"
+}
+```
+
+## Update organization data retention
+
+**post** `/organization/data_retention`
+
+Updates organization data retention controls.
+
+### Body Parameters
+
+- `retention_type: "zero_data_retention" or "modified_abuse_monitoring" or "enhanced_zero_data_retention" or "enhanced_modified_abuse_monitoring"`
+
+  The desired organization data retention type.
+
+  - `"zero_data_retention"`
+
+  - `"modified_abuse_monitoring"`
+
+  - `"enhanced_zero_data_retention"`
+
+  - `"enhanced_modified_abuse_monitoring"`
+
+### Returns
+
+- `OrganizationDataRetention object { object, type }`
+
+  Represents the organization's data retention control setting.
+
+  - `object: "organization.data_retention"`
+
+    The object type, which is always `organization.data_retention`.
+
+    - `"organization.data_retention"`
+
+  - `type: "zero_data_retention" or "modified_abuse_monitoring" or "enhanced_zero_data_retention" or "enhanced_modified_abuse_monitoring"`
+
+    The configured organization data retention type.
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/data_retention \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+    -d '{
+          "retention_type": "zero_data_retention"
+        }'
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.data_retention",
+  "type": "zero_data_retention"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/data_retention \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "retention_type": "modified_abuse_monitoring"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.data_retention",
+    "type": "modified_abuse_monitoring"
+}
+```
+
+## Domain Types
+
+### Organization Data Retention
+
+- `OrganizationDataRetention object { object, type }`
+
+  Represents the organization's data retention control setting.
+
+  - `object: "organization.data_retention"`
+
+    The object type, which is always `organization.data_retention`.
+
+    - `"organization.data_retention"`
+
+  - `type: "zero_data_retention" or "modified_abuse_monitoring" or "enhanced_zero_data_retention" or "enhanced_modified_abuse_monitoring"`
+
+    The configured organization data retention type.
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+# Spend Alerts
+
+## List organization spend alerts
+
+**get** `/organization/spend_alerts`
+
+Lists organization spend alerts.
+
+### Query Parameters
+
+- `after: optional string`
+
+  Cursor for pagination. Provide the ID of the last spend alert from the previous response to fetch the next page.
+
+- `before: optional string`
+
+  Cursor for pagination. Provide the ID of the first spend alert from the previous response to fetch the previous page.
+
+- `limit: optional number`
+
+  A limit on the number of spend alerts to return. Defaults to 20.
+
+- `order: optional "asc" or "desc"`
+
+  Sort order for the returned spend alerts.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `data: array of OrganizationSpendAlert`
+
+  Spend alerts returned in the current page.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: array of string`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: optional string`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "organization.spend_alert"`
+
+    The object type, which is always `organization.spend_alert`.
+
+    - `"organization.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+- `first_id: string`
+
+  The ID of the first spend alert in this page.
+
+- `has_more: boolean`
+
+  Whether more spend alerts are available when paginating.
+
+- `last_id: string`
+
+  The ID of the last spend alert in this page.
+
+- `object: "list"`
+
+  Always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/spend_alerts \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "currency": "USD",
+      "interval": "month",
+      "notification_channel": {
+        "recipients": [
+          "string"
+        ],
+        "type": "email",
+        "subject_prefix": "subject_prefix"
+      },
+      "object": "organization.spend_alert",
+      "threshold_amount": 0
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/spend_alerts?limit=20&order=asc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "alert_abc123",
+            "object": "organization.spend_alert",
+            "threshold_amount": 100000,
+            "currency": "USD",
+            "interval": "month",
+            "notification_channel": {
+                "type": "email",
+                "recipients": ["finance@example.com"],
+                "subject_prefix": "OpenAI spend alert"
+            }
+        }
+    ],
+    "first_id": "alert_abc123",
+    "last_id": "alert_abc123",
+    "has_more": false
+}
+```
+
+## Create organization spend alert
+
+**post** `/organization/spend_alerts`
+
+Creates an organization spend alert.
+
+### Body Parameters
+
+- `currency: "USD"`
+
+  The currency for the threshold amount.
+
+  - `"USD"`
+
+- `interval: "month"`
+
+  The time interval for evaluating spend against the threshold.
+
+  - `"month"`
+
+- `notification_channel: object { recipients, type, subject_prefix }`
+
+  Email notification settings for a spend alert.
+
+  - `recipients: array of string`
+
+    Email addresses that receive the spend alert notification.
+
+  - `type: "email"`
+
+    The notification channel type. Currently only `email` is supported.
+
+    - `"email"`
+
+  - `subject_prefix: optional string`
+
+    Optional subject prefix for alert emails.
+
+- `threshold_amount: number`
+
+  The alert threshold amount, in cents.
+
+### Returns
+
+- `OrganizationSpendAlert object { id, currency, interval, 3 more }`
+
+  Represents a spend alert configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: array of string`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: optional string`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "organization.spend_alert"`
+
+    The object type, which is always `organization.spend_alert`.
+
+    - `"organization.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/spend_alerts \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+    -d '{
+          "currency": "USD",
+          "interval": "month",
+          "notification_channel": {
+            "recipients": [
+              "string"
+            ],
+            "type": "email"
+          },
+          "threshold_amount": 0
+        }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "organization.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/spend_alerts \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "threshold_amount": 100000,
+      "currency": "USD",
+      "interval": "month",
+      "notification_channel": {
+          "type": "email",
+          "recipients": ["finance@example.com"],
+          "subject_prefix": "OpenAI spend alert"
+      }
+  }'
+```
+
+#### Response
+
+```json
+{
+    "id": "alert_abc123",
+    "object": "organization.spend_alert",
+    "threshold_amount": 100000,
+    "currency": "USD",
+    "interval": "month",
+    "notification_channel": {
+        "type": "email",
+        "recipients": ["finance@example.com"],
+        "subject_prefix": "OpenAI spend alert"
+    }
+}
+```
+
+## Update organization spend alert
+
+**post** `/organization/spend_alerts/{alert_id}`
+
+Updates an organization spend alert.
+
+### Path Parameters
+
+- `alert_id: string`
+
+### Body Parameters
+
+- `currency: "USD"`
+
+  The currency for the threshold amount.
+
+  - `"USD"`
+
+- `interval: "month"`
+
+  The time interval for evaluating spend against the threshold.
+
+  - `"month"`
+
+- `notification_channel: object { recipients, type, subject_prefix }`
+
+  Email notification settings for a spend alert.
+
+  - `recipients: array of string`
+
+    Email addresses that receive the spend alert notification.
+
+  - `type: "email"`
+
+    The notification channel type. Currently only `email` is supported.
+
+    - `"email"`
+
+  - `subject_prefix: optional string`
+
+    Optional subject prefix for alert emails.
+
+- `threshold_amount: number`
+
+  The alert threshold amount, in cents.
+
+### Returns
+
+- `OrganizationSpendAlert object { id, currency, interval, 3 more }`
+
+  Represents a spend alert configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: array of string`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: optional string`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "organization.spend_alert"`
+
+    The object type, which is always `organization.spend_alert`.
+
+    - `"organization.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/spend_alerts/$ALERT_ID \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+    -d '{
+          "currency": "USD",
+          "interval": "month",
+          "notification_channel": {
+            "recipients": [
+              "string"
+            ],
+            "type": "email"
+          },
+          "threshold_amount": 0
+        }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "organization.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/spend_alerts/alert_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "threshold_amount": 150000,
+      "currency": "USD",
+      "interval": "month",
+      "notification_channel": {
+          "type": "email",
+          "recipients": ["finance@example.com"],
+          "subject_prefix": "OpenAI spend alert"
+      }
+  }'
+```
+
+#### Response
+
+```json
+{
+    "id": "alert_abc123",
+    "object": "organization.spend_alert",
+    "threshold_amount": 150000,
+    "currency": "USD",
+    "interval": "month",
+    "notification_channel": {
+        "type": "email",
+        "recipients": ["finance@example.com"],
+        "subject_prefix": "OpenAI spend alert"
+    }
+}
+```
+
+## Delete organization spend alert
+
+**delete** `/organization/spend_alerts/{alert_id}`
+
+Deletes an organization spend alert.
+
+### Path Parameters
+
+- `alert_id: string`
+
+### Returns
+
+- `OrganizationSpendAlertDeleted object { id, deleted, object }`
+
+  Confirmation payload returned after deleting an organization spend alert.
+
+  - `id: string`
+
+    The deleted spend alert ID.
+
+  - `deleted: boolean`
+
+    Whether the spend alert was deleted.
+
+  - `object: "organization.spend_alert.deleted"`
+
+    Always `organization.spend_alert.deleted`.
+
+    - `"organization.spend_alert.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/spend_alerts/$ALERT_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "organization.spend_alert.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/spend_alerts/alert_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "alert_abc123",
+    "object": "organization.spend_alert.deleted",
+    "deleted": true
+}
+```
+
+## Domain Types
+
+### Organization Spend Alert
+
+- `OrganizationSpendAlert object { id, currency, interval, 3 more }`
+
+  Represents a spend alert configured at the organization level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: array of string`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: optional string`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "organization.spend_alert"`
+
+    The object type, which is always `organization.spend_alert`.
+
+    - `"organization.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Organization Spend Alert Deleted
+
+- `OrganizationSpendAlertDeleted object { id, deleted, object }`
+
+  Confirmation payload returned after deleting an organization spend alert.
+
+  - `id: string`
+
+    The deleted spend alert ID.
+
+  - `deleted: boolean`
+
+    Whether the spend alert was deleted.
+
+  - `object: "organization.spend_alert.deleted"`
+
+    Always `organization.spend_alert.deleted`.
+
+    - `"organization.spend_alert.deleted"`
 
 # Certificates
 
@@ -18664,13 +20204,21 @@ Lists the project roles assigned to a user within a project.
 
 ### Returns
 
-- `data: array of object { id, created_at, created_by, 8 more }`
+- `data: array of object { id, assignment_sources, created_at, 9 more }`
 
   Role assignments returned in the current page.
 
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number`
 
@@ -18740,6 +20288,12 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles \
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -19069,6 +20623,141 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/ro
 }
 ```
 
+## Retrieve project user role
+
+**get** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
+
+Retrieves a project role assigned to a user.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `user_id: string`
+
+- `role_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier for the role.
+
+- `assignment_sources: array of object { principal_id, principal_type }`
+
+  Principals from which the role assignment is inherited, when available.
+
+  - `principal_id: string`
+
+  - `principal_type: string`
+
+- `created_at: number`
+
+  When the role was created.
+
+- `created_by: string`
+
+  Identifier of the actor who created the role.
+
+- `created_by_user_obj: map[unknown]`
+
+  User details for the actor that created the role, when available.
+
+- `description: string`
+
+  Description of the role.
+
+- `metadata: map[unknown]`
+
+  Arbitrary metadata stored on the role.
+
+- `name: string`
+
+  Name of the role.
+
+- `permissions: array of string`
+
+  Permissions associated with the role.
+
+- `predefined_role: boolean`
+
+  Whether the role is predefined by OpenAI.
+
+- `resource_type: string`
+
+  Resource type the role applies to.
+
+- `updated_at: number`
+
+  When the role was last updated.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles/$ROLE_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role_01J1F8PROJ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "role_01J1F8PROJ",
+    "name": "API Project Key Manager",
+    "permissions": [
+        "api.organization.projects.api_keys.read",
+        "api.organization.projects.api_keys.write"
+    ],
+    "resource_type": "api.project",
+    "predefined_role": false,
+    "description": "Allows managing API keys for the project",
+    "created_at": 1711471533,
+    "updated_at": 1711472599,
+    "created_by": "user_abc123",
+    "created_by_user_obj": null,
+    "metadata": {},
+    "assignment_sources": null
+}
+```
+
 ## Unassign project role from user
 
 **delete** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
@@ -19131,13 +20820,21 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/
 
 ### Role List Response
 
-- `RoleListResponse object { id, created_at, created_by, 8 more }`
+- `RoleListResponse object { id, assignment_sources, created_at, 9 more }`
 
   Detailed information about a role assignment entry returned when listing assignments.
 
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number`
 
@@ -19324,6 +21021,64 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/
       - `name: optional string`
 
       - `picture: optional string`
+
+### Role Retrieve Response
+
+- `RoleRetrieveResponse object { id, assignment_sources, created_at, 9 more }`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
 
 ### Role Delete Response
 
@@ -19645,6 +21400,109 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/s
     "id": "svc_acct_abc",
     "name": "Service Account",
     "role": "owner",
+    "created_at": 1711471533
+}
+```
+
+## Update project service account
+
+**post** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
+
+Updates a service account in the project.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `service_account_id: string`
+
+### Body Parameters
+
+- `name: optional string`
+
+  The updated service account name.
+
+- `role: optional "member" or "owner"`
+
+  The updated service account role.
+
+  - `"member"`
+
+  - `"owner"`
+
+### Returns
+
+- `ProjectServiceAccount object { id, created_at, name, 2 more }`
+
+  Represents an individual service account in a project.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the service account was created
+
+  - `name: string`
+
+    The name of the service account
+
+  - `object: "organization.project.service_account"`
+
+    The object type, which is always `organization.project.service_account`
+
+    - `"organization.project.service_account"`
+
+  - `role: "owner" or "member"`
+
+    `owner` or `member`
+
+    - `"owner"`
+
+    - `"member"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+    -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "name": "name",
+  "object": "organization.project.service_account",
+  "role": "owner"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/svc_acct_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Updated service account",
+      "role": "member"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.service_account",
+    "id": "svc_acct_abc",
+    "name": "Updated service account",
+    "role": "member",
     "created_at": 1711471533
 }
 ```
@@ -21290,9 +23148,13 @@ Lists the groups that have access to a project.
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" or "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -21334,7 +23196,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
       "created_at": 0,
       "group_id": "group_id",
       "group_name": "group_name",
-      "group_type": "group_type",
+      "group_type": "group",
       "object": "project.group",
       "project_id": "project_id"
     }
@@ -21410,9 +23272,13 @@ Grants a group access to a project.
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" or "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -21443,7 +23309,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
   "created_at": 0,
   "group_id": "group_id",
   "group_name": "group_name",
-  "group_type": "group_type",
+  "group_type": "group",
   "object": "project.group",
   "project_id": "project_id"
 }
@@ -21469,6 +23335,105 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc123/groups 
     "project_id": "proj_abc123",
     "group_id": "group_01J1F8ABCDXYZ",
     "group_name": "Support Team",
+    "created_at": 1711471533
+}
+```
+
+## Retrieve project group
+
+**get** `/organization/projects/{project_id}/groups/{group_id}`
+
+Retrieves a project's group.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `group_id: string`
+
+### Query Parameters
+
+- `group_type: optional "group" or "tenant_group"`
+
+  The type of group to retrieve.
+
+  - `"group"`
+
+  - `"tenant_group"`
+
+### Returns
+
+- `ProjectGroup object { created_at, group_id, group_name, 3 more }`
+
+  Details about a group's membership in a project.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was granted project access.
+
+  - `group_id: string`
+
+    Identifier of the group that has access to the project.
+
+  - `group_name: string`
+
+    Display name of the group.
+
+  - `group_type: "group" or "tenant_group"`
+
+    The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+  - `object: "project.group"`
+
+    Always `project.group`.
+
+    - `"project.group"`
+
+  - `project_id: string`
+
+    Identifier of the project.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups/$GROUP_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "created_at": 0,
+  "group_id": "group_id",
+  "group_name": "group_name",
+  "group_type": "group",
+  "object": "project.group",
+  "project_id": "project_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc123/groups/group_01J1F8ABCDXYZ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "project.group",
+    "project_id": "proj_abc123",
+    "group_id": "group_01J1F8ABCDXYZ",
+    "group_name": "Support Team",
+    "group_type": "group",
     "created_at": 1711471533
 }
 ```
@@ -21551,9 +23516,13 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/group
 
     Display name of the group.
 
-  - `group_type: string`
+  - `group_type: "group" or "tenant_group"`
 
     The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
 
   - `object: "project.group"`
 
@@ -21615,13 +23584,21 @@ Lists the project roles assigned to a group within a project.
 
 ### Returns
 
-- `data: array of object { id, created_at, created_by, 8 more }`
+- `data: array of object { id, assignment_sources, created_at, 9 more }`
 
   Role assignments returned in the current page.
 
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number`
 
@@ -21691,6 +23668,12 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles \
   "data": [
     {
       "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
       "created_at": 0,
       "created_by": "created_by",
       "created_by_user_obj": {
@@ -21916,6 +23899,141 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8A
 }
 ```
 
+## Retrieve project group role
+
+**get** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
+
+Retrieves a project role assigned to a group.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `group_id: string`
+
+- `role_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier for the role.
+
+- `assignment_sources: array of object { principal_id, principal_type }`
+
+  Principals from which the role assignment is inherited, when available.
+
+  - `principal_id: string`
+
+  - `principal_type: string`
+
+- `created_at: number`
+
+  When the role was created.
+
+- `created_by: string`
+
+  Identifier of the actor who created the role.
+
+- `created_by_user_obj: map[unknown]`
+
+  User details for the actor that created the role, when available.
+
+- `description: string`
+
+  Description of the role.
+
+- `metadata: map[unknown]`
+
+  Arbitrary metadata stored on the role.
+
+- `name: string`
+
+  Name of the role.
+
+- `permissions: array of string`
+
+  Permissions associated with the role.
+
+- `predefined_role: boolean`
+
+  Whether the role is predefined by OpenAI.
+
+- `resource_type: string`
+
+  Resource type the role applies to.
+
+- `updated_at: number`
+
+  When the role was last updated.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles/$ROLE_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "assignment_sources": [
+    {
+      "principal_id": "principal_id",
+      "principal_type": "principal_type"
+    }
+  ],
+  "created_at": 0,
+  "created_by": "created_by",
+  "created_by_user_obj": {
+    "foo": "bar"
+  },
+  "description": "description",
+  "metadata": {
+    "foo": "bar"
+  },
+  "name": "name",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type",
+  "updated_at": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/roles/role_01J1F8PROJ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "role_01J1F8PROJ",
+    "name": "API Project Key Manager",
+    "permissions": [
+        "api.organization.projects.api_keys.read",
+        "api.organization.projects.api_keys.write"
+    ],
+    "resource_type": "api.project",
+    "predefined_role": false,
+    "description": "Allows managing API keys for the project",
+    "created_at": 1711471533,
+    "updated_at": 1711472599,
+    "created_by": "user_abc123",
+    "created_by_user_obj": null,
+    "metadata": {},
+    "assignment_sources": null
+}
+```
+
 ## Unassign project role from group
 
 **delete** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
@@ -21978,13 +24096,21 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F
 
 ### Role List Response
 
-- `RoleListResponse object { id, created_at, created_by, 8 more }`
+- `RoleListResponse object { id, assignment_sources, created_at, 9 more }`
 
   Detailed information about a role assignment entry returned when listing assignments.
 
   - `id: string`
 
     Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
 
   - `created_at: number`
 
@@ -22097,6 +24223,64 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F
     - `resource_type: string`
 
       Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Retrieve Response
+
+- `RoleRetrieveResponse object { id, assignment_sources, created_at, 9 more }`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
 
 ### Role Delete Response
 
@@ -22377,6 +24561,102 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/roles \
 }
 ```
 
+## Retrieve project role
+
+**get** `/projects/{project_id}/roles/{role_id}`
+
+Retrieves a project role.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `role_id: string`
+
+### Returns
+
+- `Role object { id, description, name, 4 more }`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/roles/$ROLE_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "description": "description",
+  "name": "name",
+  "object": "role",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8PROJ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "role",
+    "id": "role_01J1F8PROJ",
+    "name": "API Project Key Manager",
+    "description": "Allows managing API keys for the project",
+    "permissions": [
+        "api.organization.projects.api_keys.read",
+        "api.organization.projects.api_keys.write"
+    ],
+    "resource_type": "api.project",
+    "predefined_role": false
+}
+```
+
 ## Update project role
 
 **post** `/projects/{project_id}/roles/{role_id}`
@@ -22582,6 +24862,854 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8P
     Always `role.deleted`.
 
     - `"role.deleted"`
+
+# Data Retention
+
+## Retrieve project data retention
+
+**get** `/organization/projects/{project_id}/data_retention`
+
+Retrieves project data retention controls.
+
+### Path Parameters
+
+- `project_id: string`
+
+### Returns
+
+- `ProjectDataRetention object { object, type }`
+
+  Represents a project's data retention control setting.
+
+  - `object: "project.data_retention"`
+
+    The object type, which is always `project.data_retention`.
+
+    - `"project.data_retention"`
+
+  - `type: "organization_default" or "none" or "zero_data_retention" or 3 more`
+
+    The configured project data retention type.
+
+    - `"organization_default"`
+
+    - `"none"`
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/data_retention \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "project.data_retention",
+  "type": "organization_default"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/data_retention \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "project.data_retention",
+    "type": "organization_default"
+}
+```
+
+## Update project data retention
+
+**post** `/organization/projects/{project_id}/data_retention`
+
+Updates project data retention controls.
+
+### Path Parameters
+
+- `project_id: string`
+
+### Body Parameters
+
+- `retention_type: "organization_default" or "none" or "zero_data_retention" or 3 more`
+
+  The desired project data retention type.
+
+  - `"organization_default"`
+
+  - `"none"`
+
+  - `"zero_data_retention"`
+
+  - `"modified_abuse_monitoring"`
+
+  - `"enhanced_zero_data_retention"`
+
+  - `"enhanced_modified_abuse_monitoring"`
+
+### Returns
+
+- `ProjectDataRetention object { object, type }`
+
+  Represents a project's data retention control setting.
+
+  - `object: "project.data_retention"`
+
+    The object type, which is always `project.data_retention`.
+
+    - `"project.data_retention"`
+
+  - `type: "organization_default" or "none" or "zero_data_retention" or 3 more`
+
+    The configured project data retention type.
+
+    - `"organization_default"`
+
+    - `"none"`
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/data_retention \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+    -d '{
+          "retention_type": "organization_default"
+        }'
+```
+
+#### Response
+
+```json
+{
+  "object": "project.data_retention",
+  "type": "organization_default"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/data_retention \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "retention_type": "modified_abuse_monitoring"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "project.data_retention",
+    "type": "modified_abuse_monitoring"
+}
+```
+
+## Domain Types
+
+### Project Data Retention
+
+- `ProjectDataRetention object { object, type }`
+
+  Represents a project's data retention control setting.
+
+  - `object: "project.data_retention"`
+
+    The object type, which is always `project.data_retention`.
+
+    - `"project.data_retention"`
+
+  - `type: "organization_default" or "none" or "zero_data_retention" or 3 more`
+
+    The configured project data retention type.
+
+    - `"organization_default"`
+
+    - `"none"`
+
+    - `"zero_data_retention"`
+
+    - `"modified_abuse_monitoring"`
+
+    - `"enhanced_zero_data_retention"`
+
+    - `"enhanced_modified_abuse_monitoring"`
+
+# Spend Alerts
+
+## List project spend alerts
+
+**get** `/organization/projects/{project_id}/spend_alerts`
+
+Lists project spend alerts.
+
+### Path Parameters
+
+- `project_id: string`
+
+### Query Parameters
+
+- `after: optional string`
+
+  Cursor for pagination. Provide the ID of the last spend alert from the previous response to fetch the next page.
+
+- `before: optional string`
+
+  Cursor for pagination. Provide the ID of the first spend alert from the previous response to fetch the previous page.
+
+- `limit: optional number`
+
+  A limit on the number of spend alerts to return. Defaults to 20.
+
+- `order: optional "asc" or "desc"`
+
+  Sort order for the returned spend alerts.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `data: array of ProjectSpendAlert`
+
+  Spend alerts returned in the current page.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: array of string`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: optional string`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "project.spend_alert"`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+- `first_id: string`
+
+  The ID of the first spend alert in this page.
+
+- `has_more: boolean`
+
+  Whether more spend alerts are available when paginating.
+
+- `last_id: string`
+
+  The ID of the last spend alert in this page.
+
+- `object: "list"`
+
+  Always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "currency": "USD",
+      "interval": "month",
+      "notification_channel": {
+        "recipients": [
+          "string"
+        ],
+        "type": "email",
+        "subject_prefix": "subject_prefix"
+      },
+      "object": "project.spend_alert",
+      "threshold_amount": 0
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts?limit=20&order=asc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "alert_abc123",
+            "object": "project.spend_alert",
+            "threshold_amount": 100000,
+            "currency": "USD",
+            "interval": "month",
+            "notification_channel": {
+                "type": "email",
+                "recipients": ["finance@example.com"],
+                "subject_prefix": "OpenAI spend alert"
+            }
+        }
+    ],
+    "first_id": "alert_abc123",
+    "last_id": "alert_abc123",
+    "has_more": false
+}
+```
+
+## Create project spend alert
+
+**post** `/organization/projects/{project_id}/spend_alerts`
+
+Creates a project spend alert.
+
+### Path Parameters
+
+- `project_id: string`
+
+### Body Parameters
+
+- `currency: "USD"`
+
+  The currency for the threshold amount.
+
+  - `"USD"`
+
+- `interval: "month"`
+
+  The time interval for evaluating spend against the threshold.
+
+  - `"month"`
+
+- `notification_channel: object { recipients, type, subject_prefix }`
+
+  Email notification settings for a spend alert.
+
+  - `recipients: array of string`
+
+    Email addresses that receive the spend alert notification.
+
+  - `type: "email"`
+
+    The notification channel type. Currently only `email` is supported.
+
+    - `"email"`
+
+  - `subject_prefix: optional string`
+
+    Optional subject prefix for alert emails.
+
+- `threshold_amount: number`
+
+  The alert threshold amount, in cents.
+
+### Returns
+
+- `ProjectSpendAlert object { id, currency, interval, 3 more }`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: array of string`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: optional string`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "project.spend_alert"`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+    -d '{
+          "currency": "USD",
+          "interval": "month",
+          "notification_channel": {
+            "recipients": [
+              "string"
+            ],
+            "type": "email"
+          },
+          "threshold_amount": 0
+        }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "project.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "threshold_amount": 100000,
+      "currency": "USD",
+      "interval": "month",
+      "notification_channel": {
+          "type": "email",
+          "recipients": ["finance@example.com"],
+          "subject_prefix": "OpenAI spend alert"
+      }
+  }'
+```
+
+#### Response
+
+```json
+{
+    "id": "alert_abc123",
+    "object": "project.spend_alert",
+    "threshold_amount": 100000,
+    "currency": "USD",
+    "interval": "month",
+    "notification_channel": {
+        "type": "email",
+        "recipients": ["finance@example.com"],
+        "subject_prefix": "OpenAI spend alert"
+    }
+}
+```
+
+## Update project spend alert
+
+**post** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
+
+Updates a project spend alert.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `alert_id: string`
+
+### Body Parameters
+
+- `currency: "USD"`
+
+  The currency for the threshold amount.
+
+  - `"USD"`
+
+- `interval: "month"`
+
+  The time interval for evaluating spend against the threshold.
+
+  - `"month"`
+
+- `notification_channel: object { recipients, type, subject_prefix }`
+
+  Email notification settings for a spend alert.
+
+  - `recipients: array of string`
+
+    Email addresses that receive the spend alert notification.
+
+  - `type: "email"`
+
+    The notification channel type. Currently only `email` is supported.
+
+    - `"email"`
+
+  - `subject_prefix: optional string`
+
+    Optional subject prefix for alert emails.
+
+- `threshold_amount: number`
+
+  The alert threshold amount, in cents.
+
+### Returns
+
+- `ProjectSpendAlert object { id, currency, interval, 3 more }`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: array of string`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: optional string`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "project.spend_alert"`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts/$ALERT_ID \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+    -d '{
+          "currency": "USD",
+          "interval": "month",
+          "notification_channel": {
+            "recipients": [
+              "string"
+            ],
+            "type": "email"
+          },
+          "threshold_amount": 0
+        }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "currency": "USD",
+  "interval": "month",
+  "notification_channel": {
+    "recipients": [
+      "string"
+    ],
+    "type": "email",
+    "subject_prefix": "subject_prefix"
+  },
+  "object": "project.spend_alert",
+  "threshold_amount": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts/alert_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "threshold_amount": 150000,
+      "currency": "USD",
+      "interval": "month",
+      "notification_channel": {
+          "type": "email",
+          "recipients": ["finance@example.com"],
+          "subject_prefix": "OpenAI spend alert"
+      }
+  }'
+```
+
+#### Response
+
+```json
+{
+    "id": "alert_abc123",
+    "object": "project.spend_alert",
+    "threshold_amount": 150000,
+    "currency": "USD",
+    "interval": "month",
+    "notification_channel": {
+        "type": "email",
+        "recipients": ["finance@example.com"],
+        "subject_prefix": "OpenAI spend alert"
+    }
+}
+```
+
+## Delete project spend alert
+
+**delete** `/organization/projects/{project_id}/spend_alerts/{alert_id}`
+
+Deletes a project spend alert.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `alert_id: string`
+
+### Returns
+
+- `ProjectSpendAlertDeleted object { id, deleted, object }`
+
+  Confirmation payload returned after deleting a project spend alert.
+
+  - `id: string`
+
+    The deleted spend alert ID.
+
+  - `deleted: boolean`
+
+    Whether the spend alert was deleted.
+
+  - `object: "project.spend_alert.deleted"`
+
+    Always `project.spend_alert.deleted`.
+
+    - `"project.spend_alert.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts/$ALERT_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "project.spend_alert.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts/alert_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "alert_abc123",
+    "object": "project.spend_alert.deleted",
+    "deleted": true
+}
+```
+
+## Domain Types
+
+### Project Spend Alert
+
+- `ProjectSpendAlert object { id, currency, interval, 3 more }`
+
+  Represents a spend alert configured at the project level.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `currency: "USD"`
+
+    The currency for the threshold amount.
+
+    - `"USD"`
+
+  - `interval: "month"`
+
+    The time interval for evaluating spend against the threshold.
+
+    - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notification settings for a spend alert.
+
+    - `recipients: array of string`
+
+      Email addresses that receive the spend alert notification.
+
+    - `type: "email"`
+
+      The notification channel type. Currently only `email` is supported.
+
+      - `"email"`
+
+    - `subject_prefix: optional string`
+
+      Optional subject prefix for alert emails.
+
+  - `object: "project.spend_alert"`
+
+    The object type, which is always `project.spend_alert`.
+
+    - `"project.spend_alert"`
+
+  - `threshold_amount: number`
+
+    The alert threshold amount, in cents.
+
+### Project Spend Alert Deleted
+
+- `ProjectSpendAlertDeleted object { id, deleted, object }`
+
+  Confirmation payload returned after deleting a project spend alert.
+
+  - `id: string`
+
+    The deleted spend alert ID.
+
+  - `deleted: boolean`
+
+    Whether the spend alert was deleted.
+
+  - `object: "project.spend_alert.deleted"`
+
+    Always `project.spend_alert.deleted`.
+
+    - `"project.spend_alert.deleted"`
 
 # Certificates
 

@@ -102,7 +102,7 @@ Advanced settings
    * Make sure that the value is relatively static and within the first 10 KB of the HTML page.
 * **Simulate Zone**:  
    * It is recommended to use the same zone in which the Load Balancer exists.  
-   * Changes the egress zone settings of a health monitor request to ensure compatibility with features like [authenticated origin pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), and [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/).
+   * Changes the egress zone settings of a health monitor request to ensure compatibility with features like [Authenticated Origin Pulls (mTLS)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), [Bring your own CA (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), and [HTTP/2 to Origin](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/).
 * **Follow Redirects**:  
    * Instead of reporting a `301` or `302` code as unhealthy, the health monitor request follows redirects to the final endpoint.
 * **Configure Request Header(s)**:  

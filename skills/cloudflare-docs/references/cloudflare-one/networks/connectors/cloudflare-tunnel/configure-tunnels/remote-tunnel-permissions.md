@@ -19,9 +19,9 @@ A remotely-managed tunnel only requires the tunnel token to run. Anyone with acc
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-5168)
-* [ API ](#tab-panel-5169)
-* [ Terraform (v5) ](#tab-panel-5170)
+* [ Dashboard ](#tab-panel-5206)
+* [ API ](#tab-panel-5207)
+* [ Terraform (v5) ](#tab-panel-5208)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select a `cloudflared` tunnel and select **Edit**.
@@ -135,8 +135,8 @@ Cloudflare recommends rotating the tunnel token at a regular cadence to reduce t
 To rotate a tunnel token:
 
 1. Refresh the token on Cloudflare:  
-   * [ Dashboard ](#tab-panel-5171)  
-   * [ API ](#tab-panel-5172)  
+   * [ Dashboard ](#tab-panel-5209)  
+   * [ API ](#tab-panel-5210)  
    1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.  
    2. Select a `cloudflared` tunnel and select **Edit**.  
    3. Select **Refresh token**.  
@@ -248,6 +248,10 @@ Additional permissions needed to [route traffic to a public hostname](https://de
 
 * [DNS](https://developers.cloudflare.com/fundamentals/manage-members/roles/)
 * [Load Balancer](https://developers.cloudflare.com/fundamentals/manage-members/roles/)
+
+## Resource-scoped permissions
+
+You can also scope permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances instead of granting account-wide access. Refer to [Granular permissions for Tunnels and Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/","name":"Configure a tunnel"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/","name":"Tunnel permissions"}}]}

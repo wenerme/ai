@@ -43,10 +43,42 @@ Enabled skills also appear in the slash command list.
 | Slash command | Description                                                                            |
 | ------------- | -------------------------------------------------------------------------------------- |
 | `/feedback`   | Open the feedback dialog to submit feedback and optionally include logs.               |
+| `/goal`       | Set a persistent goal for Codex to work toward; use `/plan` first to shape it.         |
 | `/mcp`        | Open MCP status to view connected servers.                                             |
-| `/plan-mode`  | Toggle plan mode for multi-step planning.                                              |
+| `/plan`       | Toggle plan mode for multi-step planning.                                              |
 | `/review`     | Start code review mode to review uncommitted changes or compare against a base branch. |
 | `/status`     | Show the thread ID, context usage, and rate limits.                                    |
+
+### Set or manage a goal with `/goal`
+
+Use `/goal` in the app composer to start Goal mode. A goal is a persistent
+objective that Codex works toward until it finishes the task, pauses, or needs
+more input. To define the goal with Codex first, start with `/plan`, then set
+the refined goal with `/goal`.
+
+If `/goal` doesn't appear in the slash command list, enable `features.goals`
+in `config.toml`:
+
+```toml
+[features]
+goals = true
+```
+
+You can also run `codex features enable goals` from the CLI or ask Codex to run it.
+
+<CodexScreenshot
+  alt="Codex app goal progress controls above the composer"
+  lightSrc="/images/codex/app/goal-dialog-light.webp"
+  darkSrc="/images/codex/app/goal-dialog-dark.webp"
+  class="mb-6"
+/>
+
+When a goal is active, the app shows its progress above the composer. Use the
+buttons in that progress row to pause or resume the goal, edit the goal text, or
+clear the goal instead of typing another slash command. You can keep steering
+Codex with follow-up messages while the goal runs.
+
+For guidance on writing effective goals, see [Goal mode](https://developers.openai.com/codex/prompting#goal-mode).
 
 ## Deeplinks
 

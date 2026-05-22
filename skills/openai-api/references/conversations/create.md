@@ -831,7 +831,7 @@ Create a conversation.
 
         - `type: "open_page"`
 
-          The action type. Always `open_page`.
+          The action type.
 
           - `"open_page"`
 

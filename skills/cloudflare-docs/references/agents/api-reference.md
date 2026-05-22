@@ -38,6 +38,7 @@ Learn more about what Agents can do, the `Agent` class, and the APIs that Agents
 * [ Retrieval Augmented Generation ](https://developers.cloudflare.com/agents/api-reference/rag/)
 * [ Browse the web ](https://developers.cloudflare.com/agents/api-reference/browse-the-web/)
 * [ Voice agents ](https://developers.cloudflare.com/agents/api-reference/voice/)
+* [ Chat SDK ](https://developers.cloudflare.com/agents/api-reference/chat-sdk/)
 * [ createMcpHandler ](https://developers.cloudflare.com/agents/api-reference/mcp-handler-api/)
 * [ McpAgent ](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/)
 * [ McpClient ](https://developers.cloudflare.com/agents/api-reference/mcp-client-api/)

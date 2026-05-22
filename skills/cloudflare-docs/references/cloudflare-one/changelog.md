@@ -14,6 +14,37 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-05-21
+
+[ Cloudflare Fundamentals ](https://developers.cloudflare.com/fundamentals/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[ Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[ Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) 
+
+  
+**Granular permissions for Cloudflare Tunnel and Cloudflare Mesh**   
+
+You can now scope Cloudflare permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes. Administrators can delegate access to specific Tunnels or Mesh nodes without granting account-wide control over private networking.
+
+#### What is new
+
+When you [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) or create a [permission policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/), the resource picker now lists [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes as scopable resource types. You can:
+
+* Grant a read-only role on a single Cloudflare Tunnel instance to a support operator for log streaming and diagnostics — without exposing other Tunnels or destructive actions.
+* Grant a write role on a specific Cloudflare Mesh node to an application team — without giving them access to the rest of your private network.
+* Scope a single policy to one or many Tunnels and Mesh nodes at once.
+
+#### How it works
+
+Granular permissions are a parallel layer to existing account-level roles — they do not replace them.
+
+* **Existing account-level roles continue to work.** A member with `Cloudflare Access` or `Cloudflare Zero Trust` retains write access to every Tunnel and Mesh node in the account. This ensures backward compatibility for existing automation and tokens.
+* **Granular permissions are additive.** For any API request on a specific Tunnel or Mesh node, access is granted if the principal has **either** the account-level role **or** a granular permission for that resource.
+* **Resource enumeration is authorization-aware.** Listing endpoints (`GET /accounts/{id}/cfd_tunnel`, `GET /accounts/{id}/warp_connector`) return only the resources the principal has at least read access to.
+
+#### Get started
+
+* Configure [granular permissions for Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/advanced/granular-permissions/).
+* Configure [granular permissions for Cloudflare Tunnel and Cloudflare Mesh in Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/).
+* Review the [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) on the Cloudflare role reference.
+
 ## 2026-05-19
 
 [ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
@@ -31,6 +62,31 @@ This also enables two new capabilities:
 * **Restrict to account members** — An identity provider configuration option that limits authentication to users who are members of your Cloudflare account.
 
 To get started, add Cloudflare as an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) in your Zero Trust settings.
+
+## 2026-05-19
+
+[ CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) 
+
+  
+**CASB adds support for Claude Compliance API**   
+
+[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/) now integrates with the [Claude Compliance API ↗](https://support.claude.com/en/articles/13015708-access-the-compliance-api). This enhancement gives security teams visibility into Claude usage patterns, admin activity, and compliance-relevant events across their organization.
+
+The Claude Compliance API provides structured access to audit logs and administrative actions within Claude Enterprise and Claude Platform. Cloudflare CASB ingests this data to surface security findings that help organizations enhance their security posture and enforce AI governance.
+
+#### Key capabilities
+
+Starting today, security teams can scan for security findings across the following assets:
+
+* **Public projects** — Projects set to public visibility
+* **Project attachment** — Files and documents added to projects that violate DLP policies
+* **Chat files** — User-uploaded and provider-generated files that violate DLP policies
+* **Chat messages** — User prompts and provider responses that violate DLP policies
+* **Artifacts** — Provider-generated documents and files that violate DLP policies
+
+#### Learn more
+
+This [integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/) is available to all Cloudflare One customers. New Cloudflare customers can sign up and start with their first two integrations for free. Existing customers can enable the integration directly in the dashboard. The integration begins scanning immediately and surfaces findings in the dashboard within minutes.
 
 ## 2026-05-12
 
@@ -4429,8 +4485,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-5106)
-* [ Core Dashboard ](#tab-panel-5107)
+* [ Zero Trust Dashboard ](#tab-panel-5142)
+* [ Core Dashboard ](#tab-panel-5143)
 
 To update your view preference in the Zero Trust dashboard:
 

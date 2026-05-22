@@ -49,3 +49,57 @@ When you submit a prompt, include context that Codex can use, such as references
 As the agent works, it also gathers context from file contents, tool output, and an ongoing record of what it has done and what it still needs to do.
 
 All information in a thread must fit within the model's **context window**, which varies by model. Codex monitors and reports the remaining space. For longer tasks, Codex may automatically **compact** the context by summarizing relevant information and discarding less relevant details. With repeated compaction, Codex can continue working on complex tasks over many steps.
+
+## Goal mode
+
+Goal mode gives Codex a persistent objective to work toward across a longer
+task. Use it when the work may take many steps, or when Codex needs a clear
+definition of done that it can keep checking as it works.
+
+<CodexScreenshot
+  alt="Codex app goal progress controls above the composer"
+  lightSrc="/images/codex/app/goal-dialog-light.webp"
+  darkSrc="/images/codex/app/goal-dialog-dark.webp"
+  class="mb-6"
+/>
+
+When you set a goal, the goal text acts as both the starting prompt and the
+completion criteria. Codex uses it to decide what to do next and whether the
+task is complete. Start Goal mode with `/goal` in the [Codex
+app](https://developers.openai.com/codex/app/commands#set-or-manage-a-goal-with-goal), [IDE
+extension](https://developers.openai.com/codex/ide/slash-commands), or [CLI](https://developers.openai.com/codex/cli/slash-commands#set-or-view-a-task-goal-with-goal).
+
+If `/goal` doesn't appear in the slash command list, enable `features.goals`
+in `config.toml`:
+
+```toml
+[features]
+goals = true
+```
+
+You can also run `codex features enable goals` from the CLI or ask Codex to run it.
+In the Codex app, progress appears above the composer with controls to pause,
+resume, edit, or clear the goal.
+
+Write goals so Codex can tell whether it has succeeded. Good goals include a
+specific outcome, measurable target, or test criteria. For example:
+
+```text
+Migrate this codebase from JavaScript to TypeScript. The app should compile in
+strict mode without explicit `any` type definitions.
+```
+
+```text
+Reduce the time to interactive of the home page to below 1 second.
+```
+
+If the goal is hard to define up front, start with `/plan` and ask Codex to
+shape it before implementation. You can also ask Codex to interview you and
+draft a goal with clear success criteria.
+
+You can continue steering Codex after the goal starts. Send follow-up messages
+to adjust constraints, such as asking Codex to use a particular library or
+avoid a specific approach. Use side chats when you want a status recap or
+explanation without interrupting the main task. For long-running work, pause
+the goal before you lose connectivity, then resume or edit it when you are
+ready to continue.

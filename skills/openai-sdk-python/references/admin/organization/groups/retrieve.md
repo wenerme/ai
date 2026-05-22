@@ -1,0 +1,68 @@
+## Retrieve group
+
+`admin.organization.groups.retrieve(strgroup_id)  -> Group`
+
+**get** `/organization/groups/{group_id}`
+
+Retrieves a group.
+
+### Parameters
+
+- `group_id: str`
+
+### Returns
+
+- `class Group: …`
+
+  Details about an organization group.
+
+  - `id: str`
+
+    Identifier for the group.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the group was created.
+
+  - `group_type: Literal["group", "tenant_group"]`
+
+    The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+  - `is_scim_managed: bool`
+
+    Whether the group is managed through SCIM and controlled by your identity provider.
+
+  - `name: str`
+
+    Display name of the group.
+
+### Example
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    admin_api_key=os.environ.get("OPENAI_ADMIN_KEY"),  # This is the default and can be omitted
+)
+group = client.admin.organization.groups.retrieve(
+    "group_id",
+)
+print(group.id)
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "group_type": "group",
+  "is_scim_managed": true,
+  "name": "name"
+}
+```
