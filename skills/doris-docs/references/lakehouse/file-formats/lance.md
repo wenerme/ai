@@ -11,7 +11,7 @@
 
 > **tip**: Lance format support is an **experimental feature** available since Apache Doris **5.0.0**.
 
-[Lance](https://lancedb.github.io/lance/) is a modern columnar data format designed for AI/ML workloads, with native support for vector search, multimodal data (images, embeddings), and fast random access.
+[Lance](https://docs.lancedb.com/lance) is a modern columnar data format designed for AI/ML workloads, with native support for vector search, multimodal data (images, embeddings), and fast random access.
 
 Doris supports reading Lance format files through Table Valued Functions (TVF).
 
@@ -93,4 +93,4 @@ SELECT count(*), min(id), max(id) FROM s3(
 
 ## References
 
-- [Lance Format Documentation](https://lancedb.github.io/lance/)
+- [Lance Format Documentation](https://docs.lancedb.com/lance)

@@ -10,7 +10,7 @@
 
 This statement is used to display all views based on the given table
 
-grammar:
+## Syntax
 
 ```sql
   SHOW VIEW { FROM | IN } table [ FROM db ]
@@ -27,5 +27,3 @@ grammar:
 ## Keywords
 
     SHOW, VIEW
-
-## Best Practice

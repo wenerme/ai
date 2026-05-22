@@ -10,6 +10,8 @@
 
 <version since="2.0.0">
 
+</version>
+
 ## Description
 
 Applies a lambda expression to elements in an array and counts the number of elements whose return value is not 0.
