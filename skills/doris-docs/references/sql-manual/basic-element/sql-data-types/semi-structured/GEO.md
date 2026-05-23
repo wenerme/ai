@@ -103,7 +103,7 @@ WKB consists of the following parts:
 CREATE TABLE simple_point (  id INT,  wkt STRING) ;
 INSERT INTO simple_point VALUES(1,'POINT(121.4737 31.2304)');
 
-create table simple_point(id int, wkt VARCHAR(255);
+create table simple_point(id int, wkt VARCHAR(255));
 INSERT INTO simple_point VALUES(1,'POINT(121.4737 31.2304)');
 ```
 
@@ -124,7 +124,7 @@ select st_astext(st_geometryfromtext(wkt)) from simple_point;
 CREATE TABLE simple_point (  id INT,  wkb STRING) ;
 INSERT INTO simple_point VALUES(1,'\x01010000005f07ce19515e5e4097ff907efb3a3f40');
 
-create table simple_point(id int, wkb VARCHAR(255);
+create table simple_point(id int, wkb VARCHAR(255));
 INSERT INTO simple_point VALUES(1,'\x01010000005f07ce19515e5e4097ff907efb3a3f40');
 
 ```
@@ -163,10 +163,10 @@ select st_astext(st_point(x,y)) from simple_point_double;
 1. Storing WKT Format Using String or Varchar
 
 ```sql
-CREATE TABLE simple_line (  id INT,  wkt STRING）
+CREATE TABLE simple_line (  id INT,  wkt STRING)
 INSERT INTO simple_line VALUES(1,'LINESTRING(116.4074 39.9042, 121.4737 31.2304)');
 
-CREATE TABLE simple_line (  id INT,  wkt VARCHAR(255)）
+CREATE TABLE simple_line (  id INT,  wkt VARCHAR(255))
 INSERT INTO simple_line VALUES(1,'LINESTRING(116.4074 39.9042, 121.4737 31.2304)');
 ```
 
@@ -184,10 +184,10 @@ select st_astext(st_linefromtext(wkt)) from simple_line;
 2. Storing Using WKB Format
 
 ```sql
-CREATE TABLE simple_line (  id INT,  wkb STRING）
+CREATE TABLE simple_line (  id INT,  wkb STRING)
 INSERT INTO simple_line VALUES(1,'\x010200000002000000fc1873d7121a5d4088855ad3bcf343405f07ce19515e5e4097ff907efb3a3f40');
 
-CREATE TABLE simple_line (  id INT,  wkb VARCHAR(255)）
+CREATE TABLE simple_line (  id INT,  wkb VARCHAR(255))
 INSERT INTO simple_line VALUES(1,'\x010200000002000000fc1873d7121a5d4088855ad3bcf343405f07ce19515e5e4097ff907efb3a3f40');
 ```
 
@@ -207,10 +207,10 @@ select st_astext(st_geometryfromwkb(wkb)) from simple_line;
 1. Storing WKT Format Using String or Varchar
 
 ```sql
-CREATE TABLE simple_polygon (  id INT,  wkt STRING）
+CREATE TABLE simple_polygon (  id INT,  wkt STRING)
 INSERT INTO simple_polygon VALUES(1,'POLYGON((0 0, 0 10, 10 10, 10 0, 0 0))');
 
-CREATE TABLE simple_polygon (  id INT,  wkt VARCHAR(255)）
+CREATE TABLE simple_polygon (  id INT,  wkt VARCHAR(255))
 INSERT INTO simple_polygon VALUES(1,'POLYGON((0 0, 0 10, 10 10, 10 0, 0 0))');
 ```
 
@@ -228,10 +228,10 @@ select st_astext(st_polygon(wkt)) from simple_polygon;
 2. Storing Using WKB Format
 
 ```sql
-CREATE TABLE simple_polygon_wkb (  id INT,  wkb STRING）
+CREATE TABLE simple_polygon_wkb (  id INT,  wkb STRING)
 INSERT INTO simple_polygon_wkb VALUES(1,'\x010300000001000000050000000000000000002440000000000000000000000000000024400000000000002440000000000000000000000000000024400000000000000000000000000000000000000000000024400000000000000000');
 
-CREATE TABLE simple_polygon_wkb (  id INT,  wkb VARCHAR(255)）
+CREATE TABLE simple_polygon_wkb (  id INT,  wkb VARCHAR(255))
 INSERT INTO simple_polygon_wkb VALUES(1,'\x010300000001000000050000000000000000002440000000000000000000000000000024400000000000002440000000000000000000000000000024400000000000000000000000000000000000000000000024400000000000000000');
 ```
 Querying WKB Format
@@ -250,10 +250,10 @@ select st_astext(st_geometryfromwkb(wkb)) from simple_polygon_wkb;
 1. Storing WKT Format Using String or Varchar
 
 ```sql
-CREATE TABLE simple_multipolygon (  id INT,  wkt STRING）
+CREATE TABLE simple_multipolygon (  id INT,  wkt STRING)
 INSERT INTO simple_multipolygon VALUES(1,'MULTIPOLYGON(((0 0, 0 10, 10 10, 10 0, 0 0)),((20 20, 20 30, 30 30, 30 20, 20 20)))');
 
-CREATE TABLE simple_multipolygon (  id INT,  wkt VARCHAR(255)）
+CREATE TABLE simple_multipolygon (  id INT,  wkt VARCHAR(255))
 INSERT INTO simple_multipolygon VALUES(1,'MULTIPOLYGON(((0 0, 0 10, 10 10, 10 0, 0 0)),  -- 第一个多边形((20 20, 20 30, 30 30, 30 20, 20 20))  -- 第二个多边形)');
 
 ```

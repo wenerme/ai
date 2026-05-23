@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Android (ExoPlayer)
 
-**Last reviewed:**  over 3 years ago 
+**Last reviewed:**  almost 4 years ago 
 
 Example of video playback on Android using ExoPlayer
 

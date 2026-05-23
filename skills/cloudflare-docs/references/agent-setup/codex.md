@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Check my Workers deployment logs for errors and suggest fixes.  
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
 ```
 
 1. **Download Codex**  

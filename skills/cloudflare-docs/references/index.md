@@ -1,6 +1,6 @@
 ---
-title: Welcome to Cloudflare
-description: Explore guides and tutorials to start building on Cloudflare's platform
+title: Cloudflare Developer Docs
+description: Connect, protect, and build everywhere.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
@@ -10,314 +10,118 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 [Skip to content](#%5Ftop) 
 
-![](https://developers.cloudflare.com/_astro/Dev-Docs-Header-Illustration-Dark-Mode-cropped.DDWqKYx5_1cIhMB.svg) ![](https://developers.cloudflare.com/_astro/Dev-Docs-Header-Illustration-Light-Mode-cropped.COpWJJAy_ZaWBfS.svg) 
-
-[Directory](https://developers.cloudflare.com/directory/) [Resources](https://developers.cloudflare.com/resources/) [API](https://developers.cloudflare.com/api/) [Agent setup](https://developers.cloudflare.com/agent-setup/) [Use cases](https://developers.cloudflare.com/use-cases/) [Docs for agents](https://developers.cloudflare.com/docs-for-agents/) [Changelog](https://developers.cloudflare.com/changelog/) 
-
-# Welcome to Cloudflare
+# Cloudflare Developer Docs
 
 Explore guides and tutorials to start building on Cloudflare's platform
 
-Featured 
+[ Get started ](https://developers.cloudflare.com/fundamentals/get-started/) ![](https://developers.cloudflare.com/icons/agents/claude/light.svg) ![](https://developers.cloudflare.com/icons/agents/claude/dark.svg) ![](https://developers.cloudflare.com/icons/agents/codex/light.svg) ![](https://developers.cloudflare.com/icons/agents/codex/dark.svg) ![](https://developers.cloudflare.com/icons/agents/cursor/light.svg) ![](https://developers.cloudflare.com/icons/agents/cursor/dark.svg) ![](https://developers.cloudflare.com/icons/agents/opencode/light.svg) ![](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) Copy prompt Prompt copied! 
 
-* [ Docs for agents ](https://developers.cloudflare.com/docs-for-agents/)
-* [ Troubleshoot errors ](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/)
-* [ Register a domain ](https://developers.cloudflare.com/registrar/)
-* [ Setup 1.1.1.1 ](https://developers.cloudflare.com/1.1.1.1/setup/)
-* [ Get started with Cloudflare ](https://developers.cloudflare.com/learning-paths/get-started/concepts/)
+## Powerful primitives, seamlessly integrated
 
-**[View all docs](https://developers.cloudflare.com/directory/)** 
+Compute AI Storage & Databases Media 
 
-Developer Products 
+###  Deploy with one command 
 
-* [ Workers ](https://developers.cloudflare.com/workers/)
-* [ Pages ](https://developers.cloudflare.com/pages/)
-* [ R2 ](https://developers.cloudflare.com/r2/)
-* [ Images ](https://developers.cloudflare.com/images/)
-* [ Stream ](https://developers.cloudflare.com/stream/)
+ Build and deploy serverless functions and full-stack apps on Cloudflare's global network. No servers to manage. No cold starts or region complexity. 
 
-**[View all developer products](https://developers.cloudflare.com/directory/?product-group=Developer+platform)** 
+` npm create cloudflare@latest my-app ` 
 
-AI Products 
+[  Create your first Worker ](https://developers.cloudflare.com/workers/get-started/guide/) 
 
-* [ AI Search ](https://developers.cloudflare.com/ai-search/)
-* [ Workers AI ](https://developers.cloudflare.com/workers-ai/)
-* [ AI Crawl Control ](https://developers.cloudflare.com/ai-crawl-control/)
-* [ AI Gateway ](https://developers.cloudflare.com/ai-gateway/)
-* [ AI Agents ](https://developers.cloudflare.com/agents/)
+[ Workers ](https://developers.cloudflare.com/workers/) · [ Containers ](https://developers.cloudflare.com/containers/) · [ Durable Objects ](https://developers.cloudflare.com/durable-objects/) · [ Queues ](https://developers.cloudflare.com/queues/) 
 
-**[View all AI products](https://developers.cloudflare.com/directory/?product-group=AI)** 
+###  The AI inference platform 
 
-Zero Trust 
+ Run AI inference globally with one API call, build agents, and search across your data — no GPUs to manage, no capacity planning. 
 
-* [ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
-* [ Tunnel ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
-* [ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
-* [ Browser Isolation ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)
-* [ Replace your VPN ](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/)
+` npx wrangler ai models ` 
 
-**[View all Cloudflare One products](https://developers.cloudflare.com/directory/?product-group=Cloudflare+One)** 
+[  Browse available models ](https://developers.cloudflare.com/workers-ai/models/) 
 
----
+[ Workers AI ](https://developers.cloudflare.com/workers-ai/) · [ AI Gateway ](https://developers.cloudflare.com/ai-gateway/) · [ Agents ](https://developers.cloudflare.com/agents/) · [ Vectorize ](https://developers.cloudflare.com/vectorize/) · [ Browser Run ](https://developers.cloudflare.com/browser-run/) 
 
-![AI agents illustration](https://developers.cloudflare.com/_astro/agents.P_8QDHqc_Z1P1F3A.svg) 
+###  Make your database feel instant, everywhere 
+
+ Serverless SQL, globally distributed key-value, and global database acceleration — query directly from Workers with no connection management. 
+
+` npx wrangler d1 create my-database ` 
+
+[  Get started with D1 ](https://developers.cloudflare.com/d1/get-started/) 
+
+[ R2 ](https://developers.cloudflare.com/r2/) · [ D1 ](https://developers.cloudflare.com/d1/) · [ KV ](https://developers.cloudflare.com/kv/) · [ Hyperdrive ](https://developers.cloudflare.com/hyperdrive/) 
+
+###  Build media pipelines without infrastructure headaches 
+
+ Cloudflare Images helps teams build scalable, reliable media pipelines to store, optimize, and deliver images. 
+
+` curl --request POST https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1 ` 
+
+[  Get started with Images ](https://developers.cloudflare.com/images/get-started/introduction/) 
+
+[ Images ](https://developers.cloudflare.com/images/) · [ Stream ](https://developers.cloudflare.com/stream/) · [ Realtime ](https://developers.cloudflare.com/realtime/) 
 
 ## Build with your favorite AI agent
 
 Paste into any AI coding agent to install Cloudflare agent tooling:
 
-`Fetch https://developers.cloudflare.com/agent-setup/prompt.md ` 
+![](https://developers.cloudflare.com/icons/agents/claude/light.svg) ![](https://developers.cloudflare.com/icons/agents/claude/dark.svg) ![](https://developers.cloudflare.com/icons/agents/codex/light.svg) ![](https://developers.cloudflare.com/icons/agents/codex/dark.svg) ![](https://developers.cloudflare.com/icons/agents/cursor/light.svg) ![](https://developers.cloudflare.com/icons/agents/cursor/dark.svg) ![](https://developers.cloudflare.com/icons/agents/opencode/light.svg) ![](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) Copy prompt Prompt copied! 
 
-Or [read more about Cloudflare agent tools and setup guides →](https://developers.cloudflare.com/agent-setup/) 
+Browse all agent setup guides 
 
-[ ![Claude Code](https://developers.cloudflare.com/icons/agents/claude/light.svg) ![Claude Code](https://developers.cloudflare.com/icons/agents/claude/dark.svg) ](https://developers.cloudflare.com/agent-setup/claude-code/ "Claude Code") [ ![Codex](https://developers.cloudflare.com/icons/agents/codex/light.svg) ![Codex](https://developers.cloudflare.com/icons/agents/codex/dark.svg) ](https://developers.cloudflare.com/agent-setup/codex/ "Codex") [ ![Cursor](https://developers.cloudflare.com/icons/agents/cursor/light.svg) ![Cursor](https://developers.cloudflare.com/icons/agents/cursor/dark.svg) ](https://developers.cloudflare.com/agent-setup/cursor/ "Cursor") [ ![OpenCode](https://developers.cloudflare.com/icons/agents/opencode/light.svg) ![OpenCode](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) ](https://developers.cloudflare.com/agent-setup/opencode/ "OpenCode") [ ![GitHub Copilot](https://developers.cloudflare.com/icons/agents/copilot/light.svg) ![GitHub Copilot](https://developers.cloudflare.com/icons/agents/copilot/dark.svg) ](https://developers.cloudflare.com/agent-setup/github-copilot/ "GitHub Copilot") [ ![Windsurf](https://developers.cloudflare.com/icons/agents/windsurf/light.svg) ![Windsurf](https://developers.cloudflare.com/icons/agents/windsurf/dark.svg) ](https://developers.cloudflare.com/agent-setup/windsurf/ "Windsurf") 
+[All agents ](https://developers.cloudflare.com/agent-setup/) 
 
----
+## What's new
 
-![Developer Platform section image](https://developers.cloudflare.com/_astro/developer-platform-light.CZoHB6oh_eLF9R.svg) ![Developer Platform section image](https://developers.cloudflare.com/_astro/developer-platform-dark.ChPufHpV_Z1n8xct.svg) 
+The latest features and improvements shipping across Cloudflare.
 
-## Developer Platform
+[ View Changelog ](https://developers.cloudflare.com/changelog/)
 
-The Cloudflare Developer Platform provides a serverless execution environment that allows you to create entirely new applications or augment existing ones without configuring or maintaining infrastructure.
+[May 21, 2026AI GatewayCall any AI model through AI Gateway's new REST APICall third-party and Workers AI models through one Cloudflare REST API, with AI Gateway features applied automatically.Read update](https://developers.cloudflare.com/changelog/post/2026-05-21-rest-api/)[May 21Cloudflare FundamentalsGranular permissions for Cloudflare Tunnel and Cloudflare MeshNew resource-scoped permissions allow administrators to grant access to specific Cloudflare Tunnel instances and Cloudflare Mesh nodes instead of all tunnels and nodes in an account.Read more](https://developers.cloudflare.com/changelog/post/2026-05-21-tunnel-mesh-granular-permissions/)[May 21Workers VPCReach Cloudflare WAN destinations from Workers VPCVPC Network bindings using cf1:network now reach destinations connected through Cloudflare WAN on-ramps (GRE, IPsec, CNI), in addition to Cloudflare Mesh nodes and subnet or hostname routes announced through Cloudflare Tunnel or Mesh.Read more](https://developers.cloudflare.com/changelog/post/2026-05-21-vpc-networks-cloudflare-wan/)[May 20DNSNew DNS records UX is rolling outA refreshed DNS records page is rolling out in the Cloudflare dashboard, with opt-in available for everyone starting today.Read more](https://developers.cloudflare.com/changelog/post/2026-05-20-new-dns-records-ux/)[May 20RadarContent type distribution and API traffic share on Cloudflare RadarNew traffic charts showing HTTP response content type distribution and API-related dynamic traffic shareRead more](https://developers.cloudflare.com/changelog/post/2026-05-20-radar-content-type-and-api-traffic/)[May 20WAFWAF Release - 2026-05-20Cloudflare WAF managed rulesets 2026-05-20Read more](https://developers.cloudflare.com/changelog/post/2026-05-20-waf-release/)[May 19AccessCloudflare as identity provider and account membership selectorUse Cloudflare as an identity provider in Access and build policies based on Cloudflare account membership.Read more](https://developers.cloudflare.com/changelog/post/2026-05-19-cloudflare-as-identity-provider/)[May 19ArtifactsEvent subscriptions for Artifacts lifecycle eventsSubscribe to Artifacts events for repository creates, deletes, forks, imports, pushes, clones, and fetches.Read more](https://developers.cloudflare.com/changelog/post/2026-05-19-event-subscriptions/)
 
-[ Explore our Developer Platform ](https://developers.cloudflare.com/directory/?product-group=Developer+platform) 
+## Security that scales
 
----
+Everything you need to secure applications, APIs, and infrastructure.
 
-Install the WARP Client 
+ Public websites & apps 
 
-The Cloudflare WARP client allows individuals and organizations to have a faster, more secure, and more private experience online.
+[  WAF  Protect your applications without sacrificing performance  Identify and block malicious payloads before they can compromise your application.  Harden your app with WAF ](https://developers.cloudflare.com/waf/)[  SSL/TLS  Encrypt your site in minutes  Streamline TLS Certificate Management.  Set up SSL/TLS ](https://developers.cloudflare.com/ssl/)[  Turnstile  Verify visitors without CAPTCHA  Confirm web visitors are real and block unwanted bots without slowing down web experiences for real users.  Add Turnstile protection ](https://developers.cloudflare.com/turnstile/) 
 
-  
-[ Get started ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/) 
+ Corporate and home networks 
 
-Set up a tunnel 
+[  Tunnel  Securely connect origins with post-quantum encrypted tunnels  Outbound-only encrypted tunnels, no open ports.  Create a secure Tunnel ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[  Access  Secure internal applications with Cloudflare Access  Identity-first, quantum-safe access to private applications and infrastructure.  Set up Cloudflare Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/)[  Gateway  Secure Internet browsing without disruptions  Cloud-native Secure Web Gateway (SWG) that inspects browser traffic without disruption.  Create Gateway policies ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) 
 
-Cloudflare Tunnel provides you with a secure way to connect your resources to Cloudflare without a publicly routable IP address.
+## Faster web performance
 
-  
-[ Set up a tunnel ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) 
+Accelerate websites and applications with Cloudflare CDN caching, image optimization, smart routing, load balancing, and web analytics.
 
-![Zero Trust section image](https://developers.cloudflare.com/_astro/zero-trust-light.BvZ3bzoV_5tUAY.svg) ![Zero Trust section image](https://developers.cloudflare.com/_astro/zero-trust-dark.Dary5ape_5tUAY.svg) 
+[Explore Directory ](https://developers.cloudflare.com/directory/?product-group=Application+performance) 
 
-## Zero Trust
+[  DNS  Fast, reliable and resilient DNS queries  World's fastest authoritative DNS, consistently ranked #1 by DNSPerf; free, fully API-managed, DNSSEC supported.  Set up Authoritative DNS ](https://developers.cloudflare.com/dns/)[  Smart Shield  Minimize origin load and accelerate dynamic content  Intelligently manage traffic, optimize content delivery, and safeguard origin infrastructure.  Enable Smart Shield ](https://developers.cloudflare.com/smart-shield/)[  CDN  Default caching for static assets, with cache rules for full control  Caches content in 330+ cities worldwide, with instant purging and granular Cache Rules.  Set up Cache Rules ](https://developers.cloudflare.com/cache/get-started/)[  Speed  Assess your site speed and apply recommended optimizations  Application delivery optimizations including minification, Brotli compression, Early Hints, and HTTP/3\.  Improve your site speed ](https://developers.cloudflare.com/speed/)[  Images  Transform, optimize, and deliver images worldwide  Cloudflare Images handles format conversion, responsive sizing, and intelligent caching.  Optimize image delivery ](https://developers.cloudflare.com/images/)[  Web Analytics  Understand the performance of your web pages  Cloudflare Web Analytics collects Core Web Vitals and performance data from 100% of page views without cookies or sampling.  Track real user metrics ](https://developers.cloudflare.com/web-analytics/) 
 
-Cloudflare Zero Trust replaces legacy security perimeters with our global network, making the Internet faster and safer for teams around the world.
+## Connect with Cloudflare
 
----
+Find community, read the blog, and explore open source projects.
 
-## Build with Cloudflare
+ Community 
 
-**Return HTML** **Return JSON** **Fetch HTML** **Redirect** **Respond with another site** 
+###  Join the conversation 
 
-JavaScript
+ Share ideas, answers, and code with the Cloudflare community. 
 
-```
+[ Discord ](https://discord.cloudflare.com/)[ X ](https://x.com/cloudflare)[ Forum ](https://community.cloudflare.com/) 
 
-export default {
+ Open Source 
 
-  async fetch(request) {
+###  View the source 
 
-    const html = `<!DOCTYPE html>
+ Cloudflare contributes to the open-source ecosystem in a variety of ways, including: 
 
-    <body>
+[ GitHub ](https://github.com/cloudflare)[ Sponsors ](https://github.com/sponsors/cloudflare)[ Style guide ](https://developers.cloudflare.com/style-guide/) 
 
-      <h1>Hello World</h1>
+ Blog 
 
-      <p>This markup was generated by a Cloudflare Worker.</p>
+###  Read the latest 
 
-    </body>`;
+ Get the latest news on Cloudflare products, technologies, and culture. 
 
-
-    return new Response(html, {
-
-      headers: {
-
-        "content-type": "text/html;charset=UTF-8",
-
-      },
-
-    });
-
-  },
-
-};
-
-
-```
-
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAmAJyDBAVmEB2ACzCAjDIBcLFm2Ac4XGnwEjxU2QuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ3JMcQwGAkDCQAAwAPABCZwAeSslQAmgAFACin2+YAAfM8tkCKLg6GiXi8gcdFCiABL2MBgdAkADqmDAuCByEJuLxJCBMBRlWO7hIwEQAGsQDASAB3XokADmjnsCAI9lw5Do2xIVgpIFwqDAiHs1MwfOliQZ7PRrOQWJxAKIFmNFwgIAQVFC9mFJAASrdPFQ3PZTl8fgAaJ4sz72OALBBufwbINbKJvMpOCA1exRfxRBzxFC+sBEE6IL0QBgAVUqADFsAAOKJ+41bAC+1bxtfulrr1drREs6mYmm0uh4-CEYgk0nkShkJVsDicrg8Xh8bSo-kC2lIYQi0QihG06QCWRy66iZApZGK1kn5SqSfqjWavFa7VStimFjWUV5sQA+qNxtkU-kFoUaS1p2XY9sEfb6IORgjqYMjMJYQA)
-
-JavaScript
-
-```
-
-export default {
-
-  async fetch(request) {
-
-    const data = {
-
-      hello: "world",
-
-    };
-
-
-    return Response.json(data);
-
-  },
-
-};
-
-
-```
-
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWYQGZxYgCwB2AExyxALhYs2wDnC40+AkeMmyFYgLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2SXmsb2cCSBgenp8PbMDA6F8EQA7pgwLgIgAaR4bAC+RDMsJIZwgIAQVBIACVru4qC5bEkXNZjppboj4TCEeZVMx1JptDx+EJRBIxNJ5IoitY7A5nG4PF4WlRfP5NKQQmFImFCJpUn4MlkpREyICyIVLDzShUqjVNvVGrxmq1ktYJmYVhFgHBogB9YajTIRJS5Ob5FJwmm0+mBRm6FkGdlGRTMcxAA)
-
-JavaScript
-
-```
-
-export default {
-
-  async fetch(request) {
-
-    /**
-
-     * Replace `remote` with the host you wish to send requests to
-
-     */
-
-    const remote = "https://example.com";
-
-
-    return await fetch(remote, request);
-
-  },
-
-};
-
-
-```
-
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2AIwBOAEwBmcSOkA2AKwAuFizbAOcLjT4CREmXOGKlAWABQAYXRUIAU3vYAIlADOMdO6jQ7Kkk08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkmQAKneX1-eSACUHM04LwHCQAAaXMaOMEkADuvhOJAgJ1BJ28azolDhHkREHQJHcTlwJEuNzuEHcSPQ32272QNN4dnuJIcUNBDBI0ROEAgMHcKmQyESEWaDiSjOAGUsNMuEBACCoO1hcF8h2O50h6EcABoWWT7g8iC8AL7ayzGohWdTMTTaXQ8fhCMRSWTyZSlOyOZxuTzeXztKgBILaUjhSIxSKEbQZQLZXLh6JkMDoMglGyeirVWr1HZNFq8NodNJ2aaWdbRYAqqgAfTGExy0RUBUWRXSxqt1ttIXt+idRldpmUzCsQA)
-
-JavaScript
-
-```
-
-export default {
-
-  async fetch(request) {
-
-    const destinationURL = "https://example.com";
-
-    const statusCode = 301;
-
-    return Response.redirect(destinationURL, statusCode);
-
-  },
-
-};
-
-
-```
-
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2QQCZBANkkBOSWJkBWAFwsWbYBzhcafASPFTZ8pQFgAUAGF0VCAFNb2ACJQAzjHSuo0G8pIa8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3Nkl4bW7mb6FCfKgBVACUADIkBgkSJHCAQGCuZTIZDxMKNOwJV7ANJPTavKjvW4EECuazzEEkADMggAjEQMSRzhAQAgqCR-jcPNjkeceOdeBATvNbjEWjYAYCADQkXF0gmjOx3KmbAC+IvM8qIFjUzA0Wh0PH4QlEEmkcgUimKNnsjhc7k83laVD8AS0pFC4Si4UIWjS-ky2RdkTIYHQZCKVjNZUq1VqWwaTV4gqo7VcNkm5lWkWAcBiAH0RmMspFlHl5gVUvK1erNUFtXo9YZDSZFMwLEA)
-
-JavaScript
-
-```
-
-export default {
-
-  async fetch(request) {
-
-    function MethodNotAllowed(request) {
-
-      return new Response(`Method ${request.method} not allowed.`, {
-
-        status: 405,
-
-        headers: {
-
-          Allow: "GET",
-
-        },
-
-      });
-
-    }
-
-    // Only GET requests work with this proxy.
-
-    if (request.method !== "GET") return MethodNotAllowed(request);
-
-    return fetch(`https://example.com`);
-
-  },
-
-};
-
-
-```
-
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmAOwAmYeIAsANmHzRALhYs2wDnC40+AkRKlyFYgLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2-al5vKhIAWX3DkYA5dAgAEEwGB0AB3Wy4U4XK43e5rJ5PM4QEAId5UWxgkgAJWu7ioLlsxwABl8ID9cCQACQrM6Xa4QeJhckjAC+wQBmxB4Mh8WJABoHojETcCCAXL5pIIAKz8x7CkiHWxwOYICVChVPYGgsG+CIAcQAouUInLNSRWWbhazbkR5Rb7chkCQAPJUMB0EhG8okOmwiAuEhgzAAayDXkOJHJrhIMAQ6FidHi9qgqBI0PpNyZ3xGJAAhAwGCQDcaIvdkaj3mSKf8gdyIVC-QzbfaK2i9gcTsTDhAIDAJU64qEGrZ4rx0MBiS2NpazKyiOZVMx1JptDx+EIxJIZPJFEVrHYHM43B4vC0qL5-JpSCEwpFmSrAqk-BksneImRQWRCpYD6UKlUNSbPUjS8M0rTJNYExmCsETAHA0QAPrDKMmQREouRzPkKSsouS4roEa66JuBg7sYojMOYQA)
-
-[ Learn more about Workers ](https://developers.cloudflare.com/workers/) 
-
----
-
-## Other docs you might also like
-
-Install an Origin CA certificate 
-
-Use Origin Certificate Authority (CA) certificates to encrypt traffic between Cloudflare and your origin web server and reduce origin bandwidth.
-
-  
-[ Install Origin CA ](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/) 
-
-Change your nameservers 
-
-Make Cloudflare your primary DNS provider by updating your authoritative nameservers at your domain registrar.
-
-  
-[ Update nameservers ](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) 
-
-SSL/TLS Encryption mode 
-
-Your domain's encryption mode controls how Cloudflare connects to your origin server and how SSL certificates at your origin will be validated.
-
-  
-[ Set encryption mode ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) 
-
-Allow traffic from specific countries only 
-
-Block requests based on a list of allowed countries by configuring a custom rule in the Web Application Firewall (WAF).
-
-  
-[ Allow traffic from specific countries only ](https://developers.cloudflare.com/waf/custom-rules/use-cases/allow-traffic-from-specific-countries/) 
-
----
-
-**Community** 
-
-Share ideas, answers, code and compare notes with the Cloudflare community.
-
-* [ Discord ](https://discord.cloudflare.com/)
-* [ Twitter ](https://x.com/CloudflareDev)
-* [ Community forum ](https://community.cloudflare.com/)
-
-**Open source** 
-
-Cloudflare contributes to the open-source ecosystem in a variety of ways, including:
-
-* [ GitHub projects ](https://github.com/cloudflare)
-* [ Sponsorship projects ](https://developers.cloudflare.com/sponsorships/)
-* [ Style guide ](https://developers.cloudflare.com/style-guide/)
-
-**Blog** 
-
-Get the latest news on Cloudflare products, technologies, and culture.
-
-* [ Read the blog ](https://blog.cloudflare.com/)
+[ blog.cloudflare.com ](https://blog.cloudflare.com/) 

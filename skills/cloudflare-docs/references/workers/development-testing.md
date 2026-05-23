@@ -90,8 +90,8 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-9172)
-* [  wrangler.toml ](#tab-panel-9173)
+* [  wrangler.jsonc ](#tab-panel-9382)
+* [  wrangler.toml ](#tab-panel-9383)
 
 JSONC
 
@@ -103,7 +103,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-07",
+  "compatibility_date": "2026-05-23",
 
 
   "r2_buckets": [
@@ -133,7 +133,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-07"
+compatibility_date = "2026-05-23"
 
 
 [[r2_buckets]]
@@ -155,8 +155,8 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-9184)
-* [  wrangler.toml ](#tab-panel-9185)
+* [  wrangler.jsonc ](#tab-panel-9394)
+* [  wrangler.toml ](#tab-panel-9395)
 
 JSONC
 
@@ -168,7 +168,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-05-07",
+  "compatibility_date": "2026-05-23",
 
 
   "env": {
@@ -222,7 +222,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-05-07"
+compatibility_date = "2026-05-23"
 
 
 [[env.production.r2_buckets]]
@@ -258,8 +258,8 @@ The following bindings are recommended to have `remote: true` in your Wrangler c
 
 To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-9170)
-* [  wrangler.toml ](#tab-panel-9171)
+* [  wrangler.jsonc ](#tab-panel-9380)
+* [  wrangler.toml ](#tab-panel-9381)
 
 JSONC
 
@@ -297,8 +297,8 @@ remote = true
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-9174)
-* [  wrangler.toml ](#tab-panel-9175)
+* [  wrangler.jsonc ](#tab-panel-9384)
+* [  wrangler.toml ](#tab-panel-9385)
 
 JSONC
 
@@ -336,8 +336,8 @@ remote = true
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-9176)
-* [  wrangler.toml ](#tab-panel-9177)
+* [  wrangler.jsonc ](#tab-panel-9386)
+* [  wrangler.toml ](#tab-panel-9387)
 
 JSONC
 
@@ -383,8 +383,8 @@ remote = true
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-9180)
-* [  wrangler.toml ](#tab-panel-9181)
+* [  wrangler.jsonc ](#tab-panel-9390)
+* [  wrangler.toml ](#tab-panel-9391)
 
 JSONC
 
@@ -430,8 +430,8 @@ remote = true
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/optimization/transformations/bindings/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-9178)
-* [  wrangler.toml ](#tab-panel-9179)
+* [  wrangler.jsonc ](#tab-panel-9388)
+* [  wrangler.toml ](#tab-panel-9389)
 
 JSONC
 
@@ -475,8 +475,8 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-9182)
-* [  wrangler.toml ](#tab-panel-9183)
+* [  wrangler.jsonc ](#tab-panel-9392)
+* [  wrangler.toml ](#tab-panel-9393)
 
 JSONC
 
@@ -553,10 +553,38 @@ To interact with remote Durable Object or Workflow instances, deploy a Worker th
 
 ### Important Considerations
 
+* **Cloudflare Access**: If your Worker is protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/), Wrangler must authenticate with Access when connecting to remote bindings. Refer to [Connect to Access-protected Workers](#connect-to-access-protected-workers).
 * **Data modification**: Operations (writes, deletes, updates) on bindings connected remotely will affect your actual data in the targeted Cloudflare resource (be it preview or production).
 * **Billing**: Interactions with remote Cloudflare services through these connections will incur standard operational costs for those services (such as KV operations, R2 storage/operations, AI requests, D1 usage).
 * **Network latency**: Expect network latency for operations on these remotely connected bindings, as they involve communication over the internet.
-* **CI and non-interactive environments**: If your worker uses [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/), Wrangler must authenticate with Access when connecting to remote bindings. In non-interactive environments such as CI/CD pipelines, set the `CLOUDFLARE_ACCESS_CLIENT_ID` and `CLOUDFLARE_ACCESS_CLIENT_SECRET` [system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/) to authenticate using an [Access Service Token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/). Without these variables, Wrangler throws an error instead of launching the interactive `cloudflared access login` flow.
+
+### Connect to Access-protected Workers
+
+If your Worker is deployed behind a [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/) application — for example, if the `*.workers.dev` subdomain on your account is protected by Access, or if you have placed an Access policy on the custom route of the Worker — Wrangler must authenticate with Access when connecting to your remote bindings.
+
+There are two ways you can authenticate against Access:
+
+* **Interactive login** (local development): If you have a policy defined that accepts user login, then Wrangler launches the interactive `cloudflared access login` flow in your browser. No additional setup is required beyond being signed in to the correct account. If the policy only allows service token authentication, Wrangler will skip the interactive flow and throw an error indicating that service token credentials are required.
+* **Service token** (CI / non-interactive environments): In CI/CD pipelines and other non-interactive contexts, or where the policy only allows service token authentication, Wrangler cannot trigger the interactive flow via the browser. Authentication must be via a [Cloudflare Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) instead. If you do not configure a service token in a non-interactive environment, Wrangler will throw an error rather than attempting the interactive flow.
+
+To set up service token authentication:
+
+1. **Create a service token.**  
+In the Cloudflare dashboard, go to **Zero Trust** \> **Access** \> **Service Auth** \> **Service Tokens** and create a new token. Refer to [Service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) for the full reference. You will be shown a Client ID and a Client Secret — save them somewhere safe, as the secret is not shown again.
+2. **Add a Service Auth policy to the Access application that protects your Worker.**  
+Open the _existing_ Access application that already covers the hostname of the Worker — typically the wildcard application for `*.<account>.workers.dev`, or the application that protects your custom domain — and attach a new policy with:  
+   * **Action**: Service Auth  
+   * **Include**: The service token you created, or "Any Access Service Token" if you want to allow any service token to access the Worker.  
+Warning  
+Do not create a _separate_ Access application scoped only to the Worker's hostname. Doing so has been observed to block requests even when the existing wildcard application is left in place — refer to [opennextjs-cloudflare#1171 ↗](https://github.com/opennextjs/opennextjs-cloudflare/issues/1171). Attach the Service Auth policy to the existing application that already protects the hostname.
+3. **Expose the credentials to Wrangler.**  
+Set the `CLOUDFLARE_ACCESS_CLIENT_ID` and `CLOUDFLARE_ACCESS_CLIENT_SECRET` [system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/) in the environment that runs Wrangler:  
+Terminal window  
+```  
+export CLOUDFLARE_ACCESS_CLIENT_ID=<CLIENT_ID>  
+export CLOUDFLARE_ACCESS_CLIENT_SECRET=<CLIENT_SECRET>  
+```  
+In CI, store the values as secrets and expose them as environment variables to the step that runs Wrangler.
 
 ### API
 
@@ -611,8 +639,8 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-9186)
-* [  TypeScript ](#tab-panel-9187)
+* [  JavaScript ](#tab-panel-9396)
+* [  TypeScript ](#tab-panel-9397)
 
 JavaScript
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Custom Domain with Images
 
-**Last reviewed:**  over 3 years ago 
+**Last reviewed:**  almost 4 years ago 
 
 Set up custom domain for Images using a Worker or serve images using a prefix path and Cloudflare registered domain.
 
@@ -29,10 +29,10 @@ To serve images from a custom domain:
 2. Select **Create application** \> **Workers** \> **Create Worker** and create your Worker.
 3. In your Worker, select **Quick edit** and paste the following code.
 
-* [  JavaScript ](#tab-panel-9486)
-* [  TypeScript ](#tab-panel-9487)
-* [  Hono ](#tab-panel-9488)
-* [  Python ](#tab-panel-9489)
+* [  JavaScript ](#tab-panel-9524)
+* [  TypeScript ](#tab-panel-9525)
+* [  Hono ](#tab-panel-9526)
+* [  Python ](#tab-panel-9527)
 
 JavaScript
 

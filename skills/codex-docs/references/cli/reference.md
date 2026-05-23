@@ -52,6 +52,13 @@ export const globalFlagOptions = [
       "Run every command without approvals or sandboxing. Only use inside an externally hardened environment.",
   },
   {
+    key: "--dangerously-bypass-hook-trust",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Run enabled hooks without requiring persisted hook trust for this invocation. Intended only for automation that already vets hook sources.",
+  },
+  {
     key: "--cd, -C",
     type: "path",
     description:
@@ -219,7 +226,7 @@ export const commandOverview = [
     href: "/codex/cli/reference#codex-plugin-marketplace",
     type: "experimental",
     description:
-      "Add, upgrade, or remove plugin marketplaces from Git or local sources.",
+      "Add, list, upgrade, or remove plugin marketplaces from Git or local sources.",
   },
   {
     key: "codex mcp-server",
@@ -307,6 +314,13 @@ export const execOptions = [
     defaultValue: "false",
     description:
       "Bypass approval prompts and sandboxing. Dangerous—only use inside an isolated runner.",
+  },
+  {
+    key: "--dangerously-bypass-hook-trust",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Run enabled hooks without requiring persisted hook trust for this invocation. Intended only for automation that already vets hook sources.",
   },
   {
     key: "--cd, -C",
@@ -868,6 +882,11 @@ export const marketplaceCommands = [
       "Install a plugin marketplace from GitHub shorthand, a Git URL, an SSH URL, or a local marketplace root directory. `--sparse` is supported only for Git sources and can be repeated.",
   },
   {
+    key: "list",
+    description:
+      "Show plugin marketplaces Codex is currently considering and the root path for each marketplace.",
+  },
+  {
     key: "upgrade [marketplace-name]",
     description:
       "Refresh one configured Git marketplace, or all configured Git marketplaces when no name is provided.",
@@ -1042,6 +1061,10 @@ Manage plugin marketplace sources that Codex can browse and install from.
 `owner/repo@ref`, HTTP or HTTPS Git URLs, SSH Git URLs, and local marketplace
 root directories. Use `--ref` to pin a Git ref, and repeat `--sparse PATH` to
 use a sparse checkout for Git-backed marketplace repositories.
+
+`codex plugin marketplace list` prints in-scope marketplace names and roots,
+including implicitly discovered default marketplaces and configured marketplace
+snapshots.
 
 ### `codex mcp-server`
 

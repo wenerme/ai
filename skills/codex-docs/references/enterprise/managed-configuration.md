@@ -222,9 +222,13 @@ directory where your MDM or endpoint-management tooling installs the referenced
 scripts.
 
 To enforce managed hooks even for users who disabled hooks locally, pin
-`[features].hooks = true` alongside `[hooks]`.
+`[features].hooks = true` alongside `[hooks]`. To skip user, project, session,
+and plugin hooks while still allowing managed hooks, set
+`allow_managed_hooks_only = true`.
 
 ```toml
+allow_managed_hooks_only = true
+
 [features]
 hooks = true
 
@@ -238,6 +242,7 @@ matcher = "^Bash$"
 [[hooks.PreToolUse.hooks]]
 type = "command"
 command = "python3 /enterprise/hooks/pre_tool_use_policy.py"
+command_windows = 'py -3 C:\enterprise\hooks\pre_tool_use_policy.py'
 timeout = 30
 statusMessage = "Checking managed Bash command"
 ```
@@ -249,6 +254,9 @@ Notes:
 - Deliver those scripts separately with your MDM or device-management solution.
 - Managed hook commands should reference absolute script paths under the
   configured managed directory.
+- `allow_managed_hooks_only = true` skips hooks from user, project, session, and
+  plugin sources, but still loads hooks from `requirements.toml` and other
+  managed config layers.
 
 ### Enforce command rules from requirements
 

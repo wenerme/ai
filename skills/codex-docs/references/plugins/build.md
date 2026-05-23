@@ -70,13 +70,18 @@ directories. Use `--ref` to pin a Git ref, and repeat `--sparse PATH` to use a
 sparse checkout for Git-backed marketplace repos. `--sparse` is valid only for
 Git marketplace sources.
 
-To refresh or remove configured marketplaces:
+To inspect, refresh, or remove configured marketplaces:
 
 ```bash
+codex plugin marketplace list
 codex plugin marketplace upgrade
 codex plugin marketplace upgrade marketplace-name
 codex plugin marketplace remove marketplace-name
 ```
+
+`codex plugin marketplace list` prints each marketplace Codex is considering
+and the root path it resolves from, including local default marketplaces and
+configured marketplace snapshots.
 
 ### Create a plugin manually
 
@@ -514,10 +519,11 @@ Use the `interface` object for install-surface metadata:
   `./assets/` when possible.
 - Use `skills` for bundled skill folders, `apps` for `.app.json`,
   `mcpServers` for `.mcp.json`, and `hooks` for lifecycle hooks.
-- Plugin hooks are off by default in this release; bundled hooks won't run
-  unless `[features].plugin_hooks = true`.
-- When plugin hooks are enabled, omit `hooks` to use the default
-  `./hooks/hooks.json` file when present.
+- Enabled plugins can include lifecycle hooks alongside skills, MCP servers, and
+  apps.
+- If your plugin stores hooks at `./hooks/hooks.json`, you do not need a
+  `hooks` entry in `.codex-plugin/plugin.json`; Codex checks that default file
+  automatically.
 
 ### Bundled MCP servers and lifecycle hooks
 
@@ -562,14 +568,12 @@ enabled_tools = ["search"]
 approval_mode = "approve"
 ```
 
-Plugin hooks are off by default in this release. When
-`[features].plugin_hooks = true` and your plugin is enabled, Codex can load
-lifecycle hooks from your plugin alongside user, project, and managed hooks.
+When your plugin is enabled, Codex can load lifecycle hooks from your plugin
+alongside user, project, and managed hooks.
 
-```toml
-[features]
-plugin_hooks = true
-```
+Installing or enabling a plugin doesn't automatically trust its hooks.
+Plugin-bundled hooks are non-managed hooks, so Codex skips them until the user
+reviews and trusts the current hook definition.
 
 The default plugin hook file is `hooks/hooks.json`:
 

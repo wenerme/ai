@@ -40,6 +40,9 @@ App host. To connect Codex to a project on an SSH host, see
 
 ## Before you set up mobile access
 
+Codex mobile setup currently requires the Codex App for macOS. The Codex App
+  for Windows does not support mobile setup yet.
+
 Make sure you have:
 
 - Codex access in the ChatGPT account and workspace you want to use.

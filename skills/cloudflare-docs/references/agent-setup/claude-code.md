@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Set up a KV namespace for edge-cached session storage in my Worker.  
+Add bot protection and rate limiting to my login and checkout endpoints.  
 ```
 
 ## Cloudflare platform access

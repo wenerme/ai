@@ -1153,63 +1153,6 @@ This release contains improvements and new exciting features, including [post-qu
 
 * macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
 
-## 2025-05-22
-
-  
-**WARP client for Windows (version 2025.4.943.0)**   
-
-A new GA release for the Windows WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains a hotfix for [managed networks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) for the 2025.4.929.0 release.
-
-**Changes and improvements**
-
-* Fixed an issue where it could take up to 3 minutes for the correct device profile to be applied in some circumstances. In the worst case, it should now only take up to 40 seconds. This will be improved further in a future release.
-
-**Known issues**
-
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
-To work around this issue, reconnect the WARP client by toggling off and back on.
-* Microsoft has confirmed a regression with Windows 11 starting around 24H2 that may cause performance issues for some users. These performance issues could manifest as mouse lag, audio cracking, or other slowdowns. A fix from Microsoft is expected in early July.
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-
-## 2025-05-22
-
-  
-**WARP client for macOS (version 2025.4.943.0)**   
-
-A new GA release for the macOS WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains a hotfix for [managed networks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) for the 2025.4.929.0 release.
-
-**Changes and improvements**
-
-* Fixed an issue where it could take up to 3 minutes for the correct device profile to be applied in some circumstances. In the worst case, it should now only take up to 40 seconds. This will be improved further in a future release.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-
-## 2025-05-22
-
-  
-**WARP client for Linux (version 2025.4.943.0)**   
-
-A new GA release for the Linux WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains a hotfix for [managed networks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) for the 2025.4.929.0 release.
-
-**Changes and improvements**
-
-* Fixed an issue where it could take up to 3 minutes for the correct device profile to be applied in some circumstances. In the worst case, it should now only take up to 40 seconds. This will be improved further in a future release.
-
-**Known issues**
-
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
 ## 2025-03-17
 
   

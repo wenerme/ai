@@ -653,8 +653,6 @@ enabled = true
 
 # hooks = false
 
-# plugin_hooks = false # Default off; set true to opt into plugin-bundled hooks.
-
 # codex_git_commit = false
 
 # unified_exec = true

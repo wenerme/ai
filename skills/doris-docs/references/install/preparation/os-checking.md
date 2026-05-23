@@ -63,7 +63,7 @@ chmod +x /etc/rc.d/rc.local
 
 ## Increase Virtual Memory Areas
 
-Increasing the VMA (virtual memory areas) prevents Doris from reporting `Too many open files` errors during startup or runtime.
+Increasing the VMA (virtual memory areas) prevents Doris from failing with `mmap` / `Cannot allocate memory` errors when the per-process VMA limit is exceeded.
 
 ```bash
 cat >> /etc/sysctl.conf << EOF

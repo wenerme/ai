@@ -108,6 +108,10 @@ Below is a non-exhaustive list of third-party software that are known to cause `
    1. Stop/quit all VMs.  
    2. Connect the Cloudflare One Client.  
    3. Start the VMs again.
+* **Apple Container**: [Apple Container ↗](https://github.com/apple/container) will also bind `mDNSResponder` to port `53` if started before the Cloudflare One Client (or while the Client is stopped).  
+   1. On macOS, run this in the terminal to temporarily stop the container system: `container system stop`  
+   2. Cloudflare One Client DNS mode should now start with no errors.  
+   3. You can then restart the container system (`container system start`) and pass explicit DNS flags when running containers.
 1. Alternatively, switch the Cloudflare One Client to [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode) mode.
 
 ## CF\_FAILED\_READ\_SYSTEM\_DNS\_CONFIG
@@ -272,8 +276,8 @@ The device is not authenticated to an [organization](https://developers.cloudfla
 
 ### Resolution
 
-* [ Version 2026.2+ ](#tab-panel-5405)
-* [ Version 2026.1 and earlier ](#tab-panel-5406)
+* [ Version 2026.2+ ](#tab-panel-5443)
+* [ Version 2026.1 and earlier ](#tab-panel-5444)
 
 1. Launch the Cloudflare One Client.
 2. Go to **Profile** \> **Account information**.

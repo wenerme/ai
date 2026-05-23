@@ -172,7 +172,7 @@ If the cluster's CRD (Doris Operator defines `DorisCluster` as the abbreviation 
 
    Change `apache/doris:be-2.1.8` to `apache/doris:be-2.1.9`.
   
-2. Save the changes and apply this modification to upgrade BE:
+2. Save the changes and apply this modification to upgrade FE:
 
    ```shell
    kubectl apply -f doriscluster-sample.yaml -n doris
@@ -216,7 +216,7 @@ If the cluster's crd (Doris-Operator defines `DorisCluster` as the abbreviation 
    vim doriscluster-sample.yaml
    ```
 
-2. Save the changes and apply this modification to upgrade BE:
+2. Save the changes and apply this modification to upgrade FE:
 
    ```shell
    kubectl apply -f doriscluster-sample.yaml -n doris

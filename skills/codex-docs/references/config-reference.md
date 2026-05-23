@@ -351,10 +351,22 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Lifecycle hooks configured inline in `config.toml`. Uses the same event schema as `hooks.json`; see the Hooks guide for examples and supported events.",
     },
     {
-      key: "features.plugin_hooks",
-      type: "boolean",
+      key: "hooks.<Event>",
+      type: "array<table>",
       description:
-        "Opt into lifecycle hooks bundled with enabled plugins. Off by default in this release; set to `true` to opt in.",
+        "Matcher groups for hook events such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, or `Stop`.",
+    },
+    {
+      key: "hooks.<Event>[].hooks",
+      type: "array<table>",
+      description:
+        "Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped.",
+    },
+    {
+      key: "hooks.<Event>[].hooks[].commandWindows",
+      type: "string",
+      description:
+        "Windows-only command override for command hooks. The TOML alias `command_windows` is also accepted.",
     },
     {
       key: "features.memories",
@@ -1568,6 +1580,12 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
         "Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`.",
     },
     {
+      key: "allow_managed_hooks_only",
+      type: "boolean",
+      description:
+        "When `true`, Codex skips user, project, session, and plugin hooks while still allowing managed hooks from `requirements.toml` and other managed config layers.",
+    },
+    {
       key: "plugin_sharing",
       type: "boolean",
       description:
@@ -1703,13 +1721,19 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
       key: "hooks.<Event>",
       type: "array<table>",
       description:
-        "Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `SessionStart`, `UserPromptSubmit`, or `Stop`.",
+        "Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, or `Stop`.",
     },
     {
       key: "hooks.<Event>[].hooks",
       type: "array<table>",
       description:
         "Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped.",
+    },
+    {
+      key: "hooks.<Event>[].hooks[].commandWindows",
+      type: "string",
+      description:
+        "Windows-only command override for command hooks. The TOML alias `command_windows` is also accepted.",
     },
     {
       key: "permissions.filesystem.deny_read",

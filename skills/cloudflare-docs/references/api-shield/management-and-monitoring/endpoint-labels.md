@@ -48,6 +48,8 @@ Use managed labels to identify endpoints by use case. Cloudflare may automatical
 
 `cf-llm`: Services that are (partially) powered by Large Language Model (LLM).
 
+`cf-mcp`: Add this label to endpoints that implement the [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) for AI tool and data access.
+
 `cf-rss-feed`: Add this label to endpoints that expect traffic from RSS clients.
 
 `cf-web-page`: Add this label to endpoints that serve HTML pages.
@@ -179,8 +181,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-4642)
-* [ Old dashboard ](#tab-panel-4643)
+* [  New dashboard ](#tab-panel-4680)
+* [ Old dashboard ](#tab-panel-4681)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -220,8 +222,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-4644)
-* [ Old dashboard ](#tab-panel-4645)
+* [  New dashboard ](#tab-panel-4682)
+* [ Old dashboard ](#tab-panel-4683)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -239,8 +241,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-4640)
-* [ Old dashboard ](#tab-panel-4641)
+* [  New dashboard ](#tab-panel-4678)
+* [ Old dashboard ](#tab-panel-4679)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
