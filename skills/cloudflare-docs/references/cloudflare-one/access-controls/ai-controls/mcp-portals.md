@@ -207,6 +207,136 @@ Alias values must be 1-40 characters and can only contain letters, numbers, hyph
 
 All tools exposed through a portal are automatically namespaced with the server ID as a prefix. For example, a tool named `list_issues` on a server with ID `github` will appear as `github_list_issues` in the portal. This prevents name collisions when multiple MCP servers expose tools with the same name.
 
+## Manage portals via API
+
+In addition to the dashboard, you can manage MCP server portals programmatically using the Cloudflare API. The following examples show common operations.
+
+Warning
+
+Unlike the dashboard, the API does not automatically create a DNS record for your portal hostname. After creating a portal via the API, you must create a proxied CNAME record that points your portal subdomain to `gateway.agents.cloudflare.com`. Without this record, the portal will return `522` errors.
+
+### List portals
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals" \
+
+  --request GET \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
+### Create a portal
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals" \
+
+  --request POST \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --json '{
+
+    "name": "Engineering Portal",
+
+    "hostname": "mcp.example.com",
+
+    "allow_code_mode": true,
+
+    "secure_web_gateway": false
+
+  }'
+
+
+```
+
+### List MCP servers
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/servers" \
+
+  --request GET \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
+### Create an MCP server
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/servers" \
+
+  --request POST \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --json '{
+
+    "name": "GitHub MCP Server",
+
+    "hostname": "https://github-mcp.example.workers.dev/mcp",
+
+    "auth_type": "oauth"
+
+  }'
+
+
+```
+
+The `auth_type` field accepts the following values:
+
+| Value           | Description                                                                                                                                          |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| oauth           | The server requires OAuth authentication. After creating the server, you will need to authenticate via the dashboard to establish admin credentials. |
+| bearer          | The server uses a static bearer token for authentication. Provide the token in auth\_credentials.                                                    |
+| unauthenticated | The server does not require authentication.                                                                                                          |
+
+### Force sync an MCP server
+
+To manually trigger a synchronization of tools and prompts from an upstream MCP server:
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/servers/%7Bserver_id%7D/sync" \
+
+  --request POST \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
+### Delete a portal
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \
+
+  --request DELETE \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
 ## Code mode
 
 [Code mode](https://developers.cloudflare.com/agents/api-reference/codemode/) is turned on by default on all MCP server portals. It reduces context window usage by collapsing all tools in the portal into a single `code` tool. Instead of loading a separate tool definition for each upstream MCP server tool, the connected AI agent writes JavaScript that calls typed `codemode.*` methods. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, which keeps authentication credentials and environment variables out of the model context.
@@ -277,16 +407,16 @@ To turn off code mode for a portal:
 3. Under **Basic information**, turn off **Code mode**.
 
 1. Get your existing MCP portal configuration:  
-Read details of an MCP Portal  
+Terminal window  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-controls/mcp/portals/$ID" \  
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \  
   --request GET \  
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Send a `PUT` request to the [Update a MCP Portal](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/ai%5Fcontrols/subresources/mcp/subresources/portals/methods/update/) endpoint with `allow_code_mode` set to `false`. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.  
-Update a MCP Portal  
+Terminal window  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-controls/mcp/portals/$ID" \  
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \  
   --request PUT \  
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
   --json '{  

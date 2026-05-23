@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
+Build a serverless AI inference endpoint on Workers AI with streaming responses.  
 ```
 
 1. **Download Codex**  

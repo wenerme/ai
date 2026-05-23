@@ -49,7 +49,7 @@ For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-
 4. **Try a prompt**  
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:  
 ```  
-Set up WAF rules to block SQL injection and XSS attacks on my application.  
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.  
 ```
 
 ## Cloudflare platform access

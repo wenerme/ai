@@ -61,9 +61,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"1fcdb396cba0fd7217027dfc90e91e965c677883067ccd661c8462aeeae3f0f1\"",
-    "size": 326098,
-    "updatedAt": "2026-05-23T00:26:45.019Z"
+    "etag": "W/\"994d9988a3ee875fada4aa6d71a9dbd8643e6de29b49677ec4ad4a6a3917a18b\"",
+    "size": 326175,
+    "updatedAt": "2026-05-23T10:31:16.665Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -595,9 +595,9 @@
   },
   "worktrees.md": {
     "url": "https://code.claude.com/docs/en/worktrees",
-    "lastModified": "Tue, 12 May 2026 23:54:18 GMT",
-    "size": 9031,
-    "updatedAt": "2026-05-13T00:26:58.113Z"
+    "lastModified": "Sat, 23 May 2026 04:16:28 GMT",
+    "size": 9219,
+    "updatedAt": "2026-05-23T10:31:16.317Z"
   },
   "zero-data-retention.md": {
     "url": "https://code.claude.com/docs/en/zero-data-retention",

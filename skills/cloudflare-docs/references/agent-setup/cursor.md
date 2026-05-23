@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Configure Zero Trust access policies to protect my internal staging environment.  
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.  
 ```
 
 ## Cloudflare platform access
