@@ -115,9 +115,9 @@
   },
   "code-review.md": {
     "url": "https://code.claude.com/docs/en/code-review",
-    "lastModified": "Mon, 18 May 2026 23:33:47 GMT",
-    "size": 21529,
-    "updatedAt": "2026-05-19T00:28:13.892Z"
+    "lastModified": "Sun, 24 May 2026 05:16:29 GMT",
+    "size": 21842,
+    "updatedAt": "2026-05-24T10:31:47.002Z"
   },
   "commands.md": {
     "url": "https://code.claude.com/docs/en/commands",
@@ -445,9 +445,9 @@
   },
   "quickstart.md": {
     "url": "https://code.claude.com/docs/en/quickstart",
-    "lastModified": "Mon, 11 May 2026 23:46:22 GMT",
-    "size": 11343,
-    "updatedAt": "2026-05-12T00:24:58.879Z"
+    "lastModified": "Sun, 24 May 2026 05:12:56 GMT",
+    "size": 11408,
+    "updatedAt": "2026-05-24T10:32:05.593Z"
   },
   "remote-control.md": {
     "url": "https://code.claude.com/docs/en/remote-control",
@@ -469,9 +469,9 @@
   },
   "sandboxing.md": {
     "url": "https://code.claude.com/docs/en/sandboxing",
-    "lastModified": "Thu, 21 May 2026 23:04:33 GMT",
-    "size": 31393,
-    "updatedAt": "2026-05-22T00:27:23.800Z"
+    "lastModified": "Sun, 24 May 2026 05:16:47 GMT",
+    "size": 31697,
+    "updatedAt": "2026-05-24T10:32:06.968Z"
   },
   "scheduled-tasks.md": {
     "url": "https://code.claude.com/docs/en/scheduled-tasks",
@@ -541,9 +541,9 @@
   },
   "tools-reference.md": {
     "url": "https://code.claude.com/docs/en/tools-reference",
-    "lastModified": "Fri, 22 May 2026 02:00:24 GMT",
-    "size": 47650,
-    "updatedAt": "2026-05-22T11:00:21.012Z"
+    "lastModified": "Sun, 24 May 2026 05:14:58 GMT",
+    "size": 47936,
+    "updatedAt": "2026-05-24T10:32:11.343Z"
   },
   "troubleshoot-install.md": {
     "url": "https://code.claude.com/docs/en/troubleshoot-install",
