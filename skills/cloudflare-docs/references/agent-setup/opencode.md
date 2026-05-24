@@ -59,7 +59,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Create a Logpush job to stream Workers analytics to my data warehouse.  
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.  
 ```
 
 ## Cloudflare platform access

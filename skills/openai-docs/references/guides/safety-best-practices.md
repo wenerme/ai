@@ -73,7 +73,9 @@ If you notice any safety or security issues while developing with the API or any
 
 ### Implement safety identifiers
 
-Sending safety identifiers in your requests can be a useful tool to help OpenAI monitor and detect abuse. This allows OpenAI to provide your team with more actionable feedback in the event that we detect any policy violations in your application.
+Sending safety identifiers in your requests can help OpenAI monitor and detect abuse. This allows OpenAI to provide your team with more actionable feedback in the event that we detect any policy violations in your application.
+
+Safety identifiers can also help your team respond to abuse faster. They create a stable way to trace activity back to an individual end user and reduce the chance that one user's misuse disrupts access for your broader organization.
 
 A safety identifier should be a string that uniquely identifies each user. Hash the username or email address in order to avoid sending us any identifying information. If you offer a preview of your product to non-logged in users, you can send a session ID instead.
 

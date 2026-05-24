@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Release](https://raster.shields.io/badge/dynamic/json.svg?label=release&url=https://gitea.com/api/v1/repos/gitea/tea/releases&query=$[0].tag_name)](https://gitea.com/gitea/tea/releases)
 [![Join the chat at https://img.shields.io/discord/322538954119184384.svg](https://img.shields.io/discord/322538954119184384.svg)](https://discord.gg/Gitea)
-[![Go Report Card](https://goreportcard.com/badge/code.gitea.io/tea)](https://goreportcard.com/report/code.gitea.io/tea) [![GoDoc](https://pkg.go.dev/badge/code.gitea.io/tea?status.svg)](https://godoc.org/code.gitea.io/tea)
+[![Go Report Card](https://goreportcard.com/badge/gitea.dev/tea)](https://goreportcard.com/report/gitea.dev/tea) [![GoDoc](https://pkg.go.dev/badge/gitea.dev/tea?status.svg)](https://godoc.org/gitea.dev/tea)
 ![Tea Release Status](https://gitea.com/gitea/tea/actions/workflows/release-nightly.yml/badge.svg)
 
 ## The official CLI for Gitea
@@ -186,7 +186,7 @@ Make sure you have a current Go version installed (1.26 or newer).
 
 - For a quick installation without `git` & `make`, set $version and exec:
   ```sh
-  go install code.gitea.io/tea@${version}
+  go install gitea.dev/tea@${version}
   ```
 
 ## Contributing

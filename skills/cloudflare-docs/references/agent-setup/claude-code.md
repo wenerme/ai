@@ -47,7 +47,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.  
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.  
 ```
 
 ## Cloudflare platform access

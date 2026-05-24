@@ -133,7 +133,7 @@ query R2VolumeExample(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASgJgGoHsA2IC2YCiAPAQ0wAc0wAKAKBhgBICBjBlEAOwBcAVAgcwC4YAZ3YQAlqx4BCanWEEI7ACIF2YAZ1HYZtMKwAmy1es1htAIxAMA1mHYA5ImqEjxPSgEoYAbxkA3UWAA7pDeMjSMzGzsguQAZqJoqhACXjARLBzc-HTpUVkwAL6ePjSlMBAIAPLEkCqiKKyCAIJ6BMTsor5gAOIQLMQxYWUwaJqi7AIAjAAMs9NDZfGJkCkLw62qHdgA+jxgwAK0cgqGpsPrKrYm22QHdLoGl2tlFta2DtiHrzb2js+Fa2K-0EWFC5zKEH24GEgn+BX+ehMjXqjTB4PCDA6DU4UBqcLW8LKhIBBSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0RrEQFMsQATAAYBANgC0QgKziBA5AEYAHJgAsAzAGZRALQYge8ACZde-YWMkyBm5EKFqN2vYwBGsCAGseiUmAC2fNgASgCiAAoAMvihFADqVMgAEhQAysjBVKQA4iAAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASgJgGoHsA2IC2YCiAPAQ0wAc0wAKAKBhgBICBjBlEAOwBcAVAgcwC4YAZ3YQAlqx4BCanWEEI7ACIF2YAZ1HYZtMKwAmy1es1htAIxAMA1mHYA5ImqEjxPSgEoYAbxkA3UWAA7pDeMjSMzGzsguQAZqJoqhACXjARLBzc-HTpUVkwAL6ePjSlMBAIAPLEkCqiKKyCAIJ6BMTsor5gAOIQLMQxYWUwaJqi7AIAjAAMs9NDZfGJkCkLw62qHdgA+jxgwAK0cgqGpsPrKrYm22QHdLoGl2tlFta2DtiHrzb2js+Fa2K-0EWFC5zKEH24GEgn+BX+ehMjXqjTB4PCDA6DU4UBqcLW8LKhIBBSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0RrEQFMsQATAAYBANgC0QgKziBAZmQBGRZikq5AgFoMQPeABMuvfsLGSZ8pQHZV6rToBGsCAGseiUmAC2fbACUAUQAFABl8AIoAdSpkAAkKAGVkPypSAHEQAF8gA)
 
 The `bucketName` field can be removed to get an account level overview of operations. The volume of operations can be broken down even further by adding more dimensions to the query.
 
@@ -206,7 +206,7 @@ query R2StorageExample(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASgJgMoBcD2ECGBzMBRAD0wFsAHAGzAAoAoGGAEkwGNm0QA7FAFRwC4YAZxQQAlh2wBCOo2GYIKACKYUYAd1HEwMhmA4ATZavWbt9BgCMQzANZgUAORJqhI8dhoBKGAG8ZAN1EwAHdIXxl6FjZOFEEqADNRclUIAR8YKPYuXmwBJlYsnhwYAF9vP3pKmAhkdCxcAEF9TFIUUX8wAHEIdlI4iKqYck1RFAEARgAGacmBqsTkyDS5webVNq0AfVxgPLkFIzNBqrX7U03KXcY9QxUj4-orW3snLTynu0dnFfoSn5gMPpIAAhKACADapw2YE2ijwSAAwgBdFblf7ETAEcIPSpoCwAKzAzBQCMK-3oIAoaEw+lJMXJMFImCg5Gp+iQogAXvcHloUDSVJgOdz-n8cfpTBxBKI0FLsTiYFDTKKVmLKmq-iUgA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0RrEQFMsQATAAYBANgC0QgKziBA5AEYAHJgAsAzAGZRALQYge8ACZde-YWMkyBm5EKFqN2vYwBGsCAGseiUmAC2fNgASgCiAAoAMvihFADqVMgAEhQAysjBVKQA4iAAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASgJgMoBcD2ECGBzMBRAD0wFsAHAGzAAoAoGGAEkwGNm0QA7FAFRwC4YAZxQQAlh2wBCOo2GYIKACKYUYAd1HEwMhmA4ATZavWbt9BgCMQzANZgUAORJqhI8dhoBKGAG8ZAN1EwAHdIXxl6FjZOFEEqADNRclUIAR8YKPYuXmwBJlYsnhwYAF9vP3pKmAhkdCxcAEF9TFIUUX8wAHEIdlI4iKqYck1RFAEARgAGacmBqsTkyDS5webVNq0AfVxgPLkFIzNBqrX7U03KXcY9QxUj4-orW3snLTynu0dnFfoSn5gMPpIAAhKACADapw2YE2ijwSAAwgBdFblf7ETAEcIPSpoCwAKzAzBQCMK-3oIAoaEw+lJMXJMFImCg5Gp+iQogAXvcHloUDSVJgOdz-n8cfpTBxBKI0FLsTiYFDTKKVmLKmq-iUgA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0RrEQFMsQATAAYBANgC0QgKziBAZmQBGRZikq5AgFoMQPeABMuvfsLGSZ8pQHZV6rToBGsCAGseiUmAC2fbACUAUQAFABl8AIoAdSpkAAkKAGVkPypSAHEQAF8gA)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/platform/metrics-analytics/","name":"Metrics and analytics"}}]}

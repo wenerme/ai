@@ -810,18 +810,18 @@
   "openai-docs/guides/safety-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-best-practices.md",
     "skill": "openai-docs",
-    "etag": "W/\"48989105c5a24dfd56aaa00d73ea82da\"",
-    "lastModified": "Thu, 07 May 2026 22:42:38 GMT",
-    "size": 5870,
-    "updatedAt": "2026-05-08T00:28:36.190Z"
+    "etag": "W/\"a452cf14c3f060105d4742667a7da6b8\"",
+    "lastModified": "Sat, 23 May 2026 12:41:46 GMT",
+    "size": 6085,
+    "updatedAt": "2026-05-24T00:32:45.582Z"
   },
   "openai-docs/guides/safety-checks.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks.md",
     "skill": "openai-docs",
-    "etag": "W/\"612676a4efead875746e418236d296af\"",
-    "lastModified": "Thu, 07 May 2026 22:42:38 GMT",
-    "size": 6855,
-    "updatedAt": "2026-05-08T00:28:36.420Z"
+    "etag": "W/\"434cddcdb2fd44d3dbd876f98a59a7db\"",
+    "lastModified": "Sat, 23 May 2026 18:44:16 GMT",
+    "size": 6618,
+    "updatedAt": "2026-05-24T00:32:45.808Z"
   },
   "openai-docs/guides/safety-checks/cybersecurity.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity.md",

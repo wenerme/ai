@@ -84,10 +84,6 @@ If your org engages in suspicious activity that violates our safety policies, we
 - [Implement safety identifiers](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) for products where individual users interact with a model. Safety identifiers are recommended but not required.
 - If your use case depends on accessing a less restricted version of our services in order to engage in beneficial applications across the life sciences, read about our [special access program](https://help.openai.com/en/articles/11826767-life-science-research-special-access-program) to see if you meet criteria.
 
-You likely don't need to provide a safety identifier if access to your product
-  is tightly controlled (for example, enterprise customers) or in cases where
-  users don't directly provide prompts, or are limited to use in narrow areas.
-
 ### Implementing safety identifiers for individual users
 
 The `safety_identifier` parameter is available in both the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create) and older [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create). The Realtime API supports the same concept through the `OpenAI-Safety-Identifier` header. To use safety identifiers, provide a stable ID for your end user on each request. Hash user email or internal user IDs to avoid passing any personal information.
