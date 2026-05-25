@@ -292,6 +292,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        digitalocean:
+          type: object
+          additionalProperties:
+            description: Any type
         enfer:
           type: object
           additionalProperties:

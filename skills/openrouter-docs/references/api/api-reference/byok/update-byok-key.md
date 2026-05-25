@@ -155,6 +155,7 @@ components:
         - deepinfra
         - deepseek
         - dekallm
+        - digitalocean
         - featherless
         - fireworks
         - friendli

@@ -152,6 +152,7 @@ components:
         - DeepInfra
         - DeepSeek
         - DekaLLM
+        - DigitalOcean
         - Featherless
         - Fireworks
         - Friendli

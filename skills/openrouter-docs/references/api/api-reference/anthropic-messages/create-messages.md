@@ -1560,6 +1560,7 @@ components:
         - DeepInfra
         - DeepSeek
         - DekaLLM
+        - DigitalOcean
         - Featherless
         - Fireworks
         - Friendli
@@ -2506,9 +2507,9 @@ components:
         - auto
         - native
         - openrouter
-        - firecrawl
         - exa
         - parallel
+        - firecrawl
       description: >-
         Which fetch engine to use. "auto" (default) uses native if the provider
         supports it, otherwise Exa. "native" forces the provider's built-in
@@ -2567,8 +2568,8 @@ components:
         - auto
         - native
         - exa
-        - firecrawl
         - parallel
+        - firecrawl
       description: >-
         Which search engine to use. "auto" (default) uses native if the provider
         supports it, otherwise Exa. "native" forces the provider's built-in
