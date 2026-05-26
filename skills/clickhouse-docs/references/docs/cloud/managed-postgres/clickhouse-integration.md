@@ -35,6 +35,20 @@ Fill in the replication settings:
 
 Click **Next** to proceed.
 
+## Configure replication settings {#replication-settings}
+
+Fine-tune how data is replicated:
+
+- **Sync interval (seconds)**: How often changes are pulled from Postgres (default: 60)
+- **Parallel threads for initial load**: Number of threads used during the initial snapshot (default: 4)
+- **Pull batch size**: Number of rows fetched per batch during replication (default: 100000)
+- **Snapshot number of rows per partition**: Rows per partition during the initial snapshot (default: 100000)
+- **Snapshot number of tables in parallel**: How many tables are snapshotted concurrently (default: 1)
+
+<Image img={integrationReplicationSettings} alt="Replication settings step showing sync interval, parallel threads, pull batch size, and snapshot configuration options" size="md" border/>
+
+Click **Next** to proceed.
+
 ## Select tables to replicate {#select-tables}
 
 Choose a destination database and select which tables to replicate:

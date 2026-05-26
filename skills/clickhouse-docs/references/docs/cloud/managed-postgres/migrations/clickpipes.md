@@ -1,25 +1,36 @@
 ---
-title: 'Migrate PostgreSQL data using Data sources in ClickHouse Cloud'
-description: 'Learn how to migrate your PostgreSQL database to ClickHouse Managed Postgres using the built-in Data sources import wizard in ClickHouse Cloud.'
-keywords: ['postgres', 'postgresql', 'logical replication', 'migration', 'data transfer', 'managed postgres', 'data sources', 'import']
+title: 'Migrate PostgreSQL data using Data sources in ClickPipes'
+description: 'Learn how to migrate your PostgreSQL database to ClickHouse Managed Postgres using ClickPipes.'
+keywords: ['postgres', 'postgresql', 'logical replication', 'migration', 'clickpipes', 'managed postgres', 'data sources', 'import']
 doc_type: 'guide'
 ---
 
-# Migrate to Managed Postgres using ClickHouse Cloud {#migrate-managed-postgres}
+# Migrate to Managed Postgres using ClickPipes {#migrate-managed-postgres}
 
 <PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="migration-guide-clickhouse-cloud" />
 
-ClickHouse Cloud includes a built-in import wizard that migrates your external PostgreSQL database into a Managed Postgres service. The wizard handles the source connection, schema export and import, replication settings, and table selection in five guided steps.
+ClickHouse Cloud now offers ClickPipes to migrate your external PostgreSQL database into a Managed Postgres service. This built-in integration provides a streamlined experience to connect to your source database, export the schema, import it into Managed Postgres, and set up continuous replication.
 
 ## Prerequisites {#prerequisites}
 
-- Access to your source PostgreSQL database with a user that has replication privileges.
+- Access to your source PostgreSQL database with a user that has replication privileges. Follow the setup guide for your source:
+  - [Amazon RDS Postgres](/integrations/clickpipes/postgres/source/rds)
+  - [Amazon Aurora Postgres](/integrations/clickpipes/postgres/source/aurora)
+  - [Supabase Postgres](/integrations/clickpipes/postgres/source/supabase)
+  - [Google Cloud SQL Postgres](/integrations/clickpipes/postgres/source/google-cloudsql)
+  - [Azure Flexible Server for Postgres](/integrations/clickpipes/postgres/source/azure-flexible-server-postgres)
+  - [Neon Postgres](/integrations/clickpipes/postgres/source/neon-postgres)
+  - [Crunchy Bridge Postgres](/integrations/clickpipes/postgres/source/crunchy-postgres)
+  - [TimescaleDB](/integrations/clickpipes/postgres/source/timescale)
+  - [Generic Postgres Source](/integrations/clickpipes/postgres/source/generic) for any other provider or self-hosted instance
 - A ClickHouse Managed Postgres service as the migration target. If you don't have one yet, see the [quickstart](../quickstart).
 - `pg_dump` and `psql` installed on your local machine. Both ship with the standard PostgreSQL client tools.
 
 ## Considerations before migrating {#considerations}
 
 - **DDL propagation**: continuous replication (CDC) captures DML operations and `ADD COLUMN`. Other DDL changes such as `DROP COLUMN` and `ALTER COLUMN` aren't propagated and must be applied manually on the target.
+
+> **note**: If you run into issues during migration, check the [Managed Postgres Migrations FAQ](/cloud/managed-postgres/migrations/faq) for common errors and solutions.
 
 ## Step 1: Connect to your source database {#step-1-connect}
 
