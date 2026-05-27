@@ -18,7 +18,7 @@ These pages explain how the Sandbox SDK works, why it's designed the way it is, 
 * [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding sandbox states and behavior
 * [Container runtime](https://developers.cloudflare.com/sandbox/concepts/containers/) \- How code executes in isolated containers
 * [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) \- When and how to use sessions
-* [Preview URLs](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) \- How service exposure works
+* [Preview URLs](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) \- How to expose sandboxed services on the public internet.
 * [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Isolation, validation, and safety mechanisms
 * [Terminal connections](https://developers.cloudflare.com/sandbox/concepts/terminal/) \- How browser terminal connections work
 

@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage GitLab Agents for Kubernetes and their clusters.
 
+## Synopsis
+
+Agents connect your cluster to GitLab, enabling pull-based deployments
+and secure access to the Kubernetes API.
+
 ## Options
 
 ```plaintext

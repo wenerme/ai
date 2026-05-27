@@ -244,16 +244,12 @@ curl https://my-sandbox.YOUR_SUBDOMAIN.workers.dev/run
 
 Your sandbox is now deployed and can execute code in isolated containers.
 
-Preview URLs require custom domain
-
-If you plan to expose ports from sandboxes (using `exposePort()` for preview URLs), you will need to set up a custom domain with wildcard DNS routing. The `.workers.dev` domain does not support the subdomain patterns required for preview URLs. See [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/) when you are ready to expose services.
-
 ## Understanding the configuration
 
 Your `wrangler.jsonc` connects three pieces together:
 
-* [  wrangler.jsonc ](#tab-panel-7593)
-* [  wrangler.toml ](#tab-panel-7594)
+* [  wrangler.jsonc ](#tab-panel-8134)
+* [  wrangler.toml ](#tab-panel-8135)
 
 JSONC
 
@@ -355,6 +351,7 @@ Now that you have a working sandbox, explore more capabilities:
 * [Execute commands](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Run shell commands and stream output
 * [Manage files](https://developers.cloudflare.com/sandbox/guides/manage-files/) \- Work with files and directories
 * [Expose services](https://developers.cloudflare.com/sandbox/guides/expose-services/) \- Get public URLs for services running in your sandbox
+* [Quick tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs for development and `.workers.dev` deployments
 * [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/) \- Set up custom domains for preview URLs
 * [API reference](https://developers.cloudflare.com/sandbox/api/) \- Complete API documentation
 

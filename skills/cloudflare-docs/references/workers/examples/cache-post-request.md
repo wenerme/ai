@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Cache POST requests
 
-**Last reviewed:**  about 4 years ago 
+**Last reviewed:**  over 4 years ago 
 
 Cache POST requests using the Cache API.
 
@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9412)
-* [  TypeScript ](#tab-panel-9413)
-* [  Python ](#tab-panel-9414)
-* [  Hono ](#tab-panel-9415)
+* [  JavaScript ](#tab-panel-9478)
+* [  TypeScript ](#tab-panel-9479)
+* [  Python ](#tab-panel-9480)
+* [  Hono ](#tab-panel-9481)
 
 JavaScript
 

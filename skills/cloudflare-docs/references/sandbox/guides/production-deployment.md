@@ -14,7 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Only required for preview URLs
 
-Custom domain setup is ONLY needed if you use `exposePort()` to expose services from sandboxes. If your application does not expose ports, you can deploy to `.workers.dev` without this configuration.
+This guide covers `exposePort()` in production. Custom domain setup is ONLY needed if you use `exposePort()` to expose services from sandboxes. If your application does not use `exposePort()`, you can deploy to `.workers.dev` without this configuration.
+
+For development or `.workers.dev` deployments that need public URLs, [sandbox.tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) is a zero-config alternative — we recommend `exposePort()` for production today; named tunnels for production are planned for a future release.
 
 Deploy your Sandbox SDK application to production with preview URL support. Preview URLs require wildcard DNS routing because they generate unique subdomains for each exposed port: `https://8080-abc123.yourdomain.com`.
 
@@ -53,8 +55,8 @@ This routes all subdomains through Cloudflare's proxy. The IP address `192.0.2.0
 
 Add a wildcard route to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7825)
-* [  wrangler.toml ](#tab-panel-7826)
+* [  wrangler.jsonc ](#tab-panel-8372)
+* [  wrangler.toml ](#tab-panel-8373)
 
 JSONC
 
@@ -70,7 +72,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-29",
+  "compatibility_date": "2026-05-26",
 
   "routes": [
 
@@ -101,7 +103,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-29"
+compatibility_date = "2026-05-26"
 
 
 [[routes]]
@@ -170,6 +172,7 @@ For detailed troubleshooting, see the [Workers routing documentation](https://de
 
 * [Preview URLs](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) \- How preview URLs work
 * [Expose Services](https://developers.cloudflare.com/sandbox/guides/expose-services/) \- Patterns for exposing ports
+* [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs for development (not for production)
 * [Workers Routing](https://developers.cloudflare.com/workers/configuration/routing/) \- Advanced routing configuration
 * [Cloudflare DNS](https://developers.cloudflare.com/dns/) \- DNS management
 

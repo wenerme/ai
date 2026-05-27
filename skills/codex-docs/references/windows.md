@@ -160,15 +160,8 @@ wsl
 Then run these commands from your WSL shell:
 
 ```bash
-# https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
-# Install Node.js in WSL (via nvm)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-
-# In a new tab or after exiting and running `wsl` again to install Node.js
-nvm install 22
-
 # Install and run Codex in WSL
-npm i -g @openai/codex
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
 codex
 ```
 

@@ -78,7 +78,7 @@ A good starting pattern is:
 - Keep repo-specific behavior in `.codex/config.toml`
 - Use command-line overrides only for one-off situations (if you use the CLI)
 
-[`config.toml`](https://developers.openai.com/codex/config-basic) is where you define durable preferences such as MCP servers, profiles, multi-agent setup, and feature flags. You can edit it directly or ask Codex to update it for you.
+[`config.toml`](https://developers.openai.com/codex/config-basic) is where you define durable preferences such as MCP servers, multi-agent setup, and feature flags. Profile-specific overrides live in separate `$CODEX_HOME/profile-name.config.toml` files.
 
 Codex ships with operating level sandboxing and has two key knobs that you can control. Approval mode determines when Codex asks for your permission to run a command and sandbox mode determines if Codex can read or write in the directory and what files the agent can access.
 

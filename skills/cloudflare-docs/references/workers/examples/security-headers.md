@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Set security headers
 
-**Last reviewed:**  about 4 years ago 
+**Last reviewed:**  over 4 years ago 
 
 Set common security headers (X-XSS-Protection, X-Frame-Options, X-Content-Type-Options, Permissions-Policy, Referrer-Policy, Strict-Transport-Security, Content-Security-Policy).
 
@@ -24,11 +24,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 To inject CSP nonces into inline `<script>` tags using HTMLRewriter, refer to this [CSP nonce example](https://developers.cloudflare.com/workers/examples/spa-shell/#add-csp-nonces).
 
-* [  JavaScript ](#tab-panel-9547)
-* [  TypeScript ](#tab-panel-9548)
-* [  Python ](#tab-panel-9549)
-* [  Rust ](#tab-panel-9550)
-* [  Hono ](#tab-panel-9551)
+* [  JavaScript ](#tab-panel-9613)
+* [  TypeScript ](#tab-panel-9614)
+* [  Python ](#tab-panel-9615)
+* [  Rust ](#tab-panel-9616)
+* [  Hono ](#tab-panel-9617)
 
 JavaScript
 

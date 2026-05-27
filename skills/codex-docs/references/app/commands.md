@@ -9,6 +9,7 @@ Use these commands and keyboard shortcuts to navigate the Codex app.
 | **General** |                    |                                                                                   |
 |             | Command menu       | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> or <kbd>Cmd</kbd> + <kbd>K</kbd> |
 |             | Settings           | <kbd>Cmd</kbd> + <kbd>,</kbd>                                                     |
+|             | Keyboard shortcuts | <kbd>Cmd</kbd> + <kbd>/</kbd>                                                     |
 |             | Open folder        | <kbd>Cmd</kbd> + <kbd>O</kbd>                                                     |
 |             | Navigate back      | <kbd>Cmd</kbd> + <kbd>[</kbd>                                                     |
 |             | Navigate forward   | <kbd>Cmd</kbd> + <kbd>]</kbd>                                                     |
@@ -24,6 +25,10 @@ Use these commands and keyboard shortcuts to navigate the Codex app.
 |             | Previous thread    | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>[</kbd>                                  |
 |             | Next thread        | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>]</kbd>                                  |
 |             | Dictation          | <kbd>Ctrl</kbd> + <kbd>M</kbd>                                                    |
+
+To find, customize, or reset shortcuts, open **Settings > Keyboard Shortcuts**.
+You can search by command name or switch the search field into keystroke mode
+and press the shortcut you want to find.
 
 ## Slash commands
 

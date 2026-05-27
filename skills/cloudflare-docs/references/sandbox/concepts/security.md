@@ -139,6 +139,21 @@ await sandbox.unexposePort(8080);
 
 ```
 
+### Quick tunnel URLs
+
+Quick tunnels (`sandbox.tunnels.get(port)`) return a `*.trycloudflare.com` URL with a random hostname assigned by Cloudflare — there is no separate access token. The hostname itself is the access control: anyone who knows the URL can reach the service. To revoke access, destroy the tunnel:
+
+TypeScript
+
+```
+
+await sandbox.tunnels.destroy(8080);
+
+
+```
+
+URLs do not survive a container restart, so a restart effectively rotates the hostname. As with preview URLs, add application-level authentication for any sensitive service. See the [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) for details.
+
 Python
 
 ```

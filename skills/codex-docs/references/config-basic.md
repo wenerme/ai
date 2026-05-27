@@ -19,13 +19,13 @@ The CLI and IDE extension share the same configuration layers. You can use them 
 Codex resolves values in this order (highest precedence first):
 
 1. CLI flags and `--config` overrides
-2. [Profile](https://developers.openai.com/codex/config-advanced#profiles) values (from `--profile <name>`)
-3. Project config files: `.codex/config.toml`, ordered from the project root down to your current working directory (closest wins; trusted projects only)
+2. Project config files: `.codex/config.toml`, ordered from the project root down to your current working directory (closest wins; trusted projects only)
+3. [Profile](https://developers.openai.com/codex/config-advanced#profiles) files selected with `--profile profile-name` (`~/.codex/profile-name.config.toml`)
 4. User config: `~/.codex/config.toml`
 5. System config (if present): `/etc/codex/config.toml` on Unix
 6. Built-in defaults
 
-Use that precedence to set shared defaults at the top level and keep profiles focused on the values that differ.
+Use that precedence to set shared defaults in `config.toml` and keep [profile files](https://developers.openai.com/codex/config-advanced#profiles) focused on the values that differ.
 
 If you mark a project as untrusted, Codex skips project-scoped `.codex/` layers, including project-local config, hooks, and rules. User and system config still load, including user/global hooks and rules.
 

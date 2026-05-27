@@ -253,16 +253,26 @@ The Codex CLI is supported on macOS, Windows, and Linux.
 <WorkflowSteps variant="headings">
 1. Install the Codex CLI
 
-    Install with npm:
+    On macOS or Linux, use the standalone installer:
+
+    ```bash
+    curl -fsSL https://chatgpt.com/codex/install.sh | sh
+    ```
+
+    On Windows, run:
+
+    ```powershell
+    powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+    ```
+
+    You can also install Codex CLI with npm or Homebrew:
 
     ```bash
     npm install -g @openai/codex
     ```
 
-    Install with Homebrew:
-
     ```bash
-    brew install codex
+    brew install --cask codex
     ```
 
 2. Run `codex` and sign in

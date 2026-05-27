@@ -7,7 +7,7 @@ doc_type: 'reference'
 
 # Metrics reference
 
-<PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="monitoring-metrics" />
+<BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.monitoring-metrics-beta" />
 
 This page lists every metric exposed by the
 [Managed Postgres Prometheus endpoint](/cloud/managed-postgres/monitoring/prometheus).

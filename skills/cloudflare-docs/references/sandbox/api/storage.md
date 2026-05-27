@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Storage
 
-Mount S3-compatible storage buckets (R2, S3, GCS) into the sandbox filesystem for persistent data access.
+Mount S3-compatible storage buckets (R2, S3, GCS) into the sandbox filesystem for persistent data access. `mountBucket()` supports R2 binding mounts, local R2 binding sync during development, and remote S3-compatible endpoint mounts.
 
 ## Methods
 
@@ -30,7 +30,7 @@ await sandbox.mountBucket(
 
   mountPath: string,
 
-  options: MountBucketOptions
+  options?: MountBucketOptions
 
 ): Promise<void>
 
@@ -39,26 +39,22 @@ await sandbox.mountBucket(
 
 **Parameters**:
 
-* `bucket` \- Bucket name (e.g., `"my-r2-bucket"`)
+* `bucket` \- Bucket identifier  
+   * When `options.endpoint` is omitted, pass the Worker R2 binding name (for example, `"MY_BUCKET"`)  
+   * When `options.endpoint` is provided, pass the remote bucket name (for example, `"my-r2-bucket"`)
 * `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
-* `options` \- Mount configuration (see [MountBucketOptions](#mountbucketoptions))
+* `options` (optional) - Mount configuration (see [MountBucketOptions](#mountbucketoptions))
 
-* [  JavaScript ](#tab-panel-7547)
-* [  TypeScript ](#tab-panel-7548)
+* [  JavaScript ](#tab-panel-8080)
+* [  TypeScript ](#tab-panel-8081)
 
 JavaScript
 
 ```
 
-// Mount R2 bucket to /data
+// Mount an R2 bucket by Worker binding name
 
-await sandbox.mountBucket("my-bucket", "/data", {
-
-  endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
-
-  provider: "r2",
-
-});
+await sandbox.mountBucket("MY_BUCKET", "/data");
 
 
 // Read/write files directly
@@ -68,7 +64,7 @@ const data = await sandbox.readFile("/data/config.json");
 await sandbox.writeFile("/data/results.json", JSON.stringify(data));
 
 
-// Mount with explicit credentials
+// Mount a remote S3-compatible bucket, including explicit R2 endpoints
 
 await sandbox.mountBucket("my-bucket", "/storage", {
 
@@ -85,24 +81,22 @@ await sandbox.mountBucket("my-bucket", "/storage", {
 });
 
 
-// Read-only mount
+// Mount an R2 bucket during local development with wrangler dev
 
-await sandbox.mountBucket("datasets", "/datasets", {
+await sandbox.mountBucket("MY_BUCKET", "/local-data", {
 
-  endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
-
-  readOnly: true,
+  localBucket: true,
 
 });
 
 
-// Mount a subdirectory within the bucket
+// Mount a prefix from an R2 binding
 
-await sandbox.mountBucket("shared-bucket", "/user-data", {
+await sandbox.mountBucket("MY_BUCKET", "/user-data", {
 
-  endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
+  prefix: "/users/user-123",
 
-  prefix: "/users/user-123/",
+  readOnly: true,
 
 });
 
@@ -113,15 +107,9 @@ TypeScript
 
 ```
 
-// Mount R2 bucket to /data
+// Mount an R2 bucket by Worker binding name
 
-await sandbox.mountBucket('my-bucket', '/data', {
-
-  endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com',
-
-  provider: 'r2'
-
-});
+await sandbox.mountBucket('MY_BUCKET', '/data');
 
 
 // Read/write files directly
@@ -131,7 +119,7 @@ const data = await sandbox.readFile('/data/config.json');
 await sandbox.writeFile('/data/results.json', JSON.stringify(data));
 
 
-// Mount with explicit credentials
+// Mount a remote S3-compatible bucket, including explicit R2 endpoints
 
 await sandbox.mountBucket('my-bucket', '/storage', {
 
@@ -148,24 +136,22 @@ await sandbox.mountBucket('my-bucket', '/storage', {
 });
 
 
-// Read-only mount
+// Mount an R2 bucket during local development with wrangler dev
 
-await sandbox.mountBucket('datasets', '/datasets', {
+await sandbox.mountBucket('MY_BUCKET', '/local-data', {
 
-  endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com',
-
-  readOnly: true
+  localBucket: true
 
 });
 
 
-// Mount a subdirectory within the bucket
+// Mount a prefix from an R2 binding
 
-await sandbox.mountBucket('shared-bucket', '/user-data', {
+await sandbox.mountBucket('MY_BUCKET', '/user-data', {
 
-  endpoint: 'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com',
+  prefix: '/users/user-123',
 
-  prefix: '/users/user-123/'
+  readOnly: true
 
 });
 
@@ -179,11 +165,13 @@ await sandbox.mountBucket('shared-bucket', '/user-data', {
 
 Authentication
 
-Credentials can be provided via:
+Authentication depends on the mount mode:
 
-1. Explicit `credentials` in options
-2. Environment variables (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`)
-3. Automatic detection from bound R2 buckets
+1. Omit `endpoint` to mount an R2 bucket by Worker binding name in production
+2. Set `localBucket: true` to use the same R2 binding during local development
+3. Set `endpoint` to mount a remote S3-compatible bucket, then provide explicit `credentials` or rely on environment variables (`R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` or `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`)
+
+Endpoint-based mounts remain supported for explicit R2 endpoint configuration and for other S3-compatible providers.
 
 See the [Mount Buckets guide](https://developers.cloudflare.com/sandbox/guides/mount-buckets/) for detailed authentication options.
 
@@ -204,8 +192,8 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 * `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
 
-* [  JavaScript ](#tab-panel-7545)
-* [  TypeScript ](#tab-panel-7546)
+* [  JavaScript ](#tab-panel-8078)
+* [  TypeScript ](#tab-panel-8079)
 
 JavaScript
 
@@ -213,7 +201,7 @@ JavaScript
 
 // Mount, process, unmount
 
-await sandbox.mountBucket("data", "/data", { endpoint: "..." });
+await sandbox.mountBucket("MY_BUCKET", "/data");
 
 await sandbox.exec("python process.py");
 
@@ -231,7 +219,7 @@ TypeScript
 
 // Mount, process, unmount
 
-await sandbox.mountBucket('data', '/data', { endpoint: '...' });
+await sandbox.mountBucket('MY_BUCKET', '/data');
 
 await sandbox.exec('python process.py');
 
@@ -255,11 +243,9 @@ TypeScript
 
 ```
 
-interface MountBucketOptions {
+interface RemoteMountBucketOptions {
 
-  endpoint?: string;
-
-  localBucket?: boolean;
+  endpoint: string;
 
   provider?: BucketProvider;
 
@@ -267,40 +253,83 @@ interface MountBucketOptions {
 
   readOnly?: boolean;
 
-  prefix?: string;
+  s3fsOptions?: string[];
 
-  s3fsOptions?: Record<string, string>;
+  prefix?: string;
 
 }
 
 
+interface LocalMountBucketOptions {
+
+  localBucket: true;
+
+  prefix?: string;
+
+  readOnly?: boolean;
+
+}
+
+
+interface R2BindingMountBucketOptions {
+
+  endpoint?: never;
+
+  prefix?: string;
+
+  readOnly?: boolean;
+
+  s3fsOptions?: string[];
+
+}
+
+
+type MountBucketOptions =
+
+  | RemoteMountBucketOptions
+
+  | LocalMountBucketOptions
+
+  | R2BindingMountBucketOptions;
+
+
 ```
 
-**Fields**:
+`mountBucket()` supports these three modes:
 
-* `endpoint` (required when `localBucket` is `false` or unset) - S3-compatible endpoint URL  
+* **R2 binding mount** \- Omit `endpoint` to mount by Worker binding name in production  
+   * Uses credential-less egress interception for R2  
+   * Supports `prefix`, `readOnly`, and `s3fsOptions`
+* **Local R2 binding mount** \- Set `localBucket: true` during `wrangler dev`  
+   * Uses the Worker R2 binding directly through local synchronization  
+   * Supports `prefix` and `readOnly`
+* **Remote endpoint mount** \- Set `endpoint` to mount any S3-compatible provider  
+   * Supports explicit `credentials` or environment variable auto-detection  
+   * Supports `provider`, `prefix`, `readOnly`, and `s3fsOptions`
+
+**Field details**:
+
+* `endpoint` (remote endpoint mode only) - S3-compatible endpoint URL  
    * R2: `'https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com'`  
    * S3: `'https://s3.amazonaws.com'`  
    * GCS: `'https://storage.googleapis.com'`
-* `localBucket` (optional) - Mount an R2 bucket using the Worker's R2 binding during local development with `wrangler dev`  
-   * When `true`, the SDK syncs the R2 binding directly instead of using an S3 endpoint  
-   * `endpoint` and `credentials` are not required when this is `true`  
-         * `provider` and `s3fsOptions` are not used when this is `true`  
-   * Default: `false`
-* `provider` (optional) - Storage provider hint  
+* `localBucket` (local development mode only) - Mount an R2 bucket using the Worker's R2 binding during local development with `wrangler dev`  
+   * When `true`, the SDK syncs the R2 binding directly instead of using an S3 endpoint
+* `provider` (remote endpoint mode only) - Storage provider hint  
    * Enables provider-specific optimizations  
    * Values: `'r2'`, `'s3'`, `'gcs'`
-* `credentials` (optional) - API credentials  
+* `credentials` (remote endpoint mode only) - API credentials  
    * Contains `accessKeyId` and `secretAccessKey`  
    * If not provided, uses environment variables
 * `readOnly` (optional) - Mount in read-only mode  
    * Default: `false`
 * `prefix` (optional) - Subdirectory within the bucket to mount  
    * When specified, only contents under this prefix are visible at the mount point  
-   * Must start and end with `/` (e.g., `/data/uploads/`)  
+   * Must start with `/` (for example, `/data/uploads` or `/data/uploads/`)  
    * Default: Mount entire bucket
-* `s3fsOptions` (optional) - Advanced s3fs mount flags  
-   * Example: `{ 'use_cache': '/tmp/cache' }`
+* `s3fsOptions` (R2 binding and remote endpoint modes only) - Advanced s3fs mount flags  
+   * Type: `string[]`  
+   * Example: `['use_cache=/tmp/cache', 'stat_cache_expire=1']`
 
 ### `BucketProvider`
 

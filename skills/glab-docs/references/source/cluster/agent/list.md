@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 List GitLab Agents for Kubernetes in a project.
 
+## Synopsis
+
+Defaults to the current project. Use `--output json` for JSON output.
+
 ```plaintext
 glab cluster agent list [flags]
 ```
@@ -15,6 +19,16 @@ glab cluster agent list [flags]
 
 ```plaintext
 ls
+```
+
+## Examples
+
+```console
+# List agents in the current project
+glab cluster agent list
+
+# List agents in JSON format
+glab cluster agent list --output json
 ```
 
 ## Options

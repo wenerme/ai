@@ -5,14 +5,30 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Update selected kubeconfig.
+Update your kubeconfig for use with a GitLab Agent for Kubernetes.
 
 ## Synopsis
 
-Update selected `kubeconfig` for use with a GitLab agent for Kubernetes.
+Configures `kubectl` to authenticate through the GitLab Agent for Kubernetes
+using an exec credential plugin.
+
+- Use `--agent` to specify the agent by its numeric ID.
+- Use `--use-context` to set the agent as the default `kubectl` context.
+- Use `--token-expiry-duration` to control how long the generated token is valid.
+- Use `--cache-mode` to control how generated tokens are cached.
 
 ```plaintext
 glab cluster agent update-kubeconfig [flags]
+```
+
+## Examples
+
+```console
+# Update kubeconfig for agent 123
+glab cluster agent update-kubeconfig --agent 123
+
+# Update kubeconfig and set as the default context
+glab cluster agent update-kubeconfig --agent 123 --use-context
 ```
 
 ## Options

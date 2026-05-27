@@ -120,8 +120,8 @@ exec bun dist/index.js
 
 **Connect from your Worker:**
 
-* [  JavaScript ](#tab-panel-7849)
-* [  TypeScript ](#tab-panel-7850)
+* [  JavaScript ](#tab-panel-8396)
+* [  TypeScript ](#tab-panel-8397)
 
 JavaScript
 
@@ -207,8 +207,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Get a public URL for your WebSocket server:
 
-* [  JavaScript ](#tab-panel-7851)
-* [  TypeScript ](#tab-panel-7852)
+* [  JavaScript ](#tab-panel-8398)
+* [  TypeScript ](#tab-panel-8399)
 
 JavaScript
 
@@ -313,6 +313,10 @@ export default {
 
 ```
 
+Alternative: quick tunnels
+
+Quick tunnels also handle WebSocket upgrades and do not require a custom domain, so they work on `.workers.dev`. Swap `sandbox.exposePort(8080, { hostname })` for `sandbox.tunnels.get(8080)` to get a `*.trycloudflare.com` URL.
+
 **Client connects to preview URL:**
 
 JavaScript
@@ -341,8 +345,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Your Worker can connect to a WebSocket service to get real-time data, even when the incoming request isn't a WebSocket:
 
-* [  JavaScript ](#tab-panel-7853)
-* [  TypeScript ](#tab-panel-7854)
+* [  JavaScript ](#tab-panel-8400)
+* [  TypeScript ](#tab-panel-8401)
 
 JavaScript
 
@@ -524,8 +528,8 @@ This pattern is useful when you need streaming data from sandbox services but wa
 
 Verify request has WebSocket headers:
 
-* [  JavaScript ](#tab-panel-7847)
-* [  TypeScript ](#tab-panel-7848)
+* [  JavaScript ](#tab-panel-8394)
+* [  TypeScript ](#tab-panel-8395)
 
 JavaScript
 
@@ -582,6 +586,7 @@ Port exposure in Dockerfile is only required for local development. In productio
 
 * [Ports API reference](https://developers.cloudflare.com/sandbox/api/ports/) \- Complete API documentation
 * [Preview URLs concept](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) \- How preview URLs work
+* [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs for WebSocket services in development
 * [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Managing long-running services
 
 ```json

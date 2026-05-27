@@ -115,13 +115,42 @@ The `/hydrate` endpoint accepts a raw tar payload up to 32 MiB.
 | POST   | /v1/sandbox/:id/mount   | Mount an S3-compatible bucket as a local directory. |
 | POST   | /v1/sandbox/:id/unmount | Unmount a previously mounted bucket.                |
 
-The `/mount` endpoint accepts a JSON body:
+The `/mount` endpoint accepts a JSON body. Two flows are supported:
+
+### R2 binding mounts
+
+Omit `endpoint` and pass the Worker R2 binding name in `bucket`:
 
 ```
 
 {
 
-  "bucket": "my-bucket",
+  "bucket": "MY_BUCKET",
+
+  "mountPath": "/mnt/data",
+
+  "options": {
+
+    "readOnly": false,
+
+    "prefix": "/subdir"
+
+  }
+
+}
+
+
+```
+
+When `options.endpoint` is omitted, `bucket` means the Worker R2 binding name.
+
+For an explicit S3-compatible endpoint mount, include `endpoint` and optionally `credentials`:
+
+```
+
+{
+
+  "bucket": "my-r2-bucket",
 
   "mountPath": "/mnt/data",
 
@@ -131,7 +160,7 @@ The `/mount` endpoint accepts a JSON body:
 
     "readOnly": false,
 
-    "prefix": "subdir/",
+    "prefix": "/subdir",
 
     "credentials": {
 
@@ -148,7 +177,7 @@ The `/mount` endpoint accepts a JSON body:
 
 ```
 
-Credentials are optional — the bridge auto-detects from Worker secrets (`R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` or `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`) when omitted.
+When `endpoint` is provided, `bucket` means the remote bucket name. Credentials are optional in this mode only — the bridge auto-detects from Worker secrets (`R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` or `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`) when omitted.
 
 ## Sessions
 
@@ -195,8 +224,8 @@ The WebSocket carries binary frames for terminal I/O and JSON text frames for co
 
 The warm pool pre-starts sandbox containers so new sessions boot instantly. Configure it with environment variables in `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-7905)
-* [  wrangler.toml ](#tab-panel-7906)
+* [  wrangler.jsonc ](#tab-panel-8100)
+* [  wrangler.toml ](#tab-panel-8101)
 
 JSONC
 

@@ -5,7 +5,7 @@ keywords: ['postgres scaling', 'vertical scaling', 'vm types', 'nvme scaling', '
 doc_type: 'guide'
 ---
 
-<PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="scaling" />
+<BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.scaling-beta" />
 
 Managed Postgres provides flexible scaling options to match your workload requirements. With 50+ NVMe-backed instance types to choose from, you can independently scale CPU, memory, and storage to optimize performance and cost for your specific use case.
 
@@ -28,6 +28,8 @@ Different workloads benefit from different resource configurations:
 | **Compute optimized**                             | High   | Medium | Medium  | Compute-optimized (high vCPU count)         |
 | **Memory optimized** (large working set)          | Medium | High   | Medium  | Memory-optimized (high memory-to-CPU ratio) |
 | **Storage optimized** (large datasets, heavy I/O) | Medium | Medium | High    | Storage-optimized (high NVMe capacity)      |
+
+> **tip**: For safety reasons, you may not be able to switch to instance types whose storage is close to your current used storage capacity. Always opt for instance types with headroom over your current used capacity to avoid any issues.
 
 ## How scaling works {#how-scaling-works}
 

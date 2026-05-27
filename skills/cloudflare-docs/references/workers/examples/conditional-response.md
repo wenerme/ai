@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Conditional response
 
-**Last reviewed:**  about 4 years ago 
+**Last reviewed:**  over 4 years ago 
 
 Return a response based on the incoming request's URL, HTTP method, User Agent, IP address, ASN or device type.
 
@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9430)
-* [  TypeScript ](#tab-panel-9431)
-* [  Python ](#tab-panel-9432)
-* [  Hono ](#tab-panel-9433)
+* [  JavaScript ](#tab-panel-9496)
+* [  TypeScript ](#tab-panel-9497)
+* [  Python ](#tab-panel-9498)
+* [  Hono ](#tab-panel-9499)
 
 JavaScript
 

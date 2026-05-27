@@ -5,7 +5,7 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Get JSON of a running CI/CD pipeline on the current or other specified branch.
+Get the details of a CI/CD pipeline.
 
 ## Synopsis
 
@@ -20,6 +20,8 @@ detached pipelines.
 Use `--status` to filter jobs by state (passed through to the API's
 `scope` parameter).
 
+Use `--output json` to get the pipeline details as JSON.
+
 ```plaintext
 glab ci get [flags]
 ```
@@ -33,8 +35,11 @@ stats
 ## Examples
 
 ```console
+# Get the pipeline for the current branch
 glab ci get
-glab ci -R some/project -p 12345
+
+# Get a specific pipeline by ID in another project
+glab ci get -R some/project -p 12345
 
 # Show only failed jobs for the head pipeline of MR !42
 glab ci get --merge-request=42 --status=failed --with-job-details
@@ -43,13 +48,13 @@ glab ci get --merge-request=42 --status=failed --with-job-details
 ## Options
 
 ```plaintext
-  -b, --branch string       Check pipeline status for a branch. (default current branch)
+  -b, --branch string       Get the pipeline for a branch. Defaults to the current branch.
       --merge-request int   Show the pipeline for the given merge request <iid>.
   -F, --output string       Format output. Options: text, json. (default "text")
-  -p, --pipeline-id int     Provide pipeline ID.
-  -s, --status string       Show only jobs in the given <state>. Passed through to the API's scope parameter.
-  -d, --with-job-details    Show extended job information. (default false)
-      --with-variables      Show variables in pipeline. Requires the Maintainer role. (default false)
+  -p, --pipeline-id int     Get the pipeline with the given <id>.
+  -s, --status string       Show only jobs in the given state. Passed through to the API's scope parameter.
+  -d, --with-job-details    Show extended job information.
+      --with-variables      Show variables in pipeline. Requires the Maintainer role.
 ```
 
 ## Options inherited from parent commands

@@ -5,17 +5,24 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Create and return a k8s_proxy-scoped personal access token to authenticate with a GitLab Agents for Kubernetes.
+Create a personal access token for a GitLab Agent for Kubernetes.
 
 ## Synopsis
 
-Create and return a k8s_proxy-scoped personal access token to authenticate with a GitLab Agents for Kubernetes.
+The token has the `k8s_proxy` scope and is valid until the end of the current day.
 
-This command creates a personal access token that is valid until the end of the current day.
-You might receive an email from your GitLab instance that a new personal access token has been created.
+You might receive an email from your GitLab instance that a new personal
+access token has been created.
 
 ```plaintext
 glab cluster agent get-token [flags]
+```
+
+## Examples
+
+```console
+# Get a token for agent 123
+glab cluster agent get-token --agent 123
 ```
 
 ## Options

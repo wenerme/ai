@@ -9,13 +9,21 @@ List cached GitLab Agent tokens.
 
 ## Synopsis
 
-List all cached GitLab Agent tokens from keyring and filesystem cache.
-
-By default, this command shows tokens from both keyring and filesystem cache.
-Use `--keyring=false` or `--filesystem=false` to filter specific cache types.
+By default, shows tokens from both keyring and filesystem cache.
+Use `--keyring=false` or `--filesystem=false` to filter by cache type.
 
 ```plaintext
 glab cluster agent token-cache list [flags]
+```
+
+## Examples
+
+```console
+# List all cached agent tokens
+glab cluster agent token-cache list
+
+# List tokens from filesystem cache only
+glab cluster agent token-cache list --keyring=false
 ```
 
 ## Options

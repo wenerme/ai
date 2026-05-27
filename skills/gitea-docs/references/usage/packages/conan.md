@@ -16,7 +16,7 @@ To register the package registry you need to configure a new Conan remote:
 
 ```shell
 conan remote add {remote} https://gitea.example.com/api/packages/{owner}/conan
-conan user --remote {remote} --password {password} {username}
+conan remote login {remote} {username} --password {password}
 ```
 
 | Parameter  | Description |
@@ -30,7 +30,7 @@ For example:
 
 ```shell
 conan remote add gitea https://gitea.example.com/api/packages/testuser/conan
-conan user --remote gitea --password password123 testuser
+conan remote login gitea testuser --password password123
 ```
 
 ## Publish a package

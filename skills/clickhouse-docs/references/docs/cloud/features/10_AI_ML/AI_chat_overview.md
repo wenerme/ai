@@ -1,5 +1,5 @@
 ---
-title: 'ClickHouse Assistant agent in Cloud'
+title: 'ClickHouse Assistant in Cloud'
 description: 'Description of the ClickHouse Assistant chat functionality in ClickHouse Cloud'
 doc_type: 'reference'
 ---

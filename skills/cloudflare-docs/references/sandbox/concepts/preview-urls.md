@@ -12,6 +12,46 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Preview URLs
 
+# Quick deployment
+
+For quick preview deployments we recommend using [Cloudflare Tunnel ↗](https://developers.cloudflare.com/tunnel/) to generate preview URLs to your web services. These work across local development, workers.dev and production usage.
+
+TypeScript
+
+```
+
+await sandbox.startProcess("python -m http.server 8000");
+
+const tunnel = await sandbox.tunnels.get(8000);
+
+console.log(tunnel.url);
+
+// https://acute-llama-dancing-roundly.trycloudflare.app
+
+
+// Request will be routed directly to the webserver running on the sandbox.
+
+const req = await fetch(`${tunnel.url}/api/users`); // => GET http://localhost:8000/api/users
+
+
+```
+
+Cloudflare Tunnel support currently has the following limitations:
+
+* No control over generated URL.
+* No authentication mechanism beyond randomly generated URL.
+* Each URL uses an additional `cloudflared` process on the sandbox.
+
+Production requires custom domain
+
+We are working on production deployments, custom hostnames and authentication for Cloudflare Tunnel support. In the mean time we recommend using `exposePort()` and `proxyToSandbox()` documented below under [Production usage, stable URLs and custom domains](#).
+
+See the [tunnels API reference](https://developers.cloudflare.com/sandbox/api/tunnels/) for the full API and feature set.
+
+# Production usage, stable URLs & custom domains
+
+For production use we recommend using the `exposePort()` API and routing traffic through your worker.
+
 Production requires custom domain
 
 Preview URLs work in local development without configuration. For production, you need a custom domain with wildcard DNS routing. See [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/).
@@ -81,7 +121,7 @@ const stable = await sandbox.exposePort(8000, {
 
   hostname,
 
-  token: 'api_v1'
+  token: "api_v1",
 
 });
 
@@ -117,7 +157,7 @@ TypeScript
 
 // Problem scenario
 
-const sandbox = getSandbox(env.Sandbox, 'MyProject-123');
+const sandbox = getSandbox(env.Sandbox, "MyProject-123");
 
 // Durable Object ID: "MyProject-123"
 
@@ -136,9 +176,9 @@ TypeScript
 
 ```
 
-const sandbox = getSandbox(env.Sandbox, 'MyProject-123', {
+const sandbox = getSandbox(env.Sandbox, "MyProject-123", {
 
-  normalizeId: true
+  normalizeId: true,
 
 });
 
@@ -397,6 +437,7 @@ This is **only required for local development**. In production, all container po
 * [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/) \- Set up custom domains for production
 * [Expose Services](https://developers.cloudflare.com/sandbox/guides/expose-services/) \- Practical patterns for exposing ports
 * [Ports API](https://developers.cloudflare.com/sandbox/api/ports/) \- Complete API reference
+* [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs as an alternative for development
 * [Security Model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Security best practices
 
 ```json

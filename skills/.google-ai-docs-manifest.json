@@ -194,8 +194,8 @@
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",
     "skill": "google-ai-docs",
-    "size": 14623,
-    "updatedAt": "2026-05-21T11:23:08.265Z"
+    "size": 14919,
+    "updatedAt": "2026-05-27T00:52:49.126Z"
   },
   "google-ai-docs/music-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/music-generation",
@@ -278,8 +278,8 @@
   "google-ai-docs/image-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/image-generation",
     "skill": "google-ai-docs",
-    "size": 93667,
-    "updatedAt": "2026-05-08T00:44:56.855Z"
+    "size": 93579,
+    "updatedAt": "2026-05-27T00:53:01.103Z"
   },
   "google-ai-docs/models.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models",
@@ -374,8 +374,8 @@
   "google-ai-docs/billing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/billing",
     "skill": "google-ai-docs",
-    "size": 33317,
-    "updatedAt": "2026-05-22T00:42:06.476Z"
+    "size": 33248,
+    "updatedAt": "2026-05-27T00:53:11.463Z"
   },
   "google-ai-docs/priority-inference.md": {
     "url": "https://ai.google.dev/gemini-api/docs/priority-inference",

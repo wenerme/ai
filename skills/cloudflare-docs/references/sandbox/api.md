@@ -38,6 +38,10 @@ Execute Python and JavaScript code with rich outputs including charts, tables, a
 
 Expose services running in the sandbox via preview URLs. Access web servers and APIs from the internet.
 
+[Tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) 
+
+Expose services on zero-config `*.trycloudflare.com` URLs via`sandbox.tunnels.get(port)`. Best for quick development and `.workers.dev`deployments.
+
 [Storage](https://developers.cloudflare.com/sandbox/api/storage/) 
 
 Mount S3-compatible buckets (R2, S3, GCS) as local filesystems for persistent data storage across sandbox lifecycles.

@@ -19,11 +19,22 @@ glab ci delete <id> [flags]
 ## Examples
 
 ```console
+# Delete a pipeline by ID
 glab ci delete 34
+
+# Delete multiple pipelines by ID
 glab ci delete 12,34,2
+
+# Delete all pipelines triggered through the API
 glab ci delete --source=api
+
+# Delete all failed pipelines
 glab ci delete --status=failed
+
+# Delete pipelines older than 24 hours
 glab ci delete --older-than 24h
+
+# Delete failed pipelines older than 24 hours
 glab ci delete --older-than 24h --status=failed
 ```
 
@@ -33,7 +44,7 @@ glab ci delete --older-than 24h --status=failed
       --dry-run               Simulate process, but do not delete anything.
       --older-than duration   Filter pipelines older than the given duration. Valid units: h, m, s, ms, us, ns.
       --page int              Page number.
-      --paginate              Make additional HTTP requests to fetch all pages of projects before cloning. Respects '--per-page'.
+      --paginate              Make additional HTTP requests to fetch all pages of pipelines. Respects '--per-page'.
       --per-page int          Number of items to list per page.
       --source string         Filter pipelines by source: api, chat, external, external_pull_request_event, merge_request_event, ondemand_dast_scan, ondemand_dast_validation, parent_pipeline, pipeline, push, schedule, security_orchestration_policy, trigger, web, webide.
   -s, --status string         Delete pipelines by status: running, pending, success, failed, canceled, skipped, created, manual.

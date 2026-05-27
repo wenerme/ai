@@ -45,11 +45,26 @@ PostHog receives LLM analytics events with custom metadata included as event pro
 
 ### Supported Metadata Keys
 
-| Key               | PostHog Mapping | Description                                         |
-| ----------------- | --------------- | --------------------------------------------------- |
-| `trace_id`        | Event property  | Custom trace identifier for grouping related events |
-| `trace_name`      | Event property  | Custom name for the trace                           |
-| `generation_name` | Event property  | Name for the LLM generation event                   |
+OpenRouter maps the reserved `trace` fields below to PostHog's native `$ai_*` properties,
+which power PostHog's built-in LLM analytics dashboards.
+
+| Key               | PostHog Property | Description                                         |
+| ----------------- | ---------------- | --------------------------------------------------- |
+| `trace_id`        | `$ai_trace_id`   | Custom trace identifier for grouping related events |
+| `generation_name` | `$ai_span_name`  | Name for the LLM generation event                   |
+
+### Custom property pass-through
+
+`trace_name` is forwarded as a plain custom property `trace_name` (not as `$ai_trace_name`),
+so you can filter events by trace name in PostHog without knowing PostHog's `$ai_*` naming
+convention.
+
+Every other key inside `trace` that is not in the table above is forwarded as
+`metadata_<key>` (e.g. `feature` → `metadata_feature`).
+
+> **Depth cap:** Custom property values are limited to 3 levels of nesting. Values nested
+> deeper than 3 levels are replaced with `'[truncated]'`. This keeps event payloads compact
+> and PostHog parse latency low.
 
 ### Example
 
@@ -68,11 +83,19 @@ PostHog receives LLM analytics events with custom metadata included as event pro
 }
 ```
 
+The above request produces a `$ai_generation` event with these properties (among others):
+
+| PostHog property         | Value                       |
+| ------------------------ | --------------------------- |
+| `trace_name`             | `"Product Recommendations"` |
+| `$ai_span_name`          | `"Generate Recommendation"` |
+| `metadata_feature`       | `"shopping-assistant"`      |
+| `metadata_ab_test_group` | `"variant_b"`               |
+
 ### Additional Context
 
-* The `user` field maps to PostHog's `$ai_user` property for user-level LLM analytics
+* The `user` field maps to PostHog's `distinct_id` for user-level LLM analytics
 * The `session_id` field maps to `$ai_session_id` for session grouping
-* Custom metadata keys from `trace` are included as properties on the LLM analytics event
 * PostHog's LLM analytics dashboard automatically tracks token usage, costs, and model performance
 
 ## Privacy Mode

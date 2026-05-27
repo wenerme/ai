@@ -30,7 +30,7 @@ export const globalFlagOptions = [
     key: "--profile, -p",
     type: "string",
     description:
-      "Configuration profile name to load from `~/.codex/config.toml`.",
+      "Layer `$CODEX_HOME/profile-name.config.toml` on top of the base user config.",
   },
   {
     key: "--sandbox, -s",
@@ -299,7 +299,8 @@ export const execOptions = [
   {
     key: "--profile, -p",
     type: "string",
-    description: "Select a configuration profile defined in config.toml.",
+    description:
+      "Layer `$CODEX_HOME/profile-name.config.toml` on top of the base user config.",
   },
   {
     key: "--full-auto",
@@ -516,13 +517,13 @@ export const featuresOptions = [
     key: "Enable subcommand",
     type: "codex features enable <feature>",
     description:
-      "Persistently enable a feature flag in `config.toml`. Respects the active `--profile` when provided.",
+      "Persistently enable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`.",
   },
   {
     key: "Disable subcommand",
     type: "codex features disable <feature>",
     description:
-      "Persistently disable a feature flag in `config.toml`. Respects the active `--profile` when provided.",
+      "Persistently disable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`.",
   },
 ];
 
@@ -1007,7 +1008,7 @@ Generate shell completion scripts and redirect the output to the appropriate loc
 
 ### `codex features`
 
-Manage feature flags stored in `~/.codex/config.toml`. The `enable` and `disable` commands persist changes so they apply to future sessions. When you launch with `--profile`, Codex writes to that profile instead of the root configuration.
+Manage feature flags stored in `~/.codex/config.toml` or the selected profile file. The `enable` and `disable` commands persist changes so they apply to future sessions. When you launch with `--profile profile-name`, Codex writes to `$CODEX_HOME/profile-name.config.toml` instead of the base user config.
 
 <ConfigTable client:load options={featuresOptions} />
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Geolocation: Custom Styling
 
-**Last reviewed:**  about 4 years ago 
+**Last reviewed:**  over 4 years ago 
 
 Personalize website styling based on localized user time.
 
@@ -22,9 +22,9 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9475)
-* [  TypeScript ](#tab-panel-9476)
-* [  Hono ](#tab-panel-9477)
+* [  JavaScript ](#tab-panel-9541)
+* [  TypeScript ](#tab-panel-9542)
+* [  Hono ](#tab-panel-9543)
 
 JavaScript
 

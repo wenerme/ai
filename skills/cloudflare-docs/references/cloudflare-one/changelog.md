@@ -14,6 +14,87 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-05-26
+
+[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
+
+  
+**Cloudflare One Client for macOS (version 2026.4.1390.0)**   
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces the new Cloudflare One Client UI for macOS! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
+
+* Right click context menu to access the most common client actions quickly
+* Built-in captive portal login experience
+
+**Additional Changes and improvements**
+
+* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+* Fixed a proxy mode connection stall issue.
+
+**Known issues**
+
+* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+* Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+
+## 2026-05-26
+
+[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
+
+  
+**Cloudflare One Client for Windows (version 2026.4.1390.0)**   
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces the new Cloudflare One Client UI for Windows! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
+
+* Right click context menu to access the most common client actions quickly
+* Built-in captive portal login experience
+
+**Additional Changes and improvements**
+
+* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+* Fixed a proxy mode connection stall issue.
+
+**Known issues**
+
+* Registration authentication for devices via the integrated WebView2 browser is unavailable in this version as a temporary measure. As a result, the client will utilize the default browser on the device to complete the authentication process.
+* An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
+* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+* Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+* Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
+* DNS resolution may be broken when the following conditions are all true:  
+   * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
+   * A custom DNS server address is configured on the primary network adapter.  
+   * The custom DNS server address on the primary network adapter is changed while the client is connected.  
+   To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
+
+## 2026-05-26
+
+[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
+
+  
+**Cloudflare One Client for Linux (version 2026.4.1390.0)**   
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release introduces the new Cloudflare One Client UI for Linux! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
+
+* Right click context menu to access the most common client actions quickly
+* Built-in captive portal login experience
+
+**Changes and improvements**
+
+* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+* Official support for RHEL 9 has been added for Cloudflare Mesh nodes. To install the RHEL 9 package, the Extra Packages for Enterprise Linux (EPEL) repository must be active, as it contains dependencies required for the tray icon and captive portal webview.
+* Fixed a proxy mode connection stall issue.
+
+**Known issues**
+
+* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+* Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+
 ## 2026-05-21
 
 [ Cloudflare Fundamentals ](https://developers.cloudflare.com/fundamentals/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[ Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[ Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) 
@@ -88,6 +169,19 @@ Starting today, security teams can scan for security findings across the followi
 
 This [integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/) is available to all Cloudflare One customers. New Cloudflare customers can sign up and start with their first two integrations for free. Existing customers can enable the integration directly in the dashboard. The integration begins scanning immediately and surfaces findings in the dashboard within minutes.
 
+## 2026-05-18
+
+[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[ Magic Transit ](https://developers.cloudflare.com/magic-transit/) 
+
+  
+**Network Analytics support for Unified Routing**   
+
+[Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) is now fully supported for accounts using [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta) mode. Traffic that traverses Unified Routing onramps and offramps is now visible in Network Analytics with the same dimensions and filters as traffic on the standard data plane.
+
+This closes a parity gap for customers who had moved tunnels onto Unified Routing and lost visibility into their dataplane traffic in the Network Analytics dashboard. No configuration change is required — analytics data is collected automatically for all accounts with Unified Routing enabled.
+
+For the remaining beta limitations, refer to [Traffic steering beta limitations](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#beta-limitations).
+
 ## 2026-05-12
 
 [ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
@@ -111,6 +205,21 @@ The updated login experience includes:
 * **Consistent button styling** \- Identity provider buttons use a uniform size and layout for easier scanning and selection.
 * **Better mobile experience** \- Responsive layout improvements ensure the login page renders correctly on phones and tablets.
 * **Dark mode support** \- The login page now supports dark mode.
+
+## 2026-05-12
+
+[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[ Magic Transit ](https://developers.cloudflare.com/magic-transit/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
+
+  
+**New accounts assigned a single IPv4 anycast address**   
+
+New Magic Transit and Cloudflare WAN accounts are now assigned a single IPv4 anycast address by default.
+
+Cloudflare handles failures on its network automatically by advertising your endpoint IP from multiple nodes across many globally distributed data centers. To handle failures on your network, configure two tunnels from separate routers.
+
+To request additional anycast IP addresses for your account, contact your account team.
+
+For tunnel configuration guidance, refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) for Cloudflare WAN or [Configure tunnel endpoints](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/) for Magic Transit.
 
 ## 2026-05-12
 
@@ -4422,8 +4531,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-5142)
-* [ Core Dashboard ](#tab-panel-5143)
+* [ Zero Trust Dashboard ](#tab-panel-5158)
+* [ Core Dashboard ](#tab-panel-5159)
 
 To update your view preference in the Zero Trust dashboard:
 

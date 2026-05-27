@@ -9,21 +9,16 @@ Manage cached GitLab Agent tokens.
 
 ## Synopsis
 
-Manage cached GitLab Agent tokens created by 'glab cluster agent get-token'.
-
-This command group allows you to list and clear tokens that are cached locally
-in the keyring and filesystem cache.
-
-## Cache Storage
+Tokens created by `glab cluster agent get-token` are cached locally
+in the system keyring and filesystem to avoid creating new tokens
+for each kubectl operation.
 
 The GitLab CLI caches agent tokens in two locations:
 
-1. Keyring - Uses the system keyring (Windows Credential Manager, macOS Keychain, Linux Secret Service)
-2. Filesystem - Stores tokens in the user's cache directory as encrypted files
+- Keyring: Uses the system keyring (Windows Credential Manager, macOS Keychain, Linux Secret Service).
+- Filesystem: Stores tokens in the user's cache directory as encrypted files.
 
-The cache improves performance by avoiding the need to create new tokens for each kubectl operation when using 'glab cluster agent update-kubeconfig'.
-
-## Cache Key Format
+The cache improves performance by avoiding the need to create new tokens for each kubectl operation when using `glab cluster agent update-kubeconfig`.
 
 Cached tokens are stored using a key format that includes:
 

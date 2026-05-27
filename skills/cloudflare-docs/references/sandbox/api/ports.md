@@ -16,6 +16,10 @@ Production requires custom domain
 
 Preview URLs require a custom domain with wildcard DNS routing in production. See [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/).
 
+Alternative: quick tunnels
+
+For quick development or `.workers.dev` deployments, consider [sandbox.tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/), which returns `*.trycloudflare.com` URLs without DNS setup. `exposePort()` remains the recommended option for production.
+
 Expose services running in your sandbox via public preview URLs. See [Preview URLs concept](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) for details.
 
 ## Module functions
@@ -42,8 +46,8 @@ proxyToSandbox(request: Request, env: Env): Promise<Response | null>
 
 The function inspects the request hostname to determine whether it matches the subdomain pattern of an exposed port (for example, `8080-sandbox-id-token.yourdomain.com`). If it matches, `proxyToSandbox()` proxies the request to the correct Durable Object, and the sandbox service handles it. Both HTTP and WebSocket upgrade requests are supported.
 
-* [  JavaScript ](#tab-panel-7527)
-* [  TypeScript ](#tab-panel-7528)
+* [  JavaScript ](#tab-panel-8060)
+* [  TypeScript ](#tab-panel-8061)
 
 JavaScript
 
@@ -146,8 +150,8 @@ const response = await sandbox.exposePort(port: number, options: ExposePortOptio
 
 **Returns**: `Promise<ExposePortResponse>` with `port`, `url` (preview URL), `name`
 
-* [  JavaScript ](#tab-panel-7535)
-* [  TypeScript ](#tab-panel-7536)
+* [  JavaScript ](#tab-panel-8068)
+* [  TypeScript ](#tab-panel-8069)
 
 JavaScript
 
@@ -313,8 +317,8 @@ Custom tokens enable consistent preview URLs across container restarts and deplo
 * Only lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_)
 * Must be unique per sandbox (cannot reuse tokens across different ports)
 
-* [  JavaScript ](#tab-panel-7529)
-* [  TypeScript ](#tab-panel-7530)
+* [  JavaScript ](#tab-panel-8062)
+* [  TypeScript ](#tab-panel-8063)
 
 JavaScript
 
@@ -398,8 +402,8 @@ const isValid = await sandbox.validatePortToken(port: number, token: string): Pr
 
 **Returns**: `Promise<boolean>` \- `true` if token is valid for the port, `false` otherwise
 
-* [  JavaScript ](#tab-panel-7533)
-* [  TypeScript ](#tab-panel-7534)
+* [  JavaScript ](#tab-panel-8066)
+* [  TypeScript ](#tab-panel-8067)
 
 JavaScript
 
@@ -522,8 +526,8 @@ await sandbox.unexposePort(port: number): Promise<void>
 
 * `port` \- Port number to unexpose
 
-* [  JavaScript ](#tab-panel-7523)
-* [  TypeScript ](#tab-panel-7524)
+* [  JavaScript ](#tab-panel-8056)
+* [  TypeScript ](#tab-panel-8057)
 
 JavaScript
 
@@ -558,8 +562,8 @@ const response = await sandbox.getExposedPorts(): Promise<GetExposedPortsRespons
 
 **Returns**: `Promise<GetExposedPortsResponse>` with `ports` array (containing `port`, `url`, `name`)
 
-* [  JavaScript ](#tab-panel-7525)
-* [  TypeScript ](#tab-panel-7526)
+* [  JavaScript ](#tab-panel-8058)
+* [  TypeScript ](#tab-panel-8059)
 
 JavaScript
 
@@ -620,8 +624,8 @@ const response = await sandbox.wsConnect(request: Request, port: number): Promis
 
 **Returns**: `Promise<Response>` \- WebSocket response establishing the connection
 
-* [  JavaScript ](#tab-panel-7531)
-* [  TypeScript ](#tab-panel-7532)
+* [  JavaScript ](#tab-panel-8064)
+* [  TypeScript ](#tab-panel-8065)
 
 JavaScript
 
@@ -693,6 +697,11 @@ export default {
 * [Expose Services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/) \- Full workflow for starting services, exposing ports, and routing requests
 * [WebSocket Connections guide](https://developers.cloudflare.com/sandbox/guides/websocket-connections/) \- WebSocket routing via preview URLs
 * [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) \- Start background processes
+* [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs for quick development
+
+```
+
+```
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/ports/","name":"Ports"}}]}

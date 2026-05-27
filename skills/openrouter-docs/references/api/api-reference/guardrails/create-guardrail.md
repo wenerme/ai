@@ -97,7 +97,7 @@ components:
         - regex-prompt-injection
       description: The builtin filter identifier
       title: ContentFilterBuiltinSlug
-    ContentFilterBuiltinEntry:
+    ContentFilterBuiltinEntryInput:
       type: object
       properties:
         action:
@@ -105,17 +105,17 @@ components:
         label:
           type: string
           description: >-
-            Optional label used in redaction placeholders (e.g.
-            "[PROMPT_INJECTION]")
+            Deprecated: labels are system-assigned and cannot be set by the
+            caller. Accepted for backward compatibility but silently ignored.
         slug:
           $ref: '#/components/schemas/ContentFilterBuiltinSlug'
       required:
         - action
         - slug
       description: >-
-        A builtin content filter entry. Builtin filters include PII detectors
-        and the regex-based prompt injection detector.
-      title: ContentFilterBuiltinEntry
+        A builtin content filter entry for create/update requests. Labels are
+        system-assigned and cannot be set by the caller.
+      title: ContentFilterBuiltinEntryInput
     ContentFilterAction:
       type: string
       enum:
@@ -173,7 +173,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ContentFilterBuiltinEntry'
+            $ref: '#/components/schemas/ContentFilterBuiltinEntryInput'
           description: >-
             Builtin content filters to apply. The "flag" action is only
             supported for "regex-prompt-injection"; PII slugs (email, phone,
@@ -265,6 +265,25 @@ components:
       required:
         - name
       title: CreateGuardrailRequest
+    ContentFilterBuiltinEntry:
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/ContentFilterBuiltinAction'
+        label:
+          type: string
+          description: >-
+            Read-only, system-assigned redaction placeholder derived from the
+            slug (e.g. "[EMAIL]", "[PHONE]"). Not settable by the caller.
+        slug:
+          $ref: '#/components/schemas/ContentFilterBuiltinSlug'
+      required:
+        - action
+        - slug
+      description: >-
+        A builtin content filter entry. Builtin filters include PII detectors
+        and the regex-based prompt injection detector.
+      title: ContentFilterBuiltinEntry
     CreateGuardrailResponseData:
       type: object
       properties:

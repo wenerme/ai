@@ -7,7 +7,7 @@ doc_type: 'guide'
 
 # Monitoring dashboard
 
-<PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="monitoring-dashboard" />
+<BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.monitoring-dashboard-beta" />
 
 The **Monitoring** tab in the left sidebar of an instance shows
 real-time charts of resource usage and database activity for the

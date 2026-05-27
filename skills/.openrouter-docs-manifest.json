@@ -141,8 +141,8 @@
   },
   "guides/routing/routers/auto-router.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router.md",
-    "size": 7614,
-    "updatedAt": "2026-05-16T00:35:32.874Z"
+    "size": 9616,
+    "updatedAt": "2026-05-27T00:43:56.451Z"
   },
   "guides/routing/routers/body-builder.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/body-builder.md",
@@ -351,8 +351,8 @@
   },
   "guides/features/broadcast/posthog.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/posthog.md",
-    "size": 3606,
-    "updatedAt": "2026-05-20T11:18:21.642Z"
+    "size": 4596,
+    "updatedAt": "2026-05-27T00:44:49.128Z"
   },
   "guides/features/broadcast/ramp.md": {
     "url": "https://openrouter.ai/docs/guides/features/broadcast/ramp.md",
@@ -571,8 +571,8 @@
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
-    "size": 217501,
-    "updatedAt": "2026-05-25T00:40:08.125Z"
+    "size": 217885,
+    "updatedAt": "2026-05-27T00:46:02.944Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",
@@ -626,13 +626,18 @@
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
-    "size": 104479,
-    "updatedAt": "2026-05-25T00:40:10.945Z"
+    "size": 104863,
+    "updatedAt": "2026-05-27T00:46:12.608Z"
   },
   "api/api-reference/credits/get-credits.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/credits/get-credits.md",
     "size": 8914,
     "updatedAt": "2026-05-16T00:38:19.085Z"
+  },
+  "api/api-reference/datasets/get-rankings-daily.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/datasets/get-rankings-daily.md",
+    "size": 15597,
+    "updatedAt": "2026-05-27T00:46:13.678Z"
   },
   "api/api-reference/embeddings/create-embeddings.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/create-embeddings.md",
@@ -666,18 +671,18 @@
   },
   "api/api-reference/guardrails/list-guardrails.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrails.md",
-    "size": 14040,
-    "updatedAt": "2026-05-16T00:38:28.097Z"
+    "size": 14094,
+    "updatedAt": "2026-05-27T00:46:31.556Z"
   },
   "api/api-reference/guardrails/create-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/create-guardrail.md",
-    "size": 23807,
-    "updatedAt": "2026-05-16T00:38:30.259Z"
+    "size": 24566,
+    "updatedAt": "2026-05-27T00:46:40.030Z"
   },
   "api/api-reference/guardrails/get-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/get-guardrail.md",
-    "size": 14836,
-    "updatedAt": "2026-05-16T00:38:32.606Z"
+    "size": 14890,
+    "updatedAt": "2026-05-27T00:46:40.902Z"
   },
   "api/api-reference/guardrails/delete-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/delete-guardrail.md",
@@ -686,8 +691,8 @@
   },
   "api/api-reference/guardrails/update-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/update-guardrail.md",
-    "size": 21627,
-    "updatedAt": "2026-05-16T00:38:37.029Z"
+    "size": 22386,
+    "updatedAt": "2026-05-27T00:46:42.560Z"
   },
   "api/api-reference/guardrails/list-guardrail-key-assignments.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrail-key-assignments.md",
@@ -761,8 +766,8 @@
   },
   "api/api-reference/anthropic-messages/create-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-messages.md",
-    "size": 140112,
-    "updatedAt": "2026-05-25T00:40:18.088Z"
+    "size": 140496,
+    "updatedAt": "2026-05-27T00:47:17.320Z"
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
@@ -811,8 +816,8 @@
   },
   "api/api-reference/presets/create-presets-chat-completions.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-presets-chat-completions.md",
-    "size": 87550,
-    "updatedAt": "2026-05-25T00:40:20.652Z"
+    "size": 87934,
+    "updatedAt": "2026-05-27T00:47:44.123Z"
   },
   "api/api-reference/providers/list-providers.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/providers/list-providers.md",
@@ -918,6 +923,11 @@
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/credits.md",
     "size": 4463,
     "updatedAt": "2026-05-16T00:39:50.999Z"
+  },
+  "client-sdks/typescript/api-reference/datasets.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/datasets.md",
+    "size": 5608,
+    "updatedAt": "2026-05-27T00:48:33.595Z"
   },
   "client-sdks/typescript/api-reference/embeddings.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/embeddings.md",
@@ -1029,6 +1039,11 @@
     "size": 3392,
     "updatedAt": "2026-05-16T00:40:39.903Z"
   },
+  "client-sdks/python/api-reference/datasets.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/datasets.md",
+    "size": 5741,
+    "updatedAt": "2026-05-27T00:49:01.615Z"
+  },
   "client-sdks/python/api-reference/embeddings.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/embeddings.md",
     "size": 9567,
@@ -1133,6 +1148,11 @@
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/credits.md",
     "size": 2367,
     "updatedAt": "2026-05-16T00:41:18.046Z"
+  },
+  "client-sdks/go/api-reference/datasets.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/datasets.md",
+    "size": 5001,
+    "updatedAt": "2026-05-27T00:49:37.394Z"
   },
   "client-sdks/go/api-reference/embeddings.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/embeddings.md",

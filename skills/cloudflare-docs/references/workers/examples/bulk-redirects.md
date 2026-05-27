@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Bulk redirects
 
-**Last reviewed:**  about 4 years ago 
+**Last reviewed:**  over 4 years ago 
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.
 
-* [  JavaScript ](#tab-panel-9404)
-* [  TypeScript ](#tab-panel-9405)
-* [  Python ](#tab-panel-9406)
-* [  Hono ](#tab-panel-9407)
+* [  JavaScript ](#tab-panel-9470)
+* [  TypeScript ](#tab-panel-9471)
+* [  Python ](#tab-panel-9472)
+* [  Hono ](#tab-panel-9473)
 
 JavaScript
 

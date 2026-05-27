@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Change URI path and Host header
 
-**Last reviewed:**  about 1 year ago 
+**Last reviewed:**  over 1 year ago 
 
 This tutorial will instruct you how to modify both the URI path and the `Host` header of incoming requests using [Transform Rules](https://developers.cloudflare.com/rules/transform/) and Origin Rules.
 

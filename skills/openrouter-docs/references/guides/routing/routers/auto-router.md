@@ -233,6 +233,90 @@ These defaults apply to all your API requests unless overridden per-request.
 
 When no patterns are configured, the Auto Router uses all supported models.
 
+## Cost / Quality Tradeoff
+
+Control how aggressively the Auto Router optimizes for cost vs. quality using the `cost_quality_tradeoff` parameter (integer, 0–10):
+
+* **0** = pure quality — always picks the most capable model regardless of cost
+* **10** = maximize for cost — cheapest model wins
+* Intermediate values blend quality and cost signals continuously
+
+The default is **7**, which balances cost savings with strong output quality.
+
+### Via API Request
+
+```typescript title="TypeScript SDK"
+const completion = await openRouter.chat.send({
+  model: 'openrouter/auto',
+  messages: [
+    {
+      role: 'user',
+      content: 'Summarize this paragraph',
+    },
+  ],
+  plugins: [
+    {
+      id: 'auto-router',
+      cost_quality_tradeoff: 3, // Favor quality over cost
+    },
+  ],
+});
+```
+
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer <OPENROUTER_API_KEY>',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'openrouter/auto',
+    messages: [
+      {
+        role: 'user',
+        content: 'Summarize this paragraph',
+      },
+    ],
+    plugins: [
+      {
+        id: 'auto-router',
+        cost_quality_tradeoff: 3,
+      },
+    ],
+  }),
+});
+```
+
+```python title="Python"
+response = requests.post(
+  url="https://openrouter.ai/api/v1/chat/completions",
+  headers={
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "Content-Type": "application/json",
+  },
+  data=json.dumps({
+    "model": "openrouter/auto",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Summarize this paragraph"
+      }
+    ],
+    "plugins": [
+      {
+        "id": "auto-router",
+        "cost_quality_tradeoff": 3
+      }
+    ]
+  })
+)
+```
+
+### Via Settings UI
+
+You can also set a default tradeoff in your [Plugin Settings](https://openrouter.ai/settings/plugins) under **Auto Router**. The per-request value overrides this default.
+
 ## Pricing
 
 You pay the standard rate for whichever model is selected. There is no additional fee for using the Auto Router.

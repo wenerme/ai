@@ -46,6 +46,12 @@ Browse the various features for compressing, cropping, resizing, and manipulatin
 
 [ Use optimization ](https://developers.cloudflare.com/images/optimization/features/) 
 
+###  Flows 
+
+Create transformation flows to configure automated rules for optimizing remote images on your zone.
+
+[ Use flows ](https://developers.cloudflare.com/images/optimization/features) 
+
 ###  Storage 
 
 Learn how Images can streamline uploads in your image pipeline.

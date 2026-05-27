@@ -10,6 +10,13 @@ Choose where files open and how much command output appears in threads. You can 
 require <kbd>Cmd</kbd>+<kbd>Enter</kbd> for multiline prompts or prevent sleep while a
 thread runs.
 
+## Keyboard shortcuts
+
+Open **Keyboard Shortcuts** to review commands, change bindings, or reset custom
+shortcuts to their defaults. Use the search field to find shortcuts by command
+name, or switch to keystroke search and press a key combination to find the
+command that uses it.
+
 ## Notifications
 
 Choose when turn completion notifications appear, and whether the app should prompt for

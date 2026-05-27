@@ -187,6 +187,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/email-routing.xml)
 * [Email Service](https://developers.cloudflare.com/email-service/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/email-service.xml)
+* [Flagship](https://developers.cloudflare.com/flagship/)  
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/flagship.xml)
 * [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/hyperdrive.xml)
 * [Cloudflare Images](https://developers.cloudflare.com/images/)  

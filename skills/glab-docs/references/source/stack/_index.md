@@ -46,6 +46,7 @@ glab stack sync
 - [`amend`](amend.md)
 - [`create`](create.md)
 - [`first`](first.md)
+- [`infer`](infer.md)
 - [`last`](last.md)
 - [`list`](list.md)
 - [`move`](move.md)

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Block on TLS
 
-**Last reviewed:**  about 4 years ago 
+**Last reviewed:**  over 4 years ago 
 
 Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 
-* [  JavaScript ](#tab-panel-9396)
-* [  TypeScript ](#tab-panel-9397)
-* [  Hono ](#tab-panel-9398)
-* [  Python ](#tab-panel-9399)
+* [  JavaScript ](#tab-panel-9462)
+* [  TypeScript ](#tab-panel-9463)
+* [  Hono ](#tab-panel-9464)
+* [  Python ](#tab-panel-9465)
 
 JavaScript
 

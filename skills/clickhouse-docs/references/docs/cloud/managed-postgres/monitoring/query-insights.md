@@ -7,7 +7,7 @@ doc_type: 'guide'
 
 # Postgres query insights
 
-<PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="query-insights" />
+<BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.query-insights-beta" />
 
 Query Insights captures per-statement telemetry from your
 [Managed Postgres](/cloud/managed-postgres) instance and ranks every query

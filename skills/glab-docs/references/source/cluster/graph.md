@@ -5,7 +5,7 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Queries the Kubernetes object graph, using the GitLab Agent for Kubernetes. (EXPERIMENTAL)
+Query the Kubernetes object graph using the GitLab Agent for Kubernetes. (EXPERIMENTAL)
 
 ## Synopsis
 
@@ -89,28 +89,26 @@ glab cluster graph -R user/project -a 123 -r={pods,configmaps}
 # Select a certain namespace
 glab cluster graph -R user/project -a 123 -n={my-ns,my-stuff}
 
-# Select all namespaces that have a certain annotation
-glab cluster graph -R user/project -a 123 --ns-expression='"my-annotation" in annotations'
+# Select namespaces with a certain label
+glab cluster graph -R user/project -a 123 --ns-label-selector environment=production
 
-# Advanced usage - pass the full query directly via stdin.
-# The query below watches service accounts in all namespaces except for the kube-system.
-Q='{"queries":[{"include":{"resource_selector_expression":"resource == \"serviceaccounts\""}}],"namespaces":{"object_selector_expression":"name != \"kube-system\""}}'
-echo -n "$Q" | glab cluster graph -R user/project -a 123 --stdin
+# Pass a custom watch request from a file
+glab cluster graph -R user/project -a 123 --stdin < query.json
 
-# Roots filtering
-glab cluster graph -R user/project -a 123 --root-expression 'group == "" && resource == "pods"'
+# Show objects reachable from pod roots
+glab cluster graph -R user/project -a 123 --root-expression "resource == \"pods\""
 ```
 
 ## Options
 
 ```plaintext
-  -a, --agent int                     The numerical Agent ID to connect to.
-      --apps                          Watch deployments, replicasets, daemonsets, and statefulsets in apps/v1 group.
+  -a, --agent int                     The numeric agent ID to connect to.
+      --apps                          Watch deployments, replicasets, daemonsets, and statefulsets in the apps/v1 group.
       --batch                         Watch jobs and cronjobs in the batch/v1 group.
       --cluster-rbac                  Watch clusterroles and clusterrolebindings in the rbac.authorization.k8s.io/v1 group.
       --core                          Watch pods, secrets, configmaps, and serviceaccounts in the core/v1 group.
       --crd                           Watch customresourcedefinitions in the apiextensions.k8s.io/v1 group.
-      --ignore-arc-direction          Ignore arc direction when evaluating roots connectivity. GitLab and agent 18.3+ required.
+      --ignore-arc-direction          Ignore arc direction when evaluating root connectivity. Requires GitLab and agent version 18.3 or later.
       --listen-addr string            Address to listen on. (default "localhost:0")
       --listen-net string             Network on which to listen for connections. (default "tcp")
       --log-watch-request             Log watch request to stdout. Helpful for debugging.
@@ -118,9 +116,9 @@ glab cluster graph -R user/project -a 123 --root-expression 'group == "" && reso
       --ns-expression string          CEL expression to select namespaces. Evaluated before a namespace is watched and on any updates for the namespace object.
       --ns-field-selector string      Field selector to select namespaces.
       --ns-label-selector string      Label selector to select namespaces.
-      --rbac                          Watch roles, and rolebindings in the rbac.authorization.k8s.io/v1 group.
-  -r, --resource stringArray          A list of resources to watch. You can see the list of resources your cluster supports by running 'kubectl api-resources'.
-      --root-expression stringArray   CEL expression to select root objects. GitLab and agent 18.3+ required.
+      --rbac                          Watch roles and rolebindings in the rbac.authorization.k8s.io/v1 group.
+  -r, --resource stringArray          Resources to watch. You can see the list of resources your cluster supports by running 'kubectl api-resources'.
+      --root-expression stringArray   CEL expression to select root objects. Requires GitLab and agent version 18.3 or later.
       --stdin                         Read watch request from standard input.
 ```
 

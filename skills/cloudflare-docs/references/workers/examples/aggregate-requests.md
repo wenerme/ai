@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Aggregate requests
 
-**Last reviewed:**  about 4 years ago 
+**Last reviewed:**  over 4 years ago 
 
 Send two GET request to two urls and aggregates the responses into one response.
 
@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9376)
-* [  TypeScript ](#tab-panel-9377)
-* [  Hono ](#tab-panel-9378)
-* [  Python ](#tab-panel-9379)
+* [  JavaScript ](#tab-panel-9442)
+* [  TypeScript ](#tab-panel-9443)
+* [  Hono ](#tab-panel-9444)
+* [  Python ](#tab-panel-9445)
 
 JavaScript
 

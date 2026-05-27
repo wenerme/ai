@@ -5,7 +5,7 @@ keywords: ['postgres connection', 'connection string', 'pgbouncer', 'tls', 'ssl'
 doc_type: 'guide'
 ---
 
-<PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="connection" />
+<BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.connection-beta" />
 
 ## Accessing connection details {#accessing-connection-details}
 

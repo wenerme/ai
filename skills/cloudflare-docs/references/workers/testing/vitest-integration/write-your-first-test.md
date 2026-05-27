@@ -151,8 +151,8 @@ test/tsconfig.json
 
 We will use this simple Worker as an example. It returns a 404 response for the `/404` path and `"Hello World!"` for all other paths.
 
-* [  JavaScript ](#tab-panel-9253)
-* [  TypeScript ](#tab-panel-9254)
+* [  JavaScript ](#tab-panel-10005)
+* [  TypeScript ](#tab-panel-10006)
 
 src/index.js
 
@@ -204,8 +204,8 @@ export default {
 
 By importing the Worker we can write a unit test for its `fetch` handler.
 
-* [  JavaScript ](#tab-panel-9257)
-* [  TypeScript ](#tab-panel-9258)
+* [  JavaScript ](#tab-panel-10009)
+* [  TypeScript ](#tab-panel-10010)
 
 test/unit.spec.js
 
@@ -321,8 +321,8 @@ describe("Hello World worker", () => {
 
 You can use the `exports` object provided by `cloudflare:workers` to write an integration test. `exports.default.fetch()` calls the default export handler defined in the main Worker.
 
-* [  JavaScript ](#tab-panel-9255)
-* [  TypeScript ](#tab-panel-9256)
+* [  JavaScript ](#tab-panel-10007)
+* [  TypeScript ](#tab-panel-10008)
 
 test/integration.spec.js
 

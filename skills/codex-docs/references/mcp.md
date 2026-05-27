@@ -11,6 +11,9 @@ Codex supports MCP servers in both the CLI and the IDE extension.
 - **Streamable HTTP servers**: Servers that you access at an address.
   - Bearer token authentication
   - OAuth authentication (run `codex mcp login <server-name>` for servers that support OAuth)
+- **Server instructions**: Codex reads the MCP `instructions` field returned during initialization and uses it as server-wide guidance alongside the server's tools.
+
+If you build or maintain an MCP server for Codex, use `instructions` for cross-tool workflows, constraints, and rate limits that apply across the server. Keep the first 512 characters self-contained so the most important guidance is available when Codex is deciding how to use the server.
 
 ## Connect Codex to an MCP server
 

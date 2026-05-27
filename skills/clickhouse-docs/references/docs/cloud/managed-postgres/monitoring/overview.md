@@ -7,7 +7,7 @@ doc_type: 'guide'
 
 # Managed Postgres monitoring
 
-<PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="monitoring-overview" />
+<BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.monitoring-overview-beta" />
 
 You can monitor your Managed Postgres services with the following
 methods:

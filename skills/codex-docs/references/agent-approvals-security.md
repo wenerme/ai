@@ -278,14 +278,16 @@ network_access = true
 # } }
 ```
 
-You can also save presets as profiles, then select them with `codex --profile <name>`:
+You can also save presets as [profile files](https://developers.openai.com/codex/config-advanced#profiles), then select them with `codex --profile profile-name`:
 
 ```toml
-[profiles.full_auto]
+# ~/.codex/full_auto.config.toml
 approval_policy = "on-request"
 sandbox_mode    = "workspace-write"
+```
 
-[profiles.readonly_quiet]
+```toml
+# ~/.codex/readonly_quiet.config.toml
 approval_policy = "never"
 sandbox_mode    = "read-only"
 ```

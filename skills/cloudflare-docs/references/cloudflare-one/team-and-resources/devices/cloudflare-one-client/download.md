@@ -37,6 +37,39 @@ For more details on Cloudflare One Client support timelines and end-of-life (EOL
 
 Latest release
 
+**Version:**  Windows 2026.4.1390.0 **Date:**  2026-05-26 **Size:** 52.3 MB 
+
+[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.4.1390.0) 
+
+#### Release notes
+
+This release introduces the new Cloudflare One Client UI for Windows! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
+
+* Right click context menu to access the most common client actions quickly
+* Built-in captive portal login experience
+
+**Additional Changes and improvements**
+
+* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+* Fixed a proxy mode connection stall issue.
+
+**Known issues**
+
+* Registration authentication for devices via the integrated WebView2 browser is unavailable in this version as a temporary measure. As a result, the client will utilize the default browser on the device to complete the authentication process.
+* An error indicating that Microsoft Edge can't read and write to its data directory may be displayed during captive portal login; this error is benign and can be dismissed.
+* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+* Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+* Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
+* DNS resolution may be broken when the following conditions are all true:  
+   * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
+   * A custom DNS server address is configured on the primary network adapter.  
+   * The custom DNS server address on the primary network adapter is changed while the client is connected.  
+   To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
+
+Previous version history (11)
+
+Windows 2026.4.1350.0
+
 **Version:**  Windows 2026.4.1350.0 **Date:**  2026-05-11 **Size:** 52.3 MB 
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.4.1350.0) 
@@ -64,8 +97,6 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
    * A custom DNS server address is configured on the primary network adapter.  
    * The custom DNS server address on the primary network adapter is changed while the client is connected.  
    To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
-
-Previous version history (10)
 
 Windows 2026.3.851.0
 
@@ -386,6 +417,31 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Latest release
 
+**Version:**  macOS 2026.4.1390.0 **Date:**  2026-05-26 **Size:** 133 MB 
+
+[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.4.1390.0) 
+
+#### Release notes
+
+This release introduces the new Cloudflare One Client UI for macOS! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
+
+* Right click context menu to access the most common client actions quickly
+* Built-in captive portal login experience
+
+**Additional Changes and improvements**
+
+* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+* Fixed a proxy mode connection stall issue.
+
+**Known issues**
+
+* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+* Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+
+Previous version history (10)
+
+macOS 2026.4.1350.0
+
 **Version:**  macOS 2026.4.1350.0 **Date:**  2026-05-11 **Size:** 133 MB 
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.4.1350.0) 
@@ -405,8 +461,6 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
-
-Previous version history (9)
 
 macOS 2026.3.846.0
 
@@ -623,6 +677,32 @@ Starting with Cloudflare One Client version 2026.3.846.0, [Cloudflare Mesh](http
 
 Latest release
 
+**Version:**  Linux 2026.4.1390.0 **Date:**  2026-05-26 **Size:** 79.9 MB 
+
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.4.1390.0) 
+
+#### Release notes
+
+This release introduces the new Cloudflare One Client UI for Linux! You can expect a cleaner and more intuitive design as well as easier access to common actions and information. Here are some of the many things we have found our users appreciate:
+
+* Right click context menu to access the most common client actions quickly
+* Built-in captive portal login experience
+
+**Changes and improvements**
+
+* Added a new CLI command: warp-cli mdm refresh. This command executes an immediate refresh of the Mobile Device Management (MDM) configuration file.
+* Official support for RHEL 9 has been added for Cloudflare Mesh nodes. To install the RHEL 9 package, the Extra Packages for Enterprise Linux (EPEL) repository must be active, as it contains dependencies required for the tray icon and captive portal webview.
+* Fixed a proxy mode connection stall issue.
+
+**Known issues**
+
+* Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+* Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
+
+Previous version history (10)
+
+Linux 2026.4.1350.0
+
 **Version:**  Linux 2026.4.1350.0 **Date:**  2026-05-11 **Size:** 79.9 MB 
 
  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.4.1350.0) 
@@ -643,8 +723,6 @@ This release introduces the new Cloudflare One Client UI for Linux! You can expe
 
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of split tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
-
-Previous version history (9)
 
 Linux 2026.3.846.0
 

@@ -97,7 +97,7 @@ ABOUT
   More info about Gitea itself on https://about.gitea.com.
 ```
 
-- tea uses [code.gitea.io/sdk](https://code.gitea.io/sdk) and interacts with the Gitea API.
+- tea uses [gitea.dev/sdk](https://gitea.dev/sdk) and interacts with the Gitea API.
 
 ## Installation
 

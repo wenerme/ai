@@ -33,7 +33,7 @@ This command consists of multiple idempotent steps:
 9. Trigger Flux reconciliation of GitLab Agent HelmRelease (unless `--no-reconcile`).
 
 ```plaintext
-glab cluster agent bootstrap agent-name [flags]
+glab cluster agent bootstrap <agent-name> [flags]
 ```
 
 ## Aliases
@@ -85,8 +85,8 @@ glab cluster agent bootstrap my-agent --use-api-commit-author
 ## Options
 
 ```plaintext
-      --commit-author-email string                   The Git commit author email to use. Conflicts with the --use-api-commit-author flag. (default "noreply@glab.gitlab.com")
-      --commit-author-name string                    The Git commit author name to use. Conflicts with the --use-api-commit-author flag. (default "glab")
+      --commit-author-email string                   The Git commit author email to use. Conflicts with '--use-api-commit-author'. (default "noreply@glab.gitlab.com")
+      --commit-author-name string                    The Git commit author name to use. Conflicts with '--use-api-commit-author'. (default "glab")
       --create-environment                           Create an environment for the GitLab Agent. (default true)
       --create-flux-environment                      Create an environment for FluxCD. Affects only the environment creation, not the use of Flux itself. Flux is always required for the bootstrap process. (default true)
       --environment-flux-resource-path string        Flux resource path of the environment for the GitLab Agent. (default "helm.toolkit.fluxcd.io/v2beta1/namespaces/<helm-release-namespace>/helmreleases/<helm-release-name>")
@@ -109,10 +109,10 @@ glab cluster agent bootstrap my-agent --use-api-commit-author
       --helm-repository-filepath string              File path within the GitLab Agent project to commit the Flux HelmRepository to. (default "gitlab-helm-repository.yaml")
       --helm-repository-name string                  Name of the Flux HelmRepository manifest. (default "gitlab")
       --helm-repository-namespace string             Namespace of the Flux HelmRepository manifest. (default "flux-system")
-  -b, --manifest-branch string                       Branch to commit the Flux Manifests to. (default to the project default branch)
+  -b, --manifest-branch string                       Branch to commit the Flux Manifests to. Defaults to the project default branch.
   -p, --manifest-path string                         Location of directory in Git repository for storing the GitLab Agent for Kubernetes Helm resources.
       --no-reconcile                                 Do not trigger Flux reconciliation for GitLab Agent for Kubernetes Flux resource.
-      --use-api-commit-author                        When creating Git commits use the user from the authenticated API request. Conflicts with the --commit-author-name and --commit-author-email flags.
+      --use-api-commit-author                        When creating Git commits use the user from the authenticated API request. Conflicts with '--commit-author-name' and '--commit-author-email'.
 ```
 
 ## Options inherited from parent commands

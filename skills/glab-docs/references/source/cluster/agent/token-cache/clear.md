@@ -9,13 +9,24 @@ Clear cached GitLab Agent tokens.
 
 ## Synopsis
 
-Clear cached GitLab Agent tokens from keyring and filesystem cache.
-
-By default, this command clears tokens from both keyring and filesystem cache
-and revokes them on the GitLab server. Use `--no-revoke` to skip revocation.
+By default, clears tokens from both keyring and filesystem cache
+and revokes them on the GitLab server. Use `--revoke=false` to skip revocation.
 
 ```plaintext
 glab cluster agent token-cache clear [flags]
+```
+
+## Examples
+
+```console
+# Clear all cached agent tokens
+glab cluster agent token-cache clear
+
+# Clear tokens without revoking them on GitLab
+glab cluster agent token-cache clear --revoke=false
+
+# Clear tokens for a specific agent
+glab cluster agent token-cache clear --agent 123
 ```
 
 ## Options

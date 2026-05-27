@@ -5,10 +5,24 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-List tokens for an agent.
+List tokens for a GitLab Agent for Kubernetes.
+
+## Synopsis
+
+Lists all tokens for the specified agent. Requires the numeric agent ID.
 
 ```plaintext
 glab cluster agent token list <agent-id> [flags]
+```
+
+## Examples
+
+```console
+# List tokens for agent 123
+glab cluster agent token list 123
+
+# List tokens in JSON format
+glab cluster agent token list 123 --output json
 ```
 
 ## Options

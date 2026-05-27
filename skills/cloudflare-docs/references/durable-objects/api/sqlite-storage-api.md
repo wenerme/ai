@@ -56,9 +56,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-5688)
-* [  TypeScript ](#tab-panel-5689)
-* [  Python ](#tab-panel-5690)
+* [  JavaScript ](#tab-panel-6162)
+* [  TypeScript ](#tab-panel-6163)
+* [  Python ](#tab-panel-6164)
 
 JavaScript
 
@@ -156,8 +156,8 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-5680)
-* [  Python ](#tab-panel-5681)
+* [  TypeScript ](#tab-panel-6154)
+* [  Python ](#tab-panel-6155)
 
 TypeScript
 
@@ -270,6 +270,46 @@ Refer to the [source code ↗](https://github.com/cloudflare/workerd/blob/4c42a4
 
 A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `SqlStorageCursor` is a JavaScript [Iterable ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration%5Fprotocols#the%5Fiterable%5Fprotocol), which supports iteration using `for (let row of cursor)`. `SqlStorageCursor` is also a JavaScript [Iterator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration%5Fprotocols#the%5Fiterator%5Fprotocol), which supports iteration using `cursor.next()`.
 
+Consume cursors synchronously
+
+It is not safe to hold a reference to a `SqlStorageCursor` and continue reading from it after an `await`. When you `await` an asynchronous operation, other requests can interleave and modify the underlying database, which can silently invalidate the cursor. This does not produce an error — the cursor may appear to work but return unpredictable results.
+
+Always consume the cursor fully before yielding the event loop. Call `.toArray()`, `.one()`, or iterate with `for...of` synchronously after calling `sql.exec()`:
+
+TypeScript
+
+```
+
+// ✅ Safe: cursor is fully consumed before any await
+
+const rows = this.ctx.storage.sql.exec("SELECT * FROM users").toArray();
+
+const result = await fetch("https://example.com", { method: "POST", body: JSON.stringify(rows) });
+
+
+```
+
+TypeScript
+
+```
+
+// 🔴 Unsafe: cursor is read after an await
+
+const cursor = this.ctx.storage.sql.exec("SELECT * FROM users");
+
+await fetch("https://example.com/notify");
+
+// Another request may have modified the database during the await above.
+
+// The cursor is now potentially invalid — it may appear to work but return wrong data.
+
+const rows = cursor.toArray();
+
+
+```
+
+If you need to prevent other requests from interleaving while you hold a cursor, use [blockConcurrencyWhile()](https://developers.cloudflare.com/durable-objects/api/state/#blockconcurrencywhile).
+
 `SqlStorageCursor` supports the following methods:
 
 * `next()`  
@@ -283,8 +323,8 @@ A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `Sql
    * Returned Iterator supports `next()` and `toArray()` methods above.  
    * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-5682)
-* [  Python ](#tab-panel-5683)
+* [  TypeScript ](#tab-panel-6156)
+* [  Python ](#tab-panel-6157)
 
 TypeScript
 
@@ -568,8 +608,8 @@ TypeScript
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-5684)
-* [  Python ](#tab-panel-5685)
+* [  TypeScript ](#tab-panel-6158)
+* [  Python ](#tab-panel-6159)
 
 TypeScript
 
@@ -615,8 +655,8 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-5686)
-* [  Python ](#tab-panel-5687)
+* [  TypeScript ](#tab-panel-6160)
+* [  Python ](#tab-panel-6161)
 
 TypeScript
 

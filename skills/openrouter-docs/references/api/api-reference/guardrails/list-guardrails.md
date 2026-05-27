@@ -108,8 +108,8 @@ components:
         label:
           type: string
           description: >-
-            Optional label used in redaction placeholders (e.g.
-            "[PROMPT_INJECTION]")
+            Read-only, system-assigned redaction placeholder derived from the
+            slug (e.g. "[EMAIL]", "[PHONE]"). Not settable by the caller.
         slug:
           $ref: '#/components/schemas/ContentFilterBuiltinSlug'
       required:

@@ -7,6 +7,11 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage GitLab Agents for Kubernetes.
 
+## Synopsis
+
+Register new agents, configure existing ones, manage their tokens and kubeconfig
+entries, and check configuration files for deprecated settings.
+
 ## Options
 
 ```plaintext

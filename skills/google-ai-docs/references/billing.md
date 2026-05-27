@@ -121,6 +121,9 @@ all projects linked to that billing account will stop working simultaneously.
 Prepay credits apply only to Gemini API usage costs; you can't use
 them to pay for other Google Cloud services.
 
+> [!NOTE]
+> **Note:** Prepay billing is subject to overages during the approximately 10 minute billing pipeline latency. Long-running tasks like [batch mode](https://ai.google.dev/gemini-api/docs/batch-api) and agents may continue to consume credits beyond your balance before the system can process and halt usage.
+
 New users default to the Prepay billing plan. Projects that pre-date the
 introduction of Prepay and Postpay billing plans may need to [update their
 project's billing details](https://ai.google.dev/gemini-api/docs/billing#verify-billing) before continuing to use the Gemini
@@ -191,7 +194,7 @@ accounts.*
 ### Project spend caps
 
 > [!WARNING]
-> **Experimental:** The feature is experimental and may change in scope.
+> **Experimental:** The feature is experimental and limited in scope. You are subject to overages for around a 10 minute latency period.
 
 You can set your own [project-level](https://ai.google.dev/gemini-api/docs/api-key#google-cloud-projects) spend caps in AI Studio.
 This is useful if you have multiple projects under the same billing
@@ -206,11 +209,12 @@ If you [move a project to a different billing account](https://docs.cloud.google
 any spend cap you already set for that project will persist, but any accumulated
 spend will reset to $0 for the new billing cycle.
 
-[Batch mode](https://ai.google.dev/gemini-api/docs/batch-api) completions may still incur overages.
+Long-running tasks like [batch mode](https://ai.google.dev/gemini-api/docs/batch-api) completions and
+agent sessions may incur overages beyond your project spend cap.
 
-Billing data processing times can be slightly delayed in AI Studio,
-up to around 10 minutes. You may experience overages beyond your project cap
-if billing data hasn't processed before more charges are accrued.
+Billing data processing times can be delayed in AI Studio, up to around 10
+minutes. You may experience overages beyond your project cap if billing data
+hasn't processed before more charges are accrued.
 
 ### Billing account tier spend caps
 
@@ -230,11 +234,6 @@ projects that have the Gemini API service enabled. After the cumulative account
 total reaches the tier limit, service is paused for all projects linked to that
 billing account until the start of the next billing cycle (the 1st of each
 month).
-
-> [!CAUTION]
-> **Caution:** **Tier spend caps will start being *enforced* on April 1, 2026** , though their interface will be visible in AI Studio earlier, to allow users time to adjust.   
->
-> Note that a small number of users will be impacted when this goes into effect. If your current spend is higher than the newly enforced tier cap, you'll be notified via email with more details. Read [Evaluate your Billing Account spend](https://ai.google.dev/gemini-api/docs/billing#evaluate-spend) for more info.
 
 #### Evaluate your billing account spend
 

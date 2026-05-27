@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Detect MCP traffic in Gateway logs
 
-**Last reviewed:**  about 1 month ago 
+**Last reviewed:**  about 2 months ago 
 
 Organizations may lack visibility into Model Context Protocol (MCP) traffic, which can allow employees to connect to remote MCP servers outside of IT oversight. These connections risk the exfiltration of sensitive internal data and credentials, tool injection attacks or software supply chain risks.
 
@@ -49,8 +49,8 @@ MCP traffic can be identified by three signals:
 
 The following GraphQL query scans Gateway logs for the first two signals:
 
-* [  JavaScript ](#tab-panel-5636)
-* [  TypeScript ](#tab-panel-5637)
+* [  JavaScript ](#tab-panel-5690)
+* [  TypeScript ](#tab-panel-5691)
 
 JavaScript
 
@@ -250,8 +250,8 @@ Replace `<YOUR_ACCOUNT_ID>` with your Cloudflare account ID. Replace `<START_DAT
 
 Each group in the response represents aggregated traffic for a specific `httpHost` and `action` combination. Parse the results to identify unblocked MCP connections:
 
-* [  JavaScript ](#tab-panel-5630)
-* [  TypeScript ](#tab-panel-5631)
+* [  JavaScript ](#tab-panel-5684)
+* [  TypeScript ](#tab-panel-5685)
 
 JavaScript
 
@@ -386,8 +386,8 @@ Before building detection patterns, note the following DLP limitations:
 
 MCP indicators can be found in JSON-RPC method fields. The following regex patterns cover the core MCP protocol methods:
 
-* [  JavaScript ](#tab-panel-5638)
-* [  TypeScript ](#tab-panel-5639)
+* [  JavaScript ](#tab-panel-5692)
+* [  TypeScript ](#tab-panel-5693)
 
 JavaScript
 
@@ -582,8 +582,8 @@ Pattern explanation:
 
 Send a `POST` request to create a custom DLP profile containing all detection patterns:
 
-* [  JavaScript ](#tab-panel-5634)
-* [  TypeScript ](#tab-panel-5635)
+* [  JavaScript ](#tab-panel-5688)
+* [  TypeScript ](#tab-panel-5689)
 
 JavaScript
 
@@ -721,8 +721,8 @@ Replace `${accountId}` with your Cloudflare account ID and `${apiToken}` with yo
 
 After the DLP profile exists, create a Gateway HTTP policy that blocks requests matching the profile:
 
-* [  JavaScript ](#tab-panel-5628)
-* [  TypeScript ](#tab-panel-5629)
+* [  JavaScript ](#tab-panel-5682)
+* [  TypeScript ](#tab-panel-5683)
 
 JavaScript
 
@@ -798,8 +798,8 @@ When analyzing Gateway logs, it is helpful to differentiate between two types of
 
 Extend the query processing from [Process the query results](#3-process-the-query-results) to classify traffic by comparing hostnames against your list of approved portal domains:
 
-* [  JavaScript ](#tab-panel-5632)
-* [  TypeScript ](#tab-panel-5633)
+* [  JavaScript ](#tab-panel-5686)
+* [  TypeScript ](#tab-panel-5687)
 
 JavaScript
 

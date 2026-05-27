@@ -7,6 +7,10 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 
 Manage GitLab Agents for Kubernetes tokens.
 
+## Synopsis
+
+Each agent supports a maximum of two active tokens at a time.
+
 ## Options inherited from parent commands
 
 ```plaintext

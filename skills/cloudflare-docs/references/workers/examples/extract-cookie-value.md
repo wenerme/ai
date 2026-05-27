@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Cookie parsing
 
-**Last reviewed:**  about 4 years ago 
+**Last reviewed:**  over 4 years ago 
 
 Given the cookie name, get the value of a cookie. You can also use cookies for A/B testing.
 
@@ -22,10 +22,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9459)
-* [  TypeScript ](#tab-panel-9460)
-* [  Python ](#tab-panel-9461)
-* [  Hono ](#tab-panel-9462)
+* [  JavaScript ](#tab-panel-9525)
+* [  TypeScript ](#tab-panel-9526)
+* [  Python ](#tab-panel-9527)
+* [  Hono ](#tab-panel-9528)
 
 JavaScript
 

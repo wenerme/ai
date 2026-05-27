@@ -3,47 +3,86 @@ title: "ComfyUI(portable) Windows — Local Self-Hosted"
 description: "This tutorial will guide you on how to download and start using ComfyUI Portable and run the corresponding programs"
 ---
 
-**ComfyUI Portable** is a standalone packaged complete ComfyUI Windows version that has integrated an independent **Python (python_embeded)** required for ComfyUI to run. You only need to extract it to use it. Currently, the portable version supports running through **Nvidia GPU** or **CPU**.
+**ComfyUI Portable** is a standalone packaged complete ComfyUI Windows version that has integrated an independent **Python (python_embeded)** required for ComfyUI to run. You only need to extract it to use it. 
 
 This guide section will walk you through installing ComfyUI Portable.
 
 ## Download ComfyUI Portable
 
-You can get the latest ComfyUI Portable download link by clicking the link below
+Choose the download package that matches your GPU type. ComfyUI Portable provides separate packages for different GPU hardware.
 
   
-   Current environment: Python 3.13 + CUDA 13.0
+    ### Standard portable for Nvidia GPUs
+
+    
+      
+       For modern Nvidia GPUs (RTX series)
+      
+      
+       For Nvidia 10 series and older GPUs
+      
+    
+
+    Download the file and extract it with [7-ZIP](https://7-zip.org/). The extracted folder structure:
+
+    ```
+    ComfyUI_windows_portable
+    ├── 📂ComfyUI                   // ComfyUI main program
+    ├── 📂python_embeded            // Independent Python environment
+    ├── 📂update                    // Batch scripts for upgrading portable version
+    ├── README_VERY_IMPORTANT.txt   // ComfyUI Portable usage instructions in English
+    ├── run_cpu.bat                 // Double click to start ComfyUI (CPU only)
+    └── run_nvidia_gpu.bat          // Double click to start ComfyUI (Nvidia GPU)
+    ```
+
+    Double click `run_nvidia_gpu.bat` to launch ComfyUI.
   
+
   
+    ### Portable for AMD GPUs
+
+    
+      Download for AMD GPUs (ROCm)
+    
+
+    Download the file and extract it with [7-ZIP](https://7-zip.org/). The extracted folder structure:
+
+    ```
+    ComfyUI_windows_portable_amd
+    ├── 📂ComfyUI                   // ComfyUI main program
+    ├── 📂python_embeded            // Independent Python environment
+    ├── 📂update                    // Batch scripts for upgrading portable version
+    ├── README_VERY_IMPORTANT.txt   // ComfyUI Portable usage instructions in English
+    ├── run_cpu.bat                 // Double click to start ComfyUI (CPU only)
+    └── run_amd_gpu.bat             // Double click to start ComfyUI (AMD GPU)
+    ```
+
+    Double click `run_amd_gpu.bat` to launch ComfyUI.
   
 
-### Alternative downloads for Nvidia GPUs
+  
+    ### Portable for Intel GPUs
 
-  Supports Nvidia 10 series and older GPUs
+    
+      Download for Intel GPUs
+    
 
-### Alternative downloads
+    Download the file and extract it with [7-ZIP](https://7-zip.org/). The extracted folder structure:
 
-- [Experimental portable for AMD GPUs](https://github.com/comfyanonymous/ComfyUI/releases/latest/download/ComfyUI_windows_portable_amd.7z)
-- [Portable with PyTorch CUDA 12.6 and Python 3.12](https://github.com/comfyanonymous/ComfyUI/releases/latest/download/ComfyUI_windows_portable_nvidia_cu126.7z) (Supports Nvidia 10 series and older GPUs)
+    ```
+    ComfyUI_windows_portable_intel
+    ├── 📂ComfyUI                   // ComfyUI main program
+    ├── 📂python_embeded            // Independent Python environment
+    ├── 📂update                    // Batch scripts for upgrading portable version
+    ├── README_VERY_IMPORTANT.txt   // ComfyUI Portable usage instructions in English
+    ├── run_cpu.bat                 // Double click to start ComfyUI (CPU only)
+    └── run_intel_gpu.bat           // Double click to start ComfyUI (Intel GPU)
+    ```
 
-After downloading, you can use decompression software like [7-ZIP](https://7-zip.org/) to extract the compressed package
+    Double click `run_intel_gpu.bat` to launch ComfyUI.
+  
 
-The file structure and description after extracting the portable version are as follows:
-
-```
-ComfyUI_windows_portable
-├── 📂ComfyUI                   // ComfyUI main program
-├── 📂python_embeded            // Independent Python environment
-├── 📂update                    // Batch scripts for upgrading portable version
-├── README_VERY_IMPORTANT.txt   // ComfyUI Portable usage instructions in English
-├── run_cpu.bat                 // Double click to start ComfyUI (CPU only)
-└── run_nvidia_gpu.bat          // Double click to start ComfyUI (Nvidia GPU)
-```
-
-## How to Launch ComfyUI
-
-Double click either `run_nvidia_gpu.bat` or `run_cpu.bat` depending on your computer's configuration to launch ComfyUI. 
-You will see the command running as shown in the image below
+After downloading and extracting, you will see the command running as shown in the image below
 
 [ComfyUI Portable Command Prompt]
 
@@ -72,7 +111,7 @@ ComfyUI_windows_portable
 
 ### 2. Setting Up LAN Access for ComfyUI Portable
 
-If your ComfyUI is running on a local network and you want other devices to access ComfyUI, you can modify the `run_nvidia_gpu.bat` or `run_cpu.bat` file using Notepad to complete the configuration. This is mainly done by adding `--listen` to specify the listening address.
+If your ComfyUI is running on a local network and you want other devices to access ComfyUI, you can modify the corresponding `.bat` file (e.g. `run_nvidia_gpu.bat`, `run_amd_gpu.bat`, or `run_cpu.bat`) using Notepad to complete the configuration. This is mainly done by adding `--listen` to specify the listening address.
 Below is an example of the `run_nvidia_gpu.bat` file command with the `--listen` parameter added
 
 ```bat

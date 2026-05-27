@@ -7,7 +7,7 @@ doc_type: 'guide'
 
 # Prometheus Integration
 
-<PrivatePreviewBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} slug="monitoring-prometheus" />
+<BetaBadge link="https://clickhouse.com/cloud/postgres" galaxyTrack={true} galaxyEvent="docs.managed-postgres.monitoring-prometheus-beta" />
 
 Managed Postgres exposes two Prometheus-compatible metrics endpoints
 on the [ClickHouse Cloud API][cloud-api]:

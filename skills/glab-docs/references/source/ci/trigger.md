@@ -13,7 +13,7 @@ Without a job argument, you can select one interactively.
 You can trigger only jobs with manual status.
 
 ```plaintext
-glab ci trigger <job-id> [flags]
+glab ci trigger [<job-id | job-name>] [flags]
 ```
 
 ## Examples
@@ -22,17 +22,17 @@ glab ci trigger <job-id> [flags]
 # Interactively select a job to trigger
 glab ci trigger
 
-# Trigger manual job with id 224356863
+# Trigger a manual job by ID
 glab ci trigger 224356863
 
-# Trigger manual job with name lint
+# Trigger a manual job by name
 glab ci trigger lint
 ```
 
 ## Options
 
 ```plaintext
-  -b, --branch string     The branch to search for the job. (default current branch)
+  -b, --branch string     The branch to search for the job. Defaults to the current branch.
   -p, --pipeline-id int   The pipeline ID to search for the job.
 ```
 

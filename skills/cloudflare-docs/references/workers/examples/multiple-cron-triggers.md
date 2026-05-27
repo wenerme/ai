@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Multiple Cron Triggers
 
-**Last reviewed:**  over 4 years ago 
+**Last reviewed:**  almost 5 years ago 
 
 Set multiple Cron Triggers on three different schedules.
 
@@ -22,9 +22,9 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-9503)
-* [  TypeScript ](#tab-panel-9504)
-* [  Hono ](#tab-panel-9505)
+* [  JavaScript ](#tab-panel-9569)
+* [  TypeScript ](#tab-panel-9570)
+* [  Hono ](#tab-panel-9571)
 
 JavaScript
 

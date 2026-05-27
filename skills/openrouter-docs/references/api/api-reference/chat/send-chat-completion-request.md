@@ -835,6 +835,13 @@ components:
                 can route between. Supports wildcards (e.g., "anthropic/*"
                 matches all Anthropic models). When not specified, uses the
                 default supported models list.
+            cost_quality_tradeoff:
+              type: integer
+              description: >-
+                Controls cost vs. quality routing tradeoff (0–10). 0 = pure
+                quality (best model regardless of cost), 10 = maximize for cost
+                (cheapest model wins). Intermediate values blend quality and
+                cost signals continuously. Defaults to 7.
             enabled:
               type: boolean
               description: >-
