@@ -280,6 +280,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        darkbloom:
+          type: object
+          additionalProperties:
+            description: Any type
         deepinfra:
           type: object
           additionalProperties:

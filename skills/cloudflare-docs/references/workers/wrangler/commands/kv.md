@@ -30,9 +30,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Create a new namespace
 
-* [  npm ](#tab-panel-10085)
-* [  pnpm ](#tab-panel-10086)
-* [  yarn ](#tab-panel-10087)
+* [  npm ](#tab-panel-10204)
+* [  pnpm ](#tab-panel-10205)
+* [  yarn ](#tab-panel-10206)
 
 Terminal window
 
@@ -88,14 +88,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `kv namespace list`
 
 Output a list of all KV namespaces associated with your account id
 
-* [  npm ](#tab-panel-10088)
-* [  pnpm ](#tab-panel-10089)
-* [  yarn ](#tab-panel-10090)
+* [  npm ](#tab-panel-10207)
+* [  pnpm ](#tab-panel-10208)
+* [  yarn ](#tab-panel-10209)
 
 Terminal window
 
@@ -140,14 +142,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `kv namespace delete`
 
 Delete a given namespace.
 
-* [  npm ](#tab-panel-10091)
-* [  pnpm ](#tab-panel-10092)
-* [  yarn ](#tab-panel-10093)
+* [  npm ](#tab-panel-10210)
+* [  pnpm ](#tab-panel-10211)
+* [  yarn ](#tab-panel-10212)
 
 Terminal window
 
@@ -203,14 +207,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `kv namespace rename`
 
 Rename a KV namespace
 
-* [  npm ](#tab-panel-10094)
-* [  pnpm ](#tab-panel-10095)
-* [  yarn ](#tab-panel-10096)
+* [  npm ](#tab-panel-10213)
+* [  pnpm ](#tab-panel-10214)
+* [  yarn ](#tab-panel-10215)
 
 Terminal window
 
@@ -262,6 +268,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `kv key`
 
@@ -279,9 +287,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Write a single key/value pair to the given namespace
 
-* [  npm ](#tab-panel-10097)
-* [  pnpm ](#tab-panel-10098)
-* [  yarn ](#tab-panel-10099)
+* [  npm ](#tab-panel-10216)
+* [  pnpm ](#tab-panel-10217)
+* [  yarn ](#tab-panel-10218)
 
 Terminal window
 
@@ -351,14 +359,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `kv key list`
 
 Output a list of all keys in a given namespace
 
-* [  npm ](#tab-panel-10100)
-* [  pnpm ](#tab-panel-10101)
-* [  yarn ](#tab-panel-10102)
+* [  npm ](#tab-panel-10219)
+* [  pnpm ](#tab-panel-10220)
+* [  yarn ](#tab-panel-10221)
 
 Terminal window
 
@@ -418,14 +428,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `kv key get`
 
 Read a single value by key from the given namespace
 
-* [  npm ](#tab-panel-10103)
-* [  pnpm ](#tab-panel-10104)
-* [  yarn ](#tab-panel-10105)
+* [  npm ](#tab-panel-10222)
+* [  pnpm ](#tab-panel-10223)
+* [  yarn ](#tab-panel-10224)
 
 Terminal window
 
@@ -487,14 +499,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `kv key delete`
 
 Remove a single key value pair from the given namespace
 
-* [  npm ](#tab-panel-10106)
-* [  pnpm ](#tab-panel-10107)
-* [  yarn ](#tab-panel-10108)
+* [  npm ](#tab-panel-10225)
+* [  pnpm ](#tab-panel-10226)
+* [  yarn ](#tab-panel-10227)
 
 Terminal window
 
@@ -554,6 +568,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `kv bulk`
 
@@ -571,9 +587,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Gets multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-10109)
-* [  pnpm ](#tab-panel-10110)
-* [  yarn ](#tab-panel-10111)
+* [  npm ](#tab-panel-10228)
+* [  pnpm ](#tab-panel-10229)
+* [  yarn ](#tab-panel-10230)
 
 Terminal window
 
@@ -633,14 +649,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `kv bulk put`
 
 Upload multiple key-value pairs to a namespace
 
-* [  npm ](#tab-panel-10112)
-* [  pnpm ](#tab-panel-10113)
-* [  yarn ](#tab-panel-10114)
+* [  npm ](#tab-panel-10231)
+* [  pnpm ](#tab-panel-10232)
+* [  yarn ](#tab-panel-10233)
 
 Terminal window
 
@@ -706,14 +724,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `kv bulk delete`
 
 Delete multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-10115)
-* [  pnpm ](#tab-panel-10116)
-* [  yarn ](#tab-panel-10117)
+* [  npm ](#tab-panel-10234)
+* [  pnpm ](#tab-panel-10235)
+* [  yarn ](#tab-panel-10236)
 
 Terminal window
 
@@ -775,6 +795,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/kv/","name":"KV"}}]}

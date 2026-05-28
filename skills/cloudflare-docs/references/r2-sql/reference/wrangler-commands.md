@@ -20,9 +20,9 @@ R2 SQL is currently in open beta. Report R2 SQL bugs in [GitHub ↗](https://git
 
 Execute SQL query against R2 Data Catalog
 
-* [  npm ](#tab-panel-7080)
-* [  pnpm ](#tab-panel-7081)
-* [  yarn ](#tab-panel-7082)
+* [  npm ](#tab-panel-7617)
+* [  pnpm ](#tab-panel-7618)
+* [  yarn ](#tab-panel-7619)
 
 Terminal window
 
@@ -72,6 +72,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2-sql/reference/wrangler-commands/","name":"Wrangler commands"}}]}

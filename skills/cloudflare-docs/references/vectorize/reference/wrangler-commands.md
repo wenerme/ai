@@ -18,9 +18,9 @@ Vectorize uses the following [Wrangler Commands](https://developers.cloudflare.c
 
 Create a Vectorize index
 
-* [  npm ](#tab-panel-8196)
-* [  pnpm ](#tab-panel-8197)
-* [  yarn ](#tab-panel-8198)
+* [  npm ](#tab-panel-8980)
+* [  pnpm ](#tab-panel-8981)
+* [  yarn ](#tab-panel-8982)
 
 Terminal window
 
@@ -86,14 +86,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize delete`
 
 Delete a Vectorize index
 
-* [  npm ](#tab-panel-8199)
-* [  pnpm ](#tab-panel-8200)
-* [  yarn ](#tab-panel-8201)
+* [  npm ](#tab-panel-8983)
+* [  pnpm ](#tab-panel-8984)
+* [  yarn ](#tab-panel-8985)
 
 Terminal window
 
@@ -145,14 +147,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize get`
 
 Get a Vectorize index by name
 
-* [  npm ](#tab-panel-8202)
-* [  pnpm ](#tab-panel-8203)
-* [  yarn ](#tab-panel-8204)
+* [  npm ](#tab-panel-8986)
+* [  pnpm ](#tab-panel-8987)
+* [  yarn ](#tab-panel-8988)
 
 Terminal window
 
@@ -204,14 +208,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize list`
 
 List your Vectorize indexes
 
-* [  npm ](#tab-panel-8205)
-* [  pnpm ](#tab-panel-8206)
-* [  yarn ](#tab-panel-8207)
+* [  npm ](#tab-panel-8989)
+* [  pnpm ](#tab-panel-8990)
+* [  yarn ](#tab-panel-8991)
 
 Terminal window
 
@@ -261,14 +267,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize list-vectors`
 
 List vector identifiers in a Vectorize index
 
-* [  npm ](#tab-panel-8208)
-* [  pnpm ](#tab-panel-8209)
-* [  yarn ](#tab-panel-8210)
+* [  npm ](#tab-panel-8992)
+* [  pnpm ](#tab-panel-8993)
+* [  yarn ](#tab-panel-8994)
 
 Terminal window
 
@@ -322,14 +330,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize query`
 
 Query a Vectorize index
 
-* [  npm ](#tab-panel-8211)
-* [  pnpm ](#tab-panel-8212)
-* [  yarn ](#tab-panel-8213)
+* [  npm ](#tab-panel-8995)
+* [  pnpm ](#tab-panel-8996)
+* [  yarn ](#tab-panel-8997)
 
 Terminal window
 
@@ -391,14 +401,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize insert`
 
 Insert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-8214)
-* [  pnpm ](#tab-panel-8215)
-* [  yarn ](#tab-panel-8216)
+* [  npm ](#tab-panel-8998)
+* [  pnpm ](#tab-panel-8999)
+* [  yarn ](#tab-panel-9000)
 
 Terminal window
 
@@ -454,14 +466,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize upsert`
 
 Upsert vectors into a Vectorize index
 
-* [  npm ](#tab-panel-8217)
-* [  pnpm ](#tab-panel-8218)
-* [  yarn ](#tab-panel-8219)
+* [  npm ](#tab-panel-9001)
+* [  pnpm ](#tab-panel-9002)
+* [  yarn ](#tab-panel-9003)
 
 Terminal window
 
@@ -515,14 +529,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize get-vectors`
 
 Get vectors from a Vectorize index
 
-* [  npm ](#tab-panel-8220)
-* [  pnpm ](#tab-panel-8221)
-* [  yarn ](#tab-panel-8222)
+* [  npm ](#tab-panel-9004)
+* [  pnpm ](#tab-panel-9005)
+* [  yarn ](#tab-panel-9006)
 
 Terminal window
 
@@ -572,14 +588,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize delete-vectors`
 
 Delete vectors in a Vectorize index
 
-* [  npm ](#tab-panel-8223)
-* [  pnpm ](#tab-panel-8224)
-* [  yarn ](#tab-panel-8225)
+* [  npm ](#tab-panel-9007)
+* [  pnpm ](#tab-panel-9008)
+* [  yarn ](#tab-panel-9009)
 
 Terminal window
 
@@ -629,14 +647,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize info`
 
 Get additional details about the index
 
-* [  npm ](#tab-panel-8226)
-* [  pnpm ](#tab-panel-8227)
-* [  yarn ](#tab-panel-8228)
+* [  npm ](#tab-panel-9010)
+* [  pnpm ](#tab-panel-9011)
+* [  yarn ](#tab-panel-9012)
 
 Terminal window
 
@@ -686,14 +706,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize create-metadata-index`
 
 Enable metadata filtering on the specified property
 
-* [  npm ](#tab-panel-8229)
-* [  pnpm ](#tab-panel-8230)
-* [  yarn ](#tab-panel-8231)
+* [  npm ](#tab-panel-9013)
+* [  pnpm ](#tab-panel-9014)
+* [  yarn ](#tab-panel-9015)
 
 Terminal window
 
@@ -745,14 +767,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize list-metadata-index`
 
 List metadata properties on which metadata filtering is enabled
 
-* [  npm ](#tab-panel-8232)
-* [  pnpm ](#tab-panel-8233)
-* [  yarn ](#tab-panel-8234)
+* [  npm ](#tab-panel-9016)
+* [  pnpm ](#tab-panel-9017)
+* [  yarn ](#tab-panel-9018)
 
 Terminal window
 
@@ -802,14 +826,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vectorize delete-metadata-index`
 
 Delete metadata indexes
 
-* [  npm ](#tab-panel-8235)
-* [  pnpm ](#tab-panel-8236)
-* [  yarn ](#tab-panel-8237)
+* [  npm ](#tab-panel-9019)
+* [  pnpm ](#tab-panel-9020)
+* [  yarn ](#tab-panel-9021)
 
 Terminal window
 
@@ -859,6 +885,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/reference/wrangler-commands/","name":"Wrangler commands"}}]}

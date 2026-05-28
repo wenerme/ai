@@ -18,9 +18,9 @@ Manage [Workers VPC](https://developers.cloudflare.com/workers-vpc/) services us
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-10152)
-* [  pnpm ](#tab-panel-10153)
-* [  yarn ](#tab-panel-10154)
+* [  npm ](#tab-panel-10576)
+* [  pnpm ](#tab-panel-10577)
+* [  yarn ](#tab-panel-10578)
 
 Terminal window
 
@@ -90,14 +90,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vpc service delete`
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-10155)
-* [  pnpm ](#tab-panel-10156)
-* [  yarn ](#tab-panel-10157)
+* [  npm ](#tab-panel-10579)
+* [  pnpm ](#tab-panel-10580)
+* [  yarn ](#tab-panel-10581)
 
 Terminal window
 
@@ -145,14 +147,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vpc service get`
 
 Get a VPC service
 
-* [  npm ](#tab-panel-10158)
-* [  pnpm ](#tab-panel-10159)
-* [  yarn ](#tab-panel-10160)
+* [  npm ](#tab-panel-10582)
+* [  pnpm ](#tab-panel-10583)
+* [  yarn ](#tab-panel-10584)
 
 Terminal window
 
@@ -200,14 +204,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vpc service list`
 
 List VPC services
 
-* [  npm ](#tab-panel-10161)
-* [  pnpm ](#tab-panel-10162)
-* [  yarn ](#tab-panel-10163)
+* [  npm ](#tab-panel-10585)
+* [  pnpm ](#tab-panel-10586)
+* [  yarn ](#tab-panel-10587)
 
 Terminal window
 
@@ -252,14 +258,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vpc service update`
 
 Update a VPC service
 
-* [  npm ](#tab-panel-10164)
-* [  pnpm ](#tab-panel-10165)
-* [  yarn ](#tab-panel-10166)
+* [  npm ](#tab-panel-10588)
+* [  pnpm ](#tab-panel-10589)
+* [  yarn ](#tab-panel-10590)
 
 Terminal window
 
@@ -331,6 +339,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/vpc/","name":"VPC"}}]}

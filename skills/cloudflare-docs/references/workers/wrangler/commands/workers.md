@@ -303,9 +303,9 @@ The following global flags work on every command:
 
 🪄 Setup a project to work on Cloudflare
 
-* [  npm ](#tab-panel-10517)
-* [  pnpm ](#tab-panel-10518)
-* [  yarn ](#tab-panel-10519)
+* [  npm ](#tab-panel-10591)
+* [  pnpm ](#tab-panel-10592)
+* [  yarn ](#tab-panel-10593)
 
 Terminal window
 
@@ -357,6 +357,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 This command configures your project for Cloudflare Workers without deploying. It performs the same [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/) as `wrangler deploy`, but does not deploy. This is useful when you want to review the generated configuration before deploying.
 
@@ -372,9 +374,9 @@ This action creates a new [version](https://developers.cloudflare.com/workers/co
 
 Create or update a secret for a Worker
 
-* [  npm ](#tab-panel-10520)
-* [  pnpm ](#tab-panel-10521)
-* [  yarn ](#tab-panel-10522)
+* [  npm ](#tab-panel-10594)
+* [  pnpm ](#tab-panel-10595)
+* [  yarn ](#tab-panel-10596)
 
 Terminal window
 
@@ -424,6 +426,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 When running this command, you will be prompted to input the secret's value:
 
@@ -462,9 +466,9 @@ echo "-----BEGIN PRIVATE KEY-----\nM...==\n-----END PRIVATE KEY-----\n" | wrangl
 
 Delete a secret from a Worker
 
-* [  npm ](#tab-panel-10523)
-* [  pnpm ](#tab-panel-10524)
-* [  yarn ](#tab-panel-10525)
+* [  npm ](#tab-panel-10597)
+* [  pnpm ](#tab-panel-10598)
+* [  yarn ](#tab-panel-10599)
 
 Terminal window
 
@@ -514,14 +518,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `secret list`
 
 List all secrets for a Worker
 
-* [  npm ](#tab-panel-10526)
-* [  pnpm ](#tab-panel-10527)
-* [  yarn ](#tab-panel-10528)
+* [  npm ](#tab-panel-10600)
+* [  pnpm ](#tab-panel-10601)
+* [  yarn ](#tab-panel-10602)
 
 Terminal window
 
@@ -571,6 +577,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 The following is an example of listing the secrets for the current Worker.
 
@@ -606,9 +614,9 @@ npx wrangler secret list
 
 Upload multiple secrets for a Worker at once
 
-* [  npm ](#tab-panel-10529)
-* [  pnpm ](#tab-panel-10530)
-* [  yarn ](#tab-panel-10531)
+* [  npm ](#tab-panel-10603)
+* [  pnpm ](#tab-panel-10604)
+* [  yarn ](#tab-panel-10605)
 
 Terminal window
 
@@ -658,6 +666,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 The following is an example of uploading secrets from a JSON file redirected to `stdin`. When complete, the output summary will show the number of secrets uploaded and the number of secrets that failed to upload.
 
@@ -711,9 +721,9 @@ Finished processing secrets JSON file:
 
 🦚 Start a log tailing session for a Worker
 
-* [  npm ](#tab-panel-10532)
-* [  pnpm ](#tab-panel-10533)
-* [  yarn ](#tab-panel-10534)
+* [  npm ](#tab-panel-10606)
+* [  pnpm ](#tab-panel-10607)
+* [  yarn ](#tab-panel-10608)
 
 Terminal window
 
@@ -777,6 +787,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 After starting `wrangler tail`, you will receive a live feed of console and exception logs for each request your Worker receives.
 
@@ -800,9 +812,9 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Upload a new [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker that is not deployed immediately.
 
-* [  npm ](#tab-panel-10535)
-* [  pnpm ](#tab-panel-10536)
-* [  yarn ](#tab-panel-10537)
+* [  npm ](#tab-panel-10609)
+* [  pnpm ](#tab-panel-10610)
+* [  yarn ](#tab-panel-10611)
 
 Terminal window
 
@@ -894,14 +906,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `versions deploy`
 
 Deploy a previously created [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker all at once or create a [gradual deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) to incrementally shift traffic to a new version by following an interactive prompt.
 
-* [  npm ](#tab-panel-10538)
-* [  pnpm ](#tab-panel-10539)
-* [  yarn ](#tab-panel-10540)
+* [  npm ](#tab-panel-10612)
+* [  pnpm ](#tab-panel-10613)
+* [  yarn ](#tab-panel-10614)
 
 Terminal window
 
@@ -961,6 +975,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 Note
 
@@ -972,9 +988,9 @@ For example:`wrangler versions deploy 095f00a7-23a7-43b7-a227-e4c97cab5f22@10% 1
 
 Retrieve details for the 10 most recent versions. Details include `Version ID`, `Created on`, `Author`, `Source`, and optionally, `Tag` or `Message`.
 
-* [  npm ](#tab-panel-10541)
-* [  pnpm ](#tab-panel-10542)
-* [  yarn ](#tab-panel-10543)
+* [  npm ](#tab-panel-10615)
+* [  pnpm ](#tab-panel-10616)
+* [  yarn ](#tab-panel-10617)
 
 Terminal window
 
@@ -1024,14 +1040,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `versions view`
 
 View the details of a specific version of your Worker
 
-* [  npm ](#tab-panel-10544)
-* [  pnpm ](#tab-panel-10545)
-* [  yarn ](#tab-panel-10546)
+* [  npm ](#tab-panel-10618)
+* [  pnpm ](#tab-panel-10619)
+* [  yarn ](#tab-panel-10620)
 
 Terminal window
 
@@ -1083,14 +1101,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `versions secret put`
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-10547)
-* [  pnpm ](#tab-panel-10548)
-* [  yarn ](#tab-panel-10549)
+* [  npm ](#tab-panel-10621)
+* [  pnpm ](#tab-panel-10622)
+* [  yarn ](#tab-panel-10623)
 
 Terminal window
 
@@ -1144,14 +1164,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `versions secret delete`
 
 Delete a secret variable from a Worker
 
-* [  npm ](#tab-panel-10550)
-* [  pnpm ](#tab-panel-10551)
-* [  yarn ](#tab-panel-10552)
+* [  npm ](#tab-panel-10624)
+* [  pnpm ](#tab-panel-10625)
+* [  yarn ](#tab-panel-10626)
 
 Terminal window
 
@@ -1205,14 +1227,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `versions secret bulk`
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-10553)
-* [  pnpm ](#tab-panel-10554)
-* [  yarn ](#tab-panel-10555)
+* [  npm ](#tab-panel-10627)
+* [  pnpm ](#tab-panel-10628)
+* [  yarn ](#tab-panel-10629)
 
 Terminal window
 
@@ -1266,6 +1290,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ---
 
@@ -1282,9 +1308,9 @@ Experimental
 
 Apply changes to triggers (Routes or domains and Cron Triggers) when using `wrangler versions upload`
 
-* [  npm ](#tab-panel-10556)
-* [  pnpm ](#tab-panel-10557)
-* [  yarn ](#tab-panel-10558)
+* [  npm ](#tab-panel-10630)
+* [  pnpm ](#tab-panel-10631)
+* [  yarn ](#tab-panel-10632)
 
 Terminal window
 
@@ -1338,6 +1364,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ---
 
@@ -1353,9 +1381,9 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Displays the 10 most recent deployments of your Worker
 
-* [  npm ](#tab-panel-10559)
-* [  pnpm ](#tab-panel-10560)
-* [  yarn ](#tab-panel-10561)
+* [  npm ](#tab-panel-10633)
+* [  pnpm ](#tab-panel-10634)
+* [  yarn ](#tab-panel-10635)
 
 Terminal window
 
@@ -1405,14 +1433,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `deployments status`
 
 View the current state of your production
 
-* [  npm ](#tab-panel-10562)
-* [  pnpm ](#tab-panel-10563)
-* [  yarn ](#tab-panel-10564)
+* [  npm ](#tab-panel-10636)
+* [  pnpm ](#tab-panel-10637)
+* [  yarn ](#tab-panel-10638)
 
 Terminal window
 
@@ -1462,6 +1492,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `rollback`
 

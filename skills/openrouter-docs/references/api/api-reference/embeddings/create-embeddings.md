@@ -330,6 +330,7 @@ components:
         - Cohere
         - Crucible
         - Crusoe
+        - Darkbloom
         - DeepInfra
         - DeepSeek
         - DekaLLM

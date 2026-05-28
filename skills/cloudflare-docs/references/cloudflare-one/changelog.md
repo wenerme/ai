@@ -16,6 +16,25 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 ## 2026-05-27
 
+[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) 
+
+  
+**Write regex using natural language in Cloudflare One**   
+
+[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policy selectors which support regular expressions can now be authored in the dashboard using natural language. When building a [policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/) with a regex-based selector (like `matches regex`), you can describe what you want to match in plain English and the Cloudflare Agent will generate and validate a corresponding regular expression.
+
+![Write policy regex using natural language](https://developers.cloudflare.com/_astro/gateway-regex-ai-generation.CtJ0S6FS_Z1WVe4K.webp) 
+
+To get started, select a regex-compatible selector in the [Gateway policy builder](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) and select the icon. You'll see an input field for natural language, such as "any URL starting with /api/v1" or ".com, .net, and .app hosts which contain `gooogle` in the host."
+
+You can also use the tool to explain existing regular expressions. If a policy already contains a regex pattern, you can instantly generate a plain-language description.
+
+A built-in feedback mechanism allows you to rate each interaction to help improve output quality over time.
+
+For more information, refer to [Cloudflare One firewall policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) and expect to see the same functionality supported soon in [Data loss prevention profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/).
+
+## 2026-05-27
+
 [ Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[ Cloudflare Tunnel for SASE ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) 
 
   

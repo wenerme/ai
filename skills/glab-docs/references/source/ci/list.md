@@ -30,7 +30,7 @@ glab ci list --status=failed
   -o, --order string            Order pipelines by this field. Options: id, status, ref, updated_at, user_id. (default "id")
   -F, --output string           Format output. Options: text, json. (default "text")
   -p, --page int                Page number. (default 1)
-  -P, --per-page int            Number of items to list per page. (default 30)
+  -P, --per-page int            Number of items to list per page. Defaults to the GitLab API default (20).
   -r, --ref string              Return only pipelines for the given ref.
       --scope string            Return only pipelines with the given scope. Options: running, pending, finished, branches, tags.
       --sha string              Return only pipelines with the given SHA.

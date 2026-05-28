@@ -1,5 +1,5 @@
 ---
-title: Resolve &#34;cannot remove payment method&#34;
+title: Resolve &quot;cannot remove payment method&quot;
 description: Fix errors when removing a payment method.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---

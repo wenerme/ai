@@ -18,9 +18,9 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-8438)
-* [  pnpm ](#tab-panel-8439)
-* [  yarn ](#tab-panel-8440)
+* [  npm ](#tab-panel-9234)
+* [  pnpm ](#tab-panel-9235)
+* [  yarn ](#tab-panel-9236)
 
 Terminal window
 
@@ -90,14 +90,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vpc service delete`
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-8441)
-* [  pnpm ](#tab-panel-8442)
-* [  yarn ](#tab-panel-8443)
+* [  npm ](#tab-panel-9237)
+* [  pnpm ](#tab-panel-9238)
+* [  yarn ](#tab-panel-9239)
 
 Terminal window
 
@@ -145,14 +147,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vpc service get`
 
 Get a VPC service
 
-* [  npm ](#tab-panel-8444)
-* [  pnpm ](#tab-panel-8445)
-* [  yarn ](#tab-panel-8446)
+* [  npm ](#tab-panel-9240)
+* [  pnpm ](#tab-panel-9241)
+* [  yarn ](#tab-panel-9242)
 
 Terminal window
 
@@ -200,14 +204,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vpc service list`
 
 List VPC services
 
-* [  npm ](#tab-panel-8447)
-* [  pnpm ](#tab-panel-8448)
-* [  yarn ](#tab-panel-8449)
+* [  npm ](#tab-panel-9243)
+* [  pnpm ](#tab-panel-9244)
+* [  yarn ](#tab-panel-9245)
 
 Terminal window
 
@@ -252,14 +258,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `vpc service update`
 
 Update a VPC service
 
-* [  npm ](#tab-panel-8450)
-* [  pnpm ](#tab-panel-8451)
-* [  yarn ](#tab-panel-8452)
+* [  npm ](#tab-panel-9246)
+* [  pnpm ](#tab-panel-9247)
+* [  yarn ](#tab-panel-9248)
 
 Terminal window
 
@@ -331,6 +339,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/reference/wrangler-commands/","name":"Wrangler commands"}}]}

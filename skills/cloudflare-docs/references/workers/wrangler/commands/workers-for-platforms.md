@@ -18,9 +18,9 @@ Wrangler commands for managing Workers for Platforms [dispatch namespace](https:
 
 List all dispatch namespaces
 
-* [  npm ](#tab-panel-10215)
-* [  pnpm ](#tab-panel-10216)
-* [  yarn ](#tab-panel-10217)
+* [  npm ](#tab-panel-10639)
+* [  pnpm ](#tab-panel-10640)
+* [  yarn ](#tab-panel-10641)
 
 Terminal window
 
@@ -65,14 +65,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `dispatch-namespace get`
 
 Get information about a dispatch namespace
 
-* [  npm ](#tab-panel-10218)
-* [  pnpm ](#tab-panel-10219)
-* [  yarn ](#tab-panel-10220)
+* [  npm ](#tab-panel-10642)
+* [  pnpm ](#tab-panel-10643)
+* [  yarn ](#tab-panel-10644)
 
 Terminal window
 
@@ -120,14 +122,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `dispatch-namespace create`
 
 Create a dispatch namespace
 
-* [  npm ](#tab-panel-10221)
-* [  pnpm ](#tab-panel-10222)
-* [  yarn ](#tab-panel-10223)
+* [  npm ](#tab-panel-10645)
+* [  pnpm ](#tab-panel-10646)
+* [  yarn ](#tab-panel-10647)
 
 Terminal window
 
@@ -175,14 +179,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `dispatch-namespace delete`
 
 Delete a dispatch namespace
 
-* [  npm ](#tab-panel-10224)
-* [  pnpm ](#tab-panel-10225)
-* [  yarn ](#tab-panel-10226)
+* [  npm ](#tab-panel-10648)
+* [  pnpm ](#tab-panel-10649)
+* [  yarn ](#tab-panel-10650)
 
 Terminal window
 
@@ -230,6 +236,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 Note
 
@@ -239,9 +247,9 @@ You must delete all user Workers in the dispatch namespace before it can be dele
 
 Rename a dispatch namespace
 
-* [  npm ](#tab-panel-10227)
-* [  pnpm ](#tab-panel-10228)
-* [  yarn ](#tab-panel-10229)
+* [  npm ](#tab-panel-10651)
+* [  pnpm ](#tab-panel-10652)
+* [  yarn ](#tab-panel-10653)
 
 Terminal window
 
@@ -291,6 +299,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/workers-for-platforms/","name":"Workers for Platforms"}}]}

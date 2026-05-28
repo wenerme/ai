@@ -116,6 +116,7 @@ components:
         - cloudflare
         - cohere
         - crusoe
+        - darkbloom
         - deepinfra
         - deepseek
         - dekallm
@@ -204,6 +205,7 @@ components:
         - cloudflare
         - cohere
         - crusoe
+        - darkbloom
         - deepinfra
         - deepseek
         - dekallm

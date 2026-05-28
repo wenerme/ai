@@ -18,9 +18,9 @@ General Wrangler commands for authentication, telemetry, and shell completions.
 
 Open the Cloudflare developer documentation in your default browser.
 
-* [  npm ](#tab-panel-10064)
-* [  pnpm ](#tab-panel-10065)
-* [  yarn ](#tab-panel-10066)
+* [  npm ](#tab-panel-10183)
+* [  pnpm ](#tab-panel-10184)
+* [  yarn ](#tab-panel-10185)
 
 Terminal window
 
@@ -70,6 +70,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `login`
 
@@ -290,9 +292,9 @@ The following global flags work on every command:
 
 🕵️ Retrieve your user information
 
-* [  npm ](#tab-panel-10067)
-* [  pnpm ](#tab-panel-10068)
-* [  yarn ](#tab-panel-10069)
+* [  npm ](#tab-panel-10186)
+* [  pnpm ](#tab-panel-10187)
+* [  yarn ](#tab-panel-10188)
 
 Terminal window
 
@@ -342,6 +344,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ---
 
@@ -415,10 +419,10 @@ wrangler complete <SHELL>
 
 Generate and add the completion script to your shell configuration file:
 
-* [ Bash ](#tab-panel-10060)
-* [ Zsh ](#tab-panel-10061)
-* [ Fish ](#tab-panel-10062)
-* [ PowerShell ](#tab-panel-10063)
+* [ Bash ](#tab-panel-10179)
+* [ Zsh ](#tab-panel-10180)
+* [ Fish ](#tab-panel-10181)
+* [ PowerShell ](#tab-panel-10182)
 
 Terminal window
 

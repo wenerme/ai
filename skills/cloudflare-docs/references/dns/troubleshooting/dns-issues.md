@@ -1,6 +1,6 @@
 ---
 title: General DNS issues
-description: Troubleshoot common DNS resolution errors like &#34;This site can't be reached&#34;, err_name_not_resolved, and Error 1001 when using Cloudflare.
+description: Troubleshoot common DNS resolution errors like &quot;This site can't be reached&quot;, err_name_not_resolved, and Error 1001 when using Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

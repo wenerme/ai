@@ -24,9 +24,9 @@ The `r2 bucket` commands allow you to manage application data in the Cloudflare 
 
 Create a new R2 bucket
 
-* [  npm ](#tab-panel-7174)
-* [  pnpm ](#tab-panel-7175)
-* [  yarn ](#tab-panel-7176)
+* [  npm ](#tab-panel-7711)
+* [  pnpm ](#tab-panel-7712)
+* [  yarn ](#tab-panel-7713)
 
 Terminal window
 
@@ -86,14 +86,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket info`
 
 Get information about an R2 bucket
 
-* [  npm ](#tab-panel-7177)
-* [  pnpm ](#tab-panel-7178)
-* [  yarn ](#tab-panel-7179)
+* [  npm ](#tab-panel-7714)
+* [  pnpm ](#tab-panel-7715)
+* [  yarn ](#tab-panel-7716)
 
 Terminal window
 
@@ -145,14 +147,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket delete`
 
 Delete an R2 bucket
 
-* [  npm ](#tab-panel-7180)
-* [  pnpm ](#tab-panel-7181)
-* [  yarn ](#tab-panel-7182)
+* [  npm ](#tab-panel-7717)
+* [  pnpm ](#tab-panel-7718)
+* [  yarn ](#tab-panel-7719)
 
 Terminal window
 
@@ -202,14 +206,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket list`
 
 List R2 buckets
 
-* [  npm ](#tab-panel-7183)
-* [  pnpm ](#tab-panel-7184)
-* [  yarn ](#tab-panel-7185)
+* [  npm ](#tab-panel-7720)
+* [  pnpm ](#tab-panel-7721)
+* [  yarn ](#tab-panel-7722)
 
 Terminal window
 
@@ -257,14 +263,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket catalog enable`
 
 Enable the data catalog on an R2 bucket
 
-* [  npm ](#tab-panel-7186)
-* [  pnpm ](#tab-panel-7187)
-* [  yarn ](#tab-panel-7188)
+* [  npm ](#tab-panel-7723)
+* [  pnpm ](#tab-panel-7724)
+* [  yarn ](#tab-panel-7725)
 
 Terminal window
 
@@ -312,14 +320,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket catalog disable`
 
 Disable the data catalog for an R2 bucket
 
-* [  npm ](#tab-panel-7189)
-* [  pnpm ](#tab-panel-7190)
-* [  yarn ](#tab-panel-7191)
+* [  npm ](#tab-panel-7726)
+* [  pnpm ](#tab-panel-7727)
+* [  yarn ](#tab-panel-7728)
 
 Terminal window
 
@@ -367,14 +377,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket catalog get`
 
 Get the status of the data catalog for an R2 bucket
 
-* [  npm ](#tab-panel-7192)
-* [  pnpm ](#tab-panel-7193)
-* [  yarn ](#tab-panel-7194)
+* [  npm ](#tab-panel-7729)
+* [  pnpm ](#tab-panel-7730)
+* [  yarn ](#tab-panel-7731)
 
 Terminal window
 
@@ -422,14 +434,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket catalog compaction enable`
 
 Enable automatic file compaction for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-7195)
-* [  pnpm ](#tab-panel-7196)
-* [  yarn ](#tab-panel-7197)
+* [  npm ](#tab-panel-7732)
+* [  pnpm ](#tab-panel-7733)
+* [  yarn ](#tab-panel-7734)
 
 Terminal window
 
@@ -485,6 +499,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 Examples:
 
@@ -508,9 +524,9 @@ npx wrangler r2 bucket catalog compaction enable my-bucket my-namespace my-table
 
 Disable automatic file compaction for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-7198)
-* [  pnpm ](#tab-panel-7199)
-* [  yarn ](#tab-panel-7200)
+* [  npm ](#tab-panel-7735)
+* [  pnpm ](#tab-panel-7736)
+* [  yarn ](#tab-panel-7737)
 
 Terminal window
 
@@ -562,6 +578,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 Examples:
 
@@ -585,9 +603,9 @@ npx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-tabl
 
 Enable automatic snapshot expiration for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-7201)
-* [  pnpm ](#tab-panel-7202)
-* [  yarn ](#tab-panel-7203)
+* [  npm ](#tab-panel-7738)
+* [  pnpm ](#tab-panel-7739)
+* [  yarn ](#tab-panel-7740)
 
 Terminal window
 
@@ -645,14 +663,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket catalog snapshot-expiration disable`
 
 Disable automatic snapshot expiration for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-7204)
-* [  pnpm ](#tab-panel-7205)
-* [  yarn ](#tab-panel-7206)
+* [  npm ](#tab-panel-7741)
+* [  pnpm ](#tab-panel-7742)
+* [  yarn ](#tab-panel-7743)
 
 Terminal window
 
@@ -706,14 +726,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket cors set`
 
 Set the CORS configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-7207)
-* [  pnpm ](#tab-panel-7208)
-* [  yarn ](#tab-panel-7209)
+* [  npm ](#tab-panel-7744)
+* [  pnpm ](#tab-panel-7745)
+* [  yarn ](#tab-panel-7746)
 
 Terminal window
 
@@ -767,14 +789,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket cors delete`
 
 Clear the CORS configuration for an R2 bucket
 
-* [  npm ](#tab-panel-7210)
-* [  pnpm ](#tab-panel-7211)
-* [  yarn ](#tab-panel-7212)
+* [  npm ](#tab-panel-7747)
+* [  pnpm ](#tab-panel-7748)
+* [  yarn ](#tab-panel-7749)
 
 Terminal window
 
@@ -826,14 +850,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket cors list`
 
 List the CORS rules for an R2 bucket
 
-* [  npm ](#tab-panel-7213)
-* [  pnpm ](#tab-panel-7214)
-* [  yarn ](#tab-panel-7215)
+* [  npm ](#tab-panel-7750)
+* [  pnpm ](#tab-panel-7751)
+* [  yarn ](#tab-panel-7752)
 
 Terminal window
 
@@ -883,14 +909,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket dev-url enable`
 
 Enable public access via the r2.dev URL for an R2 bucket
 
-* [  npm ](#tab-panel-7216)
-* [  pnpm ](#tab-panel-7217)
-* [  yarn ](#tab-panel-7218)
+* [  npm ](#tab-panel-7753)
+* [  pnpm ](#tab-panel-7754)
+* [  yarn ](#tab-panel-7755)
 
 Terminal window
 
@@ -942,14 +970,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket dev-url disable`
 
 Disable public access via the r2.dev URL for an R2 bucket
 
-* [  npm ](#tab-panel-7219)
-* [  pnpm ](#tab-panel-7220)
-* [  yarn ](#tab-panel-7221)
+* [  npm ](#tab-panel-7756)
+* [  pnpm ](#tab-panel-7757)
+* [  yarn ](#tab-panel-7758)
 
 Terminal window
 
@@ -1001,14 +1031,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket dev-url get`
 
 Get the r2.dev URL and status for an R2 bucket
 
-* [  npm ](#tab-panel-7222)
-* [  pnpm ](#tab-panel-7223)
-* [  yarn ](#tab-panel-7224)
+* [  npm ](#tab-panel-7759)
+* [  pnpm ](#tab-panel-7760)
+* [  yarn ](#tab-panel-7761)
 
 Terminal window
 
@@ -1058,14 +1090,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket domain add`
 
 Connect a custom domain to an R2 bucket
 
-* [  npm ](#tab-panel-7225)
-* [  pnpm ](#tab-panel-7226)
-* [  yarn ](#tab-panel-7227)
+* [  npm ](#tab-panel-7762)
+* [  pnpm ](#tab-panel-7763)
+* [  yarn ](#tab-panel-7764)
 
 Terminal window
 
@@ -1123,14 +1157,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket domain remove`
 
 Remove a custom domain from an R2 bucket
 
-* [  npm ](#tab-panel-7228)
-* [  pnpm ](#tab-panel-7229)
-* [  yarn ](#tab-panel-7230)
+* [  npm ](#tab-panel-7765)
+* [  pnpm ](#tab-panel-7766)
+* [  yarn ](#tab-panel-7767)
 
 Terminal window
 
@@ -1184,14 +1220,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket domain update`
 
 Update settings for a custom domain connected to an R2 bucket
 
-* [  npm ](#tab-panel-7231)
-* [  pnpm ](#tab-panel-7232)
-* [  yarn ](#tab-panel-7233)
+* [  npm ](#tab-panel-7768)
+* [  pnpm ](#tab-panel-7769)
+* [  yarn ](#tab-panel-7770)
 
 Terminal window
 
@@ -1245,14 +1283,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket domain get`
 
 Get custom domain connected to an R2 bucket
 
-* [  npm ](#tab-panel-7234)
-* [  pnpm ](#tab-panel-7235)
-* [  yarn ](#tab-panel-7236)
+* [  npm ](#tab-panel-7771)
+* [  pnpm ](#tab-panel-7772)
+* [  yarn ](#tab-panel-7773)
 
 Terminal window
 
@@ -1304,14 +1344,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket domain list`
 
 List custom domains for an R2 bucket
 
-* [  npm ](#tab-panel-7237)
-* [  pnpm ](#tab-panel-7238)
-* [  yarn ](#tab-panel-7239)
+* [  npm ](#tab-panel-7774)
+* [  pnpm ](#tab-panel-7775)
+* [  yarn ](#tab-panel-7776)
 
 Terminal window
 
@@ -1361,14 +1403,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket lifecycle add`
 
 Add a lifecycle rule to an R2 bucket
 
-* [  npm ](#tab-panel-7240)
-* [  pnpm ](#tab-panel-7241)
-* [  yarn ](#tab-panel-7242)
+* [  npm ](#tab-panel-7777)
+* [  pnpm ](#tab-panel-7778)
+* [  yarn ](#tab-panel-7779)
 
 Terminal window
 
@@ -1434,14 +1478,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket lifecycle remove`
 
 Remove a lifecycle rule from an R2 bucket
 
-* [  npm ](#tab-panel-7243)
-* [  pnpm ](#tab-panel-7244)
-* [  yarn ](#tab-panel-7245)
+* [  npm ](#tab-panel-7780)
+* [  pnpm ](#tab-panel-7781)
+* [  yarn ](#tab-panel-7782)
 
 Terminal window
 
@@ -1493,14 +1539,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket lifecycle list`
 
 List lifecycle rules for an R2 bucket
 
-* [  npm ](#tab-panel-7246)
-* [  pnpm ](#tab-panel-7247)
-* [  yarn ](#tab-panel-7248)
+* [  npm ](#tab-panel-7783)
+* [  pnpm ](#tab-panel-7784)
+* [  yarn ](#tab-panel-7785)
 
 Terminal window
 
@@ -1550,14 +1598,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket lifecycle set`
 
 Set the lifecycle configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-7249)
-* [  pnpm ](#tab-panel-7250)
-* [  yarn ](#tab-panel-7251)
+* [  npm ](#tab-panel-7786)
+* [  pnpm ](#tab-panel-7787)
+* [  yarn ](#tab-panel-7788)
 
 Terminal window
 
@@ -1611,14 +1661,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket lock add`
 
 Add a lock rule to an R2 bucket
 
-* [  npm ](#tab-panel-7252)
-* [  pnpm ](#tab-panel-7253)
-* [  yarn ](#tab-panel-7254)
+* [  npm ](#tab-panel-7789)
+* [  pnpm ](#tab-panel-7790)
+* [  yarn ](#tab-panel-7791)
 
 Terminal window
 
@@ -1680,14 +1732,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket lock remove`
 
 Remove a bucket lock rule from an R2 bucket
 
-* [  npm ](#tab-panel-7255)
-* [  pnpm ](#tab-panel-7256)
-* [  yarn ](#tab-panel-7257)
+* [  npm ](#tab-panel-7792)
+* [  pnpm ](#tab-panel-7793)
+* [  yarn ](#tab-panel-7794)
 
 Terminal window
 
@@ -1739,14 +1793,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket lock list`
 
 List lock rules for an R2 bucket
 
-* [  npm ](#tab-panel-7258)
-* [  pnpm ](#tab-panel-7259)
-* [  yarn ](#tab-panel-7260)
+* [  npm ](#tab-panel-7795)
+* [  pnpm ](#tab-panel-7796)
+* [  yarn ](#tab-panel-7797)
 
 Terminal window
 
@@ -1796,14 +1852,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket lock set`
 
 Set the lock configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-7261)
-* [  pnpm ](#tab-panel-7262)
-* [  yarn ](#tab-panel-7263)
+* [  npm ](#tab-panel-7798)
+* [  pnpm ](#tab-panel-7799)
+* [  yarn ](#tab-panel-7800)
 
 Terminal window
 
@@ -1857,14 +1915,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket notification create`
 
 Create an event notification rule for an R2 bucket
 
-* [  npm ](#tab-panel-7264)
-* [  pnpm ](#tab-panel-7265)
-* [  yarn ](#tab-panel-7266)
+* [  npm ](#tab-panel-7801)
+* [  pnpm ](#tab-panel-7802)
+* [  yarn ](#tab-panel-7803)
 
 Terminal window
 
@@ -1924,14 +1984,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket notification delete`
 
 Delete an event notification rule from an R2 bucket
 
-* [  npm ](#tab-panel-7267)
-* [  pnpm ](#tab-panel-7268)
-* [  yarn ](#tab-panel-7269)
+* [  npm ](#tab-panel-7804)
+* [  pnpm ](#tab-panel-7805)
+* [  yarn ](#tab-panel-7806)
 
 Terminal window
 
@@ -1985,14 +2047,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket notification list`
 
 List event notification rules for an R2 bucket
 
-* [  npm ](#tab-panel-7270)
-* [  pnpm ](#tab-panel-7271)
-* [  yarn ](#tab-panel-7272)
+* [  npm ](#tab-panel-7807)
+* [  pnpm ](#tab-panel-7808)
+* [  yarn ](#tab-panel-7809)
 
 Terminal window
 
@@ -2042,14 +2106,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket sippy enable`
 
 Enable Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-7273)
-* [  pnpm ](#tab-panel-7274)
-* [  yarn ](#tab-panel-7275)
+* [  npm ](#tab-panel-7810)
+* [  pnpm ](#tab-panel-7811)
+* [  yarn ](#tab-panel-7812)
 
 Terminal window
 
@@ -2118,14 +2184,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket sippy disable`
 
 Disable Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-7276)
-* [  pnpm ](#tab-panel-7277)
-* [  yarn ](#tab-panel-7278)
+* [  npm ](#tab-panel-7813)
+* [  pnpm ](#tab-panel-7814)
+* [  yarn ](#tab-panel-7815)
 
 Terminal window
 
@@ -2175,14 +2243,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 bucket sippy get`
 
 Check the status of Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-7279)
-* [  pnpm ](#tab-panel-7280)
-* [  yarn ](#tab-panel-7281)
+* [  npm ](#tab-panel-7816)
+* [  pnpm ](#tab-panel-7817)
+* [  yarn ](#tab-panel-7818)
 
 Terminal window
 
@@ -2232,6 +2302,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `r2 object`
 
@@ -2245,9 +2317,9 @@ The `r2 object` commands allow you to manage application data in the Cloudflare 
 
 Fetch an object from an R2 bucket
 
-* [  npm ](#tab-panel-7282)
-* [  pnpm ](#tab-panel-7283)
-* [  yarn ](#tab-panel-7284)
+* [  npm ](#tab-panel-7819)
+* [  pnpm ](#tab-panel-7820)
+* [  yarn ](#tab-panel-7821)
 
 Terminal window
 
@@ -2307,14 +2379,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 object put`
 
 Create an object in an R2 bucket
 
-* [  npm ](#tab-panel-7285)
-* [  pnpm ](#tab-panel-7286)
-* [  yarn ](#tab-panel-7287)
+* [  npm ](#tab-panel-7822)
+* [  pnpm ](#tab-panel-7823)
+* [  yarn ](#tab-panel-7824)
 
 Terminal window
 
@@ -2390,14 +2464,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `r2 object delete`
 
 Delete an object in an R2 bucket
 
-* [  npm ](#tab-panel-7288)
-* [  pnpm ](#tab-panel-7289)
-* [  yarn ](#tab-panel-7290)
+* [  npm ](#tab-panel-7825)
+* [  pnpm ](#tab-panel-7826)
+* [  yarn ](#tab-panel-7827)
 
 Terminal window
 
@@ -2455,6 +2531,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/reference/wrangler-commands/","name":"Wrangler commands"}}]}

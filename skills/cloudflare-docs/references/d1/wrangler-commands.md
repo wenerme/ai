@@ -20,9 +20,9 @@ Creates a new D1 database, and provides the binding and UUID that you will put i
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-5808)
-* [  pnpm ](#tab-panel-5809)
-* [  yarn ](#tab-panel-5810)
+* [  npm ](#tab-panel-5963)
+* [  pnpm ](#tab-panel-5964)
+* [  yarn ](#tab-panel-5965)
 
 Terminal window
 
@@ -80,6 +80,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 info`
 
@@ -87,9 +89,9 @@ Get information about a D1 database, including the current database size and sta
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-5811)
-* [  pnpm ](#tab-panel-5812)
-* [  yarn ](#tab-panel-5813)
+* [  npm ](#tab-panel-5966)
+* [  pnpm ](#tab-panel-5967)
+* [  yarn ](#tab-panel-5968)
 
 Terminal window
 
@@ -139,6 +141,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 list`
 
@@ -146,9 +150,9 @@ List all D1 databases in your account
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-5814)
-* [  pnpm ](#tab-panel-5815)
-* [  yarn ](#tab-panel-5816)
+* [  npm ](#tab-panel-5969)
+* [  pnpm ](#tab-panel-5970)
+* [  yarn ](#tab-panel-5971)
 
 Terminal window
 
@@ -196,6 +200,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 delete`
 
@@ -203,9 +209,9 @@ Delete a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-5817)
-* [  pnpm ](#tab-panel-5818)
-* [  yarn ](#tab-panel-5819)
+* [  npm ](#tab-panel-5972)
+* [  pnpm ](#tab-panel-5973)
+* [  yarn ](#tab-panel-5974)
 
 Terminal window
 
@@ -255,6 +261,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 execute`
 
@@ -262,9 +270,9 @@ Execute a command or SQL file
 
 You must provide either --command or --file for this command to run successfully.
 
-* [  npm ](#tab-panel-5820)
-* [  pnpm ](#tab-panel-5821)
-* [  yarn ](#tab-panel-5822)
+* [  npm ](#tab-panel-5975)
+* [  pnpm ](#tab-panel-5976)
+* [  yarn ](#tab-panel-5977)
 
 Terminal window
 
@@ -328,14 +336,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 export`
 
 Export the contents or schema of your database as a .sql file
 
-* [  npm ](#tab-panel-5823)
-* [  pnpm ](#tab-panel-5824)
-* [  yarn ](#tab-panel-5825)
+* [  npm ](#tab-panel-5978)
+* [  pnpm ](#tab-panel-5979)
+* [  yarn ](#tab-panel-5980)
 
 Terminal window
 
@@ -397,6 +407,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 time-travel info`
 
@@ -406,9 +418,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-5826)
-* [  pnpm ](#tab-panel-5827)
-* [  yarn ](#tab-panel-5828)
+* [  npm ](#tab-panel-5981)
+* [  pnpm ](#tab-panel-5982)
+* [  yarn ](#tab-panel-5983)
 
 Terminal window
 
@@ -460,6 +472,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 time-travel restore`
 
@@ -469,9 +483,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-5829)
-* [  pnpm ](#tab-panel-5830)
-* [  yarn ](#tab-panel-5831)
+* [  npm ](#tab-panel-5984)
+* [  pnpm ](#tab-panel-5985)
+* [  yarn ](#tab-panel-5986)
 
 Terminal window
 
@@ -525,6 +539,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 migrations create`
 
@@ -539,9 +555,9 @@ This will generate a new versioned file inside the 'migrations' folder. Name you
 
 The filename will include a version number and the migration name you specify.
 
-* [  npm ](#tab-panel-5832)
-* [  pnpm ](#tab-panel-5833)
-* [  yarn ](#tab-panel-5834)
+* [  npm ](#tab-panel-5987)
+* [  pnpm ](#tab-panel-5988)
+* [  yarn ](#tab-panel-5989)
 
 Terminal window
 
@@ -591,14 +607,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 migrations list`
 
 View a list of unapplied migration files
 
-* [  npm ](#tab-panel-5835)
-* [  pnpm ](#tab-panel-5836)
-* [  yarn ](#tab-panel-5837)
+* [  npm ](#tab-panel-5990)
+* [  pnpm ](#tab-panel-5991)
+* [  yarn ](#tab-panel-5992)
 
 Terminal window
 
@@ -654,6 +672,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 migrations apply`
 
@@ -667,9 +687,9 @@ When running the apply command in a CI/CD environment or another non-interactive
 
 If applying a migration results in an error, this migration will be rolled back, and the previous successful migration will remain applied.
 
-* [  npm ](#tab-panel-5838)
-* [  pnpm ](#tab-panel-5839)
-* [  yarn ](#tab-panel-5840)
+* [  npm ](#tab-panel-5993)
+* [  pnpm ](#tab-panel-5994)
+* [  yarn ](#tab-panel-5995)
 
 Terminal window
 
@@ -725,6 +745,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `d1 insights`
 
@@ -735,9 +757,9 @@ Get information about the queries run on a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-5841)
-* [  pnpm ](#tab-panel-5842)
-* [  yarn ](#tab-panel-5843)
+* [  npm ](#tab-panel-5996)
+* [  pnpm ](#tab-panel-5997)
+* [  yarn ](#tab-panel-5998)
 
 Terminal window
 
@@ -797,6 +819,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/wrangler-commands/","name":"Wrangler commands"}}]}

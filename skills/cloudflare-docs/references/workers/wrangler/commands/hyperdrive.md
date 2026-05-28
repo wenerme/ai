@@ -20,9 +20,9 @@ To manage mTLS client certificates and CA chain certificates used by Hyperdrive,
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-10070)
-* [  pnpm ](#tab-panel-10071)
-* [  yarn ](#tab-panel-10072)
+* [  npm ](#tab-panel-10189)
+* [  pnpm ](#tab-panel-10190)
+* [  yarn ](#tab-panel-10191)
 
 Terminal window
 
@@ -108,14 +108,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `hyperdrive delete`
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-10073)
-* [  pnpm ](#tab-panel-10074)
-* [  yarn ](#tab-panel-10075)
+* [  npm ](#tab-panel-10192)
+* [  pnpm ](#tab-panel-10193)
+* [  yarn ](#tab-panel-10194)
 
 Terminal window
 
@@ -163,14 +165,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `hyperdrive get`
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-10076)
-* [  pnpm ](#tab-panel-10077)
-* [  yarn ](#tab-panel-10078)
+* [  npm ](#tab-panel-10195)
+* [  pnpm ](#tab-panel-10196)
+* [  yarn ](#tab-panel-10197)
 
 Terminal window
 
@@ -218,14 +222,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `hyperdrive list`
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-10079)
-* [  pnpm ](#tab-panel-10080)
-* [  yarn ](#tab-panel-10081)
+* [  npm ](#tab-panel-10198)
+* [  pnpm ](#tab-panel-10199)
+* [  yarn ](#tab-panel-10200)
 
 Terminal window
 
@@ -270,14 +276,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `hyperdrive update`
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-10082)
-* [  pnpm ](#tab-panel-10083)
-* [  yarn ](#tab-panel-10084)
+* [  npm ](#tab-panel-10201)
+* [  pnpm ](#tab-panel-10202)
+* [  yarn ](#tab-panel-10203)
 
 Terminal window
 
@@ -361,6 +369,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/hyperdrive/","name":"Hyperdrive"}}]}

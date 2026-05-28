@@ -18,9 +18,9 @@ Manage your Workers [Queues](https://developers.cloudflare.com/queues/) configur
 
 List queues
 
-* [  npm ](#tab-panel-10050)
-* [  pnpm ](#tab-panel-10051)
-* [  yarn ](#tab-panel-10052)
+* [  npm ](#tab-panel-10321)
+* [  pnpm ](#tab-panel-10322)
+* [  yarn ](#tab-panel-10323)
 
 Terminal window
 
@@ -68,14 +68,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues create`
 
 Create a queue
 
-* [  npm ](#tab-panel-10053)
-* [  pnpm ](#tab-panel-10054)
-* [  yarn ](#tab-panel-10055)
+* [  npm ](#tab-panel-10324)
+* [  pnpm ](#tab-panel-10325)
+* [  yarn ](#tab-panel-10326)
 
 Terminal window
 
@@ -127,14 +129,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues update`
 
 Update a queue
 
-* [  npm ](#tab-panel-10056)
-* [  pnpm ](#tab-panel-10057)
-* [  yarn ](#tab-panel-10058)
+* [  npm ](#tab-panel-10327)
+* [  pnpm ](#tab-panel-10328)
+* [  yarn ](#tab-panel-10329)
 
 Terminal window
 
@@ -186,14 +190,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues delete`
 
 Delete a queue
 
-* [  npm ](#tab-panel-10059)
-* [  pnpm ](#tab-panel-10060)
-* [  yarn ](#tab-panel-10061)
+* [  npm ](#tab-panel-10330)
+* [  pnpm ](#tab-panel-10331)
+* [  yarn ](#tab-panel-10332)
 
 Terminal window
 
@@ -241,14 +247,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues info`
 
 Get queue information
 
-* [  npm ](#tab-panel-10062)
-* [  pnpm ](#tab-panel-10063)
-* [  yarn ](#tab-panel-10064)
+* [  npm ](#tab-panel-10333)
+* [  pnpm ](#tab-panel-10334)
+* [  yarn ](#tab-panel-10335)
 
 Terminal window
 
@@ -296,14 +304,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues consumer add`
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10065)
-* [  pnpm ](#tab-panel-10066)
-* [  yarn ](#tab-panel-10067)
+* [  npm ](#tab-panel-10336)
+* [  pnpm ](#tab-panel-10337)
+* [  yarn ](#tab-panel-10338)
 
 Terminal window
 
@@ -365,14 +375,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues consumer remove`
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10068)
-* [  pnpm ](#tab-panel-10069)
-* [  yarn ](#tab-panel-10070)
+* [  npm ](#tab-panel-10339)
+* [  pnpm ](#tab-panel-10340)
+* [  yarn ](#tab-panel-10341)
 
 Terminal window
 
@@ -422,14 +434,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues consumer list`
 
 List consumers for a queue
 
-* [  npm ](#tab-panel-10071)
-* [  pnpm ](#tab-panel-10072)
-* [  yarn ](#tab-panel-10073)
+* [  npm ](#tab-panel-10342)
+* [  pnpm ](#tab-panel-10343)
+* [  yarn ](#tab-panel-10344)
 
 Terminal window
 
@@ -479,14 +493,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues consumer http add`
 
 Add a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-10074)
-* [  pnpm ](#tab-panel-10075)
-* [  yarn ](#tab-panel-10076)
+* [  npm ](#tab-panel-10345)
+* [  pnpm ](#tab-panel-10346)
+* [  yarn ](#tab-panel-10347)
 
 Terminal window
 
@@ -544,14 +560,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues consumer http remove`
 
 Remove a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-10077)
-* [  pnpm ](#tab-panel-10078)
-* [  yarn ](#tab-panel-10079)
+* [  npm ](#tab-panel-10348)
+* [  pnpm ](#tab-panel-10349)
+* [  yarn ](#tab-panel-10350)
 
 Terminal window
 
@@ -599,14 +617,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues consumer http list`
 
 List HTTP pull consumers for a queue
 
-* [  npm ](#tab-panel-10080)
-* [  pnpm ](#tab-panel-10081)
-* [  yarn ](#tab-panel-10082)
+* [  npm ](#tab-panel-10351)
+* [  pnpm ](#tab-panel-10352)
+* [  yarn ](#tab-panel-10353)
 
 Terminal window
 
@@ -656,14 +676,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues consumer worker add`
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10083)
-* [  pnpm ](#tab-panel-10084)
-* [  yarn ](#tab-panel-10085)
+* [  npm ](#tab-panel-10354)
+* [  pnpm ](#tab-panel-10355)
+* [  yarn ](#tab-panel-10356)
 
 Terminal window
 
@@ -725,14 +747,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues consumer worker remove`
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10086)
-* [  pnpm ](#tab-panel-10087)
-* [  yarn ](#tab-panel-10088)
+* [  npm ](#tab-panel-10357)
+* [  pnpm ](#tab-panel-10358)
+* [  yarn ](#tab-panel-10359)
 
 Terminal window
 
@@ -782,14 +806,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues consumer worker list`
 
 List worker consumers for a queue
 
-* [  npm ](#tab-panel-10089)
-* [  pnpm ](#tab-panel-10090)
-* [  yarn ](#tab-panel-10091)
+* [  npm ](#tab-panel-10360)
+* [  pnpm ](#tab-panel-10361)
+* [  yarn ](#tab-panel-10362)
 
 Terminal window
 
@@ -839,14 +865,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues pause-delivery`
 
 Pause message delivery for a queue
 
-* [  npm ](#tab-panel-10092)
-* [  pnpm ](#tab-panel-10093)
-* [  yarn ](#tab-panel-10094)
+* [  npm ](#tab-panel-10363)
+* [  pnpm ](#tab-panel-10364)
+* [  yarn ](#tab-panel-10365)
 
 Terminal window
 
@@ -894,14 +922,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues resume-delivery`
 
 Resume message delivery for a queue
 
-* [  npm ](#tab-panel-10095)
-* [  pnpm ](#tab-panel-10096)
-* [  yarn ](#tab-panel-10097)
+* [  npm ](#tab-panel-10366)
+* [  pnpm ](#tab-panel-10367)
+* [  yarn ](#tab-panel-10368)
 
 Terminal window
 
@@ -949,14 +979,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues purge`
 
 Purge messages from a queue
 
-* [  npm ](#tab-panel-10098)
-* [  pnpm ](#tab-panel-10099)
-* [  yarn ](#tab-panel-10100)
+* [  npm ](#tab-panel-10369)
+* [  pnpm ](#tab-panel-10370)
+* [  yarn ](#tab-panel-10371)
 
 Terminal window
 
@@ -1006,14 +1038,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues subscription create`
 
 Create a new event subscription for a queue
 
-* [  npm ](#tab-panel-10101)
-* [  pnpm ](#tab-panel-10102)
-* [  yarn ](#tab-panel-10103)
+* [  npm ](#tab-panel-10372)
+* [  pnpm ](#tab-panel-10373)
+* [  yarn ](#tab-panel-10374)
 
 Terminal window
 
@@ -1075,14 +1109,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues subscription list`
 
 List event subscriptions for a queue
 
-* [  npm ](#tab-panel-10104)
-* [  pnpm ](#tab-panel-10105)
-* [  yarn ](#tab-panel-10106)
+* [  npm ](#tab-panel-10375)
+* [  pnpm ](#tab-panel-10376)
+* [  yarn ](#tab-panel-10377)
 
 Terminal window
 
@@ -1136,14 +1172,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues subscription get`
 
 Get details about a specific event subscription
 
-* [  npm ](#tab-panel-10107)
-* [  pnpm ](#tab-panel-10108)
-* [  yarn ](#tab-panel-10109)
+* [  npm ](#tab-panel-10378)
+* [  pnpm ](#tab-panel-10379)
+* [  yarn ](#tab-panel-10380)
 
 Terminal window
 
@@ -1195,14 +1233,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues subscription delete`
 
 Delete an event subscription from a queue
 
-* [  npm ](#tab-panel-10110)
-* [  pnpm ](#tab-panel-10111)
-* [  yarn ](#tab-panel-10112)
+* [  npm ](#tab-panel-10381)
+* [  pnpm ](#tab-panel-10382)
+* [  yarn ](#tab-panel-10383)
 
 Terminal window
 
@@ -1254,14 +1294,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `queues subscription update`
 
 Update an existing event subscription
 
-* [  npm ](#tab-panel-10113)
-* [  pnpm ](#tab-panel-10114)
-* [  yarn ](#tab-panel-10115)
+* [  npm ](#tab-panel-10384)
+* [  pnpm ](#tab-panel-10385)
+* [  yarn ](#tab-panel-10386)
 
 Terminal window
 
@@ -1319,6 +1361,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/queues/","name":"Queues"}}]}

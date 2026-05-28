@@ -1037,6 +1037,7 @@ components:
         - Cohere
         - Crucible
         - Crusoe
+        - Darkbloom
         - DeepInfra
         - DeepSeek
         - DekaLLM
@@ -2602,7 +2603,7 @@ payload = {
             "content": "Hello!"
         }
     ],
-    "model": "openai/gpt-4o",
+    "model": "openai/gpt-5.4",
     "temperature": 0.7
 }
 headers = {
@@ -2620,7 +2621,7 @@ const url = 'https://openrouter.ai/api/v1/presets/my-preset/chat/completions';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"messages":[{"role":"system","content":"You are a helpful assistant."},{"role":"user","content":"Hello!"}],"model":"openai/gpt-4o","temperature":0.7}'
+  body: '{"messages":[{"role":"system","content":"You are a helpful assistant."},{"role":"user","content":"Hello!"}],"model":"openai/gpt-5.4","temperature":0.7}'
 };
 
 try {
@@ -2646,7 +2647,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/presets/my-preset/chat/completions"
 
-	payload := strings.NewReader("{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello!\"\n    }\n  ],\n  \"model\": \"openai/gpt-4o\",\n  \"temperature\": 0.7\n}")
+	payload := strings.NewReader("{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello!\"\n    }\n  ],\n  \"model\": \"openai/gpt-5.4\",\n  \"temperature\": 0.7\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -2676,7 +2677,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello!\"\n    }\n  ],\n  \"model\": \"openai/gpt-4o\",\n  \"temperature\": 0.7\n}"
+request.body = "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello!\"\n    }\n  ],\n  \"model\": \"openai/gpt-5.4\",\n  \"temperature\": 0.7\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -2689,7 +2690,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/presets/my-preset/chat/completions")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello!\"\n    }\n  ],\n  \"model\": \"openai/gpt-4o\",\n  \"temperature\": 0.7\n}")
+  .body("{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello!\"\n    }\n  ],\n  \"model\": \"openai/gpt-5.4\",\n  \"temperature\": 0.7\n}")
   .asString();
 ```
 
@@ -2711,7 +2712,7 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/presets/my-pr
       "content": "Hello!"
     }
   ],
-  "model": "openai/gpt-4o",
+  "model": "openai/gpt-5.4",
   "temperature": 0.7
 }',
   'headers' => [
@@ -2730,7 +2731,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/presets/my-preset/chat
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello!\"\n    }\n  ],\n  \"model\": \"openai/gpt-4o\",\n  \"temperature\": 0.7\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello!\"\n    }\n  ],\n  \"model\": \"openai/gpt-5.4\",\n  \"temperature\": 0.7\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -2752,7 +2753,7 @@ let parameters = [
       "content": "Hello!"
     ]
   ],
-  "model": "openai/gpt-4o",
+  "model": "openai/gpt-5.4",
   "temperature": 0.7
 ] as [String : Any]
 

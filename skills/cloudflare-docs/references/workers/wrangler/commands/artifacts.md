@@ -18,9 +18,9 @@ Manage [Artifacts](https://developers.cloudflare.com/artifacts/) namespaces, rep
 
 List Artifacts namespaces
 
-* [  npm ](#tab-panel-10013)
-* [  pnpm ](#tab-panel-10014)
-* [  yarn ](#tab-panel-10015)
+* [  npm ](#tab-panel-10087)
+* [  pnpm ](#tab-panel-10088)
+* [  yarn ](#tab-panel-10089)
 
 Terminal window
 
@@ -68,14 +68,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `artifacts namespaces get`
 
 Get an Artifacts namespace
 
-* [  npm ](#tab-panel-10016)
-* [  pnpm ](#tab-panel-10017)
-* [  yarn ](#tab-panel-10018)
+* [  npm ](#tab-panel-10090)
+* [  pnpm ](#tab-panel-10091)
+* [  yarn ](#tab-panel-10092)
 
 Terminal window
 
@@ -125,14 +127,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `artifacts repos create`
 
 Create an Artifacts repository
 
-* [  npm ](#tab-panel-10019)
-* [  pnpm ](#tab-panel-10020)
-* [  yarn ](#tab-panel-10021)
+* [  npm ](#tab-panel-10093)
+* [  pnpm ](#tab-panel-10094)
+* [  yarn ](#tab-panel-10095)
 
 Terminal window
 
@@ -190,14 +194,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `artifacts repos list`
 
 List Artifacts repositories in a namespace
 
-* [  npm ](#tab-panel-10022)
-* [  pnpm ](#tab-panel-10023)
-* [  yarn ](#tab-panel-10024)
+* [  npm ](#tab-panel-10096)
+* [  pnpm ](#tab-panel-10097)
+* [  yarn ](#tab-panel-10098)
 
 Terminal window
 
@@ -247,14 +253,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `artifacts repos get`
 
 Get an Artifacts repository
 
-* [  npm ](#tab-panel-10025)
-* [  pnpm ](#tab-panel-10026)
-* [  yarn ](#tab-panel-10027)
+* [  npm ](#tab-panel-10099)
+* [  pnpm ](#tab-panel-10100)
+* [  yarn ](#tab-panel-10101)
 
 Terminal window
 
@@ -306,14 +314,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `artifacts repos delete`
 
 Delete an Artifacts repository
 
-* [  npm ](#tab-panel-10028)
-* [  pnpm ](#tab-panel-10029)
-* [  yarn ](#tab-panel-10030)
+* [  npm ](#tab-panel-10102)
+* [  pnpm ](#tab-panel-10103)
+* [  yarn ](#tab-panel-10104)
 
 Terminal window
 
@@ -367,14 +377,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `artifacts repos issue-token`
 
 Issue a repo-scoped Artifacts token
 
-* [  npm ](#tab-panel-10031)
-* [  pnpm ](#tab-panel-10032)
-* [  yarn ](#tab-panel-10033)
+* [  npm ](#tab-panel-10105)
+* [  pnpm ](#tab-panel-10106)
+* [  yarn ](#tab-panel-10107)
 
 Terminal window
 
@@ -430,6 +442,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/artifacts/","name":"Artifacts"}}]}

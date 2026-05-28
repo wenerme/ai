@@ -27,7 +27,7 @@ Each guardrail can include any combination of:
 * **Model allowlist** - Restrict to specific models. Leave empty to allow all.
 * **Provider allowlist** - Restrict to specific providers. Leave empty to allow all.
 * **Zero Data Retention** - Enforce ZDR per model group (Anthropic, OpenAI, Google, and non-frontier). See [Zero Data Retention](/docs/guides/features/zdr#per-model-group-zdr-enforcement) for details.
-* **Security** - Protect against prompt injection and jailbreak attacks with [regex-based detection](/docs/guides/features/guardrails/prompt-injection) and Google Cloud Model Armor.
+* **Security** - Protect against prompt injection and jailbreak attacks with [regex-based detection](/docs/guides/features/guardrails/prompt-injection).
 * **[Sensitive Info](/docs/guides/features/guardrails/sensitive-info)** - Detect and redact or block sensitive information (PII) in API requests using built-in presets and NLP-based detection.
 * **Custom content filters** - Define your own regex patterns to [redact or block](#custom-content-filters) matching content in incoming requests.
 

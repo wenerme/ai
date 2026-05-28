@@ -18,9 +18,9 @@ Manage your [Pipelines](https://developers.cloudflare.com/pipelines/) using Wran
 
 Interactive setup for a complete pipeline
 
-* [  npm ](#tab-panel-10008)
-* [  pnpm ](#tab-panel-10009)
-* [  yarn ](#tab-panel-10010)
+* [  npm ](#tab-panel-10279)
+* [  pnpm ](#tab-panel-10280)
+* [  yarn ](#tab-panel-10281)
 
 Terminal window
 
@@ -68,14 +68,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines create`
 
 Create a new pipeline
 
-* [  npm ](#tab-panel-10011)
-* [  pnpm ](#tab-panel-10012)
-* [  yarn ](#tab-panel-10013)
+* [  npm ](#tab-panel-10282)
+* [  pnpm ](#tab-panel-10283)
+* [  yarn ](#tab-panel-10284)
 
 Terminal window
 
@@ -127,14 +129,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines list`
 
 List all pipelines
 
-* [  npm ](#tab-panel-10014)
-* [  pnpm ](#tab-panel-10015)
-* [  yarn ](#tab-panel-10016)
+* [  npm ](#tab-panel-10285)
+* [  pnpm ](#tab-panel-10286)
+* [  yarn ](#tab-panel-10287)
 
 Terminal window
 
@@ -186,14 +190,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines get`
 
 Get details about a specific pipeline
 
-* [  npm ](#tab-panel-10017)
-* [  pnpm ](#tab-panel-10018)
-* [  yarn ](#tab-panel-10019)
+* [  npm ](#tab-panel-10288)
+* [  pnpm ](#tab-panel-10289)
+* [  yarn ](#tab-panel-10290)
 
 Terminal window
 
@@ -243,14 +249,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines update`
 
 Update a pipeline configuration (legacy pipelines only)
 
-* [  npm ](#tab-panel-10020)
-* [  pnpm ](#tab-panel-10021)
-* [  yarn ](#tab-panel-10022)
+* [  npm ](#tab-panel-10291)
+* [  pnpm ](#tab-panel-10292)
+* [  yarn ](#tab-panel-10293)
 
 Terminal window
 
@@ -322,14 +330,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines delete`
 
 Delete a pipeline
 
-* [  npm ](#tab-panel-10023)
-* [  pnpm ](#tab-panel-10024)
-* [  yarn ](#tab-panel-10025)
+* [  npm ](#tab-panel-10294)
+* [  pnpm ](#tab-panel-10295)
+* [  yarn ](#tab-panel-10296)
 
 Terminal window
 
@@ -379,14 +389,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines streams create`
 
 Create a new stream
 
-* [  npm ](#tab-panel-10026)
-* [  pnpm ](#tab-panel-10027)
-* [  yarn ](#tab-panel-10028)
+* [  npm ](#tab-panel-10297)
+* [  pnpm ](#tab-panel-10298)
+* [  yarn ](#tab-panel-10299)
 
 Terminal window
 
@@ -442,14 +454,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines streams list`
 
 List all streams
 
-* [  npm ](#tab-panel-10029)
-* [  pnpm ](#tab-panel-10030)
-* [  yarn ](#tab-panel-10031)
+* [  npm ](#tab-panel-10300)
+* [  pnpm ](#tab-panel-10301)
+* [  yarn ](#tab-panel-10302)
 
 Terminal window
 
@@ -503,14 +517,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines streams get`
 
 Get details about a specific stream
 
-* [  npm ](#tab-panel-10032)
-* [  pnpm ](#tab-panel-10033)
-* [  yarn ](#tab-panel-10034)
+* [  npm ](#tab-panel-10303)
+* [  pnpm ](#tab-panel-10304)
+* [  yarn ](#tab-panel-10305)
 
 Terminal window
 
@@ -560,14 +576,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines streams delete`
 
 Delete a stream
 
-* [  npm ](#tab-panel-10035)
-* [  pnpm ](#tab-panel-10036)
-* [  yarn ](#tab-panel-10037)
+* [  npm ](#tab-panel-10306)
+* [  pnpm ](#tab-panel-10307)
+* [  yarn ](#tab-panel-10308)
 
 Terminal window
 
@@ -617,14 +635,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines sinks create`
 
 Create a new sink
 
-* [  npm ](#tab-panel-10038)
-* [  pnpm ](#tab-panel-10039)
-* [  yarn ](#tab-panel-10040)
+* [  npm ](#tab-panel-10309)
+* [  pnpm ](#tab-panel-10310)
+* [  yarn ](#tab-panel-10311)
 
 Terminal window
 
@@ -700,14 +720,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines sinks list`
 
 List all sinks
 
-* [  npm ](#tab-panel-10041)
-* [  pnpm ](#tab-panel-10042)
-* [  yarn ](#tab-panel-10043)
+* [  npm ](#tab-panel-10312)
+* [  pnpm ](#tab-panel-10313)
+* [  yarn ](#tab-panel-10314)
 
 Terminal window
 
@@ -761,14 +783,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines sinks get`
 
 Get details about a specific sink
 
-* [  npm ](#tab-panel-10044)
-* [  pnpm ](#tab-panel-10045)
-* [  yarn ](#tab-panel-10046)
+* [  npm ](#tab-panel-10315)
+* [  pnpm ](#tab-panel-10316)
+* [  yarn ](#tab-panel-10317)
 
 Terminal window
 
@@ -818,14 +842,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pipelines sinks delete`
 
 Delete a sink
 
-* [  npm ](#tab-panel-10047)
-* [  pnpm ](#tab-panel-10048)
-* [  yarn ](#tab-panel-10049)
+* [  npm ](#tab-panel-10318)
+* [  pnpm ](#tab-panel-10319)
+* [  yarn ](#tab-panel-10320)
 
 Terminal window
 
@@ -875,6 +901,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/pipelines/","name":"Pipelines"}}]}

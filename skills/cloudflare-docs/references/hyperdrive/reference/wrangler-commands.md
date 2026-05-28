@@ -18,9 +18,9 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-6227)
-* [  pnpm ](#tab-panel-6228)
-* [  yarn ](#tab-panel-6229)
+* [  npm ](#tab-panel-6753)
+* [  pnpm ](#tab-panel-6754)
+* [  yarn ](#tab-panel-6755)
 
 Terminal window
 
@@ -106,14 +106,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `hyperdrive delete`
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-6230)
-* [  pnpm ](#tab-panel-6231)
-* [  yarn ](#tab-panel-6232)
+* [  npm ](#tab-panel-6756)
+* [  pnpm ](#tab-panel-6757)
+* [  yarn ](#tab-panel-6758)
 
 Terminal window
 
@@ -161,14 +163,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `hyperdrive get`
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-6233)
-* [  pnpm ](#tab-panel-6234)
-* [  yarn ](#tab-panel-6235)
+* [  npm ](#tab-panel-6759)
+* [  pnpm ](#tab-panel-6760)
+* [  yarn ](#tab-panel-6761)
 
 Terminal window
 
@@ -216,14 +220,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `hyperdrive list`
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-6236)
-* [  pnpm ](#tab-panel-6237)
-* [  yarn ](#tab-panel-6238)
+* [  npm ](#tab-panel-6762)
+* [  pnpm ](#tab-panel-6763)
+* [  yarn ](#tab-panel-6764)
 
 Terminal window
 
@@ -268,14 +274,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `hyperdrive update`
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-6239)
-* [  pnpm ](#tab-panel-6240)
-* [  yarn ](#tab-panel-6241)
+* [  npm ](#tab-panel-6765)
+* [  pnpm ](#tab-panel-6766)
+* [  yarn ](#tab-panel-6767)
 
 Terminal window
 
@@ -359,6 +367,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/reference/wrangler-commands/","name":"Wrangler commands"}}]}

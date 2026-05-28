@@ -18,9 +18,9 @@ Configure [Cloudflare Pages](https://developers.cloudflare.com/pages/) using Wra
 
 Develop your full-stack Pages application locally
 
-* [  npm ](#tab-panel-10006)
-* [  pnpm ](#tab-panel-10007)
-* [  yarn ](#tab-panel-10008)
+* [  npm ](#tab-panel-10237)
+* [  pnpm ](#tab-panel-10238)
+* [  yarn ](#tab-panel-10239)
 
 Terminal window
 
@@ -116,14 +116,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages functions build`
 
 Compile a folder of Pages Functions into a single Worker
 
-* [  npm ](#tab-panel-10009)
-* [  pnpm ](#tab-panel-10010)
-* [  yarn ](#tab-panel-10011)
+* [  npm ](#tab-panel-10240)
+* [  pnpm ](#tab-panel-10241)
+* [  yarn ](#tab-panel-10242)
 
 Terminal window
 
@@ -203,14 +205,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages project list`
 
 List your Cloudflare Pages projects
 
-* [  npm ](#tab-panel-10012)
-* [  pnpm ](#tab-panel-10013)
-* [  yarn ](#tab-panel-10014)
+* [  npm ](#tab-panel-10243)
+* [  pnpm ](#tab-panel-10244)
+* [  yarn ](#tab-panel-10245)
 
 Terminal window
 
@@ -258,14 +262,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages project create`
 
 Create a new Cloudflare Pages project
 
-* [  npm ](#tab-panel-10015)
-* [  pnpm ](#tab-panel-10016)
-* [  yarn ](#tab-panel-10017)
+* [  npm ](#tab-panel-10246)
+* [  pnpm ](#tab-panel-10247)
+* [  yarn ](#tab-panel-10248)
 
 Terminal window
 
@@ -319,14 +325,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages project delete`
 
 Delete a Cloudflare Pages project
 
-* [  npm ](#tab-panel-10018)
-* [  pnpm ](#tab-panel-10019)
-* [  yarn ](#tab-panel-10020)
+* [  npm ](#tab-panel-10249)
+* [  pnpm ](#tab-panel-10250)
+* [  yarn ](#tab-panel-10251)
 
 Terminal window
 
@@ -376,14 +384,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages deployment list`
 
 List deployments in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-10021)
-* [  pnpm ](#tab-panel-10022)
-* [  yarn ](#tab-panel-10023)
+* [  npm ](#tab-panel-10252)
+* [  pnpm ](#tab-panel-10253)
+* [  yarn ](#tab-panel-10254)
 
 Terminal window
 
@@ -435,14 +445,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages deployment tail`
 
 Start a tailing session for a project's deployment and livestream logs from your Functions
 
-* [  npm ](#tab-panel-10024)
-* [  pnpm ](#tab-panel-10025)
-* [  yarn ](#tab-panel-10026)
+* [  npm ](#tab-panel-10255)
+* [  pnpm ](#tab-panel-10256)
+* [  yarn ](#tab-panel-10257)
 
 Terminal window
 
@@ -508,14 +520,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages deployment delete`
 
 Delete a deployment in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-10027)
-* [  pnpm ](#tab-panel-10028)
-* [  yarn ](#tab-panel-10029)
+* [  npm ](#tab-panel-10258)
+* [  pnpm ](#tab-panel-10259)
+* [  yarn ](#tab-panel-10260)
 
 Terminal window
 
@@ -567,14 +581,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages deploy`
 
 Deploy a directory of static assets as a Pages deployment
 
-* [  npm ](#tab-panel-10030)
-* [  pnpm ](#tab-panel-10031)
-* [  yarn ](#tab-panel-10032)
+* [  npm ](#tab-panel-10261)
+* [  pnpm ](#tab-panel-10262)
+* [  yarn ](#tab-panel-10263)
 
 Terminal window
 
@@ -638,14 +654,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages secret put`
 
 Create or update a secret variable for a Pages project
 
-* [  npm ](#tab-panel-10033)
-* [  pnpm ](#tab-panel-10034)
-* [  yarn ](#tab-panel-10035)
+* [  npm ](#tab-panel-10264)
+* [  pnpm ](#tab-panel-10265)
+* [  yarn ](#tab-panel-10266)
 
 Terminal window
 
@@ -695,14 +713,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages secret bulk`
 
 Bulk upload secrets for a Pages project
 
-* [  npm ](#tab-panel-10036)
-* [  pnpm ](#tab-panel-10037)
-* [  yarn ](#tab-panel-10038)
+* [  npm ](#tab-panel-10267)
+* [  pnpm ](#tab-panel-10268)
+* [  yarn ](#tab-panel-10269)
 
 Terminal window
 
@@ -752,14 +772,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages secret delete`
 
 Delete a secret variable from a Pages project
 
-* [  npm ](#tab-panel-10039)
-* [  pnpm ](#tab-panel-10040)
-* [  yarn ](#tab-panel-10041)
+* [  npm ](#tab-panel-10270)
+* [  pnpm ](#tab-panel-10271)
+* [  yarn ](#tab-panel-10272)
 
 Terminal window
 
@@ -809,14 +831,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages secret list`
 
 List all secrets for a Pages project
 
-* [  npm ](#tab-panel-10042)
-* [  pnpm ](#tab-panel-10043)
-* [  yarn ](#tab-panel-10044)
+* [  npm ](#tab-panel-10273)
+* [  pnpm ](#tab-panel-10274)
+* [  yarn ](#tab-panel-10275)
 
 Terminal window
 
@@ -864,6 +888,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `pages download config`
 
@@ -872,9 +898,9 @@ Experimental
 
 Download your Pages project config as a Wrangler configuration file
 
-* [  npm ](#tab-panel-10045)
-* [  pnpm ](#tab-panel-10046)
-* [  yarn ](#tab-panel-10047)
+* [  npm ](#tab-panel-10276)
+* [  pnpm ](#tab-panel-10277)
+* [  yarn ](#tab-panel-10278)
 
 Terminal window
 
@@ -924,6 +950,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/pages/","name":"Pages"}}]}

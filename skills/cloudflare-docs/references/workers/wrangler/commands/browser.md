@@ -18,9 +18,9 @@ Interact with the [Browser Run](https://developers.cloudflare.com/browser-run/) 
 
 Create a new Browser Run session
 
-* [  npm ](#tab-panel-10034)
-* [  pnpm ](#tab-panel-10035)
-* [  yarn ](#tab-panel-10036)
+* [  npm ](#tab-panel-10108)
+* [  pnpm ](#tab-panel-10109)
+* [  yarn ](#tab-panel-10110)
 
 Terminal window
 
@@ -74,14 +74,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `browser close`
 
 Close a Browser Run session
 
-* [  npm ](#tab-panel-10037)
-* [  pnpm ](#tab-panel-10038)
-* [  yarn ](#tab-panel-10039)
+* [  npm ](#tab-panel-10111)
+* [  pnpm ](#tab-panel-10112)
+* [  yarn ](#tab-panel-10113)
 
 Terminal window
 
@@ -131,14 +133,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `browser list`
 
 List active Browser Run sessions
 
-* [  npm ](#tab-panel-10040)
-* [  pnpm ](#tab-panel-10041)
-* [  yarn ](#tab-panel-10042)
+* [  npm ](#tab-panel-10114)
+* [  pnpm ](#tab-panel-10115)
+* [  yarn ](#tab-panel-10116)
 
 Terminal window
 
@@ -186,14 +190,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `browser view`
 
 View a live browser session
 
-* [  npm ](#tab-panel-10043)
-* [  pnpm ](#tab-panel-10044)
-* [  yarn ](#tab-panel-10045)
+* [  npm ](#tab-panel-10117)
+* [  pnpm ](#tab-panel-10118)
+* [  yarn ](#tab-panel-10119)
 
 Terminal window
 
@@ -247,6 +253,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/browser/","name":"Browser"}}]}

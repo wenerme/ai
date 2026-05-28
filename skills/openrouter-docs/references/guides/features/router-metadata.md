@@ -147,13 +147,13 @@ The full schema is documented under [`OpenRouterMetadata`](/docs/api-reference) 
 
 The `pipeline` array records every plugin that materially affected the request. A plugin only emits a stage when it actually ran; a no-op plugin (e.g. context compression that found the input already fit the budget) is omitted. Today's stage types include:
 
-| `type`                | `name` values                                           | What it tells you                                                                                             |
-| --------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `guardrail`           | `content-filter`, `moderation`, `lakera`, `model-armor` | `flagged: bool`, plus engine-specific verdict (`decision`, `confidence_level`, `matched_entity_types`, etc.). |
-| `plugin`              | `web-search`, `file-parser`                             | Plugin-specific telemetry (e.g. result counts for web search, page count for file parsing).                   |
-| `server_tools`        | `server-tools`                                          | Mode (`native` / `sdk`) and the list of tools invoked.                                                        |
-| `response_healing`    | `response-healing`                                      | Mode (`json_schema` / `json_object`), whether healing improved the response, lengths.                         |
-| `context_compression` | `context-compression`                                   | Engine used, input type (`messages` / `prompt`), original vs. compressed counts.                              |
+| `type`                | `name` values                  | What it tells you                                                                                             |
+| --------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| `guardrail`           | `content-filter`, `moderation` | `flagged: bool`, plus engine-specific verdict (`decision`, `confidence_level`, `matched_entity_types`, etc.). |
+| `plugin`              | `web-search`, `file-parser`    | Plugin-specific telemetry (e.g. result counts for web search, page count for file parsing).                   |
+| `server_tools`        | `server-tools`                 | Mode (`native` / `sdk`) and the list of tools invoked.                                                        |
+| `response_healing`    | `response-healing`             | Mode (`json_schema` / `json_object`), whether healing improved the response, lengths.                         |
+| `context_compression` | `context-compression`          | Engine used, input type (`messages` / `prompt`), original vs. compressed counts.                              |
 
 Multiple plugins can share a `type`. To find a specific guardrail (say, the content filter), iterate the array and match on both `type === 'guardrail'` and `name === 'content-filter'`. The full set of guardrail-level plugins emits `type: 'guardrail'` so you can filter all of them together (`pipeline.filter(s => s.type === 'guardrail')`) without enumerating individual plugins.
 

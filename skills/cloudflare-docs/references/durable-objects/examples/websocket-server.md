@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build a WebSocket server
 
-**Last reviewed:**  about 2 years ago 
+**Last reviewed:**  over 2 years ago 
 
 Build a WebSocket server using Durable Objects and Workers.
 
@@ -22,9 +22,9 @@ Warning
 
 WebSocket connections pin your Durable Object to memory, and so duration charges will be incurred so long as the WebSocket is connected (regardless of activity). To avoid duration charges during periods of inactivity, use the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/), which only charges for duration when JavaScript is actively executing.
 
-* [  JavaScript ](#tab-panel-6257)
-* [  TypeScript ](#tab-panel-6258)
-* [  Python ](#tab-panel-6259)
+* [  JavaScript ](#tab-panel-6317)
+* [  TypeScript ](#tab-panel-6318)
+* [  Python ](#tab-panel-6319)
 
 JavaScript
 
@@ -644,8 +644,8 @@ class WebSocketServer(DurableObject):
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-6255)
-* [  wrangler.toml ](#tab-panel-6256)
+* [  wrangler.jsonc ](#tab-panel-6315)
+* [  wrangler.toml ](#tab-panel-6316)
 
 JSONC
 

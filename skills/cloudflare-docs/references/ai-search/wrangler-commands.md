@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List all AI Search instances
 
-* [  npm ](#tab-panel-4446)
-* [  pnpm ](#tab-panel-4447)
-* [  yarn ](#tab-panel-4448)
+* [  npm ](#tab-panel-4646)
+* [  pnpm ](#tab-panel-4647)
+* [  yarn ](#tab-panel-4648)
 
 Terminal window
 
@@ -72,14 +72,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search create`
 
 Create a new AI Search instance
 
-* [  npm ](#tab-panel-4449)
-* [  pnpm ](#tab-panel-4450)
-* [  yarn ](#tab-panel-4451)
+* [  npm ](#tab-panel-4649)
+* [  pnpm ](#tab-panel-4650)
+* [  yarn ](#tab-panel-4651)
 
 Terminal window
 
@@ -165,14 +167,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search get`
 
 Get details of an AI Search instance
 
-* [  npm ](#tab-panel-4452)
-* [  pnpm ](#tab-panel-4453)
-* [  yarn ](#tab-panel-4454)
+* [  npm ](#tab-panel-4652)
+* [  pnpm ](#tab-panel-4653)
+* [  yarn ](#tab-panel-4654)
 
 Terminal window
 
@@ -224,14 +228,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search update`
 
 Update an AI Search instance configuration
 
-* [  npm ](#tab-panel-4455)
-* [  pnpm ](#tab-panel-4456)
-* [  yarn ](#tab-panel-4457)
+* [  npm ](#tab-panel-4655)
+* [  pnpm ](#tab-panel-4656)
+* [  yarn ](#tab-panel-4657)
 
 Terminal window
 
@@ -305,14 +311,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search delete`
 
 Delete an AI Search instance
 
-* [  npm ](#tab-panel-4458)
-* [  pnpm ](#tab-panel-4459)
-* [  yarn ](#tab-panel-4460)
+* [  npm ](#tab-panel-4658)
+* [  pnpm ](#tab-panel-4659)
+* [  yarn ](#tab-panel-4660)
 
 Terminal window
 
@@ -364,14 +372,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search stats`
 
 Get usage statistics for an AI Search instance
 
-* [  npm ](#tab-panel-4461)
-* [  pnpm ](#tab-panel-4462)
-* [  yarn ](#tab-panel-4463)
+* [  npm ](#tab-panel-4661)
+* [  pnpm ](#tab-panel-4662)
+* [  yarn ](#tab-panel-4663)
 
 Terminal window
 
@@ -423,14 +433,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search search`
 
 Execute a semantic search query against an AI Search instance
 
-* [  npm ](#tab-panel-4464)
-* [  pnpm ](#tab-panel-4465)
-* [  yarn ](#tab-panel-4466)
+* [  npm ](#tab-panel-4664)
+* [  pnpm ](#tab-panel-4665)
+* [  yarn ](#tab-panel-4666)
 
 Terminal window
 
@@ -492,14 +504,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search namespace list`
 
 List all AI Search namespaces
 
-* [  npm ](#tab-panel-4467)
-* [  pnpm ](#tab-panel-4468)
-* [  yarn ](#tab-panel-4469)
+* [  npm ](#tab-panel-4667)
+* [  pnpm ](#tab-panel-4668)
+* [  yarn ](#tab-panel-4669)
 
 Terminal window
 
@@ -553,14 +567,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search namespace create`
 
 Create a new AI Search namespace
 
-* [  npm ](#tab-panel-4470)
-* [  pnpm ](#tab-panel-4471)
-* [  yarn ](#tab-panel-4472)
+* [  npm ](#tab-panel-4670)
+* [  pnpm ](#tab-panel-4671)
+* [  yarn ](#tab-panel-4672)
 
 Terminal window
 
@@ -612,14 +628,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search namespace get`
 
 Get details of an AI Search namespace
 
-* [  npm ](#tab-panel-4473)
-* [  pnpm ](#tab-panel-4474)
-* [  yarn ](#tab-panel-4475)
+* [  npm ](#tab-panel-4673)
+* [  pnpm ](#tab-panel-4674)
+* [  yarn ](#tab-panel-4675)
 
 Terminal window
 
@@ -669,14 +687,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search namespace update`
 
 Update an AI Search namespace
 
-* [  npm ](#tab-panel-4476)
-* [  pnpm ](#tab-panel-4477)
-* [  yarn ](#tab-panel-4478)
+* [  npm ](#tab-panel-4676)
+* [  pnpm ](#tab-panel-4677)
+* [  yarn ](#tab-panel-4678)
 
 Terminal window
 
@@ -728,14 +748,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `ai-search namespace delete`
 
 Delete an AI Search namespace
 
-* [  npm ](#tab-panel-4479)
-* [  pnpm ](#tab-panel-4480)
-* [  yarn ](#tab-panel-4481)
+* [  npm ](#tab-panel-4679)
+* [  pnpm ](#tab-panel-4680)
+* [  yarn ](#tab-panel-4681)
 
 Terminal window
 
@@ -785,6 +807,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/wrangler-commands/","name":"Wrangler commands"}}]}

@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-10499)
-* [  pnpm ](#tab-panel-10500)
-* [  yarn ](#tab-panel-10501)
+* [  npm ](#tab-panel-10923)
+* [  pnpm ](#tab-panel-10924)
+* [  yarn ](#tab-panel-10925)
 
 Terminal window
 
@@ -72,14 +72,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `workflows describe`
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-10502)
-* [  pnpm ](#tab-panel-10503)
-* [  yarn ](#tab-panel-10504)
+* [  npm ](#tab-panel-10926)
+* [  pnpm ](#tab-panel-10927)
+* [  yarn ](#tab-panel-10928)
 
 Terminal window
 
@@ -131,14 +133,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `workflows delete`
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-10505)
-* [  pnpm ](#tab-panel-10506)
-* [  yarn ](#tab-panel-10507)
+* [  npm ](#tab-panel-10929)
+* [  pnpm ](#tab-panel-10930)
+* [  yarn ](#tab-panel-10931)
 
 Terminal window
 
@@ -190,14 +194,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `workflows trigger`
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-10508)
-* [  pnpm ](#tab-panel-10509)
-* [  yarn ](#tab-panel-10510)
+* [  npm ](#tab-panel-10932)
+* [  pnpm ](#tab-panel-10933)
+* [  yarn ](#tab-panel-10934)
 
 Terminal window
 
@@ -253,14 +259,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `workflows instances list`
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-10511)
-* [  pnpm ](#tab-panel-10512)
-* [  yarn ](#tab-panel-10513)
+* [  npm ](#tab-panel-10935)
+* [  pnpm ](#tab-panel-10936)
+* [  yarn ](#tab-panel-10937)
 
 Terminal window
 
@@ -320,14 +328,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `workflows instances describe`
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-10514)
-* [  pnpm ](#tab-panel-10515)
-* [  yarn ](#tab-panel-10516)
+* [  npm ](#tab-panel-10938)
+* [  pnpm ](#tab-panel-10939)
+* [  yarn ](#tab-panel-10940)
 
 Terminal window
 
@@ -385,14 +395,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `workflows instances send-event`
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-10517)
-* [  pnpm ](#tab-panel-10518)
-* [  yarn ](#tab-panel-10519)
+* [  npm ](#tab-panel-10941)
+* [  pnpm ](#tab-panel-10942)
+* [  yarn ](#tab-panel-10943)
 
 Terminal window
 
@@ -450,14 +462,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `workflows instances terminate`
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-10520)
-* [  pnpm ](#tab-panel-10521)
-* [  yarn ](#tab-panel-10522)
+* [  npm ](#tab-panel-10944)
+* [  pnpm ](#tab-panel-10945)
+* [  yarn ](#tab-panel-10946)
 
 Terminal window
 
@@ -511,14 +525,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `workflows instances restart`
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-10523)
-* [  pnpm ](#tab-panel-10524)
-* [  yarn ](#tab-panel-10525)
+* [  npm ](#tab-panel-10947)
+* [  pnpm ](#tab-panel-10948)
+* [  yarn ](#tab-panel-10949)
 
 Terminal window
 
@@ -572,14 +588,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `workflows instances pause`
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-10526)
-* [  pnpm ](#tab-panel-10527)
-* [  yarn ](#tab-panel-10528)
+* [  npm ](#tab-panel-10950)
+* [  pnpm ](#tab-panel-10951)
+* [  yarn ](#tab-panel-10952)
 
 Terminal window
 
@@ -633,14 +651,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `workflows instances resume`
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-10529)
-* [  pnpm ](#tab-panel-10530)
-* [  yarn ](#tab-panel-10531)
+* [  npm ](#tab-panel-10953)
+* [  pnpm ](#tab-panel-10954)
+* [  yarn ](#tab-panel-10955)
 
 Terminal window
 
@@ -694,6 +714,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/reference/wrangler-commands/","name":"Wrangler commands"}}]}

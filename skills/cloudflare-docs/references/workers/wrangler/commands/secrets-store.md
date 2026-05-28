@@ -26,9 +26,9 @@ In order to interact with Secrets Store in production, you should append `--remo
 
 Create a secret within a store
 
-* [  npm ](#tab-panel-10236)
-* [  pnpm ](#tab-panel-10237)
-* [  yarn ](#tab-panel-10238)
+* [  npm ](#tab-panel-10507)
+* [  pnpm ](#tab-panel-10508)
+* [  yarn ](#tab-panel-10509)
 
 Terminal window
 
@@ -88,6 +88,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 The following is an example of using the `create` command to create an account-level secret.
 
@@ -118,9 +120,9 @@ npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name
 
 Update a secret within a store
 
-* [  npm ](#tab-panel-10239)
-* [  pnpm ](#tab-panel-10240)
-* [  yarn ](#tab-panel-10241)
+* [  npm ](#tab-panel-10510)
+* [  pnpm ](#tab-panel-10511)
+* [  yarn ](#tab-panel-10512)
 
 Terminal window
 
@@ -180,14 +182,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `secrets-store secret duplicate`
 
 Duplicate a secret within a store
 
-* [  npm ](#tab-panel-10242)
-* [  pnpm ](#tab-panel-10243)
-* [  yarn ](#tab-panel-10244)
+* [  npm ](#tab-panel-10513)
+* [  pnpm ](#tab-panel-10514)
+* [  yarn ](#tab-panel-10515)
 
 Terminal window
 
@@ -247,14 +251,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `secrets-store secret get`
 
 Get a secret within a store
 
-* [  npm ](#tab-panel-10245)
-* [  pnpm ](#tab-panel-10246)
-* [  yarn ](#tab-panel-10247)
+* [  npm ](#tab-panel-10516)
+* [  pnpm ](#tab-panel-10517)
+* [  yarn ](#tab-panel-10518)
 
 Terminal window
 
@@ -308,6 +314,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 The following is an example with the expected output:
 
@@ -339,9 +347,9 @@ npx wrangler secrets-store secret get 8f7a1cdced6342c18d223ece462fd88d --secret-
 
 Delete a secret within a store
 
-* [  npm ](#tab-panel-10248)
-* [  pnpm ](#tab-panel-10249)
-* [  yarn ](#tab-panel-10250)
+* [  npm ](#tab-panel-10519)
+* [  pnpm ](#tab-panel-10520)
+* [  yarn ](#tab-panel-10521)
 
 Terminal window
 
@@ -395,14 +403,16 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ### `secrets-store secret list`
 
 List secrets within a store
 
-* [  npm ](#tab-panel-10251)
-* [  pnpm ](#tab-panel-10252)
-* [  yarn ](#tab-panel-10253)
+* [  npm ](#tab-panel-10522)
+* [  pnpm ](#tab-panel-10523)
+* [  yarn ](#tab-panel-10524)
 
 Terminal window
 
@@ -458,6 +468,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 ## `secrets-store store`
 
@@ -471,9 +483,9 @@ Store limitation
 
 Create a store within an account
 
-* [  npm ](#tab-panel-10254)
-* [  pnpm ](#tab-panel-10255)
-* [  yarn ](#tab-panel-10256)
+* [  npm ](#tab-panel-10525)
+* [  pnpm ](#tab-panel-10526)
+* [  yarn ](#tab-panel-10527)
 
 Terminal window
 
@@ -523,6 +535,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 The following is an example of using the `create` command to create a store.
 
@@ -548,9 +562,9 @@ npx wrangler secrets-store store create default --remote
 
 Delete a store within an account
 
-* [  npm ](#tab-panel-10257)
-* [  pnpm ](#tab-panel-10258)
-* [  yarn ](#tab-panel-10259)
+* [  npm ](#tab-panel-10528)
+* [  pnpm ](#tab-panel-10529)
+* [  yarn ](#tab-panel-10530)
 
 Terminal window
 
@@ -600,6 +614,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 The following is an example of using the `delete` command to delete a store.
 
@@ -625,9 +641,9 @@ npx wrangler secrets-store store delete d2dafaeac9434de2b6d08b292ce08211 --remot
 
 List stores within an account
 
-* [  npm ](#tab-panel-10260)
-* [  pnpm ](#tab-panel-10261)
-* [  yarn ](#tab-panel-10262)
+* [  npm ](#tab-panel-10531)
+* [  pnpm ](#tab-panel-10532)
+* [  yarn ](#tab-panel-10533)
 
 Terminal window
 
@@ -679,6 +695,8 @@ Path to an .env file to load - can be specified multiple times - values from ear
 Experimental: Enable automatic resource provisioning
 * `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true  
 Automatically provision draft bindings with new resources
+* `--install-skills` ` boolean ` default: false  
+Install Cloudflare agents skills, if not already present, without asking the user for confirmation
 
 The following is an example of using the `list` command to list stores.
 

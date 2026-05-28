@@ -14,6 +14,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/index.xml)
 
+## 2026-05-28
+
+**RealtimeKit Web UI Kit 1.2.0**
+
+**Compatibility:** Works best with RealtimeKit Web Core 1.5.1 or later.
+
+**Features**
+
+* When a user fails to join a meeting, `rtk-idle-screen` and `rtk-setup-screen` now display a troubleshooting link to help resolve common connection issues such as firewall restrictions and permission errors.
+* If the meeting preset allows transcripts, the transcription panel is now shown by default without requiring manual activation.
+
+**Enhancements**
+
+* Raw SDK error codes and messages are no longer shown to end users on join failure. Error messages are now mapped to clear, user-friendly, localized text with a small reference code (for example, `Error code: 0002`) for support and debugging.
+
+**Fixes**
+
+* Corrected several typos and spacing issues in the default language pack.
+
 ## 2026-03-31
 
 **RealtimeKit Web UI Kit 1.1.2**
